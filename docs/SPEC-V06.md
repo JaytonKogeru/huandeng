@@ -22,7 +22,7 @@
 
 Main、Section、Presentation 继续存储在同一 `.huandeng/project.json` 中。新界面提供衍生演讲总览，以及当前主页面在哪些演讲/位置使用。点击使用关系进入准确的 presentationId/pageId/occurrenceId，另有明确回到主页面的入口。
 
-pageId 是内容身份；occurrenceId 是某次出现身份；position 是当前序位。重复 live 引用同步主页面内容；备注与版本选择属于每次出现。当前 occurrence 的 Story briefing 汇集 Main、所属 Section、Presentation、逐页目的/保留约束、前后页、版本/备注、素材引用和当前选择，帮助 Agent 在编辑前理解叙事。
+pageId 是内容身份；occurrenceId 是某次出现身份；position 是当前序位。重复 live 引用同步主页面内容；显式单页引用支持独立备注与版本选择。整章引用动态展开，需要逐页设置时先「拆为独立页面引用」。当前 occurrence 的 Story briefing 汇集 Main、所属 Section、Presentation、逐页目的/保留约束、前后页、版本/备注和素材引用。Agent 先通过 `huandeng_selection_read` 读取用户选择，再按其中的页面与 occurrence 取得 briefing；briefing 不自动包含选中对象。
 
 派生概览和 briefing 为只读视图。原有项目显式保存、页面自动保存与命名版本机制保持各自语义。
 
@@ -30,7 +30,7 @@ pageId 是内容身份；occurrenceId 是某次出现身份；position 是当前
 
 索引项目 media/assets 以及当前页面引用的素材，支持搜索、缩略预览、使用关系、跳转引用页和插入复用。区分缺失引用和未被当前主库引用的文件；命名版本归档不能误判为可删除垃圾。
 
-替换图片使用已有导入和元素 patch/CAS 事务，保留原素材和未知数据。扫描有边界且明确报告截断，不启动未请求的删除、移动或全库整理。
+本轮提供缺失或不可用图片的「重新选择这处图片」，使用已有导入和元素 patch/CAS 事务，保留原素材、对象布局和未知数据。任意可用图片的全局替换、批量重命名或清理不在本轮范围。扫描有边界且明确报告截断，不启动未请求的删除、移动或全库整理。
 
 ## 5. HUANDENG Plugin 通道
 

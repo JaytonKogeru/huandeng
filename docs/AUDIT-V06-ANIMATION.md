@@ -106,7 +106,7 @@ Linux 上模型与 Renderer 集成共 14 项单测、核心 TypeScript 和这组
 
 ### Windows 源码候选：15/15 通过
 
-`scripts/verify-animation-v06.mjs` 已在 THUG 的独立 Electron 源码候选运行，使用合成项目和独立 profile/runtime。报告时间为 `2026-11-07T16:40:03.860Z`，源报告文件为 `.verification/animation-v06.json`。本轮结果属于源码候选，尚不是最终发行包或安装目录的验收。
+`scripts/verify-animation-v06.mjs` 已在 THUG 的独立 Electron 源码候选运行，使用合成项目和独立 profile/runtime。报告时间为 `2026-11-07T16:40:03.860Z`，源报告原路径为 `.verification/animation-v06.json`，现已归档至 `.verification/v06-source-candidate/animation-v06.json`。本轮结果属于源码候选，独立于后续最终发行包及安装目录的验收。
 
 | 证据 | 结果 |
 | --- | --- |
@@ -122,4 +122,8 @@ Linux 上模型与 Renderer 集成共 14 项单测、核心 TypeScript 和这组
 
 首轮在第一个用例失败，失败收据和截图保存在 `.verification/v06-animation-round1`。文件实际已写入，但全局保存状态把动画预览期间的禁编状态标成“只读模式”，导致等待“已保存”超时。修复将项目只读与动画预览分开判定；验收仍保留真实文件与保存确认检查，没有放宽通过条件。首轮失败不计为通过。
 
-下一门槛是在干净源码提交后构建最终发行包，并使用该包独立重跑。源码候选的通过记录不能替代最终包验收。
+### 最终发行包：15/15 通过
+
+冻结运行时 `9c27465` 的 v0.6.0 clean build/package 完成后，最终 EXE 已独立重跑动画验收。报告时间为 `2026-11-07T16:50:44.189Z`，15/15 通过，`rendererErrors: []`，含关闭重开的两次退出均为 exit code 0、signal null。当前 `.verification/animation-v06.json` 对应这一轮最终包报告；上节源码候选的数据继续保留在归档中，33 次 mutation 等候选字段不移作最终包数据。
+
+最终包来源、六套回归、性能结果及正式安装进展以 [集中验证报告](VALIDATION-V06.md) 为准。1024×768 截图来自隔离验收临时放宽最小尺寸后的布局检查；正式宿主最小外窗宽度仍为 1040。

@@ -6,11 +6,13 @@ HUANDENG Editor 基于 OpenSlide 的 React 编辑环境，使用 PPTD 文档后�
 
 ## 当前阶段
 
-当前交付版本为 **[v0.5.0：日常编辑体验](docs/RELEASE-V05.md)**，运行时 `03a96957` 已安装到既有正式位置，桌面与开始菜单快捷方式已核对。常规用户 profile 已打开原 80 页项目，窗口可响应、项目可写、无诊断，82 份文档源文件 hash 不变；发行标识为 `editor-v0.5.0`。
+当前交付版本为 **[v0.6.0：编辑工作台与时间线](docs/RELEASE-V06.md)**，运行时 `9c27465` 已安装到既有正式位置，桌面与开始菜单快捷方式已核对。普通用户 profile 已重新打开原 80 页项目，窗口可响应、项目可写、无诊断，82 份文档源文件 hash 不变；发行标识为 `editor-v0.6.0`。
 
-本轮改善大项目响应、画布放置、页面身份、中文界面与异常保存恢复。正式程序包的 80 页项目首次可编辑约 **5.98 秒**，Delete 视觉中位 **27.4 ms**、落盘中位 **222.5 ms**；独立 20 轮连续操作通过。源码门槛为 Linux 800 项、Windows 799 项及 1 项 POSIX 专属跳过，实际 EXE 桌面 7/7、编辑器 8/8、恢复 6/6，正式路径安装和 About 版本检查均通过。测量使用本机隔离副本且未清空 OS 缓存，长期内存增长与字体/溢出诊断仍有明确的后续范围。本文说明对应当前源码。
+本轮补齐键盘工作区、Main 与衍生演讲概览、素材库、Story briefing、多轨关键帧与 cue 放映，并提供实际字体/内容范围检查。最终 EXE 六套 **61/61** 操作验收、正式安装和 About 0.6.0 检查通过。源码门槛为 Linux 870 项、Windows 869 项及 1 项 POSIX 专属跳过，均为 75 个测试文件；TypeScript 和 Biome 615 文件通过。
 
-[综合产品审计](docs/AUDIT-V05-COVERAGE.md) 合并初始 SPEC 与 v0.2–v0.4 的需求、实现和历史回执；[视觉与交互审计](docs/AUDIT-V05-VISUAL.md) 记录美术及界面判断；[保存恢复审计](docs/AUDIT-V05-RECOVERY.md) 保留失败发现、修复与验证来源；[v0.5 范围](docs/SPEC-V05.md) 定义本轮交付；[交接记录](docs/HANDOFF-V05.md) 保存当前完成度和下一步。
+正式包在 80 页隔离副本上的启动观测为 **5.50 秒**；20 轮 Delete 视觉中位 **24.7 ms**，持久化观测中位 **191.25 ms**。测量未清空 OS 缓存，工作集仍随操作增长，不能据此宣称长期无泄漏。动画已在 PPTD 编辑与放映中可用；PNG/PDF/PPTX 当前仍输出基础版式并明确报告时间线未导出。
+
+[历史覆盖审计](docs/AUDIT-V05-COVERAGE.md) 合并初始 SPEC 与 v0.2–v0.4；[本轮审计](docs/AUDIT-V06.md) 更新完成度，[规格](docs/SPEC-V06.md)、[实现](docs/IMPLEMENTATION-V06.md)、[验证](docs/VALIDATION-V06.md) 保存完整开发链路。[视觉审计](docs/AUDIT-V06-VISUAL.md) 与 [交接记录](docs/HANDOFF-V06.md) 说明设计和后续优先级；[v0.5 保存恢复审计](docs/AUDIT-V05-RECOVERY.md) 继续保留实际故障与修复来源。
 
 ## GitHub 版本管理
 
@@ -30,7 +32,7 @@ Windows 双击 **HUANDENG Editor** 快捷方式，或运行 `Start-Huandeng.cmd`
     corepack pnpm --filter @open-slide/core build
     corepack pnpm desktop
 
-v0.5 的 core build 同时生成正式编辑器前端。需要前端源码热更新时，设置 `HUANDENG_DEV_SERVER=1` 再启动桌面或 CLI 开发服务。
+core build 同时生成正式编辑器前端。需要前端源码热更新时，设置 `HUANDENG_DEV_SERVER=1` 再启动桌面或 CLI 开发服务。
 
 Windows 桌面打包与快捷方式：
 
@@ -67,6 +69,8 @@ GUI、CLI 和 MCP 使用同一个本地文档服务。请求携带读取时的�
 
 每个项目只有一份主幻灯片库（Main Slides）。左侧“项目与故事”可建立章节，并创建多个演讲幻灯片集合（Presentation Slides），按自己的顺序引用整节或单页。同一页可重复使用，每次出现可写不同备注。默认跟随主库更新；选择命名版本后，演讲中的该页固定为只读旧版。
 
+项目概览可以直接进入主库的各场衍生演讲，当前页的使用位置能跳到准确的那一次出现。`pageId`/短码表示页面内容，`occurrenceId` 表示某次引用，当前位置随编排改变。显式单页引用可以分别设置讲稿和固定版本；整章动态引用需要先“拆为独立页面引用”再逐页设置。
+
 在顶部“当前演讲集合”切换主幻灯片或某场演讲。预览、放映与导出使用所选集合。缺少引用或项目编排有未保存草稿时，会阻止不完整交付。编排使用显式“保存项目”；页面内容仍自动保存。详见 [项目与演讲指南](docs/PROJECTS.md)。
 
 ## 画布编辑
@@ -75,7 +79,17 @@ GUI、CLI 和 MCP 使用同一个本地文档服务。请求携带读取时的�
 
 缩略图分别显示当前页序和稳定短码。可搜索短码、旧 S 编号或标题，右键“复制页面短码”用于定位与沟通。对象新增和删除的画面反馈与持久化状态分别更新；“已保存”仍以本地文档服务的确认结果为准。
 
+画布 Tab / Shift+Tab 遍历顶层对象，方向键移动 1 单位、Shift 10 单位，Enter 编辑文字，Esc 返回或取消当前手势。F6 / Shift+F6 在工作区之间移动，F1 查看帮助；缩略图支持方向键和 Home/End。文字、表格和属性输入继续保留自己的键盘语义。
+
 文件长期被占用而导致保存未完成时，界面保留本地草稿并显示“恢复未完成保存”。解除文件占用后可在当前窗口恢复，原请求确认后继续保存后续输入，再正常关闭或切换项目。如果文件或保存记录与预期不一致，恢复会停止，保留现场；可先“复制待保存页面”并检查恢复详情。该操作不会强行覆盖外部内容。
+
+## 素材、时间线与检查
+
+左侧“素材”索引项目 media/assets 和当前引用，支持原文件名搜索、预览、使用位置、定位和复用。缺图可通过“重新选择这处图片”修复，保留对象位置、裁切和其他属性；原素材与命名版本不被覆盖。“未使用”仅指当前 Main 未引用，不是可安全删除的判断。
+
+选中对象后打开画布下方“动画”，为位置、旋转、缩放或不透明度建立轨道，调整关键帧时间、数值与缓动，添加演讲步骤。拖动播放头或播放检查效果；“返回编辑”恢复基础排版。预览不逐帧改写页面，时间线参与保存、Undo/Redo、复制及命名版本。操作细节与当前输出边界见 [动画指南](docs/ANIMATION.md)。
+
+右侧技术检查可按需核对本机字体与有效回退，并测量文字、公式、表格的局部内容范围。结果可以定位到对象，文档改变后显示过期状态；不会自动缩字或重排。它不代替 Office 的最终排版验证。
 
 ## Agent 使用
 
@@ -93,6 +107,8 @@ GUI、CLI 和 MCP 使用同一个本地文档服务。请求携带读取时的�
 
 MCP 配置见 plugins/huandeng/mcp.example.json。网页 ChatGPT 可通过已有 DC-WALT 调用同一 CLI；无需启动另一个模型或公开本地服务。
 
+v0.6 提供 `brief`、`assets`、`presentation` 读取和对应 MCP 工具，共 15 个工具。先读取 selection，再按 page/presentation/occurrence 获取 Story briefing，结合四层目的、保留项、邻页、备注和素材构造修改。Claude Code 包装与 Codex 配置见 [Plugin 指南](plugins/huandeng/README.md)；本机 stdio launcher 已实测，具体用户客户端安装和私有 ChatGPT 连接仍须单独验收。
+
 ## 科学内容和设计
 
 工具栏“数据”可插入合并表格、LaTeX 公式、本地图标，图表子菜单提供 13 类图表；常用图形、组合及图片导入共用页面编辑与撤销。图表支持从 Excel 粘贴 TSV/CSV 数据，并保留尚未应用的数据草稿。PPTX 对支持的表格、公式、6 类基础图表及连续组合写入原生可编辑对象；其他对象的图像回退会列入导出报告。详细操作与兼容范围见 [科研对象指南](docs/SCIENTIFIC-OBJECTS.md) 和 [PowerPoint 差异审计](docs/POWERPOINT-COMPARISON.md)。
@@ -107,7 +123,7 @@ MCP 配置见 plugins/huandeng/mcp.example.json。网页 ChatGPT 可通过已有
     corepack pnpm exec vitest run --project unit
     corepack pnpm check
 
-完整产品规划见 [Master SPEC](docs/SPEC.md)，当前增量见 [SPEC-V05](docs/SPEC-V05.md)，逐项状态见 [综合审计](docs/AUDIT-V05-COVERAGE.md)。已完成的历史验收见 [v0.4 发布记录](docs/RELEASE-V04.md)，本轮正式验收见 [v0.5 发布记录](docs/RELEASE-V05.md)。工程接续入口是 [WEBCHAT.md](WEBCHAT.md)。
+完整产品规划见 [Master SPEC](docs/SPEC.md)，当前增量见 [SPEC-V06](docs/SPEC-V06.md)，逐项状态见 [综合审计](docs/AUDIT-V06.md)。历史验收见 [v0.4](docs/RELEASE-V04.md)、[v0.5](docs/RELEASE-V05.md)，本轮正式验收见 [v0.6 发布记录](docs/RELEASE-V06.md)。工程接续入口是 [WEBCHAT.md](WEBCHAT.md)。
 
 里程碑发布运行完整单元测试、类型和格式检查，并以实际桌面、项目编排、科研对象、原生 PowerPoint 及真实科研项目副本验收补足自动化覆盖。日常小修改只重复能够验证相应风险的检查。
 

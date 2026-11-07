@@ -1,16 +1,18 @@
 # HUANDENG v0.6 — 实现交接
 
-日期：2026-11-08（Australia/Sydney）。对应 [综合审计](AUDIT-V06.md) 与 [SPEC](SPEC-V06.md)。本文记录已落源码的关键决定、兼容性与验收入口，不将写好测试等同于实际通过。最终候选、实测数字与交付结果由集中 Validation 记录确认。
+日期：2026-11-08（Australia/Sydney）。对应 [综合审计](AUDIT-V06.md) 与 [SPEC](SPEC-V06.md)。本文记录实现决定、兼容性和验收入口；候选、最终包与安装证据分别见 [Validation](VALIDATION-V06.md)。
+
+最终 runtime 源码为 `9c27465aa88b5b2b59288f5b321596ad10fcb92c`，产品版本 `0.6.0`，`sourceDirty: false`，构建时间 `2026-11-07T16:47:49.8347220Z`；clean build/package 均退出 0。最终 EXE 六套 61 项和 80 页项目 20 轮复测通过。正式路径安装、快捷方式、About 与普通用户原项目重开均通过，独立收据见 [Validation 第 12 节](VALIDATION-V06.md)；远端 refs 由里程碑发布步骤单独核对。
 
 ## 1. 实现范围与共用约束
 
 | 范围 | 主要实现 | 状态边界 |
 | --- | --- | --- |
-| 键盘与焦点 | 分区命令、画布对象 Tab、箭头移动、图层/缩略图导航、F6、帮助与放映控制 | 新候选真实 Electron 14/14 通过；尚非最终安装包验收 |
-| 动画 | schema、轨道/关键帧/步骤、局部预览、放映、CAS 保存、撤销与引用完整性 | 已集成；独立 Electron 脚本待最终实际结果 |
-| 项目与 Story | 同项目演讲概览、使用关系、精确 occurrence 导航、目标 briefing | 模型/协议通过；候选项目与素材专项 11/11 通过 |
-| 素材 | 搜索/预览/usage、复用、缺图修复、单资源 revision | 真机已验证含图页面 URL 稳定、同路径换图更新及冲突重试 |
-| 排版检查 | 本机字体与 fallback、继承样式、实际溢出、定位与结果过期 | 真机已验证 queryLocalFonts、继承字体回退和溢出检查过期 |
+| 键盘与焦点 | 分区命令、画布对象 Tab、箭头移动、图层/缩略图导航、F6、帮助与放映控制 | 最终打包 EXE 14/14 通过 |
+| 动画 | schema、轨道/关键帧/步骤、局部预览、放映、CAS 保存、撤销与引用完整性 | 最终打包 EXE 15/15 通过，含关闭重开与兼容性保护 |
+| 项目与 Story | 同项目演讲概览、使用关系、精确 occurrence 导航、目标 briefing | 模型/协议通过；最终包项目与素材专项 11/11 通过 |
+| 素材 | 搜索/预览/usage、复用、缺图修复、单资源 revision | 最终包验证含图页面 URL 稳定、同路径换图更新及冲突重试 |
+| 排版检查 | 本机字体与 fallback、继承样式、实际溢出、定位与结果过期 | 最终包验证 queryLocalFonts、继承字体回退和溢出检查过期 |
 | Agent 通道 | MCP/CLI 新只读接口、Plugin launcher 与客户端配置 | 本地真实 stdio 链通过；未宣称私有网页连接或平台发布完成 |
 
 文档服务仍是唯一 writer。GUI、CLI 和 MCP 共用修订检查、事务、保存队列、历史和命名版本；没有另建项目副本或第二套保存格式。项目编排 schema 保持兼容，动画以页面可选 `timeline` 扩展。
@@ -23,7 +25,9 @@
 
 箭头微移使用文档坐标，Shift 加大步长；选择、复制、删除、组合、页面操作由分区命令路由。缩略图使用 occurrence 作为焦点和导航身份；图层聚焦不误触画布微移。放映模式先处理演讲步骤，再处理换页，避免编辑快捷键穿透。
 
-此前候选的动态 `tabIndex` 路径使真实 Delete 反馈出现约 44–46ms 的回退。改为固定画布入口后，Windows 20 轮实际编辑/保存复测通过，Delete 中位数恢复至约 25.4ms；新候选键盘 14 项实际复核也已通过。详细基线、持久化耗时、内存与原稿 hash 记录留给 Validation，不将一次 GC 结果当作无泄漏结论。
+此前候选的动态 `tabIndex` 路径使真实 Delete 反馈出现约 44–46ms 的同步回退。改为固定画布入口后，源码候选 20 轮中位数恢复至 25.4ms；最终 EXE 在同机 80 页副本上的 20 轮为 **24.7ms**，持久化观测中位数 **191.2501ms**，82 个原项目文件 hash 不变。历史对照、完整范围和内存数据见 [Validation](VALIDATION-V06.md)，不将一次 GC 结果当作无泄漏结论。
+
+快速 Home → Enter → PageDown 的时序问题通过同步 URL 的 page/occurrence 身份解决，下一次步进不再依赖尚未提交的路由 `pageIndex`；切换集合时先核对身份。活动移动/缩放手势的 Esc 优先直接取消，再处理普通清选区；两项均包含在最终包 14 组键盘验收中。
 
 画布、对象、缩略图与图层补齐可见焦点反馈和明确 accessible name。帮助面板集中展示当前可用操作。界面调整围绕现有编辑区、项目区和时间线组织，没有为装饰动画引入全局逐帧状态。
 
@@ -38,6 +42,8 @@
 [timeline-panel.tsx](../packages/core/src/app/components/pptd/timeline-panel.tsx) 管理轨道、关键帧拖动、数值输入、步骤与播放头。完成一次拖动提交一次事务；Esc 取消当前拖动。字段草稿、保存中与已提交修订分别跟踪，冲突保留草稿并提供复制出口，不用旧 revision 覆盖远端结果。
 
 [authoring-workspace.tsx](../packages/core/src/app/components/pptd/authoring-workspace.tsx) 将预览状态限制在画布与时间线子树。播放时钟使用局部 `requestAnimationFrame`；逐帧采样只改变渲染，不写基础几何或保存历史，也不把时钟推到整个应用 route。
+
+预览期间暂停基础对象写入，但保存状态只根据实际 `pageReadonly` 判断文档只读，避免把预览误报为只读文件。时间线非输入区允许文档 Undo/Redo，Esc 返回基础编辑；字段输入仍保留本身的取消与原生历史规则。
 
 未保存时间线阻止普通切页、切换演讲及关闭面板。跨范围审阅发现只比较 pageId 会漏掉同页的 occurrence/version 变化，主集成已改为完整 `pageId + occurrenceId + versionId` 保持 dirty 草稿引用；同一身份的数据刷新仍可显示修订冲突。
 
@@ -94,20 +100,23 @@ CLI 增加 `brief`、`assets`，render 可指定 presentation/occurrence。写�
 | 入口 | 证明内容 | 当前记录 |
 | --- | --- | --- |
 | 项目/素材/MCP/固定版本四组单测 | 单目标 pin、歧义、索引边界、资源 token、真实 SDK transport | 23/23 通过 |
-| Core TypeScript 与 owned Biome | 类型及本分工代码/配置检查 | exit 0；18 个 owned 文件通过 |
-| `verify-keyboard-v06.mjs` | 实际 Electron 焦点、编辑键、输入隔离、保存 | 新候选 14/14 通过 |
-| `verify-animation-v06.mjs` | 实际关键帧、预览、播放、保存与草稿 | 脚本已交接，实际结果待记录 |
-| `verify-project-assets-v06.mjs` | 下述 11 组项目、素材与技术检查 | Windows 候选 11/11 通过，rendererErrors 为空，正常退出 |
-| 大项目真实性能复测 | 操作反馈、保存、内存、原输入 hash | 固定焦点后 20 轮通过；详细数字集中记录 |
+| 最终集成源码门禁 | 单测、TypeScript 与 Biome | Linux 870/870；Windows 869 pass + 1 POSIX-only skip，均 75 个测试文件；TS 与 Biome 615 个文件通过 |
+| `verify-keyboard-v06.mjs` | 实际 Electron 焦点、编辑键、输入隔离、保存 | 最终 EXE 14/14，通过并记录正常退出 0 / null |
+| `verify-animation-v06.mjs` | 关键帧、预览、播放、关闭重开、草稿及未来 schema | 最终 EXE 15/15，两次正常退出均为 0 / null |
+| `verify-project-assets-v06.mjs` | 下述 11 组项目、素材与技术检查 | 最终 EXE 11/11，正常退出 0 / null |
+| 既有 desktop / editor / recovery 脚本 | 桌面完整流程、编辑和保存恢复 | 最终 EXE 7/7、8/8、6/6；退出证据按 Validation 分别记账 |
+| 大项目真实性能复测 | 操作反馈、保存、内存、原输入 hash | 最终 EXE 80 页、20 轮通过；DOM 1820 稳定，无 renderer/transaction/close 错误 |
+
+最终 EXE 六套合计 **61/61**，均 `rendererErrors: []`。汇总为 Windows worktree 下 `.verification/v06-packaged-gates.json`；早期源码候选另存 `.verification/v06-source-candidate`。旧 desktop/editor 报告没有 normalExit 字段，不用其他脚本的字段替它们作证；recovery 最后一项明确验证正常关闭。
 
 项目/素材脚本创建独立 fixture、profile、runtime，需要 `HUANDENG_DESKTOP_EXE`，可选 `HUANDENG_DESKTOP_APP`、`HUANDENG_CLI`。只操作合成项目与专属进程，写入根 `.verification/project-assets-v06.json`、三个截图和进程日志。
 
 其 11 组包括：同项目卡片；精确重复 occurrence/独立讲稿；原名搜索/usage；复用无新字节；含至少 3 张已解码图片的同页文字保存后 URL 全等；同路径真实字节改变后相关画布/库预览更新且控制图片不变；缺图修复保留对象；选择文件期间外部写入导致 409，保留错误并正确重试；CLI 只读；继承字体回退；溢出定位及检查过期。
 
-该专项真机回执时间为 `2026-11-07T16:35:38.145Z`，11/11 通过，`rendererErrors: []`，`normalExit: {code: 0, signal: null}`。实际包含至少 3 张已解码图片，并完成真实换图、409 后保留错误及正确重试、queryLocalFonts 和 DOM 排版检查。该结果对应当前 Windows 候选，尚不代表最终安装包验收。
+该专项源码候选收据为 `2026-11-07T16:35:38.145Z`；最终 EXE 重验收据为 `2026-11-07T16:49:53.399Z`，仍为 11/11，`rendererErrors: []`，`normalExit: {code: 0, signal: null}`。最终包包含至少 3 张已解码图片的真实换图、409 保留错误及正确重试、queryLocalFonts 和 DOM 排版检查；正式安装目录由独立安装脚本继续验证。
 
-此前大项目首张页无图片，空数组 URL 比较不能证明画布图片复用；本次专项已补齐正向数量、实际解码与真实换图证据。模型单测、协议链路、候选 Electron 和最终打包结果分别记账；发布前仍需完成剩余动画验证及安装检查。
+大项目性能页无图片，空数组 URL 比较不能证明画布图片复用；最终包素材专项补齐了正向数量、实际解码与真实换图证据。模型单测、协议链路、源码候选和最终包分别记账；动画 15 组已完成，当前剩余交付门禁为 [正式安装及里程碑同步](VALIDATION-V06.md#12-正式打包安装与里程碑同步)。
 
 ## 9. 保留的后续范围
 
-单次引用视觉覆盖、全局资源迁移、便捷 MCP 素材导入、实际客户端安装与私有 ChatGPT 连接，以及动画高级轨道/视频输出仍是后续独立工作。本轮完成项按模型、协议及实际 UI 证据分别确认；候选验证通过不自动等同于最终打包与安装完成。
+单次引用视觉覆盖、全局资源迁移、便捷 MCP 素材导入、实际 Agent 客户端安装与私有 ChatGPT 连接，以及动画高级轨道/视频输出仍是后续独立工作。本轮模型、协议、最终 EXE 与正式安装分别有实际收据；发布说明与接续优先级见 [Release](RELEASE-V06.md) 和 [Handoff](HANDOFF-V06.md)。

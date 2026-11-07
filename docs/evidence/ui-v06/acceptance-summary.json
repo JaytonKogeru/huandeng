@@ -1,0 +1,741 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-07T17:07:54.453726+00:00",
+  "scope": "Final Windows packaged and installed runtime. Allowlisted summary excludes research content, original path/file/hash inventories, service URLs, profile paths and process IDs.",
+  "runtime": {
+    "electronVersion": "38.7.2",
+    "desktopProtocol": 1,
+    "builtAt": "2026-11-07T16:47:49.8347220Z",
+    "sourceDirty": false,
+    "productVersion": "0.6.0",
+    "nodeLinker": "hoisted",
+    "product": "HUANDENG Editor",
+    "sourceRevision": "9c27465aa88b5b2b59288f5b321596ad10fcb92c"
+  },
+  "codeGates": {
+    "windows": [
+      {
+        "gate": "typecheck",
+        "exit": 0,
+        "seconds": 2.8968758583068848
+      },
+      {
+        "gate": "tests",
+        "exit": 0,
+        "seconds": 69.61924457550049
+      },
+      {
+        "gate": "biome",
+        "exit": 0,
+        "seconds": 2.7748019695281982
+      }
+    ],
+    "windowsUnitSummary": {
+      "passed": 869,
+      "skippedPosixOnly": 1,
+      "total": 870,
+      "files": 75
+    },
+    "biomeFiles": 615,
+    "linuxUnitSummary": {
+      "passed": 870,
+      "files": 75,
+      "provenance": "Separate Linux validation log, not a Windows receipt."
+    }
+  },
+  "packageGates": [
+    {
+      "gate": "build",
+      "exit": 0,
+      "seconds": 5.749411582946777
+    },
+    {
+      "gate": "package",
+      "exit": 0,
+      "seconds": 44.37229585647583
+    }
+  ],
+  "suiteGates": [
+    {
+      "gate": "keyboard",
+      "exit": 0,
+      "seconds": 38.55211281776428
+    },
+    {
+      "gate": "project-assets",
+      "exit": 0,
+      "seconds": 36.96400260925293
+    },
+    {
+      "gate": "animation",
+      "exit": 0,
+      "seconds": 50.32231426239014
+    },
+    {
+      "gate": "desktop",
+      "exit": 0,
+      "seconds": 23.506229162216187
+    },
+    {
+      "gate": "editor",
+      "exit": 0,
+      "seconds": 14.640737295150757
+    },
+    {
+      "gate": "recovery",
+      "exit": 0,
+      "seconds": 14.89833664894104
+    }
+  ],
+  "suites": [
+    {
+      "receipt": "keyboard-v06.json",
+      "passed": true,
+      "timestamp": "2026-11-07T16:49:16.438Z",
+      "checkCount": 14,
+      "rendererErrors": [],
+      "checks": [
+        {
+          "name": "Tab visits top-level objects once, wraps, and Esc then Tab leaves the canvas",
+          "passed": true,
+          "milliseconds": 550
+        },
+        {
+          "name": "Escape cancels actual object move and resize before mouse-up without creating a transaction",
+          "passed": true,
+          "milliseconds": 1360
+        },
+        {
+          "name": "arrow, Shift arrow and a rapid repeat burst accumulate without lost document units",
+          "passed": true,
+          "milliseconds": 1264
+        },
+        {
+          "name": "a selected group moves each member once and document undo restores all bounds",
+          "passed": true,
+          "milliseconds": 1001
+        },
+        {
+          "name": "native Edit Copy, Cut and Paste operate on objects and preserve a single undo boundary",
+          "passed": true,
+          "milliseconds": 746
+        },
+        {
+          "name": "layer click returns focus for immediate nudge; layer arrows navigate instead of moving objects",
+          "passed": true,
+          "milliseconds": 1059
+        },
+        {
+          "name": "native text commands stay in the inline editor and IME Enter/Esc never end a candidate",
+          "passed": true,
+          "milliseconds": 1181
+        },
+        {
+          "name": "property Ctrl+S commits the active field; Escape cancels, and table Tab stays in input editing",
+          "passed": true,
+          "milliseconds": 534
+        },
+        {
+          "name": "F1 help protects the document and F6 skips hidden panels while collapse expands the canvas",
+          "passed": true,
+          "milliseconds": 1064
+        },
+        {
+          "name": "thumbnail arrows, Home/End and Enter use one Tab entry and reach the canvas",
+          "passed": true,
+          "milliseconds": 353
+        },
+        {
+          "name": "repeated occurrences remain individually navigable and presentation Home/End use occurrence order",
+          "passed": true,
+          "milliseconds": 343
+        },
+        {
+          "name": "pinned pages remain copyable and PageDown still navigates while their content is read-only",
+          "passed": true,
+          "milliseconds": 662
+        },
+        {
+          "name": "timeline F6, preview Undo/Redo and Escape coexist with native presentation scrubber keys",
+          "passed": true,
+          "milliseconds": 1619
+        },
+        {
+          "name": "removing a focused object externally restores the canvas without moving other content",
+          "passed": true,
+          "milliseconds": 277
+        }
+      ],
+      "normalExit": {
+        "code": 0,
+        "signal": null
+      }
+    },
+    {
+      "receipt": "project-assets-v06.json",
+      "passed": true,
+      "timestamp": "2026-11-07T16:49:53.399Z",
+      "checkCount": 11,
+      "rendererErrors": [],
+      "checks": [
+        {
+          "name": "project cards switch Main and two derived presentations inside one project",
+          "passed": true,
+          "milliseconds": 843
+        },
+        {
+          "name": "used-by and resolved-order buttons open the exact repeated occurrence and its notes",
+          "passed": true,
+          "milliseconds": 717
+        },
+        {
+          "name": "asset search finds original source names and used-by navigates to a Main image",
+          "passed": true,
+          "milliseconds": 879
+        },
+        {
+          "name": "reusing an indexed asset adds one reference and copies no asset bytes",
+          "passed": true,
+          "milliseconds": 238
+        },
+        {
+          "name": "text editing on a page with decoded images preserves canvas and library image URLs",
+          "passed": true,
+          "milliseconds": 739
+        },
+        {
+          "name": "same-path asset replacement updates only that resource and refreshes visible previews",
+          "passed": true,
+          "milliseconds": 412
+        },
+        {
+          "name": "missing image repair imports exact bytes and preserves bounds, crop and other objects",
+          "passed": true,
+          "milliseconds": 1017
+        },
+        {
+          "name": "a stale missing-image replacement conflicts; retry keeps the intervening edit",
+          "passed": true,
+          "milliseconds": 971
+        },
+        {
+          "name": "CLI briefing and asset reads match exact occurrences without rewriting the project",
+          "passed": true,
+          "milliseconds": 4002
+        },
+        {
+          "name": "the real font button detects the deliberately missing inherited theme font",
+          "passed": true,
+          "milliseconds": 398
+        },
+        {
+          "name": "overflow results locate the object and expire after content or page changes",
+          "passed": true,
+          "milliseconds": 885
+        }
+      ],
+      "normalExit": {
+        "code": 0,
+        "signal": null
+      }
+    },
+    {
+      "receipt": "animation-v06.json",
+      "passed": true,
+      "timestamp": "2026-11-07T16:50:44.189Z",
+      "checkCount": 15,
+      "rendererErrors": [],
+      "checks": [
+        {
+          "name": "default insertion followed by an animation track survives saving/disabled transitions",
+          "passed": true,
+          "milliseconds": 1157
+        },
+        {
+          "name": "multiple object tracks edit exact time, position, opacity and outgoing easing",
+          "passed": true,
+          "milliseconds": 3253
+        },
+        {
+          "name": "scrubbing and playback preserve base content; Escape returns to editing",
+          "passed": true,
+          "milliseconds": 332
+        },
+        {
+          "name": "cue labels and times are editable, removable and persisted",
+          "passed": true,
+          "milliseconds": 2648
+        },
+        {
+          "name": "a lost response is recovered by the original request and acknowledges the matching timeline draft",
+          "passed": true,
+          "milliseconds": 895
+        },
+        {
+          "name": "keyframe drag is one transaction, Undo/Redo is complete, and Esc cancels a drag",
+          "passed": true,
+          "milliseconds": 1272
+        },
+        {
+          "name": "keyframe and track CRUD preserve unrelated tracks and base geometry",
+          "passed": true,
+          "milliseconds": 1180
+        },
+        {
+          "name": "duplicate key times and shortened duration keep unconfirmed input, support copying, and Escape discards only the field",
+          "passed": true,
+          "milliseconds": 694
+        },
+        {
+          "name": "timeline and cues survive a normal process close and reopen",
+          "passed": true,
+          "milliseconds": 5379
+        },
+        {
+          "name": "1024 by 768 dark reduced-motion layout keeps the timeline reachable and collapses back to the canvas",
+          "passed": true,
+          "milliseconds": 1367
+        },
+        {
+          "name": "future schemas remain statically readable and their animation data cannot be overwritten",
+          "passed": true,
+          "milliseconds": 360
+        },
+        {
+          "name": "named-version references preview their archived timeline while authoring controls stay readonly",
+          "passed": true,
+          "milliseconds": 891
+        },
+        {
+          "name": "presentation steps stop at cues, reverse deterministically, and reset repeated occurrences",
+          "passed": true,
+          "milliseconds": 3284
+        },
+        {
+          "name": "a future schema arriving during editing preserves the old draft and unconfirmed input for copying",
+          "passed": true,
+          "milliseconds": 1357
+        },
+        {
+          "name": "external source-page removal retains the correct page draft until an explicit discard",
+          "passed": true,
+          "milliseconds": 780
+        }
+      ],
+      "normalExits": [
+        {
+          "code": 0,
+          "signal": null
+        },
+        {
+          "code": 0,
+          "signal": null
+        }
+      ]
+    },
+    {
+      "receipt": "desktop-v04.json",
+      "passed": true,
+      "timestamp": "2026-11-07T16:51:26.332Z",
+      "checkCount": 7,
+      "rendererErrors": [],
+      "checks": [
+        {
+          "name": "native Electron window opens the fixture with HUANDENG branding and external-agent interfaces",
+          "passed": true,
+          "milliseconds": 3784
+        },
+        {
+          "name": "external MCP records Story before editing Q9R4 and independently edits B6XA",
+          "passed": true,
+          "milliseconds": 2575
+        },
+        {
+          "name": "thumbnail history previews and restores an intermediate version without changing other files",
+          "passed": true,
+          "milliseconds": 1572
+        },
+        {
+          "name": "project tree displays real files and selects pages by stable identity",
+          "passed": true,
+          "milliseconds": 823
+        },
+        {
+          "name": "desktop restart reopens the last project and retains page history",
+          "passed": true,
+          "milliseconds": 5418
+        },
+        {
+          "name": "native New and Open dialogs create and reopen real PPTD projects through IPC",
+          "passed": true,
+          "milliseconds": 4478
+        },
+        {
+          "name": "the home screen lists recent projects and reopens the selected document",
+          "passed": true,
+          "milliseconds": 2787
+        }
+      ]
+    },
+    {
+      "receipt": "editor-v05.json",
+      "passed": true,
+      "timestamp": "2026-11-07T16:51:40.397Z",
+      "checkCount": 8,
+      "rendererErrors": [],
+      "checks": [
+        {
+          "name": "choosing text or a shape does not create an object; Escape also cancels an active drag",
+          "passed": true,
+          "milliseconds": 776
+        },
+        {
+          "name": "ellipse placement uses drag coordinates and persists the selected shape",
+          "passed": true,
+          "milliseconds": 755
+        },
+        {
+          "name": "reverse dragging normalizes the rectangle and Shift creates a circle",
+          "passed": true,
+          "milliseconds": 1493
+        },
+        {
+          "name": "lines preserve reverse direction and Shift constrains the angle",
+          "passed": true,
+          "milliseconds": 797
+        },
+        {
+          "name": "text placement enters editing automatically and Backspace removes a character",
+          "passed": true,
+          "milliseconds": 725
+        },
+        {
+          "name": "object Delete, Undo and Redo change the real page file",
+          "passed": true,
+          "milliseconds": 707
+        },
+        {
+          "name": "shortCode is primary, old S aliases remain searchable and copy yields the shortCode",
+          "passed": true,
+          "milliseconds": 556
+        },
+        {
+          "name": "light and dark editor layouts remain visible at desktop and compact sizes",
+          "passed": true,
+          "milliseconds": 2441
+        }
+      ]
+    },
+    {
+      "receipt": "recovery-v05.json",
+      "passed": true,
+      "timestamp": "2026-11-07T16:51:56.309Z",
+      "checkCount": 6,
+      "rendererErrors": [],
+      "checks": [
+        {
+          "name": "opens only the isolated synthetic project and identifies its owned writer",
+          "passed": true,
+          "milliseconds": 4202
+        },
+        {
+          "name": "a temporary read-sharing handle releases and the original save succeeds without recovery",
+          "passed": true,
+          "milliseconds": 1579
+        },
+        {
+          "name": "a longer file hold preserves the page and draft until explicit recovery returns the original receipt",
+          "passed": true,
+          "milliseconds": 3456
+        },
+        {
+          "name": "editing continues after recovery and creates one new persisted operation",
+          "passed": true,
+          "milliseconds": 182
+        },
+        {
+          "name": "recovery refuses a third external state without changing it or losing the pending draft",
+          "passed": true,
+          "milliseconds": 3617
+        },
+        {
+          "name": "the recovered editor closes normally and releases its owned service and runtime session",
+          "passed": true,
+          "milliseconds": 916
+        }
+      ],
+      "cleanupErrors": []
+    }
+  ],
+  "performance": {
+    "passed": true,
+    "timestamp": "2026-11-07T16:51:57.188Z",
+    "iterations": 20,
+    "methodology": "Fresh Electron process with isolated profile/runtime and a copied project. OS filesystem cache is not cleared. Visual deletion is measured from the renderer keydown handler to a MutationObserver seeing removal. Persistence is observed by 10 ms file polling; acknowledgement is observed separately. Original manifest, page files and metadata are hashed before and after.",
+    "canvasInteractiveMs": 5497.2755,
+    "pageCount": 80,
+    "initialDom": {
+      "totalNodes": 1820,
+      "thumbnails": 80,
+      "thumbnailRenderers": 7,
+      "allPageRenderers": 8,
+      "canvasElements": 4,
+      "pendingImages": 0,
+      "viewport": {
+        "width": 1600,
+        "height": 1000,
+        "devicePixelRatio": 1
+      }
+    },
+    "settledDom": {
+      "totalNodes": 1820,
+      "thumbnails": 80,
+      "thumbnailRenderers": 7,
+      "allPageRenderers": 8,
+      "canvasElements": 4,
+      "pendingImages": 0,
+      "viewport": {
+        "width": 1600,
+        "height": 1000,
+        "devicePixelRatio": 1
+      }
+    },
+    "finalDom": {
+      "totalNodes": 1820,
+      "thumbnails": 80,
+      "thumbnailRenderers": 7,
+      "allPageRenderers": 8,
+      "canvasElements": 4,
+      "pendingImages": 0,
+      "viewport": {
+        "width": 1600,
+        "height": 1000,
+        "devicePixelRatio": 1
+      }
+    },
+    "summary": {
+      "visual": {
+        "count": 20,
+        "minMs": 21.199999809265137,
+        "medianMs": 24.700000047683716,
+        "maxMs": 36.799999952316284
+      },
+      "persistence": {
+        "count": 20,
+        "minMs": 179.60009765625,
+        "medianMs": 191.2501220703125,
+        "maxMs": 219.900146484375
+      },
+      "acknowledgement": {
+        "count": 20,
+        "minMs": 434.800048828125,
+        "medianMs": 476.7000732421875,
+        "maxMs": 521.900146484375
+      }
+    },
+    "rendererErrors": [],
+    "transactionFailures": [],
+    "originalUnchanged": true
+  },
+  "memorySamples": [
+    {
+      "stage": "interactive",
+      "rendererWorkingSetMiB": 172.41796875,
+      "serviceWorkingSetMiB": 211.828125,
+      "javascriptHeapUsedMiB": 17.509967803955078,
+      "domCounters": {
+        "documents": 100,
+        "nodes": 4948,
+        "jsEventListeners": 1107
+      }
+    },
+    {
+      "stage": "settled",
+      "rendererWorkingSetMiB": 170.359375,
+      "serviceWorkingSetMiB": 211.83984375,
+      "javascriptHeapUsedMiB": 17.537715911865234,
+      "domCounters": {
+        "documents": 100,
+        "nodes": 4948,
+        "jsEventListeners": 1107
+      }
+    },
+    {
+      "stage": "after-10-pairs",
+      "rendererWorkingSetMiB": 360.2265625,
+      "serviceWorkingSetMiB": 228.6484375,
+      "javascriptHeapUsedMiB": 42.34161376953125,
+      "domCounters": {
+        "documents": 2,
+        "nodes": 4483,
+        "jsEventListeners": 2052
+      }
+    },
+    {
+      "stage": "after-20-pairs",
+      "rendererWorkingSetMiB": 405.01171875,
+      "serviceWorkingSetMiB": 290.8828125,
+      "javascriptHeapUsedMiB": 52.218082427978516,
+      "domCounters": {
+        "documents": 2,
+        "nodes": 5094,
+        "jsEventListeners": 5361
+      }
+    },
+    {
+      "stage": "after-20-insert-delete-pairs",
+      "rendererWorkingSetMiB": 405.01171875,
+      "serviceWorkingSetMiB": 290.8828125,
+      "javascriptHeapUsedMiB": 31.08742904663086,
+      "domCounters": {
+        "documents": 2,
+        "nodes": 5094,
+        "jsEventListeners": 5361
+      }
+    },
+    {
+      "stage": "after-explicit-garbage-collection",
+      "rendererWorkingSetMiB": 322.0078125,
+      "serviceWorkingSetMiB": 290.8828125,
+      "javascriptHeapUsedMiB": 16.47350311279297,
+      "domCounters": {
+        "documents": 2,
+        "nodes": 4116,
+        "jsEventListeners": 749
+      }
+    }
+  ],
+  "performanceLimits": [
+    "OS filesystem cache was not cleared; this is not a nonresident OneDrive cold-start test.",
+    "Current benchmark page contains no image elements; image URL reuse has separate positive coverage in project-assets-v06.",
+    "Working set grows during twenty cycles. Recoverable JS heap does not prove absence of long-session retention or leaks."
+  ],
+  "installation": {
+    "preparedFiles": 29141,
+    "preparedBytes": 683432467,
+    "allPreparedFileHashesEqual": true,
+    "formerWindow": {
+      "closeMainWindow": true,
+      "exited": true,
+      "remainingProcesses": 0,
+      "forcedClose": false
+    },
+    "oldVersionBackupRetained": true,
+    "shortcutCount": 2,
+    "iconMatchesSource": true,
+    "fixtureUnchanged": true,
+    "installedSmoke": {
+      "passed": true,
+      "timestamp": "2026-11-07T17:03:47.985Z",
+      "installedVersion": "0.6.0",
+      "expectedVersion": "0.6.0",
+      "documentRuntime": "static",
+      "syntheticPages": 3,
+      "writable": true,
+      "electronVersion": "38.7.2",
+      "rendererErrors": [],
+      "normalExit": {
+        "code": 0,
+        "signal": null
+      },
+      "aboutVerification": "Executed the real native Menu click handler; captured options with a temporary showMessageBox stub. No native-dialog screenshot."
+    },
+    "aboutMessage": "HUANDENG Editor 0.6.0",
+    "ordinaryUserReopen": {
+      "passed": true,
+      "timestamp": "2026-11-07T17:05:30.861970+00:00",
+      "ordinaryProfile": true,
+      "pageCount": 80,
+      "writable": true,
+      "diagnostics": [],
+      "runtime": "static",
+      "originalFilesChecked": 82,
+      "originalUnchanged": true,
+      "fixtureUnchanged": true,
+      "leftOpen": true
+    },
+    "nativeWindowResponsive": true
+  },
+  "images": [
+    {
+      "file": "asset-library.png",
+      "sourceScreenshot": "project-assets-v06.png",
+      "sha256": "dbdbc5e5204e8eae529870fa17c58e11f6379cedc14bf087747b5e36e2c7eac8",
+      "bytes": 110367,
+      "width": 1600,
+      "height": 1000,
+      "visualReview": "Reviewed actual final-package pixels; synthetic content only; no absolute user paths. PNG metadata independently checked empty."
+    },
+    {
+      "file": "animation-timeline.png",
+      "sourceScreenshot": "animation-v06-timeline.png",
+      "sha256": "b14a6b7d85c7e414af9178f2d55dba8ae5cf0250e5f02e3580070d6fa3d6d529",
+      "bytes": 128693,
+      "width": 1600,
+      "height": 1000,
+      "visualReview": "Reviewed actual final-package pixels; synthetic content only; no absolute user paths. PNG metadata independently checked empty."
+    }
+  ],
+  "rawReceipts": [
+    {
+      "file": "v06-packaged-gates.json",
+      "sha256": "ecb76f101d378c60144cd5d5758a989d1c65035c2ad42179e99148cb16b4ab72"
+    },
+    {
+      "file": "keyboard-v06.json",
+      "sha256": "1e3fd7f2e1237ca18d4ab331c7530abfd5eb29cbb523452bf71105ce78736fb0"
+    },
+    {
+      "file": "project-assets-v06.json",
+      "sha256": "f576f24192232df2f66fe08c0cc8bfdd89a97e8d1e392d1da9a049802453dc36"
+    },
+    {
+      "file": "animation-v06.json",
+      "sha256": "c332f14d9eb7a29e18940d59af56861a9a1ce05c1a9cc333a5d731b52fef3490"
+    },
+    {
+      "file": "desktop-v04.json",
+      "sha256": "741177b3fa3833060ce423d6733b3dfa3ec4e604d21a06ada9ce937e5ed256e6"
+    },
+    {
+      "file": "editor-v05.json",
+      "sha256": "71deed9d0416ef7a4eaaed6f6f47ffbd80d3e72e48a30f8182de8aea795636d9"
+    },
+    {
+      "file": "recovery-v05.json",
+      "sha256": "2b4651e338cb9411f5ae058f10362cffdaf34f82fcb9086c6497239b11a41c3b"
+    },
+    {
+      "file": "performance-v06/v06-packaged-20.json",
+      "sha256": "e4968c79019b7418b24ba4cc6c442fb8f17bd041172e8bc11b0e8425439ec0ce"
+    },
+    {
+      "file": "v06-prepared-install.json",
+      "sha256": "6df0a34ad903c02a00e22274740d35e6630b762fd858dacfe902db87aa129776"
+    },
+    {
+      "file": "v06-install-replacement.json",
+      "sha256": "f1969f945a052fa26cbda5dfef5699189ce92df7b606d85e896838184096d65d"
+    },
+    {
+      "file": "v06-shortcuts.json",
+      "sha256": "fe020c5764d518e64b73047ba1defc52b2276a334d96399046100a3edad82d93"
+    },
+    {
+      "file": "installed-v06.json",
+      "sha256": "609e1ec645ce0005621ad1a862c10bdc3c0b531aa95d7b056949ac7bb2bdd0d0"
+    },
+    {
+      "file": "v06-user-reopen.json",
+      "sha256": "5ddf2a32ac70d2c682cbde7a43a8ab221312b8b103f62129c1fba21433c393b4"
+    },
+    {
+      "file": "v06-final-code-gates.json",
+      "sha256": "82aa7f46520d50705260ce7227d34fe463dde17941622c5307451edaa267e234"
+    },
+    {
+      "file": "v06-package-gates.json",
+      "sha256": "c2a26eff6f67bb149cce214d42dc1dec2bc716d7dc2b7898a4e42781a41b12f2"
+    }
+  ]
+}
