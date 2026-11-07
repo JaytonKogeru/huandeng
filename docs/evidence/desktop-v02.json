@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "platform": "win32",
+  "node": "v22.21.0",
+  "electron": "38.7.2",
+  "timestamp": "2026-11-07T04:39:11.339Z",
+  "executablePath": "D:\\_Proj\\Huandeng\\dist\\HUANDING-win32-x64\\HUANDING Editor.exe",
+  "entry": "C:\\Users\\焦煜桐\\AppData\\Local\\Temp\\huanding-desktop-bcPCei\\studio\\deck.pptd",
+  "checks": [
+    {
+      "name": "native Electron window opens the fixture with HUANDING branding and external-agent interfaces",
+      "passed": true,
+      "milliseconds": 11964
+    },
+    {
+      "name": "external MCP records Frame before editing Q9R4 and independently edits B6XA",
+      "passed": true,
+      "milliseconds": 3472
+    },
+    {
+      "name": "thumbnail history previews and restores an intermediate version without changing other files",
+      "passed": true,
+      "milliseconds": 1789
+    },
+    {
+      "name": "project tree displays real files and selects pages by stable identity",
+      "passed": true,
+      "milliseconds": 1149
+    },
+    {
+      "name": "desktop restart reopens the last project and retains page history",
+      "passed": true,
+      "milliseconds": 9834
+    },
+    {
+      "name": "native New and Open dialogs create and reopen real PPTD projects through IPC",
+      "passed": true,
+      "milliseconds": 21006
+    }
+  ],
+  "rendererErrors": [],
+  "screenshots": ["desktop-v02-history.png", "desktop-v02-editor.png"]
+}

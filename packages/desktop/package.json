@@ -1,0 +1,33 @@
+{
+  "name": "@huanding/desktop",
+  "version": "0.0.0",
+  "private": true,
+  "productName": "HUANDING Editor",
+  "description": "HUANDING Editor desktop application",
+  "main": "main.cjs",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron ."
+  },
+  "files": [
+    "main.cjs",
+    "preload.cjs",
+    "service.cjs",
+    "project.cjs",
+    "welcome.html",
+    "welcome.css",
+    "welcome.js",
+    "icon.svg",
+    "icon.png",
+    "icon.ico",
+    "README.md",
+    "NOTICE.md",
+    "LICENSE"
+  ],
+  "dependencies": {
+    "@open-slide/core": "workspace:*"
+  },
+  "devDependencies": {
+    "electron": "38.7.2"
+  }
+}

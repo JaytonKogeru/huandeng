@@ -1,9 +1,9 @@
 {
   "mcpServers": {
-    "huandeng": {
+    "huanding": {
       "command": "node",
       "args": [
-        "D:/_Proj/Huandeng/packages/core/huandeng.js",
+        "D:/_Proj/Huandeng/packages/core/huanding.js",
         "--entry",
         "D:/_Proj/Huandeng/tests/fixtures/studio/deck.pptd",
         "mcp"

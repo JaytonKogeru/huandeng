@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:" />
+    <title>HUANDING Editor</title>
+    <link rel="stylesheet" href="welcome.css" />
+  </head>
+  <body>
+    <main>
+      <header class="brand"><img src="icon.svg" alt="" /><span>HUANDING <small>EDITOR</small></span></header>
+      <section class="opening" aria-labelledby="heading">
+        <div>
+          <p class="eyebrow">A PLACE FOR YOUR IDEAS TO EVOLVE</p>
+          <h1 id="heading">你的文稿，<br />有自己的来路。</h1>
+          <p class="introduction">在同一个项目里编辑、演示，回看每一页的变化。<br />从外部 Agent 开始，回到这里看见结果。</p>
+          <div class="actions">
+            <button type="button" id="open-project" class="primary">打开项目 <kbd>Ctrl O</kbd></button>
+            <button type="button" id="new-project">新建项目 <kbd>Ctrl N</kbd></button>
+          </div>
+          <p class="project-note">打开项目中的 .pptd 文件；新建项目会建立独立文件夹。</p>
+        </div>
+        <div class="page-art" aria-hidden="true">
+          <div class="paper paper-back"><span>01</span></div>
+          <div class="paper paper-front">
+            <span class="page-code">K7M2</span>
+            <div class="art-title">一个想法，<br />不断生长。</div>
+            <div class="art-line"></div><div class="art-line short"></div>
+            <div class="art-note">每一页都有自己的历史。</div>
+            <div class="art-circle"></div>
+          </div>
+        </div>
+      </section>
+      <section class="recents" aria-labelledby="recent-heading">
+        <div class="section-heading"><h2 id="recent-heading">最近项目</h2><span>文件留在你选择的位置</span></div>
+        <div id="recent-projects" class="project-list"></div>
+        <p id="empty-recents" class="empty">还没有打开过项目。新建一份文稿，或继续你已有的 PPTD。</p>
+      </section>
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+      <footer><span>HUANDING FRAME <span class="divider">/</span> 意图有处可寻</span><span>HUANDING PLUGIN <span class="divider">/</span> 与你的 Agent 协作</span></footer>
+    </main>
+    <script src="welcome.js"></script>
+  </body>
+</html>

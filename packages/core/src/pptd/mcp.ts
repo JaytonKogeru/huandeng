@@ -74,8 +74,9 @@ const tools: Tool[] = [
   },
   {
     name: 'huandeng_history',
-    description: 'Read revision-aware local operation history.',
-    inputSchema: objectSchema({}),
+    description:
+      'Read document operations, or a page version timeline with pageId. Add versionId for a read-only historical preview. Historical assets use current project files.',
+    inputSchema: objectSchema({ ...pageProperty, versionId: { type: 'string' } }),
     annotations: read,
   },
   {
@@ -104,23 +105,92 @@ const tools: Tool[] = [
     inputSchema: objectSchema({ format: { type: 'string', enum: ['pdf', 'pptx'] } }, ['format']),
     annotations: { readOnlyHint: false, destructiveHint: false, openWorldHint: false },
   },
+  {
+    name: 'huandeng_project',
+    description: 'Read the actual PPTD project file tree with stable page IDs and source paths.',
+    inputSchema: objectSchema({}),
+    annotations: read,
+  },
+  {
+    name: 'huandeng_frame_record',
+    description:
+      'Before editing, record your understanding of the user request in HUANDING Frame. Preserve existing constraints unless the user changed them. This is an agent summary, not human approval. Use the current metadata revision and reuse all fields identically on retries.',
+    inputSchema: objectSchema(
+      {
+        ...pageProperty,
+        requestId: { type: 'string' },
+        expectedMetadataRevision: { type: ['string', 'null'] },
+        actor: { type: 'string', description: 'Agent identity, e.g. codex or claude-code.' },
+        source: {
+          type: 'string',
+          description: 'Conversation or task reference, without private credentials.',
+        },
+        recordedAt: {
+          type: 'string',
+          description: 'ISO 8601 timestamp, held unchanged on retries.',
+        },
+        requestedChange: { type: 'string' },
+        purpose: { type: 'string' },
+        keep: { type: 'array', items: { type: 'string' } },
+      },
+      [
+        'pageId',
+        'requestId',
+        'expectedMetadataRevision',
+        'actor',
+        'source',
+        'recordedAt',
+        'requestedChange',
+      ],
+    ),
+    annotations: {
+      readOnlyHint: false,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+  },
+  {
+    name: 'huandeng_version_restore',
+    description:
+      'Restore any saved version of one page as a new transaction. Preserve page identity, order and all other pages. Read current revisions first; include metadata revision if historical intent differs.',
+    inputSchema: objectSchema(
+      {
+        ...pageProperty,
+        versionId: { type: 'string' },
+        requestId: { type: 'string' },
+        expectedPageRevision: { type: 'string' },
+        expectedMetadataRevision: { type: ['string', 'null'] },
+        actor: { type: 'string' },
+      },
+      ['pageId', 'versionId', 'requestId', 'expectedPageRevision'],
+    ),
+    annotations: {
+      readOnlyHint: false,
+      destructiveHint: true,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+  },
 ];
 
 export async function startMcp(client: HuandengClient) {
   const server = new Server(
-    { name: 'Huandeng Plugin', version: '0.1.0' },
+    { name: 'HUANDING Plugin', version: '0.2.0' },
     {
       capabilities: { tools: {} },
       instructions:
-        'Use Huandeng Frame purpose/keep fields as author constraints. Inspect a page before editing, use its stable ID and expected revision, render the result, and report actual changes. Never invent scientific data or record author approval without human feedback.',
+        'Work from the external user conversation; there is no editor chat. Read context and the target page, record your interpretation and preservation constraints with huanding_frame_record, then use the returned metadata revision for edits. Keep stable IDs, render results and report actual changes. Frame is your summary, never fabricated human approval. Never invent scientific data.',
     },
   );
-  server.setRequestHandler(ListToolsRequestSchema, async () => ({ tools }));
+  server.setRequestHandler(ListToolsRequestSchema, async () => ({
+    tools: tools.map((tool) => ({ ...tool, name: tool.name.replace(/^huandeng_/, 'huanding_') })),
+  }));
   server.setRequestHandler(CallToolRequestSchema, async (request) => {
     try {
       const args = request.params.arguments ?? {};
       let result: unknown;
-      switch (request.params.name) {
+      switch (request.params.name.replace(/^huanding_/, 'huandeng_')) {
         case 'huandeng_context': {
           const snapshot = await client.session();
           result = {
@@ -155,7 +225,24 @@ export async function startMcp(client: HuandengClient) {
           result = await client.apply(args.transaction as TransactionRequest);
           break;
         case 'huandeng_history':
-          result = await client.request('/history');
+          if (args.versionId && !args.pageId) throw new Error('pageId is required with versionId.');
+          result = await client.request(
+            args.pageId
+              ? `/pages/${encodeURIComponent(String(args.pageId))}/versions${args.versionId ? `/${encodeURIComponent(String(args.versionId))}` : ''}`
+              : '/history',
+          );
+          break;
+        case 'huandeng_project':
+          result = await client.request('/project');
+          break;
+        case 'huandeng_frame_record':
+          result = await client.request('/frame', args);
+          break;
+        case 'huandeng_version_restore':
+          result = await client.request(
+            `/pages/${encodeURIComponent(String(args.pageId))}/restore`,
+            args,
+          );
           break;
         case 'huandeng_revert':
           result = await client.request('/undo', { ...args, actor: args.actor ?? 'agent' });

@@ -4,16 +4,24 @@ import type { ServerResponse } from 'node:http';
 import path from 'node:path';
 import type { ViteDevServer } from 'vite';
 import { discoveryPath, runtimeRoot, type SessionDiscovery } from '../../pptd/client.ts';
+import { type FrameRecordRequest, recordFrame } from '../../pptd/frame.ts';
 import {
   checkpoint,
   recordCheckpoint,
   recordCheckpointMetadataInitialization,
   registerCheckpointRoot,
 } from '../../pptd/git.ts';
+import { readProjectTree } from '../../pptd/project-tree.ts';
 import { ExportManager, mimeType, readProjectAsset } from '../../pptd/runtime-export.ts';
 import { openPptdStore } from '../../pptd/store.ts';
 import { PptdError, type TransactionRequest } from '../../pptd/types.ts';
 import { type ApiContext, json, readBody } from './context.ts';
+
+const shutdowns = new WeakMap<ViteDevServer['middlewares'], () => Promise<void>>();
+
+export async function closePptdServer(server: ViteDevServer) {
+  await shutdowns.get(server.middlewares)?.();
+}
 
 export async function registerPptdRoutes(server: ViteDevServer, _ctx: ApiContext) {
   const entry = process.env.HUANDENG_DECK;
@@ -85,19 +93,25 @@ export async function registerPptdRoutes(server: ViteDevServer, _ctx: ApiContext
     };
     await fs.writeFile(file, JSON.stringify(record), { mode: 0o600 });
   });
+  let closing: Promise<void> | undefined;
+  const close = () =>
+    (closing ??= (async () => {
+      closed = true;
+      if (refreshTimer) clearTimeout(refreshTimer);
+      clearInterval(heartbeat);
+      server.watcher.off('all', watch);
+      unsubscribe();
+      for (const client of clients) client.end();
+      await store.close();
+      await (async () => {
+        const file = await discoveryPath(entry);
+        const record: SessionDiscovery = JSON.parse(await fs.readFile(file, 'utf8'));
+        if (record.pid === process.pid) await fs.rm(file);
+      })().catch(() => {});
+    })());
+  shutdowns.set(server.middlewares, close);
   server.httpServer?.once('close', () => {
-    closed = true;
-    if (refreshTimer) clearTimeout(refreshTimer);
-    clearInterval(heartbeat);
-    server.watcher.off('all', watch);
-    unsubscribe();
-    for (const client of clients) client.end();
-    void store.close();
-    void (async () => {
-      const file = await discoveryPath(entry);
-      const record: SessionDiscovery = JSON.parse(await fs.readFile(file, 'utf8'));
-      if (record.pid === process.pid) await fs.rm(file);
-    })().catch(() => {});
+    void close();
   });
 
   server.middlewares.use(async (req, res, next) => {
@@ -134,9 +148,25 @@ export async function registerPptdRoutes(server: ViteDevServer, _ctx: ApiContext
           ...(await store.getSnapshot()),
           entry: path.join(root, store.getSnapshot().entry),
           sessionToken: token,
+          desktopProtocol: 1,
         });
       }
-      if (method === 'GET' && route.startsWith('/pages/')) {
+      if (method === 'GET' && route === '/project') {
+        return json(res, 200, await readProjectTree(root, store.getSnapshot()));
+      }
+      const versionRoute = /^\/pages\/([^/]+)\/versions(?:\/([^/]+))?$/.exec(route);
+      if (method === 'GET' && versionRoute) {
+        await store.refreshExternal();
+        const pageId = decodeURIComponent(versionRoute[1]);
+        return json(
+          res,
+          200,
+          versionRoute[2]
+            ? await store.readPageVersion(pageId, decodeURIComponent(versionRoute[2]))
+            : await store.pageHistory(pageId),
+        );
+      }
+      if (method === 'GET' && /^\/pages\/[^/]+$/.test(route)) {
         return json(
           res,
           200,
@@ -175,6 +205,34 @@ export async function registerPptdRoutes(server: ViteDevServer, _ctx: ApiContext
       }
       if (route === '/transactions')
         return json(res, 200, await store.commit(body as unknown as TransactionRequest));
+      if (route === '/frame')
+        return json(res, 200, await recordFrame(store, body as unknown as FrameRecordRequest));
+      const restoreRoute = /^\/pages\/([^/]+)\/restore$/.exec(route);
+      if (restoreRoute) {
+        if (
+          typeof body.versionId !== 'string' ||
+          typeof body.requestId !== 'string' ||
+          typeof body.expectedPageRevision !== 'string'
+        )
+          throw new PptdError(
+            'INVALID_REQUEST',
+            'versionId, requestId and expectedPageRevision are required.',
+          );
+        return json(
+          res,
+          200,
+          await store.restorePageVersion({
+            pageId: decodeURIComponent(restoreRoute[1]),
+            versionId: body.versionId,
+            requestId: body.requestId,
+            expectedPageRevision: body.expectedPageRevision,
+            ...(Object.hasOwn(body, 'expectedMetadataRevision')
+              ? { expectedMetadataRevision: body.expectedMetadataRevision as string | null }
+              : {}),
+            actor: typeof body.actor === 'string' ? body.actor : 'agent',
+          }),
+        );
+      }
       if (route === '/undo' || route === '/redo') {
         if (typeof body.operationId !== 'string')
           throw new PptdError('INVALID_REQUEST', 'operationId is required.');

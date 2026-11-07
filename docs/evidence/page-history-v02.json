@@ -1,0 +1,84 @@
+{
+  "numTotalTestSuites": 2,
+  "numPassedTestSuites": 2,
+  "numFailedTestSuites": 0,
+  "numPendingTestSuites": 0,
+  "numTotalTests": 4,
+  "numPassedTests": 4,
+  "numFailedTests": 0,
+  "numPendingTests": 0,
+  "numTodoTests": 0,
+  "snapshot": {
+    "added": 0,
+    "failure": false,
+    "filesAdded": 0,
+    "filesRemoved": 0,
+    "filesRemovedList": [],
+    "filesUnmatched": 0,
+    "filesUpdated": 0,
+    "matched": 0,
+    "total": 0,
+    "unchecked": 0,
+    "uncheckedKeysByFile": [],
+    "unmatched": 0,
+    "updated": 0,
+    "didUpdate": false
+  },
+  "startTime": 1794025961347,
+  "success": true,
+  "testResults": [
+    {
+      "assertionResults": [
+        {
+          "ancestorTitles": ["per-page history"],
+          "fullName": "per-page history previews durable versions and reads legacy journal history without changing the document",
+          "status": "passed",
+          "title": "previews durable versions and reads legacy journal history without changing the document",
+          "duration": 116.606222,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": ["per-page history"],
+          "fullName": "per-page history restores any chosen page version as a new edit without reverting another page or order",
+          "status": "passed",
+          "title": "restores any chosen page version as a new edit without reverting another page or order",
+          "duration": 70.56224300000002,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": ["per-page history"],
+          "fullName": "per-page history keeps a newer page or intent when a restore request has stale revisions",
+          "status": "passed",
+          "title": "keeps a newer page or intent when a restore request has stale revisions",
+          "duration": 40.2707539999999,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        },
+        {
+          "ancestorTitles": ["per-page history"],
+          "fullName": "per-page history records external changes while open and closed and keeps metadata-only intent versions",
+          "status": "passed",
+          "title": "records external changes while open and closed and keeps metadata-only intent versions",
+          "duration": 39.47131999999999,
+          "failureMessages": [],
+          "meta": {},
+          "tags": [],
+          "benchmarks": []
+        }
+      ],
+      "startTime": 1794025961711,
+      "endTime": 1794025961978.4714,
+      "status": "passed",
+      "message": "",
+      "name": "/workspace/scratch/b9e2b24053c6/Huandeng/packages/core/src/pptd/page-history.test.ts"
+    }
+  ]
+}

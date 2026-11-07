@@ -7,8 +7,8 @@ import { startMcp } from './mcp.ts';
 import { openPptdStore } from './store.ts';
 import type { TransactionRequest } from './types.ts';
 
-const program = new Command('huandeng')
-  .description('Huandeng Editor · 幻灯编辑器 — one document for people and agents')
+const program = new Command('huanding')
+  .description('HUANDING Editor — one document for people and external agents')
   .option('--url <url>', 'connect to an active local editor')
   .option('--entry <path>', 'find the active editor for this PPTD file');
 const print = (value: unknown): void => {
@@ -69,9 +69,40 @@ program
     print(await (await client()).apply(request));
   });
 program
-  .command('history')
-  .description('Read local document operation history')
-  .action(async () => print(await (await client()).request('/history')));
+  .command('history [pageId] [versionId]')
+  .description('Read document operations, page versions, or a historical page snapshot')
+  .action(async (pageId, versionId) =>
+    print(
+      await (await client()).request(
+        pageId
+          ? `/pages/${encodeURIComponent(pageId)}/versions${versionId ? `/${encodeURIComponent(versionId)}` : ''}`
+          : '/history',
+      ),
+    ),
+  );
+program
+  .command('project')
+  .description('Read the project file tree')
+  .action(async () => print(await (await client()).request('/project')));
+program
+  .command('frame <pageId> <intentFile>')
+  .description('Record agent intent from JSON, with requestId and expectedMetadataRevision')
+  .action(async (pageId, intentFile) => {
+    const intent = JSON.parse(await fs.readFile(intentFile, 'utf8'));
+    print(await (await client()).request('/frame', { ...intent, pageId }));
+  });
+program
+  .command('restore <pageId> <versionId> <requestFile>')
+  .description('Restore a page version; JSON supplies requestId and current expected revisions')
+  .action(async (pageId, versionId, requestFile) => {
+    const request = JSON.parse(await fs.readFile(requestFile, 'utf8'));
+    print(
+      await (await client()).request(`/pages/${encodeURIComponent(pageId)}/restore`, {
+        ...request,
+        versionId,
+      }),
+    );
+  });
 program
   .command('revert <operationId>')
   .description('Undo an operation if its post-revisions still match')
@@ -96,7 +127,7 @@ program
   .action(async (message) => print(await (await client()).request('/checkpoint', { message })));
 program
   .command('mcp')
-  .description('Serve Huandeng Plugin tools over stdio, attached to the active writer')
+  .description('Serve HUANDING Plugin tools over stdio, attached to the active writer')
   .action(async () => {
     await startMcp(await client());
   });

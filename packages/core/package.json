@@ -22,7 +22,8 @@
   },
   "bin": {
     "open-slide": "./bin.js",
-    "huandeng": "./huandeng.js"
+    "huandeng": "./huandeng.js",
+    "huanding": "./huanding.js"
   },
   "files": [
     "bin.js",
@@ -39,6 +40,7 @@
     "skills",
     "README.md",
     "huandeng.js",
+    "huanding.js",
     "src/pptd"
   ],
   "scripts": {

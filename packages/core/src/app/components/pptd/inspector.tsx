@@ -519,22 +519,6 @@ export function PptdInspector({
           </div>
         </Section>
       )}
-      {!selected.length && (
-        <Section title="Huandeng Frame">
-          <p className="text-xs leading-relaxed">
-            {page.metadata.designIntent?.purpose || '为这一页保留清楚的科学问题、原图和构图理由。'}
-          </p>
-          {(page.metadata.designIntent?.keep ?? []).map((item) => (
-            <p
-              key={item}
-              className="border-l-2 border-brand/50 pl-2 text-xs leading-relaxed text-muted-foreground"
-            >
-              {item}
-            </p>
-          ))}
-          <p className="break-all font-mono text-[10px] text-muted-foreground">{page.path}</p>
-        </Section>
-      )}
       {children}
       <Section title="图层 · 上方先显示">
         <div className="space-y-0.5">

@@ -87,6 +87,35 @@ export interface PageSnapshot {
   metadata: SlideIdentity;
 }
 
+export interface PageVersionSummary {
+  versionId: string;
+  pageId: string;
+  createdAt: string;
+  actor: string;
+  summary: string;
+  pageRevision: Revision;
+  current: boolean;
+  kind: 'initial' | 'edit' | 'external' | 'restore';
+  operationId?: string;
+}
+
+export interface PageVersionSnapshot {
+  version: PageVersionSummary;
+  page: PageSnapshot;
+  size: PageSize;
+  assets: 'current-project';
+}
+
+export interface RestorePageVersionRequest {
+  pageId: string;
+  versionId: string;
+  requestId: string;
+  expectedPageRevision: Revision | string;
+  expectedMetadataRevision?: Revision | string | null;
+  actor?: string;
+  originClientId?: string;
+}
+
 export interface DeckSnapshot {
   kind: 'pptd';
   deckId: string;
@@ -187,6 +216,12 @@ export interface HistoryRevertOperation {
   operationId: string;
 }
 
+export interface PageVersionRestoreOperation {
+  op: 'page.version.restore';
+  pageId: string;
+  versionId: string;
+}
+
 export interface RecipeApplyOperation {
   op: 'recipe.apply';
   pageId: string;
@@ -220,6 +255,7 @@ export type PptdOperation =
   | MetadataPatchOperation
   | RecipeApplyOperation
   | RecipeResetOperation
+  | PageVersionRestoreOperation
   | HistoryRevertOperation;
 
 export interface TransactionRequest {

@@ -2,11 +2,28 @@ import type {
   DeckSnapshot,
   DocumentEvent,
   HistorySummary,
+  PageVersionSnapshot,
+  PageVersionSummary,
   TransactionRequest,
   TransactionResult,
 } from '../../pptd/types';
 
 export type PptdSession = DeckSnapshot & { sessionToken: string };
+
+export interface ProjectTreeNode {
+  path: string;
+  name: string;
+  kind: 'file' | 'directory';
+  role?: 'manifest' | 'page' | 'media' | 'metadata' | 'export' | 'other';
+  pageId?: string;
+  children?: ProjectTreeNode[];
+}
+
+export interface ProjectTree {
+  entry: string;
+  root: string;
+  nodes: ProjectTreeNode[];
+}
 
 export class PptdClientError extends Error {
   constructor(
@@ -116,6 +133,20 @@ export class PptdBackend implements PptdTransport {
 
   history(): Promise<HistorySummary[]> {
     return this.request('/history');
+  }
+
+  project(): Promise<ProjectTree> {
+    return this.request('/project');
+  }
+
+  pageHistory(pageId: string): Promise<PageVersionSummary[]> {
+    return this.request(`/pages/${encodeURIComponent(pageId)}/versions`);
+  }
+
+  pageVersion(pageId: string, versionId: string): Promise<PageVersionSnapshot> {
+    return this.request(
+      `/pages/${encodeURIComponent(pageId)}/versions/${encodeURIComponent(versionId)}`,
+    );
   }
 
   selection(pageId: string | null, elementIds: string[], clientId: string): Promise<unknown> {

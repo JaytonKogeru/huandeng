@@ -1,4 +1,5 @@
 import { useEffect, useState, useSyncExternalStore } from 'react';
+import { desktopHost } from './huanding-desktop';
 import { PptdBackend } from './pptd-backend';
 import { draftHasChanges, PptdDocumentClient } from './pptd-document';
 
@@ -15,7 +16,11 @@ export function usePptdDocument() {
   useEffect(() => {
     const beforeUnload = (event: BeforeUnloadEvent) => {
       const current = client.getState();
-      if (current.saving || Object.values(current.drafts).some(draftHasChanges)) {
+      if (
+        current.saving ||
+        current.canRetry ||
+        Object.values(current.drafts).some(draftHasChanges)
+      ) {
         event.preventDefault();
         event.returnValue = '';
       }
@@ -23,6 +28,16 @@ export function usePptdDocument() {
     window.addEventListener('beforeunload', beforeUnload);
     return () => window.removeEventListener('beforeunload', beforeUnload);
   }, [client]);
+
+  useEffect(
+    () =>
+      desktopHost()?.onBeforeLeave(async () => {
+        await client.flushAll();
+        if (client.getState().canRetry)
+          throw new Error('还有一次保存尚未确认，请先重试同一次保存。');
+      }),
+    [client],
+  );
 
   return { client, backend, state };
 }

@@ -1,12 +1,12 @@
-# Huandeng
+# HUANDING
 
 ## Objective
 
-Deliver Huandeng Editor (幻灯编辑器), a local OpenSlide-based visual editor whose persisted document is PPTD, with stable page identities and one GUI/CLI/MCP writer. Huandeng Frame carries narrative intent and scientific evidence. Future extensions use Huandeng Plugin.
+Deliver HUANDING Editor, an Electron desktop editor based on OpenSlide whose persisted document is PPTD, with stable page identities and one GUI/CLI/MCP writer. External agents maintain HUANDING Frame intent. No embedded AI chat. Extensions use HUANDING Plugin.
 
 ## Meaningful progress
 
-Forked OpenSlide commit `327dd09bcd530eb97647fc33fa67e99f8137d860`, MIT, core 2.3.1. The v0.1 local editing workflow is implemented; `docs/IMPLEMENTATION.md` records verified capabilities and limitations.
+Forked OpenSlide commit `327dd09bcd530eb97647fc33fa67e99f8137d860`, MIT, core 2.3.1. v0.1 baseline is `41af882`. v0.2 is implemented: native Electron editor, project tree, durable page history and agent-maintained intent. Final Windows EXE passed six core flows; four new history tests pass. Evidence is in `docs/IMPLEMENTATION-V02.md`; next gaps are in `docs/HANDOFF-V02.md`.
 
 ## Project truths
 
@@ -14,7 +14,7 @@ Forked OpenSlide commit `327dd09bcd530eb97647fc33fa67e99f8137d860`, MIT, core 2.
 - Existing TSX mode remains available. PPTD selection uses page/element IDs.
 - Preserve manifest order, element z-order, unknown fields and the user's intentional layout.
 - Agents and humans share one writer with revisions, idempotent receipts and recoverable saves.
-- Product naming is Huandeng. Upstream package names and external `fss_*` interfaces remain compatibility identifiers.
+- Visible naming is HUANDING per the latest explicit spelling. Existing Huandeng paths, metadata and old CLI/MCP aliases remain compatible; upstream package names and external `fss_*` interfaces are unchanged.
 
 ## Source-of-truth map
 
@@ -26,8 +26,8 @@ Forked OpenSlide commit `327dd09bcd530eb97647fc33fa67e99f8137d860`, MIT, core 2.
 
 ## Verification surfaces
 
-Run core typecheck, PPTD tests, Biome and browser integration. Windows verification is on THUG at `D:/_Proj/Huandeng`; record actual evidence in `docs/IMPLEMENTATION.md`.
+Run typecheck, Biome, focused page-history/save tests, and one real desktop/agent editing flow. Do not repeatedly expand or run the full inherited suite without a concrete need. Verify Windows on THUG at `D:/_Proj/Huandeng`.
 
 ## Authority boundaries
 
-User authorized implementation and the Huandeng product family. Develop with fixtures. Do not overwrite formal research decks, alter legacy projects' uncommitted work, publish packages, or expose a public server. Local Git checkpoints are permitted; upstream is attribution, not a push target.
+User authorized the v0.2 SPEC and HUANDING product family. Use disposable fixtures. Preserve the user's existing changes in `tests/fixtures/studio/pages/identities.page` on THUG. Do not overwrite formal decks, alter legacy projects' uncommitted work, publish packages, or expose a public server. Local commits are permitted; upstream is attribution, not a push target.

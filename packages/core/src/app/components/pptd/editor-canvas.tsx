@@ -250,6 +250,9 @@ export function PptdEditorCanvas({
         originalBounds: item.bounds,
       }));
     if (!elements.length) return;
+    canvasRef.current
+      ?.querySelector<HTMLElement>(`[data-hd-element-id="${CSS.escape(elements[0].id)}"]`)
+      ?.focus({ preventScroll: true });
     setEditingId(null);
     const root = canvasRef.current?.querySelector('[data-pptd-page]')?.getBoundingClientRect();
     const first = elements[0].rect;
@@ -276,6 +279,7 @@ export function PptdEditorCanvas({
   const select = (element: PptdElement, event: ReactPointerEvent<HTMLDivElement>) => {
     if ((event.target as HTMLElement).closest('[contenteditable="true"]')) return;
     event.stopPropagation();
+    event.currentTarget.focus({ preventScroll: true });
     const ids = event.shiftKey
       ? selectedIds.includes(element.elementId)
         ? selectedIds.filter((id) => id !== element.elementId)
@@ -297,7 +301,12 @@ export function PptdEditorCanvas({
   const selected = page.data.elements.filter((item) => selectedIds.includes(item.elementId));
 
   return (
-    <div ref={canvasRef} className="relative h-full min-h-64 w-full" data-hd-editor-canvas>
+    <div
+      ref={canvasRef}
+      tabIndex={-1}
+      className="relative h-full min-h-64 w-full outline-none"
+      data-hd-editor-canvas
+    >
       {editingId && (
         <div
           className="absolute left-1/2 top-2 z-40 flex -translate-x-1/2 gap-0.5 rounded-md border bg-popover p-1 shadow-floating"
@@ -331,6 +340,7 @@ export function PptdEditorCanvas({
           style={{ width: size[0], height: size[1] }}
           onPointerDown={(event) => {
             if (!(event.target as Element).closest('[data-hd-element-id], [data-hd-selection]')) {
+              canvasRef.current?.focus({ preventScroll: true });
               onSelect([]);
               setEditingId(null);
             }

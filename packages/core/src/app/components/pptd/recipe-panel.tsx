@@ -123,6 +123,27 @@ function RecipeCard({
       setPending(false);
     }
   };
+  const detach = async () => {
+    setError(null);
+    setPending(true);
+    try {
+      await onApply(
+        [
+          {
+            op: 'metadata.patch',
+            pageId: page.pageId,
+            set: {},
+            unset: [`components.${instanceId}`],
+          },
+        ],
+        { metadata: snapshot.metadataRevision },
+      );
+    } catch (cause) {
+      setError(cause instanceof Error ? cause.message : String(cause));
+    } finally {
+      setPending(false);
+    }
+  };
   return (
     <article className="space-y-3 rounded-md border border-border p-3">
       <div className="space-y-1">
@@ -133,7 +154,7 @@ function RecipeCard({
       </div>
       {!supported && (
         <p className="text-xs text-amber-700 dark:text-amber-300">
-          此配方版本暂不支持更新，现有对象可继续编辑。
+          此布局版本暂不支持更新，现有对象可继续编辑。
         </p>
       )}
       {supported && (
@@ -177,7 +198,7 @@ function RecipeCard({
             </ul>
           </>
         ) : (
-          <p>尚无手动覆盖，可直接更新配方参数。</p>
+          <p>尚无手动调整，可更新布局参数。</p>
         )}
         {deleted.length > 0 && (
           <p>
@@ -188,7 +209,7 @@ function RecipeCard({
       </div>
       {stale && (
         <div className="space-y-2 rounded bg-amber-50 p-2 text-xs text-amber-900 dark:bg-amber-950 dark:text-amber-100">
-          <p>配方已从另一处更新。请载入最新参数后再调整。</p>
+          <p>布局参数已从另一处更新。请载入最新参数后再调整。</p>
           <Button
             type="button"
             variant="outline"
@@ -225,14 +246,24 @@ function RecipeCard({
               disabled={inactive || stale}
               onClick={() => void run(true)}
             >
-              重置手动排版
+              恢复布局设置
             </Button>
           </div>
           <p className="text-[11px] leading-relaxed text-muted-foreground">
-            重置会恢复配方设置的布局、裁切、字体和外观。原图与作者文字继续保留。
+            恢复布局设置会重新设置位置、裁切、字体和外观。原图与作者文字保留。
           </p>
         </>
       )}
+      <Button
+        type="button"
+        variant="ghost"
+        size="xs"
+        className="px-0 text-muted-foreground"
+        disabled={disabled || pending || !snapshot.writable}
+        onClick={() => void detach()}
+      >
+        解除布局关联，保留全部对象
+      </Button>
     </article>
   );
 }
@@ -322,19 +353,19 @@ function RecipePanelPage({ snapshot, page, onApply, disabled }: RecipePanelProps
         ? (['caption', 'annotation'] as const)
         : (['caption'] as const);
   return (
-    <section className="space-y-4 border-t border-border p-4" aria-label="科学图版配方">
-      <div>
-        <h3 className="eyebrow">图版配方 · {page.shortCode ?? page.pageId}</h3>
-        <p className="mt-2 text-xs leading-relaxed text-muted-foreground">
-          使用项目中的原始图片创建可独立编辑的图版。图注由你填写。
-        </p>
-      </div>
+    <details className="space-y-4 border-t border-border p-4" aria-label="布局起点">
+      <summary className="cursor-pointer text-xs font-medium">
+        布局起点 <span className="ml-2 text-[10px] font-normal text-muted-foreground">可选</span>
+      </summary>
+      <p className="text-xs leading-relaxed text-muted-foreground">
+        生成一组普通对象。之后可自由移动、改字、裁切或删除；只有点击“应用参数”才会重新排版。
+      </p>
       <form className="space-y-3" onSubmit={(event) => void create(event)}>
         <fieldset disabled={inactive} className="space-y-3">
           <label className="block space-y-1.5 text-xs text-muted-foreground">
-            <span>配方</span>
+            <span>初始布局</span>
             <select
-              aria-label="配方"
+              aria-label="初始布局"
               className="h-9 w-full rounded-md border border-input bg-background px-2 text-sm text-foreground"
               value={recipe}
               onChange={(event) => setRecipe(event.target.value as RecipeName)}
@@ -413,7 +444,7 @@ function RecipePanelPage({ snapshot, page, onApply, disabled }: RecipePanelProps
       )}
       {components.length > 0 && (
         <div className="space-y-3">
-          <h4 className="text-xs font-medium">本页已有图版</h4>
+          <h4 className="text-xs font-medium">已使用的布局起点</h4>
           {components.map(([instanceId, binding]) => (
             <RecipeCard
               key={instanceId}
@@ -427,7 +458,7 @@ function RecipePanelPage({ snapshot, page, onApply, disabled }: RecipePanelProps
           ))}
         </div>
       )}
-    </section>
+    </details>
   );
 }
 

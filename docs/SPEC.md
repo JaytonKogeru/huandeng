@@ -1,8 +1,13 @@
-# Huandeng Editor — OpenSlide × PPTD 实施规格
+# HUANDING Editor — OpenSlide × PPTD 实施规格
 
 **日期：2026-11-07（Australia/Sydney）**  
-**状态：工程路线已确定，可按本文开始实现。**  
-**交付范围：立项与实施 SPEC。文中新增模块、命令和行为是开发要求，不代表软件已经实现。**
+**状态：v0.1、v0.2 已实现；最终桌面包通过本轮验收。**
+
+**当前实施合同：[SPEC-V02.md](SPEC-V02.md)，优先于本文的旧阶段安排。**
+
+**当前产品名称：HUANDING Editor / HUANDING Frame / HUANDING Plugin。**
+
+v0.2 交付独立桌面窗口、项目文件树、单页版本浏览与恢复，以及外部 Agent 维护的意图面板。编辑器内不加入 AI 聊天框；布局起点是可选的生成辅助。沿用已有 Huandeng 路径及协议标识以保持兼容。实际验证结果见 IMPLEMENTATION-V02.md。
 
 ## 0. 立项决议
 
@@ -67,7 +72,7 @@ OpenSlide 已有编辑与源码写回；本项目新增 PPTD backend，把 PPTD 
 - 少量设计注记、科学来源保留，以及三个固定槽位 recipe。
 - 本地操作历史；独立、显式的 Git checkpoint。
 
-v0.2 再增加更完整的表格/图表、注册 React 科学组件与动画。首版不做任意 TSX 与 PPTD 双向转换、CRDT、全功能 PPTX 往返或两套前端同步开发。
+后续版本按实际需求增加更完整的表格/图表、注册 React 科学组件与动画。首版不做任意 TSX 与 PPTD 双向转换、CRDT、全功能 PPTX 往返或两套前端同步开发。
 
 ## 2. 权威文件与永久身份
 
@@ -518,7 +523,7 @@ OneDrive 保持日常文件同步职责；首版不把多机器同时打开同�
 - override 只阻止配方覆盖，不阻止用户继续直接编辑。
 - 若 recipe 废弃，既有普通对象仍可显示、编辑和导出。
 
-### 9.3 v0.2 的 React 科学组件
+### 9.3 后续的 React 科学组件
 
 注册组件有具体类型、props schema、数据引用和固定版本。画布编辑外框，专用面板编辑参数。优先用标准 image 对象保存静态回退，sidecar 记录组件绑定，使旧 PPTD 仍可显示。
 

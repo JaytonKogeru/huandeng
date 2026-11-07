@@ -29,6 +29,12 @@ import {
   serializeMetadata,
 } from './identity';
 import {
+  PageVersionArchive,
+  type PageVersionState,
+  pageVersionStateRevision,
+  VERSIONED_PAGE_METADATA,
+} from './page-history';
+import {
   acquireWriterLock,
   atomicWrite,
   canonicalProjectRoot,
@@ -53,10 +59,13 @@ import {
   type HistorySummary,
   type NewRevisions,
   type PageSnapshot,
+  type PageVersionSnapshot,
+  type PageVersionSummary,
   PptdError,
   type PptdOperation,
   type PptdPage,
   type ProjectMetadata,
+  type RestorePageVersionRequest,
   type Revision,
   type TransactionRequest,
   type TransactionResult,
@@ -252,6 +261,7 @@ export class PptdStore {
   private listeners = new Set<(event: DocumentEvent) => void>();
   private documents: Documents;
   private snapshot: DeckSnapshot;
+  private readonly pageVersions: PageVersionArchive;
 
   private constructor(
     readonly root: string,
@@ -265,6 +275,7 @@ export class PptdStore {
   ) {
     this.documents = documents;
     this.snapshot = this.makeSnapshot(documents);
+    this.pageVersions = new PageVersionArchive(stateDir, readOnly);
   }
 
   static async open(options: OpenPptdOptions): Promise<PptdStore> {
@@ -292,7 +303,7 @@ export class PptdStore {
       }
       const assetCache: AssetHashCache = new Map();
       const documents = await PptdStore.loadDocuments(root, entry, assetCache);
-      return new PptdStore(
+      const store = new PptdStore(
         root,
         entry,
         stateDir,
@@ -302,6 +313,16 @@ export class PptdStore {
         assetCache,
         documents,
       );
+      await store.pageVersions.initialize(
+        new Map(
+          [...documents.pages.keys()].map((pageId) => [
+            pageId,
+            store.pageVersionState(documents, pageId),
+          ]),
+        ),
+        await persistence.history(),
+      );
+      return store;
     } catch (error) {
       await release();
       throw error;
@@ -434,6 +455,30 @@ export class PptdStore {
     return this.pageSnapshot(this.documents, pageId);
   }
 
+  private pageVersionState(documents: Documents, pageId: string): PageVersionState {
+    const page = documents.pages.get(pageId);
+    if (!page) throw new PptdError('TARGET_NOT_FOUND', `Page ${pageId} is missing.`);
+    return {
+      source: page.source,
+      metadata: structuredClone(documents.metadata.slides[pageId]),
+      size: parseManifest(documents.manifestSource).value.size ?? [960, 540],
+    };
+  }
+
+  private async captureExternalVersions(documents: Documents): Promise<void> {
+    const changed = [...documents.pages.keys()].filter((pageId) => {
+      if (!this.documents.pages.has(pageId)) return true;
+      return (
+        pageVersionStateRevision(this.pageVersionState(this.documents, pageId)) !==
+        pageVersionStateRevision(this.pageVersionState(documents, pageId))
+      );
+    });
+    if (!changed.length) return;
+    const records = await this.persistence.history();
+    for (const pageId of changed)
+      await this.pageVersions.observe(pageId, this.pageVersionState(documents, pageId), records);
+  }
+
   subscribe(listener: (event: DocumentEvent) => void): () => void {
     this.listeners.add(listener);
     return () => {
@@ -511,6 +556,7 @@ export class PptdStore {
             'INVALID_DOCUMENT',
             next.diagnostics.map((item) => item.message).join('; '),
           );
+        await this.captureExternalVersions(next);
         this.replaceDocuments(next, 'external');
       } catch (error) {
         this.sequence++;
@@ -548,6 +594,72 @@ export class PptdStore {
         ({ files: _files, request: _request, requestHash: _hash, result: _result, ...summary }) =>
           summary,
       );
+  }
+
+  pageHistory(target: string): Promise<PageVersionSummary[]> {
+    return this.enqueue(async () => {
+      const { pageId } = resolvePageIdentity(this.documents.metadata, target);
+      return this.pageVersions
+        .versions(
+          pageId,
+          this.pageVersionState(this.documents, pageId),
+          await this.persistence.history(),
+        )
+        .map((version) => version.summary);
+    });
+  }
+
+  readPageVersion(target: string, versionId: string): Promise<PageVersionSnapshot> {
+    return this.enqueue(async () => {
+      const { pageId, identity } = resolvePageIdentity(this.documents.metadata, target);
+      const version = this.pageVersions.find(
+        pageId,
+        versionId,
+        this.pageVersionState(this.documents, pageId),
+        await this.persistence.history(),
+      );
+      const documents = structuredClone(this.documents);
+      documents.pages = new Map([
+        [
+          pageId,
+          {
+            path: identity.path,
+            source: version.state.source,
+            data: parsePage(version.state.source).value,
+          },
+        ],
+      ]);
+      documents.metadata.slides[pageId] = {
+        ...structuredClone(version.state.metadata),
+        path: identity.path,
+        shortCode: identity.shortCode,
+        state: identity.state,
+      };
+      await refreshAssetFingerprints(this.root, documents, this.assetCache);
+      return {
+        version: version.summary,
+        page: this.pageSnapshot(documents, pageId),
+        size: version.state.size,
+        assets: 'current-project',
+      };
+    });
+  }
+
+  restorePageVersion(request: RestorePageVersionRequest): Promise<TransactionResult> {
+    const { pageId } = resolvePageIdentity(this.documents.metadata, request.pageId);
+    return this.commit({
+      requestId: request.requestId,
+      deckId: this.documents.metadata.deckId,
+      actor: request.actor ?? 'huanding-editor',
+      ...(request.originClientId ? { originClientId: request.originClientId } : {}),
+      expected: {
+        pages: { [pageId]: request.expectedPageRevision },
+        ...(request.expectedMetadataRevision !== undefined
+          ? { metadata: request.expectedMetadataRevision }
+          : {}),
+      },
+      operations: [{ op: 'page.version.restore', pageId, versionId: request.versionId }],
+    });
   }
 
   undo(
@@ -629,6 +741,7 @@ export class PptdStore {
     const base = await PptdStore.loadDocuments(this.root, this.entry, this.assetCache);
     if (request.deckId !== base.metadata.deckId)
       throw new PptdError('TARGET_NOT_FOUND', 'The request belongs to another deck.');
+    await this.captureExternalVersions(base);
     return this.applyTransaction(base, request, requestHash);
   }
 
@@ -1011,6 +1124,42 @@ export class PptdStore {
           skippedOverrides.push(...plan.skippedOverrides);
           break;
         }
+        case 'page.version.restore': {
+          const { pageId, identity, page } = pageDocument(operation.pageId);
+          check('pages', pageId);
+          const version = this.pageVersions.find(
+            pageId,
+            operation.versionId,
+            this.pageVersionState(base, pageId),
+            await this.persistence.history(),
+          );
+          const metadataChanged = VERSIONED_PAGE_METADATA.some(
+            (key) => !isDeepStrictEqual(identity[key], version.state.metadata[key]),
+          );
+          if (metadataChanged) {
+            check('metadata');
+            for (const key of VERSIONED_PAGE_METADATA) {
+              if (Object.hasOwn(version.state.metadata, key))
+                (identity as Record<string, unknown>)[key] = structuredClone(
+                  version.state.metadata[key],
+                );
+              else delete identity[key];
+            }
+            touchedPages.add(pageId);
+          }
+          if (page.source !== version.state.source) {
+            for (const element of [
+              ...page.data.elements,
+              ...parsePage(version.state.source).value.elements,
+            ])
+              changedElements.set(`${pageId}/${element.elementId}`, {
+                pageId,
+                elementId: element.elementId,
+              });
+            writePage(pageId, version.state.source);
+          }
+          break;
+        }
         case 'history.revert': {
           const target = await this.persistence.historyRecord(operation.operationId);
           if (target.request.deckId !== request.deckId)
@@ -1141,7 +1290,7 @@ export class PptdStore {
       operationId,
       requestId: request.requestId,
       actor: request.actor,
-      timestamp: new Date().toISOString(),
+      timestamp: this.pageVersions.nextTimestamp(),
       summary: request.operations.map((operation) => operation.op).join(', '),
       changedPages: result.changedPages,
       changedElements: result.changedElements,

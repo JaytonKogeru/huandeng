@@ -2,6 +2,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { createServer } from 'vite';
 import { createViteConfig } from '../vite/config.ts';
+import { closePptdServer } from '../vite/routes/pptd.ts';
 
 export async function launchHuandeng(
   entry: string,
@@ -26,19 +27,50 @@ export async function launchHuandeng(
     open: options.browser === false ? false : '/huandeng',
   };
   const server = await createServer(config);
-  await server.listen();
+  try {
+    await server.listen();
+  } catch (error) {
+    await closePptdServer(server);
+    await server.close();
+    throw error;
+  }
   process.stderr.write(
-    'Huandeng Editor · 幻灯编辑器\n' +
+    'HUANDING Editor\n' +
       'http://127.0.0.1:' +
       (options.port ?? 4850) +
       '/huandeng\n' +
       entryPath +
       '\n',
   );
-  for (const signal of ['SIGINT', 'SIGTERM'] as const) {
-    process.once(signal, async () => {
-      await server.close();
-      process.exit(0);
+  let stopping = false;
+  const shutdown = async () => {
+    if (stopping) return;
+    stopping = true;
+    await closePptdServer(server);
+    await server.close();
+    process.exit(0);
+  };
+  for (const signal of ['SIGINT', 'SIGTERM'] as const)
+    process.once(signal, () => {
+      void shutdown();
+    });
+  if (process.send) {
+    process.send({
+      type: 'huanding:ready',
+      url: `http://127.0.0.1:${options.port ?? 4850}`,
+      entry: entryPath,
+    });
+    process.on('message', (message: unknown) => {
+      if (
+        message &&
+        typeof message === 'object' &&
+        'type' in message &&
+        message.type === 'huanding:shutdown'
+      )
+        void shutdown();
+    });
+    process.once('disconnect', () => {
+      void shutdown();
     });
   }
   return server;

@@ -6,7 +6,7 @@ import { type ApiPluginOptions, makeContext } from './routes/context.ts';
 import { registerEditRoutes } from './routes/edit.ts';
 import { registerFolderRoutes } from './routes/folders.ts';
 import { registerGfontsRoutes } from './routes/gfonts.ts';
-import { registerPptdRoutes } from './routes/pptd.ts';
+import { closePptdServer, registerPptdRoutes } from './routes/pptd.ts';
 import { registerRestartRoutes } from './routes/restart.ts';
 import { registerSlideRoutes } from './routes/slides.ts';
 import { registerSvglRoutes } from './routes/svgl.ts';
@@ -17,12 +17,14 @@ import { registerWatchers } from './routes/watchers.ts';
 // owned by a group, open the matching file under `routes/` — each file
 // leads with a comment-block manifest of its endpoints.
 export function apiPlugin(opts: ApiPluginOptions): Plugin {
+  let closePptd: (() => Promise<void>) | undefined;
   return {
     name: 'open-slide:api',
     apply: 'serve',
     async configureServer(server) {
       const ctx = makeContext(opts);
       await registerPptdRoutes(server, ctx);
+      closePptd = () => closePptdServer(server);
       // Legacy TSX mutations must not bypass the PPTD writer and revision checks.
       if (process.env.HUANDENG_DECK) return;
       registerWatchers(server, ctx);
@@ -36,6 +38,9 @@ export function apiPlugin(opts: ApiPluginOptions): Plugin {
       registerUpdateRoutes(server, ctx);
       registerRestartRoutes(server);
       registerAgentRoutes(server, ctx);
+    },
+    async closeServer() {
+      await closePptd?.();
     },
   };
 }

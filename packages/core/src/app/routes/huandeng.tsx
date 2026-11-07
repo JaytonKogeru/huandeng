@@ -6,13 +6,16 @@ import {
   Circle,
   Copy,
   Download,
+  FilePlus2,
+  Files,
   FileText,
+  FolderOpen,
   History,
-  Home,
   ImagePlus,
   Loader2,
   Maximize2,
   Minus,
+  PanelsTopLeft,
   Play,
   Plus,
   Redo2,
@@ -24,10 +27,12 @@ import {
   X,
 } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { DesignIntentPanel } from '@/components/pptd/design-intent-panel';
 import { alignedBounds, PptdEditorCanvas } from '@/components/pptd/editor-canvas';
 import { PptdInspector } from '@/components/pptd/inspector';
+import { PageHistoryDialog } from '@/components/pptd/page-history-dialog';
+import { PptdProjectTree } from '@/components/pptd/project-tree';
 import { RecipePanel } from '@/components/pptd/recipe-panel';
 import { PptdPageRenderer, type PptdTheme } from '@/components/pptd/renderer';
 import { PptdThumbnailRail } from '@/components/pptd/thumbnail-rail';
@@ -44,16 +49,16 @@ import {
 } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { desktopHost } from '@/lib/huanding-desktop';
 import type { Alignment } from '@/lib/inspector/geometry';
 import { isTypingTarget } from '@/lib/keys';
 import { draftHasChanges } from '@/lib/pptd-document';
 import { useDocumentTitle } from '@/lib/use-document-title';
 import { usePptdDocument } from '@/lib/use-pptd-document';
-import type { HistorySummary, PptdElement, PptdOperation } from '../../pptd/types';
+import type { PptdElement, PptdOperation } from '../../pptd/types';
 
 export function HuandengEditor() {
   const { client, backend, state } = usePptdDocument();
-  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [scale, setScale] = useState<number | undefined>();
@@ -63,8 +68,8 @@ export function HuandengEditor() {
   const [presenterNotesOpen, setPresenterNotesOpen] = useState(false);
   const [imageDialog, setImageDialog] = useState(false);
   const [imagePath, setImagePath] = useState('');
-  const [historyOpen, setHistoryOpen] = useState(false);
-  const [history, setHistory] = useState<HistorySummary[]>([]);
+  const [historyPageId, setHistoryPageId] = useState<string | null>(null);
+  const [leftTab, setLeftTab] = useState<'pages' | 'files'>('pages');
   const [exporting, setExporting] = useState(false);
   const [exportReport, setExportReport] = useState<string | null>(null);
   const [uiError, setUiError] = useState<string | null>(null);
@@ -89,8 +94,9 @@ export function HuandengEditor() {
   const readonly = !snapshot?.writable;
   const busy = state.saving || exporting;
   const nextPage = pageIndex >= 0 ? snapshot?.pages[pageIndex + 1] : undefined;
+  const historyPage = snapshot?.pages.find((item) => item.pageId === historyPageId);
 
-  useDocumentTitle(snapshot ? `${snapshot.title} · 幻灯编辑器` : 'Huandeng Editor · 幻灯编辑器');
+  useDocumentTitle(snapshot ? `${snapshot.title} · HUANDING Editor` : 'HUANDING Editor');
 
   const run = useCallback(async (task: () => Promise<unknown>) => {
     setUiError(null);
@@ -224,6 +230,17 @@ export function HuandengEditor() {
         void run(() => client.flushAll());
         return;
       }
+      if ((event.target as Element)?.closest('[role="dialog"], [role="menu"]')) return;
+      if (event.key === 'F5' && page) {
+        event.preventDefault();
+        void run(async () => {
+          await client.flushAll();
+          if (!event.shiftKey && snapshot?.pages[0]) selectPage(snapshot.pages[0].pageId);
+          setPresenterNotesOpen(false);
+          setPresenting(true);
+        });
+        return;
+      }
       if (isTypingTarget(event.target)) return;
       if (event.key === 'Escape') {
         setPresenting(false);
@@ -243,6 +260,46 @@ export function HuandengEditor() {
         return;
       }
       if (readonly || busy) return;
+      const railPageId = (event.target as Element)
+        ?.closest('[data-hd-thumbnail]')
+        ?.getAttribute('data-hd-thumbnail');
+      if (control && event.key.toLowerCase() === 'm') {
+        event.preventDefault();
+        void apply([{ op: 'page.add', afterPageId: selectedPageId }]);
+        return;
+      }
+      if (control && event.key.toLowerCase() === 'd') {
+        event.preventDefault();
+        if (railPageId || !selectedElements.length) {
+          const pageId = railPageId ?? selectedPageId;
+          if (pageId) void apply([{ op: 'page.duplicate', pageId }]);
+        } else if (page) {
+          const copies = selectedElements.map((element) => {
+            const copy = structuredClone(element);
+            copy.elementId = `node-${crypto.randomUUID()}`;
+            if (copy.bounds)
+              copy.bounds = [
+                copy.bounds[0] + 16,
+                copy.bounds[1] + 16,
+                copy.bounds[2],
+                copy.bounds[3],
+              ];
+            return copy;
+          });
+          void run(async () => {
+            await client.apply(
+              copies.map((element) => ({ op: 'element.add', pageId: page.pageId, element })),
+            );
+            setSelectedIds(copies.map((element) => element.elementId));
+          });
+        }
+        return;
+      }
+      if (railPageId && (event.key === 'Delete' || event.key === 'Backspace')) {
+        event.preventDefault();
+        void apply([{ op: 'page.remove', pageId: railPageId }]);
+        return;
+      }
       if (control && (event.key.toLowerCase() === 'z' || event.key.toLowerCase() === 'y')) {
         event.preventDefault();
         void run(() =>
@@ -290,7 +347,21 @@ export function HuandengEditor() {
     };
     window.addEventListener('keydown', keydown);
     return () => window.removeEventListener('keydown', keydown);
-  }, [busy, client, page, presenting, readonly, removeElements, run, selectedElements, stepPage]);
+  }, [
+    apply,
+    busy,
+    client,
+    page,
+    presenting,
+    readonly,
+    removeElements,
+    run,
+    selectedElements,
+    selectedPageId,
+    selectPage,
+    snapshot,
+    stepPage,
+  ]);
 
   const exportDeck = (format: 'pptx' | 'pdf') =>
     void run(async () => {
@@ -333,11 +404,11 @@ export function HuandengEditor() {
         <div className="w-full max-w-xl rounded-lg border bg-background p-9 shadow-floating">
           <div className="mb-7 flex items-center gap-3">
             <span className="grid size-10 place-items-center rounded-md bg-brand font-serif text-2xl text-white">
-              幻
+              H
             </span>
             <div>
-              <h1 className="text-lg font-semibold">Huandeng Editor</h1>
-              <p className="text-xs text-muted-foreground">幻灯编辑器 · PPTD</p>
+              <h1 className="text-lg font-semibold">HUANDING Editor</h1>
+              <p className="text-xs text-muted-foreground">独立页面 · 自由编辑 · 持续演进</p>
             </div>
           </div>
           {state.loading ? (
@@ -349,11 +420,15 @@ export function HuandengEditor() {
             <>
               <h2 className="mb-3 text-xl font-medium">打开一个 PPTD 项目</h2>
               <p className="mb-5 text-sm leading-relaxed text-muted-foreground">
-                从本地终端启动编辑器，页面会连接同一个项目。已有的 OpenSlide 演示仍可从首页打开。
+                {desktopHost()
+                  ? '选择项目中的 .pptd 文件，或者新建一个空白项目。'
+                  : '这是浏览器开发预览。日常使用请启动桌面版 HUANDING Editor，或从终端连接已有项目。'}
               </p>
-              <pre className="overflow-x-auto rounded-md border bg-muted/50 p-4 text-xs">
-                huandeng open /完整路径/deck.pptd
-              </pre>
+              {!desktopHost() && (
+                <pre className="overflow-x-auto rounded-md border bg-muted/50 p-4 text-xs">
+                  huanding open /完整路径/deck.pptd
+                </pre>
+              )}
               {state.error && (
                 <p className="mt-4 text-xs text-muted-foreground">{state.error.message}</p>
               )}
@@ -362,9 +437,24 @@ export function HuandengEditor() {
                   <RefreshCw />
                   重新连接
                 </Button>
-                <Button variant="outline" onClick={() => navigate('/')}>
-                  OpenSlide 首页
-                </Button>
+                {desktopHost() && (
+                  <>
+                    <Button
+                      variant="outline"
+                      onClick={() => void run(async () => desktopHost()?.openProject())}
+                    >
+                      <FolderOpen />
+                      打开项目
+                    </Button>
+                    <Button
+                      variant="outline"
+                      onClick={() => void run(async () => desktopHost()?.newProject())}
+                    >
+                      <FilePlus2 />
+                      新建项目
+                    </Button>
+                  </>
+                )}
               </div>
             </>
           )}
@@ -392,21 +482,42 @@ export function HuandengEditor() {
         <Button
           variant="ghost"
           size="icon-sm"
-          aria-label="回到首页"
+          aria-label={desktopHost() ? '打开项目' : '显示项目文件'}
+          title={desktopHost() ? '打开项目 Ctrl+O' : '显示项目文件'}
           onClick={() =>
             void run(async () => {
               await client.flushAll();
-              navigate('/');
+              if (desktopHost()) await desktopHost()?.openProject();
+              else setLeftTab('files');
             })
           }
         >
-          <Home />
+          <FolderOpen />
         </Button>
+        {desktopHost() && (
+          <Button
+            variant="ghost"
+            size="icon-sm"
+            aria-label="新建项目"
+            title="新建项目 Ctrl+N"
+            onClick={() =>
+              void run(async () => {
+                await client.flushAll();
+                await desktopHost()?.newProject();
+              })
+            }
+          >
+            <FilePlus2 />
+          </Button>
+        )}
         <div className="flex shrink-0 items-center gap-2">
           <span className="grid size-7 place-items-center rounded bg-brand font-serif text-lg text-white">
-            幻
+            H
           </span>
-          <span className="hidden text-sm font-semibold xl:block">Huandeng Editor</span>
+          <span className="text-xs font-semibold tracking-wide">
+            HUANDING{' '}
+            <span className="hidden font-normal text-muted-foreground xl:inline">Editor</span>
+          </span>
         </div>
         <span className="h-5 w-px bg-border" />
         <div className="min-w-0 flex-1">
@@ -427,7 +538,7 @@ export function HuandengEditor() {
             )}
             {status}
             <span className="mx-1">·</span>
-            <span>{state.connected ? '本地服务已连接' : '正在重连'}</span>
+            <span>{state.connected ? 'Agent 接口已连接' : '正在重连'}</span>
           </div>
         </div>
         <div className="flex items-center gap-1">
@@ -454,15 +565,10 @@ export function HuandengEditor() {
           <Button
             variant="ghost"
             size="icon-sm"
-            aria-label="操作历史"
-            disabled={busy}
-            onClick={() =>
-              void run(async () => {
-                const entries = await backend.history();
-                setHistory(entries);
-                setHistoryOpen(true);
-              })
-            }
+            aria-label="当前页历史版本"
+            title="当前页历史版本"
+            disabled={!page}
+            onClick={() => setHistoryPageId(selectedPageId)}
           >
             <History />
           </Button>
@@ -536,39 +642,80 @@ export function HuandengEditor() {
         </div>
       )}
       <div className="flex min-h-0 flex-1">
-        <PptdThumbnailRail
-          pages={snapshot.pages}
-          size={snapshot.size}
-          theme={theme}
-          currentPageId={selectedPageId}
-          disabled={readonly || busy}
-          tombstones={Object.entries(snapshot.metadata.slides).filter(
-            ([, item]) => item.state === 'tombstone',
+        <aside
+          className="flex w-56 shrink-0 flex-col border-r border-border bg-sidebar"
+          aria-label="项目导航"
+        >
+          <div className="flex h-10 shrink-0 items-center gap-1 border-b border-border px-2">
+            <Button
+              variant={leftTab === 'pages' ? 'secondary' : 'ghost'}
+              size="xs"
+              className="flex-1"
+              aria-label="页面缩略图"
+              aria-pressed={leftTab === 'pages'}
+              onClick={() => setLeftTab('pages')}
+            >
+              <PanelsTopLeft />
+              页面
+            </Button>
+            <Button
+              variant={leftTab === 'files' ? 'secondary' : 'ghost'}
+              size="xs"
+              className="flex-1"
+              aria-label="项目文件树"
+              aria-pressed={leftTab === 'files'}
+              onClick={() => setLeftTab('files')}
+            >
+              <Files />
+              文件
+            </Button>
+          </div>
+          {leftTab === 'files' ? (
+            <PptdProjectTree
+              backend={backend}
+              snapshot={snapshot}
+              currentPageId={selectedPageId}
+              onSelectPage={selectPage}
+            />
+          ) : (
+            <PptdThumbnailRail
+              pages={snapshot.pages}
+              size={snapshot.size}
+              theme={theme}
+              currentPageId={selectedPageId}
+              disabled={readonly || busy}
+              tombstones={Object.entries(snapshot.metadata.slides).filter(
+                ([, item]) => item.state === 'tombstone',
+              )}
+              onSelect={selectPage}
+              onAdd={() =>
+                void apply([
+                  {
+                    op: 'page.add',
+                    afterPageId: selectedPageId,
+                    page: { pageType: 'content', elements: [], notes: '' },
+                  },
+                ])
+              }
+              onDuplicate={(pageId) => void apply([{ op: 'page.duplicate', pageId }])}
+              onRemove={(pageId) => void apply([{ op: 'page.remove', pageId }])}
+              onHistory={setHistoryPageId}
+              onShowFile={(pageId) => {
+                selectPage(pageId);
+                setLeftTab('files');
+              }}
+              onMove={(pageId, afterPageId) =>
+                void apply([{ op: 'page.move', pageId, afterPageId }])
+              }
+              onRestore={(pageId) =>
+                void run(async () => {
+                  await client.apply([{ op: 'page.restore', pageId, afterPageId: selectedPageId }]);
+                  selectPage(pageId);
+                })
+              }
+            />
           )}
-          onSelect={selectPage}
-          onAdd={() =>
-            void apply([
-              {
-                op: 'page.add',
-                afterPageId: selectedPageId,
-                page: { pageType: 'content', elements: [], notes: '' },
-              },
-            ])
-          }
-          onDuplicate={() => {
-            if (selectedPageId) void apply([{ op: 'page.duplicate', pageId: selectedPageId }]);
-          }}
-          onRemove={() => {
-            if (selectedPageId) void apply([{ op: 'page.remove', pageId: selectedPageId }]);
-          }}
-          onMove={(pageId, afterPageId) => void apply([{ op: 'page.move', pageId, afterPageId }])}
-          onRestore={(pageId) =>
-            void run(async () => {
-              await client.apply([{ op: 'page.restore', pageId, afterPageId: selectedPageId }]);
-              selectPage(pageId);
-            })
-          }
-        />
+        </aside>
         <main className="flex min-w-0 flex-1 flex-col">
           <div className="flex h-11 shrink-0 items-center gap-1 border-b border-border bg-background px-3">
             <Button
@@ -613,9 +760,10 @@ export function HuandengEditor() {
             </Button>
             <span
               className="ml-auto truncate font-mono text-[10px] text-muted-foreground"
-              title={page?.pageId}
+              title={page ? `${page.path} · ${page.pageId}` : undefined}
             >
               {page?.shortCode ?? ''} {page && `· ${pageIndex + 1} / ${snapshot.pages.length}`}
+              {page && <span className="ml-3 hidden xl:inline">{page.path}</span>}
             </span>
           </div>
           {conflict && (
@@ -802,33 +950,33 @@ export function HuandengEditor() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
-      <Dialog open={historyOpen} onOpenChange={setHistoryOpen}>
-        <DialogContent className="sm:max-w-xl">
-          <DialogHeader>
-            <DialogTitle>操作历史</DialogTitle>
-            <DialogDescription>
-              每次拖动、输入提交或 Agent 批次都是一个独立操作。撤销仍需通过版本检查。
-            </DialogDescription>
-          </DialogHeader>
-          <div className="max-h-80 space-y-3 overflow-y-auto">
-            {history.length ? (
-              [...history]
-                .reverse()
-                .slice(0, 40)
-                .map((entry) => (
-                  <div key={entry.operationId} className="border-b pb-3">
-                    <p className="text-sm">{entry.summary}</p>
-                    <p className="mt-1 break-all font-mono text-[10px] text-muted-foreground">
-                      {entry.actor} · {new Date(entry.timestamp).toLocaleString()}
-                    </p>
-                  </div>
-                ))
-            ) : (
-              <p className="text-sm text-muted-foreground">尚无操作记录。</p>
-            )}
-          </div>
-        </DialogContent>
-      </Dialog>
+      {historyPage && (
+        <PageHistoryDialog
+          key={historyPage.pageId}
+          page={historyPage}
+          backend={backend}
+          theme={theme}
+          disabled={readonly || busy}
+          open={Boolean(historyPageId)}
+          onOpenChange={(open) => {
+            if (!open) setHistoryPageId(null);
+          }}
+          onRestore={async (versionId) => {
+            await client.flushAll();
+            const current = client.getState().snapshot;
+            const currentPage = current?.pages.find((item) => item.pageId === historyPage.pageId);
+            if (!current || !currentPage) throw new Error('页面状态已改变，请重新打开历史版本。');
+            await client.apply(
+              [{ op: 'page.version.restore', pageId: currentPage.pageId, versionId }],
+              {
+                pages: { [currentPage.pageId]: currentPage.pageRevision },
+                metadata: current.metadataRevision,
+              },
+            );
+            selectPage(currentPage.pageId);
+          }}
+        />
+      )}
       {presenting && page && (
         <div className="fixed inset-0 z-50 flex flex-col bg-black" data-hd-presenter>
           <div className="flex min-h-0 flex-1">
