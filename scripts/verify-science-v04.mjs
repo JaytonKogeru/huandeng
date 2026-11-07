@@ -106,15 +106,30 @@ async function insert(label) {
   await page.getByRole('menuitem', { name: label, exact: true }).click();
 }
 
-async function ready() {
+async function ready(expectedSelector) {
   const canvas = page.locator('[data-hd-editor-canvas]');
-  await eventually(async () => (await canvas.locator('[data-hd-loading]').count()) === 0);
-  assert.equal(
-    await canvas.locator('[data-hd-unsupported="true"]').count(),
-    0,
-    await canvas.locator('[data-hd-unsupported="true"]').allTextContents(),
-  );
-  assert.equal(await canvas.locator('[data-hd-formula-error]').count(), 0);
+  // Require the canvas and expected content as well as an idle async renderer.
+  // A missing DOM during navigation is not a successfully rendered empty page.
+  const state = await eventually(async () => {
+    if ((await canvas.count()) !== 1) return false;
+    return canvas.evaluate((element, selector) => {
+      const unsupported = Array.from(element.querySelectorAll('[data-hd-unsupported="true"]')).map(
+        (node) => node.textContent,
+      );
+      const formulaErrors = element.querySelectorAll('[data-hd-formula-error]').length;
+      if (unsupported.length || formulaErrors) return { unsupported, formulaErrors };
+      if (element.querySelector('[data-hd-loading]')) return false;
+      if (selector) {
+        const expected = element.querySelector(selector);
+        if (!expected) return false;
+        const bounds = expected.getBoundingClientRect();
+        if (!bounds.width || !bounds.height) return false;
+      }
+      return { unsupported, formulaErrors };
+    }, expectedSelector ?? null);
+  });
+  assert.equal(state.unsupported.length, 0, state.unsupported.join('\n'));
+  assert.equal(state.formulaErrors, 0);
   return canvas;
 }
 
@@ -168,10 +183,15 @@ try {
   for (const [type, label] of Object.entries(chartLabels)) {
     await check(`insert and render ${type}`, async () => {
       await newPage(type);
+      const documentEpoch = await page.evaluate(() => performance.timeOrigin);
       await insert(label);
       const canvas = page.locator('[data-hd-editor-canvas]');
-      await canvas.locator('[data-hd-chart] svg').waitFor();
-      await ready();
+      await ready('[data-hd-chart] svg');
+      assert.equal(
+        await page.evaluate(() => performance.timeOrigin),
+        documentEpoch,
+        `Inserting ${type} must not reload the editor while loading its chart engine.`,
+      );
       await canvas
         .locator('[data-pptd-page]')
         .screenshot({ path: path.join(evidence, `${type}.png`) });
@@ -187,8 +207,7 @@ try {
       async () => (await api(`/pages/${pages.bar}`)).data.elements[0].data.rows[1][1] === 7,
     );
     await page.reload({ waitUntil: 'networkidle' });
-    await page.locator('[data-hd-editor-canvas] [data-hd-chart] svg').waitFor();
-    await ready();
+    await ready('[data-hd-chart] svg');
   });
 
   await check(
@@ -204,8 +223,13 @@ try {
       await page.locator('[data-hd-editor-canvas] [data-hd-chart]').click();
       assert.equal(await page.getByLabel('Chart data', { exact: true }).inputValue(), draft);
       await page.locator(`[data-hd-thumbnail="${pages.line}"]`).click();
+      await page.locator(`[data-hd-editor-canvas] [data-pptd-page="${pages.line}"]`).waitFor();
       await page.locator(`[data-hd-thumbnail="${pages.bar}"]`).click();
-      await page.locator('[data-hd-editor-canvas] [data-hd-chart]').click();
+      await page
+        .locator(
+          `[data-hd-editor-canvas] [data-pptd-page="${pages.bar}"] [data-hd-element-id="${original.elementId}"] [data-hd-chart]`,
+        )
+        .click();
       assert.equal(await page.getByLabel('Chart data', { exact: true }).inputValue(), draft);
       assert.deepEqual((await api(`/pages/${pages.bar}`)).data.elements[0].data, original.data);
       const pending = 'Condition\tValue\nA\t31\nB\t7\nC\t5';
@@ -311,14 +335,28 @@ try {
 
   await check('search and replace a bundled scientific icon', async () => {
     const id = await newPage('icon');
+    const documentEpoch = await page.evaluate(() => performance.timeOrigin);
     await insert('图标');
-    await page.locator('[data-hd-editor-canvas] [data-hd-icon] svg').waitFor();
-    await page.getByLabel('搜索图标', { exact: true }).fill('flask');
-    await page.getByRole('button', { name: '选择图标 fas:flask', exact: true }).click();
-    await eventually(
-      async () => (await api(`/pages/${id}`)).data.elements[0].iconName === 'fas:flask',
-    );
-    await ready();
+    await ready('[data-hd-icon] svg');
+    for (const [prefix, name] of [
+      ['far', 'circle-check'],
+      ['fab', 'github'],
+      ['fas', 'flask'],
+    ]) {
+      await page.getByLabel('图标集', { exact: true }).selectOption({ value: prefix });
+      await page.getByLabel('搜索图标', { exact: true }).fill(name);
+      await page.getByRole('button', { name: `选择图标 ${prefix}:${name}`, exact: true }).click();
+      await eventually(
+        async () => (await api(`/pages/${id}`)).data.elements[0].iconName === `${prefix}:${name}`,
+      );
+      await editorAcknowledged();
+      await ready(`[data-hd-icon="${prefix}:${name}"] svg`);
+      assert.equal(
+        await page.evaluate(() => performance.timeOrigin),
+        documentEpoch,
+        `Loading the ${prefix} icon library must not reload the editor.`,
+      );
+    }
   });
 
   await check('group move, duplicate references, ungroup and undo', async () => {

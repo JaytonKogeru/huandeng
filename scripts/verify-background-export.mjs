@@ -40,6 +40,13 @@ const source = {
       iconName: 'fas:flask',
       fill: '$accent1',
     },
+    {
+      elementId: 'overlapping-native-shape',
+      elementType: 'shape',
+      shapeName: 'rect',
+      bounds: [340, 180, 30, 30],
+      fill: { type: 'solid', color: '#000000' },
+    },
   ],
 };
 const svg = (color) =>
@@ -183,6 +190,7 @@ try {
     const xml = strFromU8(files[`ppt/slides/slide${index + 1}.xml`]);
     const rels = strFromU8(files[`ppt/slides/_rels/slide${index + 1}.xml.rels`]);
     assert.match(xml, /<a:t>Caption stays editable above the SVG background<\/a:t>/);
+    assert.match(xml, /name="overlapping-native-shape"/);
     const backgroundReport = exported.report.elements.find(
       (item) =>
         item.elementId === '$background' &&
@@ -210,7 +218,9 @@ try {
         context.drawImage(image, 0, 0);
         const rgba = context.getImageData(0, 0, canvas.width, canvas.height).data;
         const colors = new Map();
+        let transparentPixels = 0;
         for (let offset = 0; offset < rgba.length; offset += 4) {
+          if (rgba[offset + 3] === 0) transparentPixels++;
           if (rgba[offset + 3] < 250) continue;
           const color = `${rgba[offset]},${rgba[offset + 1]},${rgba[offset + 2]}`;
           colors.set(color, (colors.get(color) ?? 0) + 1);
@@ -218,6 +228,7 @@ try {
         return {
           width: canvas.width,
           height: canvas.height,
+          transparentPixels,
           colors: [...colors].sort((a, b) => b[1] - a[1]).slice(0, 5),
         };
       }, Buffer.from(bytes).toString('base64'));
@@ -234,6 +245,20 @@ try {
           pixels.colors.length,
           1,
           'Background capture must contain no foreground objects.',
+        );
+        assert.equal(pixels.transparentPixels, 0);
+      } else {
+        assert.ok(
+          pixels.transparentPixels > 100,
+          'Object fallback must retain transparent pixels.',
+        );
+        assert.ok(
+          pixels.colors.every(([color]) => color !== expected.background.join(',')),
+          'Object fallback must not contain the page background.',
+        );
+        assert.ok(
+          pixels.colors.every(([color]) => color !== '0,0,0'),
+          'Object fallback must not repeat an overlapping native shape.',
         );
       }
       measurements.push({

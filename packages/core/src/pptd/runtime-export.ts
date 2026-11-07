@@ -320,19 +320,55 @@ export class ExportManager {
             }
             const [box, frameBox] = await Promise.all([node.boundingBox(), frame.boundingBox()]);
             if (!box || !frameBox) throw new Error('The rendered object has no measurable bounds.');
-            const bytes = await node.screenshot({ type: 'png', omitBackground: true });
-            const dimensions = imageDimensions(bytes, 'png');
-            if (!dimensions) throw new Error('The browser returned an invalid PNG.');
-            return {
-              bytes,
-              ...dimensions,
-              bounds: [box.x - frameBox.x, box.y - frameBox.y, box.width, box.height] as [
-                number,
-                number,
-                number,
-                number,
-              ],
-            };
+            const originalStyles = await node.evaluate((target) => {
+              const frame = target.closest<HTMLElement>('[data-hd-export-page]');
+              if (!frame) throw new Error('The object has no export page.');
+              const foreground = Array.from(
+                frame.querySelectorAll<HTMLElement>('[data-hd-element-id]'),
+              );
+              const changed = [document.documentElement, document.body, frame, ...foreground];
+              const originals = changed.map((element) => element.getAttribute('style'));
+              document.documentElement.style.setProperty('background', 'transparent', 'important');
+              document.body.style.setProperty('background', 'transparent', 'important');
+              frame.style.setProperty('visibility', 'hidden', 'important');
+              for (const element of foreground) {
+                if (element === target)
+                  element.style.setProperty('visibility', 'visible', 'important');
+                else element.style.setProperty('display', 'none', 'important');
+              }
+              return originals;
+            });
+            try {
+              const bytes = await node.screenshot({ type: 'png', omitBackground: true });
+              const dimensions = imageDimensions(bytes, 'png');
+              if (!dimensions) throw new Error('The browser returned an invalid PNG.');
+              return {
+                bytes,
+                ...dimensions,
+                bounds: [box.x - frameBox.x, box.y - frameBox.y, box.width, box.height] as [
+                  number,
+                  number,
+                  number,
+                  number,
+                ],
+              };
+            } finally {
+              await node.evaluate((target, originals) => {
+                const frame = target.closest<HTMLElement>('[data-hd-export-page]');
+                if (!frame) throw new Error('The object lost its export page.');
+                const changed = [
+                  document.documentElement,
+                  document.body,
+                  frame,
+                  ...frame.querySelectorAll<HTMLElement>('[data-hd-element-id]'),
+                ];
+                changed.forEach((element, index) => {
+                  const original = originals[index];
+                  if (original === null || original === undefined) element.removeAttribute('style');
+                  else element.setAttribute('style', original);
+                });
+              }, originalStyles);
+            }
           },
         });
         job.bytes = exported.bytes;

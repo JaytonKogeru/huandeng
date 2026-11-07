@@ -390,7 +390,7 @@ try {
     screenshots,
   };
   await fs.writeFile(
-    path.join(evidence, 'desktop-v03.json'),
+    path.join(evidence, 'desktop-v04.json'),
     `${JSON.stringify(report, null, 2)}\n`,
   );
   process.stdout.write(`${JSON.stringify(report, null, 2)}\n`);
@@ -405,7 +405,7 @@ try {
     processLog: processLog.join('').slice(-12000),
   };
   await fs.writeFile(
-    path.join(evidence, 'desktop-v03.json'),
+    path.join(evidence, 'desktop-v04.json'),
     `${JSON.stringify(report, null, 2)}\n`,
   );
   await page?.screenshot({ path: path.join(evidence, 'desktop-v03-failure.png') }).catch(() => {});
@@ -414,5 +414,5 @@ try {
 } finally {
   await mcp?.close().catch(() => {});
   await application?.close().catch(() => {});
-  await fs.writeFile(path.join(evidence, 'desktop-v03-process.log'), processLog.join(''));
+  await fs.writeFile(path.join(evidence, 'desktop-v04-process.log'), processLog.join(''));
 }

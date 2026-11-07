@@ -127,6 +127,16 @@ export async function createViteConfig(opts: CreateViteConfigOptions): Promise<I
         'tailwind-merge',
         'class-variance-authority',
         'emoji-picker-react',
+        // Scientific objects load these modules on demand. Pre-bundle their actual
+        // import specifiers so the first insertion cannot trigger a full-page reload
+        // that discards selection and unapplied in-memory drafts.
+        'echarts/charts',
+        'echarts/components',
+        'echarts/core',
+        'echarts/renderers',
+        '@fortawesome/free-solid-svg-icons',
+        '@fortawesome/free-regular-svg-icons',
+        '@fortawesome/free-brands-svg-icons',
       ],
       // The app source ships inside node_modules/@open-slide/core/src/app, so
       // Vite's dep scanner traverses it as if it were a third-party dep and
