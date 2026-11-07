@@ -10,7 +10,7 @@ v0.4 implements one Main Slides library per project, flat Sections, multiple Pre
 
 Scientific editing includes KaTeX / MathML, merged tables, ECharts data and 13 chart families, Font Awesome Free, shape presets, nested groups, and content-addressed image import. Supported PPTX objects use native tables, OMML, six chart families with embedded workbooks, and native groups; unsupported native representations use reported object-level images. See `docs/SCIENTIFIC-OBJECTS.md`, `docs/POWERPOINT-COMPARISON.md`, and `docs/PROJECTS.md` for exact contracts and limits.
 
-Release status and actual acceptance evidence belong in `docs/RELEASE-V04.md` and `docs/HANDOFF-V04.md`. Do not infer a finished installation from source code or an RPC receipt. Native synthetic PowerPoint evidence is tracked in `docs/evidence/native-v04`; real research output stays in ignored verification directories.
+v0.4.0 is installed on THUG from clean runtime commit `c2fede5`, with the formal executable and shortcuts verified. The release milestone is `editor-v0.4.0`. Exact acceptance and source provenance are in `docs/RELEASE-V04.md` and `docs/HANDOFF-V04.md`. Native synthetic PowerPoint evidence is tracked in `docs/evidence/native-v04`; real research output stays in ignored verification directories. Do not infer installation or visual fidelity from source code or an RPC receipt alone.
 
 ## Project truths
 

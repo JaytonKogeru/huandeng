@@ -75,9 +75,9 @@ SVG 导入限静态、自包含图形：可以引用文件内的渐变、裁切�
 node scripts/verify-science-v04.mjs
 ```
 
-脚本新建独立临时工程，通过 GUI 插入 13 类图表、修改数据并重开、保留跨对象及跨页的无效 TSV 草稿、检测外部数据修改与草稿的冲突、编辑/合并/插入/拆分表格、LaTeX 和 MathML、图标替换、组合移动/复制/取消组合/撤销；然后生成 PNG、PDF、PPTX，检查包内表格、chart 和 OMML，核对所有源页哈希未变。组合操作后的下一次快捷键等待“撤销”按钮恢复可用，确认编辑器已处理保存结果，不能把磁盘先写成功误当成客户端已完成。
+脚本新建独立临时工程，完整运行含 22 项检查：通过 GUI 插入 13 类图表、修改数据并重开、保留跨对象及跨页的无效 TSV 草稿、检测外部数据修改与草稿的冲突、编辑/合并/插入/拆分表格、LaTeX 和 MathML、三套图标集替换、组合移动/复制/取消组合/撤销，以及图片文件选择/拖放/粘贴、素材去重和重开。随后生成 PNG、PDF、PPTX，检查包内表格、chart 和 OMML，核对所有源页哈希未变。图表与图标首次使用检查页面没有额外重载；组快捷键前确认选择、焦点、保存和控件可用状态，不能把磁盘先写成功误当成客户端已完成。
 
-证据写到 `.verification/science-v04/`，包括各图表截图、导出文件、导出报告和 `result.json`。只有 `passed: true` 的完整运行才能作为通过记录。`HUANDENG_SCIENCE_NO_EXPORT=1` 只用于单独诊断 UI，不能替代完整导出验收；`HUANDENG_BROWSER` 可以指定实际 Chromium/Edge。
+证据写到 `.verification/science-v04/`，包括各图表截图、`image-import.json`、`imported-image.png`、导出文件、导出报告和 `result.json`。只有 `passed: true` 的完整运行才能作为通过记录。`HUANDENG_SCIENCE_NO_EXPORT=1` 只用于单独诊断 UI，不能替代完整导出验收；`HUANDENG_BROWSER` 可以指定实际 Chromium/Edge。
 
 ## 采用的组件和依据
 

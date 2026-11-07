@@ -1,0 +1,121 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "insert and render bar",
+      "passed": true,
+      "milliseconds": 9181
+    },
+    {
+      "name": "insert and render line",
+      "passed": true,
+      "milliseconds": 2647
+    },
+    {
+      "name": "insert and render area",
+      "passed": true,
+      "milliseconds": 2466
+    },
+    {
+      "name": "insert and render pie",
+      "passed": true,
+      "milliseconds": 2406
+    },
+    {
+      "name": "insert and render scatter",
+      "passed": true,
+      "milliseconds": 2599
+    },
+    {
+      "name": "insert and render bubble",
+      "passed": true,
+      "milliseconds": 2625
+    },
+    {
+      "name": "insert and render radar",
+      "passed": true,
+      "milliseconds": 2734
+    },
+    {
+      "name": "insert and render heatmap",
+      "passed": true,
+      "milliseconds": 2728
+    },
+    {
+      "name": "insert and render candlestick",
+      "passed": true,
+      "milliseconds": 2880
+    },
+    {
+      "name": "insert and render waterfall",
+      "passed": true,
+      "milliseconds": 2894
+    },
+    {
+      "name": "insert and render treemap",
+      "passed": true,
+      "milliseconds": 3055
+    },
+    {
+      "name": "insert and render sunburst",
+      "passed": true,
+      "milliseconds": 3019
+    },
+    {
+      "name": "insert and render sankey",
+      "passed": true,
+      "milliseconds": 3397
+    },
+    {
+      "name": "edit chart data and preserve source through reload",
+      "passed": true,
+      "milliseconds": 4648
+    },
+    {
+      "name": "pending chart drafts survive selection and detect concurrent data changes",
+      "passed": true,
+      "milliseconds": 2835
+    },
+    {
+      "name": "table cells, merged rectangle, row insertion and split",
+      "passed": true,
+      "milliseconds": 6673
+    },
+    {
+      "name": "LaTeX fractions, summation and editable source",
+      "passed": true,
+      "milliseconds": 5119
+    },
+    {
+      "name": "MathML source renders as mathematics",
+      "passed": true,
+      "milliseconds": 6694
+    },
+    {
+      "name": "search and replace a bundled scientific icon",
+      "passed": true,
+      "milliseconds": 7069
+    },
+    {
+      "name": "group move, duplicate references, ungroup and undo",
+      "passed": true,
+      "milliseconds": 6678
+    },
+    {
+      "name": "image picker, drop and clipboard preserve assets, aspect ratio and undo",
+      "passed": true,
+      "milliseconds": 9532
+    },
+    {
+      "name": "PNG PDF PPTX exports preserve source and editable objects",
+      "passed": true,
+      "milliseconds": 15701
+    }
+  ],
+  "rendererErrors": [],
+  "sourceRevision": "7c3f04c8446eb5ac1fd3cda28e53c08875dc897f",
+  "verificationDate": "2026-11-07",
+  "platform": "win32",
+  "verificationScriptSha256": "b06a8dc49f0c5615fea0bf266d83afd9583e0a211a5b5f4cba8dc28b2b234217",
+  "coldScientificStartupReloadChecks": true
+}

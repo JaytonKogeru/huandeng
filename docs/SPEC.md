@@ -40,7 +40,7 @@ v0.2 交付独立桌面窗口、项目文件树、单页版本浏览与恢复，
 - 起点 commit：**327dd09bcd530eb97647fc33fa67e99f8137d860**
 - 对应已审阅 core 版本：**2.3.1**；许可证：MIT。
 - 保留上游 monorepo、依赖锁文件与工具链，首轮不顺手升级所有依赖。
-- 代码目录定为 **D:/_Proj/Huandeng**，由实施任务创建；本次没有创建远程仓库。
+- 代码目录固定为 **D:/_Proj/Huandeng**；当前独立 HUANDENG 仓库与 origin/upstream 发布规则见 [README](../README.md)。
 - 科研 deck 留在其原项目目录。编辑器可打开指定 PPTD，不要求复制进 OpenSlide 示例工程。
 
 OpenSlide 已有编辑与源码写回；本项目新增 PPTD backend，把 PPTD 模式的修改落到对象和页面文件。[R1][R2]
@@ -130,11 +130,12 @@ OpenSlide 已有编辑与源码写回；本项目新增 PPTD backend，把 PPTD 
 
 - 内部 deckId/pageId 使用 UUID；完整地址是 deckId + pageId。
 - shortCode 默认四位，使用不易混淆的字符，库内不区分大小写查重；兼容已有四至六位代码。
+- v0.4 增加稳定的 S1、S2 等用户别名；重排不改号，删除后不复用。它与当前位置的显示页码分开，不替换既有 UUID 和短码。
 - 保留原 elementId；元素地址包含 pageId。
 - 移动、改标题、修改内容均不改变身份或文件名。
 - 旧文件 005.page 不因插页而重新编号；新页可用 pages/K7M2.page。
 - 复制页面生成新的 pageId、短码和子元素 ID，重建内部绑定，复用媒体。
-- 同一 manifest 不重复引用同一 .page 路径；复用使用复制操作。
+- Main manifest 不重复引用同一 .page 路径；需要独立内容时使用复制操作。v0.4 的 Presentation 通过 pageId 引用共享页面，允许重复出现，不复制规范页面。
 - 移除页面从 pages 去掉引用，metadata 标记 tombstone，保留源文件支持恢复；短码不复用。
 - 外部改名使用显式 relink 命令重建绑定，不按标题或相似内容猜身份。
 - React key、草稿、深链接、评论和当前选中页使用持久 ID，页码仅用于显示。
@@ -436,7 +437,7 @@ Windows 替换遇到占用可有限重试；不得 unlink 原文件后再尝试 
 
 ### 7.4 Git checkpoint
 
-普通保存和历史不依赖 Git。Git 只在明确调用时执行：
+普通保存和历史不依赖 Git。v0.4 的命名页面版本也不使用 Git：用户或明确授权的 Agent 主动记录页面、有效主题与本地素材，归档随项目携带；具体记录和恢复规则见 [SPEC-V04 §3](SPEC-V04.md#3-页面身份与页面版本)。下列 Git checkpoint 是另一种工程里程碑操作，只在明确调用时执行：
 
 1. 记录编辑批次开始时的 HEAD 与 clean baseline。
 2. 有既有 dirty/staged 内容则 defer，不妨碍编辑保存。
@@ -727,7 +728,7 @@ pnpm dev
 
 ## 16. 资料与交付状态
 
-本文件保留已批准的工程路线、接口和实施合同。Huandeng v0.1 的实际实现与验证状态见 IMPLEMENTATION.md；计划条目与实际证据以该记录区分。科研正式源文件未迁移。
+本文件保留已批准的工程路线、接口和实施合同。历史 v0.1 实现记录见 IMPLEMENTATION.md；当前 v0.4 的实现对应见 [AUDIT-V04](AUDIT-V04.md)，实际验收、安装与发布状态见 [RELEASE-V04](RELEASE-V04.md) 和 [HANDOFF-V04](HANDOFF-V04.md)。计划要求与实际通过证据分别记录。科研正式源文件未迁移。
 
 ### 主要资料
 

@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-07",
+  "sourceRevision": "c2fede5f45aa7a41e853304f9907c2d17e6bf8a2",
+  "sourceDirty": false,
+  "passed": true,
+  "exitCode": 0,
+  "durationSeconds": 126.13,
+  "pageCount": 80,
+  "objectCount": 1451,
+  "objectTypes": { "text": 974, "shape": 174, "image": 262, "line": 39, "table": 2 },
+  "checks": {
+    "passed": 7,
+    "total": 7,
+    "groups": [
+      "Isolated copy, realpath containment and source hashing",
+      "Writer restricted to the temporary project",
+      "Complete PDF export",
+      "Complete PPTX export",
+      "All 80 export-DOM pages validated and captured",
+      "Copied page bytes unchanged by export and preview",
+      "Named checkpoint, notes edit and first-page restore"
+    ]
+  },
+  "rendering": {
+    "pagesPassed": 80,
+    "unsupported": 0,
+    "formulaErrors": 0,
+    "brokenImages": 0,
+    "rendererErrors": 0
+  },
+  "sourceIntegrity": {
+    "readFiles": 970,
+    "sha256Unchanged": 970,
+    "identicalToPriorBaseline": 970,
+    "originalProjectWritten": false,
+    "manifestSha256": "cf8e6651af6f9dd0547b62691ba5e6876d6c9842a339a8b16698636dafdf16bf"
+  },
+  "checkpoint": {
+    "namedVersionRecorded": true,
+    "notesRestored": true,
+    "stableIdentityPreserved": true,
+    "restoredContentMatchesArchivedVersion": true,
+    "siblingPageBytesUnchanged": 79
+  },
+  "exports": {
+    "pdf": {
+      "physicalPages": 80,
+      "independentPageTreeCheck": "PyMuPDF",
+      "blankTrailingPage": false,
+      "bytes": 39794396,
+      "sha256": "255fb404ccf07fc6648c3080ccb7993f4ba6a4c17058fc34ef62922bbc24a807"
+    },
+    "pptx": {
+      "slides": 80,
+      "bytes": 37412375,
+      "sha256": "5d13ad41297f71f05acffb7d1838880c23c82b24a0edc532ea23443dff322e43",
+      "editableContentObjects": 1089,
+      "originalAssetImages": 262,
+      "rasterFallbacks": { "text": 97, "line": 3 }
+    }
+  },
+  "fallbackBoundaryAudit": {
+    "passed": true,
+    "expectedObjects": 100,
+    "mappedByElementId": 100,
+    "withTransparentPixels": 100,
+    "unexpectedOpaqueEdges": 0,
+    "pageBoundaryExceptions": 0,
+    "missing": 0
+  },
+  "officeCompatibility": {
+    "application": "Microsoft PowerPoint 16.0",
+    "readOnly": true,
+    "openAndRepair": false,
+    "openedPages": 80,
+    "topLevelObjects": 1451,
+    "nativeTables": 2,
+    "finalArtifactRenderedPages": 80,
+    "finalArtifactUnchangedAfterClose": true
+  },
+  "visualReview": {
+    "passed": true,
+    "finalOfficePagesInspected": 80,
+    "fullPagePngSize": [1600, 900],
+    "visibleContentOrLayoutRegression": false,
+    "previousFailure": "Revision 7c3f04c clipped text on pages 16 and 17.",
+    "resolved": "c2fede5 crops actual visible alpha bounds; both pages rechecked at full resolution."
+  },
+  "coverageNote": "Native charts, formulas and icons are covered by the separate scientific-object fixture."
+}

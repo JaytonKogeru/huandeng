@@ -1,0 +1,48 @@
+{
+  "passed": true,
+  "platform": "win32",
+  "node": "v22.21.0",
+  "electron": "38.7.2",
+  "timestamp": "2026-11-07T10:04:23.006Z",
+  "checks": [
+    {
+      "name": "native Electron window opens the fixture with HUANDENG branding and external-agent interfaces",
+      "passed": true,
+      "milliseconds": 14521
+    },
+    {
+      "name": "external MCP records Story before editing Q9R4 and independently edits B6XA",
+      "passed": true,
+      "milliseconds": 4696
+    },
+    {
+      "name": "thumbnail history previews and restores an intermediate version without changing other files",
+      "passed": true,
+      "milliseconds": 2580
+    },
+    {
+      "name": "project tree displays real files and selects pages by stable identity",
+      "passed": true,
+      "milliseconds": 1258
+    },
+    {
+      "name": "desktop restart reopens the last project and retains page history",
+      "passed": true,
+      "milliseconds": 11395
+    },
+    {
+      "name": "native New and Open dialogs create and reopen real PPTD projects through IPC",
+      "passed": true,
+      "milliseconds": 25765
+    }
+  ],
+  "rendererErrors": [],
+  "screenshots": ["desktop-v04-history.png", "desktop-v04-editor.png"],
+  "sourceRevision": "c2fede5f45aa7a41e853304f9907c2d17e6bf8a2",
+  "productVersion": "0.4.0",
+  "packagedExecutable": true,
+  "portablePackageChecks": 2,
+  "buildSourceDirty": false,
+  "buildTimestamp": "2026-11-07T10:03:16.5150028Z",
+  "packageAndDesktopExitCode": 0
+}

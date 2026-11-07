@@ -1,0 +1,374 @@
+{
+  "schemaVersion": 1,
+  "sourceRevision": "c2fede5f45aa7a41e853304f9907c2d17e6bf8a2",
+  "verifiedDate": "2026-11-07",
+  "fixture": "Synthetic current and checkpoint-pinned occurrences, including visible text and stroke overflow",
+  "script": "scripts/verify-background-export.mjs",
+  "verificationHost": "THUG",
+  "process": {
+    "exitCode": 0,
+    "elapsedSeconds": 24.91
+  },
+  "passed": true,
+  "sourceUnchanged": true,
+  "distinctOccurrences": true,
+  "archivedAssetsAndTheme": true,
+  "foregroundRestored": true,
+  "visibleOverflowPreserved": true,
+  "physicalPdfPages": 2,
+  "measurements": [
+    {
+      "occurrence": 1,
+      "object": "background",
+      "bounds": [0, 0, 960, 540],
+      "width": 1920,
+      "height": 1080,
+      "transparentPixels": 0,
+      "colors": [["246,221,189", 2073600]]
+    },
+    {
+      "occurrence": 1,
+      "object": "async-icon",
+      "bounds": [319.5, 139.5, 141, 161],
+      "width": 282,
+      "height": 322,
+      "transparentPixels": 41074,
+      "colors": [["0,136,0", 49002], ["0,137,0", 2]]
+    },
+    {
+      "occurrence": 1,
+      "object": "overflow-short-text",
+      "bounds": [561, 142, 238.5, 23.5],
+      "width": 477,
+      "height": 47,
+      "transparentPixels": 13509,
+      "colors": [["170,0,136", 5903]]
+    },
+    {
+      "occurrence": 1,
+      "object": "overflow-paragraphs",
+      "bounds": [560.5, 231.5, 148.5, 63.5],
+      "width": 297,
+      "height": 127,
+      "transparentPixels": 31956,
+      "colors": [["102,51,153", 2387]]
+    },
+    {
+      "occurrence": 1,
+      "object": "overflow-stroke",
+      "bounds": [559.5, 405.5, 241, 9.5],
+      "width": 482,
+      "height": 19,
+      "transparentPixels": 1058,
+      "colors": [["0,136,170", 7260]]
+    },
+    {
+      "occurrence": 2,
+      "object": "background",
+      "bounds": [0, 0, 960, 540],
+      "width": 1920,
+      "height": 1080,
+      "transparentPixels": 0,
+      "colors": [["216,229,239", 2073600]]
+    },
+    {
+      "occurrence": 2,
+      "object": "async-icon",
+      "bounds": [319.5, 139.5, 141, 161],
+      "width": 282,
+      "height": 322,
+      "transparentPixels": 41074,
+      "colors": [["187,0,0", 48996], ["188,0,0", 4], ["186,0,0", 4]]
+    },
+    {
+      "occurrence": 2,
+      "object": "overflow-short-text",
+      "bounds": [561, 142, 238.5, 23.5],
+      "width": 477,
+      "height": 47,
+      "transparentPixels": 13509,
+      "colors": [["170,0,136", 5903]]
+    },
+    {
+      "occurrence": 2,
+      "object": "overflow-paragraphs",
+      "bounds": [560.5, 231.5, 148.5, 63.5],
+      "width": 297,
+      "height": 127,
+      "transparentPixels": 31956,
+      "colors": [["102,51,153", 2387]]
+    },
+    {
+      "occurrence": 2,
+      "object": "overflow-stroke",
+      "bounds": [559.5, 405.5, 241, 9.5],
+      "width": 482,
+      "height": 19,
+      "transparentPixels": 1058,
+      "colors": [["0,136,170", 7260]]
+    }
+  ],
+  "report": {
+    "schemaVersion": 1,
+    "renderer": "huandeng-pptd-v1",
+    "format": "pptx",
+    "deckId": "e6b799fe-2861-4342-87c8-09165454c7fa",
+    "presentationId": "background-check",
+    "title": "Current and archived backgrounds",
+    "size": {
+      "width": 960,
+      "height": 540,
+      "unit": "pt"
+    },
+    "manifestRevision": "sha256:468b587841f7781eb15f62442ad1f2dfa7ecfdfb3d84e30e689eb220980bdc85",
+    "metadataRevision": "sha256:c9ec506904d665f518148fc7b7bd9ebed70606f1ac490faf0bfe3b2e8366ca3b",
+    "pages": [
+      {
+        "pageId": "a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "occurrenceId": "background-check:live:a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "shortCode": "Y2UC",
+        "pageRevision": "sha256:613cb0bb8ce3642b48003454e95bdf7422178306442f6b5d4eb51a590f27895e",
+        "renderRevision": "sha256:acbbe706352fc2d78f2b1fa9a9ebba006f5db812a24d668da2e9d3145bf9d1e7"
+      },
+      {
+        "pageId": "a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "occurrenceId": "background-check:archived:a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "versionId": "checkpoint:6ddc83f726a68465c2c1d74bc4be3a5c",
+        "shortCode": "Y2UC",
+        "pageRevision": "sha256:f46eeefb5a89b5e20b2307100295ee22c31270258cdc67078ddf6861b6300a84",
+        "renderRevision": "sha256:fe92a5056197356c820652ac323e4132e40414fde7945521431844934d966725"
+      }
+    ],
+    "elements": [
+      {
+        "pageId": "a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "occurrenceId": "background-check:live:a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "shortCode": "Y2UC",
+        "elementId": "$background",
+        "mode": "image",
+        "reason": "IMAGE_FORMAT_FALLBACK",
+        "source": "media/background.svg"
+      },
+      {
+        "pageId": "a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "occurrenceId": "background-check:live:a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "shortCode": "Y2UC",
+        "elementId": "native-caption",
+        "mode": "native",
+        "reason": "EDITABLE_TEXT"
+      },
+      {
+        "pageId": "a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "occurrenceId": "background-check:live:a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "shortCode": "Y2UC",
+        "elementId": "async-icon",
+        "mode": "image",
+        "reason": "UNSUPPORTED_OBJECT"
+      },
+      {
+        "pageId": "a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "occurrenceId": "background-check:live:a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "shortCode": "Y2UC",
+        "elementId": "overlapping-native-shape",
+        "mode": "native",
+        "reason": "EDITABLE_SHAPE"
+      },
+      {
+        "pageId": "a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "occurrenceId": "background-check:live:a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "shortCode": "Y2UC",
+        "elementId": "overflow-short-text",
+        "mode": "image",
+        "reason": "UNSUPPORTED_TEXT_STYLE"
+      },
+      {
+        "pageId": "a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "occurrenceId": "background-check:live:a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "shortCode": "Y2UC",
+        "elementId": "overflow-paragraphs",
+        "mode": "image",
+        "reason": "UNSUPPORTED_TEXT_STYLE"
+      },
+      {
+        "pageId": "a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "occurrenceId": "background-check:live:a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "shortCode": "Y2UC",
+        "elementId": "overflow-stroke",
+        "mode": "image",
+        "reason": "UNSUPPORTED_LINE_PATH"
+      },
+      {
+        "pageId": "a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "occurrenceId": "background-check:archived:a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "versionId": "checkpoint:6ddc83f726a68465c2c1d74bc4be3a5c",
+        "shortCode": "Y2UC",
+        "elementId": "$background",
+        "mode": "image",
+        "reason": "IMAGE_FORMAT_FALLBACK",
+        "source": "media/.huandeng-versions/581c1a5e9d1ffbed77881a4783f3a6bff4cfd2d00dbc7eff16990a259a299651.svg"
+      },
+      {
+        "pageId": "a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "occurrenceId": "background-check:archived:a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "versionId": "checkpoint:6ddc83f726a68465c2c1d74bc4be3a5c",
+        "shortCode": "Y2UC",
+        "elementId": "native-caption",
+        "mode": "native",
+        "reason": "EDITABLE_TEXT"
+      },
+      {
+        "pageId": "a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "occurrenceId": "background-check:archived:a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "versionId": "checkpoint:6ddc83f726a68465c2c1d74bc4be3a5c",
+        "shortCode": "Y2UC",
+        "elementId": "async-icon",
+        "mode": "image",
+        "reason": "UNSUPPORTED_OBJECT"
+      },
+      {
+        "pageId": "a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "occurrenceId": "background-check:archived:a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "versionId": "checkpoint:6ddc83f726a68465c2c1d74bc4be3a5c",
+        "shortCode": "Y2UC",
+        "elementId": "overlapping-native-shape",
+        "mode": "native",
+        "reason": "EDITABLE_SHAPE"
+      },
+      {
+        "pageId": "a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "occurrenceId": "background-check:archived:a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "versionId": "checkpoint:6ddc83f726a68465c2c1d74bc4be3a5c",
+        "shortCode": "Y2UC",
+        "elementId": "overflow-short-text",
+        "mode": "image",
+        "reason": "UNSUPPORTED_TEXT_STYLE"
+      },
+      {
+        "pageId": "a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "occurrenceId": "background-check:archived:a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "versionId": "checkpoint:6ddc83f726a68465c2c1d74bc4be3a5c",
+        "shortCode": "Y2UC",
+        "elementId": "overflow-paragraphs",
+        "mode": "image",
+        "reason": "UNSUPPORTED_TEXT_STYLE"
+      },
+      {
+        "pageId": "a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "occurrenceId": "background-check:archived:a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "versionId": "checkpoint:6ddc83f726a68465c2c1d74bc4be3a5c",
+        "shortCode": "Y2UC",
+        "elementId": "overflow-stroke",
+        "mode": "image",
+        "reason": "UNSUPPORTED_LINE_PATH"
+      }
+    ],
+    "assets": [
+      {
+        "source": "media/background.svg",
+        "revision": "sha256:c732854b9811efe886320df49d53c45e2bf236ffd81cfe9fdec72f4b9aa31fe8",
+        "byteLength": 118,
+        "mimeType": "image/svg+xml"
+      },
+      {
+        "source": "media/.huandeng-versions/581c1a5e9d1ffbed77881a4783f3a6bff4cfd2d00dbc7eff16990a259a299651.svg",
+        "revision": "sha256:581c1a5e9d1ffbed77881a4783f3a6bff4cfd2d00dbc7eff16990a259a299651",
+        "byteLength": 118,
+        "mimeType": "image/svg+xml"
+      }
+    ],
+    "fonts": ["MiSans"],
+    "diagnostics": [
+      {
+        "pageId": "a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "occurrenceId": "background-check:live:a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "elementId": "$background",
+        "code": "IMAGE_FORMAT_FALLBACK",
+        "message": "This image format needs browser rendering; the original asset remains unchanged.",
+        "severity": "warning"
+      },
+      {
+        "pageId": "a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "occurrenceId": "background-check:live:a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "elementId": "async-icon",
+        "code": "UNSUPPORTED_OBJECT",
+        "message": "Object type icon requires a verified object renderer.",
+        "severity": "warning"
+      },
+      {
+        "pageId": "a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "occurrenceId": "background-check:live:a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "elementId": "overflow-short-text",
+        "code": "UNSUPPORTED_TEXT_STYLE",
+        "message": "Rich text style font-weight needs browser rendering.",
+        "severity": "warning"
+      },
+      {
+        "pageId": "a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "occurrenceId": "background-check:live:a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "elementId": "overflow-paragraphs",
+        "code": "UNSUPPORTED_TEXT_STYLE",
+        "message": "Rich text style margin-top needs browser rendering.",
+        "severity": "warning"
+      },
+      {
+        "pageId": "a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "occurrenceId": "background-check:live:a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "elementId": "overflow-stroke",
+        "code": "UNSUPPORTED_LINE_PATH",
+        "message": "Only valid two-endpoint lines are native in v0.1.",
+        "severity": "warning"
+      },
+      {
+        "pageId": "a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "occurrenceId": "background-check:archived:a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "versionId": "checkpoint:6ddc83f726a68465c2c1d74bc4be3a5c",
+        "elementId": "$background",
+        "code": "IMAGE_FORMAT_FALLBACK",
+        "message": "This image format needs browser rendering; the original asset remains unchanged.",
+        "severity": "warning"
+      },
+      {
+        "pageId": "a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "occurrenceId": "background-check:archived:a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "versionId": "checkpoint:6ddc83f726a68465c2c1d74bc4be3a5c",
+        "elementId": "async-icon",
+        "code": "UNSUPPORTED_OBJECT",
+        "message": "Object type icon requires a verified object renderer.",
+        "severity": "warning"
+      },
+      {
+        "pageId": "a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "occurrenceId": "background-check:archived:a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "versionId": "checkpoint:6ddc83f726a68465c2c1d74bc4be3a5c",
+        "elementId": "overflow-short-text",
+        "code": "UNSUPPORTED_TEXT_STYLE",
+        "message": "Rich text style font-weight needs browser rendering.",
+        "severity": "warning"
+      },
+      {
+        "pageId": "a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "occurrenceId": "background-check:archived:a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "versionId": "checkpoint:6ddc83f726a68465c2c1d74bc4be3a5c",
+        "elementId": "overflow-paragraphs",
+        "code": "UNSUPPORTED_TEXT_STYLE",
+        "message": "Rich text style margin-top needs browser rendering.",
+        "severity": "warning"
+      },
+      {
+        "pageId": "a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "occurrenceId": "background-check:archived:a7842edc-ae66-4f31-af1a-eb0ff9fc079c",
+        "versionId": "checkpoint:6ddc83f726a68465c2c1d74bc4be3a5c",
+        "elementId": "overflow-stroke",
+        "code": "UNSUPPORTED_LINE_PATH",
+        "message": "Only valid two-endpoint lines are native in v0.1.",
+        "severity": "warning"
+      },
+      {
+        "code": "FONT_FILES_NOT_EMBEDDED",
+        "severity": "warning",
+        "message": "PowerPoint references the original font names; font availability and native text reflow can differ from the browser."
+      }
+    ],
+    "complete": true
+  }
+}

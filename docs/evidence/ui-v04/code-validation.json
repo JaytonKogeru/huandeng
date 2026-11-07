@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-07",
+  "finalRuntimeRevision": "c2fede5f45aa7a41e853304f9907c2d17e6bf8a2",
+  "formatAndLint": {
+    "exitCode": 0,
+    "checkedFiles": 544,
+    "inheritedBrokenTemplateSymlinkWarnings": 5,
+    "newErrors": 0
+  },
+  "linux": {
+    "node": "v24.22.1",
+    "sourceRevision": "c2fede5f45aa7a41e853304f9907c2d17e6bf8a2",
+    "testFilesPassed": 56,
+    "testsPassed": 732,
+    "testsSkipped": 0,
+    "unitExitCode": 0,
+    "coreTypecheckExitCode": 0
+  },
+  "windows": {
+    "node": "v22.21.0",
+    "pnpm": "10.17.0",
+    "testSourceRevision": "7c3f04c8446eb5ac1fd3cda28e53c08875dc897f",
+    "testOnlyAdjustment": "Use .cmd fixture on Windows in agent/detect.test.ts; committed in c2fede5.",
+    "testFilesPassed": 56,
+    "testsPassed": 731,
+    "testsSkipped": 1,
+    "skipReason": "POSIX executable-permission semantics do not apply to Windows.",
+    "unitExitCode": 0,
+    "unitDurationSeconds": 119.54,
+    "execution": "--maxWorkers=1 --no-file-parallelism",
+    "executionReason": "Parallel test fixtures can contend on the existing hashed writer-lock port; serial execution keeps real locks enabled.",
+    "coreTypecheckExitCode": 0,
+    "finalCoreBuildRevision": "c2fede5f45aa7a41e853304f9907c2d17e6bf8a2",
+    "finalCoreBuildExitCode": 0
+  },
+  "finalRuntimeCoverage": [
+    "Expanded current/pinned background and visible-overflow regression",
+    "Complete 80-page research copy export and restoration",
+    "Strict PowerPoint opening and 80-page visual inspection",
+    "Packaged EXE six-workflow verification",
+    "Formal installation launch and About/shortcut checks"
+  ],
+  "notRun": ["Inherited TSX browser E2E suite"]
+}

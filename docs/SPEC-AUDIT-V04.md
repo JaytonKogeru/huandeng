@@ -25,7 +25,7 @@
 | T04 复制身份独立、内部引用重建 | `store.ts` 的复制和分组引用处理；`store.test.ts`、`grouping-store.test.ts`、`science-objects.test.ts` |
 | T05 requestId 幂等 | `persistence.ts` 收据、`store.test.ts` 重开后重试、checkpoint 同请求复用测试 |
 | T06 page / manifest / metadata CAS | `store.ts` 按操作读写集合检查；store / project 集成测试含缺失前提与过期拒绝 |
-| T07 尺寸与缩放坐标 | 编辑画布的逻辑坐标转换、既有 `verify-huandeng.mjs` 拖动检查；当前 Windows 运行结果仍需核对 |
+| T07 尺寸与缩放坐标 | 编辑画布的逻辑坐标转换、既有 `verify-huandeng.mjs` 拖动检查；Windows 科研 22 项验收已验证组合几何与复制/解组/撤销，最终桌面包结果见 [RELEASE-V04](RELEASE-V04.md) |
 | T08 中文 IME 与富文本 | `pptd-document.test.ts` 包含 composition 中计时与显式 flush 禁止提交；文本导出测试检查富文本结构 |
 | T09 外部更新与脏草稿 | Document client 的远端更新、并发确认和草稿冲突测试；Project、Story、Chart 增加父级草稿生命周期保护 |
 | T10 中断恢复保护第三方内容 | `persistence.ts` journal，`store.test.ts` 覆盖 roll forward、第三种 bytes 冲突和日志 hash 验证 |
@@ -40,7 +40,7 @@
 
 `technicalDiagnostics(page, size)` 是纯检查函数，不改写页面和布局。它报告无效或零尺寸外框、考虑旋转后的越界、非法图片裁切、透明外扩裁切以及已经被资源指纹确认缺失的本地素材。越界使用 warning，因为页面出血可能是有意设计。页面内每个受影响对象均可定位；背景或主题资源保留页面级诊断。
 
-`requestedPageFonts` 只列出页内与页面主题覆盖中请求的字体。系统字体是否安装仍标为“未验证”；`document.fonts.ready` 不能证明某个指定系统字体存在。当前也未加入通用 DOM 文字溢出判断，不能把没有几何问题解读为视觉验收通过。
+`requestedPageFonts` 只列出页内与页面主题覆盖中请求的字体。系统字体是否安装仍标为“未验证”；`document.fonts.ready` 不能证明某个指定系统字体存在。当前 `renderRevision` 也尚未包含目标机器的实际字体解析结果，因此换机器后仍需核对字体与排版。当前未加入通用 DOM 文字溢出判断，不能把没有几何问题解读为视觉验收通过；导出对象回退已能保留元素框外仍在页面内可见的文字和公式，这不构成自动溢出诊断。
 
 当前 UI 不生成审美分数，不自动“减少 AI 风格”，也不把 Agent 编写的 Story 或反馈伪装为作者批准。作者评审继续绑定渲染版本，服务禁止普通 Agent 写入或清除作者评审字段。
 
