@@ -12,6 +12,9 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from '../ui/dropdown-menu';
 
@@ -29,10 +32,10 @@ export function ScienceInsertMenu({
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
-        render={<Button size="sm" variant="ghost" disabled={disabled} aria-label="插入科研对象" />}
+        render={<Button size="sm" variant="ghost" disabled={disabled} aria-label="插入数据" />}
       >
         <ChartNoAxesCombined />
-        科研对象
+        数据
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start">
         <DropdownMenuItem onClick={() => insert('table')}>
@@ -48,12 +51,20 @@ export function ScienceInsertMenu({
           图标
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        {CHART_TYPES.map((type) => (
-          <DropdownMenuItem key={type} onClick={() => insert('chart', type)}>
+        <DropdownMenuSub>
+          <DropdownMenuSubTrigger>
             <ChartNoAxesCombined />
-            {CHART_LABELS[type]}
-          </DropdownMenuItem>
-        ))}
+            图表
+          </DropdownMenuSubTrigger>
+          <DropdownMenuSubContent>
+            {CHART_TYPES.map((type) => (
+              <DropdownMenuItem key={type} onClick={() => insert('chart', type)}>
+                <ChartNoAxesCombined />
+                {CHART_LABELS[type]}
+              </DropdownMenuItem>
+            ))}
+          </DropdownMenuSubContent>
+        </DropdownMenuSub>
       </DropdownMenuContent>
     </DropdownMenu>
   );

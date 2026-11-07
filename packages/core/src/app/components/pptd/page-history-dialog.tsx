@@ -29,8 +29,8 @@ function versionLabel(version: PageVersionSummary): string {
     'page.notes.set': '修改演讲备注',
     'metadata.patch': '更新页面意图或布局关联',
     'history.revert': '撤销操作',
-    'recipe.apply': '调整布局起点',
-    'recipe.reset': '重置布局起点',
+    'recipe.apply': '调整快速布局',
+    'recipe.reset': '重置快速布局',
     'page.add': '新增页面',
     'page.duplicate': '复制页面',
     'page.restore': '恢复已移除的页面',
@@ -154,7 +154,7 @@ export function PageHistoryDialog({
       setVersions(items);
       setSelectedId(items[0]?.versionId ?? null);
       setMessage(
-        `已恢复 ${page.metadata.label ?? page.shortCode ?? '这页'} 的工作稿。需要保留本轮成果时，再记录一个命名版本。`,
+        `已恢复 ${page.shortCode ?? page.metadata.label ?? '这页'} 的工作稿。需要保留本轮成果时，再记录一个命名版本。`,
       );
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : String(cause));
@@ -192,9 +192,12 @@ export function PageHistoryDialog({
         data-hd-page-history={page.pageId}
       >
         <DialogHeader className="shrink-0 border-b border-border px-6 py-5">
-          <DialogTitle className="flex items-center gap-2">
+          <DialogTitle
+            className="flex items-center gap-2"
+            title={`永久 ID：${page.pageId}${page.metadata.label ? `\n旧编号：${page.metadata.label}` : ''}`}
+          >
             <History className="size-4" />
-            {page.metadata.label ?? page.shortCode ?? '页面'} · 页面版本
+            {page.shortCode ?? page.metadata.label ?? '页面'} · 页面版本
           </DialogTitle>
           <DialogDescription>
             自动保存保留工作稿。完成一轮修改后，为这一页记录一个有名字的版本。
@@ -367,7 +370,7 @@ export function PageHistoryDialog({
             )}
             <p className="shrink-0 border-t px-4 py-2 text-[10px] leading-relaxed text-muted-foreground">
               {preview?.assets === 'archived'
-                ? '命名版本随项目保存，包含页面、Story 与归档素材。恢复只更新这一页。'
+                ? '命名版本随项目保存，包含页面、故事与归档素材。恢复只更新这一页。'
                 : '操作记录用于撤销和恢复工作稿；旧操作预览使用当前项目素材。'}
             </p>
           </div>

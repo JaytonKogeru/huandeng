@@ -124,7 +124,7 @@ async function check(name, callback) {
 }
 
 async function panel() {
-  await page.getByRole('button', { name: '项目与 Story', exact: true }).click();
+  await page.getByRole('button', { name: '项目与故事', exact: true }).click();
   const result = page.locator('[data-hd-project]');
   await result.waitFor({ state: 'visible' });
   return result;
@@ -132,14 +132,13 @@ async function panel() {
 
 async function saveProject() {
   const projectPanel = page.locator('[data-hd-project]');
-  await projectPanel.getByRole('button', { name: 'Save project', exact: true }).click();
+  await projectPanel.getByRole('button', { name: '保存项目', exact: true }).click();
   await eventually(
     async () =>
-      await projectPanel.getByRole('button', { name: 'Save project', exact: true }).isDisabled(),
+      await projectPanel.getByRole('button', { name: '保存项目', exact: true }).isDisabled(),
   );
   await eventually(
-    async () =>
-      !(await projectPanel.getByText('Unsaved project changes.', { exact: false }).count()),
+    async () => !(await projectPanel.getByText('项目编排有未保存的修改', { exact: false }).count()),
   );
   return (await api('/session')).metadata.project;
 }
@@ -187,7 +186,9 @@ try {
     return result;
   });
   ids = session.pages.map((item) => item.pageId);
+  const shortCodes = session.pages.map((item) => item.shortCode);
   assert.equal(ids.length, 4);
+  assert.ok(shortCodes.every((code) => typeof code === 'string' && code.length === 4));
   const executablePath = [
     process.env.HUANDENG_BROWSER,
     '/usr/bin/chromium',
@@ -207,18 +208,16 @@ try {
 
   await check('create Main Story and two sections through the editor', async () => {
     const projectPanel = await panel();
-    await projectPanel
-      .getByLabel('Question / purpose', { exact: true })
-      .fill('Full evidence library');
-    await projectPanel.getByLabel('Audience', { exact: true }).fill('Research team');
-    await projectPanel.getByLabel('Takeaway', { exact: true }).fill('A reproducible account');
-    await projectPanel.getByRole('button', { name: 'Section', exact: true }).click();
-    await projectPanel.getByLabel('Section 1 title', { exact: true }).fill('Background');
-    await projectPanel.getByRole('button', { name: 'Section', exact: true }).click();
-    await projectPanel.getByLabel('Section 2 title', { exact: true }).fill('Results');
+    await projectPanel.getByLabel('问题与目的', { exact: true }).fill('Full evidence library');
+    await projectPanel.getByLabel('听众', { exact: true }).fill('Research team');
+    await projectPanel.getByLabel('核心结论', { exact: true }).fill('A reproducible account');
+    await projectPanel.getByRole('button', { name: '新建章节', exact: true }).click();
+    await projectPanel.getByLabel('第 1 章名称', { exact: true }).fill('Background');
+    await projectPanel.getByRole('button', { name: '新建章节', exact: true }).click();
+    await projectPanel.getByLabel('第 2 章名称', { exact: true }).fill('Results');
     for (let index = 0; index < ids.length; index++)
       await projectPanel
-        .getByLabel(`Section for S${index + 1}`, { exact: true })
+        .getByLabel(`${shortCodes[index]} 所属章节`, { exact: true })
         .selectOption({ label: index < 2 ? 'Background' : 'Results' });
     const saved = await saveProject();
     assert.equal(saved.mainStory.purpose, 'Full evidence library');
@@ -232,25 +231,25 @@ try {
   await check('create two presentations sharing chapter and repeated page references', async () => {
     const projectPanel = await panel();
     const model = (await api('/session')).metadata.project;
-    await projectPanel.getByRole('button', { name: 'Presentation', exact: true }).click();
-    await projectPanel.getByLabel('Presentation title', { exact: true }).fill('Conference A');
+    await projectPanel.getByRole('button', { name: '新建演讲', exact: true }).click();
+    await projectPanel.getByLabel('演讲名称', { exact: true }).fill('Conference A');
     await projectPanel
-      .getByLabel('Question / purpose', { exact: true })
+      .getByLabel('问题与目的', { exact: true })
       .fill('Explain the principal finding');
     await projectPanel
-      .getByLabel('Build the presentation', { exact: true })
+      .getByLabel('编排演讲幻灯片', { exact: true })
       .selectOption(`section:${model.sections[1].id}`);
     for (let index = 0; index < 3; index++)
       await projectPanel
-        .getByLabel('Build the presentation', { exact: true })
+        .getByLabel('编排演讲幻灯片', { exact: true })
         .selectOption(`page:${ids[0]}`);
     conference = (await saveProject()).presentations.find(
       (item) => item.title === 'Conference A',
     ).id;
-    await projectPanel.getByRole('button', { name: 'Presentation', exact: true }).click();
-    await projectPanel.getByLabel('Presentation title', { exact: true }).fill('Lab B');
+    await projectPanel.getByRole('button', { name: '新建演讲', exact: true }).click();
+    await projectPanel.getByLabel('演讲名称', { exact: true }).fill('Lab B');
     await projectPanel
-      .getByLabel('Build the presentation', { exact: true })
+      .getByLabel('编排演讲幻灯片', { exact: true })
       .selectOption(`section:${model.sections[0].id}`);
     lab = (await saveProject()).presentations.find((item) => item.title === 'Lab B').id;
     assert.deepEqual(
@@ -305,7 +304,7 @@ try {
     await collection(conference);
     let projectPanel = await panel();
     await projectPanel
-      .getByLabel('Takeaway', { exact: true })
+      .getByLabel('核心结论', { exact: true })
       .fill('Unsaved narrative to preserve');
     assert.equal(
       await page.getByRole('button', { name: '导出 PPTX', exact: true }).isDisabled(),
@@ -317,7 +316,7 @@ try {
     await page.getByRole('button', { name: '项目文件树', exact: true }).click();
     projectPanel = await panel();
     assert.equal(
-      await projectPanel.getByLabel('Takeaway', { exact: true }).inputValue(),
+      await projectPanel.getByLabel('核心结论', { exact: true }).inputValue(),
       'Unsaved narrative to preserve',
     );
     const saved = await saveProject();
@@ -332,27 +331,24 @@ try {
     async () => {
       const projectPanel = await panel();
       const items = projectPanel.locator('[data-hd-presentation-item]');
-      await items
-        .nth(2)
-        .getByRole('button', { name: 'Refresh named versions', exact: true })
-        .click();
+      await items.nth(2).getByRole('button', { name: '刷新页面版本', exact: true }).click();
       await eventually(
         async () =>
           await items
             .nth(2)
-            .getByLabel('Page version', { exact: true })
+            .getByLabel('页面版本', { exact: true })
             .locator(`option[value="${firstVersion}"]`)
             .count(),
       );
-      await items.nth(2).getByLabel('Page version', { exact: true }).selectOption(firstVersion);
-      await items.nth(3).getByLabel('Page version', { exact: true }).selectOption(secondVersion);
+      await items.nth(2).getByLabel('页面版本', { exact: true }).selectOption(firstVersion);
+      await items.nth(3).getByLabel('页面版本', { exact: true }).selectOption(secondVersion);
       await items
         .nth(3)
-        .getByRole('checkbox', { name: 'Presentation-specific speaker notes', exact: true })
+        .getByRole('checkbox', { name: '本次引用使用独立演讲备注', exact: true })
         .check();
       await items
         .nth(3)
-        .getByLabel('Speaker notes for item 4', { exact: true })
+        .getByLabel('第 4 项的演讲备注', { exact: true })
         .fill('Presented conclusion for this occurrence');
       await saveProject();
       const snapshot = await api(`/presentations/${conference}`);
@@ -521,46 +517,44 @@ try {
     async () => {
       const projectPanel = await panel();
       await projectPanel
-        .getByLabel('Takeaway', { exact: true })
+        .getByLabel('核心结论', { exact: true })
         .fill('Local narrative waiting for merge');
       const model = structuredClone((await api('/session')).metadata.project);
       model.mainStory.audience = 'Updated by external editor';
       await transaction([{ op: 'project.replace', project: model }]);
       await eventually(async () =>
-        (await projectPanel.textContent()).includes('The project changed elsewhere.'),
+        (await projectPanel.textContent()).includes('项目已从另一处更新'),
       );
       assert.equal(
-        await projectPanel.getByLabel('Takeaway', { exact: true }).inputValue(),
+        await projectPanel.getByLabel('核心结论', { exact: true }).inputValue(),
         'Local narrative waiting for merge',
       );
       assert.equal(
-        await projectPanel.getByRole('button', { name: 'Save project', exact: true }).isDisabled(),
+        await projectPanel.getByRole('button', { name: '保存项目', exact: true }).isDisabled(),
         true,
       );
       assert.equal(
-        await projectPanel
-          .getByRole('button', { name: 'Remove presentation', exact: true })
-          .isDisabled(),
+        await projectPanel.getByRole('button', { name: '移除演讲', exact: true }).isDisabled(),
         true,
       );
-      await projectPanel.getByText('View unsaved draft for merging', { exact: true }).click();
+      await projectPanel.getByText('查看并复制未保存的草稿', { exact: true }).click();
       assert.match(
-        await projectPanel.getByLabel('Unsaved project draft', { exact: true }).inputValue(),
+        await projectPanel.getByLabel('未保存的项目草稿', { exact: true }).inputValue(),
         /Local narrative waiting for merge/,
       );
       await projectPanel.screenshot({
         path: path.join(evidence, 'project-conflict-preserved.png'),
       });
-      await projectPanel.getByRole('button', { name: 'Discard draft', exact: true }).click();
+      await projectPanel.getByRole('button', { name: '放弃草稿', exact: true }).click();
       await eventually(
-        async () => !(await projectPanel.textContent()).includes('The project changed elsewhere.'),
+        async () => !(await projectPanel.textContent()).includes('项目已从另一处更新'),
       );
       assert.equal(
         (await api('/session')).metadata.project.mainStory.audience,
         'Updated by external editor',
       );
       assert.equal(
-        await projectPanel.getByLabel('Takeaway', { exact: true }).inputValue(),
+        await projectPanel.getByLabel('核心结论', { exact: true }).inputValue(),
         'Unsaved narrative to preserve',
       );
     },
@@ -572,7 +566,7 @@ try {
       await collection(null);
       await page.getByRole('button', { name: '页面缩略图', exact: true }).click();
       await page.locator(`[data-hd-thumbnail="${ids[0]}"]`).click();
-      let story = page.locator('[data-hd-story]');
+      let story = page.locator('[data-hd-story][aria-label="幻灯故事"]');
       await story.getByRole('button', { name: '更正意图', exact: true }).click();
       await story
         .getByLabel('页面创作意图', { exact: true })
@@ -585,10 +579,12 @@ try {
         true,
       );
       await page.locator('[data-hd-editor-canvas] [data-hd-element-id="title"]').click();
-      await eventually(async () => (await page.locator('[data-hd-story]').count()) === 0);
+      await eventually(
+        async () => (await page.locator('[data-hd-story][aria-label="幻灯故事"]').count()) === 0,
+      );
       await page.locator(`[data-hd-thumbnail="${ids[1]}"]`).click();
       await page.locator(`[data-hd-thumbnail="${ids[0]}"]`).click();
-      story = page.locator('[data-hd-story]');
+      story = page.locator('[data-hd-story][aria-label="幻灯故事"]');
       assert.equal(
         await story.getByLabel('页面创作意图', { exact: true }).inputValue(),
         'Preserve this author correction across navigation',

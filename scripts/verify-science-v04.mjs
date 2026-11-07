@@ -102,7 +102,9 @@ async function newPage(name) {
 }
 
 async function insert(label) {
-  await page.getByRole('button', { name: '插入科研对象', exact: true }).click();
+  await page.getByRole('button', { name: '插入数据', exact: true }).click();
+  if (!['表格', 'LaTeX 公式', '图标'].includes(label))
+    await page.getByRole('menuitem', { name: '图表', exact: true }).hover();
   await page.getByRole('menuitem', { name: label, exact: true }).click();
 }
 

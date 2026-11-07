@@ -533,30 +533,6 @@ function ShapeContent({ element, theme }: { element: PptdElement; theme: PptdThe
   else if (presetPath) shape = <path d={presetPath} {...props} />;
   else if (name === 'ellipse')
     shape = <ellipse cx={width / 2} cy={height / 2} rx={width / 2} ry={height / 2} {...props} />;
-  else if (name === 'triangle')
-    shape = <polygon points={`${width / 2},0 ${width},${height} 0,${height}`} {...props} />;
-  else if (name === 'diamond')
-    shape = (
-      <polygon
-        points={`${width / 2},0 ${width},${height / 2} ${width / 2},${height} 0,${height / 2}`}
-        {...props}
-      />
-    );
-  else if (name === 'rightArrow' || name === 'leftArrow')
-    shape = (
-      <path
-        d={`M0 ${height * 0.25} H${width * 0.6} V0 L${width} ${height / 2} L${width * 0.6} ${height} V${height * 0.75} H0 Z`}
-        transform={name === 'leftArrow' ? `translate(${width},0) scale(-1,1)` : undefined}
-        {...props}
-      />
-    );
-  else if (name === 'chevron')
-    shape = (
-      <polygon
-        points={`0,0 ${width * 0.65},0 ${width},${height / 2} ${width * 0.65},${height} 0,${height} ${width * 0.35},${height / 2}`}
-        {...props}
-      />
-    );
   else {
     const adjustment = Array.isArray(element.adjustments)
       ? numberValue(element.adjustments[0], 16667) / 100000

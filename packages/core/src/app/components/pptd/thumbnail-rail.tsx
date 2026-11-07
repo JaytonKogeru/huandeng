@@ -2,13 +2,14 @@ import {
   ArrowDown,
   ArrowUp,
   Copy,
+  Fingerprint,
   FolderOpen,
   History,
   Plus,
   RotateCcw,
   Trash2,
 } from 'lucide-react';
-import { useState } from 'react';
+import { memo, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
 import type { PageSize, PageSnapshot, SlideIdentity } from '../../../pptd/types';
 import { SlideCanvas } from '../slide-canvas';
@@ -23,6 +24,24 @@ import {
 import { Input } from '../ui/input';
 import { layerTitle } from './inspector';
 import { PptdPageRenderer, type PptdTheme } from './renderer';
+
+const ThumbnailPreview = memo(function ThumbnailPreview({
+  page,
+  size,
+  theme,
+}: {
+  page: PageSnapshot;
+  size: PageSize;
+  theme: PptdTheme;
+}) {
+  return (
+    <div data-hd-preview-mounted={page.occurrenceId ?? page.pageId} className="size-full">
+      <SlideCanvas width={size[0]} height={size[1]} flat freezeMotion>
+        <PptdPageRenderer page={page} size={size} theme={theme} />
+      </SlideCanvas>
+    </div>
+  );
+});
 
 export function PptdThumbnailRail({
   pages,
@@ -58,6 +77,44 @@ export function PptdThumbnailRail({
   onShowFile: (pageId: string) => void;
 }) {
   const [query, setQuery] = useState('');
+  const [copyStatus, setCopyStatus] = useState('');
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState<Set<string>>(() => new Set());
+  const keys = pages.map((page) => page.occurrenceId ?? page.pageId).join(',');
+  // biome-ignore lint/correctness/useExhaustiveDependencies: Search and page order replace the observed DOM nodes without changing the scroll root.
+  useEffect(() => {
+    const root = scrollRef.current;
+    if (!root) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        setVisible((previous) => {
+          const next = new Set(previous);
+          let changed = false;
+          for (const entry of entries) {
+            const id = (entry.target as HTMLElement).dataset.hdThumbnailPreview;
+            if (!id || next.has(id) === entry.isIntersecting) continue;
+            changed = true;
+            if (entry.isIntersecting) next.add(id);
+            else next.delete(id);
+          }
+          return changed ? next : previous;
+        });
+      },
+      { root, rootMargin: '240px 0px' },
+    );
+    for (const element of root.querySelectorAll('[data-hd-thumbnail-preview]'))
+      observer.observe(element);
+    return () => observer.disconnect();
+  }, [keys, query]);
+  // biome-ignore lint/correctness/useExhaustiveDependencies: Reordering and clearing search can move the selected node without changing its identity.
+  useLayoutEffect(() => {
+    const root = scrollRef.current;
+    if (!root) return;
+    const current = root.querySelector<HTMLElement>(
+      `[data-hd-thumbnail-preview="${CSS.escape(currentOccurrenceId ?? currentPageId ?? '')}"]`,
+    );
+    current?.scrollIntoView({ block: 'nearest', behavior: 'instant' });
+  }, [currentPageId, currentOccurrenceId, keys, query]);
   const isCurrent = (page: PageSnapshot) =>
     currentOccurrenceId ? page.occurrenceId === currentOccurrenceId : page.pageId === currentPageId;
   const currentIndex = pages.findIndex(isCurrent);
@@ -91,13 +148,20 @@ export function PptdThumbnailRail({
       <div className="px-3 py-2">
         <Input
           aria-label="搜索页面编号或标题"
-          placeholder="查找 S 编号或标题…"
+          placeholder="短码、标题或旧编号…"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           className="h-7 bg-background text-xs"
         />
       </div>
-      <div className="min-h-0 flex-1 space-y-3 overflow-y-auto px-3 pb-5">
+      <p className="sr-only" role="status">
+        {copyStatus}
+      </p>
+      <div
+        ref={scrollRef}
+        className="min-h-0 flex-1 space-y-3 overflow-y-auto px-3 pb-5"
+        data-hd-thumbnail-scroll
+      >
         {pages.map((page, index) => {
           const title = page.data.elements.find((element) => element.elementType === 'text');
           const name = title ? layerTitle(title) : '空白页';
@@ -115,7 +179,7 @@ export function PptdThumbnailRail({
                   <button
                     type="button"
                     data-hd-thumbnail={page.pageId}
-                    aria-label={`第 ${index + 1} 页 ${page.metadata.label ?? page.shortCode ?? ''} ${name}`}
+                    aria-label={`第 ${index + 1} 页 · ${page.shortCode ?? page.metadata.label ?? ''} · ${name}`}
                     aria-pressed={isCurrent(page)}
                     className={cn(
                       'block w-full rounded-md p-1.5 text-left outline-none transition-colors focus-visible:ring-2 focus-visible:ring-brand/50',
@@ -135,28 +199,40 @@ export function PptdThumbnailRail({
                         event.preventDefault();
                     }}
                     onDrop={(event) => {
+                      if (disabled) return;
                       event.preventDefault();
                       const id = event.dataTransfer.getData('application/huandeng-page');
                       if (id && id !== page.pageId) onMove(id, page.pageId);
                     }}
                   >
                     <div
+                      data-hd-thumbnail-preview={page.occurrenceId ?? page.pageId}
                       className="pointer-events-none overflow-hidden rounded-sm border border-foreground/10"
                       style={{ width: '100%', aspectRatio: `${size[0]} / ${size[1]}` }}
                     >
-                      <SlideCanvas width={size[0]} height={size[1]} flat freezeMotion>
-                        <PptdPageRenderer page={page} size={size} theme={theme} />
-                      </SlideCanvas>
+                      {visible.has(page.occurrenceId ?? page.pageId) ? (
+                        <ThumbnailPreview page={page} size={size} theme={theme} />
+                      ) : (
+                        <div
+                          className="flex size-full items-center justify-center bg-background text-[10px] text-muted-foreground/60"
+                          aria-hidden="true"
+                        >
+                          {page.shortCode ?? page.metadata.label}
+                        </div>
+                      )}
                     </div>
                     <div className="mt-2 flex min-w-0 items-center gap-1.5 text-[10px]">
-                      <span className="font-mono text-muted-foreground">
+                      <span
+                        className="font-mono text-muted-foreground"
+                        title="当前页序；重新排序后会改变"
+                      >
                         {String(index + 1).padStart(2, '0')}
                       </span>
                       <span
                         className="font-mono font-semibold tracking-wider"
-                        title={`永久 ID: ${page.pageId}\n兼容短码: ${page.shortCode}`}
+                        title={`页面短码：${page.shortCode ?? ''}\n永久 ID：${page.pageId}\n旧编号：${page.metadata.label ?? '无'}`}
                       >
-                        {page.metadata.label ?? page.shortCode ?? '未编号'}
+                        {page.shortCode ?? page.metadata.label ?? '未编号'}
                       </span>
                       <span className="truncate text-muted-foreground">{name}</span>
                       {page.versionId && (
@@ -176,6 +252,18 @@ export function PptdThumbnailRail({
                 <ContextMenuItem onClick={() => onShowFile(page.pageId)}>
                   <FolderOpen />
                   在项目文件中显示
+                </ContextMenuItem>
+                <ContextMenuItem
+                  onClick={() => {
+                    const code = page.shortCode ?? page.pageId;
+                    void navigator.clipboard.writeText(code).then(
+                      () => setCopyStatus(`已复制页面短码 ${code}`),
+                      () => setCopyStatus('未能写入剪贴板，请重试。'),
+                    );
+                  }}
+                >
+                  <Fingerprint />
+                  复制页面短码
                 </ContextMenuItem>
                 <ContextMenuSeparator />
                 <ContextMenuItem disabled={disabled} onClick={() => onDuplicate(page.pageId)}>

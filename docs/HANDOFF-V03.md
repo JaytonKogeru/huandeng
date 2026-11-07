@@ -1,5 +1,7 @@
 # HUANDENG Editor v0.3 — Implementation Handoff
 
+> Historical handoff: the status and remaining steps below describe the v0.3 handoff date. Later installation, release and expanded scientific coverage are recorded in [RELEASE-V04](RELEASE-V04.md). For current work, read [the combined audit](AUDIT-V05-COVERAGE.md) and [HANDOFF-V05](HANDOFF-V05.md).
+
 Updated: 2026-11-07 (Australia/Sydney). Status: v0.3 formally installed and validated on THUG; source milestone publish to GitHub is the remaining step.
 
 ## Names and compatibility

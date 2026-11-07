@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "stage": "candidate-integration",
+  "source": {
+    "baselineRevision": "8798d8f058dab89a80143e0c813780c8d87a70f9",
+    "candidateTransferSha256": "157272ec0f472923d2f185b19a614f6e15ad48d3d9c9931e575369cddda657ae",
+    "description": "Baseline source plus the recorded candidate transfer; this is not a final release commit."
+  },
+  "runtime": {
+    "host": "Electron development host",
+    "frontend": "compiled production bundle",
+    "packagedRelease": false
+  },
+  "rawReceipt": {
+    "localFile": ".verification/editor-v05.json",
+    "sha256": "3b558a6998c812f4feea6c03686ee03bf7a77659975a650079d64729f0a323f2"
+  },
+  "sanitization": "Only software test results are retained. Research paths, titles, source-file inventories, document content and screenshots are excluded.",
+  "passed": true,
+  "timestamp": "2026-11-07T12:27:12.025Z",
+  "platform": "win32",
+  "node": "v22.21.0",
+  "electron": "38.7.2",
+  "fixture": {
+    "kind": "isolated synthetic project",
+    "pageCount": 3
+  },
+  "checks": [
+    {
+      "name": "choosing text or a shape does not create an object; Escape also cancels an active drag",
+      "passed": true,
+      "milliseconds": 744
+    },
+    {
+      "name": "ellipse placement uses drag coordinates and persists the selected shape",
+      "passed": true,
+      "milliseconds": 519
+    },
+    {
+      "name": "reverse dragging normalizes the rectangle and Shift creates a circle",
+      "passed": true,
+      "milliseconds": 1539
+    },
+    {
+      "name": "lines preserve reverse direction and Shift constrains the angle",
+      "passed": true,
+      "milliseconds": 833
+    },
+    {
+      "name": "text placement enters editing automatically and Backspace removes a character",
+      "passed": true,
+      "milliseconds": 735
+    },
+    {
+      "name": "object Delete, Undo and Redo change the real page file",
+      "passed": true,
+      "milliseconds": 725
+    },
+    {
+      "name": "shortCode is primary, old S aliases remain searchable and copy yields the shortCode",
+      "passed": true,
+      "milliseconds": 620
+    },
+    {
+      "name": "light and dark editor layouts remain visible at desktop and compact sizes",
+      "passed": true,
+      "milliseconds": 2564
+    }
+  ],
+  "rendererErrorCount": 0,
+  "layoutChecks": [
+    {
+      "width": 1600,
+      "height": 1000,
+      "scrollWidth": 1600,
+      "dark": false,
+      "canvas": {
+        "x": 256,
+        "y": 193,
+        "width": 1024,
+        "height": 576
+      },
+      "nativeContentSize": true,
+      "isolatedMinimumSizeOverride": true
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "scrollWidth": 1024,
+      "dark": false,
+      "canvas": {
+        "x": 256,
+        "y": 239,
+        "width": 448,
+        "height": 252
+      },
+      "nativeContentSize": true,
+      "isolatedMinimumSizeOverride": true
+    },
+    {
+      "width": 1600,
+      "height": 1000,
+      "scrollWidth": 1600,
+      "dark": true,
+      "canvas": {
+        "x": 256,
+        "y": 193,
+        "width": 1024,
+        "height": 576
+      },
+      "nativeContentSize": true,
+      "isolatedMinimumSizeOverride": true
+    }
+  ],
+  "note": "These eight checks ran in the development Electron host. They are not renamed or represented as final packaged-EXE checks."
+}

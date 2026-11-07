@@ -1,8 +1,8 @@
 import { randomUUID } from 'node:crypto';
 import fs from 'node:fs/promises';
-import os from 'node:os';
 import path from 'node:path';
 import { afterEach, describe, expect, it } from 'vitest';
+import { projectTestDirectory } from './project-directory.test-utils';
 import {
   applyProjectOperation,
   assertPresentationReady,
@@ -251,7 +251,7 @@ afterEach(async () => {
 });
 
 async function fixture() {
-  const root = await fs.mkdtemp(path.join(os.tmpdir(), 'huandeng-project-model-'));
+  const root = await projectTestDirectory('huandeng-project-model-', ['']);
   temporary.push(root);
   await fs.mkdir(path.join(root, 'pages'));
   const entryPath = path.join(root, 'deck.pptd');

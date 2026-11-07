@@ -42,7 +42,8 @@
     "src/pptd"
   ],
   "scripts": {
-    "build": "tsdown",
+    "build": "tsdown && node scripts/build-editor.mjs",
+    "build:editor": "node scripts/build-editor.mjs",
     "typecheck": "tsc --noEmit",
     "check:pack": "node scripts/check-pack.mjs",
     "test:e2e": "pnpm run build && playwright test",

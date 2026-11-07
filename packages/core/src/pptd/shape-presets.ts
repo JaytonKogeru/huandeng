@@ -28,6 +28,40 @@ function polygon(points: number[][]): string {
 
 export function presetShapePath(name: string, width: number, height: number): string | null {
   const points = (values: number[][]) => polygon(values.map(([x, y]) => [x * width, y * height]));
+  if (name === 'triangle')
+    return points([
+      [0.5, 0],
+      [1, 1],
+      [0, 1],
+    ]);
+  if (name === 'diamond')
+    return points([
+      [0.5, 0],
+      [1, 0.5],
+      [0.5, 1],
+      [0, 0.5],
+    ]);
+  if (name === 'chevron')
+    return points([
+      [0, 0],
+      [0.65, 0],
+      [1, 0.5],
+      [0.65, 1],
+      [0, 1],
+      [0.35, 0.5],
+    ]);
+  if (name === 'rightArrow' || name === 'leftArrow') {
+    const values = [
+      [0, 0.25],
+      [0.6, 0.25],
+      [0.6, 0],
+      [1, 0.5],
+      [0.6, 1],
+      [0.6, 0.75],
+      [0, 0.75],
+    ];
+    return points(name === 'leftArrow' ? values.map(([x, y]) => [1 - x, y]) : values);
+  }
   if (name === 'rtTriangle')
     return points([
       [0, 0],

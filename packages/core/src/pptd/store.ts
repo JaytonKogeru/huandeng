@@ -31,12 +31,7 @@ import {
   serializeMetadata,
 } from './identity';
 import { type CheckpointState, PageCheckpointArchive } from './page-checkpoints';
-import {
-  PageVersionArchive,
-  type PageVersionState,
-  pageVersionStateRevision,
-  VERSIONED_PAGE_METADATA,
-} from './page-history';
+import { PageVersionArchive, type PageVersionState, VERSIONED_PAGE_METADATA } from './page-history';
 import {
   acquireWriterLock,
   atomicWrite,
@@ -67,6 +62,7 @@ import {
   type PageVersionSnapshot,
   type PageVersionSummary,
   PptdError,
+  type PptdManifest,
   type PptdOperation,
   type PptdPage,
   type ProjectMetadata,
@@ -81,6 +77,15 @@ export interface OpenPptdOptions {
   stateDir?: string;
   readOnly?: boolean;
   afterWrite?: (index: number) => Promise<void>;
+  onTiming?: (sample: PptdTiming) => void;
+}
+
+export interface PptdTiming {
+  phase: string;
+  durationMs: number;
+  pages?: number;
+  assetReferences?: number;
+  uniqueAssets?: number;
 }
 
 interface PageDocument {
@@ -96,6 +101,41 @@ interface Documents {
   pages: Map<string, PageDocument>;
   pageAssets: Map<string, Record<string, Revision | null>>;
   diagnostics: Diagnostic[];
+}
+
+const manifestCache = new WeakMap<Documents, { source: string; value: PptdManifest }>();
+
+function documentManifest(documents: Documents): PptdManifest {
+  const cached = manifestCache.get(documents);
+  if (cached?.source === documents.manifestSource) return cached.value;
+  const value = parseManifest(documents.manifestSource).value;
+  manifestCache.set(documents, { source: documents.manifestSource, value });
+  return value;
+}
+
+function reportTiming(
+  listener: OpenPptdOptions['onTiming'],
+  phase: string,
+  started: number,
+  details: Omit<PptdTiming, 'phase' | 'durationMs'> = {},
+): void {
+  try {
+    listener?.({ phase, durationMs: performance.now() - started, ...details });
+  } catch {}
+}
+
+async function mapConcurrent<T, R>(items: T[], task: (item: T) => Promise<R>): Promise<R[]> {
+  const results = new Array<R>(items.length);
+  let cursor = 0;
+  await Promise.all(
+    Array.from({ length: Math.min(8, items.length) }, async () => {
+      while (cursor < items.length) {
+        const index = cursor++;
+        results[index] = await task(items[index]);
+      }
+    }),
+  );
+  return results;
 }
 
 function assetReferences(value: unknown, found = new Set<string>()): Set<string> {
@@ -169,30 +209,54 @@ async function refreshAssetFingerprints(
   root: string,
   documents: Documents,
   cache: AssetHashCache,
+  onTiming?: OpenPptdOptions['onTiming'],
 ): Promise<void> {
-  const manifest = parseManifest(documents.manifestSource).value;
-  documents.pageAssets = new Map();
-  documents.diagnostics = documents.diagnostics.filter((item) => item.code !== 'ASSET_UNAVAILABLE');
+  const started = performance.now();
+  const manifest = documentManifest(documents);
+  const globalAssets = assetReferences(manifest);
+  const pageReferences = new Map<string, Set<string>>();
+  const references = new Set<string>();
+  let assetReferenceCount = 0;
   for (const [pageId, page] of documents.pages) {
     const override = documents.metadata.slides[pageId]?.themeOverride;
-    const globalAssets = assetReferences(override ? { ...manifest, theme: override } : manifest);
-    const fingerprints: Record<string, Revision | null> = {};
-    for (const reference of new Set([...globalAssets, ...assetReferences(page.data)])) {
+    const assets = override ? assetReferences({ ...manifest, theme: override }) : globalAssets;
+    const pageAssets = new Set([...assets, ...assetReferences(page.data)]);
+    pageReferences.set(pageId, pageAssets);
+    assetReferenceCount += pageAssets.size;
+    for (const reference of pageAssets) references.add(reference);
+  }
+  const resolved = new Map<string, { revision: Revision | null; error?: string }>(
+    await mapConcurrent([...references], async (reference) => {
       try {
-        fingerprints[reference] = await fingerprintAsset(root, reference, cache);
+        return [reference, { revision: await fingerprintAsset(root, reference, cache) }] as const;
       } catch (error) {
-        fingerprints[reference] = null;
+        return [reference, { revision: null, error: String(error) }] as const;
+      }
+    }),
+  );
+  documents.pageAssets = new Map();
+  documents.diagnostics = documents.diagnostics.filter((item) => item.code !== 'ASSET_UNAVAILABLE');
+  for (const [pageId, assets] of pageReferences) {
+    const fingerprints: Record<string, Revision | null> = {};
+    for (const reference of assets) {
+      const result = resolved.get(reference);
+      fingerprints[reference] = result?.revision ?? null;
+      if (result && 'error' in result)
         documents.diagnostics.push({
           code: 'ASSET_UNAVAILABLE',
-          message: `Cannot read asset ${reference}: ${String(error)}`,
+          message: `Cannot read asset ${reference}: ${result.error}`,
           severity: 'warning',
           pageId,
           path: reference,
         });
-      }
     }
     documents.pageAssets.set(pageId, fingerprints);
   }
+  reportTiming(onTiming, 'assets', started, {
+    pages: pageReferences.size,
+    assetReferences: assetReferenceCount,
+    uniqueAssets: references.size,
+  });
 }
 
 function revisions(documents: Documents): NewRevisions {
@@ -281,6 +345,7 @@ export class PptdStore {
     private readonly release: () => Promise<void>,
     private readonly assetCache: AssetHashCache,
     documents: Documents,
+    private readonly onTiming?: OpenPptdOptions['onTiming'],
   ) {
     this.documents = documents;
     this.snapshot = this.makeSnapshot(documents);
@@ -289,6 +354,7 @@ export class PptdStore {
   }
 
   static async open(options: OpenPptdOptions): Promise<PptdStore> {
+    const started = performance.now();
     const entryPath = await fs.realpath(path.resolve(options.entryPath));
     const root = await canonicalProjectRoot(path.dirname(entryPath));
     const entry = path.basename(entryPath);
@@ -307,8 +373,9 @@ export class PptdStore {
       const metadataPath = await resolveProjectPath(root, METADATA_PATH);
       if (!readOnly && (await readOptional(metadataPath)) === null) {
         const metadata = createMetadata(entry, manifest.pages);
-        for (const pagePath of manifest.pages)
-          parsePage(await readUtf8(await resolveProjectPath(root, pagePath)));
+        await mapConcurrent(manifest.pages, async (pagePath) =>
+          parsePage(await readUtf8(await resolveProjectPath(root, pagePath))),
+        );
         await atomicWrite(metadataPath, serializeMetadata(metadata));
       }
       if (!readOnly) {
@@ -317,7 +384,13 @@ export class PptdStore {
           await atomicWrite(metadataPath, serializeMetadata(metadata));
       }
       const assetCache: AssetHashCache = new Map();
-      const documents = await PptdStore.loadDocuments(root, entry, assetCache);
+      const documents = await PptdStore.loadDocuments(
+        root,
+        entry,
+        assetCache,
+        undefined,
+        options.onTiming,
+      );
       const store = new PptdStore(
         root,
         entry,
@@ -327,6 +400,7 @@ export class PptdStore {
         release,
         assetCache,
         documents,
+        options.onTiming,
       );
       await store.pageVersions.initialize(
         new Map(
@@ -337,6 +411,7 @@ export class PptdStore {
         ),
         await persistence.history(),
       );
+      reportTiming(options.onTiming, 'open', started, { pages: documents.pages.size });
       return store;
     } catch (error) {
       await release();
@@ -348,14 +423,22 @@ export class PptdStore {
     root: string,
     entry: string,
     assetCache: AssetHashCache,
+    previous?: Documents,
+    onTiming?: OpenPptdOptions['onTiming'],
   ): Promise<Documents> {
+    const started = performance.now();
     const manifestSource = await readUtf8(await resolveProjectPath(root, entry));
-    const manifest = parseManifest(manifestSource).value;
+    const manifest =
+      previous?.manifestSource === manifestSource
+        ? documentManifest(previous)
+        : parseManifest(manifestSource).value;
     const metadataSource = await readOptional(await resolveProjectPath(root, METADATA_PATH));
     const metadata =
       metadataSource === null
         ? createMetadata(entry, manifest.pages, root)
-        : parseMetadata(metadataSource);
+        : previous?.metadataSource === metadataSource
+          ? previous.metadata
+          : parseMetadata(metadataSource);
     readProjectModel(metadata);
     if (normalizeRelativePath(metadata.entry) !== normalizeRelativePath(entry))
       throw new PptdError('INVALID_DOCUMENT', 'The sidecar belongs to another PPTD entry.');
@@ -381,14 +464,29 @@ export class PptdStore {
           `Removed page ${pagePath} is still referenced by the manifest.`,
         );
     }
+    reportTiming(onTiming, 'loadDocuments.metadata', started);
+    const pagesStarted = performance.now();
+    const loaded = await mapConcurrent(
+      Object.entries(metadata.slides),
+      async ([pageId, identity]) => {
+        const file = await resolveProjectPath(root, identity.path);
+        const source = await readOptional(file);
+        if (source === null) return { pageId, identity, page: null, realPath: null };
+        const realPath = await fs.realpath(file);
+        const cached = previous?.pages.get(pageId);
+        const page =
+          cached?.source === source && cached.path === identity.path
+            ? cached
+            : { source, path: identity.path, data: parsePage(source).value };
+        return { pageId, identity, page, realPath };
+      },
+    );
     const pages = new Map<string, PageDocument>();
     const pageAssets = new Map<string, Record<string, Revision | null>>();
     const diagnostics: Diagnostic[] = [];
     const realPaths = new Set<string>();
-    for (const [pageId, identity] of Object.entries(metadata.slides)) {
-      const file = await resolveProjectPath(root, identity.path);
-      const source = await readOptional(file);
-      if (source === null) {
+    for (const { pageId, identity, page, realPath } of loaded) {
+      if (page === null || realPath === null) {
         diagnostics.push({
           code: 'PAGE_MISSING',
           message: `Missing page ${identity.path}; use an explicit relink after an external rename.`,
@@ -398,17 +496,19 @@ export class PptdStore {
         });
         continue;
       }
-      const realPath = await fs.realpath(file);
       if (realPaths.has(realPath))
         throw new PptdError(
           'INVALID_DOCUMENT',
           'Multiple identities resolve to the same physical page file.',
         );
       realPaths.add(realPath);
-      pages.set(pageId, { source, path: identity.path, data: parsePage(source).value });
+      pages.set(pageId, page);
     }
+    reportTiming(onTiming, 'loadDocuments.pages', pagesStarted, { pages: pages.size });
     const documents = { manifestSource, metadataSource, metadata, pages, pageAssets, diagnostics };
-    await refreshAssetFingerprints(root, documents, assetCache);
+    manifestCache.set(documents, { source: manifestSource, value: manifest });
+    await refreshAssetFingerprints(root, documents, assetCache, onTiming);
+    reportTiming(onTiming, 'loadDocuments', started, { pages: pages.size });
     return documents;
   }
 
@@ -433,7 +533,8 @@ export class PptdStore {
   }
 
   private makeSnapshot(documents: Documents): DeckSnapshot {
-    const manifest = parseManifest(documents.manifestSource).value;
+    const started = performance.now();
+    const manifest = documentManifest(documents);
     const byPath = new Map(
       Object.entries(documents.metadata.slides).map(([id, identity]) => [identity.path, id]),
     );
@@ -442,7 +543,7 @@ export class PptdStore {
       .map((pagePath) => byPath.get(pagePath))
       .filter((id): id is string => id !== undefined && documents.pages.has(id))
       .map((id) => this.pageSnapshot(documents, id));
-    return {
+    const snapshot: DeckSnapshot = {
       kind: 'pptd',
       deckId: documents.metadata.deckId,
       entry: this.entry,
@@ -460,10 +561,15 @@ export class PptdStore {
       sequence: this.sequence,
       diagnostics: documents.diagnostics,
     };
+    reportTiming(this.onTiming, 'snapshot', started, { pages: pages.length });
+    return snapshot;
   }
 
   getSnapshot(): DeckSnapshot {
-    return structuredClone(this.snapshot);
+    const started = performance.now();
+    const snapshot = structuredClone(this.snapshot);
+    reportTiming(this.onTiming, 'snapshot.clone', started, { pages: snapshot.pages.length });
+    return snapshot;
   }
 
   readPage(target: string): PageSnapshot {
@@ -477,12 +583,12 @@ export class PptdStore {
     return {
       source: page.source,
       metadata: structuredClone(documents.metadata.slides[pageId]),
-      size: parseManifest(documents.manifestSource).value.size ?? [960, 540],
+      size: documentManifest(documents).size ?? [960, 540],
     };
   }
 
   private checkpointState(documents: Documents, pageId: string): CheckpointState {
-    const manifest = parseManifest(documents.manifestSource).value;
+    const manifest = documentManifest(documents);
     const theme = documents.metadata.slides[pageId].themeOverride ?? manifest.theme;
     return {
       ...this.pageVersionState(documents, pageId),
@@ -524,7 +630,13 @@ export class PptdStore {
           'PENDING_RECOVERY',
           'Recover the pending save before recording a page version.',
         );
-      const documents = await PptdStore.loadDocuments(this.root, this.entry, this.assetCache);
+      const documents = await PptdStore.loadDocuments(
+        this.root,
+        this.entry,
+        this.assetCache,
+        this.documents,
+        this.onTiming,
+      );
       const { pageId } = resolvePageIdentity(documents.metadata, request.pageId);
       const requestHash = hashPayload(request);
       const versionId = `checkpoint:${hashPayload([documents.metadata.deckId, pageId, request.requestId]).slice(7, 39)}`;
@@ -563,11 +675,23 @@ export class PptdStore {
   }
 
   private async captureExternalVersions(documents: Documents): Promise<void> {
+    const sizeChanged = !isDeepStrictEqual(
+      documentManifest(this.documents).size ?? [960, 540],
+      documentManifest(documents).size ?? [960, 540],
+    );
     const changed = [...documents.pages.keys()].filter((pageId) => {
-      if (!this.documents.pages.has(pageId)) return true;
+      const previous = this.documents.pages.get(pageId);
+      if (!previous) return true;
       return (
-        pageVersionStateRevision(this.pageVersionState(this.documents, pageId)) !==
-        pageVersionStateRevision(this.pageVersionState(documents, pageId))
+        sizeChanged ||
+        previous.source !== documents.pages.get(pageId)?.source ||
+        VERSIONED_PAGE_METADATA.some(
+          (key) =>
+            !isDeepStrictEqual(
+              this.documents.metadata.slides[pageId]?.[key],
+              documents.metadata.slides[pageId]?.[key],
+            ),
+        )
       );
     });
     if (!changed.length) return;
@@ -622,10 +746,16 @@ export class PptdStore {
     }
     const manifestChanged = before.manifest !== after.manifest;
     const metadataChanged = before.metadata !== after.metadata;
+    const changed = Object.keys(changedPages).length > 0 || manifestChanged || metadataChanged;
     this.documents = documents;
-    if (Object.keys(changedPages).length || manifestChanged || metadataChanged) this.sequence++;
-    this.snapshot = this.makeSnapshot(documents);
-    if (Object.keys(changedPages).length || manifestChanged || metadataChanged)
+    if (changed) this.sequence++;
+    if (
+      changed ||
+      !isDeepStrictEqual(this.snapshot.diagnostics, documents.diagnostics) ||
+      this.snapshot.writable !== (!this.readOnly && !this.closed)
+    )
+      this.snapshot = this.makeSnapshot(documents);
+    if (changed)
       this.emit({
         type,
         epoch: this.epoch,
@@ -647,7 +777,13 @@ export class PptdStore {
             'PENDING_RECOVERY',
             'A pending transaction must recover before external changes are published.',
           );
-        const next = await PptdStore.loadDocuments(this.root, this.entry, this.assetCache);
+        const next = await PptdStore.loadDocuments(
+          this.root,
+          this.entry,
+          this.assetCache,
+          this.documents,
+          this.onTiming,
+        );
         if (next.diagnostics.some((item) => item.severity === 'error'))
           throw new PptdError(
             'INVALID_DOCUMENT',
@@ -738,7 +874,7 @@ export class PptdStore {
         state: identity.state,
         ...(checkpoint ? { themeOverride: checkpoint.state.theme } : {}),
       };
-      await refreshAssetFingerprints(this.root, documents, this.assetCache);
+      await refreshAssetFingerprints(this.root, documents, this.assetCache, this.onTiming);
       return {
         version: version.summary,
         page: this.pageSnapshot(documents, pageId),
@@ -794,7 +930,14 @@ export class PptdStore {
   }
 
   commit(request: TransactionRequest): Promise<TransactionResult> {
-    return this.enqueue(() => this.commitNow(request));
+    return this.enqueue(async () => {
+      const started = performance.now();
+      try {
+        return await this.commitNow(request);
+      } finally {
+        reportTiming(this.onTiming, 'commit', started);
+      }
+    });
   }
 
   async close(): Promise<void> {
@@ -842,7 +985,13 @@ export class PptdStore {
         'PENDING_RECOVERY',
         'A previous transaction needs recovery before new writes.',
       );
-    const base = await PptdStore.loadDocuments(this.root, this.entry, this.assetCache);
+    const base = await PptdStore.loadDocuments(
+      this.root,
+      this.entry,
+      this.assetCache,
+      this.documents,
+      this.onTiming,
+    );
     if (request.deckId !== base.metadata.deckId)
       throw new PptdError('TARGET_NOT_FOUND', 'The request belongs to another deck.');
     await this.captureExternalVersions(base);
@@ -862,6 +1011,7 @@ export class PptdStore {
     request: TransactionRequest,
     requestHash: Revision,
   ): Promise<TransactionResult> {
+    const started = performance.now();
     const before = revisions(base);
     const docs = structuredClone(base);
     const changedElements = new Map<string, ElementRef>();
@@ -906,7 +1056,7 @@ export class PptdStore {
       const byPath = new Map(
         Object.entries(docs.metadata.slides).map(([id, identity]) => [identity.path, id]),
       );
-      return parseManifest(docs.manifestSource).value.pages.map((pagePath) => {
+      return documentManifest(docs).pages.map((pagePath) => {
         const id = byPath.get(normalizeRelativePath(pagePath));
         if (!id) throw new PptdError('INVALID_DOCUMENT', `Unindexed page ${pagePath}.`);
         return id;
@@ -1207,7 +1357,7 @@ export class PptdStore {
               'Relink requires the new page file hash.',
               { pageId, currentRevision: hashBytes(source) },
             );
-          const paths = parseManifest(docs.manifestSource).value.pages.map((value) =>
+          const paths = documentManifest(docs).pages.map((value) =>
             normalizeRelativePath(value) === identity.path ? newPath : value,
           );
           identity.path = newPath;
@@ -1262,7 +1412,7 @@ export class PptdStore {
             page: this.pageSnapshot(docs, pageId),
             instanceId: operation.instanceId,
             binding,
-            size: parseManifest(docs.manifestSource).value.size ?? [960, 540],
+            size: documentManifest(docs).size ?? [960, 540],
             params: operation.params,
             reset: operation.op === 'recipe.reset' ? (operation.reset ?? {}) : undefined,
           });
@@ -1290,10 +1440,7 @@ export class PptdStore {
             );
           if (checkpoint) {
             if (
-              !isDeepStrictEqual(
-                checkpoint.state.size,
-                parseManifest(docs.manifestSource).value.size ?? [960, 540],
-              )
+              !isDeepStrictEqual(checkpoint.state.size, documentManifest(docs).size ?? [960, 540])
             )
               throw new PptdError(
                 'INVALID_REQUEST',
@@ -1405,9 +1552,7 @@ export class PptdStore {
     docs.metadataSource = isDeepStrictEqual(base.metadata, docs.metadata)
       ? base.metadataSource
       : serializeMetadata(docs.metadata);
-    for (const pagePath of parseManifest(docs.manifestSource).value.pages.map(
-      normalizeRelativePath,
-    )) {
+    for (const pagePath of documentManifest(docs).pages.map(normalizeRelativePath)) {
       const identity = Object.entries(docs.metadata.slides).find(
         ([, slide]) => slide.path === pagePath,
       );
@@ -1431,7 +1576,7 @@ export class PptdStore {
     docs.diagnostics = docs.diagnostics.filter(
       (item) => item.code !== 'PAGE_MISSING' || !item.pageId || !docs.pages.has(item.pageId),
     );
-    await refreshAssetFingerprints(this.root, docs, this.assetCache);
+    await refreshAssetFingerprints(this.root, docs, this.assetCache, this.onTiming);
     const files: FileChange[] = [];
     for (const [pageId, page] of docs.pages) {
       const original = base.pages.get(pageId);
@@ -1485,7 +1630,10 @@ export class PptdStore {
       requestHash,
       result,
     };
+    reportTiming(this.onTiming, 'commit.prepare', started, { pages: touchedPages.size });
+    const persistenceStarted = performance.now();
     await this.persistence.commit(record);
+    reportTiming(this.onTiming, 'commit.persist', persistenceStarted, { pages: touchedPages.size });
     this.replaceDocuments(docs, 'committed', operationId, request.originClientId);
     return structuredClone(result);
   }

@@ -1,0 +1,357 @@
+{
+  "schemaVersion": 1,
+  "stage": "candidate-integration",
+  "methodology": {
+    "project": "same 80-page private project, copied into an isolated temporary directory per run",
+    "process": "new Electron process with isolated profile and document runtime",
+    "filesystemCache": "not cleared; these are not OS-cold measurements",
+    "viewport": {
+      "width": 1600,
+      "height": 1000,
+      "devicePixelRatio": 1
+    },
+    "visual": "renderer keydown to MutationObserver observing object removal",
+    "persistence": "10 ms file polling, recorded separately from visual response and service acknowledgement",
+    "samplesPerRun": 5,
+    "summary": "median and min/max; no percentile claim",
+    "memory": "renderer and document service sampled at recorded stages; no long-duration leak claim"
+  },
+  "sanitization": "Research paths, titles, original file lists, source file hashes, document content and screenshots are excluded. Raw receipt hashes identify the local private evidence without publishing it.",
+  "runs": [
+    {
+      "label": "before-v04",
+      "rawReceipt": {
+        "localFile": ".verification/performance-v05/before-v04.json",
+        "sha256": "f994a5db9a9e6bafa1046d8b8f5ec93599767ccb4844d4492f93d92a20d3408c"
+      },
+      "passed": true,
+      "timestamp": "2026-11-07T12:12:54.046Z",
+      "source": {
+        "releaseVersion": "0.4.0",
+        "runtimeRevision": "c2fede5f45aa7a41e853304f9907c2d17e6bf8a2"
+      },
+      "runtime": {
+        "host": "installed HUANDENG Editor EXE",
+        "frontend": "v0.4 runtime",
+        "packagedRelease": true
+      },
+      "platform": "win32",
+      "node": "v22.21.0",
+      "electron": "38.7.2",
+      "pageCount": 80,
+      "launchHandshakeMs": 1067.246799999999,
+      "firstWindowMs": 1067.5496000000003,
+      "canvasInteractiveMs": 27318.8478,
+      "initialDom": {
+        "totalNodes": 8962,
+        "thumbnails": 80,
+        "thumbnailRenderers": 80,
+        "allPageRenderers": 81,
+        "canvasElements": 4,
+        "pendingImages": 0,
+        "viewport": {
+          "width": 1600,
+          "height": 1000,
+          "devicePixelRatio": 1
+        }
+      },
+      "settledDom": {
+        "totalNodes": 8962,
+        "thumbnails": 80,
+        "thumbnailRenderers": 80,
+        "allPageRenderers": 81,
+        "canvasElements": 4,
+        "pendingImages": 0,
+        "viewport": {
+          "width": 1600,
+          "height": 1000,
+          "devicePixelRatio": 1
+        }
+      },
+      "finalDom": {
+        "totalNodes": 8962,
+        "thumbnails": 80,
+        "thumbnailRenderers": 80,
+        "allPageRenderers": 81,
+        "canvasElements": 4,
+        "pendingImages": 0,
+        "viewport": {
+          "width": 1600,
+          "height": 1000,
+          "devicePixelRatio": 1
+        }
+      },
+      "summary": {
+        "visual": {
+          "count": 5,
+          "minMs": 2351.2999999523163,
+          "medianMs": 2388.4000000953674,
+          "maxMs": 3697.0999999046326
+        },
+        "persistence": {
+          "count": 5,
+          "minMs": 924.5,
+          "medianMs": 930.699951171875,
+          "maxMs": 1123.5
+        },
+        "acknowledgement": {
+          "count": 5,
+          "minMs": 2892.5,
+          "medianMs": 2982.699951171875,
+          "maxMs": 4254.5
+        }
+      },
+      "memorySamples": [
+        {
+          "stage": "interactive",
+          "rendererWorkingSetKiB": 574140
+        },
+        {
+          "stage": "settled",
+          "rendererWorkingSetKiB": 573664
+        },
+        {
+          "stage": "after-five-insert-delete-pairs",
+          "rendererWorkingSetKiB": 1004420
+        }
+      ],
+      "originalUnchanged": true,
+      "rendererErrorCount": 0
+    },
+    {
+      "label": "before-v04-memory",
+      "rawReceipt": {
+        "localFile": ".verification/performance-v05/before-v04-memory.json",
+        "sha256": "14d9bbd2e740927ae0da64af0898f6dedff2091d61ba6037707415fe1b5a8956"
+      },
+      "passed": true,
+      "timestamp": "2026-11-07T12:24:34.567Z",
+      "source": {
+        "releaseVersion": "0.4.0",
+        "runtimeRevision": "c2fede5f45aa7a41e853304f9907c2d17e6bf8a2"
+      },
+      "runtime": {
+        "host": "installed HUANDENG Editor EXE",
+        "frontend": "v0.4 runtime",
+        "packagedRelease": true
+      },
+      "platform": "win32",
+      "node": "v22.21.0",
+      "electron": "38.7.2",
+      "pageCount": 80,
+      "launchHandshakeMs": 1005.7368000000006,
+      "firstWindowMs": 1006.0517,
+      "canvasInteractiveMs": 24124.1463,
+      "initialDom": {
+        "totalNodes": 8962,
+        "thumbnails": 80,
+        "thumbnailRenderers": 80,
+        "allPageRenderers": 81,
+        "canvasElements": 4,
+        "pendingImages": 0,
+        "viewport": {
+          "width": 1600,
+          "height": 1000,
+          "devicePixelRatio": 1
+        }
+      },
+      "settledDom": {
+        "totalNodes": 8962,
+        "thumbnails": 80,
+        "thumbnailRenderers": 80,
+        "allPageRenderers": 81,
+        "canvasElements": 4,
+        "pendingImages": 0,
+        "viewport": {
+          "width": 1600,
+          "height": 1000,
+          "devicePixelRatio": 1
+        }
+      },
+      "finalDom": {
+        "totalNodes": 8962,
+        "thumbnails": 80,
+        "thumbnailRenderers": 80,
+        "allPageRenderers": 81,
+        "canvasElements": 4,
+        "pendingImages": 0,
+        "viewport": {
+          "width": 1600,
+          "height": 1000,
+          "devicePixelRatio": 1
+        }
+      },
+      "summary": {
+        "visual": {
+          "count": 5,
+          "minMs": 2345.0999999046326,
+          "medianMs": 2393.600000143051,
+          "maxMs": 2433.7000000476837
+        },
+        "persistence": {
+          "count": 5,
+          "minMs": 901.39990234375,
+          "medianMs": 921.89990234375,
+          "maxMs": 944.199951171875
+        },
+        "acknowledgement": {
+          "count": 5,
+          "minMs": 2867.699951171875,
+          "medianMs": 2922.39990234375,
+          "maxMs": 2991.199951171875
+        }
+      },
+      "memorySamples": [
+        {
+          "stage": "interactive",
+          "rendererWorkingSetKiB": 575220,
+          "documentService": {
+            "workingSetKiB": 1045828,
+            "privateBytesKiB": 1963988,
+            "source": "Windows Get-Process"
+          }
+        },
+        {
+          "stage": "settled",
+          "rendererWorkingSetKiB": 574960,
+          "documentService": {
+            "workingSetKiB": 1045804,
+            "privateBytesKiB": 1963948,
+            "source": "Windows Get-Process"
+          }
+        },
+        {
+          "stage": "after-five-insert-delete-pairs",
+          "rendererWorkingSetKiB": 1047448,
+          "documentService": {
+            "workingSetKiB": 1140108,
+            "privateBytesKiB": 2094504,
+            "source": "Windows Get-Process"
+          }
+        }
+      ],
+      "originalUnchanged": true,
+      "rendererErrorCount": 0
+    },
+    {
+      "label": "after-v05-integration",
+      "rawReceipt": {
+        "localFile": ".verification/performance-v05/after-v05-integration.json",
+        "sha256": "a651b505e057210fa6dab55b54490a057363db46ba1be61ef40e6acbf57b13a1"
+      },
+      "passed": true,
+      "timestamp": "2026-11-07T12:31:42.600Z",
+      "source": {
+        "baselineRevision": "8798d8f058dab89a80143e0c813780c8d87a70f9",
+        "candidateTransferSha256": "157272ec0f472923d2f185b19a614f6e15ad48d3d9c9931e575369cddda657ae",
+        "description": "Baseline source plus the recorded candidate transfer; this is not a final release commit."
+      },
+      "runtime": {
+        "host": "Electron development host",
+        "frontend": "compiled production bundle",
+        "packagedRelease": false
+      },
+      "platform": "win32",
+      "node": "v22.21.0",
+      "electron": "38.7.2",
+      "pageCount": 80,
+      "launchHandshakeMs": 999.4467000000004,
+      "firstWindowMs": 999.6590000000006,
+      "canvasInteractiveMs": 5863.941500000001,
+      "initialDom": {
+        "totalNodes": 1734,
+        "thumbnails": 80,
+        "thumbnailRenderers": 7,
+        "allPageRenderers": 8,
+        "canvasElements": 4,
+        "pendingImages": 0,
+        "viewport": {
+          "width": 1600,
+          "height": 1000,
+          "devicePixelRatio": 1
+        }
+      },
+      "settledDom": {
+        "totalNodes": 1734,
+        "thumbnails": 80,
+        "thumbnailRenderers": 7,
+        "allPageRenderers": 8,
+        "canvasElements": 4,
+        "pendingImages": 0,
+        "viewport": {
+          "width": 1600,
+          "height": 1000,
+          "devicePixelRatio": 1
+        }
+      },
+      "finalDom": {
+        "totalNodes": 1734,
+        "thumbnails": 80,
+        "thumbnailRenderers": 7,
+        "allPageRenderers": 8,
+        "canvasElements": 4,
+        "pendingImages": 0,
+        "viewport": {
+          "width": 1600,
+          "height": 1000,
+          "devicePixelRatio": 1
+        }
+      },
+      "summary": {
+        "visual": {
+          "count": 5,
+          "minMs": 20.90000009536743,
+          "medianMs": 25.600000143051147,
+          "maxMs": 30.59999990463257
+        },
+        "persistence": {
+          "count": 5,
+          "minMs": 207.699951171875,
+          "medianMs": 225.60009765625,
+          "maxMs": 299.300048828125
+        },
+        "acknowledgement": {
+          "count": 5,
+          "minMs": 486.60009765625,
+          "medianMs": 528.60009765625,
+          "maxMs": 611.300048828125
+        }
+      },
+      "memorySamples": [
+        {
+          "stage": "interactive",
+          "rendererWorkingSetKiB": 173932,
+          "documentService": {
+            "workingSetKiB": 213428,
+            "privateBytesKiB": 278512,
+            "source": "Windows Get-Process"
+          }
+        },
+        {
+          "stage": "settled",
+          "rendererWorkingSetKiB": 169620,
+          "documentService": {
+            "workingSetKiB": 213444,
+            "privateBytesKiB": 278524,
+            "source": "Windows Get-Process"
+          }
+        },
+        {
+          "stage": "after-five-insert-delete-pairs",
+          "rendererWorkingSetKiB": 306748,
+          "documentService": {
+            "workingSetKiB": 216480,
+            "privateBytesKiB": 281000,
+            "source": "Windows Get-Process"
+          }
+        }
+      ],
+      "originalUnchanged": true,
+      "rendererErrorCount": 0
+    }
+  ],
+  "finalPackagedCandidate": {
+    "status": "pending",
+    "note": "The v0.5 run uses the development Electron host and production bundle. Recheck the actual release EXE before adopting final release metrics."
+  }
+}

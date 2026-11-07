@@ -1,9 +1,9 @@
 import { randomUUID } from 'node:crypto';
 import fs from 'node:fs/promises';
-import os from 'node:os';
 import path from 'node:path';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { presentationSnapshot } from './presentation-snapshot';
+import { projectTestDirectory } from './project-directory.test-utils';
 import { emptyStory, type ProjectModel } from './project-model';
 import { openPptdStore, type PptdStore } from './store';
 import type { DeckSnapshot, PageVersionSnapshot, PptdOperation } from './types';
@@ -18,7 +18,7 @@ afterEach(async () => {
 });
 
 async function fixture() {
-  const root = await fs.mkdtemp(path.join(os.tmpdir(), 'huandeng-presentation-'));
+  const root = await projectTestDirectory('huandeng-presentation-', ['']);
   directories.push(root);
   await fs.mkdir(path.join(root, 'pages'));
   await fs.mkdir(path.join(root, 'media'));

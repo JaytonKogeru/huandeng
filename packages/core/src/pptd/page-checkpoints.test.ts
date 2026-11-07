@@ -1,8 +1,8 @@
 import { randomUUID } from 'node:crypto';
 import fs from 'node:fs/promises';
-import os from 'node:os';
 import path from 'node:path';
 import { afterEach, describe, expect, it } from 'vitest';
+import { projectTestDirectory } from './project-directory.test-utils';
 import { openPptdStore, type PptdStore } from './store';
 import type { CreatePageCheckpointRequest, PptdOperation } from './types';
 
@@ -16,7 +16,10 @@ afterEach(async () => {
 });
 
 async function fixture() {
-  const directory = await fs.mkdtemp(path.join(os.tmpdir(), 'huandeng-checkpoints-'));
+  const directory = await projectTestDirectory('huandeng-checkpoints-', [
+    'project',
+    'moved-project',
+  ]);
   temporary.push(directory);
   const root = path.join(directory, 'project');
   await fs.mkdir(path.join(root, 'pages'), { recursive: true });

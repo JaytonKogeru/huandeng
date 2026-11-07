@@ -1,8 +1,8 @@
 import { createHash, randomBytes, randomUUID } from 'node:crypto';
 import fs from 'node:fs/promises';
-import type { ServerResponse } from 'node:http';
+import type { IncomingMessage, ServerResponse } from 'node:http';
+import type { AddressInfo } from 'node:net';
 import path from 'node:path';
-import type { ViteDevServer } from 'vite';
 import { importImage } from '../../pptd/asset-import.ts';
 import { discoveryPath, runtimeRoot, type SessionDiscovery } from '../../pptd/client.ts';
 import {
@@ -11,6 +11,7 @@ import {
   recordCheckpointMetadataInitialization,
   registerCheckpointRoot,
 } from '../../pptd/git.ts';
+import { json, readBody } from '../../pptd/http.ts';
 import { presentationSnapshot } from '../../pptd/presentation-snapshot.ts';
 import { readProjectModel, resolvePresentation } from '../../pptd/project-model.ts';
 import { readProjectTree } from '../../pptd/project-tree.ts';
@@ -22,15 +23,31 @@ import {
   PptdError,
   type TransactionRequest,
 } from '../../pptd/types.ts';
-import { type ApiContext, json, readBody } from './context.ts';
+import type { ApiContext } from './context.ts';
 
-const shutdowns = new WeakMap<ViteDevServer['middlewares'], () => Promise<void>>();
+export interface PptdRouteHost {
+  middlewares: {
+    use(handler: (req: IncomingMessage, res: ServerResponse, next: () => void) => unknown): unknown;
+  };
+  watcher: {
+    add(root: string): unknown;
+    on(event: 'all', listener: (event: string, file: string) => void): unknown;
+    off(event: 'all', listener: (event: string, file: string) => void): unknown;
+  };
+  httpServer?: {
+    address(): AddressInfo | string | null;
+    once(event: string, listener: (...args: unknown[]) => void): unknown;
+  } | null;
+  config: { logger: { error(message: string): void } };
+}
 
-export async function closePptdServer(server: ViteDevServer) {
+const shutdowns = new WeakMap<PptdRouteHost['middlewares'], () => Promise<void>>();
+
+export async function closePptdServer(server: PptdRouteHost) {
   await shutdowns.get(server.middlewares)?.();
 }
 
-export async function registerPptdRoutes(server: ViteDevServer, _ctx: ApiContext) {
+export async function registerPptdRoutes(server: PptdRouteHost, _ctx?: ApiContext) {
   const entry = process.env.HUANDENG_DECK;
   if (!entry) return;
   const root = path.dirname(await fs.realpath(entry));
@@ -76,10 +93,22 @@ export async function registerPptdRoutes(server: ViteDevServer, _ctx: ApiContext
     for (const client of clients) client.write(': heartbeat\n\n');
   }, 20000);
   heartbeat.unref();
-  server.watcher.add(root);
+  try {
+    server.watcher.add(root);
+  } catch (error) {
+    unsubscribe();
+    clearInterval(heartbeat);
+    await store.close();
+    throw error;
+  }
   const watch = (_event: string, file: string) => {
     const rel = path.relative(root, file);
-    if (rel.startsWith('..') || path.isAbsolute(rel) || rel.startsWith(`Exports${path.sep}`))
+    if (
+      rel.startsWith('..') ||
+      path.isAbsolute(rel) ||
+      rel.startsWith(`Exports${path.sep}`) ||
+      /^\..+\.huandeng-[0-9a-f-]+\.tmp$/i.test(path.basename(file))
+    )
       return;
     if (refreshTimer) clearTimeout(refreshTimer);
     refreshTimer = setTimeout(() => {
@@ -158,10 +187,10 @@ export async function registerPptdRoutes(server: ViteDevServer, _ctx: ApiContext
       }
       const route = url.pathname.slice('/__pptd'.length);
       if (method === 'GET' && route === '/session') {
-        await store.refreshExternal();
+        const snapshot = await store.refreshExternal();
         return json(res, 200, {
-          ...(await store.getSnapshot()),
-          entry: path.join(root, store.getSnapshot().entry),
+          ...snapshot,
+          entry: path.join(root, snapshot.entry),
           sessionToken: token,
           desktopProtocol: 1,
         });

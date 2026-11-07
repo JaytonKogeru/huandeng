@@ -17,13 +17,13 @@ import {
   Loader2,
   Maximize2,
   Minus,
+  MousePointer2,
   PanelsTopLeft,
   Play,
   Plus,
   Redo2,
   RefreshCw,
   Save,
-  Square,
   Type,
   Undo2,
   Ungroup,
@@ -31,6 +31,7 @@ import {
 } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { HuandengMark } from '@/components/brand-mark';
 import { type DesignIntentDraft, DesignIntentPanel } from '@/components/pptd/design-intent-panel';
 import { alignedBounds, PptdEditorCanvas } from '@/components/pptd/editor-canvas';
 import { PptdInspector } from '@/components/pptd/inspector';
@@ -41,6 +42,7 @@ import { RecipePanel } from '@/components/pptd/recipe-panel';
 import { PptdPageRenderer, type PptdTheme } from '@/components/pptd/renderer';
 import { ScienceInsertMenu } from '@/components/pptd/science-insert-menu';
 import type { ChartDataDraft } from '@/components/pptd/science-inspector';
+import { ShapeInsertMenu } from '@/components/pptd/shape-insert-menu';
 import { TechnicalQaPanel } from '@/components/pptd/technical-qa-panel';
 import { PptdThumbnailRail } from '@/components/pptd/thumbnail-rail';
 import { SlideCanvas } from '@/components/slide-canvas';
@@ -60,6 +62,7 @@ import { desktopHost } from '@/lib/huandeng-desktop';
 import type { Alignment } from '@/lib/inspector/geometry';
 import { isTypingTarget } from '@/lib/keys';
 import { draftHasChanges } from '@/lib/pptd-document';
+import { type InsertionTool, insertionLabel } from '@/lib/pptd-insertion';
 import { useDocumentTitle } from '@/lib/use-document-title';
 import { usePptdDocument } from '@/lib/use-pptd-document';
 import {
@@ -113,6 +116,8 @@ export function HuandengEditor() {
   }, []);
   const [searchParams, setSearchParams] = useSearchParams();
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
+  const [insertionTool, setInsertionTool] = useState<InsertionTool | null>(null);
+  const [autoEditId, setAutoEditId] = useState<string | null>(null);
   const [scale, setScale] = useState<number | undefined>();
   const [actualScale, setActualScale] = useState(1);
   const [notesOpen, setNotesOpen] = useState(true);
@@ -154,17 +159,21 @@ export function HuandengEditor() {
     selectedView?.pageId ??
     (!selectedPresentationId && requestedId && state.drafts[requestedId] ? requestedId : null);
   const livePage = selectedPageId ? client.page(selectedPageId) : undefined;
-  const page: PageSnapshot | undefined = selectedView?.versionId
-    ? selectedView
-    : livePage
-      ? {
-          ...livePage,
-          occurrenceId: selectedView?.occurrenceId,
-          ...(selectedView?.presentationNotes !== undefined
-            ? { data: { ...livePage.data, notes: selectedView.presentationNotes } }
-            : {}),
-        }
-      : undefined;
+  const page: PageSnapshot | undefined = useMemo(
+    () =>
+      selectedView?.versionId
+        ? selectedView
+        : livePage
+          ? {
+              ...livePage,
+              occurrenceId: selectedView?.occurrenceId,
+              ...(selectedView?.presentationNotes !== undefined
+                ? { data: { ...livePage.data, notes: selectedView.presentationNotes } }
+                : {}),
+            }
+          : undefined,
+    [livePage, selectedView],
+  );
   const theme = useMemo(
     () => (snapshot?.manifest.theme ?? {}) as PptdTheme,
     [snapshot?.manifest.theme],
@@ -194,6 +203,8 @@ export function HuandengEditor() {
   const selectPage = useCallback(
     (id: string, occurrenceId?: string) => {
       setSelectedIds([]);
+      setInsertionTool(null);
+      setAutoEditId(null);
       setSearchParams(
         (current) => {
           const next = new URLSearchParams(current);
@@ -211,6 +222,8 @@ export function HuandengEditor() {
   const selectPresentation = useCallback(
     (id: string | null) => {
       setSelectedIds([]);
+      setInsertionTool(null);
+      setAutoEditId(null);
       setPresenting(false);
       setPresentationError(null);
       setSearchParams(
@@ -231,6 +244,8 @@ export function HuandengEditor() {
   const selectMainPage = useCallback(
     (id: string) => {
       setSelectedIds([]);
+      setInsertionTool(null);
+      setAutoEditId(null);
       setSearchParams(
         (current) => {
           const next = new URLSearchParams(current);
@@ -486,6 +501,27 @@ export function HuandengEditor() {
     return () => window.removeEventListener('paste', paste);
   }, [busy, client, importImages, page, readonly, run, snapshot]);
 
+  const chooseTool = (tool: InsertionTool | null) => {
+    setInsertionTool(tool);
+    setSelectedIds([]);
+    setAutoEditId(null);
+  };
+
+  const placeElement = (element: PptdElement) => {
+    if (!page || readonly || busy) return;
+    setInsertionTool(null);
+    const targetId = page.pageId;
+    void run(async () => {
+      await client.apply([{ op: 'element.add', pageId: targetId, element }]);
+      setSelectedIds([element.elementId]);
+      if (element.elementType === 'text') setAutoEditId(element.elementId);
+      else
+        requestAnimationFrame(() =>
+          document.querySelector<HTMLElement>('[data-hd-editor-canvas]')?.focus(),
+        );
+    });
+  };
+
   const addElement = (
     type: 'text' | 'shape' | 'line' | 'image',
     extra: Partial<PptdElement> = {},
@@ -582,6 +618,8 @@ export function HuandengEditor() {
       }
       if (isTypingTarget(event.target)) return;
       if (event.key === 'Escape') {
+        setInsertionTool(null);
+        setAutoEditId(null);
         setPresenting(false);
         setSelectedIds([]);
         return;
@@ -673,6 +711,27 @@ export function HuandengEditor() {
         return;
       }
       if ((event.target as Element)?.closest('button, select, [role="dialog"]')) return;
+      if (
+        !control &&
+        !event.altKey &&
+        ['v', 't', 'r', 'l'].includes(event.key.toLowerCase()) &&
+        page
+      ) {
+        event.preventDefault();
+        setSelectedIds([]);
+        setAutoEditId(null);
+        const key = event.key.toLowerCase();
+        setInsertionTool(
+          key === 'v'
+            ? null
+            : key === 't'
+              ? { kind: 'text' }
+              : key === 'l'
+                ? { kind: 'line' }
+                : { kind: 'shape', shapeName: 'rect' },
+        );
+        return;
+      }
       if (control && event.key.toLowerCase() === 'a' && page) {
         event.preventDefault();
         setSelectedIds(
@@ -853,10 +912,10 @@ export function HuandengEditor() {
               : '已保存';
   return (
     <div
-      className="flex h-dvh min-w-[760px] flex-col overflow-hidden bg-canvas text-foreground"
+      className="hd-editor flex h-dvh min-w-[760px] flex-col overflow-hidden bg-canvas text-foreground"
       data-hd-editor
     >
-      <header className="flex h-14 shrink-0 items-center gap-3 border-b border-border bg-background px-4">
+      <header className="hd-titlebar flex h-14 shrink-0 items-center gap-3 border-b border-border bg-background px-4">
         <Button
           variant="ghost"
           size="icon-sm"
@@ -889,9 +948,7 @@ export function HuandengEditor() {
           </Button>
         )}
         <div className="flex shrink-0 items-center gap-2">
-          <span className="grid size-7 place-items-center rounded bg-brand font-serif text-lg text-white">
-            H
-          </span>
+          <HuandengMark className="size-7 shrink-0" />
           <span className="text-xs font-semibold tracking-wide">
             HUANDENG{' '}
             <span className="hidden font-normal text-muted-foreground xl:inline">Editor</span>
@@ -908,7 +965,7 @@ export function HuandengEditor() {
             value={selectedPresentationId ?? ''}
             onChange={(event) => selectPresentation(event.target.value || null)}
           >
-            <option value="">Main Slides · {snapshot.pages.length} 页</option>
+            <option value="">主幻灯片 · {snapshot.pages.length} 页</option>
             {project?.presentations.map((item) => (
               <option key={item.id} value={item.id}>
                 {item.title}
@@ -1028,7 +1085,7 @@ export function HuandengEditor() {
                 if (id) selectMainPage(id);
               }}
             >
-              查看页面 Story 草稿
+              查看页面 故事草稿
             </Button>
           )}
           {(chartDirty || storyDirty) && (
@@ -1071,12 +1128,12 @@ export function HuandengEditor() {
           className={`flex ${leftTab === 'project' ? 'w-80' : 'w-56'} shrink-0 flex-col border-r border-border bg-sidebar`}
           aria-label="项目导航"
         >
-          <div className="flex h-10 shrink-0 items-center gap-1 border-b border-border px-2">
+          <div className="hd-navigation-tabs flex h-10 shrink-0 items-center gap-1 border-b border-border px-2">
             <Button
               variant={leftTab === 'project' ? 'secondary' : 'ghost'}
               size="xs"
               className="flex-1"
-              aria-label="项目与 Story"
+              aria-label="项目与故事"
               aria-pressed={leftTab === 'project'}
               onClick={() => setLeftTab('project')}
             >
@@ -1184,13 +1241,26 @@ export function HuandengEditor() {
             }
           }}
         >
-          <div className="flex h-11 shrink-0 items-center gap-1 border-b border-border bg-background px-3">
+          <div className="hd-editor-toolbar flex h-11 shrink-0 items-center gap-1 border-b border-border bg-background px-3">
+            <Button
+              variant={insertionTool ? 'ghost' : 'secondary'}
+              size="icon-sm"
+              aria-label="选择工具"
+              aria-pressed={!insertionTool}
+              title="选择 V · Esc 取消插入"
+              onClick={() => chooseTool(null)}
+            >
+              <MousePointer2 />
+            </Button>
+            <span className="mx-1 h-4 w-px bg-border" />
             <Button
               variant="ghost"
               size="sm"
               aria-label="添加文本"
+              title="文字 T · 在画布点击或拖拽放置"
+              aria-pressed={insertionTool?.kind === 'text'}
               disabled={readonly || busy || !page}
-              onClick={() => addElement('text')}
+              onClick={() => chooseTool(insertionTool?.kind === 'text' ? null : { kind: 'text' })}
             >
               <Type />
               文字
@@ -1205,22 +1275,19 @@ export function HuandengEditor() {
               <ImagePlus />
               图片
             </Button>
-            <Button
-              variant="ghost"
-              size="sm"
-              aria-label="添加矩形"
+            <ShapeInsertMenu
               disabled={readonly || busy || !page}
-              onClick={() => addElement('shape')}
-            >
-              <Square />
-              形状
-            </Button>
+              active={insertionTool?.kind === 'shape'}
+              onChoose={chooseTool}
+            />
             <Button
               variant="ghost"
               size="sm"
               aria-label="添加线条"
+              title="线条 L · 拖拽绘制，Shift 约束方向"
+              aria-pressed={insertionTool?.kind === 'line'}
               disabled={readonly || busy || !page}
-              onClick={() => addElement('line')}
+              onClick={() => chooseTool(insertionTool?.kind === 'line' ? null : { kind: 'line' })}
             >
               <Minus />
               线条
@@ -1236,6 +1303,7 @@ export function HuandengEditor() {
                 });
               }}
             />
+            <span className="mx-1 h-4 w-px bg-border" />
             <Button
               variant="ghost"
               size="icon-sm"
@@ -1262,7 +1330,7 @@ export function HuandengEditor() {
               className="ml-auto truncate font-mono text-[10px] text-muted-foreground"
               title={page ? `${page.path} · ${page.pageId}` : undefined}
             >
-              {page?.metadata.label ?? page?.shortCode ?? ''}{' '}
+              {page?.shortCode ?? page?.metadata.label ?? ''}{' '}
               {page && `· ${pageIndex + 1} / ${viewPages.length}`}
               {page && <span className="ml-3 hidden xl:inline">{page.path}</span>}
             </span>
@@ -1272,7 +1340,7 @@ export function HuandengEditor() {
               <span className="flex-1">
                 {selectedView?.versionId
                   ? '此引用固定为已记录版本，内容只读。'
-                  : '此演讲引用 Main Slides；内容编辑会同步到主页面及其他实时引用。'}
+                  : '此演讲引用 主幻灯片；内容编辑会同步到主页面及其他实时引用。'}
               </span>
               {selectedPageId && (
                 <Button size="xs" variant="outline" onClick={() => selectMainPage(selectedPageId)}>
@@ -1309,6 +1377,17 @@ export function HuandengEditor() {
               </div>
             </div>
           )}
+          {insertionTool && (
+            <div
+              className="flex h-8 shrink-0 items-center gap-2 border-b border-brand/15 bg-brand-soft px-4 text-xs text-brand"
+              role="status"
+              data-hd-insertion-hint
+            >
+              <MousePointer2 className="size-3.5" />
+              <span>{insertionLabel(insertionTool)}：点击放置，拖拽设置大小</span>
+              <span className="ml-auto text-[10px]">Shift 约束 · Esc 取消</span>
+            </div>
+          )}
           <div className="relative min-h-0 flex-1 overflow-auto p-6 md:p-8">
             {page ? (
               <PptdEditorCanvas
@@ -1319,6 +1398,9 @@ export function HuandengEditor() {
                 selectedIds={selectedIds}
                 onSelect={setSelectedIds}
                 disabled={readonly}
+                insertionTool={insertionTool}
+                onPlace={placeElement}
+                autoEditId={autoEditId}
                 scale={scale}
                 onScaleChange={setActualScale}
                 onPatch={patchElement}
@@ -1353,7 +1435,7 @@ export function HuandengEditor() {
               </div>
             )}
           </div>
-          <div className="flex h-9 shrink-0 items-center gap-2 border-y border-border bg-background px-4 text-xs text-muted-foreground">
+          <div className="hd-statusbar flex h-9 shrink-0 items-center gap-2 border-y border-border bg-background px-4 text-xs text-muted-foreground">
             <Button variant="ghost" size="xs" onClick={() => setNotesOpen((value) => !value)}>
               演讲备注
             </Button>
@@ -1369,6 +1451,7 @@ export function HuandengEditor() {
               variant="ghost"
               size="icon-xs"
               aria-label="缩小画布"
+              className="ml-auto xl:ml-0"
               onClick={() => setScale(Math.max(0.15, (scale ?? actualScale) - 0.1))}
             >
               <Minus />
@@ -1473,7 +1556,7 @@ export function HuandengEditor() {
                 <h3 className="text-sm">{snapshot.metadata.slides[id]?.label ?? id} · Story</h3>
                 <Textarea
                   readOnly
-                  aria-label="保留的 Story 草稿"
+                  aria-label="保留的 故事草稿"
                   value={`${draft.purpose}\n\n${draft.keep}`}
                 />
                 <Button
@@ -1493,7 +1576,7 @@ export function HuandengEditor() {
                     setDraftResetKey((key) => key + 1);
                   }}
                 >
-                  放弃这份 Story 草稿
+                  放弃这份 故事草稿
                 </Button>
               </section>
             ))}
@@ -1629,7 +1712,7 @@ export function HuandengEditor() {
                 <div className="mb-4 flex items-center justify-between gap-3">
                   <h2 className="text-sm font-medium">演讲者备注</h2>
                   <span className="font-mono text-xs text-zinc-400" data-hd-presenter-code>
-                    {page.metadata.label ?? page.shortCode ?? '未编号'} · {pageIndex + 1}
+                    {page.shortCode ?? page.metadata.label ?? '未编号'} · {pageIndex + 1}
                   </span>
                 </div>
                 <div
@@ -1695,7 +1778,7 @@ export function HuandengEditor() {
               <ArrowLeft className="size-4" />
             </button>
             <span className="font-mono text-xs">
-              {pageIndex + 1} / {viewPages.length} · {page.metadata.label ?? page.shortCode}
+              {pageIndex + 1} / {viewPages.length} · {page.shortCode ?? page.metadata.label}
             </span>
             <button
               type="button"

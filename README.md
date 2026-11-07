@@ -2,13 +2,20 @@
 
 让人与 Agent 在同一份幻灯文档上工作。
 
-HUANDENG Editor 基于 OpenSlide 的 React 编辑环境，使用 PPTD 文档后端。页面用永久 ID 和稳定的 S1、S2 等友好编号定位，旧四位短码继续兼容；内容保存在原来的独立 .page 文件中。标题、位置改变，页面身份不变。HUANDENG Story 记录全项目、章节、演讲的叙事目的，以及逐页证据角色和设计意图。HUANDENG Plugin 提供与可视化编辑器共用的 Agent 接口。
+HUANDENG Editor 基于 OpenSlide 的 React 编辑环境，使用 PPTD 文档后端。页面使用永久 ID，界面以四位随机短码显示身份，当前位置单独显示；已有 S1、S2 等别名继续兼容。内容保存在原来的独立 .page 文件中。标题、位置改变，页面身份不变。HUANDENG Story 记录全项目、章节、演讲的叙事目的，以及逐页证据角色和设计意图。HUANDENG Plugin 提供与可视化编辑器共用的 Agent 接口。
+
+## 当前阶段
+
+当前已发布并安装的里程碑为 [v0.4.0](docs/RELEASE-V04.md)。本地正在推进 **v0.5 候选版：日常编辑体验**，重点是大项目响应、画布放置工具、页面身份和统一的中文界面。本文操作说明对应当前源码；v0.5 的实际桌面、性能对比和正式安装仍按 [发布记录](docs/RELEASE-V05.md) 分项验收。
+
+[综合产品审计](docs/AUDIT-V05-COVERAGE.md) 合并初始 SPEC 与 v0.2–v0.4 的需求、实现和历史回执；[视觉与交互审计](docs/AUDIT-V05-VISUAL.md) 记录美术及界面判断；[v0.5 范围](docs/SPEC-V05.md) 定义本轮交付；[交接记录](docs/HANDOFF-V05.md) 保存当前完成度和下一步。
 
 ## GitHub 版本管理
 
 编辑器源代码在 HUANDENG 自己的 Git 仓库中维护；平时本地提交，完成并验收一个重要版本后再统一推送到 origin，不会每次小改都上传。OpenSlide 原始仓库保留为 upstream，不向其推送。自动保存与撤销、用户命名的页面版本、Git 工程里程碑各自承担不同职责；记录或恢复页面版本不需要 Git。
 
 参阅 [版本发布规则](docs/RELEASE-POLICY.md) 和 [Story 设计](docs/STORY.md)。
+
 ## 启动桌面编辑器
 
 Windows 双击 **HUANDENG Editor** 快捷方式，或运行 `Start-Huandeng.cmd`。应用使用独立 Electron 窗口；启动时恢复最近项目，首次打开显示新建/打开入口。
@@ -20,6 +27,8 @@ Windows 双击 **HUANDENG Editor** 快捷方式，或运行 `Start-Huandeng.cmd`
     corepack pnpm install --frozen-lockfile
     corepack pnpm --filter @open-slide/core build
     corepack pnpm desktop
+
+v0.5 的 core build 同时生成正式编辑器前端。需要前端源码热更新时，设置 `HUANDENG_DEV_SERVER=1` 再启动桌面或 CLI 开发服务。
 
 Windows 桌面打包与快捷方式：
 
@@ -40,7 +49,7 @@ CLI 开发服务仍可单独启动：
 
 - deck.pptd 决定页序。
 - pages/*.page 保存原始内容；元素数组决定叠放顺序。
-- .huandeng/project.json 保存稳定身份、S编号、Main Story、Sections、Presentation编排及逐页设计注记。
+- .huandeng/project.json 保存稳定身份、短码、兼容的 S 编号、Main Story、Sections、Presentation 编排及逐页设计注记。
 - .huandeng/checkpoints/ 与 media/.huandeng-versions/ 保存命名页面版本及其素材，随项目目录迁移。
 - media/、assets/ 保留素材。
 - Exports/ 保存当前交付文件及导出报告。
@@ -54,9 +63,15 @@ GUI、CLI 和 MCP 使用同一个本地文档服务。请求携带读取时的�
 
 ## Main Slides 与多个演讲
 
-每个项目只有一份 Main Slides。左侧“项目与 Story”可建立 Sections，并创建多个 Presentation Slides，按自己的顺序引用整节或单页。同一页可重复使用，每次出现可写不同备注。默认跟随主库更新；选择命名版本后，演讲中的该页固定为只读旧版。
+每个项目只有一份主幻灯片库（Main Slides）。左侧“项目与故事”可建立章节，并创建多个演讲幻灯片集合（Presentation Slides），按自己的顺序引用整节或单页。同一页可重复使用，每次出现可写不同备注。默认跟随主库更新；选择命名版本后，演讲中的该页固定为只读旧版。
 
-在顶部“当前演讲集合”切换 Main 或某场 Presentation。预览、放映与导出使用所选集合。缺少引用或项目编排有未保存草稿时，会阻止不完整交付。编排使用显式 Save project；页面内容仍自动保存。详见 [项目与演讲指南](docs/PROJECTS.md)。
+在顶部“当前演讲集合”切换主幻灯片或某场演讲。预览、放映与导出使用所选集合。缺少引用或项目编排有未保存草稿时，会阻止不完整交付。编排使用显式“保存项目”；页面内容仍自动保存。详见 [项目与演讲指南](docs/PROJECTS.md)。
+
+## 画布编辑
+
+文字、形状和线条先选择工具，再在画布点击或拖拽放置。点击采用默认尺寸，拖拽决定大小；形状菜单提供现有全部种类。Shift 约束形状比例和线条方向，Esc 取消插入。文字放置后自动进入编辑；V / T / R / L 分别切换选择、文字、矩形、线条，输入文字时不会触发画布快捷键。
+
+缩略图分别显示当前页序和稳定短码。可搜索短码、旧 S 编号或标题，右键“复制页面短码”用于定位与沟通。对象新增和删除的画面反馈与持久化状态分别更新；“已保存”仍以本地文档服务的确认结果为准。
 
 ## Agent 使用
 
@@ -76,11 +91,11 @@ MCP 配置见 plugins/huandeng/mcp.example.json。网页 ChatGPT 可通过已有
 
 ## 科学内容和设计
 
-工具栏“科研对象”可插入合并表格、LaTeX 公式、13 类图表和本地图标；常用图形、组合及图片导入共用页面编辑与撤销。图表支持从 Excel 粘贴 TSV/CSV 数据，并保留尚未应用的数据草稿。PPTX 对支持的表格、公式、6 类基础图表及连续组合写入原生可编辑对象；其他对象的图像回退会列入导出报告。详细操作与兼容范围见 [科研对象指南](docs/SCIENTIFIC-OBJECTS.md) 和 [PowerPoint 差异审计](docs/POWERPOINT-COMPARISON.md)。
+工具栏“数据”可插入合并表格、LaTeX 公式、本地图标，图表子菜单提供 13 类图表；常用图形、组合及图片导入共用页面编辑与撤销。图表支持从 Excel 粘贴 TSV/CSV 数据，并保留尚未应用的数据草稿。PPTX 对支持的表格、公式、6 类基础图表及连续组合写入原生可编辑对象；其他对象的图像回退会列入导出报告。详细操作与兼容范围见 [科研对象指南](docs/SCIENTIFIC-OBJECTS.md) 和 [PowerPoint 差异审计](docs/POWERPOINT-COMPARISON.md)。
 
 开发样例图形用于软件验证，不是研究结果。Agent 不得凭空补数据、改实验标签、替换原图或制造作者批准。先读页面的 designIntent、素材来源及角色，再局部修改。允许有意的不对称、疏密变化和留白。
 
-“布局起点”是可选生成辅助，结果保存为普通 PPTD 对象。手动调整过的几何、裁切或字体成为覆盖项，再次应用时尊重这些覆盖；也可直接解除关联，保留所有对象和当前布局。
+“快速布局”（原“布局起点”）是可选生成辅助，结果保存为普通 PPTD 对象。手动调整过的几何、裁切或字体成为覆盖项，再次应用时尊重这些覆盖；也可直接解除关联，保留所有对象和当前布局。
 
 ## 开发与验证
 
@@ -88,7 +103,7 @@ MCP 配置见 plugins/huandeng/mcp.example.json。网页 ChatGPT 可通过已有
     corepack pnpm exec vitest run --project unit
     corepack pnpm check
 
-完整产品规划见 [Master SPEC](docs/SPEC.md)，当前增量见 [SPEC-V04](docs/SPEC-V04.md)，逐项审计见 [AUDIT-V04](docs/AUDIT-V04.md)。验收结果见 [v0.4发布记录](docs/RELEASE-V04.md)。工程接续入口是 WEBCHAT.md。
+完整产品规划见 [Master SPEC](docs/SPEC.md)，当前增量见 [SPEC-V05](docs/SPEC-V05.md)，逐项状态见 [综合审计](docs/AUDIT-V05-COVERAGE.md)。已完成的历史验收见 [v0.4 发布记录](docs/RELEASE-V04.md)，本轮候选验收见 [v0.5 发布记录](docs/RELEASE-V05.md)。工程接续入口是 [WEBCHAT.md](WEBCHAT.md)。
 
 里程碑发布运行完整单元测试、类型和格式检查，并以实际桌面、项目编排、科研对象、原生 PowerPoint 及真实科研项目副本验收补足自动化覆盖。日常小修改只重复能够验证相应风险的检查。
 

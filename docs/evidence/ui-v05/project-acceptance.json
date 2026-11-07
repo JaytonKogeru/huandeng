@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "stage": "candidate-integration",
+  "source": {
+    "baselineRevision": "8798d8f058dab89a80143e0c813780c8d87a70f9",
+    "candidateTransferSha256": "157272ec0f472923d2f185b19a614f6e15ad48d3d9c9931e575369cddda657ae",
+    "description": "Baseline source plus the recorded candidate transfer; this is not a final release commit."
+  },
+  "runtime": {
+    "host": "Electron development host",
+    "frontend": "compiled production bundle",
+    "packagedRelease": false
+  },
+  "rawReceipt": {
+    "localFile": ".verification/project-v04/result.json",
+    "sha256": "93cb7981d62806da505e967c778855a5063f2fefed24214bded1cb09c0cdb99e"
+  },
+  "sanitization": "Only software test results are retained. Research paths, titles, source-file inventories, document content and screenshots are excluded.",
+  "passed": true,
+  "fixture": {
+    "kind": "isolated synthetic project"
+  },
+  "checks": [
+    {
+      "name": "create Main Story and two sections through the editor",
+      "passed": true,
+      "milliseconds": 587
+    },
+    {
+      "name": "create two presentations sharing chapter and repeated page references",
+      "passed": true,
+      "milliseconds": 657
+    },
+    {
+      "name": "ordinary edits create no named versions and the history UI explicitly records milestones",
+      "passed": true,
+      "milliseconds": 2144
+    },
+    {
+      "name": "project draft survives tab changes and blocks presentation and export",
+      "passed": true,
+      "milliseconds": 801
+    },
+    {
+      "name": "pin two named versions and save occurrence-specific speaker notes through UI",
+      "passed": true,
+      "milliseconds": 732
+    },
+    {
+      "name": "reopen and navigate distinct live and pinned occurrences in the thumbnail rail",
+      "passed": true,
+      "milliseconds": 1280
+    },
+    {
+      "name": "play resolved order with repeated pages and occurrence-specific notes",
+      "passed": true,
+      "milliseconds": 755
+    },
+    {
+      "name": "UI exports each selected presentation with correct count and leaves canonical pages intact",
+      "passed": true,
+      "milliseconds": 588
+    },
+    {
+      "name": "removed canonical page retains references and blocks affected presentation until restored",
+      "passed": true,
+      "milliseconds": 828
+    },
+    {
+      "name": "external project update preserves a conflicting draft and disables overwriting controls",
+      "passed": true,
+      "milliseconds": 662
+    },
+    {
+      "name": "Page Story draft survives object selection and page changes until explicitly saved",
+      "passed": true,
+      "milliseconds": 822
+    }
+  ],
+  "rendererErrorCount": 0,
+  "note": "The existing v0.4-named verifier was run against the v0.5 candidate. This is a candidate integration receipt, not a rerun of the old v0.4 executable and not final packaged acceptance."
+}

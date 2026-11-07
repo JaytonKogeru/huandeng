@@ -16,10 +16,13 @@ import {
   snapMove,
   unionRects,
 } from '@/lib/inspector/geometry';
+import { capturePointerGesture } from '@/lib/pointer-gesture';
+import type { InsertionTool } from '@/lib/pptd-insertion';
 import { expandGroupIds, owningGroupId } from '../../../pptd/grouping';
 import type { Bounds, PageSize, PageSnapshot, PptdElement } from '../../../pptd/types';
 import { SlideCanvas } from '../slide-canvas';
 import { Button } from '../ui/button';
+import { InsertionLayer } from './insertion-layer';
 import {
   isRichText,
   numberValue,
@@ -46,6 +49,9 @@ type Props = {
   disabled?: boolean;
   scale?: number;
   onScaleChange?: (scale: number) => void;
+  insertionTool?: InsertionTool | null;
+  onPlace?: (element: PptdElement) => void;
+  autoEditId?: string | null;
 };
 
 type Gesture = {
@@ -111,125 +117,115 @@ export function PptdEditorCanvas({
   disabled = false,
   scale,
   onScaleChange,
+  insertionTool,
+  onPlace,
+  autoEditId,
 }: Props) {
   const [actualScale, setActualScale] = useState(1);
   const [guides, setGuides] = useState<Guide[]>([]);
   const [editingId, setEditingId] = useState<string | null>(null);
+  const autoEditConsumed = useRef<string | null>(null);
   const gestureRef = useRef<Gesture | null>(null);
+  const cancelGestureRef = useRef<(() => void) | null>(null);
   const canvasRef = useRef<HTMLDivElement>(null);
   const latest = useRef({ page, size, onPatch, onEnd, onCancel });
   latest.current = { page, size, onPatch, onEnd, onCancel };
 
   useEffect(() => {
+    if (
+      autoEditId &&
+      autoEditConsumed.current !== autoEditId &&
+      page.data.elements.some((element) => element.elementId === autoEditId)
+    ) {
+      autoEditConsumed.current = autoEditId;
+      setEditingId(autoEditId);
+    }
+  }, [autoEditId, page.data.elements]);
+
+  useEffect(() => {
     if (editingId && !selectedIds.includes(editingId)) setEditingId(null);
   }, [editingId, selectedIds]);
 
-  useEffect(() => {
-    const move = (event: PointerEvent) => {
-      const gesture = gestureRef.current;
-      if (!gesture) return;
-      let dx = (event.clientX - gesture.startX) / gesture.scale;
-      let dy = (event.clientY - gesture.startY) / gesture.scale;
-      if (!gesture.moved && Math.hypot(dx, dy) * gesture.scale < 2) return;
-      gesture.moved = true;
-      if (gesture.kind === 'move') {
-        if (event.shiftKey) {
-          if (Math.abs(dx) >= Math.abs(dy)) dy = 0;
-          else dx = 0;
-        }
-        const group = unionRects(gesture.elements.map((item) => item.rect));
-        if (!group) return;
-        const selected = new Set(gesture.elements.map((item) => item.id));
-        const targets = latest.current.page.data.elements
-          .filter((item) => !selected.has(item.elementId))
-          .map(elementRect);
-        targets.push({ x: 0, y: 0, width: latest.current.size[0], height: latest.current.size[1] });
-        const snap = event.altKey
-          ? { delta: { x: dx, y: dy }, guides: [] }
-          : snapMove(group, { x: dx, y: dy }, targets, 5 / gesture.scale);
-        setGuides(snap.guides);
-        for (const item of gesture.elements)
-          latest.current.onPatch(
-            item.id,
-            {
-              bounds: rectBounds({
-                ...item.rect,
-                x: item.rect.x + snap.delta.x,
-                y: item.rect.y + snap.delta.y,
-              }),
-            },
-            false,
-          );
-      } else if (gesture.kind === 'resize') {
-        const item = gesture.elements[0];
-        const radians = (item.rotation * Math.PI) / 180;
-        const localDelta = {
-          x: dx * Math.cos(radians) + dy * Math.sin(radians),
-          y: -dx * Math.sin(radians) + dy * Math.cos(radians),
-        };
-        const isGroup =
-          latest.current.page.data.elements.find((element) => element.elementId === item.id)
-            ?.elementType === 'group';
-        const rect = resizeRect(
-          item.rect,
-          gesture.handle ?? 'se',
-          localDelta,
-          event.shiftKey || isGroup,
-        );
-        const shiftX = rect.x + rect.width / 2 - item.rect.x - item.rect.width / 2;
-        const shiftY = rect.y + rect.height / 2 - item.rect.y - item.rect.height / 2;
-        rect.x =
-          item.rect.x +
-          item.rect.width / 2 +
-          shiftX * Math.cos(radians) -
-          shiftY * Math.sin(radians) -
-          rect.width / 2;
-        rect.y =
-          item.rect.y +
-          item.rect.height / 2 +
-          shiftX * Math.sin(radians) +
-          shiftY * Math.cos(radians) -
-          rect.height / 2;
-        latest.current.onPatch(item.id, { bounds: rectBounds(rect) }, false);
-      } else if (gesture.center) {
-        const angle = Math.atan2(
-          event.clientY - gesture.center.y,
-          event.clientX - gesture.center.x,
-        );
-        let rotation =
-          gesture.elements[0].rotation + ((angle - (gesture.angle ?? 0)) * 180) / Math.PI;
-        if (event.shiftKey) rotation = Math.round(rotation / 15) * 15;
+  const moveGesture = (event: PointerEvent) => {
+    const gesture = gestureRef.current;
+    if (!gesture) return;
+    let dx = (event.clientX - gesture.startX) / gesture.scale;
+    let dy = (event.clientY - gesture.startY) / gesture.scale;
+    if (!gesture.moved && Math.hypot(dx, dy) * gesture.scale < 2) return;
+    gesture.moved = true;
+    if (gesture.kind === 'move') {
+      if (event.shiftKey) {
+        if (Math.abs(dx) >= Math.abs(dy)) dy = 0;
+        else dx = 0;
+      }
+      const group = unionRects(gesture.elements.map((item) => item.rect));
+      if (!group) return;
+      const selected = new Set(gesture.elements.map((item) => item.id));
+      const targets = latest.current.page.data.elements
+        .filter((item) => !selected.has(item.elementId))
+        .map(elementRect);
+      targets.push({ x: 0, y: 0, width: latest.current.size[0], height: latest.current.size[1] });
+      const snap = event.altKey
+        ? { delta: { x: dx, y: dy }, guides: [] }
+        : snapMove(group, { x: dx, y: dy }, targets, 5 / gesture.scale);
+      setGuides(snap.guides);
+      for (const item of gesture.elements)
         latest.current.onPatch(
-          gesture.elements[0].id,
-          { rotation: Math.round(rotation * 100) / 100 },
+          item.id,
+          {
+            bounds: rectBounds({
+              ...item.rect,
+              x: item.rect.x + snap.delta.x,
+              y: item.rect.y + snap.delta.y,
+            }),
+          },
           false,
         );
-      }
-    };
-    const finish = (event: PointerEvent) => {
-      const gesture = gestureRef.current;
-      if (!gesture) return;
-      gestureRef.current = null;
-      setGuides([]);
-      if (event.type === 'pointercancel') latest.current.onCancel(gesture.originals);
-      else latest.current.onEnd();
-    };
-    const cancelOnEscape = (event: KeyboardEvent) => {
-      if (event.key !== 'Escape' || !gestureRef.current) return;
-      finish(new PointerEvent('pointercancel'));
-    };
-    window.addEventListener('pointermove', move);
-    window.addEventListener('pointerup', finish);
-    window.addEventListener('pointercancel', finish);
-    window.addEventListener('keydown', cancelOnEscape);
-    return () => {
-      window.removeEventListener('pointermove', move);
-      window.removeEventListener('pointerup', finish);
-      window.removeEventListener('pointercancel', finish);
-      window.removeEventListener('keydown', cancelOnEscape);
-      if (gestureRef.current) latest.current.onEnd();
-    };
-  }, []);
+    } else if (gesture.kind === 'resize') {
+      const item = gesture.elements[0];
+      const radians = (item.rotation * Math.PI) / 180;
+      const localDelta = {
+        x: dx * Math.cos(radians) + dy * Math.sin(radians),
+        y: -dx * Math.sin(radians) + dy * Math.cos(radians),
+      };
+      const isGroup =
+        latest.current.page.data.elements.find((element) => element.elementId === item.id)
+          ?.elementType === 'group';
+      const rect = resizeRect(
+        item.rect,
+        gesture.handle ?? 'se',
+        localDelta,
+        event.shiftKey || isGroup,
+      );
+      const shiftX = rect.x + rect.width / 2 - item.rect.x - item.rect.width / 2;
+      const shiftY = rect.y + rect.height / 2 - item.rect.y - item.rect.height / 2;
+      rect.x =
+        item.rect.x +
+        item.rect.width / 2 +
+        shiftX * Math.cos(radians) -
+        shiftY * Math.sin(radians) -
+        rect.width / 2;
+      rect.y =
+        item.rect.y +
+        item.rect.height / 2 +
+        shiftX * Math.sin(radians) +
+        shiftY * Math.cos(radians) -
+        rect.height / 2;
+      latest.current.onPatch(item.id, { bounds: rectBounds(rect) }, false);
+    } else if (gesture.center) {
+      const angle = Math.atan2(event.clientY - gesture.center.y, event.clientX - gesture.center.x);
+      let rotation =
+        gesture.elements[0].rotation + ((angle - (gesture.angle ?? 0)) * 180) / Math.PI;
+      if (event.shiftKey) rotation = Math.round(rotation / 15) * 15;
+      latest.current.onPatch(
+        gesture.elements[0].id,
+        { rotation: Math.round(rotation * 100) / 100 },
+        false,
+      );
+    }
+  };
+
+  useEffect(() => () => cancelGestureRef.current?.(), []);
 
   const startGesture = (
     event: ReactPointerEvent<HTMLElement>,
@@ -237,10 +233,9 @@ export function PptdEditorCanvas({
     ids: string[],
     handle?: ResizeHandle,
   ) => {
-    if (disabled || event.button !== 0) return;
+    if (disabled || event.button !== 0 || !event.isPrimary || gestureRef.current) return;
     event.preventDefault();
     event.stopPropagation();
-    event.currentTarget.setPointerCapture(event.pointerId);
     const elements = page.data.elements
       .filter((item) => ids.includes(item.elementId))
       .map((item) => ({
@@ -263,7 +258,7 @@ export function PptdEditorCanvas({
           y: root.top + (first.y + first.height / 2) * actualScale,
         }
       : undefined;
-    gestureRef.current = {
+    const gesture: Gesture = {
       kind,
       startX: event.clientX,
       startY: event.clientY,
@@ -279,10 +274,25 @@ export function PptdEditorCanvas({
         return { elementId: id, fields: { bounds: element.bounds, rotation: element.rotation } };
       }),
     };
+    const cancel = capturePointerGesture({
+      target: event.currentTarget,
+      pointerId: event.pointerId,
+      onMove: moveGesture,
+      onFinish: (cancelled) => {
+        gestureRef.current = null;
+        cancelGestureRef.current = null;
+        setGuides([]);
+        if (cancelled) latest.current.onCancel(gesture.originals);
+        else latest.current.onEnd();
+      },
+    });
+    gestureRef.current = gesture;
+    cancelGestureRef.current = cancel;
     onBegin();
   };
 
   const select = (element: PptdElement, event: ReactPointerEvent<HTMLDivElement>) => {
+    if (!event.isPrimary || gestureRef.current) return;
     if ((event.target as HTMLElement).closest('[contenteditable="true"]')) return;
     event.stopPropagation();
     event.currentTarget.focus({ preventScroll: true });
@@ -346,6 +356,7 @@ export function PptdEditorCanvas({
           className="relative"
           style={{ width: size[0], height: size[1] }}
           onPointerDown={(event) => {
+            if (!event.isPrimary || gestureRef.current) return;
             if (!(event.target as Element).closest('[data-hd-element-id], [data-hd-selection]')) {
               canvasRef.current?.focus({ preventScroll: true });
               onSelect([]);
@@ -359,6 +370,7 @@ export function PptdEditorCanvas({
             theme={theme}
             onElementPointerDown={select}
             onElementFocus={(id) => {
+              if (gestureRef.current) return;
               const groupId = owningGroupId(page.data.elements, id) ?? id;
               if (!selectedIds.includes(groupId)) onSelect([groupId]);
             }}
@@ -374,6 +386,7 @@ export function PptdEditorCanvas({
                   key={element.elementId}
                   element={element}
                   theme={theme}
+                  selectAll={element.elementId === autoEditId}
                   onChange={(text) => onPatch(element.elementId, { 'content.text': text })}
                   onComposition={onComposition}
                   onFinish={() => {
@@ -397,7 +410,7 @@ export function PptdEditorCanvas({
                   width: rect.width,
                   height: rect.height,
                   transform: `rotate(${element.rotation ?? 0}deg)`,
-                  border: `${1 / actualScale}px solid #cf4a35`,
+                  border: `${1 / actualScale}px solid var(--brand)`,
                   zIndex: 2,
                 }}
               >
@@ -415,7 +428,7 @@ export function PptdEditorCanvas({
                           top: handle.includes('n') ? 0 : handle.includes('s') ? '100%' : '50%',
                           width: 8 / actualScale,
                           height: 8 / actualScale,
-                          border: `${1 / actualScale}px solid #cf4a35`,
+                          border: `${1 / actualScale}px solid var(--brand)`,
                           transform: 'translate(-50%,-50%)',
                           cursor: `${handle}-resize`,
                           padding: 0,
@@ -432,7 +445,7 @@ export function PptdEditorCanvas({
                         left: '50%',
                         top: -24 / actualScale,
                         height: 24 / actualScale,
-                        borderLeft: `${1 / actualScale}px solid #cf4a35`,
+                        borderLeft: `${1 / actualScale}px solid var(--brand)`,
                       }}
                     />
                     <button
@@ -445,7 +458,7 @@ export function PptdEditorCanvas({
                         top: -26 / actualScale,
                         width: 10 / actualScale,
                         height: 10 / actualScale,
-                        border: `${1 / actualScale}px solid #cf4a35`,
+                        border: `${1 / actualScale}px solid var(--brand)`,
                         transform: 'translate(-50%,-50%)',
                         cursor: 'grab',
                         touchAction: 'none',
@@ -480,6 +493,14 @@ export function PptdEditorCanvas({
               }
             />
           ))}
+          {insertionTool && !disabled && onPlace && (
+            <InsertionLayer
+              key={JSON.stringify(insertionTool)}
+              tool={insertionTool}
+              size={size}
+              onPlace={onPlace}
+            />
+          )}
         </div>
       </SlideCanvas>
     </div>
@@ -492,16 +513,19 @@ function InlineTextElement({
   onChange,
   onComposition,
   onFinish,
+  selectAll = false,
 }: {
   element: PptdElement;
   theme: PptdTheme;
   onChange: (text: string) => void;
   onComposition: (composing: boolean) => void;
   onFinish: () => void;
+  selectAll?: boolean;
 }) {
   const editorRef = useRef<HTMLDivElement>(null);
   const content = textContent(element, theme);
   const initial = useRef(textValue(content.text));
+  const selectInitial = useRef(selectAll);
   const rich = useRef(isRichText(initial.current));
   const composing = useRef(false);
   const latest = useRef({ onChange, onComposition, onFinish });
@@ -523,7 +547,7 @@ function InlineTextElement({
     editor.focus({ preventScroll: true });
     const range = document.createRange();
     range.selectNodeContents(editor);
-    range.collapse(false);
+    if (!selectInitial.current) range.collapse(false);
     const selection = window.getSelection();
     selection?.removeAllRanges();
     selection?.addRange(range);

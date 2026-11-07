@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "stage": "candidate-integration",
+  "source": {
+    "baselineRevision": "8798d8f058dab89a80143e0c813780c8d87a70f9",
+    "candidateTransferSha256": "157272ec0f472923d2f185b19a614f6e15ad48d3d9c9931e575369cddda657ae",
+    "description": "Baseline source plus the recorded candidate transfer; this is not a final release commit."
+  },
+  "runtime": {
+    "host": "candidate local document service and browser export renderer",
+    "frontend": "compiled production bundle",
+    "packagedRelease": false
+  },
+  "rawReceipt": {
+    "localFile": ".verification/background-export/result.json",
+    "sha256": "1db7570ce0a1c7ef701d47eeb237a384b946a29586703d8d1a9ae20391c7a283"
+  },
+  "sanitization": "Only software test results are retained. Research paths, titles, source-file inventories, document content and screenshots are excluded.",
+  "passed": true,
+  "fixture": {
+    "kind": "isolated synthetic current and pinned occurrences"
+  },
+  "sourceUnchanged": true,
+  "distinctOccurrences": true,
+  "archivedAssetsAndTheme": true,
+  "foregroundRestored": true,
+  "visibleOverflowPreserved": true,
+  "occurrences": 2,
+  "backgroundRasters": 2,
+  "restoredForegroundRasters": 8,
+  "physicalPdfPages": 2
+}

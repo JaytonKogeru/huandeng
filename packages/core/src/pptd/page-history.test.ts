@@ -1,9 +1,9 @@
 import { randomUUID } from 'node:crypto';
 import fs from 'node:fs/promises';
-import os from 'node:os';
 import path from 'node:path';
 import { afterEach, describe, expect, it } from 'vitest';
 import { METADATA_PATH } from './identity';
+import { projectTestDirectory } from './project-directory.test-utils';
 import { openPptdStore, type PptdStore } from './store';
 import { recordStory } from './story';
 import type { PptdOperation, TransactionRequest } from './types';
@@ -24,7 +24,7 @@ afterEach(async () => {
 });
 
 async function fixture() {
-  const directory = await fs.mkdtemp(path.join(os.tmpdir(), 'huandeng-history-'));
+  const directory = await projectTestDirectory('huandeng-history-');
   temporary.push(directory);
   const root = path.join(directory, 'project');
   const stateDir = path.join(directory, 'state');

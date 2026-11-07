@@ -1,5 +1,7 @@
 # HUANDENG 与现有 PPTD Editor 的实际差异
 
+> 历史对照：本表核对的是 HUANDENG v0.2，当时的科学对象缺口已有后续实现。当前完成度见 [综合审计](AUDIT-V05-COVERAGE.md)、[v0.4 发布记录](RELEASE-V04.md) 和 [PowerPoint 对照](POWERPOINT-COMPARISON.md)；本轮增量见 [v0.5 范围](SPEC-V05.md)。
+
 核对日期：2026-11-07（Australia/Sydney）。对照的是 THUG 上现有源码，不是网上产品测评。
 
 旧项目：`D:/_Proj/FreestyleScientificSlides/apps/pptd-desktop`，桌面包 0.2.1，内置 open-pptd 2.0.2，Electron 38.7.2。该项目有用户未提交修改，本轮只读检查。

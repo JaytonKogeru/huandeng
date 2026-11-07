@@ -277,7 +277,7 @@ try {
       );
       await dialog
         .getByText(
-          `已恢复 ${target.metadata.label ?? target.shortCode} 的工作稿。需要保留本轮成果时，再记录一个命名版本。`,
+          `已恢复 ${target.shortCode ?? target.metadata.label} 的工作稿。需要保留本轮成果时，再记录一个命名版本。`,
           { exact: true },
         )
         .waitFor();
@@ -374,6 +374,26 @@ try {
       const recent = await page.evaluate(() => window.huandengDesktop.recentProjects());
       assert.ok(recent.some((item) => pathKey(item.entryPath) === pathKey(entry)));
       assert.ok(recent.some((item) => pathKey(item.entryPath) === pathKey(newEntry)));
+    },
+  );
+  await check(
+    'the home screen lists recent projects and reopens the selected document',
+    async () => {
+      await page.evaluate(() => {
+        void window.huandengDesktop.showHome().catch((error) => console.error(error.message));
+      });
+      await page.locator('#recent-projects .project').first().waitFor();
+      assert.equal(await page.locator('#recent-projects .project').count(), 2);
+      assert.equal(await page.locator('#open-project').isEnabled(), true);
+      assert.equal(await page.locator('#new-project').isEnabled(), true);
+      await application.evaluate(({ BrowserWindow }) =>
+        BrowserWindow.getAllWindows()[0]?.setContentSize(1280, 900),
+      );
+      await page.mouse.move(10, 10);
+      await captureEvidence('desktop-v05-home.png');
+      await page.locator(`[data-entry=${JSON.stringify(entry)}]`).click();
+      await waitForProject(entry);
+      assert.equal((await api(`/pages/${sibling.pageId}`)).data.notes, siblingNotes);
     },
   );
   assert.deepEqual(rendererErrors, []);

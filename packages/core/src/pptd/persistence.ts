@@ -239,15 +239,24 @@ export async function acquireWriterLock(
   const server = net.createServer((socket) => socket.destroy());
   // The kernel owns this lease; process exit releases it even after an unclean shutdown.
   await new Promise<void>((resolve, reject) => {
-    server.once('error', (error) =>
+    server.once('error', (error: NodeJS.ErrnoException) => {
+      const causeCode = error.code ?? 'UNKNOWN';
+      const occupied = causeCode === 'EADDRINUSE';
       reject(
         new PptdError(
           'WRITER_LOCKED',
-          'This project already has a writer or its local lock port is occupied.',
-          { port, cause: error.message },
+          occupied
+            ? `Another writer or local application is using this project's lock port ${port} (${causeCode}). Close the other writer or open read-only.`
+            : `The operating system could not reserve this project's lock port ${port} (${causeCode}). Open read-only or use a copy in a different folder.`,
+          {
+            port,
+            causeCode,
+            reason: occupied ? 'lock-port-in-use' : 'lock-port-unavailable',
+            cause: error.message,
+          },
         ),
-      ),
-    );
+      );
+    });
     server.listen({ host: '127.0.0.1', port, exclusive: true }, () => resolve());
   });
   server.unref();

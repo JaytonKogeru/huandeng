@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "stage": "candidate-integration",
+  "source": {
+    "baselineRevision": "8798d8f058dab89a80143e0c813780c8d87a70f9",
+    "candidateTransferSha256": "157272ec0f472923d2f185b19a614f6e15ad48d3d9c9931e575369cddda657ae",
+    "description": "Baseline source plus the recorded candidate transfer; this is not a final release commit."
+  },
+  "runtime": {
+    "host": "Electron development host",
+    "frontend": "compiled production bundle",
+    "packagedRelease": false
+  },
+  "rawReceipt": {
+    "localFile": ".verification/science-v04/result.json",
+    "sha256": "1dfa7bc4cde6a45ea8da04ec12f5468485760eded109e645f1f3458c9fb7e322"
+  },
+  "sanitization": "Only software test results are retained. Research paths, titles, source-file inventories, document content and screenshots are excluded.",
+  "passed": true,
+  "fixture": {
+    "kind": "isolated synthetic project"
+  },
+  "checks": [
+    {
+      "name": "insert and render bar",
+      "passed": true,
+      "milliseconds": 2555
+    },
+    {
+      "name": "insert and render line",
+      "passed": true,
+      "milliseconds": 1982
+    },
+    {
+      "name": "insert and render area",
+      "passed": true,
+      "milliseconds": 1831
+    },
+    {
+      "name": "insert and render pie",
+      "passed": true,
+      "milliseconds": 1921
+    },
+    {
+      "name": "insert and render scatter",
+      "passed": true,
+      "milliseconds": 1935
+    },
+    {
+      "name": "insert and render bubble",
+      "passed": true,
+      "milliseconds": 1906
+    },
+    {
+      "name": "insert and render radar",
+      "passed": true,
+      "milliseconds": 1884
+    },
+    {
+      "name": "insert and render heatmap",
+      "passed": true,
+      "milliseconds": 1954
+    },
+    {
+      "name": "insert and render candlestick",
+      "passed": true,
+      "milliseconds": 2006
+    },
+    {
+      "name": "insert and render waterfall",
+      "passed": true,
+      "milliseconds": 2100
+    },
+    {
+      "name": "insert and render treemap",
+      "passed": true,
+      "milliseconds": 2051
+    },
+    {
+      "name": "insert and render sunburst",
+      "passed": true,
+      "milliseconds": 2004
+    },
+    {
+      "name": "insert and render sankey",
+      "passed": true,
+      "milliseconds": 2086
+    },
+    {
+      "name": "edit chart data and preserve source through reload",
+      "passed": true,
+      "milliseconds": 2015
+    },
+    {
+      "name": "pending chart drafts survive selection and detect concurrent data changes",
+      "passed": true,
+      "milliseconds": 1280
+    },
+    {
+      "name": "table cells, merged rectangle, row insertion and split",
+      "passed": true,
+      "milliseconds": 3330
+    },
+    {
+      "name": "LaTeX fractions, summation and editable source",
+      "passed": true,
+      "milliseconds": 2452
+    },
+    {
+      "name": "MathML source renders as mathematics",
+      "passed": true,
+      "milliseconds": 2428
+    },
+    {
+      "name": "search and replace a bundled scientific icon",
+      "passed": true,
+      "milliseconds": 4586
+    },
+    {
+      "name": "group move, duplicate references, ungroup and undo",
+      "passed": true,
+      "milliseconds": 2613
+    },
+    {
+      "name": "image picker, drop and clipboard preserve assets, aspect ratio and undo",
+      "passed": true,
+      "milliseconds": 3599
+    },
+    {
+      "name": "PNG PDF PPTX exports preserve source and editable objects",
+      "passed": true,
+      "milliseconds": 13798
+    }
+  ],
+  "rendererErrorCount": 0,
+  "note": "The existing v0.4-named verifier was run against the v0.5 candidate. This is a candidate integration receipt, not a rerun of the old v0.4 executable and not final packaged acceptance."
+}

@@ -138,17 +138,14 @@ export function PptdInspector({
       <div className="flex h-11 shrink-0 items-center justify-between border-b border-border px-4">
         <h2 className="text-sm font-medium">{selected.length ? '对象属性' : '页面与图层'}</h2>
         <span className="folio">
-          {selected.length ? `${selected.length} selected` : (page.shortCode ?? '只读')}
+          {selected.length ? `已选 ${selected.length} 项` : (page.shortCode ?? '只读')}
         </span>
       </div>
       {element && (
         <>
-          <Section title={element.elementType}>
-            <p
-              className="break-all font-mono text-[11px] text-muted-foreground"
-              title={element.elementId}
-            >
-              {element.elementId}
+          <Section title="位置与尺寸">
+            <p className="break-words text-xs font-medium" title={`对象 ID：${element.elementId}`}>
+              {layerTitle(element)}
             </p>
             <div className="grid grid-cols-2 gap-x-3 gap-y-2">
               {(['X', 'Y', '宽度', '高度'] as const).map((label, index) => (
@@ -327,14 +324,17 @@ export function PptdInspector({
                   size="xs"
                   variant="ghost"
                   className="w-full justify-start overflow-hidden"
+                  title={`对象 ID：${id}`}
                   onClick={() => onSelect([id])}
                 >
-                  {layerTitle(
-                    page.data.elements.find((item) => item.elementId === id) ?? {
-                      elementId: id,
-                      elementType: 'missing',
-                    },
-                  )}
+                  <span className="truncate">
+                    {layerTitle(
+                      page.data.elements.find((item) => item.elementId === id) ?? {
+                        elementId: id,
+                        elementType: 'missing',
+                      },
+                    )}
+                  </span>
                 </Button>
               ))}
             </Section>
@@ -552,6 +552,8 @@ export function PptdInspector({
             <button
               type="button"
               key={item.elementId}
+              title={`对象 ID：${item.elementId}`}
+              aria-pressed={selectedIds.includes(item.elementId)}
               className={cn(
                 'flex w-full items-center gap-2 rounded px-2 py-2 text-left text-xs transition-colors hover:bg-muted',
                 selectedIds.includes(item.elementId) && 'bg-brand-soft text-brand',
@@ -577,12 +579,29 @@ export function PptdInspector({
 }
 
 export function layerTitle(element: PptdElement): string {
-  return (
+  const label =
     textValue(element.content?.text)
       .replace(/<[^>]*>/g, '')
-      .trim()
-      .slice(0, 36) || element.elementId
-  );
+      .trim() ||
+    textValue(element.name).trim() ||
+    textValue(element.title, textValue(record(element.title).text)).trim();
+  if (label) return label.slice(0, 36);
+  if (element.elementType === 'shape')
+    return (
+      SHAPE_PRESETS.find(([name]) => name === textValue(element.shapeName, 'rect'))?.[1] ??
+      '自定义形状'
+    );
+  const typeLabels: Record<string, string> = {
+    text: '文字',
+    image: '图片',
+    line: '线条',
+    chart: '图表',
+    table: '表格',
+    icon: '图标',
+    group: '组合',
+    missing: '缺失对象',
+  };
+  return typeLabels[element.elementType] ?? '对象';
 }
 
 function hexColor(color: string) {

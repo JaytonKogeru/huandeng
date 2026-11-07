@@ -3,11 +3,11 @@ import { createHash } from 'node:crypto';
 import fs from 'node:fs/promises';
 import { createRequire } from 'node:module';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const require = createRequire(path.join(root, 'packages/core/package.json'));
-const { createServer } = await import(require.resolve('vite'));
+const { createServer } = await import(pathToFileURL(require.resolve('vite')).href);
 const { strFromU8, unzipSync } = require('fflate');
 const output = path.resolve(process.argv[2] ?? path.join(root, '.verification/native-v04'));
 const server = await createServer({

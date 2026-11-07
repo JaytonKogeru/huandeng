@@ -33,6 +33,8 @@ type PendingWrite = {
   pageId?: string;
   sent?: PageDraft;
   history?: { kind: 'undo' | 'redo'; operationId: string };
+  previews?: Map<string, { base: PageSnapshot; page: PageSnapshot }>;
+  result?: TransactionResult;
 };
 
 function asClientError(error: unknown): PptdClientError {
@@ -43,6 +45,11 @@ function asClientError(error: unknown): PptdClientError {
 
 function equal(a: unknown, b: unknown): boolean {
   return JSON.stringify(a) === JSON.stringify(b);
+}
+
+function sameFields<T extends object>(left: T, right: T): boolean {
+  const keys = new Set([...Object.keys(left), ...Object.keys(right)] as (keyof T)[]);
+  return [...keys].every((key) => left[key] === right[key]);
 }
 
 function setField(target: Record<string, unknown>, path: string, value: unknown) {
@@ -71,14 +78,108 @@ export function draftHasChanges(draft: PageDraft): boolean {
 }
 
 export function projectDraft(draft: PageDraft): PageSnapshot {
-  const page = structuredClone(draft.base);
-  for (const element of page.data.elements) {
-    for (const [path, value] of Object.entries(draft.fields[element.elementId] ?? {})) {
-      setField(element, path, value);
+  if (!draftHasChanges(draft)) return draft.base;
+  const elements = draft.base.data.elements.map((element) => {
+    const fields = draft.fields[element.elementId];
+    if (!fields || !Object.keys(fields).length) return element;
+    const changed = structuredClone(element);
+    for (const [path, value] of Object.entries(fields)) setField(changed, path, value);
+    return changed;
+  });
+  return {
+    ...draft.base,
+    data: {
+      ...draft.base.data,
+      elements: elements.every((element, index) => element === draft.base.data.elements[index])
+        ? draft.base.data.elements
+        : elements,
+      ...(draft.notes !== undefined ? { notes: draft.notes } : {}),
+    },
+  };
+}
+
+function shareSnapshot(previous: PptdSession | null, next: PptdSession): PptdSession {
+  if (!previous || previous.deckId !== next.deckId || previous.entry !== next.entry) return next;
+  const previousPages = new Map(
+    previous.pages.map((page) => [page.occurrenceId ?? page.pageId, page]),
+  );
+  const pages = next.pages.map((page) => {
+    const before = previousPages.get(page.occurrenceId ?? page.pageId);
+    if (!before) return page;
+    const metadata = equal(before.metadata, page.metadata) ? before.metadata : page.metadata;
+    const shared = {
+      ...page,
+      data: before.pageRevision === page.pageRevision ? before.data : page.data,
+      metadata,
+      assetRevisions:
+        before.renderRevision === page.renderRevision ? before.assetRevisions : page.assetRevisions,
+      authorReview: equal(before.authorReview, page.authorReview)
+        ? before.authorReview
+        : page.authorReview,
+    };
+    return sameFields(shared, before) ? before : shared;
+  });
+  const shared = {
+    ...next,
+    pages:
+      pages.length === previous.pages.length &&
+      pages.every((page, index) => page === previous.pages[index])
+        ? previous.pages
+        : pages,
+    manifest:
+      previous.manifestRevision === next.manifestRevision ? previous.manifest : next.manifest,
+    metadata:
+      (next.metadataRevision !== null && previous.metadataRevision === next.metadataRevision) ||
+      equal(previous.metadata, next.metadata)
+        ? previous.metadata
+        : next.metadata,
+    size: equal(previous.size, next.size) ? previous.size : next.size,
+    diagnostics: equal(previous.diagnostics, next.diagnostics)
+      ? previous.diagnostics
+      : next.diagnostics,
+  };
+  return sameFields(shared, previous) ? previous : shared;
+}
+
+function previewElements(
+  snapshot: PptdSession,
+  operations: PptdOperation[],
+): PendingWrite['previews'] {
+  if (!operations.length) return;
+  const previews: NonNullable<PendingWrite['previews']> = new Map();
+  for (const operation of operations) {
+    if (operation.op !== 'element.add' && operation.op !== 'element.remove') return;
+    const base = snapshot.pages.find((page) => page.pageId === operation.pageId);
+    if (!base) return;
+    const page = previews.get(base.pageId)?.page ?? base;
+    const elements = [...page.data.elements];
+    if (operation.op === 'element.add') {
+      if (elements.some((element) => element.elementId === operation.element.elementId)) return;
+      const after = operation.afterElementId;
+      const index =
+        after === null ? -1 : elements.findIndex((element) => element.elementId === after);
+      if (after !== undefined && after !== null && index < 0) return;
+      elements.splice(after === undefined ? elements.length : index + 1, 0, operation.element);
+    } else {
+      const index = elements.findIndex((element) => element.elementId === operation.elementId);
+      if (index < 0) return;
+      elements.splice(index, 1);
     }
+    previews.set(base.pageId, { base, page: { ...page, data: { ...page.data, elements } } });
   }
-  if (draft.notes !== undefined) page.data.notes = draft.notes;
-  return page;
+  for (const { page } of previews.values()) {
+    const ids = new Set(page.data.elements.map((element) => element.elementId));
+    if (
+      page.data.elements.some(
+        (element) =>
+          element.elementType === 'group' &&
+          Array.isArray(element.children) &&
+          element.children.some((id) => !ids.has(id)),
+      )
+    )
+      return;
+  }
+  return previews;
 }
 
 function touchesComponent(draft: PageDraft): boolean {
@@ -107,6 +208,9 @@ export class PptdDocumentClient {
   private active = false;
   private refreshTicket = 0;
   private refreshNeeded = false;
+  private refreshQueued = false;
+  private refreshing: Promise<void> | null = null;
+  private projections = new WeakMap<PageDraft, PageSnapshot>();
   private state: PptdClientState = {
     snapshot: null,
     drafts: {},
@@ -130,6 +234,12 @@ export class PptdDocumentClient {
   };
 
   private publish(patch: Partial<PptdClientState>) {
+    if (
+      (Object.keys(patch) as (keyof PptdClientState)[]).every(
+        (key) => patch[key] === this.state[key],
+      )
+    )
+      return;
     this.state = { ...this.state, ...patch };
     for (const listener of this.listeners) listener();
   }
@@ -145,6 +255,11 @@ export class PptdDocumentClient {
     this.stopEvents = this.backend.subscribe(
       (event) => {
         if (event.originClientId === this.clientId && this.state.saving) return;
+        if (
+          event.epoch === this.state.snapshot?.epoch &&
+          event.sequence <= this.state.snapshot.sequence
+        )
+          return;
         void this.refresh();
       },
       (connected) => {
@@ -157,49 +272,76 @@ export class PptdDocumentClient {
 
   disconnect() {
     this.active = false;
+    this.refreshTicket++;
+    this.refreshQueued = false;
     this.stopEvents?.();
     this.stopEvents = null;
     for (const timer of this.timers.values()) clearTimeout(timer);
     this.timers.clear();
   }
 
-  async refresh() {
+  refresh(): Promise<void> {
     if (this.state.saving) {
       this.refreshNeeded = true;
-      return;
+      return Promise.resolve();
     }
-    const ticket = ++this.refreshTicket;
-    try {
-      const snapshot = await this.backend.getSnapshot();
-      if (ticket !== this.refreshTicket || this.state.saving) return;
-      this.acceptSnapshot(snapshot);
-      this.publish({ loading: false });
-      this.ensureEvents();
-    } catch (error) {
-      if (ticket === this.refreshTicket) {
-        this.publish({ error: asClientError(error), loading: false, connected: false });
-      }
+    this.refreshQueued = true;
+    if (!this.refreshing) {
+      this.refreshing = this.refreshSnapshots().finally(() => {
+        this.refreshing = null;
+        if (this.refreshQueued && !this.state.saving) void this.refresh();
+      });
     }
+    return this.refreshing;
   }
 
-  private acceptSnapshot(snapshot: PptdSession) {
-    const drafts = { ...this.state.drafts };
-    for (const [pageId, draft] of Object.entries(drafts)) {
+  private async refreshSnapshots() {
+    while (this.refreshQueued && !this.state.saving) {
+      this.refreshQueued = false;
+      const ticket = ++this.refreshTicket;
+      try {
+        const snapshot = await this.backend.getSnapshot();
+        if (ticket !== this.refreshTicket || this.state.saving) continue;
+        this.acceptSnapshot(snapshot, { loading: false });
+        this.ensureEvents();
+      } catch (error) {
+        if (ticket === this.refreshTicket) {
+          this.publish({ error: asClientError(error), loading: false, connected: false });
+        }
+      }
+    }
+    if (this.refreshQueued) this.refreshNeeded = true;
+  }
+
+  private acceptSnapshot(incoming: PptdSession, patch: Partial<PptdClientState> = {}) {
+    const snapshot = shareSnapshot(this.state.snapshot, incoming);
+    const previousDrafts = patch.drafts ?? this.state.drafts;
+    let drafts = previousDrafts;
+    const updateDraft = (pageId: string, draft: PageDraft) => {
+      if (drafts === previousDrafts) drafts = { ...drafts };
+      drafts[pageId] = draft;
+    };
+    for (const [pageId, draft] of Object.entries(previousDrafts)) {
       const remote = snapshot.pages.find((page) => page.pageId === pageId);
       if (!remote || remote.pageRevision !== draft.base.pageRevision) {
-        drafts[pageId] = {
-          ...draft,
-          conflict: remote
-            ? '这一页已有新版本，本地草稿已保留。'
-            : '这一页已被移出当前演示，本地草稿已保留。',
-        };
+        const conflict = remote
+          ? '这一页已有新版本，本地草稿已保留。'
+          : '这一页已被移出当前演示，本地草稿已保留。';
+        if (draft.conflict !== conflict) updateDraft(pageId, { ...draft, conflict });
       } else if (touchesComponent(draft) && snapshot.metadataRevision !== draft.metadataRevision) {
-        drafts[pageId] = { ...draft, conflict: '组件绑定或作者注记已更新，请先检查最新版本。' };
+        const conflict = '组件绑定或作者注记已更新，请先检查最新版本。';
+        if (draft.conflict !== conflict) updateDraft(pageId, { ...draft, conflict });
       } else if (remote.renderRevision !== draft.base.renderRevision) {
-        drafts[pageId] = {
+        updateDraft(pageId, {
           ...draft,
-          base: { ...draft.base, renderRevision: remote.renderRevision },
-        };
+          base: {
+            ...draft.base,
+            renderRevision: remote.renderRevision,
+            assetRevisions: remote.assetRevisions,
+            metadata: remote.metadata,
+            authorReview: remote.authorReview,
+          },
+        });
       }
     }
     const staleError =
@@ -207,21 +349,32 @@ export class PptdDocumentClient {
       ['INVALID_DOCUMENT', 'SERVICE_UNAVAILABLE', 'INVALID_SESSION', 'NETWORK_ERROR'].includes(
         this.state.error?.code ?? '',
       );
-    this.publish({ snapshot, drafts, ...(staleError ? { error: null } : {}) });
+    this.publish({ ...patch, snapshot, drafts, ...(staleError ? { error: null } : {}) });
   }
 
   page(pageId: string): PageSnapshot | undefined {
     const draft = this.state.drafts[pageId];
-    return draft
-      ? projectDraft(draft)
-      : this.state.snapshot?.pages.find((p) => p.pageId === pageId);
+    if (draft) {
+      let projected = this.projections.get(draft);
+      if (!projected) {
+        projected = projectDraft(draft);
+        this.projections.set(draft, projected);
+      }
+      return projected;
+    }
+    return (
+      this.pending?.previews?.get(pageId)?.page ??
+      this.state.snapshot?.pages.find((page) => page.pageId === pageId)
+    );
   }
 
   private ensureDraft(pageId: string): PageDraft | null {
     if (!this.state.snapshot?.writable) return null;
     const existing = this.state.drafts[pageId];
     if (existing) return existing;
-    const base = this.state.snapshot.pages.find((page) => page.pageId === pageId);
+    const base =
+      this.pending?.previews?.get(pageId)?.page ??
+      this.state.snapshot.pages.find((page) => page.pageId === pageId);
     if (!base) return null;
     return { base, metadataRevision: this.state.snapshot.metadataRevision, fields: {} };
   }
@@ -281,7 +434,7 @@ export class PptdDocumentClient {
       ...draft,
       fields: {
         ...draft.fields,
-        [elementId]: { ...draft.fields[elementId], ...set },
+        [elementId]: { ...draft.fields[elementId], ...structuredClone(set) },
       },
     };
     this.publish({ drafts: { ...this.state.drafts, [pageId]: next } });
@@ -321,7 +474,8 @@ export class PptdDocumentClient {
   }
 
   discardDraft(pageId: string) {
-    if (this.state.saving || this.pending?.pageId === pageId) return;
+    if (this.state.saving || this.pending?.pageId === pageId || this.pending?.previews?.has(pageId))
+      return;
     this.clearTimer(pageId);
     const drafts = { ...this.state.drafts };
     delete drafts[pageId];
@@ -374,6 +528,8 @@ export class PptdDocumentClient {
 
   async flushAll() {
     if (this.state.saving) throw new PptdClientError('SAVE_IN_PROGRESS', '正在保存，请稍候。');
+    if (this.pending && !this.pending.pageId)
+      throw new PptdClientError('PENDING_REQUEST', '请先重试尚未确认的保存。');
     if (this.composing.size || this.interactions.size) {
       throw new PptdClientError('EDIT_IN_PROGRESS', '请先完成当前输入或拖动。');
     }
@@ -385,15 +541,17 @@ export class PptdDocumentClient {
     if (this.pending) throw new PptdClientError('PENDING_REQUEST', '请先重试尚未确认的保存。');
     const snapshot = this.state.snapshot;
     if (!snapshot?.writable) throw new PptdClientError('READ_ONLY', '当前项目以只读模式打开。');
+    const request: TransactionRequest = {
+      requestId: crypto.randomUUID(),
+      deckId: snapshot.deckId,
+      actor: `huandeng-ui:${this.clientId}`,
+      originClientId: this.clientId,
+      expected: structuredClone({ ...allExpected(snapshot), ...expected }),
+      operations: structuredClone(operations),
+    };
     this.pending = {
-      request: {
-        requestId: crypto.randomUUID(),
-        deckId: snapshot.deckId,
-        actor: `huandeng-ui:${this.clientId}`,
-        originClientId: this.clientId,
-        expected: { ...allExpected(snapshot), ...expected },
-        operations,
-      },
+      request,
+      previews: previewElements(snapshot, request.operations),
     };
     return this.submitPending();
   }
@@ -409,15 +567,17 @@ export class PptdDocumentClient {
     this.refreshTicket++;
     this.publish({ saving: true, error: null, canRetry: false });
     try {
-      let result: TransactionResult;
-      if (pending.history) {
-        result = await this.backend.revert(
-          pending.history.kind,
-          pending.history.operationId,
-          pending.request.requestId,
-          this.clientId,
-        );
-      } else result = await this.backend.commit(pending.request);
+      const result =
+        pending.result ??
+        (pending.history
+          ? await this.backend.revert(
+              pending.history.kind,
+              pending.history.operationId,
+              pending.request.requestId,
+              this.clientId,
+            )
+          : await this.backend.commit(pending.request));
+      pending.result = result;
       const snapshot = await this.backend.getSnapshot();
       const drafts = { ...this.state.drafts };
       if (pending.pageId && pending.sent) {
@@ -435,8 +595,7 @@ export class PptdDocumentClient {
           }
           const remote = snapshot.pages.find((page) => page.pageId === pageId);
           const savedRevision = result.newRevisions.pages[pageId] ?? sent.base.pageRevision;
-          const savedBase = projectDraft(sent);
-          savedBase.pageRevision = savedRevision;
+          const savedBase = { ...projectDraft(sent), pageRevision: savedRevision };
           const remaining: PageDraft = {
             base: remote?.pageRevision === savedRevision ? remote : savedBase,
             metadataRevision: result.newRevisions.metadata,
@@ -447,8 +606,27 @@ export class PptdDocumentClient {
           else delete drafts[pageId];
         }
       }
+      for (const [pageId, preview] of pending.previews ?? []) {
+        const live = drafts[pageId];
+        if (!live || live.base.pageRevision !== preview.base.pageRevision) continue;
+        const remote = snapshot.pages.find((page) => page.pageId === pageId);
+        const savedRevision = result.newRevisions.pages[pageId] ?? preview.base.pageRevision;
+        const base =
+          remote?.pageRevision === savedRevision
+            ? remote
+            : { ...preview.page, pageRevision: savedRevision };
+        const removedTarget = Object.keys(live.fields).some(
+          (elementId) => !base.data.elements.some((element) => element.elementId === elementId),
+        );
+        drafts[pageId] = {
+          ...live,
+          base,
+          metadataRevision: result.newRevisions.metadata,
+          conflict: removedTarget ? '修改中的对象已被移除，草稿已保留。' : undefined,
+        };
+      }
       this.pending = null;
-      this.publish({
+      this.acceptSnapshot(snapshot, {
         drafts,
         saving: false,
         canRetry: false,
@@ -467,18 +645,31 @@ export class PptdDocumentClient {
               : [],
         lastSaved: Date.now(),
       });
-      this.acceptSnapshot(snapshot);
       for (const pageId of Object.keys(this.state.drafts)) this.schedule(pageId);
       return result;
     } catch (error) {
       const failure = asClientError(error);
       const definitive =
+        !pending.result &&
         failure.status >= 400 &&
         failure.status < 500 &&
         !['SAVE_FAILED', 'PENDING_RECOVERY', 'RECOVERY_REQUIRED'].includes(failure.code);
       const drafts = { ...this.state.drafts };
       if (definitive) {
         this.pending = null;
+        for (const [pageId, preview] of pending.previews ?? []) {
+          const live = drafts[pageId];
+          if (!live || live.base.pageRevision !== preview.base.pageRevision) continue;
+          const missingTarget = Object.keys(live.fields).some(
+            (elementId) =>
+              !preview.base.data.elements.some((element) => element.elementId === elementId),
+          );
+          drafts[pageId] = {
+            ...live,
+            base: preview.base,
+            conflict: missingTarget ? '新增对象未保存，相关草稿已保留。' : undefined,
+          };
+        }
         if (pending.pageId && drafts[pending.pageId]) {
           drafts[pending.pageId] = { ...drafts[pending.pageId], conflict: failure.message };
         }

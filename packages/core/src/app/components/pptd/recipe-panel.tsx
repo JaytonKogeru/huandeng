@@ -353,9 +353,9 @@ function RecipePanelPage({ snapshot, page, onApply, disabled }: RecipePanelProps
         ? (['caption', 'annotation'] as const)
         : (['caption'] as const);
   return (
-    <details className="space-y-4 border-t border-border p-4" aria-label="布局起点">
+    <details className="space-y-4 border-t border-border p-4" aria-label="快速布局">
       <summary className="cursor-pointer text-xs font-medium">
-        布局起点 <span className="ml-2 text-[10px] font-normal text-muted-foreground">可选</span>
+        快速布局 <span className="ml-2 text-[10px] font-normal text-muted-foreground">可选</span>
       </summary>
       <p className="text-xs leading-relaxed text-muted-foreground">
         生成一组普通对象。之后可自由移动、改字、裁切或删除；只有点击“应用参数”才会重新排版。
@@ -424,7 +424,7 @@ function RecipePanelPage({ snapshot, page, onApply, disabled }: RecipePanelProps
           ))}
           {recipe === 'figure-with-zoom' && (
             <p className="text-[11px] text-muted-foreground">
-              放大图引用同一张原图；创建后可在 Inspector 调整裁切范围。
+              放大图引用同一张原图；创建后可在属性面板调整裁切范围。
             </p>
           )}
           <Button type="submit" size="sm" disabled={inactive}>
@@ -444,7 +444,7 @@ function RecipePanelPage({ snapshot, page, onApply, disabled }: RecipePanelProps
       )}
       {components.length > 0 && (
         <div className="space-y-3">
-          <h4 className="text-xs font-medium">已使用的布局起点</h4>
+          <h4 className="text-xs font-medium">已使用的快速布局</h4>
           {components.map(([instanceId, binding]) => (
             <RecipeCard
               key={instanceId}

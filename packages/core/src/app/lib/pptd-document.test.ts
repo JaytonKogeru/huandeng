@@ -1,5 +1,11 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import type { Revision, TransactionRequest, TransactionResult } from '../../pptd/types';
+import type {
+  PptdElement,
+  PptdOperation,
+  Revision,
+  TransactionRequest,
+  TransactionResult,
+} from '../../pptd/types';
 import { PptdBackend, PptdClientError, type PptdSession, type PptdTransport } from './pptd-backend';
 import { PptdDocumentClient } from './pptd-document';
 
@@ -87,10 +93,19 @@ function deferred<T>() {
   return { promise, resolve, reject };
 }
 
+function shape(): PptdElement {
+  return {
+    elementId: 'shape',
+    elementType: 'shape',
+    shapeName: 'rect',
+    bounds: [100, 120, 200, 140],
+  };
+}
+
 const clients: PptdDocumentClient[] = [];
 
-async function setup() {
-  let remote = session();
+async function setup(initial = session()) {
+  let remote = initial;
   const commit = vi.fn<(request: TransactionRequest) => Promise<TransactionResult>>();
   const revert = vi.fn<PptdTransport['revert']>();
   const backend: PptdTransport = {
@@ -104,6 +119,7 @@ async function setup() {
   await client.refresh();
   return {
     client,
+    backend,
     commit,
     revert,
     setRemote: (next: PptdSession) => {
@@ -120,6 +136,255 @@ afterEach(() => {
 });
 
 describe('PPTD browser editing contract', () => {
+  it('retains unchanged page and project references while accepting page and metadata changes', async () => {
+    const initial = session();
+    const second = structuredClone(initial.pages[0]);
+    second.pageId = 'page-2';
+    second.shortCode = second.metadata.shortCode = 'Q9R4';
+    second.path = second.metadata.path = 'pages/second.page';
+    initial.pages.push(second);
+    initial.metadata.slides[second.pageId] = second.metadata;
+    initial.manifest.pages.push(second.path);
+    const { client, setRemote } = await setup(initial);
+    const before = client.getState().snapshot;
+    await client.refresh();
+    expect(client.getState().snapshot).toBe(before);
+
+    const changed = structuredClone(initial);
+    changed.pages[1].data.elements[0].content = { text: '另一页的新内容' };
+    changed.pages[1].pageRevision = changed.pages[1].renderRevision = revision(2);
+    changed.sequence++;
+    setRemote(changed);
+    await client.refresh();
+    const after = client.getState().snapshot;
+    expect(after?.pages[0]).toBe(before?.pages[0]);
+    expect(after?.pages[1]).not.toBe(before?.pages[1]);
+    expect(after?.manifest).toBe(before?.manifest);
+    expect(after?.metadata).toBe(before?.metadata);
+    expect(after?.size).toBe(before?.size);
+
+    changed.metadataRevision = revision(201);
+    changed.pages[1].metadata.designIntent = { purpose: '新的页面意图' };
+    changed.metadata.slides[second.pageId] = changed.pages[1].metadata;
+    changed.sequence++;
+    await client.refresh();
+    const withMetadata = client.getState().snapshot;
+    expect(withMetadata?.pages[0]).toBe(before?.pages[0]);
+    expect(withMetadata?.pages[1].data).toBe(after?.pages[1].data);
+    expect(withMetadata?.pages[1].metadata.designIntent?.purpose).toBe('新的页面意图');
+    expect(withMetadata?.metadata).not.toBe(before?.metadata);
+  });
+
+  it('reuses a draft projection until its content changes without cloning untouched elements', async () => {
+    const initial = session();
+    initial.pages[0].data.elements.push(shape());
+    const { client } = await setup(initial);
+    const committed = client.page('page-1');
+    client.patchElement('page-1', 'title', { 'content.text': '工作稿' }, false);
+    const projected = client.page('page-1');
+    expect(client.page('page-1')).toBe(projected);
+    expect(projected?.data.elements[1]).toBe(committed?.data.elements[1]);
+    expect(committed?.data.elements[0].content?.text).toBe('原稿');
+    client.setNotes('page-1', '讲稿');
+    expect(client.page('page-1')).not.toBe(projected);
+    expect(client.page('page-1')?.data.elements[0].content?.text).toBe('工作稿');
+    expect(client.page('page-1')?.data.notes).toBe('讲稿');
+  });
+
+  it('coalesces overlapping refreshes and rereads changes arriving during the first read', async () => {
+    const { client, backend, setRemote } = await setup();
+    const firstRead = deferred<PptdSession>();
+    const getSnapshot = vi.mocked(backend.getSnapshot).mockClear();
+    getSnapshot.mockReturnValueOnce(firstRead.promise);
+    const first = client.refresh();
+    const refreshes = Array.from({ length: 12 }, () => client.refresh());
+    expect(refreshes.every((refresh) => refresh === first)).toBe(true);
+    expect(getSnapshot).toHaveBeenCalledTimes(1);
+    setRemote(session('读取期间发生的修改', 2));
+    firstRead.resolve(session());
+    await Promise.all(refreshes);
+    expect(getSnapshot).toHaveBeenCalledTimes(2);
+    expect(client.page('page-1')?.data.elements[0].content?.text).toBe('读取期间发生的修改');
+  });
+
+  it('does not replace an acknowledged save with an older in-flight refresh', async () => {
+    const { client, backend, commit, setRemote } = await setup();
+    const oldRead = deferred<PptdSession>();
+    vi.mocked(backend.getSnapshot).mockReturnValueOnce(oldRead.promise);
+    const refreshing = client.refresh();
+    client.patchElement('page-1', 'title', { 'content.text': '已保存的新稿' }, false);
+    commit.mockImplementationOnce(async (request) => {
+      setRemote(session('已保存的新稿', 2));
+      return receipt(request.requestId);
+    });
+    await client.flushPage('page-1');
+    oldRead.resolve(session());
+    await refreshing;
+    expect(client.page('page-1')?.data.elements[0].content?.text).toBe('已保存的新稿');
+    expect(client.getState().drafts).toEqual({});
+  });
+
+  it('shows a deletion before acknowledgment while keeping the committed snapshot and history intact', async () => {
+    const { client, commit, setRemote } = await setup();
+    const ack = deferred<TransactionResult>();
+    commit.mockReturnValueOnce(ack.promise);
+    const saving = client.apply([{ op: 'element.remove', pageId: 'page-1', elementId: 'title' }]);
+    await Promise.resolve();
+    expect(client.page('page-1')?.data.elements).toHaveLength(0);
+    expect(client.getState().snapshot?.pages[0].data.elements).toHaveLength(1);
+    expect(client.getState().saving).toBe(true);
+    expect(client.getState().lastSaved).toBeNull();
+    expect(client.getState().undoStack).toEqual([]);
+    const saved = session('', 2);
+    saved.pages[0].data.elements = [];
+    setRemote(saved);
+    ack.resolve(receipt(commit.mock.calls[0][0].requestId));
+    await saving;
+    expect(client.getState().snapshot?.pages[0].data.elements).toHaveLength(0);
+    expect(client.getState().undoStack).toEqual(['operation-1']);
+    expect(client.getState().saving).toBe(false);
+  });
+
+  it('rolls back a rejected addition and accepts the actual remote page', async () => {
+    const { client, commit, setRemote } = await setup();
+    const ack = deferred<TransactionResult>();
+    commit.mockReturnValueOnce(ack.promise);
+    const saving = client.apply([
+      { op: 'element.add', pageId: 'page-1', element: shape(), afterElementId: null },
+    ]);
+    await Promise.resolve();
+    expect(client.page('page-1')?.data.elements.map((element) => element.elementId)).toEqual([
+      'shape',
+      'title',
+    ]);
+    setRemote(session('外部的新稿', 2));
+    ack.reject(new PptdClientError('REVISION_CONFLICT', 'Page changed.', 409));
+    await expect(saving).rejects.toMatchObject({ code: 'REVISION_CONFLICT' });
+    expect(client.page('page-1')?.data.elements).toHaveLength(1);
+    expect(client.page('page-1')?.data.elements[0].content?.text).toBe('外部的新稿');
+    expect(client.getState().canRetry).toBe(false);
+    expect(client.getState().undoStack).toEqual([]);
+  });
+
+  it('retains an uncertain addition and retries its original request without duplicating the object', async () => {
+    const { client, commit, setRemote } = await setup();
+    const element = shape();
+    const operations: PptdOperation[] = [{ op: 'element.add', pageId: 'page-1', element }];
+    commit.mockImplementationOnce(async () => {
+      const saved = session('原稿', 2);
+      saved.pages[0].data.elements.push(shape());
+      setRemote(saved);
+      throw new PptdClientError('NETWORK_ERROR', 'Lost response after commit.');
+    });
+    await expect(client.apply(operations)).rejects.toMatchObject({ code: 'NETWORK_ERROR' });
+    const original = structuredClone(commit.mock.calls[0][0]);
+    element.bounds = [0, 0, 1, 1];
+    expect(client.getState().canRetry).toBe(true);
+    expect(client.getState().lastSaved).toBeNull();
+    expect(client.page('page-1')?.data.elements).toHaveLength(2);
+    await expect(client.flushAll()).rejects.toMatchObject({ code: 'PENDING_REQUEST' });
+    await client.refresh();
+    expect(client.page('page-1')?.data.elements).toHaveLength(2);
+    commit.mockResolvedValueOnce(receipt(original.requestId));
+    await client.retryPending();
+    expect(commit.mock.calls[1][0]).toEqual(original);
+    expect(client.getState().snapshot?.pages[0].data.elements).toHaveLength(2);
+    expect(client.getState().undoStack).toEqual(['operation-1']);
+    expect(client.getState().canRetry).toBe(false);
+  });
+
+  it('retains an acknowledged commit when the following snapshot read fails and retries only that read', async () => {
+    const { client, backend, commit, setRemote } = await setup();
+    commit.mockImplementationOnce(async (request) => {
+      const saved = session('原稿', 2);
+      saved.pages[0].data.elements.push(shape());
+      setRemote(saved);
+      return receipt(request.requestId);
+    });
+    vi.mocked(backend.getSnapshot).mockRejectedValueOnce(
+      new PptdClientError('SERVICE_UNAVAILABLE', 'Snapshot endpoint unavailable.', 404),
+    );
+    await expect(
+      client.apply([{ op: 'element.add', pageId: 'page-1', element: shape() }]),
+    ).rejects.toMatchObject({ code: 'SERVICE_UNAVAILABLE' });
+    expect(client.getState().canRetry).toBe(true);
+    expect(client.getState().undoStack).toEqual([]);
+    expect(client.page('page-1')?.data.elements).toHaveLength(2);
+    await client.retryPending();
+    expect(commit).toHaveBeenCalledTimes(1);
+    expect(client.getState().undoStack).toEqual(['operation-1']);
+    expect(client.getState().canRetry).toBe(false);
+  });
+
+  it('keeps typing started during an insertion on the acknowledged revision', async () => {
+    const { client, commit, setRemote } = await setup();
+    const ack = deferred<TransactionResult>();
+    commit.mockReturnValueOnce(ack.promise);
+    const saving = client.apply([{ op: 'element.add', pageId: 'page-1', element: shape() }]);
+    await Promise.resolve();
+    client.patchElement('page-1', 'title', { 'content.text': '继续输入' }, false);
+    const saved = session('原稿', 2);
+    saved.pages[0].data.elements.push(shape());
+    setRemote(saved);
+    ack.resolve(receipt(commit.mock.calls[0][0].requestId));
+    await saving;
+    expect(client.page('page-1')?.data.elements).toHaveLength(2);
+    expect(client.page('page-1')?.data.elements[0].content?.text).toBe('继续输入');
+    expect(client.getState().drafts['page-1'].base.pageRevision).toBe(revision(2));
+    expect(client.getState().drafts['page-1'].conflict).toBeUndefined();
+    commit.mockImplementationOnce(async (request) => {
+      const next = structuredClone(saved);
+      next.pages[0].data.elements[0].content = { text: '继续输入' };
+      next.pages[0].pageRevision = next.pages[0].renderRevision = revision(3);
+      setRemote(next);
+      return receipt(request.requestId, 3, 'operation-2');
+    });
+    await client.flushPage('page-1');
+    expect(commit.mock.calls[1][0].expected.pages?.['page-1']).toBe(revision(2));
+    expect(client.getState().drafts).toEqual({});
+  });
+
+  it('restores a rejected deletion while keeping typing entered during the request', async () => {
+    const initial = session();
+    initial.pages[0].data.elements.push(shape());
+    const { client, commit } = await setup(initial);
+    const ack = deferred<TransactionResult>();
+    commit.mockReturnValueOnce(ack.promise);
+    const saving = client.apply([{ op: 'element.remove', pageId: 'page-1', elementId: 'shape' }]);
+    await Promise.resolve();
+    client.patchElement('page-1', 'title', { 'content.text': '继续输入' }, false);
+    ack.reject(
+      new PptdClientError('INVALID_REQUEST', 'Cannot remove this referenced object.', 400),
+    );
+    await expect(saving).rejects.toMatchObject({ code: 'INVALID_REQUEST' });
+    expect(client.page('page-1')?.data.elements).toHaveLength(2);
+    expect(client.page('page-1')?.data.elements[0].content?.text).toBe('继续输入');
+    expect(client.getState().drafts['page-1'].base.pageRevision).toBe(revision(1));
+    expect(client.getState().drafts['page-1'].conflict).toBeUndefined();
+  });
+
+  it('keeps a post-insertion draft conflicted when another writer changes the acknowledged page', async () => {
+    const { client, commit, setRemote } = await setup();
+    const ack = deferred<TransactionResult>();
+    commit.mockReturnValueOnce(ack.promise);
+    const saving = client.apply([{ op: 'element.add', pageId: 'page-1', element: shape() }]);
+    await Promise.resolve();
+    client.patchElement('page-1', 'title', { 'content.text': '尚未发送的新文字' }, false);
+    const remote = session('另一位作者的新文字', 3);
+    remote.pages[0].data.elements.push(shape());
+    setRemote(remote);
+    ack.resolve(receipt(commit.mock.calls[0][0].requestId, 2));
+    await saving;
+    expect(client.page('page-1')?.data.elements[0].content?.text).toBe('尚未发送的新文字');
+    expect(client.getState().snapshot?.pages[0].data.elements[0].content?.text).toBe(
+      '另一位作者的新文字',
+    );
+    expect(client.getState().drafts['page-1'].base.pageRevision).toBe(revision(2));
+    expect(client.getState().drafts['page-1'].conflict).toBeTruthy();
+    await expect(client.flushPage('page-1')).rejects.toMatchObject({ code: 'REVISION_CONFLICT' });
+    expect(commit).toHaveBeenCalledTimes(1);
+  });
+
   it('reports the CLI entry point when Vite returns HTML without a PPTD session', async () => {
     vi.stubGlobal(
       'fetch',
