@@ -137,6 +137,30 @@ async function editorAcknowledged() {
   await eventually(() => page.getByRole('button', { name: '撤销', exact: true }).isEnabled());
 }
 
+async function objectShortcutReady(expectedIds) {
+  await eventually(() =>
+    page.evaluate((ids) => {
+      const canvas = document.querySelector('[data-hd-editor-canvas]');
+      const active = document.activeElement;
+      const selected = Array.from(canvas?.querySelectorAll('[data-hd-selection]') ?? []).map(
+        (node) => node.getAttribute('data-hd-selection'),
+      );
+      const addText = document.querySelector('[aria-label="添加文本"]');
+      return (
+        (active === document.body || canvas?.contains(active)) &&
+        !active?.closest(
+          'input, textarea, [contenteditable="true"], [role="dialog"], [role="menu"]',
+        ) &&
+        selected.length === ids.length &&
+        ids.every((id) => selected.includes(id)) &&
+        addText &&
+        !addText.disabled &&
+        document.querySelector('[data-hd-save-status]')?.textContent?.includes('已保存')
+      );
+    }, expectedIds),
+  );
+}
+
 async function check(name, callback) {
   const start = Date.now();
   await callback();
@@ -165,6 +189,34 @@ try {
   page = await browser.newPage({ viewport: { width: 1600, height: 1000 } });
   page.setDefaultTimeout(15000);
   page.on('pageerror', (error) => errors.push(error.message));
+  await page.addInitScript(() => {
+    window.__hdScienceKeys = [];
+    window.addEventListener(
+      'keydown',
+      (event) => {
+        if (!event.ctrlKey && !event.metaKey) return;
+        const active = document.activeElement;
+        const entry = {
+          key: event.key,
+          shift: event.shiftKey,
+          composing: event.isComposing,
+          activeTag: active?.tagName,
+          activeId: active?.getAttribute('data-hd-element-id'),
+          saveStatus: document.querySelector('[data-hd-save-status]')?.textContent,
+          undoDisabled: document.querySelector('[aria-label="撤销"]')?.disabled,
+          selected: Array.from(document.querySelectorAll('[data-hd-selection]')).map((node) =>
+            node.getAttribute('data-hd-selection'),
+          ),
+          prevented: false,
+        };
+        window.__hdScienceKeys.push(entry);
+        setTimeout(() => {
+          entry.prevented = event.defaultPrevented;
+        }, 0);
+      },
+      true,
+    );
+  });
   const chartLabels = {
     bar: '柱状图',
     line: '折线图',
@@ -388,6 +440,7 @@ try {
     await page
       .locator('[data-hd-editor-canvas] [data-hd-element-id="text-two"]')
       .click({ modifiers: ['Shift'] });
+    await objectShortcutReady(['shape-one', 'text-two']);
     await page.keyboard.press('Control+g');
     const grouped = await eventually(async () =>
       (await api(`/pages/${id}`)).data.elements.find((item) => item.elementType === 'group'),
@@ -405,6 +458,7 @@ try {
     await page
       .locator(`[data-hd-editor-canvas] [data-hd-element-id="${grouped.elementId}"]`)
       .click();
+    await objectShortcutReady([grouped.elementId]);
     await page.keyboard.press('Control+d');
     const duplicated = await eventually(async () => {
       const current = await api(`/pages/${id}`);
@@ -417,6 +471,7 @@ try {
     );
     assert.ok(copy.children.every((childId) => !grouped.children.includes(childId)));
     await editorAcknowledged();
+    await objectShortcutReady([copy.elementId]);
     await page.keyboard.press('Control+Shift+g');
     await eventually(
       async () =>
@@ -424,6 +479,7 @@ try {
           .length === 1,
     );
     await editorAcknowledged();
+    await objectShortcutReady(copy.children);
     await page.keyboard.press('Control+z');
     await eventually(
       async () =>
@@ -636,6 +692,16 @@ try {
           ?.getByRole('alert')
           .allTextContents()
           .catch(() => []),
+        keyboard: await page?.evaluate(() => window.__hdScienceKeys ?? []).catch(() => []),
+        focus: await page
+          ?.evaluate(() => ({
+            tag: document.activeElement?.tagName,
+            elementId: document.activeElement?.getAttribute('data-hd-element-id'),
+            label: document.activeElement?.getAttribute('aria-label'),
+            saveStatus: document.querySelector('[data-hd-save-status]')?.textContent,
+            addTextDisabled: document.querySelector('[aria-label="添加文本"]')?.disabled,
+          }))
+          .catch(() => null),
       },
       null,
       2,

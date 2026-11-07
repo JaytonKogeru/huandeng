@@ -318,6 +318,7 @@ export class ExportManager {
             ) {
               throw new Error('No reliable renderer for this object.');
             }
+            await frame.scrollIntoViewIfNeeded();
             const [box, frameBox] = await Promise.all([node.boundingBox(), frame.boundingBox()]);
             if (!box || !frameBox) throw new Error('The rendered object has no measurable bounds.');
             const originalStyles = await node.evaluate((target) => {
@@ -339,18 +340,83 @@ export class ExportManager {
               return originals;
             });
             try {
-              const bytes = await node.screenshot({ type: 'png', omitBackground: true });
+              // Text, formulas and stroked paths may paint outside their CSS border box.
+              // Capture the isolated page and crop to actual alpha pixels, so the image
+              // preserves visible overflow without including the page or other objects.
+              const pageBytes = await page.screenshot({
+                type: 'png',
+                omitBackground: true,
+                clip: frameBox,
+              });
+              const raster = await page.evaluate(
+                async (dataUrl) => {
+                  const source = new Image();
+                  source.src = dataUrl;
+                  await source.decode();
+                  const width = source.naturalWidth;
+                  const height = source.naturalHeight;
+                  const canvas = document.createElement('canvas');
+                  canvas.width = width;
+                  canvas.height = height;
+                  const context = canvas.getContext('2d');
+                  if (!context) throw new Error('Cannot measure rendered pixels.');
+                  context.drawImage(source, 0, 0);
+                  const pixels = context.getImageData(0, 0, width, height).data;
+                  let left = width;
+                  let top = height;
+                  let right = -1;
+                  let bottom = -1;
+                  for (let y = 0; y < height; y++) {
+                    for (let x = 0; x < width; x++) {
+                      if (pixels[(y * width + x) * 4 + 3] === 0) continue;
+                      left = Math.min(left, x);
+                      top = Math.min(top, y);
+                      right = Math.max(right, x);
+                      bottom = Math.max(bottom, y);
+                    }
+                  }
+                  if (right < left || bottom < top) {
+                    // A fully transparent object still has a valid, empty representation.
+                    left = 0;
+                    top = 0;
+                    right = 0;
+                    bottom = 0;
+                  } else {
+                    left = Math.max(0, left - 1);
+                    top = Math.max(0, top - 1);
+                    right = Math.min(width - 1, right + 1);
+                    bottom = Math.min(height - 1, bottom + 1);
+                  }
+                  const crop = document.createElement('canvas');
+                  crop.width = right - left + 1;
+                  crop.height = bottom - top + 1;
+                  const cropContext = crop.getContext('2d');
+                  if (!cropContext) throw new Error('Cannot crop rendered pixels.');
+                  cropContext.drawImage(canvas, -left, -top);
+                  return {
+                    dataUrl: crop.toDataURL('image/png'),
+                    pageWidth: width,
+                    pageHeight: height,
+                    left,
+                    top,
+                    width: crop.width,
+                    height: crop.height,
+                  };
+                },
+                `data:image/png;base64,${pageBytes.toString('base64')}`,
+              );
+              const bytes = Buffer.from(raster.dataUrl.split(',')[1], 'base64');
               const dimensions = imageDimensions(bytes, 'png');
               if (!dimensions) throw new Error('The browser returned an invalid PNG.');
               return {
                 bytes,
                 ...dimensions,
-                bounds: [box.x - frameBox.x, box.y - frameBox.y, box.width, box.height] as [
-                  number,
-                  number,
-                  number,
-                  number,
-                ],
+                bounds: [
+                  (raster.left / raster.pageWidth) * frameBox.width,
+                  (raster.top / raster.pageHeight) * frameBox.height,
+                  (raster.width / raster.pageWidth) * frameBox.width,
+                  (raster.height / raster.pageHeight) * frameBox.height,
+                ] as [number, number, number, number],
               };
             } finally {
               await node.evaluate((target, originals) => {

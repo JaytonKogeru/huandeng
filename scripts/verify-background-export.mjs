@@ -47,6 +47,35 @@ const source = {
       bounds: [340, 180, 30, 30],
       fill: { type: 'solid', color: '#000000' },
     },
+    {
+      elementId: 'overflow-short-text',
+      elementType: 'text',
+      bounds: [560, 140, 240, 5],
+      content: {
+        text: '<span style="font-weight:600">Readable gyjp labels</span>',
+        fontSize: 24,
+        color: '#aa0088',
+      },
+    },
+    {
+      elementId: 'overflow-paragraphs',
+      elementType: 'text',
+      bounds: [560, 230, 240, 35],
+      content: {
+        text: '<p style="margin-top:0">First visible row</p><p style="margin-top:28px">Final row with gyjp</p>',
+        fontSize: 18,
+        color: '#663399',
+      },
+    },
+    {
+      elementId: 'overflow-stroke',
+      elementType: 'line',
+      bounds: [560, 410, 240, 1],
+      viewBox: [1, 1],
+      points: '0,0 0.5,0.5 1,0',
+      curve: 'sharp',
+      border: { width: 8, color: '#0088aa', style: 'solid' },
+    },
   ],
 };
 const svg = (color) =>
@@ -199,8 +228,20 @@ try {
     assert.equal(backgroundReport.reason, 'IMAGE_FORMAT_FALLBACK');
     assert.equal(backgroundReport.mode, 'image');
     const pictures = [...xml.matchAll(/<p:pic>[\s\S]*?<\/p:pic>/g)];
-    assert.equal(pictures.length, 2);
+    assert.equal(pictures.length, 5);
     for (const [pictureIndex, picture] of pictures.entries()) {
+      const object = pictureIndex === 0 ? 'background' : picture[0].match(/\bname="([^"]+)"/)[1];
+      const expectedColor = {
+        background: expected.background,
+        'async-icon': expected.icon,
+        'overflow-short-text': [170, 0, 136],
+        'overflow-paragraphs': [102, 51, 153],
+        'overflow-stroke': [0, 136, 170],
+      }[object];
+      assert.ok(expectedColor, `Unexpected raster object: ${object}`);
+      const extent = picture[0].match(/<a:ext cx="(\d+)" cy="(\d+)"/);
+      const offset = picture[0].match(/<a:off x="(-?\d+)" y="(-?\d+)"/);
+      const bounds = [...offset.slice(1), ...extent.slice(1)].map((value) => Number(value) / 12700);
       const id = picture[0].match(/<a:blip\b[^>]*r:embed="([^"]+)"/)[1];
       const relationship = [...rels.matchAll(/<Relationship\b[^>]*\/>/g)].find(([entry]) =>
         entry.includes(`Id="${id}"`),
@@ -234,10 +275,7 @@ try {
       }, Buffer.from(bytes).toString('base64'));
       const dominant = pixels.colors[0];
       assert.ok(dominant, 'Foreground must be visible after the background screenshot finishes.');
-      assert.equal(
-        dominant[0],
-        (pictureIndex === 0 ? expected.background : expected.icon).join(','),
-      );
+      assert.equal(dominant[0], expectedColor.join(','));
       if (pictureIndex === 0) {
         assert.equal(pixels.width, 1920);
         assert.equal(pixels.height, 1080);
@@ -260,19 +298,31 @@ try {
           pixels.colors.every(([color]) => color !== '0,0,0'),
           'Object fallback must not repeat an overlapping native shape.',
         );
+        const overflow = {
+          'overflow-short-text': { minimumHeight: 16, minimumBottom: 155 },
+          'overflow-paragraphs': { minimumHeight: 50, minimumBottom: 280 },
+          'overflow-stroke': { minimumHeight: 7, minimumBottom: 414 },
+        }[object];
+        if (overflow) {
+          assert.ok(bounds[3] > overflow.minimumHeight, `${object} must retain visible overflow.`);
+          assert.ok(
+            bounds[1] + bounds[3] > overflow.minimumBottom,
+            `${object} must retain descenders, later paragraphs and the lower stroke.`,
+          );
+          assert.equal(
+            pixels.height / bounds[3],
+            2,
+            'Object pixels must map to the original page scale.',
+          );
+        }
       }
       measurements.push({
         occurrence: index + 1,
-        object: pictureIndex === 0 ? 'background' : 'icon',
+        object,
+        bounds,
         ...pixels,
       });
-      await fs.writeFile(
-        path.join(
-          evidence,
-          `occurrence-${index + 1}-${pictureIndex === 0 ? 'background' : 'icon'}.png`,
-        ),
-        bytes,
-      );
+      await fs.writeFile(path.join(evidence, `occurrence-${index + 1}-${object}.png`), bytes);
     }
   }
   for (const [file, digest] of before)
@@ -281,10 +331,10 @@ try {
   await fs.writeFile(path.join(evidence, 'background-export.pdf'), pdfBytes);
   await fs.writeFile(
     path.join(evidence, 'result.json'),
-    `${JSON.stringify({ passed: true, sourceUnchanged: true, distinctOccurrences: true, archivedAssetsAndTheme: true, foregroundRestored: true, physicalPdfPages, measurements, report: exported.report }, null, 2)}\n`,
+    `${JSON.stringify({ passed: true, sourceUnchanged: true, distinctOccurrences: true, archivedAssetsAndTheme: true, foregroundRestored: true, visibleOverflowPreserved: true, physicalPdfPages, measurements, report: exported.report }, null, 2)}\n`,
   );
   process.stdout.write(
-    `${JSON.stringify({ passed: true, evidence, occurrences: 2, backgroundRasters: 2, restoredForegroundRasters: 2, physicalPdfPages })}\n`,
+    `${JSON.stringify({ passed: true, evidence, occurrences: 2, backgroundRasters: 2, restoredForegroundRasters: 8, visibleOverflowPreserved: true, physicalPdfPages })}\n`,
   );
 } catch (error) {
   await fs.writeFile(

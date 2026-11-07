@@ -56,8 +56,9 @@ describe('findOnPath', () => {
   it('finds an executable file in PATH directories', async () => {
     const bin = path.join(dir, 'bin');
     await mkdir(bin);
-    const file = path.join(bin, 'fake-cli');
-    await writeFile(file, '#!/bin/sh\necho 1.2.3\n');
+    const windows = process.platform === 'win32';
+    const file = path.join(bin, windows ? 'fake-cli.cmd' : 'fake-cli');
+    await writeFile(file, windows ? '@echo 1.2.3\r\n' : '#!/bin/sh\necho 1.2.3\n');
     await chmod(file, 0o755);
     expect(
       findOnPath('fake-cli', { PATH: `${path.join(dir, 'missing')}${path.delimiter}${bin}` }),
