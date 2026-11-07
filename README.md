@@ -6,13 +6,13 @@ HUANDENG Editor 基于 OpenSlide 的 React 编辑环境，使用 PPTD 文档后�
 
 ## 当前阶段
 
-当前交付版本为 **[v0.6.0：编辑工作台与时间线](docs/RELEASE-V06.md)**，运行时 `9c27465` 已安装到既有正式位置，桌面与开始菜单快捷方式已核对。普通用户 profile 已重新打开原 80 页项目，窗口可响应、项目可写、无诊断，82 份文档源文件 hash 不变；发行标识为 `editor-v0.6.0`。
+当前交付版本为 **[v0.7.0：工作台与动态交付](docs/RELEASE-V07.md)**，干净运行时 `ba18ac0` 已安装到既有正式位置。桌面与开始菜单、About 0.7.0、static 服务和本机 H.264 编码器均核对；普通用户窗口已重新打开原 80 页项目，可写、无诊断，82 份源文件 hash 不变。发行标识为 `editor-v0.7.0`。
 
-本轮补齐键盘工作区、Main 与衍生演讲概览、素材库、Story briefing、多轨关键帧与 cue 放映，并提供实际字体/内容范围检查。最终 EXE 六套 **61/61** 操作验收、正式安装和 About 0.6.0 检查通过。源码门槛为 Linux 870 项、Windows 869 项及 1 项 POSIX 专属跳过，均为 75 个测试文件；TypeScript 和 Biome 615 文件通过。
+本轮把顶栏改为单行横向层级，统一素材与设备导入入口，改善动画终点引导和秒单位，加入真正的 **MP4 动画视频**。历史热内容、高清派生和导出任务有明确资源边界，旧版本恢复与静态导出含义保持不变。最终 EXE 十套 **102/102** 验收、正式安装和原项目重开均通过。Linux 918/918、Windows 917 pass + 1 POSIX 专属跳过，均为 79 个测试文件；TypeScript 和 Biome 637 文件通过。
 
-正式包在 80 页隔离副本上的启动观测为 **5.50 秒**；20 轮 Delete 视觉中位 **24.7 ms**，持久化观测中位 **191.25 ms**。测量未清空 OS 缓存，工作集仍随操作增长，不能据此宣称长期无泄漏。动画已在 PPTD 编辑与放映中可用；PNG/PDF/PPTX 当前仍输出基础版式并明确报告时间线未导出。
+80 页副本 50 轮 Delete 视觉中位 **25.6 ms**，文件持久化观测 **245.75 ms**，操作确认观测 **403.80 ms**。高清场景验证了真实降采样和原图回退；文档服务工作集在本次循环中较稳定，但 renderer 驻留仍增长，**长会话内存问题尚未全部解决**。精确测量、相邻旧/新包对照及限制见验证报告。
 
-[历史覆盖审计](docs/AUDIT-V05-COVERAGE.md) 合并初始 SPEC 与 v0.2–v0.4；[本轮审计](docs/AUDIT-V06.md) 更新完成度，[规格](docs/SPEC-V06.md)、[实现](docs/IMPLEMENTATION-V06.md)、[验证](docs/VALIDATION-V06.md) 保存完整开发链路。[视觉审计](docs/AUDIT-V06-VISUAL.md) 与 [交接记录](docs/HANDOFF-V06.md) 说明设计和后续优先级；[v0.5 保存恢复审计](docs/AUDIT-V05-RECOVERY.md) 继续保留实际故障与修复来源。
+[历史覆盖审计](docs/AUDIT-V05-COVERAGE.md) 追溯初始 SPEC 与早期版本；[v0.7 总审计](docs/AUDIT-V07.md) 汇总负责人复核的三项专项研究与前后端审计，[规格](docs/SPEC-V07.md)、[实现](docs/IMPLEMENTATION-V07.md)、[验证](docs/VALIDATION-V07.md) 保留完整链路。[交接](docs/HANDOFF-V07.md) 给出下一阶段排序，[实际合成截图与证据](docs/evidence/v07/README.md) 展示本轮产品。v0.5 保存恢复和 v0.6 动画/项目模型的历史证据继续保留。
 
 ## GitHub 版本管理
 
@@ -85,9 +85,9 @@ GUI、CLI 和 MCP 使用同一个本地文档服务。请求携带读取时的�
 
 ## 素材、时间线与检查
 
-左侧“素材”索引项目 media/assets 和当前引用，支持原文件名搜索、预览、使用位置、定位和复用。缺图可通过“重新选择这处图片”修复，保留对象位置、裁切和其他属性；原素材与命名版本不被覆盖。“未使用”仅指当前 Main 未引用，不是可安全删除的判断。
+左侧及工具栏“素材”进入同一素材库，索引项目 media/assets 和当前引用，支持原文件名搜索、预览、使用位置、定位和复用。“从设备导入”与“导入并放置”把选择的图片添加到当前页，拖放和粘贴继续可用。缺图可通过“重新选择这处图片”修复，保留对象位置、裁切和其他属性；原素材与命名版本不被覆盖。“未使用”仅指当前 Main 未引用，不是可安全删除的判断。
 
-选中对象后打开画布下方“动画”，为位置、旋转、缩放或不透明度建立轨道，调整关键帧时间、数值与缓动，添加演讲步骤。拖动播放头或播放检查效果；“返回编辑”恢复基础排版。预览不逐帧改写页面，时间线参与保存、Undo/Redo、复制及命名版本。操作细节与当前输出边界见 [动画指南](docs/ANIMATION.md)。
+选中对象后打开画布下方“动画”，为位置、旋转、缩放或不透明度建立轨道。新轨道会选中终点并引导修改数值；可见时间统一用秒。调整关键帧、缓动和演讲步骤后预览。拖动播放头或播放检查效果；“返回编辑”恢复基础排版。预览不逐帧改写页面，时间线参与保存、Undo/Redo、复制及命名版本。顶部“导出”可选择静态 PNG/PDF/PPTX 或动画 MP4；MP4 提供 720p/1080p、24/30fps、静页/末态/cue 停留设置、进度和取消，无音轨。需要带 libx264 的 FFmpeg，本机已验证；未配置的机器会显示说明。自主播放 GIF/APNG/动画 WebP/SVG 需先换静态素材。操作细节见 [动画指南](docs/ANIMATION.md)。
 
 右侧技术检查可按需核对本机字体与有效回退，并测量文字、公式、表格的局部内容范围。结果可以定位到对象，文档改变后显示过期状态；不会自动缩字或重排。它不代替 Office 的最终排版验证。
 
@@ -107,7 +107,7 @@ GUI、CLI 和 MCP 使用同一个本地文档服务。请求携带读取时的�
 
 MCP 配置见 plugins/huandeng/mcp.example.json。网页 ChatGPT 可通过已有 DC-WALT 调用同一 CLI；无需启动另一个模型或公开本地服务。
 
-v0.6 提供 `brief`、`assets`、`presentation` 读取和对应 MCP 工具，共 15 个工具。先读取 selection，再按 page/presentation/occurrence 获取 Story briefing，结合四层目的、保留项、邻页、备注和素材构造修改。Claude Code 包装与 Codex 配置见 [Plugin 指南](plugins/huandeng/README.md)；本机 stdio launcher 已实测，具体用户客户端安装和私有 ChatGPT 连接仍须单独验收。
+现有 `brief`、`assets`、`presentation` 读取加上 MP4 导出及状态/取消，共 **17 个 MCP 工具**。包内 CLI 的真实 stdio 已验收；这不代表实际 Agent 客户端已安装。先读取 selection，再按 page/presentation/occurrence 获取 Story briefing，结合四层目的、保留项、邻页、备注和素材构造修改。Claude Code 包装与 Codex 配置见 [Plugin 指南](plugins/huandeng/README.md)；具体用户客户端安装和私有 ChatGPT 连接仍须单独验收。
 
 ## 科学内容和设计
 
@@ -123,7 +123,7 @@ v0.6 提供 `brief`、`assets`、`presentation` 读取和对应 MCP 工具，共
     corepack pnpm exec vitest run --project unit
     corepack pnpm check
 
-完整产品规划见 [Master SPEC](docs/SPEC.md)，当前增量见 [SPEC-V06](docs/SPEC-V06.md)，逐项状态见 [综合审计](docs/AUDIT-V06.md)。历史验收见 [v0.4](docs/RELEASE-V04.md)、[v0.5](docs/RELEASE-V05.md)，本轮正式验收见 [v0.6 发布记录](docs/RELEASE-V06.md)。工程接续入口是 [WEBCHAT.md](WEBCHAT.md)。
+完整产品规划见 [Master SPEC](docs/SPEC.md)，当前增量见 [SPEC-V07](docs/SPEC-V07.md)，逐项状态见 [综合审计](docs/AUDIT-V07.md)。历史验收见 [v0.4](docs/RELEASE-V04.md)、[v0.5](docs/RELEASE-V05.md)、[v0.6](docs/RELEASE-V06.md)，本轮正式验收见 [v0.7 发布记录](docs/RELEASE-V07.md)。工程接续入口是 [WEBCHAT.md](WEBCHAT.md)。
 
 里程碑发布运行完整单元测试、类型和格式检查，并以实际桌面、项目编排、科研对象、原生 PowerPoint 及真实科研项目副本验收补足自动化覆盖。日常小修改只重复能够验证相应风险的检查。
 

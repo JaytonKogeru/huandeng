@@ -1,0 +1,284 @@
+{
+  "schemaVersion": 1,
+  "marker": {
+    "electronVersion": "38.7.2",
+    "desktopProtocol": 1,
+    "builtAt": "2026-11-07T21:34:36.5584922Z",
+    "sourceDirty": false,
+    "productVersion": "0.7.0",
+    "nodeLinker": "hoisted",
+    "product": "HUANDENG Editor",
+    "sourceRevision": "ba18ac0d95502361fb8a423a732c808218374915"
+  },
+  "scope": "Final packaged and installed Windows EXE; scientific originals were not edited.",
+  "codeGates": {
+    "linuxUnit": {
+      "passed": 918,
+      "total": 918,
+      "files": 79
+    },
+    "windowsUnit": {
+      "passed": 917,
+      "skippedPosixOnly": 1,
+      "total": 918,
+      "files": 79
+    },
+    "typescript": "passed on Linux and Windows",
+    "biome": {
+      "files": 637,
+      "passed": true
+    }
+  },
+  "suites": [
+    {
+      "key": "keyboard",
+      "script": "scripts/verify-keyboard-v07.mjs",
+      "passed": true,
+      "checks": 14,
+      "timestamp": "2026-11-07T21:36:18.688Z",
+      "rendererErrors": [],
+      "normalExit": {
+        "code": 0,
+        "signal": null
+      }
+    },
+    {
+      "key": "ui",
+      "script": "scripts/verify-ui-v07.mjs",
+      "passed": true,
+      "checks": 12,
+      "timestamp": "2026-11-07T21:36:52.963Z",
+      "rendererErrors": [],
+      "normalExit": {
+        "code": 0,
+        "signal": null
+      }
+    },
+    {
+      "key": "animation",
+      "script": "scripts/verify-animation-v07.mjs",
+      "passed": true,
+      "checks": 16,
+      "timestamp": "2026-11-07T21:37:24.769Z",
+      "rendererErrors": [],
+      "normalExit": [
+        {
+          "code": 0,
+          "signal": null
+        },
+        {
+          "code": 0,
+          "signal": null
+        }
+      ]
+    },
+    {
+      "key": "assets",
+      "script": "scripts/verify-project-assets-v06.mjs",
+      "passed": true,
+      "checks": 11,
+      "timestamp": "2026-11-07T21:38:01.997Z",
+      "rendererErrors": [],
+      "normalExit": {
+        "code": 0,
+        "signal": null
+      }
+    },
+    {
+      "key": "video",
+      "script": "scripts/verify-video-v07.mjs",
+      "passed": true,
+      "checks": 16,
+      "timestamp": null,
+      "rendererErrors": [],
+      "normalExit": [
+        {
+          "label": "desktop-1",
+          "code": 0,
+          "signal": null
+        },
+        {
+          "label": "desktop-2",
+          "code": 0,
+          "signal": null
+        }
+      ]
+    },
+    {
+      "key": "desktop",
+      "script": "scripts/verify-huandeng-desktop.mjs",
+      "passed": true,
+      "checks": 7,
+      "timestamp": "2026-11-07T21:40:02.948Z",
+      "rendererErrors": [],
+      "normalExit": null
+    },
+    {
+      "key": "editor",
+      "script": "scripts/verify-editor-v05.mjs",
+      "passed": true,
+      "checks": 8,
+      "timestamp": "2026-11-07T21:40:17.972Z",
+      "rendererErrors": [],
+      "normalExit": null
+    },
+    {
+      "key": "recovery",
+      "script": "scripts/verify-recovery-v05.mjs",
+      "passed": true,
+      "checks": 6,
+      "timestamp": "2026-11-07T21:40:34.192Z",
+      "rendererErrors": [],
+      "normalExit": null
+    },
+    {
+      "key": "hd",
+      "script": "scripts/verify-hd-assets-v07.mjs",
+      "passed": true,
+      "checks": 6,
+      "timestamp": "2026-11-07T21:40:45.805Z",
+      "rendererErrors": [],
+      "normalExit": {
+        "code": 0,
+        "signal": null
+      }
+    },
+    {
+      "key": "fallback",
+      "script": "scripts/verify-hd-assets-v07.mjs --without-encoder",
+      "passed": true,
+      "checks": 6,
+      "timestamp": "2026-11-07T21:41:35.387Z",
+      "rendererErrors": [],
+      "normalExit": {
+        "code": 0,
+        "signal": null
+      }
+    }
+  ],
+  "checks": 102,
+  "gates": [
+    {
+      "name": "keyboard",
+      "exit": 0,
+      "seconds": 39.09
+    },
+    {
+      "name": "ui",
+      "exit": 0,
+      "seconds": 15.03
+    },
+    {
+      "name": "animation",
+      "exit": 0,
+      "seconds": 51.2
+    },
+    {
+      "name": "project-assets",
+      "exit": 0,
+      "seconds": 37.15
+    },
+    {
+      "name": "video",
+      "exit": 0,
+      "seconds": 78.62
+    },
+    {
+      "name": "desktop",
+      "exit": 0,
+      "seconds": 23.58
+    },
+    {
+      "name": "editor",
+      "exit": 0,
+      "seconds": 15.24
+    },
+    {
+      "name": "recovery",
+      "exit": 0,
+      "seconds": 15.43
+    },
+    {
+      "name": "hd",
+      "exit": 0,
+      "seconds": 49.45
+    },
+    {
+      "name": "hd-fallback",
+      "exit": 0,
+      "seconds": 56.63
+    },
+    {
+      "name": "package-smoke",
+      "exit": 0,
+      "seconds": 6.44
+    },
+    {
+      "name": "benchmark-80pages-50pairs",
+      "exit": 0,
+      "seconds": 103.12
+    }
+  ],
+  "installation": {
+    "passed": true,
+    "filesMatched": 29153,
+    "bytes": 683653487,
+    "manifestSha256": "5c564a9245fa34b2a6eacbcdc135e9c4f9ecb67fb91769f5ee33d7bcf5f738af",
+    "closedNormally": [
+      {
+        "closeRequested": true,
+        "exited": true
+      }
+    ],
+    "forcedTermination": false,
+    "shortcuts": {
+      "passed": true,
+      "count": 2,
+      "iconSha256": "71fa7b14b09c8381390b63ae98142ac90c40454987927c2505ec0a1553e43d66"
+    },
+    "smoke": {
+      "passed": true,
+      "timestamp": "2026-11-07T21:50:52.066Z",
+      "version": "0.7.0",
+      "about": "HUANDENG Editor 0.7.0",
+      "aboutVerification": "Executed the real native Menu click handler; captured options with a temporary showMessageBox stub. No native-dialog screenshot.",
+      "documentRuntime": "static",
+      "syntheticPages": 3,
+      "writable": true,
+      "videoCapabilities": {
+        "available": true,
+        "formats": ["mp4"],
+        "message": "H.264 视频编码器可用"
+      },
+      "rendererErrors": [],
+      "normalExit": {
+        "code": 0,
+        "signal": null
+      }
+    },
+    "ordinaryProject": {
+      "passed": true,
+      "timestamp": "2026-11-07T21:50:57.727761+00:00",
+      "ordinaryProfile": true,
+      "pageCount": 80,
+      "writable": true,
+      "diagnostics": [],
+      "runtime": "static",
+      "originalFilesChecked": 82,
+      "originalUnchanged": true,
+      "fixtureUnchanged": true,
+      "videoCapabilities": {
+        "available": true,
+        "formats": ["mp4"],
+        "message": "H.264 视频编码器可用"
+      },
+      "nativeWindowsResponsive": true,
+      "leftOpen": true
+    }
+  },
+  "limitations": [
+    "Actual Codex/Claude client installation is not certified by stdio checks.",
+    "Renderer working set still grows; no multi-hour stability claim.",
+    "Windows screenshots cover DPR 1, not all system DPI scales."
+  ]
+}

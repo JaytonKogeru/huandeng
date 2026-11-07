@@ -55,10 +55,9 @@ easing 作用于本关键帧到下一帧：`linear` 匀速，`ease-in-out` 平�
 
 ## 当前输出范围
 
-PPTD 编辑器和放映支持关键帧播放。PNG/PDF/PPTX 当前使用基础版式；三种导出报告均包含 `renderState: 'base'`，存在时间线时记录 `TIMELINE_STATIC_EXPORT`，说明动画留在 PPTD。静态文件不包含原生 PowerPoint 动画。GIF 等动态图片仍由浏览器播放，尚未与对象播放头统一逐帧同步。
+PPTD 编辑器和放映支持关键帧播放。PNG/PDF/PPTX 当前使用基础版式；三种导出报告均包含 `renderState: 'base'`，存在时间线时记录 `TIMELINE_STATIC_EXPORT`，说明动画留在 PPTD。静态文件不包含原生 PowerPoint 动画。在编辑器预览和放映中，GIF 等动态图片仍由浏览器播放，尚未与对象播放头统一逐帧同步；视频导出对这些自主动画采用下节的明确拒绝规则。
 
-可编辑运动路径/曲线、自动打关键帧、音视频轨与波形、逐帧视频编码和 PowerPoint 原生 timing tree 属于后续独立工作。方案比较、许可和实现选择见 [动画审计](AUDIT-V06-ANIMATION.md)，完整工作区目标见 [SPEC-V06](SPEC-V06.md)。
-
+v0.7 已增加确定时间的 MP4 视频导出，设置和边界见下节。可编辑运动路径/曲线、自动打关键帧、音视频轨与波形和 PowerPoint 原生 timing tree 仍属于后续独立工作。早期方案比较见 [动画审计](AUDIT-V06-ANIMATION.md)，本轮交付设计见 [SPEC-V07](SPEC-V07.md)。
 
 ## v0.7：导出动画视频
 

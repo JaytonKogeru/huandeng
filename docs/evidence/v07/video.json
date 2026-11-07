@@ -1,0 +1,373 @@
+{
+  "marker": {
+    "electronVersion": "38.7.2",
+    "desktopProtocol": 1,
+    "builtAt": "2026-11-07T21:34:36.5584922Z",
+    "sourceDirty": false,
+    "productVersion": "0.7.0",
+    "nodeLinker": "hoisted",
+    "product": "HUANDENG Editor",
+    "sourceRevision": "ba18ac0d95502361fb8a423a732c808218374915"
+  },
+  "passed": true,
+  "mode": "desktop",
+  "platform": "win32",
+  "electronVersion": "38.7.2",
+  "checks": [
+    {
+      "name": "production candidate starts with an isolated project and a usable H.264 encoder",
+      "passed": true,
+      "milliseconds": 4066,
+      "detail": {
+        "mode": "desktop",
+        "electronVersion": "38.7.2",
+        "serviceUrl": "<local-service>",
+        "capability": {
+          "available": true,
+          "formats": ["mp4"],
+          "message": "H.264 视频编码器可用"
+        }
+      }
+    },
+    {
+      "name": "single-page MP4 is 1280×720 H.264, 24fps, 36 frames, 1.5 seconds and visibly moves",
+      "passed": true,
+      "milliseconds": 5894,
+      "detail": {
+        "width": 1280,
+        "height": 720,
+        "codec": "h264",
+        "fps": "24/1",
+        "frames": 36,
+        "seconds": 1.5,
+        "audio": false,
+        "positions": [
+          {
+            "frame": 0,
+            "x": 186,
+            "y": 193,
+            "pixels": 18921
+          },
+          {
+            "frame": 12,
+            "x": 506.0041754756871,
+            "y": 192.99688160676533,
+            "pixels": 18920
+          },
+          {
+            "frame": 35,
+            "x": 826,
+            "y": 193,
+            "pixels": 18921
+          }
+        ],
+        "downloadSha256": "517e94054908a77bc5d2dcdaf6da9d725f6f87f9b18ec44027e4eeb664e54b15",
+        "plan": {
+          "width": 1280,
+          "height": 720,
+          "fps": 24,
+          "totalFrames": 36,
+          "durationMs": 1500,
+          "staticDurationMs": 3000,
+          "endHoldMs": 500,
+          "cueHoldMs": 0,
+          "segments": [
+            {
+              "pageIndex": 0,
+              "pageId": "33b912c5-8065-4db5-b879-822c5b152064",
+              "renderRevision": "sha256:648e2fd2c7f6ca38387f480f17a7aa11086c854e6fa1f6ea3d2318064c4e0390",
+              "timelineDurationMs": 1000,
+              "cueTimesMs": [500],
+              "durationMs": 1500,
+              "startFrame": 0,
+              "frameCount": 36
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "stdio MCP exposes 17 tools and reads the real completed export job",
+      "passed": true,
+      "milliseconds": 2671,
+      "detail": {
+        "cli": "<local-path>/huandeng.js",
+        "cliSha256": "68fa3efe3ee5fbf7ab76ad6a64b5360b229edadaf12aa8ca1ceb6ce1f60f56c8",
+        "toolCount": 17,
+        "tool": "huandeng_export_status",
+        "readOnly": true,
+        "jobId": "1fde520e-782a-417e-b060-ffb6ea202ba8",
+        "state": "completed",
+        "downloadUrl": "/__pptd/exports/1fde520e-782a-417e-b060-ffb6ea202ba8/download"
+      }
+    },
+    {
+      "name": "same-name export replaces the published copy but preserves the old job download",
+      "passed": true,
+      "milliseconds": 4210,
+      "detail": {
+        "oldJob": "1fde520e-782a-417e-b060-ffb6ea202ba8",
+        "newJob": "f138ef37-17b1-4f19-9a83-823cdb205b76",
+        "sharedPublishedFile": "<local-path>/deck-V07A.mp4"
+      }
+    },
+    {
+      "name": "export dialog selects MP4, reports progress, survives closing and exposes a playable result",
+      "passed": true,
+      "milliseconds": 5083,
+      "detail": {
+        "jobId": "682d0a9b-efa1-4f67-8378-2b0d139c497a",
+        "file": "<local-path>/deck-V07A.mp4"
+      }
+    },
+    {
+      "name": "injected expired-job status 404 releases the real export dialog and permits a successful UI retry",
+      "passed": true,
+      "milliseconds": 10476,
+      "detail": {
+        "faultInjection": "HTTP 404 on renderer status polling only; real backend job is not expired.",
+        "injectedJobIds": ["bea116b8-8269-47e6-a1dc-c91749790640"],
+        "backendJob": {
+          "id": "bea116b8-8269-47e6-a1dc-c91749790640",
+          "state": "completed"
+        },
+        "uiControlsRecovered": true,
+        "retryJob": {
+          "id": "d2431182-a446-4b23-99cc-bf309f01a037",
+          "state": "completed",
+          "frames": 36,
+          "downloadUrl": "/__pptd/exports/d2431182-a446-4b23-99cc-bf309f01a037/download"
+        }
+      }
+    },
+    {
+      "name": "repeat-talk preserves A/B/A occurrence order and resets the repeated animation",
+      "passed": true,
+      "milliseconds": 6870,
+      "detail": {
+        "frames": 84,
+        "seconds": 3.5,
+        "positions": [
+          {
+            "frame": 0,
+            "x": 186,
+            "y": 193,
+            "pixels": 18921
+          },
+          {
+            "frame": 36,
+            "x": 559.5,
+            "y": 192.5,
+            "pixels": 19200
+          },
+          {
+            "frame": 48,
+            "x": 186,
+            "y": 193,
+            "pixels": 18921
+          },
+          {
+            "frame": 83,
+            "x": 826.0041750343515,
+            "y": 192.99682908783427,
+            "pixels": 18922
+          }
+        ],
+        "pages": [
+          {
+            "pageId": "33b912c5-8065-4db5-b879-822c5b152064",
+            "occurrenceId": "repeat-talk:opening:33b912c5-8065-4db5-b879-822c5b152064",
+            "pageRevision": "sha256:76a7a83698cc05d40388f8fdb1561f5d5278437568e2d97db57fb2c19a98c2ae",
+            "renderRevision": "sha256:648e2fd2c7f6ca38387f480f17a7aa11086c854e6fa1f6ea3d2318064c4e0390"
+          },
+          {
+            "pageId": "51af1f10-74e3-4929-be6e-4f2904c1b47e",
+            "occurrenceId": "repeat-talk:middle:51af1f10-74e3-4929-be6e-4f2904c1b47e",
+            "pageRevision": "sha256:5fb8dbd5981e2f26e610564bf17c4e7108400e7248ff7eeca48a504f0a1669f1",
+            "renderRevision": "sha256:ace73ea39dbefd2c33230975bdeda7ba2736c20c62f0bb9868fd94f3c2f6304f"
+          },
+          {
+            "pageId": "33b912c5-8065-4db5-b879-822c5b152064",
+            "occurrenceId": "repeat-talk:return:33b912c5-8065-4db5-b879-822c5b152064",
+            "pageRevision": "sha256:76a7a83698cc05d40388f8fdb1561f5d5278437568e2d97db57fb2c19a98c2ae",
+            "renderRevision": "sha256:648e2fd2c7f6ca38387f480f17a7aa11086c854e6fa1f6ea3d2318064c4e0390"
+          }
+        ]
+      }
+    },
+    {
+      "name": "cue hold produces a deterministic half-second pause at the exact cue pose",
+      "passed": true,
+      "milliseconds": 5590,
+      "detail": {
+        "frames": 48,
+        "seconds": 2,
+        "positions": [
+          {
+            "frame": 12,
+            "x": 506.0042278828876,
+            "y": 192.99693478490647,
+            "pixels": 18922
+          },
+          {
+            "frame": 20,
+            "x": 506.0042278828876,
+            "y": 192.99693478490647,
+            "pixels": 18922
+          },
+          {
+            "frame": 47,
+            "x": 826,
+            "y": 193,
+            "pixels": 18921
+          }
+        ]
+      }
+    },
+    {
+      "name": "fixed page version exports its saved animation after the live Main changes",
+      "passed": true,
+      "milliseconds": 6409,
+      "detail": {
+        "checkpoint": "checkpoint:5a9890aad0ae8c9bece8ce08953c7fc7",
+        "positions": [
+          {
+            "frame": 35,
+            "x": 506.01263080012683,
+            "y": 192.9906986576472,
+            "pixels": 18922
+          },
+          {
+            "frame": 71,
+            "x": 826,
+            "y": 193,
+            "pixels": 18921
+          }
+        ]
+      }
+    },
+    {
+      "name": "cancelling in preparing releases the job and preserves the existing published file",
+      "passed": true,
+      "milliseconds": 152,
+      "detail": {
+        "state": "cancelled",
+        "completedFrames": 0,
+        "totalFrames": 1464
+      }
+    },
+    {
+      "name": "cancelling during rendering stops capture and encoding and preserves the published file",
+      "passed": true,
+      "milliseconds": 2308,
+      "detail": {
+        "state": "cancelled",
+        "completedFrames": 1,
+        "totalFrames": 1464
+      }
+    },
+    {
+      "name": "GIF rejection is explicit, cleans work files and allows a subsequent valid retry",
+      "passed": true,
+      "milliseconds": 4752,
+      "detail": {
+        "rejectedJob": "5687e93b-1d6b-4a01-999a-d17e1a3fb33f",
+        "error": "视频暂不支持自主播放的 GIF / APNG / WebP 素材：media/unsupported.gif。请先改用静态图片；PPTD 关键帧动画可正常导出。",
+        "retry": "66dc8648-ea49-49f9-b79d-a7d76d1370a0"
+      }
+    },
+    {
+      "name": "a real two-frame APNG fails explicitly, preserves the published video and allows a valid retry",
+      "passed": true,
+      "milliseconds": 5710,
+      "detail": {
+        "fixture": {
+          "bytes": 356,
+          "sha256": "d96fa08b49ce1b3d9cef639f4f2c5fde5c61cf05596fc057ec49a3ca61446ea1",
+          "frames": 2
+        },
+        "rejectedJob": "9975b76d-9262-49eb-a6e4-d68b1a75bd5c",
+        "error": "视频暂不支持自主播放的 GIF / APNG / WebP 素材：media/animated.png。请先改用静态图片；PPTD 关键帧动画可正常导出。",
+        "preservedPublishedSha256": "517e94054908a77bc5d2dcdaf6da9d725f6f87f9b18ec44027e4eeb664e54b15",
+        "retry": {
+          "id": "539e7b3e-e02b-44d4-9efd-5232e2767a87",
+          "frames": 36,
+          "positions": [
+            {
+              "frame": 0,
+              "x": 186,
+              "y": 193,
+              "pixels": 18921
+            },
+            {
+              "frame": 35,
+              "x": 826,
+              "y": 193,
+              "pixels": 18921
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "PNG, PDF and PPTX retain base rendering and timeline static-export diagnostics",
+      "passed": true,
+      "milliseconds": 7482,
+      "detail": [
+        {
+          "format": "png",
+          "file": "<local-path>/V07A.png",
+          "bytes": 8639
+        },
+        {
+          "format": "pdf",
+          "file": "<local-path>/deck.pdf",
+          "bytes": 2330
+        },
+        {
+          "format": "pptx",
+          "file": "<local-path>/deck.pptx",
+          "bytes": 7144
+        }
+      ]
+    },
+    {
+      "name": "candidate closes with exit code 0 and removes its completed job directories",
+      "passed": true,
+      "milliseconds": 994,
+      "detail": {
+        "label": "desktop-1",
+        "code": 0,
+        "signal": null
+      }
+    },
+    {
+      "name": "an invalid encoder configuration fails clearly without a successful artifact",
+      "passed": true,
+      "milliseconds": 4986,
+      "detail": {
+        "capability": {
+          "available": false,
+          "formats": [],
+          "message": "未找到支持 H.264 的 FFmpeg。请安装 FFmpeg 并加入 PATH，或设置 HUANDENG_FFMPEG 为可执行文件路径，然后重新打开编辑器。"
+        },
+        "error": "未找到支持 H.264 的 FFmpeg。请安装 FFmpeg 并加入 PATH，或设置 HUANDENG_FFMPEG 为可执行文件路径，然后重新打开编辑器。"
+      }
+    }
+  ],
+  "rendererErrors": [],
+  "exits": [
+    {
+      "label": "desktop-1",
+      "code": 0,
+      "signal": null
+    },
+    {
+      "label": "desktop-2",
+      "code": 0,
+      "signal": null
+    }
+  ],
+  "actualAgentClientInstalled": false,
+  "mediaScope": "Synthetic project only; no user manuscripts are read or changed."
+}

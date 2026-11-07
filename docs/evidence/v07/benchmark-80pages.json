@@ -1,0 +1,1155 @@
+{
+  "marker": {
+    "electronVersion": "38.7.2",
+    "desktopProtocol": 1,
+    "builtAt": "2026-11-07T21:34:36.5584922Z",
+    "sourceDirty": false,
+    "productVersion": "0.7.0",
+    "nodeLinker": "hoisted",
+    "product": "HUANDENG Editor",
+    "sourceRevision": "ba18ac0d95502361fb8a423a732c808218374915"
+  },
+  "passed": true,
+  "timestamp": "2026-11-07T21:42:27.659Z",
+  "iterations": 50,
+  "pageCount": 80,
+  "node": "v22.21.0",
+  "electron": "38.7.2",
+  "methodology": "Fresh Electron process with isolated profile/runtime and a copied project. OS filesystem cache is not cleared. Visual deletion is measured from the renderer keydown handler to a MutationObserver seeing removal. Persistence is observed by 10 ms file polling; acknowledgement is observed separately. Original manifest, page files and metadata are hashed before and after.",
+  "canvasInteractiveMs": 6002.763599999999,
+  "summary": {
+    "visual": {
+      "count": 50,
+      "minMs": 20.90000009536743,
+      "medianMs": 25.59999990463257,
+      "maxMs": 35.299999952316284
+    },
+    "persistence": {
+      "count": 50,
+      "minMs": 195.89990234375,
+      "medianMs": 245.75,
+      "maxMs": 328.300048828125
+    },
+    "acknowledgement": {
+      "count": 50,
+      "minMs": 340.39990234375,
+      "medianMs": 403.800048828125,
+      "maxMs": 576.300048828125
+    }
+  },
+  "deleteSamples": [
+    {
+      "iteration": 1,
+      "elementId": "node-e45375f2-82c0-4848-a36d-c25226215806",
+      "insertionVisibleMs": 916.5100999999995,
+      "visualMs": 35.299999952316284,
+      "persistenceObservedMs": 231.699951171875,
+      "acknowledgementObservedMs": 402.699951171875,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 2,
+      "elementId": "node-9fecedd8-6b4b-4427-a2d6-37a536a8c751",
+      "insertionVisibleMs": 819.3856000000014,
+      "visualMs": 27.700000047683716,
+      "persistenceObservedMs": 257.5,
+      "acknowledgementObservedMs": 421.5,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 3,
+      "elementId": "node-5a7ded27-915d-4b56-9626-1a594918749b",
+      "insertionVisibleMs": 837.4033000000018,
+      "visualMs": 26.899999856948853,
+      "persistenceObservedMs": 225.300048828125,
+      "acknowledgementObservedMs": 405.300048828125,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 4,
+      "elementId": "node-cbf13a17-8d44-4f51-b36b-0e4046ea90bc",
+      "insertionVisibleMs": 807.9176000000007,
+      "visualMs": 25.59999990463257,
+      "persistenceObservedMs": 228.199951171875,
+      "acknowledgementObservedMs": 388.199951171875,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 5,
+      "elementId": "node-6419b047-a442-4c05-a632-b83abd3d442c",
+      "insertionVisibleMs": 822.7880000000005,
+      "visualMs": 27.59999990463257,
+      "persistenceObservedMs": 254,
+      "acknowledgementObservedMs": 404,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 6,
+      "elementId": "node-7a02f329-5c47-4321-85a8-e35b326c5f96",
+      "insertionVisibleMs": 805.2265999999981,
+      "visualMs": 27.200000047683716,
+      "persistenceObservedMs": 258.39990234375,
+      "acknowledgementObservedMs": 420.39990234375,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 7,
+      "elementId": "node-8446724b-e29b-4af0-a61a-1c60b58a292e",
+      "insertionVisibleMs": 806.5282999999981,
+      "visualMs": 26.200000047683716,
+      "persistenceObservedMs": 265.10009765625,
+      "acknowledgementObservedMs": 431.10009765625,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 8,
+      "elementId": "node-cc34720c-47c2-4508-9445-62a61bc4e9d4",
+      "insertionVisibleMs": 786.2397000000019,
+      "visualMs": 26.700000047683716,
+      "persistenceObservedMs": 237.199951171875,
+      "acknowledgementObservedMs": 398.199951171875,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 9,
+      "elementId": "node-a1601b90-78f6-4a33-bc91-cf902e2c936a",
+      "insertionVisibleMs": 784.7070999999996,
+      "visualMs": 29,
+      "persistenceObservedMs": 267.5,
+      "acknowledgementObservedMs": 463.5,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 10,
+      "elementId": "node-136a6601-2c96-4c19-a669-ced3b353fb69",
+      "insertionVisibleMs": 811.8267999999989,
+      "visualMs": 28.09999990463257,
+      "persistenceObservedMs": 269,
+      "acknowledgementObservedMs": 435,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 11,
+      "elementId": "node-a5f949e8-6af6-479d-b852-14c9fd2cc324",
+      "insertionVisibleMs": 815.5408000000025,
+      "visualMs": 25.799999952316284,
+      "persistenceObservedMs": 224.5,
+      "acknowledgementObservedMs": 383.5,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 12,
+      "elementId": "node-697225b7-a8f7-4643-984b-334e89d59872",
+      "insertionVisibleMs": 816.2376000000004,
+      "visualMs": 24.799999952316284,
+      "persistenceObservedMs": 201.89990234375,
+      "acknowledgementObservedMs": 350.89990234375,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 13,
+      "elementId": "node-4415f8ed-1d4c-4b83-81c9-300745a7ec49",
+      "insertionVisibleMs": 800.2929000000004,
+      "visualMs": 23.799999952316284,
+      "persistenceObservedMs": 260.800048828125,
+      "acknowledgementObservedMs": 421.800048828125,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 14,
+      "elementId": "node-de3210da-914c-4f01-bfa9-8bdd2ef5a0cc",
+      "insertionVisibleMs": 819.0971999999965,
+      "visualMs": 26,
+      "persistenceObservedMs": 259.39990234375,
+      "acknowledgementObservedMs": 410.39990234375,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 15,
+      "elementId": "node-5ca2b61b-db15-4b15-ae96-82f4dc5d9be4",
+      "insertionVisibleMs": 772.1289000000033,
+      "visualMs": 24.200000047683716,
+      "persistenceObservedMs": 236.60009765625,
+      "acknowledgementObservedMs": 403.60009765625,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 16,
+      "elementId": "node-45ea784f-20c0-43e6-b885-9298843ea20a",
+      "insertionVisibleMs": 818.2981999999975,
+      "visualMs": 25.899999856948853,
+      "persistenceObservedMs": 276.5,
+      "acknowledgementObservedMs": 440.5,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 17,
+      "elementId": "node-1a97d07b-d557-4a15-8e62-4d54491d8b35",
+      "insertionVisibleMs": 792.5209000000032,
+      "visualMs": 23.299999952316284,
+      "persistenceObservedMs": 230.199951171875,
+      "acknowledgementObservedMs": 386.199951171875,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 18,
+      "elementId": "node-488f70a1-c643-4570-987c-5810de07a163",
+      "insertionVisibleMs": 803.6834000000017,
+      "visualMs": 22.09999990463257,
+      "persistenceObservedMs": 245.300048828125,
+      "acknowledgementObservedMs": 398.300048828125,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 19,
+      "elementId": "node-80bbe187-7897-4a8c-a071-27dfde92cc85",
+      "insertionVisibleMs": 797.628300000004,
+      "visualMs": 27.59999990463257,
+      "persistenceObservedMs": 246.199951171875,
+      "acknowledgementObservedMs": 395.199951171875,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 20,
+      "elementId": "node-45d780f8-7c0a-46a9-a97a-7b44d7a27a35",
+      "insertionVisibleMs": 844.0936999999976,
+      "visualMs": 25.59999990463257,
+      "persistenceObservedMs": 273,
+      "acknowledgementObservedMs": 429,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 21,
+      "elementId": "node-ca6565d2-44ad-4a31-8389-8ad3f3d06357",
+      "insertionVisibleMs": 781.1474999999991,
+      "visualMs": 24.799999952316284,
+      "persistenceObservedMs": 228.39990234375,
+      "acknowledgementObservedMs": 340.39990234375,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 22,
+      "elementId": "node-da131ec9-f4d5-4863-9193-1eafe2150e3a",
+      "insertionVisibleMs": 788.4582000000009,
+      "visualMs": 24.90000009536743,
+      "persistenceObservedMs": 269.60009765625,
+      "acknowledgementObservedMs": 424.60009765625,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 23,
+      "elementId": "node-726b43ce-7007-4dca-a178-c6f16090ad4d",
+      "insertionVisibleMs": 806.8230999999942,
+      "visualMs": 23.299999952316284,
+      "persistenceObservedMs": 262.199951171875,
+      "acknowledgementObservedMs": 421.199951171875,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 24,
+      "elementId": "node-9c9b64a2-acb9-4e18-b7b0-fd7e24eb8d32",
+      "insertionVisibleMs": 799.2165000000023,
+      "visualMs": 26.799999952316284,
+      "persistenceObservedMs": 245.300048828125,
+      "acknowledgementObservedMs": 396.300048828125,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 25,
+      "elementId": "node-70c192ed-feb8-41fe-9c4e-ba262b94e550",
+      "insertionVisibleMs": 798.5214000000051,
+      "visualMs": 24.799999952316284,
+      "persistenceObservedMs": 252.199951171875,
+      "acknowledgementObservedMs": 400.199951171875,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 26,
+      "elementId": "node-807c4f6b-6ada-4090-b0da-1e9f97f8b4f4",
+      "insertionVisibleMs": 852.1543999999994,
+      "visualMs": 26.09999990463257,
+      "persistenceObservedMs": 328.300048828125,
+      "acknowledgementObservedMs": 576.300048828125,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 27,
+      "elementId": "node-ec1552de-97bf-4101-ae7e-1acc96061de2",
+      "insertionVisibleMs": 876.5078999999969,
+      "visualMs": 28.299999952316284,
+      "persistenceObservedMs": 308.699951171875,
+      "acknowledgementObservedMs": 538.699951171875,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 28,
+      "elementId": "node-95d217af-7721-459d-a225-48054ed3fb17",
+      "insertionVisibleMs": 870.949099999998,
+      "visualMs": 27,
+      "persistenceObservedMs": 273.199951171875,
+      "acknowledgementObservedMs": 474.199951171875,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 29,
+      "elementId": "node-cead9500-0f04-4fce-a832-a231f1144c9c",
+      "insertionVisibleMs": 859.1188000000038,
+      "visualMs": 26.09999990463257,
+      "persistenceObservedMs": 274.5,
+      "acknowledgementObservedMs": 437.5,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 30,
+      "elementId": "node-dc3db5d1-4105-46c4-9136-08e20f3d7e21",
+      "insertionVisibleMs": 840.7526000000071,
+      "visualMs": 28.5,
+      "persistenceObservedMs": 269.699951171875,
+      "acknowledgementObservedMs": 426.699951171875,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 31,
+      "elementId": "node-85ead165-6e49-4eb9-805c-703858a7cf85",
+      "insertionVisibleMs": 809.4490000000078,
+      "visualMs": 24,
+      "persistenceObservedMs": 238.300048828125,
+      "acknowledgementObservedMs": 391.300048828125,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 32,
+      "elementId": "node-22d96b81-aa6f-4b7d-a5c2-1bfe0d8162c8",
+      "insertionVisibleMs": 809.4081000000006,
+      "visualMs": 26.59999990463257,
+      "persistenceObservedMs": 233.5,
+      "acknowledgementObservedMs": 392.5,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 33,
+      "elementId": "node-f17451ab-b312-47ee-8d90-99c00f04ddc2",
+      "insertionVisibleMs": 821.0007999999943,
+      "visualMs": 20.90000009536743,
+      "persistenceObservedMs": 237.89990234375,
+      "acknowledgementObservedMs": 405.89990234375,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 34,
+      "elementId": "node-9328bf3e-aa4b-4948-8518-40f705813852",
+      "insertionVisibleMs": 808.7431999999972,
+      "visualMs": 23.600000143051147,
+      "persistenceObservedMs": 221.60009765625,
+      "acknowledgementObservedMs": 390.60009765625,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 35,
+      "elementId": "node-95e417d7-be8b-4d9c-a559-5e2b6eb8acbd",
+      "insertionVisibleMs": 830.7320999999938,
+      "visualMs": 26.5,
+      "persistenceObservedMs": 207.10009765625,
+      "acknowledgementObservedMs": 369.10009765625,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 36,
+      "elementId": "node-f56982e5-08d3-44cb-81bb-ddbd857cd571",
+      "insertionVisibleMs": 797.696299999996,
+      "visualMs": 24.5,
+      "persistenceObservedMs": 195.89990234375,
+      "acknowledgementObservedMs": 352.89990234375,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 37,
+      "elementId": "node-73f90cef-dd8a-4181-af51-8abaa6e48727",
+      "insertionVisibleMs": 776.6153999999951,
+      "visualMs": 24.600000143051147,
+      "persistenceObservedMs": 282.39990234375,
+      "acknowledgementObservedMs": 426.39990234375,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 38,
+      "elementId": "node-2b10cfa5-709c-4e8f-827e-80a5534698a0",
+      "insertionVisibleMs": 805.2356,
+      "visualMs": 29.600000143051147,
+      "persistenceObservedMs": 220.39990234375,
+      "acknowledgementObservedMs": 366.39990234375,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 39,
+      "elementId": "node-0416ddff-f68d-412a-82ce-7ec6448c80d2",
+      "insertionVisibleMs": 775.8859999999986,
+      "visualMs": 27,
+      "persistenceObservedMs": 228.39990234375,
+      "acknowledgementObservedMs": 381.39990234375,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 40,
+      "elementId": "node-00ee1840-94ba-4cce-bb88-f196c09ef10e",
+      "insertionVisibleMs": 801.7860999999975,
+      "visualMs": 25,
+      "persistenceObservedMs": 236.800048828125,
+      "acknowledgementObservedMs": 388.800048828125,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 41,
+      "elementId": "node-8029e36d-a213-41c7-90aa-737830ec7a78",
+      "insertionVisibleMs": 820.2050000000017,
+      "visualMs": 25.59999990463257,
+      "persistenceObservedMs": 222.699951171875,
+      "acknowledgementObservedMs": 378.699951171875,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 42,
+      "elementId": "node-9a52395e-3425-4c8a-9882-12e8dadb5549",
+      "insertionVisibleMs": 859.8903999999893,
+      "visualMs": 21,
+      "persistenceObservedMs": 254.800048828125,
+      "acknowledgementObservedMs": 404.800048828125,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 43,
+      "elementId": "node-a761d969-25b4-4f90-bc1b-13c8c23ac856",
+      "insertionVisibleMs": 824.6407999999938,
+      "visualMs": 24.299999952316284,
+      "persistenceObservedMs": 205.89990234375,
+      "acknowledgementObservedMs": 361.89990234375,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 44,
+      "elementId": "node-5a76692d-0988-47a6-81e5-d1df1f763ad2",
+      "insertionVisibleMs": 789.2167999999947,
+      "visualMs": 25.5,
+      "persistenceObservedMs": 244.39990234375,
+      "acknowledgementObservedMs": 402.39990234375,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 45,
+      "elementId": "node-e59eb1ec-ee8b-4fb5-be8f-ab9b744e9501",
+      "insertionVisibleMs": 803.4481000000087,
+      "visualMs": 23.399999856948853,
+      "persistenceObservedMs": 250.800048828125,
+      "acknowledgementObservedMs": 412.800048828125,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 46,
+      "elementId": "node-cf4ba223-7cc6-4485-973b-2a6e08074f59",
+      "insertionVisibleMs": 835.3827000000019,
+      "visualMs": 24.799999952316284,
+      "persistenceObservedMs": 277.300048828125,
+      "acknowledgementObservedMs": 449.300048828125,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 47,
+      "elementId": "node-06d60519-7563-4b31-9ce2-031dd11385f6",
+      "insertionVisibleMs": 808.3622000000032,
+      "visualMs": 24.5,
+      "persistenceObservedMs": 233.300048828125,
+      "acknowledgementObservedMs": 398.300048828125,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 48,
+      "elementId": "node-05e23a7d-41bb-404d-8520-6856873fe2e3",
+      "insertionVisibleMs": 811.489499999996,
+      "visualMs": 21,
+      "persistenceObservedMs": 246.60009765625,
+      "acknowledgementObservedMs": 409.60009765625,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 49,
+      "elementId": "node-d38542d7-37f3-4228-8c96-6a14b9a46430",
+      "insertionVisibleMs": 809.3150000000023,
+      "visualMs": 24.5,
+      "persistenceObservedMs": 226.199951171875,
+      "acknowledgementObservedMs": 387.199951171875,
+      "filePollingIntervalMs": 10
+    },
+    {
+      "iteration": 50,
+      "elementId": "node-d72d9db8-55a9-404f-bdd6-cd0e75cdbf63",
+      "insertionVisibleMs": 804.821299999996,
+      "visualMs": 24.299999952316284,
+      "persistenceObservedMs": 317,
+      "acknowledgementObservedMs": 461,
+      "filePollingIntervalMs": 10
+    }
+  ],
+  "memorySamples": [
+    {
+      "stage": "interactive",
+      "javascript": {
+        "source": "Chromium DevTools Protocol",
+        "metrics": {
+          "Documents": 2,
+          "LayoutObjects": 1777,
+          "Nodes": 3968,
+          "LayoutCount": 0,
+          "RecalcStyleCount": 0,
+          "LayoutDuration": 0,
+          "RecalcStyleDuration": 0,
+          "ScriptDuration": 0,
+          "TaskDuration": 0.000039,
+          "JSHeapUsedSize": 14290744,
+          "JSHeapTotalSize": 33677312
+        },
+        "dom": {
+          "documents": 2,
+          "nodes": 3968,
+          "jsEventListeners": 586
+        },
+        "imageResources": {
+          "entries": 3,
+          "uniqueUrls": 3
+        }
+      },
+      "metrics": [
+        {
+          "type": "Browser",
+          "serviceName": null,
+          "workingSetKiB": 142408,
+          "peakWorkingSetKiB": 143548,
+          "privateBytesKiB": 195724,
+          "cpuPercent": 0
+        },
+        {
+          "type": "GPU",
+          "serviceName": "GPU",
+          "workingSetKiB": 184148,
+          "peakWorkingSetKiB": 187224,
+          "privateBytesKiB": 153216,
+          "cpuPercent": 0
+        },
+        {
+          "type": "Utility",
+          "serviceName": "network.mojom.NetworkService",
+          "workingSetKiB": 45260,
+          "peakWorkingSetKiB": 46948,
+          "privateBytesKiB": 11188,
+          "cpuPercent": 0
+        },
+        {
+          "type": "Tab",
+          "serviceName": null,
+          "workingSetKiB": 162364,
+          "peakWorkingSetKiB": 162908,
+          "privateBytesKiB": 89612,
+          "cpuPercent": 0
+        }
+      ],
+      "documentService": {
+        "workingSetKiB": 225568,
+        "privateBytesKiB": 291264,
+        "source": "Windows Get-Process"
+      },
+      "rendererWorkingSetKiB": 162364
+    },
+    {
+      "stage": "settled",
+      "javascript": {
+        "source": "Chromium DevTools Protocol",
+        "metrics": {
+          "Documents": 2,
+          "LayoutObjects": 1777,
+          "Nodes": 3968,
+          "LayoutCount": 10,
+          "RecalcStyleCount": 6,
+          "LayoutDuration": 0.001438,
+          "RecalcStyleDuration": 0.001379,
+          "ScriptDuration": 0.003491,
+          "TaskDuration": 0.048145,
+          "JSHeapUsedSize": 14362128,
+          "JSHeapTotalSize": 33677312
+        },
+        "dom": {
+          "documents": 2,
+          "nodes": 3968,
+          "jsEventListeners": 586
+        },
+        "imageResources": {
+          "entries": 9,
+          "uniqueUrls": 9
+        }
+      },
+      "metrics": [
+        {
+          "type": "Browser",
+          "serviceName": null,
+          "workingSetKiB": 142676,
+          "peakWorkingSetKiB": 143548,
+          "privateBytesKiB": 195884,
+          "cpuPercent": 0.07258879408024428
+        },
+        {
+          "type": "GPU",
+          "serviceName": "GPU",
+          "workingSetKiB": 185992,
+          "peakWorkingSetKiB": 189208,
+          "privateBytesKiB": 154356,
+          "cpuPercent": 0.22044953127691158
+        },
+        {
+          "type": "Utility",
+          "serviceName": "network.mojom.NetworkService",
+          "workingSetKiB": 45360,
+          "peakWorkingSetKiB": 46948,
+          "privateBytesKiB": 11296,
+          "cpuPercent": 0.04155565679774067
+        },
+        {
+          "type": "Tab",
+          "serviceName": null,
+          "workingSetKiB": 163196,
+          "peakWorkingSetKiB": 163364,
+          "privateBytesKiB": 89704,
+          "cpuPercent": 0.20862422471679737
+        }
+      ],
+      "documentService": {
+        "workingSetKiB": 225576,
+        "privateBytesKiB": 291264,
+        "source": "Windows Get-Process"
+      },
+      "rendererWorkingSetKiB": 163196
+    },
+    {
+      "stage": "after-10-pairs",
+      "javascript": {
+        "source": "Chromium DevTools Protocol",
+        "metrics": {
+          "Documents": 2,
+          "LayoutObjects": 2140,
+          "Nodes": 4559,
+          "LayoutCount": 196,
+          "RecalcStyleCount": 1019,
+          "LayoutDuration": 0.124152,
+          "RecalcStyleDuration": 4.975336,
+          "ScriptDuration": 2.599165,
+          "TaskDuration": 11.848979,
+          "JSHeapUsedSize": 55586720,
+          "JSHeapTotalSize": 107077632
+        },
+        "dom": {
+          "documents": 2,
+          "nodes": 4559,
+          "jsEventListeners": 3130
+        },
+        "imageResources": {
+          "entries": 9,
+          "uniqueUrls": 9
+        }
+      },
+      "metrics": [
+        {
+          "type": "Browser",
+          "serviceName": null,
+          "workingSetKiB": 143424,
+          "peakWorkingSetKiB": 144156,
+          "privateBytesKiB": 196376,
+          "cpuPercent": 0.3989562274242566
+        },
+        {
+          "type": "GPU",
+          "serviceName": "GPU",
+          "workingSetKiB": 201784,
+          "peakWorkingSetKiB": 204104,
+          "privateBytesKiB": 170328,
+          "cpuPercent": 1.6540763719793896
+        },
+        {
+          "type": "Utility",
+          "serviceName": "network.mojom.NetworkService",
+          "workingSetKiB": 43108,
+          "peakWorkingSetKiB": 46948,
+          "privateBytesKiB": 11232,
+          "cpuPercent": 0.06062064953707696
+        },
+        {
+          "type": "Tab",
+          "serviceName": null,
+          "workingSetKiB": 366608,
+          "peakWorkingSetKiB": 369064,
+          "privateBytesKiB": 292616,
+          "cpuPercent": 5.408227520856637
+        }
+      ],
+      "documentService": {
+        "workingSetKiB": 217440,
+        "privateBytesKiB": 281952,
+        "source": "Windows Get-Process"
+      },
+      "rendererWorkingSetKiB": 366608
+    },
+    {
+      "stage": "after-20-pairs",
+      "javascript": {
+        "source": "Chromium DevTools Protocol",
+        "metrics": {
+          "Documents": 2,
+          "LayoutObjects": 2111,
+          "Nodes": 4543,
+          "LayoutCount": 381,
+          "RecalcStyleCount": 2012,
+          "LayoutDuration": 0.228037,
+          "RecalcStyleDuration": 9.853152,
+          "ScriptDuration": 4.964699,
+          "TaskDuration": 23.127841,
+          "JSHeapUsedSize": 49228292,
+          "JSHeapTotalSize": 108126208
+        },
+        "dom": {
+          "documents": 2,
+          "nodes": 4543,
+          "jsEventListeners": 2688
+        },
+        "imageResources": {
+          "entries": 9,
+          "uniqueUrls": 9
+        }
+      },
+      "metrics": [
+        {
+          "type": "Browser",
+          "serviceName": null,
+          "workingSetKiB": 143480,
+          "peakWorkingSetKiB": 144156,
+          "privateBytesKiB": 196440,
+          "cpuPercent": 0.40236754078946
+        },
+        {
+          "type": "GPU",
+          "serviceName": "GPU",
+          "workingSetKiB": 201684,
+          "peakWorkingSetKiB": 204104,
+          "privateBytesKiB": 174556,
+          "cpuPercent": 1.652276884366279
+        },
+        {
+          "type": "Utility",
+          "serviceName": "network.mojom.NetworkService",
+          "workingSetKiB": 41100,
+          "peakWorkingSetKiB": 46948,
+          "privateBytesKiB": 11200,
+          "cpuPercent": 0.0624408154356864
+        },
+        {
+          "type": "Tab",
+          "serviceName": null,
+          "workingSetKiB": 415124,
+          "peakWorkingSetKiB": 416448,
+          "privateBytesKiB": 339316,
+          "cpuPercent": 5.357916114437183
+        }
+      ],
+      "documentService": {
+        "workingSetKiB": 224620,
+        "privateBytesKiB": 289700,
+        "source": "Windows Get-Process"
+      },
+      "rendererWorkingSetKiB": 415124
+    },
+    {
+      "stage": "after-30-pairs",
+      "javascript": {
+        "source": "Chromium DevTools Protocol",
+        "metrics": {
+          "Documents": 2,
+          "LayoutObjects": 2111,
+          "Nodes": 4543,
+          "LayoutCount": 564,
+          "RecalcStyleCount": 3031,
+          "LayoutDuration": 0.330687,
+          "RecalcStyleDuration": 14.892236,
+          "ScriptDuration": 7.381968,
+          "TaskDuration": 34.795741,
+          "JSHeapUsedSize": 48926604,
+          "JSHeapTotalSize": 107601920
+        },
+        "dom": {
+          "documents": 2,
+          "nodes": 4543,
+          "jsEventListeners": 2688
+        },
+        "imageResources": {
+          "entries": 9,
+          "uniqueUrls": 9
+        }
+      },
+      "metrics": [
+        {
+          "type": "Browser",
+          "serviceName": null,
+          "workingSetKiB": 143876,
+          "peakWorkingSetKiB": 144156,
+          "privateBytesKiB": 196460,
+          "cpuPercent": 0.3941372197500158
+        },
+        {
+          "type": "GPU",
+          "serviceName": "GPU",
+          "workingSetKiB": 201752,
+          "peakWorkingSetKiB": 204104,
+          "privateBytesKiB": 174696,
+          "cpuPercent": 1.678930575886568
+        },
+        {
+          "type": "Utility",
+          "serviceName": "network.mojom.NetworkService",
+          "workingSetKiB": 36372,
+          "peakWorkingSetKiB": 46948,
+          "privateBytesKiB": 11204,
+          "cpuPercent": 0.06207959851438417
+        },
+        {
+          "type": "Tab",
+          "serviceName": null,
+          "workingSetKiB": 453804,
+          "peakWorkingSetKiB": 455148,
+          "privateBytesKiB": 377992,
+          "cpuPercent": 5.287910806917211
+        }
+      ],
+      "documentService": {
+        "workingSetKiB": 224896,
+        "privateBytesKiB": 289920,
+        "source": "Windows Get-Process"
+      },
+      "rendererWorkingSetKiB": 453804
+    },
+    {
+      "stage": "after-40-pairs",
+      "javascript": {
+        "source": "Chromium DevTools Protocol",
+        "metrics": {
+          "Documents": 2,
+          "LayoutObjects": 2128,
+          "Nodes": 4553,
+          "LayoutCount": 753,
+          "RecalcStyleCount": 4005,
+          "LayoutDuration": 0.43411,
+          "RecalcStyleDuration": 19.930281,
+          "ScriptDuration": 9.707301,
+          "TaskDuration": 46.170585,
+          "JSHeapUsedSize": 34665592,
+          "JSHeapTotalSize": 102096896
+        },
+        "dom": {
+          "documents": 2,
+          "nodes": 4553,
+          "jsEventListeners": 2994
+        },
+        "imageResources": {
+          "entries": 9,
+          "uniqueUrls": 9
+        }
+      },
+      "metrics": [
+        {
+          "type": "Browser",
+          "serviceName": null,
+          "workingSetKiB": 142368,
+          "peakWorkingSetKiB": 144156,
+          "privateBytesKiB": 194788,
+          "cpuPercent": 0.4037029371706878
+        },
+        {
+          "type": "GPU",
+          "serviceName": "GPU",
+          "workingSetKiB": 200392,
+          "peakWorkingSetKiB": 204104,
+          "privateBytesKiB": 172660,
+          "cpuPercent": 1.6359135641046725
+        },
+        {
+          "type": "Utility",
+          "serviceName": "network.mojom.NetworkService",
+          "workingSetKiB": 34120,
+          "peakWorkingSetKiB": 46948,
+          "privateBytesKiB": 10896,
+          "cpuPercent": 0.06408432669229384
+        },
+        {
+          "type": "Tab",
+          "serviceName": null,
+          "workingSetKiB": 468772,
+          "peakWorkingSetKiB": 469968,
+          "privateBytesKiB": 392672,
+          "cpuPercent": 5.449535079990303
+        }
+      ],
+      "documentService": {
+        "workingSetKiB": 228848,
+        "privateBytesKiB": 294212,
+        "source": "Windows Get-Process"
+      },
+      "rendererWorkingSetKiB": 468772
+    },
+    {
+      "stage": "after-50-pairs",
+      "javascript": {
+        "source": "Chromium DevTools Protocol",
+        "metrics": {
+          "Documents": 2,
+          "LayoutObjects": 2503,
+          "Nodes": 5666,
+          "LayoutCount": 940,
+          "RecalcStyleCount": 4988,
+          "LayoutDuration": 0.538407,
+          "RecalcStyleDuration": 25.107208,
+          "ScriptDuration": 12.029723,
+          "TaskDuration": 57.730618,
+          "JSHeapUsedSize": 59121780,
+          "JSHeapTotalSize": 109961216
+        },
+        "dom": {
+          "documents": 2,
+          "nodes": 5666,
+          "jsEventListeners": 5861
+        },
+        "imageResources": {
+          "entries": 9,
+          "uniqueUrls": 9
+        }
+      },
+      "metrics": [
+        {
+          "type": "Browser",
+          "serviceName": null,
+          "workingSetKiB": 142324,
+          "peakWorkingSetKiB": 144156,
+          "privateBytesKiB": 194812,
+          "cpuPercent": 0.3965353348292513
+        },
+        {
+          "type": "GPU",
+          "serviceName": "GPU",
+          "workingSetKiB": 192280,
+          "peakWorkingSetKiB": 204104,
+          "privateBytesKiB": 172996,
+          "cpuPercent": 1.621358416468567
+        },
+        {
+          "type": "Utility",
+          "serviceName": "network.mojom.NetworkService",
+          "workingSetKiB": 33508,
+          "peakWorkingSetKiB": 46948,
+          "privateBytesKiB": 10900,
+          "cpuPercent": 0.062048907361939146
+        },
+        {
+          "type": "Tab",
+          "serviceName": null,
+          "workingSetKiB": 509236,
+          "peakWorkingSetKiB": 510192,
+          "privateBytesKiB": 433692,
+          "cpuPercent": 5.3435591248025585
+        }
+      ],
+      "documentService": {
+        "workingSetKiB": 222016,
+        "privateBytesKiB": 302740,
+        "source": "Windows Get-Process"
+      },
+      "rendererWorkingSetKiB": 509236
+    },
+    {
+      "stage": "after-50-insert-delete-pairs",
+      "javascript": {
+        "source": "Chromium DevTools Protocol",
+        "metrics": {
+          "Documents": 2,
+          "LayoutObjects": 2503,
+          "Nodes": 5666,
+          "LayoutCount": 940,
+          "RecalcStyleCount": 4988,
+          "LayoutDuration": 0.538407,
+          "RecalcStyleDuration": 25.107208,
+          "ScriptDuration": 12.029723,
+          "TaskDuration": 57.738278,
+          "JSHeapUsedSize": 59209200,
+          "JSHeapTotalSize": 109961216
+        },
+        "dom": {
+          "documents": 2,
+          "nodes": 5666,
+          "jsEventListeners": 5861
+        },
+        "imageResources": {
+          "entries": 9,
+          "uniqueUrls": 9
+        }
+      },
+      "metrics": [
+        {
+          "type": "Browser",
+          "serviceName": null,
+          "workingSetKiB": 141868,
+          "peakWorkingSetKiB": 144156,
+          "privateBytesKiB": 194380,
+          "cpuPercent": 0.08086039129652758
+        },
+        {
+          "type": "GPU",
+          "serviceName": "GPU",
+          "workingSetKiB": 191404,
+          "peakWorkingSetKiB": 204104,
+          "privateBytesKiB": 172996,
+          "cpuPercent": 0.025016498222245304
+        },
+        {
+          "type": "Utility",
+          "serviceName": "network.mojom.NetworkService",
+          "workingSetKiB": 33508,
+          "peakWorkingSetKiB": 46948,
+          "privateBytesKiB": 10900,
+          "cpuPercent": 0.0003245770365388245
+        },
+        {
+          "type": "Tab",
+          "serviceName": null,
+          "workingSetKiB": 509236,
+          "peakWorkingSetKiB": 510192,
+          "privateBytesKiB": 433692,
+          "cpuPercent": 0.09798538626095746
+        }
+      ],
+      "documentService": {
+        "workingSetKiB": 222016,
+        "privateBytesKiB": 302740,
+        "source": "Windows Get-Process"
+      },
+      "rendererWorkingSetKiB": 509236
+    },
+    {
+      "stage": "after-explicit-garbage-collection",
+      "javascript": {
+        "source": "Chromium DevTools Protocol",
+        "metrics": {
+          "Documents": 2,
+          "LayoutObjects": 1777,
+          "Nodes": 4066,
+          "LayoutCount": 940,
+          "RecalcStyleCount": 4988,
+          "LayoutDuration": 0.538407,
+          "RecalcStyleDuration": 25.107208,
+          "ScriptDuration": 12.029723,
+          "TaskDuration": 57.835506,
+          "JSHeapUsedSize": 17836652,
+          "JSHeapTotalSize": 21094400
+        },
+        "dom": {
+          "documents": 2,
+          "nodes": 4066,
+          "jsEventListeners": 747
+        },
+        "imageResources": {
+          "entries": 9,
+          "uniqueUrls": 9
+        }
+      },
+      "metrics": [
+        {
+          "type": "Browser",
+          "serviceName": null,
+          "workingSetKiB": 141868,
+          "peakWorkingSetKiB": 144156,
+          "privateBytesKiB": 194380,
+          "cpuPercent": 0.03530424473449847
+        },
+        {
+          "type": "GPU",
+          "serviceName": "GPU",
+          "workingSetKiB": 191044,
+          "peakWorkingSetKiB": 204104,
+          "privateBytesKiB": 172556,
+          "cpuPercent": 0.05605129973781747
+        },
+        {
+          "type": "Utility",
+          "serviceName": "network.mojom.NetworkService",
+          "workingSetKiB": 33432,
+          "peakWorkingSetKiB": 46948,
+          "privateBytesKiB": 10816,
+          "cpuPercent": 0.001418187057738366
+        },
+        {
+          "type": "Tab",
+          "serviceName": null,
+          "workingSetKiB": 407380,
+          "peakWorkingSetKiB": 510192,
+          "privateBytesKiB": 333352,
+          "cpuPercent": 1.793753517163759
+        }
+      ],
+      "documentService": {
+        "workingSetKiB": 222012,
+        "privateBytesKiB": 302740,
+        "source": "Windows Get-Process"
+      },
+      "rendererWorkingSetKiB": 407380
+    }
+  ],
+  "initialDom": {
+    "totalNodes": 1777,
+    "thumbnails": 80,
+    "thumbnailRenderers": 6,
+    "allPageRenderers": 7,
+    "canvasElements": 4,
+    "pendingImages": 8,
+    "viewport": {
+      "width": 1600,
+      "height": 1000,
+      "devicePixelRatio": 1
+    }
+  },
+  "settledDom": {
+    "totalNodes": 1777,
+    "thumbnails": 80,
+    "thumbnailRenderers": 6,
+    "allPageRenderers": 7,
+    "canvasElements": 4,
+    "pendingImages": 0,
+    "viewport": {
+      "width": 1600,
+      "height": 1000,
+      "devicePixelRatio": 1
+    }
+  },
+  "finalDom": {
+    "totalNodes": 1777,
+    "thumbnails": 80,
+    "thumbnailRenderers": 6,
+    "allPageRenderers": 7,
+    "canvasElements": 4,
+    "pendingImages": 0,
+    "viewport": {
+      "width": 1600,
+      "height": 1000,
+      "devicePixelRatio": 1
+    }
+  },
+  "stableImageUrls": {
+    "images": 0,
+    "unchanged": true
+  },
+  "originalFilesChecked": 82,
+  "originalUnchanged": true,
+  "rendererErrors": [],
+  "transactionFailures": [],
+  "normalExitFieldRecorded": false,
+  "runnerExit": 0
+}
