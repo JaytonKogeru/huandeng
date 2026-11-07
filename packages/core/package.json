@@ -87,7 +87,7 @@
     "@fortawesome/free-solid-svg-icons": "7.3.1",
     "@modelcontextprotocol/sdk": "1.32.1",
     "@tailwindcss/vite": "^4.3.3",
-    "@vitejs/plugin-react": "^6.1.1",
+    "@vitejs/plugin-react": "^6.2.1",
     "chalk": "^6.0.1",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
