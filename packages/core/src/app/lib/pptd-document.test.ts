@@ -110,6 +110,7 @@ async function setup(initial = session()) {
   const revert = vi.fn<PptdTransport['revert']>();
   const backend: PptdTransport = {
     getSnapshot: vi.fn(async () => structuredClone(remote)),
+    recoverPending: vi.fn(async () => structuredClone(remote)),
     commit,
     revert,
     subscribe: () => () => {},
@@ -558,7 +559,267 @@ describe('PPTD browser editing contract', () => {
     client.patchElement('page-1', 'title', { 'content.text': '待恢复' }, false);
     await expect(client.flushPage('page-1')).rejects.toMatchObject({ code: 'PENDING_RECOVERY' });
     expect(client.getState().canRetry).toBe(true);
+    expect(client.getState().recoveryRequired).toBe(true);
     expect(client.getState().drafts['page-1'].conflict).toBeUndefined();
+  });
+
+  it('recovers the original save receipt before rebasing typing entered while saving was blocked', async () => {
+    const { client, backend, commit, setRemote } = await setup();
+    commit.mockRejectedValueOnce(new PptdClientError('PENDING_RECOVERY', 'Pending journal.', 400));
+    client.patchElement('page-1', 'title', { 'content.text': '已发送' }, false);
+    await expect(client.flushPage('page-1')).rejects.toMatchObject({ code: 'PENDING_RECOVERY' });
+    const original = structuredClone(commit.mock.calls[0][0]);
+    const blocked = session();
+    blocked.writable = false;
+    blocked.diagnostics = [
+      { code: 'PENDING_RECOVERY', message: 'Pending journal.', severity: 'error' },
+    ];
+    setRemote(blocked);
+    await client.refresh();
+    client.patchElement('page-1', 'title', { 'content.text': '恢复前继续输入' });
+    await vi.advanceTimersByTimeAsync(1400);
+    await expect(client.flushAll()).rejects.toMatchObject({ code: 'PENDING_RECOVERY' });
+    await expect(client.retryPending()).rejects.toMatchObject({ code: 'PENDING_RECOVERY' });
+    expect(commit).toHaveBeenCalledTimes(1);
+    expect(client.page('page-1')?.data.elements[0].content?.text).toBe('恢复前继续输入');
+
+    setRemote(session('已发送', 2));
+    await client.refresh();
+    expect(client.getState().recoveryRequired).toBe(true);
+    expect(client.getState().lastSaved).toBeNull();
+    const recovery = deferred<PptdSession>();
+    vi.mocked(backend.recoverPending).mockReturnValueOnce(recovery.promise);
+    commit.mockResolvedValueOnce(receipt(original.requestId));
+    const recovering = client.recoverPending();
+    expect(client.getState()).toMatchObject({
+      saving: true,
+      recovering: true,
+      recoveryRequired: true,
+    });
+    client.patchElement('page-1', 'title', { 'content.text': '恢复时继续输入' });
+    expect(commit).toHaveBeenCalledTimes(1);
+    recovery.resolve(session('已发送', 2));
+    await recovering;
+    expect(commit.mock.calls[1][0]).toEqual(original);
+    expect(client.getState()).toMatchObject({
+      saving: false,
+      recovering: false,
+      recoveryRequired: false,
+      canRetry: false,
+    });
+    expect(client.getState().drafts['page-1'].base.pageRevision).toBe(revision(2));
+    expect(client.getState().drafts['page-1'].conflict).toBeUndefined();
+    expect(client.page('page-1')?.data.elements[0].content?.text).toBe('恢复时继续输入');
+    expect(client.getState().undoStack).toEqual(['operation-1']);
+
+    commit.mockImplementationOnce(async (request) => {
+      setRemote(session('恢复时继续输入', 3));
+      return receipt(request.requestId, 3, 'operation-2');
+    });
+    await vi.advanceTimersByTimeAsync(700);
+    expect(commit.mock.calls[2][0].requestId).not.toBe(original.requestId);
+    expect(commit.mock.calls[2][0].expected.pages?.['page-1']).toBe(revision(2));
+    expect(client.getState().drafts).toEqual({});
+    expect(client.getState().undoStack).toEqual(['operation-1', 'operation-2']);
+  });
+
+  it('preserves an insertion preview and newly entered fields through recovery without a false conflict', async () => {
+    const { client, backend, commit, setRemote } = await setup();
+    commit.mockRejectedValueOnce(new PptdClientError('PENDING_RECOVERY', 'Pending journal.', 400));
+    await expect(
+      client.apply([{ op: 'element.add', pageId: 'page-1', element: shape() }]),
+    ).rejects.toMatchObject({ code: 'PENDING_RECOVERY' });
+    const original = structuredClone(commit.mock.calls[0][0]);
+    const blocked = session();
+    blocked.writable = false;
+    blocked.diagnostics = [
+      { code: 'PENDING_RECOVERY', message: 'Pending journal.', severity: 'error' },
+    ];
+    setRemote(blocked);
+    await client.refresh();
+    client.patchElement('page-1', 'shape', { bounds: [120, 140, 220, 160] });
+    const saved = session('原稿', 2);
+    saved.pages[0].data.elements.push(shape());
+    setRemote(saved);
+    const ack = deferred<TransactionResult>();
+    commit.mockReturnValueOnce(ack.promise);
+    const recovering = client.recoverPending();
+    await Promise.resolve();
+    expect(backend.recoverPending).toHaveBeenCalledTimes(1);
+    expect(client.getState().snapshot?.pages[0].pageRevision).toBe(revision(1));
+    expect(client.getState().drafts['page-1'].conflict).toBeUndefined();
+    ack.resolve(receipt(original.requestId));
+    await recovering;
+    expect(commit.mock.calls[1][0]).toEqual(original);
+    expect(client.page('page-1')?.data.elements[1].bounds).toEqual([120, 140, 220, 160]);
+    expect(client.getState().snapshot?.pages[0].data.elements[1].bounds).toEqual(shape().bounds);
+    expect(client.getState().drafts['page-1'].base.pageRevision).toBe(revision(2));
+    expect(client.getState().drafts['page-1'].conflict).toBeUndefined();
+  });
+
+  it.each([
+    ['RECOVERY_REQUIRED', 409],
+    ['INVALID_DOCUMENT', 400],
+    ['NETWORK_ERROR', 0],
+  ])('retains pending work when explicit recovery fails with %s', async (code, status) => {
+    const { client, backend, commit, setRemote } = await setup();
+    commit.mockRejectedValueOnce(new PptdClientError('PENDING_RECOVERY', 'Pending journal.', 400));
+    await expect(
+      client.apply([{ op: 'element.add', pageId: 'page-1', element: shape() }]),
+    ).rejects.toMatchObject({ code: 'PENDING_RECOVERY' });
+    client.patchElement('page-1', 'title', { 'content.text': '必须保留的工作稿' }, false);
+    const before = client.pendingWork();
+    vi.mocked(backend.recoverPending).mockRejectedValueOnce(
+      new PptdClientError(code, 'Recovery cannot proceed.', status),
+    );
+    await expect(client.recoverPending()).rejects.toMatchObject({ code });
+    expect(client.getState()).toMatchObject({
+      saving: false,
+      recovering: false,
+      recoveryRequired: true,
+      canRetry: true,
+      lastSaved: null,
+    });
+    expect(client.pendingWork()).toEqual(before);
+    expect(JSON.stringify(before)).not.toContain('sessionToken');
+    before.drafts['page-1'].fields.title['content.text'] = '修改导出副本';
+    expect(client.page('page-1')?.data.elements[0].content?.text).toBe('必须保留的工作稿');
+    client.discardDraft('page-1');
+    expect(client.getState().drafts['page-1']).toBeDefined();
+    expect(commit).toHaveBeenCalledTimes(1);
+    expect(client.getState().undoStack).toEqual([]);
+
+    const saved = session('原稿', 2);
+    saved.pages[0].data.elements.push(shape());
+    setRemote(saved);
+    commit.mockResolvedValueOnce(receipt(commit.mock.calls[0][0].requestId));
+    await client.recoverPending();
+    expect(client.getState().recoveryRequired).toBe(false);
+    expect(client.getState().undoStack).toEqual(['operation-1']);
+    expect(client.page('page-1')?.data.elements[0].content?.text).toBe('必须保留的工作稿');
+  });
+
+  it('recovers an acknowledged transaction without submitting it twice', async () => {
+    const { client, backend, commit, setRemote } = await setup();
+    client.patchElement('page-1', 'title', { 'content.text': '已落盘' }, false);
+    commit.mockImplementationOnce(async (request) => {
+      setRemote(session('已落盘', 2));
+      return receipt(request.requestId);
+    });
+    vi.mocked(backend.getSnapshot).mockRejectedValueOnce(
+      new PptdClientError('PENDING_RECOVERY', 'Another journal needs recovery.', 400),
+    );
+    await expect(client.flushPage('page-1')).rejects.toMatchObject({ code: 'PENDING_RECOVERY' });
+    client.patchElement('page-1', 'title', { 'content.text': '回执之后的输入' }, false);
+    await client.recoverPending();
+    expect(commit).toHaveBeenCalledTimes(1);
+    expect(backend.recoverPending).toHaveBeenCalledTimes(1);
+    expect(client.getState().undoStack).toEqual(['operation-1']);
+    expect(client.getState().drafts['page-1'].base.pageRevision).toBe(revision(2));
+    expect(client.page('page-1')?.data.elements[0].content?.text).toBe('回执之后的输入');
+  });
+
+  it('recognizes external recovery only without an owned pending request and resumes retained drafts', async () => {
+    const { client, backend, commit, setRemote } = await setup();
+    client.patchElement('page-1', 'title', { 'content.text': '未发送草稿' });
+    const blocked = session();
+    blocked.writable = false;
+    blocked.diagnostics = [
+      { code: 'RECOVERY_REQUIRED', message: 'External journal.', severity: 'error' },
+    ];
+    setRemote(blocked);
+    await client.refresh();
+    client.patchElement('page-1', 'title', { 'content.text': '只读期间仍保留输入' });
+    await vi.advanceTimersByTimeAsync(1400);
+    expect(commit).not.toHaveBeenCalled();
+    setRemote({ ...session(), writable: false });
+    await client.refresh();
+    expect(client.getState().recoveryRequired).toBe(true);
+    setRemote(session());
+    await client.refresh();
+    expect(client.getState()).toMatchObject({ recoveryRequired: false, error: null });
+    expect(backend.recoverPending).not.toHaveBeenCalled();
+    expect(client.page('page-1')?.data.elements[0].content?.text).toBe('只读期间仍保留输入');
+    commit.mockImplementationOnce(async (request) => {
+      setRemote(session('只读期间仍保留输入', 2));
+      return receipt(request.requestId);
+    });
+    await vi.advanceTimersByTimeAsync(700);
+    expect(commit).toHaveBeenCalledTimes(1);
+    expect(client.getState().drafts).toEqual({});
+  });
+
+  it('keeps unsent drafts conflicted when an unowned recovery changes their page', async () => {
+    const { client, commit, setRemote } = await setup();
+    client.patchElement('page-1', 'title', { 'content.text': '本地工作稿' }, false);
+    const blocked = session();
+    blocked.writable = false;
+    blocked.diagnostics = [
+      { code: 'PENDING_RECOVERY', message: 'External journal.', severity: 'error' },
+    ];
+    setRemote(blocked);
+    await client.refresh();
+    setRemote(session('恢复的外部修改', 2));
+    await client.recoverPending();
+    expect(client.getState().recoveryRequired).toBe(false);
+    expect(client.getState().drafts['page-1'].conflict).toBeTruthy();
+    expect(client.page('page-1')?.data.elements[0].content?.text).toBe('本地工作稿');
+    expect(client.getState().snapshot?.pages[0].data.elements[0].content?.text).toBe(
+      '恢复的外部修改',
+    );
+    expect(client.getState().undoStack).toEqual([]);
+    expect(client.getState().lastSaved).toBeNull();
+    await expect(client.flushAll()).rejects.toMatchObject({ code: 'REVISION_CONFLICT' });
+    expect(commit).not.toHaveBeenCalled();
+  });
+
+  it('recovers undo with the original request and records the history transition once', async () => {
+    const { client, commit, revert, setRemote } = await setup();
+    commit.mockImplementationOnce(async (request) => {
+      setRemote(session('修改后', 2));
+      return receipt(request.requestId);
+    });
+    client.patchElement('page-1', 'title', { 'content.text': '修改后' }, false);
+    await client.flushPage('page-1');
+    revert.mockRejectedValueOnce(new PptdClientError('PENDING_RECOVERY', 'Undo journal.', 400));
+    await expect(client.history('undo')).rejects.toMatchObject({ code: 'PENDING_RECOVERY' });
+    const original = [...revert.mock.calls[0]];
+    setRemote(session('原稿', 3));
+    revert.mockResolvedValueOnce(receipt(original[2], 3, 'undo-operation'));
+    await client.recoverPending();
+    expect(revert.mock.calls[1]).toEqual(original);
+    expect(client.getState().undoStack).toEqual([]);
+    expect(client.getState().redoStack).toEqual(['undo-operation']);
+    revert.mockImplementationOnce(async (_kind, _operationId, requestId) => {
+      setRemote(session('修改后', 4));
+      return receipt(requestId, 4, 'redo-operation');
+    });
+    await client.history('redo');
+    expect(revert.mock.calls[2].slice(0, 2)).toEqual(['redo', 'undo-operation']);
+    expect(client.getState().undoStack).toEqual(['redo-operation']);
+  });
+
+  it('authenticates recovery and refreshes the session token for the receipt request', async () => {
+    const recovered = { ...session('已恢复', 2), sessionToken: 'recovered-token' };
+    const fetcher = vi
+      .fn()
+      .mockResolvedValueOnce(Response.json(session()))
+      .mockResolvedValueOnce(Response.json(recovered))
+      .mockResolvedValueOnce(Response.json(receipt('request-1')));
+    vi.stubGlobal('fetch', fetcher);
+    const backend = new PptdBackend();
+    await backend.getSnapshot();
+    expect(await backend.recoverPending()).toEqual(recovered);
+    await backend.revert('undo', 'operation-1', 'request-1', 'client-1');
+    expect(fetcher.mock.calls[1]).toEqual([
+      '/__pptd/recover',
+      expect.objectContaining({
+        method: 'POST',
+        body: '{}',
+        headers: { 'content-type': 'application/json', 'x-huandeng-token': 'token' },
+      }),
+    ]);
+    expect(fetcher.mock.calls[2][1].headers['x-huandeng-token']).toBe('recovered-token');
   });
 
   it('retries an uncertain undo once and uses its new operation id for redo', async () => {

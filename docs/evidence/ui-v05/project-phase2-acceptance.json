@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "stage": "candidate-phase2",
+  "source": {
+    "baselineRevision": "8798d8f058dab89a80143e0c813780c8d87a70f9",
+    "precedingTransferSha256": "157272ec0f472923d2f185b19a614f6e15ad48d3d9c9931e575369cddda657ae",
+    "phase2TransferSha256": "afa888aebf145f5534fef829c3396e6f8b5364d7e4133203bc57f054da1cad6c",
+    "description": "Candidate source plus the phase-two transfer; not a final release commit."
+  },
+  "runtime": {
+    "host": "Electron development host",
+    "frontend": "compiled production bundle",
+    "packagedRelease": false
+  },
+  "rawReceipt": {
+    "localFile": ".verification/project-v04/result.json",
+    "sha256": "d5c1be174754e6c324cefcebb2197288c114aeb0ffa05c9268ca66cb41742faf"
+  },
+  "sanitization": "Only software test results are retained. Research paths, titles, source-file inventories, document content and screenshots are excluded.",
+  "passed": true,
+  "fixture": {
+    "kind": "isolated synthetic project"
+  },
+  "checks": [
+    {
+      "name": "create Main Story and two sections through the editor",
+      "passed": true,
+      "milliseconds": 727
+    },
+    {
+      "name": "create two presentations sharing chapter and repeated page references",
+      "passed": true,
+      "milliseconds": 641
+    },
+    {
+      "name": "ordinary edits create no named versions and the history UI explicitly records milestones",
+      "passed": true,
+      "milliseconds": 2077
+    },
+    {
+      "name": "project draft survives tab changes and blocks presentation and export",
+      "passed": true,
+      "milliseconds": 651
+    },
+    {
+      "name": "pin two named versions and save occurrence-specific speaker notes through UI",
+      "passed": true,
+      "milliseconds": 656
+    },
+    {
+      "name": "reopen and navigate distinct live and pinned occurrences in the thumbnail rail",
+      "passed": true,
+      "milliseconds": 1253
+    },
+    {
+      "name": "play resolved order with repeated pages and occurrence-specific notes",
+      "passed": true,
+      "milliseconds": 731
+    },
+    {
+      "name": "UI exports each selected presentation with correct count and leaves canonical pages intact",
+      "passed": true,
+      "milliseconds": 560
+    },
+    {
+      "name": "removed canonical page retains references and blocks affected presentation until restored",
+      "passed": true,
+      "milliseconds": 571
+    },
+    {
+      "name": "external project update preserves a conflicting draft and disables overwriting controls",
+      "passed": true,
+      "milliseconds": 607
+    },
+    {
+      "name": "Page Story draft survives object selection and page changes until explicitly saved",
+      "passed": true,
+      "milliseconds": 772
+    }
+  ],
+  "rendererErrorCount": 0,
+  "note": "This is the phase-two rerun using the development Electron host and production bundle. The first integration receipt remains separate; final packaged acceptance is still pending."
+}

@@ -40,6 +40,7 @@ export class PptdClientError extends Error {
 
 export interface PptdTransport {
   getSnapshot(): Promise<PptdSession>;
+  recoverPending(): Promise<PptdSession>;
   commit(request: TransactionRequest): Promise<TransactionResult>;
   revert(
     kind: 'undo' | 'redo',
@@ -102,7 +103,14 @@ export class PptdBackend implements PptdTransport {
   }
 
   async getSnapshot(): Promise<PptdSession> {
-    const session = await this.request<PptdSession>('/session');
+    return this.acceptSession(await this.request<PptdSession>('/session'));
+  }
+
+  async recoverPending(): Promise<PptdSession> {
+    return this.acceptSession(await this.request<PptdSession>('/recover', {}));
+  }
+
+  private acceptSession(session: PptdSession): PptdSession {
     if (session.kind !== 'pptd' || !Array.isArray(session.pages) || !session.metadata) {
       throw new PptdClientError(
         'INVALID_SESSION',

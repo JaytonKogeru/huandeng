@@ -15,6 +15,7 @@ const originalPage =
   'elements:\n  - elementId: title\n    elementType: text\n    bounds: [20, 20, 300, 40]\n    content: { text: Original }\n  - elementId: figure\n    elementType: image\n    src: media/figure.svg\nnotes: Original notes\n';
 
 afterEach(async () => {
+  vi.restoreAllMocks();
   await Promise.allSettled(servers.splice(0).map((server) => server.close()));
   vi.unstubAllEnvs();
   await Promise.all(
@@ -141,6 +142,49 @@ describe('HUANDENG production document server', () => {
     expect(stale.status).toBe(409);
     expect(await stale.json()).toMatchObject({ code: 'REVISION_CONFLICT' });
   });
+
+  it('authenticates explicit recovery and preserves the failed transaction receipt', async () => {
+    const { project, server, session } = await fixture();
+    const page = session.pages[0];
+    const transaction: TransactionRequest = {
+      requestId: randomUUID(),
+      actor: 'recovery-api-test',
+      deckId: session.deckId,
+      expected: { pages: { [page.pageId]: page.pageRevision } },
+      operations: [{ op: 'page.notes.set', pageId: page.pageId, text: 'Recovered API save' }],
+    };
+    const post = (route: string, body: object, token = session.sessionToken) =>
+      fetch(`${server.url}/__pptd${route}`, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json', 'x-huandeng-token': token },
+        body: JSON.stringify(body),
+      });
+    const original = fs.rename.bind(fs);
+    const target = path.join(project, 'pages/a.page').toLowerCase();
+    const rename = vi.spyOn(fs, 'rename').mockImplementation(async (from, to) => {
+      if (String(to).toLowerCase() === target)
+        throw Object.assign(new Error('Injected sharing violation'), { code: 'EPERM' });
+      return original(from, to);
+    });
+    const failed = await post('/transactions', transaction);
+    expect(failed.status).toBe(400);
+    expect(await failed.json()).toMatchObject({
+      code: 'PENDING_RECOVERY',
+      details: { causeCode: 'EPERM', renameAttempts: expect.any(Number) },
+    });
+    expect(await fs.readFile(path.join(project, 'pages/a.page'), 'utf8')).toBe(originalPage);
+    expect((await post('/recover', {}, 'invalid')).status).toBe(403);
+    rename.mockRestore();
+    const recovered = await (await post('/recover', {})).json();
+    expect(recovered.writable).toBe(true);
+    expect(recovered.sessionToken).toBe(session.sessionToken);
+    expect(path.isAbsolute(recovered.entry)).toBe(true);
+    expect(recovered.pages[0].data.notes).toBe('Recovered API save');
+    const receipt = await (await post('/transactions', transaction)).json();
+    expect(receipt).toMatchObject({ ok: true, requestId: transaction.requestId });
+    expect(await (await post('/transactions', transaction)).json()).toEqual(receipt);
+    expect(await (await fetch(`${server.url}/__pptd/history`)).json()).toHaveLength(1);
+  }, 15000);
 
   it('does not serve files through a symlink or junction outside the compiled editor', async () => {
     const { directory, clientRoot, server } = await fixture();

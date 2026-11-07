@@ -5,6 +5,8 @@
 ## 1. 来源与交付状态
 
 - 本轮源基线为 private origin main `8798d8f058dab89a80143e0c813780c8d87a70f9`。
+- 首轮 Windows 候选基于该源加传输包 `157272ec0f472923d2f185b19a614f6e15ad48d3d9c9931e575369cddda657ae`（SHA-256），使用 Electron 开发宿主与 production bundle。安全摘要见 [证据索引](evidence/ui-v05/README.md)，后续小 UI 修复与正式包分别记录来源。
+- 第二轮传输包 SHA-256 为 `afa888aebf145f5534fef829c3396e6f8b5364d7e4133203bc57f054da1cad6c`。代码门槛与 Desktop / Editor / Project 已在该轮重新通过；Science、背景/PDF、首轮性能和 Office 导出结果仍对应第一轮来源。
 - 上一正式 v0.4 程序来自 `c2fede5f45aa7a41e853304f9907c2d17e6bf8a2`；其安装、标签和完整历史验收继续由 [HANDOFF-V04](HANDOFF-V04.md) 说明。
 - v0.5 最终运行时提交、构建时间、`huandeng-build.json`、程序包校验、安装时间和里程碑标签须在本轮真实验收后补齐。目前不把工作区快照或阶段性检查写成正式发行回执。
 - 日常开发与证据在本地保留；完成重要里程碑后统一同步 GitHub。不推 upstream、不发布 npm、不更改仓库可见性。
@@ -17,7 +19,8 @@
 | 画布工具 | `app/lib/pptd-insertion.ts`、`components/pptd/insertion-layer.tsx`、`shape-insert-menu.tsx`、`editor-canvas.tsx`、`routes/huandeng.tsx` | 点击/拖动放置、形状种类、反向与 Shift 几何、取消、文字自动编辑和快捷键 |
 | 页面导航 | `components/pptd/thumbnail-rail.tsx`、`renderer.tsx` | 可见区域及邻近缩略图挂载、稳定引用与 memo、短码优先、兼容搜索、复制短码、当前页滚动跟随 |
 | 文档读取 | `packages/core/src/pptd/store.ts`、`store-performance.test.ts` | 有界并发、读取实际内容后复用解析、每轮共享素材指纹去重；保持 CAS/恢复和第三方修改语义 |
-| 正式前端 | `packages/core/scripts/build-editor.mjs`、`app/main-huandeng.tsx`、`app/huandeng.html` | core build 输出 `dist/editor`，专用 HUANDENG 入口；当前需要继续验证完整实际桌面链路 |
+| writer 锁诊断与兼容 | `pptd/persistence.ts`、`writer-lock.test.ts`、`project-directory.test-utils.ts` | 继续使用兼容固定端口并在获取失败时拒绝写入；区分 OS 端口占用/不可用，测试目录避开系统不允许绑定的端口，新增跨进程旧 writer 与崩溃释放回归 |
+| 正式前端 | `packages/core/scripts/build-editor.mjs`、`app/main-huandeng.tsx`、`app/huandeng.html` | core build 输出 `dist/editor`，专用 HUANDENG 入口；已通过开发宿主 + production bundle 的候选交互与导出回归 |
 | 本地静态服务 | `pptd/static-server.ts`、`static-server.test.ts`、`pptd/http.ts`、`pptd/launch.ts`、`vite/routes/pptd.ts` | 生产资源复用现有文档 API、文件监听和导出接口；开发服务器保留显式切换 |
 | 视觉与语言 | `app/styles.css`、`components/brand-mark.tsx`、project / recipe / history / design-intent 面板、`packages/desktop/welcome.*` | 一套深绿品牌、中文术语、工具层级、短促动效、最近项目开始页 |
 | 品牌派生 | `scripts/sync-brand-assets.mjs`、`packages/desktop/brand-assets.json` | 桌面 SVG 为单一源，派生应用标识、favicon、PNG/ICO 并校验摘要 |
@@ -37,6 +40,10 @@
 
 已完成 v0.4 正式程序的真实 Windows 基线，回执 `.verification/performance-v05/before-v04.json`。同机 80 页项目隔离副本、全新进程/profile/runtime、1600×1000 内容区，未清空 OS 文件缓存。首次可编辑 27.319 s；初始 80 个缩略图 renderer、8,962 个 DOM 节点；5 次 Delete 的视觉中位数 2,388.4 ms，文件落盘观测中位数 930.7 ms，服务确认观测中位数 2,982.7 ms。原始文件内容摘要保持不变。
 
+第二次旧版回执 `before-v04-memory.json` 增加文档服务工作集：首次可编辑 24.124 s；启动后空闲 renderer / service 分别为 574,960 / 1,045,804 KiB，5 轮插入/删除后为 1,047,448 / 1,140,108 KiB。这次的 Delete 视觉/落盘/确认中位数分别为 2,393.6 / 921.9 / 2,922.4 ms。
+
+首轮 v0.5 `after-v05-integration.json` 使用 **Electron 开发宿主 + production bundle**：首次可编辑 5,863.94 ms，初始 7 个缩略图 renderer、1,734 个 DOM 节点；Delete 视觉中位数 25.6 ms（20.9–30.6 ms），落盘中位数 225.6 ms（207.7–299.3 ms），确认中位数 528.6 ms。空闲 renderer / service 为 169,620 / 213,444 KiB，5 轮操作后为 306,748 / 216,480 KiB。三次测量的原始文件内容均保持不变。完整软件指标见 [安全摘要](evidence/ui-v05/performance-comparison.json)；此批候选数据不能标为最终安装包结果。
+
 端到端脚本读取实际安装程序，另建项目副本后测试。调用约定为：
 
 ```text
@@ -52,14 +59,37 @@ node scripts/verify-editor-v05.mjs
 
 视觉反馈与持久化时间分开报告。5 次样本使用中位数和范围，启动注明进程与文件缓存条件；工作集按阶段采样，不能用单个瞬时数字宣称内存泄漏或修复。
 
-## 5. 仍需完成的验收顺序
+## 5. 当前验收与剩余步骤
 
-1. 完成正式静态前端/服务集成，运行最终类型、Biome、单元测试及生产 build。已有 745 项通过的阶段性全量运行不替代最终冻结检查。
-2. 在 THUG 的隔离候选目录运行新交互脚本；查看 1600×1000、1024×768、深色模式和开始页。动作成功与截图外观分别判断。
-3. 使用同一 80 页材料完成 v0.5 性能对比，记录首可编辑、缩略图、DOM、视觉/保存和内存阶段值。
-4. 运行相关桌面、项目、科学对象与导出回归。重点检查静态服务下的命名版本、固定/重复引用、外部更新、冻结导出和访问边界；旧 Vite 路径仍可开发使用。
-5. 冻结本地源码，更新产品 release 元数据，构建自包含正式包，运行实际 EXE、迁移验证和既有路径安装。记录 About、构建标记、快捷方式及程序实际来源。
-6. 补齐本文与 RELEASE-V05 的真实源码/测试/构建/安装信息，再统一同步 private origin 与预定 `editor-v0.5.0` 标签。保留各次失败及后续通过回执的真实来源。
+当前候选已有以下实际结果：
+
+| 范围 | 结果与证据 |
+| --- | --- |
+| Linux | [第二轮代码门槛](evidence/ui-v05/code-validation-phase2.json)：61 个测试文件、774/774 通过；Biome 558 个文件；核心 TypeScript 与 build 通过 |
+| Windows 代码门槛 | [第二轮](evidence/ui-v05/code-validation-phase2.json)：61 个测试文件、773 通过及 1 项 POSIX 专属跳过；TypeScript/build、Biome 559 个文件通过 |
+| Windows Desktop | [第二轮 7/7](evidence/ui-v05/desktop-phase2-acceptance.json)；增加开始页近期项目和重新打开 |
+| Windows Editor | [第二轮 8/8](evidence/ui-v05/editor-phase2-acceptance.json)；三组尺寸/主题截图及磁盘/剪贴板检查 |
+| Windows Project | [第二轮 11/11](evidence/ui-v05/project-phase2-acceptance.json) |
+| Windows Science | [22/22](evidence/ui-v05/science-acceptance.json) |
+| 当前/固定版本背景与 PDF | [回归通过](evidence/ui-v05/background-export-acceptance.json)：2 个 occurrence、2 张背景栅格、8 张恢复后的前景对象栅格、2 个物理 PDF 页面 |
+| 真实 80 页科研副本 | [首轮 7 组](evidence/ui-v05/real-project-acceptance.json)通过、970 个读入原文件的哈希不变；80 页 DOM 核查，单页恢复保留另 79 页 |
+| 原生 Office 合成对象 | [首轮核心](evidence/ui-v05/native-office-acceptance.json)：5 页、6 个原生图表、1 个表格、1 个组合；表格/图表编辑后重开，5 个数学对象保留 |
+| 真实 80 页 Office | [首轮核心](evidence/ui-v05/real-office-acceptance.json)：80 页全部渲染；78 张 PNG 与已验收基线字节相同，2 张差异页面人工核查通过 |
+| 实际 UI 视觉 | [第二轮核查](AUDIT-V05-VISUAL.md)通过：三个编辑器窗口/主题截图和首页均逐张查看，无需继续修改 UI 源码的阻断问题 |
+
+Windows 界面运行使用开发宿主 + production bundle，不能改写为正式包已验收。第一轮摘要保持原样，第二轮另存。Editor 的 8 项包括自动化布局边界检查，另有绑定第二轮源码的实际截图人工核查。
+
+Windows 首轮的 2 项失败是固定 writer 锁端口的系统 `EACCES`。第二轮只增强生产诊断，固定端口和失败时禁止写入保持兼容；测试 fixture 选择派生端口可用的临时项目目录，并覆盖旧 writer 的跨进程排他与崩溃释放。之后全量通过，唯一跳过是 POSIX 可执行权限特有的 Git hook 测试。
+
+真实 Office 的自动回执仍保留当时的 `visualReview` 待人工字段，另有比较摘要与人工结果：78 张 PNG 完全匹配旧版已验收输出；页 3 原始输入在本轮之前已有矩形，按作者当前内容保留；页 29 只有 6,444 / 1,440,000 像素、最大 RGB 通道差 3 的边缘抗锯齿变化，人工查看原/新图及放大差异确认无布局/内容改变。本轮源输入 970 文件 hash 不变。原生 5 页生成器当时仅补 Windows fileURL 转换，此验证工具改动后来纳入第二轮；其导出核心和前端属于首轮传输包。
+
+接续顺序：
+
+1. 记录冻结运行时提交、产品版本与构建来源，构建自包含候选包。源码门槛已经通过，后续仅文档补记不改变其运行时代码来源。
+2. 通过实际 EXE 复验关键编辑/新建打开/页面历史/外部 Agent、所需导出与完整运行资源；沿用已通过的第二轮 UI 视觉结果，正式包核对应用标识与关键入口。
+3. 使用同一 80 页材料在实际候选包复测性能。保留既有两次旧版与首轮候选结果，记录最终包来源、缓存条件和软件行为指标。
+4. 验证搬迁、自包含和正式路径安装，记录 About、构建标记、快捷方式及上一版本备份。已有候选回归按实际源码来源接续，不声称所有检查都在最终包重新运行。
+5. 补齐本文与 RELEASE-V05 的真实源码/测试/构建/安装信息，再统一同步 private origin 与预定 `editor-v0.5.0` 标签。
 
 核心 build 会生成 `dist/editor`。前端源码热更新可用 `HUANDENG_DEV_SERVER=1`；生产包缺少正式前端时应由包检查暴露，不能仅凭开发模式可启动宣称候选包可交付。
 

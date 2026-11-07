@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "stage": "candidate-phase2",
+  "source": {
+    "baselineRevision": "8798d8f058dab89a80143e0c813780c8d87a70f9",
+    "precedingTransferSha256": "157272ec0f472923d2f185b19a614f6e15ad48d3d9c9931e575369cddda657ae",
+    "phase2TransferSha256": "afa888aebf145f5534fef829c3396e6f8b5364d7e4133203bc57f054da1cad6c",
+    "description": "Candidate source plus the phase-two transfer; not a final release commit."
+  },
+  "runtime": {
+    "host": "Electron development host",
+    "frontend": "compiled production bundle",
+    "packagedRelease": false
+  },
+  "rawReceipt": {
+    "localFile": ".verification/editor-v05.json",
+    "sha256": "44855a0e644d18b068a1905c82fe4c9c5ffb768b81539b18f12668059dbd2bf1"
+  },
+  "sanitization": "Only software test results are retained. Research paths, titles, source-file inventories, document content and screenshots are excluded.",
+  "passed": true,
+  "timestamp": "2026-11-07T12:42:57.919Z",
+  "platform": "win32",
+  "node": "v22.21.0",
+  "electron": "38.7.2",
+  "fixture": {
+    "kind": "isolated synthetic project"
+  },
+  "checks": [
+    {
+      "name": "choosing text or a shape does not create an object; Escape also cancels an active drag",
+      "passed": true,
+      "milliseconds": 814
+    },
+    {
+      "name": "ellipse placement uses drag coordinates and persists the selected shape",
+      "passed": true,
+      "milliseconds": 664
+    },
+    {
+      "name": "reverse dragging normalizes the rectangle and Shift creates a circle",
+      "passed": true,
+      "milliseconds": 1868
+    },
+    {
+      "name": "lines preserve reverse direction and Shift constrains the angle",
+      "passed": true,
+      "milliseconds": 828
+    },
+    {
+      "name": "text placement enters editing automatically and Backspace removes a character",
+      "passed": true,
+      "milliseconds": 737
+    },
+    {
+      "name": "object Delete, Undo and Redo change the real page file",
+      "passed": true,
+      "milliseconds": 816
+    },
+    {
+      "name": "shortCode is primary, old S aliases remain searchable and copy yields the shortCode",
+      "passed": true,
+      "milliseconds": 612
+    },
+    {
+      "name": "light and dark editor layouts remain visible at desktop and compact sizes",
+      "passed": true,
+      "milliseconds": 2576
+    }
+  ],
+  "rendererErrorCount": 0,
+  "layoutChecks": [
+    {
+      "width": 1600,
+      "height": 1000,
+      "scrollWidth": 1600,
+      "dark": false,
+      "canvas": {
+        "x": 256,
+        "y": 193,
+        "width": 1024,
+        "height": 576
+      },
+      "nativeContentSize": true,
+      "isolatedMinimumSizeOverride": true
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "scrollWidth": 1024,
+      "dark": false,
+      "canvas": {
+        "x": 256,
+        "y": 239,
+        "width": 448,
+        "height": 252
+      },
+      "nativeContentSize": true,
+      "isolatedMinimumSizeOverride": true
+    },
+    {
+      "width": 1600,
+      "height": 1000,
+      "scrollWidth": 1600,
+      "dark": true,
+      "canvas": {
+        "x": 256,
+        "y": 193,
+        "width": 1024,
+        "height": 576
+      },
+      "nativeContentSize": true,
+      "isolatedMinimumSizeOverride": true
+    }
+  ],
+  "note": "This is the phase-two rerun using the development Electron host and production bundle. The first integration receipt remains separate; final packaged acceptance is still pending."
+}

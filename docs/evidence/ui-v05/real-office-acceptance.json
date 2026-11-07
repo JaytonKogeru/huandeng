@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "stage": "candidate-integration-office",
+  "source": {
+    "baselineRevision": "8798d8f058dab89a80143e0c813780c8d87a70f9",
+    "candidateTransferSha256": "157272ec0f472923d2f185b19a614f6e15ad48d3d9c9931e575369cddda657ae",
+    "description": "The first candidate transfer supplied the export core and compiled frontend. These are not phase-two or final packaged reruns."
+  },
+  "sanitization": "Research paths, titles, source file inventories, document content and screenshots are excluded. Only counts, software verification results and receipt hashes are retained.",
+  "rawReceipts": {
+    "render": {
+      "localFile": ".verification/office-real-v05/office-render-acceptance.json",
+      "sha256": "f7ca4058723cc030f4b0c77cda5c439f29ab8d2767743d076930bb24ca59e42c"
+    },
+    "comparison": {
+      "localFile": ".verification/office-real-v05/comparison-v04.json",
+      "sha256": "930929f04cce2e2cdf1c5d5f1faf227e5668e0b9631e80f553f7181fd4cce2b0"
+    },
+    "pixelComparison": {
+      "localFile": ".verification/office-real-v05/slide29-pixel-comparison.json",
+      "sha256": "d34f8bfaaa709652bc6c384da026f7a55bffca02abf64d6af0c5e5667ca50162"
+    }
+  },
+  "passed": true,
+  "verificationRuntime": {
+    "application": "Microsoft PowerPoint",
+    "version": "16.0",
+    "openAndRepair": false,
+    "readOnly": true
+  },
+  "artifact": {
+    "kind": "export from an isolated copy of the real research project",
+    "slideCount": 80,
+    "renderedSlideCount": 80,
+    "topLevelObjects": 1452,
+    "nativeTables": 2,
+    "nativeCharts": 0,
+    "nativeGroups": 0
+  },
+  "inputPptxUnchanged": true,
+  "closedOwnDocument": true,
+  "automatedReceiptVisualReview": "Pending separate inspection of the exported PNGs.",
+  "comparison": {
+    "compared": 80,
+    "identicalPngFiles": 78,
+    "differentSlides": [3, 29],
+    "slide29": {
+      "pixelsChanged": 6444,
+      "totalPixels": 1440000,
+      "maximumChannelDifference": 3
+    }
+  },
+  "separateManualReview": {
+    "status": "passed",
+    "source": "Coordinating agent inspected the two differing slides and the enlarged difference image; input-history classification was checked against old and current original document hashes.",
+    "scope": "The two differing slides were inspected directly. The other 78 PNG files exactly matched the already accepted v0.4 render output.",
+    "findings": [
+      {
+        "slide": 3,
+        "classification": "Input changed before this task",
+        "result": "A rectangle already present in the current original input was exported as authored. The original research input was not changed by this verification."
+      },
+      {
+        "slide": 29,
+        "classification": "Minor edge antialiasing",
+        "result": "6,444 of 1,440,000 pixels differ, with a maximum RGB channel difference of 3; inspection found no layout or content change."
+      }
+    ]
+  },
+  "projectInputProtection": {
+    "fileCount": 970,
+    "unchanged": true,
+    "evidence": "real-project-acceptance.json",
+    "rawReceiptSha256": "a2a8e93eb0b8a30c3c0768bca27f34ce9615536a086cc5bcb3374a4c3b52c1f2"
+  },
+  "packagedRelease": false,
+  "note": "The raw automatic Office receipt remains unchanged and still says its separate visual review was pending. The manual comparison result is recorded separately here, rather than rewriting that historical field."
+}

@@ -833,6 +833,18 @@ export function HuandengEditor() {
       );
     });
 
+  const recoveryState = state.recovering
+    ? 'recovering'
+    : state.recoveryRequired
+      ? 'required'
+      : undefined;
+  const recoverPending = () => {
+    setUiError(null);
+    void client.recoverPending().catch(() => {});
+  };
+  const copyPendingWork = () =>
+    void run(() => navigator.clipboard.writeText(JSON.stringify(client.pendingWork(), null, 2)));
+
   if (!snapshot)
     return (
       <div className="grid min-h-dvh place-items-center bg-canvas p-8">
@@ -868,6 +880,17 @@ export function HuandengEditor() {
                 <p className="mt-4 text-xs text-muted-foreground">{state.error.message}</p>
               )}
               <div className="mt-6 flex gap-2">
+                {recoveryState && (
+                  <Button
+                    aria-label="恢复未完成保存"
+                    data-hd-recovery={recoveryState}
+                    disabled={state.saving}
+                    onClick={recoverPending}
+                  >
+                    <RefreshCw className={state.recovering ? 'animate-spin' : undefined} />
+                    {state.recovering ? '正在恢复保存…' : '恢复未完成保存'}
+                  </Button>
+                )}
                 <Button onClick={() => void client.refresh()}>
                   <RefreshCw />
                   重新连接
@@ -897,19 +920,23 @@ export function HuandengEditor() {
       </div>
     );
 
-  const status = auxiliaryDirty
-    ? '项目 / Story / 图表有未保存的草稿'
-    : readonly
-      ? '只读模式'
-      : state.saving
-        ? '正在保存…'
-        : drafts.some((draft) => draft.conflict)
-          ? '草稿冲突 · 已保留'
-          : state.error
-            ? '保存需检查'
-            : drafts.length
-              ? `待保存 · ${drafts.length} 页`
-              : '已保存';
+  const status = state.recovering
+    ? '正在恢复保存…'
+    : state.recoveryRequired
+      ? '保存待恢复'
+      : auxiliaryDirty
+        ? '项目 / Story / 图表有未保存的草稿'
+        : readonly
+          ? '只读模式'
+          : state.saving
+            ? '正在保存…'
+            : drafts.some((draft) => draft.conflict)
+              ? '草稿冲突 · 已保留'
+              : state.error
+                ? '保存需检查'
+                : drafts.length
+                  ? `待保存 · ${drafts.length} 页`
+                  : '已保存';
   return (
     <div
       className="hd-editor flex h-dvh min-w-[760px] flex-col overflow-hidden bg-canvas text-foreground"
@@ -976,6 +1003,7 @@ export function HuandengEditor() {
             className="flex items-center gap-1.5 text-[10px] text-muted-foreground"
             aria-live="polite"
             data-hd-save-status
+            data-hd-recovery-state={recoveryState}
           >
             {state.saving ? (
               <Loader2 className="size-2.5 animate-spin" />
@@ -1095,17 +1123,63 @@ export function HuandengEditor() {
           )}
         </div>
       )}
-      {(uiError || state.error || presentationError) && (
+      {(recoveryState || uiError || state.error || presentationError) && (
         <div
-          className="flex shrink-0 items-start gap-2 border-b border-amber-300/50 bg-amber-50 px-4 py-2 text-xs text-amber-900"
+          className="flex shrink-0 flex-wrap items-start gap-2 border-b border-amber-300/50 bg-amber-50 px-4 py-2 text-xs text-amber-900 dark:bg-amber-950/35 dark:text-amber-100"
           role="alert"
+          data-hd-recovery={recoveryState}
         >
           <AlertCircle className="mt-0.5 size-3.5 shrink-0" />
-          <span className="flex-1">{uiError || state.error?.message || presentationError}</span>
-          {state.canRetry && (
+          <div className="min-w-48 flex-1">
+            {recoveryState ? (
+              <>
+                <p>
+                  {state.recovering
+                    ? '正在核对并恢复这次保存，本地草稿会保留。'
+                    : state.error?.code === 'RECOVERY_REQUIRED'
+                      ? '文件或保存记录与预期不一致，恢复已停止。请先复制待保存页面，再检查文件冲突与恢复详情。'
+                      : '有一次保存尚未完成，本地草稿已保留。若文件仍被其他程序占用，请先关闭占用，再恢复保存。完成后即可关闭或切换项目。'}
+                </p>
+                {(uiError || state.error) && (
+                  <details className="mt-1 break-words">
+                    <summary className="cursor-pointer">查看恢复详情</summary>
+                    <p className="mt-1 whitespace-pre-wrap">{uiError || state.error?.message}</p>
+                  </details>
+                )}
+              </>
+            ) : (
+              uiError || state.error?.message || presentationError
+            )}
+          </div>
+          {recoveryState && (
+            <>
+              <Button
+                size="xs"
+                variant="outline"
+                aria-label="恢复未完成保存"
+                disabled={state.saving}
+                onClick={recoverPending}
+              >
+                <RefreshCw className={state.recovering ? 'animate-spin' : undefined} />
+                {state.recovering ? '正在恢复保存…' : '恢复未完成保存'}
+              </Button>
+              <Button
+                size="xs"
+                variant="ghost"
+                disabled={!drafts.length && !state.canRetry}
+                title="复制本地页面草稿与原始保存请求，保留未确认的内容"
+                onClick={copyPendingWork}
+              >
+                <Copy />
+                复制待保存页面
+              </Button>
+            </>
+          )}
+          {state.canRetry && !recoveryState && (
             <Button
               size="xs"
               variant="outline"
+              disabled={state.saving}
               onClick={() => void run(() => client.retryPending())}
             >
               重试同一次保存
@@ -1366,7 +1440,7 @@ export function HuandengEditor() {
                 <Button
                   size="xs"
                   variant="outline"
-                  disabled={state.saving || state.canRetry}
+                  disabled={state.saving || state.canRetry || state.recoveryRequired}
                   onClick={() => {
                     if (selectedPageId) client.discardDraft(selectedPageId);
                     setUiError(null);

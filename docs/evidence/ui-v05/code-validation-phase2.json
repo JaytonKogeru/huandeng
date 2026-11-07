@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "stage": "code-gates-before-packaging",
+  "source": {
+    "baselineRevision": "8798d8f058dab89a80143e0c813780c8d87a70f9",
+    "precedingTransferSha256": "157272ec0f472923d2f185b19a614f6e15ad48d3d9c9931e575369cddda657ae",
+    "phase2TransferSha256": "afa888aebf145f5534fef829c3396e6f8b5364d7e4133203bc57f054da1cad6c",
+    "description": "Candidate source plus the phase-two transfer; not a final release commit."
+  },
+  "sanitization": "Only software test results are retained. Research paths, titles, source-file inventories, document content and screenshots are excluded.",
+  "linux": {
+    "passed": true,
+    "unit": {
+      "files": 61,
+      "total": 774,
+      "passed": 774,
+      "failed": 0,
+      "skipped": 0
+    },
+    "biome": {
+      "passed": true,
+      "files": 558
+    },
+    "typecheck": {
+      "passed": true
+    },
+    "coreAndEditorBuild": {
+      "passed": true
+    },
+    "evidenceKind": "Execution results supplied by the coordinating agent; no raw Linux command log is embedded in this summary."
+  },
+  "windows": {
+    "passed": true,
+    "rawReceipt": {
+      "localFile": ".verification/windows-unit-v05.json",
+      "sha256": "89e68b3312169be308c8812e5bac2586295fffe9bfece078a9d6c3ba5378926b"
+    },
+    "startedAt": "2026-11-07T12:40:49.283Z",
+    "unit": {
+      "files": 61,
+      "total": 774,
+      "passed": 773,
+      "failed": 0,
+      "skipped": 1,
+      "skippedTests": [
+        {
+          "name": "scoped Git checkpoints does not treat a non-executable hook file as an enabled hook",
+          "status": "skipped"
+        }
+      ]
+    },
+    "biome": {
+      "passed": true,
+      "files": 559
+    },
+    "typecheck": {
+      "passed": true
+    },
+    "coreAndEditorBuild": {
+      "passed": true
+    },
+    "additionalCommandEvidence": "Windows typecheck, build and Biome results supplied by the coordinating agent."
+  },
+  "previousWindowsRun": {
+    "passed": false,
+    "unit": {
+      "passed": 768,
+      "failed": 2,
+      "skipped": 1
+    },
+    "diagnosis": "The OS returned EACCES while binding the existing deterministic TCP writer-lock port.",
+    "resolution": "Production still uses the compatible fixed lock and fails closed, now preserving the OS error in diagnostics. Test fixtures select a fresh directory whose derived port is available; cross-process old-writer exclusion and reopen-after-crash are covered.",
+    "rawReceiptStatus": "Earlier failing counts were supplied by the coordinating agent and remain recorded here; the passing raw receipt is linked above."
+  },
+  "packaging": {
+    "status": "pending",
+    "note": "Passing code gates do not establish a self-contained executable or successful installation."
+  }
+}

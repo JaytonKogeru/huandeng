@@ -792,31 +792,91 @@ export class PptdStore {
         await this.captureExternalVersions(next);
         this.replaceDocuments(next, 'external');
       } catch (error) {
-        this.sequence++;
-        const diagnostic: Diagnostic = {
-          code: error instanceof PptdError ? error.code : 'EXTERNAL_READ_FAILED',
-          message: String(error),
-          severity: 'error',
-        };
-        this.snapshot = {
-          ...this.snapshot,
-          sequence: this.sequence,
-          diagnostics: [diagnostic],
-          writable: ['PENDING_RECOVERY', 'RECOVERY_REQUIRED'].includes(diagnostic.code)
-            ? false
-            : this.snapshot.writable,
-        };
-        this.emit({
-          type: 'diagnostic',
-          epoch: this.epoch,
-          sequence: this.sequence,
-          changedPages: {},
-          manifestChanged: false,
-          metadataChanged: false,
-          diagnostics: [diagnostic],
-        });
+        this.publishDiagnostic(error);
       }
       return this.getSnapshot();
+    });
+  }
+
+  private publishDiagnostic(error: unknown): void {
+    const diagnostic: Diagnostic = {
+      code: error instanceof PptdError ? error.code : 'EXTERNAL_READ_FAILED',
+      message: String(error),
+      severity: 'error',
+    };
+    const writable = ['PENDING_RECOVERY', 'RECOVERY_REQUIRED'].includes(diagnostic.code)
+      ? false
+      : this.snapshot.writable;
+    if (
+      writable === this.snapshot.writable &&
+      isDeepStrictEqual(this.snapshot.diagnostics, [diagnostic])
+    )
+      return;
+    this.sequence++;
+    this.snapshot = {
+      ...this.snapshot,
+      sequence: this.sequence,
+      diagnostics: [diagnostic],
+      writable,
+    };
+    this.emit({
+      type: 'diagnostic',
+      epoch: this.epoch,
+      sequence: this.sequence,
+      changedPages: {},
+      manifestChanged: false,
+      metadataChanged: false,
+      diagnostics: [diagnostic],
+    });
+  }
+
+  recoverPending(): Promise<DeckSnapshot> {
+    return this.enqueue(async () => {
+      if (this.readOnly || this.closed)
+        throw new PptdError('READ_ONLY', 'This project is not open for writing.');
+      try {
+        const recovered = await this.persistence.recover();
+        const documents = await PptdStore.loadDocuments(
+          this.root,
+          this.entry,
+          this.assetCache,
+          this.documents,
+          this.onTiming,
+        );
+        if (documents.diagnostics.some((item) => item.severity === 'error'))
+          throw new PptdError(
+            'INVALID_DOCUMENT',
+            documents.diagnostics.map((item) => item.message).join('; '),
+          );
+        await this.captureExternalVersions(documents);
+        const previousSequence = this.sequence;
+        const recoveredStatus =
+          !this.snapshot.writable ||
+          !isDeepStrictEqual(this.snapshot.diagnostics, documents.diagnostics);
+        this.replaceDocuments(
+          documents,
+          recovered ? 'committed' : 'external',
+          recovered?.operationId,
+          recovered?.request.originClientId,
+        );
+        if (recoveredStatus && this.sequence === previousSequence) {
+          this.sequence++;
+          this.snapshot = { ...this.snapshot, sequence: this.sequence };
+          this.emit({
+            type: 'diagnostic',
+            epoch: this.epoch,
+            sequence: this.sequence,
+            changedPages: {},
+            manifestChanged: false,
+            metadataChanged: false,
+            diagnostics: documents.diagnostics,
+          });
+        }
+        return this.getSnapshot();
+      } catch (error) {
+        this.publishDiagnostic(error);
+        throw error;
+      }
     });
   }
 
@@ -907,17 +967,34 @@ export class PptdStore {
     requestId: string = randomUUID(),
     actor = 'huandeng-editor',
   ): Promise<TransactionResult> {
-    const snapshot = this.getSnapshot();
-    return this.commit({
-      requestId,
-      actor,
-      deckId: snapshot.deckId,
-      expected: {
-        pages: revisions(this.documents).pages,
-        manifest: snapshot.manifestRevision,
-        metadata: snapshot.metadataRevision,
-      },
-      operations: [{ op: 'history.revert', operationId }],
+    return this.enqueue(async () => {
+      if (this.readOnly || this.closed)
+        throw new PptdError('READ_ONLY', 'This project is not open for writing.');
+      const completed = await this.persistence.completedRequest(requestId);
+      if (completed) {
+        const request = completed.request;
+        if (
+          request.actor !== actor ||
+          request.deckId !== this.documents.metadata.deckId ||
+          request.operations.length !== 1 ||
+          request.operations[0].op !== 'history.revert' ||
+          request.operations[0].operationId !== operationId
+        )
+          throw new PptdError('REQUEST_ID_REUSE', 'This request ID belongs to another operation.');
+        return structuredClone(completed.result);
+      }
+      const snapshot = this.getSnapshot();
+      return this.commitNow({
+        requestId,
+        actor,
+        deckId: snapshot.deckId,
+        expected: {
+          pages: revisions(this.documents).pages,
+          manifest: snapshot.manifestRevision,
+          metadata: snapshot.metadataRevision,
+        },
+        operations: [{ op: 'history.revert', operationId }],
+      });
     });
   }
 

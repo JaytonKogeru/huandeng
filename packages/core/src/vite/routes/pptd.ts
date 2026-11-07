@@ -270,6 +270,15 @@ export async function registerPptdRoutes(server: PptdRouteHost, _ctx?: ApiContex
       }
       if (route === '/transactions')
         return json(res, 200, await store.commit(body as unknown as TransactionRequest));
+      if (route === '/recover') {
+        const snapshot = await store.recoverPending();
+        return json(res, 200, {
+          ...snapshot,
+          entry: path.join(root, snapshot.entry),
+          sessionToken: token,
+          desktopProtocol: 1,
+        });
+      }
       if (route === '/assets/import') {
         if (!store.getSnapshot().writable)
           throw new PptdError('READ_ONLY', 'This project is read-only.');

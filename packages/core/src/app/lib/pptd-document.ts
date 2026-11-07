@@ -26,6 +26,8 @@ export type PptdClientState = {
   redoStack: string[];
   lastSaved: number | null;
   canRetry: boolean;
+  recoveryRequired: boolean;
+  recovering: boolean;
 };
 
 type PendingWrite = {
@@ -41,6 +43,17 @@ function asClientError(error: unknown): PptdClientError {
   return error instanceof PptdClientError
     ? error
     : new PptdClientError('CLIENT_ERROR', error instanceof Error ? error.message : String(error));
+}
+
+function requiresRecovery(error: { code: string }): boolean {
+  return ['PENDING_RECOVERY', 'RECOVERY_REQUIRED'].includes(error.code);
+}
+
+function recoveryNeeded(): PptdClientError {
+  return new PptdClientError(
+    'PENDING_RECOVERY',
+    '有一次保存尚未完成。请先使用“恢复未完成保存”，本地草稿会保留。',
+  );
 }
 
 function equal(a: unknown, b: unknown): boolean {
@@ -222,6 +235,8 @@ export class PptdDocumentClient {
     redoStack: [],
     lastSaved: null,
     canRetry: false,
+    recoveryRequired: false,
+    recovering: false,
   };
 
   constructor(readonly backend: PptdTransport) {}
@@ -306,7 +321,13 @@ export class PptdDocumentClient {
         this.ensureEvents();
       } catch (error) {
         if (ticket === this.refreshTicket) {
-          this.publish({ error: asClientError(error), loading: false, connected: false });
+          const failure = asClientError(error);
+          this.publish({
+            error: failure,
+            loading: false,
+            connected: false,
+            ...(requiresRecovery(failure) ? { recoveryRequired: true } : {}),
+          });
         }
       }
     }
@@ -349,7 +370,24 @@ export class PptdDocumentClient {
       ['INVALID_DOCUMENT', 'SERVICE_UNAVAILABLE', 'INVALID_SESSION', 'NETWORK_ERROR'].includes(
         this.state.error?.code ?? '',
       );
-    this.publish({ ...patch, snapshot, drafts, ...(staleError ? { error: null } : {}) });
+    const recovery = snapshot.diagnostics.find(requiresRecovery);
+    const externallyRecovered =
+      !this.pending && this.state.recoveryRequired && snapshot.writable && !recovery;
+    this.publish({
+      ...patch,
+      snapshot,
+      drafts,
+      ...(staleError ? { error: null } : {}),
+      ...(externallyRecovered ? { recoveryRequired: false, error: null } : {}),
+      ...(recovery
+        ? {
+            recoveryRequired: true,
+            error: new PptdClientError(recovery.code, recovery.message),
+          }
+        : {}),
+    });
+    if (externallyRecovered)
+      for (const pageId of Object.keys(this.state.drafts)) this.schedule(pageId);
   }
 
   page(pageId: string): PageSnapshot | undefined {
@@ -369,14 +407,14 @@ export class PptdDocumentClient {
   }
 
   private ensureDraft(pageId: string): PageDraft | null {
-    if (!this.state.snapshot?.writable) return null;
     const existing = this.state.drafts[pageId];
     if (existing) return existing;
-    const base =
-      this.pending?.previews?.get(pageId)?.page ??
-      this.state.snapshot.pages.find((page) => page.pageId === pageId);
+    const snapshot = this.state.snapshot;
+    const preview = this.pending?.previews?.get(pageId)?.page;
+    if (!snapshot || (!snapshot.writable && !preview)) return null;
+    const base = preview ?? snapshot.pages.find((page) => page.pageId === pageId);
     if (!base) return null;
-    return { base, metadataRevision: this.state.snapshot.metadataRevision, fields: {} };
+    return { base, metadataRevision: snapshot.metadataRevision, fields: {} };
   }
 
   beginInteraction(pageId: string) {
@@ -466,7 +504,8 @@ export class PptdDocumentClient {
 
   private schedule(pageId: string) {
     this.clearTimer(pageId);
-    if (this.composing.has(pageId) || this.interactions.has(pageId)) return;
+    if (this.state.recoveryRequired || this.composing.has(pageId) || this.interactions.has(pageId))
+      return;
     this.timers.set(
       pageId,
       setTimeout(() => void this.flushPage(pageId).catch(() => {}), 700),
@@ -474,7 +513,12 @@ export class PptdDocumentClient {
   }
 
   discardDraft(pageId: string) {
-    if (this.state.saving || this.pending?.pageId === pageId || this.pending?.previews?.has(pageId))
+    if (
+      this.state.saving ||
+      this.state.recoveryRequired ||
+      this.pending?.pageId === pageId ||
+      this.pending?.previews?.has(pageId)
+    )
       return;
     this.clearTimer(pageId);
     const drafts = { ...this.state.drafts };
@@ -484,6 +528,7 @@ export class PptdDocumentClient {
 
   async flushPage(pageId: string): Promise<TransactionResult | null> {
     this.clearTimer(pageId);
+    if (this.state.recoveryRequired) throw recoveryNeeded();
     if (this.composing.has(pageId) || this.interactions.has(pageId)) return null;
     if (this.state.saving) {
       this.schedule(pageId);
@@ -527,6 +572,7 @@ export class PptdDocumentClient {
   }
 
   async flushAll() {
+    if (this.state.recoveryRequired) throw recoveryNeeded();
     if (this.state.saving) throw new PptdClientError('SAVE_IN_PROGRESS', '正在保存，请稍候。');
     if (this.pending && !this.pending.pageId)
       throw new PptdClientError('PENDING_REQUEST', '请先重试尚未确认的保存。');
@@ -557,16 +603,68 @@ export class PptdDocumentClient {
   }
 
   retryPending() {
+    if (this.state.recoveryRequired) return Promise.reject(recoveryNeeded());
     if (!this.pending || this.state.saving) return Promise.resolve(null);
     return this.submitPending();
   }
 
-  private async submitPending(): Promise<TransactionResult> {
+  pendingWork() {
+    return structuredClone({
+      schemaVersion: 1,
+      kind: 'huandeng-pending-work',
+      deckId: this.state.snapshot?.deckId,
+      entry: this.state.snapshot?.entry,
+      pendingRequest: this.pending?.request,
+      pendingHistory: this.pending?.history,
+      knownReceipt: this.pending?.result,
+      drafts: this.state.drafts,
+    });
+  }
+
+  async recoverPending(): Promise<TransactionResult | null> {
+    if (this.state.saving) return null;
+    if (this.pending) return this.submitPending(true);
+    this.refreshTicket++;
+    this.publish({ saving: true, recovering: true, error: null });
+    try {
+      const snapshot = await this.backend.recoverPending();
+      this.acceptSnapshot(snapshot, {
+        saving: false,
+        recovering: false,
+        recoveryRequired: false,
+        error: null,
+        loading: false,
+      });
+      for (const pageId of Object.keys(this.state.drafts)) this.schedule(pageId);
+      return null;
+    } catch (error) {
+      const failure = asClientError(error);
+      this.publish({
+        saving: false,
+        recovering: false,
+        recoveryRequired: true,
+        error: failure,
+      });
+      throw failure;
+    } finally {
+      if (this.refreshNeeded) {
+        this.refreshNeeded = false;
+        void this.refresh();
+      }
+    }
+  }
+
+  private async submitPending(recover = false): Promise<TransactionResult> {
     const pending = this.pending;
     if (!pending) throw new PptdClientError('NO_REQUEST', '没有待保存的修改。');
     this.refreshTicket++;
-    this.publish({ saving: true, error: null, canRetry: false });
+    this.publish({ saving: true, recovering: recover, error: null, canRetry: false });
+    let recoveryCompleted = !recover;
     try {
+      if (recover) {
+        await this.backend.recoverPending();
+        recoveryCompleted = true;
+      }
       const result =
         pending.result ??
         (pending.history
@@ -629,6 +727,8 @@ export class PptdDocumentClient {
       this.acceptSnapshot(snapshot, {
         drafts,
         saving: false,
+        recovering: false,
+        recoveryRequired: false,
         canRetry: false,
         error: null,
         undoStack: result.noOp
@@ -650,6 +750,7 @@ export class PptdDocumentClient {
     } catch (error) {
       const failure = asClientError(error);
       const definitive =
+        recoveryCompleted &&
         !pending.result &&
         failure.status >= 400 &&
         failure.status < 500 &&
@@ -674,7 +775,14 @@ export class PptdDocumentClient {
           drafts[pending.pageId] = { ...drafts[pending.pageId], conflict: failure.message };
         }
       }
-      this.publish({ saving: false, drafts, error: failure, canRetry: !definitive });
+      this.publish({
+        saving: false,
+        recovering: false,
+        recoveryRequired: !recoveryCompleted || requiresRecovery(failure),
+        drafts,
+        error: failure,
+        canRetry: !definitive,
+      });
       if (definitive) await this.refresh();
       throw failure;
     } finally {

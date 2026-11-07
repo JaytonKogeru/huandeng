@@ -37,6 +37,7 @@ const pathKey = (value) =>
   process.platform === 'win32' ? path.resolve(value).toLowerCase() : path.resolve(value);
 const processLog = [];
 const rendererErrors = [];
+const transactionFailures = [];
 let application;
 let page;
 let originalBefore;
@@ -57,12 +58,17 @@ const report = {
   deleteSamples: [],
   memorySamples: [],
   rendererErrors,
+  transactionFailures,
 };
 
 async function eventually(task, timeout = 60000, interval = 25) {
   const deadline = performance.now() + timeout;
   let lastError;
   while (performance.now() < deadline) {
+    if (transactionFailures.length)
+      throw new Error(
+        `The document transaction failed: ${JSON.stringify(transactionFailures.at(-1))}`,
+      );
     try {
       const value = await task();
       if (value) return value;
@@ -232,6 +238,13 @@ try {
   page = await application.firstWindow({ timeout: 180000 });
   report.firstWindowMs = performance.now() - launchedAt;
   page.on('pageerror', (error) => rendererErrors.push(error.message));
+  page.on('response', async (response) => {
+    if (!response.url().endsWith('/__pptd/transactions') || response.ok()) return;
+    transactionFailures.push({
+      status: response.status(),
+      body: await response.json().catch(() => null),
+    });
+  });
   page.setDefaultTimeout(60000);
   await application.evaluate(({ BrowserWindow }) =>
     BrowserWindow.getAllWindows()[0]?.setContentSize(1600, 1000),
@@ -394,9 +407,36 @@ try {
     ?.screenshot({ path: screenshot, timeout: 10000, animations: 'disabled' })
     .catch(() => {});
 } finally {
-  await application?.close().catch((error) => {
-    report.closeError = String(error);
-  });
+  await fs.writeFile(output, `${JSON.stringify(report, null, 2)}\n`);
+  await fs.writeFile(path.join(evidence, `${label}.log`), processLog.join(''));
+  if (application) {
+    let closeTimer;
+    const closed = await Promise.race([
+      application.close().then(
+        () => true,
+        (error) => {
+          report.closeError = String(error);
+          return false;
+        },
+      ),
+      new Promise((resolve) => {
+        closeTimer = setTimeout(() => resolve(false), 5000);
+      }),
+    ]);
+    clearTimeout(closeTimer);
+    if (!closed) {
+      report.passed = false;
+      report.closeTimedOut = true;
+      report.isolatedTestProcessTerminated = application.process().kill('SIGKILL');
+      if (servicePid) {
+        try {
+          report.isolatedServiceTerminated = process.kill(servicePid, 'SIGTERM');
+        } catch (error) {
+          if (error.code !== 'ESRCH') report.serviceCleanupError = String(error);
+        }
+      }
+    }
+  }
   if (originalBefore) {
     try {
       const after = await sourceHashes();
@@ -414,11 +454,16 @@ try {
   } else report.originalUnchanged = null;
   await fs.writeFile(output, `${JSON.stringify(report, null, 2)}\n`);
   await fs.writeFile(path.join(evidence, `${label}.log`), processLog.join(''));
-  await fs
-    .rm(sandbox, { recursive: true, force: true, maxRetries: 10, retryDelay: 200 })
-    .catch((error) => {
-      process.stderr.write(`Temporary copy retained at ${sandbox}: ${String(error)}\n`);
-    });
+  if (report.passed)
+    await fs
+      .rm(sandbox, { recursive: true, force: true, maxRetries: 10, retryDelay: 200 })
+      .catch((error) => {
+        process.stderr.write(`Temporary copy retained at ${sandbox}: ${String(error)}\n`);
+      });
+  else {
+    report.retainedSandbox = sandbox;
+    await fs.writeFile(output, `${JSON.stringify(report, null, 2)}\n`);
+  }
   process.stdout.write(
     `${JSON.stringify({ ...report, originalHashes: undefined, output }, null, 2)}\n`,
   );

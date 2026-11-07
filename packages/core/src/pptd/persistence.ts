@@ -189,7 +189,11 @@ async function syncDirectory(directory: string): Promise<void> {
   }
 }
 
-export async function atomicWrite(file: string, source: string): Promise<void> {
+export async function atomicWrite(
+  file: string,
+  source: string,
+  options: { expected?: string | null } = {},
+): Promise<void> {
   await fs.mkdir(path.dirname(file), { recursive: true });
   const temp = path.join(
     path.dirname(file),
@@ -209,25 +213,60 @@ export async function atomicWrite(file: string, source: string): Promise<void> {
     } finally {
       await handle.close();
     }
+    const renameStarted = performance.now();
     for (let attempt = 0; ; attempt++) {
       try {
+        if (options.expected !== undefined) {
+          const current = await readOptional(file);
+          if (current === source) break;
+          if (current !== options.expected)
+            throw new PptdError(
+              'RECOVERY_REQUIRED',
+              `File changed while waiting to complete the save: ${file}`,
+              { path: file },
+            );
+        }
         await fs.rename(temp, file);
         break;
       } catch (error) {
         const code = (error as NodeJS.ErrnoException).code;
+        const remaining = 2000 - (performance.now() - renameStarted);
         if (
           process.platform !== 'win32' ||
           !['EACCES', 'EPERM', 'EBUSY'].includes(code ?? '') ||
-          attempt >= 3
-        )
+          remaining <= 0
+        ) {
+          if (error instanceof Error)
+            Object.assign(error, {
+              renameAttempts: attempt + 1,
+              renameWaitMs: performance.now() - renameStarted,
+            });
           throw error;
-        await new Promise((resolve) => setTimeout(resolve, 25 * (attempt + 1)));
+        }
+        await new Promise((resolve) =>
+          setTimeout(resolve, Math.min(25 * 2 ** attempt, 250, remaining)),
+        );
       }
     }
     await syncDirectory(path.dirname(file));
   } finally {
     await fs.rm(temp, { force: true }).catch(() => undefined);
   }
+}
+
+function failureDetails(error: unknown): Record<string, unknown> {
+  const issue = (error && typeof error === 'object' ? error : {}) as NodeJS.ErrnoException & {
+    renameAttempts?: number;
+    renameWaitMs?: number;
+  };
+  return {
+    cause: String(error),
+    ...(issue.code ? { causeCode: issue.code } : {}),
+    ...(issue.syscall ? { syscall: issue.syscall } : {}),
+    ...(issue.path ? { path: issue.path } : {}),
+    ...(issue.renameAttempts ? { renameAttempts: issue.renameAttempts } : {}),
+    ...(issue.renameWaitMs !== undefined ? { renameWaitMs: issue.renameWaitMs } : {}),
+  };
 }
 
 export async function acquireWriterLock(
@@ -330,6 +369,29 @@ export class Persistence {
     return receipt.result;
   }
 
+  async completedRequest(requestId: string): Promise<HistoryRecord | null> {
+    const source = await readOptional(this.receiptPath(requestId));
+    if (source === null) return null;
+    let receipt: Receipt;
+    try {
+      receipt = JSON.parse(source) as Receipt;
+    } catch {
+      throw new PptdError('RECOVERY_REQUIRED', 'The persisted request receipt is corrupt.');
+    }
+    if (!isRecord(receipt) || typeof receipt.requestHash !== 'string')
+      throw new PptdError('RECOVERY_REQUIRED', 'The persisted request receipt is invalid.');
+    const result = await this.receipt(requestId, receipt.requestHash);
+    if (!result) throw new PptdError('RECOVERY_REQUIRED', 'The completed receipt disappeared.');
+    const record = await this.historyRecord(result.operationId);
+    if (
+      record.requestId !== requestId ||
+      record.requestHash !== receipt.requestHash ||
+      hashPayload(record.result) !== hashPayload(result)
+    )
+      throw new PptdError('RECOVERY_REQUIRED', 'The receipt does not match its saved operation.');
+    return record;
+  }
+
   async historyRecord(operationId: string): Promise<HistoryRecord> {
     const source = await readOptional(this.historyPath(operationId));
     if (source === null)
@@ -396,7 +458,7 @@ export class Persistence {
       if (change.after === null) {
         await fs.rm(file, { force: true });
         await syncDirectory(path.dirname(file));
-      } else await atomicWrite(file, change.after);
+      } else await atomicWrite(file, change.after, { expected: change.before });
       if (!recovering) await this.afterWrite?.(i);
       if ((await readOptional(file)) !== change.after)
         throw new PptdError('PENDING_RECOVERY', `Could not verify saved file ${change.path}.`);
@@ -412,9 +474,9 @@ export class Persistence {
     await this.finish(journal);
   }
 
-  async recover(): Promise<void> {
+  async recover(): Promise<HistoryRecord | null> {
     const source = await readOptional(this.journalPath);
-    if (source === null) return;
+    if (source === null) return null;
     let journal: Journal;
     try {
       journal = JSON.parse(source) as Journal;
@@ -427,25 +489,37 @@ export class Persistence {
       !Array.isArray(journal.record?.files)
     )
       throw new PptdError('RECOVERY_REQUIRED', 'The recovery journal does not match this project.');
-    const existingReceipt = await this.receipt(
-      journal.record.requestId,
-      journal.record.requestHash,
-    );
-    if (existingReceipt) {
-      await fs.rm(this.journalPath, { force: true });
-      return;
-    }
     journal.record = validateRecord(journal.record);
-    for (const change of journal.record.files) {
-      const current = await readOptional(await resolveProjectPath(this.root, change.path));
-      if (current !== change.before && current !== change.after)
-        throw new PptdError(
-          'RECOVERY_REQUIRED',
-          `Recovery would overwrite another writer's change: ${change.path}`,
-          { path: change.path },
-        );
+    try {
+      const existingReceipt = await this.receipt(
+        journal.record.requestId,
+        journal.record.requestHash,
+      );
+      if (existingReceipt) {
+        if (hashPayload(existingReceipt) !== hashPayload(journal.record.result))
+          throw new PptdError('RECOVERY_REQUIRED', 'The receipt conflicts with the pending save.');
+        await fs.rm(this.journalPath, { force: true });
+        return journal.record;
+      }
+      for (const change of journal.record.files) {
+        const current = await readOptional(await resolveProjectPath(this.root, change.path));
+        if (current !== change.before && current !== change.after)
+          throw new PptdError(
+            'RECOVERY_REQUIRED',
+            `Recovery would overwrite another writer's change: ${change.path}`,
+            { path: change.path },
+          );
+      }
+      await this.install(journal, true);
+      return journal.record;
+    } catch (error) {
+      if (error instanceof PptdError) throw error;
+      throw new PptdError(
+        'PENDING_RECOVERY',
+        'The pending save could not finish. Release any file lock, then recover the pending save.',
+        { operationId: journal.record.operationId, ...failureDetails(error) },
+      );
     }
-    await this.install(journal, true);
   }
 
   async commit(record: HistoryRecord): Promise<void> {
@@ -472,8 +546,8 @@ export class Persistence {
         accepted === null ? 'SAVE_FAILED' : 'PENDING_RECOVERY',
         accepted === null
           ? 'The transaction could not be journaled; document files were not written.'
-          : 'The journal exists but its durability could not be confirmed. Reopen to recover.',
-        { cause: String(error) },
+          : 'The journal exists but its durability could not be confirmed. Recover the pending save.',
+        failureDetails(error),
       );
     }
     try {
@@ -482,8 +556,8 @@ export class Persistence {
       if (error instanceof PptdError && error.code === 'RECOVERY_REQUIRED') throw error;
       throw new PptdError(
         'PENDING_RECOVERY',
-        'The transaction was journaled but could not finish. Reopen the project to recover.',
-        { operationId: record.operationId, cause: String(error) },
+        'The transaction was journaled but could not finish. Recover the pending save to continue.',
+        { operationId: record.operationId, ...failureDetails(error) },
       );
     }
   }

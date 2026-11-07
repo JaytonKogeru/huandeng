@@ -21,6 +21,7 @@ export function usePptdDocument(auxiliaryDirty = false, importingAssets = false)
         importingAssets ||
         current.saving ||
         current.canRetry ||
+        current.recoveryRequired ||
         Object.values(current.drafts).some(draftHasChanges)
       ) {
         event.preventDefault();

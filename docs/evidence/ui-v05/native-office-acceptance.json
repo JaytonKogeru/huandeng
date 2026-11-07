@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "stage": "candidate-integration-office",
+  "source": {
+    "baselineRevision": "8798d8f058dab89a80143e0c813780c8d87a70f9",
+    "candidateTransferSha256": "157272ec0f472923d2f185b19a614f6e15ad48d3d9c9931e575369cddda657ae",
+    "description": "The first candidate transfer supplied the export core and compiled frontend. These are not phase-two or final packaged reruns."
+  },
+  "generatorPreparation": "The verification generator used a Windows fileURL conversion fix, later included in phase two. Export core and frontend remained the first candidate transfer.",
+  "rawReceipt": {
+    "localFile": ".verification/native-v05/office-acceptance.json",
+    "sha256": "04d97a433a1f8df8fa02ba8e5631351cad3560bf678df3f4c219f5f346db6d0f"
+  },
+  "sanitization": "Research paths, titles, source file inventories, document content and screenshots are excluded. Only counts, software verification results and receipt hashes are retained.",
+  "passed": true,
+  "verificationRuntime": {
+    "application": "Microsoft PowerPoint",
+    "version": "16.0",
+    "openAndRepair": false
+  },
+  "fixture": {
+    "kind": "synthetic Office editability sample",
+    "slideCount": 5
+  },
+  "inputPptxUnchanged": true,
+  "renderedSlideCount": 5,
+  "nativeTableCount": 1,
+  "nativeChartCount": 6,
+  "charts": [
+    {
+      "slide": 2,
+      "chartType": 51,
+      "series": 1
+    },
+    {
+      "slide": 2,
+      "chartType": -4111,
+      "series": 2
+    },
+    {
+      "slide": 3,
+      "chartType": -4169,
+      "series": 1
+    },
+    {
+      "slide": 3,
+      "chartType": 15,
+      "series": 1
+    },
+    {
+      "slide": 4,
+      "chartType": 5,
+      "series": 1
+    },
+    {
+      "slide": 4,
+      "chartType": 1,
+      "series": 1
+    }
+  ],
+  "nativeGroupCount": 1,
+  "groupMembers": [3],
+  "editedTableReopened": true,
+  "editedChartReopened": true,
+  "math": {
+    "beforeCount": 5,
+    "afterSaveAndReopenCount": 5
+  },
+  "limits": "The table and chart edits were explicitly verified after reopen. Group and mathematical object retention were verified; this receipt does not claim a separate interactive edit of every group or formula.",
+  "packagedRelease": false
+}

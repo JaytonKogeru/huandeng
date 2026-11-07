@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "stage": "candidate-integration-real-project",
+  "source": {
+    "baselineRevision": "8798d8f058dab89a80143e0c813780c8d87a70f9",
+    "candidateTransferSha256": "157272ec0f472923d2f185b19a614f6e15ad48d3d9c9931e575369cddda657ae",
+    "description": "The first candidate transfer supplied the export core and compiled frontend; not a final packaged rerun."
+  },
+  "runtime": {
+    "host": "candidate local document service and browser export renderer",
+    "frontend": "compiled production bundle",
+    "packagedRelease": false
+  },
+  "rawReceipt": {
+    "localFile": ".verification/real-project-v04/runs/2026-11-07T12-32-27-309Z-b5171236/result.json",
+    "sha256": "a2a8e93eb0b8a30c3c0768bca27f34ce9615536a086cc5bcb3374a4c3b52c1f2"
+  },
+  "sanitization": "Research paths, titles, per-file inventories and hashes, page identities, document content and screenshots are excluded. The raw receipt hash identifies the private local evidence.",
+  "passed": true,
+  "startedAt": "2026-11-07T12:32:27.309Z",
+  "completedAt": "2026-11-07T12:34:04.305Z",
+  "fixture": {
+    "kind": "isolated copy of the real scientific project",
+    "pageCount": 80,
+    "contentObjectCount": 1452,
+    "objectTypes": {
+      "text": 974,
+      "shape": 175,
+      "image": 262,
+      "line": 39,
+      "table": 2
+    }
+  },
+  "originalInputs": {
+    "readFileCount": 970,
+    "allReadsComplete": true,
+    "allReadFilesUnchanged": true
+  },
+  "checks": [
+    {
+      "name": "copy source inputs into an isolated project with realpath containment and hashes",
+      "passed": true,
+      "milliseconds": 5942
+    },
+    {
+      "name": "start a writer only for the verified temporary copy",
+      "passed": true,
+      "milliseconds": 4332
+    },
+    {
+      "name": "export the complete isolated scientific project as PDF",
+      "passed": true,
+      "milliseconds": 18284
+    },
+    {
+      "name": "export the complete isolated scientific project as PPTX",
+      "passed": true,
+      "milliseconds": 35326
+    },
+    {
+      "name": "capture every slide from the export DOM and reject unsupported objects or formula failures",
+      "passed": true,
+      "milliseconds": 26843
+    },
+    {
+      "name": "exports and all previews preserve every copied page byte",
+      "passed": true,
+      "milliseconds": 60
+    },
+    {
+      "name": "record a named version, edit notes and restore only the first copied page",
+      "passed": true,
+      "milliseconds": 2128
+    }
+  ],
+  "domValidation": {
+    "pageCount": 80,
+    "passedCount": 80,
+    "rendererErrorCount": 0,
+    "failureCount": 0
+  },
+  "exports": {
+    "pdf": {
+      "reportedPageCount": 80,
+      "bytes": 39788378,
+      "reportComplete": true
+    },
+    "pptx": {
+      "reportedPageCount": 80,
+      "bytes": 37412530,
+      "reportComplete": true,
+      "contentObjectModes": {
+        "native": 1090,
+        "image": 362
+      },
+      "originalAssetImageCount": 262,
+      "objectImageFallbackCount": 100
+    }
+  },
+  "checkpoint": {
+    "notesRestored": true,
+    "siblingPagesUnchanged": true,
+    "siblingPageCount": 79,
+    "restoredContentMatchesArchivedVersion": true
+  },
+  "officeVerification": "See real-office-acceptance.json for actual PowerPoint rendering and separate visual comparison. This browser/export receipt does not itself establish native chart or formula editability."
+}

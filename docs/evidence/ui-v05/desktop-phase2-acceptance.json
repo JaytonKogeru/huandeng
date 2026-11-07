@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "stage": "candidate-phase2",
+  "source": {
+    "baselineRevision": "8798d8f058dab89a80143e0c813780c8d87a70f9",
+    "precedingTransferSha256": "157272ec0f472923d2f185b19a614f6e15ad48d3d9c9931e575369cddda657ae",
+    "phase2TransferSha256": "afa888aebf145f5534fef829c3396e6f8b5364d7e4133203bc57f054da1cad6c",
+    "description": "Candidate source plus the phase-two transfer; not a final release commit."
+  },
+  "runtime": {
+    "host": "Electron development host",
+    "frontend": "compiled production bundle",
+    "packagedRelease": false
+  },
+  "rawReceipt": {
+    "localFile": ".verification/desktop-v04.json",
+    "sha256": "324555a7ee6d930c03ced167dea2a15454aa35e40565d6c25c7b584925c47abf"
+  },
+  "sanitization": "Only software test results are retained. Research paths, titles, source-file inventories, document content and screenshots are excluded.",
+  "passed": true,
+  "timestamp": "2026-11-07T12:42:42.361Z",
+  "platform": "win32",
+  "node": "v22.21.0",
+  "electron": "38.7.2",
+  "fixture": {
+    "kind": "isolated synthetic project"
+  },
+  "checks": [
+    {
+      "name": "native Electron window opens the fixture with HUANDENG branding and external-agent interfaces",
+      "passed": true,
+      "milliseconds": 4367
+    },
+    {
+      "name": "external MCP records Story before editing Q9R4 and independently edits B6XA",
+      "passed": true,
+      "milliseconds": 2375
+    },
+    {
+      "name": "thumbnail history previews and restores an intermediate version without changing other files",
+      "passed": true,
+      "milliseconds": 1421
+    },
+    {
+      "name": "project tree displays real files and selects pages by stable identity",
+      "passed": true,
+      "milliseconds": 877
+    },
+    {
+      "name": "desktop restart reopens the last project and retains page history",
+      "passed": true,
+      "milliseconds": 5210
+    },
+    {
+      "name": "native New and Open dialogs create and reopen real PPTD projects through IPC",
+      "passed": true,
+      "milliseconds": 4599
+    },
+    {
+      "name": "the home screen lists recent projects and reopens the selected document",
+      "passed": true,
+      "milliseconds": 2997
+    }
+  ],
+  "rendererErrorCount": 0,
+  "note": "This is the phase-two rerun using the development Electron host and production bundle. The first integration receipt remains separate; final packaged acceptance is still pending."
+}
