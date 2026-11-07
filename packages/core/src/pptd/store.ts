@@ -19,15 +19,18 @@ import {
   unsetValueAtPath,
   validatePage,
 } from './codec';
+import { expandGroupIds, owningGroupId, transformGroup } from './grouping';
 import {
   addIdentity,
   createMetadata,
+  ensureReadableLabels,
   METADATA_PATH,
   normalizeRelativePath,
   parseMetadata,
   resolvePageIdentity,
   serializeMetadata,
 } from './identity';
+import { type CheckpointState, PageCheckpointArchive } from './page-checkpoints';
 import {
   PageVersionArchive,
   type PageVersionState,
@@ -48,10 +51,12 @@ import {
   readUtf8,
   resolveProjectPath,
 } from './persistence';
+import { applyProjectOperation, readProjectModel } from './project-model';
 import { applyRecipe, markRecipeElementOverride, removeRecipeSlot } from './recipes';
 import {
   type AuthorReviewContext,
   type CreatedPage,
+  type CreatePageCheckpointRequest,
   type DeckSnapshot,
   type Diagnostic,
   type DocumentEvent,
@@ -132,7 +137,8 @@ function renderRevision(documents: Documents, pageId: string): Revision | null {
     pageRevision: hashBytes(page.source),
     manifestRevision: hashBytes(documents.manifestSource),
     assets: documents.pageAssets.get(pageId) ?? {},
-    renderer: 'huandeng-pptd-0.1',
+    themeOverride: documents.metadata.slides[pageId]?.themeOverride ?? null,
+    renderer: 'huandeng-pptd-0.4',
   });
 }
 
@@ -164,10 +170,12 @@ async function refreshAssetFingerprints(
   documents: Documents,
   cache: AssetHashCache,
 ): Promise<void> {
-  const globalAssets = assetReferences(parseManifest(documents.manifestSource).value);
+  const manifest = parseManifest(documents.manifestSource).value;
   documents.pageAssets = new Map();
   documents.diagnostics = documents.diagnostics.filter((item) => item.code !== 'ASSET_UNAVAILABLE');
   for (const [pageId, page] of documents.pages) {
+    const override = documents.metadata.slides[pageId]?.themeOverride;
+    const globalAssets = assetReferences(override ? { ...manifest, theme: override } : manifest);
     const fingerprints: Record<string, Revision | null> = {};
     for (const reference of new Set([...globalAssets, ...assetReferences(page.data)])) {
       try {
@@ -229,7 +237,7 @@ function referencePaths(value: unknown, ids: Set<string>): { path: string; value
       visit(
         child,
         [...parts, key],
-        /^(elementId|elementIds|targetId|targetIds|sourceId|sourceIds|parentId|fromId|toId|target|targets)$/.test(
+        /^(children|elementId|elementIds|targetId|targetIds|sourceId|sourceIds|parentId|fromId|toId|target|targets)$/.test(
           key,
         ),
       );
@@ -240,7 +248,7 @@ function referencePaths(value: unknown, ids: Set<string>): { path: string; value
       if (!isRecord(element)) return;
       for (const [key, child] of Object.entries(element)) {
         if (
-          /^(elementId|elementIds|targetId|targetIds|sourceId|sourceIds|parentId|fromId|toId)$/.test(
+          /^(children|elementId|elementIds|targetId|targetIds|sourceId|sourceIds|parentId|fromId|toId)$/.test(
             key,
           )
         )
@@ -262,6 +270,7 @@ export class PptdStore {
   private documents: Documents;
   private snapshot: DeckSnapshot;
   private readonly pageVersions: PageVersionArchive;
+  private readonly checkpoints: PageCheckpointArchive;
 
   private constructor(
     readonly root: string,
@@ -276,6 +285,7 @@ export class PptdStore {
     this.documents = documents;
     this.snapshot = this.makeSnapshot(documents);
     this.pageVersions = new PageVersionArchive(stateDir, readOnly);
+    this.checkpoints = new PageCheckpointArchive(root, readOnly);
   }
 
   static async open(options: OpenPptdOptions): Promise<PptdStore> {
@@ -300,6 +310,11 @@ export class PptdStore {
         for (const pagePath of manifest.pages)
           parsePage(await readUtf8(await resolveProjectPath(root, pagePath)));
         await atomicWrite(metadataPath, serializeMetadata(metadata));
+      }
+      if (!readOnly) {
+        const metadata = parseMetadata(await readUtf8(metadataPath));
+        if (ensureReadableLabels(metadata))
+          await atomicWrite(metadataPath, serializeMetadata(metadata));
       }
       const assetCache: AssetHashCache = new Map();
       const documents = await PptdStore.loadDocuments(root, entry, assetCache);
@@ -341,6 +356,7 @@ export class PptdStore {
       metadataSource === null
         ? createMetadata(entry, manifest.pages, root)
         : parseMetadata(metadataSource);
+    readProjectModel(metadata);
     if (normalizeRelativePath(metadata.entry) !== normalizeRelativePath(entry))
       throw new PptdError('INVALID_DOCUMENT', 'The sidecar belongs to another PPTD entry.');
     const byPath = new Map(
@@ -463,6 +479,87 @@ export class PptdStore {
       metadata: structuredClone(documents.metadata.slides[pageId]),
       size: parseManifest(documents.manifestSource).value.size ?? [960, 540],
     };
+  }
+
+  private checkpointState(documents: Documents, pageId: string): CheckpointState {
+    const manifest = parseManifest(documents.manifestSource).value;
+    const theme = documents.metadata.slides[pageId].themeOverride ?? manifest.theme;
+    return {
+      ...this.pageVersionState(documents, pageId),
+      theme: isRecord(theme) ? structuredClone(theme) : {},
+      assetRevisions: structuredClone(documents.pageAssets.get(pageId) ?? {}),
+    };
+  }
+
+  pageCheckpoints(target: string): Promise<PageVersionSummary[]> {
+    return this.enqueue(async () => {
+      const { pageId } = resolvePageIdentity(this.documents.metadata, target);
+      return (
+        await this.checkpoints.list(
+          this.documents.metadata.deckId,
+          pageId,
+          this.checkpointState(this.documents, pageId),
+        )
+      ).map((version) => version.summary);
+    });
+  }
+
+  createPageCheckpoint(request: CreatePageCheckpointRequest): Promise<PageVersionSummary> {
+    return this.enqueue(async () => {
+      if (this.readOnly || this.closed)
+        throw new PptdError('READ_ONLY', 'This project is read-only.');
+      if (
+        typeof request.requestId !== 'string' ||
+        !request.requestId ||
+        typeof request.label !== 'string' ||
+        !request.label.trim() ||
+        request.label.length > 200
+      )
+        throw new PptdError(
+          'INVALID_REQUEST',
+          'A request ID and a short version name are required.',
+        );
+      if ((await readOptional(path.join(this.stateDir, 'pending.json'))) !== null)
+        throw new PptdError(
+          'PENDING_RECOVERY',
+          'Recover the pending save before recording a page version.',
+        );
+      const documents = await PptdStore.loadDocuments(this.root, this.entry, this.assetCache);
+      const { pageId } = resolvePageIdentity(documents.metadata, request.pageId);
+      const requestHash = hashPayload(request);
+      const versionId = `checkpoint:${hashPayload([documents.metadata.deckId, pageId, request.requestId]).slice(7, 39)}`;
+      try {
+        const previous = await this.checkpoints.find(documents.metadata.deckId, pageId, versionId);
+        if (previous.requestHash !== requestHash)
+          throw new PptdError(
+            'REQUEST_ID_REUSE',
+            'This request ID belongs to a different checkpoint.',
+          );
+        return previous.summary;
+      } catch (error) {
+        if (!(error instanceof PptdError) || error.code !== 'TARGET_NOT_FOUND') throw error;
+      }
+      const current = revisions(documents);
+      if (
+        current.pages[pageId] !== request.expectedPageRevision ||
+        current.metadata !== request.expectedMetadataRevision
+      )
+        throw new PptdError(
+          'REVISION_CONFLICT',
+          'The page or Story changed. Refresh before recording a version.',
+        );
+      const checkpoint = await this.checkpoints.create({
+        deckId: documents.metadata.deckId,
+        pageId,
+        requestId: request.requestId,
+        requestHash,
+        label: request.label,
+        actor: request.actor ?? 'human',
+        state: this.checkpointState(documents, pageId),
+      });
+      this.replaceDocuments(documents, 'external');
+      return checkpoint.summary;
+    });
   }
 
   private async captureExternalVersions(documents: Documents): Promise<void> {
@@ -612,12 +709,17 @@ export class PptdStore {
   readPageVersion(target: string, versionId: string): Promise<PageVersionSnapshot> {
     return this.enqueue(async () => {
       const { pageId, identity } = resolvePageIdentity(this.documents.metadata, target);
-      const version = this.pageVersions.find(
-        pageId,
-        versionId,
-        this.pageVersionState(this.documents, pageId),
-        await this.persistence.history(),
-      );
+      const checkpoint = versionId.startsWith('checkpoint:')
+        ? await this.checkpoints.find(this.documents.metadata.deckId, pageId, versionId)
+        : null;
+      const version =
+        checkpoint ??
+        this.pageVersions.find(
+          pageId,
+          versionId,
+          this.pageVersionState(this.documents, pageId),
+          await this.persistence.history(),
+        );
       const documents = structuredClone(this.documents);
       documents.pages = new Map([
         [
@@ -634,13 +736,15 @@ export class PptdStore {
         path: identity.path,
         shortCode: identity.shortCode,
         state: identity.state,
+        ...(checkpoint ? { themeOverride: checkpoint.state.theme } : {}),
       };
       await refreshAssetFingerprints(this.root, documents, this.assetCache);
       return {
         version: version.summary,
         page: this.pageSnapshot(documents, pageId),
         size: version.state.size,
-        assets: 'current-project',
+        assets: checkpoint ? 'archived' : 'current-project',
+        ...(checkpoint ? { theme: checkpoint.state.theme } : {}),
       };
     });
   }
@@ -838,6 +942,11 @@ export class PptdStore {
     for (let index = 0; index < operations.length; index++) {
       const { operation, recipe } = operations[index];
       switch (operation.op) {
+        case 'project.replace': {
+          check('metadata');
+          docs.metadata = applyProjectOperation(docs.metadata, operation, this.makeSnapshot(docs));
+          break;
+        }
         case 'element.patch':
         case 'element.remove':
         case 'element.add':
@@ -852,6 +961,43 @@ export class PptdStore {
             );
             if (found < 0)
               throw new PptdError('TARGET_NOT_FOUND', `Unknown element ${operation.elementId}.`);
+            if (
+              operation.op === 'element.patch' &&
+              page.data.elements[found].elementType === 'group' &&
+              (Object.hasOwn(operation.set, 'bounds') || Object.hasOwn(operation.set, 'rotation'))
+            ) {
+              const transformed = transformGroup(
+                page.data.elements,
+                operation.elementId,
+                operation.set,
+              );
+              const explicit = new Set(
+                operations
+                  .map((entry) => entry.operation)
+                  .filter(
+                    (item) =>
+                      item.op === 'element.patch' &&
+                      item.pageId === operation.pageId &&
+                      (Object.hasOwn(item.set, 'bounds') || Object.hasOwn(item.set, 'rotation')),
+                  )
+                  .map((item) => (item as { elementId: string }).elementId),
+              );
+              operations.splice(
+                index + 1,
+                0,
+                ...transformed
+                  .filter((item) => !explicit.has(item.elementId))
+                  .map((item) => ({
+                    operation: {
+                      op: 'element.patch',
+                      pageId,
+                      elementId: item.elementId,
+                      set: item.fields,
+                    } as PptdOperation,
+                    recipe: false,
+                  })),
+              );
+            }
             for (const [instanceId, binding] of Object.entries(identity.components ?? {})) {
               if (!Object.values(binding.slots).includes(operation.elementId)) continue;
               check('metadata');
@@ -1082,7 +1228,11 @@ export class PptdStore {
                 'INVALID_REQUEST',
                 'Author review records are read-only through the shared transaction API.',
               );
-            if (!['designIntent', 'elementRoles', 'components'].includes(String(head)))
+            if (
+              !['designIntent', 'elementRoles', 'components', 'themeOverride'].includes(
+                String(head),
+              )
+            )
               throw new PptdError(
                 'INVALID_REQUEST',
                 `Metadata field ${String(head)} is not editable.`,
@@ -1127,12 +1277,30 @@ export class PptdStore {
         case 'page.version.restore': {
           const { pageId, identity, page } = pageDocument(operation.pageId);
           check('pages', pageId);
-          const version = this.pageVersions.find(
-            pageId,
-            operation.versionId,
-            this.pageVersionState(base, pageId),
-            await this.persistence.history(),
-          );
+          const checkpoint = operation.versionId.startsWith('checkpoint:')
+            ? await this.checkpoints.find(docs.metadata.deckId, pageId, operation.versionId)
+            : null;
+          const version =
+            checkpoint ??
+            this.pageVersions.find(
+              pageId,
+              operation.versionId,
+              this.pageVersionState(base, pageId),
+              await this.persistence.history(),
+            );
+          if (checkpoint) {
+            if (
+              !isDeepStrictEqual(
+                checkpoint.state.size,
+                parseManifest(docs.manifestSource).value.size ?? [960, 540],
+              )
+            )
+              throw new PptdError(
+                'INVALID_REQUEST',
+                'This version uses a different slide size. Restore the matching project dimensions before applying it.',
+              );
+            version.state.metadata.themeOverride = checkpoint.state.theme;
+          }
           const metadataChanged = VERSIONED_PAGE_METADATA.some(
             (key) => !isDeepStrictEqual(identity[key], version.state.metadata[key]),
           );
@@ -1208,6 +1376,21 @@ export class PptdStore {
     }
     for (const [pageId, page] of docs.pages) {
       validatePage(page.data);
+      try {
+        expandGroupIds(
+          page.data.elements,
+          page.data.elements
+            .filter((item) => item.elementType === 'group')
+            .map((item) => item.elementId),
+        );
+        for (const element of page.data.elements)
+          owningGroupId(page.data.elements, element.elementId);
+      } catch (error) {
+        throw new PptdError(
+          'INVALID_DOCUMENT',
+          error instanceof Error ? error.message : String(error),
+        );
+      }
       for (const binding of Object.values(docs.metadata.slides[pageId]?.components ?? {})) {
         if (!isRecord(binding.slots) || !isRecord(binding.overrides))
           throw new PptdError('INVALID_DOCUMENT', 'A recipe binding requires slots and overrides.');

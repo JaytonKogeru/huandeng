@@ -75,16 +75,19 @@ export function HuandengExport() {
       @media print {
         html, body, #root { margin: 0; padding: 0; background: #fff; }
         .hd-export-page { width: ${snapshot.size[0]}pt; height: ${snapshot.size[1]}pt; break-after: page; break-inside: avoid; }
-        .hd-export-page:last-child { break-after: auto; }
+        .hd-export-page[data-hd-last-page="true"] { break-after: auto; }
+        [data-sonner-toaster] { display: none !important; }
         .hd-export-content { transform: scale(1.3333333333333333); }
         * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
       }
     `}</style>
-      {snapshot.pages.map((page) => (
+      {snapshot.pages.map((page, index) => (
         <section
-          key={page.pageId}
+          key={page.occurrenceId ?? page.pageId}
           className="hd-export-page"
-          data-hd-export-page={page.pageId}
+          data-hd-export-page={page.occurrenceId ?? page.pageId}
+          data-hd-source-page={page.pageId}
+          data-hd-last-page={index === snapshot.pages.length - 1}
           data-hd-render-revision={page.renderRevision}
         >
           <div className="hd-export-content">

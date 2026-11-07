@@ -32,6 +32,43 @@ const image: PptdElement = {
 const assets = { resolveAsset: async () => ({ bytes: PNG_FIXTURE, mimeType: 'image/png' }) };
 
 describe('PPTD native PPTX export', () => {
+  it('exports repeated presentation occurrences and pinned versions without changing stable page IDs', async () => {
+    const source = deckFixture([structuredClone(text)]);
+    source.presentationId = 'seminar';
+    source.writable = false;
+    source.pages[0].occurrenceId = 'first-appearance';
+    const pinned = structuredClone(source.pages[0]);
+    pinned.occurrenceId = 'repeat-as-result';
+    pinned.versionId = 'checkpoint:0123456789abcdef0123456789abcdef';
+    pinned.pageRevision = 'sha256:pinned-version';
+    pinned.data.elements[0].content = { text: 'Earlier saved conclusion', fontSize: 18 };
+    source.pages.push(pinned);
+    const result = await buildPptdPptx(source, assets);
+    const files = unzipSync(result.bytes);
+    expect(result.report.presentationId).toBe('seminar');
+    expect(result.report.pages.map((page) => page.pageId)).toEqual(['page-test-1', 'page-test-1']);
+    expect(result.report.pages.map((page) => page.occurrenceId)).toEqual([
+      'first-appearance',
+      'repeat-as-result',
+    ]);
+    expect(result.report.pages[1].versionId).toBe(pinned.versionId);
+    expect(result.report.elements).toContainEqual(
+      expect.objectContaining({
+        pageId: 'page-test-1',
+        occurrenceId: 'repeat-as-result',
+        versionId: pinned.versionId,
+        elementId: 'finding',
+      }),
+    );
+    expect(strFromU8(files['ppt/slides/slide1.xml'])).toContain('Original finding');
+    expect(strFromU8(files['ppt/slides/slide2.xml'])).toContain('Earlier saved conclusion');
+    source.pages[1].occurrenceId = 'first-appearance';
+    await expect(buildPptdPptx(source, assets)).rejects.toBeInstanceOf(PptdExportError);
+    delete source.presentationId;
+    source.pages[1].occurrenceId = 'distinct-but-main-duplicate';
+    await expect(buildPptdPptx(source, assets)).rejects.toBeInstanceOf(PptdExportError);
+  });
+
   it.each([
     [960, 540],
     [600, 900],
@@ -136,6 +173,43 @@ describe('PPTD native PPTX export', () => {
       'no source rectangle',
     );
   });
+
+  it.each([1, 2, 3, 6, 8])(
+    'preserves JPEG EXIF orientation %s through verified object rendering when needed',
+    async (orientation) => {
+      const bytes = Buffer.from(
+        '/9j/4AAQSkZJRgABAQAAAQABAAD/4QAiRXhpZgAATU0AKgAAAAgAAQESAAMAAAABAAYAAAAAAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAACAAMDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwDrqKKK9I8I/9k=',
+        'base64',
+      );
+      const entry = bytes.indexOf(Buffer.from([0x01, 0x12, 0, 3, 0, 0, 0, 1]));
+      expect(entry).toBeGreaterThan(0);
+      bytes[entry + 9] = orientation;
+      const before = Buffer.from(bytes);
+      const rasterizeElement = vi.fn(async () => ({
+        bytes: PNG_FIXTURE,
+        width: 1,
+        height: 1,
+      }));
+      const result = await buildPptdPptx(deckFixture([{ ...image, src: 'media/oriented.jpg' }]), {
+        resolveAsset: async () => ({ bytes, mimeType: 'image/jpeg' }),
+        rasterizeElement,
+      });
+      expect(result.report.complete).toBe(true);
+      const imageReport = result.report.elements.find((element) => element.elementId === 'figure');
+      expect(imageReport?.mode).toBe('image');
+      if (orientation !== 1) {
+        expect(imageReport?.reason).toBe('IMAGE_ORIENTATION_FALLBACK');
+        expect(rasterizeElement).toHaveBeenCalledTimes(1);
+      } else {
+        expect(imageReport?.reason).toBe('ORIGINAL_ASSET');
+        expect(rasterizeElement).not.toHaveBeenCalled();
+      }
+      expect(bytes).toEqual(before);
+      expect(result.report.assets[0].revision).toBe(
+        `sha256:${createHash('sha256').update(bytes).digest('hex')}`,
+      );
+    },
+  );
 
   it('rasterizes only an unsupported object while retaining an editable caption and original z-order', async () => {
     const complex: PptdElement = {
@@ -258,7 +332,7 @@ describe('PPTD native PPTX export', () => {
     );
   });
 
-  it('preserves rich scientific text and explicitly falls back for formula source', async () => {
+  it('preserves rich scientific text and exports editable formula source', async () => {
     const rich: PptdElement = {
       ...text,
       elementId: 'a"b&c',
@@ -275,17 +349,23 @@ describe('PPTD native PPTX export', () => {
     expect(slide).toContain('<a:t>原始数据</a:t>');
     expect(slide).toContain('val="990000"');
     const formula: PptdElement = { ...text, content: { text: '\\(E=mc^2\\)' } };
+    const rasterizeElement = vi.fn(async () => ({ bytes: PNG_FIXTURE, width: 1, height: 1 }));
     const formulaResult = await buildPptdPptx(deckFixture([formula]), {
       ...assets,
-      rasterizeElement: async () => ({ bytes: PNG_FIXTURE, width: 1, height: 1 }),
+      rasterizeElement,
     });
     expect(formulaResult.report.elements).toContainEqual(
       expect.objectContaining({
         elementId: 'finding',
-        reason: 'FORMULA_REQUIRES_RENDERER',
-        mode: 'image',
+        reason: 'EDITABLE_TEXT_AND_EQUATIONS',
+        mode: 'native',
       }),
     );
+    const formulaXml = strFromU8(unzipSync(formulaResult.bytes)['ppt/slides/slide1.xml']);
+    expect(formulaXml).toContain('<m:sSup>');
+    expect(formulaXml).toContain('<a14:m');
+    expect(formulaXml).toContain('<mc:Fallback>');
+    expect(rasterizeElement).not.toHaveBeenCalled();
     expect(formula.content?.text).toBe('\\(E=mc^2\\)');
   });
 

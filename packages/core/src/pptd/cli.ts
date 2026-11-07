@@ -70,12 +70,13 @@ program
   });
 program
   .command('history [pageId] [versionId]')
-  .description('Read document operations, page versions, or a historical page snapshot')
-  .action(async (pageId, versionId) =>
+  .description('Read named page versions, document operations, or a historical page snapshot')
+  .option('--operations', 'show granular page operations instead of named versions')
+  .action(async (pageId, versionId, options) =>
     print(
       await (await client()).request(
         pageId
-          ? `/pages/${encodeURIComponent(pageId)}/versions${versionId ? `/${encodeURIComponent(versionId)}` : ''}`
+          ? `/pages/${encodeURIComponent(pageId)}/versions${versionId ? `/${encodeURIComponent(versionId)}` : options.operations ? '?view=operations' : ''}`
           : '/history',
       ),
     ),
@@ -84,6 +85,27 @@ program
   .command('project')
   .description('Read the project file tree')
   .action(async () => print(await (await client()).request('/project')));
+program
+  .command('story-project')
+  .description('Read Main Story, sections, and all Presentation Slides in this project')
+  .action(async () => print(await (await client()).request('/project-model')));
+program
+  .command('presentation <id>')
+  .description('Resolve one Presentation Slides, including named page versions and local notes')
+  .action(async (id) =>
+    print(await (await client()).request(`/presentations/${encodeURIComponent(id)}`)),
+  );
+program
+  .command('record-version <pageId> <requestFile>')
+  .description(
+    'Record a named page milestone; JSON supplies label, requestId and current revisions',
+  )
+  .action(async (pageId, requestFile) => {
+    const request = JSON.parse(await fs.readFile(requestFile, 'utf8'));
+    print(
+      await (await client()).request(`/pages/${encodeURIComponent(pageId)}/checkpoints`, request),
+    );
+  });
 program
   .command('story <pageId> <intentFile>')
   .alias('frame')
@@ -121,7 +143,12 @@ program
 program
   .command('export <format>')
   .description('Export the committed deck as PDF or editable PPTX')
-  .action(async (format) => print(await (await client()).request('/export', { format })));
+  .option('--presentation <id>', 'export one Presentation Slides instead of Main Slides')
+  .action(async (format, options) =>
+    print(
+      await (await client()).request('/export', { format, presentationId: options.presentation }),
+    ),
+  );
 program
   .command('checkpoint <message>')
   .description('Commit only known deck files from a clean Git baseline')

@@ -1,0 +1,75 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "create Main Story and two sections through the editor",
+      "passed": true,
+      "milliseconds": 1008
+    },
+    {
+      "name": "create two presentations sharing chapter and repeated page references",
+      "passed": true,
+      "milliseconds": 1368
+    },
+    {
+      "name": "ordinary edits create no named versions and the history UI explicitly records milestones",
+      "passed": true,
+      "milliseconds": 3129
+    },
+    {
+      "name": "project draft survives tab changes and blocks presentation and export",
+      "passed": true,
+      "milliseconds": 1182
+    },
+    {
+      "name": "pin two named versions and save occurrence-specific speaker notes through UI",
+      "passed": true,
+      "milliseconds": 1013
+    },
+    {
+      "name": "reopen and navigate distinct live and pinned occurrences in the thumbnail rail",
+      "passed": true,
+      "milliseconds": 3280
+    },
+    {
+      "name": "play resolved order with repeated pages and occurrence-specific notes",
+      "passed": true,
+      "milliseconds": 2010
+    },
+    {
+      "name": "UI exports each selected presentation with correct count and leaves canonical pages intact",
+      "passed": true,
+      "milliseconds": 757
+    },
+    {
+      "name": "removed canonical page retains references and blocks affected presentation until restored",
+      "passed": true,
+      "milliseconds": 774
+    },
+    {
+      "name": "external project update preserves a conflicting draft and disables overwriting controls",
+      "passed": true,
+      "milliseconds": 963
+    },
+    {
+      "name": "Page Story draft survives object selection and page changes until explicitly saved",
+      "passed": true,
+      "milliseconds": 1455
+    }
+  ],
+  "rendererErrors": [],
+  "pageIds": [
+    "57c6b97e-91b9-4410-a9d5-e4fd8d1f47a5",
+    "2013bf40-e5a6-4b1e-8fed-36007fa0e683",
+    "ab48c54f-af47-4847-b70b-0a4f8ade297e",
+    "f47cadce-277e-4e28-a80a-8b5c19fb5b12"
+  ],
+  "conference": "178d0efc-a73c-44e9-a1aa-174a2d79cd43",
+  "lab": "2c67ba6f-a91e-4b2f-be3a-4dae6a50d7c9",
+  "firstVersion": "checkpoint:24884561995964f4a7c4083b0736db26",
+  "secondVersion": "checkpoint:197ce2e1c9d1c8bc21444644e15ea49b",
+  "verificationDate": "2026-11-07",
+  "environment": "THUG Windows; actual editor UI in Chromium",
+  "sourceBaseline": "64c9e7b5b00b1bf158fbc5c3cca3c176156cfb71",
+  "sourceTransferSha256": "e7791004717869187f78435a5a9d787db9dd2c621af91270844d5ff40e8ffb50"
+}

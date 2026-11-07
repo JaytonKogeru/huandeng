@@ -23,7 +23,8 @@
     "README.md",
     "NOTICE.md",
     "LICENSE",
-    "branding.cjs"
+    "branding.cjs",
+    "release.json"
   ],
   "dependencies": {
     "@open-slide/core": "workspace:*"

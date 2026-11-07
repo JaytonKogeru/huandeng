@@ -58,6 +58,36 @@ function request(store: PptdStore, operations: PptdOperation[]): TransactionRequ
 }
 
 describe('PPTD document store', () => {
+  it('invalidates author review when a page-specific theme changes without touching page bytes', async () => {
+    const files = await fixture();
+    const store = await open(files);
+    const page = store.getSnapshot().pages[0];
+    const metadataPath = path.join(files.root, METADATA_PATH);
+    const metadata = JSON.parse(await fs.readFile(metadataPath, 'utf8'));
+    metadata.slides[page.pageId].lastAuthorReview = {
+      renderRevision: page.renderRevision,
+      quote: 'Keep this appearance',
+    };
+    await fs.writeFile(metadataPath, JSON.stringify(metadata));
+    await store.refreshExternal();
+    expect(store.readPage(page.pageId).authorReview?.status).toBe('current');
+    const changed = await store.commit(
+      request(store, [
+        {
+          op: 'metadata.patch',
+          pageId: page.pageId,
+          set: { themeOverride: { colors: { accent: '#ff4400' } } },
+        },
+      ]),
+    );
+    expect(store.readPage(page.pageId).pageRevision).toBe(page.pageRevision);
+    expect(store.readPage(page.pageId).renderRevision).not.toBe(page.renderRevision);
+    expect(store.readPage(page.pageId).authorReview?.status).toBe('stale');
+    await store.undo(changed.operationId);
+    expect(store.readPage(page.pageId).renderRevision).toBe(page.renderRevision);
+    expect(store.readPage(page.pageId).authorReview?.status).toBe('current');
+  });
+
   it('opens read-only without creating identities, locks or caches', async () => {
     const files = await fixture();
     const store = await open({ ...files, readOnly: true });

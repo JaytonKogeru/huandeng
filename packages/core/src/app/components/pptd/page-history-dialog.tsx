@@ -1,20 +1,23 @@
-import { ArrowDown, ArrowUp, Check, History, Loader2, RotateCcw } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { ArrowDown, ArrowUp, BookmarkPlus, Check, History, Loader2, RotateCcw } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { desktopHost } from '@/lib/huandeng-desktop';
 import type { PptdBackend } from '@/lib/pptd-backend';
 import { cn } from '@/lib/utils';
 import type { PageSnapshot, PageVersionSnapshot, PageVersionSummary } from '../../../pptd/types';
 import { SlideCanvas } from '../slide-canvas';
 import { Button } from '../ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '../ui/dialog';
+import { Input } from '../ui/input';
 import { PptdPageRenderer, type PptdTheme } from './renderer';
 
 function actorLabel(actor: string): string {
-  if (actor.startsWith('huandeng-ui:') || actor.startsWith('huandeng-ui:')) return '编辑器';
+  if (actor.startsWith('huandeng-ui:') || actor.startsWith('huanding-ui:')) return '编辑器';
   if (actor === 'external') return '外部文件修改';
   return actor;
 }
 
 function versionLabel(version: PageVersionSummary): string {
+  if (version.kind === 'checkpoint') return version.summary;
   if (version.kind === 'initial') return '初始记录';
   if (version.kind === 'external') return '外部文件更新';
   if (version.kind === 'restore') return '恢复历史版本';
@@ -46,6 +49,7 @@ export function PageHistoryDialog({
   open,
   onOpenChange,
   onRestore,
+  onRecord,
 }: {
   page: PageSnapshot;
   backend: PptdBackend;
@@ -54,6 +58,7 @@ export function PageHistoryDialog({
   open: boolean;
   onOpenChange: (open: boolean) => void;
   onRestore: (versionId: string) => Promise<unknown>;
+  onRecord: (label: string) => Promise<unknown>;
 }) {
   const [versions, setVersions] = useState<PageVersionSummary[]>([]);
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -63,8 +68,29 @@ export function PageHistoryDialog({
   const [restoring, setRestoring] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
+  const [view, setView] = useState<'checkpoints' | 'operations'>('checkpoints');
+  const [label, setLabel] = useState('');
+  const [recording, setRecording] = useState(false);
+  const mutationActive = useRef(false);
+  const [refresh, setRefresh] = useState(0);
   const selectedIndex = versions.findIndex((item) => item.versionId === selectedId);
   const selected = versions[selectedIndex];
+
+  useEffect(() => {
+    if (!recording && !restoring) return;
+    const warn = (event: BeforeUnloadEvent) => {
+      event.preventDefault();
+      event.returnValue = '';
+    };
+    window.addEventListener('beforeunload', warn);
+    const unsubscribe = desktopHost()?.onBeforeLeave(async () => {
+      throw new Error('页面版本操作仍在进行，请等待保存或恢复完成后再离开。');
+    });
+    return () => {
+      window.removeEventListener('beforeunload', warn);
+      unsubscribe?.();
+    };
+  }, [recording, restoring]);
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: Page and Frame changes invalidate the version list, including external edits.
   useEffect(() => {
@@ -73,7 +99,7 @@ export function PageHistoryDialog({
     setLoading(true);
     setError(null);
     void backend
-      .pageHistory(page.pageId)
+      .pageHistory(page.pageId, view)
       .then((items) => {
         if (!active) return;
         setVersions(items);
@@ -92,7 +118,7 @@ export function PageHistoryDialog({
     return () => {
       active = false;
     };
-  }, [backend, open, page.pageId, page.pageRevision, page.metadata]);
+  }, [backend, open, page.pageId, page.pageRevision, page.metadata, view, refresh]);
 
   useEffect(() => {
     if (!open || !selectedId) return;
@@ -117,49 +143,118 @@ export function PageHistoryDialog({
   }, [backend, open, page.pageId, selectedId]);
 
   const restore = async () => {
-    if (!selectedId) return;
+    if (disabled || mutationActive.current || !selectedId || !preview || selected?.current) return;
+    mutationActive.current = true;
     setRestoring(true);
     setError(null);
     setMessage(null);
     try {
       await onRestore(selectedId);
-      const items = await backend.pageHistory(page.pageId);
+      const items = await backend.pageHistory(page.pageId, view);
       setVersions(items);
       setSelectedId(items[0]?.versionId ?? null);
-      setMessage(`已恢复 ${page.shortCode ?? '这页'}，并保存为新版本。其他页面保持原样。`);
+      setMessage(
+        `已恢复 ${page.metadata.label ?? page.shortCode ?? '这页'} 的工作稿。需要保留本轮成果时，再记录一个命名版本。`,
+      );
     } catch (cause) {
       setError(cause instanceof Error ? cause.message : String(cause));
     } finally {
+      mutationActive.current = false;
       setRestoring(false);
     }
   };
 
+  const recordVersion = async () => {
+    if (disabled || mutationActive.current || !label.trim()) return;
+    mutationActive.current = true;
+    setRecording(true);
+    setError(null);
+    try {
+      await onRecord(label.trim());
+      setLabel('');
+      setView('checkpoints');
+      setSelectedId(null);
+      setRefresh((value) => value + 1);
+      setMessage('已记录页面版本，并归档引用的本地素材。');
+    } catch (cause) {
+      setError(cause instanceof Error ? cause.message : String(cause));
+    } finally {
+      mutationActive.current = false;
+      setRecording(false);
+    }
+  };
+
   return (
-    <Dialog open={open} onOpenChange={(value) => !restoring && onOpenChange(value)}>
+    <Dialog open={open} onOpenChange={(value) => !mutationActive.current && onOpenChange(value)}>
       <DialogContent
+        showCloseButton={!recording && !restoring}
         className="flex h-[min(780px,calc(100dvh-3rem))] flex-col gap-0 p-0 sm:max-w-6xl"
         data-hd-page-history={page.pageId}
       >
         <DialogHeader className="shrink-0 border-b border-border px-6 py-5">
           <DialogTitle className="flex items-center gap-2">
             <History className="size-4" />
-            {page.shortCode ?? '页面'} · 历史版本
+            {page.metadata.label ?? page.shortCode ?? '页面'} · 页面版本
           </DialogTitle>
           <DialogDescription>
-            选择版本查看这一页的演变。恢复会生成新版本，页面编号和位置保持不变。
+            自动保存保留工作稿。完成一轮修改后，为这一页记录一个有名字的版本。
           </DialogDescription>
         </DialogHeader>
+        <div className="flex shrink-0 items-center gap-2 border-b px-5 py-3">
+          <Button
+            size="sm"
+            variant={view === 'checkpoints' ? 'secondary' : 'ghost'}
+            disabled={recording || restoring}
+            onClick={() => {
+              setView('checkpoints');
+              setSelectedId(null);
+            }}
+          >
+            已记录版本
+          </Button>
+          <Button
+            size="sm"
+            variant={view === 'operations' ? 'secondary' : 'ghost'}
+            disabled={recording || restoring}
+            onClick={() => {
+              setView('operations');
+              setSelectedId(null);
+            }}
+          >
+            操作记录
+          </Button>
+          <Input
+            aria-label="页面版本名称"
+            placeholder="版本名称，例如：图表完成 / 组会定稿"
+            value={label}
+            disabled={disabled || recording || restoring}
+            maxLength={200}
+            onChange={(event) => setLabel(event.target.value)}
+            className="ml-auto h-8 max-w-sm text-xs"
+            onKeyDown={(event) => {
+              if (event.key === 'Enter') void recordVersion();
+            }}
+          />
+          <Button
+            size="sm"
+            disabled={disabled || recording || restoring || !label.trim()}
+            onClick={() => void recordVersion()}
+          >
+            <BookmarkPlus />
+            {recording ? '记录中…' : '记录页面版本'}
+          </Button>
+        </div>
         <div className="flex min-h-0 flex-1">
           <div className="flex w-56 shrink-0 flex-col border-r border-border bg-sidebar/50">
             <div className="flex h-10 shrink-0 items-center gap-1 border-b px-3">
               <span className="mr-auto text-[11px] text-muted-foreground">
-                {versions.length} 个版本 · 新 → 旧
+                {versions.length} {view === 'checkpoints' ? '个版本' : '条操作'} · 新 → 旧
               </span>
               <Button
                 variant="ghost"
                 size="icon-xs"
                 aria-label="查看较新版本"
-                disabled={selectedIndex <= 0}
+                disabled={recording || restoring || selectedIndex <= 0}
                 onClick={() => setSelectedId(versions[selectedIndex - 1].versionId)}
               >
                 <ArrowUp />
@@ -168,7 +263,12 @@ export function PageHistoryDialog({
                 variant="ghost"
                 size="icon-xs"
                 aria-label="查看较早版本"
-                disabled={selectedIndex < 0 || selectedIndex >= versions.length - 1}
+                disabled={
+                  recording ||
+                  restoring ||
+                  selectedIndex < 0 ||
+                  selectedIndex >= versions.length - 1
+                }
                 onClick={() => setSelectedId(versions[selectedIndex + 1].versionId)}
               >
                 <ArrowDown />
@@ -181,12 +281,17 @@ export function PageHistoryDialog({
               {loading && !versions.length ? (
                 <p className="p-3 text-xs text-muted-foreground">正在读取历史…</p>
               ) : !versions.length ? (
-                <p className="p-3 text-xs text-muted-foreground">尚无版本记录。</p>
+                <p className="p-3 text-xs text-muted-foreground">
+                  {view === 'checkpoints'
+                    ? '尚未记录命名版本。日常修改会自动保存；完成一轮修改后，在上方命名并记录。'
+                    : '尚无操作记录。'}
+                </p>
               ) : (
                 versions.map((version) => (
                   <button
                     type="button"
                     key={version.versionId}
+                    disabled={recording || restoring}
                     data-hd-version={version.versionId}
                     data-hd-version-current={version.current}
                     aria-pressed={selectedId === version.versionId}
@@ -240,7 +345,11 @@ export function PageHistoryDialog({
                 </div>
               ) : preview ? (
                 <SlideCanvas width={preview.size[0]} height={preview.size[1]} flat freezeMotion>
-                  <PptdPageRenderer page={preview.page} size={preview.size} theme={theme} />
+                  <PptdPageRenderer
+                    page={preview.page}
+                    size={preview.size}
+                    theme={(preview.theme ?? theme) as PptdTheme}
+                  />
                 </SlideCanvas>
               ) : (
                 <p className="grid h-full place-items-center text-sm text-muted-foreground">
@@ -257,7 +366,9 @@ export function PageHistoryDialog({
               </details>
             )}
             <p className="shrink-0 border-t px-4 py-2 text-[10px] leading-relaxed text-muted-foreground">
-              历史记录保存页面内容和 Frame 意图；预览使用项目当前的图片素材。
+              {preview?.assets === 'archived'
+                ? '命名版本随项目保存，包含页面、Story 与归档素材。恢复只更新这一页。'
+                : '操作记录用于撤销和恢复工作稿；旧操作预览使用当前项目素材。'}
             </p>
           </div>
         </div>
@@ -273,16 +384,24 @@ export function PageHistoryDialog({
               </p>
             ) : (
               <p className="text-muted-foreground">
-                {selected?.current ? '正在查看当前版本。' : '恢复此版本的页面内容与 Frame 意图。'}
+                {selected?.current
+                  ? '这个版本与当前工作稿一致。'
+                  : '可将选中版本恢复到当前工作稿。'}
               </p>
             )}
           </div>
-          <Button variant="outline" disabled={restoring} onClick={() => onOpenChange(false)}>
+          <Button
+            variant="outline"
+            disabled={recording || restoring}
+            onClick={() => onOpenChange(false)}
+          >
             返回编辑
           </Button>
           <Button
             data-hd-restore-version
-            disabled={disabled || restoring || !preview || !selected || selected.current}
+            disabled={
+              disabled || recording || restoring || !preview || !selected || selected.current
+            }
             onClick={() => void restore()}
           >
             {restoring ? <Loader2 className="animate-spin" /> : <RotateCcw />}

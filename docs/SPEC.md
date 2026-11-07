@@ -1,9 +1,9 @@
 # HUANDENG Editor — OpenSlide × PPTD 实施规格
 
 **日期：2026-11-07（Australia/Sydney）**  
-**状态：v0.1、v0.2 已实现；最终桌面包通过本轮验收。**
+**角色：Master Product Specification。** 本文保存整个产品的架构、文件格式、编辑、安全、Story、导出与验收要求。
 
-**当前实施合同：[SPEC-V02.md](SPEC-V02.md)，优先于本文的旧阶段安排。**
+**阶段交付：[SPEC-V02.md](SPEC-V02.md)、[SPEC-V03.md](SPEC-V03.md)、[SPEC-V04.md](SPEC-V04.md)。** 阶段规格只细化对应升级，不替代完整产品规划。逐项核对见 [AUDIT-V04.md](AUDIT-V04.md)，实际发布结果见对应 RELEASE/HANDOFF。
 
 **当前产品名称：HUANDENG Editor / HUANDENG Story / HUANDENG Plugin。**
 
@@ -84,13 +84,15 @@ OpenSlide 已有编辑与源码写回；本项目新增 PPTD backend，把 PPTD 
 | pages/*.page | 页面对象、几何、文字、备注等原内容 |
 | media/、assets/ | 现有原始素材 |
 | Story/ | 沿用现有科学叙事管理 |
-| .huandeng/project.json | 唯一新增元数据文件：身份、注记、角色、组件绑定 |
+| .huandeng/project.json | 身份、注记、角色、组件绑定；v0.4 增加 Main Story、Sections 与 Presentation 引用 |
+| .huandeng/checkpoints/ | 用户明确记录的命名页面版本；随项目目录携带 |
+| media/.huandeng-versions/ | 命名版本引用的原始素材，按内容散列去重 |
 | Exports/ | 当前交付文件与导出说明 |
 | 本机应用数据目录 Huandeng/<deckId>/ | writer 锁、恢复日志、操作历史、缓存与发现信息 |
 
 锁、缓存和日志放在本机应用数据目录，避免同步到 OneDrive。它们不构成另一份当前文档。
 
-**页面顺序仅来自 deck.pptd 的 pages 数组。元素叠放顺序仅来自 .page 的 elements 数组。**不复制第二套 order 或 zIndex。[R3]
+**Main Slides 页面顺序仅来自 deck.pptd 的 pages 数组。元素叠放顺序仅来自 .page 的 elements 数组。**不复制第二套 Main order 或 zIndex。[R3] v0.4 的 Section 与 Presentation 保存用途不同的稳定页面引用序列；它们不复制或改写规范页面内容。
 
 ### 2.2 元数据格式
 

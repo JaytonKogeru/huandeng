@@ -35,12 +35,14 @@ export interface RecipeBinding {
 
 export interface SlideIdentity {
   shortCode: string | null;
+  label?: string;
   path: string;
   state: 'active' | 'tombstone';
   designIntent?: { purpose?: string; keep?: string[]; [key: string]: unknown };
   elementRoles?: Record<string, string>;
   components?: Record<string, RecipeBinding>;
   lastAuthorReview?: unknown;
+  themeOverride?: Record<string, unknown>;
   [key: string]: unknown;
 }
 
@@ -50,6 +52,7 @@ export interface ProjectMetadata {
   entry: string;
   slides: Record<string, SlideIdentity>;
   designPolicy?: string;
+  project?: ProjectModel;
   [key: string]: unknown;
 }
 
@@ -76,6 +79,10 @@ export interface AuthorReviewContext {
 
 export interface PageSnapshot {
   pageId: string;
+  /** A presentation can refer to one stable page more than once. */
+  occurrenceId?: string;
+  versionId?: string;
+  presentationNotes?: string;
   shortCode: string | null;
   path: string;
   state: 'active' | 'tombstone';
@@ -95,7 +102,7 @@ export interface PageVersionSummary {
   summary: string;
   pageRevision: Revision;
   current: boolean;
-  kind: 'initial' | 'edit' | 'external' | 'restore';
+  kind: 'initial' | 'edit' | 'external' | 'restore' | 'checkpoint';
   operationId?: string;
 }
 
@@ -103,7 +110,17 @@ export interface PageVersionSnapshot {
   version: PageVersionSummary;
   page: PageSnapshot;
   size: PageSize;
-  assets: 'current-project';
+  assets: 'current-project' | 'archived';
+  theme?: Record<string, unknown>;
+}
+
+export interface CreatePageCheckpointRequest {
+  pageId: string;
+  requestId: string;
+  label: string;
+  expectedPageRevision: Revision | string;
+  expectedMetadataRevision: Revision | string | null;
+  actor?: string;
 }
 
 export interface RestorePageVersionRequest {
@@ -118,6 +135,7 @@ export interface RestorePageVersionRequest {
 
 export interface DeckSnapshot {
   kind: 'pptd';
+  presentationId?: string;
   deckId: string;
   entry: string;
   title: string;
@@ -241,6 +259,7 @@ export interface RecipeResetOperation {
 }
 
 export type PptdOperation =
+  | ProjectReplaceOperation
   | ElementPatchOperation
   | ElementAddOperation
   | ElementRemoveOperation
@@ -353,3 +372,5 @@ export class PptdError extends Error {
     this.details = details;
   }
 }
+
+import type { ProjectModel, ProjectReplaceOperation } from './project-model';

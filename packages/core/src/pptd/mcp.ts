@@ -10,7 +10,10 @@ import { canonicalToolName } from './tool-names.ts';
 import type { TransactionRequest } from './types.ts';
 
 const pageProperty = {
-  pageId: { type: 'string', description: 'Stable page UUID or visible short code.' },
+  pageId: {
+    type: 'string',
+    description: 'Stable page UUID, readable S label, or legacy short code.',
+  },
 };
 const objectSchema = (properties: Record<string, object>, required: string[] = []) => ({
   type: 'object' as const,
@@ -70,14 +73,29 @@ const tools: Tool[] = [
     name: 'huandeng_render',
     description:
       'Render the committed page for visual inspection and return a PNG. Uses original aspect ratio, not a document rewrite.',
-    inputSchema: objectSchema(pageProperty, ['pageId']),
+    inputSchema: objectSchema(
+      {
+        ...pageProperty,
+        presentationId: { type: 'string' },
+        occurrenceId: {
+          type: 'string',
+          description:
+            'Render this occurrence, including a pinned page version, when presentationId is supplied.',
+        },
+      },
+      ['pageId'],
+    ),
     annotations: read,
   },
   {
     name: 'huandeng_history',
     description:
-      'Read document operations, or a page version timeline with pageId. Add versionId for a read-only historical preview. Historical assets use current project files.',
-    inputSchema: objectSchema({ ...pageProperty, versionId: { type: 'string' } }),
+      'Read named page versions, or the document operation journal without pageId. Named versions archive project assets. Set includeOperations to inspect granular page operations; those older previews use current assets.',
+    inputSchema: objectSchema({
+      ...pageProperty,
+      versionId: { type: 'string' },
+      includeOperations: { type: 'boolean' },
+    }),
     annotations: read,
   },
   {
@@ -103,7 +121,17 @@ const tools: Tool[] = [
     name: 'huandeng_export',
     description:
       'Export a frozen committed deck as PDF or editable PPTX with a per-object fallback report. Updates the current export, leaving the source document unchanged.',
-    inputSchema: objectSchema({ format: { type: 'string', enum: ['pdf', 'pptx'] } }, ['format']),
+    inputSchema: objectSchema(
+      {
+        format: { type: 'string', enum: ['pdf', 'pptx'] },
+        presentationId: {
+          type: 'string',
+          description:
+            'Omit for Main Slides; otherwise export this project presentation, including pinned versions.',
+        },
+      },
+      ['format'],
+    ),
     annotations: { readOnlyHint: false, destructiveHint: false, openWorldHint: false },
   },
   {
@@ -152,6 +180,28 @@ const tools: Tool[] = [
     },
   },
   {
+    name: 'huandeng_version_record',
+    description:
+      'Record one named, portable page milestone after a meaningful completed edit. Archives local assets with deduplication. Do not call after every small edit; autosave and undo already preserve working changes.',
+    inputSchema: objectSchema(
+      {
+        ...pageProperty,
+        requestId: { type: 'string' },
+        label: { type: 'string' },
+        expectedPageRevision: { type: 'string' },
+        expectedMetadataRevision: { type: ['string', 'null'] },
+        actor: { type: 'string' },
+      },
+      ['pageId', 'requestId', 'label', 'expectedPageRevision', 'expectedMetadataRevision'],
+    ),
+    annotations: {
+      readOnlyHint: false,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+  },
+  {
     name: 'huandeng_version_restore',
     description:
       'Restore any saved version of one page as a new transaction. Preserve page identity, order and all other pages. Read current revisions first; include metadata revision if historical intent differs.',
@@ -177,7 +227,7 @@ const tools: Tool[] = [
 
 export async function startMcp(client: HuandengClient) {
   const server = new Server(
-    { name: 'HUANDENG Plugin', version: '0.2.0' },
+    { name: 'HUANDENG Plugin', version: '0.4.0' },
     {
       capabilities: { tools: {} },
       instructions:
@@ -201,10 +251,17 @@ export async function startMcp(client: HuandengClient) {
             manifestRevision: snapshot.manifestRevision,
             metadataRevision: snapshot.metadataRevision,
             writable: snapshot.writable,
+            project: snapshot.metadata.project ?? {
+              schemaVersion: 1,
+              mainStory: { purpose: '', audience: '', takeaway: '' },
+              sections: [],
+              presentations: [],
+            },
             pages: snapshot.pages.map((page, index) => ({
               position: index + 1,
               pageId: page.pageId,
               shortCode: page.shortCode,
+              label: page.metadata.label,
               path: page.path,
               pageRevision: page.pageRevision,
               renderRevision: page.renderRevision,
@@ -229,7 +286,7 @@ export async function startMcp(client: HuandengClient) {
           if (args.versionId && !args.pageId) throw new Error('pageId is required with versionId.');
           result = await client.request(
             args.pageId
-              ? `/pages/${encodeURIComponent(String(args.pageId))}/versions${args.versionId ? `/${encodeURIComponent(String(args.versionId))}` : ''}`
+              ? `/pages/${encodeURIComponent(String(args.pageId))}/versions${args.versionId ? `/${encodeURIComponent(String(args.versionId))}` : args.includeOperations ? '?view=operations' : ''}`
               : '/history',
           );
           break;
@@ -247,6 +304,12 @@ export async function startMcp(client: HuandengClient) {
           break;
         case 'huandeng_revert':
           result = await client.request('/undo', { ...args, actor: args.actor ?? 'agent' });
+          break;
+        case 'huandeng_version_record':
+          result = await client.request(
+            `/pages/${encodeURIComponent(String(args.pageId))}/checkpoints`,
+            args,
+          );
           break;
         case 'huandeng_export':
           result = await client.request('/export', args);

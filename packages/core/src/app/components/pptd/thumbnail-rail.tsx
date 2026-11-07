@@ -29,6 +29,7 @@ export function PptdThumbnailRail({
   size,
   theme,
   currentPageId,
+  currentOccurrenceId,
   disabled,
   tombstones,
   onSelect,
@@ -44,9 +45,10 @@ export function PptdThumbnailRail({
   size: PageSize;
   theme: PptdTheme;
   currentPageId: string | null;
+  currentOccurrenceId?: string;
   disabled: boolean;
   tombstones: [string, SlideIdentity][];
-  onSelect: (pageId: string) => void;
+  onSelect: (pageId: string, occurrenceId?: string) => void;
   onAdd: () => void;
   onDuplicate: (pageId: string) => void;
   onRemove: (pageId: string) => void;
@@ -56,7 +58,9 @@ export function PptdThumbnailRail({
   onShowFile: (pageId: string) => void;
 }) {
   const [query, setQuery] = useState('');
-  const currentIndex = pages.findIndex((page) => page.pageId === currentPageId);
+  const isCurrent = (page: PageSnapshot) =>
+    currentOccurrenceId ? page.occurrenceId === currentOccurrenceId : page.pageId === currentPageId;
+  const currentIndex = pages.findIndex(isCurrent);
   return (
     <nav className="flex min-h-0 flex-1 flex-col bg-sidebar" aria-label="页面列表">
       <div className="flex h-11 shrink-0 items-center gap-1 border-b border-border px-3">
@@ -86,8 +90,8 @@ export function PptdThumbnailRail({
       </div>
       <div className="px-3 py-2">
         <Input
-          aria-label="搜索页面短码或标题"
-          placeholder="查找短码或标题…"
+          aria-label="搜索页面编号或标题"
+          placeholder="查找 S 编号或标题…"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           className="h-7 bg-background text-xs"
@@ -97,25 +101,28 @@ export function PptdThumbnailRail({
         {pages.map((page, index) => {
           const title = page.data.elements.find((element) => element.elementType === 'text');
           const name = title ? layerTitle(title) : '空白页';
-          if (query && !`${page.shortCode} ${name}`.toLowerCase().includes(query.toLowerCase()))
+          if (
+            query &&
+            !`${page.metadata.label ?? ''} ${page.shortCode} ${name}`
+              .toLowerCase()
+              .includes(query.toLowerCase())
+          )
             return null;
           return (
-            <ContextMenu key={page.pageId}>
+            <ContextMenu key={page.occurrenceId ?? page.pageId}>
               <ContextMenuTrigger
                 render={
                   <button
                     type="button"
                     data-hd-thumbnail={page.pageId}
-                    aria-label={`第 ${index + 1} 页 ${page.shortCode ?? ''} ${name}`}
-                    aria-pressed={page.pageId === currentPageId}
+                    aria-label={`第 ${index + 1} 页 ${page.metadata.label ?? page.shortCode ?? ''} ${name}`}
+                    aria-pressed={isCurrent(page)}
                     className={cn(
                       'block w-full rounded-md p-1.5 text-left outline-none transition-colors focus-visible:ring-2 focus-visible:ring-brand/50',
-                      page.pageId === currentPageId
-                        ? 'bg-brand-soft ring-1 ring-brand/50'
-                        : 'hover:bg-muted',
+                      isCurrent(page) ? 'bg-brand-soft ring-1 ring-brand/50' : 'hover:bg-muted',
                     )}
-                    onClick={() => onSelect(page.pageId)}
-                    onContextMenu={() => onSelect(page.pageId)}
+                    onClick={() => onSelect(page.pageId, page.occurrenceId)}
+                    onContextMenu={() => onSelect(page.pageId, page.occurrenceId)}
                     draggable={!disabled}
                     onDragStart={(event) =>
                       event.dataTransfer.setData('application/huandeng-page', page.pageId)
@@ -145,10 +152,18 @@ export function PptdThumbnailRail({
                       <span className="font-mono text-muted-foreground">
                         {String(index + 1).padStart(2, '0')}
                       </span>
-                      <span className="font-mono font-semibold tracking-wider">
-                        {page.shortCode ?? '未编号'}
+                      <span
+                        className="font-mono font-semibold tracking-wider"
+                        title={`永久 ID: ${page.pageId}\n兼容短码: ${page.shortCode}`}
+                      >
+                        {page.metadata.label ?? page.shortCode ?? '未编号'}
                       </span>
                       <span className="truncate text-muted-foreground">{name}</span>
+                      {page.versionId && (
+                        <span title="固定的页面版本" className="text-brand">
+                          固定
+                        </span>
+                      )}
                     </div>
                   </button>
                 }

@@ -8,24 +8,36 @@ function intentText(value: unknown): string {
   return typeof value === 'string' ? value : '';
 }
 
+export interface DesignIntentDraft {
+  purpose: string;
+  keep: string;
+  base: Revision | null;
+  editing: boolean;
+  dirty: boolean;
+}
+
 export function DesignIntentPanel({
   page,
   metadataRevision,
   onApply,
   disabled,
+  draft,
+  onDraftChange,
 }: {
   page: PageSnapshot;
   metadataRevision: Revision | null;
   onApply: (operations: PptdOperation[], expected?: ExpectedRevisions) => Promise<unknown>;
   disabled: boolean;
+  draft?: DesignIntentDraft;
+  onDraftChange?: (pageId: string, draft: DesignIntentDraft | null) => void;
 }) {
   const id = useId();
   const intent = page.metadata.designIntent;
-  const [purpose, setPurpose] = useState(intent?.purpose ?? '');
-  const [keep, setKeep] = useState((intent?.keep ?? []).join('\n'));
-  const [base, setBase] = useState(metadataRevision);
-  const [editing, setEditing] = useState(false);
-  const [dirty, setDirty] = useState(false);
+  const [purpose, setPurpose] = useState(draft?.purpose ?? intent?.purpose ?? '');
+  const [keep, setKeep] = useState(draft?.keep ?? (intent?.keep ?? []).join('\n'));
+  const [base, setBase] = useState(draft ? draft.base : metadataRevision);
+  const [editing, setEditing] = useState(draft?.editing ?? false);
+  const [dirty, setDirty] = useState(draft?.dirty ?? false);
   const [message, setMessage] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
   const requestedChange = intentText(intent?.requestedChange);
@@ -33,6 +45,10 @@ export function DesignIntentPanel({
   const source = intentText(intent?.source);
   const recordedAt = intentText(intent?.recordedAt);
   const hasIntent = Boolean(intent?.purpose || intent?.keep?.length || requestedChange);
+
+  useEffect(() => {
+    onDraftChange?.(page.pageId, dirty || editing ? { purpose, keep, base, editing, dirty } : null);
+  }, [page.pageId, purpose, keep, base, editing, dirty, onDraftChange]);
 
   useEffect(() => {
     if (dirty) return;
@@ -64,6 +80,7 @@ export function DesignIntentPanel({
         ],
         { metadata: base },
       );
+      onDraftChange?.(page.pageId, null);
       setDirty(false);
       setEditing(false);
       setMessage('意图更正已保存，Agent 会读取到这次更正。');

@@ -6,7 +6,12 @@ import { parseMetadata } from './identity';
 import { atomicWrite, type HistoryRecord, hashBytes, hashPayload, readUtf8 } from './persistence';
 import { type PageSize, type PageVersionSummary, PptdError, type SlideIdentity } from './types';
 
-export const VERSIONED_PAGE_METADATA = ['designIntent', 'elementRoles', 'components'] as const;
+export const VERSIONED_PAGE_METADATA = [
+  'designIntent',
+  'elementRoles',
+  'components',
+  'themeOverride',
+] as const;
 
 export interface PageVersionState {
   source: string;

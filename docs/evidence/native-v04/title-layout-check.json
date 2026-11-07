@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-07",
+  "sourceSha256": "8de5a51e947ab1446a47c126b8f44d0c716830f98d37f2b7e00827e6e8ef36b0",
+  "method": "Read the original PNG pixels in the top 110 rows; include pixels with RGB channel spread above 5 and a minimum channel below 230. Inspect each slide's original title shape XML.",
+  "expectedTitleBoundsPt": [36, 24, 880, 50],
+  "observedTitleXml": {
+    "allFiveSlidesIdenticalGeometry": true,
+    "offsetEmu": [457200, 304800],
+    "extentEmu": [11176000, 635000],
+    "anchor": "t",
+    "autoFit": "noAutofit"
+  },
+  "pngPixelBounds": [
+    { "slide": 1, "imageSize": [1280, 720], "left": 50, "top": 33, "right": 853, "bottom": 63 },
+    { "slide": 2, "imageSize": [1280, 720], "left": 50, "top": 33, "right": 967, "bottom": 63 },
+    { "slide": 3, "imageSize": [1280, 720], "left": 50, "top": 33, "right": 938, "bottom": 57 },
+    { "slide": 4, "imageSize": [1280, 720], "left": 50, "top": 33, "right": 461, "bottom": 63 },
+    { "slide": 5, "imageSize": [1280, 720], "left": 50, "top": 33, "right": 871, "bottom": 63 }
+  ],
+  "success": true,
+  "conclusion": "Long and short titles start at the same original PNG y-coordinate. No upward title displacement or clipping is present in the files."
+}

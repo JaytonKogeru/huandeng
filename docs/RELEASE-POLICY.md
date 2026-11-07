@@ -2,9 +2,11 @@
 
 The GitHub repository tracks EDITOR SOURCE and VERSION MILESTONES, not every slide modification.
 
-## Two distinct histories
-- Git commits: editor code, documentation and verified release states. Commit locally whenever helpful.
-- PPTD page history: visual timeline of an individual slide, previewable and restorable inside the editor. This is local application data, not automatically synchronized to GitHub.
+## Three distinct histories
+
+- Automatic saves and Undo/Redo: the current working document plus the local operation journal for recovery and short editing sessions. These are not named page versions.
+- Named PPTD page versions: explicit milestones saved in `.huandeng/checkpoints/` with content-addressed images in `media/.huandeng-versions/`. They move with the project directory and do not require Git. Restoring changes only that page; it does not automatically create another named version.
+- Git commits: editor code, documentation and verified release states, or an optional project-level source checkpoint. Commit locally whenever helpful. Neither normal slide autosave nor a named page version automatically pushes to GitHub.
 
 ## Remote upload cadence
 1. Develop and commit locally; keep user page files separate from editor code.

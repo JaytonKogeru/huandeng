@@ -9,14 +9,15 @@ import {
   Layers2,
   Trash2,
 } from 'lucide-react';
-import { type ReactNode, useEffect, useId, useRef, useState } from 'react';
+import type { ReactNode } from 'react';
 import type { Alignment } from '@/lib/inspector/geometry';
 import { cn } from '@/lib/utils';
-import { tableLayout } from '../../../pptd/table-grid';
+import { groupChildren } from '../../../pptd/grouping';
+import { SHAPE_PRESETS } from '../../../pptd/shape-presets';
 import type { PageSnapshot, PptdElement } from '../../../pptd/types';
 import { Button } from '../ui/button';
-import { Input } from '../ui/input';
 import { Textarea } from '../ui/textarea';
+import { NumberField, StringField } from './property-fields';
 import {
   numberValue,
   type PptdTheme,
@@ -25,6 +26,14 @@ import {
   textContent,
   textValue,
 } from './renderer';
+import {
+  type ChartDataDraft,
+  ChartProperties,
+  IconProperties,
+  TableProperties,
+} from './science-inspector';
+
+export { NumberField } from './property-fields';
 
 type Props = {
   page: PageSnapshot;
@@ -39,6 +48,10 @@ type Props = {
   onAlign: (alignment: Alignment) => void;
   onLayer: (direction: 'front' | 'back') => void;
   onRemove: () => void;
+  onGroup?: () => void;
+  onUngroup?: () => void;
+  chartDrafts?: Record<string, ChartDataDraft>;
+  onChartDraftChange?: (pageId: string, elementId: string, draft: ChartDataDraft | null) => void;
   children?: ReactNode;
 };
 
@@ -51,134 +64,9 @@ function Section({ title, children }: { title: string; children: ReactNode }) {
   );
 }
 
-export function NumberField({
-  label,
-  value,
-  onCommit,
-  disabled,
-  min,
-  max,
-  step = 1,
-  onBegin,
-  onEnd,
-}: {
-  label: string;
-  value: number;
-  onCommit: (value: number) => void;
-  disabled?: boolean;
-  min?: number;
-  max?: number;
-  step?: number;
-  onBegin?: () => void;
-  onEnd?: () => void;
-}) {
-  const id = useId();
-  const [draft, setDraft] = useState(String(Math.round(value * 100) / 100));
-  const focused = useRef(false);
-  const skip = useRef(false);
-  useEffect(() => {
-    if (!focused.current) setDraft(String(Math.round(value * 100) / 100));
-  }, [value]);
-  return (
-    <label htmlFor={id} className="flex min-w-0 items-center gap-2 text-xs text-muted-foreground">
-      <span className="min-w-7 shrink-0">{label}</span>
-      <Input
-        id={id}
-        type="number"
-        aria-label={label}
-        value={draft}
-        min={min}
-        max={max}
-        step={step}
-        disabled={disabled}
-        className="h-7 text-right font-mono text-xs"
-        onFocus={() => {
-          focused.current = true;
-          onBegin?.();
-        }}
-        onChange={(event) => setDraft(event.target.value)}
-        onBlur={() => {
-          focused.current = false;
-          const next = Number(draft);
-          if (!skip.current && draft.trim() && Number.isFinite(next))
-            onCommit(Math.min(max ?? Infinity, Math.max(min ?? -Infinity, next)));
-          else setDraft(String(value));
-          skip.current = false;
-          onEnd?.();
-        }}
-        onKeyDown={(event) => {
-          event.stopPropagation();
-          if (event.key === 'Enter') event.currentTarget.blur();
-          if (event.key === 'Escape') {
-            skip.current = true;
-            setDraft(String(value));
-            event.currentTarget.blur();
-          }
-        }}
-      />
-    </label>
-  );
-}
-
-function StringField({
-  label,
-  value,
-  onCommit,
-  disabled,
-  onBegin,
-  onEnd,
-}: {
-  label: string;
-  value: string;
-  onCommit: (value: string) => void;
-  disabled?: boolean;
-  onBegin: () => void;
-  onEnd: () => void;
-}) {
-  const id = useId();
-  const [draft, setDraft] = useState(value);
-  const focused = useRef(false);
-  const skip = useRef(false);
-  useEffect(() => {
-    if (!focused.current) setDraft(value);
-  }, [value]);
-  return (
-    <label htmlFor={id} className="block space-y-1.5 text-xs text-muted-foreground">
-      <span>{label}</span>
-      <Input
-        id={id}
-        aria-label={label}
-        value={draft}
-        disabled={disabled}
-        onFocus={() => {
-          focused.current = true;
-          onBegin();
-        }}
-        onChange={(event) => setDraft(event.target.value)}
-        onBlur={() => {
-          focused.current = false;
-          if (!skip.current) onCommit(draft);
-          else setDraft(value);
-          skip.current = false;
-          onEnd();
-        }}
-        onKeyDown={(event) => {
-          event.stopPropagation();
-          if (event.nativeEvent.isComposing) return;
-          if (event.key === 'Enter') event.currentTarget.blur();
-          if (event.key === 'Escape') {
-            skip.current = true;
-            event.currentTarget.blur();
-          }
-        }}
-      />
-    </label>
-  );
-}
-
 export function PptdInspector({
   page,
-  theme,
+  theme: inheritedTheme,
   selectedIds,
   disabled,
   onSelect,
@@ -189,21 +77,21 @@ export function PptdInspector({
   onAlign,
   onLayer,
   onRemove,
+  onGroup,
+  onUngroup,
+  chartDrafts,
+  onChartDraftChange,
   children,
 }: Props) {
+  const theme =
+    page.metadata.themeOverride &&
+    typeof page.metadata.themeOverride === 'object' &&
+    !Array.isArray(page.metadata.themeOverride)
+      ? (page.metadata.themeOverride as PptdTheme)
+      : inheritedTheme;
   const selected = page.data.elements.filter((element) => selectedIds.includes(element.elementId));
   const element = selected.length === 1 ? selected[0] : undefined;
   const content = element ? textContent(element, theme) : {};
-  const tableModel =
-    element?.elementType === 'table'
-      ? (() => {
-          try {
-            return tableLayout(element as Record<string, unknown>);
-          } catch {
-            return null;
-          }
-        })()
-      : null;
   const bounds = element?.bounds ?? [0, 0, 120, 50];
   const patch = (fields: Record<string, unknown>, autosave = true) => {
     if (element) onPatch(element.elementId, fields, autosave);
@@ -276,12 +164,13 @@ export function PptdInspector({
                 </div>
               ))}
               {number('旋转', numberValue(element.rotation, 0), (rotation) => ({ rotation }))}
-              {number(
-                '透明度',
-                numberValue(element.opacity, 1) * 100,
-                (opacity) => ({ opacity: opacity / 100 }),
-                { min: 0, max: 100 },
-              )}
+              {element.elementType !== 'group' &&
+                number(
+                  '透明度',
+                  numberValue(element.opacity, 1) * 100,
+                  (opacity) => ({ opacity: opacity / 100 }),
+                  { min: 0, max: 100 },
+                )}
             </div>
             {overrides.length > 0 && (
               <p className="rounded bg-brand-soft px-2 py-1.5 text-[11px] text-foreground">
@@ -379,50 +268,75 @@ export function PptdInspector({
                 />
               </label>
               <p className="text-[11px] leading-relaxed text-muted-foreground">
-                双击画布文字直接编辑。选中文字后可设置加粗、上下标。
+                双击画布文字直接编辑。选中文字后可设置加粗、上下标。公式支持 LaTeX：\(…\)
+                为行内、\[…\] 为独立公式，保留源表达式。
               </p>
             </Section>
           )}
           {element.elementType === 'table' && (
-            <Section title="????">
-              <p className="text-[11px] leading-relaxed text-muted-foreground">
-                ????????????????????????????????????????
+            <Section title="表格">
+              <TableProperties
+                key={element.elementId}
+                element={element}
+                theme={theme}
+                disabled={disabled}
+                onPatch={patch}
+                onBegin={onBegin}
+                onEnd={onEnd}
+              />
+            </Section>
+          )}
+          {element.elementType === 'chart' && (
+            <Section title="图表与数据">
+              <ChartProperties
+                key={element.elementId}
+                element={element}
+                theme={theme}
+                disabled={disabled}
+                onPatch={patch}
+                onBegin={onBegin}
+                onEnd={onEnd}
+                draft={chartDrafts?.[element.elementId]}
+                onDraftChange={(draft) =>
+                  onChartDraftChange?.(page.pageId, element.elementId, draft)
+                }
+              />
+            </Section>
+          )}
+          {element.elementType === 'icon' && (
+            <Section title="图标">
+              <IconProperties
+                key={element.elementId}
+                element={element}
+                theme={theme}
+                disabled={disabled}
+                onPatch={patch}
+                onBegin={onBegin}
+                onEnd={onEnd}
+              />
+            </Section>
+          )}
+          {element.elementType === 'group' && (
+            <Section title="组合成员">
+              <p className="text-[11px] text-muted-foreground">
+                移动、缩放与旋转会同时更新成员。选择下方对象可单独编辑。
               </p>
-              {tableModel ? (
-                <div className="max-h-96 space-y-3 overflow-y-auto">
-                  {tableModel.grid.flatMap((slots) =>
-                    slots.map((slot) => {
-                      const sourceIndex = slot.sourceIndex;
-                      if (sourceIndex === null || slot.covered) return null;
-                      return (
-                        <StringField
-                          key={slot.row * 10000 + slot.column}
-                          label={`R${slot.row + 1} C${slot.column + 1}`}
-                          value={textValue(record(slot.cell).text)}
-                          disabled={disabled}
-                          onBegin={onBegin}
-                          onEnd={onEnd}
-                          onCommit={(value) => {
-                            const oldRows = Array.isArray(element.rows) ? element.rows : [];
-                            const nextRows = oldRows.map((row) =>
-                              Array.isArray(row) ? [...row] : [],
-                            );
-                            if (!nextRows[slot.row]) return;
-                            const original = nextRows[slot.row][sourceIndex];
-                            nextRows[slot.row][sourceIndex] = {
-                              ...record(original),
-                              text: value,
-                            };
-                            patch({ rows: nextRows }, false);
-                          }}
-                        />
-                      );
-                    }),
+              {groupChildren(element).map((id) => (
+                <Button
+                  key={id}
+                  size="xs"
+                  variant="ghost"
+                  className="w-full justify-start overflow-hidden"
+                  onClick={() => onSelect([id])}
+                >
+                  {layerTitle(
+                    page.data.elements.find((item) => item.elementId === id) ?? {
+                      elementId: id,
+                      elementType: 'missing',
+                    },
                   )}
-                </div>
-              ) : (
-                <p className="text-xs text-muted-foreground">????????????????????????</p>
-              )}
+                </Button>
+              ))}
             </Section>
           )}
           {element.elementType === 'image' && (
@@ -471,14 +385,7 @@ export function PptdInspector({
                   onChange={(event) => patch({ shapeName: event.target.value })}
                 >
                   {[
-                    ['rect', '矩形'],
-                    ['roundRect', '圆角矩形'],
-                    ['ellipse', '椭圆'],
-                    ['triangle', '三角形'],
-                    ['diamond', '菱形'],
-                    ['rightArrow', '右箭头'],
-                    ['leftArrow', '左箭头'],
-                    ['chevron', '折线箭头'],
+                    ...SHAPE_PRESETS,
                     ...(element.shapeName === 'custom' ? [['custom', '自定义路径']] : []),
                   ].map(([value, label]) => (
                     <option key={value} value={value}>
@@ -522,12 +429,78 @@ export function PptdInspector({
                   />
                 </label>
               </div>
+              <label className="flex items-center justify-between gap-2 text-xs text-muted-foreground">
+                线型
+                <select
+                  aria-label="边线线型"
+                  className="h-7 rounded border bg-background px-2 text-foreground"
+                  disabled={disabled}
+                  value={textValue(record(element.border).style, 'solid')}
+                  onChange={(event) => patch({ 'border.style': event.target.value })}
+                >
+                  <option value="solid">实线</option>
+                  <option value="dash">虚线</option>
+                  <option value="dot">点线</option>
+                </select>
+              </label>
+              {element.elementType === 'line' &&
+                (['起点箭头', '终点箭头'] as const).map((label, index) => (
+                  <label
+                    key={label}
+                    className="flex items-center justify-between gap-2 text-xs text-muted-foreground"
+                  >
+                    {label}
+                    <select
+                      aria-label={label}
+                      className="h-7 rounded border bg-background px-2 text-foreground"
+                      disabled={disabled}
+                      value={String(
+                        (Array.isArray(element.arrow) ? element.arrow[index] : null) ?? '',
+                      )}
+                      onChange={(event) => {
+                        const arrow = Array.isArray(element.arrow)
+                          ? [...element.arrow]
+                          : [null, null];
+                        arrow[index] = event.target.value || null;
+                        patch({ arrow });
+                      }}
+                    >
+                      <option value="">无</option>
+                      <option value="arrow">箭头</option>
+                      <option value="stealth">凹尾箭头</option>
+                      <option value="diamond">菱形</option>
+                      <option value="oval">圆形</option>
+                    </select>
+                  </label>
+                ))}
             </Section>
           )}
         </>
       )}
       {selected.length > 0 && (
         <Section title="排列">
+          <div className="flex gap-2">
+            {onGroup && (
+              <Button
+                size="xs"
+                variant="outline"
+                disabled={disabled || selected.length < 2}
+                onClick={onGroup}
+              >
+                组合
+              </Button>
+            )}
+            {onUngroup && (
+              <Button
+                size="xs"
+                variant="outline"
+                disabled={disabled || !selected.some((item) => item.elementType === 'group')}
+                onClick={onUngroup}
+              >
+                取消组合
+              </Button>
+            )}
+          </div>
           <div className="grid grid-cols-3 gap-1">
             {(
               [

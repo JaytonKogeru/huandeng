@@ -12,13 +12,21 @@ import {
 } from 'react';
 import { pptdAssetUrl } from '@/lib/pptd-backend';
 import { splitMathFragments } from '../../../pptd/math-fragments';
+import { presetShapePath, SHAPE_PRESETS } from '../../../pptd/shape-presets';
 import { tableLayout } from '../../../pptd/table-grid';
+import {
+  resolveTableCellStyle,
+  TABLE_CELL_PADDING_X,
+  TABLE_CELL_PADDING_Y,
+} from '../../../pptd/table-style';
 import type { PageSize, PageSnapshot, PptdElement } from '../../../pptd/types';
+import { ChartContent, IconContent } from './science-renderer';
 
 export type PptdTheme = {
   colors?: Record<string, string>;
   textStyles?: Record<string, Record<string, unknown>>;
   tableStyles?: Record<string, Record<string, unknown>>;
+  chartColors?: string[];
 };
 
 export function record(value: unknown): Record<string, unknown> {
@@ -102,6 +110,68 @@ const DROP_TAGS = new Set([
   'meta',
   'svg',
   'img',
+  'annotation-xml',
+]);
+const MATH_TAGS = new Set([
+  'math',
+  'mrow',
+  'mi',
+  'mn',
+  'mo',
+  'mtext',
+  'mspace',
+  'ms',
+  'msup',
+  'msub',
+  'msubsup',
+  'mfrac',
+  'msqrt',
+  'mroot',
+  'mover',
+  'munder',
+  'munderover',
+  'mtable',
+  'mtr',
+  'mtd',
+  'mmultiscripts',
+  'mprescripts',
+  'none',
+  'semantics',
+  'annotation',
+  'menclose',
+  'mpadded',
+  'mphantom',
+]);
+const MATH_ATTRIBUTES = new Set([
+  'xmlns',
+  'display',
+  'mathvariant',
+  'mathsize',
+  'mathcolor',
+  'mathbackground',
+  'stretchy',
+  'fence',
+  'separator',
+  'symmetric',
+  'largeop',
+  'movablelimits',
+  'accent',
+  'accentunder',
+  'columnalign',
+  'rowalign',
+  'columnspacing',
+  'rowspacing',
+  'columnspan',
+  'rowspan',
+  'linethickness',
+  'notation',
+  'width',
+  'height',
+  'depth',
+  'lspace',
+  'rspace',
+  'voffset',
+  'encoding',
 ]);
 const STYLE_KEYS = new Set([
   'color',
@@ -122,7 +192,7 @@ const STYLE_KEYS = new Set([
 ]);
 
 export function isRichText(text: string): boolean {
-  return /<\/?(?:p|span|strong|b|em|i|u|s|sup|sub|a|ul|ol|li|br)(?:\s|>|\/)/i.test(text);
+  return /<\/?(?:p|span|strong|b|em|i|u|s|sup|sub|a|ul|ol|li|br|math)(?:\s|>|\/)/i.test(text);
 }
 
 export function sanitizeRichTextHtml(source: string): string {
@@ -143,7 +213,7 @@ export function sanitizeRichTextHtml(source: string): string {
         child.replaceWith(replacement);
         continue;
       }
-      if (!ALLOWED_TAGS.has(tag)) {
+      if (!ALLOWED_TAGS.has(tag) && !MATH_TAGS.has(tag)) {
         child.replaceWith(...child.childNodes);
         continue;
       }
@@ -164,12 +234,22 @@ export function sanitizeRichTextHtml(source: string): string {
           if (declarations.length) child.setAttribute('style', declarations.join(';'));
           else child.removeAttribute('style');
         } else if (
-          !(tag === 'a' && attribute.name === 'href' && /^(https?:|mailto:)/i.test(attribute.value))
+          !(
+            tag === 'a' &&
+            attribute.name === 'href' &&
+            /^(https?:|mailto:)/i.test(attribute.value)
+          ) &&
+          !(
+            MATH_TAGS.has(tag) &&
+            MATH_ATTRIBUTES.has(attribute.name.toLowerCase()) &&
+            !/url\s*\(|javascript:/i.test(attribute.value)
+          )
         ) {
           child.removeAttribute(attribute.name);
         }
       }
       if (tag === 'a') child.setAttribute('rel', 'noopener noreferrer');
+      if (tag === 'math') child.setAttribute('xmlns', 'http://www.w3.org/1998/Math/MathML');
     }
   };
   clean(document.body);
@@ -195,6 +275,16 @@ function MathFragmentContent({ source, display }: { source: string; display: boo
     }
   }, [source, display]);
   return <span ref={ref} data-hd-formula style={{ display: display ? 'block' : 'inline' }} />;
+}
+
+function MathmlContent({ source }: { source: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  useLayoutEffect(() => {
+    const clean = sanitizeRichTextHtml(source);
+    const parsed = new DOMParser().parseFromString(clean, 'text/html');
+    if (ref.current) ref.current.replaceChildren(...Array.from(parsed.body.childNodes));
+  }, [source]);
+  return <span ref={ref} data-hd-formula />;
 }
 
 function mathNodes(source: string, key: string): ReactNode {
@@ -230,6 +320,8 @@ function richNodes(source: string, theme: PptdTheme): ReactNode {
       style[prop] = value.startsWith('$') ? resolveColor(value, theme) : value;
     }
     switch (node.tagName.toLowerCase()) {
+      case 'math':
+        return <MathmlContent key={key} source={node.outerHTML} />;
       case 'p':
         return (
           <p key={key} style={{ margin: 0, minHeight: '1em', ...style }}>
@@ -406,17 +498,7 @@ function ImageContent({
   );
 }
 
-const SHAPES = new Set([
-  'rect',
-  'roundRect',
-  'ellipse',
-  'triangle',
-  'diamond',
-  'rightArrow',
-  'leftArrow',
-  'chevron',
-  'custom',
-]);
+const SHAPES = new Set([...SHAPE_PRESETS.map(([name]) => name), 'custom']);
 
 function ShapeContent({ element, theme }: { element: PptdElement; theme: PptdTheme }) {
   const name = textValue(element.shapeName, 'rect');
@@ -446,7 +528,9 @@ function ShapeContent({ element, theme }: { element: PptdElement; theme: PptdThe
     vectorEffect: 'non-scaling-stroke' as const,
   };
   let shape: ReactNode;
+  const presetPath = presetShapePath(name, width, height);
   if (name === 'custom') shape = <path d={textValue(element.path)} {...props} />;
+  else if (presetPath) shape = <path d={presetPath} {...props} />;
   else if (name === 'ellipse')
     shape = <ellipse cx={width / 2} cy={height / 2} rx={width / 2} ry={height / 2} {...props} />;
   else if (name === 'triangle')
@@ -522,6 +606,10 @@ function LineContent({ element, theme }: { element: PptdElement; theme: PptdThem
   const viewBox = Array.isArray(element.viewBox) ? element.viewBox : [1, 1];
   const border = record(element.border);
   const arrow = Array.isArray(element.arrow) ? element.arrow : [];
+  if (
+    arrow.some((value) => value && !['arrow', 'stealth', 'diamond', 'oval'].includes(String(value)))
+  )
+    return <Unsupported label="线条箭头类型暂未支持" />;
   const color = resolveColor(border.color, theme);
   let path = `M${points[0]?.join(',')}`;
   if (element.curve === 'smooth' && points.length === 4)
@@ -549,17 +637,33 @@ function LineContent({ element, theme }: { element: PptdElement; theme: PptdThem
       style={{ overflow: 'visible' }}
     >
       <defs>
-        <marker
-          id={id}
-          viewBox="0 0 10 10"
-          refX="9"
-          refY="5"
-          markerWidth="5"
-          markerHeight="5"
-          orient="auto-start-reverse"
-        >
-          <path d="M0 0 L10 5 L0 10 Z" fill={color} />
-        </marker>
+        {(['start', 'end'] as const).map((end, index) => (
+          <marker
+            key={end}
+            id={`${id}-${end}`}
+            viewBox="0 0 10 10"
+            refX="9"
+            refY="5"
+            markerWidth="5"
+            markerHeight="5"
+            orient="auto-start-reverse"
+          >
+            {arrow[index] === 'oval' ? (
+              <circle cx="5" cy="5" r="4.5" fill={color} />
+            ) : (
+              <path
+                d={
+                  arrow[index] === 'diamond'
+                    ? 'M0 5 L5 0 L10 5 L5 10 Z'
+                    : arrow[index] === 'stealth'
+                      ? 'M0 0 L10 5 L0 10 L3 5 Z'
+                      : 'M0 0 L10 5 L0 10 Z'
+                }
+                fill={color}
+              />
+            )}
+          </marker>
+        ))}
       </defs>
       <path
         d={path}
@@ -570,8 +674,8 @@ function LineContent({ element, theme }: { element: PptdElement; theme: PptdThem
         strokeDasharray={
           border.style === 'dash' ? '6 4' : border.style === 'dot' ? '1 3' : undefined
         }
-        markerStart={arrow[0] ? `url(#${id})` : undefined}
-        markerEnd={arrow[1] ? `url(#${id})` : undefined}
+        markerStart={arrow[0] ? `url(#${id}-start)` : undefined}
+        markerEnd={arrow[1] ? `url(#${id}-end)` : undefined}
         vectorEffect="non-scaling-stroke"
       />
     </svg>
@@ -633,29 +737,31 @@ function TextContent({ element, theme }: { element: PptdElement; theme: PptdThem
 
 function TableContent({ element, theme }: { element: PptdElement; theme: PptdTheme }) {
   let layout: ReturnType<typeof tableLayout>;
+  let styles: ReturnType<typeof resolveTableCellStyle>[][];
   try {
-    layout = tableLayout(element as Record<string, unknown>);
+    layout = tableLayout(element);
+    styles = layout.grid.map((slots, row) =>
+      slots.map((slot, column) =>
+        resolveTableCellStyle(theme, element, slot.cell, {
+          row,
+          column,
+          rowCount: layout.grid.length,
+          columnCount: layout.colCount,
+        }),
+      ),
+    );
   } catch (error) {
     return (
-      <Unsupported label="????????" detail={error instanceof Error ? error.message : '??????'} />
+      <Unsupported
+        label="表格无法渲染"
+        detail={error instanceof Error ? error.message : '表格数据无效'}
+      />
     );
   }
-  const name = textValue(element.style).replace(/^\$/, '');
-  const tableStyle = record(theme.tableStyles?.[name]);
-  const widths = layout.columnRatios;
-  const columnDefinitions = widths.map((fraction, column) => ({
-    fraction,
-    id: String(column),
-  }));
-  const resolveCellStyle = (cell: Record<string, unknown>, row: number, col: number) => ({
-    ...record(tableStyle.cellStyle),
-    ...record(tableStyle.bodyStyles),
-    ...(row === 0 ? record(tableStyle.firstRow) : {}),
-    ...(row === layout.grid.length - 1 ? record(tableStyle.lastRow) : {}),
-    ...(col === 0 ? record(tableStyle.firstColumn) : {}),
-    ...(col === widths.length - 1 ? record(tableStyle.lastColumn) : {}),
-    ...cell,
-  });
+  const borderCss = (border: Record<string, unknown> | null) =>
+    border === null
+      ? 'none'
+      : `${numberValue(border.width, 1)}px ${border.style === 'dash' ? 'dashed' : border.style === 'dot' ? 'dotted' : 'solid'} ${resolveColor(border.color, theme, '#999999')}`;
   return (
     <table
       data-hd-table
@@ -669,52 +775,40 @@ function TableContent({ element, theme }: { element: PptdElement; theme: PptdThe
       }}
     >
       <colgroup>
-        {columnDefinitions.map(({ fraction, id }) => (
-          <col key={id} style={{ width: String(fraction * 100).concat('%') }} />
+        {layout.columnRatios.map((fraction, index) => (
+          <col key={String(index)} style={{ width: `${fraction * 100}%` }} />
         ))}
       </colgroup>
       <tbody>
         {layout.grid.map((slots, row) => (
           <tr key={slots[0]?.row} style={{ height: layout.rowMinimums[row] }}>
-            {slots.map((slot, col) => {
+            {slots.map((slot, column) => {
               if (slot.covered) return null;
-              const final = resolveCellStyle(record(slot.cell), row, col);
-              const align = Array.isArray(final.align) ? final.align : ['center', 'middle'];
-              const fill = final.fill ?? tableStyle.fill ?? element.fill;
-              const textRef = textValue(final.textStyle).replace(/^\$/, '');
-              const font = { ...record(theme.textStyles?.[textRef]), ...final };
-              const border = record(final.border);
+              const final = styles[row][column];
               return (
                 <td
-                  key={slot.row * 10000 + slot.column}
-                  data-hd-table-cell={String(row).concat(':', String(col))}
+                  key={`${slot.row}:${slot.column}`}
+                  data-hd-table-cell={`${row}:${column}`}
                   rowSpan={slot.rowSpan}
                   colSpan={slot.colSpan}
                   style={{
-                    border: String(numberValue(border.width, 1)).concat(
-                      'px solid ',
-                      resolveColor(border.color, theme, '#999'),
-                    ),
-                    backgroundColor: resolveColor(
-                      typeof fill === 'string' ? fill : record(fill).color,
-                      theme,
-                      'transparent',
-                    ),
-                    padding: '5px 9px',
-                    textAlign: (align[0] === 'distributed'
-                      ? 'justify'
-                      : align[0]) as CSSProperties['textAlign'],
+                    borderTop: borderCss(final.borders.top),
+                    borderRight: borderCss(final.borders.right),
+                    borderBottom: borderCss(final.borders.bottom),
+                    borderLeft: borderCss(final.borders.left),
+                    ...fillCss(final.fill, theme),
+                    padding: `${TABLE_CELL_PADDING_Y}px ${TABLE_CELL_PADDING_X}px`,
                     verticalAlign:
-                      align[1] === 'middle' ? 'middle' : align[1] === 'bottom' ? 'bottom' : 'top',
-                    color: resolveColor(font.color, theme),
-                    fontSize: numberValue(font.fontSize, 13),
-                    fontWeight: font.bold === true ? 700 : 400,
-                    fontStyle: font.italic === true ? 'italic' : 'normal',
-                    whiteSpace: 'pre-wrap',
-                    overflowWrap: 'anywhere',
+                      final.align[1] === 'middle'
+                        ? 'middle'
+                        : final.align[1] === 'bottom'
+                          ? 'bottom'
+                          : 'top',
                   }}
                 >
-                  {richNodes(textValue(final.text), theme)}
+                  <div style={textCss(final.text, theme)}>
+                    {richNodes(textValue(final.text.text), theme)}
+                  </div>
                 </td>
               );
             })}
@@ -741,13 +835,19 @@ const EMPTY_THEME: PptdTheme = {};
 export function PptdPageRenderer({
   page,
   size,
-  theme = EMPTY_THEME,
+  theme: inheritedTheme = EMPTY_THEME,
   assetUrl = pptdAssetUrl,
   onElementPointerDown,
   onElementDoubleClick,
   onElementFocus,
   renderContent,
 }: PptdPageRendererProps) {
+  const theme =
+    page.metadata.themeOverride &&
+    typeof page.metadata.themeOverride === 'object' &&
+    !Array.isArray(page.metadata.themeOverride)
+      ? (page.metadata.themeOverride as PptdTheme)
+      : inheritedTheme;
   const background = record(page.data.background);
   const resolveAsset = useMemo(
     () => (source: string) => {
@@ -787,6 +887,7 @@ export function PptdPageRenderer({
         </div>
       )}
       {page.data.elements.map((element) => {
+        if (element.elementType === 'group' && !onElementPointerDown) return null;
         const [x, y, width, height] = element.bounds ?? [0, 0, 120, 50];
         const flip = Array.isArray(element.flip) ? element.flip : [];
         const shadow = record(element.shadow);
@@ -803,6 +904,11 @@ export function PptdPageRenderer({
             content = <LineContent element={element} theme={theme} />;
           else if (element.elementType === 'table')
             content = <TableContent element={element} theme={theme} />;
+          else if (element.elementType === 'chart')
+            content = <ChartContent element={element} theme={theme} />;
+          else if (element.elementType === 'icon')
+            content = <IconContent element={element} theme={theme} />;
+          else if (element.elementType === 'group') content = null;
           else
             content = (
               <Unsupported label={`暂未渲染：${element.elementType}`} detail={element.elementId} />

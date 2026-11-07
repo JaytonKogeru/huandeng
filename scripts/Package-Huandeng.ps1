@@ -60,6 +60,7 @@ if (Test-Path -LiteralPath $crashReporter) {
 }
 $marker = @{
     product = "HUANDENG Editor"
+    productVersion = (Get-Content -LiteralPath (Join-Path $project "packages\desktop\release.json") -Raw | ConvertFrom-Json).version
     desktopProtocol = 1
     electronVersion = "38.7.2"
     nodeLinker = "hoisted"

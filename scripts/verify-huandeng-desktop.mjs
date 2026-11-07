@@ -162,6 +162,7 @@ async function openHistory(pageId) {
   await page.getByRole('menuitem', { name: '查看历史版本', exact: true }).click();
   const dialog = page.locator(`[data-hd-page-history=${JSON.stringify(pageId)}]`);
   await dialog.waitFor();
+  await dialog.getByRole('button', { name: '操作记录', exact: true }).click();
   await dialog.locator('[data-hd-version]').first().waitFor();
   return dialog;
 }
@@ -266,7 +267,7 @@ try {
         ).content.text,
         laterTitle,
       );
-      await captureEvidence('desktop-v03-history.png');
+      await captureEvidence('desktop-v04-history.png');
       await dialog.getByRole('button', { name: '将此版本恢复为当前页', exact: true }).click();
       await eventually(
         async () =>
@@ -275,7 +276,10 @@ try {
           ).content.text === intermediateTitle,
       );
       await dialog
-        .getByText('已恢复 Q9R4，并保存为新版本。其他页面保持原样。', { exact: true })
+        .getByText(
+          `已恢复 ${target.metadata.label ?? target.shortCode} 的工作稿。需要保留本轮成果时，再记录一个命名版本。`,
+          { exact: true },
+        )
         .waitFor();
       const after = await sourceHashes();
       assert.deepEqual(
@@ -287,7 +291,8 @@ try {
       assert.deepEqual(restored.metadata.designIntent, storyIntent);
       assert.equal(restored.pageId, target.pageId);
       assert.equal(restored.path, target.path);
-      const versions = await api(`/pages/${target.pageId}/versions`);
+      assert.deepEqual(await api(`/pages/${target.pageId}/versions`), []);
+      const versions = await api(`/pages/${target.pageId}/versions?view=operations`);
       assert.equal(versions[0].kind, 'restore');
       assert.equal(versions[0].current, true);
       restoredVersionId = versions[0].versionId;
@@ -309,7 +314,7 @@ try {
     await eventually(async () => new URL(page.url()).searchParams.get('page') === sibling.pageId);
     await file.click();
     await eventually(async () => new URL(page.url()).searchParams.get('page') === target.pageId);
-    await captureEvidence('desktop-v03-editor.png');
+    await captureEvidence('desktop-v04-editor.png');
   });
 
   await check('desktop restart reopens the last project and retains page history', async () => {

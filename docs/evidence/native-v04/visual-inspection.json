@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-07",
+  "sourceSha256": "8de5a51e947ab1446a47c126b8f44d0c716830f98d37f2b7e00827e6e8ef36b0",
+  "source": "PowerPoint 16.0 Slide.Export PNG, original document before edits",
+  "inspectedSlides": [1, 2, 3, 4, 5],
+  "success": true,
+  "checks": [
+    "Inline and display equations do not overlap; integrals, limits, fractions, radicals and matrices are present.",
+    "Mean x-bar retains its overline; table formulas and merged cell text are visible.",
+    "Bar and combination charts show zero and negative measurements without changing their values.",
+    "Scatter and bubble charts preserve numeric X spacing; a zero-size bubble has zero visual area.",
+    "Pie and area charts retain categories, values, legends and negative area data.",
+    "Native diagram shapes retain appearance and layer order; group geometry is not applied twice."
+  ],
+  "limitations": [
+    "This is a synthetic five-slide acceptance fixture, not an acceptance claim for every research project.",
+    "Native chart labels and plot layout are produced by PowerPoint and may differ from ECharts.",
+    "Advanced chart families use explicit object-level image fallback."
+  ]
+}

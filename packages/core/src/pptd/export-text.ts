@@ -1,4 +1,5 @@
 import type { Rgba } from '../app/lib/pptx/css';
+import { escapeXml } from '../app/lib/pptx/ooxml';
 import type { Paragraph, RunStyle, TextLine, TextNode } from '../app/lib/pptx/scene';
 import {
   ExportFeatureError,
@@ -7,10 +8,12 @@ import {
   exportRecord,
   sceneRect,
 } from './export-images';
+import { formulaRunXml, mathCompatibilityXml } from './export-math';
+import { splitMathFragments } from './math-fragments';
 import type { PptdElement } from './types';
 
 type ColorResolver = (value: unknown, alpha?: number) => Rgba;
-type FontStyle = RunStyle & { eastAsianFont: string };
+type FontStyle = RunStyle & { eastAsianFont: string; mathXml?: string };
 
 export interface NativeText {
   node: TextNode;
@@ -18,6 +21,8 @@ export interface NativeText {
   anchor: 't' | 'ctr' | 'b';
   eastAsianFonts: string[];
   fonts: string[];
+  mathRuns: (string | null)[];
+  mathLineSpacing: (number | null)[];
 }
 
 function fontNames(value: unknown): { latin: string; ea: string } {
@@ -61,7 +66,7 @@ function alignment(value: unknown): Paragraph['align'] {
   if (value === undefined || value === 'left') return 'l';
   if (value === 'center') return 'ctr';
   if (value === 'right') return 'r';
-  if (value === 'justify') return 'just';
+  if (value === 'justify' || value === 'distributed') return 'just';
   throw new ExportFeatureError(
     'UNSUPPORTED_TEXT_ALIGNMENT',
     `Text alignment ${String(value)} needs a rendered fallback.`,
@@ -159,7 +164,7 @@ export function mapPptdText(
       'Paragraph top margins need browser rendering.',
     );
   }
-  if (/\\\(|\\\[|\$\$|<\s*(math|svg)\b/i.test(content.text)) {
+  if (/<\s*(math|svg)\b/i.test(content.text)) {
     throw new ExportFeatureError(
       'FORMULA_REQUIRES_RENDERER',
       'Formula content must be rendered without changing its scientific source.',
@@ -193,7 +198,7 @@ export function mapPptdText(
     if (current) paragraphs.push(current);
     current = null;
   };
-  const append = (text: string, style: FontStyle) => {
+  const appendRun = (text: string, style: FontStyle) => {
     current ??= newParagraph();
     const line = current.lines[current.lines.length - 1];
     line.runs.push({ text, style: { ...style } });
@@ -203,13 +208,51 @@ export function mapPptdText(
     fonts.add(style.eastAsianFont);
   };
 
-  if (!/<\/?[a-z][^>]*>/i.test(content.text)) {
-    for (const text of content.text.split(/\r?\n/)) {
+  let markerPrefix = '\uE000HUANDENGMATH';
+  while (content.text.includes(markerPrefix)) markerPrefix += '_';
+  const formulas = new Map<string, { source: string; raw: string; display: boolean }>();
+  const prepared = splitMathFragments(content.text)
+    .map((fragment) => {
+      if (fragment.kind === 'text') return fragment.value;
+      const marker = `${markerPrefix}${formulas.size}\uE001`;
+      formulas.set(marker, {
+        source: fragment.value,
+        raw: fragment.raw,
+        display: fragment.display,
+      });
+      return marker;
+    })
+    .join('');
+  const richText = /<\/?[a-z][^>]*>/i.test(prepared);
+  const markerPattern = new RegExp(`(${markerPrefix}\\d+\uE001)`, 'g');
+  const append = (text: string, style: FontStyle) => {
+    for (const fragment of text.split(markerPattern)) {
+      const formula = formulas.get(fragment);
+      if (!formula) {
+        if (fragment) appendRun(fragment, style);
+        continue;
+      }
+      if (formula.display && current) finish();
+      const mathXml = formulaRunXml(
+        richText ? decodeEntities(formula.source) : formula.source,
+        formula.display,
+        style,
+        current?.align ?? alignment(align[0]),
+      );
+      appendRun(formula.raw, { ...style, mathXml });
+      fonts.add('Cambria Math');
+      if (formula.display) finish();
+    }
+  };
+
+  if (!richText) {
+    for (const text of prepared.split(/\r?\n/)) {
       append(text, base);
+      if (!text) current ??= newParagraph();
       finish();
     }
   } else {
-    const tokens = content.text.match(/<!--[\s\S]*?-->|<\/?[A-Za-z][^>]*>|[^<]+|</g) ?? [];
+    const tokens = prepared.match(/<!--[\s\S]*?-->|<\/?[A-Za-z][^>]*>|[^<]+|</g) ?? [];
     for (const token of tokens) {
       if (token.startsWith('<!--')) continue;
       if (!token.startsWith('<')) {
@@ -317,5 +360,54 @@ export function mapPptdText(
       ),
     ),
     fonts: [...fonts],
+    mathRuns: paragraphs.flatMap((paragraph) =>
+      paragraph.lines.flatMap((line) =>
+        line.runs.map((run) => (run.style as FontStyle).mathXml ?? null),
+      ),
+    ),
+    mathLineSpacing: paragraphs.map((paragraph) =>
+      paragraph.lines.some((line) =>
+        line.runs.some((run) => Boolean((run.style as FontStyle).mathXml)),
+      )
+        ? Math.round(
+            Math.max(
+              1,
+              paragraph.lineSpacingPx / Math.max(...paragraph.lines.map((line) => line.sizePx)),
+            ) * 100000,
+          )
+        : null,
+    ),
   };
+}
+
+export function decorateNativeTextXml(xml: string, text: NativeText, wrapShape = false): string {
+  const base = xml.replace(
+    /<a:bodyPr\b[^>]*>/,
+    `<a:bodyPr wrap="${text.wrap}" lIns="0" tIns="0" rIns="0" bIns="0" rtlCol="0" anchor="${text.anchor}">`,
+  );
+  let run = 0;
+  const fallback = base.replace(/<a:r>[\s\S]*?<\/a:r>/g, (xmlRun) => {
+    const eastAsian = text.eastAsianFonts[run++];
+    return eastAsian
+      ? xmlRun.replace(/<a:ea typeface="[^"]*"\/>/, `<a:ea typeface="${escapeXml(eastAsian)}"/>`)
+      : xmlRun;
+  });
+  run = 0;
+  let native = fallback.replace(
+    /<a:r>[\s\S]*?<\/a:r>/g,
+    (xmlRun) => text.mathRuns[run++] ?? xmlRun,
+  );
+  let paragraph = 0;
+  native = native.replace(/<a:p>[\s\S]*?<\/a:p>/g, (xmlParagraph) => {
+    const spacing = text.mathLineSpacing[paragraph++];
+    // Fixed baseline spacing overlaps tall Office math with adjacent lines. Percent spacing lets
+    // PowerPoint measure fractions, integrals and matrices while retaining the author's multiplier.
+    return spacing === null || spacing === undefined
+      ? xmlParagraph
+      : xmlParagraph.replace(
+          /<a:lnSpc>[\s\S]*?<\/a:lnSpc>/,
+          `<a:lnSpc><a:spcPct val="${spacing}"/></a:lnSpc>`,
+        );
+  });
+  return wrapShape && text.mathRuns.some(Boolean) ? mathCompatibilityXml(native, fallback) : native;
 }

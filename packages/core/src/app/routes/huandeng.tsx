@@ -2,6 +2,7 @@ import {
   AlertCircle,
   ArrowLeft,
   ArrowRight,
+  BookOpen,
   Check,
   Circle,
   Copy,
@@ -10,6 +11,7 @@ import {
   Files,
   FileText,
   FolderOpen,
+  Group,
   History,
   ImagePlus,
   Loader2,
@@ -24,17 +26,22 @@ import {
   Square,
   Type,
   Undo2,
+  Ungroup,
   X,
 } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { DesignIntentPanel } from '@/components/pptd/design-intent-panel';
+import { type DesignIntentDraft, DesignIntentPanel } from '@/components/pptd/design-intent-panel';
 import { alignedBounds, PptdEditorCanvas } from '@/components/pptd/editor-canvas';
 import { PptdInspector } from '@/components/pptd/inspector';
 import { PageHistoryDialog } from '@/components/pptd/page-history-dialog';
+import { ProjectPanel } from '@/components/pptd/project-panel';
 import { PptdProjectTree } from '@/components/pptd/project-tree';
 import { RecipePanel } from '@/components/pptd/recipe-panel';
 import { PptdPageRenderer, type PptdTheme } from '@/components/pptd/renderer';
+import { ScienceInsertMenu } from '@/components/pptd/science-insert-menu';
+import type { ChartDataDraft } from '@/components/pptd/science-inspector';
+import { TechnicalQaPanel } from '@/components/pptd/technical-qa-panel';
 import { PptdThumbnailRail } from '@/components/pptd/thumbnail-rail';
 import { SlideCanvas } from '@/components/slide-canvas';
 import { ThemeToggle } from '@/components/theme-toggle';
@@ -55,10 +62,55 @@ import { isTypingTarget } from '@/lib/keys';
 import { draftHasChanges } from '@/lib/pptd-document';
 import { useDocumentTitle } from '@/lib/use-document-title';
 import { usePptdDocument } from '@/lib/use-pptd-document';
-import type { PptdElement, PptdOperation } from '../../pptd/types';
+import {
+  buildGroup,
+  duplicateElements,
+  expandGroupIds,
+  groupChildren,
+  owningGroupId,
+  transformGroup,
+  ungroupOperations,
+} from '../../pptd/grouping';
+import { readProjectModel } from '../../pptd/project-model';
+import type { DeckSnapshot, PageSnapshot, PptdElement, PptdOperation } from '../../pptd/types';
 
 export function HuandengEditor() {
-  const { client, backend, state } = usePptdDocument();
+  const [projectDirty, setProjectDirty] = useState(false);
+  const [storyDrafts, setStoryDrafts] = useState<Record<string, DesignIntentDraft>>({});
+  const [chartDrafts, setChartDrafts] = useState<Record<string, Record<string, ChartDataDraft>>>(
+    {},
+  );
+  const [pendingDraftsOpen, setPendingDraftsOpen] = useState(false);
+  const [draftResetKey, setDraftResetKey] = useState(0);
+  const [importingImages, setImportingImages] = useState(false);
+  const storyDirty = Object.values(storyDrafts).some((draft) => draft.dirty);
+  const chartDirty = Object.values(chartDrafts).some((drafts) => Object.keys(drafts).length > 0);
+  const auxiliaryDirty = projectDirty || storyDirty || chartDirty;
+  const { client, backend, state } = usePptdDocument(auxiliaryDirty, importingImages);
+  const retainChartDraft = useCallback(
+    (pageId: string, elementId: string, draft: ChartDataDraft | null) => {
+      setChartDrafts((current) => {
+        if (JSON.stringify(current[pageId]?.[elementId] ?? null) === JSON.stringify(draft))
+          return current;
+        const pageDrafts = { ...current[pageId] };
+        if (draft) pageDrafts[elementId] = draft;
+        else delete pageDrafts[elementId];
+        const next = { ...current, [pageId]: pageDrafts };
+        if (!Object.keys(pageDrafts).length) delete next[pageId];
+        return next;
+      });
+    },
+    [],
+  );
+  const retainStoryDraft = useCallback((pageId: string, draft: DesignIntentDraft | null) => {
+    setStoryDrafts((current) => {
+      if (JSON.stringify(current[pageId] ?? null) === JSON.stringify(draft)) return current;
+      const next = { ...current };
+      if (draft) next[pageId] = draft;
+      else delete next[pageId];
+      return next;
+    });
+  }, []);
   const [searchParams, setSearchParams] = useSearchParams();
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
   const [scale, setScale] = useState<number | undefined>();
@@ -69,31 +121,63 @@ export function HuandengEditor() {
   const [imageDialog, setImageDialog] = useState(false);
   const [imagePath, setImagePath] = useState('');
   const [historyPageId, setHistoryPageId] = useState<string | null>(null);
-  const [leftTab, setLeftTab] = useState<'pages' | 'files'>('pages');
+  const [leftTab, setLeftTab] = useState<'pages' | 'files' | 'project'>('pages');
+  const [presentationView, setPresentationView] = useState<DeckSnapshot | null>(null);
+  const [presentationLoading, setPresentationLoading] = useState(false);
+  const [presentationError, setPresentationError] = useState<string | null>(null);
   const [exporting, setExporting] = useState(false);
   const [exportReport, setExportReport] = useState<string | null>(null);
   const [uiError, setUiError] = useState<string | null>(null);
   const snapshot = state.snapshot;
+  const selectedPresentationId = searchParams.get('presentation');
+  const requestedOccurrence = searchParams.get('occurrence');
+  const project = useMemo(
+    () => (snapshot ? readProjectModel(snapshot.metadata) : null),
+    [snapshot],
+  );
+  const viewPages = selectedPresentationId
+    ? presentationView?.presentationId === selectedPresentationId
+      ? presentationView.pages
+      : []
+    : (snapshot?.pages ?? []);
   const requestedId = searchParams.get('page');
-  const selectedPageId =
-    snapshot?.pages.find(
+  const selectedView =
+    viewPages.find((item) => item.occurrenceId === requestedOccurrence) ??
+    viewPages.find(
       (item) =>
-        item.pageId === requestedId || item.shortCode?.toLowerCase() === requestedId?.toLowerCase(),
-    )?.pageId ??
-    (requestedId && state.drafts[requestedId] ? requestedId : (snapshot?.pages[0]?.pageId ?? null));
-  const page = selectedPageId ? client.page(selectedPageId) : undefined;
+        item.pageId === requestedId ||
+        item.shortCode?.toLowerCase() === requestedId?.toLowerCase() ||
+        item.metadata.label?.toLowerCase() === requestedId?.toLowerCase(),
+    ) ??
+    viewPages[0];
+  const selectedPageId =
+    selectedView?.pageId ??
+    (!selectedPresentationId && requestedId && state.drafts[requestedId] ? requestedId : null);
+  const livePage = selectedPageId ? client.page(selectedPageId) : undefined;
+  const page: PageSnapshot | undefined = selectedView?.versionId
+    ? selectedView
+    : livePage
+      ? {
+          ...livePage,
+          occurrenceId: selectedView?.occurrenceId,
+          ...(selectedView?.presentationNotes !== undefined
+            ? { data: { ...livePage.data, notes: selectedView.presentationNotes } }
+            : {}),
+        }
+      : undefined;
   const theme = useMemo(
     () => (snapshot?.manifest.theme ?? {}) as PptdTheme,
     [snapshot?.manifest.theme],
   );
-  const pageIndex = snapshot?.pages.findIndex((item) => item.pageId === selectedPageId) ?? -1;
+  const pageIndex = selectedView ? viewPages.indexOf(selectedView) : -1;
   const selectedElements =
     page?.data.elements.filter((element) => selectedIds.includes(element.elementId)) ?? [];
   const drafts = Object.values(state.drafts).filter(draftHasChanges);
   const conflict = selectedPageId ? state.drafts[selectedPageId]?.conflict : undefined;
-  const readonly = !snapshot?.writable;
-  const busy = state.saving || exporting;
-  const nextPage = pageIndex >= 0 ? snapshot?.pages[pageIndex + 1] : undefined;
+  const readonly = !snapshot?.writable || !!selectedView?.versionId;
+  const busy = state.saving || exporting || importingImages;
+  const presentationBlocked = auxiliaryDirty || presentationLoading || !!presentationError;
+  const nextPage = pageIndex >= 0 ? viewPages[pageIndex + 1] : undefined;
   const historyPage = snapshot?.pages.find((item) => item.pageId === historyPageId);
 
   useDocumentTitle(snapshot ? `${snapshot.title} · HUANDENG Editor` : 'HUANDENG Editor');
@@ -108,11 +192,50 @@ export function HuandengEditor() {
   }, []);
 
   const selectPage = useCallback(
+    (id: string, occurrenceId?: string) => {
+      setSelectedIds([]);
+      setSearchParams(
+        (current) => {
+          const next = new URLSearchParams(current);
+          next.set('page', id);
+          if (occurrenceId) next.set('occurrence', occurrenceId);
+          else next.delete('occurrence');
+          return next;
+        },
+        { replace: true },
+      );
+    },
+    [setSearchParams],
+  );
+
+  const selectPresentation = useCallback(
+    (id: string | null) => {
+      setSelectedIds([]);
+      setPresenting(false);
+      setPresentationError(null);
+      setSearchParams(
+        (current) => {
+          const next = new URLSearchParams(current);
+          if (id) next.set('presentation', id);
+          else next.delete('presentation');
+          next.delete('page');
+          next.delete('occurrence');
+          return next;
+        },
+        { replace: true },
+      );
+    },
+    [setSearchParams],
+  );
+
+  const selectMainPage = useCallback(
     (id: string) => {
       setSelectedIds([]);
       setSearchParams(
         (current) => {
           const next = new URLSearchParams(current);
+          next.delete('presentation');
+          next.delete('occurrence');
           next.set('page', id);
           return next;
         },
@@ -121,6 +244,37 @@ export function HuandengEditor() {
     },
     [setSearchParams],
   );
+
+  useEffect(() => {
+    if (!selectedPresentationId || !snapshot) {
+      setPresentationView(null);
+      setPresentationLoading(false);
+      setPresentationError(null);
+      return;
+    }
+    let active = true;
+    setPresentationLoading(true);
+    void backend
+      .presentation(selectedPresentationId)
+      .then((result) => {
+        if (active) {
+          setPresentationView(result);
+          setPresentationError(null);
+        }
+      })
+      .catch((error: unknown) => {
+        if (active) {
+          setPresentationView(null);
+          setPresentationError(error instanceof Error ? error.message : String(error));
+        }
+      })
+      .finally(() => {
+        if (active) setPresentationLoading(false);
+      });
+    return () => {
+      active = false;
+    };
+  }, [backend, selectedPresentationId, snapshot]);
 
   useEffect(() => {
     if (!page) return;
@@ -134,24 +288,203 @@ export function HuandengEditor() {
 
   useEffect(() => {
     if (!snapshot) return;
-    void backend.selection(selectedPageId, selectedIds, client.clientId).catch(() => {});
-  }, [backend, client.clientId, selectedPageId, selectedIds, snapshot]);
+    void backend
+      .selection(
+        selectedPageId,
+        selectedIds,
+        client.clientId,
+        selectedPresentationId && selectedView
+          ? {
+              presentationId: selectedPresentationId,
+              occurrenceId: selectedView.occurrenceId,
+              versionId: selectedView.versionId,
+            }
+          : undefined,
+      )
+      .catch(() => {});
+  }, [
+    backend,
+    client.clientId,
+    selectedPageId,
+    selectedIds,
+    snapshot,
+    selectedPresentationId,
+    selectedView,
+  ]);
 
   const apply = useCallback(
     (operations: PptdOperation[]) =>
       run(async () => {
         const result = await client.apply(operations);
-        if (result.createdPages[0]) selectPage(result.createdPages[0].pageId);
+        if (result.createdPages[0]) selectMainPage(result.createdPages[0].pageId);
       }),
-    [client, run, selectPage],
+    [client, run, selectMainPage],
   );
 
   const removeElements = useCallback(() => {
-    if (!selectedPageId || !selectedIds.length) return;
-    void apply(
-      selectedIds.map((elementId) => ({ op: 'element.remove', pageId: selectedPageId, elementId })),
-    );
-  }, [apply, selectedPageId, selectedIds]);
+    if (!page || !selectedIds.length) return;
+    void run(async () => {
+      const ordered: string[] = [];
+      const visit = (id: string) => {
+        if (ordered.includes(id)) return;
+        const element = page.data.elements.find((item) => item.elementId === id);
+        if (!element) return;
+        ordered.push(id);
+        for (const child of groupChildren(element)) visit(child);
+      };
+      for (const id of selectedIds) visit(id);
+      await client.apply(
+        ordered.map((elementId) => ({ op: 'element.remove', pageId: page.pageId, elementId })),
+      );
+    });
+  }, [client, page, run, selectedIds]);
+
+  const patchElement = useCallback(
+    (elementId: string, fields: Record<string, unknown>, autosave = true) => {
+      if (!selectedPageId) return;
+      const current = client.page(selectedPageId);
+      const element = current?.data.elements.find((item) => item.elementId === elementId);
+      if (!current || !element) return;
+      try {
+        if (element.elementType === 'group' && (fields.bounds || fields.rotation !== undefined)) {
+          for (const patch of transformGroup(current.data.elements, elementId, fields))
+            client.patchElement(selectedPageId, patch.elementId, patch.fields, autosave);
+          const other = Object.fromEntries(
+            Object.entries(fields).filter(([key]) => !['bounds', 'rotation'].includes(key)),
+          );
+          if (Object.keys(other).length)
+            client.patchElement(selectedPageId, elementId, other, autosave);
+        } else client.patchElement(selectedPageId, elementId, fields, autosave);
+      } catch (error) {
+        setUiError(error instanceof Error ? error.message : String(error));
+      }
+    },
+    [client, selectedPageId],
+  );
+
+  const groupSelection = useCallback(
+    (ungroup = false) => {
+      if (!page) return;
+      void run(async () => {
+        if (ungroup) {
+          const groups = selectedElements.filter((item) => item.elementType === 'group');
+          await client.apply(
+            ungroupOperations(
+              page.pageId,
+              page.data.elements,
+              groups.map((item) => item.elementId),
+            ),
+          );
+          setSelectedIds(groups.flatMap(groupChildren));
+        } else {
+          const group = buildGroup(page.data.elements, selectedIds, `group-${crypto.randomUUID()}`);
+          await client.apply([{ op: 'element.add', pageId: page.pageId, element: group }]);
+          setSelectedIds([group.elementId]);
+        }
+      });
+    },
+    [client, page, run, selectedElements, selectedIds],
+  );
+
+  const importImages = useCallback(
+    (files: File[]) => {
+      if (!page || !snapshot || readonly || busy || !files.length) return;
+      void run(async () => {
+        setImportingImages(true);
+        try {
+          const elements: PptdElement[] = [];
+          for (const [index, file] of files.slice(0, 20).entries()) {
+            const asset = await backend.importImage(file);
+            const ratio = Math.min(
+              (snapshot.size[0] * 0.7) / asset.width,
+              (snapshot.size[1] * 0.7) / asset.height,
+              1,
+            );
+            const width = asset.width * ratio;
+            const height = asset.height * ratio;
+            elements.push({
+              elementId: `image-${crypto.randomUUID()}`,
+              elementType: 'image',
+              src: asset.path,
+              bounds: [
+                (snapshot.size[0] - width) / 2 + index * 12,
+                (snapshot.size[1] - height) / 2 + index * 12,
+                width,
+                height,
+              ],
+              fit: { mode: 'contain' },
+              sourceName: asset.name,
+            });
+          }
+          await client.apply(
+            elements.map((element) => ({ op: 'element.add', pageId: page.pageId, element })),
+          );
+          setSelectedIds(elements.map((element) => element.elementId));
+          setImageDialog(false);
+        } finally {
+          setImportingImages(false);
+        }
+      });
+    },
+    [backend, busy, client, page, readonly, run, snapshot],
+  );
+
+  useEffect(() => {
+    const paste = (event: ClipboardEvent) => {
+      if (
+        !page ||
+        !snapshot ||
+        readonly ||
+        busy ||
+        isTypingTarget(event.target) ||
+        (event.target as Element)?.closest('[role="dialog"]')
+      )
+        return;
+      const files = Array.from(event.clipboardData?.files ?? []).filter((file) =>
+        file.type.startsWith('image/'),
+      );
+      if (files.length) {
+        event.preventDefault();
+        importImages(files);
+        return;
+      }
+      let copied: {
+        kind?: string;
+        deckId?: string;
+        elements?: PptdElement[];
+        selectedIds?: string[];
+      };
+      try {
+        copied = JSON.parse(event.clipboardData?.getData('text/plain') ?? '');
+      } catch {
+        return;
+      }
+      if (
+        copied.kind !== 'huandeng-elements' ||
+        !Array.isArray(copied.elements) ||
+        !Array.isArray(copied.selectedIds)
+      )
+        return;
+      event.preventDefault();
+      const copiedElements = copied.elements;
+      const copiedSelection = copied.selectedIds;
+      void run(async () => {
+        if (copied.deckId !== snapshot.deckId)
+          throw new Error('请在同一项目中复制对象。跨项目图片可用“导入图片”复制素材。');
+        const duplicated = duplicateElements(
+          copiedElements,
+          copiedSelection,
+          () => `node-${crypto.randomUUID()}`,
+        );
+        await client.apply(
+          duplicated.copies.map((element) => ({ op: 'element.add', pageId: page.pageId, element })),
+        );
+        setSelectedIds(duplicated.selectedIds);
+      });
+    };
+    window.addEventListener('paste', paste);
+    return () => window.removeEventListener('paste', paste);
+  }, [busy, client, importImages, page, readonly, run, snapshot]);
 
   const addElement = (
     type: 'text' | 'shape' | 'line' | 'image',
@@ -194,15 +527,16 @@ export function HuandengEditor() {
     if (!page || !snapshot || !selectedElements.length) return;
     client.beginInteraction(page.pageId);
     for (const item of alignedBounds(selectedElements, alignment, snapshot.size))
-      client.patchElement(page.pageId, item.elementId, { bounds: item.bounds }, false);
+      patchElement(item.elementId, { bounds: item.bounds }, false);
     void run(() => client.endInteraction(page.pageId));
   };
 
   const layer = (direction: 'front' | 'back') => {
     if (!page) return;
     const ids = page.data.elements.map((element) => element.elementId);
-    const selected = ids.filter((id) => selectedIds.includes(id));
-    const rest = ids.filter((id) => !selectedIds.includes(id));
+    const selection = new Set(expandGroupIds(page.data.elements, selectedIds));
+    const selected = ids.filter((id) => selection.has(id));
+    const rest = ids.filter((id) => !selection.has(id));
     void apply([
       {
         op: 'element.reorder',
@@ -214,11 +548,11 @@ export function HuandengEditor() {
 
   const stepPage = useCallback(
     (delta: number) => {
-      if (!snapshot?.pages.length) return;
-      const next = Math.max(0, Math.min(snapshot.pages.length - 1, pageIndex + delta));
-      selectPage(snapshot.pages[next].pageId);
+      if (!viewPages.length) return;
+      const next = Math.max(0, Math.min(viewPages.length - 1, pageIndex + delta));
+      selectPage(viewPages[next].pageId, viewPages[next].occurrenceId);
     },
-    [snapshot, pageIndex, selectPage],
+    [viewPages, pageIndex, selectPage],
   );
 
   useEffect(() => {
@@ -233,9 +567,14 @@ export function HuandengEditor() {
       if ((event.target as Element)?.closest('[role="dialog"], [role="menu"]')) return;
       if (event.key === 'F5' && page) {
         event.preventDefault();
+        if (presentationBlocked) {
+          setUiError('请先保存项目草稿并解决演讲引用问题。');
+          return;
+        }
         void run(async () => {
           await client.flushAll();
-          if (!event.shiftKey && snapshot?.pages[0]) selectPage(snapshot.pages[0].pageId);
+          if (!event.shiftKey && viewPages[0])
+            selectPage(viewPages[0].pageId, viewPages[0].occurrenceId);
           setPresenterNotesOpen(false);
           setPresenting(true);
         });
@@ -265,38 +604,64 @@ export function HuandengEditor() {
         ?.getAttribute('data-hd-thumbnail');
       if (control && event.key.toLowerCase() === 'm') {
         event.preventDefault();
+        if (selectedPresentationId) {
+          setLeftTab('project');
+          return;
+        }
         void apply([{ op: 'page.add', afterPageId: selectedPageId }]);
         return;
       }
       if (control && event.key.toLowerCase() === 'd') {
         event.preventDefault();
         if (railPageId || !selectedElements.length) {
+          if (selectedPresentationId) {
+            setLeftTab('project');
+            return;
+          }
           const pageId = railPageId ?? selectedPageId;
           if (pageId) void apply([{ op: 'page.duplicate', pageId }]);
         } else if (page) {
-          const copies = selectedElements.map((element) => {
-            const copy = structuredClone(element);
-            copy.elementId = `node-${crypto.randomUUID()}`;
-            if (copy.bounds)
-              copy.bounds = [
-                copy.bounds[0] + 16,
-                copy.bounds[1] + 16,
-                copy.bounds[2],
-                copy.bounds[3],
-              ];
-            return copy;
-          });
           void run(async () => {
+            const { copies, selectedIds: selection } = duplicateElements(
+              page.data.elements,
+              selectedIds,
+              () => `node-${crypto.randomUUID()}`,
+              16,
+            );
             await client.apply(
               copies.map((element) => ({ op: 'element.add', pageId: page.pageId, element })),
             );
-            setSelectedIds(copies.map((element) => element.elementId));
+            setSelectedIds(selection);
           });
         }
         return;
       }
+      if (control && event.key.toLowerCase() === 'g' && selectedIds.length) {
+        event.preventDefault();
+        groupSelection(event.shiftKey);
+        return;
+      }
+      if (control && event.key.toLowerCase() === 'c' && page && selectedIds.length) {
+        event.preventDefault();
+        void run(async () => {
+          const ids = new Set(expandGroupIds(page.data.elements, selectedIds));
+          await navigator.clipboard.writeText(
+            JSON.stringify({
+              kind: 'huandeng-elements',
+              deckId: snapshot?.deckId,
+              elements: page.data.elements.filter((item) => ids.has(item.elementId)),
+              selectedIds,
+            }),
+          );
+        });
+        return;
+      }
       if (railPageId && (event.key === 'Delete' || event.key === 'Backspace')) {
         event.preventDefault();
+        if (selectedPresentationId) {
+          setLeftTab('project');
+          return;
+        }
         void apply([{ op: 'page.remove', pageId: railPageId }]);
         return;
       }
@@ -310,7 +675,11 @@ export function HuandengEditor() {
       if ((event.target as Element)?.closest('button, select, [role="dialog"]')) return;
       if (control && event.key.toLowerCase() === 'a' && page) {
         event.preventDefault();
-        setSelectedIds(page.data.elements.map((element) => element.elementId));
+        setSelectedIds(
+          page.data.elements
+            .filter((element) => !owningGroupId(page.data.elements, element.elementId))
+            .map((element) => element.elementId),
+        );
         return;
       }
       if (event.key === 'Delete' || event.key === 'Backspace') {
@@ -328,7 +697,7 @@ export function HuandengEditor() {
         for (const element of selectedElements) {
           if (!element.bounds) continue;
           const [x, y, width, height] = element.bounds;
-          client.patchElement(page.pageId, element.elementId, {
+          patchElement(element.elementId, {
             bounds: [
               x + (event.key === 'ArrowLeft' ? -step : event.key === 'ArrowRight' ? step : 0),
               y + (event.key === 'ArrowUp' ? -step : event.key === 'ArrowDown' ? step : 0),
@@ -361,14 +730,21 @@ export function HuandengEditor() {
     selectPage,
     snapshot,
     stepPage,
+    selectedIds,
+    groupSelection,
+    patchElement,
+    presentationBlocked,
+    selectedPresentationId,
+    viewPages,
   ]);
 
   const exportDeck = (format: 'pptx' | 'pdf') =>
     void run(async () => {
+      if (presentationBlocked) throw new Error('请先保存项目草稿并解决演讲引用问题。');
       await client.flushAll();
       setExporting(true);
       try {
-        const result = await backend.export(format);
+        const result = await backend.export(format, selectedPresentationId);
         const link = document.createElement('a');
         link.href = result.url;
         link.download = result.fileName;
@@ -462,17 +838,19 @@ export function HuandengEditor() {
       </div>
     );
 
-  const status = readonly
-    ? '只读模式'
-    : state.saving
-      ? '正在保存…'
-      : drafts.some((draft) => draft.conflict)
-        ? '草稿冲突 · 已保留'
-        : state.error
-          ? '保存需检查'
-          : drafts.length
-            ? `待保存 · ${drafts.length} 页`
-            : '已保存';
+  const status = auxiliaryDirty
+    ? '项目 / Story / 图表有未保存的草稿'
+    : readonly
+      ? '只读模式'
+      : state.saving
+        ? '正在保存…'
+        : drafts.some((draft) => draft.conflict)
+          ? '草稿冲突 · 已保留'
+          : state.error
+            ? '保存需检查'
+            : drafts.length
+              ? `待保存 · ${drafts.length} 页`
+              : '已保存';
   return (
     <div
       className="flex h-dvh min-w-[760px] flex-col overflow-hidden bg-canvas text-foreground"
@@ -524,6 +902,19 @@ export function HuandengEditor() {
           <h1 className="truncate text-sm font-medium" title={snapshot.entry}>
             {snapshot.title || '未命名演示'}
           </h1>
+          <select
+            aria-label="当前演讲集合"
+            className="max-w-full rounded bg-transparent text-xs text-muted-foreground"
+            value={selectedPresentationId ?? ''}
+            onChange={(event) => selectPresentation(event.target.value || null)}
+          >
+            <option value="">Main Slides · {snapshot.pages.length} 页</option>
+            {project?.presentations.map((item) => (
+              <option key={item.id} value={item.id}>
+                {item.title}
+              </option>
+            ))}
+          </select>
           <div
             className="flex items-center gap-1.5 text-[10px] text-muted-foreground"
             aria-live="polite"
@@ -531,7 +922,7 @@ export function HuandengEditor() {
           >
             {state.saving ? (
               <Loader2 className="size-2.5 animate-spin" />
-            ) : drafts.length || state.error ? (
+            ) : drafts.length || state.error || auxiliaryDirty ? (
               <Circle className="size-2.5" />
             ) : (
               <Check className="size-2.5" />
@@ -583,14 +974,19 @@ export function HuandengEditor() {
             保存
           </Button>
           <span className="mx-1 h-5 w-px bg-border" />
-          <Button variant="ghost" size="sm" disabled={busy} onClick={() => exportDeck('pdf')}>
+          <Button
+            variant="ghost"
+            size="sm"
+            disabled={busy || presentationBlocked}
+            onClick={() => exportDeck('pdf')}
+          >
             PDF
           </Button>
           <Button
             variant="outline"
             size="sm"
             aria-label="导出 PPTX"
-            disabled={busy}
+            disabled={busy || presentationBlocked}
             onClick={() => exportDeck('pptx')}
           >
             {exporting ? <Loader2 className="animate-spin" /> : <Download />}PPTX
@@ -598,7 +994,7 @@ export function HuandengEditor() {
           <Button
             variant="default"
             size="sm"
-            disabled={!page || busy}
+            disabled={!page || busy || presentationBlocked}
             onClick={() =>
               void run(async () => {
                 await client.flushAll();
@@ -613,13 +1009,42 @@ export function HuandengEditor() {
           <ThemeToggle />
         </div>
       </header>
-      {(uiError || state.error) && (
+      {auxiliaryDirty && (
+        <div className="flex shrink-0 items-center gap-2 border-b bg-amber-50 px-4 py-1.5 text-xs text-amber-900">
+          <span className="flex-1">
+            页面内容仍会自动保存；项目编排、Story 和图表数据草稿需要单独保存或放弃。
+          </span>
+          {projectDirty && (
+            <Button size="xs" variant="ghost" onClick={() => setLeftTab('project')}>
+              查看项目草稿
+            </Button>
+          )}
+          {storyDirty && (
+            <Button
+              size="xs"
+              variant="ghost"
+              onClick={() => {
+                const id = Object.keys(storyDrafts).find((key) => storyDrafts[key].dirty);
+                if (id) selectMainPage(id);
+              }}
+            >
+              查看页面 Story 草稿
+            </Button>
+          )}
+          {(chartDirty || storyDirty) && (
+            <Button size="xs" variant="ghost" onClick={() => setPendingDraftsOpen(true)}>
+              管理未保存草稿
+            </Button>
+          )}
+        </div>
+      )}
+      {(uiError || state.error || presentationError) && (
         <div
           className="flex shrink-0 items-start gap-2 border-b border-amber-300/50 bg-amber-50 px-4 py-2 text-xs text-amber-900"
           role="alert"
         >
           <AlertCircle className="mt-0.5 size-3.5 shrink-0" />
-          <span className="flex-1">{uiError || state.error?.message}</span>
+          <span className="flex-1">{uiError || state.error?.message || presentationError}</span>
           {state.canRetry && (
             <Button
               size="xs"
@@ -643,10 +1068,20 @@ export function HuandengEditor() {
       )}
       <div className="flex min-h-0 flex-1">
         <aside
-          className="flex w-56 shrink-0 flex-col border-r border-border bg-sidebar"
+          className={`flex ${leftTab === 'project' ? 'w-80' : 'w-56'} shrink-0 flex-col border-r border-border bg-sidebar`}
           aria-label="项目导航"
         >
           <div className="flex h-10 shrink-0 items-center gap-1 border-b border-border px-2">
+            <Button
+              variant={leftTab === 'project' ? 'secondary' : 'ghost'}
+              size="xs"
+              className="flex-1"
+              aria-label="项目与 Story"
+              aria-pressed={leftTab === 'project'}
+              onClick={() => setLeftTab('project')}
+            >
+              <BookOpen /> 项目
+            </Button>
             <Button
               variant={leftTab === 'pages' ? 'secondary' : 'ghost'}
               size="xs"
@@ -670,23 +1105,43 @@ export function HuandengEditor() {
               文件
             </Button>
           </div>
+          <div className={leftTab === 'project' ? 'min-h-0 flex-1 overflow-y-auto' : 'hidden'}>
+            <ProjectPanel
+              snapshot={snapshot}
+              selectedPresentationId={selectedPresentationId}
+              onSelectPresentation={selectPresentation}
+              onSelectPage={(id) => {
+                selectMainPage(id);
+                setLeftTab('pages');
+              }}
+              onApply={(operations, expected) => client.apply(operations, expected)}
+              onDirtyChange={setProjectDirty}
+              loadVersions={(id) => backend.pageHistory(id)}
+              disabled={!snapshot.writable || busy}
+            />
+          </div>
           {leftTab === 'files' ? (
             <PptdProjectTree
               backend={backend}
               snapshot={snapshot}
               currentPageId={selectedPageId}
-              onSelectPage={selectPage}
+              onSelectPage={selectMainPage}
             />
-          ) : (
+          ) : leftTab === 'pages' ? (
             <PptdThumbnailRail
-              pages={snapshot.pages}
+              pages={viewPages}
               size={snapshot.size}
               theme={theme}
               currentPageId={selectedPageId}
-              disabled={readonly || busy}
-              tombstones={Object.entries(snapshot.metadata.slides).filter(
-                ([, item]) => item.state === 'tombstone',
-              )}
+              currentOccurrenceId={selectedView?.occurrenceId}
+              disabled={readonly || busy || !!selectedPresentationId}
+              tombstones={
+                selectedPresentationId
+                  ? []
+                  : Object.entries(snapshot.metadata.slides).filter(
+                      ([, item]) => item.state === 'tombstone',
+                    )
+              }
               onSelect={selectPage}
               onAdd={() =>
                 void apply([
@@ -714,9 +1169,21 @@ export function HuandengEditor() {
                 })
               }
             />
-          )}
+          ) : null}
         </aside>
-        <main className="flex min-w-0 flex-1 flex-col">
+        <main
+          className="flex min-w-0 flex-1 flex-col"
+          onDragOver={(event) => {
+            if (event.dataTransfer.types.includes('Files')) event.preventDefault();
+          }}
+          onDrop={(event) => {
+            const files = Array.from(event.dataTransfer.files);
+            if (files.length) {
+              event.preventDefault();
+              importImages(files);
+            }
+          }}
+        >
           <div className="flex h-11 shrink-0 items-center gap-1 border-b border-border bg-background px-3">
             <Button
               variant="ghost"
@@ -758,14 +1225,65 @@ export function HuandengEditor() {
               <Minus />
               线条
             </Button>
+            <ScienceInsertMenu
+              size={snapshot.size}
+              disabled={readonly || busy || !page}
+              onInsert={(element) => {
+                if (!page) return;
+                void run(async () => {
+                  await client.apply([{ op: 'element.add', pageId: page.pageId, element }]);
+                  setSelectedIds([element.elementId]);
+                });
+              }}
+            />
+            <Button
+              variant="ghost"
+              size="icon-sm"
+              aria-label="组合对象"
+              title="组合 Ctrl+G"
+              disabled={readonly || busy || selectedElements.length < 2}
+              onClick={() => groupSelection()}
+            >
+              <Group />
+            </Button>
+            <Button
+              variant="ghost"
+              size="icon-sm"
+              aria-label="取消组合"
+              title="取消组合 Ctrl+Shift+G"
+              disabled={
+                readonly || busy || !selectedElements.some((item) => item.elementType === 'group')
+              }
+              onClick={() => groupSelection(true)}
+            >
+              <Ungroup />
+            </Button>
             <span
               className="ml-auto truncate font-mono text-[10px] text-muted-foreground"
               title={page ? `${page.path} · ${page.pageId}` : undefined}
             >
-              {page?.shortCode ?? ''} {page && `· ${pageIndex + 1} / ${snapshot.pages.length}`}
+              {page?.metadata.label ?? page?.shortCode ?? ''}{' '}
+              {page && `· ${pageIndex + 1} / ${viewPages.length}`}
               {page && <span className="ml-3 hidden xl:inline">{page.path}</span>}
             </span>
           </div>
+          {selectedPresentationId && (
+            <div className="flex shrink-0 items-center gap-2 border-b bg-brand-soft px-4 py-2 text-xs">
+              <span className="flex-1">
+                {selectedView?.versionId
+                  ? '此引用固定为已记录版本，内容只读。'
+                  : '此演讲引用 Main Slides；内容编辑会同步到主页面及其他实时引用。'}
+              </span>
+              {selectedPageId && (
+                <Button size="xs" variant="outline" onClick={() => selectMainPage(selectedPageId)}>
+                  前往 Main Slide
+                </Button>
+              )}
+              <Button size="xs" variant="ghost" onClick={() => setLeftTab('project')}>
+                编排与备注
+              </Button>
+            </div>
+          )}
           {conflict && (
             <div
               className="shrink-0 border-b border-amber-300/50 bg-amber-50 px-4 py-3 text-amber-900"
@@ -794,7 +1312,7 @@ export function HuandengEditor() {
           <div className="relative min-h-0 flex-1 overflow-auto p-6 md:p-8">
             {page ? (
               <PptdEditorCanvas
-                key={page.pageId}
+                key={page.occurrenceId ?? page.pageId}
                 page={page}
                 size={snapshot.size}
                 theme={theme}
@@ -803,9 +1321,7 @@ export function HuandengEditor() {
                 disabled={readonly}
                 scale={scale}
                 onScaleChange={setActualScale}
-                onPatch={(elementId, set, autosave) =>
-                  client.patchElement(page.pageId, elementId, set, autosave)
-                }
+                onPatch={patchElement}
                 onBegin={() => client.beginInteraction(page.pageId)}
                 onEnd={() => void run(() => client.endInteraction(page.pageId))}
                 onCancel={(originals) => client.cancelInteraction(page.pageId, originals)}
@@ -815,13 +1331,23 @@ export function HuandengEditor() {
             ) : (
               <div className="grid h-full place-items-center">
                 <div className="text-center">
-                  <p className="mb-4 text-sm text-muted-foreground">从一张空白页开始。</p>
+                  <p className="mb-4 text-sm text-muted-foreground">
+                    {selectedPresentationId
+                      ? presentationLoading
+                        ? '正在读取演讲引用与固定版本…'
+                        : '在项目面板中为这份演讲添加章节或页面。'
+                      : '从一张空白页开始。'}
+                  </p>
                   <Button
                     disabled={readonly || busy}
-                    onClick={() => void apply([{ op: 'page.add' }])}
+                    onClick={() =>
+                      selectedPresentationId
+                        ? setLeftTab('project')
+                        : void apply([{ op: 'page.add' }])
+                    }
                   >
                     <Plus />
-                    新增页面
+                    {selectedPresentationId ? '编排演讲' : '新增页面'}
                   </Button>
                 </div>
               </div>
@@ -879,7 +1405,7 @@ export function HuandengEditor() {
                 placeholder="这页要讲什么？"
                 className="min-h-20 resize-none border-none bg-transparent p-0 text-xs shadow-none focus-visible:ring-0"
                 value={page.data.notes ?? ''}
-                disabled={readonly}
+                disabled={readonly || !!selectedPresentationId}
                 onChange={(event) => client.setNotes(page.pageId, event.target.value)}
                 onCompositionStart={() => client.setComposing(page.pageId, true)}
                 onCompositionEnd={() => client.setComposing(page.pageId, false)}
@@ -889,15 +1415,17 @@ export function HuandengEditor() {
         </main>
         {page && (
           <PptdInspector
-            key={page.pageId}
+            key={`${page.pageId}:${draftResetKey}`}
             page={page}
+            chartDrafts={chartDrafts[page.pageId]}
+            onChartDraftChange={retainChartDraft}
             theme={theme}
             selectedIds={selectedIds}
             disabled={readonly}
             onSelect={setSelectedIds}
-            onPatch={(elementId, fields, autosave) =>
-              client.patchElement(page.pageId, elementId, fields, autosave)
-            }
+            onPatch={patchElement}
+            onGroup={() => groupSelection()}
+            onUngroup={() => groupSelection(true)}
             onBegin={() => client.beginInteraction(page.pageId)}
             onEnd={() => void run(() => client.endInteraction(page.pageId))}
             onComposition={(composing) => client.setComposing(page.pageId, composing)}
@@ -908,6 +1436,8 @@ export function HuandengEditor() {
             {!selectedIds.length && (
               <DesignIntentPanel
                 page={page}
+                draft={storyDrafts[page.pageId]}
+                onDraftChange={retainStoryDraft}
                 metadataRevision={snapshot.metadataRevision}
                 onApply={(operations, expected) => client.apply(operations, expected)}
                 disabled={readonly || busy}
@@ -919,17 +1449,107 @@ export function HuandengEditor() {
               onApply={(operations, expected) => client.apply(operations, expected)}
               disabled={readonly || busy}
             />
+            <TechnicalQaPanel
+              page={page}
+              size={snapshot.size}
+              diagnostics={snapshot.diagnostics}
+              onSelect={(id) => setSelectedIds([id])}
+            />
           </PptdInspector>
         )}
       </div>
+      <Dialog open={pendingDraftsOpen} onOpenChange={setPendingDraftsOpen}>
+        <DialogContent className="max-h-[85dvh] overflow-auto">
+          <DialogHeader>
+            <DialogTitle>未保存的编辑草稿</DialogTitle>
+            <DialogDescription>
+              草稿在切页时保留。返回原对象完成编辑，或先复制文字；放弃只删除这份待保存草稿。
+            </DialogDescription>
+          </DialogHeader>
+          {Object.entries(storyDrafts)
+            .filter(([, draft]) => draft.dirty)
+            .map(([id, draft]) => (
+              <section key={`story:${id}`} className="space-y-2 border-t pt-3">
+                <h3 className="text-sm">{snapshot.metadata.slides[id]?.label ?? id} · Story</h3>
+                <Textarea
+                  readOnly
+                  aria-label="保留的 Story 草稿"
+                  value={`${draft.purpose}\n\n${draft.keep}`}
+                />
+                <Button
+                  size="xs"
+                  onClick={() => {
+                    selectMainPage(id);
+                    setPendingDraftsOpen(false);
+                  }}
+                >
+                  返回页面
+                </Button>
+                <Button
+                  size="xs"
+                  variant="ghost"
+                  onClick={() => {
+                    retainStoryDraft(id, null);
+                    setDraftResetKey((key) => key + 1);
+                  }}
+                >
+                  放弃这份 Story 草稿
+                </Button>
+              </section>
+            ))}
+          {Object.entries(chartDrafts).flatMap(([id, entries]) =>
+            Object.entries(entries).map(([elementId, draft]) => (
+              <section key={`${id}:${elementId}`} className="space-y-2 border-t pt-3">
+                <h3 className="text-sm">
+                  {snapshot.metadata.slides[id]?.label ?? id} · {elementId}
+                </h3>
+                <Textarea readOnly aria-label="保留的图表数据草稿" value={draft.value} />
+                <Button
+                  size="xs"
+                  onClick={() => {
+                    selectMainPage(id);
+                    setSelectedIds([elementId]);
+                    setPendingDraftsOpen(false);
+                  }}
+                >
+                  返回图表
+                </Button>
+                <Button
+                  size="xs"
+                  variant="ghost"
+                  onClick={() => {
+                    retainChartDraft(id, elementId, null);
+                    setDraftResetKey((key) => key + 1);
+                  }}
+                >
+                  放弃这份图表草稿
+                </Button>
+              </section>
+            )),
+          )}
+        </DialogContent>
+      </Dialog>
       <Dialog open={imageDialog} onOpenChange={setImageDialog}>
         <DialogContent>
           <DialogHeader>
             <DialogTitle>添加原始图片</DialogTitle>
             <DialogDescription>
-              填写项目内已有图片的相对路径，或图片 URL。图片保持独立素材，可以继续裁切和移动。
+              从设备选择图片、拖到画布，或粘贴截图。素材会保存在本项目中，保持原始比例。
             </DialogDescription>
           </DialogHeader>
+          <Input
+            type="file"
+            accept="image/png,image/jpeg,image/gif,image/svg+xml,image/webp"
+            multiple
+            aria-label="从设备导入图片"
+            disabled={busy}
+            onChange={(event) => {
+              importImages(Array.from(event.target.files ?? []));
+              event.target.value = '';
+            }}
+          />
+          {importingImages && <p className="text-xs text-muted-foreground">正在导入图片…</p>}
+          <p className="text-xs text-muted-foreground">也可以引用项目中已有的素材路径：</p>
           <Input
             aria-label="新图片路径"
             placeholder="media/figure.png"
@@ -956,10 +1576,24 @@ export function HuandengEditor() {
           page={historyPage}
           backend={backend}
           theme={theme}
-          disabled={readonly || busy}
+          disabled={readonly || busy || auxiliaryDirty}
           open={Boolean(historyPageId)}
           onOpenChange={(open) => {
             if (!open) setHistoryPageId(null);
+          }}
+          onRecord={async (label) => {
+            await client.flushAll();
+            const current = client.getState().snapshot;
+            const currentPage = current?.pages.find((item) => item.pageId === historyPage.pageId);
+            if (!current || !currentPage) throw new Error('页面已改变，请重新打开版本窗口。');
+            await backend.recordPageVersion({
+              pageId: currentPage.pageId,
+              requestId: crypto.randomUUID(),
+              label,
+              expectedPageRevision: currentPage.pageRevision,
+              expectedMetadataRevision: current.metadataRevision,
+              actor: `huandeng-ui:${client.clientId}`,
+            });
           }}
           onRestore={async (versionId) => {
             await client.flushAll();
@@ -995,7 +1629,7 @@ export function HuandengEditor() {
                 <div className="mb-4 flex items-center justify-between gap-3">
                   <h2 className="text-sm font-medium">演讲者备注</h2>
                   <span className="font-mono text-xs text-zinc-400" data-hd-presenter-code>
-                    {page.shortCode ?? '未编号'} · {pageIndex + 1}
+                    {page.metadata.label ?? page.shortCode ?? '未编号'} · {pageIndex + 1}
                   </span>
                 </div>
                 <div
@@ -1010,7 +1644,9 @@ export function HuandengEditor() {
                     <>
                       <div className="mb-2 flex items-center justify-between text-xs text-zinc-400">
                         <span>下一页</span>
-                        <span className="font-mono">{nextPage.shortCode ?? '未编号'}</span>
+                        <span className="font-mono">
+                          {nextPage.metadata.label ?? nextPage.shortCode ?? '未编号'}
+                        </span>
                       </div>
                       <div
                         data-hd-presenter-next={nextPage.pageId}
@@ -1059,12 +1695,12 @@ export function HuandengEditor() {
               <ArrowLeft className="size-4" />
             </button>
             <span className="font-mono text-xs">
-              {pageIndex + 1} / {snapshot.pages.length} · {page.shortCode}
+              {pageIndex + 1} / {viewPages.length} · {page.metadata.label ?? page.shortCode}
             </span>
             <button
               type="button"
               aria-label="下一页"
-              disabled={pageIndex >= snapshot.pages.length - 1}
+              disabled={pageIndex >= viewPages.length - 1}
               onClick={() => stepPage(1)}
               className="disabled:opacity-30"
             >

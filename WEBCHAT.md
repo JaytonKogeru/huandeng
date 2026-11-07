@@ -1,33 +1,40 @@
-# HUANDENG
+# HUANDENG Editor
 
-## Objective
+## Objective and product contract
 
-Deliver HUANDENG Editor, an Electron desktop editor based on OpenSlide whose persisted document is PPTD, with stable page identities and one GUI/CLI/MCP writer. External agents maintain HUANDENG Story intent. No embedded AI chat. Extensions use HUANDENG Plugin.
+Deliver a usable scientific desktop editor based on OpenSlide / React / Electron, with PPTD as the persisted document and one GUI / CLI / MCP writer. `docs/SPEC.md` is the Master Product Specification; `SPEC-V02`, `SPEC-V03`, and `SPEC-V04` describe incremental deliveries. Keep the existing architecture. Visible product names are HUANDENG Editor, HUANDENG Story, and HUANDENG Plugin.
 
-## Meaningful progress
+## Current implementation
 
-Forked OpenSlide commit `327dd09bcd530eb97647fc33fa67e99f8137d860`, MIT, core 2.3.1. v0.1 baseline is `41af882`. v0.2 is implemented: native Electron editor, project tree, durable page history and agent-maintained intent. Final Windows EXE passed six core flows; four new history tests pass. Evidence is in `docs/IMPLEMENTATION-V02.md`; next gaps are in `docs/HANDOFF-V02.md`.
+v0.4 implements one Main Slides library per project, flat Sections, multiple Presentation Slides with live or named-version references, per-occurrence notes, and Main / Section / Presentation Story. Main pages retain UUIDs and compatible short codes, with stable S1, S2 aliases for people. Ordinary autosave and Undo are separate from explicit named page checkpoints, which archive local assets and effective themes inside the project.
+
+Scientific editing includes KaTeX / MathML, merged tables, ECharts data and 13 chart families, Font Awesome Free, shape presets, nested groups, and content-addressed image import. Supported PPTX objects use native tables, OMML, six chart families with embedded workbooks, and native groups; unsupported native representations use reported object-level images. See `docs/SCIENTIFIC-OBJECTS.md`, `docs/POWERPOINT-COMPARISON.md`, and `docs/PROJECTS.md` for exact contracts and limits.
+
+Release status and actual acceptance evidence belong in `docs/RELEASE-V04.md` and `docs/HANDOFF-V04.md`. Do not infer a finished installation from source code or an RPC receipt. Native synthetic PowerPoint evidence is tracked in `docs/evidence/native-v04`; real research output stays in ignored verification directories.
 
 ## Project truths
 
-- One persisted document: manifest, independent pages and original media. No generated TSX authority.
-- Existing TSX mode remains available. PPTD selection uses page/element IDs.
-- Preserve manifest order, element z-order, unknown fields and the user's intentional layout.
-- Agents and humans share one writer with revisions, idempotent receipts and recoverable saves.
-- Visible naming is HUANDENG per the latest explicit spelling. Existing Huandeng paths, metadata and old CLI/MCP aliases remain compatible; upstream package names and external `fss_*` interfaces are unchanged.
+- Manifest, independent `.page` files and original media remain authoritative. No second TSX save source.
+- Preserve IDs, manifest order, z-order, unknown fields and intentional layout. Presentation order is a separate reference list.
+- Agents and people share revision checks, idempotent requests and recoverable saves. Dirty project, Story and chart drafts must not disappear on navigation or silently overwrite remote changes.
+- Named page versions are portable project data and do not require Git. Restore affects only the target page; shared current media is not overwritten.
+- Keep old protocol aliases and OpenSlide package names compatible. Never rename persisted identity to simplify display.
+- A rendered object is not proof of PowerPoint editability; native / original-image / fallback / blocked modes must stay explicit.
 
-## Source-of-truth map
+## Source map
 
-- `docs/SPEC.md`: user-approved implementation contract, renamed to Huandeng.
-- `packages/core/src/pptd`: document service, agent interfaces, recipes and exports.
+- `packages/core/src/pptd`: document service, project model, checkpoint storage, scientific models, CLI / MCP and export.
 - `packages/core/src/app/components/pptd`, `app/routes/huandeng.tsx`: visual editor.
 - `packages/core/src/vite/routes/pptd.ts`: local API, watcher and export integration.
-- `tests/fixtures`: synthetic development documents. Scientific originals remain external.
+- `packages/desktop`: Windows host and product release identity.
+- `tests/fixtures`: synthetic development documents. Scientific originals are external.
 
-## Verification surfaces
+## Verification
 
-Run typecheck, Biome, focused page-history/save tests, and one real desktop/agent editing flow. Do not repeatedly expand or run the full inherited suite without a concrete need. Verify Windows on THUG at `D:/_Proj/Huandeng`.
+For a release: Biome, core TypeScript, unit tests and core build; then actual Windows `verify-huandeng-desktop.mjs`, `verify-science-v04.mjs`, `verify-project-v04.mjs`, `verify-background-export.mjs`, native Office acceptance and `verify-real-project-v04.mjs <entry>` on an isolated copy. A failed gate needs diagnosis, not a success claim based on another test. Small subsequent changes need only checks resolving their concrete risks.
 
-## Authority boundaries
+THUG canonical code location is `D:/_Proj/Huandeng`. Package committed source in an isolated worktree, validate portability, test the actual EXE, then install to the existing `dist/HUANDENG-win32-x64` path and inspect shortcuts and the build marker.
 
-User authorized the v0.2 SPEC and HUANDENG product family. Use disposable fixtures. Preserve the user's existing changes in `tests/fixtures/studio/pages/identities.page` on THUG. Do not overwrite formal decks, alter legacy projects' uncommitted work, publish packages, or expose a public server. Local commits are permitted; upstream is attribution, not a push target.
+## Authority and preservation
+
+The user authorized autonomous completion of the editor core, testing, installation and a meaningful private-origin release milestone. Preserve the pre-existing modified `tests/fixtures/studio/pages/identities.page` on THUG; never include it in code commits. Do not use formal research decks as write targets. Do not publish npm, push OpenSlide upstream, expose a public server, or change repository visibility. Push source and an annotated editor milestone tag only after acceptance and release / handoff documentation.

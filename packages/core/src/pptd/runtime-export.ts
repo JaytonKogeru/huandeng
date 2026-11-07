@@ -7,6 +7,7 @@ import { type Browser, chromium, type Page } from 'playwright';
 import { runtimeRoot } from './client.ts';
 import { buildPptdPdf, buildPptdPptx } from './export.ts';
 import { imageDimensions } from './export-images.ts';
+import { hashBytes } from './persistence.ts';
 import { type DeckSnapshot, PptdError } from './types.ts';
 
 export function mimeType(file: string) {
@@ -148,6 +149,8 @@ export class ExportManager {
     options: {
       format: 'pptx' | 'pdf' | 'png';
       pageId?: string;
+      occurrenceId?: string;
+      writeToProject?: boolean;
       serverUrl: string;
     },
   ) {
@@ -157,9 +160,14 @@ export class ExportManager {
       const requested =
         frozen.pages.find(
           (page) =>
-            page.pageId === options.pageId ||
-            page.shortCode?.toLowerCase() === options.pageId?.toLowerCase(),
-        ) ?? (!options.pageId ? frozen.pages[0] : undefined);
+            (options.occurrenceId
+              ? page.occurrenceId === options.occurrenceId
+              : page.pageId === options.pageId) ||
+            (!options.occurrenceId &&
+              page.metadata.label?.toLowerCase() === options.pageId?.toLowerCase()) ||
+            (!options.occurrenceId &&
+              page.shortCode?.toLowerCase() === options.pageId?.toLowerCase()),
+        ) ?? (!options.pageId && !options.occurrenceId ? frozen.pages[0] : undefined);
       if (!requested) throw new PptdError('TARGET_NOT_FOUND', 'Page to render was not found.');
       frozen.pages = [requested];
     }
@@ -171,8 +179,23 @@ export class ExportManager {
       });
     }
     const assets = new Map<string, Buffer>();
-    for (const source of assetSources({ manifest: frozen.manifest, pages: frozen.pages })) {
-      assets.set(source, await readProjectAsset(this.root, source));
+    const sources = assetSources(
+      frozen.pages.map((page) => ({
+        data: page.data,
+        theme: page.metadata.themeOverride ?? frozen.manifest.theme,
+      })),
+    );
+    for (const source of sources) {
+      const bytes = await readProjectAsset(this.root, source);
+      const revisions = frozen.pages.flatMap((page) =>
+        Object.hasOwn(page.assetRevisions ?? {}, source) ? [page.assetRevisions?.[source]] : [],
+      );
+      if (revisions.some((revision) => revision !== hashBytes(bytes)))
+        throw new PptdError(
+          'REVISION_CONFLICT',
+          `Asset changed before export could freeze it: ${source}. Retry using the latest project state.`,
+        );
+      assets.set(source, bytes);
     }
     const job: FrozenExport = {
       snapshot: frozen,
@@ -197,11 +220,21 @@ export class ExportManager {
         waitUntil: 'networkidle',
       });
       await browserPage.waitForFunction(
-        () => (window as unknown as Record<string, unknown>).__HUANDENG_EXPORT_READY__ === true,
+        () =>
+          (window as unknown as Record<string, unknown>).__HUANDENG_EXPORT_READY__ === true &&
+          !document.querySelector('[data-hd-loading]'),
         undefined,
         { timeout: 45000 },
       );
-      const issues = await browserPage.locator('[data-hd-export-error]').allTextContents();
+      await browserPage.evaluate(async () => {
+        await document.fonts.ready;
+        await new Promise<void>((resolve) =>
+          requestAnimationFrame(() => requestAnimationFrame(() => resolve())),
+        );
+      });
+      const issues = await browserPage
+        .locator('[data-hd-export-error], [data-hd-formula-error]')
+        .allTextContents();
       if (issues.length)
         throw new PptdError('INVALID_DOCUMENT', 'The renderer reported export problems.', {
           issues,
@@ -211,15 +244,70 @@ export class ExportManager {
     try {
       if (options.format === 'pptx') {
         const exported = await buildPptdPptx(frozen, {
+          measureTable: async (pageSnapshot, element) => {
+            const page = await ensurePage();
+            const frame = page.locator(
+              `[data-hd-export-page=${JSON.stringify(pageSnapshot.occurrenceId ?? pageSnapshot.pageId)}]`,
+            );
+            const table = frame
+              .locator(`[data-hd-element-id=${JSON.stringify(element.elementId)}] table`)
+              .first();
+            return {
+              rowHeights: await table
+                .locator('tr')
+                .evaluateAll((rows) => rows.map((row) => row.getBoundingClientRect().height)),
+            };
+          },
           resolveAsset: async (source) => {
             const bytes = assets.get(source);
             if (!bytes) throw new Error(`Asset was not part of this export snapshot: ${source}`);
             return { bytes, mimeType: mimeType(source) };
           },
+          rasterizeBackground: async (pageSnapshot) => {
+            const page = await ensurePage();
+            const frame = page.locator(
+              `[data-hd-export-page=${JSON.stringify(pageSnapshot.occurrenceId ?? pageSnapshot.pageId)}]`,
+            );
+            const unsupported = await frame
+              .locator('[data-hd-unsupported="true"]')
+              .evaluateAll((nodes) => nodes.some((node) => !node.closest('[data-hd-element-id]')));
+            if (unsupported) throw new Error('No reliable renderer for this page background.');
+            const foreground = frame.locator('[data-hd-element-id]');
+            const visibility = await foreground.evaluateAll((nodes) =>
+              nodes.map((node) => {
+                const style = (node as HTMLElement).style;
+                const value = style.getPropertyValue('visibility');
+                const priority = style.getPropertyPriority('visibility');
+                style.setProperty('visibility', 'hidden', 'important');
+                return { value, priority };
+              }),
+            );
+            try {
+              const bytes = await frame.screenshot({ type: 'png' });
+              const dimensions = imageDimensions(bytes, 'png');
+              if (!dimensions) throw new Error('The browser returned an invalid background PNG.');
+              return {
+                bytes,
+                ...dimensions,
+                bounds: [0, 0, ...frozen.size] as [number, number, number, number],
+              };
+            } finally {
+              await foreground.evaluateAll((nodes, values) => {
+                nodes.forEach((node, index) => {
+                  const previous = values[index];
+                  if (!previous) return;
+                  const style = (node as HTMLElement).style;
+                  if (previous.value)
+                    style.setProperty('visibility', previous.value, previous.priority);
+                  else style.removeProperty('visibility');
+                });
+              }, visibility);
+            }
+          },
           rasterizeElement: async (pageSnapshot, element) => {
             const page = await ensurePage();
             const frame = page.locator(
-              `[data-hd-export-page=${JSON.stringify(pageSnapshot.pageId)}]`,
+              `[data-hd-export-page=${JSON.stringify(pageSnapshot.occurrenceId ?? pageSnapshot.pageId)}]`,
             );
             const node = frame
               .locator(`[data-hd-element-id=${JSON.stringify(element.elementId)}]`)
@@ -296,13 +384,21 @@ export class ExportManager {
           };
         }
       }
-      const base = path.basename(frozen.entry, path.extname(frozen.entry));
+      const base = frozen.presentationId
+        ? `${
+            frozen.title
+              .replace(/[<>:"/\\|?*]/g, '_')
+              .replace(/\p{Cc}/gu, '_')
+              .replace(/[. ]+$/g, '')
+              .slice(0, 100) || 'Presentation'
+          }-${frozen.presentationId.slice(0, 8)}`
+        : path.basename(frozen.entry, path.extname(frozen.entry));
       job.fileName =
         options.format === 'png'
           ? `${frozen.pages[0].shortCode ?? frozen.pages[0].pageId}.png`
           : `${base}.${options.format}`;
       const directory =
-        frozen.writable && options.format !== 'png'
+        (options.writeToProject ?? frozen.writable) && options.format !== 'png'
           ? path.join(this.root, 'Exports')
           : path.join(runtimeRoot(), 'exports', frozen.deckId);
       await fs.mkdir(directory, { recursive: true });

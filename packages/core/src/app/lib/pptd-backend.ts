@@ -1,4 +1,5 @@
 import type {
+  CreatePageCheckpointRequest,
   DeckSnapshot,
   DocumentEvent,
   HistorySummary,
@@ -139,8 +140,32 @@ export class PptdBackend implements PptdTransport {
     return this.request('/project');
   }
 
-  pageHistory(pageId: string): Promise<PageVersionSummary[]> {
-    return this.request(`/pages/${encodeURIComponent(pageId)}/versions`);
+  presentation(presentationId: string): Promise<DeckSnapshot> {
+    return this.request(`/presentations/${encodeURIComponent(presentationId)}`);
+  }
+
+  pageHistory(
+    pageId: string,
+    view: 'checkpoints' | 'operations' = 'checkpoints',
+  ): Promise<PageVersionSummary[]> {
+    return this.request(`/pages/${encodeURIComponent(pageId)}/versions?view=${view}`);
+  }
+
+  recordPageVersion(request: CreatePageCheckpointRequest): Promise<PageVersionSummary> {
+    return this.request(`/pages/${encodeURIComponent(request.pageId)}/checkpoints`, request);
+  }
+
+  async importImage(
+    file: File,
+  ): Promise<{ path: string; name: string; width: number; height: number }> {
+    if (file.size > 32 * 1024 * 1024) throw new Error('请选择小于 32 MiB 的图片。');
+    const base64 = await new Promise<string>((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onerror = () => reject(new Error('无法读取所选图片。'));
+      reader.onload = () => resolve(String(reader.result).split(',')[1] ?? '');
+      reader.readAsDataURL(file);
+    });
+    return this.request('/assets/import', { name: file.name, base64 });
   }
 
   pageVersion(pageId: string, versionId: string): Promise<PageVersionSnapshot> {
@@ -149,17 +174,25 @@ export class PptdBackend implements PptdTransport {
     );
   }
 
-  selection(pageId: string | null, elementIds: string[], clientId: string): Promise<unknown> {
-    return this.request('/selection', { pageId, elementIds, clientId });
+  selection(
+    pageId: string | null,
+    elementIds: string[],
+    clientId: string,
+    context?: { presentationId: string; occurrenceId?: string; versionId?: string },
+  ): Promise<unknown> {
+    return this.request('/selection', { pageId, elementIds, clientId, ...context });
   }
 
-  export(format: 'pptx' | 'pdf'): Promise<{
+  export(
+    format: 'pptx' | 'pdf',
+    presentationId: string | null = null,
+  ): Promise<{
     url: string;
     reportUrl: string;
     report: unknown;
     fileName: string;
   }> {
-    return this.request('/export', { format });
+    return this.request('/export', { format, presentationId });
   }
 
   exportSnapshot(exportId: string): Promise<DeckSnapshot> {

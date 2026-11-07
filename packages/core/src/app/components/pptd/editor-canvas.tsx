@@ -16,6 +16,7 @@ import {
   snapMove,
   unionRects,
 } from '@/lib/inspector/geometry';
+import { expandGroupIds, owningGroupId } from '../../../pptd/grouping';
 import type { Bounds, PageSize, PageSnapshot, PptdElement } from '../../../pptd/types';
 import { SlideCanvas } from '../slide-canvas';
 import { Button } from '../ui/button';
@@ -63,6 +64,7 @@ type Gesture = {
   angle?: number;
   center?: { x: number; y: number };
   moved: boolean;
+  originals: { elementId: string; fields: Record<string, unknown> }[];
 };
 
 export function elementRect(element: PptdElement): Rect {
@@ -165,7 +167,15 @@ export function PptdEditorCanvas({
           x: dx * Math.cos(radians) + dy * Math.sin(radians),
           y: -dx * Math.sin(radians) + dy * Math.cos(radians),
         };
-        const rect = resizeRect(item.rect, gesture.handle ?? 'se', localDelta, event.shiftKey);
+        const isGroup =
+          latest.current.page.data.elements.find((element) => element.elementId === item.id)
+            ?.elementType === 'group';
+        const rect = resizeRect(
+          item.rect,
+          gesture.handle ?? 'se',
+          localDelta,
+          event.shiftKey || isGroup,
+        );
         const shiftX = rect.x + rect.width / 2 - item.rect.x - item.rect.width / 2;
         const shiftY = rect.y + rect.height / 2 - item.rect.y - item.rect.height / 2;
         rect.x =
@@ -201,16 +211,7 @@ export function PptdEditorCanvas({
       if (!gesture) return;
       gestureRef.current = null;
       setGuides([]);
-      if (event.type === 'pointercancel')
-        latest.current.onCancel(
-          gesture.elements.map((item) => ({
-            elementId: item.id,
-            fields:
-              gesture.kind === 'rotate'
-                ? { rotation: item.originalRotation }
-                : { bounds: item.originalBounds },
-          })),
-        );
+      if (event.type === 'pointercancel') latest.current.onCancel(gesture.originals);
       else latest.current.onEnd();
     };
     const cancelOnEscape = (event: KeyboardEvent) => {
@@ -272,6 +273,11 @@ export function PptdEditorCanvas({
       center,
       angle: center ? Math.atan2(event.clientY - center.y, event.clientX - center.x) : undefined,
       moved: false,
+      originals: expandGroupIds(page.data.elements, ids).map((id) => {
+        const element = page.data.elements.find((item) => item.elementId === id);
+        if (!element) throw new Error(`Group member ${id} is missing.`);
+        return { elementId: id, fields: { bounds: element.bounds, rotation: element.rotation } };
+      }),
     };
     onBegin();
   };
@@ -280,15 +286,16 @@ export function PptdEditorCanvas({
     if ((event.target as HTMLElement).closest('[contenteditable="true"]')) return;
     event.stopPropagation();
     event.currentTarget.focus({ preventScroll: true });
+    const targetId = owningGroupId(page.data.elements, element.elementId) ?? element.elementId;
     const ids = event.shiftKey
-      ? selectedIds.includes(element.elementId)
-        ? selectedIds.filter((id) => id !== element.elementId)
-        : [...selectedIds, element.elementId]
-      : selectedIds.includes(element.elementId)
+      ? selectedIds.includes(targetId)
+        ? selectedIds.filter((id) => id !== targetId)
+        : [...selectedIds, targetId]
+      : selectedIds.includes(targetId)
         ? selectedIds
-        : [element.elementId];
+        : [targetId];
     onSelect(ids);
-    if (ids.includes(element.elementId)) startGesture(event, 'move', ids);
+    if (ids.includes(targetId)) startGesture(event, 'move', ids);
   };
 
   const scaleChanged = useCallback(
@@ -352,7 +359,8 @@ export function PptdEditorCanvas({
             theme={theme}
             onElementPointerDown={select}
             onElementFocus={(id) => {
-              if (!selectedIds.includes(id)) onSelect([id]);
+              const groupId = owningGroupId(page.data.elements, id) ?? id;
+              if (!selectedIds.includes(groupId)) onSelect([groupId]);
             }}
             onElementDoubleClick={(element) => {
               if (!disabled && element.elementType === 'text') {

@@ -12,6 +12,8 @@ import type {
   ShapeNode,
   SlideScene,
 } from '../app/lib/pptx/scene';
+import { buildNativeChart, type NativeChart } from './export-chart';
+import { type NativeGroupPlan, planNativeGroups, wrapNativeGroups } from './export-groups';
 import {
   ExportFeatureError,
   elementBounds,
@@ -22,7 +24,10 @@ import {
   imageFormat,
   sceneRect,
 } from './export-images';
-import { mapPptdText, type NativeText } from './export-text';
+import { buildNativeTable, type NativeTable, type TableMeasurements } from './export-table';
+import { decorateNativeTextXml, mapPptdText, type NativeText } from './export-text';
+import { jpegOrientation } from './image-orientation';
+import { SHAPE_PRESETS } from './shape-presets';
 import type {
   Bounds,
   DeckSnapshot,
@@ -63,10 +68,13 @@ export interface PptdExportAdapters {
     context: ExportContext,
   ): Promise<ExportRaster>;
   rasterizeBackground?(page: PageSnapshot, context: ExportContext): Promise<ExportRaster>;
+  measureTable?(page: PageSnapshot, element: PptdElement): Promise<TableMeasurements>;
 }
 
 export interface ExportElementReport {
   pageId: string;
+  occurrenceId?: string;
+  versionId?: string;
   shortCode: string | null;
   elementId: string;
   mode: 'native' | 'image' | 'rendered' | 'blocked';
@@ -75,17 +83,25 @@ export interface ExportElementReport {
   assetRevision?: Revision;
 }
 
+export interface ExportDiagnostic extends Diagnostic {
+  occurrenceId?: string;
+  versionId?: string;
+}
+
 export interface ExportReport {
   schemaVersion: 1;
   renderer: 'huandeng-pptd-v1';
   format: 'pptx' | 'pdf';
   deckId: string;
+  presentationId?: string;
   title: string;
   size: { width: number; height: number; unit: 'pt' };
   manifestRevision: Revision;
   metadataRevision: Revision | null;
   pages: {
     pageId: string;
+    occurrenceId?: string;
+    versionId?: string;
     shortCode: string | null;
     pageRevision: Revision;
     renderRevision: Revision;
@@ -93,7 +109,7 @@ export interface ExportReport {
   elements: ExportElementReport[];
   assets: { source: string; revision: Revision; byteLength: number; mimeType: string }[];
   fonts: string[];
-  diagnostics: Diagnostic[];
+  diagnostics: ExportDiagnostic[];
   complete: boolean;
 }
 
@@ -116,9 +132,17 @@ export class PptdExportError extends Error {
 }
 
 type NativeAsset = { id: number; width: number; height: number; revision: Revision };
-type Decoration = { element: PptdElement; text?: NativeText; line?: string };
+type Decoration = {
+  element: PptdElement;
+  text?: NativeText;
+  line?: string;
+  table?: NativeTable;
+  chart?: NativeChart;
+  raster?: boolean;
+};
 
 const EMU_PER_POINT = 12700;
+const NATIVE_SHAPE_PRESETS = new Set(SHAPE_PRESETS.map(([name]) => name));
 const MIME_BY_FORMAT = {
   png: 'image/png',
   jpeg: 'image/jpeg',
@@ -149,14 +173,17 @@ export function createExportReport(snapshot: DeckSnapshot, format: 'pptx' | 'pdf
     renderer: 'huandeng-pptd-v1',
     format,
     deckId: snapshot.deckId,
+    ...(snapshot.presentationId ? { presentationId: snapshot.presentationId } : {}),
     title: snapshot.title,
     size: { width: snapshot.size[0], height: snapshot.size[1], unit: 'pt' },
     manifestRevision: snapshot.manifestRevision,
     metadataRevision: snapshot.metadataRevision,
     pages: snapshot.pages
       .filter((page) => page.state === 'active')
-      .map(({ pageId, shortCode, pageRevision, renderRevision }) => ({
+      .map(({ pageId, occurrenceId, versionId, shortCode, pageRevision, renderRevision }) => ({
         pageId,
+        ...(occurrenceId ? { occurrenceId } : {}),
+        ...(versionId ? { versionId } : {}),
         shortCode,
         pageRevision,
         renderRevision,
@@ -189,14 +216,18 @@ function assertSnapshot(snapshot: DeckSnapshot, report: ExportReport): void {
   }
   const pageIds = new Set<string>();
   for (const page of snapshot.pages.filter((item) => item.state === 'active')) {
-    if (pageIds.has(page.pageId))
+    const identity = snapshot.presentationId ? (page.occurrenceId ?? page.pageId) : page.pageId;
+    if (pageIds.has(identity))
       report.diagnostics.push({
         code: 'DUPLICATE_PAGE_ID',
         severity: 'error',
         pageId: page.pageId,
-        message: 'A page identity occurs twice.',
+        ...(page.occurrenceId ? { occurrenceId: page.occurrenceId } : {}),
+        message: snapshot.presentationId
+          ? 'A presentation occurrence identity occurs twice.'
+          : 'A page identity occurs twice.',
       });
-    pageIds.add(page.pageId);
+    pageIds.add(identity);
     const elementIds = new Set<string>();
     for (const element of page.data.elements) {
       if (!element.elementId || elementIds.has(element.elementId))
@@ -337,6 +368,7 @@ function geometry(value: unknown, bounds: Bounds): Geometry {
       radius: (2 * Math.min(bounds[2], bounds[3]) * adjustment) / 100000,
     };
   }
+  if (typeof shapeName === 'string' && NATIVE_SHAPE_PRESETS.has(shapeName)) return { kind: 'rect' };
   throw new ExportFeatureError(
     'UNSUPPORTED_GEOMETRY',
     `Shape ${String(shapeName)} needs a rendered fallback.`,
@@ -415,7 +447,15 @@ function issue(
   message: string,
   severity: Diagnostic['severity'],
 ): void {
-  report.diagnostics.push({ pageId: page.pageId, elementId, code, message, severity });
+  report.diagnostics.push({
+    pageId: page.pageId,
+    ...(page.occurrenceId ? { occurrenceId: page.occurrenceId } : {}),
+    ...(page.versionId ? { versionId: page.versionId } : {}),
+    elementId,
+    code,
+    message,
+    severity,
+  });
 }
 
 function addElementReport(
@@ -428,6 +468,8 @@ function addElementReport(
 ): void {
   report.elements.push({
     pageId: page.pageId,
+    ...(page.occurrenceId ? { occurrenceId: page.occurrenceId } : {}),
+    ...(page.versionId ? { versionId: page.versionId } : {}),
     shortCode: page.shortCode,
     elementId: element.elementId,
     mode,
@@ -441,6 +483,7 @@ function finishPptxXml(
   files: Record<string, Uint8Array>,
   size: PageSize,
   decorations: Map<string, Decoration>[],
+  groupPlans: NativeGroupPlan[],
 ): void {
   const presentation = strFromU8(files['ppt/presentation.xml']);
   const dimensions = /<p:sldSz\s+cx="\d+"\s+cy="\d+"\s*\/>/;
@@ -460,13 +503,34 @@ function finishPptxXml(
         const marker = block.match(/<p:cNvPr id="\d+" name="([^"]*)"\/>/)?.[1];
         const decoration = marker ? entries.get(marker) : undefined;
         if (!decoration) return block;
+        if (decoration.table) {
+          const id = Number(block.match(/<p:cNvPr id="(\d+)"/)?.[1]);
+          if (!id) throw new Error('The native object ID was not assigned.');
+          return decoration.table.xml(id);
+        }
+        if (decoration.chart) {
+          const id = Number(block.match(/<p:cNvPr id="(\d+)"/)?.[1]);
+          if (!id) throw new Error('The native object ID was not assigned.');
+          return decoration.chart.install(files, index + 1, id);
+        }
         let result = block.replace(
           /(<p:cNvPr id="\d+" name=")[^"]*("\/>)/,
           (_all, before: string, after: string) =>
             before + escapeXml(decoration.element.elementId.slice(0, 200)) + after,
         );
+        if (decoration.raster) return result;
         if (Array.isArray(decoration.element.flip) && decoration.element.flip[0])
           result = result.replace('<a:xfrm', '<a:xfrm flipH="1"');
+        const preset = String(
+          decoration.element.elementType === 'image'
+            ? (exportRecord(decoration.element.cropShape).shapeName ?? 'rect')
+            : (decoration.element.shapeName ?? 'rect'),
+        );
+        if (NATIVE_SHAPE_PRESETS.has(preset) && !['rect', 'ellipse', 'roundRect'].includes(preset))
+          result = result.replace(
+            /<a:prstGeom prst="rect">[\s\S]*?<\/a:prstGeom>/,
+            `<a:prstGeom prst="${preset}"><a:avLst/></a:prstGeom>`,
+          );
         if (decoration.line) {
           result = result.replace(
             /(<p:spPr><a:xfrm[\s\S]*?<\/a:xfrm>)[\s\S]*?(<\/p:spPr>)/,
@@ -474,26 +538,12 @@ function finishPptxXml(
           );
         }
         if (decoration.text) {
-          const text = decoration.text;
-          result = result.replace(
-            /<a:bodyPr\b[^>]*>/,
-            `<a:bodyPr wrap="${text.wrap}" lIns="0" tIns="0" rIns="0" bIns="0" rtlCol="0" anchor="${text.anchor}">`,
-          );
-          let run = 0;
-          result = result.replace(/<a:r>[\s\S]*?<\/a:r>/g, (xmlRun: string) => {
-            const eastAsian = text.eastAsianFonts[run++];
-            return eastAsian
-              ? xmlRun.replace(
-                  /<a:ea typeface="[^"]*"\/>/,
-                  `<a:ea typeface="${escapeXml(eastAsian)}"/>`,
-                )
-              : xmlRun;
-          });
+          result = decorateNativeTextXml(result, decoration.text, true);
         }
         return result;
       },
     );
-    files[path] = strToU8(xml);
+    files[path] = strToU8(wrapNativeGroups(xml, groupPlans[index], size));
   });
 }
 
@@ -504,13 +554,12 @@ export async function buildPptdPptx(
   const snapshot = freezePptdExportSnapshot(source);
   const report = createExportReport(snapshot, 'pptx');
   assertSnapshot(snapshot, report);
-  const theme = exportRecord(snapshot.manifest.theme);
-  const color = colorResolver(theme);
   const images = new ImageStore();
   const assets = new Map<string, Promise<NativeAsset>>();
   const imageIds = new Map<string, number>();
   const fonts = new Set<string>();
   const decorations: Map<string, Decoration>[] = [];
+  const groupPlans: NativeGroupPlan[] = [];
   const slides: SlideScene[] = [];
 
   const asset = (
@@ -544,6 +593,11 @@ export async function buildPptdPptx(
         throw new ExportFeatureError(
           'IMAGE_FORMAT_FALLBACK',
           'This image format needs browser rendering; the original asset remains unchanged.',
+        );
+      if (format === 'jpeg' && jpegOrientation(bytes) !== 1)
+        throw new ExportFeatureError(
+          'IMAGE_ORIENTATION_FALLBACK',
+          'This JPEG uses EXIF orientation. Browser rendering preserves its orientation and crop without altering the original asset.',
         );
       const dimensions =
         imageDimensions(bytes, format) ??
@@ -651,6 +705,7 @@ export async function buildPptdPptx(
     page: PageSnapshot,
     element: PptdElement,
     name: string,
+    color: ColorResolver,
   ): Promise<{ nodes: SceneNode[]; asset: NativeAsset }> => {
     if (typeof element.src !== 'string' || !element.src)
       throw new ExportFeatureError('INVALID_IMAGE', 'An image must reference its original asset.');
@@ -699,8 +754,11 @@ export async function buildPptdPptx(
   };
 
   for (const page of snapshot.pages.filter((item) => item.state === 'active')) {
+    const theme = exportRecord(page.metadata.themeOverride ?? snapshot.manifest.theme);
+    const color = colorResolver(theme);
     const slide: SlideScene = { background: null, notes: page.data.notes ?? null, nodes: [] };
     const entries = new Map<string, Decoration>();
+    let groupPlan: NativeGroupPlan | undefined;
     decorations.push(entries);
     const background = page.data.background ?? { type: 'solid', color: '#FFFFFF' };
     const backgroundElement: PptdElement = {
@@ -711,7 +769,7 @@ export async function buildPptdPptx(
     };
     try {
       if (exportRecord(background).type === 'image') {
-        const result = await picture(page, backgroundElement, 'hd-background');
+        const result = await picture(page, backgroundElement, 'hd-background', color);
         slide.nodes.push(...result.nodes);
         addElementReport(report, page, backgroundElement, 'image', 'ORIGINAL_ASSET', result.asset);
       } else {
@@ -750,6 +808,34 @@ export async function buildPptdPptx(
     for (const [index, element] of page.data.elements.entries()) {
       const name = `hd-element-${index}`;
       try {
+        if (element.elementType === 'group') {
+          try {
+            groupPlan ??= planNativeGroups(page.data.elements);
+          } catch (error) {
+            throw new ExportFeatureError(
+              'INVALID_GROUP',
+              error instanceof Error ? error.message : String(error),
+            );
+          }
+          const native = groupPlan.nativeIds.has(element.elementId);
+          addElementReport(
+            report,
+            page,
+            element,
+            'native',
+            native ? 'EDITABLE_GROUP' : 'EDITABLE_GROUP_MEMBERS',
+          );
+          if (!native)
+            issue(
+              report,
+              page,
+              element.elementId,
+              'GROUP_EXPORTED_AS_MEMBERS',
+              'Interleaved or empty group members retain their original z-order as separate editable objects.',
+              'info',
+            );
+          continue;
+        }
         const bounds = elementBounds(element);
         if (
           bounds[0] < 0 ||
@@ -771,7 +857,60 @@ export async function buildPptdPptx(
           for (const font of text.fonts) fonts.add(font);
           slide.nodes.push(text.node);
           entries.set(name, { element, text });
-          addElementReport(report, page, element, 'native', 'EDITABLE_TEXT');
+          addElementReport(
+            report,
+            page,
+            element,
+            'native',
+            text.mathRuns.some(Boolean) ? 'EDITABLE_TEXT_AND_EQUATIONS' : 'EDITABLE_TEXT',
+          );
+        } else if (element.elementType === 'table') {
+          const measurements = await adapters.measureTable?.(page, element);
+          const table = buildNativeTable(element, theme, color, measurements);
+          for (const font of table.fonts) fonts.add(font);
+          slide.nodes.push({
+            ...baseNode(element, name),
+            kind: 'shape',
+            geometry: { kind: 'rect' },
+            fill: null,
+            outline: null,
+            shadow: null,
+          });
+          entries.set(name, { element, table });
+          addElementReport(
+            report,
+            page,
+            element,
+            'native',
+            table.hasMath ? 'EDITABLE_TABLE_AND_EQUATIONS' : 'EDITABLE_TABLE',
+          );
+        } else if (element.elementType === 'chart') {
+          const chart = await buildNativeChart(
+            element,
+            theme,
+            color,
+            snapshot.size,
+            `huandeng-${slides.length + 1}-${index + 1}`,
+          );
+          for (const font of chart.fonts) fonts.add(font);
+          slide.nodes.push({
+            ...baseNode(element, name),
+            kind: 'shape',
+            geometry: { kind: 'rect' },
+            fill: null,
+            outline: null,
+            shadow: null,
+          });
+          entries.set(name, { element, chart });
+          addElementReport(report, page, element, 'native', 'EDITABLE_CHART_AND_WORKBOOK');
+          issue(
+            report,
+            page,
+            element.elementId,
+            'NATIVE_CHART_LAYOUT',
+            'Chart data remains editable; PowerPoint lays out its own axis labels, legend and plot area.',
+            'info',
+          );
         } else if (element.elementType === 'shape') {
           const alpha = opacity(element);
           slide.nodes.push({
@@ -798,7 +937,7 @@ export async function buildPptdPptx(
           entries.set(name, { element, line });
           addElementReport(report, page, element, 'native', 'EDITABLE_LINE');
         } else if (element.elementType === 'image') {
-          const result = await picture(page, element, name);
+          const result = await picture(page, element, name, color);
           slide.nodes.push(...result.nodes);
           entries.set(name, { element });
           entries.set(`${name}-border`, { element });
@@ -818,7 +957,10 @@ export async function buildPptdPptx(
                 error instanceof Error ? error.message : String(error),
               );
         const node = await fallback(page, element, reason, name);
-        if (node) slide.nodes.push(node);
+        if (node) {
+          slide.nodes.push(node);
+          entries.set(name, { element, raster: true });
+        }
       }
     }
     if (Array.isArray(page.data.animations) && page.data.animations.length)
@@ -831,6 +973,7 @@ export async function buildPptdPptx(
         'warning',
       );
     slides.push(slide);
+    groupPlans.push(groupPlan ?? { groups: [], nativeIds: new Set() });
   }
   report.fonts = [...fonts].sort();
   if (report.fonts.length) {
@@ -847,7 +990,7 @@ export async function buildPptdPptx(
   if (!report.complete) throw new PptdExportError(report);
   const files = buildPptxFiles({ slides, images: images.images });
   // Upstream scene units are half-points; all mapped dimensions are doubled, while the package size is set in actual PPTD points.
-  finishPptxXml(files, snapshot.size, decorations);
+  finishPptxXml(files, snapshot.size, decorations, groupPlans);
   files['huandeng/export-report.json'] = strToU8(JSON.stringify(report, null, 2));
   const contentTypes = strFromU8(files['[Content_Types].xml']);
   files['[Content_Types].xml'] = strToU8(

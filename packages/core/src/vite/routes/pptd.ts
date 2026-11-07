@@ -3,6 +3,7 @@ import fs from 'node:fs/promises';
 import type { ServerResponse } from 'node:http';
 import path from 'node:path';
 import type { ViteDevServer } from 'vite';
+import { importImage } from '../../pptd/asset-import.ts';
 import { discoveryPath, runtimeRoot, type SessionDiscovery } from '../../pptd/client.ts';
 import {
   checkpoint,
@@ -10,11 +11,17 @@ import {
   recordCheckpointMetadataInitialization,
   registerCheckpointRoot,
 } from '../../pptd/git.ts';
+import { presentationSnapshot } from '../../pptd/presentation-snapshot.ts';
+import { readProjectModel, resolvePresentation } from '../../pptd/project-model.ts';
 import { readProjectTree } from '../../pptd/project-tree.ts';
 import { ExportManager, mimeType, readProjectAsset } from '../../pptd/runtime-export.ts';
 import { openPptdStore } from '../../pptd/store.ts';
 import { recordStory, type StoryRecordRequest } from '../../pptd/story.ts';
-import { PptdError, type TransactionRequest } from '../../pptd/types.ts';
+import {
+  type CreatePageCheckpointRequest,
+  PptdError,
+  type TransactionRequest,
+} from '../../pptd/types.ts';
 import { type ApiContext, json, readBody } from './context.ts';
 
 const shutdowns = new WeakMap<ViteDevServer['middlewares'], () => Promise<void>>();
@@ -45,7 +52,15 @@ export async function registerPptdRoutes(server: ViteDevServer, _ctx: ApiContext
   const token = randomBytes(32).toString('hex');
   const clients = new Set<ServerResponse>();
   const exports = new ExportManager(root);
-  let selection: { pageId: string | null; elementIds: string[]; clientId?: string } = {
+  let selection: {
+    pageId: string | null;
+    elementIds: string[];
+    clientId?: string;
+    presentationId?: string;
+    occurrenceId?: string;
+    versionId?: string;
+    readOnly?: boolean;
+  } = {
     pageId: null,
     elementIds: [],
   };
@@ -154,6 +169,22 @@ export async function registerPptdRoutes(server: ViteDevServer, _ctx: ApiContext
       if (method === 'GET' && route === '/project') {
         return json(res, 200, await readProjectTree(root, store.getSnapshot()));
       }
+      if (method === 'GET' && route === '/project-model') {
+        await store.refreshExternal();
+        return json(res, 200, readProjectModel(store.getSnapshot().metadata));
+      }
+      if (method === 'GET' && /^\/presentations\/[^/]+$/.test(route)) {
+        await store.refreshExternal();
+        return json(
+          res,
+          200,
+          await presentationSnapshot(
+            store.getSnapshot(),
+            decodeURIComponent(route.slice('/presentations/'.length)),
+            (pageId, versionId) => store.readPageVersion(pageId, versionId),
+          ),
+        );
+      }
       const versionRoute = /^\/pages\/([^/]+)\/versions(?:\/([^/]+))?$/.exec(route);
       if (method === 'GET' && versionRoute) {
         await store.refreshExternal();
@@ -163,7 +194,9 @@ export async function registerPptdRoutes(server: ViteDevServer, _ctx: ApiContext
           200,
           versionRoute[2]
             ? await store.readPageVersion(pageId, decodeURIComponent(versionRoute[2]))
-            : await store.pageHistory(pageId),
+            : url.searchParams.get('view') === 'operations'
+              ? await store.pageHistory(pageId)
+              : await store.pageCheckpoints(pageId),
         );
       }
       if (method === 'GET' && /^\/pages\/[^/]+$/.test(route)) {
@@ -199,14 +232,32 @@ export async function registerPptdRoutes(server: ViteDevServer, _ctx: ApiContext
         return exports.respond(id, kind, url.searchParams, res);
       }
       if (method !== 'POST') return json(res, 404, { message: 'Unknown Huandeng endpoint.' });
-      const body = (await readBody(req, 8 * 1024 * 1024)) as Record<string, unknown>;
+      const body = (await readBody(
+        req,
+        route === '/assets/import' ? 48 * 1024 * 1024 : 8 * 1024 * 1024,
+      )) as Record<string, unknown>;
       if (!body || typeof body !== 'object' || Array.isArray(body)) {
         throw new PptdError('INVALID_REQUEST', 'A JSON object is required.');
       }
       if (route === '/transactions')
         return json(res, 200, await store.commit(body as unknown as TransactionRequest));
+      if (route === '/assets/import') {
+        if (!store.getSnapshot().writable)
+          throw new PptdError('READ_ONLY', 'This project is read-only.');
+        return json(res, 200, await importImage(root, { name: body.name, base64: body.base64 }));
+      }
       if (route === '/story' || route === '/frame')
         return json(res, 200, await recordStory(store, body as unknown as StoryRecordRequest));
+      const checkpointRoute = /^\/pages\/([^/]+)\/checkpoints$/.exec(route);
+      if (checkpointRoute)
+        return json(
+          res,
+          200,
+          await store.createPageCheckpoint({
+            ...body,
+            pageId: decodeURIComponent(checkpointRoute[1]),
+          } as unknown as CreatePageCheckpointRequest),
+        );
       const restoreRoute = /^\/pages\/([^/]+)\/restore$/.exec(route);
       if (restoreRoute) {
         if (
@@ -254,7 +305,29 @@ export async function registerPptdRoutes(server: ViteDevServer, _ctx: ApiContext
         if (!Array.isArray(ids) || !ids.every((id) => typeof id === 'string'))
           throw new PptdError('INVALID_REQUEST', 'Invalid elementIds.');
         if (typeof body.pageId === 'string') {
-          const page = await store.readPage(body.pageId);
+          if (typeof body.presentationId === 'string') {
+            const reference = resolvePresentation(
+              store.getSnapshot(),
+              body.presentationId,
+            ).pages.find((item) => item.occurrenceId === body.occurrenceId);
+            if (
+              !reference ||
+              reference.pageId !== body.pageId ||
+              (reference.versionId ?? null) !== (body.versionId ?? null)
+            )
+              throw new PptdError(
+                'TARGET_NOT_FOUND',
+                'The selected presentation occurrence has changed.',
+              );
+          } else if (body.versionId !== undefined)
+            throw new PptdError(
+              'INVALID_REQUEST',
+              'A pinned selection requires its presentation and occurrence.',
+            );
+          const page =
+            typeof body.versionId === 'string'
+              ? (await store.readPageVersion(body.pageId, body.versionId)).page
+              : store.readPage(body.pageId);
           if (ids.some((id) => !page.data.elements.some((element) => element.elementId === id))) {
             throw new PptdError('TARGET_NOT_FOUND', 'Selected element no longer exists.');
           }
@@ -263,12 +336,30 @@ export async function registerPptdRoutes(server: ViteDevServer, _ctx: ApiContext
           pageId: body.pageId,
           elementIds: ids,
           ...(typeof body.clientId === 'string' ? { clientId: body.clientId } : {}),
+          ...(typeof body.presentationId === 'string'
+            ? {
+                presentationId: body.presentationId,
+                occurrenceId: String(body.occurrenceId),
+                ...(typeof body.versionId === 'string' ? { versionId: body.versionId } : {}),
+                readOnly: typeof body.versionId === 'string' || !store.getSnapshot().writable,
+              }
+            : {}),
         };
         return json(res, 200, selection);
       }
       if (route === '/render' || route === '/export') {
         await store.refreshExternal();
-        const snapshot = await store.getSnapshot();
+        if (
+          body.presentationId !== undefined &&
+          body.presentationId !== null &&
+          typeof body.presentationId !== 'string'
+        )
+          throw new PptdError('INVALID_REQUEST', 'presentationId must be a string or null.');
+        const snapshot = await presentationSnapshot(
+          store.getSnapshot(),
+          typeof body.presentationId === 'string' ? body.presentationId : null,
+          (pageId, versionId) => store.readPageVersion(pageId, versionId),
+        );
         const format = route === '/render' ? 'png' : body.format;
         if (!['pptx', 'pdf', 'png'].includes(String(format)))
           throw new PptdError('INVALID_REQUEST', 'format must be pptx or pdf.');
@@ -278,6 +369,8 @@ export async function registerPptdRoutes(server: ViteDevServer, _ctx: ApiContext
           await exports.create(snapshot, {
             format: format as 'pptx' | 'pdf' | 'png',
             pageId: typeof body.pageId === 'string' ? body.pageId : undefined,
+            occurrenceId: typeof body.occurrenceId === 'string' ? body.occurrenceId : undefined,
+            writeToProject: store.getSnapshot().writable,
             serverUrl: addressUrl(),
           }),
         );

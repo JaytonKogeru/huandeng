@@ -5,6 +5,7 @@ const path = require('node:path');
 const { fileURLToPath } = require('node:url');
 const { createProject, pathKey, readPreferences, writePreferences } = require('./project.cjs');
 const { startService, stopService } = require('./service.cjs');
+const { version: editorVersion } = require('./release.json');
 
 const { migratePreferences } = require('./branding.cjs');
 app.setName('HUANDENG Editor');
@@ -271,7 +272,7 @@ function buildMenu() {
           click: () => {
             void dialog.showMessageBox(window, {
               title: 'HUANDENG Editor',
-              message: 'HUANDENG Editor',
+              message: `HUANDENG Editor ${editorVersion}`,
               detail:
                 '独立页面，持续演进。\n\nHUANDENG Story 记录意图。\nHUANDENG Plugin 连接外部 Agent。',
               buttons: ['关闭'],
