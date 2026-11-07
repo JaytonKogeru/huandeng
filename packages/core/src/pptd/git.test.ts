@@ -104,7 +104,20 @@ async function savedPage(
     metadataChanged: false,
     diagnostics: [],
   };
-  const recorded = recordCheckpoint(root, snapshot, event);
+  const recorded = recordCheckpoint(
+    root,
+    {
+      deckId: snapshot.deckId,
+      entry: snapshot.entry,
+      epoch: snapshot.epoch,
+      sequence: snapshot.sequence,
+      manifestRevision: snapshot.manifestRevision,
+      metadataRevision: snapshot.metadataRevision,
+      metadata: { slides: { [page.pageId]: snapshot.metadata.slides[page.pageId] } },
+      pages: [{ pageId: page.pageId, pageRevision: page.pageRevision }],
+    },
+    event,
+  );
   return { source, event, recorded };
 }
 

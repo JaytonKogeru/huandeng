@@ -411,12 +411,16 @@ export class Persistence {
       if ((error as NodeJS.ErrnoException).code === 'ENOENT') return [];
       throw error;
     }
-    const records = await Promise.all(
-      files
-        .filter((file) => file.endsWith('.json'))
-        .map(async (file) => {
+    const candidates = files.filter((file) => file.endsWith('.json'));
+    const records = new Array<HistoryRecord>(candidates.length);
+    let cursor = 0;
+    await Promise.all(
+      Array.from({ length: Math.min(8, candidates.length) }, async () => {
+        while (cursor < candidates.length) {
+          const index = cursor++;
+          const file = candidates[index];
           try {
-            return validateRecord(
+            records[index] = validateRecord(
               JSON.parse(await readUtf8(path.join(this.stateDir, 'history', file))),
             );
           } catch {
@@ -425,7 +429,8 @@ export class Persistence {
               `Corrupt history file ${file}; subsequent history has been preserved.`,
             );
           }
-        }),
+        }
+      }),
     );
     return records.sort((a, b) => a.timestamp.localeCompare(b.timestamp));
   }

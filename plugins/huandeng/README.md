@@ -54,7 +54,7 @@ This work adds no public listener, account resource, tunnel, OAuth service or ma
 
 ## Tool surface
 
-The bridge advertises 15 tools. Legacy `huanding_*` names and `huandeng_frame_record` still dispatch to their current counterparts; they are not advertised twice.
+The bridge advertises 17 tools. Legacy `huanding_*` names and `huandeng_frame_record` still dispatch to their current counterparts; they are not advertised twice.
 
 | Tool | Purpose |
 | --- | --- |
@@ -72,7 +72,9 @@ The bridge advertises 15 tools. Legacy `huanding_*` names and `huandeng_frame_re
 | `huandeng_version_restore` | Restore a page version through a new transaction |
 | `huandeng_revert` | Conflict-checked undo of an operation |
 | `huandeng_project` | Actual file tree; honor its `truncated` flag |
-| `huandeng_export` | Frozen Main or presentation export to PDF/editable PPTX with a fallback report |
+| `huandeng_export` | Static PDF/PPTX or an asynchronous deterministic MP4 video job |
+| `huandeng_export_status` | Video progress and completed file/report URLs |
+| `huandeng_export_cancel` | Cancel an active video before publication, preserving previous exports |
 
 ## Story-driven editing
 
@@ -130,3 +132,7 @@ huandeng --entry /path/to/deck.pptd render S18A --presentation talk --occurrence
 The `story`, `history`, `record-version` and `restore` commands retain their existing JSON request formats. The old `frame` subcommand remains a compatibility alias.
 
 Protocol checks use the installed MCP SDK's actual client/server transport, alongside project and asset tests. Desktop integration must separately confirm the active service, stdio discovery, visual changes and persistence. See [project/Agent audit](../../docs/AUDIT-V06-PROJECT-AGENT.md).
+
+## Video delivery
+
+Use `huandeng_export` with `format: "mp4"`, an optional `presentationId` and exact `occurrenceId`, then poll `huandeng_export_status` with the returned `id` as `jobId`. Video is silent H.264 at 720p/1080p and 24/30 fps. Static pages default to 3000 ms, animation endpoints to 1000 ms, and extra cue holds to 0 ms; set `staticDurationMs`, `endHoldMs`, and `cueHoldMs` explicitly when delivery pacing matters. An installed FFmpeg with libx264 is required (`HUANDENG_FFMPEG` or PATH). GIF, animated WebP and self-animated SVG are rejected explicitly. PDF/PPTX retain the base pose and their existing static-animation report. Protocol availability does not certify installation into an actual Agent client.

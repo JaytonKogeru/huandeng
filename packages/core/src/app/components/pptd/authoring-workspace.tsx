@@ -49,15 +49,7 @@ export function AuthoringWorkspace({
   );
   return (
     <div className="flex min-h-0 flex-1 flex-col" data-hd-authoring-workspace>
-      <div className="relative min-h-0 flex-1 overflow-auto p-6 md:p-8">
-        {active && (
-          <p
-            className="pointer-events-none absolute left-4 top-2 z-10 rounded bg-background/90 px-2 py-1 text-[10px] text-muted-foreground"
-            role="status"
-          >
-            动画预览 · 在时间线中返回基础版式可继续排版
-          </p>
-        )}
+      <div className="relative min-h-0 flex-1 overflow-auto p-6 md:p-8" data-hd-canvas-viewport>
         <PptdEditorCanvas
           {...canvas}
           key={identity}

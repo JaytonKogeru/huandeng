@@ -1,147 +1,159 @@
-import { randomUUID } from 'node:crypto';
-import { existsSync } from 'node:fs';
 import fs from 'node:fs/promises';
 import type { ServerResponse } from 'node:http';
 import path from 'node:path';
-import { type Browser, chromium, type Page } from 'playwright';
-import { runtimeRoot } from './client.ts';
+import type { Browser, Page } from 'playwright';
 import { buildPptdPdf, buildPptdPptx, createExportReport } from './export.ts';
+import { mimeType, openBrowser } from './export-environment.ts';
 import { imageDimensions } from './export-images.ts';
-import { hashBytes } from './persistence.ts';
+import { ExportWorkspace } from './export-workspace.ts';
 import { type DeckSnapshot, PptdError } from './types.ts';
+import { createVideoEncoder, findVideoEncoder, type VideoCapabilities } from './video-encoder.ts';
+import { createVideoPlan, type VideoExportOptions, videoFrameTime } from './video-plan.ts';
 
-export function mimeType(file: string) {
-  return (
-    (
-      {
-        '.svg': 'image/svg+xml',
-        '.png': 'image/png',
-        '.jpg': 'image/jpeg',
-        '.jpeg': 'image/jpeg',
-        '.gif': 'image/gif',
-        '.webp': 'image/webp',
-        '.woff2': 'font/woff2',
-        '.woff': 'font/woff',
-        '.ttf': 'font/ttf',
-        '.pdf': 'application/pdf',
-        '.json': 'application/json',
-        '.pptx': 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
-      } as Record<string, string>
-    )[path.extname(file).toLowerCase()] ?? 'application/octet-stream'
-  );
-}
-
-export async function readProjectAsset(root: string, source: string): Promise<Buffer> {
-  if (source.startsWith('data:')) {
-    const match = source.match(
-      /^data:image\/(?:png|jpeg|gif|webp|svg\+xml);base64,([A-Za-z0-9+/=\r\n]+)$/,
-    );
-    if (!match || match[1].length > 48 * 1024 * 1024)
-      throw new PptdError('INVALID_REQUEST', 'Unsupported embedded asset.');
-    return Buffer.from(match[1], 'base64');
-  }
-  if (/^[a-z][a-z0-9+.-]*:/i.test(source) || source.startsWith('//') || source.includes('\0')) {
-    throw new PptdError('PATH_OUTSIDE_PROJECT', 'Assets must be local project files.');
-  }
-  const normalized = source.replace(/\\/g, '/').replace(/^\.\//, '').replace(/^\//, '');
-  if (!/^(?:media|assets)\//.test(normalized)) {
-    throw new PptdError('PATH_OUTSIDE_PROJECT', 'Only files in media/ or assets/ are served.');
-  }
-  const file = await fs.realpath(path.resolve(root, normalized));
-  const relative = path.relative(await fs.realpath(root), file);
-  if (relative.startsWith('..') || path.isAbsolute(relative))
-    throw new PptdError('PATH_OUTSIDE_PROJECT', 'Asset resolves outside the project.');
-  const stats = await fs.stat(file);
-  if (!stats.isFile() || stats.size > 64 * 1024 * 1024)
-    throw new PptdError('INVALID_REQUEST', 'Asset is not a file or exceeds 64 MiB.');
-  return fs.readFile(file);
-}
-
-interface FrozenExport {
-  snapshot: DeckSnapshot;
-  assets: Map<string, Buffer>;
-  createdAt: number;
-  bytes?: Uint8Array;
-  format?: string;
-  fileName?: string;
-  report?: unknown;
-}
-
-function assetSources(value: unknown, found = new Set<string>()): Set<string> {
-  if (
-    typeof value === 'string' &&
-    (/^(?:\.?\/)?(?:media|assets)\//.test(value.replace(/\\/g, '/')) ||
-      value.startsWith('data:image/'))
-  ) {
-    found.add(value);
-  } else if (Array.isArray(value)) {
-    for (const item of value) assetSources(item, found);
-  } else if (value && typeof value === 'object') {
-    for (const item of Object.values(value)) assetSources(item, found);
-  }
-  return found;
-}
-
-async function openBrowser(): Promise<Browser> {
-  const candidates = [
-    process.env.HUANDENG_BROWSER,
-    process.platform === 'win32'
-      ? path.join(
-          process.env['PROGRAMFILES(X86)'] ?? 'C:/Program Files (x86)',
-          'Microsoft/Edge/Application/msedge.exe',
-        )
-      : undefined,
-    process.platform === 'win32'
-      ? 'C:/Program Files/Google/Chrome/Application/chrome.exe'
-      : '/usr/bin/chromium',
-  ].filter((candidate): candidate is string => !!candidate);
-  const executablePath = candidates.find((candidate) => existsSync(candidate));
-  return chromium.launch({
-    ...(executablePath ? { executablePath } : {}),
-    headless: true,
-    args: process.platform === 'linux' ? ['--no-sandbox', '--disable-dev-shm-usage'] : [],
-  });
-}
+export { mimeType, readProjectAsset } from './export-environment.ts';
 
 export class ExportManager {
-  private jobs = new Map<string, FrozenExport>();
+  private workspace: ExportWorkspace;
+  private capability?: Promise<VideoCapabilities>;
 
-  constructor(private root: string) {}
+  constructor(root: string) {
+    this.workspace = new ExportWorkspace(root);
+  }
 
-  async respond(id: string, kind: string, params: URLSearchParams, res: ServerResponse) {
-    const job = this.jobs.get(id);
-    if (!job || Date.now() - job.createdAt > 15 * 60 * 1000) {
-      res.statusCode = 404;
-      return res.end('Export snapshot expired.');
-    }
-    if (kind === 'snapshot') {
-      res.setHeader('content-type', 'application/json');
-      return res.end(JSON.stringify(job.snapshot));
-    }
-    if (kind === 'asset') {
-      const source = params.get('path') ?? '';
-      const bytes = job.assets.get(source);
-      if (!bytes) {
-        res.statusCode = 404;
-        return res.end('Asset was not part of the frozen snapshot.');
+  respond(id: string, kind: string, params: URLSearchParams, res: ServerResponse) {
+    return this.workspace.respond(id, kind, params, res);
+  }
+
+  dispose() {
+    return this.workspace.dispose();
+  }
+
+  cancel(id: string) {
+    return this.workspace.cancel(id);
+  }
+
+  videoCapabilities() {
+    this.capability ??= findVideoEncoder()
+      .then(() => ({ available: true, formats: ['mp4'], message: 'H.264 视频编码器可用' }))
+      .catch((error: Error) => ({ available: false, formats: [], message: error.message }));
+    return this.capability;
+  }
+
+  async startVideo(
+    snapshot: DeckSnapshot,
+    options: VideoExportOptions & { serverUrl: string; writeToProject?: boolean },
+  ) {
+    const frozen = structuredClone(snapshot);
+    const plan = createVideoPlan(frozen, options);
+    frozen.pages = plan.segments.map((segment) => frozen.pages[segment.pageIndex]);
+    for (const [index, segment] of plan.segments.entries()) segment.pageIndex = index;
+    const job = await this.workspace.begin(frozen, 'mp4');
+    job.status.plan = plan;
+    job.status.totalFrames = plan.totalFrames;
+    job.settled = (async () => {
+      let browser: Browser | undefined;
+      let encoder: ReturnType<typeof createVideoEncoder> | undefined;
+      let failure: unknown;
+      const abort = () => {
+        void browser?.close().catch(() => {});
+      };
+      job.abort.signal.addEventListener('abort', abort, { once: true });
+      try {
+        const executable = await findVideoEncoder();
+        job.abort.signal.throwIfAborted();
+        await this.workspace.freezeAssets(job);
+        browser = await openBrowser();
+        job.abort.signal.throwIfAborted();
+        const page = await browser.newPage({
+          viewport: { width: plan.width, height: plan.height },
+          deviceScaleFactor: 1,
+        });
+        await page.goto(
+          `${options.serverUrl}/huandeng/export/${job.id}?mode=frames&width=${plan.width}&height=${plan.height}`,
+          { waitUntil: 'domcontentloaded' },
+        );
+        await page.waitForFunction(
+          () =>
+            typeof window.__HUANDENG_EXPORT_SEEK__ === 'function' ||
+            !!document.querySelector('[data-hd-export-error]'),
+          undefined,
+          { timeout: 45000 },
+        );
+        const initialErrors = await page.locator('[data-hd-export-error]').allTextContents();
+        if (initialErrors.length) throw new Error(initialErrors.join('\n'));
+        job.outputFile = path.join(job.directory, 'artifact.mp4');
+        encoder = createVideoEncoder(executable, job.outputFile, plan.fps, job.abort.signal);
+        job.status.state = 'rendering';
+        for (const segment of plan.segments) {
+          let previousTime = -1;
+          let previousFrame: Buffer | undefined;
+          for (let frame = 0; frame < segment.frameCount; frame++) {
+            job.abort.signal.throwIfAborted();
+            const timeMs = videoFrameTime(plan, segment, frame);
+            if (!previousFrame || previousTime !== timeMs) {
+              await page.evaluate(
+                async ({ index, time }) => {
+                  if (!window.__HUANDENG_EXPORT_SEEK__) throw new Error('视频渲染器尚未准备好。');
+                  await window.__HUANDENG_EXPORT_SEEK__(index, time);
+                },
+                { index: segment.pageIndex, time: timeMs },
+              );
+              previousFrame = await page.screenshot({ type: 'png', animations: 'disabled' });
+              previousTime = timeMs;
+            }
+            await encoder.write(previousFrame);
+            job.status.completedFrames++;
+          }
+        }
+        job.status.state = 'encoding';
+        await encoder.finish();
+        const base = path.basename(frozen.entry, path.extname(frozen.entry));
+        const suffix =
+          options.pageId || options.occurrenceId
+            ? `-${frozen.pages[0].shortCode ?? 'page'}`
+            : frozen.presentationId
+              ? `-${frozen.presentationId.slice(0, 8)}`
+              : '';
+        const report = {
+          format: 'mp4',
+          codec: 'h264',
+          audio: false,
+          renderState: 'timeline',
+          source: 'frozen-pptd',
+          deckId: frozen.deckId,
+          presentationId: frozen.presentationId,
+          plan,
+          diagnostics: [
+            {
+              severity: 'info',
+              code: 'VIDEO_CUE_TIMING',
+              message: `每个演示步骤额外停留 ${plan.cueHoldMs} 毫秒；静态页 ${plan.staticDurationMs} 毫秒；动画末帧 ${plan.endHoldMs} 毫秒。`,
+            },
+          ],
+          pages: frozen.pages.map((item) => ({
+            pageId: item.pageId,
+            occurrenceId: item.occurrenceId,
+            versionId: item.versionId,
+            pageRevision: item.pageRevision,
+            renderRevision: item.renderRevision,
+          })),
+        };
+        await this.workspace.publish(
+          job,
+          `${base}${suffix}.mp4`,
+          options.writeToProject ?? snapshot.writable,
+          report,
+        );
+      } catch (error) {
+        failure = error;
+      } finally {
+        job.abort.signal.removeEventListener('abort', abort);
+        await encoder?.close();
+        await browser?.close().catch(() => {});
+        await this.workspace.finish(job, failure);
       }
-      res.setHeader('content-type', mimeType(source));
-      return res.end(bytes);
-    }
-    if (kind === 'report') {
-      res.setHeader('content-type', 'application/json');
-      return res.end(JSON.stringify(job.report, null, 2));
-    }
-    if (kind === 'download' && job.bytes) {
-      res.setHeader('content-type', mimeType(job.fileName ?? ''));
-      res.setHeader(
-        'content-disposition',
-        `attachment; filename*=UTF-8''${encodeURIComponent(job.fileName ?? 'export')}`,
-      );
-      return res.end(job.bytes);
-    }
-    res.statusCode = 404;
-    res.end('Export not ready.');
+    })().catch((error: unknown) => this.workspace.finish(job, error));
+    return this.workspace.status(job.id);
   }
 
   async create(
@@ -154,7 +166,6 @@ export class ExportManager {
       serverUrl: string;
     },
   ) {
-    const id = randomUUID();
     const frozen = structuredClone(snapshot);
     if (options.format === 'png') {
       const requested =
@@ -178,40 +189,20 @@ export class ExportManager {
         diagnostics: frozen.diagnostics,
       });
     }
-    const assets = new Map<string, Buffer>();
-    const sources = assetSources(
-      frozen.pages.map((page) => ({
-        data: page.data,
-        theme: page.metadata.themeOverride ?? frozen.manifest.theme,
-      })),
-    );
-    for (const source of sources) {
-      const bytes = await readProjectAsset(this.root, source);
-      const revisions = frozen.pages.flatMap((page) =>
-        Object.hasOwn(page.assetRevisions ?? {}, source) ? [page.assetRevisions?.[source]] : [],
-      );
-      if (revisions.some((revision) => revision !== hashBytes(bytes)))
-        throw new PptdError(
-          'REVISION_CONFLICT',
-          `Asset changed before export could freeze it: ${source}. Retry using the latest project state.`,
-        );
-      assets.set(source, bytes);
-    }
-    const job: FrozenExport = {
-      snapshot: frozen,
-      assets,
-      createdAt: Date.now(),
-      format: options.format,
-    };
-    this.jobs.set(id, job);
-    for (const [key, value] of this.jobs) {
-      if (Date.now() - value.createdAt > 15 * 60 * 1000) this.jobs.delete(key);
-    }
+    const job = await this.workspace.begin(frozen, options.format);
+    const id = job.id;
+    let release: () => void = () => {};
+    job.settled = new Promise<void>((resolve) => {
+      release = resolve;
+    });
+    let outputBytes: Uint8Array | undefined;
+    let failure: unknown;
     let browser: Browser | undefined;
     let browserPage: Page | undefined;
     const ensurePage = async () => {
       if (browserPage) return browserPage;
       browser = await openBrowser();
+      job.abort.signal.throwIfAborted();
       browserPage = await browser.newPage({
         viewport: { width: Math.ceil(frozen.size[0] + 40), height: Math.ceil(frozen.size[1] + 40) },
         deviceScaleFactor: 2,
@@ -241,7 +232,13 @@ export class ExportManager {
         });
       return browserPage;
     };
+    const abort = () => {
+      void browser?.close().catch(() => {});
+    };
+    job.abort.signal.addEventListener('abort', abort, { once: true });
     try {
+      await this.workspace.freezeAssets(job);
+      job.status.state = 'rendering';
       if (options.format === 'pptx') {
         const exported = await buildPptdPptx(frozen, {
           measureTable: async (pageSnapshot, element) => {
@@ -259,9 +256,9 @@ export class ExportManager {
             };
           },
           resolveAsset: async (source) => {
-            const bytes = assets.get(source);
-            if (!bytes) throw new Error(`Asset was not part of this export snapshot: ${source}`);
-            return { bytes, mimeType: mimeType(source) };
+            const file = job.assets.get(source);
+            if (!file) throw new Error(`Asset was not part of this export snapshot: ${source}`);
+            return { bytes: await fs.readFile(file), mimeType: mimeType(source) };
           },
           rasterizeBackground: async (pageSnapshot) => {
             const page = await ensurePage();
@@ -437,7 +434,7 @@ export class ExportManager {
             }
           },
         });
-        job.bytes = exported.bytes;
+        outputBytes = exported.bytes;
         job.report = exported.report;
       } else {
         const page = await ensurePage();
@@ -454,10 +451,10 @@ export class ExportManager {
               bytes: await page.pdf({ printBackground: true, preferCSSPageSize: true }),
             }),
           });
-          job.bytes = exported.bytes;
+          outputBytes = exported.bytes;
           job.report = exported.report;
         } else {
-          job.bytes = await page
+          outputBytes = await page
             .locator('[data-hd-export-page]')
             .first()
             .screenshot({ type: 'png' });
@@ -504,26 +501,27 @@ export class ExportManager {
         options.format === 'png'
           ? `${frozen.pages[0].shortCode ?? frozen.pages[0].pageId}.png`
           : `${base}.${options.format}`;
-      const directory =
-        (options.writeToProject ?? frozen.writable) && options.format !== 'png'
-          ? path.join(this.root, 'Exports')
-          : path.join(runtimeRoot(), 'exports', frozen.deckId);
-      await fs.mkdir(directory, { recursive: true });
-      const destination = path.join(directory, job.fileName);
-      const temporary = `${destination}.tmp-${id}`;
-      if (!job.bytes) throw new Error('Export did not produce a file.');
-      await fs.writeFile(temporary, job.bytes);
-      await fs.rename(temporary, destination);
-      await fs.writeFile(`${destination}.report.json`, `${JSON.stringify(job.report, null, 2)}\n`);
-      return {
-        url: `/__pptd/exports/${id}/download`,
-        reportUrl: `/__pptd/exports/${id}/report`,
-        fileName: job.fileName,
-        file: destination,
-        report: job.report,
-      };
+      if (!outputBytes) throw new Error('Export did not produce a file.');
+      job.outputFile = path.join(job.directory, `artifact.${options.format}`);
+      await fs.writeFile(job.outputFile, outputBytes);
+      outputBytes = undefined;
+      return await this.workspace.publish(
+        job,
+        job.fileName,
+        (options.writeToProject ?? frozen.writable) && options.format !== 'png',
+        job.report,
+      );
+    } catch (error) {
+      failure = error;
+      throw error;
     } finally {
-      await browser?.close();
+      job.abort.signal.removeEventListener('abort', abort);
+      await browser?.close().catch(() => {});
+      try {
+        await this.workspace.finish(job, failure);
+      } finally {
+        release();
+      }
     }
   }
 }

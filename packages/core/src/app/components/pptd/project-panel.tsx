@@ -1,5 +1,5 @@
 import { ArrowDown, ArrowUp, BookOpen, Plus, Save, Trash2 } from 'lucide-react';
-import { useEffect, useId, useMemo, useState } from 'react';
+import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import {
   emptyStory,
   type PresentationItem,
@@ -167,6 +167,10 @@ function ProjectPanelEditor({
     manifest: snapshot.manifestRevision,
   });
   const [editingId, setEditingId] = useState<string | null>(selectedPresentationId);
+  const [sourceQuery, setSourceQuery] = useState('');
+  const [itemQuery, setItemQuery] = useState('');
+  const [locatedItemId, setLocatedItemId] = useState<string | null>(null);
+  const itemRefs = useRef(new Map<string, HTMLFieldSetElement>());
   const [message, setMessage] = useState<string | null>(null);
   const [versions, setVersions] = useState<Record<string, PageVersionSummary[]>>({});
   const [loadingVersions, setLoadingVersions] = useState<string[]>([]);
@@ -238,6 +242,48 @@ function ProjectPanelEditor({
     const legacyLabel = snapshot.metadata.slides[pageId]?.label;
     return `永久 ID：${pageId}${legacyLabel ? `\n旧编号：${legacyLabel}` : ''}`;
   };
+  const searchablePage = (pageId: string) => {
+    const metadata = snapshot.metadata.slides[pageId];
+    return [pageId, metadata?.shortCode, metadata?.label, metadata?.path]
+      .filter(Boolean)
+      .join(' ')
+      .toLocaleLowerCase();
+  };
+  const searchableSection = (sectionId: string) => {
+    const section = draft.sections.find((candidate) => candidate.id === sectionId);
+    return [section?.title, ...(section?.pageIds.map(searchablePage) ?? [])]
+      .join(' ')
+      .toLocaleLowerCase();
+  };
+  const sourceNeedle = sourceQuery.trim().toLocaleLowerCase();
+  const itemNeedle = itemQuery.trim().toLocaleLowerCase();
+  const matchingItems = itemNeedle
+    ? (presentation?.items.filter((item) =>
+        (item.kind === 'page'
+          ? searchablePage(item.pageId)
+          : searchableSection(item.sectionId)
+        ).includes(itemNeedle),
+      ) ?? [])
+    : [];
+  const locatedIndex = matchingItems.findIndex((item) => item.id === locatedItemId);
+  const locateItem = (direction: -1 | 1) => {
+    if (!matchingItems.length) return;
+    const index =
+      locatedIndex < 0
+        ? direction === 1
+          ? 0
+          : matchingItems.length - 1
+        : (locatedIndex + direction + matchingItems.length) % matchingItems.length;
+    const id = matchingItems[index].id;
+    setLocatedItemId(id);
+    const target = itemRefs.current.get(id);
+    target?.scrollIntoView({ block: 'center' });
+    target
+      ?.querySelector<HTMLElement>(
+        'button:not(:disabled), select:not(:disabled), input:not(:disabled)',
+      )
+      ?.focus({ preventScroll: true });
+  };
   const selectCollection = (id: string | null) => {
     setEditingId(id);
     if (id === null || persisted.presentations.some((item) => item.id === id))
@@ -287,7 +333,13 @@ function ProjectPanelEditor({
   };
 
   return (
-    <section className="space-y-4 p-3 text-xs" aria-label="项目与故事" data-hd-project>
+    <section
+      className="space-y-4 p-3 text-xs outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring/40"
+      aria-label="项目与故事"
+      data-hd-project
+      data-hd-project-editor
+      tabIndex={-1}
+    >
       <div className="space-y-2">
         <div className="flex items-center gap-2 font-semibold">
           <BookOpen className="size-3.5" /> 项目与故事
@@ -410,6 +462,17 @@ function ProjectPanelEditor({
             <p className="text-[11px] text-muted-foreground">
               引用章节时跟随章节页序，同一页面也可以在演讲中多次出现。
             </p>
+            {(snapshot.pages.length + draft.sections.length > 8 || sourceQuery) && (
+              <input
+                type="search"
+                aria-label="搜索可添加的章节或页面"
+                placeholder="搜索章节、页面短码或路径"
+                className={fieldClass}
+                value={sourceQuery}
+                maxLength={200}
+                onChange={(event) => setSourceQuery(event.target.value)}
+              />
+            )}
             <select
               id={`${prefix}-add-item`}
               className={fieldClass}
@@ -430,15 +493,20 @@ function ProjectPanelEditor({
             >
               <option value="">添加章节或主幻灯片…</option>
               <optgroup label="章节">
-                {draft.sections.map((section) => (
-                  <option key={section.id} value={`section:${section.id}`}>
-                    {section.title} · {section.pageIds.length} 页
-                  </option>
-                ))}
+                {draft.sections
+                  .filter((section) => searchableSection(section.id).includes(sourceNeedle))
+                  .map((section) => (
+                    <option key={section.id} value={`section:${section.id}`}>
+                      {section.title} · {section.pageIds.length} 页
+                    </option>
+                  ))}
               </optgroup>
               <optgroup label="主幻灯片">
                 {snapshot.pages
-                  .filter((page) => page.state === 'active')
+                  .filter(
+                    (page) =>
+                      page.state === 'active' && searchablePage(page.pageId).includes(sourceNeedle),
+                  )
                   .map((page) => (
                     <option key={page.pageId} value={`page:${page.pageId}`}>
                       {pageLabel(page.pageId)}
@@ -446,6 +514,59 @@ function ProjectPanelEditor({
                   ))}
               </optgroup>
             </select>
+            {presentation.items.length > 6 && (
+              <div className="space-y-1.5 rounded border border-border bg-muted/20 p-2">
+                <label className="text-xs" htmlFor={`${prefix}-find-item`}>
+                  定位编排条目
+                </label>
+                <div className="flex items-center gap-1">
+                  <input
+                    id={`${prefix}-find-item`}
+                    type="search"
+                    placeholder="页面短码、路径或章节"
+                    className={`${fieldClass} min-w-0`}
+                    value={itemQuery}
+                    maxLength={200}
+                    onChange={(event) => {
+                      setItemQuery(event.target.value);
+                      setLocatedItemId(null);
+                    }}
+                    onKeyDown={(event) => {
+                      if (event.key !== 'Enter' || event.nativeEvent.isComposing) return;
+                      event.preventDefault();
+                      locateItem(event.shiftKey ? -1 : 1);
+                    }}
+                  />
+                  <Button
+                    variant="ghost"
+                    size="icon-xs"
+                    aria-label="上一个匹配条目"
+                    title="上一个匹配条目"
+                    disabled={!matchingItems.length}
+                    onClick={() => locateItem(-1)}
+                  >
+                    <ArrowUp />
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="icon-xs"
+                    aria-label="下一个匹配条目"
+                    title="下一个匹配条目"
+                    disabled={!matchingItems.length}
+                    onClick={() => locateItem(1)}
+                  >
+                    <ArrowDown />
+                  </Button>
+                </div>
+                <p className="text-[11px] text-muted-foreground" role="status">
+                  {itemNeedle
+                    ? matchingItems.length
+                      ? `${locatedIndex >= 0 ? `${locatedIndex + 1} / ` : ''}${matchingItems.length} 处匹配；定位不会改变编排顺序。`
+                      : '没有匹配的条目。'
+                    : '输入后按 Enter 定位，重复引用会分别列入匹配。'}
+                </p>
+              </div>
+            )}
             {presentation.items.map((item, index) => {
               const section =
                 item.kind === 'section'
@@ -456,10 +577,15 @@ function ProjectPanelEditor({
                   ? (section?.title ?? `章节缺失：${item.sectionId}`)
                   : pageLabel(item.pageId);
               return (
-                <div
+                <fieldset
                   key={item.id}
-                  className="space-y-2 rounded border border-border p-2"
-                  data-hd-presentation-item
+                  ref={(element) => {
+                    if (element) itemRefs.current.set(item.id, element);
+                    else itemRefs.current.delete(item.id);
+                  }}
+                  className={`min-w-0 space-y-2 rounded border p-2 ${locatedItemId === item.id ? 'border-primary/40 bg-primary/5' : 'border-border'}`}
+                  data-hd-presentation-item={item.id}
+                  aria-label={`编排第 ${index + 1} 项：${label}`}
                 >
                   <div className="flex items-center gap-1">
                     <span
@@ -611,7 +737,7 @@ function ProjectPanelEditor({
                       )}
                     </>
                   )}
-                </div>
+                </fieldset>
               );
             })}
             {!presentation.items.length && (

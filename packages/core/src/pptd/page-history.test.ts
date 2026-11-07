@@ -1,8 +1,10 @@
 import { randomUUID } from 'node:crypto';
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { afterEach, describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import { METADATA_PATH } from './identity';
+import { PageVersionArchive, type PageVersionState } from './page-history';
+import { hashBytes } from './persistence';
 import { projectTestDirectory } from './project-directory.test-utils';
 import { openPptdStore, type PptdStore } from './store';
 import { recordStory } from './story';
@@ -17,6 +19,7 @@ const original =
   );
 
 afterEach(async () => {
+  vi.restoreAllMocks();
   await Promise.allSettled(stores.splice(0).map((store) => store.close()));
   await Promise.all(
     temporary.splice(0).map((directory) => fs.rm(directory, { recursive: true, force: true })),
@@ -58,6 +61,86 @@ function request(store: PptdStore, operations: PptdOperation[]): TransactionRequ
 }
 
 describe('per-page history', () => {
+  it('keeps 100 large external versions on disk with bounded hot contents and restores an old version', {
+    timeout: 60_000,
+  }, async () => {
+    const files = await fixture();
+    const store = await open(files);
+    const first = store.getSnapshot().pages[0];
+    let oldVersionId = '';
+    let oldSource = '';
+    for (let index = 0; index < 100; index++) {
+      const source = original.replace('First version', `${index}:${'x'.repeat(128 * 1024)}`);
+      await fs.writeFile(path.join(files.root, first.path), source);
+      await store.refreshExternalState();
+      if (index === 3) {
+        oldVersionId = (await store.pageHistory(first.pageId))[0].versionId;
+        oldSource = source;
+      }
+    }
+    const archive = (store as unknown as { pageVersions: PageVersionArchive }).pageVersions;
+    const usage = archive.cacheUsage();
+    expect(usage.observations).toBe(102);
+    expect(usage.entries).toBeLessThanOrEqual(usage.maxEntries);
+    expect(usage.estimatedBytes).toBeLessThanOrEqual(usage.maxEstimatedBytes);
+    expect(await fs.readdir(path.join(files.stateDir, 'page-versions'))).toHaveLength(102);
+    const before = await store.pageHistory(first.pageId);
+    expect(before).toHaveLength(101);
+    await store.close();
+    const reopened = await open(files);
+    expect(await reopened.pageHistory(first.pageId)).toEqual(before);
+    const preview = await reopened.readPageVersion(first.pageId, oldVersionId);
+    expect(preview.page.data.notes).toBe(`3:${'x'.repeat(128 * 1024)}`);
+    preview.page.data.notes = 'Caller mutation';
+    expect((await reopened.readPageVersion(first.pageId, oldVersionId)).page.data.notes).toBe(
+      `3:${'x'.repeat(128 * 1024)}`,
+    );
+    await reopened.restorePageVersion({
+      pageId: first.pageId,
+      versionId: oldVersionId,
+      requestId: randomUUID(),
+      expectedPageRevision: reopened.readPage(first.pageId).pageRevision,
+      expectedMetadataRevision: reopened.getSnapshot().metadataRevision,
+    });
+    expect(await fs.readFile(path.join(files.root, first.path), 'utf8')).toBe(oldSource);
+    expect((await reopened.pageHistory(first.pageId))[0]).toMatchObject({
+      kind: 'restore',
+      current: true,
+    });
+    const reopenedUsage = (
+      reopened as unknown as { pageVersions: PageVersionArchive }
+    ).pageVersions.cacheUsage();
+    expect(reopenedUsage.entries).toBeLessThanOrEqual(reopenedUsage.maxEntries);
+    expect(reopenedUsage.estimatedBytes).toBeLessThanOrEqual(reopenedUsage.maxEstimatedBytes);
+  });
+
+  it('rejects changed cold observation contents instead of returning a different historical version', async () => {
+    const files = await fixture();
+    const store = await open(files);
+    const first = store.getSnapshot().pages[0];
+    const initial = (await store.pageHistory(first.pageId))[0];
+    for (let index = 0; index < 10; index++) {
+      await fs.writeFile(
+        path.join(files.root, first.path),
+        original.replace('First version', `External ${index}`),
+      );
+      await store.refreshExternalState();
+    }
+    const historyFile = path.join(
+      files.stateDir,
+      'page-versions',
+      `${hashBytes(initial.versionId).slice(7)}.json`,
+    );
+    const raw = await fs.readFile(historyFile, 'utf8');
+    const changed = JSON.parse(raw);
+    changed.state.source = original.replace('First version', 'Unexpected altered history');
+    await fs.writeFile(historyFile, JSON.stringify(changed));
+    await expect(store.readPageVersion(first.pageId, initial.versionId)).rejects.toMatchObject({
+      code: 'RECOVERY_REQUIRED',
+    });
+    expect(store.readPage(first.pageId).data.notes).toBe('External 9');
+  });
+
   it('previews durable versions and reads legacy journal history without changing the document', async () => {
     const files = await fixture();
     const store = await open(files);
@@ -243,5 +326,84 @@ describe('per-page history', () => {
     expect(reopened.readPage(first.pageId).data.notes).toBe('Edited while closed');
     await reopened.refreshExternal();
     expect(await reopened.pageHistory(first.pageId)).toEqual(timeline);
+  });
+});
+
+describe('bounded observation storage', () => {
+  function state(notes: string): PageVersionState {
+    return {
+      source: JSON.stringify({ elements: [], notes }),
+      metadata: { path: 'pages/a.page', shortCode: 'TEST', state: 'active' },
+      size: [960, 540],
+    };
+  }
+
+  it('does not retain a single oversized version in the hot cache and preserves metadata isolation', async () => {
+    const files = await fixture();
+    const archive = new PageVersionArchive(files.stateDir, false);
+    const originalState = state('x'.repeat(3 * 1024 * 1024));
+    await archive.initialize(new Map([['a', originalState]]), []);
+    expect(archive.cacheUsage()).toMatchObject({ entries: 0, estimatedBytes: 0 });
+    const version = archive.summaries('a', originalState, [])[0];
+    const loaded = await archive.find('a', version.versionId, originalState, []);
+    expect(loaded.state.source).toBe(originalState.source);
+    loaded.state.metadata.path = 'pages/wrong.page';
+    expect(
+      (await archive.find('a', version.versionId, originalState, [])).state.metadata.path,
+    ).toBe('pages/a.page');
+    expect(archive.cacheUsage()).toMatchObject({ entries: 0, estimatedBytes: 0 });
+    await archive.close();
+  });
+
+  it('archives read-only session observations in an owned temporary directory and removes it on close', async () => {
+    const files = await fixture();
+    const archive = new PageVersionArchive(files.stateDir, true);
+    const temporaryFolder = vi.spyOn(fs, 'mkdtemp');
+    const initial = state('Original');
+    await archive.initialize(new Map([['a', initial]]), []);
+    const directory = await temporaryFolder.mock.results[0].value;
+    const version = archive.summaries('a', initial, [])[0];
+    let current = initial;
+    for (let index = 0; index < 12; index++) {
+      current = state(`External ${index}`);
+      await archive.observe('a', current, []);
+    }
+    expect(await fs.readdir(directory)).toHaveLength(13);
+    expect(archive.summaries('a', current, [])).toHaveLength(13);
+    expect((await archive.find('a', version.versionId, current, [])).state.source).toBe(
+      initial.source,
+    );
+    expect(archive.cacheUsage()).toMatchObject({ temporary: true, maxEntries: 8 });
+    expect(archive.cacheUsage().entries).toBeLessThanOrEqual(8);
+    await expect(fs.stat(path.join(files.stateDir, 'page-versions'))).rejects.toMatchObject({
+      code: 'ENOENT',
+    });
+    await archive.close();
+    await expect(fs.stat(directory)).rejects.toMatchObject({ code: 'ENOENT' });
+    expect(archive.cacheUsage().estimatedBytes).toBe(0);
+  });
+
+  it('reports unavailable read-only temporary storage without silently retaining history in memory', async () => {
+    const files = await fixture();
+    const archive = new PageVersionArchive(files.stateDir, true);
+    vi.spyOn(fs, 'mkdtemp').mockRejectedValueOnce(
+      Object.assign(new Error('No writable temporary storage'), { code: 'EACCES' }),
+    );
+    await expect(archive.initialize(new Map([['a', state('Original')]]), [])).rejects.toMatchObject(
+      { code: 'HISTORY_UNAVAILABLE' },
+    );
+    expect(archive.cacheUsage()).toMatchObject({ entries: 0, observations: 0, temporary: false });
+    await archive.close();
+  });
+
+  it('rejects malformed observations during initialization', async () => {
+    const files = await fixture();
+    await fs.mkdir(path.join(files.stateDir, 'page-versions'), { recursive: true });
+    await fs.writeFile(path.join(files.stateDir, 'page-versions/broken.json'), '{"pageId":"a"}');
+    const archive = new PageVersionArchive(files.stateDir, false);
+    await expect(archive.initialize(new Map([['a', state('Original')]]), [])).rejects.toMatchObject(
+      { code: 'RECOVERY_REQUIRED' },
+    );
+    await archive.close();
   });
 });

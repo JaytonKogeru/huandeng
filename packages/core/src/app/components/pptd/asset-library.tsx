@@ -6,7 +6,8 @@ import type {
   AssetLibraryResult,
   AssetUsage,
 } from '../../../pptd/asset-library';
-import { pptdAssetUrl } from '../../lib/pptd-backend';
+import { assetVersionUrl } from '../../lib/pptd-asset-revision';
+import { pptdAssetPreviewUrl, pptdAssetUrl } from '../../lib/pptd-backend';
 import { Button } from '../ui/button';
 
 export interface AssetLibraryProps {
@@ -30,9 +31,9 @@ function sizeLabel(bytes: number | null) {
     : `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
 }
 
-function assetPreviewUrl(asset: AssetLibraryItem): string {
-  const url = pptdAssetUrl(asset.path);
-  return `${url}&revision=${encodeURIComponent(asset.previewRevision ?? 'unavailable')}`;
+function assetPreviewUrl(asset: AssetLibraryItem, thumbnail = false): string {
+  const url = thumbnail ? pptdAssetPreviewUrl(asset.path) : pptdAssetUrl(asset.path);
+  return assetVersionUrl(url, asset.previewRevision);
 }
 
 export function AssetLibrary({
@@ -178,11 +179,12 @@ export function AssetLibrary({
               <Button
                 variant="outline"
                 size="xs"
+                title="从设备导入图片并放置到当前页"
                 disabled={disabled || busy}
                 onClick={() => importInput.current?.click()}
               >
                 <Upload />
-                导入
+                导入并放置
               </Button>
             )}
           </div>
@@ -205,7 +207,7 @@ export function AssetLibrary({
             aria-label="素材筛选"
             value={filter}
             onChange={(event) => setFilter(event.target.value as typeof filter)}
-            className="min-w-0 flex-1 rounded border border-border bg-background px-2 py-1.5 text-[11px] outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
+            className="min-w-0 flex-1 rounded border border-border bg-background px-2 py-1.5 text-xs outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
           >
             <option value="all">全部素材{result ? ` · ${result.counts.all}` : ''}</option>
             <option value="used">主库引用{result ? ` · ${result.counts.used}` : ''}</option>
@@ -216,7 +218,7 @@ export function AssetLibrary({
               缺失或不可读{result ? ` · ${result.counts.missing}` : ''}
             </option>
           </select>
-          <label className="flex shrink-0 items-center gap-1.5 text-[11px]">
+          <label className="flex shrink-0 items-center gap-1.5 text-xs">
             <input
               type="checkbox"
               checked={pageOnly}
@@ -226,8 +228,8 @@ export function AssetLibrary({
             当前页
           </label>
         </div>
-        <p className="text-[10px] leading-relaxed text-muted-foreground">
-          media/ 与 assets/ · 使用关系来自当前主库；固定历史版本的素材独立保留。
+        <p className="text-[11px] leading-relaxed text-muted-foreground">
+          导入后放到当前页，已有素材可直接复用。
         </p>
         {(error || loadError) && (
           <p role="alert" className="break-words text-[11px] text-destructive">
@@ -282,7 +284,7 @@ export function AssetLibrary({
                 <span className="flex aspect-[4/3] items-center justify-center overflow-hidden bg-muted/35 p-2">
                   {asset.previewable ? (
                     <img
-                      src={assetPreviewUrl(asset)}
+                      src={assetPreviewUrl(asset, true)}
                       alt=""
                       loading="lazy"
                       className="max-h-full max-w-full object-contain"
@@ -294,10 +296,8 @@ export function AssetLibrary({
                   )}
                 </span>
                 <span className="block p-2">
-                  <span className="block truncate text-[11px] font-medium">
-                    {asset.displayName}
-                  </span>
-                  <span className="mt-1 block truncate text-[10px] text-muted-foreground">
+                  <span className="block truncate text-xs font-medium">{asset.displayName}</span>
+                  <span className="mt-1 block truncate text-[11px] text-muted-foreground">
                     {asset.status !== 'available'
                       ? '缺失 / 不可读'
                       : asset.usage.length
@@ -357,7 +357,12 @@ export function AssetLibrary({
                 : '此文件暂不支持图片预览。'}
             </p>
           )}
-          <p className="break-all font-mono text-[10px] text-muted-foreground">{selected.path}</p>
+          <details className="text-[11px] text-muted-foreground">
+            <summary className="cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-ring/40">
+              文件位置
+            </summary>
+            <p className="mt-1 break-all font-mono">{selected.path}</p>
+          </details>
           {selected.previewable && (
             <Button
               size="xs"
@@ -375,7 +380,7 @@ export function AssetLibrary({
             使用位置 · {selected.usage.length} 处
           </h4>
           {!selected.usage.length && (
-            <p className="text-[10px] leading-relaxed text-muted-foreground">
+            <p className="text-[11px] leading-relaxed text-muted-foreground">
               当前主库没有引用。历史版本或项目外的文件仍可能使用它。
             </p>
           )}

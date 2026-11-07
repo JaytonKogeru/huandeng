@@ -250,7 +250,7 @@ export async function readAssetLibrary(
         asset.previewable = asset.kind === 'image' && stats.size <= 64 * 1024 * 1024;
         asset.previewRevision = revisions.has(asset.path)
           ? [...(revisions.get(asset.path) as Set<Revision>)].sort().join(',')
-          : `stat:${stats.mtimeMs}:${stats.size}`;
+          : `stat:${stats.dev}:${stats.ino}:${stats.size}:${stats.mtimeMs}:${stats.ctimeMs}`;
       } else asset.status = 'unavailable';
     } catch (error) {
       asset.status = (error as NodeJS.ErrnoException).code === 'ENOENT' ? 'missing' : 'unavailable';

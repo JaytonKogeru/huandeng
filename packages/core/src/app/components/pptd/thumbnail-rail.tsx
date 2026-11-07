@@ -10,6 +10,7 @@ import {
   Trash2,
 } from 'lucide-react';
 import { memo, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { pptdAssetPreviewUrl } from '@/lib/pptd-backend';
 import { elementLabel } from '@/lib/pptd-element-label';
 import { cycleItemId, focusEditorCanvas } from '@/lib/pptd-keyboard';
 import { cn } from '@/lib/utils';
@@ -38,7 +39,7 @@ const ThumbnailPreview = memo(function ThumbnailPreview({
   return (
     <div data-hd-preview-mounted={page.occurrenceId ?? page.pageId} className="size-full">
       <SlideCanvas width={size[0]} height={size[1]} flat freezeMotion>
-        <PptdPageRenderer page={page} size={size} theme={theme} />
+        <PptdPageRenderer page={page} size={size} theme={theme} assetUrl={pptdAssetPreviewUrl} />
       </SlideCanvas>
     </div>
   );
@@ -68,7 +69,7 @@ export function PptdThumbnailRail({
   currentOccurrenceId?: string;
   disabled: boolean;
   tombstones: [string, SlideIdentity][];
-  onSelect: (pageId: string, occurrenceId?: string) => void;
+  onSelect: (pageId: string, occurrenceId?: string, focusTarget?: 'canvas' | 'thumbnails') => void;
   onAdd: () => void;
   onDuplicate: (pageId: string) => void;
   onRemove: (pageId: string) => void;
@@ -222,8 +223,8 @@ export function PptdThumbnailRail({
                         return;
                       if (event.key === 'Enter') {
                         event.preventDefault();
-                        onSelect(page.pageId, page.occurrenceId);
-                        requestAnimationFrame(() => focusEditorCanvas());
+                        onSelect(page.pageId, page.occurrenceId, 'canvas');
+                        focusEditorCanvas();
                         return;
                       }
                       const ids = entries.map((entry) => entry.key);

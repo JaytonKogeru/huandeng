@@ -29,11 +29,12 @@ describe('HUANDENG MCP project and Story context', () => {
   it('advertises the three context tools as read-only alongside the compatible writer tools', async () => {
     const { client } = await connection();
     const { tools } = await client.listTools();
-    expect(tools).toHaveLength(15);
+    expect(tools).toHaveLength(17);
     for (const name of [
       'huandeng_story_briefing',
       'huandeng_presentation_read',
       'huandeng_assets_list',
+      'huandeng_export_status',
     ]) {
       expect(tools.find((tool) => tool.name === name)).toMatchObject({
         annotations: { readOnlyHint: true, destructiveHint: false, openWorldHint: false },
@@ -43,6 +44,26 @@ describe('HUANDENG MCP project and Story context', () => {
     expect(tools.find((tool) => tool.name === 'huandeng_apply')).toMatchObject({
       annotations: { readOnlyHint: false, idempotentHint: true },
     });
+  });
+
+  it('routes video start, status and cancellation through the shared service', async () => {
+    const { client, request } = await connection();
+    const args = {
+      format: 'mp4',
+      presentationId: 'talk',
+      occurrenceId: 'talk:return:agenda',
+      fps: 24,
+      endHoldMs: 1000,
+      cueHoldMs: 500,
+    };
+    await client.callTool({ name: 'huandeng_export', arguments: args });
+    expect(request).toHaveBeenLastCalledWith('/video', args);
+    await client.callTool({ name: 'huandeng_export_status', arguments: { jobId: 'job/id' } });
+    expect(request).toHaveBeenLastCalledWith('/exports/job%2Fid/status');
+    await client.callTool({ name: 'huandeng_export_cancel', arguments: { jobId: 'job/id' } });
+    expect(request).toHaveBeenLastCalledWith('/video/cancel', { jobId: 'job/id' });
+    await client.callTool({ name: 'huandeng_export', arguments: { format: 'pptx' } });
+    expect(request).toHaveBeenLastCalledWith('/export', { format: 'pptx' });
   });
 
   it('routes scoped Story, resolved presentations and paginated assets to the active writer', async () => {

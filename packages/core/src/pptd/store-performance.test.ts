@@ -5,7 +5,12 @@ import { afterEach, describe, expect, it, vi } from 'vitest';
 import { METADATA_PATH } from './identity';
 import { hashBytes } from './persistence';
 import { projectTestDirectory } from './project-directory.test-utils';
-import { openPptdStore, type PptdStore, type PptdTiming } from './store';
+import {
+  openPptdStore,
+  type PptdCheckpointSnapshot,
+  type PptdStore,
+  type PptdTiming,
+} from './store';
 import type { TransactionRequest } from './types';
 
 const temporary: string[] = [];
@@ -81,6 +86,50 @@ function edit(store: PptdStore, text = 'Changed'): TransactionRequest {
 }
 
 describe('PPTD load and refresh performance contracts', () => {
+  it('reads committed state in queue order without another disk scan and still explicitly refreshes external edits', async () => {
+    const files = await fixture();
+    const store = await open(files);
+    const request = edit(store);
+    const saving = store.commit(request);
+    const current = store.getCurrentSnapshot();
+    await saving;
+    expect((await current).pages[0].data.notes).toBe('Changed');
+    const readFile = vi.spyOn(fs, 'readFile');
+    const copy = await store.getCurrentSnapshot();
+    expect(readFile).not.toHaveBeenCalled();
+    copy.pages[0].data.notes = 'Caller mutation';
+    expect((await store.getCurrentSnapshot()).pages[0].data.notes).toBe('Changed');
+    const file = path.join(files.root, 'pages/0.page');
+    const stat = await fs.stat(file);
+    await fs.writeFile(file, (await fs.readFile(file, 'utf8')).replace('Changed', 'Altered'));
+    await fs.utimes(file, stat.atime, stat.mtime);
+    expect((await store.getCurrentSnapshot()).pages[0].data.notes).toBe('Changed');
+    await store.refreshExternalState();
+    expect((await store.getCurrentSnapshot()).pages[0].data.notes).toBe('Altered');
+    await expect(store.commit(request)).resolves.toMatchObject({ ok: true });
+    expect((await store.getCurrentSnapshot()).pages[0].data.notes).toBe('Altered');
+  });
+
+  it('projects checkpoint file identities without page contents and isolates the projection from the document', async () => {
+    const files = await fixture();
+    const store = await open(files);
+    let checkpoint: PptdCheckpointSnapshot | undefined;
+    const unsubscribe = store.subscribe((event) => {
+      checkpoint = store.getCheckpointSnapshot(event);
+    });
+    await store.commit(edit(store));
+    unsubscribe();
+    expect(checkpoint?.pages).toEqual([
+      { pageId: 'page-0', pageRevision: store.readPage('page-0').pageRevision },
+    ]);
+    expect(Object.keys(checkpoint?.metadata.slides ?? {})).toEqual(['page-0']);
+    if (!checkpoint) throw new Error('Expected a committed checkpoint projection');
+    checkpoint.metadata.slides['page-0'].path = 'wrong.page';
+    checkpoint.pages[0].pageRevision = 'sha256:tamper';
+    expect(store.readPage('page-0').path).toBe('pages/0.page');
+    expect(store.readPage('page-0').pageRevision).not.toBe('sha256:tamper');
+  });
+
   it('fingerprints a shared asset once per scan while retaining every page dependency', async () => {
     const files = await fixture(24);
     const stat = vi.spyOn(fs, 'stat');

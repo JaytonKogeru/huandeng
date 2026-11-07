@@ -10,6 +10,8 @@ import type {
   TransactionRequest,
   TransactionResult,
 } from '../../pptd/types';
+import type { VideoCapabilities } from '../../pptd/video-encoder';
+import type { ExportJobStatus, ExportResult, VideoExportOptions } from '../../pptd/video-plan';
 
 export type PptdSession = DeckSnapshot & { sessionToken: string };
 
@@ -43,6 +45,7 @@ export class PptdClientError extends Error {
 
 export interface PptdTransport {
   getSnapshot(): Promise<PptdSession>;
+  getCommittedSnapshot?(): Promise<PptdSession>;
   recoverPending(): Promise<PptdSession>;
   commit(request: TransactionRequest): Promise<TransactionResult>;
   revert(
@@ -71,6 +74,11 @@ export function pptdAssetUrl(path: string, exportId?: string): string {
   if (!exportId && /^https?:\/\//i.test(path)) return path;
   const prefix = exportId ? `${API}/exports/${encodeURIComponent(exportId)}` : API;
   return `${prefix}/asset?path=${encodeURIComponent(path)}`;
+}
+
+export function pptdAssetPreviewUrl(path: string, size: 320 | 640 = 320): string {
+  if (/^(?:https?:|data:|blob:)/i.test(path)) return path;
+  return `${API}/asset-preview?path=${encodeURIComponent(path)}&size=${size}`;
 }
 
 export class PptdBackend implements PptdTransport {
@@ -115,6 +123,10 @@ export class PptdBackend implements PptdTransport {
 
   async getSnapshot(): Promise<PptdSession> {
     return this.acceptSession(await this.request<PptdSession>('/session'));
+  }
+
+  async getCommittedSnapshot(): Promise<PptdSession> {
+    return this.acceptSession(await this.request<PptdSession>('/current'));
   }
 
   async recoverPending(): Promise<PptdSession> {
@@ -224,6 +236,32 @@ export class PptdBackend implements PptdTransport {
 
   exportSnapshot(exportId: string): Promise<DeckSnapshot> {
     return this.request(`/exports/${encodeURIComponent(exportId)}/snapshot`);
+  }
+
+  videoCapabilities(): Promise<VideoCapabilities> {
+    return this.request('/video/capabilities');
+  }
+
+  startVideo(
+    options: VideoExportOptions & { presentationId?: string | null },
+  ): Promise<ExportJobStatus> {
+    return this.request('/video', options);
+  }
+
+  exportStatus(id: string): Promise<ExportJobStatus> {
+    return this.request(`/exports/${encodeURIComponent(id)}/status`);
+  }
+
+  cancelVideo(jobId: string): Promise<ExportJobStatus> {
+    return this.request('/video/cancel', { jobId });
+  }
+
+  render(
+    pageId: string,
+    occurrenceId?: string,
+    presentationId?: string | null,
+  ): Promise<ExportResult> {
+    return this.request('/render', { pageId, occurrenceId, presentationId });
   }
 
   subscribe(

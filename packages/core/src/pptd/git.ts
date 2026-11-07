@@ -4,6 +4,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { promisify } from 'node:util';
 import { METADATA_PATH, normalizeRelativePath } from './identity';
+import type { PptdCheckpointSnapshot } from './store';
 import type { DeckSnapshot, DocumentEvent, Revision } from './types';
 
 const run = promisify(execFile);
@@ -139,7 +140,10 @@ export async function registerCheckpointRoot(root: string): Promise<void> {
   }
 }
 
-function bindSnapshot(baseline: Baseline, snapshot: DeckSnapshot): boolean {
+function bindSnapshot(
+  baseline: Baseline,
+  snapshot: Pick<DeckSnapshot, 'deckId' | 'epoch'>,
+): boolean {
   if (baseline.deckId && (baseline.deckId !== snapshot.deckId || baseline.epoch !== snapshot.epoch))
     return false;
   baseline.deckId = snapshot.deckId;
@@ -168,7 +172,7 @@ function recordFile(baseline: Baseline, relative: string, revision: Revision): s
 
 export function recordCheckpoint(
   root: string,
-  snapshot: DeckSnapshot,
+  snapshot: PptdCheckpointSnapshot,
   event: DocumentEvent,
 ): CheckpointRecordResult {
   const baseline = baselines.get(rootKey(root));

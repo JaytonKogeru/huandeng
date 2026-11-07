@@ -692,7 +692,7 @@ export class PptdDocumentClient {
             )
           : await this.backend.commit(pending.request));
       pending.result = result;
-      const snapshot = await this.backend.getSnapshot();
+      const snapshot = await (this.backend.getCommittedSnapshot?.() ?? this.backend.getSnapshot());
       const drafts = { ...this.state.drafts };
       if (pending.pageId && pending.sent) {
         const { pageId, sent } = pending;

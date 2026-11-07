@@ -1,10 +1,17 @@
 import { randomUUID } from 'node:crypto';
 import fs from 'node:fs/promises';
+import os from 'node:os';
 import path from 'node:path';
-import { parseManifest } from './codec';
+import { isRecord, parseManifest } from './codec';
 import { parseMetadata } from './identity';
 import { atomicWrite, type HistoryRecord, hashBytes, hashPayload, readUtf8 } from './persistence';
-import { type PageSize, type PageVersionSummary, PptdError, type SlideIdentity } from './types';
+import {
+  type PageSize,
+  type PageVersionSummary,
+  PptdError,
+  type Revision,
+  type SlideIdentity,
+} from './types';
 
 export const VERSIONED_PAGE_METADATA = [
   'designIntent',
@@ -32,6 +39,72 @@ interface PageObservation {
   summary: string;
   kind: 'initial' | 'external';
   state: PageVersionState;
+}
+
+interface ObservationIndex {
+  summary: Omit<PageVersionSummary, 'current'>;
+  file: string;
+  fileRevision: Revision;
+  metadataRevision: string;
+  size: PageSize;
+}
+
+interface VersionStateReference {
+  source: { value: string } | { observation: ObservationIndex };
+  metadata: { value: SlideIdentity } | { observation: ObservationIndex };
+  pageRevision: Revision;
+  metadataRevision: string;
+  size: PageSize;
+}
+
+const MAX_HOT_VERSIONS = 8;
+const MAX_HOT_BYTES = 4 * 1024 * 1024;
+
+function stateBytes(state: PageVersionState): number {
+  // Account conservatively for UTF-16 strings; this is a cache budget, not V8 retainedSize.
+  return (state.source.length + JSON.stringify(state.metadata).length) * 2 + 64;
+}
+
+function validateObservation(value: unknown): PageObservation {
+  if (
+    !isRecord(value) ||
+    typeof value.pageId !== 'string' ||
+    typeof value.versionId !== 'string' ||
+    typeof value.createdAt !== 'string' ||
+    !Number.isFinite(Date.parse(value.createdAt)) ||
+    typeof value.actor !== 'string' ||
+    typeof value.summary !== 'string' ||
+    !['initial', 'external'].includes(String(value.kind)) ||
+    !isRecord(value.state) ||
+    typeof value.state.source !== 'string' ||
+    !isRecord(value.state.metadata) ||
+    typeof value.state.metadata.path !== 'string' ||
+    !['active', 'tombstone'].includes(String(value.state.metadata.state)) ||
+    !Array.isArray(value.state.size) ||
+    value.state.size.length !== 2 ||
+    !value.state.size.every((dimension) => typeof dimension === 'number' && dimension > 0)
+  )
+    throw new PptdError('RECOVERY_REQUIRED', 'A recorded page observation is invalid.');
+  return value as unknown as PageObservation;
+}
+
+function reference(state: PageVersionState): VersionStateReference {
+  return {
+    source: { value: state.source },
+    metadata: { value: state.metadata },
+    pageRevision: hashBytes(state.source),
+    metadataRevision: metadataRevision(state.metadata),
+    size: [...state.size],
+  };
+}
+
+function sameState(left: VersionStateReference, right: VersionStateReference): boolean {
+  return (
+    left.pageRevision === right.pageRevision &&
+    left.metadataRevision === right.metadataRevision &&
+    left.size[0] === right.size[0] &&
+    left.size[1] === right.size[1]
+  );
 }
 
 function editableMetadata(metadata: SlideIdentity | undefined): Record<string, unknown> {
@@ -88,7 +161,11 @@ function initialState(
 }
 
 export class PageVersionArchive {
-  private observations: PageObservation[] = [];
+  private observations = new Map<string, ObservationIndex[]>();
+  private versionIds = new Set<string>();
+  private hot = new Map<string, { state: PageVersionState; bytes: number }>();
+  private hotBytes = 0;
+  private temporaryDirectory: string | undefined;
   private clock = 0;
 
   constructor(
@@ -101,6 +178,93 @@ export class PageVersionArchive {
     return new Date(this.clock).toISOString();
   }
 
+  cacheUsage() {
+    return {
+      observations: this.versionIds.size,
+      entries: this.hot.size,
+      estimatedBytes: this.hotBytes,
+      maxEntries: MAX_HOT_VERSIONS,
+      maxEstimatedBytes: MAX_HOT_BYTES,
+      temporary: this.temporaryDirectory !== undefined,
+    };
+  }
+
+  async close(): Promise<void> {
+    this.hot.clear();
+    this.hotBytes = 0;
+    if (this.temporaryDirectory) {
+      await fs.rm(this.temporaryDirectory, { recursive: true, force: true });
+      this.temporaryDirectory = undefined;
+    }
+  }
+
+  private remember(versionId: string, state: PageVersionState): void {
+    const previous = this.hot.get(versionId);
+    if (previous) {
+      this.hot.delete(versionId);
+      this.hotBytes -= previous.bytes;
+    }
+    const bytes = stateBytes(state);
+    if (bytes > MAX_HOT_BYTES) return;
+    this.hot.set(versionId, { state, bytes });
+    this.hotBytes += bytes;
+    while (this.hot.size > MAX_HOT_VERSIONS || this.hotBytes > MAX_HOT_BYTES) {
+      const oldest = this.hot.keys().next().value;
+      if (oldest === undefined) break;
+      this.hotBytes -= this.hot.get(oldest)?.bytes ?? 0;
+      this.hot.delete(oldest);
+    }
+  }
+
+  private index(observation: PageObservation, file: string, source: string): void {
+    if (this.versionIds.has(observation.versionId))
+      throw new PptdError('RECOVERY_REQUIRED', `Duplicate page version ${observation.versionId}.`);
+    const { state } = observation;
+    const indexed: ObservationIndex = {
+      summary: {
+        pageId: observation.pageId,
+        versionId: observation.versionId,
+        createdAt: observation.createdAt,
+        actor: observation.actor,
+        summary: observation.summary,
+        kind: observation.kind,
+        pageRevision: hashBytes(state.source),
+      },
+      file,
+      fileRevision: hashBytes(source),
+      metadataRevision: metadataRevision(state.metadata),
+      size: [...state.size],
+    };
+    const page = this.observations.get(observation.pageId) ?? [];
+    page.push(indexed);
+    this.observations.set(observation.pageId, page);
+    this.versionIds.add(observation.versionId);
+    this.clock = Math.max(this.clock, Date.parse(observation.createdAt));
+    this.remember(observation.versionId, state);
+  }
+
+  private async read(indexed: ObservationIndex): Promise<PageVersionState> {
+    const cached = this.hot.get(indexed.summary.versionId);
+    if (cached) {
+      this.hot.delete(indexed.summary.versionId);
+      this.hot.set(indexed.summary.versionId, cached);
+      return cached.state;
+    }
+    try {
+      const source = await readUtf8(indexed.file);
+      if (hashBytes(source) !== indexed.fileRevision)
+        throw new Error('The recorded page version changed on disk.');
+      const observation = validateObservation(JSON.parse(source));
+      this.remember(indexed.summary.versionId, observation.state);
+      return observation.state;
+    } catch (error) {
+      throw new PptdError(
+        'RECOVERY_REQUIRED',
+        `Cannot read page version ${indexed.summary.versionId}: ${String(error)}`,
+      );
+    }
+  }
+
   async initialize(states: Map<string, PageVersionState>, records: HistoryRecord[]): Promise<void> {
     const directory = path.join(this.stateDir, 'page-versions');
     let files: string[] = [];
@@ -109,36 +273,54 @@ export class PageVersionArchive {
     } catch (error) {
       if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error;
     }
-    this.observations = await Promise.all(
-      files
-        .filter((file) => file.endsWith('.json'))
-        .map(
-          async (file) => JSON.parse(await readUtf8(path.join(directory, file))) as PageObservation,
-        ),
-    );
-    this.clock = Math.max(
-      0,
-      ...records.map((record) => Date.parse(record.timestamp)),
-      ...this.observations.map((record) => Date.parse(record.createdAt)),
-    );
+    // Index one complete record at a time. Full source text is only retained in the bounded LRU.
+    for (const file of files.filter((file) => file.endsWith('.json'))) {
+      try {
+        const absolute = path.join(directory, file);
+        const source = await readUtf8(absolute);
+        this.index(validateObservation(JSON.parse(source)), absolute, source);
+      } catch (error) {
+        throw new PptdError(
+          'RECOVERY_REQUIRED',
+          `Cannot index recorded page version ${file}: ${String(error)}`,
+        );
+      }
+    }
+    for (const record of records) this.clock = Math.max(this.clock, Date.parse(record.timestamp));
     for (const [pageId, state] of states) await this.observe(pageId, state, records);
   }
 
   private async save(observation: PageObservation): Promise<void> {
-    if (!this.readOnly)
-      await atomicWrite(
-        path.join(
-          this.stateDir,
-          'page-versions',
-          `${hashBytes(observation.versionId).slice(7)}.json`,
-        ),
-        `${JSON.stringify(observation)}\n`,
+    let directory = path.join(this.stateDir, 'page-versions');
+    if (this.readOnly) {
+      try {
+        this.temporaryDirectory ??= await fs.mkdtemp(
+          path.join(os.tmpdir(), 'huandeng-page-versions-'),
+        );
+        directory = this.temporaryDirectory;
+      } catch (error) {
+        throw new PptdError(
+          'HISTORY_UNAVAILABLE',
+          `Cannot preserve this read-only session's page history: ${String(error)}`,
+        );
+      }
+    }
+    const file = path.join(directory, `${hashBytes(observation.versionId).slice(7)}.json`);
+    const source = `${JSON.stringify(observation)}\n`;
+    try {
+      await atomicWrite(file, source);
+    } catch (error) {
+      if (!this.readOnly) throw error;
+      throw new PptdError(
+        'HISTORY_UNAVAILABLE',
+        `Cannot preserve this read-only session's page history: ${String(error)}`,
       );
-    this.observations.push(observation);
+    }
+    this.index(observation, file, source);
   }
 
   async observe(pageId: string, state: PageVersionState, records: HistoryRecord[]): Promise<void> {
-    if (!this.observations.some((observation) => observation.pageId === pageId)) {
+    if (!this.observations.has(pageId)) {
       const initial = initialState(pageId, state, records);
       if (initial) {
         const beforeFirstEdit = records.find((record) => {
@@ -159,9 +341,8 @@ export class PageVersionArchive {
         });
       }
     }
-    const latest = this.versions(pageId, state, records)[0];
-    if (latest && pageVersionStateRevision(latest.state) === pageVersionStateRevision(state))
-      return;
+    const latest = this.collect(pageId, state, records).latest;
+    if (latest && sameState(latest.state, reference(state))) return;
     await this.save({
       pageId,
       versionId: `external:${randomUUID()}`,
@@ -173,36 +354,49 @@ export class PageVersionArchive {
     });
   }
 
-  versions(
+  private collect(
     pageId: string,
     current: PageVersionState,
     records: HistoryRecord[],
-  ): StoredPageVersion[] {
+    targetVersionId?: string,
+  ) {
     const events = [
       ...records.map((record) => ({ timestamp: record.timestamp, record })),
-      ...this.observations
-        .filter((observation) => observation.pageId === pageId)
-        .map((observation) => ({ timestamp: observation.createdAt, observation })),
+      ...(this.observations.get(pageId) ?? []).map((observation) => ({
+        timestamp: observation.summary.createdAt,
+        observation,
+      })),
     ].sort(
       (a, b) =>
         a.timestamp.localeCompare(b.timestamp) || Number('record' in a) - Number('record' in b),
     );
-    const versions: StoredPageVersion[] = [];
-    let state: PageVersionState | undefined;
+    const versions: PageVersionSummary[] = [];
+    let state: VersionStateReference | undefined;
+    let latest: { summary: PageVersionSummary; state: VersionStateReference } | undefined;
+    let selected: typeof latest;
+    const currentReference = reference(current);
     const append = (
       summary: Omit<PageVersionSummary, 'current' | 'pageRevision' | 'pageId'>,
-      next: PageVersionState,
+      next: VersionStateReference,
     ) => {
-      state = structuredClone(next);
-      versions.push({
-        summary: { ...summary, pageId, pageRevision: hashBytes(next.source), current: false },
-        state: structuredClone(next),
-      });
+      state = { ...next, size: [...next.size] };
+      latest = {
+        summary: { ...summary, pageId, pageRevision: next.pageRevision, current: false },
+        state: { ...next, size: [...next.size] },
+      };
+      versions.push(latest.summary);
+      if (summary.versionId === targetVersionId) selected = latest;
     };
     for (const event of events) {
       if ('observation' in event) {
-        const { state: next, ...observation } = event.observation;
-        append(observation, next);
+        const observation = event.observation;
+        append(observation.summary, {
+          source: { observation },
+          metadata: { observation },
+          pageRevision: observation.summary.pageRevision,
+          metadataRevision: observation.metadataRevision,
+          size: observation.size,
+        });
         continue;
       }
       const record = event.record;
@@ -215,16 +409,24 @@ export class PageVersionArchive {
         if (state && changes.sizeAfter) state.size = changes.sizeAfter;
         continue;
       }
-      const previous: PageVersionState = {
-        source: changes.page?.before ?? state?.source ?? current.source,
-        metadata: changes.metadataBefore ?? state?.metadata ?? current.metadata,
+      const previous: VersionStateReference = {
+        source:
+          changes.page?.before !== null && changes.page?.before !== undefined
+            ? { value: changes.page.before }
+            : (state?.source ?? currentReference.source),
+        metadata: changes.metadataBefore
+          ? { value: changes.metadataBefore }
+          : (state?.metadata ?? currentReference.metadata),
+        pageRevision:
+          changes.page?.before !== null && changes.page?.before !== undefined
+            ? hashBytes(changes.page.before)
+            : (state?.pageRevision ?? currentReference.pageRevision),
+        metadataRevision: changes.metadataBefore
+          ? metadataRevision(changes.metadataBefore)
+          : (state?.metadataRevision ?? currentReference.metadataRevision),
         size: changes.sizeBefore ?? state?.size ?? current.size,
       };
-      if (
-        state &&
-        changes.page?.before !== null &&
-        pageVersionStateRevision(state) !== pageVersionStateRevision(previous)
-      )
+      if (state && changes.page?.before !== null && !sameState(state, previous))
         append(
           {
             versionId: `external-before:${record.operationId}`,
@@ -235,9 +437,19 @@ export class PageVersionArchive {
           },
           previous,
         );
-      const next: PageVersionState = {
-        source: changes.page?.after ?? previous.source,
-        metadata: changes.metadataAfter ?? previous.metadata,
+      const next: VersionStateReference = {
+        source:
+          changes.page?.after !== null && changes.page?.after !== undefined
+            ? { value: changes.page.after }
+            : previous.source,
+        metadata: changes.metadataAfter ? { value: changes.metadataAfter } : previous.metadata,
+        pageRevision:
+          changes.page?.after !== null && changes.page?.after !== undefined
+            ? hashBytes(changes.page.after)
+            : previous.pageRevision,
+        metadataRevision: changes.metadataAfter
+          ? metadataRevision(changes.metadataAfter)
+          : previous.metadataRevision,
         size: changes.sizeAfter ?? previous.size,
       };
       append(
@@ -256,24 +468,42 @@ export class PageVersionArchive {
         next,
       );
     }
-    const latest = versions.at(-1);
-    if (latest)
-      latest.summary.current =
-        pageVersionStateRevision(latest.state) === pageVersionStateRevision(current);
-    return versions.reverse();
+    if (latest) latest.summary.current = sameState(latest.state, currentReference);
+    return { summaries: versions.reverse(), latest, selected };
   }
 
-  find(
+  summaries(
+    pageId: string,
+    current: PageVersionState,
+    records: HistoryRecord[],
+  ): PageVersionSummary[] {
+    return this.collect(pageId, current, records).summaries;
+  }
+
+  async find(
     pageId: string,
     versionId: string,
     current: PageVersionState,
     records: HistoryRecord[],
-  ): StoredPageVersion {
-    const found = this.versions(pageId, current, records).find(
-      (version) => version.summary.versionId === versionId,
-    );
+  ): Promise<StoredPageVersion> {
+    const found = this.collect(pageId, current, records, versionId).selected;
     if (!found)
       throw new PptdError('TARGET_NOT_FOUND', `Unknown page version ${versionId}.`, { pageId });
-    return found;
+    const { state } = found;
+    return {
+      summary: found.summary,
+      state: {
+        source:
+          'value' in state.source
+            ? state.source.value
+            : (await this.read(state.source.observation)).source,
+        metadata: structuredClone(
+          'value' in state.metadata
+            ? state.metadata.value
+            : (await this.read(state.metadata.observation)).metadata,
+        ),
+        size: [...state.size],
+      },
+    };
   }
 }

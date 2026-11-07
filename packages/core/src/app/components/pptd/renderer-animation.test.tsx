@@ -38,7 +38,7 @@ function snapshot(): PageSnapshot {
     pageRevision: 'sha256:page',
     renderRevision: 'sha256:render',
     metadata: { shortCode: 'K2A', path: 'a.page', state: 'active' },
-    assetRevisions: { 'media/photo.png': 'sha256:image' },
+    assetRevisions: { 'media/photo.png': `sha256:${'a'.repeat(64)}` },
     data: {
       elements: [
         {
@@ -96,9 +96,9 @@ describe('animation renderer integration', () => {
           assetUrl={(source) => `/archive/${source}?version=checkpoint#crop`}
         />,
       );
-    expect(render()).toContain('version=checkpoint&amp;revision=sha256%3Aimage#crop');
+    expect(render()).toContain(`version=checkpoint&amp;revision=sha256%3A${'a'.repeat(64)}#crop`);
     page.renderRevision = 'sha256:changed-text';
-    expect(render()).toContain('version=checkpoint&amp;revision=sha256%3Aimage#crop');
+    expect(render()).toContain(`version=checkpoint&amp;revision=sha256%3A${'a'.repeat(64)}#crop`);
     expect(render()).not.toContain('revision=sha256%3Achanged-text');
   });
 

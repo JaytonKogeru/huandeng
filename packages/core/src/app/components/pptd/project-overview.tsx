@@ -51,7 +51,7 @@ export function ProjectOverview({
         {onEditProject && (
           <Button variant="ghost" size="xs" onClick={onEditProject}>
             <BookOpen />
-            编排与 Story
+            编排演讲
           </Button>
         )}
       </div>
@@ -85,7 +85,7 @@ export function ProjectOverview({
         </h3>
         {insights.presentations.length === 0 ? (
           <div className="rounded-lg border border-dashed border-border p-3 leading-relaxed text-muted-foreground">
-            在「编排与 Story」中选择章节或单页，组成同一项目中的演讲。页面内容仍由主库维护。
+            点击「编排演讲」，选择章节或单页，组成同一项目中的演讲。页面内容仍由主库维护。
           </div>
         ) : (
           insights.presentations.map((presentation) => (

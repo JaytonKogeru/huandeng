@@ -12,6 +12,7 @@ import {
 import {
   type KeyboardEvent,
   type PointerEvent,
+  type Ref,
   useEffect,
   useId,
   useMemo,
@@ -32,6 +33,7 @@ import {
 } from '../../../pptd/animation-model';
 import type { PageSnapshot } from '../../../pptd/types';
 import { elementLabel } from '../../lib/pptd-element-label';
+import { parseTimelineSeconds, timelineSeconds } from '../../lib/pptd-timeline-time';
 import { Button } from '../ui/button';
 
 export interface TimelinePanelProps {
@@ -65,7 +67,7 @@ function identifier() {
   return crypto.randomUUID();
 }
 function seconds(value: number) {
-  return `${(value / 1000).toFixed(value % 1000 === 0 ? 0 : 2)}s`;
+  return `${timelineSeconds(value)}s`;
 }
 function displayValue(property: TimelineProperty, value: number) {
   const number =
@@ -120,6 +122,7 @@ function TimelineField({
   step = 'any',
   integer = false,
   className = 'w-full',
+  inputRef,
 }: {
   label: string;
   value: string;
@@ -133,6 +136,7 @@ function TimelineField({
   step?: number | 'any';
   integer?: boolean;
   className?: string;
+  inputRef?: Ref<HTMLInputElement>;
 }) {
   const id = useId();
   const [text, setText] = useState(value);
@@ -170,11 +174,12 @@ function TimelineField({
   };
   return (
     <label
-      className={`flex min-w-0 flex-col gap-1 text-[10px] text-muted-foreground ${className}`}
+      className={`flex min-w-0 flex-col gap-1 text-xs text-muted-foreground ${className}`}
       htmlFor={id}
     >
       {label}
       <input
+        ref={inputRef}
         id={id}
         aria-label={label}
         data-hd-timeline-input={label}
@@ -255,6 +260,9 @@ function TimelineEditor({
   const [message, setMessage] = useState<string | null>(null);
   const [copyStatus, setCopyStatus] = useState<string | null>(null);
   const panelRef = useRef<HTMLElement>(null);
+  const valueInputRef = useRef<HTMLInputElement>(null);
+  const pendingValueFocus = useRef<string | null>(null);
+  const [guidedKeyId, setGuidedKeyId] = useState<string | null>(null);
   const [trackId, setTrackId] = useState<string | null>(null);
   const [keyId, setKeyId] = useState<string | null>(null);
   const [cueId, setCueId] = useState<string | null>(null);
@@ -278,6 +286,12 @@ function TimelineEditor({
   const selectedTrack = draft?.tracks.find((track) => track.id === trackId);
   const selectedKey = selectedTrack?.keyframes.find((key) => key.id === keyId);
   const selectedCue = draft?.cues?.find((cue) => cue.id === cueId);
+  useEffect(() => {
+    if (readonly || !selectedKey || pendingValueFocus.current !== selectedKey.id) return;
+    valueInputRef.current?.focus();
+    valueInputRef.current?.select();
+    pendingValueFocus.current = null;
+  }, [readonly, selectedKey]);
   const elements = useMemo(
     () => new Map(page.data.elements.map((element) => [element.elementId, element])),
     [page.data.elements],
@@ -409,6 +423,14 @@ function TimelineEditor({
     }
     return true;
   };
+  const commitTime = (value: string, apply: (timeMs: number) => boolean) => {
+    try {
+      return apply(parseTimelineSeconds(value));
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : '请检查输入的秒数。');
+      return false;
+    }
+  };
   const commit = async (timeline: PageTimeline | null) => {
     if (!canApply(timeline)) return;
     updateDraft(timeline);
@@ -471,8 +493,11 @@ function TimelineEditor({
         { id: identifier(), timeMs: timeline.durationMs, value, easing: 'ease-in-out' },
       ],
     };
-    choose(next.id, next.keyframes[0].id);
-    seek(0);
+    const end = next.keyframes[1];
+    choose(next.id, end.id);
+    seek(end.timeMs);
+    setGuidedKeyId(end.id);
+    pendingValueFocus.current = end.id;
     void commit({ ...timeline, tracks: [...timeline.tracks, next] });
   };
   const addKey = () => {
@@ -535,6 +560,7 @@ function TimelineEditor({
       ),
     };
     if (!canApply(next)) return false;
+    if (changes.value !== undefined && changes.value !== selectedKey.value) setGuidedKeyId(null);
     if (changes.timeMs !== undefined) seek(changes.timeMs);
     void commit(next);
     return true;
@@ -672,6 +698,8 @@ function TimelineEditor({
     setMessage(null);
     setCopyStatus(null);
     setPlaying(false);
+    setGuidedKeyId(null);
+    pendingValueFocus.current = null;
   };
   const copyDraft = async () => {
     const pendingInputs = Object.fromEntries(
@@ -784,14 +812,15 @@ function TimelineEditor({
           {seconds(Math.min(playhead, duration))} / {seconds(duration)}
         </output>
         <input
-          className="h-5 min-w-24 flex-1 accent-primary"
+          className="h-7 min-w-24 flex-1 accent-primary"
           type="range"
-          aria-label="动画播放头（毫秒）"
+          aria-label="动画播放头（秒）"
+          aria-valuetext={`${timelineSeconds(Math.min(playhead, duration))} 秒`}
           min={0}
-          max={duration}
-          step={1}
-          value={Math.min(playhead, duration)}
-          onChange={(event) => seek(Number(event.target.value))}
+          max={duration / 1000}
+          step={0.001}
+          value={Math.min(playhead, duration) / 1000}
+          onChange={(event) => seek(Math.round(Number(event.target.value) * 1000))}
         />
         <Button
           variant={preview ? 'secondary' : 'ghost'}
@@ -807,23 +836,26 @@ function TimelineEditor({
           key={`duration-${resetCount}`}
           label="时长（秒）"
           className="w-20"
-          value={String(duration / 1000)}
+          value={timelineSeconds(duration)}
           min={0.001}
           max={MAX_TIMELINE_DURATION_MS / 1000}
+          step={0.001}
           disabled={readonly}
           onDirty={(value) => fieldDirty('duration', value)}
           onError={setMessage}
-          onCommit={(value) => {
-            const next = {
-              ...(draftRef.current ?? { schemaVersion: 1 as const, tracks: [] }),
-              durationMs: Math.round(Number(value) * 1000),
-            };
-            if (!canApply(next)) return false;
-            void commit(next);
-            return true;
-          }}
+          onCommit={(value) =>
+            commitTime(value, (durationMs) => {
+              const next = {
+                ...(draftRef.current ?? { schemaVersion: 1 as const, tracks: [] }),
+                durationMs,
+              };
+              if (!canApply(next)) return false;
+              void commit(next);
+              return true;
+            })
+          }
         />
-        <span className="min-w-14 text-[10px] text-muted-foreground" aria-live="polite">
+        <span className="min-w-14 text-[11px] text-muted-foreground" aria-live="polite">
           {saving ? '保存中…' : hasUnsaved ? '未保存' : '已保存'}
         </span>
       </div>
@@ -878,7 +910,7 @@ function TimelineEditor({
           <Flag />
           演讲步骤
         </Button>
-        <span className="ml-auto text-[10px] text-muted-foreground">
+        <span className="ml-auto text-[11px] text-muted-foreground">
           拖动菱形调整时间 · 选中后编辑数值
         </span>
       </div>
@@ -920,7 +952,7 @@ function TimelineEditor({
           <div className="min-w-80">
             <div className="flex h-6 items-end pb-1 text-[10px] text-muted-foreground">
               <span className="w-40 shrink-0">对象 / 属性</span>
-              <div className="relative mr-3 h-4 flex-1">
+              <div className="relative mr-4 h-4 flex-1">
                 {[0, 0.25, 0.5, 0.75, 1].map((fraction) => (
                   <span
                     key={fraction}
@@ -932,10 +964,10 @@ function TimelineEditor({
                 ))}
               </div>
             </div>
-            <div className="max-h-44 overflow-y-auto pr-3">
+            <div className="max-h-44 overflow-y-auto pr-4">
               {!draft?.tracks.length && (
                 <div className="flex min-h-24 items-center justify-center px-6 text-center text-[11px] leading-relaxed text-muted-foreground">
-                  选择一个对象和属性，添加轨道后设置开始与结束值。
+                  选择一个对象和属性，添加轨道，再修改终点数值。
                   <br />
                   位置、旋转、缩放和透明度可以组合使用。
                 </div>
@@ -943,13 +975,13 @@ function TimelineEditor({
               {draft?.tracks.map((track) => (
                 <div
                   key={track.id}
-                  className={`flex h-8 items-center rounded ${track.id === trackId ? 'bg-primary/5' : ''}`}
+                  className={`flex h-9 items-center rounded ${track.id === trackId ? 'bg-primary/5' : ''}`}
                   data-hd-timeline-track={track.id}
                 >
                   <div className="flex w-40 shrink-0 items-center gap-1 pr-2">
                     <button
                       type="button"
-                      className={`min-w-0 flex-1 truncate rounded px-1 py-1 text-left text-[10px] ${focusClass}`}
+                      className={`min-w-0 flex-1 truncate rounded px-1 py-2 text-left text-[11px] ${focusClass}`}
                       title={trackLabel(track)}
                       onClick={() => choose(track.id, track.keyframes[0].id)}
                     >
@@ -958,7 +990,7 @@ function TimelineEditor({
                     <Button
                       variant="ghost"
                       size="icon-xs"
-                      className="size-5 shrink-0 text-muted-foreground"
+                      className="size-7 shrink-0 text-muted-foreground"
                       aria-label={`删除轨道：${trackLabel(track)}`}
                       disabled={actionBlocked}
                       onClick={() => removeTrack(track.id)}
@@ -966,7 +998,7 @@ function TimelineEditor({
                       <Trash2 className="size-3" />
                     </Button>
                   </div>
-                  <div className="relative h-8 min-w-0 flex-1" data-hd-timeline-lane>
+                  <div className="relative h-9 min-w-0 flex-1" data-hd-timeline-lane>
                     <button
                       type="button"
                       className={`absolute inset-0 my-1 rounded bg-muted/55 ${focusClass}`}
@@ -990,7 +1022,7 @@ function TimelineEditor({
                         aria-pressed={track.id === trackId && key.id === keyId}
                         title={`${seconds(key.timeMs)} · ${displayValue(track.property, key.value)} · ${easingLabels[key.easing]}`}
                         data-hd-keyframe={key.id}
-                        className={`absolute top-1/2 z-20 flex h-7 w-5 -translate-x-1/2 -translate-y-1/2 touch-none items-center justify-center rounded ${focusClass}`}
+                        className={`absolute top-1/2 z-20 flex h-8 w-7 -translate-x-1/2 -translate-y-1/2 touch-none items-center justify-center rounded ${focusClass}`}
                         style={{ left: `${(key.timeMs / duration) * 100}%` }}
                         onClick={() => {
                           if (choose(track.id, key.id)) seek(key.timeMs);
@@ -1022,7 +1054,7 @@ function TimelineEditor({
                         type="button"
                         aria-label={`演讲步骤 ${index + 1}：${cue.label}，${seconds(cue.timeMs)}`}
                         aria-pressed={cue.id === cueId}
-                        className={`absolute top-1/2 flex size-6 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded ${focusClass} ${cue.id === cueId ? 'bg-amber-500/15 text-amber-600' : 'text-muted-foreground'}`}
+                        className={`absolute top-1/2 flex size-7 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded ${focusClass} ${cue.id === cueId ? 'bg-amber-500/15 text-amber-600' : 'text-muted-foreground'}`}
                         style={{ left: `${(cue.timeMs / duration) * 100}%` }}
                         title={`${cue.label} · ${seconds(cue.timeMs)}`}
                         onClick={() => {
@@ -1039,7 +1071,7 @@ function TimelineEditor({
           </div>
         </div>
         <aside
-          className="w-48 shrink-0 space-y-2 border-l border-border/60 p-3"
+          className="w-52 shrink-0 space-y-2 border-l border-border/60 p-3"
           aria-label="关键帧属性"
         >
           {selectedKey && selectedTrack ? (
@@ -1047,19 +1079,33 @@ function TimelineEditor({
               <p className="truncate text-[11px] font-medium" title={trackLabel(selectedTrack)}>
                 {trackLabel(selectedTrack)}
               </p>
+              <p className="text-[11px] text-muted-foreground">
+                {selectedKey.timeMs === 0
+                  ? '起点'
+                  : selectedKey.timeMs === duration
+                    ? '终点'
+                    : '关键帧'}{' '}
+                · {seconds(selectedKey.timeMs)}
+              </p>
+              {guidedKeyId === selectedKey.id && (
+                <p role="status" className="text-xs leading-relaxed" data-hd-animation-next-step>
+                  修改终点数值，然后播放预览。
+                </p>
+              )}
               <div className="grid grid-cols-2 gap-2">
                 <TimelineField
-                  label="时间（毫秒）"
-                  value={String(selectedKey.timeMs)}
+                  label="时间（秒）"
+                  value={timelineSeconds(selectedKey.timeMs)}
                   min={0}
-                  max={duration}
-                  integer
+                  max={duration / 1000}
+                  step={0.001}
                   disabled={readonly}
                   onDirty={(value) => fieldDirty('key-time', value)}
                   onError={setMessage}
-                  onCommit={(value) => patchKey({ timeMs: Number(value) })}
+                  onCommit={(value) => commitTime(value, (timeMs) => patchKey({ timeMs }))}
                 />
                 <TimelineField
+                  inputRef={valueInputRef}
                   label={numericLabel}
                   value={String(Number((selectedKey.value * numericFactor).toFixed(5)))}
                   min={
@@ -1084,7 +1130,7 @@ function TimelineEditor({
                   onCommit={(value) => patchKey({ value: Number(value) / numericFactor })}
                 />
               </div>
-              <label className="flex flex-col gap-1 text-[10px] text-muted-foreground">
+              <label className="flex flex-col gap-1 text-xs text-muted-foreground">
                 到下一帧的变化
                 <select
                   className={fieldClass}
@@ -1118,15 +1164,15 @@ function TimelineEditor({
                 onCommit={(label) => patchCue({ label })}
               />
               <TimelineField
-                label="步骤时间（毫秒）"
-                value={String(selectedCue.timeMs)}
+                label="步骤时间（秒）"
+                value={timelineSeconds(selectedCue.timeMs)}
                 min={0}
-                max={duration}
-                integer
+                max={duration / 1000}
+                step={0.001}
                 disabled={readonly}
                 onDirty={(value) => fieldDirty('cue-time', value)}
                 onError={setMessage}
-                onCommit={(value) => patchCue({ timeMs: Number(value) })}
+                onCommit={(value) => commitTime(value, (timeMs) => patchCue({ timeMs }))}
               />
               <Button
                 variant="ghost"

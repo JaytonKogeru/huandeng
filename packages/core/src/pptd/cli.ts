@@ -204,6 +204,41 @@ program
     ),
   );
 program
+  .command('video')
+  .description('Start a deterministic silent H.264 MP4 export')
+  .option('--presentation <id>', 'export the saved presentation order')
+  .option('--page <id>', 'export only this source page')
+  .option('--occurrence <id>', 'export the exact repeated or pinned appearance')
+  .option('--resolution <height>', '720 or 1080', '720')
+  .option('--fps <fps>', '24 or 30', '30')
+  .option('--static-ms <ms>', 'duration of each page without a timeline', '3000')
+  .option('--end-hold-ms <ms>', 'hold at each animation endpoint', '1000')
+  .option('--cue-hold-ms <ms>', 'extra hold at each presentation cue', '0')
+  .action(async (options) =>
+    print(
+      await (await client()).request('/video', {
+        presentationId: options.presentation,
+        pageId: options.page,
+        occurrenceId: options.occurrence,
+        resolution: Number(options.resolution),
+        fps: Number(options.fps),
+        staticDurationMs: Number(options.staticMs),
+        endHoldMs: Number(options.endHoldMs),
+        cueHoldMs: Number(options.cueHoldMs),
+      }),
+    ),
+  );
+program
+  .command('export-status <jobId>')
+  .description('Read video progress and the completed artifact URL')
+  .action(async (id) =>
+    print(await (await client()).request(`/exports/${encodeURIComponent(id)}/status`)),
+  );
+program
+  .command('export-cancel <jobId>')
+  .description('Cancel an active video export')
+  .action(async (jobId) => print(await (await client()).request('/video/cancel', { jobId })));
+program
   .command('checkpoint <message>')
   .description('Commit only known deck files from a clean Git baseline')
   .action(async (message) => print(await (await client()).request('/checkpoint', { message })));

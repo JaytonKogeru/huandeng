@@ -90,6 +90,18 @@ export interface PptdTiming {
   uniqueAssets?: number;
 }
 
+/** Immutable projection used to record committed file hashes, without copying page contents. */
+export interface PptdCheckpointSnapshot {
+  deckId: string;
+  entry: string;
+  epoch: string;
+  sequence: number;
+  manifestRevision: Revision;
+  metadataRevision: Revision | null;
+  metadata: Pick<ProjectMetadata, 'slides'>;
+  pages: Pick<PageSnapshot, 'pageId' | 'pageRevision'>[];
+}
+
 interface PageDocument {
   source: string;
   path: string;
@@ -368,6 +380,7 @@ export class PptdStore {
     const readOnly = options.readOnly ?? false;
     const release = readOnly ? async () => {} : await acquireWriterLock(root, stateDir);
     const persistence = new Persistence(root, stateDir, options.afterWrite);
+    let openedStore: PptdStore | undefined;
     try {
       if (!readOnly) await persistence.recover();
       else if ((await readOptional(path.join(stateDir, 'pending.json'))) !== null)
@@ -406,6 +419,7 @@ export class PptdStore {
         documents,
         options.onTiming,
       );
+      openedStore = store;
       await store.pageVersions.initialize(
         new Map(
           [...documents.pages.keys()].map((pageId) => [
@@ -418,6 +432,7 @@ export class PptdStore {
       reportTiming(options.onTiming, 'open', started, { pages: documents.pages.size });
       return store;
     } catch (error) {
+      await openedStore?.pageVersions.close().catch(() => {});
       await release();
       throw error;
     }
@@ -522,12 +537,23 @@ export class PptdStore {
     return documents;
   }
 
-  private pageSnapshot(documents: Documents, pageId: string): PageSnapshot {
+  private pageSnapshot(
+    documents: Documents,
+    pageId: string,
+    previous?: PageSnapshot,
+  ): PageSnapshot {
     const page = documents.pages.get(pageId);
     if (!page) throw new PptdError('TARGET_NOT_FOUND', `Page ${pageId} is missing.`);
     const identity = documents.metadata.slides[pageId];
     const pageRevision = hashBytes(page.source);
     const currentRenderRevision = renderRevision(documents, pageId) ?? pageRevision;
+    const sameMetadata = previous && isDeepStrictEqual(previous.metadata, identity);
+    if (
+      previous?.pageRevision === pageRevision &&
+      previous.renderRevision === currentRenderRevision &&
+      sameMetadata
+    )
+      return previous;
     return {
       pageId,
       shortCode: identity.shortCode,
@@ -537,8 +563,8 @@ export class PptdStore {
       renderRevision: currentRenderRevision,
       assetRevisions: { ...documents.pageAssets.get(pageId) },
       authorReview: authorReviewContext(identity.lastAuthorReview, currentRenderRevision),
-      data: structuredClone(page.data),
-      metadata: structuredClone(identity),
+      data: previous?.pageRevision === pageRevision ? previous.data : structuredClone(page.data),
+      metadata: sameMetadata ? previous.metadata : structuredClone(identity),
     };
   }
 
@@ -548,11 +574,12 @@ export class PptdStore {
     const byPath = new Map(
       Object.entries(documents.metadata.slides).map(([id, identity]) => [identity.path, id]),
     );
+    const previous = new Map(this.snapshot?.pages.map((page) => [page.pageId, page]));
     const pages = manifest.pages
       .map(normalizeRelativePath)
       .map((pagePath) => byPath.get(pagePath))
       .filter((id): id is string => id !== undefined && documents.pages.has(id))
-      .map((id) => this.pageSnapshot(documents, id));
+      .map((id) => this.pageSnapshot(documents, id, previous.get(id)));
     const snapshot: DeckSnapshot = {
       kind: 'pptd',
       deckId: documents.metadata.deckId,
@@ -580,6 +607,34 @@ export class PptdStore {
     const snapshot = structuredClone(this.snapshot);
     reportTiming(this.onTiming, 'snapshot.clone', started, { pages: snapshot.pages.length });
     return snapshot;
+  }
+
+  /** Read after all preceding transactions; explicit refreshExternal still scans disk. */
+  getCurrentSnapshot(): Promise<DeckSnapshot> {
+    return this.enqueue(async () => this.getSnapshot());
+  }
+
+  getCheckpointSnapshot(event: DocumentEvent): PptdCheckpointSnapshot {
+    const pageIds = new Set(Object.keys(event.changedPages));
+    return {
+      deckId: this.snapshot.deckId,
+      entry: this.snapshot.entry,
+      epoch: this.snapshot.epoch,
+      sequence: this.snapshot.sequence,
+      manifestRevision: this.snapshot.manifestRevision,
+      metadataRevision: this.snapshot.metadataRevision,
+      metadata: {
+        slides: Object.fromEntries(
+          [...pageIds].flatMap((pageId) => {
+            const identity = this.snapshot.metadata.slides[pageId];
+            return identity ? [[pageId, structuredClone(identity)]] : [];
+          }),
+        ),
+      },
+      pages: this.snapshot.pages
+        .filter((page) => pageIds.has(page.pageId))
+        .map(({ pageId, pageRevision }) => ({ pageId, pageRevision })),
+    };
   }
 
   readPage(target: string): PageSnapshot {
@@ -727,7 +782,11 @@ export class PptdStore {
 
   private enqueue<T>(task: () => Promise<T>): Promise<T> {
     const pending = this.tail.then(task);
-    this.tail = pending.catch(() => undefined);
+    // The queue only needs completion, not the previous task's potentially large snapshot.
+    this.tail = pending.then(
+      () => undefined,
+      () => undefined,
+    );
     return pending;
   }
 
@@ -781,34 +840,42 @@ export class PptdStore {
 
   refreshExternal(): Promise<DeckSnapshot> {
     return this.enqueue(async () => {
-      try {
-        if ((await readOptional(path.join(this.stateDir, 'pending.json'))) !== null) {
-          if (this.snapshot.diagnostics.some((item) => item.code === 'RECOVERY_REQUIRED'))
-            return this.getSnapshot();
-          throw new PptdError(
-            'PENDING_RECOVERY',
-            'A pending transaction must recover before external changes are published.',
-          );
-        }
-        const next = await PptdStore.loadDocuments(
-          this.root,
-          this.entry,
-          this.assetCache,
-          this.documents,
-          this.onTiming,
-        );
-        if (next.diagnostics.some((item) => item.severity === 'error'))
-          throw new PptdError(
-            'INVALID_DOCUMENT',
-            next.diagnostics.map((item) => item.message).join('; '),
-          );
-        await this.captureExternalVersions(next);
-        this.replaceDocuments(next, 'external');
-      } catch (error) {
-        this.publishDiagnostic(error);
-      }
+      await this.refreshExternalNow();
       return this.getSnapshot();
     });
+  }
+
+  /** Watchers and callers that only need synchronization can avoid an unused snapshot clone. */
+  refreshExternalState(): Promise<void> {
+    return this.enqueue(async () => this.refreshExternalNow());
+  }
+
+  private async refreshExternalNow(): Promise<void> {
+    try {
+      if ((await readOptional(path.join(this.stateDir, 'pending.json'))) !== null) {
+        if (this.snapshot.diagnostics.some((item) => item.code === 'RECOVERY_REQUIRED')) return;
+        throw new PptdError(
+          'PENDING_RECOVERY',
+          'A pending transaction must recover before external changes are published.',
+        );
+      }
+      const next = await PptdStore.loadDocuments(
+        this.root,
+        this.entry,
+        this.assetCache,
+        this.documents,
+        this.onTiming,
+      );
+      if (next.diagnostics.some((item) => item.severity === 'error'))
+        throw new PptdError(
+          'INVALID_DOCUMENT',
+          next.diagnostics.map((item) => item.message).join('; '),
+        );
+      await this.captureExternalVersions(next);
+      this.replaceDocuments(next, 'external');
+    } catch (error) {
+      this.publishDiagnostic(error);
+    }
   }
 
   private publishDiagnostic(error: unknown): void {
@@ -909,13 +976,11 @@ export class PptdStore {
   pageHistory(target: string): Promise<PageVersionSummary[]> {
     return this.enqueue(async () => {
       const { pageId } = resolvePageIdentity(this.documents.metadata, target);
-      return this.pageVersions
-        .versions(
-          pageId,
-          this.pageVersionState(this.documents, pageId),
-          await this.persistence.history(),
-        )
-        .map((version) => version.summary);
+      return this.pageVersions.summaries(
+        pageId,
+        this.pageVersionState(this.documents, pageId),
+        await this.persistence.history(),
+      );
     });
   }
 
@@ -927,23 +992,28 @@ export class PptdStore {
         : null;
       const version =
         checkpoint ??
-        this.pageVersions.find(
+        (await this.pageVersions.find(
           pageId,
           versionId,
           this.pageVersionState(this.documents, pageId),
           await this.persistence.history(),
-        );
-      const documents = structuredClone(this.documents);
-      documents.pages = new Map([
-        [
-          pageId,
-          {
-            path: identity.path,
-            source: version.state.source,
-            data: parsePage(version.state.source).value,
-          },
-        ],
-      ]);
+        ));
+      const documents: Documents = {
+        ...this.documents,
+        metadata: structuredClone(this.documents.metadata),
+        pageAssets: new Map(),
+        diagnostics: [],
+        pages: new Map([
+          [
+            pageId,
+            {
+              path: identity.path,
+              source: version.state.source,
+              data: parsePage(version.state.source).value,
+            },
+          ],
+        ]),
+      };
       documents.metadata.slides[pageId] = {
         ...structuredClone(version.state.metadata),
         path: identity.path,
@@ -1040,7 +1110,11 @@ export class PptdStore {
       this.closed = true;
       this.snapshot.writable = false;
       this.listeners.clear();
-      await this.release();
+      try {
+        await this.pageVersions.close();
+      } finally {
+        await this.release();
+      }
     });
   }
 
@@ -1544,12 +1618,12 @@ export class PptdStore {
             : null;
           const version =
             checkpoint ??
-            this.pageVersions.find(
+            (await this.pageVersions.find(
               pageId,
               operation.versionId,
               this.pageVersionState(base, pageId),
               await this.persistence.history(),
-            );
+            ));
           if (checkpoint) {
             if (
               !isDeepStrictEqual(checkpoint.state.size, documentManifest(docs).size ?? [960, 540])

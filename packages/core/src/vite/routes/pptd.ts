@@ -5,6 +5,7 @@ import type { AddressInfo } from 'node:net';
 import path from 'node:path';
 import { importImage } from '../../pptd/asset-import.ts';
 import { type AssetLibraryOptions, readAssetLibrary } from '../../pptd/asset-library.ts';
+import { AssetPreviewManager } from '../../pptd/asset-preview.ts';
 import { discoveryPath, runtimeRoot, type SessionDiscovery } from '../../pptd/client.ts';
 import {
   checkpoint,
@@ -17,7 +18,7 @@ import { presentationSnapshot } from '../../pptd/presentation-snapshot.ts';
 import { readStoryBriefing } from '../../pptd/project-insights.ts';
 import { readProjectModel, resolvePresentation } from '../../pptd/project-model.ts';
 import { readProjectTree } from '../../pptd/project-tree.ts';
-import { ExportManager, mimeType, readProjectAsset } from '../../pptd/runtime-export.ts';
+import { ExportManager } from '../../pptd/runtime-export.ts';
 import { openPptdStore } from '../../pptd/store.ts';
 import { recordStory, type StoryRecordRequest } from '../../pptd/story.ts';
 import {
@@ -25,6 +26,7 @@ import {
   PptdError,
   type TransactionRequest,
 } from '../../pptd/types.ts';
+import type { VideoExportOptions } from '../../pptd/video-plan.ts';
 import type { ApiContext } from './context.ts';
 
 export interface PptdRouteHost {
@@ -71,6 +73,7 @@ export async function registerPptdRoutes(server: PptdRouteHost, _ctx?: ApiContex
   const token = randomBytes(32).toString('hex');
   const clients = new Set<ServerResponse>();
   const exports = new ExportManager(root);
+  const assetPreviews = new AssetPreviewManager(root);
   let selection: {
     pageId: string | null;
     elementIds: string[];
@@ -87,7 +90,7 @@ export async function registerPptdRoutes(server: PptdRouteHost, _ctx?: ApiContex
   let closed = false;
 
   const unsubscribe = store.subscribe((event) => {
-    recordCheckpoint(root, store.getSnapshot(), event);
+    recordCheckpoint(root, store.getCheckpointSnapshot(event), event);
     const data = `id: ${event.epoch}:${event.sequence}\ndata: ${JSON.stringify(event)}\n\n`;
     for (const client of clients) client.write(data);
   });
@@ -115,7 +118,7 @@ export async function registerPptdRoutes(server: PptdRouteHost, _ctx?: ApiContex
     if (refreshTimer) clearTimeout(refreshTimer);
     refreshTimer = setTimeout(() => {
       if (!closed)
-        void store.refreshExternal().catch((error: unknown) => {
+        void store.refreshExternalState().catch((error: unknown) => {
           server.config.logger.error(`Huandeng refresh: ${String(error)}`);
         });
     }, 180);
@@ -148,6 +151,8 @@ export async function registerPptdRoutes(server: PptdRouteHost, _ctx?: ApiContex
       server.watcher.off('all', watch);
       unsubscribe();
       for (const client of clients) client.end();
+      await exports.dispose();
+      await assetPreviews.dispose();
       await store.close();
       await (async () => {
         const file = await discoveryPath(entry);
@@ -188,8 +193,9 @@ export async function registerPptdRoutes(server: PptdRouteHost, _ctx?: ApiContex
         });
       }
       const route = url.pathname.slice('/__pptd'.length);
-      if (method === 'GET' && route === '/session') {
-        const snapshot = await store.refreshExternal();
+      if (method === 'GET' && (route === '/session' || route === '/current')) {
+        const snapshot =
+          route === '/current' ? await store.getCurrentSnapshot() : await store.refreshExternal();
         return json(res, 200, {
           ...snapshot,
           entry: path.join(root, snapshot.entry),
@@ -283,17 +289,14 @@ export async function registerPptdRoutes(server: PptdRouteHost, _ctx?: ApiContex
         req.on('close', () => clients.delete(res));
         return;
       }
-      if (method === 'GET' && route === '/asset') {
-        const source = url.searchParams.get('path');
-        if (!source) throw new PptdError('INVALID_REQUEST', 'Asset path is required.');
-        const data = await readProjectAsset(root, source);
-        res.setHeader('content-type', mimeType(source));
-        return res.end(data);
-      }
+      if (method === 'GET' && (route === '/asset' || route === '/asset-preview'))
+        return await assetPreviews.respond(url.searchParams, route === '/asset-preview', req, res);
       if (method === 'GET' && route.startsWith('/exports/')) {
         const [, , id, kind] = route.split('/');
         return exports.respond(id, kind, url.searchParams, res);
       }
+      if (method === 'GET' && route === '/video/capabilities')
+        return json(res, 200, await exports.videoCapabilities());
       if (method !== 'POST') return json(res, 404, { message: 'Unknown Huandeng endpoint.' });
       const body = (await readBody(
         req,
@@ -301,6 +304,50 @@ export async function registerPptdRoutes(server: PptdRouteHost, _ctx?: ApiContex
       )) as Record<string, unknown>;
       if (!body || typeof body !== 'object' || Array.isArray(body)) {
         throw new PptdError('INVALID_REQUEST', 'A JSON object is required.');
+      }
+      if (route === '/video/cancel') {
+        if (typeof body.jobId !== 'string')
+          throw new PptdError('INVALID_REQUEST', 'jobId is required.');
+        return json(res, 200, exports.cancel(body.jobId));
+      }
+      if (route === '/video') {
+        if (
+          body.presentationId !== undefined &&
+          body.presentationId !== null &&
+          typeof body.presentationId !== 'string'
+        )
+          throw new PptdError('INVALID_REQUEST', 'presentationId must be a string or null.');
+        for (const key of ['pageId', 'occurrenceId'])
+          if (body[key] !== undefined && typeof body[key] !== 'string')
+            throw new PptdError('INVALID_REQUEST', `${key} must be a string.`);
+        await store.refreshExternal();
+        const source = store.getSnapshot();
+        const snapshot = await presentationSnapshot(
+          source,
+          typeof body.presentationId === 'string' ? body.presentationId : null,
+          (pageId, versionId) => store.readPageVersion(pageId, versionId),
+        );
+        return json(
+          res,
+          202,
+          await exports.startVideo(snapshot, {
+            ...(Object.fromEntries(
+              [
+                'pageId',
+                'occurrenceId',
+                'resolution',
+                'fps',
+                'staticDurationMs',
+                'endHoldMs',
+                'cueHoldMs',
+              ]
+                .filter((key) => body[key] !== undefined)
+                .map((key) => [key, body[key]]),
+            ) as VideoExportOptions),
+            serverUrl: addressUrl(),
+            writeToProject: source.writable,
+          }),
+        );
       }
       if (route === '/transactions')
         return json(res, 200, await store.commit(body as unknown as TransactionRequest));

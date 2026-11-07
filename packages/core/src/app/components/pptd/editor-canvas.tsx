@@ -353,7 +353,7 @@ export function PptdEditorCanvas({
       tabIndex={0}
       aria-label="幻灯片画布"
       aria-describedby="hd-canvas-keyboard-hint"
-      className="relative h-full min-h-64 w-full outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand/60 [&_[data-hd-element-id]:focus-visible]:ring-2 [&_[data-hd-element-id]:focus-visible]:ring-brand/50"
+      className="relative h-full min-h-0 w-full outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand/60 [&_[data-hd-element-id]:focus-visible]:ring-2 [&_[data-hd-element-id]:focus-visible]:ring-brand/50"
       data-hd-editor-canvas
       data-hd-focus-region="canvas"
       onFocusCapture={(event) => {

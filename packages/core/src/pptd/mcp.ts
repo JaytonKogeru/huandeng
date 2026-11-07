@@ -120,19 +120,67 @@ const tools: Tool[] = [
   {
     name: 'huandeng_export',
     description:
-      'Export a frozen committed deck as PDF or editable PPTX with a per-object fallback report. Updates the current export, leaving the source document unchanged.',
+      'Export a frozen committed deck as static PDF/PPTX, or start a deterministic silent MP4 job. MP4 returns a job id: read export_status until completed. Sources remain unchanged. Video timing uses staticDurationMs, endHoldMs and cueHoldMs, not live presentation clicks.',
     inputSchema: objectSchema(
       {
-        format: { type: 'string', enum: ['pdf', 'pptx'] },
+        format: { type: 'string', enum: ['pdf', 'pptx', 'mp4'] },
         presentationId: {
           type: 'string',
           description:
             'Omit for Main Slides; otherwise export this project presentation, including pinned versions.',
         },
+        pageId: {
+          type: 'string',
+          description:
+            'MP4 only: one page UUID or short code. Repeated pages require occurrenceId.',
+        },
+        occurrenceId: {
+          type: 'string',
+          description: 'MP4 only: exact resolved presentation appearance.',
+        },
+        resolution: { type: 'number', enum: [720, 1080], description: 'MP4 only; default 720.' },
+        fps: { type: 'number', enum: [24, 30], description: 'MP4 only; default 30.' },
+        staticDurationMs: {
+          type: 'integer',
+          minimum: 100,
+          maximum: 60000,
+          description: 'MP4 static-page duration; default 3000.',
+        },
+        endHoldMs: {
+          type: 'integer',
+          minimum: 0,
+          maximum: 60000,
+          description: 'MP4 endpoint hold; default 1000.',
+        },
+        cueHoldMs: {
+          type: 'integer',
+          minimum: 0,
+          maximum: 60000,
+          description: 'MP4 extra cue hold; default 0.',
+        },
       },
       ['format'],
     ),
     annotations: { readOnlyHint: false, destructiveHint: false, openWorldHint: false },
+  },
+  {
+    name: 'huandeng_export_status',
+    description:
+      'Read video job progress and completed file/report URLs. Completed downloads are retained for up to 15 minutes and the latest eight tasks; published project Exports files remain.',
+    inputSchema: objectSchema({ jobId: { type: 'string' } }, ['jobId']),
+    annotations: read,
+  },
+  {
+    name: 'huandeng_export_cancel',
+    description:
+      'Cancel an active video job before publication. Read export_status for its final result. Existing published exports and source documents remain unchanged.',
+    inputSchema: objectSchema({ jobId: { type: 'string' } }, ['jobId']),
+    annotations: {
+      readOnlyHint: false,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
   },
   {
     name: 'huandeng_project',
@@ -270,7 +318,7 @@ function queryPath(endpoint: string, args: Record<string, unknown>): string {
 
 export function createMcpServer(client: HuandengClient) {
   const server = new Server(
-    { name: 'HUANDENG Plugin', version: '0.6.0' },
+    { name: 'HUANDENG Plugin', version: '0.7.0' },
     {
       capabilities: { tools: {} },
       instructions:
@@ -366,7 +414,15 @@ export function createMcpServer(client: HuandengClient) {
           );
           break;
         case 'huandeng_export':
-          result = await client.request('/export', args);
+          result = await client.request(args.format === 'mp4' ? '/video' : '/export', args);
+          break;
+        case 'huandeng_export_status':
+          result = await client.request(
+            `/exports/${encodeURIComponent(String(args.jobId))}/status`,
+          );
+          break;
+        case 'huandeng_export_cancel':
+          result = await client.request('/video/cancel', { jobId: args.jobId });
           break;
         case 'huandeng_render': {
           const rendered = await client.request<{ url: string; report: unknown }>('/render', args);
