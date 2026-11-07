@@ -772,11 +772,14 @@ export class PptdStore {
   refreshExternal(): Promise<DeckSnapshot> {
     return this.enqueue(async () => {
       try {
-        if ((await readOptional(path.join(this.stateDir, 'pending.json'))) !== null)
+        if ((await readOptional(path.join(this.stateDir, 'pending.json'))) !== null) {
+          if (this.snapshot.diagnostics.some((item) => item.code === 'RECOVERY_REQUIRED'))
+            return this.getSnapshot();
           throw new PptdError(
             'PENDING_RECOVERY',
             'A pending transaction must recover before external changes are published.',
           );
+        }
         const next = await PptdStore.loadDocuments(
           this.root,
           this.entry,
@@ -853,9 +856,13 @@ export class PptdStore {
         const recoveredStatus =
           !this.snapshot.writable ||
           !isDeepStrictEqual(this.snapshot.diagnostics, documents.diagnostics);
+        const recoveredOnly =
+          recovered &&
+          isDeepStrictEqual(revisions(this.documents), recovered.before) &&
+          isDeepStrictEqual(revisions(documents), recovered.after);
         this.replaceDocuments(
           documents,
-          recovered ? 'committed' : 'external',
+          recoveredOnly ? 'committed' : 'external',
           recovered?.operationId,
           recovered?.request.originClientId,
         );

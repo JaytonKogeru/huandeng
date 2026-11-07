@@ -699,6 +699,59 @@ describe('PPTD browser editing contract', () => {
     expect(client.page('page-1')?.data.elements[0].content?.text).toBe('必须保留的工作稿');
   });
 
+  it('preserves an explicit recovery mismatch and its details through generic pending refreshes', async () => {
+    const { client, backend, commit, setRemote } = await setup();
+    commit.mockRejectedValueOnce(new PptdClientError('PENDING_RECOVERY', 'Pending journal.', 400));
+    client.patchElement('page-1', 'title', { 'content.text': '未确认工作稿' }, false);
+    await expect(client.flushPage('page-1')).rejects.toMatchObject({ code: 'PENDING_RECOVERY' });
+    const mismatch = new PptdClientError(
+      'RECOVERY_REQUIRED',
+      'The target is in a third state.',
+      409,
+      {
+        reason: 'target-hash-mismatch',
+      },
+    );
+    vi.mocked(backend.recoverPending).mockRejectedValueOnce(mismatch);
+    await expect(client.recoverPending()).rejects.toBe(mismatch);
+    const before = client.pendingWork();
+    const blocked = session();
+    blocked.writable = false;
+    blocked.diagnostics = [
+      {
+        code: 'PENDING_RECOVERY',
+        message: 'A transaction still needs recovery.',
+        severity: 'error',
+      },
+    ];
+    setRemote(blocked);
+    await client.refresh();
+    await client.refresh();
+    expect(client.getState().error).toBe(mismatch);
+    expect(client.getState().error?.details).toEqual({ reason: 'target-hash-mismatch' });
+    expect(client.getState().recoveryRequired).toBe(true);
+    expect(client.pendingWork()).toEqual(before);
+
+    const recovery = deferred<PptdSession>();
+    vi.mocked(backend.recoverPending).mockReturnValueOnce(recovery.promise);
+    const recovering = client.recoverPending();
+    expect(client.getState()).toMatchObject({
+      error: null,
+      recovering: true,
+      recoveryRequired: true,
+    });
+    setRemote(session('未确认工作稿', 2));
+    commit.mockResolvedValueOnce(receipt(commit.mock.calls[0][0].requestId));
+    recovery.resolve(session('未确认工作稿', 2));
+    await recovering;
+    expect(client.getState()).toMatchObject({
+      error: null,
+      recovering: false,
+      recoveryRequired: false,
+    });
+    expect(client.getState().drafts).toEqual({});
+  });
+
   it('recovers an acknowledged transaction without submitting it twice', async () => {
     const { client, backend, commit, setRemote } = await setup();
     client.patchElement('page-1', 'title', { 'content.text': '已落盘' }, false);

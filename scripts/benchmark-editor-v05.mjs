@@ -15,6 +15,8 @@ const { _electron: electron } = require('playwright');
 const { parse } = require('yaml');
 const sourceEntryArgument = process.argv[2];
 const label = process.argv[3];
+const iterations = Number(process.argv[4] ?? 5);
+assert.ok(Number.isInteger(iterations) && iterations > 0 && iterations <= 50);
 assert.ok(
   sourceEntryArgument && path.isAbsolute(sourceEntryArgument),
   'Pass an absolute original .pptd path and an evidence label.',
@@ -47,6 +49,7 @@ let servicePid;
 const report = {
   passed: false,
   label,
+  iterations,
   timestamp: new Date().toISOString(),
   platform: process.platform,
   node: process.version,
@@ -289,7 +292,7 @@ try {
   assert.ok(activePage, 'The canvas should show a current Main Slide.');
   const pageFile = path.join(deck, activePage.path);
 
-  for (let iteration = 0; iteration < 5; iteration++) {
+  for (let iteration = 0; iteration < iterations; iteration++) {
     await waitUntilIdle();
     const beforeIds = await canvas
       .locator('[data-hd-element-id]')
@@ -386,7 +389,9 @@ try {
       filePollingIntervalMs: 10,
     };
     report.deleteSamples.push(sample);
-    process.stdout.write(`${label}: deletion ${iteration + 1}/5 ${JSON.stringify(sample)}\n`);
+    process.stdout.write(
+      `${label}: deletion ${iteration + 1}/${iterations} ${JSON.stringify(sample)}\n`,
+    );
   }
   report.summary = {
     visual: summarize(report.deleteSamples.map((sample) => sample.visualMs)),
@@ -396,7 +401,9 @@ try {
     ),
   };
   report.finalDom = await domCounts();
-  await memorySample('after-five-insert-delete-pairs');
+  await memorySample(
+    iterations === 5 ? 'after-five-insert-delete-pairs' : `after-${iterations}-insert-delete-pairs`,
+  );
   await page.screenshot({ path: screenshot, timeout: 15000, animations: 'disabled' });
   report.screenshot = screenshot;
   assert.deepEqual(rendererErrors, []);

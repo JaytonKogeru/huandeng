@@ -680,6 +680,26 @@ try {
         'RECOVERY_REQUIRED',
       );
       await page.locator('[data-hd-recovery="required"]').waitFor();
+      await eventually(
+        async () =>
+          (await recovery().innerText()).includes('文件或保存记录与预期不一致，恢复已停止'),
+        'A rejected recovery must explain the file conflict, not repeat the file-lock advice',
+        3000,
+      );
+      const refreshed = page.waitForResponse(
+        (response) =>
+          response.request().method() === 'GET' &&
+          new URL(response.url()).pathname === '/__pptd/session',
+      );
+      await page.getByRole('button', { name: '检查最新状态', exact: true }).click();
+      await (await refreshed).finished();
+      await page.evaluate(
+        () => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))),
+      );
+      assert.ok(
+        (await recovery().innerText()).includes('文件或保存记录与预期不一致，恢复已停止'),
+        'Refreshing the session must preserve the rejected-recovery explanation',
+      );
       assert.equal(await editor().inputValue(), text);
       assert.equal(await fs.readFile(targetPath, 'utf8'), thirdSource);
       assert.equal(await fs.readFile(pendingPath(), 'utf8'), pendingSource);

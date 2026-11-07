@@ -382,7 +382,12 @@ export class PptdDocumentClient {
       ...(recovery
         ? {
             recoveryRequired: true,
-            error: new PptdClientError(recovery.code, recovery.message),
+            error:
+              this.state.recoveryRequired &&
+              this.state.error?.code === 'RECOVERY_REQUIRED' &&
+              recovery.code === 'PENDING_RECOVERY'
+                ? this.state.error
+                : new PptdClientError(recovery.code, recovery.message),
           }
         : {}),
     });

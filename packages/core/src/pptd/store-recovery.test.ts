@@ -75,10 +75,13 @@ describe('explicit recovery within the active document writer', () => {
     await expect(store.commit(pending)).rejects.toMatchObject({ code: 'PENDING_RECOVERY' });
     expect(await fs.readFile(path.join(root, METADATA_PATH), 'utf8')).toBe(metadataBefore);
     expect((await store.refreshExternal()).writable).toBe(false);
+    const events: DocumentEvent[] = [];
+    store.subscribe((event) => events.push(event));
     const recovered = await store.recoverPending();
     expect(recovered.writable).toBe(true);
     expect(recovered.pages).toHaveLength(3);
     expect(recovered.diagnostics).toEqual([]);
+    expect(events).toEqual([expect.objectContaining({ type: 'committed' })]);
     const receipt = await store.commit(pending);
     expect(receipt.requestId).toBe(pending.requestId);
     expect(receipt.createdPages).toHaveLength(1);
@@ -98,6 +101,45 @@ describe('explicit recovery within the active document writer', () => {
     );
   });
 
+  it.each(['page', 'metadata', 'manifest'] as const)(
+    'keeps an unrelated external %s change out of the recovered committed event',
+    async (kind) => {
+      const { root, store, interrupt } = await fixture();
+      const [first, second] = store.getSnapshot().pages;
+      const pending = request(store, [
+        { op: 'page.notes.set', pageId: first.pageId, text: 'Recovered edit' },
+      ]);
+      interrupt();
+      await expect(store.commit(pending)).rejects.toMatchObject({ code: 'PENDING_RECOVERY' });
+      let externalPath: string;
+      let externalSource: string;
+      if (kind === 'page') {
+        externalPath = path.join(root, 'two.page');
+        externalSource = 'elements: []\nnotes: External sibling work\n';
+      } else if (kind === 'metadata') {
+        externalPath = path.join(root, METADATA_PATH);
+        const metadata = JSON.parse(await fs.readFile(externalPath, 'utf8'));
+        metadata.slides[second.pageId].label = 'S99';
+        externalSource = `${JSON.stringify(metadata, null, 2)}\n`;
+      } else {
+        externalPath = path.join(root, 'deck.pptd');
+        externalSource = 'title: External deck title\npages: [one.page, two.page]\n';
+      }
+      await fs.writeFile(externalPath, externalSource);
+      const events: DocumentEvent[] = [];
+      store.subscribe((event) => events.push(event));
+      const recovered = await store.recoverPending();
+      expect(recovered.writable).toBe(true);
+      expect(store.readPage(first.pageId).data.notes).toBe('Recovered edit');
+      expect(await fs.readFile(externalPath, 'utf8')).toBe(externalSource);
+      expect(events).toEqual([expect.objectContaining({ type: 'external' })]);
+      const receipt = await store.commit(pending);
+      expect(receipt.requestId).toBe(pending.requestId);
+      expect(await store.commit(pending)).toEqual(receipt);
+      expect(events).toHaveLength(1);
+    },
+  );
+
   it('preserves an external third state and its pending journal when recovery is refused', async () => {
     const { root, stateDir, store, interrupt } = await fixture();
     const pageId = store.getSnapshot().pages[0].pageId;
@@ -112,6 +154,12 @@ describe('explicit recovery within the active document writer', () => {
     expect(store.getSnapshot().writable).toBe(false);
     expect(await fs.readFile(path.join(root, 'one.page'), 'utf8')).toBe(external);
     expect(await fs.readFile(path.join(stateDir, 'pending.json'), 'utf8')).toBe(journal);
+    const refused = store.getSnapshot();
+    const refreshed = await store.refreshExternal();
+    expect(refreshed.sequence).toBe(refused.sequence);
+    expect(refreshed.diagnostics).toEqual(refused.diagnostics);
+    expect(refreshed.diagnostics[0].code).toBe('RECOVERY_REQUIRED');
+    expect(refreshed.writable).toBe(false);
   });
 
   it('validates every recorded hash before recovering any remaining file', async () => {
