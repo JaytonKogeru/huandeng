@@ -10,7 +10,7 @@ Electron 独立窗口，原生菜单、打开/新建、最近项目和系统文�
 
 桌面离开页面前等待未提交编辑保存，关闭自己启动的文档服务并释放 writer。独立 CLI 已启动的兼容服务只被连接，不因桌面退出而被终止。
 
-名称统一为 HUANDING Editor、HUANDING Frame、HUANDING Plugin。保留已有 Huandeng 目录、`.huandeng` 元数据、旧 CLI/MCP 调用别名。
+名称统一为 HUANDING Editor、HUANDING Story、HUANDING Plugin。保留已有 Huandeng 目录、`.huandeng` 元数据、旧 CLI/MCP 调用别名。
 
 ### 页面与项目
 

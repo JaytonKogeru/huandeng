@@ -2,8 +2,13 @@
 
 让人与 Agent 在同一份幻灯文档上工作。
 
-HUANDING Editor 基于 OpenSlide 的 React 编辑环境，新增 PPTD 文档后端。页面用永久 ID 和四位短码定位；内容保存在原来的独立 .page 文件中。标题、位置改变，页面身份不变。HUANDING Frame 记录叙事目的、证据角色和作者希望保留的设计。HUANDING Plugin 提供与可视化编辑器共用的 Agent 接口。
+HUANDING Editor 基于 OpenSlide 的 React 编辑环境，新增 PPTD 文档后端。页面用永久 ID 和四位短码定位；内容保存在原来的独立 .page 文件中。标题、位置改变，页面身份不变。HUANDING Story 记录叙事目的、证据角色和作者希望保留的设计。HUANDING Plugin 提供与可视化编辑器共用的 Agent 接口。
 
+## GitHub 版本管理
+
+编辑器源代码在 HUANDING 自己的 Git 仓库中维护；平时本地提交，完成并验收一个重要版本后再统一推送到 origin，不会每次小改都上传。OpenSlide 原始仓库保留为 upstream，不向其推送。本机页面右键历史与 Git 代码版本是两套不同机制。
+
+参阅 [版本发布规则](docs/RELEASE-POLICY.md) 和 [Story 设计](docs/STORY.md)。
 ## 启动桌面编辑器
 
 Windows 双击 **HUANDING Editor** 快捷方式，或运行 `Start-Huanding.cmd`（旧 `Start-Huandeng.cmd` 保留兼容）。应用使用独立 Electron 窗口；启动时恢复最近项目，首次打开显示新建/打开入口。

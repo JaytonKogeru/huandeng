@@ -77,12 +77,12 @@ export function DesignIntentPanel({
   return (
     <section
       className="space-y-3 border-b border-border px-4 py-4"
-      aria-label="HUANDING Frame"
+      aria-label="HUANDING Story"
       data-hd-frame
     >
       <div className="flex items-center gap-2">
         <div className="min-w-0 flex-1">
-          <h3 className="text-xs font-semibold tracking-wide">HUANDING Frame</h3>
+          <h3 className="text-xs font-semibold tracking-wide">HUANDING Story</h3>
           <p className="mt-1 text-[10px] text-muted-foreground">Agent 记录的创作意图</p>
         </div>
         <Button

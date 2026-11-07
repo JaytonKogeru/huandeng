@@ -1,3 +1,17 @@
+# HUANDING Editor — repository instructions
+
+HUANDING is an AI-native desktop slide editor built on the OpenSlide codebase. Product UI: React + Electron; document format: PPTD. Keep upstream licenses and attribution.
+
+- origin is the HUANDING repository; upstream is the original OpenSlide repository. NEVER push upstream.
+- Commit coherent work locally. Push to origin ONLY after a significant tested editor version milestone, not after every minor edit. A milestone push requires release notes and handoff. Do not run npm publishing.
+- Preserve unrelated local changes, especially users' .page documents. Never use broad add/reset/clean to absorb or discard their work.
+- Product-facing label: HUANDING Story. Existing frame services, designIntent fields and huanding_frame_record MCP calls must remain compatible until a migration is tested.
+- Keep checks focused on affected features.
+- The inherited OpenSlide guide below is only reference. Its npm release instructions do not apply to the HUANDING product.
+
+See docs/RELEASE-POLICY.md and docs/STORY.md.
+
+---
 # open-slide — Framework Repo Guide
 
 You are working on the **open-slide framework** — the runtime, CLI, and tooling that ship to npm.

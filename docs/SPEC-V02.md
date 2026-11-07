@@ -6,7 +6,7 @@
 
 ## 1. 产品与入口
 
-采用用户最新明确拼写 **HUANDING**。产品称 HUANDING Editor，意图层称 HUANDING Frame，外部 Agent 接口称 HUANDING Plugin。已有 Huandeng 目录、`.huandeng` 元数据与旧 CLI/MCP 名称保留兼容，不迁移用户项目。
+采用用户最新明确拼写 **HUANDING**。产品称 HUANDING Editor，意图层称 HUANDING Story，外部 Agent 接口称 HUANDING Plugin。已有 Huandeng 目录、`.huandeng` 元数据与旧 CLI/MCP 名称保留兼容，不迁移用户项目。
 
 正常入口是 Electron 独立桌面窗口，复用现有 React 编辑器和本机 DocumentService。外部 Claude Code、Codex、ChatGPT 连接同一 writer。编辑器不加入聊天框、模型选择或 API Key 管理。
 
@@ -44,7 +44,7 @@ recipe 的界面名称改为可选的“布局起点”。生成后仍是普通 
 
 同时提供 `page.version.restore` 事务操作，GUI/CLI/MCP 使用相同语义。
 
-## 4. Agent 维护的 HUANDING Frame
+## 4. Agent 维护的 HUANDING Story
 
 用户在外部 Agent 里描述需求。Agent 读当前页与已有 Frame，记录需求摘要与保留约束，再执行修改、检查渲染。Frame 默认只读展示；用户可纠正，日常不要求手动填表。
 

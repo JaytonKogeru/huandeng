@@ -5,7 +5,7 @@
 
 **当前实施合同：[SPEC-V02.md](SPEC-V02.md)，优先于本文的旧阶段安排。**
 
-**当前产品名称：HUANDING Editor / HUANDING Frame / HUANDING Plugin。**
+**当前产品名称：HUANDING Editor / HUANDING Story / HUANDING Plugin。**
 
 v0.2 交付独立桌面窗口、项目文件树、单页版本浏览与恢复，以及外部 Agent 维护的意图面板。编辑器内不加入 AI 聊天框；布局起点是可选的生成辅助。沿用已有 Huandeng 路径及协议标识以保持兼容。实际验证结果见 IMPLEMENTATION-V02.md。
 

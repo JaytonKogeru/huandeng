@@ -2,7 +2,7 @@
 
 ## Objective
 
-Deliver HUANDING Editor, an Electron desktop editor based on OpenSlide whose persisted document is PPTD, with stable page identities and one GUI/CLI/MCP writer. External agents maintain HUANDING Frame intent. No embedded AI chat. Extensions use HUANDING Plugin.
+Deliver HUANDING Editor, an Electron desktop editor based on OpenSlide whose persisted document is PPTD, with stable page identities and one GUI/CLI/MCP writer. External agents maintain HUANDING Story intent. No embedded AI chat. Extensions use HUANDING Plugin.
 
 ## Meaningful progress
 
