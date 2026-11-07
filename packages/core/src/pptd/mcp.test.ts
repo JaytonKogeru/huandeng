@@ -1,0 +1,100 @@
+import { Client } from '@modelcontextprotocol/sdk/client/index.js';
+import { InMemoryTransport } from '@modelcontextprotocol/sdk/inMemory.js';
+import { afterEach, describe, expect, it, vi } from 'vitest';
+import { HuandengClient } from './client';
+import { createMcpServer } from './mcp';
+
+const close: (() => Promise<void>)[] = [];
+afterEach(async () => {
+  await Promise.allSettled(close.splice(0).map((cleanup) => cleanup()));
+  vi.restoreAllMocks();
+});
+
+async function connection() {
+  const writer = new HuandengClient('http://127.0.0.1:4850');
+  const request = vi.spyOn(writer, 'request').mockResolvedValue({ ok: true });
+  const server = createMcpServer(writer);
+  const client = new Client({ name: 'huandeng-test', version: '1.0.0' });
+  const [clientTransport, serverTransport] = InMemoryTransport.createLinkedPair();
+  close.push(
+    () => client.close(),
+    () => server.close(),
+  );
+  await server.connect(serverTransport);
+  await client.connect(clientTransport);
+  return { client, request };
+}
+
+describe('HUANDENG MCP project and Story context', () => {
+  it('advertises the three context tools as read-only alongside the compatible writer tools', async () => {
+    const { client } = await connection();
+    const { tools } = await client.listTools();
+    expect(tools).toHaveLength(15);
+    for (const name of [
+      'huandeng_story_briefing',
+      'huandeng_presentation_read',
+      'huandeng_assets_list',
+    ]) {
+      expect(tools.find((tool) => tool.name === name)).toMatchObject({
+        annotations: { readOnlyHint: true, destructiveHint: false, openWorldHint: false },
+      });
+    }
+    expect(tools.some((tool) => tool.name.startsWith('huanding_'))).toBe(false);
+    expect(tools.find((tool) => tool.name === 'huandeng_apply')).toMatchObject({
+      annotations: { readOnlyHint: false, idempotentHint: true },
+    });
+  });
+
+  it('routes scoped Story, resolved presentations and paginated assets to the active writer', async () => {
+    const { client, request } = await connection();
+    await client.callTool({
+      name: 'huandeng_story_briefing',
+      arguments: { pageId: 'S18A', presentationId: 'talk', occurrenceId: 'talk:return:agenda' },
+    });
+    expect(request).toHaveBeenLastCalledWith(
+      '/story-briefing?pageId=S18A&presentationId=talk&occurrenceId=talk%3Areturn%3Aagenda',
+    );
+    await client.callTool({
+      name: 'huandeng_presentation_read',
+      arguments: { presentationId: 'talk' },
+    });
+    expect(request).toHaveBeenLastCalledWith('/presentations/talk');
+    await client.callTool({
+      name: 'huandeng_assets_list',
+      arguments: { query: 'original gel', filter: 'missing', offset: 100, limit: 50 },
+    });
+    expect(request).toHaveBeenLastCalledWith(
+      '/assets?query=original+gel&filter=missing&offset=100&limit=50',
+    );
+    await client.callTool({ name: 'huanding_story_briefing', arguments: {} });
+    expect(request).toHaveBeenLastCalledWith('/story-briefing');
+  });
+
+  it('returns ambiguity candidates without performing a write or silently selecting a position', async () => {
+    const { client, request } = await connection();
+    const details = {
+      occurrences: [
+        { occurrenceId: 'talk:opening:agenda' },
+        { occurrenceId: 'talk:return:agenda' },
+      ],
+    };
+    request.mockRejectedValueOnce(
+      Object.assign(new Error('Choose an occurrence.'), { code: 'AMBIGUOUS_ID', details }),
+    );
+    const result = await client.callTool({
+      name: 'huandeng_story_briefing',
+      arguments: { pageId: 'S18A', presentationId: 'talk' },
+    });
+    expect(result).toMatchObject({
+      isError: true,
+      content: [
+        {
+          type: 'text',
+          text: JSON.stringify({ code: 'AMBIGUOUS_ID', message: 'Choose an occurrence.', details }),
+        },
+      ],
+    });
+    expect(request).toHaveBeenCalledTimes(1);
+    expect(request).toHaveBeenCalledWith('/story-briefing?pageId=S18A&presentationId=talk');
+  });
+});

@@ -16,6 +16,8 @@ const { parse } = require('yaml');
 const sourceEntryArgument = process.argv[2];
 const label = process.argv[3];
 const iterations = Number(process.argv[4] ?? 5);
+const profileMemory = process.argv.slice(5).includes('--profile-memory');
+const profileCpu = process.argv.slice(5).includes('--profile-cpu');
 assert.ok(Number.isInteger(iterations) && iterations > 0 && iterations <= 50);
 assert.ok(
   sourceEntryArgument && path.isAbsolute(sourceEntryArgument),
@@ -26,7 +28,10 @@ const executablePath = process.env.HUANDENG_DESKTOP_EXE;
 assert.ok(executablePath, 'Set HUANDENG_DESKTOP_EXE to the desktop executable.');
 const sourceEntry = await fs.realpath(sourceEntryArgument);
 const sourceRoot = path.dirname(sourceEntry);
-const evidence = path.join(root, '.verification/performance-v05');
+const evidence = path.join(
+  root,
+  profileMemory || profileCpu ? '.verification/performance-v06' : '.verification/performance-v05',
+);
 await fs.mkdir(evidence, { recursive: true });
 const output = path.join(evidence, `${label}.json`);
 const screenshot = path.join(evidence, `${label}.png`);
@@ -46,10 +51,13 @@ let originalBefore;
 let originalFiles;
 let serviceUrl;
 let servicePid;
+let memorySession;
 const report = {
   passed: false,
   label,
   iterations,
+  profileMemory,
+  profileCpu,
   timestamp: new Date().toISOString(),
   platform: process.platform,
   node: process.version,
@@ -126,6 +134,45 @@ async function waitUntilIdle() {
 }
 
 async function memorySample(stage) {
+  let javascript = null;
+  if (profileMemory) {
+    if (!memorySession) {
+      memorySession = await page.context().newCDPSession(page);
+      await memorySession.send('Performance.enable');
+    }
+    const { metrics } = await memorySession.send('Performance.getMetrics');
+    const selected = new Set([
+      'JSHeapUsedSize',
+      'JSHeapTotalSize',
+      'Nodes',
+      'Documents',
+      'LayoutObjects',
+      'TaskDuration',
+      'ScriptDuration',
+      'LayoutDuration',
+      'RecalcStyleDuration',
+      'LayoutCount',
+      'RecalcStyleCount',
+    ]);
+    javascript = {
+      source: 'Chromium DevTools Protocol',
+      metrics: Object.fromEntries(
+        metrics
+          .filter((metric) => selected.has(metric.name))
+          .map((metric) => [metric.name, metric.value]),
+      ),
+      dom: await memorySession.send('Memory.getDOMCounters'),
+      imageResources: await page.evaluate(() => {
+        const images = performance
+          .getEntriesByType('resource')
+          .filter((entry) => entry.initiatorType === 'img');
+        return {
+          entries: images.length,
+          uniqueUrls: new Set(images.map((entry) => entry.name)).size,
+        };
+      }),
+    };
+  }
   const metrics = await application.evaluate(({ app }) =>
     app.getAppMetrics().map((metric) => ({
       pid: metric.pid,
@@ -154,6 +201,7 @@ async function memorySample(stage) {
   }
   report.memorySamples.push({
     stage,
+    javascript,
     metrics,
     documentService,
     rendererWorkingSetKiB: metrics
@@ -292,6 +340,35 @@ try {
   const activePage = snapshot.pages.find((item) => item.pageId === activePageId);
   assert.ok(activePage, 'The canvas should show a current Main Slide.');
   const pageFile = path.join(deck, activePage.path);
+  const initialImageSources = await canvas
+    .locator('img')
+    .evaluateAll((images) => images.map((image) => image.src).sort());
+  if (profileCpu) {
+    memorySession ??= await page.context().newCDPSession(page);
+    await memorySession.send('Performance.enable');
+    await memorySession.send('Profiler.enable');
+    await memorySession.send('Profiler.setSamplingInterval', { interval: 100 });
+    await page.evaluate(() => {
+      const setAttribute = Element.prototype.setAttribute;
+      Element.prototype.setAttribute = function (name, value) {
+        const sample = window.__huandengDeleteBenchmark;
+        if (sample?.keydownMs == null || sample.visualMs !== null)
+          return setAttribute.call(this, name, value);
+        const start = performance.now();
+        const result = setAttribute.call(this, name, value);
+        const elapsed = performance.now() - start;
+        if (elapsed > 0.5 && sample.attributeMutations.length < 50)
+          sample.attributeMutations.push({
+            name,
+            value,
+            elapsed,
+            tag: this.tagName,
+            className: this.getAttribute('class')?.slice(0, 250),
+          });
+        return result;
+      };
+    });
+  }
 
   for (let iteration = 0; iteration < iterations; iteration++) {
     await waitUntilIdle();
@@ -337,7 +414,13 @@ try {
       const selector = `[data-hd-element-id="${CSS.escape(id)}"]`;
       if (!canvasElement?.querySelector(selector))
         throw new Error('Inserted object is not present before deletion.');
-      const sample = { elementId: id, keydownMs: null, keydownEpochMs: null, visualMs: null };
+      const sample = {
+        elementId: id,
+        keydownMs: null,
+        keydownEpochMs: null,
+        visualMs: null,
+        attributeMutations: [],
+      };
       window.__huandengDeleteBenchmark = sample;
       const observer = new MutationObserver(() => {
         if (sample.keydownMs !== null && !canvasElement.querySelector(selector)) {
@@ -365,10 +448,11 @@ try {
       (observedAt) => ({ observedAt, error: null }),
       (error) => ({ observedAt: null, error }),
     );
+    const metricsBefore = profileCpu
+      ? (await memorySession.send('Performance.getMetrics')).metrics
+      : null;
+    if (profileCpu) await memorySession.send('Profiler.start');
     await page.keyboard.press('Delete');
-    const persistence = await persisted;
-    if (persistence.error) throw persistence.error;
-    const diskObservedEpochMs = persistence.observedAt;
     await page.waitForFunction(
       () => typeof window.__huandengDeleteBenchmark?.visualMs === 'number',
       null,
@@ -376,6 +460,30 @@ try {
         timeout: 60000,
       },
     );
+    let cpuProfile;
+    let renderingMetrics;
+    if (profileCpu) {
+      const { profile } = await memorySession.send('Profiler.stop');
+      cpuProfile = path.join(evidence, `${label}-delete-${iteration + 1}.cpuprofile`);
+      await fs.writeFile(cpuProfile, JSON.stringify(profile));
+      const after = (await memorySession.send('Performance.getMetrics')).metrics;
+      renderingMetrics = Object.fromEntries(
+        after
+          .filter((metric) =>
+            /^(TaskDuration|ScriptDuration|LayoutDuration|RecalcStyleDuration|LayoutCount|RecalcStyleCount)$/.test(
+              metric.name,
+            ),
+          )
+          .map((metric) => [
+            metric.name,
+            metric.value -
+              (metricsBefore.find((before) => before.name === metric.name)?.value ?? 0),
+          ]),
+      );
+    }
+    const persistence = await persisted;
+    if (persistence.error) throw persistence.error;
+    const diskObservedEpochMs = persistence.observedAt;
     const timing = await page.evaluate(() => window.__huandengDeleteBenchmark);
     assert.equal(typeof timing.visualMs, 'number');
     await waitUntilIdle();
@@ -388,8 +496,13 @@ try {
       persistenceObservedMs: Math.max(0, diskObservedEpochMs - timing.keydownEpochMs),
       acknowledgementObservedMs: Math.max(0, acknowledgedEpochMs - timing.keydownEpochMs),
       filePollingIntervalMs: 10,
+      ...(profileCpu
+        ? { cpuProfile, renderingMetrics, attributeMutations: timing.attributeMutations }
+        : {}),
     };
     report.deleteSamples.push(sample);
+    if (profileMemory && (iteration + 1) % 10 === 0)
+      await memorySample(`after-${iteration + 1}-pairs`);
     process.stdout.write(
       `${label}: deletion ${iteration + 1}/${iterations} ${JSON.stringify(sample)}\n`,
     );
@@ -402,9 +515,24 @@ try {
     ),
   };
   report.finalDom = await domCounts();
+  if (profileMemory) {
+    const finalImageSources = await canvas
+      .locator('img')
+      .evaluateAll((images) => images.map((image) => image.src).sort());
+    assert.deepEqual(
+      finalImageSources,
+      initialImageSources,
+      'Unrelated object edits should preserve image resource identities.',
+    );
+    report.stableImageUrls = { images: initialImageSources.length, unchanged: true };
+  }
   await memorySample(
     iterations === 5 ? 'after-five-insert-delete-pairs' : `after-${iterations}-insert-delete-pairs`,
   );
+  if (profileMemory) {
+    await memorySession.send('HeapProfiler.collectGarbage');
+    await memorySample('after-explicit-garbage-collection');
+  }
   await page.screenshot({ path: screenshot, timeout: 15000, animations: 'disabled' });
   report.screenshot = screenshot;
   assert.deepEqual(rendererErrors, []);

@@ -5,7 +5,7 @@ import type { ServerResponse } from 'node:http';
 import path from 'node:path';
 import { type Browser, chromium, type Page } from 'playwright';
 import { runtimeRoot } from './client.ts';
-import { buildPptdPdf, buildPptdPptx } from './export.ts';
+import { buildPptdPdf, buildPptdPptx, createExportReport } from './export.ts';
 import { imageDimensions } from './export-images.ts';
 import { hashBytes } from './persistence.ts';
 import { type DeckSnapshot, PptdError } from './types.ts';
@@ -473,6 +473,7 @@ export class ExportManager {
               })),
             );
           job.report = {
+            ...createExportReport(frozen, 'png'),
             complete: unsupported.length === 0,
             unsupported,
             format: options.format,
@@ -480,8 +481,12 @@ export class ExportManager {
             deckId: frozen.deckId,
             pages: frozen.pages.map((item) => ({
               pageId: item.pageId,
+              ...(item.occurrenceId ? { occurrenceId: item.occurrenceId } : {}),
+              ...(item.versionId ? { versionId: item.versionId } : {}),
               shortCode: item.shortCode,
               revision: item.renderRevision,
+              pageRevision: item.pageRevision,
+              renderRevision: item.renderRevision,
             })),
           };
         }

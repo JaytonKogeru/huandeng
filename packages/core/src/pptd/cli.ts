@@ -15,6 +15,13 @@ const print = (value: unknown): void => {
   process.stdout.write(`${JSON.stringify(value, null, 2)}\n`);
 };
 const client = () => connectClient(program.opts());
+function queryPath(endpoint: string, options: Record<string, unknown>): string {
+  const params = new URLSearchParams();
+  for (const [key, value] of Object.entries(options)) {
+    if (value !== undefined && value !== null) params.set(key, String(value));
+  }
+  return `${endpoint}${params.size ? `?${params}` : ''}`;
+}
 
 program
   .command('open <entry>')
@@ -96,6 +103,43 @@ program
     print(await (await client()).request(`/presentations/${encodeURIComponent(id)}`)),
   );
 program
+  .command('brief [pageId]')
+  .description('Read scoped Story, exact occurrence context, page usages and current revisions')
+  .option('--presentation <id>', 'scope the briefing to this presentation')
+  .option('--occurrence <id>', 'identify the exact repeated or pinned occurrence')
+  .action(async (pageId, options) =>
+    print(
+      await (await client()).request(
+        queryPath('/story-briefing', {
+          pageId,
+          presentationId: options.presentation,
+          occurrenceId: options.occurrence,
+        }),
+      ),
+    ),
+  );
+program
+  .command('assets')
+  .description('List project assets and current Main-page usages; honor hasMore and truncated')
+  .option('--query <text>', 'search file paths, original image names and page labels')
+  .option('--filter <kind>', 'all, used, unused or missing', 'all')
+  .option('--page <id>', 'filter by stable Main page UUID')
+  .option('--offset <number>', 'number of matching assets to skip', '0')
+  .option('--limit <number>', 'page size from 1 to 200', '100')
+  .action(async (options) =>
+    print(
+      await (await client()).request(
+        queryPath('/assets', {
+          query: options.query,
+          filter: options.filter,
+          pageId: options.page,
+          offset: options.offset,
+          limit: options.limit,
+        }),
+      ),
+    ),
+  );
+program
   .command('record-version <pageId> <requestFile>')
   .description(
     'Record a named page milestone; JSON supplies label, requestId and current revisions',
@@ -139,7 +183,17 @@ program
 program
   .command('render [pageId]')
   .description('Render a frozen committed page to PNG')
-  .action(async (pageId) => print(await (await client()).request('/render', { pageId })));
+  .option('--presentation <id>', 'render from this presentation')
+  .option('--occurrence <id>', 'render the exact repeated or pinned occurrence')
+  .action(async (pageId, options) =>
+    print(
+      await (await client()).request('/render', {
+        pageId,
+        presentationId: options.presentation,
+        occurrenceId: options.occurrence,
+      }),
+    ),
+  );
 program
   .command('export <format>')
   .description('Export the committed deck as PDF or editable PPTX')

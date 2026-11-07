@@ -10,6 +10,8 @@ import {
   Trash2,
 } from 'lucide-react';
 import { memo, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { elementLabel } from '@/lib/pptd-element-label';
+import { cycleItemId, focusEditorCanvas } from '@/lib/pptd-keyboard';
 import { cn } from '@/lib/utils';
 import type { PageSize, PageSnapshot, SlideIdentity } from '../../../pptd/types';
 import { SlideCanvas } from '../slide-canvas';
@@ -22,7 +24,6 @@ import {
   ContextMenuTrigger,
 } from '../ui/context-menu';
 import { Input } from '../ui/input';
-import { layerTitle } from './inspector';
 import { PptdPageRenderer, type PptdTheme } from './renderer';
 
 const ThumbnailPreview = memo(function ThumbnailPreview({
@@ -79,6 +80,7 @@ export function PptdThumbnailRail({
   const [query, setQuery] = useState('');
   const [copyStatus, setCopyStatus] = useState('');
   const scrollRef = useRef<HTMLDivElement>(null);
+  const focusedOccurrence = useRef<string | null>(null);
   const [visible, setVisible] = useState<Set<string>>(() => new Set());
   const keys = pages.map((page) => page.occurrenceId ?? page.pageId).join(',');
   // biome-ignore lint/correctness/useExhaustiveDependencies: Search and page order replace the observed DOM nodes without changing the scroll root.
@@ -114,10 +116,33 @@ export function PptdThumbnailRail({
       `[data-hd-thumbnail-preview="${CSS.escape(currentOccurrenceId ?? currentPageId ?? '')}"]`,
     );
     current?.scrollIntoView({ block: 'nearest', behavior: 'instant' });
+    if (
+      focusedOccurrence.current &&
+      !root.querySelector(`[data-hd-thumbnail-key="${CSS.escape(focusedOccurrence.current)}"]`)
+    ) {
+      focusedOccurrence.current = null;
+      if (document.activeElement === document.body && document.hasFocus())
+        root
+          .querySelector<HTMLElement>('[data-hd-thumbnail][tabindex="0"]')
+          ?.focus({ preventScroll: true });
+    }
   }, [currentPageId, currentOccurrenceId, keys, query]);
   const isCurrent = (page: PageSnapshot) =>
     currentOccurrenceId ? page.occurrenceId === currentOccurrenceId : page.pageId === currentPageId;
   const currentIndex = pages.findIndex(isCurrent);
+  const entries = pages.flatMap((page, index) => {
+    const title = page.data.elements.find((element) => element.elementType === 'text');
+    const name = title ? elementLabel(title) : '空白页';
+    if (
+      query &&
+      !`${page.metadata.label ?? ''} ${page.shortCode ?? ''} ${name}`
+        .toLowerCase()
+        .includes(query.toLowerCase())
+    )
+      return [];
+    return [{ page, index, name, key: page.occurrenceId ?? page.pageId }];
+  });
+  const tabStop = entries.find(({ page }) => isCurrent(page))?.key ?? entries[0]?.key;
   return (
     <nav className="flex min-h-0 flex-1 flex-col bg-sidebar" aria-label="页面列表">
       <div className="flex h-11 shrink-0 items-center gap-1 border-b border-border px-3">
@@ -162,16 +187,7 @@ export function PptdThumbnailRail({
         className="min-h-0 flex-1 space-y-3 overflow-y-auto px-3 pb-5"
         data-hd-thumbnail-scroll
       >
-        {pages.map((page, index) => {
-          const title = page.data.elements.find((element) => element.elementType === 'text');
-          const name = title ? layerTitle(title) : '空白页';
-          if (
-            query &&
-            !`${page.metadata.label ?? ''} ${page.shortCode} ${name}`
-              .toLowerCase()
-              .includes(query.toLowerCase())
-          )
-            return null;
+        {entries.map(({ page, index, name, key }) => {
           return (
             <ContextMenu key={page.occurrenceId ?? page.pageId}>
               <ContextMenuTrigger
@@ -179,6 +195,15 @@ export function PptdThumbnailRail({
                   <button
                     type="button"
                     data-hd-thumbnail={page.pageId}
+                    data-hd-thumbnail-key={key}
+                    tabIndex={tabStop === key ? 0 : -1}
+                    onFocus={() => {
+                      focusedOccurrence.current = key;
+                    }}
+                    onBlur={(event) => {
+                      if (event.relatedTarget && !scrollRef.current?.contains(event.relatedTarget))
+                        focusedOccurrence.current = null;
+                    }}
                     aria-label={`第 ${index + 1} 页 · ${page.shortCode ?? page.metadata.label ?? ''} · ${name}`}
                     aria-pressed={isCurrent(page)}
                     className={cn(
@@ -186,6 +211,40 @@ export function PptdThumbnailRail({
                       isCurrent(page) ? 'bg-brand-soft ring-1 ring-brand/50' : 'hover:bg-muted',
                     )}
                     onClick={() => onSelect(page.pageId, page.occurrenceId)}
+                    onKeyDown={(event) => {
+                      if (
+                        event.nativeEvent.isComposing ||
+                        event.keyCode === 229 ||
+                        event.ctrlKey ||
+                        event.metaKey ||
+                        event.altKey
+                      )
+                        return;
+                      if (event.key === 'Enter') {
+                        event.preventDefault();
+                        onSelect(page.pageId, page.occurrenceId);
+                        requestAnimationFrame(() => focusEditorCanvas());
+                        return;
+                      }
+                      const ids = entries.map((entry) => entry.key);
+                      const nextId =
+                        event.key === 'Home'
+                          ? ids[0]
+                          : event.key === 'End'
+                            ? ids[ids.length - 1]
+                            : event.key === 'ArrowUp' || event.key === 'ArrowDown'
+                              ? cycleItemId(ids, key, event.key === 'ArrowUp' ? -1 : 1, false)
+                              : null;
+                      const next = entries.find((entry) => entry.key === nextId);
+                      if (!next) return;
+                      event.preventDefault();
+                      onSelect(next.page.pageId, next.page.occurrenceId);
+                      const target = scrollRef.current?.querySelector<HTMLElement>(
+                        `[data-hd-thumbnail-key="${CSS.escape(next.key)}"]`,
+                      );
+                      target?.focus({ preventScroll: true });
+                      target?.scrollIntoView({ block: 'nearest' });
+                    }}
                     onContextMenu={() => onSelect(page.pageId, page.occurrenceId)}
                     draggable={!disabled}
                     onDragStart={(event) =>

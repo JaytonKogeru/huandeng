@@ -20,6 +20,7 @@ export interface ProjectPanelProps {
   selectedPresentationId: string | null;
   onSelectPresentation: (id: string | null) => void;
   onSelectPage: (pageId: string) => void;
+  onSelectOccurrence?: (presentationId: string, pageId: string, occurrenceId: string) => void;
   onApply: (operations: ProjectReplaceOperation[], expected: ExpectedRevisions) => Promise<unknown>;
   onDirtyChange?: (dirty: boolean) => void;
   loadVersions?: (pageId: string) => Promise<PageVersionSummary[]>;
@@ -150,6 +151,7 @@ function ProjectPanelEditor({
   selectedPresentationId,
   onSelectPresentation,
   onSelectPage,
+  onSelectOccurrence,
   onApply,
   loadVersions,
   onDirtyChange,
@@ -625,17 +627,29 @@ function ProjectPanelEditor({
                 {resolution.pages.map((page, index) => (
                   <Button
                     key={page.occurrenceId}
+                    data-hd-project-occurrence={page.occurrenceId}
                     size="xs"
                     variant="outline"
-                    title={pageHint(page.pageId)}
-                    disabled={!snapshot.pages.some((candidate) => candidate.pageId === page.pageId)}
-                    onClick={() => onSelectPage(page.pageId)}
+                    title={dirty ? '保存编排后查看这处引用' : pageHint(page.pageId)}
+                    disabled={
+                      dirty ||
+                      !onSelectOccurrence ||
+                      !snapshot.pages.some((candidate) => candidate.pageId === page.pageId)
+                    }
+                    onClick={() =>
+                      onSelectOccurrence?.(presentation.id, page.pageId, page.occurrenceId)
+                    }
                   >
                     {index + 1}. {pageLabel(page.pageId)}
                     {page.versionId ? ' · 固定' : ''}
                   </Button>
                 ))}
               </div>
+              {dirty && (
+                <p className="text-[11px] text-muted-foreground">
+                  保存编排后，可直接打开每个播放位置。
+                </p>
+              )}
               {resolution.diagnostics.map((diagnostic) => (
                 <p
                   key={`${diagnostic.code}-${diagnostic.pageId ?? diagnostic.message}`}

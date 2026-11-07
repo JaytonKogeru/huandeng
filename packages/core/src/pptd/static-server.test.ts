@@ -77,6 +77,60 @@ function eventReader(reader: ReadableStreamDefaultReader<Uint8Array>) {
 }
 
 describe('HUANDENG production document server', () => {
+  it('serves the current Story and read-only asset index through the real HTTP boundary', async () => {
+    const { server, session, project } = await fixture();
+    const first = session.pages[0].pageId;
+    const metadata = structuredClone(session.metadata);
+    metadata.project = {
+      schemaVersion: 1,
+      mainStory: { purpose: 'A complete account', audience: 'Lab', takeaway: 'Evidence first' },
+      sections: [],
+      presentations: [
+        {
+          id: 'talk',
+          title: 'Short talk',
+          story: { purpose: 'Explain the result', audience: 'Peers', takeaway: 'A useful finding' },
+          items: [
+            { id: 'opening', kind: 'page', pageId: first },
+            { id: 'return', kind: 'page', pageId: first, notes: 'Return to the question' },
+          ],
+        },
+      ],
+    };
+    await fs.writeFile(path.join(project, '.huandeng/project.json'), JSON.stringify(metadata));
+    await fs.writeFile(path.join(project, 'media/unused.png'), 'unused bytes');
+    const read = async (route: string) => (await fetch(`${server.url}/__pptd${route}`)).json();
+    const brief = await read(
+      `/story-briefing?presentationId=talk&pageId=${first}&occurrenceId=talk:return:${first}`,
+    );
+    expect(brief).toMatchObject({
+      main: { story: { purpose: 'A complete account' } },
+      presentation: { title: 'Short talk' },
+      occurrence: { position: 2, notes: 'Return to the question' },
+      page: { pageId: first },
+      neighbors: { previous: { position: 1 }, next: null },
+    });
+    expect(await read(`/story-briefing?presentationId=talk&pageId=${first}`)).toMatchObject({
+      code: 'AMBIGUOUS_ID',
+      details: { occurrences: expect.any(Array) },
+    });
+    const before = await fs.readFile(path.join(project, '.huandeng/project.json'), 'utf8');
+    const assets = await read('/assets?filter=used&limit=1');
+    expect(assets).toMatchObject({
+      scope: 'current-main',
+      total: 1,
+      hasMore: false,
+      counts: { all: 2, used: 1, unused: 1, missing: 0 },
+      items: [{ path: 'media/figure.svg', status: 'available', usage: expect.any(Array) }],
+    });
+    expect((await read('/assets?query=unused')).items).toMatchObject([
+      { path: 'media/unused.png' },
+    ]);
+    expect((await fetch(`${server.url}/__pptd/assets?limit=201`)).status).toBe(400);
+    expect((await fetch(`${server.url}/__pptd/assets?filter=unknown`)).status).toBe(400);
+    expect((await fetch(`${server.url}/__pptd/story-briefing?pageId=`)).status).toBe(400);
+    expect(await fs.readFile(path.join(project, '.huandeng/project.json'), 'utf8')).toBe(before);
+  });
   it('serves the editor and export view with compiled assets and rejects invalid hosts and paths', async () => {
     const { server } = await fixture();
     const editor = await fetch(`${server.url}/huandeng`);

@@ -83,7 +83,7 @@ export function DesignIntentPanel({
       onDraftChange?.(page.pageId, null);
       setDirty(false);
       setEditing(false);
-      setMessage('意图更正已保存，Agent 会读取到这次更正。');
+      setMessage('页面故事已保存。');
     } catch (error) {
       setMessage(error instanceof Error ? error.message : String(error));
     } finally {
@@ -100,7 +100,7 @@ export function DesignIntentPanel({
       <div className="flex items-center gap-2">
         <div className="min-w-0 flex-1">
           <h3 className="text-xs font-semibold tracking-wide">幻灯故事</h3>
-          <p className="mt-1 text-[10px] text-muted-foreground">Agent 记录的创作意图</p>
+          <p className="mt-1 text-[10px] text-muted-foreground">这页的目的与保留项</p>
         </div>
         <Button
           size="icon-xs"
@@ -152,7 +152,7 @@ export function DesignIntentPanel({
           </label>
           {dirty && base !== metadataRevision && (
             <p className="text-xs text-amber-700">
-              Agent 已更新意图。你的更正已保留，保存时会检查版本。
+              页面意图已在别处更新。你的更正已保留，保存时会检查版本。
             </p>
           )}
           <div className="flex gap-1.5">
@@ -207,18 +207,12 @@ export function DesignIntentPanel({
         </div>
       ) : (
         <p className="text-xs leading-relaxed text-muted-foreground">
-          Agent 尚未记录这页的意图。把任务交给外部 Agent
-          后，它会先在这里记下目标、保留项和修改计划。
+          记录这页要传达的结论，以及需要保留的内容。你和 Agent 可以共同维护。
         </p>
       )}
       {message && (
         <p role="status" className="text-[11px] leading-relaxed text-muted-foreground">
           {message}
-        </p>
-      )}
-      {!editing && (
-        <p className="text-[10px] leading-relaxed text-muted-foreground">
-          由 ChatGPT、Claude Code 或 Codex 通过项目接口维护；需要时可点击铅笔更正。
         </p>
       )}
     </section>

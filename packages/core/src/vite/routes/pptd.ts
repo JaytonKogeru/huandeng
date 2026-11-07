@@ -4,6 +4,7 @@ import type { IncomingMessage, ServerResponse } from 'node:http';
 import type { AddressInfo } from 'node:net';
 import path from 'node:path';
 import { importImage } from '../../pptd/asset-import.ts';
+import { type AssetLibraryOptions, readAssetLibrary } from '../../pptd/asset-library.ts';
 import { discoveryPath, runtimeRoot, type SessionDiscovery } from '../../pptd/client.ts';
 import {
   checkpoint,
@@ -13,6 +14,7 @@ import {
 } from '../../pptd/git.ts';
 import { json, readBody } from '../../pptd/http.ts';
 import { presentationSnapshot } from '../../pptd/presentation-snapshot.ts';
+import { readStoryBriefing } from '../../pptd/project-insights.ts';
 import { readProjectModel, resolvePresentation } from '../../pptd/project-model.ts';
 import { readProjectTree } from '../../pptd/project-tree.ts';
 import { ExportManager, mimeType, readProjectAsset } from '../../pptd/runtime-export.ts';
@@ -201,6 +203,38 @@ export async function registerPptdRoutes(server: PptdRouteHost, _ctx?: ApiContex
       if (method === 'GET' && route === '/project-model') {
         await store.refreshExternal();
         return json(res, 200, readProjectModel(store.getSnapshot().metadata));
+      }
+      if (method === 'GET' && route === '/assets') {
+        const snapshot = await store.refreshExternal();
+        const options: AssetLibraryOptions = {};
+        for (const key of ['query', 'pageId'] as const)
+          if (url.searchParams.has(key)) options[key] = url.searchParams.get(key) ?? '';
+        if (url.searchParams.has('filter'))
+          options.filter = url.searchParams.get('filter') as AssetLibraryOptions['filter'];
+        for (const key of ['offset', 'limit'] as const)
+          if (url.searchParams.has(key)) options[key] = Number(url.searchParams.get(key));
+        return json(res, 200, await readAssetLibrary(root, snapshot, options));
+      }
+      if (method === 'GET' && route === '/story-briefing') {
+        const snapshot = await store.refreshExternal();
+        const options = {
+          ...(url.searchParams.has('pageId')
+            ? { pageId: url.searchParams.get('pageId') ?? '' }
+            : {}),
+          ...(url.searchParams.has('presentationId')
+            ? { presentationId: url.searchParams.get('presentationId') ?? '' }
+            : {}),
+          ...(url.searchParams.has('occurrenceId')
+            ? { occurrenceId: url.searchParams.get('occurrenceId') ?? '' }
+            : {}),
+        };
+        return json(
+          res,
+          200,
+          await readStoryBriefing(snapshot, options, (pageId, versionId) =>
+            store.readPageVersion(pageId, versionId),
+          ),
+        );
       }
       if (method === 'GET' && /^\/presentations\/[^/]+$/.test(route)) {
         await store.refreshExternal();

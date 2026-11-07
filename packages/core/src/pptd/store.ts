@@ -2,6 +2,7 @@ import { randomUUID } from 'node:crypto';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { isDeepStrictEqual } from 'node:util';
+import { validateTimeline } from './animation-model';
 import {
   assertIndependentFields,
   assertJsonValue,
@@ -48,6 +49,7 @@ import {
 } from './persistence';
 import { applyProjectOperation, readProjectModel } from './project-model';
 import { applyRecipe, markRecipeElementOverride, removeRecipeSlot } from './recipes';
+import { knownTimeline, removeTimelineTargets } from './timeline-operations';
 import {
   type AuthorReviewContext,
   type CreatedPage,
@@ -321,6 +323,8 @@ function referencePaths(value: unknown, ids: Set<string>): { path: string; value
       if (element.animations) visit(element.animations, ['elements', index, 'animations'], false);
     });
   if (value.animations) visit(value.animations, ['animations'], false);
+  if (isRecord(value.timeline) && value.timeline.schemaVersion === 1)
+    visit(value.timeline, ['timeline'], false);
   return found;
 }
 
@@ -478,6 +482,12 @@ export class PptdStore {
           cached?.source === source && cached.path === identity.path
             ? cached
             : { source, path: identity.path, data: parsePage(source).value };
+        if (
+          page !== cached &&
+          isRecord(page.data.timeline) &&
+          page.data.timeline.schemaVersion === 1
+        )
+          validateTimeline(page.data.timeline, page.data);
         return { pageId, identity, page, realPath };
       },
     );
@@ -1181,6 +1191,17 @@ export class PptdStore {
           docs.metadata = applyProjectOperation(docs.metadata, operation, this.makeSnapshot(docs));
           break;
         }
+        case 'page.timeline.set': {
+          const { pageId, page } = pageDocument(operation.pageId);
+          check('pages', pageId);
+          if (operation.timeline !== null) validateTimeline(operation.timeline, page.data);
+          const source =
+            operation.timeline === null
+              ? patchSourceFields(page.source, [], {}, ['timeline'])
+              : patchSourceFields(page.source, [], { timeline: operation.timeline });
+          writePage(pageId, source);
+          break;
+        }
         case 'element.patch':
         case 'element.remove':
         case 'element.add':
@@ -1262,7 +1283,9 @@ export class PptdStore {
               );
             else {
               const references = referencePaths(page.data, new Set([operation.elementId])).filter(
-                (reference) => !reference.path.startsWith(`elements.${found}.`),
+                (reference) =>
+                  !reference.path.startsWith(`elements.${found}.`) &&
+                  !reference.path.startsWith('timeline.'),
               );
               if (references.length)
                 throw new PptdError(
@@ -1284,6 +1307,11 @@ export class PptdStore {
                   .map((_, i) => ({ index: i }))
                   .filter((entry) => entry.index !== found),
               );
+              const timeline = knownTimeline(page.data);
+              if (timeline) {
+                const next = removeTimelineTargets(timeline, new Set([operation.elementId]));
+                if (next !== timeline) source = patchSourceFields(source, [], { timeline: next });
+              }
             }
             if (source !== page.source)
               changedElements.set(`${pageId}/${operation.elementId}`, {
@@ -1607,6 +1635,12 @@ export class PptdStore {
     }
     for (const [pageId, page] of docs.pages) {
       validatePage(page.data);
+      if (
+        touchedPages.has(pageId) &&
+        isRecord(page.data.timeline) &&
+        page.data.timeline.schemaVersion === 1
+      )
+        validateTimeline(page.data.timeline, page.data);
       try {
         expandGroupIds(
           page.data.elements,

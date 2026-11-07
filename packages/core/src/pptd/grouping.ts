@@ -193,7 +193,7 @@ export function duplicateElements(
   ids: string[],
   idFactory: (oldId: string) => string,
   offset = 20,
-): { copies: PptdElement[]; selectedIds: string[] } {
+): { copies: PptdElement[]; selectedIds: string[]; idMap: Record<string, string> } {
   const allIds = new Set(expandGroupIds(elements, ids));
   const copies = elements
     .filter((element) => allIds.has(element.elementId))
@@ -227,6 +227,7 @@ export function duplicateElements(
     return value;
   };
   return {
+    idMap: Object.fromEntries(idMap),
     copies: copies.map((element) => {
       const copy = remap(element) as PptdElement;
       if (copy.bounds)

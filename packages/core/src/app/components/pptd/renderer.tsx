@@ -2,6 +2,7 @@ import katex from 'katex';
 import {
   type CSSProperties,
   Fragment,
+  memo,
   type ReactNode,
   type PointerEvent as ReactPointerEvent,
   useId,
@@ -11,6 +12,7 @@ import {
   useState,
 } from 'react';
 import { pptdAssetUrl } from '@/lib/pptd-backend';
+import { compileTimeline } from '../../../pptd/animation-model';
 import { splitMathFragments } from '../../../pptd/math-fragments';
 import { presetShapePath, SHAPE_PRESETS } from '../../../pptd/shape-presets';
 import { tableLayout } from '../../../pptd/table-grid';
@@ -20,6 +22,7 @@ import {
   TABLE_CELL_PADDING_Y,
 } from '../../../pptd/table-style';
 import type { PageSize, PageSnapshot, PptdElement } from '../../../pptd/types';
+import { revisionedAssetUrl } from '../../lib/pptd-asset-revision';
 import { ChartContent, IconContent } from './science-renderer';
 
 export type PptdTheme = {
@@ -701,6 +704,7 @@ function TextContent({ element, theme }: { element: PptdElement; theme: PptdThem
       }}
     >
       <div
+        data-hd-text-content
         style={textCss(content, theme)}
         data-hd-unsupported={unsupported ? 'true' : undefined}
         data-pptd-unsupported={unsupported ? 'true' : undefined}
@@ -782,7 +786,7 @@ function TableContent({ element, theme }: { element: PptdElement; theme: PptdThe
                           : 'top',
                   }}
                 >
-                  <div style={textCss(final.text, theme)}>
+                  <div data-hd-text-content style={textCss(final.text, theme)}>
                     {richNodes(textValue(final.text.text), theme)}
                   </div>
                 </td>
@@ -795,6 +799,27 @@ function TableContent({ element, theme }: { element: PptdElement; theme: PptdThe
   );
 }
 
+const ElementContent = memo(function ElementContent({
+  element,
+  theme,
+  assetUrl,
+}: {
+  element: PptdElement;
+  theme: PptdTheme;
+  assetUrl: (path: string) => string;
+}) {
+  if (element.elementType === 'text') return <TextContent element={element} theme={theme} />;
+  if (element.elementType === 'image')
+    return <ImageContent element={element} assetUrl={assetUrl} />;
+  if (element.elementType === 'shape') return <ShapeContent element={element} theme={theme} />;
+  if (element.elementType === 'line') return <LineContent element={element} theme={theme} />;
+  if (element.elementType === 'table') return <TableContent element={element} theme={theme} />;
+  if (element.elementType === 'chart') return <ChartContent element={element} theme={theme} />;
+  if (element.elementType === 'icon') return <IconContent element={element} theme={theme} />;
+  if (element.elementType === 'group') return null;
+  return <Unsupported label={`暂未渲染：${element.elementType}`} detail={element.elementId} />;
+});
+
 export type PptdPageRendererProps = {
   page: PageSnapshot;
   size: PageSize;
@@ -803,6 +828,9 @@ export type PptdPageRendererProps = {
   onElementPointerDown?: (element: PptdElement, event: ReactPointerEvent<HTMLDivElement>) => void;
   onElementDoubleClick?: (element: PptdElement) => void;
   onElementFocus?: (elementId: string) => void;
+  elementTabIndex?: (element: PptdElement) => number;
+  elementLabel?: (element: PptdElement) => string;
+  previewTimeMs?: number | null;
   renderContent?: (element: PptdElement) => ReactNode | undefined;
 };
 
@@ -816,6 +844,9 @@ export function PptdPageRenderer({
   onElementPointerDown,
   onElementDoubleClick,
   onElementFocus,
+  elementTabIndex,
+  elementLabel,
+  previewTimeMs,
   renderContent,
 }: PptdPageRendererProps) {
   const theme =
@@ -826,18 +857,39 @@ export function PptdPageRenderer({
       : inheritedTheme;
   const background = record(page.data.background);
   const resolveAsset = useMemo(
-    () => (source: string) => {
-      const url = assetUrl(source);
-      return url.startsWith('/')
-        ? `${url}${url.includes('?') ? '&' : '?'}revision=${encodeURIComponent(page.renderRevision)}`
-        : url;
-    },
-    [assetUrl, page.renderRevision],
+    () => (source: string) =>
+      revisionedAssetUrl(source, assetUrl(source), {
+        assetRevisions: page.assetRevisions,
+        renderRevision: page.renderRevision,
+      }),
+    [assetUrl, page.assetRevisions, page.renderRevision],
+  );
+  const previewEnabled =
+    previewTimeMs !== null && previewTimeMs !== undefined && Number.isFinite(previewTimeMs);
+  const animation = useMemo(() => {
+    if (!previewEnabled) return { compiled: null, error: undefined };
+    try {
+      return { compiled: compileTimeline(page.data), error: undefined };
+    } catch (error) {
+      return {
+        compiled: null,
+        error: error instanceof Error ? error.message : '动画时间线无效。',
+      };
+    }
+  }, [page.data, previewEnabled]);
+  const sampled = useMemo(
+    () =>
+      previewTimeMs !== null && previewTimeMs !== undefined && Number.isFinite(previewTimeMs)
+        ? animation.compiled?.sample(previewTimeMs)
+        : undefined,
+    [animation.compiled, previewTimeMs],
   );
   return (
     <div
       data-pptd-page={page.pageId}
       data-hd-page-id={page.pageId}
+      data-hd-animation-error={animation.error}
+      data-hd-animation-time-ms={sampled ? previewTimeMs : undefined}
       style={{
         width: size[0],
         height: size[1],
@@ -868,40 +920,24 @@ export function PptdPageRenderer({
         const flip = Array.isArray(element.flip) ? element.flip : [];
         const shadow = record(element.shadow);
         const offset = Array.isArray(shadow.offset) ? shadow.offset : [0, 0];
+        const animated = sampled?.get(element.elementId);
         let content = renderContent?.(element);
-        if (content === undefined) {
-          if (element.elementType === 'text')
-            content = <TextContent element={element} theme={theme} />;
-          else if (element.elementType === 'image')
-            content = <ImageContent element={element} assetUrl={resolveAsset} />;
-          else if (element.elementType === 'shape')
-            content = <ShapeContent element={element} theme={theme} />;
-          else if (element.elementType === 'line')
-            content = <LineContent element={element} theme={theme} />;
-          else if (element.elementType === 'table')
-            content = <TableContent element={element} theme={theme} />;
-          else if (element.elementType === 'chart')
-            content = <ChartContent element={element} theme={theme} />;
-          else if (element.elementType === 'icon')
-            content = <IconContent element={element} theme={theme} />;
-          else if (element.elementType === 'group') content = null;
-          else
-            content = (
-              <Unsupported label={`暂未渲染：${element.elementType}`} detail={element.elementId} />
-            );
-        }
+        if (content === undefined)
+          content = <ElementContent element={element} theme={theme} assetUrl={resolveAsset} />;
         const frameProps = {
           'data-hd-page-id': page.pageId,
           'data-hd-element-id': element.elementId,
           style: {
             position: 'absolute',
-            left: x,
-            top: y,
+            left: animated ? 0 : x,
+            top: animated ? 0 : y,
             width,
             height,
-            transform: `rotate(${numberValue(element.rotation, 0)}deg) scale(${flip[0] ? -1 : 1},${flip[1] ? -1 : 1})`,
-            transformOrigin: 'center',
-            opacity: numberValue(element.opacity, 1),
+            transform: animated
+              ? `matrix(${animated.matrix.join(',')})`
+              : `rotate(${numberValue(element.rotation, 0)}deg) scale(${flip[0] ? -1 : 1},${flip[1] ? -1 : 1})`,
+            transformOrigin: animated ? '0 0' : 'center',
+            opacity: animated?.opacity ?? numberValue(element.opacity, 1),
             outline: 'none',
             cursor: onElementPointerDown ? 'move' : undefined,
             touchAction: onElementPointerDown ? 'none' : undefined,
@@ -922,16 +958,23 @@ export function PptdPageRenderer({
             key={element.elementId}
             {...frameProps}
             role="button"
-            tabIndex={0}
-            aria-label={`${element.elementType} ${element.elementId}`}
+            tabIndex={elementTabIndex?.(element) ?? 0}
+            aria-label={elementLabel?.(element) ?? `${element.elementType} ${element.elementId}`}
             onPointerDown={(event) => onElementPointerDown(element, event)}
             onDoubleClick={onElementDoubleClick ? () => onElementDoubleClick(element) : undefined}
             onFocus={onElementFocus ? () => onElementFocus(element.elementId) : undefined}
             onKeyDown={
               onElementDoubleClick
                 ? (event) => {
-                    if (event.key === 'Enter' && event.target === event.currentTarget)
+                    if (
+                      !event.defaultPrevented &&
+                      !event.nativeEvent.isComposing &&
+                      event.key === 'Enter' &&
+                      event.target === event.currentTarget
+                    ) {
+                      event.preventDefault();
                       onElementDoubleClick(element);
+                    }
                   }
                 : undefined
             }

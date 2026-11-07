@@ -1,0 +1,7 @@
+{
+  "name": "huandeng",
+  "version": "0.6.0",
+  "description": "Edit the open HUANDENG PPTD project through its shared writer, Story context and reusable presentations.",
+  "author": { "name": "HUANDENG" },
+  "repository": "https://github.com/JaytonKogeru/huandeng"
+}

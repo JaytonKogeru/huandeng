@@ -91,7 +91,8 @@ export interface ExportDiagnostic extends Diagnostic {
 export interface ExportReport {
   schemaVersion: 1;
   renderer: 'huandeng-pptd-v1';
-  format: 'pptx' | 'pdf';
+  format: 'pptx' | 'pdf' | 'png';
+  renderState: 'base';
   deckId: string;
   presentationId?: string;
   title: string;
@@ -167,11 +168,15 @@ export function freezePptdExportSnapshot(snapshot: DeckSnapshot): DeckSnapshot {
   return frozen;
 }
 
-export function createExportReport(snapshot: DeckSnapshot, format: 'pptx' | 'pdf'): ExportReport {
+export function createExportReport(
+  snapshot: DeckSnapshot,
+  format: 'pptx' | 'pdf' | 'png',
+): ExportReport {
   return {
     schemaVersion: 1,
     renderer: 'huandeng-pptd-v1',
     format,
+    renderState: 'base',
     deckId: snapshot.deckId,
     ...(snapshot.presentationId ? { presentationId: snapshot.presentationId } : {}),
     title: snapshot.title,
@@ -191,7 +196,19 @@ export function createExportReport(snapshot: DeckSnapshot, format: 'pptx' | 'pdf
     elements: [],
     assets: [],
     fonts: [],
-    diagnostics: snapshot.diagnostics.map((diagnostic) => ({ ...diagnostic })),
+    diagnostics: [
+      ...snapshot.diagnostics.map((diagnostic) => ({ ...diagnostic })),
+      ...snapshot.pages
+        .filter((page) => page.state === 'active' && page.data.timeline != null)
+        .map((page) => ({
+          code: 'TIMELINE_STATIC_EXPORT',
+          severity: 'warning' as const,
+          pageId: page.pageId,
+          ...(page.occurrenceId ? { occurrenceId: page.occurrenceId } : {}),
+          ...(page.versionId ? { versionId: page.versionId } : {}),
+          message: '导出使用基础版式，动画时间线保留在 PPTD 中。',
+        })),
+    ],
     complete: false,
   };
 }

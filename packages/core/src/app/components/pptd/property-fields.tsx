@@ -58,6 +58,7 @@ export function NumberField({
         }}
         onKeyDown={(event) => {
           event.stopPropagation();
+          if (event.nativeEvent.isComposing || event.keyCode === 229) return;
           if (event.key === 'Enter') event.currentTarget.blur();
           if (event.key === 'Escape') {
             skip.current = true;
@@ -114,7 +115,7 @@ export function StringField({
         }}
         onKeyDown={(event) => {
           event.stopPropagation();
-          if (event.nativeEvent.isComposing) return;
+          if (event.nativeEvent.isComposing || event.keyCode === 229) return;
           if (event.key === 'Enter') event.currentTarget.blur();
           if (event.key === 'Escape') {
             skip.current = true;

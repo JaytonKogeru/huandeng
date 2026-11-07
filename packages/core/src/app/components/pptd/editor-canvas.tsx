@@ -17,7 +17,9 @@ import {
   unionRects,
 } from '@/lib/inspector/geometry';
 import { capturePointerGesture } from '@/lib/pointer-gesture';
+import { elementLabel } from '@/lib/pptd-element-label';
 import type { InsertionTool } from '@/lib/pptd-insertion';
+import { cycleItemId, editorKeyboardScope, topLevelElementIds } from '@/lib/pptd-keyboard';
 import { expandGroupIds, owningGroupId } from '../../../pptd/grouping';
 import type { Bounds, PageSize, PageSnapshot, PptdElement } from '../../../pptd/types';
 import { SlideCanvas } from '../slide-canvas';
@@ -52,6 +54,7 @@ type Props = {
   insertionTool?: InsertionTool | null;
   onPlace?: (element: PptdElement) => void;
   autoEditId?: string | null;
+  previewTimeMs?: number | null;
 };
 
 type Gesture = {
@@ -120,6 +123,7 @@ export function PptdEditorCanvas({
   insertionTool,
   onPlace,
   autoEditId,
+  previewTimeMs,
 }: Props) {
   const [actualScale, setActualScale] = useState(1);
   const [guides, setGuides] = useState<Guide[]>([]);
@@ -128,6 +132,8 @@ export function PptdEditorCanvas({
   const gestureRef = useRef<Gesture | null>(null);
   const cancelGestureRef = useRef<(() => void) | null>(null);
   const canvasRef = useRef<HTMLDivElement>(null);
+  const leaveCanvasOnTab = useRef(false);
+  const focusedElementId = useRef<string | null>(null);
   const latest = useRef({ page, size, onPatch, onEnd, onCancel });
   latest.current = { page, size, onPatch, onEnd, onCancel };
 
@@ -145,6 +151,17 @@ export function PptdEditorCanvas({
   useEffect(() => {
     if (editingId && !selectedIds.includes(editingId)) setEditingId(null);
   }, [editingId, selectedIds]);
+
+  useLayoutEffect(() => {
+    if (
+      !focusedElementId.current ||
+      page.data.elements.some((element) => element.elementId === focusedElementId.current)
+    )
+      return;
+    focusedElementId.current = null;
+    if (document.activeElement === document.body && document.hasFocus())
+      canvasRef.current?.focus({ preventScroll: true });
+  }, [page.data.elements]);
 
   const moveGesture = (event: PointerEvent) => {
     const gesture = gestureRef.current;
@@ -316,14 +333,100 @@ export function PptdEditorCanvas({
     [onScaleChange],
   );
   const selected = page.data.elements.filter((item) => selectedIds.includes(item.elementId));
+  const topLevelIds = topLevelElementIds(page.data.elements);
+  const tabStopId =
+    topLevelIds.find((id) => selectedIds.includes(id)) ??
+    (selectedIds[0] ? owningGroupId(page.data.elements, selectedIds[0]) : undefined) ??
+    undefined;
+
+  const focusObject = (id: string) => {
+    canvasRef.current
+      ?.querySelector<HTMLElement>(`[data-hd-element-id="${CSS.escape(id)}"]`)
+      ?.focus({ preventScroll: true });
+  };
 
   return (
     <div
       ref={canvasRef}
-      tabIndex={-1}
-      className="relative h-full min-h-64 w-full outline-none"
+      role="application"
+      // biome-ignore lint/a11y/noNoninteractiveTabindex: The authoring canvas is a composite keyboard widget with one stable native focus entry.
+      tabIndex={0}
+      aria-label="幻灯片画布"
+      aria-describedby="hd-canvas-keyboard-hint"
+      className="relative h-full min-h-64 w-full outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand/60 [&_[data-hd-element-id]:focus-visible]:ring-2 [&_[data-hd-element-id]:focus-visible]:ring-brand/50"
       data-hd-editor-canvas
+      data-hd-focus-region="canvas"
+      onFocusCapture={(event) => {
+        focusedElementId.current =
+          (event.target as HTMLElement).closest<HTMLElement>('[data-hd-element-id]')?.dataset
+            .hdElementId ?? null;
+      }}
+      onBlur={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget)) {
+          leaveCanvasOnTab.current = false;
+          if (event.relatedTarget) focusedElementId.current = null;
+        }
+      }}
+      onKeyDown={(event) => {
+        if (
+          event.defaultPrevented ||
+          event.nativeEvent.isComposing ||
+          event.keyCode === 229 ||
+          event.ctrlKey ||
+          event.metaKey ||
+          event.altKey ||
+          editorKeyboardScope(event.target) !== 'canvas'
+        )
+          return;
+        if (event.key === 'Escape' && gestureRef.current) {
+          event.preventDefault();
+          event.stopPropagation();
+          cancelGestureRef.current?.();
+          return;
+        }
+        if (
+          event.key === 'Enter' &&
+          event.target === event.currentTarget &&
+          !disabled &&
+          selectedIds.length === 1 &&
+          page.data.elements.some(
+            (element) => element.elementId === selectedIds[0] && element.elementType === 'text',
+          )
+        ) {
+          event.preventDefault();
+          event.stopPropagation();
+          setEditingId(selectedIds[0]);
+          return;
+        }
+        if (event.key === 'Escape' && !insertionTool) {
+          event.preventDefault();
+          event.stopPropagation();
+          leaveCanvasOnTab.current = true;
+          onSelect([]);
+          canvasRef.current?.focus({ preventScroll: true });
+          return;
+        }
+        if (event.key !== 'Tab') return;
+        if (leaveCanvasOnTab.current) {
+          leaveCanvasOnTab.current = false;
+          return;
+        }
+        const focusedId = (event.target as Element).closest<HTMLElement>('[data-hd-element-id]')
+          ?.dataset.hdElementId;
+        const currentId = focusedId
+          ? (owningGroupId(page.data.elements, focusedId) ?? focusedId)
+          : tabStopId;
+        const next = cycleItemId(topLevelIds, currentId, event.shiftKey ? -1 : 1);
+        if (!next) return;
+        event.preventDefault();
+        event.stopPropagation();
+        onSelect([next]);
+        focusObject(next);
+      }}
     >
+      <p id="hd-canvas-keyboard-hint" className="sr-only">
+        Tab 切换对象，方向键移动，Enter 编辑文字。Esc 清除选区后 Tab 离开画布，F6 切换面板。
+      </p>
       {editingId && (
         <div
           className="absolute left-1/2 top-2 z-40 flex -translate-x-1/2 gap-0.5 rounded-md border bg-popover p-1 shadow-floating"
@@ -368,9 +471,15 @@ export function PptdEditorCanvas({
             page={page}
             size={size}
             theme={theme}
+            previewTimeMs={previewTimeMs}
+            elementTabIndex={() => -1}
+            elementLabel={(element) =>
+              `${elementLabel(element)} · ${element.elementType === 'text' ? 'Enter 编辑文字' : '幻灯片对象'}`
+            }
             onElementPointerDown={select}
             onElementFocus={(id) => {
               if (gestureRef.current) return;
+              if (selectedIds.includes(id)) return;
               const groupId = owningGroupId(page.data.elements, id) ?? id;
               if (!selectedIds.includes(groupId)) onSelect([groupId]);
             }}
@@ -389,9 +498,10 @@ export function PptdEditorCanvas({
                   selectAll={element.elementId === autoEditId}
                   onChange={(text) => onPatch(element.elementId, { 'content.text': text })}
                   onComposition={onComposition}
-                  onFinish={() => {
+                  onFinish={(restoreFocus) => {
                     setEditingId(null);
                     onFlush();
+                    if (restoreFocus) requestAnimationFrame(() => focusObject(element.elementId));
                   }}
                 />
               ) : undefined
@@ -420,6 +530,7 @@ export function PptdEditorCanvas({
                       <button
                         key={handle}
                         type="button"
+                        tabIndex={-1}
                         aria-label={`调整尺寸 ${handle}`}
                         data-hd-resize={handle}
                         className="pointer-events-auto absolute bg-white"
@@ -450,6 +561,7 @@ export function PptdEditorCanvas({
                     />
                     <button
                       type="button"
+                      tabIndex={-1}
                       aria-label="旋转对象"
                       data-hd-rotate
                       className="pointer-events-auto absolute rounded-full bg-white"
@@ -519,7 +631,7 @@ function InlineTextElement({
   theme: PptdTheme;
   onChange: (text: string) => void;
   onComposition: (composing: boolean) => void;
-  onFinish: () => void;
+  onFinish: (restoreFocus: boolean) => void;
   selectAll?: boolean;
 }) {
   const editorRef = useRef<HTMLDivElement>(null);
@@ -599,7 +711,7 @@ function InlineTextElement({
         onBlur={() => {
           if (!composing.current) {
             read();
-            onFinish();
+            onFinish(false);
           }
         }}
         onPaste={(event) => {
@@ -616,7 +728,7 @@ function InlineTextElement({
           ) {
             event.preventDefault();
             read();
-            onFinish();
+            onFinish(true);
           }
         }}
       />

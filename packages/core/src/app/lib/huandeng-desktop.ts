@@ -1,3 +1,5 @@
+export type DesktopEditCommand = 'cut' | 'copy' | 'paste' | 'selectAll' | 'undo' | 'redo';
+
 export interface HuandengDesktop {
   platform: string;
   openProject(): Promise<{ entryPath: string } | null>;
@@ -12,6 +14,8 @@ export interface HuandengDesktop {
   }>;
   onContextChanged(callback: () => void): () => void;
   onBeforeLeave(callback: () => Promise<void>): () => void;
+  onEditCommand?(callback: (command: DesktopEditCommand) => void): () => void;
+  editNative?(command: DesktopEditCommand): Promise<void>;
 }
 
 declare global {

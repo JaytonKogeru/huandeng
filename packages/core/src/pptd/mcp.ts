@@ -12,7 +12,7 @@ import type { TransactionRequest } from './types.ts';
 const pageProperty = {
   pageId: {
     type: 'string',
-    description: 'Stable page UUID, readable S label, or legacy short code.',
+    description: 'Stable page UUID or readable short code. Historical S labels remain accepted.',
   },
 };
 const objectSchema = (properties: Record<string, object>, required: string[] = []) => ({
@@ -141,6 +141,41 @@ const tools: Tool[] = [
     annotations: read,
   },
   {
+    name: 'huandeng_story_briefing',
+    description:
+      'Read Main, section, presentation and page Story together, including exact occurrence notes, neighboring pages, used-by relationships, assets and current revisions. Omit pageId for a project or presentation overview. Repeated pages require occurrenceId. Pinned occurrences return archived page intent and are read-only.',
+    inputSchema: objectSchema({
+      ...pageProperty,
+      presentationId: { type: 'string', description: 'Omit for Main Slides.' },
+      occurrenceId: {
+        type: 'string',
+        description:
+          'Stable reference identity from presentation_read or briefing usedBy, never a position number.',
+      },
+    }),
+    annotations: read,
+  },
+  {
+    name: 'huandeng_presentation_read',
+    description:
+      'Read one presentation in this project, preserving occurrence IDs, repeated pages, pinned versions and presentation-specific notes. Positions are derived; pageId stays stable.',
+    inputSchema: objectSchema({ presentationId: { type: 'string' } }, ['presentationId']),
+    annotations: read,
+  },
+  {
+    name: 'huandeng_assets_list',
+    description:
+      'Search project media/assets and current Main-page usages, including original image names and missing file locations. Results are paginated; honor hasMore and truncated. Unreferenced means current Main only, not safe to delete. This tool does not change files.',
+    inputSchema: objectSchema({
+      query: { type: 'string', maxLength: 256 },
+      filter: { type: 'string', enum: ['all', 'used', 'unused', 'missing'] },
+      pageId: { type: 'string', description: 'Filter by stable page UUID.' },
+      offset: { type: 'integer', minimum: 0 },
+      limit: { type: 'integer', minimum: 1, maximum: 200 },
+    }),
+    annotations: read,
+  },
+  {
     name: 'huandeng_story_record',
     description:
       'Before editing, record your understanding of the user request in HUANDENG Story. Preserve existing constraints unless the user changed them. This is an agent summary, not human approval. Use the current metadata revision and reuse all fields identically on retries.',
@@ -225,13 +260,21 @@ const tools: Tool[] = [
   },
 ];
 
-export async function startMcp(client: HuandengClient) {
+function queryPath(endpoint: string, args: Record<string, unknown>): string {
+  const params = new URLSearchParams();
+  for (const [key, value] of Object.entries(args)) {
+    if (value !== undefined && value !== null) params.set(key, String(value));
+  }
+  return `${endpoint}${params.size ? `?${params}` : ''}`;
+}
+
+export function createMcpServer(client: HuandengClient) {
   const server = new Server(
-    { name: 'HUANDENG Plugin', version: '0.4.0' },
+    { name: 'HUANDENG Plugin', version: '0.6.0' },
     {
       capabilities: { tools: {} },
       instructions:
-        'Work from the external user conversation; there is no editor chat. Read context and the target page, record your interpretation and preservation constraints with huandeng_story_record, then use the returned metadata revision for edits. Keep stable IDs, render results and report actual changes. Story is your summary, never fabricated human approval. Never invent scientific data.',
+        'Use the external user conversation. Read huandeng_context and huandeng_story_briefing; target repeated slides by occurrenceId and keep pinned versions read-only. Record the request and preservation constraints with huandeng_story_record, then apply focused edits with current revisions. Render and inspect results. Story records agent interpretation, never human approval. Preserve original scientific figures and never invent data.',
     },
   );
   server.setRequestHandler(ListToolsRequestSchema, async () => ({
@@ -293,6 +336,17 @@ export async function startMcp(client: HuandengClient) {
         case 'huandeng_project':
           result = await client.request('/project');
           break;
+        case 'huandeng_story_briefing':
+          result = await client.request(queryPath('/story-briefing', args));
+          break;
+        case 'huandeng_presentation_read':
+          result = await client.request(
+            `/presentations/${encodeURIComponent(String(args.presentationId))}`,
+          );
+          break;
+        case 'huandeng_assets_list':
+          result = await client.request(queryPath('/assets', args));
+          break;
         case 'huandeng_story_record':
           result = await client.request('/story', args);
           break;
@@ -350,6 +404,11 @@ export async function startMcp(client: HuandengClient) {
       };
     }
   });
+  return server;
+}
+
+export async function startMcp(client: HuandengClient) {
+  const server = createMcpServer(client);
   await server.connect(new StdioServerTransport());
   return server;
 }

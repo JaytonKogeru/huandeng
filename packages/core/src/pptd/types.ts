@@ -1,3 +1,5 @@
+import type { PageTimeline } from './animation-model';
+
 export type Revision = `sha256:${string}`;
 export type PageSize = [number, number];
 export type Bounds = [number, number, number, number];
@@ -187,6 +189,12 @@ export interface PageNotesOperation {
   text: string;
 }
 
+export interface PageTimelineOperation {
+  op: 'page.timeline.set';
+  pageId: string;
+  timeline: PageTimeline | null;
+}
+
 export interface PageAddOperation {
   op: 'page.add';
   page?: PptdPage;
@@ -265,6 +273,7 @@ export type PptdOperation =
   | ElementRemoveOperation
   | ElementReorderOperation
   | PageNotesOperation
+  | PageTimelineOperation
   | PageAddOperation
   | PageDuplicateOperation
   | PageMoveOperation

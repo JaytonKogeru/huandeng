@@ -1,3 +1,5 @@
+import type { AssetLibraryOptions, AssetLibraryResult } from '../../pptd/asset-library';
+import type { StoryBriefing, StoryBriefingOptions } from '../../pptd/project-insights';
 import type {
   CreatePageCheckpointRequest,
   DeckSnapshot,
@@ -24,6 +26,7 @@ export interface ProjectTree {
   entry: string;
   root: string;
   nodes: ProjectTreeNode[];
+  truncated?: boolean;
 }
 
 export class PptdClientError extends Error {
@@ -55,6 +58,14 @@ export interface PptdTransport {
 }
 
 const API = `${(import.meta.env.BASE_URL ?? '/').replace(/\/$/, '')}/__pptd`;
+
+function queryPath(endpoint: string, options: object): string {
+  const params = new URLSearchParams();
+  for (const [key, value] of Object.entries(options)) {
+    if (value !== undefined && value !== null) params.set(key, String(value));
+  }
+  return `${endpoint}${params.size ? `?${params}` : ''}`;
+}
 
 export function pptdAssetUrl(path: string, exportId?: string): string {
   if (!exportId && /^https?:\/\//i.test(path)) return path;
@@ -146,6 +157,14 @@ export class PptdBackend implements PptdTransport {
 
   project(): Promise<ProjectTree> {
     return this.request('/project');
+  }
+
+  assets(options: AssetLibraryOptions = {}): Promise<AssetLibraryResult> {
+    return this.request(queryPath('/assets', options));
+  }
+
+  briefing(options: StoryBriefingOptions = {}): Promise<StoryBriefing> {
+    return this.request(queryPath('/story-briefing', options));
   }
 
   presentation(presentationId: string): Promise<DeckSnapshot> {

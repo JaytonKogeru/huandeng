@@ -1,3 +1,4 @@
+import { knownTimeline, removeTimelineTargets } from '../../pptd/timeline-operations';
 import type {
   ExpectedRevisions,
   PageSnapshot,
@@ -182,6 +183,16 @@ function previewElements(
   }
   for (const { page } of previews.values()) {
     const ids = new Set(page.data.elements.map((element) => element.elementId));
+    const timeline = knownTimeline(page.data);
+    if (timeline)
+      page.data.timeline = removeTimelineTargets(
+        timeline,
+        new Set(
+          timeline.tracks
+            .filter((track) => !ids.has(track.targetId))
+            .map((track) => track.targetId),
+        ),
+      );
     if (
       page.data.elements.some(
         (element) =>

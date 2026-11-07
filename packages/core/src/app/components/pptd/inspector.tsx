@@ -11,10 +11,12 @@ import {
 } from 'lucide-react';
 import type { ReactNode } from 'react';
 import type { Alignment } from '@/lib/inspector/geometry';
+import { elementLabel as layerTitle } from '@/lib/pptd-element-label';
+import { cycleItemId } from '@/lib/pptd-keyboard';
 import { cn } from '@/lib/utils';
 import { groupChildren } from '../../../pptd/grouping';
 import { SHAPE_PRESETS } from '../../../pptd/shape-presets';
-import type { PageSnapshot, PptdElement } from '../../../pptd/types';
+import type { PageSnapshot } from '../../../pptd/types';
 import { Button } from '../ui/button';
 import { Textarea } from '../ui/textarea';
 import { NumberField, StringField } from './property-fields';
@@ -33,6 +35,7 @@ import {
   TableProperties,
 } from './science-inspector';
 
+export { elementLabel as layerTitle } from '@/lib/pptd-element-label';
 export { NumberField } from './property-fields';
 
 type Props = {
@@ -41,6 +44,7 @@ type Props = {
   selectedIds: string[];
   disabled: boolean;
   onSelect: (ids: string[]) => void;
+  onActivate?: (elementId?: string) => void;
   onPatch: (elementId: string, fields: Record<string, unknown>, autosave?: boolean) => void;
   onBegin: () => void;
   onEnd: () => void;
@@ -70,6 +74,7 @@ export function PptdInspector({
   selectedIds,
   disabled,
   onSelect,
+  onActivate,
   onPatch,
   onBegin,
   onEnd,
@@ -90,6 +95,8 @@ export function PptdInspector({
       ? (page.metadata.themeOverride as PptdTheme)
       : inheritedTheme;
   const selected = page.data.elements.filter((element) => selectedIds.includes(element.elementId));
+  const layers = [...page.data.elements].reverse();
+  const layerTabStop = layers.find((item) => selectedIds.includes(item.elementId)) ?? layers[0];
   const element = selected.length === 1 ? selected[0] : undefined;
   const content = element ? textContent(element, theme) : {};
   const bounds = element?.bounds ?? [0, 0, 120, 50];
@@ -134,6 +141,8 @@ export function PptdInspector({
       className="flex h-full w-72 shrink-0 flex-col overflow-y-auto border-l border-border bg-background"
       aria-label="对象属性"
       data-hd-inspector
+      data-hd-focus-region="inspector"
+      tabIndex={-1}
     >
       <div className="flex h-11 shrink-0 items-center justify-between border-b border-border px-4">
         <h2 className="text-sm font-medium">{selected.length ? '对象属性' : '页面与图层'}</h2>
@@ -548,25 +557,60 @@ export function PptdInspector({
       {children}
       <Section title="图层 · 上方先显示">
         <div className="space-y-0.5">
-          {[...page.data.elements].reverse().map((item) => (
+          {layers.map((item) => (
             <button
               type="button"
               key={item.elementId}
+              data-hd-layer={item.elementId}
+              tabIndex={item.elementId === layerTabStop?.elementId ? 0 : -1}
               title={`对象 ID：${item.elementId}`}
               aria-pressed={selectedIds.includes(item.elementId)}
               className={cn(
-                'flex w-full items-center gap-2 rounded px-2 py-2 text-left text-xs transition-colors hover:bg-muted',
+                'flex w-full items-center gap-2 rounded px-2 py-2 text-left text-xs outline-none transition-colors hover:bg-muted focus-visible:ring-2 focus-visible:ring-brand/60',
                 selectedIds.includes(item.elementId) && 'bg-brand-soft text-brand',
               )}
-              onClick={(event) =>
-                onSelect(
-                  event.shiftKey
-                    ? selectedIds.includes(item.elementId)
-                      ? selectedIds.filter((id) => id !== item.elementId)
-                      : [...selectedIds, item.elementId]
-                    : [item.elementId],
+              onClick={(event) => {
+                const ids = event.shiftKey
+                  ? selectedIds.includes(item.elementId)
+                    ? selectedIds.filter((id) => id !== item.elementId)
+                    : [...selectedIds, item.elementId]
+                  : [item.elementId];
+                onSelect(ids);
+                onActivate?.(ids[0]);
+              }}
+              onKeyDown={(event) => {
+                if (
+                  event.nativeEvent.isComposing ||
+                  event.keyCode === 229 ||
+                  event.ctrlKey ||
+                  event.metaKey ||
+                  event.altKey
                 )
-              }
+                  return;
+                if (event.key === 'Enter') {
+                  event.preventDefault();
+                  onSelect([item.elementId]);
+                  onActivate?.(item.elementId);
+                  return;
+                }
+                const ids = layers.map((layer) => layer.elementId);
+                const next =
+                  event.key === 'Home'
+                    ? ids[0]
+                    : event.key === 'End'
+                      ? ids[ids.length - 1]
+                      : event.key === 'ArrowUp' || event.key === 'ArrowDown'
+                        ? cycleItemId(ids, item.elementId, event.key === 'ArrowUp' ? -1 : 1, false)
+                        : null;
+                if (!next) return;
+                event.preventDefault();
+                onSelect([next]);
+                const target = event.currentTarget.parentElement?.querySelector<HTMLElement>(
+                  `[data-hd-layer="${CSS.escape(next)}"]`,
+                );
+                target?.focus({ preventScroll: true });
+                target?.scrollIntoView({ block: 'nearest' });
+              }}
             >
               <Layers2 className="size-3.5 shrink-0" />
               <span className="truncate">{layerTitle(item)}</span>
@@ -576,32 +620,6 @@ export function PptdInspector({
       </Section>
     </aside>
   );
-}
-
-export function layerTitle(element: PptdElement): string {
-  const label =
-    textValue(element.content?.text)
-      .replace(/<[^>]*>/g, '')
-      .trim() ||
-    textValue(element.name).trim() ||
-    textValue(element.title, textValue(record(element.title).text)).trim();
-  if (label) return label.slice(0, 36);
-  if (element.elementType === 'shape')
-    return (
-      SHAPE_PRESETS.find(([name]) => name === textValue(element.shapeName, 'rect'))?.[1] ??
-      '自定义形状'
-    );
-  const typeLabels: Record<string, string> = {
-    text: '文字',
-    image: '图片',
-    line: '线条',
-    chart: '图表',
-    table: '表格',
-    icon: '图标',
-    group: '组合',
-    missing: '缺失对象',
-  };
-  return typeLabels[element.elementType] ?? '对象';
 }
 
 function hexColor(color: string) {

@@ -246,6 +246,35 @@ describe('PPTD browser editing contract', () => {
     expect(client.getState().saving).toBe(false);
   });
 
+  it('previews animated object deletion without orphan tracks and restores both after rejection', async () => {
+    const initial = session();
+    initial.pages[0].data.timeline = {
+      schemaVersion: 1,
+      durationMs: 1000,
+      tracks: [
+        {
+          id: 'move',
+          targetId: 'title',
+          property: 'x',
+          keyframes: [{ id: 'start', timeMs: 0, value: 50, easing: 'linear' }],
+        },
+      ],
+    };
+    const { client, commit } = await setup(initial);
+    const ack = deferred<TransactionResult>();
+    commit.mockReturnValueOnce(ack.promise);
+    const saving = client.apply([{ op: 'element.remove', pageId: 'page-1', elementId: 'title' }]);
+    await Promise.resolve();
+    expect(client.page('page-1')?.data.timeline).toMatchObject({ tracks: [] });
+    expect(client.getState().snapshot?.pages[0].data.timeline).toEqual(
+      initial.pages[0].data.timeline,
+    );
+    ack.reject(new PptdClientError('REVISION_CONFLICT', 'Page changed.', 409));
+    await expect(saving).rejects.toMatchObject({ code: 'REVISION_CONFLICT' });
+    expect(client.page('page-1')?.data.elements).toHaveLength(1);
+    expect(client.page('page-1')?.data.timeline).toEqual(initial.pages[0].data.timeline);
+  });
+
   it('rolls back a rejected addition and accepts the actual remote page', async () => {
     const { client, commit, setRemote } = await setup();
     const ack = deferred<TransactionResult>();

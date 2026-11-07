@@ -33,6 +33,8 @@ contextBridge.exposeInMainWorld('huandengDesktop', {
   showHome: () => ipcRenderer.invoke('huandeng:show-home'),
   onContextChanged: (callback) => subscribe('huandeng:context-changed', callback),
   onStatus: (callback) => subscribe('huandeng:status', callback),
+  onEditCommand: (callback) => subscribe('huandeng:edit-command', callback),
+  editNative: (command) => ipcRenderer.invoke('huandeng:edit-native', command),
   onBeforeLeave: (callback) => {
     leaveHandlers.add(callback);
     return () => leaveHandlers.delete(callback);

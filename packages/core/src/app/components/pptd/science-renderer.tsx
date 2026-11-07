@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useState } from 'react';
 import { loadScientificIcon, type ScientificIcon } from '../../../pptd/icon-registry';
 import type { PptdElement } from '../../../pptd/types';
+import { BoundedSvgCache } from '../../lib/bounded-svg-cache';
 
 type Theme = { colors?: Record<string, string>; chartColors?: string[] };
 
-const chartCache = new Map<string, string>();
+const chartCache = new BoundedSvgCache();
 
 function ObjectError({ message }: { message: string }) {
   return (
@@ -47,7 +48,6 @@ export function ChartContent({ element, theme }: { element: PptdElement; theme: 
     void import('../../../pptd/chart-engine')
       .then(({ renderChartSvg }) => {
         const svg = renderChartSvg(definition.element, definition.theme);
-        if (chartCache.size >= 32) chartCache.delete(chartCache.keys().next().value ?? '');
         chartCache.set(key, svg);
         if (active) setResult({ key, svg });
       })
@@ -68,7 +68,7 @@ export function ChartContent({ element, theme }: { element: PptdElement; theme: 
         data-hd-loading="chart"
         className="flex h-full w-full items-center justify-center text-xs text-muted-foreground"
       >
-        Rendering chart…
+        正在绘制图表…
       </div>
     );
   return (

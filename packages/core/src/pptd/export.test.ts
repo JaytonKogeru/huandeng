@@ -4,6 +4,7 @@ import { describe, expect, it, vi } from 'vitest';
 import {
   buildPptdPdf,
   buildPptdPptx,
+  createExportReport,
   freezePptdExportSnapshot,
   PptdExportError,
   pptdPrintStyle,
@@ -32,6 +33,42 @@ const image: PptdElement = {
 const assets = { resolveAsset: async () => ({ bytes: PNG_FIXTURE, mimeType: 'image/png' }) };
 
 describe('PPTD native PPTX export', () => {
+  it('exports the base geometry and explicitly reports that editable timelines remain in PPTD', async () => {
+    const source = deckFixture([structuredClone(text)]);
+    source.pages[0].data.timeline = {
+      schemaVersion: 1,
+      durationMs: 2000,
+      tracks: [
+        {
+          id: 'motion',
+          targetId: 'finding',
+          property: 'x',
+          keyframes: [{ id: 'start', timeMs: 0, value: 500, easing: 'linear' }],
+        },
+      ],
+    };
+    const result = await buildPptdPptx(source, assets);
+    const files = unzipSync(result.bytes);
+    expect(result.report.diagnostics).toContainEqual(
+      expect.objectContaining({
+        code: 'TIMELINE_STATIC_EXPORT',
+        severity: 'warning',
+        pageId: source.pages[0].pageId,
+      }),
+    );
+    expect(strFromU8(files['ppt/slides/slide1.xml'])).toContain('<a:off x="127000" y="254000"/>');
+    expect(source.pages[0].data.elements[0].bounds).toEqual([10, 20, 200, 60]);
+    expect(source.pages[0].data.timeline).toMatchObject({
+      tracks: [{ keyframes: [{ value: 500 }] }],
+    });
+    for (const format of ['png', 'pdf', 'pptx'] as const) {
+      const report = createExportReport(source, format);
+      expect(report.renderState).toBe('base');
+      expect(report.diagnostics).toContainEqual(
+        expect.objectContaining({ code: 'TIMELINE_STATIC_EXPORT' }),
+      );
+    }
+  });
   it('exports repeated presentation occurrences and pinned versions without changing stable page IDs', async () => {
     const source = deckFixture([structuredClone(text)]);
     source.presentationId = 'seminar';

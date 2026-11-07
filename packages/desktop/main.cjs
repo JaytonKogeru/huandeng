@@ -218,6 +218,20 @@ function menuAction(action) {
   };
 }
 
+const nativeEditCommands = new Set(['cut', 'copy', 'paste', 'selectAll', 'undo', 'redo']);
+
+function editNative(command) {
+  if (!nativeEditCommands.has(command)) throw new Error('不支持这个编辑命令。');
+  if (window && !window.isDestroyed()) window.webContents[command]();
+}
+
+function editCommand(command) {
+  if (!window || window.isDestroyed()) return;
+  if (activeService && window.webContents.getURL().startsWith(`${activeService.url}/`))
+    window.webContents.send('huandeng:edit-command', command);
+  else editNative(command);
+}
+
 function buildMenu() {
   const recent = preferences.recentProjects.map((item) => ({
     label: item.title || path.basename(path.dirname(item.entryPath)),
@@ -248,10 +262,13 @@ function buildMenu() {
     {
       label: '编辑',
       submenu: [
-        { role: 'cut', label: '剪切' },
-        { role: 'copy', label: '复制' },
-        { role: 'paste', label: '粘贴' },
-        { role: 'selectAll', label: '全选' },
+        { label: '撤销', accelerator: 'CmdOrCtrl+Z', click: () => editCommand('undo') },
+        { label: '重做', accelerator: 'CmdOrCtrl+Shift+Z', click: () => editCommand('redo') },
+        { type: 'separator' },
+        { label: '剪切', accelerator: 'CmdOrCtrl+X', click: () => editCommand('cut') },
+        { label: '复制', accelerator: 'CmdOrCtrl+C', click: () => editCommand('copy') },
+        { label: '粘贴', accelerator: 'CmdOrCtrl+V', click: () => editCommand('paste') },
+        { label: '全选', accelerator: 'CmdOrCtrl+A', click: () => editCommand('selectAll') },
       ],
     },
     {
@@ -307,6 +324,7 @@ function registerIpc() {
   handle('huandeng:open-project', () => operate(chooseProject));
   handle('huandeng:new-project', () => operate(newProject));
   handle('huandeng:get-context', context);
+  handle('huandeng:edit-native', editNative);
   handle('huandeng:show-home', () => operate(showHome));
   handle('huandeng:reveal-path', revealPath);
   handle('huandeng:recent-projects', async () =>
@@ -358,6 +376,29 @@ async function createWindow() {
     },
   });
   window.once('ready-to-show', () => window.show());
+  const editorPermission = (contents, permission, requestingUrl, isMainFrame) => {
+    if (
+      contents !== window?.webContents ||
+      !activeService ||
+      isMainFrame === false ||
+      !['local-fonts', 'clipboard-read', 'clipboard-sanitized-write', 'fullscreen'].includes(
+        permission,
+      )
+    )
+      return false;
+    try {
+      return new URL(requestingUrl || contents.getURL()).origin === activeService.url;
+    } catch {
+      return false;
+    }
+  };
+  window.webContents.session.setPermissionCheckHandler((contents, permission, origin, details) =>
+    editorPermission(contents, permission, details.requestingUrl || origin, details.isMainFrame),
+  );
+  window.webContents.session.setPermissionRequestHandler(
+    (contents, permission, callback, details) =>
+      callback(editorPermission(contents, permission, details.requestingUrl, details.isMainFrame)),
+  );
   window.on('page-title-updated', (event) => {
     event.preventDefault();
     updateTitle();

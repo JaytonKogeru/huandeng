@@ -2,12 +2,11 @@
   "mcpServers": {
     "huandeng": {
       "command": "node",
-      "args": [
-        "D:/_Proj/Huandeng/packages/core/huandeng.js",
-        "--entry",
-        "D:/_Proj/Huandeng/tests/fixtures/studio/deck.pptd",
-        "mcp"
-      ]
+      "args": ["D:/_Proj/Huandeng/plugins/huandeng/scripts/launch-mcp.mjs"],
+      "env": {
+        "HUANDENG_CLI": "D:/_Proj/Huandeng/packages/core/huandeng.js",
+        "HUANDENG_ENTRY": "D:/Slides/My Project/deck.pptd"
+      }
     }
   }
 }
