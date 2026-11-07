@@ -6,6 +6,8 @@ import { useLocale } from './lib/use-locale';
 import { AssetsPage } from './routes/assets';
 import { Home } from './routes/home';
 import { HomeShell } from './routes/home-shell';
+import { HuandengEditor } from './routes/huandeng';
+import { HuandengExport } from './routes/huandeng-export';
 import { Presenter } from './routes/presenter';
 import { Preview } from './routes/preview';
 import { Slide } from './routes/slide';
@@ -18,6 +20,8 @@ export function App() {
           opens, moving along a toolbar shows the rest instantly. */}
       <TooltipProvider delay={200}>
         <Routes>
+          <Route path="/huandeng" element={<HuandengEditor />} />
+          <Route path="/huandeng/export/:exportId" element={<HuandengExport />} />
           {config.build.showSlideBrowser && (
             <Route element={<HomeShell />}>
               <Route path="/" element={<Home />} />

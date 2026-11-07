@@ -1,0 +1,81 @@
+{
+  "platform": "win32",
+  "node": "v22.21.0",
+  "timestamp": "2026-11-07T02:58:01.013Z",
+  "entry": "<temporary fixture>/studio/deck.pptd",
+  "passed": true,
+  "checks": [
+    {
+      "name": "agent patch changes only its page and updates the open GUI",
+      "passed": true,
+      "milliseconds": 377
+    },
+    {
+      "name": "idempotent retry and stale same-page revision rejection",
+      "passed": true,
+      "milliseconds": 37
+    },
+    {
+      "name": "another page accepts its unchanged original revision",
+      "passed": true,
+      "milliseconds": 130
+    },
+    {
+      "name": "GUI text edit saves and survives reload",
+      "passed": true,
+      "milliseconds": 2078
+    },
+    {
+      "name": "drag saves logical slide coordinates",
+      "passed": true,
+      "milliseconds": 871
+    },
+    {
+      "name": "page reorder preserves identities, filenames and page bytes; undo restores order",
+      "passed": true,
+      "milliseconds": 282
+    },
+    {
+      "name": "presenter notes and next-page preview follow stable page identities",
+      "passed": true,
+      "milliseconds": 768
+    },
+    {
+      "name": "explicit Git checkpoint commits only successful document saves",
+      "passed": true,
+      "milliseconds": 3749
+    },
+    {
+      "name": "external file edits update the existing GUI",
+      "passed": true,
+      "milliseconds": 440
+    },
+    {
+      "name": "Git checkpoint defers after an external source change",
+      "passed": true,
+      "milliseconds": 321
+    },
+    {
+      "name": "same-path image changes refresh pixels without touching page YAML",
+      "passed": true,
+      "milliseconds": 467
+    },
+    {
+      "name": "MCP initializes, exposes eight tools and writes through the active session",
+      "passed": true,
+      "milliseconds": 2905
+    },
+    {
+      "name": "PNG, editable PPTX and PDF export without source changes",
+      "passed": true,
+      "milliseconds": 8327
+    },
+    {
+      "name": "local API rejects cross-origin writes and asset path escape",
+      "passed": true,
+      "milliseconds": 4
+    }
+  ],
+  "browserErrors": [],
+  "redaction": "The Windows user profile and random temporary directory are replaced; test results are unchanged."
+}

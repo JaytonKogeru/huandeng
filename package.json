@@ -1,5 +1,5 @@
 {
-  "name": "open-slide-monorepo",
+  "name": "huandeng-workspace",
   "private": true,
   "version": "0.0.0",
   "packageManager": "pnpm@10.17.0",
@@ -23,7 +23,8 @@
     "cli": "pnpm --filter @open-slide/cli",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "turbo run build --filter=@open-slide/core --filter=@open-slide/cli && changeset publish"
+    "release": "turbo run build --filter=@open-slide/core --filter=@open-slide/cli && changeset publish",
+    "huandeng": "node packages/core/huandeng.js"
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.7",

@@ -1,0 +1,28 @@
+{
+  "platform": "win32",
+  "node": "v22.21.0",
+  "checkedAt": "2026-11-07T02:54:12.091063+00:00",
+  "unit": {
+    "passed": true,
+    "files": 7,
+    "tests": 84,
+    "passedTests": 83,
+    "failedTests": 0,
+    "skippedTests": 1,
+    "skipReason": "A POSIX executable-bit hook test does not apply to Windows."
+  },
+  "coreBuild": {
+    "exitCode": 0
+  },
+  "coreTypecheck": {
+    "exitCode": 0
+  },
+  "biome": {
+    "exitCode": 0,
+    "errors": 0
+  },
+  "environmentFixes": [
+    "Real Git subprocess tests use a 30-second per-test budget.",
+    "Repository text uses LF through .gitattributes; only unchanged upstream checkout text was normalized."
+  ]
+}

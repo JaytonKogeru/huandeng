@@ -1,0 +1,10 @@
+# Huandeng development fixture — no research data
+title: 幻灯 · 用证据讲述
+size: [960, 540]
+pages:
+  - pages/opening.page
+  - pages/evidence.page
+  - pages/identities.page
+theme:
+  fontFamily: Arial
+customProjectField: preserve-this-field

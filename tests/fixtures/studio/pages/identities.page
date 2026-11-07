@@ -1,0 +1,23 @@
+elements:
+  - elementId: title
+    elementType: text
+    bounds: [56, 58, 850, 70]
+    content: {text: "页码会变，身份不会。", fontSize: 39, bold: true, color: "#18372d"}
+  - elementId: code
+    elementType: text
+    bounds: [56, 196, 355, 100]
+    content: {text: "K7M2", fontSize: 76, bold: true, color: "#b65936"}
+  - elementId: rule
+    elementType: shape
+    bounds: [435, 183, 3, 205]
+    shapeName: rect
+    fill: {type: solid, color: "#b5c1b4"}
+  - elementId: explanation
+    elementType: text
+    bounds: [475, 192, 401, 185]
+    content: {text: "插入、移动、改标题\n仍然可以准确指向同一页。\n\n人与 Agent 共用一个文档。", fontSize: 24, color: "#33463b"}
+  - elementId: footer
+    elementType: text
+    bounds: [58, 462, 800, 27]
+    content: {text: "Huandeng Editor  ·  Huandeng Frame  ·  Huandeng Plugin", fontSize: 15, color: "#667268"}
+notes: "试着把第一页移动到最后，再通过 K7M2 找回它。"

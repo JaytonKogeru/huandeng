@@ -62,6 +62,7 @@ export type CreateViteConfigOptions = {
 export async function createViteConfig(opts: CreateViteConfigOptions): Promise<InlineConfig> {
   const userCwd = path.resolve(opts.userCwd);
   const config = opts.config ?? (await loadUserConfig(userCwd));
+  const pptdMode = Boolean(process.env.HUANDENG_DECK);
   const slidesDir = config.slidesDir ?? 'slides';
   const themesDir = config.themesDir ?? 'themes';
   const assetsDir = config.assetsDir ?? 'assets';
@@ -80,7 +81,7 @@ export async function createViteConfig(opts: CreateViteConfigOptions): Promise<I
       tailwindcss(),
       openSlidePlugin({ userCwd, config, coreVersion: CORE_VERSION }),
       themesPlugin({ userCwd, config }),
-      designPlugin({ userCwd }),
+      ...(pptdMode ? [] : [designPlugin({ userCwd })]),
       apiPlugin({
         userCwd,
         slidesDir,
@@ -88,9 +89,13 @@ export async function createViteConfig(opts: CreateViteConfigOptions): Promise<I
         coreVersion: CORE_VERSION,
         agentEnabled: config.agent?.enabled ?? true,
       }),
-      notesPlugin({ userCwd, slidesDir }),
-      currentPlugin({ userCwd, slidesDir }),
-      serverInfoPlugin({ userCwd }),
+      ...(pptdMode
+        ? []
+        : [
+            notesPlugin({ userCwd, slidesDir }),
+            currentPlugin({ userCwd, slidesDir }),
+            serverInfoPlugin({ userCwd }),
+          ]),
     ],
     resolve: {
       alias: {
@@ -140,7 +145,17 @@ export async function createViteConfig(opts: CreateViteConfigOptions): Promise<I
     server: {
       port: config.port ?? 5173,
       ...(config.allowedHosts !== undefined ? { allowedHosts: config.allowedHosts } : {}),
-      fs: { allow: [APP_ROOT, ...RUNTIME_ASSET_ROOTS, userCwd, slidesAbs, themesAbs, assetsAbs] },
+      fs: {
+        allow: [
+          APP_ROOT,
+          path.join(PKG_ROOT, 'src', 'pptd'),
+          ...RUNTIME_ASSET_ROOTS,
+          userCwd,
+          slidesAbs,
+          themesAbs,
+          assetsAbs,
+        ],
+      },
     },
     build: {
       outDir: path.resolve(userCwd, 'dist'),

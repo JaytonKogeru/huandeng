@@ -1,4 +1,11 @@
-import { type CSSProperties, type ReactNode, useLayoutEffect, useRef, useState } from 'react';
+import {
+  type CSSProperties,
+  type ReactNode,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react';
 import { cn } from '@/lib/utils';
 import { type DesignSystem, designToCssVars } from '../lib/design';
 import { CANVAS_HEIGHT, CANVAS_WIDTH } from '../lib/sdk';
@@ -11,6 +18,9 @@ type Props = {
   flat?: boolean;
   freezeMotion?: boolean;
   design?: DesignSystem;
+  width?: number;
+  height?: number;
+  onScaleChange?: (scale: number) => void;
 };
 
 export function SlideCanvas({
@@ -20,6 +30,9 @@ export function SlideCanvas({
   flat = false,
   freezeMotion = false,
   design,
+  width = CANVAS_WIDTH,
+  height = CANVAS_HEIGHT,
+  onScaleChange,
 }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [fitScale, setFitScale] = useState<number | null>(null);
@@ -31,21 +44,27 @@ export function SlideCanvas({
     const measure = () => {
       const { width, height } = el.getBoundingClientRect();
       if (width === 0 || height === 0) return;
-      setFitScale(Math.min(width / CANVAS_WIDTH, height / CANVAS_HEIGHT));
+      setFitScale(Math.min(width / canvasWidth, height / canvasHeight));
     };
     // Measure synchronously before paint so the fitted scale is applied on the
     // first visible frame — otherwise the canvas flashes at full size.
+    const canvasWidth = width;
+    const canvasHeight = height;
     measure();
     const ro = new ResizeObserver(measure);
     ro.observe(el);
     return () => ro.disconnect();
-  }, [scale]);
+  }, [scale, width, height]);
 
   const measured = scale ?? fitScale;
   const s = measured ?? 1;
-  const scaledW = CANVAS_WIDTH * s;
-  const scaledH = CANVAS_HEIGHT * s;
+  const scaledW = width * s;
+  const scaledH = height * s;
   const designVars = design ? designToCssVars(design) : undefined;
+
+  useEffect(() => {
+    if (measured !== null) onScaleChange?.(measured);
+  }, [measured, onScaleChange]);
 
   return (
     <div ref={containerRef} className={cn('relative h-full w-full', flat && 'overflow-hidden')}>
@@ -81,8 +100,8 @@ export function SlideCanvas({
           data-osd-freeze-motion={freezeMotion ? '' : undefined}
           style={
             {
-              width: CANVAS_WIDTH,
-              height: CANVAS_HEIGHT,
+              width,
+              height,
               transform: `scale(${s})`,
               transformOrigin: 'top left',
               ...(designVars ?? {}),

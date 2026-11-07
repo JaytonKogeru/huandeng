@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "deckId": "00000000-0000-4000-8000-000000000100",
+  "entry": "deck.pptd",
+  "designPolicy": "huandeng-human-scientific-v1",
+  "slides": {
+    "00000000-0000-4000-8000-000000000001": {
+      "shortCode": "K7M2",
+      "path": "pages/opening.page",
+      "state": "active",
+      "designIntent": {
+        "purpose": "介绍人与 Agent 共用一个有作者意图的文档",
+        "keep": ["保留原图比例", "保留有意留白，不自动套均匀卡片"]
+      },
+      "elementRoles": {},
+      "components": {},
+      "lastAuthorReview": null
+    },
+    "00000000-0000-4000-8000-000000000002": {
+      "shortCode": "Q9R4",
+      "path": "pages/evidence.page",
+      "state": "active",
+      "designIntent": {
+        "purpose": "保留证据图比例与左密右疏布局",
+        "keep": ["保留原图比例", "保留有意留白，不自动套均匀卡片"]
+      },
+      "elementRoles": {},
+      "components": {},
+      "lastAuthorReview": null
+    },
+    "00000000-0000-4000-8000-000000000003": {
+      "shortCode": "B6XA",
+      "path": "pages/identities.page",
+      "state": "active",
+      "designIntent": {
+        "purpose": "说明永久身份和页码的区别",
+        "keep": ["保留原图比例", "保留有意留白，不自动套均匀卡片"]
+      },
+      "elementRoles": {},
+      "components": {},
+      "lastAuthorReview": null
+    }
+  }
+}

@@ -1,0 +1,326 @@
+import { randomUUID } from 'node:crypto';
+import { existsSync } from 'node:fs';
+import fs from 'node:fs/promises';
+import type { ServerResponse } from 'node:http';
+import path from 'node:path';
+import { type Browser, chromium, type Page } from 'playwright';
+import { runtimeRoot } from './client.ts';
+import { buildPptdPdf, buildPptdPptx } from './export.ts';
+import { imageDimensions } from './export-images.ts';
+import { type DeckSnapshot, PptdError } from './types.ts';
+
+export function mimeType(file: string) {
+  return (
+    (
+      {
+        '.svg': 'image/svg+xml',
+        '.png': 'image/png',
+        '.jpg': 'image/jpeg',
+        '.jpeg': 'image/jpeg',
+        '.gif': 'image/gif',
+        '.webp': 'image/webp',
+        '.woff2': 'font/woff2',
+        '.woff': 'font/woff',
+        '.ttf': 'font/ttf',
+        '.pdf': 'application/pdf',
+        '.json': 'application/json',
+        '.pptx': 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+      } as Record<string, string>
+    )[path.extname(file).toLowerCase()] ?? 'application/octet-stream'
+  );
+}
+
+export async function readProjectAsset(root: string, source: string): Promise<Buffer> {
+  if (source.startsWith('data:')) {
+    const match = source.match(
+      /^data:image\/(?:png|jpeg|gif|webp|svg\+xml);base64,([A-Za-z0-9+/=\r\n]+)$/,
+    );
+    if (!match || match[1].length > 48 * 1024 * 1024)
+      throw new PptdError('INVALID_REQUEST', 'Unsupported embedded asset.');
+    return Buffer.from(match[1], 'base64');
+  }
+  if (/^[a-z][a-z0-9+.-]*:/i.test(source) || source.startsWith('//') || source.includes('\0')) {
+    throw new PptdError('PATH_OUTSIDE_PROJECT', 'Assets must be local project files.');
+  }
+  const normalized = source.replace(/\\/g, '/').replace(/^\.\//, '').replace(/^\//, '');
+  if (!/^(?:media|assets)\//.test(normalized)) {
+    throw new PptdError('PATH_OUTSIDE_PROJECT', 'Only files in media/ or assets/ are served.');
+  }
+  const file = await fs.realpath(path.resolve(root, normalized));
+  const relative = path.relative(await fs.realpath(root), file);
+  if (relative.startsWith('..') || path.isAbsolute(relative))
+    throw new PptdError('PATH_OUTSIDE_PROJECT', 'Asset resolves outside the project.');
+  const stats = await fs.stat(file);
+  if (!stats.isFile() || stats.size > 64 * 1024 * 1024)
+    throw new PptdError('INVALID_REQUEST', 'Asset is not a file or exceeds 64 MiB.');
+  return fs.readFile(file);
+}
+
+interface FrozenExport {
+  snapshot: DeckSnapshot;
+  assets: Map<string, Buffer>;
+  createdAt: number;
+  bytes?: Uint8Array;
+  format?: string;
+  fileName?: string;
+  report?: unknown;
+}
+
+function assetSources(value: unknown, found = new Set<string>()): Set<string> {
+  if (
+    typeof value === 'string' &&
+    (/^(?:\.?\/)?(?:media|assets)\//.test(value.replace(/\\/g, '/')) ||
+      value.startsWith('data:image/'))
+  ) {
+    found.add(value);
+  } else if (Array.isArray(value)) {
+    for (const item of value) assetSources(item, found);
+  } else if (value && typeof value === 'object') {
+    for (const item of Object.values(value)) assetSources(item, found);
+  }
+  return found;
+}
+
+async function openBrowser(): Promise<Browser> {
+  const candidates = [
+    process.env.HUANDENG_BROWSER,
+    process.platform === 'win32'
+      ? path.join(
+          process.env['PROGRAMFILES(X86)'] ?? 'C:/Program Files (x86)',
+          'Microsoft/Edge/Application/msedge.exe',
+        )
+      : undefined,
+    process.platform === 'win32'
+      ? 'C:/Program Files/Google/Chrome/Application/chrome.exe'
+      : '/usr/bin/chromium',
+  ].filter((candidate): candidate is string => !!candidate);
+  const executablePath = candidates.find((candidate) => existsSync(candidate));
+  return chromium.launch({
+    ...(executablePath ? { executablePath } : {}),
+    headless: true,
+    args: process.platform === 'linux' ? ['--no-sandbox', '--disable-dev-shm-usage'] : [],
+  });
+}
+
+export class ExportManager {
+  private jobs = new Map<string, FrozenExport>();
+
+  constructor(private root: string) {}
+
+  async respond(id: string, kind: string, params: URLSearchParams, res: ServerResponse) {
+    const job = this.jobs.get(id);
+    if (!job || Date.now() - job.createdAt > 15 * 60 * 1000) {
+      res.statusCode = 404;
+      return res.end('Export snapshot expired.');
+    }
+    if (kind === 'snapshot') {
+      res.setHeader('content-type', 'application/json');
+      return res.end(JSON.stringify(job.snapshot));
+    }
+    if (kind === 'asset') {
+      const source = params.get('path') ?? '';
+      const bytes = job.assets.get(source);
+      if (!bytes) {
+        res.statusCode = 404;
+        return res.end('Asset was not part of the frozen snapshot.');
+      }
+      res.setHeader('content-type', mimeType(source));
+      return res.end(bytes);
+    }
+    if (kind === 'report') {
+      res.setHeader('content-type', 'application/json');
+      return res.end(JSON.stringify(job.report, null, 2));
+    }
+    if (kind === 'download' && job.bytes) {
+      res.setHeader('content-type', mimeType(job.fileName ?? ''));
+      res.setHeader(
+        'content-disposition',
+        `attachment; filename*=UTF-8''${encodeURIComponent(job.fileName ?? 'export')}`,
+      );
+      return res.end(job.bytes);
+    }
+    res.statusCode = 404;
+    res.end('Export not ready.');
+  }
+
+  async create(
+    snapshot: DeckSnapshot,
+    options: {
+      format: 'pptx' | 'pdf' | 'png';
+      pageId?: string;
+      serverUrl: string;
+    },
+  ) {
+    const id = randomUUID();
+    const frozen = structuredClone(snapshot);
+    if (options.format === 'png') {
+      const requested =
+        frozen.pages.find(
+          (page) =>
+            page.pageId === options.pageId ||
+            page.shortCode?.toLowerCase() === options.pageId?.toLowerCase(),
+        ) ?? (!options.pageId ? frozen.pages[0] : undefined);
+      if (!requested) throw new PptdError('TARGET_NOT_FOUND', 'Page to render was not found.');
+      frozen.pages = [requested];
+    }
+    if (!frozen.pages.length)
+      throw new PptdError('INVALID_DOCUMENT', 'There are no active pages to export.');
+    if (frozen.diagnostics.some((diagnostic) => diagnostic.severity === 'error')) {
+      throw new PptdError('INVALID_DOCUMENT', 'Resolve document diagnostics before exporting.', {
+        diagnostics: frozen.diagnostics,
+      });
+    }
+    const assets = new Map<string, Buffer>();
+    for (const source of assetSources({ manifest: frozen.manifest, pages: frozen.pages })) {
+      assets.set(source, await readProjectAsset(this.root, source));
+    }
+    const job: FrozenExport = {
+      snapshot: frozen,
+      assets,
+      createdAt: Date.now(),
+      format: options.format,
+    };
+    this.jobs.set(id, job);
+    for (const [key, value] of this.jobs) {
+      if (Date.now() - value.createdAt > 15 * 60 * 1000) this.jobs.delete(key);
+    }
+    let browser: Browser | undefined;
+    let browserPage: Page | undefined;
+    const ensurePage = async () => {
+      if (browserPage) return browserPage;
+      browser = await openBrowser();
+      browserPage = await browser.newPage({
+        viewport: { width: Math.ceil(frozen.size[0] + 40), height: Math.ceil(frozen.size[1] + 40) },
+        deviceScaleFactor: 2,
+      });
+      await browserPage.goto(`${options.serverUrl}/huandeng/export/${id}`, {
+        waitUntil: 'networkidle',
+      });
+      await browserPage.waitForFunction(
+        () => (window as unknown as Record<string, unknown>).__HUANDENG_EXPORT_READY__ === true,
+        undefined,
+        { timeout: 45000 },
+      );
+      const issues = await browserPage.locator('[data-hd-export-error]').allTextContents();
+      if (issues.length)
+        throw new PptdError('INVALID_DOCUMENT', 'The renderer reported export problems.', {
+          issues,
+        });
+      return browserPage;
+    };
+    try {
+      if (options.format === 'pptx') {
+        const exported = await buildPptdPptx(frozen, {
+          resolveAsset: async (source) => {
+            const bytes = assets.get(source);
+            if (!bytes) throw new Error(`Asset was not part of this export snapshot: ${source}`);
+            return { bytes, mimeType: mimeType(source) };
+          },
+          rasterizeElement: async (pageSnapshot, element) => {
+            const page = await ensurePage();
+            const frame = page.locator(
+              `[data-hd-export-page=${JSON.stringify(pageSnapshot.pageId)}]`,
+            );
+            const node = frame
+              .locator(`[data-hd-element-id=${JSON.stringify(element.elementId)}]`)
+              .first();
+            if (
+              (await node.getAttribute('data-hd-unsupported')) === 'true' ||
+              (await node.locator('[data-hd-unsupported]').count())
+            ) {
+              throw new Error('No reliable renderer for this object.');
+            }
+            const [box, frameBox] = await Promise.all([node.boundingBox(), frame.boundingBox()]);
+            if (!box || !frameBox) throw new Error('The rendered object has no measurable bounds.');
+            const bytes = await node.screenshot({ type: 'png', omitBackground: true });
+            const dimensions = imageDimensions(bytes, 'png');
+            if (!dimensions) throw new Error('The browser returned an invalid PNG.');
+            return {
+              bytes,
+              ...dimensions,
+              bounds: [box.x - frameBox.x, box.y - frameBox.y, box.width, box.height] as [
+                number,
+                number,
+                number,
+                number,
+              ],
+            };
+          },
+        });
+        job.bytes = exported.bytes;
+        job.report = exported.report;
+      } else {
+        const page = await ensurePage();
+        if (options.format === 'pdf') {
+          const unsupported = await page.locator('[data-hd-unsupported="true"]').allTextContents();
+          if (unsupported.length)
+            throw new PptdError(
+              'INVALID_DOCUMENT',
+              'Some objects have no reliable PDF representation.',
+              { unsupported },
+            );
+          const exported = await buildPptdPdf(frozen, {
+            renderPdf: async () => ({
+              bytes: await page.pdf({ printBackground: true, preferCSSPageSize: true }),
+            }),
+          });
+          job.bytes = exported.bytes;
+          job.report = exported.report;
+        } else {
+          job.bytes = await page
+            .locator('[data-hd-export-page]')
+            .first()
+            .screenshot({ type: 'png' });
+        }
+        if (options.format === 'png') {
+          const unsupported = await page
+            .locator('[data-hd-unsupported="true"]')
+            .evaluateAll((nodes) =>
+              nodes.map((node) => ({
+                pageId: node.closest('[data-hd-export-page]')?.getAttribute('data-hd-export-page'),
+                elementId: node.closest('[data-hd-element-id]')?.getAttribute('data-hd-element-id'),
+                message: node.textContent ?? 'Unsupported object',
+              })),
+            );
+          job.report = {
+            complete: unsupported.length === 0,
+            unsupported,
+            format: options.format,
+            source: 'frozen-pptd',
+            deckId: frozen.deckId,
+            pages: frozen.pages.map((item) => ({
+              pageId: item.pageId,
+              shortCode: item.shortCode,
+              revision: item.renderRevision,
+            })),
+          };
+        }
+      }
+      const base = path.basename(frozen.entry, path.extname(frozen.entry));
+      job.fileName =
+        options.format === 'png'
+          ? `${frozen.pages[0].shortCode ?? frozen.pages[0].pageId}.png`
+          : `${base}.${options.format}`;
+      const directory =
+        frozen.writable && options.format !== 'png'
+          ? path.join(this.root, 'Exports')
+          : path.join(runtimeRoot(), 'exports', frozen.deckId);
+      await fs.mkdir(directory, { recursive: true });
+      const destination = path.join(directory, job.fileName);
+      const temporary = `${destination}.tmp-${id}`;
+      if (!job.bytes) throw new Error('Export did not produce a file.');
+      await fs.writeFile(temporary, job.bytes);
+      await fs.rename(temporary, destination);
+      await fs.writeFile(`${destination}.report.json`, `${JSON.stringify(job.report, null, 2)}\n`);
+      return {
+        url: `/__pptd/exports/${id}/download`,
+        reportUrl: `/__pptd/exports/${id}/report`,
+        fileName: job.fileName,
+        file: destination,
+        report: job.report,
+      };
+    } finally {
+      await browser?.close();
+    }
+  }
+}

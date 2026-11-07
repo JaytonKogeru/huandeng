@@ -1,0 +1,22 @@
+elements:
+  - elementId: title
+    elementType: text
+    bounds: [54, 38, 840, 65]
+    content: {text: "两幅图，各自保留自己的节奏", fontSize: 34, color: "#18372d", bold: true}
+  - elementId: left-figure
+    elementType: image
+    bounds: [56, 136, 540, 267]
+    src: "media/figure.png"
+  - elementId: right-figure
+    elementType: image
+    bounds: [654, 171, 238, 184]
+    src: "media/detail.png"
+  - elementId: caption-left
+    elementType: text
+    bounds: [56, 424, 540, 65]
+    content: {text: "A  主图占据更多空间。\n画布不强迫所有信息同样大。", fontSize: 18, color: "#33463b"}
+  - elementId: caption-right
+    elementType: text
+    bounds: [654, 374, 239, 84]
+    content: {text: "B  局部细节\n图注与原始素材可单独维护。", fontSize: 18, color: "#33463b"}
+notes: "设计意图：左密右疏，保留两张图的位置及比例。"

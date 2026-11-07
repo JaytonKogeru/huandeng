@@ -13,5 +13,6 @@
     "typecheck": {
       "dependsOn": ["^build"]
     }
-  }
+  },
+  "globalPassThroughEnv": ["HUANDENG_*"]
 }

@@ -1,0 +1,32 @@
+# Keep this comment when changing the title
+elements:
+  - elementId: chapter
+    elementType: text
+    bounds: [54, 35, 680, 24]
+    content: {text: "HUANDENG  /  幻灯", fontSize: 13, color: "#647064", bold: true}
+  - elementId: title
+    elementType: text
+    bounds: [52, 91, 540, 94]
+    content: {text: "让内容决定布局。", fontSize: 43, color: "#18372d", bold: true}
+    sourceNote: retain-author-intent
+  - elementId: subtitle
+    elementType: text
+    bounds: [57, 202, 340, 85]
+    content: {text: "这一页可以继续生长。\n改动一个对象，保存同一个文件。", fontSize: 22, color: "#52615a"}
+  - elementId: main-figure
+    elementType: image
+    bounds: [402, 206, 502, 245]
+    src: "media/figure.png"
+  - elementId: annotation
+    elementType: text
+    bounds: [57, 374, 270, 48]
+    rotation: -2
+    content: {text: "保留一点不对称，\n也保留作者的判断。", fontSize: 19, color: "#b65936"}
+  - elementId: caption
+    elementType: text
+    bounds: [404, 465, 490, 30]
+    content: {text: "开发样例 · 图形用于验证布局，不代表科学结论", fontSize: 12, color: "#667268"}
+notes: |
+  Huandeng Editor 开发样例。
+  选择对象、拖动、改字，然后观察原 .page 文件。
+customPageField: {doNotRewrite: true}

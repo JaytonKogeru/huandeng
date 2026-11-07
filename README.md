@@ -1,80 +1,69 @@
-<img width="1280" height="640" alt="open-slide" src="https://github.com/user-attachments/assets/da535284-f7a9-4834-b281-f9ac6fe416e8" />
+# Huandeng Editor · 幻灯编辑器
 
-# open-slide
+让人与 Agent 在同一份幻灯文档上工作。
 
-The slide framework built for agents. Describe a deck, and your coding agent writes it as React. open-slide handles the canvas, scaling, navigation, hot reload, editing, and present mode.
+Huandeng Editor 基于 OpenSlide 的 React 编辑环境，新增 PPTD 文档后端。页面用永久 ID 和四位短码定位；内容保存在原来的独立 .page 文件中。标题、位置改变，页面身份不变。Huandeng Frame 记录叙事目的、证据角色和作者希望保留的设计。Huandeng Plugin 提供与可视化编辑器共用的 Agent 接口。
 
-Every page is a React component rendered on a fixed 1920 × 1080 canvas.
+## 启动
 
-```bash
-npx @open-slide/cli init my-deck
-cd my-deck
-npm run dev
-```
+需要 Node 22.12+ 和 pnpm 10.17.0。固定上游和依赖版本记录在 docs/SPEC.md 及锁文件。
 
-[Documentation](https://open-slide.dev/docs) · [Changelog](https://open-slide.dev/changelog)
+    corepack pnpm install --frozen-lockfile
+    corepack pnpm --filter @open-slide/core build
+    corepack pnpm huandeng open tests/fixtures/studio/deck.pptd
 
-## Agent panel
+Windows 可以运行 Start-Huandeng.cmd。首次使用打开仓库内的开发样例。要打开自己的文件：
 
-Connect the Claude Code or Codex CLI you already use and drive it from the browser. Press `A` on any slide to open the panel.
+    node packages/core/huandeng.js open "D:/MyProject/Slides/deck.pptd"
 
-![The agent panel beside the canvas while Claude Code edits the open deck](.github/assets/agent-panel.webp)
+只读查看不会初始化身份或写入文档：
 
-- **Draft a deck.** Click New deck on the home page and describe it. The agent writes it page by page while the canvas follows along.
-- **Edit what you see.** The current slide, page, and selected element go along with every message, so "make this bigger" just works.
-- **Apply comments** with one click from the comment bar.
-- **Uses your existing login.** The SDK installs into the workspace the first time you open the panel. No API keys to configure.
+    node packages/core/huandeng.js open "D:/MyProject/Slides/deck.pptd" --read-only
 
-Prefer the terminal? The bundled skills (`/create-slide`, `/apply-comments`, `/create-theme`) work with any coding agent, including Claude Code, Codex, Cursor, and others.
+默认地址为 http://127.0.0.1:4850/huandeng。服务只监听本机。PNG/PDF 导出需要 Chromium、Chrome 或 Edge；Windows 优先使用已安装的 Edge，Linux 使用 /usr/bin/chromium，也可设 HUANDENG_BROWSER。
 
-## Comment mode
+## 文档与历史
 
-Press `C`, click an element or drag across a region, and leave a note. Notes are saved as `@slide-comment` markers in the source, and the agent applies them all in one pass.
+- deck.pptd 决定页序。
+- pages/*.page 保存原始内容；元素数组决定叠放顺序。
+- .huandeng/project.json 保存稳定身份、短码及设计注记。
+- media/、assets/ 保留素材。
+- Exports/ 保存当前交付文件及导出报告。
+- 操作历史、恢复日志和写入锁位于本机应用数据目录。它们不复制整套活动 deck。
 
-![Comment mode with pinned notes beside the slide](.github/assets/comment-mode.webp)
+打开可写文档会初始化缺失的身份文件；不会仅因打开而重写旧页面。普通文本或位置修改只保存目标页面。删除页面保留可恢复文件和短码；复制页面会分配新的身份。
 
-## Present mode
+GUI、CLI 和 MCP 使用同一个本地文档服务。请求携带读取时的版本；旧请求会报冲突，不自动覆盖新内容。任意外部程序直接写文件不属于这个协作协议；同一页有未保存草稿时，编辑器会保留草稿并提示冲突。
 
-Fullscreen playback with keyboard navigation, and a presenter view with the next slide, speaker notes, and a timer.
+## Agent 使用
 
-![Presenter view with the current slide, next slide, speaker notes, and timer](.github/assets/presenter.webp)
+先打开编辑器，再连接当前文档：
 
-## Also included
+    node packages/core/huandeng.js --entry tests/fixtures/studio/deck.pptd inspect
+    node packages/core/huandeng.js --entry tests/fixtures/studio/deck.pptd inspect K7M2
+    node packages/core/huandeng.js --entry tests/fixtures/studio/deck.pptd apply transaction.json
+    node packages/core/huandeng.js --entry tests/fixtures/studio/deck.pptd render K7M2
+    node packages/core/huandeng.js --entry tests/fixtures/studio/deck.pptd history
+    node packages/core/huandeng.js --entry tests/fixtures/studio/deck.pptd export pptx
 
-- Visual editor with drag, resize, alignment guides, and inline text editing
-- Themes, page transitions, step-by-step reveals, and shared-element morphs
-- Assets manager with brand logo search via [svgl](https://svgl.app) and Google Fonts
-- Export to static HTML, PDF, and PPTX
-- Static build that deploys to Vercel, Cloudflare Pages, Netlify, or any static host
+事务 JSON 使用 inspect 实际返回的 deckId、pageId 和版本。请求结构见 docs/SPEC.md。一个请求 ID 只对应一次确定的修改，重试时保持请求 ID 和全部内容相同。版本冲突后重新读取和检查差异。页序或身份/组件元数据变化也必须提供相应 manifest/metadata 版本。
 
-## Repository
+MCP 配置见 plugins/huandeng/mcp.example.json。网页 ChatGPT 可通过已有 DC-WALT 调用同一 CLI；无需启动另一个模型或公开本地服务。
 
-| Path | Description |
-| --- | --- |
-| [`packages/core`](packages/core) | `@open-slide/core`: runtime, Vite plugin, and the `open-slide` CLI |
-| [`packages/cli`](packages/cli) | `@open-slide/cli`: the `init` scaffolder and project template |
-| [`apps/demo`](apps/demo) | Local workspace for developing the framework |
-| [`apps/web`](apps/web) | Website and docs |
+## 科学内容和设计
 
-```bash
-pnpm install
-pnpm dev         # run the demo against local core
-pnpm build       # build all packages
-pnpm typecheck
-pnpm check       # biome
-pnpm test
-```
+开发样例图形用于软件验证，不是研究结果。Agent 不得凭空补数据、改实验标签、替换原图或制造作者批准。先读页面的 designIntent、素材来源及角色，再局部修改。允许有意的不对称、疏密变化和留白。
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request.
+三个固定槽位 recipe 用普通 PPTD 对象保存结果。手动调整过的几何、裁切或字体成为覆盖项，再次应用 recipe 尊重这些覆盖。删掉的槽位不会悄悄复活。
 
-## Support
+## 开发与验证
 
-<a href="https://vercel.com/open-source-program"><img alt="Vercel OSS Program" src="https://vercel.com/oss/program-badge-2026.svg" /></a>
+    corepack pnpm --filter @open-slide/core typecheck
+    corepack pnpm exec vitest run --project unit packages/core/src/pptd
+    corepack pnpm check
 
-If open-slide is useful to you, consider supporting development:
+实际验证和未实现边界见 docs/IMPLEMENTATION.md。实施合同见 docs/SPEC.md，工程接续入口是 WEBCHAT.md。
 
-<a href="https://buymeacoffee.com/1weiho"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me a Coffee" height="40"></a>
+## 来源与许可
 
-## License
-
-MIT © [Yiwei Ho](https://github.com/1weiho)
+基于 [OpenSlide](https://github.com/open-slide/open-slide) commit 327dd09bcd530eb97647fc33fa67e99f8137d860，MIT 许可。保留原作者声明和上游包名作为兼容标识。上游原始说明见 docs/UPSTREAM_README.md。Huandeng 是本工程的产品命名，不表示上游官方项目或官方 PPTD 标准。

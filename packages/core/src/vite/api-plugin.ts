@@ -6,6 +6,7 @@ import { type ApiPluginOptions, makeContext } from './routes/context.ts';
 import { registerEditRoutes } from './routes/edit.ts';
 import { registerFolderRoutes } from './routes/folders.ts';
 import { registerGfontsRoutes } from './routes/gfonts.ts';
+import { registerPptdRoutes } from './routes/pptd.ts';
 import { registerRestartRoutes } from './routes/restart.ts';
 import { registerSlideRoutes } from './routes/slides.ts';
 import { registerSvglRoutes } from './routes/svgl.ts';
@@ -19,8 +20,11 @@ export function apiPlugin(opts: ApiPluginOptions): Plugin {
   return {
     name: 'open-slide:api',
     apply: 'serve',
-    configureServer(server) {
+    async configureServer(server) {
       const ctx = makeContext(opts);
+      await registerPptdRoutes(server, ctx);
+      // Legacy TSX mutations must not bypass the PPTD writer and revision checks.
+      if (process.env.HUANDENG_DECK) return;
       registerWatchers(server, ctx);
       registerEditRoutes(server, ctx);
       registerCommentRoutes(server, ctx);

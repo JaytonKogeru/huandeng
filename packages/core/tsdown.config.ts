@@ -6,6 +6,7 @@ export default defineConfig({
     'cli/bin': 'src/cli/bin.ts',
     'vite/index': 'src/vite/index.ts',
     'locale/index': 'src/locale/index.ts',
+    'huandeng/bin': 'src/pptd/cli.ts',
   },
   format: 'esm',
   fixedExtension: false,
