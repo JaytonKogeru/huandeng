@@ -181,10 +181,11 @@ async function domCounts() {
 
 function summarize(values) {
   const sorted = [...values].sort((a, b) => a - b);
+  const middle = Math.floor(sorted.length / 2);
   return {
     count: values.length,
     minMs: sorted[0],
-    medianMs: sorted[Math.floor(sorted.length / 2)],
+    medianMs: sorted.length % 2 === 0 ? (sorted[middle - 1] + sorted[middle]) / 2 : sorted[middle],
     maxMs: sorted.at(-1),
   };
 }

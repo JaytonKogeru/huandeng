@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "stage": "recovery-followup-code-gates",
+  "source": {
+    "baselineRuntimeRevision": "bf0aa1f6e87183578f924e86cfb6c53368ff638a",
+    "followupTransferSha256": "086f16abffbf44c40c3e0c3511760d12d0d370e5cfb6ee717f16d68bb034d29a",
+    "verifiedTransferredFiles": 6,
+    "validatedRuntimeRevision": "03a96957f854ab593400218102928d1feb3c86d0",
+    "revisionMappingEvidence": "The coordinating agent committed the verified source plus the follow-up transfer as this clean runtime revision before packaging."
+  },
+  "sanitization": "Only synthetic software checks, aggregate counts, timing and provenance are retained. Absolute paths, document content, per-file hashes and screenshots are excluded.",
+  "linux": {
+    "passed": true,
+    "rawReceipt": {
+      "localFile": ".verification/linux-unit-final-v05.json",
+      "sha256": "9a742a6e53e59a0ad8bb071f8080d7cdc1623f2954adc15a7dfb51f21cdc3c1d"
+    },
+    "startedAt": "2026-11-07T13:21:47.318000Z",
+    "unit": {
+      "files": 63,
+      "total": 800,
+      "passed": 800,
+      "failed": 0,
+      "skipped": 0
+    },
+    "typecheck": {
+      "passed": true
+    },
+    "coreAndEditorBuild": {
+      "passed": true
+    },
+    "changedFilesBiome": {
+      "passed": true,
+      "files": 6
+    },
+    "additionalCommandEvidence": "TypeScript/build and changed-file Biome results supplied by the coordinating agent."
+  },
+  "clientFocused": {
+    "passed": true,
+    "tests": 34,
+    "additionalCase": "An explicit RECOVERY_REQUIRED error and details survive repeated generic PENDING_RECOVERY snapshots until the next explicit recovery attempt or success."
+  },
+  "recoveryEventContract": "Changes to other pages, metadata or manifest observed during recovery remain external events, so scoped Git checkpoints defer rather than expanding the recovered transaction allowlist.",
+  "windows": {
+    "passed": true,
+    "rawReceipt": {
+      "localFile": ".verification/windows-unit-final-v05.json",
+      "environment": "THUG isolated worktree",
+      "sha256": "ce0d5b0d13d01ed83b62bd98ff7e56caab60de916885a3cc88978c312742cad3"
+    },
+    "startedAt": "2026-11-07T13:23:08.106Z",
+    "unit": {
+      "files": 63,
+      "total": 800,
+      "passed": 799,
+      "failed": 0,
+      "skipped": 1,
+      "skippedTests": [
+        {
+          "name": "scoped Git checkpoints does not treat a non-executable hook file as an enabled hook",
+          "status": "skipped"
+        }
+      ]
+    },
+    "typecheck": {
+      "passed": true
+    },
+    "coreAndEditorBuild": {
+      "passed": true
+    },
+    "biome": {
+      "passed": true,
+      "files": 569
+    },
+    "additionalCommandEvidence": "Windows TypeScript/build and Biome results supplied by the coordinating agent; logs remain in the isolated worktree."
+  },
+  "packagedAcceptance": {
+    "status": "pending"
+  },
+  "installation": {
+    "status": "pending"
+  }
+}

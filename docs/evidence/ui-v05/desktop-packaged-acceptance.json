@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "stage": "packaged-windows-acceptance",
+  "source": {
+    "runtimeRevision": "03a96957f854ab593400218102928d1feb3c86d0"
+  },
+  "build": {
+    "productVersion": "0.5.0",
+    "builtAt": "2026-11-07T13:26:12.5660629Z",
+    "sourceDirty": false
+  },
+  "runtime": {
+    "host": "actual packaged HUANDENG Editor executable",
+    "frontend": "compiled production bundle"
+  },
+  "rawReceipt": {
+    "localFile": ".verification/desktop-final-v05.json",
+    "sha256": "d32480416f218b337df8fc7a950f8ef598fbd676e80745573b4bd0d3f0b78725"
+  },
+  "sanitization": "Only synthetic software test results, layout geometry and provenance are retained. Absolute paths, document content and screenshots are excluded.",
+  "passed": true,
+  "timestamp": "2026-11-07T13:28:25.222Z",
+  "platform": "win32",
+  "node": "v22.21.0",
+  "electron": "38.7.2",
+  "fixture": {
+    "kind": "isolated synthetic project"
+  },
+  "checks": [
+    {
+      "name": "native Electron window opens the fixture with HUANDENG branding and external-agent interfaces",
+      "passed": true,
+      "milliseconds": 4433
+    },
+    {
+      "name": "external MCP records Story before editing Q9R4 and independently edits B6XA",
+      "passed": true,
+      "milliseconds": 2684
+    },
+    {
+      "name": "thumbnail history previews and restores an intermediate version without changing other files",
+      "passed": true,
+      "milliseconds": 1452
+    },
+    {
+      "name": "project tree displays real files and selects pages by stable identity",
+      "passed": true,
+      "milliseconds": 921
+    },
+    {
+      "name": "desktop restart reopens the last project and retains page history",
+      "passed": true,
+      "milliseconds": 5683
+    },
+    {
+      "name": "native New and Open dialogs create and reopen real PPTD projects through IPC",
+      "passed": true,
+      "milliseconds": 4569
+    },
+    {
+      "name": "the home screen lists recent projects and reopens the selected document",
+      "passed": true,
+      "milliseconds": 3188
+    }
+  ],
+  "rendererErrorCount": 0,
+  "execution": {
+    "exitCode": 0,
+    "evidenceKind": "Observed actual process completion supplied by the coordinating agent."
+  },
+  "note": "This is actual packaged-executable acceptance for the stated runtime. Prior development-host receipts retain their own identities; installation and large-project performance are separately verified."
+}

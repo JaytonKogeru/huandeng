@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "stage": "save-recovery-code-gates",
+  "source": {
+    "baselineRuntimeRevision": "80a83ee",
+    "repairTransferSha256": "5d1b1727ab07389434f048262c2c9afc5a2c32afd2607df63aa02a4514538448",
+    "verifiedTransferredFiles": 93,
+    "description": "The rejected packaged candidate plus the explicit save-recovery repair transfer; runtime commit and final packaged acceptance are recorded separately.",
+    "runtimeRevision": "bf0aa1f6e87183578f924e86cfb6c53368ff638a"
+  },
+  "sanitization": "Only software behavior, aggregate counts and provenance are retained. Research paths, titles, per-file inventories and hashes, document content and screenshots are excluded.",
+  "linux": {
+    "passed": true,
+    "rawReceipt": {
+      "localFile": ".verification/linux-unit-recovery-v05.json",
+      "sha256": "a76449e5f9c8308d9f829d0418c0f5dc24b19af0f41bc4b07832fcab87d4f510"
+    },
+    "startedAt": "2026-11-07T13:10:25.889000Z",
+    "unit": {
+      "files": 63,
+      "total": 796,
+      "passed": 796,
+      "failed": 0,
+      "skipped": 0
+    },
+    "biome": {
+      "passed": true,
+      "files": 569
+    },
+    "typecheck": {
+      "passed": true
+    },
+    "coreAndEditorBuild": {
+      "passed": true
+    },
+    "additionalCommandEvidence": "Core TypeScript/build and Biome results supplied by the coordinating agent."
+  },
+  "clientFocused": {
+    "passed": true,
+    "files": 1,
+    "tests": 33,
+    "newRecoveryCases": 10,
+    "evidenceKind": "Direct local execution by the client implementer; core TypeScript and Biome over the five client/UI files also passed.",
+    "coverage": [
+      "Original request and receipt identity across recovery",
+      "Typing after send, during read-only protection and during recovery",
+      "Structural previews and later-draft rebase without a false conflict",
+      "Third-state, invalid-document and network failure preserve pending work",
+      "Known receipt avoids duplicate mutation",
+      "External recovery clears only unowned pending state",
+      "Changed external page retains draft conflict",
+      "Undo receipt and history transition occur once",
+      "Recovery authentication and renewed token"
+    ]
+  },
+  "windows": {
+    "passed": true,
+    "rawReceipt": {
+      "localFile": ".verification/windows-unit-recovery-v05.json",
+      "environment": "THUG isolated worktree",
+      "sha256": "e545a39d2673a190f39940474386a39a6ecbd7f0c39da1edd2cdd1a3f559887f"
+    },
+    "startedAt": "2026-11-07T13:14:23.573Z",
+    "unit": {
+      "files": 63,
+      "total": 796,
+      "passed": 795,
+      "failed": 0,
+      "skipped": 1,
+      "skippedTests": [
+        {
+          "name": "scoped Git checkpoints does not treat a non-executable hook file as an enabled hook",
+          "status": "skipped"
+        }
+      ]
+    },
+    "biome": {
+      "passed": true,
+      "files": 569
+    },
+    "typecheck": {
+      "passed": true
+    },
+    "coreAndEditorBuild": {
+      "passed": true
+    },
+    "additionalCommandEvidence": "Core TypeScript/build and Biome results supplied by the coordinating agent; raw logs remain in the isolated worktree."
+  },
+  "packagedFaultInjection": {
+    "status": "pending"
+  },
+  "packagedPerformance": {
+    "status": "pending"
+  },
+  "installation": {
+    "status": "pending"
+  },
+  "followupStatus": "Subsequent diagnostic-priority and recovery-event-classification repairs require separate code and packaged acceptance; this first-repair receipt is preserved."
+}

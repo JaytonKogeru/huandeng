@@ -1,0 +1,749 @@
+{
+  "schemaVersion": 1,
+  "stage": "actual-packaged-performance",
+  "source": {
+    "runtimeRevision": "03a96957f854ab593400218102928d1feb3c86d0",
+    "build": {
+      "electronVersion": "38.7.2",
+      "desktopProtocol": 1,
+      "builtAt": "2026-11-07T13:26:12.5660629Z",
+      "sourceDirty": false,
+      "productVersion": "0.5.0",
+      "nodeLinker": "hoisted",
+      "product": "HUANDENG Editor",
+      "sourceRevision": "03a96957f854ab593400218102928d1feb3c86d0"
+    },
+    "executableSha256": "A8E3EAD90FB370DC8A560EC5E33EF1B76FF6845607E7E0238AA1F52E6AD1CECA",
+    "measurementScriptSha256": "109425F5095F0B3D69DDA2EB24C3FF88E85764A15F9C297B7DE1EC5C38AE43D4",
+    "sourceBindingReceipts": [
+      {
+        "localFile": ".verification/performance-v05/final-source-binding.json",
+        "sha256": "cd42e50f552d7cde0d97f8a7141ba7f7f9f50710de3b57ae2764eb11fb7e5146"
+      },
+      {
+        "localFile": ".verification/performance-v05/final-source-binding-after.json",
+        "sha256": "34c366954a54ba19a07d25bd20aa272023fdd9aefc303577850786688dad31d7"
+      }
+    ]
+  },
+  "sanitization": "Research paths, titles, original file lists, source file hashes, document content and screenshots are excluded. Raw receipt hashes identify the local private evidence without publishing it.",
+  "methodology": {
+    "project": "same 80-page private project, copied into an isolated temporary directory per run",
+    "process": "new Electron process with isolated profile and document runtime",
+    "filesystemCache": "not cleared; these are not OS-cold measurements",
+    "viewport": {
+      "width": 1600,
+      "height": 1000,
+      "devicePixelRatio": 1
+    },
+    "visual": "renderer keydown to MutationObserver observing object removal",
+    "persistence": "10 ms file polling, recorded separately from visual response and service acknowledgement",
+    "samplesPerRun": "5 comparable cycles; a separate fresh-process 20-cycle sustained run",
+    "summary": "Raw recorded summaries retained. Conventional medians computed from samples use the mean of the two middle values for even counts. The raw 20-cycle script used the upper middle value; it is not rewritten.",
+    "memory": "renderer and document service sampled at recorded stages; no long-duration leak claim",
+    "sourceChecks": "82 manifest, page and metadata files checked in each final benchmark. The earlier 970-file real-project acceptance is a separate scope.",
+    "cacheBoundary": "These are resident local copies with an uncleared OS filesystem cache, not OneDrive nonresident-file cold-start measurements."
+  },
+  "baselineRuns": [
+    {
+      "label": "before-v04",
+      "rawReceipt": {
+        "localFile": ".verification/performance-v05/before-v04.json",
+        "sha256": "f994a5db9a9e6bafa1046d8b8f5ec93599767ccb4844d4492f93d92a20d3408c"
+      },
+      "passed": true,
+      "timestamp": "2026-11-07T12:12:54.046Z",
+      "source": {
+        "releaseVersion": "0.4.0",
+        "runtimeRevision": "c2fede5f45aa7a41e853304f9907c2d17e6bf8a2"
+      },
+      "runtime": {
+        "host": "installed HUANDENG Editor EXE",
+        "frontend": "v0.4 runtime",
+        "packagedRelease": true
+      },
+      "platform": "win32",
+      "node": "v22.21.0",
+      "electron": "38.7.2",
+      "pageCount": 80,
+      "launchHandshakeMs": 1067.246799999999,
+      "firstWindowMs": 1067.5496000000003,
+      "canvasInteractiveMs": 27318.8478,
+      "initialDom": {
+        "totalNodes": 8962,
+        "thumbnails": 80,
+        "thumbnailRenderers": 80,
+        "allPageRenderers": 81,
+        "canvasElements": 4,
+        "pendingImages": 0,
+        "viewport": {
+          "width": 1600,
+          "height": 1000,
+          "devicePixelRatio": 1
+        }
+      },
+      "settledDom": {
+        "totalNodes": 8962,
+        "thumbnails": 80,
+        "thumbnailRenderers": 80,
+        "allPageRenderers": 81,
+        "canvasElements": 4,
+        "pendingImages": 0,
+        "viewport": {
+          "width": 1600,
+          "height": 1000,
+          "devicePixelRatio": 1
+        }
+      },
+      "finalDom": {
+        "totalNodes": 8962,
+        "thumbnails": 80,
+        "thumbnailRenderers": 80,
+        "allPageRenderers": 81,
+        "canvasElements": 4,
+        "pendingImages": 0,
+        "viewport": {
+          "width": 1600,
+          "height": 1000,
+          "devicePixelRatio": 1
+        }
+      },
+      "summary": {
+        "visual": {
+          "count": 5,
+          "minMs": 2351.2999999523163,
+          "medianMs": 2388.4000000953674,
+          "maxMs": 3697.0999999046326
+        },
+        "persistence": {
+          "count": 5,
+          "minMs": 924.5,
+          "medianMs": 930.699951171875,
+          "maxMs": 1123.5
+        },
+        "acknowledgement": {
+          "count": 5,
+          "minMs": 2892.5,
+          "medianMs": 2982.699951171875,
+          "maxMs": 4254.5
+        }
+      },
+      "memorySamples": [
+        {
+          "stage": "interactive",
+          "rendererWorkingSetKiB": 574140
+        },
+        {
+          "stage": "settled",
+          "rendererWorkingSetKiB": 573664
+        },
+        {
+          "stage": "after-five-insert-delete-pairs",
+          "rendererWorkingSetKiB": 1004420
+        }
+      ],
+      "originalUnchanged": true,
+      "rendererErrorCount": 0
+    },
+    {
+      "label": "before-v04-memory",
+      "rawReceipt": {
+        "localFile": ".verification/performance-v05/before-v04-memory.json",
+        "sha256": "14d9bbd2e740927ae0da64af0898f6dedff2091d61ba6037707415fe1b5a8956"
+      },
+      "passed": true,
+      "timestamp": "2026-11-07T12:24:34.567Z",
+      "source": {
+        "releaseVersion": "0.4.0",
+        "runtimeRevision": "c2fede5f45aa7a41e853304f9907c2d17e6bf8a2"
+      },
+      "runtime": {
+        "host": "installed HUANDENG Editor EXE",
+        "frontend": "v0.4 runtime",
+        "packagedRelease": true
+      },
+      "platform": "win32",
+      "node": "v22.21.0",
+      "electron": "38.7.2",
+      "pageCount": 80,
+      "launchHandshakeMs": 1005.7368000000006,
+      "firstWindowMs": 1006.0517,
+      "canvasInteractiveMs": 24124.1463,
+      "initialDom": {
+        "totalNodes": 8962,
+        "thumbnails": 80,
+        "thumbnailRenderers": 80,
+        "allPageRenderers": 81,
+        "canvasElements": 4,
+        "pendingImages": 0,
+        "viewport": {
+          "width": 1600,
+          "height": 1000,
+          "devicePixelRatio": 1
+        }
+      },
+      "settledDom": {
+        "totalNodes": 8962,
+        "thumbnails": 80,
+        "thumbnailRenderers": 80,
+        "allPageRenderers": 81,
+        "canvasElements": 4,
+        "pendingImages": 0,
+        "viewport": {
+          "width": 1600,
+          "height": 1000,
+          "devicePixelRatio": 1
+        }
+      },
+      "finalDom": {
+        "totalNodes": 8962,
+        "thumbnails": 80,
+        "thumbnailRenderers": 80,
+        "allPageRenderers": 81,
+        "canvasElements": 4,
+        "pendingImages": 0,
+        "viewport": {
+          "width": 1600,
+          "height": 1000,
+          "devicePixelRatio": 1
+        }
+      },
+      "summary": {
+        "visual": {
+          "count": 5,
+          "minMs": 2345.0999999046326,
+          "medianMs": 2393.600000143051,
+          "maxMs": 2433.7000000476837
+        },
+        "persistence": {
+          "count": 5,
+          "minMs": 901.39990234375,
+          "medianMs": 921.89990234375,
+          "maxMs": 944.199951171875
+        },
+        "acknowledgement": {
+          "count": 5,
+          "minMs": 2867.699951171875,
+          "medianMs": 2922.39990234375,
+          "maxMs": 2991.199951171875
+        }
+      },
+      "memorySamples": [
+        {
+          "stage": "interactive",
+          "rendererWorkingSetKiB": 575220,
+          "documentService": {
+            "workingSetKiB": 1045828,
+            "privateBytesKiB": 1963988,
+            "source": "Windows Get-Process"
+          }
+        },
+        {
+          "stage": "settled",
+          "rendererWorkingSetKiB": 574960,
+          "documentService": {
+            "workingSetKiB": 1045804,
+            "privateBytesKiB": 1963948,
+            "source": "Windows Get-Process"
+          }
+        },
+        {
+          "stage": "after-five-insert-delete-pairs",
+          "rendererWorkingSetKiB": 1047448,
+          "documentService": {
+            "workingSetKiB": 1140108,
+            "privateBytesKiB": 2094504,
+            "source": "Windows Get-Process"
+          }
+        }
+      ],
+      "originalUnchanged": true,
+      "rendererErrorCount": 0
+    }
+  ],
+  "packagedRuns": [
+    {
+      "label": "after-v05-packaged-final",
+      "passed": true,
+      "iterations": 5,
+      "timestamp": "2026-11-07T13:30:09.115Z",
+      "platform": "win32",
+      "node": "v22.21.0",
+      "electron": "38.7.2",
+      "pageCount": 80,
+      "launchHandshakeMs": 1036.6413999999995,
+      "firstWindowMs": 1036.8535999999995,
+      "canvasInteractiveMs": 5981.2967,
+      "initialDom": {
+        "totalNodes": 1734,
+        "thumbnails": 80,
+        "thumbnailRenderers": 7,
+        "allPageRenderers": 8,
+        "canvasElements": 4,
+        "pendingImages": 0,
+        "viewport": {
+          "width": 1600,
+          "height": 1000,
+          "devicePixelRatio": 1
+        }
+      },
+      "settledDom": {
+        "totalNodes": 1734,
+        "thumbnails": 80,
+        "thumbnailRenderers": 7,
+        "allPageRenderers": 8,
+        "canvasElements": 4,
+        "pendingImages": 0,
+        "viewport": {
+          "width": 1600,
+          "height": 1000,
+          "devicePixelRatio": 1
+        }
+      },
+      "finalDom": {
+        "totalNodes": 1734,
+        "thumbnails": 80,
+        "thumbnailRenderers": 7,
+        "allPageRenderers": 8,
+        "canvasElements": 4,
+        "pendingImages": 0,
+        "viewport": {
+          "width": 1600,
+          "height": 1000,
+          "devicePixelRatio": 1
+        }
+      },
+      "originalUnchanged": true,
+      "runtime": {
+        "host": "actual packaged HUANDENG Editor executable",
+        "frontend": "compiled production bundle",
+        "runtimeRevision": "03a96957f854ab593400218102928d1feb3c86d0"
+      },
+      "rawReceipt": {
+        "localFile": ".verification/performance-v05/after-v05-packaged-final.json",
+        "sha256": "665dc9f46c6b88c2ff80a06dc560855ec7883a6c96d921daa21e820925e12676"
+      },
+      "recordedSummary": {
+        "visual": {
+          "count": 5,
+          "minMs": 24.199999809265137,
+          "medianMs": 27.399999856948853,
+          "maxMs": 34.299999952316284
+        },
+        "persistence": {
+          "count": 5,
+          "minMs": 209,
+          "medianMs": 222.5,
+          "maxMs": 316.2998046875
+        },
+        "acknowledgement": {
+          "count": 5,
+          "minMs": 480,
+          "medianMs": 508.5,
+          "maxMs": 794.5
+        }
+      },
+      "recordedMedianConvention": "upper middle order statistic for an even sample count; middle value for odd counts",
+      "computedSummary": {
+        "visual": {
+          "count": 5,
+          "minMs": 24.199999809265137,
+          "medianMs": 27.399999856948853,
+          "maxMs": 34.299999952316284
+        },
+        "persistence": {
+          "count": 5,
+          "minMs": 209,
+          "medianMs": 222.5,
+          "maxMs": 316.2998046875
+        },
+        "acknowledgement": {
+          "count": 5,
+          "minMs": 480,
+          "medianMs": 508.5,
+          "maxMs": 794.5
+        }
+      },
+      "operationSamples": [
+        {
+          "iteration": 1,
+          "insertionVisibleMs": 934.8829999999998,
+          "visualMs": 34.299999952316284,
+          "persistenceObservedMs": 210.39990234375,
+          "acknowledgementObservedMs": 483.39990234375,
+          "filePollingIntervalMs": 10
+        },
+        {
+          "iteration": 2,
+          "insertionVisibleMs": 858.4825999999994,
+          "visualMs": 27.399999856948853,
+          "persistenceObservedMs": 222.5,
+          "acknowledgementObservedMs": 508.5,
+          "filePollingIntervalMs": 10
+        },
+        {
+          "iteration": 3,
+          "insertionVisibleMs": 876.1744999999974,
+          "visualMs": 29.59999990463257,
+          "persistenceObservedMs": 209,
+          "acknowledgementObservedMs": 480,
+          "filePollingIntervalMs": 10
+        },
+        {
+          "iteration": 4,
+          "insertionVisibleMs": 883.0391999999993,
+          "visualMs": 26.09999990463257,
+          "persistenceObservedMs": 291.5,
+          "acknowledgementObservedMs": 794.5,
+          "filePollingIntervalMs": 10
+        },
+        {
+          "iteration": 5,
+          "insertionVisibleMs": 947.5083999999988,
+          "visualMs": 24.199999809265137,
+          "persistenceObservedMs": 316.2998046875,
+          "acknowledgementObservedMs": 610.2998046875,
+          "filePollingIntervalMs": 10
+        }
+      ],
+      "memorySamples": [
+        {
+          "stage": "interactive",
+          "rendererWorkingSetKiB": 177760,
+          "documentService": {
+            "workingSetKiB": 215168,
+            "privateBytesKiB": 281300,
+            "source": "Windows Get-Process"
+          }
+        },
+        {
+          "stage": "settled",
+          "rendererWorkingSetKiB": 176676,
+          "documentService": {
+            "workingSetKiB": 215172,
+            "privateBytesKiB": 281300,
+            "source": "Windows Get-Process"
+          }
+        },
+        {
+          "stage": "after-five-insert-delete-pairs",
+          "rendererWorkingSetKiB": 314744,
+          "documentService": {
+            "workingSetKiB": 217380,
+            "privateBytesKiB": 283096,
+            "source": "Windows Get-Process"
+          }
+        }
+      ],
+      "checkedSourceFiles": 82,
+      "rendererErrorCount": 0,
+      "transactionFailureCount": 0
+    },
+    {
+      "label": "after-v05-packaged-soak20",
+      "passed": true,
+      "iterations": 20,
+      "timestamp": "2026-11-07T13:32:30.091Z",
+      "platform": "win32",
+      "node": "v22.21.0",
+      "electron": "38.7.2",
+      "pageCount": 80,
+      "launchHandshakeMs": 1002.6351000000004,
+      "firstWindowMs": 1002.8990000000003,
+      "canvasInteractiveMs": 5942.0172,
+      "initialDom": {
+        "totalNodes": 1734,
+        "thumbnails": 80,
+        "thumbnailRenderers": 7,
+        "allPageRenderers": 8,
+        "canvasElements": 4,
+        "pendingImages": 0,
+        "viewport": {
+          "width": 1600,
+          "height": 1000,
+          "devicePixelRatio": 1
+        }
+      },
+      "settledDom": {
+        "totalNodes": 1734,
+        "thumbnails": 80,
+        "thumbnailRenderers": 7,
+        "allPageRenderers": 8,
+        "canvasElements": 4,
+        "pendingImages": 0,
+        "viewport": {
+          "width": 1600,
+          "height": 1000,
+          "devicePixelRatio": 1
+        }
+      },
+      "finalDom": {
+        "totalNodes": 1734,
+        "thumbnails": 80,
+        "thumbnailRenderers": 7,
+        "allPageRenderers": 8,
+        "canvasElements": 4,
+        "pendingImages": 0,
+        "viewport": {
+          "width": 1600,
+          "height": 1000,
+          "devicePixelRatio": 1
+        }
+      },
+      "originalUnchanged": true,
+      "runtime": {
+        "host": "actual packaged HUANDENG Editor executable",
+        "frontend": "compiled production bundle",
+        "runtimeRevision": "03a96957f854ab593400218102928d1feb3c86d0"
+      },
+      "rawReceipt": {
+        "localFile": ".verification/performance-v05/after-v05-packaged-soak20.json",
+        "sha256": "8657b45b0088e0537b51a1cb1db7937522b42a9821d642dc1e3aa989e3de0863"
+      },
+      "recordedSummary": {
+        "visual": {
+          "count": 20,
+          "minMs": 19.200000047683716,
+          "medianMs": 23.09999990463257,
+          "maxMs": 30.5
+        },
+        "persistence": {
+          "count": 20,
+          "minMs": 178.800048828125,
+          "medianMs": 198.599853515625,
+          "maxMs": 259.5
+        },
+        "acknowledgement": {
+          "count": 20,
+          "minMs": 452.39990234375,
+          "medianMs": 471.300048828125,
+          "maxMs": 527.5
+        }
+      },
+      "recordedMedianConvention": "upper middle order statistic for an even sample count; middle value for odd counts",
+      "computedSummary": {
+        "visual": {
+          "count": 20,
+          "minMs": 19.200000047683716,
+          "medianMs": 23.049999952316284,
+          "maxMs": 30.5
+        },
+        "persistence": {
+          "count": 20,
+          "minMs": 178.800048828125,
+          "medianMs": 198.0499267578125,
+          "maxMs": 259.5
+        },
+        "acknowledgement": {
+          "count": 20,
+          "minMs": 452.39990234375,
+          "medianMs": 470.449951171875,
+          "maxMs": 527.5
+        }
+      },
+      "operationSamples": [
+        {
+          "iteration": 1,
+          "insertionVisibleMs": 944.5432999999994,
+          "visualMs": 30.5,
+          "persistenceObservedMs": 219.5,
+          "acknowledgementObservedMs": 522.5,
+          "filePollingIntervalMs": 10
+        },
+        {
+          "iteration": 2,
+          "insertionVisibleMs": 887.8814999999995,
+          "visualMs": 26.5,
+          "persistenceObservedMs": 259.5,
+          "acknowledgementObservedMs": 527.5,
+          "filePollingIntervalMs": 10
+        },
+        {
+          "iteration": 3,
+          "insertionVisibleMs": 875.1332999999977,
+          "visualMs": 27,
+          "persistenceObservedMs": 210.699951171875,
+          "acknowledgementObservedMs": 499.699951171875,
+          "filePollingIntervalMs": 10
+        },
+        {
+          "iteration": 4,
+          "insertionVisibleMs": 859.0692999999992,
+          "visualMs": 26.200000047683716,
+          "persistenceObservedMs": 210.099853515625,
+          "acknowledgementObservedMs": 496.099853515625,
+          "filePollingIntervalMs": 10
+        },
+        {
+          "iteration": 5,
+          "insertionVisibleMs": 842.5072,
+          "visualMs": 23.5,
+          "persistenceObservedMs": 198.599853515625,
+          "acknowledgementObservedMs": 484.599853515625,
+          "filePollingIntervalMs": 10
+        },
+        {
+          "iteration": 6,
+          "insertionVisibleMs": 803.9749999999985,
+          "visualMs": 21.800000190734863,
+          "persistenceObservedMs": 188.099853515625,
+          "acknowledgementObservedMs": 468.099853515625,
+          "filePollingIntervalMs": 10
+        },
+        {
+          "iteration": 7,
+          "insertionVisibleMs": 879.8661999999968,
+          "visualMs": 22,
+          "persistenceObservedMs": 187.5,
+          "acknowledgementObservedMs": 478.5,
+          "filePollingIntervalMs": 10
+        },
+        {
+          "iteration": 8,
+          "insertionVisibleMs": 833.1505999999972,
+          "visualMs": 22.399999856948853,
+          "persistenceObservedMs": 197.5,
+          "acknowledgementObservedMs": 462.5,
+          "filePollingIntervalMs": 10
+        },
+        {
+          "iteration": 9,
+          "insertionVisibleMs": 798.3928999999989,
+          "visualMs": 22.700000047683716,
+          "persistenceObservedMs": 198.599853515625,
+          "acknowledgementObservedMs": 469.599853515625,
+          "filePollingIntervalMs": 10
+        },
+        {
+          "iteration": 10,
+          "insertionVisibleMs": 811.3668000000034,
+          "visualMs": 24.699999809265137,
+          "persistenceObservedMs": 242.300048828125,
+          "acknowledgementObservedMs": 498.300048828125,
+          "filePollingIntervalMs": 10
+        },
+        {
+          "iteration": 11,
+          "insertionVisibleMs": 861.6928000000007,
+          "visualMs": 23,
+          "persistenceObservedMs": 231.300048828125,
+          "acknowledgementObservedMs": 471.300048828125,
+          "filePollingIntervalMs": 10
+        },
+        {
+          "iteration": 12,
+          "insertionVisibleMs": 815.2773000000016,
+          "visualMs": 19.200000047683716,
+          "persistenceObservedMs": 185.5,
+          "acknowledgementObservedMs": 461.5,
+          "filePollingIntervalMs": 10
+        },
+        {
+          "iteration": 13,
+          "insertionVisibleMs": 803.6203999999998,
+          "visualMs": 23.59999990463257,
+          "persistenceObservedMs": 188,
+          "acknowledgementObservedMs": 457,
+          "filePollingIntervalMs": 10
+        },
+        {
+          "iteration": 14,
+          "insertionVisibleMs": 819.8510000000024,
+          "visualMs": 21.09999990463257,
+          "persistenceObservedMs": 178.800048828125,
+          "acknowledgementObservedMs": 456.800048828125,
+          "filePollingIntervalMs": 10
+        },
+        {
+          "iteration": 15,
+          "insertionVisibleMs": 860.5702999999994,
+          "visualMs": 21.600000143051147,
+          "persistenceObservedMs": 196.39990234375,
+          "acknowledgementObservedMs": 465.39990234375,
+          "filePollingIntervalMs": 10
+        },
+        {
+          "iteration": 16,
+          "insertionVisibleMs": 825.8640000000014,
+          "visualMs": 22.699999809265137,
+          "persistenceObservedMs": 192.800048828125,
+          "acknowledgementObservedMs": 466.800048828125,
+          "filePollingIntervalMs": 10
+        },
+        {
+          "iteration": 17,
+          "insertionVisibleMs": 782.2744000000021,
+          "visualMs": 23.200000047683716,
+          "persistenceObservedMs": 195.199951171875,
+          "acknowledgementObservedMs": 467.199951171875,
+          "filePollingIntervalMs": 10
+        },
+        {
+          "iteration": 18,
+          "insertionVisibleMs": 808.350400000003,
+          "visualMs": 21.699999809265137,
+          "persistenceObservedMs": 209.300048828125,
+          "acknowledgementObservedMs": 495.300048828125,
+          "filePollingIntervalMs": 10
+        },
+        {
+          "iteration": 19,
+          "insertionVisibleMs": 829.6154999999999,
+          "visualMs": 24.200000047683716,
+          "persistenceObservedMs": 190.39990234375,
+          "acknowledgementObservedMs": 452.39990234375,
+          "filePollingIntervalMs": 10
+        },
+        {
+          "iteration": 20,
+          "insertionVisibleMs": 827.5722999999998,
+          "visualMs": 23.09999990463257,
+          "persistenceObservedMs": 204.699951171875,
+          "acknowledgementObservedMs": 486.699951171875,
+          "filePollingIntervalMs": 10
+        }
+      ],
+      "memorySamples": [
+        {
+          "stage": "interactive",
+          "rendererWorkingSetKiB": 173660,
+          "documentService": {
+            "workingSetKiB": 209072,
+            "privateBytesKiB": 278420,
+            "source": "Windows Get-Process"
+          }
+        },
+        {
+          "stage": "settled",
+          "rendererWorkingSetKiB": 169368,
+          "documentService": {
+            "workingSetKiB": 206432,
+            "privateBytesKiB": 278420,
+            "source": "Windows Get-Process"
+          }
+        },
+        {
+          "stage": "after-20-insert-delete-pairs",
+          "rendererWorkingSetKiB": 417656,
+          "documentService": {
+            "workingSetKiB": 271872,
+            "privateBytesKiB": 373812,
+            "source": "Windows Get-Process"
+          }
+        }
+      ],
+      "checkedSourceFiles": 82,
+      "rendererErrorCount": 0,
+      "transactionFailureCount": 0
+    }
+  ],
+  "failuresPreserved": {
+    "runtimeRevision": "80a83ee78c65b63350675e8be9d78d9372b19d80",
+    "status": "An earlier packaged benchmark failed with EPERM/PENDING_RECOVERY on its third deletion. That run and its original-journal recovery remain separate evidence."
+  },
+  "limitations": [
+    "Each memory figure is a process working-set sample, not retained heap or an all-process application total.",
+    "Memory grows during the 20-cycle run; these measurements do not establish long-session memory stability or elimination of leaks.",
+    "The two final runs use different cycle counts and are not pooled into one latency statistic."
+  ]
+}

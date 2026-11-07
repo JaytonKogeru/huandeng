@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "stage": "windows-recovery-development-host-first",
+  "source": {
+    "runtimeRevision": "bf0aa1f6e87183578f924e86cfb6c53368ff638a",
+    "repairTransferSha256": "5d1b1727ab07389434f048262c2c9afc5a2c32afd2607df63aa02a4514538448"
+  },
+  "rawReceipt": {
+    "localFile": ".verification/recovery-v05/result-devhost-first.json",
+    "sha256": "e074da99f0b972db4a950d5f82ff220ed55ea975e529072379c9fa133385e872"
+  },
+  "sanitization": "Only synthetic software checks, aggregate counts, timing and provenance are retained. Absolute paths, document content, per-file hashes and screenshots are excluded.",
+  "timestamp": "2026-11-07T13:15:30.488Z",
+  "runtime": {
+    "platform": "win32",
+    "node": "v22.21.0",
+    "electron": "38.7.2",
+    "host": "Electron development host",
+    "frontend": "compiled production bundle",
+    "finalPackagedRelease": false
+  },
+  "syntheticOnly": true,
+  "fault": "Independent PowerShell FileStream(FileShare.Read) blocks replacement, not reads.",
+  "retryWindowMilliseconds": 2000,
+  "automatedPassed": true,
+  "checks": [
+    {
+      "name": "opens only the isolated synthetic project and identifies its owned writer",
+      "passed": true,
+      "milliseconds": 5681
+    },
+    {
+      "name": "a temporary read-sharing handle releases and the original save succeeds without recovery",
+      "passed": true,
+      "milliseconds": 1712,
+      "heldMilliseconds": 720,
+      "originalResponse": 200
+    },
+    {
+      "name": "a longer file hold preserves the page and draft until explicit recovery returns the original receipt",
+      "passed": true,
+      "milliseconds": 3625,
+      "recoveryResponse": 200
+    },
+    {
+      "name": "editing continues after recovery and creates one new persisted operation",
+      "passed": true,
+      "milliseconds": 155
+    },
+    {
+      "name": "recovery refuses a third external state without changing it or losing the pending draft",
+      "passed": true,
+      "milliseconds": 3526,
+      "rejectedCode": "RECOVERY_REQUIRED"
+    },
+    {
+      "name": "the recovered editor closes normally and releases its owned service and runtime session",
+      "passed": true,
+      "milliseconds": 710
+    }
+  ],
+  "rendererErrors": [],
+  "cleanupErrors": [],
+  "sandboxRemoved": true,
+  "visualReview": {
+    "evidenceKind": "Screenshots inspected by the visual reviewer; screenshots remain local.",
+    "passed": false,
+    "detail": "The functional six checks passed, but screenshot review found the third-state reason could be replaced by a generic pending message. This was repaired and the verifier was strengthened before the separate follow-up run."
+  },
+  "boundary": "This is actual Windows file-sharing behavior in an isolated synthetic project, but it is not final packaged-EXE or installation acceptance."
+}

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "stage": "original-failed-journal-recovery",
+  "source": {
+    "baselineRuntimeRevision": "80a83ee",
+    "repairTransferSha256": "5d1b1727ab07389434f048262c2c9afc5a2c32afd2607df63aa02a4514538448",
+    "verifiedTransferredFiles": 93,
+    "description": "The rejected packaged candidate plus the explicit save-recovery repair transfer; runtime commit and final packaged acceptance are recorded separately."
+  },
+  "rawReceipt": {
+    "localFile": ".verification/performance-v05/original-failure-recovery.json",
+    "sha256": "0b4da5bea4df1fd0dc71520a93ed5f0e84e2c5d4941f93feaf77c526bd82e98d"
+  },
+  "sanitization": "Only software behavior, aggregate counts and provenance are retained. Research paths, titles, per-file inventories and hashes, document content and screenshots are excluded.",
+  "passed": true,
+  "at": "2026-11-07T13:14:27.386Z",
+  "runtime": {
+    "platform": "Windows",
+    "host": "repaired production local document service",
+    "finalPackagedRelease": false
+  },
+  "failureBeingRecovered": {
+    "runtimeRevision": "80a83ee",
+    "operation": "element.remove",
+    "error": "PENDING_RECOVERY caused by an EPERM atomic rename failure",
+    "thirdBenchmarkMutationPair": true,
+    "finalPerformanceAcceptance": false
+  },
+  "rawReceiptChecks": {
+    "receiptUsesOriginalRequest": true,
+    "receiptUsesOriginalOperation": true,
+    "pageRevisionCount": 80,
+    "checkedManifestPageMetadataFiles": 82,
+    "changedFiles": 1,
+    "unchangedFiles": 81,
+    "unrelatedSourcesUnchanged": true,
+    "matchingHistoryEntries": 1
+  },
+  "additionalObservedChecks": {
+    "evidenceKind": "Observed execution facts supplied by the coordinating agent; the raw receipt omits individual booleans for these assertions.",
+    "usedOriginalProjectAndStateLocations": true,
+    "journalWasNotReconstructedOrRepointed": true,
+    "writableAfterRecovery": true,
+    "pageBytesMatchOriginalJournalAfter": true,
+    "pendingJournalRemovedAfterCompletion": true,
+    "sameOriginalReceiptConfirmations": 3,
+    "independentFailureArchiveUntouched": true
+  },
+  "boundary": "This proves safe recovery of the original failed transaction. It does not claim that the failed 80a83ee benchmark passed, that the repair is installed, or that final packaged performance and fault-injection acceptance are complete."
+}

@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "stage": "rejected-candidate-package-footprint",
+  "rawReceipt": {
+    "localFile": ".verification/package-footprint-v05.json",
+    "environment": "THUG isolated worktree",
+    "sha256": "9ffbb21bd93bcc4b822142442145b809d4afcaad3f05b78a2ad8416c86ad3067"
+  },
+  "sanitization": "Only software package names, aggregate apparent byte sizes and provenance are retained. No research paths, document content or private file inventories are included.",
+  "startedAt": "2026-11-07T13:10:24.402Z",
+  "finishedAt": "2026-11-07T13:10:28.878Z",
+  "measurement": "Apparent bytes from stat.size; does not follow symlinks and does not measure NTFS allocated/compressed size.",
+  "complete": true,
+  "build": {
+    "electronVersion": "38.7.2",
+    "desktopProtocol": 1,
+    "builtAt": "2026-11-07T12:47:09.8127082Z",
+    "sourceDirty": false,
+    "productVersion": "0.5.0",
+    "nodeLinker": "hoisted",
+    "product": "HUANDENG Editor",
+    "sourceRevision": "80a83ee78c65b63350675e8be9d78d9372b19d80"
+  },
+  "buildMarkerUnchanged": true,
+  "totals": {
+    "bytes": 683009664,
+    "files": 29111,
+    "directories": 2398,
+    "symlinks": 0
+  },
+  "categories": [
+    {
+      "name": "electronRuntimeAndRoot",
+      "bytes": 339741935,
+      "files": 75
+    },
+    {
+      "name": "otherNodeModules",
+      "bytes": 331160250,
+      "files": 28471
+    },
+    {
+      "name": "core",
+      "bytes": 11665320,
+      "files": 548
+    },
+    {
+      "name": "desktopAppFiles",
+      "bytes": 442159,
+      "files": 17
+    }
+  ],
+  "coreParts": [
+    {
+      "name": "other",
+      "bytes": 4951536,
+      "files": 227
+    },
+    {
+      "name": "dist/editor",
+      "bytes": 3582461,
+      "files": 14
+    },
+    {
+      "name": "src",
+      "bytes": 2364272,
+      "files": 285
+    },
+    {
+      "name": "dist other",
+      "bytes": 767051,
+      "files": 22
+    }
+  ],
+  "largestNodeModules": [
+    {
+      "name": "echarts",
+      "bytes": 60336735,
+      "files": 1358
+    },
+    {
+      "name": "emoji-picker-react",
+      "bytes": 34258470,
+      "files": 369
+    },
+    {
+      "name": "lucide-react",
+      "bytes": 30849995,
+      "files": 4034
+    },
+    {
+      "name": "@rolldown/binding-win32-x64-msvc",
+      "bytes": 21664198,
+      "files": 3
+    },
+    {
+      "name": "playwright-core",
+      "bytes": 13453369,
+      "files": 114
+    },
+    {
+      "name": "vite",
+      "bytes": 12389204,
+      "files": 55
+    },
+    {
+      "name": "@esbuild/win32-x64",
+      "bytes": 11695109,
+      "files": 3
+    },
+    {
+      "name": "@ts-morph/common",
+      "bytes": 11688936,
+      "files": 7
+    },
+    {
+      "name": "@open-slide/core",
+      "bytes": 11665320,
+      "files": 548
+    },
+    {
+      "name": "@modelcontextprotocol/sdk",
+      "bytes": 10649778,
+      "files": 1546
+    }
+  ],
+  "previousInstalledBaseline": {
+    "runtimeRevision": "c2fede5f45aa7a41e853304f9907c2d17e6bf8a2",
+    "bytesExcludingCaches": 679320441,
+    "evidenceKind": "Read-only installed v0.4 package measurement supplied by the coordinating agent."
+  },
+  "deltaFromPreviousBaseline": {
+    "bytes": 3689223,
+    "percent": 0.5430755174346358
+  },
+  "acceptanceBoundary": "This is the 80a83ee candidate whose 80-page benchmark failed with PENDING_RECOVERY. It is a complete footprint audit, not final-package reliability, performance or installation acceptance. Final repaired-package size is recorded separately.",
+  "productDecision": "The release retains Electron and the shared Node document service. Runtime responsiveness is improved without claiming an application-framework migration or package-size reduction. Dependency pruning requires a separate usage and export/Agent portability audit."
+}

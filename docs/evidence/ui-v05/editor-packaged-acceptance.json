@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "stage": "packaged-windows-acceptance",
+  "source": {
+    "runtimeRevision": "03a96957f854ab593400218102928d1feb3c86d0"
+  },
+  "build": {
+    "productVersion": "0.5.0",
+    "builtAt": "2026-11-07T13:26:12.5660629Z",
+    "sourceDirty": false
+  },
+  "runtime": {
+    "host": "actual packaged HUANDENG Editor executable",
+    "frontend": "compiled production bundle"
+  },
+  "rawReceipt": {
+    "localFile": ".verification/editor-final-v05.json",
+    "sha256": "475eb2cf84d6738266ec597dfe48a417a0e8aa34e99d470397c4ba796f570a66"
+  },
+  "sanitization": "Only synthetic software test results, layout geometry and provenance are retained. Absolute paths, document content and screenshots are excluded.",
+  "passed": true,
+  "timestamp": "2026-11-07T13:28:41.119Z",
+  "platform": "win32",
+  "node": "v22.21.0",
+  "electron": "38.7.2",
+  "fixture": {
+    "kind": "isolated synthetic project"
+  },
+  "checks": [
+    {
+      "name": "choosing text or a shape does not create an object; Escape also cancels an active drag",
+      "passed": true,
+      "milliseconds": 791
+    },
+    {
+      "name": "ellipse placement uses drag coordinates and persists the selected shape",
+      "passed": true,
+      "milliseconds": 546
+    },
+    {
+      "name": "reverse dragging normalizes the rectangle and Shift creates a circle",
+      "passed": true,
+      "milliseconds": 1664
+    },
+    {
+      "name": "lines preserve reverse direction and Shift constrains the angle",
+      "passed": true,
+      "milliseconds": 929
+    },
+    {
+      "name": "text placement enters editing automatically and Backspace removes a character",
+      "passed": true,
+      "milliseconds": 737
+    },
+    {
+      "name": "object Delete, Undo and Redo change the real page file",
+      "passed": true,
+      "milliseconds": 737
+    },
+    {
+      "name": "shortCode is primary, old S aliases remain searchable and copy yields the shortCode",
+      "passed": true,
+      "milliseconds": 656
+    },
+    {
+      "name": "light and dark editor layouts remain visible at desktop and compact sizes",
+      "passed": true,
+      "milliseconds": 2775
+    }
+  ],
+  "rendererErrorCount": 0,
+  "execution": {
+    "exitCode": 0,
+    "evidenceKind": "Observed actual process completion supplied by the coordinating agent."
+  },
+  "note": "This is actual packaged-executable acceptance for the stated runtime. Prior development-host receipts retain their own identities; installation and large-project performance are separately verified.",
+  "layoutChecks": [
+    {
+      "width": 1600,
+      "height": 1000,
+      "scrollWidth": 1600,
+      "dark": false,
+      "canvas": {
+        "x": 256,
+        "y": 193,
+        "width": 1024,
+        "height": 576
+      },
+      "nativeContentSize": true,
+      "isolatedMinimumSizeOverride": true
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "scrollWidth": 1024,
+      "dark": false,
+      "canvas": {
+        "x": 256,
+        "y": 239,
+        "width": 448,
+        "height": 252
+      },
+      "nativeContentSize": true,
+      "isolatedMinimumSizeOverride": true
+    },
+    {
+      "width": 1600,
+      "height": 1000,
+      "scrollWidth": 1600,
+      "dark": true,
+      "canvas": {
+        "x": 256,
+        "y": 193,
+        "width": 1024,
+        "height": 576
+      },
+      "nativeContentSize": true,
+      "isolatedMinimumSizeOverride": true
+    }
+  ],
+  "visualReview": {
+    "passed": true,
+    "evidenceKind": "All three actual packaged-executable screenshots were individually reviewed by the visual reviewer; local hashes, dimensions and empty PNG metadata were independently checked.",
+    "syntheticOnly": true,
+    "containsResearchContent": false,
+    "containsAbsoluteUserPaths": false,
+    "screenshots": [
+      {
+        "file": "editor-light.png",
+        "sha256": "58a32775bb1c7cb0c2e0dfbee812e5dd158d9cc469d7cc2a5e56571510e69fea",
+        "width": 1600,
+        "height": 1000,
+        "metadataEmpty": true
+      },
+      {
+        "file": "editor-compact.png",
+        "sha256": "420cdaf2dd8551c4bf3549122265cd1485723f52c166696300ec9bd674765cd7",
+        "width": 1024,
+        "height": 768,
+        "metadataEmpty": true
+      },
+      {
+        "file": "editor-dark.png",
+        "sha256": "3989ea7609852732df54694e653ad266a1681ff292c209473dab2850bcf3c411",
+        "width": 1600,
+        "height": 1000,
+        "metadataEmpty": true
+      }
+    ]
+  }
+}

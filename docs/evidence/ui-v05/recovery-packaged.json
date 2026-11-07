@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "stage": "packaged-windows-recovery-acceptance",
+  "source": {
+    "runtimeRevision": "03a96957f854ab593400218102928d1feb3c86d0",
+    "precedingRepairTransferSha256": "5d1b1727ab07389434f048262c2c9afc5a2c32afd2607df63aa02a4514538448",
+    "followupTransferSha256": "086f16abffbf44c40c3e0c3511760d12d0d370e5cfb6ee717f16d68bb034d29a"
+  },
+  "build": {
+    "electronVersion": "38.7.2",
+    "desktopProtocol": 1,
+    "builtAt": "2026-11-07T13:26:12.5660629Z",
+    "sourceDirty": false,
+    "productVersion": "0.5.0",
+    "nodeLinker": "hoisted",
+    "product": "HUANDENG Editor",
+    "sourceRevision": "03a96957f854ab593400218102928d1feb3c86d0"
+  },
+  "rawReceipt": {
+    "localFile": ".verification/recovery-v05/result-packaged.json",
+    "sha256": "0a4100f3687d5401b44b05b11889be7e7526019233b5dc57b45f43b310292153"
+  },
+  "buildMarker": {
+    "localFile": ".verification/recovery-v05/packaged/huandeng-build.json",
+    "sha256": "32f36c7834cc0479b90c8222247032c708175a194fd717bfcabdb9fc26d4a446"
+  },
+  "execution": {
+    "rawReceipt": {
+      "localFile": ".verification/recovery-v05/packaged/execution.json",
+      "sha256": "52c9cbdc85fd622197cbf19e6cc0c332d0de61ccab8858ef971a9abc32347580"
+    },
+    "status": "succeeded",
+    "exitCode": 0
+  },
+  "sanitization": "Only software behavior, synthetic-check timing, aggregate counts and provenance are retained. Absolute paths, document content, per-file hashes and screenshots are excluded.",
+  "passed": true,
+  "timestamp": "2026-11-07T13:28:39.708Z",
+  "runtime": {
+    "platform": "win32",
+    "node": "v22.21.0",
+    "electron": "38.7.2",
+    "host": "actual packaged HUANDENG Editor executable",
+    "frontend": "compiled production bundle"
+  },
+  "syntheticOnly": true,
+  "fault": "Independent PowerShell FileStream(FileShare.Read) blocks replacement, not reads.",
+  "retryWindowMilliseconds": 2000,
+  "checks": [
+    {
+      "name": "opens only the isolated synthetic project and identifies its owned writer",
+      "passed": true,
+      "milliseconds": 5081
+    },
+    {
+      "name": "a temporary read-sharing handle releases and the original save succeeds without recovery",
+      "passed": true,
+      "milliseconds": 1774,
+      "heldMilliseconds": 762,
+      "originalResponse": 200
+    },
+    {
+      "name": "a longer file hold preserves the page and draft until explicit recovery returns the original receipt",
+      "passed": true,
+      "milliseconds": 3678,
+      "recoveryResponse": 200
+    },
+    {
+      "name": "editing continues after recovery and creates one new persisted operation",
+      "passed": true,
+      "milliseconds": 199
+    },
+    {
+      "name": "recovery refuses a third external state without changing it or losing the pending draft",
+      "passed": true,
+      "milliseconds": 3717,
+      "rejectedCode": "RECOVERY_REQUIRED"
+    },
+    {
+      "name": "the recovered editor closes normally and releases its owned service and runtime session",
+      "passed": true,
+      "milliseconds": 939
+    }
+  ],
+  "rendererErrors": [],
+  "cleanupErrors": [],
+  "sandboxRemoved": true,
+  "visualReview": {
+    "passed": true,
+    "evidenceKind": "The visual reviewer inspected all four packaged-executable screenshots.",
+    "detail": "Pending, recovered, third-state refusal and final saved states remain usable. The explicit mismatch explanation survives an actual session refresh; there are no blocking UI findings."
+  },
+  "boundary": "This accepts the packaged executable recovery scenarios. Large-project performance and installation have separate receipts."
+}

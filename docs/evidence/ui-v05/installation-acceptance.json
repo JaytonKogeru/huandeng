@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "stage": "installed-application-and-normal-profile-acceptance",
+  "sanitization": "Research paths, titles, source-file inventories, contents and hashes are excluded. Only software behavior, aggregate counts, build provenance and receipt hashes are retained; absolute shortcut/user-profile locations are not published.",
+  "passed": true,
+  "build": {
+    "electronVersion": "38.7.2",
+    "desktopProtocol": 1,
+    "builtAt": "2026-11-07T13:26:12.5660629Z",
+    "sourceDirty": false,
+    "productVersion": "0.5.0",
+    "nodeLinker": "hoisted",
+    "product": "HUANDENG Editor",
+    "sourceRevision": "03a96957f854ab593400218102928d1feb3c86d0"
+  },
+  "installation": {
+    "rawReceipt": {
+      "localFile": ".verification/install-paths-v05.json",
+      "sha256": "4ca00ebf67349a09f0873eaa842c902669a507fb8ecedff5c02bd9a0deac3958"
+    },
+    "timestamp": "2026-11-07T13:39:50.3573887Z",
+    "establishedRelativeLocation": "dist/HUANDENG-win32-x64",
+    "previousVersionBackupLabel": "installed-v04-backup-20261107-v05",
+    "backupBuild": {
+      "electronVersion": "38.7.2",
+      "desktopProtocol": 1,
+      "builtAt": "2026-11-07T10:03:16.5150028Z",
+      "sourceDirty": false,
+      "productVersion": "0.4.0",
+      "nodeLinker": "hoisted",
+      "product": "HUANDENG Editor",
+      "sourceRevision": "c2fede5f45aa7a41e853304f9907c2d17e6bf8a2"
+    },
+    "normalCloseRequested": true,
+    "forcedClose": false,
+    "shortcuts": [
+      {
+        "location": "start-menu",
+        "targetMatchesInstalledExecutable": true,
+        "workingDirectoryMatchesInstalledDirectory": true,
+        "iconFilePresentInValidatedRecord": true
+      },
+      {
+        "location": "desktop",
+        "targetMatchesInstalledExecutable": true,
+        "workingDirectoryMatchesInstalledDirectory": true,
+        "iconFilePresentInValidatedRecord": true
+      }
+    ],
+    "iconMatchesSource": true,
+    "preExistingUserFixtureUnchanged": true,
+    "execution": {
+      "exitCode": 0,
+      "evidenceKind": "Observed validator completion supplied by the coordinating agent."
+    }
+  },
+  "initialValidationRecord": {
+    "rawReceipt": {
+      "localFile": ".verification/install-v05.json",
+      "sha256": "0664994bc0f63e372556f824ff6b34202e7fde5bda5503b7f3bc5cdc32a4215e"
+    },
+    "passed": false,
+    "startedAt": "2026-11-07T13:38:12.0008292Z",
+    "finishedAt": "2026-11-07T13:38:14.3841407Z",
+    "cause": "The verifier treated the Windows IconLocation index suffix ,0 as part of the icon file path. The package move and shortcuts had succeeded. Only the verifier was corrected, then paths and icons were checked successfully.",
+    "recordPreserved": true
+  },
+  "installedExecutableSmoke": {
+    "rawReceipt": {
+      "localFile": ".verification/installed-huandeng.json",
+      "sha256": "e4fbc4857c1e820c26e46800da36ac501006cb0f15fd95dea1a89a17d6239bf7"
+    },
+    "passed": true,
+    "timestamp": "2026-11-07T13:39:54.115Z",
+    "syntheticPages": 3,
+    "documentRuntime": "static",
+    "visibleWindow": true,
+    "rendererErrorCount": 0,
+    "about": {
+      "capturedMessage": "HUANDENG Editor 0.5.0",
+      "verificationMethod": "Actual native menu handler invocation with the Electron dialog call captured; this is not a native dialog screenshot."
+    },
+    "execution": {
+      "exitCode": 0,
+      "evidenceKind": "Observed verification process completion supplied by the coordinating agent."
+    }
+  },
+  "normalUserProfileLaunch": {
+    "rawReceipt": {
+      "localFile": ".verification/normal-launch-v05.json",
+      "sha256": "5ebf440902f7b2cc0fd1ad2eb978934edea71e34650a29ef9f101866ca8d8be6"
+    },
+    "passed": true,
+    "timestamp": "2026-11-07T13:43:11Z",
+    "openedExistingProject": true,
+    "pageCount": 80,
+    "documentRuntime": "static",
+    "writable": true,
+    "diagnosticCodes": [],
+    "checkedSourceFiles": 82,
+    "sourceUnchanged": true,
+    "processLeftOpenForUser": true,
+    "nativeWindowObservation": {
+      "rawReceipt": {
+        "localFile": ".verification/normal-window-v05.json",
+        "sha256": "57d502a57ab5f36810e82ea33ec5ce5dd98b3f27461a140bc0948f2114c1d3b3"
+      },
+      "timestamp": "2026-11-07T13:45:22.0675625Z",
+      "hasNativeWindow": true,
+      "responding": true,
+      "titlePresent": true
+    }
+  },
+  "releaseSynchronization": {
+    "identifier": "editor-v0.5.0",
+    "remotePushStatus": "verified separately by the coordinating agent after documentation is committed; no push success is inferred from these local installation receipts"
+  }
+}

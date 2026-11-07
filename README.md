@@ -6,9 +6,11 @@ HUANDENG Editor 基于 OpenSlide 的 React 编辑环境，使用 PPTD 文档后�
 
 ## 当前阶段
 
-当前已发布并安装的里程碑为 [v0.4.0](docs/RELEASE-V04.md)。本地正在推进 **v0.5 候选版：日常编辑体验**，重点是大项目响应、画布放置工具、页面身份和统一的中文界面。候选已通过 Linux/Windows 代码门槛、桌面/编辑器/项目/科学对象回归，以及 80 页科研副本和实际 Office 渲染核查；已取得首轮大项目性能数据。最终程序包、正式包性能与安装仍按 [发布记录](docs/RELEASE-V05.md) 分项验收。本文操作说明对应当前源码。
+当前交付版本为 **[v0.5.0：日常编辑体验](docs/RELEASE-V05.md)**，运行时 `03a96957` 已安装到既有正式位置，桌面与开始菜单快捷方式已核对。常规用户 profile 已打开原 80 页项目，窗口可响应、项目可写、无诊断，82 份文档源文件 hash 不变；发行标识为 `editor-v0.5.0`。
 
-[综合产品审计](docs/AUDIT-V05-COVERAGE.md) 合并初始 SPEC 与 v0.2–v0.4 的需求、实现和历史回执；[视觉与交互审计](docs/AUDIT-V05-VISUAL.md) 记录美术及界面判断；[v0.5 范围](docs/SPEC-V05.md) 定义本轮交付；[交接记录](docs/HANDOFF-V05.md) 保存当前完成度和下一步。
+本轮改善大项目响应、画布放置、页面身份、中文界面与异常保存恢复。正式程序包的 80 页项目首次可编辑约 **5.98 秒**，Delete 视觉中位 **27.4 ms**、落盘中位 **222.5 ms**；独立 20 轮连续操作通过。源码门槛为 Linux 800 项、Windows 799 项及 1 项 POSIX 专属跳过，实际 EXE 桌面 7/7、编辑器 8/8、恢复 6/6，正式路径安装和 About 版本检查均通过。测量使用本机隔离副本且未清空 OS 缓存，长期内存增长与字体/溢出诊断仍有明确的后续范围。本文说明对应当前源码。
+
+[综合产品审计](docs/AUDIT-V05-COVERAGE.md) 合并初始 SPEC 与 v0.2–v0.4 的需求、实现和历史回执；[视觉与交互审计](docs/AUDIT-V05-VISUAL.md) 记录美术及界面判断；[保存恢复审计](docs/AUDIT-V05-RECOVERY.md) 保留失败发现、修复与验证来源；[v0.5 范围](docs/SPEC-V05.md) 定义本轮交付；[交接记录](docs/HANDOFF-V05.md) 保存当前完成度和下一步。
 
 ## GitHub 版本管理
 
@@ -73,6 +75,8 @@ GUI、CLI 和 MCP 使用同一个本地文档服务。请求携带读取时的�
 
 缩略图分别显示当前页序和稳定短码。可搜索短码、旧 S 编号或标题，右键“复制页面短码”用于定位与沟通。对象新增和删除的画面反馈与持久化状态分别更新；“已保存”仍以本地文档服务的确认结果为准。
 
+文件长期被占用而导致保存未完成时，界面保留本地草稿并显示“恢复未完成保存”。解除文件占用后可在当前窗口恢复，原请求确认后继续保存后续输入，再正常关闭或切换项目。如果文件或保存记录与预期不一致，恢复会停止，保留现场；可先“复制待保存页面”并检查恢复详情。该操作不会强行覆盖外部内容。
+
 ## Agent 使用
 
 先打开桌面项目，再连接当前文档。Agent 先记录 Story 中的需求理解与保留约束，随后执行内容修改；用户无需在编辑器里手填意图：
@@ -103,7 +107,7 @@ MCP 配置见 plugins/huandeng/mcp.example.json。网页 ChatGPT 可通过已有
     corepack pnpm exec vitest run --project unit
     corepack pnpm check
 
-完整产品规划见 [Master SPEC](docs/SPEC.md)，当前增量见 [SPEC-V05](docs/SPEC-V05.md)，逐项状态见 [综合审计](docs/AUDIT-V05-COVERAGE.md)。已完成的历史验收见 [v0.4 发布记录](docs/RELEASE-V04.md)，本轮候选验收见 [v0.5 发布记录](docs/RELEASE-V05.md)。工程接续入口是 [WEBCHAT.md](WEBCHAT.md)。
+完整产品规划见 [Master SPEC](docs/SPEC.md)，当前增量见 [SPEC-V05](docs/SPEC-V05.md)，逐项状态见 [综合审计](docs/AUDIT-V05-COVERAGE.md)。已完成的历史验收见 [v0.4 发布记录](docs/RELEASE-V04.md)，本轮正式验收见 [v0.5 发布记录](docs/RELEASE-V05.md)。工程接续入口是 [WEBCHAT.md](WEBCHAT.md)。
 
 里程碑发布运行完整单元测试、类型和格式检查，并以实际桌面、项目编排、科研对象、原生 PowerPoint 及真实科研项目副本验收补足自动化覆盖。日常小修改只重复能够验证相应风险的检查。
 
