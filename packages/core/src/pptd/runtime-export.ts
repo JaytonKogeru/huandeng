@@ -6,6 +6,7 @@ import { buildPptdPdf, buildPptdPptx, createExportReport } from './export.ts';
 import { mimeType, openBrowser } from './export-environment.ts';
 import { imageDimensions } from './export-images.ts';
 import { ExportWorkspace } from './export-workspace.ts';
+import { hasPageTransition } from './page-transition.ts';
 import { type DeckSnapshot, PptdError } from './types.ts';
 import { createVideoEncoder, findVideoEncoder, type VideoCapabilities } from './video-encoder.ts';
 import { createVideoPlan, type VideoExportOptions, videoFrameTime } from './video-plan.ts';
@@ -129,6 +130,15 @@ export class ExportManager {
               code: 'VIDEO_CUE_TIMING',
               message: `每个演示步骤额外停留 ${plan.cueHoldMs} 毫秒；静态页 ${plan.staticDurationMs} 毫秒；动画末帧 ${plan.endHoldMs} 毫秒。`,
             },
+            ...frozen.pages
+              .filter((item) => hasPageTransition(item.data))
+              .map((item) => ({
+                severity: 'warning',
+                code: 'TRANSITION_NOT_EXPORTED',
+                pageId: item.pageId,
+                occurrenceId: item.occurrenceId,
+                message: '页面转场用于 HUANDENG 现场放映，本次视频导出不包含转场。',
+              })),
           ],
           pages: frozen.pages.map((item) => ({
             pageId: item.pageId,

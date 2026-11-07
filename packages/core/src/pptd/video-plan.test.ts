@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { type BuildTimeline, compileTimeline } from './animation-model';
 import { deckFixture } from './fixtures.test-utils';
 import { assertVideoAsset } from './video-encoder';
 import { createVideoPlan, videoFrameTime } from './video-plan';
@@ -27,6 +28,60 @@ function motion() {
 }
 
 describe('deterministic video plans', () => {
+  it('uses derived build steps while keeping authored effects and exact occurrence identity', () => {
+    const source = motion();
+    const timeline: BuildTimeline = {
+      schemaVersion: 2,
+      effects: [
+        {
+          id: 'enter',
+          targetId: 'box',
+          kind: 'fade-in',
+          trigger: 'click',
+          durationMs: 300,
+          delayMs: 0,
+        },
+        {
+          id: 'move',
+          targetId: 'box',
+          kind: 'move',
+          trigger: 'click',
+          durationMs: 600,
+          delayMs: 0,
+          dx: 300,
+          dy: 0,
+        },
+      ],
+    };
+    source.pages[0].occurrenceId = 'opening';
+    source.pages[0].data.timeline = timeline;
+    const repeated = structuredClone(source.pages[0]);
+    repeated.occurrenceId = 'recap';
+    repeated.versionId = 'checkpoint:earlier';
+    source.pages.push(repeated);
+    const before = structuredClone(source);
+    const plan = createVideoPlan(source, {
+      occurrenceId: 'recap',
+      fps: 30,
+      endHoldMs: 100,
+      cueHoldMs: 300,
+    });
+    expect(plan.segments[0]).toMatchObject({
+      occurrenceId: 'recap',
+      versionId: 'checkpoint:earlier',
+      timelineDurationMs: 900,
+      cueTimesMs: [300, 900],
+      durationMs: 1600,
+    });
+    expect(plan.totalFrames).toBe(48);
+    const compiled = compileTimeline(repeated.data);
+    expect(compiled?.sample(videoFrameTime(plan, plan.segments[0], 0)).get('box')?.opacity).toBe(0);
+    expect(videoFrameTime(plan, plan.segments[0], 12)).toBe(300);
+    expect(compiled?.sample(videoFrameTime(plan, plan.segments[0], 47)).get('box')?.matrix[4]).toBe(
+      320,
+    );
+    expect(source).toEqual(before);
+  });
   it('samples a timeline around cue holds and includes the exact final state', () => {
     const plan = createVideoPlan(motion(), { fps: 30, endHoldMs: 500, cueHoldMs: 1000 });
     const segment = plan.segments[0];

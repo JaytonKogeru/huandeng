@@ -234,3 +234,23 @@ describe('object and occurrence navigation', () => {
     ).toBe('测量结果');
   });
 });
+
+it('keeps live presentation clicks separate from native controls and key repeat', () => {
+  expect(resolveEditorKeyboardCommand(key('Enter'), 'workspace', true)).toEqual({
+    type: 'page-step',
+    direction: 1,
+  });
+  expect(resolveEditorKeyboardCommand(key('Enter'), 'control', true)).toBeNull();
+  expect(resolveEditorKeyboardCommand(key(' '), 'control', true)).toBeNull();
+  expect(
+    resolveEditorKeyboardCommand(key('ArrowRight', { repeat: true }), 'workspace', true),
+  ).toBeNull();
+  expect(resolveEditorKeyboardCommand(key('b'), 'workspace', true)).toEqual({
+    type: 'presentation-blackout',
+  });
+  expect(resolveEditorKeyboardCommand(key('f'), 'workspace', true)).toEqual({
+    type: 'presentation-fullscreen',
+  });
+  expect(resolveEditorKeyboardCommand(key('b'), 'input', true)).toBeNull();
+  expect(resolveEditorKeyboardCommand(key('f'), 'dialog', true)).toBeNull();
+});

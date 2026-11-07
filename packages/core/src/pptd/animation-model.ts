@@ -1,9 +1,23 @@
+import { type AnimationStep, type BuildTimeline, compileBuildTimeline } from './build-model';
 import { type PptdElement, PptdError, type PptdPage } from './types';
+
+export {
+  type AnimationStep,
+  BUILD_EFFECT_KINDS,
+  BUILD_TRIGGERS,
+  type BuildEffect,
+  type BuildEffectKind,
+  type BuildTimeline,
+  type BuildTrigger,
+  MAX_BUILD_DELAY_MS,
+  MAX_BUILD_EFFECTS,
+} from './build-model';
 
 export const TIMELINE_PROPERTIES = ['x', 'y', 'rotation', 'scaleX', 'scaleY', 'opacity'] as const;
 export const TIMELINE_EASINGS = ['linear', 'ease-in-out', 'hold'] as const;
 export const MAX_TIMELINE_DURATION_MS = 600_000;
 export const MAX_TIMELINE_TRACKS = 4096;
+export const MAX_TIMELINE_TRACK_KEYFRAMES = 1024;
 export const MAX_TIMELINE_KEYFRAMES = 50_000;
 export const MAX_TIMELINE_CUES = 256;
 
@@ -35,6 +49,14 @@ export interface PageTimeline {
   durationMs: number;
   tracks: TimelineTrack[];
   cues?: TimelineCue[];
+}
+
+export type PageAnimation = PageTimeline | BuildTimeline;
+
+export interface ResolvedPageAnimation {
+  animation: PageAnimation;
+  timeline: PageTimeline | null;
+  steps: AnimationStep[];
 }
 
 export type TimelineMatrix = [number, number, number, number, number, number];
@@ -137,8 +159,12 @@ export function validateTimeline(
     const targetProperty = `${track.targetId}\0${property}`;
     if (properties.has(targetProperty)) invalid('同一对象的同一属性只能有一条轨道。');
     properties.add(targetProperty);
-    if (!Array.isArray(track.keyframes) || !track.keyframes.length || track.keyframes.length > 512)
-      invalid('每条轨道需要 1–512 个关键帧。');
+    if (
+      !Array.isArray(track.keyframes) ||
+      !track.keyframes.length ||
+      track.keyframes.length > MAX_TIMELINE_TRACK_KEYFRAMES
+    )
+      invalid(`每条轨道需要 1–${MAX_TIMELINE_TRACK_KEYFRAMES} 个关键帧。`);
     count += track.keyframes.length;
     if (count > MAX_TIMELINE_KEYFRAMES) invalid('页面关键帧总数过多。');
     const keys = new Set<string>();
@@ -191,6 +217,58 @@ export function readTimeline(page: PptdPage): PageTimeline | null {
   if (page.timeline === undefined || page.timeline === null) return null;
   validateTimeline(page.timeline, page);
   return page.timeline;
+}
+
+function resolveAnimation(value: unknown, page: Pick<PptdPage, 'elements'>): ResolvedPageAnimation {
+  if (record(value) && value.schemaVersion === 2) {
+    const resolved = compileBuildTimeline(value, page);
+    validateTimeline(resolved.timeline ?? { schemaVersion: 1, durationMs: 1, tracks: [] }, page);
+    return resolved;
+  }
+  validateTimeline(value, page);
+  const cues = value.cues?.filter((cue) => cue.timeMs > 0) ?? [];
+  const steps: AnimationStep[] = [];
+  if (value.tracks.length || value.cues?.length) {
+    for (const cue of cues)
+      steps.push({
+        id: `cue:${cue.id}`,
+        label: cue.label || `步骤 ${steps.length + 1}`,
+        index: steps.length,
+        startMs: steps[steps.length - 1]?.endMs ?? 0,
+        endMs: cue.timeMs,
+        effectIds: [],
+        instant: false,
+      });
+    if (steps[steps.length - 1]?.endMs !== value.durationMs)
+      steps.push({
+        id: 'timeline:end',
+        label: '动画结束',
+        index: steps.length,
+        startMs: steps[steps.length - 1]?.endMs ?? 0,
+        endMs: value.durationMs,
+        effectIds: [],
+        instant: false,
+      });
+  }
+  return { animation: value, timeline: value, steps };
+}
+
+export function validatePageAnimation(
+  value: unknown,
+  page: Pick<PptdPage, 'elements'>,
+): asserts value is PageAnimation {
+  resolveAnimation(value, page);
+}
+
+export function readPageAnimation(page: PptdPage): PageAnimation | null {
+  if (page.timeline === undefined || page.timeline === null) return null;
+  validatePageAnimation(page.timeline, page);
+  return page.timeline;
+}
+
+export function resolvePageAnimation(page: PptdPage): ResolvedPageAnimation | null {
+  if (page.timeline === undefined || page.timeline === null) return null;
+  return resolveAnimation(page.timeline, page);
 }
 
 export function timelineBaseValue(element: PptdElement, property: TimelineProperty): number {
@@ -272,7 +350,7 @@ function elementMatrix(
 }
 
 export function compileTimeline(page: PptdPage): CompiledTimeline | null {
-  const timeline = readTimeline(page);
+  const timeline = resolvePageAnimation(page)?.timeline;
   if (!timeline) return null;
   const { byId, parents, order } = groupHierarchy(page.elements);
   const tracks = new Map<string, TimelineTrack[]>();

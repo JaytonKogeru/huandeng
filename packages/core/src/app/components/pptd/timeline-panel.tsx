@@ -109,7 +109,7 @@ function sameTimeline(left: PageTimeline | null, right: PageTimeline | null) {
   }
 }
 
-function TimelineField({
+export function TimelineField({
   label,
   value,
   onCommit,
@@ -123,6 +123,7 @@ function TimelineField({
   integer = false,
   className = 'w-full',
   inputRef,
+  inline = false,
 }: {
   label: string;
   value: string;
@@ -137,6 +138,7 @@ function TimelineField({
   integer?: boolean;
   className?: string;
   inputRef?: Ref<HTMLInputElement>;
+  inline?: boolean;
 }) {
   const id = useId();
   const [text, setText] = useState(value);
@@ -174,7 +176,7 @@ function TimelineField({
   };
   return (
     <label
-      className={`flex min-w-0 flex-col gap-1 text-xs text-muted-foreground ${className}`}
+      className={`flex min-w-0 ${inline ? 'items-center' : 'flex-col'} gap-1 text-xs text-muted-foreground ${className}`}
       htmlFor={id}
     >
       {label}
@@ -185,7 +187,7 @@ function TimelineField({
         data-hd-timeline-input={label}
         data-hd-input-dirty={editing.current ? 'true' : undefined}
         aria-invalid={invalid || undefined}
-        className={`${fieldClass} ${invalid ? 'border-destructive' : ''}`}
+        className={`${fieldClass} ${inline ? 'flex-1' : ''} ${invalid ? 'border-destructive' : ''}`}
         type={type}
         value={text}
         min={min}
@@ -789,7 +791,7 @@ function TimelineEditor({
       }}
     >
       <div className="flex flex-wrap items-center gap-2 border-b border-border/60 px-3 py-2">
-        <span className="mr-1 font-medium">动画</span>
+        <span className="mr-1 font-medium">高级时间线</span>
         <Button
           variant="ghost"
           size="icon-xs"

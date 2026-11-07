@@ -1,15 +1,41 @@
-import { ArrowLeft, ArrowRight, FileText, Pause, Play, RotateCcw, X } from 'lucide-react';
-import { memo, type Ref, useImperativeHandle } from 'react';
+import {
+  ArrowLeft,
+  ArrowRight,
+  ChevronDown,
+  ChevronUp,
+  FileText,
+  Maximize,
+  Minimize,
+  MonitorOff,
+  Pause,
+  Play,
+  RotateCcw,
+  X,
+} from 'lucide-react';
+import {
+  memo,
+  type Ref,
+  useCallback,
+  useEffect,
+  useImperativeHandle,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react';
+import { readPageTransition } from '../../../pptd/page-transition';
 import type { PageSize, PageSnapshot } from '../../../pptd/types';
 import { usePresentationPlayback } from '../../lib/pptd-playback';
 import { SlideCanvas } from '../slide-canvas';
 import { PptdPageRenderer, type PptdTheme } from './renderer';
 
 export interface PresentationControls {
+  pause: () => void;
   next: () => boolean;
   previous: () => boolean;
+  toggleBlackout: () => void;
+  toggleFullscreen: () => void;
+  seekBoundary: (end: boolean) => void;
 }
-
 interface PresentationViewProps {
   page: PageSnapshot;
   nextPage?: PageSnapshot;
@@ -18,12 +44,14 @@ interface PresentationViewProps {
   pageIndex: number;
   pageCount: number;
   notesOpen: boolean;
+  initialPosition?: 'start' | 'end';
+  sessionId?: number;
+  canStep?: () => boolean;
   onNotesToggle: () => void;
   onStep: (direction: number) => void;
   onClose: () => void;
   controlsRef: Ref<PresentationControls>;
 }
-
 const NextPagePreview = memo(function NextPagePreview({
   page,
   size,
@@ -40,11 +68,13 @@ const NextPagePreview = memo(function NextPagePreview({
       style={{ aspectRatio: `${size[0]} / ${size[1]}` }}
     >
       <SlideCanvas width={size[0]} height={size[1]} flat freezeMotion>
-        <PptdPageRenderer page={page} size={size} theme={theme} />
+        <PptdPageRenderer page={page} size={size} theme={theme} previewTimeMs={0} />
       </SlideCanvas>
     </div>
   );
 });
+const buttonClass =
+  'rounded-md p-2 text-zinc-200 outline-none transition-colors hover:bg-white/15 hover:text-white focus-visible:ring-2 focus-visible:ring-white/70 disabled:opacity-30';
 
 export function PresentationView({
   page,
@@ -54,35 +84,186 @@ export function PresentationView({
   pageIndex,
   pageCount,
   notesOpen,
+  initialPosition = 'start',
+  sessionId = 0,
+  canStep,
   onNotesToggle,
   onStep,
   onClose,
   controlsRef,
 }: PresentationViewProps) {
-  const playback = usePresentationPlayback(page, true);
-  useImperativeHandle(controlsRef, () => ({ next: playback.next, previous: playback.previous }), [
-    playback.next,
-    playback.previous,
-  ]);
-  const step = (direction: number) => {
-    if (!(direction > 0 ? playback.next() : playback.previous())) onStep(direction);
-  };
+  const playback = usePresentationPlayback(page, true, { initialPosition, restartKey: sessionId });
+  const root = useRef<HTMLElement>(null);
+  const slide = useRef<HTMLDivElement>(null);
+  const [detailsOpen, setDetailsOpen] = useState(false);
+  const [controlsVisible, setControlsVisible] = useState(true);
+  const [blackout, setBlackout] = useState(false);
+  const blackoutRef = useRef(false);
+  const [fullscreen, setFullscreen] = useState(false);
+  const [message, setMessage] = useState<string | null>(null);
+  const hideTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const time = playback.timeMs ?? 0;
-  const currentCue = [...(playback.timeline?.cues ?? [])]
-    .filter((cue) => cue.timeMs <= time)
-    .sort((a, b) => b.timeMs - a.timeMs)[0];
+  const revealControls = useCallback(() => {
+    setControlsVisible(true);
+    if (hideTimer.current) clearTimeout(hideTimer.current);
+    hideTimer.current = setTimeout(() => {
+      const focused = document.activeElement;
+      if (focused instanceof Element && focused.closest('[data-hd-presenter-controls]')) return;
+      setControlsVisible(false);
+    }, 2200);
+  }, []);
+  useLayoutEffect(() => {
+    void sessionId;
+    blackoutRef.current = false;
+    setBlackout(false);
+    setDetailsOpen(false);
+    revealControls();
+  }, [sessionId, revealControls]);
+  useEffect(() => {
+    revealControls();
+    return () => {
+      if (hideTimer.current) clearTimeout(hideTimer.current);
+    };
+  }, [revealControls]);
+  const restoreBlackout = useCallback(() => {
+    if (!blackoutRef.current) return false;
+    blackoutRef.current = false;
+    setBlackout(false);
+    revealControls();
+    return true;
+  }, [revealControls]);
+  const next = useCallback(
+    () => (canStep && !canStep()) || restoreBlackout() || playback.next(),
+    [canStep, restoreBlackout, playback.next],
+  );
+  const previous = useCallback(
+    () => (canStep && !canStep()) || restoreBlackout() || playback.previous(),
+    [canStep, restoreBlackout, playback.previous],
+  );
+  const toggleBlackout = useCallback(() => {
+    playback.pause();
+    blackoutRef.current = !blackoutRef.current;
+    setBlackout(blackoutRef.current);
+    revealControls();
+  }, [playback.pause, revealControls]);
+  const toggleFullscreen = useCallback(() => {
+    const element = root.current;
+    if (!element) return;
+    const operation = document.fullscreenElement
+      ? document.exitFullscreen()
+      : element.requestFullscreen?.();
+    void operation?.catch(() => setMessage('未能进入全屏，可继续窗口放映。'));
+  }, []);
+  useEffect(() => {
+    const update = () => setFullscreen(document.fullscreenElement === root.current);
+    document.addEventListener('fullscreenchange', update);
+    return () => document.removeEventListener('fullscreenchange', update);
+  }, []);
+  const seekBoundary = useCallback(
+    (end: boolean) => {
+      restoreBlackout();
+      playback.seek(end ? (playback.timeline?.durationMs ?? 0) : 0);
+    },
+    [restoreBlackout, playback.seek, playback.timeline],
+  );
+  useImperativeHandle(
+    controlsRef,
+    () => ({
+      pause: playback.pause,
+      next,
+      previous,
+      toggleBlackout,
+      toggleFullscreen,
+      seekBoundary,
+    }),
+    [playback.pause, next, previous, toggleBlackout, toggleFullscreen, seekBoundary],
+  );
+  const step = (direction: number) => {
+    if (!(direction > 0 ? next() : previous())) onStep(direction);
+  };
+  useLayoutEffect(() => {
+    void page.pageId;
+    void sessionId;
+    void page.occurrenceId;
+    void page.versionId;
+    const target = slide.current;
+    setMessage(null);
+    let transition: ReturnType<typeof readPageTransition>;
+    try {
+      transition = readPageTransition(page.data);
+    } catch (error) {
+      setMessage(error instanceof Error ? error.message : String(error));
+      return;
+    }
+    if (
+      !target ||
+      transition?.kind !== 'fade' ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    )
+      return;
+    const motion = target.animate([{ opacity: 0 }, { opacity: 1 }], {
+      duration: transition.durationMs,
+      easing: 'ease-out',
+    });
+    return () => motion.cancel();
+  }, [page.pageId, page.occurrenceId, page.versionId, page.data, sessionId]);
+  const close = () => {
+    if (document.fullscreenElement === root.current) void document.exitFullscreen().catch(() => {});
+    onClose();
+  };
+  const showControls = controlsVisible || detailsOpen || notesOpen || !!playback.error || !!message;
   return (
     <section
-      className="fixed inset-0 z-50 flex flex-col bg-black outline-none"
+      ref={root}
+      className="fixed inset-0 z-50 flex bg-black outline-none"
       data-hd-presenter
+      data-hd-presenter-step={playback.stepIndex}
+      data-hd-presenter-playing={playback.playing}
+      data-hd-presenter-time={time}
       aria-label="演示模式"
       tabIndex={-1}
+      onPointerMove={revealControls}
+      onFocusCapture={revealControls}
+      onKeyDownCapture={(event) => {
+        if (
+          event.repeat &&
+          [
+            'Enter',
+            ' ',
+            'ArrowRight',
+            'ArrowLeft',
+            'ArrowUp',
+            'ArrowDown',
+            'PageUp',
+            'PageDown',
+          ].includes(event.key) &&
+          !(event.target instanceof Element && event.target.closest('input,textarea,select'))
+        ) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+      }}
     >
-      <div className="flex min-h-0 flex-1">
+      <div className="relative min-h-0 min-w-0 flex-1">
+        {/* biome-ignore lint/a11y/useSemanticElements: A slide contains block-level scientific content that cannot be nested in a native button. */}
         <div
-          className="min-w-0 flex-1 p-4"
+          ref={slide}
+          role="button"
+          tabIndex={0}
+          aria-label="单击播放下一步"
           data-hd-presenter-slide={page.pageId}
           data-hd-presenter-occurrence={page.occurrenceId}
+          className={`h-full w-full select-none outline-none ${!showControls ? 'cursor-none' : ''}`}
+          onClick={(event) => {
+            if (event.button === 0) step(1);
+          }}
+          onKeyDown={(event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+              event.preventDefault();
+              event.stopPropagation();
+              if (!event.repeat) step(1);
+            }
+          }}
         >
           <SlideCanvas width={size[0]} height={size[1]} flat>
             <PptdPageRenderer
@@ -93,133 +274,216 @@ export function PresentationView({
             />
           </SlideCanvas>
         </div>
-        {notesOpen && (
-          <aside
-            id="hd-presenter-notes"
-            aria-label="演讲者备注"
-            data-hd-presenter-notes={page.pageId}
-            className="flex w-80 max-w-[40vw] shrink-0 flex-col border-l border-white/15 bg-zinc-950 px-5 py-5 text-zinc-100"
-          >
-            <div className="mb-4 flex items-center justify-between gap-3">
-              <h2 className="text-sm font-medium">演讲者备注</h2>
-              <span className="font-mono text-xs text-zinc-400" data-hd-presenter-code>
-                {page.shortCode ?? page.metadata.label ?? '未编号'} · {pageIndex + 1}
+        {blackout && (
+          <button
+            type="button"
+            data-hd-presenter-blackout
+            className="absolute inset-0 bg-black"
+            onClick={() => restoreBlackout()}
+            aria-label="恢复放映画面"
+            onKeyDown={(event) => {
+              if (event.key === ' ' || event.key === 'Enter') {
+                event.preventDefault();
+                event.stopPropagation();
+                restoreBlackout();
+              }
+            }}
+          />
+        )}
+        <div
+          data-hd-presenter-controls
+          className={`absolute inset-x-0 bottom-0 z-10 px-5 pb-4 pt-10 text-white transition-opacity duration-150 motion-reduce:transition-none focus-within:opacity-100 focus-within:pointer-events-auto ${showControls ? 'opacity-100' : 'pointer-events-none opacity-0'}`}
+          style={{ background: 'linear-gradient(transparent, rgb(0 0 0 / 85%))' }}
+        >
+          {(playback.error || message) && (
+            <p role="alert" className="mb-3 text-center text-sm text-amber-200">
+              {playback.error ? `此页动画无法播放：${playback.error}` : message}
+            </p>
+          )}
+          {detailsOpen && playback.timeline && (
+            <div
+              className="mx-auto mb-3 flex max-w-3xl items-center gap-3 text-xs text-zinc-300"
+              data-hd-presenter-timeline
+            >
+              <button
+                type="button"
+                aria-label={playback.playing ? '暂停动画' : '播放至下一提示点'}
+                disabled={blackout}
+                onClick={playback.toggle}
+                className={buttonClass}
+              >
+                {playback.playing ? <Pause className="size-4" /> : <Play className="size-4" />}
+              </button>
+              <button
+                type="button"
+                aria-label="动画回到起点"
+                disabled={blackout}
+                onClick={() => playback.seek(0)}
+                className={buttonClass}
+              >
+                <RotateCcw className="size-4" />
+              </button>
+              <input
+                type="range"
+                disabled={blackout}
+                aria-label="放映动画时间"
+                min={0}
+                max={playback.timeline.durationMs}
+                step={1}
+                value={Math.round(time)}
+                onChange={(event) => playback.seek(Number(event.target.value))}
+                className="min-w-12 flex-1 accent-white"
+              />
+              <span className="font-mono tabular-nums">
+                {(time / 1000).toFixed(1)} / {(playback.timeline.durationMs / 1000).toFixed(1)}s
               </span>
             </div>
-            <div
-              className="min-h-0 flex-1 overflow-y-auto whitespace-pre-wrap break-words text-sm leading-relaxed text-zinc-200"
-              data-hd-presenter-note-text
-              aria-live="polite"
-            >
-              {page.data.notes?.trim() ? page.data.notes : '这一页暂无演讲备注。'}
-            </div>
-            <div className="mt-5 shrink-0 border-t border-white/15 pt-4">
-              {nextPage ? (
-                <>
-                  <div className="mb-2 flex items-center justify-between text-xs text-zinc-400">
-                    <span>下一页</span>
-                    <span className="font-mono">
-                      {nextPage.shortCode ?? nextPage.metadata.label ?? '未编号'}
-                    </span>
-                  </div>
-                  <NextPagePreview page={nextPage} size={size} theme={theme} />
-                </>
-              ) : (
-                <p className="text-xs text-zinc-400" data-hd-presenter-end>
-                  已到最后一页
-                </p>
-              )}
-            </div>
-          </aside>
-        )}
-      </div>
-      {playback.timeline && (
-        <div
-          className="mx-auto flex w-full max-w-3xl shrink-0 items-center gap-3 px-6 pt-2 text-xs text-zinc-300"
-          data-hd-presenter-timeline
-        >
-          <button
-            type="button"
-            aria-label={playback.playing ? '暂停动画' : '播放至下一提示点'}
-            onClick={playback.toggle}
-            className="rounded p-1.5 hover:bg-white/10"
-          >
-            {playback.playing ? <Pause className="size-4" /> : <Play className="size-4" />}
-          </button>
-          <button
-            type="button"
-            aria-label="动画回到起点"
-            onClick={() => playback.seek(0)}
-            className="rounded p-1.5 hover:bg-white/10"
-          >
-            <RotateCcw className="size-3.5" />
-          </button>
-          <input
-            type="range"
-            aria-label="放映动画时间"
-            min={0}
-            max={playback.timeline.durationMs}
-            step={1}
-            value={Math.round(time)}
-            onChange={(event) => playback.seek(Number(event.target.value))}
-            className="min-w-12 flex-1 accent-white"
-          />
-          <span className="w-24 text-right font-mono tabular-nums">
-            {(time / 1000).toFixed(1)} / {(playback.timeline.durationMs / 1000).toFixed(1)}s
-          </span>
-          {currentCue && (
-            <span className="max-w-40 truncate" title={currentCue.label}>
-              {currentCue.label}
-            </span>
           )}
+          <div className="flex items-center justify-between gap-3">
+            <div className="flex min-w-0 flex-1 items-center gap-2">
+              <button
+                type="button"
+                aria-label="演讲者备注"
+                aria-pressed={notesOpen}
+                aria-controls={notesOpen ? 'hd-presenter-notes' : undefined}
+                data-hd-presenter-notes-toggle
+                onClick={onNotesToggle}
+                className={buttonClass}
+                title="备注与下一页（同窗口）"
+              >
+                <FileText className="size-4" />
+              </button>
+              <span className="truncate text-xs text-zinc-300">
+                {page.shortCode ?? page.metadata.label}{' '}
+                <span className="mx-2 text-zinc-600">/</span> {pageIndex + 1} / {pageCount}
+              </span>
+            </div>
+            <div className="flex min-w-0 flex-[2] items-center justify-center gap-3">
+              <button
+                type="button"
+                aria-label={playback.steps.length ? '上一步' : '上一页'}
+                disabled={pageIndex <= 0 && time <= 0 && !playback.playing && !blackout}
+                onClick={() => step(-1)}
+                className={buttonClass}
+              >
+                <ArrowLeft className="size-4" />
+              </button>
+              <span
+                data-hd-presenter-step-label
+                className="min-w-24 max-w-80 truncate text-center text-xs"
+                title={playback.nextStep?.label}
+              >
+                {blackout
+                  ? '画面已暂停'
+                  : playback.steps.length
+                    ? `${playback.stepIndex} / ${playback.steps.length} 步${playback.nextStep ? ` · ${playback.playing ? '正在播放' : '下一步'} ${playback.nextStep.label}` : ' · 本页完成'}`
+                    : pageIndex === pageCount - 1
+                      ? '最后一页'
+                      : '单击进入下一页'}
+              </span>
+              <button
+                type="button"
+                aria-label={playback.steps.length ? '下一步' : '下一页'}
+                disabled={
+                  !blackout &&
+                  pageIndex >= pageCount - 1 &&
+                  (!playback.timeline ||
+                    time >= playback.timeline.durationMs ||
+                    !playback.steps.length)
+                }
+                onClick={() => step(1)}
+                className={buttonClass}
+              >
+                <ArrowRight className="size-4" />
+              </button>
+            </div>
+            <div className="flex flex-1 items-center justify-end gap-1">
+              {playback.timeline && (
+                <button
+                  type="button"
+                  aria-label="动画播放控制"
+                  aria-expanded={detailsOpen}
+                  onClick={() => setDetailsOpen((open) => !open)}
+                  className={buttonClass}
+                >
+                  {detailsOpen ? (
+                    <ChevronDown className="size-4" />
+                  ) : (
+                    <ChevronUp className="size-4" />
+                  )}
+                </button>
+              )}
+              <button
+                type="button"
+                aria-label={blackout ? '恢复放映画面' : '黑屏暂停'}
+                aria-pressed={blackout}
+                onClick={toggleBlackout}
+                title="黑屏暂停 B"
+                className={buttonClass}
+              >
+                <MonitorOff className="size-4" />
+              </button>
+              <button
+                type="button"
+                aria-label={fullscreen ? '退出全屏' : '进入全屏'}
+                onClick={toggleFullscreen}
+                title="全屏 F"
+                className={buttonClass}
+              >
+                {fullscreen ? <Minimize className="size-4" /> : <Maximize className="size-4" />}
+              </button>
+              <button
+                type="button"
+                aria-label="退出演示"
+                onClick={close}
+                title="退出 Esc"
+                className={buttonClass}
+              >
+                <X className="size-4" />
+              </button>
+            </div>
+          </div>
         </div>
-      )}
-      <div className="flex h-12 shrink-0 items-center justify-center gap-5 text-white">
-        <button
-          type="button"
-          aria-label="演讲者备注"
-          aria-pressed={notesOpen}
-          aria-controls={notesOpen ? 'hd-presenter-notes' : undefined}
-          data-hd-presenter-notes-toggle
-          className="absolute left-6 flex items-center gap-2 rounded px-2 py-1 text-xs text-zinc-300 hover:bg-white/10 hover:text-white focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-white"
-          onClick={onNotesToggle}
-        >
-          <FileText className="size-4" />
-          备注
-        </button>
-        <button
-          type="button"
-          aria-label={playback.timeline ? '上一步' : '上一页'}
-          disabled={pageIndex <= 0 && time <= 0}
-          onClick={() => step(-1)}
-          className="rounded p-2 hover:bg-white/10 disabled:opacity-30"
-        >
-          <ArrowLeft className="size-4" />
-        </button>
-        <span className="font-mono text-xs">
-          {pageIndex + 1} / {pageCount} · {page.shortCode ?? page.metadata.label}
-        </span>
-        <button
-          type="button"
-          aria-label={playback.timeline ? '下一步' : '下一页'}
-          disabled={
-            pageIndex >= pageCount - 1 &&
-            (!playback.timeline || time >= playback.timeline.durationMs)
-          }
-          onClick={() => step(1)}
-          className="rounded p-2 hover:bg-white/10 disabled:opacity-30"
-        >
-          <ArrowRight className="size-4" />
-        </button>
-        <button
-          type="button"
-          aria-label="退出演示"
-          className="absolute right-6 rounded p-2 hover:bg-white/10"
-          onClick={onClose}
-        >
-          <X className="size-4" />
-        </button>
       </div>
+      {notesOpen && (
+        <aside
+          id="hd-presenter-notes"
+          aria-label="演讲者备注"
+          data-hd-presenter-notes={page.pageId}
+          className="flex w-80 max-w-[36vw] shrink-0 flex-col border-l border-white/15 bg-zinc-950 px-5 py-5 text-zinc-100"
+        >
+          <div className="mb-4 flex items-center justify-between gap-3">
+            <h2 className="text-sm font-medium">演讲者备注</h2>
+            <span className="font-mono text-xs text-zinc-400" data-hd-presenter-code>
+              {page.shortCode ?? page.metadata.label ?? '未编号'} · {pageIndex + 1}
+            </span>
+          </div>
+          <p className="mb-3 text-[11px] text-zinc-500">此栏与幻灯片显示在同一窗口。</p>
+          <div
+            className="min-h-0 flex-1 overflow-y-auto whitespace-pre-wrap break-words text-sm leading-relaxed text-zinc-200"
+            data-hd-presenter-note-text
+          >
+            {page.data.notes?.trim() || '这一页暂无演讲备注。'}
+          </div>
+          <div className="mt-5 shrink-0 border-t border-white/15 pt-4">
+            {nextPage ? (
+              <>
+                <div className="mb-2 flex items-center justify-between text-xs text-zinc-400">
+                  <span>下一页</span>
+                  <span className="font-mono">
+                    {nextPage.shortCode ?? nextPage.metadata.label ?? '未编号'}
+                  </span>
+                </div>
+                <NextPagePreview page={nextPage} size={size} theme={theme} />
+              </>
+            ) : (
+              <p className="text-xs text-zinc-400" data-hd-presenter-end>
+                已到最后一页
+              </p>
+            )}
+          </div>
+        </aside>
+      )}
     </section>
   );
 }

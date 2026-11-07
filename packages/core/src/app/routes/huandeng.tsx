@@ -80,7 +80,7 @@ import {
 } from '@/lib/pptd-keyboard';
 import { useDocumentTitle } from '@/lib/use-document-title';
 import { usePptdDocument } from '@/lib/use-pptd-document';
-import { type PageTimeline, validateTimeline } from '../../pptd/animation-model';
+import { type PageAnimation, validatePageAnimation } from '../../pptd/animation-model';
 import type { AssetLibraryOptions } from '../../pptd/asset-library';
 import {
   buildGroup,
@@ -91,7 +91,12 @@ import {
   ungroupOperations,
 } from '../../pptd/grouping';
 import { readProjectModel } from '../../pptd/project-model';
-import { copiedTimelineTracks, knownTimeline } from '../../pptd/timeline-operations';
+import {
+  copiedTimelineTracks,
+  knownTimeline,
+  selectedTimelineTargets,
+  timelineTargetIds,
+} from '../../pptd/timeline-operations';
 import type { DeckSnapshot, PageSnapshot, PptdElement, PptdOperation } from '../../pptd/types';
 
 export function HuandengEditor() {
@@ -154,7 +159,10 @@ export function HuandengEditor() {
   } | null>(null);
   const presenterReturnFocus = useRef<HTMLElement | null>(null);
   const [presenting, setPresenting] = useState(false);
+  const [presentationSession, setPresentationSession] = useState(0);
   const [presenterNotesOpen, setPresenterNotesOpen] = useState(false);
+  const presentationEntries = useRef(new Map<string, 'start' | 'end'>());
+  const pendingPresentationPage = useRef<string | null>(null);
   const imageInputRef = useRef<HTMLInputElement | null>(null);
   const [historyPageId, setHistoryPageId] = useState<string | null>(null);
   const [leftTab, setLeftTabState] = useState<'pages' | 'files' | 'project' | 'assets'>('pages');
@@ -243,6 +251,11 @@ export function HuandengEditor() {
   const busy = state.saving || exporting || importingImages;
   const presentationBlocked = auxiliaryDirty || presentationLoading || !!presentationError;
   const nextPage = pageIndex >= 0 ? viewPages[pageIndex + 1] : undefined;
+  const presentationPageKey = `${page?.pageId ?? ''}:${page?.occurrenceId ?? ''}:${page?.versionId ?? ''}`;
+  useLayoutEffect(() => {
+    if (pendingPresentationPage.current === presentationPageKey)
+      pendingPresentationPage.current = null;
+  }, [presentationPageKey]);
   const historyPage = snapshot?.pages.find((item) => item.pageId === historyPageId);
   const currentPageIdRef = useRef(selectedPageId);
   currentPageIdRef.current = selectedPageId;
@@ -501,11 +514,7 @@ export function HuandengEditor() {
             selectedIds,
             ...(animation
               ? {
-                  timeline: {
-                    ...animation,
-                    tracks: animation.tracks.filter((track) => ids.has(track.targetId)),
-                    cues: [],
-                  },
+                  timeline: selectedTimelineTargets(animation, ids),
                 }
               : {}),
           }),
@@ -558,9 +567,10 @@ export function HuandengEditor() {
         if (ungroup) {
           const groups = selectedElements.filter((item) => item.elementType === 'group');
           const groupIds = new Set(groups.map((item) => item.elementId));
-          if (knownTimeline(page.data)?.tracks.some((track) => groupIds.has(track.targetId)))
+          const groupAnimation = knownTimeline(page.data);
+          if (groupAnimation && timelineTargetIds(groupAnimation).some((id) => groupIds.has(id)))
             throw new Error(
-              '此组合带有动画轨道。请先在时间线中移除组合轨道，再取消组合；成员自身的轨道会保留。',
+              '此组合带有动画。请先移除组合本身的动画，再取消组合；成员自身的动画会保留。',
             );
           await client.apply(
             ungroupOperations(
@@ -648,7 +658,7 @@ export function HuandengEditor() {
         deckId?: string;
         elements?: PptdElement[];
         selectedIds?: string[];
-        timeline?: PageTimeline;
+        timeline?: PageAnimation;
       };
       try {
         copied = JSON.parse(event.clipboardData?.getData('text/plain') ?? '');
@@ -667,7 +677,7 @@ export function HuandengEditor() {
       void run(async () => {
         if (copied.deckId !== snapshot.deckId)
           throw new Error('请在同一项目中复制对象。跨项目图片可用“从设备导入”复制素材。');
-        if (copied.timeline) validateTimeline(copied.timeline, { elements: copiedElements });
+        if (copied.timeline) validatePageAnimation(copied.timeline, { elements: copiedElements });
         await client.flushAll();
         const destination = client.page(page.pageId);
         if (!destination) throw new Error('目标页面已不可用。');
@@ -745,7 +755,7 @@ export function HuandengEditor() {
 
   const stepPage = useCallback(
     (delta: number) => {
-      if (!viewPages.length) return;
+      if (!viewPages.length || (presenting && pendingPresentationPage.current)) return;
       // Router transitions may not have committed a preceding Home/End or repeat yet.
       // Its URL is synchronous; use that latest requested identity for the next step.
       const requested = new URLSearchParams(window.location.search);
@@ -757,15 +767,31 @@ export function HuandengEditor() {
         : viewPages.findIndex((item) => item.pageId === id);
       const current = requestedIndex < 0 ? pageIndex : requestedIndex;
       const next = Math.max(0, Math.min(viewPages.length - 1, current + delta));
+      if (next === current) return;
+      if (presenting) {
+        const destination = viewPages[next];
+        const key = `${destination.pageId}:${destination.occurrenceId ?? ''}:${destination.versionId ?? ''}`;
+        presentationEntries.current.set(key, delta < 0 ? 'end' : 'start');
+        pendingPresentationPage.current = key;
+      }
       selectPage(viewPages[next].pageId, viewPages[next].occurrenceId);
     },
-    [viewPages, pageIndex, selectPage, selectedPresentationId],
+    [viewPages, pageIndex, selectPage, selectedPresentationId, presenting],
   );
 
   const executeKeyboardCommand = useCallback(
     (command: EditorKeyboardCommand, target: EventTarget | null) => {
       if (command.type === 'help') {
-        setKeyboardHelpOpen(true);
+        if (presenting) presentationControls.current?.pause();
+        if (document.fullscreenElement) {
+          void document
+            .exitFullscreen()
+            .then(() => setKeyboardHelpOpen(true))
+            .catch(() => {
+              setPresenting(false);
+              setKeyboardHelpOpen(true);
+            });
+        } else setKeyboardHelpOpen(true);
         return;
       }
       if (command.type === 'focus-region') {
@@ -783,7 +809,17 @@ export function HuandengEditor() {
         });
         return;
       }
+      if (command.type === 'presentation-blackout') {
+        presentationControls.current?.toggleBlackout();
+        return;
+      }
+      if (command.type === 'presentation-fullscreen') {
+        presentationControls.current?.toggleFullscreen();
+        return;
+      }
       if (command.type === 'cancel') {
+        if (presenting && document.fullscreenElement)
+          void document.exitFullscreen().catch(() => {});
         setInsertionTool(null);
         setAutoEditId(null);
         setPresenting(false);
@@ -799,14 +835,21 @@ export function HuandengEditor() {
         }
         void run(async () => {
           await client.flushAll();
-          if (!command.fromCurrent && viewPages[0])
-            selectPage(viewPages[0].pageId, viewPages[0].occurrenceId);
+          const destination = command.fromCurrent ? page : (viewPages[0] ?? page);
+          const key = `${destination.pageId}:${destination.occurrenceId ?? ''}:${destination.versionId ?? ''}`;
+          if (presenting && key === presentationPageKey)
+            presentationControls.current?.seekBoundary(false);
+          presentationEntries.current.clear();
+          pendingPresentationPage.current = key === presentationPageKey ? null : key;
+          setPresentationSession((session) => session + 1);
+          selectPage(destination.pageId, destination.occurrenceId);
           setPresenterNotesOpen(false);
           setPresenting(true);
         });
         return;
       }
       if (command.type === 'page-step') {
+        if (presenting && pendingPresentationPage.current) return;
         if (
           presenting &&
           (command.direction > 0
@@ -819,7 +862,22 @@ export function HuandengEditor() {
       }
       if (command.type === 'page-boundary') {
         const next = command.end ? viewPages[viewPages.length - 1] : viewPages[0];
-        if (next) selectPage(next.pageId, next.occurrenceId);
+        if (next) {
+          if (presenting) {
+            const key = `${next.pageId}:${next.occurrenceId ?? ''}:${next.versionId ?? ''}`;
+            const pending = pendingPresentationPage.current;
+            if (key === presentationPageKey) {
+              // An absolute Home/End command supersedes an in-flight page request.
+              pendingPresentationPage.current = null;
+              presentationControls.current?.seekBoundary(command.end);
+              if (!pending) return;
+            } else {
+              presentationEntries.current.set(key, command.end ? 'end' : 'start');
+              pendingPresentationPage.current = key;
+            }
+          }
+          selectPage(next.pageId, next.occurrenceId);
+        }
         return;
       }
       if (command.type === 'copy') {
@@ -944,6 +1002,7 @@ export function HuandengEditor() {
       pageReadonly,
       patchElement,
       presentationBlocked,
+      presentationPageKey,
       presenting,
       readonly,
       removeElements,
@@ -1345,6 +1404,9 @@ export function HuandengEditor() {
               onClick={() =>
                 void run(async () => {
                   await client.flushAll();
+                  presentationEntries.current.clear();
+                  pendingPresentationPage.current = null;
+                  setPresentationSession((session) => session + 1);
                   setPresenterNotesOpen(false);
                   setPresenting(true);
                 })
@@ -1927,6 +1989,18 @@ export function HuandengEditor() {
                   busy ||
                   !snapshot.pages.some((item) => item.pageId === authoringPage.pageId)
                 }
+                onSelectTargets={setSelectedIds}
+                onTransitionChange={async (transition, expectedPageRevision) => {
+                  const current = client
+                    .getState()
+                    .snapshot?.pages.find((item) => item.pageId === authoringPage.pageId);
+                  if (!current || current.pageRevision !== expectedPageRevision)
+                    throw new Error('页面已在别处改变，转场修改已保留，请还原后重试。');
+                  return client.apply(
+                    [{ op: 'page.transition.set', pageId: authoringPage.pageId, transition }],
+                    { pages: { [authoringPage.pageId]: current.pageRevision } },
+                  );
+                }}
                 onTimelineDirty={setTimelineDirty}
                 onPreviewModeChange={setPreviewActive}
                 onTimelineChange={async (timeline, expectedPageRevision) => {
@@ -2290,6 +2364,9 @@ export function HuandengEditor() {
           pageIndex={pageIndex}
           pageCount={viewPages.length}
           notesOpen={presenterNotesOpen}
+          initialPosition={presentationEntries.current.get(presentationPageKey) ?? 'start'}
+          sessionId={presentationSession}
+          canStep={() => !pendingPresentationPage.current}
           onNotesToggle={() => setPresenterNotesOpen((open) => !open)}
           onStep={stepPage}
           onClose={() => setPresenting(false)}

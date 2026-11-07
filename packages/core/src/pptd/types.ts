@@ -1,4 +1,5 @@
-import type { PageTimeline } from './animation-model';
+import type { PageAnimation } from './animation-model';
+import type { PageTransition } from './page-transition';
 
 export type Revision = `sha256:${string}`;
 export type PageSize = [number, number];
@@ -192,7 +193,13 @@ export interface PageNotesOperation {
 export interface PageTimelineOperation {
   op: 'page.timeline.set';
   pageId: string;
-  timeline: PageTimeline | null;
+  timeline: PageAnimation | null;
+}
+
+export interface PageTransitionOperation {
+  op: 'page.transition.set';
+  pageId: string;
+  transition: PageTransition | null;
 }
 
 export interface PageAddOperation {
@@ -274,6 +281,7 @@ export type PptdOperation =
   | ElementReorderOperation
   | PageNotesOperation
   | PageTimelineOperation
+  | PageTransitionOperation
   | PageAddOperation
   | PageDuplicateOperation
   | PageMoveOperation

@@ -19,12 +19,14 @@ export type EditorKeyboardCommand =
   | { type: 'nudge'; dx: number; dy: number }
   | { type: 'focus-region' | 'page-step'; direction: -1 | 1 }
   | { type: 'page-boundary'; end: boolean }
-  | { type: 'present'; fromCurrent: boolean };
+  | { type: 'present'; fromCurrent: boolean }
+  | { type: 'presentation-blackout' | 'presentation-fullscreen' };
 
 type KeyboardInput = Pick<KeyboardEvent, 'key' | 'ctrlKey' | 'metaKey' | 'altKey' | 'shiftKey'> & {
   defaultPrevented?: boolean;
   isComposing?: boolean;
   keyCode?: number;
+  repeat?: boolean;
 };
 
 export function editorKeyboardScope(target: EventTarget | null): EditorKeyboardScope {
@@ -51,6 +53,7 @@ export function resolveEditorKeyboardCommand(
 ): EditorKeyboardCommand | null {
   if (
     event.defaultPrevented ||
+    (presenting && event.repeat) ||
     event.isComposing ||
     event.keyCode === 229 ||
     event.altKey ||
@@ -71,8 +74,11 @@ export function resolveEditorKeyboardCommand(
   if (!control && key === 'escape') return { type: 'cancel' };
   if (!control && key === 'f5') return { type: 'present', fromCurrent: event.shiftKey };
   if (presenting) {
-    if (control || (scope === 'control' && key === ' ')) return null;
-    if (['arrowright', 'arrowdown', ' ', 'pagedown'].includes(key))
+    if (control || event.repeat || (scope === 'control' && (key === ' ' || key === 'enter')))
+      return null;
+    if (key === 'b' || key === '.') return { type: 'presentation-blackout' };
+    if (key === 'f') return { type: 'presentation-fullscreen' };
+    if (['arrowright', 'arrowdown', ' ', 'enter', 'pagedown'].includes(key))
       return { type: 'page-step', direction: 1 };
     if (['arrowleft', 'arrowup', 'pageup'].includes(key))
       return { type: 'page-step', direction: -1 };
@@ -259,7 +265,8 @@ export const EDITOR_KEYBOARD_HELP = [
       ['Esc / Ctrl+Enter', '结束画布文字编辑，返回对象'],
       ['Enter / Esc', '属性字段提交 / 取消；输入中保留原生键盘行为'],
       ['F5 / Shift+F5', '从第一页 / 当前页开始演示'],
-      ['方向键 / 空格 / PageUp / PageDown', '演示中前进或返回'],
+      ['单击 / Enter / 空格 / 方向键', '演示中前进或返回，全部步骤完成后换页'],
+      ['B / . / F', '黑屏暂停 / 恢复；F 切换全屏'],
       ['Home / End / Esc', '演示中到首尾页 / 退出演示'],
     ],
   },

@@ -33,6 +33,50 @@ const image: PptdElement = {
 const assets = { resolveAsset: async () => ({ bytes: PNG_FIXTURE, mimeType: 'image/png' }) };
 
 describe('PPTD native PPTX export', () => {
+  it('exports the base appearance of click builds and identifies omitted page transitions', async () => {
+    const source = deckFixture([structuredClone(text)]);
+    source.pages[0].data.timeline = {
+      schemaVersion: 2,
+      effects: [
+        {
+          id: 'enter',
+          targetId: 'finding',
+          kind: 'fade-in',
+          trigger: 'click',
+          durationMs: 300,
+          delayMs: 0,
+        },
+        {
+          id: 'move',
+          targetId: 'finding',
+          kind: 'move',
+          trigger: 'click',
+          durationMs: 300,
+          delayMs: 0,
+          dx: 400,
+          dy: 0,
+        },
+      ],
+    };
+    source.pages[0].data.transition = { schemaVersion: 1, kind: 'fade', durationMs: 200 };
+    const before = structuredClone(source);
+    const result = await buildPptdPptx(source, assets);
+    const xml = strFromU8(unzipSync(result.bytes)['ppt/slides/slide1.xml']);
+    expect(xml).toContain('<a:off x="127000" y="254000"/>');
+    expect(xml).not.toContain('<p:timing');
+    expect(xml).not.toContain('<p:transition');
+    for (const format of ['png', 'pdf', 'pptx'] as const) {
+      const report = createExportReport(source, format);
+      expect(report.renderState).toBe('base');
+      expect(report.diagnostics).toContainEqual(
+        expect.objectContaining({ code: 'TIMELINE_STATIC_EXPORT' }),
+      );
+      expect(report.diagnostics).toContainEqual(
+        expect.objectContaining({ code: 'TRANSITION_NOT_EXPORTED' }),
+      );
+    }
+    expect(source).toEqual(before);
+  });
   it('exports the base geometry and explicitly reports that editable timelines remain in PPTD', async () => {
     const source = deckFixture([structuredClone(text)]);
     source.pages[0].data.timeline = {

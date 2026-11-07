@@ -2,7 +2,7 @@ import { randomUUID } from 'node:crypto';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { isDeepStrictEqual } from 'node:util';
-import { validateTimeline } from './animation-model';
+import { validatePageAnimation } from './animation-model';
 import {
   assertIndependentFields,
   assertJsonValue,
@@ -33,6 +33,7 @@ import {
 } from './identity';
 import { type CheckpointState, PageCheckpointArchive } from './page-checkpoints';
 import { PageVersionArchive, type PageVersionState, VERSIONED_PAGE_METADATA } from './page-history';
+import { validatePageTransition } from './page-transition';
 import {
   acquireWriterLock,
   atomicWrite,
@@ -335,7 +336,7 @@ function referencePaths(value: unknown, ids: Set<string>): { path: string; value
       if (element.animations) visit(element.animations, ['elements', index, 'animations'], false);
     });
   if (value.animations) visit(value.animations, ['animations'], false);
-  if (isRecord(value.timeline) && value.timeline.schemaVersion === 1)
+  if (isRecord(value.timeline) && [1, 2].includes(value.timeline.schemaVersion as number))
     visit(value.timeline, ['timeline'], false);
   return found;
 }
@@ -500,9 +501,15 @@ export class PptdStore {
         if (
           page !== cached &&
           isRecord(page.data.timeline) &&
-          page.data.timeline.schemaVersion === 1
+          [1, 2].includes(page.data.timeline.schemaVersion as number)
         )
-          validateTimeline(page.data.timeline, page.data);
+          validatePageAnimation(page.data.timeline, page.data);
+        if (
+          page !== cached &&
+          isRecord(page.data.transition) &&
+          page.data.transition.schemaVersion === 1
+        )
+          validatePageTransition(page.data.transition);
         return { pageId, identity, page, realPath };
       },
     );
@@ -1268,12 +1275,37 @@ export class PptdStore {
         case 'page.timeline.set': {
           const { pageId, page } = pageDocument(operation.pageId);
           check('pages', pageId);
-          if (operation.timeline !== null) validateTimeline(operation.timeline, page.data);
+          if (page.data.timeline != null && !knownTimeline(page.data))
+            throw new PptdError(
+              'INVALID_DOCUMENT',
+              '当前页面的动画版本暂不支持编辑，原始动画数据已保留。',
+            );
+          if (operation.timeline !== null) validatePageAnimation(operation.timeline, page.data);
           const source =
             operation.timeline === null
               ? patchSourceFields(page.source, [], {}, ['timeline'])
               : patchSourceFields(page.source, [], { timeline: operation.timeline });
           writePage(pageId, source);
+          break;
+        }
+        case 'page.transition.set': {
+          const { pageId, page } = pageDocument(operation.pageId);
+          check('pages', pageId);
+          if (
+            page.data.transition != null &&
+            (!isRecord(page.data.transition) || page.data.transition.schemaVersion !== 1)
+          )
+            throw new PptdError(
+              'INVALID_DOCUMENT',
+              '当前页面的转场版本暂不支持编辑，原始转场数据已保留。',
+            );
+          if (operation.transition !== null) validatePageTransition(operation.transition);
+          writePage(
+            pageId,
+            operation.transition === null
+              ? patchSourceFields(page.source, [], {}, ['transition'])
+              : patchSourceFields(page.source, [], { transition: operation.transition }),
+          );
           break;
         }
         case 'element.patch':
@@ -1712,9 +1744,15 @@ export class PptdStore {
       if (
         touchedPages.has(pageId) &&
         isRecord(page.data.timeline) &&
-        page.data.timeline.schemaVersion === 1
+        [1, 2].includes(page.data.timeline.schemaVersion as number)
       )
-        validateTimeline(page.data.timeline, page.data);
+        validatePageAnimation(page.data.timeline, page.data);
+      if (
+        touchedPages.has(pageId) &&
+        isRecord(page.data.transition) &&
+        page.data.transition.schemaVersion === 1
+      )
+        validatePageTransition(page.data.transition);
       try {
         expandGroupIds(
           page.data.elements,

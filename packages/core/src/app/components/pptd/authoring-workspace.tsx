@@ -1,7 +1,8 @@
 import { type ComponentProps, useCallback, useEffect, useMemo, useState } from 'react';
-import type { PageTimeline } from '../../../pptd/animation-model';
+import type { PageAnimation } from '../../../pptd/animation-model';
+import type { PageTransition } from '../../../pptd/page-transition';
+import { AnimationPanel } from './animation-panel';
 import { PptdEditorCanvas } from './editor-canvas';
-import { TimelinePanel } from './timeline-panel';
 
 interface AuthoringWorkspaceProps {
   canvas: ComponentProps<typeof PptdEditorCanvas>;
@@ -9,11 +10,16 @@ interface AuthoringWorkspaceProps {
   timelineDisabled: boolean;
   previewResetKey: number;
   onTimelineChange: (
-    timeline: PageTimeline | null,
+    timeline: PageAnimation | null,
     expectedPageRevision: string,
   ) => Promise<unknown>;
   onTimelineDirty: (dirty: boolean) => void;
   onPreviewModeChange: (active: boolean) => void;
+  onTransitionChange?: (
+    transition: PageTransition | null,
+    expectedPageRevision: string,
+  ) => Promise<unknown>;
+  onSelectTargets?: (elementIds: string[]) => void;
 }
 
 export function AuthoringWorkspace({
@@ -24,9 +30,11 @@ export function AuthoringWorkspace({
   onTimelineChange,
   onTimelineDirty,
   onPreviewModeChange,
+  onTransitionChange,
+  onSelectTargets,
 }: AuthoringWorkspaceProps) {
-  const [preview, setPreview] = useState<{ timeMs: number; timeline: PageTimeline } | null>(null);
-  const showPreview = useCallback((timeMs: number | null, timeline: PageTimeline | null) => {
+  const [preview, setPreview] = useState<{ timeMs: number; timeline: PageAnimation } | null>(null);
+  const showPreview = useCallback((timeMs: number | null, timeline: PageAnimation | null) => {
     setPreview(timeMs === null || !timeline ? null : { timeMs, timeline });
   }, []);
   const active = timelineOpen && preview !== null;
@@ -62,7 +70,7 @@ export function AuthoringWorkspace({
         />
       </div>
       {timelineOpen && (
-        <TimelinePanel
+        <AnimationPanel
           page={canvas.page}
           selectedIds={canvas.selectedIds}
           disabled={timelineDisabled}
@@ -70,6 +78,8 @@ export function AuthoringWorkspace({
           onChange={onTimelineChange}
           onPreview={showPreview}
           onDirtyChange={onTimelineDirty}
+          onTransitionChange={onTransitionChange}
+          onSelectTargets={onSelectTargets}
         />
       )}
     </div>

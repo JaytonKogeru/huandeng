@@ -1,0 +1,1736 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Renderer observer effect and native allocation diagnostic",
+  "runs": [
+    {
+      "label": "raw-runtime-50",
+      "timestamp": "2026-11-07T22:49:21.732Z",
+      "mode": "runtime",
+      "traceMemory": false,
+      "gcEvery": 0,
+      "iterations": 50,
+      "marker": {
+        "electronVersion": "38.7.2",
+        "desktopProtocol": 1,
+        "builtAt": "2026-11-07T21:34:36.5584922Z",
+        "sourceDirty": false,
+        "productVersion": "0.7.0",
+        "nodeLinker": "hoisted",
+        "product": "HUANDENG Editor",
+        "sourceRevision": "ba18ac0d95502361fb8a423a732c808218374915"
+      },
+      "browser": "Chrome/140.0.7339.249",
+      "node": "v22.21.0",
+      "passed": true,
+      "exit": {
+        "code": 0,
+        "signal": null
+      },
+      "pageCount": 80,
+      "initialSessionUtf8Bytes": 685807,
+      "network": {
+        "enabled": false,
+        "requests": 0,
+        "responses": 0,
+        "encodedDataLength": 0
+      },
+      "samples": [
+        {
+          "stage": "settled",
+          "elapsedMs": 9000.1217,
+          "heap": {
+            "usedSize": 17128980,
+            "totalSize": 27525120,
+            "embedderHeapUsedSize": 10542168,
+            "backingStorageSize": 3807320
+          },
+          "dom": {
+            "documents": 86,
+            "nodes": 4754,
+            "jsEventListeners": 953
+          },
+          "mounted": {
+            "nodes": 1774,
+            "renderers": 7,
+            "canvasElements": 4,
+            "width": 1600,
+            "height": 967,
+            "dpr": 1
+          },
+          "processes": {
+            "Browser": {
+              "workingSetBytes": 173498368,
+              "privateBytes": 199745536,
+              "handles": 1184
+            },
+            "GPU": {
+              "workingSetBytes": 213962752,
+              "privateBytes": 149803008,
+              "handles": 1311
+            },
+            "Utility": {
+              "workingSetBytes": 82325504,
+              "privateBytes": 11386880,
+              "handles": 373
+            },
+            "DocumentService": {
+              "workingSetBytes": 229433344,
+              "privateBytes": 288247808,
+              "handles": 329
+            },
+            "Tab": {
+              "workingSetBytes": 159764480,
+              "privateBytes": 78614528,
+              "handles": 394
+            }
+          }
+        },
+        {
+          "stage": "after-10-pairs",
+          "elapsedMs": 23631.4912,
+          "heap": {
+            "usedSize": 22915276,
+            "totalSize": 102760448,
+            "embedderHeapUsedSize": 9079200,
+            "backingStorageSize": 3813739
+          },
+          "dom": {
+            "documents": 2,
+            "nodes": 4040,
+            "jsEventListeners": 1149
+          },
+          "mounted": {
+            "nodes": 1774,
+            "renderers": 7,
+            "canvasElements": 4,
+            "width": 1600,
+            "height": 967,
+            "dpr": 1
+          },
+          "processes": {
+            "Browser": {
+              "workingSetBytes": 171388928,
+              "privateBytes": 199802880,
+              "handles": 1180
+            },
+            "GPU": {
+              "workingSetBytes": 223506432,
+              "privateBytes": 163307520,
+              "handles": 1311
+            },
+            "Utility": {
+              "workingSetBytes": 81723392,
+              "privateBytes": 11341824,
+              "handles": 364
+            },
+            "DocumentService": {
+              "workingSetBytes": 238809088,
+              "privateBytes": 298172416,
+              "handles": 326
+            },
+            "Tab": {
+              "workingSetBytes": 312565760,
+              "privateBytes": 230965248,
+              "handles": 422
+            }
+          }
+        },
+        {
+          "stage": "after-20-pairs",
+          "elapsedMs": 37676.9807,
+          "heap": {
+            "usedSize": 46003452,
+            "totalSize": 106954752,
+            "embedderHeapUsedSize": 41410816,
+            "backingStorageSize": 7945482
+          },
+          "dom": {
+            "documents": 2,
+            "nodes": 4942,
+            "jsEventListeners": 4807
+          },
+          "mounted": {
+            "nodes": 1774,
+            "renderers": 7,
+            "canvasElements": 4,
+            "width": 1600,
+            "height": 967,
+            "dpr": 1
+          },
+          "processes": {
+            "Browser": {
+              "workingSetBytes": 170733568,
+              "privateBytes": 200003584,
+              "handles": 1178
+            },
+            "GPU": {
+              "workingSetBytes": 223977472,
+              "privateBytes": 169144320,
+              "handles": 1308
+            },
+            "Utility": {
+              "workingSetBytes": 79634432,
+              "privateBytes": 11350016,
+              "handles": 361
+            },
+            "DocumentService": {
+              "workingSetBytes": 241209344,
+              "privateBytes": 299610112,
+              "handles": 325
+            },
+            "Tab": {
+              "workingSetBytes": 343089152,
+              "privateBytes": 260755456,
+              "handles": 419
+            }
+          }
+        },
+        {
+          "stage": "after-30-pairs",
+          "elapsedMs": 51626.4862,
+          "heap": {
+            "usedSize": 36356440,
+            "totalSize": 103022592,
+            "embedderHeapUsedSize": 32341304,
+            "backingStorageSize": 6568282
+          },
+          "dom": {
+            "documents": 2,
+            "nodes": 4512,
+            "jsEventListeners": 3490
+          },
+          "mounted": {
+            "nodes": 1774,
+            "renderers": 7,
+            "canvasElements": 4,
+            "width": 1600,
+            "height": 967,
+            "dpr": 1
+          },
+          "processes": {
+            "Browser": {
+              "workingSetBytes": 168779776,
+              "privateBytes": 200024064,
+              "handles": 1178
+            },
+            "GPU": {
+              "workingSetBytes": 220389376,
+              "privateBytes": 161169408,
+              "handles": 1308
+            },
+            "Utility": {
+              "workingSetBytes": 78471168,
+              "privateBytes": 11350016,
+              "handles": 361
+            },
+            "DocumentService": {
+              "workingSetBytes": 253554688,
+              "privateBytes": 313032704,
+              "handles": 325
+            },
+            "Tab": {
+              "workingSetBytes": 355151872,
+              "privateBytes": 274038784,
+              "handles": 419
+            }
+          }
+        },
+        {
+          "stage": "after-40-pairs",
+          "elapsedMs": 66310.2674,
+          "heap": {
+            "usedSize": 48025720,
+            "totalSize": 106430464,
+            "embedderHeapUsedSize": 31596760,
+            "backingStorageSize": 5193552
+          },
+          "dom": {
+            "documents": 2,
+            "nodes": 4506,
+            "jsEventListeners": 3062
+          },
+          "mounted": {
+            "nodes": 1774,
+            "renderers": 7,
+            "canvasElements": 4,
+            "width": 1600,
+            "height": 967,
+            "dpr": 1
+          },
+          "processes": {
+            "Browser": {
+              "workingSetBytes": 165261312,
+              "privateBytes": 198434816,
+              "handles": 1176
+            },
+            "GPU": {
+              "workingSetBytes": 218882048,
+              "privateBytes": 162668544,
+              "handles": 1312
+            },
+            "Utility": {
+              "workingSetBytes": 77328384,
+              "privateBytes": 10944512,
+              "handles": 360
+            },
+            "DocumentService": {
+              "workingSetBytes": 260018176,
+              "privateBytes": 319152128,
+              "handles": 325
+            },
+            "Tab": {
+              "workingSetBytes": 345341952,
+              "privateBytes": 262250496,
+              "handles": 419
+            }
+          }
+        },
+        {
+          "stage": "after-50-pairs",
+          "elapsedMs": 86206.842,
+          "heap": {
+            "usedSize": 48150568,
+            "totalSize": 99876864,
+            "embedderHeapUsedSize": 31617808,
+            "backingStorageSize": 5193158
+          },
+          "dom": {
+            "documents": 2,
+            "nodes": 4506,
+            "jsEventListeners": 3062
+          },
+          "mounted": {
+            "nodes": 1774,
+            "renderers": 7,
+            "canvasElements": 4,
+            "width": 1600,
+            "height": 967,
+            "dpr": 1
+          },
+          "processes": {
+            "Browser": {
+              "workingSetBytes": 161628160,
+              "privateBytes": 198541312,
+              "handles": 1176
+            },
+            "GPU": {
+              "workingSetBytes": 203059200,
+              "privateBytes": 162930688,
+              "handles": 1312
+            },
+            "Utility": {
+              "workingSetBytes": 72962048,
+              "privateBytes": 10936320,
+              "handles": 360
+            },
+            "DocumentService": {
+              "workingSetBytes": 249036800,
+              "privateBytes": 328015872,
+              "handles": 325
+            },
+            "Tab": {
+              "workingSetBytes": 344170496,
+              "privateBytes": 263970816,
+              "handles": 422
+            }
+          }
+        },
+        {
+          "stage": "after-15s-idle",
+          "elapsedMs": 102847.6634,
+          "heap": {
+            "usedSize": 16020560,
+            "totalSize": 19922944,
+            "embedderHeapUsedSize": 7155336,
+            "backingStorageSize": 2428807
+          },
+          "dom": {
+            "documents": 2,
+            "nodes": 4034,
+            "jsEventListeners": 721
+          },
+          "mounted": {
+            "nodes": 1774,
+            "renderers": 7,
+            "canvasElements": 4,
+            "width": 1600,
+            "height": 967,
+            "dpr": 1
+          },
+          "processes": {
+            "Browser": {
+              "workingSetBytes": 154505216,
+              "privateBytes": 198373376,
+              "handles": 1176
+            },
+            "GPU": {
+              "workingSetBytes": 192917504,
+              "privateBytes": 138956800,
+              "handles": 1309
+            },
+            "Utility": {
+              "workingSetBytes": 66646016,
+              "privateBytes": 10936320,
+              "handles": 360
+            },
+            "DocumentService": {
+              "workingSetBytes": 249036800,
+              "privateBytes": 328015872,
+              "handles": 323
+            },
+            "Tab": {
+              "workingSetBytes": 234590208,
+              "privateBytes": 152080384,
+              "handles": 419
+            }
+          }
+        },
+        {
+          "stage": "after-explicit-gc",
+          "elapsedMs": 104464.2029,
+          "heap": {
+            "usedSize": 15778216,
+            "totalSize": 17039360,
+            "embedderHeapUsedSize": 6328640,
+            "backingStorageSize": 2427808
+          },
+          "dom": {
+            "documents": 2,
+            "nodes": 4034,
+            "jsEventListeners": 721
+          },
+          "mounted": {
+            "nodes": 1774,
+            "renderers": 7,
+            "canvasElements": 4,
+            "width": 1600,
+            "height": 967,
+            "dpr": 1
+          },
+          "processes": {
+            "Browser": {
+              "workingSetBytes": 154415104,
+              "privateBytes": 198373376,
+              "handles": 1176
+            },
+            "GPU": {
+              "workingSetBytes": 192917504,
+              "privateBytes": 138956800,
+              "handles": 1309
+            },
+            "Utility": {
+              "workingSetBytes": 65691648,
+              "privateBytes": 10936320,
+              "handles": 360
+            },
+            "DocumentService": {
+              "workingSetBytes": 249036800,
+              "privateBytes": 328015872,
+              "handles": 323
+            },
+            "Tab": {
+              "workingSetBytes": 230637568,
+              "privateBytes": 148180992,
+              "handles": 419
+            }
+          }
+        }
+      ],
+      "rendererErrors": [],
+      "medians": {
+        "visualMs": 27.100000023841858,
+        "persistenceObservedMs": 224.2498779296875,
+        "acknowledgementObservedMs": 443.4998779296875
+      },
+      "originalFilesChecked": 82,
+      "originalUnchanged": true,
+      "originalHashesDigest": "87b1d0b8e5af3805601e52c6426430888500b9eebc40804e40edaa3b82e854fb",
+      "rawReportSha256": "ebf78b5651e278cfc56139abb39d8963f210a16936e701a30a44281a962a5778",
+      "traceDumps": []
+    },
+    {
+      "label": "raw-network-50",
+      "timestamp": "2026-11-07T22:51:11.636Z",
+      "mode": "network",
+      "traceMemory": false,
+      "gcEvery": 0,
+      "iterations": 50,
+      "marker": {
+        "electronVersion": "38.7.2",
+        "desktopProtocol": 1,
+        "builtAt": "2026-11-07T21:34:36.5584922Z",
+        "sourceDirty": false,
+        "productVersion": "0.7.0",
+        "nodeLinker": "hoisted",
+        "product": "HUANDENG Editor",
+        "sourceRevision": "ba18ac0d95502361fb8a423a732c808218374915"
+      },
+      "browser": "Chrome/140.0.7339.249",
+      "node": "v22.21.0",
+      "passed": true,
+      "exit": {
+        "code": 0,
+        "signal": null
+      },
+      "pageCount": 80,
+      "initialSessionUtf8Bytes": 685807,
+      "network": {
+        "enabled": true,
+        "requests": 518,
+        "responses": 518,
+        "encodedDataLength": 72997383
+      },
+      "samples": [
+        {
+          "stage": "settled",
+          "elapsedMs": 9083.0259,
+          "heap": {
+            "usedSize": 17033972,
+            "totalSize": 27262976,
+            "embedderHeapUsedSize": 10544576,
+            "backingStorageSize": 3807310
+          },
+          "dom": {
+            "documents": 86,
+            "nodes": 4754,
+            "jsEventListeners": 953
+          },
+          "mounted": {
+            "nodes": 1774,
+            "renderers": 7,
+            "canvasElements": 4,
+            "width": 1600,
+            "height": 967,
+            "dpr": 1
+          },
+          "processes": {
+            "other": {
+              "workingSetBytes": 9199616,
+              "privateBytes": 162033664,
+              "handles": 1717
+            },
+            "Browser": {
+              "workingSetBytes": 161492992,
+              "privateBytes": 200884224,
+              "handles": 1182
+            },
+            "GPU": {
+              "workingSetBytes": 185860096,
+              "privateBytes": 154042368,
+              "handles": 1311
+            },
+            "Utility": {
+              "workingSetBytes": 64479232,
+              "privateBytes": 11423744,
+              "handles": 371
+            },
+            "DocumentService": {
+              "workingSetBytes": 233951232,
+              "privateBytes": 297099264,
+              "handles": 329
+            },
+            "Tab": {
+              "workingSetBytes": 163524608,
+              "privateBytes": 84242432,
+              "handles": 392
+            }
+          }
+        },
+        {
+          "stage": "after-10-pairs",
+          "elapsedMs": 23473.5098,
+          "heap": {
+            "usedSize": 42724660,
+            "totalSize": 100925440,
+            "embedderHeapUsedSize": 38226256,
+            "backingStorageSize": 7946048
+          },
+          "dom": {
+            "documents": 2,
+            "nodes": 4859,
+            "jsEventListeners": 4371
+          },
+          "mounted": {
+            "nodes": 1774,
+            "renderers": 7,
+            "canvasElements": 4,
+            "width": 1600,
+            "height": 967,
+            "dpr": 1
+          },
+          "processes": {
+            "other": {
+              "workingSetBytes": 9252864,
+              "privateBytes": 162000896,
+              "handles": 1713
+            },
+            "Browser": {
+              "workingSetBytes": 162168832,
+              "privateBytes": 201326592,
+              "handles": 1178
+            },
+            "GPU": {
+              "workingSetBytes": 197488640,
+              "privateBytes": 168247296,
+              "handles": 1311
+            },
+            "Utility": {
+              "workingSetBytes": 59449344,
+              "privateBytes": 11354112,
+              "handles": 362
+            },
+            "DocumentService": {
+              "workingSetBytes": 227500032,
+              "privateBytes": 290504704,
+              "handles": 326
+            },
+            "Tab": {
+              "workingSetBytes": 384868352,
+              "privateBytes": 306044928,
+              "handles": 420
+            }
+          }
+        },
+        {
+          "stage": "after-20-pairs",
+          "elapsedMs": 37409.257,
+          "heap": {
+            "usedSize": 51316932,
+            "totalSize": 105644032,
+            "embedderHeapUsedSize": 54587000,
+            "backingStorageSize": 7947837
+          },
+          "dom": {
+            "documents": 2,
+            "nodes": 4979,
+            "jsEventListeners": 5403
+          },
+          "mounted": {
+            "nodes": 1774,
+            "renderers": 7,
+            "canvasElements": 4,
+            "width": 1600,
+            "height": 967,
+            "dpr": 1
+          },
+          "processes": {
+            "other": {
+              "workingSetBytes": 9392128,
+              "privateBytes": 162029568,
+              "handles": 1715
+            },
+            "Browser": {
+              "workingSetBytes": 162054144,
+              "privateBytes": 201261056,
+              "handles": 1176
+            },
+            "GPU": {
+              "workingSetBytes": 192696320,
+              "privateBytes": 166932480,
+              "handles": 1308
+            },
+            "Utility": {
+              "workingSetBytes": 56340480,
+              "privateBytes": 11366400,
+              "handles": 359
+            },
+            "DocumentService": {
+              "workingSetBytes": 235200512,
+              "privateBytes": 297979904,
+              "handles": 325
+            },
+            "Tab": {
+              "workingSetBytes": 413847552,
+              "privateBytes": 333635584,
+              "handles": 417
+            }
+          }
+        },
+        {
+          "stage": "after-30-pairs",
+          "elapsedMs": 51518.3214,
+          "heap": {
+            "usedSize": 37001608,
+            "totalSize": 102760448,
+            "embedderHeapUsedSize": 15819320,
+            "backingStorageSize": 5190749
+          },
+          "dom": {
+            "documents": 2,
+            "nodes": 4387,
+            "jsEventListeners": 2030
+          },
+          "mounted": {
+            "nodes": 1774,
+            "renderers": 7,
+            "canvasElements": 4,
+            "width": 1600,
+            "height": 967,
+            "dpr": 1
+          },
+          "processes": {
+            "other": {
+              "workingSetBytes": 9396224,
+              "privateBytes": 162029568,
+              "handles": 1715
+            },
+            "Browser": {
+              "workingSetBytes": 161767424,
+              "privateBytes": 201281536,
+              "handles": 1176
+            },
+            "GPU": {
+              "workingSetBytes": 191467520,
+              "privateBytes": 166154240,
+              "handles": 1308
+            },
+            "Utility": {
+              "workingSetBytes": 52072448,
+              "privateBytes": 11366400,
+              "handles": 359
+            },
+            "DocumentService": {
+              "workingSetBytes": 243023872,
+              "privateBytes": 304967680,
+              "handles": 325
+            },
+            "Tab": {
+              "workingSetBytes": 448745472,
+              "privateBytes": 368455680,
+              "handles": 417
+            }
+          }
+        },
+        {
+          "stage": "after-40-pairs",
+          "elapsedMs": 65407.176199999994,
+          "heap": {
+            "usedSize": 36899264,
+            "totalSize": 106168320,
+            "embedderHeapUsedSize": 15818512,
+            "backingStorageSize": 5190876
+          },
+          "dom": {
+            "documents": 2,
+            "nodes": 4387,
+            "jsEventListeners": 2030
+          },
+          "mounted": {
+            "nodes": 1774,
+            "renderers": 7,
+            "canvasElements": 4,
+            "width": 1600,
+            "height": 967,
+            "dpr": 1
+          },
+          "processes": {
+            "other": {
+              "workingSetBytes": 9396224,
+              "privateBytes": 162029568,
+              "handles": 1715
+            },
+            "Browser": {
+              "workingSetBytes": 158466048,
+              "privateBytes": 199593984,
+              "handles": 1174
+            },
+            "GPU": {
+              "workingSetBytes": 190783488,
+              "privateBytes": 168357888,
+              "handles": 1309
+            },
+            "Utility": {
+              "workingSetBytes": 48295936,
+              "privateBytes": 10944512,
+              "handles": 358
+            },
+            "DocumentService": {
+              "workingSetBytes": 253575168,
+              "privateBytes": 316235776,
+              "handles": 325
+            },
+            "Tab": {
+              "workingSetBytes": 473829376,
+              "privateBytes": 393392128,
+              "handles": 417
+            }
+          }
+        },
+        {
+          "stage": "after-50-pairs",
+          "elapsedMs": 79247.4237,
+          "heap": {
+            "usedSize": 48144808,
+            "totalSize": 103546880,
+            "embedderHeapUsedSize": 31250304,
+            "backingStorageSize": 5193545
+          },
+          "dom": {
+            "documents": 2,
+            "nodes": 4506,
+            "jsEventListeners": 3060
+          },
+          "mounted": {
+            "nodes": 1774,
+            "renderers": 7,
+            "canvasElements": 4,
+            "width": 1600,
+            "height": 967,
+            "dpr": 1
+          },
+          "processes": {
+            "other": {
+              "workingSetBytes": 9400320,
+              "privateBytes": 162029568,
+              "handles": 1715
+            },
+            "Browser": {
+              "workingSetBytes": 153362432,
+              "privateBytes": 199913472,
+              "handles": 1174
+            },
+            "GPU": {
+              "workingSetBytes": 189243392,
+              "privateBytes": 168488960,
+              "handles": 1309
+            },
+            "Utility": {
+              "workingSetBytes": 44949504,
+              "privateBytes": 11005952,
+              "handles": 358
+            },
+            "DocumentService": {
+              "workingSetBytes": 259534848,
+              "privateBytes": 322154496,
+              "handles": 325
+            },
+            "Tab": {
+              "workingSetBytes": 493342720,
+              "privateBytes": 414650368,
+              "handles": 417
+            }
+          }
+        },
+        {
+          "stage": "after-15s-idle",
+          "elapsedMs": 95848.9541,
+          "heap": {
+            "usedSize": 15810296,
+            "totalSize": 17301504,
+            "embedderHeapUsedSize": 6505328,
+            "backingStorageSize": 2428797
+          },
+          "dom": {
+            "documents": 2,
+            "nodes": 4034,
+            "jsEventListeners": 721
+          },
+          "mounted": {
+            "nodes": 1774,
+            "renderers": 7,
+            "canvasElements": 4,
+            "width": 1600,
+            "height": 967,
+            "dpr": 1
+          },
+          "processes": {
+            "other": {
+              "workingSetBytes": 9400320,
+              "privateBytes": 162029568,
+              "handles": 1715
+            },
+            "Browser": {
+              "workingSetBytes": 147009536,
+              "privateBytes": 199585792,
+              "handles": 1174
+            },
+            "GPU": {
+              "workingSetBytes": 167333888,
+              "privateBytes": 143921152,
+              "handles": 1309
+            },
+            "Utility": {
+              "workingSetBytes": 41881600,
+              "privateBytes": 10911744,
+              "handles": 358
+            },
+            "DocumentService": {
+              "workingSetBytes": 255758336,
+              "privateBytes": 322154496,
+              "handles": 323
+            },
+            "Tab": {
+              "workingSetBytes": 388493312,
+              "privateBytes": 309403648,
+              "handles": 417
+            }
+          }
+        },
+        {
+          "stage": "after-explicit-gc",
+          "elapsedMs": 97446.54800000001,
+          "heap": {
+            "usedSize": 15777132,
+            "totalSize": 16777216,
+            "embedderHeapUsedSize": 6505328,
+            "backingStorageSize": 2427798
+          },
+          "dom": {
+            "documents": 2,
+            "nodes": 4034,
+            "jsEventListeners": 721
+          },
+          "mounted": {
+            "nodes": 1774,
+            "renderers": 7,
+            "canvasElements": 4,
+            "width": 1600,
+            "height": 967,
+            "dpr": 1
+          },
+          "processes": {
+            "other": {
+              "workingSetBytes": 9400320,
+              "privateBytes": 162029568,
+              "handles": 1715
+            },
+            "Browser": {
+              "workingSetBytes": 147009536,
+              "privateBytes": 199585792,
+              "handles": 1174
+            },
+            "GPU": {
+              "workingSetBytes": 165171200,
+              "privateBytes": 143921152,
+              "handles": 1309
+            },
+            "Utility": {
+              "workingSetBytes": 41189376,
+              "privateBytes": 10911744,
+              "handles": 358
+            },
+            "DocumentService": {
+              "workingSetBytes": 253042688,
+              "privateBytes": 322154496,
+              "handles": 323
+            },
+            "Tab": {
+              "workingSetBytes": 389124096,
+              "privateBytes": 309141504,
+              "handles": 417
+            }
+          }
+        },
+        {
+          "stage": "after-network-disable-and-gc",
+          "elapsedMs": 99097.618,
+          "heap": {
+            "usedSize": 15777132,
+            "totalSize": 16777216,
+            "embedderHeapUsedSize": 6323368,
+            "backingStorageSize": 2427798
+          },
+          "dom": {
+            "documents": 2,
+            "nodes": 4034,
+            "jsEventListeners": 721
+          },
+          "mounted": {
+            "nodes": 1774,
+            "renderers": 7,
+            "canvasElements": 4,
+            "width": 1600,
+            "height": 967,
+            "dpr": 1
+          },
+          "processes": {
+            "other": {
+              "workingSetBytes": 9400320,
+              "privateBytes": 162029568,
+              "handles": 1715
+            },
+            "Browser": {
+              "workingSetBytes": 147021824,
+              "privateBytes": 199585792,
+              "handles": 1174
+            },
+            "GPU": {
+              "workingSetBytes": 163610624,
+              "privateBytes": 143921152,
+              "handles": 1309
+            },
+            "Utility": {
+              "workingSetBytes": 40607744,
+              "privateBytes": 10911744,
+              "handles": 358
+            },
+            "DocumentService": {
+              "workingSetBytes": 251355136,
+              "privateBytes": 322154496,
+              "handles": 323
+            },
+            "Tab": {
+              "workingSetBytes": 228122624,
+              "privateBytes": 145166336,
+              "handles": 417
+            }
+          }
+        }
+      ],
+      "rendererErrors": [],
+      "medians": {
+        "visualMs": 27.800000071525574,
+        "persistenceObservedMs": 211.89990234375,
+        "acknowledgementObservedMs": 445.800048828125
+      },
+      "originalFilesChecked": 82,
+      "originalUnchanged": true,
+      "originalHashesDigest": "87b1d0b8e5af3805601e52c6426430888500b9eebc40804e40edaa3b82e854fb",
+      "rawReportSha256": "b7642553de27fa6d4d773b4cf888b854c243c1ef46d1049f73eb13c38cecd58d",
+      "traceDumps": []
+    },
+    {
+      "label": "raw-runtime-native-50",
+      "timestamp": "2026-11-07T22:54:39.749Z",
+      "mode": "runtime",
+      "traceMemory": true,
+      "gcEvery": 10,
+      "iterations": 50,
+      "marker": {
+        "electronVersion": "38.7.2",
+        "desktopProtocol": 1,
+        "builtAt": "2026-11-07T21:34:36.5584922Z",
+        "sourceDirty": false,
+        "productVersion": "0.7.0",
+        "nodeLinker": "hoisted",
+        "product": "HUANDENG Editor",
+        "sourceRevision": "ba18ac0d95502361fb8a423a732c808218374915"
+      },
+      "browser": "Chrome/140.0.7339.249",
+      "node": "v22.21.0",
+      "passed": true,
+      "exit": {
+        "code": 0,
+        "signal": null
+      },
+      "pageCount": 80,
+      "initialSessionUtf8Bytes": 685807,
+      "network": {
+        "enabled": false,
+        "requests": 0,
+        "responses": 0,
+        "encodedDataLength": 0
+      },
+      "samples": [
+        {
+          "stage": "settled",
+          "elapsedMs": 9442.5762,
+          "heap": {
+            "usedSize": 17057600,
+            "totalSize": 27787264,
+            "embedderHeapUsedSize": 10564920,
+            "backingStorageSize": 3807312
+          },
+          "dom": {
+            "documents": 86,
+            "nodes": 4754,
+            "jsEventListeners": 953
+          },
+          "mounted": {
+            "nodes": 1774,
+            "renderers": 7,
+            "canvasElements": 4,
+            "width": 1600,
+            "height": 967,
+            "dpr": 1
+          },
+          "processes": {
+            "Browser": {
+              "workingSetBytes": 161677312,
+              "privateBytes": 201797632,
+              "handles": 1226
+            },
+            "GPU": {
+              "workingSetBytes": 187129856,
+              "privateBytes": 154947584,
+              "handles": 1308
+            },
+            "Utility": {
+              "workingSetBytes": 75591680,
+              "privateBytes": 13086720,
+              "handles": 209
+            },
+            "DocumentService": {
+              "workingSetBytes": 229883904,
+              "privateBytes": 291098624,
+              "handles": 331
+            },
+            "Tab": {
+              "workingSetBytes": 162385920,
+              "privateBytes": 82554880,
+              "handles": 394
+            }
+          }
+        },
+        {
+          "stage": "after-10-pairs",
+          "elapsedMs": 23496.2594,
+          "heap": {
+            "usedSize": 22977004,
+            "totalSize": 104071168,
+            "embedderHeapUsedSize": 9311776,
+            "backingStorageSize": 3813731
+          },
+          "dom": {
+            "documents": 2,
+            "nodes": 4040,
+            "jsEventListeners": 1149
+          },
+          "mounted": {
+            "nodes": 1774,
+            "renderers": 7,
+            "canvasElements": 4,
+            "width": 1600,
+            "height": 967,
+            "dpr": 1
+          },
+          "processes": {
+            "Browser": {
+              "workingSetBytes": 164241408,
+              "privateBytes": 203227136,
+              "handles": 1225
+            },
+            "GPU": {
+              "workingSetBytes": 201990144,
+              "privateBytes": 166260736,
+              "handles": 1314
+            },
+            "Utility": {
+              "workingSetBytes": 67850240,
+              "privateBytes": 13316096,
+              "handles": 215
+            },
+            "DocumentService": {
+              "workingSetBytes": 231936000,
+              "privateBytes": 292614144,
+              "handles": 328
+            },
+            "Tab": {
+              "workingSetBytes": 314646528,
+              "privateBytes": 233488384,
+              "handles": 425
+            }
+          }
+        },
+        {
+          "stage": "after-10-pairs-explicit-gc",
+          "elapsedMs": 25184.5118,
+          "heap": {
+            "usedSize": 15135672,
+            "totalSize": 16777216,
+            "embedderHeapUsedSize": 6150048,
+            "backingStorageSize": 2427792
+          },
+          "dom": {
+            "documents": 2,
+            "nodes": 4034,
+            "jsEventListeners": 721
+          },
+          "mounted": {
+            "nodes": 1774,
+            "renderers": 7,
+            "canvasElements": 4,
+            "width": 1600,
+            "height": 967,
+            "dpr": 1
+          },
+          "processes": {
+            "Browser": {
+              "workingSetBytes": 164245504,
+              "privateBytes": 203231232,
+              "handles": 1225
+            },
+            "GPU": {
+              "workingSetBytes": 200667136,
+              "privateBytes": 165539840,
+              "handles": 1314
+            },
+            "Utility": {
+              "workingSetBytes": 66568192,
+              "privateBytes": 13316096,
+              "handles": 215
+            },
+            "DocumentService": {
+              "workingSetBytes": 231936000,
+              "privateBytes": 292614144,
+              "handles": 328
+            },
+            "Tab": {
+              "workingSetBytes": 223399936,
+              "privateBytes": 141770752,
+              "handles": 425
+            }
+          }
+        },
+        {
+          "stage": "after-20-pairs",
+          "elapsedMs": 39056.007,
+          "heap": {
+            "usedSize": 55936720,
+            "totalSize": 106954752,
+            "embedderHeapUsedSize": 32381776,
+            "backingStorageSize": 6567988
+          },
+          "dom": {
+            "documents": 2,
+            "nodes": 4512,
+            "jsEventListeners": 3490
+          },
+          "mounted": {
+            "nodes": 1774,
+            "renderers": 7,
+            "canvasElements": 4,
+            "width": 1600,
+            "height": 967,
+            "dpr": 1
+          },
+          "processes": {
+            "Browser": {
+              "workingSetBytes": 165498880,
+              "privateBytes": 203685888,
+              "handles": 1223
+            },
+            "GPU": {
+              "workingSetBytes": 197193728,
+              "privateBytes": 161824768,
+              "handles": 1317
+            },
+            "Utility": {
+              "workingSetBytes": 60833792,
+              "privateBytes": 13344768,
+              "handles": 215
+            },
+            "DocumentService": {
+              "workingSetBytes": 235687936,
+              "privateBytes": 296140800,
+              "handles": 328
+            },
+            "Tab": {
+              "workingSetBytes": 342368256,
+              "privateBytes": 260718592,
+              "handles": 425
+            }
+          }
+        },
+        {
+          "stage": "after-20-pairs-explicit-gc",
+          "elapsedMs": 40690.678,
+          "heap": {
+            "usedSize": 15530996,
+            "totalSize": 17563648,
+            "embedderHeapUsedSize": 6397392,
+            "backingStorageSize": 2427792
+          },
+          "dom": {
+            "documents": 2,
+            "nodes": 4034,
+            "jsEventListeners": 721
+          },
+          "mounted": {
+            "nodes": 1774,
+            "renderers": 7,
+            "canvasElements": 4,
+            "width": 1600,
+            "height": 967,
+            "dpr": 1
+          },
+          "processes": {
+            "Browser": {
+              "workingSetBytes": 165457920,
+              "privateBytes": 203685888,
+              "handles": 1223
+            },
+            "GPU": {
+              "workingSetBytes": 196796416,
+              "privateBytes": 161787904,
+              "handles": 1314
+            },
+            "Utility": {
+              "workingSetBytes": 60833792,
+              "privateBytes": 13344768,
+              "handles": 215
+            },
+            "DocumentService": {
+              "workingSetBytes": 235687936,
+              "privateBytes": 296140800,
+              "handles": 328
+            },
+            "Tab": {
+              "workingSetBytes": 233476096,
+              "privateBytes": 151732224,
+              "handles": 425
+            }
+          }
+        },
+        {
+          "stage": "after-30-pairs",
+          "elapsedMs": 54217.2851,
+          "heap": {
+            "usedSize": 23299044,
+            "totalSize": 101187584,
+            "embedderHeapUsedSize": 9384672,
+            "backingStorageSize": 3813202
+          },
+          "dom": {
+            "documents": 2,
+            "nodes": 4040,
+            "jsEventListeners": 1149
+          },
+          "mounted": {
+            "nodes": 1774,
+            "renderers": 7,
+            "canvasElements": 4,
+            "width": 1600,
+            "height": 967,
+            "dpr": 1
+          },
+          "processes": {
+            "Browser": {
+              "workingSetBytes": 162717696,
+              "privateBytes": 203866112,
+              "handles": 1223
+            },
+            "GPU": {
+              "workingSetBytes": 189202432,
+              "privateBytes": 168992768,
+              "handles": 1317
+            },
+            "Utility": {
+              "workingSetBytes": 57704448,
+              "privateBytes": 13361152,
+              "handles": 215
+            },
+            "DocumentService": {
+              "workingSetBytes": 237051904,
+              "privateBytes": 297500672,
+              "handles": 328
+            },
+            "Tab": {
+              "workingSetBytes": 329228288,
+              "privateBytes": 247132160,
+              "handles": 428
+            }
+          }
+        },
+        {
+          "stage": "after-30-pairs-explicit-gc",
+          "elapsedMs": 55910.6657,
+          "heap": {
+            "usedSize": 15702744,
+            "totalSize": 17301504,
+            "embedderHeapUsedSize": 6344888,
+            "backingStorageSize": 2427792
+          },
+          "dom": {
+            "documents": 2,
+            "nodes": 4034,
+            "jsEventListeners": 721
+          },
+          "mounted": {
+            "nodes": 1774,
+            "renderers": 7,
+            "canvasElements": 4,
+            "width": 1600,
+            "height": 967,
+            "dpr": 1
+          },
+          "processes": {
+            "Browser": {
+              "workingSetBytes": 161828864,
+              "privateBytes": 203866112,
+              "handles": 1223
+            },
+            "GPU": {
+              "workingSetBytes": 188039168,
+              "privateBytes": 168955904,
+              "handles": 1314
+            },
+            "Utility": {
+              "workingSetBytes": 57163776,
+              "privateBytes": 13361152,
+              "handles": 215
+            },
+            "DocumentService": {
+              "workingSetBytes": 237051904,
+              "privateBytes": 297500672,
+              "handles": 328
+            },
+            "Tab": {
+              "workingSetBytes": 231481344,
+              "privateBytes": 148606976,
+              "handles": 425
+            }
+          }
+        },
+        {
+          "stage": "after-40-pairs",
+          "elapsedMs": 69528.9881,
+          "heap": {
+            "usedSize": 36805240,
+            "totalSize": 96468992,
+            "embedderHeapUsedSize": 31961096,
+            "backingStorageSize": 6567989
+          },
+          "dom": {
+            "documents": 2,
+            "nodes": 4512,
+            "jsEventListeners": 3490
+          },
+          "mounted": {
+            "nodes": 1774,
+            "renderers": 7,
+            "canvasElements": 4,
+            "width": 1600,
+            "height": 967,
+            "dpr": 1
+          },
+          "processes": {
+            "Browser": {
+              "workingSetBytes": 155840512,
+              "privateBytes": 200978432,
+              "handles": 1221
+            },
+            "GPU": {
+              "workingSetBytes": 189784064,
+              "privateBytes": 169148416,
+              "handles": 1318
+            },
+            "Utility": {
+              "workingSetBytes": 52068352,
+              "privateBytes": 13266944,
+              "handles": 215
+            },
+            "DocumentService": {
+              "workingSetBytes": 232902656,
+              "privateBytes": 292904960,
+              "handles": 329
+            },
+            "Tab": {
+              "workingSetBytes": 326455296,
+              "privateBytes": 244715520,
+              "handles": 428
+            }
+          }
+        },
+        {
+          "stage": "after-40-pairs-explicit-gc",
+          "elapsedMs": 71239.3905,
+          "heap": {
+            "usedSize": 15741920,
+            "totalSize": 17825792,
+            "embedderHeapUsedSize": 6624032,
+            "backingStorageSize": 2427792
+          },
+          "dom": {
+            "documents": 2,
+            "nodes": 4034,
+            "jsEventListeners": 721
+          },
+          "mounted": {
+            "nodes": 1774,
+            "renderers": 7,
+            "canvasElements": 4,
+            "width": 1600,
+            "height": 967,
+            "dpr": 1
+          },
+          "processes": {
+            "Browser": {
+              "workingSetBytes": 154570752,
+              "privateBytes": 200978432,
+              "handles": 1221
+            },
+            "GPU": {
+              "workingSetBytes": 183558144,
+              "privateBytes": 163606528,
+              "handles": 1315
+            },
+            "Utility": {
+              "workingSetBytes": 51720192,
+              "privateBytes": 13266944,
+              "handles": 215
+            },
+            "DocumentService": {
+              "workingSetBytes": 232607744,
+              "privateBytes": 292904960,
+              "handles": 329
+            },
+            "Tab": {
+              "workingSetBytes": 223305728,
+              "privateBytes": 140738560,
+              "handles": 425
+            }
+          }
+        },
+        {
+          "stage": "after-50-pairs",
+          "elapsedMs": 84848.3806,
+          "heap": {
+            "usedSize": 55526828,
+            "totalSize": 101187584,
+            "embedderHeapUsedSize": 32017872,
+            "backingStorageSize": 6567992
+          },
+          "dom": {
+            "documents": 2,
+            "nodes": 4512,
+            "jsEventListeners": 3490
+          },
+          "mounted": {
+            "nodes": 1774,
+            "renderers": 7,
+            "canvasElements": 4,
+            "width": 1600,
+            "height": 967,
+            "dpr": 1
+          },
+          "processes": {
+            "Browser": {
+              "workingSetBytes": 151195648,
+              "privateBytes": 201113600,
+              "handles": 1221
+            },
+            "GPU": {
+              "workingSetBytes": 190021632,
+              "privateBytes": 167550976,
+              "handles": 1318
+            },
+            "Utility": {
+              "workingSetBytes": 49586176,
+              "privateBytes": 13320192,
+              "handles": 215
+            },
+            "DocumentService": {
+              "workingSetBytes": 230588416,
+              "privateBytes": 299253760,
+              "handles": 329
+            },
+            "Tab": {
+              "workingSetBytes": 323997696,
+              "privateBytes": 252911616,
+              "handles": 428
+            }
+          }
+        },
+        {
+          "stage": "after-50-pairs-explicit-gc",
+          "elapsedMs": 86742.4835,
+          "heap": {
+            "usedSize": 15901976,
+            "totalSize": 17825792,
+            "embedderHeapUsedSize": 6603560,
+            "backingStorageSize": 2427792
+          },
+          "dom": {
+            "documents": 2,
+            "nodes": 4034,
+            "jsEventListeners": 721
+          },
+          "mounted": {
+            "nodes": 1774,
+            "renderers": 7,
+            "canvasElements": 4,
+            "width": 1600,
+            "height": 967,
+            "dpr": 1
+          },
+          "processes": {
+            "Browser": {
+              "workingSetBytes": 152821760,
+              "privateBytes": 202268672,
+              "handles": 1221
+            },
+            "GPU": {
+              "workingSetBytes": 189108224,
+              "privateBytes": 166793216,
+              "handles": 1315
+            },
+            "Utility": {
+              "workingSetBytes": 50323456,
+              "privateBytes": 13332480,
+              "handles": 215
+            },
+            "DocumentService": {
+              "workingSetBytes": 229101568,
+              "privateBytes": 299253760,
+              "handles": 329
+            },
+            "Tab": {
+              "workingSetBytes": 210956288,
+              "privateBytes": 139866112,
+              "handles": 425
+            }
+          }
+        },
+        {
+          "stage": "after-15s-idle",
+          "elapsedMs": 103515.1067,
+          "heap": {
+            "usedSize": 15904456,
+            "totalSize": 17039360,
+            "embedderHeapUsedSize": 6332992,
+            "backingStorageSize": 2427852
+          },
+          "dom": {
+            "documents": 2,
+            "nodes": 4034,
+            "jsEventListeners": 721
+          },
+          "mounted": {
+            "nodes": 1774,
+            "renderers": 7,
+            "canvasElements": 4,
+            "width": 1600,
+            "height": 967,
+            "dpr": 1
+          },
+          "processes": {
+            "Browser": {
+              "workingSetBytes": 151838720,
+              "privateBytes": 200884224,
+              "handles": 1221
+            },
+            "GPU": {
+              "workingSetBytes": 161247232,
+              "privateBytes": 138969088,
+              "handles": 1315
+            },
+            "Utility": {
+              "workingSetBytes": 48017408,
+              "privateBytes": 13340672,
+              "handles": 215
+            },
+            "DocumentService": {
+              "workingSetBytes": 219148288,
+              "privateBytes": 299253760,
+              "handles": 327
+            },
+            "Tab": {
+              "workingSetBytes": 205762560,
+              "privateBytes": 139681792,
+              "handles": 425
+            }
+          }
+        },
+        {
+          "stage": "after-explicit-gc",
+          "elapsedMs": 105207.6746,
+          "heap": {
+            "usedSize": 15901976,
+            "totalSize": 17039360,
+            "embedderHeapUsedSize": 6332992,
+            "backingStorageSize": 2427792
+          },
+          "dom": {
+            "documents": 2,
+            "nodes": 4034,
+            "jsEventListeners": 721
+          },
+          "mounted": {
+            "nodes": 1774,
+            "renderers": 7,
+            "canvasElements": 4,
+            "width": 1600,
+            "height": 967,
+            "dpr": 1
+          },
+          "processes": {
+            "Browser": {
+              "workingSetBytes": 152756224,
+              "privateBytes": 201388032,
+              "handles": 1221
+            },
+            "GPU": {
+              "workingSetBytes": 161230848,
+              "privateBytes": 138969088,
+              "handles": 1315
+            },
+            "Utility": {
+              "workingSetBytes": 49041408,
+              "privateBytes": 13492224,
+              "handles": 215
+            },
+            "DocumentService": {
+              "workingSetBytes": 219144192,
+              "privateBytes": 299253760,
+              "handles": 327
+            },
+            "Tab": {
+              "workingSetBytes": 206106624,
+              "privateBytes": 139935744,
+              "handles": 425
+            }
+          }
+        }
+      ],
+      "rendererErrors": [],
+      "medians": {
+        "visualMs": 28.25,
+        "persistenceObservedMs": 210.800048828125,
+        "acknowledgementObservedMs": 431.800048828125
+      },
+      "originalFilesChecked": 82,
+      "originalUnchanged": true,
+      "originalHashesDigest": "87b1d0b8e5af3805601e52c6426430888500b9eebc40804e40edaa3b82e854fb",
+      "rawReportSha256": "7ce00616d0d60ea53b7c2f9368f898bd6643e18f223cc6197680730bd4a5fe02",
+      "traceDumps": [
+        {
+          "stage": "settled",
+          "dumpGuid": "0x1",
+          "success": true
+        },
+        {
+          "stage": "after-10-pairs-explicit-gc",
+          "dumpGuid": "0x2",
+          "success": true
+        },
+        {
+          "stage": "after-20-pairs-explicit-gc",
+          "dumpGuid": "0x3",
+          "success": true
+        },
+        {
+          "stage": "after-30-pairs-explicit-gc",
+          "dumpGuid": "0x4",
+          "success": true
+        },
+        {
+          "stage": "after-40-pairs-explicit-gc",
+          "dumpGuid": "0x5",
+          "success": true
+        },
+        {
+          "stage": "after-50-pairs",
+          "dumpGuid": "0x6",
+          "success": true
+        },
+        {
+          "stage": "after-50-pairs-explicit-gc",
+          "dumpGuid": "0x7",
+          "success": true
+        },
+        {
+          "stage": "after-15s-idle",
+          "dumpGuid": "0x8",
+          "success": true
+        },
+        {
+          "stage": "after-explicit-gc",
+          "dumpGuid": "0x9",
+          "success": true
+        }
+      ]
+    }
+  ],
+  "sourceSha256": "c812c640f74a980eefc8744a8ae0541b4d9061242b7dfeae6d6af5b3e528afb2"
+}

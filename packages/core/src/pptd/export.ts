@@ -27,6 +27,7 @@ import {
 import { buildNativeTable, type NativeTable, type TableMeasurements } from './export-table';
 import { decorateNativeTextXml, mapPptdText, type NativeText } from './export-text';
 import { jpegOrientation } from './image-orientation';
+import { hasPageTransition } from './page-transition';
 import { SHAPE_PRESETS } from './shape-presets';
 import type {
   Bounds,
@@ -207,6 +208,16 @@ export function createExportReport(
           ...(page.occurrenceId ? { occurrenceId: page.occurrenceId } : {}),
           ...(page.versionId ? { versionId: page.versionId } : {}),
           message: '导出使用基础版式，动画时间线保留在 PPTD 中。',
+        })),
+      ...snapshot.pages
+        .filter((page) => page.state === 'active' && hasPageTransition(page.data))
+        .map((page) => ({
+          code: 'TRANSITION_NOT_EXPORTED',
+          severity: 'warning' as const,
+          pageId: page.pageId,
+          ...(page.occurrenceId ? { occurrenceId: page.occurrenceId } : {}),
+          ...(page.versionId ? { versionId: page.versionId } : {}),
+          message: '页面转场用于 HUANDENG 现场放映，本次导出不包含转场。',
         })),
     ],
     complete: false,
