@@ -27,6 +27,7 @@ const launchEnv = {
 };
 delete launchEnv.ELECTRON_RUN_AS_NODE;
 const checks = [];
+const screenshots = [];
 const rendererErrors = [];
 const processLog = [];
 const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
@@ -60,6 +61,18 @@ async function eventually(fn, timeout = 60000) {
   throw lastError ?? new Error('Timed out waiting for desktop state.');
 }
 
+async function captureEvidence(name) {
+  try {
+    await page.screenshot({
+      path: path.join(evidence, name),
+      timeout: 12000,
+      animations: 'disabled',
+    });
+    screenshots.push(name);
+  } catch (error) {
+    process.stderr.write(`WARN optional screenshot ${name} failed: ${String(error)}\n`);
+  }
+}
 async function check(name, fn) {
   const start = Date.now();
   await fn();
@@ -253,7 +266,7 @@ try {
         ).content.text,
         laterTitle,
       );
-      await page.screenshot({ path: path.join(evidence, 'desktop-v03-history.png') });
+      await captureEvidence('desktop-v03-history.png');
       await dialog.getByRole('button', { name: '将此版本恢复为当前页', exact: true }).click();
       await eventually(
         async () =>
@@ -296,7 +309,7 @@ try {
     await eventually(async () => new URL(page.url()).searchParams.get('page') === sibling.pageId);
     await file.click();
     await eventually(async () => new URL(page.url()).searchParams.get('page') === target.pageId);
-    await page.screenshot({ path: path.join(evidence, 'desktop-v03-editor.png') });
+    await captureEvidence('desktop-v03-editor.png');
   });
 
   await check('desktop restart reopens the last project and retains page history', async () => {
@@ -369,7 +382,7 @@ try {
     entry,
     checks,
     rendererErrors,
-    screenshots: ['desktop-v03-history.png', 'desktop-v03-editor.png'],
+    screenshots,
   };
   await fs.writeFile(
     path.join(evidence, 'desktop-v03.json'),

@@ -1,6 +1,6 @@
 # HUANDENG Editor v0.3 — Implementation Handoff
 
-Updated: 2026-11-07 (Australia/Sydney). Status: verified Windows release candidate; formal installation and GitHub milestone push are the remaining release steps.
+Updated: 2026-11-07 (Australia/Sydney). Status: v0.3 formally installed and validated on THUG; source milestone publish to GitHub is the remaining step.
 
 ## Names and compatibility
 
