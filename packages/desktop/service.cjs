@@ -75,7 +75,7 @@ async function coreLauncher() {
     } catch {}
   }
   throw new Error(
-    'HUANDING 文档服务尚未构建。请先运行 corepack pnpm --filter @open-slide/core build。',
+    'HUANDENG 文档服务尚未构建。请先运行 corepack pnpm --filter @open-slide/core build。',
   );
 }
 
@@ -152,7 +152,7 @@ async function stopService(service) {
   const child = service.child;
   if (child.exitCode !== null || child.signalCode !== null) return;
   const exited = new Promise((resolve) => child.once('exit', resolve));
-  if (child.connected) child.send({ type: 'huanding:shutdown' }, () => {});
+  if (child.connected) child.send({ type: 'huandeng:shutdown' }, () => {});
   else child.kill();
   const finished = await Promise.race([exited.then(() => true), delay(12000).then(() => false)]);
   if (!finished) {

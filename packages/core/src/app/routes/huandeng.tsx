@@ -49,7 +49,7 @@ import {
 } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { desktopHost } from '@/lib/huanding-desktop';
+import { desktopHost } from '@/lib/huandeng-desktop';
 import type { Alignment } from '@/lib/inspector/geometry';
 import { isTypingTarget } from '@/lib/keys';
 import { draftHasChanges } from '@/lib/pptd-document';
@@ -96,7 +96,7 @@ export function HuandengEditor() {
   const nextPage = pageIndex >= 0 ? snapshot?.pages[pageIndex + 1] : undefined;
   const historyPage = snapshot?.pages.find((item) => item.pageId === historyPageId);
 
-  useDocumentTitle(snapshot ? `${snapshot.title} · HUANDING Editor` : 'HUANDING Editor');
+  useDocumentTitle(snapshot ? `${snapshot.title} · HUANDENG Editor` : 'HUANDENG Editor');
 
   const run = useCallback(async (task: () => Promise<unknown>) => {
     setUiError(null);
@@ -407,7 +407,7 @@ export function HuandengEditor() {
               H
             </span>
             <div>
-              <h1 className="text-lg font-semibold">HUANDING Editor</h1>
+              <h1 className="text-lg font-semibold">HUANDENG Editor</h1>
               <p className="text-xs text-muted-foreground">独立页面 · 自由编辑 · 持续演进</p>
             </div>
           </div>
@@ -422,11 +422,11 @@ export function HuandengEditor() {
               <p className="mb-5 text-sm leading-relaxed text-muted-foreground">
                 {desktopHost()
                   ? '选择项目中的 .pptd 文件，或者新建一个空白项目。'
-                  : '这是浏览器开发预览。日常使用请启动桌面版 HUANDING Editor，或从终端连接已有项目。'}
+                  : '这是浏览器开发预览。日常使用请启动桌面版 HUANDENG Editor，或从终端连接已有项目。'}
               </p>
               {!desktopHost() && (
                 <pre className="overflow-x-auto rounded-md border bg-muted/50 p-4 text-xs">
-                  huanding open /完整路径/deck.pptd
+                  huandeng open /完整路径/deck.pptd
                 </pre>
               )}
               {state.error && (
@@ -515,7 +515,7 @@ export function HuandengEditor() {
             H
           </span>
           <span className="text-xs font-semibold tracking-wide">
-            HUANDING{' '}
+            HUANDENG{' '}
             <span className="hidden font-normal text-muted-foreground xl:inline">Editor</span>
           </span>
         </div>

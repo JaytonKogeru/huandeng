@@ -1,11 +1,11 @@
-# HUANDING Editor — OpenSlide × PPTD 实施规格
+# HUANDENG Editor — OpenSlide × PPTD 实施规格
 
 **日期：2026-11-07（Australia/Sydney）**  
 **状态：v0.1、v0.2 已实现；最终桌面包通过本轮验收。**
 
 **当前实施合同：[SPEC-V02.md](SPEC-V02.md)，优先于本文的旧阶段安排。**
 
-**当前产品名称：HUANDING Editor / HUANDING Story / HUANDING Plugin。**
+**当前产品名称：HUANDENG Editor / HUANDENG Story / HUANDENG Plugin。**
 
 v0.2 交付独立桌面窗口、项目文件树、单页版本浏览与恢复，以及外部 Agent 维护的意图面板。编辑器内不加入 AI 聊天框；布局起点是可选的生成辅助。沿用已有 Huandeng 路径及协议标识以保持兼容。实际验证结果见 IMPLEMENTATION-V02.md。
 
@@ -15,7 +15,7 @@ v0.2 交付独立桌面窗口、项目文件树、单页版本浏览与恢复，
 
 - **PPTD**：唯一持久化主文档，保留 deck.pptd、独立 .page 和原媒体。
 - **React / OpenSlide**：主要渲染与交互前端，复用画布、Inspector、文字编辑、缩略图、演示及导出基础。
-- **Huandeng Frame**：科学叙事、证据、作者设计意图和评审。
+- **Huandeng Story**：科学叙事、证据、作者设计意图和评审。
 - **DocumentService**：GUI、CLI、MCP 共用的本地写入服务。
 - **Slidit**：保留已有原生代码；本轮不同时建设第二套 GPUI 前端。
 - 不开展候选产品 benchmark，直接实现已选路线，功能检查随实施任务完成。
@@ -531,7 +531,7 @@ OneDrive 保持日常文件同步职责；首版不把多机器同时打开同�
 
 这条扩展保留 React 的科学可视化生态，不要求首版完成任意网页到 PPTD 的反向转换。
 
-## 10. Huandeng Frame 与科学设计
+## 10. Huandeng Story 与科学设计
 
 沿用原有科学叙事、图板来源、作者陈述与 Agent 推断区分、设计政策及 revision 对应的作者反馈。不合并各 Agent 的原始 Story 历史，不绕过现有正式主 deck 的保护。
 
@@ -653,7 +653,7 @@ M1–M2 的写入检查使用专用 fixture；真实材料可只读检查，按�
 
 **完成行为：**真实图保留；普通文本/注释可编辑；回退可定位；更新已有交付目标；恢复不动无关页面；不新增另一套主 deck。
 
-### M5：科研 recipe 与 Huandeng Frame 接续
+### M5：科研 recipe 与 Huandeng Story 接续
 
 **依赖：M2、M3；导出检查依赖 M4。**
 
@@ -710,7 +710,7 @@ pnpm dev
 
 ### 15.2 按顺序执行
 
-1. 阅读本 SPEC、工程 AGENTS.md 与既有 Huandeng Frame 约束。
+1. 阅读本 SPEC、工程 AGENTS.md 与既有 Huandeng Story 约束。
 2. 建立固定基线，将本 SPEC 存为项目 docs/SPEC.md。
 3. 先完成 M1 的实际写回链路。
 4. 继续 M2–M5，每次记录已实现行为和实际验证。
@@ -757,5 +757,5 @@ pnpm dev
 - [R12] yaml@2 Document/CST API  
   https://eemeli.org/yaml/#documents
 - [R13] 项目约束  
-  Huandeng Frame skill；已有 07-HUMAN-SLIDES.md 与 Slidit README；用户本轮给出的融合方案和实施范围。
+  Huandeng Story skill；已有 07-HUMAN-SLIDES.md 与 Slidit README；用户本轮给出的融合方案和实施范围。
 

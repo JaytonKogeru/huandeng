@@ -25,8 +25,7 @@
     "version-packages": "changeset version",
     "release": "turbo run build --filter=@open-slide/core --filter=@open-slide/cli && changeset publish",
     "huandeng": "node packages/core/huandeng.js",
-    "huanding": "node packages/core/huanding.js",
-    "desktop": "pnpm --filter @huanding/desktop start"
+    "desktop": "pnpm --filter @huandeng/desktop start"
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.7",

@@ -35,7 +35,7 @@ export async function launchHuandeng(
     throw error;
   }
   process.stderr.write(
-    'HUANDING Editor\n' +
+    'HUANDENG Editor\n' +
       'http://127.0.0.1:' +
       (options.port ?? 4850) +
       '/huandeng\n' +
@@ -56,7 +56,7 @@ export async function launchHuandeng(
     });
   if (process.send) {
     process.send({
-      type: 'huanding:ready',
+      type: 'huandeng:ready',
       url: `http://127.0.0.1:${options.port ?? 4850}`,
       entry: entryPath,
     });
@@ -65,7 +65,7 @@ export async function launchHuandeng(
         message &&
         typeof message === 'object' &&
         'type' in message &&
-        message.type === 'huanding:shutdown'
+        message.type === 'huandeng:shutdown'
       )
         void shutdown();
     });

@@ -34,6 +34,6 @@ await fs.writeFile(
 );
 await fs.writeFile(
   path.join(destination, 'package.json'),
-  `${JSON.stringify({ name: 'huanding-desktop-build', private: true, packageManager: workspace.packageManager }, null, 2)}\n`,
+  `${JSON.stringify({ name: 'huandeng-desktop-build', private: true, packageManager: workspace.packageManager }, null, 2)}\n`,
 );
 process.stdout.write(`${destination}\n`);

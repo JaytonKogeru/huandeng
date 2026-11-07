@@ -1,4 +1,4 @@
-# HUANDING — GitHub and version policy
+# HUANDENG — GitHub and version policy
 
 The GitHub repository tracks EDITOR SOURCE and VERSION MILESTONES, not every slide modification.
 
@@ -13,6 +13,6 @@ The GitHub repository tracks EDITOR SOURCE and VERSION MILESTONES, not every sli
 4. Push main to origin ONCE for that milestone. Tag editor-vX.Y.Z. Do not push on every save, commit, or UI tweak.
 5. Never push to upstream (OpenSlide) or run the inherited npm publication workflow. CI should stay small.
 
-Initial milestone: HUANDING Editor v0.2.0 (Electron desktop, PPTD pages, per-page history, project tree, agent-maintained Story). The editor milestone tag is not an npm package version.
+Initial milestone: HUANDENG Editor v0.2.0 (Electron desktop, PPTD pages, per-page history, project tree, agent-maintained Story). The editor milestone tag is not an npm package version.
 
 The repository starts PRIVATE. Consider public visibility only after a licensing and source audit.

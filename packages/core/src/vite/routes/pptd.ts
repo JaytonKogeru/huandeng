@@ -4,7 +4,6 @@ import type { ServerResponse } from 'node:http';
 import path from 'node:path';
 import type { ViteDevServer } from 'vite';
 import { discoveryPath, runtimeRoot, type SessionDiscovery } from '../../pptd/client.ts';
-import { type FrameRecordRequest, recordFrame } from '../../pptd/frame.ts';
 import {
   checkpoint,
   recordCheckpoint,
@@ -14,6 +13,7 @@ import {
 import { readProjectTree } from '../../pptd/project-tree.ts';
 import { ExportManager, mimeType, readProjectAsset } from '../../pptd/runtime-export.ts';
 import { openPptdStore } from '../../pptd/store.ts';
+import { recordStory, type StoryRecordRequest } from '../../pptd/story.ts';
 import { PptdError, type TransactionRequest } from '../../pptd/types.ts';
 import { type ApiContext, json, readBody } from './context.ts';
 
@@ -205,8 +205,8 @@ export async function registerPptdRoutes(server: ViteDevServer, _ctx: ApiContext
       }
       if (route === '/transactions')
         return json(res, 200, await store.commit(body as unknown as TransactionRequest));
-      if (route === '/frame')
-        return json(res, 200, await recordFrame(store, body as unknown as FrameRecordRequest));
+      if (route === '/story' || route === '/frame')
+        return json(res, 200, await recordStory(store, body as unknown as StoryRecordRequest));
       const restoreRoute = /^\/pages\/([^/]+)\/restore$/.exec(route);
       if (restoreRoute) {
         if (

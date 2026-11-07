@@ -12,6 +12,7 @@ import {
 import { type ReactNode, useEffect, useId, useRef, useState } from 'react';
 import type { Alignment } from '@/lib/inspector/geometry';
 import { cn } from '@/lib/utils';
+import { tableLayout } from '../../../pptd/table-grid';
 import type { PageSnapshot, PptdElement } from '../../../pptd/types';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
@@ -193,6 +194,16 @@ export function PptdInspector({
   const selected = page.data.elements.filter((element) => selectedIds.includes(element.elementId));
   const element = selected.length === 1 ? selected[0] : undefined;
   const content = element ? textContent(element, theme) : {};
+  const tableModel =
+    element?.elementType === 'table'
+      ? (() => {
+          try {
+            return tableLayout(element as Record<string, unknown>);
+          } catch {
+            return null;
+          }
+        })()
+      : null;
   const bounds = element?.bounds ?? [0, 0, 120, 50];
   const patch = (fields: Record<string, unknown>, autosave = true) => {
     if (element) onPatch(element.elementId, fields, autosave);
@@ -370,6 +381,48 @@ export function PptdInspector({
               <p className="text-[11px] leading-relaxed text-muted-foreground">
                 双击画布文字直接编辑。选中文字后可设置加粗、上下标。
               </p>
+            </Section>
+          )}
+          {element.elementType === 'table' && (
+            <Section title="????">
+              <p className="text-[11px] leading-relaxed text-muted-foreground">
+                ????????????????????????????????????????
+              </p>
+              {tableModel ? (
+                <div className="max-h-96 space-y-3 overflow-y-auto">
+                  {tableModel.grid.flatMap((slots) =>
+                    slots.map((slot) => {
+                      const sourceIndex = slot.sourceIndex;
+                      if (sourceIndex === null || slot.covered) return null;
+                      return (
+                        <StringField
+                          key={slot.row * 10000 + slot.column}
+                          label={`R${slot.row + 1} C${slot.column + 1}`}
+                          value={textValue(record(slot.cell).text)}
+                          disabled={disabled}
+                          onBegin={onBegin}
+                          onEnd={onEnd}
+                          onCommit={(value) => {
+                            const oldRows = Array.isArray(element.rows) ? element.rows : [];
+                            const nextRows = oldRows.map((row) =>
+                              Array.isArray(row) ? [...row] : [],
+                            );
+                            if (!nextRows[slot.row]) return;
+                            const original = nextRows[slot.row][sourceIndex];
+                            nextRows[slot.row][sourceIndex] = {
+                              ...record(original),
+                              text: value,
+                            };
+                            patch({ rows: nextRows }, false);
+                          }}
+                        />
+                      );
+                    }),
+                  )}
+                </div>
+              ) : (
+                <p className="text-xs text-muted-foreground">????????????????????????</p>
+              )}
             </Section>
           )}
           {element.elementType === 'image' && (

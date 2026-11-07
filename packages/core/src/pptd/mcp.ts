@@ -6,6 +6,7 @@ import {
   type Tool,
 } from '@modelcontextprotocol/sdk/types.js';
 import type { HuandengClient } from './client.ts';
+import { canonicalToolName } from './tool-names.ts';
 import type { TransactionRequest } from './types.ts';
 
 const pageProperty = {
@@ -112,9 +113,9 @@ const tools: Tool[] = [
     annotations: read,
   },
   {
-    name: 'huandeng_frame_record',
+    name: 'huandeng_story_record',
     description:
-      'Before editing, record your understanding of the user request in HUANDING Frame. Preserve existing constraints unless the user changed them. This is an agent summary, not human approval. Use the current metadata revision and reuse all fields identically on retries.',
+      'Before editing, record your understanding of the user request in HUANDENG Story. Preserve existing constraints unless the user changed them. This is an agent summary, not human approval. Use the current metadata revision and reuse all fields identically on retries.',
     inputSchema: objectSchema(
       {
         ...pageProperty,
@@ -176,21 +177,21 @@ const tools: Tool[] = [
 
 export async function startMcp(client: HuandengClient) {
   const server = new Server(
-    { name: 'HUANDING Plugin', version: '0.2.0' },
+    { name: 'HUANDENG Plugin', version: '0.2.0' },
     {
       capabilities: { tools: {} },
       instructions:
-        'Work from the external user conversation; there is no editor chat. Read context and the target page, record your interpretation and preservation constraints with huanding_frame_record, then use the returned metadata revision for edits. Keep stable IDs, render results and report actual changes. Frame is your summary, never fabricated human approval. Never invent scientific data.',
+        'Work from the external user conversation; there is no editor chat. Read context and the target page, record your interpretation and preservation constraints with huandeng_story_record, then use the returned metadata revision for edits. Keep stable IDs, render results and report actual changes. Story is your summary, never fabricated human approval. Never invent scientific data.',
     },
   );
   server.setRequestHandler(ListToolsRequestSchema, async () => ({
-    tools: tools.map((tool) => ({ ...tool, name: tool.name.replace(/^huandeng_/, 'huanding_') })),
+    tools,
   }));
   server.setRequestHandler(CallToolRequestSchema, async (request) => {
     try {
       const args = request.params.arguments ?? {};
       let result: unknown;
-      switch (request.params.name.replace(/^huanding_/, 'huandeng_')) {
+      switch (canonicalToolName(request.params.name)) {
         case 'huandeng_context': {
           const snapshot = await client.session();
           result = {
@@ -235,8 +236,8 @@ export async function startMcp(client: HuandengClient) {
         case 'huandeng_project':
           result = await client.request('/project');
           break;
-        case 'huandeng_frame_record':
-          result = await client.request('/frame', args);
+        case 'huandeng_story_record':
+          result = await client.request('/story', args);
           break;
         case 'huandeng_version_restore':
           result = await client.request(

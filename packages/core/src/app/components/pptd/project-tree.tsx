@@ -1,6 +1,6 @@
 import { Copy, File, FileCode2, Folder, FolderOpen, Image, RefreshCw } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { desktopHost } from '@/lib/huanding-desktop';
+import { desktopHost } from '@/lib/huandeng-desktop';
 import type { PptdBackend, ProjectTree, ProjectTreeNode } from '@/lib/pptd-backend';
 import { cn } from '@/lib/utils';
 import type { DeckSnapshot } from '../../../pptd/types';

@@ -1,4 +1,4 @@
-name: HUANDING Core CI
+name: HUANDENG Core CI
 
 on:
   push:

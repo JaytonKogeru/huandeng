@@ -6,11 +6,12 @@ const { fileURLToPath } = require('node:url');
 const { createProject, pathKey, readPreferences, writePreferences } = require('./project.cjs');
 const { startService, stopService } = require('./service.cjs');
 
-app.setName('HUANDING Editor');
-if (process.env.HUANDING_DESKTOP_DATA_DIR) {
-  app.setPath('userData', path.resolve(process.env.HUANDING_DESKTOP_DATA_DIR));
-}
-if (process.platform === 'win32') app.setAppUserModelId('huanding.editor');
+const { migratePreferences } = require('./branding.cjs');
+app.setName('HUANDENG Editor');
+const desktopDataDir =
+  process.env.HUANDENG_DESKTOP_DATA_DIR ?? process.env.HUANDING_DESKTOP_DATA_DIR;
+if (desktopDataDir) app.setPath('userData', path.resolve(desktopDataDir));
+if (process.platform === 'win32') app.setAppUserModelId('huandeng.editor');
 
 const preferencesFile = path.join(app.getPath('userData'), 'preferences.json');
 const logFile = path.join(app.getPath('userData'), 'desktop-service.log');
@@ -47,8 +48,8 @@ function context() {
 function updateTitle() {
   window?.setTitle(
     activeService
-      ? `${activeService.title || path.basename(path.dirname(activeService.entryPath))} — HUANDING Editor${activeService.readOnly ? ' · 只读' : ''}`
-      : 'HUANDING Editor',
+      ? `HUANDENG Editor — ${path.basename(path.dirname(activeService.entryPath))}${activeService.readOnly ? ' · Read-only' : ''}`
+      : 'HUANDENG Editor',
   );
 }
 
@@ -61,7 +62,7 @@ function savePreferences() {
 }
 
 function status(message) {
-  if (!window?.isDestroyed()) window?.webContents.send('huanding:status', { message });
+  if (!window?.isDestroyed()) window?.webContents.send('huandeng:status', { message });
 }
 
 function operate(action) {
@@ -86,7 +87,7 @@ function showError(error) {
   if (window && !window.isDestroyed()) {
     void dialog.showMessageBox(window, {
       type: 'error',
-      title: 'HUANDING Editor',
+      title: 'HUANDENG Editor',
       message: '操作未完成',
       detail: message,
       buttons: ['返回编辑器'],
@@ -103,7 +104,7 @@ async function flushBeforeLeave() {
       reject(new Error('页面尚未确认保存完成。请检查未保存的修改或冲突，然后再试。'));
     }, 15000);
     pendingLeaves.set(requestId, { resolve, reject, timer });
-    window.webContents.send('huanding:before-leave', requestId);
+    window.webContents.send('huandeng:before-leave', requestId);
   });
 }
 
@@ -146,7 +147,7 @@ async function loadProject(entry, options = {}) {
     throw error;
   }
   updateTitle();
-  window.webContents.send('huanding:context-changed', context());
+  window.webContents.send('huandeng:context-changed', context());
   await rememberProject(service);
   await stopService(previous);
   return { entryPath: service.entryPath };
@@ -171,7 +172,7 @@ async function showHome() {
 
 async function chooseProject() {
   const selection = await dialog.showOpenDialog(window, {
-    title: '打开 HUANDING 项目',
+    title: '打开 HUANDENG 项目',
     defaultPath: activeService?.entryPath ?? preferences.lastProject ?? app.getPath('documents'),
     filters: [{ name: 'PPTD 项目', extensions: ['pptd'] }],
     properties: ['openFile'],
@@ -182,7 +183,7 @@ async function chooseProject() {
 
 async function newProject() {
   const selection = await dialog.showSaveDialog(window, {
-    title: '新建 HUANDING 项目 · 将创建同名文件夹',
+    title: '新建 HUANDENG 项目 · 将创建同名文件夹',
     defaultPath: path.join(app.getPath('documents'), 'Untitled.pptd'),
     filters: [{ name: '项目名称（创建独立文件夹）', extensions: ['pptd'] }],
     buttonLabel: '创建项目',
@@ -266,13 +267,13 @@ function buildMenu() {
       label: '帮助',
       submenu: [
         {
-          label: '关于 HUANDING Editor',
+          label: '关于 HUANDENG Editor',
           click: () => {
             void dialog.showMessageBox(window, {
-              title: 'HUANDING Editor',
-              message: 'HUANDING Editor',
+              title: 'HUANDENG Editor',
+              message: 'HUANDENG Editor',
               detail:
-                '独立页面，持续演进。\n\nHUANDING Frame 记录意图。\nHUANDING Plugin 连接外部 Agent。',
+                '独立页面，持续演进。\n\nHUANDENG Story 记录意图。\nHUANDENG Plugin 连接外部 Agent。',
               buttons: ['关闭'],
             });
           },
@@ -281,7 +282,7 @@ function buildMenu() {
     },
   ];
   if (process.platform === 'darwin')
-    template.unshift({ role: 'appMenu', label: 'HUANDING Editor' });
+    template.unshift({ role: 'appMenu', label: 'HUANDENG Editor' });
   Menu.setApplicationMenu(Menu.buildFromTemplate(template));
 }
 
@@ -291,7 +292,7 @@ function assertMainFrame(event) {
     event.sender !== window.webContents ||
     event.senderFrame !== window.webContents.mainFrame
   ) {
-    throw new Error('此操作只适用于当前 HUANDING 窗口。');
+    throw new Error('此操作只适用于当前 HUANDENG 窗口。');
   }
 }
 
@@ -302,12 +303,12 @@ function registerIpc() {
       return handler(...args);
     });
   };
-  handle('huanding:open-project', () => operate(chooseProject));
-  handle('huanding:new-project', () => operate(newProject));
-  handle('huanding:get-context', context);
-  handle('huanding:show-home', () => operate(showHome));
-  handle('huanding:reveal-path', revealPath);
-  handle('huanding:recent-projects', async () =>
+  handle('huandeng:open-project', () => operate(chooseProject));
+  handle('huandeng:new-project', () => operate(newProject));
+  handle('huandeng:get-context', context);
+  handle('huandeng:show-home', () => operate(showHome));
+  handle('huandeng:reveal-path', revealPath);
+  handle('huandeng:recent-projects', async () =>
     Promise.all(
       preferences.recentProjects.map(async (item) => ({
         ...item,
@@ -318,14 +319,14 @@ function registerIpc() {
       })),
     ),
   );
-  handle('huanding:open-recent', (entry) => {
+  handle('huandeng:open-recent', (entry) => {
     const item = preferences.recentProjects.find(
       (candidate) => pathKey(candidate.entryPath) === pathKey(entry),
     );
     if (!item) throw new Error('这个项目不在最近项目中，请通过“打开项目”选择。');
     return operate(() => loadProject(item.entryPath));
   });
-  ipcMain.on('huanding:before-leave-result', (event, result) => {
+  ipcMain.on('huandeng:before-leave-result', (event, result) => {
     assertMainFrame(event);
     const pending = pendingLeaves.get(result.requestId);
     if (!pending) return;
@@ -344,7 +345,7 @@ async function createWindow() {
     ...(bounds.x !== undefined ? { x: bounds.x, y: bounds.y } : {}),
     minWidth: 1040,
     minHeight: 680,
-    title: 'HUANDING Editor',
+    title: 'HUANDENG Editor',
     backgroundColor: '#f4f3ee',
     icon: path.join(__dirname, process.platform === 'win32' ? 'icon.ico' : 'icon.png'),
     show: false,
@@ -433,6 +434,12 @@ if (!acquired) {
   void app
     .whenReady()
     .then(async () => {
+      if (!desktopDataDir) {
+        await migratePreferences(
+          path.join(app.getPath('appData'), 'HUANDING Editor'),
+          app.getPath('userData'),
+        );
+      }
       await fs.mkdir(app.getPath('userData'), { recursive: true });
       preferences = await readPreferences(preferencesFile);
       registerIpc();
@@ -449,7 +456,7 @@ if (!acquired) {
       }
     })
     .catch((error) => {
-      dialog.showErrorBox('HUANDING Editor', String(error));
+      dialog.showErrorBox('HUANDENG Editor', String(error));
       app.quit();
     });
 }

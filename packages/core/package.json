@@ -1,7 +1,7 @@
 {
   "name": "@open-slide/core",
   "version": "2.3.1",
-  "description": "Runtime and CLI for open-slide \u2014 write slides in slides/, we handle the rest.",
+  "description": "Runtime and CLI for open-slide — write slides in slides/, we handle the rest.",
   "type": "module",
   "exports": {
     ".": {
@@ -22,8 +22,7 @@
   },
   "bin": {
     "open-slide": "./bin.js",
-    "huandeng": "./huandeng.js",
-    "huanding": "./huanding.js"
+    "huandeng": "./huandeng.js"
   },
   "files": [
     "bin.js",
@@ -40,7 +39,6 @@
     "skills",
     "README.md",
     "huandeng.js",
-    "huanding.js",
     "src/pptd"
   ],
   "scripts": {
@@ -96,6 +94,7 @@
     "fast-glob": "^3.3.2",
     "fflate": "^0.8.3",
     "html-to-image": "^1.11.13",
+    "katex": "0.19.1",
     "lucide-react": "^1.25.0",
     "next-themes": "^0.4.6",
     "playwright": "1.63.0",

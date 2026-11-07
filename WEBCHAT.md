@@ -1,8 +1,8 @@
-# HUANDING
+# HUANDENG
 
 ## Objective
 
-Deliver HUANDING Editor, an Electron desktop editor based on OpenSlide whose persisted document is PPTD, with stable page identities and one GUI/CLI/MCP writer. External agents maintain HUANDING Story intent. No embedded AI chat. Extensions use HUANDING Plugin.
+Deliver HUANDENG Editor, an Electron desktop editor based on OpenSlide whose persisted document is PPTD, with stable page identities and one GUI/CLI/MCP writer. External agents maintain HUANDENG Story intent. No embedded AI chat. Extensions use HUANDENG Plugin.
 
 ## Meaningful progress
 
@@ -14,7 +14,7 @@ Forked OpenSlide commit `327dd09bcd530eb97647fc33fa67e99f8137d860`, MIT, core 2.
 - Existing TSX mode remains available. PPTD selection uses page/element IDs.
 - Preserve manifest order, element z-order, unknown fields and the user's intentional layout.
 - Agents and humans share one writer with revisions, idempotent receipts and recoverable saves.
-- Visible naming is HUANDING per the latest explicit spelling. Existing Huandeng paths, metadata and old CLI/MCP aliases remain compatible; upstream package names and external `fss_*` interfaces are unchanged.
+- Visible naming is HUANDENG per the latest explicit spelling. Existing Huandeng paths, metadata and old CLI/MCP aliases remain compatible; upstream package names and external `fss_*` interfaces are unchanged.
 
 ## Source-of-truth map
 
@@ -30,4 +30,4 @@ Run typecheck, Biome, focused page-history/save tests, and one real desktop/agen
 
 ## Authority boundaries
 
-User authorized the v0.2 SPEC and HUANDING product family. Use disposable fixtures. Preserve the user's existing changes in `tests/fixtures/studio/pages/identities.page` on THUG. Do not overwrite formal decks, alter legacy projects' uncommitted work, publish packages, or expose a public server. Local commits are permitted; upstream is attribution, not a push target.
+User authorized the v0.2 SPEC and HUANDENG product family. Use disposable fixtures. Preserve the user's existing changes in `tests/fixtures/studio/pages/identities.page` on THUG. Do not overwrite formal decks, alter legacy projects' uncommitted work, publish packages, or expose a public server. Local commits are permitted; upstream is attribution, not a push target.

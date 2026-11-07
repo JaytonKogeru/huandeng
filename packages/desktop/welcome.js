@@ -1,4 +1,4 @@
-const desktop = window.huandingDesktop;
+const desktop = window.huandengDesktop;
 const statusElement = document.getElementById('status');
 const projectList = document.getElementById('recent-projects');
 const emptyRecents = document.getElementById('empty-recents');

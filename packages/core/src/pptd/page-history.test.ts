@@ -3,9 +3,9 @@ import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { afterEach, describe, expect, it } from 'vitest';
-import { recordFrame } from './frame';
 import { METADATA_PATH } from './identity';
 import { openPptdStore, type PptdStore } from './store';
+import { recordStory } from './story';
 import type { PptdOperation, TransactionRequest } from './types';
 
 const stores: PptdStore[] = [];
@@ -24,7 +24,7 @@ afterEach(async () => {
 });
 
 async function fixture() {
-  const directory = await fs.mkdtemp(path.join(os.tmpdir(), 'huanding-history-'));
+  const directory = await fs.mkdtemp(path.join(os.tmpdir(), 'huandeng-history-'));
   temporary.push(directory);
   const root = path.join(directory, 'project');
   const stateDir = path.join(directory, 'state');
@@ -134,7 +134,7 @@ describe('per-page history', () => {
       requestId: randomUUID(),
       expectedPageRevision: store.readPage(first.pageId).pageRevision,
       expectedMetadataRevision: store.getSnapshot().metadataRevision,
-      actor: 'huanding-editor',
+      actor: 'huandeng-editor',
     };
     const result = await store.restorePageVersion(restore);
     expect(result.changedPages).toEqual([first.pageId]);
@@ -210,7 +210,7 @@ describe('per-page history', () => {
     const files = await fixture();
     const store = await open(files);
     const first = store.getSnapshot().pages[0];
-    const intent = await recordFrame(store, {
+    const intent = await recordStory(store, {
       pageId: first.pageId,
       requestId: randomUUID(),
       expectedMetadataRevision: store.getSnapshot().metadataRevision,

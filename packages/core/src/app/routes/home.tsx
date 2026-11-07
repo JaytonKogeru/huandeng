@@ -195,7 +195,7 @@ export function Home() {
           )}
           <div className="ml-auto flex w-full items-center gap-2 md:w-auto">
             <Link to="/huandeng" className="text-sm font-medium">
-              Huandeng Editor · 幻灯
+              HUANDENG Editor
             </Link>
             <SortControl value={sortKey} onChange={setSortKey} />
             <SearchInput value={query} onChange={setQuery} />

@@ -1,5 +1,5 @@
 import { useEffect, useState, useSyncExternalStore } from 'react';
-import { desktopHost } from './huanding-desktop';
+import { desktopHost } from './huandeng-desktop';
 import { PptdBackend } from './pptd-backend';
 import { draftHasChanges, PptdDocumentClient } from './pptd-document';
 

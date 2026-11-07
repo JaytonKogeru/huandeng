@@ -58,7 +58,7 @@ export function PptdThumbnailRail({
   const [query, setQuery] = useState('');
   const currentIndex = pages.findIndex((page) => page.pageId === currentPageId);
   return (
-    <nav className="flex min-h-0 flex-1 flex-col bg-sidebar" aria-label="幻灯片页面">
+    <nav className="flex min-h-0 flex-1 flex-col bg-sidebar" aria-label="页面列表">
       <div className="flex h-11 shrink-0 items-center gap-1 border-b border-border px-3">
         <span className="mr-auto text-xs font-medium">
           页面 <span className="ml-1 text-muted-foreground">{pages.length}</span>

@@ -1,7 +1,7 @@
 import type { PptdStore } from './store.ts';
 import { PptdError } from './types.ts';
 
-export interface FrameRecordRequest {
+export interface StoryRecordRequest {
   pageId: string;
   requestId: string;
   expectedMetadataRevision: string | null;
@@ -13,7 +13,7 @@ export interface FrameRecordRequest {
   keep?: string[];
 }
 
-export async function recordFrame(store: PptdStore, input: FrameRecordRequest) {
+export async function recordStory(store: PptdStore, input: StoryRecordRequest) {
   for (const field of [
     'pageId',
     'requestId',

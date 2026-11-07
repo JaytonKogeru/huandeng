@@ -1,4 +1,4 @@
-export interface HuandingDesktop {
+export interface HuandengDesktop {
   platform: string;
   openProject(): Promise<{ entryPath: string } | null>;
   newProject(): Promise<{ entryPath: string } | null>;
@@ -16,10 +16,10 @@ export interface HuandingDesktop {
 
 declare global {
   interface Window {
-    huandingDesktop?: HuandingDesktop;
+    huandengDesktop?: HuandengDesktop;
   }
 }
 
-export function desktopHost(): HuandingDesktop | undefined {
-  return window.huandingDesktop;
+export function desktopHost(): HuandengDesktop | undefined {
+  return window.huandengDesktop;
 }

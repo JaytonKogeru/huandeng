@@ -5,7 +5,7 @@ param(
 )
 $ErrorActionPreference = "Stop"
 $project = Split-Path -Parent $PSScriptRoot
-if (-not $OutputDirectory) { $OutputDirectory = Join-Path $project "dist\HUANDING-win32-x64" }
+if (-not $OutputDirectory) { $OutputDirectory = Join-Path $project "dist\HUANDENG-win32-x64" }
 $OutputDirectory = [System.IO.Path]::GetFullPath($OutputDirectory)
 if (-not $ElectronRuntimePath) {
     $ElectronRuntimePath = Join-Path $project "packages\desktop\node_modules\electron\dist"
@@ -22,13 +22,13 @@ if (-not (Test-Path -LiteralPath (Join-Path $project "packages\core\dist\huanden
 }
 if (Test-Path -LiteralPath $OutputDirectory) {
     if (-not $Replace) { throw "Output already exists; use -Replace to update this build: $OutputDirectory" }
-    if (-not (Test-Path -LiteralPath (Join-Path $OutputDirectory "huanding-build.json"))) {
-        throw "Refusing to replace a directory without a HUANDING build marker."
+    if (-not (Test-Path -LiteralPath (Join-Path $OutputDirectory "huandeng-build.json"))) {
+        throw "Refusing to replace a directory without a HUANDENG build marker."
     }
     $running = Get-Process -ErrorAction SilentlyContinue | Where-Object {
         $_.Path -and $_.Path.StartsWith($OutputDirectory + "\", [StringComparison]::OrdinalIgnoreCase)
     }
-    if ($running) { throw "Close HUANDING Editor before replacing its desktop build." }
+    if ($running) { throw "Close HUANDENG Editor before replacing its desktop build." }
 }
 $buildId = [Guid]::NewGuid().ToString("N")
 $stage = Join-Path $project (".verification\desktop-package-" + $buildId)
@@ -42,7 +42,7 @@ $appDirectory = Join-Path $stage "resources\app"
 if ($LASTEXITCODE -ne 0) { throw "Preparing the desktop build workspace failed." }
 Push-Location $buildWorkspace
 try {
-    & corepack pnpm --config.node-linker=hoisted --config.package-import-method=copy --filter @huanding/desktop deploy --prod $appDirectory
+    & corepack pnpm --config.node-linker=hoisted --config.package-import-method=copy --filter @huandeng/desktop deploy --prod $appDirectory
     if ($LASTEXITCODE -ne 0) { throw "pnpm deploy failed with exit code $LASTEXITCODE" }
 } finally {
     Pop-Location
@@ -53,13 +53,13 @@ if ($LASTEXITCODE -ne 0) { throw "The staged application is not self-contained."
 $sourceRevision = (& git -C $project rev-parse HEAD).Trim()
 $defaultApp = Join-Path $stage "resources\default_app.asar"
 if (Test-Path -LiteralPath $defaultApp) { Remove-Item -LiteralPath $defaultApp }
-Rename-Item -LiteralPath (Join-Path $stage "electron.exe") -NewName "HUANDING Editor.exe"
+Rename-Item -LiteralPath (Join-Path $stage "electron.exe") -NewName "HUANDENG Editor.exe"
 $crashReporter = Join-Path $stage "electron_wer.dll"
 if (Test-Path -LiteralPath $crashReporter) {
-    Rename-Item -LiteralPath $crashReporter -NewName "HUANDING Editor_wer.dll"
+    Rename-Item -LiteralPath $crashReporter -NewName "HUANDENG Editor_wer.dll"
 }
 $marker = @{
-    product = "HUANDING Editor"
+    product = "HUANDENG Editor"
     desktopProtocol = 1
     electronVersion = "38.7.2"
     nodeLinker = "hoisted"
@@ -67,10 +67,10 @@ $marker = @{
     sourceDirty = [bool](& git -C $project status --porcelain)
     builtAt = [DateTime]::UtcNow.ToString("o")
 }
-[System.IO.File]::WriteAllText((Join-Path $stage "huanding-build.json"), ($marker | ConvertTo-Json), [System.Text.UTF8Encoding]::new($false))
+[System.IO.File]::WriteAllText((Join-Path $stage "huandeng-build.json"), ($marker | ConvertTo-Json), [System.Text.UTF8Encoding]::new($false))
 New-Item -ItemType Directory -Path (Split-Path -Parent $OutputDirectory) -Force | Out-Null
 if (Test-Path -LiteralPath $OutputDirectory) { Remove-Item -LiteralPath $OutputDirectory -Recurse -Force }
 Move-Item -LiteralPath $stage -Destination $OutputDirectory
 & node (Join-Path $PSScriptRoot "verify-desktop-package.mjs") (Join-Path $OutputDirectory "resources\app")
 if ($LASTEXITCODE -ne 0) { throw "The application did not pass its relocation check." }
-Write-Output (Join-Path $OutputDirectory "HUANDING Editor.exe")
+Write-Output (Join-Path $OutputDirectory "HUANDENG Editor.exe")

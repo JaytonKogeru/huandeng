@@ -650,7 +650,7 @@ export class PptdStore {
     return this.commit({
       requestId: request.requestId,
       deckId: this.documents.metadata.deckId,
-      actor: request.actor ?? 'huanding-editor',
+      actor: request.actor ?? 'huandeng-editor',
       ...(request.originClientId ? { originClientId: request.originClientId } : {}),
       expected: {
         pages: { [pageId]: request.expectedPageRevision },

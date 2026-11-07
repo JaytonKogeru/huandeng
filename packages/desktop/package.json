@@ -1,9 +1,9 @@
 {
-  "name": "@huanding/desktop",
+  "name": "@huandeng/desktop",
   "version": "0.0.0",
   "private": true,
-  "productName": "HUANDING Editor",
-  "description": "HUANDING Editor desktop application",
+  "productName": "HUANDENG Editor",
+  "description": "HUANDENG Editor desktop application",
   "main": "main.cjs",
   "license": "MIT",
   "scripts": {
@@ -22,7 +22,8 @@
     "icon.ico",
     "README.md",
     "NOTICE.md",
-    "LICENSE"
+    "LICENSE",
+    "branding.cjs"
   ],
   "dependencies": {
     "@open-slide/core": "workspace:*"

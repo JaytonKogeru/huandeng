@@ -1,18 +1,24 @@
+import katex from 'katex';
 import {
   type CSSProperties,
   Fragment,
   type ReactNode,
   type PointerEvent as ReactPointerEvent,
   useId,
+  useLayoutEffect,
   useMemo,
+  useRef,
   useState,
 } from 'react';
 import { pptdAssetUrl } from '@/lib/pptd-backend';
+import { splitMathFragments } from '../../../pptd/math-fragments';
+import { tableLayout } from '../../../pptd/table-grid';
 import type { PageSize, PageSnapshot, PptdElement } from '../../../pptd/types';
 
 export type PptdTheme = {
   colors?: Record<string, string>;
   textStyles?: Record<string, Record<string, unknown>>;
+  tableStyles?: Record<string, Record<string, unknown>>;
 };
 
 export function record(value: unknown): Record<string, unknown> {
@@ -170,11 +176,46 @@ export function sanitizeRichTextHtml(source: string): string {
   return document.body.innerHTML;
 }
 
+function MathFragmentContent({ source, display }: { source: string; display: boolean }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  useLayoutEffect(() => {
+    const container = ref.current;
+    if (!container) return;
+    try {
+      katex.render(source, container, {
+        output: 'mathml',
+        displayMode: display,
+        trust: false,
+        throwOnError: true,
+      });
+      delete container.dataset.hdFormulaError;
+    } catch {
+      container.textContent = source;
+      container.dataset.hdFormulaError = 'true';
+    }
+  }, [source, display]);
+  return <span ref={ref} data-hd-formula style={{ display: display ? 'block' : 'inline' }} />;
+}
+
+function mathNodes(source: string, key: string): ReactNode {
+  const fragments = splitMathFragments(source);
+  if (fragments.every((fragment) => fragment.kind === 'text')) return source;
+  let offset = 0;
+  return fragments.map((fragment) => {
+    const fragmentKey = key.concat('-', String(offset));
+    offset += fragment.raw.length;
+    if (fragment.kind === 'text') return <Fragment key={fragmentKey}>{fragment.value}</Fragment>;
+    return (
+      <MathFragmentContent key={fragmentKey} source={fragment.value} display={fragment.display} />
+    );
+  });
+}
+
 function richNodes(source: string, theme: PptdTheme): ReactNode {
-  if (!isRichText(source)) return source;
+  if (!isRichText(source)) return mathNodes(source, 'plain');
   const document = new DOMParser().parseFromString(sanitizeRichTextHtml(source), 'text/html');
   const render = (node: Node, key: string): ReactNode => {
-    if (node.nodeType === 3) return node.textContent;
+    if (node.nodeType === 3) return mathNodes(node.textContent ?? '', key);
     if (!(node instanceof Element)) return null;
     const children = Array.from(node.childNodes).map((child, index) =>
       render(child, `${key}-${index}`),
@@ -568,7 +609,7 @@ function TextContent({ element, theme }: { element: PptdElement; theme: PptdThem
   const source = textValue(content.text);
   const children = useMemo(() => richNodes(source, theme), [source, theme]);
   const align = Array.isArray(content.align) ? content.align : ['left', 'top'];
-  const unsupported = /\\\(|\\\[|\$\$/.test(source) || !!content.gradient || !!content.shadow;
+  const unsupported = !!content.gradient || !!content.shadow;
   return (
     <div
       style={{
@@ -587,6 +628,100 @@ function TextContent({ element, theme }: { element: PptdElement; theme: PptdThem
         {children}
       </div>
     </div>
+  );
+}
+
+function TableContent({ element, theme }: { element: PptdElement; theme: PptdTheme }) {
+  let layout: ReturnType<typeof tableLayout>;
+  try {
+    layout = tableLayout(element as Record<string, unknown>);
+  } catch (error) {
+    return (
+      <Unsupported label="????????" detail={error instanceof Error ? error.message : '??????'} />
+    );
+  }
+  const name = textValue(element.style).replace(/^\$/, '');
+  const tableStyle = record(theme.tableStyles?.[name]);
+  const widths = layout.columnRatios;
+  const columnDefinitions = widths.map((fraction, column) => ({
+    fraction,
+    id: String(column),
+  }));
+  const resolveCellStyle = (cell: Record<string, unknown>, row: number, col: number) => ({
+    ...record(tableStyle.cellStyle),
+    ...record(tableStyle.bodyStyles),
+    ...(row === 0 ? record(tableStyle.firstRow) : {}),
+    ...(row === layout.grid.length - 1 ? record(tableStyle.lastRow) : {}),
+    ...(col === 0 ? record(tableStyle.firstColumn) : {}),
+    ...(col === widths.length - 1 ? record(tableStyle.lastColumn) : {}),
+    ...cell,
+  });
+  return (
+    <table
+      data-hd-table
+      style={{
+        width: '100%',
+        height: '100%',
+        borderCollapse: 'collapse',
+        tableLayout: 'fixed',
+        fontSize: 13,
+        overflow: 'visible',
+      }}
+    >
+      <colgroup>
+        {columnDefinitions.map(({ fraction, id }) => (
+          <col key={id} style={{ width: String(fraction * 100).concat('%') }} />
+        ))}
+      </colgroup>
+      <tbody>
+        {layout.grid.map((slots, row) => (
+          <tr key={slots[0]?.row} style={{ height: layout.rowMinimums[row] }}>
+            {slots.map((slot, col) => {
+              if (slot.covered) return null;
+              const final = resolveCellStyle(record(slot.cell), row, col);
+              const align = Array.isArray(final.align) ? final.align : ['center', 'middle'];
+              const fill = final.fill ?? tableStyle.fill ?? element.fill;
+              const textRef = textValue(final.textStyle).replace(/^\$/, '');
+              const font = { ...record(theme.textStyles?.[textRef]), ...final };
+              const border = record(final.border);
+              return (
+                <td
+                  key={slot.row * 10000 + slot.column}
+                  data-hd-table-cell={String(row).concat(':', String(col))}
+                  rowSpan={slot.rowSpan}
+                  colSpan={slot.colSpan}
+                  style={{
+                    border: String(numberValue(border.width, 1)).concat(
+                      'px solid ',
+                      resolveColor(border.color, theme, '#999'),
+                    ),
+                    backgroundColor: resolveColor(
+                      typeof fill === 'string' ? fill : record(fill).color,
+                      theme,
+                      'transparent',
+                    ),
+                    padding: '5px 9px',
+                    textAlign: (align[0] === 'distributed'
+                      ? 'justify'
+                      : align[0]) as CSSProperties['textAlign'],
+                    verticalAlign:
+                      align[1] === 'middle' ? 'middle' : align[1] === 'bottom' ? 'bottom' : 'top',
+                    color: resolveColor(font.color, theme),
+                    fontSize: numberValue(font.fontSize, 13),
+                    fontWeight: font.bold === true ? 700 : 400,
+                    fontStyle: font.italic === true ? 'italic' : 'normal',
+                    whiteSpace: 'pre-wrap',
+                    overflowWrap: 'anywhere',
+                  }}
+                >
+                  {richNodes(textValue(final.text), theme)}
+                </td>
+              );
+            })}
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
 }
 
@@ -666,6 +801,8 @@ export function PptdPageRenderer({
             content = <ShapeContent element={element} theme={theme} />;
           else if (element.elementType === 'line')
             content = <LineContent element={element} theme={theme} />;
+          else if (element.elementType === 'table')
+            content = <TableContent element={element} theme={theme} />;
           else
             content = (
               <Unsupported label={`暂未渲染：${element.elementType}`} detail={element.elementId} />

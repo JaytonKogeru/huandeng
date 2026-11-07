@@ -9,7 +9,7 @@
 | 名称 | 当前职责 |
 | --- | --- |
 | Huandeng Editor · 幻灯编辑器 | PPTD 可视化编辑、演示、历史与导出 |
-| Huandeng Frame | 每页科学问题、保留的构图理由、对象角色和来源上下文 |
+| Huandeng Story | 每页科学问题、保留的构图理由、对象角色和来源上下文 |
 | Huandeng Plugin | 与编辑器共用写服务的 CLI / MCP 接口 |
 
 基础是 MIT 许可的 OpenSlide，固定于 commit 327dd09bcd530eb97647fc33fa67e99f8137d860；上游 core 版本 2.3.1。保留上游包名、许可和原生 TSX 模式。产品名称已用于界面、启动入口、文档和插件目录。既有外部 fss_* 协议名保留兼容。
@@ -145,7 +145,7 @@ Linux 全部 47 个测试文件、607 项测试通过，core 类型检查和构�
 - [SPEC.md](SPEC.md)：产品合同。
 - [WEBCHAT.md](../WEBCHAT.md)：后续 Agent 接续上下文。
 - packages/core/src/pptd：存储、身份、命令、CLI/MCP、recipe、导出、Git。
-- packages/core/src/app/components/pptd：渲染、画布、Inspector、缩略图、recipe、Frame。
+- packages/core/src/app/components/pptd：渲染、画布、Inspector、缩略图、recipe、Story。
 - packages/core/src/vite/routes/pptd.ts：本地服务与文件更新。
 - tests/fixtures/studio：三页合成开发文档。
 - docs/evidence：本次实际验证记录。

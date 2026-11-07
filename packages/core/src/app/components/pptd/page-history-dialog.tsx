@@ -9,7 +9,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } f
 import { PptdPageRenderer, type PptdTheme } from './renderer';
 
 function actorLabel(actor: string): string {
-  if (actor.startsWith('huandeng-ui:') || actor.startsWith('huanding-ui:')) return '编辑器';
+  if (actor.startsWith('huandeng-ui:') || actor.startsWith('huandeng-ui:')) return '编辑器';
   if (actor === 'external') return '外部文件修改';
   return actor;
 }

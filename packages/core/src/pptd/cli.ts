@@ -7,8 +7,8 @@ import { startMcp } from './mcp.ts';
 import { openPptdStore } from './store.ts';
 import type { TransactionRequest } from './types.ts';
 
-const program = new Command('huanding')
-  .description('HUANDING Editor — one document for people and external agents')
+const program = new Command('huandeng')
+  .description('HUANDENG Editor — one document for people and external agents')
   .option('--url <url>', 'connect to an active local editor')
   .option('--entry <path>', 'find the active editor for this PPTD file');
 const print = (value: unknown): void => {
@@ -85,11 +85,12 @@ program
   .description('Read the project file tree')
   .action(async () => print(await (await client()).request('/project')));
 program
-  .command('frame <pageId> <intentFile>')
+  .command('story <pageId> <intentFile>')
+  .alias('frame')
   .description('Record agent intent from JSON, with requestId and expectedMetadataRevision')
   .action(async (pageId, intentFile) => {
     const intent = JSON.parse(await fs.readFile(intentFile, 'utf8'));
-    print(await (await client()).request('/frame', { ...intent, pageId }));
+    print(await (await client()).request('/story', { ...intent, pageId }));
   });
 program
   .command('restore <pageId> <versionId> <requestFile>')
@@ -127,7 +128,7 @@ program
   .action(async (message) => print(await (await client()).request('/checkpoint', { message })));
 program
   .command('mcp')
-  .description('Serve HUANDING Plugin tools over stdio, attached to the active writer')
+  .description('Serve HUANDENG Plugin tools over stdio, attached to the active writer')
   .action(async () => {
     await startMcp(await client());
   });

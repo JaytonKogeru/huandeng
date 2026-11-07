@@ -1,4 +1,4 @@
-# HUANDING Editor v0.2 — 桌面与单页演进
+# HUANDENG Editor v0.2 — 桌面与单页演进
 
 日期：2026-11-07（Australia/Sydney）。本文件是当前实施合同，优先于 SPEC.md 中 v0.1 的阶段安排。
 
@@ -6,7 +6,7 @@
 
 ## 1. 产品与入口
 
-采用用户最新明确拼写 **HUANDING**。产品称 HUANDING Editor，意图层称 HUANDING Story，外部 Agent 接口称 HUANDING Plugin。已有 Huandeng 目录、`.huandeng` 元数据与旧 CLI/MCP 名称保留兼容，不迁移用户项目。
+采用用户最新明确拼写 **HUANDENG**。产品称 HUANDENG Editor，意图层称 HUANDENG Story，外部 Agent 接口称 HUANDENG Plugin。已有 Huandeng 目录、`.huandeng` 元数据与旧 CLI/MCP 名称保留兼容，不迁移用户项目。
 
 正常入口是 Electron 独立桌面窗口，复用现有 React 编辑器和本机 DocumentService。外部 Claude Code、Codex、ChatGPT 连接同一 writer。编辑器不加入聊天框、模型选择或 API Key 管理。
 
@@ -44,13 +44,13 @@ recipe 的界面名称改为可选的“布局起点”。生成后仍是普通 
 
 同时提供 `page.version.restore` 事务操作，GUI/CLI/MCP 使用相同语义。
 
-## 4. Agent 维护的 HUANDING Story
+## 4. Agent 维护的 HUANDENG Story
 
-用户在外部 Agent 里描述需求。Agent 读当前页与已有 Frame，记录需求摘要与保留约束，再执行修改、检查渲染。Frame 默认只读展示；用户可纠正，日常不要求手动填表。
+用户在外部 Agent 里描述需求。Agent 读当前页与已有 Story，记录需求摘要与保留约束，再执行修改、检查渲染。Story 默认只读展示；用户可纠正，日常不要求手动填表。
 
 `designIntent` 保留 `purpose`、`keep`，增加可选 `requestedChange`、`actor`、`recordedAt`、`source`。Agent 的记录表示它对需求的理解，不代表用户批准。既有作者评审记录保持独立。
 
-提供专门 Frame 写入工具，通过 metadata.patch 与 metadataRevision 保存，保留未知字段。既有 apply 仍能直接使用；不假装强制所有文件写入都遵守该工作流。
+提供专门 Story 写入工具，通过 metadata.patch 与 metadataRevision 保存，保留未知字段。既有 apply 仍能直接使用；不假装强制所有文件写入都遵守该工作流。
 
 ## 5. 实施边界与验收
 
@@ -58,7 +58,7 @@ recipe 的界面名称改为可选的“布局起点”。生成后仍是普通 
 | --- | --- | --- |
 | 桌面宿主 | packages/desktop、启动/打包脚本 | Windows 原生窗口，打开/新建/最近项目与服务生命周期 |
 | 历史服务 | store、persistence、types | 任意旧版预览/恢复、重启保留、其他页不变 |
-| 编辑界面 | PPTD components 与 route | 项目树、缩略图右键、历史预览、Frame、可选布局 |
+| 编辑界面 | PPTD components 与 route | 项目树、缩略图右键、历史预览、Story、可选布局 |
 | 接口集成 | HTTP、CLI、MCP | 外部 Agent 记录意图并修改，桌面实时显示 |
 
 对照旧 PPTD Editor 的实际源码查缺，优先完成上述日常工作流。高级表格/图表专用编辑、注册科学组件、动画按后续真实需求推进，不宣称本轮已经完整覆盖。

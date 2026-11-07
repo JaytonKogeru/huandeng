@@ -39,7 +39,7 @@ const output = execFileSync(process.execPath, [path.join(core, 'huandeng.js'), '
   encoding: 'utf8',
   windowsHide: true,
 });
-if (!output.includes('HUANDING Editor'))
+if (!output.includes('HUANDENG Editor'))
   throw new Error('The packaged document service did not start.');
 process.stdout.write(
   `${JSON.stringify({ portable: true, nodeLinker: 'hoisted', coreVersion: corePackage.version, directories, relativeExecutableLinks })}\n`,

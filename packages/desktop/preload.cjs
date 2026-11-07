@@ -2,13 +2,13 @@ const { contextBridge, ipcRenderer } = require('electron');
 
 const leaveHandlers = new Set();
 
-ipcRenderer.on('huanding:before-leave', async (_event, requestId) => {
+ipcRenderer.on('huandeng:before-leave', async (_event, requestId) => {
   try {
     for (const handler of leaveHandlers) await handler();
     await new Promise((resolve) => setTimeout(resolve, 0));
-    ipcRenderer.send('huanding:before-leave-result', { requestId, ok: true });
+    ipcRenderer.send('huandeng:before-leave-result', { requestId, ok: true });
   } catch (error) {
-    ipcRenderer.send('huanding:before-leave-result', {
+    ipcRenderer.send('huandeng:before-leave-result', {
       requestId,
       ok: false,
       message: error instanceof Error ? error.message : String(error),
@@ -22,17 +22,17 @@ const subscribe = (channel, callback) => {
   return () => ipcRenderer.removeListener(channel, listener);
 };
 
-contextBridge.exposeInMainWorld('huandingDesktop', {
+contextBridge.exposeInMainWorld('huandengDesktop', {
   platform: process.platform,
-  openProject: () => ipcRenderer.invoke('huanding:open-project'),
-  newProject: () => ipcRenderer.invoke('huanding:new-project'),
-  recentProjects: () => ipcRenderer.invoke('huanding:recent-projects'),
-  openRecent: (entryPath) => ipcRenderer.invoke('huanding:open-recent', entryPath),
-  revealPath: (relativePath) => ipcRenderer.invoke('huanding:reveal-path', relativePath),
-  getContext: () => ipcRenderer.invoke('huanding:get-context'),
-  showHome: () => ipcRenderer.invoke('huanding:show-home'),
-  onContextChanged: (callback) => subscribe('huanding:context-changed', callback),
-  onStatus: (callback) => subscribe('huanding:status', callback),
+  openProject: () => ipcRenderer.invoke('huandeng:open-project'),
+  newProject: () => ipcRenderer.invoke('huandeng:new-project'),
+  recentProjects: () => ipcRenderer.invoke('huandeng:recent-projects'),
+  openRecent: (entryPath) => ipcRenderer.invoke('huandeng:open-recent', entryPath),
+  revealPath: (relativePath) => ipcRenderer.invoke('huandeng:reveal-path', relativePath),
+  getContext: () => ipcRenderer.invoke('huandeng:get-context'),
+  showHome: () => ipcRenderer.invoke('huandeng:show-home'),
+  onContextChanged: (callback) => subscribe('huandeng:context-changed', callback),
+  onStatus: (callback) => subscribe('huandeng:status', callback),
   onBeforeLeave: (callback) => {
     leaveHandlers.add(callback);
     return () => leaveHandlers.delete(callback);

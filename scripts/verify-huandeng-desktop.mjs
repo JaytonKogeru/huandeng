@@ -12,9 +12,9 @@ const require = createRequire(path.join(root, 'packages/core/package.json'));
 const { _electron: electron } = require('playwright');
 const { Client } = require('@modelcontextprotocol/sdk/client/index.js');
 const { StdioClientTransport } = require('@modelcontextprotocol/sdk/client/stdio.js');
-const executablePath = process.env.HUANDING_DESKTOP_EXE;
-if (!executablePath) throw new Error('Set HUANDING_DESKTOP_EXE to the desktop executable.');
-const sandbox = await fs.mkdtemp(path.join(os.tmpdir(), 'huanding-desktop-'));
+const executablePath = process.env.HUANDENG_DESKTOP_EXE;
+if (!executablePath) throw new Error('Set HUANDENG_DESKTOP_EXE to the desktop executable.');
+const sandbox = await fs.mkdtemp(path.join(os.tmpdir(), 'huandeng-desktop-'));
 const deck = path.join(sandbox, 'studio');
 const entry = path.join(deck, 'deck.pptd');
 const evidence = path.join(root, '.verification');
@@ -22,7 +22,7 @@ await fs.cp(path.join(root, 'tests/fixtures/studio'), deck, { recursive: true })
 await fs.mkdir(evidence, { recursive: true });
 const launchEnv = {
   ...process.env,
-  HUANDING_DESKTOP_DATA_DIR: path.join(sandbox, 'profile'),
+  HUANDENG_DESKTOP_DATA_DIR: path.join(sandbox, 'profile'),
   HUANDENG_RUNTIME_DIR: path.join(sandbox, 'runtime'),
 };
 delete launchEnv.ELECTRON_RUN_AS_NODE;
@@ -40,7 +40,7 @@ let target;
 let sibling;
 let firstEdit;
 let restoredVersionId;
-let frameIntent;
+let storyIntent;
 const intermediateTitle = '保留留白，让证据自己说话。';
 const laterTitle = '这是一次可回退的修改。';
 const siblingNotes = 'B6XA 的独立修改，应在 Q9R4 恢复历史时保持原样。';
@@ -78,7 +78,7 @@ async function openDesktop(args = []) {
   application = await electron.launch({
     executablePath,
     args: [
-      ...(process.env.HUANDING_DESKTOP_APP ? [process.env.HUANDING_DESKTOP_APP] : []),
+      ...(process.env.HUANDENG_DESKTOP_APP ? [process.env.HUANDENG_DESKTOP_APP] : []),
       ...args,
     ],
     cwd: root,
@@ -95,7 +95,7 @@ async function openDesktop(args = []) {
 async function waitForProject(expectedEntry) {
   return eventually(async () => {
     if (!(await page.locator('[data-hd-editor-canvas]').count())) return false;
-    const context = await page.evaluate(() => window.huandingDesktop?.getContext());
+    const context = await page.evaluate(() => window.huandengDesktop?.getContext());
     if (!context?.entryPath || pathKey(context.entryPath) !== pathKey(expectedEntry)) return false;
     url = context.serviceUrl;
     const snapshot = await api('/session');
@@ -113,7 +113,7 @@ async function callTool(name, args = {}) {
 async function applyOperations(pageId, operations) {
   const snapshot = await api('/session');
   const current = snapshot.pages.find((item) => item.pageId === pageId);
-  return callTool('huanding_apply', {
+  return callTool('huandeng_apply', {
     transaction: {
       requestId: randomUUID(),
       deckId: snapshot.deckId,
@@ -155,7 +155,7 @@ async function openHistory(pageId) {
 
 try {
   await check(
-    'native Electron window opens the fixture with HUANDING branding and external-agent interfaces',
+    'native Electron window opens the fixture with HUANDENG branding and external-agent interfaces',
     async () => {
       await openDesktop(['--entry', entry]);
       const snapshot = await waitForProject(entry);
@@ -170,30 +170,30 @@ try {
         })),
       );
       assert.equal(windows.length, 1);
-      assert.match(windows[0].title, /HUANDING/);
+      assert.match(windows[0].title, /HUANDENG/);
       assert.equal(windows[0].visible, true);
-      assert.match(await page.title(), /HUANDING/);
+      assert.match(await page.title(), /HUANDENG/);
       assert.equal(await page.locator('[data-agent-ui], [data-agent-provider]').count(), 0);
-      assert.equal(await page.evaluate(() => window.huandingDesktop.platform), process.platform);
+      assert.equal(await page.evaluate(() => window.huandengDesktop.platform), process.platform);
     },
   );
 
   await check(
-    'external MCP records Frame before editing Q9R4 and independently edits B6XA',
+    'external MCP records Story before editing Q9R4 and independently edits B6XA',
     async () => {
-      mcp = new Client({ name: 'huanding-desktop-verification', version: '0.2.0' });
+      mcp = new Client({ name: 'huandeng-desktop-verification', version: '0.2.0' });
       await mcp.connect(
         new StdioClientTransport({
           command: process.execPath,
-          args: [path.join(root, 'packages/core/huanding.js'), '--url', url, 'mcp'],
+          args: [path.join(root, 'packages/core/huandeng.js'), '--url', url, 'mcp'],
           cwd: root,
           stderr: 'pipe',
         }),
       );
       const available = await mcp.listTools();
-      assert.ok(available.tools.some((tool) => tool.name === 'huanding_frame_record'));
-      const context = await callTool('huanding_context');
-      await callTool('huanding_frame_record', {
+      assert.ok(available.tools.some((tool) => tool.name === 'huandeng_story_record'));
+      const context = await callTool('huandeng_context');
+      await callTool('huandeng_story_record', {
         pageId: target.pageId,
         requestId: randomUUID(),
         expectedMetadataRevision: context.metadataRevision,
@@ -208,8 +208,8 @@ try {
       await page
         .getByText('只修改本页标题，保留原图比例、构图与其他页面。', { exact: true })
         .waitFor();
-      assert.equal(await page.locator('[data-hd-frame] textarea').count(), 0);
-      frameIntent = (await api(`/pages/${target.pageId}`)).metadata.designIntent;
+      assert.equal(await page.locator('[data-hd-story] textarea').count(), 0);
+      storyIntent = (await api(`/pages/${target.pageId}`)).metadata.designIntent;
       firstEdit = await applyOperations(target.pageId, [
         {
           op: 'element.patch',
@@ -253,7 +253,7 @@ try {
         ).content.text,
         laterTitle,
       );
-      await page.screenshot({ path: path.join(evidence, 'desktop-v02-history.png') });
+      await page.screenshot({ path: path.join(evidence, 'desktop-v03-history.png') });
       await dialog.getByRole('button', { name: '将此版本恢复为当前页', exact: true }).click();
       await eventually(
         async () =>
@@ -271,7 +271,7 @@ try {
       );
       assert.equal((await api(`/pages/${sibling.pageId}`)).data.notes, siblingNotes);
       const restored = await api(`/pages/${target.pageId}`);
-      assert.deepEqual(restored.metadata.designIntent, frameIntent);
+      assert.deepEqual(restored.metadata.designIntent, storyIntent);
       assert.equal(restored.pageId, target.pageId);
       assert.equal(restored.path, target.path);
       const versions = await api(`/pages/${target.pageId}/versions`);
@@ -296,7 +296,7 @@ try {
     await eventually(async () => new URL(page.url()).searchParams.get('page') === sibling.pageId);
     await file.click();
     await eventually(async () => new URL(page.url()).searchParams.get('page') === target.pageId);
-    await page.screenshot({ path: path.join(evidence, 'desktop-v02-editor.png') });
+    await page.screenshot({ path: path.join(evidence, 'desktop-v03-editor.png') });
   });
 
   await check('desktop restart reopens the last project and retains page history', async () => {
@@ -332,13 +332,13 @@ try {
   await check(
     'native New and Open dialogs create and reopen real PPTD projects through IPC',
     async () => {
-      const selectedPath = path.join(sandbox, 'New HUANDING Project.pptd');
-      const newEntry = path.join(sandbox, 'New HUANDING Project', 'deck.pptd');
+      const selectedPath = path.join(sandbox, 'New HUANDENG Project.pptd');
+      const newEntry = path.join(sandbox, 'New HUANDENG Project', 'deck.pptd');
       await application.evaluate(({ dialog }, filePath) => {
         dialog.showSaveDialog = async () => ({ canceled: false, filePath });
       }, selectedPath);
       await page.evaluate(() => {
-        void window.huandingDesktop.newProject().catch((error) => console.error(error.message));
+        void window.huandengDesktop.newProject().catch((error) => console.error(error.message));
       });
       const created = await waitForProject(newEntry);
       assert.equal(created.pages.length, 1);
@@ -349,11 +349,11 @@ try {
         dialog.showOpenDialog = async () => ({ canceled: false, filePaths: [entryPath] });
       }, entry);
       await page.evaluate(() => {
-        void window.huandingDesktop.openProject().catch((error) => console.error(error.message));
+        void window.huandengDesktop.openProject().catch((error) => console.error(error.message));
       });
       await waitForProject(entry);
       assert.equal((await api(`/pages/${sibling.pageId}`)).data.notes, siblingNotes);
-      const recent = await page.evaluate(() => window.huandingDesktop.recentProjects());
+      const recent = await page.evaluate(() => window.huandengDesktop.recentProjects());
       assert.ok(recent.some((item) => pathKey(item.entryPath) === pathKey(entry)));
       assert.ok(recent.some((item) => pathKey(item.entryPath) === pathKey(newEntry)));
     },
@@ -369,10 +369,10 @@ try {
     entry,
     checks,
     rendererErrors,
-    screenshots: ['desktop-v02-history.png', 'desktop-v02-editor.png'],
+    screenshots: ['desktop-v03-history.png', 'desktop-v03-editor.png'],
   };
   await fs.writeFile(
-    path.join(evidence, 'desktop-v02.json'),
+    path.join(evidence, 'desktop-v03.json'),
     `${JSON.stringify(report, null, 2)}\n`,
   );
   process.stdout.write(`${JSON.stringify(report, null, 2)}\n`);
@@ -387,14 +387,14 @@ try {
     processLog: processLog.join('').slice(-12000),
   };
   await fs.writeFile(
-    path.join(evidence, 'desktop-v02.json'),
+    path.join(evidence, 'desktop-v03.json'),
     `${JSON.stringify(report, null, 2)}\n`,
   );
-  await page?.screenshot({ path: path.join(evidence, 'desktop-v02-failure.png') }).catch(() => {});
+  await page?.screenshot({ path: path.join(evidence, 'desktop-v03-failure.png') }).catch(() => {});
   process.stderr.write(`${JSON.stringify(report, null, 2)}\n`);
   process.exitCode = 1;
 } finally {
   await mcp?.close().catch(() => {});
   await application?.close().catch(() => {});
-  await fs.writeFile(path.join(evidence, 'desktop-v02-process.log'), processLog.join(''));
+  await fs.writeFile(path.join(evidence, 'desktop-v03-process.log'), processLog.join(''));
 }

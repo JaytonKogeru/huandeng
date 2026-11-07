@@ -1,17 +1,17 @@
-# HUANDING Editor
+# HUANDENG Editor
 
 让人与 Agent 在同一份幻灯文档上工作。
 
-HUANDING Editor 基于 OpenSlide 的 React 编辑环境，新增 PPTD 文档后端。页面用永久 ID 和四位短码定位；内容保存在原来的独立 .page 文件中。标题、位置改变，页面身份不变。HUANDING Story 记录叙事目的、证据角色和作者希望保留的设计。HUANDING Plugin 提供与可视化编辑器共用的 Agent 接口。
+HUANDENG Editor 基于 OpenSlide 的 React 编辑环境，新增 PPTD 文档后端。页面用永久 ID 和四位短码定位；内容保存在原来的独立 .page 文件中。标题、位置改变，页面身份不变。HUANDENG Story 记录叙事目的、证据角色和作者希望保留的设计。HUANDENG Plugin 提供与可视化编辑器共用的 Agent 接口。
 
 ## GitHub 版本管理
 
-编辑器源代码在 HUANDING 自己的 Git 仓库中维护；平时本地提交，完成并验收一个重要版本后再统一推送到 origin，不会每次小改都上传。OpenSlide 原始仓库保留为 upstream，不向其推送。本机页面右键历史与 Git 代码版本是两套不同机制。
+编辑器源代码在 HUANDENG 自己的 Git 仓库中维护；平时本地提交，完成并验收一个重要版本后再统一推送到 origin，不会每次小改都上传。OpenSlide 原始仓库保留为 upstream，不向其推送。本机页面右键历史与 Git 代码版本是两套不同机制。
 
 参阅 [版本发布规则](docs/RELEASE-POLICY.md) 和 [Story 设计](docs/STORY.md)。
 ## 启动桌面编辑器
 
-Windows 双击 **HUANDING Editor** 快捷方式，或运行 `Start-Huanding.cmd`（旧 `Start-Huandeng.cmd` 保留兼容）。应用使用独立 Electron 窗口；启动时恢复最近项目，首次打开显示新建/打开入口。
+Windows 双击 **HUANDENG Editor** 快捷方式，或运行 `Start-Huandeng.cmd`（旧 `Start-Huandeng.cmd` 保留兼容）。应用使用独立 Electron 窗口；启动时恢复最近项目，首次打开显示新建/打开入口。
 
 通过窗口的“打开项目”选择自己的 `deck.pptd`。“新建项目”创建独立文件夹、manifest 和空白 `.page`。不默认打开仓库示例。已有项目不需要复制进软件目录。
 
@@ -23,16 +23,16 @@ Windows 双击 **HUANDING Editor** 快捷方式，或运行 `Start-Huanding.cmd`
 
 Windows 桌面打包与快捷方式：
 
-    powershell -NoProfile -File scripts/Package-Huanding.ps1
-    powershell -NoProfile -File scripts/Install-Huanding.ps1
+    powershell -NoProfile -File scripts/Package-Huandeng.ps1
+    powershell -NoProfile -File scripts/Install-Huandeng.ps1
 
-完整桌面产物在 `dist/HUANDING-win32-x64/HUANDING Editor.exe`。打包时也可用 `-ElectronRuntimePath` 指定已安装的 Electron 38.7.2 运行目录。详见 [桌面说明](packages/desktop/README.md)。
+完整桌面产物在 `dist/HUANDENG-win32-x64/HUANDENG Editor.exe`。打包时也可用 `-ElectronRuntimePath` 指定已安装的 Electron 38.7.2 运行目录。详见 [桌面说明](packages/desktop/README.md)。
 
 内部 React 画布和本机文档服务继续复用；日常使用不打开浏览器标签。外部 Agent 通过同一服务操作当前项目，编辑器内没有聊天框或模型执行器。
 
 CLI 开发服务仍可单独启动：
 
-    node packages/core/huanding.js open "D:/MyProject/Slides/deck.pptd" --no-browser
+    node packages/core/huandeng.js open "D:/MyProject/Slides/deck.pptd" --no-browser
 
 `--read-only` 可只读查看而不初始化身份。PNG/PDF 导出使用安装的 Chromium/Chrome/Edge，或设置 `HUANDENG_BROWSER`。Windows 默认可使用 Edge。
 
@@ -53,15 +53,15 @@ GUI、CLI 和 MCP 使用同一个本地文档服务。请求携带读取时的�
 
 ## Agent 使用
 
-先打开桌面项目，再连接当前文档。Agent 先记录 Frame 中的需求理解与保留约束，随后执行内容修改；用户无需在编辑器里手填意图：
+先打开桌面项目，再连接当前文档。Agent 先记录 Story 中的需求理解与保留约束，随后执行内容修改；用户无需在编辑器里手填意图：
 
-    node packages/core/huanding.js --entry tests/fixtures/studio/deck.pptd inspect
-    node packages/core/huanding.js --entry tests/fixtures/studio/deck.pptd inspect K7M2
-    node packages/core/huanding.js --entry tests/fixtures/studio/deck.pptd frame Q9R4 intent.json
-    node packages/core/huanding.js --entry tests/fixtures/studio/deck.pptd apply transaction.json
-    node packages/core/huanding.js --entry tests/fixtures/studio/deck.pptd render K7M2
-    node packages/core/huanding.js --entry tests/fixtures/studio/deck.pptd history Q9R4
-    node packages/core/huanding.js --entry tests/fixtures/studio/deck.pptd export pptx
+    node packages/core/huandeng.js --entry tests/fixtures/studio/deck.pptd inspect
+    node packages/core/huandeng.js --entry tests/fixtures/studio/deck.pptd inspect K7M2
+    node packages/core/huandeng.js --entry tests/fixtures/studio/deck.pptd frame Q9R4 intent.json
+    node packages/core/huandeng.js --entry tests/fixtures/studio/deck.pptd apply transaction.json
+    node packages/core/huandeng.js --entry tests/fixtures/studio/deck.pptd render K7M2
+    node packages/core/huandeng.js --entry tests/fixtures/studio/deck.pptd history Q9R4
+    node packages/core/huandeng.js --entry tests/fixtures/studio/deck.pptd export pptx
 
 事务 JSON 使用 inspect 实际返回的 deckId、pageId 和版本。请求结构见 docs/SPEC.md。一个请求 ID 只对应一次确定的修改，重试时保持请求 ID 和全部内容相同。版本冲突后重新读取和检查差异。页序或身份/组件元数据变化也必须提供相应 manifest/metadata 版本。
 
@@ -85,4 +85,4 @@ v0.2 实际验证见 [实施记录](docs/IMPLEMENTATION-V02.md)，当前合同�
 
 ## 来源与许可
 
-基于 [OpenSlide](https://github.com/open-slide/open-slide) commit 327dd09bcd530eb97647fc33fa67e99f8137d860，MIT 许可。保留原作者声明和上游包名作为兼容标识。上游原始说明见 docs/UPSTREAM_README.md。HUANDING 是本工程的产品命名，不表示上游官方项目或官方 PPTD 标准。
+基于 [OpenSlide](https://github.com/open-slide/open-slide) commit 327dd09bcd530eb97647fc33fa67e99f8137d860，MIT 许可。保留原作者声明和上游包名作为兼容标识。上游原始说明见 docs/UPSTREAM_README.md。HUANDENG 是本工程的产品命名，不表示上游官方项目或官方 PPTD 标准。
