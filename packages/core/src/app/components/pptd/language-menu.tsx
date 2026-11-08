@@ -41,8 +41,12 @@ export function HuandengLanguageMenu() {
             );
           }}
         >
-          <DropdownMenuRadioItem value="en">English</DropdownMenuRadioItem>
-          <DropdownMenuRadioItem value="zh-CN">简体中文</DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="en" closeOnClick>
+            English
+          </DropdownMenuRadioItem>
+          <DropdownMenuRadioItem value="zh-CN" closeOnClick>
+            简体中文
+          </DropdownMenuRadioItem>
         </DropdownMenuRadioGroup>
       </DropdownMenuContent>
     </DropdownMenu>

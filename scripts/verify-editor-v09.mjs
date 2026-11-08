@@ -208,6 +208,7 @@ try {
     await page.locator('[data-hd-editor-canvas] [data-hd-element-id="title"]').click();
     await page.getByRole('button', { name: '界面语言', exact: true }).click();
     await page.getByRole('menuitemradio', { name: 'English', exact: true }).click();
+    await page.getByRole('menu').waitFor({ state: 'detached' });
     await eventually(async () => (await page.locator('html').getAttribute('lang')) === 'en');
     assert.equal(await page.locator('[data-hd-selection="title"]').count(), 1);
     assert.ok((await page.locator('[data-hd-editor-canvas]').innerText()).includes(content));
