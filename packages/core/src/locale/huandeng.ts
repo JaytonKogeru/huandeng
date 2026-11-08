@@ -1,5 +1,6 @@
 import { format } from './format';
 import { arrangementChinese, arrangementEnglish } from './huandeng-arrangement-messages';
+import { authoringChinese, authoringEnglish } from './huandeng-authoring-messages';
 import { editorChinese, editorEnglish } from './huandeng-messages';
 import { routeChinese, routeEnglish } from './huandeng-route-messages';
 import { systemChinese } from './huandeng-system-messages';
@@ -13,6 +14,7 @@ export const englishMessages = {
   ...routeEnglish,
   ...arrangementEnglish,
   ...workflowEnglish,
+  ...authoringEnglish,
 };
 export const chineseMessages = {
   ...systemChinese,
@@ -20,6 +22,7 @@ export const chineseMessages = {
   ...routeChinese,
   ...arrangementChinese,
   ...workflowChinese,
+  ...authoringChinese,
 };
 export type UiMessage = keyof typeof englishMessages | keyof typeof chineseMessages;
 export type UiTranslator = (message: string, values?: UiValues) => string;

@@ -10,6 +10,7 @@ export interface ProjectSection {
   id: string;
   title: string;
   pageIds: string[];
+  startPageId?: string;
   range?: { startPageId: string; endPageId: string };
   story: StoryOutline;
 }
@@ -131,7 +132,13 @@ export function validateProjectModel(value: unknown): ProjectModel {
       const section = record(value, path);
       const range =
         section.range === undefined ? undefined : record(section.range, `${path}.range`);
-      const members = range ? new Set<string>() : assignedPages;
+      const startPageId =
+        section.startPageId === undefined
+          ? undefined
+          : id(section.startPageId, `${path}.startPageId`);
+      if (range && startPageId)
+        throw new PptdError('INVALID_REQUEST', `${path} cannot have both startPageId and range.`);
+      const members = range || startPageId ? new Set<string>() : assignedPages;
       return {
         id: unique(id(section.id, `${path}.id`), sectionIds, path),
         title: text(section.title, `${path}.title`, 240, true),
@@ -139,6 +146,7 @@ export function validateProjectModel(value: unknown): ProjectModel {
         pageIds: list(section.pageIds, `${path}.pageIds`, 20000).map((value, pageIndex) =>
           unique(id(value, `${path}.pageIds[${pageIndex}]`), members, 'Section page membership'),
         ),
+        ...(startPageId ? { startPageId } : {}),
         ...(range
           ? {
               range: {
@@ -217,7 +225,11 @@ export function readProjectModel(metadata: ProjectMetadata): ProjectModel {
 function referencedPages(project: ProjectModel): Set<string> {
   return new Set([
     ...project.sections.flatMap((section) =>
-      section.range ? [section.range.startPageId, section.range.endPageId] : section.pageIds,
+      section.startPageId
+        ? [section.startPageId]
+        : section.range
+          ? [section.range.startPageId, section.range.endPageId]
+          : section.pageIds,
     ),
     ...project.presentations.flatMap((presentation) =>
       presentation.items.flatMap((item) => (item.kind === 'page' ? [item.pageId] : [])),
@@ -283,15 +295,18 @@ export function applyProjectOperation(
       const previousSection = previous.sections.find((section) => section.id === item.section.id);
       const sameDefinition =
         previousSection &&
-        JSON.stringify(previousSection.range ?? previousSection.pageIds) ===
-          JSON.stringify(item.section.range ?? item.section.pageIds);
+        JSON.stringify(
+          previousSection.startPageId ?? previousSection.range ?? previousSection.pageIds,
+        ) ===
+          JSON.stringify(item.section.startPageId ?? item.section.range ?? item.section.pageIds);
       const error = item.diagnostics.find(
         (diagnostic) =>
           !sameDefinition ||
           !previousErrors.has(`${item.section.id}:${diagnostic.code}:${diagnostic.pageId ?? ''}`),
       );
       if (error) throw new PptdError('INVALID_REQUEST', error.message, { diagnostics: [error] });
-      if (item.section.range && !item.diagnostics.length) item.section.pageIds = item.pageIds;
+      if ((item.section.startPageId || item.section.range) && !item.diagnostics.length)
+        item.section.pageIds = item.pageIds;
     }
   }
   return { ...metadata, project };
@@ -305,10 +320,43 @@ export function resolveProjectSections(
     .filter((page) => page.state === 'active')
     .map((page) => page.pageId);
   const positions = new Map(mainIds.map((pageId, index) => [pageId, index]));
+  const starts = project.sections.flatMap((section) => {
+    const pageId = section.startPageId ?? section.range?.startPageId ?? section.pageIds[0];
+    return pageId ? [{ section, pageId, position: positions.get(pageId) }] : [];
+  });
   const resolved = project.sections.map((section): ResolvedProjectSection => {
     let pageIds = [...section.pageIds];
     const diagnostics: Diagnostic[] = [];
-    if (section.range) {
+    if (section.startPageId) {
+      const start = positions.get(section.startPageId);
+      if (start === undefined) {
+        diagnostics.push({
+          code: 'SECTION_START_UNAVAILABLE',
+          severity: 'error',
+          pageId: section.startPageId,
+          message: `Section ${section.title} has an unavailable first Slide. Restore it or choose a new first Slide.`,
+        });
+      } else {
+        const unavailable = starts.find((item) => item.position === undefined);
+        if (unavailable) {
+          diagnostics.push({
+            code: 'SECTION_END_UNRESOLVED',
+            severity: 'error',
+            pageId: unavailable.pageId,
+            message: `Section ${section.title} cannot determine its end while Section ${unavailable.section.title} has an unavailable first Slide. Restore it or choose a new first Slide.`,
+          });
+        } else {
+          const next = starts.reduce(
+            (end, item) =>
+              item.position !== undefined && item.position > start && item.position < end
+                ? item.position
+                : end,
+            mainIds.length,
+          );
+          pageIds = mainIds.slice(start, next);
+        }
+      }
+    } else if (section.range) {
       const start = positions.get(section.range.startPageId);
       const end = positions.get(section.range.endPageId);
       if (start === undefined || end === undefined) {
@@ -355,7 +403,7 @@ export function resolveProjectSections(
           code: 'SECTION_RANGE_OVERLAP',
           severity: 'error',
           pageId,
-          message: `Sections ${other.section.title} and ${item.section.title} overlap in Main Slides. Adjust their ranges so each slide belongs to one Section.`,
+          message: `Sections ${other.section.title} and ${item.section.title} overlap in Main Slides. Adjust their first Slides or ranges so each slide belongs to one Section.`,
         };
         item.diagnostics.push(diagnostic);
         other.diagnostics.push(diagnostic);

@@ -169,8 +169,10 @@ describe('versioned and bounded asset previews', () => {
     });
     const pending = Array.from({ length: 3 }, () => fetch(url()).then((res) => res.arrayBuffer()));
     try {
-      await vi.waitFor(() => expect(manager.usage()).toMatchObject({ active: 2, queued: 1 }));
-      expect(reading).toBe(2);
+      await vi.waitFor(() => {
+        expect(manager.usage()).toMatchObject({ active: 2, queued: 1 });
+        expect(reading).toBe(2);
+      });
       expect((await fetch(url())).status).toBe(503);
     } finally {
       unblock();

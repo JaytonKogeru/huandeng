@@ -13,19 +13,23 @@ const fieldClass =
 export function ProjectSectionEditor({
   resolved,
   snapshot,
+  defaultStartPageId,
   disabled,
   onRename,
   onRemove,
   onSetRange,
+  onSetStart,
   onSelectPage,
   children,
 }: {
   resolved: ResolvedProjectSection;
   snapshot: DeckSnapshot;
+  defaultStartPageId?: string | null;
   disabled: boolean;
   onRename: (title: string) => void;
   onRemove: () => void;
   onSetRange: (startPageId: string, endPageId: string) => string | null;
+  onSetStart: (startPageId: string) => string | null;
   onSelectPage: (pageId: string) => void;
   children?: ReactNode;
 }) {
@@ -33,17 +37,38 @@ export function ProjectSectionEditor({
   const prefix = useId();
   const { section, pageIds } = resolved;
   const pages = snapshot.pages.filter((page) => page.state === 'active');
-  const initialStart = section.range?.startPageId ?? pageIds[0] ?? pages[0]?.pageId ?? '';
+  const initialStart =
+    section.startPageId ??
+    section.range?.startPageId ??
+    pageIds[0] ??
+    defaultStartPageId ??
+    pages[0]?.pageId ??
+    '';
   const initialEnd = section.range?.endPageId ?? pageIds.at(-1) ?? initialStart;
+  const initialMode = section.startPageId
+    ? 'cover'
+    : section.range
+      ? 'range'
+      : pageIds.length
+        ? 'members'
+        : 'cover';
   const [start, setStart] = useState(initialStart);
   const [end, setEnd] = useState(initialEnd);
+  const [mode, setMode] = useState<'cover' | 'range' | 'members'>(initialMode);
   const [rangeError, setRangeError] = useState<string | null>(null);
   useEffect(() => {
     setStart(initialStart);
     setEnd(initialEnd);
+    setMode(initialMode);
     setRangeError(null);
-  }, [initialStart, initialEnd]);
-  const unchanged = !!section.range && start === initialStart && end === initialEnd;
+  }, [initialStart, initialEnd, initialMode]);
+  const unchanged =
+    mode === 'cover'
+      ? section.startPageId === start
+      : mode === 'range'
+        ? !!section.range && start === initialStart && end === initialEnd
+        : true;
+  const cover = pages.find((page) => page.pageId === start);
   return (
     <section
       className="space-y-3 rounded-md border border-border bg-background p-2.5"
@@ -78,53 +103,114 @@ export function ProjectSectionEditor({
             })
           : t('{count} slides', { count: pageIds.length })}
       </p>
-      <div className="grid grid-cols-2 gap-2">
-        {(
-          [
-            ['start', start, setStart],
-            ['end', end, setEnd],
-          ] as const
-        ).map(([name, value, update]) => (
-          <label
-            key={name}
-            htmlFor={`${prefix}-${name}`}
-            className="min-w-0 space-y-1 text-[10px] text-muted-foreground"
+      <label htmlFor={`${prefix}-mode`} className="block space-y-1 text-[11px]">
+        <span className="text-muted-foreground">{t('Section membership')}</span>
+        <select
+          id={`${prefix}-mode`}
+          className={fieldClass}
+          value={mode}
+          disabled={disabled}
+          data-hd-section-membership
+          onChange={(event) => {
+            setMode(event.target.value as 'cover' | 'range' | 'members');
+            setRangeError(null);
+          }}
+        >
+          <option value="cover">{t('First Slide to next Section')}</option>
+          <option value="range">{t('Fixed range')}</option>
+          {initialMode === 'members' && <option value="members">{t('Saved members')}</option>}
+        </select>
+      </label>
+      {mode !== 'members' && (
+        <div className={mode === 'range' ? 'grid grid-cols-2 gap-2' : 'space-y-2'}>
+          {(
+            [
+              ['start', start, setStart],
+              ['end', end, setEnd],
+            ] as const
+          )
+            .filter(([name]) => mode === 'range' || name === 'start')
+            .map(([name, value, update]) => (
+              <label
+                key={name}
+                htmlFor={`${prefix}-${name}`}
+                className="min-w-0 space-y-1 text-[10px] text-muted-foreground"
+              >
+                <span>
+                  {name === 'start'
+                    ? mode === 'cover'
+                      ? t('First Slide')
+                      : t('Start Position')
+                    : t('End Position')}
+                </span>
+                <select
+                  id={`${prefix}-${name}`}
+                  className={fieldClass}
+                  value={value}
+                  disabled={disabled || !pages.length}
+                  onChange={(event) => {
+                    update(event.target.value);
+                    setRangeError(null);
+                  }}
+                >
+                  {!pages.some((page) => page.pageId === value) && (
+                    <option value={value}>
+                      {value ? t('Unavailable boundary') : t('Choose a slide')}
+                    </option>
+                  )}
+                  {pages.map((page, index) => (
+                    <option key={page.pageId} value={page.pageId}>
+                      {index + 1}. {projectSlideTitle(page)} · {page.shortCode ?? page.pageId}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            ))}
+        </div>
+      )}
+      {mode === 'cover' && cover && (
+        <button
+          type="button"
+          className="flex w-full items-center gap-2 rounded border border-border p-2 text-left outline-none hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring/40"
+          aria-label={t('Open first Slide: {title}', { title: projectSlideTitle(cover) })}
+          onClick={() => onSelectPage(cover.pageId)}
+        >
+          <span
+            className="block w-20 shrink-0 overflow-hidden rounded"
+            style={{ aspectRatio: `${snapshot.size[0]} / ${snapshot.size[1]}` }}
           >
-            <span>{name === 'start' ? t('Start Position') : t('End Position')}</span>
-            <select
-              id={`${prefix}-${name}`}
-              className={fieldClass}
-              value={value}
-              disabled={disabled || !pages.length}
-              onChange={(event) => {
-                update(event.target.value);
-                setRangeError(null);
-              }}
-            >
-              {!pages.some((page) => page.pageId === value) && (
-                <option value={value}>
-                  {value ? t('Unavailable boundary') : t('Choose a slide')}
-                </option>
-              )}
-              {pages.map((page, index) => (
-                <option key={page.pageId} value={page.pageId}>
-                  {index + 1}. {projectSlideTitle(page)} · {page.shortCode ?? page.pageId}
-                </option>
-              ))}
-            </select>
-          </label>
-        ))}
-      </div>
-      <Button
-        size="xs"
-        variant="outline"
-        disabled={disabled || !start || !end || unchanged}
-        data-hd-set-section-range={section.id}
-        onClick={() => setRangeError(onSetRange(start, end))}
-      >
-        {t('Set range')}
-      </Button>
-      {!section.range && pageIds.length > 0 && (
+            <ProjectSlidePreview page={cover} snapshot={snapshot} />
+          </span>
+          <span className="min-w-0 flex-1">
+            <span className="block line-clamp-2 text-[11px]">{projectSlideTitle(cover)}</span>
+            <span className="block text-[10px] text-muted-foreground">
+              {t('Slide ID')} {cover.shortCode ?? cover.pageId}
+            </span>
+          </span>
+        </button>
+      )}
+      {mode !== 'members' && (
+        <Button
+          size="xs"
+          variant="outline"
+          disabled={disabled || !start || (mode === 'range' && !end) || unchanged}
+          data-hd-set-section-range={mode === 'range' ? section.id : undefined}
+          data-hd-set-section-start={mode === 'cover' ? section.id : undefined}
+          onClick={() =>
+            setRangeError(mode === 'cover' ? onSetStart(start) : onSetRange(start, end))
+          }
+        >
+          {mode === 'cover' ? t('Set first Slide') : t('Set range')}
+        </Button>
+      )}
+      {mode === 'cover' && (
+        <p className="text-[10px] leading-relaxed text-muted-foreground">
+          {t(
+            'Includes this Slide and follows Main order until the next Section. The last Section continues to the end.',
+          )}
+        </p>
+      )}
+      {mode === 'members' && (
         <p className="text-[10px] leading-relaxed text-muted-foreground">
           {resolved.contiguous
             ? t(
@@ -149,9 +235,9 @@ export function ProjectSectionEditor({
           {t(diagnostic.message)}
         </p>
       ))}
-      <details open>
+      <details>
         <summary className="cursor-pointer text-[11px] font-medium">
-          {t('Slides in this Section')}
+          {t('Slides in this Section')} · {pageIds.length}
         </summary>
         <div className="mt-2 max-h-64 space-y-1 overflow-y-auto overscroll-contain">
           {pageIds.map((pageId) => {
@@ -185,7 +271,9 @@ export function ProjectSectionEditor({
           })}
           {!pageIds.length && (
             <p className="py-2 text-[11px] text-muted-foreground">
-              {t('Choose Start and End Positions, then set this Section’s range.')}
+              {mode === 'cover'
+                ? t('Choose the first Slide, then click Set first Slide.')
+                : t('Choose Start and End Positions, then set this Section’s range.')}
             </p>
           )}
         </div>

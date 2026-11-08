@@ -130,6 +130,6 @@ node plugins/huandeng/scripts/doctor.mjs --entry 'D:/Path/To/CopiedProject/deck.
 
 PPTD、独立 .page、原素材和稳定页面身份继续为权威；GUI/CLI/MCP 共享 writer、CAS、requestId 与恢复。保留未知字段，不在保存时重排作者版式或切成另一套 TSX 来源。v0.8 的 BuildTimeline 只保存 effects 并纯编译为播放轨道；不要双存可编辑时间线。PNG/PDF/PPTX 仍是基础静态画面并带诊断，MP4 是保留的兼容能力。
 
-科研原件不用于测试写入。实际 m6A/PPTX、DNA TTT/PPTD 可在明确副本上做下一轮任务验证。canonical 内已有作者修改，尤其 `tests/fixtures/studio/pages/identities.page`，不得 broad stage/reset/clean 或覆盖。安装时从本轮负责人锁定的源文件基线核对前后哈希，保留旧包与失败回执；不得用较早代基线替代或改写旧记录。
+科研原件不用于测试写入。用户授权的实际 PPTX、PPTD 可在明确副本上做下一轮任务验证。canonical 内已有作者修改，尤其 `tests/fixtures/studio/pages/identities.page`，不得 broad stage/reset/clean 或覆盖。安装时从本轮负责人锁定的源文件基线核对前后哈希，保留旧包与失败回执；不得用较早代基线替代或改写旧记录。
 
 自动保存/Undo、命名页面版本、编辑器 Git 提交是三种不同历史。日常开发和记录留在本地；完成重要版本、Release/Handoff 和聚焦验收后，才对私有 origin 做一次里程碑同步并独立验证远端提交/tag。不得推 upstream、执行继承的 npm 发布、改变仓库可见性、公开本机服务或擅自发 Issue 评论/消息。构建通过、安装成功、远端已同步分别取证，不能互相代替。

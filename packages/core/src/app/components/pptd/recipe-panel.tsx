@@ -11,12 +11,15 @@ import type {
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import { Textarea } from '../ui/textarea';
+import { TitleLayoutPanel } from './title-layout-panel';
 
 export interface RecipePanelProps {
   snapshot: DeckSnapshot;
   page: PageSnapshot;
   onApply: (operations: PptdOperation[], expected?: ExpectedRevisions) => Promise<unknown>;
   disabled?: boolean;
+  selectedIds?: string[];
+  onSelectTitle?: (elementId: string) => void;
 }
 
 const RECIPE_LABELS: Record<RecipeName, string> = {
@@ -271,7 +274,14 @@ function RecipeCard({
   );
 }
 
-function RecipePanelPage({ snapshot, page, onApply, disabled }: RecipePanelProps) {
+function RecipePanelPage({
+  snapshot,
+  page,
+  onApply,
+  disabled,
+  selectedIds,
+  onSelectTitle,
+}: RecipePanelProps) {
   useHuandengLocale();
   const [recipe, setRecipe] = useState<RecipeName>('figure-with-caption');
   const [sources, setSources] = useState({ figure: '', left: '', right: '' });
@@ -357,11 +367,16 @@ function RecipePanelPage({ snapshot, page, onApply, disabled }: RecipePanelProps
         ? (['caption', 'annotation'] as const)
         : (['caption'] as const);
   return (
-    <details className="space-y-4 border-t border-border p-4" aria-label={t('快速布局')}>
-      <summary className="cursor-pointer text-xs font-medium">
-        {t('快速布局 ')}
-        <span className="ml-2 text-[10px] font-normal text-muted-foreground">{t('可选')}</span>
-      </summary>
+    <section className="space-y-4 border-t border-border p-4" aria-label={t('快速布局')}>
+      <TitleLayoutPanel
+        snapshot={snapshot}
+        page={page}
+        onApply={onApply}
+        disabled={inactive}
+        selectedIds={selectedIds}
+        onSelectTitle={onSelectTitle}
+      />
+      <h4 className="border-t border-border pt-4 text-xs font-medium">{t('Figure layouts')}</h4>
       <p className="text-xs leading-relaxed text-muted-foreground">
         {t('生成一组普通对象。之后可自由移动、改字、裁切或删除；只有点击“应用参数”才会重新排版。')}
       </p>
@@ -463,7 +478,7 @@ function RecipePanelPage({ snapshot, page, onApply, disabled }: RecipePanelProps
           ))}
         </div>
       )}
-    </details>
+    </section>
   );
 }
 

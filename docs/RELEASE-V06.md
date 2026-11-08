@@ -65,7 +65,7 @@ Story 是可维护的叙事资料，不自动补全科研证据或保证整场�
 
 工作台沿用中性背景、深绿选择色、细边界和清楚的工具分组。左右面板可收起，素材库和时间线按工作任务展开；按钮按压与菜单使用既有短促反馈并尊重 reduced-motion。没有为排版对象的几何修改加入拖慢操作的装饰过渡。
 
-用户的 m6A 57 页 PPTX 在隔离副本上通过实际 PowerPoint 只读打开和全页导出，原文件未变。视觉审计参考其白底证据页、深色章节页、图像比较和留白；这次查看不表示编辑器已经支持 PPTX 导入。可提交的实际合成截图为 [素材库](evidence/ui-v06/asset-library.png) 和 [时间线](evidence/ui-v06/animation-timeline.png)。
+用户授权的 57 页科研参考 PPTX 在隔离副本上通过实际 PowerPoint 只读打开和全页导出，原文件未变。视觉审计参考其白底证据页、深色章节页、图像比较和留白；这次查看不表示编辑器已经支持 PPTX 导入。可提交的实际合成截图为 [素材库](evidence/ui-v06/asset-library.png) 和 [时间线](evidence/ui-v06/animation-timeline.png)。
 
 | 验收 | 结果 |
 | --- | --- |

@@ -183,36 +183,50 @@ export function ProjectSourcePicker({
             <h4 className="text-[10px] font-medium uppercase tracking-wide text-muted-foreground">
               {t('Sections')}
             </h4>
-            {matchingSections.map((item) => (
-              <Button
-                key={item.section.id}
-                variant="outline"
-                size="sm"
-                className="h-auto w-full justify-start gap-2 py-2 text-left"
-                disabled={disabled || !item.pageIds.length || !!item.diagnostics.length}
-                title={item.diagnostics[0]?.message ?? item.section.title}
-                data-hd-add-section={item.section.id}
-                onClick={() => {
-                  onAddSection(item.section.id);
-                  setLastAdded(item.section.id);
-                }}
-              >
-                <Layers3 className="size-3.5 shrink-0" />
-                <span className="min-w-0 flex-1">
-                  <span className="block truncate text-xs">{item.section.title}</span>
-                  <span className="block text-[10px] font-normal text-muted-foreground">
-                    {item.contiguous && item.startPosition !== null
-                      ? t('Positions {start}–{end} · {count} slides', {
-                          start: item.startPosition,
-                          end: item.endPosition ?? item.startPosition,
-                          count: item.pageIds.length,
-                        })
-                      : t('{count} slides', { count: item.pageIds.length })}
+            {matchingSections.map((item) => {
+              const cover = sources.find(
+                (page) => page.pageId === (item.section.startPageId ?? item.pageIds[0]),
+              );
+              return (
+                <Button
+                  key={item.section.id}
+                  variant="outline"
+                  size="sm"
+                  className="h-auto w-full justify-start gap-2 py-2 text-left"
+                  disabled={disabled || !item.pageIds.length || !!item.diagnostics.length}
+                  title={item.diagnostics[0]?.message ?? item.section.title}
+                  data-hd-add-section={item.section.id}
+                  onClick={() => {
+                    onAddSection(item.section.id);
+                    setLastAdded(item.section.id);
+                  }}
+                >
+                  {cover ? (
+                    <span
+                      className="block w-16 shrink-0 overflow-hidden rounded border border-border"
+                      style={{ aspectRatio: `${snapshot.size[0]} / ${snapshot.size[1]}` }}
+                    >
+                      <ProjectSlidePreview page={cover} snapshot={snapshot} />
+                    </span>
+                  ) : (
+                    <Layers3 className="size-3.5 shrink-0" />
+                  )}
+                  <span className="min-w-0 flex-1">
+                    <span className="block truncate text-xs">{item.section.title}</span>
+                    <span className="block text-[10px] font-normal text-muted-foreground">
+                      {item.contiguous && item.startPosition !== null
+                        ? t('Positions {start}–{end} · {count} slides', {
+                            start: item.startPosition,
+                            end: item.endPosition ?? item.startPosition,
+                            count: item.pageIds.length,
+                          })
+                        : t('{count} slides', { count: item.pageIds.length })}
+                    </span>
                   </span>
-                </span>
-                {lastAdded === item.section.id ? <Check /> : <Plus />}
-              </Button>
-            ))}
+                  {lastAdded === item.section.id ? <Check /> : <Plus />}
+                </Button>
+              );
+            })}
           </div>
         )}
         <div className="space-y-1.5">

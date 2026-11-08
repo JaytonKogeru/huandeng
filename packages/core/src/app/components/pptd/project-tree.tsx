@@ -76,11 +76,13 @@ export function PptdProjectTree({
   snapshot,
   currentPageId,
   onSelectPage,
+  onPreviewFile,
 }: {
   backend: PptdBackend;
   snapshot: DeckSnapshot;
   currentPageId: string | null;
   onSelectPage: (pageId: string) => void;
+  onPreviewFile?: (node: ProjectTreeNode) => void;
 }) {
   useHuandengLocale();
   const [project, setProject] = useState<ProjectTree | null>(null);
@@ -179,6 +181,7 @@ export function PptdProjectTree({
                     setSelectedPath(item.path);
                     setMessage(null);
                     if (item.pageId) onSelectPage(item.pageId);
+                    else onPreviewFile?.(item);
                   }}
                 />
               ))}
@@ -212,7 +215,7 @@ export function PptdProjectTree({
           </p>
         )}
         <p className="text-[10px] leading-relaxed text-muted-foreground">
-          {t('每个 .page 保存一页内容。页面编号不随排序变化。')}
+          {t('Select a file to preview it. Page files open their Slide.')}
         </p>
       </div>
     </section>

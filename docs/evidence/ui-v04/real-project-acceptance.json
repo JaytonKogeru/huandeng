@@ -8,7 +8,13 @@
   "durationSeconds": 126.13,
   "pageCount": 80,
   "objectCount": 1451,
-  "objectTypes": { "text": 974, "shape": 174, "image": 262, "line": 39, "table": 2 },
+  "objectTypes": {
+    "text": 974,
+    "shape": 174,
+    "image": 262,
+    "line": 39,
+    "table": 2
+  },
   "checks": {
     "passed": 7,
     "total": 7,
@@ -33,8 +39,7 @@
     "readFiles": 970,
     "sha256Unchanged": 970,
     "identicalToPriorBaseline": 970,
-    "originalProjectWritten": false,
-    "manifestSha256": "cf8e6651af6f9dd0547b62691ba5e6876d6c9842a339a8b16698636dafdf16bf"
+    "originalProjectWritten": false
   },
   "checkpoint": {
     "namedVersionRecorded": true,
@@ -48,16 +53,17 @@
       "physicalPages": 80,
       "independentPageTreeCheck": "PyMuPDF",
       "blankTrailingPage": false,
-      "bytes": 39794396,
-      "sha256": "255fb404ccf07fc6648c3080ccb7993f4ba6a4c17058fc34ef62922bbc24a807"
+      "bytes": 39794396
     },
     "pptx": {
       "slides": 80,
       "bytes": 37412375,
-      "sha256": "5d13ad41297f71f05acffb7d1838880c23c82b24a0edc532ea23443dff322e43",
       "editableContentObjects": 1089,
       "originalAssetImages": 262,
-      "rasterFallbacks": { "text": 97, "line": 3 }
+      "rasterFallbacks": {
+        "text": 97,
+        "line": 3
+      }
     }
   },
   "fallbackBoundaryAudit": {
@@ -87,5 +93,10 @@
     "previousFailure": "Revision 7c3f04c clipped text on pages 16 and 17.",
     "resolved": "c2fede5 crops actual visible alpha bounds; both pages rechecked at full resolution."
   },
-  "coverageNote": "Native charts, formulas and icons are covered by the separate scientific-object fixture."
+  "coverageNote": "Native charts, formulas and icons are covered by the separate scientific-object fixture.",
+  "dataHandling": {
+    "privateProjectFingerprintsIncluded": false,
+    "privateProjectFingerprintsRetainedOnVerificationHost": true,
+    "privacyRedaction": "Project manifest and export hashes remain in the original private local verification receipt. Aggregate counts, measured file sizes and verification results are retained here."
+  }
 }

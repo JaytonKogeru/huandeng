@@ -1,6 +1,8 @@
 import {
   ArrowDown,
   ArrowUp,
+  ChevronDown,
+  ChevronRight,
   Copy,
   Fingerprint,
   FolderOpen,
@@ -12,8 +14,14 @@ import {
 import { memo, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { uiText as t, useHuandengLocale } from '@/lib/huandeng-locale';
 import { pptdAssetPreviewUrl } from '@/lib/pptd-backend';
-import { elementLabel } from '@/lib/pptd-element-label';
 import { cycleItemId, focusEditorCanvas } from '@/lib/pptd-keyboard';
+import {
+  type SlideInsertionBoundary,
+  slideInsertionBoundary,
+  type ThumbnailSection,
+  thumbnailRailEntries,
+  thumbnailSectionGroups,
+} from '@/lib/pptd-thumbnail-sections';
 import { cn } from '@/lib/utils';
 import type { PageSize, PageSnapshot, SlideIdentity } from '../../../pptd/types';
 import { SlideCanvas } from '../slide-canvas';
@@ -46,6 +54,48 @@ const ThumbnailPreview = memo(function ThumbnailPreview({
   );
 });
 
+function SlideInsertionGap({
+  boundary,
+  position,
+  disabled,
+  onInsert,
+}: {
+  boundary: SlideInsertionBoundary;
+  position: number;
+  disabled: boolean;
+  onInsert: (boundary: SlideInsertionBoundary) => void;
+}) {
+  useHuandengLocale();
+  return (
+    <ContextMenu>
+      <ContextMenuTrigger
+        render={
+          <button
+            type="button"
+            className="group flex h-6 w-full items-center gap-2 rounded px-1 text-muted-foreground outline-none hover:text-brand focus-visible:ring-2 focus-visible:ring-brand/50 disabled:pointer-events-none disabled:opacity-30"
+            disabled={disabled}
+            aria-label={t('Insert blank slide at Position {position}', { position })}
+            title={t('Insert blank slide here')}
+            data-hd-insert-before={boundary.beforePageId ?? ''}
+            data-hd-insert-after={boundary.afterPageId ?? ''}
+            onClick={() => onInsert(boundary)}
+          />
+        }
+      >
+        <span className="h-px flex-1 bg-current opacity-0 group-hover:opacity-70 group-focus-visible:opacity-70" />
+        <Plus className="size-3.5 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100" />
+        <span className="h-px flex-1 bg-current opacity-0 group-hover:opacity-70 group-focus-visible:opacity-70" />
+      </ContextMenuTrigger>
+      <ContextMenuContent>
+        <ContextMenuItem disabled={disabled} onClick={() => onInsert(boundary)}>
+          <Plus />
+          {t('Insert blank slide here')}
+        </ContextMenuItem>
+      </ContextMenuContent>
+    </ContextMenu>
+  );
+}
+
 export function PptdThumbnailRail({
   pages,
   sections = [],
@@ -57,6 +107,7 @@ export function PptdThumbnailRail({
   tombstones,
   onSelect,
   onAdd,
+  onInsert,
   onDuplicate,
   onRemove,
   onMove,
@@ -65,7 +116,7 @@ export function PptdThumbnailRail({
   onShowFile,
 }: {
   pages: PageSnapshot[];
-  sections?: { title: string; pageIds: string[] }[];
+  sections?: ThumbnailSection[];
   size: PageSize;
   theme: PptdTheme;
   currentPageId: string | null;
@@ -74,6 +125,7 @@ export function PptdThumbnailRail({
   tombstones: [string, SlideIdentity][];
   onSelect: (pageId: string, occurrenceId?: string, focusTarget?: 'canvas' | 'thumbnails') => void;
   onAdd: () => void;
+  onInsert?: (boundary: SlideInsertionBoundary) => void;
   onDuplicate: (pageId: string) => void;
   onRemove: (pageId: string) => void;
   onMove: (pageId: string, afterPageId: string | null) => void;
@@ -84,10 +136,21 @@ export function PptdThumbnailRail({
   useHuandengLocale();
   const [query, setQuery] = useState('');
   const [copyStatus, setCopyStatus] = useState('');
+  const [collapsed, setCollapsed] = useState<Set<string>>(() => new Set());
   const scrollRef = useRef<HTMLDivElement>(null);
   const focusedOccurrence = useRef<string | null>(null);
   const [visible, setVisible] = useState<Set<string>>(() => new Set());
-  const keys = pages.map((page) => page.occurrenceId ?? page.pageId).join(',');
+  const groups = thumbnailSectionGroups(pages, sections);
+  const entries = thumbnailRailEntries(pages, groups, collapsed, query);
+  const searching = !!query.trim();
+  const keys = entries.map((entry) => entry.key).join(',');
+  const setSectionCollapsed = (key: string, closed: boolean) =>
+    setCollapsed((previous) => {
+      const next = new Set(previous);
+      if (closed) next.add(key);
+      else next.delete(key);
+      return next;
+    });
   // biome-ignore lint/correctness/useExhaustiveDependencies: Search and page order replace the observed DOM nodes without changing the scroll root.
   useEffect(() => {
     const root = scrollRef.current;
@@ -135,19 +198,11 @@ export function PptdThumbnailRail({
   const isCurrent = (page: PageSnapshot) =>
     currentOccurrenceId ? page.occurrenceId === currentOccurrenceId : page.pageId === currentPageId;
   const currentIndex = pages.findIndex(isCurrent);
-  const entries = pages.flatMap((page, index) => {
-    const title = page.data.elements.find((element) => element.elementType === 'text');
-    const name = title ? elementLabel(title) : t('空白页');
-    if (
-      query &&
-      !`${page.metadata.label ?? ''} ${page.shortCode ?? ''} ${name}`
-        .toLowerCase()
-        .includes(query.toLowerCase())
-    )
-      return [];
-    return [{ page, index, name, key: page.occurrenceId ?? page.pageId }];
-  });
-  const tabStop = entries.find(({ page }) => isCurrent(page))?.key ?? entries[0]?.key;
+  const currentSection = groups.find((section) => section.pageIds.includes(currentPageId ?? ''));
+  const tabStop =
+    entries.find(({ page }) => isCurrent(page))?.key ??
+    entries.find(({ page }) => page.pageId === currentSection?.pageIds[0])?.key ??
+    entries[0]?.key;
   return (
     <nav className="flex min-h-0 flex-1 flex-col bg-sidebar" aria-label={t('页面列表')}>
       <div className="flex h-11 shrink-0 items-center gap-1 border-b border-border px-3">
@@ -190,187 +245,266 @@ export function PptdThumbnailRail({
       </p>
       <div
         ref={scrollRef}
-        className="min-h-0 flex-1 space-y-3 overflow-y-auto px-3 pb-5"
+        className="min-h-0 flex-1 space-y-1 overflow-y-auto px-3 pb-5"
         data-hd-thumbnail-scroll
       >
         {entries.map(({ page, index, name, key }) => {
+          const section = groups.find((group) => group.firstIndex === index);
+          const expanded = !section || searching || !collapsed.has(section.key);
+          const containsCurrent =
+            !!section &&
+            !expanded &&
+            currentPageId !== page.pageId &&
+            section.pageIds.includes(currentPageId ?? '');
           return (
-            <ContextMenu key={page.occurrenceId ?? page.pageId}>
-              {sections
-                .filter((section) => section.pageIds[0] === page.pageId)
-                .map((section) => (
-                  <div
-                    key={section.title}
-                    className="mt-3 flex items-center gap-2 border-t border-border px-2 pb-1 pt-2 text-xs font-semibold"
-                    data-hd-section-heading
-                  >
-                    <span className="min-w-0 flex-1 truncate" title={section.title}>
-                      {section.title}
-                    </span>
-                    <span className="font-normal text-muted-foreground">
-                      {section.pageIds.length}
-                    </span>
-                  </div>
-                ))}
-              <ContextMenuTrigger
-                render={
+            <div key={key} className="space-y-1">
+              {onInsert && !searching && (
+                <SlideInsertionGap
+                  boundary={slideInsertionBoundary(pages, index)}
+                  position={index + 1}
+                  disabled={disabled}
+                  onInsert={onInsert}
+                />
+              )}
+              {section && (
+                <div className="flex items-center gap-1 pt-1 text-xs" data-hd-section-heading>
                   <button
                     type="button"
-                    data-hd-thumbnail={page.pageId}
-                    data-hd-thumbnail-key={key}
-                    tabIndex={tabStop === key ? 0 : -1}
-                    onFocus={() => {
-                      focusedOccurrence.current = key;
-                    }}
-                    onBlur={(event) => {
-                      if (event.relatedTarget && !scrollRef.current?.contains(event.relatedTarget))
-                        focusedOccurrence.current = null;
-                    }}
-                    aria-label={t('第 {value0} 页 · {value1} · {value2}', {
-                      value0: index + 1,
-                      value1: page.shortCode ?? page.metadata.label ?? '',
-                      value2: name,
-                    })}
-                    aria-pressed={isCurrent(page)}
                     className={cn(
-                      'block w-full rounded-md p-1.5 text-left outline-none transition-colors focus-visible:ring-2 focus-visible:ring-brand/50',
-                      isCurrent(page) ? 'bg-brand-soft ring-1 ring-brand/50' : 'hover:bg-muted',
+                      'flex min-w-0 flex-1 items-center gap-1 rounded px-1 py-1 text-left outline-none hover:bg-muted focus-visible:ring-2 focus-visible:ring-brand/50',
+                      containsCurrent && 'text-brand',
                     )}
-                    onClick={() => onSelect(page.pageId, page.occurrenceId)}
-                    onKeyDown={(event) => {
-                      if (
-                        event.nativeEvent.isComposing ||
-                        event.keyCode === 229 ||
-                        event.ctrlKey ||
-                        event.metaKey ||
-                        event.altKey
-                      )
-                        return;
-                      if (event.key === 'Enter') {
+                    disabled={searching}
+                    aria-expanded={expanded}
+                    aria-label={t(
+                      expanded ? 'Collapse Section {title}' : 'Expand Section {title}',
+                      { title: section.title },
+                    )}
+                    title={searching ? t('Sections expand while searching.') : section.title}
+                    data-hd-section-toggle={section.key}
+                    onClick={() => setSectionCollapsed(section.key, expanded)}
+                  >
+                    {expanded ? (
+                      <ChevronDown className="size-3.5 shrink-0" />
+                    ) : (
+                      <ChevronRight className="size-3.5 shrink-0" />
+                    )}
+                    <span className="min-w-0 flex-1 truncate font-semibold">{section.title}</span>
+                    <span className="shrink-0 tabular-nums text-muted-foreground">
+                      {section.pageIds.length}
+                    </span>
+                  </button>
+                  {containsCurrent && (
+                    <span
+                      className="text-[9px] text-brand"
+                      title={t('The current Slide is in this collapsed Section.')}
+                    >
+                      {t('Current Slide')}
+                    </span>
+                  )}
+                </div>
+              )}
+              <ContextMenu>
+                <ContextMenuTrigger
+                  render={
+                    <button
+                      type="button"
+                      data-hd-thumbnail={page.pageId}
+                      data-hd-thumbnail-key={key}
+                      tabIndex={tabStop === key ? 0 : -1}
+                      onFocus={() => {
+                        focusedOccurrence.current = key;
+                      }}
+                      onBlur={(event) => {
+                        if (
+                          event.relatedTarget &&
+                          !scrollRef.current?.contains(event.relatedTarget)
+                        )
+                          focusedOccurrence.current = null;
+                      }}
+                      aria-label={t('第 {value0} 页 · {value1} · {value2}', {
+                        value0: index + 1,
+                        value1: page.shortCode ?? page.metadata.label ?? '',
+                        value2: name,
+                      })}
+                      aria-pressed={isCurrent(page)}
+                      className={cn(
+                        'block w-full rounded-md p-1.5 text-left outline-none transition-colors focus-visible:ring-2 focus-visible:ring-brand/50',
+                        isCurrent(page) ? 'bg-brand-soft ring-1 ring-brand/50' : 'hover:bg-muted',
+                      )}
+                      onClick={() => onSelect(page.pageId, page.occurrenceId)}
+                      onKeyDown={(event) => {
+                        if (
+                          event.nativeEvent.isComposing ||
+                          event.keyCode === 229 ||
+                          event.ctrlKey ||
+                          event.metaKey ||
+                          event.altKey
+                        )
+                          return;
+                        if (event.key === 'Enter') {
+                          event.preventDefault();
+                          onSelect(page.pageId, page.occurrenceId, 'canvas');
+                          focusEditorCanvas();
+                          return;
+                        }
+                        if (
+                          section &&
+                          !searching &&
+                          (event.key === 'ArrowLeft' || event.key === 'ArrowRight')
+                        ) {
+                          event.preventDefault();
+                          event.stopPropagation();
+                          setSectionCollapsed(section.key, event.key === 'ArrowLeft');
+                          return;
+                        }
+                        const ids = entries.map((entry) => entry.key);
+                        const nextId =
+                          event.key === 'Home'
+                            ? ids[0]
+                            : event.key === 'End'
+                              ? ids[ids.length - 1]
+                              : event.key === 'ArrowUp' || event.key === 'ArrowDown'
+                                ? cycleItemId(ids, key, event.key === 'ArrowUp' ? -1 : 1, false)
+                                : null;
+                        const next = entries.find((entry) => entry.key === nextId);
+                        if (!next) return;
                         event.preventDefault();
-                        onSelect(page.pageId, page.occurrenceId, 'canvas');
-                        focusEditorCanvas();
-                        return;
+                        onSelect(next.page.pageId, next.page.occurrenceId);
+                        const target = scrollRef.current?.querySelector<HTMLElement>(
+                          `[data-hd-thumbnail-key="${CSS.escape(next.key)}"]`,
+                        );
+                        target?.focus({ preventScroll: true });
+                        target?.scrollIntoView({ block: 'nearest' });
+                      }}
+                      onContextMenu={() => onSelect(page.pageId, page.occurrenceId)}
+                      draggable={!disabled}
+                      onDragStart={(event) =>
+                        event.dataTransfer.setData('application/huandeng-page', page.pageId)
                       }
-                      const ids = entries.map((entry) => entry.key);
-                      const nextId =
-                        event.key === 'Home'
-                          ? ids[0]
-                          : event.key === 'End'
-                            ? ids[ids.length - 1]
-                            : event.key === 'ArrowUp' || event.key === 'ArrowDown'
-                              ? cycleItemId(ids, key, event.key === 'ArrowUp' ? -1 : 1, false)
-                              : null;
-                      const next = entries.find((entry) => entry.key === nextId);
-                      if (!next) return;
-                      event.preventDefault();
-                      onSelect(next.page.pageId, next.page.occurrenceId);
-                      const target = scrollRef.current?.querySelector<HTMLElement>(
-                        `[data-hd-thumbnail-key="${CSS.escape(next.key)}"]`,
-                      );
-                      target?.focus({ preventScroll: true });
-                      target?.scrollIntoView({ block: 'nearest' });
-                    }}
-                    onContextMenu={() => onSelect(page.pageId, page.occurrenceId)}
-                    draggable={!disabled}
-                    onDragStart={(event) =>
-                      event.dataTransfer.setData('application/huandeng-page', page.pageId)
-                    }
-                    onDragOver={(event) => {
-                      if (
-                        !disabled &&
-                        event.dataTransfer.types.includes('application/huandeng-page')
-                      )
+                      onDragOver={(event) => {
+                        if (
+                          !disabled &&
+                          event.dataTransfer.types.includes('application/huandeng-page')
+                        )
+                          event.preventDefault();
+                      }}
+                      onDrop={(event) => {
+                        if (disabled) return;
                         event.preventDefault();
-                    }}
-                    onDrop={(event) => {
-                      if (disabled) return;
-                      event.preventDefault();
-                      const id = event.dataTransfer.getData('application/huandeng-page');
-                      if (id && id !== page.pageId) onMove(id, page.pageId);
+                        const id = event.dataTransfer.getData('application/huandeng-page');
+                        if (id && id !== page.pageId) onMove(id, page.pageId);
+                      }}
+                    >
+                      <div
+                        data-hd-thumbnail-preview={page.occurrenceId ?? page.pageId}
+                        className="pointer-events-none overflow-hidden rounded-sm border border-foreground/10"
+                        style={{ width: '100%', aspectRatio: `${size[0]} / ${size[1]}` }}
+                      >
+                        {visible.has(page.occurrenceId ?? page.pageId) ? (
+                          <ThumbnailPreview page={page} size={size} theme={theme} />
+                        ) : (
+                          <div
+                            className="flex size-full items-center justify-center bg-background text-[10px] text-muted-foreground/60"
+                            aria-hidden="true"
+                          >
+                            {page.shortCode ?? page.metadata.label}
+                          </div>
+                        )}
+                      </div>
+                      <div className="mt-2 flex min-w-0 items-center gap-1.5 text-[10px]">
+                        <span
+                          className="font-mono text-muted-foreground"
+                          title={t('当前页序；重新排序后会改变')}
+                        >
+                          {String(index + 1).padStart(2, '0')}
+                        </span>
+                        <span
+                          className="font-mono font-semibold tracking-wider"
+                          title={t('页面短码：{value0}\n永久 ID：{value1}\n旧编号：{value2}', {
+                            value0: page.shortCode ?? '',
+                            value1: page.pageId,
+                            value2: page.metadata.label ?? t('无'),
+                          })}
+                        >
+                          {page.shortCode ?? page.metadata.label ?? t('未编号')}
+                        </span>
+                        <span className="truncate text-muted-foreground">{name}</span>
+                        {page.versionId && (
+                          <span title={t('固定的页面版本')} className="text-brand">
+                            {t('固定')}
+                          </span>
+                        )}
+                      </div>
+                    </button>
+                  }
+                />
+                <ContextMenuContent className="min-w-48">
+                  <ContextMenuItem onClick={() => onHistory(page.pageId)}>
+                    <History />
+                    {t('查看历史版本')}
+                  </ContextMenuItem>
+                  <ContextMenuItem onClick={() => onShowFile(page.pageId)}>
+                    <FolderOpen />
+                    {t('在项目文件中显示')}
+                  </ContextMenuItem>
+                  <ContextMenuItem
+                    onClick={() => {
+                      const code = page.shortCode ?? page.pageId;
+                      void navigator.clipboard.writeText(code).then(
+                        () => setCopyStatus(`已复制页面短码 ${code}`),
+                        () => setCopyStatus('未能写入剪贴板，请重试。'),
+                      );
                     }}
                   >
-                    <div
-                      data-hd-thumbnail-preview={page.occurrenceId ?? page.pageId}
-                      className="pointer-events-none overflow-hidden rounded-sm border border-foreground/10"
-                      style={{ width: '100%', aspectRatio: `${size[0]} / ${size[1]}` }}
-                    >
-                      {visible.has(page.occurrenceId ?? page.pageId) ? (
-                        <ThumbnailPreview page={page} size={size} theme={theme} />
-                      ) : (
-                        <div
-                          className="flex size-full items-center justify-center bg-background text-[10px] text-muted-foreground/60"
-                          aria-hidden="true"
-                        >
-                          {page.shortCode ?? page.metadata.label}
-                        </div>
-                      )}
-                    </div>
-                    <div className="mt-2 flex min-w-0 items-center gap-1.5 text-[10px]">
-                      <span
-                        className="font-mono text-muted-foreground"
-                        title={t('当前页序；重新排序后会改变')}
+                    <Fingerprint />
+                    {t('复制页面短码')}
+                  </ContextMenuItem>
+                  <ContextMenuSeparator />
+                  {onInsert && (
+                    <>
+                      <ContextMenuItem
+                        disabled={disabled}
+                        onClick={() => onInsert(slideInsertionBoundary(pages, index))}
                       >
-                        {String(index + 1).padStart(2, '0')}
-                      </span>
-                      <span
-                        className="font-mono font-semibold tracking-wider"
-                        title={t('页面短码：{value0}\n永久 ID：{value1}\n旧编号：{value2}', {
-                          value0: page.shortCode ?? '',
-                          value1: page.pageId,
-                          value2: page.metadata.label ?? t('无'),
-                        })}
+                        <Plus />
+                        {t('Insert blank slide before')}
+                      </ContextMenuItem>
+                      <ContextMenuItem
+                        disabled={disabled}
+                        onClick={() => onInsert(slideInsertionBoundary(pages, index + 1))}
                       >
-                        {page.shortCode ?? page.metadata.label ?? t('未编号')}
-                      </span>
-                      <span className="truncate text-muted-foreground">{name}</span>
-                      {page.versionId && (
-                        <span title={t('固定的页面版本')} className="text-brand">
-                          {t('固定')}
-                        </span>
-                      )}
-                    </div>
-                  </button>
-                }
-              />
-              <ContextMenuContent className="min-w-48">
-                <ContextMenuItem onClick={() => onHistory(page.pageId)}>
-                  <History />
-                  {t('查看历史版本')}
-                </ContextMenuItem>
-                <ContextMenuItem onClick={() => onShowFile(page.pageId)}>
-                  <FolderOpen />
-                  {t('在项目文件中显示')}
-                </ContextMenuItem>
-                <ContextMenuItem
-                  onClick={() => {
-                    const code = page.shortCode ?? page.pageId;
-                    void navigator.clipboard.writeText(code).then(
-                      () => setCopyStatus(`已复制页面短码 ${code}`),
-                      () => setCopyStatus('未能写入剪贴板，请重试。'),
-                    );
-                  }}
-                >
-                  <Fingerprint />
-                  {t('复制页面短码')}
-                </ContextMenuItem>
-                <ContextMenuSeparator />
-                <ContextMenuItem disabled={disabled} onClick={() => onDuplicate(page.pageId)}>
-                  <Copy />
-                  {t('复制页面')}
-                </ContextMenuItem>
-                <ContextMenuItem
-                  disabled={disabled}
-                  variant="destructive"
-                  onClick={() => onRemove(page.pageId)}
-                >
-                  <Trash2 />
-                  {t('移除页面')}
-                </ContextMenuItem>
-              </ContextMenuContent>
-            </ContextMenu>
+                        <Plus />
+                        {t('Insert blank slide after')}
+                      </ContextMenuItem>
+                      <ContextMenuSeparator />
+                    </>
+                  )}
+                  <ContextMenuItem disabled={disabled} onClick={() => onDuplicate(page.pageId)}>
+                    <Copy />
+                    {t('复制页面')}
+                  </ContextMenuItem>
+                  <ContextMenuItem
+                    disabled={disabled}
+                    variant="destructive"
+                    onClick={() => onRemove(page.pageId)}
+                  >
+                    <Trash2 />
+                    {t('移除页面')}
+                  </ContextMenuItem>
+                </ContextMenuContent>
+              </ContextMenu>
+            </div>
           );
         })}
+        {onInsert && !searching && (
+          <SlideInsertionGap
+            boundary={slideInsertionBoundary(pages, pages.length)}
+            position={pages.length + 1}
+            disabled={disabled}
+            onInsert={onInsert}
+          />
+        )}
         {tombstones.length > 0 && (
           <details className="border-t pt-3 text-xs text-muted-foreground">
             <summary className="cursor-pointer">

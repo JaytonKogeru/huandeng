@@ -300,6 +300,12 @@ async function capture(name) {
     path: path.join(evidence, name),
     animations: 'disabled',
     timeout: 15000,
+    mask: [
+      page.locator('[data-hd-project-root]'),
+      page.locator('[data-hd-agent-project]'),
+      page.locator('[data-hd-agent-connection] textarea'),
+    ],
+    maskColor: '#e5e7eb',
   });
   screenshots.push(name);
 }
@@ -1120,6 +1126,10 @@ try {
     }
   }
   const report = {
+    harness: 'verify-object-workspace-v010',
+    executablePath: path.resolve(executablePath),
+    desktopAppOverride: process.env.HUANDENG_DESKTOP_APP || null,
+    screenshotRedactions: ['Project root path', 'Agent Project path', 'Agent configuration'],
     passed: !process.exitCode,
     checks,
     rendererErrors,

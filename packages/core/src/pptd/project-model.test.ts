@@ -373,6 +373,141 @@ describe('Section ranges anchored to stable Main Slide IDs', () => {
   });
 });
 
+describe('Sections beginning at a stable first Slide', () => {
+  function coverProject() {
+    const model = project();
+    model.sections[0].startPageId = 'a';
+    model.sections[1].startPageId = 'c';
+    return model;
+  }
+
+  function order(deck: DeckSnapshot, ids: string[]) {
+    const existing = new Map(deck.pages.map((page) => [page.pageId, page]));
+    deck.pages = ids.map((pageId) => {
+      const page = structuredClone(existing.get(pageId) ?? deck.pages[0]);
+      page.pageId = pageId;
+      page.path = `pages/${pageId}.page`;
+      page.metadata.path = page.path;
+      deck.metadata.slides[pageId] = page.metadata;
+      return page;
+    });
+  }
+
+  it('includes interior and final insertions while leaving introductory Slides outside Sections', () => {
+    const deck = snapshot(coverProject());
+    order(deck, ['intro', 'a', 'inserted', 'b', 'c', 'appended']);
+    const saved = structuredClone(deck.metadata);
+    expect(resolveProjectSections(deck).map((item) => item.pageIds)).toEqual([
+      ['a', 'inserted', 'b'],
+      ['c', 'appended'],
+    ]);
+    expect(resolveProjectSections(deck)[0]).toMatchObject({
+      startPosition: 2,
+      endPosition: 4,
+      contiguous: true,
+      diagnostics: [],
+    });
+    expect(assertPresentationReady(deck, 'lab').pages.map((page) => page.pageId)).toEqual([
+      'a',
+      'inserted',
+      'b',
+    ]);
+    expect(deck.metadata).toEqual(saved);
+  });
+
+  it('follows Main order after a cover moves, independently of saved Section array order', () => {
+    const model = coverProject();
+    model.sections.reverse();
+    const deck = snapshot(model);
+    order(deck, ['c', 'a', 'b']);
+    const resolved = new Map(resolveProjectSections(deck).map((item) => [item.section.id, item]));
+    expect(resolved.get('result')?.pageIds).toEqual(['c']);
+    expect(resolved.get('background')?.pageIds).toEqual(['a', 'b']);
+    order(deck, ['a', 'c', 'b']);
+    expect(resolveProjectSections(deck).map((item) => item.pageIds)).toEqual([['c', 'b'], ['a']]);
+    expect(readProjectModel(deck.metadata).sections.map((section) => section.startPageId)).toEqual([
+      'c',
+      'a',
+    ]);
+  });
+
+  it('uses the next explicit Section start without migrating fixed ranges or member lists', () => {
+    const model = coverProject();
+    delete model.sections[1].startPageId;
+    model.sections[1].range = { startPageId: 'c', endPageId: 'c' };
+    const deck = snapshot(model);
+    order(deck, ['a', 'b', 'c', 'tail']);
+    expect(resolveProjectSections(deck).map((item) => item.pageIds)).toEqual([['a', 'b'], ['c']]);
+    delete model.sections[1].range;
+    model.sections[1].pageIds = ['c', 'tail'];
+    expect(resolveProjectSections(deck, model).map((item) => item.pageIds)).toEqual([
+      ['a', 'b'],
+      ['c', 'tail'],
+    ]);
+    expect(validateProjectModel(model).sections[1]).toEqual(model.sections[1]);
+  });
+
+  it('diagnoses a removed cover instead of silently extending the preceding Section', () => {
+    const deck = snapshot(coverProject());
+    deck.pages = deck.pages.filter((page) => page.pageId !== 'c');
+    deck.metadata.slides.c.state = 'tombstone';
+    const resolved = resolveProjectSections(deck);
+    expect(resolved[0].diagnostics).toContainEqual(
+      expect.objectContaining({ code: 'SECTION_END_UNRESOLVED', pageId: 'c' }),
+    );
+    expect(resolved[1].diagnostics).toContainEqual(
+      expect.objectContaining({ code: 'SECTION_START_UNAVAILABLE', pageId: 'c' }),
+    );
+    expect(() => assertPresentationReady(deck, 'lab')).toThrow('cannot determine its end');
+    expect(() => assertPresentationReady(deck, 'talk')).toThrow('unavailable first Slide');
+    expect(() => assertPresentationReady(deck)).not.toThrow();
+    const unrelated = coverProject();
+    unrelated.mainStory.takeaway = 'A revised description';
+    expect(() =>
+      applyProjectOperation(deck.metadata, { op: 'project.replace', project: unrelated }, deck),
+    ).not.toThrow();
+  });
+
+  it('rejects duplicate starts and mixed first-Slide/range definitions without changing sources', () => {
+    const deck = snapshot(coverProject());
+    const duplicate = coverProject();
+    duplicate.sections[1].startPageId = 'a';
+    expect(
+      resolveProjectSections(deck, duplicate).every((item) =>
+        item.diagnostics.some((diagnostic) => diagnostic.code === 'SECTION_RANGE_OVERLAP'),
+      ),
+    ).toBe(true);
+    expect(() =>
+      applyProjectOperation(deck.metadata, { op: 'project.replace', project: duplicate }, deck),
+    ).toThrow('overlap');
+    const mixed = coverProject();
+    mixed.sections[0].range = { startPageId: 'a', endPageId: 'b' };
+    expect(() => validateProjectModel(mixed)).toThrow('both startPageId and range');
+    const malformed = coverProject();
+    malformed.sections[0].startPageId = '../slide';
+    expect(() => validateProjectModel(malformed)).toThrow('ID characters');
+    expect(deck.pages.map((page) => page.pageId)).toEqual(['a', 'b', 'c']);
+  });
+
+  it('refreshes cached members when saving without using that cache as the boundary', () => {
+    const deck = snapshot(coverProject());
+    order(deck, ['a', 'inserted', 'b', 'c', 'tail']);
+    const updated = applyProjectOperation(
+      deck.metadata,
+      { op: 'project.replace', project: coverProject() },
+      deck,
+    );
+    expect(readProjectModel(updated).sections.map((section) => section.pageIds)).toEqual([
+      ['a', 'inserted', 'b'],
+      ['c', 'tail'],
+    ]);
+    expect(readProjectModel(updated).sections.map((section) => section.startPageId)).toEqual([
+      'a',
+      'c',
+    ]);
+  });
+});
+
 const temporary: string[] = [];
 const stores: PptdStore[] = [];
 afterEach(async () => {
@@ -440,6 +575,44 @@ async function fixture() {
 }
 
 describe('durable project organization transactions', () => {
+  it('retains first-Slide Section identity through insertion, removal, restore and reopen', async () => {
+    const { root, entryPath, store, model, first, second, commit } = await fixture();
+    model.sections[0].startPageId = first.pageId;
+    model.sections[0].pageIds = [first.pageId, second.pageId];
+    await commit([{ op: 'project.replace', project: model }]);
+    await commit([
+      {
+        op: 'page.add',
+        afterPageId: second.pageId,
+        page: { elements: [], notes: 'Appended after the former end' },
+      },
+    ]);
+    const expected = store.getSnapshot().pages.map((page) => page.pageId);
+    expect(
+      assertPresentationReady(store.getSnapshot(), 'talk').pages.map((page) => page.pageId),
+    ).toEqual(expected);
+    await commit([{ op: 'page.remove', pageId: first.pageId }]);
+    expect(() => assertPresentationReady(store.getSnapshot(), 'talk')).toThrow(
+      'unavailable first Slide',
+    );
+    await commit([{ op: 'page.restore', pageId: first.pageId, afterPageId: null }]);
+    expect(
+      assertPresentationReady(store.getSnapshot(), 'talk').pages.map((page) => page.pageId),
+    ).toEqual(expected);
+    await store.close();
+    const reopened = await openPptdStore({
+      entryPath,
+      stateDir: path.join(root, 'runtime-cover-reopen'),
+    });
+    stores.push(reopened);
+    expect(readProjectModel(reopened.getSnapshot().metadata).sections[0].startPageId).toBe(
+      first.pageId,
+    );
+    expect(
+      assertPresentationReady(reopened.getSnapshot(), 'talk').pages.map((page) => page.pageId),
+    ).toEqual(expected);
+  });
+
   it('retains boundary semantics through insertion, save and reopen', async () => {
     const { root, entryPath, store, model, first, second, commit } = await fixture();
     model.sections[0].pageIds = [first.pageId, second.pageId];

@@ -27,6 +27,7 @@ import type { PageSnapshot } from '../../../pptd/types';
 import { Button } from '../ui/button';
 import { Textarea } from '../ui/textarea';
 import { ArrangementControls } from './arrangement-controls';
+import { FontPresetSelect } from './font-library';
 import { NumberField, StringField } from './property-fields';
 import {
   numberValue,
@@ -300,7 +301,16 @@ export function PptdInspector({
             </Section>
             {element.elementType === 'text' && (
               <Section title={t('文字')}>
+                <FontPresetSelect
+                  label="Font preset"
+                  value={textValue(content.fontFamily, 'MiSans')}
+                  disabled={disabled}
+                  onChange={(fontFamily) => patch({ 'content.fontFamily': fontFamily })}
+                />
                 {string(t('字体'), textValue(content.fontFamily, 'MiSans'), 'content.fontFamily')}
+                <p className="text-[11px] leading-relaxed text-muted-foreground">
+                  {t('Check installed fonts in Workspace settings → Fonts.')}
+                </p>
                 <div className="grid grid-cols-2 gap-3">
                   {number(
                     t('字号'),
@@ -668,9 +678,9 @@ export function PptdInspector({
           </Section>
         )}
         {children && (
-          <details className="border-t border-border">
+          <details open className="border-t border-border" data-hd-quick-layout>
             <summary className="cursor-pointer px-4 py-3 text-xs font-medium">
-              {t('Layout tools')}
+              {t('Quick Layout')}
             </summary>
             {children}
           </details>

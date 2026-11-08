@@ -1,4 +1,5 @@
 import type { AssetLibraryOptions, AssetLibraryResult } from '../../pptd/asset-library';
+import type { ProjectFilePreview } from '../../pptd/project-file-preview';
 import type { StoryBriefing, StoryBriefingOptions } from '../../pptd/project-insights';
 import type {
   CreatePageCheckpointRequest,
@@ -81,10 +82,14 @@ export function pptdAssetPreviewUrl(path: string, size: 320 | 640 = 320): string
   return `${API}/asset-preview?path=${encodeURIComponent(path)}&size=${size}`;
 }
 
+export function pptdProjectFileImageUrl(path: string, revision: string): string {
+  return `${API}${queryPath('/project-file-preview/image', { path, revision })}`;
+}
+
 export class PptdBackend implements PptdTransport {
   private token = '';
 
-  private async request<T>(path: string, body?: unknown): Promise<T> {
+  private async request<T>(path: string, body?: unknown, signal?: AbortSignal): Promise<T> {
     let response: Response;
     try {
       response = await fetch(`${API}${path}`, {
@@ -95,8 +100,10 @@ export class PptdBackend implements PptdTransport {
             : { 'content-type': 'application/json', 'x-huandeng-token': this.token },
         body: body === undefined ? undefined : JSON.stringify(body),
         cache: 'no-store',
+        signal,
       });
     } catch (error) {
+      if (signal?.aborted) throw error;
       throw new PptdClientError(
         'NETWORK_ERROR',
         error instanceof Error ? error.message : '无法连接本地编辑服务',
@@ -169,6 +176,10 @@ export class PptdBackend implements PptdTransport {
 
   project(): Promise<ProjectTree> {
     return this.request('/project');
+  }
+
+  filePreview(path: string, signal?: AbortSignal): Promise<ProjectFilePreview> {
+    return this.request(queryPath('/project-file-preview', { path }), undefined, signal);
   }
 
   assets(options: AssetLibraryOptions = {}): Promise<AssetLibraryResult> {

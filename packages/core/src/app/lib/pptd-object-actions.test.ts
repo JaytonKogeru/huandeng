@@ -1,6 +1,74 @@
 import { describe, expect, it } from 'vitest';
 import type { PptdElement } from '../../pptd/types';
-import { reorderElementIds, textFormatPatches } from './pptd-object-actions';
+import { reorderElementIds, textFormatPatches, textPropertyPatch } from './pptd-object-actions';
+
+describe('imported text property changes', () => {
+  it('increments the visible inline size and rejects mixed sizes instead of shrinking from a default', () => {
+    const element: PptdElement = {
+      elementId: 'title',
+      elementType: 'text',
+      content: { text: '<span style="font-size:34px;line-height:normal">Visible title</span>' },
+    };
+    expect(
+      textFormatPatches([element], ['title'], { type: 'font-size', delta: 1 })[0].fields[
+        'content.fontSize'
+      ],
+    ).toBe(36);
+    element.content = {
+      text: '<span style="font-size:34px">Large</span><span style="font-size:18px">Small</span>',
+    };
+    expect(() => textFormatPatches([element], ['title'], { type: 'font-size', delta: 1 })).toThrow(
+      'mixed inline fontSize',
+    );
+  });
+
+  it('replaces only the selected font property while preserving words and other rich formatting', () => {
+    const source =
+      '<p style="text-align:center"><span style="font-family:Arial;font-size:20px;color:#123456">Keep <em>this</em> wording</span></p>';
+    const element: PptdElement = {
+      elementId: 'title',
+      elementType: 'text',
+      content: { text: source, fontFamily: 'Arial', fontSize: 20 },
+    };
+    const patch = textPropertyPatch(element, { 'content.fontFamily': 'Georgia, serif' });
+    expect(patch).toEqual({
+      'content.fontFamily': 'Georgia, serif',
+      'content.text':
+        '<p style="text-align:center"><span style="font-size:20px;color:#123456">Keep <em>this</em> wording</span></p>',
+    });
+    expect(element.content?.text).toBe(source);
+    expect(textPropertyPatch(element, { bounds: [0, 0, 400, 60] })).toEqual({
+      bounds: [0, 0, 400, 60],
+    });
+    expect(textPropertyPatch(element, { 'content.text': '<p>New <em>wording</em></p>' })).toEqual({
+      'content.text': '<p>New <em>wording</em></p>',
+    });
+  });
+
+  it('makes whole-object size and color commands visible in an imported title without losing emphasis', () => {
+    const element: PptdElement = {
+      elementId: 'title',
+      elementType: 'text',
+      content: {
+        text: '<span style="font-size:20px;color:#123456">A <strong>title</strong></span>',
+        fontSize: 20,
+      },
+    };
+    const size = textFormatPatches([element], ['title'], { type: 'font-size', delta: 1 })[0].fields;
+    expect(size).toEqual({
+      'content.fontSize': 22,
+      'content.text': '<span style="color:#123456">A <strong>title</strong></span>',
+    });
+    const color = textFormatPatches([element], ['title'], {
+      type: 'text-color',
+      color: '#654321',
+    })[0].fields;
+    expect(color).toEqual({
+      'content.color': '#654321',
+      'content.text': '<span style="font-size:20px">A <strong>title</strong></span>',
+    });
+  });
+});
 
 const shape = (elementId: string): PptdElement => ({ elementId, elementType: 'shape' });
 const group = (elementId: string, children: string[]): PptdElement => ({

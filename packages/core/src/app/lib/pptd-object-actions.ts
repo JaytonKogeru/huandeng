@@ -1,5 +1,10 @@
 import { expandGroupIds, groupChildren } from '../../pptd/grouping';
 import type { PptdElement } from '../../pptd/types';
+import {
+  clearRichTextBaseline,
+  type RichTextBaselineField,
+  richTextBaseline,
+} from './pptd-rich-text-baseline';
 
 export type LayerDirection = 'forward' | 'backward' | 'front' | 'back';
 
@@ -21,6 +26,28 @@ export function effectiveTextContent(element: PptdElement, theme: TextTheme = {}
   return { ...theme.textStyles?.[style], ...content };
 }
 
+export function textPropertyPatch(
+  element: PptdElement,
+  fields: Record<string, unknown>,
+): Record<string, unknown> {
+  const source = element.content?.text;
+  if (element.elementType !== 'text' || typeof source !== 'string' || 'content.text' in fields)
+    return fields;
+  const names: RichTextBaselineField[] = [
+    'fontFamily',
+    'fontSize',
+    'color',
+    'align',
+    'lineHeight',
+    'lineHeightPx',
+    'letterSpacing',
+  ];
+  const changed = names.filter((name) => `content.${name}` in fields);
+  if (!changed.length) return fields;
+  const text = clearRichTextBaseline(source, changed);
+  return text === source ? fields : { ...fields, 'content.text': text };
+}
+
 export function textFormatPatches(
   elements: PptdElement[],
   selectedIds: string[],
@@ -40,14 +67,20 @@ export function textFormatPatches(
     if (command.type === 'format-text')
       return { elementId: item.elementId, fields: { [`content.${command.format}`]: enabled } };
     if (command.type === 'text-color')
-      return { elementId: item.elementId, fields: { 'content.color': command.color } };
+      return {
+        elementId: item.elementId,
+        fields: textPropertyPatch(item, { 'content.color': command.color }),
+      };
+    const visible = richTextBaseline(content, {}, ['fontSize']);
     const size =
-      typeof content.fontSize === 'number' && Number.isFinite(content.fontSize)
-        ? content.fontSize
+      typeof visible.fontSize === 'number' && Number.isFinite(visible.fontSize)
+        ? visible.fontSize
         : 18;
     return {
       elementId: item.elementId,
-      fields: { 'content.fontSize': Math.max(1, Math.min(400, size + command.delta * 2)) },
+      fields: textPropertyPatch(item, {
+        'content.fontSize': Math.max(1, Math.min(400, size + command.delta * 2)),
+      }),
     };
   });
 }

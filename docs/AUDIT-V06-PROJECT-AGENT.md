@@ -182,7 +182,7 @@ Main、Section 和 Presentation 的 Story 都采用 `purpose`、`audience`、`ta
 | Story briefing | 四层来源清楚，重复 occurrence 无歧义，固定版本与当前页意图不混用 |
 | MCP / CLI 共享服务 | 两个客户端读取同一项目；有条件写入实时出现在编辑器；旧 revision 拒绝 |
 | Plugin 配置可携带 | 用配置的路径启动，项目不存在/未打开时给可操作错误；初始化、tools/list、代表性读写与渲染实际通过 |
-| 科研样本 | DNA TT 的 PPTD 副本验证大库关系与原图；m6A PPTX 用于观察实际材料结构和动画需求，不把尚未实现的完整 PPTX 导入计作通过 |
+| 科研样本 | 既有科研项目的 PPTD 副本验证大库关系与原图；科研参考 PPTX 用于观察实际材料结构和动画需求，不把尚未实现的完整 PPTX 导入计作通过 |
 
 ## 8. 文档修正清单
 

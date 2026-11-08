@@ -1,0 +1,160 @@
+export const authoringEnglish = {
+  'Scientific slides · 科学演示': 'Scientific slides · 科学演示',
+} as const;
+
+export const authoringChinese = {
+  'Captured reference style': '已捕获的参考样式',
+  'Reference Slide preview': '参考 Slide 预览',
+  'Apply uses this captured style. Refresh to include later reference edits.':
+    '应用此处捕获的样式；刷新后才会纳入参考标题的新改动。',
+  'Refresh reference style': '刷新参考样式',
+  'Choose a reference title to capture its style.': '请选择参考标题以捕获样式。',
+
+  'Section boundaries need attention. Slides are still available below.':
+    'Section 边界需要处理，下方仍可查看所有 Slides。',
+  'Review Sections': '检查 Sections',
+  'Choose an available Main Slide as the first Slide.': '请选择一个可用的 Main Slide 作为首页。',
+
+  'Review unsaved drafts': '查看未保存的草稿',
+  'Drafts ({count})': '草稿（{count}）',
+  'Project organization': 'Project 编排',
+  'Review Sections and Presentations, then save or discard the Project draft.':
+    '检查 Sections 与 Presentations，然后保存或放弃 Project 草稿。',
+  'Add slides before exporting this Presentation.': '为此 Presentation 添加 Slides 后即可导出。',
+  'Add slides before presenting.': '添加 Slides 后即可放映。',
+  'Save or discard the pending drafts before exporting.': '保存或放弃待处理草稿后即可导出。',
+  'Save or discard the pending drafts before presenting.': '保存或放弃待处理草稿后即可放映。',
+  'Slide order changed. Choose the insertion point again.':
+    'Slides 顺序已改变，请重新选择插入位置。',
+  'Resize file preview': '调整文件预览宽度',
+  'First Slide': '首页 Slide',
+  'First Slide to next Section': '从首页 Slide 到下一个 Section',
+  'Choose the first Slide, then click Set first Slide.': '选择首页 Slide，然后点击设置首页。',
+  'Includes this Slide and follows Main order until the next Section. The last Section continues to the end.':
+    '包含首页 Slide，按 Main Slides 顺序延续到下一个 Section 之前；最后一个 Section 延续到末尾。',
+  'Set first Slide': '设置首页 Slide',
+  'Fixed range': '固定范围',
+  'Saved members': '已保存的成员',
+  'Section membership': 'Section 成员方式',
+  'Open first Slide: {title}': '打开首页 Slide：{title}',
+  'Close slide selection': '关闭 Slide 选择',
+  'Add slides or Sections': '添加 Slides 或 Sections',
+  'Delete Presentation': '删除 Presentation',
+  'Delete this Presentation from the draft. Main Slides are kept.':
+    '从草稿中删除此 Presentation；Main Slides 会保留。',
+  'Deleting a Presentation keeps its Main Slides and saved Slide versions.':
+    '删除 Presentation 会保留 Main Slides 及其已保存版本。',
+  'Presentation removed from the draft. Save Project to confirm, or discard the draft to restore it. Main Slides are kept.':
+    '已从草稿中移除 Presentation。保存 Project 以确认，或放弃草稿以还原；Main Slides 会保留。',
+  'Current Slide': '当前 Slide',
+  'Sections expand while searching.': '搜索时展开匹配的 Sections。',
+  'The current Slide is in this collapsed Section.': '当前 Slide 位于这个已收起的 Section 中。',
+  'Insert blank slide here': '在此插入空白 Slide',
+  'Insert blank slide before': '在前面插入空白 Slide',
+  'Insert blank slide after': '在后面插入空白 Slide',
+  'Insert blank slide at Position {position}': '在 Position {position} 插入空白 Slide',
+  'Expand Section {title}': '展开 Section {title}',
+  'Collapse Section {title}': '收起 Section {title}',
+  'File preview': '文件预览',
+  'Close file preview': '关闭文件预览',
+  'Refresh file preview': '刷新文件预览',
+  'Loading preview…': '正在加载预览…',
+  'Read-only': '只读',
+  'Showing the first {size}. The file is unchanged.': '显示前 {size} 内容；原文件未改变。',
+  'Fit image': '适合预览窗口',
+  'Actual size': '实际大小',
+  'Reveal file': '在文件夹中显示',
+  'The image could not be displayed. Refresh the preview or reveal the file.':
+    '无法显示图片，请刷新预览或在文件夹中查看。',
+  '{type} preview': '{type} 预览',
+  'Markdown source': 'Markdown 源码',
+  'JSON source': 'JSON 源码',
+  'YAML source': 'YAML 源码',
+  'TOML source': 'TOML 源码',
+  'Plain text': '纯文本',
+  'CSV source': 'CSV 内容',
+  'TSV source': 'TSV 内容',
+  'Command script source': '命令脚本源码',
+  'PowerShell source': 'PowerShell 源码',
+  'Python source': 'Python 源码',
+  'Shell script source': 'Shell 脚本源码',
+  'JavaScript source': 'JavaScript 源码',
+  'TypeScript source': 'TypeScript 源码',
+  'CSS source': 'CSS 源码',
+  'HTML source': 'HTML 源码',
+  'XML source': 'XML 源码',
+  'SVG source': 'SVG 源码',
+  'Slide source': 'Slide 源码',
+  'Project source': 'Project 源码',
+  'Choose a file inside this Project.': '请选择此 Project 内的文件。',
+  'Linked files and folders are not previewed.': '链接文件和文件夹暂不提供预览。',
+  'The file resolves outside this Project.': '文件指向此 Project 之外。',
+  'Choose a regular file to preview.': '请选择普通文件进行预览。',
+  'The selected file changed while opening.': '打开时所选文件已改变。',
+  'This file is no longer available.': '此文件已不可用。',
+  'Preview is not available for this file type.': '暂不支持预览此文件类型。',
+  'This image exceeds the 32 MiB preview limit.': '图片超过 32 MiB 的预览上限。',
+  'This image is invalid or exceeds the 32 megapixel preview limit.':
+    '图片无效或超过 3200 万像素的预览上限。',
+  'Text preview requires UTF-8 or UTF-16 with a byte-order mark.':
+    '文本预览支持 UTF-8，或带字节序标记的 UTF-16。',
+  'This file contains binary data and cannot be shown as text.':
+    '此文件含有二进制数据，无法作为文本显示。',
+  'The file changed while reading. Refresh the preview.': '读取时文件已改变，请刷新预览。',
+  'This image changed. Refresh the preview.': '图片已改变，请刷新预览。',
+  'Choose a supported image file to preview.': '请选择支持的图片文件进行预览。',
+  'Match title style': '匹配标题样式',
+  'Use an existing Slide title or Section cover as your reference. Copy its position and text formatting to one chosen title.':
+    '以现有 Slide 标题或 Section 首页为参考，将位置和文字格式应用到选定标题。',
+  'Reference Slide': '参考 Slide',
+  'Choose a reference Slide': '选择参考 Slide',
+  'Reference title object': '参考标题对象',
+  'Choose title text': '选择标题文字',
+  'Title on the current Slide': '当前 Slide 的标题',
+  'Add a text object, or ungroup a title to change its layout independently.':
+    '添加文字对象，或取消标题所在的组合后单独调整版式。',
+  'Only the chosen title changes. Its wording and inline emphasis are retained.':
+    '仅调整选定标题，保留原文与行内强调。',
+  'Apply to chosen title': '应用到选定标题',
+  'Title style applied. Use Undo to restore the previous style.':
+    '标题样式已应用；可用 Undo 恢复。',
+  'Choose a reference Slide and its title text object.': '请选择参考 Slide 及其标题文字对象。',
+  'Choose an independent title text object on the current Slide.':
+    '请选择当前 Slide 上独立的标题文字对象。',
+  'Apply a title style to an editable Main Slide.': '请将标题样式应用到可编辑的 Main Slide。',
+  'Choose a different reference title.': '请选择其他标题作为参考。',
+  'The reference title needs a valid position and size.': '参考标题需要有效的位置和尺寸。',
+  Fonts: 'Fonts',
+  'Document fonts': '文档常用字体',
+  'Open-source fonts': '开源字体',
+  'Generic families': '通用字体族',
+  'Font preset': '字体预设',
+  'Custom font stack': '自定义字体列表',
+  'Preview font': '预览字体',
+  'Installed locally': '本机已安装',
+  'Loaded in this editor': '编辑器已加载',
+  'System font family': '系统通用字体',
+  'Not found on this computer': '本机未找到',
+  'Availability not verified': '尚未验证可用性',
+  'Check local fonts': '检查本机字体',
+  'Checking fonts…': '正在检查字体…',
+  'Use a font preset or a custom font stack in text Properties.':
+    '在文字 Properties 中选择字体预设或输入自定义字体列表。',
+  'Check local fonts to verify which presets are available.':
+    '点击检查本机字体，确认哪些预设可用。',
+  'Local font list checked. Availability applies to this computer.':
+    '已检查本机字体列表；可用状态仅适用于这台电脑。',
+  'Font access was not allowed. Unverified fonts are not marked as missing.':
+    '未获准读取本机字体；尚未验证的字体不会标为缺失。',
+  'This environment cannot list local fonts. Availability remains unverified.':
+    '当前环境无法列出本机字体，可用性仍待验证。',
+  'The local font check could not finish. Try checking again.': '本机字体检查未完成，请重试。',
+  'Checking local font availability…': '正在检查本机字体可用性…',
+  'Scientific slides · 科学演示': 'Scientific slides · 科学演示',
+  'Font source and license': '字体来源与许可',
+  'Install fonts through your operating system, then check again. Presets do not install or embed font files.':
+    '通过操作系统安装字体后再检查。预设不会安装或嵌入字体文件。',
+  'Check installed fonts in Workspace settings → Fonts.':
+    '在 Workspace settings → Fonts 中检查已安装字体。',
+  'Quick Layout': 'Quick Layout',
+} as const;

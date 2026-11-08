@@ -250,6 +250,7 @@ try {
       await section
         .getByRole('textbox', { name: 'Section name', exact: true })
         .fill('Evidence route');
+      await section.locator('[data-hd-section-membership]').selectOption('range');
       // The wrapping labels also contain option text; target their stable input suffixes.
       await section.locator('select[id$="-start"]').selectOption(ids[0]);
       await section.locator('select[id$="-end"]').selectOption(ids[1]);
@@ -403,6 +404,9 @@ try {
   if (page && !page.isClosed()) await capture('failure.png').catch(() => {});
 } finally {
   const report = {
+    harness: 'verify-workflow-v010',
+    executablePath: path.resolve(executablePath),
+    desktopAppOverride: process.env.HUANDENG_DESKTOP_APP || null,
     passed: !failure,
     checks,
     rendererErrors,

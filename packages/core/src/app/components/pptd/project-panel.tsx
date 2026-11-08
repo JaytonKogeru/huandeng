@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowUp, BookOpen, Plus, Save, Trash2 } from 'lucide-react';
+import { ArrowDown, ArrowUp, BookOpen, Minus, Plus, Save, Trash2 } from 'lucide-react';
 import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { getUiLocale, uiText as t, useHuandengLocale } from '@/lib/huandeng-locale';
 import { projectSlideSearch, projectSlideTitle } from '@/lib/pptd-project-source';
@@ -22,6 +22,7 @@ import { ProjectSlidePreview, ProjectSourcePicker } from './project-source-picke
 
 export interface ProjectPanelProps {
   snapshot: DeckSnapshot;
+  currentPageId?: string | null;
   selectedPresentationId: string | null;
   onSelectPresentation: (id: string | null) => void;
   onSelectPage: (pageId: string) => void;
@@ -156,6 +157,7 @@ export function ProjectPanel(props: ProjectPanelProps) {
 
 function ProjectPanelEditor({
   snapshot,
+  currentPageId,
   selectedPresentationId,
   onSelectPresentation,
   onSelectPage,
@@ -376,16 +378,49 @@ function ProjectPanelEditor({
     if (start > end) return 'Start Position must be before or equal to End Position.';
     const next: ProjectModel = {
       ...draft,
-      sections: draft.sections.map((section) =>
-        section.id === sectionId
-          ? { ...section, pageIds: ids.slice(start, end + 1), range: { startPageId, endPageId } }
-          : section,
-      ),
+      sections: draft.sections.map((section) => {
+        if (section.id !== sectionId) return section;
+        const { startPageId: _start, ...previous } = section;
+        return {
+          ...previous,
+          pageIds: ids.slice(start, end + 1),
+          range: { startPageId, endPageId },
+        };
+      }),
     };
-    const resolved = resolveProjectSections(snapshot, next).find(
-      (item) => item.section.id === sectionId,
+    return setSectionDefinition(sectionId, next);
+  };
+  const setSectionStart = (sectionId: string, startPageId: string): string | null => {
+    if (!snapshot.pages.some((page) => page.state === 'active' && page.pageId === startPageId))
+      return 'Choose an available Main Slide as the first Slide.';
+    const next: ProjectModel = {
+      ...draft,
+      sections: draft.sections.map((section) => {
+        if (section.id !== sectionId) return section;
+        const { range: _range, ...previous } = section;
+        return { ...previous, startPageId, pageIds: [startPageId] };
+      }),
+    };
+    return setSectionDefinition(sectionId, next);
+  };
+  const setSectionDefinition = (sectionId: string, next: ProjectModel): string | null => {
+    const existing = new Set(
+      sections.flatMap((item) =>
+        item.diagnostics.map(
+          (diagnostic) => `${item.section.id}:${diagnostic.code}:${diagnostic.pageId ?? ''}`,
+        ),
+      ),
     );
-    if (resolved?.diagnostics.length) return resolved.diagnostics[0].message;
+    for (const item of resolveProjectSections(snapshot, next)) {
+      const error = item.diagnostics.find(
+        (diagnostic) =>
+          // Missing covers can be repaired one by one in this draft; saving still validates all Sections.
+          diagnostic.code !== 'SECTION_END_UNRESOLVED' &&
+          (item.section.id === sectionId ||
+            !existing.has(`${item.section.id}:${diagnostic.code}:${diagnostic.pageId ?? ''}`)),
+      );
+      if (error) return error.message;
+    }
     edit(() => next);
     return null;
   };
@@ -499,9 +534,34 @@ function ProjectPanelEditor({
       {presentation ? (
         <div className="space-y-4" data-hd-presentation-editor>
           <div className="space-y-1">
-            <label htmlFor={`${prefix}-presentation-title`} className="font-medium">
-              {t('演讲名称')}
-            </label>
+            <div className="flex flex-wrap items-center justify-between gap-1">
+              <label htmlFor={`${prefix}-presentation-title`} className="font-medium">
+                {t('演讲名称')}
+              </label>
+              <Button
+                size="xs"
+                variant="ghost"
+                className="text-destructive hover:text-destructive"
+                disabled={readonly}
+                data-hd-delete-presentation
+                title={t('Delete this Presentation from the draft. Main Slides are kept.')}
+                onClick={() => {
+                  edit((previous) => ({
+                    ...previous,
+                    presentations: previous.presentations.filter(
+                      (item) => item.id !== presentation.id,
+                    ),
+                  }));
+                  setEditingId(null);
+                  setMessage(
+                    'Presentation removed from the draft. Save Project to confirm, or discard the draft to restore it. Main Slides are kept.',
+                  );
+                }}
+              >
+                <Trash2 />
+                {t('Delete Presentation')}
+              </Button>
+            </div>
             <input
               id={`${prefix}-presentation-title`}
               className={fieldClass}
@@ -512,6 +572,9 @@ function ProjectPanelEditor({
                 updatePresentation((previous) => ({ ...previous, title: event.target.value }))
               }
             />
+            <p className="text-[10px] text-muted-foreground">
+              {t('Deleting a Presentation keeps its Main Slides and saved Slide versions.')}
+            </p>
           </div>
           <details>
             <summary className="mb-2 cursor-pointer font-medium">{t('Presentation Story')}</summary>
@@ -536,8 +599,8 @@ function ProjectPanelEditor({
               data-hd-open-source-picker
               onClick={() => setSourcePickerOpen((open) => !open)}
             >
-              <Plus />
-              {sourcePickerOpen ? t('Hide source picker') : t('Add slides or Sections')}
+              {sourcePickerOpen ? <Minus /> : <Plus />}
+              {sourcePickerOpen ? t('Close slide selection') : t('Add slides or Sections')}
             </Button>
             {sourcePickerOpen && (
               <ProjectSourcePicker
@@ -872,24 +935,6 @@ function ProjectPanelEditor({
               }
             />
           </details>
-          <Button
-            size="xs"
-            variant="ghost"
-            disabled={readonly}
-            onClick={() => {
-              edit((previous) => ({
-                ...previous,
-                presentations: previous.presentations.filter((item) => item.id !== presentation.id),
-              }));
-              setEditingId(null);
-            }}
-          >
-            <Trash2 />
-            {t('移除演讲')}
-          </Button>
-          <p className="text-[11px] text-muted-foreground">
-            {t('移除演讲后，主幻灯片与已记录的页面版本继续保留。')}
-          </p>
         </div>
       ) : (
         <div className="space-y-4" data-hd-main-slides-editor>
@@ -934,7 +979,7 @@ function ProjectPanelEditor({
           </div>
           <p className="text-[11px] leading-relaxed text-muted-foreground">
             {t(
-              'A Section is a continuous range of Main Slides. Choose Positions; stable Slide IDs keep the boundaries attached to their slides.',
+              'Choose a first Slide for each Section. It follows Main order until the next Section; the last Section continues to the end. Fixed ranges and saved members are also supported.',
             )}
           </p>
           {[...sections]
@@ -946,6 +991,7 @@ function ProjectPanelEditor({
                 key={resolved.section.id}
                 resolved={resolved}
                 snapshot={snapshot}
+                defaultStartPageId={currentPageId}
                 disabled={readonly}
                 onRename={(title) =>
                   edit((previous) => ({
@@ -964,6 +1010,7 @@ function ProjectPanelEditor({
                   }))
                 }
                 onSetRange={(start, end) => setSectionRange(resolved.section.id, start, end)}
+                onSetStart={(start) => setSectionStart(resolved.section.id, start)}
                 onSelectPage={onSelectPage}
               >
                 <details>
@@ -996,7 +1043,7 @@ function ProjectPanelEditor({
           )}
           <p className="text-[10px] leading-relaxed text-muted-foreground">
             {t(
-              'Slides inserted between a range’s boundaries join that Section. Removing a Section keeps every Main Slide and marks affected Presentation references for repair.',
+              'Sections keep stable Slide IDs as anchors. Removing a Section keeps every Main Slide and marks affected Presentation references for repair.',
             )}
           </p>
         </div>

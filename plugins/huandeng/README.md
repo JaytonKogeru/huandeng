@@ -129,3 +129,9 @@ The bridge advertises 18 tools. Legacy `huanding_*` names and `huandeng_frame_re
 Asset search is paginated (`hasMore`) and may report a directory-scan `truncated` flag. `unused` means unreferenced by current Main pages, not safe to delete: versions or other projects may still use it. The tools never infer deletion safety.
 
 Click-driven builds are the presentation workflow. Static PNG/PDF/PPTX retain the base pose and do not preserve interactive animation. The retained MP4 compatibility path is a timed silent H.264 export, not live click delivery. Protocol presence does not prove any particular model client loaded the plugin or completed a task; consult the milestone validation report for actual evidence.
+
+## First-Slide Sections and private Projects
+
+The editor and CLI share the same authoring service. Read the running `guide operations` before replacing Project organization. In editor 0.11, `startPageId` binds a Section to an existing first Slide and resolves its members through the next Section start. Preserve legacy `range` / `pageIds` definitions unless the task explicitly converts them. The existing preview/apply workflow works with this model; no additional plugin service is required.
+
+Treat research files, figures, rendered slides, file manifests, and client paths as private Project data. Keep them in the user's Project or an explicitly chosen local working directory. Editor release evidence uses synthetic fixtures; do not copy private Project content into this repository.

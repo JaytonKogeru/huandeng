@@ -15,6 +15,7 @@ import {
 } from '../../pptd/git.ts';
 import { json, readBody } from '../../pptd/http.ts';
 import { presentationSnapshot } from '../../pptd/presentation-snapshot.ts';
+import { readProjectFileImage, readProjectFilePreview } from '../../pptd/project-file-preview.ts';
 import { readStoryBriefing } from '../../pptd/project-insights.ts';
 import { readProjectModel, resolvePresentation } from '../../pptd/project-model.ts';
 import { readProjectTree } from '../../pptd/project-tree.ts';
@@ -205,6 +206,26 @@ export async function registerPptdRoutes(server: PptdRouteHost, _ctx?: ApiContex
       }
       if (method === 'GET' && route === '/project') {
         return json(res, 200, await readProjectTree(root, store.getSnapshot()));
+      }
+      if (method === 'GET' && route === '/project-file-preview') {
+        return json(
+          res,
+          200,
+          await readProjectFilePreview(root, url.searchParams.get('path') ?? ''),
+        );
+      }
+      if (method === 'GET' && route === '/project-file-preview/image') {
+        const image = await readProjectFileImage(
+          root,
+          url.searchParams.get('path') ?? '',
+          url.searchParams.get('revision'),
+        );
+        res.writeHead(200, {
+          'content-type': image.contentType,
+          'content-length': image.data.length,
+          etag: `"${image.revision}"`,
+        });
+        return res.end(image.data);
       }
       if (method === 'GET' && route === '/project-model') {
         await store.refreshExternal();

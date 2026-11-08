@@ -3,6 +3,7 @@ import { useHuandengLocale } from '@/lib/huandeng-locale';
 import { ThemeToggle } from '../theme-toggle';
 import { Button } from '../ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '../ui/dialog';
+import { FontLibrary } from './font-library';
 import { HuandengLanguageMenu } from './language-menu';
 import { SnappingToggle } from './snapping-toggle';
 
@@ -80,6 +81,7 @@ export function WorkspaceSettings({
             <kbd className="ml-auto text-xs text-muted-foreground">F1</kbd>
           </Button>
         </section>
+        <FontLibrary />
         <section className="flex items-center gap-3 border-t pt-4">
           <h3 className="flex-1 text-sm font-semibold">{t('Appearance and language')}</h3>
           <HuandengLanguageMenu />

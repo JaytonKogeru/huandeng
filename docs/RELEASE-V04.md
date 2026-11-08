@@ -50,9 +50,9 @@ Receipts preserve the source actually tested. Project UI validation used the rec
 
 The real project contains 1,089 native editable content objects, 262 original asset images, and 100 object-image fallbacks (97 complex text objects and three special line paths). Its charts were already pictures; it does not establish native chart or formula coverage. The separate synthetic Office fixture establishes those capabilities. All 970 files read from the original research project retained their SHA-256 hashes. No research content or screenshots are committed to Git.
 
-Final PDF SHA-256: `255fb404ccf07fc6648c3080ccb7993f4ba6a4c17058fc34ef62922bbc24a807`.
+Final PDF SHA-256: retained in the private local verification receipt.
 
-Final PPTX SHA-256: `5d13ad41297f71f05acffb7d1838880c23c82b24a0edc532ea23443dff322e43`.
+Final PPTX SHA-256: retained in the private local verification receipt.
 
 Actual validation found and fixed cold scientific-component reloads, a blank trailing PDF page, native chart zero values and Office XML compatibility, formula spacing and accents, background contamination of fallback images, and clipped text on two real slides. The final artifact was re-exported and rechecked after these fixes.
 

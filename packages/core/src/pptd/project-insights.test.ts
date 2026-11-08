@@ -70,6 +70,29 @@ describe('project relationships and occurrence identity', () => {
 });
 
 describe('agent Story briefing', () => {
+  it('exposes a first-Slide Section and its current appended members to Agent context', () => {
+    const snapshot = insightFixture();
+    const section = snapshot.metadata.project?.sections[0];
+    if (!section) throw new Error('Missing fixture Section');
+    section.startPageId = 'evidence';
+    const appended = structuredClone(snapshot.pages[2]);
+    appended.pageId = 'appendix';
+    appended.path = 'pages/appendix.page';
+    appended.shortCode = 'APP1';
+    appended.metadata = { ...appended.metadata, shortCode: 'APP1', path: appended.path };
+    snapshot.pages.push(appended);
+    snapshot.metadata.slides[appended.pageId] = appended.metadata;
+    const result = storyBriefing(snapshot, { pageId: 'appendix', presentationId: 'seminar' });
+    expect(result.section?.id).toBe('results');
+    expect(result.organization.sections[0]).toMatchObject({
+      startPageId: 'evidence',
+      pageIds: ['evidence', 'conclusion', 'appendix'],
+    });
+    expect(result.occurrence?.position).toBe(3);
+    expect(result.usedBy.map((usage) => usage.presentationId)).toEqual([null, 'talk', 'seminar']);
+    expect(section.pageIds).toEqual(['evidence', 'conclusion']);
+  });
+
   it('uses current Section range membership for an inserted slide and Agent context', () => {
     const snapshot = insightFixture();
     const section = snapshot.metadata.project?.sections[0];
