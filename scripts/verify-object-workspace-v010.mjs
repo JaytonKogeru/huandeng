@@ -418,15 +418,21 @@ async function openMenu(id) {
 
 async function chooseMenu(id, label, submenu) {
   await openMenu(id);
-  if (submenu)
-    await menu()
-      .getByRole('menuitem', { name: new RegExp(`^${submenu}(?:\\s|$)`) })
-      .hover();
-  await page
-    .getByRole('menuitem', {
-      name: new RegExp(`^${label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?:\\s|$)`),
-    })
-    .click();
+  const name = new RegExp(`^${label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}(?:\\s|$)`);
+  if (submenu) {
+    const trigger = menu().getByRole('menuitem', {
+      name: new RegExp(`^${submenu}(?:\\s|$)`),
+    });
+    await trigger.press('ArrowRight');
+    await eventually(async () => (await trigger.getAttribute('aria-expanded')) === 'true');
+    const popup = page.locator('[data-slot="context-menu-sub-content"]:visible');
+    await popup.waitFor({ state: 'visible' });
+    const action = popup.getByRole('menuitem', { name });
+    await action.waitFor({ state: 'visible' });
+    await action.press('Enter');
+  } else {
+    await menu().getByRole('menuitem', { name }).click();
+  }
   await page.locator('[data-hd-object-menu]').waitFor({ state: 'hidden' });
 }
 

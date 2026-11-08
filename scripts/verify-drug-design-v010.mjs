@@ -179,12 +179,26 @@ async function collection(id, expected) {
 }
 
 async function screenshot(name, locator = page) {
+  await foreground();
   await locator.screenshot({
     path: path.join(evidence, name),
     animations: 'disabled',
     timeout: 15000,
   });
   screenshots.push(name);
+}
+
+async function foreground() {
+  await app.evaluate(({ BrowserWindow }) => {
+    const window = BrowserWindow.getAllWindows()[0];
+    if (window.isMinimized()) window.restore();
+    window.show();
+    window.focus();
+  });
+  await page.bringToFront();
+  await eventually(async () =>
+    page.evaluate(() => document.visibilityState === 'visible' && document.hasFocus()),
+  );
 }
 
 async function renderPresentation(snapshot, capture) {
@@ -273,6 +287,8 @@ async function renderPresentation(snapshot, capture) {
 }
 
 async function pdfFromUi(snapshot, name) {
+  // Separate headless export browsers can change which native window is foregrounded.
+  await foreground();
   await collection(
     snapshot.presentationId,
     snapshot.pages.map((slide) => slide.pageId),
@@ -293,8 +309,32 @@ async function pdfFromUi(snapshot, name) {
       response.request().method() === 'POST',
     { timeout: 120000 },
   );
-  await dialog.getByRole('button', { name: /^(Start export|Export again)$/ }).click();
-  const response = await pending;
+  const observed = [];
+  const onRequest = (request) => {
+    if (new URL(request.url()).pathname === '/__pptd/export')
+      observed.push({ event: 'request', method: request.method() });
+  };
+  const onFailure = (request) => {
+    if (new URL(request.url()).pathname === '/__pptd/export')
+      observed.push({ event: 'requestfailed', failure: request.failure() });
+  };
+  page.on('request', onRequest);
+  page.on('requestfailed', onFailure);
+  // Attach rejection handling before the click, so a failed UI action leaves no orphan wait.
+  void pending.catch(() => {});
+  let response;
+  try {
+    await dialog.getByRole('button', { name: /^(Start export|Export again)$/ }).click();
+    response = await pending;
+  } catch (error) {
+    processLog.push(
+      `[export-ui] ${JSON.stringify({ presentationId: snapshot.presentationId, observed })}\n`,
+    );
+    throw error;
+  } finally {
+    page.off('request', onRequest);
+    page.off('requestfailed', onFailure);
+  }
   const result = await response.json();
   assert.ok(response.ok(), JSON.stringify(result));
   assert.equal(result.report.complete, true);

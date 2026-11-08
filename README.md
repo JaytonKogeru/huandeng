@@ -2,21 +2,21 @@
 
 让人与 Agent 在同一份幻灯文档上工作。
 
-HUANDENG Editor 基于 OpenSlide 的 React 编辑环境，使用 PPTD 文档后端。页面使用永久 ID，界面以四位随机短码显示身份，当前位置单独显示；已有 S1、S2 等别名继续兼容。内容保存在原来的独立 .page 文件中。标题、位置改变，页面身份不变。HUANDENG Story 记录全项目、章节、演讲的叙事目的，以及逐页证据角色和设计意图。HUANDENG Plugin 提供与可视化编辑器共用的 Agent 接口。
+HUANDENG Editor 基于 OpenSlide 的 React 编辑环境，使用 PPTD 文档后端。页面使用永久 ID，界面显示稳定的 Slide ID 与独立的 Position；已有 S1、S2 等别名继续兼容。内容保存在原来的独立 .page 文件中。标题、位置改变，页面身份不变。HUANDENG Story 记录全项目、章节、演讲的叙事目的，以及逐页证据角色和设计意图。HUANDENG Plugin 提供与可视化编辑器共用的 Agent 接口。
 
 ## 当前阶段
 
-当前交付版本为 **[v0.9.0：中英文编辑、智能排列与 Story Plugin](docs/RELEASE-V09.md)**。干净运行时 `17de86d` 已安装到既有正式位置，桌面和开始菜单入口继续使用，里程碑标识为 `editor-v0.9.0`。
+当前交付版本为 **[v0.10.0：完整创作与 Presentation 工作流](docs/RELEASE-V010.md)**。干净运行时 `5451319` 已安装到既有正式位置，桌面和开始菜单入口已核对，里程碑标识为 `editor-v0.10.0`。源码运行包与后续交付文档提交分别记录。
 
-本轮可从顶栏、原生菜单或欢迎页切换 English / 简体中文；语言偏好跨项目重开保留，作者正文与草稿保持原文。拖动支持边/中心与等距辅助线、组合排除、Shift 轴锁、Alt 暂停；属性面板补齐选区/整页对齐与水平/垂直均匀分布。
+English 为默认界面，中文保留核心英文术语。Project 支持可见的连续 Section、带缩略图和预览的来源选择、重复引用和保存后保留位置。右键、快捷键与 Inspector 共用格式和图层操作；Notes 可调整大小并在底部或右侧停靠；Workspace settings 管理布局、吸附和帮助。Assets 默认显示图片，支持文件保留在 Files / All files。使用用户提供的“幻”标志。
 
-项目面板的“连接 Agent”生成当前项目配置。共用 Story skill 与预览/精确应用协议贯通外部客户端，官方 DeepSeek Harness 已完成真实 Story 制作任务。Codex 配置解析、Claude manifest 校验及 ChatGPT 的已有 DC-WALT 通道分别记录验证层级，不把配置生成当作已连接。
+**Agent setup** 生成当前 Project 配置；ChatGPT 使用已有 DC-WALT 通道，没有增加反向代理、公网隧道或自动连接行为。既有 Story、共享 writer、命名版本、智能排列和点击动画继续保留。
 
-既有点击动画、逐步预演、现场回退、独立页面身份、命名版本、素材库和演讲复用继续保留。接下来优先改善创作空间、锁定/隐藏、精细图层、交互裁剪和段落，再推进独立演讲者工作区、受控媒体、实例视觉变体与原生 PPTX 动画。对照 PowerPoint 的已完成/部分/未完成项见 [综合审计](docs/AUDIT-V09.md)。
+正式 Windows 包完成 **32 / 32** 用户流程验收；Windows 单元测试 **1,028 passed + 1 platform skip**，共 1,029 项、91 个文件；TypeScript、Biome、构建及安装验证通过。日常用户配置已用 English 正常重开原有 80 页 Project，82 个受保护文件及已有用户修改保持一致，旧版 v0.9 已保留。完整范围与失败记录见 [Validation](docs/VALIDATION-V010.md)。
 
-Linux **1,006 / 1,006**；Windows **1,005 pass + 1 POSIX-only skip**，88 个测试文件；类型与 Biome 通过。最终 EXE **12 / 12** 聚焦场景、包内 Plugin doctor 和实际安装通过。普通 profile 已重开 80 页项目；旧窗口现有编排草稿先备份并正常保存，后续安装/重开的当前82源文件均保持一致。完整范围和保留的失败回执见 [Validation](docs/VALIDATION-V09.md)。
+入门见 [完整工作流](docs/WORKFLOW-V010.md)。[Drug Design 示例](examples/drug-design-v010/README.md) 包含 10 张原生可编辑 Slide、3 个 Section、10 页完整 Presentation 和 5 页 briefing；[完整 PDF](docs/evidence/v010/Drug-Design-full.pdf) 与 [briefing PDF](docs/evidence/v010/Drug-Design-briefing.pdf) 来自正式包的 Export。
 
-v0.8 已纠正旧内存数据受到 Network 检查器响应保留影响的解释；本轮没有新增长会话性能结论。PPTX/PDF/PNG 仍输出基础静态画面，原生 PowerPoint 动画尚未实现。版本标识规则与四层 Story 见 [发布规则](docs/RELEASE-POLICY.md)、[Story 设计](docs/STORY.md)。
+PNG/PDF/PPTX 继续输出基础静态画面；独立演讲者窗口、完整 PPTX 往返、原生 PowerPoint 动画和插件市场仍是单独能力。本轮没有新增长时间高清负载性能结论。设计取舍见 [Audit](docs/AUDIT-V010.md)，版本标识规则见 [发布规则](docs/RELEASE-POLICY.md)。
 
 ## 启动桌面编辑器
 
@@ -51,49 +51,51 @@ CLI 开发服务仍可单独启动：
 
 - deck.pptd 决定页序。
 - pages/*.page 保存原始内容；元素数组决定叠放顺序。
-- .huandeng/project.json 保存稳定身份、短码、兼容的 S 编号、Main Story、Sections、Presentation 编排及逐页设计注记。
+- .huandeng/project.json 保存稳定身份、Slide ID、兼容的 S 编号、Main Story、Sections、Presentation 编排及逐页设计注记。
 - .huandeng/checkpoints/ 与 media/.huandeng-versions/ 保存命名页面版本及其素材，随项目目录迁移。
 - media/、assets/ 保留素材。
 - Exports/ 保存当前交付文件及导出报告。
 - 操作历史、恢复日志和写入锁位于本机应用数据目录。它们不复制整套活动 deck。
 
-打开可写文档会初始化缺失的身份文件；不会仅因打开而重写旧页面。普通文本或位置修改只保存目标页面。删除页面保留可恢复文件和短码；复制页面会分配新的身份。
+打开可写文档会初始化缺失的身份文件；不会仅因打开而重写旧页面。普通文本或位置修改只保存目标页面。删除页面保留可恢复文件和 Slide ID；复制页面会分配新的身份。
 
 GUI、CLI 和 MCP 使用同一个本地文档服务。请求携带读取时的版本；旧请求会报冲突，不自动覆盖新内容。任意外部程序直接写文件不属于这个协作协议；同一页有未保存草稿时，编辑器会保留草稿并提示冲突。
 
 缩略图右键“查看历史版本”，输入名称并点击“记录页面版本”，才生成正式页面版本。普通拖动、改字仅自动保存工作稿；操作记录在单独标签中。命名版本保存当时的本地图片与有效主题，恢复只影响本页，不覆盖其他页面共享素材；项目整体复制后仍可恢复。
 
-## Main Slides 与多个演讲
+## Main Slides、Section 与 Presentation
 
-每个项目只有一份主幻灯片库（Main Slides）。左侧“项目与故事”可建立章节，并创建多个演讲幻灯片集合（Presentation Slides），按自己的顺序引用整节或单页。同一页可重复使用，每次出现可写不同备注。默认跟随主库更新；选择命名版本后，演讲中的该页固定为只读旧版。
+每个 Project 有一份 Main Slides 库。在 Project 中创建 Section，选择 Start Position / End Position，再 Set range 并 Save Project。范围按 Main 页序解析，内部保留稳定边界 ID；旧式成员列表需明确转换。创建 Presentation 后用 Add slides or Sections 按缩略图、标题和悬停/聚焦预览选择来源。每个 Presentation 按自己的顺序引用整个 Section 或单页；同一页可重复使用，每次可写不同备注。默认跟随 Main 更新，命名版本可固定为只读旧版。
 
-项目概览可以直接进入主库的各场衍生演讲，当前页的使用位置能跳到准确的那一次出现。`pageId`/短码表示页面内容，`occurrenceId` 表示某次引用，当前位置随编排改变。显式单页引用可以分别设置讲稿和固定版本；整章动态引用需要先“拆为独立页面引用”再逐页设置。
+项目概览可以直接进入主库的各场衍生演讲，当前页的使用位置能跳到准确的那一次出现。`pageId`/Slide ID表示页面内容，`occurrenceId` 表示某次引用，当前位置随编排改变。显式单页引用可以分别设置讲稿和固定版本；整章动态引用需要先“拆为独立页面引用”再逐页设置。
 
-在顶部“当前演讲集合”切换主幻灯片或某场演讲。预览、放映与导出使用所选集合。缺少引用或项目编排有未保存草稿时，会阻止不完整交付。编排使用显式“保存项目”；页面内容仍自动保存。详见 [项目与演讲指南](docs/PROJECTS.md)。
+在顶部 collection 选择器切换 Main Slides 或 Presentation。预览、放映与导出使用所选集合。缺少引用或项目编排有未保存草稿时，会阻止不完整交付。编排使用显式 Save Project；保存同一 collection 保留当前 Slide 和 occurrence。页面内容继续自动保存，Save slides / Ctrl+S 可主动保存页面编辑。详见 [项目与演讲指南](docs/PROJECTS.md)。
 
 ## 画布编辑
 
 文字、形状和线条先选择工具，再在画布点击或拖拽放置。点击采用默认尺寸，拖拽决定大小；形状菜单提供现有全部种类。Shift 约束形状比例和线条方向，Esc 取消插入。文字放置后自动进入编辑；V / T / R / L 分别切换选择、文字、矩形、线条，输入文字时不会触发画布快捷键。
 
-缩略图分别显示当前页序和稳定短码。可搜索短码、旧 S 编号或标题，右键“复制页面短码”用于定位与沟通。对象新增和删除的画面反馈与持久化状态分别更新；“已保存”仍以本地文档服务的确认结果为准。
+缩略图分别显示 Position 和稳定 Slide ID。可搜索 Slide ID、旧 S 编号或标题，右键 Copy Slide ID 用于定位与沟通。对象新增和删除的画面反馈与持久化状态分别更新；“已保存”仍以本地文档服务的确认结果为准。
 
-画布下方“吸附”控制智能辅助线并保存偏好。拖动按边、中心和相等空隙定位，Alt 本次暂停、Shift 锁定方向、Esc 取消。旋转对象按可见外框参与排列。右侧属性可选“所选对象 / 幻灯片”作为对齐参照；至少三个根对象时启用水平/垂直均匀分布，一次排列可用一次 Undo 撤回。
+Workspace settings 中的 Snap 控制智能辅助线并保存偏好。拖动按边、中心和相等空隙定位，Alt 本次暂停、Shift 锁定方向、Esc 取消。旋转对象按可见外框参与排列。右侧属性可选“所选对象 / 幻灯片”作为对齐参照；至少三个根对象时启用水平/垂直均匀分布，一次排列可用一次 Undo 撤回。
 
 画布 Tab / Shift+Tab 遍历顶层对象，方向键移动 1 单位、Shift 10 单位，Enter 编辑文字，Esc 返回或取消当前手势。F6 / Shift+F6 在工作区之间移动，F1 查看帮助；缩略图支持方向键和 Home/End。文字、表格和属性输入继续保留自己的键盘语义。
+
+对象右键提供 B/I/U、字号、颜色、Bring forward / Send backward / Bring to front / Send to back 等常用操作，并与快捷键和 Undo 共用实现。完整属性在 Inspector 的 Properties；Layers、Story、Checks 分页展示并保留输入草稿。Notes 从工具栏打开，可拖动边缘改变大小并在底部/右侧停靠；左右侧栏在各自边缘收起、展开和调整宽度。
 
 文件长期被占用而导致保存未完成时，界面保留本地草稿并显示“恢复未完成保存”。解除文件占用后可在当前窗口恢复，原请求确认后继续保存后续输入，再正常关闭或切换项目。如果文件或保存记录与预期不一致，恢复会停止，保留现场；可先“复制待保存页面”并检查恢复详情。该操作不会强行覆盖外部内容。
 
 ## 素材、演讲步骤与检查
 
-左侧及工具栏“素材”进入同一素材库，索引项目 media/assets 和当前引用，支持原文件名搜索、预览、使用位置、定位和复用。“从设备导入”与“导入并放置”把选择的图片添加到当前页，拖放和粘贴继续可用。缺图可通过“重新选择这处图片”修复，保留对象位置、裁切和其他属性；原素材与命名版本不被覆盖。“未使用”仅指当前 Main 未引用，不是可安全删除的判断。
+左侧 Assets 是统一素材库，索引 Project media/assets 和当前引用，支持原文件名搜索、预览、使用位置、定位和复用。默认只显示可放置的图片，JSON/Python 等支持文件保留在 Files / All files。画布 Image 工具提供直接导入入口。“从设备导入”与“导入并放置”把选择的图片添加到当前页，拖放和粘贴继续可用。缺图可通过“重新选择这处图片”修复，保留对象位置、裁切和其他属性；原素材与命名版本不被覆盖。“未使用”仅指当前 Main 未引用，不是可安全删除的判断。
 
-选中对象后打开画布下方“动画”，添加效果并用“单击时”“与上一项同时”“上一项之后”组织演讲步骤。多选默认同次播放，时长/延迟用秒，移动为相对距离；“逐步预演”收起作者控件并展示真实开场，返回后恢复输入。新步骤可以明确转换到高级关键帧时间线，旧 v1 文档沿用原编辑方式；两种模式都参与保存、Undo/Redo、复制和命名版本。
+选中对象后打开画布工具栏的 Animation，添加效果并用“单击时”“与上一项同时”“上一项之后”组织演讲步骤。多选默认同次播放，时长/延迟用秒，移动为相对距离；“逐步预演”收起作者控件并展示真实开场，返回后恢复输入。新步骤可以明确转换到高级关键帧时间线，旧 v1 文档沿用原编辑方式；两种模式都参与保存、Undo/Redo、复制和命名版本。
 
 F5 从序列开头放映，Shift+F5 从当前页放映。画面点击、Enter、空格和前进键播放下一步，播放中再前进完成本步，本页完成后再换页。后退可回前一步或上一页末态；F 切换全屏，B/句点黑屏暂停，Esc 退出，F1 查看帮助。每页可选淡化换页。备注/下一页仍在同一窗口，独立双屏尚未完成。
 
 PNG/PDF/PPTX 输出基础静态版式，原生 PowerPoint 动画尚未实现。已有 MP4 输出保留，提供 720p/1080p、24/30fps、静页/末态/步骤停留、进度和取消，无音轨和页面转场；需要带 libx264 的 FFmpeg。GIF 等素材在放映中仍自主播放，尚未与步骤时钟统一；视频输出会明确拒绝自主动画素材。操作和边界见 [动画指南](docs/ANIMATION.md)。
 
-右侧技术检查可按需核对本机字体与有效回退，并测量文字、公式、表格的局部内容范围。结果可以定位到对象，文档改变后显示过期状态；不会自动缩字或重排。它不代替 Office 的最终排版验证。
+Inspector 的 Checks 可按需核对本机字体与有效回退，并测量文字、公式、表格的局部内容范围。结果可以定位到对象，文档改变后显示过期状态；不会自动缩字或重排。它不代替 Office 的最终排版验证。
 
 ## Agent 使用
 
@@ -110,7 +112,7 @@ PNG/PDF/PPTX 输出基础静态版式，原生 PowerPoint 动画尚未实现。�
 
 事务 JSON 使用 inspect 实际返回的 deckId、pageId 和版本。请求结构见 docs/SPEC.md。一个请求 ID 只对应一次确定的修改，重试时保持请求 ID 和全部内容相同。版本冲突后重新读取和检查差异。页序或身份/组件元数据变化也必须提供相应 manifest/metadata 版本。
 
-在项目面板或原生菜单打开“连接 Agent”，选择 Codex、Claude Code、DeepSeek Harness 或 ChatGPT 工作站通道，复制当前项目配置。正式包携带 Plugin 及运行时，使用安装程序自身 Electron Node 模式。配置生成不覆盖客户端设置，也不表示已经连接。
+在 Project 面板或原生菜单打开 Agent setup，选择 Codex、Claude Code、DeepSeek Harness 或 ChatGPT 工作站通道，复制当前项目配置。正式包携带 Plugin 及运行时，使用安装程序自身 Electron Node 模式。配置生成不覆盖客户端设置，也不表示已经连接。
 
 MCP 现有 **18 个工具、2 个 Story/operations 指南资源**。Agent 先读 selection 与四层 Story briefing，结合邻页、实例备注、固定版本和素材形成计划，再用只读 preview 查看字段/文件/复用影响。按当前任务授权应用相同 payload，可用 previewHash 绑定内容；共享 writer 继续检查 CAS 与幂等请求。保存后回读、渲染并检查实际讲解顺序。hash 不能替代用户授权。
 
@@ -130,7 +132,7 @@ MCP 现有 **18 个工具、2 个 Story/operations 指南资源**。Agent 先读
     corepack pnpm exec vitest run --project unit
     corepack pnpm check
 
-完整产品规划见 [Master SPEC](docs/SPEC.md)，当前增量见 [SPEC-V09](docs/SPEC-V09.md)，逐项状态见 [综合审计](docs/AUDIT-V09.md)。历史验收见 [v0.4](docs/RELEASE-V04.md)、[v0.5](docs/RELEASE-V05.md)、[v0.6](docs/RELEASE-V06.md)、[v0.7](docs/RELEASE-V07.md)，[v0.8](docs/RELEASE-V08.md)，本轮见 [v0.9 发布记录](docs/RELEASE-V09.md)。工程接续入口是 [WEBCHAT.md](WEBCHAT.md)。
+完整产品规划见 [Master SPEC](docs/SPEC.md)，当前增量见 [SPEC-V010](docs/SPEC-V010.md)，逐项状态见 [本轮审计](docs/AUDIT-V010.md)。历史验收见 [v0.4](docs/RELEASE-V04.md)、[v0.5](docs/RELEASE-V05.md)、[v0.6](docs/RELEASE-V06.md)、[v0.7](docs/RELEASE-V07.md)，[v0.8](docs/RELEASE-V08.md)，[v0.9](docs/RELEASE-V09.md)，本轮见 [v0.10 发布记录](docs/RELEASE-V010.md)。工程接续入口是 [WEBCHAT.md](WEBCHAT.md)。
 
 里程碑运行单元测试、类型和格式检查，并检查实际构建与安装。桌面、科研对象、原生 PowerPoint 和真实科研项目副本的场景按具体变更风险选择，不在每次开发中重复全部压力矩阵。日常小修改只重复能够验证相应风险的检查。
 

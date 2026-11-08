@@ -1,0 +1,573 @@
+{
+  "schemaVersion": 1,
+  "stage": "packaged-application-acceptance",
+  "passed": true,
+  "curatedAt": "2026-11-08T07:16:40.765647+00:00",
+  "identity": {
+    "product": "HUANDENG Editor",
+    "productVersion": "0.10.0",
+    "desktopProtocol": 1,
+    "electronVersion": "38.7.2",
+    "nodeLinker": "hoisted",
+    "sourceRevision": "54513193b5e8004d51815265b75d99e6425cfba1",
+    "sourceDirty": false,
+    "builtAt": "2026-11-08T06:50:30.6528822Z"
+  },
+  "totalChecks": 32,
+  "suites": {
+    "workflow": {
+      "passed": true,
+      "sourceReceiptSha256": "04691eda537d75dcc83f434995ddac2bb402598fca80c77465e522226ad7f291",
+      "identity": {
+        "product": "HUANDENG Editor",
+        "productVersion": "0.10.0",
+        "desktopProtocol": 1,
+        "electronVersion": "38.7.2",
+        "nodeLinker": "hoisted",
+        "sourceRevision": "54513193b5e8004d51815265b75d99e6425cfba1",
+        "sourceDirty": false,
+        "builtAt": "2026-11-08T06:50:30.6528822Z"
+      },
+      "checkCount": 7,
+      "checks": [
+        {
+          "name": "Welcome creates a new writable Project through its real New Project button",
+          "passed": true,
+          "milliseconds": 5602
+        },
+        {
+          "name": "the Pages UI adds two Main Slides and retains their saved identities",
+          "passed": true,
+          "milliseconds": 861
+        },
+        {
+          "name": "Section Start and End Positions save a continuous range without moving the current Main Slide",
+          "passed": true,
+          "milliseconds": 689
+        },
+        {
+          "name": "a new Presentation offers visual previews, individual slides, a Section and repeated slides",
+          "passed": true,
+          "milliseconds": 1111
+        },
+        {
+          "name": "reorder and remove change the arrangement, then saving preserves the selected repeated occurrence",
+          "passed": true,
+          "milliseconds": 975
+        },
+        {
+          "name": "normal and compact windows show the same saved Project without document overflow",
+          "passed": true,
+          "milliseconds": 350
+        },
+        {
+          "name": "normal close and Welcome Open Project restore saved Sections and the repeated Presentation",
+          "passed": true,
+          "milliseconds": 5929
+        }
+      ],
+      "rendererErrorCount": 0,
+      "exits": [
+        {
+          "launch": 1,
+          "code": 0,
+          "signal": null
+        },
+        {
+          "launch": 2,
+          "code": 0,
+          "signal": null
+        }
+      ],
+      "layouts": [
+        {
+          "width": 1280,
+          "scrollWidth": 1280,
+          "bodyWidth": 1280,
+          "canvas": true
+        },
+        {
+          "width": 1040,
+          "scrollWidth": 1040,
+          "bodyWidth": 1040,
+          "canvas": true
+        }
+      ]
+    },
+    "objects": {
+      "passed": true,
+      "sourceReceiptSha256": "0e230fe71d7f28456f1f00bbff6d498b4286feb7b72670bdc4a9899b7428fdea",
+      "identity": {
+        "product": "HUANDENG Editor",
+        "productVersion": "0.10.0",
+        "desktopProtocol": 1,
+        "electronVersion": "38.7.2",
+        "nodeLinker": "hoisted",
+        "sourceRevision": "54513193b5e8004d51815265b75d99e6425cfba1",
+        "sourceDirty": false,
+        "builtAt": "2026-11-08T06:50:30.6528822Z"
+      },
+      "checkCount": 17,
+      "checks": [
+        {
+          "name": "fresh profile defaults to English and keeps document text verbatim",
+          "passed": true,
+          "milliseconds": 4892
+        },
+        {
+          "name": "right-click image selects it, exposes object actions and focuses Properties",
+          "passed": true,
+          "milliseconds": 726
+        },
+        {
+          "name": "Bold Italic Underline use the same menu, keyboard and Undo/Redo state",
+          "passed": true,
+          "milliseconds": 4205
+        },
+        {
+          "name": "text size uses effective page theme and color menu changes rendered text",
+          "passed": true,
+          "milliseconds": 2128
+        },
+        {
+          "name": "right-click preserves multiselection and keyboard menu returns canvas focus",
+          "passed": true,
+          "milliseconds": 1255
+        },
+        {
+          "name": "all four image layer commands match keyboard actions and preserve source",
+          "passed": true,
+          "milliseconds": 3959
+        },
+        {
+          "name": "Inspector tabs retain unsaved Story and chart drafts without document writes",
+          "passed": true,
+          "milliseconds": 1283
+        },
+        {
+          "name": "Notes resize, dock and preserve content while text inputs keep shortcut ownership",
+          "passed": true,
+          "milliseconds": 2138
+        },
+        {
+          "name": "Assets defaults to images and supporting JSON/Python remain accessible in All files and Files",
+          "passed": true,
+          "milliseconds": 804
+        },
+        {
+          "name": "image reuse and import place real editable objects and Undo restores the slide",
+          "passed": true,
+          "milliseconds": 1111
+        },
+        {
+          "name": "dragging a library image onto the slide places it through the editor",
+          "passed": true,
+          "milliseconds": 433
+        },
+        {
+          "name": "panel edges collapse and resize; layout survives normal close and reopen",
+          "passed": true,
+          "milliseconds": 5745
+        },
+        {
+          "name": "closing immediately after a Notes layout change preserves the latest dock and size",
+          "passed": true,
+          "milliseconds": 4804
+        },
+        {
+          "name": "Settings resets layout and makes keyboard help available",
+          "passed": true,
+          "milliseconds": 1385
+        },
+        {
+          "name": "Chinese is optional and keeps Project, Pages, Assets, Files and core nouns in English",
+          "passed": true,
+          "milliseconds": 1897
+        },
+        {
+          "name": "Agent setup explains configuration and the existing DC-WALT path without starting an Agent",
+          "passed": true,
+          "milliseconds": 1055
+        },
+        {
+          "name": "final document remains readable and the isolated candidate closes normally",
+          "passed": true,
+          "milliseconds": 900
+        }
+      ],
+      "rendererErrorCount": 0,
+      "exits": [
+        {
+          "launch": 1,
+          "code": 0,
+          "signal": null
+        },
+        {
+          "launch": 2,
+          "code": 0,
+          "signal": null
+        },
+        {
+          "launch": 3,
+          "code": 0,
+          "signal": null
+        }
+      ],
+      "layouts": [
+        {
+          "label": "Resize Notes height",
+          "before": 160,
+          "after": 232
+        },
+        {
+          "label": "Resize Notes width",
+          "before": 320,
+          "after": 384
+        },
+        {
+          "label": "Resize Project navigation",
+          "before": 288,
+          "after": 336
+        },
+        {
+          "label": "Resize Inspector",
+          "before": 300,
+          "after": 348
+        },
+        {
+          "restored": {
+            "notesDock": "right",
+            "notesHeight": 248,
+            "notesWidth": 384,
+            "navigationWidth": 336,
+            "inspectorWidth": 348,
+            "notesOpen": true,
+            "navigationCollapsed": false,
+            "inspectorCollapsed": false
+          }
+        }
+      ]
+    },
+    "drug": {
+      "passed": true,
+      "sourceReceiptSha256": "41c22ccf5b56fd067e6df9eedf1917417be8f8e2e40995ac0a129b9a71f8a85f",
+      "identity": {
+        "product": "HUANDENG Editor",
+        "productVersion": "0.10.0",
+        "desktopProtocol": 1,
+        "electronVersion": "38.7.2",
+        "nodeLinker": "hoisted",
+        "sourceRevision": "54513193b5e8004d51815265b75d99e6425cfba1",
+        "sourceDirty": false,
+        "builtAt": "2026-11-08T06:50:30.6528822Z"
+      },
+      "checkCount": 8,
+      "checks": [
+        {
+          "name": "fresh profile opens the native example in English",
+          "passed": true,
+          "milliseconds": 4810
+        },
+        {
+          "name": "saved Presentations resolve ten and five stable Main Slide references",
+          "passed": true,
+          "milliseconds": 53
+        },
+        {
+          "name": "all ten slides present in order with readable native objects and source notes",
+          "passed": true,
+          "milliseconds": 4955
+        },
+        {
+          "name": "the five-slide briefing follows its own order using the same slides",
+          "passed": true,
+          "milliseconds": 785
+        },
+        {
+          "name": "native renderer exports ten complete PNG pages",
+          "passed": true,
+          "milliseconds": 34395
+        },
+        {
+          "name": "the Export dialog delivers PDFs for the ten-slide and five-slide collections",
+          "passed": true,
+          "milliseconds": 9042
+        },
+        {
+          "name": "browsing and export leave canonical pages and project structure unchanged",
+          "passed": true,
+          "milliseconds": 221
+        },
+        {
+          "name": "the saved project and both Presentations survive normal close and reopen",
+          "passed": true,
+          "milliseconds": 5615
+        }
+      ],
+      "rendererErrorCount": 0,
+      "exits": [
+        {
+          "launch": 1,
+          "code": 0,
+          "signal": null
+        },
+        {
+          "launch": 2,
+          "code": 0,
+          "signal": null
+        }
+      ],
+      "layouts": [
+        {
+          "shortCode": "DD01",
+          "width": 1600,
+          "height": 900,
+          "overflow": []
+        },
+        {
+          "shortCode": "DD02",
+          "width": 1600,
+          "height": 900,
+          "overflow": []
+        },
+        {
+          "shortCode": "DD03",
+          "width": 1600,
+          "height": 900,
+          "overflow": []
+        },
+        {
+          "shortCode": "DD04",
+          "width": 1600,
+          "height": 900,
+          "overflow": []
+        },
+        {
+          "shortCode": "DD05",
+          "width": 1600,
+          "height": 900,
+          "overflow": []
+        },
+        {
+          "shortCode": "DD06",
+          "width": 1600,
+          "height": 900,
+          "overflow": []
+        },
+        {
+          "shortCode": "DD07",
+          "width": 1600,
+          "height": 900,
+          "overflow": []
+        },
+        {
+          "shortCode": "DD08",
+          "width": 1600,
+          "height": 900,
+          "overflow": []
+        },
+        {
+          "shortCode": "DD09",
+          "width": 1600,
+          "height": 900,
+          "overflow": []
+        },
+        {
+          "shortCode": "DD10",
+          "width": 1600,
+          "height": 900,
+          "overflow": []
+        }
+      ]
+    }
+  },
+  "exportedPngPageCount": 10,
+  "exports": [
+    {
+      "format": "pdf",
+      "presentationId": "drug-design-overview",
+      "pages": 10,
+      "complete": true,
+      "file": "Drug-Design-full.pdf"
+    },
+    {
+      "format": "pdf",
+      "presentationId": "drug-design-briefing",
+      "pages": 5,
+      "complete": true,
+      "file": "Drug-Design-briefing.pdf"
+    }
+  ],
+  "canonicalUnchangedChecks": [
+    {
+      "suite": "drug",
+      "name": "browsing and export leave canonical pages and project structure unchanged",
+      "passed": true
+    },
+    {
+      "suite": "installation",
+      "name": "originalsUnchangedAfterClose",
+      "passed": true
+    },
+    {
+      "suite": "installation",
+      "name": "fixtureUnchanged",
+      "passed": true
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "workflow-source-preview.png",
+      "kind": "screenshot",
+      "suite": "workflow",
+      "bytes": 100398,
+      "sha256": "33f2541dc18405a3152da5cd7832a0c670ae8d53aa259082bdf63d74bd6a58dd"
+    },
+    {
+      "file": "workflow-1040.png",
+      "kind": "screenshot",
+      "suite": "workflow",
+      "bytes": 101144,
+      "sha256": "73b118d4605dff77a208a4ffcd9c1ca90bfd379775ebe2a323a58f9716db0580"
+    },
+    {
+      "file": "object-menu.png",
+      "kind": "screenshot",
+      "suite": "objects",
+      "bytes": 113795,
+      "sha256": "e6ee9574fde6b4a723509d2a668aeb00ccdaa11c9b5d390f48ec9e339366c084"
+    },
+    {
+      "file": "notes-right.png",
+      "kind": "screenshot",
+      "suite": "objects",
+      "bytes": 83379,
+      "sha256": "5ac74677b0e8d856f01ac55fe539f936252e677eec76b7d850acf9136aa3bca6"
+    },
+    {
+      "file": "object-workspace.png",
+      "kind": "screenshot",
+      "suite": "objects",
+      "bytes": 140233,
+      "sha256": "f29b7458f87b52123c4d46a6ce365ab9a50e44f191ce7f801a0cb39a7b104526"
+    },
+    {
+      "file": "drug-editor.png",
+      "kind": "screenshot",
+      "suite": "drug",
+      "bytes": 124097,
+      "sha256": "db9aa9616d338407b8562f03ab560f1224c38b506c733b5e2569da67baf85573"
+    },
+    {
+      "file": "drug-first-slide.png",
+      "kind": "native-png-export",
+      "suite": "drug",
+      "bytes": 70569,
+      "sha256": "8f0193fbc75ceae462d4da31061113f531cf2cc0bf1dc4d6c3fe936a378eb315"
+    },
+    {
+      "file": "drug-tool-map.png",
+      "kind": "native-png-export",
+      "suite": "drug",
+      "bytes": 125643,
+      "sha256": "9e3abf2177e0809b738832d19945e8120bf130784eda4dd57d3c44fd56cc3a85"
+    },
+    {
+      "file": "drug-evidence.png",
+      "kind": "native-png-export",
+      "suite": "drug",
+      "bytes": 149617,
+      "sha256": "397a88f15a5cc5e27652be90436ecccabd07f54c3f178a5fd428e0a53339d392"
+    },
+    {
+      "file": "drug-presenter-sources.png",
+      "kind": "screenshot",
+      "suite": "drug",
+      "bytes": 114081,
+      "sha256": "6d2d57c93ff5158fe1de0dce3f1b3f8dcfa3e86567291b269e5b2b73127e660c"
+    },
+    {
+      "file": "Drug-Design-full.pdf",
+      "kind": "pdf",
+      "suite": "drug",
+      "bytes": 71631,
+      "sha256": "43ecc9f2b515001b93884e4c90ab917f13d86e8d27d27077f83111014ca9c478",
+      "pages": 10
+    },
+    {
+      "file": "Drug-Design-briefing.pdf",
+      "kind": "pdf",
+      "suite": "drug",
+      "bytes": 61012,
+      "sha256": "a61018b59792b76fc09e86cf4ca676391d53fa6450fa51ba166c53686554fba1",
+      "pages": 5
+    }
+  ],
+  "scope": "Synthetic workflow and object fixtures plus the authored public Drug Design example. Raw user Project content, paths, source hashes and screenshots are excluded.",
+  "visualReview": {
+    "reviewedBy": "release lead",
+    "development": "All ten authored Drug Design slides inspected as rendered pixels.",
+    "packaged": "Source preview and compact workspace, object workspace and Notes, representative native PNG renders, and ordinary-profile installed window inspected.",
+    "userScreensPublished": false
+  },
+  "installation": {
+    "passed": true,
+    "sourceReceiptSha256": "01c774398f25898976bd4589003be90d8ac9d447cebabbd97ac08fadc7be6e5e",
+    "identity": {
+      "product": "HUANDENG Editor",
+      "productVersion": "0.10.0",
+      "desktopProtocol": 1,
+      "electronVersion": "38.7.2",
+      "nodeLinker": "hoisted",
+      "sourceRevision": "54513193b5e8004d51815265b75d99e6425cfba1",
+      "sourceDirty": false,
+      "builtAt": "2026-11-08T06:50:30.6528822Z"
+    },
+    "originalsUnchangedAfterClose": true,
+    "fixtureUnchanged": true,
+    "installedManifestMatchesCandidate": true,
+    "previousVersionPreserved": true,
+    "windowLeftOpen": true,
+    "originalFilesChecked": 82,
+    "verifiedShortcutCount": 2,
+    "ordinaryProfileReopen": {
+      "writable": true,
+      "productionFrontend": true,
+      "frontendBytesMatchPackage": true,
+      "respondingNativeWindow": true,
+      "serviceParentVerified": true,
+      "packagedServiceVerified": true,
+      "ordinaryProfileVerified": true,
+      "pages": 80,
+      "diagnostics": 0,
+      "localePreference": "en"
+    },
+    "ordinaryPreferenceUpdate": {
+      "changedField": "uiLocale",
+      "locale": "en",
+      "allOtherFieldsPreserved": true
+    },
+    "packageFiles": 29214,
+    "packageBytes": 685392219,
+    "normalCloseChangedFiles": 0
+  },
+  "sourceChecks": {
+    "unit": {
+      "passed": true,
+      "logSha256": "4788a5e62670aa6901b6bb2d472f500c2393d3d8b8fa83d46f1b1378918f29a5",
+      "testsPassed": 1028,
+      "testsSkipped": 1,
+      "totalTests": 1029,
+      "files": 91
+    },
+    "biome": {
+      "passed": true,
+      "logSha256": "41014ee3e618c7d6489617feee018ca4405d758a3a6c7820710a3ed7eab35cd4",
+      "files": 718
+    },
+    "typescript": {
+      "passed": true,
+      "logSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+}
