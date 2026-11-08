@@ -837,6 +837,18 @@ try {
       await page.getByRole('button', { name: 'Project files', exact: true }).click();
       await page.locator('[data-hd-project-file="media/source.json"]').waitFor();
       await page.locator('[data-hd-project-file="media/analysis.py"]').click();
+      const preview = page.locator('[data-hd-file-preview="media/analysis.py"]');
+      const source = preview.locator('[data-hd-file-text]');
+      await source.waitFor();
+      assert.equal(
+        await source.inputValue(),
+        'print("synthetic supporting script; never executed")\n',
+      );
+      assert.equal(await source.getAttribute('readonly'), '');
+      assert.equal(await inspector().isVisible(), false);
+      await preview.getByRole('button', { name: 'Close file preview', exact: true }).click();
+      await preview.waitFor({ state: 'detached' });
+      await inspector().waitFor({ state: 'visible' });
       assert.deepEqual(await signature(), before);
     },
   );
