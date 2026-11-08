@@ -1,8 +1,10 @@
 import { readPinnedPresentationPage } from './presentation-snapshot';
 import {
+  type ProjectSection,
   type ResolvedPresentation,
   readProjectModel,
   resolvePresentation,
+  resolveProjectSections,
   type StoryOutline,
 } from './project-model';
 import {
@@ -127,7 +129,7 @@ export interface StoryBriefing {
   scope: 'project' | 'presentation' | 'page';
   main: { title: string; story: StoryOutline };
   organization: {
-    sections: { id: string; title: string; story: StoryOutline; pageIds: string[] }[];
+    sections: ProjectSection[];
     presentations: Omit<PresentationSummary, 'occurrences' | 'diagnostics'>[];
   };
   section: { id: string; title: string; story: StoryOutline } | null;
@@ -275,14 +277,27 @@ export function storyBriefing(
         'Read this pinned occurrence through presentationSnapshot before building its Story briefing.',
       );
   }
+  const sections = resolveProjectSections(snapshot, project);
   const section = page
-    ? project.sections.find((entry) => entry.pageIds.includes(page.pageId))
+    ? sections.find((entry) => entry.pageIds.includes(page.pageId))?.section
     : undefined;
   const presentation = project.presentations.find((entry) => entry.id === presentationId);
   const position = occurrence
     ? sequence.findIndex((entry) => entry.occurrenceId === occurrence.occurrenceId)
     : -1;
   const insights = projectInsights(snapshot);
+  const sectionDiagnostics = sections
+    .filter((entry) => (page ? entry.pageIds.includes(page.pageId) : !presentation))
+    .flatMap((entry) => entry.diagnostics)
+    .filter(
+      (diagnostic, index, all) =>
+        all.findIndex(
+          (item) => item.code === diagnostic.code && item.message === diagnostic.message,
+        ) === index &&
+        !resolved.diagnostics.some(
+          (item) => item.code === diagnostic.code && item.message === diagnostic.message,
+        ),
+    );
   return structuredClone({
     deckId: snapshot.deckId,
     title: snapshot.title,
@@ -290,7 +305,7 @@ export function storyBriefing(
     scope: page ? 'page' : presentation ? 'presentation' : 'project',
     main: { title: snapshot.title, story: project.mainStory },
     organization: {
-      sections: project.sections,
+      sections: sections.map((entry) => ({ ...entry.section, pageIds: entry.pageIds })),
       presentations: insights.presentations.map(
         ({ occurrences: _occurrences, diagnostics: _diagnostics, ...summary }) => summary,
       ),
@@ -342,6 +357,7 @@ export function storyBriefing(
         (diagnostic) => !page || !diagnostic.pageId || diagnostic.pageId === page.pageId,
       ),
       ...resolved.diagnostics,
+      ...sectionDiagnostics,
     ],
   } satisfies StoryBriefing);
 }

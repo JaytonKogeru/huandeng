@@ -1,0 +1,83 @@
+{
+  "title": "Drug Design",
+  "background": {
+    "type": "solid",
+    "color": "#172C3B"
+  },
+  "elements": [
+    {
+      "elementId": "title",
+      "elementType": "text",
+      "bounds": [
+        56,
+        66,
+        610,
+        180
+      ],
+      "content": {
+        "text": "Drug\nDesign",
+        "fontFamily": "Arial",
+        "fontSize": 77,
+        "lineHeight": 1.02,
+        "color": "#FFFFFF",
+        "bold": true
+      }
+    },
+    {
+      "elementId": "subtitle",
+      "elementType": "text",
+      "bounds": [
+        61,
+        286,
+        760,
+        82
+      ],
+      "content": {
+        "text": "How a designed molecule becomes\na useful candidate",
+        "fontFamily": "Arial",
+        "fontSize": 31,
+        "lineHeight": 1.18,
+        "color": "#D8E8EC"
+      }
+    },
+    {
+      "elementId": "formats",
+      "elementType": "text",
+      "bounds": [
+        61,
+        438,
+        786,
+        35
+      ],
+      "content": {
+        "text": "Small molecules, protein binders and antibodies",
+        "fontFamily": "Arial",
+        "fontSize": 20,
+        "lineHeight": 1.18,
+        "color": "#A8C8CE"
+      }
+    },
+    {
+      "elementId": "slide-id",
+      "elementType": "text",
+      "bounds": [
+        780,
+        505,
+        132,
+        19
+      ],
+      "content": {
+        "text": "Slide ID DD01",
+        "fontFamily": "Arial",
+        "fontSize": 12,
+        "lineHeight": 1.18,
+        "color": "#BCD1DA",
+        "align": [
+          "right",
+          "middle"
+        ]
+      }
+    }
+  ],
+  "notes": "The central question is what evidence would justify the next experiment. This overview covers three molecular design routes and separates the job of each computational tool from the evidence needed for development. It is a conceptual comparison, not a benchmark or a claim that one model is universally best.\n\nSources\n[FDA] US FDA. Discovery and Development\nhttps://www.fda.gov/patients/drug-development-process/step-1-discovery-and-development\n\nSource check: 8 November 2026. Representative tools, not an exhaustive ranking."
+}

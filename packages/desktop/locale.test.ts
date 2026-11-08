@@ -14,11 +14,11 @@ describe('desktop language and preference persistence', () => {
   it('honors explicit choices over OS language and rejects unsupported values', () => {
     expect(locale.resolveLocale('en', 'zh-CN')).toBe('en');
     expect(locale.resolveLocale('zh-CN', 'en-US')).toBe('zh-CN');
-    expect(locale.resolveLocale(undefined, 'zh-TW')).toBe('zh-CN');
+    expect(locale.resolveLocale(undefined, 'zh-TW')).toBe('en');
     expect(locale.resolveLocale(undefined, 'fr-FR')).toBe('en');
     expect(() => locale.setCurrentLocale('fr')).toThrow('Unsupported');
     locale.setCurrentLocale('en');
-    expect(locale.text('连接 Agent…')).toBe('Connect an Agent…');
+    expect(locale.text('连接 Agent…')).toBe('Agent setup…');
     const file = '/projects/主幻灯片/{path}/deck.pptd';
     expect(locale.text('项目文件夹已经存在，请换一个名称：\n{path}', { path: file })).toContain(
       file,

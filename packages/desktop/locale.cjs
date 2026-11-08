@@ -1,5 +1,5 @@
 const english = {
-  '连接 Agent…': 'Connect an Agent…',
+  '连接 Agent…': 'Agent setup…',
   文件: 'File',
   '新建项目…': 'New project…',
   '打开项目…': 'Open project…',
@@ -65,11 +65,11 @@ const english = {
   '不支持此界面语言。': 'This interface language is not supported.',
   '吸附设置必须为开启或关闭。': 'The snapping setting must be on or off.',
 };
-let current = 'zh-CN';
+let current = 'en';
 
-function resolveLocale(preference, systemLocale) {
+function resolveLocale(preference, _systemLocale) {
   if (preference === 'en' || preference === 'zh-CN') return preference;
-  return typeof systemLocale === 'string' && /^zh(?:[-_]|$)/i.test(systemLocale) ? 'zh-CN' : 'en';
+  return 'en';
 }
 
 function setCurrentLocale(locale) {
@@ -82,7 +82,12 @@ function getCurrentLocale() {
 }
 
 function text(message, values) {
-  const template = current === 'en' && Object.hasOwn(english, message) ? english[message] : message;
+  const template =
+    current === 'en' && Object.hasOwn(english, message)
+      ? english[message]
+      : Object.hasOwn(english, message)
+        ? message.replace(/连接 Agent/g, 'Agent setup').replace(/项目/g, 'Project')
+        : message;
   return values
     ? template.replace(/\{(\w+)\}/g, (match, key) =>
         values[key] === undefined ? match : String(values[key]),

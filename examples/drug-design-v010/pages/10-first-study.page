@@ -1,0 +1,249 @@
+{
+  "title": "A useful first study",
+  "background": {
+    "type": "solid",
+    "color": "#F7F6F1"
+  },
+  "elements": [
+    {
+      "elementId": "title",
+      "elementType": "text",
+      "bounds": [
+        48,
+        38,
+        864,
+        58
+      ],
+      "content": {
+        "text": "A useful first study",
+        "fontFamily": "Arial",
+        "fontSize": 35,
+        "lineHeight": 1.18,
+        "color": "#172C3B",
+        "bold": true
+      }
+    },
+    {
+      "elementId": "heading-rule",
+      "elementType": "line",
+      "bounds": [
+        48,
+        112,
+        864,
+        1
+      ],
+      "viewBox": [
+        864,
+        1
+      ],
+      "points": "0,0 864,1",
+      "border": {
+        "width": 1.5,
+        "color": "#C9D5D4",
+        "style": "solid"
+      },
+      "arrow": []
+    },
+    {
+      "elementId": "closing-title",
+      "elementType": "text",
+      "bounds": [
+        48,
+        153,
+        443,
+        255
+      ],
+      "content": {
+        "text": "A reasoned choice\nof which molecule\nto develop.",
+        "fontFamily": "Arial",
+        "fontSize": 43,
+        "lineHeight": 1.13,
+        "color": "#187D80",
+        "bold": true
+      }
+    },
+    {
+      "elementId": "closing-divider",
+      "elementType": "line",
+      "bounds": [
+        527,
+        150,
+        1,
+        309
+      ],
+      "viewBox": [
+        1,
+        309
+      ],
+      "points": "0,0 1,309",
+      "border": {
+        "width": 1.5,
+        "color": "#C9D5D4",
+        "style": "solid"
+      },
+      "arrow": []
+    },
+    {
+      "elementId": "study-one",
+      "elementType": "text",
+      "bounds": [
+        568,
+        153,
+        42,
+        32
+      ],
+      "content": {
+        "text": "01",
+        "fontFamily": "Arial",
+        "fontSize": 22,
+        "lineHeight": 1.18,
+        "color": "#BB653D",
+        "bold": true
+      }
+    },
+    {
+      "elementId": "study-one-copy",
+      "elementType": "text",
+      "bounds": [
+        628,
+        151,
+        284,
+        64
+      ],
+      "content": {
+        "text": "State the mechanism\nand required properties.",
+        "fontFamily": "Arial",
+        "fontSize": 23,
+        "lineHeight": 1.18,
+        "color": "#172C3B"
+      }
+    },
+    {
+      "elementId": "study-two",
+      "elementType": "text",
+      "bounds": [
+        568,
+        238,
+        42,
+        32
+      ],
+      "content": {
+        "text": "02",
+        "fontFamily": "Arial",
+        "fontSize": 22,
+        "lineHeight": 1.18,
+        "color": "#BB653D",
+        "bold": true
+      }
+    },
+    {
+      "elementId": "study-two-copy",
+      "elementType": "text",
+      "bounds": [
+        628,
+        236,
+        284,
+        64
+      ],
+      "content": {
+        "text": "Choose a design route\nand a clear baseline.",
+        "fontFamily": "Arial",
+        "fontSize": 23,
+        "lineHeight": 1.18,
+        "color": "#172C3B"
+      }
+    },
+    {
+      "elementId": "study-three",
+      "elementType": "text",
+      "bounds": [
+        568,
+        323,
+        42,
+        32
+      ],
+      "content": {
+        "text": "03",
+        "fontFamily": "Arial",
+        "fontSize": 22,
+        "lineHeight": 1.18,
+        "color": "#BB653D",
+        "bold": true
+      }
+    },
+    {
+      "elementId": "study-three-copy",
+      "elementType": "text",
+      "bounds": [
+        628,
+        321,
+        284,
+        70
+      ],
+      "content": {
+        "text": "Build a diverse shortlist.\nCombine evidence.",
+        "fontFamily": "Arial",
+        "fontSize": 23,
+        "lineHeight": 1.18,
+        "color": "#172C3B"
+      }
+    },
+    {
+      "elementId": "study-four",
+      "elementType": "text",
+      "bounds": [
+        568,
+        412,
+        42,
+        32
+      ],
+      "content": {
+        "text": "04",
+        "fontFamily": "Arial",
+        "fontSize": 22,
+        "lineHeight": 1.18,
+        "color": "#BB653D",
+        "bold": true
+      }
+    },
+    {
+      "elementId": "study-four-copy",
+      "elementType": "text",
+      "bounds": [
+        628,
+        410,
+        284,
+        70
+      ],
+      "content": {
+        "text": "Measure binding.\nTest function. Iterate.",
+        "fontFamily": "Arial",
+        "fontSize": 23,
+        "lineHeight": 1.18,
+        "color": "#172C3B"
+      }
+    },
+    {
+      "elementId": "slide-id",
+      "elementType": "text",
+      "bounds": [
+        780,
+        505,
+        132,
+        19
+      ],
+      "content": {
+        "text": "Slide ID DD10",
+        "fontFamily": "Arial",
+        "fontSize": 12,
+        "lineHeight": 1.18,
+        "color": "#536571",
+        "align": [
+          "right",
+          "middle"
+        ]
+      }
+    }
+  ],
+  "notes": "A first study should deliver an inspectable choice of candidates and a plan for the evidence that comes next. Record model versions, molecular identities, assumptions and measured outcomes. For protein binders, a clear interaction is a useful initial goal. Therapeutic usefulness also depends on mechanism, delivery and developability. The same decision logic applies to small molecules and antibodies. This closing study plan is an author synthesis, not a prescribed experimental protocol.\n\nSources\n[FDA] US FDA. Discovery and Development\nhttps://www.fda.gov/patients/drug-development-process/step-1-discovery-and-development\n\n[FDA-PROCESS] US FDA. The Drug Development Process\nhttps://www.fda.gov/patients/learn-about-drug-and-device-approvals/drug-development-process\n\nSource check: 8 November 2026. Representative tools, not an exhaustive ranking."
+}

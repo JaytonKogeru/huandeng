@@ -52,7 +52,7 @@ function inlineStyle(
     sizePx: size * 2,
     bold: content.bold === true,
     italic: content.italic === true,
-    underline: false,
+    underline: content.underline === true,
     strike: false,
     color: color(content.color ?? '#000000', opacity),
     letterSpacingPx: exportNumber(content.letterSpacing, 0, 'letterSpacing') * 2,

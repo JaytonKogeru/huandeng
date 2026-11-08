@@ -215,6 +215,8 @@ export async function registerPptdRoutes(server: PptdRouteHost, _ctx?: ApiContex
         const options: AssetLibraryOptions = {};
         for (const key of ['query', 'pageId'] as const)
           if (url.searchParams.has(key)) options[key] = url.searchParams.get(key) ?? '';
+        if (url.searchParams.has('kind'))
+          options.kind = url.searchParams.get('kind') as AssetLibraryOptions['kind'];
         if (url.searchParams.has('filter'))
           options.filter = url.searchParams.get('filter') as AssetLibraryOptions['filter'];
         for (const key of ['offset', 'limit'] as const)

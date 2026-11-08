@@ -31,6 +31,7 @@ export interface AssetLibraryItem {
 export interface AssetLibraryOptions {
   query?: string;
   filter?: 'all' | 'used' | 'unused' | 'missing';
+  kind?: 'all' | 'image';
   pageId?: string;
   offset?: number;
   limit?: number;
@@ -87,9 +88,11 @@ function references(value: unknown, callback: (source: string, field: string) =>
 }
 
 function readOptions(options: AssetLibraryOptions) {
-  const { query = '', filter = 'all', pageId, offset = 0, limit = 100 } = options;
+  const { query = '', filter = 'all', kind = 'all', pageId, offset = 0, limit = 100 } = options;
   if (typeof query !== 'string' || query.length > 256)
     throw new PptdError('INVALID_REQUEST', 'Asset search must contain at most 256 characters.');
+  if (!['all', 'image'].includes(kind))
+    throw new PptdError('INVALID_REQUEST', 'Unknown asset kind.');
   if (!['all', 'used', 'unused', 'missing'].includes(filter))
     throw new PptdError('INVALID_REQUEST', 'Unknown asset filter.');
   if (
@@ -105,7 +108,7 @@ function readOptions(options: AssetLibraryOptions) {
     );
   if (pageId !== undefined && (typeof pageId !== 'string' || !pageId || pageId.length > 128))
     throw new PptdError('INVALID_REQUEST', 'Asset pageId must be a stable page UUID.');
-  return { query: query.trim().toLowerCase(), filter, pageId, offset, limit };
+  return { query: query.trim().toLowerCase(), filter, kind, pageId, offset, limit };
 }
 
 async function safeStats(root: string, relative: string) {
@@ -128,7 +131,7 @@ export async function readAssetLibrary(
   options: AssetLibraryOptions = {},
   limits: { maxEntries?: number; maxDepth?: number } = {},
 ): Promise<AssetLibraryResult> {
-  const { query, filter, pageId, offset, limit } = readOptions(options);
+  const { query, filter, kind, pageId, offset, limit } = readOptions(options);
   const entryLimit = Math.max(1, Math.min(limits.maxEntries ?? 3000, 3000));
   const depthLimit = Math.max(1, Math.min(limits.maxDepth ?? 6, 6));
   const directory = await fs.realpath(root);
@@ -260,13 +263,14 @@ export async function readAssetLibrary(
   for (let start = 0; start < entries.length; start += 32) {
     await Promise.all(entries.slice(start, start + 32).map(inspect));
   }
+  const scoped = kind === 'image' ? entries.filter((asset) => asset.kind === 'image') : entries;
   const counts = {
-    all: entries.length,
-    used: entries.filter((asset) => asset.usage.length > 0).length,
-    unused: entries.filter((asset) => asset.usage.length === 0).length,
-    missing: entries.filter((asset) => asset.status !== 'available').length,
+    all: scoped.length,
+    used: scoped.filter((asset) => asset.usage.length > 0).length,
+    unused: scoped.filter((asset) => asset.usage.length === 0).length,
+    missing: scoped.filter((asset) => asset.status !== 'available').length,
   };
-  const filtered = entries.filter((asset) => {
+  const filtered = scoped.filter((asset) => {
     if (filter === 'used' && !asset.usage.length) return false;
     if (filter === 'unused' && asset.usage.length) return false;
     if (filter === 'missing' && asset.status === 'available') return false;

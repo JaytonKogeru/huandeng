@@ -1,10 +1,10 @@
-# HUANDENG Plugin 0.9
+# HUANDENG Plugin
 
 A shared Story workflow for Codex, Claude Code, official DeepSeek Harness and ChatGPT through an authorized workstation connection. Agents read the open PPTD, construct reviewable changes, and save through the same writer as the editor. The package contains no model executor or separate document store.
 
 ## Start from the open project
 
-Open the intended `.pptd` in HUANDENG. The desktop **Connect Agent / 连接 Agent** entry generates a client-specific connection fragment. Copy it into the intended client's configuration without replacing unrelated settings. The generator does not install or enable a client.
+Open the intended `.pptd` in HUANDENG. The desktop **Project → Agent setup** entry generates a client-specific connection fragment. Copy it into the intended client's configuration without replacing unrelated settings. The generator does not install, enable or connect a client. Editor v0.10 renames the entry to describe this actual outcome.
 
 For a checkout or copied plugin, the equivalent is:
 

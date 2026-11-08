@@ -1,0 +1,314 @@
+{
+  "title": "Antibody design",
+  "background": {
+    "type": "solid",
+    "color": "#F7F6F1"
+  },
+  "elements": [
+    {
+      "elementId": "title",
+      "elementType": "text",
+      "bounds": [
+        48,
+        38,
+        864,
+        58
+      ],
+      "content": {
+        "text": "Antibody design",
+        "fontFamily": "Arial",
+        "fontSize": 35,
+        "lineHeight": 1.18,
+        "color": "#172C3B",
+        "bold": true
+      }
+    },
+    {
+      "elementId": "heading-rule",
+      "elementType": "line",
+      "bounds": [
+        48,
+        112,
+        864,
+        1
+      ],
+      "viewBox": [
+        864,
+        1
+      ],
+      "points": "0,0 864,1",
+      "border": {
+        "width": 1.5,
+        "color": "#C9D5D4",
+        "style": "solid"
+      },
+      "arrow": []
+    },
+    {
+      "elementId": "framework-heading",
+      "elementType": "text",
+      "bounds": [
+        48,
+        150,
+        265,
+        38
+      ],
+      "content": {
+        "text": "Framework",
+        "fontFamily": "Arial",
+        "fontSize": 30,
+        "lineHeight": 1.18,
+        "color": "#187D80",
+        "bold": true
+      }
+    },
+    {
+      "elementId": "framework-copy",
+      "elementType": "text",
+      "bounds": [
+        48,
+        208,
+        255,
+        78
+      ],
+      "content": {
+        "text": "A structural context\nfor the binding loops.",
+        "fontFamily": "Arial",
+        "fontSize": 24,
+        "lineHeight": 1.18,
+        "color": "#172C3B"
+      }
+    },
+    {
+      "elementId": "framework-cdr",
+      "elementType": "line",
+      "bounds": [
+        303,
+        224,
+        47,
+        1
+      ],
+      "viewBox": [
+        47,
+        1
+      ],
+      "points": "0,0 47,1",
+      "border": {
+        "width": 1.5,
+        "color": "#187D80",
+        "style": "solid"
+      },
+      "arrow": [
+        null,
+        "arrow"
+      ]
+    },
+    {
+      "elementId": "cdr-heading",
+      "elementType": "text",
+      "bounds": [
+        369,
+        150,
+        253,
+        38
+      ],
+      "content": {
+        "text": "CDRs",
+        "fontFamily": "Arial",
+        "fontSize": 30,
+        "lineHeight": 1.18,
+        "color": "#187D80",
+        "bold": true
+      }
+    },
+    {
+      "elementId": "cdr-copy",
+      "elementType": "text",
+      "bounds": [
+        369,
+        208,
+        253,
+        78
+      ],
+      "content": {
+        "text": "Binding geometry\nat a chosen epitope.",
+        "fontFamily": "Arial",
+        "fontSize": 24,
+        "lineHeight": 1.18,
+        "color": "#172C3B"
+      }
+    },
+    {
+      "elementId": "cdr-format",
+      "elementType": "line",
+      "bounds": [
+        626,
+        224,
+        45,
+        1
+      ],
+      "viewBox": [
+        45,
+        1
+      ],
+      "points": "0,0 45,1",
+      "border": {
+        "width": 1.5,
+        "color": "#187D80",
+        "style": "solid"
+      },
+      "arrow": [
+        null,
+        "arrow"
+      ]
+    },
+    {
+      "elementId": "format-heading",
+      "elementType": "text",
+      "bounds": [
+        692,
+        150,
+        220,
+        38
+      ],
+      "content": {
+        "text": "Format",
+        "fontFamily": "Arial",
+        "fontSize": 30,
+        "lineHeight": 1.18,
+        "color": "#187D80",
+        "bold": true
+      }
+    },
+    {
+      "elementId": "format-copy",
+      "elementType": "text",
+      "bounds": [
+        692,
+        208,
+        220,
+        78
+      ],
+      "content": {
+        "text": "VHH, scFv, Fab\nor full antibody.",
+        "fontFamily": "Arial",
+        "fontSize": 24,
+        "lineHeight": 1.18,
+        "color": "#172C3B"
+      }
+    },
+    {
+      "elementId": "antibody-rule",
+      "elementType": "line",
+      "bounds": [
+        48,
+        323,
+        864,
+        1
+      ],
+      "viewBox": [
+        864,
+        1
+      ],
+      "points": "0,0 864,1",
+      "border": {
+        "width": 1.5,
+        "color": "#C9D5D4",
+        "style": "solid"
+      },
+      "arrow": []
+    },
+    {
+      "elementId": "design-tools",
+      "elementType": "text",
+      "bounds": [
+        48,
+        354,
+        515,
+        36
+      ],
+      "content": {
+        "text": "RFantibody and RFD4-Proteina",
+        "fontFamily": "Arial",
+        "fontSize": 25,
+        "lineHeight": 1.18,
+        "color": "#172C3B",
+        "bold": true
+      }
+    },
+    {
+      "elementId": "design-tools-copy",
+      "elementType": "text",
+      "bounds": [
+        48,
+        402,
+        515,
+        66
+      ],
+      "content": {
+        "text": "Epitope-directed design or CDR design.",
+        "fontFamily": "Arial",
+        "fontSize": 21,
+        "lineHeight": 1.18,
+        "color": "#536571"
+      }
+    },
+    {
+      "elementId": "profile-title",
+      "elementType": "text",
+      "bounds": [
+        625,
+        354,
+        287,
+        36
+      ],
+      "content": {
+        "text": "TAP",
+        "fontFamily": "Arial",
+        "fontSize": 25,
+        "lineHeight": 1.18,
+        "color": "#172C3B",
+        "bold": true
+      }
+    },
+    {
+      "elementId": "profile-copy",
+      "elementType": "text",
+      "bounds": [
+        625,
+        402,
+        287,
+        66
+      ],
+      "content": {
+        "text": "Calculated developability flags.",
+        "fontFamily": "Arial",
+        "fontSize": 21,
+        "lineHeight": 1.18,
+        "color": "#536571"
+      }
+    },
+    {
+      "elementId": "slide-id",
+      "elementType": "text",
+      "bounds": [
+        780,
+        505,
+        132,
+        19
+      ],
+      "content": {
+        "text": "Slide ID DD06",
+        "fontFamily": "Arial",
+        "fontSize": 12,
+        "lineHeight": 1.18,
+        "color": "#536571",
+        "align": [
+          "right",
+          "middle"
+        ]
+      }
+    }
+  ],
+  "notes": "Antibody design focuses on binding loops within a framework and a chosen molecular format. RFantibody combines computational design with experimental screening and characterization. RFD4-Proteina documents antibody CDR design as a supported task. TAP flags unusual calculated properties relative to clinical-stage antibodies, providing an early developability screen. Affinity optimization, format choice and functional evaluation continue after the first binder. The diagram is conceptual and does not depict a molecular structure or an experimental result.\n\nSources\n[RFANTIBODY] Bennett et al. Atomically accurate de novo design of antibodies with RFdiffusion. Nature 649, 183–193 (2026), online 5 November 2025\nhttps://doi.org/10.1038/s41586-025-09721-5\nhttps://github.com/RosettaCommons/RFantibody\n\n[RFD4] NVIDIA and Baker Laboratory. RFD4-Proteina documentation and model card\nhttps://docs.nvidia.com/nim/bionemo/rfd4-proteina/overview\nhttps://huggingface.co/nvidia/RFD4-Proteina-Diffusers\n\n[TAP] Raybould et al. Five computational developability guidelines for therapeutic antibody profiling. PNAS (2019)\nhttps://doi.org/10.1073/pnas.1810576116\nhttps://pmc.ncbi.nlm.nih.gov/articles/PMC6410772/\n\nSource check: 8 November 2026. Representative tools, not an exhaustive ranking."
+}

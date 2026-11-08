@@ -49,6 +49,7 @@ export function AssetLibrary({
 }: AssetLibraryProps) {
   useHuandengLocale();
   const [query, setQuery] = useState('');
+  const [kind, setKind] = useState<'image' | 'all'>('image');
   const [filter, setFilter] = useState<NonNullable<AssetLibraryOptions['filter']>>('all');
   const [pageOnly, setPageOnly] = useState(false);
   const [refresh, setRefresh] = useState(0);
@@ -88,7 +89,7 @@ export function AssetLibrary({
     const timer = setTimeout(
       () => {
         void loadRef
-          .current({ query, filter, pageId: activePageId, limit: 100 })
+          .current({ query, filter, kind, pageId: activePageId, limit: 100 })
           .then((next) => {
             if (request !== generation.current) return;
             setResult(next);
@@ -109,7 +110,7 @@ export function AssetLibrary({
       clearTimeout(timer);
       generation.current = null;
     };
-  }, [query, filter, activePageId, refresh, refreshKey]);
+  }, [query, filter, kind, activePageId, refresh, refreshKey]);
 
   const perform = async (work: () => Promise<void>) => {
     setBusy(true);
@@ -131,6 +132,7 @@ export function AssetLibrary({
       const next = await loadRef.current({
         query,
         filter,
+        kind,
         pageId: activePageId,
         offset: result.items.length,
         limit: 100,
@@ -191,6 +193,32 @@ export function AssetLibrary({
             )}
           </div>
         </div>
+        <fieldset className="flex rounded-md border p-0.5" aria-label={t('Asset types')}>
+          <Button
+            variant={kind === 'image' ? 'secondary' : 'ghost'}
+            size="xs"
+            className="flex-1"
+            aria-pressed={kind === 'image'}
+            onClick={() => {
+              setKind('image');
+              setSelectedPath(null);
+            }}
+          >
+            {t('Images')}
+          </Button>
+          <Button
+            variant={kind === 'all' ? 'secondary' : 'ghost'}
+            size="xs"
+            className="flex-1"
+            aria-pressed={kind === 'all'}
+            onClick={() => {
+              setKind('all');
+              setSelectedPath(null);
+            }}
+          >
+            {t('All files')}
+          </Button>
+        </fieldset>
         <label className="relative block" htmlFor={queryId}>
           <Search className="pointer-events-none absolute left-2 top-2 size-3.5 text-muted-foreground" />
           <span className="sr-only">{t('搜索素材名称、路径或页面编号')}</span>
@@ -235,7 +263,11 @@ export function AssetLibrary({
           </label>
         </div>
         <p className="text-[11px] leading-relaxed text-muted-foreground">
-          {t('导入后放到当前页，已有素材可直接复用。')}
+          {kind === 'image'
+            ? t('Drag an image onto the slide, or import and place a new image.')
+            : t(
+                'Documents and scripts are supporting files. Only images can be placed on a slide.',
+              )}
         </p>
         {(error || loadError) && (
           <p role="alert" className="break-words text-[11px] text-destructive">
@@ -280,6 +312,20 @@ export function AssetLibrary({
                 aria-pressed={selectedPath === asset.path}
                 title={asset.path}
                 data-hd-asset-path={asset.path}
+                draggable={
+                  !disabled && !busy && asset.kind === 'image' && asset.status === 'available'
+                }
+                onDragStart={(event) => {
+                  if (disabled || busy || asset.kind !== 'image' || asset.status !== 'available') {
+                    event.preventDefault();
+                    return;
+                  }
+                  event.dataTransfer.effectAllowed = 'copy';
+                  event.dataTransfer.setData(
+                    'application/x-huandeng-asset',
+                    JSON.stringify({ path: asset.path }),
+                  );
+                }}
                 onClick={() => {
                   setSelectedPath(asset.path);
                   if (selectedPath !== asset.path) {
@@ -295,6 +341,7 @@ export function AssetLibrary({
                       src={assetPreviewUrl(asset, true)}
                       alt=""
                       loading="lazy"
+                      draggable={false}
                       className="max-h-full max-w-full object-contain"
                     />
                   ) : asset.status === 'available' ? (

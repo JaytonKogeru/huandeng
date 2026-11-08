@@ -18,10 +18,7 @@ function readBrowserLocale(): UiLocale {
     const stored = normalizeUiLocale(localStorage.getItem(storageKey));
     if (stored) return stored;
   } catch {}
-  if (typeof window !== 'undefined' && typeof navigator !== 'undefined') {
-    return /^zh(?:[-_]|$)/i.test(navigator.languages?.[0] || navigator.language) ? 'zh-CN' : 'en';
-  }
-  return 'zh-CN';
+  return 'en';
 }
 
 export function getUiLocale(): UiLocale {

@@ -11,7 +11,7 @@ describe('canvas tool placement', () => {
       { dragged: false, elementId: 'text' },
     );
     expect(element.bounds).toEqual([600, 484, 360, 56]);
-    expect(element.content?.text).toBe('输入文字');
+    expect(element.content?.text).toBe('Type here');
   });
   it('keeps the dragged shape type and normalizes an upward-left gesture', () => {
     const element = createPlacedElement(

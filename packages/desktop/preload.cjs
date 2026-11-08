@@ -4,9 +4,17 @@ const leaveHandlers = new Set();
 
 ipcRenderer.on('huandeng:before-leave', async (_event, requestId) => {
   try {
-    for (const handler of leaveHandlers) await handler();
+    let workspaceLayout;
+    for (const handler of leaveHandlers) {
+      const result = await handler();
+      if (result?.workspaceLayout) workspaceLayout = result.workspaceLayout;
+    }
     await new Promise((resolve) => setTimeout(resolve, 0));
-    ipcRenderer.send('huandeng:before-leave-result', { requestId, ok: true });
+    ipcRenderer.send('huandeng:before-leave-result', {
+      requestId,
+      ok: true,
+      ...(workspaceLayout ? { workspaceLayout } : {}),
+    });
   } catch (error) {
     ipcRenderer.send('huandeng:before-leave-result', {
       requestId,
@@ -24,6 +32,8 @@ const subscribe = (channel, callback) => {
 
 contextBridge.exposeInMainWorld('huandengDesktop', {
   platform: process.platform,
+  getWorkspaceLayout: (clientId) => ipcRenderer.invoke('huandeng:get-workspace-layout', clientId),
+  setWorkspaceLayout: (value) => ipcRenderer.invoke('huandeng:set-workspace-layout', value),
   getLocale: () => ipcRenderer.invoke('huandeng:get-locale'),
   setLocale: (locale) => ipcRenderer.invoke('huandeng:set-locale', locale),
   onLocaleChanged: (callback) => subscribe('huandeng:locale-changed', callback),

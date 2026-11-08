@@ -1,7 +1,30 @@
+export interface WorkspaceLayout {
+  notesDock: 'bottom' | 'right';
+  notesHeight: number;
+  notesWidth: number;
+  navigationWidth: number;
+  inspectorWidth: number;
+  notesOpen: boolean;
+  navigationCollapsed: boolean;
+  inspectorCollapsed: boolean;
+}
+
+export interface WorkspaceLayoutUpdate {
+  clientId: string;
+  revision: number;
+  layout: WorkspaceLayout;
+}
+
+export interface DesktopLeaveData {
+  workspaceLayout?: WorkspaceLayoutUpdate;
+}
+
 export type DesktopEditCommand = 'cut' | 'copy' | 'paste' | 'selectAll' | 'undo' | 'redo';
 
 export interface HuandengDesktop {
   platform: string;
+  getWorkspaceLayout?(clientId?: string): Promise<WorkspaceLayout>;
+  setWorkspaceLayout?(value: WorkspaceLayoutUpdate): Promise<WorkspaceLayout>;
   getLocale?(): Promise<'en' | 'zh-CN'>;
   setLocale?(locale: 'en' | 'zh-CN'): Promise<'en' | 'zh-CN'>;
   onLocaleChanged?(callback: (locale: 'en' | 'zh-CN') => void): () => void;
@@ -26,7 +49,7 @@ export interface HuandengDesktop {
     serviceUrl: string | null;
   }>;
   onContextChanged(callback: () => void): () => void;
-  onBeforeLeave(callback: () => Promise<void>): () => void;
+  onBeforeLeave(callback: () => Promise<void> | Promise<DesktopLeaveData>): () => void;
   onEditCommand?(callback: (command: DesktopEditCommand) => void): () => void;
   editNative?(command: DesktopEditCommand): Promise<void>;
 }

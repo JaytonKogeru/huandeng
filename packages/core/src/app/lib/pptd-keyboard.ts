@@ -1,5 +1,6 @@
 import { groupChildren } from '../../pptd/grouping';
 import type { PptdElement } from '../../pptd/types';
+import type { ObjectEditCommand } from './pptd-object-actions';
 
 export type EditorKeyboardScope =
   | 'canvas'
@@ -12,6 +13,7 @@ export type EditorKeyboardScope =
   | 'workspace';
 
 export type EditorKeyboardCommand =
+  | ObjectEditCommand
   | { type: 'help' | 'save' | 'cancel' | 'undo' | 'redo' | 'copy' | 'cut' | 'select-all' }
   | { type: 'remove-elements' | 'remove-page' | 'duplicate' | 'add-page' }
   | { type: 'group'; ungroup: boolean }
@@ -97,6 +99,20 @@ export function resolveEditorKeyboardCommand(
   if (control && key === 'a') return { type: 'select-all' };
   if (control && (key === 'c' || key === 'x')) return { type: key === 'c' ? 'copy' : 'cut' };
   if (control && key === 'g') return { type: 'group', ungroup: event.shiftKey };
+  if (control && !event.shiftKey && ['b', 'i', 'u'].includes(key))
+    return {
+      type: 'format-text',
+      format: key === 'b' ? 'bold' : key === 'i' ? 'italic' : 'underline',
+    };
+  if (control && event.shiftKey && ['.', '>', ',', '<'].includes(key))
+    return { type: 'font-size', delta: key === '.' || key === '>' ? 1 : -1 };
+  if (control && ['[', ']', '{', '}'].includes(key)) {
+    const forward = key === ']' || key === '}';
+    return {
+      type: 'layer',
+      direction: event.shiftKey ? (forward ? 'front' : 'back') : forward ? 'forward' : 'backward',
+    };
+  }
   if (!control && (key === 'delete' || key === 'backspace')) return { type: 'remove-elements' };
   if (scope === 'layers' || control) return null;
   if (['v', 't', 'r', 'l'].includes(key))
@@ -232,6 +248,11 @@ export const EDITOR_KEYBOARD_HELP = [
       ['Ctrl+D', '复制所选对象；页面列表中复制页面'],
       ['Delete / Backspace', '删除选中的对象或主库页面'],
       ['Ctrl+G / Ctrl+Shift+G', '组合 / 取消组合'],
+      ['Shift+F10 / Menu', 'Open the selected object menu'],
+      ['Ctrl+B / I / U', 'Toggle bold / italic / underline on selected text boxes'],
+      ['Ctrl+Shift+> / <', 'Increase / decrease selected text size'],
+      ['Ctrl+] / [', 'Bring forward / send backward one layer'],
+      ['Ctrl+Shift+] / [', 'Bring to front / send to back'],
       ['V / T / R / L', '选择 / 文字 / 矩形 / 线条工具'],
     ],
   },

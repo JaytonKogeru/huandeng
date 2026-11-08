@@ -1,0 +1,231 @@
+{
+  "title": "Candidate selection",
+  "background": {
+    "type": "solid",
+    "color": "#F7F6F1"
+  },
+  "elements": [
+    {
+      "elementId": "title",
+      "elementType": "text",
+      "bounds": [
+        48,
+        38,
+        864,
+        58
+      ],
+      "content": {
+        "text": "Candidate selection",
+        "fontFamily": "Arial",
+        "fontSize": 35,
+        "lineHeight": 1.18,
+        "color": "#172C3B",
+        "bold": true
+      }
+    },
+    {
+      "elementId": "heading-rule",
+      "elementType": "line",
+      "bounds": [
+        48,
+        112,
+        864,
+        1
+      ],
+      "viewBox": [
+        864,
+        1
+      ],
+      "points": "0,0 864,1",
+      "border": {
+        "width": 1.5,
+        "color": "#C9D5D4",
+        "style": "solid"
+      },
+      "arrow": []
+    },
+    {
+      "elementId": "biology-input",
+      "elementType": "text",
+      "bounds": [
+        48,
+        151,
+        286,
+        38
+      ],
+      "content": {
+        "text": "Biology",
+        "fontFamily": "Arial",
+        "fontSize": 29,
+        "lineHeight": 1.18,
+        "color": "#187D80",
+        "bold": true
+      }
+    },
+    {
+      "elementId": "biology-detail",
+      "elementType": "text",
+      "bounds": [
+        48,
+        201,
+        310,
+        31
+      ],
+      "content": {
+        "text": "Mechanism and function",
+        "fontFamily": "Arial",
+        "fontSize": 21,
+        "lineHeight": 1.18,
+        "color": "#536571"
+      }
+    },
+    {
+      "elementId": "molecule-input",
+      "elementType": "text",
+      "bounds": [
+        48,
+        273,
+        330,
+        38
+      ],
+      "content": {
+        "text": "Molecular evidence",
+        "fontFamily": "Arial",
+        "fontSize": 29,
+        "lineHeight": 1.18,
+        "color": "#187D80",
+        "bold": true
+      }
+    },
+    {
+      "elementId": "molecule-detail",
+      "elementType": "text",
+      "bounds": [
+        48,
+        323,
+        350,
+        31
+      ],
+      "content": {
+        "text": "Binding and structural plausibility",
+        "fontFamily": "Arial",
+        "fontSize": 21,
+        "lineHeight": 1.18,
+        "color": "#536571"
+      }
+    },
+    {
+      "elementId": "feasibility-input",
+      "elementType": "text",
+      "bounds": [
+        48,
+        395,
+        286,
+        38
+      ],
+      "content": {
+        "text": "Feasibility",
+        "fontFamily": "Arial",
+        "fontSize": 29,
+        "lineHeight": 1.18,
+        "color": "#187D80",
+        "bold": true
+      }
+    },
+    {
+      "elementId": "feasibility-detail",
+      "elementType": "text",
+      "bounds": [
+        48,
+        445,
+        350,
+        31
+      ],
+      "content": {
+        "text": "Stability, exposure and production",
+        "fontFamily": "Arial",
+        "fontSize": 21,
+        "lineHeight": 1.18,
+        "color": "#536571"
+      }
+    },
+    {
+      "elementId": "selection-divider",
+      "elementType": "line",
+      "bounds": [
+        437,
+        151,
+        1,
+        323
+      ],
+      "viewBox": [
+        1,
+        323
+      ],
+      "points": "0,0 1,323",
+      "border": {
+        "width": 1.5,
+        "color": "#C9D5D4",
+        "style": "solid"
+      },
+      "arrow": []
+    },
+    {
+      "elementId": "decision",
+      "elementType": "text",
+      "bounds": [
+        487,
+        158,
+        425,
+        180
+      ],
+      "content": {
+        "text": "Which result\nwould change\nthe decision?",
+        "fontFamily": "Arial",
+        "fontSize": 42,
+        "lineHeight": 1.15,
+        "color": "#172C3B",
+        "bold": true
+      }
+    },
+    {
+      "elementId": "selection-copy",
+      "elementType": "text",
+      "bounds": [
+        487,
+        374,
+        425,
+        110
+      ],
+      "content": {
+        "text": "Keep evidence types inspectable.\nRetain useful molecular diversity.\nResolve the largest uncertainty next.",
+        "fontFamily": "Arial",
+        "fontSize": 22,
+        "lineHeight": 1.35,
+        "color": "#536571"
+      }
+    },
+    {
+      "elementId": "slide-id",
+      "elementType": "text",
+      "bounds": [
+        780,
+        505,
+        132,
+        19
+      ],
+      "content": {
+        "text": "Slide ID DD09",
+        "fontFamily": "Arial",
+        "fontSize": 12,
+        "lineHeight": 1.18,
+        "color": "#536571",
+        "align": [
+          "right",
+          "middle"
+        ]
+      }
+    }
+  ],
+  "notes": "This is a proposed decision framework, not an empirical benchmark. A shortlist depends on the biological question, experimental capacity and the failures that would stop development. Candidates should be compared within relevant molecular classes, with distinct evidence types kept visible. A useful next measurement can distinguish competing explanations or change the selected candidate. Molecular diversity helps avoid committing the whole study to one untested assumption.\n\nSources\n[FDA] US FDA. Discovery and Development\nhttps://www.fda.gov/patients/drug-development-process/step-1-discovery-and-development\n\n[BINDCRAFT] Pacesa et al. One-shot design of functional protein binders with BindCraft. Nature (2025)\nhttps://doi.org/10.1038/s41586-025-09429-6\nhttps://pmc.ncbi.nlm.nih.gov/articles/PMC12507698/\n\n[RFANTIBODY] Bennett et al. Atomically accurate de novo design of antibodies with RFdiffusion. Nature 649, 183–193 (2026), online 5 November 2025\nhttps://doi.org/10.1038/s41586-025-09721-5\nhttps://github.com/RosettaCommons/RFantibody\n\n[TAP] Raybould et al. Five computational developability guidelines for therapeutic antibody profiling. PNAS (2019)\nhttps://doi.org/10.1073/pnas.1810576116\nhttps://pmc.ncbi.nlm.nih.gov/articles/PMC6410772/\n\nSource check: 8 November 2026. Representative tools, not an exhaustive ranking."
+}

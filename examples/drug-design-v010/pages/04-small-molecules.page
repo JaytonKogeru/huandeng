@@ -1,0 +1,231 @@
+{
+  "title": "Small-molecule design",
+  "background": {
+    "type": "solid",
+    "color": "#F7F6F1"
+  },
+  "elements": [
+    {
+      "elementId": "title",
+      "elementType": "text",
+      "bounds": [
+        48,
+        38,
+        864,
+        58
+      ],
+      "content": {
+        "text": "Small-molecule design",
+        "fontFamily": "Arial",
+        "fontSize": 35,
+        "lineHeight": 1.18,
+        "color": "#172C3B",
+        "bold": true
+      }
+    },
+    {
+      "elementId": "heading-rule",
+      "elementType": "line",
+      "bounds": [
+        48,
+        112,
+        864,
+        1
+      ],
+      "viewBox": [
+        864,
+        1
+      ],
+      "points": "0,0 864,1",
+      "border": {
+        "width": 1.5,
+        "color": "#C9D5D4",
+        "style": "solid"
+      },
+      "arrow": []
+    },
+    {
+      "elementId": "route-statement",
+      "elementType": "text",
+      "bounds": [
+        48,
+        153,
+        340,
+        160
+      ],
+      "content": {
+        "text": "A chemical series\nconnects design\nto measurement.",
+        "fontFamily": "Arial",
+        "fontSize": 36,
+        "lineHeight": 1.16,
+        "color": "#187D80",
+        "bold": true
+      }
+    },
+    {
+      "elementId": "route-caption",
+      "elementType": "text",
+      "bounds": [
+        48,
+        365,
+        340,
+        82
+      ],
+      "content": {
+        "text": "Synthesis and biological testing\nclose the loop.",
+        "fontFamily": "Arial",
+        "fontSize": 23,
+        "lineHeight": 1.18,
+        "color": "#536571"
+      }
+    },
+    {
+      "elementId": "route-divider",
+      "elementType": "line",
+      "bounds": [
+        413,
+        145,
+        1,
+        317
+      ],
+      "viewBox": [
+        1,
+        317
+      ],
+      "points": "0,0 1,317",
+      "border": {
+        "width": 1.5,
+        "color": "#C9D5D4",
+        "style": "solid"
+      },
+      "arrow": []
+    },
+    {
+      "elementId": "chemistry-title",
+      "elementType": "text",
+      "bounds": [
+        455,
+        146,
+        455,
+        31
+      ],
+      "content": {
+        "text": "Explore chemistry",
+        "fontFamily": "Arial",
+        "fontSize": 23,
+        "lineHeight": 1.18,
+        "color": "#172C3B",
+        "bold": true
+      }
+    },
+    {
+      "elementId": "chemistry-tools",
+      "elementType": "text",
+      "bounds": [
+        455,
+        185,
+        455,
+        30
+      ],
+      "content": {
+        "text": "RDKit and REINVENT4",
+        "fontFamily": "Arial",
+        "fontSize": 21,
+        "lineHeight": 1.18,
+        "color": "#187D80"
+      }
+    },
+    {
+      "elementId": "pose-title",
+      "elementType": "text",
+      "bounds": [
+        455,
+        241,
+        455,
+        31
+      ],
+      "content": {
+        "text": "Propose binding poses",
+        "fontFamily": "Arial",
+        "fontSize": 23,
+        "lineHeight": 1.18,
+        "color": "#172C3B",
+        "bold": true
+      }
+    },
+    {
+      "elementId": "pose-tools",
+      "elementType": "text",
+      "bounds": [
+        455,
+        280,
+        455,
+        30
+      ],
+      "content": {
+        "text": "AutoDock Vina or AlphaFold 3",
+        "fontFamily": "Arial",
+        "fontSize": 21,
+        "lineHeight": 1.18,
+        "color": "#187D80"
+      }
+    },
+    {
+      "elementId": "affinity-title",
+      "elementType": "text",
+      "bounds": [
+        455,
+        336,
+        455,
+        31
+      ],
+      "content": {
+        "text": "Prioritize affinity",
+        "fontFamily": "Arial",
+        "fontSize": 23,
+        "lineHeight": 1.18,
+        "color": "#172C3B",
+        "bold": true
+      }
+    },
+    {
+      "elementId": "affinity-tools",
+      "elementType": "text",
+      "bounds": [
+        455,
+        375,
+        455,
+        64
+      ],
+      "content": {
+        "text": "Boltz-2 or alchemical calculations\nwith OpenFE",
+        "fontFamily": "Arial",
+        "fontSize": 21,
+        "lineHeight": 1.18,
+        "color": "#187D80"
+      }
+    },
+    {
+      "elementId": "slide-id",
+      "elementType": "text",
+      "bounds": [
+        780,
+        505,
+        132,
+        19
+      ],
+      "content": {
+        "text": "Slide ID DD04",
+        "fontFamily": "Arial",
+        "fontSize": 12,
+        "lineHeight": 1.18,
+        "color": "#536571",
+        "align": [
+          "right",
+          "middle"
+        ]
+      }
+    }
+  ],
+  "notes": "RDKit provides molecular representation and cheminformatics. REINVENT4 supports molecular generation and optimization. Vina searches docking poses using a scoring function, while AlphaFold 3 predicts biomolecular complex structures. Boltz-2 provides a learned affinity output for protein–small-molecule complexes. OpenFE supports alchemical free-energy calculations. These estimates depend on the system and setup, and guide which compounds to make and measure. They do not establish biological efficacy.\n\nSources\n[RDKIT] RDKit. Overview\nhttps://www.rdkit.org/docs/Overview.html\n\n[REINVENT] Loeffler et al. REINVENT 4: Modern AI-driven generative molecule design. Journal of Cheminformatics (2024)\nhttps://doi.org/10.1186/s13321-024-00812-5\nhttps://github.com/MolecularAI/REINVENT4\n\n[VINA] AutoDock Vina. Official documentation\nhttps://autodock-vina.readthedocs.io/en/latest/\n\n[AF3] Abramson et al. Accurate structure prediction of biomolecular interactions with AlphaFold 3. Nature (2024)\nhttps://doi.org/10.1038/s41586-024-07487-w\n\n[BOLTZ] Boltz-2. Official model repository and accompanying paper\nhttps://github.com/jwohlwend/boltz\nhttps://pmc.ncbi.nlm.nih.gov/articles/PMC12262699/\n\n[OPENFE] OpenFE. Official documentation\nhttps://docs.openfree.energy/en/latest/\n\nSource check: 8 November 2026. Representative tools, not an exhaustive ranking."
+}

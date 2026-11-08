@@ -1,0 +1,208 @@
+{
+  "title": "What the evidence establishes",
+  "background": {
+    "type": "solid",
+    "color": "#F7F6F1"
+  },
+  "elements": [
+    {
+      "elementId": "title",
+      "elementType": "text",
+      "bounds": [
+        48,
+        38,
+        864,
+        58
+      ],
+      "content": {
+        "text": "What the evidence establishes",
+        "fontFamily": "Arial",
+        "fontSize": 35,
+        "lineHeight": 1.18,
+        "color": "#172C3B",
+        "bold": true
+      }
+    },
+    {
+      "elementId": "heading-rule",
+      "elementType": "line",
+      "bounds": [
+        48,
+        112,
+        864,
+        1
+      ],
+      "viewBox": [
+        864,
+        1
+      ],
+      "points": "0,0 864,1",
+      "border": {
+        "width": 1.5,
+        "color": "#C9D5D4",
+        "style": "solid"
+      },
+      "arrow": []
+    },
+    {
+      "elementId": "evidence-table",
+      "elementType": "table",
+      "bounds": [
+        48,
+        137,
+        864,
+        319
+      ],
+      "columnWidths": [
+        0.25,
+        0.36,
+        0.39
+      ],
+      "rowHeights": [
+        0.12,
+        0.23,
+        0.22,
+        0.21,
+        0.22
+      ],
+      "rows": [
+        [
+          {
+            "text": "Readout"
+          },
+          {
+            "text": "What it can support"
+          },
+          {
+            "text": "What still needs evidence"
+          }
+        ],
+        [
+          {
+            "text": "pLDDT, PAE,\nipTM / ipSAE"
+          },
+          {
+            "text": "Confidence in a predicted\nfold or interface"
+          },
+          {
+            "text": "Affinity and biological effect"
+          }
+        ],
+        [
+          {
+            "text": "Binding and kinetics"
+          },
+          {
+            "text": "Target engagement under\nthe assay conditions"
+          },
+          {
+            "text": "Desired biological function"
+          }
+        ],
+        [
+          {
+            "text": "Functional activity"
+          },
+          {
+            "text": "A defined\nbiological response"
+          },
+          {
+            "text": "Exposure and tolerability"
+          }
+        ],
+        [
+          {
+            "text": "Stability, exposure\nand safety data"
+          },
+          {
+            "text": "Feasibility of\nfurther development"
+          },
+          {
+            "text": "Benefit in the intended setting"
+          }
+        ]
+      ],
+      "style": {
+        "cellStyle": {
+          "fontFamily": "Arial",
+          "fontSize": 19,
+          "lineHeight": 1.14,
+          "color": "#172C3B",
+          "align": [
+            "left",
+            "middle"
+          ],
+          "border": [
+            null,
+            null,
+            {
+              "width": 1,
+              "color": "#C9D5D4",
+              "style": "solid"
+            },
+            null
+          ]
+        },
+        "firstRowStyle": {
+          "fontSize": 16,
+          "color": "#536571",
+          "bold": true,
+          "border": [
+            null,
+            null,
+            {
+              "width": 2,
+              "color": "#187D80",
+              "style": "solid"
+            },
+            null
+          ]
+        },
+        "firstColumnStyle": {
+          "color": "#187D80",
+          "bold": true
+        }
+      }
+    },
+    {
+      "elementId": "evidence-conclusion",
+      "elementType": "text",
+      "bounds": [
+        48,
+        475,
+        810,
+        28
+      ],
+      "content": {
+        "text": "The strength of the conclusion must follow the kind of evidence.",
+        "fontFamily": "Arial",
+        "fontSize": 20,
+        "lineHeight": 1.18,
+        "color": "#187D80",
+        "bold": true
+      }
+    },
+    {
+      "elementId": "slide-id",
+      "elementType": "text",
+      "bounds": [
+        780,
+        505,
+        132,
+        19
+      ],
+      "content": {
+        "text": "Slide ID DD08",
+        "fontFamily": "Arial",
+        "fontSize": 12,
+        "lineHeight": 1.18,
+        "color": "#536571",
+        "align": [
+          "right",
+          "middle"
+        ]
+      }
+    }
+  ],
+  "notes": "Confidence metrics describe aspects of a predicted structure. ipSAE derives interface confidence from predicted aligned errors rather than measuring binding free energy. Binding and kinetic measurements establish interaction under stated conditions. Functional readouts address the intended biological effect. Further development needs exposure, stability and safety evidence, followed by clinical evaluation. Evidence usually grows iteratively. Each row separates the claim directly supported by a readout from the next question.\n\nSources\n[AF3] Abramson et al. Accurate structure prediction of biomolecular interactions with AlphaFold 3. Nature (2024)\nhttps://doi.org/10.1038/s41586-024-07487-w\n\n[IPSAE] Dunbrack. Res ipSAE loquunt: What's wrong with AlphaFold's ipTM score and how to fix it. bioRxiv (2025)\nhttps://doi.org/10.1101/2025.02.10.637595\nhttps://github.com/DunbrackLab/IPSAE\n\n[FDA] US FDA. Discovery and Development\nhttps://www.fda.gov/patients/drug-development-process/step-1-discovery-and-development\n\n[FDA-PROCESS] US FDA. The Drug Development Process\nhttps://www.fda.gov/patients/learn-about-drug-and-device-approvals/drug-development-process\n\nSource check: 8 November 2026. Representative tools, not an exhaustive ranking."
+}

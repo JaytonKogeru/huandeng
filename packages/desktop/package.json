@@ -27,7 +27,8 @@
     "release.json",
     "locale.cjs",
     "plugins",
-    "agent-setup.cjs"
+    "agent-setup.cjs",
+    "workspace.cjs"
   ],
   "dependencies": {
     "@open-slide/core": "workspace:*"

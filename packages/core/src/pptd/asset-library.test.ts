@@ -211,3 +211,29 @@ describe('project asset discovery and precise usages', () => {
     ).rejects.toMatchObject({ code: 'INVALID_REQUEST' });
   });
 });
+
+describe('placeable asset filtering', () => {
+  it('filters images before pagination and keeps supporting files available explicitly', async () => {
+    const { root, snapshot } = await fixture();
+    for (let index = 0; index < 12; index++)
+      await fs.writeFile(path.join(root, `assets/analysis-${index}.json`), '{}');
+    await fs.writeFile(path.join(root, 'assets/analyse.py'), 'print(1)');
+    const first = await readAssetLibrary(root, snapshot, { kind: 'image', limit: 1 });
+    expect(first.total).toBe(3);
+    expect(first.items).toHaveLength(1);
+    expect(first.items.every((item) => item.kind === 'image')).toBe(true);
+    expect(first.hasMore).toBe(true);
+    expect(first.counts.all).toBe(3);
+    const second = await readAssetLibrary(root, snapshot, { kind: 'image', offset: 1, limit: 2 });
+    expect(second.items).toHaveLength(2);
+    expect(second.items.every((item) => item.kind === 'image')).toBe(true);
+    const all = await readAssetLibrary(root, snapshot, { kind: 'all' });
+    expect(all.items.some((item) => item.name === 'analyse.py')).toBe(true);
+    expect(all.items.some((item) => item.name === 'analysis-0.json')).toBe(true);
+    expect(
+      (await readAssetLibrary(root, snapshot, { kind: 'image', filter: 'missing' })).items.map(
+        (item) => item.path,
+      ),
+    ).toEqual(['media/missing.png']);
+  });
+});

@@ -3,6 +3,7 @@ import { desktopHost } from './huandeng-desktop';
 import { uiText as t } from './huandeng-locale';
 import { PptdBackend } from './pptd-backend';
 import { draftHasChanges, PptdDocumentClient } from './pptd-document';
+import { workspaceLayoutForLeave } from './pptd-preferences';
 
 export function usePptdDocument(auxiliaryDirty = false, importingAssets = false) {
   const [backend] = useState(() => new PptdBackend());
@@ -46,6 +47,7 @@ export function usePptdDocument(auxiliaryDirty = false, importingAssets = false)
         });
         if (client.getState().canRetry)
           throw new Error(t('还有一次保存尚未确认，请先重试同一次保存。'));
+        return { workspaceLayout: workspaceLayoutForLeave() };
       }),
     [client, auxiliaryDirty, importingAssets],
   );

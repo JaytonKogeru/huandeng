@@ -17,7 +17,7 @@ export function AgentConnectionDialog({
   onOpenChange: (open: boolean) => void;
 }) {
   const { t } = useHuandengLocale();
-  const [client, setClient] = useState<AgentClient>('deepseek');
+  const [client, setClient] = useState<AgentClient>('chatgpt');
   const [setup, setSetup] = useState<Setup | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -64,7 +64,7 @@ export function AgentConnectionDialog({
         <DialogHeader>
           <DialogTitle>{t('连接 Agent')}</DialogTitle>
           <DialogDescription>
-            {t('让 Agent 使用当前项目的 Story、素材与页面，先预览修改，再通过同一文档服务应用。')}
+            {t('Generate setup instructions for an external Agent to work with this Project.')}
           </DialogDescription>
         </DialogHeader>
         <label className="flex items-center gap-3 text-sm">
@@ -83,7 +83,9 @@ export function AgentConnectionDialog({
         </label>
         <p className="text-xs leading-relaxed text-muted-foreground">
           {client === 'chatgpt'
-            ? t('使用已连接的 DC-WALT 工作站运行这些命令。网页端不能直接访问本机 stdio 服务。')
+            ? t(
+                'In ChatGPT, select your existing DC-WALT workstation and ask it to run these commands. No reverse proxy, public endpoint or new tunnel is created.',
+              )
             : client === 'deepseek'
               ? t(
                   '将此配置保存为独立的 JSON patch，通过 dsh --patch 加载。保留现有模型与账户设置。',
@@ -122,7 +124,7 @@ export function AgentConnectionDialog({
             />
             <p className="text-xs leading-relaxed text-muted-foreground">
               {t(
-                '保持这个项目在编辑器中打开。连接后先读取 Story briefing；生成配置不代表客户端已连接。',
+                'Keep this Project open. Copy these instructions into your client, then ask it to read the Story briefing. This screen generates configuration; it does not start or connect an Agent.',
               )}
             </p>
             <div className="flex items-center justify-end gap-2">

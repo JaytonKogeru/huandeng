@@ -1,0 +1,219 @@
+{
+  "title": "A tool map by decision",
+  "background": {
+    "type": "solid",
+    "color": "#F7F6F1"
+  },
+  "elements": [
+    {
+      "elementId": "title",
+      "elementType": "text",
+      "bounds": [
+        48,
+        38,
+        864,
+        58
+      ],
+      "content": {
+        "text": "A tool map by decision",
+        "fontFamily": "Arial",
+        "fontSize": 35,
+        "lineHeight": 1.18,
+        "color": "#172C3B",
+        "bold": true
+      }
+    },
+    {
+      "elementId": "heading-rule",
+      "elementType": "line",
+      "bounds": [
+        48,
+        112,
+        864,
+        1
+      ],
+      "viewBox": [
+        864,
+        1
+      ],
+      "points": "0,0 864,1",
+      "border": {
+        "width": 1.5,
+        "color": "#C9D5D4",
+        "style": "solid"
+      },
+      "arrow": []
+    },
+    {
+      "elementId": "decision-tools",
+      "elementType": "table",
+      "bounds": [
+        48,
+        137,
+        864,
+        327
+      ],
+      "columnWidths": [
+        0.27,
+        0.43,
+        0.3
+      ],
+      "rowHeights": [
+        0.12,
+        0.22,
+        0.16,
+        0.17,
+        0.17,
+        0.16
+      ],
+      "rows": [
+        [
+          {
+            "text": "Decision"
+          },
+          {
+            "text": "Representative tools"
+          },
+          {
+            "text": "Main output"
+          }
+        ],
+        [
+          {
+            "text": "What to propose?"
+          },
+          {
+            "text": "REINVENT4, RFD4-Proteina,\nRFdiffusion, BindCraft"
+          },
+          {
+            "text": "Candidate molecules"
+          }
+        ],
+        [
+          {
+            "text": "Which sequence?"
+          },
+          {
+            "text": "ProteinMPNN"
+          },
+          {
+            "text": "Designed sequences"
+          }
+        ],
+        [
+          {
+            "text": "Which complex?"
+          },
+          {
+            "text": "AlphaFold 3, Boltz-2, Vina"
+          },
+          {
+            "text": "Poses and assessment"
+          }
+        ],
+        [
+          {
+            "text": "Which affinity change?"
+          },
+          {
+            "text": "Boltz-2, OpenFE"
+          },
+          {
+            "text": "Context-dependent estimates"
+          }
+        ],
+        [
+          {
+            "text": "Which liabilities?"
+          },
+          {
+            "text": "RDKit descriptors, TAP"
+          },
+          {
+            "text": "Property flags"
+          }
+        ]
+      ],
+      "style": {
+        "cellStyle": {
+          "fontFamily": "Arial",
+          "fontSize": 18,
+          "lineHeight": 1.14,
+          "color": "#172C3B",
+          "align": [
+            "left",
+            "middle"
+          ],
+          "border": [
+            null,
+            null,
+            {
+              "width": 1,
+              "color": "#C9D5D4",
+              "style": "solid"
+            },
+            null
+          ]
+        },
+        "firstRowStyle": {
+          "fontSize": 16,
+          "color": "#536571",
+          "bold": true,
+          "border": [
+            null,
+            null,
+            {
+              "width": 2,
+              "color": "#187D80",
+              "style": "solid"
+            },
+            null
+          ]
+        },
+        "firstColumnStyle": {
+          "color": "#187D80",
+          "bold": true
+        }
+      }
+    },
+    {
+      "elementId": "map-note",
+      "elementType": "text",
+      "bounds": [
+        48,
+        479,
+        780,
+        24
+      ],
+      "content": {
+        "text": "Tool roles overlap. Each output supports a different decision.",
+        "fontFamily": "Arial",
+        "fontSize": 17,
+        "lineHeight": 1.18,
+        "color": "#536571"
+      }
+    },
+    {
+      "elementId": "slide-id",
+      "elementType": "text",
+      "bounds": [
+        780,
+        505,
+        132,
+        19
+      ],
+      "content": {
+        "text": "Slide ID DD07",
+        "fontFamily": "Arial",
+        "fontSize": 12,
+        "lineHeight": 1.18,
+        "color": "#536571",
+        "align": [
+          "right",
+          "middle"
+        ]
+      }
+    }
+  ],
+  "notes": "A generator proposes molecules. A structure model evaluates or proposes conformations. Docking scores, learned affinity estimates and alchemical free energies have different meanings and assumptions. Boltz-2's standard affinity output concerns protein–small-molecule binding. It is not a validated universal protein–protein affinity estimator. Property flags identify concerns that need further evaluation. This table is an author synthesis of the documented roles of representative tools.\n\nSources\n[REINVENT] Loeffler et al. REINVENT 4: Modern AI-driven generative molecule design. Journal of Cheminformatics (2024)\nhttps://doi.org/10.1186/s13321-024-00812-5\nhttps://github.com/MolecularAI/REINVENT4\n\n[RF] Watson et al. De novo design of protein structure and function with RFdiffusion. Nature (2023)\nhttps://doi.org/10.1038/s41586-023-06415-8\n\n[RFD4] NVIDIA and Baker Laboratory. RFD4-Proteina documentation and model card\nhttps://docs.nvidia.com/nim/bionemo/rfd4-proteina/overview\nhttps://huggingface.co/nvidia/RFD4-Proteina-Diffusers\n\n[BINDCRAFT] Pacesa et al. One-shot design of functional protein binders with BindCraft. Nature (2025)\nhttps://doi.org/10.1038/s41586-025-09429-6\nhttps://pmc.ncbi.nlm.nih.gov/articles/PMC12507698/\n\n[MPNN] Dauparas et al. Robust deep learning-based protein sequence design using ProteinMPNN. Science (2022)\nhttps://doi.org/10.1126/science.add2187\nhttps://github.com/dauparas/ProteinMPNN\n\n[AF3] Abramson et al. Accurate structure prediction of biomolecular interactions with AlphaFold 3. Nature (2024)\nhttps://doi.org/10.1038/s41586-024-07487-w\n\n[BOLTZ] Boltz-2. Official model repository and accompanying paper\nhttps://github.com/jwohlwend/boltz\nhttps://pmc.ncbi.nlm.nih.gov/articles/PMC12262699/\n\n[VINA] AutoDock Vina. Official documentation\nhttps://autodock-vina.readthedocs.io/en/latest/\n\n[OPENFE] OpenFE. Official documentation\nhttps://docs.openfree.energy/en/latest/\n\n[RDKIT] RDKit. Overview\nhttps://www.rdkit.org/docs/Overview.html\n\n[TAP] Raybould et al. Five computational developability guidelines for therapeutic antibody profiling. PNAS (2019)\nhttps://doi.org/10.1073/pnas.1810576116\nhttps://pmc.ncbi.nlm.nih.gov/articles/PMC6410772/\n\nSource check: 8 November 2026. Representative tools, not an exhaustive ranking."
+}

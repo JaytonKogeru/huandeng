@@ -1,0 +1,231 @@
+{
+  "title": "The design brief",
+  "background": {
+    "type": "solid",
+    "color": "#F7F6F1"
+  },
+  "elements": [
+    {
+      "elementId": "title",
+      "elementType": "text",
+      "bounds": [
+        48,
+        38,
+        864,
+        58
+      ],
+      "content": {
+        "text": "The design brief",
+        "fontFamily": "Arial",
+        "fontSize": 35,
+        "lineHeight": 1.18,
+        "color": "#172C3B",
+        "bold": true
+      }
+    },
+    {
+      "elementId": "heading-rule",
+      "elementType": "line",
+      "bounds": [
+        48,
+        112,
+        864,
+        1
+      ],
+      "viewBox": [
+        864,
+        1
+      ],
+      "points": "0,0 864,1",
+      "border": {
+        "width": 1.5,
+        "color": "#C9D5D4",
+        "style": "solid"
+      },
+      "arrow": []
+    },
+    {
+      "elementId": "effect-title",
+      "elementType": "text",
+      "bounds": [
+        48,
+        155,
+        400,
+        34
+      ],
+      "content": {
+        "text": "Desired effect",
+        "fontFamily": "Arial",
+        "fontSize": 25,
+        "lineHeight": 1.18,
+        "color": "#187D80",
+        "bold": true
+      }
+    },
+    {
+      "elementId": "effect-copy",
+      "elementType": "text",
+      "bounds": [
+        48,
+        201,
+        400,
+        70
+      ],
+      "content": {
+        "text": "Change a disease-relevant\nbiological process.",
+        "fontFamily": "Arial",
+        "fontSize": 24,
+        "lineHeight": 1.18,
+        "color": "#172C3B"
+      }
+    },
+    {
+      "elementId": "access-title",
+      "elementType": "text",
+      "bounds": [
+        524,
+        155,
+        388,
+        34
+      ],
+      "content": {
+        "text": "Target access",
+        "fontFamily": "Arial",
+        "fontSize": 25,
+        "lineHeight": 1.18,
+        "color": "#187D80",
+        "bold": true
+      }
+    },
+    {
+      "elementId": "access-copy",
+      "elementType": "text",
+      "bounds": [
+        524,
+        201,
+        388,
+        70
+      ],
+      "content": {
+        "text": "Reach the relevant tissue\nand molecular site.",
+        "fontFamily": "Arial",
+        "fontSize": 24,
+        "lineHeight": 1.18,
+        "color": "#172C3B"
+      }
+    },
+    {
+      "elementId": "middle-rule",
+      "elementType": "line",
+      "bounds": [
+        48,
+        293,
+        864,
+        1
+      ],
+      "viewBox": [
+        864,
+        1
+      ],
+      "points": "0,0 864,1",
+      "border": {
+        "width": 1.5,
+        "color": "#C9D5D4",
+        "style": "solid"
+      },
+      "arrow": []
+    },
+    {
+      "elementId": "selectivity-title",
+      "elementType": "text",
+      "bounds": [
+        48,
+        324,
+        400,
+        34
+      ],
+      "content": {
+        "text": "Selectivity",
+        "fontFamily": "Arial",
+        "fontSize": 25,
+        "lineHeight": 1.18,
+        "color": "#187D80",
+        "bold": true
+      }
+    },
+    {
+      "elementId": "selectivity-copy",
+      "elementType": "text",
+      "bounds": [
+        48,
+        370,
+        400,
+        70
+      ],
+      "content": {
+        "text": "Separate the intended effect\nfrom harmful interactions.",
+        "fontFamily": "Arial",
+        "fontSize": 24,
+        "lineHeight": 1.18,
+        "color": "#172C3B"
+      }
+    },
+    {
+      "elementId": "feasibility-title",
+      "elementType": "text",
+      "bounds": [
+        524,
+        324,
+        388,
+        34
+      ],
+      "content": {
+        "text": "Developability",
+        "fontFamily": "Arial",
+        "fontSize": 25,
+        "lineHeight": 1.18,
+        "color": "#187D80",
+        "bold": true
+      }
+    },
+    {
+      "elementId": "feasibility-copy",
+      "elementType": "text",
+      "bounds": [
+        524,
+        370,
+        388,
+        70
+      ],
+      "content": {
+        "text": "Support a stable, manufacturable\nand deliverable molecule.",
+        "fontFamily": "Arial",
+        "fontSize": 24,
+        "lineHeight": 1.18,
+        "color": "#172C3B"
+      }
+    },
+    {
+      "elementId": "slide-id",
+      "elementType": "text",
+      "bounds": [
+        780,
+        505,
+        132,
+        19
+      ],
+      "content": {
+        "text": "Slide ID DD02",
+        "fontFamily": "Arial",
+        "fontSize": 12,
+        "lineHeight": 1.18,
+        "color": "#536571",
+        "align": [
+          "right",
+          "middle"
+        ]
+      }
+    }
+  ],
+  "notes": "The design brief begins with a biological mechanism and the properties required in the intended setting. Potency matters in the context of exposure at the site of action. Selectivity and tolerability matter alongside the desired effect. Stability, solubility, expression or synthesis, formulation and delivery influence which designs can progress. These requirements can conflict, so the study should make its priorities explicit.\n\nSources\n[FDA] US FDA. Discovery and Development\nhttps://www.fda.gov/patients/drug-development-process/step-1-discovery-and-development\n\n[FDA-PROCESS] US FDA. The Drug Development Process\nhttps://www.fda.gov/patients/learn-about-drug-and-device-approvals/drug-development-process\n\nSource check: 8 November 2026. Representative tools, not an exhaustive ranking."
+}

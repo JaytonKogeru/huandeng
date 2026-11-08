@@ -28,7 +28,7 @@ beforeEach(async () => {
 afterEach(async () => {
   vi.stubGlobal('window', {});
   vi.stubGlobal('localStorage', { setItem: () => {} });
-  await setUiLocale('zh-CN');
+  await setUiLocale('en');
   vi.unstubAllGlobals();
 });
 
@@ -88,7 +88,9 @@ describe('interface language preference and document isolation', () => {
     expect(getUiLocale()).toBe('en');
     expect(onLocaleChanged).toHaveBeenCalledTimes(1);
     changed('zh-CN');
-    expect(uiText('主幻灯片')).toBe('主幻灯片');
+    expect(getUiLocale()).toBe('zh-CN');
+    expect(uiText('主幻灯片')).toBe('Main Slides');
+    expect(uiText('添加效果')).toBe('添加效果');
     await setUiLocale('en');
     expect(desktop.setLocale).toHaveBeenCalledWith('en');
     expect(storage.get('huandeng:ui-locale')).toBe('zh-CN');
@@ -156,7 +158,7 @@ describe('interface language preference and document isolation', () => {
     const zh = render();
     await setUiLocale('en');
     const en = render();
-    expect(zh).toContain('页面动画步骤');
+    expect(zh).toContain('Slide动画步骤');
     expect(en).toContain('Add effect');
     expect(en).toContain('>淡入</span>');
     expect(en).not.toContain('>添加效果');

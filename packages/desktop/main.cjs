@@ -1,3 +1,4 @@
+const { normalizeWorkspaceLayout, createWorkspaceLayoutWriter } = require('./workspace.cjs');
 const {
   text: desktopText,
   getCurrentLocale,
@@ -33,6 +34,10 @@ let preferenceWrites = Promise.resolve();
 let allowClose = false;
 let closing = false;
 let stopping = false;
+const workspaceLayoutWriter = createWorkspaceLayoutWriter({
+  read: () => preferences.workspaceLayout,
+  write: changeWorkspaceLayout,
+});
 
 function commandLine(argv) {
   const args = argv.slice(app.isPackaged ? 1 : 2);
@@ -100,6 +105,21 @@ async function changeSnapping(enabled) {
   return enabled;
 }
 
+async function changeWorkspaceLayout(value) {
+  if (!value || typeof value !== 'object' || Array.isArray(value))
+    throw new Error('Invalid workspace layout.');
+  const previous = preferences.workspaceLayout;
+  const next = normalizeWorkspaceLayout(value);
+  preferences.workspaceLayout = next;
+  try {
+    await savePreferences();
+  } catch (error) {
+    preferences.workspaceLayout = previous;
+    throw error;
+  }
+  return next;
+}
+
 function status(message) {
   if (!window?.isDestroyed()) window?.webContents.send('huandeng:status', { message });
 }
@@ -137,7 +157,7 @@ function showError(error) {
 async function flushBeforeLeave() {
   if (!activeService || !window || window.isDestroyed()) return;
   const requestId = randomUUID();
-  await new Promise((resolve, reject) => {
+  const result = await new Promise((resolve, reject) => {
     const timer = setTimeout(() => {
       pendingLeaves.delete(requestId);
       reject(new Error(desktopText('页面尚未确认保存完成。请检查未保存的修改或冲突，然后再试。')));
@@ -145,6 +165,8 @@ async function flushBeforeLeave() {
     pendingLeaves.set(requestId, { resolve, reject, timer });
     window.webContents.send('huandeng:before-leave', requestId);
   });
+  // This action already owns operate(); another queued IPC write would deadlock behind it.
+  if (result?.workspaceLayout) await workspaceLayoutWriter.save(result.workspaceLayout);
 }
 
 async function rememberProject(service) {
@@ -428,6 +450,10 @@ function registerIpc() {
       executable: process.execPath,
     }),
   );
+  handle('huandeng:get-workspace-layout', (clientId) => workspaceLayoutWriter.open(clientId));
+  handle('huandeng:set-workspace-layout', (value) =>
+    operate(() => workspaceLayoutWriter.save(value)),
+  );
   handle('huandeng:get-locale', getCurrentLocale);
   handle('huandeng:set-locale', (locale) => operate(() => changeLocale(locale)));
   handle('huandeng:get-snapping', () => preferences.snapping !== false);
@@ -459,7 +485,7 @@ function registerIpc() {
     if (!pending) return;
     clearTimeout(pending.timer);
     pendingLeaves.delete(result.requestId);
-    if (result.ok) pending.resolve();
+    if (result.ok) pending.resolve({ workspaceLayout: result.workspaceLayout });
     else pending.reject(new Error(result.message || desktopText('页面仍有未保存的修改。')));
   });
 }
@@ -476,6 +502,7 @@ async function createWindow() {
     backgroundColor: '#f4f3ee',
     icon: path.join(__dirname, process.platform === 'win32' ? 'icon.ico' : 'icon.png'),
     show: false,
+    autoHideMenuBar: true,
     webPreferences: {
       preload: path.join(__dirname, 'preload.cjs'),
       contextIsolation: true,

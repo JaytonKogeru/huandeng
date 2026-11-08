@@ -1,0 +1,357 @@
+{
+  "title": "Protein and minibinder design",
+  "background": {
+    "type": "solid",
+    "color": "#F7F6F1"
+  },
+  "elements": [
+    {
+      "elementId": "title",
+      "elementType": "text",
+      "bounds": [
+        48,
+        38,
+        864,
+        58
+      ],
+      "content": {
+        "text": "Protein and minibinder design",
+        "fontFamily": "Arial",
+        "fontSize": 35,
+        "lineHeight": 1.18,
+        "color": "#172C3B",
+        "bold": true
+      }
+    },
+    {
+      "elementId": "heading-rule",
+      "elementType": "line",
+      "bounds": [
+        48,
+        112,
+        864,
+        1
+      ],
+      "viewBox": [
+        864,
+        1
+      ],
+      "points": "0,0 864,1",
+      "border": {
+        "width": 1.5,
+        "color": "#C9D5D4",
+        "style": "solid"
+      },
+      "arrow": []
+    },
+    {
+      "elementId": "joint-heading",
+      "elementType": "text",
+      "bounds": [
+        48,
+        142,
+        360,
+        30
+      ],
+      "content": {
+        "text": "Joint generation",
+        "fontFamily": "Arial",
+        "fontSize": 20,
+        "lineHeight": 1.18,
+        "color": "#536571"
+      }
+    },
+    {
+      "elementId": "modular-label",
+      "elementType": "text",
+      "bounds": [
+        48,
+        272,
+        500,
+        30
+      ],
+      "content": {
+        "text": "Backbone and sequence design",
+        "fontFamily": "Arial",
+        "fontSize": 20,
+        "lineHeight": 1.18,
+        "color": "#536571"
+      }
+    },
+    {
+      "elementId": "joint-boundary",
+      "elementType": "shape",
+      "shapeName": "rect",
+      "bounds": [
+        48,
+        184,
+        365,
+        70
+      ],
+      "fill": {
+        "type": "solid",
+        "color": "#E5EFEB"
+      },
+      "border": {
+        "width": 0,
+        "color": "#E5EFEB"
+      }
+    },
+    {
+      "elementId": "joint-label",
+      "elementType": "text",
+      "bounds": [
+        62,
+        194,
+        337,
+        50
+      ],
+      "content": {
+        "text": "RFD4-Proteina\nsequence + structure",
+        "fontFamily": "Arial",
+        "fontSize": 22,
+        "lineHeight": 1.18,
+        "color": "#172C3B",
+        "bold": true,
+        "align": [
+          "center",
+          "middle"
+        ]
+      }
+    },
+    {
+      "elementId": "backbone-boundary",
+      "elementType": "shape",
+      "shapeName": "rect",
+      "bounds": [
+        48,
+        315,
+        198,
+        66
+      ],
+      "fill": {
+        "type": "solid",
+        "color": "#E5EFEB"
+      },
+      "border": {
+        "width": 0,
+        "color": "#E5EFEB"
+      }
+    },
+    {
+      "elementId": "backbone-label",
+      "elementType": "text",
+      "bounds": [
+        62,
+        325,
+        170,
+        46
+      ],
+      "content": {
+        "text": "RFdiffusion",
+        "fontFamily": "Arial",
+        "fontSize": 22,
+        "lineHeight": 1.18,
+        "color": "#172C3B",
+        "bold": true,
+        "align": [
+          "center",
+          "middle"
+        ]
+      }
+    },
+    {
+      "elementId": "sequence-boundary",
+      "elementType": "shape",
+      "shapeName": "rect",
+      "bounds": [
+        294,
+        315,
+        215,
+        66
+      ],
+      "fill": {
+        "type": "solid",
+        "color": "#E5EFEB"
+      },
+      "border": {
+        "width": 0,
+        "color": "#E5EFEB"
+      }
+    },
+    {
+      "elementId": "sequence-label",
+      "elementType": "text",
+      "bounds": [
+        308,
+        325,
+        187,
+        46
+      ],
+      "content": {
+        "text": "ProteinMPNN",
+        "fontFamily": "Arial",
+        "fontSize": 22,
+        "lineHeight": 1.18,
+        "color": "#172C3B",
+        "bold": true,
+        "align": [
+          "center",
+          "middle"
+        ]
+      }
+    },
+    {
+      "elementId": "sequence-link",
+      "elementType": "line",
+      "bounds": [
+        253,
+        348,
+        32,
+        1
+      ],
+      "viewBox": [
+        32,
+        1
+      ],
+      "points": "0,0 32,1",
+      "border": {
+        "width": 1.5,
+        "color": "#187D80",
+        "style": "solid"
+      },
+      "arrow": [
+        null,
+        "arrow"
+      ]
+    },
+    {
+      "elementId": "joint-link",
+      "elementType": "line",
+      "bounds": [
+        425,
+        219,
+        154,
+        1
+      ],
+      "viewBox": [
+        154,
+        1
+      ],
+      "points": "0,0 154,1",
+      "border": {
+        "width": 1.5,
+        "color": "#187D80",
+        "style": "solid"
+      },
+      "arrow": [
+        null,
+        "arrow"
+      ]
+    },
+    {
+      "elementId": "modular-link",
+      "elementType": "line",
+      "bounds": [
+        520,
+        348,
+        59,
+        1
+      ],
+      "viewBox": [
+        59,
+        1
+      ],
+      "points": "0,0 59,1",
+      "border": {
+        "width": 1.5,
+        "color": "#187D80",
+        "style": "solid"
+      },
+      "arrow": [
+        null,
+        "arrow"
+      ]
+    },
+    {
+      "elementId": "selection-boundary",
+      "elementType": "shape",
+      "shapeName": "rect",
+      "bounds": [
+        590,
+        184,
+        322,
+        197
+      ],
+      "fill": {
+        "type": "solid",
+        "color": "#172C3B"
+      },
+      "border": {
+        "width": 0,
+        "color": "#172C3B"
+      }
+    },
+    {
+      "elementId": "selection-label",
+      "elementType": "text",
+      "bounds": [
+        604,
+        194,
+        294,
+        177
+      ],
+      "content": {
+        "text": "Complex prediction\nand candidate selection",
+        "fontFamily": "Arial",
+        "fontSize": 25,
+        "lineHeight": 1.18,
+        "color": "#FFFFFF",
+        "bold": true,
+        "align": [
+          "center",
+          "middle"
+        ]
+      }
+    },
+    {
+      "elementId": "integrated-route",
+      "elementType": "text",
+      "bounds": [
+        48,
+        416,
+        864,
+        62
+      ],
+      "content": {
+        "text": "BindCraft integrates design and filtering in an experimentally evaluated binder workflow.",
+        "fontFamily": "Arial",
+        "fontSize": 21,
+        "lineHeight": 1.18,
+        "color": "#536571"
+      }
+    },
+    {
+      "elementId": "slide-id",
+      "elementType": "text",
+      "bounds": [
+        780,
+        505,
+        132,
+        19
+      ],
+      "content": {
+        "text": "Slide ID DD05",
+        "fontFamily": "Arial",
+        "fontSize": 12,
+        "lineHeight": 1.18,
+        "color": "#536571",
+        "align": [
+          "right",
+          "middle"
+        ]
+      }
+    }
+  ],
+  "notes": "Protein design has both modular and integrated approaches. RFdiffusion established generative backbone design, with ProteinMPNN commonly used for sequence design. The current RFD4-Proteina release supports joint sequence–structure generation. BindCraft is an experimentally evaluated automated workflow for de novo binders. These are alternative routes with overlapping capabilities. Structural assessment and physical plausibility inform selection. Expression, specificity and the intended biological effect still need measurement.\n\nSources\n[RF] Watson et al. De novo design of protein structure and function with RFdiffusion. Nature (2023)\nhttps://doi.org/10.1038/s41586-023-06415-8\n\n[MPNN] Dauparas et al. Robust deep learning-based protein sequence design using ProteinMPNN. Science (2022)\nhttps://doi.org/10.1126/science.add2187\nhttps://github.com/dauparas/ProteinMPNN\n\n[RFD4] NVIDIA and Baker Laboratory. RFD4-Proteina documentation and model card\nhttps://docs.nvidia.com/nim/bionemo/rfd4-proteina/overview\nhttps://huggingface.co/nvidia/RFD4-Proteina-Diffusers\n\n[BINDCRAFT] Pacesa et al. One-shot design of functional protein binders with BindCraft. Nature (2025)\nhttps://doi.org/10.1038/s41586-025-09429-6\nhttps://pmc.ncbi.nlm.nih.gov/articles/PMC12507698/\n\n[AF3] Abramson et al. Accurate structure prediction of biomolecular interactions with AlphaFold 3. Nature (2024)\nhttps://doi.org/10.1038/s41586-024-07487-w\n\nSource check: 8 November 2026. Representative tools, not an exhaustive ranking."
+}

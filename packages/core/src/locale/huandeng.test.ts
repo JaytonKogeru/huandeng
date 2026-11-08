@@ -83,11 +83,23 @@ describe('HUANDENG interface messages', () => {
     expect(translateUi('en', '无法读取素材 主幻灯片：permission denied')).toBe(
       'Cannot read asset 主幻灯片: permission denied',
     );
-    expect(translateUi('zh-CN', 'The project is closing.')).toBe('项目正在关闭。');
-    expect(translateUi('zh-CN', 'Slide code copied: 主幻灯片')).toBe('已复制页面短码 主幻灯片');
+    expect(translateUi('zh-CN', 'The project is closing.')).toBe('Project正在关闭。');
+    expect(translateUi('zh-CN', 'Slide ID copied: 主幻灯片')).toBe('已复制Slide ID 主幻灯片');
     expect(translateUi('en', '图表列名不能为空或重复，最多支持 100 列。')).toBe(
       'Chart columns must be unique non-empty names (at most 100 columns).',
     );
+  });
+
+  it('keeps product vocabulary English in both interfaces while retaining authored values', () => {
+    for (const locale of ['en', 'zh-CN'] as const) {
+      expect(translateUi(locale, '主幻灯片')).toBe('Main Slides');
+      expect(translateUi(locale, '章节')).toBe('Section');
+      expect(translateUi(locale, '项目')).toBe('Project');
+    }
+    expect(translateUi('zh-CN', 'Slide ID copied: {value0}', { value0: '我的主幻灯片' })).toContain(
+      '我的主幻灯片',
+    );
+    expect(translateUi('zh-CN', '未知项目中的原始用户文字')).toBe('未知项目中的原始用户文字');
   });
 
   it('handles singular count messages and local date/number formats', () => {

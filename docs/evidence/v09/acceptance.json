@@ -190,48 +190,25 @@
       "observations": [
         {
           "name": "equal-gaps",
-          "distances": [
-            40,
-            40
-          ],
-          "bounds": [
-            180,
-            50,
-            80,
-            40
-          ]
+          "distances": [40, 40],
+          "bounds": [180, 50, 80, 40]
         },
         {
           "name": "four-screen-pixels",
           "actualScale": 1,
           "rawX": 256,
-          "bounds": [
-            260,
-            100,
-            40,
-            40
-          ]
+          "bounds": [260, 100, 40, 40]
         },
         {
           "name": "four-screen-pixels",
           "actualScale": 0.5,
           "rawX": 252,
-          "bounds": [
-            260,
-            100,
-            40,
-            40
-          ]
+          "bounds": [260, 100, 40, 40]
         },
         {
           "name": "seven-screen-pixels-outside",
           "actualScale": 0.5,
-          "bounds": [
-            246,
-            100,
-            40,
-            40
-          ]
+          "bounds": [246, 100, 40, 40]
         }
       ],
       "syntheticOnly": true
@@ -275,12 +252,8 @@
     "existingDraftPreserved": {
       "preservedExistingGuiDraft": true,
       "usedNormalSaveProject": true,
-      "changedFiles": [
-        ".huandeng/project.json"
-      ],
-      "changedMetadataFields": [
-        "/project"
-      ],
+      "changedFiles": [".huandeng/project.json"],
+      "changedMetadataFields": ["/project"],
       "all81ManifestAndPageFilesUnchanged": true,
       "sourceBeforeAndAfterBackedUp": true,
       "noGeneratedContentEdits": true

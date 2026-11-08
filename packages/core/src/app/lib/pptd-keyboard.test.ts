@@ -147,6 +147,48 @@ describe('editor keyboard ownership', () => {
     }
   });
 
+  it('routes quick formatting and all layer commands only outside native editing scopes', () => {
+    for (const modifier of [{ ctrlKey: true }, { metaKey: true }]) {
+      expect(resolveEditorKeyboardCommand(key('b', modifier), 'canvas')).toEqual({
+        type: 'format-text',
+        format: 'bold',
+      });
+      expect(resolveEditorKeyboardCommand(key('i', modifier), 'layers')).toEqual({
+        type: 'format-text',
+        format: 'italic',
+      });
+      expect(resolveEditorKeyboardCommand(key('u', modifier), 'canvas')).toEqual({
+        type: 'format-text',
+        format: 'underline',
+      });
+      expect(
+        resolveEditorKeyboardCommand(key('>', { ...modifier, shiftKey: true }), 'canvas'),
+      ).toEqual({ type: 'font-size', delta: 1 });
+      expect(
+        resolveEditorKeyboardCommand(key(',', { ...modifier, shiftKey: true }), 'canvas'),
+      ).toEqual({ type: 'font-size', delta: -1 });
+      expect(resolveEditorKeyboardCommand(key(']', modifier), 'canvas')).toEqual({
+        type: 'layer',
+        direction: 'forward',
+      });
+      expect(resolveEditorKeyboardCommand(key('[', modifier), 'layers')).toEqual({
+        type: 'layer',
+        direction: 'backward',
+      });
+      expect(
+        resolveEditorKeyboardCommand(key('}', { ...modifier, shiftKey: true }), 'canvas'),
+      ).toEqual({ type: 'layer', direction: 'front' });
+      expect(
+        resolveEditorKeyboardCommand(key('[', { ...modifier, shiftKey: true }), 'canvas'),
+      ).toEqual({ type: 'layer', direction: 'back' });
+      for (const scope of ['input', 'dialog', 'timeline', 'thumbnails', 'control'] as const)
+        for (const value of ['b', 'i', 'u', '[', ']'])
+          expect(resolveEditorKeyboardCommand(key(value, modifier), scope)).toBeNull();
+      expect(resolveEditorKeyboardCommand(key('u', modifier), 'canvas', true)).toBeNull();
+      expect(resolveEditorKeyboardCommand(key('v', modifier), 'canvas')).toBeNull();
+    }
+  });
+
   it('preserves button activation and excludes hidden canvas commands in presentation', () => {
     expect(resolveEditorKeyboardCommand(key(' '), 'control', true)).toBeNull();
     expect(resolveEditorKeyboardCommand(key(' '), 'workspace', true)).toEqual({
@@ -227,8 +269,8 @@ describe('object and occurrence navigation', () => {
         content: { text: '<b>研究目标</b>' },
       }),
     ).toBe('研究目标');
-    expect(elementLabel({ elementId: 'opaque', elementType: 'table' })).toBe('表格');
-    expect(elementLabel({ elementId: 'opaque', elementType: 'group', children: [] })).toBe('组合');
+    expect(elementLabel({ elementId: 'opaque', elementType: 'table' })).toBe('Table');
+    expect(elementLabel({ elementId: 'opaque', elementType: 'group', children: [] })).toBe('Group');
     expect(
       elementLabel({ elementId: 'opaque', elementType: 'chart', title: { text: '测量结果' } }),
     ).toBe('测量结果');

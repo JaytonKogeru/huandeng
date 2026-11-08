@@ -86,8 +86,8 @@ describe('animation authoring entry', () => {
     const before = JSON.stringify(page);
     const html = render(page);
     expect(html).toContain('data-hd-animation-panel="builds"');
-    expect(html).toContain('页面动画步骤');
-    expect(html).toContain('添加效果');
+    expect(html).toContain('Slide animation steps');
+    expect(html).toContain('Add effect');
     expect(html).not.toContain('data-hd-timeline="');
     expect(JSON.stringify(page)).toBe(before);
   });
@@ -98,7 +98,7 @@ describe('animation authoring entry', () => {
     const html = render(page);
     expect((html.match(/data-hd-build-step=/g) ?? []).length).toBe(2);
     expect((html.match(/data-hd-build-effect=/g) ?? []).length).toBe(3);
-    expect(html).toContain('逐步预演');
+    expect(html).toContain('Preview steps');
     expect(html).not.toContain('data-hd-keyframe=');
     expect(JSON.stringify(page)).toBe(before);
   });
@@ -121,8 +121,8 @@ describe('animation authoring entry', () => {
       const page = snapshot(animation);
       const before = JSON.stringify(page);
       const html = render(page);
-      expect(html).toContain('复制动画草稿');
-      expect(html).not.toContain('改用演讲步骤');
+      expect(html).toContain('Copy animation draft');
+      expect(html).not.toContain('Use build steps');
       expect(JSON.stringify(page)).toBe(before);
     }
   });
@@ -132,10 +132,10 @@ describe('animation authoring entry', () => {
     page.versionId = 'checkpoint:pinned';
     page.data.transition = { schemaVersion: 1, kind: 'fade', durationMs: 1250 };
     const html = render(page, true);
-    expect(html).toContain('当前页面只读，可逐步预演。');
-    expect(html).toContain('换页时长（秒）');
+    expect(html).toContain('This slide is read-only. You can preview its steps.');
+    expect(html).toContain('Transition duration (s)');
     expect(html).toContain('value="1.25"');
-    expect(html).toMatch(/aria-label="添加动画的对象"[^>]*disabled=""/);
-    expect(html).toMatch(/aria-label="换页效果"[^>]*disabled=""/);
+    expect(html).toMatch(/aria-label="Object to animate"[^>]*disabled=""/);
+    expect(html).toMatch(/aria-label="Slide transition"[^>]*disabled=""/);
   });
 });

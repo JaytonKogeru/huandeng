@@ -53,7 +53,7 @@ export function ProjectOverview({
         {onEditProject && (
           <Button variant="ghost" size="xs" onClick={onEditProject}>
             <BookOpen />
-            {t('编排演讲')}
+            {t('Arrange Presentation')}
           </Button>
         )}
       </div>
@@ -84,11 +84,16 @@ export function ProjectOverview({
       <div className="space-y-2">
         <h3 className="flex items-center gap-1.5 font-medium">
           <Presentation className="size-3.5" />
-          {t('从主库衍生的演讲')}
+          {t('Presentations')}
         </h3>
         {insights.presentations.length === 0 ? (
-          <div className="rounded-lg border border-dashed border-border p-3 leading-relaxed text-muted-foreground">
-            {t('点击「编排演讲」，选择章节或单页，组成同一项目中的演讲。页面内容仍由主库维护。')}
+          <div className="space-y-3 rounded-lg border border-dashed border-border p-3 leading-relaxed text-muted-foreground">
+            <p>{t('Build a Presentation by choosing slides or Sections from Main Slides.')}</p>
+            {onEditProject && (
+              <Button size="xs" variant="outline" className="w-full" onClick={onEditProject}>
+                {t('Create a Presentation')}
+              </Button>
+            )}
           </div>
         ) : (
           insights.presentations.map((presentation) => (
@@ -116,9 +121,20 @@ export function ProjectOverview({
                   {t('听众 · {value0}', { value0: presentation.story.audience })}
                 </span>
               )}
-              {presentation.diagnostics.length > 0 && (
+              {presentation.pageCount === 0 && (
+                <span className="mt-2 block text-[11px] text-muted-foreground">
+                  {t('Choose Arrange Presentation to add slides.')}
+                </span>
+              )}
+              {presentation.diagnostics.some(
+                (diagnostic) => diagnostic.code !== 'PRESENTATION_EMPTY',
+              ) && (
                 <span className="mt-2 block text-[11px] text-destructive">
-                  {t(presentation.diagnostics[0].message)}
+                  {t(
+                    presentation.diagnostics.find(
+                      (diagnostic) => diagnostic.code !== 'PRESENTATION_EMPTY',
+                    )?.message ?? '',
+                  )}
                 </span>
               )}
             </button>
@@ -185,7 +201,9 @@ export function ProjectOverview({
             })}
           </ul>
           <p className="text-[10px] leading-relaxed text-muted-foreground">
-            {t('短码标识同一张页面；左侧数字是当前演讲中的位置。固定版本保留记录时的页面与素材。')}
+            {t(
+              'Slide ID stays with the slide. Position changes when the order changes. Pinned versions retain their recorded content and assets.',
+            )}
           </p>
         </div>
       )}

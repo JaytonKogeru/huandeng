@@ -123,8 +123,8 @@ describe('animation renderer integration', () => {
     const panel = renderToStaticMarkup(
       <TimelinePanel page={page} onChange={async () => undefined} onPreview={() => undefined} />,
     );
-    expect(panel).toContain('原始动画数据已保留');
-    expect(panel).toContain('此时间线暂不能编辑');
+    expect(panel).toContain('The original animation is preserved.');
+    expect(panel).toContain('This timeline cannot be edited yet.');
     expect(page).toEqual(before);
   });
 

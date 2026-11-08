@@ -79,6 +79,9 @@ export function TechnicalQaPanel({ page, size, diagnostics, onSelect }: Technica
           {t('{value0} 错误 · {value1} 提醒', { value0: errors, value1: warnings })}
         </span>
       </div>
+      <p className="text-xs leading-relaxed text-muted-foreground">
+        {t('Checks inspect slide bounds, missing assets, fonts and text layout.')}
+      </p>
       {issues.length ? (
         <details open={errors > 0}>
           <summary className="cursor-pointer text-xs">

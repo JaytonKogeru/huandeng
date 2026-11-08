@@ -1,0 +1,32 @@
+{
+  "title": "Drug Design · How a designed molecule becomes a useful candidate",
+  "size": [
+    960,
+    540
+  ],
+  "pages": [
+    "pages/01-drug-design.page",
+    "pages/02-design-brief.page",
+    "pages/03-molecular-routes.page",
+    "pages/04-small-molecules.page",
+    "pages/05-protein-binders.page",
+    "pages/06-antibodies.page",
+    "pages/07-tool-map.page",
+    "pages/08-evidence.page",
+    "pages/09-candidate-selection.page",
+    "pages/10-first-study.page"
+  ],
+  "theme": {
+    "fontFamily": "Arial",
+    "colors": {
+      "paper": "#F7F6F1",
+      "ink": "#172C3B",
+      "muted": "#536571",
+      "teal": "#187D80",
+      "orange": "#BB653D",
+      "rule": "#C9D5D4",
+      "tint": "#E5EFEB",
+      "white": "#FFFFFF"
+    }
+  }
+}

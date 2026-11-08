@@ -48,6 +48,7 @@ const ThumbnailPreview = memo(function ThumbnailPreview({
 
 export function PptdThumbnailRail({
   pages,
+  sections = [],
   size,
   theme,
   currentPageId,
@@ -64,6 +65,7 @@ export function PptdThumbnailRail({
   onShowFile,
 }: {
   pages: PageSnapshot[];
+  sections?: { title: string; pageIds: string[] }[];
   size: PageSize;
   theme: PptdTheme;
   currentPageId: string | null;
@@ -194,6 +196,22 @@ export function PptdThumbnailRail({
         {entries.map(({ page, index, name, key }) => {
           return (
             <ContextMenu key={page.occurrenceId ?? page.pageId}>
+              {sections
+                .filter((section) => section.pageIds[0] === page.pageId)
+                .map((section) => (
+                  <div
+                    key={section.title}
+                    className="mt-3 flex items-center gap-2 border-t border-border px-2 pb-1 pt-2 text-xs font-semibold"
+                    data-hd-section-heading
+                  >
+                    <span className="min-w-0 flex-1 truncate" title={section.title}>
+                      {section.title}
+                    </span>
+                    <span className="font-normal text-muted-foreground">
+                      {section.pageIds.length}
+                    </span>
+                  </div>
+                ))}
               <ContextMenuTrigger
                 render={
                   <button

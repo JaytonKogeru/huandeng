@@ -70,6 +70,7 @@ export function textCss(content: Record<string, unknown>, theme: PptdTheme = {})
     fontSize: numberValue(content.fontSize, 18),
     fontWeight: content.bold === true ? 700 : 400,
     fontStyle: content.italic === true ? 'italic' : 'normal',
+    textDecoration: content.underline === true ? 'underline' : undefined,
     color: resolveColor(content.color, theme),
     backgroundColor: content.backgroundColor
       ? resolveColor(content.backgroundColor, theme)

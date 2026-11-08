@@ -1,0 +1,420 @@
+{
+  "schemaVersion": 1,
+  "deckId": "d0100000-0000-4000-8000-000000000000",
+  "entry": "deck.pptd",
+  "designPolicy": "huandeng-human-scientific-v1",
+  "slides": {
+    "d0100000-0000-4000-8000-000000000001": {
+      "shortCode": "DD01",
+      "label": "S1",
+      "path": "pages/01-drug-design.page",
+      "state": "active",
+      "designIntent": {
+        "purpose": "Introduce the decision that connects molecular design to a useful candidate.",
+        "keep": [
+          "Preserve the authored 960 × 540 composition and intentional whitespace.",
+          "Keep text, tables and process diagrams editable.",
+          "Keep claim-specific sources in speaker notes."
+        ]
+      },
+      "elementRoles": {
+        "title": "title",
+        "subtitle": "explanation",
+        "formats": "explanation",
+        "slide-id": "identity"
+      },
+      "components": {},
+      "lastAuthorReview": null
+    },
+    "d0100000-0000-4000-8000-000000000002": {
+      "shortCode": "DD02",
+      "label": "S2",
+      "path": "pages/02-design-brief.page",
+      "state": "active",
+      "designIntent": {
+        "purpose": "Define biological effect, target access, selectivity and developability before choosing a generator.",
+        "keep": [
+          "Preserve the authored 960 × 540 composition and intentional whitespace.",
+          "Keep text, tables and process diagrams editable.",
+          "Keep claim-specific sources in speaker notes."
+        ]
+      },
+      "elementRoles": {
+        "title": "title",
+        "heading-rule": "explanation",
+        "effect-title": "explanation",
+        "effect-copy": "explanation",
+        "access-title": "explanation",
+        "access-copy": "explanation",
+        "middle-rule": "explanation",
+        "selectivity-title": "explanation",
+        "selectivity-copy": "explanation",
+        "feasibility-title": "explanation",
+        "feasibility-copy": "explanation",
+        "slide-id": "identity"
+      },
+      "components": {},
+      "lastAuthorReview": null
+    },
+    "d0100000-0000-4000-8000-000000000003": {
+      "shortCode": "DD03",
+      "label": "S3",
+      "path": "pages/03-molecular-routes.page",
+      "state": "active",
+      "designIntent": {
+        "purpose": "Compare the objects, starting problems and constraints of the three formats.",
+        "keep": [
+          "Preserve the authored 960 × 540 composition and intentional whitespace.",
+          "Keep text, tables and process diagrams editable.",
+          "Keep claim-specific sources in speaker notes."
+        ]
+      },
+      "elementRoles": {
+        "title": "title",
+        "heading-rule": "explanation",
+        "modality-comparison": "evidence",
+        "format-distinction": "explanation",
+        "slide-id": "identity"
+      },
+      "components": {},
+      "lastAuthorReview": null
+    },
+    "d0100000-0000-4000-8000-000000000004": {
+      "shortCode": "DD04",
+      "label": "S4",
+      "path": "pages/04-small-molecules.page",
+      "state": "active",
+      "designIntent": {
+        "purpose": "Map molecular representation, generation, structure and affinity tools to their jobs.",
+        "keep": [
+          "Preserve the authored 960 × 540 composition and intentional whitespace.",
+          "Keep text, tables and process diagrams editable.",
+          "Keep claim-specific sources in speaker notes."
+        ]
+      },
+      "elementRoles": {
+        "title": "title",
+        "heading-rule": "explanation",
+        "route-statement": "explanation",
+        "route-caption": "explanation",
+        "route-divider": "explanation",
+        "chemistry-title": "explanation",
+        "chemistry-tools": "explanation",
+        "pose-title": "explanation",
+        "pose-tools": "explanation",
+        "affinity-title": "explanation",
+        "affinity-tools": "explanation",
+        "slide-id": "identity"
+      },
+      "components": {},
+      "lastAuthorReview": null
+    },
+    "d0100000-0000-4000-8000-000000000005": {
+      "shortCode": "DD05",
+      "label": "S5",
+      "path": "pages/05-protein-binders.page",
+      "state": "active",
+      "designIntent": {
+        "purpose": "Show joint and modular design routes without implying a mandatory tool chain.",
+        "keep": [
+          "Preserve the authored 960 × 540 composition and intentional whitespace.",
+          "Keep text, tables and process diagrams editable.",
+          "Keep claim-specific sources in speaker notes."
+        ]
+      },
+      "elementRoles": {
+        "title": "title",
+        "heading-rule": "explanation",
+        "joint-heading": "explanation",
+        "modular-label": "explanation",
+        "joint-boundary": "explanation",
+        "joint-label": "explanation",
+        "backbone-boundary": "explanation",
+        "backbone-label": "explanation",
+        "sequence-boundary": "explanation",
+        "sequence-label": "explanation",
+        "sequence-link": "explanation",
+        "joint-link": "explanation",
+        "modular-link": "explanation",
+        "selection-boundary": "explanation",
+        "selection-label": "explanation",
+        "integrated-route": "explanation",
+        "slide-id": "identity"
+      },
+      "components": {},
+      "lastAuthorReview": null
+    },
+    "d0100000-0000-4000-8000-000000000006": {
+      "shortCode": "DD06",
+      "label": "S6",
+      "path": "pages/06-antibodies.page",
+      "state": "active",
+      "designIntent": {
+        "purpose": "Explain the framework, CDR and format problem and distinguish design from developability.",
+        "keep": [
+          "Preserve the authored 960 × 540 composition and intentional whitespace.",
+          "Keep text, tables and process diagrams editable.",
+          "Keep claim-specific sources in speaker notes."
+        ]
+      },
+      "elementRoles": {
+        "title": "title",
+        "heading-rule": "explanation",
+        "framework-heading": "explanation",
+        "framework-copy": "explanation",
+        "framework-cdr": "explanation",
+        "cdr-heading": "explanation",
+        "cdr-copy": "explanation",
+        "cdr-format": "explanation",
+        "format-heading": "explanation",
+        "format-copy": "explanation",
+        "antibody-rule": "explanation",
+        "design-tools": "explanation",
+        "design-tools-copy": "explanation",
+        "profile-title": "explanation",
+        "profile-copy": "explanation",
+        "slide-id": "identity"
+      },
+      "components": {},
+      "lastAuthorReview": null
+    },
+    "d0100000-0000-4000-8000-000000000007": {
+      "shortCode": "DD07",
+      "label": "S7",
+      "path": "pages/07-tool-map.page",
+      "state": "active",
+      "designIntent": {
+        "purpose": "Make the output and purpose of each tool family explicit.",
+        "keep": [
+          "Preserve the authored 960 × 540 composition and intentional whitespace.",
+          "Keep text, tables and process diagrams editable.",
+          "Keep claim-specific sources in speaker notes."
+        ]
+      },
+      "elementRoles": {
+        "title": "title",
+        "heading-rule": "explanation",
+        "decision-tools": "evidence",
+        "map-note": "explanation",
+        "slide-id": "identity"
+      },
+      "components": {},
+      "lastAuthorReview": null
+    },
+    "d0100000-0000-4000-8000-000000000008": {
+      "shortCode": "DD08",
+      "label": "S8",
+      "path": "pages/08-evidence.page",
+      "state": "active",
+      "designIntent": {
+        "purpose": "Separate confidence in predicted geometry, measured binding, function and development.",
+        "keep": [
+          "Preserve the authored 960 × 540 composition and intentional whitespace.",
+          "Keep text, tables and process diagrams editable.",
+          "Keep claim-specific sources in speaker notes."
+        ]
+      },
+      "elementRoles": {
+        "title": "title",
+        "heading-rule": "explanation",
+        "evidence-table": "evidence",
+        "evidence-conclusion": "explanation",
+        "slide-id": "identity"
+      },
+      "components": {},
+      "lastAuthorReview": null
+    },
+    "d0100000-0000-4000-8000-000000000009": {
+      "shortCode": "DD09",
+      "label": "S9",
+      "path": "pages/09-candidate-selection.page",
+      "state": "active",
+      "designIntent": {
+        "purpose": "Present an explicit decision framework without fabricated scoring data.",
+        "keep": [
+          "Preserve the authored 960 × 540 composition and intentional whitespace.",
+          "Keep text, tables and process diagrams editable.",
+          "Keep claim-specific sources in speaker notes."
+        ]
+      },
+      "elementRoles": {
+        "title": "title",
+        "heading-rule": "explanation",
+        "biology-input": "explanation",
+        "biology-detail": "explanation",
+        "molecule-input": "explanation",
+        "molecule-detail": "explanation",
+        "feasibility-input": "explanation",
+        "feasibility-detail": "explanation",
+        "selection-divider": "explanation",
+        "decision": "explanation",
+        "selection-copy": "explanation",
+        "slide-id": "identity"
+      },
+      "components": {},
+      "lastAuthorReview": null
+    },
+    "d0100000-0000-4000-8000-000000000010": {
+      "shortCode": "DD10",
+      "label": "S10",
+      "path": "pages/10-first-study.page",
+      "state": "active",
+      "designIntent": {
+        "purpose": "Close with a practical research programme and the decision it should support.",
+        "keep": [
+          "Preserve the authored 960 × 540 composition and intentional whitespace.",
+          "Keep text, tables and process diagrams editable.",
+          "Keep claim-specific sources in speaker notes."
+        ]
+      },
+      "elementRoles": {
+        "title": "title",
+        "heading-rule": "explanation",
+        "closing-title": "explanation",
+        "closing-divider": "explanation",
+        "study-one": "explanation",
+        "study-one-copy": "explanation",
+        "study-two": "explanation",
+        "study-two-copy": "explanation",
+        "study-three": "explanation",
+        "study-three-copy": "explanation",
+        "study-four": "explanation",
+        "study-four-copy": "explanation",
+        "slide-id": "identity"
+      },
+      "components": {},
+      "lastAuthorReview": null
+    }
+  },
+  "project": {
+    "schemaVersion": 1,
+    "mainStory": {
+      "purpose": "Explain design routes and the evidence needed for a useful drug candidate.",
+      "audience": "Computational molecular-design research group",
+      "takeaway": "Candidate generation, predicted binding, measured activity and developability answer different questions."
+    },
+    "sections": [
+      {
+        "id": "design-brief",
+        "title": "Design brief",
+        "pageIds": [
+          "d0100000-0000-4000-8000-000000000001",
+          "d0100000-0000-4000-8000-000000000002",
+          "d0100000-0000-4000-8000-000000000003"
+        ],
+        "story": {
+          "purpose": "Define a useful candidate and compare molecular formats.",
+          "audience": "Computational molecular-design research group",
+          "takeaway": "The biological mechanism and required properties determine the design route."
+        },
+        "range": {
+          "startPageId": "d0100000-0000-4000-8000-000000000001",
+          "endPageId": "d0100000-0000-4000-8000-000000000003"
+        }
+      },
+      {
+        "id": "design-routes",
+        "title": "Design routes",
+        "pageIds": [
+          "d0100000-0000-4000-8000-000000000004",
+          "d0100000-0000-4000-8000-000000000005",
+          "d0100000-0000-4000-8000-000000000006"
+        ],
+        "story": {
+          "purpose": "Explain the small-molecule, minibinder and antibody toolchains.",
+          "audience": "Computational molecular-design research group",
+          "takeaway": "Tools differ in the objects and constraints they optimize."
+        },
+        "range": {
+          "startPageId": "d0100000-0000-4000-8000-000000000004",
+          "endPageId": "d0100000-0000-4000-8000-000000000006"
+        }
+      },
+      {
+        "id": "evidence-decisions",
+        "title": "Evidence and decisions",
+        "pageIds": [
+          "d0100000-0000-4000-8000-000000000007",
+          "d0100000-0000-4000-8000-000000000008",
+          "d0100000-0000-4000-8000-000000000009",
+          "d0100000-0000-4000-8000-000000000010"
+        ],
+        "story": {
+          "purpose": "Connect computational outputs to scientific decisions.",
+          "audience": "Computational molecular-design research group",
+          "takeaway": "Measured function and development evidence determine progression."
+        },
+        "range": {
+          "startPageId": "d0100000-0000-4000-8000-000000000007",
+          "endPageId": "d0100000-0000-4000-8000-000000000010"
+        }
+      }
+    ],
+    "presentations": [
+      {
+        "id": "drug-design-overview",
+        "title": "Drug Design · Full overview",
+        "story": {
+          "purpose": "Present the full 10-slide argument in 8–12 minutes.",
+          "audience": "Computational molecular-design research group",
+          "takeaway": "A useful programme connects molecular design to evidence for a biological mechanism."
+        },
+        "items": [
+          {
+            "id": "full-design-brief",
+            "kind": "section",
+            "sectionId": "design-brief"
+          },
+          {
+            "id": "full-design-routes",
+            "kind": "section",
+            "sectionId": "design-routes"
+          },
+          {
+            "id": "full-evidence-decisions",
+            "kind": "section",
+            "sectionId": "evidence-decisions"
+          }
+        ],
+        "notes": "A 10-slide Presentation that dynamically references the three contiguous Main Slides Sections."
+      },
+      {
+        "id": "drug-design-briefing",
+        "title": "Drug Design · Five-slide briefing",
+        "story": {
+          "purpose": "Give a five-minute introduction for a mixed audience.",
+          "audience": "Computational molecular-design research group",
+          "takeaway": "Choose the molecular route, then ask what each kind of evidence establishes."
+        },
+        "items": [
+          {
+            "id": "brief-dd01",
+            "kind": "page",
+            "pageId": "d0100000-0000-4000-8000-000000000001"
+          },
+          {
+            "id": "brief-dd03",
+            "kind": "page",
+            "pageId": "d0100000-0000-4000-8000-000000000003"
+          },
+          {
+            "id": "brief-dd07",
+            "kind": "page",
+            "pageId": "d0100000-0000-4000-8000-000000000007"
+          },
+          {
+            "id": "brief-dd08",
+            "kind": "page",
+            "pageId": "d0100000-0000-4000-8000-000000000008"
+          },
+          {
+            "id": "brief-dd10",
+            "kind": "page",
+            "pageId": "d0100000-0000-4000-8000-000000000010"
+          }
+        ],
+        "notes": "Reuses five canonical Main Slides by stable ID without copying their visual content."
+      }
+    ]
+  }
+}

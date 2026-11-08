@@ -70,6 +70,35 @@ describe('project relationships and occurrence identity', () => {
 });
 
 describe('agent Story briefing', () => {
+  it('uses current Section range membership for an inserted slide and Agent context', () => {
+    const snapshot = insightFixture();
+    const section = snapshot.metadata.project?.sections[0];
+    if (!section) throw new Error('Missing fixture Section');
+    section.range = { startPageId: 'evidence', endPageId: 'conclusion' };
+    const inserted = structuredClone(snapshot.pages[1]);
+    inserted.pageId = 'new-evidence';
+    inserted.shortCode = 'NEW1';
+    inserted.path = 'pages/new-evidence.page';
+    inserted.metadata = {
+      ...inserted.metadata,
+      shortCode: 'NEW1',
+      label: 'New evidence',
+      path: inserted.path,
+    };
+    snapshot.pages.splice(2, 0, inserted);
+    snapshot.metadata.slides[inserted.pageId] = inserted.metadata;
+    const result = storyBriefing(snapshot, { pageId: inserted.pageId, presentationId: 'talk' });
+    expect(result.section?.id).toBe('results');
+    expect(result.organization.sections[0].pageIds).toEqual([
+      'evidence',
+      'new-evidence',
+      'conclusion',
+    ]);
+    expect(result.occurrence?.position).toBe(3);
+    expect(result.usedBy.map((usage) => usage.presentationId)).toEqual([null, 'talk', 'seminar']);
+    expect(section.pageIds).toEqual(['evidence', 'conclusion']);
+  });
+
   it('requires an exact occurrence for repeated pages and returns the actionable candidates', () => {
     try {
       storyBriefing(insightFixture(), { pageId: 'S18A', presentationId: 'talk' });

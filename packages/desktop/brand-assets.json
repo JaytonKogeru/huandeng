@@ -1,10 +1,11 @@
 {
-  "source": "packages/desktop/icon.svg",
-  "sourceSha256": "064616aaea4b32b2f183d673091e7724eb472784c90e5c29ea43792fb0916c71",
+  "source": "packages/desktop/branding/huandeng-user-mark.png",
+  "sourceSha256": "bd04c9ebb0e94cdaa5ba6c3a7df8d5ae1d35236933b3ca9ab297912d7b870530",
   "files": {
-    "packages/desktop/icon.png": "19587b187776375c9baf9ae925458903cc22fc8d47b1c13e7d9c2a9d8f833475",
-    "packages/desktop/icon.ico": "71fa7b14b09c8381390b63ae98142ac90c40454987927c2505ec0a1553e43d66",
-    "packages/core/src/app/favicon.svg": "064616aaea4b32b2f183d673091e7724eb472784c90e5c29ea43792fb0916c71",
-    "packages/core/src/app/favicon.ico": "71fa7b14b09c8381390b63ae98142ac90c40454987927c2505ec0a1553e43d66"
+    "packages/desktop/icon.svg": "6e35322ab76ebb88baa58f477be54a6d8bde66108798cdaf700081dcdf5a29fb",
+    "packages/desktop/icon.png": "c6cce013fd62e96048a5f10c1168ba05a2a7d6192f334d83386a4eec45732c22",
+    "packages/desktop/icon.ico": "d8c9135d84ad37c913cbecf329df18c4e5a01fc8231faf421b65d2638c164191",
+    "packages/core/src/app/favicon.svg": "6e35322ab76ebb88baa58f477be54a6d8bde66108798cdaf700081dcdf5a29fb",
+    "packages/core/src/app/favicon.ico": "d8c9135d84ad37c913cbecf329df18c4e5a01fc8231faf421b65d2638c164191"
   }
 }

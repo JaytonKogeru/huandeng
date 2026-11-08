@@ -1,6 +1,7 @@
 import { ArrowDown, ArrowUp, BookOpen, Plus, Save, Trash2 } from 'lucide-react';
 import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { getUiLocale, uiText as t, useHuandengLocale } from '@/lib/huandeng-locale';
+import { projectSlideSearch, projectSlideTitle } from '@/lib/pptd-project-source';
 import {
   emptyStory,
   type PresentationItem,
@@ -9,12 +10,15 @@ import {
   type ProjectReplaceOperation,
   readProjectModel,
   resolvePresentation,
+  resolveProjectSections,
   type StoryOutline,
   validateProjectModel,
 } from '../../../pptd/project-model';
 import type { DeckSnapshot, ExpectedRevisions, PageVersionSummary } from '../../../pptd/types';
 import { Button } from '../ui/button';
 import { Textarea } from '../ui/textarea';
+import { ProjectSectionEditor } from './project-section-editor';
+import { ProjectSlidePreview, ProjectSourcePicker } from './project-source-picker';
 
 export interface ProjectPanelProps {
   snapshot: DeckSnapshot;
@@ -172,7 +176,8 @@ function ProjectPanelEditor({
     manifest: snapshot.manifestRevision,
   });
   const [editingId, setEditingId] = useState<string | null>(selectedPresentationId);
-  const [sourceQuery, setSourceQuery] = useState('');
+  const [sourcePickerOpen, setSourcePickerOpen] = useState(selectedPresentationId !== null);
+  const [addedMessage, setAddedMessage] = useState<string | null>(null);
   const [itemQuery, setItemQuery] = useState('');
   const [locatedItemId, setLocatedItemId] = useState<string | null>(null);
   const itemRefs = useRef(new Map<string, HTMLFieldSetElement>());
@@ -184,6 +189,7 @@ function ProjectPanelEditor({
     (base.metadata !== snapshot.metadataRevision || base.manifest !== snapshot.manifestRevision);
   const readonly = disabled || saving || !snapshot.writable || remoteChanged;
   const presentation = draft.presentations.find((item) => item.id === editingId);
+  const sections = useMemo(() => resolveProjectSections(snapshot, draft), [snapshot, draft]);
   const resolution = useMemo(() => {
     if (!presentation) return null;
     try {
@@ -204,6 +210,8 @@ function ProjectPanelEditor({
 
   useEffect(() => {
     setEditingId(selectedPresentationId);
+    setSourcePickerOpen(selectedPresentationId !== null);
+    setAddedMessage(null);
   }, [selectedPresentationId]);
 
   useEffect(() => {
@@ -239,18 +247,20 @@ function ProjectPanelEditor({
       items: previous.items.map((item) => (item.id === itemId ? update(item) : item)),
     }));
   };
-  const pageLabel = (pageId: string) =>
+  const pageCode = (pageId: string) =>
     snapshot.metadata.slides[pageId]?.shortCode ??
     snapshot.metadata.slides[pageId]?.label ??
     pageId;
+  const pageLabel = (pageId: string) => {
+    const page = snapshot.pages.find((item) => item.pageId === pageId);
+    return page ? projectSlideTitle(page) : pageCode(pageId);
+  };
   const pageHint = (pageId: string) => {
-    const legacyLabel = snapshot.metadata.slides[pageId]?.label;
-    return t('永久 ID：{value0}{value1}', {
-      value0: pageId,
-      value1: legacyLabel ? t('\n旧编号：{value0}', { value0: legacyLabel }) : '',
-    });
+    return `${pageLabel(pageId)}\n${t('Slide ID')}: ${pageCode(pageId)}\n${t('Permanent ID')}: ${pageId}`;
   };
   const searchablePage = (pageId: string) => {
+    const page = snapshot.pages.find((item) => item.pageId === pageId);
+    if (page) return projectSlideSearch(page);
     const metadata = snapshot.metadata.slides[pageId];
     return [pageId, metadata?.shortCode, metadata?.label, metadata?.path]
       .filter(Boolean)
@@ -258,12 +268,11 @@ function ProjectPanelEditor({
       .toLocaleLowerCase();
   };
   const searchableSection = (sectionId: string) => {
-    const section = draft.sections.find((candidate) => candidate.id === sectionId);
-    return [section?.title, ...(section?.pageIds.map(searchablePage) ?? [])]
+    const section = sections.find((candidate) => candidate.section.id === sectionId);
+    return [section?.section.title, ...(section?.pageIds.map(searchablePage) ?? [])]
       .join(' ')
       .toLocaleLowerCase();
   };
-  const sourceNeedle = sourceQuery.trim().toLocaleLowerCase();
   const itemNeedle = itemQuery.trim().toLocaleLowerCase();
   const matchingItems = itemNeedle
     ? (presentation?.items.filter((item) =>
@@ -294,6 +303,8 @@ function ProjectPanelEditor({
   };
   const selectCollection = (id: string | null) => {
     setEditingId(id);
+    setSourcePickerOpen(id !== null);
+    setAddedMessage(null);
     if (id === null || persisted.presentations.some((item) => item.id === id))
       onSelectPresentation(id);
   };
@@ -304,9 +315,9 @@ function ProjectPanelEditor({
       const project = validateProjectModel(draft);
       await onApply([{ op: 'project.replace', project }], base);
       setDirty(false);
-      if (editingId && project.presentations.some((item) => item.id === editingId))
-        onSelectPresentation(editingId);
-      else onSelectPresentation(null);
+      const nextId =
+        editingId && project.presentations.some((item) => item.id === editingId) ? editingId : null;
+      if (nextId !== selectedPresentationId) onSelectPresentation(nextId);
       setMessage('项目已保存。');
     } catch (error) {
       setMessage(error instanceof Error ? error.message : '项目保存未完成，请重试。');
@@ -338,6 +349,45 @@ function ProjectPanelEditor({
     } finally {
       setLoadingVersions((previous) => previous.filter((id) => id !== pageId));
     }
+  };
+
+  const addSource = (kind: 'page' | 'section', sourceId: string) => {
+    setSourcePickerOpen(true);
+    const id = crypto.randomUUID();
+    const item: PresentationItem =
+      kind === 'page' ? { id, kind, pageId: sourceId } : { id, kind, sectionId: sourceId };
+    updatePresentation((previous) => ({ ...previous, items: [...previous.items, item] }));
+    const title =
+      kind === 'page'
+        ? pageLabel(sourceId)
+        : (draft.sections.find((section) => section.id === sourceId)?.title ?? sourceId);
+    setAddedMessage(t('Added: {title}. Save Project when your arrangement is ready.', { title }));
+  };
+
+  const setSectionRange = (
+    sectionId: string,
+    startPageId: string,
+    endPageId: string,
+  ): string | null => {
+    const ids = snapshot.pages.filter((page) => page.state === 'active').map((page) => page.pageId);
+    const start = ids.indexOf(startPageId);
+    const end = ids.indexOf(endPageId);
+    if (start < 0 || end < 0) return 'Choose available Main Slides for both boundaries.';
+    if (start > end) return 'Start Position must be before or equal to End Position.';
+    const next: ProjectModel = {
+      ...draft,
+      sections: draft.sections.map((section) =>
+        section.id === sectionId
+          ? { ...section, pageIds: ids.slice(start, end + 1), range: { startPageId, endPageId } }
+          : section,
+      ),
+    };
+    const resolved = resolveProjectSections(snapshot, next).find(
+      (item) => item.section.id === sectionId,
+    );
+    if (resolved?.diagnostics.length) return resolved.diagnostics[0].message;
+    edit(() => next);
+    return null;
   };
 
   return (
@@ -396,6 +446,8 @@ function ProjectPanelEditor({
                 ],
               }));
               setEditingId(id);
+              setSourcePickerOpen(true);
+              setAddedMessage(null);
             }}
           >
             <Plus />
@@ -461,8 +513,8 @@ function ProjectPanelEditor({
               }
             />
           </div>
-          <details open>
-            <summary className="mb-2 cursor-pointer font-medium">{t('演讲故事')}</summary>
+          <details>
+            <summary className="mb-2 cursor-pointer font-medium">{t('Presentation Story')}</summary>
             <StoryFields
               value={presentation.story}
               disabled={readonly}
@@ -472,67 +524,36 @@ function ProjectPanelEditor({
             />
           </details>
           <div className="space-y-2">
-            <label htmlFor={`${prefix}-add-item`} className="font-medium">
-              {t('编排演讲幻灯片')}
-            </label>
+            <h3 className="font-medium">{t('编排演讲幻灯片')}</h3>
             <p className="text-[11px] text-muted-foreground">
               {t('引用章节时跟随章节页序，同一页面也可以在演讲中多次出现。')}
             </p>
-            {(snapshot.pages.length + draft.sections.length > 8 || sourceQuery) && (
-              <input
-                type="search"
-                aria-label={t('搜索可添加的章节或页面')}
-                placeholder={t('搜索章节、页面短码或路径')}
-                className={fieldClass}
-                value={sourceQuery}
-                maxLength={200}
-                onChange={(event) => setSourceQuery(event.target.value)}
+            <Button
+              variant="outline"
+              size="sm"
+              className="w-full justify-center"
+              aria-expanded={sourcePickerOpen}
+              data-hd-open-source-picker
+              onClick={() => setSourcePickerOpen((open) => !open)}
+            >
+              <Plus />
+              {sourcePickerOpen ? t('Hide source picker') : t('Add slides or Sections')}
+            </Button>
+            {sourcePickerOpen && (
+              <ProjectSourcePicker
+                key={presentation.id}
+                snapshot={snapshot}
+                sections={sections}
+                disabled={readonly}
+                onAddPage={(pageId) => addSource('page', pageId)}
+                onAddSection={(sectionId) => addSource('section', sectionId)}
               />
             )}
-            <select
-              id={`${prefix}-add-item`}
-              className={fieldClass}
-              value=""
-              disabled={readonly}
-              onChange={(event) => {
-                const value = event.target.value;
-                if (!value) return;
-                const id = crypto.randomUUID();
-                const item: PresentationItem = value.startsWith('section:')
-                  ? { id, kind: 'section', sectionId: value.slice(8) }
-                  : { id, kind: 'page', pageId: value.slice(5) };
-                updatePresentation((previous) => ({
-                  ...previous,
-                  items: [...previous.items, item],
-                }));
-              }}
-            >
-              <option value="">{t('添加章节或主幻灯片…')}</option>
-              <optgroup label={t('章节')}>
-                {draft.sections
-                  .filter((section) => searchableSection(section.id).includes(sourceNeedle))
-                  .map((section) => (
-                    <option key={section.id} value={`section:${section.id}`}>
-                      {t('{value0} · {value1} 页', {
-                        value0: section.title,
-                        value1: section.pageIds.length,
-                      })}
-                    </option>
-                  ))}
-              </optgroup>
-              <optgroup label={t('主幻灯片')}>
-                {snapshot.pages
-                  .filter(
-                    (page) =>
-                      page.state === 'active' && searchablePage(page.pageId).includes(sourceNeedle),
-                  )
-                  .map((page) => (
-                    <option key={page.pageId} value={`page:${page.pageId}`}>
-                      {pageLabel(page.pageId)}
-                    </option>
-                  ))}
-              </optgroup>
-            </select>
+            {addedMessage && (
+              <p role="status" className="text-[11px] leading-relaxed text-brand">
+                {addedMessage}
+              </p>
+            )}
             {presentation.items.length > 6 && (
               <div className="space-y-1.5 rounded border border-border bg-muted/20 p-2">
                 <label className="text-xs" htmlFor={`${prefix}-find-item`}>
@@ -592,12 +613,16 @@ function ProjectPanelEditor({
             {presentation.items.map((item, index) => {
               const section =
                 item.kind === 'section'
-                  ? draft.sections.find((candidate) => candidate.id === item.sectionId)
+                  ? sections.find((candidate) => candidate.section.id === item.sectionId)
                   : undefined;
               const label =
                 item.kind === 'section'
-                  ? (section?.title ?? t('章节缺失：{value0}', { value0: item.sectionId }))
+                  ? (section?.section.title ?? t('章节缺失：{value0}', { value0: item.sectionId }))
                   : pageLabel(item.pageId);
+              const sourcePage = snapshot.pages.find(
+                (page) =>
+                  page.pageId === (item.kind === 'page' ? item.pageId : section?.pageIds[0]),
+              );
               return (
                 <fieldset
                   key={item.id}
@@ -613,12 +638,25 @@ function ProjectPanelEditor({
                   })}
                 >
                   <div className="flex items-center gap-1">
+                    {sourcePage && (
+                      <span className="block h-7 w-12 shrink-0 overflow-hidden rounded">
+                        <ProjectSlidePreview page={sourcePage} snapshot={snapshot} />
+                      </span>
+                    )}
                     <span
-                      className="min-w-0 flex-1 truncate"
+                      className="min-w-0 flex-1"
                       title={item.kind === 'page' ? pageHint(item.pageId) : label}
                     >
-                      {index + 1}. {label}
-                      {item.kind === 'section' && section ? ` (${section.pageIds.length})` : ''}
+                      <span className="block line-clamp-2 text-[11px] font-medium">
+                        {index + 1}. {label}
+                      </span>
+                      <span className="block truncate text-[10px] text-muted-foreground">
+                        {item.kind === 'section' && section
+                          ? `${t('Section')} · ${t('{count} slides', { count: section.pageIds.length })}`
+                          : item.kind === 'page'
+                            ? `${t('Slide ID')} ${pageCode(item.pageId)}`
+                            : ''}
+                      </span>
                     </span>
                     <OrderButtons
                       index={index}
@@ -663,7 +701,10 @@ function ProjectPanelEditor({
                     </Button>
                   )}
                   {item.kind === 'page' && (
-                    <>
+                    <details className="space-y-2">
+                      <summary className="cursor-pointer text-[10px] text-muted-foreground">
+                        {t('Notes and version')}
+                      </summary>
                       <div className="flex items-center gap-1">
                         <Button
                           size="xs"
@@ -763,7 +804,7 @@ function ProjectPanelEditor({
                           }
                         />
                       )}
-                    </>
+                    </details>
                   )}
                 </fieldset>
               );
@@ -806,15 +847,17 @@ function ProjectPanelEditor({
                   {t('保存编排后，可直接打开每个播放位置。')}
                 </p>
               )}
-              {resolution.diagnostics.map((diagnostic) => (
-                <p
-                  key={`${diagnostic.code}-${diagnostic.pageId ?? diagnostic.message}`}
-                  className="text-[11px] text-destructive"
-                  role="alert"
-                >
-                  {t(diagnostic.message)}
-                </p>
-              ))}
+              {resolution.diagnostics
+                .filter((diagnostic) => diagnostic.code !== 'PRESENTATION_EMPTY')
+                .map((diagnostic) => (
+                  <p
+                    key={`${diagnostic.code}-${diagnostic.pageId ?? diagnostic.message}`}
+                    className="text-[11px] text-destructive"
+                    role="alert"
+                  >
+                    {t(diagnostic.message)}
+                  </p>
+                ))}
             </div>
           )}
           <details>
@@ -850,8 +893,8 @@ function ProjectPanelEditor({
         </div>
       ) : (
         <div className="space-y-4" data-hd-main-slides-editor>
-          <details open>
-            <summary className="mb-2 cursor-pointer font-medium">{t('主故事 · 整个项目')}</summary>
+          <details>
+            <summary className="mb-2 cursor-pointer font-medium">{t('Main Story')}</summary>
             <StoryFields
               value={draft.mainStory}
               disabled={readonly}
@@ -859,194 +902,101 @@ function ProjectPanelEditor({
             />
           </details>
           <div className="flex items-center justify-between gap-2">
-            <h3 className="font-medium">{t('章节')}</h3>
+            <h3 className="font-medium">{t('Sections')}</h3>
             <Button
               size="xs"
               variant="outline"
               disabled={readonly}
-              onClick={() =>
+              onClick={() => {
+                const id = crypto.randomUUID();
                 edit((previous) => ({
                   ...previous,
                   sections: [
                     ...previous.sections,
                     {
-                      id: crypto.randomUUID(),
-                      title: t('章节 {value0}', { value0: previous.sections.length + 1 }),
+                      id,
+                      title: t('Section {count}', { count: previous.sections.length + 1 }),
                       story: emptyStory(),
                       pageIds: [],
                     },
                   ],
-                }))
-              }
+                }));
+                requestAnimationFrame(() => {
+                  document
+                    .querySelector<HTMLInputElement>(`[data-hd-project-section="${id}"] input`)
+                    ?.focus();
+                });
+              }}
             >
               <Plus />
-              {t('新建章节')}
+              {t('New Section')}
             </Button>
           </div>
-          {draft.sections.map((section, index) => (
-            <div
-              key={section.id}
-              className="space-y-2 rounded border border-border p-2"
-              data-hd-project-section
-            >
-              <div className="flex items-center gap-1">
-                <input
-                  aria-label={t('第 {value0} 章名称', { value0: index + 1 })}
-                  className={fieldClass}
-                  maxLength={240}
-                  value={section.title}
-                  disabled={readonly}
-                  onChange={(event) =>
-                    edit((previous) => ({
-                      ...previous,
-                      sections: previous.sections.map((item) =>
-                        item.id === section.id ? { ...item, title: event.target.value } : item,
-                      ),
-                    }))
-                  }
-                />
-                <OrderButtons
-                  index={index}
-                  length={draft.sections.length}
-                  label={t('第 {value0} 章', { value0: index + 1 })}
-                  disabled={readonly}
-                  onMove={(delta) =>
-                    edit((previous) => ({
-                      ...previous,
-                      sections: move(previous.sections, index, delta),
-                    }))
-                  }
-                  onRemove={() =>
-                    edit((previous) => ({
-                      ...previous,
-                      sections: previous.sections.filter((item) => item.id !== section.id),
-                    }))
-                  }
-                />
-              </div>
-              <details>
-                <summary className="mb-2 cursor-pointer text-[11px] text-muted-foreground">
-                  {t('章节故事')}
-                </summary>
-                <StoryFields
-                  value={section.story}
-                  disabled={readonly}
-                  onChange={(value) =>
-                    edit((previous) => ({
-                      ...previous,
-                      sections: previous.sections.map((item) =>
-                        item.id === section.id ? { ...item, story: value } : item,
-                      ),
-                    }))
-                  }
-                />
-              </details>
-              {section.pageIds.map((pageId, pageIndex) => (
-                <div key={pageId} className="flex items-center gap-1">
-                  <Button
-                    size="xs"
-                    variant="ghost"
-                    className="min-w-0 flex-1 justify-start truncate"
-                    title={pageHint(pageId)}
-                    disabled={!snapshot.pages.some((page) => page.pageId === pageId)}
-                    onClick={() => onSelectPage(pageId)}
-                  >
-                    {pageIndex + 1}. {pageLabel(pageId)}
-                    {!snapshot.pages.some((page) => page.pageId === pageId) ? t(' · 无法读取') : ''}
-                  </Button>
-                  <OrderButtons
-                    index={pageIndex}
-                    length={section.pageIds.length}
-                    label={t('{value0}中的 {value1}', {
-                      value0: section.title,
-                      value1: pageLabel(pageId),
-                    })}
-                    disabled={readonly}
-                    onMove={(delta) =>
-                      edit((previous) => ({
-                        ...previous,
-                        sections: previous.sections.map((item) =>
-                          item.id === section.id
-                            ? { ...item, pageIds: move(item.pageIds, pageIndex, delta) }
-                            : item,
-                        ),
-                      }))
-                    }
-                    onRemove={() =>
-                      edit((previous) => ({
-                        ...previous,
-                        sections: previous.sections.map((item) =>
-                          item.id === section.id
-                            ? { ...item, pageIds: item.pageIds.filter((id) => id !== pageId) }
-                            : item,
-                        ),
-                      }))
-                    }
-                  />
-                </div>
-              ))}
-              {!section.pageIds.length && (
-                <p className="text-[11px] text-muted-foreground">
-                  {t('在下方为主幻灯片分配章节，页面就会出现在这里。')}
-                </p>
-              )}
-            </div>
-          ))}
-          <details open>
-            <summary className="mb-2 cursor-pointer font-medium">{t('为主幻灯片分配章节')}</summary>
-            <div className="space-y-2">
-              {snapshot.pages
-                .filter((page) => page.state === 'active')
-                .map((page) => (
-                  <div key={page.pageId} className="flex items-center gap-2">
-                    <Button
-                      size="xs"
-                      variant="ghost"
-                      className="w-14 shrink-0 justify-start"
-                      title={pageHint(page.pageId)}
-                      onClick={() => onSelectPage(page.pageId)}
-                    >
-                      {pageLabel(page.pageId)}
-                    </Button>
-                    <select
-                      aria-label={t('{value0} 所属章节', { value0: pageLabel(page.pageId) })}
-                      className={fieldClass}
-                      value={
-                        draft.sections.find((section) => section.pageIds.includes(page.pageId))
-                          ?.id ?? ''
-                      }
+          <p className="text-[11px] leading-relaxed text-muted-foreground">
+            {t(
+              'A Section is a continuous range of Main Slides. Choose Positions; stable Slide IDs keep the boundaries attached to their slides.',
+            )}
+          </p>
+          {[...sections]
+            .sort(
+              (left, right) => (left.startPosition ?? Infinity) - (right.startPosition ?? Infinity),
+            )
+            .map((resolved) => (
+              <ProjectSectionEditor
+                key={resolved.section.id}
+                resolved={resolved}
+                snapshot={snapshot}
+                disabled={readonly}
+                onRename={(title) =>
+                  edit((previous) => ({
+                    ...previous,
+                    sections: previous.sections.map((section) =>
+                      section.id === resolved.section.id ? { ...section, title } : section,
+                    ),
+                  }))
+                }
+                onRemove={() =>
+                  edit((previous) => ({
+                    ...previous,
+                    sections: previous.sections.filter(
+                      (section) => section.id !== resolved.section.id,
+                    ),
+                  }))
+                }
+                onSetRange={(start, end) => setSectionRange(resolved.section.id, start, end)}
+                onSelectPage={onSelectPage}
+              >
+                <details>
+                  <summary className="cursor-pointer text-[11px] text-muted-foreground">
+                    {t('Section Story')}
+                  </summary>
+                  <div className="mt-2">
+                    <StoryFields
+                      value={resolved.section.story}
                       disabled={readonly}
-                      onChange={(event) => {
-                        const targetId = event.target.value;
+                      onChange={(story) =>
                         edit((previous) => ({
                           ...previous,
-                          sections: previous.sections.map((section) => ({
-                            ...section,
-                            pageIds:
-                              section.id === targetId
-                                ? [
-                                    ...section.pageIds.filter((id) => id !== page.pageId),
-                                    page.pageId,
-                                  ]
-                                : section.pageIds.filter((id) => id !== page.pageId),
-                          })),
-                        }));
-                      }}
-                    >
-                      <option value="">{t('未分配章节')}</option>
-                      {draft.sections.map((section) => (
-                        <option key={section.id} value={section.id}>
-                          {section.title}
-                        </option>
-                      ))}
-                    </select>
+                          sections: previous.sections.map((section) =>
+                            section.id === resolved.section.id ? { ...section, story } : section,
+                          ),
+                        }))
+                      }
+                    />
                   </div>
-                ))}
-            </div>
-          </details>
-          <p className="text-[11px] text-muted-foreground">
+                </details>
+              </ProjectSectionEditor>
+            ))}
+          {!sections.length && (
+            <p className="rounded border border-dashed border-border p-3 text-[11px] text-muted-foreground">
+              {t(
+                'Create a Section to group a continuous part of Main Slides, then reuse it in any Presentation.',
+              )}
+            </p>
+          )}
+          <p className="text-[10px] leading-relaxed text-muted-foreground">
             {t(
-              '每页可属于一个章节。移除章节后，页面仍保留在主幻灯片中，受影响的演讲会提示修复引用。',
+              'Slides inserted between a range’s boundaries join that Section. Removing a Section keeps every Main Slide and marks affected Presentation references for repair.',
             )}
           </p>
         </div>

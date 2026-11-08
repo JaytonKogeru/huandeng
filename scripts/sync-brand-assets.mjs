@@ -6,11 +6,12 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const sourcePath = 'packages/desktop/icon.svg';
+const sourcePath = 'packages/desktop/branding/huandeng-user-mark.png';
 const manifestPath = 'packages/desktop/brand-assets.json';
 const source = await fs.readFile(path.join(root, sourcePath));
 const digest = (bytes) => createHash('sha256').update(bytes).digest('hex');
 const outputs = [
+  'packages/desktop/icon.svg',
   'packages/desktop/icon.png',
   'packages/desktop/icon.ico',
   'packages/core/src/app/favicon.svg',
@@ -26,7 +27,7 @@ if (process.argv.includes('--check')) {
     const bytes = await fs.readFile(path.join(root, file));
     if (manifest.files[file] !== digest(bytes)) throw new Error(`Brand asset differs: ${file}`);
   }
-  process.stdout.write('HUANDENG brand assets match the source SVG.\n');
+  process.stdout.write('HUANDENG brand assets match the supplied source mark.\n');
 } else {
   const require = createRequire(path.join(root, 'packages/core/package.json'));
   const { chromium } = require('playwright');
@@ -47,7 +48,18 @@ if (process.argv.includes('--check')) {
   const frames = [];
   try {
     const page = await browser.newPage({ viewport: { width: 512, height: 512 } });
-    await page.setContent(`<style>body { margin: 0; } svg { display: block; }</style>${source}`);
+    await page.setContent(
+      `<style>body { margin: 0; } svg { display: block; }</style><svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512"><image width="512" height="512" href="data:image/png;base64,${source.toString('base64')}"/></svg>`,
+    );
+    await page.locator('svg image').evaluate(
+      (image) =>
+        new Promise((resolve, reject) => {
+          const probe = new Image();
+          probe.onload = resolve;
+          probe.onerror = reject;
+          probe.src = image.getAttribute('href');
+        }),
+    );
     for (const size of [...sizes, 512]) {
       await page.locator('svg').evaluate((svg, dimension) => {
         svg.setAttribute('width', String(dimension));
@@ -74,7 +86,10 @@ if (process.argv.includes('--check')) {
     offset += frame.length;
   }
   const icon = Buffer.concat([header, ...iconFrames]);
-  const assets = [frames.at(-1), icon, source, icon];
+  const compactSvg = Buffer.from(
+    `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512"><title>HUANDENG</title><image width="512" height="512" href="data:image/png;base64,${frames.at(-1).toString('base64')}"/></svg>\n`,
+  );
+  const assets = [compactSvg, frames.at(-1), icon, compactSvg, icon];
   const hashes = {};
   for (const [index, file] of outputs.entries()) {
     await fs.writeFile(path.join(root, file), assets[index]);
@@ -84,5 +99,5 @@ if (process.argv.includes('--check')) {
     path.join(root, manifestPath),
     `${JSON.stringify({ source: sourcePath, sourceSha256: digest(source), files: hashes }, null, 2)}\n`,
   );
-  process.stdout.write('Generated desktop and editor icons from packages/desktop/icon.svg.\n');
+  process.stdout.write('Generated desktop and editor icons from the supplied HUANDENG mark.\n');
 }

@@ -10,6 +10,7 @@ import {
   type ProjectModel,
   readProjectModel,
   resolvePresentation,
+  resolveProjectSections,
   validateProjectModel,
 } from './project-model';
 import { openPptdStore, type PptdStore } from './store';
@@ -241,6 +242,137 @@ describe('Main Slides and reusable presentation stories', () => {
   });
 });
 
+describe('Section ranges anchored to stable Main Slide IDs', () => {
+  function rangeProject() {
+    const model = project();
+    model.sections[0].range = { startPageId: 'a', endPageId: 'b' };
+    return model;
+  }
+
+  it('includes insertions inside the boundaries and derives Positions without rewriting metadata', () => {
+    const model = rangeProject();
+    const deck = snapshot(model);
+    const inserted = structuredClone(deck.pages[1]);
+    inserted.pageId = 'new';
+    inserted.path = 'pages/new.page';
+    inserted.metadata.path = inserted.path;
+    const outside = structuredClone(inserted);
+    outside.pageId = 'outside';
+    outside.path = 'pages/outside.page';
+    outside.metadata.path = outside.path;
+    deck.pages.splice(1, 0, inserted);
+    deck.pages.unshift(outside);
+    const before = structuredClone(deck.metadata);
+    expect(resolveProjectSections(deck)[0]).toMatchObject({
+      pageIds: ['a', 'new', 'b'],
+      startPosition: 2,
+      endPosition: 4,
+      contiguous: true,
+      diagnostics: [],
+    });
+    expect(assertPresentationReady(deck, 'lab').pages.map((page) => page.pageId)).toEqual([
+      'a',
+      'new',
+      'b',
+    ]);
+    expect(deck.metadata).toEqual(before);
+    expect(model.sections[0].pageIds).toEqual(['a', 'b']);
+  });
+
+  it('preserves custom legacy membership and order until an explicit range is saved', () => {
+    const model = project();
+    model.sections[0].pageIds = ['b', 'a'];
+    const deck = snapshot(model);
+    expect(resolveProjectSections(deck)[0]).toMatchObject({
+      pageIds: ['b', 'a'],
+      contiguous: false,
+      diagnostics: [],
+    });
+    expect(assertPresentationReady(deck, 'lab').pages.map((page) => page.pageId)).toEqual([
+      'b',
+      'a',
+    ]);
+    const updated = structuredClone(model);
+    updated.sections[0].range = { startPageId: 'a', endPageId: 'b' };
+    deck.metadata = applyProjectOperation(
+      deck.metadata,
+      { op: 'project.replace', project: updated },
+      deck,
+    );
+    expect(readProjectModel(deck.metadata).sections[0].pageIds).toEqual(['a', 'b']);
+    expect(readProjectModel(deck.metadata).sections[0].range).toEqual({
+      startPageId: 'a',
+      endPageId: 'b',
+    });
+  });
+
+  it('blocks only affected Presentations when a range boundary is missing or reversed', () => {
+    const deck = snapshot(rangeProject());
+    deck.pages = deck.pages.filter((page) => page.pageId !== 'b');
+    expect(resolvePresentation(deck, 'lab').diagnostics).toContainEqual(
+      expect.objectContaining({ code: 'SECTION_RANGE_BOUNDARY_UNAVAILABLE', pageId: 'b' }),
+    );
+    expect(() => assertPresentationReady(deck, 'lab')).toThrow('unavailable range boundary');
+    expect(() => assertPresentationReady(deck, 'talk')).not.toThrow();
+    expect(() => assertPresentationReady(deck)).not.toThrow();
+    const reversed = snapshot(rangeProject());
+    reversed.pages = [reversed.pages[1], reversed.pages[0], reversed.pages[2]];
+    expect(() => assertPresentationReady(reversed, 'lab')).toThrow('start after its end');
+    expect(() => assertPresentationReady(reversed, 'talk')).not.toThrow();
+  });
+
+  it('detects newly overlapping ranges after Main Slides are reordered', () => {
+    const model = rangeProject();
+    model.sections[1].range = { startPageId: 'c', endPageId: 'c' };
+    const deck = snapshot(model);
+    deck.pages = [deck.pages[0], deck.pages[2], deck.pages[1]];
+    expect(
+      resolveProjectSections(deck).every((item) =>
+        item.diagnostics.some((diagnostic) => diagnostic.code === 'SECTION_RANGE_OVERLAP'),
+      ),
+    ).toBe(true);
+    expect(() => assertPresentationReady(deck, 'lab')).toThrow('overlap');
+    expect(() => assertPresentationReady(deck, 'talk')).toThrow('overlap');
+    expect(() => assertPresentationReady(deck)).not.toThrow();
+  });
+
+  it('rejects a newly invalid range while allowing unrelated edits on an already broken range', () => {
+    const deck = snapshot(project());
+    const overlap = rangeProject();
+    overlap.sections[0].range = { startPageId: 'a', endPageId: 'c' };
+    expect(() =>
+      applyProjectOperation(deck.metadata, { op: 'project.replace', project: overlap }, deck),
+    ).toThrow('overlap');
+    const broken = snapshot(rangeProject());
+    broken.pages = broken.pages.filter((page) => page.pageId !== 'b');
+    const edit = rangeProject();
+    edit.mainStory.purpose = 'Revised Story';
+    const saved = applyProjectOperation(
+      broken.metadata,
+      { op: 'project.replace', project: edit },
+      broken,
+    );
+    expect(readProjectModel(saved).mainStory.purpose).toBe('Revised Story');
+    expect(readProjectModel(saved).sections[0].range).toEqual({ startPageId: 'a', endPageId: 'b' });
+  });
+
+  it('validates stable boundary IDs instead of accepting positional or path values', () => {
+    const model = rangeProject();
+    expect(() =>
+      validateProjectModel({
+        ...model,
+        sections: [{ ...model.sections[0], range: { startPageId: 1, endPageId: 2 } }],
+      }),
+    ).toThrow('startPageId');
+    expect(() =>
+      validateProjectModel({
+        ...model,
+        sections: [{ ...model.sections[0], range: { startPageId: '../page', endPageId: 'b' } }],
+      }),
+    ).toThrow('ID characters');
+  });
+});
+
 const temporary: string[] = [];
 const stores: PptdStore[] = [];
 afterEach(async () => {
@@ -308,6 +440,37 @@ async function fixture() {
 }
 
 describe('durable project organization transactions', () => {
+  it('retains boundary semantics through insertion, save and reopen', async () => {
+    const { root, entryPath, store, model, first, second, commit } = await fixture();
+    model.sections[0].pageIds = [first.pageId, second.pageId];
+    model.sections[0].range = { startPageId: first.pageId, endPageId: second.pageId };
+    await commit([{ op: 'project.replace', project: model }]);
+    await commit([
+      {
+        op: 'page.add',
+        afterPageId: first.pageId,
+        page: { elements: [], notes: 'Inserted inside Section' },
+      },
+    ]);
+    const expected = store.getSnapshot().pages.map((page) => page.pageId);
+    expect(expected).toHaveLength(3);
+    expect(
+      assertPresentationReady(store.getSnapshot(), 'talk').pages.map((page) => page.pageId),
+    ).toEqual(expected);
+    await store.close();
+    const reopened = await openPptdStore({
+      entryPath,
+      stateDir: path.join(root, 'runtime-range-reopen'),
+    });
+    stores.push(reopened);
+    expect(
+      assertPresentationReady(reopened.getSnapshot(), 'talk').pages.map((page) => page.pageId),
+    ).toEqual(expected);
+    expect(readProjectModel(reopened.getSnapshot().metadata).sections[0].range).toEqual({
+      startPageId: first.pageId,
+      endPageId: second.pageId,
+    });
+  });
   it('persists and reopens stories and references without rewriting canonical page sources', async () => {
     const { root, entryPath, source, store, model, second, first, commit } = await fixture();
     await commit([{ op: 'project.replace', project: model }]);

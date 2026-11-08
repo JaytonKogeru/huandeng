@@ -29,12 +29,19 @@ import {
   snapTargetsForSelection,
 } from '@/lib/pptd-geometry';
 import type { InsertionTool } from '@/lib/pptd-insertion';
-import { cycleItemId, editorKeyboardScope, topLevelElementIds } from '@/lib/pptd-keyboard';
+import {
+  cycleItemId,
+  type EditorKeyboardCommand,
+  editorKeyboardScope,
+  topLevelElementIds,
+} from '@/lib/pptd-keyboard';
 import { expandGroupIds, owningGroupId } from '../../../pptd/grouping';
 import type { Bounds, PageSize, PageSnapshot, PptdElement } from '../../../pptd/types';
 import { SlideCanvas } from '../slide-canvas';
 import { Button } from '../ui/button';
+import { ContextMenu, ContextMenuTrigger } from '../ui/context-menu';
 import { InsertionLayer } from './insertion-layer';
+import { ObjectContextMenuContent } from './object-context-menu';
 import {
   isRichText,
   numberValue,
@@ -64,6 +71,7 @@ type Props = {
   onCancel: (originals: { elementId: string; fields: Record<string, unknown> }[]) => void;
   onFlush: () => void;
   onComposition: (composing: boolean) => void;
+  onCommand?: (command: EditorKeyboardCommand) => void;
   disabled?: boolean;
   snapEnabled?: boolean;
   scale?: number;
@@ -98,7 +106,7 @@ type Gesture = {
 export function PptdEditorCanvas({
   page,
   size,
-  theme,
+  theme: inheritedTheme,
   selectedIds,
   onSelect,
   onPatch,
@@ -107,6 +115,7 @@ export function PptdEditorCanvas({
   onCancel,
   onFlush,
   onComposition,
+  onCommand,
   disabled = false,
   snapEnabled = true,
   scale,
@@ -117,6 +126,12 @@ export function PptdEditorCanvas({
   previewTimeMs,
 }: Props) {
   const { t, number: formatNumber } = useHuandengLocale();
+  const theme =
+    page.metadata.themeOverride &&
+    typeof page.metadata.themeOverride === 'object' &&
+    !Array.isArray(page.metadata.themeOverride)
+      ? (page.metadata.themeOverride as PptdTheme)
+      : inheritedTheme;
   const [actualScale, setActualScale] = useState(1);
   const [guides, setGuides] = useState<Guide[]>([]);
   const [gapGuides, setGapGuides] = useState<GapGuide[]>([]);
@@ -375,339 +390,403 @@ export function PptdEditorCanvas({
   };
 
   return (
-    <div
-      ref={canvasRef}
-      role="application"
-      // biome-ignore lint/a11y/noNoninteractiveTabindex: The authoring canvas is a composite keyboard widget with one stable native focus entry.
-      tabIndex={0}
-      aria-label={t('幻灯片画布')}
-      aria-describedby="hd-canvas-keyboard-hint"
-      className="relative h-full min-h-0 w-full outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand/60 [&_[data-hd-element-id]:focus-visible]:ring-2 [&_[data-hd-element-id]:focus-visible]:ring-brand/50"
-      data-hd-editor-canvas
-      data-hd-snapping={snapEnabled}
-      data-hd-focus-region="canvas"
-      onFocusCapture={(event) => {
-        focusedElementId.current =
-          (event.target as HTMLElement).closest<HTMLElement>('[data-hd-element-id]')?.dataset
-            .hdElementId ?? null;
-      }}
-      onBlur={(event) => {
-        if (!event.currentTarget.contains(event.relatedTarget)) {
-          leaveCanvasOnTab.current = false;
-          if (event.relatedTarget) focusedElementId.current = null;
-        }
-      }}
-      onKeyDown={(event) => {
-        if (
-          event.defaultPrevented ||
-          event.nativeEvent.isComposing ||
-          event.keyCode === 229 ||
-          event.ctrlKey ||
-          event.metaKey ||
-          event.altKey ||
-          editorKeyboardScope(event.target) !== 'canvas'
-        )
-          return;
-        if (event.key === 'Escape' && gestureRef.current) {
-          event.preventDefault();
-          event.stopPropagation();
-          cancelGestureRef.current?.();
-          return;
-        }
-        if (
-          event.key === 'Enter' &&
-          event.target === event.currentTarget &&
-          !disabled &&
-          selectedIds.length === 1 &&
-          page.data.elements.some(
-            (element) => element.elementId === selectedIds[0] && element.elementType === 'text',
-          )
-        ) {
-          event.preventDefault();
-          event.stopPropagation();
-          setEditingId(selectedIds[0]);
-          return;
-        }
-        if (event.key === 'Escape' && !insertionTool) {
-          event.preventDefault();
-          event.stopPropagation();
-          leaveCanvasOnTab.current = true;
-          onSelect([]);
-          canvasRef.current?.focus({ preventScroll: true });
-          return;
-        }
-        if (event.key !== 'Tab') return;
-        if (leaveCanvasOnTab.current) {
-          leaveCanvasOnTab.current = false;
-          return;
-        }
-        const focusedId = (event.target as Element).closest<HTMLElement>('[data-hd-element-id]')
-          ?.dataset.hdElementId;
-        const currentId = focusedId
-          ? (owningGroupId(page.data.elements, focusedId) ?? focusedId)
-          : tabStopId;
-        const next = cycleItemId(topLevelIds, currentId, event.shiftKey ? -1 : 1);
-        if (!next) return;
-        event.preventDefault();
-        event.stopPropagation();
-        onSelect([next]);
-        focusObject(next);
-      }}
-    >
-      <p id="hd-canvas-keyboard-hint" className="sr-only">
-        {t('Tab 切换对象，方向键移动，Enter 编辑文字。Esc 清除选区后 Tab 离开画布，F6 切换面板。')}
-      </p>
-      {editingId && (
+    <ContextMenu>
+      <ContextMenuTrigger className="contents">
         <div
-          className="absolute left-1/2 top-2 z-40 flex -translate-x-1/2 gap-0.5 rounded-md border bg-popover p-1 shadow-floating"
-          onPointerDown={(event) => event.preventDefault()}
-        >
-          {(
-            [
-              ['bold', '加粗', Bold],
-              ['italic', '斜体', Italic],
-              ['underline', '下划线', Underline],
-              ['superscript', '上标', Superscript],
-              ['subscript', '下标', Subscript],
-            ] as const
-          ).map(([command, label, Icon]) => (
-            <Button
-              key={command}
-              variant="ghost"
-              size="icon-sm"
-              aria-label={t(label)}
-              title={t(label)}
-              onClick={() => document.execCommand(command)}
-            >
-              <Icon className="size-3.5" />
-            </Button>
-          ))}
-        </div>
-      )}
-      <SlideCanvas width={size[0]} height={size[1]} scale={scale} onScaleChange={scaleChanged}>
-        <div
-          className="relative"
-          style={{ width: size[0], height: size[1] }}
-          onPointerDown={(event) => {
-            if (!event.isPrimary || gestureRef.current) return;
-            if (!(event.target as Element).closest('[data-hd-element-id], [data-hd-selection]')) {
-              canvasRef.current?.focus({ preventScroll: true });
-              onSelect([]);
-              setEditingId(null);
+          ref={canvasRef}
+          role="application"
+          // biome-ignore lint/a11y/noNoninteractiveTabindex: The authoring canvas is a composite keyboard widget with one stable native focus entry.
+          tabIndex={0}
+          aria-label={t('幻灯片画布')}
+          aria-describedby="hd-canvas-keyboard-hint"
+          className="relative h-full min-h-0 w-full outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand/60 [&_[data-hd-element-id]:focus-visible]:ring-2 [&_[data-hd-element-id]:focus-visible]:ring-brand/50"
+          data-hd-editor-canvas
+          data-hd-snapping={snapEnabled}
+          data-hd-focus-region="canvas"
+          onContextMenu={(event) => {
+            if (editingId || !onCommand || editorKeyboardScope(event.target) === 'input') {
+              event.stopPropagation();
+              return;
+            }
+            const hit = (event.target as HTMLElement).closest<HTMLElement>(
+              '[data-hd-element-id], [data-hd-selection]',
+            );
+            const id = hit?.dataset.hdElementId ?? hit?.dataset.hdSelection;
+            const targetId = id ? (owningGroupId(page.data.elements, id) ?? id) : null;
+            if (!targetId) onSelect([]);
+            else if (!selectedIds.includes(targetId)) onSelect([targetId]);
+          }}
+          onFocusCapture={(event) => {
+            focusedElementId.current =
+              (event.target as HTMLElement).closest<HTMLElement>('[data-hd-element-id]')?.dataset
+                .hdElementId ?? null;
+          }}
+          onBlur={(event) => {
+            if (!event.currentTarget.contains(event.relatedTarget)) {
+              leaveCanvasOnTab.current = false;
+              if (event.relatedTarget) focusedElementId.current = null;
             }
           }}
+          onKeyDown={(event) => {
+            if (
+              event.defaultPrevented ||
+              event.nativeEvent.isComposing ||
+              event.keyCode === 229 ||
+              event.ctrlKey ||
+              event.metaKey ||
+              event.altKey ||
+              editorKeyboardScope(event.target) !== 'canvas'
+            )
+              return;
+            if (
+              onCommand &&
+              (event.key === 'ContextMenu' || (event.key === 'F10' && event.shiftKey))
+            ) {
+              event.preventDefault();
+              event.stopPropagation();
+              const target = selectedIds[0]
+                ? canvasRef.current?.querySelector<HTMLElement>(
+                    `[data-hd-element-id="${CSS.escape(selectedIds[0])}"]`,
+                  )
+                : canvasRef.current;
+              const rect = target?.getBoundingClientRect();
+              target?.dispatchEvent(
+                new MouseEvent('contextmenu', {
+                  bubbles: true,
+                  cancelable: true,
+                  clientX: rect ? rect.left + Math.min(rect.width / 2, 40) : 0,
+                  clientY: rect ? rect.top + Math.min(rect.height / 2, 40) : 0,
+                  button: 2,
+                }),
+              );
+              return;
+            }
+            if (event.key === 'Escape' && gestureRef.current) {
+              event.preventDefault();
+              event.stopPropagation();
+              cancelGestureRef.current?.();
+              return;
+            }
+            if (
+              event.key === 'Enter' &&
+              event.target === event.currentTarget &&
+              !disabled &&
+              selectedIds.length === 1 &&
+              page.data.elements.some(
+                (element) => element.elementId === selectedIds[0] && element.elementType === 'text',
+              )
+            ) {
+              event.preventDefault();
+              event.stopPropagation();
+              setEditingId(selectedIds[0]);
+              return;
+            }
+            if (event.key === 'Escape' && !insertionTool) {
+              event.preventDefault();
+              event.stopPropagation();
+              leaveCanvasOnTab.current = true;
+              onSelect([]);
+              canvasRef.current?.focus({ preventScroll: true });
+              return;
+            }
+            if (event.key !== 'Tab') return;
+            if (leaveCanvasOnTab.current) {
+              leaveCanvasOnTab.current = false;
+              return;
+            }
+            const focusedId = (event.target as Element).closest<HTMLElement>('[data-hd-element-id]')
+              ?.dataset.hdElementId;
+            const currentId = focusedId
+              ? (owningGroupId(page.data.elements, focusedId) ?? focusedId)
+              : tabStopId;
+            const next = cycleItemId(topLevelIds, currentId, event.shiftKey ? -1 : 1);
+            if (!next) return;
+            event.preventDefault();
+            event.stopPropagation();
+            onSelect([next]);
+            focusObject(next);
+          }}
         >
-          <PptdPageRenderer
-            page={page}
-            size={size}
-            theme={theme}
-            previewTimeMs={previewTimeMs}
-            elementTabIndex={() => -1}
-            elementLabel={(element) =>
-              `${elementLabel(element)} · ${t(element.elementType === 'text' ? 'Enter 编辑文字' : '幻灯片对象')}`
-            }
-            onElementPointerDown={select}
-            onElementFocus={(id) => {
-              if (gestureRef.current) return;
-              if (selectedIds.includes(id)) return;
-              const groupId = owningGroupId(page.data.elements, id) ?? id;
-              if (!selectedIds.includes(groupId)) onSelect([groupId]);
-            }}
-            onElementDoubleClick={(element) => {
-              if (!disabled && element.elementType === 'text') {
-                onSelect([element.elementId]);
-                setEditingId(element.elementId);
-              }
-            }}
-            renderContent={(element) =>
-              element.elementId === editingId ? (
-                <InlineTextElement
-                  key={element.elementId}
-                  element={element}
-                  theme={theme}
-                  selectAll={element.elementId === autoEditId}
-                  onChange={(text) => onPatch(element.elementId, { 'content.text': text })}
-                  onComposition={onComposition}
-                  onFinish={(restoreFocus) => {
-                    setEditingId(null);
-                    onFlush();
-                    if (restoreFocus) requestAnimationFrame(() => focusObject(element.elementId));
-                  }}
-                />
-              ) : undefined
-            }
-          />
-          {selected.map((element) => {
-            const rect = elementRect(element);
-            return (
-              <div
-                key={element.elementId}
-                data-hd-selection={element.elementId}
-                className="pointer-events-none absolute"
-                style={{
-                  left: rect.x,
-                  top: rect.y,
-                  width: rect.width,
-                  height: rect.height,
-                  transform: `rotate(${element.rotation ?? 0}deg)`,
-                  border: `${1 / actualScale}px solid var(--brand)`,
-                  zIndex: 2,
-                }}
-              >
-                {!disabled && selected.length === 1 && !editingId && (
-                  <>
-                    {(['nw', 'n', 'ne', 'e', 'se', 's', 'sw', 'w'] as const).map((handle) => (
-                      <button
-                        key={handle}
-                        type="button"
-                        tabIndex={-1}
-                        aria-label={t('调整尺寸 {handle}', { handle })}
-                        data-hd-resize={handle}
-                        className="pointer-events-auto absolute bg-white"
-                        style={{
-                          left: handle.includes('w') ? 0 : handle.includes('e') ? '100%' : '50%',
-                          top: handle.includes('n') ? 0 : handle.includes('s') ? '100%' : '50%',
-                          width: 8 / actualScale,
-                          height: 8 / actualScale,
-                          border: `${1 / actualScale}px solid var(--brand)`,
-                          transform: 'translate(-50%,-50%)',
-                          cursor: `${handle}-resize`,
-                          padding: 0,
-                          touchAction: 'none',
-                        }}
-                        onPointerDown={(event) =>
-                          startGesture(event, 'resize', [element.elementId], handle)
-                        }
-                      />
-                    ))}
-                    <div
-                      style={{
-                        position: 'absolute',
-                        left: '50%',
-                        top: -24 / actualScale,
-                        height: 24 / actualScale,
-                        borderLeft: `${1 / actualScale}px solid var(--brand)`,
-                      }}
-                    />
-                    <button
-                      type="button"
-                      tabIndex={-1}
-                      aria-label={t('旋转对象')}
-                      data-hd-rotate
-                      className="pointer-events-auto absolute rounded-full bg-white"
-                      style={{
-                        left: '50%',
-                        top: -26 / actualScale,
-                        width: 10 / actualScale,
-                        height: 10 / actualScale,
-                        border: `${1 / actualScale}px solid var(--brand)`,
-                        transform: 'translate(-50%,-50%)',
-                        cursor: 'grab',
-                        touchAction: 'none',
-                      }}
-                      onPointerDown={(event) => startGesture(event, 'rotate', [element.elementId])}
-                    />
-                  </>
-                )}
-              </div>
-            );
-          })}
-          {guides.map((guide) => (
+          <p id="hd-canvas-keyboard-hint" className="sr-only">
+            {t(
+              'Tab 切换对象，方向键移动，Enter 编辑文字。Esc 清除选区后 Tab 离开画布，F6 切换面板。',
+            )}
+          </p>
+          {editingId && (
             <div
-              key={`${guide.axis}-${guide.position}`}
-              data-hd-snap-guide={guide.axis}
-              data-hd-guide-position={guide.position}
-              className="pointer-events-none absolute bg-brand"
-              style={
-                guide.axis === 'x'
-                  ? {
-                      left: guide.position,
-                      top: guide.start,
-                      width: 1 / actualScale,
-                      height: guide.end - guide.start,
-                      zIndex: 3,
-                    }
-                  : {
-                      top: guide.position,
-                      left: guide.start,
-                      height: 1 / actualScale,
-                      width: guide.end - guide.start,
-                      zIndex: 3,
-                    }
-              }
-            />
-          ))}
-          {gapGuides.length > 0 && (
-            <svg
-              className="pointer-events-none absolute inset-0 overflow-visible"
-              width={size[0]}
-              height={size[1]}
-              aria-hidden="true"
-              style={{ zIndex: 3 }}
+              className="absolute left-1/2 top-2 z-40 flex -translate-x-1/2 gap-0.5 rounded-md border bg-popover p-1 shadow-floating"
+              onPointerDown={(event) => event.preventDefault()}
             >
-              {gapGuides.map((guide) => {
-                const horizontal = guide.axis === 'x';
-                const x1 = horizontal ? guide.start : guide.position;
-                const x2 = horizontal ? guide.end : guide.position;
-                const y1 = horizontal ? guide.position : guide.start;
-                const y2 = horizontal ? guide.position : guide.end;
-                const cap = 3 / actualScale;
+              {(
+                [
+                  ['bold', '加粗', Bold],
+                  ['italic', '斜体', Italic],
+                  ['underline', '下划线', Underline],
+                  ['superscript', '上标', Superscript],
+                  ['subscript', '下标', Subscript],
+                ] as const
+              ).map(([command, label, Icon]) => (
+                <Button
+                  key={command}
+                  variant="ghost"
+                  size="icon-sm"
+                  aria-label={t(label)}
+                  title={t(label)}
+                  onClick={() => document.execCommand(command)}
+                >
+                  <Icon className="size-3.5" />
+                </Button>
+              ))}
+            </div>
+          )}
+          <SlideCanvas width={size[0]} height={size[1]} scale={scale} onScaleChange={scaleChanged}>
+            <div
+              className="relative"
+              style={{ width: size[0], height: size[1] }}
+              onPointerDown={(event) => {
+                if (!event.isPrimary || gestureRef.current) return;
+                if (
+                  !(event.target as Element).closest('[data-hd-element-id], [data-hd-selection]')
+                ) {
+                  canvasRef.current?.focus({ preventScroll: true });
+                  onSelect([]);
+                  setEditingId(null);
+                }
+              }}
+            >
+              <PptdPageRenderer
+                page={page}
+                size={size}
+                theme={theme}
+                previewTimeMs={previewTimeMs}
+                elementTabIndex={() => -1}
+                elementLabel={(element) =>
+                  `${elementLabel(element)} · ${t(element.elementType === 'text' ? 'Enter 编辑文字' : '幻灯片对象')}`
+                }
+                onElementPointerDown={select}
+                onElementFocus={(id) => {
+                  if (gestureRef.current) return;
+                  if (selectedIds.includes(id)) return;
+                  const groupId = owningGroupId(page.data.elements, id) ?? id;
+                  if (!selectedIds.includes(groupId)) onSelect([groupId]);
+                }}
+                onElementDoubleClick={(element) => {
+                  if (!disabled && element.elementType === 'text') {
+                    onSelect([element.elementId]);
+                    setEditingId(element.elementId);
+                  }
+                }}
+                renderContent={(element) =>
+                  element.elementId === editingId ? (
+                    <InlineTextElement
+                      key={element.elementId}
+                      element={element}
+                      theme={theme}
+                      selectAll={element.elementId === autoEditId}
+                      onChange={(text) => onPatch(element.elementId, { 'content.text': text })}
+                      onComposition={onComposition}
+                      onFinish={(restoreFocus) => {
+                        setEditingId(null);
+                        onFlush();
+                        if (restoreFocus)
+                          requestAnimationFrame(() => focusObject(element.elementId));
+                      }}
+                    />
+                  ) : undefined
+                }
+              />
+              {selected.map((element) => {
+                const rect = elementRect(element);
                 return (
-                  <g
-                    key={`${guide.axis}-${guide.position}-${guide.start}-${guide.end}`}
-                    data-hd-gap-guide={guide.axis}
-                    data-hd-gap-distance={guide.distance}
-                    stroke="var(--brand)"
-                    strokeWidth={1 / actualScale}
+                  <div
+                    key={element.elementId}
+                    data-hd-selection={element.elementId}
+                    className="pointer-events-none absolute"
+                    style={{
+                      left: rect.x,
+                      top: rect.y,
+                      width: rect.width,
+                      height: rect.height,
+                      transform: `rotate(${element.rotation ?? 0}deg)`,
+                      border: `${1 / actualScale}px solid var(--brand)`,
+                      zIndex: 2,
+                    }}
                   >
-                    <line
-                      x1={x1}
-                      y1={y1}
-                      x2={x2}
-                      y2={y2}
-                      strokeDasharray={`${3 / actualScale} ${2 / actualScale}`}
-                    />
-                    <line
-                      x1={x1 - (horizontal ? 0 : cap)}
-                      x2={x1 + (horizontal ? 0 : cap)}
-                      y1={y1 - (horizontal ? cap : 0)}
-                      y2={y1 + (horizontal ? cap : 0)}
-                    />
-                    <line
-                      x1={x2 - (horizontal ? 0 : cap)}
-                      x2={x2 + (horizontal ? 0 : cap)}
-                      y1={y2 - (horizontal ? cap : 0)}
-                      y2={y2 + (horizontal ? cap : 0)}
-                    />
-                    <text
-                      x={(x1 + x2) / 2 + (horizontal ? 0 : 6 / actualScale)}
-                      y={(y1 + y2) / 2 - (horizontal ? 5 / actualScale : 0)}
-                      textAnchor={horizontal ? 'middle' : 'start'}
-                      dominantBaseline={horizontal ? 'auto' : 'central'}
-                      fontSize={10 / actualScale}
-                      fill="var(--brand)"
-                      stroke="var(--background)"
-                      strokeWidth={3 / actualScale}
-                      paintOrder="stroke"
-                    >
-                      {formatNumber(Math.round(guide.distance * 100) / 100)}
-                    </text>
-                  </g>
+                    {!disabled && selected.length === 1 && !editingId && (
+                      <>
+                        {(['nw', 'n', 'ne', 'e', 'se', 's', 'sw', 'w'] as const).map((handle) => (
+                          <button
+                            key={handle}
+                            type="button"
+                            tabIndex={-1}
+                            aria-label={t('调整尺寸 {handle}', { handle })}
+                            data-hd-resize={handle}
+                            className="pointer-events-auto absolute bg-white"
+                            style={{
+                              left: handle.includes('w')
+                                ? 0
+                                : handle.includes('e')
+                                  ? '100%'
+                                  : '50%',
+                              top: handle.includes('n') ? 0 : handle.includes('s') ? '100%' : '50%',
+                              width: 8 / actualScale,
+                              height: 8 / actualScale,
+                              border: `${1 / actualScale}px solid var(--brand)`,
+                              transform: 'translate(-50%,-50%)',
+                              cursor: `${handle}-resize`,
+                              padding: 0,
+                              touchAction: 'none',
+                            }}
+                            onPointerDown={(event) =>
+                              startGesture(event, 'resize', [element.elementId], handle)
+                            }
+                          />
+                        ))}
+                        <div
+                          style={{
+                            position: 'absolute',
+                            left: '50%',
+                            top: -24 / actualScale,
+                            height: 24 / actualScale,
+                            borderLeft: `${1 / actualScale}px solid var(--brand)`,
+                          }}
+                        />
+                        <button
+                          type="button"
+                          tabIndex={-1}
+                          aria-label={t('旋转对象')}
+                          data-hd-rotate
+                          className="pointer-events-auto absolute rounded-full bg-white"
+                          style={{
+                            left: '50%',
+                            top: -26 / actualScale,
+                            width: 10 / actualScale,
+                            height: 10 / actualScale,
+                            border: `${1 / actualScale}px solid var(--brand)`,
+                            transform: 'translate(-50%,-50%)',
+                            cursor: 'grab',
+                            touchAction: 'none',
+                          }}
+                          onPointerDown={(event) =>
+                            startGesture(event, 'rotate', [element.elementId])
+                          }
+                        />
+                      </>
+                    )}
+                  </div>
                 );
               })}
-            </svg>
-          )}
-          {insertionTool && !disabled && onPlace && (
-            <InsertionLayer
-              key={JSON.stringify(insertionTool)}
-              tool={insertionTool}
-              size={size}
-              onPlace={onPlace}
-            />
-          )}
+              {guides.map((guide) => (
+                <div
+                  key={`${guide.axis}-${guide.position}`}
+                  data-hd-snap-guide={guide.axis}
+                  data-hd-guide-position={guide.position}
+                  className="pointer-events-none absolute bg-brand"
+                  style={
+                    guide.axis === 'x'
+                      ? {
+                          left: guide.position,
+                          top: guide.start,
+                          width: 1 / actualScale,
+                          height: guide.end - guide.start,
+                          zIndex: 3,
+                        }
+                      : {
+                          top: guide.position,
+                          left: guide.start,
+                          height: 1 / actualScale,
+                          width: guide.end - guide.start,
+                          zIndex: 3,
+                        }
+                  }
+                />
+              ))}
+              {gapGuides.length > 0 && (
+                <svg
+                  className="pointer-events-none absolute inset-0 overflow-visible"
+                  width={size[0]}
+                  height={size[1]}
+                  aria-hidden="true"
+                  style={{ zIndex: 3 }}
+                >
+                  {gapGuides.map((guide) => {
+                    const horizontal = guide.axis === 'x';
+                    const x1 = horizontal ? guide.start : guide.position;
+                    const x2 = horizontal ? guide.end : guide.position;
+                    const y1 = horizontal ? guide.position : guide.start;
+                    const y2 = horizontal ? guide.position : guide.end;
+                    const cap = 3 / actualScale;
+                    return (
+                      <g
+                        key={`${guide.axis}-${guide.position}-${guide.start}-${guide.end}`}
+                        data-hd-gap-guide={guide.axis}
+                        data-hd-gap-distance={guide.distance}
+                        stroke="var(--brand)"
+                        strokeWidth={1 / actualScale}
+                      >
+                        <line
+                          x1={x1}
+                          y1={y1}
+                          x2={x2}
+                          y2={y2}
+                          strokeDasharray={`${3 / actualScale} ${2 / actualScale}`}
+                        />
+                        <line
+                          x1={x1 - (horizontal ? 0 : cap)}
+                          x2={x1 + (horizontal ? 0 : cap)}
+                          y1={y1 - (horizontal ? cap : 0)}
+                          y2={y1 + (horizontal ? cap : 0)}
+                        />
+                        <line
+                          x1={x2 - (horizontal ? 0 : cap)}
+                          x2={x2 + (horizontal ? 0 : cap)}
+                          y1={y2 - (horizontal ? cap : 0)}
+                          y2={y2 + (horizontal ? cap : 0)}
+                        />
+                        <text
+                          x={(x1 + x2) / 2 + (horizontal ? 0 : 6 / actualScale)}
+                          y={(y1 + y2) / 2 - (horizontal ? 5 / actualScale : 0)}
+                          textAnchor={horizontal ? 'middle' : 'start'}
+                          dominantBaseline={horizontal ? 'auto' : 'central'}
+                          fontSize={10 / actualScale}
+                          fill="var(--brand)"
+                          stroke="var(--background)"
+                          strokeWidth={3 / actualScale}
+                          paintOrder="stroke"
+                        >
+                          {formatNumber(Math.round(guide.distance * 100) / 100)}
+                        </text>
+                      </g>
+                    );
+                  })}
+                </svg>
+              )}
+              {insertionTool && !disabled && onPlace && (
+                <InsertionLayer
+                  key={JSON.stringify(insertionTool)}
+                  tool={insertionTool}
+                  size={size}
+                  onPlace={onPlace}
+                />
+              )}
+            </div>
+          </SlideCanvas>
         </div>
-      </SlideCanvas>
-    </div>
+      </ContextMenuTrigger>
+      <ObjectContextMenuContent
+        selected={selected}
+        theme={theme}
+        disabled={disabled}
+        onCommand={onCommand}
+        focusTarget={() =>
+          (selectedIds[0]
+            ? canvasRef.current?.querySelector<HTMLElement>(
+                `[data-hd-element-id="${CSS.escape(selectedIds[0])}"]`,
+              )
+            : null) ?? canvasRef.current
+        }
+      />
+    </ContextMenu>
   );
 }
 

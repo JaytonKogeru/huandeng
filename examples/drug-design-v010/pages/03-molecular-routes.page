@@ -1,0 +1,208 @@
+{
+  "title": "Three molecular design routes",
+  "background": {
+    "type": "solid",
+    "color": "#F7F6F1"
+  },
+  "elements": [
+    {
+      "elementId": "title",
+      "elementType": "text",
+      "bounds": [
+        48,
+        38,
+        864,
+        58
+      ],
+      "content": {
+        "text": "Three molecular design routes",
+        "fontFamily": "Arial",
+        "fontSize": 35,
+        "lineHeight": 1.18,
+        "color": "#172C3B",
+        "bold": true
+      }
+    },
+    {
+      "elementId": "heading-rule",
+      "elementType": "line",
+      "bounds": [
+        48,
+        112,
+        864,
+        1
+      ],
+      "viewBox": [
+        864,
+        1
+      ],
+      "points": "0,0 864,1",
+      "border": {
+        "width": 1.5,
+        "color": "#C9D5D4",
+        "style": "solid"
+      },
+      "arrow": []
+    },
+    {
+      "elementId": "modality-comparison",
+      "elementType": "table",
+      "bounds": [
+        48,
+        139,
+        864,
+        302
+      ],
+      "columnWidths": [
+        0.19,
+        0.26,
+        0.29,
+        0.26
+      ],
+      "rowHeights": [
+        0.15,
+        0.28,
+        0.29,
+        0.28
+      ],
+      "rows": [
+        [
+          {
+            "text": "Route"
+          },
+          {
+            "text": "Design object"
+          },
+          {
+            "text": "Typical starting point"
+          },
+          {
+            "text": "Early constraint"
+          }
+        ],
+        [
+          {
+            "text": "Small molecule"
+          },
+          {
+            "text": "Chemical scaffold\nand substitutions"
+          },
+          {
+            "text": "A pocket or ligand-\nbinding mechanism"
+          },
+          {
+            "text": "Chemistry, selectivity\nand exposure"
+          }
+        ],
+        [
+          {
+            "text": "Peptide /\nminibinder"
+          },
+          {
+            "text": "Sequence, fold\nand interface"
+          },
+          {
+            "text": "A molecular surface\nor interaction"
+          },
+          {
+            "text": "Stability\nand delivery"
+          }
+        ],
+        [
+          {
+            "text": "Antibody"
+          },
+          {
+            "text": "Framework, CDRs\nand format"
+          },
+          {
+            "text": "An accessible\nepitope"
+          },
+          {
+            "text": "Developability\nand format"
+          }
+        ]
+      ],
+      "style": {
+        "cellStyle": {
+          "fontFamily": "Arial",
+          "fontSize": 19,
+          "lineHeight": 1.14,
+          "color": "#172C3B",
+          "align": [
+            "left",
+            "middle"
+          ],
+          "border": [
+            null,
+            null,
+            {
+              "width": 1,
+              "color": "#C9D5D4",
+              "style": "solid"
+            },
+            null
+          ]
+        },
+        "firstRowStyle": {
+          "fontSize": 16,
+          "color": "#536571",
+          "bold": true,
+          "border": [
+            null,
+            null,
+            {
+              "width": 2,
+              "color": "#187D80",
+              "style": "solid"
+            },
+            null
+          ]
+        },
+        "firstColumnStyle": {
+          "color": "#187D80",
+          "bold": true
+        }
+      }
+    },
+    {
+      "elementId": "format-distinction",
+      "elementType": "text",
+      "bounds": [
+        48,
+        463,
+        864,
+        36
+      ],
+      "content": {
+        "text": "VHH and scFv are antibody-derived formats, distinct from non-antibody minibinders.",
+        "fontFamily": "Arial",
+        "fontSize": 18,
+        "lineHeight": 1.18,
+        "color": "#536571"
+      }
+    },
+    {
+      "elementId": "slide-id",
+      "elementType": "text",
+      "bounds": [
+        780,
+        505,
+        132,
+        19
+      ],
+      "content": {
+        "text": "Slide ID DD03",
+        "fontFamily": "Arial",
+        "fontSize": 12,
+        "lineHeight": 1.18,
+        "color": "#536571",
+        "align": [
+          "right",
+          "middle"
+        ]
+      }
+    }
+  ],
+  "notes": "These are common starting points rather than strict boundaries. Specialized chemistry and delivery can change which sites a modality reaches. The useful distinction is what is optimized and what establishes its function. Here, minibinder means a non-antibody protein binder. VHH and scFv belong to the antibody route even when they are physically small. The comparison is an author synthesis of documented tool scopes and experimental formats.\n\nSources\n[FDA] US FDA. Discovery and Development\nhttps://www.fda.gov/patients/drug-development-process/step-1-discovery-and-development\n\n[RF] Watson et al. De novo design of protein structure and function with RFdiffusion. Nature (2023)\nhttps://doi.org/10.1038/s41586-023-06415-8\n\n[BINDCRAFT] Pacesa et al. One-shot design of functional protein binders with BindCraft. Nature (2025)\nhttps://doi.org/10.1038/s41586-025-09429-6\nhttps://pmc.ncbi.nlm.nih.gov/articles/PMC12507698/\n\n[RFANTIBODY] Bennett et al. Atomically accurate de novo design of antibodies with RFdiffusion. Nature 649, 183–193 (2026), online 5 November 2025\nhttps://doi.org/10.1038/s41586-025-09721-5\nhttps://github.com/RosettaCommons/RFantibody\n\nSource check: 8 November 2026. Representative tools, not an exhaustive ranking."
+}
