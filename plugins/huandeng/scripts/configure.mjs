@@ -1,6 +1,6 @@
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
-import { options, reportError, resolveRuntime } from './runtime.mjs';
+import { options, pluginRoot, reportError, resolveRuntime } from './runtime.mjs';
 
 export function configuration(client, runtime) {
   const server = { command: runtime.node, args: [runtime.launcher], env: runtime.env };
@@ -41,11 +41,17 @@ export function configuration(client, runtime) {
           ],
         },
         {
-          id: 'skill-filesystem',
-          config: {
-            includeDefaultRoots: true,
-            customSkillDirs: [path.join(runtime.pluginRoot, 'skills')],
-          },
+          insert: [
+            {
+              id: 'skill-filesystem-huandeng',
+              name: '@deepseek-ai/dsh-skill-filesystem',
+              config: {
+                providerName: 'huandeng',
+                includeDefaultRoots: false,
+                customSkillDirs: [path.join(runtime.pluginRoot, 'skills')],
+              },
+            },
+          ],
         },
       ],
       null,
@@ -57,7 +63,7 @@ export function configuration(client, runtime) {
       {
         connection: 'existing-authorized-workstation',
         instructions:
-          'Use DC-WALT on this workstation. Run the command and argument arrays separately; follow the Story skill. This is not a newly installed ChatGPT MCP connection.',
+          'Use the HUANDENG ChatGPT plugin with the existing authorized DC-WALT connection for this workstation. Run command and argument arrays separately. This fragment describes the local route; it does not create or install an account plugin.',
         skill: path.join(runtime.pluginRoot, 'skills/huandeng-story/SKILL.md'),
         command: runtime.node,
         environment: runtime.env,
@@ -82,12 +88,31 @@ export function configuration(client, runtime) {
 
 if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {
   try {
-    const values = options({ client: { type: 'string' } });
+    const values = options({ client: { type: 'string' }, 'auto-project': { type: 'boolean' } });
     if (values.help)
       process.stdout.write(
-        'Usage: node configure.mjs --client codex|claude|deepseek|chatgpt|mcp --entry <absolute.pptd> [--cli <huandeng.js>] [--url <loopback-origin>] [--runtime-dir <absolute>]\nPrints a mergeable configuration fragment. Does not write client settings or connect to a model.\n',
+        'Usage: node configure.mjs --client codex|claude|deepseek|chatgpt|mcp [--entry <absolute.pptd>] [--cli <huandeng.js>] [--install-dir <Editor directory>] [--url <loopback-origin>] [--runtime-dir <absolute>] [--auto-project]\nPrints a mergeable configuration fragment. Does not write client settings or connect to a model.\n',
       );
-    else process.stdout.write(configuration(values.client, await resolveRuntime(values)));
+    else {
+      if (
+        values['auto-project'] &&
+        (values.client === 'chatgpt' ||
+          ['entry', 'cli', 'install-dir', 'url', 'runtime-dir'].some((name) => values[name]))
+      ) {
+        throw new Error(
+          '--auto-project is a reusable local-client configuration; omit explicit Project/runtime options and use a local client.',
+        );
+      }
+      const runtime = values['auto-project']
+        ? {
+            node: process.execPath,
+            pluginRoot,
+            launcher: path.join(pluginRoot, 'scripts/launch-mcp.mjs'),
+            env: {},
+          }
+        : await resolveRuntime(values);
+      process.stdout.write(configuration(values.client, runtime));
+    }
   } catch (error) {
     reportError(error);
   }

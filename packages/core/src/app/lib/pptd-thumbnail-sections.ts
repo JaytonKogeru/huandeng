@@ -6,6 +6,7 @@ export interface ThumbnailSection {
   title: string;
   pageIds: string[];
   startPageId?: string;
+  sectionPosition?: number | null;
 }
 
 export interface ThumbnailSectionGroup extends ThumbnailSection {
@@ -64,7 +65,11 @@ export function thumbnailRailEntries(
   );
   if (needle) {
     for (const section of groups)
-      if (section.title.toLocaleLowerCase().includes(needle))
+      if (
+        `${section.title} ${section.id ?? ''} ${section.sectionPosition === null || section.sectionPosition === undefined ? '' : `Section ${String(section.sectionPosition).padStart(2, '0')}`}`
+          .toLocaleLowerCase()
+          .includes(needle)
+      )
         for (const pageId of section.pageIds) matched.add(pageId);
     for (const section of groups)
       if (section.pageIds.some((pageId) => matched.has(pageId))) matched.add(section.pageIds[0]);
@@ -105,4 +110,17 @@ export function insertionBoundaryIndex(
       : pages.findIndex((page) => page.pageId === boundary.afterPageId) + 1;
   if (boundary.afterPageId !== null && index === 0) return null;
   return (pages[index]?.pageId ?? null) === boundary.beforePageId ? index : null;
+}
+
+export function slideMoveAfterBoundary(
+  pages: Pick<PageSnapshot, 'pageId'>[],
+  pageId: string,
+  boundary: SlideInsertionBoundary,
+): { afterPageId: string | null } | null {
+  const index = insertionBoundaryIndex(pages, boundary);
+  const current = pages.findIndex((page) => page.pageId === pageId);
+  if (index === null || current < 0)
+    throw new Error('Slide order changed. Choose the insertion point again.');
+  if (index === current || index === current + 1) return null;
+  return { afterPageId: boundary.afterPageId };
 }

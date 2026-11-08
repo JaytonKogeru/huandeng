@@ -254,6 +254,8 @@ export const EDITOR_KEYBOARD_HELP = [
       ['Ctrl+] / [', 'Bring forward / send backward one layer'],
       ['Ctrl+Shift+] / [', 'Bring to front / send to back'],
       ['V / T / R / L', '选择 / 文字 / 矩形 / 线条工具'],
+      ['Ctrl+Wheel', 'Zoom the canvas at the pointer'],
+      ['Shift+Wheel', 'Scroll the canvas horizontally'],
     ],
   },
   {

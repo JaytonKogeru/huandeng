@@ -4,8 +4,8 @@
     "huandeng": {
       "type": "stdio",
       "command": "node",
-      "args": ["./scripts/launch-mcp.mjs"],
-      "cwd": "./"
+      "args": ["${PLUGIN_ROOT}/scripts/launch-mcp.mjs"],
+      "cwd": "${PLUGIN_ROOT}"
     }
   }
 }

@@ -6,12 +6,13 @@ import {
   Copy,
   Fingerprint,
   FolderOpen,
+  FolderPlus,
   History,
   Plus,
   RotateCcw,
   Trash2,
 } from 'lucide-react';
-import { memo, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { type DragEvent, memo, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { uiText as t, useHuandengLocale } from '@/lib/huandeng-locale';
 import { pptdAssetPreviewUrl } from '@/lib/pptd-backend';
 import { cycleItemId, focusEditorCanvas } from '@/lib/pptd-keyboard';
@@ -59,11 +60,19 @@ function SlideInsertionGap({
   position,
   disabled,
   onInsert,
+  onCreateSection,
+  onDragOver,
+  onDrop,
+  active,
 }: {
   boundary: SlideInsertionBoundary;
   position: number;
   disabled: boolean;
   onInsert: (boundary: SlideInsertionBoundary) => void;
+  onCreateSection?: (boundary: SlideInsertionBoundary) => void;
+  onDragOver: (event: DragEvent<HTMLElement>, boundary: SlideInsertionBoundary) => void;
+  onDrop: (event: DragEvent<HTMLElement>, boundary: SlideInsertionBoundary) => void;
+  active: boolean;
 }) {
   useHuandengLocale();
   return (
@@ -78,19 +87,41 @@ function SlideInsertionGap({
             title={t('Insert blank slide here')}
             data-hd-insert-before={boundary.beforePageId ?? ''}
             data-hd-insert-after={boundary.afterPageId ?? ''}
+            data-hd-drop-active={active || undefined}
+            style={
+              active ? { color: 'var(--brand)', backgroundColor: 'var(--brand-soft)' } : undefined
+            }
             onClick={() => onInsert(boundary)}
+            onDragOver={(event) => onDragOver(event, boundary)}
+            onDrop={(event) => onDrop(event, boundary)}
           />
         }
       >
-        <span className="h-px flex-1 bg-current opacity-0 group-hover:opacity-70 group-focus-visible:opacity-70" />
+        <span
+          className={cn(
+            'h-px flex-1 bg-current group-hover:opacity-70 group-focus-visible:opacity-70',
+            active ? 'opacity-100' : 'opacity-0',
+          )}
+        />
         <Plus className="size-3.5 opacity-0 group-hover:opacity-100 group-focus-visible:opacity-100" />
-        <span className="h-px flex-1 bg-current opacity-0 group-hover:opacity-70 group-focus-visible:opacity-70" />
+        <span
+          className={cn(
+            'h-px flex-1 bg-current group-hover:opacity-70 group-focus-visible:opacity-70',
+            active ? 'opacity-100' : 'opacity-0',
+          )}
+        />
       </ContextMenuTrigger>
       <ContextMenuContent>
         <ContextMenuItem disabled={disabled} onClick={() => onInsert(boundary)}>
           <Plus />
           {t('Insert blank slide here')}
         </ContextMenuItem>
+        {onCreateSection && (
+          <ContextMenuItem disabled={disabled} onClick={() => onCreateSection(boundary)}>
+            <FolderPlus />
+            {t('Create Section here')}
+          </ContextMenuItem>
+        )}
       </ContextMenuContent>
     </ContextMenu>
   );
@@ -108,6 +139,7 @@ export function PptdThumbnailRail({
   onSelect,
   onAdd,
   onInsert,
+  onCreateSection,
   onDuplicate,
   onRemove,
   onMove,
@@ -126,9 +158,10 @@ export function PptdThumbnailRail({
   onSelect: (pageId: string, occurrenceId?: string, focusTarget?: 'canvas' | 'thumbnails') => void;
   onAdd: () => void;
   onInsert?: (boundary: SlideInsertionBoundary) => void;
+  onCreateSection?: (boundary: SlideInsertionBoundary) => void;
   onDuplicate: (pageId: string) => void;
   onRemove: (pageId: string) => void;
-  onMove: (pageId: string, afterPageId: string | null) => void;
+  onMove: (pageId: string, boundary: SlideInsertionBoundary) => void;
   onRestore: (pageId: string) => void;
   onHistory: (pageId: string) => void;
   onShowFile: (pageId: string) => void;
@@ -138,19 +171,96 @@ export function PptdThumbnailRail({
   const [copyStatus, setCopyStatus] = useState('');
   const [collapsed, setCollapsed] = useState<Set<string>>(() => new Set());
   const scrollRef = useRef<HTMLDivElement>(null);
+  const collapseAnchor = useRef<{ key: string; top: number; scrollTop: number } | null>(null);
+  const drag = useRef<{ pageId: string; y: number; frame: number | null } | null>(null);
+  const [dropBoundary, setDropBoundary] = useState<SlideInsertionBoundary | null>(null);
   const focusedOccurrence = useRef<string | null>(null);
   const [visible, setVisible] = useState<Set<string>>(() => new Set());
   const groups = thumbnailSectionGroups(pages, sections);
   const entries = thumbnailRailEntries(pages, groups, collapsed, query);
   const searching = !!query.trim();
   const keys = entries.map((entry) => entry.key).join(',');
-  const setSectionCollapsed = (key: string, closed: boolean) =>
+  const order = pages.map((page) => page.occurrenceId ?? page.pageId).join(',');
+  const setSectionCollapsed = (key: string, closed: boolean) => {
+    if (collapsed.has(key) === closed) return;
+    const root = scrollRef.current;
+    const heading = root?.querySelector<HTMLElement>(
+      `[data-hd-section-toggle="${CSS.escape(key)}"]`,
+    );
+    if (root && heading)
+      collapseAnchor.current = {
+        key,
+        top: heading.getBoundingClientRect().top,
+        scrollTop: root.scrollTop,
+      };
     setCollapsed((previous) => {
       const next = new Set(previous);
       if (closed) next.add(key);
       else next.delete(key);
       return next;
     });
+  };
+  useLayoutEffect(() => {
+    void collapsed;
+    const anchor = collapseAnchor.current;
+    const root = scrollRef.current;
+    collapseAnchor.current = null;
+    if (!anchor || !root) return;
+    const heading = root.querySelector<HTMLElement>(
+      `[data-hd-section-toggle="${CSS.escape(anchor.key)}"]`,
+    );
+    root.scrollTop = heading
+      ? root.scrollTop + heading.getBoundingClientRect().top - anchor.top
+      : anchor.scrollTop;
+  }, [collapsed]);
+  const stopDragging = () => {
+    if (drag.current?.frame !== null && drag.current?.frame !== undefined)
+      cancelAnimationFrame(drag.current.frame);
+    drag.current = null;
+    setDropBoundary(null);
+  };
+  useEffect(
+    () => () => {
+      if (drag.current?.frame !== null && drag.current?.frame !== undefined)
+        cancelAnimationFrame(drag.current.frame);
+    },
+    [],
+  );
+  const scrollDuringDrag = () => {
+    const current = drag.current;
+    const root = scrollRef.current;
+    if (!current || !root) return;
+    const rect = root.getBoundingClientRect();
+    const edge = 48;
+    const speed =
+      current.y < rect.top + edge
+        ? -Math.min(16, (rect.top + edge - current.y) / 3)
+        : current.y > rect.bottom - edge
+          ? Math.min(16, (current.y - rect.bottom + edge) / 3)
+          : 0;
+    if (speed) root.scrollTop += speed;
+    current.frame = requestAnimationFrame(scrollDuringDrag);
+  };
+  const sameBoundary = (boundary: SlideInsertionBoundary) =>
+    dropBoundary?.afterPageId === boundary.afterPageId &&
+    dropBoundary.beforePageId === boundary.beforePageId;
+  const dragOver = (event: DragEvent<HTMLElement>, boundary: SlideInsertionBoundary) => {
+    if (disabled || !event.dataTransfer.types.includes('application/huandeng-page')) return;
+    event.preventDefault();
+    event.dataTransfer.dropEffect = 'move';
+    if (drag.current) drag.current.y = event.clientY;
+    if (!sameBoundary(boundary)) setDropBoundary(boundary);
+  };
+  const drop = (event: DragEvent<HTMLElement>, boundary: SlideInsertionBoundary) => {
+    if (disabled || !event.dataTransfer.types.includes('application/huandeng-page')) return;
+    event.preventDefault();
+    event.stopPropagation();
+    const id = event.dataTransfer.getData('application/huandeng-page');
+    stopDragging();
+    if (id) onMove(id, boundary);
+  };
+  const canCreateSection = (boundary: SlideInsertionBoundary) =>
+    !!boundary.beforePageId && !groups.some((group) => group.pageIds[0] === boundary.beforePageId);
   // biome-ignore lint/correctness/useExhaustiveDependencies: Search and page order replace the observed DOM nodes without changing the scroll root.
   useEffect(() => {
     const root = scrollRef.current;
@@ -176,7 +286,7 @@ export function PptdThumbnailRail({
       observer.observe(element);
     return () => observer.disconnect();
   }, [keys, query]);
-  // biome-ignore lint/correctness/useExhaustiveDependencies: Reordering and clearing search can move the selected node without changing its identity.
+  // biome-ignore lint/correctness/useExhaustiveDependencies: Follow new selections, page order and search, but never a Section fold.
   useLayoutEffect(() => {
     const root = scrollRef.current;
     if (!root) return;
@@ -184,6 +294,11 @@ export function PptdThumbnailRail({
       `[data-hd-thumbnail-preview="${CSS.escape(currentOccurrenceId ?? currentPageId ?? '')}"]`,
     );
     current?.scrollIntoView({ block: 'nearest', behavior: 'instant' });
+  }, [currentPageId, currentOccurrenceId, order, query]);
+  // biome-ignore lint/correctness/useExhaustiveDependencies: Folding can remove a focused thumbnail without changing the selection.
+  useLayoutEffect(() => {
+    const root = scrollRef.current;
+    if (!root) return;
     if (
       focusedOccurrence.current &&
       !root.querySelector(`[data-hd-thumbnail-key="${CSS.escape(focusedOccurrence.current)}"]`)
@@ -194,7 +309,7 @@ export function PptdThumbnailRail({
           .querySelector<HTMLElement>('[data-hd-thumbnail][tabindex="0"]')
           ?.focus({ preventScroll: true });
     }
-  }, [currentPageId, currentOccurrenceId, keys, query]);
+  }, [keys]);
   const isCurrent = (page: PageSnapshot) =>
     currentOccurrenceId ? page.occurrenceId === currentOccurrenceId : page.pageId === currentPageId;
   const currentIndex = pages.findIndex(isCurrent);
@@ -243,14 +358,43 @@ export function PptdThumbnailRail({
       <p className="sr-only" role="status">
         {t(copyStatus)}
       </p>
+      {/* biome-ignore lint/a11y/useSemanticElements: This scrolling navigation group coordinates native drag events and thumbnail focus. */}
       <div
         ref={scrollRef}
+        role="group"
+        aria-label={t('Slide thumbnails')}
         className="min-h-0 flex-1 space-y-1 overflow-y-auto px-3 pb-5"
         data-hd-thumbnail-scroll
+        style={{ overflowAnchor: 'none' }}
+        onDragOver={(event) => {
+          if (drag.current) drag.current.y = event.clientY;
+        }}
+        onDragEnd={stopDragging}
+        onDragLeave={(event) => {
+          const rect = event.currentTarget.getBoundingClientRect();
+          if (
+            event.clientX < rect.left ||
+            event.clientX > rect.right ||
+            event.clientY < rect.top ||
+            event.clientY > rect.bottom
+          ) {
+            if (drag.current) drag.current.y = (rect.top + rect.bottom) / 2;
+            setDropBoundary(null);
+          }
+        }}
       >
         {entries.map(({ page, index, name, key }) => {
           const section = groups.find((group) => group.firstIndex === index);
           const expanded = !section || searching || !collapsed.has(section.key);
+          const before = slideInsertionBoundary(pages, index);
+          const after = slideInsertionBoundary(
+            pages,
+            section && !expanded ? section.lastIndex + 1 : index + 1,
+          );
+          const boundaryAtPointer = (event: DragEvent<HTMLElement>) => {
+            const rect = event.currentTarget.getBoundingClientRect();
+            return event.clientY < rect.top + rect.height / 2 ? before : after;
+          };
           const containsCurrent =
             !!section &&
             !expanded &&
@@ -260,10 +404,14 @@ export function PptdThumbnailRail({
             <div key={key} className="space-y-1">
               {onInsert && !searching && (
                 <SlideInsertionGap
-                  boundary={slideInsertionBoundary(pages, index)}
+                  boundary={before}
                   position={index + 1}
                   disabled={disabled}
                   onInsert={onInsert}
+                  onCreateSection={canCreateSection(before) ? onCreateSection : undefined}
+                  onDragOver={dragOver}
+                  onDrop={drop}
+                  active={sameBoundary(before)}
                 />
               )}
               {section && (
@@ -280,7 +428,12 @@ export function PptdThumbnailRail({
                       expanded ? 'Collapse Section {title}' : 'Expand Section {title}',
                       { title: section.title },
                     )}
-                    title={searching ? t('Sections expand while searching.') : section.title}
+                    title={
+                      searching
+                        ? t('Sections expand while searching.')
+                        : `${section.title}\n${t('Section ID')}: ${section.id ?? section.key}`
+                    }
+                    data-hd-section-position={section.sectionPosition ?? undefined}
                     data-hd-section-toggle={section.key}
                     onClick={() => setSectionCollapsed(section.key, expanded)}
                   >
@@ -288,6 +441,13 @@ export function PptdThumbnailRail({
                       <ChevronDown className="size-3.5 shrink-0" />
                     ) : (
                       <ChevronRight className="size-3.5 shrink-0" />
+                    )}
+                    {section.sectionPosition !== null && section.sectionPosition !== undefined && (
+                      <span className="shrink-0 font-mono text-[10px] text-muted-foreground">
+                        {t('Section {position}', {
+                          position: String(section.sectionPosition).padStart(2, '0'),
+                        })}
+                      </span>
                     )}
                     <span className="min-w-0 flex-1 truncate font-semibold">{section.title}</span>
                     <span className="shrink-0 tabular-nums text-muted-foreground">
@@ -329,7 +489,7 @@ export function PptdThumbnailRail({
                       })}
                       aria-pressed={isCurrent(page)}
                       className={cn(
-                        'block w-full rounded-md p-1.5 text-left outline-none transition-colors focus-visible:ring-2 focus-visible:ring-brand/50',
+                        'relative block w-full rounded-md p-1.5 text-left outline-none transition-colors focus-visible:ring-2 focus-visible:ring-brand/50',
                         isCurrent(page) ? 'bg-brand-soft ring-1 ring-brand/50' : 'hover:bg-muted',
                       )}
                       onClick={() => onSelect(page.pageId, page.occurrenceId)}
@@ -379,23 +539,29 @@ export function PptdThumbnailRail({
                       }}
                       onContextMenu={() => onSelect(page.pageId, page.occurrenceId)}
                       draggable={!disabled}
-                      onDragStart={(event) =>
-                        event.dataTransfer.setData('application/huandeng-page', page.pageId)
-                      }
-                      onDragOver={(event) => {
-                        if (
-                          !disabled &&
-                          event.dataTransfer.types.includes('application/huandeng-page')
-                        )
-                          event.preventDefault();
+                      onDragStart={(event) => {
+                        event.dataTransfer.setData('application/huandeng-page', page.pageId);
+                        event.dataTransfer.effectAllowed = 'move';
+                        drag.current = { pageId: page.pageId, y: event.clientY, frame: null };
+                        drag.current.frame = requestAnimationFrame(scrollDuringDrag);
                       }}
-                      onDrop={(event) => {
-                        if (disabled) return;
-                        event.preventDefault();
-                        const id = event.dataTransfer.getData('application/huandeng-page');
-                        if (id && id !== page.pageId) onMove(id, page.pageId);
-                      }}
+                      onDragOver={(event) => dragOver(event, boundaryAtPointer(event))}
+                      onDrop={(event) => drop(event, boundaryAtPointer(event))}
                     >
+                      {sameBoundary(before) && (
+                        <span
+                          aria-hidden
+                          data-hd-drop-before={page.pageId}
+                          className="pointer-events-none absolute -top-0.5 left-0 right-0 h-0.5 bg-brand"
+                        />
+                      )}
+                      {sameBoundary(after) && (
+                        <span
+                          aria-hidden
+                          data-hd-drop-after={page.pageId}
+                          className="pointer-events-none absolute -bottom-0.5 left-0 right-0 h-0.5 bg-brand"
+                        />
+                      )}
                       <div
                         data-hd-thumbnail-preview={page.occurrenceId ?? page.pageId}
                         className="pointer-events-none overflow-hidden rounded-sm border border-foreground/10"
@@ -503,6 +669,9 @@ export function PptdThumbnailRail({
             position={pages.length + 1}
             disabled={disabled}
             onInsert={onInsert}
+            onDragOver={dragOver}
+            onDrop={drop}
+            active={sameBoundary(slideInsertionBoundary(pages, pages.length))}
           />
         )}
         {tombstones.length > 0 && (
@@ -537,7 +706,7 @@ export function PptdThumbnailRail({
           disabled={disabled || currentIndex < 1}
           onClick={() => {
             if (currentPageId)
-              onMove(currentPageId, currentIndex > 1 ? pages[currentIndex - 2].pageId : null);
+              onMove(currentPageId, slideInsertionBoundary(pages, currentIndex - 1));
           }}
         >
           <ArrowUp />
@@ -548,7 +717,8 @@ export function PptdThumbnailRail({
           aria-label={t('页面下移')}
           disabled={disabled || currentIndex < 0 || currentIndex >= pages.length - 1}
           onClick={() => {
-            if (currentPageId) onMove(currentPageId, pages[currentIndex + 1].pageId);
+            if (currentPageId)
+              onMove(currentPageId, slideInsertionBoundary(pages, currentIndex + 2));
           }}
         >
           <ArrowDown />

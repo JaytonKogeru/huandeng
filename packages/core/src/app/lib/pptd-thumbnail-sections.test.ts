@@ -3,6 +3,7 @@ import type { PageSnapshot } from '../../pptd/types';
 import {
   insertionBoundaryIndex,
   slideInsertionBoundary,
+  slideMoveAfterBoundary,
   type ThumbnailSection,
   thumbnailRailEntries,
   thumbnailSectionGroups,
@@ -27,6 +28,25 @@ const sections: ThumbnailSection[] = [
 ];
 
 describe('Section navigation and exact insertion boundaries', () => {
+  it('moves to both halves of a target, including the first and final gaps', () => {
+    const pages = slides(['a', 'b', 'c', 'd']);
+    expect(slideMoveAfterBoundary(pages, 'c', slideInsertionBoundary(pages, 1))).toEqual({
+      afterPageId: 'a',
+    });
+    expect(slideMoveAfterBoundary(pages, 'c', slideInsertionBoundary(pages, 0))).toEqual({
+      afterPageId: null,
+    });
+    expect(slideMoveAfterBoundary(pages, 'a', slideInsertionBoundary(pages, 4))).toEqual({
+      afterPageId: 'd',
+    });
+    expect(slideMoveAfterBoundary(pages, 'b', slideInsertionBoundary(pages, 1))).toBeNull();
+    expect(slideMoveAfterBoundary(pages, 'b', slideInsertionBoundary(pages, 2))).toBeNull();
+    const boundary = slideInsertionBoundary(pages, 1);
+    expect(() =>
+      slideMoveAfterBoundary(slides(['a', 'new', 'b', 'c', 'd']), 'c', boundary),
+    ).toThrow('Slide order changed');
+    expect(() => slideMoveAfterBoundary(pages, 'removed', boundary)).toThrow('Slide order changed');
+  });
   it('keeps covers and unsectioned Slides visible when members are collapsed', () => {
     const pages = slides();
     const groups = thumbnailSectionGroups(pages, sections);

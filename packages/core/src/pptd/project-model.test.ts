@@ -707,3 +707,67 @@ describe('durable project organization transactions', () => {
     ).toEqual(model.sections[0].pageIds);
   });
 });
+
+describe('Section positions and front matter identity', () => {
+  it('derives order from Main Slides while keeping Section IDs and an explicit Section 00', () => {
+    const model = project();
+    model.sections[0] = {
+      ...model.sections[0],
+      pageIds: ['a'],
+      startPageId: 'a',
+      frontMatter: true,
+    };
+    model.sections[1] = { ...model.sections[1], pageIds: ['b'], startPageId: 'b' };
+    model.sections.push({
+      id: 'later',
+      title: 'Later topic',
+      pageIds: ['c'],
+      startPageId: 'c',
+      story: emptyStory(),
+    });
+    model.sections.reverse();
+    const deck = snapshot(model);
+    const before = structuredClone(model);
+    expect(
+      resolveProjectSections(deck).map((item) => [item.section.id, item.sectionPosition]),
+    ).toEqual([
+      ['later', 2],
+      ['result', 1],
+      ['background', 0],
+    ]);
+    deck.pages = [deck.pages[0], deck.pages[2], deck.pages[1]];
+    expect(
+      resolveProjectSections(deck).map((item) => [item.section.id, item.sectionPosition]),
+    ).toEqual([
+      ['later', 1],
+      ['result', 2],
+      ['background', 0],
+    ]);
+    expect(model).toEqual(before);
+    expect(
+      validateProjectModel(model).sections.find((section) => section.id === 'background')
+        ?.frontMatter,
+    ).toBe(true);
+  });
+
+  it('keeps legacy sections numbered from 01 and rejects ambiguous front matter', () => {
+    const model = project();
+    expect(resolveProjectSections(snapshot(model)).map((item) => item.sectionPosition)).toEqual([
+      1, 2,
+    ]);
+    model.sections[1].frontMatter = true;
+    expect(
+      resolveProjectSections(snapshot(model))[1].diagnostics.some(
+        (item) => item.code === 'SECTION_FRONT_MATTER_POSITION',
+      ),
+    ).toBe(true);
+    model.sections[0].frontMatter = true;
+    expect(() => validateProjectModel(model)).toThrow('Only one Section');
+    expect(() =>
+      validateProjectModel({
+        ...project(),
+        sections: [{ ...project().sections[0], frontMatter: 'true' }],
+      }),
+    ).toThrow('frontMatter must be a boolean');
+  });
+});

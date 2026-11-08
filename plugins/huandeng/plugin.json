@@ -1,10 +1,29 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "huandeng",
-  "version": "0.9.0",
+  "version": "0.12.1",
   "description": "Create and refine Story-driven scientific slides in the open HUANDENG project, with reviewable proposals and one shared editor writer.",
-  "author": { "name": "HUANDENG" },
+  "author": {
+    "name": "HUANDENG"
+  },
   "repository": "https://github.com/JaytonKogeru/huandeng",
   "license": "MIT",
-  "keywords": ["slides", "pptd", "story", "presentations"]
+  "keywords": ["slides", "pptd", "story", "presentations"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "HUANDENG",
+        "shortDescription": "Research slides in your Editor",
+        "longDescription": "Create, refine, organize and review scientific PPTD presentations through the local HUANDENG Editor shared writer. Use verified local installation discovery in Codex, Claude Code and DeepSeek Harness, or an existing authorized workstation connection in ChatGPT. Preserve source figures, stable IDs, revisions and private Project files.",
+        "developerName": "HUANDENG",
+        "category": "Scientific Research",
+        "capabilities": [],
+        "defaultPrompt": [
+          "Use HUANDENG to refine the open presentation's story and click-by-click explanation while preserving its original figures."
+        ],
+        "logo": "./assets/icon.png",
+        "composerIcon": "./assets/icon.png"
+      }
+    }
+  }
 }

@@ -7,7 +7,7 @@ try {
   const values = options();
   if (values.help) {
     process.stdout.write(
-      'Usage: node doctor.mjs --entry <absolute.pptd> [--cli <huandeng.js>] [--url <loopback-origin>] [--runtime-dir <absolute>]\nReads the actual stdio MCP service, guides and deck identity. Does not edit the project or install a client.\n',
+      'Usage: node doctor.mjs [--entry <absolute.pptd>] [--cli <huandeng.js>] [--install-dir <Editor directory>] [--url <loopback-origin>] [--runtime-dir <absolute>]\nReads the actual stdio MCP service, guides and deck identity. Does not edit the project or install a client.\n',
     );
   } else {
     const runtime = await resolveRuntime(values);
@@ -18,7 +18,7 @@ try {
     const { StdioClientTransport } = await import(
       pathToFileURL(require.resolve('@modelcontextprotocol/sdk/client/stdio.js')).href
     );
-    client = new Client({ name: 'HUANDENG Plugin doctor', version: '0.9.0' });
+    client = new Client({ name: 'HUANDENG Plugin doctor', version: '0.12.1' });
     const transport = new StdioClientTransport({
       command: runtime.node,
       args: [runtime.launcher],

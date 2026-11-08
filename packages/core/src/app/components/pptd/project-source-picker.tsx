@@ -148,6 +148,10 @@ export function ProjectSourcePicker({
   const matchingSections = sections.filter((item) =>
     [
       item.section.title,
+      item.section.id,
+      item.sectionPosition === null
+        ? ''
+        : `Section ${String(item.sectionPosition).padStart(2, '0')}`,
       ...item.pageIds.map((id) => {
         const page = sources.find((candidate) => candidate.pageId === id);
         return page ? projectSlideSearch(page) : id;
@@ -212,7 +216,11 @@ export function ProjectSourcePicker({
                     <Layers3 className="size-3.5 shrink-0" />
                   )}
                   <span className="min-w-0 flex-1">
-                    <span className="block truncate text-xs">{item.section.title}</span>
+                    <span className="block truncate text-xs">
+                      {item.sectionPosition !== null &&
+                        `${t('Section {position}', { position: String(item.sectionPosition).padStart(2, '0') })} · `}
+                      {item.section.title}
+                    </span>
                     <span className="block text-[10px] font-normal text-muted-foreground">
                       {item.contiguous && item.startPosition !== null
                         ? t('Positions {start}–{end} · {count} slides', {

@@ -1,7 +1,10 @@
 {
   "name": "huandeng",
-  "version": "0.9.0",
+  "version": "0.12.1",
   "description": "Create and refine Story-driven PPTD slides with non-writing previews, shared editor transactions and reusable presentations.",
-  "author": { "name": "HUANDENG" },
-  "repository": "https://github.com/JaytonKogeru/huandeng"
+  "author": {
+    "name": "HUANDENG"
+  },
+  "repository": "https://github.com/JaytonKogeru/huandeng",
+  "license": "MIT"
 }

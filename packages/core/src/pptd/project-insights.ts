@@ -129,10 +129,15 @@ export interface StoryBriefing {
   scope: 'project' | 'presentation' | 'page';
   main: { title: string; story: StoryOutline };
   organization: {
-    sections: ProjectSection[];
+    sections: (ProjectSection & { sectionPosition: number | null })[];
     presentations: Omit<PresentationSummary, 'occurrences' | 'diagnostics'>[];
   };
-  section: { id: string; title: string; story: StoryOutline } | null;
+  section: {
+    id: string;
+    title: string;
+    story: StoryOutline;
+    sectionPosition: number | null;
+  } | null;
   presentation: { id: string; title: string; story: StoryOutline; notes: string } | null;
   page: {
     pageId: string;
@@ -278,9 +283,10 @@ export function storyBriefing(
       );
   }
   const sections = resolveProjectSections(snapshot, project);
-  const section = page
-    ? sections.find((entry) => entry.pageIds.includes(page.pageId))?.section
+  const sectionEntry = page
+    ? sections.find((entry) => entry.pageIds.includes(page.pageId))
     : undefined;
+  const section = sectionEntry?.section;
   const presentation = project.presentations.find((entry) => entry.id === presentationId);
   const position = occurrence
     ? sequence.findIndex((entry) => entry.occurrenceId === occurrence.occurrenceId)
@@ -305,12 +311,23 @@ export function storyBriefing(
     scope: page ? 'page' : presentation ? 'presentation' : 'project',
     main: { title: snapshot.title, story: project.mainStory },
     organization: {
-      sections: sections.map((entry) => ({ ...entry.section, pageIds: entry.pageIds })),
+      sections: sections.map((entry) => ({
+        ...entry.section,
+        pageIds: entry.pageIds,
+        sectionPosition: entry.sectionPosition,
+      })),
       presentations: insights.presentations.map(
         ({ occurrences: _occurrences, diagnostics: _diagnostics, ...summary }) => summary,
       ),
     },
-    section: section ? { id: section.id, title: section.title, story: section.story } : null,
+    section: section
+      ? {
+          id: section.id,
+          title: section.title,
+          story: section.story,
+          sectionPosition: sectionEntry?.sectionPosition ?? null,
+        }
+      : null,
     presentation: presentation
       ? {
           id: presentation.id,

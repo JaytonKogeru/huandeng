@@ -3,6 +3,41 @@ export const authoringEnglish = {
 } as const;
 
 export const authoringChinese = {
+  'Section {position}': 'Section {position}',
+  'Section ID': 'Section ID',
+  'Copy Section ID': '复制 Section ID',
+  'Section ID copied.': '已复制 Section ID。',
+  'Could not copy Section ID.': '未能复制 Section ID。',
+  'Front matter (Section 00)': '前置内容（Section 00）',
+  'Create Section here': '在此创建 Section',
+  'Create Section': '创建 Section',
+  'Organize the following Slides through the next Section boundary.':
+    '从后面的 Slide 开始，一直编入下一个 Section 边界之前。',
+  'A Section needs an existing first Slide.': 'Section 需要一张已有的首页 Slide。',
+  'A Section already starts at this Slide.': '已有 Section 从这张 Slide 开始。',
+  'Only one Section can be front matter (Section 00).':
+    '只能将一个 Section 设为前置内容（Section 00）。',
+  'Front matter (Section 00) must begin at the first Main Slide.':
+    '前置内容（Section 00）必须从第一张 Main Slide 开始。',
+  'Front matter (Section 00) must begin at the first Main Slide and be continuous.':
+    '前置内容（Section 00）必须从第一张 Main Slide 开始并连续排列。',
+  'This Slide has custom Section membership. Set a continuous range before splitting it.':
+    '这张 Slide 使用自定义 Section 成员方式，请先设置连续范围再拆分。',
+  'Save or discard the Project organization draft before creating a Section here.':
+    '在此创建 Section 之前，请保存或放弃 Project 编排草稿。',
+  'The Project is no longer available.': 'Project 已不可用。',
+  'Selected text formatting': '选中文字格式',
+  'Selected text color': '选中文字颜色',
+  'Selected text highlight': '选中文字高亮',
+  Highlight: '高亮',
+  'No highlight': '取消高亮',
+  Yellow: '黄色',
+  Green: '绿色',
+  Pink: '粉色',
+  Superscript: '上标',
+  Subscript: '下标',
+  'Zoom the canvas at the pointer': '以指针位置为中心缩放画布',
+  'Scroll the canvas horizontally': '横向滚动画布',
   'Captured reference style': '已捕获的参考样式',
   'Reference Slide preview': '参考 Slide 预览',
   'Apply uses this captured style. Refresh to include later reference edits.':

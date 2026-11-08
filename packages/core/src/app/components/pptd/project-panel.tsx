@@ -1011,6 +1011,23 @@ function ProjectPanelEditor({
                 }
                 onSetRange={(start, end) => setSectionRange(resolved.section.id, start, end)}
                 onSetStart={(start) => setSectionStart(resolved.section.id, start)}
+                onSetFrontMatter={(frontMatter) => {
+                  if (
+                    frontMatter &&
+                    draft.sections.some(
+                      (section) => section.id !== resolved.section.id && section.frontMatter,
+                    )
+                  )
+                    return 'Only one Section can be front matter (Section 00).';
+                  return setSectionDefinition(resolved.section.id, {
+                    ...draft,
+                    sections: draft.sections.map((section) => {
+                      if (section.id !== resolved.section.id) return section;
+                      const { frontMatter: _frontMatter, ...rest } = section;
+                      return { ...rest, ...(frontMatter ? { frontMatter: true as const } : {}) };
+                    }),
+                  });
+                }}
                 onSelectPage={onSelectPage}
               >
                 <details>

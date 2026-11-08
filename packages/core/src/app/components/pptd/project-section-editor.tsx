@@ -1,4 +1,4 @@
-import { Trash2 } from 'lucide-react';
+import { Copy, Trash2 } from 'lucide-react';
 import { type ReactNode, useEffect, useId, useState } from 'react';
 import { uiText as t, useHuandengLocale } from '@/lib/huandeng-locale';
 import { projectSlideTitle } from '@/lib/pptd-project-source';
@@ -19,6 +19,7 @@ export function ProjectSectionEditor({
   onRemove,
   onSetRange,
   onSetStart,
+  onSetFrontMatter,
   onSelectPage,
   children,
 }: {
@@ -30,6 +31,7 @@ export function ProjectSectionEditor({
   onRemove: () => void;
   onSetRange: (startPageId: string, endPageId: string) => string | null;
   onSetStart: (startPageId: string) => string | null;
+  onSetFrontMatter: (frontMatter: boolean) => string | null;
   onSelectPage: (pageId: string) => void;
   children?: ReactNode;
 }) {
@@ -56,6 +58,7 @@ export function ProjectSectionEditor({
   const [end, setEnd] = useState(initialEnd);
   const [mode, setMode] = useState<'cover' | 'range' | 'members'>(initialMode);
   const [rangeError, setRangeError] = useState<string | null>(null);
+  const [copyStatus, setCopyStatus] = useState('');
   useEffect(() => {
     setStart(initialStart);
     setEnd(initialEnd);
@@ -74,6 +77,38 @@ export function ProjectSectionEditor({
       className="space-y-3 rounded-md border border-border bg-background p-2.5"
       data-hd-project-section={section.id}
     >
+      <div className="flex items-center gap-2 text-[11px] text-muted-foreground">
+        <span className="shrink-0 font-medium" data-hd-section-number>
+          {resolved.sectionPosition === null
+            ? t('Section')
+            : t('Section {position}', {
+                position: String(resolved.sectionPosition).padStart(2, '0'),
+              })}
+        </span>
+        <span
+          className="min-w-0 flex-1 truncate font-mono"
+          title={`${t('Section ID')}: ${section.id}`}
+        >
+          {t('Section ID')} · {section.id}
+        </span>
+        <Button
+          size="icon-xs"
+          variant="ghost"
+          aria-label={t('Copy Section ID')}
+          title={t('Copy Section ID')}
+          onClick={() => {
+            void navigator.clipboard.writeText(section.id).then(
+              () => setCopyStatus(t('Section ID copied.')),
+              () => setCopyStatus(t('Could not copy Section ID.')),
+            );
+          }}
+        >
+          <Copy />
+        </Button>
+      </div>
+      <p className="sr-only" role="status">
+        {copyStatus}
+      </p>
       <div className="flex items-center gap-1">
         <input
           aria-label={t('Section name')}
@@ -103,6 +138,15 @@ export function ProjectSectionEditor({
             })
           : t('{count} slides', { count: pageIds.length })}
       </p>
+      <label className="flex items-center gap-2 text-[11px] text-muted-foreground">
+        <input
+          type="checkbox"
+          checked={section.frontMatter === true}
+          disabled={disabled || (!section.frontMatter && resolved.startPosition !== 1)}
+          onChange={(event) => setRangeError(onSetFrontMatter(event.target.checked))}
+        />
+        {t('Front matter (Section 00)')}
+      </label>
       <label htmlFor={`${prefix}-mode`} className="block space-y-1 text-[11px]">
         <span className="text-muted-foreground">{t('Section membership')}</span>
         <select

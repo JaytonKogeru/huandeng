@@ -203,8 +203,8 @@ export function isRichText(text: string): boolean {
 export function sanitizeRichTextHtml(source: string): string {
   const document = new DOMParser().parseFromString(source, 'text/html');
   const clean = (parent: Element) => {
-    for (const child of Array.from(parent.children)) {
-      const tag = child.tagName.toLowerCase();
+    for (let child of Array.from(parent.children)) {
+      let tag = child.tagName.toLowerCase();
       if (DROP_TAGS.has(tag)) {
         child.remove();
         continue;
@@ -214,9 +214,12 @@ export function sanitizeRichTextHtml(source: string): string {
         const replacement = document.createElement(
           tag === 'b' ? 'strong' : tag === 'i' ? 'em' : 'p',
         );
+        const originalStyle = child.getAttribute('style');
+        if (originalStyle) replacement.setAttribute('style', originalStyle);
         replacement.append(...child.childNodes);
         child.replaceWith(replacement);
-        continue;
+        child = replacement;
+        tag = replacement.tagName.toLowerCase();
       }
       if (!ALLOWED_TAGS.has(tag) && !MATH_TAGS.has(tag)) {
         child.replaceWith(...child.childNodes);
@@ -342,17 +345,41 @@ function richNodes(source: string, theme: PptdTheme): ReactNode {
           </span>
         );
       case 'strong':
-        return <strong key={key}>{children}</strong>;
+        return (
+          <strong key={key} style={style}>
+            {children}
+          </strong>
+        );
       case 'em':
-        return <em key={key}>{children}</em>;
+        return (
+          <em key={key} style={style}>
+            {children}
+          </em>
+        );
       case 'u':
-        return <u key={key}>{children}</u>;
+        return (
+          <u key={key} style={style}>
+            {children}
+          </u>
+        );
       case 's':
-        return <s key={key}>{children}</s>;
+        return (
+          <s key={key} style={style}>
+            {children}
+          </s>
+        );
       case 'sup':
-        return <sup key={key}>{children}</sup>;
+        return (
+          <sup key={key} style={style}>
+            {children}
+          </sup>
+        );
       case 'sub':
-        return <sub key={key}>{children}</sub>;
+        return (
+          <sub key={key} style={style}>
+            {children}
+          </sub>
+        );
       case 'br':
         return <br key={key} />;
       case 'ul':
@@ -385,7 +412,7 @@ function richNodes(source: string, theme: PptdTheme): ReactNode {
             key={key}
             href={node.getAttribute('href') ?? undefined}
             tabIndex={-1}
-            style={{ color: '#2563eb', textDecoration: 'underline' }}
+            style={{ color: '#2563eb', textDecoration: 'underline', ...style }}
             onClick={(event) => event.preventDefault()}
           >
             {children}

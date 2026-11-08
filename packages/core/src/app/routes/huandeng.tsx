@@ -34,6 +34,7 @@ import { HuandengMark } from '@/components/brand-mark';
 import { AgentConnectionDialog } from '@/components/pptd/agent-connection-dialog';
 import { AssetLibrary } from '@/components/pptd/asset-library';
 import { AuthoringWorkspace } from '@/components/pptd/authoring-workspace';
+import { CreateSectionDialog } from '@/components/pptd/create-section-dialog';
 import { type DesignIntentDraft, DesignIntentPanel } from '@/components/pptd/design-intent-panel';
 import { ExportDialog } from '@/components/pptd/export-dialog';
 import { ProjectFilePreviewPanel } from '@/components/pptd/file-preview-panel';
@@ -93,7 +94,12 @@ import {
   textPropertyPatch,
 } from '@/lib/pptd-object-actions';
 import { useSnappingPreference, useWorkspaceLayout } from '@/lib/pptd-preferences';
-import { insertionBoundaryIndex, type SlideInsertionBoundary } from '@/lib/pptd-thumbnail-sections';
+import { sectionAtBoundary } from '@/lib/pptd-section-actions';
+import {
+  insertionBoundaryIndex,
+  type SlideInsertionBoundary,
+  slideMoveAfterBoundary,
+} from '@/lib/pptd-thumbnail-sections';
 import { useDocumentTitle } from '@/lib/use-document-title';
 import { usePptdDocument } from '@/lib/use-pptd-document';
 import { type PageAnimation, validatePageAnimation } from '../../pptd/animation-model';
@@ -123,6 +129,7 @@ export function HuandengEditor() {
   const { locale, t } = useHuandengLocale();
   const snapping = useSnappingPreference();
   const [agentConnectionOpen, setAgentConnectionOpen] = useState(false);
+  const [sectionBoundary, setSectionBoundary] = useState<SlideInsertionBoundary | null>(null);
   const [projectDirty, setProjectDirty] = useState(false);
   const [timelineDirty, setTimelineDirty] = useState(false);
   const [timelineOpen, setTimelineOpen] = useState(false);
@@ -636,6 +643,25 @@ export function HuandengEditor() {
           { manifest: current.manifestRevision, metadata: current.metadataRevision },
         );
         if (result.createdPages[0]) selectMainPage(result.createdPages[0].pageId);
+      });
+    },
+    [busy, client, readonly, run, selectedPresentationId, selectMainPage],
+  );
+
+  const moveAtBoundary = useCallback(
+    (pageId: string, boundary: SlideInsertionBoundary) => {
+      if (readonly || busy || selectedPresentationId) return;
+      void run(async () => {
+        await client.flushAll();
+        const current = client.getState().snapshot;
+        if (!current) return;
+        const placement = slideMoveAfterBoundary(current.pages, pageId, boundary);
+        if (!placement) return;
+        await client.apply([{ op: 'page.move', pageId, afterPageId: placement.afterPageId }], {
+          manifest: current.manifestRevision,
+          metadata: current.metadataRevision,
+        });
+        selectMainPage(pageId);
       });
     },
     [busy, client, readonly, run, selectedPresentationId, selectMainPage],
@@ -1992,6 +2018,7 @@ export function HuandengEditor() {
                         title: item.section.title,
                         pageIds: item.pageIds,
                         startPageId: item.section.startPageId,
+                        sectionPosition: item.sectionPosition,
                       }))
               }
               size={snapshot.size}
@@ -2017,6 +2044,18 @@ export function HuandengEditor() {
                 ])
               }
               onInsert={selectedPresentationId ? undefined : insertAtBoundary}
+              onCreateSection={
+                selectedPresentationId
+                  ? undefined
+                  : (boundary) => {
+                      if (projectDirty) {
+                        setUiError(
+                          'Save or discard the Project organization draft before creating a Section here.',
+                        );
+                        showProjectEditor();
+                      } else setSectionBoundary(boundary);
+                    }
+              }
               onDuplicate={(pageId) => void apply([{ op: 'page.duplicate', pageId }])}
               onRemove={(pageId) => void apply([{ op: 'page.remove', pageId }])}
               onHistory={setHistoryPageId}
@@ -2024,9 +2063,7 @@ export function HuandengEditor() {
                 selectPage(pageId);
                 setLeftTab('files');
               }}
-              onMove={(pageId, afterPageId) =>
-                void apply([{ op: 'page.move', pageId, afterPageId }])
-              }
+              onMove={moveAtBoundary}
               onRestore={(pageId) =>
                 void run(async () => {
                   await client.apply([{ op: 'page.restore', pageId, afterPageId: selectedPageId }]);
@@ -2354,6 +2391,7 @@ export function HuandengEditor() {
           <div className="relative flex min-h-0 flex-1 flex-col">
             {authoringPage ? (
               <AuthoringWorkspace
+                onZoom={setScale}
                 canvas={{
                   page: authoringPage,
                   size: snapshot.size,
@@ -2657,6 +2695,28 @@ export function HuandengEditor() {
             </div>
           )}
       </div>
+      {sectionBoundary && (
+        <CreateSectionDialog
+          snapshot={snapshot}
+          boundary={sectionBoundary}
+          disabled={readonly || busy || projectDirty}
+          onClose={() => setSectionBoundary(null)}
+          onCreate={async (definition) => {
+            if (readonly || busy || projectDirty)
+              throw new Error(
+                'Save or discard the Project organization draft before creating a Section here.',
+              );
+            await client.flushAll();
+            const current = client.getState().snapshot;
+            if (!current) throw new Error('The Project is no longer available.');
+            const next = sectionAtBoundary(current, sectionBoundary, definition);
+            await client.apply([{ op: 'project.replace', project: next }], {
+              manifest: current.manifestRevision,
+              metadata: current.metadataRevision,
+            });
+          }}
+        />
+      )}
       <WorkspaceSettings
         open={settingsOpen}
         onOpenChange={setSettingsOpen}

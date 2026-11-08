@@ -10,6 +10,7 @@ export interface ProjectSection {
   id: string;
   title: string;
   pageIds: string[];
+  frontMatter?: true;
   startPageId?: string;
   range?: { startPageId: string; endPageId: string };
   story: StoryOutline;
@@ -17,6 +18,7 @@ export interface ProjectSection {
 
 export interface ResolvedProjectSection {
   section: ProjectSection;
+  sectionPosition: number | null;
   pageIds: string[];
   startPosition: number | null;
   endPosition: number | null;
@@ -138,11 +140,14 @@ export function validateProjectModel(value: unknown): ProjectModel {
           : id(section.startPageId, `${path}.startPageId`);
       if (range && startPageId)
         throw new PptdError('INVALID_REQUEST', `${path} cannot have both startPageId and range.`);
+      if (section.frontMatter !== undefined && typeof section.frontMatter !== 'boolean')
+        throw new PptdError('INVALID_REQUEST', `${path}.frontMatter must be a boolean.`);
       const members = range || startPageId ? new Set<string>() : assignedPages;
       return {
         id: unique(id(section.id, `${path}.id`), sectionIds, path),
         title: text(section.title, `${path}.title`, 240, true),
         story: story(section.story, `${path}.story`),
+        ...(section.frontMatter === true ? { frontMatter: true } : {}),
         pageIds: list(section.pageIds, `${path}.pageIds`, 20000).map((value, pageIndex) =>
           unique(id(value, `${path}.pageIds[${pageIndex}]`), members, 'Section page membership'),
         ),
@@ -158,6 +163,8 @@ export function validateProjectModel(value: unknown): ProjectModel {
       };
     },
   );
+  if (sections.filter((section) => section.frontMatter).length > 1)
+    throw new PptdError('INVALID_REQUEST', 'Only one Section can be front matter (Section 00).');
   const presentationIds = new Set<string>();
   const presentations = list(source.presentations, 'project.presentations', 2000).map(
     (value, index): ProjectPresentation => {
@@ -382,6 +389,7 @@ export function resolveProjectSections(
         (first !== undefined && indices.every((position, index) => position === first + index)));
     return {
       section,
+      sectionPosition: null,
       pageIds,
       startPosition: first === undefined ? null : first + 1,
       endPosition: indices.at(-1) === undefined ? null : (indices.at(-1) as number) + 1,
@@ -389,6 +397,23 @@ export function resolveProjectSections(
       diagnostics,
     };
   });
+  let position = 1;
+  for (const item of [...resolved].sort(
+    (left, right) => (left.startPosition ?? Infinity) - (right.startPosition ?? Infinity),
+  )) {
+    if (item.section.frontMatter) {
+      if (item.startPosition === 1 && item.contiguous && item.pageIds.length) {
+        item.sectionPosition = 0;
+      } else {
+        item.diagnostics.push({
+          code: 'SECTION_FRONT_MATTER_POSITION',
+          severity: 'error',
+          message:
+            'Front matter (Section 00) must begin at the first Main Slide and be continuous.',
+        });
+      }
+    } else if (item.startPosition !== null) item.sectionPosition = position++;
+  }
   const owners = new Map<string, ResolvedProjectSection[]>();
   const overlaps = new Set<string>();
   for (const item of resolved) {

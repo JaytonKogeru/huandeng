@@ -1,4 +1,3 @@
-import { Bold, Italic, Subscript, Superscript, Underline } from 'lucide-react';
 import {
   type PointerEvent as ReactPointerEvent,
   useCallback,
@@ -38,20 +37,11 @@ import {
 import { expandGroupIds, owningGroupId } from '../../../pptd/grouping';
 import type { Bounds, PageSize, PageSnapshot, PptdElement } from '../../../pptd/types';
 import { SlideCanvas } from '../slide-canvas';
-import { Button } from '../ui/button';
 import { ContextMenu, ContextMenuTrigger } from '../ui/context-menu';
+import { InlineTextElement } from './inline-text-element';
 import { InsertionLayer } from './insertion-layer';
 import { ObjectContextMenuContent } from './object-context-menu';
-import {
-  isRichText,
-  numberValue,
-  PptdPageRenderer,
-  type PptdTheme,
-  sanitizeRichTextHtml,
-  textContent,
-  textCss,
-  textValue,
-} from './renderer';
+import { numberValue, PptdPageRenderer, type PptdTheme } from './renderer';
 
 export {
   arrangeElementBounds as alignedBounds,
@@ -512,33 +502,6 @@ export function PptdEditorCanvas({
               'Tab 切换对象，方向键移动，Enter 编辑文字。Esc 清除选区后 Tab 离开画布，F6 切换面板。',
             )}
           </p>
-          {editingId && (
-            <div
-              className="absolute left-1/2 top-2 z-40 flex -translate-x-1/2 gap-0.5 rounded-md border bg-popover p-1 shadow-floating"
-              onPointerDown={(event) => event.preventDefault()}
-            >
-              {(
-                [
-                  ['bold', '加粗', Bold],
-                  ['italic', '斜体', Italic],
-                  ['underline', '下划线', Underline],
-                  ['superscript', '上标', Superscript],
-                  ['subscript', '下标', Subscript],
-                ] as const
-              ).map(([command, label, Icon]) => (
-                <Button
-                  key={command}
-                  variant="ghost"
-                  size="icon-sm"
-                  aria-label={t(label)}
-                  title={t(label)}
-                  onClick={() => document.execCommand(command)}
-                >
-                  <Icon className="size-3.5" />
-                </Button>
-              ))}
-            </div>
-          )}
           <SlideCanvas width={size[0]} height={size[1]} scale={scale} onScaleChange={scaleChanged}>
             <div
               className="relative"
@@ -582,6 +545,7 @@ export function PptdEditorCanvas({
                       key={element.elementId}
                       element={element}
                       theme={theme}
+                      toolbarTarget={canvasRef.current}
                       selectAll={element.elementId === autoEditId}
                       onChange={(text) => onPatch(element.elementId, { 'content.text': text })}
                       onComposition={onComposition}
@@ -787,123 +751,5 @@ export function PptdEditorCanvas({
         }
       />
     </ContextMenu>
-  );
-}
-
-function InlineTextElement({
-  element,
-  theme,
-  onChange,
-  onComposition,
-  onFinish,
-  selectAll = false,
-}: {
-  element: PptdElement;
-  theme: PptdTheme;
-  onChange: (text: string) => void;
-  onComposition: (composing: boolean) => void;
-  onFinish: (restoreFocus: boolean) => void;
-  selectAll?: boolean;
-}) {
-  const { t } = useHuandengLocale();
-  const editorRef = useRef<HTMLDivElement>(null);
-  const content = textContent(element, theme);
-  const initial = useRef(textValue(content.text));
-  const selectInitial = useRef(selectAll);
-  const rich = useRef(isRichText(initial.current));
-  const composing = useRef(false);
-  const latest = useRef({ onChange, onComposition, onFinish });
-  latest.current = { onChange, onComposition, onFinish };
-  const read = () => {
-    const editor = editorRef.current;
-    if (!editor || composing.current) return;
-    if (editor.querySelector('strong,b,em,i,u,s,sup,sub,span,a,ul,ol')) rich.current = true;
-    latest.current.onChange(
-      rich.current ? sanitizeRichTextHtml(editor.innerHTML) : editor.innerText,
-    );
-  };
-
-  useLayoutEffect(() => {
-    const editor = editorRef.current;
-    if (!editor) return;
-    if (rich.current) editor.innerHTML = sanitizeRichTextHtml(initial.current);
-    else editor.textContent = initial.current;
-    editor.focus({ preventScroll: true });
-    const range = document.createRange();
-    range.selectNodeContents(editor);
-    if (!selectInitial.current) range.collapse(false);
-    const selection = window.getSelection();
-    selection?.removeAllRanges();
-    selection?.addRange(range);
-    return () => latest.current.onComposition(false);
-  }, []);
-
-  const align = Array.isArray(content.align) ? content.align : ['left', 'top'];
-  return (
-    <div
-      style={{
-        width: '100%',
-        height: '100%',
-        display: 'flex',
-        alignItems:
-          align[1] === 'middle' ? 'center' : align[1] === 'bottom' ? 'flex-end' : 'flex-start',
-        cursor: 'text',
-      }}
-    >
-      {/* biome-ignore lint/a11y/useSemanticElements: A textarea cannot preserve editable rich text spans. */}
-      <div
-        ref={editorRef}
-        contentEditable
-        suppressContentEditableWarning
-        role="textbox"
-        aria-label={t('编辑文本')}
-        aria-multiline
-        tabIndex={0}
-        spellCheck={false}
-        data-hd-inline-editor
-        className="[&_p]:m-0 [&_ul]:list-disc [&_ol]:list-decimal [&_ul]:pl-6 [&_ol]:pl-6"
-        style={{
-          ...textCss(content, theme),
-          outline: 'none',
-          minHeight: '1em',
-          userSelect: 'text',
-          cursor: 'text',
-        }}
-        onInput={read}
-        onPointerDown={(event) => event.stopPropagation()}
-        onCompositionStart={() => {
-          composing.current = true;
-          onComposition(true);
-        }}
-        onCompositionEnd={() => {
-          composing.current = false;
-          read();
-          onComposition(false);
-        }}
-        onBlur={() => {
-          if (!composing.current) {
-            read();
-            onFinish(false);
-          }
-        }}
-        onPaste={(event) => {
-          event.preventDefault();
-          document.execCommand('insertText', false, event.clipboardData.getData('text/plain'));
-        }}
-        onKeyDown={(event) => {
-          event.stopPropagation();
-          if (event.nativeEvent.isComposing || event.keyCode === 229) return;
-          if (
-            event.key === 'Escape' ||
-            ((event.ctrlKey || event.metaKey) &&
-              (event.key === 'Enter' || event.key.toLowerCase() === 's'))
-          ) {
-            event.preventDefault();
-            read();
-            onFinish(true);
-          }
-        }}
-      />
-    </div>
   );
 }

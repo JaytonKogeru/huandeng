@@ -1,8 +1,11 @@
 import assert from 'node:assert/strict';
+import { execFile } from 'node:child_process';
 import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { afterEach, test } from 'node:test';
+import { fileURLToPath } from 'node:url';
+import { promisify } from 'node:util';
 import { configuration } from './configure.mjs';
 import { resolveRuntime } from './runtime.mjs';
 
@@ -49,7 +52,10 @@ test('prints client-native fragments with Unicode/space paths and only intended 
   const patch = JSON.parse(configuration('deepseek', runtime));
   assert.equal(patch[0].insert[0].name, '@deepseek-ai/dsh-mcp-client');
   assert.equal(patch[0].insert[0].config.transport, 'stdio');
-  assert.deepEqual(patch[1].config.customSkillDirs, [path.join(f.plugin, 'skills')]);
+  assert.equal(patch[1].insert[0].config.providerName, 'huandeng');
+  assert.equal(patch[1].insert[0].config.includeDefaultRoots, false);
+  assert.ok(patch.every((operation) => !operation.id));
+  assert.deepEqual(patch[1].insert[0].config.customSkillDirs, [path.join(f.plugin, 'skills')]);
   for (const client of ['codex', 'claude', 'deepseek', 'chatgpt', 'mcp']) {
     const output = configuration(client, runtime);
     assert.ok(!output.includes('must not appear'));
@@ -80,4 +86,30 @@ test('does not silently redirect missing runtimes or accept nonlocal credential-
   );
   assert.equal(runtime.env.HUANDENG_URL, 'http://127.0.0.1:4850');
   assert.equal(runtime.env.HUANDENG_RUNTIME_DIR, f.root);
+});
+
+test('reusable DeepSeek configuration adds its own provider without pinning a private Project', async () => {
+  const script = fileURLToPath(new URL('./configure.mjs', import.meta.url));
+  const { stdout } = await promisify(execFile)(process.execPath, [
+    script,
+    '--client',
+    'deepseek',
+    '--auto-project',
+  ]);
+  const patch = JSON.parse(stdout);
+  assert.deepEqual(patch[0].insert[0].config.env, {});
+  assert.equal(patch[1].insert[0].id, 'skill-filesystem-huandeng');
+  assert.equal(patch[1].insert[0].config.providerName, 'huandeng');
+  assert.ok(!stdout.includes('HUANDENG_ENTRY'));
+  await assert.rejects(
+    promisify(execFile)(process.execPath, [
+      script,
+      '--client',
+      'deepseek',
+      '--auto-project',
+      '--entry',
+      '/a/project.pptd',
+    ]),
+    /reusable local-client/,
+  );
 });
