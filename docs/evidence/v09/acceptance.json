@@ -1,0 +1,338 @@
+{
+  "schemaVersion": 1,
+  "milestone": "0.9.0",
+  "date": "2026-11-08",
+  "passed": true,
+  "runtime": {
+    "electronVersion": "38.7.2",
+    "desktopProtocol": 1,
+    "builtAt": "2026-11-08T02:35:06.3605865Z",
+    "sourceDirty": false,
+    "productVersion": "0.9.0",
+    "nodeLinker": "hoisted",
+    "product": "HUANDENG Editor",
+    "sourceRevision": "17de86d0b49f23c3c7aafe901f3de748d3bcc7e3"
+  },
+  "codeGates": {
+    "linux": {
+      "testFiles": 88,
+      "passed": 1006,
+      "skipped": 0
+    },
+    "windows": {
+      "testFiles": 88,
+      "passed": 1005,
+      "skipped": 1,
+      "skipReason": "existing POSIX-only test",
+      "seconds": 60.91
+    },
+    "typescript": true,
+    "biomeFiles": 698,
+    "pluginNodeTests": 3,
+    "finalMenuPatch": "typecheck, focused locale checks, production build and both final desktop suites passed"
+  },
+  "desktop": {
+    "editor": {
+      "passed": true,
+      "checks": [
+        {
+          "name": "language switch keeps content and selection and updates native menus",
+          "passed": true,
+          "milliseconds": 1094
+        },
+        {
+          "name": "dirty Story and active input survive language switching without writes",
+          "passed": true,
+          "milliseconds": 445
+        },
+        {
+          "name": "English panels and narrow workspace remain usable",
+          "passed": true,
+          "milliseconds": 1286
+        },
+        {
+          "name": "bundled Agent setup generates four current-project configurations",
+          "passed": true,
+          "milliseconds": 5578
+        },
+        {
+          "name": "click builds reveal and rewind in a live show",
+          "passed": true,
+          "milliseconds": 368
+        },
+        {
+          "name": "desktop preferences persist through normal reopen and the welcome screen",
+          "passed": true,
+          "milliseconds": 5375
+        }
+      ],
+      "rendererErrors": [],
+      "exits": [
+        {
+          "code": 0,
+          "signal": null
+        },
+        {
+          "code": 0,
+          "signal": null
+        }
+      ],
+      "layouts": [
+        {
+          "width": 1040,
+          "height": 680,
+          "scrollWidth": 1040,
+          "canvas": {
+            "width": 480,
+            "height": 188
+          },
+          "navigation": [
+            {
+              "label": "Project",
+              "fits": true
+            },
+            {
+              "label": "Slides",
+              "fits": true
+            },
+            {
+              "label": "Assets",
+              "fits": true
+            },
+            {
+              "label": "Files",
+              "fits": true
+            }
+          ]
+        }
+      ],
+      "synthetic": true
+    },
+    "arrangement": {
+      "passed": true,
+      "checks": [
+        {
+          "name": "Shift held before pointer-down preserves selection and locks the other axis",
+          "passed": true,
+          "milliseconds": 767
+        },
+        {
+          "name": "A selected group moves without snapping to its own children and undoes together",
+          "passed": true,
+          "milliseconds": 889
+        },
+        {
+          "name": "Text snaps to equal gaps; Alt and the local toggle both bypass all guides",
+          "passed": true,
+          "milliseconds": 2517
+        },
+        {
+          "name": "Escape while the pointer is down restores the draft and leaves source bytes unchanged",
+          "passed": true,
+          "milliseconds": 458
+        },
+        {
+          "name": "Image edge snapping uses the same five-screen-pixel threshold at 100% and 50%",
+          "passed": true,
+          "milliseconds": 2569
+        },
+        {
+          "name": "Unequal widths distribute by gaps; one Undo, Redo, save and normal reopen preserve the result",
+          "passed": true,
+          "milliseconds": 6143
+        }
+      ],
+      "rendererErrors": [],
+      "normalExits": [
+        {
+          "launch": 1,
+          "code": 0,
+          "signal": null
+        },
+        {
+          "launch": 2,
+          "code": 0,
+          "signal": null
+        }
+      ],
+      "layouts": [
+        {
+          "targetScale": 1,
+          "actualScale": 1,
+          "requested": {
+            "width": 1920,
+            "height": 1054
+          }
+        },
+        {
+          "targetScale": 1,
+          "actualScale": 1,
+          "requested": {
+            "width": 1920,
+            "height": 1054
+          }
+        },
+        {
+          "targetScale": 0.5,
+          "actualScale": 0.5,
+          "control": "Zoom out",
+          "clicks": 5
+        },
+        {
+          "targetScale": 1,
+          "actualScale": 1,
+          "requested": {
+            "width": 1920,
+            "height": 1054
+          }
+        }
+      ],
+      "observations": [
+        {
+          "name": "equal-gaps",
+          "distances": [
+            40,
+            40
+          ],
+          "bounds": [
+            180,
+            50,
+            80,
+            40
+          ]
+        },
+        {
+          "name": "four-screen-pixels",
+          "actualScale": 1,
+          "rawX": 256,
+          "bounds": [
+            260,
+            100,
+            40,
+            40
+          ]
+        },
+        {
+          "name": "four-screen-pixels",
+          "actualScale": 0.5,
+          "rawX": 252,
+          "bounds": [
+            260,
+            100,
+            40,
+            40
+          ]
+        },
+        {
+          "name": "seven-screen-pixels-outside",
+          "actualScale": 0.5,
+          "bounds": [
+            246,
+            100,
+            40,
+            40
+          ]
+        }
+      ],
+      "syntheticOnly": true
+    },
+    "totalChecks": 12,
+    "matchingRuntimeIdentity": true
+  },
+  "plugin": {
+    "evidence": "plugin-acceptance.json",
+    "finalPackageDoctor": {
+      "serverVersion": "0.9.0",
+      "tools": 18,
+      "resources": 2,
+      "currentSyntheticProjectMatched": true,
+      "writable": true
+    },
+    "leadAlsoViewedSyntheticRender": true
+  },
+  "installation": {
+    "passed": true,
+    "files": 29201,
+    "bytes": 684294324,
+    "allInstalledBytesMatchAcceptedCandidate": true,
+    "selfContainedPackageVerified": true,
+    "previousVersion": "0.8.0",
+    "previousPackagePreserved": true,
+    "normalCloseOnly": true,
+    "shortcutCount": 2,
+    "ordinaryProfileReopen": {
+      "pages": 80,
+      "diagnostics": 0,
+      "writable": true,
+      "desktopProtocol": 1,
+      "productionFrontend": true,
+      "respondingNativeWindow": true,
+      "serviceParentVerified": true
+    },
+    "windowLeftOpen": true,
+    "protectedSourceFiles": 82,
+    "originalsUnchangedAfterExistingDraftWasSaved": true,
+    "existingDraftPreserved": {
+      "preservedExistingGuiDraft": true,
+      "usedNormalSaveProject": true,
+      "changedFiles": [
+        ".huandeng/project.json"
+      ],
+      "changedMetadataFields": [
+        "/project"
+      ],
+      "all81ManifestAndPageFilesUnchanged": true,
+      "sourceBeforeAndAfterBackedUp": true,
+      "noGeneratedContentEdits": true
+    },
+    "canonicalFixtureUnchanged": true,
+    "initialAttempt": "Stopped before replacement because the existing v0.8 window had an unsaved project draft. Original metadata and visible draft were backed up; its existing draft was saved using Save project. Exactly project metadata changed; the manifest and all 80 pages stayed byte-identical. Recovery rechecked the prepared file manifest, closed normally and protected the new current 82-file baseline."
+  },
+  "visualReview": {
+    "leadInspected": [
+      "english-workspace.png",
+      "chinese-workspace.png",
+      "equal-gaps.png",
+      "story-client-result.png",
+      "private Agent dialog screenshot"
+    ],
+    "knownLimit": "Expanded authoring remains crowded in a short window; adjustable workspace is a next milestone."
+  },
+  "screenshots": {
+    "english-workspace.png": {
+      "bytes": 115563,
+      "sha256": "9cb6d89c3216f3d8d6056fd9cd7c4cecced792903467f758685ff030762b1b29",
+      "syntheticOnly": true
+    },
+    "chinese-workspace.png": {
+      "bytes": 90769,
+      "sha256": "7a9e44741927393026238d41f5efa2afea26e9493f534f2fc7420cfaa8c25d39",
+      "syntheticOnly": true
+    },
+    "equal-gaps.png": {
+      "bytes": 110182,
+      "sha256": "e4d184bf59031bee7ddaa744fc29803afcaf10a1afc9c3c55b1e58fd96ddb886",
+      "syntheticOnly": true
+    },
+    "story-client-result.png": {
+      "bytes": 43778,
+      "sha256": "91b2e860aef2cdb4718cf945be704e3a5aac9eeba2166da0d48ed182c2aa039c",
+      "syntheticOnly": true
+    }
+  },
+  "scopeLimits": [
+    "No new multi-hour memory or HD soak conclusion",
+    "PPTX/PDF/PNG remain base-state static export",
+    "Codex/Claude have native configuration/manifest checks, not full model tasks",
+    "No new ChatGPT account connector",
+    "No independent dual-screen presenter or controlled audio/video playback yet"
+  ],
+  "delivery": {
+    "repository": "JaytonKogeru/huandeng",
+    "visibilityVerified": "PRIVATE",
+    "remote": "origin",
+    "branch": "editor/v0.9-daily-editor-plugin",
+    "tag": "editor-v0.9.0",
+    "remoteReceipt": "Independent git ls-remote verification is recorded locally after the milestone push, separately from installation."
+  }
+}

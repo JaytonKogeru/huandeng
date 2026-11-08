@@ -6,19 +6,17 @@ HUANDENG Editor 基于 OpenSlide 的 React 编辑环境，使用 PPTD 文档后�
 
 ## 当前阶段
 
-当前交付版本为 **[v0.8.0：点击驱动的现场放映](docs/RELEASE-V08.md)**。干净运行时 `ecba4cb` 已安装到既有正式位置，最终 EXE **131/131**、25 轮连续放映、80 页副本 50 对编辑和安装验证均通过。快捷方式、About 0.8.0、static 服务与可写状态已核对；普通窗口已恢复原 80 页项目，82 个源文件与本轮基线一致。版本标识为 `editor-v0.8.0`。
+当前交付版本为 **[v0.9.0：中英文编辑、智能排列与 Story Plugin](docs/RELEASE-V09.md)**。干净运行时 `17de86d` 已安装到既有正式位置，桌面和开始菜单入口继续使用，里程碑标识为 `editor-v0.9.0`。
 
-选对象后直接添加出现、淡入、强调、相对移动、淡出或消失，再用单击、同时、接续组织每次讲解。逐步预演和放映使用同一规则；跨页后退显示上一页末态，重复引用重新开场，固定版本播放对应动画。旧关键帧时间线与 MP4 输出继续兼容。
+本轮可从顶栏、原生菜单或欢迎页切换 English / 简体中文；语言偏好跨项目重开保留，作者正文与草稿保持原文。拖动支持边/中心与等距辅助线、组合排除、Shift 轴锁、Alt 暂停；属性面板补齐选区/整页对齐与水平/垂直均匀分布。
 
-Linux **955/955**、Windows **954 pass + 1 POSIX-only skip**，共 82 个测试文件；TypeScript 与 Biome 661 文件通过。对照实验确认，旧 renderer 曲线明显受调试器 Network 响应保留影响；这修正先前解释，不是新增 GC 或清缓存带来的产品优化。80 页场景 Delete 视觉中位 24.75 ms，renderer 自然空闲后约 223 MiB；自然空闲、GC 与测量限制分别列在验证报告。
+项目面板的“连接 Agent”生成当前项目配置。共用 Story skill 与预览/精确应用协议贯通外部客户端，官方 DeepSeek Harness 已完成真实 Story 制作任务。Codex 配置解析、Claude manifest 校验及 ChatGPT 的已有 DC-WALT 通道分别记录验证层级，不把配置生成当作已连接。
 
-[历史覆盖审计](docs/AUDIT-V05-COVERAGE.md) 追溯初始需求；本轮 [审计](docs/AUDIT-V08.md)、[规格](docs/SPEC-V08.md)、[实现](docs/IMPLEMENTATION-V08.md)、[验证](docs/VALIDATION-V08.md) 保留完整链路。[交接](docs/HANDOFF-V08.md) 明确下一阶段排序，[真实截图与证据](docs/evidence/v08/README.md) 展示实际交付。v0.5–v0.7 的保存恢复、项目、科学对象、视觉和动态交付证据继续保留。
+既有点击动画、逐步预演、现场回退、独立页面身份、命名版本、素材库和演讲复用继续保留。接下来优先改善创作空间、锁定/隐藏、精细图层、交互裁剪和段落，再推进独立演讲者工作区、受控媒体、实例视觉变体与原生 PPTX 动画。对照 PowerPoint 的已完成/部分/未完成项见 [综合审计](docs/AUDIT-V09.md)。
 
-## GitHub 版本管理
+Linux **1,006 / 1,006**；Windows **1,005 pass + 1 POSIX-only skip**，88 个测试文件；类型与 Biome 通过。最终 EXE **12 / 12** 聚焦场景、包内 Plugin doctor 和实际安装通过。普通 profile 已重开 80 页项目；旧窗口现有编排草稿先备份并正常保存，后续安装/重开的当前82源文件均保持一致。完整范围和保留的失败回执见 [Validation](docs/VALIDATION-V09.md)。
 
-编辑器源代码在 HUANDENG 自己的 Git 仓库中维护；平时本地提交，完成并验收一个重要版本后再统一推送到 origin，不会每次小改都上传。OpenSlide 原始仓库保留为 upstream，不向其推送。自动保存与撤销、用户命名的页面版本、Git 工程里程碑各自承担不同职责；记录或恢复页面版本不需要 Git。
-
-参阅 [版本发布规则](docs/RELEASE-POLICY.md) 和 [Story 设计](docs/STORY.md)。
+v0.8 已纠正旧内存数据受到 Network 检查器响应保留影响的解释；本轮没有新增长会话性能结论。PPTX/PDF/PNG 仍输出基础静态画面，原生 PowerPoint 动画尚未实现。版本标识规则与四层 Story 见 [发布规则](docs/RELEASE-POLICY.md)、[Story 设计](docs/STORY.md)。
 
 ## 启动桌面编辑器
 
@@ -79,6 +77,8 @@ GUI、CLI 和 MCP 使用同一个本地文档服务。请求携带读取时的�
 
 缩略图分别显示当前页序和稳定短码。可搜索短码、旧 S 编号或标题，右键“复制页面短码”用于定位与沟通。对象新增和删除的画面反馈与持久化状态分别更新；“已保存”仍以本地文档服务的确认结果为准。
 
+画布下方“吸附”控制智能辅助线并保存偏好。拖动按边、中心和相等空隙定位，Alt 本次暂停、Shift 锁定方向、Esc 取消。旋转对象按可见外框参与排列。右侧属性可选“所选对象 / 幻灯片”作为对齐参照；至少三个根对象时启用水平/垂直均匀分布，一次排列可用一次 Undo 撤回。
+
 画布 Tab / Shift+Tab 遍历顶层对象，方向键移动 1 单位、Shift 10 单位，Enter 编辑文字，Esc 返回或取消当前手势。F6 / Shift+F6 在工作区之间移动，F1 查看帮助；缩略图支持方向键和 Home/End。文字、表格和属性输入继续保留自己的键盘语义。
 
 文件长期被占用而导致保存未完成时，界面保留本地草稿并显示“恢复未完成保存”。解除文件占用后可在当前窗口恢复，原请求确认后继续保存后续输入，再正常关闭或切换项目。如果文件或保存记录与预期不一致，恢复会停止，保留现场；可先“复制待保存页面”并检查恢复详情。该操作不会强行覆盖外部内容。
@@ -102,6 +102,7 @@ PNG/PDF/PPTX 输出基础静态版式，原生 PowerPoint 动画尚未实现。�
     node packages/core/huandeng.js --entry tests/fixtures/studio/deck.pptd inspect
     node packages/core/huandeng.js --entry tests/fixtures/studio/deck.pptd inspect K7M2
     node packages/core/huandeng.js --entry tests/fixtures/studio/deck.pptd story Q9R4 intent.json
+    node packages/core/huandeng.js --entry tests/fixtures/studio/deck.pptd preview transaction.json
     node packages/core/huandeng.js --entry tests/fixtures/studio/deck.pptd apply transaction.json
     node packages/core/huandeng.js --entry tests/fixtures/studio/deck.pptd render K7M2
     node packages/core/huandeng.js --entry tests/fixtures/studio/deck.pptd history Q9R4
@@ -109,9 +110,11 @@ PNG/PDF/PPTX 输出基础静态版式，原生 PowerPoint 动画尚未实现。�
 
 事务 JSON 使用 inspect 实际返回的 deckId、pageId 和版本。请求结构见 docs/SPEC.md。一个请求 ID 只对应一次确定的修改，重试时保持请求 ID 和全部内容相同。版本冲突后重新读取和检查差异。页序或身份/组件元数据变化也必须提供相应 manifest/metadata 版本。
 
-MCP 配置见 plugins/huandeng/mcp.example.json。网页 ChatGPT 可通过已有 DC-WALT 调用同一 CLI；无需启动另一个模型或公开本地服务。
+在项目面板或原生菜单打开“连接 Agent”，选择 Codex、Claude Code、DeepSeek Harness 或 ChatGPT 工作站通道，复制当前项目配置。正式包携带 Plugin 及运行时，使用安装程序自身 Electron Node 模式。配置生成不覆盖客户端设置，也不表示已经连接。
 
-现有 `brief`、`assets`、`presentation` 读取加上 MP4 导出及状态/取消，共 **17 个 MCP 工具**。包内 CLI 的真实 stdio 已验收；这不代表实际 Agent 客户端已安装。先读取 selection，再按 page/presentation/occurrence 获取 Story briefing，结合四层目的、保留项、邻页、备注和素材构造修改。Claude Code 包装与 Codex 配置见 [Plugin 指南](plugins/huandeng/README.md)；具体用户客户端安装和私有 ChatGPT 连接仍须单独验收。
+MCP 现有 **18 个工具、2 个 Story/operations 指南资源**。Agent 先读 selection 与四层 Story briefing，结合邻页、实例备注、固定版本和素材形成计划，再用只读 preview 查看字段/文件/复用影响。按当前任务授权应用相同 payload，可用 previewHash 绑定内容；共享 writer 继续检查 CAS 与幂等请求。保存后回读、渲染并检查实际讲解顺序。hash 不能替代用户授权。
+
+官方 DeepSeek Harness 已在独立合成项目完成读取 → preview → apply → render → 保存重开闭环；Codex 原生配置解析、Claude 原生 manifest 校验分别通过。ChatGPT 通过已有授权 DC-WALT 调用同一 CLI。具体安装方式、客户端边界和示例见 [Plugin 指南](plugins/huandeng/README.md) 与 [真实任务证据](docs/evidence/v09/plugin-acceptance.json)。
 
 ## 科学内容和设计
 
@@ -127,9 +130,9 @@ MCP 配置见 plugins/huandeng/mcp.example.json。网页 ChatGPT 可通过已有
     corepack pnpm exec vitest run --project unit
     corepack pnpm check
 
-完整产品规划见 [Master SPEC](docs/SPEC.md)，当前增量见 [SPEC-V08](docs/SPEC-V08.md)，逐项状态见 [综合审计](docs/AUDIT-V08.md)。历史验收见 [v0.4](docs/RELEASE-V04.md)、[v0.5](docs/RELEASE-V05.md)、[v0.6](docs/RELEASE-V06.md)、[v0.7](docs/RELEASE-V07.md)，本轮见 [v0.8 发布记录](docs/RELEASE-V08.md)。工程接续入口是 [WEBCHAT.md](WEBCHAT.md)。
+完整产品规划见 [Master SPEC](docs/SPEC.md)，当前增量见 [SPEC-V09](docs/SPEC-V09.md)，逐项状态见 [综合审计](docs/AUDIT-V09.md)。历史验收见 [v0.4](docs/RELEASE-V04.md)、[v0.5](docs/RELEASE-V05.md)、[v0.6](docs/RELEASE-V06.md)、[v0.7](docs/RELEASE-V07.md)，[v0.8](docs/RELEASE-V08.md)，本轮见 [v0.9 发布记录](docs/RELEASE-V09.md)。工程接续入口是 [WEBCHAT.md](WEBCHAT.md)。
 
-里程碑发布运行完整单元测试、类型和格式检查，并以实际桌面、项目编排、科研对象、原生 PowerPoint 及真实科研项目副本验收补足自动化覆盖。日常小修改只重复能够验证相应风险的检查。
+里程碑运行单元测试、类型和格式检查，并检查实际构建与安装。桌面、科研对象、原生 PowerPoint 和真实科研项目副本的场景按具体变更风险选择，不在每次开发中重复全部压力矩阵。日常小修改只重复能够验证相应风险的检查。
 
 ## 来源与许可
 
