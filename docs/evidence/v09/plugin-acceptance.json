@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 1,
+  "milestone": "0.9.0",
+  "date": "2026-11-08",
+  "fixture": "packaged synthetic Story demo copied to an isolated temporary project",
+  "sourceOriginalsModified": false,
+  "client": {
+    "name": "official @deepseek-ai/dsh",
+    "version": "0.2.1-rc.2",
+    "mode": "headless",
+    "exitCode": 0,
+    "elapsedSeconds": 72.4,
+    "configuration": "generated Cordis MCP patch, isolated DSH_HOME, packaged skill directory",
+    "authentication": "existing native host environment, used only inside the host process",
+    "userConfigurationModified": false,
+    "vaultProjectRegistered": false,
+    "modelTaskVerified": true
+  },
+  "actualCalls": [
+    "skill:huandeng-story",
+    "huandeng_context",
+    "read_mcp_resource:huandeng://guide/story",
+    "read_mcp_resource:huandeng://guide/operations",
+    "huandeng_story_briefing",
+    "huandeng_page_read",
+    "huandeng_history",
+    "huandeng_preview",
+    "huandeng_apply",
+    "huandeng_page_read",
+    "huandeng_render"
+  ],
+  "preview": {
+    "kind": "proposal-preview",
+    "changedFields": 4,
+    "changedFiles": 2,
+    "changedPages": 1,
+    "createdPages": 0,
+    "diagnostics": [],
+    "truncated": false,
+    "exactPayloadAppliedWithReturnedHash": true,
+    "noWritingContractVerifiedByFocusedTests": true
+  },
+  "independentChecks": {
+    "newTitle": "One source, two talks",
+    "mainNotesUpdated": true,
+    "build": { "targetId": "evidence-b", "kind": "fade-in", "trigger": "click", "durationMs": 300 },
+    "storyIntentRecorded": true,
+    "unchangedFirstPage": true,
+    "preservedObjects": ["evidence-a", "evidence-b", "label-a", "label-b"],
+    "titleGeometryPreserved": true,
+    "historyEntries": 1,
+    "operationId": "41db9ebd-f68d-4a44-a11d-a1200f71494d",
+    "closedAndReopened": true,
+    "reopenedPageAndStoryMatch": true,
+    "diagnostics": []
+  },
+  "render": {
+    "toolStatus": "completed",
+    "reportComplete": true,
+    "state": "base",
+    "warning": "TIMELINE_STATIC_EXPORT",
+    "clientImageAttachmentPersisted": true,
+    "image": {
+      "format": "PNG",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 43778,
+      "sha256": "91b2e860aef2cdb4718cf945be704e3a5aac9eeba2166da0d48ed182c2aa039c"
+    },
+    "configuredModel": "deepseek-flash",
+    "installedModelCatalogInputModalities": ["text", "image"],
+    "independentVisualAcceptance": false,
+    "interactivePlaybackAcceptedByThisTest": false,
+    "interpretation": "Rendering and client image receipt are evidenced. The model's visual-quality statement is not adopted as independent visual acceptance. The product lead checks the editor separately."
+  },
+  "otherAdapters": {
+    "codex": {
+      "version": "0.153.1",
+      "generatedConfigurationParsedByNativeCli": true,
+      "executableArgumentsAndEntryMatched": true,
+      "configurationWritten": false,
+      "modelTaskVerified": false
+    },
+    "claudeCode": {
+      "version": "2.1.318",
+      "nativePluginManifestValidationExitCode": 0,
+      "directoryWarning": "No marketplace listing icon",
+      "modelTaskVerified": false
+    },
+    "chatgpt": {
+      "channel": "existing authorized DC-WALT workstation CLI",
+      "newAccountConnectorInstalled": false
+    }
+  },
+  "protocolDoctor": {
+    "serverVersion": "0.9.0",
+    "tools": 18,
+    "guides": 2,
+    "matchingSyntheticDeck": true,
+    "writable": true
+  },
+  "limitations": [
+    "The finalized packaged Electron runtime doctor is a separate release gate, not claimed here.",
+    "An optional DSH shell clock request was denied by its Windows ACL sandbox. No permissions were relaxed. Its optional recordedAt value is not accepted as a verified UTC observation; guidance now requires a real clock result or omission.",
+    "Codex and Claude coverage establishes configuration or manifest parsing, not complete model tasks or account installation."
+  ]
+}

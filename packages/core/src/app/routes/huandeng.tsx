@@ -1,13 +1,12 @@
 import {
   AlertCircle,
-  BookOpen,
+  Bot,
   Check,
   Circle,
   Clapperboard,
   Copy,
   Download,
   FilePlus2,
-  Files,
   FolderOpen,
   Group,
   History,
@@ -21,7 +20,6 @@ import {
   PanelLeftOpen,
   PanelRightClose,
   PanelRightOpen,
-  PanelsTopLeft,
   Play,
   Plus,
   Redo2,
@@ -35,13 +33,14 @@ import {
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { HuandengMark } from '@/components/brand-mark';
+import { AgentConnectionDialog } from '@/components/pptd/agent-connection-dialog';
 import { AssetLibrary } from '@/components/pptd/asset-library';
 import { AuthoringWorkspace } from '@/components/pptd/authoring-workspace';
 import { type DesignIntentDraft, DesignIntentPanel } from '@/components/pptd/design-intent-panel';
-import { alignedBounds } from '@/components/pptd/editor-canvas';
 import { ExportDialog } from '@/components/pptd/export-dialog';
 import { PptdInspector } from '@/components/pptd/inspector';
 import { KeyboardHelpDialog } from '@/components/pptd/keyboard-help-dialog';
+import { HuandengLanguageMenu } from '@/components/pptd/language-menu';
 import { PageHistoryDialog } from '@/components/pptd/page-history-dialog';
 import { type PresentationControls, PresentationView } from '@/components/pptd/presentation-view';
 import { ProjectOverview } from '@/components/pptd/project-overview';
@@ -52,6 +51,7 @@ import type { PptdTheme } from '@/components/pptd/renderer';
 import { ScienceInsertMenu } from '@/components/pptd/science-insert-menu';
 import type { ChartDataDraft } from '@/components/pptd/science-inspector';
 import { ShapeInsertMenu } from '@/components/pptd/shape-insert-menu';
+import { SnappingToggle } from '@/components/pptd/snapping-toggle';
 import { TechnicalQaPanel } from '@/components/pptd/technical-qa-panel';
 import { PptdThumbnailRail } from '@/components/pptd/thumbnail-rail';
 import { ThemeToggle } from '@/components/theme-toggle';
@@ -65,8 +65,14 @@ import {
 } from '@/components/ui/dialog';
 import { Textarea } from '@/components/ui/textarea';
 import { type DesktopEditCommand, desktopHost } from '@/lib/huandeng-desktop';
+import { useHuandengLocale } from '@/lib/huandeng-locale';
 import type { Alignment } from '@/lib/inspector/geometry';
 import { draftHasChanges } from '@/lib/pptd-document';
+import {
+  arrangeElementBounds,
+  distributeElementBounds,
+  rootSelectedElements,
+} from '@/lib/pptd-geometry';
 import { type InsertionTool, insertionLabel } from '@/lib/pptd-insertion';
 import {
   type EditorKeyboardCommand,
@@ -78,6 +84,7 @@ import {
   selectionRootIds,
   topLevelElementIds,
 } from '@/lib/pptd-keyboard';
+import { useSnappingPreference } from '@/lib/pptd-preferences';
 import { useDocumentTitle } from '@/lib/use-document-title';
 import { usePptdDocument } from '@/lib/use-pptd-document';
 import { type PageAnimation, validatePageAnimation } from '../../pptd/animation-model';
@@ -100,6 +107,9 @@ import {
 import type { DeckSnapshot, PageSnapshot, PptdElement, PptdOperation } from '../../pptd/types';
 
 export function HuandengEditor() {
+  const { locale, t } = useHuandengLocale();
+  const snapping = useSnappingPreference();
+  const [agentConnectionOpen, setAgentConnectionOpen] = useState(false);
   const [projectDirty, setProjectDirty] = useState(false);
   const [timelineDirty, setTimelineDirty] = useState(false);
   const [timelineOpen, setTimelineOpen] = useState(false);
@@ -180,6 +190,7 @@ export function HuandengEditor() {
         ?.focus({ preventScroll: true });
     });
   }, [setLeftTab]);
+  useEffect(() => desktopHost()?.onAgentConnection?.(() => setAgentConnectionOpen(true)), []);
   const [presentationView, setPresentationView] = useState<DeckSnapshot | null>(null);
   const [presentationLoading, setPresentationLoading] = useState(false);
   const [presentationError, setPresentationError] = useState<string | null>(null);
@@ -188,6 +199,9 @@ export function HuandengEditor() {
   const [exportReport, setExportReport] = useState<string | null>(null);
   const [uiError, setUiError] = useState<string | null>(null);
   const snapshot = state.snapshot;
+  useEffect(() => {
+    if (snapping.error) setUiError(snapping.error);
+  }, [snapping.error]);
   const selectedPresentationId = searchParams.get('presentation');
   const requestedOccurrence = searchParams.get('occurrence');
   const project = useMemo(
@@ -730,12 +744,54 @@ export function HuandengEditor() {
     });
   };
 
-  const align = (alignment: Alignment) => {
-    if (!page || !snapshot || !selectedElements.length) return;
-    client.beginInteraction(page.pageId);
-    for (const item of alignedBounds(selectedElements, alignment, snapshot.size))
-      patchElement(item.elementId, { bounds: item.bounds }, false);
-    void run(() => client.endInteraction(page.pageId));
+  const arrange = (items: { elementId: string; bounds: [number, number, number, number] }[]) => {
+    if (!page || readonly || busy || !items.length) return;
+    const movedIds = new Set(
+      expandGroupIds(
+        page.data.elements,
+        items.map((item) => item.elementId),
+      ),
+    );
+    const originals = page.data.elements
+      .filter((element) => movedIds.has(element.elementId))
+      .map((element) => ({
+        elementId: element.elementId,
+        fields: { bounds: element.bounds, rotation: element.rotation },
+      }));
+    try {
+      const source = client.page(page.pageId);
+      if (!source) return;
+      const patches = items.flatMap((item) => {
+        const element = source.data.elements.find((entry) => entry.elementId === item.elementId);
+        return element?.elementType === 'group'
+          ? transformGroup(source.data.elements, item.elementId, { bounds: item.bounds })
+          : [{ elementId: item.elementId, fields: { bounds: item.bounds } }];
+      });
+      client.beginInteraction(page.pageId);
+      for (const patch of patches)
+        client.patchElement(page.pageId, patch.elementId, patch.fields, false);
+      void run(() => client.endInteraction(page.pageId));
+    } catch (error) {
+      client.cancelInteraction(page.pageId, originals);
+      setUiError(error instanceof Error ? error.message : String(error));
+    }
+  };
+
+  const align = (alignment: Alignment, reference: 'selection' | 'slide') => {
+    if (!page || !snapshot) return;
+    arrange(
+      arrangeElementBounds(
+        rootSelectedElements(page.data.elements, selectedIds),
+        alignment,
+        snapshot.size,
+        reference,
+      ),
+    );
+  };
+
+  const distribute = (axis: 'x' | 'y') => {
+    if (!page) return;
+    arrange(distributeElementBounds(rootSelectedElements(page.data.elements, selectedIds), axis));
   };
 
   const layer = (direction: 'front' | 'back') => {
@@ -1134,50 +1190,53 @@ export function HuandengEditor() {
       <div className="grid min-h-dvh place-items-center bg-canvas p-8">
         <div className="w-full max-w-xl rounded-lg border bg-background p-9 shadow-floating">
           <div className="mb-7 flex items-center gap-3">
-            <span className="grid size-10 place-items-center rounded-md bg-brand font-serif text-2xl text-white">
-              H
-            </span>
+            <HuandengMark className="size-10 shrink-0" />
             <div>
               <h1 className="text-lg font-semibold">HUANDENG Editor</h1>
-              <p className="text-xs text-muted-foreground">独立页面 · 自由编辑 · 持续演进</p>
+              <p className="text-xs text-muted-foreground">{t('独立页面 · 自由编辑 · 持续演进')}</p>
             </div>
+          </div>
+          <div className="mb-4 flex justify-end">
+            <HuandengLanguageMenu />
           </div>
           {state.loading ? (
             <p className="flex items-center gap-2 text-sm text-muted-foreground">
               <Loader2 className="size-4 animate-spin" />
-              正在连接本地项目…
+              {t('正在连接本地项目…')}
             </p>
           ) : (
             <>
-              <h2 className="mb-3 text-xl font-medium">打开一个 PPTD 项目</h2>
+              <h2 className="mb-3 text-xl font-medium">{t('打开一个 PPTD 项目')}</h2>
               <p className="mb-5 text-sm leading-relaxed text-muted-foreground">
                 {desktopHost()
-                  ? '选择项目中的 .pptd 文件，或者新建一个空白项目。'
-                  : '这是浏览器开发预览。日常使用请启动桌面版 HUANDENG Editor，或从终端连接已有项目。'}
+                  ? t('选择项目中的 .pptd 文件，或者新建一个空白项目。')
+                  : t(
+                      '这是浏览器开发预览。日常使用请启动桌面版 HUANDENG Editor，或从终端连接已有项目。',
+                    )}
               </p>
               {!desktopHost() && (
                 <pre className="overflow-x-auto rounded-md border bg-muted/50 p-4 text-xs">
-                  huandeng open /完整路径/deck.pptd
+                  huandeng open /path/to/deck.pptd
                 </pre>
               )}
               {state.error && (
-                <p className="mt-4 text-xs text-muted-foreground">{state.error.message}</p>
+                <p className="mt-4 text-xs text-muted-foreground">{t(state.error.message)}</p>
               )}
               <div className="mt-6 flex gap-2">
                 {recoveryState && (
                   <Button
-                    aria-label="恢复未完成保存"
+                    aria-label={t('恢复未完成保存')}
                     data-hd-recovery={recoveryState}
                     disabled={state.saving}
                     onClick={recoverPending}
                   >
                     <RefreshCw className={state.recovering ? 'animate-spin' : undefined} />
-                    {state.recovering ? '正在恢复保存…' : '恢复未完成保存'}
+                    {state.recovering ? t('正在恢复保存…') : t('恢复未完成保存')}
                   </Button>
                 )}
                 <Button onClick={() => void client.refresh()}>
                   <RefreshCw />
-                  重新连接
+                  {t('重新连接')}
                 </Button>
                 {desktopHost() && (
                   <>
@@ -1186,14 +1245,14 @@ export function HuandengEditor() {
                       onClick={() => void run(async () => desktopHost()?.openProject())}
                     >
                       <FolderOpen />
-                      打开项目
+                      {t('打开项目')}
                     </Button>
                     <Button
                       variant="outline"
                       onClick={() => void run(async () => desktopHost()?.newProject())}
                     >
                       <FilePlus2 />
-                      新建项目
+                      {t('新建项目')}
                     </Button>
                   </>
                 )}
@@ -1205,32 +1264,36 @@ export function HuandengEditor() {
     );
 
   const status = state.recovering
-    ? '正在恢复保存…'
+    ? t('正在恢复保存…')
     : state.recoveryRequired
-      ? '保存待恢复'
+      ? t('保存待恢复')
       : drafts.some((draft) => draft.conflict)
-        ? '草稿冲突 · 已保留'
+        ? t('草稿冲突 · 已保留')
         : state.error
-          ? '保存需检查'
+          ? t('保存需检查')
           : state.saving
-            ? '正在保存…'
+            ? t('正在保存…')
             : drafts.length
-              ? `待保存 · ${drafts.length} 页`
+              ? t(drafts.length === 1 ? '待保存 · 1 页' : '待保存 · {count} 页', {
+                  count: drafts.length,
+                })
               : pageReadonly
-                ? '只读模式'
-                : '页面已保存';
+                ? t('只读模式')
+                : t('页面已保存');
   const saveNeedsAttention =
     !!recoveryState || !!state.error || drafts.some((draft) => draft.conflict);
   const draftKinds = [
-    projectDirty && '项目编排',
+    projectDirty && t('项目编排'),
     storyDirty && 'Story',
-    chartDirty && '图表数据',
-    timelineDirty && '动画',
+    chartDirty && t('图表数据'),
+    timelineDirty && t('动画'),
   ].filter(Boolean);
   const collectionTitle = selectedPresentationId
     ? (project?.presentations.find((item) => item.id === selectedPresentationId)?.title ??
-      '当前演讲')
-    : `主幻灯片 · ${snapshot.pages.length} 页`;
+      t('当前演讲'))
+    : t(snapshot.pages.length === 1 ? '主幻灯片 · 1 页' : '主幻灯片 · {count} 页', {
+        count: snapshot.pages.length,
+      });
   return (
     <div
       className="hd-editor flex h-dvh min-w-[760px] flex-col overflow-hidden bg-canvas text-foreground"
@@ -1246,8 +1309,8 @@ export function HuandengEditor() {
           <Button
             variant="ghost"
             size="icon-sm"
-            aria-label={desktopHost() ? '打开项目' : '显示项目文件'}
-            title={desktopHost() ? '打开项目 Ctrl+O' : '显示项目文件'}
+            aria-label={desktopHost() ? t('打开项目') : t('显示项目文件')}
+            title={desktopHost() ? t('打开项目 Ctrl+O') : t('显示项目文件')}
             onClick={() =>
               void run(async () => {
                 await client.flushAll();
@@ -1262,8 +1325,8 @@ export function HuandengEditor() {
             <Button
               variant="ghost"
               size="icon-sm"
-              aria-label="新建项目"
-              title="新建项目 Ctrl+N"
+              aria-label={t('新建项目')}
+              title={t('新建项目 Ctrl+N')}
               onClick={() =>
                 void run(async () => {
                   await client.flushAll();
@@ -1283,19 +1346,23 @@ export function HuandengEditor() {
         <div className="hd-document-context">
           <h1
             className="min-w-0 truncate font-medium"
-            title={snapshot.title || '未命名演示'}
+            title={snapshot.title || t('未命名演示')}
             data-hd-document-title
           >
-            {snapshot.title || '未命名演示'}
+            {snapshot.title || t('未命名演示')}
           </h1>
           <select
-            aria-label="当前演讲集合"
+            aria-label={t('当前演讲集合')}
             className="hd-collection-select"
             title={collectionTitle}
             value={selectedPresentationId ?? ''}
             onChange={(event) => selectPresentation(event.target.value || null)}
           >
-            <option value="">主幻灯片 · {snapshot.pages.length} 页</option>
+            <option value="">
+              {t(snapshot.pages.length === 1 ? '主幻灯片 · 1 页' : '主幻灯片 · {count} 页', {
+                count: snapshot.pages.length,
+              })}
+            </option>
             {project?.presentations.map((item) => (
               <option key={item.id} value={item.id}>
                 {item.title}
@@ -1308,8 +1375,8 @@ export function HuandengEditor() {
             <Button
               variant="ghost"
               size="icon-sm"
-              aria-label="撤销"
-              title="撤销 Ctrl+Z"
+              aria-label={t('撤销')}
+              title={t('撤销 Ctrl+Z')}
               disabled={pageReadonly || timelineDirty || busy || !state.undoStack.length}
               onClick={() => {
                 setPreviewResetKey((key) => key + 1);
@@ -1321,8 +1388,8 @@ export function HuandengEditor() {
             <Button
               variant="ghost"
               size="icon-sm"
-              aria-label="重做"
-              title="重做 Ctrl+Shift+Z"
+              aria-label={t('重做')}
+              title={t('重做 Ctrl+Shift+Z')}
               disabled={pageReadonly || timelineDirty || busy || !state.redoStack.length}
               onClick={() => {
                 setPreviewResetKey((key) => key + 1);
@@ -1334,8 +1401,8 @@ export function HuandengEditor() {
             <Button
               variant="ghost"
               size="icon-sm"
-              aria-label="当前页历史版本"
-              title="当前页历史版本"
+              aria-label={t('当前页历史版本')}
+              title={t('当前页历史版本')}
               disabled={!page}
               onClick={() => setHistoryPageId(selectedPageId)}
             >
@@ -1348,7 +1415,7 @@ export function HuandengEditor() {
               aria-live="polite"
               data-hd-save-status
               data-hd-recovery-state={recoveryState}
-              title={`${status}${auxiliaryDirty ? `；${draftKinds.join('、')}草稿请在对应面板保存` : ''}`}
+              title={`${status}${auxiliaryDirty ? t('；{drafts}草稿请在对应面板保存', { drafts: draftKinds.join(locale === 'en' ? ', ' : '、') }) : ''}`}
             >
               {state.saving || state.recovering ? (
                 <Loader2 className="size-3 shrink-0 animate-spin" />
@@ -1364,13 +1431,13 @@ export function HuandengEditor() {
             <Button
               variant="outline"
               size="sm"
-              aria-label="保存页面"
-              title="Ctrl+S 保存所有页面修改；其他草稿请在对应面板保存"
+              aria-label={t('保存页面')}
+              title={t('Ctrl+S 保存所有页面修改；其他草稿请在对应面板保存')}
               disabled={readonly || busy}
               onClick={() => void run(() => client.flushAll())}
             >
               <Save />
-              保存页面
+              {t('保存页面')}
             </Button>
           </div>
           {!state.connected && (
@@ -1378,10 +1445,10 @@ export function HuandengEditor() {
               className="hd-connection-status text-amber-800 dark:text-amber-300"
               role="status"
               data-hd-connection-state="reconnecting"
-              title="正在重新连接文档服务，本地草稿会保留"
+              title={t('正在重新连接文档服务，本地草稿会保留')}
             >
               <RefreshCw className="size-3 shrink-0" />
-              正在重连
+              {t('正在重连')}
             </span>
           )}
           <span className="h-5 w-px shrink-0 bg-border" />
@@ -1389,13 +1456,13 @@ export function HuandengEditor() {
             <Button
               variant="outline"
               size="sm"
-              aria-label="导出"
+              aria-label={t('导出')}
               data-hd-export
               disabled={busy || presentationBlocked}
               onClick={() => setExportOpen(true)}
             >
               {exporting ? <Loader2 className="animate-spin" /> : <Download />}
-              导出
+              {t('导出')}
             </Button>
             <Button
               variant="default"
@@ -1413,8 +1480,9 @@ export function HuandengEditor() {
               }
             >
               <Play />
-              演示
+              {t('演示')}
             </Button>
+            <HuandengLanguageMenu />
             <ThemeToggle />
           </div>
         </div>
@@ -1425,11 +1493,13 @@ export function HuandengEditor() {
           data-hd-pending-drafts
         >
           <span className="min-w-48 flex-1">
-            {draftKinds.join('、')}草稿待处理，请在对应面板保存。
+            {t('{drafts}草稿待处理，请在对应面板保存。', {
+              drafts: draftKinds.join(locale === 'en' ? ', ' : '、'),
+            })}
           </span>
           {projectDirty && (
             <Button size="xs" variant="ghost" onClick={showProjectEditor}>
-              查看项目草稿
+              {t('查看项目草稿')}
             </Button>
           )}
           {storyDirty && (
@@ -1449,12 +1519,12 @@ export function HuandengEditor() {
                 }
               }}
             >
-              查看 Story 草稿
+              {t('查看 Story 草稿')}
             </Button>
           )}
           {(chartDirty || storyDirty) && (
             <Button size="xs" variant="ghost" onClick={() => setPendingDraftsOpen(true)}>
-              管理未保存草稿
+              {t('管理未保存草稿')}
             </Button>
           )}
           {timelineDirty && (
@@ -1472,7 +1542,7 @@ export function HuandengEditor() {
                 });
               }}
             >
-              查看动画草稿
+              {t('查看动画草稿')}
             </Button>
           )}
         </div>
@@ -1489,20 +1559,26 @@ export function HuandengEditor() {
               <>
                 <p>
                   {state.recovering
-                    ? '正在核对并恢复这次保存，本地草稿会保留。'
+                    ? t('正在核对并恢复这次保存，本地草稿会保留。')
                     : state.error?.code === 'RECOVERY_REQUIRED'
-                      ? '文件或保存记录与预期不一致，恢复已停止。请先复制待保存页面，再检查文件冲突与恢复详情。'
-                      : '有一次保存尚未完成，本地草稿已保留。若文件仍被其他程序占用，请先关闭占用，再恢复保存。完成后即可关闭或切换项目。'}
+                      ? t(
+                          '文件或保存记录与预期不一致，恢复已停止。请先复制待保存页面，再检查文件冲突与恢复详情。',
+                        )
+                      : t(
+                          '有一次保存尚未完成，本地草稿已保留。若文件仍被其他程序占用，请先关闭占用，再恢复保存。完成后即可关闭或切换项目。',
+                        )}
                 </p>
                 {(uiError || state.error) && (
                   <details className="mt-1 break-words">
-                    <summary className="cursor-pointer">查看恢复详情</summary>
-                    <p className="mt-1 whitespace-pre-wrap">{uiError || state.error?.message}</p>
+                    <summary className="cursor-pointer">{t('查看恢复详情')}</summary>
+                    <p className="mt-1 whitespace-pre-wrap">
+                      {t(uiError || state.error?.message || '')}
+                    </p>
                   </details>
                 )}
               </>
             ) : (
-              uiError || state.error?.message || presentationError
+              t(uiError || state.error?.message || presentationError || '')
             )}
           </div>
           {recoveryState && (
@@ -1510,22 +1586,22 @@ export function HuandengEditor() {
               <Button
                 size="xs"
                 variant="outline"
-                aria-label="恢复未完成保存"
+                aria-label={t('恢复未完成保存')}
                 disabled={state.saving}
                 onClick={recoverPending}
               >
                 <RefreshCw className={state.recovering ? 'animate-spin' : undefined} />
-                {state.recovering ? '正在恢复保存…' : '恢复未完成保存'}
+                {state.recovering ? t('正在恢复保存…') : t('恢复未完成保存')}
               </Button>
               <Button
                 size="xs"
                 variant="ghost"
                 disabled={!drafts.length && !state.canRetry}
-                title="复制本地页面草稿与原始保存请求，保留未确认的内容"
+                title={t('复制本地页面草稿与原始保存请求，保留未确认的内容')}
                 onClick={copyPendingWork}
               >
                 <Copy />
-                复制待保存页面
+                {t('复制待保存页面')}
               </Button>
             </>
           )}
@@ -1536,7 +1612,7 @@ export function HuandengEditor() {
               disabled={state.saving}
               onClick={() => void run(() => client.retryPending())}
             >
-              重试同一次保存
+              {t('重试同一次保存')}
             </Button>
           )}
           <Button
@@ -1547,62 +1623,72 @@ export function HuandengEditor() {
               void client.refresh();
             }}
           >
-            检查最新状态
+            {t('检查最新状态')}
           </Button>
         </div>
       )}
       <div className="flex min-h-0 flex-1">
         <aside
           className={`hd-navigation ${navigationCollapsed ? 'hidden' : 'flex'} shrink-0 flex-col border-r border-border bg-sidebar`}
-          aria-label="项目导航"
+          aria-label={t('项目导航')}
           data-hd-focus-region="navigation"
           tabIndex={-1}
         >
-          <div className="hd-navigation-tabs flex h-10 shrink-0 items-center gap-1 border-b border-border px-2">
+          <div className="hd-navigation-tabs grid h-10 shrink-0 grid-cols-4 items-center gap-1 border-b border-border px-2">
             <Button
               variant={leftTab === 'project' ? 'secondary' : 'ghost'}
               size="xs"
-              className="flex-1"
-              aria-label="项目与故事"
+              className="min-w-0 px-1"
+              aria-label={t('项目与故事')}
               aria-pressed={leftTab === 'project'}
               onClick={() => setLeftTab('project')}
             >
-              <BookOpen /> 项目
+              {t('项目')}
             </Button>
             <Button
               variant={leftTab === 'pages' ? 'secondary' : 'ghost'}
               size="xs"
-              className="flex-1"
-              aria-label="页面缩略图"
+              className="min-w-0 px-1"
+              aria-label={t('页面缩略图')}
               aria-pressed={leftTab === 'pages'}
               onClick={() => setLeftTab('pages')}
             >
-              <PanelsTopLeft />
-              页面
+              {t('页面')}
             </Button>
             <Button
               variant={leftTab === 'assets' ? 'secondary' : 'ghost'}
               size="xs"
-              className="flex-1"
-              aria-label="项目素材库"
+              className="min-w-0 px-1"
+              aria-label={t('项目素材库')}
               aria-pressed={leftTab === 'assets'}
               onClick={() => setLeftTab('assets')}
             >
-              <Images /> 素材
+              {t('素材')}
             </Button>
             <Button
               variant={leftTab === 'files' ? 'secondary' : 'ghost'}
               size="xs"
-              className="flex-1"
-              aria-label="项目文件树"
+              className="min-w-0 px-1"
+              aria-label={t('项目文件树')}
               aria-pressed={leftTab === 'files'}
               onClick={() => setLeftTab('files')}
             >
-              <Files />
-              文件
+              {t('文件')}
             </Button>
           </div>
           <div className={leftTab === 'project' ? 'min-h-0 flex-1 overflow-y-auto' : 'hidden'}>
+            <div className="border-b border-border px-3 py-2">
+              <Button
+                variant="ghost"
+                size="sm"
+                className="w-full justify-start"
+                onClick={() => setAgentConnectionOpen(true)}
+                data-hd-agent-connect
+              >
+                <Bot />
+                {t('连接 Agent')}
+              </Button>
+            </div>
             <ProjectOverview
               snapshot={snapshot}
               selectedPageId={selectedPageId}
@@ -1761,9 +1847,9 @@ export function HuandengEditor() {
             <Button
               variant={insertionTool ? 'ghost' : 'secondary'}
               size="icon-sm"
-              aria-label="选择工具"
+              aria-label={t('选择工具')}
               aria-pressed={!insertionTool}
-              title="选择 V · Esc 取消插入"
+              title={t('选择 V · Esc 取消插入')}
               onClick={() => chooseTool(null)}
             >
               <MousePointer2 />
@@ -1772,21 +1858,21 @@ export function HuandengEditor() {
             <Button
               variant="ghost"
               size="sm"
-              aria-label="添加文本"
-              title="文字 T · 在画布点击或拖拽放置"
+              aria-label={t('添加文本')}
+              title={t('文字 T · 在画布点击或拖拽放置')}
               aria-pressed={insertionTool?.kind === 'text'}
               disabled={readonly || busy || !page}
               onClick={() => chooseTool(insertionTool?.kind === 'text' ? null : { kind: 'text' })}
             >
               <Type />
-              文字
+              {t('文字')}
             </Button>
             <Button
               variant={leftTab === 'assets' && !navigationCollapsed ? 'secondary' : 'ghost'}
               size="sm"
-              aria-label="打开素材库"
+              aria-label={t('打开素材库')}
               aria-pressed={leftTab === 'assets' && !navigationCollapsed}
-              title="浏览项目素材，复用到当前页"
+              title={t('浏览项目素材，复用到当前页')}
               data-hd-open-assets
               onClick={() => {
                 setInsertionTool(null);
@@ -1800,13 +1886,13 @@ export function HuandengEditor() {
               }}
             >
               <Images />
-              素材
+              {t('素材')}
             </Button>
             <Button
               variant="ghost"
               size="icon-sm"
-              aria-label="从设备导入并放置图片"
-              title="从设备导入图片并放置到当前页"
+              aria-label={t('从设备导入并放置图片')}
+              title={t('从设备导入图片并放置到当前页')}
               data-hd-import-images
               disabled={readonly || busy || !page}
               onClick={() => imageInputRef.current?.click()}
@@ -1821,14 +1907,14 @@ export function HuandengEditor() {
             <Button
               variant="ghost"
               size="sm"
-              aria-label="添加线条"
-              title="线条 L · 拖拽绘制，Shift 约束方向"
+              aria-label={t('添加线条')}
+              title={t('线条 L · 拖拽绘制，Shift 约束方向')}
               aria-pressed={insertionTool?.kind === 'line'}
               disabled={readonly || busy || !page}
               onClick={() => chooseTool(insertionTool?.kind === 'line' ? null : { kind: 'line' })}
             >
               <Minus />
-              线条
+              {t('线条')}
             </Button>
             <ScienceInsertMenu
               size={snapshot.size}
@@ -1845,8 +1931,8 @@ export function HuandengEditor() {
             <Button
               variant="ghost"
               size="icon-sm"
-              aria-label="组合对象"
-              title="组合 Ctrl+G"
+              aria-label={t('组合对象')}
+              title={t('组合 Ctrl+G')}
               disabled={readonly || busy || selectedElements.length < 2}
               onClick={() => groupSelection()}
             >
@@ -1855,8 +1941,8 @@ export function HuandengEditor() {
             <Button
               variant="ghost"
               size="icon-sm"
-              aria-label="取消组合"
-              title="取消组合 Ctrl+Shift+G"
+              aria-label={t('取消组合')}
+              title={t('取消组合 Ctrl+Shift+G')}
               disabled={
                 readonly || busy || !selectedElements.some((item) => item.elementType === 'group')
               }
@@ -1877,16 +1963,16 @@ export function HuandengEditor() {
             <div className="flex shrink-0 items-center gap-2 border-b bg-brand-soft px-4 py-2 text-xs">
               <span className="flex-1">
                 {selectedView?.versionId
-                  ? '此引用固定为已记录版本，内容只读。'
-                  : '此演讲引用 主幻灯片；内容编辑会同步到主页面及其他实时引用。'}
+                  ? t('此引用固定为已记录版本，内容只读。')
+                  : t('此演讲引用 主幻灯片；内容编辑会同步到主页面及其他实时引用。')}
               </span>
               {selectedPageId && (
                 <Button size="xs" variant="outline" onClick={() => selectMainPage(selectedPageId)}>
-                  前往 Main Slide
+                  {t('前往 Main Slide')}
                 </Button>
               )}
               <Button size="xs" variant="ghost" onClick={showProjectEditor}>
-                编排与备注
+                {t('编排与备注')}
               </Button>
             </div>
           )}
@@ -1895,11 +1981,13 @@ export function HuandengEditor() {
               className="shrink-0 border-b border-amber-300/50 bg-amber-50 px-4 py-3 text-amber-900"
               data-hd-conflict
             >
-              <p className="mb-2 text-xs">{conflict} 自动保存已暂停。</p>
+              <p className="mb-2 text-xs">
+                {t('{message} 自动保存已暂停。', { message: t(conflict) })}
+              </p>
               <div className="flex gap-2">
                 <Button size="xs" variant="outline" onClick={copyDraft}>
                   <Copy />
-                  复制本地草稿
+                  {t('复制本地草稿')}
                 </Button>
                 <Button
                   size="xs"
@@ -1910,7 +1998,7 @@ export function HuandengEditor() {
                     setUiError(null);
                   }}
                 >
-                  放弃草稿，采用磁盘版本
+                  {t('放弃草稿，采用磁盘版本')}
                 </Button>
               </div>
             </div>
@@ -1922,8 +2010,10 @@ export function HuandengEditor() {
               data-hd-insertion-hint
             >
               <MousePointer2 className="size-3.5" />
-              <span>{insertionLabel(insertionTool)}：点击放置，拖拽设置大小</span>
-              <span className="ml-auto text-[11px]">Shift 约束 · Esc 取消</span>
+              <span>
+                {t('{tool}：点击放置，拖拽设置大小', { tool: insertionLabel(insertionTool) })}
+              </span>
+              <span className="ml-auto text-[11px]">{t('Shift 约束 · Esc 取消')}</span>
             </div>
           )}
           {previewActive && (
@@ -1933,17 +2023,21 @@ export function HuandengEditor() {
             >
               <span className="flex shrink-0 items-center gap-1.5 font-medium text-brand">
                 <Clapperboard className="size-3.5" />
-                动画预览
+                {t('动画预览')}
               </span>
               <span
                 className="min-w-0 flex-1 truncate text-muted-foreground"
-                title={selectedIds.length ? selectedIds.join('、') : '当前页面'}
+                title={
+                  selectedIds.length
+                    ? selectedIds.join(locale === 'en' ? ', ' : '、')
+                    : t('当前页面')
+                }
               >
                 {selectedIds.length === 1
-                  ? `对象 · ${selectedIds[0]}`
+                  ? t('对象 · {id}', { id: selectedIds[0] })
                   : selectedIds.length
-                    ? `已选 ${selectedIds.length} 个对象`
-                    : '当前页面'}
+                    ? t('已选 {count} 个对象', { count: selectedIds.length })
+                    : t('当前页面')}
               </span>
               <Button
                 variant="outline"
@@ -1953,7 +2047,7 @@ export function HuandengEditor() {
                   requestAnimationFrame(() => focusEditorCanvas(selectedIds[0]));
                 }}
               >
-                返回基础编辑
+                {t('返回基础编辑')}
               </Button>
             </div>
           )}
@@ -1971,6 +2065,7 @@ export function HuandengEditor() {
                   onPlace: placeElement,
                   autoEditId,
                   scale,
+                  snapEnabled: snapping.enabled,
                   onScaleChange: setActualScale,
                   onPatch: patchElement,
                   onBegin: () => client.beginInteraction(authoringPage.pageId),
@@ -2025,9 +2120,9 @@ export function HuandengEditor() {
                   <p className="mb-4 text-sm text-muted-foreground">
                     {selectedPresentationId
                       ? presentationLoading
-                        ? '正在读取演讲引用与固定版本…'
-                        : '在项目面板中为这份演讲添加章节或页面。'
-                      : '从一张空白页开始。'}
+                        ? t('正在读取演讲引用与固定版本…')
+                        : t('在项目面板中为这份演讲添加章节或页面。')
+                      : t('从一张空白页开始。')}
                   </p>
                   <Button
                     disabled={readonly || busy}
@@ -2038,7 +2133,7 @@ export function HuandengEditor() {
                     }
                   >
                     <Plus />
-                    {selectedPresentationId ? '编排演讲' : '新增页面'}
+                    {selectedPresentationId ? t('编排演讲') : t('新增页面')}
                   </Button>
                 </div>
               </div>
@@ -2048,9 +2143,9 @@ export function HuandengEditor() {
             <Button
               variant="ghost"
               size="icon-xs"
-              aria-label={navigationCollapsed ? '展开项目导航' : '收起项目导航'}
+              aria-label={navigationCollapsed ? t('展开项目导航') : t('收起项目导航')}
               aria-expanded={!navigationCollapsed}
-              title={navigationCollapsed ? '展开项目导航' : '收起项目导航'}
+              title={navigationCollapsed ? t('展开项目导航') : t('收起项目导航')}
               onClick={() => setNavigationCollapsed((value) => !value)}
             >
               {navigationCollapsed ? <PanelLeftOpen /> : <PanelLeftClose />}
@@ -2061,7 +2156,7 @@ export function HuandengEditor() {
               aria-expanded={notesOpen}
               onClick={() => setNotesOpen((value) => !value)}
             >
-              演讲备注
+              {t('演讲备注')}
             </Button>
             <Button
               variant={timelineOpen ? 'secondary' : 'ghost'}
@@ -2085,29 +2180,34 @@ export function HuandengEditor() {
               }}
             >
               <Clapperboard className="size-3.5" />
-              动画
+              {t('动画')}
             </Button>
             <Button
               variant="ghost"
               size="icon-xs"
-              aria-label="键盘操作帮助"
-              title="键盘操作 F1"
+              aria-label={t('键盘操作帮助')}
+              title={t('键盘操作 F1')}
               onClick={() => setKeyboardHelpOpen(true)}
             >
               <Keyboard />
             </Button>
             {exportReport && (
               <a href={exportReport} download className="text-xs underline underline-offset-2">
-                导出说明
+                {t('导出说明')}
               </a>
             )}
-            <span className="ml-auto hidden text-[11px] xl:block">
-              Shift 多选 / 等比例缩放 · Alt 暂停吸附
+            <SnappingToggle
+              enabled={snapping.enabled}
+              disabled={!snapping.ready || snapping.saving || previewActive}
+              onChange={(next) => void run(() => snapping.change(next))}
+            />
+            <span className="ml-auto hidden text-[11px] 2xl:block">
+              {t('Shift 多选 / 等比例缩放 · Alt 暂停吸附')}
             </span>
             <Button
               variant="ghost"
               size="icon-xs"
-              aria-label="缩小画布"
+              aria-label={t('缩小画布')}
               className="ml-auto xl:ml-0"
               onClick={() => setScale(Math.max(0.15, (scale ?? actualScale) - 0.1))}
             >
@@ -2116,7 +2216,7 @@ export function HuandengEditor() {
             <button
               type="button"
               className="min-w-12 font-mono text-[11px]"
-              title="点击适合窗口"
+              title={t('点击适合窗口')}
               onClick={() => setScale(undefined)}
             >
               {Math.round(actualScale * 100)}%
@@ -2124,7 +2224,7 @@ export function HuandengEditor() {
             <Button
               variant="ghost"
               size="icon-xs"
-              aria-label="放大画布"
+              aria-label={t('放大画布')}
               onClick={() => setScale(Math.min(3, (scale ?? actualScale) + 0.1))}
             >
               <Plus />
@@ -2132,7 +2232,7 @@ export function HuandengEditor() {
             <Button
               variant="ghost"
               size="icon-xs"
-              aria-label="适合窗口"
+              aria-label={t('适合窗口')}
               onClick={() => setScale(undefined)}
             >
               <Maximize2 />
@@ -2141,9 +2241,9 @@ export function HuandengEditor() {
               <Button
                 variant="ghost"
                 size="icon-xs"
-                aria-label={inspectorCollapsed ? '展开对象属性' : '收起对象属性'}
+                aria-label={inspectorCollapsed ? t('展开对象属性') : t('收起对象属性')}
                 aria-expanded={!inspectorCollapsed}
-                title={inspectorCollapsed ? '展开对象属性' : '收起对象属性'}
+                title={inspectorCollapsed ? t('展开对象属性') : t('收起对象属性')}
                 onClick={() => setInspectorCollapsed((value) => !value)}
               >
                 {inspectorCollapsed ? <PanelRightOpen /> : <PanelRightClose />}
@@ -2157,8 +2257,8 @@ export function HuandengEditor() {
               tabIndex={-1}
             >
               <Textarea
-                aria-label="演讲备注"
-                placeholder="这页要讲什么？"
+                aria-label={t('演讲备注')}
+                placeholder={t('这页要讲什么？')}
                 className="min-h-20 resize-none border-none bg-transparent p-0 text-xs shadow-none focus-visible:ring-0"
                 value={page.data.notes ?? ''}
                 disabled={readonly || !!selectedPresentationId}
@@ -2188,6 +2288,7 @@ export function HuandengEditor() {
               onEnd={() => void run(() => client.endInteraction(page.pageId))}
               onComposition={(composing) => client.setComposing(page.pageId, composing)}
               onAlign={align}
+              onDistribute={distribute}
               onLayer={layer}
               onRemove={removeElements}
             >
@@ -2217,13 +2318,14 @@ export function HuandengEditor() {
           </div>
         )}
       </div>
+      <AgentConnectionDialog open={agentConnectionOpen} onOpenChange={setAgentConnectionOpen} />
       <KeyboardHelpDialog open={keyboardHelpOpen} onOpenChange={setKeyboardHelpOpen} />
       <Dialog open={pendingDraftsOpen} onOpenChange={setPendingDraftsOpen}>
         <DialogContent className="max-h-[85dvh] overflow-auto">
           <DialogHeader>
-            <DialogTitle>未保存的编辑草稿</DialogTitle>
+            <DialogTitle>{t('未保存的编辑草稿')}</DialogTitle>
             <DialogDescription>
-              草稿在切页时保留。返回原对象完成编辑，或先复制文字；放弃只删除这份待保存草稿。
+              {t('草稿在切页时保留。返回原对象完成编辑，或先复制文字；放弃只删除这份待保存草稿。')}
             </DialogDescription>
           </DialogHeader>
           {Object.entries(storyDrafts)
@@ -2233,7 +2335,7 @@ export function HuandengEditor() {
                 <h3 className="text-sm">{snapshot.metadata.slides[id]?.label ?? id} · Story</h3>
                 <Textarea
                   readOnly
-                  aria-label="保留的 故事草稿"
+                  aria-label={t('保留的 故事草稿')}
                   value={`${draft.purpose}\n\n${draft.keep}`}
                 />
                 <Button
@@ -2243,7 +2345,7 @@ export function HuandengEditor() {
                     setPendingDraftsOpen(false);
                   }}
                 >
-                  返回页面
+                  {t('返回页面')}
                 </Button>
                 <Button
                   size="xs"
@@ -2253,7 +2355,7 @@ export function HuandengEditor() {
                     setDraftResetKey((key) => key + 1);
                   }}
                 >
-                  放弃这份 故事草稿
+                  {t('放弃这份 故事草稿')}
                 </Button>
               </section>
             ))}
@@ -2263,7 +2365,7 @@ export function HuandengEditor() {
                 <h3 className="text-sm">
                   {snapshot.metadata.slides[id]?.label ?? id} · {elementId}
                 </h3>
-                <Textarea readOnly aria-label="保留的图表数据草稿" value={draft.value} />
+                <Textarea readOnly aria-label={t('保留的图表数据草稿')} value={draft.value} />
                 <Button
                   size="xs"
                   onClick={() => {
@@ -2272,7 +2374,7 @@ export function HuandengEditor() {
                     setPendingDraftsOpen(false);
                   }}
                 >
-                  返回图表
+                  {t('返回图表')}
                 </Button>
                 <Button
                   size="xs"
@@ -2282,7 +2384,7 @@ export function HuandengEditor() {
                     setDraftResetKey((key) => key + 1);
                   }}
                 >
-                  放弃这份图表草稿
+                  {t('放弃这份图表草稿')}
                 </Button>
               </section>
             )),
@@ -2295,7 +2397,7 @@ export function HuandengEditor() {
         accept="image/png,image/jpeg,image/gif,image/svg+xml,image/webp"
         multiple
         hidden
-        aria-label="从设备导入图片"
+        aria-label={t('从设备导入图片')}
         disabled={readonly || busy || !page}
         onChange={(event) => {
           const files = Array.from(event.currentTarget.files ?? []);
@@ -2380,7 +2482,7 @@ export function HuandengEditor() {
         >
           {snapshot.diagnostics
             .filter((item) => item.severity === 'error')
-            .map((item) => item.message)
+            .map((item) => t(item.message))
             .join(' · ')}
         </div>
       )}

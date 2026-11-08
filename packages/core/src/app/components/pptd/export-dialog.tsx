@@ -8,6 +8,7 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
+import { uiText as t, useHuandengLocale } from '@/lib/huandeng-locale';
 import { type PptdBackend, PptdClientError } from '@/lib/pptd-backend';
 import type { DeckSnapshot, PageSnapshot } from '../../../pptd/types';
 import type { VideoCapabilities } from '../../../pptd/video-encoder';
@@ -43,6 +44,7 @@ export function ExportDialog({
   onReport: (reportUrl: string) => void;
   onBusyChange: (busy: boolean) => void;
 }) {
+  useHuandengLocale();
   const [format, setFormat] = useState<'pptx' | 'pdf' | 'png' | 'mp4'>('pptx');
   const [scope, setScope] = useState<'collection' | 'page'>('collection');
   const [resolution, setResolution] = useState<720 | 1080>(720);
@@ -173,42 +175,45 @@ export function ExportDialog({
         data-hd-export-dialog
       >
         <DialogHeader>
-          <DialogTitle>导出</DialogTitle>
+          <DialogTitle>{t('导出')}</DialogTitle>
           <DialogDescription>
-            选择交付格式和范围。导出使用开始时保存的文稿与素材。
+            {t('选择交付格式和范围。导出使用开始时保存的文稿与素材。')}
           </DialogDescription>
         </DialogHeader>
         <fieldset disabled={working} className="space-y-4">
           <div className="grid grid-cols-2 gap-3">
             <label className="space-y-1.5 text-xs">
-              格式
+              {t('格式')}
               <select
-                aria-label="导出格式"
+                aria-label={t('导出格式')}
                 value={format}
                 className="h-9 w-full rounded-md border bg-background px-2 text-sm"
                 onChange={(event) => setFormat(event.target.value as typeof format)}
               >
                 <option value="pptx">PowerPoint · PPTX</option>
-                <option value="pdf">文档 · PDF</option>
-                <option value="png">当前页图片 · PNG</option>
-                <option value="mp4">动画视频 · MP4</option>
+                <option value="pdf">{t('文档 · PDF')}</option>
+                <option value="png">{t('当前页图片 · PNG')}</option>
+                <option value="mp4">{t('动画视频 · MP4')}</option>
               </select>
             </label>
             <label className="space-y-1.5 text-xs">
-              范围
+              {t('范围')}
               <select
-                aria-label="导出范围"
+                aria-label={t('导出范围')}
                 value={format === 'png' ? 'page' : format === 'mp4' ? scope : 'collection'}
                 disabled={format !== 'mp4'}
                 className="h-9 w-full rounded-md border bg-background px-2 text-sm"
                 onChange={(event) => setScope(event.target.value as typeof scope)}
               >
                 <option value="collection">
-                  {snapshot.presentationId ? snapshot.title : '主幻灯片'} · {snapshot.pages.length}{' '}
-                  页
+                  {t('{value0} · {value1}{value2}页', {
+                    value0: snapshot.presentationId ? snapshot.title : t('主幻灯片'),
+                    value1: snapshot.pages.length,
+                    value2: ' ',
+                  })}
                 </option>
                 <option value="page" disabled={!page}>
-                  当前页{page?.shortCode ? ` · ${page.shortCode}` : ''}
+                  {t('当前页{value0}', { value0: page?.shortCode ? ` · ${page.shortCode}` : '' })}
                 </option>
               </select>
             </label>
@@ -217,9 +222,9 @@ export function ExportDialog({
             <>
               <div className="grid grid-cols-2 gap-3">
                 <label className="space-y-1.5 text-xs">
-                  分辨率
+                  {t('分辨率')}
                   <select
-                    aria-label="视频分辨率"
+                    aria-label={t('视频分辨率')}
                     value={resolution}
                     className="h-9 w-full rounded-md border bg-background px-2 text-sm"
                     onChange={(event) => setResolution(Number(event.target.value) as 720 | 1080)}
@@ -229,9 +234,9 @@ export function ExportDialog({
                   </select>
                 </label>
                 <label className="space-y-1.5 text-xs">
-                  帧率
+                  {t('帧率')}
                   <select
-                    aria-label="视频帧率"
+                    aria-label={t('视频帧率')}
                     value={fps}
                     className="h-9 w-full rounded-md border bg-background px-2 text-sm"
                     onChange={(event) => setFps(Number(event.target.value) as 24 | 30)}
@@ -253,9 +258,9 @@ export function ExportDialog({
                   { label: '每步骤额外（秒）', value: cueSeconds, set: setCueSeconds, min: 0 },
                 ].map((field) => (
                   <label className="space-y-1.5 text-xs" key={field.label}>
-                    {field.label}
+                    {t(field.label)}
                     <input
-                      aria-label={field.label}
+                      aria-label={t(field.label)}
                       type="number"
                       min={field.min}
                       max={60}
@@ -270,47 +275,56 @@ export function ExportDialog({
               <div className="rounded-md bg-muted/60 px-3 py-2.5 text-xs leading-relaxed">
                 {preview.plan && (
                   <p className="mb-1 font-medium" data-hd-video-estimate>
-                    {preview.plan.segments.length} 页 ·{' '}
-                    {(preview.plan.durationMs / 1000).toFixed(2)} 秒 · {preview.plan.width} ×{' '}
-                    {preview.plan.height}
+                    {t('{value0} 页 ·{value1}{value2} 秒 · {value3} ×{value4}{value5}', {
+                      value0: preview.plan.segments.length,
+                      value1: ' ',
+                      value2: (preview.plan.durationMs / 1000).toFixed(2),
+                      value3: preview.plan.width,
+                      value4: ' ',
+                      value5: preview.plan.height,
+                    })}
                   </p>
                 )}
                 <p className="text-muted-foreground">
-                  动画按时间线播放；演示步骤按上方停留时间继续。输出无声视频，无页面转场。GIF / APNG
-                  / 动态 WebP / 自主动画 SVG 需先换成静态素材。
+                  {t(
+                    '动画按时间线播放；演示步骤按上方停留时间继续。输出无声视频，无页面转场。GIF / APNG / 动态 WebP / 自主动画 SVG 需先换成静态素材。',
+                  )}
                 </p>
               </div>
               {!capability ? (
-                <p className="text-xs text-muted-foreground">正在检查视频编码器…</p>
+                <p className="text-xs text-muted-foreground">{t('正在检查视频编码器…')}</p>
               ) : !capability.available ? (
                 <p className="text-xs text-destructive" role="alert">
-                  {capability.message}
+                  {t(capability.message)}
                 </p>
               ) : null}
               {preview.error && (
                 <p className="text-xs text-destructive" role="alert">
-                  {preview.error}
+                  {t(preview.error)}
                 </p>
               )}
             </>
           ) : (
             <p className="rounded-md bg-muted/60 px-3 py-2.5 text-xs text-muted-foreground">
-              输出基础版式中的静态画面。需要播放关键帧动画，请选择“动画视频 · MP4”。
+              {t('输出基础版式中的静态画面。需要播放关键帧动画，请选择“动画视频 · MP4”。')}
             </p>
           )}
         </fieldset>
         {blocked && (
           <p role="alert" className="text-xs text-amber-700">
-            请先保存或放弃项目、Story、图表和动画草稿，再开始导出。
+            {t('请先保存或放弃项目、Story、图表和动画草稿，再开始导出。')}
           </p>
         )}
         {(working || job) && (
           <div className="space-y-2 text-xs" aria-live="polite" data-hd-export-progress>
             <div className="flex items-center justify-between">
-              <span>{starting ? '准备导出…' : job ? states[job.state] : ''}</span>
+              <span>{starting ? t('准备导出…') : job ? t(states[job.state]) : ''}</span>
               {job && (
                 <span className="tabular-nums">
-                  {job.completedFrames} / {job.totalFrames} 帧
+                  {t('{value0} / {value1} 帧', {
+                    value0: job.completedFrames,
+                    value1: job.totalFrames,
+                  })}
                 </span>
               )}
             </div>
@@ -319,17 +333,17 @@ export function ExportDialog({
                 className="h-1.5 w-full accent-primary"
                 max={job.totalFrames || 1}
                 value={job.completedFrames}
-                aria-label="视频导出进度"
+                aria-label={t('视频导出进度')}
               />
             )}
             {active && (
-              <p className="text-muted-foreground">可以关闭此窗口，稍后从“导出”查看进度。</p>
+              <p className="text-muted-foreground">{t('可以关闭此窗口，稍后从“导出”查看进度。')}</p>
             )}
           </div>
         )}
         {error && (
           <p role="alert" className="break-words text-xs text-destructive">
-            {error}
+            {t(error)}
           </p>
         )}
         {result && (
@@ -342,7 +356,9 @@ export function ExportDialog({
               {result.fileName}
             </p>
             {result.file && (
-              <p className="break-all text-muted-foreground">已保存到 {result.file}</p>
+              <p className="break-all text-muted-foreground">
+                {t('已保存到 {value0}', { value0: result.file })}
+              </p>
             )}
             <a
               className="inline-flex items-center gap-1.5 font-medium text-primary underline underline-offset-4"
@@ -350,7 +366,7 @@ export function ExportDialog({
               download={result.fileName}
             >
               <Download className="size-3.5" />
-              下载文件
+              {t('下载文件')}
             </a>
             <a
               className="ml-4 text-muted-foreground underline underline-offset-4"
@@ -358,7 +374,7 @@ export function ExportDialog({
               target="_blank"
               rel="noreferrer"
             >
-              导出报告
+              {t('导出报告')}
             </a>
           </div>
         )}
@@ -369,7 +385,7 @@ export function ExportDialog({
         ))}
         <div className="flex justify-end gap-2">
           <Button variant="ghost" onClick={() => onOpenChange(false)}>
-            关闭
+            {t('关闭')}
           </Button>
           {active && job ? (
             <Button
@@ -384,7 +400,7 @@ export function ExportDialog({
               }}
             >
               <X />
-              {cancelling ? '正在取消…' : '取消导出'}
+              {cancelling ? t('正在取消…') : t('取消导出')}
             </Button>
           ) : (
             <Button
@@ -404,7 +420,7 @@ export function ExportDialog({
               ) : (
                 <Download />
               )}
-              {result ? '再次导出' : '开始导出'}
+              {result ? t('再次导出') : t('开始导出')}
             </Button>
           )}
         </div>

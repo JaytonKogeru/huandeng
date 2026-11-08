@@ -1,0 +1,10 @@
+elements:
+  - elementId: title
+    elementType: text
+    bounds: [72, 70, 800, 70]
+    content: { text: Can one slide support two talks?, fontSize: 36, color: '#192631' }
+  - elementId: context
+    elementType: text
+    bounds: [72, 180, 800, 100]
+    content: { text: A synthetic software demonstration of reusable scientific presentations., fontSize: 24, color: '#455764' }
+notes: This example contains no real research findings.

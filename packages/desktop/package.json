@@ -24,7 +24,10 @@
     "NOTICE.md",
     "LICENSE",
     "branding.cjs",
-    "release.json"
+    "release.json",
+    "locale.cjs",
+    "plugins",
+    "agent-setup.cjs"
   ],
   "dependencies": {
     "@open-slide/core": "workspace:*"

@@ -351,6 +351,20 @@ export async function registerPptdRoutes(server: PptdRouteHost, _ctx?: ApiContex
       }
       if (route === '/transactions')
         return json(res, 200, await store.commit(body as unknown as TransactionRequest));
+      if (route === '/proposals/preview')
+        return json(res, 200, await store.preview(body.transaction as TransactionRequest));
+      if (route === '/proposals/apply') {
+        if (typeof body.previewHash !== 'string')
+          throw new PptdError(
+            'INVALID_REQUEST',
+            'previewHash is required for a proposal application.',
+          );
+        return json(
+          res,
+          200,
+          await store.commit(body.transaction as TransactionRequest, body.previewHash),
+        );
+      }
       if (route === '/recover') {
         const snapshot = await store.recoverPending();
         return json(res, 200, {

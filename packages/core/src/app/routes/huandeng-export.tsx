@@ -2,6 +2,7 @@ import { Component, type ReactNode, useEffect, useMemo, useState } from 'react';
 import { flushSync } from 'react-dom';
 import { useParams } from 'react-router-dom';
 import { PptdPageRenderer, type PptdTheme } from '@/components/pptd/renderer';
+import { uiText as t, useHuandengLocale } from '@/lib/huandeng-locale';
 import { PptdBackend, pptdAssetUrl } from '@/lib/pptd-backend';
 import type { DeckSnapshot } from '../../pptd/types';
 
@@ -13,6 +14,7 @@ declare global {
 }
 
 export function HuandengExport() {
+  useHuandengLocale();
   const { exportId = '' } = useParams();
   const [snapshot, setSnapshot] = useState<DeckSnapshot | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -137,8 +139,8 @@ export function HuandengExport() {
     };
   }, [snapshot, framesMode]);
 
-  if (error) return <div data-hd-export-error>{error}</div>;
-  if (!snapshot) return <div>准备固定版本…</div>;
+  if (error) return <div data-hd-export-error>{t(error)}</div>;
+  if (!snapshot) return <div>{t('准备固定版本…')}</div>;
   return (
     <ExportBoundary>
       <style>{`
@@ -196,7 +198,7 @@ class ExportBoundary extends Component<{ children: ReactNode }, { error: string 
 
   render() {
     return this.state.error ? (
-      <div data-hd-export-error>{this.state.error}</div>
+      <div data-hd-export-error>{t(this.state.error)}</div>
     ) : (
       this.props.children
     );

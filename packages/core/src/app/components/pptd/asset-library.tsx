@@ -1,5 +1,6 @@
 import { ArrowUpRight, FileImage, ImageOff, Plus, RefreshCw, Search, Upload } from 'lucide-react';
 import { useEffect, useId, useRef, useState } from 'react';
+import { uiText as t, useHuandengLocale } from '@/lib/huandeng-locale';
 import type {
   AssetLibraryItem,
   AssetLibraryOptions,
@@ -25,7 +26,7 @@ export interface AssetLibraryProps {
 }
 
 function sizeLabel(bytes: number | null) {
-  if (bytes === null) return '文件不可读';
+  if (bytes === null) return t('文件不可读');
   return bytes < 1024 * 1024
     ? `${Math.max(1, Math.round(bytes / 1024))} KB`
     : `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
@@ -46,6 +47,7 @@ export function AssetLibrary({
   onImport,
   onReplace,
 }: AssetLibraryProps) {
+  useHuandengLocale();
   const [query, setQuery] = useState('');
   const [filter, setFilter] = useState<NonNullable<AssetLibraryOptions['filter']>>('all');
   const [pageOnly, setPageOnly] = useState(false);
@@ -153,20 +155,20 @@ export function AssetLibrary({
   };
   return (
     <section
-      aria-label="项目素材库"
+      aria-label={t('项目素材库')}
       data-hd-asset-library
       className="flex h-full min-h-0 flex-col text-xs"
       aria-busy={loading || busy}
     >
       <div className="shrink-0 space-y-2 border-b border-border p-3">
         <div className="flex items-center justify-between gap-2">
-          <h2 className="font-semibold">素材库</h2>
+          <h2 className="font-semibold">{t('素材库')}</h2>
           <div className="flex gap-1">
             <Button
               variant="ghost"
               size="icon-xs"
-              aria-label="刷新素材库"
-              title="刷新素材库"
+              aria-label={t('刷新素材库')}
+              title={t('刷新素材库')}
               disabled={loading || busy}
               onClick={() => {
                 setFailedPreview(null);
@@ -179,43 +181,47 @@ export function AssetLibrary({
               <Button
                 variant="outline"
                 size="xs"
-                title="从设备导入图片并放置到当前页"
+                title={t('从设备导入图片并放置到当前页')}
                 disabled={disabled || busy}
                 onClick={() => importInput.current?.click()}
               >
                 <Upload />
-                导入并放置
+                {t('导入并放置')}
               </Button>
             )}
           </div>
         </div>
         <label className="relative block" htmlFor={queryId}>
           <Search className="pointer-events-none absolute left-2 top-2 size-3.5 text-muted-foreground" />
-          <span className="sr-only">搜索素材名称、路径或页面编号</span>
+          <span className="sr-only">{t('搜索素材名称、路径或页面编号')}</span>
           <input
             id={queryId}
             type="search"
             maxLength={256}
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="名称、路径或页面编号"
+            placeholder={t('名称、路径或页面编号')}
             className="w-full rounded-md border border-border bg-background py-1.5 pl-7 pr-2 text-xs outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
           />
         </label>
         <div className="flex items-center gap-2">
           <select
-            aria-label="素材筛选"
+            aria-label={t('素材筛选')}
             value={filter}
             onChange={(event) => setFilter(event.target.value as typeof filter)}
             className="min-w-0 flex-1 rounded border border-border bg-background px-2 py-1.5 text-xs outline-none focus-visible:ring-2 focus-visible:ring-ring/40"
           >
-            <option value="all">全部素材{result ? ` · ${result.counts.all}` : ''}</option>
-            <option value="used">主库引用{result ? ` · ${result.counts.used}` : ''}</option>
+            <option value="all">
+              {t('全部素材{value0}', { value0: result ? ` · ${result.counts.all}` : '' })}
+            </option>
+            <option value="used">
+              {t('主库引用{value0}', { value0: result ? ` · ${result.counts.used}` : '' })}
+            </option>
             <option value="unused">
-              当前主库未引用{result ? ` · ${result.counts.unused}` : ''}
+              {t('当前主库未引用{value0}', { value0: result ? ` · ${result.counts.unused}` : '' })}
             </option>
             <option value="missing">
-              缺失或不可读{result ? ` · ${result.counts.missing}` : ''}
+              {t('缺失或不可读{value0}', { value0: result ? ` · ${result.counts.missing}` : '' })}
             </option>
           </select>
           <label className="flex shrink-0 items-center gap-1.5 text-xs">
@@ -225,33 +231,35 @@ export function AssetLibrary({
               disabled={!selectedPageId}
               onChange={(event) => setPageOnly(event.target.checked)}
             />
-            当前页
+            {t('当前页')}
           </label>
         </div>
         <p className="text-[11px] leading-relaxed text-muted-foreground">
-          导入后放到当前页，已有素材可直接复用。
+          {t('导入后放到当前页，已有素材可直接复用。')}
         </p>
         {(error || loadError) && (
           <p role="alert" className="break-words text-[11px] text-destructive">
-            {error ?? loadError}
+            {t(error ?? loadError ?? '')}
           </p>
         )}
         {result?.truncated && (
           <p role="status" className="rounded bg-muted p-2 text-[11px] leading-relaxed">
-            目录较大，已扫描 {result.scan.visited} 项、最多 {result.scan.depthLimit}{' '}
-            层。列表可能不完整；当前页面已引用的素材仍会单独检查。
+            {t(
+              '目录较大，已扫描 {value0} 项、最多 {value1}{value2}层。列表可能不完整；当前页面已引用的素材仍会单独检查。',
+              { value0: result.scan.visited, value1: result.scan.depthLimit, value2: ' ' },
+            )}
           </p>
         )}
         {!!result?.scan.warnings.length && (
           <p className="text-[10px] text-muted-foreground">
-            部分目录不可读取或为符号链接，未纳入扫描。
+            {t('部分目录不可读取或为符号链接，未纳入扫描。')}
           </p>
         )}
       </div>
       <div className="min-h-20 flex-1 overflow-auto p-3">
         {loading && !result && (
           <p role="status" className="py-4 text-center text-muted-foreground">
-            正在读取素材…
+            {t('正在读取素材…')}
           </p>
         )}
         {result && result.items.length === 0 && (
@@ -259,8 +267,8 @@ export function AssetLibrary({
             <FileImage className="mx-auto mb-2 size-6 opacity-60" />
             <p>
               {query || filter !== 'all' || pageOnly
-                ? '没有符合条件的素材。'
-                : '把图片导入项目，即可在这里预览和复用。'}
+                ? t('没有符合条件的素材。')
+                : t('把图片导入项目，即可在这里预览和复用。')}
             </p>
           </div>
         )}
@@ -299,10 +307,12 @@ export function AssetLibrary({
                   <span className="block truncate text-xs font-medium">{asset.displayName}</span>
                   <span className="mt-1 block truncate text-[11px] text-muted-foreground">
                     {asset.status !== 'available'
-                      ? '缺失 / 不可读'
+                      ? t('缺失 / 不可读')
                       : asset.usage.length
-                        ? `${new Set(asset.usage.map((usage) => usage.pageId)).size} 页使用`
-                        : '主库未引用'}{' '}
+                        ? t('{value0} 页使用', {
+                            value0: new Set(asset.usage.map((usage) => usage.pageId)).size,
+                          })
+                        : t('主库未引用')}{' '}
                     · {sizeLabel(asset.bytes)}
                   </span>
                 </span>
@@ -318,7 +328,12 @@ export function AssetLibrary({
             disabled={loading}
             onClick={() => void loadMore()}
           >
-            {loading ? '正在加载…' : `加载更多 · 已显示 ${result.items.length} / ${result.total}`}
+            {loading
+              ? t('正在加载…')
+              : t('加载更多 · 已显示 {value0} / {value1}', {
+                  value0: result.items.length,
+                  value1: result.total,
+                })}
           </Button>
         )}
       </div>
@@ -330,7 +345,7 @@ export function AssetLibrary({
           <div className="mb-2 flex items-start justify-between gap-2">
             <h3 className="min-w-0 break-words text-xs font-medium">{selected.displayName}</h3>
             <Button variant="ghost" size="xs" onClick={() => setSelectedPath(null)}>
-              收起
+              {t('收起')}
             </Button>
           </div>
           {selected.previewable && failedPreview !== selectedUrl ? (
@@ -353,13 +368,13 @@ export function AssetLibrary({
           ) : (
             <p className="mb-2 text-[11px] text-muted-foreground">
               {selected.status !== 'available'
-                ? '原路径不可用。可定位受影响的页面，并为单个图片对象重新选择文件。'
-                : '此文件暂不支持图片预览。'}
+                ? t('原路径不可用。可定位受影响的页面，并为单个图片对象重新选择文件。')
+                : t('此文件暂不支持图片预览。')}
             </p>
           )}
           <details className="text-[11px] text-muted-foreground">
             <summary className="cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-ring/40">
-              文件位置
+              {t('文件位置')}
             </summary>
             <p className="mt-1 break-all font-mono">{selected.path}</p>
           </details>
@@ -373,15 +388,15 @@ export function AssetLibrary({
               }}
             >
               <Plus />
-              复用到当前页
+              {t('复用到当前页')}
             </Button>
           )}
           <h4 className="mb-1 mt-3 text-[11px] font-medium">
-            使用位置 · {selected.usage.length} 处
+            {t('使用位置 · {value0} 处', { value0: selected.usage.length })}
           </h4>
           {!selected.usage.length && (
             <p className="text-[11px] leading-relaxed text-muted-foreground">
-              当前主库没有引用。历史版本或项目外的文件仍可能使用它。
+              {t('当前主库没有引用。历史版本或项目外的文件仍可能使用它。')}
             </p>
           )}
           <ul className="space-y-1">
@@ -398,7 +413,7 @@ export function AssetLibrary({
                 >
                   <span className="font-medium">{usage.pageLabel}</span>
                   <span className="min-w-0 flex-1 truncate text-[10px] text-muted-foreground">
-                    {usage.elementId ?? (usage.scope === 'theme' ? '主题' : '页面')}
+                    {usage.elementId ?? (usage.scope === 'theme' ? t('主题') : t('页面'))}
                   </span>
                   <ArrowUpRight className="size-3 shrink-0 text-muted-foreground" />
                 </button>
@@ -416,7 +431,7 @@ export function AssetLibrary({
                         replacementInput.current?.click();
                       }}
                     >
-                      重新选择这处图片
+                      {t('重新选择这处图片')}
                     </Button>
                   )}
               </li>
@@ -430,7 +445,7 @@ export function AssetLibrary({
         multiple
         accept="image/png,image/jpeg,image/svg+xml,image/gif,image/webp"
         className="hidden"
-        aria-label="导入素材图片"
+        aria-label={t('导入素材图片')}
         onChange={(event) => {
           const files = Array.from(event.currentTarget.files ?? []);
           event.currentTarget.value = '';
@@ -442,7 +457,7 @@ export function AssetLibrary({
         type="file"
         accept="image/png,image/jpeg,image/svg+xml,image/gif,image/webp"
         className="hidden"
-        aria-label="选择缺失图片的替换文件"
+        aria-label={t('选择缺失图片的替换文件')}
         onChange={(event) => {
           const file = event.currentTarget.files?.[0];
           const usage = replacementUsage.current;

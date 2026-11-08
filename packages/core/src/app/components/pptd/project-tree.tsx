@@ -1,6 +1,7 @@
 import { Copy, File, FileCode2, Folder, FolderOpen, Image, RefreshCw } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { desktopHost } from '@/lib/huandeng-desktop';
+import { uiText as t, useHuandengLocale } from '@/lib/huandeng-locale';
 import type { PptdBackend, ProjectTree, ProjectTreeNode } from '@/lib/pptd-backend';
 import { cn } from '@/lib/utils';
 import type { DeckSnapshot } from '../../../pptd/types';
@@ -17,6 +18,7 @@ function TreeNode({
   snapshot: DeckSnapshot;
   onSelect: (node: ProjectTreeNode) => void;
 }) {
+  useHuandengLocale();
   if (node.kind === 'directory')
     return (
       <li>
@@ -80,6 +82,7 @@ export function PptdProjectTree({
   currentPageId: string | null;
   onSelectPage: (pageId: string) => void;
 }) {
+  useHuandengLocale();
   const [project, setProject] = useState<ProjectTree | null>(null);
   const [selectedPath, setSelectedPath] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -137,14 +140,18 @@ export function PptdProjectTree({
   };
 
   return (
-    <section className="flex min-h-0 flex-1 flex-col" aria-label="项目文件" data-hd-project-tree>
+    <section
+      className="flex min-h-0 flex-1 flex-col"
+      aria-label={t('项目文件')}
+      data-hd-project-tree
+    >
       <div className="flex h-11 shrink-0 items-center gap-2 border-b border-border px-3">
         <FolderOpen className="size-3.5 text-muted-foreground" />
-        <span className="mr-auto text-xs font-medium">项目文件</span>
+        <span className="mr-auto text-xs font-medium">{t('项目文件')}</span>
         <Button
           variant="ghost"
           size="icon-xs"
-          aria-label="刷新项目文件"
+          aria-label={t('刷新项目文件')}
           disabled={loading}
           onClick={() => setRefresh((value) => value + 1)}
         >
@@ -179,11 +186,11 @@ export function PptdProjectTree({
           </>
         )}
         {!project && !error && (
-          <p className="p-2 text-xs text-muted-foreground">正在读取项目文件…</p>
+          <p className="p-2 text-xs text-muted-foreground">{t('正在读取项目文件…')}</p>
         )}
         {error && (
           <p role="alert" className="p-2 text-xs text-destructive">
-            {error}
+            {t(error)}
           </p>
         )}
       </div>
@@ -197,15 +204,15 @@ export function PptdProjectTree({
           onClick={() => void reveal()}
         >
           {desktopHost() ? <FolderOpen /> : <Copy />}
-          {desktopHost() ? '在文件管理器中显示' : '复制文件路径'}
+          {desktopHost() ? t('在文件管理器中显示') : t('复制文件路径')}
         </Button>
         {message && (
           <p role="status" className="text-[10px] text-muted-foreground">
-            {message}
+            {t(message)}
           </p>
         )}
         <p className="text-[10px] leading-relaxed text-muted-foreground">
-          每个 .page 保存一页内容。页面编号不随排序变化。
+          {t('每个 .page 保存一页内容。页面编号不随排序变化。')}
         </p>
       </div>
     </section>

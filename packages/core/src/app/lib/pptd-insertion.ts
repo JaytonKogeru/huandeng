@@ -1,4 +1,5 @@
 import type { Bounds, PageSize, PptdElement } from '../../pptd/types';
+import { uiText as t } from './huandeng-locale';
 
 export type InsertionTool =
   | { kind: 'text' }
@@ -8,7 +9,7 @@ export type InsertionTool =
 export type CanvasPoint = { x: number; y: number };
 
 export function insertionLabel(tool: InsertionTool): string {
-  return tool.kind === 'text' ? '文字' : tool.kind === 'line' ? '线条' : '形状';
+  return t(tool.kind === 'text' ? '文字' : tool.kind === 'line' ? '线条' : '形状');
 }
 
 export function createPlacedElement(
@@ -67,7 +68,7 @@ export function createPlacedElement(
     bounds,
   };
   if (tool.kind === 'text')
-    element.content = { text: '输入文字', fontSize: 28, fontFamily: 'Arial', color: '#263531' };
+    element.content = { text: t('输入文字'), fontSize: 28, fontFamily: 'Arial', color: '#263531' };
   else if (tool.kind === 'shape') {
     element.shapeName = tool.shapeName;
     element.fill = { type: 'solid', color: '#dbe5df' };

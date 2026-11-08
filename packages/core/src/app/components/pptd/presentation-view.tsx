@@ -22,8 +22,10 @@ import {
   useRef,
   useState,
 } from 'react';
+import { uiText as t, useHuandengLocale } from '@/lib/huandeng-locale';
 import { readPageTransition } from '../../../pptd/page-transition';
 import type { PageSize, PageSnapshot } from '../../../pptd/types';
+import { animationStepLabel } from '../../lib/pptd-animation-label';
 import { usePresentationPlayback } from '../../lib/pptd-playback';
 import { SlideCanvas } from '../slide-canvas';
 import { PptdPageRenderer, type PptdTheme } from './renderer';
@@ -92,6 +94,7 @@ export function PresentationView({
   onClose,
   controlsRef,
 }: PresentationViewProps) {
+  useHuandengLocale();
   const playback = usePresentationPlayback(page, true, { initialPosition, restartKey: sessionId });
   const root = useRef<HTMLElement>(null);
   const slide = useRef<HTMLDivElement>(null);
@@ -103,6 +106,9 @@ export function PresentationView({
   const [message, setMessage] = useState<string | null>(null);
   const hideTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const time = playback.timeMs ?? 0;
+  const nextStepLabel = playback.nextStep
+    ? animationStepLabel(playback.nextStep, page.data.timeline)
+    : undefined;
   const revealControls = useCallback(() => {
     setControlsVisible(true);
     if (hideTimer.current) clearTimeout(hideTimer.current);
@@ -220,7 +226,7 @@ export function PresentationView({
       data-hd-presenter-step={playback.stepIndex}
       data-hd-presenter-playing={playback.playing}
       data-hd-presenter-time={time}
-      aria-label="演示模式"
+      aria-label={t('演示模式')}
       tabIndex={-1}
       onPointerMove={revealControls}
       onFocusCapture={revealControls}
@@ -250,7 +256,7 @@ export function PresentationView({
           ref={slide}
           role="button"
           tabIndex={0}
-          aria-label="单击播放下一步"
+          aria-label={t('单击播放下一步')}
           data-hd-presenter-slide={page.pageId}
           data-hd-presenter-occurrence={page.occurrenceId}
           className={`h-full w-full select-none outline-none ${!showControls ? 'cursor-none' : ''}`}
@@ -280,7 +286,7 @@ export function PresentationView({
             data-hd-presenter-blackout
             className="absolute inset-0 bg-black"
             onClick={() => restoreBlackout()}
-            aria-label="恢复放映画面"
+            aria-label={t('恢复放映画面')}
             onKeyDown={(event) => {
               if (event.key === ' ' || event.key === 'Enter') {
                 event.preventDefault();
@@ -297,7 +303,11 @@ export function PresentationView({
         >
           {(playback.error || message) && (
             <p role="alert" className="mb-3 text-center text-sm text-amber-200">
-              {playback.error ? `此页动画无法播放：${playback.error}` : message}
+              {playback.error
+                ? t('此页动画无法播放：{value0}', { value0: t(playback.error) })
+                : message
+                  ? t(message)
+                  : null}
             </p>
           )}
           {detailsOpen && playback.timeline && (
@@ -307,7 +317,7 @@ export function PresentationView({
             >
               <button
                 type="button"
-                aria-label={playback.playing ? '暂停动画' : '播放至下一提示点'}
+                aria-label={playback.playing ? t('暂停动画') : t('播放至下一提示点')}
                 disabled={blackout}
                 onClick={playback.toggle}
                 className={buttonClass}
@@ -316,7 +326,7 @@ export function PresentationView({
               </button>
               <button
                 type="button"
-                aria-label="动画回到起点"
+                aria-label={t('动画回到起点')}
                 disabled={blackout}
                 onClick={() => playback.seek(0)}
                 className={buttonClass}
@@ -326,7 +336,7 @@ export function PresentationView({
               <input
                 type="range"
                 disabled={blackout}
-                aria-label="放映动画时间"
+                aria-label={t('放映动画时间')}
                 min={0}
                 max={playback.timeline.durationMs}
                 step={1}
@@ -343,13 +353,13 @@ export function PresentationView({
             <div className="flex min-w-0 flex-1 items-center gap-2">
               <button
                 type="button"
-                aria-label="演讲者备注"
+                aria-label={t('演讲者备注')}
                 aria-pressed={notesOpen}
                 aria-controls={notesOpen ? 'hd-presenter-notes' : undefined}
                 data-hd-presenter-notes-toggle
                 onClick={onNotesToggle}
                 className={buttonClass}
-                title="备注与下一页（同窗口）"
+                title={t('备注与下一页（同窗口）')}
               >
                 <FileText className="size-4" />
               </button>
@@ -361,7 +371,7 @@ export function PresentationView({
             <div className="flex min-w-0 flex-[2] items-center justify-center gap-3">
               <button
                 type="button"
-                aria-label={playback.steps.length ? '上一步' : '上一页'}
+                aria-label={playback.steps.length ? t('上一步') : t('上一页')}
                 disabled={pageIndex <= 0 && time <= 0 && !playback.playing && !blackout}
                 onClick={() => step(-1)}
                 className={buttonClass}
@@ -371,19 +381,25 @@ export function PresentationView({
               <span
                 data-hd-presenter-step-label
                 className="min-w-24 max-w-80 truncate text-center text-xs"
-                title={playback.nextStep?.label}
+                title={nextStepLabel}
               >
                 {blackout
-                  ? '画面已暂停'
+                  ? t('画面已暂停')
                   : playback.steps.length
-                    ? `${playback.stepIndex} / ${playback.steps.length} 步${playback.nextStep ? ` · ${playback.playing ? '正在播放' : '下一步'} ${playback.nextStep.label}` : ' · 本页完成'}`
+                    ? t('{value0} / {value1} 步{value2}', {
+                        value0: playback.stepIndex,
+                        value1: playback.steps.length,
+                        value2: playback.nextStep
+                          ? ` · ${playback.playing ? t('正在播放') : t('下一步')} ${nextStepLabel}`
+                          : t(' · 本页完成'),
+                      })
                     : pageIndex === pageCount - 1
-                      ? '最后一页'
-                      : '单击进入下一页'}
+                      ? t('最后一页')
+                      : t('单击进入下一页')}
               </span>
               <button
                 type="button"
-                aria-label={playback.steps.length ? '下一步' : '下一页'}
+                aria-label={playback.steps.length ? t('下一步') : t('下一页')}
                 disabled={
                   !blackout &&
                   pageIndex >= pageCount - 1 &&
@@ -401,7 +417,7 @@ export function PresentationView({
               {playback.timeline && (
                 <button
                   type="button"
-                  aria-label="动画播放控制"
+                  aria-label={t('动画播放控制')}
                   aria-expanded={detailsOpen}
                   onClick={() => setDetailsOpen((open) => !open)}
                   className={buttonClass}
@@ -415,28 +431,28 @@ export function PresentationView({
               )}
               <button
                 type="button"
-                aria-label={blackout ? '恢复放映画面' : '黑屏暂停'}
+                aria-label={blackout ? t('恢复放映画面') : t('黑屏暂停')}
                 aria-pressed={blackout}
                 onClick={toggleBlackout}
-                title="黑屏暂停 B"
+                title={t('黑屏暂停 B')}
                 className={buttonClass}
               >
                 <MonitorOff className="size-4" />
               </button>
               <button
                 type="button"
-                aria-label={fullscreen ? '退出全屏' : '进入全屏'}
+                aria-label={fullscreen ? t('退出全屏') : t('进入全屏')}
                 onClick={toggleFullscreen}
-                title="全屏 F"
+                title={t('全屏 F')}
                 className={buttonClass}
               >
                 {fullscreen ? <Minimize className="size-4" /> : <Maximize className="size-4" />}
               </button>
               <button
                 type="button"
-                aria-label="退出演示"
+                aria-label={t('退出演示')}
                 onClick={close}
-                title="退出 Esc"
+                title={t('退出 Esc')}
                 className={buttonClass}
               >
                 <X className="size-4" />
@@ -448,37 +464,37 @@ export function PresentationView({
       {notesOpen && (
         <aside
           id="hd-presenter-notes"
-          aria-label="演讲者备注"
+          aria-label={t('演讲者备注')}
           data-hd-presenter-notes={page.pageId}
           className="flex w-80 max-w-[36vw] shrink-0 flex-col border-l border-white/15 bg-zinc-950 px-5 py-5 text-zinc-100"
         >
           <div className="mb-4 flex items-center justify-between gap-3">
-            <h2 className="text-sm font-medium">演讲者备注</h2>
+            <h2 className="text-sm font-medium">{t('演讲者备注')}</h2>
             <span className="font-mono text-xs text-zinc-400" data-hd-presenter-code>
-              {page.shortCode ?? page.metadata.label ?? '未编号'} · {pageIndex + 1}
+              {page.shortCode ?? page.metadata.label ?? t('未编号')} · {pageIndex + 1}
             </span>
           </div>
-          <p className="mb-3 text-[11px] text-zinc-500">此栏与幻灯片显示在同一窗口。</p>
+          <p className="mb-3 text-[11px] text-zinc-500">{t('此栏与幻灯片显示在同一窗口。')}</p>
           <div
             className="min-h-0 flex-1 overflow-y-auto whitespace-pre-wrap break-words text-sm leading-relaxed text-zinc-200"
             data-hd-presenter-note-text
           >
-            {page.data.notes?.trim() || '这一页暂无演讲备注。'}
+            {page.data.notes?.trim() || t('这一页暂无演讲备注。')}
           </div>
           <div className="mt-5 shrink-0 border-t border-white/15 pt-4">
             {nextPage ? (
               <>
                 <div className="mb-2 flex items-center justify-between text-xs text-zinc-400">
-                  <span>下一页</span>
+                  <span>{t('下一页')}</span>
                   <span className="font-mono">
-                    {nextPage.shortCode ?? nextPage.metadata.label ?? '未编号'}
+                    {nextPage.shortCode ?? nextPage.metadata.label ?? t('未编号')}
                   </span>
                 </div>
                 <NextPagePreview page={nextPage} size={size} theme={theme} />
               </>
             ) : (
               <p className="text-xs text-zinc-400" data-hd-presenter-end>
-                已到最后一页
+                {t('已到最后一页')}
               </p>
             )}
           </div>

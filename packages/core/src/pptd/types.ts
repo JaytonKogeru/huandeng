@@ -328,6 +328,73 @@ export interface TransactionResult {
   noOp: boolean;
 }
 
+export interface ProposalValue {
+  present: boolean;
+  value?: unknown;
+  truncated?: boolean;
+  characters?: number;
+}
+
+export interface ProposalChange {
+  target: 'manifest' | 'project' | 'metadata' | 'page' | 'element';
+  pageId?: string;
+  elementId?: string;
+  field: string;
+  before: ProposalValue;
+  after: ProposalValue;
+}
+
+export interface ProposalPageImpact {
+  pageId: string;
+  label: string;
+  provisional: boolean;
+  beforeRevision: Revision | null;
+  afterRevision: Revision | null;
+  usedBy: {
+    presentationId: string | null;
+    presentationTitle: string;
+    occurrenceId: string;
+    position: number;
+    versionId?: string;
+  }[];
+  totalUses: number;
+  usesTruncated: boolean;
+}
+
+export interface TransactionPreview {
+  ok: true;
+  kind: 'proposal-preview';
+  schemaVersion: 1;
+  deckId: string;
+  requestId: string;
+  previewHash: Revision;
+  writable: boolean;
+  baseline: NewRevisions;
+  operations: { op: string; count: number }[];
+  files: {
+    role: 'page' | 'manifest' | 'metadata';
+    path: string;
+    pageId?: string;
+    provisional: boolean;
+    beforeRevision: Revision | null;
+    afterRevision: Revision | null;
+  }[];
+  totalFileCount: number;
+  filesTruncated: boolean;
+  pages: ProposalPageImpact[];
+  totalPageCount: number;
+  pagesTruncated: boolean;
+  changes: ProposalChange[];
+  totalChangeCount: number;
+  changesTruncated: boolean;
+  createdPageCount: number;
+  skippedOverrides: ElementRef[];
+  totalSkippedOverrides: number;
+  noOp: boolean;
+  diagnostics: Diagnostic[];
+  diagnosticsTruncated: boolean;
+}
+
 export interface DocumentEvent {
   type: 'committed' | 'external' | 'diagnostic';
   epoch: string;

@@ -1,0 +1,4 @@
+interface:
+  display_name: "HUANDENG Story"
+  short_description: "Refine research slides with reviewable Story-driven edits"
+  default_prompt: "Use $huandeng-story to refine the open HUANDENG presentation's narrative and click-by-click explanation while preserving its original evidence."

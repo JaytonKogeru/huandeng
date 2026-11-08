@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import { uiText as t, useHuandengLocale } from '@/lib/huandeng-locale';
 import { loadScientificIcon, type ScientificIcon } from '../../../pptd/icon-registry';
 import type { PptdElement } from '../../../pptd/types';
 import { BoundedSvgCache } from '../../lib/bounded-svg-cache';
@@ -8,18 +9,20 @@ type Theme = { colors?: Record<string, string>; chartColors?: string[] };
 const chartCache = new BoundedSvgCache();
 
 function ObjectError({ message }: { message: string }) {
+  useHuandengLocale();
   return (
     <div
       data-hd-unsupported="true"
       data-pptd-unsupported="true"
       className="flex h-full w-full items-center justify-center overflow-hidden border border-dashed border-amber-500 bg-amber-50 p-2 text-xs text-amber-900"
     >
-      {message}
+      {t(message)}
     </div>
   );
 }
 
 export function ChartContent({ element, theme }: { element: PptdElement; theme: Theme }) {
+  useHuandengLocale();
   const key = useMemo(
     () =>
       JSON.stringify({
@@ -68,7 +71,7 @@ export function ChartContent({ element, theme }: { element: PptdElement; theme: 
         data-hd-loading="chart"
         className="flex h-full w-full items-center justify-center text-xs text-muted-foreground"
       >
-        正在绘制图表…
+        {t('正在绘制图表…')}
       </div>
     );
   return (
@@ -88,6 +91,7 @@ export function IconSvg({
   icon: ScientificIcon;
   color?: string;
 }) {
+  useHuandengLocale();
   return (
     <svg
       aria-hidden="true"
@@ -104,6 +108,7 @@ export function IconSvg({
 }
 
 export function IconContent({ element, theme }: { element: PptdElement; theme: Theme }) {
+  useHuandengLocale();
   const name = String(element.iconName ?? 'fas:circle-check');
   const [result, setResult] = useState<{
     name: string;

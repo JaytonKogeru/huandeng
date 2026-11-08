@@ -11,6 +11,7 @@ import {
   useRef,
   useState,
 } from 'react';
+import { uiText as t, useHuandengLocale } from '@/lib/huandeng-locale';
 import { pptdAssetUrl } from '@/lib/pptd-backend';
 import { compileTimeline } from '../../../pptd/animation-model';
 import { splitMathFragments } from '../../../pptd/math-fragments';
@@ -260,6 +261,7 @@ export function sanitizeRichTextHtml(source: string): string {
 }
 
 function MathFragmentContent({ source, display }: { source: string; display: boolean }) {
+  useHuandengLocale();
   const ref = useRef<HTMLSpanElement>(null);
   useLayoutEffect(() => {
     const container = ref.current;
@@ -281,6 +283,7 @@ function MathFragmentContent({ source, display }: { source: string; display: boo
 }
 
 function MathmlContent({ source }: { source: string }) {
+  useHuandengLocale();
   const ref = useRef<HTMLSpanElement>(null);
   useLayoutEffect(() => {
     const clean = sanitizeRichTextHtml(source);
@@ -422,6 +425,7 @@ function ImageContent({
   element: PptdElement;
   assetUrl: (path: string) => string;
 }) {
+  useHuandengLocale();
   const src = textValue(element.src);
   const url = src ? assetUrl(src) : '';
   const [natural, setNatural] = useState<{ src: string; width: number; height: number } | null>(
@@ -462,12 +466,12 @@ function ImageContent({
   const shapeDefinition = record(element.cropShape);
   const shape = textValue(shapeDefinition.shapeName);
   if (!['', 'rect', 'roundRect', 'ellipse'].includes(shape))
-    return <Unsupported label={`图片蒙版暂未渲染：${shape}`} detail={src} />;
+    return <Unsupported label={t('图片蒙版暂未渲染：{value0}', { value0: shape })} detail={src} />;
   const radius = Array.isArray(shapeDefinition.adjustments)
     ? numberValue(shapeDefinition.adjustments[0], 16667) / 100000
     : 0.16667;
   if (!url || failed === url || !valid)
-    return <Unsupported label={!valid ? '裁切范围无效' : '图片无法读取'} detail={src} />;
+    return <Unsupported label={!valid ? t('裁切范围无效') : t('图片无法读取')} detail={src} />;
   return (
     <div
       style={{
@@ -504,18 +508,20 @@ function ImageContent({
 const SHAPES = new Set([...SHAPE_PRESETS.map(([name]) => name), 'custom']);
 
 function ShapeContent({ element, theme }: { element: PptdElement; theme: PptdTheme }) {
+  useHuandengLocale();
   const name = textValue(element.shapeName, 'rect');
   const id = useId().replace(/:/g, '');
-  if (!SHAPES.has(name)) return <Unsupported label={`形状暂未渲染：${name}`} />;
+  if (!SHAPES.has(name))
+    return <Unsupported label={t('形状暂未渲染：{value0}', { value0: name })} />;
   const width = element.bounds?.[2] || 1;
   const height = element.bounds?.[3] || 1;
   const viewBox =
     name === 'custom' && Array.isArray(element.viewBox) ? element.viewBox : [width, height];
   const fill = record(element.fill);
   if (fill.type && !['solid', 'gradient'].includes(String(fill.type)))
-    return <Unsupported label={`形状填充暂未渲染：${fill.type}`} />;
+    return <Unsupported label={t('形状填充暂未渲染：{value0}', { value0: String(fill.type) })} />;
   if (name === 'custom' && (!element.path || !element.viewBox))
-    return <Unsupported label="自定义路径缺少 path 或 viewBox" />;
+    return <Unsupported label={t('自定义路径缺少 path 或 viewBox')} />;
   const border = record(element.border);
   const gradient = fill.type === 'gradient' && Array.isArray(fill.stops);
   const Gradient = fill.gradientType === 'radial' ? 'radialGradient' : 'linearGradient';
@@ -577,6 +583,7 @@ function ShapeContent({ element, theme }: { element: PptdElement; theme: PptdThe
 }
 
 function LineContent({ element, theme }: { element: PptdElement; theme: PptdTheme }) {
+  useHuandengLocale();
   const id = useId().replace(/:/g, '');
   const points = textValue(element.points, '0,0 1,1')
     .trim()
@@ -588,7 +595,7 @@ function LineContent({ element, theme }: { element: PptdElement; theme: PptdThem
   if (
     arrow.some((value) => value && !['arrow', 'stealth', 'diamond', 'oval'].includes(String(value)))
   )
-    return <Unsupported label="线条箭头类型暂未支持" />;
+    return <Unsupported label={t('线条箭头类型暂未支持')} />;
   const color = resolveColor(border.color, theme);
   let path = `M${points[0]?.join(',')}`;
   if (element.curve === 'smooth' && points.length === 4)
@@ -662,6 +669,7 @@ function LineContent({ element, theme }: { element: PptdElement; theme: PptdThem
 }
 
 function Unsupported({ label, detail }: { label: string; detail?: string }) {
+  useHuandengLocale();
   return (
     <div
       data-hd-unsupported="true"
@@ -681,13 +689,14 @@ function Unsupported({ label, detail }: { label: string; detail?: string }) {
         padding: 8,
       }}
     >
-      <span>{label}</span>
+      <span>{t(label)}</span>
       {detail && <span style={{ fontSize: 10, overflowWrap: 'anywhere' }}>{detail}</span>}
     </div>
   );
 }
 
 function TextContent({ element, theme }: { element: PptdElement; theme: PptdTheme }) {
+  useHuandengLocale();
   const content = textContent(element, theme);
   const source = textValue(content.text);
   const children = useMemo(() => richNodes(source, theme), [source, theme]);
@@ -716,6 +725,7 @@ function TextContent({ element, theme }: { element: PptdElement; theme: PptdThem
 }
 
 function TableContent({ element, theme }: { element: PptdElement; theme: PptdTheme }) {
+  useHuandengLocale();
   let layout: ReturnType<typeof tableLayout>;
   let styles: ReturnType<typeof resolveTableCellStyle>[][];
   try {
@@ -733,8 +743,8 @@ function TableContent({ element, theme }: { element: PptdElement; theme: PptdThe
   } catch (error) {
     return (
       <Unsupported
-        label="表格无法渲染"
-        detail={error instanceof Error ? error.message : '表格数据无效'}
+        label={t('表格无法渲染')}
+        detail={error instanceof Error ? error.message : t('表格数据无效')}
       />
     );
   }
@@ -817,7 +827,12 @@ const ElementContent = memo(function ElementContent({
   if (element.elementType === 'chart') return <ChartContent element={element} theme={theme} />;
   if (element.elementType === 'icon') return <IconContent element={element} theme={theme} />;
   if (element.elementType === 'group') return null;
-  return <Unsupported label={`暂未渲染：${element.elementType}`} detail={element.elementId} />;
+  return (
+    <Unsupported
+      label={t('暂未渲染：{value0}', { value0: element.elementType })}
+      detail={element.elementId}
+    />
+  );
 });
 
 export type PptdPageRendererProps = {
@@ -849,6 +864,7 @@ export function PptdPageRenderer({
   previewTimeMs,
   renderContent,
 }: PptdPageRendererProps) {
+  useHuandengLocale();
   const theme =
     page.metadata.themeOverride &&
     typeof page.metadata.themeOverride === 'object' &&

@@ -1,5 +1,6 @@
 import { SHAPE_PRESETS } from '../../pptd/shape-presets';
 import type { PptdElement } from '../../pptd/types';
+import { uiText as t } from './huandeng-locale';
 
 const value = (input: unknown) => (typeof input === 'string' ? input : '');
 
@@ -16,9 +17,9 @@ export function elementLabel(element: PptdElement): string {
     title.trim();
   if (label) return label.slice(0, 36);
   if (element.elementType === 'shape')
-    return (
+    return t(
       SHAPE_PRESETS.find(([name]) => name === (value(element.shapeName) || 'rect'))?.[1] ??
-      '自定义形状'
+        '自定义形状',
     );
   const labels: Record<string, string> = {
     text: '文字',
@@ -30,5 +31,5 @@ export function elementLabel(element: PptdElement): string {
     group: '组合',
     missing: '缺失对象',
   };
-  return labels[element.elementType] ?? '对象';
+  return t(labels[element.elementType] ?? '对象');
 }

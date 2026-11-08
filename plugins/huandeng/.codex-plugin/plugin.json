@@ -1,0 +1,16 @@
+{
+  "name": "huandeng",
+  "version": "0.9.0",
+  "description": "Story-driven PPTD authoring through the open HUANDENG editor's shared writer.",
+  "author": { "name": "HUANDENG" },
+  "repository": "https://github.com/JaytonKogeru/huandeng",
+  "skills": "./skills/",
+  "mcpServers": "./.codex.mcp.json",
+  "interface": {
+    "displayName": "HUANDENG",
+    "shortDescription": "Turn a research story into reviewable slide edits",
+    "defaultPrompt": [
+      "Use HUANDENG to refine the open presentation's story and click-by-click explanation while preserving its original figures."
+    ]
+  }
+}

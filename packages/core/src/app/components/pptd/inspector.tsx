@@ -10,8 +10,10 @@ import {
   Trash2,
 } from 'lucide-react';
 import type { ReactNode } from 'react';
+import { uiText as t, useHuandengLocale } from '@/lib/huandeng-locale';
 import type { Alignment } from '@/lib/inspector/geometry';
 import { elementLabel as layerTitle } from '@/lib/pptd-element-label';
+import { rootSelectedElements } from '@/lib/pptd-geometry';
 import { cycleItemId } from '@/lib/pptd-keyboard';
 import { cn } from '@/lib/utils';
 import { groupChildren } from '../../../pptd/grouping';
@@ -19,6 +21,7 @@ import { SHAPE_PRESETS } from '../../../pptd/shape-presets';
 import type { PageSnapshot } from '../../../pptd/types';
 import { Button } from '../ui/button';
 import { Textarea } from '../ui/textarea';
+import { ArrangementControls } from './arrangement-controls';
 import { NumberField, StringField } from './property-fields';
 import {
   numberValue,
@@ -49,7 +52,8 @@ type Props = {
   onBegin: () => void;
   onEnd: () => void;
   onComposition: (composing: boolean) => void;
-  onAlign: (alignment: Alignment) => void;
+  onAlign: (alignment: Alignment, reference: 'selection' | 'slide') => void;
+  onDistribute: (axis: 'x' | 'y') => void;
   onLayer: (direction: 'front' | 'back') => void;
   onRemove: () => void;
   onGroup?: () => void;
@@ -60,6 +64,7 @@ type Props = {
 };
 
 function Section({ title, children }: { title: string; children: ReactNode }) {
+  useHuandengLocale();
   return (
     <section className="space-y-3 border-b border-border px-4 py-4">
       <h3 className="eyebrow">{title}</h3>
@@ -80,6 +85,7 @@ export function PptdInspector({
   onEnd,
   onComposition,
   onAlign,
+  onDistribute,
   onLayer,
   onRemove,
   onGroup,
@@ -88,6 +94,7 @@ export function PptdInspector({
   onChartDraftChange,
   children,
 }: Props) {
+  useHuandengLocale();
   const theme =
     page.metadata.themeOverride &&
     typeof page.metadata.themeOverride === 'object' &&
@@ -110,7 +117,7 @@ export function PptdInspector({
     options: { min?: number; max?: number; step?: number } = {},
   ) => (
     <NumberField
-      label={label}
+      label={t(label)}
       value={value}
       disabled={disabled}
       onBegin={onBegin}
@@ -121,7 +128,7 @@ export function PptdInspector({
   );
   const string = (label: string, value: string, field: string) => (
     <StringField
-      label={label}
+      label={t(label)}
       value={value}
       disabled={disabled}
       onBegin={onBegin}
@@ -139,28 +146,33 @@ export function PptdInspector({
   return (
     <aside
       className="flex h-full w-72 shrink-0 flex-col overflow-y-auto border-l border-border bg-background"
-      aria-label="对象属性"
+      aria-label={t('对象属性')}
       data-hd-inspector
       data-hd-focus-region="inspector"
       tabIndex={-1}
     >
       <div className="flex h-11 shrink-0 items-center justify-between border-b border-border px-4">
-        <h2 className="text-sm font-medium">{selected.length ? '对象属性' : '页面与图层'}</h2>
+        <h2 className="text-sm font-medium">{selected.length ? t('对象属性') : t('页面与图层')}</h2>
         <span className="folio">
-          {selected.length ? `已选 ${selected.length} 项` : (page.shortCode ?? '只读')}
+          {selected.length
+            ? t('已选 {value0} 项', { value0: selected.length })
+            : (page.shortCode ?? t('只读'))}
         </span>
       </div>
       {element && (
         <>
-          <Section title="位置与尺寸">
-            <p className="break-words text-xs font-medium" title={`对象 ID：${element.elementId}`}>
+          <Section title={t('位置与尺寸')}>
+            <p
+              className="break-words text-xs font-medium"
+              title={t('对象 ID：{value0}', { value0: element.elementId })}
+            >
               {layerTitle(element)}
             </p>
             <div className="grid grid-cols-2 gap-x-3 gap-y-2">
               {(['X', 'Y', '宽度', '高度'] as const).map((label, index) => (
                 <div key={label}>
                   {number(
-                    label,
+                    t(label),
                     bounds[index],
                     (value) => ({
                       bounds: bounds.map((current, i) => (i === index ? value : current)),
@@ -169,10 +181,10 @@ export function PptdInspector({
                   )}
                 </div>
               ))}
-              {number('旋转', numberValue(element.rotation, 0), (rotation) => ({ rotation }))}
+              {number(t('旋转'), numberValue(element.rotation, 0), (rotation) => ({ rotation }))}
               {element.elementType !== 'group' &&
                 number(
-                  '透明度',
+                  t('透明度'),
                   numberValue(element.opacity, 1) * 100,
                   (opacity) => ({ opacity: opacity / 100 }),
                   { min: 0, max: 100 },
@@ -180,22 +192,22 @@ export function PptdInspector({
             </div>
             {overrides.length > 0 && (
               <p className="rounded bg-brand-soft px-2 py-1.5 text-[11px] text-foreground">
-                保留手动调整 · {[...new Set(overrides)].join(' · ')}
+                {t('保留手动调整 · {value0}', { value0: [...new Set(overrides)].join(' · ') })}
               </p>
             )}
           </Section>
           {element.elementType === 'text' && (
-            <Section title="文字">
-              {string('字体', textValue(content.fontFamily, 'MiSans'), 'content.fontFamily')}
+            <Section title={t('文字')}>
+              {string(t('字体'), textValue(content.fontFamily, 'MiSans'), 'content.fontFamily')}
               <div className="grid grid-cols-2 gap-3">
                 {number(
-                  '字号',
+                  t('字号'),
                   numberValue(content.fontSize, 18),
                   (fontSize) => ({ 'content.fontSize': fontSize }),
                   { min: 1, max: 400 },
                 )}
                 {number(
-                  '行距',
+                  t('行距'),
                   numberValue(content.lineHeight, 1),
                   (lineHeight) => ({ 'content.lineHeight': lineHeight }),
                   { min: 0.1, max: 10, step: 0.1 },
@@ -205,7 +217,7 @@ export function PptdInspector({
                 <Button
                   variant={content.bold ? 'secondary' : 'ghost'}
                   size="icon-sm"
-                  aria-label="整段加粗"
+                  aria-label={t('整段加粗')}
                   disabled={disabled}
                   onClick={() => patch({ 'content.bold': !content.bold })}
                 >
@@ -214,7 +226,7 @@ export function PptdInspector({
                 <Button
                   variant={content.italic ? 'secondary' : 'ghost'}
                   size="icon-sm"
-                  aria-label="整段斜体"
+                  aria-label={t('整段斜体')}
                   disabled={disabled}
                   onClick={() => patch({ 'content.italic': !content.italic })}
                 >
@@ -232,7 +244,7 @@ export function PptdInspector({
                     key={align}
                     variant="ghost"
                     size="icon-sm"
-                    aria-label={label}
+                    aria-label={t(label)}
                     disabled={disabled}
                     onClick={() =>
                       patch({
@@ -248,8 +260,8 @@ export function PptdInspector({
                 ))}
                 <input
                   type="color"
-                  aria-label="文字颜色"
-                  title="文字颜色"
+                  aria-label={t('文字颜色')}
+                  title={t('文字颜色')}
                   className="ml-auto h-6 w-6 cursor-pointer rounded border border-border"
                   disabled={disabled}
                   value={hexColor(resolveColor(content.color, theme))}
@@ -260,10 +272,10 @@ export function PptdInspector({
                 htmlFor={`hd-text-${element.elementId}`}
                 className="block space-y-1.5 text-xs text-muted-foreground"
               >
-                <span>文本内容</span>
+                <span>{t('文本内容')}</span>
                 <Textarea
                   id={`hd-text-${element.elementId}`}
-                  aria-label="文本内容"
+                  aria-label={t('文本内容')}
                   value={textValue(element.content?.text)}
                   disabled={disabled}
                   className="min-h-28 text-xs"
@@ -274,13 +286,14 @@ export function PptdInspector({
                 />
               </label>
               <p className="text-[11px] leading-relaxed text-muted-foreground">
-                双击画布文字直接编辑。选中文字后可设置加粗、上下标。公式支持 LaTeX：\(…\)
-                为行内、\[…\] 为独立公式，保留源表达式。
+                {t(
+                  '双击画布文字直接编辑。选中文字后可设置加粗、上下标。公式支持 LaTeX：\\(…\\) 为行内、\\[…\\] 为独立公式，保留源表达式。',
+                )}
               </p>
             </Section>
           )}
           {element.elementType === 'table' && (
-            <Section title="表格">
+            <Section title={t('表格')}>
               <TableProperties
                 key={element.elementId}
                 element={element}
@@ -293,7 +306,7 @@ export function PptdInspector({
             </Section>
           )}
           {element.elementType === 'chart' && (
-            <Section title="图表与数据">
+            <Section title={t('图表与数据')}>
               <ChartProperties
                 key={element.elementId}
                 element={element}
@@ -310,7 +323,7 @@ export function PptdInspector({
             </Section>
           )}
           {element.elementType === 'icon' && (
-            <Section title="图标">
+            <Section title={t('图标')}>
               <IconProperties
                 key={element.elementId}
                 element={element}
@@ -323,9 +336,9 @@ export function PptdInspector({
             </Section>
           )}
           {element.elementType === 'group' && (
-            <Section title="组合成员">
+            <Section title={t('组合成员')}>
               <p className="text-[11px] text-muted-foreground">
-                移动、缩放与旋转会同时更新成员。选择下方对象可单独编辑。
+                {t('移动、缩放与旋转会同时更新成员。选择下方对象可单独编辑。')}
               </p>
               {groupChildren(element).map((id) => (
                 <Button
@@ -333,7 +346,7 @@ export function PptdInspector({
                   size="xs"
                   variant="ghost"
                   className="w-full justify-start overflow-hidden"
-                  title={`对象 ID：${id}`}
+                  title={t('对象 ID：{value0}', { value0: id })}
                   onClick={() => onSelect([id])}
                 >
                   <span className="truncate">
@@ -349,27 +362,32 @@ export function PptdInspector({
             </Section>
           )}
           {element.elementType === 'image' && (
-            <Section title="图片与裁切">
-              {string('图片路径或 URL', textValue(element.src), 'src')}
+            <Section title={t('图片与裁切')}>
+              {string(t('图片路径或 URL'), textValue(element.src), 'src')}
               <label className="flex items-center justify-between gap-2 text-xs text-muted-foreground">
-                适配
+                {t('适配')}
                 <select
-                  aria-label="图片适配"
+                  aria-label={t('图片适配')}
                   disabled={disabled}
                   value={textValue(record(element.fit).mode, 'cover')}
                   className="h-7 rounded border bg-background px-2 text-foreground"
                   onChange={(event) => patch({ 'fit.mode': event.target.value })}
                 >
-                  <option value="contain">完整显示</option>
-                  <option value="cover">填满并裁切</option>
-                  <option value="fill">拉伸填满</option>
+                  <option value="contain">{t('完整显示')}</option>
+                  <option value="cover">{t('填满并裁切')}</option>
+                  <option value="fill">{t('拉伸填满')}</option>
                 </select>
               </label>
               <div className="grid grid-cols-2 gap-x-3 gap-y-2">
                 {(['left', 'right', 'top', 'bottom'] as const).map((edge) => (
                   <div key={edge}>
                     {number(
-                      { left: '左裁切', right: '右裁切', top: '上裁切', bottom: '下裁切' }[edge],
+                      {
+                        left: t('左裁切'),
+                        right: t('右裁切'),
+                        top: t('上裁切'),
+                        bottom: t('下裁切'),
+                      }[edge],
                       numberValue(record(element.crop)[edge], 0) * 100,
                       (value) => ({ [`crop.${edge}`]: value / 100 }),
                       { min: 0, max: 99 },
@@ -378,16 +396,16 @@ export function PptdInspector({
                 ))}
               </div>
               <p className="text-[11px] text-muted-foreground">
-                裁切单位为原图的百分比。原始图片保持不变。
+                {t('裁切单位为原图的百分比。原始图片保持不变。')}
               </p>
             </Section>
           )}
           {element.elementType === 'shape' && (
-            <Section title="形状">
+            <Section title={t('形状')}>
               <label className="flex items-center justify-between gap-2 text-xs text-muted-foreground">
-                形状
+                {t('形状')}
                 <select
-                  aria-label="形状类型"
+                  aria-label={t('形状类型')}
                   className="h-7 max-w-40 rounded border bg-background px-2 text-foreground"
                   disabled={disabled}
                   value={textValue(element.shapeName, 'rect')}
@@ -398,16 +416,16 @@ export function PptdInspector({
                     ...(element.shapeName === 'custom' ? [['custom', '自定义路径']] : []),
                   ].map(([value, label]) => (
                     <option key={value} value={value}>
-                      {label}
+                      {t(label)}
                     </option>
                   ))}
                 </select>
               </label>
               <label className="flex items-center justify-between text-xs text-muted-foreground">
-                填色
+                {t('填色')}
                 <input
                   type="color"
-                  aria-label="形状填色"
+                  aria-label={t('形状填色')}
                   className="h-7 w-12 rounded border"
                   disabled={disabled}
                   value={hexColor(resolveColor(record(element.fill).color, theme, '#dfe5e6'))}
@@ -419,10 +437,10 @@ export function PptdInspector({
             </Section>
           )}
           {(element.elementType === 'shape' || element.elementType === 'line') && (
-            <Section title="边线">
+            <Section title={t('边线')}>
               <div className="grid grid-cols-2 gap-3">
                 {number(
-                  '线宽',
+                  t('线宽'),
                   numberValue(record(element.border).width, 1),
                   (width) => ({ 'border.width': width }),
                   { min: 0, max: 100 },
@@ -430,7 +448,7 @@ export function PptdInspector({
                 <label className="flex items-center justify-end">
                   <input
                     type="color"
-                    aria-label="边线颜色"
+                    aria-label={t('边线颜色')}
                     className="h-7 w-12 rounded border"
                     value={hexColor(resolveColor(record(element.border).color, theme))}
                     disabled={disabled}
@@ -439,17 +457,17 @@ export function PptdInspector({
                 </label>
               </div>
               <label className="flex items-center justify-between gap-2 text-xs text-muted-foreground">
-                线型
+                {t('线型')}
                 <select
-                  aria-label="边线线型"
+                  aria-label={t('边线线型')}
                   className="h-7 rounded border bg-background px-2 text-foreground"
                   disabled={disabled}
                   value={textValue(record(element.border).style, 'solid')}
                   onChange={(event) => patch({ 'border.style': event.target.value })}
                 >
-                  <option value="solid">实线</option>
-                  <option value="dash">虚线</option>
-                  <option value="dot">点线</option>
+                  <option value="solid">{t('实线')}</option>
+                  <option value="dash">{t('虚线')}</option>
+                  <option value="dot">{t('点线')}</option>
                 </select>
               </label>
               {element.elementType === 'line' &&
@@ -458,9 +476,9 @@ export function PptdInspector({
                     key={label}
                     className="flex items-center justify-between gap-2 text-xs text-muted-foreground"
                   >
-                    {label}
+                    {t(label)}
                     <select
-                      aria-label={label}
+                      aria-label={t(label)}
                       className="h-7 rounded border bg-background px-2 text-foreground"
                       disabled={disabled}
                       value={String(
@@ -474,11 +492,11 @@ export function PptdInspector({
                         patch({ arrow });
                       }}
                     >
-                      <option value="">无</option>
-                      <option value="arrow">箭头</option>
-                      <option value="stealth">凹尾箭头</option>
-                      <option value="diamond">菱形</option>
-                      <option value="oval">圆形</option>
+                      <option value="">{t('无')}</option>
+                      <option value="arrow">{t('箭头')}</option>
+                      <option value="stealth">{t('凹尾箭头')}</option>
+                      <option value="diamond">{t('菱形')}</option>
+                      <option value="oval">{t('圆形')}</option>
                     </select>
                   </label>
                 ))}
@@ -487,7 +505,7 @@ export function PptdInspector({
         </>
       )}
       {selected.length > 0 && (
-        <Section title="排列">
+        <Section title={t('排列')}>
           <div className="flex gap-2">
             {onGroup && (
               <Button
@@ -496,7 +514,7 @@ export function PptdInspector({
                 disabled={disabled || selected.length < 2}
                 onClick={onGroup}
               >
-                组合
+                {t('组合')}
               </Button>
             )}
             {onUngroup && (
@@ -506,45 +524,29 @@ export function PptdInspector({
                 disabled={disabled || !selected.some((item) => item.elementType === 'group')}
                 onClick={onUngroup}
               >
-                取消组合
+                {t('取消组合')}
               </Button>
             )}
           </div>
-          <div className="grid grid-cols-3 gap-1">
-            {(
-              [
-                ['left', '左对齐'],
-                ['center', '水平居中'],
-                ['right', '右对齐'],
-                ['top', '顶部对齐'],
-                ['middle', '垂直居中'],
-                ['bottom', '底部对齐'],
-              ] as const
-            ).map(([alignment, label]) => (
-              <Button
-                key={alignment}
-                variant="outline"
-                size="xs"
-                disabled={disabled}
-                onClick={() => onAlign(alignment)}
-              >
-                {label}
-              </Button>
-            ))}
-          </div>
+          <ArrangementControls
+            selectedCount={rootSelectedElements(page.data.elements, selectedIds).length}
+            disabled={disabled}
+            onAlign={onAlign}
+            onDistribute={onDistribute}
+          />
           <div className="flex gap-1">
             <Button variant="ghost" size="sm" disabled={disabled} onClick={() => onLayer('front')}>
               <ArrowUpToLine />
-              置顶
+              {t('置顶')}
             </Button>
             <Button variant="ghost" size="sm" disabled={disabled} onClick={() => onLayer('back')}>
               <ArrowDownToLine />
-              置底
+              {t('置底')}
             </Button>
             <Button
               variant="ghost"
               size="icon-sm"
-              aria-label="删除所选对象"
+              aria-label={t('删除所选对象')}
               className="ml-auto text-destructive"
               disabled={disabled}
               onClick={onRemove}
@@ -555,7 +557,7 @@ export function PptdInspector({
         </Section>
       )}
       {children}
-      <Section title="图层 · 上方先显示">
+      <Section title={t('图层 · 上方先显示')}>
         <div className="space-y-0.5">
           {layers.map((item) => (
             <button
@@ -563,7 +565,7 @@ export function PptdInspector({
               key={item.elementId}
               data-hd-layer={item.elementId}
               tabIndex={item.elementId === layerTabStop?.elementId ? 0 : -1}
-              title={`对象 ID：${item.elementId}`}
+              title={t('对象 ID：{value0}', { value0: item.elementId })}
               aria-pressed={selectedIds.includes(item.elementId)}
               className={cn(
                 'flex w-full items-center gap-2 rounded px-2 py-2 text-left text-xs outline-none transition-colors hover:bg-muted focus-visible:ring-2 focus-visible:ring-brand/60',

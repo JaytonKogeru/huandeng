@@ -1,3 +1,4 @@
+const { text: desktopText } = require('./locale.cjs');
 const { spawn } = require('node:child_process');
 const { createHash } = require('node:crypto');
 const fs = require('node:fs/promises');
@@ -28,13 +29,14 @@ async function readSession(url, entryPath) {
     parsed.protocol !== 'http:' ||
     !['127.0.0.1', 'localhost', '[::1]'].includes(parsed.hostname)
   ) {
-    throw new Error('文档服务必须运行在本机。');
+    throw new Error(desktopText('文档服务必须运行在本机。'));
   }
   const response = await fetch(`${url}/__pptd/session`, { signal: AbortSignal.timeout(2000) });
-  if (!response.ok) throw new Error(`文档服务返回 ${response.status}。`);
+  if (!response.ok)
+    throw new Error(desktopText('文档服务返回 {status}。', { status: response.status }));
   const snapshot = await response.json();
   if (pathKey(await fs.realpath(snapshot.entry)) !== pathKey(entryPath)) {
-    throw new Error('这个文档服务属于另一个项目。');
+    throw new Error(desktopText('这个文档服务属于另一个项目。'));
   }
   return snapshot;
 }
@@ -49,10 +51,12 @@ async function existingService(entryPath, readOnly) {
     return null;
   }
   if (snapshot.desktopProtocol !== 1) {
-    throw new Error('这个项目仍由旧版文档服务打开。请关闭旧版编辑器或终端服务，然后重新打开项目。');
+    throw new Error(
+      desktopText('这个项目仍由旧版文档服务打开。请关闭旧版编辑器或终端服务，然后重新打开项目。'),
+    );
   }
   if (snapshot.writable === readOnly) {
-    throw new Error('这个项目已经以另一种读写模式打开。请先关闭原有会话。');
+    throw new Error(desktopText('这个项目已经以另一种读写模式打开。请先关闭原有会话。'));
   }
   return {
     entryPath,
@@ -75,7 +79,9 @@ async function coreLauncher() {
     } catch {}
   }
   throw new Error(
-    'HUANDENG 文档服务尚未构建。请先运行 corepack pnpm --filter @open-slide/core build。',
+    desktopText(
+      'HUANDENG 文档服务尚未构建。请先运行 corepack pnpm --filter @open-slide/core build。',
+    ),
   );
 }
 
@@ -93,7 +99,7 @@ function availablePort() {
 async function startService(entry, options = {}) {
   const entryPath = await fs.realpath(path.resolve(entry));
   if (path.extname(entryPath).toLowerCase() !== '.pptd') {
-    throw new Error('请选择项目中的 .pptd 文件。');
+    throw new Error(desktopText('请选择项目中的 .pptd 文件。'));
   }
   const readOnly = Boolean(options.readOnly);
   const existing = await existingService(entryPath, readOnly);
@@ -129,18 +135,24 @@ async function startService(entry, options = {}) {
   try {
     while (Date.now() < deadline) {
       if (spawnError) throw spawnError;
-      if (exit) throw new Error(`文档服务未能启动（${exit.code ?? exit.signal}）。\n${output}`);
+      if (exit)
+        throw new Error(
+          desktopText('文档服务未能启动（{status}）。\n{output}', {
+            status: exit.code ?? exit.signal,
+            output,
+          }),
+        );
       try {
         const snapshot = await readSession(url, entryPath);
-        if (snapshot.desktopProtocol !== 1) throw new Error('文档服务需要重新构建。');
+        if (snapshot.desktopProtocol !== 1) throw new Error(desktopText('文档服务需要重新构建。'));
         service.title = snapshot.title;
         return service;
       } catch (error) {
-        if (error.message === '文档服务需要重新构建。') throw error;
+        if (error.message === desktopText('文档服务需要重新构建。')) throw error;
       }
       await delay(120);
     }
-    throw new Error(`等待文档服务超时。\n${output}`);
+    throw new Error(desktopText('等待文档服务超时。\n{output}', { output }));
   } catch (error) {
     await stopService(service);
     throw error;

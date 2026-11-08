@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import fs from 'node:fs/promises';
 import { Command } from 'commander';
+import { agentGuide } from './agent-guide.ts';
 import { connectClient } from './client.ts';
 import { launchHuandeng } from './launch.ts';
 import { startMcp } from './mcp.ts';
@@ -71,9 +72,23 @@ program
 program
   .command('apply <transaction>')
   .description('Apply a JSON transaction file with expected revisions')
+  .option('--preview-hash <hash>', 'bind the exact transaction returned by preview')
+  .action(async (file, options) => {
+    const request: TransactionRequest = JSON.parse(await fs.readFile(file, 'utf8'));
+    print(await (await client()).apply(request, options.previewHash));
+  });
+program
+  .command('preview <transaction>')
+  .description('Preview a JSON transaction without saving or creating history')
   .action(async (file) => {
     const request: TransactionRequest = JSON.parse(await fs.readFile(file, 'utf8'));
-    print(await (await client()).apply(request));
+    print(await (await client()).preview(request));
+  });
+program
+  .command('guide [topic]')
+  .description('Read the story or operations Agent guide without opening a project')
+  .action((topic = 'story') => {
+    process.stdout.write(`${agentGuide(topic).text}\n`);
   });
 program
   .command('history [pageId] [versionId]')

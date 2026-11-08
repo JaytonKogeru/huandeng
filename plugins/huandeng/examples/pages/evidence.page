@@ -1,0 +1,27 @@
+elements:
+  - elementId: title
+    elementType: text
+    bounds: [72, 55, 810, 65]
+    content: { text: A source and its appearances, fontSize: 36, color: '#192631' }
+  - elementId: evidence-a
+    elementType: shape
+    shapeName: rect
+    bounds: [72, 170, 360, 190]
+    fill: { type: solid, color: '#dce7f0' }
+    border: { color: '#486a82', width: 1 }
+    retained: { demonstration: true }
+  - elementId: evidence-b
+    elementType: shape
+    shapeName: rect
+    bounds: [510, 170, 360, 190]
+    fill: { type: solid, color: '#e4ebd7' }
+    border: { color: '#6a7e4a', width: 1 }
+  - elementId: label-a
+    elementType: text
+    bounds: [98, 230, 310, 70]
+    content: { text: One shared Main slide, fontSize: 24, color: '#192631' }
+  - elementId: label-b
+    elementType: text
+    bounds: [536, 230, 310, 70]
+    content: { text: Two presentation uses, fontSize: 24, color: '#192631' }
+notes: Explain the difference between content identity and presentation position.

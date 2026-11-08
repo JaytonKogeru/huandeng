@@ -5,7 +5,6 @@ import { isDeepStrictEqual } from 'node:util';
 import { validatePageAnimation } from './animation-model';
 import {
   assertIndependentFields,
-  assertJsonValue,
   editSourceSequence,
   isRecord,
   parseFieldPath,
@@ -49,6 +48,11 @@ import {
   resolveProjectPath,
 } from './persistence';
 import { applyProjectOperation, readProjectModel } from './project-model';
+import {
+  assertProposalHash,
+  createTransactionPreview,
+  validateTransactionRequest,
+} from './proposal';
 import { applyRecipe, markRecipeElementOverride, removeRecipeSlot } from './recipes';
 import { knownTimeline, removeTimelineTargets } from './timeline-operations';
 import {
@@ -71,6 +75,7 @@ import {
   type ProjectMetadata,
   type RestorePageVersionRequest,
   type Revision,
+  type TransactionPreview,
   type TransactionRequest,
   type TransactionResult,
 } from './types';
@@ -116,6 +121,17 @@ interface Documents {
   pages: Map<string, PageDocument>;
   pageAssets: Map<string, Record<string, Revision | null>>;
   diagnostics: Diagnostic[];
+}
+
+interface PreparedTransaction {
+  documents: Documents;
+  files: FileChange[];
+  before: NewRevisions;
+  changedPages: string[];
+  changedElements: ElementRef[];
+  createdPages: CreatedPage[];
+  skippedOverrides: ElementRef[];
+  revertedOperationId?: string;
 }
 
 const manifestCache = new WeakMap<Documents, { source: string; value: PptdManifest }>();
@@ -1100,14 +1116,75 @@ export class PptdStore {
     return this.undo(operationId, requestId, actor);
   }
 
-  commit(request: TransactionRequest): Promise<TransactionResult> {
+  commit(request: TransactionRequest, previewHash?: string): Promise<TransactionResult> {
     return this.enqueue(async () => {
       const started = performance.now();
       try {
+        if (previewHash !== undefined) assertProposalHash(request, previewHash);
         return await this.commitNow(request);
       } finally {
         reportTiming(this.onTiming, 'commit', started);
       }
+    });
+  }
+
+  preview(request: TransactionRequest): Promise<TransactionPreview> {
+    return this.enqueue(async () => {
+      if (this.closed) throw new PptdError('READ_ONLY', 'This project is closed.');
+      validateTransactionRequest(request);
+      const receipt = await this.persistence.receipt(request.requestId, hashPayload(request));
+      if (receipt)
+        throw new PptdError('INVALID_REQUEST', 'This transaction has already been applied.', {
+          operationId: receipt.operationId,
+        });
+      if ((await readOptional(path.join(this.stateDir, 'pending.json'))) !== null)
+        throw new PptdError(
+          'PENDING_RECOVERY',
+          'Recover the pending transaction before previewing.',
+        );
+      const base = await PptdStore.loadDocuments(
+        this.root,
+        this.entry,
+        this.assetCache,
+        this.documents,
+        this.onTiming,
+      );
+      if (request.deckId !== base.metadata.deckId)
+        throw new PptdError('TARGET_NOT_FOUND', 'The request belongs to another deck.');
+      const plan = await this.prepareTransaction(base, request);
+      const pageIds = new Set(plan.changedPages);
+      for (const pageId of new Set([
+        ...Object.keys(base.metadata.slides),
+        ...Object.keys(plan.documents.metadata.slides),
+      ])) {
+        if (
+          !isDeepStrictEqual(base.metadata.slides[pageId], plan.documents.metadata.slides[pageId])
+        )
+          pageIds.add(pageId);
+      }
+      return createTransactionPreview({
+        request,
+        before: this.makeSnapshot(base),
+        after: this.makeSnapshot(plan.documents),
+        baseline: {
+          ...plan.before,
+          pages: Object.fromEntries(
+            [...pageIds].flatMap((id) =>
+              plan.before.pages[id] ? [[id, plan.before.pages[id]]] : [],
+            ),
+          ),
+        },
+        files: plan.files,
+        pageStates: [...pageIds].flatMap((pageId) => {
+          const before = base.pages.has(pageId) ? this.pageSnapshot(base, pageId) : undefined;
+          const after = plan.documents.pages.has(pageId)
+            ? this.pageSnapshot(plan.documents, pageId)
+            : undefined;
+          return before || after ? [{ pageId, before, after }] : [];
+        }),
+        createdPageIds: plan.createdPages.map((page) => page.pageId),
+        skippedOverrides: plan.skippedOverrides,
+      });
     });
   }
 
@@ -1128,30 +1205,7 @@ export class PptdStore {
   private async commitNow(request: TransactionRequest): Promise<TransactionResult> {
     if (this.readOnly || this.closed)
       throw new PptdError('READ_ONLY', 'This project is not open for writing.');
-    if (
-      !isRecord(request) ||
-      typeof request.requestId !== 'string' ||
-      typeof request.actor !== 'string' ||
-      typeof request.deckId !== 'string' ||
-      !isRecord(request.expected) ||
-      !Array.isArray(request.operations) ||
-      request.operations.some(
-        (operation) => !isRecord(operation) || typeof operation.op !== 'string',
-      )
-    )
-      throw new PptdError('INVALID_REQUEST', 'Invalid transaction envelope.');
-    assertJsonValue(request);
-    if (
-      !request.requestId ||
-      !request.actor ||
-      !request.expected ||
-      !Array.isArray(request.operations) ||
-      !request.operations.length
-    )
-      throw new PptdError(
-        'INVALID_REQUEST',
-        'A requestId, actor, expected revisions and operations are required.',
-      );
+    validateTransactionRequest(request);
     const requestHash = hashPayload(request);
     const receipt = await this.persistence.receipt(request.requestId, requestHash);
     if (receipt) return structuredClone(receipt);
@@ -1170,22 +1224,50 @@ export class PptdStore {
     if (request.deckId !== base.metadata.deckId)
       throw new PptdError('TARGET_NOT_FOUND', 'The request belongs to another deck.');
     await this.captureExternalVersions(base);
-    return this.applyTransaction(base, request, requestHash);
+    const plan = await this.prepareTransaction(base, request);
+    const noOp = plan.files.length === 0;
+    const operationId = randomUUID();
+    const result: TransactionResult = {
+      ok: true,
+      requestId: request.requestId,
+      operationId,
+      newRevisions: revisions(plan.documents),
+      changedPages: noOp ? [] : plan.changedPages,
+      changedElements: noOp ? [] : plan.changedElements,
+      createdPages: plan.createdPages,
+      skippedOverrides: plan.skippedOverrides,
+      diagnostics: plan.documents.diagnostics,
+      noOp,
+    };
+    const record: HistoryRecord = {
+      operationId,
+      requestId: request.requestId,
+      actor: request.actor,
+      timestamp: this.pageVersions.nextTimestamp(),
+      summary: request.operations.map((operation) => operation.op).join(', '),
+      changedPages: result.changedPages,
+      changedElements: result.changedElements,
+      before: plan.before,
+      after: result.newRevisions,
+      revertedOperationId: plan.revertedOperationId,
+      files: plan.files,
+      request,
+      requestHash,
+      result,
+    };
+    const persistenceStarted = performance.now();
+    await this.persistence.commit(record);
+    reportTiming(this.onTiming, 'commit.persist', persistenceStarted, {
+      pages: plan.changedPages.length,
+    });
+    this.replaceDocuments(plan.documents, 'committed', operationId, request.originClientId);
+    return structuredClone(result);
   }
 
-  private async applyTransaction(
+  private async prepareTransaction(
     base: Documents,
     request: TransactionRequest,
-    requestHash: Revision,
-  ): Promise<TransactionResult> {
-    return this.applyOperations(base, request, requestHash);
-  }
-
-  private async applyOperations(
-    base: Documents,
-    request: TransactionRequest,
-    requestHash: Revision,
-  ): Promise<TransactionResult> {
+  ): Promise<PreparedTransaction> {
     const started = performance.now();
     const before = revisions(base);
     const docs = structuredClone(base);
@@ -1830,42 +1912,17 @@ export class PptdStore {
         after: docs.manifestSource,
         role: 'manifest',
       });
-    const noOp = files.length === 0;
-    const operationId = randomUUID();
-    const result: TransactionResult = {
-      ok: true,
-      requestId: request.requestId,
-      operationId,
-      newRevisions: revisions(docs),
-      changedPages: noOp ? [] : [...touchedPages],
-      changedElements: noOp ? [] : [...changedElements.values()],
+    reportTiming(this.onTiming, 'commit.prepare', started, { pages: touchedPages.size });
+    return {
+      documents: docs,
+      files,
+      before,
+      changedPages: [...touchedPages],
+      changedElements: [...changedElements.values()],
       createdPages,
       skippedOverrides,
-      diagnostics: docs.diagnostics,
-      noOp,
-    };
-    const record: HistoryRecord = {
-      operationId,
-      requestId: request.requestId,
-      actor: request.actor,
-      timestamp: this.pageVersions.nextTimestamp(),
-      summary: request.operations.map((operation) => operation.op).join(', '),
-      changedPages: result.changedPages,
-      changedElements: result.changedElements,
-      before,
-      after: result.newRevisions,
       revertedOperationId,
-      files,
-      request,
-      requestHash,
-      result,
     };
-    reportTiming(this.onTiming, 'commit.prepare', started, { pages: touchedPages.size });
-    const persistenceStarted = performance.now();
-    await this.persistence.commit(record);
-    reportTiming(this.onTiming, 'commit.persist', persistenceStarted, { pages: touchedPages.size });
-    this.replaceDocuments(docs, 'committed', operationId, request.originClientId);
-    return structuredClone(result);
   }
 }
 

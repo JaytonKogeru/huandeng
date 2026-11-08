@@ -1,3 +1,4 @@
+const { text: desktopText } = require('./locale.cjs');
 const fs = require('node:fs/promises');
 const path = require('node:path');
 
@@ -24,13 +25,13 @@ function pathKey(file) {
 
 async function createProject(selectedPath) {
   const title = path.basename(selectedPath).replace(/\.pptd$/i, '');
-  if (!title.trim()) throw new Error('请给项目起一个名字。');
+  if (!title.trim()) throw new Error(desktopText('请给项目起一个名字。'));
   const root = path.join(path.dirname(selectedPath), title);
   try {
     await fs.mkdir(root);
   } catch (error) {
     if (error.code === 'EEXIST') {
-      throw new Error(`项目文件夹已经存在，请换一个名称：\n${root}`);
+      throw new Error(desktopText('项目文件夹已经存在，请换一个名称：\n{path}', { path: root }));
     }
     throw error;
   }

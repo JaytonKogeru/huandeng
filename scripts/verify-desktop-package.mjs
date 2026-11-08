@@ -35,6 +35,15 @@ await inspect(application);
 const core = path.join(application, 'node_modules', '@open-slide', 'core');
 const corePackage = JSON.parse(await fs.readFile(path.join(core, 'package.json'), 'utf8'));
 await fs.access(path.join(core, 'dist', 'editor', 'huandeng.html'));
+const plugin = path.join(application, 'plugins', 'huandeng');
+for (const file of [
+  'skills/huandeng-story/SKILL.md',
+  'scripts/configure.mjs',
+  'scripts/doctor.mjs',
+  'scripts/launch-mcp.mjs',
+  'scripts/runtime.mjs',
+])
+  await fs.access(path.join(plugin, file));
 const output = execFileSync(process.execPath, [path.join(core, 'huandeng.js'), '--help'], {
   cwd: application,
   encoding: 'utf8',

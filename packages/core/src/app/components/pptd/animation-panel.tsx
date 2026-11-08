@@ -1,5 +1,6 @@
 import { Copy, RotateCcw } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { uiText as t, useHuandengLocale } from '@/lib/huandeng-locale';
 import { type PageAnimation, readTimeline } from '../../../pptd/animation-model';
 import {
   type PageTransition,
@@ -31,6 +32,7 @@ function editorMode(page: PageSnapshot): EditorMode | null {
 }
 
 export function AnimationPanel(props: AnimationPanelProps) {
+  useHuandengLocale();
   return (
     <AnimationEditor
       key={`${props.page.pageId}:${props.page.occurrenceId ?? ''}:${props.page.versionId ?? ''}`}
@@ -40,6 +42,7 @@ export function AnimationPanel(props: AnimationPanelProps) {
 }
 
 function AnimationEditor(props: AnimationPanelProps) {
+  useHuandengLocale();
   const desiredMode = editorMode(props.page);
   const [mode, setMode] = useState<EditorMode>(desiredMode ?? 'builds');
   const [animationDirty, setAnimationDirty] = useState(false);
@@ -116,14 +119,14 @@ function AnimationEditor(props: AnimationPanelProps) {
       )}
       {emptyTimeline && (
         <div className="flex items-center gap-2 border-t border-border/50 bg-card px-3 py-1.5 text-xs text-muted-foreground">
-          <span className="min-w-0 flex-1">这页尚无关键帧，也可以按点击编排效果。</span>
+          <span className="min-w-0 flex-1">{t('这页尚无关键帧，也可以按点击编排效果。')}</span>
           <Button
             variant="ghost"
             size="xs"
             disabled={animationDirty || transitionDirty || props.disabled || resetting}
             onClick={() => void switchToSteps()}
           >
-            改用演讲步骤
+            {t('改用演讲步骤')}
           </Button>
         </div>
       )}
@@ -132,7 +135,7 @@ function AnimationEditor(props: AnimationPanelProps) {
           role="alert"
           className="border-t border-border bg-card px-3 py-2 text-xs text-destructive"
         >
-          {message}
+          {t(message)}
         </p>
       )}
       {props.onTransitionChange && (
@@ -168,6 +171,7 @@ function TransitionEditor({
   onChange: NonNullable<AnimationPanelProps['onTransitionChange']>;
   onDirtyChange: (dirty: boolean) => void;
 }) {
+  useHuandengLocale();
   const parsed = useMemo(() => {
     try {
       return { transition: readPageTransition(page.data), error: null };
@@ -324,9 +328,9 @@ function TransitionEditor({
     >
       <div className="flex min-h-9 flex-wrap items-center gap-2 px-3 py-1">
         <label className="flex items-center gap-2 text-muted-foreground">
-          换页
+          {t('换页')}
           <select
-            aria-label="换页效果"
+            aria-label={t('换页效果')}
             className="h-7 rounded border border-border bg-background px-2 text-xs text-foreground outline-none focus-visible:ring-2 focus-visible:ring-ring/40 disabled:opacity-50"
             value={draft?.kind ?? 'none'}
             disabled={readonly || fieldDirty}
@@ -342,14 +346,14 @@ function TransitionEditor({
               )
             }
           >
-            <option value="none">无</option>
-            <option value="fade">淡化</option>
+            <option value="none">{t('无')}</option>
+            <option value="fade">{t('淡化')}</option>
           </select>
         </label>
         {draft?.kind === 'fade' && (
           <TimelineField
             key={`transition-duration-${resetCount}`}
-            label="换页时长（秒）"
+            label={t('换页时长（秒）')}
             inline
             className="w-44"
             value={timelineSeconds(draft.durationMs)}
@@ -374,7 +378,7 @@ function TransitionEditor({
         )}
         {hasUnsaved && (
           <span className="ml-auto text-muted-foreground" aria-live="polite">
-            {saving ? '换页效果保存中…' : '换页效果未保存'}
+            {saving ? t('换页效果保存中…') : t('换页效果未保存')}
           </span>
         )}
       </div>
@@ -384,11 +388,11 @@ function TransitionEditor({
           className="flex flex-wrap items-center gap-2 border-t border-amber-500/20 bg-amber-500/5 px-3 py-2"
         >
           <span className="min-w-32 flex-1">
-            {error ?? '请确认换页时长，按 Enter 应用或按 Esc 还原。'}
+            {error ? t(error) : t('请确认换页时长，按 Enter 应用或按 Esc 还原。')}
           </span>
           <Button variant="ghost" size="xs" onClick={() => void copy()}>
             <Copy />
-            复制换页草稿
+            {t('复制换页草稿')}
           </Button>
           {dirty && !remoteChanged && !parsed.error && (
             <Button
@@ -397,14 +401,14 @@ function TransitionEditor({
               disabled={saving || fieldDirty || !draft}
               onClick={() => draft && commit(draft)}
             >
-              重试保存换页
+              {t('重试保存换页')}
             </Button>
           )}
           <Button variant="ghost" size="xs" disabled={saving || !hasUnsaved} onClick={reset}>
             <RotateCcw />
-            还原换页
+            {t('还原换页')}
           </Button>
-          {copyStatus && <span role="status">{copyStatus}</span>}
+          {copyStatus && <span role="status">{t(copyStatus)}</span>}
         </div>
       )}
     </div>

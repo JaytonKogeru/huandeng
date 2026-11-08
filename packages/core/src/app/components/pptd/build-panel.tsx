@@ -12,6 +12,7 @@ import {
   Trash2,
 } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
+import { uiText as t, useHuandengLocale } from '@/lib/huandeng-locale';
 import {
   type BuildEffect,
   type BuildTimeline,
@@ -88,6 +89,7 @@ function sameAnimation(left: unknown, right: unknown) {
 }
 
 export function BuildPanel(props: BuildPanelProps) {
+  useHuandengLocale();
   const parsed = useMemo(() => {
     try {
       const animation = readPageAnimation(props.page.data);
@@ -123,6 +125,7 @@ function BuildEditor({
   persisted,
   parseError,
 }: BuildPanelProps & { persisted: BuildTimeline | null; parseError: string | null }) {
+  useHuandengLocale();
   const [draft, setDraft] = useState<BuildTimeline>(persisted ?? emptyBuild());
   const draftRef = useRef(draft);
   const [baseRevision, setBaseRevision] = useState(page.pageRevision);
@@ -194,7 +197,7 @@ function BuildEditor({
     const element = elements.get(head.targetId);
     return (
       head.label?.trim() ||
-      `${element ? elementLabel(element) : '缺失对象'} · ${effectLabels[head.kind]}${group.length > 1 ? ` +${group.length - 1}` : ''}`
+      `${element ? elementLabel(element) : t('缺失对象')} · ${t(effectLabels[head.kind])}${group.length > 1 ? ` +${group.length - 1}` : ''}`
     );
   };
 
@@ -505,7 +508,7 @@ function BuildEditor({
       data-hd-builds
       data-hd-builds-preview={preview || undefined}
       data-hd-keyboard-region="timeline"
-      aria-label="页面动画步骤"
+      aria-label={t('页面动画步骤')}
       tabIndex={-1}
       className="shrink-0 border-t border-border bg-card text-xs outline-none"
       onKeyDown={(event) => {
@@ -537,9 +540,9 @@ function BuildEditor({
       }}
     >
       <div className="flex min-h-10 flex-wrap items-center gap-2 border-b border-border/60 px-3 py-1.5">
-        <span className="font-medium">演讲步骤</span>
+        <span className="font-medium">{t('演讲步骤')}</span>
         <span className="text-muted-foreground" data-hd-build-count>
-          {groups.length} 次点击
+          {t('{value0} 次点击', { value0: groups.length })}
         </span>
         <Button
           variant={preview ? 'secondary' : 'outline'}
@@ -550,18 +553,18 @@ function BuildEditor({
             !!resolved.error ||
             (!preview && fields.size > 0)
           }
-          title={!preview && fields.size ? '先确认当前输入，再逐步预演' : undefined}
+          title={!preview && fields.size ? t('先确认当前输入，再逐步预演') : undefined}
           onClick={togglePreview}
         >
           <Play />
-          {preview ? '返回编辑' : '逐步预演'}
+          {preview ? t('返回编辑') : t('逐步预演')}
         </Button>
         {preview && (
           <div className="flex items-center gap-1" data-hd-build-preview>
             <Button
               variant="ghost"
               size="icon-xs"
-              aria-label="预演回到开场"
+              aria-label={t('预演回到开场')}
               onClick={() => playback.seek(0)}
             >
               <RotateCcw />
@@ -569,7 +572,7 @@ function BuildEditor({
             <Button
               variant="ghost"
               size="icon-xs"
-              aria-label="预演上一步"
+              aria-label={t('预演上一步')}
               disabled={time <= 0}
               onClick={playback.previous}
             >
@@ -578,7 +581,7 @@ function BuildEditor({
             <Button
               variant="ghost"
               size="icon-xs"
-              aria-label={moving ? '预演完成当前步骤' : '预演下一步'}
+              aria-label={moving ? t('预演完成当前步骤') : t('预演下一步')}
               disabled={completed >= steps.length}
               onClick={playback.next}
             >
@@ -588,7 +591,7 @@ function BuildEditor({
               <Button
                 variant="ghost"
                 size="icon-xs"
-                aria-label="暂停步骤预演"
+                aria-label={t('暂停步骤预演')}
                 onClick={playback.pause}
               >
                 <Pause />
@@ -596,27 +599,27 @@ function BuildEditor({
             )}
             <output
               className="min-w-16 text-muted-foreground"
-              aria-label="预演步骤"
+              aria-label={t('预演步骤')}
               aria-live="polite"
             >
               {moving
-                ? `播放第 ${completed + 1} 步`
+                ? t('播放第 {value0} 步', { value0: completed + 1 })
                 : completed
                   ? `${completed} / ${steps.length}`
-                  : '开场画面'}
+                  : t('开场画面')}
             </output>
           </div>
         )}
         {!preview && (
           <>
             <span className="ml-auto text-muted-foreground" aria-live="polite">
-              {saving ? '保存中…' : hasUnsaved ? '未保存' : '已保存'}
+              {saving ? t('保存中…') : hasUnsaved ? t('未保存') : t('已保存')}
             </span>
             <Button
               variant="ghost"
               size="icon-xs"
-              aria-label="改用高级时间线"
-              title="改用高级时间线"
+              aria-label={t('改用高级时间线')}
+              title={t('改用高级时间线')}
               disabled={actionBlocked || dirty}
               onClick={() => (draft.effects.length ? setConvertOpen(true) : void convert())}
             >
@@ -633,21 +636,27 @@ function BuildEditor({
           >
             <button
               type="button"
-              aria-label="预演定位：开场画面"
+              aria-label={t('预演定位：开场画面')}
               aria-current={displayedStepIndex < 0 ? 'step' : undefined}
               onClick={() => playback.seek(0)}
               className={`shrink-0 rounded border px-2.5 py-1.5 outline-none focus-visible:ring-2 focus-visible:ring-ring/60 ${displayedStepIndex < 0 ? 'border-primary/40 bg-primary/10 text-primary' : 'border-border/70 text-muted-foreground hover:bg-muted'}`}
             >
-              开场
+              {t('开场')}
             </button>
             {steps.map((step, index) => (
               <button
                 key={step.id}
                 type="button"
                 data-hd-build-preview-stop={step.id}
-                aria-label={`预演定位：第 ${index + 1} 步，${stepLabel(index)}`}
+                aria-label={t('预演定位：第 {value0} 步，{value1}', {
+                  value0: index + 1,
+                  value1: stepLabel(index),
+                })}
                 aria-current={displayedStepIndex === index ? 'step' : undefined}
-                title={`查看第 ${index + 1} 步完成后的画面：${stepLabel(index)}`}
+                title={t('查看第 {value0} 步完成后的画面：{value1}', {
+                  value0: index + 1,
+                  value1: stepLabel(index),
+                })}
                 onClick={() => playback.seek(step.endMs)}
                 className={`flex max-w-40 shrink-0 items-center gap-1.5 rounded border px-2.5 py-1.5 outline-none focus-visible:ring-2 focus-visible:ring-ring/60 ${displayedStepIndex === index ? 'border-primary/40 bg-primary/10 text-primary' : 'border-border/70 text-muted-foreground hover:bg-muted'}`}
               >
@@ -663,19 +672,21 @@ function BuildEditor({
             <span
               className="min-w-0 flex-1 truncate"
               data-hd-build-preview-current
-              title={displayedStepIndex < 0 ? '开场画面' : stepLabel(displayedStepIndex)}
+              title={displayedStepIndex < 0 ? t('开场画面') : stepLabel(displayedStepIndex)}
             >
-              {moving ? '播放' : activeStepIndex >= 0 ? '暂停' : '当前'}：
-              {displayedStepIndex < 0 ? '开场画面' : stepLabel(displayedStepIndex)}
+              {moving ? t('播放') : activeStepIndex >= 0 ? t('暂停') : t('当前')}：
+              {displayedStepIndex < 0 ? t('开场画面') : stepLabel(displayedStepIndex)}
             </span>
             <span
               className="min-w-0 flex-1 truncate"
               data-hd-build-preview-next
-              title={upcomingStepIndex < steps.length ? stepLabel(upcomingStepIndex) : '本页已完成'}
+              title={
+                upcomingStepIndex < steps.length ? stepLabel(upcomingStepIndex) : t('本页已完成')
+              }
             >
               {upcomingStepIndex < steps.length
-                ? `下一步：${stepLabel(upcomingStepIndex)}`
-                : '本页已完成'}
+                ? t('下一步：{value0}', { value0: stepLabel(upcomingStepIndex) })
+                : t('本页已完成')}
             </span>
           </div>
         </div>
@@ -685,25 +696,27 @@ function BuildEditor({
         data-hd-build-add-controls
       >
         <select
-          aria-label="添加动画的对象"
+          aria-label={t('添加动画的对象')}
           className={`${fieldClass} min-w-32 flex-1`}
           value={targetId}
           disabled={actionBlocked}
           onChange={(event) => setTargetId(event.target.value)}
         >
           {selectedRoots.length > 1 && (
-            <option value={selectionValue}>选中的 {selectedRoots.length} 个对象（同时）</option>
+            <option value={selectionValue}>
+              {t('选中的 {value0} 个对象（同时）', { value0: selectedRoots.length })}
+            </option>
           )}
-          {!page.data.elements.length && <option value="">先在画布添加对象</option>}
+          {!page.data.elements.length && <option value="">{t('先在画布添加对象')}</option>}
           {page.data.elements.map((element, index) => (
             <option key={element.elementId} value={element.elementId}>
               {index + 1}. {elementLabel(element)}
-              {element.elementType === 'group' ? '（组合）' : ''}
+              {element.elementType === 'group' ? t('（组合）') : ''}
             </option>
           ))}
         </select>
         <select
-          aria-label="添加的动画效果"
+          aria-label={t('添加的动画效果')}
           className={`${fieldClass} w-24`}
           value={kind}
           disabled={actionBlocked}
@@ -711,7 +724,7 @@ function BuildEditor({
         >
           {Object.entries(effectLabels).map(([value, label]) => (
             <option key={value} value={value}>
-              {label}
+              {t(label)}
             </option>
           ))}
         </select>
@@ -722,7 +735,7 @@ function BuildEditor({
           onClick={addEffect}
         >
           <Plus />
-          添加效果
+          {t('添加效果')}
         </Button>
       </div>
       {(displayedError || (dirty && !saving)) && (
@@ -731,11 +744,11 @@ function BuildEditor({
           className="flex flex-wrap items-center gap-2 border-y border-amber-500/20 bg-amber-500/5 px-3 py-2"
         >
           <span className="min-w-40 flex-1">
-            {displayedError ?? '请确认当前输入，按 Enter 应用或按 Esc 还原。'}
+            {displayedError ?? t('请确认当前输入，按 Enter 应用或按 Esc 还原。')}
           </span>
           <Button variant="ghost" size="xs" onClick={() => void copyDraft()}>
             <Copy />
-            复制动画草稿
+            {t('复制动画草稿')}
           </Button>
           {dirty && !remoteChanged && !parseError && (
             <Button
@@ -744,14 +757,14 @@ function BuildEditor({
               disabled={saving || fields.size > 0}
               onClick={() => void commit(draftRef.current)}
             >
-              重试保存
+              {t('重试保存')}
             </Button>
           )}
           <Button variant="ghost" size="xs" disabled={saving || !hasUnsaved} onClick={reset}>
             <RotateCcw />
-            还原已保存
+            {t('还原已保存')}
           </Button>
-          {copyStatus && <span role="status">{copyStatus}</span>}
+          {copyStatus && <span role="status">{t(copyStatus)}</span>}
         </div>
       )}
       <div
@@ -762,10 +775,13 @@ function BuildEditor({
         }
         data-hd-build-authoring-controls
       >
-        <fieldset className="min-w-0 flex-1 overflow-y-auto px-2 py-1" aria-label="动画步骤列表">
+        <fieldset
+          className="min-w-0 flex-1 overflow-y-auto px-2 py-1"
+          aria-label={t('动画步骤列表')}
+        >
           {!draft.effects.length && (
             <div className="flex h-full items-center justify-center px-4 text-center leading-relaxed text-muted-foreground">
-              选中对象，添加淡入；放映时每次点击执行一个步骤。
+              {t('选中对象，添加淡入；放映时每次点击执行一个步骤。')}
             </div>
           )}
           {groups.map((group, index) => (
@@ -775,13 +791,13 @@ function BuildEditor({
                   {index + 1}
                 </span>
                 <span className="min-w-0 flex-1 truncate text-muted-foreground">
-                  单击 {index + 1}
+                  {t('单击 {value0}', { value0: index + 1 })}
                 </span>
                 <Button
                   variant="ghost"
                   size="icon-xs"
                   className="size-6"
-                  aria-label={`步骤 ${index + 1} 上移`}
+                  aria-label={t('步骤 {value0} 上移', { value0: index + 1 })}
                   disabled={actionBlocked || index === 0}
                   onClick={() => applyDraft(reorderBuildStep(draftRef.current, group[0].id, -1))}
                 >
@@ -791,7 +807,7 @@ function BuildEditor({
                   variant="ghost"
                   size="icon-xs"
                   className="size-6"
-                  aria-label={`步骤 ${index + 1} 下移`}
+                  aria-label={t('步骤 {value0} 下移', { value0: index + 1 })}
                   disabled={actionBlocked || index === groups.length - 1}
                   onClick={() => applyDraft(reorderBuildStep(draftRef.current, group[0].id, 1))}
                 >
@@ -800,7 +816,7 @@ function BuildEditor({
               </div>
               {group.map((effect) => {
                 const element = elements.get(effect.targetId);
-                const label = element ? elementLabel(element) : '缺失对象';
+                const label = element ? elementLabel(element) : t('缺失对象');
                 return (
                   <div
                     key={effect.id}
@@ -812,23 +828,26 @@ function BuildEditor({
                       aria-pressed={effect.id === selectedEffectId}
                       className="flex min-w-0 flex-1 items-center gap-2 rounded px-2 py-1.5 text-left outline-none focus-visible:ring-2 focus-visible:ring-ring/60"
                       onClick={() => choose(effect)}
-                      title={`${label} · ${effectLabels[effect.kind]} · ${triggerLabels[effect.trigger]}`}
+                      title={`${label} · ${t(effectLabels[effect.kind])} · ${t(triggerLabels[effect.trigger])}`}
                     >
                       <span className="min-w-0 flex-1 truncate">{label}</span>
-                      <span className="shrink-0">{effectLabels[effect.kind]}</span>
+                      <span className="shrink-0">{t(effectLabels[effect.kind])}</span>
                       <span className="shrink-0 text-[11px] text-muted-foreground">
                         {effect.trigger === 'click'
                           ? `${timelineSeconds(effect.durationMs)}s`
                           : effect.trigger === 'with-previous'
-                            ? '同时'
-                            : '接续'}
+                            ? t('同时')
+                            : t('接续')}
                       </span>
                     </button>
                     <Button
                       variant="ghost"
                       size="icon-xs"
                       className="mr-1 size-6 shrink-0"
-                      aria-label={`删除效果：${label} · ${effectLabels[effect.kind]}`}
+                      aria-label={t('删除效果：{value0} · {value1}', {
+                        value0: label,
+                        value1: t(effectLabels[effect.kind]),
+                      })}
                       disabled={actionBlocked}
                       onClick={() => applyDraft(removeBuildEffect(draftRef.current, effect.id))}
                     >
@@ -842,15 +861,15 @@ function BuildEditor({
         </fieldset>
         {!!draft.effects.length && (
           <aside
-            aria-label="动画效果属性"
+            aria-label={t('动画效果属性')}
             className="w-60 max-w-[48%] shrink-0 overflow-y-auto border-l border-border/60 p-2.5"
           >
             {selectedEffect && (
               <div key={`${selectedEffect.id}-${resetCount}`} className="grid grid-cols-2 gap-2">
                 <label className="flex min-w-0 flex-col gap-1 text-muted-foreground">
-                  效果
+                  {t('效果')}
                   <select
-                    aria-label="当前效果"
+                    aria-label={t('当前效果')}
                     className={fieldClass}
                     value={selectedEffect.kind}
                     disabled={actionBlocked}
@@ -858,15 +877,15 @@ function BuildEditor({
                   >
                     {Object.entries(effectLabels).map(([value, label]) => (
                       <option key={value} value={value}>
-                        {label}
+                        {t(label)}
                       </option>
                     ))}
                   </select>
                 </label>
                 <label className="flex min-w-0 flex-col gap-1 text-muted-foreground">
-                  触发
+                  {t('触发')}
                   <select
-                    aria-label="效果触发方式"
+                    aria-label={t('效果触发方式')}
                     className={fieldClass}
                     value={selectedEffect.trigger}
                     disabled={actionBlocked}
@@ -880,14 +899,14 @@ function BuildEditor({
                         value={value}
                         disabled={value !== 'click' && draft.effects[0]?.id === selectedEffect.id}
                       >
-                        {label}
+                        {t(label)}
                       </option>
                     ))}
                   </select>
                 </label>
                 {!instantEffect(selectedEffect.kind) && (
                   <TimelineField
-                    label="效果时长（秒）"
+                    label={t('效果时长（秒）')}
                     value={timelineSeconds(selectedEffect.durationMs)}
                     min={selectedEffect.kind === 'pulse' ? 0.002 : 0.001}
                     max={60}
@@ -899,7 +918,7 @@ function BuildEditor({
                   />
                 )}
                 <TimelineField
-                  label="延迟（秒）"
+                  label={t('延迟（秒）')}
                   value={timelineSeconds(selectedEffect.delayMs)}
                   min={0}
                   max={MAX_BUILD_DELAY_MS / 1000}
@@ -913,7 +932,7 @@ function BuildEditor({
                   <>
                     <TimelineField
                       inputRef={moveInputRef}
-                      label="水平移动"
+                      label={t('水平移动')}
                       value={String(selectedEffect.dx ?? 0)}
                       min={-1_000_000}
                       max={1_000_000}
@@ -923,7 +942,7 @@ function BuildEditor({
                       onCommit={(value) => patchEffect({ dx: Number(value) })}
                     />
                     <TimelineField
-                      label="垂直移动"
+                      label={t('垂直移动')}
                       value={String(selectedEffect.dy ?? 0)}
                       min={-1_000_000}
                       max={1_000_000}
@@ -935,7 +954,7 @@ function BuildEditor({
                   </>
                 )}
                 <TimelineField
-                  label="效果名称"
+                  label={t('效果名称')}
                   type="text"
                   className="col-span-2"
                   value={selectedEffect.label ?? ''}
@@ -952,38 +971,40 @@ function BuildEditor({
       {!!draft.effects.length && !preview && (
         <div className="flex min-h-7 items-center gap-2 border-t border-border/50 px-3 text-[11px] text-muted-foreground">
           <span className="min-w-0 flex-1 truncate">
-            {disabled ? '当前页面只读，可逐步预演。' : '步骤自动保存；播放不改变基础版式。'}
+            {disabled ? t('当前页面只读，可逐步预演。') : t('步骤自动保存；播放不改变基础版式。')}
           </span>
           <button
             type="button"
             className="rounded px-1 py-1 outline-none focus-visible:ring-2 focus-visible:ring-ring/60"
-            aria-label={expanded ? '收拢步骤面板' : '展开步骤面板'}
+            aria-label={expanded ? t('收拢步骤面板') : t('展开步骤面板')}
             aria-expanded={expanded}
             onClick={() => setExpanded(!expanded)}
           >
-            {expanded ? '收拢' : '展开'}
+            {expanded ? t('收拢') : t('展开')}
           </button>
         </div>
       )}
       <Dialog open={convertOpen} onOpenChange={(open) => !saving && setConvertOpen(open)}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <DialogTitle>转换为高级时间线</DialogTitle>
+            <DialogTitle>{t('转换为高级时间线')}</DialogTitle>
             <DialogDescription>
-              这些步骤将转换为关键帧，此后在时间线上编辑。当前播放效果保留；撤销可恢复步骤编排。
+              {t(
+                '这些步骤将转换为关键帧，此后在时间线上编辑。当前播放效果保留；撤销可恢复步骤编排。',
+              )}
             </DialogDescription>
           </DialogHeader>
           {message && (
             <p role="alert" className="text-sm text-destructive">
-              {message}
+              {t(message)}
             </p>
           )}
           <DialogFooter>
             <Button variant="outline" disabled={saving} onClick={() => setConvertOpen(false)}>
-              取消
+              {t('取消')}
             </Button>
             <Button disabled={actionBlocked || dirty} onClick={() => void convert()}>
-              {saving ? '转换中…' : '转换为关键帧'}
+              {saving ? t('转换中…') : t('转换为关键帧')}
             </Button>
           </DialogFooter>
         </DialogContent>

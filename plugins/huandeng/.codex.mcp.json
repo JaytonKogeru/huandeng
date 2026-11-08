@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "huandeng": {
+      "command": "node",
+      "args": ["./scripts/launch-mcp.mjs"],
+      "cwd": "./",
+      "env_vars": [
+        "HUANDENG_ENTRY",
+        "HUANDENG_CLI",
+        "HUANDENG_URL",
+        "HUANDENG_RUNTIME_DIR",
+        "ELECTRON_RUN_AS_NODE"
+      ]
+    }
+  }
+}

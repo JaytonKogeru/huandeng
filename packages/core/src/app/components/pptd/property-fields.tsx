@@ -1,4 +1,5 @@
 import { useEffect, useId, useRef, useState } from 'react';
+import { uiText as t, useHuandengLocale } from '@/lib/huandeng-locale';
 import { Input } from '../ui/input';
 
 export function NumberField({
@@ -22,6 +23,7 @@ export function NumberField({
   onBegin?: () => void;
   onEnd?: () => void;
 }) {
+  useHuandengLocale();
   const id = useId();
   const [draft, setDraft] = useState(String(Math.round(value * 100) / 100));
   const focused = useRef(false);
@@ -31,11 +33,11 @@ export function NumberField({
   }, [value]);
   return (
     <label htmlFor={id} className="flex min-w-0 items-center gap-2 text-xs text-muted-foreground">
-      <span className="min-w-7 shrink-0">{label}</span>
+      <span className="min-w-7 shrink-0">{t(label)}</span>
       <Input
         id={id}
         type="number"
-        aria-label={label}
+        aria-label={t(label)}
         value={draft}
         min={min}
         max={max}
@@ -86,6 +88,7 @@ export function StringField({
   onBegin: () => void;
   onEnd: () => void;
 }) {
+  useHuandengLocale();
   const id = useId();
   const [draft, setDraft] = useState(value);
   const focused = useRef(false);
@@ -95,10 +98,10 @@ export function StringField({
   }, [value]);
   return (
     <label htmlFor={id} className="block space-y-1.5 text-xs text-muted-foreground">
-      <span>{label}</span>
+      <span>{t(label)}</span>
       <Input
         id={id}
-        aria-label={label}
+        aria-label={t(label)}
         value={draft}
         disabled={disabled}
         onFocus={() => {

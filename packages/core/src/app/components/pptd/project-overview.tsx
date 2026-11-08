@@ -1,5 +1,6 @@
 import { ArrowUpRight, BookOpen, Layers3, Link2, LockKeyhole, Presentation } from 'lucide-react';
 import { useMemo } from 'react';
+import { uiText as t, useHuandengLocale } from '@/lib/huandeng-locale';
 import { projectInsights } from '../../../pptd/project-insights';
 import type { DeckSnapshot } from '../../../pptd/types';
 import { Button } from '../ui/button';
@@ -26,6 +27,7 @@ export function ProjectOverview({
   onSelectOccurrence,
   onEditProject,
 }: ProjectOverviewProps) {
+  useHuandengLocale();
   const parsed = useMemo(() => {
     try {
       return { value: projectInsights(snapshot), error: null };
@@ -36,7 +38,7 @@ export function ProjectOverview({
   if (!parsed.value)
     return (
       <p role="alert" className="p-3 text-xs text-destructive">
-        {parsed.error}
+        {t(parsed.error)}
       </p>
     );
   const insights = parsed.value;
@@ -45,13 +47,13 @@ export function ProjectOverview({
     usages.flatMap((usage) => (usage.presentationId ? [usage.presentationId] : [])),
   );
   return (
-    <section aria-label="项目概览" className="space-y-4 p-3 text-xs" data-hd-project-overview>
+    <section aria-label={t('项目概览')} className="space-y-4 p-3 text-xs" data-hd-project-overview>
       <div className="flex items-center justify-between gap-2">
-        <h2 className="font-semibold tracking-wide">项目概览</h2>
+        <h2 className="font-semibold tracking-wide">{t('项目概览')}</h2>
         {onEditProject && (
           <Button variant="ghost" size="xs" onClick={onEditProject}>
             <BookOpen />
-            编排演讲
+            {t('编排演讲')}
           </Button>
         )}
       </div>
@@ -64,13 +66,14 @@ export function ProjectOverview({
       >
         <span className="flex items-center gap-2 font-medium">
           <Layers3 className="size-3.5" />
-          Main Slides<span className="ml-auto text-[10px] text-muted-foreground">主库</span>
+          {t('Main Slides')}
+          <span className="ml-auto text-[10px] text-muted-foreground">{t('主库')}</span>
         </span>
         <span className="mt-1.5 block truncate text-muted-foreground">{insights.title}</span>
         <span className="mt-2 flex gap-3 tabular-nums text-[11px] text-muted-foreground">
-          <span>{insights.mainPageCount} 页</span>
-          <span>{insights.sectionCount} 个章节</span>
-          <span>{insights.presentations.length} 场演讲</span>
+          <span>{t('{value0} 页', { value0: insights.mainPageCount })}</span>
+          <span>{t('{value0} 个章节', { value0: insights.sectionCount })}</span>
+          <span>{t('{value0} 场演讲', { value0: insights.presentations.length })}</span>
         </span>
         {insights.mainStory.purpose && (
           <span className="mt-2 block line-clamp-2 leading-relaxed">
@@ -81,11 +84,11 @@ export function ProjectOverview({
       <div className="space-y-2">
         <h3 className="flex items-center gap-1.5 font-medium">
           <Presentation className="size-3.5" />
-          从主库衍生的演讲
+          {t('从主库衍生的演讲')}
         </h3>
         {insights.presentations.length === 0 ? (
           <div className="rounded-lg border border-dashed border-border p-3 leading-relaxed text-muted-foreground">
-            点击「编排演讲」，选择章节或单页，组成同一项目中的演讲。页面内容仍由主库维护。
+            {t('点击「编排演讲」，选择章节或单页，组成同一项目中的演讲。页面内容仍由主库维护。')}
           </div>
         ) : (
           insights.presentations.map((presentation) => (
@@ -102,20 +105,20 @@ export function ProjectOverview({
                 <ArrowUpRight className="size-3.5 shrink-0 text-muted-foreground" />
               </span>
               <span className="mt-1.5 flex flex-wrap gap-x-3 gap-y-1 text-[11px] tabular-nums text-muted-foreground">
-                <span>{presentation.pageCount} 个播放位置</span>
-                <span>{presentation.uniquePageCount} 张主页面</span>
+                <span>{t('{value0} 个播放位置', { value0: presentation.pageCount })}</span>
+                <span>{t('{value0} 张主页面', { value0: presentation.uniquePageCount })}</span>
                 {presentation.pinnedPageCount > 0 && (
-                  <span>{presentation.pinnedPageCount} 处固定版本</span>
+                  <span>{t('{value0} 处固定版本', { value0: presentation.pinnedPageCount })}</span>
                 )}
               </span>
               {presentation.story.audience && (
                 <span className="mt-2 block line-clamp-2 text-muted-foreground">
-                  听众 · {presentation.story.audience}
+                  {t('听众 · {value0}', { value0: presentation.story.audience })}
                 </span>
               )}
               {presentation.diagnostics.length > 0 && (
                 <span className="mt-2 block text-[11px] text-destructive">
-                  {presentation.diagnostics[0].message}
+                  {t(presentation.diagnostics[0].message)}
                 </span>
               )}
             </button>
@@ -126,12 +129,15 @@ export function ProjectOverview({
         <div className="space-y-2 border-t border-border pt-3">
           <h3 className="flex items-center gap-1.5 font-medium">
             <Link2 className="size-3.5" />
-            {usages[0]?.label ?? '当前页'} 的使用位置
+            {usages[0]?.label ?? t('当前页')}
+            {t(' 的使用位置')}
           </h3>
           <p className="text-[11px] leading-relaxed text-muted-foreground">
             {presentations.size
-              ? `用于 ${presentations.size} 场演讲；修改当前主页面会同步到所有实时引用。`
-              : '这张页面目前只在主库中。可在演讲编排中添加引用。'}
+              ? t('用于 {value0} 场演讲；修改当前主页面会同步到所有实时引用。', {
+                  value0: presentations.size,
+                })
+              : t('这张页面目前只在主库中。可在演讲编排中添加引用。')}
           </p>
           <ul className="space-y-1">
             {usages.map((usage) => {
@@ -168,7 +174,7 @@ export function ProjectOverview({
                     {usage.versionId ? (
                       <LockKeyhole
                         className="size-3 shrink-0 text-muted-foreground"
-                        aria-label="固定版本"
+                        aria-label={t('固定版本')}
                       />
                     ) : (
                       <ArrowUpRight className="size-3 shrink-0 text-muted-foreground" />
@@ -179,7 +185,7 @@ export function ProjectOverview({
             })}
           </ul>
           <p className="text-[10px] leading-relaxed text-muted-foreground">
-            短码标识同一张页面；左侧数字是当前演讲中的位置。固定版本保留记录时的页面与素材。
+            {t('短码标识同一张页面；左侧数字是当前演讲中的位置。固定版本保留记录时的页面与素材。')}
           </p>
         </div>
       )}

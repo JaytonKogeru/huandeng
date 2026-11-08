@@ -1,5 +1,6 @@
 import { Pencil, X } from 'lucide-react';
 import { useEffect, useId, useState } from 'react';
+import { getUiLocale, uiText as t, useHuandengLocale } from '@/lib/huandeng-locale';
 import type { ExpectedRevisions, PageSnapshot, PptdOperation, Revision } from '../../../pptd/types';
 import { Button } from '../ui/button';
 import { Textarea } from '../ui/textarea';
@@ -31,6 +32,7 @@ export function DesignIntentPanel({
   draft?: DesignIntentDraft;
   onDraftChange?: (pageId: string, draft: DesignIntentDraft | null) => void;
 }) {
+  useHuandengLocale();
   const id = useId();
   const intent = page.metadata.designIntent;
   const [purpose, setPurpose] = useState(draft?.purpose ?? intent?.purpose ?? '');
@@ -94,19 +96,19 @@ export function DesignIntentPanel({
   return (
     <section
       className="space-y-3 border-b border-border px-4 py-4"
-      aria-label="幻灯故事"
+      aria-label={t('幻灯故事')}
       data-hd-story
     >
       <div className="flex items-center gap-2">
         <div className="min-w-0 flex-1">
-          <h3 className="text-xs font-semibold tracking-wide">幻灯故事</h3>
-          <p className="mt-1 text-[10px] text-muted-foreground">这页的目的与保留项</p>
+          <h3 className="text-xs font-semibold tracking-wide">{t('幻灯故事')}</h3>
+          <p className="mt-1 text-[10px] text-muted-foreground">{t('这页的目的与保留项')}</p>
         </div>
         <Button
           size="icon-xs"
           variant="ghost"
-          aria-label={editing ? '取消更正意图' : '更正意图'}
-          title={editing ? '取消更正' : '更正意图'}
+          aria-label={editing ? t('取消更正意图') : t('更正意图')}
+          title={editing ? t('取消更正') : t('更正意图')}
           disabled={disabled || saving}
           onClick={() => {
             setEditing((value) => !value);
@@ -123,10 +125,10 @@ export function DesignIntentPanel({
             htmlFor={`${id}-purpose`}
             className="block space-y-1.5 text-xs text-muted-foreground"
           >
-            <span>这一页要表达什么</span>
+            <span>{t('这一页要表达什么')}</span>
             <Textarea
               id={`${id}-purpose`}
-              aria-label="页面创作意图"
+              aria-label={t('页面创作意图')}
               value={purpose}
               disabled={disabled || saving}
               className="text-xs"
@@ -137,10 +139,10 @@ export function DesignIntentPanel({
             />
           </label>
           <label htmlFor={`${id}-keep`} className="block space-y-1.5 text-xs text-muted-foreground">
-            <span>保留什么 · 每行一条</span>
+            <span>{t('保留什么 · 每行一条')}</span>
             <Textarea
               id={`${id}-keep`}
-              aria-label="需要保留的设计意图"
+              aria-label={t('需要保留的设计意图')}
               value={keep}
               disabled={disabled || saving}
               className="min-h-20 text-xs"
@@ -152,12 +154,12 @@ export function DesignIntentPanel({
           </label>
           {dirty && base !== metadataRevision && (
             <p className="text-xs text-amber-700">
-              页面意图已在别处更新。你的更正已保留，保存时会检查版本。
+              {t('页面意图已在别处更新。你的更正已保留，保存时会检查版本。')}
             </p>
           )}
           <div className="flex gap-1.5">
             <Button size="xs" disabled={disabled || saving || !dirty} onClick={() => void save()}>
-              {saving ? '正在保存…' : '保存更正'}
+              {saving ? t('正在保存…') : t('保存更正')}
             </Button>
             <Button
               size="xs"
@@ -169,7 +171,7 @@ export function DesignIntentPanel({
                 setMessage(null);
               }}
             >
-              取消
+              {t('取消')}
             </Button>
           </div>
         </>
@@ -178,7 +180,7 @@ export function DesignIntentPanel({
           {intent?.purpose && <p className="whitespace-pre-wrap">{intent.purpose}</p>}
           {Boolean(intent?.keep?.length) && (
             <div>
-              <p className="mb-1 text-[10px] text-muted-foreground">需要保留</p>
+              <p className="mb-1 text-[10px] text-muted-foreground">{t('需要保留')}</p>
               <ul className="list-disc space-y-1 pl-4">
                 {intent?.keep?.map((item) => (
                   <li key={item}>{item}</li>
@@ -188,7 +190,7 @@ export function DesignIntentPanel({
           )}
           {requestedChange && (
             <div>
-              <p className="mb-1 text-[10px] text-muted-foreground">这次修改</p>
+              <p className="mb-1 text-[10px] text-muted-foreground">{t('这次修改')}</p>
               <p className="whitespace-pre-wrap">{requestedChange}</p>
             </div>
           )}
@@ -197,22 +199,24 @@ export function DesignIntentPanel({
               className="border-t border-border pt-2 text-[10px] text-muted-foreground"
               data-hd-story-provenance
             >
-              {actor === 'user' ? '你更正了意图' : actor || source}
+              {actor === 'user' ? t('你更正了意图') : actor || source}
               {source && source !== actor && actor !== 'user' && ` · ${source}`}
               {recordedAt && (
-                <span className="mt-0.5 block">{new Date(recordedAt).toLocaleString()}</span>
+                <span className="mt-0.5 block">
+                  {new Date(recordedAt).toLocaleString(getUiLocale())}
+                </span>
               )}
             </p>
           )}
         </div>
       ) : (
         <p className="text-xs leading-relaxed text-muted-foreground">
-          记录这页要传达的结论，以及需要保留的内容。你和 Agent 可以共同维护。
+          {t('记录这页要传达的结论，以及需要保留的内容。你和 Agent 可以共同维护。')}
         </p>
       )}
       {message && (
         <p role="status" className="text-[11px] leading-relaxed text-muted-foreground">
-          {message}
+          {t(message)}
         </p>
       )}
     </section>

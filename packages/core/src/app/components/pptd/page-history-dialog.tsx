@@ -1,6 +1,7 @@
 import { ArrowDown, ArrowUp, BookmarkPlus, Check, History, Loader2, RotateCcw } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { desktopHost } from '@/lib/huandeng-desktop';
+import { getUiLocale, uiText as t, useHuandengLocale } from '@/lib/huandeng-locale';
 import type { PptdBackend } from '@/lib/pptd-backend';
 import { cn } from '@/lib/utils';
 import type { PageSnapshot, PageVersionSnapshot, PageVersionSummary } from '../../../pptd/types';
@@ -11,16 +12,16 @@ import { Input } from '../ui/input';
 import { PptdPageRenderer, type PptdTheme } from './renderer';
 
 function actorLabel(actor: string): string {
-  if (actor.startsWith('huandeng-ui:') || actor.startsWith('huanding-ui:')) return '编辑器';
-  if (actor === 'external') return '外部文件修改';
+  if (actor.startsWith('huandeng-ui:') || actor.startsWith('huanding-ui:')) return t('编辑器');
+  if (actor === 'external') return t('外部文件修改');
   return actor;
 }
 
 function versionLabel(version: PageVersionSummary): string {
   if (version.kind === 'checkpoint') return version.summary;
-  if (version.kind === 'initial') return '初始记录';
-  if (version.kind === 'external') return '外部文件更新';
-  if (version.kind === 'restore') return '恢复历史版本';
+  if (version.kind === 'initial') return t('初始记录');
+  if (version.kind === 'external') return t('外部文件更新');
+  if (version.kind === 'restore') return t('恢复历史版本');
   const labels: Record<string, string> = {
     'element.patch': '修改对象内容或样式',
     'element.add': '添加对象',
@@ -38,7 +39,9 @@ function versionLabel(version: PageVersionSummary): string {
     'page.move': '调整页序',
     'page.relink': '更新页面文件位置',
   };
-  return [...new Set(version.summary.split(', ').map((item) => labels[item] ?? item))].join(' · ');
+  return [
+    ...new Set(version.summary.split(', ').map((item) => (labels[item] ? t(labels[item]) : item))),
+  ].join(' · ');
 }
 
 export function PageHistoryDialog({
@@ -60,6 +63,7 @@ export function PageHistoryDialog({
   onRestore: (versionId: string) => Promise<unknown>;
   onRecord: (label: string) => Promise<unknown>;
 }) {
+  useHuandengLocale();
   const [versions, setVersions] = useState<PageVersionSummary[]>([]);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [preview, setPreview] = useState<PageVersionSnapshot | null>(null);
@@ -194,13 +198,19 @@ export function PageHistoryDialog({
         <DialogHeader className="shrink-0 border-b border-border px-6 py-5">
           <DialogTitle
             className="flex items-center gap-2"
-            title={`永久 ID：${page.pageId}${page.metadata.label ? `\n旧编号：${page.metadata.label}` : ''}`}
+            title={t('永久 ID：{value0}{value1}', {
+              value0: page.pageId,
+              value1: page.metadata.label
+                ? t('\n旧编号：{value0}', { value0: page.metadata.label })
+                : '',
+            })}
           >
             <History className="size-4" />
-            {page.shortCode ?? page.metadata.label ?? '页面'} · 页面版本
+            {page.shortCode ?? page.metadata.label ?? t('页面')}
+            {t(' · 页面版本')}
           </DialogTitle>
           <DialogDescription>
-            自动保存保留工作稿。完成一轮修改后，为这一页记录一个有名字的版本。
+            {t('自动保存保留工作稿。完成一轮修改后，为这一页记录一个有名字的版本。')}
           </DialogDescription>
         </DialogHeader>
         <div className="flex shrink-0 items-center gap-2 border-b px-5 py-3">
@@ -213,7 +223,7 @@ export function PageHistoryDialog({
               setSelectedId(null);
             }}
           >
-            已记录版本
+            {t('已记录版本')}
           </Button>
           <Button
             size="sm"
@@ -224,11 +234,11 @@ export function PageHistoryDialog({
               setSelectedId(null);
             }}
           >
-            操作记录
+            {t('操作记录')}
           </Button>
           <Input
-            aria-label="页面版本名称"
-            placeholder="版本名称，例如：图表完成 / 组会定稿"
+            aria-label={t('页面版本名称')}
+            placeholder={t('版本名称，例如：图表完成 / 组会定稿')}
             value={label}
             disabled={disabled || recording || restoring}
             maxLength={200}
@@ -244,19 +254,22 @@ export function PageHistoryDialog({
             onClick={() => void recordVersion()}
           >
             <BookmarkPlus />
-            {recording ? '记录中…' : '记录页面版本'}
+            {recording ? t('记录中…') : t('记录页面版本')}
           </Button>
         </div>
         <div className="flex min-h-0 flex-1">
           <div className="flex w-56 shrink-0 flex-col border-r border-border bg-sidebar/50">
             <div className="flex h-10 shrink-0 items-center gap-1 border-b px-3">
               <span className="mr-auto text-[11px] text-muted-foreground">
-                {versions.length} {view === 'checkpoints' ? '个版本' : '条操作'} · 新 → 旧
+                {t('{value0} {value1} · 新 → 旧', {
+                  value0: versions.length,
+                  value1: view === 'checkpoints' ? t('个版本') : t('条操作'),
+                })}
               </span>
               <Button
                 variant="ghost"
                 size="icon-xs"
-                aria-label="查看较新版本"
+                aria-label={t('查看较新版本')}
                 disabled={recording || restoring || selectedIndex <= 0}
                 onClick={() => setSelectedId(versions[selectedIndex - 1].versionId)}
               >
@@ -265,7 +278,7 @@ export function PageHistoryDialog({
               <Button
                 variant="ghost"
                 size="icon-xs"
-                aria-label="查看较早版本"
+                aria-label={t('查看较早版本')}
                 disabled={
                   recording ||
                   restoring ||
@@ -279,15 +292,15 @@ export function PageHistoryDialog({
             </div>
             <section
               className="min-h-0 flex-1 space-y-1 overflow-auto p-2"
-              aria-label="页面版本列表"
+              aria-label={t('页面版本列表')}
             >
               {loading && !versions.length ? (
-                <p className="p-3 text-xs text-muted-foreground">正在读取历史…</p>
+                <p className="p-3 text-xs text-muted-foreground">{t('正在读取历史…')}</p>
               ) : !versions.length ? (
                 <p className="p-3 text-xs text-muted-foreground">
                   {view === 'checkpoints'
-                    ? '尚未记录命名版本。日常修改会自动保存；完成一轮修改后，在上方命名并记录。'
-                    : '尚无操作记录。'}
+                    ? t('尚未记录命名版本。日常修改会自动保存；完成一轮修改后，在上方命名并记录。')
+                    : t('尚无操作记录。')}
                 </p>
               ) : (
                 versions.map((version) => (
@@ -316,16 +329,16 @@ export function PageHistoryDialog({
                       {version.current && (
                         <span className="flex shrink-0 items-center gap-0.5 text-[10px] text-brand">
                           <Check className="size-3" />
-                          当前
+                          {t('当前')}
                         </span>
                       )}
                     </div>
                     <div className="space-y-1 text-[10px] leading-relaxed text-muted-foreground">
-                      <p>{new Date(version.createdAt).toLocaleString()}</p>
+                      <p>{new Date(version.createdAt).toLocaleString(getUiLocale())}</p>
                       <p className="truncate" title={version.actor}>
                         {actorLabel(version.actor)}
-                        {version.kind === 'initial' && ' · 初始记录'}
-                        {version.kind === 'restore' && ' · 版本恢复'}
+                        {version.kind === 'initial' && t(' · 初始记录')}
+                        {version.kind === 'restore' && t(' · 版本恢复')}
                       </p>
                       <p className="truncate font-mono" title={version.versionId}>
                         {version.versionId.split(':').at(-1)?.slice(0, 8)}
@@ -339,7 +352,7 @@ export function PageHistoryDialog({
           <div className="flex min-w-0 flex-1 flex-col">
             <div className="flex h-10 shrink-0 items-center border-b px-4 text-[11px] text-muted-foreground">
               <span className="truncate font-mono">{page.path}</span>
-              <span className="ml-auto shrink-0 pl-3">只读预览</span>
+              <span className="ml-auto shrink-0 pl-3">{t('只读预览')}</span>
             </div>
             <div className="relative min-h-0 flex-1 bg-canvas p-5" data-hd-history-preview>
               {previewLoading ? (
@@ -356,13 +369,15 @@ export function PageHistoryDialog({
                 </SlideCanvas>
               ) : (
                 <p className="grid h-full place-items-center text-sm text-muted-foreground">
-                  选择左侧的版本
+                  {t('选择左侧的版本')}
                 </p>
               )}
             </div>
             {preview?.page.data.notes && (
               <details className="shrink-0 border-t px-4 py-3 text-xs">
-                <summary className="cursor-pointer text-muted-foreground">该版本的演讲备注</summary>
+                <summary className="cursor-pointer text-muted-foreground">
+                  {t('该版本的演讲备注')}
+                </summary>
                 <p className="mt-2 max-h-24 overflow-auto whitespace-pre-wrap leading-relaxed">
                   {preview.page.data.notes}
                 </p>
@@ -370,8 +385,8 @@ export function PageHistoryDialog({
             )}
             <p className="shrink-0 border-t px-4 py-2 text-[10px] leading-relaxed text-muted-foreground">
               {preview?.assets === 'archived'
-                ? '命名版本随项目保存，包含页面、故事与归档素材。恢复只更新这一页。'
-                : '操作记录用于撤销和恢复工作稿；旧操作预览使用当前项目素材。'}
+                ? t('命名版本随项目保存，包含页面、故事与归档素材。恢复只更新这一页。')
+                : t('操作记录用于撤销和恢复工作稿；旧操作预览使用当前项目素材。')}
             </p>
           </div>
         </div>
@@ -379,17 +394,17 @@ export function PageHistoryDialog({
           <div className="min-w-0 flex-1 text-xs leading-relaxed">
             {error ? (
               <p role="alert" className="text-destructive">
-                {error}
+                {t(error)}
               </p>
             ) : message ? (
               <p role="status" className="text-brand">
-                {message}
+                {t(message)}
               </p>
             ) : (
               <p className="text-muted-foreground">
                 {selected?.current
-                  ? '这个版本与当前工作稿一致。'
-                  : '可将选中版本恢复到当前工作稿。'}
+                  ? t('这个版本与当前工作稿一致。')
+                  : t('可将选中版本恢复到当前工作稿。')}
               </p>
             )}
           </div>
@@ -398,7 +413,7 @@ export function PageHistoryDialog({
             disabled={recording || restoring}
             onClick={() => onOpenChange(false)}
           >
-            返回编辑
+            {t('返回编辑')}
           </Button>
           <Button
             data-hd-restore-version
@@ -408,7 +423,7 @@ export function PageHistoryDialog({
             onClick={() => void restore()}
           >
             {restoring ? <Loader2 className="animate-spin" /> : <RotateCcw />}
-            {restoring ? '正在恢复…' : '将此版本恢复为当前页'}
+            {restoring ? t('正在恢复…') : t('将此版本恢复为当前页')}
           </Button>
         </div>
       </DialogContent>

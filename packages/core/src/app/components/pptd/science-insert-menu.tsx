@@ -1,4 +1,5 @@
 import { ChartNoAxesCombined, Grid2X2, Sigma, Smile } from 'lucide-react';
+import { uiText as t, useHuandengLocale } from '@/lib/huandeng-locale';
 import {
   CHART_LABELS,
   CHART_TYPES,
@@ -27,34 +28,35 @@ export function ScienceInsertMenu({
   disabled?: boolean;
   onInsert: (element: PptdElement) => void;
 }) {
+  useHuandengLocale();
   const insert = (kind: ScienceObject, variant?: string) =>
     onInsert(createScienceElement(kind, `node-${crypto.randomUUID()}`, size, variant));
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
-        render={<Button size="sm" variant="ghost" disabled={disabled} aria-label="插入数据" />}
+        render={<Button size="sm" variant="ghost" disabled={disabled} aria-label={t('插入数据')} />}
       >
         <ChartNoAxesCombined />
-        数据
+        {t('数据')}
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start">
         <DropdownMenuItem onClick={() => insert('table')}>
           <Grid2X2 />
-          表格
+          {t('表格')}
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => insert('equation')}>
           <Sigma />
-          LaTeX 公式
+          {t('LaTeX 公式')}
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => insert('icon')}>
           <Smile />
-          图标
+          {t('图标')}
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuSub>
           <DropdownMenuSubTrigger>
             <ChartNoAxesCombined />
-            图表
+            {t('图表')}
           </DropdownMenuSubTrigger>
           <DropdownMenuSubContent>
             {CHART_TYPES.map((type) => (

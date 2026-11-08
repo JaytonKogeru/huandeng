@@ -2,9 +2,12 @@ import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import {
   CallToolRequestSchema,
+  ListResourcesRequestSchema,
   ListToolsRequestSchema,
+  ReadResourceRequestSchema,
   type Tool,
 } from '@modelcontextprotocol/sdk/types.js';
+import { agentGuide, agentGuides } from './agent-guide';
 import type { HuandengClient } from './client.ts';
 import { canonicalToolName } from './tool-names.ts';
 import type { TransactionRequest } from './types.ts';
@@ -22,6 +25,17 @@ const objectSchema = (properties: Record<string, object>, required: string[] = [
   additionalProperties: false,
 });
 const read = { readOnlyHint: true, destructiveHint: false, openWorldHint: false };
+const transactionSchema = {
+  type: 'object',
+  properties: {
+    requestId: { type: 'string' },
+    deckId: { type: 'string' },
+    actor: { type: 'string' },
+    expected: { type: 'object' },
+    operations: { type: 'array', items: { type: 'object' } },
+  },
+  required: ['requestId', 'deckId', 'actor', 'expected', 'operations'],
+};
 const tools: Tool[] = [
   {
     name: 'huandeng_context',
@@ -43,21 +57,23 @@ const tools: Tool[] = [
     annotations: read,
   },
   {
+    name: 'huandeng_preview',
+    description:
+      'Validate and preview the exact transaction without writing pages, Story, history or versions. Returns a payload hash, actual bounded field/file/page changes and reuse impact. Read truncation flags. New-page IDs are provisional. This is not approval or a rendered image; apply the unchanged transaction with previewHash when authorized.',
+    inputSchema: objectSchema({ transaction: transactionSchema }, ['transaction']),
+    annotations: read,
+  },
+  {
     name: 'huandeng_apply',
     description:
-      'Apply a focused transaction through the same writer as the editor. Include requestId, deckId, actor, expected revisions and operations. Reuse requestId only for an identical retry. Preserve source figures, author intent and untouched layout.',
+      'Apply a focused transaction through the same writer as the editor. Include requestId, deckId, actor, expected revisions and operations. Supply previewHash from huandeng_preview to bind the exact proposal; CAS still rejects stale revisions. The hash is not approval. Reuse requestId only for an identical retry. Preserve figures, author intent and untouched layout.',
     inputSchema: objectSchema(
       {
-        transaction: {
-          type: 'object',
-          properties: {
-            requestId: { type: 'string' },
-            deckId: { type: 'string' },
-            actor: { type: 'string' },
-            expected: { type: 'object' },
-            operations: { type: 'array', items: { type: 'object' } },
-          },
-          required: ['requestId', 'deckId', 'actor', 'expected', 'operations'],
+        transaction: transactionSchema,
+        previewHash: {
+          type: 'string',
+          description:
+            'The hash returned for this exact unchanged transaction by huandeng_preview.',
         },
       },
       ['transaction'],
@@ -318,15 +334,21 @@ function queryPath(endpoint: string, args: Record<string, unknown>): string {
 
 export function createMcpServer(client: HuandengClient) {
   const server = new Server(
-    { name: 'HUANDENG Plugin', version: '0.7.0' },
+    { name: 'HUANDENG Plugin', version: '0.9.0' },
     {
-      capabilities: { tools: {} },
+      capabilities: { tools: {}, resources: {} },
       instructions:
-        'Use the external user conversation. Read huandeng_context and huandeng_story_briefing; target repeated slides by occurrenceId and keep pinned versions read-only. Record the request and preservation constraints with huandeng_story_record, then apply focused edits with current revisions. Render and inspect results. Story records agent interpretation, never human approval. Preserve original scientific figures and never invent data.',
+        'Use the external user conversation and the huandeng://guide/story and huandeng://guide/operations resources. Read context, selection when relevant, and Story briefing; target repeated slides by occurrenceId and keep pins read-only. Form an evidence-backed Story and focused transaction, preserving figures and author constraints. Preview without writing, review actual impact, then apply the unchanged transaction with previewHash when already authorized. A hash and Story record are not human approval. Re-read/render real results; never invent scientific data. No second document writer.',
     },
   );
   server.setRequestHandler(ListToolsRequestSchema, async () => ({
     tools,
+  }));
+  server.setRequestHandler(ListResourcesRequestSchema, async () => ({
+    resources: agentGuides.map(({ text: _text, ...resource }) => resource),
+  }));
+  server.setRequestHandler(ReadResourceRequestSchema, async (request) => ({
+    contents: [agentGuide(request.params.uri)],
   }));
   server.setRequestHandler(CallToolRequestSchema, async (request) => {
     try {
@@ -371,7 +393,12 @@ export function createMcpServer(client: HuandengClient) {
           result = await client.request('/selection');
           break;
         case 'huandeng_apply':
-          result = await client.apply(args.transaction as TransactionRequest);
+          if (args.previewHash !== undefined && typeof args.previewHash !== 'string')
+            throw new Error('previewHash must be a string.');
+          result = await client.apply(args.transaction as TransactionRequest, args.previewHash);
+          break;
+        case 'huandeng_preview':
+          result = await client.preview(args.transaction as TransactionRequest);
           break;
         case 'huandeng_history':
           if (args.versionId && !args.pageId) throw new Error('pageId is required with versionId.');

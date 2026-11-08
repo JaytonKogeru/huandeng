@@ -197,6 +197,51 @@ describe('HUANDENG production document server', () => {
     expect(await stale.json()).toMatchObject({ code: 'REVISION_CONFLICT' });
   });
 
+  it('previews without saving and binds authenticated proposal application to the exact payload', async () => {
+    const { project, server, session } = await fixture();
+    const page = session.pages[0];
+    const transaction: TransactionRequest = {
+      requestId: randomUUID(),
+      actor: 'proposal-http-test',
+      deckId: session.deckId,
+      expected: { pages: { [page.pageId]: page.pageRevision } },
+      operations: [{ op: 'page.notes.set', pageId: page.pageId, text: 'Applied after preview' }],
+    };
+    const post = (route: string, body: unknown, token = session.sessionToken) =>
+      fetch(`${server.url}/__pptd${route}`, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json', 'x-huandeng-token': token },
+        body: JSON.stringify(body),
+      });
+    expect((await post('/proposals/preview', { transaction }, 'invalid')).status).toBe(403);
+    const preview = await (await post('/proposals/preview', { transaction })).json();
+    expect(preview).toMatchObject({ ok: true, kind: 'proposal-preview', createdPageCount: 0 });
+    expect(await fs.readFile(path.join(project, 'pages/a.page'), 'utf8')).toBe(originalPage);
+    expect(await (await fetch(`${server.url}/__pptd/history`)).json()).toEqual([]);
+    expect((await post('/proposals/apply', { transaction })).status).toBe(400);
+    expect(
+      (
+        await post('/proposals/apply', {
+          transaction: { ...transaction, actor: 'tampered' },
+          previewHash: preview.previewHash,
+        })
+      ).status,
+    ).toBe(400);
+    const applied = await (
+      await post('/proposals/apply', { transaction, previewHash: preview.previewHash })
+    ).json();
+    expect(applied).toMatchObject({ ok: true, requestId: transaction.requestId });
+    expect(
+      await (
+        await post('/proposals/apply', { transaction, previewHash: preview.previewHash })
+      ).json(),
+    ).toEqual(applied);
+    expect(await fs.readFile(path.join(project, 'pages/a.page'), 'utf8')).toContain(
+      'Applied after preview',
+    );
+    expect(await (await fetch(`${server.url}/__pptd/history`)).json()).toHaveLength(1);
+  });
+
   it('authenticates explicit recovery and preserves the failed transaction receipt', async () => {
     const { project, server, session } = await fixture();
     const page = session.pages[0];

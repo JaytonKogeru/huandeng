@@ -1,0 +1,93 @@
+const english = {
+  '连接 Agent…': 'Connect an Agent…',
+  文件: 'File',
+  '新建项目…': 'New project…',
+  '打开项目…': 'Open project…',
+  最近项目: 'Recent projects',
+  暂无最近项目: 'No recent projects',
+  在文件管理器中显示: 'Show in file manager',
+  回到开始页: 'Back to start',
+  关闭窗口: 'Close window',
+  编辑: 'Edit',
+  撤销: 'Undo',
+  重做: 'Redo',
+  剪切: 'Cut',
+  复制: 'Copy',
+  粘贴: 'Paste',
+  全选: 'Select all',
+  视图: 'View',
+  实际大小: 'Actual size',
+  放大界面: 'Zoom in',
+  缩小界面: 'Zoom out',
+  全屏: 'Fullscreen',
+  界面语言: 'Interface language',
+  帮助: 'Help',
+  '关于 HUANDENG Editor': 'About HUANDENG Editor',
+  '独立页面，持续演进。\n\nHUANDENG Story 记录意图。\nHUANDENG Plugin 连接外部 Agent。':
+    'Independent slides. Evolving stories.\n\nHUANDENG Story records intent.\nHUANDENG Plugin connects external Agents.',
+  关闭: 'Close',
+  只读: 'Read-only',
+  操作未完成: 'The operation did not complete',
+  返回编辑器: 'Back to editor',
+  '页面尚未确认保存完成。请检查未保存的修改或冲突，然后再试。':
+    'The slide has not confirmed that saving is complete. Check unsaved changes or conflicts, then try again.',
+  '正在打开项目…': 'Opening project…',
+  '打开 HUANDENG 项目': 'Open HUANDENG project',
+  'PPTD 项目': 'PPTD project',
+  '新建 HUANDENG 项目 · 将创建同名文件夹':
+    'New HUANDENG project · Creates a folder with the same name',
+  '项目名称（创建独立文件夹）': 'Project name (creates a separate folder)',
+  创建项目: 'Create project',
+  '请选择当前项目中的文件。': 'Choose a file inside the current project.',
+  '不支持这个编辑命令。': 'This editing command is not supported.',
+  '此操作只适用于当前 HUANDENG 窗口。':
+    'This operation is only available in the current HUANDENG window.',
+  '这个项目不在最近项目中，请通过“打开项目”选择。':
+    'This project is not in Recent projects. Choose it using Open project.',
+  '页面仍有未保存的修改。': 'The slide still has unsaved changes.',
+  '请给项目起一个名字。': 'Enter a project name.',
+  '项目文件夹已经存在，请换一个名称：\n{path}':
+    'This project folder already exists. Choose another name:\n{path}',
+  '文档服务必须运行在本机。': 'The document service must run on this computer.',
+  '文档服务返回 {status}。': 'The document service returned {status}.',
+  '这个文档服务属于另一个项目。': 'This document service belongs to a different project.',
+  '这个项目仍由旧版文档服务打开。请关闭旧版编辑器或终端服务，然后重新打开项目。':
+    'An older document service has this project open. Close the older editor or terminal service, then reopen the project.',
+  '这个项目已经以另一种读写模式打开。请先关闭原有会话。':
+    'This project is already open with different read/write access. Close the previous session first.',
+  'HUANDENG 文档服务尚未构建。请先运行 corepack pnpm --filter @open-slide/core build。':
+    'The HUANDENG document service has not been built. Run corepack pnpm --filter @open-slide/core build first.',
+  '请选择项目中的 .pptd 文件。': 'Choose the project’s .pptd file.',
+  '文档服务未能启动（{status}）。\n{output}':
+    'The document service did not start ({status}).\n{output}',
+  '文档服务需要重新构建。': 'The document service needs to be rebuilt.',
+  '等待文档服务超时。\n{output}': 'Timed out waiting for the document service.\n{output}',
+  '不支持此界面语言。': 'This interface language is not supported.',
+  '吸附设置必须为开启或关闭。': 'The snapping setting must be on or off.',
+};
+let current = 'zh-CN';
+
+function resolveLocale(preference, systemLocale) {
+  if (preference === 'en' || preference === 'zh-CN') return preference;
+  return typeof systemLocale === 'string' && /^zh(?:[-_]|$)/i.test(systemLocale) ? 'zh-CN' : 'en';
+}
+
+function setCurrentLocale(locale) {
+  if (locale !== 'en' && locale !== 'zh-CN') throw new Error('Unsupported interface language.');
+  current = locale;
+}
+
+function getCurrentLocale() {
+  return current;
+}
+
+function text(message, values) {
+  const template = current === 'en' && Object.hasOwn(english, message) ? english[message] : message;
+  return values
+    ? template.replace(/\{(\w+)\}/g, (match, key) =>
+        values[key] === undefined ? match : String(values[key]),
+      )
+    : template;
+}
+
+module.exports = { english, resolveLocale, setCurrentLocale, getCurrentLocale, text };

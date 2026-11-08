@@ -7,17 +7,27 @@ import {
   useRef,
   useState,
 } from 'react';
+import { useHuandengLocale } from '@/lib/huandeng-locale';
 import {
-  alignRects,
+  type GapGuide,
   type Guide,
   type Rect,
   type ResizeHandle,
   resizeRect,
-  snapMove,
+  type SnapTargets,
+  snapMoveWithSpacing,
+  snapResize,
   unionRects,
 } from '@/lib/inspector/geometry';
 import { capturePointerGesture } from '@/lib/pointer-gesture';
 import { elementLabel } from '@/lib/pptd-element-label';
+import {
+  elementRect,
+  elementVisualRect,
+  rectBounds,
+  rootSelectedElements,
+  snapTargetsForSelection,
+} from '@/lib/pptd-geometry';
 import type { InsertionTool } from '@/lib/pptd-insertion';
 import { cycleItemId, editorKeyboardScope, topLevelElementIds } from '@/lib/pptd-keyboard';
 import { expandGroupIds, owningGroupId } from '../../../pptd/grouping';
@@ -36,6 +46,12 @@ import {
   textValue,
 } from './renderer';
 
+export {
+  arrangeElementBounds as alignedBounds,
+  elementRect,
+  rectBounds,
+} from '@/lib/pptd-geometry';
+
 type Props = {
   page: PageSnapshot;
   size: PageSize;
@@ -49,6 +65,7 @@ type Props = {
   onFlush: () => void;
   onComposition: (composing: boolean) => void;
   disabled?: boolean;
+  snapEnabled?: boolean;
   scale?: number;
   onScaleChange?: (scale: number) => void;
   insertionTool?: InsertionTool | null;
@@ -62,6 +79,8 @@ type Gesture = {
   startX: number;
   startY: number;
   scale: number;
+  selectionRect: Rect;
+  targets: SnapTargets;
   elements: {
     id: string;
     rect: Rect;
@@ -76,35 +95,6 @@ type Gesture = {
   originals: { elementId: string; fields: Record<string, unknown> }[];
 };
 
-export function elementRect(element: PptdElement): Rect {
-  const [x, y, width, height] = element.bounds ?? [0, 0, 120, 50];
-  return { x, y, width, height };
-}
-
-export function rectBounds(rect: Rect): Bounds {
-  return [rect.x, rect.y, rect.width, rect.height].map(
-    (value) => Math.round(value * 10000) / 10000,
-  ) as Bounds;
-}
-
-export function alignedBounds(
-  elements: PptdElement[],
-  alignment: Parameters<typeof alignRects>[1],
-  size: PageSize,
-) {
-  const rects = elements.map(elementRect);
-  const target =
-    elements.length === 1 ? { x: 0, y: 0, width: size[0], height: size[1] } : undefined;
-  return alignRects(rects, alignment, target).map((delta, index) => ({
-    elementId: elements[index].elementId,
-    bounds: rectBounds({
-      ...rects[index],
-      x: rects[index].x + delta.x,
-      y: rects[index].y + delta.y,
-    }),
-  }));
-}
-
 export function PptdEditorCanvas({
   page,
   size,
@@ -118,6 +108,7 @@ export function PptdEditorCanvas({
   onFlush,
   onComposition,
   disabled = false,
+  snapEnabled = true,
   scale,
   onScaleChange,
   insertionTool,
@@ -125,8 +116,10 @@ export function PptdEditorCanvas({
   autoEditId,
   previewTimeMs,
 }: Props) {
+  const { t, number: formatNumber } = useHuandengLocale();
   const [actualScale, setActualScale] = useState(1);
   const [guides, setGuides] = useState<Guide[]>([]);
+  const [gapGuides, setGapGuides] = useState<GapGuide[]>([]);
   const [editingId, setEditingId] = useState<string | null>(null);
   const autoEditConsumed = useRef<string | null>(null);
   const gestureRef = useRef<Gesture | null>(null);
@@ -134,8 +127,8 @@ export function PptdEditorCanvas({
   const canvasRef = useRef<HTMLDivElement>(null);
   const leaveCanvasOnTab = useRef(false);
   const focusedElementId = useRef<string | null>(null);
-  const latest = useRef({ page, size, onPatch, onEnd, onCancel });
-  latest.current = { page, size, onPatch, onEnd, onCancel };
+  const latest = useRef({ page, snapEnabled, onPatch, onEnd, onCancel, onSelect });
+  latest.current = { page, snapEnabled, onPatch, onEnd, onCancel, onSelect };
 
   useEffect(() => {
     if (
@@ -171,21 +164,24 @@ export function PptdEditorCanvas({
     if (!gesture.moved && Math.hypot(dx, dy) * gesture.scale < 2) return;
     gesture.moved = true;
     if (gesture.kind === 'move') {
+      const horizontal = event.shiftKey && Math.abs(dx) >= Math.abs(dy);
+      const vertical = event.shiftKey && !horizontal;
       if (event.shiftKey) {
-        if (Math.abs(dx) >= Math.abs(dy)) dy = 0;
+        if (horizontal) dy = 0;
         else dx = 0;
       }
-      const group = unionRects(gesture.elements.map((item) => item.rect));
-      if (!group) return;
-      const selected = new Set(gesture.elements.map((item) => item.id));
-      const targets = latest.current.page.data.elements
-        .filter((item) => !selected.has(item.elementId))
-        .map(elementRect);
-      targets.push({ x: 0, y: 0, width: latest.current.size[0], height: latest.current.size[1] });
-      const snap = event.altKey
-        ? { delta: { x: dx, y: dy }, guides: [] }
-        : snapMove(group, { x: dx, y: dy }, targets, 5 / gesture.scale);
+      const snap =
+        event.altKey || !latest.current.snapEnabled
+          ? { delta: { x: dx, y: dy }, guides: [], gapGuides: [] }
+          : snapMoveWithSpacing(
+              gesture.selectionRect,
+              { x: dx, y: dy },
+              gesture.targets,
+              5 / gesture.scale,
+              { x: !vertical, y: !horizontal },
+            );
       setGuides(snap.guides);
+      setGapGuides(snap.gapGuides);
       for (const item of gesture.elements)
         latest.current.onPatch(
           item.id,
@@ -208,12 +204,22 @@ export function PptdEditorCanvas({
       const isGroup =
         latest.current.page.data.elements.find((element) => element.elementId === item.id)
           ?.elementType === 'group';
-      const rect = resizeRect(
-        item.rect,
-        gesture.handle ?? 'se',
-        localDelta,
-        event.shiftKey || isGroup,
-      );
+      const handle = gesture.handle ?? 'se';
+      const lockAspect = event.shiftKey || isGroup;
+      const resize =
+        latest.current.snapEnabled && !event.altKey && Math.abs(item.rotation % 360) < 1e-8
+          ? snapResize(
+              item.rect,
+              handle,
+              localDelta,
+              gesture.targets.rects,
+              5 / gesture.scale,
+              lockAspect,
+            )
+          : { rect: resizeRect(item.rect, handle, localDelta, lockAspect), guides: [] };
+      const rect = resize.rect;
+      setGuides(resize.guides);
+      setGapGuides([]);
       const shiftX = rect.x + rect.width / 2 - item.rect.x - item.rect.width / 2;
       const shiftY = rect.y + rect.height / 2 - item.rect.y - item.rect.height / 2;
       rect.x =
@@ -249,19 +255,21 @@ export function PptdEditorCanvas({
     kind: Gesture['kind'],
     ids: string[],
     handle?: ResizeHandle,
+    clickSelection?: string[],
   ) => {
     if (disabled || event.button !== 0 || !event.isPrimary || gestureRef.current) return;
     event.preventDefault();
     event.stopPropagation();
-    const elements = page.data.elements
-      .filter((item) => ids.includes(item.elementId))
-      .map((item) => ({
-        id: item.elementId,
-        rect: elementRect(item),
-        rotation: numberValue(item.rotation, 0),
-        originalRotation: item.rotation,
-        originalBounds: item.bounds,
-      }));
+    const roots = rootSelectedElements(page.data.elements, ids);
+    const selectionRect = unionRects(roots.map(elementVisualRect));
+    if (!selectionRect) return;
+    const elements = roots.map((item) => ({
+      id: item.elementId,
+      rect: elementRect(item),
+      rotation: numberValue(item.rotation, 0),
+      originalRotation: item.rotation,
+      originalBounds: item.bounds,
+    }));
     if (!elements.length) return;
     canvasRef.current
       ?.querySelector<HTMLElement>(`[data-hd-element-id="${CSS.escape(elements[0].id)}"]`)
@@ -280,6 +288,12 @@ export function PptdEditorCanvas({
       startX: event.clientX,
       startY: event.clientY,
       scale: actualScale,
+      selectionRect,
+      targets: snapTargetsForSelection(
+        page.data.elements,
+        roots.map((item) => item.elementId),
+        size,
+      ),
       elements,
       handle,
       center,
@@ -299,8 +313,12 @@ export function PptdEditorCanvas({
         gestureRef.current = null;
         cancelGestureRef.current = null;
         setGuides([]);
+        setGapGuides([]);
         if (cancelled) latest.current.onCancel(gesture.originals);
-        else latest.current.onEnd();
+        else {
+          latest.current.onEnd();
+          if (!gesture.moved && clickSelection) latest.current.onSelect(clickSelection);
+        }
       },
     });
     gestureRef.current = gesture;
@@ -314,15 +332,26 @@ export function PptdEditorCanvas({
     event.stopPropagation();
     event.currentTarget.focus({ preventScroll: true });
     const targetId = owningGroupId(page.data.elements, element.elementId) ?? element.elementId;
+    const toggleOff = event.shiftKey && selectedIds.includes(targetId);
+    const deferToggle = toggleOff && !disabled && event.button === 0;
     const ids = event.shiftKey
       ? selectedIds.includes(targetId)
-        ? selectedIds.filter((id) => id !== targetId)
+        ? deferToggle
+          ? selectedIds
+          : selectedIds.filter((id) => id !== targetId)
         : [...selectedIds, targetId]
       : selectedIds.includes(targetId)
         ? selectedIds
         : [targetId];
     onSelect(ids);
-    if (ids.includes(targetId)) startGesture(event, 'move', ids);
+    if (ids.includes(targetId))
+      startGesture(
+        event,
+        'move',
+        ids,
+        undefined,
+        deferToggle ? selectedIds.filter((id) => id !== targetId) : undefined,
+      );
   };
 
   const scaleChanged = useCallback(
@@ -351,10 +380,11 @@ export function PptdEditorCanvas({
       role="application"
       // biome-ignore lint/a11y/noNoninteractiveTabindex: The authoring canvas is a composite keyboard widget with one stable native focus entry.
       tabIndex={0}
-      aria-label="幻灯片画布"
+      aria-label={t('幻灯片画布')}
       aria-describedby="hd-canvas-keyboard-hint"
       className="relative h-full min-h-0 w-full outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-brand/60 [&_[data-hd-element-id]:focus-visible]:ring-2 [&_[data-hd-element-id]:focus-visible]:ring-brand/50"
       data-hd-editor-canvas
+      data-hd-snapping={snapEnabled}
       data-hd-focus-region="canvas"
       onFocusCapture={(event) => {
         focusedElementId.current =
@@ -425,7 +455,7 @@ export function PptdEditorCanvas({
       }}
     >
       <p id="hd-canvas-keyboard-hint" className="sr-only">
-        Tab 切换对象，方向键移动，Enter 编辑文字。Esc 清除选区后 Tab 离开画布，F6 切换面板。
+        {t('Tab 切换对象，方向键移动，Enter 编辑文字。Esc 清除选区后 Tab 离开画布，F6 切换面板。')}
       </p>
       {editingId && (
         <div
@@ -445,8 +475,8 @@ export function PptdEditorCanvas({
               key={command}
               variant="ghost"
               size="icon-sm"
-              aria-label={label}
-              title={label}
+              aria-label={t(label)}
+              title={t(label)}
               onClick={() => document.execCommand(command)}
             >
               <Icon className="size-3.5" />
@@ -474,7 +504,7 @@ export function PptdEditorCanvas({
             previewTimeMs={previewTimeMs}
             elementTabIndex={() => -1}
             elementLabel={(element) =>
-              `${elementLabel(element)} · ${element.elementType === 'text' ? 'Enter 编辑文字' : '幻灯片对象'}`
+              `${elementLabel(element)} · ${t(element.elementType === 'text' ? 'Enter 编辑文字' : '幻灯片对象')}`
             }
             onElementPointerDown={select}
             onElementFocus={(id) => {
@@ -531,7 +561,7 @@ export function PptdEditorCanvas({
                         key={handle}
                         type="button"
                         tabIndex={-1}
-                        aria-label={`调整尺寸 ${handle}`}
+                        aria-label={t('调整尺寸 {handle}', { handle })}
                         data-hd-resize={handle}
                         className="pointer-events-auto absolute bg-white"
                         style={{
@@ -562,7 +592,7 @@ export function PptdEditorCanvas({
                     <button
                       type="button"
                       tabIndex={-1}
-                      aria-label="旋转对象"
+                      aria-label={t('旋转对象')}
                       data-hd-rotate
                       className="pointer-events-auto absolute rounded-full bg-white"
                       style={{
@@ -585,6 +615,8 @@ export function PptdEditorCanvas({
           {guides.map((guide) => (
             <div
               key={`${guide.axis}-${guide.position}`}
+              data-hd-snap-guide={guide.axis}
+              data-hd-guide-position={guide.position}
               className="pointer-events-none absolute bg-brand"
               style={
                 guide.axis === 'x'
@@ -605,6 +637,66 @@ export function PptdEditorCanvas({
               }
             />
           ))}
+          {gapGuides.length > 0 && (
+            <svg
+              className="pointer-events-none absolute inset-0 overflow-visible"
+              width={size[0]}
+              height={size[1]}
+              aria-hidden="true"
+              style={{ zIndex: 3 }}
+            >
+              {gapGuides.map((guide) => {
+                const horizontal = guide.axis === 'x';
+                const x1 = horizontal ? guide.start : guide.position;
+                const x2 = horizontal ? guide.end : guide.position;
+                const y1 = horizontal ? guide.position : guide.start;
+                const y2 = horizontal ? guide.position : guide.end;
+                const cap = 3 / actualScale;
+                return (
+                  <g
+                    key={`${guide.axis}-${guide.position}-${guide.start}-${guide.end}`}
+                    data-hd-gap-guide={guide.axis}
+                    data-hd-gap-distance={guide.distance}
+                    stroke="var(--brand)"
+                    strokeWidth={1 / actualScale}
+                  >
+                    <line
+                      x1={x1}
+                      y1={y1}
+                      x2={x2}
+                      y2={y2}
+                      strokeDasharray={`${3 / actualScale} ${2 / actualScale}`}
+                    />
+                    <line
+                      x1={x1 - (horizontal ? 0 : cap)}
+                      x2={x1 + (horizontal ? 0 : cap)}
+                      y1={y1 - (horizontal ? cap : 0)}
+                      y2={y1 + (horizontal ? cap : 0)}
+                    />
+                    <line
+                      x1={x2 - (horizontal ? 0 : cap)}
+                      x2={x2 + (horizontal ? 0 : cap)}
+                      y1={y2 - (horizontal ? cap : 0)}
+                      y2={y2 + (horizontal ? cap : 0)}
+                    />
+                    <text
+                      x={(x1 + x2) / 2 + (horizontal ? 0 : 6 / actualScale)}
+                      y={(y1 + y2) / 2 - (horizontal ? 5 / actualScale : 0)}
+                      textAnchor={horizontal ? 'middle' : 'start'}
+                      dominantBaseline={horizontal ? 'auto' : 'central'}
+                      fontSize={10 / actualScale}
+                      fill="var(--brand)"
+                      stroke="var(--background)"
+                      strokeWidth={3 / actualScale}
+                      paintOrder="stroke"
+                    >
+                      {formatNumber(Math.round(guide.distance * 100) / 100)}
+                    </text>
+                  </g>
+                );
+              })}
+            </svg>
+          )}
           {insertionTool && !disabled && onPlace && (
             <InsertionLayer
               key={JSON.stringify(insertionTool)}
@@ -634,6 +726,7 @@ function InlineTextElement({
   onFinish: (restoreFocus: boolean) => void;
   selectAll?: boolean;
 }) {
+  const { t } = useHuandengLocale();
   const editorRef = useRef<HTMLDivElement>(null);
   const content = textContent(element, theme);
   const initial = useRef(textValue(content.text));
@@ -684,7 +777,7 @@ function InlineTextElement({
         contentEditable
         suppressContentEditableWarning
         role="textbox"
-        aria-label="编辑文本"
+        aria-label={t('编辑文本')}
         aria-multiline
         tabIndex={0}
         spellCheck={false}

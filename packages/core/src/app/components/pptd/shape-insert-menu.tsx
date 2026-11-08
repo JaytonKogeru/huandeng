@@ -1,4 +1,5 @@
 import { ChevronDown, Shapes } from 'lucide-react';
+import { uiText as t, useHuandengLocale } from '@/lib/huandeng-locale';
 import type { InsertionTool } from '@/lib/pptd-insertion';
 import { presetShapePath, SHAPE_PRESETS } from '../../../pptd/shape-presets';
 import { Button } from '../ui/button';
@@ -18,6 +19,7 @@ export function ShapeInsertMenu({
   active: boolean;
   onChoose: (tool: InsertionTool) => void;
 }) {
+  useHuandengLocale();
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
@@ -26,19 +28,19 @@ export function ShapeInsertMenu({
             size="sm"
             variant={active ? 'secondary' : 'ghost'}
             disabled={disabled}
-            aria-label="选择形状"
+            aria-label={t('选择形状')}
             aria-pressed={active}
           />
         }
       >
         <Shapes />
-        形状
+        {t('形状')}
         <ChevronDown className="size-3" />
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="start"
         className="grid w-72 grid-cols-3 gap-1 p-2"
-        aria-label="形状种类"
+        aria-label={t('形状种类')}
       >
         {SHAPE_PRESETS.map(([name, label]) => {
           const path = presetShapePath(name, 28, 24);
@@ -47,7 +49,7 @@ export function ShapeInsertMenu({
               key={name}
               onClick={() => onChoose({ kind: 'shape', shapeName: name })}
               className="flex-col justify-center gap-1.5 py-2.5 text-[11px]"
-              aria-label={label}
+              aria-label={t(label)}
             >
               <svg
                 width="28"
@@ -65,7 +67,7 @@ export function ShapeInsertMenu({
                   <rect x="1" y="1" width="26" height="22" rx={name === 'roundRect' ? 5 : 0} />
                 )}
               </svg>
-              {label}
+              {t(label)}
             </DropdownMenuItem>
           );
         })}

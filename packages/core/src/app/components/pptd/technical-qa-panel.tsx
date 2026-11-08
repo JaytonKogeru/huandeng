@@ -1,5 +1,6 @@
 import { ClipboardList, LoaderCircle, ScanText } from 'lucide-react';
 import { useMemo, useState } from 'react';
+import { uiText as t, useHuandengLocale } from '@/lib/huandeng-locale';
 import { requestedPageFonts, technicalDiagnostics } from '../../../pptd/technical-diagnostics';
 import type { Diagnostic, PageSize, PageSnapshot } from '../../../pptd/types';
 import { inspectRenderedPage, type RenderCheck } from '../../lib/pptd-render-check';
@@ -13,6 +14,7 @@ export interface TechnicalQaPanelProps {
 }
 
 export function TechnicalQaPanel({ page, size, diagnostics, onSelect }: TechnicalQaPanelProps) {
+  useHuandengLocale();
   const [checking, setChecking] = useState(false);
   const [checkError, setCheckError] = useState<string | null>(null);
   const [checked, setChecked] = useState<{ page: PageSnapshot; result: RenderCheck } | null>(null);
@@ -67,19 +69,21 @@ export function TechnicalQaPanel({ page, size, diagnostics, onSelect }: Technica
   return (
     <section
       className="space-y-3 border-t border-border px-4 py-4"
-      aria-label="技术检查"
+      aria-label={t('技术检查')}
       data-hd-technical-qa
     >
       <div className="flex items-center gap-2">
         <ClipboardList className="size-3.5" />
-        <h3 className="flex-1 text-xs font-semibold">技术检查</h3>
+        <h3 className="flex-1 text-xs font-semibold">{t('技术检查')}</h3>
         <span className="text-[10px] text-muted-foreground">
-          {errors} 错误 · {warnings} 提醒
+          {t('{value0} 错误 · {value1} 提醒', { value0: errors, value1: warnings })}
         </span>
       </div>
       {issues.length ? (
         <details open={errors > 0}>
-          <summary className="cursor-pointer text-xs">查看 {issues.length} 项检查结果</summary>
+          <summary className="cursor-pointer text-xs">
+            {t('查看 {value0} 项检查结果', { value0: issues.length })}
+          </summary>
           <ul className="mt-2 space-y-2">
             {issues.map((issue) => (
               <li
@@ -96,12 +100,12 @@ export function TechnicalQaPanel({ page, size, diagnostics, onSelect }: Technica
                     }
                   >
                     {issue.severity === 'error'
-                      ? '错误'
+                      ? t('错误')
                       : issue.severity === 'warning'
-                        ? '提醒'
-                        : '信息'}
+                        ? t('提醒')
+                        : t('信息')}
                   </span>
-                  <p className="min-w-0 break-words leading-relaxed">{issue.message}</p>
+                  <p className="min-w-0 break-words leading-relaxed">{t(issue.message)}</p>
                 </div>
                 {issue.elementId &&
                   page.data.elements.some((element) => element.elementId === issue.elementId) && (
@@ -109,10 +113,10 @@ export function TechnicalQaPanel({ page, size, diagnostics, onSelect }: Technica
                       <Button
                         size="xs"
                         variant="outline"
-                        aria-label={`定位对象 ${issue.elementId}`}
+                        aria-label={t('定位对象 {value0}', { value0: issue.elementId })}
                         onClick={() => onSelect(issue.elementId as string)}
                       >
-                        定位对象
+                        {t('定位对象')}
                       </Button>
                       <span
                         className="min-w-0 truncate font-mono text-[10px] text-muted-foreground"
@@ -133,7 +137,7 @@ export function TechnicalQaPanel({ page, size, diagnostics, onSelect }: Technica
         </details>
       ) : (
         <p className="text-[11px] leading-relaxed text-muted-foreground">
-          未发现外框、裁切或已知本地资源问题。
+          {t('未发现外框、裁切或已知本地资源问题。')}
         </p>
       )}
       <div className="space-y-1 border-t border-border pt-2 text-[10px] leading-relaxed text-muted-foreground">
@@ -148,31 +152,35 @@ export function TechnicalQaPanel({ page, size, diagnostics, onSelect }: Technica
           ) : (
             <ScanText className="size-3" />
           )}
-          {checking ? '正在检查…' : '检查本页字体与排版'}
+          {checking ? t('正在检查…') : t('检查本页字体与排版')}
         </Button>
         {checkError && (
           <p role="alert" className="text-destructive">
-            {checkError}
+            {t(checkError)}
           </p>
         )}
         {measured ? (
           <>
             <p>
-              已测量 {measured.inspectedTextBlocks} 处文字与公式
-              {measured.skippedTextBlocks ? `，${measured.skippedTextBlocks} 处暂未测量` : ''}。
+              {t('已测量 {value0} 处文字与公式{value1}。', {
+                value0: measured.inspectedTextBlocks,
+                value1: measured.skippedTextBlocks
+                  ? t('，{value0} 处暂未测量', { value0: measured.skippedTextBlocks })
+                  : '',
+              })}
             </p>
-            {!measured.fontsReady && <p>字体仍在加载，排版测量已跳过，请稍后重试。</p>}
+            {!measured.fontsReady && <p>{t('字体仍在加载，排版测量已跳过，请稍后重试。')}</p>}
             <p>
               {measured.fontAccess === 'granted'
-                ? '已核对本机字体与已加载的网页字体。'
+                ? t('已核对本机字体与已加载的网页字体。')
                 : measured.fontAccess === 'denied'
-                  ? '未获得本机字体权限；本机字体标为未验证。'
-                  : '此环境不支持本机字体枚举；本机字体标为未验证。'}
+                  ? t('未获得本机字体权限；本机字体标为未验证。')
+                  : t('此环境不支持本机字体枚举；本机字体标为未验证。')}
             </p>
             {measured.fonts.length > 0 && (
               <details>
                 <summary className="cursor-pointer">
-                  查看 {measured.fonts.length} 组实际字体设置
+                  {t('查看 {value0} 组实际字体设置', { value0: measured.fonts.length })}
                 </summary>
                 <ul className="mt-2 space-y-1.5">
                   {measured.fonts.map((font) => (
@@ -183,29 +191,33 @@ export function TechnicalQaPanel({ page, size, diagnostics, onSelect }: Technica
                         }
                       >
                         {font.status === 'available'
-                          ? '可用'
+                          ? t('可用')
                           : font.status === 'fallback'
-                            ? '发生回退'
+                            ? t('发生回退')
                             : font.status === 'generic'
-                              ? '系统通用字体'
-                              : '未验证'}
+                              ? t('系统通用字体')
+                              : t('未验证')}
                       </span>{' '}
                       · {font.requested}
                       {font.status === 'fallback' && (
-                        <span> → {font.resolved ?? '浏览器默认'}</span>
+                        <span> → {font.resolved ?? t('浏览器默认')}</span>
                       )}
                     </li>
                   ))}
                 </ul>
               </details>
             )}
-            <p>检查依据为当前画布的排版范围与字体设置；逐字形覆盖和最终观感请结合画布确认。</p>
+            <p>
+              {t('检查依据为当前画布的排版范围与字体设置；逐字形覆盖和最终观感请结合画布确认。')}
+            </p>
           </>
         ) : (
           <>
-            <p>{checked ? '页面内容已改变，请重新检查。' : '本机字体与文字实际排版尚未检查。'}</p>
-            {fonts.length > 0 && <p>页内声明：{fonts.join('、')}。</p>}
-            <p>点击后检查继承字体、富文本、表格与公式；检查结果不会改变版式。</p>
+            <p>
+              {checked ? t('页面内容已改变，请重新检查。') : t('本机字体与文字实际排版尚未检查。')}
+            </p>
+            {fonts.length > 0 && <p>{t('页内声明：{value0}。', { value0: fonts.join('、') })}</p>}
+            <p>{t('点击后检查继承字体、富文本、表格与公式；检查结果不会改变版式。')}</p>
           </>
         )}
       </div>

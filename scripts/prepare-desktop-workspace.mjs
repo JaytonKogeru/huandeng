@@ -26,6 +26,11 @@ for (const name of ['core', 'desktop']) {
         ),
   });
 }
+await fs.cp(
+  path.join(repository, 'plugins', 'huandeng'),
+  path.join(destination, 'packages', 'desktop', 'plugins', 'huandeng'),
+  { recursive: true },
+);
 lockfile.settings = { ...lockfile.settings, injectWorkspacePackages: true };
 await fs.writeFile(path.join(destination, 'pnpm-lock.yaml'), stringify(lockfile));
 await fs.writeFile(

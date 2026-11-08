@@ -10,6 +10,7 @@ import {
   Trash2,
 } from 'lucide-react';
 import { memo, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { uiText as t, useHuandengLocale } from '@/lib/huandeng-locale';
 import { pptdAssetPreviewUrl } from '@/lib/pptd-backend';
 import { elementLabel } from '@/lib/pptd-element-label';
 import { cycleItemId, focusEditorCanvas } from '@/lib/pptd-keyboard';
@@ -78,6 +79,7 @@ export function PptdThumbnailRail({
   onHistory: (pageId: string) => void;
   onShowFile: (pageId: string) => void;
 }) {
+  useHuandengLocale();
   const [query, setQuery] = useState('');
   const [copyStatus, setCopyStatus] = useState('');
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -133,7 +135,7 @@ export function PptdThumbnailRail({
   const currentIndex = pages.findIndex(isCurrent);
   const entries = pages.flatMap((page, index) => {
     const title = page.data.elements.find((element) => element.elementType === 'text');
-    const name = title ? elementLabel(title) : '空白页';
+    const name = title ? elementLabel(title) : t('空白页');
     if (
       query &&
       !`${page.metadata.label ?? ''} ${page.shortCode ?? ''} ${name}`
@@ -145,16 +147,17 @@ export function PptdThumbnailRail({
   });
   const tabStop = entries.find(({ page }) => isCurrent(page))?.key ?? entries[0]?.key;
   return (
-    <nav className="flex min-h-0 flex-1 flex-col bg-sidebar" aria-label="页面列表">
+    <nav className="flex min-h-0 flex-1 flex-col bg-sidebar" aria-label={t('页面列表')}>
       <div className="flex h-11 shrink-0 items-center gap-1 border-b border-border px-3">
         <span className="mr-auto text-xs font-medium">
-          页面 <span className="ml-1 text-muted-foreground">{pages.length}</span>
+          {t('页面 ')}
+          <span className="ml-1 text-muted-foreground">{pages.length}</span>
         </span>
         <Button
           size="icon-xs"
           variant="ghost"
-          aria-label="新增页面"
-          title="新增页面"
+          aria-label={t('新增页面')}
+          title={t('新增页面')}
           disabled={disabled}
           onClick={onAdd}
         >
@@ -163,8 +166,8 @@ export function PptdThumbnailRail({
         <Button
           size="icon-xs"
           variant="ghost"
-          aria-label="复制页面"
-          title="复制页面"
+          aria-label={t('复制页面')}
+          title={t('复制页面')}
           disabled={disabled || !currentPageId}
           onClick={() => currentPageId && onDuplicate(currentPageId)}
         >
@@ -173,15 +176,15 @@ export function PptdThumbnailRail({
       </div>
       <div className="px-3 py-2">
         <Input
-          aria-label="搜索页面编号或标题"
-          placeholder="短码、标题或旧编号…"
+          aria-label={t('搜索页面编号或标题')}
+          placeholder={t('短码、标题或旧编号…')}
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           className="h-7 bg-background text-xs"
         />
       </div>
       <p className="sr-only" role="status">
-        {copyStatus}
+        {t(copyStatus)}
       </p>
       <div
         ref={scrollRef}
@@ -205,7 +208,11 @@ export function PptdThumbnailRail({
                       if (event.relatedTarget && !scrollRef.current?.contains(event.relatedTarget))
                         focusedOccurrence.current = null;
                     }}
-                    aria-label={`第 ${index + 1} 页 · ${page.shortCode ?? page.metadata.label ?? ''} · ${name}`}
+                    aria-label={t('第 {value0} 页 · {value1} · {value2}', {
+                      value0: index + 1,
+                      value1: page.shortCode ?? page.metadata.label ?? '',
+                      value2: name,
+                    })}
                     aria-pressed={isCurrent(page)}
                     className={cn(
                       'block w-full rounded-md p-1.5 text-left outline-none transition-colors focus-visible:ring-2 focus-visible:ring-brand/50',
@@ -284,20 +291,24 @@ export function PptdThumbnailRail({
                     <div className="mt-2 flex min-w-0 items-center gap-1.5 text-[10px]">
                       <span
                         className="font-mono text-muted-foreground"
-                        title="当前页序；重新排序后会改变"
+                        title={t('当前页序；重新排序后会改变')}
                       >
                         {String(index + 1).padStart(2, '0')}
                       </span>
                       <span
                         className="font-mono font-semibold tracking-wider"
-                        title={`页面短码：${page.shortCode ?? ''}\n永久 ID：${page.pageId}\n旧编号：${page.metadata.label ?? '无'}`}
+                        title={t('页面短码：{value0}\n永久 ID：{value1}\n旧编号：{value2}', {
+                          value0: page.shortCode ?? '',
+                          value1: page.pageId,
+                          value2: page.metadata.label ?? t('无'),
+                        })}
                       >
-                        {page.shortCode ?? page.metadata.label ?? '未编号'}
+                        {page.shortCode ?? page.metadata.label ?? t('未编号')}
                       </span>
                       <span className="truncate text-muted-foreground">{name}</span>
                       {page.versionId && (
-                        <span title="固定的页面版本" className="text-brand">
-                          固定
+                        <span title={t('固定的页面版本')} className="text-brand">
+                          {t('固定')}
                         </span>
                       )}
                     </div>
@@ -307,11 +318,11 @@ export function PptdThumbnailRail({
               <ContextMenuContent className="min-w-48">
                 <ContextMenuItem onClick={() => onHistory(page.pageId)}>
                   <History />
-                  查看历史版本
+                  {t('查看历史版本')}
                 </ContextMenuItem>
                 <ContextMenuItem onClick={() => onShowFile(page.pageId)}>
                   <FolderOpen />
-                  在项目文件中显示
+                  {t('在项目文件中显示')}
                 </ContextMenuItem>
                 <ContextMenuItem
                   onClick={() => {
@@ -323,12 +334,12 @@ export function PptdThumbnailRail({
                   }}
                 >
                   <Fingerprint />
-                  复制页面短码
+                  {t('复制页面短码')}
                 </ContextMenuItem>
                 <ContextMenuSeparator />
                 <ContextMenuItem disabled={disabled} onClick={() => onDuplicate(page.pageId)}>
                   <Copy />
-                  复制页面
+                  {t('复制页面')}
                 </ContextMenuItem>
                 <ContextMenuItem
                   disabled={disabled}
@@ -336,7 +347,7 @@ export function PptdThumbnailRail({
                   onClick={() => onRemove(page.pageId)}
                 >
                   <Trash2 />
-                  移除页面
+                  {t('移除页面')}
                 </ContextMenuItem>
               </ContextMenuContent>
             </ContextMenu>
@@ -344,7 +355,9 @@ export function PptdThumbnailRail({
         })}
         {tombstones.length > 0 && (
           <details className="border-t pt-3 text-xs text-muted-foreground">
-            <summary className="cursor-pointer">已移除的页面 · {tombstones.length}</summary>
+            <summary className="cursor-pointer">
+              {t('已移除的页面 · {value0}', { value0: tombstones.length })}
+            </summary>
             <div className="mt-2 space-y-1">
               {tombstones.map(([id, item]) => (
                 <div key={id} className="flex items-center justify-between gap-1 rounded px-1 py-1">
@@ -352,7 +365,7 @@ export function PptdThumbnailRail({
                   <Button
                     size="icon-xs"
                     variant="ghost"
-                    aria-label={`恢复 ${item.shortCode ?? id}`}
+                    aria-label={t('恢复 {value0}', { value0: item.shortCode ?? id })}
                     disabled={disabled}
                     onClick={() => onRestore(id)}
                   >
@@ -368,7 +381,7 @@ export function PptdThumbnailRail({
         <Button
           variant="ghost"
           size="icon-sm"
-          aria-label="页面上移"
+          aria-label={t('页面上移')}
           disabled={disabled || currentIndex < 1}
           onClick={() => {
             if (currentPageId)
@@ -380,7 +393,7 @@ export function PptdThumbnailRail({
         <Button
           variant="ghost"
           size="icon-sm"
-          aria-label="页面下移"
+          aria-label={t('页面下移')}
           disabled={disabled || currentIndex < 0 || currentIndex >= pages.length - 1}
           onClick={() => {
             if (currentPageId) onMove(currentPageId, pages[currentIndex + 1].pageId);
@@ -391,8 +404,8 @@ export function PptdThumbnailRail({
         <Button
           variant="ghost"
           size="icon-sm"
-          aria-label="移除当前页面"
-          title="移除当前页面（可恢复）"
+          aria-label={t('移除当前页面')}
+          title={t('移除当前页面（可恢复）')}
           className="ml-auto"
           disabled={disabled || !currentPageId}
           onClick={() => currentPageId && onRemove(currentPageId)}

@@ -2,6 +2,19 @@ export type DesktopEditCommand = 'cut' | 'copy' | 'paste' | 'selectAll' | 'undo'
 
 export interface HuandengDesktop {
   platform: string;
+  getLocale?(): Promise<'en' | 'zh-CN'>;
+  setLocale?(locale: 'en' | 'zh-CN'): Promise<'en' | 'zh-CN'>;
+  onLocaleChanged?(callback: (locale: 'en' | 'zh-CN') => void): () => void;
+  getSnapping?(): Promise<boolean>;
+  setSnapping?(enabled: boolean): Promise<boolean>;
+  onSnappingChanged?(callback: (enabled: boolean) => void): () => void;
+  getAgentConfiguration?(client: 'deepseek' | 'codex' | 'claude' | 'chatgpt'): Promise<{
+    client: string;
+    entryPath: string;
+    pluginPath: string;
+    configuration: string;
+  }>;
+  onAgentConnection?(callback: () => void): () => void;
   openProject(): Promise<{ entryPath: string } | null>;
   newProject(): Promise<{ entryPath: string } | null>;
   recentProjects(): Promise<{ entryPath: string; title: string; openedAt: string }[]>;

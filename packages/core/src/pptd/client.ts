@@ -2,7 +2,12 @@ import { createHash } from 'node:crypto';
 import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
-import type { DeckSnapshot, TransactionRequest, TransactionResult } from './types.ts';
+import type {
+  DeckSnapshot,
+  TransactionPreview,
+  TransactionRequest,
+  TransactionResult,
+} from './types.ts';
 
 export function runtimeRoot(): string {
   return (
@@ -69,8 +74,14 @@ export class HuandengClient {
     return snapshot;
   }
 
-  apply(request: TransactionRequest): Promise<TransactionResult> {
-    return this.request('/transactions', request);
+  apply(request: TransactionRequest, previewHash?: string): Promise<TransactionResult> {
+    return previewHash === undefined
+      ? this.request('/transactions', request)
+      : this.request('/proposals/apply', { transaction: request, previewHash });
+  }
+
+  preview(request: TransactionRequest): Promise<TransactionPreview> {
+    return this.request('/proposals/preview', { transaction: request });
   }
 }
 

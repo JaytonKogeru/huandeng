@@ -29,12 +29,13 @@ describe('HUANDENG MCP project and Story context', () => {
   it('advertises the three context tools as read-only alongside the compatible writer tools', async () => {
     const { client } = await connection();
     const { tools } = await client.listTools();
-    expect(tools).toHaveLength(17);
+    expect(tools).toHaveLength(18);
     for (const name of [
       'huandeng_story_briefing',
       'huandeng_presentation_read',
       'huandeng_assets_list',
       'huandeng_export_status',
+      'huandeng_preview',
     ]) {
       expect(tools.find((tool) => tool.name === name)).toMatchObject({
         annotations: { readOnlyHint: true, destructiveHint: false, openWorldHint: false },
@@ -44,6 +45,40 @@ describe('HUANDENG MCP project and Story context', () => {
     expect(tools.find((tool) => tool.name === 'huandeng_apply')).toMatchObject({
       annotations: { readOnlyHint: false, idempotentHint: true },
     });
+  });
+
+  it('exposes portable Story resources and preserves direct and hash-bound apply routes', async () => {
+    const { client, request } = await connection();
+    const { resources } = await client.listResources();
+    expect(resources.map((resource) => resource.uri)).toEqual([
+      'huandeng://guide/story',
+      'huandeng://guide/operations',
+    ]);
+    const guide = await client.readResource({ uri: 'huandeng://guide/story' });
+    expect(guide.contents[0]).toMatchObject({
+      mimeType: 'text/markdown',
+      text: expect.stringContaining('previewHash'),
+    });
+    expect(request).not.toHaveBeenCalled();
+    const transaction = {
+      requestId: 'proposal',
+      deckId: 'deck',
+      actor: 'client',
+      expected: {},
+      operations: [],
+    };
+    await client.callTool({ name: 'huandeng_preview', arguments: { transaction } });
+    expect(request).toHaveBeenLastCalledWith('/proposals/preview', { transaction });
+    await client.callTool({
+      name: 'huandeng_apply',
+      arguments: { transaction, previewHash: 'sha256:example' },
+    });
+    expect(request).toHaveBeenLastCalledWith('/proposals/apply', {
+      transaction,
+      previewHash: 'sha256:example',
+    });
+    await client.callTool({ name: 'huandeng_apply', arguments: { transaction } });
+    expect(request).toHaveBeenLastCalledWith('/transactions', transaction);
   });
 
   it('routes video start, status and cancellation through the shared service', async () => {

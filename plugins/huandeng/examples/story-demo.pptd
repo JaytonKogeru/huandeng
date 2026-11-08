@@ -1,0 +1,5 @@
+title: HUANDENG synthetic Story demo
+size: [960, 540]
+pages:
+  - pages/question.page
+  - pages/evidence.page

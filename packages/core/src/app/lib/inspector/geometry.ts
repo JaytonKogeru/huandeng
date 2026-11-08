@@ -11,6 +11,36 @@ export type Guide = {
   end: number;
 };
 
+export type GapGuide = {
+  axis: 'x' | 'y';
+  position: number;
+  start: number;
+  end: number;
+  distance: number;
+};
+
+type GapTarget = {
+  axis: 'x' | 'y';
+  before: Rect;
+  after: Rect;
+  start: number;
+  end: number;
+  crossStart: number;
+  crossEnd: number;
+};
+
+export type SnapTargets = {
+  rects: Rect[];
+  objects: Rect[];
+  gaps: GapTarget[];
+};
+
+export type MoveSnapResult = {
+  delta: Point;
+  guides: Guide[];
+  gapGuides: GapGuide[];
+};
+
 export type ResizeHandle = 'n' | 'ne' | 'e' | 'se' | 's' | 'sw' | 'w' | 'nw';
 
 export function unionRects(rects: Rect[]): Rect | null {
@@ -52,6 +82,19 @@ function nearestSnap(rect: Rect, targets: Rect[], axis: 'x' | 'y', threshold: nu
   return best;
 }
 
+function guideAt(rect: Rect, targets: Rect[], axis: 'x' | 'y', position: number): Guide {
+  const aligned = targets.filter((target) =>
+    anchors(target, axis).some((anchor) => Math.abs(anchor - position) < 0.000001),
+  );
+  const bounds = unionRects([rect, ...aligned]) ?? rect;
+  return {
+    axis,
+    position,
+    start: axis === 'x' ? bounds.y : bounds.x,
+    end: axis === 'x' ? bounds.y + bounds.height : bounds.x + bounds.width,
+  };
+}
+
 export function snapMove(
   rect: Rect,
   delta: Point,
@@ -70,19 +113,300 @@ export function snapMove(
   for (const axis of ['x', 'y'] as const) {
     const snap = axis === 'x' ? xSnap : ySnap;
     if (!snap) continue;
-    const aligned = targets.filter((target) =>
-      anchors(target, axis).some((anchor) => Math.abs(anchor - snap.position) < 0.000001),
-    );
-    const bounds = unionRects([snapped, ...aligned]);
-    if (!bounds) continue;
-    guides.push({
-      axis,
-      position: snap.position,
-      start: axis === 'x' ? bounds.y : bounds.x,
-      end: axis === 'x' ? bounds.y + bounds.height : bounds.x + bounds.width,
-    });
+    guides.push(guideAt(snapped, targets, axis, snap.position));
   }
   return { delta: snappedDelta, guides };
+}
+
+export function rotatedRect(rect: Rect, degrees: number): Rect {
+  const radians = (degrees * Math.PI) / 180;
+  const width =
+    Math.abs(rect.width * Math.cos(radians)) + Math.abs(rect.height * Math.sin(radians));
+  const height =
+    Math.abs(rect.width * Math.sin(radians)) + Math.abs(rect.height * Math.cos(radians));
+  return {
+    x: rect.x + (rect.width - width) / 2,
+    y: rect.y + (rect.height - height) / 2,
+    width,
+    height,
+  };
+}
+
+export function createSnapTargets(rects: Rect[], alignmentOnly: Rect[] = []): SnapTargets {
+  const ordered = rects
+    .map((rect) => ({ ...rect }))
+    .sort((a, b) => a.x - b.x || a.y - b.y || a.width - b.width || a.height - b.height);
+  const unique = ordered.filter(
+    (rect, index) =>
+      !index ||
+      rect.x !== ordered[index - 1].x ||
+      rect.y !== ordered[index - 1].y ||
+      rect.width !== ordered[index - 1].width ||
+      rect.height !== ordered[index - 1].height,
+  );
+  const gaps: GapTarget[] = [];
+  for (const axis of ['x', 'y'] as const) {
+    const cross = axis === 'x' ? 'y' : 'x';
+    const extent = axis === 'x' ? 'width' : 'height';
+    const crossExtent = axis === 'x' ? 'height' : 'width';
+    const sorted = [...unique].sort((a, b) => a[axis] - b[axis] || a[cross] - b[cross]);
+    // Bound spacing work per gesture; edge and centre references still include every object.
+    let remaining = 100_000;
+    for (let index = 0; index < sorted.length && remaining > 0; index++) {
+      const before = sorted[index];
+      let nearest = Number.POSITIVE_INFINITY;
+      for (let next = index + 1; next < sorted.length && remaining-- > 0; next++) {
+        const after = sorted[next];
+        if (after[axis] > nearest) break;
+        const start = before[axis] + before[extent];
+        const end = after[axis];
+        if (end <= start) continue;
+        const crossStart = Math.max(before[cross], after[cross]);
+        const crossEnd = Math.min(
+          before[cross] + before[crossExtent],
+          after[cross] + after[crossExtent],
+        );
+        if (crossEnd <= crossStart) continue;
+        nearest = end;
+        let blocked = false;
+        for (const rect of unique) {
+          if (--remaining < 0) {
+            blocked = true;
+            break;
+          }
+          if (
+            rect !== before &&
+            rect !== after &&
+            rect[axis] < end &&
+            rect[axis] + rect[extent] > start &&
+            rect[cross] < crossEnd &&
+            rect[cross] + rect[crossExtent] > crossStart
+          ) {
+            blocked = true;
+            break;
+          }
+        }
+        if (!blocked) gaps.push({ axis, before, after, start, end, crossStart, crossEnd });
+      }
+    }
+  }
+  return {
+    rects: [...unique, ...alignmentOnly.map((rect) => ({ ...rect }))],
+    objects: unique,
+    gaps,
+  };
+}
+
+type GapSnap = {
+  target: GapTarget;
+  mode: 'before' | 'between' | 'after';
+  correction: number;
+};
+
+function gapIntersects(rect: Rect, target: GapTarget): boolean {
+  const cross = target.axis === 'x' ? 'y' : 'x';
+  const size = target.axis === 'x' ? rect.height : rect.width;
+  return rect[cross] < target.crossEnd && rect[cross] + size > target.crossStart;
+}
+
+function gapPlacementIsClear(rect: Rect, objects: Rect[]): boolean {
+  return !objects.some(
+    (target) =>
+      rect.x < target.x + target.width - 1e-6 &&
+      rect.x + rect.width > target.x + 1e-6 &&
+      rect.y < target.y + target.height - 1e-6 &&
+      rect.y + rect.height > target.y + 1e-6,
+  );
+}
+
+function nearestGap(
+  rect: Rect,
+  targets: SnapTargets,
+  axis: 'x' | 'y',
+  threshold: number,
+): GapSnap | null {
+  let best: GapSnap | null = null;
+  const size = axis === 'x' ? rect.width : rect.height;
+  const extent = axis === 'x' ? 'width' : 'height';
+  for (const target of targets.gaps) {
+    if (target.axis !== axis || !gapIntersects(rect, target)) continue;
+    const gap = target.end - target.start;
+    const candidates: [GapSnap['mode'], number][] = [
+      ['before', target.before[axis] - gap - size],
+      ['after', target.after[axis] + target.after[extent] + gap],
+    ];
+    if (gap > size) candidates.push(['between', target.start + (gap - size) / 2]);
+    for (const [mode, position] of candidates) {
+      const correction = position - rect[axis];
+      if (Math.abs(correction) > threshold) continue;
+      if (!gapPlacementIsClear({ ...rect, [axis]: position }, targets.objects)) continue;
+      if (
+        !best ||
+        Math.abs(correction) < Math.abs(best.correction) ||
+        (Math.abs(correction) === Math.abs(best.correction) && correction < best.correction)
+      )
+        best = { target, mode, correction };
+    }
+  }
+  return best;
+}
+
+function gapGuidesAt(rect: Rect, snap: GapSnap): GapGuide[] {
+  const { target, mode } = snap;
+  const { axis } = target;
+  const cross = axis === 'x' ? 'y' : 'x';
+  const size = axis === 'x' ? rect.width : rect.height;
+  const extent = axis === 'x' ? 'width' : 'height';
+  const crossExtent = axis === 'x' ? rect.height : rect.width;
+  const position =
+    (Math.max(rect[cross], target.crossStart) +
+      Math.min(rect[cross] + crossExtent, target.crossEnd)) /
+    2;
+  const spans =
+    mode === 'between'
+      ? [
+          [target.start, rect[axis]],
+          [rect[axis] + size, target.end],
+        ]
+      : [
+          [target.start, target.end],
+          mode === 'before'
+            ? [rect[axis] + size, target.before[axis]]
+            : [target.after[axis] + target.after[extent], rect[axis]],
+        ];
+  return spans.map(([start, end]) => ({ axis, position, start, end, distance: end - start }));
+}
+
+export function snapMoveWithSpacing(
+  rect: Rect,
+  delta: Point,
+  targets: SnapTargets,
+  threshold: number,
+  axes: { x: boolean; y: boolean } = { x: true, y: true },
+): MoveSnapResult {
+  const moved = { ...rect, x: rect.x + delta.x, y: rect.y + delta.y };
+  const points = {
+    x: axes.x ? nearestSnap(moved, targets.rects, 'x', threshold) : null,
+    y: axes.y ? nearestSnap(moved, targets.rects, 'y', threshold) : null,
+  };
+  const gaps = {
+    x: axes.x ? nearestGap(moved, targets, 'x', threshold) : null,
+    y: axes.y ? nearestGap(moved, targets, 'y', threshold) : null,
+  };
+  for (const axis of ['x', 'y'] as const) {
+    const point = points[axis];
+    const gap = gaps[axis];
+    if (point && gap && Math.abs(point.correction) <= Math.abs(gap.correction)) gaps[axis] = null;
+  }
+  const snappedRect = () => ({
+    ...moved,
+    x: moved.x + (gaps.x?.correction ?? points.x?.correction ?? 0),
+    y: moved.y + (gaps.y?.correction ?? points.y?.correction ?? 0),
+  });
+  for (let pass = 0; pass < 2; pass++) {
+    const snapped = snappedRect();
+    for (const axis of ['x', 'y'] as const) {
+      const gap = gaps[axis];
+      if (
+        gap &&
+        (!gapIntersects(snapped, gap.target) || !gapPlacementIsClear(snapped, targets.objects))
+      )
+        gaps[axis] = null;
+    }
+  }
+  const snapped = snappedRect();
+  const guides: Guide[] = [];
+  const gapGuides: GapGuide[] = [];
+  for (const axis of ['x', 'y'] as const) {
+    const gap = gaps[axis];
+    const point = points[axis];
+    if (gap) gapGuides.push(...gapGuidesAt(snapped, gap));
+    else if (point) guides.push(guideAt(snapped, targets.rects, axis, point.position));
+  }
+  return { delta: { x: snapped.x - rect.x, y: snapped.y - rect.y }, guides, gapGuides };
+}
+
+export function snapResize(
+  rect: Rect,
+  handle: ResizeHandle,
+  delta: Point,
+  targets: Rect[],
+  threshold: number,
+  lockAspect = false,
+): { rect: Rect; guides: Guide[] } {
+  const raw = resizeRect(rect, handle, delta, lockAspect);
+  const west = handle.includes('w');
+  const east = handle.includes('e');
+  const north = handle.includes('n');
+  const south = handle.includes('s');
+  const point = {
+    x: west ? raw.x : raw.x + raw.width,
+    y: north ? raw.y : raw.y + raw.height,
+    width: 0,
+    height: 0,
+  };
+  const xSnap = west || east ? nearestSnap(point, targets, 'x', threshold) : null;
+  const ySnap = north || south ? nearestSnap(point, targets, 'y', threshold) : null;
+  let snapped = { ...raw };
+  if (lockAspect && rect.width > 0 && rect.height > 0) {
+    const candidates = [
+      xSnap && {
+        scale: (west ? rect.x + rect.width - xSnap.position : xSnap.position - rect.x) / rect.width,
+      },
+      ySnap && {
+        scale:
+          (north ? rect.y + rect.height - ySnap.position : ySnap.position - rect.y) / rect.height,
+      },
+    ].filter(
+      (candidate) => candidate && candidate.scale >= Math.max(8 / rect.width, 8 / rect.height),
+    );
+    let distance = Number.POSITIVE_INFINITY;
+    for (const candidate of candidates) {
+      if (!candidate) continue;
+      const size = resizeRect(
+        rect,
+        handle,
+        {
+          x: (west ? -1 : east ? 1 : 0) * rect.width * (candidate.scale - 1),
+          y: (north ? -1 : south ? 1 : 0) * rect.height * (candidate.scale - 1),
+        },
+        true,
+      );
+      const dx = west || east ? (west ? size.x : size.x + size.width) - point.x : 0;
+      const dy = north || south ? (north ? size.y : size.y + size.height) - point.y : 0;
+      if (Math.abs(dx) > threshold + 1e-6 || Math.abs(dy) > threshold + 1e-6) continue;
+      const nextDistance = Math.hypot(dx, dy);
+      if (nextDistance < distance) {
+        distance = nextDistance;
+        snapped = size;
+      }
+    }
+  } else {
+    if (xSnap) {
+      const width = raw.width + (west ? -xSnap.correction : xSnap.correction);
+      if (width >= 8) snapped = { ...snapped, x: west ? xSnap.position : raw.x, width };
+    }
+    if (ySnap) {
+      const height = raw.height + (north ? -ySnap.correction : ySnap.correction);
+      if (height >= 8) snapped = { ...snapped, y: north ? ySnap.position : raw.y, height };
+    }
+  }
+  const finalPoint = {
+    x: west ? snapped.x : snapped.x + snapped.width,
+    y: north ? snapped.y : snapped.y + snapped.height,
+    width: 0,
+    height: 0,
+  };
+  const guides: Guide[] = [];
+  if (west || east) {
+    const match = nearestSnap(finalPoint, targets, 'x', 0.000001);
+    if (match) guides.push(guideAt(snapped, targets, 'x', match.position));
+  }
+  if (north || south) {
+    const match = nearestSnap(finalPoint, targets, 'y', 0.000001);
+    if (match) guides.push(guideAt(snapped, targets, 'y', match.position));
+  }
+  return { rect: snapped, guides };
 }
 
 export function alignRects(rects: Rect[], alignment: Alignment, bounds?: Rect): Point[] {

@@ -1,3 +1,9 @@
+const {
+  text: desktopText,
+  getCurrentLocale,
+  setCurrentLocale,
+  resolveLocale,
+} = require('./locale.cjs');
 const { app, BrowserWindow, dialog, ipcMain, Menu, shell } = require('electron');
 const { randomUUID } = require('node:crypto');
 const fs = require('node:fs/promises');
@@ -5,6 +11,7 @@ const path = require('node:path');
 const { fileURLToPath } = require('node:url');
 const { createProject, pathKey, readPreferences, writePreferences } = require('./project.cjs');
 const { startService, stopService } = require('./service.cjs');
+const { agentConfiguration } = require('./agent-setup.cjs');
 const { version: editorVersion } = require('./release.json');
 
 const { migratePreferences } = require('./branding.cjs');
@@ -49,7 +56,7 @@ function context() {
 function updateTitle() {
   window?.setTitle(
     activeService
-      ? `HUANDENG Editor — ${path.basename(path.dirname(activeService.entryPath))}${activeService.readOnly ? ' · Read-only' : ''}`
+      ? `HUANDENG Editor — ${path.basename(path.dirname(activeService.entryPath))}${activeService.readOnly ? ` · ${desktopText('只读')}` : ''}`
       : 'HUANDENG Editor',
   );
 }
@@ -60,6 +67,37 @@ function savePreferences() {
     .catch(() => {})
     .then(() => writePreferences(preferencesFile, snapshot));
   return preferenceWrites;
+}
+
+async function changeLocale(locale) {
+  if (locale !== 'en' && locale !== 'zh-CN') throw new Error(desktopText('不支持此界面语言。'));
+  const previous = preferences.uiLocale;
+  preferences.uiLocale = locale;
+  try {
+    await savePreferences();
+  } catch (error) {
+    preferences.uiLocale = previous;
+    throw error;
+  }
+  setCurrentLocale(locale);
+  buildMenu();
+  updateTitle();
+  if (!window?.isDestroyed()) window?.webContents.send('huandeng:locale-changed', locale);
+  return locale;
+}
+
+async function changeSnapping(enabled) {
+  if (typeof enabled !== 'boolean') throw new Error(desktopText('吸附设置必须为开启或关闭。'));
+  const previous = preferences.snapping;
+  preferences.snapping = enabled;
+  try {
+    await savePreferences();
+  } catch (error) {
+    preferences.snapping = previous;
+    throw error;
+  }
+  if (!window?.isDestroyed()) window?.webContents.send('huandeng:snapping-changed', enabled);
+  return enabled;
 }
 
 function status(message) {
@@ -89,9 +127,9 @@ function showError(error) {
     void dialog.showMessageBox(window, {
       type: 'error',
       title: 'HUANDENG Editor',
-      message: '操作未完成',
+      message: desktopText('操作未完成'),
       detail: message,
-      buttons: ['返回编辑器'],
+      buttons: [desktopText('返回编辑器')],
     });
   }
 }
@@ -102,7 +140,7 @@ async function flushBeforeLeave() {
   await new Promise((resolve, reject) => {
     const timer = setTimeout(() => {
       pendingLeaves.delete(requestId);
-      reject(new Error('页面尚未确认保存完成。请检查未保存的修改或冲突，然后再试。'));
+      reject(new Error(desktopText('页面尚未确认保存完成。请检查未保存的修改或冲突，然后再试。')));
     }, 15000);
     pendingLeaves.set(requestId, { resolve, reject, timer });
     window.webContents.send('huandeng:before-leave', requestId);
@@ -130,7 +168,7 @@ async function loadProject(entry, options = {}) {
     window.focus();
     return { entryPath: canonical };
   }
-  status('正在打开项目…');
+  status(desktopText('正在打开项目…'));
   const previous = activeService;
   const service = await startService(canonical, { ...options, onLog: log });
   activeService = service;
@@ -173,9 +211,9 @@ async function showHome() {
 
 async function chooseProject() {
   const selection = await dialog.showOpenDialog(window, {
-    title: '打开 HUANDENG 项目',
+    title: desktopText('打开 HUANDENG 项目'),
     defaultPath: activeService?.entryPath ?? preferences.lastProject ?? app.getPath('documents'),
-    filters: [{ name: 'PPTD 项目', extensions: ['pptd'] }],
+    filters: [{ name: desktopText('PPTD 项目'), extensions: ['pptd'] }],
     properties: ['openFile'],
   });
   if (selection.canceled || !selection.filePaths[0]) return null;
@@ -184,10 +222,10 @@ async function chooseProject() {
 
 async function newProject() {
   const selection = await dialog.showSaveDialog(window, {
-    title: '新建 HUANDENG 项目 · 将创建同名文件夹',
+    title: desktopText('新建 HUANDENG 项目 · 将创建同名文件夹'),
     defaultPath: path.join(app.getPath('documents'), 'Untitled.pptd'),
-    filters: [{ name: '项目名称（创建独立文件夹）', extensions: ['pptd'] }],
-    buttonLabel: '创建项目',
+    filters: [{ name: desktopText('项目名称（创建独立文件夹）'), extensions: ['pptd'] }],
+    buttonLabel: desktopText('创建项目'),
   });
   if (selection.canceled || !selection.filePath) return null;
   await flushBeforeLeave();
@@ -206,7 +244,7 @@ async function revealPath(relativePath) {
   const target = path.resolve(root, relativePath);
   const relative = path.relative(root, target);
   if (path.isAbsolute(relative) || relative === '..' || relative.startsWith(`..${path.sep}`)) {
-    throw new Error('请选择当前项目中的文件。');
+    throw new Error(desktopText('请选择当前项目中的文件。'));
   }
   await fs.access(target);
   shell.showItemInFolder(target);
@@ -221,7 +259,7 @@ function menuAction(action) {
 const nativeEditCommands = new Set(['cut', 'copy', 'paste', 'selectAll', 'undo', 'redo']);
 
 function editNative(command) {
-  if (!nativeEditCommands.has(command)) throw new Error('不支持这个编辑命令。');
+  if (!nativeEditCommands.has(command)) throw new Error(desktopText('不支持这个编辑命令。'));
   if (window && !window.isDestroyed()) window.webContents[command]();
 }
 
@@ -240,59 +278,117 @@ function buildMenu() {
   }));
   const template = [
     {
-      label: '文件',
+      label: desktopText('文件'),
       submenu: [
-        { label: '新建项目…', accelerator: 'CmdOrCtrl+N', click: menuAction(newProject) },
-        { label: '打开项目…', accelerator: 'CmdOrCtrl+O', click: menuAction(chooseProject) },
         {
-          label: '最近项目',
-          submenu: recent.length ? recent : [{ label: '暂无最近项目', enabled: false }],
+          label: desktopText('新建项目…'),
+          accelerator: 'CmdOrCtrl+N',
+          click: menuAction(newProject),
+        },
+        {
+          label: desktopText('打开项目…'),
+          accelerator: 'CmdOrCtrl+O',
+          click: menuAction(chooseProject),
+        },
+        {
+          label: desktopText('最近项目'),
+          submenu: recent.length
+            ? recent
+            : [{ label: desktopText('暂无最近项目'), enabled: false }],
         },
         { type: 'separator' },
         {
-          label: '在文件管理器中显示',
+          label: desktopText('在文件管理器中显示'),
           enabled: Boolean(activeService),
           click: menuAction(() => revealPath()),
         },
-        { label: '回到开始页', enabled: Boolean(activeService), click: menuAction(showHome) },
+        {
+          label: desktopText('回到开始页'),
+          enabled: Boolean(activeService),
+          click: menuAction(showHome),
+        },
+        {
+          label: desktopText('连接 Agent…'),
+          enabled: Boolean(activeService),
+          click: () => window.webContents.send('huandeng:agent-connection'),
+        },
         { type: 'separator' },
-        { label: '关闭窗口', accelerator: 'CmdOrCtrl+W', click: () => window.close() },
+        { label: desktopText('关闭窗口'), accelerator: 'CmdOrCtrl+W', click: () => window.close() },
       ],
     },
     {
-      label: '编辑',
-      submenu: [
-        { label: '撤销', accelerator: 'CmdOrCtrl+Z', click: () => editCommand('undo') },
-        { label: '重做', accelerator: 'CmdOrCtrl+Shift+Z', click: () => editCommand('redo') },
-        { type: 'separator' },
-        { label: '剪切', accelerator: 'CmdOrCtrl+X', click: () => editCommand('cut') },
-        { label: '复制', accelerator: 'CmdOrCtrl+C', click: () => editCommand('copy') },
-        { label: '粘贴', accelerator: 'CmdOrCtrl+V', click: () => editCommand('paste') },
-        { label: '全选', accelerator: 'CmdOrCtrl+A', click: () => editCommand('selectAll') },
-      ],
-    },
-    {
-      label: '视图',
-      submenu: [
-        { role: 'resetZoom', label: '实际大小' },
-        { role: 'zoomIn', label: '放大界面' },
-        { role: 'zoomOut', label: '缩小界面' },
-        { type: 'separator' },
-        { role: 'togglefullscreen', label: '全屏' },
-      ],
-    },
-    {
-      label: '帮助',
+      label: desktopText('编辑'),
       submenu: [
         {
-          label: '关于 HUANDENG Editor',
+          label: desktopText('撤销'),
+          accelerator: 'CmdOrCtrl+Z',
+          click: () => editCommand('undo'),
+        },
+        {
+          label: desktopText('重做'),
+          accelerator: 'CmdOrCtrl+Shift+Z',
+          click: () => editCommand('redo'),
+        },
+        { type: 'separator' },
+        { label: desktopText('剪切'), accelerator: 'CmdOrCtrl+X', click: () => editCommand('cut') },
+        {
+          label: desktopText('复制'),
+          accelerator: 'CmdOrCtrl+C',
+          click: () => editCommand('copy'),
+        },
+        {
+          label: desktopText('粘贴'),
+          accelerator: 'CmdOrCtrl+V',
+          click: () => editCommand('paste'),
+        },
+        {
+          label: desktopText('全选'),
+          accelerator: 'CmdOrCtrl+A',
+          click: () => editCommand('selectAll'),
+        },
+      ],
+    },
+    {
+      label: desktopText('视图'),
+      submenu: [
+        { role: 'resetZoom', label: desktopText('实际大小') },
+        { role: 'zoomIn', label: desktopText('放大界面') },
+        { role: 'zoomOut', label: desktopText('缩小界面') },
+        { type: 'separator' },
+        { role: 'togglefullscreen', label: desktopText('全屏') },
+        { type: 'separator' },
+        {
+          label: desktopText('界面语言'),
+          submenu: [
+            {
+              label: 'English',
+              type: 'radio',
+              checked: getCurrentLocale() === 'en',
+              click: menuAction(() => changeLocale('en')),
+            },
+            {
+              label: '简体中文',
+              type: 'radio',
+              checked: getCurrentLocale() === 'zh-CN',
+              click: menuAction(() => changeLocale('zh-CN')),
+            },
+          ],
+        },
+      ],
+    },
+    {
+      label: desktopText('帮助'),
+      submenu: [
+        {
+          label: desktopText('关于 HUANDENG Editor'),
           click: () => {
             void dialog.showMessageBox(window, {
               title: 'HUANDENG Editor',
               message: `HUANDENG Editor ${editorVersion}`,
-              detail:
+              detail: desktopText(
                 '独立页面，持续演进。\n\nHUANDENG Story 记录意图。\nHUANDENG Plugin 连接外部 Agent。',
-              buttons: ['关闭'],
+              ),
+              buttons: [desktopText('关闭')],
             });
           },
         },
@@ -310,7 +406,7 @@ function assertMainFrame(event) {
     event.sender !== window.webContents ||
     event.senderFrame !== window.webContents.mainFrame
   ) {
-    throw new Error('此操作只适用于当前 HUANDENG 窗口。');
+    throw new Error(desktopText('此操作只适用于当前 HUANDENG 窗口。'));
   }
 }
 
@@ -324,6 +420,18 @@ function registerIpc() {
   handle('huandeng:open-project', () => operate(chooseProject));
   handle('huandeng:new-project', () => operate(newProject));
   handle('huandeng:get-context', context);
+  handle('huandeng:agent-configuration', (client) =>
+    agentConfiguration({
+      client,
+      entryPath: activeService?.entryPath ?? null,
+      applicationDirectory: __dirname,
+      executable: process.execPath,
+    }),
+  );
+  handle('huandeng:get-locale', getCurrentLocale);
+  handle('huandeng:set-locale', (locale) => operate(() => changeLocale(locale)));
+  handle('huandeng:get-snapping', () => preferences.snapping !== false);
+  handle('huandeng:set-snapping', (enabled) => operate(() => changeSnapping(enabled)));
   handle('huandeng:edit-native', editNative);
   handle('huandeng:show-home', () => operate(showHome));
   handle('huandeng:reveal-path', revealPath);
@@ -342,7 +450,7 @@ function registerIpc() {
     const item = preferences.recentProjects.find(
       (candidate) => pathKey(candidate.entryPath) === pathKey(entry),
     );
-    if (!item) throw new Error('这个项目不在最近项目中，请通过“打开项目”选择。');
+    if (!item) throw new Error(desktopText('这个项目不在最近项目中，请通过“打开项目”选择。'));
     return operate(() => loadProject(item.entryPath));
   });
   ipcMain.on('huandeng:before-leave-result', (event, result) => {
@@ -352,7 +460,7 @@ function registerIpc() {
     clearTimeout(pending.timer);
     pendingLeaves.delete(result.requestId);
     if (result.ok) pending.resolve();
-    else pending.reject(new Error(result.message || '页面仍有未保存的修改。'));
+    else pending.reject(new Error(result.message || desktopText('页面仍有未保存的修改。')));
   });
 }
 
@@ -484,6 +592,7 @@ if (!acquired) {
       }
       await fs.mkdir(app.getPath('userData'), { recursive: true });
       preferences = await readPreferences(preferencesFile);
+      setCurrentLocale(resolveLocale(preferences.uiLocale, app.getLocale()));
       registerIpc();
       await createWindow();
       const requested = commandLine(process.argv);

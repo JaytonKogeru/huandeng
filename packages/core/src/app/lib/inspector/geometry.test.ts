@@ -1,12 +1,16 @@
 import { describe, expect, it } from 'vitest';
 import {
   alignRects,
+  createSnapTargets,
   distributeRects,
   type Rect,
   rectContains,
   rectsIntersect,
   resizeRect,
+  rotatedRect,
   snapMove,
+  snapMoveWithSpacing,
+  snapResize,
   solveResizeDimensions,
   unionRects,
 } from './geometry.ts';
@@ -77,6 +81,244 @@ describe('snapMove', () => {
         5,
       ),
     ).toEqual({ delta: { x: 10, y: 10 }, guides: [] });
+  });
+});
+
+describe('smart guides', () => {
+  it('keeps Shift movement on the selected axis even near a perpendicular guide', () => {
+    const rect = { x: 100, y: 100, width: 100, height: 40 };
+    const targets = createSnapTargets([{ x: 600, y: 103, width: 100, height: 40 }]);
+    const horizontal = snapMoveWithSpacing(rect, { x: 50, y: 0 }, targets, 5, {
+      x: true,
+      y: false,
+    });
+    expect(horizontal.delta).toEqual({ x: 50, y: 0 });
+    expect(horizontal.guides).toEqual([]);
+    expect(horizontal.gapGuides).toEqual([]);
+    const vertical = snapMoveWithSpacing(
+      rect,
+      { x: 0, y: 50 },
+      createSnapTargets([{ x: 103, y: 600, width: 100, height: 40 }]),
+      5,
+      { x: false, y: true },
+    );
+    expect(vertical.delta).toEqual({ x: 0, y: 50 });
+    expect(vertical.guides).toEqual([]);
+  });
+
+  it.each([0.5, 1, 2])('preserves a five-screen-pixel threshold at scale %s', (scale) => {
+    const rect = { x: 0, y: 0, width: 20, height: 20 };
+    const targets = createSnapTargets([{ x: 100, y: 300, width: 40, height: 40 }]);
+    const near = snapMoveWithSpacing(rect, { x: 80 - 4 / scale, y: 100 }, targets, 5 / scale);
+    expect(near.delta.x).toBe(80);
+    const far = snapMoveWithSpacing(rect, { x: 80 - 6 / scale, y: 100 }, targets, 5 / scale);
+    expect(far.delta.x).toBe(80 - 6 / scale);
+    expect(far.guides).toEqual([]);
+  });
+
+  it('uses visible rotated edges while keeping their centre fixed', () => {
+    const rect = rotatedRect({ x: 100, y: 100, width: 100, height: 40 }, 90);
+    expect(rect.x).toBeCloseTo(130);
+    expect(rect.y).toBeCloseTo(70);
+    expect(rect.width).toBeCloseTo(40);
+    expect(rect.height).toBeCloseTo(100);
+    const result = snapMoveWithSpacing(
+      rect,
+      { x: 27, y: 0 },
+      createSnapTargets([{ x: 200, y: 350, width: 80, height: 80 }]),
+      5,
+    );
+    expect(result.delta.x).toBeCloseTo(30);
+    expect(result.guides[0].position).toBe(200);
+  });
+
+  it('centres an unequal-size object inside a horizontal gap', () => {
+    const result = snapMoveWithSpacing(
+      { x: 0, y: 50, width: 80, height: 40 },
+      { x: 177, y: 0 },
+      createSnapTargets([
+        { x: 100, y: 50, width: 40, height: 40 },
+        { x: 300, y: 50, width: 60, height: 40 },
+      ]),
+      5,
+    );
+    expect(result.delta).toEqual({ x: 180, y: 0 });
+    expect(result.gapGuides).toEqual([
+      { axis: 'x', position: 70, start: 140, end: 180, distance: 40 },
+      { axis: 'x', position: 70, start: 260, end: 300, distance: 40 },
+    ]);
+  });
+
+  it.each([
+    ['after', 317, 320],
+    ['before', -37, -40],
+  ] as const)('repeats the existing gap %s the pair', (_mode, movement, expected) => {
+    const result = snapMoveWithSpacing(
+      { x: 0, y: 50, width: 80, height: 40 },
+      { x: movement, y: 0 },
+      createSnapTargets([
+        { x: 100, y: 50, width: 40, height: 40 },
+        { x: 200, y: 50, width: 60, height: 40 },
+      ]),
+      5,
+    );
+    expect(result.delta.x).toBe(expected);
+    expect(result.gapGuides.map((guide) => guide.distance)).toEqual([60, 60]);
+  });
+
+  it('supports vertical equal spacing and ignores unrelated rows', () => {
+    const targets = createSnapTargets([
+      { x: 50, y: 100, width: 40, height: 40 },
+      { x: 50, y: 300, width: 40, height: 60 },
+    ]);
+    const result = snapMoveWithSpacing(
+      { x: 50, y: 0, width: 40, height: 80 },
+      { x: 0, y: 177 },
+      targets,
+      5,
+    );
+    expect(result.delta.y).toBe(180);
+    expect(result.gapGuides.map((guide) => [guide.axis, guide.distance])).toEqual([
+      ['y', 40],
+      ['y', 40],
+    ]);
+    const unrelated = snapMoveWithSpacing(
+      { x: 500, y: 0, width: 40, height: 80 },
+      { x: 0, y: 177 },
+      targets,
+      5,
+    );
+    expect(unrelated.delta.y).toBe(177);
+    expect(unrelated.gapGuides).toEqual([]);
+  });
+
+  it('excludes overlap and occupied gaps, and keeps reference order deterministic', () => {
+    expect(
+      createSnapTargets([
+        { x: 0, y: 0, width: 100, height: 50 },
+        { x: 80, y: 0, width: 100, height: 50 },
+      ]).gaps,
+    ).toEqual([]);
+    const rects = [
+      { x: 0, y: 0, width: 40, height: 50 },
+      { x: 200, y: 0, width: 40, height: 50 },
+      { x: 100, y: 0, width: 40, height: 50 },
+    ];
+    const targets = createSnapTargets(rects);
+    expect(targets.gaps.map((gap) => [gap.start, gap.end])).toEqual([
+      [40, 100],
+      [140, 200],
+    ]);
+    expect(createSnapTargets([...rects].reverse())).toEqual(targets);
+    const rect = { x: 0, y: 5, width: 40, height: 30 };
+    expect(snapMoveWithSpacing(rect, { x: 297, y: 0 }, targets, 5)).toEqual(
+      snapMoveWithSpacing(rect, { x: 297, y: 0 }, createSnapTargets([...rects].reverse()), 5),
+    );
+  });
+
+  it('prefers an edge guide when a spacing guide requires the same correction', () => {
+    const result = snapMoveWithSpacing(
+      { x: 0, y: 0, width: 40, height: 40 },
+      { x: 118, y: 0 },
+      createSnapTargets([
+        { x: 0, y: 0, width: 40, height: 40 },
+        { x: 240, y: 0, width: 40, height: 40 },
+        { x: 120, y: 400, width: 40, height: 40 },
+      ]),
+      5,
+    );
+    expect(result.delta.x).toBe(120);
+    expect(result.guides.some((guide) => guide.axis === 'x' && guide.position === 120)).toBe(true);
+    expect(result.gapGuides).toEqual([]);
+  });
+
+  it('does not create an equal-spacing stop outside the threshold', () => {
+    const result = snapMoveWithSpacing(
+      { x: 0, y: 50, width: 80, height: 40 },
+      { x: 174, y: 0 },
+      createSnapTargets([
+        { x: 100, y: 50, width: 40, height: 40 },
+        { x: 300, y: 50, width: 60, height: 40 },
+      ]),
+      5,
+    );
+    expect(result.delta.x).toBe(174);
+    expect(result.gapGuides).toEqual([]);
+  });
+
+  it('does not extend a gap into a third object occupying the proposed position', () => {
+    const result = snapMoveWithSpacing(
+      { x: 0, y: 0, width: 80, height: 40 },
+      { x: 198, y: 0 },
+      createSnapTargets([
+        { x: 0, y: 0, width: 40, height: 40 },
+        { x: 100, y: 0, width: 40, height: 40 },
+        { x: 205, y: 0, width: 40, height: 40 },
+      ]),
+      5,
+    );
+    expect(result.delta.x).toBe(198);
+    expect(result.gapGuides).toEqual([]);
+  });
+});
+
+describe('snapResize', () => {
+  const rect = { x: 100, y: 100, width: 100, height: 50 };
+  const targets = [{ x: 250, y: 175, width: 60, height: 80 }];
+
+  it('snaps only the moving edge and leaves the opposite edge anchored', () => {
+    const result = snapResize(rect, 'e', { x: 47, y: 23 }, targets, 5);
+    expect(result.rect).toEqual({ x: 100, y: 100, width: 150, height: 50 });
+    expect(result.guides.map((guide) => guide.axis)).toEqual(['x']);
+    const west = snapResize(
+      rect,
+      'w',
+      { x: -47, y: 0 },
+      [{ x: 50, y: 500, width: 60, height: 80 }],
+      5,
+    );
+    expect(west.rect).toEqual({ x: 50, y: 100, width: 150, height: 50 });
+  });
+
+  it('snaps both moving corner coordinates without moving the opposite corner', () => {
+    const result = snapResize(rect, 'se', { x: 47, y: 22 }, targets, 5);
+    expect(result.rect).toEqual({ x: 100, y: 100, width: 150, height: 75 });
+    expect(result.guides.map((guide) => guide.axis)).toEqual(['x', 'y']);
+  });
+
+  it('keeps the ratio for corner and side handles when snapping', () => {
+    const corner = snapResize(rect, 'se', { x: 47, y: 0 }, targets, 5, true);
+    expect(corner.rect).toEqual({ x: 100, y: 100, width: 150, height: 75 });
+    const edge = snapResize(rect, 'e', { x: 47, y: 0 }, targets, 5, true);
+    expect(edge.rect).toEqual({ x: 100, y: 87.5, width: 150, height: 75 });
+    expect(edge.rect.y + edge.rect.height / 2).toBe(rect.y + rect.height / 2);
+  });
+
+  it('rejects a proportional corner snap that would jump the other axis beyond the threshold', () => {
+    const thin = { x: 0, y: 0, width: 10, height: 500 };
+    const raw = resizeRect(thin, 'se', { x: 0.5, y: 25 }, true);
+    const result = snapResize(
+      thin,
+      'se',
+      { x: 0.5, y: 25 },
+      [{ x: 12, y: 900, width: 100, height: 100 }],
+      5,
+      true,
+    );
+    expect(result.rect).toEqual(raw);
+    expect(result.guides).toEqual([]);
+  });
+
+  it('does not snap past the eight-unit minimum', () => {
+    const result = snapResize(
+      { x: 100, y: 100, width: 20, height: 20 },
+      'nw',
+      { x: 19, y: 0 },
+      [{ x: 113, y: 500, width: 100, height: 100 }],
+      5,
+    );
+    expect(result.rect).toEqual({ x: 112, y: 100, width: 8, height: 20 });
+    expect(result.guides).toEqual([]);
   });
 });
 
