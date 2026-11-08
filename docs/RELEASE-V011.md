@@ -1,62 +1,55 @@
-# HUANDENG v0.11 release — draft
+# HUANDENG v0.11 — organize and refine authored Slides
 
-**Release status: PENDING final validation, packaging, installed-build verification, and publication.** The changes below describe the implemented candidate, not an accepted or installed release. [VALIDATION-V011](VALIDATION-V011.md) owns the final evidence; [HANDOFF-V011](HANDOFF-V011.md) records the remaining work.
+**Accepted and installed: HUANDENG 0.11.0**, clean runtime source `0d0d8efe115c4b4dc9789c35f70b13efc899ab9e`, built `2026-11-08T09:51:50.6948572Z`. Source gates, matching packaging, all 43 UI groups, installation, and authorized local authoring passed. The documentation and reviewed generic evidence are ready for the final private-origin milestone. The delivery commit is separate from the runtime commit; this record does not claim that the push or independent remote-ref verification has already occurred.
 
-## Candidate changes
+Start with [WORKFLOW-V011](WORKFLOW-V011.md). Decisions and proof are in [Audit](AUDIT-V011.md), [Specification](SPEC-V011.md), [Implementation](IMPLEMENTATION-V011.md), and [Validation](VALIDATION-V011.md).
 
-### Presentation actions where they are needed
+## Changes
 
-Delete Presentation sits beside the Presentation name. Removing it is a Project draft edit with Save and Discard, and retains Main Slides and recorded versions. Slide selection has consistent wording, Plus/Minus states, and an accessible expanded state. Ordinary pending drafts and empty-Presentation guidance move into their working context while genuine save/recovery failures remain prominent.
-
-### Sections built around their first Slide
-
-An optional first-Slide mode follows Main order until the next Section start, with the final Section continuing to the end. Existing fixed ranges and explicit memberships remain compatible. Pages keeps the cover visible, provides a separate collapse control and count, and exposes matching members during search. Missing boundaries have a visible Review Sections route; multiple missing covers can be repaired in the local draft before the complete result is saved.
-
-### Insert exactly between Slides
-
-Focusable thumbnail gaps and before/after context-menu actions insert a blank Slide at the requested location. Stable neighboring identities and current revisions protect against stale locations. The first and last boundaries are explicit, and normal selection and Undo use the existing writer.
-
-### Read supporting files beside the Slide
-
-Files opens supported images and bounded source text in a closable right-side preview. It retains the current Slide and working drafts. Markdown, HTML, JSON, and scripts are read-only source, not executable content. Preview enforces Project containment, link rejection, type/size limits, request ordering, and image freshness. Assets remains the placeable-material view.
-
-### Reuse an authored title style
-
-Quick Layout has one visible entry. Match title style captures an explicitly chosen title's position and supported visible typography, shows the captured reference, and offers Refresh reference style for subsequent source edits. Applying affects one explicitly chosen independent title and preserves words, semantic emphasis, figures, and unrelated objects. Target revision checks and one Undo protect the edit; the source revision describes captured provenance rather than an atomic cross-page read dependency.
-
-Imported rich text receives deliberate baseline handling so changing a font or size is not silently defeated by its existing inline CSS. A reference with incompatible mixed baseline styles must be explained instead of reduced to an arbitrary container default. Existing evidence-figure recipes remain available.
-
-### Font choices with real availability information
-
-Text Properties offers grouped common document fonts, open-source suggestions, and generic families alongside custom font-stack input. Settings shows samples and an explicit Check local fonts action. Installed, loaded, generic, missing, and unverified states are distinct; denial or unsupported access does not label every family missing. Presets neither install nor embed fonts, and no proprietary font binaries are bundled by this change.
-
-## Compatibility and scope
-
-Main Slides remains the reusable content source, and Presentation edits remain arrangement edits. Automatic Section starts are opt-in; old ranges/lists are not silently migrated. Folding and panel placement do not alter document order. The existing writer, draft retention, recovery, and Undo paths remain the editing foundation.
-
-File preview is a read-only authoring aid. Quick Layout copies an explicit captured style rather than synchronizing the entire Project with a live template. Font availability applies to the checked computer and does not promise identical rendering elsewhere. A plugin marketplace, arbitrary plugin execution, new model runner, new public listener/tunnel, and full PPTX round-trip capability are outside this candidate's scope.
-
-## Privacy and public-release boundary
-
-This milestone contains editor source, generic documentation, and approved synthetic evidence. Private Projects, research media, screenshots, source contents, paths, and identifying per-page receipts are excluded from repository and release artifacts.
-
-Current-tree legacy identifiers were cleaned and detailed identifying validation data was replaced with aggregate summaries. No full private research deck or private research media was found in the scanned published Git objects. The scan's scope does not include every possible remote cache or external attachment.
-
-Historical identifier, path, hash, and object-identifier traces remain in reachable history. They require a separate action before a public release or visibility change. No history rewrite is authorized or performed by this milestone; present-tree cleanup must not be described as history erasure.
-
-## Release record to complete
-
-| Item | Final value |
+| Area | Result |
 | --- | --- |
-| Accepted product version | **PENDING** |
-| Accepted source/build identity | **PENDING** |
-| Windows type/format/unit results reported by the release lead | TypeScript passed; Biome checked 735 files without warnings; unit suite: 97 files, 1,079 passed, one platform skip. Final source receipt linkage remains **PENDING**. |
-| Actual packaged Windows UI result and count | **PENDING** |
-| Production build/package/relocation result | Core/editor build passed on Windows; package and relocation verification remain **PENDING**. |
-| Installed executable and shortcut verification | **PENDING** |
-| Aggregate private-document preservation result | **PENDING** — retain detailed private receipt locally |
-| Generic evidence index | **PENDING** |
-| Private-origin publication and independently verified refs | **PENDING** |
-| Final known limitations and disposition | **PENDING** |
+| Presentation management | Delete Presentation is beside its name and remains a Save/Discard Project edit. Main Slides and recorded versions remain. Slide selection uses matching Plus/Minus icons and Add slides or Sections/Close slide selection wording. |
+| Work in progress | Routine drafts use contextual Save/Discard and a compact Drafts action. An empty Presentation shows central arrangement guidance. Genuine conflicts and recovery failures remain actionable. |
+| Sections | Optional first-Slide boundaries follow Main order to the next Section start or the end. Pages retains the cover, provides a separate collapse control, and reveals matches during search. Legacy fixed ranges/lists remain compatible. Missing covers have a visible repair route; multiple repairs can be staged before a valid final save. |
+| Exact insertion | Thumbnail gaps and before/after actions insert at the chosen stable-neighbor boundary, including the first Slide and the end of a folded Section. Changed adjacency is rejected. Existing selection, writer, and Undo behavior apply. |
+| Files | A closable right-side image/source preview retains the Slide and drafts. Files remains the broader Project tree; Assets remains placeable material. Text, including scripts and markup, is read-only and does not execute. |
+| Quick Layout | One visible entry exposes existing recipes and Match title style. Choose an authored reference title and an independent target, review the captured style, apply once, and Undo once. Explicit refresh captures later reference changes. Words, semantic emphasis, and unrelated objects remain. |
+| Fonts | Grouped document/open-source/generic presets accompany custom stacks. Settings shows samples and an explicit Check local fonts action. Installed, loaded, generic, missing, and unverified states are distinct. Uniform inline baselines no longer silently defeat supported font, size, or emphasis changes. |
+| Existing YAML documents | Source-preserving edits now indent a flow value when replacing an indentless block sequence. This prevents a valid multiline geometry/alignment array from becoming invalid YAML during a patch, while retaining surrounding source and the existing writer contract. |
 
-Complete the gates and receipts in [VALIDATION-V011](VALIDATION-V011.md) before describing this candidate as released, installed, or accepted. Installation and remote publication are separate outcomes; success in one does not establish the other.
+## Compatibility and boundaries
+
+Automatic Sections are opt-in. The cover is an ordinary editable Slide with a stable identity; Position and resolved membership follow Main order. Folding is view state. The shared writer, revision checks, drafts, Undo, recovery, and original PPTD/page/media authority remain intact.
+
+Preview enforces Project containment, link rejection, bounded reads, type/dimension checks, response ordering, and image freshness. Quick Layout applies a captured style to a revision-checked target. A reference revision records provenance; there is no cross-page source-read CAS or continuing template link. Font suggestions do not install, redistribute, or embed font binaries, and local availability does not guarantee rendering elsewhere.
+
+This milestone does not add a plugin marketplace, arbitrary plugin execution, model runner, new tunnel/public listener, full PPTX round-trip, native PowerPoint animation, or independent presenter window. It makes no new long-session/high-resolution performance claim.
+
+## Validation record
+
+| Gate | Result |
+| --- | --- |
+| Accepted clean runtime source | `0d0d8efe115c4b4dc9789c35f70b13efc899ab9e` |
+| Focused codec/store checks | **44 passed**, 7.38 seconds; six codec regressions and one shared preview/commit/Undo regression added |
+| Windows TypeScript | Passed; **4.70 seconds** |
+| Biome | **735 files**, no errors; **3.03 seconds** |
+| Full Windows units | **97 files, 1,088 passed + one platform skip = 1,089 total**; **70.51 seconds wall / 68.61 seconds Vitest**, four workers |
+| Production build | Passed; **8.18 seconds** |
+| Matching corrected-source package | **Passed; 90.62 seconds**, built `2026-11-08T09:51:50.6948572Z`; 2,405 dependency directories, zero relative executable links |
+| Matching packaged UI | **43/43 passed**: authoring 19/19 in 44.96 seconds, workflow 7/7 in 14.55 seconds, object/workspace 17/17 in 39.63 seconds |
+| Incremental reinstall | **Passed; 451.00 seconds**, exit `0`; corrected `0d0d8ef` installed |
+| Application and ordinary reopen | **29,229 files / 685,593,328 bytes**, two shortcuts; English profile, the existing Project, zero diagnostics, writable protocol 1 |
+| Aggregate preservation | **all current Project files unchanged**, normal-close saved files `0`; prior `cb56cbc` and v0.10 packages retained |
+| Authorized local authoring | **Passed** through installed CLI/shared writer preview → apply → verify-after, native export, preservation checks, and independent visual review; private details stay local |
+| Prior package | `cb56cbc` retained; earlier checks remain separately recorded in Validation |
+| Delivery | **Release-ready** for private-origin `main` / `editor-v0.11.0`; actual remote refs await independent verification after the push |
+
+[VALIDATION-V011](VALIDATION-V011.md) retains the development harness correction, the failed default-concurrency unit attempt, the isolated passing rerun, and the final full four-worker pass. It also records the object/workspace harness looking for a hidden Inspector while Preview was still open, the explicit preview-close correction with all assertions retained, the passing 17-group rerun, and the final repackaging output guard. Source/model checks and earlier development-host UI results are not substitutes for final packaged or installed evidence.
+
+## Privacy
+
+This release scope is editor source, generic documentation, and approved synthetic evidence. Private Projects, research media, screenshots, source contents, paths, and identifying receipts stay outside it. Current-tree legacy identifiers and file/page fingerprints have been generalized while preserving measured verification facts.
+
+No full private research deck or private research media was found in the scanned published Git objects. Earlier commits/tags still contain identifier/path/hash/object-identifier traces. A separate scoped history action is required before public release or changing visibility; no history rewrite is authorized or performed here. Current-tree cleanup is not history erasure.
+
+The corrected installed runtime passed the final authorized local authoring check. Keep its accepted `0d0d8ef` build identity distinct from the subsequent documentation/evidence delivery commit and from earlier `cb56cbc` evidence. Publish only the scoped editor milestone under [RELEASE-POLICY](RELEASE-POLICY.md), then verify actual remote refs; no completed push is claimed by this pre-push record.

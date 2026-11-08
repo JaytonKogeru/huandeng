@@ -1,6 +1,6 @@
 # HUANDENG v0.11 — consolidated authoring audit
 
-Date: 2026-11-08. Status: source audit complete; integration and real Windows UI acceptance remain in progress.
+Date: 2026-11-08. Status: source audit complete; an additional authoring preview found a YAML compatibility defect after the earlier package had passed UI and installation checks. Clean corrected source `0d0d8efe115c4b4dc9789c35f70b13efc899ab9e` passed new source gates, matching packaging, and all 43 UI groups. Incremental reinstall and authorized local authoring also passed. Documentation and reviewed generic evidence are ready for final private-origin delivery; actual remote refs are verified after the Git operations. Current evidence is in [VALIDATION-V011](VALIDATION-V011.md).
 
 ## Method and conclusion
 
@@ -33,7 +33,7 @@ The audits also agree on what should remain explicit: a cover is an ordinary edi
 
 The model correctly avoids extending a Section across an unavailable next boundary. However, the initial integration filtered every Section with a diagnostic out of Pages. With a missing cover, this could remove all automatic Section headings from the visible rail without explaining why. The user would see an apparently ungrouped deck and need to discover the Project diagnostics unaided.
 
-The correction adds a compact Section issue state to Pages with Review Sections, leading to the Project editor. Unreliable membership is not displayed as a valid group, but its diagnostic and repair route stay discoverable. Main Slides remains usable while the author restores a cover or chooses a new first Slide. This UI correction still requires actual Windows acceptance.
+The correction adds a compact Section issue state to Pages with Review Sections, leading to the Project editor. Unreliable membership is not displayed as a valid group, but its diagnostic and repair route stay discoverable. Main Slides remains usable while the author restores a cover or chooses a new first Slide. The subsequent packaged authoring suite passed this repair journey; see Validation for the actual coverage.
 
 ### Multiple missing covers must be repairable in one draft
 
@@ -43,17 +43,23 @@ The correction allows this specific unresolved-end condition while staging local
 
 An in-memory synthetic check using the actual Section setter and model confirmed that two covers can be repaired in sequence, that a partial save remains rejected, that the complete repair saves successfully, and that invalid/overlapping definitions remain rejected. This establishes the source-level behavior; it is not desktop acceptance.
 
+### Existing YAML block arrays must remain patchable
+
+A later authoring preview exposed a case outside the initial UI fixtures: YAML permits a block sequence at its mapping key's indentation, but a replacement flow value needs a deeper indentation. The codec's source-span replacement could therefore turn a valid multiline geometry array into invalid YAML and reject the proposed edit with `INVALID_DOCUMENT`. The rejection occurred before commit; no rejected transaction was applied.
+
+The correction adds indentation when replacing a block sequence, while retaining source-span editing, adjacent fields/comments, newline style, and the existing validation/writer boundaries. Six generic codec cases cover LF/CRLF variants and one shared-store case covers read-only preview, bounded commit, and Undo. Matching corrected-source packaging and 43 UI groups also passed; incremental installation also passed. The separate authorized installed-authoring check subsequently passed, including native export, preservation checks, and independent visual review; its private data remains outside this audit. Private authoring contents and identifiers are excluded from the committed regressions.
+
 ## Design boundaries
 
 The implementation keeps the existing shared writer, Undo, revision checks, and explicit Project save contract. Presentation removal is an arrangement edit. Section folding and panel placement are view state. File preview reads supporting content and does not execute or rewrite it. Font selection chooses a family; it does not install or redistribute font files.
 
-Quick Layout uses a captured reference style and a checked target edit. A source page's recorded revision identifies where the captured style came from; it is not a claim that an independent source-page read is atomically checked by the writer. Reference capture and rich-text integration are being finalized and must be exercised before release.
+Quick Layout uses a captured reference style and a checked target edit. A source page's recorded revision identifies where the captured style came from; it is not a claim that an independent source-page read is atomically checked by the writer. Reference capture and rich-text integration are implemented; the packaged authoring suite passed its rendered-style and Undo checks, separately recorded in Validation.
 
 Potential future integrations include a citation-aware figure browser, local data/plot import, and a Project-specific style assistant. They are analysis topics for existing authoring interfaces. This release does not add an arbitrary plugin runtime, a marketplace, a model executor, or a network tunnel.
 
-## Remaining acceptance work
+## Acceptance journeys
 
-Real Windows UI validation is pending at this audit checkpoint. The focused journeys are:
+The initial audits above remain source reviews. Subsequent development-host and packaged UI runs passed, with source identity and exact coverage recorded separately in Validation. The focused journeys are:
 
 1. Delete, discard, and save a Presentation; reopen and verify that Main Slides and recorded versions remain.
 2. Open and close Slide selection with pointer and keyboard; inspect its label, icon, and expanded state.
@@ -65,4 +71,4 @@ Real Windows UI validation is pending at this audit checkpoint. The focused jour
 8. Select a common family, an available open-source family, an unavailable suggestion, and a custom stack. Compare Settings status, canvas rendering, and existing export diagnostics; exercise denied or unavailable font access.
 9. Confirm ordinary drafts and empty Presentations no longer create stacked warning rows, while genuine write conflicts and recovery remain visible and actionable.
 
-Production packaging, installed-build verification, and release publication are separate gates. Source review, a model check, and a prepared acceptance script do not complete those gates. All committed acceptance material must use fabricated content; private authoring work remains outside this repository.
+The earlier `cb56cbc` installation remains historical evidence. The subsequent codec correction passed focused/full source gates, matching packaging, and 43 UI groups; incremental installation also completed. Authorized local authoring also completed successfully. Validation keeps source/model, synthetic UI, installation, and private authoring evidence levels separate. The fully accepted runtime is ready for scoped private-origin delivery, with actual remote refs independently checked afterward. All committed acceptance material must use fabricated content; private authoring work remains outside this repository.

@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "build": {
+    "product": "HUANDENG Editor",
+    "productVersion": "0.11.0",
+    "sourceRevision": "0d0d8efe115c4b4dc9789c35f70b13efc899ab9e",
+    "sourceDirty": false,
+    "builtAt": "2026-11-08T09:51:50.6948572Z",
+    "electronVersion": "38.7.2",
+    "desktopProtocol": 1,
+    "nodeLinker": "hoisted"
+  },
+  "ui": {
+    "groups": [
+      {
+        "name": "authoring",
+        "checks": 19,
+        "passed": 19,
+        "rendererErrors": 0,
+        "normalExits": 5
+      },
+      {
+        "name": "workflow",
+        "checks": 7,
+        "passed": 7,
+        "rendererErrors": 0,
+        "normalExits": 2
+      },
+      {
+        "name": "objects",
+        "checks": 17,
+        "passed": 17,
+        "rendererErrors": 0,
+        "normalExits": 3
+      }
+    ],
+    "checks": 43,
+    "passed": 43,
+    "rendererErrors": 0,
+    "normalExits": 10
+  },
+  "installation": {
+    "passed": true,
+    "packageVerified": true,
+    "originalsUnchangedAfterClose": true,
+    "fixtureUnchanged": true,
+    "installedManifestMatchesCandidate": true,
+    "previousVersionPreserved": true,
+    "windowLeftOpen": true,
+    "productionFrontend": true,
+    "frontendBytesMatchPackage": true,
+    "respondingNativeWindow": true,
+    "serviceParentVerified": true,
+    "packagedServiceVerified": true,
+    "ordinaryProfileVerified": true,
+    "diagnostics": 0,
+    "englishDefaultVerified": true,
+    "protectedFilesChecked": 1096
+  },
+  "screenshots": {
+    "reviewed": true,
+    "count": 7,
+    "files": [
+      "03-collapsed-cover.png",
+      "04-empty-presentation.png",
+      "06-image-preview.png",
+      "07-title-style.png",
+      "09-font-settings.png",
+      "12-repaired-sections.png",
+      "workflow-1040.png"
+    ]
+  }
+}

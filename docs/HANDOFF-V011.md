@@ -1,63 +1,54 @@
-# HUANDENG v0.11 handoff — draft
+# HUANDENG v0.11 handoff
 
-**Status: candidate implementation is under final validation. Windows UI acceptance, production package acceptance, installation verification, and remote publication are PENDING.** This handoff contains generic editor information only. Private authoring work and its receipts remain separate.
+**Status: accepted, installed, and release-ready.** Runtime source: `0d0d8efe115c4b4dc9789c35f70b13efc899ab9e`, version 0.11.0, built `2026-11-08T09:51:50.6948572Z`. Source gates, matching packaging, 43 UI groups, incremental installation, and authorized local authoring passed. Documentation and safe evidence are prepared for the separate delivery commit and final private-origin milestone. Actual remote refs still need independent verification after the Git operations; no completed push is claimed here.
 
-Read [AUDIT-V011](AUDIT-V011.md), [SPEC-V011](SPEC-V011.md), and [IMPLEMENTATION-V011](IMPLEMENTATION-V011.md) for the decisions. Enter final evidence in [VALIDATION-V011](VALIDATION-V011.md) and the accepted outcome in [RELEASE-V011](RELEASE-V011.md).
+Read [WORKFLOW-V011](WORKFLOW-V011.md) for user controls and [VALIDATION-V011](VALIDATION-V011.md) for evidence, failures, coverage, and remaining gates. [Audit](AUDIT-V011.md), [Specification](SPEC-V011.md), and [Implementation](IMPLEMENTATION-V011.md) record design decisions.
 
-## What the candidate implements
+## Completed
 
-- Discoverable Presentation deletion beside its name, retained Save/Discard behavior, and consistent Slide/Section disclosure labels and icons.
-- Contextual ordinary-draft/empty-state guidance, a compact Drafts review route, and preserved conflict/recovery actions.
-- Explicit first-Slide Section membership, compatible fixed ranges/lists, collapsible cover-led Pages navigation, search, and a visible missing-boundary repair route.
-- Sequential local repair of multiple missing Section covers with strict final writer validation.
-- Exact blank-Slide insertion at thumbnail gaps and before/after menu locations, using stable neighbors and current document revisions.
-- A right-side read-only Files preview with bounded safe image/text reads, rapid-switch protection, and preservation of the current Slide and drafts.
-- One Quick Layout entry, explicit captured title-style references, reference refresh, visible inline-baseline handling, and a revision-checked target edit with one Undo.
-- Grouped font presets, retained custom stacks, and explicit local-availability checks with honest failure/denial states.
-- Generic current-tree privacy cleanup, with historical residual traces documented as a separate unresolved public-release concern.
+- Presentation deletion beside its name, consistent disclosure labels/icons, contextual draft/empty guidance, and compact Drafts review.
+- Stable first-Slide Sections, compatible fixed ranges/lists, cover-led folding/search, and missing-cover diagnostics with sequential draft repair and strict final validation.
+- Exact gap insertion through stable neighbors, current revisions, and existing writer/Undo.
+- Right-side read-only Files preview with safe bounded reads, draft retention, and keyboard/native-menu isolation.
+- Captured title styles with explicit reference refresh, visible inline-baseline handling, target revision checks, and one Undo; no cross-page source CAS claim.
+- Grouped font presets, custom stacks, samples, and explicit local-font checks with honest unavailable/denied states.
+- Current-tree privacy cleanup, including the final eight private manifest/export hash occurrences in three legacy files; measured counts, sizes, and unchanged results retained.
+- Generic YAML compatibility correction: indent replacement flow values for block sequences; six LF/CRLF codec regressions plus a shared-store preview/commit/Undo regression.
 
-## Contracts to retain during final fixes
+Corrected-source Windows gates: **44 focused codec/store tests, 7.38 s**; TypeScript **4.70 s**; Biome **735 files / no errors, 3.03 s**; production build **8.18 s**. Full suite: **97 files, 1,088 passed + one platform skip = 1,089 total**, **70.51 s wall / 68.61 s Vitest**, four workers.
 
-**Sections.** The first Slide has a stable identity; Position and automatic membership follow Main order. Folding only changes the rail. Missing covers must not silently extend a predecessor across an uncertain boundary. A local draft may stage an unresolved-end condition while other missing covers are repaired; invalid covers and overlaps still fail, and the writer rejects an incomplete saved definition.
+The three-line runtime correction is in source-preserving YAML replacement, not writer/CAS or resource management. Earlier failed attempts and the source/harness corrections remain in Validation. Private authoring data is not a regression fixture.
 
-**Insertion.** A clicked gap identifies its actual neighboring Slides, including before the first and after the last. Do not replace that location with the current selection or a stale ordinal. If current adjacency changed, ask the user to choose the location again through the existing error path. Presentation reference editing is a distinct operation.
+## Earlier candidate provenance
 
-**Files.** Preview is read-only source/image inspection within the Project. It never executes Markdown, HTML, SVG, or scripts. Keep path/link/type/size protections, stale-request cancellation, image revision matching, and preview keyboard ownership. Do not unmount draft-owning panels simply to show Preview.
+The earlier `cb56cbc` package passed its UI and installation checks before a later authoring preview exposed the YAML block-sequence compatibility case. That failure was corrected and the new runtime received its own source, matching-package, installation, and authoring acceptance. The earlier package remains a separate rollback copy; Validation retains the failure/correction history.
 
-**Quick Layout.** Capture the selected reference's supported visible inline baseline, not merely a possibly overridden outer font/size. Reject incompatible mixed reference baselines with an explanation. Keep the captured preview and values stable until an explicit refresh. Apply only to the selected independent target, retaining its wording, semantic emphasis, and unrelated objects. The target page revision is checked by the writer; the reference revision is provenance for captured values, not cross-page source CAS. Do not describe captured styles as a live link to the reference.
+## Corrected-source installation
 
-**Fonts.** Keep custom stacks and existing values. A preset entry is not proof of installation. Inventory starts only from Check local fonts; denied/unsupported/failed access remains unverified. Local availability does not imply redistribution permission, embedding, or equal output on another machine.
+The incremental installation of `0d0d8efe115c4b4dc9789c35f70b13efc899ab9e` passed in **451.00 seconds**, exit `0`. The installed application has **29,229 files / 685,593,328 bytes**; both shortcuts were checked. The ordinary English profile reopened the **existing Project** with zero diagnostics and writable protocol 1.
 
-## Final execution sequence
+All current Project files remained unchanged, with **zero files saved during normal closure**. The separate `cb56cbc` backup and pre-existing v0.10 backup are retained. Detailed private receipts remain local. The completion receipt also confirms original-file and protected-fixture preservation, exact installed-manifest matching, retained previous versions, and an open saved ordinary-profile window. The final authorized authoring task subsequently passed through the installed shared writer, native export, preservation checks, and independent visual review. Its private structure, contents, identifiers, paths, screenshots, and detailed receipts remain outside Git.
 
-1. **Confirm the actual candidate and available receipts.** Read current authoritative source state and the release lead's existing results. Do not infer progress from these draft documents or rerun completed work without a remaining risk. Final source/build identity: **PENDING**.
-2. **Preserve and complete the code-gate receipts.** The release lead reports Windows TypeScript and production-build passes, Biome over 735 files without warnings, and a 97-file unit suite with 1,079 passes and one platform skip. Attach the actual commands and source-state linkage. Repeat affected checks only if subsequent code changes or a concrete remaining risk require them.
-3. **Complete synthetic Windows UI journeys.** Use the acceptance matrix in VALIDATION-V011. Include Section repair/discovery, collapsed-boundary insertion, preview keyboard/draft retention, captured-reference refresh, visible rich-text baselines, target conflict handling, and local-font denial/availability. The first development run stopped on a cache-versus-resolved-membership harness assumption after five completed groups; only that assertion was corrected. A full 19-group rerun is in progress. Completed UI result and accepted runtime: **PENDING**.
-4. **Build and validate the package.** Verify self-contained dependencies, launch from an independent location, and repeat the required journeys against the actual packaged executable. Development-server success does not establish package success. Package identity and results: **PENDING**.
-5. **Install without altering user documents.** Close normally and respect pending-save protection; retain the previous application package; replace only the intended application files. Verify the installed binary, shortcuts, ordinary launch, and document preservation through private local receipts. Never restore a historical document baseline as an application rollback. Installation result: **PENDING**.
-6. **Inspect final staged material.** Include editor source, generic docs, and approved synthetic evidence only. Exclude private research content, screenshots, recent-project details, local paths, and per-page receipts. Current-tree final staged inspection: **PENDING**.
-7. **Complete release records and publish the editor milestone.** Fill validation/release/handoff with observed outcomes, preserve failed attempts and limitations, then follow RELEASE-POLICY for the tested milestone to origin. Independently verify the resulting refs. Do not push upstream, publish npm, change visibility, or rewrite history under this task. Publication result: **PENDING**.
+## Final delivery action
 
-## Privacy findings to carry forward
+1. Stage only scoped editor source/docs and the reviewed synthetic evidence: the whitelisted acceptance record and seven PNGs under `docs/evidence/v011`. Private authoring material and detailed inventories remain local.
+2. Create the documentation/evidence delivery commit and complete the significant private-origin `main` / `editor-v0.11.0` milestone under RELEASE-POLICY. Keep the accepted runtime source `0d0d8ef` and build timestamp distinct from that delivery-only commit.
+3. Independently verify the actual remote refs and record their outcome in the delivery receipt and final user report. This handoff marks the preparation complete; it does not assert that those Git operations already succeeded.
 
-Legacy identifiers and personal local-path references in the current source tree have been generalized; identifying per-page validation records have been reduced to aggregate summaries. Final staging still needs a fresh inspection after integration.
+Do not repeat completed source checks, UI acceptance, installation, or authoring without a concrete remaining risk. Application rollback restores application files only, never historical user documents.
 
-No full private research deck or private research media was found in the inspected published Git objects. The finding is limited to those objects; it does not certify remote caches, issues, attachments, or other copies. Historical identifier/path/hash/object-identifier traces remain in earlier reachable commits or tags. They are not removed by the current-tree cleanup.
+## Contracts to preserve
 
-No history rewrite is authorized for this milestone. Before any public release or visibility change, arrange a separate, explicit review and cleanup action for those historical traces. Do not reproduce their values in repository docs and do not silently force-push or replace tags. Private audit inventories stay outside distributable material.
+**Sections and insertion.** Automatic membership resolves from stable cover identities and current Main order; cached member arrays are compatibility data. Folding changes navigation only. Uncertain/missing boundaries stay diagnosable. A draft can hold the specific unresolved-end condition during multiple repairs, but the writer rejects an incomplete save. Gap insertion uses actual neighboring IDs, including hidden members after a folded Section, and rejects changed adjacency.
 
-## Final state to fill after acceptance
+**Preview.** Keep path/realpath/link/type/size checks, request cancellation, image revision matching, and read-only source rendering. Do not unmount draft-owning Inspector/Notes contexts or let preview edits become canvas commands. Do not execute markup or scripts.
 
-| Record | Value |
-| --- | --- |
-| Accepted editor/runtime identity | **PENDING** |
-| Windows source checks reported by the release lead | TypeScript/build passed; Biome: 735 files, no warnings; units: 97 files, 1,079 passed, one platform skip. Source-state receipt linkage remains **PENDING**. |
-| Packaged Windows acceptance result and count | **PENDING** |
-| Installed runtime/shortcut verification | **PENDING** |
-| Previous application rollback availability | **PENDING** — application package only |
-| Aggregate private-document preservation result | **PENDING** |
-| Safe evidence index | **PENDING** |
-| Origin publication and verified refs | **PENDING** |
-| Remaining limitations | **PENDING** |
+**Quick Layout and fonts.** Freeze the explicitly selected reference until Refresh. Apply only to the explicit independent target, retaining words, semantic tags, and unrelated objects. Target CAS protects the edit; the reference revision is provenance, not an atomic source-page dependency. Clear only supported baseline formatting needed for the chosen operation; retain local mixed emphasis. Font inventory begins only from Check local fonts. Unverified access is not proof that every family is missing, and presets do not install/embed fonts.
 
-Leave these entries pending until there is actual evidence. Repository publication, installed application state, and private Project authoring are separate work products and must not be conflated.
+**Shared editing and animation.** Retain the existing shared GUI/CLI/MCP writer, stable identities, expected revisions, idempotency, journal recovery, portable named versions, and all draft retention. Keep the detailed writer, asset, keyboard, and animation invariants in [WEBCHAT](../WEBCHAT.md). This milestone does not reopen the document model or expand animation/export scope.
+
+## Privacy and release limits
+
+The current-tree scan and inspected v0.10 images found no remaining private project names or personal user paths after cleanup. The selected final v0.11 synthetic evidence was separately reviewed, with personal project/config roots masked at capture. Full private research decks/media were not found in the bounded published-object scan. Earlier commits/tags still retain identifier/path/hash/object-identifier traces. Before public release or changing visibility, perform a separate explicitly scoped history action. No history rewrite, force push, upstream push, npm publishing, or visibility change is authorized by this milestone.
+
+Matching corrected-source package/UI, incremental installation, preservation, and authorized local authoring acceptance are complete. Documentation and generic evidence are ready for final delivery; only the final scoped origin synchronization and independent ref verification remain to be recorded. Private Project authoring is a separate local work product.
