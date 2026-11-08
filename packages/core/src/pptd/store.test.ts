@@ -146,6 +146,66 @@ describe('PPTD document store', () => {
     ).rejects.toMatchObject({ code: 'REQUEST_ID_REUSE' });
   });
 
+  it('previews, commits and undoes a Project and geometry batch on indentless CRLF arrays', async () => {
+    const files = await fixture();
+    const oldBounds = '    bounds:\r\n    - 10\r\n    - 20\r\n    - 300\r\n    - 40';
+    const source = pageSource
+      .replaceAll('\n', '\r\n')
+      .replace('    bounds: [10, 20, 300, 40]', oldBounds);
+    const pagePath = path.join(files.root, 'pages/a.page');
+    await fs.writeFile(pagePath, source);
+    const store = await open(files);
+    const snapshot = store.getSnapshot();
+    const first = snapshot.pages[0];
+    const protectedPaths = [
+      pagePath,
+      path.join(files.root, METADATA_PATH),
+      files.entryPath,
+      path.join(files.root, 'pages/b.page'),
+    ];
+    const readBytes = () => Promise.all(protectedPaths.map((file) => fs.readFile(file)));
+    const before = await readBytes();
+    const transaction = request(store, [
+      {
+        op: 'project.replace',
+        project: {
+          schemaVersion: 1,
+          mainStory: { purpose: '', audience: '', takeaway: '' },
+          sections: [
+            {
+              id: 'overview',
+              title: 'Overview',
+              startPageId: first.pageId,
+              pageIds: snapshot.pages.map((page) => page.pageId),
+              story: { purpose: '', audience: '', takeaway: '' },
+            },
+          ],
+          presentations: [],
+        },
+      },
+      {
+        op: 'element.patch',
+        pageId: first.pageId,
+        elementId: 'title',
+        set: { bounds: [24, 32, 360, 64] },
+      },
+    ]);
+    const preview = await store.preview(transaction);
+    expect(preview).toMatchObject({ noOp: false, totalFileCount: 2, totalPageCount: 1 });
+    expect(await readBytes()).toEqual(before);
+    expect(store.getSnapshot()).toEqual(snapshot);
+    expect(await store.history()).toEqual([]);
+    const committed = await store.commit(transaction, preview.previewHash);
+    expect(committed.changedPages).toEqual([first.pageId]);
+    expect(await fs.readFile(pagePath, 'utf8')).toBe(
+      source.replace(oldBounds, '    bounds:\r\n      [24,32,360,64]'),
+    );
+    expect(store.getSnapshot().metadata.project?.sections[0].startPageId).toBe(first.pageId);
+    expect((await readBytes()).slice(2)).toEqual(before.slice(2));
+    await store.undo(committed.operationId);
+    expect(await readBytes()).toEqual(before);
+  });
+
   it('validates an entire batch before touching disk', async () => {
     const files = await fixture();
     const store = await open(files);

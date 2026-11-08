@@ -21,6 +21,86 @@ describe('PPTD source codec', () => {
     expect(patchPageElement(page, 'title', { bounds: [10, 20, 300, 40] })).toBe(page);
   });
 
+  it.each(['\n', '\r\n'])(
+    'patches indentless block arrays without changing adjacent source (%j)',
+    (newline) => {
+      const bounds = ['  bounds: # geometry', '  - 10', '  - 20', '  - 300', '  - 40'].join(
+        newline,
+      );
+      const align = ['    align:', '    - left', '    - top'].join(newline);
+      const source = [
+        '\uFEFF# keep the author comment',
+        'pageType: content',
+        'elements:',
+        '- elementId: title',
+        '  elementType: text',
+        bounds,
+        '  content: # keep this mapping',
+        '    text: "Original wording"',
+        align,
+        '    future: [keep, this, array] # unchanged',
+        '  unknown: { nested: [a, b] }',
+        'notes: "Keep the next top-level field"',
+        '',
+      ].join(newline);
+      const updated = patchPageElement(source, 'title', {
+        bounds: [24, 32, 360, 64],
+        'content.align': ['center', 'middle'],
+      });
+      expect(updated).toBe(
+        source
+          .replace(bounds, `  bounds: # geometry${newline}    [24,32,360,64]`)
+          .replace(align, `    align:${newline}      ["center","middle"]`),
+      );
+      const expected = structuredClone(parsePage(source).value);
+      expected.elements[0].bounds = [24, 32, 360, 64];
+      expected.elements[0].content = {
+        ...expected.elements[0].content,
+        align: ['center', 'middle'],
+      };
+      expect(parsePage(updated).value).toEqual(expected);
+      expect(patchPageElement(updated, 'title', { 'content.fontSize': 32 })).toContain(
+        `    "fontSize": 32${newline}`,
+      );
+    },
+  );
+
+  it.each(['\n', '\r\n'])(
+    'empties an indentless manifest sequence and preserves its next field (%j)',
+    (newline) => {
+      const source = [
+        '# deck',
+        'version: v2',
+        'pages:',
+        '- pages/a.page',
+        'future: { keep: [a, b] }',
+        '',
+      ].join(newline);
+      expect(setManifestPages(source, [])).toBe(
+        ['# deck', 'version: v2', 'pages:', '  []', 'future: { keep: [a, b] }', ''].join(newline),
+      );
+    },
+  );
+
+  it.each(['\n', '\r\n'])(
+    'replaces a block array with a flow map without changing its next array (%j)',
+    (newline) => {
+      const source = [
+        'elements:',
+        '- elementId: title',
+        '  elementType: text',
+        '  future:',
+        '  - original',
+        '  next: [keep, this]',
+        'notes: untouched',
+        '',
+      ].join(newline);
+      const updated = patchPageElement(source, 'title', { future: { nested: ['new'] } });
+      expect(updated).toBe(source.replace('  - original', '    {"nested":["new"]}'));
+      expect(parsePage(updated).value.elements[0].future).toEqual({ nested: ['new'] });
+    },
+  );
+
   it('adds nested style and page notes without normalizing the source', () => {
     const updated = patchPageElement(page, 'title', { 'content.color': '#aabbcc', rotation: 8 });
     const withNotes = setPageNotes(updated, '第一行\n第二行');

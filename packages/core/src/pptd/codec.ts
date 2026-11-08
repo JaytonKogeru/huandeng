@@ -210,7 +210,9 @@ function replaceNode(parsed: SourceDocument<unknown>, node: Node, value: unknown
   if (!node.range) throw new PptdError('UNSUPPORTED_SOURCE_EDIT', 'Missing YAML source range.');
   const [start, end] = node.range;
   const suffix = /\r?\n$/.test(parsed.source.slice(start, end)) ? parsed.newline : '';
-  return splice(parsed.source, start, end, JSON.stringify(value) + suffix);
+  // A block sequence may share its mapping key's indentation; a flow value cannot.
+  const indent = isSeq(node) && !node.flow ? '  ' : '';
+  return splice(parsed.source, start, end, indent + JSON.stringify(value) + suffix);
 }
 
 function insertMapField(
