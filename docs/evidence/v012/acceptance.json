@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "editorVersion": "0.12.0",
+  "pluginVersion": "0.12.1",
+  "runtime": {
+    "product": "HUANDENG Editor",
+    "productVersion": "0.12.0",
+    "sourceRevision": "01780db2871d2eb516fcd7a00ccbcc43f666daa1",
+    "sourceDirty": false,
+    "builtAt": "2026-11-08T12:59:10.9221682Z",
+    "electronVersion": "38.7.2",
+    "desktopProtocol": 1,
+    "nodeLinker": "hoisted"
+  },
+  "sourceGates": {
+    "unitFiles": 99,
+    "unitPassed": 1096,
+    "unitSkipped": 1,
+    "pluginTestsPassed": 8,
+    "typecheckTasks": 5,
+    "biomeFiles": 748,
+    "productionBuild": true
+  },
+  "package": {
+    "seconds": 60.361,
+    "portable": true
+  },
+  "packagedUi": {
+    "harness": "verify-authoring-v012",
+    "passed": true,
+    "seconds": 30.866,
+    "desktopAppOverride": null,
+    "launchCount": 2,
+    "exits": [
+      {
+        "launch": 1,
+        "code": 0,
+        "signal": null
+      },
+      {
+        "launch": 2,
+        "code": 0,
+        "signal": null
+      }
+    ],
+    "checks": [
+      {
+        "name": "Section 00 and sequential topic numbers expose stable Section IDs",
+        "passed": true,
+        "milliseconds": 709
+      },
+      {
+        "name": "folding and unfolding a later Section preserves its viewport anchor and selected Slide",
+        "passed": true,
+        "milliseconds": 1031
+      },
+      {
+        "name": "gap Create Section splits existing Slides with one saved action and Undo/Redo",
+        "passed": true,
+        "milliseconds": 2772
+      },
+      {
+        "name": "native thumbnail drag supports the upper half and exact page gaps",
+        "passed": true,
+        "milliseconds": 2069
+      },
+      {
+        "name": "dragging near the rail edge scrolls while retaining the actual hidden Section boundary",
+        "passed": true,
+        "milliseconds": 1913
+      },
+      {
+        "name": "selection color and highlight preserve other text, semantic bold and native Undo",
+        "passed": true,
+        "milliseconds": 6845
+      },
+      {
+        "name": "Ctrl+wheel zooms the canvas, preserves browser scale and leaves Shift scrolling available",
+        "passed": true,
+        "milliseconds": 708
+      },
+      {
+        "name": "normal reopen retains Section IDs, numbering and saved range formatting",
+        "passed": true,
+        "milliseconds": 7245
+      }
+    ],
+    "rendererErrors": [],
+    "observations": [
+      {
+        "horizontalScroll": 240,
+        "scrollWidth": 1536,
+        "viewportWidth": 1002
+      }
+    ]
+  },
+  "installation": {
+    "passed": true,
+    "runtimeRevision": "01780db2871d2eb516fcd7a00ccbcc43f666daa1",
+    "seconds": 459.013,
+    "applicationFiles": 29244,
+    "applicationBytes": 685865897,
+    "installedManifestMatchesCandidate": true,
+    "previousVersionPreserved": true,
+    "originalsUnchangedAfterClose": true,
+    "fixtureUnchanged": true,
+    "shortcutsVerified": true,
+    "ordinaryProfileVerified": true,
+    "productionFrontendVerified": true,
+    "normalCloseExitCode": 0,
+    "forcedTerminationUsed": false,
+    "preferencesRewritten": false,
+    "historicalProjectRestoreUsed": false,
+    "protocolVerified": true,
+    "toolCount": 18,
+    "guideCount": 2
+  },
+  "clientVerification": {
+    "pluginTestsPassed": 8,
+    "codexNativeInstalled": true,
+    "claudeNativeInstalled": true,
+    "deepseekReadOnlyModelTaskPassed": true,
+    "deepseekTaskRuntimeVersion": "0.11.0",
+    "codexCacheProtocolVerified": true,
+    "chatgptAccountPackageCreated": true,
+    "chatgptHostAvailabilityVerified": true,
+    "chatgptTryInChatVerified": true,
+    "currentConversationHotLoadVerified": false,
+    "portableFiles": 19,
+    "chatgptFiles": 16
+  },
+  "privateAuthoring": {
+    "savedDataVerified": true,
+    "visualReviewPassed": true
+  },
+  "reviewedSyntheticScreenshots": [
+    "01-section-anchor.png",
+    "04-saved-text-color-highlight.png",
+    "06-reopened.png"
+  ]
+}

@@ -6,17 +6,17 @@ HUANDENG Editor 基于 OpenSlide 的 React 编辑环境，使用 PPTD 文档后�
 
 ## 当前阶段
 
-当前版本为 **[v0.11.0：组织与完善已有 Slides](docs/RELEASE-V011.md)**，运行时清洁源码 `0d0d8ef` 已通过验收并安装。源码门槛、匹配正式包、43 项 UI 场景，以及经授权的本地实际创作、导出、保护检查和独立视觉复核全部通过。现已完成文档与通用证据准备，可进行最后一次 private-origin `main` / `editor-v0.11.0` 同步；本记录不预先声称 push 或远程 refs 核对成功。后续文档／证据交付提交与已接受的 runtime commit 分开记录。见 [Validation](docs/VALIDATION-V011.md)。
+当前版本为 **[v0.12.0：Section 导航、局部文字与客户端插件](docs/RELEASE-V012.md)**。清洁运行时源码 `01780db` 已完成正式包验收并安装；客户端 Plugin 为 **0.12.1**。运行时提交与后续文档、证据交付提交分开记录。见 [Validation](docs/VALIDATION-V012.md)。
 
-本轮围绕已有内容继续创作：Section 可绑定稳定的首页 Slide，并延伸到下一 Section 前；Pages 保留首页、折叠成员、搜索及在准确页间插入。Presentation 删除放在名称旁，普通 Drafts 与空演讲提示回到对应操作上下文。Files 可以在右侧只读预览图片和文本；Quick Layout 可从明确选择的标题捕获样式，应用到当前标题并一次 Undo；字体菜单与 Settings 提供分类、样例和主动本机检查。原有 Main Slides、Story、共享 writer、命名版本和动画保留。
+Section 在 Pages 中显示顺序编号，稳定 Section ID 可查看、复制；开篇材料可明确标为 Section 00。折叠保留当前位置，页间可创建 Section，拖拽支持前后落点和边缘滚动。选中文字后可单独改 Text color / Highlight，保存重开仍保持；Ctrl+滚轮围绕指针缩放。原有 Files 预览、Quick Layout、字体、Story、共享 writer、命名版本和动画继续保留。
 
-English 为默认界面，中文保留核心英文术语。**Agent setup** 生成当前 Project 配置；ChatGPT 使用已有 DC-WALT 通道，没有增加反向代理、公网隧道或自动连接行为。字体预设不安装或嵌入字体，Files 不执行脚本，捕获的标题样式也不会自动跟随后续参考页变化。
+Codex、Claude Code 与 DeepSeek Harness 的可迁移适配器查找本机 Editor，并核对所操作的 Project。ChatGPT 私人包绑定已有授权工作站 App；已登录账号的「在聊天中试用」入口已验证，新输入框显示 HUANDENG。现有长对话的动态加载不由这一检查推定。**Agent setup** 仍是配置生成入口。English 为默认界面，已有个人偏好保留；没有增加反向代理或公网隧道。
 
-新源码通过 **44 项 codec/store 定向检查**，完整单元测试 **1,088 passed + 1 platform skip**，共 1,089 项、97 个文件；TypeScript 4.70 s，Biome 检查 735 个文件无错误，生产构建 8.18 s。新增六项 LF/CRLF codec 回归及一项共享 store preview/commit/Undo 回归。匹配新源码的正式包构建于 `2026-11-08T09:51:50.6948572Z`，再次通过 **19/19 authoring、7/7 workflow、17/17 object/workspace，共 43/43**。新 runtime `0d0d8ef` 已完成增量安装：29,229 个应用文件、两处快捷方式及日常 English 配置打开均通过；全部现有 Project 文件保持不变，正常关闭保存文件数为 0。最终实际创作验证也已通过；私人文档的内容、结构、标识、截图及详细收据保持在本地，不成为工具示例或公开证据。
+完整单元测试 **1,096 passed + 1 platform skip**，99 个文件；插件 **8/8**，TypeScript、Biome 748 个文件与生产构建通过。匹配正式包通过 **8/8 界面组、两次正常启动退出**，无渲染错误。日常配置安装重开、安装版共享接口及经授权的本地创作与导出均完成独立检查。
 
-入门见 [v0.11 创作指南](docs/WORKFLOW-V011.md) 与 [完整工作流](docs/WORKFLOW-V010.md)。[Drug Design 示例](examples/drug-design-v010/README.md) 保留为独立通用示例；个人 Project 的内容、图片、截图、路径和逐页验收记录不进入工具仓库。旧文档当前树中的私人标识与文件指纹已清理，但旧提交和标签仍有历史痕迹，公开仓库前需另行处理；本轮不改写历史。
+入门见 [v0.12 创作指南](docs/WORKFLOW-V012.md)、[v0.11 创作指南](docs/WORKFLOW-V011.md) 与 [完整工作流](docs/WORKFLOW-V010.md)。[Drug Design 示例](examples/drug-design-v010/README.md) 保留为通用示例。私人 Project 的内容、图片、标识、路径、截图及详细收据不进入工具仓库或插件包。仓库保持 private；旧提交中的历史标识/路径痕迹需在公开前另行清理，本轮不改写历史。
 
-PNG/PDF/PPTX 继续输出基础静态画面。完整 PPTX 往返、原生 PowerPoint 动画、独立演讲者窗口和插件市场仍是单独能力；本轮没有新增长时间高清负载性能结论。设计取舍见 [Audit](docs/AUDIT-V011.md)，版本标识规则见 [发布规则](docs/RELEASE-POLICY.md)。
+PNG/PDF/PPTX 继续输出基础静态画面。完整 PPTX 往返、原生 Office 动画、独立演讲者窗口和编辑器插件市场仍是独立能力；本轮没有新增长时间高清负载性能结论。设计取舍见 [Audit](docs/AUDIT-V012.md)，版本规则见 [发布规则](docs/RELEASE-POLICY.md)。
 
 ## 启动桌面编辑器
 
@@ -65,7 +65,7 @@ GUI、CLI 和 MCP 使用同一个本地文档服务。请求携带读取时的�
 
 ## Main Slides、Section 与 Presentation
 
-每个 Project 有一份 Main Slides 库。在 Project 中创建 Section，选择 First Slide to next Section 和首页，再 Save Project。边界保存稳定 Slide ID，成员按当前 Main 页序延伸到下一 Section 前，最后一段延伸到末页；首个 Section 前的 Slides 保持独立。Pages 的箭头折叠成员但保留首页，页间入口支持准确插入。旧式固定范围和成员列表保留，只有明确操作才转换；缺失首页可从 Review Sections 修复。创建 Presentation 后用 Add slides or Sections 按缩略图、标题和悬停/聚焦预览选择来源。每个 Presentation 按自己的顺序引用整个 Section 或单页；同一页可重复使用，每次可写不同备注。默认跟随 Main 更新，命名版本可固定为只读旧版。
+每个 Project 有一份 Main Slides 库。在 Project 中创建 Section，选择 First Slide to next Section 和首页，再 Save Project。边界保存稳定 Slide ID，成员按当前 Main 页序延伸到下一 Section 前，最后一段延伸到末页；首个 Section 前的 Slides 保持独立。可将覆盖首张 Main Slide 的开篇 Section 明确标为 Front matter，显示 Section 00；普通 Section 从 01 编号，Section ID 独立保持稳定。Pages 的箭头折叠成员并保留所点标题的位置，页间右键可插入 Slide 或 Create Section here。旧式固定范围和成员列表保留，只有明确操作才转换；缺失首页可从 Review Sections 修复。创建 Presentation 后用 Add slides or Sections 按缩略图、标题和悬停/聚焦预览选择来源。每个 Presentation 按自己的顺序引用整个 Section 或单页；同一页可重复使用，每次可写不同备注。默认跟随 Main 更新，命名版本可固定为只读旧版。
 
 项目概览可以直接进入主库的各场衍生演讲，当前页的使用位置能跳到准确的那一次出现。`pageId`/Slide ID表示页面内容，`occurrenceId` 表示某次引用，当前位置随编排改变。显式单页引用可以分别设置讲稿和固定版本；整章动态引用需要先“拆为独立页面引用”再逐页设置。
 
@@ -83,7 +83,7 @@ Workspace settings 中的 Snap 控制智能辅助线并保存偏好。拖动按�
 
 Inspector 的 Quick Layout 可明确选择 Reference Slide 与标题，检查 Captured reference style 后应用到当前独立标题；保留目标文字、语义强调和其他对象，支持一次 Undo。参考页变化后使用 Refresh reference style 重新捕获。字体预设保留自定义输入；Workspace settings → Fonts 显示样例，Check local fonts 只在点击后检查，无法取得许可时显示 unverified。
 
-对象右键提供 B/I/U、字号、颜色、Bring forward / Send backward / Bring to front / Send to back 等常用操作，并与快捷键和 Undo 共用实现。完整属性在 Inspector 的 Properties；Layers、Story、Checks 分页展示并保留输入草稿。Notes 从工具栏打开，可拖动边缘改变大小并在底部/右侧停靠；左右侧栏在各自边缘收起、展开和调整宽度。
+文字编辑时选中词句，右键 Text color / Highlight 只改变该范围；Ctrl+滚轮在画布内缩放，普通与 Shift 滚轮继续滚动。对象右键提供 B/I/U、字号、颜色、Bring forward / Send backward / Bring to front / Send to back 等常用操作，并与快捷键和 Undo 共用实现。完整属性在 Inspector 的 Properties；Layers、Story、Checks 分页展示并保留输入草稿。Notes 从工具栏打开，可拖动边缘改变大小并在底部/右侧停靠；左右侧栏在各自边缘收起、展开和调整宽度。
 
 文件长期被占用而导致保存未完成时，界面保留本地草稿并显示“恢复未完成保存”。解除文件占用后可在当前窗口恢复，原请求确认后继续保存后续输入，再正常关闭或切换项目。如果文件或保存记录与预期不一致，恢复会停止，保留现场；可先“复制待保存页面”并检查恢复详情。该操作不会强行覆盖外部内容。
 
@@ -134,7 +134,7 @@ MCP 现有 **18 个工具、2 个 Story/operations 指南资源**。Agent 先读
     corepack pnpm exec vitest run --project unit
     corepack pnpm check
 
-完整产品规划见 [Master SPEC](docs/SPEC.md)，当前增量见 [SPEC-V011](docs/SPEC-V011.md)，逐项状态见 [本轮审计](docs/AUDIT-V011.md)。历史验收见 [v0.4](docs/RELEASE-V04.md)、[v0.5](docs/RELEASE-V05.md)、[v0.6](docs/RELEASE-V06.md)、[v0.7](docs/RELEASE-V07.md)，[v0.8](docs/RELEASE-V08.md)，[v0.9](docs/RELEASE-V09.md)，[v0.10](docs/RELEASE-V010.md)，本轮见 [v0.11 发布记录](docs/RELEASE-V011.md)。工程接续入口是 [WEBCHAT.md](WEBCHAT.md)。
+完整产品规划见 [Master SPEC](docs/SPEC.md)，当前增量见 [SPEC-V012](docs/SPEC-V012.md)，逐项状态见 [本轮审计](docs/AUDIT-V012.md)。历史验收见 [v0.4](docs/RELEASE-V04.md)、[v0.5](docs/RELEASE-V05.md)、[v0.6](docs/RELEASE-V06.md)、[v0.7](docs/RELEASE-V07.md)，[v0.8](docs/RELEASE-V08.md)，[v0.9](docs/RELEASE-V09.md)，[v0.10](docs/RELEASE-V010.md)，[v0.11](docs/RELEASE-V011.md)，本轮见 [v0.12 发布记录](docs/RELEASE-V012.md)。工程接续入口是 [WEBCHAT.md](WEBCHAT.md)。
 
 里程碑运行单元测试、类型和格式检查，并检查实际构建与安装。桌面、科研对象、原生 PowerPoint 和真实科研项目副本的场景按具体变更风险选择，不在每次开发中重复全部压力矩阵。日常小修改只重复能够验证相应风险的检查。
 
