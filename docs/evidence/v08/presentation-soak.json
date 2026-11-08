@@ -1,0 +1,1706 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-11-08T00:27:37.057325+00:00",
+  "label": "presentation-soak-final-25",
+  "timestamp": "2026-11-08T00:18:34.368Z",
+  "passed": true,
+  "marker": {
+    "product": "HUANDENG Editor",
+    "productVersion": "0.8.0",
+    "sourceRevision": "ecba4cb24d2753841290eb5d29f68b702a4902f6",
+    "sourceDirty": false,
+    "desktopProtocol": 1,
+    "nodeLinker": "hoisted",
+    "builtAt": "2026-11-07T23:44:51.5551681Z",
+    "electronVersion": "38.7.2"
+  },
+  "browser": "Chrome/140.0.7339.249",
+  "harnessNode": "v22.21.0",
+  "exit": {
+    "code": 0,
+    "signal": null
+  },
+  "rendererErrorCount": 0,
+  "rawReportFileName": "presentation-soak-final-25.json",
+  "rawReportSha256": "b19977e8a365e5172ec0e34aaa621e71c85357cf7f32a7051fd926f59373be8c",
+  "harnessFile": "scripts/soak-presentation-v08.mjs",
+  "harnessFileSha256AtSummary": "88856c4170938989cb3b9541a012272b50056b5660ddbb04ec72dd959d341119",
+  "hashSetDigestFormat": "SHA-256 of UTF-8 JSON; sorted keys, ensure_ascii=false, separators=(',', ':').",
+  "samples": [
+    {
+      "stage": "editor-settled",
+      "elapsedMs": 7793.2783,
+      "heap": {
+        "usedSize": 8293596,
+        "totalSize": 14942208,
+        "embedderHeapUsedSize": 5994280,
+        "backingStorageSize": 2526265
+      },
+      "dom": {
+        "documents": 4,
+        "nodes": 1628,
+        "jsEventListeners": 633
+      },
+      "mounted": {
+        "mountedNodes": 699,
+        "totalRenderers": 5,
+        "presenterRoots": 0,
+        "totalPresenterRenderers": 0,
+        "playing": false,
+        "blackout": false,
+        "notes": false,
+        "timeMs": null,
+        "step": null,
+        "animationErrors": 0,
+        "width": 1600,
+        "height": 967,
+        "dpr": 1,
+        "currentRenderersCount": 0,
+        "nextRenderersCount": 0,
+        "raf": {
+          "requested": 0,
+          "executed": 0,
+          "cancelled": 0,
+          "maxPending": 0,
+          "ownerChangedBeforeCallback": 0,
+          "requestedActive": 0,
+          "requestedInactive": 0,
+          "executedActive": 0,
+          "executedInactive": 0,
+          "pendingCount": 0
+        }
+      },
+      "processes": {
+        "Browser": {
+          "count": 1,
+          "workingSetBytes": 140242944,
+          "privateBytes": 196304896,
+          "handles": 1167
+        },
+        "GPU": {
+          "count": 1,
+          "workingSetBytes": 156696576,
+          "privateBytes": 121442304,
+          "handles": 1307
+        },
+        "Utility": {
+          "count": 1,
+          "workingSetBytes": 45572096,
+          "privateBytes": 11038720,
+          "handles": 364
+        },
+        "DocumentService": {
+          "count": 1,
+          "workingSetBytes": 169783296,
+          "privateBytes": 237879296,
+          "handles": 323
+        },
+        "Tab": {
+          "count": 1,
+          "workingSetBytes": 129994752,
+          "privateBytes": 55447552,
+          "handles": 378
+        }
+      },
+      "readableMiB": {
+        "rendererWorkingSet": 123.972656,
+        "rendererPrivate": 52.878906,
+        "jsHeapUsed": 7.909389,
+        "jsHeapTotal": 14.25
+      }
+    },
+    {
+      "stage": "round-1-active-with-next",
+      "elapsedMs": 9501.7367,
+      "heap": {
+        "usedSize": 8738264,
+        "totalSize": 12058624,
+        "embedderHeapUsedSize": 6781592,
+        "backingStorageSize": 2529177
+      },
+      "dom": {
+        "documents": 4,
+        "nodes": 1736,
+        "jsEventListeners": 919
+      },
+      "mounted": {
+        "mountedNodes": 789,
+        "totalRenderers": 7,
+        "presenterRoots": 1,
+        "totalPresenterRenderers": 2,
+        "playing": false,
+        "blackout": false,
+        "notes": true,
+        "timeMs": 0,
+        "step": 0,
+        "animationErrors": 0,
+        "width": 1600,
+        "height": 967,
+        "dpr": 1,
+        "currentRenderersCount": 1,
+        "nextRenderersCount": 1,
+        "raf": {
+          "requested": 0,
+          "executed": 0,
+          "cancelled": 0,
+          "maxPending": 0,
+          "ownerChangedBeforeCallback": 0,
+          "requestedActive": 0,
+          "requestedInactive": 0,
+          "executedActive": 0,
+          "executedInactive": 0,
+          "pendingCount": 0
+        }
+      },
+      "processes": {
+        "Browser": {
+          "count": 1,
+          "workingSetBytes": 140390400,
+          "privateBytes": 196345856,
+          "handles": 1167
+        },
+        "GPU": {
+          "count": 1,
+          "workingSetBytes": 203079680,
+          "privateBytes": 169238528,
+          "handles": 1310
+        },
+        "Utility": {
+          "count": 1,
+          "workingSetBytes": 45580288,
+          "privateBytes": 11046912,
+          "handles": 364
+        },
+        "DocumentService": {
+          "count": 1,
+          "workingSetBytes": 169783296,
+          "privateBytes": 237879296,
+          "handles": 323
+        },
+        "Tab": {
+          "count": 1,
+          "workingSetBytes": 135868416,
+          "privateBytes": 60309504,
+          "handles": 384
+        }
+      },
+      "readableMiB": {
+        "rendererWorkingSet": 129.574219,
+        "rendererPrivate": 57.515625,
+        "jsHeapUsed": 8.333458,
+        "jsHeapTotal": 11.5
+      }
+    },
+    {
+      "stage": "after-1-rounds",
+      "elapsedMs": 16144.2799,
+      "heap": {
+        "usedSize": 11368200,
+        "totalSize": 22806528,
+        "embedderHeapUsedSize": 10132888,
+        "backingStorageSize": 2492367
+      },
+      "dom": {
+        "documents": 2,
+        "nodes": 1414,
+        "jsEventListeners": 1642
+      },
+      "mounted": {
+        "mountedNodes": 690,
+        "totalRenderers": 5,
+        "presenterRoots": 0,
+        "totalPresenterRenderers": 0,
+        "playing": false,
+        "blackout": false,
+        "notes": false,
+        "timeMs": null,
+        "step": null,
+        "animationErrors": 0,
+        "width": 1600,
+        "height": 967,
+        "dpr": 1,
+        "currentRenderersCount": 0,
+        "nextRenderersCount": 0,
+        "raf": {
+          "requested": 618,
+          "executed": 615,
+          "cancelled": 3,
+          "maxPending": 1,
+          "ownerChangedBeforeCallback": 0,
+          "requestedActive": 618,
+          "requestedInactive": 0,
+          "executedActive": 615,
+          "executedInactive": 0,
+          "pendingCount": 0
+        }
+      },
+      "processes": {
+        "Browser": {
+          "count": 1,
+          "workingSetBytes": 140558336,
+          "privateBytes": 196354048,
+          "handles": 1164
+        },
+        "GPU": {
+          "count": 1,
+          "workingSetBytes": 215011328,
+          "privateBytes": 179974144,
+          "handles": 1307
+        },
+        "Utility": {
+          "count": 1,
+          "workingSetBytes": 45621248,
+          "privateBytes": 11059200,
+          "handles": 361
+        },
+        "DocumentService": {
+          "count": 1,
+          "workingSetBytes": 169979904,
+          "privateBytes": 237953024,
+          "handles": 322
+        },
+        "Tab": {
+          "count": 1,
+          "workingSetBytes": 152772608,
+          "privateBytes": 75743232,
+          "handles": 408
+        }
+      },
+      "readableMiB": {
+        "rendererWorkingSet": 145.695312,
+        "rendererPrivate": 72.234375,
+        "jsHeapUsed": 10.84156,
+        "jsHeapTotal": 21.75
+      }
+    },
+    {
+      "stage": "after-5-rounds",
+      "elapsedMs": 40072.6947,
+      "heap": {
+        "usedSize": 17556680,
+        "totalSize": 39583744,
+        "embedderHeapUsedSize": 9335304,
+        "backingStorageSize": 2491334
+      },
+      "dom": {
+        "documents": 2,
+        "nodes": 1414,
+        "jsEventListeners": 1402
+      },
+      "mounted": {
+        "mountedNodes": 690,
+        "totalRenderers": 5,
+        "presenterRoots": 0,
+        "totalPresenterRenderers": 0,
+        "playing": false,
+        "blackout": false,
+        "notes": false,
+        "timeMs": null,
+        "step": null,
+        "animationErrors": 0,
+        "width": 1600,
+        "height": 967,
+        "dpr": 1,
+        "currentRenderersCount": 0,
+        "nextRenderersCount": 0,
+        "raf": {
+          "requested": 3287,
+          "executed": 3272,
+          "cancelled": 15,
+          "maxPending": 1,
+          "ownerChangedBeforeCallback": 0,
+          "requestedActive": 3287,
+          "requestedInactive": 0,
+          "executedActive": 3272,
+          "executedInactive": 0,
+          "pendingCount": 0
+        }
+      },
+      "processes": {
+        "Browser": {
+          "count": 1,
+          "workingSetBytes": 141672448,
+          "privateBytes": 197668864,
+          "handles": 1165
+        },
+        "GPU": {
+          "count": 1,
+          "workingSetBytes": 213024768,
+          "privateBytes": 172597248,
+          "handles": 1310
+        },
+        "Utility": {
+          "count": 1,
+          "workingSetBytes": 44986368,
+          "privateBytes": 11063296,
+          "handles": 358
+        },
+        "DocumentService": {
+          "count": 1,
+          "workingSetBytes": 170254336,
+          "privateBytes": 238149632,
+          "handles": 321
+        },
+        "Tab": {
+          "count": 1,
+          "workingSetBytes": 181301248,
+          "privateBytes": 102596608,
+          "handles": 411
+        }
+      },
+      "readableMiB": {
+        "rendererWorkingSet": 172.902344,
+        "rendererPrivate": 97.84375,
+        "jsHeapUsed": 16.743355,
+        "jsHeapTotal": 37.75
+      }
+    },
+    {
+      "stage": "after-10-rounds",
+      "elapsedMs": 68974.3131,
+      "heap": {
+        "usedSize": 13066016,
+        "totalSize": 39321600,
+        "embedderHeapUsedSize": 5165224,
+        "backingStorageSize": 2488200
+      },
+      "dom": {
+        "documents": 2,
+        "nodes": 1414,
+        "jsEventListeners": 667
+      },
+      "mounted": {
+        "mountedNodes": 690,
+        "totalRenderers": 5,
+        "presenterRoots": 0,
+        "totalPresenterRenderers": 0,
+        "playing": false,
+        "blackout": false,
+        "notes": false,
+        "timeMs": null,
+        "step": null,
+        "animationErrors": 0,
+        "width": 1600,
+        "height": 967,
+        "dpr": 1,
+        "currentRenderersCount": 0,
+        "nextRenderersCount": 0,
+        "raf": {
+          "requested": 6550,
+          "executed": 6519,
+          "cancelled": 31,
+          "maxPending": 1,
+          "ownerChangedBeforeCallback": 0,
+          "requestedActive": 6550,
+          "requestedInactive": 0,
+          "executedActive": 6519,
+          "executedInactive": 0,
+          "pendingCount": 0
+        }
+      },
+      "processes": {
+        "Browser": {
+          "count": 1,
+          "workingSetBytes": 140165120,
+          "privateBytes": 195907584,
+          "handles": 1162
+        },
+        "GPU": {
+          "count": 1,
+          "workingSetBytes": 214839296,
+          "privateBytes": 173449216,
+          "handles": 1311
+        },
+        "Utility": {
+          "count": 1,
+          "workingSetBytes": 42438656,
+          "privateBytes": 10715136,
+          "handles": 357
+        },
+        "DocumentService": {
+          "count": 1,
+          "workingSetBytes": 170360832,
+          "privateBytes": 238182400,
+          "handles": 321
+        },
+        "Tab": {
+          "count": 1,
+          "workingSetBytes": 179785728,
+          "privateBytes": 100511744,
+          "handles": 411
+        }
+      },
+      "readableMiB": {
+        "rendererWorkingSet": 171.457031,
+        "rendererPrivate": 95.855469,
+        "jsHeapUsed": 12.460724,
+        "jsHeapTotal": 37.5
+      }
+    },
+    {
+      "stage": "after-15-rounds",
+      "elapsedMs": 97838.3922,
+      "heap": {
+        "usedSize": 17350704,
+        "totalSize": 39583744,
+        "embedderHeapUsedSize": 9659280,
+        "backingStorageSize": 2491347
+      },
+      "dom": {
+        "documents": 2,
+        "nodes": 1414,
+        "jsEventListeners": 1427
+      },
+      "mounted": {
+        "mountedNodes": 690,
+        "totalRenderers": 5,
+        "presenterRoots": 0,
+        "totalPresenterRenderers": 0,
+        "playing": false,
+        "blackout": false,
+        "notes": false,
+        "timeMs": null,
+        "step": null,
+        "animationErrors": 0,
+        "width": 1600,
+        "height": 967,
+        "dpr": 1,
+        "currentRenderersCount": 0,
+        "nextRenderersCount": 0,
+        "raf": {
+          "requested": 9833,
+          "executed": 9787,
+          "cancelled": 46,
+          "maxPending": 1,
+          "ownerChangedBeforeCallback": 0,
+          "requestedActive": 9833,
+          "requestedInactive": 0,
+          "executedActive": 9787,
+          "executedInactive": 0,
+          "pendingCount": 0
+        }
+      },
+      "processes": {
+        "Browser": {
+          "count": 1,
+          "workingSetBytes": 140181504,
+          "privateBytes": 195964928,
+          "handles": 1162
+        },
+        "GPU": {
+          "count": 1,
+          "workingSetBytes": 219602944,
+          "privateBytes": 179388416,
+          "handles": 1308
+        },
+        "Utility": {
+          "count": 1,
+          "workingSetBytes": 40378368,
+          "privateBytes": 10715136,
+          "handles": 357
+        },
+        "DocumentService": {
+          "count": 1,
+          "workingSetBytes": 170885120,
+          "privateBytes": 238653440,
+          "handles": 321
+        },
+        "Tab": {
+          "count": 1,
+          "workingSetBytes": 179585024,
+          "privateBytes": 102031360,
+          "handles": 408
+        }
+      },
+      "readableMiB": {
+        "rendererWorkingSet": 171.265625,
+        "rendererPrivate": 97.304688,
+        "jsHeapUsed": 16.546921,
+        "jsHeapTotal": 37.75
+      }
+    },
+    {
+      "stage": "after-20-rounds",
+      "elapsedMs": 126738.26,
+      "heap": {
+        "usedSize": 11183508,
+        "totalSize": 50855936,
+        "embedderHeapUsedSize": 4950456,
+        "backingStorageSize": 2487425
+      },
+      "dom": {
+        "documents": 2,
+        "nodes": 1191,
+        "jsEventListeners": 470
+      },
+      "mounted": {
+        "mountedNodes": 690,
+        "totalRenderers": 5,
+        "presenterRoots": 0,
+        "totalPresenterRenderers": 0,
+        "playing": false,
+        "blackout": false,
+        "notes": false,
+        "timeMs": null,
+        "step": null,
+        "animationErrors": 0,
+        "width": 1600,
+        "height": 967,
+        "dpr": 1,
+        "currentRenderersCount": 0,
+        "nextRenderersCount": 0,
+        "raf": {
+          "requested": 13098,
+          "executed": 13037,
+          "cancelled": 61,
+          "maxPending": 1,
+          "ownerChangedBeforeCallback": 0,
+          "requestedActive": 13098,
+          "requestedInactive": 0,
+          "executedActive": 13037,
+          "executedInactive": 0,
+          "pendingCount": 0
+        }
+      },
+      "processes": {
+        "Browser": {
+          "count": 1,
+          "workingSetBytes": 140685312,
+          "privateBytes": 196042752,
+          "handles": 1165
+        },
+        "GPU": {
+          "count": 1,
+          "workingSetBytes": 218808320,
+          "privateBytes": 174141440,
+          "handles": 1311
+        },
+        "Utility": {
+          "count": 1,
+          "workingSetBytes": 39649280,
+          "privateBytes": 10678272,
+          "handles": 355
+        },
+        "DocumentService": {
+          "count": 1,
+          "workingSetBytes": 137752576,
+          "privateBytes": 204668928,
+          "handles": 321
+        },
+        "Tab": {
+          "count": 1,
+          "workingSetBytes": 198520832,
+          "privateBytes": 118460416,
+          "handles": 411
+        }
+      },
+      "readableMiB": {
+        "rendererWorkingSet": 189.324219,
+        "rendererPrivate": 112.972656,
+        "jsHeapUsed": 10.665424,
+        "jsHeapTotal": 48.5
+      }
+    },
+    {
+      "stage": "round-25-active-with-next",
+      "elapsedMs": 148539.5959,
+      "heap": {
+        "usedSize": 18858584,
+        "totalSize": 58163200,
+        "embedderHeapUsedSize": 8439920,
+        "backingStorageSize": 2490415
+      },
+      "dom": {
+        "documents": 2,
+        "nodes": 1745,
+        "jsEventListeners": 1405
+      },
+      "mounted": {
+        "mountedNodes": 789,
+        "totalRenderers": 7,
+        "presenterRoots": 1,
+        "totalPresenterRenderers": 2,
+        "playing": false,
+        "blackout": false,
+        "notes": true,
+        "timeMs": 0,
+        "step": 0,
+        "animationErrors": 0,
+        "width": 1600,
+        "height": 967,
+        "dpr": 1,
+        "currentRenderersCount": 1,
+        "nextRenderersCount": 1,
+        "raf": {
+          "requested": 15555,
+          "executed": 15482,
+          "cancelled": 73,
+          "maxPending": 1,
+          "ownerChangedBeforeCallback": 0,
+          "requestedActive": 15555,
+          "requestedInactive": 0,
+          "executedActive": 15482,
+          "executedInactive": 0,
+          "pendingCount": 0
+        }
+      },
+      "processes": {
+        "Browser": {
+          "count": 1,
+          "workingSetBytes": 140980224,
+          "privateBytes": 195932160,
+          "handles": 1159
+        },
+        "GPU": {
+          "count": 1,
+          "workingSetBytes": 210165760,
+          "privateBytes": 171110400,
+          "handles": 1346
+        },
+        "Utility": {
+          "count": 1,
+          "workingSetBytes": 37376000,
+          "privateBytes": 10604544,
+          "handles": 347
+        },
+        "DocumentService": {
+          "count": 1,
+          "workingSetBytes": 137678848,
+          "privateBytes": 204611584,
+          "handles": 319
+        },
+        "Tab": {
+          "count": 1,
+          "workingSetBytes": 206340096,
+          "privateBytes": 126820352,
+          "handles": 411
+        }
+      },
+      "readableMiB": {
+        "rendererWorkingSet": 196.78125,
+        "rendererPrivate": 120.945312,
+        "jsHeapUsed": 17.984947,
+        "jsHeapTotal": 55.46875
+      }
+    },
+    {
+      "stage": "after-25-rounds",
+      "elapsedMs": 156661.9576,
+      "heap": {
+        "usedSize": 11674000,
+        "totalSize": 58425344,
+        "embedderHeapUsedSize": 4840872,
+        "backingStorageSize": 2487333
+      },
+      "dom": {
+        "documents": 2,
+        "nodes": 1191,
+        "jsEventListeners": 470
+      },
+      "mounted": {
+        "mountedNodes": 690,
+        "totalRenderers": 5,
+        "presenterRoots": 0,
+        "totalPresenterRenderers": 0,
+        "playing": false,
+        "blackout": false,
+        "notes": false,
+        "timeMs": null,
+        "step": null,
+        "animationErrors": 0,
+        "width": 1600,
+        "height": 967,
+        "dpr": 1,
+        "currentRenderersCount": 0,
+        "nextRenderersCount": 0,
+        "raf": {
+          "requested": 16363,
+          "executed": 16286,
+          "cancelled": 77,
+          "maxPending": 1,
+          "ownerChangedBeforeCallback": 0,
+          "requestedActive": 16363,
+          "requestedInactive": 0,
+          "executedActive": 16286,
+          "executedInactive": 0,
+          "pendingCount": 0
+        }
+      },
+      "processes": {
+        "Browser": {
+          "count": 1,
+          "workingSetBytes": 111546368,
+          "privateBytes": 195960832,
+          "handles": 1157
+        },
+        "GPU": {
+          "count": 1,
+          "workingSetBytes": 170405888,
+          "privateBytes": 170815488,
+          "handles": 1342
+        },
+        "Utility": {
+          "count": 1,
+          "workingSetBytes": 35344384,
+          "privateBytes": 10604544,
+          "handles": 347
+        },
+        "DocumentService": {
+          "count": 1,
+          "workingSetBytes": 104165376,
+          "privateBytes": 204611584,
+          "handles": 319
+        },
+        "Tab": {
+          "count": 1,
+          "workingSetBytes": 197873664,
+          "privateBytes": 126697472,
+          "handles": 412
+        }
+      },
+      "readableMiB": {
+        "rendererWorkingSet": 188.707031,
+        "rendererPrivate": 120.828125,
+        "jsHeapUsed": 11.133194,
+        "jsHeapTotal": 55.71875
+      }
+    },
+    {
+      "stage": "after-15s-natural-idle",
+      "elapsedMs": 173204.1516,
+      "heap": {
+        "usedSize": 10323156,
+        "totalSize": 15171584,
+        "embedderHeapUsedSize": 4671088,
+        "backingStorageSize": 2488744
+      },
+      "dom": {
+        "documents": 2,
+        "nodes": 1187,
+        "jsEventListeners": 590
+      },
+      "mounted": {
+        "mountedNodes": 727,
+        "totalRenderers": 5,
+        "presenterRoots": 0,
+        "totalPresenterRenderers": 0,
+        "playing": false,
+        "blackout": false,
+        "notes": false,
+        "timeMs": null,
+        "step": null,
+        "animationErrors": 0,
+        "width": 1600,
+        "height": 967,
+        "dpr": 1,
+        "currentRenderersCount": 0,
+        "nextRenderersCount": 0,
+        "raf": {
+          "requested": 16370,
+          "executed": 16293,
+          "cancelled": 77,
+          "maxPending": 2,
+          "ownerChangedBeforeCallback": 0,
+          "requestedActive": 16363,
+          "requestedInactive": 7,
+          "executedActive": 16286,
+          "executedInactive": 7,
+          "pendingCount": 0
+        }
+      },
+      "processes": {
+        "Browser": {
+          "count": 1,
+          "workingSetBytes": 111886336,
+          "privateBytes": 195969024,
+          "handles": 1157
+        },
+        "GPU": {
+          "count": 1,
+          "workingSetBytes": 159424512,
+          "privateBytes": 145440768,
+          "handles": 1345
+        },
+        "Utility": {
+          "count": 1,
+          "workingSetBytes": 34533376,
+          "privateBytes": 10575872,
+          "handles": 347
+        },
+        "DocumentService": {
+          "count": 1,
+          "workingSetBytes": 101724160,
+          "privateBytes": 204611584,
+          "handles": 319
+        },
+        "Tab": {
+          "count": 1,
+          "workingSetBytes": 153030656,
+          "privateBytes": 82214912,
+          "handles": 411
+        }
+      },
+      "readableMiB": {
+        "rendererWorkingSet": 145.941406,
+        "rendererPrivate": 78.40625,
+        "jsHeapUsed": 9.844929,
+        "jsHeapTotal": 14.46875
+      }
+    },
+    {
+      "stage": "after-final-explicit-gc",
+      "elapsedMs": 174662.1305,
+      "heap": {
+        "usedSize": 9865560,
+        "totalSize": 10977280,
+        "embedderHeapUsedSize": 3346920,
+        "backingStorageSize": 2488604
+      },
+      "dom": {
+        "documents": 2,
+        "nodes": 1145,
+        "jsEventListeners": 417
+      },
+      "mounted": {
+        "mountedNodes": 690,
+        "totalRenderers": 5,
+        "presenterRoots": 0,
+        "totalPresenterRenderers": 0,
+        "playing": false,
+        "blackout": false,
+        "notes": false,
+        "timeMs": null,
+        "step": null,
+        "animationErrors": 0,
+        "width": 1600,
+        "height": 967,
+        "dpr": 1,
+        "currentRenderersCount": 0,
+        "nextRenderersCount": 0,
+        "raf": {
+          "requested": 16371,
+          "executed": 16294,
+          "cancelled": 77,
+          "maxPending": 2,
+          "ownerChangedBeforeCallback": 0,
+          "requestedActive": 16363,
+          "requestedInactive": 8,
+          "executedActive": 16286,
+          "executedInactive": 8,
+          "pendingCount": 0
+        }
+      },
+      "processes": {
+        "Browser": {
+          "count": 1,
+          "workingSetBytes": 111886336,
+          "privateBytes": 195969024,
+          "handles": 1157
+        },
+        "GPU": {
+          "count": 1,
+          "workingSetBytes": 149884928,
+          "privateBytes": 136802304,
+          "handles": 1342
+        },
+        "Utility": {
+          "count": 1,
+          "workingSetBytes": 34529280,
+          "privateBytes": 10575872,
+          "handles": 347
+        },
+        "DocumentService": {
+          "count": 1,
+          "workingSetBytes": 101146624,
+          "privateBytes": 204611584,
+          "handles": 319
+        },
+        "Tab": {
+          "count": 1,
+          "workingSetBytes": 149872640,
+          "privateBytes": 78692352,
+          "handles": 408
+        }
+      },
+      "readableMiB": {
+        "rendererWorkingSet": 142.929688,
+        "rendererPrivate": 75.046875,
+        "jsHeapUsed": 9.408531,
+        "jsHeapTotal": 10.46875
+      }
+    }
+  ],
+  "methodology": "Isolated installed EXE/profile/runtime and synthetic JSON-as-YAML PPTD. Three schema-2 pages; four occurrences A/B/A/C. Actual CDP Input clicks and keys exercise click/with/after, completion, rewind, repeated occurrence, notes preview, cross-page cancellation, and Escape during an active RAF before re-entry. No Network domain or Playwright. RAF wrapper holds only scalar pending metadata; old DOM is observed through WeakRef, never strong references. Process/heap/DOM metrics are diagnostic, not arbitrary RSS pass/fail thresholds. Natural idle, then one explicit final GC. All five source files are hashed throughout.",
+  "limitations": [
+    "The RAF wrapper forwards the native callback timestamp unchanged and adds no frames, clock offsets, sleeps, or GC to playback. Its wrapper allocation and DOM identity lookup add diagnostic overhead; this run is not an animation latency/FPS benchmark.",
+    "RAF counters include all window callbacks, not only the playback hook. Pending entries contain numeric/string metadata, never callbacks or DOM. An owner-change callback is an observation, not by itself evidence of a leak.",
+    "WeakRefs observe presenter roots and sampled renderer/element DOM without retaining those nodes. Their bounded bookkeeping grows with the number of rounds. Collection of these nodes does not prove every application object or listener was released.",
+    "One synthetic, image-free, bounded session cannot certify multi-hour sessions, video/GIF playback, or high-resolution assets. RSS/private-byte changes are reported without an arbitrary leak threshold."
+  ],
+  "networkEnabled": false,
+  "cdpMethods": [
+    "HeapProfiler.collectGarbage",
+    "Input.dispatchKeyEvent",
+    "Input.dispatchMouseEvent",
+    "Memory.getDOMCounters",
+    "Performance.enable",
+    "Performance.getMetrics",
+    "Runtime.enable",
+    "Runtime.evaluate",
+    "Runtime.getHeapUsage",
+    "Runtime.releaseObjectGroup"
+  ],
+  "rounds": 25,
+  "fixture": {
+    "mainPageCount": 3,
+    "occurrenceCount": 4,
+    "sequence": ["A", "B", "A", "C"],
+    "expectedStopsMs": [480, 1020, 1280]
+  },
+  "sourceFileCount": 5,
+  "sourceBytesUnchanged": true,
+  "sourceHashesDigest": "526b26dfd8d774744c1c28516c2cd3a47067a42c5d51beb50b34c7528328d2cd",
+  "finalSourceHashesDigest": "526b26dfd8d774744c1c28516c2cd3a47067a42c5d51beb50b34c7528328d2cd",
+  "weakBeforeGC": {
+    "tracked": 1051,
+    "collected": 1051,
+    "connected": 0,
+    "detachedAlive": 0,
+    "byKind": {
+      "presenter": {
+        "tracked": 25,
+        "collected": 25,
+        "connected": 0,
+        "detachedAlive": 0
+      },
+      "renderer": {
+        "tracked": 50,
+        "collected": 50,
+        "connected": 0,
+        "detachedAlive": 0
+      },
+      "element": {
+        "tracked": 976,
+        "collected": 976,
+        "connected": 0,
+        "detachedAlive": 0
+      }
+    },
+    "survivors": []
+  },
+  "weakAfterGC": {
+    "tracked": 1051,
+    "collected": 1051,
+    "connected": 0,
+    "detachedAlive": 0,
+    "byKind": {
+      "presenter": {
+        "tracked": 25,
+        "collected": 25,
+        "connected": 0,
+        "detachedAlive": 0
+      },
+      "renderer": {
+        "tracked": 50,
+        "collected": 50,
+        "connected": 0,
+        "detachedAlive": 0
+      },
+      "element": {
+        "tracked": 976,
+        "collected": 976,
+        "connected": 0,
+        "detachedAlive": 0
+      }
+    },
+    "survivors": []
+  },
+  "actionCounts": {
+    "mouseClicks": 500,
+    "keyPresses": 182
+  },
+  "roundDurationMs": {
+    "count": 25,
+    "min": 5019.56210000001,
+    "median": 5142.1893000000055,
+    "p95NearestRank": 6865.028700000003,
+    "max": 8196.934699999983
+  },
+  "cycles": [
+    {
+      "round": 1,
+      "elapsedMs": 6769.4227,
+      "sourceBytesUnchanged": true,
+      "repeatedOccurrenceReset": true,
+      "backwardsPageAtEnd": true,
+      "crossPageAbort": false,
+      "exitDuringAnimationMs": 38.60000009536816,
+      "afterExit": {
+        "presenterRoots": 0,
+        "presenterRenderers": 0,
+        "mountedNodes": 690,
+        "totalRenderers": 5,
+        "raf": {
+          "requested": 618,
+          "executed": 615,
+          "cancelled": 3,
+          "maxPending": 1,
+          "ownerChangedBeforeCallback": 0,
+          "requestedActive": 618,
+          "requestedInactive": 0,
+          "executedActive": 615,
+          "executedInactive": 0,
+          "pendingCount": 0
+        }
+      }
+    },
+    {
+      "round": 2,
+      "elapsedMs": 5104.3621,
+      "sourceBytesUnchanged": true,
+      "repeatedOccurrenceReset": true,
+      "backwardsPageAtEnd": true,
+      "crossPageAbort": false,
+      "exitDuringAnimationMs": 1.5000001430526027,
+      "afterExit": {
+        "presenterRoots": 0,
+        "presenterRenderers": 0,
+        "mountedNodes": 690,
+        "totalRenderers": 5,
+        "raf": {
+          "requested": 1232,
+          "executed": 1226,
+          "cancelled": 6,
+          "maxPending": 1,
+          "ownerChangedBeforeCallback": 0,
+          "requestedActive": 1232,
+          "requestedInactive": 0,
+          "executedActive": 1226,
+          "executedInactive": 0,
+          "pendingCount": 0
+        }
+      }
+    },
+    {
+      "round": 3,
+      "elapsedMs": 5133.946099999997,
+      "sourceBytesUnchanged": true,
+      "repeatedOccurrenceReset": true,
+      "backwardsPageAtEnd": true,
+      "crossPageAbort": false,
+      "exitDuringAnimationMs": 0.8000000953688868,
+      "afterExit": {
+        "presenterRoots": 0,
+        "presenterRenderers": 0,
+        "mountedNodes": 690,
+        "totalRenderers": 5,
+        "raf": {
+          "requested": 1845,
+          "executed": 1836,
+          "cancelled": 9,
+          "maxPending": 1,
+          "ownerChangedBeforeCallback": 0,
+          "requestedActive": 1845,
+          "requestedInactive": 0,
+          "executedActive": 1836,
+          "executedInactive": 0,
+          "pendingCount": 0
+        }
+      }
+    },
+    {
+      "round": 4,
+      "elapsedMs": 5205.0272,
+      "sourceBytesUnchanged": true,
+      "repeatedOccurrenceReset": true,
+      "backwardsPageAtEnd": true,
+      "crossPageAbort": false,
+      "exitDuringAnimationMs": 41.400000000001455,
+      "afterExit": {
+        "presenterRoots": 0,
+        "presenterRenderers": 0,
+        "mountedNodes": 690,
+        "totalRenderers": 5,
+        "raf": {
+          "requested": 2469,
+          "executed": 2457,
+          "cancelled": 12,
+          "maxPending": 1,
+          "ownerChangedBeforeCallback": 0,
+          "requestedActive": 2469,
+          "requestedInactive": 0,
+          "executedActive": 2457,
+          "executedInactive": 0,
+          "pendingCount": 0
+        }
+      }
+    },
+    {
+      "round": 5,
+      "elapsedMs": 6865.028700000003,
+      "sourceBytesUnchanged": true,
+      "repeatedOccurrenceReset": true,
+      "backwardsPageAtEnd": true,
+      "crossPageAbort": true,
+      "exitDuringAnimationMs": 1.000000190731953,
+      "afterExit": {
+        "presenterRoots": 0,
+        "presenterRenderers": 0,
+        "mountedNodes": 690,
+        "totalRenderers": 5,
+        "raf": {
+          "requested": 3287,
+          "executed": 3272,
+          "cancelled": 15,
+          "maxPending": 1,
+          "ownerChangedBeforeCallback": 0,
+          "requestedActive": 3287,
+          "requestedInactive": 0,
+          "executedActive": 3272,
+          "executedInactive": 0,
+          "pendingCount": 0
+        }
+      }
+    },
+    {
+      "round": 6,
+      "elapsedMs": 5167.716899999999,
+      "sourceBytesUnchanged": true,
+      "repeatedOccurrenceReset": true,
+      "backwardsPageAtEnd": true,
+      "crossPageAbort": false,
+      "exitDuringAnimationMs": 41.10000009536452,
+      "afterExit": {
+        "presenterRoots": 0,
+        "presenterRenderers": 0,
+        "mountedNodes": 690,
+        "totalRenderers": 5,
+        "raf": {
+          "requested": 3899,
+          "executed": 3881,
+          "cancelled": 18,
+          "maxPending": 1,
+          "ownerChangedBeforeCallback": 0,
+          "requestedActive": 3899,
+          "requestedInactive": 0,
+          "executedActive": 3881,
+          "executedInactive": 0,
+          "pendingCount": 0
+        }
+      }
+    },
+    {
+      "round": 7,
+      "elapsedMs": 5142.1893000000055,
+      "sourceBytesUnchanged": true,
+      "repeatedOccurrenceReset": true,
+      "backwardsPageAtEnd": true,
+      "crossPageAbort": false,
+      "exitDuringAnimationMs": 0.20000019073631847,
+      "afterExit": {
+        "presenterRoots": 0,
+        "presenterRenderers": 0,
+        "mountedNodes": 690,
+        "totalRenderers": 5,
+        "raf": {
+          "requested": 4516,
+          "executed": 4495,
+          "cancelled": 21,
+          "maxPending": 1,
+          "ownerChangedBeforeCallback": 0,
+          "requestedActive": 4516,
+          "requestedInactive": 0,
+          "executedActive": 4495,
+          "executedInactive": 0,
+          "pendingCount": 0
+        }
+      }
+    },
+    {
+      "round": 8,
+      "elapsedMs": 5089.200600000004,
+      "sourceBytesUnchanged": true,
+      "repeatedOccurrenceReset": true,
+      "backwardsPageAtEnd": true,
+      "crossPageAbort": false,
+      "exitDuringAnimationMs": 4.7686626203358173e-8,
+      "afterExit": {
+        "presenterRoots": 0,
+        "presenterRenderers": 0,
+        "mountedNodes": 690,
+        "totalRenderers": 5,
+        "raf": {
+          "requested": 5129,
+          "executed": 5105,
+          "cancelled": 24,
+          "maxPending": 1,
+          "ownerChangedBeforeCallback": 0,
+          "requestedActive": 5129,
+          "requestedInactive": 0,
+          "executedActive": 5105,
+          "executedInactive": 0,
+          "pendingCount": 0
+        }
+      }
+    },
+    {
+      "round": 9,
+      "elapsedMs": 5133.019899999999,
+      "sourceBytesUnchanged": true,
+      "repeatedOccurrenceReset": true,
+      "backwardsPageAtEnd": true,
+      "crossPageAbort": false,
+      "exitDuringAnimationMs": 0.10000014305114746,
+      "afterExit": {
+        "presenterRoots": 0,
+        "presenterRenderers": 0,
+        "mountedNodes": 690,
+        "totalRenderers": 5,
+        "raf": {
+          "requested": 5742,
+          "executed": 5715,
+          "cancelled": 27,
+          "maxPending": 1,
+          "ownerChangedBeforeCallback": 0,
+          "requestedActive": 5742,
+          "requestedInactive": 0,
+          "executedActive": 5715,
+          "executedInactive": 0,
+          "pendingCount": 0
+        }
+      }
+    },
+    {
+      "round": 10,
+      "elapsedMs": 6751.702899999997,
+      "sourceBytesUnchanged": true,
+      "repeatedOccurrenceReset": true,
+      "backwardsPageAtEnd": true,
+      "crossPageAbort": true,
+      "exitDuringAnimationMs": 1.7000000476837158,
+      "afterExit": {
+        "presenterRoots": 0,
+        "presenterRenderers": 0,
+        "mountedNodes": 690,
+        "totalRenderers": 5,
+        "raf": {
+          "requested": 6550,
+          "executed": 6519,
+          "cancelled": 31,
+          "maxPending": 1,
+          "ownerChangedBeforeCallback": 0,
+          "requestedActive": 6550,
+          "requestedInactive": 0,
+          "executedActive": 6519,
+          "executedInactive": 0,
+          "pendingCount": 0
+        }
+      }
+    },
+    {
+      "round": 11,
+      "elapsedMs": 5052.087599999999,
+      "sourceBytesUnchanged": true,
+      "repeatedOccurrenceReset": true,
+      "backwardsPageAtEnd": true,
+      "crossPageAbort": false,
+      "exitDuringAnimationMs": 1.300000143048237,
+      "afterExit": {
+        "presenterRoots": 0,
+        "presenterRenderers": 0,
+        "mountedNodes": 690,
+        "totalRenderers": 5,
+        "raf": {
+          "requested": 7162,
+          "executed": 7128,
+          "cancelled": 34,
+          "maxPending": 1,
+          "ownerChangedBeforeCallback": 0,
+          "requestedActive": 7162,
+          "requestedInactive": 0,
+          "executedActive": 7128,
+          "executedInactive": 0,
+          "pendingCount": 0
+        }
+      }
+    },
+    {
+      "round": 12,
+      "elapsedMs": 5167.1282000000065,
+      "sourceBytesUnchanged": true,
+      "repeatedOccurrenceReset": true,
+      "backwardsPageAtEnd": true,
+      "crossPageAbort": false,
+      "exitDuringAnimationMs": 31.600000143051147,
+      "afterExit": {
+        "presenterRoots": 0,
+        "presenterRenderers": 0,
+        "mountedNodes": 690,
+        "totalRenderers": 5,
+        "raf": {
+          "requested": 7778,
+          "executed": 7741,
+          "cancelled": 37,
+          "maxPending": 1,
+          "ownerChangedBeforeCallback": 0,
+          "requestedActive": 7778,
+          "requestedInactive": 0,
+          "executedActive": 7741,
+          "executedInactive": 0,
+          "pendingCount": 0
+        }
+      }
+    },
+    {
+      "round": 13,
+      "elapsedMs": 5118.417199999996,
+      "sourceBytesUnchanged": true,
+      "repeatedOccurrenceReset": true,
+      "backwardsPageAtEnd": true,
+      "crossPageAbort": false,
+      "exitDuringAnimationMs": 38.50000019073195,
+      "afterExit": {
+        "presenterRoots": 0,
+        "presenterRenderers": 0,
+        "mountedNodes": 690,
+        "totalRenderers": 5,
+        "raf": {
+          "requested": 8398,
+          "executed": 8358,
+          "cancelled": 40,
+          "maxPending": 1,
+          "ownerChangedBeforeCallback": 0,
+          "requestedActive": 8398,
+          "requestedInactive": 0,
+          "executedActive": 8358,
+          "executedInactive": 0,
+          "pendingCount": 0
+        }
+      }
+    },
+    {
+      "round": 14,
+      "elapsedMs": 5143.585200000001,
+      "sourceBytesUnchanged": true,
+      "repeatedOccurrenceReset": true,
+      "backwardsPageAtEnd": true,
+      "crossPageAbort": false,
+      "exitDuringAnimationMs": 1.1999999999970896,
+      "afterExit": {
+        "presenterRoots": 0,
+        "presenterRenderers": 0,
+        "mountedNodes": 690,
+        "totalRenderers": 5,
+        "raf": {
+          "requested": 9016,
+          "executed": 8973,
+          "cancelled": 43,
+          "maxPending": 1,
+          "ownerChangedBeforeCallback": 0,
+          "requestedActive": 9016,
+          "requestedInactive": 0,
+          "executedActive": 8973,
+          "executedInactive": 0,
+          "pendingCount": 0
+        }
+      }
+    },
+    {
+      "round": 15,
+      "elapsedMs": 6815.177000000011,
+      "sourceBytesUnchanged": true,
+      "repeatedOccurrenceReset": true,
+      "backwardsPageAtEnd": true,
+      "crossPageAbort": true,
+      "exitDuringAnimationMs": 0.700000095370342,
+      "afterExit": {
+        "presenterRoots": 0,
+        "presenterRenderers": 0,
+        "mountedNodes": 690,
+        "totalRenderers": 5,
+        "raf": {
+          "requested": 9833,
+          "executed": 9787,
+          "cancelled": 46,
+          "maxPending": 1,
+          "ownerChangedBeforeCallback": 0,
+          "requestedActive": 9833,
+          "requestedInactive": 0,
+          "executedActive": 9787,
+          "executedInactive": 0,
+          "pendingCount": 0
+        }
+      }
+    },
+    {
+      "round": 16,
+      "elapsedMs": 5043.933799999999,
+      "sourceBytesUnchanged": true,
+      "repeatedOccurrenceReset": true,
+      "backwardsPageAtEnd": true,
+      "crossPageAbort": false,
+      "exitDuringAnimationMs": 0.6000001430511475,
+      "afterExit": {
+        "presenterRoots": 0,
+        "presenterRenderers": 0,
+        "mountedNodes": 690,
+        "totalRenderers": 5,
+        "raf": {
+          "requested": 10444,
+          "executed": 10395,
+          "cancelled": 49,
+          "maxPending": 1,
+          "ownerChangedBeforeCallback": 0,
+          "requestedActive": 10444,
+          "requestedInactive": 0,
+          "executedActive": 10395,
+          "executedInactive": 0,
+          "pendingCount": 0
+        }
+      }
+    },
+    {
+      "round": 17,
+      "elapsedMs": 5094.422500000001,
+      "sourceBytesUnchanged": true,
+      "repeatedOccurrenceReset": true,
+      "backwardsPageAtEnd": true,
+      "crossPageAbort": false,
+      "exitDuringAnimationMs": 0.8000000000029104,
+      "afterExit": {
+        "presenterRoots": 0,
+        "presenterRenderers": 0,
+        "mountedNodes": 690,
+        "totalRenderers": 5,
+        "raf": {
+          "requested": 11057,
+          "executed": 11005,
+          "cancelled": 52,
+          "maxPending": 1,
+          "ownerChangedBeforeCallback": 0,
+          "requestedActive": 11057,
+          "requestedInactive": 0,
+          "executedActive": 11005,
+          "executedInactive": 0,
+          "pendingCount": 0
+        }
+      }
+    },
+    {
+      "round": 18,
+      "elapsedMs": 5194.974799999996,
+      "sourceBytesUnchanged": true,
+      "repeatedOccurrenceReset": true,
+      "backwardsPageAtEnd": true,
+      "crossPageAbort": false,
+      "exitDuringAnimationMs": 41.60000014305115,
+      "afterExit": {
+        "presenterRoots": 0,
+        "presenterRenderers": 0,
+        "mountedNodes": 690,
+        "totalRenderers": 5,
+        "raf": {
+          "requested": 11679,
+          "executed": 11624,
+          "cancelled": 55,
+          "maxPending": 1,
+          "ownerChangedBeforeCallback": 0,
+          "requestedActive": 11679,
+          "requestedInactive": 0,
+          "executedActive": 11624,
+          "executedInactive": 0,
+          "pendingCount": 0
+        }
+      }
+    },
+    {
+      "round": 19,
+      "elapsedMs": 5176.855800000005,
+      "sourceBytesUnchanged": true,
+      "repeatedOccurrenceReset": true,
+      "backwardsPageAtEnd": true,
+      "crossPageAbort": false,
+      "exitDuringAnimationMs": 0.700000095370342,
+      "afterExit": {
+        "presenterRoots": 0,
+        "presenterRenderers": 0,
+        "mountedNodes": 690,
+        "totalRenderers": 5,
+        "raf": {
+          "requested": 12298,
+          "executed": 12240,
+          "cancelled": 58,
+          "maxPending": 1,
+          "ownerChangedBeforeCallback": 0,
+          "requestedActive": 12298,
+          "requestedInactive": 0,
+          "executedActive": 12240,
+          "executedInactive": 0,
+          "pendingCount": 0
+        }
+      }
+    },
+    {
+      "round": 20,
+      "elapsedMs": 6733.561399999991,
+      "sourceBytesUnchanged": true,
+      "repeatedOccurrenceReset": true,
+      "backwardsPageAtEnd": true,
+      "crossPageAbort": true,
+      "exitDuringAnimationMs": 1.6000000000058208,
+      "afterExit": {
+        "presenterRoots": 0,
+        "presenterRenderers": 0,
+        "mountedNodes": 690,
+        "totalRenderers": 5,
+        "raf": {
+          "requested": 13098,
+          "executed": 13037,
+          "cancelled": 61,
+          "maxPending": 1,
+          "ownerChangedBeforeCallback": 0,
+          "requestedActive": 13098,
+          "requestedInactive": 0,
+          "executedActive": 13037,
+          "executedInactive": 0,
+          "pendingCount": 0
+        }
+      }
+    },
+    {
+      "round": 21,
+      "elapsedMs": 5079.095099999991,
+      "sourceBytesUnchanged": true,
+      "repeatedOccurrenceReset": true,
+      "backwardsPageAtEnd": true,
+      "crossPageAbort": false,
+      "exitDuringAnimationMs": 0.20000019072904252,
+      "afterExit": {
+        "presenterRoots": 0,
+        "presenterRenderers": 0,
+        "mountedNodes": 690,
+        "totalRenderers": 5,
+        "raf": {
+          "requested": 13713,
+          "executed": 13649,
+          "cancelled": 64,
+          "maxPending": 1,
+          "ownerChangedBeforeCallback": 0,
+          "requestedActive": 13713,
+          "requestedInactive": 0,
+          "executedActive": 13649,
+          "executedInactive": 0,
+          "pendingCount": 0
+        }
+      }
+    },
+    {
+      "round": 22,
+      "elapsedMs": 5077.87049999999,
+      "sourceBytesUnchanged": true,
+      "repeatedOccurrenceReset": true,
+      "backwardsPageAtEnd": true,
+      "crossPageAbort": false,
+      "exitDuringAnimationMs": 2.2000001907290425,
+      "afterExit": {
+        "presenterRoots": 0,
+        "presenterRenderers": 0,
+        "mountedNodes": 690,
+        "totalRenderers": 5,
+        "raf": {
+          "requested": 14325,
+          "executed": 14258,
+          "cancelled": 67,
+          "maxPending": 1,
+          "ownerChangedBeforeCallback": 0,
+          "requestedActive": 14325,
+          "requestedInactive": 0,
+          "executedActive": 14258,
+          "executedInactive": 0,
+          "pendingCount": 0
+        }
+      }
+    },
+    {
+      "round": 23,
+      "elapsedMs": 5047.558599999989,
+      "sourceBytesUnchanged": true,
+      "repeatedOccurrenceReset": true,
+      "backwardsPageAtEnd": true,
+      "crossPageAbort": false,
+      "exitDuringAnimationMs": 1.0000001907465048,
+      "afterExit": {
+        "presenterRoots": 0,
+        "presenterRenderers": 0,
+        "mountedNodes": 690,
+        "totalRenderers": 5,
+        "raf": {
+          "requested": 14941,
+          "executed": 14871,
+          "cancelled": 70,
+          "maxPending": 1,
+          "ownerChangedBeforeCallback": 0,
+          "requestedActive": 14941,
+          "requestedInactive": 0,
+          "executedActive": 14871,
+          "executedInactive": 0,
+          "pendingCount": 0
+        }
+      }
+    },
+    {
+      "round": 24,
+      "elapsedMs": 5019.56210000001,
+      "sourceBytesUnchanged": true,
+      "repeatedOccurrenceReset": true,
+      "backwardsPageAtEnd": true,
+      "crossPageAbort": false,
+      "exitDuringAnimationMs": 1.900000190740684,
+      "afterExit": {
+        "presenterRoots": 0,
+        "presenterRenderers": 0,
+        "mountedNodes": 690,
+        "totalRenderers": 5,
+        "raf": {
+          "requested": 15555,
+          "executed": 15482,
+          "cancelled": 73,
+          "maxPending": 1,
+          "ownerChangedBeforeCallback": 0,
+          "requestedActive": 15555,
+          "requestedInactive": 0,
+          "executedActive": 15482,
+          "executedInactive": 0,
+          "pendingCount": 0
+        }
+      }
+    },
+    {
+      "round": 25,
+      "elapsedMs": 8196.934699999983,
+      "sourceBytesUnchanged": true,
+      "repeatedOccurrenceReset": true,
+      "backwardsPageAtEnd": true,
+      "crossPageAbort": true,
+      "exitDuringAnimationMs": 1.2000000000116415,
+      "afterExit": {
+        "presenterRoots": 0,
+        "presenterRenderers": 0,
+        "mountedNodes": 690,
+        "totalRenderers": 5,
+        "raf": {
+          "requested": 16363,
+          "executed": 16286,
+          "cancelled": 77,
+          "maxPending": 1,
+          "ownerChangedBeforeCallback": 0,
+          "requestedActive": 16363,
+          "requestedInactive": 0,
+          "executedActive": 16286,
+          "executedInactive": 0,
+          "pendingCount": 0
+        }
+      }
+    }
+  ]
+}
