@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { emptyStory, type ProjectSection, resolveProjectSections } from '../../pptd/project-model';
 import type { PageSnapshot, ProjectMetadata } from '../../pptd/types';
-import { sectionAtBoundary } from './pptd-section-actions';
+import { sectionAtBoundary, sectionWithInsertedCover } from './pptd-section-actions';
 import { slideInsertionBoundary } from './pptd-thumbnail-sections';
 
 function snapshot(sections: ProjectSection[]) {
@@ -33,6 +33,58 @@ const section = (id: string, startPageId: string): ProjectSection => ({
 });
 
 describe('create Section from an existing Slide boundary', () => {
+  it('inserts a new cover before an existing Section and at the end without consuming its boundary', () => {
+    for (const index of [2, 5]) {
+      const before = snapshot([section('first', 'a'), section('last', 'c')]);
+      const cover = { ...before.pages[0], pageId: 'new-cover' };
+      const after = {
+        ...before,
+        pages: [...before.pages.slice(0, index), cover, ...before.pages.slice(index)],
+      };
+      const project = sectionWithInsertedCover(before, after, cover.pageId, {
+        id: 'new',
+        title: 'New',
+      });
+      const groups = resolveProjectSections(after, project);
+      expect(groups.find((item) => item.section.id === 'new')?.pageIds).toEqual(['new-cover']);
+      expect(groups.find((item) => item.section.id === 'last')?.pageIds).toEqual(['c', 'd', 'e']);
+      expect(groups.flatMap((item) => item.diagnostics)).toEqual([]);
+    }
+  });
+  it('splits legacy members and fixed ranges when a cover is inserted inside them', () => {
+    for (const mode of ['members', 'range']) {
+      const before = snapshot([
+        {
+          id: 'first',
+          title: 'First',
+          pageIds: ['a', 'b', 'c', 'd'],
+          story: emptyStory(),
+          ...(mode === 'range' ? { range: { startPageId: 'a', endPageId: 'd' } } : {}),
+        },
+        section('last', 'e'),
+      ]);
+      const after = {
+        ...before,
+        pages: [
+          ...before.pages.slice(0, 2),
+          { ...before.pages[0], pageId: 'new-cover' },
+          ...before.pages.slice(2),
+        ],
+      };
+      const project = sectionWithInsertedCover(before, after, 'new-cover', {
+        id: 'new',
+        title: 'New',
+      });
+      const groups = resolveProjectSections(after, project);
+      expect(groups.find((item) => item.section.id === 'first')?.pageIds).toEqual(['a', 'b']);
+      expect(groups.find((item) => item.section.id === 'new')?.pageIds).toEqual([
+        'new-cover',
+        'c',
+        'd',
+      ]);
+      expect(groups.flatMap((item) => item.diagnostics)).toEqual([]);
+    }
+  });
   it('splits at the following existing Slide without adding a cover or changing Slide identity', () => {
     const deck = snapshot([section('first', 'a'), section('last', 'e')]);
     const before = structuredClone(deck);

@@ -286,11 +286,16 @@ export function HuandengEditor() {
     );
   }, [project, selectedPresentationId, snapshot]);
   const presentationIssue = emptyPresentation ? null : presentationError;
-  const viewPages = selectedPresentationId
+  const allViewPages = selectedPresentationId
     ? presentationView?.presentationId === selectedPresentationId
       ? presentationView.pages
       : []
     : (snapshot?.pages ?? []);
+  const playbackPages = useMemo(
+    () => allViewPages.filter((item) => item.metadata.hidden !== true),
+    [allViewPages],
+  );
+  const viewPages = presenting ? playbackPages : allViewPages;
   const requestedId = searchParams.get('page');
   const selectedView =
     viewPages.find((item) => item.occurrenceId === requestedOccurrence) ??
@@ -1063,7 +1068,13 @@ export function HuandengEditor() {
         }
         void run(async () => {
           await client.flushAll();
-          const destination = command.fromCurrent ? page : (viewPages[0] ?? page);
+          const destination = command.fromCurrent
+            ? (playbackPages.find(
+                (item) => allViewPages.indexOf(item) >= allViewPages.indexOf(selectedView ?? page),
+              ) ?? playbackPages[0])
+            : playbackPages[0];
+          if (!destination)
+            throw new Error('There are no visible slides to present. Show a slide first.');
           const key = `${destination.pageId}:${destination.occurrenceId ?? ''}:${destination.versionId ?? ''}`;
           if (presenting && key === presentationPageKey)
             presentationControls.current?.seekBoundary(false);
@@ -1310,6 +1321,9 @@ export function HuandengEditor() {
       stepPage,
       timelineDirty,
       viewPages,
+      allViewPages,
+      playbackPages,
+      selectedView,
     ],
   );
 
@@ -1733,7 +1747,7 @@ export function HuandengEditor() {
             <Button
               variant="default"
               size="sm"
-              disabled={!page || busy || presentationBlocked}
+              disabled={!page || !playbackPages.length || busy || presentationBlocked}
               title={
                 emptyPresentation
                   ? t('Add slides before presenting.')
@@ -1744,9 +1758,17 @@ export function HuandengEditor() {
               onClick={() =>
                 void run(async () => {
                   await client.flushAll();
+                  const destination =
+                    playbackPages.find(
+                      (item) =>
+                        allViewPages.indexOf(item) >= allViewPages.indexOf(selectedView ?? page),
+                    ) ?? playbackPages[0];
+                  if (!destination)
+                    throw new Error('There are no visible slides to present. Show a slide first.');
                   presentationEntries.current.clear();
                   pendingPresentationPage.current = null;
                   setPresentationSession((session) => session + 1);
+                  selectPage(destination.pageId, destination.occurrenceId);
                   setPresenterNotesOpen(false);
                   setPresenting(true);
                 })
@@ -2058,6 +2080,12 @@ export function HuandengEditor() {
               }
               onDuplicate={(pageId) => void apply([{ op: 'page.duplicate', pageId }])}
               onRemove={(pageId) => void apply([{ op: 'page.remove', pageId }])}
+              onVisibility={
+                selectedPresentationId
+                  ? undefined
+                  : (pageId, hidden) =>
+                      void apply([{ op: 'metadata.patch', pageId, set: { hidden } }])
+              }
               onHistory={setHistoryPageId}
               onShowFile={(pageId) => {
                 selectPage(pageId);
@@ -2709,11 +2737,55 @@ export function HuandengEditor() {
             await client.flushAll();
             const current = client.getState().snapshot;
             if (!current) throw new Error('The Project is no longer available.');
-            const next = sectionAtBoundary(current, sectionBoundary, definition);
-            await client.apply([{ op: 'project.replace', project: next }], {
+            if (insertionBoundaryIndex(current.pages, sectionBoundary) === null)
+              throw new Error('Slide order changed. Choose the insertion point again.');
+            const section = {
+              id: definition.id,
+              title: definition.title,
+              frontMatter: definition.frontMatter,
+            };
+            const operations: PptdOperation[] = definition.insertCover
+              ? [
+                  {
+                    op: 'page.add',
+                    afterPageId: sectionBoundary.afterPageId,
+                    section,
+                    page: {
+                      pageType: 'section',
+                      elements: [
+                        {
+                          elementId: `e-${crypto.randomUUID()}`,
+                          elementType: 'text',
+                          bounds: [
+                            current.size[0] * 0.07,
+                            current.size[1] * 0.38,
+                            current.size[0] * 0.86,
+                            current.size[1] * 0.24,
+                          ],
+                          content: {
+                            text: definition.title,
+                            fontSize: 32,
+                            color: '#000000',
+                            fontFamily: 'Arial',
+                            align: ['left', 'middle'],
+                          },
+                        },
+                      ],
+                      notes: '',
+                    },
+                  },
+                ]
+              : [
+                  {
+                    op: 'project.replace',
+                    project: sectionAtBoundary(current, sectionBoundary, section),
+                  },
+                ];
+            const result = await client.apply(operations, {
               manifest: current.manifestRevision,
               metadata: current.metadataRevision,
             });
+            if (result.createdPages[0]) selectPage(result.createdPages[0].pageId);
           }}
         />
       )}

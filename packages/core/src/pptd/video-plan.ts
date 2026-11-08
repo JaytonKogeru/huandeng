@@ -2,6 +2,7 @@ import { compileTimeline } from './animation-model';
 import { type DeckSnapshot, PptdError } from './types';
 
 export interface VideoExportOptions {
+  includeHidden?: boolean;
   pageId?: string;
   occurrenceId?: string;
   resolution?: 720 | 1080;
@@ -102,6 +103,8 @@ export function createVideoPlan(
   }
   for (const [pageIndex, page] of snapshot.pages.entries()) {
     if (options.occurrenceId ? page.occurrenceId !== options.occurrenceId : !matchesPage(page))
+      continue;
+    if (!requested && !options.occurrenceId && !options.includeHidden && page.metadata.hidden)
       continue;
     const timeline = compileTimeline(page.data)?.timeline;
     const cueTimesMs = timeline?.cues?.map((cue) => cue.timeMs).sort((a, b) => a - b) ?? [];

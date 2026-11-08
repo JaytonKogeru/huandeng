@@ -334,6 +334,8 @@ export async function registerPptdRoutes(server: PptdRouteHost, _ctx?: ApiContex
         return json(res, 200, exports.cancel(body.jobId));
       }
       if (route === '/video') {
+        if (body.includeHidden !== undefined && typeof body.includeHidden !== 'boolean')
+          throw new PptdError('INVALID_REQUEST', 'includeHidden must be a boolean.');
         if (
           body.presentationId !== undefined &&
           body.presentationId !== null &&
@@ -358,6 +360,7 @@ export async function registerPptdRoutes(server: PptdRouteHost, _ctx?: ApiContex
               [
                 'pageId',
                 'occurrenceId',
+                'includeHidden',
                 'resolution',
                 'fps',
                 'staticDurationMs',
@@ -504,6 +507,8 @@ export async function registerPptdRoutes(server: PptdRouteHost, _ctx?: ApiContex
         return json(res, 200, selection);
       }
       if (route === '/render' || route === '/export') {
+        if (body.includeHidden !== undefined && typeof body.includeHidden !== 'boolean')
+          throw new PptdError('INVALID_REQUEST', 'includeHidden must be a boolean.');
         await store.refreshExternal();
         if (
           body.presentationId !== undefined &&
@@ -526,6 +531,7 @@ export async function registerPptdRoutes(server: PptdRouteHost, _ctx?: ApiContex
             format: format as 'pptx' | 'pdf' | 'png',
             pageId: typeof body.pageId === 'string' ? body.pageId : undefined,
             occurrenceId: typeof body.occurrenceId === 'string' ? body.occurrenceId : undefined,
+            includeHidden: body.includeHidden === true,
             writeToProject: store.getSnapshot().writable,
             serverUrl: addressUrl(),
           }),

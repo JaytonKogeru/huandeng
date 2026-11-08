@@ -157,6 +157,8 @@ export function parseMetadata(source: string): ProjectMetadata {
       labels.add(raw.label.toUpperCase());
     }
     raw.path = pagePath;
+    if (raw.hidden !== undefined && typeof raw.hidden !== 'boolean')
+      throw new PptdError('INVALID_DOCUMENT', 'Slide hidden state must be a boolean.');
     if (raw.themeOverride !== undefined && !isRecord(raw.themeOverride))
       throw new PptdError('INVALID_DOCUMENT', 'A page theme override must be an object.');
   }

@@ -3,6 +3,18 @@ export const authoringEnglish = {
 } as const;
 
 export const authoringChinese = {
+  'Hide slide': '隐藏 Slide',
+  'Show slide': '显示 Slide',
+  'Hidden from presentation': '已从放映中隐藏',
+  'Include hidden slides ({count})': '包含隐藏的 Slides（{count}）',
+  'There are no visible slides to present. Show a slide first.':
+    '没有可放映的 Slides，请先显示一张 Slide。',
+  'There are no visible slides to export. Include hidden slides or show a slide first.':
+    '没有可导出的 Slides，请包含隐藏页或先显示一张 Slide。',
+  'Insert a new Section cover': '插入新的 Section 首页',
+  'Insert a Section cover here. Following Sections keep their first Slides.':
+    '在此插入 Section 首页，后面的 Sections 保留原来的首页。',
+  'The new Section cover is missing.': '未找到新的 Section 首页。',
   'Section {position}': 'Section {position}',
   'Section ID': 'Section ID',
   'Copy Section ID': '复制 Section ID',

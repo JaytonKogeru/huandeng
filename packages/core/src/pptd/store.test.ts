@@ -5,6 +5,7 @@ import { afterEach, describe, expect, it } from 'vitest';
 import { METADATA_PATH } from './identity';
 import { hashBytes } from './persistence';
 import { projectTestDirectory } from './project-directory.test-utils';
+import { emptyStory, resolveProjectSections } from './project-model';
 import { createRecipe } from './recipes';
 import { type OpenPptdOptions, openPptdStore, type PptdStore } from './store';
 import type { DocumentEvent, PptdOperation, TransactionRequest } from './types';
@@ -58,6 +59,115 @@ function request(store: PptdStore, operations: PptdOperation[]): TransactionRequ
 }
 
 describe('PPTD document store', () => {
+  it('stores hidden state with Undo and preserves it when restoring a named artwork version', async () => {
+    const files = await fixture();
+    await fs.mkdir(path.join(files.root, 'media'), { recursive: true });
+    await fs.writeFile(
+      path.join(files.root, 'media/original.svg'),
+      '<svg xmlns="http://www.w3.org/2000/svg" width="80" height="40"><rect width="80" height="40" fill="navy"/></svg>',
+    );
+    const store = await open(files);
+    const page = store.getSnapshot().pages[0];
+    const version = await store.createPageCheckpoint({
+      pageId: page.pageId,
+      requestId: randomUUID(),
+      label: 'Before change',
+      expectedPageRevision: page.pageRevision,
+      expectedMetadataRevision: store.getSnapshot().metadataRevision,
+    });
+    const hidden = await store.commit(
+      request(store, [{ op: 'metadata.patch', pageId: page.pageId, set: { hidden: true } }]),
+    );
+    expect(store.getSnapshot().pages).toHaveLength(2);
+    expect(store.readPage(page.pageId).metadata.hidden).toBe(true);
+    expect(store.readPage(page.pageId).pageRevision).toBe(page.pageRevision);
+    await store.undo(hidden.operationId);
+    expect(store.readPage(page.pageId).metadata.hidden).toBeUndefined();
+    await store.commit(
+      request(store, [
+        { op: 'metadata.patch', pageId: page.pageId, set: { hidden: true } },
+        { op: 'page.notes.set', pageId: page.pageId, text: 'Changed' },
+      ]),
+    );
+    await store.restorePageVersion({
+      pageId: page.pageId,
+      versionId: version.versionId,
+      requestId: randomUUID(),
+      expectedPageRevision: store.readPage(page.pageId).pageRevision,
+      expectedMetadataRevision: store.getSnapshot().metadataRevision,
+    });
+    expect(store.readPage(page.pageId).data.notes).toBe('Original notes');
+    expect(store.readPage(page.pageId).metadata.hidden).toBe(true);
+    await expect(
+      store.commit(
+        request(store, [{ op: 'metadata.patch', pageId: page.pageId, set: { hidden: 'yes' } }]),
+      ),
+    ).rejects.toMatchObject({ code: 'INVALID_REQUEST' });
+    await expect(
+      store.commit(
+        request(store, [
+          { op: 'metadata.patch', pageId: page.pageId, set: { 'hidden.value': true } },
+        ]),
+      ),
+    ).rejects.toMatchObject({ code: 'INVALID_REQUEST' });
+  });
+  it('creates a Section cover and its boundary in one reversible transaction', async () => {
+    const store = await open(await fixture());
+    const [first, last] = store.getSnapshot().pages;
+    await store.commit(
+      request(store, [
+        {
+          op: 'project.replace',
+          project: {
+            schemaVersion: 1,
+            mainStory: emptyStory(),
+            presentations: [],
+            sections: [
+              {
+                id: 'intro',
+                title: 'Intro',
+                story: emptyStory(),
+                startPageId: first.pageId,
+                pageIds: [first.pageId],
+              },
+              {
+                id: 'results',
+                title: 'Results',
+                story: emptyStory(),
+                startPageId: last.pageId,
+                pageIds: [last.pageId],
+              },
+            ],
+          },
+        },
+      ]),
+    );
+    const before = store.getSnapshot();
+    const transaction = request(store, [
+      {
+        op: 'page.add',
+        afterPageId: first.pageId,
+        page: { elements: [] },
+        section: { id: 'new', title: 'New Section' },
+      },
+    ]);
+    const preview = await store.preview(transaction);
+    expect(store.getSnapshot().pages).toHaveLength(2);
+    const result = await store.commit(transaction);
+    expect(result.createdPages).toHaveLength(1);
+    const created = result.createdPages[0].pageId;
+    const after = store.getSnapshot();
+    expect(after.pages.map((item) => item.pageId)).toEqual([first.pageId, created, last.pageId]);
+    expect(
+      resolveProjectSections(after).find((item) => item.section.id === 'new')?.pageIds,
+    ).toEqual([created]);
+    expect(preview.changes.some((item) => item.target === 'project')).toBe(true);
+    await store.undo(result.operationId);
+    expect(store.getSnapshot().pages.map((item) => item.pageId)).toEqual(
+      before.pages.map((item) => item.pageId),
+    );
+    expect(store.getSnapshot().metadata.project).toEqual(before.metadata.project);
+  });
   it('invalidates author review when a page-specific theme changes without touching page bytes', async () => {
     const files = await fixture();
     const store = await open(files);

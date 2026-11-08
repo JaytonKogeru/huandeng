@@ -10,6 +10,7 @@ import {
 } from '@/components/ui/dialog';
 import { uiText as t, useHuandengLocale } from '@/lib/huandeng-locale';
 import { type PptdBackend, PptdClientError } from '@/lib/pptd-backend';
+import { visiblePages } from '../../../pptd/page-visibility';
 import type { DeckSnapshot, PageSnapshot } from '../../../pptd/types';
 import type { VideoCapabilities } from '../../../pptd/video-encoder';
 import { createVideoPlan, type ExportJobStatus, type ExportResult } from '../../../pptd/video-plan';
@@ -47,6 +48,8 @@ export function ExportDialog({
   useHuandengLocale();
   const [format, setFormat] = useState<'pptx' | 'pdf' | 'png' | 'mp4'>('pptx');
   const [scope, setScope] = useState<'collection' | 'page'>('collection');
+  const [includeHidden, setIncludeHidden] = useState(false);
+  const hiddenCount = snapshot.pages.filter((item) => item.metadata.hidden).length;
   const [resolution, setResolution] = useState<720 | 1080>(720);
   const [fps, setFps] = useState<24 | 30>(30);
   const [staticSeconds, setStaticSeconds] = useState('3');
@@ -67,6 +70,7 @@ export function ExportDialog({
   const options = useMemo(
     () => ({
       presentationId: snapshot.presentationId ?? null,
+      includeHidden,
       ...(scope === 'page' && page ? { pageId: page.pageId, occurrenceId: page.occurrenceId } : {}),
       resolution,
       fps,
@@ -74,7 +78,17 @@ export function ExportDialog({
       endHoldMs: Math.round(Number(endSeconds) * 1000),
       cueHoldMs: Math.round(Number(cueSeconds) * 1000),
     }),
-    [snapshot.presentationId, scope, page, resolution, fps, staticSeconds, endSeconds, cueSeconds],
+    [
+      snapshot.presentationId,
+      includeHidden,
+      scope,
+      page,
+      resolution,
+      fps,
+      staticSeconds,
+      endSeconds,
+      cueSeconds,
+    ],
   );
   const preview = useMemo(() => {
     try {
@@ -157,7 +171,11 @@ export function ExportDialog({
         const output =
           format === 'png' && page
             ? await backend.render(page.pageId, page.occurrenceId, snapshot.presentationId)
-            : await backend.export(format as 'pptx' | 'pdf', snapshot.presentationId ?? null);
+            : await backend.export(
+                format as 'pptx' | 'pdf',
+                snapshot.presentationId ?? null,
+                includeHidden,
+              );
         setResult(output as ExportResult);
         onReport(output.reportUrl);
       }
@@ -208,7 +226,9 @@ export function ExportDialog({
                 <option value="collection">
                   {t('{value0} · {value1}{value2}页', {
                     value0: snapshot.presentationId ? snapshot.title : t('主幻灯片'),
-                    value1: snapshot.pages.length,
+                    value1: includeHidden
+                      ? snapshot.pages.length
+                      : visiblePages(snapshot.pages).length,
                     value2: ' ',
                   })}
                 </option>
@@ -218,6 +238,16 @@ export function ExportDialog({
               </select>
             </label>
           </div>
+          {hiddenCount > 0 && format !== 'png' && (format !== 'mp4' || scope === 'collection') && (
+            <label className="flex items-center gap-2 text-xs">
+              <input
+                type="checkbox"
+                checked={includeHidden}
+                onChange={(event) => setIncludeHidden(event.target.checked)}
+              />
+              {t('Include hidden slides ({count})', { count: hiddenCount })}
+            </label>
+          )}
           {format === 'mp4' ? (
             <>
               <div className="grid grid-cols-2 gap-3">

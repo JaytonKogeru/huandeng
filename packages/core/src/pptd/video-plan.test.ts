@@ -28,6 +28,22 @@ function motion() {
 }
 
 describe('deterministic video plans', () => {
+  it('skips hidden slides in a collection while retaining explicit single-page exports and original indices', () => {
+    const source = motion();
+    source.pages.push({
+      ...structuredClone(source.pages[0]),
+      pageId: 'second',
+      occurrenceId: 'second-use',
+    });
+    source.pages[0].metadata.hidden = true;
+    expect(createVideoPlan(source).segments.map((item) => item.pageIndex)).toEqual([1]);
+    expect(createVideoPlan(source, { includeHidden: true }).segments).toHaveLength(2);
+    expect(createVideoPlan(source, { pageId: source.pages[0].pageId }).segments[0].pageIndex).toBe(
+      0,
+    );
+    source.pages[0].occurrenceId = 'hidden-use';
+    expect(createVideoPlan(source, { occurrenceId: 'hidden-use' }).segments).toHaveLength(1);
+  });
   it('uses derived build steps while keeping authored effects and exact occurrence identity', () => {
     const source = motion();
     const timeline: BuildTimeline = {

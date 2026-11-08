@@ -236,13 +236,14 @@ export class PptdBackend implements PptdTransport {
   export(
     format: 'pptx' | 'pdf',
     presentationId: string | null = null,
+    includeHidden = false,
   ): Promise<{
     url: string;
     reportUrl: string;
     report: unknown;
     fileName: string;
   }> {
-    return this.request('/export', { format, presentationId });
+    return this.request('/export', { format, presentationId, includeHidden });
   }
 
   exportSnapshot(exportId: string): Promise<DeckSnapshot> {

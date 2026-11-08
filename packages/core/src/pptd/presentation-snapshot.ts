@@ -62,6 +62,10 @@ export async function presentationSnapshot(
     }
     pages.push({
       ...structuredClone(page),
+      metadata: {
+        ...structuredClone(page.metadata),
+        hidden: snapshot.metadata.slides[reference.pageId]?.hidden === true,
+      },
       occurrenceId: reference.occurrenceId,
       ...(reference.versionId ? { versionId: reference.versionId } : {}),
       ...(reference.notes !== undefined

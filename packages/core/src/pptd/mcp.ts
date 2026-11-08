@@ -140,6 +140,11 @@ const tools: Tool[] = [
     inputSchema: objectSchema(
       {
         format: { type: 'string', enum: ['pdf', 'pptx', 'mp4'] },
+        includeHidden: {
+          type: 'boolean',
+          description:
+            'Include hidden slides in a collection export; default false. Explicit single-page exports remain available.',
+        },
         presentationId: {
           type: 'string',
           description:
@@ -381,6 +386,7 @@ export function createMcpServer(client: HuandengClient) {
               designIntent: page.metadata.designIntent,
               elementRoles: page.metadata.elementRoles,
               elementCount: page.data.elements.length,
+              hidden: page.metadata.hidden === true,
             })),
             diagnostics: snapshot.diagnostics,
           };

@@ -4,6 +4,8 @@ import {
   ChevronDown,
   ChevronRight,
   Copy,
+  Eye,
+  EyeOff,
   Fingerprint,
   FolderOpen,
   FolderPlus,
@@ -146,6 +148,7 @@ export function PptdThumbnailRail({
   onRestore,
   onHistory,
   onShowFile,
+  onVisibility,
 }: {
   pages: PageSnapshot[];
   sections?: ThumbnailSection[];
@@ -165,6 +168,7 @@ export function PptdThumbnailRail({
   onRestore: (pageId: string) => void;
   onHistory: (pageId: string) => void;
   onShowFile: (pageId: string) => void;
+  onVisibility?: (pageId: string, hidden: boolean) => void;
 }) {
   useHuandengLocale();
   const [query, setQuery] = useState('');
@@ -259,8 +263,6 @@ export function PptdThumbnailRail({
     stopDragging();
     if (id) onMove(id, boundary);
   };
-  const canCreateSection = (boundary: SlideInsertionBoundary) =>
-    !!boundary.beforePageId && !groups.some((group) => group.pageIds[0] === boundary.beforePageId);
   // biome-ignore lint/correctness/useExhaustiveDependencies: Search and page order replace the observed DOM nodes without changing the scroll root.
   useEffect(() => {
     const root = scrollRef.current;
@@ -408,7 +410,7 @@ export function PptdThumbnailRail({
                   position={index + 1}
                   disabled={disabled}
                   onInsert={onInsert}
-                  onCreateSection={canCreateSection(before) ? onCreateSection : undefined}
+                  onCreateSection={onCreateSection}
                   onDragOver={dragOver}
                   onDrop={drop}
                   active={sameBoundary(before)}
@@ -563,20 +565,29 @@ export function PptdThumbnailRail({
                         />
                       )}
                       <div
-                        data-hd-thumbnail-preview={page.occurrenceId ?? page.pageId}
-                        className="pointer-events-none overflow-hidden rounded-sm border border-foreground/10"
-                        style={{ width: '100%', aspectRatio: `${size[0]} / ${size[1]}` }}
+                        className={
+                          section && !expanded && section.pageIds.length > 1
+                            ? 'hd-section-stack'
+                            : undefined
+                        }
+                        data-hd-section-stack={section && !expanded ? section.key : undefined}
                       >
-                        {visible.has(page.occurrenceId ?? page.pageId) ? (
-                          <ThumbnailPreview page={page} size={size} theme={theme} />
-                        ) : (
-                          <div
-                            className="flex size-full items-center justify-center bg-background text-[10px] text-muted-foreground/60"
-                            aria-hidden="true"
-                          >
-                            {page.shortCode ?? page.metadata.label}
-                          </div>
-                        )}
+                        <div
+                          data-hd-thumbnail-preview={page.occurrenceId ?? page.pageId}
+                          className="pointer-events-none overflow-hidden rounded-sm border border-foreground/10"
+                          style={{ width: '100%', aspectRatio: `${size[0]} / ${size[1]}` }}
+                        >
+                          {visible.has(page.occurrenceId ?? page.pageId) ? (
+                            <ThumbnailPreview page={page} size={size} theme={theme} />
+                          ) : (
+                            <div
+                              className="flex size-full items-center justify-center bg-background text-[10px] text-muted-foreground/60"
+                              aria-hidden="true"
+                            >
+                              {page.shortCode ?? page.metadata.label}
+                            </div>
+                          )}
+                        </div>
                       </div>
                       <div className="mt-2 flex min-w-0 items-center gap-1.5 text-[10px]">
                         <span
@@ -596,6 +607,12 @@ export function PptdThumbnailRail({
                           {page.shortCode ?? page.metadata.label ?? t('未编号')}
                         </span>
                         <span className="truncate text-muted-foreground">{name}</span>
+                        {page.metadata.hidden && (
+                          <EyeOff
+                            className="ml-auto size-3 shrink-0 text-muted-foreground"
+                            aria-label={t('Hidden from presentation')}
+                          />
+                        )}
                         {page.versionId && (
                           <span title={t('固定的页面版本')} className="text-brand">
                             {t('固定')}
@@ -627,6 +644,15 @@ export function PptdThumbnailRail({
                     {t('复制页面短码')}
                   </ContextMenuItem>
                   <ContextMenuSeparator />
+                  {onVisibility && (
+                    <ContextMenuItem
+                      disabled={disabled}
+                      onClick={() => onVisibility(page.pageId, !page.metadata.hidden)}
+                    >
+                      {page.metadata.hidden ? <Eye /> : <EyeOff />}
+                      {t(page.metadata.hidden ? 'Show slide' : 'Hide slide')}
+                    </ContextMenuItem>
+                  )}
                   {onInsert && (
                     <>
                       <ContextMenuItem
@@ -669,6 +695,7 @@ export function PptdThumbnailRail({
             position={pages.length + 1}
             disabled={disabled}
             onInsert={onInsert}
+            onCreateSection={onCreateSection}
             onDragOver={dragOver}
             onDrop={drop}
             active={sameBoundary(slideInsertionBoundary(pages, pages.length))}

@@ -7,6 +7,7 @@ import { mimeType, openBrowser } from './export-environment.ts';
 import { imageDimensions } from './export-images.ts';
 import { ExportWorkspace } from './export-workspace.ts';
 import { hasPageTransition } from './page-transition.ts';
+import { visibleSnapshot } from './page-visibility.ts';
 import { type DeckSnapshot, PptdError } from './types.ts';
 import { createVideoEncoder, findVideoEncoder, type VideoCapabilities } from './video-encoder.ts';
 import { createVideoPlan, type VideoExportOptions, videoFrameTime } from './video-plan.ts';
@@ -172,11 +173,14 @@ export class ExportManager {
       format: 'pptx' | 'pdf' | 'png';
       pageId?: string;
       occurrenceId?: string;
+      includeHidden?: boolean;
       writeToProject?: boolean;
       serverUrl: string;
     },
   ) {
-    const frozen = structuredClone(snapshot);
+    const frozen = structuredClone(
+      options.format === 'png' ? snapshot : visibleSnapshot(snapshot, options.includeHidden),
+    );
     if (options.format === 'png') {
       const requested =
         frozen.pages.find(
@@ -193,7 +197,10 @@ export class ExportManager {
       frozen.pages = [requested];
     }
     if (!frozen.pages.length)
-      throw new PptdError('INVALID_DOCUMENT', 'There are no active pages to export.');
+      throw new PptdError(
+        'INVALID_DOCUMENT',
+        'There are no visible slides to export. Include hidden slides or show a slide first.',
+      );
     if (frozen.diagnostics.some((diagnostic) => diagnostic.severity === 'error')) {
       throw new PptdError('INVALID_DOCUMENT', 'Resolve document diagnostics before exporting.', {
         diagnostics: frozen.diagnostics,

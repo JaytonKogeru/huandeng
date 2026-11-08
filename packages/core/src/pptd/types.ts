@@ -38,6 +38,7 @@ export interface RecipeBinding {
 
 export interface SlideIdentity {
   shortCode: string | null;
+  hidden?: boolean;
   label?: string;
   path: string;
   state: 'active' | 'tombstone';
@@ -206,6 +207,7 @@ export interface PageAddOperation {
   op: 'page.add';
   page?: PptdPage;
   afterPageId?: string | null;
+  section?: { id: string; title: string; frontMatter?: boolean };
 }
 
 export interface PageDuplicateOperation {

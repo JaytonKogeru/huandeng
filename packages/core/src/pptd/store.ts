@@ -54,6 +54,7 @@ import {
   validateTransactionRequest,
 } from './proposal';
 import { applyRecipe, markRecipeElementOverride, removeRecipeSlot } from './recipes';
+import { sectionWithInsertedCover } from './section-actions';
 import { knownTimeline, removeTimelineTargets } from './timeline-operations';
 import {
   type AuthorReviewContext,
@@ -1558,6 +1559,8 @@ export class PptdStore {
         case 'page.duplicate': {
           check('manifest');
           check('metadata');
+          const beforeSection =
+            operation.op === 'page.add' && operation.section ? this.makeSnapshot(docs) : undefined;
           let source: string;
           let originalId: string | undefined;
           let duplicatedIdentity: ProjectMetadata['slides'][string] | undefined;
@@ -1613,6 +1616,13 @@ export class PptdStore {
               ? originalId
               : anchorId(operation.afterPageId);
           writeOrder(placeAfter(orderedIds(), created.pageId, after));
+          if (operation.op === 'page.add' && operation.section && beforeSection)
+            docs.metadata.project = sectionWithInsertedCover(
+              beforeSection,
+              this.makeSnapshot(docs),
+              created.pageId,
+              operation.section,
+            );
           break;
         }
         case 'page.move': {
@@ -1679,7 +1689,7 @@ export class PptdStore {
                 'Author review records are read-only through the shared transaction API.',
               );
             if (
-              !['designIntent', 'elementRoles', 'components', 'themeOverride'].includes(
+              !['designIntent', 'elementRoles', 'components', 'themeOverride', 'hidden'].includes(
                 String(head),
               )
             )
@@ -1689,6 +1699,12 @@ export class PptdStore {
               );
             if (head === 'components' || head === 'elementRoles') check('pages', pageId);
             if (head === 'components') check('manifest');
+            if (
+              head === 'hidden' &&
+              (field !== 'hidden' ||
+                (Object.hasOwn(operation.set, field) && typeof operation.set[field] !== 'boolean'))
+            )
+              throw new PptdError('INVALID_REQUEST', 'Slide hidden state must be a boolean.');
           }
           for (const [field, value] of Object.entries(operation.set))
             setValueAtPath(identity, parseFieldPath(field), value);

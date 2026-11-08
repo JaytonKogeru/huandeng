@@ -213,14 +213,20 @@ program
   .command('export <format>')
   .description('Export the committed deck as PDF or editable PPTX')
   .option('--presentation <id>', 'export one Presentation Slides instead of Main Slides')
+  .option('--include-hidden', 'include hidden slides in the exported collection')
   .action(async (format, options) =>
     print(
-      await (await client()).request('/export', { format, presentationId: options.presentation }),
+      await (await client()).request('/export', {
+        format,
+        presentationId: options.presentation,
+        includeHidden: options.includeHidden === true,
+      }),
     ),
   );
 program
   .command('video')
   .description('Start a deterministic silent H.264 MP4 export')
+  .option('--include-hidden', 'include hidden slides in the exported collection')
   .option('--presentation <id>', 'export the saved presentation order')
   .option('--page <id>', 'export only this source page')
   .option('--occurrence <id>', 'export the exact repeated or pinned appearance')
@@ -234,6 +240,7 @@ program
       await (await client()).request('/video', {
         presentationId: options.presentation,
         pageId: options.page,
+        includeHidden: options.includeHidden === true,
         occurrenceId: options.occurrence,
         resolution: Number(options.resolution),
         fps: Number(options.fps),

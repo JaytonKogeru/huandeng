@@ -58,11 +58,12 @@ Presentation items are {id,kind:"page",pageId,notes?:string,versionId?:string} o
 
 ## Page organization
 
-- page.add: {op, page?:{elements:[...]}, afterPageId?:string|null}. Supply desired initial objects in page; omit the page for a blank page.
+- page.add: {op, page?:{elements:[...]}, afterPageId?:string|null, section?:{id,title,frontMatter?:boolean}}. Supply desired initial objects in page; omit the page for a blank page. Optional section creates a first-Slide Section anchored to the new page atomically, through the next Section boundary; following Sections retain their boundaries. This also works at the end. Include current manifest and metadata revisions.
 - page.duplicate: {op, pageId, afterPageId?:string|null}. Creates independent content with a new page ID.
 - page.move: {op, pageId, afterPageId?:string|null}. Changes Main order, not presentation order.
 - page.remove / page.restore: {op, pageId, afterPageId?:string|null}. Restore keeps the original identity.
 - page.relink: {op, pageId, path}. Explicitly reconnect a moved page file inside the project.
+- metadata.patch with set:{hidden:true} hides a Slide from playback and collection exports while retaining its content, Main position and history. Set hidden:false or unset hidden to show it. Include metadata CAS. Visibility belongs to current Main organization and also controls live and pinned Presentation appearances; restoring artwork does not change visibility. Collection exports default to skipping hidden Slides; includeHidden:true (CLI --include-hidden) includes them. Explicit single-page PNG/MP4 exports remain available.
 
 Page add/duplicate/remove/restore/relink require manifest and metadata CAS; operations that target an existing page also require that page's revision, except page.move needs only manifest and page.relink needs the hash of the new page file. Read exact current revisions before planning. Creation IDs shown by preview are provisional and cannot be referenced in that same proposal. Read createdPages from apply, then form a new transaction to place those actual IDs into a section/presentation. Creation preview is useful for content/impact inspection; its generated identity is not reserved.
 
