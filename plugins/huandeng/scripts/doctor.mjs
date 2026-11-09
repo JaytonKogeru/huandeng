@@ -18,7 +18,7 @@ try {
     const { StdioClientTransport } = await import(
       pathToFileURL(require.resolve('@modelcontextprotocol/sdk/client/stdio.js')).href
     );
-    client = new Client({ name: 'HUANDENG Plugin doctor', version: '0.12.1' });
+    client = new Client({ name: 'HUANDENG Plugin doctor', version: '0.14.0' });
     const transport = new StdioClientTransport({
       command: runtime.node,
       args: [runtime.launcher],
@@ -64,6 +64,7 @@ try {
           modelTaskVerified: false,
           server: client.getServerVersion(),
           toolCount: tools.tools.length,
+          operationReviewSupported: tools.tools.some((tool) => tool.name === 'huandeng_review'),
           guides: resources.resources.map((resource) => resource.uri),
           deck: {
             deckId: context.deckId,
