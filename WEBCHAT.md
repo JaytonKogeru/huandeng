@@ -1,8 +1,29 @@
 # HUANDENG Editor
 
-## Accepted Editor 0.12.1 patch
+## Accepted Editor 0.13.0 workspace runtime
 
-Current accepted and installed Editor: **0.12.1**, clean runtime `c82b36885ed125c348b3a5e110aff141f221d515`, built `2026-11-08T23:57:51.4525420Z`. Existing portable client plugin remains **0.12.1**. Read `docs/AUTHORING-V0121.md`, `VALIDATION-V0121`, `RELEASE-V0121` and `HANDOFF-V0121`. The later delivery-only commit records documentation/evidence and does not rebuild the runtime. Verify actual origin refs for tag `editor-v0.12.1`.
+Clean runtime source: **`886d6460cc3f690b2f153ba51a512e010d0dfb56`**, build `2026-11-09T05:45:58.5461954Z`, Electron **38.7.2**. Client/account plugins are **0.13.0**. Read `docs/AUDIT-V013.md`, `SPEC-V013`, `IMPLEMENTATION-V013`, `VALIDATION-V013`, `RELEASE-V013`, `HANDOFF-V013`, `WORKSPACE-UX`, `POSITION-FIELDS` and `PPTX-PUBLISHING`. Runtime code is committed before packaging; the delivery-only commit records later evidence and documentation. Check the final handoff and actual origin refs before asserting installation, publication or tag state.
+
+The exact clean package passed **14/14 synthetic workspace checks**, normal exit and zero renderer errors. These include real native second-instance launches using `--entry`, `--entry=value`, and positional paths containing Unicode and spaces. Source gates: **82 focused Vitest tests across 13 files**, five desktop recovery tests, 11 publisher regressions on Windows/Linux, eight client tests, core TypeScript/build and Biome. Actual PowerPoint 16.0 opened the five-slide synthetic native-export fixture without repair, retained five equations, and saved/reopened table/chart edits; six native charts and a native group were inspected. The packaged publisher passed two isolated synthetic Projects with hidden-page exclusion, Notes, unchanged sources, byte-equal shared copies and no-change skips. Public evidence in `docs/evidence/v013` is synthetic only. Older full-suite counts below were not rerun in this version.
+
+The existing private ChatGPT plugin was updated in place to 0.13.0 with its account binding retained. Native Codex and Claude Code inventories confirm enabled 0.13.0; the independent DeepSeek Harness overlay and launcher were created. Account publication, client registration, installed-runtime doctor and a real model editing task remain separate claims. Do not infer existing-conversation hot-loading or another computer's installation from these checks.
+
+### Current workspace invariants
+
+- One native window retains separate Project renderers and services. Home and tab switches preserve drafts; sender-bound IPC never follows whichever tab happens to be visible. Native second-instance entry parsing accepts `--entry`, `--entry=value`, and positional Unicode/space-containing paths without losing the requested Project. Close uses the existing save/recovery guards.
+- Files opens inert, read-only central document tabs while keeping Slides and draft-owning Notes/Inspector contexts mounted. Keep Project path, link, type, revision and size boundaries, and prevent preview shortcuts from editing the canvas.
+- Pages shares one Project organization draft across Thumbnails, Outline and the Section manager. Normal Sections use first-Slide boundaries only; legacy ranges/member lists remain readable and require explicit validated conversion. Folded card shadows do not change selection, scroll anchoring or membership.
+- Present/F5 enters native fullscreen with initially hidden controls; bottom-edge proximity and keyboard focus reveal them. Serialize native fullscreen transitions. A delayed canvas-selection intent must never steal presenter focus or consume Escape.
+- Activity separates explicit Project/session/task client reports from real writer receipts. It is bounded, local, and not an embedded model runner, terminal or automatic chat ingestion.
+- Position fields are opt-in `content.field: main-position`, derived from Main order including hidden Slides. Reordering does not rewrite `.page` content/history; actual Notes/Story edits do. Store historical Position as separate display context without changing content revision integrity.
+- The publisher validates Project output before atomically copying a regular shared file. Retain old valid output on error/lock. Keep v3 lock-retirement tombstones nonempty to prevent stale-process ABA races. Do not rely on symbolic-link synchronization or force-close Office.
+- The authoring plugin starts from approved page references, original evidence and concrete layout choices, then inspects actual renders. Do not turn a research Project into an Editor fixture or upload its sources, figures, IDs, paths or receipts.
+
+Windows source worktree: `D:/_Proj/Huandeng-v013-20261109`, branch `editor/v0.13-workspace`; canonical checkout remains `D:/_Proj/Huandeng`. Preserve the unrelated modified fixture. Use the exact-package `scripts/verify-workspace-v013.mjs` and `scripts/verify-publisher-native.mjs` as appropriate to the remaining risk. Push only the accepted origin milestone and annotated `editor-v0.13.0`; never upstream or npm. The following release sections document preceding baselines. Current rules above supersede their right-sidebar Files, member-selection UI and 18-tool descriptions.
+
+## Historical accepted Editor 0.12.1 patch
+
+Previous accepted and installed Editor: **0.12.1**, clean runtime `c82b36885ed125c348b3a5e110aff141f221d515`, built `2026-11-08T23:57:51.4525420Z`. Its portable client plugin was **0.12.1**. Read `docs/AUTHORING-V0121.md`, `VALIDATION-V0121`, `RELEASE-V0121` and `HANDOFF-V0121`. The later delivery-only commit records documentation/evidence and does not rebuild the runtime. Verify actual origin refs for tag `editor-v0.12.1`.
 
 This patch adds readable text selection, folded Section card edges, atomic new covers at every Main gap, and reversible Hide/Show slide. Main visibility governs live and pinned appearances; collection PDF/PPTX/MP4 skip hidden Slides unless explicitly included, while direct single-page output remains available. `metadata.hidden` is current organization state and survives artwork restore. Optional `page.add.section` creates the cover and boundary atomically while preserving old range/member semantics. Existing named Page Versions remain explicit, portable milestones.
 
@@ -36,7 +57,7 @@ First-Slide Sections persist optional stable startPageId and resolve current Mai
 
 Gap insertion captures actual neighboring IDs, including before the first Slide and after hidden members of a folded Section. Revalidate adjacency after flushing pending edits; do not infer location from current selection or stale Position. Carry current manifest/metadata revisions, select the inserted Slide, and retain existing writer/Undo. Presentation reference editing is separate.
 
-Files previews bounded image/source text on the right. Preserve the canvas and mounted draft-owning Inspector/Notes contexts, cancel stale reads, match image revisions, and enforce Project path/realpath/link/type/size boundaries. Markdown, HTML, SVG, JSON, and scripts remain inert source. Preview keyboard/native Edit/paste events must not mutate the canvas. Assets remains the placeable-material view.
+Files originally previewed bounded image/source text on the right; v0.13 moves this into central document tabs. Preserve the canvas and mounted draft-owning Inspector/Notes contexts, cancel stale reads, match image revisions, and enforce Project path/realpath/link/type/size boundaries. Markdown, HTML, SVG, JSON, and scripts remain inert source. Preview keyboard/native Edit/paste events must not mutate the canvas. Assets remains the placeable-material view.
 
 Quick Layout retains figure recipes and adds explicit reference/target title selection. Freeze the captured visible baseline and preview until Refresh reference style. Apply only to an independent target; retain wording, semantic tags, local mixed emphasis, figures, and unrelated objects. Clear only relevant supported inline baseline declarations, including uniform emphasis that would defeat the new style. Target CAS and one Undo protect the edit; reference revision is provenance, not cross-page source-read CAS or a live template link.
 
@@ -46,7 +67,7 @@ Retain v0.10 source thumbnails/titles/Slide ID/Position/search/hover preview, re
 
 Source-preserving YAML patching must support valid indentless block sequences. Replacement flow JSON must be indented below the mapping key even when the original dash was not. Keep adjacent comments, BOM/newline convention, following fields, and opaque values; do not rewrite whole documents or weaken preview/commit validation. The synthetic shared-store regression checks read-only preview, bounded commit, and byte-restoring Undo.
 
-Agent setup only generates current-Project configuration. ChatGPT uses existing authorized DC-WALT CLI. Keep the 18 MCP tools, Story services, and shared writer compatible. No built-in model runner, marketplace, arbitrary plugin executor, or new network tunnel was added. The public-source Drug Design example remains a separate conceptual example; private authoring work is never a fixture.
+Agent setup only generates current-Project configuration. ChatGPT uses existing authorized DC-WALT CLI. Keep the current 20 MCP tools, Story services, and shared writer compatible (18 tools before v0.13). No built-in model runner, marketplace, arbitrary plugin executor, or new network tunnel was added. The public-source Drug Design example remains a separate conceptual example; private authoring work is never a fixture.
 
 ## Persisted product and writer invariants
 
@@ -72,9 +93,9 @@ v0.8 corrected the old v0.7~398MiB GC observation: Network inspector response re
 
 ## Working paths and release
 
-Windows is authoritative: canonical checkout `D:/_Proj/Huandeng`; v0.12 worktree `D:/_Proj/Huandeng-v012-20261108`, branch `editor/v0.12-sections-authoring`. The Linux transfer mirror has no authoritative Git history. Preserve the unrelated modified canonical fixture. Never broad-stage/reset/clean or restore a historical private document baseline.
+Windows is authoritative: canonical checkout `D:/_Proj/Huandeng`; current worktree `D:/_Proj/Huandeng-v013-20261109`, branch `editor/v0.13-workspace`. The Linux transfer mirror has no authoritative Git history. Preserve the unrelated modified canonical fixture. Never broad-stage/reset/clean or restore a historical private document baseline.
 
-Use `corepack pnpm` with isolated development dependencies and the frozen lockfile. The v0.12 packaged harness is `scripts/verify-authoring-v012.mjs`, using the exact `HUANDENG_DESKTOP_EXE`, no `HUANDENG_DESKTOP_APP`, and isolated synthetic profiles. Keep development, packaged, installed and private-authoring evidence separate. Scope further checks to actual remaining risk instead of automatically repeating earlier 43-group/soak matrices. Inspect screenshots before publishing only generic, masked evidence.
+Use `corepack pnpm` with isolated development dependencies and the frozen lockfile. The v0.13 workspace harness is `scripts/verify-workspace-v013.mjs`, using the exact `HUANDENG_DESKTOP_EXE`, no `HUANDENG_DESKTOP_APP`, and isolated synthetic profiles. Keep development, packaged, installed and private-authoring evidence separate. Scope further checks to actual remaining risk instead of automatically repeating earlier 43-group/soak matrices. Inspect screenshots before publishing only generic, masked evidence.
 
 Commit coherent work locally. Origin alone receives significant tested milestones with release/handoff records and an annotated tag; verify actual refs after the push. Never push upstream OpenSlide, npm-publish, change visibility, expose a public listener, rewrite history or send issue/comments/messages without authorization. Current-tree private-data checks do not erase historical identifier/path traces; public release requires a separate scoped history cleanup.
 

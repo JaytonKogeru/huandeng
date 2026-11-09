@@ -1,0 +1,81 @@
+{
+  "runtimeSourceRevision": "886d6460cc3f690b2f153ba51a512e010d0dfb56",
+  "syntheticOnly": true,
+  "files": [
+    {
+      "name": "01-central-files.png",
+      "bytes": 71509,
+      "sha256": "3b24c29956e3273ce710fc51438892feec908d7cf1f14d2916df79e9d71653b3"
+    },
+    {
+      "name": "03-fullscreen.png",
+      "bytes": 24936,
+      "sha256": "2e0d24a44eaedd01672e60ccc2e816663a4e366f1e62d4db09d16c185bbac03a"
+    },
+    {
+      "name": "04-alpha-activity.png",
+      "bytes": 105538,
+      "sha256": "540da8bef10c4abb3e1399a8af44f03f90f779732f665b3f58a95f05718eb577"
+    },
+    {
+      "name": "office-acceptance.json",
+      "bytes": 2774,
+      "sha256": "0662ca3e15cb498ad70657071a056973a9615e55966556ee2144dc5d11d461c6"
+    },
+    {
+      "name": "office-slide-1.png",
+      "bytes": 29965,
+      "sha256": "3ac7f32819e7e55aa91de7e6c58e1b0566e85984adbdc9fa105871f19f6ed21a"
+    },
+    {
+      "name": "office-slide-2.png",
+      "bytes": 16711,
+      "sha256": "f5e9422c9c7901afdc8903207bbe9f63331c8425ce9b6a8333e7cedf951897e1"
+    },
+    {
+      "name": "office-slide-3.png",
+      "bytes": 21442,
+      "sha256": "851a5b354f5f4548867c8fe4ad0cda9513f6551f14a1fcf386b77362c7d38987"
+    },
+    {
+      "name": "office-slide-4.png",
+      "bytes": 25956,
+      "sha256": "3f61be3a33dcc07a03dba0e9ed97ea91fde0959e0c5db1d976a1b5cc3e80fbf3"
+    },
+    {
+      "name": "office-slide-5.png",
+      "bytes": 26418,
+      "sha256": "6e4f386bde7f22ed8c40f1911ddf2fe648652b927a79eaa552b58dbf43efb17b"
+    },
+    {
+      "name": "outline-section-navigation.png",
+      "bytes": 67015,
+      "sha256": "27123937ee25c9c7291803ac3ee702645c998c3909c02a60e2182419d7f34044"
+    },
+    {
+      "name": "publisher-acceptance.json",
+      "bytes": 993,
+      "sha256": "91a5da591267c8a0557e5109ddb2392e4f9ea848b0af44b764e5f4cfdec98422"
+    },
+    {
+      "name": "section-card-shadows.png",
+      "bytes": 68011,
+      "sha256": "4c8805d178bb3275ddd51c4a918068d0ea8b11d0f009ad5b14914d43118b6610"
+    },
+    {
+      "name": "section-manager-first-slide.png",
+      "bytes": 150969,
+      "sha256": "bc958dcc194bb7aebec2bc92de96c6d8a3aa4fc34007375a7174f787a998d714"
+    },
+    {
+      "name": "strip-02-multiple-projects.png",
+      "bytes": 3285,
+      "sha256": "f3eac8f77475385a6fe2878305fca06a5ff62ec01a08dc3b12a3d368e96e6268"
+    },
+    {
+      "name": "workspace-acceptance.json",
+      "bytes": 4686,
+      "sha256": "a01e36cd07d74d334cbab0aa1e943d5e9be435b0488a26e1b84f5f32a3ebdd30"
+    }
+  ]
+}

@@ -8,6 +8,8 @@ IPC resolves the sender's Project. Agent configuration, file reveal, native edit
 
 Within each Project, the permanent **Slides** document sits beside closable file tabs. Files uses the center; choosing a Slide or placeable Asset returns to Slides. Canvas, Inspector and Notes stay mounted, preserving drafts. Previews remain read-only, with existing path/type/size/realpath/revision checks. Their keyboard/native edit events cannot modify the obscured Slide. Ctrl+W closes a file before the Project.
 
+Native second-instance launches pass a bounded validated request through Electron `additionalData`; the original command line is captured before Chromium can reorder switches. Legacy argument fallback refuses switch-shaped paths and handles sender-relative paths. Requests during startup are queued. The native harness opens a second synthetic Project through real processes, including Unicode and spaces.
+
 ## Navigation and presenting
 
 Pages has **Thumbnails** and **Outline** over the same Slide/Section model. Outline shows title, Position, stable Slide ID and a short Story or Slide summary. Search exposes matching folded members without changing the current folding state. Section controls live in Pages; Project has a compact entry to the same manager and draft owner.

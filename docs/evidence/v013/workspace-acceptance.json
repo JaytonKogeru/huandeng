@@ -1,0 +1,171 @@
+{
+  "passed": true,
+  "executablePath": "dist/HUANDENG-win32-x64/HUANDENG Editor.exe",
+  "buildIdentity": {
+    "electronVersion": "38.7.2",
+    "desktopProtocol": 1,
+    "builtAt": "2026-11-09T05:45:58.5461954Z",
+    "sourceDirty": false,
+    "productVersion": "0.13.0",
+    "nodeLinker": "hoisted",
+    "product": "HUANDENG Editor",
+    "sourceRevision": "886d6460cc3f690b2f153ba51a512e010d0dfb56"
+  },
+  "checks": [
+    {
+      "name": "An actual native second instance opens --entry with spaces and Unicode in the same workspace",
+      "passed": true,
+      "milliseconds": 3869
+    },
+    {
+      "name": "Native --entry=value and positional launches focus existing tabs without restarting their writers",
+      "passed": true,
+      "milliseconds": 1273
+    },
+    {
+      "name": "Home returns to either Project while both renderers and services stay alive",
+      "passed": true,
+      "milliseconds": 237
+    },
+    {
+      "name": "Recent Projects deduplicate tabs and background IPC stays bound to its sender",
+      "passed": true,
+      "milliseconds": 309
+    },
+    {
+      "name": "Unsaved Story survives Project and Home switches and blocks only its own close",
+      "passed": true,
+      "milliseconds": 625
+    },
+    {
+      "name": "Central file tabs preserve the Slides document and reject editing shortcuts",
+      "passed": true,
+      "milliseconds": 851
+    },
+    {
+      "name": "An Agent transaction updates its background Project without writing the active Project",
+      "passed": true,
+      "milliseconds": 526
+    },
+    {
+      "name": "Activity displays explicit reports only inside their selected Project",
+      "passed": true,
+      "milliseconds": 661
+    },
+    {
+      "name": "Outline searches folded Sections and preserves Slide identity",
+      "passed": true,
+      "milliseconds": 846
+    },
+    {
+      "name": "Pages manages one Section with first-Slide boundaries and shared Save/Undo",
+      "passed": true,
+      "milliseconds": 835
+    },
+    {
+      "name": "Present enters fullscreen with a clean Slide and bottom-edge controls",
+      "passed": true,
+      "milliseconds": 1736
+    },
+    {
+      "name": "Present enters native fullscreen, hides the Project strip and restores the workspace",
+      "passed": true,
+      "milliseconds": 600
+    },
+    {
+      "name": "Closing a background Project destroys only its own renderer and keeps the active Project",
+      "passed": true,
+      "milliseconds": 122
+    },
+    {
+      "name": "Normal native close flushes the remaining Project and exits cleanly",
+      "passed": true,
+      "milliseconds": 398
+    }
+  ],
+  "screenshots": [
+    "strip-02-multiple-projects.png",
+    "01-central-files.png",
+    "04-alpha-activity.png",
+    "outline-section-navigation.png",
+    "section-card-shadows.png",
+    "section-manager-first-slide.png",
+    "03-fullscreen.png"
+  ],
+  "rendererErrors": [],
+  "nativeLaunches": [
+    {
+      "form": "--entry value",
+      "pid": 12328,
+      "exit": {
+        "code": 0,
+        "signal": null
+      },
+      "received": {
+        "argumentCount": 5,
+        "entryFlagNext": "--allow-file-access-from-files",
+        "workingDirectory": "editor-source",
+        "additionalData": {
+          "huandengLaunch": {
+            "schemaVersion": 1,
+            "request": {
+              "entry": "synthetic-workspace/beta \u7b2c\u4e8c\u4efd Project/deck.pptd",
+              "readOnly": false,
+              "welcome": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "form": "--entry=value",
+      "pid": 17632,
+      "exit": {
+        "code": 0,
+        "signal": null
+      },
+      "received": {
+        "argumentCount": 4,
+        "entryFlagNext": null,
+        "workingDirectory": "editor-source",
+        "additionalData": {
+          "huandengLaunch": {
+            "schemaVersion": 1,
+            "request": {
+              "entry": "synthetic-workspace/alpha/deck.pptd",
+              "readOnly": false,
+              "welcome": false
+            }
+          }
+        }
+      }
+    },
+    {
+      "form": "positional .pptd",
+      "pid": 6656,
+      "exit": {
+        "code": 0,
+        "signal": null
+      },
+      "received": {
+        "argumentCount": 4,
+        "entryFlagNext": null,
+        "workingDirectory": "editor-source",
+        "additionalData": {
+          "huandengLaunch": {
+            "schemaVersion": 1,
+            "request": {
+              "entry": "synthetic-workspace/beta \u7b2c\u4e8c\u4efd Project/deck.pptd",
+              "readOnly": false,
+              "welcome": false
+            }
+          }
+        }
+      }
+    }
+  ],
+  "normalExit": {
+    "code": 0,
+    "signal": null
+  }
+}

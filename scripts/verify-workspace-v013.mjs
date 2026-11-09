@@ -39,9 +39,12 @@ async function allocateFixtureRoot() {
       const directory = await fs.mkdtemp(path.join(fixtureRoot, 'huandeng-workspace-v013-'));
       const probe = path.join(directory, 'lock-probe');
       try {
-        const canonical = await canonicalProjectRoot(directory);
         for (const project of Object.values(fixtureDirectories)) {
-          const release = await acquireWriterLock(path.join(canonical, project), probe);
+          await fs.mkdir(path.join(directory, project), { recursive: true });
+          const release = await acquireWriterLock(
+            await canonicalProjectRoot(path.join(directory, project)),
+            probe,
+          );
           await release();
         }
         await fs.rm(probe, { recursive: true, force: true });

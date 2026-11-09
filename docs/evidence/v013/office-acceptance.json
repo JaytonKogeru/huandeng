@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "142d67ff0aae16455ae57f7efe81b95a97046dd00ab6d1fc1afbfb35acf9d229",
+  "success": true,
+  "openAndRepair": false,
+  "sourceUnchanged": true,
+  "slideCount": 5,
+  "officeVersion": "16.0",
+  "nativeTables": [
+    {
+      "slide": 1,
+      "name": "results-table",
+      "rows": 4,
+      "columns": 3,
+      "sample": "Control"
+    }
+  ],
+  "nativeCharts": [
+    {
+      "slide": 2,
+      "name": "Bar data with zero",
+      "chartType": 51,
+      "series": 1,
+      "workbook": {
+        "name": "Bar data with zero",
+        "B2": 0,
+        "B3": 4,
+        "B4": -1
+      }
+    },
+    {
+      "slide": 2,
+      "name": "Counts and estimate",
+      "chartType": -4111,
+      "series": 2,
+      "workbook": {
+        "name": "Counts and estimate",
+        "B2": 0,
+        "B3": 4,
+        "B4": -1
+      }
+    },
+    {
+      "slide": 3,
+      "name": "Scatter",
+      "chartType": -4169,
+      "series": 1,
+      "workbook": {
+        "name": "Scatter",
+        "B2": 0,
+        "B3": 4,
+        "B4": -1
+      }
+    },
+    {
+      "slide": 3,
+      "name": "Bubble",
+      "chartType": 15,
+      "series": 1,
+      "workbook": {
+        "name": "Bubble",
+        "B2": 0,
+        "B3": 4,
+        "B4": -1
+      }
+    },
+    {
+      "slide": 4,
+      "name": "Pie",
+      "chartType": 5,
+      "series": 1,
+      "workbook": {
+        "name": "Pie",
+        "B2": 0,
+        "B3": 9,
+        "B4": 4
+      }
+    },
+    {
+      "slide": 4,
+      "name": "Area",
+      "chartType": 1,
+      "series": 1,
+      "workbook": {
+        "name": "Area",
+        "B2": 0,
+        "B3": 4,
+        "B4": -1
+      }
+    }
+  ],
+  "nativeGroups": [
+    {
+      "slide": 5,
+      "name": "diagram-group",
+      "members": 3
+    }
+  ],
+  "images": [
+    {
+      "slide": 1,
+      "path": "office-slide-1.png",
+      "bytes": 29965,
+      "sha256": "3ac7f32819e7e55aa91de7e6c58e1b0566e85984adbdc9fa105871f19f6ed21a"
+    },
+    {
+      "slide": 2,
+      "path": "office-slide-2.png",
+      "bytes": 16711,
+      "sha256": "f5e9422c9c7901afdc8903207bbe9f63331c8425ce9b6a8333e7cedf951897e1"
+    },
+    {
+      "slide": 3,
+      "path": "office-slide-3.png",
+      "bytes": 21442,
+      "sha256": "851a5b354f5f4548867c8fe4ad0cda9513f6551f14a1fcf386b77362c7d38987"
+    },
+    {
+      "slide": 4,
+      "path": "office-slide-4.png",
+      "bytes": 25956,
+      "sha256": "3f61be3a33dcc07a03dba0e9ed97ea91fde0959e0c5db1d976a1b5cc3e80fbf3"
+    },
+    {
+      "slide": 5,
+      "path": "office-slide-5.png",
+      "bytes": 26418,
+      "sha256": "6e4f386bde7f22ed8c40f1911ddf2fe648652b927a79eaa552b58dbf43efb17b"
+    }
+  ],
+  "editedTableReopened": true,
+  "editedChartReopened": true,
+  "originalMathCount": 5,
+  "roundtripMathCount": 5,
+  "error": null
+}
