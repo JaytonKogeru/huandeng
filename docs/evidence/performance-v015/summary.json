@@ -1,0 +1,510 @@
+{
+  "sourceHead": "07c58c573da60fc841ed7e463272bb244e3ee87d",
+  "runtimeSource": "100659c513161356413eb9ef3707f6e772a64897",
+  "date": "2026-11-10",
+  "upstream": [
+    {
+      "license": "Apache-2.0",
+      "sourceRevision": "9af2b47dda31060d3d5070e020a0825b15c94b32",
+      "repository": "presenton/presenton",
+      "checkedAt": "2026-11-09T13:54:03.6415166Z",
+      "defaultBranch": "main"
+    },
+    {
+      "license": "AGPL-3.0",
+      "sourceRevision": "6907580cce33914a4c58be03e13ac0c332d8b5e9",
+      "repository": "pipipi-pikachu/PPTist",
+      "checkedAt": "2026-11-09T13:54:04.3885419Z",
+      "defaultBranch": "master"
+    },
+    {
+      "license": "MIT",
+      "sourceRevision": "437f139ccd4c8482a193b217922e7800a5b3baec",
+      "repository": "slidevjs/slidev",
+      "checkedAt": "2026-11-09T13:54:04.9982013Z",
+      "defaultBranch": "main"
+    },
+    {
+      "license": "MIT",
+      "sourceRevision": "9dacac53ac9ef39346461063df729396551d929e",
+      "repository": "icip-cas/PPTAgent",
+      "checkedAt": "2026-11-09T13:54:05.669816Z",
+      "defaultBranch": "main"
+    },
+    {
+      "license": "MIT",
+      "sourceRevision": "3c6ffd0ee6d6e31aa9ca316bd157173802e3526f",
+      "repository": "hugohe3/ppt-master",
+      "checkedAt": "2026-11-09T13:54:06.3395579Z",
+      "defaultBranch": "main"
+    },
+    {
+      "license": "MIT",
+      "sourceRevision": "3c9ec1b687c174952166f6a34b5e87ebf69fa469",
+      "repository": "gitbrent/PptxGenJS",
+      "checkedAt": "2026-11-09T13:54:07.0383428Z",
+      "defaultBranch": "master"
+    }
+  ],
+  "decks": [
+    {
+      "interactions": {
+        "view-notes": {
+          "maxMs": 65.9,
+          "medianMs": 53.45,
+          "count": 10,
+          "p95Ms": 65.9,
+          "minMs": 38.5
+        },
+        "view-edit": {
+          "maxMs": 84.7,
+          "medianMs": 70.6,
+          "count": 13,
+          "p95Ms": 84.7,
+          "minMs": 59.9
+        },
+        "notes-input": {
+          "maxMs": 51.9,
+          "medianMs": 44.3,
+          "count": 4,
+          "p95Ms": 51.9,
+          "minMs": 40.2
+        },
+        "view-browse": {
+          "maxMs": 219.0,
+          "medianMs": 101.7,
+          "count": 12,
+          "p95Ms": 219.0,
+          "minMs": 86.6
+        },
+        "search-no-result": {
+          "maxMs": 37.1,
+          "medianMs": 34.1,
+          "count": 3,
+          "p95Ms": 37.1,
+          "minMs": 31.4
+        },
+        "search-clear": {
+          "maxMs": 161.8,
+          "medianMs": 130.3,
+          "count": 3,
+          "p95Ms": 161.8,
+          "minMs": 47.8
+        },
+        "select-slide": {
+          "maxMs": 272.6,
+          "medianMs": 143.8,
+          "count": 21,
+          "p95Ms": 207.3,
+          "minMs": 117.7
+        }
+      },
+      "idleMainThreadSeconds": [
+        0.0008249999999998536, 0.0007440000000000779, 0.0015200000000001879
+      ],
+      "startup": {
+        "maxMs": 4545.83,
+        "medianMs": 4461.83,
+        "count": 3,
+        "p95Ms": 4545.83,
+        "minMs": 4353.38
+      },
+      "cpu": "AMD Ryzen 7 8845H w/ Radeon 780M Graphics",
+      "assetHeaders": {
+        "maxMs": 695.3,
+        "medianMs": 68.74,
+        "count": 37,
+        "p95Ms": 607.15,
+        "minMs": 3.66
+      },
+      "imageDrainWaitMs": 1.45,
+      "originalSourcesUnchanged": true,
+      "stages": [
+        {
+          "jsHeapMiB": 11.62,
+          "summedProcessWorkingSetMiB": 856.82,
+          "dom": {
+            "nodes": 1392,
+            "pageRenderers": 7,
+            "railRenderers": 6,
+            "browserRenderers": 0,
+            "browserCards": 0,
+            "images": 12,
+            "pendingImages": 0
+          },
+          "name": "edit-initial"
+        },
+        {
+          "jsHeapMiB": 32.45,
+          "summedProcessWorkingSetMiB": 942.93,
+          "dom": {
+            "nodes": 1392,
+            "pageRenderers": 7,
+            "railRenderers": 6,
+            "browserRenderers": 0,
+            "browserCards": 0,
+            "images": 12,
+            "pendingImages": 0
+          },
+          "name": "edit-after-navigation"
+        },
+        {
+          "jsHeapMiB": 37.48,
+          "summedProcessWorkingSetMiB": 961.58,
+          "dom": {
+            "nodes": 2227,
+            "pageRenderers": 15,
+            "railRenderers": 6,
+            "browserRenderers": 9,
+            "browserCards": 26,
+            "images": 24,
+            "pendingImages": 0
+          },
+          "name": "browse-first-screen"
+        },
+        {
+          "jsHeapMiB": 15.64,
+          "summedProcessWorkingSetMiB": 979.86,
+          "dom": {
+            "nodes": 3486,
+            "pageRenderers": 32,
+            "railRenderers": 6,
+            "browserRenderers": 26,
+            "browserCards": 26,
+            "images": 36,
+            "pendingImages": 0
+          },
+          "name": "browse-after-pass-1"
+        },
+        {
+          "jsHeapMiB": 16.21,
+          "summedProcessWorkingSetMiB": 978.73,
+          "dom": {
+            "nodes": 3486,
+            "pageRenderers": 32,
+            "railRenderers": 6,
+            "browserRenderers": 26,
+            "browserCards": 26,
+            "images": 36,
+            "pendingImages": 0
+          },
+          "name": "browse-after-pass-2"
+        },
+        {
+          "jsHeapMiB": 16.23,
+          "summedProcessWorkingSetMiB": 978.73,
+          "dom": {
+            "nodes": 3486,
+            "pageRenderers": 32,
+            "railRenderers": 6,
+            "browserRenderers": 26,
+            "browserCards": 26,
+            "images": 36,
+            "pendingImages": 0
+          },
+          "name": "browse-after-image-wait"
+        },
+        {
+          "jsHeapMiB": 33.57,
+          "summedProcessWorkingSetMiB": 1096.55,
+          "dom": {
+            "nodes": 1392,
+            "pageRenderers": 7,
+            "railRenderers": 6,
+            "browserRenderers": 0,
+            "browserCards": 0,
+            "images": 12,
+            "pendingImages": 0
+          },
+          "name": "edit-after-view-cycles"
+        }
+      ],
+      "assetErrors": 0,
+      "pages": 26,
+      "saveInputToDisk": {
+        "maxMs": 858.4,
+        "medianMs": 852.7,
+        "count": 4,
+        "p95Ms": 858.4,
+        "minMs": 840.9
+      },
+      "objects": 268,
+      "label": "Deck A",
+      "requests": {
+        "current": {
+          "bytes": [162221],
+          "timing": {
+            "maxMs": 34.9,
+            "medianMs": 12.38,
+            "count": 9,
+            "p95Ms": 34.9,
+            "minMs": 9.51
+          }
+        },
+        "session": {
+          "bytes": [162221],
+          "timing": {
+            "maxMs": 130.94,
+            "medianMs": 38.56,
+            "count": 9,
+            "p95Ms": 130.94,
+            "minMs": 34.78
+          }
+        },
+        "history": {
+          "bytes": [2],
+          "timing": {
+            "maxMs": 4.84,
+            "medianMs": 3.53,
+            "count": 9,
+            "p95Ms": 4.84,
+            "minMs": 2.13
+          }
+        }
+      },
+      "freeGiBRange": [1.8631706237792969, 2.1787338256835938],
+      "totalGiB": 31.3,
+      "saveTransactionHeaders": {
+        "maxMs": 115.5,
+        "medianMs": 105.93,
+        "count": 4,
+        "p95Ms": 115.5,
+        "minMs": 87.73
+      },
+      "rendererErrors": 0,
+      "assetResponseCount": 37,
+      "scrollLongTaskCount": 0,
+      "maxScrollLongTaskMs": null
+    },
+    {
+      "interactions": {
+        "view-notes": {
+          "maxMs": 97.1,
+          "medianMs": 86.15,
+          "count": 10,
+          "p95Ms": 97.1,
+          "minMs": 78.4
+        },
+        "view-edit": {
+          "maxMs": 149.1,
+          "medianMs": 121.4,
+          "count": 13,
+          "p95Ms": 149.1,
+          "minMs": 114.9
+        },
+        "notes-input": {
+          "maxMs": 91.8,
+          "medianMs": 84.6,
+          "count": 4,
+          "p95Ms": 91.8,
+          "minMs": 76.2
+        },
+        "view-browse": {
+          "maxMs": 331.4,
+          "medianMs": 250.8,
+          "count": 12,
+          "p95Ms": 331.4,
+          "minMs": 222.0
+        },
+        "search-no-result": {
+          "maxMs": 87.5,
+          "medianMs": 81.5,
+          "count": 3,
+          "p95Ms": 87.5,
+          "minMs": 78.6
+        },
+        "search-clear": {
+          "maxMs": 183.4,
+          "medianMs": 178.3,
+          "count": 3,
+          "p95Ms": 183.4,
+          "minMs": 168.2
+        },
+        "select-slide": {
+          "maxMs": 558.1,
+          "medianMs": 313.3,
+          "count": 21,
+          "p95Ms": 530.5,
+          "minMs": 192.8
+        }
+      },
+      "idleMainThreadSeconds": [
+        0.0013889999999996405, 0.0007989999999988839, 0.00023499999999998522
+      ],
+      "startup": {
+        "maxMs": 7013.78,
+        "medianMs": 6312.15,
+        "count": 3,
+        "p95Ms": 7013.78,
+        "minMs": 5828.72
+      },
+      "cpu": "AMD Ryzen 7 8845H w/ Radeon 780M Graphics",
+      "assetHeaders": {
+        "maxMs": 6473.3,
+        "medianMs": 1151.25,
+        "count": 195,
+        "p95Ms": 6287.24,
+        "minMs": 6.26
+      },
+      "imageDrainWaitMs": 2979.38,
+      "originalSourcesUnchanged": true,
+      "stages": [
+        {
+          "jsHeapMiB": 22.16,
+          "summedProcessWorkingSetMiB": 893.28,
+          "dom": {
+            "nodes": 2543,
+            "pageRenderers": 6,
+            "railRenderers": 5,
+            "browserRenderers": 0,
+            "browserCards": 0,
+            "images": 7,
+            "pendingImages": 0
+          },
+          "name": "edit-initial"
+        },
+        {
+          "jsHeapMiB": 79.92,
+          "summedProcessWorkingSetMiB": 1053.89,
+          "dom": {
+            "nodes": 2543,
+            "pageRenderers": 6,
+            "railRenderers": 5,
+            "browserRenderers": 0,
+            "browserCards": 0,
+            "images": 7,
+            "pendingImages": 0
+          },
+          "name": "edit-after-navigation"
+        },
+        {
+          "jsHeapMiB": 23.56,
+          "summedProcessWorkingSetMiB": 1069.95,
+          "dom": {
+            "nodes": 4422,
+            "pageRenderers": 11,
+            "railRenderers": 5,
+            "browserRenderers": 6,
+            "browserCards": 92,
+            "images": 14,
+            "pendingImages": 0
+          },
+          "name": "browse-first-screen"
+        },
+        {
+          "jsHeapMiB": 39.51,
+          "summedProcessWorkingSetMiB": 1163.71,
+          "dom": {
+            "nodes": 12963,
+            "pageRenderers": 97,
+            "railRenderers": 5,
+            "browserRenderers": 92,
+            "browserCards": 92,
+            "images": 286,
+            "pendingImages": 80
+          },
+          "name": "browse-after-pass-1"
+        },
+        {
+          "jsHeapMiB": 43.79,
+          "summedProcessWorkingSetMiB": 1189.91,
+          "dom": {
+            "nodes": 12963,
+            "pageRenderers": 97,
+            "railRenderers": 5,
+            "browserRenderers": 92,
+            "browserCards": 92,
+            "images": 286,
+            "pendingImages": 44
+          },
+          "name": "browse-after-pass-2"
+        },
+        {
+          "jsHeapMiB": 44.32,
+          "summedProcessWorkingSetMiB": 1189.0,
+          "dom": {
+            "nodes": 12963,
+            "pageRenderers": 97,
+            "railRenderers": 5,
+            "browserRenderers": 92,
+            "browserCards": 92,
+            "images": 286,
+            "pendingImages": 0
+          },
+          "name": "browse-after-image-wait"
+        },
+        {
+          "jsHeapMiB": 70.64,
+          "summedProcessWorkingSetMiB": 1200.49,
+          "dom": {
+            "nodes": 2543,
+            "pageRenderers": 6,
+            "railRenderers": 5,
+            "browserRenderers": 0,
+            "browserCards": 0,
+            "images": 7,
+            "pendingImages": 0
+          },
+          "name": "edit-after-view-cycles"
+        }
+      ],
+      "assetErrors": 0,
+      "pages": 92,
+      "saveInputToDisk": {
+        "maxMs": 1058.4,
+        "medianMs": 960.2,
+        "count": 4,
+        "p95Ms": 1058.4,
+        "minMs": 954.2
+      },
+      "objects": 1681,
+      "label": "Deck B",
+      "requests": {
+        "current": {
+          "bytes": [896108],
+          "timing": {
+            "maxMs": 64.48,
+            "medianMs": 56.96,
+            "count": 9,
+            "p95Ms": 64.48,
+            "minMs": 32.57
+          }
+        },
+        "session": {
+          "bytes": [896108],
+          "timing": {
+            "maxMs": 203.97,
+            "medianMs": 168.72,
+            "count": 9,
+            "p95Ms": 203.97,
+            "minMs": 128.42
+          }
+        },
+        "history": {
+          "bytes": [2],
+          "timing": {
+            "maxMs": 4.49,
+            "medianMs": 3.16,
+            "count": 9,
+            "p95Ms": 4.49,
+            "minMs": 1.66
+          }
+        }
+      },
+      "freeGiBRange": [1.859466552734375, 2.036334991455078],
+      "totalGiB": 31.3,
+      "saveTransactionHeaders": {
+        "maxMs": 272.45,
+        "medianMs": 217.61,
+        "count": 4,
+        "p95Ms": 272.45,
+        "minMs": 204.64
+      },
+      "rendererErrors": 0,
+      "assetResponseCount": 195,
+      "scrollLongTaskCount": 36,
+      "maxScrollLongTaskMs": 120.0
+    }
+  ],
+  "acceptedRuns": "2, 3, 4; run 1 excluded from latency aggregates because completion timing included automation roundtrips"
+}
