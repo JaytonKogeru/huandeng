@@ -304,9 +304,11 @@ try {
       const held = new Promise((resolve) => {
         release = resolve;
       });
-      const holdTransaction = async (route) => {
-        await held;
-        await route.continue();
+      const routedTransactions = [];
+      const holdTransaction = (route) => {
+        const continuation = held.then(() => route.continue());
+        routedTransactions.push(continuation);
+        return continuation;
       };
       await page.route('**/__pptd/transactions', holdTransaction);
       try {
@@ -334,6 +336,7 @@ try {
         await capture('review-projected-zh');
       } finally {
         release();
+        await Promise.all(routedTransactions);
         await page.unroute('**/__pptd/transactions', holdTransaction);
       }
       await reviewState('stale');
