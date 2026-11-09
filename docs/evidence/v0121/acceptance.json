@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "editorVersion": "0.12.1",
+  "clientPluginVersion": "0.12.1",
+  "runtime": {
+    "electronVersion": "38.7.2",
+    "desktopProtocol": 1,
+    "builtAt": "2026-11-08T23:57:51.4525420Z",
+    "sourceDirty": false,
+    "productVersion": "0.12.1",
+    "nodeLinker": "hoisted",
+    "product": "HUANDENG Editor",
+    "sourceRevision": "c82b36885ed125c348b3a5e110aff141f221d515"
+  },
+  "sourceGates": {
+    "unitFiles": 100,
+    "unitPassed": 1102,
+    "unitSkipped": 1,
+    "unitSeconds": 72.73,
+    "coreTypecheck": true,
+    "biomeFiles": 753,
+    "productionBuild": true
+  },
+  "package": {
+    "seconds": 79.7,
+    "portable": true
+  },
+  "packagedUi": {
+    "harness": "verify-authoring-v0121",
+    "passed": true,
+    "seconds": 34.92,
+    "desktopAppOverride": null,
+    "launchCount": 2,
+    "exits": [
+      {
+        "launch": 1,
+        "code": 0,
+        "signal": null
+      },
+      {
+        "launch": 2,
+        "code": 0,
+        "signal": null
+      }
+    ],
+    "checks": [
+      {
+        "name": "keyboard text selection has a readable blue background and preserves artwork",
+        "passed": true,
+        "milliseconds": 844
+      },
+      {
+        "name": "folded Section shows its first Slide as a card stack and keeps the viewport anchor",
+        "passed": true,
+        "milliseconds": 541
+      },
+      {
+        "name": "Create Section is available before an existing Section and at the end, with atomic cover Undo",
+        "passed": true,
+        "milliseconds": 2870
+      },
+      {
+        "name": "named page checkpoints appear in Page Version History and contain saved artwork",
+        "passed": true,
+        "milliseconds": 1117
+      },
+      {
+        "name": "Hide slide preserves editable pages and order, supports Undo, and skips hidden playback",
+        "passed": true,
+        "milliseconds": 2316
+      },
+      {
+        "name": "PDF and PPTX skip hidden slides by default and allow explicit inclusion; PNG still renders the hidden page",
+        "passed": true,
+        "milliseconds": 11726
+      },
+      {
+        "name": "normal reopen retains hidden state, checkpoints and Section structure; Show slide reverses hiding",
+        "passed": true,
+        "milliseconds": 7794
+      }
+    ],
+    "rendererErrors": []
+  },
+  "independentReview": {
+    "blockingDefects": 0,
+    "pinnedVisibilityExecutionPassed": true,
+    "archiveUnchanged": true,
+    "changedContentPrivacyScanPassed": true
+  },
+  "installation": {
+    "passed": true,
+    "normalCloseExitCode": 0,
+    "installedManifestMatchesCandidate": true,
+    "previousVersionPreserved": true,
+    "originalsUnchangedAfterClose": true,
+    "fixtureUnchanged": true,
+    "ordinaryProfileVerified": true,
+    "productionFrontend": true,
+    "frontendBytesMatchPackage": true,
+    "writable": true,
+    "protocolVerified": true,
+    "toolCount": 18,
+    "guideCount": 2,
+    "modelTaskVerified": false
+  },
+  "syntheticScreenshots": {
+    "selection.png": "7c50353b2ee654210797836338dbe9fca9883daa5cfe5aa3d316e638f8a1d93e",
+    "folded-section.png": "845770248aebfe8f0cb0e3e1009ac897cbaea7857dc2d54af3692f884734b6af",
+    "page-version.png": "3ee736c8eea8c0b97eea7ad60b1ca142efe1827c7f113ef92dd462606c6e4d5a",
+    "hidden-export.png": "762e6a043366e60f106460bf22e0494798f25c455add7fc1fc045880aee8ea82"
+  }
+}

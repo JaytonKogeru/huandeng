@@ -1,10 +1,20 @@
 # HUANDENG Editor
 
-## Objective and accepted v0.12 runtime
+## Accepted Editor 0.12.1 patch
+
+Current accepted and installed Editor: **0.12.1**, clean runtime `c82b36885ed125c348b3a5e110aff141f221d515`, built `2026-11-08T23:57:51.4525420Z`. Existing portable client plugin remains **0.12.1**. Read `docs/AUTHORING-V0121.md`, `VALIDATION-V0121`, `RELEASE-V0121` and `HANDOFF-V0121`. The later delivery-only commit records documentation/evidence and does not rebuild the runtime. Verify actual origin refs for tag `editor-v0.12.1`.
+
+This patch adds readable text selection, folded Section card edges, atomic new covers at every Main gap, and reversible Hide/Show slide. Main visibility governs live and pinned appearances; collection PDF/PPTX/MP4 skip hidden Slides unless explicitly included, while direct single-page output remains available. `metadata.hidden` is current organization state and survives artwork restore. Optional `page.add.section` creates the cover and boundary atomically while preserving old range/member semantics. Existing named Page Versions remain explicit, portable milestones.
+
+All 1,102 units passed with one existing platform skip across 100 files; core TypeScript, Biome 753 files and production build passed. Clean packaging passed in 79.70 seconds; the exact package passed seven synthetic UI groups in 34.92 seconds, two launches/two normal exits and no renderer errors. Independent review found no blocker and separately exercised current visibility on repeated pinned artwork. Guarded installation retained the previous package, preserved current private files and ordinary settings, matched installed bytes, reopened a fresh writable production service and passed the 18-tool/two-guide local client doctor. Raw receipts and Project inventories stay private. Public evidence is allowlisted and synthetic.
+
+Windows worktree: `D:/_Proj/Huandeng-v0121-20261109`, branch `editor/v0.12.1-authoring`; canonical checkout remains `D:/_Proj/Huandeng`. Preserve the unrelated modified canonical fixture. The invariants below remain in force; older version counts/identity describe the preceding baseline.
+
+## Objective and preceding v0.12 baseline
 
 HUANDENG is the user's scientific React/Electron PPTD editor with one shared GUI/CLI/MCP writer. Preserve upstream attribution. The user authorizes autonomous Audit → Spec → Implementation → Validation → Release, Windows installation and significant private-origin editor milestones. Use independent subagent reviews and real user journeys. English is the default; existing preferences and core product vocabulary are retained. Private authoring content stays outside the editor repository. Do not add a reverse proxy or public tunnel.
 
-Current accepted and installed Editor: **0.12.0**, clean runtime `01780db2871d2eb516fcd7a00ccbcc43f666daa1`, built `2026-11-08T12:59:10.9221682Z`. Portable client plugin: **0.12.1**. Read `docs/AUDIT-V012.md`, `SPEC-V012`, `IMPLEMENTATION-V012`, `VALIDATION-V012`, `RELEASE-V012`, `HANDOFF-V012` and `WORKFLOW-V012`. Runtime identity and the separate documentation/evidence delivery commit must remain distinct. Release tag: `editor-v0.12.0`; verify actual remote refs before asserting a later delivery state.
+Previous accepted baseline: **0.12.0**, clean runtime `01780db2871d2eb516fcd7a00ccbcc43f666daa1`, built `2026-11-08T12:59:10.9221682Z`. Portable client plugin: **0.12.1**. Read `docs/AUDIT-V012.md`, `SPEC-V012`, `IMPLEMENTATION-V012`, `VALIDATION-V012`, `RELEASE-V012`, `HANDOFF-V012` and `WORKFLOW-V012`. Runtime identity and the separate documentation/evidence delivery commit must remain distinct. Release tag: `editor-v0.12.0`; verify actual remote refs before asserting a later delivery state.
 
 All source gates passed: 47 focused editor tests; 99 unit files with 1,096 passed and one platform skip; eight plugin tests; five TypeScript tasks; Biome 748 files; production build. Clean packaging passed in 60.361 seconds. The exact package passed 8/8 UI groups in 30.866 seconds, two normal exits and zero renderer errors. Guarded ordinary-profile installation, retained previous application, protected originals/fixture, production frontend/service identity and installed 18-tool/two-guide connection checks passed. Authorized private authoring, native export and independent visual review also passed; private counts, structure, content, IDs, source citations, paths, images and detailed receipts must not enter this repository.
 
@@ -12,7 +22,7 @@ The first full unit attempt exposed two physical React 19.2.8 instances under a 
 
 ## v0.12 contracts
 
-Sections retain stored stable IDs and derive Positions from Main order. Only one explicit `frontMatter:true` Section may display 00; it must be nonempty, contiguous and begin at Main Position 1; ordinary Sections start 01. Pages, Project, pickers and briefing share numbering. Gap Create Section uses the next existing Slide through the next boundary and shared CAS/Undo; no cover is added. Revalidate fresh neighboring IDs after flushing edits and reject incompatible Project drafts.
+Sections retain stored stable IDs and derive Positions from Main order. Only one explicit `frontMatter:true` Section may display 00; it must be nonempty, contiguous and begin at Main Position 1; ordinary Sections start 01. Pages, Project, pickers and briefing share numbering. Gap Create Section can use the next existing Slide through the next boundary inside a Section. Before an existing boundary or at deck end it inserts a new cover and boundary atomically; an optional new cover is also available inside a Section. All routes retain shared CAS/Undo. Revalidate fresh neighboring IDs after flushing edits and reject incompatible Project drafts.
 
 Folding restores the clicked heading's viewport anchor. Selected-Slide scrolling responds to selection, page-order and search changes; Section folding alone does not trigger it. Drag supports upper/lower thumbnail halves, exact gaps, visible insertion feedback and edge scrolling. Inline formatting preserves a range across scoped portal focus, IME and existing Undo; applying already-sanitized styles to semantic tags is necessary after saving. Ctrl/Meta-wheel zoom remains pointer-anchored and canvas-scoped, preserving ordinary/Shift scrolling.
 
