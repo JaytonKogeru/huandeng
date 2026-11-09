@@ -98,12 +98,13 @@ huandeng --entry /path/deck.pptd brief
 huandeng --entry /path/deck.pptd brief PAGE_UUID --presentation talk --occurrence OCCURRENCE_ID
 huandeng --entry /path/deck.pptd preview /path/proposal.json
 huandeng --entry /path/deck.pptd apply /path/proposal.json --preview-hash sha256:RETURNED_HASH
+huandeng --entry /path/deck.pptd review RETURNED_OPERATION_ID --page PAGE_UUID
 huandeng --entry /path/deck.pptd render PAGE_UUID
 ```
 
 ## Tool surface
 
-The bridge advertises 20 tools. Legacy `huanding_*` names and `huandeng_frame_record` still dispatch without being advertised twice.
+The v0.14 bridge advertises 21 tools. Legacy `huanding_*` names and `huandeng_frame_record` still dispatch without being advertised twice.
 
 | Tool | Purpose |
 | --- | --- |
@@ -120,6 +121,7 @@ The bridge advertises 20 tools. Legacy `huanding_*` names and `huandeng_frame_re
 | `huandeng_apply` | Shared writer, optional preview hash, CAS and idempotence |
 | `huandeng_render` | Committed Main or exact occurrence PNG |
 | `huandeng_history` | Named versions and granular operations |
+| `huandeng_review` | Exact saved-operation before/after data and bounded changes; read-only |
 | `huandeng_version_record` | Named milestone with archived local assets |
 | `huandeng_version_restore` | Restore through a new transaction |
 | `huandeng_revert` | Conflict-checked operation undo |
@@ -153,3 +155,7 @@ Source formats and native installation are documented by [OpenAI](https://develo
 The runtime exposes `huandeng_activity_read` and `huandeng_activity_report` for explicit per-Project task stages. Each conversation keeps its own session ID and explicit PPTD entry; a visible tab switch does not reroute it. Shared-writer save receipts are distinct from client reports.
 
 The authoring skill now requires inspection of approved reference pages, concrete typography and spacing, evidence-preserving composition, actual rendered review, and meaningful versions only for changed pages. See `skills/huandeng-story/references/scientific-design.md`.
+
+Editor v0.14 connects Layout preview → shared-writer save → Activity receipt → visual Before/After review → current-page/object navigation. The Layout task uses project image thumbnails and a full composed preview. The review dialog uses the actual page renderer and distinguishes live and pinned usage. Current-asset and fallback-theme limitations remain visible; unavailable history is never replaced with the current page.
+
+Clients can include up to 20 exact `operationIds` in a progress report. These are explicit claims resolved against this Project's journal, not timestamp associations. See `skills/huandeng-story/references/connected-review.md` for the complete workflow and the separate levels of setup, protocol, save, structure, rendering, export and human approval.

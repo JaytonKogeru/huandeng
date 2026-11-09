@@ -12,6 +12,7 @@ export const commonFiles = [
   'skills/huandeng-story/agents/openai.yaml',
   'skills/huandeng-story/references/client-routing.md',
   'skills/huandeng-story/references/scientific-design.md',
+  'skills/huandeng-story/references/connected-review.md',
   'scripts/runtime.mjs',
   'scripts/discovery.mjs',
   'scripts/discover.mjs',
