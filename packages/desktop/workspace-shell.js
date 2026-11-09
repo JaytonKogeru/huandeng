@@ -48,7 +48,7 @@ function render(state) {
         : project.dirty
           ? label('Unsaved drafts', '未保存草稿')
           : project.activity
-            ? label('Agent active', 'Agent 正在执行')
+            ? label('Client reported activity', '客户端已报告活动')
             : '';
     const title = document.createElement('span');
     title.className = 'project-title';

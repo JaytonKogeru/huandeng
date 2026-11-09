@@ -1,10 +1,22 @@
 :root {
+  --shell-surface: light-dark(#e9ecea, #171b19);
+  --shell-content: light-dark(#242826, #e6ebe7);
+  --shell-selected: light-dark(#fcfcfb, #252b27);
+  --shell-hover: light-dark(#dde4df, #303a33);
+  --shell-border: light-dark(#d9e0da, #455047);
+  --shell-focus: light-dark(#3d7860, #91bda6);
   font:
-    12px Arial,
+    12px "Geist Variable",
+    "Segoe UI",
+    -apple-system,
+    BlinkMacSystemFont,
+    "PingFang SC",
+    "Microsoft YaHei UI",
+    "Microsoft YaHei",
     sans-serif;
-  color: #242927;
-  background: #e9ece9;
-  color-scheme: light;
+  color: var(--shell-content);
+  background: var(--shell-surface);
+  color-scheme: light dark;
 }
 * {
   box-sizing: border-box;
@@ -37,11 +49,11 @@ button {
   -webkit-app-region: no-drag;
 }
 button:focus-visible {
-  outline: 2px solid #3266b1;
+  outline: 2px solid var(--shell-focus);
   outline-offset: -2px;
 }
 button:hover {
-  background: #dde2dd;
+  background: var(--shell-hover);
 }
 .home,
 .open {
@@ -54,7 +66,7 @@ button:hover {
   place-items: center;
 }
 .home[aria-pressed="true"] {
-  background: white;
+  background: var(--shell-selected);
 }
 svg {
   width: 16px;
@@ -88,15 +100,16 @@ svg {
   cursor: pointer;
 }
 .project-tab:hover {
-  background: #e0e5e0;
+  background: var(--shell-hover);
 }
 .project-tab[aria-selected="true"] {
-  background: #fff;
-  border-color: #d9dfd9;
+  background: var(--shell-selected);
+  border-color: var(--shell-border);
+  font-weight: 600;
   box-shadow: 0 -1px 3px #18271d08;
 }
 .project-tab:focus-visible {
-  outline: 2px solid #3266b1;
+  outline: 2px solid var(--shell-focus);
   outline-offset: -2px;
 }
 .project-title {
@@ -113,14 +126,14 @@ svg {
   background: transparent;
 }
 .project-state[data-state="dirty"] {
-  background: #967a35;
+  background: light-dark(#967a35, #d4b465);
 }
 .project-state[data-state="saving"],
 .project-state[data-state="activity"] {
-  background: #346f96;
+  background: light-dark(#346f96, #79b4db);
 }
 .project-state[data-state="attention"] {
-  background: #b95336;
+  background: light-dark(#b95336, #ef957b);
 }
 .close {
   display: grid;
@@ -143,6 +156,6 @@ svg {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  color: #75512a;
+  color: light-dark(#75512a, #dbb17f);
   padding-right: 8px;
 }

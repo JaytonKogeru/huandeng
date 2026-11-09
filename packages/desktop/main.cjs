@@ -5,7 +5,16 @@ const {
   setCurrentLocale,
   resolveLocale,
 } = require('./locale.cjs');
-const { app, BrowserWindow, WebContentsView, dialog, ipcMain, Menu, shell } = require('electron');
+const {
+  app,
+  BrowserWindow,
+  WebContentsView,
+  dialog,
+  ipcMain,
+  Menu,
+  nativeTheme,
+  shell,
+} = require('electron');
 const { randomUUID } = require('node:crypto');
 const fs = require('node:fs/promises');
 const path = require('node:path');
@@ -830,6 +839,10 @@ function registerIpc() {
 }
 async function createWindow() {
   const bounds = preferences.windowBounds ?? {};
+  const chromeColors = () =>
+    nativeTheme.shouldUseDarkColors
+      ? { color: '#171b19', symbolColor: '#e6ebe7' }
+      : { color: '#e9ecea', symbolColor: '#242826' };
   window = new BrowserWindow({
     width: bounds.width ?? 1440,
     height: bounds.height ?? 920,
@@ -837,18 +850,25 @@ async function createWindow() {
     minWidth: 1040,
     minHeight: 680,
     title: 'HUANDENG Editor',
-    backgroundColor: '#e9ece9',
+    backgroundColor: chromeColors().color,
     icon: path.join(__dirname, process.platform === 'win32' ? 'icon.ico' : 'icon.png'),
     show: false,
     autoHideMenuBar: true,
     ...(process.platform === 'win32'
       ? {
           titleBarStyle: 'hidden',
-          titleBarOverlay: { color: '#e9ece9', symbolColor: '#242927', height: 41 },
+          titleBarOverlay: { ...chromeColors(), height: 41 },
         }
       : {}),
     webPreferences: webPreferences(),
   });
+  const updateChrome = () => {
+    if (!window || window.isDestroyed()) return;
+    window.setBackgroundColor(chromeColors().color);
+    if (process.platform === 'win32') window.setTitleBarOverlay({ ...chromeColors(), height: 41 });
+  };
+  nativeTheme.on('updated', updateChrome);
+  window.once('closed', () => nativeTheme.removeListener('updated', updateChrome));
   configureContents(window.webContents);
   homeView = new WebContentsView({ webPreferences: webPreferences() });
   configureContents(homeView.webContents);
