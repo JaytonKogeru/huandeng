@@ -5,8 +5,9 @@
       "id": "one",
       "slides": 2,
       "notes": 2,
-      "bytes": 12253,
-      "sha256": "020a766d3852492a7aaf677a6e6bbd70d34bfe9f91ed5b64ea2bb7a28027c020",
+      "bytes": 12254,
+      "sha256": "05da7a902f2a40d4412ae5c8812b9b93c460b89063bb3e728aaa91c58a2e7aa9",
+      "contentSha256": "2114bbe28a383aaffa328c4acb217fedae5f72fa0282fc37d7141339af1feed3",
       "sourceUnchanged": true,
       "nativeReportErrors": 0,
       "file": "synthetic-project-one/Exports/deck.pptx"
@@ -15,8 +16,9 @@
       "id": "two",
       "slides": 2,
       "notes": 2,
-      "bytes": 12251,
-      "sha256": "d0079b54283f29107ebe6aafa97798401b70fd7183794416e970cc78b9bf4522",
+      "bytes": 12252,
+      "sha256": "36143373c5013f5d926177ff3bb8fbe333e6e155cc8faa871e52d33fe44caf28",
+      "contentSha256": "9bf48a6ddbb3afa551d0ee71b7aa4065bfb9bd14a44b7d40458f87334108399f",
       "sourceUnchanged": true,
       "nativeReportErrors": 0,
       "file": "synthetic-project-two/Exports/deck.pptx"
@@ -25,6 +27,6 @@
   "hiddenExcluded": true,
   "notesRetained": true,
   "unchangedSourcesSkipped": true,
-  "publisherModuleSha256": "e08518059c52394901b81f427e788eeeb0b9cfb7de504710ec82880b03219317",
-  "initialEnvironmentFailure": "First synthetic run could not bind a Windows-reserved writer-lock port (EACCES). A fresh isolated fixture run passed; production locking was not bypassed."
+  "publisherModuleSha256": "78cd8ba37ff296d4ed3afcf7f9ce1874799406d41192bd3363fd14ab51886296",
+  "priorEnvironmentFailure": "An earlier 0.13 synthetic run could not bind a Windows-reserved writer-lock port (EACCES). A fresh isolated fixture run passed; production locking was not bypassed."
 }

@@ -6,7 +6,7 @@ HUANDENG Editor 基于 OpenSlide 的 React 编辑环境，使用 PPTD 文档后�
 
 ## 当前阶段
 
-当前已验收版本为 **[v0.13.0：多 Project 工作区、Outline 与静默交付](docs/RELEASE-V013.md)**。清洁运行时源码为 `886d646`，正式包构建于 `2026-11-09T05:45:58.5461954Z`；客户端与 ChatGPT 私人 Plugin 为 **0.13.0**。运行时提交、文档交付提交和本机安装结果分别记录，见 [Validation](docs/VALIDATION-V013.md) 与 [Handoff](docs/HANDOFF-V013.md)。
+当前已验收版本为 **[v0.13.0：多 Project 工作区、Outline 与静默交付](docs/RELEASE-V013.md)**。清洁运行时源码为 `0a30f1e`，正式包构建于 `2026-11-09T06:18:33.3911264Z`；客户端与 ChatGPT 私人 Plugin 为 **0.13.0**。运行时提交、文档交付提交和本机安装结果分别记录，见 [Validation](docs/VALIDATION-V013.md) 与 [Handoff](docs/HANDOFF-V013.md)。
 
 桌面顶部以标签页保持多个 Project，Home 随时返回最近项目；切换时保留各自的画布、Story 和 Notes 草稿。Files 在中央文档标签页只读显示，Slides 标签始终保留。Pages 提供 Thumbnails / Outline 和 Section 管理入口；正常 Section 只使用 First Slide 到下一个 Section 的边界，旧成员形式保持兼容读取。折叠保留视口位置，卡片层叠增加适度阴影。
 
@@ -14,7 +14,7 @@ HUANDENG Editor 基于 OpenSlide 的 React 编辑环境，使用 PPTD 文档后�
 
 PPTX 先生成在 Project 的 `Exports/`，检查后更新固定共享副本；保存触发与静默定时兜底共用发布锁。Windows 文档关联与桌面快捷方式使用 HUANDENG 名称和透明图标。OneDrive 共享输出使用普通文件镜像，避免依赖其不支持同步的符号链接。见 [PPTX publishing](docs/PPTX-PUBLISHING.md)。
 
-本轮 **82 项聚焦单元测试（13 个文件）、5 项桌面恢复测试、11 项发布器回归、8 项客户端测试**通过。精确正式包通过 **14/14 工作区检查**，包含真实第二实例的 `--entry`、`--entry=value` 与含 Unicode／空格的路径参数，正常退出且无渲染错误；原生 PowerPoint 对合成 5 页文稿完成表格、图表编辑保存重开和公式保留验证。测试范围见 [Validation](docs/VALIDATION-V013.md) 与[合成证据索引](docs/evidence/v013/README.md)；历史版本的完整测试数不计为本轮重跑。
+本轮 **82 项聚焦单元测试（13 个文件）、5 项桌面恢复测试、17 项发布器回归、8 项客户端测试**通过。精确正式包通过 **14/14 工作区检查**，包含真实第二实例的 `--entry`、`--entry=value` 与含 Unicode／空格的路径参数，正常退出且无渲染错误；原生 PowerPoint 对合成 5 页文稿完成表格、图表编辑保存重开和公式保留验证。测试范围见 [Validation](docs/VALIDATION-V013.md) 与[合成证据索引](docs/evidence/v013/README.md)；历史版本的完整测试数不计为本轮重跑。
 
 Codex 与 Claude Code 的原生清单已确认 0.13.0 启用；DeepSeek Harness 的 0.13.0 独立 overlay 已创建。适配器查找本机 Editor，并核对明确选择的 Project；ChatGPT 私人包沿用已有授权工作站连接。账户插件更新、本机安装、连接 doctor 与真实模型任务分别验收。**Agent setup** 仍是配置生成入口。English 为默认界面，已有个人偏好保留；未增加反向代理或公网隧道。新的设计指南要求先参考批准的页面、保留证据图、使用具体版式并检查实际渲染。
 

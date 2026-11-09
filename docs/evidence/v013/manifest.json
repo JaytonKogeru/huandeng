@@ -1,11 +1,11 @@
 {
-  "runtimeSourceRevision": "886d6460cc3f690b2f153ba51a512e010d0dfb56",
+  "runtimeSourceRevision": "0a30f1e40b2b619bd04a9fac6cc63c30a0e84a70",
   "syntheticOnly": true,
   "files": [
     {
       "name": "01-central-files.png",
-      "bytes": 71509,
-      "sha256": "3b24c29956e3273ce710fc51438892feec908d7cf1f14d2916df79e9d71653b3"
+      "bytes": 71379,
+      "sha256": "088b16df805c8f20d29b6b535bd7c525ad24c8c046d38dda1c869ecd12427782"
     },
     {
       "name": "03-fullscreen.png",
@@ -14,8 +14,8 @@
     },
     {
       "name": "04-alpha-activity.png",
-      "bytes": 105538,
-      "sha256": "540da8bef10c4abb3e1399a8af44f03f90f779732f665b3f58a95f05718eb577"
+      "bytes": 105997,
+      "sha256": "22763edf57a89d526f1f44b5d2a81e874bc437689abe6a545a1c20b8a4dfb149"
     },
     {
       "name": "office-acceptance.json",
@@ -49,23 +49,23 @@
     },
     {
       "name": "outline-section-navigation.png",
-      "bytes": 67015,
-      "sha256": "27123937ee25c9c7291803ac3ee702645c998c3909c02a60e2182419d7f34044"
+      "bytes": 67104,
+      "sha256": "f903f05baf4f1745ca080ce0fe0e84bf55af4dc5f7e4f9b635dc87eabe13b133"
     },
     {
       "name": "publisher-acceptance.json",
-      "bytes": 993,
-      "sha256": "91a5da591267c8a0557e5109ddb2392e4f9ea848b0af44b764e5f4cfdec98422"
+      "bytes": 1183,
+      "sha256": "2533333e02d4477b3945f19fcbc501b91fd0d9c2f0f5b4774639890090117670"
     },
     {
       "name": "section-card-shadows.png",
-      "bytes": 68011,
-      "sha256": "4c8805d178bb3275ddd51c4a918068d0ea8b11d0f009ad5b14914d43118b6610"
+      "bytes": 67966,
+      "sha256": "012663987425749a2cdf6cb1cc1f8a0f499a49df95f3e7c1ced0bb4500d854ba"
     },
     {
       "name": "section-manager-first-slide.png",
-      "bytes": 150969,
-      "sha256": "bc958dcc194bb7aebec2bc92de96c6d8a3aa4fc34007375a7174f787a998d714"
+      "bytes": 150684,
+      "sha256": "ccc6bcdd225b1a1e18e8c93771dd2cc1156f259acb40d8d23ae5310f79b4ad46"
     },
     {
       "name": "strip-02-multiple-projects.png",
@@ -75,7 +75,7 @@
     {
       "name": "workspace-acceptance.json",
       "bytes": 4686,
-      "sha256": "a01e36cd07d74d334cbab0aa1e943d5e9be435b0488a26e1b84f5f32a3ebdd30"
+      "sha256": "678f25603ba0297eebbd56f63be8ea842f86fe97cc7183c54482a47904994608"
     }
   ]
 }

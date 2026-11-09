@@ -1,6 +1,6 @@
 # Editor 0.13 — selected acceptance evidence
 
-These receipts and captures use synthetic Projects only. The final workspace package source is **`886d6460cc3f690b2f153ba51a512e010d0dfb56`**, a clean **0.13.0** package built at `2026-11-09T05:45:58.5461954Z` with Electron 38.7.2. The package identity is recorded in [workspace acceptance](workspace-acceptance.json); [manifest](manifest.json) records the selected evidence hashes.
+These receipts and captures use synthetic Projects only. The final workspace package source is **`0a30f1e40b2b619bd04a9fac6cc63c30a0e84a70`**, a clean **0.13.0** package built at `2026-11-09T06:18:33.3911264Z` with Electron 38.7.2. The package identity is recorded in [workspace acceptance](workspace-acceptance.json); [manifest](manifest.json) records the selected evidence hashes.
 
 ## Desktop workspace
 
@@ -18,7 +18,7 @@ These receipts and captures use synthetic Projects only. The final workspace pac
 
 The Project strip belongs to the shell; document captures come directly from the active `WebContentsView`. They are separate captures, not a composited screen. Early `BrowserWindow.capturePage()` images that omitted child views and produced blank centers are excluded. The hidden shell is not used as fullscreen evidence.
 
-The source gate comprises **82 focused Vitest tests across 13 files**, including 16 native-launch parser cases, plus five desktop recovery tests, 11 publisher regressions and eight client tests. These focused counts are separate from historical full-suite totals. Office and publisher receipts retain their own source-artifact or module identities.
+The source gate comprises **82 focused Vitest tests across 13 files**, including 16 native-launch parser cases, plus five desktop recovery tests, 17 publisher regressions and eight client tests. These focused counts are separate from historical full-suite totals. Office and publisher receipts retain their own source-artifact or module identities.
 
 ## Native PowerPoint
 
@@ -30,7 +30,7 @@ The inspected Office renders are [table and equations](office-slide-1.png), [cat
 
 ## Packaged publisher
 
-[Publisher acceptance](publisher-acceptance.json) records two isolated synthetic Projects. Both excluded the hidden page, retained Notes, passed native export checks, kept source files unchanged, and produced byte-equal Project/shared files. An unchanged rerun skipped export. The first isolated attempt encountered a Windows-reserved writer-lock port (`EACCES`); a fresh isolated fixture passed without bypassing production locking.
+[Publisher acceptance](publisher-acceptance.json) records two isolated synthetic Projects. Both excluded the hidden page, retained Notes, passed native export checks, kept source files unchanged, and produced byte-equal Project/shared files. An unchanged rerun skipped export. An earlier 0.13 isolated attempt encountered a Windows-reserved writer-lock port (`EACCES`); a fresh isolated fixture passed without bypassing production locking.
 
 ## Delivery boundary
 
