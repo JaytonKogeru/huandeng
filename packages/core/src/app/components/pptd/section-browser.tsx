@@ -1,10 +1,11 @@
 import { ArrowDown, ArrowUp, ChevronDown, ChevronRight } from 'lucide-react';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useHuandengLocale } from '@/lib/huandeng-locale';
 import type { SlideInsertionBoundary, ThumbnailSection } from '@/lib/pptd-thumbnail-sections';
 import {
+  filterWorkspaceBrowserGroups,
   workspaceBrowserGroups,
-  workspaceMoveBoundary,
+  workspaceMoveBoundaries,
   workspacePageSelected,
 } from '@/lib/pptd-workspace-views';
 import type { PageSize, PageSnapshot } from '../../../pptd/types';
@@ -44,20 +45,26 @@ export function SectionBrowser({
   const [query, setQuery] = useState('');
   const [thumbnailSize, setThumbnailSize] = useState('medium');
   const [collapsed, setCollapsed] = useState<Set<string>>(() => new Set());
-  const groups = workspaceBrowserGroups(pages, sections, query, presentation, t('Untitled slide'));
+  const [viewport, setViewport] = useState<HTMLDivElement | null>(null);
+  const untitled = t('Untitled slide');
+  const unfilteredGroups = useMemo(
+    () => workspaceBrowserGroups(pages, sections, '', presentation, untitled),
+    [pages, sections, presentation, untitled],
+  );
+  const groups = useMemo(
+    () => filterWorkspaceBrowserGroups(unfilteredGroups, query),
+    [unfilteredGroups, query],
+  );
+  const moveBoundaries = useMemo(() => workspaceMoveBoundaries(pages), [pages]);
   const activeCollapsed = new Set(
     groups.filter((group) => collapsed.has(group.key)).map((group) => group.key),
   );
+  const canMove = !disabled && !presentation && !query.trim() && !activeCollapsed.size;
+  const moveBoundary = (key: string, direction: -1 | 1) =>
+    canMove ? moveBoundaries.get(key)?.[direction < 0 ? 'up' : 'down'] : null;
   const move = (page: PageSnapshot, key: string, direction: -1 | 1) => {
-    const boundary = workspaceMoveBoundary(
-      pages,
-      key,
-      direction,
-      query,
-      activeCollapsed,
-      presentation,
-    );
-    if (!disabled && boundary) onMove(page.pageId, boundary);
+    const boundary = moveBoundary(key, direction);
+    if (boundary) onMove(page.pageId, boundary);
   };
   return (
     <section
@@ -104,7 +111,7 @@ export function SectionBrowser({
               ? t('Clear search and expand all groups to move Slides.')
               : t('Double-click or press Enter to edit. Move with Alt+Up / Alt+Down.')}
       </p>
-      <div className="hd-browser-scroll" data-hd-browser-scroll>
+      <div ref={setViewport} className="hd-browser-scroll" data-hd-browser-scroll>
         {!groups.length && (
           <p className="p-8 text-center text-sm text-muted-foreground" data-hd-browser-empty>
             {t(pages.length ? 'No matching Slides.' : 'No Slides in this collection.')}
@@ -184,7 +191,12 @@ export function SectionBrowser({
                             }
                           }}
                         >
-                          <WorkspaceSlidePreview page={page} size={size} theme={theme} />
+                          <WorkspaceSlidePreview
+                            page={page}
+                            size={size}
+                            theme={theme}
+                            viewport={viewport}
+                          />
                           <span className="hd-browser-position">
                             {t('Position {position}', { position: index + 1 })}
                           </span>
@@ -215,17 +227,7 @@ export function SectionBrowser({
                                 aria-label={t(direction < 0 ? 'Move Slide up' : 'Move Slide down')}
                                 title={t(direction < 0 ? 'Move Slide up' : 'Move Slide down')}
                                 data-hd-browser-move={direction < 0 ? 'up' : 'down'}
-                                disabled={
-                                  disabled ||
-                                  !workspaceMoveBoundary(
-                                    pages,
-                                    key,
-                                    direction,
-                                    query,
-                                    activeCollapsed,
-                                    presentation,
-                                  )
-                                }
+                                disabled={!moveBoundary(key, direction)}
                                 onClick={() => move(page, key, direction)}
                               >
                                 {direction < 0 ? <ArrowUp /> : <ArrowDown />}

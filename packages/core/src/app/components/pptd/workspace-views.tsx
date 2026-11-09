@@ -54,30 +54,39 @@ export const WorkspaceSlidePreview = memo(function WorkspaceSlidePreview({
   size,
   theme,
   eager = false,
+  viewport,
 }: {
   page: PageSnapshot;
   size: PageSize;
   theme: PptdTheme;
   eager?: boolean;
+  viewport?: HTMLElement | null;
 }) {
   const { t } = useHuandengLocale();
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(eager);
   useEffect(() => {
     const node = ref.current;
-    if (!node || visible) return;
+    if (!node || eager || viewport === null) return;
+    if (typeof IntersectionObserver === 'undefined') {
+      setVisible(true);
+      return;
+    }
+    let active = true;
+    setVisible(false);
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries.some((entry) => entry.isIntersecting)) {
-          setVisible(true);
-          observer.disconnect();
-        }
+        if (!active) return;
+        for (const entry of entries) if (entry.target === node) setVisible(entry.isIntersecting);
       },
-      { rootMargin: '300px' },
+      { root: viewport, rootMargin: '300px' },
     );
     observer.observe(node);
-    return () => observer.disconnect();
-  }, [visible]);
+    return () => {
+      active = false;
+      observer.disconnect();
+    };
+  }, [eager, viewport]);
   return (
     <div
       ref={ref}
@@ -86,7 +95,7 @@ export const WorkspaceSlidePreview = memo(function WorkspaceSlidePreview({
       data-hd-workspace-preview={workspacePageKey(page)}
       aria-hidden="true"
     >
-      {visible ? (
+      {eager || visible ? (
         <SlideCanvas width={size[0]} height={size[1]} flat freezeMotion>
           <PptdPageRenderer page={page} size={size} theme={theme} assetUrl={pptdAssetPreviewUrl} />
         </SlideCanvas>

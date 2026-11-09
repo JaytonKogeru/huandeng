@@ -4,8 +4,10 @@ import { resolveEditorKeyboardCommand } from './pptd-keyboard';
 import { projectSlideSearch, projectSlideTitle } from './pptd-project-source';
 import { slideMoveAfterBoundary } from './pptd-thumbnail-sections';
 import {
+  filterWorkspaceBrowserGroups,
   workspaceBrowserGroups,
   workspaceKeyboardCommandAllowed,
+  workspaceMoveBoundaries,
   workspaceMoveBoundary,
   workspacePageKey,
   workspacePageSelected,
@@ -98,6 +100,46 @@ describe('Slides workspace grouping and identity', () => {
     expect(workspaceMoveBoundary(pages, 'intro', -1, '', new Set(), false)).toBeNull();
     expect(workspaceMoveBoundary(pages, 'tail', 1, '', new Set(), false)).toBeNull();
     expect(workspaceMoveBoundary(pages, 'missing', 1, '', new Set(), false)).toBeNull();
+  });
+
+  it('indexes movement boundaries once with exact neighbors and occurrence keys', () => {
+    const pages = slides(['intro', 'a', 'tail']);
+    pages[1].occurrenceId = 'a-occurrence';
+    const boundaries = workspaceMoveBoundaries(pages);
+    expect(boundaries.get('intro')).toEqual({
+      up: null,
+      down: { afterPageId: 'a', beforePageId: 'tail' },
+    });
+    expect(boundaries.get('a-occurrence')).toEqual({
+      up: { afterPageId: null, beforePageId: 'intro' },
+      down: { afterPageId: 'tail', beforePageId: null },
+    });
+    expect(boundaries.get('tail')).toEqual({
+      up: { afterPageId: 'intro', beforePageId: 'a' },
+      down: null,
+    });
+    expect(workspaceMoveBoundaries([]).size).toBe(0);
+    expect(workspaceMoveBoundaries(slides(['only'])).get('only')).toEqual({ up: null, down: null });
+    expect(workspaceMoveBoundaries([pages[2], pages[1], pages[0]]).get('intro')?.down).toBeNull();
+  });
+
+  it('filters stable groups without losing titles, full-order positions or updated Story', () => {
+    const pages = slides();
+    const groups = workspaceBrowserGroups(pages, sections, '', false, '未命名');
+    const filtered = filterWorkspaceBrowserGroups(groups, '章节');
+    expect(filtered[0].entries.map(({ key, index }) => [key, index])).toEqual([
+      ['a', 1],
+      ['b', 2],
+    ]);
+    expect(filterWorkspaceBrowserGroups(groups, 'TAIL')[0].entries[0].title).toBe('tail');
+    expect(filterWorkspaceBrowserGroups(groups, 'absent')).toEqual([]);
+    expect(groups.map(({ count }) => count)).toEqual([1, 2, 1]);
+    pages[1] = {
+      ...pages[1],
+      metadata: { ...pages[1].metadata, designIntent: { purpose: 'Fresh Story' } },
+    };
+    const refreshed = workspaceBrowserGroups([...pages], sections, '');
+    expect(filterWorkspaceBrowserGroups(refreshed, 'fresh story')[0].entries[0].key).toBe('a');
   });
 
   it('keeps composing input and auxiliary drafts mounted until safe to switch', () => {

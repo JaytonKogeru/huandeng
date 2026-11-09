@@ -17,6 +17,14 @@ export default defineConfig({
         test: {
           name: 'unit',
           include: ['packages/**/*.test.ts', 'packages/**/*.test.tsx'],
+          exclude: ['**/*.browser.test.ts'],
+        },
+      },
+      {
+        extends: true,
+        test: {
+          name: 'browser',
+          include: ['packages/**/*.browser.test.ts'],
         },
       },
       {

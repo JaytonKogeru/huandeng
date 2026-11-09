@@ -10,6 +10,14 @@ import {
 
 export type WorkspaceView = 'edit' | 'browse' | 'notes';
 
+interface WorkspaceBrowserGroup {
+  key: string;
+  sectionId?: string;
+  title?: string;
+  count: number;
+  entries: { page: PageSnapshot; index: number; key: string; title: string }[];
+}
+
 export function workspacePageKey(page: PageSnapshot): string {
   return page.occurrenceId ?? page.pageId;
 }
@@ -37,13 +45,7 @@ export function workspaceBrowserGroups(
       section,
     ]),
   );
-  const groups: {
-    key: string;
-    sectionId?: string;
-    title?: string;
-    count: number;
-    entries: { page: PageSnapshot; index: number; key: string; title: string }[];
-  }[] = [];
+  const groups: WorkspaceBrowserGroup[] = [];
   for (let index = 0; index < pages.length; index++) {
     const section = sectionsAt.get(index);
     if (section || !groups.length || groups.at(-1)?.sectionId) {
@@ -69,7 +71,12 @@ export function workspaceBrowserGroups(
     }
     index--;
   }
+  return filterWorkspaceBrowserGroups(groups, query);
+}
+
+export function filterWorkspaceBrowserGroups(groups: WorkspaceBrowserGroup[], query: string) {
   const needle = query.trim().toLocaleLowerCase();
+  if (!needle) return groups;
   return groups.flatMap((group) => {
     const sectionMatch = group.title?.toLocaleLowerCase().includes(needle);
     const entries =
@@ -80,6 +87,18 @@ export function workspaceBrowserGroups(
           );
     return entries.length ? [{ ...group, entries }] : [];
   });
+}
+
+export function workspaceMoveBoundaries(pages: PageSnapshot[]) {
+  return new Map(
+    pages.map((page, index) => [
+      workspacePageKey(page),
+      {
+        up: index > 0 ? slideInsertionBoundary(pages, index - 1) : null,
+        down: index + 1 < pages.length ? slideInsertionBoundary(pages, index + 2) : null,
+      },
+    ]),
+  );
 }
 
 export function workspaceMoveBoundary(
