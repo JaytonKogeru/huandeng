@@ -30,8 +30,10 @@ interface PendingPreview {
 }
 
 interface WaitingWork {
+  preview: boolean;
   start: () => void;
   reject: (error: Error) => void;
+  overload: () => void;
 }
 
 export interface AssetPreviewOptions {
@@ -78,9 +80,22 @@ export class AssetPreviewManager {
   private disposing?: Promise<void>;
   private closeCleanupPending = false;
   private active = 0;
+  private originalBurst = 0;
   private cacheBytes = 0;
   private closed = false;
-  private metrics = { sourceReads: 0, derived: 0, hits: 0, peakActive: 0, peakQueued: 0 };
+  private metrics = {
+    sourceReads: 0,
+    derived: 0,
+    hits: 0,
+    peakActive: 0,
+    peakQueued: 0,
+    cancelled: 0,
+    overloaded: 0,
+    preempted: 0,
+    queueMs: 0,
+    readMs: 0,
+    previewMs: 0,
+  };
   private readonly maxEntries: number;
   private readonly maxBytes: number;
   private readonly maxQueued: number;
@@ -122,27 +137,124 @@ export class AssetPreviewManager {
     return this.directory;
   }
 
-  private schedule(task: () => Promise<void>): Promise<void> {
+  private next(): void {
+    if (this.closed) return;
+    const preview = this.queue.findIndex((work) => work.preview);
+    const original = this.queue.findIndex((work) => !work.preview);
+    const index = original >= 0 && (preview < 0 || this.originalBurst < 3) ? original : preview;
+    if (index < 0) {
+      this.originalBurst = 0;
+      return;
+    }
+    this.originalBurst = index === preview ? 0 : this.originalBurst + 1;
+    this.queue.splice(index, 1)[0].start();
+  }
+
+  private timing(res: ServerResponse, queue: number, read = 0, preview = 0): void {
+    if (!res.headersSent && !res.destroyed)
+      res.setHeader(
+        'server-timing',
+        `queue;dur=${queue.toFixed(2)}, read;dur=${read.toFixed(2)}, preview;dur=${preview.toFixed(2)}`,
+      );
+  }
+
+  private schedule(
+    task: (queueMs: number) => Promise<void>,
+    preview: boolean,
+    res: ServerResponse,
+  ): Promise<void> {
     if (this.closed) return Promise.reject(new Error('Asset preview service is closed.'));
+    if (res.destroyed || res.writableEnded) return Promise.resolve();
+    const enqueued = performance.now();
+    this.responses.add(res);
     const operation = new Promise<void>((resolve, reject) => {
+      const detach = () => {
+        res.off('close', cancel);
+        res.off('error', cancel);
+      };
+      const waited = () => {
+        const duration = performance.now() - enqueued;
+        this.metrics.queueMs += duration;
+        return duration;
+      };
+      const cancel = () => {
+        const index = this.queue.indexOf(work);
+        if (index < 0) return;
+        this.queue.splice(index, 1);
+        detach();
+        waited();
+        this.metrics.cancelled++;
+        res.destroy();
+        resolve();
+      };
+      const overload = (reason: 'full' | 'preempted') => {
+        detach();
+        this.metrics.overloaded++;
+        if (reason === 'preempted') this.metrics.preempted++;
+        this.timing(res, waited());
+        res.statusCode = 503;
+        res.setHeader('retry-after', '1');
+        res.setHeader('x-huandeng-queue', reason);
+        res.end('Asset request queue is full; retry later.');
+        resolve();
+      };
       const start = () => {
+        detach();
+        const queueMs = waited();
+        if (res.destroyed || res.writableEnded) {
+          this.metrics.cancelled++;
+          resolve();
+          this.next();
+          return;
+        }
         this.active++;
         this.metrics.peakActive = Math.max(this.metrics.peakActive, this.active);
-        void task()
+        void task(queueMs)
           .then(resolve, reject)
           .finally(() => {
             this.active--;
-            this.queue.shift()?.start();
+            this.next();
           });
+      };
+      const work: WaitingWork = {
+        preview,
+        start,
+        reject: (error) => {
+          detach();
+          waited();
+          reject(error);
+        },
+        overload: () => overload('preempted'),
       };
       if (this.active < 2) start();
       else {
-        this.queue.push({ start, reject });
+        if (this.queue.length >= this.maxQueued) {
+          let victim = -1;
+          if (!preview)
+            for (let index = this.queue.length - 1; index >= 0; index--)
+              if (this.queue[index].preview) {
+                victim = index;
+                break;
+              }
+          if (victim < 0) {
+            overload('full');
+            return;
+          }
+          this.queue.splice(victim, 1)[0].overload();
+        }
+        this.queue.push(work);
+        res.once('close', cancel);
+        res.once('error', cancel);
         this.metrics.peakQueued = Math.max(this.metrics.peakQueued, this.queue.length);
       }
     });
     this.operations.add(operation);
-    void operation.finally(() => this.operations.delete(operation)).catch(() => {});
+    void operation
+      .finally(() => {
+        this.operations.delete(operation);
+        this.responses.delete(res);
+      })
+      .catch(() => {});
     return operation;
   }
 
@@ -416,81 +528,100 @@ export class AssetPreviewManager {
     const size = Number(params.get('size') ?? 320);
     if (preview && ![320, 640].includes(size))
       throw new PptdError('INVALID_REQUEST', 'Preview size must be 320 or 640.');
-    if (this.queue.length >= this.maxQueued && this.active >= 2) {
-      res.statusCode = 503;
-      res.setHeader('retry-after', '1');
-      res.end('Asset preview queue is full.');
-      return;
-    }
-    return this.schedule(async () => {
-      if (res.destroyed) return;
-      this.responses.add(res);
-      let entry: PreviewFile | undefined;
-      try {
-        this.abort.signal.throwIfAborted();
-        this.metrics.sourceReads++;
-        const bytes = await readProjectAsset(this.root, source).catch((error: unknown) => {
-          if ((error as NodeJS.ErrnoException).code === 'ENOENT')
-            throw new PptdError('TARGET_NOT_FOUND', 'This asset file is missing.');
-          throw error;
-        });
-        const revision = hashBytes(bytes);
-        if (expected && expected !== revision)
-          throw new PptdError(
-            'REVISION_CONFLICT',
-            'The asset changed; refresh its content version.',
-          );
-        if (preview) entry = await this.preview(source, bytes, revision, size);
-        this.abort.signal.throwIfAborted();
+    return this.schedule(
+      async (queueMs) => {
         if (res.destroyed) return;
-        const etag = entry?.etag ?? `"${revision}"`;
-        res.setHeader('cache-control', 'private, no-cache');
-        res.setHeader('etag', etag);
-        res.setHeader(
-          'content-type',
-          entry?.contentType ??
-            (source.startsWith('data:') ? source.slice(5, source.indexOf(';')) : mimeType(source)),
-        );
-        res.setHeader('x-huandeng-source-revision', revision);
-        res.setHeader('x-huandeng-preview', entry?.mode ?? 'original');
-        res.setHeader(
-          'x-huandeng-preview-reason',
-          entry?.reason ?? (preview ? 'cache-unavailable' : 'original-request'),
-        );
-        if (sameEtag(req.headers['if-none-match'], etag)) {
-          res.statusCode = 304;
-          res.end();
-          return;
+        let entry: PreviewFile | undefined;
+        let readMs = 0;
+        let previewMs = 0;
+        try {
+          this.abort.signal.throwIfAborted();
+          this.metrics.sourceReads++;
+          const readStarted = performance.now();
+          const bytes = await readProjectAsset(this.root, source)
+            .catch((error: unknown) => {
+              if ((error as NodeJS.ErrnoException).code === 'ENOENT')
+                throw new PptdError('TARGET_NOT_FOUND', 'This asset file is missing.');
+              throw error;
+            })
+            .finally(() => {
+              readMs = performance.now() - readStarted;
+              this.metrics.readMs += readMs;
+            });
+          const revision = hashBytes(bytes);
+          if (expected && expected !== revision)
+            throw new PptdError(
+              'REVISION_CONFLICT',
+              'The asset changed; refresh its content version.',
+            );
+          if (preview && !res.destroyed) {
+            const previewStarted = performance.now();
+            try {
+              entry = await this.preview(source, bytes, revision, size);
+            } finally {
+              previewMs = performance.now() - previewStarted;
+              this.metrics.previewMs += previewMs;
+            }
+          }
+          this.abort.signal.throwIfAborted();
+          if (res.destroyed) return;
+          this.timing(res, queueMs, readMs, previewMs);
+          const etag = entry?.etag ?? `"${revision}"`;
+          res.setHeader('cache-control', 'private, no-cache');
+          res.setHeader('etag', etag);
+          res.setHeader(
+            'content-type',
+            entry?.contentType ??
+              (source.startsWith('data:')
+                ? source.slice(5, source.indexOf(';'))
+                : mimeType(source)),
+          );
+          res.setHeader('x-huandeng-source-revision', revision);
+          res.setHeader('x-huandeng-preview', entry?.mode ?? 'original');
+          res.setHeader(
+            'x-huandeng-preview-reason',
+            entry?.reason ?? (preview ? 'cache-unavailable' : 'original-request'),
+          );
+          if (sameEtag(req.headers['if-none-match'], etag)) {
+            res.statusCode = 304;
+            res.end();
+            return;
+          }
+          res.setHeader('content-length', entry?.bytes ?? bytes.length);
+          await new Promise<void>((resolve, reject) => {
+            const stream = entry ? createReadStream(entry.file) : undefined;
+            const finish = () => {
+              res.off('finish', finish);
+              res.off('close', finish);
+              res.off('error', fail);
+              res.off('timeout', timeout);
+              res.setTimeout(0);
+              stream?.destroy();
+              resolve();
+            };
+            const fail = (error: Error) => {
+              finish();
+              reject(error);
+            };
+            const timeout = () => res.destroy(new Error('Asset response timed out.'));
+            res.once('finish', finish);
+            res.once('close', finish);
+            res.once('error', fail);
+            res.once('timeout', timeout);
+            res.setTimeout(this.timeoutMs);
+            if (stream) {
+              stream.once('error', (error) => res.destroy(error));
+              stream.pipe(res);
+            } else res.end(bytes);
+          });
+        } finally {
+          this.timing(res, queueMs, readMs, previewMs);
+          if (entry) this.release(entry);
         }
-        res.setHeader('content-length', entry?.bytes ?? bytes.length);
-        await new Promise<void>((resolve, reject) => {
-          const stream = entry ? createReadStream(entry.file) : undefined;
-          const finish = () => {
-            res.off('finish', finish);
-            res.off('close', finish);
-            res.off('error', fail);
-            res.setTimeout(0);
-            stream?.destroy();
-            resolve();
-          };
-          const fail = (error: Error) => {
-            finish();
-            reject(error);
-          };
-          res.once('finish', finish);
-          res.once('close', finish);
-          res.once('error', fail);
-          res.setTimeout(this.timeoutMs, () => res.destroy(new Error('Asset response timed out.')));
-          if (stream) {
-            stream.once('error', (error) => res.destroy(error));
-            stream.pipe(res);
-          } else res.end(bytes);
-        });
-      } finally {
-        if (entry) this.release(entry);
-        this.responses.delete(res);
-      }
-    });
+      },
+      preview,
+      res,
+    );
   }
 
   async dispose(): Promise<void> {

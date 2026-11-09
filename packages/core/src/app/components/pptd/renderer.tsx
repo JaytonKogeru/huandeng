@@ -12,7 +12,7 @@ import {
   useState,
 } from 'react';
 import { uiText as t, useHuandengLocale } from '@/lib/huandeng-locale';
-import { pptdAssetUrl } from '@/lib/pptd-backend';
+import { pptdAssetPreviewUrl, pptdAssetUrl } from '@/lib/pptd-backend';
 import { compileTimeline } from '../../../pptd/animation-model';
 import { splitMathFragments } from '../../../pptd/math-fragments';
 import { resolvePositionField } from '../../../pptd/position-field';
@@ -450,9 +450,11 @@ function fillCss(fill: unknown, theme: PptdTheme): CSSProperties {
 function ImageContent({
   element,
   assetUrl,
+  priority,
 }: {
   element: PptdElement;
   assetUrl: (path: string) => string;
+  priority?: 'high' | 'low';
 }) {
   useHuandengLocale();
   const src = textValue(element.src);
@@ -518,6 +520,7 @@ function ImageContent({
     >
       <img
         src={url}
+        fetchPriority={priority}
         alt={textValue(element.alt, src)}
         draggable={false}
         style={style}
@@ -842,14 +845,16 @@ const ElementContent = memo(function ElementContent({
   element,
   theme,
   assetUrl,
+  priority,
 }: {
   element: PptdElement;
   theme: PptdTheme;
   assetUrl: (path: string) => string;
+  priority?: 'high' | 'low';
 }) {
   if (element.elementType === 'text') return <TextContent element={element} theme={theme} />;
   if (element.elementType === 'image')
-    return <ImageContent element={element} assetUrl={assetUrl} />;
+    return <ImageContent element={element} assetUrl={assetUrl} priority={priority} />;
   if (element.elementType === 'shape') return <ShapeContent element={element} theme={theme} />;
   if (element.elementType === 'line') return <LineContent element={element} theme={theme} />;
   if (element.elementType === 'table') return <TableContent element={element} theme={theme} />;
@@ -894,6 +899,8 @@ export function PptdPageRenderer({
   renderContent,
 }: PptdPageRendererProps) {
   useHuandengLocale();
+  const imagePriority =
+    assetUrl === pptdAssetPreviewUrl ? 'low' : assetUrl === pptdAssetUrl ? 'high' : undefined;
   const theme =
     page.metadata.themeOverride &&
     typeof page.metadata.themeOverride === 'object' &&
@@ -956,6 +963,7 @@ export function PptdPageRenderer({
               bounds: [0, 0, ...size],
             }}
             assetUrl={resolveAsset}
+            priority={imagePriority}
           />
         </div>
       )}
@@ -973,6 +981,7 @@ export function PptdPageRenderer({
               element={resolvePositionField(element, page.mainPosition)}
               theme={theme}
               assetUrl={resolveAsset}
+              priority={imagePriority}
             />
           );
         const frameProps = {

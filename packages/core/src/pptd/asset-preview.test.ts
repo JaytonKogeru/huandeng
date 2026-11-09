@@ -69,15 +69,21 @@ async function setup(options: AssetPreviewOptions = { encoder: false }) {
     directory: path.join(root, 'runtime'),
     ...options,
   });
+  const responses: http.ServerResponse[] = [];
+  const operations: Promise<void>[] = [];
   cleanups.push(() => fs.rm(root, { recursive: true, force: true }));
   const server = http.createServer((req, res) => {
+    responses.push(res);
     const url = new URL(req.url ?? '/', 'http://localhost');
     res.setHeader('cache-control', 'no-store');
-    void manager.respond(url.searchParams, url.pathname === '/preview', req, res).catch((error) => {
-      res.statusCode =
-        error.code === 'REVISION_CONFLICT' ? 409 : error.code === 'TARGET_NOT_FOUND' ? 404 : 400;
-      res.end(JSON.stringify({ code: error.code, message: error.message }));
-    });
+    const operation = manager
+      .respond(url.searchParams, url.pathname === '/preview', req, res)
+      .catch((error) => {
+        res.statusCode =
+          error.code === 'REVISION_CONFLICT' ? 409 : error.code === 'TARGET_NOT_FOUND' ? 404 : 400;
+        res.end(JSON.stringify({ code: error.code, message: error.message }));
+      });
+    operations.push(operation);
   });
   await new Promise<void>((resolve) => server.listen(0, '127.0.0.1', resolve));
   cleanups.push(
@@ -93,10 +99,280 @@ async function setup(options: AssetPreviewOptions = { encoder: false }) {
   const base = `http://127.0.0.1:${address.port}`;
   const url = (source = 'media/source.png', revision?: string, size = 320, preview = true) =>
     `${base}/${preview ? 'preview' : 'asset'}?${new URLSearchParams({ path: source, size: String(size), ...(revision ? { revision } : {}) })}`;
-  return { root, bytes, manager, url };
+  return { root, bytes, manager, url, responses, operations };
+}
+
+async function heldReads(root: string, names: string[]) {
+  for (const name of names) await fs.writeFile(path.join(root, 'media', name), '<svg/>');
+  const open = fs.open.bind(fs);
+  const started: string[] = [];
+  const releases: (() => void)[] = [];
+  let released = false;
+  vi.spyOn(fs, 'open').mockImplementation(async (...args) => {
+    if (path.dirname(String(args[0])) === path.join(root, 'media')) {
+      started.push(path.basename(String(args[0])));
+      if (!released) await new Promise<void>((resolve) => releases.push(resolve));
+    }
+    return open(...args);
+  });
+  return {
+    started,
+    next: () => releases.shift()?.(),
+    all: () => {
+      released = true;
+      for (const release of releases.splice(0)) release();
+    },
+  };
 }
 
 describe('versioned and bounded asset previews', () => {
+  it('prioritizes originals but dispatches a waiting preview after at most three originals', async () => {
+    const { root, manager, url } = await setup();
+    const gate = await heldReads(root, [
+      'a.svg',
+      'b.svg',
+      'p.svg',
+      ...[1, 2, 3, 4].map((n) => `o${n}.svg`),
+    ]);
+    const requests: Promise<unknown>[] = [];
+    const request = (name: string, preview = true) => {
+      requests.push(
+        fetch(url(`media/${name}`, undefined, 320, preview)).then((res) => res.arrayBuffer()),
+      );
+    };
+    try {
+      request('a.svg');
+      request('b.svg');
+      await vi.waitFor(() => expect(gate.started).toHaveLength(2));
+      request('p.svg');
+      await vi.waitFor(() => expect(manager.usage().queued).toBe(1));
+      for (let n = 1; n <= 4; n++) {
+        request(`o${n}.svg`, false);
+        await vi.waitFor(() => expect(manager.usage().queued).toBe(n + 1));
+      }
+      for (const name of ['o1.svg', 'o2.svg', 'o3.svg', 'p.svg', 'o4.svg']) {
+        const count = gate.started.length;
+        gate.next();
+        await vi.waitFor(() => expect(gate.started).toHaveLength(count + 1));
+        expect(gate.started.at(-1)).toBe(name);
+      }
+    } finally {
+      gate.all();
+      await Promise.all(requests);
+    }
+    expect(manager.usage()).toMatchObject({ peakActive: 2, peakQueued: 5 });
+  });
+
+  it('admits an original into a full queue by settling the newest queued preview with 503', async () => {
+    const { root, manager, url, responses, operations } = await setup({
+      encoder: false,
+      maxQueued: 1,
+    });
+    const gate = await heldReads(root, ['a.svg', 'b.svg', 'p.svg', 'o.svg']);
+    const active = ['a.svg', 'b.svg'].map((name) =>
+      fetch(url(`media/${name}`)).then((res) => res.arrayBuffer()),
+    );
+    const pending: Promise<unknown>[] = [...active];
+    try {
+      await vi.waitFor(() => expect(gate.started).toHaveLength(2));
+      const preview = fetch(url('media/p.svg'));
+      pending.push(preview);
+      await vi.waitFor(() => expect(manager.usage().queued).toBe(1));
+      const original = fetch(url('media/o.svg', undefined, 320, false));
+      pending.push(original.then((res) => res.arrayBuffer()));
+      let displacedResponse: Response | undefined;
+      void preview.then((res) => {
+        displacedResponse = res;
+      });
+      await vi.waitFor(() => expect(displacedResponse).toBeDefined());
+      const displaced = await preview;
+      expect(displaced.status).toBe(503);
+      expect(displaced.headers.get('retry-after')).toBe('1');
+      expect(displaced.headers.get('x-huandeng-queue')).toBe('preempted');
+      expect(await displaced.text()).toContain('queue');
+      await operations[2];
+      expect(responses[2].listenerCount('close')).toBe(0);
+      expect(responses[2].listenerCount('error')).toBe(0);
+      const excess = await fetch(url('media/source.png', undefined, 320, false));
+      expect(excess.status).toBe(503);
+      expect(excess.headers.get('x-huandeng-queue')).toBe('full');
+      expect(manager.usage()).toMatchObject({
+        active: 2,
+        queued: 1,
+        peakQueued: 1,
+        overloaded: 2,
+        preempted: 1,
+      });
+      expect(gate.started).not.toContain('p.svg');
+      gate.next();
+      await vi.waitFor(() => expect(gate.started).toContain('o.svg'));
+    } finally {
+      gate.all();
+      await Promise.all(pending);
+    }
+  });
+
+  it('keeps the oldest waiting preview when a full queue admits an original', async () => {
+    const { root, manager, url } = await setup({ encoder: false, maxQueued: 2 });
+    const gate = await heldReads(root, ['a.svg', 'b.svg', 'old.svg', 'new.svg', 'o.svg']);
+    const requests: Promise<unknown>[] = ['a.svg', 'b.svg'].map((name) =>
+      fetch(url(`media/${name}`)).then((res) => res.arrayBuffer()),
+    );
+    try {
+      await vi.waitFor(() => expect(gate.started).toHaveLength(2));
+      const old = fetch(url('media/old.svg'));
+      requests.push(old.then((res) => res.arrayBuffer()));
+      await vi.waitFor(() => expect(manager.usage().queued).toBe(1));
+      const recent = fetch(url('media/new.svg'));
+      requests.push(recent);
+      await vi.waitFor(() => expect(manager.usage().queued).toBe(2));
+      requests.push(
+        fetch(url('media/o.svg', undefined, 320, false)).then((res) => res.arrayBuffer()),
+      );
+      let status: number | undefined;
+      void recent.then((res) => {
+        status = res.status;
+      });
+      await vi.waitFor(() => expect(status).toBe(503));
+      gate.next();
+      await vi.waitFor(() => expect(gate.started.at(-1)).toBe('o.svg'));
+      gate.next();
+      await vi.waitFor(() => expect(gate.started.at(-1)).toBe('old.svg'));
+      expect(gate.started).not.toContain('new.svg');
+      expect(manager.usage().peakQueued).toBe(2);
+    } finally {
+      gate.all();
+      await Promise.all(requests);
+    }
+  });
+
+  it.each(['close', 'error', 'finish'] as const)(
+    'removes queued work on response %s without reading it or retaining listeners',
+    async (event) => {
+      const { root, manager, url, responses, operations } = await setup();
+      const gate = await heldReads(root, ['a.svg', 'b.svg', 'p.svg']);
+      const active = ['a.svg', 'b.svg'].map((name) =>
+        fetch(url(`media/${name}`)).then((res) => res.arrayBuffer()),
+      );
+      let disconnected: Promise<unknown> | undefined;
+      try {
+        await vi.waitFor(() => expect(gate.started).toHaveLength(2));
+        disconnected = fetch(url('media/p.svg')).catch(() => undefined);
+        await vi.waitFor(() => expect(manager.usage().queued).toBe(1));
+        const response = responses[2];
+        if (event === 'close') response.destroy();
+        else if (event === 'finish') response.end();
+        else response.emit('error', new Error('Synthetic disconnected response'));
+        await vi.waitFor(() => expect(manager.usage().queued).toBe(0));
+        await operations[2];
+        expect(response.listenerCount('close')).toBe(0);
+        expect(response.listenerCount('error')).toBe(0);
+        expect(manager.usage().cancelled).toBe(1);
+        response.destroy();
+        expect(gate.started).toHaveLength(2);
+      } finally {
+        gate.all();
+        await Promise.all([...active, disconnected]);
+      }
+    },
+  );
+
+  it('settles and detaches queued responses on dispose without reading their sources', async () => {
+    const { root, manager, url, responses, operations } = await setup();
+    const gate = await heldReads(root, ['a.svg', 'b.svg', 'p.svg']);
+    const requests = ['a.svg', 'b.svg', 'p.svg'].map((name) =>
+      fetch(url(`media/${name}`))
+        .then((res) => res.arrayBuffer())
+        .catch(() => undefined),
+    );
+    await vi.waitFor(() => expect(manager.usage().queued).toBe(1));
+    await vi.waitFor(() => expect(gate.started).toHaveLength(2));
+    const disposing = manager.dispose();
+    try {
+      await operations[2];
+      expect(responses[2].destroyed).toBe(true);
+      expect(responses[2].listenerCount('close')).toBe(0);
+      expect(responses[2].listenerCount('error')).toBe(0);
+      expect(gate.started).toHaveLength(2);
+    } finally {
+      gate.all();
+      await disposing;
+      await Promise.all(requests);
+    }
+    expect(manager.usage()).toMatchObject({ active: 0, queued: 0 });
+  });
+
+  it('drains the queue when a response is already disconnected before its close event arrives', async () => {
+    const { root, manager, url, responses } = await setup();
+    const gate = await heldReads(root, ['a.svg', 'b.svg', 'gone.svg', 'next.svg']);
+    const requests = ['a.svg', 'b.svg'].map((name) =>
+      fetch(url(`media/${name}`)).then((res) => res.arrayBuffer()),
+    );
+    let gone: http.ServerResponse | undefined;
+    try {
+      await vi.waitFor(() => expect(gate.started).toHaveLength(2));
+      requests.push(
+        fetch(url('media/gone.svg', undefined, 320, false))
+          .then((res) => res.arrayBuffer())
+          .catch(() => new ArrayBuffer(0)),
+      );
+      await vi.waitFor(() => expect(manager.usage().queued).toBe(1));
+      requests.push(
+        fetch(url('media/next.svg', undefined, 320, false)).then((res) => res.arrayBuffer()),
+      );
+      await vi.waitFor(() => expect(manager.usage().queued).toBe(2));
+      gone = responses[2];
+      gone.destroyed = true;
+      gate.next();
+      await vi.waitFor(() => expect(gate.started).toContain('next.svg'));
+      expect(gate.started).not.toContain('gone.svg');
+      expect(manager.usage().queued).toBe(0);
+    } finally {
+      if (gone) {
+        gone.destroyed = false;
+        gone.destroy();
+      }
+      gate.all();
+      await Promise.all(requests);
+    }
+  });
+
+  it('exposes numeric queue, read and preview stage timings without source details', async () => {
+    const { manager, url } = await setup();
+    for (const preview of [true, true, false]) {
+      const response = await fetch(url('media/source.png', undefined, 320, preview));
+      expect(response.headers.get('server-timing')).toMatch(
+        /^queue;dur=\d+\.\d+, read;dur=\d+\.\d+, preview;dur=\d+\.\d+$/,
+      );
+      await response.arrayBuffer();
+    }
+    expect(manager.usage()).toMatchObject({ hits: 1 });
+    expect(manager.usage().queueMs).toBeGreaterThanOrEqual(0);
+    expect(manager.usage().readMs).toBeGreaterThan(0);
+    expect(manager.usage().previewMs).toBeGreaterThan(0);
+  });
+
+  it('detaches response error, close and timeout handlers after success, revalidation and read failure', async () => {
+    const { url, responses, operations } = await setup();
+    const original = await fetch(url('media/source.png', undefined, 320, false));
+    const etag = original.headers.get('etag') ?? '';
+    await original.arrayBuffer();
+    const cached = await fetch(url('media/source.png', undefined, 320, false), {
+      headers: { 'if-none-match': etag },
+    });
+    expect(cached.status).toBe(304);
+    expect(cached.headers.get('server-timing')).toContain('preview;dur=0.00');
+    const failed = await fetch(url('media/missing.png'));
+    expect(failed.status).toBe(404);
+    expect(failed.headers.get('server-timing')).toContain('read;dur=');
+    await failed.arrayBuffer();
+    await Promise.all(operations);
+    for (const response of responses) {
+      expect(response.listenerCount('error')).toBe(0);
+      expect(response.listenerCount('close')).toBe(0);
+      expect(response.listenerCount('timeout')).toBe(0);
+    }
+  });
   it('serves the verified original without an encoder, revalidates ETags and rejects stale revisions', async () => {
     const { root, bytes, url } = await setup();
     const revision = hashBytes(bytes);
