@@ -1,5 +1,5 @@
 const english = {
-  '连接 Agent…': 'Agent setup…',
+  '助手连接…': 'Agent setup…',
   文件: 'File',
   '新建项目…': 'New project…',
   '打开项目…': 'Open project…',
@@ -8,6 +8,15 @@ const english = {
   在文件管理器中显示: 'Show in file manager',
   回到开始页: 'Back to start',
   关闭窗口: 'Close window',
+  关闭文件预览: 'Close file preview',
+  关闭项目: 'Close project',
+  下一个项目: 'Next project',
+  上一个项目: 'Previous project',
+  项目编辑视图已停止: 'A project renderer stopped',
+  '重新载入会将此项目连接到现有文档服务。其他项目保持打开。':
+    'Reload reconnects this project to its existing document service. Other projects remain open.',
+  重新载入项目: 'Reload project',
+  保持打开: 'Keep open',
   编辑: 'Edit',
   撤销: 'Undo',
   重做: 'Redo',
@@ -82,12 +91,7 @@ function getCurrentLocale() {
 }
 
 function text(message, values) {
-  const template =
-    current === 'en' && Object.hasOwn(english, message)
-      ? english[message]
-      : Object.hasOwn(english, message)
-        ? message.replace(/连接 Agent/g, 'Agent setup').replace(/项目/g, 'Project')
-        : message;
+  const template = current === 'en' && Object.hasOwn(english, message) ? english[message] : message;
   return values
     ? template.replace(/\{(\w+)\}/g, (match, key) =>
         values[key] === undefined ? match : String(values[key]),

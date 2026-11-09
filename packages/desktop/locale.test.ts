@@ -11,6 +11,20 @@ const { readPreferences, writePreferences } = require('./project.cjs');
 afterEach(() => locale.setCurrentLocale('zh-CN'));
 
 describe('desktop language and preference persistence', () => {
+  it('localizes native navigation and preserves authored path values', () => {
+    locale.setCurrentLocale('zh-CN');
+    expect(locale.text('关闭文件预览')).toBe('关闭文件预览');
+    expect(locale.text('下一个项目')).toBe('下一个项目');
+    expect(locale.text('助手连接…')).toBe('助手连接…');
+    expect(
+      locale.text('项目文件夹已经存在，请换一个名称：\n{path}', { path: 'Project/主幻灯片.pptd' }),
+    ).toBe('项目文件夹已经存在，请换一个名称：\nProject/主幻灯片.pptd');
+    locale.setCurrentLocale('en');
+    expect(locale.text('关闭文件预览')).toBe('Close file preview');
+    expect(locale.text('关闭项目')).toBe('Close project');
+    expect(locale.text('下一个项目')).toBe('Next project');
+    expect(locale.text('上一个项目')).toBe('Previous project');
+  });
   it('honors explicit choices over OS language and rejects unsupported values', () => {
     expect(locale.resolveLocale('en', 'zh-CN')).toBe('en');
     expect(locale.resolveLocale('zh-CN', 'en-US')).toBe('zh-CN');
@@ -18,7 +32,7 @@ describe('desktop language and preference persistence', () => {
     expect(locale.resolveLocale(undefined, 'fr-FR')).toBe('en');
     expect(() => locale.setCurrentLocale('fr')).toThrow('Unsupported');
     locale.setCurrentLocale('en');
-    expect(locale.text('连接 Agent…')).toBe('Agent setup…');
+    expect(locale.text('助手连接…')).toBe('Agent setup…');
     const file = '/projects/主幻灯片/{path}/deck.pptd';
     expect(locale.text('项目文件夹已经存在，请换一个名称：\n{path}', { path: file })).toContain(
       file,

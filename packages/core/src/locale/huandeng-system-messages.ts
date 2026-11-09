@@ -256,7 +256,7 @@ export const systemChinese = {
     '此页面出现了多次，请提供 occurrenceId 以读取对应位置、备注和固定版本。',
   'This page is not part of the requested presentation.': '此页面不在指定的演讲中。',
   'Read this pinned occurrence through presentationSnapshot before building its Story briefing.':
-    '请先通过 presentationSnapshot 读取此固定版本实例，再生成 Story 简报。',
+    '请先通过 presentationSnapshot 读取此固定版本实例，再生成故事简报。',
   '{value0} must be an object.': '{value0} 必须是对象。',
   '{value0} must be {value1} string of at most {value2} characters.':
     '{value0} 必须是{value1}文字，且不超过 {value2} 个字符。',
@@ -365,7 +365,7 @@ export const systemChinese = {
     '请先恢复待完成的保存，再记录页面版本。',
   'This request ID belongs to a different checkpoint.': '此请求 ID 属于另一个版本记录。',
   'The page or Story changed. Refresh before recording a version.':
-    '页面或 Story 已改变，请刷新后再记录版本。',
+    '页面或故事已改变，请刷新后再记录版本。',
   'A pending transaction must recover before external changes are published.':
     '需要先恢复待完成事务，再发布外部文件变更。',
   'This project is not open for writing.': '此项目未以可写模式打开。',

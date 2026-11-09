@@ -23,6 +23,7 @@ describe('HUANDENG interface messages', () => {
   it('covers literal UI message calls without translating authored document values', () => {
     const root = path.resolve(import.meta.dirname, '../app');
     const missing = new Set<string>();
+    const englishUiMessages = new Set<string>(Object.values(englishMessages));
     function walk(value: unknown) {
       if (!value || typeof value !== 'object') return;
       const node = value as Record<string, unknown>;
@@ -36,8 +37,11 @@ describe('HUANDENG interface messages', () => {
         if (
           first?.type === 'StringLiteral' &&
           first.value &&
-          /[\u4e00-\u9fff]/.test(first.value) &&
-          !Object.hasOwn(englishMessages, first.value)
+          ((/[\u4e00-\u9fff]/.test(first.value) && !Object.hasOwn(englishMessages, first.value)) ||
+            (!/[\u4e00-\u9fff]/.test(first.value) &&
+              /[A-Za-z]/.test(first.value) &&
+              !Object.hasOwn(chineseMessages, first.value) &&
+              !englishUiMessages.has(first.value)))
         )
           missing.add(first.value);
       }
@@ -83,23 +87,42 @@ describe('HUANDENG interface messages', () => {
     expect(translateUi('en', '无法读取素材 主幻灯片：permission denied')).toBe(
       'Cannot read asset 主幻灯片: permission denied',
     );
-    expect(translateUi('zh-CN', 'The project is closing.')).toBe('Project正在关闭。');
-    expect(translateUi('zh-CN', 'Slide ID copied: 主幻灯片')).toBe('已复制Slide ID 主幻灯片');
+    expect(translateUi('zh-CN', 'The project is closing.')).toBe('项目正在关闭。');
+    expect(translateUi('zh-CN', 'Slide ID copied: 主幻灯片')).toBe('已复制页面短码 主幻灯片');
     expect(translateUi('en', '图表列名不能为空或重复，最多支持 100 列。')).toBe(
       'Chart columns must be unique non-empty names (at most 100 columns).',
     );
   });
 
-  it('keeps product vocabulary English in both interfaces while retaining authored values', () => {
-    for (const locale of ['en', 'zh-CN'] as const) {
-      expect(translateUi(locale, '主幻灯片')).toBe('Main Slides');
-      expect(translateUi(locale, '章节')).toBe('Section');
-      expect(translateUi(locale, '项目')).toBe('Project');
+  it('localizes editor navigation in both directions while retaining authored values', () => {
+    for (const [english, chinese] of [
+      ['Properties', '属性'],
+      ['Layout', '布局'],
+      ['Layers', '图层'],
+      ['Story', '故事'],
+      ['Checks', '检查'],
+      ['Notes', '备注'],
+      ['Project', '项目'],
+      ['Section', '章节'],
+      ['From beginning', '从头放映'],
+      ['From current slide', '从当前页放映'],
+    ]) {
+      expect(translateUi('zh-CN', english)).toBe(chinese);
+      expect(translateUi('en', chinese)).toBe(english);
+      expect(translateUi('en', english)).toBe(english);
     }
+    expect(translateUi('zh-CN', 'Slides')).toBe('幻灯片');
+    expect(translateUi('en', 'Slides')).toBe('Slides');
     expect(translateUi('zh-CN', 'Slide ID copied: {value0}', { value0: '我的主幻灯片' })).toContain(
       '我的主幻灯片',
     );
     expect(translateUi('zh-CN', '未知项目中的原始用户文字')).toBe('未知项目中的原始用户文字');
+    expect(translateUi('zh-CN', 'Close {name}', { name: 'Project Story Notes.md' })).toBe(
+      '关闭 Project Story Notes.md',
+    );
+    expect(translateUi('zh-CN', 'Unknown Project Story Notes prose')).toBe(
+      'Unknown Project Story Notes prose',
+    );
   });
 
   it('handles singular count messages and local date/number formats', () => {

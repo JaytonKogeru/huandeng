@@ -738,6 +738,25 @@ function BuildEditor({
           {t('添加效果')}
         </Button>
       </div>
+      {!preview && selectedRoots.length === 0 && (
+        <div
+          data-hd-animation-choose-object
+          className="flex flex-wrap items-center gap-2 px-3 pb-1 text-muted-foreground"
+        >
+          <span>{t('未选中对象。')}</span>
+          {targetId && onSelectTargets && (
+            <Button
+              variant="ghost"
+              size="xs"
+              disabled={actionBlocked}
+              title={t('在画布或对象列表中选择目标，然后添加效果。')}
+              onClick={() => onSelectTargets([targetId])}
+            >
+              {t('在画布选中此对象')}
+            </Button>
+          )}
+        </div>
+      )}
       {(displayedError || (dirty && !saving)) && (
         <div
           role="alert"

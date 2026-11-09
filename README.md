@@ -6,21 +6,21 @@ HUANDENG Editor 基于 OpenSlide 的 React 编辑环境，使用 PPTD 文档后�
 
 ## 当前阶段
 
-当前已验收版本为 **[v0.13.0：多 Project 工作区、Outline 与静默交付](docs/RELEASE-V013.md)**。清洁运行时源码为 `0a30f1e`，正式包构建于 `2026-11-09T06:18:33.3911264Z`；客户端与 ChatGPT 私人 Plugin 为 **0.13.0**。运行时提交、文档交付提交和本机安装结果分别记录，见 [Validation](docs/VALIDATION-V013.md) 与 [Handoff](docs/HANDOFF-V013.md)。
+当前版本为 **[v0.15.0：中英文工作区、章节浏览与备注页](docs/RELEASE-V015.md)**。源码、正式包、本机安装与插件交付的验收状态分别记录在 [Validation](docs/VALIDATION-V015.md) 与 [Handoff](docs/HANDOFF-V015.md)。编辑器和插件版本为 0.15.0，core npm 包仍为 2.3.1。
 
-桌面顶部以标签页保持多个 Project，Home 随时返回最近项目；切换时保留各自的画布、Story 和 Notes 草稿。Files 在中央文档标签页只读显示，Slides 标签始终保留。Pages 提供 Thumbnails / Outline 和 Section 管理入口；正常 Section 只使用 First Slide 到下一个 Section 的边界，旧成员形式保持兼容读取。折叠保留视口位置，卡片层叠增加适度阴影。
+桌面顶部以标签页保持多个 Project，Home 随时返回最近项目；切换保留各自的草稿。固定“幻灯片”文档提供 **编辑 / 章节浏览 / 备注页**。章节浏览使用真实页面预览、章节分组、搜索、缩略图大小与明确排序；备注页提供页面预览和宽讲稿区。左侧缩略图/大纲共用选择和紧凑间距。资料文件在独立文档标签中只读显示；Ctrl+W 只关闭活动文件，不关闭幻灯片或项目。
 
-桌面版 Present / F5 直接进入原生全屏，控制栏默认隐藏，靠近底边或通过键盘聚焦时出现。每个 Project 的 Activity 区分客户端主动上报的任务阶段与真实 writer 修改记录。明确绑定的 Position 页码随 Main 顺序显示，重排无需改写页面正文；Notes 和 Story 的实际修改继续进入历史。
+中文与英文分别翻译系统控件和原生菜单，作者的标题、内容与备注保持原文。助手连接位于顶栏，邻近动态；配置、客户端报告与真实保存回执分别展示。放映菜单明确“从头放映 / 从当前页放映”，对应 F5 / Shift+F5。动画仍使用既有对象效果、点击步骤和页面转场，预演与实际放映共享播放模型。
 
-PPTX 先生成在 Project 的 `Exports/`，检查后更新固定共享副本；保存触发与静默定时兜底共用发布锁。Windows 文档关联与桌面快捷方式使用 HUANDENG 名称和透明图标。OneDrive 共享输出使用普通文件镜像，避免依赖其不支持同步的符号链接。见 [PPTX publishing](docs/PPTX-PUBLISHING.md)。
+既有可视化布局、Agent 修改审阅和引用范围继续连接：检查完整布局预览后保存同一结果，通过真实回执查看前后画面与变更对象，再返回当前页。页脚可显式绑定 Main Position，重排无需逐页改写；页面身份保持稳定。完整界面和操作见 [v0.15 walkthrough](docs/UI-WALKTHROUGH-V015.md)，本轮按钮审计与竞品能力边界见 [Audit](docs/AUDIT-V015.md)。
 
-本轮 **82 项聚焦单元测试（13 个文件）、5 项桌面恢复测试、17 项发布器回归、8 项客户端测试**通过。精确正式包通过 **14/14 工作区检查**，包含真实第二实例的 `--entry`、`--entry=value` 与含 Unicode／空格的路径参数，正常退出且无渲染错误；原生 PowerPoint 对合成 5 页文稿完成表格、图表编辑保存重开和公式保留验证。测试范围见 [Validation](docs/VALIDATION-V013.md) 与[合成证据索引](docs/evidence/v013/README.md)；历史版本的完整测试数不计为本轮重跑。
+PPTX 先生成在 Project 的 Exports/，检查后更新固定共享副本；保存触发与静默定时兜底共用发布锁。Windows 文档关联与桌面快捷方式使用 HUANDENG 名称。OneDrive 共享输出使用普通文件镜像，见 [PPTX publishing](docs/PPTX-PUBLISHING.md)。本地写入完成和云端同步状态是两种不同证据。
 
-Codex 与 Claude Code 的原生清单已确认 0.13.0 启用；DeepSeek Harness 的 0.13.0 独立 overlay 已创建。适配器查找本机 Editor，并核对明确选择的 Project；ChatGPT 私人包沿用已有授权工作站连接。账户插件更新、本机安装、连接 doctor 与真实模型任务分别验收。**Agent setup** 仍是配置生成入口。English 为默认界面，已有个人偏好保留；未增加反向代理或公网隧道。新的设计指南要求先参考批准的页面、保留证据图、使用具体版式并检查实际渲染。
+本地适配器查找 Editor 并核对明确选择的 Project；ChatGPT 私人包沿用已有授权工作站连接。账户插件更新、本机安装、连接检查与真实模型任务分别验收，详见本版交付记录。设计指南要求先参考作者认可的页面、保留证据图、明确版式选择，再检查真实渲染与保存回执；结构化接口本身不代表美术质量优于其他工具。
 
-入门见 [Workspace UX](docs/WORKSPACE-UX.md)、[v0.12 创作指南](docs/WORKFLOW-V012.md) 与[完整工作流](docs/WORKFLOW-V010.md)。[Drug Design 示例](examples/drug-design-v010/README.md) 保留为通用示例。私人 Project 的内容、图片、标识、路径、截图及详细收据不进入工具仓库或插件包。仓库保持 private；旧提交中的历史标识/路径痕迹需在公开前另行清理，本轮不改写历史。
+入门见 [Workspace UX](docs/WORKSPACE-UX.md)、[v0.15 操作流程](docs/UI-WALKTHROUGH-V015.md) 与[完整工作流](docs/WORKFLOW-V010.md)。私人 Project 内容、图片、标识、路径、截图及详细收据不进入工具仓库或插件包。仓库保持 private；旧提交中的历史标识/路径痕迹需在公开前另行清理，本轮不改写历史。
 
-PPTD 是编辑源文件。PPTX 对支持的文本、图片、形状、线条、表格、6 类图表、公式和组合保留原生对象，逐对象回退列入导出报告；动画仍为静态。任意 PPTX 导入/往返、Google Slides 直接编辑、独立演讲者窗口和编辑器插件市场仍未实现。能力差异与设计取舍见 [Workspace UX](docs/WORKSPACE-UX.md)，版本规则见[发布规则](docs/RELEASE-POLICY.md)。
+PPTD 是编辑源文件。PPTX 对支持的文本、图片、形状、线条、表格、图表、公式和组合保留原生对象，逐对象回退列入导出报告；动画仍为静态。任意 PPTX 导入/往返、Google Slides 直接编辑、独立演讲者窗口、可继承母版与编辑器插件市场仍未实现。版本规则见[发布规则](docs/RELEASE-POLICY.md)。
 
 ## 启动桌面编辑器
 
@@ -122,11 +122,11 @@ Inspector 的 Checks 可按需核对本机字体与有效回退，并测量文�
 
 事务 JSON 使用 inspect 实际返回的 deckId、pageId 和版本。请求结构见 docs/SPEC.md。一个请求 ID 只对应一次确定的修改，重试时保持请求 ID 和全部内容相同。版本冲突后重新读取和检查差异。页序或身份/组件元数据变化也必须提供相应 manifest/metadata 版本。
 
-在 Project 面板或原生菜单打开 Agent setup，选择 Codex、Claude Code、DeepSeek Harness 或 ChatGPT 工作站通道，复制当前项目配置。正式包携带 Plugin 及运行时，使用安装程序自身 Electron Node 模式。配置生成不覆盖客户端设置，也不表示已经连接。
+在顶栏“助手连接”或原生菜单打开连接面板，选择 Codex、Claude Code、DeepSeek Harness 或 ChatGPT 工作站通道，复制当前项目配置。正式包携带 Plugin 及运行时，使用安装程序自身 Electron Node 模式。配置生成不覆盖客户端设置，也不表示已经连接。
 
 打开顶部 **Activity** 可查看当前 Project 的任务阶段与实际写入记录。不同对话必须明确绑定各自的 PPTD；切换可见标签页不会改变已经绑定的 Agent 目标。Activity 展示客户端明确上报的状态，不会自动读取全部聊天或显示模型内部推理。
 
-MCP 现有 **20 个工具、2 个 Story/operations 指南资源**。Activity read/report 允许客户端按明确 Project、session 和 task 上报进展；writer 保存记录与客户端报告分开标识。Agent 先读 selection 与四层 Story briefing，结合邻页、实例备注、固定版本和素材形成计划，再用只读 preview 查看字段/文件/复用影响。按当前任务授权应用相同 payload，可用 previewHash 绑定内容；共享 writer 继续检查 CAS 与幂等请求。保存后回读、渲染并检查实际讲解顺序。hash 不能替代用户授权。
+MCP 现有 **21 个工具、2 个 Story/operations 指南资源**。Activity read/report 允许客户端按明确 Project、session 和 task 上报进展；writer 保存记录与客户端报告分开标识。Agent 先读 selection 与四层 Story briefing，结合邻页、实例备注、固定版本和素材形成计划，再用只读 preview 查看字段/文件/复用影响。按当前任务授权应用相同 payload，可用 previewHash 绑定内容；共享 writer 继续检查 CAS 与幂等请求。保存后回读、渲染并检查实际讲解顺序。hash 不能替代用户授权。
 
 早期版本的官方 DeepSeek Harness 已在独立合成项目完成读取 → preview → apply → render → 保存重开闭环；当时的 Codex 原生配置解析、Claude 原生 manifest 校验也通过。这些历史记录不代替当前版本的客户端验收。ChatGPT 通过已有授权 DC-WALT 调用同一 CLI。具体安装方式、客户端边界和示例见 [Plugin 指南](plugins/huandeng/README.md) 与 [真实任务证据](docs/evidence/v09/plugin-acceptance.json)。
 

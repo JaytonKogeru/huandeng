@@ -183,7 +183,11 @@ export function PptdActivityPanel({
                 <time dateTime={event.timestamp} title={new Date(event.timestamp).toLocaleString()}>
                   {new Date(event.timestamp).toLocaleTimeString()}
                 </time>
-                <span className="text-foreground font-medium">{event.actor}</span>
+                <span className="text-foreground font-medium">
+                  {event.source === 'writer' && event.actor === 'Shared writer'
+                    ? t('Shared writer')
+                    : event.actor}
+                </span>
                 <span>{activityLabel(event, t)}</span>
                 {event.epoch !== snapshot?.epoch && <span>{t('Previous session')}</span>}
               </div>

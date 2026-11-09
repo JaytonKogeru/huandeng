@@ -31,11 +31,21 @@ Read [scientific design and review](references/scientific-design.md) before crea
 
 ## Report progress in the Project
 
-If the runtime advertises `huandeng_activity_report`, report short, observable stages for substantial tasks: reading the requested pages, preparing a proposal, applying changes, checking rendered output, and completing or stopping with a concrete reason. Use the confirmed `deckId`, a unique `sessionId` for this conversation, a stable `taskId`, and a new `requestId` for each update. The CLI equivalent is `activity report <report.json>`. Send `completed` only after the stated work has actually succeeded. Explicit client reports and automatic shared-writer receipts are displayed separately. Never send hidden reasoning, credentials, raw commands, or private text unrelated to the task.
+If the runtime advertises `huandeng_activity_report`, report short, observable stages for substantial tasks: reading the requested pages, preparing a proposal, applying changes, checking rendered output, and completing or stopping with a concrete reason. Use the confirmed `deckId`, a unique `sessionId` for this conversation, a stable `taskId`, and a new `requestId` for each update. The CLI equivalent is `activity <report.json>`. Send `completed` only after the stated work has actually succeeded. Explicit client reports and automatic shared-writer receipts are displayed separately. Never send hidden reasoning, credentials, raw commands, or private text unrelated to the task.
 
 Each conversation stays bound to its explicitly chosen PPTD entry. Switching the visible Project tab does not change that binding. Two conversations editing different Projects have separate activity streams; two clients editing the same Project still use revisions and the single writer. Activity is a bounded recent log, not a durable task scheduler or proof that a disconnected client is still running. An older runtime without the activity tool remains usable; do not invent unsupported calls.
 
 When the runtime accepts `operationIds`, include up to 20 exact apply receipt IDs in the relevant Activity report. These are explicit client claims that the editor resolves against the current Project journal; never guess IDs or associate an operation by time proximity. Keep long tasks' reports scoped to the relevant receipts instead of silently dropping IDs. A report of completion and a saved operation remain separate evidence.
+
+## Workspace and playback
+
+The interface language (`en` or `zh-CN`) is independent of authored language. Changing UI language must preserve slide wording, titles, notes, file paths, object names and figure pixels. Keep semantic title roles (`elementRoles` / title or heading roles) on new pages so Outline and search identify the intended heading rather than a footer.
+
+Slides is a permanent document. Edit provides canvas/Inspector/animation; Section browser shows rendered cards, search, collapse, sizes and explicit Main move controls; Notes page provides a preview and the shared notes editor. Finish composition and resolve panel drafts before switching views. Ctrl+W closes only an active file preview. Explicit Close project and window close retain draft guards.
+
+Position is the current collection order, not a stable address. Use pageId for a Main Slide, occurrenceId for each repeated presentation appearance, and versionId for a pinned snapshot. Recorded Main Position can differ from Presentation Position. Fixed versions remain read-only. A Section begins at an existing first-Slide anchor and continues to the next Section; it does not imply a divider slide. Create a divider only when requested.
+
+Select playback origin explicitly: From beginning / F5 starts the first visible occurrence; From current slide / Shift+F5 uses the current visible occurrence or the next visible fallback. For two click effects, inspect the opening state, advance each click, verify the actual target changes and that the page waits until the next click before changing. Exit restores editing. Preview, live show and static render are separate checks; static PPTX/PDF/PNG do not verify or carry interactive builds. Keep existing v1 timelines and v2 builds within the advertised runtime contract; no second animation engine or animation-video workflow is required.
 
 ## Keep the product boundaries clear
 

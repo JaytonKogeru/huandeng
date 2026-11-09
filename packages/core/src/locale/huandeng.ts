@@ -32,7 +32,7 @@ const reviewChinese = {
   'Figure layouts': '图像布局',
   'Client report': '客户端报告',
   Activity: '动态',
-  'Project Activity': 'Project 动态',
+  'Project Activity': '项目动态',
   'Activity filter': '动态筛选',
   'Close Activity': '关闭动态',
   'Previous session': '上一次会话',
@@ -222,39 +222,16 @@ function reverse(messages: Readonly<Record<string, string>>): Record<string, str
   );
 }
 
-function productVocabulary(template: string): string {
-  const terms: Record<string, string> = {
-    主幻灯片: 'Main Slides',
-    主故事: 'Main Story',
-    页面短码: 'Slide ID',
-    短码: 'Slide ID',
-    演讲备注: 'Speaker notes',
-    章节: 'Section',
-    演讲: 'Presentation',
-    项目: 'Project',
-    页面: 'Slide',
-    故事: 'Story',
-    素材: 'Assets',
-    图层: 'Layers',
-  };
-  return template.replace(
-    /主幻灯片|主故事|页面短码|短码|演讲备注|章节|演讲|项目|页面|故事|素材|图层/g,
-    (word) => terms[word],
-  );
-}
-
 const dictionaries: Record<UiLocale, Readonly<Record<string, string>>> = {
   en: { ...reverse(chineseMessages), ...englishMessages },
-  'zh-CN': Object.fromEntries(
-    Object.entries({
-      ...Object.fromEntries(Object.keys(englishMessages).map((source) => [source, source])),
-      ...reverse(englishMessages),
-      ...Object.fromEntries(
-        Object.entries(singularEnglish).map(([source, form]) => [form.one, source]),
-      ),
-      ...chineseMessages,
-    }).map(([source, translation]) => [source, productVocabulary(translation)]),
-  ),
+  'zh-CN': {
+    ...Object.fromEntries(Object.keys(englishMessages).map((source) => [source, source])),
+    ...reverse(englishMessages),
+    ...Object.fromEntries(
+      Object.entries(singularEnglish).map(([source, form]) => [form.one, source]),
+    ),
+    ...chineseMessages,
+  },
 };
 
 // These parameters are generated control labels or nested system diagnostics.

@@ -62,7 +62,7 @@ export function ScienceInsertMenu({
             {CHART_TYPES.map((type) => (
               <DropdownMenuItem key={type} onClick={() => insert('chart', type)}>
                 <ChartNoAxesCombined />
-                {CHART_LABELS[type]}
+                {t(CHART_LABELS[type])}
               </DropdownMenuItem>
             ))}
           </DropdownMenuSubContent>

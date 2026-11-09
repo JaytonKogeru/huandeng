@@ -5,6 +5,7 @@ import {
   cycleItemId,
   type EditorKeyboardScope,
   resolveEditorKeyboardCommand,
+  resolveWorkspaceDocumentClose,
   selectionRemovalIds,
   selectionRootIds,
   topLevelElementIds,
@@ -21,6 +22,13 @@ const key = (value: string, modifiers: Partial<Key> = {}): Key => ({
 });
 
 describe('editor keyboard ownership', () => {
+  it('keeps Slides permanent and only closes an active file preview', () => {
+    expect(resolveWorkspaceDocumentClose(null)).toBeNull();
+    expect(resolveWorkspaceDocumentClose('notes/Project Story.md')).toEqual({
+      type: 'close-file',
+      path: 'notes/Project Story.md',
+    });
+  });
   it.each(['input', 'dialog', 'timeline'] as EditorKeyboardScope[])(
     'leaves text, selection and destructive keys with the %s region',
     (scope) => {

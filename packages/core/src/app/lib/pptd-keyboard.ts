@@ -31,6 +31,12 @@ type KeyboardInput = Pick<KeyboardEvent, 'key' | 'ctrlKey' | 'metaKey' | 'altKey
   repeat?: boolean;
 };
 
+export function resolveWorkspaceDocumentClose(
+  activePath: string | null,
+): { type: 'close-file'; path: string } | null {
+  return activePath ? { type: 'close-file', path: activePath } : null;
+}
+
 export function editorKeyboardScope(target: EventTarget | null): EditorKeyboardScope {
   if (!(target instanceof Element)) return 'workspace';
   if (target.closest('[role="dialog"], [role="alertdialog"], [role="menu"]')) return 'dialog';

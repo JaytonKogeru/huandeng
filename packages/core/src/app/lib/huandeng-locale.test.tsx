@@ -89,7 +89,7 @@ describe('interface language preference and document isolation', () => {
     expect(onLocaleChanged).toHaveBeenCalledTimes(1);
     changed('zh-CN');
     expect(getUiLocale()).toBe('zh-CN');
-    expect(uiText('主幻灯片')).toBe('Main Slides');
+    expect(uiText('主幻灯片')).toBe('主幻灯片');
     expect(uiText('添加效果')).toBe('添加效果');
     await setUiLocale('en');
     expect(desktop.setLocale).toHaveBeenCalledWith('en');
@@ -158,7 +158,7 @@ describe('interface language preference and document isolation', () => {
     const zh = render();
     await setUiLocale('en');
     const en = render();
-    expect(zh).toContain('Slide动画步骤');
+    expect(zh).toContain('页面动画步骤');
     expect(en).toContain('Add effect');
     expect(en).toContain('>淡入</span>');
     expect(en).not.toContain('>添加效果');

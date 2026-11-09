@@ -88,6 +88,9 @@ describe('animation authoring entry', () => {
     expect(html).toContain('data-hd-animation-panel="builds"');
     expect(html).toContain('Slide animation steps');
     expect(html).toContain('Add effect');
+    expect(html).toContain('Object effects → click steps → preview.');
+    expect(html).toContain('Static exports do not include interactive animation.');
+    expect(html).toContain('No object selected.');
     expect(html).not.toContain('data-hd-timeline="');
     expect(JSON.stringify(page)).toBe(before);
   });

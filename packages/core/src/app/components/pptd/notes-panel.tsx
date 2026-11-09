@@ -4,6 +4,49 @@ import { Button } from '../ui/button';
 import { Textarea } from '../ui/textarea';
 import { PanelResizeHandle } from './panel-resize-handle';
 
+export interface NotesEditorProps {
+  value: string;
+  disabled: boolean;
+  presentation: boolean;
+  onChange: (value: string) => void;
+  onComposition: (value: boolean) => void;
+  onEditOccurrence: () => void;
+}
+
+export function NotesEditor({
+  value,
+  disabled,
+  presentation,
+  onChange,
+  onComposition,
+  onEditOccurrence,
+}: NotesEditorProps) {
+  const { t } = useHuandengLocale();
+  return (
+    <>
+      {presentation && (
+        <div className="flex shrink-0 items-center gap-2 border-b px-3 py-2 text-[11px] text-muted-foreground">
+          <span className="flex-1">{t('Notes for this Presentation occurrence.')}</span>
+          <Button size="xs" variant="outline" onClick={onEditOccurrence} disabled={disabled}>
+            {t('Edit notes')}
+          </Button>
+        </div>
+      )}
+      <Textarea
+        aria-label={t('演讲备注')}
+        placeholder={t('这页要讲什么？')}
+        data-hd-notes-editor
+        className="hd-notes-text min-h-0 flex-1 resize-none rounded-none border-none bg-transparent px-3 py-2 text-xs shadow-none focus-visible:ring-inset"
+        value={value}
+        readOnly={disabled || presentation}
+        onChange={(event) => onChange(event.target.value)}
+        onCompositionStart={() => onComposition(true)}
+        onCompositionEnd={() => onComposition(false)}
+      />
+    </>
+  );
+}
+
 export function NotesPanel({
   value,
   dock,
@@ -78,23 +121,13 @@ export function NotesPanel({
             {right ? <SlidersHorizontal /> : <X />}
           </Button>
         </div>
-        {presentation && (
-          <div className="flex shrink-0 items-center gap-2 border-b px-3 py-2 text-[11px] text-muted-foreground">
-            <span className="flex-1">{t('Notes for this Presentation occurrence.')}</span>
-            <Button size="xs" variant="outline" onClick={onEditOccurrence}>
-              {t('Edit notes')}
-            </Button>
-          </div>
-        )}
-        <Textarea
-          aria-label={t('演讲备注')}
-          placeholder={t('这页要讲什么？')}
-          className="min-h-0 flex-1 resize-none rounded-none border-none bg-transparent px-3 py-2 text-xs shadow-none focus-visible:ring-inset"
+        <NotesEditor
           value={value}
-          disabled={disabled || presentation}
-          onChange={(event) => onChange(event.target.value)}
-          onCompositionStart={() => onComposition(true)}
-          onCompositionEnd={() => onComposition(false)}
+          disabled={disabled}
+          presentation={presentation}
+          onChange={onChange}
+          onComposition={onComposition}
+          onEditOccurrence={onEditOccurrence}
         />
       </div>
     </section>

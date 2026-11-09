@@ -4,7 +4,7 @@ import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 
 /** Only synthetic files under the task-owned verification directory are created. */
-export async function createVisualReviewFixture(root, require) {
+export async function createVisualReviewFixture(root, require, prefix = 'v014-') {
   const parent = path.join(root, '.verification', 'visual-review-projects');
   await fs.mkdir(parent, { recursive: true });
   const { createServer } = await import(pathToFileURL(require.resolve('vite')).href);
@@ -21,7 +21,7 @@ export async function createVisualReviewFixture(root, require) {
       '/packages/core/src/pptd/persistence.ts',
     );
     for (let attempt = 0; attempt < 32; attempt++) {
-      const candidate = await fs.mkdtemp(path.join(parent, 'v014-'));
+      const candidate = await fs.mkdtemp(path.join(parent, prefix));
       const project = path.join(candidate, 'synthetic-project');
       await fs.mkdir(project);
       try {

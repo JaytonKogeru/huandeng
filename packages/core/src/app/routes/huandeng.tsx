@@ -43,6 +43,7 @@ import { ProjectFilePreviewPanel } from '@/components/pptd/file-preview-panel';
 import { PptdInspector } from '@/components/pptd/inspector';
 import { KeyboardHelpDialog } from '@/components/pptd/keyboard-help-dialog';
 import { HuandengLanguageMenu } from '@/components/pptd/language-menu';
+import { NotesPageView } from '@/components/pptd/notes-page-view';
 import { NotesPanel } from '@/components/pptd/notes-panel';
 import { OperationReviewDialog } from '@/components/pptd/operation-review-dialog';
 import { currentReviewTarget } from '@/components/pptd/operation-review-model';
@@ -57,11 +58,13 @@ import { RecipePanel } from '@/components/pptd/recipe-panel';
 import type { PptdTheme } from '@/components/pptd/renderer';
 import { ScienceInsertMenu } from '@/components/pptd/science-insert-menu';
 import type { ChartDataDraft } from '@/components/pptd/science-inspector';
+import { SectionBrowser } from '@/components/pptd/section-browser';
 import { ShapeInsertMenu } from '@/components/pptd/shape-insert-menu';
 import { TechnicalQaPanel } from '@/components/pptd/technical-qa-panel';
 import { PptdThumbnailRail } from '@/components/pptd/thumbnail-rail';
 import { WorkspaceDocumentTabs } from '@/components/pptd/workspace-document-tabs';
 import { WorkspaceSettings } from '@/components/pptd/workspace-settings';
+import { type WorkspaceView, WorkspaceViewSwitcher } from '@/components/pptd/workspace-views';
 import { Button } from '@/components/ui/button';
 import {
   Dialog,
@@ -70,6 +73,13 @@ import {
   DialogHeader,
   DialogTitle,
 } from '@/components/ui/dialog';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuShortcut,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
 import { Textarea } from '@/components/ui/textarea';
 import { type DesktopEditCommand, desktopHost } from '@/lib/huandeng-desktop';
 import { useHuandengLocale } from '@/lib/huandeng-locale';
@@ -89,6 +99,7 @@ import {
   focusEditorCanvas,
   focusWorkspaceRegion,
   resolveEditorKeyboardCommand,
+  resolveWorkspaceDocumentClose,
   selectionRemovalIds,
   selectionRootIds,
   topLevelElementIds,
@@ -106,6 +117,10 @@ import {
   type SlideInsertionBoundary,
   slideMoveAfterBoundary,
 } from '@/lib/pptd-thumbnail-sections';
+import {
+  workspaceKeyboardCommandAllowed,
+  workspaceViewSwitchBlocked,
+} from '@/lib/pptd-workspace-views';
 import { useDocumentTitle } from '@/lib/use-document-title';
 import { usePptdDocument } from '@/lib/use-pptd-document';
 import { type PageAnimation, validatePageAnimation } from '../../pptd/animation-model';
@@ -146,6 +161,8 @@ export function HuandengEditor() {
   const [timelineOpen, setTimelineOpen] = useState(false);
   const [previewActive, setPreviewActive] = useState(false);
   const [previewResetKey, setPreviewResetKey] = useState(0);
+  const [workspaceView, setWorkspaceView] = useState<WorkspaceView>('edit');
+  const [textComposing, setTextComposing] = useState(false);
   const timelinePageRef = useRef<PageSnapshot | null>(null);
   const presentationControls = useRef<PresentationControls | null>(null);
   const [storyDrafts, setStoryDrafts] = useState<Record<string, DesignIntentDraft>>({});
@@ -301,6 +318,19 @@ export function HuandengEditor() {
     [snapshot],
   );
   const sectionsNeedRepair = projectSections.some((item) => item.diagnostics.length > 0);
+  const thumbnailSections = useMemo(
+    () =>
+      projectSections
+        .filter((item) => !item.diagnostics.length && item.contiguous && item.pageIds.length)
+        .map((item) => ({
+          id: item.section.id,
+          title: item.section.title,
+          pageIds: item.pageIds,
+          startPageId: item.section.startPageId,
+          sectionPosition: item.sectionPosition,
+        })),
+    [projectSections],
+  );
   const emptyPresentation = useMemo(() => {
     if (
       !snapshot ||
@@ -402,13 +432,8 @@ export function HuandengEditor() {
   useEffect(
     () =>
       desktopHost()?.onCloseDocument?.(() => {
-        if (filePreviewPath) closeFilePreview(filePreviewPath);
-        else
-          void desktopHost()
-            ?.closeProject?.()
-            .catch((error: unknown) =>
-              setUiError(error instanceof Error ? error.message : String(error)),
-            );
+        const action = resolveWorkspaceDocumentClose(filePreviewPath);
+        if (action) closeFilePreview(action.path);
       }),
     [filePreviewPath, closeFilePreview],
   );
@@ -447,6 +472,33 @@ export function HuandengEditor() {
       setUiError(error instanceof Error ? error.message : String(error));
     }
   }, []);
+
+  const switchWorkspaceView = useCallback(
+    (view: WorkspaceView) => {
+      if (view === workspaceView) return false;
+      if (workspaceViewSwitchBlocked(auxiliaryDirty, textComposing)) {
+        setUiError(
+          'Save or discard panel drafts and finish text composition before switching views.',
+        );
+        return false;
+      }
+      setInsertionTool(null);
+      setAutoEditId(null);
+      setPreviewActive(false);
+      setPreviewResetKey((key) => key + 1);
+      setWorkspaceView(view);
+      return true;
+    },
+    [workspaceView, auxiliaryDirty, textComposing],
+  );
+
+  const onNotesChange = (value: string) => {
+    if (page && !readonly && !selectedPresentationId) client.setNotes(page.pageId, value);
+  };
+  const onNotesComposition = (value: boolean) => {
+    setTextComposing(value);
+    if (page) client.setComposing(page.pageId, value);
+  };
 
   const selectPage = useCallback(
     (id: string, occurrenceId?: string, focusTarget?: 'canvas' | 'thumbnails') => {
@@ -491,14 +543,15 @@ export function HuandengEditor() {
     )
       return;
     pageFocusRef.current = null;
-    if (intent.scope === 'canvas') focusEditorCanvas();
-    else
+    if (intent.scope === 'canvas') {
+      if (workspaceView === 'edit') focusEditorCanvas();
+    } else
       document
         .querySelector<HTMLElement>(
           `[data-hd-thumbnail-key="${CSS.escape(selectedView?.occurrenceId ?? selectedPageId ?? '')}"]`,
         )
         ?.focus({ preventScroll: true });
-  }, [selectedPageId, selectedView?.occurrenceId, presenting]);
+  }, [selectedPageId, selectedView?.occurrenceId, presenting, workspaceView]);
 
   useLayoutEffect(() => {
     if (presenting) {
@@ -925,6 +978,7 @@ export function HuandengEditor() {
         readonly ||
         busy ||
         presenting ||
+        workspaceView !== 'edit' ||
         filePreviewPath !== null ||
         event.defaultPrevented ||
         (event.target instanceof Element && event.target.closest('[data-hd-file-preview]')) ||
@@ -993,7 +1047,18 @@ export function HuandengEditor() {
     };
     window.addEventListener('paste', paste);
     return () => window.removeEventListener('paste', paste);
-  }, [filePreviewPath, busy, client, importImages, page, presenting, readonly, run, snapshot]);
+  }, [
+    filePreviewPath,
+    busy,
+    client,
+    importImages,
+    page,
+    presenting,
+    readonly,
+    run,
+    snapshot,
+    workspaceView,
+  ]);
 
   const chooseTool = (tool: InsertionTool | null) => {
     setInsertionTool(tool);
@@ -1104,6 +1169,7 @@ export function HuandengEditor() {
 
   const executeKeyboardCommand = useCallback(
     (command: EditorKeyboardCommand, target: EventTarget | null) => {
+      if (!workspaceKeyboardCommandAllowed(workspaceView, command)) return;
       if (command.type === 'help') {
         if (presenting) presentationControls.current?.pause();
         if (document.fullscreenElement) {
@@ -1147,7 +1213,8 @@ export function HuandengEditor() {
         setAutoEditId(null);
         setPresenting(false);
         setSelectedIds([]);
-        if (!presenting) requestAnimationFrame(() => focusEditorCanvas());
+        if (!presenting && workspaceView === 'edit')
+          requestAnimationFrame(() => focusEditorCanvas());
         return;
       }
       if (command.type === 'present') {
@@ -1414,23 +1481,25 @@ export function HuandengEditor() {
       allViewPages,
       playbackPages,
       selectedView,
+      workspaceView,
     ],
   );
 
   useEffect(() => {
     const capture = (event: KeyboardEvent) => {
+      if (
+        (event.ctrlKey || event.metaKey) &&
+        !event.shiftKey &&
+        !event.altKey &&
+        event.key.toLowerCase() === 'w'
+      ) {
+        event.preventDefault();
+        event.stopPropagation();
+        const action = resolveWorkspaceDocumentClose(filePreviewPath);
+        if (action) closeFilePreview(action.path);
+        return;
+      }
       if (filePreviewPath) {
-        if (
-          (event.ctrlKey || event.metaKey) &&
-          !event.shiftKey &&
-          !event.altKey &&
-          event.key.toLowerCase() === 'w'
-        ) {
-          event.preventDefault();
-          event.stopPropagation();
-          closeFilePreview(filePreviewPath);
-          return;
-        }
         if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 's')
           event.preventDefault();
         return;
@@ -1742,6 +1811,19 @@ export function HuandengEditor() {
         </div>
         <div className="hd-titlebar-actions">
           <Button
+            variant="ghost"
+            size="sm"
+            aria-label={t('连接 Agent')}
+            title={t(
+              'Generate setup instructions for an external Agent to work with this Project.',
+            )}
+            onClick={() => setAgentConnectionOpen(true)}
+            data-hd-agent-connect
+          >
+            <Bot />
+            {t('连接 Agent')}
+          </Button>
+          <Button
             variant={activityOpen ? 'secondary' : 'ghost'}
             size="sm"
             aria-label={t('Agent Activity')}
@@ -1877,39 +1959,49 @@ export function HuandengEditor() {
               {exporting ? <Loader2 className="animate-spin" /> : <Download />}
               {t('导出')}
             </Button>
-            <Button
-              variant="default"
-              size="sm"
-              disabled={!page || !playbackPages.length || busy || presentationBlocked}
-              title={
-                emptyPresentation
-                  ? t('Add slides before presenting.')
-                  : auxiliaryDirty
-                    ? t('Save or discard the pending drafts before presenting.')
-                    : undefined
-              }
-              onClick={() =>
-                void run(async () => {
-                  await client.flushAll();
-                  const destination =
-                    playbackPages.find(
-                      (item) =>
-                        allViewPages.indexOf(item) >= allViewPages.indexOf(selectedView ?? page),
-                    ) ?? playbackPages[0];
-                  if (!destination)
-                    throw new Error('There are no visible slides to present. Show a slide first.');
-                  presentationEntries.current.clear();
-                  pendingPresentationPage.current = null;
-                  setPresentationSession((session) => session + 1);
-                  selectPage(destination.pageId, destination.occurrenceId);
-                  setPresenterNotesOpen(false);
-                  setPresenting(true);
-                })
-              }
-            >
-              <Play />
-              {t('演示')}
-            </Button>
+            <DropdownMenu>
+              <DropdownMenuTrigger
+                render={
+                  <Button
+                    variant="default"
+                    size="sm"
+                    aria-label={t('Presentation menu')}
+                    data-hd-presentation-menu
+                    disabled={!page || !playbackPages.length || busy || presentationBlocked}
+                    title={
+                      emptyPresentation
+                        ? t('Add slides before presenting.')
+                        : auxiliaryDirty
+                          ? t('Save or discard the pending drafts before presenting.')
+                          : undefined
+                    }
+                  />
+                }
+              >
+                <Play />
+                {t('演示')}
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+                <DropdownMenuItem
+                  data-hd-present-from="beginning"
+                  onClick={() =>
+                    executeKeyboardCommand({ type: 'present', fromCurrent: false }, null)
+                  }
+                >
+                  {t('From beginning')}
+                  <DropdownMenuShortcut>F5</DropdownMenuShortcut>
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  data-hd-present-from="current"
+                  onClick={() =>
+                    executeKeyboardCommand({ type: 'present', fromCurrent: true }, null)
+                  }
+                >
+                  {t('From current slide')}
+                  <DropdownMenuShortcut>Shift+F5</DropdownMenuShortcut>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
             <Button
               variant="ghost"
               size="icon-sm"
@@ -2068,18 +2160,6 @@ export function HuandengEditor() {
             </Button>
           </div>
           <div className={leftTab === 'project' ? 'min-h-0 flex-1 overflow-y-auto' : 'hidden'}>
-            <div className="border-b border-border px-3 py-2">
-              <Button
-                variant="ghost"
-                size="sm"
-                className="w-full justify-start"
-                onClick={() => setAgentConnectionOpen(true)}
-                data-hd-agent-connect
-              >
-                <Bot />
-                {t('连接 Agent')}
-              </Button>
-            </div>
             <ProjectOverview
               snapshot={snapshot}
               selectedPageId={selectedPageId}
@@ -2185,22 +2265,7 @@ export function HuandengEditor() {
                   : () => setSectionEditorRequest({ key: Date.now() })
               }
               pages={viewPages}
-              sections={
-                selectedPresentationId
-                  ? []
-                  : projectSections
-                      .filter(
-                        (item) =>
-                          !item.diagnostics.length && item.contiguous && item.pageIds.length,
-                      )
-                      .map((item) => ({
-                        id: item.section.id,
-                        title: item.section.title,
-                        pageIds: item.pageIds,
-                        startPageId: item.section.startPageId,
-                        sectionPosition: item.sectionPosition,
-                      }))
-              }
+              sections={selectedPresentationId ? [] : thumbnailSections}
               size={snapshot.size}
               theme={theme}
               currentPageId={selectedPageId}
@@ -2283,7 +2348,7 @@ export function HuandengEditor() {
         <main
           className="flex min-w-0 flex-1 flex-col"
           onDragOver={(event) => {
-            if (filePreviewPath) {
+            if (filePreviewPath || workspaceView !== 'edit') {
               event.preventDefault();
               return;
             }
@@ -2296,7 +2361,7 @@ export function HuandengEditor() {
             }
           }}
           onDrop={(event) => {
-            if (filePreviewPath) {
+            if (filePreviewPath || workspaceView !== 'edit') {
               event.preventDefault();
               return;
             }
@@ -2370,133 +2435,147 @@ export function HuandengEditor() {
           <div
             className={filePreviewPath ? 'hidden' : 'flex min-h-0 flex-1 flex-col'}
             data-hd-slide-document
+            data-hd-current-workspace-view={workspaceView}
           >
-            <div
-              className="hd-editor-toolbar flex h-11 shrink-0 items-center gap-1 border-b border-border bg-background px-3"
-              data-hd-focus-region="tools"
-              tabIndex={-1}
-            >
-              <Button
-                variant={insertionTool ? 'ghost' : 'secondary'}
-                size="icon-sm"
-                aria-label={t('选择工具')}
-                aria-pressed={!insertionTool}
-                title={t('选择 V · Esc 取消插入')}
-                onClick={() => chooseTool(null)}
+            <WorkspaceViewSwitcher
+              value={workspaceView}
+              blocked={workspaceViewSwitchBlocked(auxiliaryDirty, textComposing)}
+              onChange={switchWorkspaceView}
+            />
+            {workspaceView === 'edit' && (
+              <div
+                className="hd-editor-toolbar flex h-11 shrink-0 items-center gap-1 border-b border-border bg-background px-3"
+                data-hd-focus-region="tools"
+                tabIndex={-1}
               >
-                <MousePointer2 />
-              </Button>
-              <span className="mx-1 h-4 w-px bg-border" />
-              <Button
-                variant="ghost"
-                size="sm"
-                aria-label={t('添加文本')}
-                title={t('文字 T · 在画布点击或拖拽放置')}
-                aria-pressed={insertionTool?.kind === 'text'}
-                disabled={readonly || busy || !page}
-                onClick={() => chooseTool(insertionTool?.kind === 'text' ? null : { kind: 'text' })}
-              >
-                <Type />
-                {t('文字')}
-              </Button>
-              <Button
-                variant="ghost"
-                size="sm"
-                aria-label={t('从设备导入并放置图片')}
-                title={t('从设备导入图片并放置到当前页')}
-                data-hd-import-images
-                disabled={readonly || busy || !page}
-                onClick={() => imageInputRef.current?.click()}
-              >
-                {importingImages ? <Loader2 className="animate-spin" /> : <Upload />}
-                {t('Image')}
-              </Button>
-              <ShapeInsertMenu
-                disabled={readonly || busy || !page}
-                active={insertionTool?.kind === 'shape'}
-                onChoose={chooseTool}
-              />
-              <Button
-                variant="ghost"
-                size="sm"
-                aria-label={t('添加线条')}
-                title={t('线条 L · 拖拽绘制，Shift 约束方向')}
-                aria-pressed={insertionTool?.kind === 'line'}
-                disabled={readonly || busy || !page}
-                onClick={() => chooseTool(insertionTool?.kind === 'line' ? null : { kind: 'line' })}
-              >
-                <Minus />
-                {t('线条')}
-              </Button>
-              <ScienceInsertMenu
-                size={snapshot.size}
-                disabled={readonly || busy || !page}
-                onInsert={(element) => {
-                  if (!page) return;
-                  void run(async () => {
-                    await client.apply([{ op: 'element.add', pageId: page.pageId, element }]);
-                    setSelectedIds([element.elementId]);
-                  });
-                }}
-              />
-              <span className="mx-1 h-4 w-px bg-border" />
-              <Button
-                variant="ghost"
-                size="icon-sm"
-                aria-label={t('组合对象')}
-                title={t('组合 Ctrl+G')}
-                disabled={readonly || busy || selectedElements.length < 2}
-                onClick={() => groupSelection()}
-              >
-                <Group />
-              </Button>
-              <Button
-                variant="ghost"
-                size="icon-sm"
-                aria-label={t('取消组合')}
-                title={t('取消组合 Ctrl+Shift+G')}
-                disabled={
-                  readonly || busy || !selectedElements.some((item) => item.elementType === 'group')
-                }
-                onClick={() => groupSelection(true)}
-              >
-                <Ungroup />
-              </Button>
-              <span className="min-w-1 flex-1" />
-              <Button
-                variant={timelineOpen ? 'secondary' : 'ghost'}
-                size="sm"
-                aria-expanded={timelineOpen}
-                disabled={!authoringPage}
-                onClick={() => {
-                  if (timelineDirty) {
-                    setUiError('时间线还有未保存修改，请重试保存或还原后再收起。');
-                    return;
+                <Button
+                  variant={insertionTool ? 'ghost' : 'secondary'}
+                  size="icon-sm"
+                  aria-label={t('选择工具')}
+                  aria-pressed={!insertionTool}
+                  title={t('选择 V · Esc 取消插入')}
+                  onClick={() => chooseTool(null)}
+                >
+                  <MousePointer2 />
+                </Button>
+                <span className="mx-1 h-4 w-px bg-border" />
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  aria-label={t('添加文本')}
+                  title={t('文字 T · 在画布点击或拖拽放置')}
+                  aria-pressed={insertionTool?.kind === 'text'}
+                  disabled={readonly || busy || !page}
+                  onClick={() =>
+                    chooseTool(insertionTool?.kind === 'text' ? null : { kind: 'text' })
                   }
-                  if (!timelineOpen)
+                >
+                  <Type />
+                  {t('文字')}
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  aria-label={t('从设备导入并放置图片')}
+                  title={t('从设备导入图片并放置到当前页')}
+                  data-hd-import-images
+                  disabled={readonly || busy || !page}
+                  onClick={() => imageInputRef.current?.click()}
+                >
+                  {importingImages ? <Loader2 className="animate-spin" /> : <Upload />}
+                  {t('Image')}
+                </Button>
+                <ShapeInsertMenu
+                  disabled={readonly || busy || !page}
+                  active={insertionTool?.kind === 'shape'}
+                  onChoose={chooseTool}
+                />
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  aria-label={t('添加线条')}
+                  title={t('线条 L · 拖拽绘制，Shift 约束方向')}
+                  aria-pressed={insertionTool?.kind === 'line'}
+                  disabled={readonly || busy || !page}
+                  onClick={() =>
+                    chooseTool(insertionTool?.kind === 'line' ? null : { kind: 'line' })
+                  }
+                >
+                  <Minus />
+                  {t('线条')}
+                </Button>
+                <ScienceInsertMenu
+                  size={snapshot.size}
+                  disabled={readonly || busy || !page}
+                  onInsert={(element) => {
+                    if (!page) return;
                     void run(async () => {
-                      await client.flushAll();
-                      setInsertionTool(null);
-                      setAutoEditId(null);
-                      setNotesOpen(false);
-                      setTimelineOpen(true);
+                      await client.apply([{ op: 'element.add', pageId: page.pageId, element }]);
+                      setSelectedIds([element.elementId]);
                     });
-                  else setTimelineOpen(false);
-                }}
-              >
-                <Clapperboard />
-                {t('动画')}
-              </Button>
-              <Button
-                variant={notesOpen ? 'secondary' : 'ghost'}
-                size="sm"
-                aria-expanded={notesOpen}
-                onClick={() => setNotesOpen((value) => !value)}
-              >
-                <NotebookPen />
-                {t('Notes')}
-              </Button>
-            </div>
+                  }}
+                />
+                <span className="mx-1 h-4 w-px bg-border" />
+                <Button
+                  variant="ghost"
+                  size="icon-sm"
+                  aria-label={t('组合对象')}
+                  title={t('组合 Ctrl+G')}
+                  disabled={readonly || busy || selectedElements.length < 2}
+                  onClick={() => groupSelection()}
+                >
+                  <Group />
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="icon-sm"
+                  aria-label={t('取消组合')}
+                  title={t('取消组合 Ctrl+Shift+G')}
+                  disabled={
+                    readonly ||
+                    busy ||
+                    !selectedElements.some((item) => item.elementType === 'group')
+                  }
+                  onClick={() => groupSelection(true)}
+                >
+                  <Ungroup />
+                </Button>
+                <span className="min-w-1 flex-1" />
+                <Button
+                  variant={timelineOpen ? 'secondary' : 'ghost'}
+                  size="sm"
+                  aria-expanded={timelineOpen}
+                  disabled={!authoringPage}
+                  onClick={() => {
+                    if (timelineDirty) {
+                      setUiError('时间线还有未保存修改，请重试保存或还原后再收起。');
+                      return;
+                    }
+                    if (!timelineOpen)
+                      void run(async () => {
+                        await client.flushAll();
+                        setInsertionTool(null);
+                        setAutoEditId(null);
+                        setNotesOpen(false);
+                        setTimelineOpen(true);
+                      });
+                    else setTimelineOpen(false);
+                  }}
+                >
+                  <Clapperboard />
+                  {t('动画')}
+                </Button>
+                <Button
+                  variant={notesOpen ? 'secondary' : 'ghost'}
+                  size="sm"
+                  aria-expanded={notesOpen}
+                  onClick={() => setNotesOpen((value) => !value)}
+                >
+                  <NotebookPen />
+                  {t('Notes')}
+                </Button>
+              </div>
+            )}
             {page && (
               <PageScopeBar
                 snapshot={snapshot}
@@ -2583,7 +2662,42 @@ export function HuandengEditor() {
               </div>
             )}
             <div className="relative flex min-h-0 flex-1 flex-col">
-              {authoringPage ? (
+              {workspaceView === 'browse' ? (
+                <SectionBrowser
+                  key={selectedPresentationId ?? 'main'}
+                  pages={viewPages}
+                  sections={thumbnailSections}
+                  size={snapshot.size}
+                  theme={theme}
+                  currentPageId={selectedPageId}
+                  currentOccurrenceId={selectedView?.occurrenceId}
+                  presentation={!!selectedPresentationId}
+                  disabled={readonly || busy || auxiliaryDirty}
+                  onSelect={selectPage}
+                  onEdit={(id, occurrenceId) => {
+                    if (switchWorkspaceView('edit')) selectPage(id, occurrenceId, 'canvas');
+                  }}
+                  onMove={moveAtBoundary}
+                  onManageSections={() => setSectionEditorRequest({ key: Date.now() })}
+                />
+              ) : workspaceView === 'notes' ? (
+                <NotesPageView
+                  page={page}
+                  size={snapshot.size}
+                  theme={theme}
+                  position={pageIndex + 1}
+                  count={viewPages.length}
+                  navigatingDisabled={timelineDirty || textComposing}
+                  onPrevious={() => stepPage(-1)}
+                  onNext={() => stepPage(1)}
+                  value={page?.data.notes ?? ''}
+                  disabled={readonly}
+                  presentation={!!selectedPresentationId}
+                  onChange={onNotesChange}
+                  onComposition={onNotesComposition}
+                  onEditOccurrence={showProjectEditor}
+                />
+              ) : authoringPage ? (
                 <AuthoringWorkspace
                   onZoom={setScale}
                   canvas={{
@@ -2610,8 +2724,10 @@ export function HuandengEditor() {
                     onCancel: (originals) =>
                       client.cancelInteraction(authoringPage.pageId, originals),
                     onFlush: () => void run(() => client.flushPage(authoringPage.pageId)),
-                    onComposition: (composing) =>
-                      client.setComposing(authoringPage.pageId, composing),
+                    onComposition: (composing) => {
+                      setTextComposing(composing);
+                      client.setComposing(authoringPage.pageId, composing);
+                    },
                   }}
                   timelineOpen={timelineOpen}
                   previewResetKey={previewResetKey}
@@ -2684,7 +2800,7 @@ export function HuandengEditor() {
                 </div>
               )}
             </div>
-            {notesOpen && notesDock === 'bottom' && page && (
+            {workspaceView === 'edit' && notesOpen && notesDock === 'bottom' && page && (
               <NotesPanel
                 value={page.data.notes ?? ''}
                 dock={notesDock}
@@ -2692,8 +2808,8 @@ export function HuandengEditor() {
                 width={notesWidth}
                 disabled={readonly}
                 presentation={!!selectedPresentationId}
-                onChange={(value) => client.setNotes(page.pageId, value)}
-                onComposition={(value) => client.setComposing(page.pageId, value)}
+                onChange={onNotesChange}
+                onComposition={onNotesComposition}
                 onDock={setNotesDock}
                 onHeight={setNotesHeight}
                 onWidth={setNotesWidth}
@@ -2705,7 +2821,7 @@ export function HuandengEditor() {
             <div className="hd-statusbar flex shrink-0 items-center gap-2 border-t border-border bg-background px-3 text-xs text-muted-foreground">
               <span className="min-w-0 truncate" title={page?.pageId} data-hd-slide-identity>
                 {page
-                  ? `Position ${pageIndex + 1} / ${viewPages.length} · Slide ID ${page.shortCode ?? page.pageId}`
+                  ? `${t('Position')} ${pageIndex + 1} / ${viewPages.length} · ${t('Slide ID')} ${page.shortCode ?? page.pageId}`
                   : t('No slide selected')}
               </span>
               {exportReport && (
@@ -2714,39 +2830,43 @@ export function HuandengEditor() {
                 </a>
               )}
               <span className="flex-1" />
-              <Button
-                variant="ghost"
-                size="icon-xs"
-                aria-label={t('缩小画布')}
-                onClick={() => setScale(Math.max(0.15, (scale ?? actualScale) - 0.1))}
-              >
-                <Minus />
-              </Button>
-              <button
-                type="button"
-                className="min-w-12 font-mono text-[11px]"
-                title={t('点击适合窗口')}
-                onClick={() => setScale(undefined)}
-              >
-                {Math.round(actualScale * 100)}%
-              </button>
-              <Button
-                variant="ghost"
-                size="icon-xs"
-                aria-label={t('放大画布')}
-                onClick={() => setScale(Math.min(3, (scale ?? actualScale) + 0.1))}
-              >
-                <Plus />
-              </Button>
-              <Button
-                variant="ghost"
-                size="xs"
-                aria-label={t('适合窗口')}
-                title={t('Fit slide to available canvas space')}
-                onClick={() => setScale(undefined)}
-              >
-                {t('Fit')}
-              </Button>
+              {workspaceView === 'edit' && (
+                <>
+                  <Button
+                    variant="ghost"
+                    size="icon-xs"
+                    aria-label={t('缩小画布')}
+                    onClick={() => setScale(Math.max(0.15, (scale ?? actualScale) - 0.1))}
+                  >
+                    <Minus />
+                  </Button>
+                  <button
+                    type="button"
+                    className="min-w-12 font-mono text-[11px]"
+                    title={t('点击适合窗口')}
+                    onClick={() => setScale(undefined)}
+                  >
+                    {Math.round(actualScale * 100)}%
+                  </button>
+                  <Button
+                    variant="ghost"
+                    size="icon-xs"
+                    aria-label={t('放大画布')}
+                    onClick={() => setScale(Math.min(3, (scale ?? actualScale) + 0.1))}
+                  >
+                    <Plus />
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="xs"
+                    aria-label={t('适合窗口')}
+                    title={t('Fit slide to available canvas space')}
+                    onClick={() => setScale(undefined)}
+                  >
+                    {t('Fit')}
+                  </Button>
+                </>
+              )}
             </div>
           </div>
           {openFilePreviews.map((path) => (
@@ -2786,7 +2906,7 @@ export function HuandengEditor() {
         </main>
         {page && (
           <div
-            className={`hd-inspector-container relative shrink-0 ${inspectorCollapsed || previewActive || filePreviewPath || (notesOpen && notesDock === 'right') ? 'hidden' : 'flex'}`}
+            className={`hd-inspector-container relative shrink-0 ${workspaceView !== 'edit' || inspectorCollapsed || previewActive || filePreviewPath || (notesOpen && notesDock === 'right') ? 'hidden' : 'flex'}`}
             style={{ width: inspectorWidth }}
           >
             <PanelResizeHandle
@@ -2819,7 +2939,10 @@ export function HuandengEditor() {
               onUngroup={() => groupSelection(true)}
               onBegin={() => client.beginInteraction(page.pageId)}
               onEnd={() => void run(() => client.endInteraction(page.pageId))}
-              onComposition={(composing) => client.setComposing(page.pageId, composing)}
+              onComposition={(composing) => {
+                setTextComposing(composing);
+                client.setComposing(page.pageId, composing);
+              }}
               onAlign={align}
               onDistribute={distribute}
               onLayer={layer}
@@ -2858,30 +2981,35 @@ export function HuandengEditor() {
             </PptdInspector>
           </div>
         )}
-        {page && notesOpen && notesDock === 'right' && !previewActive && (
-          <div className={filePreviewPath ? 'hidden' : 'contents'}>
-            <NotesPanel
-              value={page.data.notes ?? ''}
-              dock={notesDock}
-              height={notesHeight}
-              width={notesWidth}
-              disabled={readonly}
-              presentation={!!selectedPresentationId}
-              onChange={(value) => client.setNotes(page.pageId, value)}
-              onComposition={(value) => client.setComposing(page.pageId, value)}
-              onDock={setNotesDock}
-              onHeight={setNotesHeight}
-              onWidth={setNotesWidth}
-              onResizeEnd={() => {}}
-              onClose={() => {
-                setNotesOpen(false);
-                setInspectorCollapsed(false);
-              }}
-              onEditOccurrence={showProjectEditor}
-            />
-          </div>
-        )}
+        {workspaceView === 'edit' &&
+          page &&
+          notesOpen &&
+          notesDock === 'right' &&
+          !previewActive && (
+            <div className={filePreviewPath ? 'hidden' : 'contents'}>
+              <NotesPanel
+                value={page.data.notes ?? ''}
+                dock={notesDock}
+                height={notesHeight}
+                width={notesWidth}
+                disabled={readonly}
+                presentation={!!selectedPresentationId}
+                onChange={onNotesChange}
+                onComposition={onNotesComposition}
+                onDock={setNotesDock}
+                onHeight={setNotesHeight}
+                onWidth={setNotesWidth}
+                onResizeEnd={() => {}}
+                onClose={() => {
+                  setNotesOpen(false);
+                  setInspectorCollapsed(false);
+                }}
+                onEditOccurrence={showProjectEditor}
+              />
+            </div>
+          )}
         {page &&
+          workspaceView === 'edit' &&
           inspectorCollapsed &&
           !previewActive &&
           !filePreviewPath &&

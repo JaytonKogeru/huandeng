@@ -550,6 +550,32 @@ describe('PPTD browser editing contract', () => {
     ]);
   });
 
+  it('keeps the shared notes draft through composing and projection reads before one save', async () => {
+    const { client, commit, setRemote } = await setup();
+    const notes = '完成的演讲备注\n'.repeat(200);
+    commit.mockImplementation(async (request) => {
+      const saved = session('原稿', 2);
+      saved.pages[0].data.notes = notes;
+      setRemote(saved);
+      return receipt(request.requestId);
+    });
+    client.setComposing('page-1', true);
+    client.setNotes('page-1', 'zhongwen');
+    await vi.advanceTimersByTimeAsync(1400);
+    expect(commit).not.toHaveBeenCalled();
+    await expect(client.flushAll()).rejects.toMatchObject({ code: 'EDIT_IN_PROGRESS' });
+    client.setNotes('page-1', notes);
+    expect(client.page('page-1')?.data.notes).toBe(notes);
+    expect(client.page('page-1')?.data.notes).toBe(notes);
+    client.setComposing('page-1', false);
+    await vi.advanceTimersByTimeAsync(700);
+    expect(commit).toHaveBeenCalledTimes(1);
+    expect(commit.mock.calls[0][0].operations).toEqual([
+      { op: 'page.notes.set', pageId: 'page-1', text: notes },
+    ]);
+    expect(client.page('page-1')?.data.notes).toBe(notes);
+  });
+
   it('anchors a pointer gesture before movement so a remote update cannot silently change its base', async () => {
     const { client, commit, setRemote } = await setup();
     client.beginInteraction('page-1');

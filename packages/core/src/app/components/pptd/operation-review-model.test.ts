@@ -136,7 +136,7 @@ describe('operation review presentation and navigation', () => {
       '客户端报告 · 已报告完成',
     );
     for (const [label, translation] of [
-      ['Project Activity', 'Project 动态'],
+      ['Project Activity', '项目动态'],
       ['Activity filter', '动态筛选'],
       ['Close Activity', '关闭动态'],
       ['Previous session', '上一次会话'],

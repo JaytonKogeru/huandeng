@@ -69,7 +69,6 @@ function SlideInsertionGap({
   onDragOver,
   onDrop,
   active,
-  compact = false,
 }: {
   boundary: SlideInsertionBoundary;
   position: number;
@@ -79,7 +78,6 @@ function SlideInsertionGap({
   onDragOver: (event: DragEvent<HTMLElement>, boundary: SlideInsertionBoundary) => void;
   onDrop: (event: DragEvent<HTMLElement>, boundary: SlideInsertionBoundary) => void;
   active: boolean;
-  compact?: boolean;
 }) {
   useHuandengLocale();
   return (
@@ -88,7 +86,7 @@ function SlideInsertionGap({
         render={
           <button
             type="button"
-            className={`group flex ${compact ? 'h-3' : 'h-6'} w-full items-center gap-2 rounded px-1 text-muted-foreground outline-none hover:text-brand focus-visible:ring-2 focus-visible:ring-brand/50 disabled:pointer-events-none disabled:opacity-30`}
+            className="group relative flex h-1.5 w-full items-center gap-2 rounded px-1 text-muted-foreground outline-none hover:text-brand focus-visible:z-10 focus-visible:ring-2 focus-visible:ring-brand/50 disabled:pointer-events-none disabled:opacity-30"
             disabled={disabled}
             aria-label={t('Insert blank slide at Position {position}', { position })}
             title={t('Insert blank slide here')}
@@ -422,7 +420,7 @@ export function PptdThumbnailRail({
         ref={scrollRef}
         role="group"
         aria-label={t('Slide thumbnails')}
-        className="min-h-0 flex-1 space-y-1 overflow-y-auto px-3 pb-5"
+        className="min-h-0 flex-1 overflow-y-auto px-3 pb-5"
         data-hd-thumbnail-scroll
         style={{ overflowAnchor: 'none' }}
         onDragOver={(event) => {
@@ -460,7 +458,7 @@ export function PptdThumbnailRail({
             currentPageId !== page.pageId &&
             section.pageIds.includes(currentPageId ?? '');
           return (
-            <div key={key} className="space-y-1">
+            <div key={key}>
               {onInsert && !searching && (
                 <SlideInsertionGap
                   boundary={before}
@@ -471,7 +469,6 @@ export function PptdThumbnailRail({
                   onDragOver={dragOver}
                   onDrop={drop}
                   active={sameBoundary(before)}
-                  compact={view === 'outline'}
                 />
               )}
               {section && (
@@ -791,7 +788,6 @@ export function PptdThumbnailRail({
             onDragOver={dragOver}
             onDrop={drop}
             active={sameBoundary(slideInsertionBoundary(pages, pages.length))}
-            compact={view === 'outline'}
           />
         )}
         {tombstones.length > 0 && (

@@ -537,7 +537,7 @@ export function PptdEditorCanvas({
                 previewTimeMs={previewTimeMs}
                 elementTabIndex={() => -1}
                 elementLabel={(element) =>
-                  `${elementLabel(element)} · ${isMainPositionField(element) ? 'Slide Position field' : t(element.elementType === 'text' ? 'Enter 编辑文字' : '幻灯片对象')}`
+                  `${elementLabel(element)} · ${isMainPositionField(element) ? t('Slide Position field') : t(element.elementType === 'text' ? 'Enter 编辑文字' : '幻灯片对象')}`
                 }
                 onElementPointerDown={select}
                 onElementFocus={(id) => {

@@ -102,6 +102,17 @@ function AnimationEditor(props: AnimationPanelProps) {
 
   return (
     <div data-hd-animation-panel={mode} className="min-h-0 shrink-0">
+      <p
+        data-hd-animation-guide
+        className="border-t border-border/60 bg-card px-3 py-1.5 text-xs text-muted-foreground"
+      >
+        {t('对象效果 → 点击步骤 → 逐步预演；换页效果单独设置。静态导出不包含交互动画。')}
+      </p>
+      {(animationDirty || transitionDirty) && (
+        <p role="status" className="bg-amber-500/5 px-3 py-1 text-xs text-muted-foreground">
+          {t('先按 Enter 应用输入，或按 Esc 还原；草稿处理后即可切换视图和放映。')}
+        </p>
+      )}
       {mode === 'builds' ? (
         <BuildPanel
           {...props}
