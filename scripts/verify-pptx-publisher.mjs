@@ -7,6 +7,7 @@ import os from 'node:os';
 import path from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
+import { deflateRawSync, inflateRawSync } from 'node:zlib';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const require = createRequire(import.meta.url);
@@ -18,6 +19,90 @@ const {
   createPublisherScheduler,
 } = require('../packages/desktop/publisher.cjs');
 const fixture = await fs.readFile(path.join(root, 'tests/fixtures/publisher/package.pptx'));
+
+// Repackage this public synthetic fixture independently of the production ZIP
+// reader. Each variant retains exact payload bytes unless a test changes them.
+function fixtureMembers(bytes = fixture) {
+  const end = bytes.lastIndexOf(Buffer.from([0x50, 0x4b, 0x05, 0x06]));
+  let offset = bytes.readUInt32LE(end + 16);
+  const members = [];
+  for (let index = 0; index < bytes.readUInt16LE(end + 10); index++) {
+    const length = bytes.readUInt16LE(offset + 28);
+    const name = bytes.toString('utf8', offset + 46, offset + 46 + length);
+    const local = bytes.readUInt32LE(offset + 42);
+    const start = local + 30 + bytes.readUInt16LE(local + 26) + bytes.readUInt16LE(local + 28);
+    const data = bytes.subarray(start, start + bytes.readUInt32LE(offset + 20));
+    members.push({
+      name,
+      data: bytes.readUInt16LE(offset + 10) === 8 ? inflateRawSync(data) : Buffer.from(data),
+    });
+    offset += 46 + length + bytes.readUInt16LE(offset + 30) + bytes.readUInt16LE(offset + 32);
+  }
+  return members;
+}
+
+function packageMembers(
+  members,
+  { method = 0, reverse = false, descriptor = false, signed = true } = {},
+) {
+  const locals = [],
+    directory = [];
+  let position = 0;
+  for (const member of reverse ? [...members].reverse() : members) {
+    const name = Buffer.from(member.name);
+    const data = member.data;
+    let crc = 0xffffffff;
+    for (const byte of data) {
+      crc ^= byte;
+      for (let bit = 0; bit < 8; bit++) crc = crc & 1 ? (crc >>> 1) ^ 0xedb88320 : crc >>> 1;
+    }
+    crc = (crc ^ 0xffffffff) >>> 0;
+    const compressed = method === 8 ? deflateRawSync(data, { level: 9 }) : data;
+    const local = Buffer.alloc(30),
+      central = Buffer.alloc(46);
+    local.writeUInt32LE(0x04034b50);
+    local.writeUInt16LE(20, 4);
+    local.writeUInt16LE(0x800 | (descriptor ? 8 : 0), 6);
+    local.writeUInt16LE(method, 8);
+    local.writeUInt16LE(33, 12);
+    if (!descriptor) {
+      local.writeUInt32LE(crc, 14);
+      local.writeUInt32LE(compressed.length, 18);
+      local.writeUInt32LE(data.length, 22);
+    }
+    local.writeUInt16LE(name.length, 26);
+    central.writeUInt32LE(0x02014b50);
+    central.writeUInt16LE(20, 4);
+    central.writeUInt16LE(20, 6);
+    central.writeUInt16LE(0x800 | (descriptor ? 8 : 0), 8);
+    central.writeUInt16LE(method, 10);
+    central.writeUInt16LE(33, 14);
+    central.writeUInt32LE(crc, 16);
+    central.writeUInt32LE(compressed.length, 20);
+    central.writeUInt32LE(data.length, 24);
+    central.writeUInt16LE(name.length, 28);
+    central.writeUInt32LE(position, 42);
+    const trailer = Buffer.alloc(descriptor ? (signed ? 16 : 12) : 0);
+    if (descriptor) {
+      const start = signed ? 4 : 0;
+      if (signed) trailer.writeUInt32LE(0x08074b50);
+      trailer.writeUInt32LE(crc, start);
+      trailer.writeUInt32LE(compressed.length, start + 4);
+      trailer.writeUInt32LE(data.length, start + 8);
+    }
+    locals.push(local, name, compressed, trailer);
+    directory.push(central, name);
+    position += local.length + name.length + compressed.length + trailer.length;
+  }
+  const central = Buffer.concat(directory),
+    end = Buffer.alloc(22);
+  end.writeUInt32LE(0x06054b50);
+  end.writeUInt16LE(members.length, 8);
+  end.writeUInt16LE(members.length, 10);
+  end.writeUInt32LE(central.length, 12);
+  end.writeUInt32LE(position, 16);
+  return Buffer.concat([...locals, central, end]);
+}
 
 function publisherWorker(configFile, label) {
   const child = fork(
@@ -84,7 +169,7 @@ function publisherWorker(configFile, label) {
   };
 }
 
-async function setup(t) {
+async function setup(t, packageBytes = fixture) {
   const directory = await fs.mkdtemp(path.join(os.tmpdir(), 'huandeng-publisher-test-'));
   t.after(() => fs.rm(directory, { recursive: true, force: true }));
   const project = {
@@ -102,7 +187,7 @@ async function setup(t) {
   const exportDeck = async (entry) => {
     assert.equal(entry, project.entry);
     exports++;
-    await fs.writeFile(output, fixture);
+    await fs.writeFile(output, packageBytes);
     return { file: output, report: { pages: [{ pageId: 'synthetic-page' }] } };
   };
   return { directory, project, output, fingerprint, exportDeck, exportCount: () => exports };
@@ -138,6 +223,7 @@ test('PPTX validation checks every ZIP member, notes and reported slide count', 
   assert.equal(result.slides, 1);
   assert.equal(result.notes, 1);
   assert.equal(result.sha256.length, 64);
+  assert.equal(result.contentSha256.length, 64);
   assert.throws(() => validatePptx(fixture, 2), /page count/);
   assert.throws(() => validatePptx(fixture.subarray(0, fixture.length - 4)), /ZIP end/);
   const corrupt = Buffer.from(fixture);
@@ -151,6 +237,8 @@ test('native Project output is verified before the fixed shared filename is repl
   const result = await publishProject(s.project, undefined, s);
   assert.equal(result.projectFile, s.output);
   assert.equal(result.status, 'current');
+  assert.equal(result.sharedSha256, result.sha256);
+  assert.equal(result.byteIdentical, true);
   assert.deepEqual(await fs.readFile(s.project.destination), await fs.readFile(s.output));
   assert.equal(s.exportCount(), 1);
 });
@@ -166,6 +254,174 @@ test('unchanged sources do not export again; a missing shared copy is repaired f
   assert.equal(repaired.sha256, first.sha256);
   assert.equal(s.exportCount(), 1);
   assert.deepEqual(await fs.readFile(s.project.destination), fixture);
+});
+
+test('metadata-only ZIP repackaging stays current without export or mirror, with accurate raw hashes', async (t) => {
+  const s = await setup(t);
+  const first = await publishProject(s.project, undefined, s);
+  const { contentSha256, sharedSha256, sharedBytes, byteIdentical, ...legacyState } = first;
+  const rename = async () => {
+    assert.fail('Equivalent content must not attempt an Office-locked replacement.');
+  };
+  for (const packing of [
+    { reverse: true },
+    { method: 8, descriptor: true },
+    { method: 8, reverse: true, descriptor: true, signed: false },
+  ]) {
+    const repacked = packageMembers(fixtureMembers(), packing);
+    const verified = validatePptx(repacked, 1);
+    assert.notEqual(verified.sha256, first.sha256);
+    await fs.writeFile(s.project.destination, repacked);
+    const current = await publishProject(s.project, legacyState, { ...s, rename });
+    assert.equal(current.status, 'current');
+    assert.equal(current.sha256, first.sha256);
+    assert.equal(current.sharedSha256, verified.sha256);
+    assert.equal(current.sharedBytes, repacked.length);
+    assert.equal(current.contentSha256, first.contentSha256);
+    assert.equal(current.byteIdentical, false);
+    assert.equal(current.publishedAt, first.publishedAt);
+    assert.deepEqual(await fs.readFile(s.project.destination), repacked);
+    assert.deepEqual(await fs.readFile(s.output), fixture);
+    assert.equal((await publishProject(s.project, current, { ...s, rename })).status, 'current');
+  }
+  assert.equal(s.exportCount(), 1);
+});
+
+test('equivalence includes every payload, including document properties, export report and media', async (t) => {
+  const members = [
+    ...fixtureMembers(),
+    {
+      name: 'docProps/core.xml',
+      data: Buffer.from('<coreProperties><modified>2026-01-01</modified></coreProperties>'),
+    },
+    { name: 'huandeng/export-report.json', data: Buffer.from('{"synthetic":true}') },
+    { name: 'ppt/media/example.bin', data: Buffer.from([0, 1, 2, 3]) },
+  ];
+  const canonical = packageMembers(members, { method: 8 });
+  const s = await setup(t, canonical);
+  const first = await publishProject(s.project, undefined, s);
+  let mirrors = 0;
+  for (const changed of members) {
+    const different = packageMembers(
+      members.map((member) => ({
+        ...member,
+        data: member === changed ? Buffer.concat([member.data, Buffer.from('\n')]) : member.data,
+      })),
+      { reverse: true },
+    );
+    assert.notEqual(validatePptx(different).contentSha256, first.contentSha256, changed.name);
+    await fs.writeFile(s.project.destination, different);
+    const result = await publishProject(s.project, first, {
+      ...s,
+      rename: async (...args) => {
+        mirrors++;
+        await fs.rename(...args);
+      },
+    });
+    assert.equal(result.byteIdentical, true, changed.name);
+    assert.deepEqual(await fs.readFile(s.project.destination), canonical, changed.name);
+  }
+  assert.equal(mirrors, members.length);
+  assert.equal(s.exportCount(), 1);
+});
+
+test('entry name or member-set changes cannot be accepted as equivalent', async (t) => {
+  const members = [
+    ...fixtureMembers(),
+    { name: 'custom/a.bin', data: Buffer.from('same payload') },
+  ];
+  const canonical = packageMembers(members);
+  const s = await setup(t, canonical);
+  const first = await publishProject(s.project, undefined, s);
+  let mirrors = 0;
+  for (const changed of [
+    members.map((entry) => ({
+      ...entry,
+      name: entry.name === 'custom/a.bin' ? 'custom/b.bin' : entry.name,
+    })),
+    members.slice(0, -1),
+    [...members, { name: 'custom/empty.bin', data: Buffer.alloc(0) }],
+  ]) {
+    await fs.writeFile(s.project.destination, packageMembers(changed));
+    await publishProject(s.project, first, {
+      ...s,
+      rename: async (...args) => {
+        mirrors++;
+        await fs.rename(...args);
+      },
+    });
+    assert.deepEqual(await fs.readFile(s.project.destination), canonical);
+  }
+  assert.equal(mirrors, 3);
+});
+
+test('corrupt payloads, inconsistent local headers and duplicate entries cannot falsely skip repair', async (t) => {
+  const members = fixtureMembers();
+  const corruptData = packageMembers(members);
+  corruptData[30 + Buffer.byteLength(members[0].name)] ^= 1;
+  const corruptHeader = packageMembers(members);
+  corruptHeader.writeUInt16LE(8, 8); // Local header says DEFLATE, central directory says STORE.
+  const corruptDescriptor = packageMembers(members, { descriptor: true });
+  corruptDescriptor[30 + Buffer.byteLength(members[0].name) + members[0].data.length + 4] ^= 1;
+  const duplicate = packageMembers([...members, members[0]]);
+  const s = await setup(t);
+  const first = await publishProject(s.project, undefined, s);
+  let mirrors = 0;
+  for (const invalid of [corruptData, corruptHeader, corruptDescriptor, duplicate]) {
+    assert.throws(() => validatePptx(invalid));
+    await fs.writeFile(s.project.destination, invalid);
+    await publishProject(s.project, first, {
+      ...s,
+      rename: async (...args) => {
+        mirrors++;
+        await fs.rename(...args);
+      },
+    });
+    assert.deepEqual(await fs.readFile(s.project.destination), fixture);
+  }
+  assert.equal(mirrors, 4);
+  assert.equal(s.exportCount(), 1);
+});
+
+test('changed source or canonical Project output never uses the equivalence shortcut', async (t) => {
+  const s = await setup(t);
+  const first = await publishProject(s.project, undefined, s);
+  const equivalent = packageMembers(fixtureMembers(), { reverse: true });
+  await fs.writeFile(s.project.destination, equivalent);
+  const sourceChanged = await publishProject(s.project, first, {
+    ...s,
+    fingerprint: async () => ({ digest: 'new-source', newest: 0 }),
+  });
+  assert.equal(s.exportCount(), 2);
+  assert.equal(sourceChanged.byteIdentical, true);
+  await fs.writeFile(s.output, equivalent);
+  await fs.writeFile(s.project.destination, equivalent);
+  await publishProject(s.project, sourceChanged, {
+    ...s,
+    fingerprint: async () => ({ digest: 'new-source', newest: 0 }),
+  });
+  assert.equal(s.exportCount(), 3);
+  assert.deepEqual(await fs.readFile(s.output), fixture);
+});
+
+test('a save during equivalence verification remains waiting without replacing the shared file', async (t) => {
+  const s = await setup(t);
+  const first = await publishProject(s.project, undefined, s);
+  const equivalent = packageMembers(fixtureMembers(), { reverse: true });
+  await fs.writeFile(s.project.destination, equivalent);
+  let reads = 0;
+  const result = await publishProject(s.project, first, {
+    ...s,
+    fingerprint: async () => ({
+      digest: reads++ ? 'changed-during-verification' : 'saved-source',
+      newest: 0,
+    }),
+    rename: async () => assert.fail('A concurrent save must not replace the shared copy.'),
+  });
+  assert.equal(result.status, 'waiting');
+  assert.equal(reads, 2);
+  assert.equal(s.exportCount(), 1);
+  assert.deepEqual(await fs.readFile(s.project.destination), equivalent);
 });
 
 test('changed source during export retains the previous shared output', async (t) => {

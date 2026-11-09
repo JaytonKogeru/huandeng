@@ -194,6 +194,7 @@ function validatePptx(bytes, expectedSlides) {
   let slides = 0;
   let notes = 0;
   const names = new Set();
+  const members = [];
   for (let index = 0; index < count; index++) {
     if (offset + 46 > end || bytes.readUInt32LE(offset) !== 0x02014b50)
       throw new Error('PPTX ZIP entry is invalid.');
@@ -206,7 +207,10 @@ function validatePptx(bytes, expectedSlides) {
     const extraLength = bytes.readUInt16LE(offset + 30);
     const commentLength = bytes.readUInt16LE(offset + 32);
     const localOffset = bytes.readUInt32LE(offset + 42);
-    const name = bytes.toString('utf8', offset + 46, offset + 46 + nameLength);
+    if (offset + 46 + nameLength + extraLength + commentLength > end)
+      throw new Error('PPTX ZIP entry is truncated.');
+    const nameBytes = bytes.subarray(offset + 46, offset + 46 + nameLength);
+    const name = nameBytes.toString('utf8');
     if (
       flags & 1 ||
       ![0, 8].includes(method) ||
@@ -225,8 +229,20 @@ function validatePptx(bytes, expectedSlides) {
       throw new Error('PPTX ZIP local entry is invalid.');
     const localNameLength = bytes.readUInt16LE(localOffset + 26);
     const localExtraLength = bytes.readUInt16LE(localOffset + 28);
-    if (bytes.toString('utf8', localOffset + 30, localOffset + 30 + localNameLength) !== name)
+    if (!bytes.subarray(localOffset + 30, localOffset + 30 + localNameLength).equals(nameBytes))
       throw new Error('PPTX ZIP member names disagree.');
+    if (
+      bytes.readUInt16LE(localOffset + 6) !== flags ||
+      bytes.readUInt16LE(localOffset + 8) !== method
+    )
+      throw new Error('PPTX ZIP member headers disagree.');
+    if (
+      !(flags & 8) &&
+      (bytes.readUInt32LE(localOffset + 14) !== crc ||
+        bytes.readUInt32LE(localOffset + 18) !== compressedSize ||
+        bytes.readUInt32LE(localOffset + 22) !== size)
+    )
+      throw new Error('PPTX ZIP member checksums or sizes disagree.');
     const dataOffset = localOffset + 30 + localNameLength + localExtraLength;
     if (dataOffset + compressedSize > centralOffset)
       throw new Error('PPTX ZIP content is truncated.');
@@ -237,7 +253,25 @@ function validatePptx(bytes, expectedSlides) {
         : inflateRawSync(compressed, { maxOutputLength: Math.max(1, size) });
     if (data.length !== size || crc32(data) !== crc)
       throw new Error('PPTX ZIP content failed its checksum.');
+    if (flags & 8) {
+      const descriptor = dataOffset + compressedSize;
+      const matches = (at) =>
+        at + 12 <= centralOffset &&
+        bytes.readUInt32LE(at) === crc &&
+        bytes.readUInt32LE(at + 4) === compressedSize &&
+        bytes.readUInt32LE(at + 8) === size;
+      if (
+        !matches(descriptor) &&
+        !(
+          descriptor + 4 <= centralOffset &&
+          bytes.readUInt32LE(descriptor) === 0x08074b50 &&
+          matches(descriptor + 4)
+        )
+      )
+        throw new Error('PPTX ZIP data descriptor disagrees.');
+    }
     names.add(name);
+    members.push({ name: nameBytes, size, digest: createHash('sha256').update(data).digest() });
     if (/^ppt\/slides\/slide\d+\.xml$/.test(name)) slides++;
     if (/^ppt\/notesSlides\/notesSlide\d+\.xml$/.test(name)) notes++;
     offset += 46 + nameLength + extraLength + commentLength;
@@ -254,11 +288,21 @@ function validatePptx(bytes, expectedSlides) {
     throw new Error('PPTX presentation structure is incomplete.');
   if (expectedSlides !== undefined && slides !== expectedSlides)
     throw new Error('PPTX page count differs from the native export report.');
+  // Include every exact member name and uncompressed payload. Framing the name
+  // and size prevents ambiguity; sorting ignores only ZIP ordering/packaging.
+  const content = createHash('sha256').update('HUANDENG-PPTX-content-v1\0');
+  for (const member of members.sort((a, b) => Buffer.compare(a.name, b.name))) {
+    const lengths = Buffer.alloc(8);
+    lengths.writeUInt32LE(member.name.length, 0);
+    lengths.writeUInt32LE(member.size, 4);
+    content.update(lengths).update(member.name).update(member.digest);
+  }
   return {
     slides,
     notes,
     bytes: bytes.length,
     sha256: createHash('sha256').update(bytes).digest('hex'),
+    contentSha256: content.digest('hex'),
   };
 }
 
@@ -391,7 +435,60 @@ async function publishProject(project, previous, options = {}) {
     (await fileDigest(expectedFile)) === previous.sha256
   ) {
     if ((await fileDigest(project.destination)) === previous.sha256)
-      return { ...previous, status: 'current', message: 'Shared copy is current.' };
+      return {
+        ...previous,
+        sharedSha256: previous.sha256,
+        sharedBytes: previous.bytes,
+        byteIdentical: true,
+        status: 'current',
+        message: 'Shared copy is current.',
+      };
+    let sharedBytes;
+    try {
+      sharedBytes = await fs.readFile(project.destination);
+    } catch (error) {
+      if (error.code !== 'ENOENT') throw error;
+    }
+    if (sharedBytes) {
+      let shared;
+      try {
+        shared = validatePptx(sharedBytes, previous.slides);
+      } catch {
+        /* A malformed shared package must follow the normal repair path. */
+      }
+      if (shared) {
+        const canonical = validatePptx(await fs.readFile(expectedFile), previous.slides);
+        if (canonical.sha256 !== previous.sha256)
+          return {
+            ...previous,
+            status: 'waiting',
+            message: 'Project PPTX changed during verification; shared copy was retained.',
+          };
+        if (canonical.contentSha256 === shared.contentSha256) {
+          const after = await readFingerprint(project.entry);
+          if (
+            after.digest !== before.digest ||
+            (await fileDigest(expectedFile)) !== canonical.sha256 ||
+            (await fileDigest(project.destination)) !== shared.sha256
+          )
+            return {
+              ...previous,
+              status: 'waiting',
+              message:
+                'Project or shared PPTX changed during verification; shared copy was retained.',
+            };
+          return {
+            ...previous,
+            ...canonical,
+            sharedSha256: shared.sha256,
+            sharedBytes: shared.bytes,
+            byteIdentical: false,
+            status: 'current',
+            message: 'Shared PPTX content is current; ZIP container metadata differs.',
+          };
+        }
+      }
+    }
     result = { file: expectedFile, report: { pages: Array.from({ length: previous.slides }) } };
   } else {
     result = await (options.exportDeck ?? nativeExport)(project.entry);
@@ -416,6 +513,9 @@ async function publishProject(project, previous, options = {}) {
     projectFile: expectedFile,
     digest: before.digest,
     ...verified,
+    sharedSha256: verified.sha256,
+    sharedBytes: verified.bytes,
+    byteIdentical: true,
     status: 'current',
     message: 'Project PPTX and shared copy are current.',
     publishedAt: new Date().toISOString(),
