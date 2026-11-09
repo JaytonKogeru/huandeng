@@ -23,6 +23,11 @@ const {
   createRendererRecovery,
 } = require('./project-tabs.cjs');
 const { createPublisherScheduler } = require('./publisher.cjs');
+const {
+  parseLaunchRequest,
+  createLaunchData,
+  secondInstanceRequest,
+} = require('./launch-request.cjs');
 
 app.setName('HUANDENG Editor');
 const desktopDataDir =
@@ -50,6 +55,8 @@ let stopping = false;
 let presentationOwner = null;
 let presentationRestoreFullscreen = false;
 let presentationRestoresPending = 0;
+let launchReady = false;
+const pendingLaunchRequests = [];
 const fullscreenController = createFullscreenController({
   getWindow: () => window,
   onSettled: layoutViews,
@@ -74,12 +81,6 @@ const rendererRecovery = createRendererRecovery({
   notify: notifyRendererLoss,
 });
 
-function commandLine(argv) {
-  const args = argv.slice(app.isPackaged ? 1 : 2);
-  const entryFlag = args.indexOf('--entry');
-  const entry = entryFlag === -1 ? args.find((arg) => /\.pptd$/i.test(arg)) : args[entryFlag + 1];
-  return { entry, readOnly: args.includes('--read-only'), welcome: args.includes('--welcome') };
-}
 function log(message) {
   void fs.appendFile(logFile, message).catch(() => {});
 }
@@ -928,17 +929,28 @@ async function createWindow() {
   publishWorkspace();
   window.show();
 }
-const acquired = app.requestSingleInstanceLock();
+function openLaunchRequest(requested) {
+  if (!window || !launchReady) {
+    pendingLaunchRequests.push(requested);
+    return;
+  }
+  if (window.isMinimized()) window.restore();
+  window.focus();
+  void operate(async () => {
+    if (requested.error) throw new Error('The --entry option requires a .pptd file path.');
+    if (requested.entry) return loadProject(requested.entry, requested);
+    if (requested.welcome) return showHome();
+  }).catch(showError);
+}
+// Capture the original process arguments before Chromium rebuilds second-instance argv.
+const startupRequest = parseLaunchRequest(process.argv, { packaged: app.isPackaged });
+const acquired = app.requestSingleInstanceLock(createLaunchData(startupRequest));
 if (!acquired) app.quit();
 else {
-  app.on('second-instance', (_event, argv) => {
-    if (!window) return;
-    if (window.isMinimized()) window.restore();
-    window.focus();
-    const requested = commandLine(argv);
-    if (requested.entry)
-      void operate(() => loadProject(requested.entry, requested)).catch(showError);
-    else if (requested.welcome) void operate(showHome).catch(showError);
+  app.on('second-instance', (_event, argv, workingDirectory, additionalData) => {
+    openLaunchRequest(
+      secondInstanceRequest(argv, workingDirectory, additionalData, { packaged: app.isPackaged }),
+    );
   });
   app.on('before-quit', (event) => {
     if (window && !allowClose) {
@@ -971,7 +983,7 @@ else {
       setCurrentLocale(resolveLocale(preferences.uiLocale, app.getLocale()));
       registerIpc();
       await createWindow();
-      const requested = commandLine(process.argv);
+      const requested = startupRequest;
       if (!requested.welcome)
         for (const item of restore.slice(0, 12)) {
           if (typeof item?.entryPath !== 'string') continue;
@@ -979,12 +991,16 @@ else {
             loadProject(item.entryPath, { readOnly: item.readOnly === true }),
           ).catch((error) => log(`Restore Project: ${String(error)}\n`));
         }
-      const entry = macEntry ?? requested.entry ?? (requested.welcome ? null : lastProject);
+      const entry =
+        macEntry ?? requested.entry ?? (requested.welcome || requested.error ? null : lastProject);
       if (entry)
         await operate(() =>
           loadProject(entry, { readOnly: requested.entry ? requested.readOnly : lastReadOnly }),
         ).catch(showError);
       else await operate(showHome);
+      if (requested.error) showError(new Error('The --entry option requires a .pptd file path.'));
+      launchReady = true;
+      for (const pending of pendingLaunchRequests.splice(0)) openLaunchRequest(pending);
     })
     .catch((error) => {
       dialog.showErrorBox('HUANDENG Editor', String(error));

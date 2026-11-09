@@ -1,5 +1,6 @@
 // biome-ignore-all lint/suspicious/noUndeclaredEnvVars: This acceptance selects an isolated candidate and profile.
 import assert from 'node:assert/strict';
+import { spawn } from 'node:child_process';
 import { randomUUID } from 'node:crypto';
 import fs from 'node:fs/promises';
 import { createRequire } from 'node:module';
@@ -19,6 +20,7 @@ const buildIdentity = process.env.HUANDENG_DESKTOP_APP
       await fs.readFile(path.join(path.dirname(executablePath), 'huandeng-build.json'), 'utf8'),
     );
 const fixtureRoot = path.join(root, '.verification', 'workspace-projects');
+const fixtureDirectories = { Alpha: 'alpha', Beta: 'beta 第二份 Project' };
 await fs.mkdir(fixtureRoot, { recursive: true });
 async function allocateFixtureRoot() {
   const { createServer } = await import(pathToFileURL(require.resolve('vite')).href);
@@ -38,7 +40,7 @@ async function allocateFixtureRoot() {
       const probe = path.join(directory, 'lock-probe');
       try {
         const canonical = await canonicalProjectRoot(directory);
-        for (const project of ['alpha', 'beta']) {
+        for (const project of Object.values(fixtureDirectories)) {
           const release = await acquireWriterLock(path.join(canonical, project), probe);
           await release();
         }
@@ -64,7 +66,7 @@ const evidence = path.join(root, '.verification/workspace-v013', path.basename(s
 await fs.mkdir(profile, { recursive: true });
 await fs.mkdir(evidence, { recursive: true });
 async function fixture(name) {
-  const directory = path.join(sandbox, name.toLowerCase());
+  const directory = path.join(sandbox, fixtureDirectories[name] ?? name.toLowerCase());
   for (const folder of ['pages', '.huandeng', 'docs'])
     await fs.mkdir(path.join(directory, folder), { recursive: true });
   const deckId = randomUUID();
@@ -170,6 +172,7 @@ let normalExit;
 const checks = [];
 const screenshots = [];
 const rendererErrors = [];
+const nativeLaunches = [];
 async function eventually(read, timeout = 30000) {
   const deadline = Date.now() + timeout;
   let last;
@@ -256,6 +259,69 @@ async function screenshot(name) {
     );
   screenshots.push(name);
 }
+async function nativeLaunch(args, expectedEntry, form) {
+  const previousEvents = await app.evaluate(() => globalThis.__huandengNativeLaunches.length);
+  const child = spawn(
+    executablePath,
+    [...(process.env.HUANDENG_DESKTOP_APP ? [process.env.HUANDENG_DESKTOP_APP] : []), ...args],
+    { cwd: root, env, windowsHide: true, stdio: ['ignore', 'pipe', 'pipe'] },
+  );
+  child.stdout.on('data', (chunk) => {
+    processLog += `[native ${form}] ${chunk}`;
+  });
+  child.stderr.on('data', (chunk) => {
+    processLog += `[native ${form}] ${chunk}`;
+  });
+  let timer;
+  let exited;
+  try {
+    exited = await Promise.race([
+      new Promise((resolve, reject) => {
+        child.once('error', reject);
+        child.once('exit', (code, signal) => resolve({ code, signal }));
+      }),
+      new Promise((_, reject) => {
+        timer = setTimeout(
+          () => reject(new Error('Native second-instance process did not exit.')),
+          20000,
+        );
+      }),
+    ]);
+  } catch (error) {
+    // This is only the exact isolated fixture process created above.
+    if (child.exitCode === null && child.signalCode === null) child.kill();
+    throw error;
+  } finally {
+    clearTimeout(timer);
+  }
+  assert.equal(exited.code, 0);
+  const received = await eventually(async () => {
+    const events = await app.evaluate(() => globalThis.__huandengNativeLaunches);
+    return events.length > previousEvents ? events[previousEvents] : null;
+  });
+  assert.equal(received.additionalData?.huandengLaunch?.schemaVersion, 1);
+  assert.equal(
+    path.resolve(received.additionalData.huandengLaunch.request.entry).toLowerCase(),
+    path.resolve(expectedEntry).toLowerCase(),
+  );
+  assert.deepEqual(Object.keys(received.additionalData.huandengLaunch.request).sort(), [
+    'entry',
+    'readOnly',
+    'welcome',
+  ]);
+  const requested = await projectPage(expectedEntry);
+  await requested.locator('[data-hd-editor-canvas]').waitFor();
+  await eventually(async () => {
+    const workspace = await state();
+    const active = workspace.projects.find((item) => item.id === workspace.activeId);
+    return (
+      active &&
+      path.resolve(active.entryPath).toLowerCase() === path.resolve(expectedEntry).toLowerCase()
+    );
+  });
+  nativeLaunches.push({ form, pid: child.pid, exit: exited, received });
+  return requested;
+}
 
 try {
   app = await electron.launch({
@@ -295,11 +361,49 @@ try {
   await app.evaluate(({ BrowserWindow }) =>
     BrowserWindow.getAllWindows()[0].setContentSize(1600, 1000),
   );
+  await app.evaluate(({ app: candidate }) => {
+    globalThis.__huandengNativeLaunches = [];
+    candidate.on('second-instance', (_event, argv, workingDirectory, additionalData) => {
+      const entryFlag = argv.indexOf('--entry');
+      globalThis.__huandengNativeLaunches.push({
+        argumentCount: argv.length,
+        entryFlagNext: entryFlag >= 0 ? (argv[entryFlag + 1] ?? null) : null,
+        workingDirectory,
+        additionalData,
+      });
+    });
+  });
   const alphaUrl = alpha.url();
   const alphaEpoch = (await api(alpha, '/session')).epoch;
 
   await check(
-    'Home opens a second Project while the first renderer and service stay alive',
+    'An actual native second instance opens --entry with spaces and Unicode in the same workspace',
+    async () => {
+      beta = await nativeLaunch(['--entry', b.entry], b.entry, '--entry value');
+      assert.equal((await state()).projects.length, 2);
+      assert.equal(alpha.url(), alphaUrl);
+      assert.equal((await api(alpha, '/session')).epoch, alphaEpoch);
+      assert.notEqual(
+        (await alpha.evaluate(() => window.huandengDesktop.getContext())).serviceUrl,
+        (await beta.evaluate(() => window.huandengDesktop.getContext())).serviceUrl,
+      );
+    },
+  );
+
+  await check(
+    'Native --entry=value and positional launches focus existing tabs without restarting their writers',
+    async () => {
+      const betaEpoch = (await api(beta, '/session')).epoch;
+      assert.equal(await nativeLaunch([`--entry=${a.entry}`], a.entry, '--entry=value'), alpha);
+      assert.equal(await nativeLaunch([b.entry], b.entry, 'positional .pptd'), beta);
+      assert.equal((await state()).projects.length, 2);
+      assert.equal((await api(alpha, '/session')).epoch, alphaEpoch);
+      assert.equal((await api(beta, '/session')).epoch, betaEpoch);
+    },
+  );
+
+  await check(
+    'Home returns to either Project while both renderers and services stay alive',
     async () => {
       await shell.locator('#workspace-home').click();
       await eventually(async () => (await state()).activeId === null);
@@ -559,7 +663,7 @@ try {
     await app.evaluate(({ app: candidate }) => candidate.exit(1)).catch(() => {});
   await fs.writeFile(
     path.join(evidence, 'result.json'),
-    `${JSON.stringify({ passed: !failure, executablePath, ...(buildIdentity ? { buildIdentity } : {}), checks, screenshots, rendererErrors, normalExit, error: failure ? String(failure) : undefined }, null, 2)}\n`,
+    `${JSON.stringify({ passed: !failure, executablePath, ...(buildIdentity ? { buildIdentity } : {}), checks, screenshots, rendererErrors, nativeLaunches, normalExit, error: failure ? String(failure) : undefined }, null, 2)}\n`,
   );
   await fs.writeFile(path.join(evidence, 'process.log'), processLog);
   process.stdout.write(`Workspace evidence: ${evidence}\n`);
