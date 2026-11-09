@@ -12,7 +12,6 @@ import {
   workspaceMoveBoundary,
   workspacePageKey,
   workspacePageSelected,
-  workspaceRailView,
   workspaceViewSwitchBlocked,
 } from './pptd-workspace-views';
 
@@ -33,12 +32,9 @@ function slides(ids = ['intro', 'a', 'b', 'tail']): PageSnapshot[] {
 const sections = [{ id: 'topic', title: 'Authored section 章节', pageIds: ['a', 'b'] }];
 
 describe('Slides workspace grouping and identity', () => {
-  it('derives page navigation and editing capabilities from the unified view', () => {
-    for (const view of ['edit', 'outline', 'browse', 'notes'] as const) {
-      expect(workspaceEditing(view)).toBe(view === 'edit' || view === 'outline');
-      expect(workspaceRailView(view)).toBe(
-        view === 'browse' ? null : view === 'outline' ? 'outline' : 'thumbnails',
-      );
+  it('limits canvas editing to Normal, separate from Browse representations', () => {
+    for (const view of ['edit', 'browse', 'notes'] as const) {
+      expect(workspaceEditing(view)).toBe(view === 'edit');
     }
   });
   it('keeps Main order and explicit unassigned runs without assuming a divider', () => {
@@ -172,7 +168,6 @@ describe('Slides workspace grouping and identity', () => {
       );
       if (!command) throw new Error(`Expected an object command for ${key}.`);
       expect(workspaceKeyboardCommandAllowed('edit', command)).toBe(true);
-      expect(workspaceKeyboardCommandAllowed('outline', command)).toBe(true);
       expect(workspaceKeyboardCommandAllowed('browse', command)).toBe(false);
       expect(workspaceKeyboardCommandAllowed('notes', command)).toBe(false);
     }

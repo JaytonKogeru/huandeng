@@ -24,9 +24,11 @@ const pages = Array.from({length: 36}, (_, index) => ({
 const root = createRoot(document.querySelector('#app'));
 const noop = () => {};
 const props = {pages, sections: [], size: [960,540], theme: {}, currentPageId: 'slide-0',
+  display: 'thumbnails', onDisplayChange: value => {props.display = value; showBrowse();},
   currentOccurrenceId: 'occurrence-0', presentation: true, disabled: false,
   onSelect: noop, onEdit: noop, onMove: noop, onManageSections: noop};
-document.querySelector('#browse').onclick = () => root.render(React.createElement(SectionBrowser, props));
+const showBrowse = () => root.render(React.createElement(SectionBrowser, props));
+document.querySelector('#browse').onclick = showBrowse;
 document.querySelector('#notes').onclick = () => root.render(React.createElement(NotesPageView, {
   page: pages[0], size: props.size, theme: props.theme, position: 1, count: pages.length,
   navigatingDisabled: false, onPrevious: noop, onNext: noop, value: '', disabled: true,
@@ -98,6 +100,30 @@ function slide(page: Page, index: number) {
 }
 
 describe('workspace preview residency in a scrolling browser', () => {
+  it('switches the central browser representation while retaining filter, selection and pinned identity', async () => {
+    const page = await browser.newPage();
+    try {
+      await page.goto(baseUrl);
+      await page.locator('[data-hd-browser-search]').fill('Pinned snapshot content');
+      await eventually(async () => (await page.locator('[data-hd-browser-card]').count()) === 1);
+      await page.locator('[data-hd-browser-display-option="outline"]').click();
+      await eventually(async () => (await page.locator('[data-hd-browser-outline]').count()) === 1);
+      expect(await page.locator('[data-hd-browser-search]').inputValue()).toBe(
+        'Pinned snapshot content',
+      );
+      expect(await page.locator('[data-hd-browser-outline]').innerText()).toBe(
+        'Pinned snapshot content',
+      );
+      expect(await slide(page, 0).getAttribute('data-selected')).toBe('true');
+      expect(await slide(page, 0).innerText()).toContain('Pinned version');
+      expect(await page.locator('[data-hd-browser-size]').count()).toBe(0);
+      await page.locator('[data-hd-browser-display-option="thumbnails"]').click();
+      expect(await page.locator('[data-hd-browser-card]').count()).toBe(1);
+      expect(await page.locator('[data-hd-browser-size]').count()).toBe(1);
+    } finally {
+      await page.close();
+    }
+  });
   it('refreshes memoized titles, localized fallbacks and Story filtering after changes', async () => {
     const page = await browser.newPage();
     try {

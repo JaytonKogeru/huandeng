@@ -1,8 +1,10 @@
 import { ArrowDown, ArrowUp, ChevronDown, ChevronRight } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { useHuandengLocale } from '@/lib/huandeng-locale';
+import { outlineSlideSummary } from '@/lib/pptd-outline';
 import type { SlideInsertionBoundary, ThumbnailSection } from '@/lib/pptd-thumbnail-sections';
 import {
+  type BrowserDisplay,
   filterWorkspaceBrowserGroups,
   workspaceBrowserGroups,
   workspaceMoveBoundaries,
@@ -15,6 +17,8 @@ import type { PptdTheme } from './renderer';
 import { WorkspaceSlidePreview } from './workspace-views';
 
 export function SectionBrowser({
+  display,
+  onDisplayChange,
   pages,
   sections,
   size,
@@ -28,6 +32,8 @@ export function SectionBrowser({
   onMove,
   onManageSections,
 }: {
+  display: BrowserDisplay;
+  onDisplayChange: (display: BrowserDisplay) => void;
   pages: PageSnapshot[];
   sections: ThumbnailSection[];
   size: PageSize;
@@ -70,30 +76,50 @@ export function SectionBrowser({
     <section
       className="hd-section-browser"
       data-hd-section-browser
-      aria-label={t('Section browser')}
+      aria-label={t('Browse')}
+      data-hd-browser-display={display}
     >
       <div className="hd-browser-controls">
+        <fieldset
+          className="flex gap-1 rounded border bg-background p-1"
+          aria-label={t('Browse display')}
+        >
+          {(['thumbnails', 'outline'] as const).map((mode) => (
+            <Button
+              key={mode}
+              size="xs"
+              variant={display === mode ? 'secondary' : 'ghost'}
+              aria-pressed={display === mode}
+              data-hd-browser-display-option={mode}
+              onClick={() => onDisplayChange(mode)}
+            >
+              {t(mode === 'thumbnails' ? 'Thumbnails' : 'Outline')}
+            </Button>
+          ))}
+        </fieldset>
         <Input
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           placeholder={t('Search title, Story, Slide ID or Section…')}
-          aria-label={t('Search Section browser')}
+          aria-label={t('Search Slides')}
           data-hd-browser-search
           className="h-8 min-w-32 flex-1"
         />
-        <label className="flex items-center gap-2 text-xs text-muted-foreground">
-          {t('Thumbnail size')}
-          <select
-            value={thumbnailSize}
-            onChange={(event) => setThumbnailSize(event.target.value)}
-            className="h-8 rounded border bg-background px-2 text-foreground"
-            data-hd-browser-size
-          >
-            <option value="small">{t('Small')}</option>
-            <option value="medium">{t('Medium')}</option>
-            <option value="large">{t('Large')}</option>
-          </select>
-        </label>
+        {display === 'thumbnails' && (
+          <label className="flex items-center gap-2 text-xs text-muted-foreground">
+            {t('Thumbnail size')}
+            <select
+              value={thumbnailSize}
+              onChange={(event) => setThumbnailSize(event.target.value)}
+              className="h-8 rounded border bg-background px-2 text-foreground"
+              data-hd-browser-size
+            >
+              <option value="small">{t('Small')}</option>
+              <option value="medium">{t('Medium')}</option>
+              <option value="large">{t('Large')}</option>
+            </select>
+          </label>
+        )}
         {!presentation && (
           <Button size="xs" variant="outline" onClick={onManageSections}>
             {t('Manage Sections')}
@@ -153,7 +179,11 @@ export function SectionBrowser({
                 </button>
               </h2>
               {!closed && (
-                <div className="hd-browser-grid" data-hd-thumbnail-size={thumbnailSize}>
+                <div
+                  className="hd-browser-grid"
+                  data-hd-thumbnail-size={thumbnailSize}
+                  data-hd-browser-layout={display}
+                >
                   {group.entries.map(({ page, index, key, title }) => {
                     const selected = workspacePageSelected(
                       page,
@@ -197,25 +227,32 @@ export function SectionBrowser({
                             theme={theme}
                             viewport={viewport}
                           />
-                          <span className="hd-browser-position">
-                            {t('Position {position}', { position: index + 1 })}
-                          </span>
-                          <span className="hd-browser-title">{title}</span>
-                          <span className="hd-browser-id" title={page.pageId}>
-                            {t('Slide ID')} {page.shortCode ?? page.pageId}
-                          </span>
-                          {presentation && (
-                            <span className="hd-browser-id">
-                              {t('Main Position {position}', {
-                                position: page.mainPosition ?? '—',
-                              })}
+                          <span className="hd-browser-description">
+                            <span className="hd-browser-position">
+                              {t('Position {position}', { position: index + 1 })}
                             </span>
-                          )}
-                          {page.versionId && (
-                            <span className="hd-browser-id" title={page.versionId}>
-                              {t('Pinned version · read-only')}
+                            <span className="hd-browser-title">{title}</span>
+                            {display === 'outline' && (
+                              <span className="hd-browser-summary" data-hd-browser-outline={key}>
+                                {outlineSlideSummary(page) || t('No page summary yet.')}
+                              </span>
+                            )}
+                            <span className="hd-browser-id" title={page.pageId}>
+                              {t('Slide ID')} {page.shortCode ?? page.pageId}
                             </span>
-                          )}
+                            {presentation && (
+                              <span className="hd-browser-id">
+                                {t('Main Position {position}', {
+                                  position: page.mainPosition ?? '—',
+                                })}
+                              </span>
+                            )}
+                            {page.versionId && (
+                              <span className="hd-browser-id" title={page.versionId}>
+                                {t('Pinned version · read-only')}
+                              </span>
+                            )}
+                          </span>
                         </button>
                         {!presentation && (
                           <div className="hd-browser-moves">

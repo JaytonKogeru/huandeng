@@ -1,6 +1,7 @@
 import type { PageSnapshot } from '../../pptd/types';
 import type { EditorKeyboardCommand } from './pptd-keyboard';
-import { projectSlideSearch, projectSlideTitle } from './pptd-project-source';
+import { outlineSlideSearch } from './pptd-outline';
+import { projectSlideTitle } from './pptd-project-source';
 import {
   type SlideInsertionBoundary,
   slideInsertionBoundary,
@@ -8,14 +9,11 @@ import {
   thumbnailSectionGroups,
 } from './pptd-thumbnail-sections';
 
-export type WorkspaceView = 'edit' | 'outline' | 'browse' | 'notes';
+export type WorkspaceView = 'edit' | 'browse' | 'notes';
+export type BrowserDisplay = 'thumbnails' | 'outline';
 
 export function workspaceEditing(view: WorkspaceView): boolean {
-  return view === 'edit' || view === 'outline';
-}
-
-export function workspaceRailView(view: WorkspaceView): 'thumbnails' | 'outline' | null {
-  return view === 'browse' ? null : view === 'outline' ? 'outline' : 'thumbnails';
+  return view === 'edit';
 }
 
 interface WorkspaceBrowserGroup {
@@ -91,7 +89,7 @@ export function filterWorkspaceBrowserGroups(groups: WorkspaceBrowserGroup[], qu
       !needle || sectionMatch
         ? group.entries
         : group.entries.filter(({ page, index }) =>
-            `${index + 1} ${projectSlideSearch(page)}`.includes(needle),
+            `${index + 1} ${outlineSlideSearch(page)}`.includes(needle),
           );
     return entries.length ? [{ ...group, entries }] : [];
   });

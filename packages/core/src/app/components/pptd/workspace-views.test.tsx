@@ -36,19 +36,50 @@ afterEach(async () => {
 });
 
 describe('workspace view surfaces', () => {
+  it('shows Story or content in the central outline without substituting notes or writing', () => {
+    const authored = {
+      ...page,
+      metadata: { ...page.metadata, designIntent: { purpose: 'Compare the evidence.' } },
+    };
+    const before = JSON.stringify(authored);
+    const html = renderToStaticMarkup(
+      <SectionBrowser
+        display="outline"
+        onDisplayChange={vi.fn()}
+        pages={[authored]}
+        sections={[]}
+        size={[960, 540]}
+        theme={{}}
+        currentPageId="p1"
+        presentation={false}
+        disabled={false}
+        onSelect={vi.fn()}
+        onEdit={vi.fn()}
+        onMove={vi.fn()}
+        onManageSections={vi.fn()}
+      />,
+    );
+    expect(html).toContain('data-hd-browser-display="outline"');
+    expect(html).toContain('Compare the evidence.');
+    expect(html).toContain('Authored heading 中文');
+    expect(html).not.toContain('Keep notes 原文');
+    expect(html).not.toContain('textarea');
+    expect(JSON.stringify(authored)).toBe(before);
+  });
   it('localizes view controls and identifies the active view and draft guard', async () => {
     vi.stubGlobal('localStorage', { setItem: () => {} });
     await setUiLocale('zh-CN');
     const html = renderToStaticMarkup(
       <WorkspaceViewSwitcher value="notes" blocked onChange={vi.fn()} />,
     );
-    expect(html).toContain('章节浏览');
+    expect(html).toContain('浏览');
+    expect(html).not.toContain('章节浏览');
     expect(html).toContain('普通');
-    expect(html).toContain('大纲');
+    expect(html).not.toContain('大纲');
     expect(html).toContain('备注页');
     expect(html).toContain('data-hd-workspace-view="notes"');
-    expect(html.match(/ disabled=""/g)).toHaveLength(3);
-    expect(html.match(/data-hd-workspace-view=/g)).toHaveLength(4);
+    expect(html.match(/ disabled=""/g)).toHaveLength(2);
+    expect(html.match(/data-hd-workspace-view=/g)).toHaveLength(3);
   });
 
   it('uses controlled outline navigation without a second view switcher', () => {
@@ -148,6 +179,8 @@ describe('workspace view surfaces', () => {
   it('keeps repeated occurrences distinct and exposes no Main move actions in Presentation', () => {
     const html = renderToStaticMarkup(
       <SectionBrowser
+        display="outline"
+        onDisplayChange={vi.fn()}
         pages={[
           { ...page, occurrenceId: 'one' },
           { ...page, occurrenceId: 'two', versionId: 'version-7' },
@@ -168,6 +201,9 @@ describe('workspace view surfaces', () => {
     expect(html).toContain('data-hd-browser-card="one"');
     expect(html).toContain('data-hd-browser-card="two" data-selected="true"');
     expect(html).toContain('Main Position 9');
+    expect(html).toContain('data-hd-browser-outline="two"');
+    expect(html).toContain('data-hd-browser-display-option="outline"');
+    expect(html).not.toContain('data-hd-browser-size');
     expect(html).not.toContain('data-hd-browser-move');
     expect(html).not.toContain('draggable');
   });
