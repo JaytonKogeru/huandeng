@@ -6,6 +6,10 @@ Read Project identity, Story, selected page and live/pinned occurrences. Inspect
 
 An Agent uses the same document contract: read → bounded transaction → structural preview → authorized apply → exact receipt review → actual rendered inspection. The plugin does not add a second editor or chat panel. It must not interpret a valid object tree as proof of attractive or correct output.
 
+The existing Match title style entry captures concrete reference geometry and typography. Inspect the prepared full target-slide preview before applying that exact change. A frozen reference may intentionally retain an older style; distinguish that from the live source and refresh explicitly when needed. If the target, theme or render context changes, prepare a new target preview. Preview does not save. This bounded title-style workflow is not a complete design-system extraction engine or an automatic aesthetic assessment.
+
+Checks shows whether existing author-review evidence matches the current render revision, is stale, or is unverified. A matching hash is version correspondence, not verified human approval. Main-page evidence does not by itself verify a presentation occurrence, a pinned version, the current font environment or an exported Office file. Do not write lastAuthorReview on the author's behalf, infer approval from these indicators, or replace actual rendered inspection with a status label.
+
 ## Read the saved operation
 
 Use the actual `operationId` from `huandeng_apply` with `huandeng_review`; request one affected `pageId` when needed. The CLI equivalent is `review OPERATION_ID --page PAGE_ID`. Tool availability comes from the running runtime; older Editors may not advertise review.

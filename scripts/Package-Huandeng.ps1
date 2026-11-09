@@ -47,7 +47,12 @@ try {
 } finally {
     Pop-Location
 }
-Remove-Item -LiteralPath $buildWorkspace -Recurse -Force
+$verifiedWorkspace = (Resolve-Path -LiteralPath $buildWorkspace).Path
+$verificationRoot = [System.IO.Path]::GetFullPath((Join-Path $project '.verification'))
+if (-not $verifiedWorkspace.StartsWith($verificationRoot + '\', [StringComparison]::OrdinalIgnoreCase)) {
+    throw 'Build workspace escaped the verification directory; cleanup was not performed.'
+}
+Remove-Item -LiteralPath $verifiedWorkspace -Recurse -Force
 & node (Join-Path $PSScriptRoot "verify-desktop-package.mjs") $appDirectory
 if ($LASTEXITCODE -ne 0) { throw "The staged application is not self-contained." }
 $sourceRevision = (& git -C $project rev-parse HEAD).Trim()
@@ -71,7 +76,11 @@ $marker = @{
 [System.IO.File]::WriteAllText((Join-Path $stage "huandeng-build.json"), ($marker | ConvertTo-Json), [System.Text.UTF8Encoding]::new($false))
 New-Item -ItemType Directory -Path (Split-Path -Parent $OutputDirectory) -Force | Out-Null
 if (Test-Path -LiteralPath $OutputDirectory) { Remove-Item -LiteralPath $OutputDirectory -Recurse -Force }
-Move-Item -LiteralPath $stage -Destination $OutputDirectory
+$verifiedStage = (Resolve-Path -LiteralPath $stage).Path
+if (-not $verifiedStage.StartsWith($verificationRoot + '\', [StringComparison]::OrdinalIgnoreCase)) {
+    throw 'Package staging escaped the verification directory; move was not performed.'
+}
+Move-Item -LiteralPath $verifiedStage -Destination $OutputDirectory
 & node (Join-Path $PSScriptRoot "verify-desktop-package.mjs") (Join-Path $OutputDirectory "resources\app")
 if ($LASTEXITCODE -ne 0) { throw "The application did not pass its relocation check." }
 Write-Output (Join-Path $OutputDirectory "HUANDENG Editor.exe")
