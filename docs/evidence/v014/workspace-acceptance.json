@@ -1,0 +1,77 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "An actual native second instance opens --entry with spaces and Unicode in the same workspace",
+      "passed": true,
+      "milliseconds": 3722
+    },
+    {
+      "name": "Native --entry=value and positional launches focus existing tabs without restarting their writers",
+      "passed": true,
+      "milliseconds": 1199
+    },
+    {
+      "name": "Home returns to either Project while both renderers and services stay alive",
+      "passed": true,
+      "milliseconds": 223
+    },
+    {
+      "name": "Recent Projects deduplicate tabs and background IPC stays bound to its sender",
+      "passed": true,
+      "milliseconds": 291
+    },
+    {
+      "name": "Unsaved Story survives Project and Home switches and blocks only its own close",
+      "passed": true,
+      "milliseconds": 521
+    },
+    {
+      "name": "Central file tabs preserve the Slides document and reject editing shortcuts",
+      "passed": true,
+      "milliseconds": 778
+    },
+    {
+      "name": "An Agent transaction updates its background Project without writing the active Project",
+      "passed": true,
+      "milliseconds": 524
+    },
+    {
+      "name": "Activity displays explicit reports only inside their selected Project",
+      "passed": true,
+      "milliseconds": 661
+    },
+    {
+      "name": "Outline searches folded Sections and preserves Slide identity",
+      "passed": true,
+      "milliseconds": 794
+    },
+    {
+      "name": "Pages manages one Section with first-Slide boundaries and shared Save/Undo",
+      "passed": true,
+      "milliseconds": 901
+    },
+    {
+      "name": "Present enters fullscreen with a clean Slide and bottom-edge controls",
+      "passed": true,
+      "milliseconds": 1700
+    },
+    {
+      "name": "Present enters native fullscreen, hides the Project strip and restores the workspace",
+      "passed": true,
+      "milliseconds": 596
+    },
+    {
+      "name": "Closing a background Project destroys only its own renderer and keeps the active Project",
+      "passed": true,
+      "milliseconds": 123
+    },
+    {
+      "name": "Normal native close flushes the remaining Project and exits cleanly",
+      "passed": true,
+      "milliseconds": 347
+    }
+  ],
+  "rendererErrors": [],
+  "runtimeSource": "2f3e627ec3c27f07111824937118e0f76be265b2"
+}

@@ -1,0 +1,74 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "Real checkpoint and repeated live/pinned references establish scope",
+      "passed": true,
+      "milliseconds": 299
+    },
+    {
+      "name": "Visual source selection and composed preview do not write; Add saves the exact visible geometry",
+      "passed": true,
+      "milliseconds": 1568
+    },
+    {
+      "name": "Activity opens exact receipt, rendered sides, changed-object highlight and current-object navigation",
+      "passed": true,
+      "milliseconds": 917
+    },
+    {
+      "name": "Client claim remains distinct and opens the exact saved operation after subsequent edits",
+      "passed": true,
+      "milliseconds": 251
+    },
+    {
+      "name": "Late review response cannot replace a newly selected operation",
+      "passed": true,
+      "milliseconds": 440
+    },
+    {
+      "name": "Wide/narrow English/Chinese and dark appearance keep primary controls usable",
+      "passed": true,
+      "milliseconds": 2328
+    },
+    {
+      "name": "Pinned artwork stays at the baseline and layout creation is disabled",
+      "passed": true,
+      "milliseconds": 758
+    },
+    {
+      "name": "Agent setup separates generated instructions from the observed client report",
+      "passed": true,
+      "milliseconds": 797
+    },
+    {
+      "name": "Candidate CLI review and stdio protocol expose the same exact operation",
+      "passed": true,
+      "milliseconds": 4180
+    },
+    {
+      "name": "Original figure bytes and unrelated pages remain intact",
+      "passed": true,
+      "milliseconds": 20
+    },
+    {
+      "name": "No renderer exceptions",
+      "passed": true,
+      "milliseconds": 0
+    }
+  ],
+  "screenshots": [
+    "layout-preview-1600-en",
+    "operation-review-1600-en",
+    "workspace-1600-zh-CN-light",
+    "review-1600-zh-CN-light",
+    "workspace-1040-en-light",
+    "review-1040-en-light",
+    "workspace-1040-zh-CN-dark",
+    "review-1040-zh-CN-dark",
+    "pinned-layout-1600-en",
+    "agent-setup-evidence-1600-en"
+  ],
+  "rendererErrors": [],
+  "runtimeSource": "2f3e627ec3c27f07111824937118e0f76be265b2"
+}
