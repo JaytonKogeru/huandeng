@@ -82,6 +82,38 @@ export function TechnicalQaPanel({ page, size, diagnostics, onSelect }: Technica
       <p className="text-xs leading-relaxed text-muted-foreground">
         {t('Checks inspect slide bounds, missing assets, fonts and text layout.')}
       </p>
+      <div
+        className="space-y-1 rounded border border-border p-2 text-[11px] text-muted-foreground"
+        data-hd-author-review-state={page.authorReview?.status ?? 'unverified'}
+      >
+        <h4 className="font-medium text-foreground">{t('Author review evidence')}</h4>
+        <p>
+          {t(
+            page.authorReview?.status === 'current'
+              ? 'Recorded version matches'
+              : page.authorReview?.status === 'stale'
+                ? 'Recorded version is stale'
+                : 'No verifiable recorded version',
+          )}
+        </p>
+        <p>{t('Version match only. This does not verify author approval or visual quality.')}</p>
+        <p>
+          {t(
+            'Occurrence order, notes and pinned versions are outside this evidence. Inspect each presentation separately.',
+          )}
+        </p>
+        {page.authorReview?.recordedRenderRevision && (
+          <details>
+            <summary className="cursor-pointer">{t('Review version details')}</summary>
+            <dl className="mt-1 space-y-1 break-all">
+              <dt>{t('Recorded render version')}</dt>
+              <dd>{page.authorReview.recordedRenderRevision}</dd>
+              <dt>{t('Compared render version')}</dt>
+              <dd>{page.authorReview.currentRenderRevision}</dd>
+            </dl>
+          </details>
+        )}
+      </div>
       {issues.length ? (
         <details open={errors > 0}>
           <summary className="cursor-pointer text-xs">

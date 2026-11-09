@@ -1,8 +1,16 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { parsePage, patchPageElement, serializePage } from '../../pptd/codec';
 import { mapPptdText } from '../../pptd/export-text';
 import type { DeckSnapshot, PageSnapshot, PptdElement } from '../../pptd/types';
-import { captureTitleStyle, createTitleStyleChange, titleLayoutObjects } from './pptd-title-layout';
+import {
+  capturedTitleStyleIsCurrent,
+  captureTitleStyle,
+  commitPreparedTitleStyle,
+  createTitleStyleChange,
+  prepareTitleStylePreview,
+  titleLayoutObjects,
+  titleStylePreviewIsCurrent,
+} from './pptd-title-layout';
 
 function page(pageId: string, elements: PptdElement[]): PageSnapshot {
   return {
@@ -90,6 +98,122 @@ function fixture() {
 }
 
 describe('reference title layout', () => {
+  it('prepares the complete target using the exact apply operations without writes or source mutation', async () => {
+    const { source, target, snapshot } = fixture();
+    const before = structuredClone(snapshot);
+    const capturedStyle = captureTitleStyle(snapshot, source.pageId, 'reference-title');
+    const prepared = prepareTitleStylePreview({
+      snapshot,
+      targetPage: target,
+      targetElementId: 'chosen-title',
+      capturedStyle,
+    });
+    const operation = prepared.operations[0];
+    const saved = parsePage(
+      patchPageElement(
+        serializePage(target.data),
+        operation.elementId,
+        operation.set,
+        operation.unset,
+      ),
+    ).value;
+    expect(prepared.page.data).toEqual(saved);
+    expect(prepared.page.data.elements[0]).toMatchObject({
+      bounds: [40, 20, 880, 60],
+      content: {
+        fontSize: 34,
+        fontFamily: 'Arial',
+        color: '#123456',
+        text: '<p>Keep <em>this</em> exact title.</p>',
+      },
+    });
+    expect(prepared.page.data.elements.slice(1)).toEqual(target.data.elements.slice(1));
+    expect(snapshot).toEqual(before);
+    expect(prepared.expected).toEqual({
+      pages: { target: target.pageRevision },
+      metadata: snapshot.metadataRevision,
+      manifest: snapshot.manifestRevision,
+    });
+    const onApply = vi.fn(async () => {});
+    await commitPreparedTitleStyle(
+      prepared,
+      snapshot,
+      target,
+      'chosen-title',
+      capturedStyle,
+      onApply,
+    );
+    expect(onApply).toHaveBeenCalledWith(prepared.operations, prepared.expected);
+  });
+
+  it('invalidates prepared apply on target, document, render, material, theme or capture changes', async () => {
+    const { source, target, snapshot } = fixture();
+    const captured = captureTitleStyle(snapshot, source.pageId, 'reference-title');
+    const prepared = prepareTitleStylePreview({
+      snapshot,
+      targetPage: target,
+      targetElementId: 'chosen-title',
+      capturedStyle: captured,
+    });
+    expect(titleStylePreviewIsCurrent(prepared, snapshot, target, 'chosen-title', captured)).toBe(
+      true,
+    );
+    const snapshots = [
+      { ...snapshot, deckId: 'other' },
+      { ...snapshot, entry: 'other.pptd' },
+      { ...snapshot, epoch: 'new' },
+      { ...snapshot, manifestRevision: 'sha256:next' as const },
+      { ...snapshot, metadataRevision: 'sha256:next' as const },
+      { ...snapshot, size: [800, 600] as [number, number] },
+      { ...snapshot, manifest: { ...snapshot.manifest, theme: {} } },
+      { ...snapshot, writable: false },
+    ];
+    for (const changed of snapshots)
+      expect(titleStylePreviewIsCurrent(prepared, changed, target, 'chosen-title', captured)).toBe(
+        false,
+      );
+    for (const changed of [
+      source,
+      { ...target, pageRevision: 'sha256:next' as const },
+      { ...target, renderRevision: 'sha256:next' as const },
+      { ...target, assetRevisions: { 'media/original.png': 'sha256:next' as const } },
+      { ...target, occurrenceId: 'different-occurrence' },
+      { ...target, versionId: 'pinned' },
+      { ...target, data: { ...target.data, notes: 'unsaved' } },
+    ])
+      expect(
+        titleStylePreviewIsCurrent(prepared, snapshot, changed, 'chosen-title', captured),
+      ).toBe(false);
+    expect(titleStylePreviewIsCurrent(prepared, snapshot, target, 'other-title', captured)).toBe(
+      false,
+    );
+    const changedCapture = { ...captured, fields: { ...captured.fields, 'content.fontSize': 72 } };
+    expect(
+      titleStylePreviewIsCurrent(prepared, snapshot, target, 'chosen-title', changedCapture),
+    ).toBe(false);
+    const onApply = vi.fn(async () => {});
+    await expect(
+      commitPreparedTitleStyle(prepared, snapshots[0], target, 'chosen-title', captured, onApply),
+    ).rejects.toThrow('Refresh');
+    expect(onApply).not.toHaveBeenCalled();
+  });
+
+  it('marks an edited reference stale while retaining its detached resolved style', () => {
+    const { source, target, snapshot } = fixture();
+    const capturedStyle = captureTitleStyle(snapshot, source.pageId, 'reference-title');
+    expect(capturedTitleStyleIsCurrent(capturedStyle, snapshot)).toBe(true);
+    source.renderRevision = 'sha256:next';
+    expect(capturedTitleStyleIsCurrent(capturedStyle, snapshot)).toBe(false);
+    const prepared = prepareTitleStylePreview({
+      snapshot,
+      targetPage: target,
+      targetElementId: 'chosen-title',
+      capturedStyle,
+    });
+    expect(prepared.page.data.elements[0].content?.fontSize).toBe(34);
+    source.metadata.themeOverride = {};
+    expect(capturedTitleStyleIsCurrent(capturedStyle, snapshot)).toBe(false);
+  });
   it('replaces a uniform inline normal baseline with captured bold while retaining semantic emphasis', () => {
     const { source, target, snapshot } = fixture();
     target.data.elements[0].content = {
@@ -174,6 +298,7 @@ describe('reference title layout', () => {
     ).toEqual({
       pages: { target: target.pageRevision },
       metadata: snapshot.metadataRevision,
+      manifest: snapshot.manifestRevision,
     });
   });
 
@@ -300,7 +425,7 @@ describe('reference title layout', () => {
       'content.color': '#123456',
     });
     expect(change.expected.pages).toEqual({ target: 'sha256:current-target' });
-    expect(change.expected).not.toHaveProperty('manifest');
+    expect(change.expected.manifest).toBe(snapshot.manifestRevision);
     (change.operations[0].set.bounds as number[])[0] = 999;
     expect(capturedStyle).toEqual(original);
     expect(

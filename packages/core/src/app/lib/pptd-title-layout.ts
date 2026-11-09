@@ -43,6 +43,7 @@ export interface CapturedTitleStyle {
   referencePageId: string;
   referenceElementId: string;
   referencePageRevision: Revision;
+  referenceIdentity: string;
   fields: Record<string, unknown>;
 }
 
@@ -112,6 +113,7 @@ export function captureTitleStyle(
     referencePageId: reference.pageId,
     referenceElementId: source.elementId,
     referencePageRevision: reference.pageRevision,
+    referenceIdentity: referenceIdentity(snapshot, reference),
     fields,
   };
 }
@@ -186,11 +188,112 @@ export function createTitleStyleChange(options: TitleStyleChangeOptions): {
       },
     ],
     expected: {
+      manifest: snapshot.manifestRevision,
       pages: {
         [targetPage.pageId]: targetPage.pageRevision,
       },
-      // The writer checks this only when the target belongs to a recipe binding.
       metadata: snapshot.metadataRevision,
     },
   };
+}
+
+function referenceIdentity(snapshot: DeckSnapshot, page: PageSnapshot): string {
+  return JSON.stringify([
+    snapshot.deckId,
+    snapshot.entry,
+    snapshot.epoch,
+    snapshot.size,
+    snapshot.manifest.theme,
+    page,
+  ]);
+}
+
+export function capturedTitleStyleIsCurrent(
+  captured: CapturedTitleStyle,
+  snapshot: DeckSnapshot,
+): boolean {
+  const reference = snapshot.pages.find(
+    (page) => page.pageId === captured.referencePageId && page.state === 'active',
+  );
+  return !!reference && captured.referenceIdentity === referenceIdentity(snapshot, reference);
+}
+
+export interface PreparedTitleStylePreview {
+  base: string;
+  page: PageSnapshot;
+  snapshot: Pick<DeckSnapshot, 'size' | 'manifest'>;
+  operations: ElementPatchOperation[];
+  expected: ExpectedRevisions;
+}
+
+function previewIdentity(
+  snapshot: DeckSnapshot,
+  page: PageSnapshot,
+  targetElementId: string,
+  captured: CapturedTitleStyle,
+): string {
+  return JSON.stringify([
+    referenceIdentity(snapshot, page),
+    snapshot.manifestRevision,
+    snapshot.metadataRevision,
+    targetElementId,
+    captured,
+  ]);
+}
+
+export function prepareTitleStylePreview(
+  options: TitleStyleChangeOptions & { capturedStyle: CapturedTitleStyle },
+): PreparedTitleStylePreview {
+  const { snapshot, targetPage, targetElementId, capturedStyle } = options;
+  if (!snapshot.writable) throw new Error('Choose an editable live slide.');
+  const change = createTitleStyleChange(options);
+  const page = structuredClone(targetPage);
+  for (const operation of change.operations) {
+    const element = page.data.elements.find((item) => item.elementId === operation.elementId);
+    if (!element) throw new Error('Choose an independent title text object on the current Slide.');
+    for (const [field, value] of Object.entries(operation.set)) {
+      if (field.startsWith('content.')) {
+        element.content ??= {};
+        element.content[field.slice('content.'.length)] = structuredClone(value);
+      } else element[field] = structuredClone(value);
+    }
+    for (const field of operation.unset ?? []) {
+      if (field.startsWith('content.')) delete element.content?.[field.slice('content.'.length)];
+      else delete element[field];
+    }
+  }
+  return {
+    ...change,
+    base: previewIdentity(snapshot, targetPage, targetElementId, capturedStyle),
+    page,
+    snapshot: structuredClone({ size: snapshot.size, manifest: snapshot.manifest }),
+  };
+}
+
+export function titleStylePreviewIsCurrent(
+  prepared: PreparedTitleStylePreview,
+  snapshot: DeckSnapshot,
+  page: PageSnapshot,
+  targetElementId: string,
+  captured: CapturedTitleStyle,
+): boolean {
+  return (
+    snapshot.writable &&
+    page.state === 'active' &&
+    !page.versionId &&
+    prepared.base === previewIdentity(snapshot, page, targetElementId, captured)
+  );
+}
+
+export async function commitPreparedTitleStyle(
+  prepared: PreparedTitleStylePreview,
+  snapshot: DeckSnapshot,
+  page: PageSnapshot,
+  targetElementId: string,
+  captured: CapturedTitleStyle,
+  onApply: (operations: ElementPatchOperation[], expected: ExpectedRevisions) => Promise<unknown>,
+): Promise<void> {
+  if (!titleStylePreviewIsCurrent(prepared, snapshot, page, targetElementId, captured))
+    throw new Error('The slide or Project changed. Refresh the title preview before applying.');
+  await onApply(prepared.operations, prepared.expected);
 }

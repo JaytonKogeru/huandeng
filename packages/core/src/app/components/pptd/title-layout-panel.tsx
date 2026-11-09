@@ -4,12 +4,17 @@ import { elementLabel } from '@/lib/pptd-element-label';
 import { projectSlideTitle } from '@/lib/pptd-project-source';
 import {
   type CapturedTitleStyle,
+  capturedTitleStyleIsCurrent,
   captureTitleStyle,
-  createTitleStyleChange,
+  commitPreparedTitleStyle,
+  type PreparedTitleStylePreview,
+  prepareTitleStylePreview,
   titleLayoutObjects,
+  titleStylePreviewIsCurrent,
 } from '@/lib/pptd-title-layout';
 import type { DeckSnapshot, PageSnapshot } from '../../../pptd/types';
 import { Button } from '../ui/button';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '../ui/dialog';
 import { ProjectSlidePreview } from './project-source-picker';
 import type { RecipePanelProps } from './recipe-panel';
 
@@ -37,6 +42,8 @@ export function TitleLayoutPanel({
   const [referenceElementId, setReferenceElementId] = useState('');
   const [targetElementId, setTargetElementId] = useState('');
   const [captured, setCaptured] = useState<ReferenceCapture | null>(null);
+  const [prepared, setPrepared] = useState<PreparedTitleStylePreview | null>(null);
+  const [previewOpen, setPreviewOpen] = useState(false);
   const [pending, setPending] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
@@ -53,6 +60,12 @@ export function TitleLayoutPanel({
     if (selectedTitleId) setTargetElementId(selectedTitleId);
   }, [selectedTitleId]);
   const inactive = disabled || pending || !snapshot.writable;
+  const referenceStale = !!captured && !capturedTitleStyleIsCurrent(captured.style, snapshot);
+  const previewCurrent =
+    !!prepared &&
+    !!captured &&
+    titleStylePreviewIsCurrent(prepared, snapshot, page, targetElementId, captured.style) &&
+    (!selectedTitleId || targetElementId === selectedTitleId);
   const valid =
     captured?.style.referencePageId === referencePageId &&
     captured?.style.referenceElementId === referenceElementId &&
@@ -63,6 +76,7 @@ export function TitleLayoutPanel({
     setError(null);
     setMessage(null);
     setCaptured(null);
+    setPrepared(null);
     if (!elementId || !reference) return;
     try {
       const style = captureTitleStyle(snapshot, reference.pageId, elementId);
@@ -78,26 +92,63 @@ export function TitleLayoutPanel({
     }
   };
 
+  const prepare = () => {
+    setError(null);
+    setMessage(null);
+    try {
+      if (!captured) throw new Error('Choose a reference title to capture its style.');
+      setPrepared(
+        prepareTitleStylePreview({
+          snapshot,
+          capturedStyle: captured.style,
+          targetPage: page,
+          targetElementId,
+        }),
+      );
+      setPreviewOpen(true);
+    } catch (cause) {
+      setPrepared(null);
+      setError(cause instanceof Error ? cause.message : String(cause));
+    }
+  };
+
   const apply = async () => {
     setPending(true);
     setError(null);
     setMessage(null);
     try {
-      if (!captured) throw new Error('Choose a reference title to capture its style.');
-      const change = createTitleStyleChange({
+      if (!captured || !prepared || !previewCurrent)
+        throw new Error('The slide or Project changed. Refresh the title preview before applying.');
+      await commitPreparedTitleStyle(
+        prepared,
         snapshot,
-        capturedStyle: captured.style,
-        targetPage: page,
+        page,
         targetElementId,
-      });
-      await onApply(change.operations, change.expected);
+        captured.style,
+        onApply,
+      );
+      setPrepared(null);
+      setPreviewOpen(false);
       setMessage('Title style applied. Use Undo to restore the previous style.');
     } catch (cause) {
+      setPrepared(null);
       setError(cause instanceof Error ? cause.message : String(cause));
     } finally {
       setPending(false);
     }
   };
+
+  const applyButton = (
+    <Button
+      type="button"
+      size="sm"
+      data-hd-title-apply
+      disabled={inactive || !valid || !previewCurrent}
+      onClick={() => void apply()}
+    >
+      {pending ? t('正在保存…') : t('Apply to chosen title')}
+    </Button>
+  );
 
   return (
     <section className="space-y-3" aria-label={t('Match title style')} data-hd-title-layout>
@@ -117,12 +168,14 @@ export function TitleLayoutPanel({
           <span>{t('Reference Slide')}</span>
           <select
             id={`${prefix}-reference-slide`}
+            data-hd-title-reference-page
             className={fieldClass}
             value={referencePageId}
             onChange={(event) => {
               setReferencePageId(event.target.value);
               setReferenceElementId('');
               setCaptured(null);
+              setPrepared(null);
               setError(null);
               setMessage(null);
             }}
@@ -144,6 +197,7 @@ export function TitleLayoutPanel({
           <span>{t('Reference title object')}</span>
           <select
             id={`${prefix}-reference-title`}
+            data-hd-title-reference-object
             className={fieldClass}
             value={referenceElementId}
             disabled={inactive || !reference}
@@ -178,6 +232,31 @@ export function TitleLayoutPanel({
               <p className="break-words text-[11px] text-muted-foreground">{captured.label}</p>
             )}
             {captured && (
+              <div
+                className="space-y-1 text-[11px] text-muted-foreground"
+                data-hd-title-reference-state={referenceStale ? 'stale' : 'current'}
+              >
+                <p>
+                  {t(
+                    referenceStale
+                      ? 'Reference changed. The captured style is retained until refreshed.'
+                      : 'Reference matches the captured version.',
+                  )}
+                </p>
+                <dl
+                  className="grid grid-cols-[auto_1fr] gap-x-2 gap-y-1 break-words"
+                  data-hd-title-captured-values
+                >
+                  {Object.entries(captured.style.fields).map(([field, value]) => (
+                    <div key={field} className="contents">
+                      <dt>{t(titleStyleFieldLabel(field))}</dt>
+                      <dd>{titleStyleFieldValue(field, value)}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            )}
+            {captured && (
               <p className="text-[11px] leading-relaxed text-muted-foreground">
                 {t('Apply uses this captured style. Refresh to include later reference edits.')}
               </p>
@@ -204,10 +283,12 @@ export function TitleLayoutPanel({
           <span>{t('Title on the current Slide')}</span>
           <select
             id={`${prefix}-target-title`}
+            data-hd-title-target-object
             className={fieldClass}
             value={targetElementId}
             onChange={(event) => {
               setTargetElementId(event.target.value);
+              setPrepared(null);
               setMessage(null);
               if (event.target.value) onSelectTitle?.(event.target.value);
             }}
@@ -230,9 +311,26 @@ export function TitleLayoutPanel({
             'Only the chosen title changes. Baseline font, size, color, alignment and spacing replace inline overrides. Wording and emphasis are retained.',
           )}
         </p>
-        <Button type="button" size="sm" disabled={inactive || !valid} onClick={() => void apply()}>
-          {pending ? t('正在保存…') : t('Apply to chosen title')}
+        {prepared && !previewCurrent && (
+          <p
+            role="status"
+            data-hd-title-preview-stale
+            className="text-xs text-amber-700 dark:text-amber-300"
+          >
+            {t('The slide or Project changed. Refresh the title preview before applying.')}
+          </p>
+        )}
+        <Button
+          type="button"
+          size="sm"
+          variant="outline"
+          data-hd-title-preview-open
+          disabled={inactive || !valid}
+          onClick={prepare}
+        >
+          {t(prepared ? 'Refresh title preview' : 'Preview title on full slide')}
         </Button>
+        {!previewOpen && applyButton}
       </fieldset>
       {error && (
         <p role="alert" className="text-xs text-destructive">
@@ -244,6 +342,79 @@ export function TitleLayoutPanel({
           {t(message)}
         </p>
       )}
+      <Dialog open={previewOpen} onOpenChange={setPreviewOpen}>
+        <DialogContent
+          className="flex h-[min(86vh,760px)] w-[94vw] max-w-[1200px] flex-col overflow-hidden sm:max-w-[1200px]"
+          onKeyDown={(event) => event.stopPropagation()}
+        >
+          <DialogHeader>
+            <DialogTitle>{t('Title style preview')}</DialogTitle>
+            <DialogDescription>
+              {t(
+                'Preview is local. Apply saves this exact prepared title style; wording and other objects are retained.',
+              )}
+            </DialogDescription>
+          </DialogHeader>
+          {prepared && !previewCurrent && (
+            <p role="status" data-hd-title-preview-stale>
+              {t('The slide or Project changed. Refresh the title preview before applying.')}
+            </p>
+          )}
+          <div
+            data-hd-title-preview={previewCurrent ? 'current' : 'stale'}
+            className="relative min-h-0 flex-1 bg-canvas p-3"
+          >
+            {prepared && (
+              <ProjectSlidePreview page={prepared.page} snapshot={prepared.snapshot} immediate />
+            )}
+          </div>
+          <div className="flex flex-wrap justify-end gap-2">
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              disabled={inactive || !valid}
+              onClick={prepare}
+            >
+              {t('Refresh title preview')}
+            </Button>
+            {applyButton}
+          </div>
+          {error && (
+            <p role="alert" className="text-xs text-destructive">
+              {t(error)}
+            </p>
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
+}
+
+function titleStyleFieldLabel(field: string): string {
+  const labels: Record<string, string> = {
+    bounds: 'Position and size',
+    rotation: 'Rotation',
+    'content.fontFamily': 'Font family',
+    'content.fontSize': 'Font size',
+    'content.bold': 'Bold',
+    'content.italic': 'Italic',
+    'content.underline': 'Underline',
+    'content.color': 'Text color',
+    'content.align': 'Alignment',
+    'content.lineHeight': 'Line height',
+    'content.lineHeightPx': 'Line height (px)',
+    'content.letterSpacing': 'Letter spacing',
+    'content.wrap': 'Wrap text',
+    'content.textDirection': 'Text direction',
+  };
+  return labels[field] ?? field;
+}
+
+function titleStyleFieldValue(field: string, value: unknown): string {
+  if (typeof value === 'boolean') return t(value ? 'Yes' : 'No');
+  if (field === 'content.align' && Array.isArray(value))
+    return value.map((part) => t(String(part))).join(' / ');
+  if (field === 'content.textDirection') return t(String(value));
+  return typeof value === 'string' ? value : JSON.stringify(value);
 }

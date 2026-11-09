@@ -620,6 +620,9 @@ export class PptdDocumentClient {
         operations.push({ op: 'page.notes.set', pageId, text: draft.notes });
       const snapshot = this.state.snapshot;
       if (!snapshot) return null;
+      const remote = snapshot.pages.find((page) => page.pageId === pageId);
+      const componentBound =
+        touchesComponent(draft) || (!!remote && touchesComponent({ ...draft, base: remote }));
       this.pending = {
         request: {
           requestId: crypto.randomUUID(),
@@ -628,7 +631,7 @@ export class PptdDocumentClient {
           originClientId: this.clientId,
           expected: {
             pages: { [pageId]: draft.base.pageRevision },
-            metadata: draft.metadataRevision,
+            metadata: componentBound ? draft.metadataRevision : snapshot.metadataRevision,
             manifest: snapshot.manifestRevision,
           },
           operations,

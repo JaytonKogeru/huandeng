@@ -161,6 +161,50 @@ afterEach(() => {
 });
 
 describe('PPTD browser editing contract', () => {
+  it('saves an ordinary draft against accepted unrelated Story metadata while retaining its page revision', async () => {
+    const { client, setRemote, commit } = await setup();
+    client.patchElement('page-1', 'title', { 'content.text': 'Local draft' }, false);
+    const next = session();
+    next.sequence = 2;
+    next.metadataRevision = revision(201);
+    next.metadata.designPolicy = 'Updated Story';
+    setRemote(next);
+    await client.refresh();
+    expect(client.getState().drafts['page-1'].conflict).toBeUndefined();
+    commit.mockImplementation(async (request) => {
+      expect(request.expected.metadata).toBe(revision(201));
+      expect(request.expected.pages).toEqual({ 'page-1': revision(1) });
+      return receipt(request.requestId);
+    });
+    await client.flushPage('page-1');
+    expect(client.getState().drafts['page-1']).toBeUndefined();
+  });
+
+  it('retains the frozen metadata revision when a plain draft target becomes component-bound remotely', async () => {
+    const { client, setRemote, commit } = await setup();
+    client.patchElement('page-1', 'title', { bounds: [50, 40, 500, 70] }, false);
+    const next = session();
+    next.sequence = 2;
+    next.metadataRevision = revision(201);
+    next.pages[0].metadata.components = {
+      layout: {
+        recipe: 'synthetic',
+        recipeVersion: 1,
+        params: {},
+        slots: { title: 'title' },
+        overrides: {},
+      },
+    };
+    setRemote(next);
+    await client.refresh();
+    commit.mockImplementation(async (request) => {
+      expect(request.expected.metadata).toBe(revision(200));
+      throw new PptdClientError('REVISION_CONFLICT', 'New binding');
+    });
+    await expect(client.flushPage('page-1')).rejects.toThrow('New binding');
+    expect(client.page('page-1')?.data.elements[0].bounds).toEqual([50, 40, 500, 70]);
+  });
+
   it('retains unchanged page and project references while accepting page and metadata changes', async () => {
     const initial = session();
     const second = structuredClone(initial.pages[0]);

@@ -59,6 +59,64 @@ function request(store: PptdStore, operations: PptdOperation[]): TransactionRequ
 }
 
 describe('PPTD document store', () => {
+  it('enforces an explicit preview manifest precondition on a plain title patch', async () => {
+    const files = await fixture();
+    const store = await open(files);
+    const page = store.getSnapshot().pages[0];
+    const prepared = request(store, [
+      {
+        op: 'element.patch',
+        pageId: page.pageId,
+        elementId: 'title',
+        set: { 'content.fontSize': 34 },
+      },
+    ]);
+    const before = await fs.readFile(path.join(files.root, page.path), 'utf8');
+    await fs.writeFile(
+      files.entryPath,
+      (await fs.readFile(files.entryPath, 'utf8')).replace('[960, 540]', '[800, 600]'),
+    );
+    await store.refreshExternal();
+    await expect(store.commit(prepared)).rejects.toMatchObject({
+      code: 'REVISION_CONFLICT',
+      details: { kind: 'manifest' },
+    });
+    expect(await fs.readFile(path.join(files.root, page.path), 'utf8')).toBe(before);
+  });
+
+  it('enforces an explicit preview metadata precondition after a target theme override changes', async () => {
+    const files = await fixture();
+    const store = await open(files);
+    const page = store.getSnapshot().pages[0];
+    const prepared = request(store, [
+      {
+        op: 'element.patch',
+        pageId: page.pageId,
+        elementId: 'title',
+        set: { 'content.fontSize': 34 },
+      },
+    ]);
+    const before = await fs.readFile(path.join(files.root, page.path), 'utf8');
+    await store.commit(
+      request(store, [
+        {
+          op: 'metadata.patch',
+          pageId: page.pageId,
+          set: { themeOverride: { colors: { ink: '#123456' } } },
+        },
+      ]),
+    );
+    await expect(store.commit(prepared)).rejects.toMatchObject({
+      code: 'REVISION_CONFLICT',
+      details: { kind: 'metadata' },
+    });
+    expect(await fs.readFile(path.join(files.root, page.path), 'utf8')).toBe(before);
+    const current = request(store, prepared.operations);
+    delete current.expected.manifest;
+    delete current.expected.metadata;
+    await expect(store.commit(current)).resolves.toMatchObject({ ok: true });
+  });
+
   it('stores hidden state with Undo and preserves it when restoring a named artwork version', async () => {
     const files = await fixture();
     await fs.mkdir(path.join(files.root, 'media'), { recursive: true });

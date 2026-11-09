@@ -1506,6 +1506,8 @@ export class PptdStore {
           { kind, pageId, expected, currentRevision: actual },
         );
     };
+    if (request.expected.manifest !== undefined) check('manifest');
+    if (request.expected.metadata !== undefined) check('metadata');
     const pageIdentity = (target: string) => resolvePageIdentity(docs.metadata, target);
     const pageDocument = (target: string, active = true) => {
       const { pageId, identity } = pageIdentity(target);
