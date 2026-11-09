@@ -48,7 +48,7 @@ import {
 export { elementLabel as layerTitle } from '@/lib/pptd-element-label';
 export { NumberField } from './property-fields';
 
-export type InspectorTab = 'properties' | 'layers' | 'story' | 'checks';
+export type InspectorTab = 'properties' | 'layout' | 'layers' | 'story' | 'checks';
 
 type Props = {
   page: PageSnapshot;
@@ -121,6 +121,7 @@ export function PptdInspector({
   const prefix = useId();
   const tabs: { id: InspectorTab; label: string }[] = [
     { id: 'properties', label: 'Properties' },
+    { id: 'layout', label: 'Layout' },
     { id: 'layers', label: 'Layers' },
     { id: 'story', label: 'Story' },
     { id: 'checks', label: 'Checks' },
@@ -212,7 +213,7 @@ export function PptdInspector({
       <div
         role="tablist"
         aria-label={t('Inspector views')}
-        className="grid shrink-0 grid-cols-4 gap-0.5 border-b border-border p-1.5"
+        className="grid shrink-0 grid-cols-5 gap-0.5 border-b border-border p-1.5"
       >
         {tabs.map((item, index) => (
           <button
@@ -710,14 +711,15 @@ export function PptdInspector({
             </div>
           </Section>
         )}
-        {children && (
-          <details open className="border-t border-border" data-hd-quick-layout>
-            <summary className="cursor-pointer px-4 py-3 text-xs font-medium">
-              {t('Quick Layout')}
-            </summary>
-            {children}
-          </details>
-        )}
+      </div>
+      <div
+        role="tabpanel"
+        id={`${prefix}-layout-panel`}
+        aria-labelledby={`${prefix}-layout-tab`}
+        hidden={activeTab !== 'layout'}
+        className={activeTab === 'layout' ? 'min-h-0 flex-1 overflow-y-auto' : 'hidden'}
+      >
+        {children}
       </div>
       <div
         role="tabpanel"

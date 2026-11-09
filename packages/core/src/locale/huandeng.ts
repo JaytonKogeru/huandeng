@@ -10,6 +10,58 @@ export type UiLocale = 'en' | 'zh-CN';
 export type UiValues = Record<string, string | number>;
 
 const reviewChinese = {
+  Layout: '布局',
+  Previous: '上一批',
+  Next: '下一批',
+  'Figure layouts': '图像布局',
+  'Client report': '客户端报告',
+  Activity: '动态',
+  'Project Activity': 'Project 动态',
+  'Activity filter': '动态筛选',
+  'Close Activity': '关闭动态',
+  'Previous session': '上一次会话',
+  Refresh: '刷新',
+  'No activity for this Project yet. Connected clients can report task stages; saved changes appear automatically.':
+    '此项目暂无动态。已连接的客户端可报告任务阶段；已保存的修改会自动显示。',
+  'A source image changed or is unavailable. Choose the source again before adding.':
+    '原图已改变或不可用。请重新选择原图后再添加。',
+  'Choose a Project image': '选择项目图片',
+  'Original figures stay intact. Search or browse 12 images at a time.':
+    '保留原图。可搜索或每次浏览 12 张图片。',
+  'Search Project images': '搜索项目图片',
+  'Loading images…': '正在读取图片…',
+  'Image unavailable': '图片不可用',
+  'Missing image': '图片缺失',
+  'No matching Project images.': '没有匹配的项目图片。',
+  'Asset scan is limited. Narrow the search or enter a Project path.':
+    '素材扫描范围有限。请缩小搜索范围或输入项目路径。',
+  'Images {start}–{end} of {total}': '图片 {start}–{end}，共 {total} 张',
+  'Advanced: Project image path': '高级：项目图片路径',
+  'Project image path': '项目图片路径',
+  'Find image': '查找图片',
+  'Choose an image from this Project media/ or assets/ folder.':
+    '请选择此项目 media/ 或 assets/ 文件夹中的图片。',
+  'Choose an editable live slide.': '请选择可编辑的实时页面。',
+  'Choose available source images for every slot.': '请为每个位置选择可用的原图。',
+  'The marked title leaves too little room for this layout. Adjust the title or use another slide.':
+    '标记的标题为此布局留下的空间不足。请调整标题或使用其他页面。',
+  'Choose a layout and original figures, inspect the complete slide, then add it.':
+    '选择布局和原图，检查完整页面后再添加。',
+  'Image unavailable. Choose another image or retry.': '图片不可用。请选择其他图片或重试。',
+  'Project image library unavailable.': '项目图片库不可用。',
+  'The slide or Project changed. Refresh the preview before adding.':
+    '页面或项目已改变。请刷新预览后再添加。',
+  'Refresh layout preview': '刷新布局预览',
+  'Refresh the layout preview before retrying.': '请刷新布局预览后再重试。',
+  'Preview full slide': '预览完整页面',
+  'Preview is local. Existing objects stay in place; inspect overlaps before adding.':
+    '预览在本地生成。现有对象保持原位；添加前请检查重叠。',
+  'Layout added. Open its saved receipt in Activity to review changes.':
+    '布局已添加。可在动态中打开保存回执查看修改。',
+  'Full slide layout preview': '完整页面布局预览',
+  'Existing objects and proposed additions, in their final order. Add saves this prepared layout.':
+    '按最终顺序显示现有对象和拟添加的对象。添加将保存此预览中的布局。',
+
   'Writer save failed': '写入保存失败',
   'Writer observation': '写入观察记录',
   'Slides saved: {count}': '已保存页面：{count}',

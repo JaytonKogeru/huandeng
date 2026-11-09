@@ -211,9 +211,9 @@ export function HuandengEditor() {
     setOpenFilePreviews((current) => current.filter((item) => item !== path));
     setFilePreviewPath((current) => (current === path ? null : current));
   }, []);
-  const [inspectorTab, setInspectorTab] = useState<'properties' | 'layers' | 'story' | 'checks'>(
-    'properties',
-  );
+  const [inspectorTab, setInspectorTab] = useState<
+    'properties' | 'layout' | 'layers' | 'story' | 'checks'
+  >('properties');
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [navigationCollapsed, setNavigationCollapsed] = useState(false);
   const [inspectorCollapsed, setInspectorCollapsed] = useState(false);
@@ -2860,6 +2860,7 @@ export function HuandengEditor() {
               }
             >
               <RecipePanel
+                backend={backend}
                 snapshot={snapshot}
                 page={page}
                 selectedIds={selectedIds}

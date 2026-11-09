@@ -131,6 +131,18 @@ describe('operation review presentation and navigation', () => {
   it('translates new review and stream labels into Chinese', () => {
     expect(translateUi('zh-CN', 'Review saved changes')).toBe('查看已保存的修改');
     expect(translateUi('zh-CN', 'Activity stream connected')).toBe('动态流已连接');
+    const chinese = (value: string) => translateUi('zh-CN', value);
+    expect(activityLabel({ source: 'client', status: 'completed' } as ActivityEvent, chinese)).toBe(
+      '客户端报告 · 已报告完成',
+    );
+    for (const [label, translation] of [
+      ['Project Activity', 'Project 动态'],
+      ['Activity filter', '动态筛选'],
+      ['Close Activity', '关闭动态'],
+      ['Previous session', '上一次会话'],
+      ['Refresh', '刷新'],
+    ])
+      expect(chinese(label)).toBe(translation);
   });
   it('ignores late results after cancellation even when a transport ignores abort', async () => {
     let finish: (review: OperationReview) => void = () => {};
