@@ -44,6 +44,8 @@ import { PptdInspector } from '@/components/pptd/inspector';
 import { KeyboardHelpDialog } from '@/components/pptd/keyboard-help-dialog';
 import { HuandengLanguageMenu } from '@/components/pptd/language-menu';
 import { NotesPanel } from '@/components/pptd/notes-panel';
+import { OperationReviewDialog } from '@/components/pptd/operation-review-dialog';
+import { currentReviewTarget } from '@/components/pptd/operation-review-model';
 import { PageHistoryDialog } from '@/components/pptd/page-history-dialog';
 import { PanelResizeHandle } from '@/components/pptd/panel-resize-handle';
 import { type PresentationControls, PresentationView } from '@/components/pptd/presentation-view';
@@ -156,6 +158,10 @@ export function HuandengEditor() {
   const chartDirty = Object.values(chartDrafts).some((drafts) => Object.keys(drafts).length > 0);
   const auxiliaryDirty = projectDirty || storyDirty || chartDirty || timelineDirty;
   const { client, backend, state } = usePptdDocument(auxiliaryDirty, importingImages);
+  const [operationReview, setOperationReview] = useState<{
+    operationId: string;
+    backend: typeof backend;
+  } | null>(null);
   const retainChartDraft = useCallback(
     (pageId: string, elementId: string, draft: ChartDataDraft | null) => {
       setChartDrafts((current) => {
@@ -2775,6 +2781,18 @@ export function HuandengEditor() {
             <PptdActivityPanel
               backend={backend}
               deckId={snapshot.metadata.deckId}
+              pageLabels={Object.fromEntries(
+                snapshot.pages
+                  .filter((item) => item.state === 'active')
+                  .map((item) => [
+                    item.pageId,
+                    item.shortCode ?? item.metadata.label ?? item.pageId,
+                  ]),
+              )}
+              onSelectPage={(id) => {
+                if (currentReviewTarget(snapshot, id)) selectMainPage(id);
+              }}
+              onReview={(operationId) => setOperationReview({ operationId, backend })}
               onClose={() => setActivityOpen(false)}
             />
           )}
@@ -3131,6 +3149,30 @@ export function HuandengEditor() {
           void importImages(files);
         }}
       />
+      {operationReview?.backend === backend && (
+        <OperationReviewDialog
+          key={`${snapshot.deckId}:${operationReview.operationId}`}
+          backend={backend}
+          snapshot={snapshot}
+          operationId={operationReview.operationId}
+          open
+          onOpenChange={(open) => {
+            if (!open) setOperationReview(null);
+          }}
+          onNavigate={(id, elementId) => {
+            if (timelineDirty) {
+              setUiError('请先保存或还原时间线中的修改，再切换页面。');
+              return;
+            }
+            const current = client.getState().snapshot;
+            const target = current && currentReviewTarget(current, id, elementId);
+            if (!target) return;
+            selectMainPage(target.pageId);
+            if (target.elementId) setSelectedIds([target.elementId]);
+            setOperationReview(null);
+          }}
+        />
+      )}
       {historyPage && (
         <PageHistoryDialog
           key={historyPage.pageId}

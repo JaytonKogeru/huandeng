@@ -4,15 +4,22 @@ import { uiText as t, useHuandengLocale } from '@/lib/huandeng-locale';
 import type { PptdBackend } from '@/lib/pptd-backend';
 import type { ActivityEvent, ActivitySnapshot } from '../../../pptd/activity';
 import { Button } from '../ui/button';
+import { activityLabel, changeSummary, receiptIds } from './operation-review-model';
 
 export function PptdActivityPanel({
   backend,
   deckId,
   onClose,
+  pageLabels,
+  onSelectPage,
+  onReview,
 }: {
   backend: PptdBackend;
   deckId: string;
   onClose: () => void;
+  pageLabels: Record<string, string>;
+  onSelectPage: (pageId: string) => void;
+  onReview: (operationId: string) => void;
 }) {
   useHuandengLocale();
   const [snapshot, setSnapshot] = useState<ActivitySnapshot | null>(null);
@@ -25,6 +32,7 @@ export function PptdActivityPanel({
     const abort = new AbortController();
     setSnapshot(null);
     setConnected(false);
+    setError(null);
     const read = () => {
       void backend
         .activity(abort.signal)
@@ -94,15 +102,17 @@ export function PptdActivityPanel({
   return (
     <section
       data-testid="project-activity"
-      aria-label="Project Activity"
+      aria-label={t('Project Activity')}
       className="bg-background flex h-[220px] min-h-[130px] max-h-[50vh] shrink-0 resize-y flex-col overflow-hidden border-t"
       onKeyDown={(event) => event.stopPropagation()}
     >
-      <header className="flex shrink-0 items-center gap-2 border-b px-3 py-1.5 text-xs">
+      <header className="flex shrink-0 flex-wrap items-center gap-2 border-b px-3 py-1.5 text-xs">
         <Activity size={14} />
-        <strong>Activity</strong>
-        <span className="text-muted-foreground">{connected ? t('Live') : t('Connecting…')}</span>
-        <fieldset className="ml-3 flex gap-1 border-0 p-0" aria-label="Activity filter">
+        <strong>{t('Activity')}</strong>
+        <span className="text-muted-foreground">
+          {connected ? t('Activity stream connected') : t('Activity stream reconnecting…')}
+        </span>
+        <fieldset className="ml-3 flex gap-1 border-0 p-0" aria-label={t('Activity filter')}>
           {(['all', 'client', 'writer'] as const).map((kind) => (
             <button
               key={kind}
@@ -111,7 +121,11 @@ export function PptdActivityPanel({
               className={`rounded px-2 py-1 ${filter === kind ? 'bg-accent' : 'hover:bg-accent/60'}`}
               onClick={() => setFilter(kind)}
             >
-              {kind === 'all' ? t('All') : kind === 'client' ? t('Tasks') : t('Changes')}
+              {kind === 'all'
+                ? t('All')
+                : kind === 'client'
+                  ? t('Client reports')
+                  : t('Saved changes')}
             </button>
           ))}
         </fieldset>
@@ -170,23 +184,51 @@ export function PptdActivityPanel({
                   {new Date(event.timestamp).toLocaleTimeString()}
                 </time>
                 <span className="text-foreground font-medium">{event.actor}</span>
-                <span>
-                  {event.source === 'writer'
-                    ? t('Writer record')
-                    : `${t('Client report')} · ${event.status}`}
-                </span>
+                <span>{activityLabel(event, t)}</span>
                 {event.epoch !== snapshot?.epoch && <span>{t('Previous session')}</span>}
               </div>
               <p className="mt-0.5 break-words whitespace-pre-wrap text-xs leading-relaxed">
-                {event.summary}
+                {event.source === 'writer' ? changeSummary(event.summary, t) : event.summary}
               </p>
+              <div className="mt-1 flex flex-wrap items-center gap-1">
+                {event.pageIds?.map((pageId) => (
+                  <button
+                    type="button"
+                    key={pageId}
+                    data-hd-activity-page={pageId}
+                    disabled={!pageLabels[pageId]}
+                    title={pageId}
+                    className="rounded border px-1.5 py-0.5 text-[11px] hover:bg-accent disabled:opacity-50"
+                    onClick={() => onSelectPage(pageId)}
+                  >
+                    {pageLabels[pageId] ?? t('Unavailable slide')}
+                  </button>
+                ))}
+                {receiptIds(event).map((id) => (
+                  <button
+                    type="button"
+                    key={id}
+                    data-hd-review-operation={id}
+                    title={id}
+                    className="rounded border border-brand/30 px-2 py-0.5 text-[11px] text-brand hover:bg-brand-soft"
+                    onClick={() => onReview(id)}
+                  >
+                    {event.source === 'writer'
+                      ? t('Review changes')
+                      : t('Resolve reported receipt')}
+                  </button>
+                ))}
+              </div>
               {event.source === 'client' && (
-                <p
-                  className="text-muted-foreground mt-0.5 truncate font-mono text-[10px]"
-                  title={`${event.sessionId} / ${event.taskId}`}
-                >
-                  {event.sessionId} / {event.taskId}
-                </p>
+                <details className="text-muted-foreground mt-1 text-[11px]">
+                  <summary className="cursor-pointer">{t('Report details')}</summary>
+                  <p className="break-all font-mono">
+                    {event.sessionId} / {event.taskId}
+                  </p>
+                  {receiptIds(event).length > 0 && (
+                    <p>{t('Receipt IDs are client claims until resolved in this Project.')}</p>
+                  )}
+                </details>
               )}
             </div>
           </article>
