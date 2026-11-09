@@ -77,6 +77,43 @@ function eventReader(reader: ReadableStreamDefaultReader<Uint8Array>) {
 }
 
 describe('HUANDENG production document server', () => {
+  it('serves exact read-only operation review and rejects IDs from another Project', async () => {
+    const { server, session } = await fixture();
+    const pageId = session.pages[0].pageId;
+    const response = await fetch(`${server.url}/__pptd/transactions`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', 'x-huandeng-token': session.sessionToken },
+      body: JSON.stringify({
+        requestId: randomUUID(),
+        deckId: session.deckId,
+        actor: 'synthetic-review-test',
+        expected: { pages: { [pageId]: session.pages[0].pageRevision } },
+        operations: [{ op: 'page.notes.set', pageId, text: 'Reviewed' }],
+      }),
+    });
+    const receipt = await response.json();
+    expect(response.status).toBe(200);
+    const review = await fetch(
+      `${server.url}/__pptd/reviews/${receipt.operationId}?pageId=${pageId}`,
+    );
+    expect(review.status).toBe(200);
+    expect(await review.json()).toMatchObject({
+      operationId: receipt.operationId,
+      before: { page: { data: { notes: 'Original notes' } } },
+      after: { page: { data: { notes: 'Reviewed' } } },
+    });
+    const other = await fixture();
+    expect((await fetch(`${other.server.url}/__pptd/reviews/${receipt.operationId}`)).status).toBe(
+      404,
+    );
+    expect(
+      (
+        await fetch(
+          `${server.url}/__pptd/reviews/${receipt.operationId}?pageId=${session.pages[1].pageId}`,
+        )
+      ).status,
+    ).toBe(404);
+  });
   it('scopes task reports to the selected Project and leaves page history and sources unchanged', async () => {
     const first = await fixture();
     const second = await fixture();

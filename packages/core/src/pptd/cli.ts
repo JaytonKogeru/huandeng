@@ -91,6 +91,19 @@ program
     process.stdout.write(`${agentGuide(topic).text}\n`);
   });
 program
+  .command('review <operationId>')
+  .description(
+    'Read exact saved-operation before/after with current-asset and theme provenance warnings',
+  )
+  .option('--page <pageId>', 'select an affected stable page ID')
+  .action(async (operationId, options) =>
+    print(
+      await (await client()).request(
+        queryPath(`/reviews/${encodeURIComponent(operationId)}`, { pageId: options.page }),
+      ),
+    ),
+  );
+program
   .command('history [pageId] [versionId]')
   .description('Read named page versions, document operations, or a historical page snapshot')
   .option('--operations', 'show granular page operations instead of named versions')

@@ -119,6 +119,30 @@ export interface PageVersionSnapshot {
   theme?: Record<string, unknown>;
 }
 
+export interface OperationReviewChange {
+  kind: 'added' | 'removed' | 'changed';
+  elementId?: string;
+  label: string;
+  fields: string[];
+}
+
+export interface OperationReview {
+  deckId: string;
+  operationId: string;
+  actor: string;
+  timestamp: string;
+  summary: string;
+  pageIds: string[];
+  /** Null for operations that only affect Project structure or Story. */
+  pageId: string | null;
+  before: PageVersionSnapshot | null;
+  after: PageVersionSnapshot | null;
+  changes: OperationReviewChange[];
+  truncated: boolean;
+  warnings: string[];
+  themeSource: Record<'before' | 'after', 'recorded' | 'current-fallback' | 'absent'>;
+}
+
 export interface CreatePageCheckpointRequest {
   pageId: string;
   requestId: string;

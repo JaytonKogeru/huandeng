@@ -22,6 +22,8 @@ export interface ActivityReport {
   status: ActivityStatus;
   summary: string;
   pageIds?: string[];
+  /** Explicit client claims, resolved against this Project's journal when reviewed. */
+  operationIds?: string[];
 }
 
 export interface ActivityEvent extends ActivityReport {
@@ -70,6 +72,16 @@ function validStoredEvent(
     typeof event.timestamp === 'string' &&
     Number.isFinite(Date.parse(event.timestamp)) &&
     (event.operationId === undefined || typeof event.operationId === 'string') &&
+    (event.operationIds === undefined ||
+      (Array.isArray(event.operationIds) &&
+        event.operationIds.length <= 20 &&
+        event.operationIds.every(
+          (id) =>
+            typeof id === 'string' &&
+            id.trim().length > 0 &&
+            id.length <= 160 &&
+            ![...id].some(invalidControl),
+        ))) &&
     (event.pageIds === undefined ||
       (Array.isArray(event.pageIds) &&
         event.pageIds.length <= 40 &&
@@ -124,6 +136,7 @@ export function validateActivityReport(value: unknown, deckId: string): Activity
     'status',
     'summary',
     'pageIds',
+    'operationIds',
   ]);
   if (Object.keys(input).some((key) => !allowed.has(key)))
     throw new PptdError('INVALID_REQUEST', 'Unknown activity report field.');
@@ -131,6 +144,11 @@ export function validateActivityReport(value: unknown, deckId: string): Activity
     throw new PptdError('INVALID_REQUEST', 'Invalid activity status.');
   if (input.pageIds !== undefined && (!Array.isArray(input.pageIds) || input.pageIds.length > 40))
     throw new PptdError('INVALID_REQUEST', 'pageIds must contain at most 40 stable Slide IDs.');
+  if (
+    input.operationIds !== undefined &&
+    (!Array.isArray(input.operationIds) || input.operationIds.length > 20)
+  )
+    throw new PptdError('INVALID_REQUEST', 'operationIds must contain at most 20 operation IDs.');
   return {
     deckId,
     requestId: boundedText(input.requestId, 'requestId', 160),
@@ -139,6 +157,15 @@ export function validateActivityReport(value: unknown, deckId: string): Activity
     actor: boundedText(input.actor, 'actor', 100),
     status: input.status as ActivityStatus,
     summary: boundedText(input.summary, 'summary', 600),
+    ...(input.operationIds === undefined
+      ? {}
+      : {
+          operationIds: [
+            ...new Set(
+              (input.operationIds as unknown[]).map((id) => boundedText(id, 'operationId', 160)),
+            ),
+          ],
+        }),
     ...(input.pageIds === undefined
       ? {}
       : {

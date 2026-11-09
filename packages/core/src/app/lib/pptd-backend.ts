@@ -7,6 +7,7 @@ import type {
   DeckSnapshot,
   DocumentEvent,
   HistorySummary,
+  OperationReview,
   PageVersionSnapshot,
   PageVersionSummary,
   TransactionRequest,
@@ -89,6 +90,18 @@ export function pptdProjectFileImageUrl(path: string, revision: string): string 
 
 export class PptdBackend implements PptdTransport {
   private token = '';
+
+  operationReview(
+    operationId: string,
+    pageId?: string,
+    signal?: AbortSignal,
+  ): Promise<OperationReview> {
+    return this.request(
+      queryPath(`/reviews/${encodeURIComponent(operationId)}`, { pageId }),
+      undefined,
+      signal,
+    );
+  }
 
   activity(signal?: AbortSignal): Promise<ActivitySnapshot> {
     return this.request('/activity', undefined, signal);

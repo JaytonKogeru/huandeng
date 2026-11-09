@@ -30,6 +30,12 @@ import {
   resolvePageIdentity,
   serializeMetadata,
 } from './identity';
+import {
+  affectedReviewPages,
+  operationChanges,
+  recordedSource,
+  reviewMetadata,
+} from './operation-review';
 import { type CheckpointState, PageCheckpointArchive } from './page-checkpoints';
 import { PageVersionArchive, type PageVersionState, VERSIONED_PAGE_METADATA } from './page-history';
 import { validatePageTransition } from './page-transition';
@@ -67,6 +73,7 @@ import {
   type ElementRef,
   type HistorySummary,
   type NewRevisions,
+  type OperationReview,
   type PageSnapshot,
   type PageVersionSnapshot,
   type PageVersionSummary,
@@ -1003,6 +1010,172 @@ export class PptdStore {
         ({ files: _files, request: _request, requestHash: _hash, result: _result, ...summary }) =>
           summary,
       );
+  }
+
+  operationReview(operationId: string, requestedPageId?: string): Promise<OperationReview> {
+    return this.enqueue(async () => {
+      if (typeof operationId !== 'string' || !/^[\w-]{1,160}$/.test(operationId))
+        throw new PptdError('INVALID_REQUEST', 'A bounded operation ID is required.');
+      if (
+        requestedPageId !== undefined &&
+        (typeof requestedPageId !== 'string' || !/^[\w-]{1,100}$/.test(requestedPageId))
+      )
+        throw new PptdError('INVALID_REQUEST', 'A stable page ID is required.');
+      const records = await this.persistence.history();
+      const record = records.find((item) => item.operationId === operationId);
+      if (!record || record.request.deckId !== this.documents.metadata.deckId)
+        throw new PptdError(
+          'TARGET_NOT_FOUND',
+          `Unknown operation ${operationId} in this Project.`,
+        );
+      const beforeMetadata = reviewMetadata(
+        records,
+        record.before.metadata,
+        this.documents.metadataSource,
+      );
+      const afterMetadata = reviewMetadata(
+        records,
+        record.after.metadata,
+        this.documents.metadataSource,
+      );
+      const pageIds = affectedReviewPages(record, beforeMetadata, afterMetadata);
+      const pageId = requestedPageId ?? pageIds[0] ?? null;
+      if (pageId !== null && !pageIds.includes(pageId))
+        throw new PptdError(
+          'TARGET_NOT_FOUND',
+          'This page is not affected by the requested operation.',
+          { operationId, pageId },
+        );
+      const warnings = [
+        'Operation previews use current Project image assets; historical image bytes are not archived here and assets may have changed or be missing.',
+      ];
+      const themeSource: OperationReview['themeSource'] = { before: 'absent', after: 'absent' };
+      const snapshot = async (
+        side: 'before' | 'after',
+        metadata: ProjectMetadata,
+      ): Promise<PageVersionSnapshot | null> => {
+        if (pageId === null) return null;
+        const identity = metadata.slides[pageId];
+        const revision = record[side].pages[pageId];
+        // Removing a page tombstones its identity while retaining its source on disk.
+        if (identity?.state === 'tombstone' || (!identity && !revision)) return null;
+        if (!identity || !revision)
+          throw new PptdError(
+            'HISTORY_UNAVAILABLE',
+            `The ${side} page identity or revision is missing from recorded history.`,
+            { operationId, pageId },
+          );
+        const source =
+          recordedSource(
+            records,
+            revision,
+            'page',
+            this.documents.pages.get(pageId)?.source,
+            pageId,
+          ) ?? (await this.pageVersions.sourceForRevision(pageId, revision));
+        if (source === undefined)
+          throw new PptdError(
+            'HISTORY_UNAVAILABLE',
+            `The ${side} page source for this operation cannot be reconstructed.`,
+            { operationId, pageId, revision },
+          );
+        const manifestSource = recordedSource(
+          records,
+          record[side].manifest,
+          'manifest',
+          this.documents.manifestSource,
+        );
+        const manifest = parseManifest(manifestSource ?? this.documents.manifestSource).value;
+        const hasOverride = isRecord(identity.themeOverride);
+        themeSource[side] =
+          hasOverride || manifestSource !== undefined ? 'recorded' : 'current-fallback';
+        if (themeSource[side] === 'current-fallback')
+          warnings.push(
+            `The ${side} theme uses a current Project fallback because its recorded manifest is unavailable.`,
+          );
+        if (manifestSource === undefined)
+          warnings.push(
+            `The ${side} page size uses the current Project manifest; recorded manifest context is unavailable.`,
+          );
+        const theme = structuredClone(
+          isRecord(identity.themeOverride)
+            ? identity.themeOverride
+            : isRecord(manifest.theme)
+              ? manifest.theme
+              : {},
+        );
+        const documents: Documents = {
+          ...this.documents,
+          manifestSource: manifestSource ?? this.documents.manifestSource,
+          metadata: structuredClone(metadata),
+          pageAssets: new Map(),
+          diagnostics: [],
+          pages: new Map([
+            [pageId, { path: identity.path, source, data: parsePage(source).value }],
+          ]),
+        };
+        documents.metadata.slides[pageId].themeOverride = theme;
+        await refreshAssetFingerprints(this.root, documents, this.assetCache, this.onTiming);
+        const position = record.pagePositions?.[pageId]?.[side];
+        const mainPosition =
+          position !== undefined
+            ? (position ?? undefined)
+            : manifestSource !== undefined
+              ? mainPositionForPath(manifest.pages, identity.path)
+              : undefined;
+        if (position === undefined && manifestSource === undefined)
+          warnings.push(
+            `The ${side} Main position is unavailable; no current position was substituted.`,
+          );
+        const page = this.pageSnapshot(documents, pageId);
+        // Preserve historical metadata exactly; effective theme is carried separately.
+        page.metadata = structuredClone(identity);
+        page.mainPosition = mainPosition;
+        page.renderRevision = hashPayload({
+          page: page.renderRevision,
+          operationId,
+          side,
+          mainPosition: mainPosition ?? null,
+        });
+        return {
+          version: {
+            versionId: `operation:${operationId}:${side}`,
+            operationId,
+            pageId,
+            createdAt: record.timestamp,
+            actor: record.actor,
+            summary: record.summary,
+            pageRevision: revision,
+            current: false,
+            kind: 'edit',
+          },
+          page,
+          size: manifest.size ?? [960, 540],
+          assets: 'current-project',
+          theme,
+        };
+      };
+      const before = await snapshot('before', beforeMetadata);
+      const after = await snapshot('after', afterMetadata);
+      if (pageId === null)
+        warnings.push(
+          'This operation changes Project Story or structure only; there is no page artwork to compare.',
+        );
+      return {
+        deckId: this.documents.metadata.deckId,
+        operationId,
+        actor: record.actor,
+        timestamp: record.timestamp,
+        summary: record.summary,
+        pageIds,
+        pageId,
+        before,
+        after,
+        ...operationChanges(record, before, after, beforeMetadata, afterMetadata),
+        warnings,
+        themeSource,
+      };
+    });
   }
 
   pageHistory(target: string): Promise<PageVersionSummary[]> {

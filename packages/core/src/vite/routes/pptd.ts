@@ -340,6 +340,16 @@ export async function registerPptdRoutes(server: PptdRouteHost, _ctx?: ApiContex
           await store.readPage(decodeURIComponent(route.slice('/pages/'.length))),
         );
       }
+      if (method === 'GET' && /^\/reviews\/[^/]+$/.test(route)) {
+        return json(
+          res,
+          200,
+          await store.operationReview(
+            decodeURIComponent(route.slice('/reviews/'.length)),
+            url.searchParams.get('pageId') ?? undefined,
+          ),
+        );
+      }
       if (method === 'GET' && route === '/history') return json(res, 200, await store.history());
       if (method === 'GET' && route === '/activity') return json(res, 200, activity.snapshot());
       if (method === 'GET' && route === '/activity/events') {

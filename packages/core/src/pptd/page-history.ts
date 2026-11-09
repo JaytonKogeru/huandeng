@@ -562,4 +562,20 @@ export class PageVersionArchive {
       },
     };
   }
+
+  /** Resolve bytes by recorded revision, never by the nearest observation's timestamp. */
+  async sourceForRevision(pageId: string, revision: Revision): Promise<string | undefined> {
+    const candidates = (this.observations.get(pageId) ?? []).filter(
+      (observation) => observation.summary.pageRevision === revision,
+    );
+    for (const candidate of candidates) {
+      try {
+        const state = await this.read(candidate);
+        if (hashBytes(state.source) === revision) return state.source;
+      } catch {
+        // Other exact journal/observation evidence may still be available.
+      }
+    }
+    return undefined;
+  }
 }

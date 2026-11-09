@@ -26,6 +26,18 @@ async function connection() {
 }
 
 describe('HUANDENG MCP project and Story context', () => {
+  it('exposes exact operation review as a read-only Project-scoped tool', async () => {
+    const { client, request } = await connection();
+    const { tools } = await client.listTools();
+    expect(tools.find((tool) => tool.name === 'huandeng_review')).toMatchObject({
+      annotations: { readOnlyHint: true },
+    });
+    await client.callTool({
+      name: 'huandeng_review',
+      arguments: { operationId: 'saved-op', pageId: 'stable-page' },
+    });
+    expect(request).toHaveBeenLastCalledWith('/reviews/saved-op?pageId=stable-page');
+  });
   it('exposes explicit task activity without turning it into a slide mutation', async () => {
     const { client, request } = await connection();
     await client.callTool({ name: 'huandeng_activity_read', arguments: {} });
@@ -46,7 +58,7 @@ describe('HUANDENG MCP project and Story context', () => {
   it('advertises the three context tools as read-only alongside the compatible writer tools', async () => {
     const { client } = await connection();
     const { tools } = await client.listTools();
-    expect(tools).toHaveLength(20);
+    expect(tools).toHaveLength(21);
     for (const name of [
       'huandeng_story_briefing',
       'huandeng_presentation_read',
@@ -76,6 +88,7 @@ describe('HUANDENG MCP project and Story context', () => {
       mimeType: 'text/markdown',
       text: expect.stringContaining('previewHash'),
     });
+    expect(guide.contents[0]).toMatchObject({ text: expect.stringContaining('huandeng_review') });
     expect(request).not.toHaveBeenCalled();
     const transaction = {
       requestId: 'proposal',

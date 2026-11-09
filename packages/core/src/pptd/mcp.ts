@@ -61,6 +61,13 @@ const tools: Tool[] = [
         },
         summary: { type: 'string', maxLength: 600 },
         pageIds: { type: 'array', maxItems: 40, items: { type: 'string' } },
+        operationIds: {
+          type: 'array',
+          maxItems: 20,
+          items: { type: 'string', minLength: 1, maxLength: 160 },
+          description:
+            'Explicit saved receipt IDs claimed by this client; review resolves them against this Project journal.',
+        },
       },
       ['deckId', 'requestId', 'taskId', 'sessionId', 'actor', 'status', 'summary'],
     ),
@@ -134,6 +141,19 @@ const tools: Tool[] = [
         },
       },
       ['pageId'],
+    ),
+    annotations: read,
+  },
+  {
+    name: 'huandeng_review',
+    description:
+      'Review the exact before/after of one saved operation in this Project. Optional pageId must be an affected stable page ID. Read theme provenance, current-asset warnings and truncation. Missing history fails explicitly. This is read-only and does not restore or approve content.',
+    inputSchema: objectSchema(
+      {
+        operationId: { type: 'string', minLength: 1, maxLength: 160 },
+        pageId: { type: 'string', minLength: 1, maxLength: 100 },
+      },
+      ['operationId'],
     ),
     annotations: read,
   },
@@ -445,6 +465,13 @@ export function createMcpServer(client: HuandengClient) {
           break;
         case 'huandeng_preview':
           result = await client.preview(args.transaction as TransactionRequest);
+          break;
+        case 'huandeng_review':
+          result = await client.request(
+            queryPath(`/reviews/${encodeURIComponent(String(args.operationId))}`, {
+              pageId: args.pageId,
+            }),
+          );
           break;
         case 'huandeng_history':
           if (args.versionId && !args.pageId) throw new Error('pageId is required with versionId.');

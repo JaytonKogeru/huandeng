@@ -24,6 +24,29 @@ const report = (requestId: string) => ({
 });
 
 describe('Project-scoped activity', () => {
+  it('persists bounded explicit operation claims while preserving legacy reports', async () => {
+    const activity = await fixture();
+    await activity.report(report('legacy'));
+    const claimed = await activity.report({
+      ...report('claims'),
+      operationIds: ['actual-receipt', 'actual-receipt'],
+    });
+    expect(claimed).toMatchObject({ source: 'client', operationIds: ['actual-receipt'] });
+    expect(claimed.operationId).toBeUndefined();
+    expect(() =>
+      activity.report({
+        ...report('too-many'),
+        operationIds: Array.from({ length: 21 }, (_, index) => `op-${index}`),
+      }),
+    ).toThrow('20');
+    expect(() =>
+      activity.report({ ...report('too-long'), operationIds: ['x'.repeat(161)] }),
+    ).toThrow('160');
+    await activity.close();
+    const reopened = await ProjectActivity.open(activity.file, activity.deckId, 'next-epoch');
+    expect(reopened.snapshot().events[0].operationIds).toEqual(['actual-receipt']);
+    expect(reopened.snapshot().events[1].operationIds).toBeUndefined();
+  });
   it('rejects another Project and unbounded or unknown fields without writing a log', async () => {
     const activity = await fixture();
     expect(() => activity.report({ ...report('one'), deckId: 'project-b' })).toThrow(
