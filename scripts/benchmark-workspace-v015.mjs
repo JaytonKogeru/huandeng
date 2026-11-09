@@ -18,6 +18,7 @@ const { values } = parseArgs({
     output: { type: 'string' },
     label: { type: 'string' },
     'edit-probe': { type: 'boolean', default: false },
+    'active-timing': { type: 'boolean', default: false },
   },
 });
 assert.ok(values.entry && path.isAbsolute(values.entry));
@@ -54,7 +55,7 @@ async function hashes() {
   return result;
 }
 const before = await hashes();
-const directory = await fs.mkdtemp(path.join(os.tmpdir(), 'huandeng-perf-v015-'));
+const directory = await fs.mkdtemp(path.join(os.tmpdir(), 'huandeng-perf-v016-'));
 const project = path.join(directory, 'project');
 const entry = path.join(project, path.basename(sourceEntry));
 const excluded = new Set(['Exports', '.git', 'node_modules', 'scripts', '.verification']);
@@ -81,9 +82,10 @@ const report = {
     totalGiB: os.totalmem() / 2 ** 30,
     freeGiB: os.freemem() / 2 ** 30,
   },
-  methodologyVersion: 2,
-  methodology:
-    'Fresh process/profile and project copy; filesystem cache is not cleared. Timings start and finish inside the renderer, from capture event to DOM condition plus two animation frames, not compositor presentation. Images are counted separately. Navigation/search plus optional reversible notes edits occur only in the copy; original sources are hashed before/after. Existing user applications remain running. No forced GC.',
+  methodologyVersion: values['active-timing'] ? 3 : 2,
+  methodology: values['active-timing']
+    ? 'Fresh process/profile and project copy; filesystem cache is not cleared. Owned test webContents disable background throttling so using another app does not add occlusion timer delays. Timings start and finish inside the renderer, from capture event to DOM condition plus two animation frames, not compositor presentation or ordinary background-window behavior. Images are counted separately. Navigation/search plus optional reversible notes edits occur only in the copy; original sources are hashed before/after. Existing user applications remain running. No forced GC. Compare only methodologyVersion 3 timings.'
+    : 'Fresh process/profile and project copy; filesystem cache is not cleared. Timings start and finish inside the renderer, from capture event to DOM condition plus two animation frames, not compositor presentation. Existing user applications remain running. No forced GC. Original sources hashed before/after; writes only in copies.',
   interactions: [],
   stages: [],
   requests: [],
@@ -141,6 +143,9 @@ async function sample(name) {
     chromium: Object.fromEntries(selected.map((m) => [m.name, m.value])),
     processes,
   });
+  console.log(
+    JSON.stringify({ label: values.label, stage: name, browserRenderers: dom.browserRenderers }),
+  );
 }
 async function interaction(name, selector, condition, value) {
   await page.evaluate(
@@ -182,6 +187,8 @@ async function interaction(name, selector, condition, value) {
         elapsedMs,
         longTasks: tasks.length,
         maxLongTaskMs: Math.max(0, ...tasks.map((task) => task.duration)),
+        visibility: document.visibilityState,
+        focused: document.hasFocus(),
       };
     }, name),
   );
@@ -216,6 +223,11 @@ try {
       .find((candidate) => candidate.url().includes('/huandeng')),
   );
   page.on('pageerror', (error) => report.rendererErrors.push(error.message));
+  if (values['active-timing'])
+    await app.evaluate(({ webContents }) => {
+      for (const contents of webContents.getAllWebContents())
+        contents.setBackgroundThrottling(false);
+    });
   const requests = new Map();
   page.on('request', (request) => requests.set(request, performance.now()));
   page.on('response', (response) => {
