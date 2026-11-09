@@ -161,6 +161,103 @@ afterEach(() => {
 });
 
 describe('PPTD browser editing contract', () => {
+  it('marks local review artwork projected through a failed save until deliberate discard', async () => {
+    const initial = session();
+    initial.pages[0].authorReview = {
+      status: 'current',
+      recordedRenderRevision: revision(1),
+      currentRenderRevision: revision(1),
+      approvalVerified: false,
+    };
+    const { client, commit } = await setup(initial);
+    expect(client.pageIsProjected('page-1')).toBe(false);
+    client.beginInteraction('page-1');
+    expect(client.pageIsProjected('page-1')).toBe(false);
+    client.cancelInteraction('page-1', []);
+    client.patchElement('page-1', 'title', { 'content.text': 'Unsaved artwork' }, false);
+    expect(client.pageIsProjected('page-1')).toBe(true);
+    commit.mockRejectedValueOnce(new PptdClientError('REVISION_CONFLICT', 'Failed save', 409));
+    await expect(client.flushPage('page-1')).rejects.toThrow('Failed save');
+    expect(client.getState().drafts['page-1'].conflict).toBeTruthy();
+    expect(client.pageIsProjected('page-1')).toBe(true);
+    expect(client.page('page-1')?.authorReview).toEqual(initial.pages[0].authorReview);
+    client.discardDraft('page-1');
+    expect(client.pageIsProjected('page-1')).toBe(false);
+    expect(client.page('page-1')?.authorReview?.status).toBe('current');
+  });
+
+  it('restores saved stale review evidence only after a local draft is acknowledged', async () => {
+    const initial = session();
+    initial.pages[0].authorReview = {
+      status: 'current',
+      recordedRenderRevision: revision(1),
+      currentRenderRevision: revision(1),
+      approvalVerified: false,
+    };
+    const { client, commit, setRemote } = await setup(initial);
+    client.patchElement('page-1', 'title', { 'content.text': 'Saved artwork' }, false);
+    const ack = deferred<TransactionResult>();
+    commit.mockReturnValueOnce(ack.promise);
+    const saving = client.flushPage('page-1');
+    expect(client.pageIsProjected('page-1')).toBe(true);
+    const saved = session('Saved artwork', 2);
+    saved.pages[0].authorReview = {
+      ...initial.pages[0].authorReview,
+      status: 'stale',
+      currentRenderRevision: revision(2),
+    };
+    setRemote(saved);
+    ack.resolve(receipt(commit.mock.calls[0][0].requestId));
+    await saving;
+    expect(client.pageIsProjected('page-1')).toBe(false);
+    expect(client.page('page-1')?.authorReview?.status).toBe('stale');
+  });
+
+  it.each(['element.add', 'element.remove'] as const)(
+    'keeps %s review artwork projected during uncertain saving and restores saved evidence after acknowledgement',
+    async (op) => {
+      const initial = session();
+      initial.pages[0].data.elements.push(shape());
+      initial.pages[0].authorReview = {
+        status: 'current',
+        recordedRenderRevision: revision(1),
+        currentRenderRevision: revision(1),
+        approvalVerified: false,
+      };
+      const { client, commit, setRemote } = await setup(initial);
+      const added = { ...shape(), elementId: 'new-shape' };
+      const operations: PptdOperation[] = [
+        op === 'element.add'
+          ? { op, pageId: 'page-1', element: added }
+          : { op, pageId: 'page-1', elementId: 'shape' },
+      ];
+      const ack = deferred<TransactionResult>();
+      commit.mockReturnValueOnce(ack.promise);
+      const saving = client.apply(operations);
+      await Promise.resolve();
+      expect(client.pageIsProjected('page-1')).toBe(true);
+      client.beginInteraction('page-1');
+      expect(client.pageIsProjected('page-1')).toBe(true);
+      client.cancelInteraction('page-1', []);
+      ack.reject(new PptdClientError('NETWORK_ERROR', 'Uncertain save'));
+      await expect(saving).rejects.toThrow('Uncertain save');
+      expect(client.pageIsProjected('page-1')).toBe(true);
+      expect(client.page('page-1')?.authorReview).toEqual(initial.pages[0].authorReview);
+      const saved = session('原稿', 2);
+      saved.pages[0].data.elements = structuredClone(client.page('page-1')?.data.elements ?? []);
+      saved.pages[0].authorReview = {
+        ...initial.pages[0].authorReview,
+        status: 'stale',
+        currentRenderRevision: revision(2),
+      };
+      setRemote(saved);
+      commit.mockImplementationOnce(async (request) => receipt(request.requestId));
+      await client.retryPending();
+      expect(client.pageIsProjected('page-1')).toBe(false);
+      expect(client.page('page-1')?.authorReview?.status).toBe('stale');
+    },
+  );
+
   it('saves an ordinary draft against accepted unrelated Story metadata while retaining its page revision', async () => {
     const { client, setRemote, commit } = await setup();
     client.patchElement('page-1', 'title', { 'content.text': 'Local draft' }, false);

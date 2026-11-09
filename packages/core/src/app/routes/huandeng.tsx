@@ -2972,6 +2972,7 @@ export function HuandengEditor() {
               checksContent={
                 <TechnicalQaPanel
                   page={page}
+                  projected={!page.versionId && client.pageIsProjected(page.pageId)}
                   size={snapshot.size}
                   diagnostics={snapshot.diagnostics}
                   onSelect={(id) => {

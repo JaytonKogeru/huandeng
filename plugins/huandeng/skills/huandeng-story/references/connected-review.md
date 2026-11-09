@@ -10,6 +10,8 @@ The existing Match title style entry captures concrete reference geometry and ty
 
 Checks shows whether existing author-review evidence matches the current render revision, is stale, or is unverified. A matching hash is version correspondence, not verified human approval. Main-page evidence does not by itself verify a presentation occurrence, a pinned version, the current font environment or an exported Office file. Do not write lastAuthorReview on the author's behalf, infer approval from these indicators, or replace actual rendered inspection with a status label.
 
+When the editor displays unsaved or pending artwork, Checks marks that artwork outside saved review evidence; the recorded comparison applies only to the saved base.
+
 ## Read the saved operation
 
 Use the actual `operationId` from `huandeng_apply` with `huandeng_review`; request one affected `pageId` when needed. The CLI equivalent is `review OPERATION_ID --page PAGE_ID`. Tool availability comes from the running runtime; older Editors may not advertise review.

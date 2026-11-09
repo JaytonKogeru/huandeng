@@ -285,7 +285,7 @@ try {
   });
 
   await check(
-    'Checks shows unverified/current/stale evidence and localized scope limits',
+    'Checks distinguishes saved and pending artwork across review states and languages',
     async () => {
       await page.getByRole('tab', { name: 'Checks', exact: true }).click();
       await reviewState('unverified');
@@ -297,6 +297,50 @@ try {
       assert.match(await evidencePanel.innerText(), /Version match only/);
       assert.match(await evidencePanel.innerText(), /Occurrence order, notes and pinned versions/);
       await capture('review-current-en');
+      await page.getByRole('tab', { name: 'Layers', exact: true }).click();
+      await page.locator('[data-hd-layer="title"]').click();
+      await page.getByRole('tab', { name: 'Checks', exact: true }).click();
+      let release;
+      const held = new Promise((resolve) => {
+        release = resolve;
+      });
+      const holdTransaction = async (route) => {
+        await held;
+        await route.continue();
+      };
+      await page.route('**/__pptd/transactions', holdTransaction);
+      try {
+        await page.locator('[data-hd-editor-canvas]').focus();
+        await page.keyboard.press('Delete');
+        await reviewState('projected');
+        assert.equal(
+          await evidencePanel.getAttribute('data-hd-author-review-saved-state'),
+          'current',
+        );
+        assert.match(await evidencePanel.innerText(), /Unsaved or pending artwork/);
+        assert.doesNotMatch(await evidencePanel.innerText(), /Recorded version matches/);
+        assert.equal(
+          await page.locator('[data-hd-editor-canvas] [data-hd-element-id="title"]').count(),
+          0,
+        );
+        assert.ok(
+          (await api('/current')).pages
+            .find((p) => p.pageId === ids[1])
+            .data.elements.some((element) => element.elementId === 'title'),
+        );
+        await capture('review-projected-en');
+        await locale('zh-CN');
+        assert.match(await evidencePanel.innerText(), /审阅证据仅适用于已保存的基础版本/);
+        await capture('review-projected-zh');
+      } finally {
+        release();
+        await page.unroute('**/__pptd/transactions', holdTransaction);
+      }
+      await reviewState('stale');
+      await locale('en');
+      await page.getByRole('button', { name: 'Undo', exact: true }).click();
+      await reviewState('current');
+      await capture('review-restored-after-undo-en');
       await apply([
         {
           op: 'element.patch',

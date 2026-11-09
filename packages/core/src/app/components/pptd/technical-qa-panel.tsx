@@ -8,12 +8,19 @@ import { Button } from '../ui/button';
 
 export interface TechnicalQaPanelProps {
   page: PageSnapshot;
+  projected: boolean;
   size: PageSize;
   diagnostics: Diagnostic[];
   onSelect: (elementId: string) => void;
 }
 
-export function TechnicalQaPanel({ page, size, diagnostics, onSelect }: TechnicalQaPanelProps) {
+export function TechnicalQaPanel({
+  page,
+  projected,
+  size,
+  diagnostics,
+  onSelect,
+}: TechnicalQaPanelProps) {
   useHuandengLocale();
   const [checking, setChecking] = useState(false);
   const [checkError, setCheckError] = useState<string | null>(null);
@@ -84,18 +91,30 @@ export function TechnicalQaPanel({ page, size, diagnostics, onSelect }: Technica
       </p>
       <div
         className="space-y-1 rounded border border-border p-2 text-[11px] text-muted-foreground"
-        data-hd-author-review-state={page.authorReview?.status ?? 'unverified'}
+        data-hd-author-review-state={
+          projected ? 'projected' : (page.authorReview?.status ?? 'unverified')
+        }
+        data-hd-author-review-saved-state={page.authorReview?.status ?? 'unverified'}
       >
         <h4 className="font-medium text-foreground">{t('Author review evidence')}</h4>
         <p>
           {t(
-            page.authorReview?.status === 'current'
-              ? 'Recorded version matches'
-              : page.authorReview?.status === 'stale'
-                ? 'Recorded version is stale'
-                : 'No verifiable recorded version',
+            projected
+              ? 'Displayed changes are outside saved review evidence'
+              : page.authorReview?.status === 'current'
+                ? 'Recorded version matches'
+                : page.authorReview?.status === 'stale'
+                  ? 'Recorded version is stale'
+                  : 'No verifiable recorded version',
           )}
         </p>
+        {projected && (
+          <p>
+            {t(
+              'Unsaved or pending artwork is shown. Recorded evidence applies only to the saved base.',
+            )}
+          </p>
+        )}
         <p>{t('Version match only. This does not verify author approval or visual quality.')}</p>
         <p>
           {t(

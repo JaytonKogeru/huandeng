@@ -475,6 +475,13 @@ export class PptdDocumentClient {
     );
   }
 
+  pageIsProjected(pageId: string): boolean {
+    const displayed = this.page(pageId);
+    const committed = this.state.snapshot?.pages.find((page) => page.pageId === pageId);
+    // Drafts and optimistic previews own data copies before a new render revision exists.
+    return !!displayed && displayed.data !== committed?.data;
+  }
+
   private ensureDraft(pageId: string): PageDraft | null {
     const existing = this.state.drafts[pageId];
     if (existing) return existing;

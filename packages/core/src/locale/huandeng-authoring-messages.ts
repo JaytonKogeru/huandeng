@@ -3,6 +3,9 @@ export const authoringEnglish = {
 } as const;
 
 export const authoringChinese = {
+  'Displayed changes are outside saved review evidence': '当前显示的改动不在已保存的审阅证据范围内',
+  'Unsaved or pending artwork is shown. Recorded evidence applies only to the saved base.':
+    '当前显示未保存或待确认的画面；审阅证据仅适用于已保存的基础版本。',
   Yes: '是',
   No: '否',
   left: '左',
