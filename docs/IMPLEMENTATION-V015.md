@@ -70,6 +70,12 @@
 ## Controller delivery work (after task gates)
 
 - [x] Apply separately recorded footer-correction deck footer corrections and section-divider deck missing divider decisions through existing writer; render private results and keep baseline/receipts outside Git.
-- [ ] Run one complete unit suite and full repository Biome, typecheck, build. Perform whole-branch independent review.
+- [x] Run one complete unit suite and full repository Biome, typecheck, build. Perform whole-branch independent review.
 - [ ] Prepare editor/plugin v0.15 release notes/handoff and version metadata per release policy; package, test packaged runtime, safely replace installation with rollback, restore open projects. Deliver compatible local/client plugin updates without claiming unobserved client execution.
 - [ ] Preserve main dirty fixture; integrate accepted commits and push one verified origin milestone/tag as repository workflow authorizes. No npm publish or upstream push.
+
+## Observed desktop-strip completion
+
+- [x] Actual installed-window inspection found remaining mixed-language Project-strip tooltips and accessibility labels. Translate them through the existing shell locale/render path and set document language, preserving authored titles/paths/selection/close behavior.
+- [x] Extend the native language loop to inspect the real shell document. Reproduce the pre-fix failure and pass all 12 source-native checks after the bounded fix.
+- [ ] Complete scoped review and exact final package/installation verification before the milestone push.

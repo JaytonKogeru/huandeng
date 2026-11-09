@@ -1,0 +1,79 @@
+{
+  "passed": true,
+  "syntheticOnly": true,
+  "runtimeRevision": "127e9c8900203ea5abe7dc1774396c4c4cd58fde",
+  "checks": [
+    {
+      "name": "Permanent Slides and actual native File menu close only file previews",
+      "passed": true,
+      "milliseconds": 642
+    },
+    {
+      "name": "Section browser renders two populated groups and unassigned slides; filter, collapse, select and real reorder",
+      "passed": true,
+      "milliseconds": 760
+    },
+    {
+      "name": "Notes uses Chromium composition, blocks navigation, saves long exact text and survives all views",
+      "passed": true,
+      "milliseconds": 1723
+    },
+    {
+      "name": "Browse and Notes isolate object shortcuts and image paste/drop from the document",
+      "passed": true,
+      "milliseconds": 307
+    },
+    {
+      "name": "Thumbnail slots stay six pixels through hover/focus and keep insertion drag targets",
+      "passed": true,
+      "milliseconds": 764
+    },
+    {
+      "name": "Animation chooses objects, saves two effects, guards drafts and changes actual show artwork per click",
+      "passed": true,
+      "milliseconds": 4153
+    },
+    {
+      "name": "Beginning/current menu and F5 origins skip hidden pages and exit restores editing",
+      "passed": true,
+      "milliseconds": 2303
+    },
+    {
+      "name": "Repeated/pinned browser occurrences select independently and preserve checkpoint artwork and notes",
+      "passed": true,
+      "milliseconds": 1401
+    },
+    {
+      "name": "Auxiliary Story draft blocks view switching, native Project close and window close until saved",
+      "passed": true,
+      "milliseconds": 566
+    },
+    {
+      "name": "Agent setup and native menu localize; writer labels preserve client-authored names",
+      "passed": true,
+      "milliseconds": 723
+    },
+    {
+      "name": "Wide light and narrow dark actual Edit/Browser/Notes surfaces in both UI languages preserve authored bytes",
+      "passed": true,
+      "milliseconds": 4199
+    },
+    {
+      "name": "No renderer exceptions",
+      "passed": true,
+      "milliseconds": 0
+    }
+  ],
+  "rendererErrors": [],
+  "screenshots": [
+    "edit-1600-zh-CN-light.png",
+    "browse-1600-zh-CN-light.png",
+    "notes-1600-zh-CN-light.png",
+    "animation-1600-zh-CN-light.png",
+    "browse-1600-en-light.png",
+    "notes-1040-zh-CN-dark.png",
+    "browse-1040-en-dark.png",
+    "show-first-click-en.png",
+    "show-second-click-en.png"
+  ]
+}

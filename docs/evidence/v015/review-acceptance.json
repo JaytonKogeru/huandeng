@@ -1,0 +1,64 @@
+{
+  "passed": true,
+  "syntheticOnly": true,
+  "runtimeRevision": "127e9c8900203ea5abe7dc1774396c4c4cd58fde",
+  "checks": [
+    {
+      "name": "Real checkpoint and repeated live/pinned references establish scope",
+      "passed": true,
+      "milliseconds": 311
+    },
+    {
+      "name": "Visual source selection and composed preview do not write; Add saves the exact visible geometry",
+      "passed": true,
+      "milliseconds": 1479
+    },
+    {
+      "name": "Activity opens exact receipt, rendered sides, changed-object highlight and current-object navigation",
+      "passed": true,
+      "milliseconds": 1011
+    },
+    {
+      "name": "Client claim remains distinct and opens the exact saved operation after subsequent edits",
+      "passed": true,
+      "milliseconds": 282
+    },
+    {
+      "name": "Late review response cannot replace a newly selected operation",
+      "passed": true,
+      "milliseconds": 436
+    },
+    {
+      "name": "Wide/narrow English/Chinese and dark appearance keep primary controls usable",
+      "passed": true,
+      "milliseconds": 2255
+    },
+    {
+      "name": "Pinned artwork stays at the baseline and layout creation is disabled",
+      "passed": true,
+      "milliseconds": 845
+    },
+    {
+      "name": "Agent setup separates generated instructions from the observed client report",
+      "passed": true,
+      "milliseconds": 782
+    },
+    {
+      "name": "Candidate CLI review and stdio protocol expose the same exact operation",
+      "passed": true,
+      "milliseconds": 3814
+    },
+    {
+      "name": "Original figure bytes and unrelated pages remain intact",
+      "passed": true,
+      "milliseconds": 19
+    },
+    {
+      "name": "No renderer exceptions",
+      "passed": true,
+      "milliseconds": 0
+    }
+  ],
+  "rendererErrors": [],
+  "screenshots": ["review-1600-zh-CN-light.png", "layout-preview-1600-en.png"]
+}
