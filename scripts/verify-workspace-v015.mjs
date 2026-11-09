@@ -645,6 +645,7 @@ try {
     'Wide light and narrow dark actual Edit/Browser/Notes surfaces in both UI languages preserve authored bytes',
     async () => {
       const before = (await api('/current')).pages.map((p) => [p.pageId, p.data]);
+      const workspaceBefore = await shell.evaluate(() => window.huandengDesktop.getWorkspace());
       for (const [width, height, appearance] of [
         [1600, 1000, 'light'],
         [1040, 800, 'dark'],
@@ -657,6 +658,49 @@ try {
         await shell.emulateMedia({ colorScheme: appearance });
         for (const language of ['en', 'zh-CN']) {
           await locale(language);
+          await eventually(() =>
+            shell.evaluate((value) => document.documentElement.lang === value, language),
+          );
+          const chinese = language === 'zh-CN';
+          assert.equal(
+            await shell.locator('.project-strip').getAttribute('aria-label'),
+            chinese ? '项目工作区' : 'Project workspace',
+          );
+          assert.equal(
+            await shell.locator('#project-tabs').getAttribute('aria-label'),
+            chinese ? '已打开的项目' : 'Open Projects',
+          );
+          assert.equal(
+            await shell.locator('#workspace-open').getAttribute('aria-label'),
+            chinese ? '打开项目' : 'Open Project',
+          );
+          assert.equal(
+            await shell.locator('#workspace-open').getAttribute('title'),
+            chinese ? '打开项目 · Ctrl+O' : 'Open Project · Ctrl+O',
+          );
+          const workspace = await shell.evaluate(() => window.huandengDesktop.getWorkspace());
+          assert.equal(workspace.activeId, workspaceBefore.activeId);
+          assert.deepEqual(
+            workspace.projects.map(({ id, title, entryPath }) => ({ id, title, entryPath })),
+            workspaceBefore.projects.map(({ id, title, entryPath }) => ({ id, title, entryPath })),
+          );
+          for (const project of workspace.projects) {
+            const tab = shell.locator(`[data-project-id="${project.id}"]`);
+            assert.equal(await tab.locator('.project-title').innerText(), project.title);
+            assert.equal(await tab.getAttribute('title'), `${project.title}\n${project.entryPath}`);
+            assert.equal(
+              await tab.locator('.close').getAttribute('aria-label'),
+              `${chinese ? '关闭项目' : 'Close Project'}: ${project.title}`,
+            );
+            assert.equal(
+              await tab.locator('.close').getAttribute('title'),
+              chinese ? '关闭项目' : 'Close Project',
+            );
+            assert.equal(
+              await tab.getAttribute('aria-selected'),
+              String(project.id === workspace.activeId),
+            );
+          }
           assert.equal(
             await page.locator('.hd-titlebar-actions [data-hd-agent-connect]').count(),
             1,

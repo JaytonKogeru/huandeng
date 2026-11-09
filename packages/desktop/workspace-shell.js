@@ -15,13 +15,18 @@ const run = (action) =>
     });
 function render(state) {
   current = state;
+  document.documentElement.lang = locale;
+  document
+    .querySelector('.project-strip')
+    .setAttribute('aria-label', label('Project workspace', '项目工作区'));
+  tabs.setAttribute('aria-label', label('Open Projects', '已打开的项目'));
   const focusedId = document.activeElement?.closest('[data-project-id]')?.dataset.projectId;
   tabs.replaceChildren();
   home.setAttribute('aria-pressed', String(state.activeId === null));
   home.title = label('Home', '开始页');
   home.setAttribute('aria-label', home.title);
-  open.title = label('Open Project · Ctrl+O', '打开 Project · Ctrl+O');
-  open.setAttribute('aria-label', label('Open Project', '打开 Project'));
+  open.title = label('Open Project · Ctrl+O', '打开项目 · Ctrl+O');
+  open.setAttribute('aria-label', label('Open Project', '打开项目'));
   for (const project of state.projects) {
     const tab = document.createElement('div');
     tab.className = 'project-tab';
@@ -52,11 +57,11 @@ function render(state) {
             : '';
     const title = document.createElement('span');
     title.className = 'project-title';
-    title.textContent = project.title || label('Untitled Project', '未命名 Project');
+    title.textContent = project.title || label('Untitled Project', '未命名项目');
     const close = document.createElement('button');
     close.className = 'close';
-    close.setAttribute('aria-label', `${label('Close Project', '关闭 Project')}: ${project.title}`);
-    close.title = label('Close Project', '关闭 Project');
+    close.setAttribute('aria-label', `${label('Close Project', '关闭项目')}: ${project.title}`);
+    close.title = label('Close Project', '关闭项目');
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     svg.setAttribute('viewBox', '0 0 24 24');
     svg.setAttribute('aria-hidden', 'true');
