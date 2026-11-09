@@ -134,6 +134,7 @@ function SlideInsertionGap({
 
 export function PptdThumbnailRail({
   pages,
+  view = 'thumbnails',
   sections = [],
   size,
   theme,
@@ -156,6 +157,7 @@ export function PptdThumbnailRail({
   onManageSections,
 }: {
   pages: PageSnapshot[];
+  view?: 'thumbnails' | 'outline';
   sections?: ThumbnailSection[];
   size: PageSize;
   theme: PptdTheme;
@@ -179,7 +181,6 @@ export function PptdThumbnailRail({
 }) {
   useHuandengLocale();
   const [query, setQuery] = useState('');
-  const [view, setView] = useState<'thumbnails' | 'outline'>('thumbnails');
   const [copyStatus, setCopyStatus] = useState('');
   const [collapsed, setCollapsed] = useState<Set<string>>(() => new Set());
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -378,29 +379,6 @@ export function PptdThumbnailRail({
           <Copy />
         </Button>
       </div>
-      <fieldset
-        className="flex shrink-0 gap-1 border-0 border-b px-3 py-1"
-        aria-label={t('Pages view')}
-      >
-        <Button
-          size="xs"
-          variant={view === 'thumbnails' ? 'secondary' : 'ghost'}
-          aria-pressed={view === 'thumbnails'}
-          onClick={() => setView('thumbnails')}
-          data-hd-pages-thumbnails
-        >
-          {t('Thumbnails')}
-        </Button>
-        <Button
-          size="xs"
-          variant={view === 'outline' ? 'secondary' : 'ghost'}
-          aria-pressed={view === 'outline'}
-          onClick={() => setView('outline')}
-          data-hd-pages-outline
-        >
-          {t('Outline')}
-        </Button>
-      </fieldset>
       <div className="px-3 py-2">
         <Input
           aria-label={view === 'outline' ? t('Search the outline') : t('搜索页面编号或标题')}

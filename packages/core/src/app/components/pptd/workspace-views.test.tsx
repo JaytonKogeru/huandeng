@@ -5,6 +5,7 @@ import type { PageSnapshot } from '../../../pptd/types';
 import { NotesPageView } from './notes-page-view';
 import { NotesPanel } from './notes-panel';
 import { SectionBrowser } from './section-browser';
+import { PptdThumbnailRail } from './thumbnail-rail';
 import { WorkspaceViewSwitcher } from './workspace-views';
 
 const page: PageSnapshot = {
@@ -42,9 +43,43 @@ describe('workspace view surfaces', () => {
       <WorkspaceViewSwitcher value="notes" blocked onChange={vi.fn()} />,
     );
     expect(html).toContain('章节浏览');
+    expect(html).toContain('普通');
+    expect(html).toContain('大纲');
     expect(html).toContain('备注页');
     expect(html).toContain('data-hd-workspace-view="notes"');
-    expect(html.match(/ disabled=""/g)).toHaveLength(2);
+    expect(html.match(/ disabled=""/g)).toHaveLength(3);
+    expect(html.match(/data-hd-workspace-view=/g)).toHaveLength(4);
+  });
+
+  it('uses controlled outline navigation without a second view switcher', () => {
+    const props = {
+      pages: [{ ...page, occurrenceId: 'pinned', versionId: 'v1' }],
+      size: [960, 540] as [number, number],
+      theme: {},
+      currentPageId: page.pageId,
+      currentOccurrenceId: 'pinned',
+      disabled: true,
+      tombstones: [],
+      onSelect: vi.fn(),
+      onAdd: vi.fn(),
+      onDuplicate: vi.fn(),
+      onRemove: vi.fn(),
+      onMove: vi.fn(),
+      onRestore: vi.fn(),
+      onHistory: vi.fn(),
+      onShowFile: vi.fn(),
+    };
+    const outline = renderToStaticMarkup(<PptdThumbnailRail {...props} view="outline" />);
+    const normal = renderToStaticMarkup(<PptdThumbnailRail {...props} view="thumbnails" />);
+    expect(outline).toContain('data-hd-outline-row="pinned"');
+    expect(outline).toContain('data-hd-thumbnail-key="pinned"');
+    expect(outline).toContain('Authored heading 中文');
+    expect(normal).not.toContain('data-hd-outline-row');
+    for (const html of [outline, normal]) {
+      expect(html).not.toContain('data-hd-pages-outline');
+      expect(html).not.toContain('data-hd-pages-thumbnails');
+      expect(html).toContain('aria-pressed="true"');
+    }
   });
 
   it('renders one shared editable notes control per view without changing notes or writing', () => {

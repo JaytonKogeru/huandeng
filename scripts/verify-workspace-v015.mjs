@@ -223,6 +223,88 @@ try {
   });
 
   await check(
+    'Unified Normal/Outline/Browser/Notes preserves selection, editing and sidebar preferences',
+    async () => {
+      const navigation = page.locator('.hd-navigation');
+      const originalWidth = (await navigation.boundingBox()).width;
+      await navigation.locator('[data-hd-panel-resizer]').press('ArrowRight');
+      const width = (await navigation.boundingBox()).width;
+      assert.equal(width, originalWidth + 16);
+      const selection = await api('/selection');
+      assert.equal(await page.locator('[data-hd-workspace-view]').count(), 4);
+      assert.deepEqual(await page.locator('[data-hd-workspace-view]').allTextContents(), [
+        'Normal',
+        'Outline',
+        'Section browser',
+        'Notes page',
+      ]);
+      assert.equal(
+        await page.locator('[data-hd-pages-outline], [data-hd-pages-thumbnails]').count(),
+        0,
+      );
+      await view('outline');
+      await page.locator('[data-hd-pages-view="outline"]').waitFor();
+      assert.equal(await page.locator('[data-hd-editor-canvas]').isVisible(), true);
+      assert.equal(await page.locator('[data-hd-inspector]').isVisible(), true);
+      await page.locator('[data-hd-editor-canvas]').focus();
+      await page.keyboard.press('ControlOrMeta+a');
+      await eventually(async () => (await api('/selection')).elementIds.length > 0);
+      await page.keyboard.press('Escape');
+      await view('browse');
+      assert.equal(await page.locator('[data-hd-pages-view], [data-hd-thumbnail]').count(), 0);
+      assert.ok((await navigation.boundingBox()).width < width / 2);
+      for (const [label, content] of [
+        ['Project and Story', '[data-hd-project-editor]'],
+        ['Project asset library', '[data-hd-asset-library]'],
+        ['Project files', '[data-hd-project-tree]'],
+      ]) {
+        await page.getByRole('button', { name: label, exact: true }).click();
+        await page.locator(content).waitFor({ state: 'visible' });
+        assert.equal((await navigation.boundingBox()).width, width);
+        assert.equal(await page.locator('[data-hd-section-browser]').isVisible(), true);
+        await page.getByRole('button', { name: 'Slide thumbnails', exact: true }).click();
+        assert.equal(await page.locator('[data-hd-pages-view]').count(), 0);
+        assert.ok((await navigation.boundingBox()).width < width / 2);
+      }
+      await page.getByRole('button', { name: 'Project files', exact: true }).click();
+      await page.locator('[data-hd-project-file="docs/readme.md"]').click();
+      await page.locator('[data-hd-file-preview]').waitFor();
+      await page.locator('[data-hd-document-tab="slides"]').click();
+      assert.equal(
+        await page
+          .locator('[data-hd-slide-document]')
+          .getAttribute('data-hd-current-workspace-view'),
+        'browse',
+      );
+      for (const name of ['notes', 'outline', 'edit']) {
+        await view(name);
+        assert.equal((await navigation.boundingBox()).width, width);
+        assert.equal(
+          await page.locator('[data-hd-pages-view]').getAttribute('data-hd-pages-view'),
+          name === 'outline' ? 'outline' : 'thumbnails',
+        );
+        assert.equal((await api('/selection')).pageId, selection.pageId);
+        assert.equal(await page.locator('[data-hd-document-tab="docs/readme.md"]').count(), 1);
+      }
+      await page.locator('[data-hd-document-tab="docs/readme.md"]').click();
+      await nativeMenu('Close file preview');
+      assert.equal(await page.locator('[data-hd-document-tab="slides"]').count(), 1);
+      await page.getByRole('button', { name: 'Collapse properties panel', exact: true }).click();
+      await page.getByRole('button', { name: 'Hide project navigation', exact: true }).click();
+      for (const name of ['browse', 'outline', 'notes', 'edit']) {
+        await view(name);
+        assert.equal(await navigation.isVisible(), false);
+        assert.equal(await page.locator('[data-hd-inspector]').isVisible(), false);
+      }
+      await page.getByRole('button', { name: 'Show project navigation', exact: true }).click();
+      assert.equal((await navigation.boundingBox()).width, width);
+      await navigation.locator('[data-hd-panel-resizer]').press('ArrowLeft');
+      assert.equal((await navigation.boundingBox()).width, originalWidth);
+      await page.getByRole('button', { name: 'Show object properties', exact: true }).click();
+    },
+  );
+
+  await check(
     'Section browser renders two populated groups and unassigned slides; filter, collapse, select and real reorder',
     async () => {
       await view('browse');
@@ -290,6 +372,8 @@ try {
         selectionEnd: 4,
       });
       assert.equal(await page.locator('[data-hd-workspace-view="browse"]').isDisabled(), true);
+      assert.equal(await page.locator('[data-hd-workspace-view="outline"]').isDisabled(), true);
+      assert.equal(await page.locator('[data-hd-workspace-view="edit"]').isDisabled(), true);
       assert.equal(await page.locator('[data-hd-notes-next]').isDisabled(), true);
       await cdp.send('Input.insertText', { text: '中文组合' });
       await cdp.detach();
@@ -381,11 +465,11 @@ try {
       await capture('thumbnail-drag-target-en');
       await page.locator('[data-hd-thumbnail-scroll]').dispatchEvent('dragleave');
       await transfer.dispose();
-      await page.locator('[data-hd-pages-outline]').click();
+      await view('outline');
       assert.equal((await slots.first().boundingBox()).height, 6);
       await slots.first().focus();
       await capture('outline-focused-slot-en');
-      await page.locator('[data-hd-pages-thumbnails]').click();
+      await view('edit');
     },
   );
 
@@ -416,6 +500,7 @@ try {
       await duration.press('Enter');
       await eventually(async () => (await duration.getAttribute('aria-invalid')) === 'true');
       assert.equal(await page.locator('[data-hd-workspace-view="notes"]').isDisabled(), true);
+      assert.equal(await page.locator('[data-hd-workspace-view="outline"]').isDisabled(), true);
       assert.equal(await page.locator('[data-hd-presentation-menu]').isDisabled(), true);
       await capture('animation-draft-guard-en');
       await duration.press('Escape');
@@ -532,6 +617,15 @@ try {
         true,
       );
       assert.equal(await page.locator('[data-hd-notes-editor]').inputValue(), target.data.notes);
+      const pinnedSelection = await api('/selection');
+      for (const name of ['outline', 'edit', 'browse', 'notes']) {
+        await view(name);
+        const selected = await api('/selection');
+        for (const field of ['pageId', 'occurrenceId', 'versionId'])
+          assert.equal(selected[field], pinnedSelection[field]);
+        if (name === 'outline' || name === 'edit')
+          assert.equal(await page.locator('[data-hd-thumbnail][aria-pressed="true"]').count(), 1);
+      }
       await view('edit');
       assert.equal(
         await page.locator('[data-hd-editor-canvas] [data-hd-element-id]').count(),
@@ -568,6 +662,7 @@ try {
         .getByLabel('Slide authoring intent', { exact: true })
         .fill('Synthetic guarded Story draft');
       assert.equal(await page.locator('[data-hd-workspace-view="browse"]').isDisabled(), true);
+      assert.equal(await page.locator('[data-hd-workspace-view="outline"]').isDisabled(), true);
       await nativeMenu('Close project');
       await eventually(
         async () => (await app.evaluate(() => globalThis.__v015GuardDialogs.length)) === 1,
@@ -642,7 +737,7 @@ try {
     },
   );
   await check(
-    'Wide light and narrow dark actual Edit/Browser/Notes surfaces in both UI languages preserve authored bytes',
+    'Wide light and narrow dark Normal/Outline/Browser/Notes surfaces in both UI languages preserve authored bytes',
     async () => {
       const before = (await api('/current')).pages.map((p) => [p.pageId, p.data]);
       const workspaceBefore = await shell.evaluate(() => window.huandengDesktop.getWorkspace());
@@ -711,7 +806,7 @@ try {
           );
           if (language === 'zh-CN')
             assert.equal(await page.locator('[data-hd-presentation-menu]').innerText(), '放映');
-          for (const surface of ['edit', 'browse', 'notes']) {
+          for (const surface of ['edit', 'outline', 'browse', 'notes']) {
             await view(surface);
             await assertPrimaryFit();
             if (surface === 'browse')

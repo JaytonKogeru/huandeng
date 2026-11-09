@@ -33,6 +33,7 @@ export const workflowChinese = {
   'Shared writer': '共享写入器',
   演示: '放映',
   'Slide workspace views': '幻灯片工作区视图',
+  Normal: '普通',
   Edit: '编辑',
   'Section browser': '章节浏览',
   'Notes page': '备注页',

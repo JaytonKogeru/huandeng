@@ -8,7 +8,15 @@ import {
   thumbnailSectionGroups,
 } from './pptd-thumbnail-sections';
 
-export type WorkspaceView = 'edit' | 'browse' | 'notes';
+export type WorkspaceView = 'edit' | 'outline' | 'browse' | 'notes';
+
+export function workspaceEditing(view: WorkspaceView): boolean {
+  return view === 'edit' || view === 'outline';
+}
+
+export function workspaceRailView(view: WorkspaceView): 'thumbnails' | 'outline' | null {
+  return view === 'browse' ? null : view === 'outline' ? 'outline' : 'thumbnails';
+}
 
 interface WorkspaceBrowserGroup {
   key: string;
@@ -124,7 +132,7 @@ export function workspaceKeyboardCommandAllowed(
   command: EditorKeyboardCommand,
 ): boolean {
   return (
-    view === 'edit' ||
+    workspaceEditing(view) ||
     [
       'help',
       'focus-region',

@@ -118,7 +118,9 @@ import {
   slideMoveAfterBoundary,
 } from '@/lib/pptd-thumbnail-sections';
 import {
+  workspaceEditing,
   workspaceKeyboardCommandAllowed,
+  workspaceRailView,
   workspaceViewSwitchBlocked,
 } from '@/lib/pptd-workspace-views';
 import { useDocumentTitle } from '@/lib/use-document-title';
@@ -162,6 +164,8 @@ export function HuandengEditor() {
   const [previewActive, setPreviewActive] = useState(false);
   const [previewResetKey, setPreviewResetKey] = useState(0);
   const [workspaceView, setWorkspaceView] = useState<WorkspaceView>('edit');
+  const editingWorkspace = workspaceEditing(workspaceView);
+  const railView = workspaceRailView(workspaceView);
   const [textComposing, setTextComposing] = useState(false);
   const timelinePageRef = useRef<PageSnapshot | null>(null);
   const presentationControls = useRef<PresentationControls | null>(null);
@@ -276,6 +280,7 @@ export function HuandengEditor() {
   const imageInputRef = useRef<HTMLInputElement | null>(null);
   const [historyPageId, setHistoryPageId] = useState<string | null>(null);
   const [leftTab, setLeftTabState] = useState<'pages' | 'files' | 'project' | 'assets'>('pages');
+  const navigationCompact = workspaceView === 'browse' && leftTab === 'pages';
   const setLeftTab = useCallback((tab: 'pages' | 'files' | 'project' | 'assets') => {
     setLeftTabState(tab);
     setNavigationCollapsed(false);
@@ -486,6 +491,7 @@ export function HuandengEditor() {
       setAutoEditId(null);
       setPreviewActive(false);
       setPreviewResetKey((key) => key + 1);
+      if (view !== 'browse') setLeftTabState('pages');
       setWorkspaceView(view);
       return true;
     },
@@ -544,14 +550,14 @@ export function HuandengEditor() {
       return;
     pageFocusRef.current = null;
     if (intent.scope === 'canvas') {
-      if (workspaceView === 'edit') focusEditorCanvas();
+      if (editingWorkspace) focusEditorCanvas();
     } else
       document
         .querySelector<HTMLElement>(
           `[data-hd-thumbnail-key="${CSS.escape(selectedView?.occurrenceId ?? selectedPageId ?? '')}"]`,
         )
         ?.focus({ preventScroll: true });
-  }, [selectedPageId, selectedView?.occurrenceId, presenting, workspaceView]);
+  }, [selectedPageId, selectedView?.occurrenceId, presenting, editingWorkspace]);
 
   useLayoutEffect(() => {
     if (presenting) {
@@ -978,7 +984,7 @@ export function HuandengEditor() {
         readonly ||
         busy ||
         presenting ||
-        workspaceView !== 'edit' ||
+        !editingWorkspace ||
         filePreviewPath !== null ||
         event.defaultPrevented ||
         (event.target instanceof Element && event.target.closest('[data-hd-file-preview]')) ||
@@ -1057,7 +1063,7 @@ export function HuandengEditor() {
     readonly,
     run,
     snapshot,
-    workspaceView,
+    editingWorkspace,
   ]);
 
   const chooseTool = (tool: InsertionTool | null) => {
@@ -1213,8 +1219,7 @@ export function HuandengEditor() {
         setAutoEditId(null);
         setPresenting(false);
         setSelectedIds([]);
-        if (!presenting && workspaceView === 'edit')
-          requestAnimationFrame(() => focusEditorCanvas());
+        if (!presenting && editingWorkspace) requestAnimationFrame(() => focusEditorCanvas());
         return;
       }
       if (command.type === 'present') {
@@ -1481,6 +1486,7 @@ export function HuandengEditor() {
       allViewPages,
       playbackPages,
       selectedView,
+      editingWorkspace,
       workspaceView,
     ],
   );
@@ -2096,13 +2102,16 @@ export function HuandengEditor() {
       )}
       <div className="flex min-h-0 flex-1">
         <aside
+          data-hd-navigation-compact={navigationCompact || undefined}
           className={`hd-navigation relative ${navigationCollapsed ? 'hidden' : 'flex'} shrink-0 flex-col border-r border-border bg-sidebar`}
-          style={{ width: navigationWidth }}
+          style={{ width: navigationCompact ? 64 : navigationWidth }}
           aria-label={t('项目导航')}
           data-hd-focus-region="navigation"
           tabIndex={-1}
         >
-          <div className="hd-navigation-tabs grid h-10 shrink-0 grid-cols-[repeat(4,minmax(0,1fr))_24px] items-center gap-1 border-b border-border px-2">
+          <div
+            className={`hd-navigation-tabs shrink-0 items-center gap-1 border-b border-border px-2 ${navigationCompact ? 'flex flex-col py-2' : 'grid h-10 grid-cols-[repeat(4,minmax(0,1fr))_24px]'}`}
+          >
             <Button
               variant={leftTab === 'project' ? 'secondary' : 'ghost'}
               size="xs"
@@ -2225,7 +2234,7 @@ export function HuandengEditor() {
               }}
             />
           )}
-          {leftTab === 'pages' && !selectedPresentationId && sectionsNeedRepair && (
+          {railView && leftTab === 'pages' && !selectedPresentationId && sectionsNeedRepair && (
             <div
               className="space-y-1 border-b border-amber-300/40 bg-amber-50 px-3 py-2 text-xs text-amber-900 dark:bg-amber-950/25 dark:text-amber-100"
               role="status"
@@ -2252,8 +2261,9 @@ export function HuandengEditor() {
               onSelectPage={selectMainPage}
               onPreviewFile={(node) => openFilePreview(node.path)}
             />
-          ) : leftTab === 'pages' ? (
+          ) : leftTab === 'pages' && railView ? (
             <PptdThumbnailRail
+              view={railView}
               onEditSection={
                 selectedPresentationId
                   ? undefined
@@ -2323,14 +2333,16 @@ export function HuandengEditor() {
               }
             />
           ) : null}
-          <PanelResizeHandle
-            label="Resize Project navigation"
-            value={navigationWidth}
-            min={240}
-            max={440}
-            axis="x"
-            onChange={setNavigationWidth}
-          />
+          {!navigationCompact && (
+            <PanelResizeHandle
+              label="Resize Project navigation"
+              value={navigationWidth}
+              min={240}
+              max={440}
+              axis="x"
+              onChange={setNavigationWidth}
+            />
+          )}
         </aside>
         {navigationCollapsed && (
           <div className="hd-collapsed-panel border-r">
@@ -2348,7 +2360,7 @@ export function HuandengEditor() {
         <main
           className="flex min-w-0 flex-1 flex-col"
           onDragOver={(event) => {
-            if (filePreviewPath || workspaceView !== 'edit') {
+            if (filePreviewPath || !editingWorkspace) {
               event.preventDefault();
               return;
             }
@@ -2361,7 +2373,7 @@ export function HuandengEditor() {
             }
           }}
           onDrop={(event) => {
-            if (filePreviewPath || workspaceView !== 'edit') {
+            if (filePreviewPath || !editingWorkspace) {
               event.preventDefault();
               return;
             }
@@ -2442,7 +2454,7 @@ export function HuandengEditor() {
               blocked={workspaceViewSwitchBlocked(auxiliaryDirty, textComposing)}
               onChange={switchWorkspaceView}
             />
-            {workspaceView === 'edit' && (
+            {editingWorkspace && (
               <div
                 className="hd-editor-toolbar flex h-11 shrink-0 items-center gap-1 border-b border-border bg-background px-3"
                 data-hd-focus-region="tools"
@@ -2800,7 +2812,7 @@ export function HuandengEditor() {
                 </div>
               )}
             </div>
-            {workspaceView === 'edit' && notesOpen && notesDock === 'bottom' && page && (
+            {editingWorkspace && notesOpen && notesDock === 'bottom' && page && (
               <NotesPanel
                 value={page.data.notes ?? ''}
                 dock={notesDock}
@@ -2830,7 +2842,7 @@ export function HuandengEditor() {
                 </a>
               )}
               <span className="flex-1" />
-              {workspaceView === 'edit' && (
+              {editingWorkspace && (
                 <>
                   <Button
                     variant="ghost"
@@ -2906,7 +2918,7 @@ export function HuandengEditor() {
         </main>
         {page && (
           <div
-            className={`hd-inspector-container relative shrink-0 ${workspaceView !== 'edit' || inspectorCollapsed || previewActive || filePreviewPath || (notesOpen && notesDock === 'right') ? 'hidden' : 'flex'}`}
+            className={`hd-inspector-container relative shrink-0 ${!editingWorkspace || inspectorCollapsed || previewActive || filePreviewPath || (notesOpen && notesDock === 'right') ? 'hidden' : 'flex'}`}
             style={{ width: inspectorWidth }}
           >
             <PanelResizeHandle
@@ -2981,35 +2993,31 @@ export function HuandengEditor() {
             </PptdInspector>
           </div>
         )}
-        {workspaceView === 'edit' &&
-          page &&
-          notesOpen &&
-          notesDock === 'right' &&
-          !previewActive && (
-            <div className={filePreviewPath ? 'hidden' : 'contents'}>
-              <NotesPanel
-                value={page.data.notes ?? ''}
-                dock={notesDock}
-                height={notesHeight}
-                width={notesWidth}
-                disabled={readonly}
-                presentation={!!selectedPresentationId}
-                onChange={onNotesChange}
-                onComposition={onNotesComposition}
-                onDock={setNotesDock}
-                onHeight={setNotesHeight}
-                onWidth={setNotesWidth}
-                onResizeEnd={() => {}}
-                onClose={() => {
-                  setNotesOpen(false);
-                  setInspectorCollapsed(false);
-                }}
-                onEditOccurrence={showProjectEditor}
-              />
-            </div>
-          )}
+        {editingWorkspace && page && notesOpen && notesDock === 'right' && !previewActive && (
+          <div className={filePreviewPath ? 'hidden' : 'contents'}>
+            <NotesPanel
+              value={page.data.notes ?? ''}
+              dock={notesDock}
+              height={notesHeight}
+              width={notesWidth}
+              disabled={readonly}
+              presentation={!!selectedPresentationId}
+              onChange={onNotesChange}
+              onComposition={onNotesComposition}
+              onDock={setNotesDock}
+              onHeight={setNotesHeight}
+              onWidth={setNotesWidth}
+              onResizeEnd={() => {}}
+              onClose={() => {
+                setNotesOpen(false);
+                setInspectorCollapsed(false);
+              }}
+              onEditOccurrence={showProjectEditor}
+            />
+          </div>
+        )}
         {page &&
-          workspaceView === 'edit' &&
+          editingWorkspace &&
           inspectorCollapsed &&
           !previewActive &&
           !filePreviewPath &&

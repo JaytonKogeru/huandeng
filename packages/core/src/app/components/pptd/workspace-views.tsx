@@ -25,7 +25,7 @@ export function WorkspaceViewSwitcher({
       aria-label={t('Slide workspace views')}
       data-hd-workspace-views
     >
-      {(['edit', 'browse', 'notes'] as const).map((view) => (
+      {(['edit', 'outline', 'browse', 'notes'] as const).map((view) => (
         <Button
           key={view}
           size="xs"
@@ -42,7 +42,15 @@ export function WorkspaceViewSwitcher({
           }
           onClick={() => onChange(view)}
         >
-          {t(view === 'edit' ? 'Edit' : view === 'browse' ? 'Section browser' : 'Notes page')}
+          {t(
+            view === 'edit'
+              ? 'Normal'
+              : view === 'outline'
+                ? 'Outline'
+                : view === 'browse'
+                  ? 'Section browser'
+                  : 'Notes page',
+          )}
         </Button>
       ))}
     </nav>
