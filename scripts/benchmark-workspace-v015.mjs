@@ -110,9 +110,22 @@ async function until(read, timeout = 120000) {
   throw new Error('Audit condition timed out');
 }
 async function frame() {
-  await page.evaluate(
-    () => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))),
-  );
+  let timer;
+  try {
+    await Promise.race([
+      page.evaluate(
+        () => new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve))),
+      ),
+      new Promise((_, reject) => {
+        timer = setTimeout(
+          () => reject(new Error('Animation frames stalled in the test window.')),
+          15000,
+        );
+      }),
+    ]);
+  } finally {
+    clearTimeout(timer);
+  }
 }
 async function sample(name) {
   const dom = await page.evaluate(() => ({
@@ -241,6 +254,7 @@ try {
           performance.now() - (requests.get(response.request()) ?? performance.now()),
         mode: headers['x-huandeng-preview'],
         reason: headers['x-huandeng-preview-reason'],
+        serverTiming: headers['server-timing'],
       });
     }
     if (url.pathname.endsWith('/transactions')) {
@@ -404,6 +418,38 @@ try {
 } catch (error) {
   failure = error;
   report.error = String(error.stack ?? error);
+  if (page) {
+    await page
+      .screenshot({ path: path.join(values.output, `${values.label}-failure.png`), timeout: 5000 })
+      .catch(() => {});
+    report.failureLayout = await page
+      .evaluate(() => {
+        const node = document.querySelector('[data-hd-editor-canvas]');
+        const ancestors = [];
+        for (let item = node; item; item = item.parentElement) {
+          const rect = item.getBoundingClientRect();
+          const style = getComputedStyle(item);
+          ancestors.push({
+            tag: item.tagName,
+            className: item.className,
+            width: rect.width,
+            height: rect.height,
+            display: style.display,
+            visibility: style.visibility,
+          });
+        }
+        return {
+          view: document
+            .querySelector('[data-hd-slide-document]')
+            ?.getAttribute('data-hd-current-workspace-view'),
+          visibility: document.visibilityState,
+          width: innerWidth,
+          height: innerHeight,
+          ancestors,
+        };
+      })
+      .catch(() => null);
+  }
 } finally {
   if (app)
     await app.close().catch((error) => {
