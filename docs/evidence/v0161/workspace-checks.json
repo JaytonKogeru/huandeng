@@ -1,0 +1,80 @@
+{
+  "sourceRevision": "195e77921884b6d9b9950ec0015c15e3380de8bb",
+  "productVersion": "0.16.1",
+  "passed": true,
+  "checks": [
+    {
+      "name": "Permanent Slides and actual native File menu close only file previews",
+      "passed": true,
+      "milliseconds": 1901
+    },
+    {
+      "name": "Local Browse representations preserve selection and independent sidebar preferences",
+      "passed": true,
+      "milliseconds": 6339
+    },
+    {
+      "name": "Section browser renders two populated groups and unassigned slides; filter, collapse, select and real reorder",
+      "passed": true,
+      "milliseconds": 2248
+    },
+    {
+      "name": "Notes uses Chromium composition, blocks navigation, saves long exact text and survives all views",
+      "passed": true,
+      "milliseconds": 3030
+    },
+    {
+      "name": "Browse and Notes isolate object shortcuts and image paste/drop from the document",
+      "passed": true,
+      "milliseconds": 1005
+    },
+    {
+      "name": "Thumbnail slots stay six pixels through hover/focus and keep insertion drag targets",
+      "passed": true,
+      "milliseconds": 1887
+    },
+    {
+      "name": "Animation chooses objects, saves two effects, guards drafts and changes actual show artwork per click",
+      "passed": true,
+      "milliseconds": 8064
+    },
+    {
+      "name": "Beginning/current menu and F5 origins skip hidden pages and exit restores editing",
+      "passed": true,
+      "milliseconds": 4749
+    },
+    {
+      "name": "Repeated/pinned browser occurrences select independently and preserve checkpoint artwork and notes",
+      "passed": true,
+      "milliseconds": 4057
+    },
+    {
+      "name": "Auxiliary Story draft blocks view switching, native Project close and window close until saved",
+      "passed": true,
+      "milliseconds": 1228
+    },
+    {
+      "name": "Agent setup and native menu localize; writer labels preserve client-authored names",
+      "passed": true,
+      "milliseconds": 2824
+    },
+    {
+      "name": "Wide light and narrow dark Normal/Outline/Browser/Notes surfaces in both UI languages preserve authored bytes",
+      "passed": true,
+      "milliseconds": 12342
+    },
+    {
+      "name": "No renderer exceptions",
+      "passed": true,
+      "milliseconds": 0
+    }
+  ],
+  "rendererErrors": [],
+  "screenshots": [
+    "edit-1600-zh-CN-light",
+    "outline-1600-zh-CN-light",
+    "browse-1600-zh-CN-light",
+    "notes-1600-zh-CN-light",
+    "outline-1040-zh-CN-dark"
+  ]
+}
