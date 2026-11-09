@@ -67,12 +67,12 @@ export function ProjectSectionEditor({
                 position: String(resolved.sectionPosition).padStart(2, '0'),
               })}
         </span>
-        <span
-          className="min-w-0 flex-1 truncate font-mono"
-          title={`${t('Section ID')}: ${section.id}`}
-        >
-          {t('Section ID')} · {section.id}
-        </span>
+        <details className="ml-auto min-w-0 text-right">
+          <summary className="cursor-pointer rounded focus-visible:outline-2 focus-visible:outline-ring">
+            {t('Section ID')}
+          </summary>
+          <span className="mt-1 block max-w-56 break-all font-mono">{section.id}</span>
+        </details>
         <Button
           size="icon-xs"
           variant="ghost"

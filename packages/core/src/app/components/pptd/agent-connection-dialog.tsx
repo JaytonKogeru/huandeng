@@ -2,9 +2,11 @@ import { Check, Copy, Loader2, RefreshCw } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { desktopHost } from '@/lib/huandeng-desktop';
 import { useHuandengLocale } from '@/lib/huandeng-locale';
+import type { PptdBackend } from '@/lib/pptd-backend';
 import { Button } from '../ui/button';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '../ui/dialog';
 import { Textarea } from '../ui/textarea';
+import { AgentReportEvidence } from './agent-report-evidence';
 
 type AgentClient = 'deepseek' | 'codex' | 'claude' | 'chatgpt';
 type Setup = { client: string; entryPath: string; pluginPath: string; configuration: string };
@@ -12,9 +14,13 @@ type Setup = { client: string; entryPath: string; pluginPath: string; configurat
 export function AgentConnectionDialog({
   open,
   onOpenChange,
+  backend,
+  deckId,
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  backend?: PptdBackend;
+  deckId?: string;
 }) {
   const { t } = useHuandengLocale();
   const [client, setClient] = useState<AgentClient>('chatgpt');
@@ -67,6 +73,7 @@ export function AgentConnectionDialog({
             {t('Generate setup instructions for an external Agent to work with this Project.')}
           </DialogDescription>
         </DialogHeader>
+        {open && backend && deckId && <AgentReportEvidence backend={backend} deckId={deckId} />}
         <label className="flex items-center gap-3 text-sm">
           <span>{t('客户端')}</span>
           <select
@@ -112,6 +119,9 @@ export function AgentConnectionDialog({
         )}
         {setup && (
           <>
+            <p data-hd-agent-setup-ready className="text-sm font-medium">
+              {t('Setup instructions prepared')}
+            </p>
             <p className="break-all text-xs text-muted-foreground" data-hd-agent-project>
               {setup.entryPath}
             </p>

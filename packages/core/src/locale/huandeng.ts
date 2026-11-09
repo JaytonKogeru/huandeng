@@ -10,6 +10,22 @@ export type UiLocale = 'en' | 'zh-CN';
 export type UiValues = Record<string, string | number>;
 
 const reviewChinese = {
+  'Source image verification is incomplete. Refresh Project images and retry.':
+    '原图核验尚未完成。请刷新项目图片后重试。',
+  'Observed in this Project': '此项目中的实际报告',
+  'Setup instructions prepared': '连接配置已生成',
+  'This is the latest explicit client report, not a live connection or execution check.':
+    '这里显示客户端最近一次主动报告，不代表当前连接或执行状态。',
+  'Live edits update Main and live references. Pinned versions keep their recorded artwork.':
+    '编辑实时页面会更新主幻灯片及其实时引用；固定版本保留已记录的画面。',
+  'View edit scope': '查看修改范围',
+  'Recent reports could not be read.': '无法读取最近的报告。',
+  'Reading recent client reports…': '正在读取最近的客户端报告…',
+  'No client report recorded yet. Setup may still be ready.':
+    '尚未记录客户端报告；连接配置可能已经就绪。',
+  'Pinned version · read-only': '固定版本 · 只读',
+  'Activity Project identity mismatch.': '报告返回的项目身份与当前项目不一致。',
+
   Layout: '布局',
   Previous: '上一批',
   Next: '下一批',

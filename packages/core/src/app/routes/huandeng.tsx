@@ -47,6 +47,7 @@ import { NotesPanel } from '@/components/pptd/notes-panel';
 import { OperationReviewDialog } from '@/components/pptd/operation-review-dialog';
 import { currentReviewTarget } from '@/components/pptd/operation-review-model';
 import { PageHistoryDialog } from '@/components/pptd/page-history-dialog';
+import { PageScopeBar } from '@/components/pptd/page-scope-bar';
 import { PanelResizeHandle } from '@/components/pptd/panel-resize-handle';
 import { type PresentationControls, PresentationView } from '@/components/pptd/presentation-view';
 import { ProjectOverview } from '@/components/pptd/project-overview';
@@ -2496,29 +2497,15 @@ export function HuandengEditor() {
                 {t('Notes')}
               </Button>
             </div>
-            {selectedPresentationId && selectedView && (
-              <div
-                className="flex shrink-0 items-center gap-2 border-b bg-brand-soft px-4 py-2 text-xs"
-                data-hd-shared-slide-notice
-              >
-                <span className="flex-1">
-                  {selectedView?.versionId
-                    ? t('此引用固定为已记录版本，内容只读。')
-                    : t('此演讲引用 主幻灯片；内容编辑会同步到主页面及其他实时引用。')}
-                </span>
-                {selectedPageId && (
-                  <Button
-                    size="xs"
-                    variant="outline"
-                    onClick={() => selectMainPage(selectedPageId)}
-                  >
-                    {t('前往 Main Slide')}
-                  </Button>
-                )}
-                <Button size="xs" variant="ghost" onClick={showProjectEditor}>
-                  {t('编排与备注')}
-                </Button>
-              </div>
+            {page && (
+              <PageScopeBar
+                snapshot={snapshot}
+                page={page}
+                presentationId={selectedPresentationId}
+                onMain={selectMainPage}
+                onOccurrence={selectOccurrence}
+                onOrganize={showProjectEditor}
+              />
             )}
             {conflict && (
               <div
@@ -3016,7 +3003,12 @@ export function HuandengEditor() {
           onChange: (next) => void run(() => snapping.change(next)),
         }}
       />
-      <AgentConnectionDialog open={agentConnectionOpen} onOpenChange={setAgentConnectionOpen} />
+      <AgentConnectionDialog
+        open={agentConnectionOpen}
+        onOpenChange={setAgentConnectionOpen}
+        backend={backend}
+        deckId={snapshot.deckId}
+      />
       <KeyboardHelpDialog open={keyboardHelpOpen} onOpenChange={setKeyboardHelpOpen} />
       <Dialog open={pendingDraftsOpen} onOpenChange={setPendingDraftsOpen}>
         <DialogContent className="max-h-[85dvh] overflow-auto">
