@@ -179,16 +179,33 @@ export async function validateRecipeSources(
 ): Promise<void> {
   await Promise.all(
     prepared.sourceAssets.map(async (source) => {
-      const result = await backend.assets({ query: source.path, kind: 'image', limit: 12 });
-      const current = result.items.find((asset) => asset.path === source.path);
-      if (
-        current?.status !== 'available' ||
-        !current.previewable ||
-        current.previewRevision !== source.previewRevision
-      )
-        throw new Error(
-          'A source image changed or is unavailable. Choose the source again before adding.',
-        );
+      const unavailable =
+        'A source image changed or is unavailable. Choose the source again before adding.';
+      const incomplete =
+        'Source image verification is incomplete. Refresh Project images and retry.';
+      let scanIncomplete = false;
+      for (let page = 0; page < 15; page++) {
+        const result = await backend.assets({
+          query: source.path,
+          kind: 'image',
+          offset: page * 200,
+          limit: 200,
+        });
+        const current = result.items.find((asset) => asset.path === source.path);
+        if (current) {
+          if (
+            current.status !== 'available' ||
+            !current.previewable ||
+            current.previewRevision !== source.previewRevision
+          )
+            throw new Error(unavailable);
+          return;
+        }
+        scanIncomplete ||= result.truncated || !!result.scan?.warnings.length;
+        if (!result.hasMore) throw new Error(scanIncomplete ? incomplete : unavailable);
+        if (!result.items.length) throw new Error(incomplete);
+      }
+      throw new Error(incomplete);
     }),
   );
 }

@@ -7,6 +7,7 @@ import {
   commitPreparedRecipe,
   prepareRecipePreview,
   recipePreviewIsCurrent,
+  validateRecipeSources,
 } from './recipe-preview';
 import { PptdPageRenderer } from './renderer';
 
@@ -80,6 +81,106 @@ function fixture() {
 }
 
 describe('prepared visual recipe', () => {
+  it('finds an exact source beyond the first page of substring matches despite scan truncation', async () => {
+    const { input, assets } = fixture();
+    const prepared = prepareRecipePreview({
+      ...input,
+      recipe: 'figure-with-caption',
+      assets: { figure: assets.left },
+    });
+    const earlier = Array.from({ length: 200 }, (_, index) => ({
+      ...assets.left,
+      path: `assets/${index}/media/left.png`,
+    }));
+    const offsets: number[] = [];
+    await expect(
+      validateRecipeSources(
+        {
+          assets: async (options) => {
+            const offset = options?.offset ?? 0;
+            offsets.push(offset);
+            return {
+              items: offset ? [assets.left] : earlier,
+              hasMore: !offset,
+              truncated: true,
+            } as AssetLibraryResult;
+          },
+        },
+        prepared,
+      ),
+    ).resolves.toBeUndefined();
+    expect(offsets).toEqual([0, 200]);
+  });
+  it('reports a completely exhausted source search as unavailable', async () => {
+    const { input, assets } = fixture();
+    const prepared = prepareRecipePreview({
+      ...input,
+      recipe: 'figure-with-caption',
+      assets: { figure: assets.left },
+    });
+    const offsets: number[] = [];
+    await expect(
+      validateRecipeSources(
+        {
+          assets: async (options) => {
+            const offset = options?.offset ?? 0;
+            offsets.push(offset);
+            return {
+              items: offset
+                ? []
+                : Array.from({ length: 200 }, () => ({ ...assets.left, path: 'assets/other.png' })),
+              hasMore: !offset,
+              truncated: false,
+            } as AssetLibraryResult;
+          },
+        },
+        prepared,
+      ),
+    ).rejects.toThrow(/source image changed or is unavailable/i);
+    expect(offsets).toEqual([0, 200]);
+  });
+  it('distinguishes truncated, unreadable or nonadvancing searches from missing sources', async () => {
+    const { input } = fixture();
+    const prepared = prepareRecipePreview(input);
+    for (const result of [
+      { items: [], hasMore: false, truncated: true },
+      { items: [], hasMore: false, truncated: false, scan: { warnings: ['assets/: unreadable'] } },
+      { items: [], hasMore: true, truncated: false },
+    ])
+      await expect(
+        validateRecipeSources(
+          { assets: async () => result as unknown as AssetLibraryResult },
+          prepared,
+        ),
+      ).rejects.toThrow(/verification is incomplete/i);
+  });
+  it('stops incomplete source verification after 15 bounded pages', async () => {
+    const { input, assets } = fixture();
+    const prepared = prepareRecipePreview({
+      ...input,
+      recipe: 'figure-with-caption',
+      assets: { figure: assets.left },
+    });
+    let calls = 0;
+    await expect(
+      validateRecipeSources(
+        {
+          assets: async () => {
+            calls++;
+            return {
+              items: Array.from({ length: 200 }, () => ({
+                ...assets.left,
+                path: 'assets/other.png',
+              })),
+              hasMore: true,
+            } as AssetLibraryResult;
+          },
+        },
+        prepared,
+      ),
+    ).rejects.toThrow(/verification is incomplete/i);
+    expect(calls).toBe(15);
+  });
   it('revalidates sources in bounded reads then submits the identical prepared payload once', async () => {
     const { input, assets } = fixture();
     assets.left.previewRevision = 'stat:100:200';
@@ -105,8 +206,8 @@ describe('prepared visual recipe', () => {
     );
     expect(applied).toBe(1);
     expect(calls).toEqual([
-      { query: 'media/left.png', kind: 'image', limit: 12 },
-      { query: 'media/right.png', kind: 'image', limit: 12 },
+      { query: 'media/left.png', kind: 'image', offset: 0, limit: 200 },
+      { query: 'media/right.png', kind: 'image', offset: 0, limit: 200 },
     ]);
   });
   it('never writes after source changes or late preflight invalidation/cancellation', async () => {
