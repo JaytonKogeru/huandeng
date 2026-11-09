@@ -1,0 +1,1763 @@
+{
+  "acceptedRuntimeSource": "1f7dfaab8910a41a27023b6ef1ca96f0aac66d5f",
+  "methodologyVersion": 3,
+  "methodology": "Baseline and candidate both disable background throttling only in the owned test webContents. Renderer input-to-DOM plus two animation frames, fresh profiles/processes/project copies, OS cache not cleared, existing apps running. Does not measure ordinary background-window or compositor latency. Response-header timing is not image decode. Server-Timing separates queue/read/preview where available. Notes includes intentional 700 ms debounce. Samples under different memory pressure are descriptive, not a controlled percentage improvement.",
+  "excludedRuns": [
+    {
+      "label": "baseline-a-1",
+      "methodologyVersion": 2,
+      "reason": "Earlier background-throttled timing method",
+      "originalSourcesUnchanged": true
+    },
+    {
+      "label": "baseline-b-1",
+      "methodologyVersion": 2,
+      "reason": "Earlier background-throttled timing method",
+      "originalSourcesUnchanged": true
+    },
+    {
+      "label": "baseline-b-3",
+      "methodologyVersion": 3,
+      "reason": "Startup did not produce a visible canvas; private failure receipt retained",
+      "originalSourcesUnchanged": true
+    },
+    {
+      "label": "candidate-long-1",
+      "methodologyVersion": 3,
+      "reason": "Invalid synthetic page codes: document rejected before renderer; fixture corrected for candidate-long-2",
+      "originalSourcesUnchanged": true
+    }
+  ],
+  "runs": [
+    {
+      "label": "baseline-a-2",
+      "phase": "baseline",
+      "passed": true,
+      "sourceRevision": "100659c513161356413eb9ef3707f6e772a64897",
+      "productVersion": "0.15.0",
+      "pages": 26,
+      "objects": 268,
+      "freeGiB": 3.135467529296875,
+      "startupMs": 5208.4004,
+      "select": {
+        "n": 7,
+        "medianMs": 136.59999990463257,
+        "p95Ms": 292.5,
+        "maxMs": 292.5
+      },
+      "browse": {
+        "n": 4,
+        "medianMs": 99,
+        "p95Ms": 214.20000004768372,
+        "maxMs": 214.20000004768372
+      },
+      "notesInput": {
+        "n": 4,
+        "medianMs": 38.50000011920929,
+        "p95Ms": 41.200000047683716,
+        "maxMs": 41.200000047683716
+      },
+      "inputToDisk": {
+        "n": 4,
+        "medianMs": 855.3499755859375,
+        "p95Ms": 861.699951171875,
+        "maxMs": 861.699951171875
+      },
+      "assetResponseHeaders": {
+        "n": 41,
+        "medianMs": 149.21110000000044,
+        "p95Ms": 755.8136999999988,
+        "maxMs": 762.505000000001
+      },
+      "serverStages": {
+        "queue": null,
+        "read": null,
+        "preview": null
+      },
+      "assetStatuses": {
+        "200": 41
+      },
+      "scrollLongTasks": 0,
+      "longestScrollTaskMs": 0,
+      "stages": [
+        {
+          "name": "edit-initial",
+          "nodes": 1392,
+          "pageRenderers": 7,
+          "railRenderers": 6,
+          "browserRenderers": 0,
+          "browserCards": 0,
+          "images": 12,
+          "pendingImages": 0
+        },
+        {
+          "name": "edit-after-navigation",
+          "nodes": 1392,
+          "pageRenderers": 7,
+          "railRenderers": 6,
+          "browserRenderers": 0,
+          "browserCards": 0,
+          "images": 12,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-first-screen",
+          "nodes": 2227,
+          "pageRenderers": 15,
+          "railRenderers": 6,
+          "browserRenderers": 9,
+          "browserCards": 26,
+          "images": 24,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-after-pass-1",
+          "nodes": 3486,
+          "pageRenderers": 32,
+          "railRenderers": 6,
+          "browserRenderers": 26,
+          "browserCards": 26,
+          "images": 36,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-after-pass-2",
+          "nodes": 3486,
+          "pageRenderers": 32,
+          "railRenderers": 6,
+          "browserRenderers": 26,
+          "browserCards": 26,
+          "images": 36,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-after-image-wait",
+          "nodes": 3486,
+          "pageRenderers": 32,
+          "railRenderers": 6,
+          "browserRenderers": 26,
+          "browserCards": 26,
+          "images": 36,
+          "pendingImages": 0
+        },
+        {
+          "name": "edit-after-view-cycles",
+          "nodes": 1392,
+          "pageRenderers": 7,
+          "railRenderers": 6,
+          "browserRenderers": 0,
+          "browserCards": 0,
+          "images": 12,
+          "pendingImages": 0
+        }
+      ],
+      "originalSourcesUnchanged": true,
+      "rendererErrors": 0
+    },
+    {
+      "label": "baseline-a-3",
+      "phase": "baseline",
+      "passed": true,
+      "sourceRevision": "100659c513161356413eb9ef3707f6e772a64897",
+      "productVersion": "0.15.0",
+      "pages": 26,
+      "objects": 268,
+      "freeGiB": 4.906299591064453,
+      "startupMs": 5098.849899999999,
+      "select": {
+        "n": 7,
+        "medianMs": 117.09999990463257,
+        "p95Ms": 156.90000009536743,
+        "maxMs": 156.90000009536743
+      },
+      "browse": {
+        "n": 4,
+        "medianMs": 87.25000011920929,
+        "p95Ms": 177.5,
+        "maxMs": 177.5
+      },
+      "notesInput": {
+        "n": 4,
+        "medianMs": 35.64999997615814,
+        "p95Ms": 45.700000047683716,
+        "maxMs": 45.700000047683716
+      },
+      "inputToDisk": {
+        "n": 4,
+        "medianMs": 1030.349853515625,
+        "p95Ms": 1339,
+        "maxMs": 1339
+      },
+      "assetResponseHeaders": {
+        "n": 44,
+        "medianMs": 93.45344999999725,
+        "p95Ms": 643.1400000000012,
+        "maxMs": 832.5113000000001
+      },
+      "serverStages": {
+        "queue": null,
+        "read": null,
+        "preview": null
+      },
+      "assetStatuses": {
+        "200": 44
+      },
+      "scrollLongTasks": 1,
+      "longestScrollTaskMs": 52,
+      "stages": [
+        {
+          "name": "edit-initial",
+          "nodes": 1392,
+          "pageRenderers": 7,
+          "railRenderers": 6,
+          "browserRenderers": 0,
+          "browserCards": 0,
+          "images": 12,
+          "pendingImages": 0
+        },
+        {
+          "name": "edit-after-navigation",
+          "nodes": 1392,
+          "pageRenderers": 7,
+          "railRenderers": 6,
+          "browserRenderers": 0,
+          "browserCards": 0,
+          "images": 12,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-first-screen",
+          "nodes": 2227,
+          "pageRenderers": 15,
+          "railRenderers": 6,
+          "browserRenderers": 9,
+          "browserCards": 26,
+          "images": 24,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-after-pass-1",
+          "nodes": 3486,
+          "pageRenderers": 32,
+          "railRenderers": 6,
+          "browserRenderers": 26,
+          "browserCards": 26,
+          "images": 36,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-after-pass-2",
+          "nodes": 3486,
+          "pageRenderers": 32,
+          "railRenderers": 6,
+          "browserRenderers": 26,
+          "browserCards": 26,
+          "images": 36,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-after-image-wait",
+          "nodes": 3486,
+          "pageRenderers": 32,
+          "railRenderers": 6,
+          "browserRenderers": 26,
+          "browserCards": 26,
+          "images": 36,
+          "pendingImages": 0
+        },
+        {
+          "name": "edit-after-view-cycles",
+          "nodes": 1392,
+          "pageRenderers": 7,
+          "railRenderers": 6,
+          "browserRenderers": 0,
+          "browserCards": 0,
+          "images": 12,
+          "pendingImages": 0
+        }
+      ],
+      "originalSourcesUnchanged": true,
+      "rendererErrors": 0
+    },
+    {
+      "label": "baseline-a-4",
+      "phase": "baseline",
+      "passed": true,
+      "sourceRevision": "100659c513161356413eb9ef3707f6e772a64897",
+      "productVersion": "0.15.0",
+      "pages": 26,
+      "objects": 268,
+      "freeGiB": 4.457538604736328,
+      "startupMs": 5313.5172999999995,
+      "select": {
+        "n": 7,
+        "medianMs": 145.59999990463257,
+        "p95Ms": 216,
+        "maxMs": 216
+      },
+      "browse": {
+        "n": 4,
+        "medianMs": 101.35000002384186,
+        "p95Ms": 188.09999990463257,
+        "maxMs": 188.09999990463257
+      },
+      "notesInput": {
+        "n": 4,
+        "medianMs": 36.89999997615814,
+        "p95Ms": 48.60000014305115,
+        "maxMs": 48.60000014305115
+      },
+      "inputToDisk": {
+        "n": 4,
+        "medianMs": 1012.800048828125,
+        "p95Ms": 1235.699951171875,
+        "maxMs": 1235.699951171875
+      },
+      "assetResponseHeaders": {
+        "n": 37,
+        "medianMs": 92.00410000000011,
+        "p95Ms": 908.6853999999994,
+        "maxMs": 909.3972000000003
+      },
+      "serverStages": {
+        "queue": null,
+        "read": null,
+        "preview": null
+      },
+      "assetStatuses": {
+        "200": 37
+      },
+      "scrollLongTasks": 0,
+      "longestScrollTaskMs": 0,
+      "stages": [
+        {
+          "name": "edit-initial",
+          "nodes": 1392,
+          "pageRenderers": 7,
+          "railRenderers": 6,
+          "browserRenderers": 0,
+          "browserCards": 0,
+          "images": 12,
+          "pendingImages": 0
+        },
+        {
+          "name": "edit-after-navigation",
+          "nodes": 1392,
+          "pageRenderers": 7,
+          "railRenderers": 6,
+          "browserRenderers": 0,
+          "browserCards": 0,
+          "images": 12,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-first-screen",
+          "nodes": 2227,
+          "pageRenderers": 15,
+          "railRenderers": 6,
+          "browserRenderers": 9,
+          "browserCards": 26,
+          "images": 24,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-after-pass-1",
+          "nodes": 3486,
+          "pageRenderers": 32,
+          "railRenderers": 6,
+          "browserRenderers": 26,
+          "browserCards": 26,
+          "images": 36,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-after-pass-2",
+          "nodes": 3486,
+          "pageRenderers": 32,
+          "railRenderers": 6,
+          "browserRenderers": 26,
+          "browserCards": 26,
+          "images": 36,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-after-image-wait",
+          "nodes": 3486,
+          "pageRenderers": 32,
+          "railRenderers": 6,
+          "browserRenderers": 26,
+          "browserCards": 26,
+          "images": 36,
+          "pendingImages": 0
+        },
+        {
+          "name": "edit-after-view-cycles",
+          "nodes": 1392,
+          "pageRenderers": 7,
+          "railRenderers": 6,
+          "browserRenderers": 0,
+          "browserCards": 0,
+          "images": 12,
+          "pendingImages": 0
+        }
+      ],
+      "originalSourcesUnchanged": true,
+      "rendererErrors": 0
+    },
+    {
+      "label": "baseline-b-2",
+      "phase": "baseline",
+      "passed": true,
+      "sourceRevision": "100659c513161356413eb9ef3707f6e772a64897",
+      "productVersion": "0.15.0",
+      "pages": 92,
+      "objects": 1681,
+      "freeGiB": 3.0749893188476562,
+      "startupMs": 8125.612899999998,
+      "select": {
+        "n": 7,
+        "medianMs": 272.89999985694885,
+        "p95Ms": 378.5,
+        "maxMs": 378.5
+      },
+      "browse": {
+        "n": 4,
+        "medianMs": 254.39999997615814,
+        "p95Ms": 281.60000014305115,
+        "maxMs": 281.60000014305115
+      },
+      "notesInput": {
+        "n": 4,
+        "medianMs": 71.10000014305115,
+        "p95Ms": 88.90000009536743,
+        "maxMs": 88.90000009536743
+      },
+      "inputToDisk": {
+        "n": 4,
+        "medianMs": 1322.599853515625,
+        "p95Ms": 1861.599853515625,
+        "maxMs": 1861.599853515625
+      },
+      "assetResponseHeaders": {
+        "n": 203,
+        "medianMs": 2354.051299999999,
+        "p95Ms": 6294.680500000002,
+        "maxMs": 7045.360499999999
+      },
+      "serverStages": {
+        "queue": null,
+        "read": null,
+        "preview": null
+      },
+      "assetStatuses": {
+        "200": 203
+      },
+      "scrollLongTasks": 12,
+      "longestScrollTaskMs": 114,
+      "stages": [
+        {
+          "name": "edit-initial",
+          "nodes": 2543,
+          "pageRenderers": 6,
+          "railRenderers": 5,
+          "browserRenderers": 0,
+          "browserCards": 0,
+          "images": 7,
+          "pendingImages": 0
+        },
+        {
+          "name": "edit-after-navigation",
+          "nodes": 2543,
+          "pageRenderers": 6,
+          "railRenderers": 5,
+          "browserRenderers": 0,
+          "browserCards": 0,
+          "images": 7,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-first-screen",
+          "nodes": 4422,
+          "pageRenderers": 11,
+          "railRenderers": 5,
+          "browserRenderers": 6,
+          "browserCards": 92,
+          "images": 14,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-after-pass-1",
+          "nodes": 12963,
+          "pageRenderers": 97,
+          "railRenderers": 5,
+          "browserRenderers": 92,
+          "browserCards": 92,
+          "images": 286,
+          "pendingImages": 11
+        },
+        {
+          "name": "browse-after-pass-2",
+          "nodes": 12963,
+          "pageRenderers": 97,
+          "railRenderers": 5,
+          "browserRenderers": 92,
+          "browserCards": 92,
+          "images": 286,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-after-image-wait",
+          "nodes": 12963,
+          "pageRenderers": 97,
+          "railRenderers": 5,
+          "browserRenderers": 92,
+          "browserCards": 92,
+          "images": 286,
+          "pendingImages": 0
+        },
+        {
+          "name": "edit-after-view-cycles",
+          "nodes": 2543,
+          "pageRenderers": 6,
+          "railRenderers": 5,
+          "browserRenderers": 0,
+          "browserCards": 0,
+          "images": 7,
+          "pendingImages": 0
+        }
+      ],
+      "originalSourcesUnchanged": true,
+      "rendererErrors": 0
+    },
+    {
+      "label": "baseline-b-4",
+      "phase": "baseline",
+      "passed": true,
+      "sourceRevision": "100659c513161356413eb9ef3707f6e772a64897",
+      "productVersion": "0.15.0",
+      "pages": 92,
+      "objects": 1681,
+      "freeGiB": 4.64166259765625,
+      "startupMs": 6551.6084,
+      "select": {
+        "n": 7,
+        "medianMs": 263.7000000476837,
+        "p95Ms": 339.40000009536743,
+        "maxMs": 339.40000009536743
+      },
+      "browse": {
+        "n": 4,
+        "medianMs": 2987.399999976158,
+        "p95Ms": 2989.5,
+        "maxMs": 2989.5
+      },
+      "notesInput": {
+        "n": 4,
+        "medianMs": 2608.7999999523163,
+        "p95Ms": 2965.7999999523163,
+        "maxMs": 2965.7999999523163
+      },
+      "inputToDisk": {
+        "n": 4,
+        "medianMs": 2622.64990234375,
+        "p95Ms": 2978,
+        "maxMs": 2978
+      },
+      "assetResponseHeaders": {
+        "n": 202,
+        "medianMs": 975.9032999999981,
+        "p95Ms": 3545.922499999997,
+        "maxMs": 7191.493899999998
+      },
+      "serverStages": {
+        "queue": null,
+        "read": null,
+        "preview": null
+      },
+      "assetStatuses": {
+        "200": 202
+      },
+      "scrollLongTasks": 9,
+      "longestScrollTaskMs": 104,
+      "stages": [
+        {
+          "name": "edit-initial",
+          "nodes": 2543,
+          "pageRenderers": 6,
+          "railRenderers": 5,
+          "browserRenderers": 0,
+          "browserCards": 0,
+          "images": 7,
+          "pendingImages": 0
+        },
+        {
+          "name": "edit-after-navigation",
+          "nodes": 2543,
+          "pageRenderers": 6,
+          "railRenderers": 5,
+          "browserRenderers": 0,
+          "browserCards": 0,
+          "images": 7,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-first-screen",
+          "nodes": 4422,
+          "pageRenderers": 11,
+          "railRenderers": 5,
+          "browserRenderers": 6,
+          "browserCards": 92,
+          "images": 14,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-after-pass-1",
+          "nodes": 12963,
+          "pageRenderers": 97,
+          "railRenderers": 5,
+          "browserRenderers": 92,
+          "browserCards": 92,
+          "images": 286,
+          "pendingImages": 15
+        },
+        {
+          "name": "browse-after-pass-2",
+          "nodes": 12963,
+          "pageRenderers": 97,
+          "railRenderers": 5,
+          "browserRenderers": 92,
+          "browserCards": 92,
+          "images": 286,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-after-image-wait",
+          "nodes": 12963,
+          "pageRenderers": 97,
+          "railRenderers": 5,
+          "browserRenderers": 92,
+          "browserCards": 92,
+          "images": 286,
+          "pendingImages": 0
+        },
+        {
+          "name": "edit-after-view-cycles",
+          "nodes": 2543,
+          "pageRenderers": 6,
+          "railRenderers": 5,
+          "browserRenderers": 0,
+          "browserCards": 0,
+          "images": 7,
+          "pendingImages": 0
+        }
+      ],
+      "originalSourcesUnchanged": true,
+      "rendererErrors": 0
+    },
+    {
+      "label": "baseline-b-5",
+      "phase": "baseline",
+      "passed": true,
+      "sourceRevision": "100659c513161356413eb9ef3707f6e772a64897",
+      "productVersion": "0.15.0",
+      "pages": 92,
+      "objects": 1681,
+      "freeGiB": 4.362712860107422,
+      "startupMs": 7917.280599999999,
+      "select": {
+        "n": 7,
+        "medianMs": 251.29999995231628,
+        "p95Ms": 518.2000000476837,
+        "maxMs": 518.2000000476837
+      },
+      "browse": {
+        "n": 4,
+        "medianMs": 239.85000002384186,
+        "p95Ms": 240.69999980926514,
+        "maxMs": 240.69999980926514
+      },
+      "notesInput": {
+        "n": 4,
+        "medianMs": 75.64999997615814,
+        "p95Ms": 76.5,
+        "maxMs": 76.5
+      },
+      "inputToDisk": {
+        "n": 4,
+        "medianMs": 1585.9500732421875,
+        "p95Ms": 1805.5,
+        "maxMs": 1805.5
+      },
+      "assetResponseHeaders": {
+        "n": 198,
+        "medianMs": 1114.5190500000008,
+        "p95Ms": 3090.7732000000033,
+        "maxMs": 5881.013100000004
+      },
+      "serverStages": {
+        "queue": null,
+        "read": null,
+        "preview": null
+      },
+      "assetStatuses": {
+        "200": 198
+      },
+      "scrollLongTasks": 10,
+      "longestScrollTaskMs": 103,
+      "stages": [
+        {
+          "name": "edit-initial",
+          "nodes": 2543,
+          "pageRenderers": 6,
+          "railRenderers": 5,
+          "browserRenderers": 0,
+          "browserCards": 0,
+          "images": 7,
+          "pendingImages": 0
+        },
+        {
+          "name": "edit-after-navigation",
+          "nodes": 2543,
+          "pageRenderers": 6,
+          "railRenderers": 5,
+          "browserRenderers": 0,
+          "browserCards": 0,
+          "images": 7,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-first-screen",
+          "nodes": 4422,
+          "pageRenderers": 11,
+          "railRenderers": 5,
+          "browserRenderers": 6,
+          "browserCards": 92,
+          "images": 14,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-after-pass-1",
+          "nodes": 12963,
+          "pageRenderers": 97,
+          "railRenderers": 5,
+          "browserRenderers": 92,
+          "browserCards": 92,
+          "images": 286,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-after-pass-2",
+          "nodes": 12963,
+          "pageRenderers": 97,
+          "railRenderers": 5,
+          "browserRenderers": 92,
+          "browserCards": 92,
+          "images": 286,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-after-image-wait",
+          "nodes": 12963,
+          "pageRenderers": 97,
+          "railRenderers": 5,
+          "browserRenderers": 92,
+          "browserCards": 92,
+          "images": 286,
+          "pendingImages": 0
+        },
+        {
+          "name": "edit-after-view-cycles",
+          "nodes": 2543,
+          "pageRenderers": 6,
+          "railRenderers": 5,
+          "browserRenderers": 0,
+          "browserCards": 0,
+          "images": 7,
+          "pendingImages": 0
+        }
+      ],
+      "originalSourcesUnchanged": true,
+      "rendererErrors": 0
+    },
+    {
+      "label": "candidate-a-1",
+      "phase": "pre-fix-candidate",
+      "passed": true,
+      "sourceRevision": "8541e514aaa4bf8bffb50b74c8538aac3b435e00",
+      "productVersion": "0.16.0",
+      "pages": 26,
+      "objects": 268,
+      "freeGiB": 4.458919525146484,
+      "startupMs": 9140.686099999999,
+      "select": {
+        "n": 7,
+        "medianMs": 167.90000009536743,
+        "p95Ms": 245.70000004768372,
+        "maxMs": 245.70000004768372
+      },
+      "browse": {
+        "n": 4,
+        "medianMs": 115.44999992847443,
+        "p95Ms": 174.20000004768372,
+        "maxMs": 174.20000004768372
+      },
+      "notesInput": {
+        "n": 4,
+        "medianMs": 34.24999988079071,
+        "p95Ms": 39.09999990463257,
+        "maxMs": 39.09999990463257
+      },
+      "inputToDisk": {
+        "n": 4,
+        "medianMs": 1132.0499267578125,
+        "p95Ms": 1728.800048828125,
+        "maxMs": 1728.800048828125
+      },
+      "assetResponseHeaders": {
+        "n": 53,
+        "medianMs": 63.21060000000216,
+        "p95Ms": 3336.5516000000007,
+        "maxMs": 3348.812600000001
+      },
+      "serverStages": {
+        "queue": {
+          "n": 53,
+          "medianMs": 0.02,
+          "p95Ms": 1085.95,
+          "maxMs": 1865.57
+        },
+        "read": {
+          "n": 53,
+          "medianMs": 2.62,
+          "p95Ms": 4.53,
+          "maxMs": 10.3
+        },
+        "preview": {
+          "n": 53,
+          "medianMs": 0.01,
+          "p95Ms": 904.08,
+          "maxMs": 1083.8
+        }
+      },
+      "assetStatuses": {
+        "200": 53
+      },
+      "scrollLongTasks": 3,
+      "longestScrollTaskMs": 67,
+      "stages": [
+        {
+          "name": "edit-initial",
+          "nodes": 1396,
+          "pageRenderers": 7,
+          "railRenderers": 6,
+          "browserRenderers": 0,
+          "browserCards": 0,
+          "images": 12,
+          "pendingImages": 0
+        },
+        {
+          "name": "edit-after-navigation",
+          "nodes": 1396,
+          "pageRenderers": 7,
+          "railRenderers": 6,
+          "browserRenderers": 0,
+          "browserCards": 0,
+          "images": 12,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-first-screen",
+          "nodes": 1428,
+          "pageRenderers": 9,
+          "railRenderers": 0,
+          "browserRenderers": 9,
+          "browserCards": 26,
+          "images": 15,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-after-pass-1",
+          "nodes": 1428,
+          "pageRenderers": 9,
+          "railRenderers": 0,
+          "browserRenderers": 9,
+          "browserCards": 26,
+          "images": 15,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-after-pass-2",
+          "nodes": 1428,
+          "pageRenderers": 9,
+          "railRenderers": 0,
+          "browserRenderers": 9,
+          "browserCards": 26,
+          "images": 15,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-after-image-wait",
+          "nodes": 1428,
+          "pageRenderers": 9,
+          "railRenderers": 0,
+          "browserRenderers": 9,
+          "browserCards": 26,
+          "images": 15,
+          "pendingImages": 0
+        },
+        {
+          "name": "edit-after-view-cycles",
+          "nodes": 1396,
+          "pageRenderers": 7,
+          "railRenderers": 6,
+          "browserRenderers": 0,
+          "browserCards": 0,
+          "images": 12,
+          "pendingImages": 0
+        }
+      ],
+      "originalSourcesUnchanged": true,
+      "rendererErrors": 0
+    },
+    {
+      "label": "candidate-a-2",
+      "phase": "final-candidate",
+      "passed": true,
+      "sourceRevision": "1f7dfaab8910a41a27023b6ef1ca96f0aac66d5f",
+      "productVersion": "0.16.0",
+      "pages": 26,
+      "objects": 268,
+      "freeGiB": 4.209674835205078,
+      "startupMs": 5051.675800000001,
+      "select": {
+        "n": 7,
+        "medianMs": 134.09999990463257,
+        "p95Ms": 138.60000014305115,
+        "maxMs": 138.60000014305115
+      },
+      "browse": {
+        "n": 4,
+        "medianMs": 74.75,
+        "p95Ms": 143.20000004768372,
+        "maxMs": 143.20000004768372
+      },
+      "notesInput": {
+        "n": 4,
+        "medianMs": 42.5,
+        "p95Ms": 54.10000014305115,
+        "maxMs": 54.10000014305115
+      },
+      "inputToDisk": {
+        "n": 4,
+        "medianMs": 897.9500732421875,
+        "p95Ms": 913.800048828125,
+        "maxMs": 913.800048828125
+      },
+      "assetResponseHeaders": {
+        "n": 40,
+        "medianMs": 154.35100000000148,
+        "p95Ms": 840.7732000000005,
+        "maxMs": 842.6605
+      },
+      "serverStages": {
+        "queue": {
+          "n": 40,
+          "medianMs": 0.025,
+          "p95Ms": 483.73,
+          "maxMs": 633.3
+        },
+        "read": {
+          "n": 40,
+          "medianMs": 2.34,
+          "p95Ms": 3.66,
+          "maxMs": 9.63
+        },
+        "preview": {
+          "n": 40,
+          "medianMs": 0.015,
+          "p95Ms": 190.72,
+          "maxMs": 479.08
+        }
+      },
+      "assetStatuses": {
+        "200": 40
+      },
+      "scrollLongTasks": 4,
+      "longestScrollTaskMs": 65,
+      "stages": [
+        {
+          "name": "edit-initial",
+          "nodes": 1396,
+          "pageRenderers": 7,
+          "railRenderers": 6,
+          "browserRenderers": 0,
+          "browserCards": 0,
+          "images": 12,
+          "pendingImages": 0
+        },
+        {
+          "name": "edit-after-navigation",
+          "nodes": 1396,
+          "pageRenderers": 7,
+          "railRenderers": 6,
+          "browserRenderers": 0,
+          "browserCards": 0,
+          "images": 12,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-first-screen",
+          "nodes": 1428,
+          "pageRenderers": 9,
+          "railRenderers": 0,
+          "browserRenderers": 9,
+          "browserCards": 26,
+          "images": 15,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-after-pass-1",
+          "nodes": 1428,
+          "pageRenderers": 9,
+          "railRenderers": 0,
+          "browserRenderers": 9,
+          "browserCards": 26,
+          "images": 15,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-after-pass-2",
+          "nodes": 1428,
+          "pageRenderers": 9,
+          "railRenderers": 0,
+          "browserRenderers": 9,
+          "browserCards": 26,
+          "images": 15,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-after-image-wait",
+          "nodes": 1428,
+          "pageRenderers": 9,
+          "railRenderers": 0,
+          "browserRenderers": 9,
+          "browserCards": 26,
+          "images": 15,
+          "pendingImages": 0
+        },
+        {
+          "name": "edit-after-view-cycles",
+          "nodes": 1396,
+          "pageRenderers": 7,
+          "railRenderers": 6,
+          "browserRenderers": 0,
+          "browserCards": 0,
+          "images": 12,
+          "pendingImages": 0
+        }
+      ],
+      "originalSourcesUnchanged": true,
+      "rendererErrors": 0
+    },
+    {
+      "label": "candidate-a-3",
+      "phase": "final-candidate",
+      "passed": true,
+      "sourceRevision": "1f7dfaab8910a41a27023b6ef1ca96f0aac66d5f",
+      "productVersion": "0.16.0",
+      "pages": 26,
+      "objects": 268,
+      "freeGiB": 4.525291442871094,
+      "startupMs": 4877.329299999999,
+      "select": {
+        "n": 7,
+        "medianMs": 119,
+        "p95Ms": 198,
+        "maxMs": 198
+      },
+      "browse": {
+        "n": 4,
+        "medianMs": 80.54999995231628,
+        "p95Ms": 158.5,
+        "maxMs": 158.5
+      },
+      "notesInput": {
+        "n": 4,
+        "medianMs": 38,
+        "p95Ms": 39.700000047683716,
+        "maxMs": 39.700000047683716
+      },
+      "inputToDisk": {
+        "n": 4,
+        "medianMs": 995.9500732421875,
+        "p95Ms": 1112.699951171875,
+        "maxMs": 1112.699951171875
+      },
+      "assetResponseHeaders": {
+        "n": 47,
+        "medianMs": 132.26820000000043,
+        "p95Ms": 827.3523000000005,
+        "maxMs": 829.0862999999999
+      },
+      "serverStages": {
+        "queue": {
+          "n": 47,
+          "medianMs": 0.05,
+          "p95Ms": 299.27,
+          "maxMs": 459.36
+        },
+        "read": {
+          "n": 47,
+          "medianMs": 2.33,
+          "p95Ms": 5.68,
+          "maxMs": 8.13
+        },
+        "preview": {
+          "n": 47,
+          "medianMs": 0.01,
+          "p95Ms": 177.77,
+          "maxMs": 339.6
+        }
+      },
+      "assetStatuses": {
+        "200": 47
+      },
+      "scrollLongTasks": 4,
+      "longestScrollTaskMs": 62,
+      "stages": [
+        {
+          "name": "edit-initial",
+          "nodes": 1396,
+          "pageRenderers": 7,
+          "railRenderers": 6,
+          "browserRenderers": 0,
+          "browserCards": 0,
+          "images": 12,
+          "pendingImages": 0
+        },
+        {
+          "name": "edit-after-navigation",
+          "nodes": 1396,
+          "pageRenderers": 7,
+          "railRenderers": 6,
+          "browserRenderers": 0,
+          "browserCards": 0,
+          "images": 12,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-first-screen",
+          "nodes": 1428,
+          "pageRenderers": 9,
+          "railRenderers": 0,
+          "browserRenderers": 9,
+          "browserCards": 26,
+          "images": 15,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-after-pass-1",
+          "nodes": 1428,
+          "pageRenderers": 9,
+          "railRenderers": 0,
+          "browserRenderers": 9,
+          "browserCards": 26,
+          "images": 15,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-after-pass-2",
+          "nodes": 1428,
+          "pageRenderers": 9,
+          "railRenderers": 0,
+          "browserRenderers": 9,
+          "browserCards": 26,
+          "images": 15,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-after-image-wait",
+          "nodes": 1428,
+          "pageRenderers": 9,
+          "railRenderers": 0,
+          "browserRenderers": 9,
+          "browserCards": 26,
+          "images": 15,
+          "pendingImages": 0
+        },
+        {
+          "name": "edit-after-view-cycles",
+          "nodes": 1396,
+          "pageRenderers": 7,
+          "railRenderers": 6,
+          "browserRenderers": 0,
+          "browserCards": 0,
+          "images": 12,
+          "pendingImages": 0
+        }
+      ],
+      "originalSourcesUnchanged": true,
+      "rendererErrors": 0
+    },
+    {
+      "label": "candidate-b-1",
+      "phase": "pre-fix-candidate",
+      "passed": true,
+      "sourceRevision": "8541e514aaa4bf8bffb50b74c8538aac3b435e00",
+      "productVersion": "0.16.0",
+      "pages": 92,
+      "objects": 1681,
+      "freeGiB": 3.7076072692871094,
+      "startupMs": 7990.160099999999,
+      "select": {
+        "n": 7,
+        "medianMs": 246,
+        "p95Ms": 455.39999985694885,
+        "maxMs": 455.39999985694885
+      },
+      "browse": {
+        "n": 4,
+        "medianMs": 274.9499999284744,
+        "p95Ms": 312,
+        "maxMs": 312
+      },
+      "notesInput": {
+        "n": 4,
+        "medianMs": 65.5,
+        "p95Ms": 78.40000009536743,
+        "maxMs": 78.40000009536743
+      },
+      "inputToDisk": {
+        "n": 4,
+        "medianMs": 1275.400146484375,
+        "p95Ms": 1344,
+        "maxMs": 1344
+      },
+      "assetResponseHeaders": {
+        "n": 258,
+        "medianMs": 1473.366900000001,
+        "p95Ms": 5065.933899999996,
+        "maxMs": 5393.991500000004
+      },
+      "serverStages": {
+        "queue": {
+          "n": 258,
+          "medianMs": 11.920000000000002,
+          "p95Ms": 414.86,
+          "maxMs": 576.5
+        },
+        "read": {
+          "n": 258,
+          "medianMs": 2.04,
+          "p95Ms": 4.6,
+          "maxMs": 12.46
+        },
+        "preview": {
+          "n": 258,
+          "medianMs": 2.175,
+          "p95Ms": 333.17,
+          "maxMs": 508.91
+        }
+      },
+      "assetStatuses": {
+        "200": 258
+      },
+      "scrollLongTasks": 18,
+      "longestScrollTaskMs": 116,
+      "stages": [
+        {
+          "name": "edit-initial",
+          "nodes": 2623,
+          "pageRenderers": 7,
+          "railRenderers": 6,
+          "browserRenderers": 0,
+          "browserCards": 0,
+          "images": 8,
+          "pendingImages": 0
+        },
+        {
+          "name": "edit-after-navigation",
+          "nodes": 2623,
+          "pageRenderers": 7,
+          "railRenderers": 6,
+          "browserRenderers": 0,
+          "browserCards": 0,
+          "images": 8,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-first-screen",
+          "nodes": 2846,
+          "pageRenderers": 11,
+          "railRenderers": 0,
+          "browserRenderers": 11,
+          "browserCards": 92,
+          "images": 30,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-after-pass-1",
+          "nodes": 2846,
+          "pageRenderers": 11,
+          "railRenderers": 0,
+          "browserRenderers": 11,
+          "browserCards": 92,
+          "images": 30,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-after-pass-2",
+          "nodes": 2846,
+          "pageRenderers": 11,
+          "railRenderers": 0,
+          "browserRenderers": 11,
+          "browserCards": 92,
+          "images": 30,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-after-image-wait",
+          "nodes": 2846,
+          "pageRenderers": 11,
+          "railRenderers": 0,
+          "browserRenderers": 11,
+          "browserCards": 92,
+          "images": 30,
+          "pendingImages": 0
+        },
+        {
+          "name": "edit-after-view-cycles",
+          "nodes": 2623,
+          "pageRenderers": 7,
+          "railRenderers": 6,
+          "browserRenderers": 0,
+          "browserCards": 0,
+          "images": 8,
+          "pendingImages": 0
+        }
+      ],
+      "originalSourcesUnchanged": true,
+      "rendererErrors": 0
+    },
+    {
+      "label": "candidate-b-2",
+      "phase": "final-candidate",
+      "passed": true,
+      "sourceRevision": "1f7dfaab8910a41a27023b6ef1ca96f0aac66d5f",
+      "productVersion": "0.16.0",
+      "pages": 92,
+      "objects": 1681,
+      "freeGiB": 4.092838287353516,
+      "startupMs": 7647.2024,
+      "select": {
+        "n": 7,
+        "medianMs": 218.90000009536743,
+        "p95Ms": 482.60000014305115,
+        "maxMs": 482.60000014305115
+      },
+      "browse": {
+        "n": 4,
+        "medianMs": 272.10000014305115,
+        "p95Ms": 284.60000014305115,
+        "maxMs": 284.60000014305115
+      },
+      "notesInput": {
+        "n": 4,
+        "medianMs": 65.79999995231628,
+        "p95Ms": 79.5,
+        "maxMs": 79.5
+      },
+      "inputToDisk": {
+        "n": 4,
+        "medianMs": 1376.9000244140625,
+        "p95Ms": 1532.800048828125,
+        "maxMs": 1532.800048828125
+      },
+      "assetResponseHeaders": {
+        "n": 273,
+        "medianMs": 1008.4830999999995,
+        "p95Ms": 4365.995300000002,
+        "maxMs": 5692.929499999998
+      },
+      "serverStages": {
+        "queue": {
+          "n": 273,
+          "medianMs": 9.1,
+          "p95Ms": 421.4,
+          "maxMs": 622.35
+        },
+        "read": {
+          "n": 273,
+          "medianMs": 2.18,
+          "p95Ms": 4.18,
+          "maxMs": 28.42
+        },
+        "preview": {
+          "n": 273,
+          "medianMs": 1.8,
+          "p95Ms": 312.78,
+          "maxMs": 543.12
+        }
+      },
+      "assetStatuses": {
+        "200": 273
+      },
+      "scrollLongTasks": 19,
+      "longestScrollTaskMs": 148,
+      "stages": [
+        {
+          "name": "edit-initial",
+          "nodes": 2623,
+          "pageRenderers": 7,
+          "railRenderers": 6,
+          "browserRenderers": 0,
+          "browserCards": 0,
+          "images": 8,
+          "pendingImages": 0
+        },
+        {
+          "name": "edit-after-navigation",
+          "nodes": 2623,
+          "pageRenderers": 7,
+          "railRenderers": 6,
+          "browserRenderers": 0,
+          "browserCards": 0,
+          "images": 8,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-first-screen",
+          "nodes": 2846,
+          "pageRenderers": 11,
+          "railRenderers": 0,
+          "browserRenderers": 11,
+          "browserCards": 92,
+          "images": 30,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-after-pass-1",
+          "nodes": 2846,
+          "pageRenderers": 11,
+          "railRenderers": 0,
+          "browserRenderers": 11,
+          "browserCards": 92,
+          "images": 30,
+          "pendingImages": 5
+        },
+        {
+          "name": "browse-after-pass-2",
+          "nodes": 2846,
+          "pageRenderers": 11,
+          "railRenderers": 0,
+          "browserRenderers": 11,
+          "browserCards": 92,
+          "images": 30,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-after-image-wait",
+          "nodes": 2846,
+          "pageRenderers": 11,
+          "railRenderers": 0,
+          "browserRenderers": 11,
+          "browserCards": 92,
+          "images": 30,
+          "pendingImages": 0
+        },
+        {
+          "name": "edit-after-view-cycles",
+          "nodes": 2623,
+          "pageRenderers": 7,
+          "railRenderers": 6,
+          "browserRenderers": 0,
+          "browserCards": 0,
+          "images": 8,
+          "pendingImages": 0
+        }
+      ],
+      "originalSourcesUnchanged": true,
+      "rendererErrors": 0
+    },
+    {
+      "label": "candidate-b-3",
+      "phase": "final-candidate",
+      "passed": true,
+      "sourceRevision": "1f7dfaab8910a41a27023b6ef1ca96f0aac66d5f",
+      "productVersion": "0.16.0",
+      "pages": 92,
+      "objects": 1681,
+      "freeGiB": 4.496543884277344,
+      "startupMs": 7198.9245,
+      "select": {
+        "n": 7,
+        "medianMs": 223.79999995231628,
+        "p95Ms": 265.7000000476837,
+        "maxMs": 265.7000000476837
+      },
+      "browse": {
+        "n": 4,
+        "medianMs": 282.700000166893,
+        "p95Ms": 300.7000000476837,
+        "maxMs": 300.7000000476837
+      },
+      "notesInput": {
+        "n": 4,
+        "medianMs": 79.49999988079071,
+        "p95Ms": 86.90000009536743,
+        "maxMs": 86.90000009536743
+      },
+      "inputToDisk": {
+        "n": 4,
+        "medianMs": 1402.9500732421875,
+        "p95Ms": 1470.300048828125,
+        "maxMs": 1470.300048828125
+      },
+      "assetResponseHeaders": {
+        "n": 287,
+        "medianMs": 656.6003000000001,
+        "p95Ms": 3263.8397000000004,
+        "maxMs": 3797.005000000001
+      },
+      "serverStages": {
+        "queue": {
+          "n": 287,
+          "medianMs": 4.48,
+          "p95Ms": 355.24,
+          "maxMs": 521.82
+        },
+        "read": {
+          "n": 287,
+          "medianMs": 2.23,
+          "p95Ms": 5.72,
+          "maxMs": 36.23
+        },
+        "preview": {
+          "n": 287,
+          "medianMs": 1.49,
+          "p95Ms": 294.89,
+          "maxMs": 518.43
+        }
+      },
+      "assetStatuses": {
+        "200": 287
+      },
+      "scrollLongTasks": 21,
+      "longestScrollTaskMs": 105,
+      "stages": [
+        {
+          "name": "edit-initial",
+          "nodes": 2623,
+          "pageRenderers": 7,
+          "railRenderers": 6,
+          "browserRenderers": 0,
+          "browserCards": 0,
+          "images": 8,
+          "pendingImages": 0
+        },
+        {
+          "name": "edit-after-navigation",
+          "nodes": 2623,
+          "pageRenderers": 7,
+          "railRenderers": 6,
+          "browserRenderers": 0,
+          "browserCards": 0,
+          "images": 8,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-first-screen",
+          "nodes": 2846,
+          "pageRenderers": 11,
+          "railRenderers": 0,
+          "browserRenderers": 11,
+          "browserCards": 92,
+          "images": 30,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-after-pass-1",
+          "nodes": 2846,
+          "pageRenderers": 11,
+          "railRenderers": 0,
+          "browserRenderers": 11,
+          "browserCards": 92,
+          "images": 30,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-after-pass-2",
+          "nodes": 2846,
+          "pageRenderers": 11,
+          "railRenderers": 0,
+          "browserRenderers": 11,
+          "browserCards": 92,
+          "images": 30,
+          "pendingImages": 5
+        },
+        {
+          "name": "browse-after-image-wait",
+          "nodes": 2846,
+          "pageRenderers": 11,
+          "railRenderers": 0,
+          "browserRenderers": 11,
+          "browserCards": 92,
+          "images": 30,
+          "pendingImages": 0
+        },
+        {
+          "name": "edit-after-view-cycles",
+          "nodes": 2623,
+          "pageRenderers": 7,
+          "railRenderers": 6,
+          "browserRenderers": 0,
+          "browserCards": 0,
+          "images": 8,
+          "pendingImages": 0
+        }
+      ],
+      "originalSourcesUnchanged": true,
+      "rendererErrors": 0
+    },
+    {
+      "label": "candidate-long-2",
+      "phase": "final-candidate",
+      "passed": true,
+      "sourceRevision": "1f7dfaab8910a41a27023b6ef1ca96f0aac66d5f",
+      "productVersion": "0.16.0",
+      "pages": 300,
+      "objects": 4716,
+      "freeGiB": 3.9246902465820312,
+      "startupMs": 9136.365600000001,
+      "select": {
+        "n": 7,
+        "medianMs": 458,
+        "p95Ms": 614.2999999523163,
+        "maxMs": 614.2999999523163
+      },
+      "browse": {
+        "n": 4,
+        "medianMs": 2979.649999976158,
+        "p95Ms": 2986.4000000953674,
+        "maxMs": 2986.4000000953674
+      },
+      "notesInput": {
+        "n": 4,
+        "medianMs": 2608.3000000715256,
+        "p95Ms": 2964.2000000476837,
+        "maxMs": 2964.2000000476837
+      },
+      "inputToDisk": {
+        "n": 4,
+        "medianMs": 2618.7501220703125,
+        "p95Ms": 2978.10009765625,
+        "maxMs": 2978.10009765625
+      },
+      "assetResponseHeaders": {
+        "n": 11,
+        "medianMs": 54.923099999985425,
+        "p95Ms": 194.41349999999875,
+        "maxMs": 194.41349999999875
+      },
+      "serverStages": {
+        "queue": {
+          "n": 11,
+          "medianMs": 0.02,
+          "p95Ms": 0.23,
+          "maxMs": 0.23
+        },
+        "read": {
+          "n": 11,
+          "medianMs": 2.1,
+          "p95Ms": 2.75,
+          "maxMs": 2.75
+        },
+        "preview": {
+          "n": 11,
+          "medianMs": 0,
+          "p95Ms": 3.23,
+          "maxMs": 3.23
+        }
+      },
+      "assetStatuses": {
+        "200": 11
+      },
+      "scrollLongTasks": 6,
+      "longestScrollTaskMs": 55,
+      "stages": [
+        {
+          "name": "edit-initial",
+          "nodes": 5537,
+          "pageRenderers": 7,
+          "railRenderers": 6,
+          "browserRenderers": 0,
+          "browserCards": 0,
+          "images": 3,
+          "pendingImages": 0
+        },
+        {
+          "name": "edit-after-navigation",
+          "nodes": 5537,
+          "pageRenderers": 7,
+          "railRenderers": 6,
+          "browserRenderers": 0,
+          "browserCards": 0,
+          "images": 3,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-first-screen",
+          "nodes": 6383,
+          "pageRenderers": 20,
+          "railRenderers": 0,
+          "browserRenderers": 20,
+          "browserCards": 300,
+          "images": 2,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-after-pass-1",
+          "nodes": 6375,
+          "pageRenderers": 15,
+          "railRenderers": 0,
+          "browserRenderers": 15,
+          "browserCards": 300,
+          "images": 1,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-after-pass-2",
+          "nodes": 6375,
+          "pageRenderers": 15,
+          "railRenderers": 0,
+          "browserRenderers": 15,
+          "browserCards": 300,
+          "images": 1,
+          "pendingImages": 0
+        },
+        {
+          "name": "browse-after-image-wait",
+          "nodes": 6375,
+          "pageRenderers": 15,
+          "railRenderers": 0,
+          "browserRenderers": 15,
+          "browserCards": 300,
+          "images": 1,
+          "pendingImages": 0
+        },
+        {
+          "name": "edit-after-view-cycles",
+          "nodes": 5537,
+          "pageRenderers": 7,
+          "railRenderers": 6,
+          "browserRenderers": 0,
+          "browserCards": 0,
+          "images": 3,
+          "pendingImages": 0
+        }
+      ],
+      "originalSourcesUnchanged": true,
+      "rendererErrors": 0
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "sourceRevision": "1f7dfaab8910a41a27023b6ef1ca96f0aac66d5f",
+  "productVersion": "0.16.0",
+  "passed": true,
+  "checks": [
+    {
+      "name": "Reference capture and full target preview perform no write",
+      "passed": true
+    },
+    {
+      "name": "Apply saves prepared geometry and expected revisions; Undo restores target bytes",
+      "passed": true
+    },
+    {
+      "name": "External target edit uses current through SSE and invalidates the visible preview",
+      "passed": true
+    },
+    {
+      "name": "Reference edits retain captured values and expose stale indication",
+      "passed": true
+    },
+    {
+      "name": "Checks distinguishes saved and pending artwork across review states and languages",
+      "passed": true
+    },
+    {
+      "name": "No renderer exceptions",
+      "passed": true
+    }
+  ],
+  "rendererErrors": [],
+  "screenshots": ["title-preview-en", "review-stale-zh", "review-projected-zh"],
+  "rendererReads": [
+    "/__pptd/current",
+    "/__pptd/current",
+    "/__pptd/current",
+    "/__pptd/current",
+    "/__pptd/current",
+    "/__pptd/current",
+    "/__pptd/current",
+    "/__pptd/current"
+  ]
+}
