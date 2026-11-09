@@ -1,57 +1,57 @@
 {
   "passed": true,
   "syntheticOnly": true,
-  "runtimeRevision": "127e9c8900203ea5abe7dc1774396c4c4cd58fde",
+  "runtimeRevision": "100659c513161356413eb9ef3707f6e772a64897",
   "checks": [
     {
       "name": "Real checkpoint and repeated live/pinned references establish scope",
       "passed": true,
-      "milliseconds": 311
+      "milliseconds": 400
     },
     {
       "name": "Visual source selection and composed preview do not write; Add saves the exact visible geometry",
       "passed": true,
-      "milliseconds": 1479
+      "milliseconds": 3974
     },
     {
       "name": "Activity opens exact receipt, rendered sides, changed-object highlight and current-object navigation",
       "passed": true,
-      "milliseconds": 1011
+      "milliseconds": 2091
     },
     {
       "name": "Client claim remains distinct and opens the exact saved operation after subsequent edits",
       "passed": true,
-      "milliseconds": 282
+      "milliseconds": 851
     },
     {
       "name": "Late review response cannot replace a newly selected operation",
       "passed": true,
-      "milliseconds": 436
+      "milliseconds": 2453
     },
     {
       "name": "Wide/narrow English/Chinese and dark appearance keep primary controls usable",
       "passed": true,
-      "milliseconds": 2255
+      "milliseconds": 7441
     },
     {
       "name": "Pinned artwork stays at the baseline and layout creation is disabled",
       "passed": true,
-      "milliseconds": 845
+      "milliseconds": 2425
     },
     {
       "name": "Agent setup separates generated instructions from the observed client report",
       "passed": true,
-      "milliseconds": 782
+      "milliseconds": 1049
     },
     {
       "name": "Candidate CLI review and stdio protocol expose the same exact operation",
       "passed": true,
-      "milliseconds": 3814
+      "milliseconds": 4092
     },
     {
       "name": "Original figure bytes and unrelated pages remain intact",
       "passed": true,
-      "milliseconds": 19
+      "milliseconds": 39
     },
     {
       "name": "No renderer exceptions",

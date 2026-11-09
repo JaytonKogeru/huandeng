@@ -1,62 +1,62 @@
 {
   "passed": true,
   "syntheticOnly": true,
-  "runtimeRevision": "127e9c8900203ea5abe7dc1774396c4c4cd58fde",
+  "runtimeRevision": "100659c513161356413eb9ef3707f6e772a64897",
   "checks": [
     {
       "name": "Permanent Slides and actual native File menu close only file previews",
       "passed": true,
-      "milliseconds": 642
+      "milliseconds": 1558
     },
     {
       "name": "Section browser renders two populated groups and unassigned slides; filter, collapse, select and real reorder",
       "passed": true,
-      "milliseconds": 760
+      "milliseconds": 2123
     },
     {
       "name": "Notes uses Chromium composition, blocks navigation, saves long exact text and survives all views",
       "passed": true,
-      "milliseconds": 1723
+      "milliseconds": 3113
     },
     {
       "name": "Browse and Notes isolate object shortcuts and image paste/drop from the document",
       "passed": true,
-      "milliseconds": 307
+      "milliseconds": 941
     },
     {
       "name": "Thumbnail slots stay six pixels through hover/focus and keep insertion drag targets",
       "passed": true,
-      "milliseconds": 764
+      "milliseconds": 1313
     },
     {
       "name": "Animation chooses objects, saves two effects, guards drafts and changes actual show artwork per click",
       "passed": true,
-      "milliseconds": 4153
+      "milliseconds": 8509
     },
     {
       "name": "Beginning/current menu and F5 origins skip hidden pages and exit restores editing",
       "passed": true,
-      "milliseconds": 2303
+      "milliseconds": 4548
     },
     {
       "name": "Repeated/pinned browser occurrences select independently and preserve checkpoint artwork and notes",
       "passed": true,
-      "milliseconds": 1401
+      "milliseconds": 2733
     },
     {
       "name": "Auxiliary Story draft blocks view switching, native Project close and window close until saved",
       "passed": true,
-      "milliseconds": 566
+      "milliseconds": 1126
     },
     {
       "name": "Agent setup and native menu localize; writer labels preserve client-authored names",
       "passed": true,
-      "milliseconds": 723
+      "milliseconds": 2105
     },
     {
       "name": "Wide light and narrow dark actual Edit/Browser/Notes surfaces in both UI languages preserve authored bytes",
       "passed": true,
-      "milliseconds": 4199
+      "milliseconds": 9195
     },
     {
       "name": "No renderer exceptions",
