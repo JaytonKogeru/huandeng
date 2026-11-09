@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { ActivityEvent } from '../../../pptd/activity';
-import { latestClientReport } from './agent-report-evidence';
+import { latestClientReport, mergeReportEvidence } from './agent-report-evidence';
 
 function event(
   sequence: number,
@@ -44,5 +44,15 @@ describe('Agent setup observed report', () => {
     const events = [older, newer];
     expect(latestClientReport(events, 'test-project')).toBe(newer);
     expect(events).toEqual([older, newer]);
+  });
+  it('distinguishes unreadable retained history from confirmed absence and retains observed reports', () => {
+    const error = 'The previous activity log could not be read.';
+    expect(mergeReportEvidence(null, [], 'test-project', error)).toEqual({ report: null, error });
+    const report = event(20, 'client');
+    const observed = mergeReportEvidence({ report }, [], 'test-project', error);
+    expect(observed).toEqual({ report, error });
+    expect(mergeReportEvidence(observed, [event(30, 'writer')], 'test-project')).toEqual(observed);
+    expect(mergeReportEvidence(observed, [], 'test-project', null)).toEqual({ report });
+    expect(mergeReportEvidence(null, [], 'test-project', null)).toEqual({ report: null });
   });
 });

@@ -11,6 +11,24 @@ export function latestClientReport(events: ActivityEvent[], deckId: string) {
   );
 }
 
+interface ReportEvidence {
+  report: ActivityEvent | null;
+  error?: string;
+}
+
+export function mergeReportEvidence(
+  previous: ReportEvidence | null,
+  events: ActivityEvent[],
+  deckId: string,
+  storageError?: string | null,
+): ReportEvidence {
+  const error = storageError === undefined ? previous?.error : storageError;
+  return {
+    report: latestClientReport([...events, ...(previous?.report ? [previous.report] : [])], deckId),
+    ...(error ? { error } : {}),
+  };
+}
+
 export function AgentReportEvidence({ backend, deckId }: { backend: PptdBackend; deckId: string }) {
   useHuandengLocale();
   const [result, setResult] = useState<{
@@ -22,19 +40,16 @@ export function AgentReportEvidence({ backend, deckId }: { backend: PptdBackend;
   useEffect(() => {
     const abort = new AbortController();
     setResult(null);
-    const accept = (events: ActivityEvent[]) => {
+    const accept = (events: ActivityEvent[], storageError?: string | null) => {
       if (abort.signal.aborted) return;
       setResult((previous) => ({
         backend,
         deckId,
-        report: latestClientReport(
-          [
-            ...events,
-            ...(previous?.backend === backend && previous.deckId === deckId && previous.report
-              ? [previous.report]
-              : []),
-          ],
+        ...mergeReportEvidence(
+          previous?.backend === backend && previous.deckId === deckId ? previous : null,
+          events,
           deckId,
+          storageError,
         ),
       }));
     };
@@ -43,7 +58,7 @@ export function AgentReportEvidence({ backend, deckId }: { backend: PptdBackend;
         .activity(abort.signal)
         .then((value) => {
           if (value.deckId !== deckId) throw new Error('Activity Project identity mismatch.');
-          accept(value.events);
+          accept(value.events, value.storageError ?? null);
         })
         .catch((cause) => {
           if (!abort.signal.aborted)
@@ -88,11 +103,11 @@ export function AgentReportEvidence({ backend, deckId }: { backend: PptdBackend;
           </p>
           <p className="break-words">{current.report.summary}</p>
         </>
-      ) : (
+      ) : !current.error ? (
         <p className="text-muted-foreground">
           {t('No client report recorded yet. Setup may still be ready.')}
         </p>
-      )}
+      ) : null}
       {current?.error && (
         <p role="alert" className="break-words text-destructive">
           {t('Recent reports could not be read.')}: {t(current.error)}
