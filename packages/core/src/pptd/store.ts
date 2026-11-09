@@ -47,6 +47,7 @@ import {
   readUtf8,
   resolveProjectPath,
 } from './persistence';
+import { mainPositionForPath } from './position-field';
 import { applyProjectOperation, readProjectModel } from './project-model';
 import {
   assertProposalHash,
@@ -571,15 +572,18 @@ export class PptdStore {
     const identity = documents.metadata.slides[pageId];
     const pageRevision = hashBytes(page.source);
     const currentRenderRevision = renderRevision(documents, pageId) ?? pageRevision;
+    const mainPosition = mainPositionForPath(documentManifest(documents).pages, identity.path);
     const sameMetadata = previous && isDeepStrictEqual(previous.metadata, identity);
     if (
       previous?.pageRevision === pageRevision &&
       previous.renderRevision === currentRenderRevision &&
+      previous.mainPosition === mainPosition &&
       sameMetadata
     )
       return previous;
     return {
       pageId,
+      mainPosition,
       shortCode: identity.shortCode,
       path: identity.path,
       state: identity.state,
@@ -671,6 +675,10 @@ export class PptdStore {
     if (!page) throw new PptdError('TARGET_NOT_FOUND', `Page ${pageId} is missing.`);
     return {
       source: page.source,
+      mainPosition: mainPositionForPath(
+        documentManifest(documents).pages,
+        documents.metadata.slides[pageId].path,
+      ),
       metadata: structuredClone(documents.metadata.slides[pageId]),
       size: documentManifest(documents).size ?? [960, 540],
     };
@@ -1048,7 +1056,15 @@ export class PptdStore {
       await refreshAssetFingerprints(this.root, documents, this.assetCache, this.onTiming);
       return {
         version: version.summary,
-        page: this.pageSnapshot(documents, pageId),
+        page: {
+          ...this.pageSnapshot(documents, pageId),
+          versionId,
+          mainPosition: version.state.mainPosition,
+          renderRevision: hashPayload({
+            page: renderRevision(documents, pageId),
+            archivedMainPosition: version.state.mainPosition ?? null,
+          }),
+        },
         size: version.state.size,
         assets: checkpoint ? 'archived' : 'current-project',
         ...(checkpoint ? { theme: checkpoint.state.theme } : {}),
@@ -1240,6 +1256,26 @@ export class PptdStore {
       diagnostics: plan.documents.diagnostics,
       noOp,
     };
+    const pagePositions: NonNullable<HistoryRecord['pagePositions']> = {};
+    const beforePages = documentManifest(base).pages;
+    const afterPages = documentManifest(plan.documents).pages;
+    const changedPageIds = new Set(result.changedPages);
+    for (const pageId of new Set([
+      ...Object.keys(base.metadata.slides),
+      ...Object.keys(plan.documents.metadata.slides),
+    ])) {
+      const beforeIdentity = base.metadata.slides[pageId];
+      const afterIdentity = plan.documents.metadata.slides[pageId];
+      if (changedPageIds.has(pageId) || !isDeepStrictEqual(beforeIdentity, afterIdentity))
+        pagePositions[pageId] = {
+          before: beforeIdentity
+            ? (mainPositionForPath(beforePages, beforeIdentity.path) ?? null)
+            : null,
+          after: afterIdentity
+            ? (mainPositionForPath(afterPages, afterIdentity.path) ?? null)
+            : null,
+        };
+    }
     const record: HistoryRecord = {
       operationId,
       requestId: request.requestId,
@@ -1255,6 +1291,8 @@ export class PptdStore {
       request,
       requestHash,
       result,
+      pagePositions,
+      pagePositionsRevision: hashPayload(pagePositions),
     };
     const persistenceStarted = performance.now();
     await this.persistence.commit(record);

@@ -28,7 +28,13 @@
     "locale.cjs",
     "plugins",
     "agent-setup.cjs",
-    "workspace.cjs"
+    "workspace.cjs",
+    "project-tabs.cjs",
+    "workspace-shell.html",
+    "workspace-shell.css",
+    "workspace-shell.js",
+    "publisher.cjs",
+    "publish-hidden.vbs"
   ],
   "dependencies": {
     "@open-slide/core": "workspace:*"

@@ -1,3 +1,4 @@
+import type { ActivityEvent, ActivitySnapshot } from '../../pptd/activity';
 import type { AssetLibraryOptions, AssetLibraryResult } from '../../pptd/asset-library';
 import type { ProjectFilePreview } from '../../pptd/project-file-preview';
 import type { StoryBriefing, StoryBriefingOptions } from '../../pptd/project-insights';
@@ -88,6 +89,27 @@ export function pptdProjectFileImageUrl(path: string, revision: string): string 
 
 export class PptdBackend implements PptdTransport {
   private token = '';
+
+  activity(signal?: AbortSignal): Promise<ActivitySnapshot> {
+    return this.request('/activity', undefined, signal);
+  }
+
+  subscribeActivity(
+    listener: (event: ActivityEvent) => void,
+    onConnection: (connected: boolean) => void,
+  ): () => void {
+    const stream = new EventSource(`${API}/activity/events`);
+    stream.addEventListener('connected', () => onConnection(true));
+    stream.addEventListener('activity', (event) => {
+      try {
+        listener(JSON.parse((event as MessageEvent).data) as ActivityEvent);
+      } catch {
+        onConnection(false);
+      }
+    });
+    stream.onerror = () => onConnection(false);
+    return () => stream.close();
+  }
 
   private async request<T>(path: string, body?: unknown, signal?: AbortSignal): Promise<T> {
     let response: Response;

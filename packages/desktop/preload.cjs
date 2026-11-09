@@ -32,6 +32,17 @@ const subscribe = (channel, callback) => {
 
 contextBridge.exposeInMainWorld('huandengDesktop', {
   platform: process.platform,
+  workspaceTabs: true,
+  getWorkspace: () => ipcRenderer.invoke('huandeng:get-workspace'),
+  activateProject: (id) => ipcRenderer.invoke('huandeng:activate-project', id),
+  closeProject: (id) => ipcRenderer.invoke('huandeng:close-project', id),
+  reportProjectState: (value) => ipcRenderer.invoke('huandeng:project-state', value),
+  onWorkspaceChanged: (callback) => subscribe('huandeng:workspace-changed', callback),
+  onRecentsChanged: (callback) => subscribe('huandeng:recents-changed', callback),
+  onCloseDocument: (callback) => subscribe('huandeng:close-document', callback),
+  setPresentationMode: (active) => ipcRenderer.invoke('huandeng:set-presentation-mode', active),
+  setFullscreen: (fullscreen) => ipcRenderer.invoke('huandeng:set-fullscreen', fullscreen),
+  onFullscreenChanged: (callback) => subscribe('huandeng:fullscreen-changed', callback),
   getWorkspaceLayout: (clientId) => ipcRenderer.invoke('huandeng:get-workspace-layout', clientId),
   setWorkspaceLayout: (value) => ipcRenderer.invoke('huandeng:set-workspace-layout', value),
   getLocale: () => ipcRenderer.invoke('huandeng:get-locale'),

@@ -177,6 +177,18 @@ function renderProjects(projects) {
   }
 }
 
+desktop.onRecentsChanged?.(() => {
+  void desktop
+    .recentProjects()
+    .then((projects) => {
+      recentProjects = projects;
+      renderProjects(projects);
+    })
+    .catch((error) => {
+      statusElement.textContent = error instanceof Error ? error.message : String(error);
+    });
+});
+
 void Promise.all([desktop.getLocale?.() ?? Promise.resolve('zh-CN'), desktop.recentProjects()])
   .then(([initialLocale, projects]) => {
     recentProjects = projects;

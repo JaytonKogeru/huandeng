@@ -1,0 +1,148 @@
+:root {
+  font:
+    12px Arial,
+    sans-serif;
+  color: #242927;
+  background: #e9ece9;
+  color-scheme: light;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  overflow: hidden;
+}
+.project-strip {
+  height: 42px;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  padding: 5px 8px 0;
+  -webkit-app-region: drag;
+  user-select: none;
+}
+body[data-platform="win32"] .project-strip {
+  padding-right: 148px;
+}
+body[data-platform="darwin"] .project-strip {
+  padding-left: 80px;
+}
+button {
+  font: inherit;
+  color: inherit;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  -webkit-app-region: no-drag;
+}
+button:focus-visible {
+  outline: 2px solid #3266b1;
+  outline-offset: -2px;
+}
+button:hover {
+  background: #dde2dd;
+}
+.home,
+.open {
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  border-radius: 5px;
+  margin-bottom: 4px;
+  display: grid;
+  place-items: center;
+}
+.home[aria-pressed="true"] {
+  background: white;
+}
+svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+#project-tabs {
+  display: flex;
+  align-self: stretch;
+  min-width: 0;
+  gap: 3px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-app-region: no-drag;
+}
+.project-tab {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex: 0 1 230px;
+  min-width: 115px;
+  max-width: 260px;
+  padding: 0 7px 0 12px;
+  border-radius: 8px 8px 0 0;
+  border: 1px solid transparent;
+  border-bottom: 0;
+  cursor: pointer;
+}
+.project-tab:hover {
+  background: #e0e5e0;
+}
+.project-tab[aria-selected="true"] {
+  background: #fff;
+  border-color: #d9dfd9;
+  box-shadow: 0 -1px 3px #18271d08;
+}
+.project-tab:focus-visible {
+  outline: 2px solid #3266b1;
+  outline-offset: -2px;
+}
+.project-title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+}
+.project-state {
+  width: 6px;
+  height: 6px;
+  flex: 0 0 6px;
+  border-radius: 50%;
+  background: transparent;
+}
+.project-state[data-state="dirty"] {
+  background: #967a35;
+}
+.project-state[data-state="saving"],
+.project-state[data-state="activity"] {
+  background: #346f96;
+}
+.project-state[data-state="attention"] {
+  background: #b95336;
+}
+.close {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  flex: 0 0 22px;
+  border-radius: 4px;
+}
+.close svg {
+  width: 12px;
+  height: 12px;
+}
+.drag-space {
+  min-width: 15px;
+  flex: 1;
+}
+#workspace-status {
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #75512a;
+  padding-right: 8px;
+}

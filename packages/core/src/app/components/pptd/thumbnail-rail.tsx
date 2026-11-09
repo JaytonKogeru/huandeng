@@ -10,6 +10,8 @@ import {
   FolderOpen,
   FolderPlus,
   History,
+  ListTree,
+  MoreHorizontal,
   Plus,
   RotateCcw,
   Trash2,
@@ -18,6 +20,7 @@ import { type DragEvent, memo, useEffect, useLayoutEffect, useRef, useState } fr
 import { uiText as t, useHuandengLocale } from '@/lib/huandeng-locale';
 import { pptdAssetPreviewUrl } from '@/lib/pptd-backend';
 import { cycleItemId, focusEditorCanvas } from '@/lib/pptd-keyboard';
+import { outlineSlideSearch, outlineSlideSummary } from '@/lib/pptd-outline';
 import {
   type SlideInsertionBoundary,
   slideInsertionBoundary,
@@ -66,6 +69,7 @@ function SlideInsertionGap({
   onDragOver,
   onDrop,
   active,
+  compact = false,
 }: {
   boundary: SlideInsertionBoundary;
   position: number;
@@ -75,6 +79,7 @@ function SlideInsertionGap({
   onDragOver: (event: DragEvent<HTMLElement>, boundary: SlideInsertionBoundary) => void;
   onDrop: (event: DragEvent<HTMLElement>, boundary: SlideInsertionBoundary) => void;
   active: boolean;
+  compact?: boolean;
 }) {
   useHuandengLocale();
   return (
@@ -83,7 +88,7 @@ function SlideInsertionGap({
         render={
           <button
             type="button"
-            className="group flex h-6 w-full items-center gap-2 rounded px-1 text-muted-foreground outline-none hover:text-brand focus-visible:ring-2 focus-visible:ring-brand/50 disabled:pointer-events-none disabled:opacity-30"
+            className={`group flex ${compact ? 'h-3' : 'h-6'} w-full items-center gap-2 rounded px-1 text-muted-foreground outline-none hover:text-brand focus-visible:ring-2 focus-visible:ring-brand/50 disabled:pointer-events-none disabled:opacity-30`}
             disabled={disabled}
             aria-label={t('Insert blank slide at Position {position}', { position })}
             title={t('Insert blank slide here')}
@@ -149,6 +154,8 @@ export function PptdThumbnailRail({
   onHistory,
   onShowFile,
   onVisibility,
+  onEditSection,
+  onManageSections,
 }: {
   pages: PageSnapshot[];
   sections?: ThumbnailSection[];
@@ -169,9 +176,12 @@ export function PptdThumbnailRail({
   onHistory: (pageId: string) => void;
   onShowFile: (pageId: string) => void;
   onVisibility?: (pageId: string, hidden: boolean) => void;
+  onEditSection?: (sectionId: string) => void;
+  onManageSections?: () => void;
 }) {
   useHuandengLocale();
   const [query, setQuery] = useState('');
+  const [view, setView] = useState<'thumbnails' | 'outline'>('thumbnails');
   const [copyStatus, setCopyStatus] = useState('');
   const [collapsed, setCollapsed] = useState<Set<string>>(() => new Set());
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -181,7 +191,13 @@ export function PptdThumbnailRail({
   const focusedOccurrence = useRef<string | null>(null);
   const [visible, setVisible] = useState<Set<string>>(() => new Set());
   const groups = thumbnailSectionGroups(pages, sections);
-  const entries = thumbnailRailEntries(pages, groups, collapsed, query);
+  const entries = thumbnailRailEntries(
+    pages,
+    groups,
+    collapsed,
+    query,
+    view === 'outline' ? outlineSlideSearch : undefined,
+  );
   const searching = !!query.trim();
   const keys = entries.map((entry) => entry.key).join(',');
   const order = pages.map((page) => page.occurrenceId ?? page.pageId).join(',');
@@ -287,7 +303,7 @@ export function PptdThumbnailRail({
     for (const element of root.querySelectorAll('[data-hd-thumbnail-preview]'))
       observer.observe(element);
     return () => observer.disconnect();
-  }, [keys, query]);
+  }, [keys, query, view]);
   // biome-ignore lint/correctness/useExhaustiveDependencies: Follow new selections, page order and search, but never a Section fold.
   useLayoutEffect(() => {
     const root = scrollRef.current;
@@ -296,7 +312,7 @@ export function PptdThumbnailRail({
       `[data-hd-thumbnail-preview="${CSS.escape(currentOccurrenceId ?? currentPageId ?? '')}"]`,
     );
     current?.scrollIntoView({ block: 'nearest', behavior: 'instant' });
-  }, [currentPageId, currentOccurrenceId, order, query]);
+  }, [currentPageId, currentOccurrenceId, order, query, view]);
   // biome-ignore lint/correctness/useExhaustiveDependencies: Folding can remove a focused thumbnail without changing the selection.
   useLayoutEffect(() => {
     const root = scrollRef.current;
@@ -321,12 +337,28 @@ export function PptdThumbnailRail({
     entries.find(({ page }) => page.pageId === currentSection?.pageIds[0])?.key ??
     entries[0]?.key;
   return (
-    <nav className="flex min-h-0 flex-1 flex-col bg-sidebar" aria-label={t('页面列表')}>
+    <nav
+      className="flex min-h-0 flex-1 flex-col bg-sidebar"
+      aria-label={t('页面列表')}
+      data-hd-pages-view={view}
+    >
       <div className="flex h-11 shrink-0 items-center gap-1 border-b border-border px-3">
         <span className="mr-auto text-xs font-medium">
           {t('页面 ')}
           <span className="ml-1 text-muted-foreground">{pages.length}</span>
         </span>
+        {onManageSections && (
+          <Button
+            size="icon-xs"
+            variant="ghost"
+            aria-label={t('Manage Sections')}
+            title={t('Manage Sections')}
+            onClick={onManageSections}
+            data-hd-pages-manage-sections
+          >
+            <ListTree />
+          </Button>
+        )}
         <Button
           size="icon-xs"
           variant="ghost"
@@ -348,10 +380,35 @@ export function PptdThumbnailRail({
           <Copy />
         </Button>
       </div>
+      <fieldset
+        className="flex shrink-0 gap-1 border-0 border-b px-3 py-1"
+        aria-label={t('Pages view')}
+      >
+        <Button
+          size="xs"
+          variant={view === 'thumbnails' ? 'secondary' : 'ghost'}
+          aria-pressed={view === 'thumbnails'}
+          onClick={() => setView('thumbnails')}
+          data-hd-pages-thumbnails
+        >
+          {t('Thumbnails')}
+        </Button>
+        <Button
+          size="xs"
+          variant={view === 'outline' ? 'secondary' : 'ghost'}
+          aria-pressed={view === 'outline'}
+          onClick={() => setView('outline')}
+          data-hd-pages-outline
+        >
+          {t('Outline')}
+        </Button>
+      </fieldset>
       <div className="px-3 py-2">
         <Input
-          aria-label={t('搜索页面编号或标题')}
-          placeholder={t('短码、标题或旧编号…')}
+          aria-label={view === 'outline' ? t('Search the outline') : t('搜索页面编号或标题')}
+          placeholder={
+            view === 'outline' ? t('Title, Story or Slide ID…') : t('短码、标题或旧编号…')
+          }
           value={query}
           onChange={(event) => setQuery(event.target.value)}
           className="h-7 bg-background text-xs"
@@ -414,6 +471,7 @@ export function PptdThumbnailRail({
                   onDragOver={dragOver}
                   onDrop={drop}
                   active={sameBoundary(before)}
+                  compact={view === 'outline'}
                 />
               )}
               {section && (
@@ -456,6 +514,18 @@ export function PptdThumbnailRail({
                       {section.pageIds.length}
                     </span>
                   </button>
+                  {onEditSection && section.id && (
+                    <Button
+                      variant="ghost"
+                      size="icon-xs"
+                      aria-label={t('Manage Section {title}', { title: section.title })}
+                      title={t('Manage Section')}
+                      onClick={() => section.id && onEditSection(section.id)}
+                      data-hd-section-manage={section.id}
+                    >
+                      <MoreHorizontal />
+                    </Button>
+                  )}
                   {containsCurrent && (
                     <span
                       className="text-[9px] text-brand"
@@ -473,6 +543,7 @@ export function PptdThumbnailRail({
                       type="button"
                       data-hd-thumbnail={page.pageId}
                       data-hd-thumbnail-key={key}
+                      data-hd-outline-row={view === 'outline' ? key : undefined}
                       tabIndex={tabStop === key ? 0 : -1}
                       onFocus={() => {
                         focusedOccurrence.current = key;
@@ -564,31 +635,50 @@ export function PptdThumbnailRail({
                           className="pointer-events-none absolute -bottom-0.5 left-0 right-0 h-0.5 bg-brand"
                         />
                       )}
-                      <div
-                        className={
-                          section && !expanded && section.pageIds.length > 1
-                            ? 'hd-section-stack'
-                            : undefined
-                        }
-                        data-hd-section-stack={section && !expanded ? section.key : undefined}
-                      >
+                      {view === 'outline' ? (
                         <div
                           data-hd-thumbnail-preview={page.occurrenceId ?? page.pageId}
-                          className="pointer-events-none overflow-hidden rounded-sm border border-foreground/10"
-                          style={{ width: '100%', aspectRatio: `${size[0]} / ${size[1]}` }}
+                          className="space-y-1 px-1 py-1"
                         >
-                          {visible.has(page.occurrenceId ?? page.pageId) ? (
-                            <ThumbnailPreview page={page} size={size} theme={theme} />
-                          ) : (
-                            <div
-                              className="flex size-full items-center justify-center bg-background text-[10px] text-muted-foreground/60"
-                              aria-hidden="true"
+                          <span className="block line-clamp-2 text-xs font-medium leading-snug">
+                            {name}
+                          </span>
+                          {outlineSlideSummary(page) && (
+                            <span
+                              className="block line-clamp-2 text-[11px] leading-snug text-muted-foreground"
+                              title={outlineSlideSummary(page)}
                             >
-                              {page.shortCode ?? page.metadata.label}
-                            </div>
+                              {outlineSlideSummary(page)}
+                            </span>
                           )}
                         </div>
-                      </div>
+                      ) : (
+                        <div
+                          className={
+                            section && !expanded && section.pageIds.length > 1
+                              ? 'hd-section-stack'
+                              : undefined
+                          }
+                          data-hd-section-stack={section && !expanded ? section.key : undefined}
+                        >
+                          <div
+                            data-hd-thumbnail-preview={page.occurrenceId ?? page.pageId}
+                            className="pointer-events-none overflow-hidden rounded-sm border border-foreground/10"
+                            style={{ width: '100%', aspectRatio: `${size[0]} / ${size[1]}` }}
+                          >
+                            {visible.has(page.occurrenceId ?? page.pageId) ? (
+                              <ThumbnailPreview page={page} size={size} theme={theme} />
+                            ) : (
+                              <div
+                                className="flex size-full items-center justify-center bg-background text-[10px] text-muted-foreground/60"
+                                aria-hidden="true"
+                              >
+                                {page.shortCode ?? page.metadata.label}
+                              </div>
+                            )}
+                          </div>
+                        </div>
+                      )}
                       <div className="mt-2 flex min-w-0 items-center gap-1.5 text-[10px]">
                         <span
                           className="font-mono text-muted-foreground"
@@ -606,7 +696,9 @@ export function PptdThumbnailRail({
                         >
                           {page.shortCode ?? page.metadata.label ?? t('未编号')}
                         </span>
-                        <span className="truncate text-muted-foreground">{name}</span>
+                        {view === 'thumbnails' && (
+                          <span className="truncate text-muted-foreground">{name}</span>
+                        )}
                         {page.metadata.hidden && (
                           <EyeOff
                             className="ml-auto size-3 shrink-0 text-muted-foreground"
@@ -699,6 +791,7 @@ export function PptdThumbnailRail({
             onDragOver={dragOver}
             onDrop={drop}
             active={sameBoundary(slideInsertionBoundary(pages, pages.length))}
+            compact={view === 'outline'}
           />
         )}
         {tombstones.length > 0 && (

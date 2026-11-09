@@ -15,6 +15,7 @@ import { uiText as t, useHuandengLocale } from '@/lib/huandeng-locale';
 import { pptdAssetUrl } from '@/lib/pptd-backend';
 import { compileTimeline } from '../../../pptd/animation-model';
 import { splitMathFragments } from '../../../pptd/math-fragments';
+import { resolvePositionField } from '../../../pptd/position-field';
 import { presetShapePath, SHAPE_PRESETS } from '../../../pptd/shape-presets';
 import { tableLayout } from '../../../pptd/table-grid';
 import {
@@ -967,7 +968,13 @@ export function PptdPageRenderer({
         const animated = sampled?.get(element.elementId);
         let content = renderContent?.(element);
         if (content === undefined)
-          content = <ElementContent element={element} theme={theme} assetUrl={resolveAsset} />;
+          content = (
+            <ElementContent
+              element={resolvePositionField(element, page.mainPosition)}
+              theme={theme}
+              assetUrl={resolveAsset}
+            />
+          );
         const frameProps = {
           'data-hd-page-id': page.pageId,
           'data-hd-element-id': element.elementId,

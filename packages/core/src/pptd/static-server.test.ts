@@ -77,6 +77,41 @@ function eventReader(reader: ReadableStreamDefaultReader<Uint8Array>) {
 }
 
 describe('HUANDENG production document server', () => {
+  it('scopes task reports to the selected Project and leaves page history and sources unchanged', async () => {
+    const first = await fixture();
+    const second = await fixture();
+    const report = {
+      deckId: first.session.deckId,
+      requestId: 'activity-one',
+      taskId: 'review',
+      sessionId: 'chat-one',
+      actor: 'Assistant',
+      status: 'running',
+      summary: 'Reviewing the figure.',
+    };
+    const post = (url: string, token: string, body: unknown) =>
+      fetch(`${url}/__pptd/activity`, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json', 'x-huandeng-token': token },
+        body: JSON.stringify(body),
+      });
+    expect((await post(first.server.url, second.session.sessionToken, report)).status).toBe(403);
+    expect((await post(second.server.url, second.session.sessionToken, report)).status).toBe(400);
+    const saved = await (await post(first.server.url, first.session.sessionToken, report)).json();
+    expect(saved).toMatchObject({
+      source: 'client',
+      deckId: first.session.deckId,
+      summary: report.summary,
+    });
+    expect(await (await post(first.server.url, first.session.sessionToken, report)).json()).toEqual(
+      saved,
+    );
+    const other = await (await fetch(`${second.server.url}/__pptd/activity`)).json();
+    expect(other.events).toEqual([]);
+    expect(await (await fetch(`${first.server.url}/__pptd/history`)).json()).toEqual([]);
+    expect(await fs.readFile(path.join(first.project, 'pages/a.page'), 'utf8')).toBe(originalPage);
+  });
+
   it('serves the current Story and read-only asset index through the real HTTP boundary', async () => {
     const { server, session, project } = await fixture();
     const first = session.pages[0].pageId;

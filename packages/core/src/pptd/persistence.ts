@@ -26,6 +26,9 @@ export interface HistoryRecord extends HistorySummary {
   request: TransactionRequest;
   requestHash: Revision;
   result: TransactionResult;
+  /** Display context has its own integrity hash and never changes page content revisions. */
+  pagePositions?: Record<string, { before: number | null; after: number | null }>;
+  pagePositionsRevision?: Revision;
 }
 
 interface Receipt {
@@ -70,6 +73,25 @@ function validateRecord(value: unknown): HistoryRecord {
       'RECOVERY_REQUIRED',
       'A history or journal record failed its integrity check.',
     );
+  }
+  if (record.pagePositions !== undefined || record.pagePositionsRevision !== undefined) {
+    const validPosition = (position: unknown) =>
+      position === null ||
+      (typeof position === 'number' && Number.isSafeInteger(position) && position > 0);
+    if (
+      !isRecord(record.pagePositions) ||
+      Object.values(record.pagePositions).some(
+        (positions) =>
+          !isRecord(positions) ||
+          !validPosition(positions.before) ||
+          !validPosition(positions.after),
+      ) ||
+      record.pagePositionsRevision !== hashPayload(record.pagePositions)
+    )
+      throw new PptdError(
+        'RECOVERY_REQUIRED',
+        'A history or journal display context failed its integrity check.',
+      );
   }
   for (const file of record.files) {
     if (

@@ -12,6 +12,7 @@ export interface ProjectFilePreviewPanelProps {
   onClose: () => void;
   onShowProperties?: () => void;
   refreshKey?: number;
+  active?: boolean;
 }
 
 function fileSize(bytes: number) {
@@ -26,6 +27,7 @@ export function ProjectFilePreviewPanel({
   onClose,
   onShowProperties,
   refreshKey,
+  active = true,
 }: ProjectFilePreviewPanelProps) {
   useHuandengLocale();
   const panel = useRef<HTMLElement>(null);
@@ -38,8 +40,8 @@ export function ProjectFilePreviewPanel({
   const preview = loadedPreview?.path === path.replaceAll('\\', '/') ? loadedPreview : null;
 
   useEffect(() => {
-    if (path) panel.current?.focus({ preventScroll: true });
-  }, [path]);
+    if (path && active) panel.current?.focus({ preventScroll: true });
+  }, [path, active]);
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: Explicit refreshes reload the selected file.
   useEffect(() => {
@@ -74,7 +76,7 @@ export function ProjectFilePreviewPanel({
   return (
     <section
       ref={panel}
-      className="flex min-h-0 min-w-0 flex-1 flex-col bg-sidebar"
+      className="flex min-h-0 min-w-0 flex-1 flex-col bg-background"
       aria-label={t('File preview')}
       data-hd-file-preview={path}
       data-hd-keyboard-region="file-preview"
@@ -104,7 +106,7 @@ export function ProjectFilePreviewPanel({
         ) : (
           <FileText className="size-3.5" />
         )}
-        <h2 className="min-w-0 flex-1 truncate text-xs font-medium">{t('File preview')}</h2>
+        <h2 className="min-w-0 flex-1 truncate text-sm font-medium">{path.split('/').at(-1)}</h2>
         <Button
           size="icon-xs"
           variant="ghost"
@@ -170,7 +172,7 @@ export function ProjectFilePreviewPanel({
               readOnly
               wrap="off"
               aria-label={t('{type} preview', { type: t(preview.language) })}
-              className="min-h-full w-full resize-none border-0 bg-transparent p-3 font-mono text-[11px] leading-relaxed outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring/40"
+              className="min-h-full w-full resize-none border-0 bg-transparent p-5 font-mono text-[13px] leading-relaxed outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-ring/40"
               data-hd-file-text
               value={preview.text}
             />
@@ -207,7 +209,7 @@ export function ProjectFilePreviewPanel({
                 height={preview.height}
                 className={
                   imageScale === 'fit'
-                    ? 'block h-auto max-h-[65dvh] w-full object-contain'
+                    ? 'mx-auto block h-auto max-h-[70dvh] max-w-full object-contain'
                     : 'block max-w-none'
                 }
                 onError={() => setImageError(true)}
@@ -221,7 +223,7 @@ export function ProjectFilePreviewPanel({
         {onShowProperties && (
           <Button size="xs" variant="outline" onClick={onShowProperties}>
             <ArrowLeft />
-            {t('Show Properties')}
+            {t('Back to Slides')}
           </Button>
         )}
         {desktopHost() && (

@@ -83,6 +83,7 @@ export interface AuthorReviewContext {
 
 export interface PageSnapshot {
   pageId: string;
+  mainPosition?: number;
   /** A presentation can refer to one stable page more than once. */
   occurrenceId?: string;
   versionId?: string;

@@ -197,6 +197,7 @@
   border: 1px solid var(--border);
   border-radius: 3px;
   background: var(--background);
+  box-shadow: 0 2px 4px rgb(0 0 0 / 8%);
   transform-origin: center bottom;
   transition: transform 160ms ease-out;
   pointer-events: none;
@@ -234,6 +235,9 @@
   position: relative;
   z-index: 1;
   background: white;
+  box-shadow:
+    0 1px 3px rgb(0 0 0 / 10%),
+    0 5px 12px rgb(0 0 0 / 7%);
 }
 
 @media (prefers-reduced-motion: reduce) {

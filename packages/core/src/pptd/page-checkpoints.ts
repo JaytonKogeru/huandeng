@@ -22,6 +22,8 @@ export interface StoredCheckpoint {
   pageId: string;
   requestHash: Revision;
   stateRevision: Revision;
+  /** Guards display context without treating a new Main position as new content. */
+  contextRevision?: Revision;
   summary: PageVersionSummary;
   state: CheckpointState;
 }
@@ -64,6 +66,7 @@ function canonicalState(state: CheckpointState): CheckpointState {
     source: patchSourceFields(state.source, [], patches),
     metadata: remap(state.metadata, references) as CheckpointState['metadata'],
     size: [...state.size],
+    mainPosition: state.mainPosition,
     theme: remap(state.theme, references) as Record<string, unknown>,
     assetRevisions: Object.fromEntries(
       Object.entries(state.assetRevisions).map(([source, revision]) => [
@@ -108,13 +111,28 @@ function validate(value: unknown, deckId: string, pageId: string): StoredCheckpo
     !isRecord(value.state.metadata) ||
     !isRecord(value.state.assetRevisions) ||
     !isRecord(value.state.theme) ||
-    !Array.isArray(value.state.size)
+    !Array.isArray(value.state.size) ||
+    (value.state.mainPosition !== undefined &&
+      !(
+        typeof value.state.mainPosition === 'number' &&
+        Number.isSafeInteger(value.state.mainPosition) &&
+        value.state.mainPosition > 0
+      ))
   )
     throw new PptdError('INVALID_DOCUMENT', 'Invalid saved page checkpoint.');
   const checkpoint = value as unknown as StoredCheckpoint;
   parsePage(checkpoint.state.source);
   if (checkpoint.stateRevision !== stateRevision(checkpoint.state))
     throw new PptdError('INVALID_DOCUMENT', 'Saved page checkpoint failed its integrity check.');
+  if (
+    checkpoint.contextRevision !== undefined &&
+    checkpoint.contextRevision !==
+      hashPayload({ mainPosition: checkpoint.state.mainPosition ?? null })
+  )
+    throw new PptdError(
+      'INVALID_DOCUMENT',
+      'Saved page checkpoint display context failed its integrity check.',
+    );
   return checkpoint;
 }
 
@@ -267,6 +285,7 @@ export class PageCheckpointArchive {
       pageId: input.pageId,
       requestHash: input.requestHash,
       stateRevision: stateRevision(state),
+      contextRevision: hashPayload({ mainPosition: state.mainPosition ?? null }),
       summary: {
         versionId,
         pageId: input.pageId,

@@ -22,6 +22,7 @@ import { cycleItemId, type EditorKeyboardCommand } from '@/lib/pptd-keyboard';
 import type { LayerDirection } from '@/lib/pptd-object-actions';
 import { cn } from '@/lib/utils';
 import { groupChildren } from '../../../pptd/grouping';
+import { isMainPositionField, mainPositionText } from '../../../pptd/position-field';
 import { SHAPE_PRESETS } from '../../../pptd/shape-presets';
 import type { PageSnapshot } from '../../../pptd/types';
 import { Button } from '../ui/button';
@@ -139,6 +140,7 @@ export function PptdInspector({
   const layerTabStop = layers.find((item) => selectedIds.includes(item.elementId)) ?? layers[0];
   const element = selected.length === 1 ? selected[0] : undefined;
   const content = element ? textContent(element, theme) : {};
+  const positionField = element ? isMainPositionField(element) : false;
   const bounds = element?.bounds ?? [0, 0, 120, 50];
   const patch = (fields: Record<string, unknown>, autosave = true) => {
     if (element) onPatch(element.elementId, fields, autosave);
@@ -396,6 +398,31 @@ export function PptdInspector({
                     }
                   />
                 </div>
+                <label className="flex items-center gap-2 text-xs">
+                  <input
+                    type="checkbox"
+                    data-hd-position-field-toggle
+                    checked={positionField}
+                    disabled={disabled}
+                    onChange={(event) =>
+                      patch(
+                        event.target.checked
+                          ? { 'content.field': 'main-position' }
+                          : {
+                              'content.field': null,
+                              'content.text': mainPositionText(page.mainPosition),
+                            },
+                      )
+                    }
+                  />
+                  Use Slide Position
+                </label>
+                {positionField && (
+                  <p className="text-[11px] leading-relaxed text-muted-foreground">
+                    Updates from Main Slides order. Reordering pages changes this number without
+                    creating a Slide version.
+                  </p>
+                )}
                 <label
                   htmlFor={`hd-text-${element.elementId}`}
                   className="block space-y-1.5 text-xs text-muted-foreground"
@@ -404,8 +431,12 @@ export function PptdInspector({
                   <Textarea
                     id={`hd-text-${element.elementId}`}
                     aria-label={t('文本内容')}
-                    value={textValue(element.content?.text)}
-                    disabled={disabled}
+                    value={
+                      positionField
+                        ? mainPositionText(page.mainPosition)
+                        : textValue(element.content?.text)
+                    }
+                    disabled={disabled || positionField}
                     className="min-h-28 text-xs"
                     onChange={(event) => patch({ 'content.text': event.target.value })}
                     onCompositionStart={() => onComposition(true)}
@@ -413,11 +444,13 @@ export function PptdInspector({
                     onBlur={() => onComposition(false)}
                   />
                 </label>
-                <p className="text-[11px] leading-relaxed text-muted-foreground">
-                  {t(
-                    '双击画布文字直接编辑。选中文字后可设置加粗、上下标。公式支持 LaTeX：\\(…\\) 为行内、\\[…\\] 为独立公式，保留源表达式。',
-                  )}
-                </p>
+                {!positionField && (
+                  <p className="text-[11px] leading-relaxed text-muted-foreground">
+                    {t(
+                      '双击画布文字直接编辑。选中文字后可设置加粗、上下标。公式支持 LaTeX：\\(…\\) 为行内、\\[…\\] 为独立公式，保留源表达式。',
+                    )}
+                  </p>
+                )}
               </Section>
             )}
             {element.elementType === 'table' && (

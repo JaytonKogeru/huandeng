@@ -5,6 +5,7 @@ import path from 'node:path';
 import { isRecord, parseManifest } from './codec';
 import { parseMetadata } from './identity';
 import { atomicWrite, type HistoryRecord, hashBytes, hashPayload, readUtf8 } from './persistence';
+import { mainPositionForPath } from './position-field';
 import {
   type PageSize,
   type PageVersionSummary,
@@ -24,6 +25,8 @@ export interface PageVersionState {
   source: string;
   metadata: SlideIdentity;
   size: PageSize;
+  /** Display context at capture time; deliberately excluded from content equality. */
+  mainPosition?: number;
 }
 
 export interface StoredPageVersion {
@@ -47,6 +50,8 @@ interface ObservationIndex {
   fileRevision: Revision;
   metadataRevision: string;
   size: PageSize;
+  mainPosition?: number;
+  pagePath: string;
 }
 
 interface VersionStateReference {
@@ -55,6 +60,7 @@ interface VersionStateReference {
   pageRevision: Revision;
   metadataRevision: string;
   size: PageSize;
+  mainPosition?: number;
 }
 
 const MAX_HOT_VERSIONS = 8;
@@ -82,7 +88,13 @@ function validateObservation(value: unknown): PageObservation {
     !['active', 'tombstone'].includes(String(value.state.metadata.state)) ||
     !Array.isArray(value.state.size) ||
     value.state.size.length !== 2 ||
-    !value.state.size.every((dimension) => typeof dimension === 'number' && dimension > 0)
+    !value.state.size.every((dimension) => typeof dimension === 'number' && dimension > 0) ||
+    (value.state.mainPosition !== undefined &&
+      !(
+        typeof value.state.mainPosition === 'number' &&
+        Number.isSafeInteger(value.state.mainPosition) &&
+        value.state.mainPosition > 0
+      ))
   )
     throw new PptdError('RECOVERY_REQUIRED', 'A recorded page observation is invalid.');
   return value as unknown as PageObservation;
@@ -95,6 +107,7 @@ function reference(state: PageVersionState): VersionStateReference {
     pageRevision: hashBytes(state.source),
     metadataRevision: metadataRevision(state.metadata),
     size: [...state.size],
+    mainPosition: state.mainPosition,
   };
 }
 
@@ -132,13 +145,18 @@ function recordStates(record: HistoryRecord, pageId: string) {
   const page = record.files.find((file) => file.role === 'page' && file.pageId === pageId);
   const metadata = record.files.find((file) => file.role === 'metadata');
   const manifest = record.files.find((file) => file.role === 'manifest');
+  const before = manifest?.before ? parseManifest(manifest.before).value : undefined;
+  const after = manifest?.after ? parseManifest(manifest.after).value : undefined;
   return {
     page,
     metadataBefore: metadata?.before ? parseMetadata(metadata.before).slides[pageId] : undefined,
     metadataAfter: metadata?.after ? parseMetadata(metadata.after).slides[pageId] : undefined,
     metadataChanged: Boolean(metadata),
-    sizeBefore: manifest?.before ? parseManifest(manifest.before).value.size : undefined,
-    sizeAfter: manifest?.after ? parseManifest(manifest.after).value.size : undefined,
+    sizeBefore: before?.size,
+    sizeAfter: after?.size,
+    pagesBefore: before?.pages,
+    pagesAfter: after?.pages,
+    positions: record.pagePositions?.[pageId],
   };
 }
 
@@ -148,6 +166,7 @@ function initialState(
   records: HistoryRecord[],
 ): PageVersionState | null {
   const state = structuredClone(current);
+  if (records.length) state.mainPosition = undefined;
   for (const record of [...records].reverse()) {
     const changes = recordStates(record, pageId);
     if (changes.page) {
@@ -156,6 +175,14 @@ function initialState(
     }
     if (changes.metadataBefore) state.metadata = structuredClone(changes.metadataBefore);
     if (changes.sizeBefore) state.size = changes.sizeBefore;
+    if (changes.positions) state.mainPosition = changes.positions.before ?? undefined;
+    else if (changes.pagesBefore)
+      state.mainPosition = mainPositionForPath(changes.pagesBefore, state.metadata.path);
+    else if (
+      changes.page ||
+      metadataRevision(changes.metadataBefore) !== metadataRevision(changes.metadataAfter)
+    )
+      state.mainPosition = undefined;
   }
   return state;
 }
@@ -234,6 +261,8 @@ export class PageVersionArchive {
       fileRevision: hashBytes(source),
       metadataRevision: metadataRevision(state.metadata),
       size: [...state.size],
+      mainPosition: state.mainPosition,
+      pagePath: state.metadata.path,
     };
     const page = this.observations.get(observation.pageId) ?? [];
     page.push(indexed);
@@ -333,7 +362,7 @@ export class PageVersionArchive {
         await this.save({
           pageId,
           versionId: `initial:${pageId}`,
-          createdAt: beforeFirstEdit?.timestamp ?? this.nextTimestamp(),
+          createdAt: records[0]?.timestamp ?? this.nextTimestamp(),
           actor: 'project',
           summary: beforeFirstEdit ? 'Before first recorded edit' : 'Initial recorded page',
           kind: 'initial',
@@ -396,6 +425,7 @@ export class PageVersionArchive {
           pageRevision: observation.summary.pageRevision,
           metadataRevision: observation.metadataRevision,
           size: observation.size,
+          mainPosition: observation.mainPosition,
         });
         continue;
       }
@@ -407,6 +437,15 @@ export class PageVersionArchive {
         metadataRevision(changes.metadataBefore) !== metadataRevision(changes.metadataAfter);
       if (!changes.page && !metadataChanged) {
         if (state && changes.sizeAfter) state.size = changes.sizeAfter;
+        if (state && changes.metadataAfter) state.metadata = { value: changes.metadataAfter };
+        if (state && changes.positions) state.mainPosition = changes.positions.after ?? undefined;
+        else if (state && changes.pagesAfter) {
+          const pagePath =
+            'value' in state.metadata
+              ? state.metadata.value.path
+              : state.metadata.observation.pagePath;
+          state.mainPosition = mainPositionForPath(changes.pagesAfter, pagePath);
+        }
         continue;
       }
       const previous: VersionStateReference = {
@@ -425,7 +464,16 @@ export class PageVersionArchive {
           ? metadataRevision(changes.metadataBefore)
           : (state?.metadataRevision ?? currentReference.metadataRevision),
         size: changes.sizeBefore ?? state?.size ?? current.size,
+        mainPosition: state?.mainPosition,
       };
+      if (changes.positions) previous.mainPosition = changes.positions.before ?? undefined;
+      else if (changes.pagesBefore) {
+        const pagePath =
+          'value' in previous.metadata
+            ? previous.metadata.value.path
+            : previous.metadata.observation.pagePath;
+        previous.mainPosition = mainPositionForPath(changes.pagesBefore, pagePath);
+      }
       if (state && changes.page?.before !== null && !sameState(state, previous))
         append(
           {
@@ -451,7 +499,14 @@ export class PageVersionArchive {
           ? metadataRevision(changes.metadataAfter)
           : previous.metadataRevision,
         size: changes.sizeAfter ?? previous.size,
+        mainPosition: previous.mainPosition,
       };
+      if (changes.positions) next.mainPosition = changes.positions.after ?? undefined;
+      else if (changes.pagesAfter) {
+        const pagePath =
+          'value' in next.metadata ? next.metadata.value.path : next.metadata.observation.pagePath;
+        next.mainPosition = mainPositionForPath(changes.pagesAfter, pagePath);
+      }
       append(
         {
           versionId: `commit:${record.operationId}`,
@@ -503,6 +558,7 @@ export class PageVersionArchive {
             : (await this.read(state.metadata.observation)).metadata,
         ),
         size: [...state.size],
+        mainPosition: state.mainPosition,
       },
     };
   }

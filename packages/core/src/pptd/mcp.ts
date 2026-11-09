@@ -38,6 +38,40 @@ const transactionSchema = {
 };
 const tools: Tool[] = [
   {
+    name: 'huandeng_activity_read',
+    description:
+      'Read bounded Project-scoped task reports and actual writer activity. Reported client stages are distinct from saved document operations.',
+    inputSchema: objectSchema({}),
+    annotations: read,
+  },
+  {
+    name: 'huandeng_activity_report',
+    description:
+      'Report a concise task stage to this Project Activity panel. Pin deckId, taskId and sessionId. Do not include hidden reasoning, credentials or raw commands. This writes only a local activity log, not slide content. Reuse requestId only for an identical retry.',
+    inputSchema: objectSchema(
+      {
+        deckId: { type: 'string' },
+        requestId: { type: 'string', maxLength: 160 },
+        taskId: { type: 'string', maxLength: 160 },
+        sessionId: { type: 'string', maxLength: 160 },
+        actor: { type: 'string', maxLength: 100 },
+        status: {
+          type: 'string',
+          enum: ['planned', 'running', 'waiting', 'completed', 'failed', 'cancelled'],
+        },
+        summary: { type: 'string', maxLength: 600 },
+        pageIds: { type: 'array', maxItems: 40, items: { type: 'string' } },
+      },
+      ['deckId', 'requestId', 'taskId', 'sessionId', 'actor', 'status', 'summary'],
+    ),
+    annotations: {
+      readOnlyHint: false,
+      destructiveHint: false,
+      idempotentHint: true,
+      openWorldHint: false,
+    },
+  },
+  {
     name: 'huandeng_context',
     description:
       'Read deck identity, ordered page identities, revisions, sources and author design intent. Use stable IDs rather than positions or titles.',
@@ -360,6 +394,12 @@ export function createMcpServer(client: HuandengClient) {
       const args = request.params.arguments ?? {};
       let result: unknown;
       switch (canonicalToolName(request.params.name)) {
+        case 'huandeng_activity_read':
+          result = await client.request('/activity');
+          break;
+        case 'huandeng_activity_report':
+          result = await client.request('/activity', args);
+          break;
         case 'huandeng_context': {
           const snapshot = await client.session();
           result = {

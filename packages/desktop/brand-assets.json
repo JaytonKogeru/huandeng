@@ -2,10 +2,13 @@
   "source": "packages/desktop/branding/huandeng-user-mark.png",
   "sourceSha256": "bd04c9ebb0e94cdaa5ba6c3a7df8d5ae1d35236933b3ca9ab297912d7b870530",
   "files": {
-    "packages/desktop/icon.svg": "6e35322ab76ebb88baa58f477be54a6d8bde66108798cdaf700081dcdf5a29fb",
-    "packages/desktop/icon.png": "c6cce013fd62e96048a5f10c1168ba05a2a7d6192f334d83386a4eec45732c22",
-    "packages/desktop/icon.ico": "d8c9135d84ad37c913cbecf329df18c4e5a01fc8231faf421b65d2638c164191",
-    "packages/core/src/app/favicon.svg": "6e35322ab76ebb88baa58f477be54a6d8bde66108798cdaf700081dcdf5a29fb",
-    "packages/core/src/app/favicon.ico": "d8c9135d84ad37c913cbecf329df18c4e5a01fc8231faf421b65d2638c164191"
-  }
+    "packages/desktop/icon.svg": "f1df534b2770a020ba9b14e2af0628327c58fa737fd8a84eff851942e40ac6c7",
+    "packages/desktop/icon.png": "6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef",
+    "packages/desktop/icon.ico": "ec42522dc8f0adda9afda1dd401a8e402cfea72c76b50c63994c4c67451d0efa",
+    "packages/core/src/app/favicon.svg": "f1df534b2770a020ba9b14e2af0628327c58fa737fd8a84eff851942e40ac6c7",
+    "packages/core/src/app/favicon.ico": "ec42522dc8f0adda9afda1dd401a8e402cfea72c76b50c63994c4c67451d0efa"
+  },
+  "transparentSource": "packages/desktop/branding/huandeng-transparent-mark.png",
+  "transparentSourceSha256": "84d22a66b23363f24016cd74bfe3a131ecb34565894915281e25e6e713e81e77",
+  "derivation": "Background extraction of the supplied user mark; original geometry and negative spaces retained."
 }

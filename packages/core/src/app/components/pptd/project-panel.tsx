@@ -1,4 +1,4 @@
-import { ArrowDown, ArrowUp, BookOpen, Minus, Plus, Save, Trash2 } from 'lucide-react';
+import { ArrowDown, ArrowUp, BookOpen, ListTree, Minus, Plus, Save, Trash2 } from 'lucide-react';
 import { useEffect, useId, useMemo, useRef, useState } from 'react';
 import { getUiLocale, uiText as t, useHuandengLocale } from '@/lib/huandeng-locale';
 import { projectSlideSearch, projectSlideTitle } from '@/lib/pptd-project-source';
@@ -14,8 +14,10 @@ import {
   type StoryOutline,
   validateProjectModel,
 } from '../../../pptd/project-model';
+import { sectionAtBoundary } from '../../../pptd/section-actions';
 import type { DeckSnapshot, ExpectedRevisions, PageVersionSummary } from '../../../pptd/types';
 import { Button } from '../ui/button';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '../ui/dialog';
 import { Textarea } from '../ui/textarea';
 import { ProjectSectionEditor } from './project-section-editor';
 import { ProjectSlidePreview, ProjectSourcePicker } from './project-source-picker';
@@ -31,6 +33,8 @@ export interface ProjectPanelProps {
   onDirtyChange?: (dirty: boolean) => void;
   loadVersions?: (pageId: string) => Promise<PageVersionSummary[]>;
   disabled?: boolean;
+  sectionEditorRequest?: { key: number; sectionId?: string } | null;
+  onShowPages?: () => void;
 }
 
 const fieldClass =
@@ -165,6 +169,8 @@ function ProjectPanelEditor({
   onApply,
   loadVersions,
   onDirtyChange,
+  sectionEditorRequest,
+  onShowPages,
   disabled = false,
   persisted,
 }: ProjectPanelProps & { persisted: ProjectModel }) {
@@ -184,6 +190,9 @@ function ProjectPanelEditor({
   const [locatedItemId, setLocatedItemId] = useState<string | null>(null);
   const itemRefs = useRef(new Map<string, HTMLFieldSetElement>());
   const [message, setMessage] = useState<string | null>(null);
+  const [sectionsOpen, setSectionsOpen] = useState(false);
+  const [editingSectionId, setEditingSectionId] = useState<string | null>(null);
+  const lastSectionRequest = useRef<number | null>(null);
   const [versions, setVersions] = useState<Record<string, PageVersionSummary[]>>({});
   const [loadingVersions, setLoadingVersions] = useState<string[]>([]);
   const remoteChanged =
@@ -192,6 +201,21 @@ function ProjectPanelEditor({
   const readonly = disabled || saving || !snapshot.writable || remoteChanged;
   const presentation = draft.presentations.find((item) => item.id === editingId);
   const sections = useMemo(() => resolveProjectSections(snapshot, draft), [snapshot, draft]);
+  const orderedSections = [...sections].sort(
+    (left, right) => (left.startPosition ?? Infinity) - (right.startPosition ?? Infinity),
+  );
+  const selectedSection =
+    orderedSections.find((item) => item.section.id === editingSectionId) ?? orderedSections[0];
+  useEffect(() => {
+    if (!sectionEditorRequest || lastSectionRequest.current === sectionEditorRequest.key) return;
+    lastSectionRequest.current = sectionEditorRequest.key;
+    setEditingSectionId(
+      sectionEditorRequest.sectionId ??
+        sections.find((item) => item.pageIds.includes(currentPageId ?? ''))?.section.id ??
+        null,
+    );
+    setSectionsOpen(true);
+  }, [sectionEditorRequest, sections, currentPageId]);
   const resolution = useMemo(() => {
     if (!presentation) return null;
     try {
@@ -366,30 +390,6 @@ function ProjectPanelEditor({
     setAddedMessage(t('Added: {title}. Save Project when your arrangement is ready.', { title }));
   };
 
-  const setSectionRange = (
-    sectionId: string,
-    startPageId: string,
-    endPageId: string,
-  ): string | null => {
-    const ids = snapshot.pages.filter((page) => page.state === 'active').map((page) => page.pageId);
-    const start = ids.indexOf(startPageId);
-    const end = ids.indexOf(endPageId);
-    if (start < 0 || end < 0) return 'Choose available Main Slides for both boundaries.';
-    if (start > end) return 'Start Position must be before or equal to End Position.';
-    const next: ProjectModel = {
-      ...draft,
-      sections: draft.sections.map((section) => {
-        if (section.id !== sectionId) return section;
-        const { startPageId: _start, ...previous } = section;
-        return {
-          ...previous,
-          pageIds: ids.slice(start, end + 1),
-          range: { startPageId, endPageId },
-        };
-      }),
-    };
-    return setSectionDefinition(sectionId, next);
-  };
   const setSectionStart = (sectionId: string, startPageId: string): string | null => {
     if (!snapshot.pages.some((page) => page.state === 'active' && page.pageId === startPageId))
       return 'Choose an available Main Slide as the first Slide.';
@@ -946,125 +946,237 @@ function ProjectPanelEditor({
               onChange={(value) => edit((previous) => ({ ...previous, mainStory: value }))}
             />
           </details>
-          <div className="flex items-center justify-between gap-2">
-            <h3 className="font-medium">{t('Sections')}</h3>
-            <Button
-              size="xs"
-              variant="outline"
-              disabled={readonly}
-              onClick={() => {
-                const id = crypto.randomUUID();
-                edit((previous) => ({
-                  ...previous,
-                  sections: [
-                    ...previous.sections,
-                    {
-                      id,
-                      title: t('Section {count}', { count: previous.sections.length + 1 }),
-                      story: emptyStory(),
-                      pageIds: [],
-                    },
-                  ],
-                }));
-                requestAnimationFrame(() => {
-                  document
-                    .querySelector<HTMLInputElement>(`[data-hd-project-section="${id}"] input`)
-                    ?.focus();
-                });
-              }}
-            >
-              <Plus />
-              {t('New Section')}
-            </Button>
-          </div>
+          <Button
+            variant="outline"
+            size="sm"
+            className="w-full justify-start"
+            data-hd-manage-sections
+            onClick={() => {
+              onShowPages?.();
+              setEditingSectionId(
+                sections.find((item) => item.pageIds.includes(currentPageId ?? ''))?.section.id ??
+                  null,
+              );
+              setSectionsOpen(true);
+            }}
+          >
+            <ListTree />
+            {t('Manage Sections')} · {sections.length}
+          </Button>
           <p className="text-[11px] leading-relaxed text-muted-foreground">
-            {t(
-              'Choose a first Slide for each Section. It follows Main order until the next Section; the last Section continues to the end. Fixed ranges and saved members are also supported.',
-            )}
-          </p>
-          {[...sections]
-            .sort(
-              (left, right) => (left.startPosition ?? Infinity) - (right.startPosition ?? Infinity),
-            )
-            .map((resolved) => (
-              <ProjectSectionEditor
-                key={resolved.section.id}
-                resolved={resolved}
-                snapshot={snapshot}
-                defaultStartPageId={currentPageId}
-                disabled={readonly}
-                onRename={(title) =>
-                  edit((previous) => ({
-                    ...previous,
-                    sections: previous.sections.map((section) =>
-                      section.id === resolved.section.id ? { ...section, title } : section,
-                    ),
-                  }))
-                }
-                onRemove={() =>
-                  edit((previous) => ({
-                    ...previous,
-                    sections: previous.sections.filter(
-                      (section) => section.id !== resolved.section.id,
-                    ),
-                  }))
-                }
-                onSetRange={(start, end) => setSectionRange(resolved.section.id, start, end)}
-                onSetStart={(start) => setSectionStart(resolved.section.id, start)}
-                onSetFrontMatter={(frontMatter) => {
-                  if (
-                    frontMatter &&
-                    draft.sections.some(
-                      (section) => section.id !== resolved.section.id && section.frontMatter,
-                    )
-                  )
-                    return 'Only one Section can be front matter (Section 00).';
-                  return setSectionDefinition(resolved.section.id, {
-                    ...draft,
-                    sections: draft.sections.map((section) => {
-                      if (section.id !== resolved.section.id) return section;
-                      const { frontMatter: _frontMatter, ...rest } = section;
-                      return { ...rest, ...(frontMatter ? { frontMatter: true as const } : {}) };
-                    }),
-                  });
-                }}
-                onSelectPage={onSelectPage}
-              >
-                <details>
-                  <summary className="cursor-pointer text-[11px] text-muted-foreground">
-                    {t('Section Story')}
-                  </summary>
-                  <div className="mt-2">
-                    <StoryFields
-                      value={resolved.section.story}
-                      disabled={readonly}
-                      onChange={(story) =>
-                        edit((previous) => ({
-                          ...previous,
-                          sections: previous.sections.map((section) =>
-                            section.id === resolved.section.id ? { ...section, story } : section,
-                          ),
-                        }))
-                      }
-                    />
-                  </div>
-                </details>
-              </ProjectSectionEditor>
-            ))}
-          {!sections.length && (
-            <p className="rounded border border-dashed border-border p-3 text-[11px] text-muted-foreground">
-              {t(
-                'Create a Section to group a continuous part of Main Slides, then reuse it in any Presentation.',
-              )}
-            </p>
-          )}
-          <p className="text-[10px] leading-relaxed text-muted-foreground">
-            {t(
-              'Sections keep stable Slide IDs as anchors. Removing a Section keeps every Main Slide and marks affected Presentation references for repair.',
-            )}
+            {t('Pages combines Slide thumbnails, the outline and Section boundaries.')}
           </p>
         </div>
       )}
+      <Dialog open={sectionsOpen} onOpenChange={(value) => !saving && setSectionsOpen(value)}>
+        <DialogContent
+          className="flex h-[min(720px,calc(100dvh-3rem))] flex-col gap-0 p-0 sm:max-w-3xl"
+          showCloseButton={!saving}
+          data-hd-section-manager
+        >
+          <DialogHeader className="shrink-0 border-b px-5 py-4">
+            <DialogTitle>{t('Sections')}</DialogTitle>
+            <DialogDescription>
+              {t(
+                'Each Section starts at its first Slide and continues to the next Section. Slide order defines membership.',
+              )}
+            </DialogDescription>
+          </DialogHeader>
+          <div className="flex min-h-0 flex-1">
+            <nav
+              aria-label={t('Sections')}
+              className="w-52 shrink-0 space-y-1 overflow-y-auto border-r bg-muted/20 p-2"
+            >
+              {orderedSections.map((item) => (
+                <button
+                  key={item.section.id}
+                  type="button"
+                  data-hd-section-manager-item={item.section.id}
+                  aria-current={
+                    selectedSection?.section.id === item.section.id ? 'true' : undefined
+                  }
+                  className={`w-full rounded px-2 py-2 text-left text-xs outline-none focus-visible:ring-2 focus-visible:ring-ring/40 ${selectedSection?.section.id === item.section.id ? 'bg-brand-soft text-brand' : 'hover:bg-muted'}`}
+                  onClick={() => setEditingSectionId(item.section.id)}
+                >
+                  <span className="block font-mono text-[10px] text-muted-foreground">
+                    {item.sectionPosition === null
+                      ? t('Section')
+                      : t('Section {position}', {
+                          position: String(item.sectionPosition).padStart(2, '0'),
+                        })}
+                    {' · '}
+                    {t('{count} slides', { count: item.pageIds.length })}
+                  </span>
+                  <span className="mt-0.5 block line-clamp-2 font-medium">
+                    {item.section.title}
+                  </span>
+                </button>
+              ))}
+              <Button
+                className="mt-2 w-full justify-start"
+                size="xs"
+                variant="outline"
+                disabled={
+                  readonly ||
+                  !currentPageId ||
+                  sections.some((item) => item.pageIds[0] === currentPageId)
+                }
+                title={t(
+                  'Start a Section at the current Slide. To insert a new cover, use Create Section here between Slides.',
+                )}
+                onClick={() => {
+                  const index = snapshot.pages.findIndex((page) => page.pageId === currentPageId);
+                  if (index < 0) return;
+                  try {
+                    const id = crypto.randomUUID();
+                    const project = sectionAtBoundary(
+                      { ...snapshot, metadata: { ...snapshot.metadata, project: draft } },
+                      {
+                        afterPageId: snapshot.pages[index - 1]?.pageId ?? null,
+                        beforePageId: currentPageId ?? null,
+                      },
+                      { id, title: t('Section {count}', { count: sections.length + 1 }) },
+                    );
+                    edit(() => project);
+                    setEditingSectionId(id);
+                  } catch (error) {
+                    setMessage(error instanceof Error ? error.message : String(error));
+                  }
+                }}
+              >
+                <Plus />
+                {t('Start Section here')}
+              </Button>
+            </nav>
+            <div className="min-w-0 flex-1 overflow-y-auto p-4">
+              {selectedSection ? (
+                <ProjectSectionEditor
+                  key={selectedSection.section.id}
+                  resolved={selectedSection}
+                  snapshot={snapshot}
+                  defaultStartPageId={currentPageId}
+                  disabled={readonly}
+                  onRename={(title) =>
+                    edit((previous) => ({
+                      ...previous,
+                      sections: previous.sections.map((section) =>
+                        section.id === selectedSection.section.id ? { ...section, title } : section,
+                      ),
+                    }))
+                  }
+                  onRemove={() =>
+                    edit((previous) => ({
+                      ...previous,
+                      sections: previous.sections.filter(
+                        (section) => section.id !== selectedSection.section.id,
+                      ),
+                    }))
+                  }
+                  onSetStart={(start) => setSectionStart(selectedSection.section.id, start)}
+                  onSetFrontMatter={(frontMatter) => {
+                    if (
+                      frontMatter &&
+                      draft.sections.some(
+                        (section) =>
+                          section.id !== selectedSection.section.id && section.frontMatter,
+                      )
+                    )
+                      return 'Only one Section can be front matter (Section 00).';
+                    return setSectionDefinition(selectedSection.section.id, {
+                      ...draft,
+                      sections: draft.sections.map((section) => {
+                        if (section.id !== selectedSection.section.id) return section;
+                        const { frontMatter: _frontMatter, ...rest } = section;
+                        return { ...rest, ...(frontMatter ? { frontMatter: true as const } : {}) };
+                      }),
+                    });
+                  }}
+                  onSelectPage={(id) => {
+                    onSelectPage(id);
+                    setSectionsOpen(false);
+                  }}
+                >
+                  <details>
+                    <summary className="cursor-pointer text-[11px] text-muted-foreground">
+                      {t('Section Story')}
+                    </summary>
+                    <div className="mt-2">
+                      <StoryFields
+                        value={selectedSection.section.story}
+                        disabled={readonly}
+                        onChange={(story) =>
+                          edit((previous) => ({
+                            ...previous,
+                            sections: previous.sections.map((section) =>
+                              section.id === selectedSection.section.id
+                                ? { ...section, story }
+                                : section,
+                            ),
+                          }))
+                        }
+                      />
+                    </div>
+                  </details>
+                </ProjectSectionEditor>
+              ) : (
+                <p className="rounded border border-dashed p-4 text-xs leading-relaxed text-muted-foreground">
+                  {t(
+                    'Choose a Slide, then start a Section here. You can also create a Section between Slides in Pages.',
+                  )}
+                </p>
+              )}
+            </div>
+          </div>
+          <div className="shrink-0 space-y-2 border-t px-5 py-3 text-xs">
+            {remoteChanged && (
+              <details className="text-destructive">
+                <summary className="cursor-pointer">
+                  {t(
+                    'The Project changed elsewhere. Your draft is preserved; copy it before discarding to reload.',
+                  )}
+                </summary>
+                <Textarea
+                  aria-label={t('未保存的项目草稿')}
+                  className="mt-2 max-h-40 font-mono text-[10px]"
+                  readOnly
+                  value={JSON.stringify(draft, null, 2)}
+                />
+              </details>
+            )}
+            {message && (
+              <p role="status" className="break-words">
+                {t(message)}
+              </p>
+            )}
+            <div className="flex items-center justify-between gap-2">
+              <span className="text-muted-foreground">
+                {dirty
+                  ? t('Project draft has unsaved changes.')
+                  : t('Sections follow Main Slides.')}
+              </span>
+              <div className="flex gap-2">
+                {dirty && (
+                  <Button size="sm" variant="ghost" disabled={saving} onClick={reload}>
+                    {t('放弃草稿')}
+                  </Button>
+                )}
+                <Button size="sm" disabled={readonly || !dirty} onClick={() => void save()}>
+                  <Save />
+                  {saving ? t('正在保存…') : t('保存项目')}
+                </Button>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  disabled={saving}
+                  onClick={() => setSectionsOpen(false)}
+                >
+                  {t('Done')}
+                </Button>
+              </div>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 }

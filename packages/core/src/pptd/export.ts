@@ -28,6 +28,7 @@ import { buildNativeTable, type NativeTable, type TableMeasurements } from './ex
 import { decorateNativeTextXml, mapPptdText, type NativeText } from './export-text';
 import { jpegOrientation } from './image-orientation';
 import { hasPageTransition } from './page-transition';
+import { mainPositionForPath, resolvePositionField } from './position-field';
 import { SHAPE_PRESETS } from './shape-presets';
 import type {
   Bounds,
@@ -881,10 +882,14 @@ export async function buildPptdPptx(
           );
         }
         if (element.elementType === 'text') {
-          const text = mapPptdText(element, theme, color, name);
+          const position =
+            page.mainPosition ??
+            (page.versionId ? undefined : mainPositionForPath(snapshot.manifest.pages, page.path));
+          const displayed = resolvePositionField(element, position);
+          const text = mapPptdText(displayed, theme, color, name);
           for (const font of text.fonts) fonts.add(font);
           slide.nodes.push(text.node);
-          entries.set(name, { element, text });
+          entries.set(name, { element: displayed, text });
           addElementReport(
             report,
             page,

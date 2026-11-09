@@ -23,6 +23,21 @@ export type DesktopEditCommand = 'cut' | 'copy' | 'paste' | 'selectAll' | 'undo'
 
 export interface HuandengDesktop {
   platform: string;
+  workspaceTabs?: boolean;
+  showHome?(): Promise<void>;
+  closeProject?(id?: string): Promise<void>;
+  onCloseDocument?(callback: () => void): () => void;
+  reportProjectState?(value: {
+    title?: string;
+    dirty?: boolean;
+    saving?: boolean;
+    attention?: boolean;
+    activity?: boolean;
+    revision?: string;
+  }): Promise<void>;
+  setPresentationMode?(active: boolean): Promise<{ fullscreen: boolean }>;
+  setFullscreen?(fullscreen: boolean): Promise<boolean>;
+  onFullscreenChanged?(callback: (fullscreen: boolean) => void): () => void;
   getWorkspaceLayout?(clientId?: string): Promise<WorkspaceLayout>;
   setWorkspaceLayout?(value: WorkspaceLayoutUpdate): Promise<WorkspaceLayout>;
   getLocale?(): Promise<'en' | 'zh-CN'>;

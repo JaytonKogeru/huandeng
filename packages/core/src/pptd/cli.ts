@@ -104,6 +104,17 @@ program
     ),
   );
 program
+  .command('activity [report]')
+  .description('Read Project activity, or post a JSON task-stage report without editing slides')
+  .action(async (file) => {
+    const connection = await client();
+    print(
+      file
+        ? await connection.request('/activity', JSON.parse(await fs.readFile(file, 'utf8')))
+        : await connection.request('/activity'),
+    );
+  });
+program
   .command('project')
   .description('Read the project file tree')
   .action(async () => print(await (await client()).request('/project')));

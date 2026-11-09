@@ -103,11 +103,13 @@ huandeng --entry /path/deck.pptd render PAGE_UUID
 
 ## Tool surface
 
-The bridge advertises 18 tools. Legacy `huanding_*` names and `huandeng_frame_record` still dispatch without being advertised twice.
+The bridge advertises 20 tools. Legacy `huanding_*` names and `huandeng_frame_record` still dispatch without being advertised twice.
 
 | Tool | Purpose |
 | --- | --- |
 | `huandeng_context` | Deck identity, Main pages, revisions, organization and diagnostics |
+| `huandeng_activity_read` | Recent task reports and actual writer records for this Project |
+| `huandeng_activity_report` | Explicit client progress tied to a Project, conversation and task |
 | `huandeng_story_briefing` | Four Story layers, exact occurrence, neighbors, used-by, assets and revisions |
 | `huandeng_presentation_read` | Complete resolved sequence, repeated pages, notes and pins |
 | `huandeng_assets_list` | Search project assets, source names, usages and missing references |
@@ -145,3 +147,9 @@ Run `node scripts/discover.mjs` to list this computer's verified active Projects
 For native local installation, put the generated local package in a dedicated local marketplace and register it with each client's supported CLI. The Codex catalog uses `.agents/plugins/marketplace.json`; Claude uses `.claude-plugin/marketplace.json`. Entries reference the package by a relative path. Install with `codex plugin marketplace add <marketplace-directory>` followed by `codex plugin add huandeng@huandeng-local --json`, or `claude plugin install huandeng --marketplace <marketplace-directory> --scope user --json`. Installing that catalog does not change other marketplaces or permissions. For DeepSeek Harness, use the generated Cordis patch with its native `--patch` option and preserve existing profile/plugin/skill-root settings.
 
 Source formats and native installation are documented by [OpenAI](https://developers.openai.com/plugins/build/plugins) and [Claude Code](https://code.claude.com/docs/en/plugin-marketplaces). Inspect the installed client help before an install or upgrade, since host configuration formats can change.
+
+## Project activity and visual review
+
+The runtime exposes `huandeng_activity_read` and `huandeng_activity_report` for explicit per-Project task stages. Each conversation keeps its own session ID and explicit PPTD entry; a visible tab switch does not reroute it. Shared-writer save receipts are distinct from client reports.
+
+The authoring skill now requires inspection of approved reference pages, concrete typography and spacing, evidence-preserving composition, actual rendered review, and meaningful versions only for changed pages. See `skills/huandeng-story/references/scientific-design.md`.

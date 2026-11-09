@@ -23,6 +23,7 @@ import {
   RefreshCw,
   Save,
   Settings2,
+  TerminalSquare,
   Type,
   Undo2,
   Ungroup,
@@ -31,6 +32,7 @@ import {
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { HuandengMark } from '@/components/brand-mark';
+import { PptdActivityPanel } from '@/components/pptd/activity-panel';
 import { AgentConnectionDialog } from '@/components/pptd/agent-connection-dialog';
 import { AssetLibrary } from '@/components/pptd/asset-library';
 import { AuthoringWorkspace } from '@/components/pptd/authoring-workspace';
@@ -55,6 +57,7 @@ import type { ChartDataDraft } from '@/components/pptd/science-inspector';
 import { ShapeInsertMenu } from '@/components/pptd/shape-insert-menu';
 import { TechnicalQaPanel } from '@/components/pptd/technical-qa-panel';
 import { PptdThumbnailRail } from '@/components/pptd/thumbnail-rail';
+import { WorkspaceDocumentTabs } from '@/components/pptd/workspace-document-tabs';
 import { WorkspaceSettings } from '@/components/pptd/workspace-settings';
 import { Button } from '@/components/ui/button';
 import {
@@ -129,6 +132,11 @@ export function HuandengEditor() {
   const { locale, t } = useHuandengLocale();
   const snapping = useSnappingPreference();
   const [agentConnectionOpen, setAgentConnectionOpen] = useState(false);
+  const [activityOpen, setActivityOpen] = useState(false);
+  const [sectionEditorRequest, setSectionEditorRequest] = useState<{
+    key: number;
+    sectionId?: string;
+  } | null>(null);
   const [sectionBoundary, setSectionBoundary] = useState<SlideInsertionBoundary | null>(null);
   const [projectDirty, setProjectDirty] = useState(false);
   const [timelineDirty, setTimelineDirty] = useState(false);
@@ -185,7 +193,18 @@ export function HuandengEditor() {
   const [navigationWidth, setNavigationWidth] = useState(288);
   const [inspectorWidth, setInspectorWidth] = useState(300);
   const [filePreviewPath, setFilePreviewPath] = useState<string | null>(null);
-  const [filePreviewWidth, setFilePreviewWidth] = useState(400);
+  const [openFilePreviews, setOpenFilePreviews] = useState<string[]>([]);
+  const openFilePreview = useCallback((path: string) => {
+    const normalized = path.replaceAll('\\', '/');
+    setOpenFilePreviews((current) =>
+      current.includes(normalized) ? current : [...current, normalized],
+    );
+    setFilePreviewPath(normalized);
+  }, []);
+  const closeFilePreview = useCallback((path: string) => {
+    setOpenFilePreviews((current) => current.filter((item) => item !== path));
+    setFilePreviewPath((current) => (current === path ? null : current));
+  }, []);
   const [inspectorTab, setInspectorTab] = useState<'properties' | 'layers' | 'story' | 'checks'>(
     'properties',
   );
@@ -257,7 +276,10 @@ export function HuandengEditor() {
   const [uiError, setUiError] = useState<string | null>(null);
   const snapshot = state.snapshot;
   // biome-ignore lint/correctness/useExhaustiveDependencies: A different Project must not retain a file path from the previous Project.
-  useEffect(() => setFilePreviewPath(null), [snapshot?.entry]);
+  useEffect(() => {
+    setFilePreviewPath(null);
+    setOpenFilePreviews([]);
+  }, [snapshot?.entry]);
   useEffect(() => {
     if (snapping.error || workspaceError) setUiError(snapping.error || workspaceError);
   }, [snapping.error, workspaceError]);
@@ -333,6 +355,56 @@ export function HuandengEditor() {
   const selectedElements =
     page?.data.elements.filter((element) => selectedIds.includes(element.elementId)) ?? [];
   const drafts = Object.values(state.drafts).filter(draftHasChanges);
+  const documentRevision = useMemo(
+    () =>
+      snapshot
+        ? [
+            snapshot.manifestRevision,
+            snapshot.metadataRevision,
+            ...snapshot.pages.map(
+              (item) => `${item.pageId}:${item.pageRevision}:${item.renderRevision}`,
+            ),
+          ].join('|')
+        : '',
+    [snapshot],
+  );
+  const projectHasDrafts = auxiliaryDirty || importingImages || drafts.length > 0;
+  const projectHasConflicts = drafts.some((draft) => !!draft.conflict);
+  useEffect(() => {
+    if (!snapshot) return;
+    void desktopHost()
+      ?.reportProjectState?.({
+        title: snapshot.title,
+        dirty: projectHasDrafts,
+        saving: state.saving || state.recovering,
+        attention: state.canRetry || state.recoveryRequired || !!state.error || projectHasConflicts,
+        revision: documentRevision,
+      })
+      .catch(() => {});
+  }, [
+    snapshot,
+    projectHasDrafts,
+    state.saving,
+    state.recovering,
+    state.canRetry,
+    state.recoveryRequired,
+    state.error,
+    documentRevision,
+    projectHasConflicts,
+  ]);
+  useEffect(
+    () =>
+      desktopHost()?.onCloseDocument?.(() => {
+        if (filePreviewPath) closeFilePreview(filePreviewPath);
+        else
+          void desktopHost()
+            ?.closeProject?.()
+            .catch((error: unknown) =>
+              setUiError(error instanceof Error ? error.message : String(error)),
+            );
+      }),
+    [filePreviewPath, closeFilePreview],
+  );
   const conflict = selectedPageId ? state.drafts[selectedPageId]?.conflict : undefined;
   const pageReadonly = !snapshot?.writable || !!selectedView?.versionId;
   const readonly = pageReadonly || previewActive || timelineDirty;
@@ -378,6 +450,7 @@ export function HuandengEditor() {
       const scope = focusTarget ?? editorKeyboardScope(document.activeElement);
       pageFocusRef.current =
         scope === 'canvas' || scope === 'thumbnails' ? { pageId: id, occurrenceId, scope } : null;
+      setFilePreviewPath(null);
       setSelectedIds([]);
       setInsertionTool(null);
       setAutoEditId(null);
@@ -396,6 +469,12 @@ export function HuandengEditor() {
   );
 
   useLayoutEffect(() => {
+    if (presenting) {
+      // F5 changes the selected Slide through the router. Its delayed canvas focus must
+      // not take focus back from the presenter after the presentation has mounted.
+      pageFocusRef.current = null;
+      return;
+    }
     const intent = pageFocusRef.current;
     // An older router transition must not consume a newer keyboard navigation's focus intent.
     if (
@@ -412,9 +491,9 @@ export function HuandengEditor() {
           `[data-hd-thumbnail-key="${CSS.escape(selectedView?.occurrenceId ?? selectedPageId ?? '')}"]`,
         )
         ?.focus({ preventScroll: true });
-  }, [selectedPageId, selectedView?.occurrenceId]);
+  }, [selectedPageId, selectedView?.occurrenceId, presenting]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (presenting) {
       presenterReturnFocus.current = document.activeElement as HTMLElement;
       document.querySelector<HTMLElement>('[data-hd-presenter]')?.focus({ preventScroll: true });
@@ -433,6 +512,7 @@ export function HuandengEditor() {
         setUiError('请先保存或还原时间线中的修改，再切换演讲。');
         return;
       }
+      setFilePreviewPath(null);
       setSelectedIds([]);
       setInsertionTool(null);
       setAutoEditId(null);
@@ -459,6 +539,7 @@ export function HuandengEditor() {
         setUiError('请先保存或还原时间线中的修改，再切换页面。');
         return;
       }
+      setFilePreviewPath(null);
       setSelectedIds([]);
       setInsertionTool(null);
       setAutoEditId(null);
@@ -482,6 +563,7 @@ export function HuandengEditor() {
         setUiError('请先保存或还原时间线中的修改，再切换引用。');
         return;
       }
+      setFilePreviewPath(null);
       setSelectedIds([]);
       setInsertionTool(null);
       setAutoEditId(null);
@@ -836,6 +918,7 @@ export function HuandengEditor() {
         readonly ||
         busy ||
         presenting ||
+        filePreviewPath !== null ||
         event.defaultPrevented ||
         (event.target instanceof Element && event.target.closest('[data-hd-file-preview]')) ||
         !['canvas', 'layers', 'workspace'].includes(editorKeyboardScope(event.target))
@@ -903,7 +986,7 @@ export function HuandengEditor() {
     };
     window.addEventListener('paste', paste);
     return () => window.removeEventListener('paste', paste);
-  }, [busy, client, importImages, page, presenting, readonly, run, snapshot]);
+  }, [filePreviewPath, busy, client, importImages, page, presenting, readonly, run, snapshot]);
 
   const chooseTool = (tool: InsertionTool | null) => {
     setInsertionTool(tool);
@@ -1329,6 +1412,22 @@ export function HuandengEditor() {
 
   useEffect(() => {
     const capture = (event: KeyboardEvent) => {
+      if (filePreviewPath) {
+        if (
+          (event.ctrlKey || event.metaKey) &&
+          !event.shiftKey &&
+          !event.altKey &&
+          event.key.toLowerCase() === 'w'
+        ) {
+          event.preventDefault();
+          event.stopPropagation();
+          closeFilePreview(filePreviewPath);
+          return;
+        }
+        if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 's')
+          event.preventDefault();
+        return;
+      }
       if (
         presenting &&
         event.key === 'Tab' &&
@@ -1348,7 +1447,12 @@ export function HuandengEditor() {
         editorKeyboardScope(event.target),
         presenting,
       );
-      if (!command || !['save', 'focus-region', 'help'].includes(command.type)) return;
+      if (
+        !command ||
+        (!['save', 'focus-region', 'help'].includes(command.type) &&
+          !(presenting && command.type === 'cancel'))
+      )
+        return;
       if (
         command.type === 'save' &&
         event.target instanceof Element &&
@@ -1360,6 +1464,7 @@ export function HuandengEditor() {
       executeKeyboardCommand(command, event.target);
     };
     const keydown = (event: KeyboardEvent) => {
+      if (filePreviewPath) return;
       const command = resolveEditorKeyboardCommand(
         event,
         editorKeyboardScope(event.target),
@@ -1375,13 +1480,13 @@ export function HuandengEditor() {
       window.removeEventListener('keydown', capture, true);
       window.removeEventListener('keydown', keydown);
     };
-  }, [executeKeyboardCommand, presenting]);
+  }, [executeKeyboardCommand, presenting, filePreviewPath, closeFilePreview]);
 
   useEffect(() => {
     const host = desktopHost();
     return host?.onEditCommand?.((nativeCommand: DesktopEditCommand) => {
       const target = document.activeElement;
-      if (target?.closest('[data-hd-file-preview]')) {
+      if (filePreviewPath || target?.closest('[data-hd-file-preview]')) {
         if (
           nativeCommand === 'copy' ||
           (nativeCommand === 'selectAll' && target instanceof HTMLTextAreaElement)
@@ -1407,7 +1512,7 @@ export function HuandengEditor() {
       if (command) executeKeyboardCommand(command, target);
       else void host.editNative?.(nativeCommand);
     });
-  }, [executeKeyboardCommand, presenting]);
+  }, [executeKeyboardCommand, presenting, filePreviewPath]);
 
   const beforeExport = async () => {
     if (presentationBlocked) throw new Error('请先保存草稿并解决演讲引用问题。');
@@ -1573,7 +1678,6 @@ export function HuandengEditor() {
             title={desktopHost() ? t('打开项目 Ctrl+O') : t('显示项目文件')}
             onClick={() =>
               void run(async () => {
-                await client.flushAll();
                 if (desktopHost()) await desktopHost()?.openProject();
                 else setLeftTab('files');
               })
@@ -1589,7 +1693,6 @@ export function HuandengEditor() {
               title={t('新建项目 Ctrl+N')}
               onClick={() =>
                 void run(async () => {
-                  await client.flushAll();
                   await desktopHost()?.newProject();
                 })
               }
@@ -1631,13 +1734,30 @@ export function HuandengEditor() {
           </select>
         </div>
         <div className="hd-titlebar-actions">
+          <Button
+            variant={activityOpen ? 'secondary' : 'ghost'}
+            size="sm"
+            aria-label={t('Agent Activity')}
+            aria-pressed={activityOpen}
+            onClick={() => setActivityOpen((value) => !value)}
+            data-hd-open-activity
+          >
+            <TerminalSquare />
+            {t('Activity')}
+          </Button>
           <div className="flex items-center gap-0.5">
             <Button
               variant="ghost"
               size="icon-sm"
               aria-label={t('撤销')}
               title={t('撤销 Ctrl+Z')}
-              disabled={pageReadonly || timelineDirty || busy || !state.undoStack.length}
+              disabled={
+                !!filePreviewPath ||
+                pageReadonly ||
+                timelineDirty ||
+                busy ||
+                !state.undoStack.length
+              }
               onClick={() => {
                 setPreviewResetKey((key) => key + 1);
                 void run(() => client.history('undo'));
@@ -1650,7 +1770,13 @@ export function HuandengEditor() {
               size="icon-sm"
               aria-label={t('重做')}
               title={t('重做 Ctrl+Shift+Z')}
-              disabled={pageReadonly || timelineDirty || busy || !state.redoStack.length}
+              disabled={
+                !!filePreviewPath ||
+                pageReadonly ||
+                timelineDirty ||
+                busy ||
+                !state.redoStack.length
+              }
               onClick={() => {
                 setPreviewResetKey((key) => key + 1);
                 void run(() => client.history('redo'));
@@ -1894,7 +2020,10 @@ export function HuandengEditor() {
               className="min-w-0 px-1"
               aria-label={t('页面缩略图')}
               aria-pressed={leftTab === 'pages'}
-              onClick={() => setLeftTab('pages')}
+              onClick={() => {
+                setFilePreviewPath(null);
+                setLeftTab('pages');
+              }}
             >
               {t('页面')}
             </Button>
@@ -1904,7 +2033,10 @@ export function HuandengEditor() {
               className="min-w-0 px-1"
               aria-label={t('项目素材库')}
               aria-pressed={leftTab === 'assets'}
-              onClick={() => setLeftTab('assets')}
+              onClick={() => {
+                setFilePreviewPath(null);
+                setLeftTab('assets');
+              }}
             >
               {t('素材')}
             </Button>
@@ -1961,6 +2093,8 @@ export function HuandengEditor() {
               }}
               onSelectOccurrence={selectOccurrence}
               onApply={(operations, expected) => client.apply(operations, expected)}
+              sectionEditorRequest={sectionEditorRequest}
+              onShowPages={() => setLeftTab('pages')}
               onDirtyChange={setProjectDirty}
               loadVersions={(id) => backend.pageHistory(id)}
               disabled={!snapshot.writable || busy}
@@ -2011,7 +2145,14 @@ export function HuandengEditor() {
               data-hd-section-issue
             >
               <p>{t('Section boundaries need attention. Slides are still available below.')}</p>
-              <Button size="xs" variant="outline" onClick={showProjectEditor}>
+              <Button
+                size="xs"
+                variant="outline"
+                onClick={() => {
+                  setLeftTab('pages');
+                  setSectionEditorRequest({ key: Date.now() });
+                }}
+              >
                 {t('Review Sections')}
               </Button>
             </div>
@@ -2022,10 +2163,20 @@ export function HuandengEditor() {
               snapshot={snapshot}
               currentPageId={selectedPageId}
               onSelectPage={selectMainPage}
-              onPreviewFile={(node) => setFilePreviewPath(node.path)}
+              onPreviewFile={(node) => openFilePreview(node.path)}
             />
           ) : leftTab === 'pages' ? (
             <PptdThumbnailRail
+              onEditSection={
+                selectedPresentationId
+                  ? undefined
+                  : (id) => setSectionEditorRequest({ key: Date.now(), sectionId: id })
+              }
+              onManageSections={
+                selectedPresentationId
+                  ? undefined
+                  : () => setSectionEditorRequest({ key: Date.now() })
+              }
               pages={viewPages}
               sections={
                 selectedPresentationId
@@ -2125,6 +2276,10 @@ export function HuandengEditor() {
         <main
           className="flex min-w-0 flex-1 flex-col"
           onDragOver={(event) => {
+            if (filePreviewPath) {
+              event.preventDefault();
+              return;
+            }
             if (
               event.dataTransfer.types.includes('Files') ||
               event.dataTransfer.types.includes('application/x-huandeng-asset')
@@ -2134,6 +2289,10 @@ export function HuandengEditor() {
             }
           }}
           onDrop={(event) => {
+            if (filePreviewPath) {
+              event.preventDefault();
+              return;
+            }
             const internal = event.dataTransfer.getData('application/x-huandeng-asset');
             if (internal) {
               event.preventDefault();
@@ -2195,393 +2354,430 @@ export function HuandengEditor() {
             }
           }}
         >
+          <WorkspaceDocumentTabs
+            files={openFilePreviews}
+            activePath={filePreviewPath}
+            onSelect={setFilePreviewPath}
+            onClose={closeFilePreview}
+          />
           <div
-            className="hd-editor-toolbar flex h-11 shrink-0 items-center gap-1 border-b border-border bg-background px-3"
-            data-hd-focus-region="tools"
-            tabIndex={-1}
+            className={filePreviewPath ? 'hidden' : 'flex min-h-0 flex-1 flex-col'}
+            data-hd-slide-document
           >
-            <Button
-              variant={insertionTool ? 'ghost' : 'secondary'}
-              size="icon-sm"
-              aria-label={t('选择工具')}
-              aria-pressed={!insertionTool}
-              title={t('选择 V · Esc 取消插入')}
-              onClick={() => chooseTool(null)}
-            >
-              <MousePointer2 />
-            </Button>
-            <span className="mx-1 h-4 w-px bg-border" />
-            <Button
-              variant="ghost"
-              size="sm"
-              aria-label={t('添加文本')}
-              title={t('文字 T · 在画布点击或拖拽放置')}
-              aria-pressed={insertionTool?.kind === 'text'}
-              disabled={readonly || busy || !page}
-              onClick={() => chooseTool(insertionTool?.kind === 'text' ? null : { kind: 'text' })}
-            >
-              <Type />
-              {t('文字')}
-            </Button>
-            <Button
-              variant="ghost"
-              size="sm"
-              aria-label={t('从设备导入并放置图片')}
-              title={t('从设备导入图片并放置到当前页')}
-              data-hd-import-images
-              disabled={readonly || busy || !page}
-              onClick={() => imageInputRef.current?.click()}
-            >
-              {importingImages ? <Loader2 className="animate-spin" /> : <Upload />}
-              {t('Image')}
-            </Button>
-            <ShapeInsertMenu
-              disabled={readonly || busy || !page}
-              active={insertionTool?.kind === 'shape'}
-              onChoose={chooseTool}
-            />
-            <Button
-              variant="ghost"
-              size="sm"
-              aria-label={t('添加线条')}
-              title={t('线条 L · 拖拽绘制，Shift 约束方向')}
-              aria-pressed={insertionTool?.kind === 'line'}
-              disabled={readonly || busy || !page}
-              onClick={() => chooseTool(insertionTool?.kind === 'line' ? null : { kind: 'line' })}
-            >
-              <Minus />
-              {t('线条')}
-            </Button>
-            <ScienceInsertMenu
-              size={snapshot.size}
-              disabled={readonly || busy || !page}
-              onInsert={(element) => {
-                if (!page) return;
-                void run(async () => {
-                  await client.apply([{ op: 'element.add', pageId: page.pageId, element }]);
-                  setSelectedIds([element.elementId]);
-                });
-              }}
-            />
-            <span className="mx-1 h-4 w-px bg-border" />
-            <Button
-              variant="ghost"
-              size="icon-sm"
-              aria-label={t('组合对象')}
-              title={t('组合 Ctrl+G')}
-              disabled={readonly || busy || selectedElements.length < 2}
-              onClick={() => groupSelection()}
-            >
-              <Group />
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon-sm"
-              aria-label={t('取消组合')}
-              title={t('取消组合 Ctrl+Shift+G')}
-              disabled={
-                readonly || busy || !selectedElements.some((item) => item.elementType === 'group')
-              }
-              onClick={() => groupSelection(true)}
-            >
-              <Ungroup />
-            </Button>
-            <span className="min-w-1 flex-1" />
-            <Button
-              variant={timelineOpen ? 'secondary' : 'ghost'}
-              size="sm"
-              aria-expanded={timelineOpen}
-              disabled={!authoringPage}
-              onClick={() => {
-                if (timelineDirty) {
-                  setUiError('时间线还有未保存修改，请重试保存或还原后再收起。');
-                  return;
-                }
-                if (!timelineOpen)
-                  void run(async () => {
-                    await client.flushAll();
-                    setInsertionTool(null);
-                    setAutoEditId(null);
-                    setNotesOpen(false);
-                    setTimelineOpen(true);
-                  });
-                else setTimelineOpen(false);
-              }}
-            >
-              <Clapperboard />
-              {t('动画')}
-            </Button>
-            <Button
-              variant={notesOpen ? 'secondary' : 'ghost'}
-              size="sm"
-              aria-expanded={notesOpen}
-              onClick={() => setNotesOpen((value) => !value)}
-            >
-              <NotebookPen />
-              {t('Notes')}
-            </Button>
-          </div>
-          {selectedPresentationId && selectedView && (
             <div
-              className="flex shrink-0 items-center gap-2 border-b bg-brand-soft px-4 py-2 text-xs"
-              data-hd-shared-slide-notice
+              className="hd-editor-toolbar flex h-11 shrink-0 items-center gap-1 border-b border-border bg-background px-3"
+              data-hd-focus-region="tools"
+              tabIndex={-1}
             >
-              <span className="flex-1">
-                {selectedView?.versionId
-                  ? t('此引用固定为已记录版本，内容只读。')
-                  : t('此演讲引用 主幻灯片；内容编辑会同步到主页面及其他实时引用。')}
-              </span>
-              {selectedPageId && (
-                <Button size="xs" variant="outline" onClick={() => selectMainPage(selectedPageId)}>
-                  {t('前往 Main Slide')}
-                </Button>
-              )}
-              <Button size="xs" variant="ghost" onClick={showProjectEditor}>
-                {t('编排与备注')}
-              </Button>
-            </div>
-          )}
-          {conflict && (
-            <div
-              className="shrink-0 border-b border-amber-300/50 bg-amber-50 px-4 py-3 text-amber-900"
-              data-hd-conflict
-            >
-              <p className="mb-2 text-xs">
-                {t('{message} 自动保存已暂停。', { message: t(conflict) })}
-              </p>
-              <div className="flex gap-2">
-                <Button size="xs" variant="outline" onClick={copyDraft}>
-                  <Copy />
-                  {t('复制本地草稿')}
-                </Button>
-                <Button
-                  size="xs"
-                  variant="outline"
-                  disabled={state.saving || state.canRetry || state.recoveryRequired}
-                  onClick={() => {
-                    if (selectedPageId) client.discardDraft(selectedPageId);
-                    setUiError(null);
-                  }}
-                >
-                  {t('放弃草稿，采用磁盘版本')}
-                </Button>
-              </div>
-            </div>
-          )}
-          {insertionTool && (
-            <div
-              className="flex h-8 shrink-0 items-center gap-2 border-b border-brand/15 bg-brand-soft px-4 text-xs text-brand"
-              role="status"
-              data-hd-insertion-hint
-            >
-              <MousePointer2 className="size-3.5" />
-              <span>
-                {t('{tool}：点击放置，拖拽设置大小', { tool: insertionLabel(insertionTool) })}
-              </span>
-              <span className="ml-auto text-[11px]">{t('Shift 约束 · Esc 取消')}</span>
-            </div>
-          )}
-          {previewActive && (
-            <div
-              className="hd-preview-context flex shrink-0 items-center gap-3 border-b border-brand/15 bg-brand-soft px-4 py-1.5 text-xs"
-              data-hd-preview-context
-            >
-              <span className="flex shrink-0 items-center gap-1.5 font-medium text-brand">
-                <Clapperboard className="size-3.5" />
-                {t('动画预览')}
-              </span>
-              <span
-                className="min-w-0 flex-1 truncate text-muted-foreground"
-                title={
-                  selectedIds.length
-                    ? selectedIds.join(locale === 'en' ? ', ' : '、')
-                    : t('当前页面')
-                }
-              >
-                {selectedIds.length === 1
-                  ? t('对象 · {id}', { id: selectedIds[0] })
-                  : selectedIds.length
-                    ? t('已选 {count} 个对象', { count: selectedIds.length })
-                    : t('当前页面')}
-              </span>
               <Button
-                variant="outline"
-                size="xs"
-                onClick={() => {
-                  setPreviewResetKey((key) => key + 1);
-                  requestAnimationFrame(() => focusEditorCanvas(selectedIds[0]));
-                }}
+                variant={insertionTool ? 'ghost' : 'secondary'}
+                size="icon-sm"
+                aria-label={t('选择工具')}
+                aria-pressed={!insertionTool}
+                title={t('选择 V · Esc 取消插入')}
+                onClick={() => chooseTool(null)}
               >
-                {t('返回基础编辑')}
+                <MousePointer2 />
               </Button>
-            </div>
-          )}
-          <div className="relative flex min-h-0 flex-1 flex-col">
-            {authoringPage ? (
-              <AuthoringWorkspace
-                onZoom={setScale}
-                canvas={{
-                  page: authoringPage,
-                  size: snapshot.size,
-                  theme,
-                  selectedIds,
-                  onSelect: setSelectedIds,
-                  onCommand: (command) =>
-                    executeKeyboardCommand(
-                      command,
-                      document.querySelector('[data-hd-editor-canvas]'),
-                    ),
-                  disabled: readonly,
-                  insertionTool,
-                  onPlace: placeElement,
-                  autoEditId,
-                  scale,
-                  snapEnabled: snapping.enabled,
-                  onScaleChange: setActualScale,
-                  onPatch: patchElement,
-                  onBegin: () => client.beginInteraction(authoringPage.pageId),
-                  onEnd: () => void run(() => client.endInteraction(authoringPage.pageId)),
-                  onCancel: (originals) =>
-                    client.cancelInteraction(authoringPage.pageId, originals),
-                  onFlush: () => void run(() => client.flushPage(authoringPage.pageId)),
-                  onComposition: (composing) =>
-                    client.setComposing(authoringPage.pageId, composing),
-                }}
-                timelineOpen={timelineOpen}
-                previewResetKey={previewResetKey}
-                timelineDisabled={
-                  !snapshot.writable ||
-                  !!authoringPage.versionId ||
-                  busy ||
-                  !snapshot.pages.some((item) => item.pageId === authoringPage.pageId)
-                }
-                onSelectTargets={setSelectedIds}
-                onTransitionChange={async (transition, expectedPageRevision) => {
-                  const current = client
-                    .getState()
-                    .snapshot?.pages.find((item) => item.pageId === authoringPage.pageId);
-                  if (!current || current.pageRevision !== expectedPageRevision)
-                    throw new Error('页面已在别处改变，转场修改已保留，请还原后重试。');
-                  return client.apply(
-                    [{ op: 'page.transition.set', pageId: authoringPage.pageId, transition }],
-                    { pages: { [authoringPage.pageId]: current.pageRevision } },
-                  );
-                }}
-                onTimelineDirty={setTimelineDirty}
-                onPreviewModeChange={setPreviewActive}
-                onTimelineChange={async (timeline, expectedPageRevision) => {
-                  const current = client
-                    .getState()
-                    .snapshot?.pages.find((item) => item.pageId === authoringPage.pageId);
-                  if (!current)
-                    throw new Error('来源主页面已被移除；动画草稿仍保留在此处，可复制或还原。');
-                  if (current.pageRevision !== expectedPageRevision)
-                    throw new Error(
-                      '页面已在别处改变，当前动画草稿已保留。请先复制草稿，再还原到最新页面继续编辑。',
-                    );
-                  return client.apply(
-                    [{ op: 'page.timeline.set', pageId: authoringPage.pageId, timeline }],
-                    { pages: { [authoringPage.pageId]: current.pageRevision } },
-                  );
+              <span className="mx-1 h-4 w-px bg-border" />
+              <Button
+                variant="ghost"
+                size="sm"
+                aria-label={t('添加文本')}
+                title={t('文字 T · 在画布点击或拖拽放置')}
+                aria-pressed={insertionTool?.kind === 'text'}
+                disabled={readonly || busy || !page}
+                onClick={() => chooseTool(insertionTool?.kind === 'text' ? null : { kind: 'text' })}
+              >
+                <Type />
+                {t('文字')}
+              </Button>
+              <Button
+                variant="ghost"
+                size="sm"
+                aria-label={t('从设备导入并放置图片')}
+                title={t('从设备导入图片并放置到当前页')}
+                data-hd-import-images
+                disabled={readonly || busy || !page}
+                onClick={() => imageInputRef.current?.click()}
+              >
+                {importingImages ? <Loader2 className="animate-spin" /> : <Upload />}
+                {t('Image')}
+              </Button>
+              <ShapeInsertMenu
+                disabled={readonly || busy || !page}
+                active={insertionTool?.kind === 'shape'}
+                onChoose={chooseTool}
+              />
+              <Button
+                variant="ghost"
+                size="sm"
+                aria-label={t('添加线条')}
+                title={t('线条 L · 拖拽绘制，Shift 约束方向')}
+                aria-pressed={insertionTool?.kind === 'line'}
+                disabled={readonly || busy || !page}
+                onClick={() => chooseTool(insertionTool?.kind === 'line' ? null : { kind: 'line' })}
+              >
+                <Minus />
+                {t('线条')}
+              </Button>
+              <ScienceInsertMenu
+                size={snapshot.size}
+                disabled={readonly || busy || !page}
+                onInsert={(element) => {
+                  if (!page) return;
+                  void run(async () => {
+                    await client.apply([{ op: 'element.add', pageId: page.pageId, element }]);
+                    setSelectedIds([element.elementId]);
+                  });
                 }}
               />
-            ) : (
-              <div className="grid h-full place-items-center">
-                <div className="max-w-sm px-6 text-center" data-hd-empty-collection>
-                  {emptyPresentation && (
-                    <h2 className="mb-2 text-base font-medium">
-                      {
-                        project?.presentations.find((item) => item.id === selectedPresentationId)
-                          ?.title
-                      }
-                    </h2>
-                  )}
-                  <p className="mb-4 text-sm text-muted-foreground">
-                    {selectedPresentationId
-                      ? presentationLoading
-                        ? t('正在读取演讲引用与固定版本…')
-                        : t('在项目面板中为这份演讲添加章节或页面。')
-                      : t('从一张空白页开始。')}
-                  </p>
+              <span className="mx-1 h-4 w-px bg-border" />
+              <Button
+                variant="ghost"
+                size="icon-sm"
+                aria-label={t('组合对象')}
+                title={t('组合 Ctrl+G')}
+                disabled={readonly || busy || selectedElements.length < 2}
+                onClick={() => groupSelection()}
+              >
+                <Group />
+              </Button>
+              <Button
+                variant="ghost"
+                size="icon-sm"
+                aria-label={t('取消组合')}
+                title={t('取消组合 Ctrl+Shift+G')}
+                disabled={
+                  readonly || busy || !selectedElements.some((item) => item.elementType === 'group')
+                }
+                onClick={() => groupSelection(true)}
+              >
+                <Ungroup />
+              </Button>
+              <span className="min-w-1 flex-1" />
+              <Button
+                variant={timelineOpen ? 'secondary' : 'ghost'}
+                size="sm"
+                aria-expanded={timelineOpen}
+                disabled={!authoringPage}
+                onClick={() => {
+                  if (timelineDirty) {
+                    setUiError('时间线还有未保存修改，请重试保存或还原后再收起。');
+                    return;
+                  }
+                  if (!timelineOpen)
+                    void run(async () => {
+                      await client.flushAll();
+                      setInsertionTool(null);
+                      setAutoEditId(null);
+                      setNotesOpen(false);
+                      setTimelineOpen(true);
+                    });
+                  else setTimelineOpen(false);
+                }}
+              >
+                <Clapperboard />
+                {t('动画')}
+              </Button>
+              <Button
+                variant={notesOpen ? 'secondary' : 'ghost'}
+                size="sm"
+                aria-expanded={notesOpen}
+                onClick={() => setNotesOpen((value) => !value)}
+              >
+                <NotebookPen />
+                {t('Notes')}
+              </Button>
+            </div>
+            {selectedPresentationId && selectedView && (
+              <div
+                className="flex shrink-0 items-center gap-2 border-b bg-brand-soft px-4 py-2 text-xs"
+                data-hd-shared-slide-notice
+              >
+                <span className="flex-1">
+                  {selectedView?.versionId
+                    ? t('此引用固定为已记录版本，内容只读。')
+                    : t('此演讲引用 主幻灯片；内容编辑会同步到主页面及其他实时引用。')}
+                </span>
+                {selectedPageId && (
                   <Button
-                    disabled={readonly || busy}
-                    onClick={() =>
-                      selectedPresentationId
-                        ? showProjectEditor()
-                        : void apply([{ op: 'page.add' }])
-                    }
+                    size="xs"
+                    variant="outline"
+                    onClick={() => selectMainPage(selectedPageId)}
                   >
-                    <Plus />
-                    {selectedPresentationId ? t('编排演讲') : t('新增页面')}
+                    {t('前往 Main Slide')}
+                  </Button>
+                )}
+                <Button size="xs" variant="ghost" onClick={showProjectEditor}>
+                  {t('编排与备注')}
+                </Button>
+              </div>
+            )}
+            {conflict && (
+              <div
+                className="shrink-0 border-b border-amber-300/50 bg-amber-50 px-4 py-3 text-amber-900"
+                data-hd-conflict
+              >
+                <p className="mb-2 text-xs">
+                  {t('{message} 自动保存已暂停。', { message: t(conflict) })}
+                </p>
+                <div className="flex gap-2">
+                  <Button size="xs" variant="outline" onClick={copyDraft}>
+                    <Copy />
+                    {t('复制本地草稿')}
+                  </Button>
+                  <Button
+                    size="xs"
+                    variant="outline"
+                    disabled={state.saving || state.canRetry || state.recoveryRequired}
+                    onClick={() => {
+                      if (selectedPageId) client.discardDraft(selectedPageId);
+                      setUiError(null);
+                    }}
+                  >
+                    {t('放弃草稿，采用磁盘版本')}
                   </Button>
                 </div>
               </div>
             )}
+            {insertionTool && (
+              <div
+                className="flex h-8 shrink-0 items-center gap-2 border-b border-brand/15 bg-brand-soft px-4 text-xs text-brand"
+                role="status"
+                data-hd-insertion-hint
+              >
+                <MousePointer2 className="size-3.5" />
+                <span>
+                  {t('{tool}：点击放置，拖拽设置大小', { tool: insertionLabel(insertionTool) })}
+                </span>
+                <span className="ml-auto text-[11px]">{t('Shift 约束 · Esc 取消')}</span>
+              </div>
+            )}
+            {previewActive && (
+              <div
+                className="hd-preview-context flex shrink-0 items-center gap-3 border-b border-brand/15 bg-brand-soft px-4 py-1.5 text-xs"
+                data-hd-preview-context
+              >
+                <span className="flex shrink-0 items-center gap-1.5 font-medium text-brand">
+                  <Clapperboard className="size-3.5" />
+                  {t('动画预览')}
+                </span>
+                <span
+                  className="min-w-0 flex-1 truncate text-muted-foreground"
+                  title={
+                    selectedIds.length
+                      ? selectedIds.join(locale === 'en' ? ', ' : '、')
+                      : t('当前页面')
+                  }
+                >
+                  {selectedIds.length === 1
+                    ? t('对象 · {id}', { id: selectedIds[0] })
+                    : selectedIds.length
+                      ? t('已选 {count} 个对象', { count: selectedIds.length })
+                      : t('当前页面')}
+                </span>
+                <Button
+                  variant="outline"
+                  size="xs"
+                  onClick={() => {
+                    setPreviewResetKey((key) => key + 1);
+                    requestAnimationFrame(() => focusEditorCanvas(selectedIds[0]));
+                  }}
+                >
+                  {t('返回基础编辑')}
+                </Button>
+              </div>
+            )}
+            <div className="relative flex min-h-0 flex-1 flex-col">
+              {authoringPage ? (
+                <AuthoringWorkspace
+                  onZoom={setScale}
+                  canvas={{
+                    page: authoringPage,
+                    size: snapshot.size,
+                    theme,
+                    selectedIds,
+                    onSelect: setSelectedIds,
+                    onCommand: (command) =>
+                      executeKeyboardCommand(
+                        command,
+                        document.querySelector('[data-hd-editor-canvas]'),
+                      ),
+                    disabled: readonly,
+                    insertionTool,
+                    onPlace: placeElement,
+                    autoEditId,
+                    scale,
+                    snapEnabled: snapping.enabled,
+                    onScaleChange: setActualScale,
+                    onPatch: patchElement,
+                    onBegin: () => client.beginInteraction(authoringPage.pageId),
+                    onEnd: () => void run(() => client.endInteraction(authoringPage.pageId)),
+                    onCancel: (originals) =>
+                      client.cancelInteraction(authoringPage.pageId, originals),
+                    onFlush: () => void run(() => client.flushPage(authoringPage.pageId)),
+                    onComposition: (composing) =>
+                      client.setComposing(authoringPage.pageId, composing),
+                  }}
+                  timelineOpen={timelineOpen}
+                  previewResetKey={previewResetKey}
+                  timelineDisabled={
+                    !snapshot.writable ||
+                    !!authoringPage.versionId ||
+                    busy ||
+                    !snapshot.pages.some((item) => item.pageId === authoringPage.pageId)
+                  }
+                  onSelectTargets={setSelectedIds}
+                  onTransitionChange={async (transition, expectedPageRevision) => {
+                    const current = client
+                      .getState()
+                      .snapshot?.pages.find((item) => item.pageId === authoringPage.pageId);
+                    if (!current || current.pageRevision !== expectedPageRevision)
+                      throw new Error('页面已在别处改变，转场修改已保留，请还原后重试。');
+                    return client.apply(
+                      [{ op: 'page.transition.set', pageId: authoringPage.pageId, transition }],
+                      { pages: { [authoringPage.pageId]: current.pageRevision } },
+                    );
+                  }}
+                  onTimelineDirty={setTimelineDirty}
+                  onPreviewModeChange={setPreviewActive}
+                  onTimelineChange={async (timeline, expectedPageRevision) => {
+                    const current = client
+                      .getState()
+                      .snapshot?.pages.find((item) => item.pageId === authoringPage.pageId);
+                    if (!current)
+                      throw new Error('来源主页面已被移除；动画草稿仍保留在此处，可复制或还原。');
+                    if (current.pageRevision !== expectedPageRevision)
+                      throw new Error(
+                        '页面已在别处改变，当前动画草稿已保留。请先复制草稿，再还原到最新页面继续编辑。',
+                      );
+                    return client.apply(
+                      [{ op: 'page.timeline.set', pageId: authoringPage.pageId, timeline }],
+                      { pages: { [authoringPage.pageId]: current.pageRevision } },
+                    );
+                  }}
+                />
+              ) : (
+                <div className="grid h-full place-items-center">
+                  <div className="max-w-sm px-6 text-center" data-hd-empty-collection>
+                    {emptyPresentation && (
+                      <h2 className="mb-2 text-base font-medium">
+                        {
+                          project?.presentations.find((item) => item.id === selectedPresentationId)
+                            ?.title
+                        }
+                      </h2>
+                    )}
+                    <p className="mb-4 text-sm text-muted-foreground">
+                      {selectedPresentationId
+                        ? presentationLoading
+                          ? t('正在读取演讲引用与固定版本…')
+                          : t('在项目面板中为这份演讲添加章节或页面。')
+                        : t('从一张空白页开始。')}
+                    </p>
+                    <Button
+                      disabled={readonly || busy}
+                      onClick={() =>
+                        selectedPresentationId
+                          ? showProjectEditor()
+                          : void apply([{ op: 'page.add' }])
+                      }
+                    >
+                      <Plus />
+                      {selectedPresentationId ? t('编排演讲') : t('新增页面')}
+                    </Button>
+                  </div>
+                </div>
+              )}
+            </div>
+            {notesOpen && notesDock === 'bottom' && page && (
+              <NotesPanel
+                value={page.data.notes ?? ''}
+                dock={notesDock}
+                height={notesHeight}
+                width={notesWidth}
+                disabled={readonly}
+                presentation={!!selectedPresentationId}
+                onChange={(value) => client.setNotes(page.pageId, value)}
+                onComposition={(value) => client.setComposing(page.pageId, value)}
+                onDock={setNotesDock}
+                onHeight={setNotesHeight}
+                onWidth={setNotesWidth}
+                onResizeEnd={() => {}}
+                onClose={() => setNotesOpen(false)}
+                onEditOccurrence={showProjectEditor}
+              />
+            )}
+            <div className="hd-statusbar flex shrink-0 items-center gap-2 border-t border-border bg-background px-3 text-xs text-muted-foreground">
+              <span className="min-w-0 truncate" title={page?.pageId} data-hd-slide-identity>
+                {page
+                  ? `Position ${pageIndex + 1} / ${viewPages.length} · Slide ID ${page.shortCode ?? page.pageId}`
+                  : t('No slide selected')}
+              </span>
+              {exportReport && (
+                <a href={exportReport} download className="shrink-0 underline underline-offset-2">
+                  {t('导出说明')}
+                </a>
+              )}
+              <span className="flex-1" />
+              <Button
+                variant="ghost"
+                size="icon-xs"
+                aria-label={t('缩小画布')}
+                onClick={() => setScale(Math.max(0.15, (scale ?? actualScale) - 0.1))}
+              >
+                <Minus />
+              </Button>
+              <button
+                type="button"
+                className="min-w-12 font-mono text-[11px]"
+                title={t('点击适合窗口')}
+                onClick={() => setScale(undefined)}
+              >
+                {Math.round(actualScale * 100)}%
+              </button>
+              <Button
+                variant="ghost"
+                size="icon-xs"
+                aria-label={t('放大画布')}
+                onClick={() => setScale(Math.min(3, (scale ?? actualScale) + 0.1))}
+              >
+                <Plus />
+              </Button>
+              <Button
+                variant="ghost"
+                size="xs"
+                aria-label={t('适合窗口')}
+                title={t('Fit slide to available canvas space')}
+                onClick={() => setScale(undefined)}
+              >
+                {t('Fit')}
+              </Button>
+            </div>
           </div>
-          {notesOpen && notesDock === 'bottom' && page && (
-            <NotesPanel
-              value={page.data.notes ?? ''}
-              dock={notesDock}
-              height={notesHeight}
-              width={notesWidth}
-              disabled={readonly}
-              presentation={!!selectedPresentationId}
-              onChange={(value) => client.setNotes(page.pageId, value)}
-              onComposition={(value) => client.setComposing(page.pageId, value)}
-              onDock={setNotesDock}
-              onHeight={setNotesHeight}
-              onWidth={setNotesWidth}
-              onResizeEnd={() => {}}
-              onClose={() => setNotesOpen(false)}
-              onEditOccurrence={showProjectEditor}
+          {openFilePreviews.map((path) => (
+            <div
+              key={path}
+              className={filePreviewPath === path ? 'flex min-h-0 flex-1' : 'hidden'}
+              data-hd-file-document={path}
+            >
+              <ProjectFilePreviewPanel
+                backend={backend}
+                path={path}
+                active={filePreviewPath === path}
+                onClose={() => closeFilePreview(path)}
+                onShowProperties={() => setFilePreviewPath(null)}
+              />
+            </div>
+          ))}
+          {activityOpen && !presenting && (
+            <PptdActivityPanel
+              backend={backend}
+              deckId={snapshot.metadata.deckId}
+              onClose={() => setActivityOpen(false)}
             />
           )}
-          <div className="hd-statusbar flex shrink-0 items-center gap-2 border-t border-border bg-background px-3 text-xs text-muted-foreground">
-            <span className="min-w-0 truncate" title={page?.pageId} data-hd-slide-identity>
-              {page
-                ? `Position ${pageIndex + 1} / ${viewPages.length} · Slide ID ${page.shortCode ?? page.pageId}`
-                : t('No slide selected')}
-            </span>
-            {exportReport && (
-              <a href={exportReport} download className="shrink-0 underline underline-offset-2">
-                {t('导出说明')}
-              </a>
-            )}
-            <span className="flex-1" />
-            <Button
-              variant="ghost"
-              size="icon-xs"
-              aria-label={t('缩小画布')}
-              onClick={() => setScale(Math.max(0.15, (scale ?? actualScale) - 0.1))}
-            >
-              <Minus />
-            </Button>
-            <button
-              type="button"
-              className="min-w-12 font-mono text-[11px]"
-              title={t('点击适合窗口')}
-              onClick={() => setScale(undefined)}
-            >
-              {Math.round(actualScale * 100)}%
-            </button>
-            <Button
-              variant="ghost"
-              size="icon-xs"
-              aria-label={t('放大画布')}
-              onClick={() => setScale(Math.min(3, (scale ?? actualScale) + 0.1))}
-            >
-              <Plus />
-            </Button>
-            <Button
-              variant="ghost"
-              size="xs"
-              aria-label={t('适合窗口')}
-              title={t('Fit slide to available canvas space')}
-              onClick={() => setScale(undefined)}
-            >
-              {t('Fit')}
-            </Button>
-          </div>
         </main>
         {page && (
           <div
@@ -2678,32 +2874,6 @@ export function HuandengEditor() {
               onEditOccurrence={showProjectEditor}
             />
           </div>
-        )}
-        {filePreviewPath && !previewActive && (
-          <aside
-            className="relative flex min-h-0 shrink-0 border-l border-border"
-            style={{ width: filePreviewWidth }}
-          >
-            <PanelResizeHandle
-              label="Resize file preview"
-              value={filePreviewWidth}
-              min={300}
-              max={640}
-              axis="x"
-              direction={-1}
-              onChange={setFilePreviewWidth}
-            />
-            <ProjectFilePreviewPanel
-              backend={backend}
-              path={filePreviewPath}
-              onClose={() => setFilePreviewPath(null)}
-              onShowProperties={() => {
-                setFilePreviewPath(null);
-                setInspectorCollapsed(false);
-                if (notesDock === 'right') setNotesOpen(false);
-              }}
-            />
-          </aside>
         )}
         {page &&
           inspectorCollapsed &&
@@ -2812,7 +2982,7 @@ export function HuandengEditor() {
           setNavigationWidth(288);
           setInspectorWidth(300);
           setFilePreviewPath(null);
-          setFilePreviewWidth(400);
+          setOpenFilePreviews([]);
           setNotesHeight(160);
           setNotesWidth(320);
           setNavigationCollapsed(false);

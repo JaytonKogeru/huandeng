@@ -35,6 +35,7 @@ import {
   topLevelElementIds,
 } from '@/lib/pptd-keyboard';
 import { expandGroupIds, owningGroupId } from '../../../pptd/grouping';
+import { isMainPositionField } from '../../../pptd/position-field';
 import type { Bounds, PageSize, PageSnapshot, PptdElement } from '../../../pptd/types';
 import { SlideCanvas } from '../slide-canvas';
 import { ContextMenu, ContextMenuTrigger } from '../ui/context-menu';
@@ -139,7 +140,9 @@ export function PptdEditorCanvas({
     if (
       autoEditId &&
       autoEditConsumed.current !== autoEditId &&
-      page.data.elements.some((element) => element.elementId === autoEditId)
+      page.data.elements.some(
+        (element) => element.elementId === autoEditId && !isMainPositionField(element),
+      )
     ) {
       autoEditConsumed.current = autoEditId;
       setEditingId(autoEditId);
@@ -147,8 +150,15 @@ export function PptdEditorCanvas({
   }, [autoEditId, page.data.elements]);
 
   useEffect(() => {
-    if (editingId && !selectedIds.includes(editingId)) setEditingId(null);
-  }, [editingId, selectedIds]);
+    if (
+      editingId &&
+      (!selectedIds.includes(editingId) ||
+        page.data.elements.some(
+          (element) => element.elementId === editingId && isMainPositionField(element),
+        ))
+    )
+      setEditingId(null);
+  }, [editingId, selectedIds, page.data.elements]);
 
   useLayoutEffect(() => {
     if (
@@ -463,7 +473,10 @@ export function PptdEditorCanvas({
               !disabled &&
               selectedIds.length === 1 &&
               page.data.elements.some(
-                (element) => element.elementId === selectedIds[0] && element.elementType === 'text',
+                (element) =>
+                  element.elementId === selectedIds[0] &&
+                  element.elementType === 'text' &&
+                  !isMainPositionField(element),
               )
             ) {
               event.preventDefault();
@@ -524,7 +537,7 @@ export function PptdEditorCanvas({
                 previewTimeMs={previewTimeMs}
                 elementTabIndex={() => -1}
                 elementLabel={(element) =>
-                  `${elementLabel(element)} · ${t(element.elementType === 'text' ? 'Enter 编辑文字' : '幻灯片对象')}`
+                  `${elementLabel(element)} · ${isMainPositionField(element) ? 'Slide Position field' : t(element.elementType === 'text' ? 'Enter 编辑文字' : '幻灯片对象')}`
                 }
                 onElementPointerDown={select}
                 onElementFocus={(id) => {
@@ -534,13 +547,17 @@ export function PptdEditorCanvas({
                   if (!selectedIds.includes(groupId)) onSelect([groupId]);
                 }}
                 onElementDoubleClick={(element) => {
-                  if (!disabled && element.elementType === 'text') {
+                  if (
+                    !disabled &&
+                    element.elementType === 'text' &&
+                    !isMainPositionField(element)
+                  ) {
                     onSelect([element.elementId]);
                     setEditingId(element.elementId);
                   }
                 }}
                 renderContent={(element) =>
-                  element.elementId === editingId ? (
+                  element.elementId === editingId && !isMainPositionField(element) ? (
                     <InlineTextElement
                       key={element.elementId}
                       element={element}

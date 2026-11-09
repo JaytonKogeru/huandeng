@@ -3,6 +3,7 @@ import fs from 'node:fs/promises';
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import type { AddressInfo } from 'node:net';
 import path from 'node:path';
+import { ProjectActivity } from '../../pptd/activity.ts';
 import { importImage } from '../../pptd/asset-import.ts';
 import { type AssetLibraryOptions, readAssetLibrary } from '../../pptd/asset-library.ts';
 import { AssetPreviewManager } from '../../pptd/asset-preview.ts';
@@ -69,10 +70,29 @@ export async function registerPptdRoutes(server: PptdRouteHost, _ctx?: ApiContex
     readOnly: process.env.HUANDENG_READ_ONLY === '1',
   });
   const initial = store.getSnapshot();
+  const activity = await ProjectActivity.open(
+    path.join(
+      runtimeRoot(),
+      'activity',
+      `${createHash('sha256')
+        .update(process.platform === 'win32' ? root.toLowerCase() : root)
+        .digest('hex')}.json`,
+    ),
+    initial.deckId,
+    initial.epoch,
+  );
   if (initial.writable && initial.identityPersisted)
     recordCheckpointMetadataInitialization(root, initial);
   const token = randomBytes(32).toString('hex');
   const clients = new Set<ServerResponse>();
+  const activityClients = new Set<ServerResponse>();
+  const unsubscribeActivity = activity.subscribe((event) => {
+    const data = `event: activity\ndata: ${JSON.stringify(event)}\n\n`;
+    for (const client of activityClients) {
+      if (client.writableLength > 512 * 1024) client.destroy();
+      else client.write(data);
+    }
+  });
   const exports = new ExportManager(root);
   const assetPreviews = new AssetPreviewManager(root);
   let selection: {
@@ -89,21 +109,40 @@ export async function registerPptdRoutes(server: PptdRouteHost, _ctx?: ApiContex
   };
   let refreshTimer: ReturnType<typeof setTimeout> | undefined;
   let closed = false;
+  const commit = async (request: TransactionRequest, previewHash?: string) => {
+    try {
+      return await store.commit(request, previewHash);
+    } catch (error) {
+      const code = (error as { code?: string }).code ?? 'SAVE_ERROR';
+      void activity
+        .failure((request ?? {}) as unknown as Record<string, unknown>, code)
+        .catch((issue: unknown) => {
+          server.config.logger.error(`Huandeng activity: ${String(issue)}`);
+        });
+      throw error;
+    }
+  };
 
   const unsubscribe = store.subscribe((event) => {
+    void activity.document(event)?.catch((error: unknown) => {
+      server.config.logger.error(`Huandeng activity: ${String(error)}`);
+    });
     recordCheckpoint(root, store.getCheckpointSnapshot(event), event);
     const data = `id: ${event.epoch}:${event.sequence}\ndata: ${JSON.stringify(event)}\n\n`;
     for (const client of clients) client.write(data);
   });
   const heartbeat = setInterval(() => {
     for (const client of clients) client.write(': heartbeat\n\n');
+    for (const client of activityClients) client.write(': heartbeat\n\n');
   }, 20000);
   heartbeat.unref();
   try {
     server.watcher.add(root);
   } catch (error) {
     unsubscribe();
+    unsubscribeActivity();
     clearInterval(heartbeat);
+    await activity.close();
     await store.close();
     throw error;
   }
@@ -151,10 +190,13 @@ export async function registerPptdRoutes(server: PptdRouteHost, _ctx?: ApiContex
       clearInterval(heartbeat);
       server.watcher.off('all', watch);
       unsubscribe();
+      unsubscribeActivity();
       for (const client of clients) client.end();
+      for (const client of activityClients) client.end();
       await exports.dispose();
       await assetPreviews.dispose();
       await store.close();
+      await activity.close();
       await (async () => {
         const file = await discoveryPath(entry);
         const record: SessionDiscovery = JSON.parse(await fs.readFile(file, 'utf8'));
@@ -299,6 +341,16 @@ export async function registerPptdRoutes(server: PptdRouteHost, _ctx?: ApiContex
         );
       }
       if (method === 'GET' && route === '/history') return json(res, 200, await store.history());
+      if (method === 'GET' && route === '/activity') return json(res, 200, activity.snapshot());
+      if (method === 'GET' && route === '/activity/events') {
+        res.writeHead(200, { 'content-type': 'text/event-stream', connection: 'keep-alive' });
+        res.write(
+          `event: connected\ndata: ${JSON.stringify({ deckId: initial.deckId, epoch: initial.epoch })}\n\n`,
+        );
+        activityClients.add(res);
+        req.on('close', () => activityClients.delete(res));
+        return;
+      }
       if (method === 'GET' && route === '/selection') return json(res, 200, selection);
       if (method === 'GET' && route === '/events') {
         res.writeHead(200, { 'content-type': 'text/event-stream', connection: 'keep-alive' });
@@ -328,6 +380,7 @@ export async function registerPptdRoutes(server: PptdRouteHost, _ctx?: ApiContex
       if (!body || typeof body !== 'object' || Array.isArray(body)) {
         throw new PptdError('INVALID_REQUEST', 'A JSON object is required.');
       }
+      if (route === '/activity') return json(res, 200, await activity.report(body));
       if (route === '/video/cancel') {
         if (typeof body.jobId !== 'string')
           throw new PptdError('INVALID_REQUEST', 'jobId is required.');
@@ -376,7 +429,7 @@ export async function registerPptdRoutes(server: PptdRouteHost, _ctx?: ApiContex
         );
       }
       if (route === '/transactions')
-        return json(res, 200, await store.commit(body as unknown as TransactionRequest));
+        return json(res, 200, await commit(body as unknown as TransactionRequest));
       if (route === '/proposals/preview')
         return json(res, 200, await store.preview(body.transaction as TransactionRequest));
       if (route === '/proposals/apply') {
@@ -388,7 +441,7 @@ export async function registerPptdRoutes(server: PptdRouteHost, _ctx?: ApiContex
         return json(
           res,
           200,
-          await store.commit(body.transaction as TransactionRequest, body.previewHash),
+          await commit(body.transaction as TransactionRequest, body.previewHash),
         );
       }
       if (route === '/recover') {

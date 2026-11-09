@@ -22,6 +22,7 @@ import {
   useRef,
   useState,
 } from 'react';
+import { desktopHost } from '@/lib/huandeng-desktop';
 import { uiText as t, useHuandengLocale } from '@/lib/huandeng-locale';
 import { readPageTransition } from '../../../pptd/page-transition';
 import type { PageSize, PageSnapshot } from '../../../pptd/types';
@@ -99,45 +100,53 @@ export function PresentationView({
   const root = useRef<HTMLElement>(null);
   const slide = useRef<HTMLDivElement>(null);
   const [detailsOpen, setDetailsOpen] = useState(false);
-  const [controlsVisible, setControlsVisible] = useState(true);
+  const [controlsVisible, setControlsVisible] = useState(false);
   const [blackout, setBlackout] = useState(false);
   const blackoutRef = useRef(false);
   const [fullscreen, setFullscreen] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
   const hideTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const keyboardControls = useRef(false);
   const time = playback.timeMs ?? 0;
   const nextStepLabel = playback.nextStep
     ? animationStepLabel(playback.nextStep, page.data.timeline)
     : undefined;
-  const revealControls = useCallback(() => {
-    setControlsVisible(true);
-    if (hideTimer.current) clearTimeout(hideTimer.current);
+  const hideControlsAfter = useCallback((delay = 600) => {
+    if (hideTimer.current) return;
     hideTimer.current = setTimeout(() => {
+      hideTimer.current = null;
       const focused = document.activeElement;
-      if (focused instanceof Element && focused.closest('[data-hd-presenter-controls]')) return;
+      if (focused instanceof HTMLElement && focused.closest('[data-hd-presenter-controls]')) {
+        if (keyboardControls.current) return;
+        root.current?.focus({ preventScroll: true });
+      }
       setControlsVisible(false);
-    }, 2200);
+    }, delay);
+  }, []);
+  const revealControls = useCallback(() => {
+    if (hideTimer.current) clearTimeout(hideTimer.current);
+    hideTimer.current = null;
+    setControlsVisible(true);
   }, []);
   useLayoutEffect(() => {
     void sessionId;
     blackoutRef.current = false;
     setBlackout(false);
     setDetailsOpen(false);
-    revealControls();
-  }, [sessionId, revealControls]);
-  useEffect(() => {
-    revealControls();
-    return () => {
+    setControlsVisible(false);
+  }, [sessionId]);
+  useEffect(
+    () => () => {
       if (hideTimer.current) clearTimeout(hideTimer.current);
-    };
-  }, [revealControls]);
+    },
+    [],
+  );
   const restoreBlackout = useCallback(() => {
     if (!blackoutRef.current) return false;
     blackoutRef.current = false;
     setBlackout(false);
-    revealControls();
     return true;
-  }, [revealControls]);
+  }, []);
   const next = useCallback(
     () => (canStep && !canStep()) || restoreBlackout() || playback.next(),
     [canStep, restoreBlackout, playback.next],
@@ -150,20 +159,59 @@ export function PresentationView({
     playback.pause();
     blackoutRef.current = !blackoutRef.current;
     setBlackout(blackoutRef.current);
-    revealControls();
-  }, [playback.pause, revealControls]);
+  }, [playback.pause]);
   const toggleFullscreen = useCallback(() => {
+    const host = desktopHost();
+    if (host?.setFullscreen) {
+      void host
+        .setFullscreen(!fullscreen)
+        .then(setFullscreen)
+        .catch(() =>
+          setMessage('Could not change fullscreen. You can continue presenting in this window.'),
+        );
+      return;
+    }
     const element = root.current;
     if (!element) return;
     const operation = document.fullscreenElement
       ? document.exitFullscreen()
       : element.requestFullscreen?.();
-    void operation?.catch(() => setMessage('未能进入全屏，可继续窗口放映。'));
-  }, []);
+    void operation?.catch(() =>
+      setMessage('Could not enter fullscreen. You can continue presenting in this window.'),
+    );
+  }, [fullscreen]);
   useEffect(() => {
-    const update = () => setFullscreen(document.fullscreenElement === root.current);
+    let active = true;
+    const host = desktopHost();
+    if (host?.setPresentationMode) {
+      const unsubscribe = host.onFullscreenChanged?.((value) => active && setFullscreen(value));
+      void host
+        .setPresentationMode(true)
+        .then((value) => {
+          if (active) setFullscreen(value.fullscreen);
+        })
+        .catch(() => {
+          if (active)
+            setMessage('Could not enter fullscreen. You can continue presenting in this window.');
+        });
+      return () => {
+        active = false;
+        unsubscribe?.();
+        void host.setPresentationMode?.(false).catch(() => {});
+      };
+    }
+    const element = root.current;
+    const update = () => setFullscreen(document.fullscreenElement === element);
     document.addEventListener('fullscreenchange', update);
-    return () => document.removeEventListener('fullscreenchange', update);
+    void element?.requestFullscreen?.().catch(() => {
+      if (active)
+        setMessage('Could not enter fullscreen. You can continue presenting in this window.');
+    });
+    return () => {
+      active = false;
+      document.removeEventListener('fullscreenchange', update);
+      if (document.fullscreenElement === element) void document.exitFullscreen().catch(() => {});
+    };
   }, []);
   const seekBoundary = useCallback(
     (end: boolean) => {
@@ -217,7 +265,7 @@ export function PresentationView({
     if (document.fullscreenElement === root.current) void document.exitFullscreen().catch(() => {});
     onClose();
   };
-  const showControls = controlsVisible || detailsOpen || notesOpen || !!playback.error || !!message;
+  const showControls = controlsVisible || detailsOpen || !!playback.error || !!message;
   return (
     <section
       ref={root}
@@ -228,9 +276,35 @@ export function PresentationView({
       data-hd-presenter-time={time}
       aria-label={t('演示模式')}
       tabIndex={-1}
-      onPointerMove={revealControls}
-      onFocusCapture={revealControls}
+      data-hd-presenter-controls-visible={showControls}
+      onPointerMove={(event) => {
+        const bounds = event.currentTarget.getBoundingClientRect();
+        if (
+          event.clientY >= bounds.bottom - 28 ||
+          (event.target instanceof Element && event.target.closest('[data-hd-presenter-controls]'))
+        )
+          revealControls();
+        else hideControlsAfter();
+      }}
+      onPointerDownCapture={() => {
+        keyboardControls.current = false;
+      }}
+      onPointerLeave={() => hideControlsAfter()}
+      onFocusCapture={(event) => {
+        if (event.target instanceof Element && event.target.closest('[data-hd-presenter-controls]'))
+          revealControls();
+      }}
+      onBlurCapture={(event) => {
+        if (
+          !(event.relatedTarget instanceof Element) ||
+          !event.relatedTarget.closest('[data-hd-presenter-controls]')
+        ) {
+          keyboardControls.current = false;
+          hideControlsAfter();
+        }
+      }}
       onKeyDownCapture={(event) => {
+        if (event.key === 'Tab') keyboardControls.current = true;
         if (
           event.repeat &&
           [
@@ -298,7 +372,9 @@ export function PresentationView({
         )}
         <div
           data-hd-presenter-controls
-          className={`absolute inset-x-0 bottom-0 z-10 px-5 pb-4 pt-10 text-white transition-opacity duration-150 motion-reduce:transition-none focus-within:opacity-100 focus-within:pointer-events-auto ${showControls ? 'opacity-100' : 'pointer-events-none opacity-0'}`}
+          onPointerEnter={revealControls}
+          onPointerLeave={() => hideControlsAfter()}
+          className={`absolute inset-x-0 bottom-0 z-10 px-5 pb-4 pt-10 text-white transition-opacity duration-150 motion-reduce:transition-none ${showControls ? 'opacity-100' : 'pointer-events-none opacity-0'}`}
           style={{ background: 'linear-gradient(transparent, rgb(0 0 0 / 85%))' }}
         >
           {(playback.error || message) && (

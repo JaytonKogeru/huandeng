@@ -26,10 +26,27 @@ async function connection() {
 }
 
 describe('HUANDENG MCP project and Story context', () => {
+  it('exposes explicit task activity without turning it into a slide mutation', async () => {
+    const { client, request } = await connection();
+    await client.callTool({ name: 'huandeng_activity_read', arguments: {} });
+    expect(request).toHaveBeenLastCalledWith('/activity');
+    const args = {
+      deckId: 'selected-project',
+      requestId: 'stage-one',
+      taskId: 'review',
+      sessionId: 'chat-a',
+      actor: 'Assistant',
+      status: 'running',
+      summary: 'Checking figures.',
+    };
+    await client.callTool({ name: 'huandeng_activity_report', arguments: args });
+    expect(request).toHaveBeenLastCalledWith('/activity', args);
+  });
+
   it('advertises the three context tools as read-only alongside the compatible writer tools', async () => {
     const { client } = await connection();
     const { tools } = await client.listTools();
-    expect(tools).toHaveLength(18);
+    expect(tools).toHaveLength(20);
     for (const name of [
       'huandeng_story_briefing',
       'huandeng_presentation_read',

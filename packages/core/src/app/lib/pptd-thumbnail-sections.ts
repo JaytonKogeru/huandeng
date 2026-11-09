@@ -56,11 +56,12 @@ export function thumbnailRailEntries(
   groups: ThumbnailSectionGroup[],
   collapsed: ReadonlySet<string>,
   query: string,
+  searchText: (page: PageSnapshot) => string = projectSlideSearch,
 ) {
   const needle = query.trim().toLocaleLowerCase();
   const matched = new Set(
     pages
-      .filter((page, index) => `${index + 1} ${projectSlideSearch(page)}`.includes(needle))
+      .filter((page, index) => `${index + 1} ${searchText(page)}`.includes(needle))
       .map((page) => page.pageId),
   );
   if (needle) {
