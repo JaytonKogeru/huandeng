@@ -1,5 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import type {
+  DocumentEvent,
   PptdElement,
   PptdOperation,
   Revision,
@@ -104,16 +105,25 @@ function shape(): PptdElement {
 
 const clients: PptdDocumentClient[] = [];
 
-async function setup(initial = session()) {
+async function setup(initial = session(), committedReads = false) {
   let remote = initial;
   const commit = vi.fn<(request: TransactionRequest) => Promise<TransactionResult>>();
   const revert = vi.fn<PptdTransport['revert']>();
+  let eventListener: (event: DocumentEvent) => void = () => {};
+  let connectionListener: (connected: boolean) => void = () => {};
+  const stopEvents = vi.fn();
+  const getCommitted = vi.fn(async () => structuredClone(remote));
   const backend: PptdTransport = {
     getSnapshot: vi.fn(async () => structuredClone(remote)),
+    ...(committedReads ? { getCommittedSnapshot: getCommitted } : {}),
     recoverPending: vi.fn(async () => structuredClone(remote)),
     commit,
     revert,
-    subscribe: () => () => {},
+    subscribe: vi.fn((listener, onConnection) => {
+      eventListener = listener;
+      connectionListener = onConnection;
+      return stopEvents;
+    }),
   };
   const client = new PptdDocumentClient(backend);
   clients.push(client);
@@ -123,6 +133,20 @@ async function setup(initial = session()) {
     backend,
     commit,
     revert,
+    stopEvents,
+    getCommitted,
+    emit: (sequence: number, epoch = 'epoch-1', originClientId?: string) =>
+      eventListener({
+        type: 'external',
+        epoch,
+        sequence,
+        originClientId,
+        changedPages: {},
+        manifestChanged: false,
+        metadataChanged: false,
+        diagnostics: [],
+      }),
+    connection: (connected: boolean) => connectionListener(connected),
     setRemote: (next: PptdSession) => {
       remote = next;
     },
@@ -206,6 +230,315 @@ describe('PPTD browser editing contract', () => {
     await Promise.all(refreshes);
     expect(getSnapshot).toHaveBeenCalledTimes(2);
     expect(client.page('page-1')?.data.elements[0].content?.text).toBe('读取期间发生的修改');
+  });
+
+  it('reads contiguous events from committed state and coalesces a burst without disk rescans', async () => {
+    const { client, backend, getCommitted, emit, setRemote } = await setup(session(), true);
+    await client.connect();
+    const getSnapshot = vi.mocked(backend.getSnapshot).mockClear();
+    const firstRead = deferred<PptdSession>();
+    getCommitted.mockReturnValueOnce(firstRead.promise);
+    emit(2);
+    emit(3);
+    emit(4);
+    setRemote(session('连续事件的最终内容', 4));
+    firstRead.resolve(session('第一个事件', 2));
+    await vi.advanceTimersByTimeAsync(0);
+    expect(getSnapshot).not.toHaveBeenCalled();
+    expect(getCommitted).toHaveBeenCalledTimes(2);
+    expect(client.getState().snapshot?.sequence).toBe(4);
+    expect(client.page('page-1')?.data.elements[0].content?.text).toBe('连续事件的最终内容');
+    emit(4);
+    emit(2);
+    await vi.advanceTimersByTimeAsync(5000);
+    expect(getCommitted).toHaveBeenCalledTimes(2);
+    expect(getSnapshot).not.toHaveBeenCalled();
+  });
+
+  it('uses authoritative reads for connection, manual refresh, gaps, and epoch changes', async () => {
+    const { client, backend, emit, connection, setRemote } = await setup(session(), true);
+    await client.connect();
+    expect(backend.getSnapshot).toHaveBeenCalledTimes(2);
+    connection(true);
+    await vi.advanceTimersByTimeAsync(0);
+    connection(false);
+    connection(true);
+    await vi.advanceTimersByTimeAsync(0);
+    await client.refresh();
+    setRemote(session('跳过事件后的内容', 4));
+    emit(4);
+    await vi.advanceTimersByTimeAsync(0);
+    setRemote({ ...session('服务重启后的内容'), epoch: 'epoch-2' });
+    emit(1, 'epoch-2');
+    await vi.advanceTimersByTimeAsync(0);
+    expect(backend.getSnapshot).toHaveBeenCalledTimes(7);
+    expect(backend.getCommittedSnapshot).not.toHaveBeenCalled();
+    expect(client.getState().snapshot).toMatchObject({ epoch: 'epoch-2', sequence: 1 });
+    emit(5, 'epoch-1');
+    emit(1, 'epoch-2');
+    await vi.advanceTimersByTimeAsync(0);
+    expect(backend.getSnapshot).toHaveBeenCalledTimes(7);
+  });
+
+  it('ignores outdated events from the accepted epoch while a new epoch is being read', async () => {
+    const { client, backend, emit } = await setup(session(), true);
+    await client.connect();
+    const nextEpoch = deferred<PptdSession>();
+    const getSnapshot = vi.mocked(backend.getSnapshot).mockClear();
+    getSnapshot.mockReturnValueOnce(nextEpoch.promise);
+    emit(1, 'epoch-2');
+    emit(1, 'epoch-1');
+    nextEpoch.resolve({ ...session(), epoch: 'epoch-2' });
+    await vi.advanceTimersByTimeAsync(0);
+    expect(getSnapshot).toHaveBeenCalledTimes(1);
+    expect(client.getState().snapshot?.epoch).toBe('epoch-2');
+  });
+
+  it('falls back to authoritative reads for events on older transports', async () => {
+    const { client, backend, emit, setRemote } = await setup();
+    await client.connect();
+    vi.mocked(backend.getSnapshot).mockClear();
+    setRemote(session('兼容旧传输', 2));
+    emit(2);
+    await vi.advanceTimersByTimeAsync(0);
+    expect(backend.getSnapshot).toHaveBeenCalledTimes(1);
+    expect(client.getState().snapshot?.sequence).toBe(2);
+  });
+
+  it.each(['manual', 'gap', 'epoch', 'reconnect'] as const)(
+    'retains %s escalation while a committed read is in flight',
+    async (reason) => {
+      const { client, backend, getCommitted, emit, connection, setRemote } = await setup(
+        session(),
+        true,
+      );
+      await client.connect();
+      connection(true);
+      await vi.advanceTimersByTimeAsync(0);
+      const getSnapshot = vi.mocked(backend.getSnapshot).mockClear();
+      const firstRead = deferred<PptdSession>();
+      getCommitted.mockReturnValueOnce(firstRead.promise);
+      emit(2);
+      if (reason === 'manual') void client.refresh();
+      if (reason === 'gap') emit(4);
+      if (reason === 'epoch') emit(1, 'epoch-2');
+      if (reason === 'reconnect') {
+        connection(false);
+        connection(true);
+      }
+      const epoch = reason === 'epoch' ? 'epoch-2' : 'epoch-1';
+      const sequence = reason === 'epoch' ? 2 : reason === 'gap' ? 5 : 3;
+      emit(sequence, epoch);
+      setRemote({ ...session('完整读取捕获的修改', sequence + 1), epoch, sequence });
+      firstRead.resolve(session('较早的缓存', 2));
+      await vi.advanceTimersByTimeAsync(0);
+      expect(getSnapshot).toHaveBeenCalledTimes(1);
+      expect(getCommitted).toHaveBeenCalledTimes(1);
+      expect(client.getState().snapshot).toMatchObject({ epoch, sequence });
+      expect(client.page('page-1')?.data.elements[0].content?.text).toBe('完整读取捕获的修改');
+    },
+  );
+
+  it.each([false, true])(
+    'preserves queued refresh strength during a save (authoritative: %s)',
+    async (authoritative) => {
+      const { client, backend, getCommitted, commit, emit, setRemote } = await setup(
+        session(),
+        true,
+      );
+      await client.connect();
+      const getSnapshot = vi.mocked(backend.getSnapshot).mockClear();
+      const ack = deferred<TransactionResult>();
+      commit.mockReturnValueOnce(ack.promise);
+      client.patchElement('page-1', 'title', { 'content.text': '已提交的输入' }, false);
+      const saving = client.flushPage('page-1');
+      emit(2);
+      if (authoritative) void client.refresh();
+      emit(3);
+      setRemote(session('最终远端内容', 3));
+      ack.resolve(receipt(commit.mock.calls[0][0].requestId));
+      await saving;
+      await vi.advanceTimersByTimeAsync(0);
+      expect(getSnapshot).toHaveBeenCalledTimes(authoritative ? 1 : 0);
+      expect(getCommitted).toHaveBeenCalledTimes(authoritative ? 1 : 2);
+      expect(client.getState().snapshot?.sequence).toBe(3);
+      expect(client.getState()).toMatchObject({ saving: false, drafts: {}, canRetry: false });
+      expect(client.getState().undoStack).toEqual(['operation-1']);
+    },
+  );
+
+  it('escalates an own-origin gap during a save instead of dropping it with the save event', async () => {
+    const { client, backend, commit, emit, setRemote } = await setup(session(), true);
+    await client.connect();
+    const getSnapshot = vi.mocked(backend.getSnapshot).mockClear();
+    const ack = deferred<TransactionResult>();
+    commit.mockReturnValueOnce(ack.promise);
+    client.patchElement('page-1', 'title', { 'content.text': '已提交的输入' }, false);
+    const saving = client.flushPage('page-1');
+    emit(4, 'epoch-1', client.clientId);
+    setRemote(session('断档后重读的内容', 4));
+    ack.resolve(receipt(commit.mock.calls[0][0].requestId));
+    await saving;
+    await vi.advanceTimersByTimeAsync(0);
+    expect(getSnapshot).toHaveBeenCalledTimes(1);
+    expect(client.getState().snapshot?.sequence).toBe(4);
+  });
+
+  it('retains escalation across a committed read interrupted by a save', async () => {
+    const { client, backend, getCommitted, commit, emit, setRemote } = await setup(session(), true);
+    await client.connect();
+    const getSnapshot = vi.mocked(backend.getSnapshot).mockClear();
+    const firstRead = deferred<PptdSession>();
+    getCommitted.mockReturnValueOnce(firstRead.promise);
+    emit(2);
+    const refreshing = client.refresh();
+    const ack = deferred<TransactionResult>();
+    commit.mockReturnValueOnce(ack.promise);
+    client.patchElement('page-1', 'title', { 'content.text': '已提交的输入' }, false);
+    const saving = client.flushPage('page-1');
+    emit(3);
+    setRemote(session('已保存的新稿', 3));
+    ack.resolve(receipt(commit.mock.calls[0][0].requestId));
+    await saving;
+    firstRead.resolve(session('早先的缓存', 2));
+    await refreshing;
+    expect(getSnapshot).toHaveBeenCalledTimes(1);
+    expect(client.getState().snapshot?.sequence).toBe(3);
+    expect(client.getState().drafts).toEqual({});
+  });
+
+  it('preserves authoritative refreshes queued during explicit recovery', async () => {
+    const { client, backend, emit, setRemote } = await setup(session(), true);
+    await client.connect();
+    const getSnapshot = vi.mocked(backend.getSnapshot).mockClear();
+    const recovery = deferred<PptdSession>();
+    vi.mocked(backend.recoverPending).mockReturnValueOnce(recovery.promise);
+    client.patchElement('page-1', 'title', { 'content.text': '恢复时的本地输入' }, false);
+    const recovering = client.recoverPending();
+    void client.refresh();
+    emit(2);
+    setRemote({ ...session(), sequence: 3 });
+    recovery.resolve({ ...session(), sequence: 2 });
+    await recovering;
+    await vi.advanceTimersByTimeAsync(0);
+    expect(getSnapshot).toHaveBeenCalledTimes(1);
+    expect(backend.getCommittedSnapshot).not.toHaveBeenCalled();
+    expect(client.getState().snapshot?.sequence).toBe(3);
+    expect(client.getState()).toMatchObject({ saving: false, recovering: false });
+    expect(client.page('page-1')?.data.elements[0].content?.text).toBe('恢复时的本地输入');
+    expect(client.getState().drafts['page-1'].conflict).toBeUndefined();
+  });
+
+  it('preserves dirty drafts and marks real revision conflicts after a contiguous event', async () => {
+    const { client, backend, emit, setRemote } = await setup(session(), true);
+    await client.connect();
+    vi.mocked(backend.getSnapshot).mockClear();
+    client.patchElement('page-1', 'title', { 'content.text': '本地工作稿' }, false);
+    setRemote(session('其他作者的修改', 2));
+    emit(2);
+    await vi.advanceTimersByTimeAsync(0);
+    expect(backend.getSnapshot).not.toHaveBeenCalled();
+    expect(client.getState().snapshot?.pages[0].data.elements[0].content?.text).toBe(
+      '其他作者的修改',
+    );
+    expect(client.page('page-1')?.data.elements[0].content?.text).toBe('本地工作稿');
+    expect(client.getState().drafts['page-1'].conflict).toBeTruthy();
+    await expect(client.flushAll()).rejects.toMatchObject({ code: 'REVISION_CONFLICT' });
+  });
+
+  it('ignores a stale authoritative same-epoch reply without conflicting a draft', async () => {
+    const { client, backend } = await setup(session('最新基稿', 5));
+    client.patchElement('page-1', 'title', { 'content.text': '保留本地输入' }, false);
+    const before = client.getState().snapshot;
+    vi.mocked(backend.getSnapshot).mockResolvedValueOnce(session('旧稿', 2));
+    await client.refresh();
+    expect(client.getState().snapshot).toBe(before);
+    expect(client.getState().drafts['page-1'].conflict).toBeUndefined();
+    expect(client.page('page-1')?.data.elements[0].content?.text).toBe('保留本地输入');
+  });
+
+  it('retains an authoritative read interrupted by a save and ignores its stale result', async () => {
+    const { client, backend, commit, emit, setRemote } = await setup(session(), true);
+    await client.connect();
+    const firstRead = deferred<PptdSession>();
+    const getSnapshot = vi.mocked(backend.getSnapshot).mockClear();
+    getSnapshot.mockReturnValueOnce(firstRead.promise);
+    const refreshing = client.refresh();
+    client.patchElement('page-1', 'title', { 'content.text': '已保存的新稿' }, false);
+    commit.mockImplementationOnce(async (request) => {
+      setRemote(session('已保存的新稿', 2));
+      return receipt(request.requestId);
+    });
+    await client.flushPage('page-1');
+    emit(3);
+    setRemote(session('完整重读发现的新稿', 3));
+    firstRead.resolve(session());
+    await refreshing;
+    expect(getSnapshot).toHaveBeenCalledTimes(2);
+    expect(client.getState().snapshot?.sequence).toBe(3);
+    expect(client.getState().drafts).toEqual({});
+    expect(client.getState().undoStack).toEqual(['operation-1']);
+  });
+
+  it('does not regress accepted snapshots or dirty drafts on stale same-epoch or retired-epoch replies', async () => {
+    const { client, backend, getCommitted, emit, setRemote } = await setup(session(), true);
+    await client.connect();
+    setRemote(session('最新基稿', 5));
+    await client.refresh();
+    client.patchElement('page-1', 'title', { 'content.text': '保留本地输入' }, false);
+    const before = client.getState().snapshot;
+    getCommitted.mockResolvedValueOnce(session('过期内容', 3));
+    emit(6);
+    await vi.advanceTimersByTimeAsync(0);
+    expect(client.getState().snapshot).toBe(before);
+    expect(client.getState().drafts['page-1'].conflict).toBeUndefined();
+    expect(client.page('page-1')?.data.elements[0].content?.text).toBe('保留本地输入');
+    setRemote({ ...session('最新基稿', 5), epoch: 'epoch-2', sequence: 1 });
+    emit(1, 'epoch-2');
+    await vi.advanceTimersByTimeAsync(0);
+    vi.mocked(backend.getSnapshot).mockResolvedValueOnce(session('旧服务的迟到响应', 20));
+    await client.refresh();
+    expect(client.getState().snapshot).toMatchObject({ epoch: 'epoch-2', sequence: 1 });
+    expect(client.getState().drafts['page-1'].conflict).toBeUndefined();
+  });
+
+  it('validates an unexpected epoch in a committed reply with an authoritative read', async () => {
+    const { client, backend, getCommitted, emit, setRemote } = await setup(session(), true);
+    await client.connect();
+    vi.mocked(backend.getSnapshot).mockClear();
+    getCommitted.mockResolvedValueOnce({
+      ...session('未经完整读取的内容', 2),
+      epoch: 'epoch-2',
+      sequence: 1,
+    });
+    setRemote({ ...session('完整读取的新服务', 2), epoch: 'epoch-2', sequence: 1 });
+    emit(2);
+    await vi.advanceTimersByTimeAsync(0);
+    expect(backend.getSnapshot).toHaveBeenCalledTimes(1);
+    expect(client.page('page-1')?.data.elements[0].content?.text).toBe('完整读取的新服务');
+    expect(client.getState().snapshot?.epoch).toBe('epoch-2');
+  });
+
+  it('drops in-flight and queued refreshes on disconnect without polling or resubscribing', async () => {
+    const { client, backend, getCommitted, emit, stopEvents } = await setup(session(), true);
+    await client.connect();
+    const getSnapshot = vi.mocked(backend.getSnapshot).mockClear();
+    const firstRead = deferred<PptdSession>();
+    getCommitted.mockReturnValueOnce(firstRead.promise);
+    const listener = vi.fn();
+    client.subscribe(listener);
+    const before = client.getState().snapshot;
+    emit(2);
+    const refreshing = client.refresh();
+    client.disconnect();
+    firstRead.resolve(session('断开后返回的内容', 2));
+    await refreshing;
+    await vi.advanceTimersByTimeAsync(5000);
+    expect(client.getState().snapshot).toBe(before);
+    expect(listener).not.toHaveBeenCalled();
+    expect(stopEvents).toHaveBeenCalledTimes(1);
+    expect(backend.subscribe).toHaveBeenCalledTimes(1);
+    expect(getSnapshot).not.toHaveBeenCalled();
   });
 
   it('does not replace an acknowledged save with an older in-flight refresh', async () => {

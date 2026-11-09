@@ -35,6 +35,8 @@ export type PptdClientState = {
   recovering: boolean;
 };
 
+type RefreshKind = 'committed' | 'authoritative';
+
 type PendingWrite = {
   request: TransactionRequest;
   pageId?: string;
@@ -231,8 +233,10 @@ export class PptdDocumentClient {
   private stopEvents: (() => void) | null = null;
   private active = false;
   private refreshTicket = 0;
-  private refreshNeeded = false;
-  private refreshQueued = false;
+  private refreshQueued: RefreshKind | null = null;
+  private refreshInFlight: RefreshKind | null = null;
+  private eventCursor: { epoch: string; sequence: number } | null = null;
+  private retiredEpochs = new Set<string>();
   private refreshing: Promise<void> | null = null;
   private projections = new WeakMap<PageDraft, PageSnapshot>();
   private state: PptdClientState = {
@@ -280,13 +284,18 @@ export class PptdDocumentClient {
     if (!this.active || this.stopEvents || !this.state.snapshot) return;
     this.stopEvents = this.backend.subscribe(
       (event) => {
-        if (event.originClientId === this.clientId && this.state.saving) return;
+        const snapshot = this.state.snapshot;
+        const cursor = this.eventCursor ?? snapshot;
         if (
-          event.epoch === this.state.snapshot?.epoch &&
-          event.sequence <= this.state.snapshot.sequence
+          this.retiredEpochs.has(event.epoch) ||
+          (event.epoch === snapshot?.epoch && event.sequence <= snapshot.sequence) ||
+          (event.epoch === cursor?.epoch && event.sequence <= cursor.sequence)
         )
           return;
-        void this.refresh();
+        const contiguous = event.epoch === cursor?.epoch && event.sequence === cursor.sequence + 1;
+        this.eventCursor = { epoch: event.epoch, sequence: event.sequence };
+        if (contiguous && event.originClientId === this.clientId && this.state.saving) return;
+        void this.requestRefresh(contiguous ? 'committed' : 'authoritative');
       },
       (connected) => {
         const wasConnected = this.state.connected;
@@ -299,7 +308,7 @@ export class PptdDocumentClient {
   disconnect() {
     this.active = false;
     this.refreshTicket++;
-    this.refreshQueued = false;
+    this.refreshQueued = null;
     this.stopEvents?.();
     this.stopEvents = null;
     for (const timer of this.timers.values()) clearTimeout(timer);
@@ -307,27 +316,52 @@ export class PptdDocumentClient {
   }
 
   refresh(): Promise<void> {
-    if (this.state.saving) {
-      this.refreshNeeded = true;
-      return Promise.resolve();
-    }
-    this.refreshQueued = true;
+    return this.requestRefresh('authoritative');
+  }
+
+  private queueRefresh(kind: RefreshKind) {
+    if (this.refreshQueued !== 'authoritative') this.refreshQueued = kind;
+  }
+
+  private requestRefresh(kind: RefreshKind): Promise<void> {
+    this.queueRefresh(kind);
+    return this.resumeRefresh();
+  }
+
+  private resumeRefresh(): Promise<void> {
+    if (this.state.saving || !this.refreshQueued) return Promise.resolve();
     if (!this.refreshing) {
       this.refreshing = this.refreshSnapshots().finally(() => {
         this.refreshing = null;
-        if (this.refreshQueued && !this.state.saving) void this.refresh();
+        if (this.refreshQueued && !this.state.saving) void this.resumeRefresh();
       });
     }
     return this.refreshing;
   }
 
+  private interruptRefresh() {
+    this.refreshTicket++;
+    if (this.refreshInFlight) this.queueRefresh(this.refreshInFlight);
+  }
+
   private async refreshSnapshots() {
     while (this.refreshQueued && !this.state.saving) {
-      this.refreshQueued = false;
+      const kind =
+        this.refreshQueued === 'committed' && !this.backend.getCommittedSnapshot
+          ? 'authoritative'
+          : this.refreshQueued;
+      this.refreshQueued = null;
+      this.refreshInFlight = kind;
       const ticket = ++this.refreshTicket;
       try {
-        const snapshot = await this.backend.getSnapshot();
+        const snapshot = await (kind === 'committed' && this.backend.getCommittedSnapshot
+          ? this.backend.getCommittedSnapshot()
+          : this.backend.getSnapshot());
         if (ticket !== this.refreshTicket || this.state.saving) continue;
+        if (kind === 'committed' && snapshot.epoch !== this.state.snapshot?.epoch) {
+          this.queueRefresh('authoritative');
+          continue;
+        }
         this.acceptSnapshot(snapshot, { loading: false });
         this.ensureEvents();
       } catch (error) {
@@ -340,13 +374,32 @@ export class PptdDocumentClient {
             ...(requiresRecovery(failure) ? { recoveryRequired: true } : {}),
           });
         }
+      } finally {
+        this.refreshInFlight = null;
       }
     }
-    if (this.refreshQueued) this.refreshNeeded = true;
+  }
+
+  private newestSnapshot(incoming: PptdSession): PptdSession {
+    const current = this.state.snapshot;
+    return current &&
+      (this.retiredEpochs.has(incoming.epoch) ||
+        (current.epoch === incoming.epoch && current.sequence > incoming.sequence))
+      ? current
+      : incoming;
   }
 
   private acceptSnapshot(incoming: PptdSession, patch: Partial<PptdClientState> = {}) {
-    const snapshot = shareSnapshot(this.state.snapshot, incoming);
+    const snapshot = shareSnapshot(this.state.snapshot, this.newestSnapshot(incoming));
+    if (this.state.snapshot && this.state.snapshot.epoch !== snapshot.epoch)
+      this.retiredEpochs.add(this.state.snapshot.epoch);
+    if (
+      !this.eventCursor ||
+      (this.eventCursor.epoch === snapshot.epoch &&
+        this.eventCursor.sequence < snapshot.sequence) ||
+      this.retiredEpochs.has(this.eventCursor.epoch)
+    )
+      this.eventCursor = { epoch: snapshot.epoch, sequence: snapshot.sequence };
     const previousDrafts = patch.drafts ?? this.state.drafts;
     let drafts = previousDrafts;
     const updateDraft = (pageId: string, draft: PageDraft) => {
@@ -640,7 +693,7 @@ export class PptdDocumentClient {
   async recoverPending(): Promise<TransactionResult | null> {
     if (this.state.saving) return null;
     if (this.pending) return this.submitPending(true);
-    this.refreshTicket++;
+    this.interruptRefresh();
     this.publish({ saving: true, recovering: true, error: null });
     try {
       const snapshot = await this.backend.recoverPending();
@@ -663,17 +716,14 @@ export class PptdDocumentClient {
       });
       throw failure;
     } finally {
-      if (this.refreshNeeded) {
-        this.refreshNeeded = false;
-        void this.refresh();
-      }
+      void this.resumeRefresh();
     }
   }
 
   private async submitPending(recover = false): Promise<TransactionResult> {
     const pending = this.pending;
     if (!pending) throw new PptdClientError('NO_REQUEST', '没有待保存的修改。');
-    this.refreshTicket++;
+    this.interruptRefresh();
     this.publish({ saving: true, recovering: recover, error: null, canRetry: false });
     let recoveryCompleted = !recover;
     try {
@@ -692,7 +742,9 @@ export class PptdDocumentClient {
             )
           : await this.backend.commit(pending.request));
       pending.result = result;
-      const snapshot = await (this.backend.getCommittedSnapshot?.() ?? this.backend.getSnapshot());
+      const snapshot = this.newestSnapshot(
+        await (this.backend.getCommittedSnapshot?.() ?? this.backend.getSnapshot()),
+      );
       const drafts = { ...this.state.drafts };
       if (pending.pageId && pending.sent) {
         const { pageId, sent } = pending;
@@ -802,10 +854,7 @@ export class PptdDocumentClient {
       if (definitive) await this.refresh();
       throw failure;
     } finally {
-      if (this.refreshNeeded) {
-        this.refreshNeeded = false;
-        void this.refresh();
-      }
+      void this.resumeRefresh();
     }
   }
 
