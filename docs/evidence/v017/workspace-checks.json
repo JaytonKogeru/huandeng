@@ -1,0 +1,93 @@
+{
+  "sourceRevision": "8ec86f5c48175c50cb40a222739ea41c83e83672",
+  "productVersion": "0.17.0",
+  "passed": true,
+  "checks": [
+    {
+      "name": "Permanent Slides and actual native File menu close only file previews",
+      "passed": true,
+      "milliseconds": 1083
+    },
+    {
+      "name": "Sections use the main workspace, preview draft membership and preserve source pages",
+      "passed": true,
+      "milliseconds": 1536
+    },
+    {
+      "name": "Page history is inline, blocks navigation during writes and restores only its selected page",
+      "passed": true,
+      "milliseconds": 1739
+    },
+    {
+      "name": "Local Browse representations preserve selection and independent sidebar preferences",
+      "passed": true,
+      "milliseconds": 4090
+    },
+    {
+      "name": "Section browser renders two populated groups and unassigned slides; filter, collapse, select and real reorder",
+      "passed": true,
+      "milliseconds": 1504
+    },
+    {
+      "name": "Notes uses Chromium composition, blocks navigation, saves long exact text and survives all views",
+      "passed": true,
+      "milliseconds": 2389
+    },
+    {
+      "name": "Browse and Notes isolate object shortcuts and image paste/drop from the document",
+      "passed": true,
+      "milliseconds": 582
+    },
+    {
+      "name": "Thumbnail slots stay six pixels through hover/focus and keep insertion drag targets",
+      "passed": true,
+      "milliseconds": 1060
+    },
+    {
+      "name": "Animation chooses objects, saves two effects, guards drafts and changes actual show artwork per click",
+      "passed": true,
+      "milliseconds": 6009
+    },
+    {
+      "name": "Beginning/current menu and F5 origins skip hidden pages and exit restores editing",
+      "passed": true,
+      "milliseconds": 3836
+    },
+    {
+      "name": "Repeated/pinned browser occurrences select independently and preserve checkpoint artwork and notes",
+      "passed": true,
+      "milliseconds": 2964
+    },
+    {
+      "name": "Auxiliary Story draft blocks view switching, native Project close and window close until saved",
+      "passed": true,
+      "milliseconds": 770
+    },
+    {
+      "name": "Agent setup and native menu localize; writer labels preserve client-authored names",
+      "passed": true,
+      "milliseconds": 2365
+    },
+    {
+      "name": "Wide light and narrow dark Normal/Outline/Browser/Notes surfaces in both UI languages preserve authored bytes",
+      "passed": true,
+      "milliseconds": 11617
+    },
+    {
+      "name": "No renderer exceptions",
+      "passed": true,
+      "milliseconds": 0
+    }
+  ],
+  "rendererErrors": [],
+  "screenshots": [
+    "edit-1600-zh-CN-light",
+    "browse-1600-zh-CN-light",
+    "outline-1600-zh-CN-light",
+    "sections-1600-zh-CN-light",
+    "notes-1600-zh-CN-light",
+    "history-1600-zh-CN-light",
+    "sections-1040-zh-CN-dark",
+    "history-1040-zh-CN-dark"
+  ]
+}
