@@ -1,0 +1,22 @@
+pageType: section
+background:
+  type: solid
+  color: "#879783"
+notes: 章节停顿。接下来从“怎么放对象”讲到“怎么让页面说得清”：画面不是一张不可拆的截图，Story 也不是讲稿。
+elements:
+  - elementId: section-title
+    elementType: text
+    role: title
+    bounds:
+        [64,220,800,72]
+    content:
+      text: 一页证据
+      fontSize: 42
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#F8F6EE"
+      letterSpacing: 2
+      align:
+        - left
+        - top

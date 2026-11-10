@@ -1,0 +1,305 @@
+pageType: content
+background:
+  type: solid
+  color: "#E9EEE6"
+notes: 这页进入编辑现场。左侧列的是对象类型，右侧是真实工作区截图。重点不是“功能很多”，而是图像、图表、表格和文字各自保留身份，所以修改可以落在具体对象上。截图来自公开产品示例，不代表当前这份介绍的页面。
+elements:
+  - elementId: objects-title
+    elementType: text
+    role: title
+    bounds:
+      - 48
+      - 48
+      - 420
+      - 40
+    content:
+      text: 对象独立，版式才改得动
+      fontSize: 27
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#17221C"
+      lineHeight: 1.3
+      align:
+        - left
+        - top
+  - elementId: objects-lead
+    elementType: text
+    bounds:
+        [48,94,280,52]
+    content:
+      text: "图像、图表、表格、文字分别可编辑；\n不靠整页截图。"
+      fontSize: 14.2
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#425048"
+      lineHeight: 1.65
+      align:
+        - left
+        - top
+  - elementId: objects-label-1
+    elementType: text
+    bounds:
+      - 48
+      - 166
+      - 260
+      - 22
+    content:
+      text: 图像
+      fontSize: 13.2
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#17221C"
+      align:
+        - left
+        - top
+  - elementId: objects-desc-1
+    elementType: text
+    bounds:
+      - 48
+      - 188
+      - 260
+      - 22
+    content:
+      text: 保留原始像素、比例与来源。
+      fontSize: 10.4
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#66756A"
+      align:
+        - left
+        - top
+  - elementId: objects-rule-1
+    elementType: line
+    bounds:
+      - 48
+      - 222
+      - 260
+      - 1
+    viewBox:
+      - 260
+      - 1
+    points: 0,0.5 260,0.5
+    border:
+      color: "#C6D0C5"
+      width: 0.7
+      style: solid
+  - elementId: objects-label-2
+    elementType: text
+    bounds:
+      - 48
+      - 238
+      - 260
+      - 22
+    content:
+      text: 图表
+      fontSize: 13.2
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#17221C"
+      align:
+        - left
+        - top
+  - elementId: objects-desc-2
+    elementType: text
+    bounds:
+      - 48
+      - 260
+      - 260
+      - 22
+    content:
+      text: 坐标、单位、来源保持可读。
+      fontSize: 10.4
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#66756A"
+      align:
+        - left
+        - top
+  - elementId: objects-rule-2
+    elementType: line
+    bounds:
+      - 48
+      - 294
+      - 260
+      - 1
+    viewBox:
+      - 260
+      - 1
+    points: 0,0.5 260,0.5
+    border:
+      color: "#C6D0C5"
+      width: 0.7
+      style: solid
+  - elementId: objects-label-3
+    elementType: text
+    bounds:
+      - 48
+      - 310
+      - 260
+      - 22
+    content:
+      text: 表格
+      fontSize: 13.2
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#17221C"
+      align:
+        - left
+        - top
+  - elementId: objects-desc-3
+    elementType: text
+    bounds:
+      - 48
+      - 332
+      - 260
+      - 22
+    content:
+      text: 12 组数值可以直接维护。
+      fontSize: 10.4
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#66756A"
+      align:
+        - left
+        - top
+  - elementId: objects-rule-3
+    elementType: line
+    bounds:
+      - 48
+      - 366
+      - 260
+      - 1
+    viewBox:
+      - 260
+      - 1
+    points: 0,0.5 260,0.5
+    border:
+      color: "#C6D0C5"
+      width: 0.7
+      style: solid
+  - elementId: objects-label-4
+    elementType: text
+    bounds:
+      - 48
+      - 382
+      - 260
+      - 22
+    content:
+      text: 文字
+      fontSize: 13.2
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#17221C"
+      align:
+        - left
+        - top
+  - elementId: objects-desc-4
+    elementType: text
+    bounds:
+      - 48
+      - 404
+      - 260
+      - 22
+    content:
+      text: 标题、正文、讲稿各自独立。
+      fontSize: 10.4
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#66756A"
+      align:
+        - left
+        - top
+  - elementId: objects-note
+    elementType: text
+    bounds:
+      - 48
+      - 462
+      - 262
+      - 48
+    content:
+      text: |-
+        一页不是一张图；
+        改一个对象，不需要重做整页。
+      fontSize: 11
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#9E5B3E"
+      lineHeight: 1.55
+      align:
+        - left
+        - top
+  - elementId: objects-shot-label
+    elementType: text
+    bounds:
+      - 342
+      - 90
+      - 300
+      - 18
+    content:
+      text: 真实界面 / 编辑工作区
+      fontSize: 9.2
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#66756A"
+      letterSpacing: 0.6
+      align:
+        - left
+        - top
+  - elementId: objects-panel
+    elementType: shape
+    bounds:
+      - 342
+      - 111
+      - 570
+      - 326
+    shapeName: rect
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      color: "#CDD6CC"
+      width: 0.8
+      style: solid
+  - elementId: objects-shot
+    elementType: image
+    bounds:
+      - 348
+      - 117
+      - 558
+      - 314
+    src: media/imported/15179dfcf6c63e3accc20d483a17c8c608464c9b0745ac64c478d54c65e571fc.png
+    sourceName: zh-CN-native-edit-focused-2x.png
+    fit:
+      mode: contain
+  - elementId: objects-caption
+    elementType: text
+    bounds:
+      - 342
+      - 442
+      - 570
+      - 36
+    content:
+      text: |-
+        真实界面：编辑工作区、画布与 Story 面板。
+        HUANDENG 0.18 · 公开产品示例。
+      fontSize: 9
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#66756A"
+      lineHeight: 1.5
+      align:
+        - left
+        - top

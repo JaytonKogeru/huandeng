@@ -1,0 +1,320 @@
+background:
+  type: solid
+  color: "#F6F6F3"
+elements:
+  - elementId: title
+    elementType: text
+    role: title
+    bounds:
+      - 56
+      - 30
+      - 848
+      - 42
+    content:
+      text: Story records what each slide must keep
+      fontFamily: Arial
+      fontSize: 30
+      lineHeight: 1.2
+      color: "#1C2321"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: shot-frame
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 55
+      - 95
+      - 302
+      - 288
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#C7CEC9"
+  - elementId: story-shot
+    elementType: image
+    bounds:
+      - 56
+      - 96
+      - 300
+      - 285
+    src: media/imported/489dd2e5299200127a17f13ad647931c356f726bc48514949be359d2a5d3df3c.png
+    sourceName: en-focused-story-4x.png
+    fit:
+      mode: contain
+  - elementId: shot-caption
+    elementType: text
+    bounds:
+      - 56
+      - 390
+      - 300
+      - 32
+    content:
+      text: Story tab in the Inspector. Real capture from the public example project.
+      fontFamily: Arial
+      fontSize: 11.5
+      lineHeight: 1.3
+      color: "#6E7874"
+      align:
+        - left
+        - top
+  - elementId: right-head
+    elementType: text
+    bounds:
+      - 392
+      - 96
+      - 512
+      - 22
+    content:
+      text: Story recorded for the 1BNA chart slide in this deck
+      fontFamily: Arial
+      fontSize: 16
+      lineHeight: 1.3
+      color: "#2E6B5E"
+      bold: true
+      align:
+        - left
+        - middle
+  - elementId: story-table
+    elementType: table
+    bounds:
+      - 392
+      - 126
+      - 512
+      - 232
+    columnWidths:
+      - 0.2
+      - 0.8
+    rows:
+      - - text: Purpose
+        - text: Show the twelve measured C1′–C1′ distances beside the structure they were measured in.
+      - - text: Keep
+        - text: |-
+            Values exactly as in paired-c1-distances.csv
+            Labelled non-zero y-axis, units in Å
+            PDB 1BNA citation on the slide
+            No replicate, error-bar or trend claims
+      - - text: This change
+        - text: First authoring for the English introduction
+    style:
+      cellStyle:
+        fontFamily: Arial
+        fontSize: 14
+        lineHeight: 1.35
+        color: "#1C2321"
+        align:
+            ["left","top"]
+        border:
+          - null
+          - null
+          - width: 1
+            color: "#CBD3CF"
+            style: solid
+          - null
+      firstColumnStyle:
+        color: "#2E6B5E"
+        bold: true
+        align:
+          - left
+          - top
+  - elementId: right-foot
+    elementType: text
+    bounds:
+      - 392
+      - 370
+      - 512
+      - 48
+    content:
+      text: An agent reads this before it edits the slide. People see it in Outline and in the Inspector.
+      fontFamily: Arial
+      fontSize: 16
+      lineHeight: 1.35
+      color: "#3E4845"
+      align:
+        - left
+        - top
+  - elementId: layers-label
+    elementType: text
+    bounds:
+      - 56
+      - 438
+      - 140
+      - 22
+    content:
+      text: Four Story levels
+      fontFamily: Arial
+      fontSize: 13
+      lineHeight: 1.3
+      color: "#56615D"
+      bold: true
+      align:
+        - left
+        - middle
+  - elementId: l1
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 200
+      - 434
+      - 160
+      - 30
+    fill:
+      type: solid
+      color: "#2E6B5E"
+    border:
+      width: 0
+      color: "#2E6B5E"
+  - elementId: l1t
+    elementType: text
+    bounds:
+      - 200
+      - 434
+      - 160
+      - 30
+    content:
+      text: Main · whole project
+      fontFamily: Arial
+      fontSize: 13
+      lineHeight: 1.2
+      color: "#FFFFFF"
+      align:
+        - center
+        - middle
+  - elementId: l2
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 372
+      - 434
+      - 160
+      - 30
+    fill:
+      type: solid
+      color: "#4F8576"
+    border:
+      width: 0
+      color: "#4F8576"
+  - elementId: l2t
+    elementType: text
+    bounds:
+      - 372
+      - 434
+      - 160
+      - 30
+    content:
+      text: Section · one argument
+      fontFamily: Arial
+      fontSize: 13
+      lineHeight: 1.2
+      color: "#FFFFFF"
+      align:
+        - center
+        - middle
+  - elementId: l3
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 544
+      - 434
+      - 172
+      - 30
+    fill:
+      type: solid
+      color: "#7FA79B"
+    border:
+      width: 0
+      color: "#7FA79B"
+  - elementId: l3t
+    elementType: text
+    bounds:
+      - 544
+      - 434
+      - 172
+      - 30
+    content:
+      text: Presentation · one talk
+      fontFamily: Arial
+      fontSize: 13
+      lineHeight: 1.2
+      color: "#FFFFFF"
+      align:
+        - center
+        - middle
+  - elementId: l4
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 728
+      - 434
+      - 176
+      - 30
+    fill:
+      type: solid
+      color: "#C9DAD4"
+    border:
+      width: 0
+      color: "#C9DAD4"
+  - elementId: l4t
+    elementType: text
+    bounds:
+      - 728
+      - 434
+      - 176
+      - 30
+    content:
+      text: Slide · purpose and keep
+      fontFamily: Arial
+      fontSize: 13
+      lineHeight: 1.2
+      color: "#1C2321"
+      align:
+        - center
+        - middle
+  - elementId: ft-mark
+    elementType: image
+    bounds:
+      - 56
+      - 505
+      - 16
+      - 16
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    fit:
+      mode: contain
+  - elementId: ft-label
+    elementType: text
+    bounds:
+      - 78
+      - 505
+      - 420
+      - 16
+    content:
+      text: HUANDENG  /  A worked example
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - left
+        - middle
+  - elementId: ft-pos
+    elementType: text
+    bounds:
+      - 824
+      - 505
+      - 80
+      - 16
+    content:
+      text: "0"
+      field: main-position
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - right
+        - middle
+notes: "A slide alone does not tell the next editor what matters. HUANDENG keeps a short Story beside every slide: its purpose, what must be kept, and the change that was asked for. On the left is the Story tab from the editor. On the right is the Story I actually recorded for the 1BNA chart slide you just saw: keep the values exactly as in the CSV, keep a labelled non-zero axis with units, keep the citation, and make no claim of replicates or trends. When an AI agent is asked to tidy that slide, this is what it reads first. Story also exists for the whole project, for each Section and for each Presentation, so a change can be judged against the purpose of the talk as well as the slide. An agent's Story record is its interpretation of the request; it is not the author's approval."

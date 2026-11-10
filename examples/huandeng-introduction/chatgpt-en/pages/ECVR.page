@@ -1,0 +1,111 @@
+pageType: content
+background:
+  type: solid
+  color: "#E4ECE6"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 44
+      - 35
+      - 870
+      - 67
+    role: title
+    content:
+      text: Start with one scientific slide
+      fontFamily: Arial
+      fontSize: 29
+      color: "#263C34"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: closing-mark
+    elementType: image
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    alt: huandeng.png
+    bounds:
+      - 44
+      - 154
+      - 93
+      - 93
+    fit:
+      mode: contain
+    crop:
+      left: 0.18
+      right: 0.18
+      top: 0.14
+      bottom: 0.14
+  - elementId: closing-brand
+    elementType: text
+    bounds:
+      - 160
+      - 182
+      - 710
+      - 54
+    content:
+      text: HUANDENG
+      fontFamily: Arial
+      fontSize: 38
+      color: "#263C34"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: next-action
+    elementType: text
+    bounds:
+      - 44
+      - 309
+      - 366
+      - 103
+    content:
+      text: |-
+        Open the example project.
+        Continue with one page.
+      fontFamily: Arial
+      fontSize: 25
+      color: "#263C34"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.5
+  - elementId: closing-example
+    elementType: image
+    src: "media/imported/20b7c78e9be4344089540b3a013d3de65540457409b28913638f18fd6161564d.png"
+    sourceName: 02.png
+    alt: 02.png
+    bounds:
+      - 467
+      - 277
+      - 447
+      - 251
+    fit:
+      mode: contain
+    crop:
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+  - elementId: project-path
+    elementType: text
+    bounds:
+      - 44
+      - 456
+      - 409
+      - 57
+    content:
+      text: examples/huandeng-introduction/
+      fontFamily: Consolas
+      fontSize: 16
+      color: "#356F68"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+notes: "The repository contains four current introductions: ChatGPT Chinese and English, native Claude Code English, native DeepSeek Harness Chinese. They are independent authoring attempts, not four folders of dated versions. This is a review candidate, not an assertion of author acceptance."

@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "role": "User-nominated historical design reference, not a fifth current introduction.",
+  "source": "Original introduction export; current source page revisions match its export report for all 19 pages.",
+  "pages": 19,
+  "sourceUnmodified": true,
+  "pdfMetadata": {
+    "format": "PDF 1.4",
+    "title": "HUANDENG Editor",
+    "author": "",
+    "subject": "",
+    "keywords": "",
+    "creator": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36 Edg/156.0.0.0",
+    "producer": "Skia/PDF m156",
+    "creationDate": "D:20261110045512+00'00'",
+    "modDate": "D:20261110045512+00'00'",
+    "trapped": "",
+    "encryption": null
+  },
+  "visibleContent": "All 19 pages viewed; no personal accounts, private paths or unrelated project labels observed.",
+  "textPatternMatches": [],
+  "files": [
+    {
+      "path": "original-demo-contact-1.jpg",
+      "sha256": "e243a3b70401eed0b4ed3fe8ec314d829cde70539ec1af8e19aa6b81a099ce07",
+      "bytes": 364690
+    },
+    {
+      "path": "original-demo-contact-2.jpg",
+      "sha256": "d6311d340560c2d53a843fb30bb58288a1e2b802ed7ee0baeba5289252db53fe",
+      "bytes": 367018
+    },
+    {
+      "path": "original-demo-contact-3.jpg",
+      "sha256": "021996a9ba6af51defb13f0e95f9f9b636fe3b6a85c99d2fc0b48bb2dac6c861",
+      "bytes": 338872
+    },
+    {
+      "path": "original-demo-contact-4.jpg",
+      "sha256": "14e4d1b9d095085cea488ffdfc7cade70df4c40541985a306eac525f55acf689",
+      "bytes": 139645
+    },
+    {
+      "path": "original-demo.pdf",
+      "sha256": "a3d2393fc283c3738ebcfc074a5446207a53cf158ecaaaf1e55dab4d60c54392",
+      "bytes": 4004704
+    },
+    {
+      "path": "README.md",
+      "sha256": "a520828e417babc86f2d6e0e6e19d7d318c0ae449542122ddc4a02d4c6e1caed",
+      "bytes": 1471
+    }
+  ]
+}

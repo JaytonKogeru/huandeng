@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "pluginVersion": "0.18.2",
+  "nativeTrialVersion": "0.18.1",
+  "designGuidesUnchangedSinceTrial": true,
+  "sourceDeltaSinceTrial": [
+    ".claude-plugin/plugin.json",
+    ".codex-plugin/plugin.json",
+    "README.md",
+    "plugin.json"
+  ],
+  "guideHashes": {
+    "README.md": "b84f2a91fb7dba79058f69be6815c9fa87591166b66d30736026ac1e8d7d5d2c",
+    "skills/huandeng-story/SKILL.md": "548ce140c0f6bf62e808b07848968965265929f0ac4950033ae72dc51dfd6009",
+    "skills/huandeng-story/references/production-design.md": "0811358403070850d4b1e38a4b3c2d8fdcfb4f5a17fd98ebfe7d9b7afa732cfe",
+    "skills/huandeng-story/references/scientific-design.md": "aa865707bb64d1aa1da57863ea89d65538f29a6eaca40ff0a1845d00e74e6e4c"
+  },
+  "nativeInstallation": {
+    "codexSupportedCliExitCode": 0,
+    "claudeSupportedCliExitCode": 0,
+    "verifiedPackageFilesPerRoot": 24,
+    "verifiedRoots": 3,
+    "deepseekDedicatedPatchAndShortcutUpdated": true,
+    "ordinaryDeepseekSettingsUnchanged": true
+  },
+  "doctor": {
+    "ok": true,
+    "protocolVerified": true,
+    "toolCount": 22,
+    "operationReviewSupported": true,
+    "modelTaskVerifiedByDoctor": false
+  },
+  "accountUpdate": {
+    "existingOwnedIdentityPreserved": true,
+    "version": "0.18.2",
+    "updatedTextFilesReadBack": 8,
+    "privateAppBindingUnchanged": true
+  },
+  "hostDeduplication": {
+    "host": "OpenAI.Codex Windows application",
+    "action": "Uninstalled duplicate owned cloud plugin from this host using native plugin detail Uninstall, not Delete plugin",
+    "installedHuandengCount": 1,
+    "retainedIdentity": "huandeng@huandeng-local",
+    "retainedVersion": "0.18.2",
+    "ownedCloudRecordPreserved": true,
+    "cloudRecordAvailableInCatalog": true,
+    "finalPickerRead": "Installed sidebar verified. No composer mutation: active user draft was nonempty and guard stopped the optional @ query.",
+    "noMessageSent": true,
+    "openResearchProjectCount": 2,
+    "preferencesWrittenByDedupe": false,
+    "nativeClaudeAndDeepseekConfigurationUnchangedByDedupe": true
+  },
+  "workstationReadyAfterHostUninstall": true,
+  "privateBindingsInPublicArchives": false,
+  "nativeMarketplaceSourcesRelative": true
+}

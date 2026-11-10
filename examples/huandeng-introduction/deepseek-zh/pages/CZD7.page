@@ -1,0 +1,191 @@
+pageType: cover
+background:
+  type: solid
+  color: "#16211B"
+notes: 开场。先不列功能：这页只说两件事——研究对象值得被认真讲清楚，而同一批证据不该被迫重做三遍。右侧是公开结构 PDB 1BNA 的正交投影，链 A 青绿、链 B 赭色；它也是整份介绍反复使用的科学证据。
+elements:
+  - elementId: brand-mark
+    elementType: image
+    bounds:
+      - 48
+      - 42
+      - 32
+      - 32
+    src: media/imported/c6cce013fd62e96048a5f10c1168ba05a2a7d6192f334d83386a4eec45732c22.png
+    sourceName: huandeng-icon.png
+    fit:
+      mode: contain
+  - elementId: brand-word
+    elementType: text
+    bounds:
+      - 92
+      - 46
+      - 320
+      - 22
+    content:
+      text: HUANDENG
+      fontSize: 13
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#F2F3EC"
+      letterSpacing: 4
+      align:
+        - left
+        - top
+  - elementId: eyebrow
+    elementType: text
+    bounds:
+      - 48
+      - 112
+      - 500
+      - 20
+    content:
+      text: 科研幻灯片编辑器  /  外部 AI 协作
+      fontSize: 11.5
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#AFC0B1"
+      letterSpacing: 1.2
+      align:
+        - left
+        - top
+  - elementId: cover-title
+    elementType: text
+    role: title
+    bounds:
+      - 48
+      - 164
+      - 530
+      - 140
+    content:
+      text: |-
+        把研究讲清楚，
+        不必重做三遍
+      fontSize: 46
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#F6F4EC"
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: cover-sub
+    elementType: text
+    bounds:
+      - 48
+      - 322
+      - 510
+      - 58
+    content:
+      text: |-
+        一份科学幻灯片底稿，
+        让组会、会议与评审共用同一批证据。
+      fontSize: 17
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#C6D2C4"
+      lineHeight: 1.65
+      align:
+        - left
+        - top
+  - elementId: cover-meta
+    elementType: text
+    bounds:
+      - 48
+      - 466
+      - 260
+      - 20
+    content:
+      text: HUANDENG 0.18 · 公开介绍
+      fontSize: 10
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#91A394"
+      letterSpacing: 0.5
+      align:
+        - left
+        - top
+  - elementId: cover-url
+    elementType: text
+    bounds:
+      - 48
+      - 490
+      - 360
+      - 20
+    content:
+      text: github.com/JaytonKogeru/huandeng
+      fontSize: 10.5
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#91A394"
+      align:
+        - left
+        - top
+  - elementId: cover-dna
+    elementType: image
+    bounds:
+      - 604
+      - 76
+      - 310
+      - 310
+    src: media/imported/342088ed88ab8fffc8ce2651cd6fbf183244f5069c7907702a957eb9cf9fa18a.png
+    sourceName: dna-duplex-end.png
+    fit:
+      mode: contain
+  - elementId: cover-dna-note
+    elementType: text
+    bounds:
+      - 604
+      - 410
+      - 310
+      - 38
+    content:
+      text: |-
+        PDB 1BNA · Dickerson–Drew DNA dodecamer
+        正交投影；链 A 青绿，链 B 赭色。
+      fontSize: 9.2
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#93A797"
+      lineHeight: 1.45
+      align:
+        - left
+        - top
+  - elementId: cover-rule
+    elementType: shape
+    bounds:
+      - 604
+      - 458
+      - 310
+      - 1
+    shapeName: rect
+    fill:
+      type: solid
+      color: "#3A493F"
+    border:
+      color: "#3A493F"
+      width: 0
+  - elementId: cover-no
+    elementType: text
+    bounds:
+      - 856
+      - 490
+      - 56
+      - 18
+    content:
+      text: 01 / 16
+      fontSize: 9.5
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#7E9184"
+      align:
+        - right
+        - top

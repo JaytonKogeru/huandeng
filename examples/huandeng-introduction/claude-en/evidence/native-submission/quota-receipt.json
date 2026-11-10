@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "nativeAuthor": "Claude Code",
+  "nativeCompleted": false,
+  "nativeState": "failed",
+  "nativeExitCode": 1,
+  "blocker": "Native provider account five-hour quota limit",
+  "quotaBypassed": false,
+  "modelOverride": false,
+  "nativeSeconds": 2154.0,
+  "mainPagesAtStop": 20,
+  "nativePdfPages": 18,
+  "nativePdfStatus": "Export predates the last native apply; preserved as raw evidence, not the current delivery",
+  "nativePdfSha256": "e0b4229e707ad002f32b28282202d88a7a9c92a049e97656d5a90de96d66e46a",
+  "originalProjectMetadataSha256": "93bf71f7c00a295a58ca76abbdf46e9f3bbb9992bc816cb839cb58f21486eea8",
+  "nativeFrozenArchiveSha256": "f7894ac8860d6e788273b90f89cd3c33c4d2661f753f77d18f2addbaea22221a",
+  "currentDelivery": "../../Exports",
+  "metadataCompletion": "Recorded separately as coordinator metadata completion; native history is not relabelled",
+  "rawSessionLogsIncluded": false,
+  "machinePathsIncluded": false
+}

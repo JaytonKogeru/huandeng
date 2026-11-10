@@ -1,0 +1,248 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-10T12:52:00.958673+00:00",
+  "scope": "Read-only PowerPoint 16.0 validation and actual Office-derived previews; no source PPTX was saved or overwritten by Office.",
+  "pathBase": "repository root",
+  "projects": [
+    {
+      "project": "chatgpt-zh",
+      "mainPages": 19,
+      "pptx": {
+        "path": "examples/huandeng-introduction/chatgpt-zh/Exports/deck.pptx",
+        "sha256": "8924ed55e16016bfc263e09d934a69488b133a4acb8e96152eec8877547f750b"
+      },
+      "pdf": {
+        "path": "examples/huandeng-introduction/chatgpt-zh/Exports/deck.pdf",
+        "sha256": "1f0975c206c83c5e8970af5837069f9cd875cf63e24217206a460a009d584514"
+      },
+      "pptxStructure": {
+        "slides": 19,
+        "charts": 2,
+        "tables": 4,
+        "officeMathContainers": 1
+      },
+      "officeVersion": "16.0",
+      "allPagesRendered": 19,
+      "renderPixels": [1920, 1080],
+      "sourceAndInputCopyUnchanged": true,
+      "sourcePageHashesUnchangedDuringQa": true,
+      "openedReadOnly": true,
+      "officeClosedAfterInspection": true,
+      "allPagesContactReviewed": true,
+      "cover": {
+        "path": "examples/huandeng-introduction/previews/chatgpt-zh.png",
+        "sha256": "86b4da66e6320574cf6b7336ab74e2d80e0505cc371a31faad3cc8eb35ff144a"
+      },
+      "overview": {
+        "path": "examples/huandeng-introduction/previews/chatgpt-zh-overview.png",
+        "sha256": "3a5abe4da23b7aaa4cfe6d69f9d6d927aaf8f4402740b3e1bae87b80d6d96dbe",
+        "pages": [1, 6, 9, 13]
+      },
+      "finalFullSizeReviewPages": [2, 6],
+      "finalScienceLayout": "Chart axes and labels readable; selected source-value table unclipped; native formula centered.",
+      "knownExportBoundary": "Functional icons are intentional image fallbacks; scientific charts, tables and equation remain native."
+    },
+    {
+      "project": "chatgpt-en",
+      "mainPages": 19,
+      "pptx": {
+        "path": "examples/huandeng-introduction/chatgpt-en/Exports/deck.pptx",
+        "sha256": "a19bda784155fc31818245ca928d49567e75cf8aa8a548977ef5704c3b328a49"
+      },
+      "pdf": {
+        "path": "examples/huandeng-introduction/chatgpt-en/Exports/deck.pdf",
+        "sha256": "4c33d7a96172e3e767d3629cc80c922468b5dfe67615a19114737cd708258ce8"
+      },
+      "pptxStructure": {
+        "slides": 19,
+        "charts": 2,
+        "tables": 4,
+        "officeMathContainers": 1
+      },
+      "officeVersion": "16.0",
+      "allPagesRendered": 19,
+      "renderPixels": [1920, 1080],
+      "sourceAndInputCopyUnchanged": true,
+      "sourcePageHashesUnchangedDuringQa": true,
+      "openedReadOnly": true,
+      "officeClosedAfterInspection": true,
+      "allPagesContactReviewed": true,
+      "cover": {
+        "path": "examples/huandeng-introduction/previews/chatgpt-en.png",
+        "sha256": "41e7f838e7a45b04af43c7488ec5ebb89dfb80802d9e5d33c48df2d0fc0bd03b"
+      },
+      "overview": {
+        "path": "examples/huandeng-introduction/previews/chatgpt-en-overview.png",
+        "sha256": "cca5b4d9d15e0eb970175224873e3a138c5a959c46f86631e84d12b31bf666fe",
+        "pages": [1, 6, 9, 13]
+      },
+      "finalFullSizeReviewPages": [2, 6],
+      "finalScienceLayout": "Chart axes and labels readable; selected source-value table unclipped; native formula centered.",
+      "knownExportBoundary": "Functional icons are intentional image fallbacks; scientific charts, tables and equation remain native."
+    },
+    {
+      "project": "deepseek-zh",
+      "mainPages": 16,
+      "pptx": {
+        "path": "examples/huandeng-introduction/deepseek-zh/Exports/deck.pptx",
+        "sha256": "6b6f79c172aee3277732c7891ab81c8c6c81c9b241d0e237c27932c1ba6faf3e"
+      },
+      "pdf": {
+        "path": "examples/huandeng-introduction/deepseek-zh/Exports/deck.pdf",
+        "sha256": "8bf22ffb20bfd157acdc4a3a5584610166aa76450580137fc28eb62af101c2b4"
+      },
+      "pptxStructure": {
+        "slides": 16,
+        "notes": 16,
+        "images": 19,
+        "tables": 2,
+        "charts": 0
+      },
+      "officeVersion": "16.0",
+      "allPagesRendered": 16,
+      "renderPixels": [1920, 1080],
+      "sourceAndInputCopyUnchanged": true,
+      "sourcePageHashesUnchangedDuringQa": true,
+      "openedReadOnly": true,
+      "officeClosedAfterInspection": true,
+      "allPagesContactReviewed": true,
+      "cover": {
+        "path": "examples/huandeng-introduction/previews/deepseek-zh.png",
+        "sha256": "5e45b3b18bec6435c156dd1fab1689db08f5c4e038ebb6ea2734efe369bd3456"
+      },
+      "overview": {
+        "path": "examples/huandeng-introduction/previews/deepseek-zh-overview.png",
+        "sha256": "c4976b2bbae369e9e1d3caf0955fc12ce76ad1ea2df08c4a0aefb1eb5b60e626",
+        "pages": [1, 2, 9, 11]
+      },
+      "knownLimitations": [
+        {
+          "kind": "fact",
+          "page": 15,
+          "source": "pages/W4PY.page",
+          "issue": "OpenPPTD is described as the PPTD document foundation. Actual reuse is the MathML-to-OMML formula conversion module; the statement is too broad. The GitHub mark may also be mistaken for an OpenPPTD logo.",
+          "authority": "packages/core/src/pptd/vendor/open-pptd/NOTICE.md"
+        },
+        {
+          "kind": "office-typography",
+          "page": 4,
+          "source": "pages/2Z2N.page",
+          "element": "problem-lead",
+          "issue": "A Chinese comma starts a line in Office while the PDF wraps differently."
+        },
+        {
+          "kind": "evidence-continuity",
+          "pages": [8, 12, 13],
+          "issue": "The actual editing example remains a generic text slide rather than a modification of the scientific example."
+        },
+        {
+          "kind": "readability",
+          "pages": [6, 13],
+          "issue": "Page 6 introduces several identity terms at once; page 13 uses two small full-dialogue screenshots."
+        }
+      ]
+    },
+    {
+      "project": "claude-en",
+      "mainPages": 20,
+      "pptx": {
+        "path": "examples/huandeng-introduction/claude-en/Exports/deck.pptx",
+        "sha256": "94888d8eb9793d686ce7dc514e93253bbcc924b6eaef2750170b314456cf9876"
+      },
+      "pdf": {
+        "path": "examples/huandeng-introduction/claude-en/Exports/deck.pdf",
+        "sha256": "bd9f9f67382584532c69502c0e196d921d4e5e940ccd4a339888cd60a13f55b0"
+      },
+      "pptxStructure": {
+        "slides": 20,
+        "notes": 20,
+        "images": 33,
+        "tables": 8,
+        "charts": 1,
+        "chartCountMethod": "Top-level ppt/charts/*.xml including HUANDENG page-element prefixes"
+      },
+      "officeVersion": "16.0",
+      "allPagesRendered": 20,
+      "renderPixels": [1920, 1080],
+      "sourceAndInputCopyUnchanged": true,
+      "sourcePageHashesUnchangedDuringQa": true,
+      "openedReadOnly": true,
+      "officeClosedAfterInspection": true,
+      "allPagesContactReviewed": true,
+      "cover": {
+        "path": "examples/huandeng-introduction/previews/claude-en.png",
+        "sha256": "ffc3ff08a481ec5f9d46fd087df4c95426c286535b99d291d652da0d047df593"
+      },
+      "overview": {
+        "path": "examples/huandeng-introduction/previews/claude-en-overview.png",
+        "sha256": "3a4395bcf6da655f3eb7322e011686362d6489e609a56a3d407116dae38e9e55",
+        "pages": [1, 5, 10, 17]
+      },
+      "knownLimitations": [
+        {
+          "kind": "office-chart-layout",
+          "page": 5,
+          "source": "pages/AVNM.page",
+          "element": "chart and separately positioned base-pair labels",
+          "issue": "Office replots the editable chart; manually positioned pair labels and the axis description collide with numeric labels and no longer align reliably. The twelve source values remain correct. PDF is readable."
+        },
+        {
+          "kind": "evidence-continuity",
+          "page": 7,
+          "issue": "The before/after editing evidence uses a generic text slide instead of the 1BNA scientific page."
+        },
+        {
+          "kind": "unfinished-native-bookkeeping",
+          "pages": [10, 18],
+          "issue": "Four shorter occurrence notes and a completion named version are described but were not created. Their exact targets/text/name were absent from the saved plan; the coordinator did not invent them."
+        }
+      ],
+      "finalMetadataOpen": {
+        "project": "claude-en",
+        "pptxSha256": "94888d8eb9793d686ce7dc514e93253bbcc924b6eaef2750170b314456cf9876",
+        "slideCount": 20,
+        "openedReadOnly": true,
+        "sourceUnchanged": true,
+        "officeCopyUnchanged": true,
+        "semanticPresentationPartsUnchanged": true,
+        "allowedPackageDifferences": [
+          "export-report metadata revision",
+          "chart/workbook relationship sequence numbers",
+          "embedded workbook core timestamps"
+        ],
+        "renderedPage": 5,
+        "renderedPageSha256": "bd50eea2313c7d949d3daee31e65c84e2ce66cd15824fbf45aeb1fc4c8f782cb",
+        "previousPage5ImageSha256": "bd50eea2313c7d949d3daee31e65c84e2ce66cd15824fbf45aeb1fc4c8f782cb",
+        "page5RenderIdentical": true,
+        "remainingLayoutEvidence": "Previous full 20-page Office render; all presentation content is semantically unchanged"
+      },
+      "fullRenderInputSha256": "94888d8eb9793d686ce7dc514e93253bbcc924b6eaef2750170b314456cf9876",
+      "finalFullSequenceRendered": true,
+      "priorFullRenderInputSha256": "c8e229979cecd250dec4904febbacedb607e8641bb4179ee526dd218ee8b5a8d",
+      "finalPagesPixelIdenticalToReviewedPriorSequence": 20,
+      "finalPageRenderSha256": [
+        "ffc3ff08a481ec5f9d46fd087df4c95426c286535b99d291d652da0d047df593",
+        "4f27daa894f740df62f23ddf65146929039f61e0bd48e61093cfb2bff179d3e8",
+        "eea33f259f9a504ee8ff54a54ae61713c3cb509749c7bb8ec518908710a926ee",
+        "1225e30b774f90fb2773f7dbe96029ade1c6e2b137ec1d526e7093808994968b",
+        "bd50eea2313c7d949d3daee31e65c84e2ce66cd15824fbf45aeb1fc4c8f782cb",
+        "c4581f8b0dadee17d994d135747b39356f81f6054e72fe34b4b709a27f727bba",
+        "e6b456d56a17385401ebf3447029806a44f76e08f65e66bcda55d7744893889f",
+        "3e9126ed1f764f8b9466d434023cb8b6413aa72a3cac37c740849f7b98e7e6e5",
+        "9bb47e92ab21304361639c00e08f28e792f40781f0aab2e2b8ea682f985448bd",
+        "e226d55d7a98da10eb9c77d19e00c5b3884580cdb56816bb7799157096747ba3",
+        "221d48fceae3865f3bddfe176334ab8f08fa3533de39eaa1591df78df4ee3fd0",
+        "8d8eb5c300a5197410e6e74b6628c19507c408cf061db0c7b7bec86256289b16",
+        "e634419b0fea9c4f5f7994d62bc44f9e75bf7aa679f9e19a86cc1427f934ccc2",
+        "bb0132ed889f671e0e7a8d31777fcb64fdbc372f12fe6f2eb62340894bfb117c",
+        "07df5d287c62feac184b10e6c5ea6e25536aaff8325157e1339ebfab23ed1c19",
+        "7778bdae3a09fbc330bbe447d37f9dbf6178ea3fe711c1c606f71e016ad53f37",
+        "faaa3c3871ef9f7a2db800ca016c457d146742228b05b37c66290a9b15b22222",
+        "159685c12df7bda385fa11266adcbb29cd3b7fbe09d367b906ac3721e6503ccf",
+        "8185255ad97ba868d8fc9c735c13a059e0f2b34de339b0e632988d79a3a20921",
+        "ebf4d951367d9a6bde7e1374be169f185672aa18b5193af2e4ca153c8392a26c"
+      ]
+    }
+  ],
+  "userAcceptance": "Not implied by successful mechanical validation"
+}

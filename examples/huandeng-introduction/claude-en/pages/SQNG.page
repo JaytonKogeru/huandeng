@@ -1,0 +1,23 @@
+background:
+  type: solid
+  color: "#2D4A43"
+elements:
+  - elementId: divider-title
+    elementType: text
+    role: title
+    bounds:
+      - 72
+      - 226
+      - 816
+      - 72
+    content:
+      text: Connect and contribute
+      fontFamily: Arial
+      fontSize: 40
+      lineHeight: 1.2
+      color: "#FFFFFF"
+      bold: true
+      align:
+        - left
+        - middle
+notes: Section 5. Finally, how AI clients connect, what is inside a project folder, what HUANDENG is built on, and where help is needed.

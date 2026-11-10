@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "scope": "Plugin guidance, introduction projects and organization records only",
+  "pluginTests": {
+    "status": "passed",
+    "passedTests": 8
+  },
+  "formatGate": {
+    "status": "passed",
+    "command": "pnpm check",
+    "checkedFiles": 1008
+  },
+  "artifactHashesVerified": 14,
+  "portableProjectFilesVerified": 719,
+  "officeExportsHashMatched": 8,
+  "editorSourceChanges": 0,
+  "unrelatedFixtureUnchanged": true,
+  "authorAcceptance": false
+}

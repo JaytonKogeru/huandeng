@@ -15,7 +15,7 @@
     "9ef9c0c5-5876-4d93-be42-cb3a76c2160c": {
       "shortCode": "HGV2",
       "path": "pages/HGV2.page",
-      "state": "active",
+      "state": "tombstone",
       "components": {},
       "elementRoles": {},
       "label": "S2",
@@ -36,7 +36,7 @@
     "7f7fb186-9725-4a42-b9c6-293929bf645e": {
       "shortCode": "38FW",
       "path": "pages/38FW.page",
-      "state": "active",
+      "state": "tombstone",
       "components": {},
       "elementRoles": {
         "title": "title"
@@ -59,7 +59,7 @@
     "6cddb3b7-3e8c-4e43-9ab0-7f924b7e5cb2": {
       "shortCode": "6WZY",
       "path": "pages/6WZY.page",
-      "state": "active",
+      "state": "tombstone",
       "components": {},
       "elementRoles": {},
       "label": "S4",
@@ -80,7 +80,7 @@
     "b3827d8a-a939-4794-8141-dfb8a6493222": {
       "shortCode": "45KP",
       "path": "pages/45KP.page",
-      "state": "active",
+      "state": "tombstone",
       "components": {},
       "elementRoles": {},
       "label": "S5",
@@ -101,7 +101,7 @@
     "6989aa82-5642-4235-9198-6b17ef327457": {
       "shortCode": "47JX",
       "path": "pages/47JX.page",
-      "state": "active",
+      "state": "tombstone",
       "components": {},
       "elementRoles": {},
       "label": "S6",
@@ -122,7 +122,7 @@
     "27ede9c2-7d61-4053-bd3f-8b8f0db722c0": {
       "shortCode": "6NYX",
       "path": "pages/6NYX.page",
-      "state": "active",
+      "state": "tombstone",
       "components": {},
       "elementRoles": {},
       "label": "S7",
@@ -143,7 +143,7 @@
     "8bae32f7-ba18-4684-9cfc-eaa87f521680": {
       "shortCode": "RJZC",
       "path": "pages/RJZC.page",
-      "state": "active",
+      "state": "tombstone",
       "components": {},
       "elementRoles": {},
       "label": "S8",
@@ -164,7 +164,7 @@
     "0ad112fa-6eb3-4824-b25a-eddad00367ca": {
       "shortCode": "3DM4",
       "path": "pages/3DM4.page",
-      "state": "active",
+      "state": "tombstone",
       "components": {},
       "elementRoles": {},
       "label": "S9",
@@ -185,7 +185,7 @@
     "9c3962a9-c169-42a6-8192-9fe23348287a": {
       "shortCode": "TWBJ",
       "path": "pages/TWBJ.page",
-      "state": "active",
+      "state": "tombstone",
       "components": {},
       "elementRoles": {
         "title": "title"
@@ -208,7 +208,7 @@
     "12b86dda-8727-4d3f-a9f6-234505e376f4": {
       "shortCode": "CU33",
       "path": "pages/CU33.page",
-      "state": "active",
+      "state": "tombstone",
       "components": {},
       "elementRoles": {},
       "label": "S11",
@@ -229,7 +229,7 @@
     "ecfb8e27-ee8a-44fb-9ae5-252c6f53ae7e": {
       "shortCode": "BMNQ",
       "path": "pages/BMNQ.page",
-      "state": "active",
+      "state": "tombstone",
       "components": {},
       "elementRoles": {},
       "label": "S12",
@@ -250,7 +250,7 @@
     "be146d47-06e0-432f-89ba-58fcce1dfa66": {
       "shortCode": "DM4Y",
       "path": "pages/DM4Y.page",
-      "state": "active",
+      "state": "tombstone",
       "components": {},
       "elementRoles": {},
       "label": "S13",
@@ -271,7 +271,7 @@
     "f9c78f18-554f-421b-9bf5-1e183936bd71": {
       "shortCode": "CB5K",
       "path": "pages/CB5K.page",
-      "state": "active",
+      "state": "tombstone",
       "components": {},
       "elementRoles": {},
       "label": "S14",
@@ -292,7 +292,7 @@
     "6dc52ab1-1167-4e97-b63a-ed7bd15456ce": {
       "shortCode": "S5B3",
       "path": "pages/S5B3.page",
-      "state": "active",
+      "state": "tombstone",
       "components": {},
       "elementRoles": {},
       "label": "S15",
@@ -313,7 +313,7 @@
     "76532a33-1809-47e4-b900-249c48d94047": {
       "shortCode": "TZBD",
       "path": "pages/TZBD.page",
-      "state": "active",
+      "state": "tombstone",
       "components": {},
       "elementRoles": {},
       "label": "S16",
@@ -334,7 +334,7 @@
     "9347d5e8-5df2-48b1-87a0-b5d66a4e8474": {
       "shortCode": "NKN6",
       "path": "pages/NKN6.page",
-      "state": "active",
+      "state": "tombstone",
       "components": {},
       "elementRoles": {},
       "label": "S17",
@@ -355,7 +355,7 @@
     "be2af813-d758-4376-81b6-8f7eb61815db": {
       "shortCode": "J46H",
       "path": "pages/J46H.page",
-      "state": "active",
+      "state": "tombstone",
       "components": {},
       "elementRoles": {
         "title": "title"
@@ -378,7 +378,7 @@
     "09bdac0e-d719-414d-b987-4294a80c54b7": {
       "shortCode": "42PF",
       "path": "pages/42PF.page",
-      "state": "active",
+      "state": "tombstone",
       "components": {},
       "elementRoles": {},
       "label": "S19",
@@ -399,7 +399,7 @@
     "0c358cbe-d2cd-49b2-ba9a-2a140abc1310": {
       "shortCode": "QBNX",
       "path": "pages/QBNX.page",
-      "state": "active",
+      "state": "tombstone",
       "components": {},
       "elementRoles": {},
       "label": "S20",
@@ -420,7 +420,7 @@
     "de7edaee-e41d-4814-97de-746faab95a73": {
       "shortCode": "GE9Q",
       "path": "pages/GE9Q.page",
-      "state": "active",
+      "state": "tombstone",
       "components": {},
       "elementRoles": {},
       "label": "S21",
@@ -441,7 +441,7 @@
     "b28232cb-e051-4ad9-a334-8135f4c1871f": {
       "shortCode": "EXVF",
       "path": "pages/EXVF.page",
-      "state": "active",
+      "state": "tombstone",
       "components": {},
       "elementRoles": {},
       "label": "S22",
@@ -462,7 +462,7 @@
     "5d99dfb6-a424-4feb-b339-5ba25a5de3f2": {
       "shortCode": "SR3W",
       "path": "pages/SR3W.page",
-      "state": "active",
+      "state": "tombstone",
       "components": {},
       "elementRoles": {},
       "label": "S23",
@@ -479,14 +479,400 @@
         "source": "HUANDENG 项目介绍制作要求",
         "recordedAt": "2026-11-10T08:41:04.897Z"
       }
+    },
+    "c1fcdc66-1c25-45a6-9b98-83d16f063c3e": {
+      "shortCode": "7EKH",
+      "path": "pages/7EKH.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S24",
+      "designIntent": {
+        "purpose": "比较同一 DNA 结构中各配对位置的 C1′ 距离。",
+        "keep": [
+          "原始结构与配对标记",
+          "12 个原值、坐标轴和单位",
+          "来源与证据范围"
+        ],
+        "requestedChange": "收紧标题与解释，保留全部科学证据。",
+        "actor": "ChatGPT",
+        "source": "公开科学示例",
+        "recordedAt": "2026-11-10T11:45:31.119Z"
+      }
+    },
+    "9cdec939-7f79-4142-98a4-b9543230a4ec": {
+      "shortCode": "W7WP",
+      "path": "pages/W7WP.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S25",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "四个客户端使用各自适配器。ChatGPT 通过已有的本机连接；本地 Codex、Claude Code 和 DeepSeek Harness 通过本机 MCP。Plugin 提供指导；Connector 调用选定项目的共享 writer；Editor 与 Agent 读写同一 PPTD。图示是产品关系，不是吞吐或速度比较。",
+        "keep": [
+          "Keep source figures, labels, measured values and citations",
+          "Keep intentional background roles, product identity and meaningful density"
+        ],
+        "requestedChange": "Rebuild the introduction around real scientific work",
+        "actor": "ChatGPT",
+        "source": "Current introduction brief",
+        "recordedAt": "2026-11-10T11:53:38.628Z"
+      }
+    },
+    "7995de62-e81e-46db-b250-cabc66a99b28": {
+      "shortCode": "TTHC",
+      "path": "pages/TTHC.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S26",
+      "designIntent": {
+        "pageRole": "cover",
+        "purpose": "HUANDENG 是为科学演示持续编辑而设计的工作流。这不是产品发布会；先看一张真实科学例页，再解释图、表、上下文和页面复用怎样一起工作。右侧是运行中的真实 Editor，画布为本稿的公开1BNA示例。",
+        "keep": [
+          "Keep source figures, labels, measured values and citations",
+          "Keep intentional background roles, product identity and meaningful density"
+        ],
+        "requestedChange": "Rebuild the introduction around real scientific work",
+        "actor": "ChatGPT",
+        "source": "Current introduction brief",
+        "recordedAt": "2026-11-10T12:25:31.911Z"
+      }
+    },
+    "b55179ed-446c-42a7-a2d5-2557defac052": {
+      "shortCode": "CR5K",
+      "path": "pages/CR5K.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S27",
+      "designIntent": {
+        "pageRole": "section",
+        "purpose": "章节停顿。下一部分用实际页面说明这一主题。",
+        "keep": [
+          "Keep source figures, labels, measured values and citations",
+          "Keep intentional background roles, product identity and meaningful density"
+        ],
+        "requestedChange": "Rebuild the introduction around real scientific work",
+        "actor": "ChatGPT",
+        "source": "Current introduction brief",
+        "recordedAt": "2026-11-10T11:53:43.064Z"
+      }
+    },
+    "7b5bb42e-c529-49f8-ad88-62c69b567837": {
+      "shortCode": "HUA9",
+      "path": "pages/HUA9.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S28",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "这是本项目的原生HUANDENG图表、表格和公式，不是三张截图。曲线保留全部12个位置；表格只摘录1、4、7、9、12位以展示可编辑数值。C1′距离由公开1BNA坐标计算，方法与CSV随项目保留。",
+        "keep": [
+          "Keep source figures, labels, measured values and citations",
+          "Keep intentional background roles, product identity and meaningful density"
+        ],
+        "requestedChange": "Rebuild the introduction around real scientific work",
+        "actor": "ChatGPT",
+        "source": "Current introduction brief",
+        "recordedAt": "2026-11-10T12:23:28.112Z"
+      }
+    },
+    "7b69742f-16b5-4b80-acf0-1d23966aae96": {
+      "shortCode": "JNZV",
+      "path": "pages/JNZV.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S29",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "受控公开示例中的真实一次修改。前后使用同一页、同一显示尺度。操作只改title和context两个text值。结构图src、crop、bounds、全部chart数据、坐标轴、单位、标记、来源及其他页面均通过深度相等比较保留。",
+        "keep": [
+          "Keep source figures, labels, measured values and citations",
+          "Keep intentional background roles, product identity and meaningful density"
+        ],
+        "requestedChange": "Rebuild the introduction around real scientific work",
+        "actor": "ChatGPT",
+        "source": "Current introduction brief",
+        "recordedAt": "2026-11-10T11:53:48.678Z"
+      }
+    },
+    "3483b895-bc52-43b6-a7c4-001a0d1e4526": {
+      "shortCode": "ZYZB",
+      "path": "pages/ZYZB.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S30",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "真实Editor截图，界面和页内容都使用本稿语言。这个工作区可直接选中图像、图表和文字；Agent的修改随后也在这里检查。截图用于说明操作环境；科学细节见前面的独立例页。",
+        "keep": [
+          "Keep source figures, labels, measured values and citations",
+          "Keep intentional background roles, product identity and meaningful density"
+        ],
+        "requestedChange": "Rebuild the introduction around real scientific work",
+        "actor": "ChatGPT",
+        "source": "Current introduction brief",
+        "recordedAt": "2026-11-10T12:25:37.951Z"
+      }
+    },
+    "59857807-d9f3-4e58-9a60-275cd504ea16": {
+      "shortCode": "MPTA",
+      "path": "pages/MPTA.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S31",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Sources: https://www.rcsb.org/structure/1BNA ; https://doi.org/10.1073/pnas.78.4.2179 . The end view is generated from the same deposited coordinates as the side view. Shared source files live in ../assets/science; portable copies are in sources/science. No private research materials are used.",
+        "keep": [
+          "Keep source figures, labels, measured values and citations",
+          "Keep intentional background roles, product identity and meaningful density"
+        ],
+        "requestedChange": "Rebuild the introduction around real scientific work",
+        "actor": "ChatGPT",
+        "source": "Current introduction brief",
+        "recordedAt": "2026-11-10T11:53:53.468Z"
+      }
+    },
+    "def43d68-1767-45f5-800a-17d648750b7e": {
+      "shortCode": "FE8A",
+      "path": "pages/FE8A.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S32",
+      "designIntent": {
+        "pageRole": "section",
+        "purpose": "章节停顿。下一部分用实际页面说明这一主题。",
+        "keep": [
+          "Keep source figures, labels, measured values and citations",
+          "Keep intentional background roles, product identity and meaningful density"
+        ],
+        "requestedChange": "Rebuild the introduction around real scientific work",
+        "actor": "ChatGPT",
+        "source": "Current introduction brief",
+        "recordedAt": "2026-11-10T11:53:53.852Z"
+      }
+    },
+    "ea528c6a-2423-488d-834b-056322cca744": {
+      "shortCode": "E9RN",
+      "path": "pages/E9RN.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S33",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "左侧是本项目真正保存的“措辞修改前”和“科学示例·措辞收紧”两个命名版本。右侧逐字列出该操作实际修改的标题与说明，直接取自共享写入服务的操作前后快照。精确操作ID及字段保留检查见evidence/wording-edit.json。命名版本与操作记录具有不同职责。",
+        "keep": [
+          "Keep source figures, labels, measured values and citations",
+          "Keep intentional background roles, product identity and meaningful density"
+        ],
+        "requestedChange": "Rebuild the introduction around real scientific work",
+        "actor": "ChatGPT",
+        "source": "Current introduction brief",
+        "recordedAt": "2026-11-10T12:11:59.525Z"
+      }
+    },
+    "05cd8517-c8ac-4e12-b2d0-40c438b91042": {
+      "shortCode": "HWB6",
+      "path": "pages/HWB6.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S34",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Story保存这页的目的、约束和本次请求。它帮助下一位作者理解版面中的判断，而不是用固定模板取代判断。右侧是这张科学页的真实Story面板。",
+        "keep": [
+          "Keep source figures, labels, measured values and citations",
+          "Keep intentional background roles, product identity and meaningful density"
+        ],
+        "requestedChange": "Rebuild the introduction around real scientific work",
+        "actor": "ChatGPT",
+        "source": "Current introduction brief",
+        "recordedAt": "2026-11-10T11:53:54.733Z"
+      }
+    },
+    "d64aef1b-eb88-4b05-a620-ae60a0e833de": {
+      "shortCode": "36EQ",
+      "path": "pages/36EQ.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S35",
+      "designIntent": {
+        "pageRole": "section",
+        "purpose": "章节停顿。下一部分用实际页面说明这一主题。",
+        "keep": [
+          "Keep source figures, labels, measured values and citations",
+          "Keep intentional background roles, product identity and meaningful density"
+        ],
+        "requestedChange": "Rebuild the introduction around real scientific work",
+        "actor": "ChatGPT",
+        "source": "Current introduction brief",
+        "recordedAt": "2026-11-10T11:53:55.247Z"
+      }
+    },
+    "68f5273e-3f0d-4e5d-84d1-38391280cead": {
+      "shortCode": "U5QA",
+      "path": "pages/U5QA.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S36",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "所有缩略图都来自这份项目的真实页面。上排是完整19页中的三个有序节选；下排是简短7页中的三个有序节选。下排把客户端架构放在科学示例之前，改变讲述顺序而不复制独立稿件。",
+        "keep": [
+          "Keep source figures, labels, measured values and citations",
+          "Keep intentional background roles, product identity and meaningful density"
+        ],
+        "requestedChange": "Rebuild the introduction around real scientific work",
+        "actor": "ChatGPT",
+        "source": "Current introduction brief",
+        "recordedAt": "2026-11-10T12:23:34.142Z"
+      }
+    },
+    "129dfdc6-685d-48b4-972b-abff11f823e6": {
+      "shortCode": "93SF",
+      "path": "pages/93SF.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S37",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "The table is a mapping of this project’s actual Main/full/brief composition, checked after final composition. Stable page identities are displayed as the real short codes; no full UUID is required to understand reuse. A pinned appearance retains the same page identity while selecting a named version.",
+        "keep": [
+          "Keep source figures, labels, measured values and citations",
+          "Keep intentional background roles, product identity and meaningful density"
+        ],
+        "requestedChange": "Rebuild the introduction around real scientific work",
+        "actor": "ChatGPT",
+        "source": "Current introduction brief",
+        "recordedAt": "2026-11-10T12:23:39.427Z"
+      }
+    },
+    "baca190c-e87b-415f-9c30-7c04e3fabe17": {
+      "shortCode": "2856",
+      "path": "pages/2856.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S38",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Actual comparison: the live page uses the later axis layout and one native-editable distance series; the measurement label carries the emphasis; the pinned page uses checkpoint checkpoint:a687931507a66085784d787c9ad2d31d. Both contain the exact same twelve measured values. The brief presentation genuinely pins that named version; the full presentation follows Main.",
+        "keep": [
+          "Keep source figures, labels, measured values and citations",
+          "Keep intentional background roles, product identity and meaningful density"
+        ],
+        "requestedChange": "Rebuild the introduction around real scientific work",
+        "actor": "ChatGPT",
+        "source": "Current introduction brief",
+        "recordedAt": "2026-11-10T12:25:43.527Z"
+      }
+    },
+    "f68f052b-18ac-4286-ae3b-6f12e5c5d0d0": {
+      "shortCode": "NJM7",
+      "path": "pages/NJM7.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S39",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "These task captures are from this actual 19-page introduction in HUANDENG Editor v0.18, matched to the interface language. The current introduction is exported through the running writer. Static exports do not claim to carry live click builds. UI source/provenance: evidence/assets.json.",
+        "keep": [
+          "Keep source figures, labels, measured values and citations",
+          "Keep intentional background roles, product identity and meaningful density"
+        ],
+        "requestedChange": "Rebuild the introduction around real scientific work",
+        "actor": "ChatGPT",
+        "source": "Current introduction brief",
+        "recordedAt": "2026-11-10T12:12:05.114Z"
+      }
+    },
+    "503c86ce-673c-4229-9251-22114e5f5da9": {
+      "shortCode": "4YZD",
+      "path": "pages/4YZD.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S40",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "A PPTD is the entry to a project folder. Preserve its pages, media and .huandeng data when moving it. This introduction and the other three current editions live together inside examples/huandeng-introduction in the main repository; old working copies are not another current edition.",
+        "keep": [
+          "Keep source figures, labels, measured values and citations",
+          "Keep intentional background roles, product identity and meaningful density"
+        ],
+        "requestedChange": "Rebuild the introduction around real scientific work",
+        "actor": "ChatGPT",
+        "source": "Current introduction brief",
+        "recordedAt": "2026-11-10T11:53:58.218Z"
+      }
+    },
+    "bd3c71d1-360e-4e0c-bbb6-5938970e8876": {
+      "shortCode": "TZXM",
+      "path": "pages/TZXM.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S41",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Code credits and licenses: packages/desktop/NOTICE.md and packages/core/src/pptd/vendor/open-pptd/NOTICE.md. Brand images retain their source bytes and provenance in ../assets/brand/manifest.json. The GitHub mark identifies the OpenPPTD repository, not a custom OpenPPTD logo. Design references are inspiration, not a claim of code reuse or affiliation. https://recent.design/ . Scientific sources: https://www.rcsb.org/structure/1BNA ; https://doi.org/10.1073/pnas.78.4.2179 .",
+        "keep": [
+          "Keep source figures, labels, measured values and citations",
+          "Keep intentional background roles, product identity and meaningful density"
+        ],
+        "requestedChange": "Rebuild the introduction around real scientific work",
+        "actor": "ChatGPT",
+        "source": "Current introduction brief",
+        "recordedAt": "2026-11-10T12:12:11.917Z"
+      }
+    },
+    "8a9bcdf1-fcb2-4214-9743-86c110c954ca": {
+      "shortCode": "E2RU",
+      "path": "pages/E2RU.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S42",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "The repository contains four current introductions: ChatGPT Chinese and English, native Claude Code English, native DeepSeek Harness Chinese. They are independent authoring attempts, not four folders of dated versions. This is a review candidate, not an assertion of author acceptance.",
+        "keep": [
+          "Keep source figures, labels, measured values and citations",
+          "Keep intentional background roles, product identity and meaningful density"
+        ],
+        "requestedChange": "Rebuild the introduction around real scientific work",
+        "actor": "ChatGPT",
+        "source": "Current introduction brief",
+        "recordedAt": "2026-11-10T12:23:53.262Z"
+      }
     }
   },
   "project": {
     "schemaVersion": 1,
     "mainStory": {
-      "purpose": "介绍 HUANDENG 如何让人与 Agent 持续编辑同一份演示作品",
-      "audience": "演示作者与开源贡献者",
-      "takeaway": "一份作品可以持续编辑、复用和交付"
+      "purpose": "介绍 HUANDENG 如何保留科学证据，并让人与 Agent 持续编辑、复用同一份作品",
+      "audience": "科研演示作者与项目贡献者",
+      "takeaway": "原图、数据、编辑意图与讲述顺序都留在项目里"
     },
     "sections": [
       {
@@ -499,66 +885,63 @@
         },
         "frontMatter": true,
         "pageIds": [
-          "9ef9c0c5-5876-4d93-be42-cb3a76c2160c",
-          "b3827d8a-a939-4794-8141-dfb8a6493222"
+          "7995de62-e81e-46db-b250-cabc66a99b28",
+          "c1fcdc66-1c25-45a6-9b98-83d16f063c3e"
         ],
-        "startPageId": "9ef9c0c5-5876-4d93-be42-cb3a76c2160c"
+        "startPageId": "7995de62-e81e-46db-b250-cabc66a99b28"
       },
       {
         "id": "intro-section-1",
-        "title": "一份作品",
+        "title": "证据与版面",
         "story": {
-          "purpose": "一份作品",
+          "purpose": "证据与版面",
           "audience": "",
           "takeaway": ""
         },
         "pageIds": [
-          "7f7fb186-9725-4a42-b9c6-293929bf645e",
-          "6989aa82-5642-4235-9198-6b17ef327457",
-          "27ede9c2-7d61-4053-bd3f-8b8f0db722c0",
-          "8bae32f7-ba18-4684-9cfc-eaa87f521680",
-          "0ad112fa-6eb3-4824-b25a-eddad00367ca"
+          "b55179ed-446c-42a7-a2d5-2557defac052",
+          "3483b895-bc52-43b6-a7c4-001a0d1e4526",
+          "59857807-d9f3-4e58-9a60-275cd504ea16",
+          "7b5bb42e-c529-49f8-ad88-62c69b567837"
         ],
-        "startPageId": "7f7fb186-9725-4a42-b9c6-293929bf645e"
+        "startPageId": "b55179ed-446c-42a7-a2d5-2557defac052"
       },
       {
         "id": "intro-section-2",
-        "title": "一起编辑",
+        "title": "人与 Agent",
         "story": {
-          "purpose": "一起编辑",
+          "purpose": "人与 Agent",
           "audience": "",
           "takeaway": ""
         },
         "pageIds": [
-          "9c3962a9-c169-42a6-8192-9fe23348287a",
-          "6cddb3b7-3e8c-4e43-9ab0-7f924b7e5cb2",
-          "12b86dda-8727-4d3f-a9f6-234505e376f4",
-          "ecfb8e27-ee8a-44fb-9ae5-252c6f53ae7e",
-          "be146d47-06e0-432f-89ba-58fcce1dfa66",
-          "f9c78f18-554f-421b-9bf5-1e183936bd71",
-          "6dc52ab1-1167-4e97-b63a-ed7bd15456ce",
-          "76532a33-1809-47e4-b900-249c48d94047",
-          "9347d5e8-5df2-48b1-87a0-b5d66a4e8474"
+          "def43d68-1767-45f5-800a-17d648750b7e",
+          "05cd8517-c8ac-4e12-b2d0-40c438b91042",
+          "9cdec939-7f79-4142-98a4-b9543230a4ec",
+          "7b69742f-16b5-4b80-acf0-1d23966aae96",
+          "ea528c6a-2423-488d-834b-056322cca744"
         ],
-        "startPageId": "9c3962a9-c169-42a6-8192-9fe23348287a"
+        "startPageId": "def43d68-1767-45f5-800a-17d648750b7e"
       },
       {
         "id": "intro-section-3",
-        "title": "讲述与交付",
+        "title": "复用与讲述",
         "story": {
-          "purpose": "讲述与交付",
+          "purpose": "复用与讲述",
           "audience": "",
           "takeaway": ""
         },
         "pageIds": [
-          "be2af813-d758-4376-81b6-8f7eb61815db",
-          "09bdac0e-d719-414d-b987-4294a80c54b7",
-          "0c358cbe-d2cd-49b2-ba9a-2a140abc1310",
-          "de7edaee-e41d-4814-97de-746faab95a73",
-          "b28232cb-e051-4ad9-a334-8135f4c1871f",
-          "5d99dfb6-a424-4feb-b339-5ba25a5de3f2"
+          "d64aef1b-eb88-4b05-a620-ae60a0e833de",
+          "68f5273e-3f0d-4e5d-84d1-38391280cead",
+          "129dfdc6-685d-48b4-972b-abff11f823e6",
+          "baca190c-e87b-415f-9c30-7c04e3fabe17",
+          "f68f052b-18ac-4286-ae3b-6f12e5c5d0d0",
+          "503c86ce-673c-4229-9251-22114e5f5da9",
+          "bd3c71d1-360e-4e0c-bbb6-5938970e8876",
+          "8a9bcdf1-fcb2-4214-9743-86c110c954ca"
         ],
-        "startPageId": "be2af813-d758-4376-81b6-8f7eb61815db"
+        "startPageId": "d64aef1b-eb88-4b05-a620-ae60a0e833de"
       }
     ],
     "presentations": [
@@ -566,120 +949,105 @@
         "id": "introduction-full",
         "title": "完整介绍",
         "story": {
-          "purpose": "完整介绍 HUANDENG 工作流",
+          "purpose": "从真实科学页解释证据、编辑和复用",
           "audience": "",
           "takeaway": ""
         },
         "items": [
           {
+            "id": "full-0",
+            "kind": "page",
+            "pageId": "7995de62-e81e-46db-b250-cabc66a99b28"
+          },
+          {
             "id": "full-1",
             "kind": "page",
-            "pageId": "9ef9c0c5-5876-4d93-be42-cb3a76c2160c"
+            "pageId": "c1fcdc66-1c25-45a6-9b98-83d16f063c3e"
           },
           {
             "id": "full-2",
             "kind": "page",
-            "pageId": "b3827d8a-a939-4794-8141-dfb8a6493222"
+            "pageId": "b55179ed-446c-42a7-a2d5-2557defac052"
           },
           {
             "id": "full-3",
             "kind": "page",
-            "pageId": "7f7fb186-9725-4a42-b9c6-293929bf645e"
+            "pageId": "3483b895-bc52-43b6-a7c4-001a0d1e4526"
           },
           {
             "id": "full-4",
             "kind": "page",
-            "pageId": "6989aa82-5642-4235-9198-6b17ef327457"
+            "pageId": "59857807-d9f3-4e58-9a60-275cd504ea16"
           },
           {
             "id": "full-5",
             "kind": "page",
-            "pageId": "27ede9c2-7d61-4053-bd3f-8b8f0db722c0"
+            "pageId": "7b5bb42e-c529-49f8-ad88-62c69b567837"
           },
           {
             "id": "full-6",
             "kind": "page",
-            "pageId": "8bae32f7-ba18-4684-9cfc-eaa87f521680"
+            "pageId": "def43d68-1767-45f5-800a-17d648750b7e"
           },
           {
             "id": "full-7",
             "kind": "page",
-            "pageId": "0ad112fa-6eb3-4824-b25a-eddad00367ca"
+            "pageId": "05cd8517-c8ac-4e12-b2d0-40c438b91042"
           },
           {
             "id": "full-8",
             "kind": "page",
-            "pageId": "9c3962a9-c169-42a6-8192-9fe23348287a"
+            "pageId": "9cdec939-7f79-4142-98a4-b9543230a4ec"
           },
           {
             "id": "full-9",
             "kind": "page",
-            "pageId": "6cddb3b7-3e8c-4e43-9ab0-7f924b7e5cb2"
+            "pageId": "7b69742f-16b5-4b80-acf0-1d23966aae96"
           },
           {
             "id": "full-10",
             "kind": "page",
-            "pageId": "12b86dda-8727-4d3f-a9f6-234505e376f4"
+            "pageId": "ea528c6a-2423-488d-834b-056322cca744"
           },
           {
             "id": "full-11",
             "kind": "page",
-            "pageId": "ecfb8e27-ee8a-44fb-9ae5-252c6f53ae7e"
+            "pageId": "d64aef1b-eb88-4b05-a620-ae60a0e833de"
           },
           {
             "id": "full-12",
             "kind": "page",
-            "pageId": "be146d47-06e0-432f-89ba-58fcce1dfa66"
+            "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead"
           },
           {
             "id": "full-13",
             "kind": "page",
-            "pageId": "f9c78f18-554f-421b-9bf5-1e183936bd71"
+            "pageId": "129dfdc6-685d-48b4-972b-abff11f823e6"
           },
           {
             "id": "full-14",
             "kind": "page",
-            "pageId": "6dc52ab1-1167-4e97-b63a-ed7bd15456ce"
+            "pageId": "baca190c-e87b-415f-9c30-7c04e3fabe17"
           },
           {
             "id": "full-15",
             "kind": "page",
-            "pageId": "76532a33-1809-47e4-b900-249c48d94047"
+            "pageId": "f68f052b-18ac-4286-ae3b-6f12e5c5d0d0"
           },
           {
             "id": "full-16",
             "kind": "page",
-            "pageId": "9347d5e8-5df2-48b1-87a0-b5d66a4e8474"
+            "pageId": "503c86ce-673c-4229-9251-22114e5f5da9"
           },
           {
             "id": "full-17",
             "kind": "page",
-            "pageId": "be2af813-d758-4376-81b6-8f7eb61815db"
+            "pageId": "bd3c71d1-360e-4e0c-bbb6-5938970e8876"
           },
           {
             "id": "full-18",
             "kind": "page",
-            "pageId": "09bdac0e-d719-414d-b987-4294a80c54b7"
-          },
-          {
-            "id": "full-19",
-            "kind": "page",
-            "pageId": "0c358cbe-d2cd-49b2-ba9a-2a140abc1310"
-          },
-          {
-            "id": "full-20",
-            "kind": "page",
-            "pageId": "de7edaee-e41d-4814-97de-746faab95a73"
-          },
-          {
-            "id": "full-21",
-            "kind": "page",
-            "pageId": "b28232cb-e051-4ad9-a334-8135f4c1871f"
-          },
-          {
-            "id": "full-22",
-            "kind": "page",
-            "pageId": "5d99dfb6-a424-4feb-b339-5ba25a5de3f2"
+            "pageId": "8a9bcdf1-fcb2-4214-9743-86c110c954ca"
           }
         ]
       },
@@ -687,50 +1055,46 @@
         "id": "introduction-short",
         "title": "简短介绍",
         "story": {
-          "purpose": "围绕共享作品与一次修改解释核心价值",
+          "purpose": "以连接方式、科学例页与实际修改展开简短介绍",
           "audience": "",
           "takeaway": ""
         },
         "items": [
           {
-            "id": "short-1",
+            "id": "brief-0",
             "kind": "page",
-            "pageId": "9ef9c0c5-5876-4d93-be42-cb3a76c2160c"
+            "pageId": "7995de62-e81e-46db-b250-cabc66a99b28"
           },
           {
-            "id": "short-2",
+            "id": "brief-1",
             "kind": "page",
-            "pageId": "b3827d8a-a939-4794-8141-dfb8a6493222"
+            "pageId": "9cdec939-7f79-4142-98a4-b9543230a4ec"
           },
           {
-            "id": "short-5",
+            "id": "brief-2",
             "kind": "page",
-            "pageId": "27ede9c2-7d61-4053-bd3f-8b8f0db722c0"
+            "pageId": "c1fcdc66-1c25-45a6-9b98-83d16f063c3e",
+            "versionId": "checkpoint:a687931507a66085784d787c9ad2d31d"
           },
           {
-            "id": "short-9",
+            "id": "brief-3",
             "kind": "page",
-            "pageId": "6cddb3b7-3e8c-4e43-9ab0-7f924b7e5cb2"
+            "pageId": "7b69742f-16b5-4b80-acf0-1d23966aae96"
           },
           {
-            "id": "short-13",
+            "id": "brief-4",
             "kind": "page",
-            "pageId": "f9c78f18-554f-421b-9bf5-1e183936bd71"
+            "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead"
           },
           {
-            "id": "short-14",
+            "id": "brief-5",
             "kind": "page",
-            "pageId": "6dc52ab1-1167-4e97-b63a-ed7bd15456ce"
+            "pageId": "f68f052b-18ac-4286-ae3b-6f12e5c5d0d0"
           },
           {
-            "id": "short-18",
+            "id": "brief-6",
             "kind": "page",
-            "pageId": "09bdac0e-d719-414d-b987-4294a80c54b7"
-          },
-          {
-            "id": "short-22",
-            "kind": "page",
-            "pageId": "5d99dfb6-a424-4feb-b339-5ba25a5de3f2"
+            "pageId": "8a9bcdf1-fcb2-4214-9743-86c110c954ca"
           }
         ]
       }

@@ -1,0 +1,17 @@
+{
+  "operationId": "cb19f7f2-c9d6-4f76-8981-759076f20fde",
+  "pageId": "c1fcdc66-1c25-45a6-9b98-83d16f063c3e",
+  "source": "Shared writer exact operation review",
+  "values": [
+    {
+      "elementId": "title",
+      "before": "从公开 DNA 双链坐标出发，比较各配对位置的局部几何差异",
+      "after": "同一结构里的局部差异"
+    },
+    {
+      "elementId": "context",
+      "before": "按照残基顺序配对，计算两条链对应 C1′ 原子之间的距离，再将十二个位置画成曲线",
+      "after": "从原始坐标，到每个配对位置的距离"
+    }
+  ]
+}

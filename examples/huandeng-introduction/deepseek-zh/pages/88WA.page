@@ -1,0 +1,182 @@
+pageType: content
+background:
+  type: solid
+  color: "#F4F3ED"
+notes: 这一页把四个身份讲清楚：Position 是当前顺序，pageId 是稳定身份，occurrenceId 是一次出场，versionId 是一次命名固定。上方是真实大纲视图，能直接看到位置与短码；短码用于定位，不等于 pageId。
+elements:
+  - elementId: identity-title
+    elementType: text
+    role: title
+    bounds:
+      - 48
+      - 40
+      - 430
+      - 40
+    content:
+      text: 位置会变，身份不会
+      fontSize: 28
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#17221C"
+      lineHeight: 1.3
+      align:
+        - left
+        - top
+  - elementId: identity-lead
+    elementType: text
+    bounds:
+      - 48
+      - 86
+      - 560
+      - 30
+    content:
+      text: 缩略图上的数字只说明当前顺序；页面自身有稳定身份。
+      fontSize: 14.8
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#425048"
+      align:
+        - left
+        - top
+  - elementId: identity-panel
+    elementType: shape
+    bounds:
+      - 42
+      - 126
+      - 876
+      - 300
+    shapeName: rect
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      color: "#D4DBD2"
+      width: 0.8
+      style: solid
+  - elementId: identity-shot
+    elementType: image
+    bounds:
+      - 48
+      - 132
+      - 864
+      - 288
+    src: media/imported/f5455f5cada808cb66355a623d9d2e07d5e8645a0e4cdd0ecc97220c7ab96bd5.png
+    sourceName: zh-CN-native-outline-reading-4x.png
+    fit:
+      mode: contain
+  - elementId: identity-caption
+    elementType: text
+    bounds:
+      - 48
+      - 428
+      - 864
+      - 20
+    content:
+      text: 真实界面：大纲视图同时显示位置与页面短码；短码用于定位，不等于 pageId。
+      fontSize: 9.2
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#66756A"
+      align:
+        - left
+        - top
+  - elementId: identity-term-1
+    elementType: text
+    bounds:
+      - 48
+      - 458
+      - 200
+      - 54
+    content:
+      text: |-
+        Position
+        这次排第几。顺序变了，它就变。
+      fontSize: 10.2
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#2B3830"
+      lineHeight: 1.5
+      align:
+        - left
+        - top
+  - elementId: identity-term-2
+    elementType: text
+    bounds:
+      - 264
+      - 458
+      - 210
+      - 54
+    content:
+      text: |-
+        pageId
+        页面的稳定身份；引用指向它。
+      fontSize: 10.2
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#2B3830"
+      lineHeight: 1.5
+      align:
+        - left
+        - top
+  - elementId: identity-term-3
+    elementType: text
+    bounds:
+      - 490
+      - 458
+      - 210
+      - 54
+    content:
+      text: |-
+        occurrenceId
+        某一页在某场演讲中的一次出场。
+      fontSize: 10.2
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#2B3830"
+      lineHeight: 1.5
+      align:
+        - left
+        - top
+  - elementId: identity-term-4
+    elementType: text
+    bounds:
+      - 716
+      - 458
+      - 196
+      - 54
+    content:
+      text: |-
+        versionId
+        命名版本；固定当时的画面。
+      fontSize: 10.2
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#2B3830"
+      lineHeight: 1.5
+      align:
+        - left
+        - top
+  - elementId: identity-note
+    elementType: text
+    bounds:
+      - 48
+      - 514
+      - 864
+      - 18
+    content:
+      text: 协作时说页面的身份，比说“第 3 页”更可靠。
+      fontSize: 9.5
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#9E5B3E"
+      align:
+        - left
+        - top

@@ -1,0 +1,227 @@
+background:
+  type: solid
+  color: "#ECEEEB"
+elements:
+  - elementId: title
+    elementType: text
+    role: title
+    bounds:
+      - 56
+      - 30
+      - 848
+      - 42
+    content:
+      text: A slide keeps its ID when it moves
+      fontFamily: Arial
+      fontSize: 30
+      lineHeight: 1.2
+      color: "#1C2321"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: before-label
+    elementType: text
+    bounds:
+      - 56
+      - 92
+      - 400
+      - 20
+    content:
+      text: Status bar before the move
+      fontFamily: Arial
+      fontSize: 13
+      lineHeight: 1.3
+      color: "#56615D"
+      bold: true
+      align:
+        - left
+        - middle
+  - elementId: before-shot
+    elementType: image
+    bounds:
+      - 56
+      - 116
+      - 400
+      - 50
+    src: media/imported/4b4475913c7e4538c9b76f47056e1edca6405a8636d7fd7c591309a373101e19.png
+    sourceName: en-identity-before-4x.png
+    fit:
+      mode: contain
+  - elementId: after-label
+    elementType: text
+    bounds:
+      - 56
+      - 184
+      - 400
+      - 20
+    content:
+      text: After moving the slide two places later
+      fontFamily: Arial
+      fontSize: 13
+      lineHeight: 1.3
+      color: "#2E6B5E"
+      bold: true
+      align:
+        - left
+        - middle
+  - elementId: after-shot
+    elementType: image
+    bounds:
+      - 56
+      - 208
+      - 400
+      - 50
+    src: media/imported/cfb23a312f298e185eb847eddb1cdf9cc493d63d55082cab0cc70606789af5f5.png
+    sourceName: en-identity-after-4x.png
+    fit:
+      mode: contain
+  - elementId: pos-note
+    elementType: text
+    bounds:
+      - 56
+      - 270
+      - 400
+      - 44
+    content:
+      text: Position changed from 2 to 4. Slide ID C014 did not.
+      fontFamily: Arial
+      fontSize: 17
+      lineHeight: 1.35
+      color: "#1C2321"
+      align:
+        - left
+        - top
+  - elementId: browse-frame
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 487
+      - 91
+      - 418
+      - 234
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#C7CEC9"
+  - elementId: browse-shot
+    elementType: image
+    bounds:
+      - 488
+      - 92
+      - 416
+      - 232
+    src: media/imported/d81ca1d3d956de469ebe26ea28e121e2c63e78349e97ec063068d28cfb26089d.png
+    sourceName: en-browse-reading-4x.png
+    fit:
+      mode: contain
+  - elementId: browse-caption
+    elementType: text
+    bounds:
+      - 488
+      - 328
+      - 416
+      - 16
+    content:
+      text: "Browse view: every card shows Position and Slide ID. Real capture."
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#6E7874"
+      align:
+        - left
+        - top
+  - elementId: ids
+    elementType: table
+    bounds:
+      - 56
+      - 354
+      - 848
+      - 120
+    columnWidths:
+      - 0.2
+      - 0.38
+      - 0.42
+    rows:
+      - - text: Identifier
+        - text: What it names
+        - text: Changes when
+      - - text: Slide ID
+        - text: One slide's content, e.g. C014
+        - text: Never; use it in search, notes and requests to an agent
+      - - text: Position
+        - text: Its place in the current order
+        - text: Slides are added, removed or moved
+      - - text: Occurrence
+        - text: One appearance of a slide in a Presentation
+        - text: That Presentation is rearranged
+    style:
+      cellStyle:
+        fontFamily: Arial
+        fontSize: 14
+        lineHeight: 1.25
+        color: "#1C2321"
+        align:
+          - left
+          - middle
+        border:
+          - null
+          - null
+          - width: 1
+            color: "#C7CEC9"
+            style: solid
+          - null
+      firstRowStyle:
+        color: "#56615D"
+        bold: true
+        fontSize: 12
+      firstColumnStyle:
+        color: "#2E6B5E"
+        bold: true
+  - elementId: ft-mark
+    elementType: image
+    bounds:
+      - 56
+      - 505
+      - 16
+      - 16
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    fit:
+      mode: contain
+  - elementId: ft-label
+    elementType: text
+    bounds:
+      - 78
+      - 505
+      - 420
+      - 16
+    content:
+      text: HUANDENG  /  One source, many talks
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - left
+        - middle
+  - elementId: ft-pos
+    elementType: text
+    bounds:
+      - 824
+      - 505
+      - 80
+      - 16
+    content:
+      text: "0"
+      field: main-position
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - right
+        - middle
+notes: Slide numbers are a poor way to refer to slides, because they change whenever the deck changes. HUANDENG separates the two. The status bar on the left, captured before and after moving one slide two places later, shows Position going from 2 to 4 while the Slide ID stays C014. Browse shows both on every card. So when you write in your notes, or ask an agent, to fix the chart on slide C014, that request still means the same slide next week. When a slide appears in a Presentation, each appearance is an occurrence with its own identity, so a slide used twice can have different notes each time. Footers in this deck use a live Position field, which is why the numbers stay right without anyone retyping them.

@@ -1,0 +1,207 @@
+background:
+  type: solid
+  color: "#ECEEEB"
+elements:
+  - elementId: title
+    elementType: text
+    role: title
+    bounds:
+      - 56
+      - 30
+      - 848
+      - 42
+    content:
+      text: Read the argument before polishing slides
+      fontFamily: Arial
+      fontSize: 30
+      lineHeight: 1.2
+      color: "#1C2321"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: outline-frame
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 55
+      - 91
+      - 850
+      - 284
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#C7CEC9"
+  - elementId: outline-shot
+    elementType: image
+    bounds:
+      - 56
+      - 92
+      - 848
+      - 282
+    src: media/imported/0c992097d40aa22917c249d80642892caad569fa7a60faf4df2089cafdc79c09.png
+    sourceName: en-outline-reading-4x.png
+    fit:
+      mode: contain
+  - elementId: outline-caption
+    elementType: text
+    bounds:
+      - 56
+      - 380
+      - 848
+      - 16
+    content:
+      text: "Outline view: Section, Position, title, Story summary and Slide ID for each slide. Real capture, public example project."
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#6E7874"
+      align:
+        - left
+        - top
+  - elementId: c1h
+    elementType: text
+    bounds:
+      - 56
+      - 410
+      - 264
+      - 22
+    content:
+      text: Outline
+      fontFamily: Arial
+      fontSize: 16
+      lineHeight: 1.3
+      color: "#2E6B5E"
+      bold: true
+      align:
+        - left
+        - middle
+  - elementId: c1d
+    elementType: text
+    bounds:
+      - 56
+      - 434
+      - 264
+      - 52
+    content:
+      text: "Titles and Story in order: does the argument hold?"
+      fontFamily: Arial
+      fontSize: 15
+      lineHeight: 1.35
+      color: "#3E4845"
+      align:
+        - left
+        - top
+  - elementId: c2h
+    elementType: text
+    bounds:
+      - 348
+      - 410
+      - 264
+      - 22
+    content:
+      text: Browse
+      fontFamily: Arial
+      fontSize: 16
+      lineHeight: 1.3
+      color: "#2E6B5E"
+      bold: true
+      align:
+        - left
+        - middle
+  - elementId: c2d
+    elementType: text
+    bounds:
+      - 348
+      - 434
+      - 264
+      - 52
+    content:
+      text: "Thumbnails: density and rhythm across the deck"
+      fontFamily: Arial
+      fontSize: 15
+      lineHeight: 1.35
+      color: "#3E4845"
+      align:
+        - left
+        - top
+  - elementId: c3h
+    elementType: text
+    bounds:
+      - 640
+      - 410
+      - 264
+      - 22
+    content:
+      text: Sections
+      fontFamily: Arial
+      fontSize: 16
+      lineHeight: 1.3
+      color: "#2E6B5E"
+      bold: true
+      align:
+        - left
+        - middle
+  - elementId: c3d
+    elementType: text
+    bounds:
+      - 640
+      - 434
+      - 264
+      - 52
+    content:
+      text: Each starts at a stable first slide and runs to the next
+      fontFamily: Arial
+      fontSize: 15
+      lineHeight: 1.35
+      color: "#3E4845"
+      align:
+        - left
+        - top
+  - elementId: ft-mark
+    elementType: image
+    bounds:
+      - 56
+      - 505
+      - 16
+      - 16
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    fit:
+      mode: contain
+  - elementId: ft-label
+    elementType: text
+    bounds:
+      - 78
+      - 505
+      - 420
+      - 16
+    content:
+      text: HUANDENG  /  One source, many talks
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - left
+        - middle
+  - elementId: ft-pos
+    elementType: text
+    bounds:
+      - 824
+      - 505
+      - 80
+      - 16
+    content:
+      text: "0"
+      field: main-position
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - right
+        - middle
+notes: "Before you adjust a single font size, read the talk as an argument. The Outline view lists every slide with its Position, title, Story summary and Slide ID, grouped by Section. You can see at once whether the order makes sense and whether a slide has lost its purpose. Browse shows the same slides as thumbnails, which is better for judging density and visual rhythm. Sections divide the deck into parts of the argument: each Section starts at a stable first slide and runs until the next Section, so inserting a slide in the middle does not break the structure. This introduction uses five Sections, each opened by a title-only slide."

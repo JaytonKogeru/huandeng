@@ -4,7 +4,7 @@ Read this when creating a deck, substantially redesigning it, or making a produc
 
 ## Audit → Spec → Frame → Implement → Validate → Release
 
-Audit the story, assets and rendered pages. Specify the audience and sequence. Frame one representative content page and one section divider using concrete geometry and type sizes, then inspect before expanding. Implement through transactions. Validate a contact sheet, full-size pages and exports. Release a useful named milestone and the whole Project folder.
+Audit the story, assets and rendered pages. Specify the audience, evidence and intended visual direction. Frame a small set of representative pages, usually two or three, that exposes this deck's main visual decisions: for example a product demonstration, a concept diagram or a data comparison. Choose their roles from the material; include a divider only when the deck calls for one. Inspect concrete geometry, type, color, imagery and rhythm before expanding. Implement through transactions. Validate a contact sheet, full-size pages and exports. Release a useful named milestone and the whole Project folder.
 
 For code work, Frame can define types, module boundaries and a small runnable scaffold. It does not replace the audit or product test.
 
@@ -14,7 +14,7 @@ Keep the selected root AGENTS.md as the only discovered policy. Record audience/
 
 ## Bilingual type scale
 
-Starting ranges at 960×540; multiply by canvasWidth / 960 for another size. Existing approved layouts take precedence.
+Starting ranges at 960×540; multiply by canvasWidth / 960 for another size. Existing approved layouts take precedence. These are adjustable starting points, not aesthetic acceptance thresholds. Set hierarchy from the slide's role, audience, viewing conditions and visual direction; a large lead statement or detailed reference page can need a different scale.
 
 | Role | Chinese | English |
 | --- | --- | --- |
@@ -28,9 +28,9 @@ Use regular paragraphs with selective emphasis, not long entirely bold blocks. D
 
 ## Background and rhythm
 
-Choose one ordinary-page background, normally white. Record a deliberate exception in designIntent.backgroundException with a short explanation. Vary evidence scale and emphasis instead of arbitrary page colors.
+Choose a deliberate background and color system suited to the subject and references. It may use one base or related light, dark, colored and image treatments for distinct roles. Keep their relationship recognizable and check contrast, evidence fidelity and transitions across the deck. Use designIntent.backgroundException to explain an exception when the Project has explicitly requested a base-background check; do not impose a universal white-page rule.
 
-A Section is organization; it creates no divider. When requested, insert an actual title-only slide and anchor the Section to it. No footer, page number, subtitle, badge or icon. Set designIntent.pageRole to section and the text object's role to title. Use cover/content roles on other pages.
+A Section is organization; it creates no divider. If the author requests a title-only opener, insert that actual slide and anchor the Section to it; its title-only contract excludes footers, numbers, subtitles, badges and icons. Other opener designs follow the Project's stated direction. Set designIntent.pageRole to section and the text object's role to title where appropriate. Use cover/content roles on other pages.
 
 Composition follows purpose: comparable evidence aligns; one task screenshot needs room; a quiet idea page can be text only; a process needs meaningful order. Avoid repeating three rounded cards across every page.
 
@@ -40,7 +40,7 @@ Use huandeng_design_audit when advertised, or CLI quality. Sizes normalize to 96
 
 Keep exact operation IDs and review saved before/after. Render all affected pages. For a deck, inspect a contact sheet then every page at presentation size. Fix hierarchy, line breaks, image readability and unjustified repetition. Notes hold spoken context and transitions.
 
-    huandeng --entry /project/deck.pptd quality --language zh-CN --background '#FFFFFF' --require-section-dividers
+    huandeng --entry /project/deck.pptd quality --language zh-CN
     huandeng --entry /project/deck.pptd quality --language en --max-title 34 --max-body 22 --presentation public-talk
 
-A clean report does not establish image provenance, rhythm or Office output. Inspect these separately, then save the complete Project and final PDF/PPTX.
+Use background or required-divider flags only for an explicit Project policy. A clean report does not establish image provenance, visual quality, rhythm or Office output. Inspect these separately, record the agent visual review honestly, and keep author acceptance separate until the author supplies it. Save the complete Project and final PDF/PPTX.

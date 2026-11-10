@@ -1,5 +1,7 @@
 # v0.18 workflow implementation frame
 
+> Historical 0.18 record. The author rejected the introduction slides after this record. The current introduction/design contract is [INTRODUCTION-REWORK.md](INTRODUCTION-REWORK.md); current validation and handoff are in [INTRODUCTION-DELIVERY.md](INTRODUCTION-DELIVERY.md). This record retains its historical technical measurements and does not establish author acceptance. Editor 0.18.0 is unchanged; current AI guidance is plugin 0.18.2.
+
 This document fixes interfaces before implementation. Overall product decisions remain in SPEC-V018.
 
 ## Modules and ownership

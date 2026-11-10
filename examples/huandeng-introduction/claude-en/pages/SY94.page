@@ -1,0 +1,220 @@
+background:
+  type: solid
+  color: "#F6F6F3"
+elements:
+  - elementId: title
+    elementType: text
+    role: title
+    bounds:
+      - 56
+      - 30
+      - 848
+      - 42
+    content:
+      text: Check, present and export
+      fontFamily: Arial
+      fontSize: 30
+      lineHeight: 1.2
+      color: "#1C2321"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: check-frame
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 55
+      - 91
+      - 362
+      - 298
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#C7CEC9"
+  - elementId: check-shot
+    elementType: image
+    bounds:
+      - 56
+      - 92
+      - 360
+      - 296
+    src: media/derived/en-design-check-crop-0-0-2592-2128.png
+    sourceName: en-design-check-crop-0-0-2592-2128.png
+    fit:
+      mode: contain
+  - elementId: check-caption
+    elementType: text
+    bounds:
+      - 56
+      - 396
+      - 360
+      - 60
+    content:
+      text: "Design check: read-only observations on type sizes, backgrounds, Section title slides and image resolution. It never edits or approves slides."
+      fontFamily: Arial
+      fontSize: 12
+      lineHeight: 1.35
+      color: "#56615D"
+      align:
+        - left
+        - top
+  - elementId: export-frame
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 443
+      - 91
+      - 290
+      - 139
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#C7CEC9"
+  - elementId: export-shot
+    elementType: image
+    bounds:
+      - 444
+      - 92
+      - 288
+      - 136
+    src: media/imported/ea2c787b8b58f25cb8655c5df4926889bad3ebd4b293d24df5e18a54944be3eb.png
+    sourceName: en-export-4x.png
+    fit:
+      mode: contain
+  - elementId: present-shot
+    elementType: image
+    bounds:
+      - 756
+      - 92
+      - 148
+      - 56
+    src: media/imported/48fe43fdc4bd5aa675f58e91a6bfaaf7eeb7df2be43384d4d89bdd61c8167f08.png
+    sourceName: en-present-menu-4x.png
+    fit:
+      mode: contain
+  - elementId: present-caption
+    elementType: text
+    bounds:
+      - 756
+      - 154
+      - 148
+      - 70
+    content:
+      text: "Present menu: start from the beginning or from the current slide."
+      fontFamily: Arial
+      fontSize: 12
+      lineHeight: 1.35
+      color: "#56615D"
+      align:
+        - left
+        - top
+  - elementId: outputs
+    elementType: table
+    bounds:
+      - 444
+      - 248
+      - 460
+      - 222
+    columnWidths:
+      - 0.24
+      - 0.76
+    rows:
+      - - text: Output
+        - text: What it carries
+      - - text: PPTD project
+        - text: "The editable source: slides, notes, Story, Presentations and named versions"
+      - - text: PPTX
+        - text: Native text, images, shapes, tables, equations and basic charts; animation is exported static
+      - - text: PDF
+        - text: Static pages for sharing and archiving
+      - - text: MP4
+        - text: Timed playback of click builds, 720p or 1080p, no audio
+    style:
+      cellStyle:
+        fontFamily: Arial
+        fontSize: 13
+        lineHeight: 1.3
+        color: "#1C2321"
+        align:
+          - left
+          - middle
+        border:
+          - null
+          - null
+          - width: 1
+            color: "#CBD3CF"
+            style: solid
+          - null
+      firstRowStyle:
+        color: "#56615D"
+        bold: true
+        fontSize: 12
+      firstColumnStyle:
+        color: "#2E6B5E"
+        bold: true
+  - elementId: caption
+    elementType: text
+    bounds:
+      - 444
+      - 474
+      - 460
+      - 16
+    content:
+      text: Real captures from HUANDENG Editor 0.18, public example project.
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#6E7874"
+      align:
+        - left
+        - top
+  - elementId: ft-mark
+    elementType: image
+    bounds:
+      - 56
+      - 505
+      - 16
+      - 16
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    fit:
+      mode: contain
+  - elementId: ft-label
+    elementType: text
+    bounds:
+      - 78
+      - 505
+      - 420
+      - 16
+    content:
+      text: HUANDENG  /  Versions and delivery
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - left
+        - middle
+  - elementId: ft-pos
+    elementType: text
+    bounds:
+      - 824
+      - 505
+      - 80
+      - 16
+    content:
+      text: "0"
+      field: main-position
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - right
+        - middle
+notes: "Before delivering, run Design check. It reads the whole collection and reports observations: type sizes outside the range you chose, unexpected backgrounds, Sections without a title slide, images with too few pixels for the size they are shown at. It is read-only; you still look at the slides yourself. Present starts from the beginning with F5 or from the current slide with Shift+F5, in a full-screen window with click builds. Export takes the slides as saved when it starts. The project folder itself is the editable source. PPTX keeps supported objects native, so a co-author can keep editing text, tables and basic charts in PowerPoint; animation becomes static. PDF is for sharing, and MP4 plays the click builds on a timer. This deck was exported to PDF and PPTX in exactly this way."

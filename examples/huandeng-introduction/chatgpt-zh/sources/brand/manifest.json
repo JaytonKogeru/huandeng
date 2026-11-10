@@ -1,0 +1,159 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Small shared identity and direct-code-source set for the four public introduction projects.",
+  "reference": "../reference/original-demo.pdf",
+  "retrievedAtUtc": "2026-11-10T04:37:12.461697+00:00",
+  "sourceProvenance": "Source URLs and upstream processing are preserved from the original introduction's brand record; hashes were reverified against the actual imported pixels.",
+  "use": "Keep proportions and original colors. Pair marks with exact product/project names. Marks identify products and sources; they do not imply endorsement. Repository MIT licensing does not override third-party marks.",
+  "assets": [
+    {
+      "path": "codex.png",
+      "product": "Codex",
+      "role": "Official OpenAI Codex extension icon; keep product text Codex beside it.",
+      "sha256": "2ce1c57dd3b312417106a487815ab1235bddce17e1fa9b32a2f048bd71ee25d3",
+      "bytes": 10969,
+      "sourceUrl": "https://openai.gallerycdn.vsassets.io/extensions/openai/chatgpt/26.51021.22027/1792788319200/Microsoft.VisualStudio.Services.Icons.Default",
+      "sourcePageUrl": "https://marketplace.visualstudio.com/items?itemName=openai.chatgpt",
+      "originalProcessing": "Downloaded unchanged from the official public asset URL.",
+      "bundleProcessing": "Byte-for-byte copy of the image used by the original introduction.",
+      "pixels": {
+        "width": 385,
+        "height": 385,
+        "mode": "RGBA"
+      }
+    },
+    {
+      "path": "claude-code.png",
+      "product": "Claude Code",
+      "role": "Claude product mark used beside Claude Code; not an exclusive Code symbol.",
+      "sha256": "733f24f4c52acb15eb0fbded1cf40eb42b4ba8e62b882acac70b6234b50919a8",
+      "bytes": 4787,
+      "sourceUrl": "https://claude.com/icon.png",
+      "sourcePageUrl": "https://claude.com/product/claude-code",
+      "originalProcessing": "Downloaded unchanged from the official public asset URL.",
+      "bundleProcessing": "Byte-for-byte copy of the image used by the original introduction.",
+      "pixels": {
+        "width": 192,
+        "height": 192,
+        "mode": "P"
+      }
+    },
+    {
+      "path": "deepseek.png",
+      "product": "DeepSeek",
+      "role": "DeepSeek official organization mark; not a separate Harness logo.",
+      "sha256": "e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc",
+      "bytes": 15456,
+      "sourceUrl": "https://avatars.githubusercontent.com/u/148330874?v=4",
+      "sourcePageUrl": "https://github.com/deepseek-ai",
+      "originalProcessing": "Downloaded unchanged from the official public asset URL.",
+      "bundleProcessing": "Byte-for-byte copy of the image used by the original introduction.",
+      "pixels": {
+        "width": 460,
+        "height": 460,
+        "mode": "RGB"
+      }
+    },
+    {
+      "path": "chatgpt.png",
+      "product": "ChatGPT",
+      "role": "ChatGPT official mark.",
+      "sha256": "0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13",
+      "bytes": 27900,
+      "sourceUrl": "https://chatgpt.com/cdn/assets/favicon.6a33781f61.svg",
+      "sourcePageUrl": "https://chatgpt.com/",
+      "originalProcessing": "Uniform rasterization of the unchanged official SVG using sharp 0.35.5; no recoloring, redrawing, crop, or added graphics.",
+      "bundleProcessing": "Byte-for-byte copy of the image used by the original introduction.",
+      "pixels": {
+        "width": 720,
+        "height": 720,
+        "mode": "RGBA"
+      },
+      "source_sha256": "2021463df9935dda89cef407aa564bced9d83b4f9b6ae8945d649e56676624f0",
+      "source_file": "chatgpt.svg"
+    },
+    {
+      "path": "open-slide.png",
+      "product": "OpenSlide",
+      "role": "Editor code foundation.",
+      "sha256": "44e2a2aa5f3887deae386fa73f71234961f93e006873b632ccf38b6b6f1291a1",
+      "bytes": 31437,
+      "sourceUrl": "https://raw.githubusercontent.com/open-slide/open-slide/3233309b72af27f58f01b7d3b6a13f4011cf06e7/apps/web/app/icon.svg",
+      "sourcePageUrl": "https://github.com/open-slide/open-slide",
+      "originalProcessing": "Uniform rasterization of unchanged official SVG with sharp 0.35.5; no crop, recoloring or redraw.",
+      "bundleProcessing": "Byte-for-byte copy of the image used by the original introduction.",
+      "pixels": {
+        "width": 512,
+        "height": 512,
+        "mode": "RGBA"
+      },
+      "source_sha256": "761935b363487ac9d3ee164f0fc03d8265f4a2e1935c25325448e7f9d02e3219",
+      "source_file": "open-slide.svg"
+    },
+    {
+      "path": "github-repository.png",
+      "product": "OpenPPTD repository",
+      "role": "GitHub repository symbol used beside OpenPPTD; not an OpenPPTD logo.",
+      "sha256": "2a2f5cbcc74c7fa83c40127dd8b0e42c23f1157131aebe28492aa1ac27bbdc6d",
+      "bytes": 5437,
+      "sourceUrl": "https://brand.github.com/GitHub_Logos.zip",
+      "sourcePageUrl": "https://brand.github.com/foundations/logo",
+      "originalProcessing": "Exact unmodified file from official GitHub logo archive.",
+      "bundleProcessing": "Byte-for-byte copy of the image used by the original introduction.",
+      "pixels": {
+        "width": 294,
+        "height": 288,
+        "mode": "RGBA"
+      },
+      "archive_member": "GitHub Logos/PNG/GitHub_Invertocat_Black.png"
+    },
+    {
+      "path": "pptxgenjs.png",
+      "product": "PptxGenJS",
+      "role": "PPTX export library.",
+      "sha256": "d697acf6f3c5bc265806bc8f6c4e6d58b964e0b2962392d0329a420639f45846",
+      "bytes": 15816,
+      "sourceUrl": "https://gitbrent.github.io/PptxGenJS/img/favicon.png",
+      "sourcePageUrl": "https://gitbrent.github.io/PptxGenJS/",
+      "originalProcessing": "Downloaded unchanged from the official project website or repository.",
+      "bundleProcessing": "Byte-for-byte copy of the image used by the original introduction.",
+      "pixels": {
+        "width": 480,
+        "height": 349,
+        "mode": "RGBA"
+      }
+    },
+    {
+      "path": "huandeng.png",
+      "product": "HUANDENG",
+      "role": "Default HUANDENG mark; exact pixels used on the original introduction cover and footers.",
+      "sha256": "6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef",
+      "bytes": 62348,
+      "sourceUrl": "https://github.com/JaytonKogeru/huandeng/blob/00482d384f57ec3f7ce42f9578c5e1cfd6092048/packages/desktop/icon.png",
+      "sourcePageUrl": "https://github.com/JaytonKogeru/huandeng",
+      "originalProcessing": "Existing repository asset; see packages/desktop/brand-assets.json.",
+      "bundleProcessing": "Byte-for-byte copy; no recoloring, crop, or resampling.",
+      "pixels": {
+        "width": 512,
+        "height": 512,
+        "mode": "RGBA"
+      }
+    },
+    {
+      "path": "huandeng-user-original.png",
+      "product": "HUANDENG",
+      "role": "Unmodified user-supplied source mark retained for provenance; use huandeng.png for the existing presentation identity.",
+      "sha256": "bd04c9ebb0e94cdaa5ba6c3a7df8d5ae1d35236933b3ca9ab297912d7b870530",
+      "bytes": 1424342,
+      "sourceUrl": "https://github.com/JaytonKogeru/huandeng/blob/00482d384f57ec3f7ce42f9578c5e1cfd6092048/packages/desktop/branding/huandeng-user-mark.png",
+      "sourcePageUrl": "https://github.com/JaytonKogeru/huandeng",
+      "originalProcessing": "Existing repository asset; see packages/desktop/brand-assets.json.",
+      "bundleProcessing": "Byte-for-byte copy; no recoloring, crop, or resampling.",
+      "pixels": {
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA"
+      }
+    }
+  ]
+}

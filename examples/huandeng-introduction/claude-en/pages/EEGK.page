@@ -1,0 +1,23 @@
+background:
+  type: solid
+  color: "#2D4A43"
+elements:
+  - elementId: divider-title
+    elementType: text
+    role: title
+    bounds:
+      - 72
+      - 226
+      - 816
+      - 72
+    content:
+      text: One source, many talks
+      fontFamily: Arial
+      fontSize: 40
+      lineHeight: 1.2
+      color: "#FFFFFF"
+      bold: true
+      align:
+        - left
+        - middle
+notes: "Section 3. The chart slide we just edited is one slide in one project. Next: how the same slides serve several talks, and how a slide keeps its identity while the talks are rearranged."

@@ -1,0 +1,22 @@
+pageType: section
+background:
+  type: solid
+  color: "#6C7E6C"
+notes: 章节停顿。接下来讲具体协作：外部 AI 如何发提案、人和写入器如何检查、修改如何被回看，最后怎样交付。
+elements:
+  - elementId: section-title
+    elementType: text
+    role: title
+    bounds:
+        [64,220,800,72]
+    content:
+      text: 一次修改
+      fontSize: 42
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#F8F6EE"
+      letterSpacing: 2
+      align:
+        - left
+        - top

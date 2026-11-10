@@ -1,5 +1,7 @@
 # HUANDENG Editor v0.18.0
 
+> Historical 0.18 record. The author rejected the introduction slides after this record. The current introduction/design contract is [INTRODUCTION-REWORK.md](INTRODUCTION-REWORK.md); current validation and handoff are in [INTRODUCTION-DELIVERY.md](INTRODUCTION-DELIVERY.md). This record retains its historical technical measurements and does not establish author acceptance. Editor 0.18.0 is unchanged; current AI guidance is plugin 0.18.2.
+
 本版把设计约定接到实际创作与检查：中文与英文分别使用适合的字号和字重，普通内容页保持统一底色，章节可以直接插入一张仅含标题的开场页。插入保留已有 Section ID、Story 和页面成员关系，并可用同一份 Undo 撤回。
 
 编辑器保持普通、浏览、大纲、章节、备注页和历史六个同级工作区，降低工具栏、卡片和侧栏的视觉重量。设计检查集中显示文字大小、背景、章节开场与素材像素比例；可以选择语言、白底及章节标题页要求，点击结果回到对应页面。检查只读取已保存状态，结果变化后提示刷新。

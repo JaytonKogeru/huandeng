@@ -1,0 +1,107 @@
+background:
+  type: solid
+  color: "#E9ECE8"
+elements:
+  - elementId: mark
+    elementType: image
+    bounds:
+      - 64
+      - 64
+      - 52
+      - 52
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    fit:
+      mode: contain
+  - elementId: wordmark
+    elementType: text
+    bounds:
+      - 128
+      - 74
+      - 300
+      - 34
+    content:
+      text: HUANDENG
+      fontFamily: Arial
+      fontSize: 24
+      lineHeight: 1.2
+      color: "#1C2321"
+      bold: true
+      align:
+        - left
+        - middle
+  - elementId: title
+    elementType: text
+    role: title
+    bounds:
+      - 64
+      - 176
+      - 520
+      - 140
+    content:
+      text: Slides that stay editable while the science changes
+      fontFamily: Arial
+      fontSize: 40
+      lineHeight: 1.15
+      color: "#1C2321"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: subtitle
+    elementType: text
+    bounds:
+        [64,292,500,60]
+    content:
+      text: A desktop slide editor where researchers and AI agents revise one project through one reviewable writer.
+      fontFamily: Arial
+      fontSize: 19
+      lineHeight: 1.35
+      color: "#3E4845"
+      align:
+        - left
+        - top
+  - elementId: edition
+    elementType: text
+    bounds:
+      - 64
+      - 462
+      - 500
+      - 20
+    content:
+      text: Introduction  ·  HUANDENG Editor 0.18  ·  November 2026
+      fontFamily: Arial
+      fontSize: 13
+      lineHeight: 1.3
+      color: "#56615D"
+      align:
+        - left
+        - middle
+  - elementId: structure
+    elementType: image
+    bounds:
+      - 598
+      - 52
+      - 320
+      - 384
+    src: media/imported/ff6d1434a44440fba124ccad7dfa30efa01e8c400094d4453d17d502345c1e2c.png
+    sourceName: dna-duplex-side.png
+    fit:
+      mode: contain
+  - elementId: structure-caption
+    elementType: text
+    bounds:
+      - 598
+      - 452
+      - 320
+      - 32
+    content:
+      text: "Worked example in this talk: DNA dodecamer, PDB 1BNA, drawn from its deposited coordinates."
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#6E7874"
+      align:
+        - center
+        - top
+notes: "HUANDENG is a desktop slide editor for presentations that keep changing: a results deck, a thesis talk, a group-meeting update. The idea is simple. Keep one editable project of slides, build each talk from it, write down what every slide is for, and let an AI agent work on the same project through the same writer you use, so every change can be checked. In the next twenty minutes I will show the editor, follow one real scientific slide through a change, and then cover reuse, history, delivery and how to get involved. The molecule on the right is our running example: the Dickerson–Drew DNA dodecamer, PDB entry 1BNA."

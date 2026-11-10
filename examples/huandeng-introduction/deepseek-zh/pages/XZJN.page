@@ -1,0 +1,277 @@
+pageType: content
+background:
+  type: solid
+  color: "#E8EEE6"
+notes: 从问题转到模型。Main Slides 是页面内容的底稿；Presentations 只是引用页面并决定顺序与讲稿。右侧是真实项目概览，能看到底稿与演讲被分开呈现。左侧三种场合说明同一批页面可以用不同顺序讲。
+elements:
+  - elementId: source-kicker
+    elementType: text
+    bounds:
+      - 48
+      - 42
+      - 300
+      - 18
+    content:
+      text: 模型 / 02
+      fontSize: 9.5
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#66756A"
+      letterSpacing: 1.2
+      align:
+        - left
+        - top
+  - elementId: source-title
+    elementType: text
+    role: title
+    bounds:
+      - 48
+      - 66
+      - 430
+      - 40
+    content:
+      text: 底稿只有一份，出场可以很多次
+      fontSize: 25
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#17221C"
+      lineHeight: 1.3
+      align:
+        - left
+        - top
+  - elementId: source-lead
+    elementType: text
+    bounds:
+      - 48
+      - 118
+      - 420
+      - 66
+    content:
+      text: Main Slides 保存页面；每场演讲只记录引用、顺序和讲稿。
+      fontSize: 15.6
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#425048"
+      lineHeight: 1.7
+      align:
+        - left
+        - top
+  - elementId: source-row-1
+    elementType: text
+    bounds:
+      - 48
+      - 212
+      - 390
+      - 26
+    content:
+      text: 组会 · 8 分钟
+      fontSize: 14
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#17221C"
+      align:
+        - left
+        - top
+  - elementId: source-desc-1
+    elementType: text
+    bounds:
+      - 48
+      - 236
+      - 390
+      - 22
+    content:
+      text: 方法先讲，结果后置。
+      fontSize: 11.6
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#66756A"
+      align:
+        - left
+        - top
+  - elementId: source-rule-1
+    elementType: line
+    bounds:
+      - 48
+      - 264
+      - 390
+      - 1
+    viewBox:
+      - 390
+      - 1
+    points: 0,0.5 390,0.5
+    border:
+      color: "#C6D0C5"
+      width: 0.7
+      style: solid
+  - elementId: source-row-2
+    elementType: text
+    bounds:
+      - 48
+      - 278
+      - 390
+      - 26
+    content:
+      text: 会议 · 15 分钟
+      fontSize: 14
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#17221C"
+      align:
+        - left
+        - top
+  - elementId: source-desc-2
+    elementType: text
+    bounds:
+      - 48
+      - 302
+      - 390
+      - 22
+    content:
+      text: 同一张图，换成比较框架。
+      fontSize: 11.6
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#66756A"
+      align:
+        - left
+        - top
+  - elementId: source-rule-2
+    elementType: line
+    bounds:
+      - 48
+      - 330
+      - 390
+      - 1
+    viewBox:
+      - 390
+      - 1
+    points: 0,0.5 390,0.5
+    border:
+      color: "#C6D0C5"
+      width: 0.7
+      style: solid
+  - elementId: source-row-3
+    elementType: text
+    bounds:
+      - 48
+      - 344
+      - 390
+      - 26
+    content:
+      text: 评审 · 逐条追问
+      fontSize: 14
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#17221C"
+      align:
+        - left
+        - top
+  - elementId: source-desc-3
+    elementType: text
+    bounds:
+      - 48
+      - 368
+      - 390
+      - 22
+    content:
+      text: 补上来源、方法和限制。
+      fontSize: 11.6
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#66756A"
+      align:
+        - left
+        - top
+  - elementId: source-close
+    elementType: text
+    bounds:
+      - 48
+      - 412
+      - 410
+      - 46
+    content:
+      text: |-
+        页面只维护一次；
+        讲法按场合重排。
+      fontSize: 15
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#2B3830"
+      lineHeight: 1.55
+      align:
+        - left
+        - top
+  - elementId: source-panel
+    elementType: shape
+    bounds:
+      - 494
+      - 102
+      - 424
+      - 326
+    shapeName: rect
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      color: "#CDD6CC"
+      width: 0.8
+      style: solid
+  - elementId: source-shot
+    elementType: image
+    bounds:
+      - 500
+      - 108
+      - 412
+      - 314
+    src: media/imported/afe675bef8594c3328129632115e6befdec36ffc2a7ad347cf1d754662ee6d07.png
+    sourceName: zh-CN-native-project-sequences-4x.png
+    fit:
+      mode: contain
+  - elementId: source-shot-label
+    elementType: text
+    bounds:
+      - 500
+      - 80
+      - 200
+      - 18
+    content:
+      text: 真实界面 / 项目概览
+      fontSize: 9.2
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#66756A"
+      letterSpacing: 0.6
+      align:
+        - left
+        - top
+  - elementId: source-caption
+    elementType: text
+    bounds:
+      - 500
+      - 432
+      - 412
+      - 38
+    content:
+      text: |-
+        Main Slides 与演讲分开展示。
+        HUANDENG 0.18 · 公开产品示例。
+      fontSize: 9
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#66756A"
+      lineHeight: 1.5
+      align:
+        - left
+        - top

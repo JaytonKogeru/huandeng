@@ -1,0 +1,55 @@
+{
+  "actor": "coordinator",
+  "native_completed": false,
+  "coordinator_metadata_completion": true,
+  "completedAt": "2026-11-10T12:47:06.535904+00:00",
+  "exports": {
+    "pdf": {
+      "path": "Exports/deck.pdf",
+      "sha256": "bd9f9f67382584532c69502c0e196d921d4e5e940ccd4a339888cd60a13f55b0",
+      "bytes": 2880512,
+      "metadataRevision": "sha256:f86aea6c91d391a3dc464d7cd6c9b99f36f08d61e8d69d4f1828a690e07963f1",
+      "pages": 20
+    },
+    "pptx": {
+      "path": "Exports/deck.pptx",
+      "sha256": "94888d8eb9793d686ce7dc514e93253bbcc924b6eaef2750170b314456cf9876",
+      "bytes": 2986593,
+      "metadataRevision": "sha256:f86aea6c91d391a3dc464d7cd6c9b99f36f08d61e8d69d4f1828a690e07963f1",
+      "pages": 20
+    }
+  },
+  "pptxChangedZipMembersComparedWithOfficeRender": [
+    "[Content_Types].xml",
+    "huandeng/export-report.json",
+    "ppt/charts/_rels/huandeng-5-7-chart1.xml.rels",
+    "ppt/charts/_rels/huandeng-5-7-chart2.xml.rels",
+    "ppt/charts/huandeng-5-7-chart1.xml",
+    "ppt/charts/huandeng-5-7-chart2.xml",
+    "ppt/embeddings/huandeng-5-7-Microsoft_Excel_Worksheet1.xlsx",
+    "ppt/embeddings/huandeng-5-7-Microsoft_Excel_Worksheet2.xlsx",
+    "ppt/slides/_rels/slide5.xml.rels"
+  ],
+  "pptxPresentationPartsUnchanged": false,
+  "allPageHashesUnchanged": true,
+  "pageFiles": 41,
+  "officeFinalCheck": {
+    "project": "claude-en",
+    "pptxSha256": "94888d8eb9793d686ce7dc514e93253bbcc924b6eaef2750170b314456cf9876",
+    "slideCount": 20,
+    "openedReadOnly": true,
+    "sourceUnchanged": true,
+    "officeCopyUnchanged": true,
+    "semanticPresentationPartsUnchanged": true,
+    "allowedPackageDifferences": [
+      "export-report metadata revision",
+      "chart/workbook relationship sequence numbers",
+      "embedded workbook core timestamps"
+    ],
+    "renderedPage": 5,
+    "renderedPageSha256": "bd50eea2313c7d949d3daee31e65c84e2ce66cd15824fbf45aeb1fc4c8f782cb",
+    "previousPage5ImageSha256": "bd50eea2313c7d949d3daee31e65c84e2ce66cd15824fbf45aeb1fc4c8f782cb",
+    "page5RenderIdentical": true,
+    "remainingLayoutEvidence": "Previous full 20-page Office render; all presentation content is semantically unchanged"
+  }
+}

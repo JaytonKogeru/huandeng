@@ -1,0 +1,507 @@
+background:
+  type: solid
+  color: "#ECEEEB"
+elements:
+  - elementId: title
+    elementType: text
+    role: title
+    bounds:
+      - 56
+      - 30
+      - 848
+      - 42
+    content:
+      text: One Main library, two Presentations
+      fontFamily: Arial
+      fontSize: 30
+      lineHeight: 1.2
+      color: "#1C2321"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: seq-frame
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 55
+      - 91
+      - 302
+      - 231
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#C7CEC9"
+  - elementId: seq-shot
+    elementType: image
+    bounds:
+      - 56
+      - 92
+      - 300
+      - 229
+    src: media/imported/72ae1ca6c88e49b22812dfcb60706f776f97abe0dd6ab5c0defa0a21fd4e9218.png
+    sourceName: en-project-sequences-4x.png
+    fit:
+      mode: contain
+  - elementId: seq-caption
+    elementType: text
+    bounds:
+      - 56
+      - 326
+      - 300
+      - 30
+    content:
+      text: "Project overview in the Editor: Main Slides and a Presentation. Real capture, public example project."
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#6E7874"
+      align:
+        - left
+        - top
+  - elementId: deck-head
+    elementType: text
+    bounds:
+      - 384
+      - 92
+      - 520
+      - 22
+    content:
+      text: This deck, built the same way
+      fontFamily: Arial
+      fontSize: 16
+      lineHeight: 1.35
+      color: "#2E6B5E"
+      align:
+        - left
+        - middle
+      bold: true
+  - elementId: stack0-f
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 407
+      - 147
+      - 178
+      - 101
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#B9C2BD"
+  - elementId: stack0
+    elementType: image
+    bounds:
+      - 408
+      - 148
+      - 176
+      - 99
+    src: media/derived/thumbs/r1-16-AUBX.png
+    sourceName: r1-16-AUBX.png
+    fit:
+      mode: contain
+  - elementId: stack1-f
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 395
+      - 159
+      - 178
+      - 101
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#B9C2BD"
+  - elementId: stack1
+    elementType: image
+    bounds:
+      - 396
+      - 160
+      - 176
+      - 99
+    src: media/derived/thumbs/r1-05-AVNM.png
+    sourceName: r1-05-AVNM.png
+    fit:
+      mode: contain
+  - elementId: stack2-f
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 383
+      - 171
+      - 178
+      - 101
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#B9C2BD"
+  - elementId: stack2
+    elementType: image
+    bounds:
+      - 384
+      - 172
+      - 176
+      - 99
+    src: media/derived/thumbs/r1-01-QMYQ.png
+    sourceName: r1-01-QMYQ.png
+    fit:
+      mode: contain
+  - elementId: full-label
+    elementType: text
+    bounds:
+      - 384
+      - 280
+      - 200
+      - 40
+    content:
+      text: |-
+        Full introduction
+        20 slides, about 20 minutes
+      fontFamily: Arial
+      fontSize: 13
+      lineHeight: 1.35
+      color: "#1C2321"
+      align:
+        - left
+        - top
+  - elementId: lab-head
+    elementType: text
+    bounds:
+      - 600
+      - 122
+      - 304
+      - 18
+    content:
+      text: "Lab-meeting version: 9 slides, in this order"
+      fontFamily: Arial
+      fontSize: 12.5
+      lineHeight: 1.35
+      color: "#1C2321"
+      align:
+        - left
+        - middle
+      bold: true
+  - elementId: lab1-f
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 599
+      - 145
+      - 98
+      - 56
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#B9C2BD"
+  - elementId: lab1
+    elementType: image
+    bounds:
+      - 600
+      - 146
+      - 96
+      - 54
+    src: media/derived/thumbs/r1-01-QMYQ.png
+    sourceName: r1-01-QMYQ.png
+    fit:
+      mode: contain
+  - elementId: lab2-f
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 703
+      - 145
+      - 98
+      - 56
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#B9C2BD"
+  - elementId: lab2
+    elementType: image
+    bounds:
+      - 704
+      - 146
+      - 96
+      - 54
+    src: media/derived/thumbs/r1-02-RQ64.png
+    sourceName: r1-02-RQ64.png
+    fit:
+      mode: contain
+  - elementId: lab3-f
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 807
+      - 145
+      - 98
+      - 56
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#B9C2BD"
+  - elementId: lab3
+    elementType: image
+    bounds:
+      - 808
+      - 146
+      - 96
+      - 54
+    src: media/derived/thumbs/r1-05-AVNM.png
+    sourceName: r1-05-AVNM.png
+    fit:
+      mode: contain
+  - elementId: lab4-f
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 599
+      - 205
+      - 98
+      - 56
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#B9C2BD"
+  - elementId: lab4
+    elementType: image
+    bounds:
+      - 600
+      - 206
+      - 96
+      - 54
+    src: media/derived/thumbs/r1-06-QK69.png
+    sourceName: r1-06-QK69.png
+    fit:
+      mode: contain
+  - elementId: lab5-f
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 703
+      - 205
+      - 98
+      - 56
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#B9C2BD"
+  - elementId: lab5
+    elementType: image
+    bounds:
+      - 704
+      - 206
+      - 96
+      - 54
+    src: media/derived/thumbs/r1-07-6FNH.png
+    sourceName: r1-07-6FNH.png
+    fit:
+      mode: contain
+  - elementId: lab6-f
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 807
+      - 205
+      - 98
+      - 56
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#B9C2BD"
+  - elementId: lab6
+    elementType: image
+    bounds:
+      - 808
+      - 206
+      - 96
+      - 54
+    src: media/derived/thumbs/r1-08-4V98.png
+    sourceName: r1-08-4V98.png
+    fit:
+      mode: contain
+  - elementId: lab7-f
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 599
+      - 265
+      - 98
+      - 56
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#B9C2BD"
+  - elementId: lab7
+    elementType: image
+    bounds:
+      - 600
+      - 266
+      - 96
+      - 54
+    src: media/derived/thumbs/r1-13-73AG.png
+    sourceName: r1-13-73AG.png
+    fit:
+      mode: contain
+  - elementId: lab8-f
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 703
+      - 265
+      - 98
+      - 56
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#B9C2BD"
+  - elementId: lab8
+    elementType: image
+    bounds:
+      - 704
+      - 266
+      - 96
+      - 54
+    src: media/derived/thumbs/r1-16-AUBX.png
+    sourceName: r1-16-AUBX.png
+    fit:
+      mode: contain
+  - elementId: lab9-f
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 807
+      - 265
+      - 98
+      - 56
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#B9C2BD"
+  - elementId: lab9
+    elementType: image
+    bounds:
+      - 808
+      - 266
+      - 96
+      - 54
+    src: media/derived/thumbs/r1-18-SMGE.png
+    sourceName: r1-18-SMGE.png
+    fit:
+      mode: contain
+  - elementId: cmp
+    elementType: table
+    bounds:
+      - 56
+      - 366
+      - 848
+      - 110
+    columnWidths:
+      - 0.36
+      - 0.32
+      - 0.32
+    rows:
+      - - text: ""
+        - text: Full introduction
+        - text: Lab-meeting version
+      - - text: Copies of slides
+        - text: "None: references to Main Slides"
+        - text: "None: references to Main Slides"
+      - - text: Speaker notes
+        - text: Main notes
+        - text: Shorter occurrence notes on 4 slides
+      - - text: After a Main Slide is edited
+        - text: Shows the edit
+        - text: Shows the edit
+    style:
+      cellStyle:
+        fontFamily: Arial
+        fontSize: 13
+        lineHeight: 1.25
+        color: "#1C2321"
+        align:
+          - left
+          - middle
+        border:
+          - null
+          - null
+          - width: 1
+            color: "#C7CEC9"
+            style: solid
+          - null
+      firstRowStyle:
+        color: "#56615D"
+        bold: true
+        fontSize: 12
+      firstColumnStyle:
+        color: "#2E6B5E"
+        bold: true
+  - elementId: ft-mark
+    elementType: image
+    bounds:
+      - 56
+      - 505
+      - 16
+      - 16
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    fit:
+      mode: contain
+  - elementId: ft-label
+    elementType: text
+    bounds:
+      - 78
+      - 505
+      - 420
+      - 16
+    content:
+      text: HUANDENG  /  One source, many talks
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - left
+        - middle
+  - elementId: ft-pos
+    elementType: text
+    bounds:
+      - 824
+      - 505
+      - 80
+      - 16
+    content:
+      text: "0"
+      field: main-position
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - right
+        - middle
+notes: A HUANDENG project has one Main Slides library. A Presentation is an ordered list of references into it. On the left is the project overview in the Editor, with the Main library and one Presentation. On the right is this very deck. The full introduction you are watching has twenty slides. The lab-meeting version uses nine of the same slides in its own order; the stacked previews and the grid are thumbnails rendered from this project's own export. Neither Presentation holds copies, so if I fix the 1BNA chart in Main Slides, both talks show the fix. The lab version gives four slides shorter speaker notes of their own; those notes belong to that appearance, not to the slide. If a talk has to stay frozen, for example one you have already submitted, you pin a named version of a slide there.

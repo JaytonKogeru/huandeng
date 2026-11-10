@@ -1,0 +1,489 @@
+background:
+  type: solid
+  color: "#F6F6F3"
+elements:
+  - elementId: title
+    elementType: text
+    role: title
+    bounds:
+      - 56
+      - 30
+      - 848
+      - 42
+    content:
+      text: Copies drift; references stay in step
+      fontFamily: Arial
+      fontSize: 30
+      lineHeight: 1.2
+      color: "#1C2321"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: left-head
+    elementType: text
+    bounds:
+      - 56
+      - 98
+      - 384
+      - 24
+    content:
+      text: Copied decks
+      fontFamily: Arial
+      fontSize: 18
+      lineHeight: 1.3
+      color: "#8A5A2E"
+      bold: true
+      align:
+        - left
+        - middle
+  - elementId: c1-box
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 56
+      - 136
+      - 384
+      - 62
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#DCCFC1"
+  - elementId: c1-name
+    elementType: text
+    bounds:
+      - 72
+      - 144
+      - 352
+      - 22
+    content:
+      text: group-meeting.pptx
+      fontFamily: Arial
+      fontSize: 16
+      lineHeight: 1.3
+      color: "#1C2321"
+      bold: true
+      align:
+        - left
+        - middle
+  - elementId: c1-note
+    elementType: text
+    bounds:
+      - 72
+      - 168
+      - 352
+      - 20
+    content:
+      text: Fig. 2 with the original axis range
+      fontFamily: Arial
+      fontSize: 14
+      lineHeight: 1.3
+      color: "#8A5A2E"
+      align:
+        - left
+        - middle
+  - elementId: c2-box
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 56
+      - 212
+      - 384
+      - 62
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#DCCFC1"
+  - elementId: c2-name
+    elementType: text
+    bounds:
+      - 72
+      - 220
+      - 352
+      - 22
+    content:
+      text: conference-talk.pptx
+      fontFamily: Arial
+      fontSize: 16
+      lineHeight: 1.3
+      color: "#1C2321"
+      bold: true
+      align:
+        - left
+        - middle
+  - elementId: c2-note
+    elementType: text
+    bounds:
+      - 72
+      - 244
+      - 352
+      - 20
+    content:
+      text: Fig. 2 re-plotted after new data
+      fontFamily: Arial
+      fontSize: 14
+      lineHeight: 1.3
+      color: "#8A5A2E"
+      align:
+        - left
+        - middle
+  - elementId: c3-box
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 56
+      - 288
+      - 384
+      - 62
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#DCCFC1"
+  - elementId: c3-name
+    elementType: text
+    bounds:
+      - 72
+      - 296
+      - 352
+      - 22
+    content:
+      text: thesis-defence.pptx
+      fontFamily: Arial
+      fontSize: 16
+      lineHeight: 1.3
+      color: "#1C2321"
+      bold: true
+      align:
+        - left
+        - middle
+  - elementId: c3-note
+    elementType: text
+    bounds:
+      - 72
+      - 320
+      - 352
+      - 20
+    content:
+      text: Fig. 2 cropped for a smaller slot
+      fontFamily: Arial
+      fontSize: 14
+      lineHeight: 1.3
+      color: "#8A5A2E"
+      align:
+        - left
+        - middle
+  - elementId: left-foot
+    elementType: text
+    bounds:
+      - 56
+      - 362
+      - 384
+      - 40
+    content:
+      text: Three files, three versions of one figure. Which one is current?
+      fontFamily: Arial
+      fontSize: 15
+      lineHeight: 1.3
+      color: "#56615D"
+      align:
+        - left
+        - top
+  - elementId: divider
+    elementType: line
+    bounds:
+      - 470
+      - 100
+      - 1
+      - 300
+    viewBox:
+      - 1
+      - 300
+    points: 0,0 0,300
+    border:
+      width: 1
+      color: "#CBD3CF"
+      style: solid
+    arrow: []
+  - elementId: right-head
+    elementType: text
+    bounds:
+      - 500
+      - 98
+      - 404
+      - 24
+    content:
+      text: One HUANDENG project
+      fontFamily: Arial
+      fontSize: 18
+      lineHeight: 1.3
+      color: "#2E6B5E"
+      bold: true
+      align:
+        - left
+        - middle
+  - elementId: main-box
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 500
+      - 136
+      - 168
+      - 214
+    fill:
+      type: solid
+      color: "#2E6B5E"
+    border:
+      width: 0
+      color: "#2E6B5E"
+  - elementId: main-text
+    elementType: text
+    bounds:
+      - 512
+      - 150
+      - 144
+      - 186
+    content:
+      text: |-
+        Main Slides
+
+        One copy of the Fig. 2 slide, edited in place
+      fontFamily: Arial
+      fontSize: 16
+      lineHeight: 1.3
+      color: "#FFFFFF"
+      align:
+        - left
+        - top
+  - elementId: a1
+    elementType: line
+    bounds:
+      - 668
+      - 167
+      - 72
+      - 76
+    viewBox:
+      - 72
+      - 76
+    points: 0,76 72,0
+    border:
+      width: 1.5
+      color: "#2E6B5E"
+      style: solid
+    arrow:
+      - null
+      - arrow
+  - elementId: a2
+    elementType: line
+    bounds:
+      - 668
+      - 242
+      - 72
+      - 2
+    viewBox:
+      - 72
+      - 2
+    points: 0,1 72,1
+    border:
+      width: 1.5
+      color: "#2E6B5E"
+      style: solid
+    arrow:
+      - null
+      - arrow
+  - elementId: a3
+    elementType: line
+    bounds:
+      - 668
+      - 243
+      - 72
+      - 76
+    viewBox:
+      - 72
+      - 76
+    points: 0,0 72,76
+    border:
+      width: 1.5
+      color: "#2E6B5E"
+      style: solid
+    arrow:
+      - null
+      - arrow
+  - elementId: p1-box
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 740
+      - 140
+      - 164
+      - 54
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#9DB8B0"
+  - elementId: p1-text
+    elementType: text
+    bounds:
+      - 752
+      - 144
+      - 148
+      - 46
+    content:
+      text: |-
+        Group meeting
+        Presentation
+      fontFamily: Arial
+      fontSize: 14
+      lineHeight: 1.3
+      color: "#1C2321"
+      align:
+        - left
+        - middle
+  - elementId: p2-box
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 740
+      - 216
+      - 164
+      - 54
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#9DB8B0"
+  - elementId: p2-text
+    elementType: text
+    bounds:
+      - 752
+      - 220
+      - 148
+      - 46
+    content:
+      text: |-
+        Conference talk
+        Presentation
+      fontFamily: Arial
+      fontSize: 14
+      lineHeight: 1.3
+      color: "#1C2321"
+      align:
+        - left
+        - middle
+  - elementId: p3-box
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 740
+      - 292
+      - 164
+      - 54
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#9DB8B0"
+  - elementId: p3-text
+    elementType: text
+    bounds:
+      - 752
+      - 296
+      - 148
+      - 46
+    content:
+      text: |-
+        Thesis defence
+        Presentation
+      fontFamily: Arial
+      fontSize: 14
+      lineHeight: 1.3
+      color: "#1C2321"
+      align:
+        - left
+        - middle
+  - elementId: right-foot
+    elementType: text
+    bounds:
+      - 500
+      - 362
+      - 404
+      - 40
+    content:
+      text: Each Presentation references slides, with its own order and notes.
+      fontFamily: Arial
+      fontSize: 15
+      lineHeight: 1.3
+      color: "#56615D"
+      align:
+        - left
+        - top
+  - elementId: takeaway
+    elementType: text
+    bounds:
+      - 56
+      - 420
+      - 848
+      - 52
+    content:
+      text: Edit the slide once and every Presentation that references it shows the change. Pin a named version only where a talk must stay frozen.
+      fontFamily: Arial
+      fontSize: 19
+      lineHeight: 1.35
+      color: "#1C2321"
+      align:
+        - left
+        - top
+  - elementId: ft-mark
+    elementType: image
+    bounds:
+      - 56
+      - 505
+      - 16
+      - 16
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    fit:
+      mode: contain
+  - elementId: ft-label
+    elementType: text
+    bounds:
+      - 78
+      - 505
+      - 420
+      - 16
+    content:
+      text: HUANDENG  /  Introduction  ·  concept diagram
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - left
+        - middle
+  - elementId: ft-pos
+    elementType: text
+    bounds:
+      - 824
+      - 505
+      - 80
+      - 16
+    content:
+      text: "0"
+      field: main-position
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - right
+        - middle
+notes: Most of us know the left side. A figure is updated for one talk, copied into another, cropped for a third, and after a few months nobody is sure which file has the current version. HUANDENG keeps the slides in one project, called Main Slides. A Presentation, such as a group-meeting talk or a conference talk, is a list of references to those slides, with its own order and its own speaker notes. Edit the Fig. 2 slide once, and every talk that references it shows the new version. If one talk must stay exactly as it was, for example a submitted defence, you pin a named version of that slide in that talk. This is a concept diagram, not a screenshot; the file names are illustrations.

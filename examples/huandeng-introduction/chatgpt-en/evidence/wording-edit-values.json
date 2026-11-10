@@ -1,0 +1,17 @@
+{
+  "operationId": "d2d18509-c72c-48e7-81cc-4251486a522e",
+  "pageId": "c4b12919-5876-4acb-b63f-6a7493b54b37",
+  "source": "Shared writer exact operation review",
+  "values": [
+    {
+      "elementId": "title",
+      "before": "Comparing paired C1′ atom distances along a deposited DNA duplex structure",
+      "after": "Local variation in one structure"
+    },
+    {
+      "elementId": "context",
+      "before": "Pair the residues, calculate distances between corresponding C1′ atoms and plot all twelve positions",
+      "after": "From deposited coordinates to the distance at each paired position"
+    }
+  ]
+}

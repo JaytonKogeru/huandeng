@@ -1,5 +1,7 @@
 # Deliberate slide design with HUANDENG
 
+> Historical 0.18 record. The author rejected the introduction slides after this record. The current introduction/design contract is [INTRODUCTION-REWORK.md](INTRODUCTION-REWORK.md); current validation and handoff are in [INTRODUCTION-DELIVERY.md](INTRODUCTION-DELIVERY.md). This record retains its historical technical measurements and does not establish author acceptance. Editor 0.18.0 is unchanged; current AI guidance is plugin 0.18.2.
+
 This release addresses an observed authoring problem: a mechanically valid deck can still have heavy text, inconsistent backgrounds, missing divider pages and screenshots that cannot be read at presentation size. The remedy needs to reach the project, agent guidance, runtime and Editor together.
 
 ## Evidence from the introduction audit

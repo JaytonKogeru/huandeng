@@ -1,0 +1,300 @@
+background:
+  type: solid
+  color: "#E9ECE8"
+elements:
+  - elementId: mark
+    elementType: image
+    bounds:
+      - 56
+      - 34
+      - 40
+      - 40
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    fit:
+      mode: contain
+  - elementId: title
+    elementType: text
+    role: title
+    bounds:
+      - 108
+      - 33
+      - 796
+      - 42
+    content:
+      text: Try it on your next results deck
+      fontFamily: Arial
+      fontSize: 30
+      lineHeight: 1.2
+      color: "#1C2321"
+      bold: true
+      align:
+        - left
+        - middle
+  - elementId: use-head
+    elementType: text
+    bounds:
+      - 56
+      - 104
+      - 384
+      - 24
+    content:
+      text: Use it
+      fontFamily: Arial
+      fontSize: 18
+      lineHeight: 1.3
+      color: "#2E6B5E"
+      bold: true
+      align:
+        - left
+        - middle
+  - elementId: n1
+    elementType: text
+    bounds:
+      - 56
+      - 140
+      - 30
+      - 30
+    content:
+      text: "1"
+      fontFamily: Arial
+      fontSize: 24
+      lineHeight: 1.2
+      color: "#2E6B5E"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: s1
+    elementType: text
+    bounds:
+      - 90
+      - 142
+      - 350
+      - 70
+    content:
+      text: Open the Editor. Choose Home › New project, or open an existing deck.pptd.
+      fontFamily: Arial
+      fontSize: 17
+      lineHeight: 1.35
+      color: "#1C2321"
+      align:
+        - left
+        - top
+  - elementId: n2
+    elementType: text
+    bounds:
+        [56,212,30,30]
+    content:
+      text: "2"
+      fontFamily: Arial
+      fontSize: 24
+      lineHeight: 1.2
+      color: "#2E6B5E"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: s2
+    elementType: text
+    bounds:
+        [90,214,350,70]
+    content:
+      text: In Agent setup, copy the configuration for Codex, Claude Code, DeepSeek Harness or ChatGPT.
+      fontFamily: Arial
+      fontSize: 17
+      lineHeight: 1.35
+      color: "#1C2321"
+      align:
+        - left
+        - top
+  - elementId: n3
+    elementType: text
+    bounds:
+        [56,300,30,30]
+    content:
+      text: "3"
+      fontFamily: Arial
+      fontSize: 24
+      lineHeight: 1.2
+      color: "#2E6B5E"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: s3
+    elementType: text
+    bounds:
+        [90,302,350,70]
+    content:
+      text: Ask for one change. Read its preview, apply it, then review the receipt.
+      fontFamily: Arial
+      fontSize: 17
+      lineHeight: 1.35
+      color: "#1C2321"
+      align:
+        - left
+        - top
+  - elementId: build-head
+    elementType: text
+    bounds:
+      - 480
+      - 104
+      - 424
+      - 24
+    content:
+      text: Build it from source
+      fontFamily: Arial
+      fontSize: 18
+      lineHeight: 1.3
+      color: "#2E6B5E"
+      bold: true
+      align:
+        - left
+        - middle
+  - elementId: code-bg
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 480
+      - 140
+      - 424
+      - 92
+    fill:
+      type: solid
+      color: "#1F2A27"
+    border:
+      width: 0
+      color: "#1F2A27"
+  - elementId: code
+    elementType: text
+    bounds:
+      - 496
+      - 150
+      - 400
+      - 74
+    content:
+      text: |-
+        corepack pnpm install --frozen-lockfile
+        corepack pnpm --filter @open-slide/core build
+        corepack pnpm desktop
+      fontFamily: Consolas
+      fontSize: 13
+      lineHeight: 1.5
+      color: "#E8EFEC"
+      align:
+        - left
+        - middle
+  - elementId: init-label
+    elementType: text
+    bounds:
+      - 480
+      - 246
+      - 424
+      - 20
+    content:
+      text: Create a project from the command line
+      fontFamily: Arial
+      fontSize: 13
+      lineHeight: 1.3
+      color: "#56615D"
+      bold: true
+      align:
+        - left
+        - middle
+  - elementId: code2-bg
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 480
+      - 270
+      - 424
+      - 52
+    fill:
+      type: solid
+      color: "#1F2A27"
+    border:
+      width: 0
+      color: "#1F2A27"
+  - elementId: code2
+    elementType: text
+    bounds:
+      - 496
+      - 276
+      - 400
+      - 40
+    content:
+      text: "node packages/core/huandeng.js init Talks/Lab --title Lab"
+      fontFamily: Consolas
+      fontSize: 12.5
+      lineHeight: 1.4
+      color: "#E8EFEC"
+      align:
+        - left
+        - middle
+  - elementId: req
+    elementType: text
+    bounds:
+      - 480
+      - 332
+      - 424
+      - 40
+    content:
+      text: Requires Node 22.12+ and pnpm 10.17. The Windows build and shortcuts are made by scripts/Package-Huandeng.ps1.
+      fontFamily: Arial
+      fontSize: 12
+      lineHeight: 1.35
+      color: "#56615D"
+      align:
+        - left
+        - top
+  - elementId: rule
+    elementType: line
+    bounds:
+      - 56
+      - 400
+      - 848
+      - 1
+    viewBox:
+      - 848
+      - 1
+    points: 0,0 848,0
+    border:
+      width: 1
+      color: "#C7CEC9"
+      style: solid
+    arrow: []
+  - elementId: repo
+    elementType: text
+    bounds:
+      - 56
+      - 416
+      - 848
+      - 26
+    content:
+      text: github.com/JaytonKogeru/huandeng
+      fontFamily: Arial
+      fontSize: 20
+      lineHeight: 1.3
+      color: "#1C2321"
+      bold: true
+      align:
+        - left
+        - middle
+  - elementId: repo-note
+    elementType: text
+    bounds:
+      - 56
+      - 446
+      - 848
+      - 40
+    content:
+      text: Editor and plugin 0.18. Issues, tests and pull requests are most useful where the previous slide lists gaps. This introduction is itself a HUANDENG project you can open and edit.
+      fontFamily: Arial
+      fontSize: 14
+      lineHeight: 1.35
+      color: "#3E4845"
+      align:
+        - left
+        - top
+notes: "To try it, open the Editor and create a project, or open an existing deck.pptd. Then use Agent setup to copy the configuration for the AI client you already use. Start small: ask for one change to one slide, read the preview, apply it, and open the receipt. If you want to build or contribute, these three commands build and start the desktop editor from source, and the init command creates a new project folder without touching anything that already exists. The repository is listed at the bottom. This introduction is itself a HUANDENG project: open it, change a slide, and see your change in both of its Presentations. Thank you."

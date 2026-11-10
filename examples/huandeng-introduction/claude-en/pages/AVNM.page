@@ -1,0 +1,439 @@
+background:
+  type: solid
+  color: "#F6F6F3"
+elements:
+  - elementId: title
+    elementType: text
+    role: title
+    bounds:
+      - 56
+      - 30
+      - 848
+      - 42
+    content:
+      text: "1BNA: twelve base-pair distances, kept as data"
+      fontFamily: Arial
+      fontSize: 30
+      lineHeight: 1.2
+      color: "#1C2321"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: lead
+    elementType: text
+    bounds:
+      - 56
+      - 76
+      - 848
+      - 24
+    content:
+      text: A native chart built from the source CSV, next to the structure the values were measured in.
+      fontFamily: Arial
+      fontSize: 17
+      lineHeight: 1.3
+      color: "#56615D"
+      align:
+        - left
+        - top
+  - elementId: structure
+    elementType: image
+    bounds:
+        [40,106,262,262]
+    src: media/imported/ff6d1434a44440fba124ccad7dfa30efa01e8c400094d4453d17d502345c1e2c.png
+    sourceName: dna-duplex-side.png
+    fit:
+      mode: contain
+  - elementId: chain-a
+    elementType: text
+    bounds:
+        [76,358,100,18]
+    content:
+      text: — Chain A
+      fontFamily: Arial
+      fontSize: 13
+      lineHeight: 1.3
+      color: "#3D7468"
+      bold: true
+      align:
+        - left
+        - middle
+  - elementId: chain-b
+    elementType: text
+    bounds:
+        [176,358,100,18]
+    content:
+      text: — Chain B
+      fontFamily: Arial
+      fontSize: 13
+      lineHeight: 1.3
+      color: "#B9783F"
+      bold: true
+      align:
+        - left
+        - middle
+  - elementId: extremes
+    elementType: table
+    bounds:
+        [56,384,236,70]
+    columnWidths:
+        [0.38,0.26,0.36]
+    rows:
+        [[{"text":""},{"text":"Å"},{"text":"Pair"}],[{"text":"Shortest"},{"text":"10.23"},{"text":"7 · T–A"}],[{"text":"Longest"},{"text":"10.89"},{"text":"12 · G–C"}]]
+    style:
+      cellStyle:
+        fontFamily: Arial
+        fontSize: 13
+        lineHeight: 1.2
+        color: "#1C2321"
+        align:
+          - left
+          - middle
+        border:
+          - null
+          - null
+          - width: 1
+            color: "#CBD3CF"
+            style: solid
+          - null
+      firstColumnStyle:
+        color: "#2E6B5E"
+        bold: true
+  - elementId: chart
+    elementType: chart
+    bounds:
+        [300,128,604,280]
+    data:
+      cols:
+        - Pair
+        - Distance
+      rows:
+        - - "1"
+          - 10.7121
+        - - "2"
+          - 10.7665
+        - - "3"
+          - 10.5802
+        - - "4"
+          - 10.3531
+        - - "5"
+          - 10.4416
+        - - "6"
+          - 10.4606
+        - - "7"
+          - 10.2329
+        - - "8"
+          - 10.4912
+        - - "9"
+          - 10.5912
+        - - "10"
+          - 10.4362
+        - - "11"
+          - 10.8052
+        - - "12"
+          - 10.8877
+    series:
+      - type: line
+        name: C1′–C1′ distance
+        encode:
+          x: Pair
+          y: Distance
+        lineColor: "#2E6B5E"
+        showSymbol: true
+    xAxis:
+      {"type":"category"}
+    yAxis:
+      {"type":"value","min":10,"max":11}
+    legend: false
+    colors:
+      - "#2E6B5E"
+    fontFamily: Arial
+    fontSize: 13
+  - elementId: source
+    elementType: text
+    bounds:
+        [56,474,848,28]
+    content:
+      text: "Source: RCSB PDB 1BNA, Dickerson–Drew dodecamer, 1.90 Å X-ray (Drew et al., PNAS 78:2179–2183, 1981; doi:10.1073/pnas.78.4.2179). Distances computed from the deposited coordinates. Twelve positions in one structure: not replicates, uncertainties or hydrogen-bond lengths."
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#6E7874"
+      align:
+        - left
+        - top
+  - elementId: ft-mark
+    elementType: image
+    bounds:
+      - 56
+      - 505
+      - 16
+      - 16
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    fit:
+      mode: contain
+  - elementId: ft-label
+    elementType: text
+    bounds:
+      - 78
+      - 505
+      - 420
+      - 16
+    content:
+      text: HUANDENG  /  A worked example
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - left
+        - middle
+  - elementId: ft-pos
+    elementType: text
+    bounds:
+      - 824
+      - 505
+      - 80
+      - 16
+    content:
+      text: "0"
+      field: main-position
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - right
+        - middle
+  - elementId: pair-1
+    elementType: text
+    bounds:
+      - 394.5
+      - 357
+      - 40
+      - 16
+    content:
+      text: C–G
+      fontFamily: Arial
+      fontSize: 11.5
+      lineHeight: 1.2
+      color: "#3E4845"
+      align:
+        - center
+        - middle
+  - elementId: pair-2
+    elementType: text
+    bounds:
+      - 434.95
+      - 357
+      - 40
+      - 16
+    content:
+      text: G–C
+      fontFamily: Arial
+      fontSize: 11.5
+      lineHeight: 1.2
+      color: "#3E4845"
+      align:
+        - center
+        - middle
+  - elementId: pair-3
+    elementType: text
+    bounds:
+      - 475.4
+      - 357
+      - 40
+      - 16
+    content:
+      text: C–G
+      fontFamily: Arial
+      fontSize: 11.5
+      lineHeight: 1.2
+      color: "#3E4845"
+      align:
+        - center
+        - middle
+  - elementId: pair-4
+    elementType: text
+    bounds:
+      - 515.85
+      - 357
+      - 40
+      - 16
+    content:
+      text: G–C
+      fontFamily: Arial
+      fontSize: 11.5
+      lineHeight: 1.2
+      color: "#3E4845"
+      align:
+        - center
+        - middle
+  - elementId: pair-5
+    elementType: text
+    bounds:
+      - 556.3
+      - 357
+      - 40
+      - 16
+    content:
+      text: A–T
+      fontFamily: Arial
+      fontSize: 11.5
+      lineHeight: 1.2
+      color: "#3E4845"
+      align:
+        - center
+        - middle
+  - elementId: pair-6
+    elementType: text
+    bounds:
+      - 596.75
+      - 357
+      - 40
+      - 16
+    content:
+      text: A–T
+      fontFamily: Arial
+      fontSize: 11.5
+      lineHeight: 1.2
+      color: "#3E4845"
+      align:
+        - center
+        - middle
+  - elementId: pair-7
+    elementType: text
+    bounds:
+      - 637.2
+      - 357
+      - 40
+      - 16
+    content:
+      text: T–A
+      fontFamily: Arial
+      fontSize: 11.5
+      lineHeight: 1.2
+      color: "#3E4845"
+      align:
+        - center
+        - middle
+  - elementId: pair-8
+    elementType: text
+    bounds:
+      - 677.65
+      - 357
+      - 40
+      - 16
+    content:
+      text: T–A
+      fontFamily: Arial
+      fontSize: 11.5
+      lineHeight: 1.2
+      color: "#3E4845"
+      align:
+        - center
+        - middle
+  - elementId: pair-9
+    elementType: text
+    bounds:
+      - 718.1
+      - 357
+      - 40
+      - 16
+    content:
+      text: C–G
+      fontFamily: Arial
+      fontSize: 11.5
+      lineHeight: 1.2
+      color: "#3E4845"
+      align:
+        - center
+        - middle
+  - elementId: pair-10
+    elementType: text
+    bounds:
+      - 758.55
+      - 357
+      - 40
+      - 16
+    content:
+      text: G–C
+      fontFamily: Arial
+      fontSize: 11.5
+      lineHeight: 1.2
+      color: "#3E4845"
+      align:
+        - center
+        - middle
+  - elementId: pair-11
+    elementType: text
+    bounds:
+      - 799
+      - 357
+      - 40
+      - 16
+    content:
+      text: C–G
+      fontFamily: Arial
+      fontSize: 11.5
+      lineHeight: 1.2
+      color: "#3E4845"
+      align:
+        - center
+        - middle
+  - elementId: pair-12
+    elementType: text
+    bounds:
+      - 839.45
+      - 357
+      - 40
+      - 16
+    content:
+      text: G–C
+      fontFamily: Arial
+      fontSize: 11.5
+      lineHeight: 1.2
+      color: "#3E4845"
+      align:
+        - center
+        - middle
+  - elementId: x-title
+    elementType: text
+    bounds:
+      - 394
+      - 378
+      - 486
+      - 18
+    content:
+      text: Paired position and base pair (chain A residues 1–12 with chain B 24–13)
+      fontFamily: Arial
+      fontSize: 12
+      lineHeight: 1.3
+      color: "#56615D"
+      align:
+        - center
+        - middle
+  - elementId: y-title
+    elementType: text
+    bounds:
+      - 352
+      - 112
+      - 300
+      - 18
+    content:
+      text: C1′–C1′ distance (Å)
+      fontFamily: Arial
+      fontSize: 12
+      lineHeight: 1.3
+      color: "#56615D"
+      bold: true
+      align:
+        - left
+        - middle
+notes: |-
+  Here is the kind of slide this talk is about: one real result. The structure is PDB entry 1BNA, the Dickerson–Drew DNA dodecamer, drawn from its deposited coordinates; chain A is green, chain B ochre. For each of the twelve base pairs we measured the distance between the paired C1-prime atoms. The chart is not a pasted picture: it is a HUANDENG chart object holding the twelve values from the CSV, with a labelled axis that deliberately does not start at zero, so the geometric variation is visible. If a value or a label needs to change, you edit the data, not the pixels. Be careful about what the chart says: these are twelve positions in a single crystal structure. They are not replicates and carry no error bars. The shortest distance is at pair 7, a T–A pair in the central AATT region; the longest at pair 12, a terminal G–C pair.
+
+  Method: Euclidean distance between C1′ atoms, chain A residues 1–12 ascending paired with chain B residues 24–13 descending. Values from paired-c1-distances.csv (assets/science, generate.py).
+
+  Source: RCSB PDB 1BNA, https://www.rcsb.org/structure/1BNA; structure DOI 10.2210/pdb1BNA/pdb. Drew HR, Wing RM, Takano T, Broka C, Tanaka S, Itakura K, Dickerson RE. PNAS 78 (1981) 2179–2183, https://doi.org/10.1073/pnas.78.4.2179.

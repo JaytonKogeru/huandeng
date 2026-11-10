@@ -1,0 +1,416 @@
+background:
+  type: solid
+  color: "#ECEEEB"
+elements:
+  - elementId: title
+    elementType: text
+    role: title
+    bounds:
+      - 56
+      - 30
+      - 848
+      - 42
+    content:
+      text: The HUANDENG Editor
+      fontFamily: Arial
+      fontSize: 30
+      lineHeight: 1.2
+      color: "#1C2321"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: shot-frame
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 55
+      - 87
+      - 642
+      - 362
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#C7CEC9"
+  - elementId: shot
+    elementType: image
+    bounds:
+      - 56
+      - 88
+      - 640
+      - 360
+    src: media/imported/8af5553e393e50bc2be95658bea2336a9634fc16264b36e5b0f002f41c6fcace.png
+    sourceName: en-edit-1920.png
+    fit:
+      mode: contain
+  - elementId: m1
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+      - 84
+      - 170
+      - 20
+      - 20
+    fill:
+      type: solid
+      color: "#2E6B5E"
+    border:
+      width: 1.5
+      color: "#FFFFFF"
+  - elementId: m1t
+    elementType: text
+    bounds:
+      - 84
+      - 170
+      - 20
+      - 20
+    content:
+      text: "1"
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1
+      color: "#FFFFFF"
+      bold: true
+      align:
+        - center
+        - middle
+  - elementId: m2
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+      - 294
+      - 112
+      - 20
+      - 20
+    fill:
+      type: solid
+      color: "#2E6B5E"
+    border:
+      width: 1.5
+      color: "#FFFFFF"
+  - elementId: m2t
+    elementType: text
+    bounds:
+      - 294
+      - 112
+      - 20
+      - 20
+    content:
+      text: "2"
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1
+      color: "#FFFFFF"
+      bold: true
+      align:
+        - center
+        - middle
+  - elementId: m3
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+      - 540
+      - 226
+      - 20
+      - 20
+    fill:
+      type: solid
+      color: "#2E6B5E"
+    border:
+      width: 1.5
+      color: "#FFFFFF"
+  - elementId: m3t
+    elementType: text
+    bounds:
+      - 540
+      - 226
+      - 20
+      - 20
+    content:
+      text: "3"
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1
+      color: "#FFFFFF"
+      bold: true
+      align:
+        - center
+        - middle
+  - elementId: m4
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+        [668,160,20,20]
+    fill:
+      type: solid
+      color: "#2E6B5E"
+    border:
+      width: 1.5
+      color: "#FFFFFF"
+  - elementId: m4t
+    elementType: text
+    bounds:
+        [668,160,20,20]
+    content:
+      text: "4"
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1
+      color: "#FFFFFF"
+      bold: true
+      align:
+        - center
+        - middle
+  - elementId: m5
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+        [472,62,20,20]
+    fill:
+      type: solid
+      color: "#2E6B5E"
+    border:
+      width: 1.5
+      color: "#FFFFFF"
+  - elementId: m5t
+    elementType: text
+    bounds:
+        [472,62,20,20]
+    content:
+      text: "5"
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1
+      color: "#FFFFFF"
+      bold: true
+      align:
+        - center
+        - middle
+  - elementId: m6
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+        [652,62,20,20]
+    fill:
+      type: solid
+      color: "#2E6B5E"
+    border:
+      width: 1.5
+      color: "#FFFFFF"
+  - elementId: m6t
+    elementType: text
+    bounds:
+        [652,62,20,20]
+    content:
+      text: "6"
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1
+      color: "#FFFFFF"
+      bold: true
+      align:
+        - center
+        - middle
+  - elementId: k1
+    elementType: text
+    bounds:
+      - 722
+      - 90
+      - 182
+      - 56
+    content:
+      text: |-
+        1  Pages
+        Thumbnails with Position and a permanent Slide ID
+      fontFamily: Arial
+      fontSize: 13
+      lineHeight: 1.3
+      color: "#3E4845"
+      align:
+        - left
+        - top
+  - elementId: k2
+    elementType: text
+    bounds:
+      - 722
+      - 150
+      - 182
+      - 56
+    content:
+      text: |-
+        2  Views
+        Normal, Browse, Outline, Sections, Notes page, History
+      fontFamily: Arial
+      fontSize: 13
+      lineHeight: 1.3
+      color: "#3E4845"
+      align:
+        - left
+        - top
+  - elementId: k3
+    elementType: text
+    bounds:
+      - 722
+      - 210
+      - 182
+      - 56
+    content:
+      text: |-
+        3  Canvas
+        Text, images, shapes, tables, charts, equations
+      fontFamily: Arial
+      fontSize: 13
+      lineHeight: 1.3
+      color: "#3E4845"
+      align:
+        - left
+        - top
+  - elementId: k4
+    elementType: text
+    bounds:
+      - 722
+      - 270
+      - 182
+      - 56
+    content:
+      text: |-
+        4  Inspector
+        Properties, Layout, Layers, Story, Checks
+      fontFamily: Arial
+      fontSize: 13
+      lineHeight: 1.3
+      color: "#3E4845"
+      align:
+        - left
+        - top
+  - elementId: k5
+    elementType: text
+    bounds:
+      - 722
+      - 330
+      - 182
+      - 56
+    content:
+      text: |-
+        5  Agent setup · Activity
+        Connect an AI client; see its reports and real saves
+      fontFamily: Arial
+      fontSize: 13
+      lineHeight: 1.3
+      color: "#3E4845"
+      align:
+        - left
+        - top
+  - elementId: k6
+    elementType: text
+    bounds:
+      - 722
+      - 390
+      - 182
+      - 56
+    content:
+      text: |-
+        6  Export · Present
+        PDF, PPTX or MP4; F5 / Shift+F5
+      fontFamily: Arial
+      fontSize: 13
+      lineHeight: 1.3
+      color: "#3E4845"
+      align:
+        - left
+        - top
+  - elementId: caption
+    elementType: text
+    bounds:
+      - 56
+      - 456
+      - 640
+      - 18
+    content:
+      text: "Real capture: HUANDENG Editor 0.18, English interface, public example project “HUANDENG showcase”."
+      fontFamily: Arial
+      fontSize: 11.5
+      lineHeight: 1.3
+      color: "#6E7874"
+      align:
+        - left
+        - top
+  - elementId: ft-mark
+    elementType: image
+    bounds:
+      - 56
+      - 505
+      - 16
+      - 16
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    fit:
+      mode: contain
+  - elementId: ft-label
+    elementType: text
+    bounds:
+      - 78
+      - 505
+      - 420
+      - 16
+    content:
+      text: HUANDENG  /  Introduction
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - left
+        - middle
+  - elementId: ft-pos
+    elementType: text
+    bounds:
+      - 824
+      - 505
+      - 80
+      - 16
+    content:
+      text: "0"
+      field: main-position
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - right
+        - middle
+  - elementId: l5
+    elementType: line
+    bounds:
+      - 481
+      - 82
+      - 2
+      - 12
+    viewBox:
+      - 2
+      - 12
+    points: 1,0 1,12
+    border:
+      width: 1.5
+      color: "#2E6B5E"
+      style: solid
+    arrow: []
+  - elementId: l6
+    elementType: line
+    bounds:
+      - 661
+      - 82
+      - 2
+      - 12
+    viewBox:
+      - 2
+      - 12
+    points: 1,0 1,12
+    border:
+      width: 1.5
+      color: "#2E6B5E"
+      style: solid
+    arrow: []
+notes: "This is the real Editor in English, running a small public example project. It is a desktop application: one window, one project per tab. 1, the Pages panel shows every slide with its position and its permanent Slide ID. 2, the tabs above the canvas switch between six views of the same slides: Normal for editing, Browse for thumbnails, Outline for titles with their Story, Sections, the Notes page and History. 3, the canvas edits native objects, including tables, charts and equations. 4, the Inspector holds properties and, importantly, the Story tab: what this slide is for and what must be kept. 5, Agent setup connects an external AI client such as Claude Code or Codex; Activity shows what that client reports and what was actually saved. 6, Export produces PDF, PPTX or video, and Present starts the show from the beginning or the current slide. There is no chat box inside the Editor; agents work from their own client."

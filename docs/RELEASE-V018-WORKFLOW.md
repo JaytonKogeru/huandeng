@@ -1,5 +1,7 @@
 # v0.18 workflow release preparation
 
+> Historical 0.18 record. The author rejected the introduction slides after this record. The current introduction/design contract is [INTRODUCTION-REWORK.md](INTRODUCTION-REWORK.md); current validation and handoff are in [INTRODUCTION-DELIVERY.md](INTRODUCTION-DELIVERY.md). This record retains its historical technical measurements and does not establish author acceptance. Editor 0.18.0 is unchanged; current AI guidance is plugin 0.18.2.
+
 Status: the existing private account plugin was updated in place to 0.18.0 and read back successfully. The clean desktop package is installed in a versioned directory, and native Codex, Claude Code and the explicit DeepSeek adapter passed connection checks. The final section records installation evidence; the project owner controls the repository milestone.
 
 ## One source, client-specific routes

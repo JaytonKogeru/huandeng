@@ -1,0 +1,178 @@
+pageType: content
+background:
+  type: solid
+  color: "#F4F3ED"
+notes: 先让听众看到目标画面。左侧是 1BNA 的双链结构，右侧是 12 个配对位置的 C1′–C1′ 距离。这里刻意不出现软件界面：先说明一页科研内容要同时保住结构、数值和来源。12 个点是同一结构中的 12 个位置，不是 12 次独立实验，也不是性能数据。
+elements:
+  - elementId: sci-title
+    elementType: text
+    role: title
+    bounds:
+      - 48
+      - 42
+      - 520
+      - 74
+    content:
+      text: |-
+        先看一页
+        真正的研究内容
+      fontSize: 28
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#17221C"
+      lineHeight: 1.24
+      align:
+        - left
+        - top
+  - elementId: sci-lead
+    elementType: text
+    bounds:
+      - 48
+      - 128
+      - 258
+      - 78
+    content:
+      text: |-
+        一张结构图、一条距离曲线、
+        一个可核对的来源。
+        这页先不谈软件。
+      fontSize: 15.2
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#425048"
+      lineHeight: 1.7
+      align:
+        - left
+        - top
+  - elementId: sci-structure
+    elementType: image
+    bounds:
+      - 46
+      - 218
+      - 252
+      - 252
+    src: media/imported/ff6d1434a44440fba124ccad7dfa30efa01e8c400094d4453d17d502345c1e2c.png
+    sourceName: dna-duplex-side.png
+    fit:
+      mode: contain
+  - elementId: sci-structure-cap
+    elementType: text
+    bounds:
+      - 48
+      - 472
+      - 258
+      - 28
+    content:
+      text: PDB 1BNA · 正交投影；链 A 青绿，链 B 赭色。
+      fontSize: 8.8
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#6E7B72"
+      lineHeight: 1.45
+      align:
+        - left
+        - top
+  - elementId: sci-plot
+    elementType: image
+    bounds:
+      - 330
+      - 68
+      - 580
+      - 290
+    src: media/imported/d5576a93749be3608a7127b9a45d7d92e62fa9f0258043a13835ac7c1d971e19.png
+    sourceName: paired-c1-distances-zh.png
+    fit:
+      mode: contain
+  - elementId: sci-plot-cap
+    elementType: text
+    bounds:
+      - 330
+      - 362
+      - 580
+      - 26
+    content:
+      text: 12 个配对位置的 C1′–C1′ 欧氏距离；纵轴从非零值开始，保留几何差异。
+      fontSize: 9.2
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#6E7B72"
+      lineHeight: 1.45
+      align:
+        - left
+        - top
+  - elementId: sci-facts
+    elementType: table
+    bounds:
+      - 330
+      - 398
+      - 580
+      - 86
+    columnWidths:
+      - 0.18
+      - 0.82
+    rowHeights:
+      - 0.3333
+      - 0.3333
+      - 0.3334
+    style:
+      cellStyle:
+        fontSize: 10.6
+        color: "#25322B"
+        lineHeight: 1.25
+        border:
+          color: "#D5DCD2"
+          width: 0.6
+          style: solid
+      firstColumnStyle:
+        bold: true
+        color: "#5E6C62"
+        fontSize: 9.8
+    rows:
+      - - text: 结构
+        - text: 1BNA · X 射线衍射 · 1.90 Å
+      - - text: 量测
+        - text: 12 个 C1′–C1′ 配对距离
+      - - text: 范围
+        - text: 10.23–10.89 Å
+  - elementId: sci-note
+    elementType: text
+    bounds:
+      - 330
+      - 492
+      - 580
+      - 30
+    content:
+      text: 这些点是同一结构中的 12 个位置，不是 12 次独立实验，也不构成产品性能比较。
+      fontSize: 9.6
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#9E5B3E"
+      lineHeight: 1.45
+      align:
+        - left
+        - top
+  - elementId: sci-src
+    elementType: text
+    bounds:
+      - 48
+      - 504
+      - 258
+      - 24
+    content:
+      text: |-
+        Drew et al., PNAS 78 (1981) 2179–2183
+        DOI 10.1073/pnas.78.4.2179
+      fontSize: 8.4
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#7D8A80"
+      lineHeight: 1.4
+      align:
+        - left
+        - top

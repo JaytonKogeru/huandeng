@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 1,
+  "language": "zh",
+  "mainCount": 19,
+  "fullCount": 19,
+  "briefCount": 7,
+  "titleOnlySectionCount": 3,
+  "pinnedScienceVersion": "checkpoint:a687931507a66085784d787c9ad2d31d",
+  "sourceValues": "sources/science/measurements.json",
+  "authorAccepted": false,
+  "pages": [
+    {
+      "position": 1,
+      "pageId": "7995de62-e81e-46db-b250-cabc66a99b28",
+      "shortCode": "TTHC",
+      "revision": "sha256:f12ef9bf6fd00f4e9d8cd189e3633da35348e9372596d4ff4f8eea0d312cda8a",
+      "title": "科研演示的\n编辑工作流",
+      "background": {
+        "type": "solid",
+        "color": "#E4ECE6"
+      },
+      "objects": 6,
+      "imageCount": 2
+    },
+    {
+      "position": 2,
+      "pageId": "c1fcdc66-1c25-45a6-9b98-83d16f063c3e",
+      "shortCode": "7EKH",
+      "revision": "sha256:f76a23cb4e3dd2f5c3bf90c2f7cf672a41a62c22deb85d3d6f6cb0d3b7b27220",
+      "title": "同一结构里的局部差异",
+      "background": {
+        "type": "solid",
+        "color": "#F7F5EF"
+      },
+      "objects": 9,
+      "imageCount": 1
+    },
+    {
+      "position": 3,
+      "pageId": "b55179ed-446c-42a7-a2d5-2557defac052",
+      "shortCode": "CR5K",
+      "revision": "sha256:9deecc6508af0d5c908acb54ac97681861b67d1a20b1634a16e950b5091dfc1e",
+      "title": "证据与版面",
+      "background": {
+        "type": "solid",
+        "color": "#E4ECE6"
+      },
+      "objects": 1,
+      "imageCount": 0
+    },
+    {
+      "position": 4,
+      "pageId": "3483b895-bc52-43b6-a7c4-001a0d1e4526",
+      "shortCode": "ZYZB",
+      "revision": "sha256:ce9c08b9ad71fe5639eb9937c265f5a95586cef02d2ccc141a41e4afd6b0344a",
+      "title": "在编辑器里接着做",
+      "background": {
+        "type": "solid",
+        "color": "#F7F5EF"
+      },
+      "objects": 14,
+      "imageCount": 2
+    },
+    {
+      "position": 5,
+      "pageId": "59857807-d9f3-4e58-9a60-275cd504ea16",
+      "shortCode": "MPTA",
+      "revision": "sha256:338198b348b62093979aa6b6063cc06461ffbf1922a83a64b6849f99905e686a",
+      "title": "源文件和判断，一起留下来",
+      "background": {
+        "type": "solid",
+        "color": "#EEE9DD"
+      },
+      "objects": 9,
+      "imageCount": 2
+    },
+    {
+      "position": 6,
+      "pageId": "7b5bb42e-c529-49f8-ad88-62c69b567837",
+      "shortCode": "HUA9",
+      "revision": "sha256:0b5ecd2bd03946db4b584492a795e2c99dd071213fbb387c51b1561f22a7e5e9",
+      "title": "图、表与公式",
+      "background": {
+        "type": "solid",
+        "color": "#F7F5EF"
+      },
+      "objects": 10,
+      "imageCount": 1
+    },
+    {
+      "position": 7,
+      "pageId": "def43d68-1767-45f5-800a-17d648750b7e",
+      "shortCode": "FE8A",
+      "revision": "sha256:82ffbc884dc0a9d443f1ecc82908046c6e642fcea6db705fc262a54914dd5a0e",
+      "title": "人与 Agent",
+      "background": {
+        "type": "solid",
+        "color": "#E4ECE6"
+      },
+      "objects": 1,
+      "imageCount": 0
+    },
+    {
+      "position": 8,
+      "pageId": "05cd8517-c8ac-4e12-b2d0-40c438b91042",
+      "shortCode": "HWB6",
+      "revision": "sha256:aea499ca810a64fb40a1df38e30dd525eb2f85e1fb082ecd697807ab4fb453b0",
+      "title": "Story 留下这一页的判断",
+      "background": {
+        "type": "solid",
+        "color": "#F7F5EF"
+      },
+      "objects": 9,
+      "imageCount": 2
+    },
+    {
+      "position": 9,
+      "pageId": "9cdec939-7f79-4142-98a4-b9543230a4ec",
+      "shortCode": "W7WP",
+      "revision": "sha256:f14486e410a6d1fa4afe5331fc66505df5cffaf1e889dc8a37e06981bdfd1f14",
+      "title": "四种入口，同一份作品",
+      "background": {
+        "type": "solid",
+        "color": "#E4ECE6"
+      },
+      "objects": 27,
+      "imageCount": 5
+    },
+    {
+      "position": 10,
+      "pageId": "7b69742f-16b5-4b80-acf0-1d23966aae96",
+      "shortCode": "JNZV",
+      "revision": "sha256:f0562d4265e8483fda66b4a72b77aca4b664c3054d5564e51db94ef7123ad4d7",
+      "title": "改说明，保留证据",
+      "background": {
+        "type": "solid",
+        "color": "#E4ECE6"
+      },
+      "objects": 11,
+      "imageCount": 3
+    },
+    {
+      "position": 11,
+      "pageId": "ea528c6a-2423-488d-834b-056322cca744",
+      "shortCode": "E9RN",
+      "revision": "sha256:ad67e3fb018c49706e51ce3cc13137f0ee13a3ff08b3e8c20b118ead02c93192",
+      "title": "修改有范围，也有记录",
+      "background": {
+        "type": "solid",
+        "color": "#F7F5EF"
+      },
+      "objects": 14,
+      "imageCount": 2
+    },
+    {
+      "position": 12,
+      "pageId": "d64aef1b-eb88-4b05-a620-ae60a0e833de",
+      "shortCode": "36EQ",
+      "revision": "sha256:8f66dd19e9ddedf882a4d18ae5749ac316781c55bd33afa612814453c118c40b",
+      "title": "复用与讲述",
+      "background": {
+        "type": "solid",
+        "color": "#E4ECE6"
+      },
+      "objects": 1,
+      "imageCount": 0
+    },
+    {
+      "position": 13,
+      "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
+      "shortCode": "U5QA",
+      "revision": "sha256:440783153a9f640b56d87b176edf181dd9ef68d17f1c4ca94e2983ff1dcfb363",
+      "title": "一套页面，不同讲法",
+      "background": {
+        "type": "solid",
+        "color": "#E4ECE6"
+      },
+      "objects": 18,
+      "imageCount": 10
+    },
+    {
+      "position": 14,
+      "pageId": "129dfdc6-685d-48b4-972b-abff11f823e6",
+      "shortCode": "93SF",
+      "revision": "sha256:4006b316a6d0cc8938676e698fc441fd85a813787a140f161cf70b61c003e3c9",
+      "title": "位置会变，页面身份不变",
+      "background": {
+        "type": "solid",
+        "color": "#F7F5EF"
+      },
+      "objects": 8,
+      "imageCount": 2
+    },
+    {
+      "position": 15,
+      "pageId": "baca190c-e87b-415f-9c30-7c04e3fabe17",
+      "shortCode": "2856",
+      "revision": "sha256:054b7c2330bb6a70f6a710c4a00ecb8ffb116c93cf17689fb8f9a4fae94a5f75",
+      "title": "Live 与 Pinned",
+      "background": {
+        "type": "solid",
+        "color": "#F7F5EF"
+      },
+      "objects": 10,
+      "imageCount": 3
+    },
+    {
+      "position": 16,
+      "pageId": "f68f052b-18ac-4286-ae3b-6f12e5c5d0d0",
+      "shortCode": "NJM7",
+      "revision": "sha256:3f94af8809458615fd2bb1c2153c2343a97b1c903d1e92e0c74d0f3ec9ae5da7",
+      "title": "现场讲述，文件交付",
+      "background": {
+        "type": "solid",
+        "color": "#F7F5EF"
+      },
+      "objects": 11,
+      "imageCount": 3
+    },
+    {
+      "position": 17,
+      "pageId": "503c86ce-673c-4229-9251-22114e5f5da9",
+      "shortCode": "4YZD",
+      "revision": "sha256:b202089f88810be52ee26efb24ea20eaf4c1cee0b307dbf7c949ea2f66747d7b",
+      "title": "一个文件夹，就是一个项目",
+      "background": {
+        "type": "solid",
+        "color": "#EEE9DD"
+      },
+      "objects": 8,
+      "imageCount": 1
+    },
+    {
+      "position": 18,
+      "pageId": "bd3c71d1-360e-4e0c-bbb6-5938970e8876",
+      "shortCode": "TZXM",
+      "revision": "sha256:9413d18eb6b48e18445acc77b0787d53e4f5e79be2f5eaf9e1c961e77dd537d0",
+      "title": "代码来源与设计借鉴",
+      "background": {
+        "type": "solid",
+        "color": "#E4ECE6"
+      },
+      "objects": 17,
+      "imageCount": 4
+    },
+    {
+      "position": 19,
+      "pageId": "8a9bcdf1-fcb2-4214-9743-86c110c954ca",
+      "shortCode": "E2RU",
+      "revision": "sha256:0e2f43bcbb000cc2a397fc3eeaa3be1efe7b58e4765cf43c34f1731352db9786",
+      "title": "从一页科学演示开始",
+      "background": {
+        "type": "solid",
+        "color": "#E4ECE6"
+      },
+      "objects": 6,
+      "imageCount": 2
+    }
+  ]
+}

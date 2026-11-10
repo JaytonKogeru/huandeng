@@ -1,0 +1,594 @@
+{
+  "schemaVersion": 1,
+  "project": "chatgpt-en",
+  "locale": "en",
+  "editorVersion": "0.18.0",
+  "capturedViewport": [
+    1600,
+    960
+  ],
+  "deviceScaleFactor": 3,
+  "publicContentOnly": true,
+  "entries": [
+    {
+      "path": "media/imported/50273f1fa204b2f0ae10463c91dd9d8ffcea87c80d861da37c0db9755d091017.png",
+      "sha256": "50273f1fa204b2f0ae10463c91dd9d8ffcea87c80d861da37c0db9755d091017",
+      "source": "../assets/science/dna-duplex-position7.png",
+      "kind": "shared-source",
+      "pixels": [
+        1572,
+        1572
+      ],
+      "currentUses": [
+        {
+          "pageId": "c4b12919-5876-4acb-b63f-6a7493b54b37",
+          "elementId": "structure"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13.png",
+      "sha256": "0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13",
+      "source": "../assets/brand/chatgpt.png",
+      "kind": "shared-source",
+      "pixels": [
+        720,
+        720
+      ],
+      "currentUses": [
+        {
+          "pageId": "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6",
+          "elementId": "client-0"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/2ce1c57dd3b312417106a487815ab1235bddce17e1fa9b32a2f048bd71ee25d3.png",
+      "sha256": "2ce1c57dd3b312417106a487815ab1235bddce17e1fa9b32a2f048bd71ee25d3",
+      "source": "../assets/brand/codex.png",
+      "kind": "shared-source",
+      "pixels": [
+        385,
+        385
+      ],
+      "currentUses": [
+        {
+          "pageId": "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6",
+          "elementId": "client-1"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/733f24f4c52acb15eb0fbded1cf40eb42b4ba8e62b882acac70b6234b50919a8.png",
+      "sha256": "733f24f4c52acb15eb0fbded1cf40eb42b4ba8e62b882acac70b6234b50919a8",
+      "source": "../assets/brand/claude-code.png",
+      "kind": "shared-source",
+      "pixels": [
+        192,
+        192
+      ],
+      "currentUses": [
+        {
+          "pageId": "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6",
+          "elementId": "client-2"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc.png",
+      "sha256": "e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc",
+      "source": "../assets/brand/deepseek.png",
+      "kind": "shared-source",
+      "pixels": [
+        460,
+        460
+      ],
+      "currentUses": [
+        {
+          "pageId": "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6",
+          "elementId": "client-3"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+      "sha256": "6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef",
+      "source": "../assets/brand/huandeng.png",
+      "kind": "shared-source",
+      "pixels": [
+        512,
+        512
+      ],
+      "currentUses": [
+        {
+          "pageId": "90353b2a-6f7b-4ee5-8a8b-10bceb538190",
+          "elementId": "product-mark"
+        },
+        {
+          "pageId": "7d7d42a0-0db7-4d33-9b3f-5e1035097b50",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "95189956-cdd7-4ad9-88c8-cf28a204bb68",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "ca1eec7e-61bd-41ac-b6ab-e000d06797be",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "4a066483-9a11-450c-be15-c0be33d52989",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "3f5561d8-477e-4954-bee2-9877c8cddc69",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "6a3aec16-2347-40fe-856d-df36c1f58509",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "dc5bfe5f-326a-4b28-8536-56e51ea4397e",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "80c650ec-8f56-403d-8f44-d190a84ed4b4",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "e4fb0f10-ffa5-44e2-907f-b92e1b69535e",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "8050a155-9c2b-4cf5-b643-e9406b9b2b1c",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "bbcdc92a-915c-4988-a4d5-76e466d0424f",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "8f9e154d-c5c2-4d79-b809-984586f8311e",
+          "elementId": "closing-mark"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/fdec4023e93a40de584b8c7534c7cceeb83d66eb5cf8f6e794a80434d0633557.png",
+      "sha256": "fdec4023e93a40de584b8c7534c7cceeb83d66eb5cf8f6e794a80434d0633557",
+      "source": "editor-science.png",
+      "kind": "actual-ui-or-operation-capture",
+      "pixels": [
+        4800,
+        2880
+      ],
+      "currentUses": []
+    },
+    {
+      "path": "media/imported/3141de6201ac50bc936475a058db4be21189dc88121aafe007f80b72ec5e7ef6.png",
+      "sha256": "3141de6201ac50bc936475a058db4be21189dc88121aafe007f80b72ec5e7ef6",
+      "source": "evidence-before.png",
+      "kind": "actual-ui-or-operation-capture",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "currentUses": [
+        {
+          "pageId": "3f5561d8-477e-4954-bee2-9877c8cddc69",
+          "elementId": "before"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/0b4a19dfbcd31a26ee1008f81b6aec774bca6b3cda224eff3a5dee8fd2d9e046.png",
+      "sha256": "0b4a19dfbcd31a26ee1008f81b6aec774bca6b3cda224eff3a5dee8fd2d9e046",
+      "source": "evidence-after.png",
+      "kind": "actual-ui-or-operation-capture",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "currentUses": [
+        {
+          "pageId": "3f5561d8-477e-4954-bee2-9877c8cddc69",
+          "elementId": "after"
+        },
+        {
+          "pageId": "80c650ec-8f56-403d-8f44-d190a84ed4b4",
+          "elementId": "pinned-page"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/342088ed88ab8fffc8ce2651cd6fbf183244f5069c7907702a957eb9cf9fa18a.png",
+      "sha256": "342088ed88ab8fffc8ce2651cd6fbf183244f5069c7907702a957eb9cf9fa18a",
+      "source": "../assets/science/dna-duplex-end.png",
+      "kind": "shared-source",
+      "pixels": [
+        1812,
+        1812
+      ],
+      "currentUses": [
+        {
+          "pageId": "95189956-cdd7-4ad9-88c8-cf28a204bb68",
+          "elementId": "end-view"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/91315947e96e846550cc7b331e928f06d76426e23afd63decff60ca1dec94f27.png",
+      "sha256": "91315947e96e846550cc7b331e928f06d76426e23afd63decff60ca1dec94f27",
+      "source": "versions-detail.png",
+      "kind": "actual-ui-or-operation-capture",
+      "pixels": [
+        645,
+        756
+      ],
+      "currentUses": [
+        {
+          "pageId": "6a3aec16-2347-40fe-856d-df36c1f58509",
+          "elementId": "versions"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/12257031463fed52e8ecc4b6cd6e5d76e4b6937a690c55d6e74adb9b89a0fa0e.png",
+      "sha256": "12257031463fed52e8ecc4b6cd6e5d76e4b6937a690c55d6e74adb9b89a0fa0e",
+      "source": "story-clean.png",
+      "kind": "actual-ui-or-operation-capture",
+      "pixels": [
+        897,
+        1035
+      ],
+      "currentUses": [
+        {
+          "pageId": "4a066483-9a11-450c-be15-c0be33d52989",
+          "elementId": "story-panel"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/d538853dc8d3a4477e475f2bdbe3c2b150cc749027e00d7dde3147d7e8269f97.png",
+      "sha256": "d538853dc8d3a4477e475f2bdbe3c2b150cc749027e00d7dde3147d7e8269f97",
+      "source": "09.png",
+      "kind": "rendered-project-page",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "currentUses": [
+        {
+          "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7",
+          "elementId": "stack-8"
+        },
+        {
+          "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7",
+          "elementId": "sequence-0-2"
+        },
+        {
+          "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7",
+          "elementId": "sequence-1-0"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/340ffcfc613a1ee2ba6fcde5bdb41b125d9bb9f9c23e1bd0e77c20bdd7a4adfc.png",
+      "sha256": "340ffcfc613a1ee2ba6fcde5bdb41b125d9bb9f9c23e1bd0e77c20bdd7a4adfc",
+      "source": "04.png",
+      "kind": "rendered-project-page",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "currentUses": [
+        {
+          "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7",
+          "elementId": "stack-3"
+        },
+        {
+          "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7",
+          "elementId": "sequence-0-1"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/20b7c78e9be4344089540b3a013d3de65540457409b28913638f18fd6161564d.png",
+      "sha256": "20b7c78e9be4344089540b3a013d3de65540457409b28913638f18fd6161564d",
+      "source": "02.png",
+      "kind": "rendered-project-page",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "currentUses": [
+        {
+          "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7",
+          "elementId": "stack-1"
+        },
+        {
+          "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7",
+          "elementId": "sequence-0-0"
+        },
+        {
+          "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7",
+          "elementId": "sequence-1-1"
+        },
+        {
+          "pageId": "dc5bfe5f-326a-4b28-8536-56e51ea4397e",
+          "elementId": "linked-page"
+        },
+        {
+          "pageId": "80c650ec-8f56-403d-8f44-d190a84ed4b4",
+          "elementId": "live-page"
+        },
+        {
+          "pageId": "8f9e154d-c5c2-4d79-b809-984586f8311e",
+          "elementId": "closing-example"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/8ac36b164529f043662f87f234679590fb8505c1cd2dae61918b5d42ba0b86ee.png",
+      "sha256": "8ac36b164529f043662f87f234679590fb8505c1cd2dae61918b5d42ba0b86ee",
+      "source": "05.png",
+      "kind": "rendered-project-page",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "currentUses": [
+        {
+          "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7",
+          "elementId": "sequence-1-2"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/48fe43fdc4bd5aa675f58e91a6bfaaf7eeb7df2be43384d4d89bdd61c8167f08.png",
+      "sha256": "48fe43fdc4bd5aa675f58e91a6bfaaf7eeb7df2be43384d4d89bdd61c8167f08",
+      "source": "../assets/recommended/en/en-present-menu-4x.png",
+      "kind": "shared-source",
+      "pixels": [
+        764,
+        288
+      ],
+      "currentUses": []
+    },
+    {
+      "path": "media/imported/ea2c787b8b58f25cb8655c5df4926889bad3ebd4b293d24df5e18a54944be3eb.png",
+      "sha256": "ea2c787b8b58f25cb8655c5df4926889bad3ebd4b293d24df5e18a54944be3eb",
+      "source": "../assets/recommended/en/en-export-4x.png",
+      "kind": "shared-source",
+      "pixels": [
+        2304,
+        1088
+      ],
+      "currentUses": []
+    },
+    {
+      "path": "media/imported/44e2a2aa5f3887deae386fa73f71234961f93e006873b632ccf38b6b6f1291a1.png",
+      "sha256": "44e2a2aa5f3887deae386fa73f71234961f93e006873b632ccf38b6b6f1291a1",
+      "source": "../assets/brand/open-slide.png",
+      "kind": "shared-source",
+      "pixels": [
+        512,
+        512
+      ],
+      "currentUses": [
+        {
+          "pageId": "bbcdc92a-915c-4988-a4d5-76e466d0424f",
+          "elementId": "credit-0"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/2a2f5cbcc74c7fa83c40127dd8b0e42c23f1157131aebe28492aa1ac27bbdc6d.png",
+      "sha256": "2a2f5cbcc74c7fa83c40127dd8b0e42c23f1157131aebe28492aa1ac27bbdc6d",
+      "source": "../assets/brand/github-repository.png",
+      "kind": "shared-source",
+      "pixels": [
+        294,
+        288
+      ],
+      "currentUses": [
+        {
+          "pageId": "bbcdc92a-915c-4988-a4d5-76e466d0424f",
+          "elementId": "credit-1"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/d697acf6f3c5bc265806bc8f6c4e6d58b964e0b2962392d0329a420639f45846.png",
+      "sha256": "d697acf6f3c5bc265806bc8f6c4e6d58b964e0b2962392d0329a420639f45846",
+      "source": "../assets/brand/pptxgenjs.png",
+      "kind": "shared-source",
+      "pixels": [
+        480,
+        349
+      ],
+      "currentUses": [
+        {
+          "pageId": "bbcdc92a-915c-4988-a4d5-76e466d0424f",
+          "elementId": "credit-2"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/8bdb602d10ad6b22a0590782749c84e587cdda7645f82dfe553e470ad3b6df12.png",
+      "sha256": "8bdb602d10ad6b22a0590782749c84e587cdda7645f82dfe553e470ad3b6df12",
+      "source": "editor-complete.png",
+      "kind": "actual-ui-or-operation-capture",
+      "pixels": [
+        4800,
+        2880
+      ],
+      "currentUses": []
+    },
+    {
+      "path": "media/imported/de90744e6265ef228c341755c25211ebd3ace1f175920d7a10345b0d069112e6.png",
+      "sha256": "de90744e6265ef228c341755c25211ebd3ace1f175920d7a10345b0d069112e6",
+      "source": "present-current.png",
+      "kind": "actual-ui-or-operation-capture",
+      "pixels": [
+        573,
+        219
+      ],
+      "currentUses": [
+        {
+          "pageId": "e4fb0f10-ffa5-44e2-907f-b92e1b69535e",
+          "elementId": "present-menu"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/18e1bc80e6ee32a706a326d2cc25c941b1e73dde5e4f4329cb94fcd37b3ff519.png",
+      "sha256": "18e1bc80e6ee32a706a326d2cc25c941b1e73dde5e4f4329cb94fcd37b3ff519",
+      "source": "export-current.png",
+      "kind": "actual-ui-or-operation-capture",
+      "pixels": [
+        1728,
+        816
+      ],
+      "currentUses": [
+        {
+          "pageId": "e4fb0f10-ffa5-44e2-907f-b92e1b69535e",
+          "elementId": "export-menu"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/ab6277d08c06c42c127313ec07ec45440703eb5616e575deedf93a8e7b4ee7d6.png",
+      "sha256": "ab6277d08c06c42c127313ec07ec45440703eb5616e575deedf93a8e7b4ee7d6",
+      "source": "editor-native-chart.png",
+      "kind": "actual-ui-or-operation-capture",
+      "pixels": [
+        4800,
+        2880
+      ],
+      "currentUses": [
+        {
+          "pageId": "90353b2a-6f7b-4ee5-8a8b-10bceb538190",
+          "elementId": "editor-cover"
+        },
+        {
+          "pageId": "7d7d42a0-0db7-4d33-9b3f-5e1035097b50",
+          "elementId": "editor-working"
+        }
+      ]
+    }
+  ],
+  "captures": [
+    {
+      "name": "capture-manifest-clean.json",
+      "language": "en",
+      "sourcePageId": "c4b12919-5876-4acb-b63f-6a7493b54b37",
+      "captures": [
+        {
+          "file": "editor-science.png",
+          "pixels": [
+            4800,
+            2880
+          ],
+          "sha256": "fdec4023e93a40de584b8c7534c7cceeb83d66eb5cf8f6e794a80434d0633557",
+          "deviceScaleFactor": 3
+        },
+        {
+          "file": "story-clean.png",
+          "pixels": [
+            897,
+            1035
+          ],
+          "sha256": "12257031463fed52e8ecc4b6cd6e5d76e4b6937a690c55d6e74adb9b89a0fa0e",
+          "deviceScaleFactor": 3
+        },
+        {
+          "file": "history-populated.png",
+          "pixels": [
+            3936,
+            2271
+          ],
+          "sha256": "b732800fde6145130f24ef743fb46e64dbf06410986a5697eb22af05a71a55ad",
+          "deviceScaleFactor": 3
+        },
+        {
+          "file": "versions-detail.png",
+          "pixels": [
+            645,
+            756
+          ],
+          "sha256": "91315947e96e846550cc7b331e928f06d76426e23afd63decff60ca1dec94f27",
+          "deviceScaleFactor": 3
+        },
+        {
+          "file": "operations-list.png",
+          "pixels": [
+            669,
+            1554
+          ],
+          "sha256": "fb8fdfac43ea0a52c079ee3db71e15a95687830a5d22491f93fcce75a9774df3",
+          "deviceScaleFactor": 3
+        }
+      ]
+    },
+    {
+      "name": "capture-manifest-final.json",
+      "language": "en",
+      "sourcePageId": "c4b12919-5876-4acb-b63f-6a7493b54b37",
+      "captures": [
+        {
+          "file": "editor-complete.png",
+          "pixels": [
+            4800,
+            2880
+          ],
+          "sha256": "8bdb602d10ad6b22a0590782749c84e587cdda7645f82dfe553e470ad3b6df12",
+          "deviceScaleFactor": 3
+        },
+        {
+          "file": "export-current.png",
+          "pixels": [
+            1728,
+            816
+          ],
+          "sha256": "18e1bc80e6ee32a706a326d2cc25c941b1e73dde5e4f4329cb94fcd37b3ff519",
+          "deviceScaleFactor": 3
+        },
+        {
+          "file": "present-current.png",
+          "pixels": [
+            573,
+            219
+          ],
+          "sha256": "de90744e6265ef228c341755c25211ebd3ace1f175920d7a10345b0d069112e6",
+          "deviceScaleFactor": 3
+        }
+      ]
+    },
+    {
+      "name": "capture-manifest-native-chart.json",
+      "language": "en",
+      "sourcePageId": "c4b12919-5876-4acb-b63f-6a7493b54b37",
+      "captures": [
+        {
+          "file": "editor-native-chart.png",
+          "pixels": [
+            4800,
+            2880
+          ],
+          "sha256": "ab6277d08c06c42c127313ec07ec45440703eb5616e575deedf93a8e7b4ee7d6",
+          "deviceScaleFactor": 3
+        }
+      ]
+    }
+  ]
+}

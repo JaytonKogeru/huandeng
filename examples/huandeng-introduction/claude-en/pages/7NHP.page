@@ -1,0 +1,245 @@
+background:
+  type: solid
+  color: "#F6F6F3"
+elements:
+  - elementId: title
+    elementType: text
+    role: title
+    bounds:
+      - 56
+      - 30
+      - 848
+      - 42
+    content:
+      text: A Project is a folder you own
+      fontFamily: Arial
+      fontSize: 30
+      lineHeight: 1.2
+      color: "#1C2321"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: tree
+    elementType: table
+    bounds:
+      - 56
+      - 92
+      - 520
+      - 320
+    columnWidths:
+      - 0.4
+      - 0.6
+    rows:
+      - - text: In the folder
+        - text: What it holds
+      - - text: deck.pptd
+        - text: Slide order, page size and theme
+      - - text: pages
+        - text: "One .page file per slide: objects and speaker notes"
+      - - text: media
+        - text: Original images and figures, plus derived crops
+      - - text: .huandeng · project.json
+        - text: Slide IDs, Story, Sections and Presentations
+      - - text: .huandeng · checkpoints
+        - text: Named slide versions, with their archived images
+      - - text: AGENTS.md
+        - text: The authoring brief that agents read first
+      - - text: Exports
+        - text: PDF, PPTX and export reports
+    style:
+      cellStyle:
+        fontFamily: Arial
+        fontSize: 14
+        lineHeight: 1.25
+        color: "#1C2321"
+        align:
+          - left
+          - middle
+        border:
+          - null
+          - null
+          - width: 1
+            color: "#CBD3CF"
+            style: solid
+          - null
+      firstRowStyle:
+        color: "#56615D"
+        bold: true
+        fontSize: 12
+      firstColumnStyle:
+        color: "#2E6B5E"
+        bold: true
+  - elementId: tree-note
+    elementType: text
+    bounds:
+      - 56
+      - 424
+      - 520
+      - 40
+    content:
+      text: Copy or share the folder and the slides, Story, Presentations and named versions travel with it. Activity logs and write locks stay on the local machine.
+      fontFamily: Arial
+      fontSize: 14
+      lineHeight: 1.35
+      color: "#3E4845"
+      align:
+        - left
+        - top
+  - elementId: self-head
+    elementType: text
+    bounds:
+      - 612
+      - 92
+      - 292
+      - 22
+    content:
+      text: This introduction is one
+      fontFamily: Arial
+      fontSize: 16
+      lineHeight: 1.35
+      color: "#2E6B5E"
+      align:
+        - left
+        - middle
+      bold: true
+  - elementId: stack0-f
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 639
+      - 123
+      - 266
+      - 150
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#B9C2BD"
+  - elementId: stack0
+    elementType: image
+    bounds:
+      - 640
+      - 124
+      - 264
+      - 148
+    src: media/derived/thumbs/r1-16-AUBX.png
+    sourceName: r1-16-AUBX.png
+    fit:
+      mode: contain
+  - elementId: stack1-f
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 625
+      - 137
+      - 266
+      - 150
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#B9C2BD"
+  - elementId: stack1
+    elementType: image
+    bounds:
+      - 626
+      - 138
+      - 264
+      - 148
+    src: media/derived/thumbs/r1-10-V2SV.png
+    sourceName: r1-10-V2SV.png
+    fit:
+      mode: contain
+  - elementId: stack2-f
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 611
+      - 151
+      - 266
+      - 150
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#B9C2BD"
+  - elementId: stack2
+    elementType: image
+    bounds:
+      - 612
+      - 152
+      - 264
+      - 148
+    src: media/derived/thumbs/r1-05-AVNM.png
+    sourceName: r1-05-AVNM.png
+    fit:
+      mode: contain
+  - elementId: self-stats
+    elementType: text
+    bounds:
+      - 612
+      - 318
+      - 292
+      - 110
+    content:
+      text: |-
+        20 slides in 5 Sections
+        2 Presentations built from them
+        Story and speaker notes on every slide
+        A named version recorded at completion
+      fontFamily: Arial
+      fontSize: 14
+      lineHeight: 1.5
+      color: "#1C2321"
+      align:
+        - left
+        - top
+  - elementId: ft-mark
+    elementType: image
+    bounds:
+      - 56
+      - 505
+      - 16
+      - 16
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    fit:
+      mode: contain
+  - elementId: ft-label
+    elementType: text
+    bounds:
+      - 78
+      - 505
+      - 420
+      - 16
+    content:
+      text: HUANDENG  /  Connect and contribute
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - left
+        - middle
+  - elementId: ft-pos
+    elementType: text
+    bounds:
+      - 824
+      - 505
+      - 80
+      - 16
+    content:
+      text: "0"
+      field: main-position
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - right
+        - middle
+notes: "Everything I have shown lives in one ordinary folder. deck.pptd holds the slide order. Each slide is its own .page file, so a change to one slide touches one file. media keeps the original figures and any derived crops. The .huandeng folder keeps identities, Story, Sections, Presentations and named versions with their archived images. AGENTS.md is a short authoring brief that an agent reads before it edits; for this deck it asks, for example, for the real HUANDENG mark and for scientific labels and citations to be kept. Exports holds the PDF and PPTX. Copy the folder to a colleague and they get the whole project. This introduction is such a project: open it in the Editor and you can see its Story, its two Presentations and its notes."

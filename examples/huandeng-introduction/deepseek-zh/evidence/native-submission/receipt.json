@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-10T12:52:00.958673+00:00",
+  "nativeAuthor": "DeepSeek Harness",
+  "native_completed": true,
+  "nativeSeconds": 1114.97,
+  "mainPages": 16,
+  "presentations": [
+    {
+      "id": "full",
+      "title": "完整介绍",
+      "items": 16
+    },
+    {
+      "id": "brief",
+      "title": "短版 · 八分钟",
+      "items": 8
+    }
+  ],
+  "coordinatorPageContentChanges": 0,
+  "allPageHashesUnchanged": true,
+  "allPageFilesSha256": {
+    "pages/2FMW.page": "56ba9c09b5b642d9463da2b2ea176180e2dc42b96d0c4ff624c0e30bcb522a67",
+    "pages/2Z2N.page": "664c6181edfa2d955df2cf2214ebed618599b162715013d95da1cba58019261f",
+    "pages/3JZP.page": "5349188fb18ba1db2bd44418144f2552e23c80cc8ce64469489f371a263edf11",
+    "pages/4E96.page": "6e5397629c1022bf35cd9f1d1c47287382f071ab60edee623e38d8ebd8eb5bd4",
+    "pages/4ST8.page": "42489ca515cd1045e4ebc81b78cae6b964954f4bedbb68bb3945a01a9a4b4e09",
+    "pages/4SYN.page": "e3968de7d78a92ed12f4ade0155a28d0ad11fd554fe9919ee2a478e992699f80",
+    "pages/4UY8.page": "89995ede64499619f6e9e0aba9dbd62c31be342059ba0df918913270d838d544",
+    "pages/5GVZ.page": "6c6e5c29f1715b5e955c23fc9bd3286149c4cff74ddf06a14ea03be7f1f548ef",
+    "pages/5MNK.page": "b96316b50191bd33a2faba84a8ad1f87b41a0025e49f6e19c7a42ab46b22bbfe",
+    "pages/5XR7.page": "66ed6078f4e8b91d848742ecf65d8264cb01a53f4068683b41add8429cdb7f86",
+    "pages/6DVM.page": "a8af22141c4e88f2b4d67ad24664f28ec8671c0e1505b5d9a044633f19501d28",
+    "pages/88WA.page": "b487cbbac4ee38294c2ec4d1724ed347b0cd15a4f4a5ae7a9a6f4a85a6f5c28b",
+    "pages/8PPW.page": "4d8cad1faff2875363cb6d9e5ef912d1fe4f60f8502ddb9eb96f02512118625c",
+    "pages/AVJE.page": "7ddff5171138a5cd743922a027a1895805fd0a8f488f94171015172ffbd785bb",
+    "pages/AVRB.page": "eb6c0f7395b810bae3379cb2b093cad4e6dc61789d3fa930f9f8da5a786bd88d",
+    "pages/CKFY.page": "ae30e1587fbeef9365a74a4f72674fdd95266b0efc8d5f6388b7a776dea01685",
+    "pages/CS2J.page": "2a53666902fc9065cd8d85fa8ea3288ab09688cc7563804e3ed1a95696c24b18",
+    "pages/CZD7.page": "3fd2de5114cbc6d7d84a41c91debd031f4d6df46bcec291752fcfcec23e93fc4",
+    "pages/DPSB.page": "2cefa797139d7cbb281d4ccb4fa731302d4423facc0c07494d099f13d0080390",
+    "pages/DZ9U.page": "186e01eaa13527c25e80e1c5cd642a813b2335975c77a8099a60ec85dd5e3066",
+    "pages/E8XB.page": "373f6f9d9cfefce71189bd77c25b61ac70161c91f5dd346744823dc89ad67a0f",
+    "pages/GRYJ.page": "72a38e7b06f6b8916a95e8472ad5c4a92bd171d6c055866c7008db3e0df24035",
+    "pages/GYRU.page": "f9c28cd810711f32adf2bbffcc2398c101c8ff6a16403ecd098023269626b691",
+    "pages/H62N.page": "900d13f7a73a7b242ac38213f7f055b73ee63538dc5edd634ca0f815276ce68f",
+    "pages/initial.page": "1b8eba932edcb6a1cedb87eae9f93a1c3f02fc54302dbadf3f2ead7d01cd44e5",
+    "pages/J3ZX.page": "4b2b869138d24925414aa016cd4a26c266cc82800af9b4416e76d91b79990f81",
+    "pages/JA2S.page": "e2b73ca3c3db0cc34a635f2bfb275da0e097838ad56a8251ab3ae196fdba82f3",
+    "pages/K28C.page": "ee2585eec8de697b3fb8449e35d69ec964a52bea8872da72bf67168793258b44",
+    "pages/PD5K.page": "c26e8700fffa6927b082f5f3b8643ef8340ae05ce8538380979b6e26074295d5",
+    "pages/TZM6.page": "4efb4ce91666a3a96ec26ea345d7784f4949966bd0fb68b9f5b3919530ca537b",
+    "pages/UBDB.page": "876605e2b1b95cc9806bdd852d8b8c95280dd311dd3cf57f9eb1a441696b3d70",
+    "pages/UZKY.page": "4da3f71a9f302fbd2af56a6a6a8849a11da2dd1f405d64c0352109963978d5cc",
+    "pages/W4PY.page": "0e54ad488c93f9893a8a6cff5d53e9e7b2f0aff00b21625e0469357d95263439",
+    "pages/WDNH.page": "bacdc0a72df7e96a470c5f1ff385e361162f3c16a12ade8c02a04a7cad90b96f",
+    "pages/WMFA.page": "077751c4c2479e4806433e7ee6746177d7e50fb962b2b3874f81807db75d7561",
+    "pages/WQGW.page": "a458960ce2c7caab1c7ef74ea825f95999afcc8309b9ba0d5d309a2af7d0034d",
+    "pages/XZJN.page": "0bb4682ffde683a9633e1cb4c802cc411e55ae930dc91ac8d6effc90ec434c0b"
+  },
+  "deckSha256": "bb704e34cdf4fc4e448b657e8875b6a0249bb4db860ab815b4a8134ba411f498",
+  "projectMetadataSha256": "2d15c134d745563a6514b495e6bfebc9b059a968db158a68a45f02545d5fe2da",
+  "nativeFrozenArchiveSha256": "d986d91e90d5761bad50af17fbc460b03187f707ac7861c975d1a39ffc1fd567",
+  "exports": {
+    "pdf": {
+      "path": "../../Exports/deck.pdf",
+      "sha256": "8bf22ffb20bfd157acdc4a3a5584610166aa76450580137fc28eb62af101c2b4",
+      "bytes": 2822328
+    },
+    "pptx": {
+      "path": "../../Exports/deck.pptx",
+      "sha256": "6b6f79c172aee3277732c7891ab81c8c6c81c9b241d0e237c27932c1ba6faf3e",
+      "bytes": 2603412
+    }
+  },
+  "fullHistoryDuplicateRequired": false,
+  "rawSessionLogsIncluded": false
+}

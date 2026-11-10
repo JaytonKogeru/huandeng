@@ -1,0 +1,23 @@
+background:
+  type: solid
+  color: "#2D4A43"
+elements:
+  - elementId: divider-title
+    elementType: text
+    role: title
+    bounds:
+      - 72
+      - 226
+      - 816
+      - 72
+    content:
+      text: A worked example
+      fontFamily: Arial
+      fontSize: 40
+      lineHeight: 1.2
+      color: "#FFFFFF"
+      bold: true
+      align:
+        - left
+        - middle
+notes: Section 2. Let's make this concrete with one real scientific slide, then follow a single change to it from request to saved, reviewable result.

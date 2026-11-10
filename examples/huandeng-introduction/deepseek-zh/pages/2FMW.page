@@ -1,0 +1,418 @@
+pageType: content
+background:
+  type: solid
+  color: "#16211B"
+notes: 这页说明外部 AI 的接入方式，但不要讲成“模型能力”。重点是同一份文档、同一个写入器：客户端读取上下文，提交事务；写入器检查版本、预览并返回回执。客户端标识只说明支持的产品，不代表官方背书。
+elements:
+  - elementId: ai-title
+    elementType: text
+    role: title
+    bounds:
+      - 48
+      - 44
+      - 440
+      - 40
+    content:
+      text: 外部 AI 写进同一个项目
+      fontSize: 28
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#F3F4EC"
+      lineHeight: 1.3
+      align:
+        - left
+        - top
+  - elementId: ai-lead
+    elementType: text
+    bounds:
+      - 48
+      - 92
+      - 448
+      - 70
+    content:
+      text: "ChatGPT、Codex、Claude Code、DeepSeek 等客户端\n连接同一个本地写入器；\n提案要经过预览和版本检查才能落盘。"
+      fontSize: 14
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#B9C7B9"
+      lineHeight: 1.65
+      align:
+        - left
+        - top
+  - elementId: ai-client-bg-1
+    elementType: shape
+    bounds:
+      - 48
+      - 187
+      - 44
+      - 44
+    shapeName: rect
+    fill:
+      type: solid
+      color: "#F4F4EE"
+    border:
+      color: "#F4F4EE"
+      width: 0
+      style: solid
+  - elementId: ai-client-1
+    elementType: image
+    bounds:
+      - 56
+      - 195
+      - 28
+      - 28
+    src: media/imported/0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13.png
+    sourceName: chatgpt.png
+    fit:
+      mode: contain
+  - elementId: ai-name-1
+    elementType: text
+    bounds:
+      - 104
+      - 187
+      - 300
+      - 22
+    content:
+      text: "ChatGPT / Codex"
+      fontSize: 14.6
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#F3F4EC"
+      align:
+        - left
+        - top
+  - elementId: ai-role-1
+    elementType: text
+    bounds:
+      - 104
+      - 211
+      - 300
+      - 20
+    content:
+      text: "读取上下文 · 提交提案"
+      fontSize: 8.8
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#91A394"
+      align:
+        - left
+        - top
+  - elementId: ai-client-bg-3
+    elementType: shape
+    bounds:
+        [48,259,44,44]
+    shapeName: rect
+    fill:
+      type: solid
+      color: "#F4F4EE"
+    border:
+      color: "#F4F4EE"
+      width: 0
+      style: solid
+  - elementId: ai-client-3
+    elementType: image
+    bounds:
+        [56,267,28,28]
+    src: media/imported/733f24f4c52acb15eb0fbded1cf40eb42b4ba8e62b882acac70b6234b50919a8.png
+    sourceName: claude-code.png
+    fit:
+      mode: contain
+  - elementId: ai-name-3
+    elementType: text
+    bounds:
+        [104,259,300,22]
+    content:
+      text: Claude Code
+      fontSize: 14.6
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#F3F4EC"
+      align:
+        - left
+        - top
+  - elementId: ai-role-3
+    elementType: text
+    bounds:
+        [104,283,300,20]
+    content:
+      text: 本机指南 · MCP
+      fontSize: 9.4
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#91A394"
+      align:
+        - left
+        - top
+  - elementId: ai-client-bg-4
+    elementType: shape
+    bounds:
+        [48,331,44,44]
+    shapeName: rect
+    fill:
+      type: solid
+      color: "#F4F4EE"
+    border:
+      color: "#F4F4EE"
+      width: 0
+      style: solid
+  - elementId: ai-client-4
+    elementType: image
+    bounds:
+        [56,339,28,28]
+    src: media/imported/e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc.png
+    sourceName: deepseek.png
+    fit:
+      mode: contain
+  - elementId: ai-name-4
+    elementType: text
+    bounds:
+        [104,331,300,22]
+    content:
+      text: DeepSeek
+      fontSize: 14.6
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#F3F4EC"
+      align:
+        - left
+        - top
+  - elementId: ai-role-4
+    elementType: text
+    bounds:
+        [104,355,300,20]
+    content:
+      text: 通过 Harness · MCP
+      fontSize: 9.4
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#91A394"
+      align:
+        - left
+        - top
+  - elementId: ai-divider
+    elementType: line
+    bounds:
+      - 520
+      - 156
+      - 1
+      - 326
+    viewBox:
+      - 1
+      - 326
+    points: 0.5,0 0.5,326
+    border:
+      color: "#3D4C42"
+      width: 0.8
+      style: solid
+  - elementId: ai-flow-label
+    elementType: text
+    bounds:
+      - 552
+      - 146
+      - 300
+      - 18
+    content:
+      text: 写入链路
+      fontSize: 9.2
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#8FA294"
+      letterSpacing: 1
+      align:
+        - left
+        - top
+  - elementId: ai-step-1
+    elementType: text
+    bounds:
+      - 552
+      - 176
+      - 340
+      - 22
+    content:
+      text: 01  读取 revision 与 Story
+      fontSize: 13
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#DDE6D9"
+      align:
+        - left
+        - top
+  - elementId: ai-step-2
+    elementType: text
+    bounds:
+      - 552
+      - 212
+      - 340
+      - 22
+    content:
+      text: 02  预览确切变更
+      fontSize: 13
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#DDE6D9"
+      align:
+        - left
+        - top
+  - elementId: ai-step-3
+    elementType: text
+    bounds:
+      - 552
+      - 248
+      - 340
+      - 22
+    content:
+      text: 03  原样应用，取得回执
+      fontSize: 13
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#DDE6D9"
+      align:
+        - left
+        - top
+  - elementId: ai-step-4
+    elementType: text
+    bounds:
+      - 552
+      - 284
+      - 340
+      - 22
+    content:
+      text: 04  读回、渲染、审阅
+      fontSize: 13
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#DDE6D9"
+      align:
+        - left
+        - top
+  - elementId: ai-flow-line
+    elementType: line
+    bounds:
+      - 560
+      - 315
+      - 1
+      - 24
+    viewBox:
+      - 1
+      - 24
+    points: 0.5,0 0.5,24
+    border:
+      color: "#5D7665"
+      width: 0.8
+      style: solid
+  - elementId: ai-writer
+    elementType: shape
+    bounds:
+      - 552
+      - 340
+      - 332
+      - 72
+    shapeName: rect
+    fill:
+      type: solid
+      color: "#22322A"
+    border:
+      color: "#5D7665"
+      width: 0.8
+      style: solid
+  - elementId: ai-writer-title
+    elementType: text
+    bounds:
+      - 568
+      - 354
+      - 300
+      - 22
+    content:
+      text: 共享写入器
+      fontSize: 14
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#F3F4EC"
+      align:
+        - left
+        - top
+  - elementId: ai-writer-sub
+    elementType: text
+    bounds:
+      - 568
+      - 378
+      - 300
+      - 20
+    content:
+      text: 版本检查 · 预览 · 回执
+      fontSize: 9.6
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#AFC0B1"
+      align:
+        - left
+        - top
+  - elementId: ai-project
+    elementType: text
+    bounds:
+      - 552
+      - 432
+      - 340
+      - 36
+    content:
+      text: |-
+        PPTD 项目
+        pages · media · Story · 版本
+      fontSize: 10.4
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#93A797"
+      lineHeight: 1.55
+      align:
+        - left
+        - top
+  - elementId: ai-note
+    elementType: text
+    bounds:
+      - 48
+      - 470
+      - 448
+      - 28
+    content:
+      text: AI 不直接改 .page；它发事务，写入器执行。
+      fontSize: 10
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#C8D9C4"
+      align:
+        - left
+        - top
+  - elementId: ai-disclosure
+    elementType: text
+    bounds:
+      - 552
+      - 500
+      - 356
+      - 26
+    content:
+      text: 客户端标识只说明支持的产品，不代表官方背书。
+      fontSize: 8.4
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#7F9386"
+      align:
+        - left
+        - top

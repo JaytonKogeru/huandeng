@@ -1,0 +1,16 @@
+{
+  "pageId": "c4b12919-5876-4acb-b63f-6a7493b54b37",
+  "operationId": "d2d18509-c72c-48e7-81cc-4251486a522e",
+  "changedFields": [
+    "title.content.text",
+    "context.content.text"
+  ],
+  "preservedImage": true,
+  "preservedChartValues": true,
+  "preservedAxesAndUnits": true,
+  "preservedOtherPages": true,
+  "beforeRevision": "sha256:a0352b98674ed97c892e30f693b98722b523ebfc45358f12d2dc815fb893df7f",
+  "afterRevision": "sha256:9b9619274213cb1cfa563e58d747214600b3f55b255eff3fa6efe569b7235b54",
+  "versionId": "checkpoint:891ad589ee3d84a6414cbf6af1245185",
+  "publicDemonstration": true
+}

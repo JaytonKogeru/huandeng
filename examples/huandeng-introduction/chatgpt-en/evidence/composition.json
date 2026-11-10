@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 1,
+  "language": "en",
+  "mainCount": 19,
+  "fullCount": 19,
+  "briefCount": 7,
+  "titleOnlySectionCount": 3,
+  "pinnedScienceVersion": "checkpoint:891ad589ee3d84a6414cbf6af1245185",
+  "sourceValues": "sources/science/measurements.json",
+  "authorAccepted": false,
+  "pages": [
+    {
+      "position": 1,
+      "pageId": "90353b2a-6f7b-4ee5-8a8b-10bceb538190",
+      "shortCode": "9DAA",
+      "revision": "sha256:e41d7ed6c4e852d1e74c86d2bf2894eb85533da99436c092c8eda203137fe86a",
+      "title": "Editing scientific\npresentations",
+      "background": {
+        "type": "solid",
+        "color": "#E4ECE6"
+      },
+      "objects": 6,
+      "imageCount": 2
+    },
+    {
+      "position": 2,
+      "pageId": "c4b12919-5876-4acb-b63f-6a7493b54b37",
+      "shortCode": "ZWZJ",
+      "revision": "sha256:b54043805b8083bf223c1a348d30c1ab8f73a122120bd63d140ecd8a4d6d2182",
+      "title": "Local variation in one structure",
+      "background": {
+        "type": "solid",
+        "color": "#F7F5EF"
+      },
+      "objects": 9,
+      "imageCount": 1
+    },
+    {
+      "position": 3,
+      "pageId": "6b9fbac0-772c-435c-bce1-9cad0004af65",
+      "shortCode": "9VGD",
+      "revision": "sha256:631e6dacb00eaed925480b54c3868a4960220b51fc8b97ed69f9344adb5361af",
+      "title": "Evidence and composition",
+      "background": {
+        "type": "solid",
+        "color": "#E4ECE6"
+      },
+      "objects": 1,
+      "imageCount": 0
+    },
+    {
+      "position": 4,
+      "pageId": "7d7d42a0-0db7-4d33-9b3f-5e1035097b50",
+      "shortCode": "FKA9",
+      "revision": "sha256:fb9c2667c5bab4bd2d21300b6c21431fc263d4fb7a4a0fc100a1ba21697f6563",
+      "title": "Keep working in the Editor",
+      "background": {
+        "type": "solid",
+        "color": "#F7F5EF"
+      },
+      "objects": 14,
+      "imageCount": 2
+    },
+    {
+      "position": 5,
+      "pageId": "95189956-cdd7-4ad9-88c8-cf28a204bb68",
+      "shortCode": "35U5",
+      "revision": "sha256:14360437a95bee5f7da429eec278c0d9ee7481d473cf8d72a9e08fdf6eb9e03c",
+      "title": "Keep the sources beside the work",
+      "background": {
+        "type": "solid",
+        "color": "#EEE9DD"
+      },
+      "objects": 9,
+      "imageCount": 2
+    },
+    {
+      "position": 6,
+      "pageId": "ca1eec7e-61bd-41ac-b6ab-e000d06797be",
+      "shortCode": "XF8A",
+      "revision": "sha256:b27091d31310e5cb8a9fda7da7611c90adf74ee8832abf9524e8291d3b38e6bc",
+      "title": "Figures, charts and equations",
+      "background": {
+        "type": "solid",
+        "color": "#F7F5EF"
+      },
+      "objects": 10,
+      "imageCount": 1
+    },
+    {
+      "position": 7,
+      "pageId": "d497fb11-7906-414e-a529-0d97680bce51",
+      "shortCode": "7E4T",
+      "revision": "sha256:384b8568277221b2af2b5b19c0f59092e852caa636a9fc494c35acf0deb226d8",
+      "title": "People and agents",
+      "background": {
+        "type": "solid",
+        "color": "#E4ECE6"
+      },
+      "objects": 1,
+      "imageCount": 0
+    },
+    {
+      "position": 8,
+      "pageId": "4a066483-9a11-450c-be15-c0be33d52989",
+      "shortCode": "U8ZQ",
+      "revision": "sha256:6f4e6e5aede025c7c9cc9ab02a03c17c677e3ed6b1f83d6fa86a72897bb7de33",
+      "title": "Story keeps the intent with the page",
+      "background": {
+        "type": "solid",
+        "color": "#F7F5EF"
+      },
+      "objects": 9,
+      "imageCount": 2
+    },
+    {
+      "position": 9,
+      "pageId": "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6",
+      "shortCode": "YZ4T",
+      "revision": "sha256:b9e53039885ece369c64c61529e556b04ace3e872cbf3a88e7b5c438d2a3b389",
+      "title": "Four clients, one working project",
+      "background": {
+        "type": "solid",
+        "color": "#E4ECE6"
+      },
+      "objects": 27,
+      "imageCount": 5
+    },
+    {
+      "position": 10,
+      "pageId": "3f5561d8-477e-4954-bee2-9877c8cddc69",
+      "shortCode": "ZN52",
+      "revision": "sha256:5c3e401fbb4a389680b7602d09ad7306091d7bddeaebfd8165f596764c9464d9",
+      "title": "Refine the wording. Keep the evidence.",
+      "background": {
+        "type": "solid",
+        "color": "#E4ECE6"
+      },
+      "objects": 11,
+      "imageCount": 3
+    },
+    {
+      "position": 11,
+      "pageId": "6a3aec16-2347-40fe-856d-df36c1f58509",
+      "shortCode": "2ZQ3",
+      "revision": "sha256:9710b6b63dbe1994a66f8220c4b89f0064d733f69d1f39e957aa212a1c37f878",
+      "title": "Inspect the edit and its history",
+      "background": {
+        "type": "solid",
+        "color": "#F7F5EF"
+      },
+      "objects": 14,
+      "imageCount": 2
+    },
+    {
+      "position": 12,
+      "pageId": "4a398dd0-ad74-4a36-b65e-6068ffe817a8",
+      "shortCode": "X5J6",
+      "revision": "sha256:31fbd4ebd4a9704aad5e55c1c2759d5c3fc123f5d5fbb1d609454d9922996e80",
+      "title": "Reuse and presentation",
+      "background": {
+        "type": "solid",
+        "color": "#E4ECE6"
+      },
+      "objects": 1,
+      "imageCount": 0
+    },
+    {
+      "position": 13,
+      "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7",
+      "shortCode": "AAD6",
+      "revision": "sha256:e0c4c000f2c0dc7e51b02dca6512a21782b3925bb0624702da9117988a390cb5",
+      "title": "One set of pages, different talks",
+      "background": {
+        "type": "solid",
+        "color": "#E4ECE6"
+      },
+      "objects": 18,
+      "imageCount": 10
+    },
+    {
+      "position": 14,
+      "pageId": "dc5bfe5f-326a-4b28-8536-56e51ea4397e",
+      "shortCode": "DHVW",
+      "revision": "sha256:ca640ed048dc727b58c52800a5b9ed7ef173c1ca14486a5f26055485bb5fa4f7",
+      "title": "The order changes. The page stays linked.",
+      "background": {
+        "type": "solid",
+        "color": "#F7F5EF"
+      },
+      "objects": 8,
+      "imageCount": 2
+    },
+    {
+      "position": 15,
+      "pageId": "80c650ec-8f56-403d-8f44-d190a84ed4b4",
+      "shortCode": "9N3S",
+      "revision": "sha256:5e8f2fde137306397fd14283dead86299f9b29752ee76ae7f279d504d42b196a",
+      "title": "Live and pinned references",
+      "background": {
+        "type": "solid",
+        "color": "#F7F5EF"
+      },
+      "objects": 10,
+      "imageCount": 3
+    },
+    {
+      "position": 16,
+      "pageId": "e4fb0f10-ffa5-44e2-907f-b92e1b69535e",
+      "shortCode": "DDJN",
+      "revision": "sha256:3739e1930f7e12ea913c12e7d546b6cd89a29b29392f68f09677ba4f269fcbaf",
+      "title": "Present live. Share the files.",
+      "background": {
+        "type": "solid",
+        "color": "#F7F5EF"
+      },
+      "objects": 11,
+      "imageCount": 3
+    },
+    {
+      "position": 17,
+      "pageId": "8050a155-9c2b-4cf5-b643-e9406b9b2b1c",
+      "shortCode": "BHPP",
+      "revision": "sha256:92393c0b843834b9de74bfbe32974ca3027d7fc651e375de836a6b3b9c6d5452",
+      "title": "A project lives in one folder",
+      "background": {
+        "type": "solid",
+        "color": "#EEE9DD"
+      },
+      "objects": 8,
+      "imageCount": 1
+    },
+    {
+      "position": 18,
+      "pageId": "bbcdc92a-915c-4988-a4d5-76e466d0424f",
+      "shortCode": "5HW8",
+      "revision": "sha256:38742a8e7df061f803705723a0dd18eea0a5b3179b6871e10c30cf0f2650e7c1",
+      "title": "Sources, dependencies and design references",
+      "background": {
+        "type": "solid",
+        "color": "#E4ECE6"
+      },
+      "objects": 17,
+      "imageCount": 4
+    },
+    {
+      "position": 19,
+      "pageId": "8f9e154d-c5c2-4d79-b809-984586f8311e",
+      "shortCode": "ECVR",
+      "revision": "sha256:5eaab7d5d4d51d1364df43b187c838c9e5b28671d8e7a3d08d33c39ce7df0dbe",
+      "title": "Start with one scientific slide",
+      "background": {
+        "type": "solid",
+        "color": "#E4ECE6"
+      },
+      "objects": 6,
+      "imageCount": 2
+    }
+  ]
+}

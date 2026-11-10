@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-10T12:52:00.958673+00:00",
+  "pathBase": "repository root unless a field explicitly says otherwise",
+  "editorVersion": "0.18.0",
+  "pluginVersion": "0.18.1",
+  "loadedStorySkillSha256": "548ce140c0f6bf62e808b07848968965265929f0ac4950033ae72dc51dfd6009",
+  "trialPolicy": "Native authors chose their narrative and page count. The coordinator repaired execution blockers only and did not send aesthetic redo instructions.",
+  "authorAcceptance": "Pending user review",
+  "projects": [
+    {
+      "project": "deepseek-zh",
+      "author": "DeepSeek Harness",
+      "native_authored": true,
+      "native_completed": true,
+      "nativeSeconds": 1114.97,
+      "providerQuotaBlocked": false,
+      "modelOrAccountChanged": false,
+      "coordinatorPageContentChanges": 0,
+      "allPageHashesUnchanged": true,
+      "pageFilesIncludingRetired": 37,
+      "mainPages": 16,
+      "presentations": [
+        {
+          "id": "full",
+          "title": "完整介绍",
+          "items": 16
+        },
+        {
+          "id": "brief",
+          "title": "短版 · 八分钟",
+          "items": 8
+        }
+      ],
+      "sections": 4,
+      "pureTitleSectionPages": [3, 7, 10],
+      "sourceElementCounts": {
+        "image": 21,
+        "text": 147,
+        "shape": 23,
+        "table": 2,
+        "line": 23
+      },
+      "assets": {
+        "all": 56,
+        "used": 19,
+        "unused": 37,
+        "missing": 0
+      },
+      "exports": {
+        "pdf": {
+          "path": "examples/huandeng-introduction/deepseek-zh/Exports/deck.pdf",
+          "sha256": "8bf22ffb20bfd157acdc4a3a5584610166aa76450580137fc28eb62af101c2b4",
+          "bytes": 2822328
+        },
+        "pptx": {
+          "path": "examples/huandeng-introduction/deepseek-zh/Exports/deck.pptx",
+          "sha256": "6b6f79c172aee3277732c7891ab81c8c6c81c9b241d0e237c27932c1ba6faf3e",
+          "bytes": 2603412
+        }
+      },
+      "pptxStructure": {
+        "slides": 16,
+        "notes": 16,
+        "images": 19,
+        "tables": 2,
+        "charts": 0
+      },
+      "office": {
+        "version": "16.0",
+        "openedReadOnly": true,
+        "allPagesRendered": 16,
+        "renderPixels": [1920, 1080],
+        "sourceAndCopyUnchanged": true,
+        "renderedInputSha256": "6b6f79c172aee3277732c7891ab81c8c6c81c9b241d0e237c27932c1ba6faf3e",
+        "finalPptxOpened": true
+      },
+      "limitations": [
+        {
+          "kind": "fact",
+          "page": 15,
+          "source": "pages/W4PY.page",
+          "issue": "OpenPPTD is described as the PPTD document foundation. Actual reuse is the MathML-to-OMML formula conversion module; the statement is too broad. The GitHub mark may also be mistaken for an OpenPPTD logo.",
+          "authority": "packages/core/src/pptd/vendor/open-pptd/NOTICE.md"
+        },
+        {
+          "kind": "office-typography",
+          "page": 4,
+          "source": "pages/2Z2N.page",
+          "element": "problem-lead",
+          "issue": "A Chinese comma starts a line in Office while the PDF wraps differently."
+        },
+        {
+          "kind": "evidence-continuity",
+          "pages": [8, 12, 13],
+          "issue": "The actual editing example remains a generic text slide rather than a modification of the scientific example."
+        },
+        {
+          "kind": "readability",
+          "pages": [6, 13],
+          "issue": "Page 6 introduces several identity terms at once; page 13 uses two small full-dialogue screenshots."
+        }
+      ],
+      "userAcceptance": "not yet granted",
+      "coordinator_metadata_completion": false,
+      "coordinator_exports": false,
+      "nativeFrozenArchiveSha256": "d986d91e90d5761bad50af17fbc460b03187f707ac7861c975d1a39ffc1fd567"
+    },
+    {
+      "project": "claude-en",
+      "author": "Claude Code",
+      "native_authored": true,
+      "native_completed": false,
+      "nativeSeconds": 2154.0,
+      "providerQuotaBlocked": true,
+      "modelOrAccountChanged": false,
+      "coordinatorPageContentChanges": 0,
+      "allPageHashesUnchanged": true,
+      "pageFilesIncludingRetired": 41,
+      "mainPages": 20,
+      "presentations": [
+        {
+          "id": "pres-full",
+          "title": "HUANDENG introduction (full, about 20 minutes)",
+          "items": 20
+        },
+        {
+          "id": "pres-lab",
+          "title": "Lab-meeting version",
+          "items": 9
+        }
+      ],
+      "sections": 5,
+      "pureTitleSectionPages": [4, 9, 13, 16],
+      "sourceElementCounts": {
+        "image": 55,
+        "text": 202,
+        "shape": 56,
+        "line": 16,
+        "table": 8,
+        "chart": 1
+      },
+      "assets": {
+        "all": 59,
+        "used": 33,
+        "unused": 26,
+        "missing": 0
+      },
+      "exports": {
+        "pdf": {
+          "path": "examples/huandeng-introduction/claude-en/Exports/deck.pdf",
+          "sha256": "bd9f9f67382584532c69502c0e196d921d4e5e940ccd4a339888cd60a13f55b0",
+          "bytes": 2880512
+        },
+        "pptx": {
+          "path": "examples/huandeng-introduction/claude-en/Exports/deck.pptx",
+          "sha256": "94888d8eb9793d686ce7dc514e93253bbcc924b6eaef2750170b314456cf9876",
+          "bytes": 2986593
+        }
+      },
+      "pptxStructure": {
+        "slides": 20,
+        "notes": 20,
+        "images": 33,
+        "tables": 8,
+        "charts": 1,
+        "chartCountMethod": "Top-level ppt/charts/*.xml including HUANDENG page-element prefixes"
+      },
+      "office": {
+        "version": "16.0",
+        "openedReadOnly": true,
+        "allPagesRendered": 20,
+        "renderPixels": [1920, 1080],
+        "sourceAndCopyUnchanged": true,
+        "renderedInputSha256": "c8e229979cecd250dec4904febbacedb607e8641bb4179ee526dd218ee8b5a8d",
+        "finalPptxOpened": true,
+        "finalMetadataOpen": {
+          "project": "claude-en",
+          "pptxSha256": "94888d8eb9793d686ce7dc514e93253bbcc924b6eaef2750170b314456cf9876",
+          "slideCount": 20,
+          "openedReadOnly": true,
+          "sourceUnchanged": true,
+          "officeCopyUnchanged": true,
+          "semanticPresentationPartsUnchanged": true,
+          "allowedPackageDifferences": [
+            "export-report metadata revision",
+            "chart/workbook relationship sequence numbers",
+            "embedded workbook core timestamps"
+          ],
+          "renderedPage": 5,
+          "renderedPageSha256": "bd50eea2313c7d949d3daee31e65c84e2ce66cd15824fbf45aeb1fc4c8f782cb",
+          "previousPage5ImageSha256": "bd50eea2313c7d949d3daee31e65c84e2ce66cd15824fbf45aeb1fc4c8f782cb",
+          "page5RenderIdentical": true,
+          "remainingLayoutEvidence": "Previous full 20-page Office render; all presentation content is semantically unchanged"
+        },
+        "fullRenderInputSha256": "94888d8eb9793d686ce7dc514e93253bbcc924b6eaef2750170b314456cf9876",
+        "finalPagesPixelIdenticalToReviewedPriorSequence": 20
+      },
+      "limitations": [
+        {
+          "kind": "office-chart-layout",
+          "page": 5,
+          "source": "pages/AVNM.page",
+          "element": "chart and separately positioned base-pair labels",
+          "issue": "Office replots the editable chart; manually positioned pair labels and the axis description collide with numeric labels and no longer align reliably. The twelve source values remain correct. PDF is readable."
+        },
+        {
+          "kind": "evidence-continuity",
+          "page": 7,
+          "issue": "The before/after editing evidence uses a generic text slide instead of the 1BNA scientific page."
+        },
+        {
+          "kind": "unfinished-native-bookkeeping",
+          "pages": [10, 18],
+          "issue": "Four shorter occurrence notes and a completion named version are described but were not created. Their exact targets/text/name were absent from the saved plan; the coordinator did not invent them."
+        },
+        {
+          "page": 10,
+          "source": "pages/JZ7U.page",
+          "kind": "missing-story",
+          "issue": "The newly added native page has no designIntent."
+        },
+        {
+          "page": 18,
+          "source": "pages/7NHP.page",
+          "kind": "missing-story",
+          "issue": "The newly added native page has no designIntent."
+        },
+        {
+          "kind": "historical-thumbnail",
+          "page": 10,
+          "issue": "The closing-page thumbnail predates the last init-command text edit. It remains unchanged as native trial evidence."
+        },
+        {
+          "kind": "verification-scope",
+          "issue": "No final Activity completed report, design_audit pass or live click-build validation was performed."
+        }
+      ],
+      "userAcceptance": "not yet granted",
+      "coordinator_metadata_completion": true,
+      "coordinator_exports": true,
+      "nativeEvidence": "examples/huandeng-introduction/claude-en/evidence/native-submission/README.md",
+      "nativePdfPagesAtStop": 18,
+      "nativePdfWasStaleAtStop": true,
+      "verificationRecovery": {
+        "sameNativeSession": true,
+        "scope": "Read-only source/export verification after account quota reset",
+        "native_completed": true,
+        "state": "completed",
+        "exit_code": 0,
+        "seconds": 64.37,
+        "pageEdits": 0,
+        "exportsWritten": 0,
+        "sourceAndExportsStillMatchFrozenHashes": true,
+        "historicalFirstTurnNativeCompleted": false
+      },
+      "coordinatorIndexCorrection": {
+        "scope": "README and media inventory only",
+        "originalsPreserved": true,
+        "receipt": "examples/huandeng-introduction/claude-en/evidence/index-correction.json",
+        "nativePagesUnchanged": true
+      }
+    }
+  ],
+  "rawNativeTracesPublished": false,
+  "machineSpecificPathsPublished": false
+}

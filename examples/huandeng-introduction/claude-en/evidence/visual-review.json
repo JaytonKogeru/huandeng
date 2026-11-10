@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-10T12:52:00.958673+00:00",
+  "reviewer": "Independent coordinator and peer visual reviewer",
+  "authorAcceptance": "Not granted by user",
+  "verdict": "Improved independent candidate with limitations recorded; no cosmetic redo",
+  "pdfContactPages": 20,
+  "officeContactPages": 20,
+  "peerPdfFullSizePages": [
+    5,
+    10,
+    17,
+    18,
+    19,
+    20
+  ],
+  "officeFullSizePages": [
+    5
+  ],
+  "findings": [
+    {
+      "kind": "office-chart-layout",
+      "page": 5,
+      "source": "pages/AVNM.page",
+      "element": "chart and separately positioned base-pair labels",
+      "issue": "Office replots the editable chart; manually positioned pair labels and the axis description collide with numeric labels and no longer align reliably. The twelve source values remain correct. PDF is readable."
+    },
+    {
+      "kind": "evidence-continuity",
+      "page": 7,
+      "issue": "The before/after editing evidence uses a generic text slide instead of the 1BNA scientific page."
+    },
+    {
+      "kind": "unfinished-native-bookkeeping",
+      "pages": [
+        10,
+        18
+      ],
+      "issue": "Four shorter occurrence notes and a completion named version are described but were not created. Their exact targets/text/name were absent from the saved plan; the coordinator did not invent them."
+    }
+  ]
+}

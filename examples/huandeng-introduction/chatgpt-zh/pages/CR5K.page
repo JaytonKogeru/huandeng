@@ -1,0 +1,24 @@
+pageType: section
+background:
+  type: solid
+  color: "#E4ECE6"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 55
+      - 221
+      - 850
+      - 82
+    role: title
+    content:
+      text: 证据与版面
+      fontFamily: Microsoft YaHei
+      fontSize: 34
+      color: "#263C34"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+notes: 章节停顿。下一部分用实际页面说明这一主题。

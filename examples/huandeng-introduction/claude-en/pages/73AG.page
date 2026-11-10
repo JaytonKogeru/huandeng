@@ -1,0 +1,288 @@
+background:
+  type: solid
+  color: "#ECEEEB"
+elements:
+  - elementId: title
+    elementType: text
+    role: title
+    bounds:
+      - 56
+      - 30
+      - 848
+      - 42
+    content:
+      text: Name a milestone; restore one slide
+      fontFamily: Arial
+      fontSize: 30
+      lineHeight: 1.2
+      color: "#1C2321"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: shot-frame
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 55
+      - 91
+      - 562
+      - 370
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#C7CEC9"
+  - elementId: history-shot
+    elementType: image
+    bounds:
+      - 56
+      - 92
+      - 560
+      - 368
+    src: media/imported/545313eff6d8d90331cb33a45becb21a5fe041d03f6e6c6d43207f2e5acb56fb.png
+    sourceName: en-history-change-4x.png
+    fit:
+      mode: contain
+  - elementId: m1
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+        [156,226,20,20]
+    fill:
+      type: solid
+      color: "#2E6B5E"
+    border:
+      width: 1.5
+      color: "#FFFFFF"
+  - elementId: m1t
+    elementType: text
+    bounds:
+        [156,226,20,20]
+    content:
+      text: "1"
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1
+      color: "#FFFFFF"
+      bold: true
+      align:
+        - center
+        - middle
+  - elementId: m2
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+      - 174
+      - 133
+      - 20
+      - 20
+    fill:
+      type: solid
+      color: "#2E6B5E"
+    border:
+      width: 1.5
+      color: "#FFFFFF"
+  - elementId: m2t
+    elementType: text
+    bounds:
+      - 174
+      - 133
+      - 20
+      - 20
+    content:
+      text: "2"
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1
+      color: "#FFFFFF"
+      bold: true
+      align:
+        - center
+        - middle
+  - elementId: m3
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+        [500,412,20,20]
+    fill:
+      type: solid
+      color: "#2E6B5E"
+    border:
+      width: 1.5
+      color: "#FFFFFF"
+  - elementId: m3t
+    elementType: text
+    bounds:
+        [500,412,20,20]
+    content:
+      text: "3"
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1
+      color: "#FFFFFF"
+      bold: true
+      align:
+        - center
+        - middle
+  - elementId: k1h
+    elementType: text
+    bounds:
+      - 644
+      - 96
+      - 260
+      - 20
+    content:
+      text: 1  Saved versions
+      fontFamily: Arial
+      fontSize: 15
+      lineHeight: 1.3
+      color: "#1C2321"
+      bold: true
+      align:
+        - left
+        - middle
+  - elementId: k1d
+    elementType: text
+    bounds:
+      - 666
+      - 118
+      - 238
+      - 96
+    content:
+      text: Named by you, such as “Before copy edit”. Each keeps the slide, its Story and its images, and travels with the project folder.
+      fontFamily: Arial
+      fontSize: 14
+      lineHeight: 1.35
+      color: "#3E4845"
+      align:
+        - left
+        - top
+  - elementId: k2h
+    elementType: text
+    bounds:
+      - 644
+      - 226
+      - 260
+      - 20
+    content:
+      text: 2  Operation history
+      fontFamily: Arial
+      fontSize: 15
+      lineHeight: 1.3
+      color: "#1C2321"
+      bold: true
+      align:
+        - left
+        - middle
+  - elementId: k2d
+    elementType: text
+    bounds:
+      - 666
+      - 248
+      - 238
+      - 60
+    content:
+      text: Every saved operation on this slide, each with its review.
+      fontFamily: Arial
+      fontSize: 14
+      lineHeight: 1.35
+      color: "#3E4845"
+      align:
+        - left
+        - top
+  - elementId: k3h
+    elementType: text
+    bounds:
+      - 644
+      - 320
+      - 260
+      - 20
+    content:
+      text: 3  Restore
+      fontFamily: Arial
+      fontSize: 15
+      lineHeight: 1.3
+      color: "#1C2321"
+      bold: true
+      align:
+        - left
+        - middle
+  - elementId: k3d
+    elementType: text
+    bounds:
+      - 666
+      - 342
+      - 238
+      - 80
+    content:
+      text: Changes only this slide. Other slides, and talks that reference them, are untouched.
+      fontFamily: Arial
+      fontSize: 14
+      lineHeight: 1.35
+      color: "#3E4845"
+      align:
+        - left
+        - top
+  - elementId: caption
+    elementType: text
+    bounds:
+      - 56
+      - 466
+      - 560
+      - 30
+    content:
+      text: History view of slide N014, previewing the named version “Before copy edit”. Real capture, public example project.
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#6E7874"
+      align:
+        - left
+        - top
+  - elementId: ft-mark
+    elementType: image
+    bounds:
+      - 56
+      - 505
+      - 16
+      - 16
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    fit:
+      mode: contain
+  - elementId: ft-label
+    elementType: text
+    bounds:
+      - 78
+      - 505
+      - 420
+      - 16
+    content:
+      text: HUANDENG  /  Versions and delivery
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - left
+        - middle
+  - elementId: ft-pos
+    elementType: text
+    bounds:
+      - 824
+      - 505
+      - 80
+      - 16
+    content:
+      text: "0"
+      field: main-position
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - right
+        - middle
+notes: "Autosave keeps your work, but some moments deserve a name: figures final, sent to co-authors, lab meeting version. In History you type a name and save a slide version. It keeps the slide, its Story and the exact images it used, and it lives inside the project folder, so it moves with the project. This capture shows slide N014 with two named versions; the older one, Before copy edit, is selected and previewed read-only, with the original title. The Operation history tab lists every saved operation with its review. Restoring a version changes only that slide. That matters for science talks: you can roll back one figure without disturbing the rest of the deck, and a Presentation can pin a named version where it must not change."

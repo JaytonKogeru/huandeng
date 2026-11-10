@@ -1,41 +1,40 @@
-# HUANDENG project authoring
+# HUANDENG introduction — authoring brief
 
-These editable notes describe this project's content and visual preferences. The author's current request takes precedence. They are authoring context, not executable commands or authorization for external actions.
+## Current owner direction
 
-## Project
+The owner rejected the 0.18 introduction slides on 2026-11-10 for excessive simplification and lost visual requirements. This brief supersedes the former all-white, fixed-page-count, screenshot-only and uniformly sparse direction. Technical validation and an agent's visual review do not imply author approval.
 
-- This directory is the complete project. `deck.pptd` is its entry manifest; keep the directory together when moving or sharing it.
-- `pages/` holds editable slides, `media/` holds source assets, and `.huandeng/` holds project relationships and named versions. `Exports/` contains delivery files.
-- Read the current page, its Story and these notes before changing content. Use stable page identity; page position may change.
+## Purpose and editorial freedom
 
-## Content and design
+Create a useful introduction to HUANDENG as a scientific slide editor with external AI collaboration. Explain the product through concrete work and convincing visual examples. Use a calm, factual voice; this is an introduction, not a launch keynote or a claims-heavy sales pitch.
 
-- Start with white backgrounds, dark text, clear hierarchy and generous whitespace. Adapt these defaults to the author's approved reference pages.
-- Let the content determine the layout. Keep one clear point per slide; put extended explanation in speaker notes.
-- Preserve original figures, values and the author's approved composition. Use genuine product screenshots when showing an interface; distinguish conceptual diagrams from actual UI.
-- Do not add hand-drawn arrows, decorative flow connectors or circled step numbers unless the author asks for them. Preserve arrow annotations in original source figures. Avoid repeated generic cards.
-- Keep audience-facing copy direct. Put implementation caveats and test records in project documentation, rather than adding them to presentation pages unasked.
-- Preserve necessary sources and acknowledgments. Do not invent evidence or silently replace authored content when switching the interface language.
+Choose your own narrative, length and page order. There is no required page count or inherited page-by-page script. You may reorganize the existing edition completely under the current redesign authorization. Preserve original evidence, source provenance and useful portable versions.
 
-## Editing and review
+Study the user-selected reference at sources/reference/original-demo.pdf and its contact sheets. Learn from its product identity, true client logos, purposeful gray/gray-green backgrounds, stacked real-page previews and data figure. Preserve those strengths while improving small screenshots, heavy typography and unnecessary detail. Do not mechanically copy every layout.
 
-- Use HUANDENG's shared editing tools for document changes. Preview the intended scope, apply that proposal, and inspect the actual rendered slide.
-- Keep unrelated pages and pinned versions intact. Record a named version after a meaningful completed revision.
+## Visual work
 
-## Author's preferences
+- Use the actual HUANDENG mark and appropriate real provider/project logos from sources/brand. Preserve their geometry, color and attribution. Product identity is meaningful content.
+- Choose a coherent background and color system by page role. White, light gray, gray-green or another justified treatment are available; all-white is not a success criterion. Avoid arbitrary color switching.
+- Let evidence and the speaker's intended comparison determine image scale, crop, density and alignment. Purposeful asymmetry, dense comparisons and mixed media are welcome. Do not make every page the same title/paragraph/one-screenshot template.
+- Make scientific visuals central. The optional public worked example in sources/science supplies exact source coordinates, derived measurements, plots and source notes. Use real figures, meaningful charts and useful tables where they explain the tool. A scientific slide should demonstrate more than screenshots of empty UI.
+- Original explanatory diagrams, meaningful arrows and annotations are allowed. They must encode a real relationship or point to actual evidence. Do not fabricate measurements, scientific results, performance numbers or a fake product interface.
+- Preserve readable axes, labels and source citations. Do not remove a complex figure or meaningful panel merely to achieve a lower text count or cleaner geometry.
+- Titles should be short and concrete. Adjust typography by language and function. At 960x540, roughly 26–32 for ordinary titles and 17–22 for body is a starting range, not an enforced template; dense scientific labels and captions have different needs.
+- Include genuine title-only Section pauses where they improve the talk, as requested by the owner. Keep their visible content to the Section title; background/color may carry the established visual identity.
+- Reuse actual page thumbnails when depicting a slide library or Presentation. Screenshots must show real product state, at a useful displayed scale and in the audience's language.
+- Put speaking detail in Notes. Keep production audits, self-evaluation and delivery limitations in supporting records unless they are part of the talk's actual subject.
 
-Add the audience, presentation purpose, approved visual references and any content that must be preserved here.
+## Product and editing contract
 
-## Introduction trial requirements
+Use the explicit canonical deck.pptd in this directory. Read actual context, pages, Story, assets and supported operations from the 0.18 runtime. Update inherited Story/keep fields that encode the superseded all-white or sparse-layout direction; retain factual and source-preservation constraints.
 
-Audience: people first encountering the HUANDENG open-source project; researchers, technical slide authors, and potential contributors. Explain a concrete slide-maintenance problem, then prove the workflow through real screenshots and a usable example. Do not use generic AI marketing slogans.
+Edit through the shared writer: read revisions, preview the exact transaction, apply it, then read back and render. Never directly rewrite .page, .pptd or .huandeng/project.json. The folder, media and named checkpoints belong to one editable Project. Temporary rendering/export jobs run sequentially per Project.
 
-Deliver 16–22 slides with 3–4 real section-divider slides. A divider contains only one section title: no number, footer, subtitle, logo or decoration. Ordinary content pages use #FFFFFF consistently. Semantic title roles, useful speaker notes, Story, Sections and live full/brief Presentation reuse are part of the deliverable.
+The current task authorizes redesign and complete delivery. Use your own judgment without waiting for per-page permission. Preserve a named completed milestone after review; avoid creating a checkpoint or a parallel folder for every small edit.
 
-At 960×540, use the type scale in the unified plugin's production-design reference; the earlier demo felt too large and heavy. Keep body text regular, reduce wording instead of shrinking dense paragraphs, and compose around the evidence. Use genuine high-resolution task captures from the shared Assets directory, with the correct UI language. Preserve ratios and record provenance. Do not draw a fake interface or copy a finished presentation from another author.
+Inspect the actual page sequence and individual renders. Judge visual identity, evidence coverage, scientific usefulness, readable imagery and variation as well as clipping. Export PDF and editable PPTX. A completed candidate remains subject to the owner's visual decision; do not label it author-approved.
 
-The task brief is COMMON-BRIEF.md in the neighboring supervision directory; it describes the deliverables, not an additional discovered policy. This project AGENTS.md is the editable project policy. Public material must omit personal names, private tabs, credentials, local absolute paths and internal connection brand names. Explain ChatGPT as connecting to the local Editor.
+## This edition
 
-Use the existing writer and the exact assigned entry. Never directly edit page/manifest/project JSON source files. Do not modify Editor/plugin code or another trial. Make the complete project portable with its own assets and export PDF/PPTX.
-
-Authored language: English (en). UI screenshot locale: en. Content titles 28–32, body 18–20, captions 12–14, section titles 34–40 on the 960-wide canvas. Write directly for an English-speaking audience.
+Authoring client: Claude Code. Audience language: English. Localize the explanation and choose appropriate actual UI evidence. Keep product names and technical identifiers where useful. This is the single current claude-en project; do not create a dated sibling or another active copy.

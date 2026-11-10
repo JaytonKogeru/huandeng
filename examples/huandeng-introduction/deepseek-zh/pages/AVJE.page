@@ -1,0 +1,111 @@
+pageType: content
+background:
+  type: solid
+  color: "#E8EEE6"
+notes: 这页把“可回看”落到两个真实界面：操作记录显示字段级的前后变化；命名版本固定页面状态。恢复只影响这一页，这是和“整份文件回滚”最重要的区别。预览使用当前素材，历史原图要靠命名版本保存。
+elements:
+  - elementId: review-title
+    elementType: text
+    role: title
+    bounds:
+      - 48
+      - 44
+      - 430
+      - 40
+    content:
+      text: 改过什么，能看回来
+      fontSize: 28
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#17221C"
+      lineHeight: 1.3
+      align:
+        - left
+        - top
+  - elementId: review-lead
+    elementType: text
+    bounds:
+      - 48
+      - 90
+      - 500
+      - 48
+    content:
+      text: 保存后的操作有回执；命名版本固定这一页的里程碑。恢复也只影响这一页。
+      fontSize: 14.4
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#425048"
+      lineHeight: 1.6
+      align:
+        - left
+        - top
+  - elementId: review-left-panel
+    elementType: shape
+    bounds:
+        [48,158,410,300]
+    shapeName: rect
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      color: "#CDD6CC"
+      width: 0.8
+      style: solid
+  - elementId: review-left
+    elementType: image
+    bounds:
+        [62,164,382,288]
+    src: media/imported/1f8c227e7a8a73ed668c788e46d631f17b6e6f577e9f66479d5e693fbd71d867.png
+    sourceName: zh-CN-native-operation-review-4x.png
+    fit:
+      mode: contain
+  - elementId: review-left-label
+    elementType: text
+    bounds:
+        [48,466,410,42]
+    content:
+      text: "真实界面：保存修改的只读审阅。\n字段级前后变化；预览使用当前素材。"
+      fontSize: 9
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#66756A"
+      align:
+        - left
+        - top
+  - elementId: review-right-panel
+    elementType: shape
+    bounds:
+        [472,158,440,300]
+    shapeName: rect
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      color: "#CDD6CC"
+      width: 0.8
+      style: solid
+  - elementId: review-right
+    elementType: image
+    bounds:
+        [484,164,416,288]
+    src: media/imported/4d42e5f1558e1b2f448e5b87abd12e17eb56b62c64853eda8b401cc93ad67b4b.png
+    sourceName: zh-CN-native-history-change-4x.png
+    fit:
+      mode: contain
+  - elementId: review-right-label
+    elementType: text
+    bounds:
+        [472,466,440,42]
+    content:
+      text: "真实界面：命名版本与恢复入口。\n恢复只更新这一页；历史原图以版本为准。"
+      fontSize: 9
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#66756A"
+      align:
+        - left
+        - top

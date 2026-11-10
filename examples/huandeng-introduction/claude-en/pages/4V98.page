@@ -1,0 +1,375 @@
+background:
+  type: solid
+  color: "#ECEEEB"
+elements:
+  - elementId: title
+    elementType: text
+    role: title
+    bounds:
+      - 56
+      - 30
+      - 848
+      - 42
+    content:
+      text: Every saved change can be reviewed
+      fontFamily: Arial
+      fontSize: 30
+      lineHeight: 1.2
+      color: "#1C2321"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: shot-frame
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 55
+      - 87
+      - 522
+      - 390
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#C7CEC9"
+  - elementId: review-shot
+    elementType: image
+    bounds:
+      - 56
+      - 88
+      - 520
+      - 388
+    src: media/imported/9d96638c304c763194540898ff5057a35a7ec589a0fb8bc71fc927182e992d79.png
+    sourceName: en-operation-review-4x.png
+    fit:
+      mode: contain
+  - elementId: m1
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+      - 150
+      - 90
+      - 20
+      - 20
+    fill:
+      type: solid
+      color: "#2E6B5E"
+    border:
+      width: 1.5
+      color: "#FFFFFF"
+  - elementId: m1t
+    elementType: text
+    bounds:
+      - 150
+      - 90
+      - 20
+      - 20
+    content:
+      text: "1"
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1
+      color: "#FFFFFF"
+      bold: true
+      align:
+        - center
+        - middle
+  - elementId: m2
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+      - 448
+      - 168
+      - 20
+      - 20
+    fill:
+      type: solid
+      color: "#2E6B5E"
+    border:
+      width: 1.5
+      color: "#FFFFFF"
+  - elementId: m2t
+    elementType: text
+    bounds:
+      - 448
+      - 168
+      - 20
+      - 20
+    content:
+      text: "2"
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1
+      color: "#FFFFFF"
+      bold: true
+      align:
+        - center
+        - middle
+  - elementId: m3
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+      - 540
+      - 192
+      - 20
+      - 20
+    fill:
+      type: solid
+      color: "#2E6B5E"
+    border:
+      width: 1.5
+      color: "#FFFFFF"
+  - elementId: m3t
+    elementType: text
+    bounds:
+      - 540
+      - 192
+      - 20
+      - 20
+    content:
+      text: "3"
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1
+      color: "#FFFFFF"
+      bold: true
+      align:
+        - center
+        - middle
+  - elementId: m4
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+        [520,268,20,20]
+    fill:
+      type: solid
+      color: "#2E6B5E"
+    border:
+      width: 1.5
+      color: "#FFFFFF"
+  - elementId: m4t
+    elementType: text
+    bounds:
+        [520,268,20,20]
+    content:
+      text: "4"
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1
+      color: "#FFFFFF"
+      bold: true
+      align:
+        - center
+        - middle
+  - elementId: k1h
+    elementType: text
+    bounds:
+      - 604
+      - 92
+      - 300
+      - 20
+    content:
+      text: 1  Receipt
+      fontFamily: Arial
+      fontSize: 15
+      lineHeight: 1.3
+      color: "#1C2321"
+      bold: true
+      align:
+        - left
+        - middle
+  - elementId: k1d
+    elementType: text
+    bounds:
+      - 626
+      - 114
+      - 278
+      - 40
+    content:
+      text: Which operation, in which project, and when
+      fontFamily: Arial
+      fontSize: 14
+      lineHeight: 1.3
+      color: "#3E4845"
+      align:
+        - left
+        - top
+  - elementId: k2h
+    elementType: text
+    bounds:
+      - 604
+      - 170
+      - 300
+      - 20
+    content:
+      text: 2  Before / After
+      fontFamily: Arial
+      fontSize: 15
+      lineHeight: 1.3
+      color: "#1C2321"
+      bold: true
+      align:
+        - left
+        - middle
+  - elementId: k2d
+    elementType: text
+    bounds:
+      - 626
+      - 192
+      - 278
+      - 40
+    content:
+      text: The real slide on both sides, changed object outlined
+      fontFamily: Arial
+      fontSize: 14
+      lineHeight: 1.3
+      color: "#3E4845"
+      align:
+        - left
+        - top
+  - elementId: k3h
+    elementType: text
+    bounds:
+      - 604
+      - 248
+      - 300
+      - 20
+    content:
+      text: 3  Saved changes
+      fontFamily: Arial
+      fontSize: 15
+      lineHeight: 1.3
+      color: "#1C2321"
+      bold: true
+      align:
+        - left
+        - middle
+  - elementId: k3d
+    elementType: text
+    bounds:
+      - 626
+      - 270
+      - 278
+      - 40
+    content:
+      text: Each object and field written, here two content.text edits
+      fontFamily: Arial
+      fontSize: 14
+      lineHeight: 1.3
+      color: "#3E4845"
+      align:
+        - left
+        - top
+  - elementId: k4h
+    elementType: text
+    bounds:
+      - 604
+      - 326
+      - 300
+      - 20
+    content:
+      text: 4  Story and scope
+      fontFamily: Arial
+      fontSize: 15
+      lineHeight: 1.3
+      color: "#1C2321"
+      bold: true
+      align:
+        - left
+        - middle
+  - elementId: k4d
+    elementType: text
+    bounds:
+      - 626
+      - 348
+      - 278
+      - 40
+    content:
+      text: The slide's purpose and every talk that uses it
+      fontFamily: Arial
+      fontSize: 14
+      lineHeight: 1.3
+      color: "#3E4845"
+      align:
+        - left
+        - top
+  - elementId: readonly
+    elementType: text
+    bounds:
+      - 604
+      - 410
+      - 300
+      - 60
+    content:
+      text: Review is read-only. Restoring a slide is a separate, explicit History action.
+      fontFamily: Arial
+      fontSize: 14
+      lineHeight: 1.35
+      color: "#2E6B5E"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: caption
+    elementType: text
+    bounds:
+      - 56
+      - 482
+      - 520
+      - 16
+    content:
+      text: Review saved changes dialog. Real capture, public example project.
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#6E7874"
+      align:
+        - left
+        - top
+  - elementId: ft-mark
+    elementType: image
+    bounds:
+      - 56
+      - 505
+      - 16
+      - 16
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    fit:
+      mode: contain
+  - elementId: ft-label
+    elementType: text
+    bounds:
+      - 78
+      - 505
+      - 420
+      - 16
+    content:
+      text: HUANDENG  /  A worked example
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - left
+        - middle
+  - elementId: ft-pos
+    elementType: text
+    bounds:
+      - 824
+      - 505
+      - 80
+      - 16
+    content:
+      text: "0"
+      field: main-position
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - right
+        - middle
+notes: "After the change is saved, anyone can open its record. 1, the receipt says which operation it was, in which project and when. 2, Before and After show the actual slide, with the changed object outlined. 3, Saved changes lists every object and field that was written; here, the text of the title and of the lead. 4, the panel also shows the slide's Story and where the slide is used: one live reference in the Quick introduction presentation, no pinned ones. This dialog is read-only. If you want the old slide back, you restore a named version from History, which affects only that slide. Changes from people and from agents arrive through the same writer, so they are reviewed in the same way."

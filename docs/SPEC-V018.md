@@ -1,5 +1,7 @@
 # v0.18 — deliberate design and a complete public workflow
 
+> Historical 0.18 record. The author rejected the introduction slides after this record. The current introduction/design contract is [INTRODUCTION-REWORK.md](INTRODUCTION-REWORK.md); current validation and handoff are in [INTRODUCTION-DELIVERY.md](INTRODUCTION-DELIVERY.md). This record retains its historical technical measurements and does not establish author acceptance. Editor 0.18.0 is unchanged; current AI guidance is plugin 0.18.2.
+
 ## Goal and process
 
 Improve human and Agent authoring and demonstrate it with four complete public introductions: ChatGPT Chinese and English, an independent DeepSeek Harness Chinese trial, and an independent Claude Code English trial.

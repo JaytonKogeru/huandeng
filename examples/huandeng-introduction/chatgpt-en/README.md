@@ -1,15 +1,18 @@
-# Introducing the HUANDENG workflow
+# HUANDENG: editing scientific presentations
 
-An English introduction authored by ChatGPT. Open deck.pptd in HUANDENG Editor to continue editing. Keep the complete directory when moving or sharing the project.
+A remade English introduction authored by ChatGPT. Open `deck.pptd` to continue editing the same project. Keep the entire folder when moving it.
 
-- Main: 22 slides, including 3 title-only Section dividers.
-- Full introduction: references all 22 slides.
-- Short introduction: references 8 selected slides.
-- Each page includes speaker notes, Story and a named “v0.18 introduction · visually reviewed” milestone.
-- White backgrounds, regular-weight type and actual English UI captures with English example content.
+- Main and Full introduction: 19 pages.
+- Brief introduction: seven pages with a different sequence and a genuinely pinned scientific example.
+- Three title-only Sections: Main positions 3, 7 and 12.
+- Original HUANDENG identity, real client marks, and paper/sage/sand backgrounds with distinct roles.
+- One public PDB 1BNA example connects the structure, twelve measured distances, table and equation.
+- Actual English UI with English authored content, captured at native DPR3.
 
-ASSETS.json records capture sources, language, pixel dimensions, SHA-256 and each displayed crop. Earlier imported originals are retained for existing edit history. Named page versions travel with this folder; temporary application Undo and operation journals are not portable history.
+Current image provenance is in `evidence/assets.json`. Deposited coordinates, CSV, method and reproducible scripts are in `sources/science/`. Original and previously imported image bytes remain available for document history.
 
-PDF and editable PowerPoint are separate v0.18.0 Release downloads. PPTX/PDF carry static slides; live click effects belong to Editor playback.
+`evidence/wording-edit.json` and `wording-edit-values.json` identify the exact title/explanation-only edit. Later independent edits refined the axes and removed an auxiliary highlight series so PowerPoint can retain native charts. The original twelve distance values are unchanged. The brief still pins the earlier saved wording-edit stage.
 
-This is a public product example based on actual HUANDENG and open-slide behavior. The repository retains upstream licenses and third-party acknowledgments.
+Current PDF and PPTX are in `Exports/` and in the plugin-v0.18.2 introduction delivery. Supported text, charts, tables and equations remain native in PPTX; functional icons are delivered as images. Live click effects and static exports are separate.
+
+The previous visual delivery was rejected by the author. This replacement has agent visual review and file validation and is provided for author review. It does not claim author acceptance. See the parent README and docs/INTRODUCTION-DELIVERY.md for the comparison and limitations.

@@ -1,5 +1,7 @@
 # v0.18 validation — independent native-agent trials
 
+> Historical 0.18 record. The author rejected the introduction slides after this record. The current introduction/design contract is [INTRODUCTION-REWORK.md](INTRODUCTION-REWORK.md); current validation and handoff are in [INTRODUCTION-DELIVERY.md](INTRODUCTION-DELIVERY.md). This record retains its historical technical measurements and does not establish author acceptance. Editor 0.18.0 is unchanged; current AI guidance is plugin 0.18.2.
+
 Completed 2026-11-10 on THUG. Both native clients produced 21-slide editable HUANDENG projects and native PDF/PPTX exports. Claude completed the original English task without coordinator authoring assistance. DeepSeek's Chinese first round hit a real binary-file execution blocker; its raw result remains frozen, followed by exactly one authorized same-session technical continuation after coordinator asset import. Neither client received aesthetic feedback or a redesign request.
 
 ## 1. Frozen first-pass evidence

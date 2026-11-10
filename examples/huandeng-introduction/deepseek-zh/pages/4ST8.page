@@ -1,0 +1,22 @@
+pageType: section
+background:
+  type: solid
+  color: "#728470"
+notes: 章节停顿。接下来只讲一件事：同一份研究为什么会被复制成多版，以及 HUANDENG 如何让页面只维护一次。
+elements:
+  - elementId: section-title
+    elementType: text
+    role: title
+    bounds:
+        [64,220,800,72]
+    content:
+      text: 一份内容
+      fontSize: 42
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#F5F3E9"
+      letterSpacing: 2
+      align:
+        - left
+        - top

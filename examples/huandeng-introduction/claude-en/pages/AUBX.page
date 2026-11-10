@@ -1,0 +1,656 @@
+background:
+  type: solid
+  color: "#F6F6F3"
+elements:
+  - elementId: title
+    elementType: text
+    role: title
+    bounds:
+      - 56
+      - 30
+      - 848
+      - 42
+    content:
+      text: Agents work through the same writer as you
+      fontFamily: Arial
+      fontSize: 30
+      lineHeight: 1.2
+      color: "#1C2321"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: codex-logo
+    elementType: image
+    bounds:
+      - 56
+      - 106
+      - 40
+      - 40
+    src: media/imported/2ce1c57dd3b312417106a487815ab1235bddce17e1fa9b32a2f048bd71ee25d3.png
+    sourceName: codex.png
+    fit:
+      mode: contain
+  - elementId: codex-name
+    elementType: text
+    bounds:
+      - 106
+      - 104
+      - 184
+      - 22
+    content:
+      text: Codex
+      fontFamily: Arial
+      fontSize: 16
+      lineHeight: 1.3
+      color: "#1C2321"
+      bold: true
+      align:
+        - left
+        - middle
+  - elementId: codex-route
+    elementType: text
+    bounds:
+      - 106
+      - 127
+      - 184
+      - 18
+    content:
+      text: Local plugin · MCP
+      fontFamily: Arial
+      fontSize: 13
+      lineHeight: 1.3
+      color: "#56615D"
+      align:
+        - left
+        - middle
+  - elementId: claude-logo
+    elementType: image
+    bounds:
+      - 56
+      - 166
+      - 40
+      - 40
+    src: media/imported/733f24f4c52acb15eb0fbded1cf40eb42b4ba8e62b882acac70b6234b50919a8.png
+    sourceName: claude-code.png
+    fit:
+      mode: contain
+  - elementId: claude-name
+    elementType: text
+    bounds:
+      - 106
+      - 164
+      - 184
+      - 22
+    content:
+      text: Claude Code
+      fontFamily: Arial
+      fontSize: 16
+      lineHeight: 1.3
+      color: "#1C2321"
+      bold: true
+      align:
+        - left
+        - middle
+  - elementId: claude-route
+    elementType: text
+    bounds:
+      - 106
+      - 187
+      - 184
+      - 18
+    content:
+      text: Local plugin · MCP
+      fontFamily: Arial
+      fontSize: 13
+      lineHeight: 1.3
+      color: "#56615D"
+      align:
+        - left
+        - middle
+  - elementId: deepseek-logo
+    elementType: image
+    bounds:
+      - 56
+      - 226
+      - 40
+      - 40
+    src: media/imported/e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc.png
+    sourceName: deepseek.png
+    fit:
+      mode: contain
+  - elementId: deepseek-name
+    elementType: text
+    bounds:
+      - 106
+      - 224
+      - 184
+      - 22
+    content:
+      text: DeepSeek
+      fontFamily: Arial
+      fontSize: 16
+      lineHeight: 1.3
+      color: "#1C2321"
+      bold: true
+      align:
+        - left
+        - middle
+  - elementId: deepseek-route
+    elementType: text
+    bounds:
+      - 106
+      - 247
+      - 184
+      - 18
+    content:
+      text: Through Harness · MCP
+      fontFamily: Arial
+      fontSize: 13
+      lineHeight: 1.3
+      color: "#56615D"
+      align:
+        - left
+        - middle
+  - elementId: chatgpt-logo
+    elementType: image
+    bounds:
+      - 56
+      - 286
+      - 40
+      - 40
+    src: media/imported/0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13.png
+    sourceName: chatgpt.png
+    fit:
+      mode: contain
+  - elementId: chatgpt-name
+    elementType: text
+    bounds:
+      - 106
+      - 284
+      - 184
+      - 22
+    content:
+      text: ChatGPT
+      fontFamily: Arial
+      fontSize: 16
+      lineHeight: 1.3
+      color: "#1C2321"
+      bold: true
+      align:
+        - left
+        - middle
+  - elementId: chatgpt-route
+    elementType: text
+    bounds:
+      - 106
+      - 307
+      - 184
+      - 18
+    content:
+      text: "Local Editor · CLI"
+      fontFamily: Arial
+      fontSize: 13
+      lineHeight: 1.3
+      color: "#56615D"
+      align:
+        - left
+        - middle
+  - elementId: a1
+    elementType: line
+    bounds:
+      - 292
+      - 125
+      - 42
+      - 2
+    viewBox:
+      - 42
+      - 2
+    points: 0,1 42,1
+    border:
+      width: 1.5
+      color: "#2E6B5E"
+      style: solid
+    arrow:
+      - null
+      - arrow
+  - elementId: a2
+    elementType: line
+    bounds:
+      - 292
+      - 185
+      - 42
+      - 2
+    viewBox:
+      - 42
+      - 2
+    points: 0,1 42,1
+    border:
+      width: 1.5
+      color: "#2E6B5E"
+      style: solid
+    arrow:
+      - null
+      - arrow
+  - elementId: a3
+    elementType: line
+    bounds:
+      - 292
+      - 245
+      - 42
+      - 2
+    viewBox:
+      - 42
+      - 2
+    points: 0,1 42,1
+    border:
+      width: 1.5
+      color: "#2E6B5E"
+      style: solid
+    arrow:
+      - null
+      - arrow
+  - elementId: a4
+    elementType: line
+    bounds:
+      - 292
+      - 305
+      - 42
+      - 2
+    viewBox:
+      - 42
+      - 2
+    points: 0,1 42,1
+    border:
+      width: 1.5
+      color: "#2E6B5E"
+      style: solid
+    arrow:
+      - null
+      - arrow
+  - elementId: plugin-box
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 336
+      - 104
+      - 170
+      - 224
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1.5
+      color: "#2E6B5E"
+  - elementId: plugin-mark
+    elementType: image
+    bounds:
+      - 352
+      - 118
+      - 28
+      - 28
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    fit:
+      mode: contain
+  - elementId: plugin-name
+    elementType: text
+    bounds:
+      - 352
+      - 154
+      - 146
+      - 44
+    content:
+      text: HUANDENG plugin and CLI
+      fontFamily: Arial
+      fontSize: 15
+      lineHeight: 1.3
+      color: "#1C2321"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: plugin-desc
+    elementType: text
+    bounds:
+      - 352
+      - 204
+      - 146
+      - 116
+    content:
+      text: "22 MCP tools and two guides: read, preview, apply, review, render, export"
+      fontFamily: Arial
+      fontSize: 13
+      lineHeight: 1.35
+      color: "#3E4845"
+      align:
+        - left
+        - top
+  - elementId: a5
+    elementType: line
+    bounds:
+      - 506
+      - 268
+      - 40
+      - 2
+    viewBox:
+      - 40
+      - 2
+    points: 0,1 40,1
+    border:
+      width: 1.5
+      color: "#2E6B5E"
+      style: solid
+    arrow:
+      - null
+      - arrow
+  - elementId: editor-box
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 546
+      - 104
+      - 190
+      - 56
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#9DB8B0"
+  - elementId: editor-text
+    elementType: text
+    bounds:
+      - 558
+      - 108
+      - 170
+      - 48
+    content:
+      text: |-
+        Editor window
+        you edit on the canvas
+      fontFamily: Arial
+      fontSize: 13
+      lineHeight: 1.35
+      color: "#1C2321"
+      align:
+        - left
+        - middle
+  - elementId: a6
+    elementType: line
+    bounds:
+      - 640
+      - 160
+      - 2
+      - 32
+    viewBox:
+      - 2
+      - 32
+    points: 1,0 1,32
+    border:
+      width: 1.5
+      color: "#2E6B5E"
+      style: solid
+    arrow:
+      - null
+      - arrow
+  - elementId: writer-box
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 546
+      - 192
+      - 190
+      - 136
+    fill:
+      type: solid
+      color: "#2E6B5E"
+    border:
+      width: 0
+      color: "#2E6B5E"
+  - elementId: writer-name
+    elementType: text
+    bounds:
+      - 558
+      - 200
+      - 170
+      - 22
+    content:
+      text: Shared writer
+      fontFamily: Arial
+      fontSize: 16
+      lineHeight: 1.3
+      color: "#FFFFFF"
+      bold: true
+      align:
+        - left
+        - middle
+  - elementId: writer-desc
+    elementType: text
+    bounds:
+      - 558
+      - 226
+      - 170
+      - 98
+    content:
+      text: Checks the revision each request read, applies the exact previewed proposal, returns a receipt
+      fontFamily: Arial
+      fontSize: 13
+      lineHeight: 1.35
+      color: "#FFFFFF"
+      align:
+        - left
+        - top
+  - elementId: a7
+    elementType: line
+    bounds:
+      - 736
+      - 259
+      - 36
+      - 2
+    viewBox:
+      - 36
+      - 2
+    points: 0,1 36,1
+    border:
+      width: 1.5
+      color: "#2E6B5E"
+      style: solid
+    arrow:
+      - null
+      - arrow
+  - elementId: folder-box
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 772
+      - 192
+      - 132
+      - 136
+    fill:
+      type: solid
+      color: "#ECEEEB"
+    border:
+      width: 1
+      color: "#C7CEC9"
+  - elementId: folder-name
+    elementType: text
+    bounds:
+      - 784
+      - 200
+      - 112
+      - 22
+    content:
+      text: Project folder
+      fontFamily: Arial
+      fontSize: 15
+      lineHeight: 1.3
+      color: "#1C2321"
+      bold: true
+      align:
+        - left
+        - middle
+  - elementId: folder-desc
+    elementType: text
+    bounds:
+      - 784
+      - 226
+      - 112
+      - 98
+    content:
+      text: |-
+        deck.pptd
+        pages
+        media
+        .huandeng
+      fontFamily: Consolas
+      fontSize: 13
+      lineHeight: 1.45
+      color: "#3E4845"
+      align:
+        - left
+        - top
+  - elementId: b1h
+    elementType: text
+    bounds:
+      - 56
+      - 370
+      - 264
+      - 22
+    content:
+      text: Preview first
+      fontFamily: Arial
+      fontSize: 16
+      lineHeight: 1.3
+      color: "#2E6B5E"
+      bold: true
+      align:
+        - left
+        - middle
+  - elementId: b1d
+    elementType: text
+    bounds:
+      - 56
+      - 394
+      - 264
+      - 70
+    content:
+      text: The agent sees the exact fields, slides and reuse affected before anything is written.
+      fontFamily: Arial
+      fontSize: 14
+      lineHeight: 1.35
+      color: "#3E4845"
+      align:
+        - left
+        - top
+  - elementId: b2h
+    elementType: text
+    bounds:
+      - 348
+      - 370
+      - 264
+      - 22
+    content:
+      text: No silent overwrite
+      fontFamily: Arial
+      fontSize: 16
+      lineHeight: 1.3
+      color: "#2E6B5E"
+      bold: true
+      align:
+        - left
+        - middle
+  - elementId: b2d
+    elementType: text
+    bounds:
+      - 348
+      - 394
+      - 264
+      - 70
+    content:
+      text: If a slide changed after it was read, the write is refused and must be prepared again.
+      fontFamily: Arial
+      fontSize: 14
+      lineHeight: 1.35
+      color: "#3E4845"
+      align:
+        - left
+        - top
+  - elementId: b3h
+    elementType: text
+    bounds:
+      - 640
+      - 370
+      - 264
+      - 22
+    content:
+      text: Reports are not saves
+      fontFamily: Arial
+      fontSize: 16
+      lineHeight: 1.3
+      color: "#2E6B5E"
+      bold: true
+      align:
+        - left
+        - middle
+  - elementId: b3d
+    elementType: text
+    bounds:
+      - 640
+      - 394
+      - 264
+      - 70
+    content:
+      text: Activity shows what a client says it is doing apart from what was actually saved.
+      fontFamily: Arial
+      fontSize: 14
+      lineHeight: 1.35
+      color: "#3E4845"
+      align:
+        - left
+        - top
+  - elementId: ft-mark
+    elementType: image
+    bounds:
+      - 56
+      - 505
+      - 16
+      - 16
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    fit:
+      mode: contain
+  - elementId: ft-label
+    elementType: text
+    bounds:
+      - 78
+      - 505
+      - 420
+      - 16
+    content:
+      text: HUANDENG  /  Connect and contribute  ·  concept diagram
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - left
+        - middle
+  - elementId: ft-pos
+    elementType: text
+    bounds:
+      - 824
+      - 505
+      - 80
+      - 16
+    content:
+      text: "0"
+      field: main-position
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - right
+        - middle
+notes: "There is no chat box inside HUANDENG. You keep using the AI client you already have. Codex and Claude Code load the HUANDENG plugin locally and talk to it over MCP; DeepSeek does the same through its Harness; ChatGPT reaches the local Editor through an authorised workstation using the same command-line tool. The plugin offers twenty-two tools and two guides: read the project and its Story, preview a change, apply it, review a saved operation, render a slide and export. Every write goes to the shared writer, the same one the Editor window uses when you edit by hand. The writer checks that the request was prepared against the current revision, so an agent cannot overwrite your newer edit by accident; it applies exactly the proposal that was previewed, and returns a receipt. Progress reports from a client appear in Activity, separately from the writer's records of real saves. This is a concept diagram of the architecture, not a screenshot. This deck was written by Claude Code through exactly this route."

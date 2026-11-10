@@ -1,0 +1,23 @@
+background:
+  type: solid
+  color: "#2D4A43"
+elements:
+  - elementId: divider-title
+    elementType: text
+    role: title
+    bounds:
+      - 72
+      - 226
+      - 816
+      - 72
+    content:
+      text: Versions and delivery
+      fontFamily: Arial
+      fontSize: 40
+      lineHeight: 1.2
+      color: "#FFFFFF"
+      bold: true
+      align:
+        - left
+        - middle
+notes: Section 4. Changes accumulate. How do you keep a milestone you can return to, and what leaves the project when you deliver a talk?

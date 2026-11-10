@@ -6,9 +6,9 @@ HUANDENG Editor 基于 OpenSlide 的 React 编辑环境，使用 PPTD 文档后�
 
 ## 当前阶段
 
-当前版本为 **[v0.18：有明确设计约定的协作工作流](docs/RELEASE-V018.md)**。编辑器与插件版本为 0.18.0，core npm 包仍为 2.3.1。完整验收与安装状态见 [v0.18 交付记录](docs/HANDOFF-V018.md)，设计依据见 [设计说明](docs/DESIGN-V018.md)。
+编辑器保持 **[0.18.0](docs/RELEASE-V018.md)**；AI 插件已更新为 **0.18.2**，core npm 包仍为 2.3.1。本轮重新制作科学导向的项目介绍，整理工程目录，并修正过度限制图标、图像与背景的插件指南。当前交付与剩余问题见 [介绍重做交付记录](docs/INTRODUCTION-DELIVERY.md)，视觉依据见 [独立审计](docs/INTRODUCTION-VISUAL-AUDIT.md)。
 
-本版统一了中英文字号与截图约定，增加只读设计检查、现有章节的一键纯标题页、素材原图尺寸及安全 CLI 新建项目。工作区采用更轻的层级，GUI、CLI 和 MCP 共用检查结果。工作流为 Audit → Spec → Frame → Implement → Validate → Release。
+现有 Editor 0.18.0 提供中英文字号与截图约定、只读设计检查、现有章节的一键纯标题页、素材原图尺寸及安全 CLI 新建项目。工作区采用更轻的层级，GUI、CLI 和 MCP 共用检查结果。工作流为 Audit → Spec → Frame → Implement → Validate → Release。
 
 ## 项目介绍 / Introduction
 
@@ -16,12 +16,16 @@ Keep one slide project editable across people and agents. The bilingual introduc
 
 | 版本 / Edition | 可编辑项目 / Project | 页数 | 用途 |
 | --- | --- | ---: | --- |
-| ChatGPT 中文主稿 | [chatgpt-zh](examples/huandeng-introduction/chatgpt-zh) | 22 | 中文项目介绍，含 8 页简短演讲 |
-| ChatGPT English | [chatgpt-en](examples/huandeng-introduction/chatgpt-en) | 22 | English introduction with an 8-slide short talk |
-| DeepSeek Harness 中文 | [deepseek-zh](examples/huandeng-introduction/deepseek-zh) | 21 | 原生工具实测，保留技术续跑边界 |
-| Claude Code English | [claude-en](examples/huandeng-introduction/claude-en) | 21 | Independent native-client trial |
+| ChatGPT 中文主稿 | [chatgpt-zh](examples/huandeng-introduction/chatgpt-zh) | 19 | 同一科学例页贯穿编辑、证据与复用；另有 7 页简稿 |
+| ChatGPT English | [chatgpt-en](examples/huandeng-introduction/chatgpt-en) | 19 | A scientific example connects editing, evidence and reuse; includes a 7-slide brief |
+| DeepSeek Harness 中文 | [deepseek-zh](examples/huandeng-introduction/deepseek-zh) | 16 | 独立原生完成；保留其设计与事实局限 |
+| Claude Code English | [claude-en](examples/huandeng-introduction/claude-en) | 20 | Independent native authorship; quota interrupted final review, coordinator exported saved content |
 
-[下载 PowerPoint、PDF、完整 Project 与 Editor](https://github.com/JaytonKogeru/huandeng/releases/tag/editor-v0.18.0) · [四稿说明与素材](examples/huandeng-introduction/README.md) · [原生实测评估](docs/VALIDATION-V018-NATIVE-TRIALS.md)
+[下载本轮 PowerPoint、PDF、完整 Project 与插件](https://github.com/JaytonKogeru/huandeng/releases/tag/plugin-v0.18.2) · [四稿预览与素材](examples/huandeng-introduction/README.md) · [原生实测与交付边界](docs/INTRODUCTION-DELIVERY.md) · [Editor 0.18.0](https://github.com/JaytonKogeru/huandeng/releases/tag/editor-v0.18.0)
+
+上一轮介绍稿的视觉交付已被作者否决。本轮文件提供给作者评审；结构检查、Agent 审读与 Office 兼容检查不代表作者已接受。
+
+![English introduction: product, scientific evidence, shared editing and reuse](examples/huandeng-introduction/previews/chatgpt-en-overview.png)
 
 ## 编辑与交付
 
@@ -168,7 +172,7 @@ MCP 现有 **22 个工具、2 个 Story/operations 指南资源**。Activity rea
     corepack pnpm exec vitest run --project unit
     corepack pnpm check
 
-完整产品规划见 [Master SPEC](docs/SPEC.md)，当前增量见 [SPEC-V018](docs/SPEC-V018.md)，逐项状态见 [工作流审计](docs/AUDIT-V018-WORKFLOW.md)。历史验收见 [v0.4](docs/RELEASE-V04.md)、[v0.5](docs/RELEASE-V05.md)、[v0.6](docs/RELEASE-V06.md)、[v0.7](docs/RELEASE-V07.md)，[v0.8](docs/RELEASE-V08.md)，[v0.9](docs/RELEASE-V09.md)，[v0.10](docs/RELEASE-V010.md)，[v0.11](docs/RELEASE-V011.md)，[v0.12](docs/RELEASE-V012.md)，[v0.12.1](docs/RELEASE-V0121.md)，[v0.13](docs/RELEASE-V013.md)；本轮见 [v0.18 发布记录](docs/RELEASE-V018.md)。工程接续入口是 [WEBCHAT.md](WEBCHAT.md)。
+完整产品规划见 [Master SPEC](docs/SPEC.md)，编辑器增量见 [SPEC-V018](docs/SPEC-V018.md)，当前介绍稿与插件设计约定见 [Introduction rework](docs/INTRODUCTION-REWORK.md)，逐项状态见 [工作流审计](docs/AUDIT-V018-WORKFLOW.md)。历史验收见 [v0.4](docs/RELEASE-V04.md)、[v0.5](docs/RELEASE-V05.md)、[v0.6](docs/RELEASE-V06.md)、[v0.7](docs/RELEASE-V07.md)，[v0.8](docs/RELEASE-V08.md)，[v0.9](docs/RELEASE-V09.md)，[v0.10](docs/RELEASE-V010.md)，[v0.11](docs/RELEASE-V011.md)，[v0.12](docs/RELEASE-V012.md)，[v0.12.1](docs/RELEASE-V0121.md)，[v0.13](docs/RELEASE-V013.md)；本轮见 [v0.18 发布记录](docs/RELEASE-V018.md)。工程接续入口是 [WEBCHAT.md](WEBCHAT.md)。
 
 里程碑运行单元测试、类型和格式检查，并检查实际构建与安装。桌面、科研对象、原生 PowerPoint 和真实科研项目副本的场景按具体变更风险选择，不在每次开发中重复全部压力矩阵。日常小修改只重复能够验证相应风险的检查。
 

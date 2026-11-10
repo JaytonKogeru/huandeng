@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-10T13:04:45.919172+00:00",
+  "actor": "coordinator",
+  "scope": "Portable resource paths and byte-identical supporting source copies only; page artwork, native author README and native task status unchanged.",
+  "releaseTag": "plugin-v0.18.2",
+  "nativeTrialPluginVersion": null,
+  "guidanceBeforeSha256": "54c6c480d9be18c9d6e6c79e8017410af2c7d3babd9bee46e55200aecbb56f5d",
+  "guidanceAfterSha256": "d6628466ace9ea844a9fcd2178c392fac702ebc773457a832284f0eb8ae32298",
+  "guidancePathReplacements": {
+    "../assets/science": "sources/science",
+    "../assets/brand": "sources/brand",
+    "../assets/reference": "sources/reference"
+  },
+  "originalNativeGuidanceEvidence": null,
+  "originalNativeGuidanceMatchesFrozenSubmission": null,
+  "allPageHashesUnchanged": true,
+  "allPageFileHashes": {
+    "pages/2856.page": "054b7c2330bb6a70f6a710c4a00ecb8ffb116c93cf17689fb8f9a4fae94a5f75",
+    "pages/36EQ.page": "8f66dd19e9ddedf882a4d18ae5749ac316781c55bd33afa612814453c118c40b",
+    "pages/38FW.page": "7ff46e606853384a5b5d4234ee96f89c2c2513ead11a5c36d5b7fdb62751a355",
+    "pages/3DM4.page": "ae43447f71d078d1da80512b5a4727efe0e242db5f27ed4577d6d46db833603f",
+    "pages/42PF.page": "45e23fef4af5bf5f6d0c58444c5d9983089bda2488ed6877a7ddbe4624180f85",
+    "pages/45KP.page": "c8af47b56aa973220e5186e29b0aef43069acd73ecfa2d38eade47e16b38969a",
+    "pages/47JX.page": "93e237412a37166e89b3676b3a006ac23ec0699ce87f519c3c45ae7772a9f595",
+    "pages/4YZD.page": "b202089f88810be52ee26efb24ea20eaf4c1cee0b307dbf7c949ea2f66747d7b",
+    "pages/6NYX.page": "ec5596fa1e1ca607efb78564d84dce0d861dd7bfcda43ff8353f9f275fb2d67d",
+    "pages/6WZY.page": "7a0f325ec73896b940457ea7a6d3e6e4c336624de497b6c1b91eb5f3ac7415e7",
+    "pages/7EKH.page": "f76a23cb4e3dd2f5c3bf90c2f7cf672a41a62c22deb85d3d6f6cb0d3b7b27220",
+    "pages/93SF.page": "4006b316a6d0cc8938676e698fc441fd85a813787a140f161cf70b61c003e3c9",
+    "pages/BMNQ.page": "25f8166263e49b4ded3d7577ec04723f9e2e3c57b65569ed0c65e16ac8816421",
+    "pages/CB5K.page": "ffed183e07fda7bfded4766a44579c4f95c6282183ac7564b490e91502879271",
+    "pages/CR5K.page": "9deecc6508af0d5c908acb54ac97681861b67d1a20b1634a16e950b5091dfc1e",
+    "pages/CU33.page": "f462c00fd60719cfff8e24c0a806aa448dee401ec2d86fe63ef03b2d91e21698",
+    "pages/DM4Y.page": "57ade524e70d1b5aa5c6753318a010ea6ebc3348158125df770790cdf8ecb923",
+    "pages/E2RU.page": "0e2f43bcbb000cc2a397fc3eeaa3be1efe7b58e4765cf43c34f1731352db9786",
+    "pages/E9RN.page": "ad67e3fb018c49706e51ce3cc13137f0ee13a3ff08b3e8c20b118ead02c93192",
+    "pages/EXVF.page": "954a83d6acbc4c6d300f8293e60326d41439594bcaf29ed61cdaf2ba8d90d9eb",
+    "pages/FE8A.page": "82ffbc884dc0a9d443f1ecc82908046c6e642fcea6db705fc262a54914dd5a0e",
+    "pages/GE9Q.page": "87455f11086fe071e23fc2e46b12510c1df8a3c7864781cb495d24dd86bbc806",
+    "pages/HGV2.page": "491786b426be7a39dc1f84ed31a8c23393b32e460051f9bc9f08452c33c80a11",
+    "pages/HUA9.page": "0b5ecd2bd03946db4b584492a795e2c99dd071213fbb387c51b1561f22a7e5e9",
+    "pages/HWB6.page": "aea499ca810a64fb40a1df38e30dd525eb2f85e1fb082ecd697807ab4fb453b0",
+    "pages/initial.page": "90f200a62e8e752726e94a0f0f8a4e12b9f7be1cc7e81a204f929a8e5641e166",
+    "pages/J46H.page": "2031607ada26d3e238928f7c1daf4815fc9a729c320b20124af3bcca574ad11e",
+    "pages/JNZV.page": "f0562d4265e8483fda66b4a72b77aca4b664c3054d5564e51db94ef7123ad4d7",
+    "pages/MPTA.page": "338198b348b62093979aa6b6063cc06461ffbf1922a83a64b6849f99905e686a",
+    "pages/NJM7.page": "3f94af8809458615fd2bb1c2153c2343a97b1c903d1e92e0c74d0f3ec9ae5da7",
+    "pages/NKN6.page": "a756bb8cd97b416d96655c045c3233aff7c60b0e0d6ef4fd39e5bf61d7bdf941",
+    "pages/QBNX.page": "5089400f07869119282a84c31a1f37cdf93fb50f6f0bba31d05d88dae825229a",
+    "pages/RJZC.page": "d697be8fd55ba16d029c1fed1a376d80f3aed430b15dc4428eb835337eae8fe4",
+    "pages/S5B3.page": "7781ac0ba03d6019611ac1a2a57a55a226b7c34b2199d802788754dd33b7e9ec",
+    "pages/SR3W.page": "fb95e5725720e66eb2a04d66941038a4981808ac9f008c226c470146b153e51e",
+    "pages/TTHC.page": "f12ef9bf6fd00f4e9d8cd189e3633da35348e9372596d4ff4f8eea0d312cda8a",
+    "pages/TWBJ.page": "8e4d3ce3cbfe4e7c8364e96c8674ab7325a25782c6d6fe96f00efd117ab5b83c",
+    "pages/TZBD.page": "173fae0c3d427f21b855a1f656615c6b5294c22a28ad0210133dd9e412ea2275",
+    "pages/TZXM.page": "9413d18eb6b48e18445acc77b0787d53e4f5e79be2f5eaf9e1c961e77dd537d0",
+    "pages/U5QA.page": "440783153a9f640b56d87b176edf181dd9ef68d17f1c4ca94e2983ff1dcfb363",
+    "pages/W7WP.page": "f14486e410a6d1fa4afe5331fc66505df5cffaf1e889dc8a37e06981bdfd1f14",
+    "pages/ZYZB.page": "ce9c08b9ad71fe5639eb9937c265f5a95586cef02d2ccc141a41e4afd6b0344a"
+  },
+  "copiedSources": [
+    {
+      "path": "sources/brand/chatgpt.png",
+      "sha256": "0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13",
+      "bytes": 27900
+    },
+    {
+      "path": "sources/brand/claude-code.png",
+      "sha256": "733f24f4c52acb15eb0fbded1cf40eb42b4ba8e62b882acac70b6234b50919a8",
+      "bytes": 4787
+    },
+    {
+      "path": "sources/brand/codex.png",
+      "sha256": "2ce1c57dd3b312417106a487815ab1235bddce17e1fa9b32a2f048bd71ee25d3",
+      "bytes": 10969
+    },
+    {
+      "path": "sources/brand/deepseek.png",
+      "sha256": "e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc",
+      "bytes": 15456
+    },
+    {
+      "path": "sources/brand/github-repository.png",
+      "sha256": "2a2f5cbcc74c7fa83c40127dd8b0e42c23f1157131aebe28492aa1ac27bbdc6d",
+      "bytes": 5437
+    },
+    {
+      "path": "sources/brand/huandeng-user-original.png",
+      "sha256": "bd04c9ebb0e94cdaa5ba6c3a7df8d5ae1d35236933b3ca9ab297912d7b870530",
+      "bytes": 1424342
+    },
+    {
+      "path": "sources/brand/huandeng.png",
+      "sha256": "6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef",
+      "bytes": 62348
+    },
+    {
+      "path": "sources/brand/manifest.json",
+      "sha256": "65b686dc2a66d35e4821a120343aec485dc1941dcefa913d7cc5a42d4f3ef7c0",
+      "bytes": 7491
+    },
+    {
+      "path": "sources/brand/open-slide.png",
+      "sha256": "44e2a2aa5f3887deae386fa73f71234961f93e006873b632ccf38b6b6f1291a1",
+      "bytes": 31437
+    },
+    {
+      "path": "sources/brand/pptxgenjs.png",
+      "sha256": "d697acf6f3c5bc265806bc8f6c4e6d58b964e0b2962392d0329a420639f45846",
+      "bytes": 15816
+    },
+    {
+      "path": "sources/brand/README.md",
+      "sha256": "20dba36b4c90d311a0573a29eaf5ec8acaf480b4dd4757079a84f62fd3cfb856",
+      "bytes": 1989
+    },
+    {
+      "path": "sources/brand/SHA256SUMS.txt",
+      "sha256": "a8c693520f4a40cefb43867a9ece38eaf8495ccbcdb41c6eca08a715e552d293",
+      "bytes": 892
+    },
+    {
+      "path": "sources/reference/README.md",
+      "sha256": "a520828e417babc86f2d6e0e6e19d7d318c0ae449542122ddc4a02d4c6e1caed",
+      "bytes": 1471
+    },
+    {
+      "path": "sources/reference/SHA256SUMS.txt",
+      "sha256": "c6855bfec42dcfef8eb7e16d2c1ab0060216bacccb2bf80ab6fa8d3a64d25307",
+      "bytes": 616
+    },
+    {
+      "path": "sources/reference/manifest.json",
+      "sha256": "c0c0969cb8b146e3acde572e47a47cdc257bea85ca228f28675e0047939b78fb",
+      "bytes": 1848
+    },
+    {
+      "path": "sources/reference/original-demo-contact-1.jpg",
+      "sha256": "e243a3b70401eed0b4ed3fe8ec314d829cde70539ec1af8e19aa6b81a099ce07",
+      "bytes": 364690
+    },
+    {
+      "path": "sources/reference/original-demo-contact-2.jpg",
+      "sha256": "d6311d340560c2d53a843fb30bb58288a1e2b802ed7ee0baeba5289252db53fe",
+      "bytes": 367018
+    },
+    {
+      "path": "sources/reference/original-demo-contact-3.jpg",
+      "sha256": "021996a9ba6af51defb13f0e95f9f9b636fe3b6a85c99d2fc0b48bb2dac6c861",
+      "bytes": 338872
+    },
+    {
+      "path": "sources/reference/original-demo-contact-4.jpg",
+      "sha256": "14e4d1b9d095085cea488ffdfc7cade70df4c40541985a306eac525f55acf689",
+      "bytes": 139645
+    },
+    {
+      "path": "sources/reference/original-demo.pdf",
+      "sha256": "a3d2393fc283c3738ebcfc074a5446207a53cf158ecaaaf1e55dab4d60c54392",
+      "bytes": 4004704
+    }
+  ],
+  "sourcesNoticePathAdjusted": true,
+  "historicalReferenceSubtreesCopied": false
+}

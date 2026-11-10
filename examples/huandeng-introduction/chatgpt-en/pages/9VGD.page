@@ -1,0 +1,24 @@
+pageType: section
+background:
+  type: solid
+  color: "#E4ECE6"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 55
+      - 221
+      - 850
+      - 82
+    role: title
+    content:
+      text: Evidence and composition
+      fontFamily: Arial
+      fontSize: 34
+      color: "#263C34"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+notes: Section pause. The next pages demonstrate this theme through actual work.

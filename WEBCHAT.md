@@ -1,6 +1,18 @@
 # HUANDENG Editor
 
-## Current accepted Editor 0.18.0
+## Current introduction and plugin rework
+
+The author rejected the 0.18 introductions for excessive simplification and loss of their original visual language. Read docs/INTRODUCTION-REWORK.md, INTRODUCTION-VISUAL-AUDIT.md, INTRODUCTION-DELIVERY.md and WORKSPACE-ORGANIZATION.md before continuing. They supersede the old white-background/fixed-22-page design contract. This round does not change Editor source or its 0.18.0 binary.
+
+The four canonical projects live inside examples/huandeng-introduction: ChatGPT Chinese and English have 19 Main/full pages and a seven-page brief; DeepSeek independently completed 16 Chinese pages; Claude independently authored 20 English pages but hit its native account quota during final review. The coordinator exported Claude's saved source without rewriting its pages. A later same-session read-only recovery verified the 20-page source and exports; it does not change the first native turn's incomplete status. Current coordinator README/media indexes replace inherited 21-page documentation, whose exact bytes are preserved. Do not claim native completion or author acceptance from coordinator file checks.
+
+AI plugin 0.18.2 is installed in native clients and updated in place in the existing account plugin. Shared Story SHA-256: 548ce140c0f6bf62e808b07848968965265929f0ac4950033ae72dc51dfd6009. Actual Windows-host UI inspection identified simultaneous account-backed and local installations. The duplicate account-backed installation was uninstalled through the host UI; the installed list now contains one HUANDENG, local 0.18.2. The owned cloud record remains available. Preserve this distinction: installed-host state is verified; the user's existing chat draft was not modified to run an optional @ query.
+
+Preserve the unrelated modified tests/fixtures/studio/pages/identities.page. Keep origin private and never push upstream/npm. Current delivery is a plugin/example milestone, not an Editor release; use plugin-v0.18.2 and retain the historical Editor tag and binary. Directory retention and active research writers are recorded in WORKSPACE-ORGANIZATION.md. Do not recreate dated parallel project/worktree folders for ordinary edits.
+
+## Installed Editor 0.18.0 baseline (unchanged)
+
+The following paragraphs preserve the original 0.18 delivery record. Their introduction page counts and plugin-installation state are historical and superseded by the current rework section above; they are not current acceptance claims.
 
 The accepted clean runtime is `35dfe649d450d22a0e4e3b70661be52c67eb9f7a`, built `2026-11-10T09:26:30.7136963Z` with `sourceDirty=false` and Electron 38.7.2. The milestone branch is `editor/v0.18-design-workflow`, based on `376e6b4`; later delivery changes contain only documentation and public introduction examples. Read `docs/HANDOFF-V018.md`, `SPEC-V018`, `DESIGN-V018`, `AUDIT-V018-WORKFLOW`, `FRAME-V018-WORKFLOW`, `VALIDATION-V018-WORKFLOW`, `VALIDATION-V018-UI`, `VALIDATION-V018-SLIDES`, `VALIDATION-V018-NATIVE-TRIALS` and `RELEASE-V018-WORKFLOW` before continuing. Check actual origin/tag/release state for `editor-v0.18.0`; source acceptance does not itself prove remote publication.
 
@@ -103,7 +115,7 @@ v0.8 corrected the old v0.7~398MiB GC observation: Network inspector response re
 
 ## Working paths and release
 
-Windows is authoritative: canonical checkout `D:/_Proj/Huandeng`; current worktree `D:/_Proj/Huandeng-v018-20261110`, branch `editor/v0.18-design-workflow`. The Linux transfer mirror has no authoritative Git history. Preserve the unrelated modified canonical fixture. Never broad-stage/reset/clean or restore a historical private document baseline.
+Windows is authoritative: the current checkout is `D:/_Proj/Huandeng` on `main`. The historical `Huandeng-v018-20261110` worktree was removed after its dependencies were released; the historical branch remains in Git. The Linux transfer mirror has no authoritative Git history. Preserve the unrelated modified canonical fixture. Never broad-stage/reset/clean or restore a historical private document baseline.
 
 Use `corepack pnpm` with isolated development dependencies and the frozen lockfile. The v0.13 workspace harness is `scripts/verify-workspace-v013.mjs`, using the exact `HUANDENG_DESKTOP_EXE`, no `HUANDENG_DESKTOP_APP`, and isolated synthetic profiles. Keep development, packaged, installed and private-authoring evidence separate. Scope further checks to actual remaining risk instead of automatically repeating earlier 43-group/soak matrices. Inspect screenshots before publishing only generic, masked evidence.
 

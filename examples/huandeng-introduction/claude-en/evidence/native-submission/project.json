@@ -1,0 +1,965 @@
+{
+  "schemaVersion": 1,
+  "deckId": "178add5e-b4dd-48ce-81ad-681ed8b90321",
+  "entry": "deck.pptd",
+  "designPolicy": "huandeng-human-scientific-v1",
+  "slides": {
+    "a829a72e-411e-4083-a1e2-ae6a0e5efbf8": {
+      "shortCode": "X5EF",
+      "path": "pages/initial.page",
+      "state": "tombstone",
+      "components": {},
+      "elementRoles": {
+        "cover-title": "title"
+      },
+      "label": "S1",
+      "designIntent": {
+        "pageRole": "cover",
+        "purpose": "Name the project and state in one sentence what it is for.",
+        "keep": [
+          "Official HUANDENG icon unaltered",
+          "Public GitHub address"
+        ],
+        "requestedChange": "Reuse the initial blank page as the cover of the English public introduction.",
+        "actor": "claude-code",
+        "source": "Independent English introduction trial brief"
+      }
+    },
+    "6731f47f-5b41-4c69-b577-044d919c2b7c": {
+      "shortCode": "B487",
+      "path": "pages/B487.page",
+      "state": "tombstone",
+      "components": {},
+      "elementRoles": {
+        "divider-title": "title"
+      },
+      "label": "S2",
+      "designIntent": {
+        "pageRole": "section",
+        "purpose": "Title-only divider for the core model.",
+        "keep": [
+          "Title only: no subtitle, number, footer, logo or decoration"
+        ],
+        "actor": "claude-code",
+        "source": "Independent English introduction trial brief"
+      }
+    },
+    "4af0594e-ef78-4ef8-952e-7d64a415805d": {
+      "shortCode": "4ZXH",
+      "path": "pages/4ZXH.page",
+      "state": "tombstone",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S3",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "State the practical problem: slides are copied and diverge across audiences, positions are not identities, intent is unrecorded.",
+        "keep": [
+          "No invented statistics or quotes"
+        ],
+        "actor": "claude-code",
+        "source": "Independent English introduction trial brief"
+      }
+    },
+    "051f56b7-59f8-4f7a-8331-a66e0762a79c": {
+      "shortCode": "495F",
+      "path": "pages/495F.page",
+      "state": "tombstone",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S4",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Explain one canonical Main Slides collection and several Presentations built by reference.",
+        "keep": [
+          "Table positions must match this deck's actual full and brief Presentations"
+        ],
+        "actor": "claude-code",
+        "source": "Independent English introduction trial brief"
+      }
+    },
+    "5a649795-839d-44f1-b2b2-b41110b0ebb4": {
+      "shortCode": "2DC4",
+      "path": "pages/2DC4.page",
+      "state": "tombstone",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S5",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Distinguish permanent Slide ID from derived Position, with real Browse evidence.",
+        "keep": [
+          "Real English Browse capture crop, original aspect ratio"
+        ],
+        "actor": "claude-code",
+        "source": "Independent English introduction trial brief"
+      }
+    },
+    "0910e952-5c4a-4218-ad9c-01146d09e194": {
+      "shortCode": "TXNA",
+      "path": "pages/TXNA.page",
+      "state": "tombstone",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S6",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Contrast live reuse with an explicitly pinned named version.",
+        "keep": [
+          "Real edit-scope header crop, original aspect ratio"
+        ],
+        "actor": "claude-code",
+        "source": "Independent English introduction trial brief"
+      }
+    },
+    "979ad1bc-ecae-4382-8f37-5c1f99b7b4fc": {
+      "shortCode": "ZJ69",
+      "path": "pages/ZJ69.page",
+      "state": "tombstone",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S7",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Explain the Story layers and how they guide edits; agent records are interpretations, not approval.",
+        "keep": [
+          "Real Outline crop, original aspect ratio"
+        ],
+        "actor": "claude-code",
+        "source": "Independent English introduction trial brief"
+      }
+    },
+    "041aae17-212b-46ca-bf97-eb72a4cf32d1": {
+      "shortCode": "87VG",
+      "path": "pages/87VG.page",
+      "state": "tombstone",
+      "components": {},
+      "elementRoles": {
+        "divider-title": "title"
+      },
+      "label": "S8",
+      "designIntent": {
+        "pageRole": "section",
+        "purpose": "Title-only divider for project structure.",
+        "keep": [
+          "Title only: no subtitle, number, footer, logo or decoration"
+        ],
+        "actor": "claude-code",
+        "source": "Independent English introduction trial brief"
+      }
+    },
+    "7dbf6217-2ed6-4806-916b-2882b8ad3dcf": {
+      "shortCode": "WC3D",
+      "path": "pages/WC3D.page",
+      "state": "tombstone",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S9",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Show the role of each item in the project folder.",
+        "keep": [
+          "Folder names without trailing slashes (renderer treats media/ text as an asset path)"
+        ],
+        "actor": "claude-code",
+        "source": "Independent English introduction trial brief"
+      }
+    },
+    "a4252458-fc41-42ac-8676-90aa60c94bba": {
+      "shortCode": "NQGU",
+      "path": "pages/NQGU.page",
+      "state": "tombstone",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S10",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Separate the roles of Editor, plugin and connector in audience language.",
+        "keep": [
+          "Describe ChatGPT only as connecting to the local Editor; no internal connection brand names"
+        ],
+        "actor": "claude-code",
+        "source": "Independent English introduction trial brief"
+      }
+    },
+    "d6378472-cea7-4942-b068-16b43ba74dfd": {
+      "shortCode": "MEMH",
+      "path": "pages/MEMH.page",
+      "state": "tombstone",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S11",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Orient the audience with the whole workspace and its six views.",
+        "keep": [
+          "Full English Normal-view capture, uncropped, original aspect ratio"
+        ],
+        "actor": "claude-code",
+        "source": "Independent English introduction trial brief"
+      }
+    },
+    "fd23d630-519d-4e21-bee6-92e9bb70562d": {
+      "shortCode": "XPFU",
+      "path": "pages/XPFU.page",
+      "state": "tombstone",
+      "components": {},
+      "elementRoles": {
+        "divider-title": "title"
+      },
+      "label": "S12",
+      "designIntent": {
+        "pageRole": "section",
+        "purpose": "Title-only divider for the working session.",
+        "keep": [
+          "Title only: no subtitle, number, footer, logo or decoration"
+        ],
+        "actor": "claude-code",
+        "source": "Independent English introduction trial brief"
+      }
+    },
+    "25d95593-ea23-46b5-baea-5350ef58b748": {
+      "shortCode": "Q3YS",
+      "path": "pages/Q3YS.page",
+      "state": "tombstone",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S13",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Show first-Slide Sections in the real Sections view.",
+        "keep": [
+          "Focused real Sections crop, original aspect ratio"
+        ],
+        "actor": "claude-code",
+        "source": "Independent English introduction trial brief"
+      }
+    },
+    "31052ac1-12f0-4c76-be5c-7f897576f5b2": {
+      "shortCode": "RHDQ",
+      "path": "pages/RHDQ.page",
+      "state": "tombstone",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S14",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Explain the read, preview, apply, review loop of an agent edit.",
+        "keep": [
+          "No drawn arrows or circled numbers"
+        ],
+        "actor": "claude-code",
+        "source": "Independent English introduction trial brief"
+      }
+    },
+    "66207d66-13fb-4fb1-8efc-51776efa609b": {
+      "shortCode": "SHBY",
+      "path": "pages/SHBY.page",
+      "state": "tombstone",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S15",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Explain the shared writer: revision checks, reviewable operations, reports separate from saves.",
+        "actor": "claude-code",
+        "source": "Independent English introduction trial brief"
+      }
+    },
+    "ef491079-5bc5-4ad8-bd3c-fc42973f05c6": {
+      "shortCode": "RE8W",
+      "path": "pages/RE8W.page",
+      "state": "tombstone",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S16",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Show Main speaker notes and occurrence-specific notes.",
+        "keep": [
+          "Real Notes page crop, original aspect ratio"
+        ],
+        "actor": "claude-code",
+        "source": "Independent English introduction trial brief"
+      }
+    },
+    "b16d13d8-b733-4fc2-b947-05669a1ce7e6": {
+      "shortCode": "WAJX",
+      "path": "pages/WAJX.page",
+      "state": "tombstone",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S17",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Explain named versions, operation history and single-page restore.",
+        "keep": [
+          "Real History crops, original aspect ratio"
+        ],
+        "actor": "claude-code",
+        "source": "Independent English introduction trial brief"
+      }
+    },
+    "16db2293-3e75-4b7f-984d-bbd3bc524c1c": {
+      "shortCode": "6SXG",
+      "path": "pages/6SXG.page",
+      "state": "tombstone",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S18",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Explain delivery as the editable project plus static PDF/PPTX, with the animation limitation.",
+        "actor": "claude-code",
+        "source": "Independent English introduction trial brief"
+      }
+    },
+    "735b8eb2-ee8b-4901-9bf7-f23c8fc1f42d": {
+      "shortCode": "ZYC6",
+      "path": "pages/ZYC6.page",
+      "state": "tombstone",
+      "components": {},
+      "elementRoles": {
+        "divider-title": "title"
+      },
+      "label": "S19",
+      "designIntent": {
+        "pageRole": "section",
+        "purpose": "Title-only divider for open source and contribution.",
+        "keep": [
+          "Title only: no subtitle, number, footer, logo or decoration"
+        ],
+        "actor": "claude-code",
+        "source": "Independent English introduction trial brief"
+      }
+    },
+    "27c92461-1364-4ed4-89bd-61c00121f2c0": {
+      "shortCode": "EMSZ",
+      "path": "pages/EMSZ.page",
+      "state": "tombstone",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S20",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "State the open-source foundations and the current gaps honestly.",
+        "keep": [
+          "Only gaps documented in the public README"
+        ],
+        "actor": "claude-code",
+        "source": "Independent English introduction trial brief"
+      }
+    },
+    "37c06309-7616-4081-8828-04927207d2b8": {
+      "shortCode": "YPNR",
+      "path": "pages/YPNR.page",
+      "state": "tombstone",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S21",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Concrete getting-started commands and contribution invitation.",
+        "keep": [
+          "Commands match the public README"
+        ],
+        "actor": "claude-code",
+        "source": "Independent English introduction trial brief"
+      }
+    },
+    "49f1db15-b783-4a1b-8cff-815d4b4116e0": {
+      "shortCode": "DKSN",
+      "path": "pages/DKSN.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S22",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Orient the audience in the real Editor with six numbered regions.",
+        "keep": [
+          "Real English capture en-edit-1920.png, uncropped, original aspect ratio",
+          "Markers must not hide the UI element they point to"
+        ],
+        "requestedChange": "Rework of the rejected 0.18 edition: concrete scientific example, real product evidence, purposeful backgrounds and diagrams.",
+        "actor": "claude-code",
+        "source": "Coordinator brief 2026-11-10: HUANDENG English introduction rework (claude-en)",
+        "recordedAt": "2026-11-10T11:57:05Z"
+      }
+    },
+    "2022f6b4-ddd7-49f2-9864-1e41298e12bb": {
+      "shortCode": "2SD8",
+      "path": "pages/2SD8.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S23",
+      "designIntent": {
+        "pageRole": "section",
+        "purpose": "Title-only pause before the worked example.",
+        "keep": [
+          "Title only, Section background colour"
+        ],
+        "requestedChange": "Rework of the rejected 0.18 edition: concrete scientific example, real product evidence, purposeful backgrounds and diagrams.",
+        "actor": "claude-code",
+        "source": "Coordinator brief 2026-11-10: HUANDENG English introduction rework (claude-en)",
+        "recordedAt": "2026-11-10T11:57:05Z"
+      }
+    },
+    "e25cbd3a-6a20-4bc8-959f-eb3e1bcabefa": {
+      "shortCode": "AVNM",
+      "path": "pages/AVNM.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S24",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Show the twelve measured C1′–C1′ distances beside the structure they were measured in.",
+        "keep": [
+          "Values exactly as in paired-c1-distances.csv",
+          "Labelled non-zero y-axis, units in Å",
+          "PDB 1BNA citation on the slide",
+          "No replicate, error-bar or trend claims"
+        ],
+        "requestedChange": "Rework of the rejected 0.18 edition: concrete scientific example, real product evidence, purposeful backgrounds and diagrams.",
+        "actor": "claude-code",
+        "source": "Coordinator brief 2026-11-10: HUANDENG English introduction rework (claude-en)",
+        "recordedAt": "2026-11-10T11:57:05Z"
+      }
+    },
+    "7d1954c5-ca5b-4eaa-a391-7b18431f6385": {
+      "shortCode": "QMYQ",
+      "path": "pages/QMYQ.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S25",
+      "designIntent": {
+        "pageRole": "cover",
+        "purpose": "Name HUANDENG and its purpose; introduce the 1BNA worked example.",
+        "keep": [
+          "Exact HUANDENG mark (brand/huandeng.png), unaltered",
+          "1BNA structure image from deposited coordinates, unaltered"
+        ],
+        "requestedChange": "Rework of the rejected 0.18 edition: concrete scientific example, real product evidence, purposeful backgrounds and diagrams.",
+        "actor": "claude-code",
+        "source": "Coordinator brief 2026-11-10: HUANDENG English introduction rework (claude-en)",
+        "recordedAt": "2026-11-10T11:57:05Z"
+      }
+    },
+    "99bf9e70-3522-4aa6-a1bf-6ce870f9142d": {
+      "shortCode": "RQ64",
+      "path": "pages/RQ64.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S26",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Contrast drifting copied decks with one project whose Presentations reference slides.",
+        "keep": [
+          "Labelled as a concept diagram; file names are illustrations"
+        ],
+        "requestedChange": "Rework of the rejected 0.18 edition: concrete scientific example, real product evidence, purposeful backgrounds and diagrams.",
+        "actor": "claude-code",
+        "source": "Coordinator brief 2026-11-10: HUANDENG English introduction rework (claude-en)",
+        "recordedAt": "2026-11-10T11:57:05Z"
+      }
+    },
+    "71d560b6-4ead-4477-a3c8-0bad5c755d0d": {
+      "shortCode": "QK69",
+      "path": "pages/QK69.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S27",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Explain slide Story using the real Story panel and the Story recorded for the 1BNA slide.",
+        "keep": [
+          "Quoted Story must match the 1BNA slide's recorded designIntent",
+          "Real capture en-focused-story-4x.png"
+        ],
+        "requestedChange": "Rework of the rejected 0.18 edition: concrete scientific example, real product evidence, purposeful backgrounds and diagrams.",
+        "actor": "claude-code",
+        "source": "Coordinator brief 2026-11-10: HUANDENG English introduction rework (claude-en)",
+        "recordedAt": "2026-11-10T11:57:05Z"
+      }
+    },
+    "56c5f2a9-5146-41a3-8785-d78d8e94efa6": {
+      "shortCode": "6FNH",
+      "path": "pages/6FNH.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S28",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Show one requested change, before and after, with an exact diff table.",
+        "keep": [
+          "Real captures en-edit-before/after-4x.png, same scale",
+          "Diff table matches the captured text"
+        ],
+        "requestedChange": "Rework of the rejected 0.18 edition: concrete scientific example, real product evidence, purposeful backgrounds and diagrams.",
+        "actor": "claude-code",
+        "source": "Coordinator brief 2026-11-10: HUANDENG English introduction rework (claude-en)",
+        "recordedAt": "2026-11-10T11:57:05Z"
+      }
+    },
+    "9ad205fe-9d24-47b7-8adb-721f66b64e8a": {
+      "shortCode": "4V98",
+      "path": "pages/4V98.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S29",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Show the read-only review of a saved operation.",
+        "keep": [
+          "Real capture en-operation-review-4x.png",
+          "Markers must not hide the UI element they point to"
+        ],
+        "requestedChange": "Rework of the rejected 0.18 edition: concrete scientific example, real product evidence, purposeful backgrounds and diagrams.",
+        "actor": "claude-code",
+        "source": "Coordinator brief 2026-11-10: HUANDENG English introduction rework (claude-en)",
+        "recordedAt": "2026-11-10T11:57:05Z"
+      }
+    },
+    "6763c852-4a02-49f1-9ed7-78cfdc8f204e": {
+      "shortCode": "EEGK",
+      "path": "pages/EEGK.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S30",
+      "designIntent": {
+        "pageRole": "section",
+        "purpose": "Title-only pause before reuse and identity.",
+        "keep": [
+          "Title only, Section background colour"
+        ],
+        "requestedChange": "Rework of the rejected 0.18 edition: concrete scientific example, real product evidence, purposeful backgrounds and diagrams.",
+        "actor": "claude-code",
+        "source": "Coordinator brief 2026-11-10: HUANDENG English introduction rework (claude-en)",
+        "recordedAt": "2026-11-10T11:57:05Z"
+      }
+    },
+    "d47c2f73-4d43-429f-bc48-a9bed8dc99d4": {
+      "shortCode": "KM5E",
+      "path": "pages/KM5E.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S31",
+      "designIntent": {
+        "pageRole": "section",
+        "purpose": "Title-only pause before versions and delivery.",
+        "keep": [
+          "Title only, Section background colour"
+        ],
+        "requestedChange": "Rework of the rejected 0.18 edition: concrete scientific example, real product evidence, purposeful backgrounds and diagrams.",
+        "actor": "claude-code",
+        "source": "Coordinator brief 2026-11-10: HUANDENG English introduction rework (claude-en)",
+        "recordedAt": "2026-11-10T11:57:05Z"
+      }
+    },
+    "8704c48f-dc7b-41aa-95ae-7830550be331": {
+      "shortCode": "SQNG",
+      "path": "pages/SQNG.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S32",
+      "designIntent": {
+        "pageRole": "section",
+        "purpose": "Title-only pause before connection and contribution.",
+        "keep": [
+          "Title only, Section background colour"
+        ],
+        "requestedChange": "Rework of the rejected 0.18 edition: concrete scientific example, real product evidence, purposeful backgrounds and diagrams.",
+        "actor": "claude-code",
+        "source": "Coordinator brief 2026-11-10: HUANDENG English introduction rework (claude-en)",
+        "recordedAt": "2026-11-10T11:57:05Z"
+      }
+    },
+    "050336e7-3878-4a2b-8727-2c4545dc1e47": {
+      "shortCode": "V2SV",
+      "path": "pages/V2SV.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S33",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Distinguish permanent Slide ID from derived Position and occurrence.",
+        "keep": [
+          "Real status-bar captures before/after the move",
+          "Browse capture en-browse-reading-4x.png"
+        ],
+        "requestedChange": "Rework of the rejected 0.18 edition: concrete scientific example, real product evidence, purposeful backgrounds and diagrams.",
+        "actor": "claude-code",
+        "source": "Coordinator brief 2026-11-10: HUANDENG English introduction rework (claude-en)",
+        "recordedAt": "2026-11-10T11:57:05Z"
+      }
+    },
+    "ce9e73d9-a17e-4e2d-8b80-4ed6e8332fd9": {
+      "shortCode": "AZJC",
+      "path": "pages/AZJC.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S34",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Show the Outline view for reading the argument; relate Browse and Sections.",
+        "keep": [
+          "Real capture en-outline-reading-4x.png"
+        ],
+        "requestedChange": "Rework of the rejected 0.18 edition: concrete scientific example, real product evidence, purposeful backgrounds and diagrams.",
+        "actor": "claude-code",
+        "source": "Coordinator brief 2026-11-10: HUANDENG English introduction rework (claude-en)",
+        "recordedAt": "2026-11-10T11:57:05Z"
+      }
+    },
+    "3e42c654-67cb-4f39-8096-d8c0c3151d48": {
+      "shortCode": "73AG",
+      "path": "pages/73AG.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S35",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Explain named versions, operation history and single-slide restore.",
+        "keep": [
+          "Real capture en-history-change-4x.png",
+          "Markers must not hide the UI element they point to"
+        ],
+        "requestedChange": "Rework of the rejected 0.18 edition: concrete scientific example, real product evidence, purposeful backgrounds and diagrams.",
+        "actor": "claude-code",
+        "source": "Coordinator brief 2026-11-10: HUANDENG English introduction rework (claude-en)",
+        "recordedAt": "2026-11-10T11:57:05Z"
+      }
+    },
+    "3143e3cb-2278-4256-839a-24af78d9f6bc": {
+      "shortCode": "SY94",
+      "path": "pages/SY94.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S36",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Show Design check, the Present menu and Export, with what each output carries.",
+        "keep": [
+          "Design check crop is a pixel-exact derivative (media/derived)",
+          "Output capabilities as stated in the project README"
+        ],
+        "requestedChange": "Rework of the rejected 0.18 edition: concrete scientific example, real product evidence, purposeful backgrounds and diagrams.",
+        "actor": "claude-code",
+        "source": "Coordinator brief 2026-11-10: HUANDENG English introduction rework (claude-en)",
+        "recordedAt": "2026-11-10T11:57:05Z"
+      }
+    },
+    "9056e773-a44a-449a-8d49-900cf487bac8": {
+      "shortCode": "SMGE",
+      "path": "pages/SMGE.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S37",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Give concrete first steps for users and contributors.",
+        "keep": [
+          "Commands match the repository README"
+        ],
+        "requestedChange": "Rework of the rejected 0.18 edition: concrete scientific example, real product evidence, purposeful backgrounds and diagrams.",
+        "actor": "claude-code",
+        "source": "Coordinator brief 2026-11-10: HUANDENG English introduction rework (claude-en)",
+        "recordedAt": "2026-11-10T11:57:05Z"
+      }
+    },
+    "2b804ca1-578d-4d8d-84ba-a05cf013de7c": {
+      "shortCode": "3ECM",
+      "path": "pages/3ECM.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S38",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Credit code foundations and list the gaps documented in the README.",
+        "keep": [
+          "GitHub mark identifies the OpenPPTD repository only",
+          "Only gaps documented in the project README"
+        ],
+        "requestedChange": "Rework of the rejected 0.18 edition: concrete scientific example, real product evidence, purposeful backgrounds and diagrams.",
+        "actor": "claude-code",
+        "source": "Coordinator brief 2026-11-10: HUANDENG English introduction rework (claude-en)",
+        "recordedAt": "2026-11-10T11:57:05Z"
+      }
+    },
+    "b0f0b421-10ec-43b8-9e6d-88058c1d8fd3": {
+      "shortCode": "AUBX",
+      "path": "pages/AUBX.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S39",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Show how AI clients reach the shared writer, as a labelled concept diagram.",
+        "keep": [
+          "Official client marks from assets/brand, unaltered",
+          "Describe ChatGPT only as connecting to the local Editor"
+        ],
+        "requestedChange": "Rework of the rejected 0.18 edition: concrete scientific example, real product evidence, purposeful backgrounds and diagrams.",
+        "actor": "claude-code",
+        "source": "Coordinator brief 2026-11-10: HUANDENG English introduction rework (claude-en)",
+        "recordedAt": "2026-11-10T11:57:05Z"
+      }
+    },
+    "520e4e5e-eb41-49de-ae52-945e85096600": {
+      "shortCode": "JZ7U",
+      "path": "pages/JZ7U.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S40"
+    },
+    "417e1fea-9180-4574-acc4-493eb6282b04": {
+      "shortCode": "7NHP",
+      "path": "pages/7NHP.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S41"
+    }
+  },
+  "project": {
+    "schemaVersion": 1,
+    "mainStory": {
+      "purpose": "Introduce HUANDENG through the real product and one real scientific slide (PDB 1BNA), for people who make scientific presentations.",
+      "audience": "Researchers who make and revise scientific presentations, and people who may use or contribute to HUANDENG",
+      "takeaway": "Keep one editable project, build each talk from it by reference, record what each slide must keep, and let people and agents change it through one reviewable writer."
+    },
+    "sections": [
+      {
+        "id": "sec-intro",
+        "title": "Introduction",
+        "story": {
+          "purpose": "Name the problem of drifting copies and show the real Editor.",
+          "audience": "Researchers who make and revise scientific presentations, and people who may use or contribute to HUANDENG",
+          "takeaway": "HUANDENG keeps one editable project that people and agents both work on."
+        },
+        "pageIds": [
+          "7d1954c5-ca5b-4eaa-a391-7b18431f6385",
+          "99bf9e70-3522-4aa6-a1bf-6ce870f9142d",
+          "49f1db15-b783-4a1b-8cff-815d4b4116e0"
+        ],
+        "startPageId": "7d1954c5-ca5b-4eaa-a391-7b18431f6385"
+      },
+      {
+        "id": "sec-example",
+        "title": "A worked example",
+        "story": {
+          "purpose": "Follow one real scientific slide (PDB 1BNA distances) through Story, a requested change and its review.",
+          "audience": "Researchers who make and revise scientific presentations, and people who may use or contribute to HUANDENG",
+          "takeaway": "A measured figure stays data; every change is previewed, applied through one writer and reviewable."
+        },
+        "pageIds": [
+          "2022f6b4-ddd7-49f2-9864-1e41298e12bb",
+          "e25cbd3a-6a20-4bc8-959f-eb3e1bcabefa",
+          "71d560b6-4ead-4477-a3c8-0bad5c755d0d",
+          "56c5f2a9-5146-41a3-8785-d78d8e94efa6",
+          "9ad205fe-9d24-47b7-8adb-721f66b64e8a"
+        ],
+        "startPageId": "2022f6b4-ddd7-49f2-9864-1e41298e12bb"
+      },
+      {
+        "id": "sec-reuse",
+        "title": "One source, many talks",
+        "story": {
+          "purpose": "Explain Main Slides vs Presentations, stable Slide ID vs Position, and reading the argument.",
+          "audience": "Researchers who make and revise scientific presentations, and people who may use or contribute to HUANDENG",
+          "takeaway": "Slides are reused by reference and keep a permanent identity."
+        },
+        "pageIds": [
+          "6763c852-4a02-49f1-9ed7-78cfdc8f204e",
+          "050336e7-3878-4a2b-8727-2c4545dc1e47",
+          "ce9e73d9-a17e-4e2d-8b80-4ed6e8332fd9"
+        ],
+        "startPageId": "6763c852-4a02-49f1-9ed7-78cfdc8f204e"
+      },
+      {
+        "id": "sec-delivery",
+        "title": "Versions and delivery",
+        "story": {
+          "purpose": "Show named versions with single-slide restore, Design check, presenting and export formats.",
+          "audience": "Researchers who make and revise scientific presentations, and people who may use or contribute to HUANDENG",
+          "takeaway": "Milestones are portable; delivery is the project plus static PDF/PPTX."
+        },
+        "pageIds": [
+          "d47c2f73-4d43-429f-bc48-a9bed8dc99d4",
+          "3e42c654-67cb-4f39-8096-d8c0c3151d48",
+          "3143e3cb-2278-4256-839a-24af78d9f6bc"
+        ],
+        "startPageId": "d47c2f73-4d43-429f-bc48-a9bed8dc99d4"
+      },
+      {
+        "id": "sec-contribute",
+        "title": "Connect and contribute",
+        "story": {
+          "purpose": "Show how AI clients connect, what HUANDENG builds on, its gaps and how to start.",
+          "audience": "Researchers who make and revise scientific presentations, and people who may use or contribute to HUANDENG",
+          "takeaway": "Agents use the same reviewable writer; the gaps are concrete places to help."
+        },
+        "pageIds": [
+          "8704c48f-dc7b-41aa-95ae-7830550be331",
+          "b0f0b421-10ec-43b8-9e6d-88058c1d8fd3",
+          "2b804ca1-578d-4d8d-84ba-a05cf013de7c",
+          "9056e773-a44a-449a-8d49-900cf487bac8"
+        ],
+        "startPageId": "8704c48f-dc7b-41aa-95ae-7830550be331"
+      }
+    ],
+    "presentations": [
+      {
+        "id": "pres-full",
+        "title": "HUANDENG introduction (full, about 20 minutes)",
+        "story": {
+          "purpose": "Complete English introduction for researchers, built around one worked scientific slide.",
+          "audience": "Researchers who make and revise scientific presentations, and people who may use or contribute to HUANDENG",
+          "takeaway": "One editable project, talks built by reference, Story beside every slide, one reviewable writer for people and agents."
+        },
+        "items": [
+          {
+            "id": "full-01",
+            "kind": "page",
+            "pageId": "7d1954c5-ca5b-4eaa-a391-7b18431f6385"
+          },
+          {
+            "id": "full-02",
+            "kind": "page",
+            "pageId": "99bf9e70-3522-4aa6-a1bf-6ce870f9142d"
+          },
+          {
+            "id": "full-03",
+            "kind": "page",
+            "pageId": "49f1db15-b783-4a1b-8cff-815d4b4116e0"
+          },
+          {
+            "id": "full-04",
+            "kind": "page",
+            "pageId": "2022f6b4-ddd7-49f2-9864-1e41298e12bb"
+          },
+          {
+            "id": "full-05",
+            "kind": "page",
+            "pageId": "e25cbd3a-6a20-4bc8-959f-eb3e1bcabefa"
+          },
+          {
+            "id": "full-06",
+            "kind": "page",
+            "pageId": "71d560b6-4ead-4477-a3c8-0bad5c755d0d"
+          },
+          {
+            "id": "full-07",
+            "kind": "page",
+            "pageId": "56c5f2a9-5146-41a3-8785-d78d8e94efa6"
+          },
+          {
+            "id": "full-08",
+            "kind": "page",
+            "pageId": "9ad205fe-9d24-47b7-8adb-721f66b64e8a"
+          },
+          {
+            "id": "full-09",
+            "kind": "page",
+            "pageId": "6763c852-4a02-49f1-9ed7-78cfdc8f204e"
+          },
+          {
+            "id": "full-10",
+            "kind": "page",
+            "pageId": "050336e7-3878-4a2b-8727-2c4545dc1e47"
+          },
+          {
+            "id": "full-11",
+            "kind": "page",
+            "pageId": "ce9e73d9-a17e-4e2d-8b80-4ed6e8332fd9"
+          },
+          {
+            "id": "full-12",
+            "kind": "page",
+            "pageId": "d47c2f73-4d43-429f-bc48-a9bed8dc99d4"
+          },
+          {
+            "id": "full-13",
+            "kind": "page",
+            "pageId": "3e42c654-67cb-4f39-8096-d8c0c3151d48"
+          },
+          {
+            "id": "full-14",
+            "kind": "page",
+            "pageId": "3143e3cb-2278-4256-839a-24af78d9f6bc"
+          },
+          {
+            "id": "full-15",
+            "kind": "page",
+            "pageId": "8704c48f-dc7b-41aa-95ae-7830550be331"
+          },
+          {
+            "id": "full-16",
+            "kind": "page",
+            "pageId": "b0f0b421-10ec-43b8-9e6d-88058c1d8fd3"
+          },
+          {
+            "id": "full-17",
+            "kind": "page",
+            "pageId": "2b804ca1-578d-4d8d-84ba-a05cf013de7c"
+          },
+          {
+            "id": "full-18",
+            "kind": "page",
+            "pageId": "9056e773-a44a-449a-8d49-900cf487bac8"
+          }
+        ]
+      }
+    ]
+  }
+}

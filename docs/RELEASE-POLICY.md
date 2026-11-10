@@ -18,3 +18,5 @@ The GitHub repository tracks EDITOR SOURCE and VERSION MILESTONES, not every sli
 Initial milestone: HUANDENG Editor v0.2.0 (Electron desktop, PPTD pages, per-page history, project tree, agent-maintained Story). The editor milestone tag is not an npm package version.
 
 The repository starts PRIVATE. Consider public visibility only after a licensing and source audit.
+
+A user-authorized plugin/example-only milestone uses a plugin-vX.Y.Z tag, records its narrower scope, and leaves the Editor version/tag unchanged. Example review candidates retain their author-acceptance status independently of release packaging.

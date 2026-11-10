@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "completedAt": "2026-11-10T12:42:12.309309+00:00",
+  "native_authored": true,
+  "native_completed": false,
+  "coordinator_metadata_completion": true,
+  "scope": [
+    "Full Presentation: current native Main order, 20 references",
+    "Lab Presentation: native saved literal order, 9 references"
+  ],
+  "pageContentChanges": 0,
+  "allPageFiles": 41,
+  "allPageHashesEqualBeforeAfter": true,
+  "mainManifestHashEqualBeforeAfter": true,
+  "pageHashes": {
+    "pages/2DC4.page": "f46ad048e3212823d3b6b58d1edc4af561c6efb99a4bfaf8d0d31caeaca9b1bb",
+    "pages/2SD8.page": "ed154b2450a8fce65acf36ed9c5c236a205f1c44e02224c223551350ac68881f",
+    "pages/3ECM.page": "1474578c0045873ae78728a424ad224d7bd5aafe718abceffe54c738e9cc3394",
+    "pages/495F.page": "ead692f1b8b53daeb9989b66b3970835feeb4f69528f3afbd75f5e81af2e5724",
+    "pages/4V98.page": "e7a5889d3af8c2ff4e8d0adb2cc64aaf3a5d6452c95dc4d15462ffc3ff67364e",
+    "pages/4ZXH.page": "3c54a1d07e6fc5467e3393b0f51559328553bf0e28914f04abe334d3157ecdc3",
+    "pages/6FNH.page": "91d5a75001cf671f1b1357ce1587d17052d7287f9e8900117877010b8df1749b",
+    "pages/6SXG.page": "3fb8ef6f1915ceecc49a81c0b73c62ad52131646bfc5678bf76e3b2f83f0aa3c",
+    "pages/73AG.page": "4756f61b6f2ea58b4f738558b93e380cffb613a8dfa3663f921c98fc25e9429c",
+    "pages/7NHP.page": "480dea62986ab407ad674f15f12f3149e6b76a12b38d87e5ebedd72aef160bbd",
+    "pages/87VG.page": "50fce32b1aecab59351e787b0548bcc1841975ae60f832b1e2eae841311f7b5b",
+    "pages/AUBX.page": "9e72c9c4843b5e4c245990f8d9a970cd40b5a14288da224184fcb21f98e1a804",
+    "pages/AVNM.page": "8c060fb30061141078ca0e5a6da2c3f205350289884bb3d3149e99b0986b12f8",
+    "pages/AZJC.page": "d623f6854c2c9c2ffb9b6422c570e5003e663774335a2af9d8e4c89dab05632b",
+    "pages/B487.page": "7abc2a17d1db6e5af624e756fb74ea986efebc26c915d84552c42d4ad6aa3ccc",
+    "pages/DKSN.page": "1e82f3eef23535cacea1d1b278b9776b242fca8ae7757c03fd8b5f72bf26a488",
+    "pages/EEGK.page": "ff218349ef015c8b6755b8c70038b47fbb0fbc73fabb42eadbda1605f5088c22",
+    "pages/EMSZ.page": "f80cdc62a802e9249d58a18cdf12093f681008bee5eae3b088bff53e687cb8a1",
+    "pages/initial.page": "d7a1284435ff793c11286e96e6bc8d1b22a21aa60659c1c167172f66b4f57362",
+    "pages/JZ7U.page": "2d2668338e09c978a160c1f5aef41569a69941801006b51de18676a635389b58",
+    "pages/KM5E.page": "90862d94e8f314e8cd906d4b1a77135045b03f72e5c2554ed69cd6800dcb12b2",
+    "pages/MEMH.page": "a13754e5b9079da6788979534635e685d1431b1e7f0f1da7cf7d1113defeb983",
+    "pages/NQGU.page": "ca16e319d0f97b041d12079b9cbc243ce303e119101d0bf413faad8c83d1821f",
+    "pages/Q3YS.page": "3ba355dbe44eaec1c48b6d45fcfb5d1ffe23c841d805f49f5e74394e917f6e96",
+    "pages/QK69.page": "92de5e2c4d8838a9600c6fadc6c447f297e39df54e3111f505402b195bb4d3a7",
+    "pages/QMYQ.page": "8f5d043293fe0afc19e3c3ef2d4c5fa587a7d9165843d201efded544d1cac2a9",
+    "pages/RE8W.page": "07942024f6586ea2ddc54ce5a43a2ad47c565f66aa8976a4c26bbc9226234cc6",
+    "pages/RHDQ.page": "4829be14088e66a6b8aa200b5114ff9fc202d2d97075fbea61079cf1893c1a2c",
+    "pages/RQ64.page": "7571b80ef463153763459f28f2b61be1bf8a627304b055bb08910a6902cee002",
+    "pages/SHBY.page": "876bbae9e1fa03def7d4d3edb35ad1a20ac0ee334a7d62684835ca3d9094ad2a",
+    "pages/SMGE.page": "72081d3bfc1be68b21e5ff34be8a244940d828496483771d5c536f442695b099",
+    "pages/SQNG.page": "a6fbf59d6ffee266c57c6f151c2e538e66ece8dabd4b549927d0468c2877eed0",
+    "pages/SY94.page": "b6fdfb28525619c5c03226b4d8d64c2269d49e742c41b70a0aef7a409ea1fdfd",
+    "pages/TXNA.page": "6121e0ba4066be220a9cf6233085cdedbede0596e8a6afd3c05e41b354595327",
+    "pages/V2SV.page": "bd28d92fc7b348641fc5b68ca265ddab6414b7ed7a1c2817add16dbaf34dd8e8",
+    "pages/WAJX.page": "06a9ae42a663b3f5d35453cbdb0d97589afde3dc247cd895342bcc930ff231aa",
+    "pages/WC3D.page": "6b6d3fed9af41422a956f25b75f178a77548ef4ad20f6094fe3a54b8a5a456b1",
+    "pages/XPFU.page": "44ce56b654890c254ae3334cb7327516001c9870431af777fa1c442933496ba1",
+    "pages/YPNR.page": "528cf8cca5aa33e504fc94aa0d8c21bd40b0a74b6a0299b1c92cb1af8657000d",
+    "pages/ZJ69.page": "3e546618d07c86d578080024db1682d481cc252980b3ba11b8b663662cad24d8",
+    "pages/ZYC6.page": "f42ddc980a72cee358afca3fe3bd0f8ef4661f121ac1c0d3c48392933e67c1f0"
+  },
+  "mainStoryPreserved": true,
+  "sectionDefinitionsAndStoryPreserved": true,
+  "runtimeDerivedSectionMembershipReconciled": [
+    {
+      "sectionId": "sec-reuse",
+      "addedExistingMainPages": [
+        "520e4e5e-eb41-49de-ae52-945e85096600"
+      ]
+    },
+    {
+      "sectionId": "sec-contribute",
+      "addedExistingMainPages": [
+        "417e1fea-9180-4574-acc4-493eb6282b04"
+      ]
+    }
+  ],
+  "existing18OccurrenceIdsPreserved": true,
+  "notesInvented": false,
+  "namedVersionInvented": false,
+  "unfulfilled": [
+    "Four shorter occurrence notes: targets/text unspecified in saved native plan",
+    "Completion named version: target/name unspecified in saved native plan"
+  ],
+  "requestId": "785b5505-4a3b-416f-9c6b-4b50b2b1efcd",
+  "previewHash": "sha256:b1540cccdbf3a215c06c6e4e5aa0f12475edeb8ffedd92641db02ea38d56157a",
+  "operationId": "e4d9263b-07ea-42f5-b151-fbd874f11ab7",
+  "metadataRevision": "sha256:f86aea6c91d391a3dc464d7cd6c9b99f36f08d61e8d69d4f1828a690e07963f1",
+  "presentations": [
+    {
+      "id": "pres-full",
+      "title": "HUANDENG introduction (full, about 20 minutes)",
+      "items": 20
+    },
+    {
+      "id": "pres-lab",
+      "title": "Lab-meeting version",
+      "items": 9
+    }
+  ]
+}

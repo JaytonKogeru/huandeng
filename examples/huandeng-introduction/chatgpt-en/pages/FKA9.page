@@ -1,0 +1,228 @@
+pageType: content
+background:
+  type: solid
+  color: "#F7F5EF"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 44
+      - 35
+      - 870
+      - 67
+    role: title
+    content:
+      text: Keep working in the Editor
+      fontFamily: Arial
+      fontSize: 29
+      color: "#263C34"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: editor-working
+    elementType: image
+    src: "media/imported/ab6277d08c06c42c127313ec07ec45440703eb5616e575deedf93a8e7b4ee7d6.png"
+    sourceName: "editor-native-chart.png"
+    alt: "editor-native-chart.png"
+    bounds:
+      - 44
+      - 124
+      - 631
+      - 379
+    fit:
+      mode: contain
+    crop:
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+  - elementId: ui-icon-0
+    elementType: icon
+    iconName: fas:object-group
+    bounds:
+      - 710
+      - 151
+      - 23
+      - 23
+    fill:
+      type: solid
+      color: "#356F68"
+  - elementId: ui-label-0
+    elementType: text
+    bounds:
+      - 748
+      - 150
+      - 166
+      - 29
+    content:
+      text: Canvas
+      fontFamily: Arial
+      fontSize: 20
+      color: "#263C34"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: ui-copy-0
+    elementType: text
+    bounds:
+      - 710
+      - 191
+      - 205
+      - 62
+    content:
+      text: Select and refine objects directly.
+      fontFamily: Arial
+      fontSize: 16
+      color: "#66756B"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: ui-icon-1
+    elementType: icon
+    iconName: fas:image
+    bounds:
+      - 710
+      - 263
+      - 23
+      - 23
+    fill:
+      type: solid
+      color: "#356F68"
+  - elementId: ui-label-1
+    elementType: text
+    bounds:
+      - 748
+      - 262
+      - 166
+      - 29
+    content:
+      text: Assets
+      fontFamily: Arial
+      fontSize: 20
+      color: "#263C34"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: ui-copy-1
+    elementType: text
+    bounds:
+      - 710
+      - 303
+      - 205
+      - 62
+    content:
+      text: Keep using the original source image.
+      fontFamily: Arial
+      fontSize: 16
+      color: "#66756B"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: ui-icon-2
+    elementType: icon
+    iconName: fas:note-sticky
+    bounds:
+      - 710
+      - 375
+      - 23
+      - 23
+    fill:
+      type: solid
+      color: "#356F68"
+  - elementId: ui-label-2
+    elementType: text
+    bounds:
+      - 748
+      - 374
+      - 166
+      - 29
+    content:
+      text: Notes
+      fontFamily: Arial
+      fontSize: 20
+      color: "#263C34"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: ui-copy-2
+    elementType: text
+    bounds:
+      - 710
+      - 415
+      - 205
+      - 62
+    content:
+      text: Keep the speaking detail beside the evidence.
+      fontFamily: Arial
+      fontSize: 16
+      color: "#66756B"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: brand-small
+    elementType: image
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    alt: huandeng.png
+    bounds:
+      - 44
+      - 510
+      - 17
+      - 17
+    fit:
+      mode: contain
+    crop:
+      left: 0.18
+      right: 0.18
+      top: 0.14
+      bottom: 0.14
+  - elementId: foot
+    elementType: text
+    bounds:
+      - 69
+      - 513
+      - 130
+      - 17
+    content:
+      text: HUANDENG
+      fontFamily: Arial
+      fontSize: 10
+      color: "#66756B"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: position
+    elementType: text
+    bounds:
+      - 884
+      - 512
+      - 30
+      - 18
+    content:
+      text: ""
+      fontFamily: Arial
+      fontSize: 10
+      color: "#66756B"
+      bold: false
+      align:
+        - right
+        - top
+      lineHeight: 1.3
+      field: main-position
+notes: This is the actual Editor, with both interface and slide content matching this edition. People can select images, charts and text directly, then inspect an agent’s changes in the same workspace. This overview explains the working environment; the scientific detail is shown at full scale on the example page.

@@ -1,0 +1,233 @@
+pageType: content
+background:
+  type: solid
+  color: "#F4F3ED"
+notes: 用一个具体改动说明差异：同一页只改了标题与说明两个文本对象，其他对象、Story、讲稿和位置都不动。两张图是真实产品示例的修改前与修改后，避免把“AI 修改”说成整页重做。
+elements:
+  - elementId: change-kicker
+    elementType: text
+    bounds:
+      - 48
+      - 42
+      - 300
+      - 18
+    content:
+      text: 修改 / 03
+      fontSize: 9.5
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#7D8A80"
+      letterSpacing: 1.2
+      align:
+        - left
+        - top
+  - elementId: change-title
+    elementType: text
+    role: title
+    bounds:
+      - 48
+      - 66
+      - 660
+      - 40
+    content:
+      text: 改一处，而不是改一遍
+      fontSize: 27
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#17221C"
+      lineHeight: 1.3
+      align:
+        - left
+        - top
+  - elementId: change-lead
+    elementType: text
+    bounds:
+      - 48
+      - 114
+      - 660
+      - 28
+    content:
+      text: 同一个项目里改标题与说明；其他页面、对象和讲稿保持原位。
+      fontSize: 14.8
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#425048"
+      align:
+        - left
+        - top
+  - elementId: change-before-label
+    elementType: text
+    bounds:
+      - 48
+      - 154
+      - 200
+      - 18
+    content:
+      text: 修改前
+      fontSize: 9.6
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#7D8A80"
+      letterSpacing: 0.8
+      align:
+        - left
+        - top
+  - elementId: change-after-label
+    elementType: text
+    bounds:
+      - 492
+      - 154
+      - 200
+      - 18
+    content:
+      text: 修改后
+      fontSize: 9.6
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#536656"
+      letterSpacing: 0.8
+      align:
+        - left
+        - top
+  - elementId: change-before-panel
+    elementType: shape
+    bounds:
+      - 48
+      - 180
+      - 414
+      - 239
+    shapeName: rect
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      color: "#D4DBD2"
+      width: 0.8
+      style: solid
+  - elementId: change-before
+    elementType: image
+    bounds:
+      - 54
+      - 186
+      - 402
+      - 227
+    src: media/imported/fdcacc35c15b7a7b76d70ef9f713c605c20a7e8ca450703b6343ac8bc722bd3e.png
+    sourceName: zh-CN-native-edit-before-4x.png
+    fit:
+      mode: contain
+  - elementId: change-after-panel
+    elementType: shape
+    bounds:
+      - 492
+      - 180
+      - 414
+      - 239
+    shapeName: rect
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      color: "#C8D4C7"
+      width: 0.8
+      style: solid
+  - elementId: change-after
+    elementType: image
+    bounds:
+      - 498
+      - 186
+      - 402
+      - 227
+    src: media/imported/1590b6d7b420e2502709c533628c4fc0a0ef2278c8b6798d1f6fa8272f9059fc.png
+    sourceName: zh-CN-native-edit-after-4x.png
+    fit:
+      mode: contain
+  - elementId: change-before-cap
+    elementType: text
+    bounds:
+      - 48
+      - 424
+      - 402
+      - 36
+    content:
+      text: 标题与说明被改写；页面、对象和版式保持原位。
+      fontSize: 9.4
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#66756A"
+      lineHeight: 1.45
+      align:
+        - left
+        - top
+  - elementId: change-after-cap
+    elementType: text
+    bounds:
+      - 492
+      - 424
+      - 402
+      - 36
+    content:
+      text: 标题更直接；Story 的目的与保留项仍在。
+      fontSize: 9.4
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#536656"
+      lineHeight: 1.45
+      align:
+        - left
+        - top
+  - elementId: change-rule
+    elementType: line
+    bounds:
+      - 48
+      - 468
+      - 860
+      - 1
+    viewBox:
+      - 860
+      - 1
+    points: 0,0.5 860,0.5
+    border:
+      color: "#D4DBD2"
+      width: 0.7
+      style: solid
+  - elementId: change-diff
+    elementType: text
+    bounds:
+      - 48
+      - 478
+      - 860
+      - 30
+    content:
+      text: 变更字段：content.text · title / lead　｜　其余对象、Story、讲稿与位置未动。
+      fontSize: 9.8
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#2B3830"
+      align:
+        - left
+        - top
+  - elementId: change-source
+    elementType: text
+    bounds:
+      - 48
+      - 512
+      - 860
+      - 16
+    content:
+      text: 真实界面：同一页的修改前 / 修改后，HUANDENG 0.18 公开产品示例。
+      fontSize: 8.2
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#7D8A80"
+      align:
+        - left
+        - top

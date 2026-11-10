@@ -1,0 +1,193 @@
+pageType: content
+background:
+  type: solid
+  color: "#E4ECE6"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 44
+      - 35
+      - 870
+      - 67
+    role: title
+    content:
+      text: Refine the wording. Keep the evidence.
+      fontFamily: Arial
+      fontSize: 29
+      color: "#263C34"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: request
+    elementType: text
+    bounds:
+      - 44
+      - 111
+      - 870
+      - 49
+    content:
+      text: “Tighten the title and explanation; keep the figure, values, axes and source.”
+      fontFamily: Arial
+      fontSize: 18
+      color: "#263C34"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: before-label
+    elementType: text
+    bounds:
+      - 44
+      - 174
+      - 412
+      - 26
+    content:
+      text: Before
+      fontFamily: Arial
+      fontSize: 16
+      color: "#66756B"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: after-label
+    elementType: text
+    bounds:
+      - 502
+      - 174
+      - 412
+      - 26
+    content:
+      text: After
+      fontFamily: Arial
+      fontSize: 16
+      color: "#356F68"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: before
+    elementType: image
+    src: media/imported/3141de6201ac50bc936475a058db4be21189dc88121aafe007f80b72ec5e7ef6.png
+    sourceName: evidence-before.png
+    alt: evidence-before.png
+    bounds:
+      - 44
+      - 209
+      - 412
+      - 232
+    fit:
+      mode: contain
+    crop:
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+  - elementId: after
+    elementType: image
+    src: media/imported/0b4a19dfbcd31a26ee1008f81b6aec774bca6b3cda224eff3a5dee8fd2d9e046.png
+    sourceName: evidence-after.png
+    alt: evidence-after.png
+    bounds:
+      - 502
+      - 209
+      - 412
+      - 232
+    fit:
+      mode: contain
+    crop:
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+  - elementId: preserved
+    elementType: icon
+    iconName: fas:check
+    bounds:
+      - 45
+      - 469
+      - 20
+      - 20
+    fill:
+      type: solid
+      color: "#356F68"
+  - elementId: scope-proof
+    elementType: text
+    bounds:
+      - 77
+      - 466
+      - 834
+      - 43
+    content:
+      text: Two text values changed · All 12 values and the original figure preserved
+      fontFamily: Arial
+      fontSize: 17
+      color: "#356F68"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: brand-small
+    elementType: image
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    alt: huandeng.png
+    bounds:
+      - 44
+      - 510
+      - 17
+      - 17
+    fit:
+      mode: contain
+    crop:
+      left: 0.18
+      right: 0.18
+      top: 0.14
+      bottom: 0.14
+  - elementId: foot
+    elementType: text
+    bounds:
+      - 69
+      - 513
+      - 130
+      - 17
+    content:
+      text: HUANDENG
+      fontFamily: Arial
+      fontSize: 10
+      color: "#66756B"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: position
+    elementType: text
+    bounds:
+      - 884
+      - 512
+      - 30
+      - 18
+    content:
+      text: ""
+      fontFamily: Arial
+      fontSize: 10
+      color: "#66756B"
+      bold: false
+      align:
+        - right
+        - top
+      lineHeight: 1.3
+      field: main-position
+notes: |-
+  A real edit in a controlled public demonstration. Both views use the same page at the same scale. Only the title and context text changed. The image source/crop/bounds, all chart data, axes, units, labels, source and other pages were preserved by a deep-equality check.
+
+  Operation: d2d18509-c72c-48e7-81cc-4251486a522e
+  See evidence/wording-edit.json.
