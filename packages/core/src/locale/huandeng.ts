@@ -2,6 +2,7 @@ import { format } from './format';
 import { arrangementChinese, arrangementEnglish } from './huandeng-arrangement-messages';
 import { authoringChinese, authoringEnglish } from './huandeng-authoring-messages';
 import { connectionChinese } from './huandeng-connection-messages';
+import { designChinese } from './huandeng-design-messages';
 import { editorChinese, editorEnglish } from './huandeng-messages';
 import { routeChinese, routeEnglish } from './huandeng-route-messages';
 import { systemChinese } from './huandeng-system-messages';
@@ -195,6 +196,7 @@ export const englishMessages = {
   ...authoringEnglish,
 };
 export const chineseMessages = {
+  ...designChinese,
   ...connectionChinese,
   ...reviewChinese,
   ...systemChinese,

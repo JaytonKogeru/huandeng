@@ -1,4 +1,5 @@
 import { execFileSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 
@@ -35,15 +36,36 @@ await inspect(application);
 const core = path.join(application, 'node_modules', '@open-slide', 'core');
 const corePackage = JSON.parse(await fs.readFile(path.join(core, 'package.json'), 'utf8'));
 await fs.access(path.join(core, 'dist', 'editor', 'huandeng.html'));
+await fs.access(path.join(core, 'src', 'pptd', 'project-initialize.cjs'));
 const plugin = path.join(application, 'plugins', 'huandeng');
 for (const file of [
   'skills/huandeng-story/SKILL.md',
+  'skills/huandeng-story/references/production-design.md',
+  'skills/huandeng-story/references/asset-evidence.md',
+  'content-manifest.json',
   'scripts/configure.mjs',
   'scripts/doctor.mjs',
   'scripts/launch-mcp.mjs',
   'scripts/runtime.mjs',
 ])
   await fs.access(path.join(plugin, file));
+const pluginManifest = JSON.parse(await fs.readFile(path.join(plugin, 'plugin.json'), 'utf8'));
+const contentManifest = JSON.parse(
+  await fs.readFile(path.join(plugin, 'content-manifest.json'), 'utf8'),
+);
+if (contentManifest.schemaVersion !== 1 || contentManifest.version !== pluginManifest.version)
+  throw new Error('The packaged plugin content manifest has a different version.');
+for (const [relative, expectedHash] of Object.entries(contentManifest.files)) {
+  if (relative.split(/[\\/]/).includes('..') || path.isAbsolute(relative))
+    throw new Error('The packaged plugin manifest contains an invalid path.');
+  const hash = createHash('sha256')
+    .update(await fs.readFile(path.join(plugin, relative)))
+    .digest('hex');
+  if (hash !== expectedHash) throw new Error(`The packaged plugin file differs: ${relative}`);
+}
+const storySkillSha256 = contentManifest.files['skills/huandeng-story/SKILL.md'];
+if (!/^[a-f0-9]{64}$/.test(storySkillSha256 ?? ''))
+  throw new Error('The packaged plugin manifest omits its Story skill hash.');
 const output = execFileSync(process.execPath, [path.join(core, 'huandeng.js'), '--help'], {
   cwd: application,
   encoding: 'utf8',
@@ -52,5 +74,5 @@ const output = execFileSync(process.execPath, [path.join(core, 'huandeng.js'), '
 if (!output.includes('HUANDENG Editor'))
   throw new Error('The packaged document service did not start.');
 process.stdout.write(
-  `${JSON.stringify({ portable: true, nodeLinker: 'hoisted', coreVersion: corePackage.version, directories, relativeExecutableLinks })}\n`,
+  `${JSON.stringify({ portable: true, nodeLinker: 'hoisted', coreVersion: corePackage.version, pluginVersion: pluginManifest.version, storySkillSha256, directories, relativeExecutableLinks })}\n`,
 );

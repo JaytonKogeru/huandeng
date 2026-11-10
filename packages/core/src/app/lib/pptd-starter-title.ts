@@ -22,7 +22,7 @@ export function createStarterTitle(
       ...element.content,
       text: t('Type a title'),
       fontFamily,
-      fontSize: 36 * scale,
+      fontSize: 28 * scale,
       color: '#222222',
       bold: true,
       align: ['left', 'middle'],

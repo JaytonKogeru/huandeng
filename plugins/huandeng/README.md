@@ -104,7 +104,7 @@ huandeng --entry /path/deck.pptd render PAGE_UUID
 
 ## Tool surface
 
-The v0.14 bridge advertises 21 tools. Legacy `huanding_*` names and `huandeng_frame_record` still dispatch without being advertised twice.
+The v0.18 bridge advertises 22 tools. Legacy `huanding_*` names and `huandeng_frame_record` still dispatch without being advertised twice.
 
 | Tool | Purpose |
 | --- | --- |
@@ -114,6 +114,7 @@ The v0.14 bridge advertises 21 tools. Legacy `huanding_*` names and `huandeng_fr
 | `huandeng_story_briefing` | Four Story layers, exact occurrence, neighbors, used-by, assets and revisions |
 | `huandeng_presentation_read` | Complete resolved sequence, repeated pages, notes and pins |
 | `huandeng_assets_list` | Search project assets, source names, usages and missing references |
+| `huandeng_design_audit` | Read advisory type sizes, backgrounds, requested dividers and image sampling; never edits or approves |
 | `huandeng_page_read` | Current Main content, object IDs and revision |
 | `huandeng_selection_read` | Human selection and presentation/occurrence context |
 | `huandeng_story_record` | Compatibility tool for a separate agent intent record |
@@ -159,3 +160,13 @@ The authoring skill now requires inspection of approved reference pages, concret
 Editor v0.14 connects Layout preview → shared-writer save → Activity receipt → visual Before/After review → current-page/object navigation. The Layout task uses project image thumbnails and a full composed preview. The review dialog uses the actual page renderer and distinguishes live and pinned usage. Current-asset and fallback-theme limitations remain visible; unavailable history is never replaced with the current page.
 
 Clients can include up to 20 exact `operationIds` in a progress report. These are explicit claims resolved against this Project's journal, not timestamp associations. See `skills/huandeng-story/references/connected-review.md` for the complete workflow and the separate levels of setup, protocol, save, structure, rendering, export and human approval.
+
+## Deliberate design workflow (0.18)
+
+Start a new empty Project with `huandeng init /absolute/new-directory --title 'Project title'`, then open its returned entry in HUANDENG. Existing targets are refused. Desktop and CLI initialization share the same folder layout and AGENTS.md source.
+
+Read the Project policy, audit its actual references and assets, specify the story, frame one representative content page and one requested title-only divider, then implement the rest through preview/apply. Use the production-design and asset-evidence references for language-specific typography, ordinary-page backgrounds and real UI captures.
+
+Use `huandeng --entry /project/deck.pptd quality --language zh-CN --background '#FFFFFF' --require-section-dividers` for a collection-wide measured review. Add `--presentation ID` for the exact presentation, including repeated/pinned appearances. `--max-title` and `--max-body` override 960-normalized advisory thresholds. A quality report neither edits slides nor declares aesthetic acceptance. For batch visual review, render each affected stable page or exact occurrence and inspect a contact sheet plus full-size pages; retain the saved operation IDs.
+
+Packages include content-manifest.json with SHA-256 hashes. Doctor reports the loaded plugin version, Story skill hash, package correspondence, runtime Story-guide hash and design-audit availability. Native and account transports differ; their shared Story/design reference bytes must agree at release. Installed-cache edits are not a release workflow.

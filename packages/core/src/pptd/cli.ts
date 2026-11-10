@@ -5,6 +5,7 @@ import { agentGuide } from './agent-guide.ts';
 import { connectClient } from './client.ts';
 import { launchHuandeng } from './launch.ts';
 import { startMcp } from './mcp.ts';
+import { initializeProject } from './project-initialize.cjs';
 import { openPptdStore } from './store.ts';
 import type { TransactionRequest } from './types.ts';
 
@@ -24,6 +25,18 @@ function queryPath(endpoint: string, options: Record<string, unknown>): string {
   return `${endpoint}${params.size ? `?${params}` : ''}`;
 }
 
+program
+  .command('init <directory>')
+  .description('Create a complete new Project folder; refuses any existing target')
+  .option('--title <title>', 'Project title; defaults to the new directory name')
+  .action(async (directory, options) => {
+    const project = await initializeProject(directory, { title: options.title });
+    print({
+      ...project,
+      created: true,
+      next: 'Open the returned entry in HUANDENG before editing through the shared writer.',
+    });
+  });
 program
   .command('open <entry>')
   .description('Open a PPTD document in a local visual editor')
@@ -153,6 +166,35 @@ program
           pageId,
           presentationId: options.presentation,
           occurrenceId: options.occurrence,
+        }),
+      ),
+    ),
+  );
+program
+  .command('quality')
+  .description('Read advisory typography, background, divider and image-resolution checks')
+  .option('--language <language>', 'en or zh-CN; otherwise inferred from authored text')
+  .option('--presentation <id>', 'audit one exact presentation sequence, including pins')
+  .option(
+    '--require-section-dividers',
+    'check that each non-front-matter Section starts with a title-only page',
+  )
+  .option(
+    '--background <color>',
+    'expected page background; explicit intent exceptions are retained',
+  )
+  .option('--max-title <size>', 'title upper bound at 960-wide scale')
+  .option('--max-body <size>', 'body upper bound at 960-wide scale')
+  .action(async (options) =>
+    print(
+      await (await client()).request(
+        queryPath('/design-audit', {
+          language: options.language,
+          presentationId: options.presentation,
+          requireSectionDividers: options.requireSectionDividers,
+          expectedBackground: options.background,
+          maxTitleSize: options.maxTitle === undefined ? undefined : Number(options.maxTitle),
+          maxBodySize: options.maxBody === undefined ? undefined : Number(options.maxBody),
         }),
       ),
     ),

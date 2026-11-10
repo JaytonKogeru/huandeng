@@ -38,6 +38,20 @@ describe('HUANDENG MCP project and Story context', () => {
     });
     expect(request).toHaveBeenLastCalledWith('/reviews/saved-op?pageId=stable-page');
   });
+  it('routes design audit as a read-only call with explicit optional rules', async () => {
+    const { client, request } = await connection();
+    await client.callTool({
+      name: 'huandeng_design_audit',
+      arguments: {
+        language: 'zh-CN',
+        requireSectionDividers: true,
+        expectedBackground: '#FFFFFF',
+      },
+    });
+    expect(request).toHaveBeenLastCalledWith(
+      '/design-audit?language=zh-CN&requireSectionDividers=true&expectedBackground=%23FFFFFF',
+    );
+  });
   it('exposes explicit task activity without turning it into a slide mutation', async () => {
     const { client, request } = await connection();
     await client.callTool({ name: 'huandeng_activity_read', arguments: {} });
@@ -58,11 +72,12 @@ describe('HUANDENG MCP project and Story context', () => {
   it('advertises the three context tools as read-only alongside the compatible writer tools', async () => {
     const { client } = await connection();
     const { tools } = await client.listTools();
-    expect(tools).toHaveLength(21);
+    expect(tools).toHaveLength(22);
     for (const name of [
       'huandeng_story_briefing',
       'huandeng_presentation_read',
       'huandeng_assets_list',
+      'huandeng_design_audit',
       'huandeng_export_status',
       'huandeng_preview',
     ]) {

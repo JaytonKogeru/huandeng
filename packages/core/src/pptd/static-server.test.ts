@@ -187,6 +187,23 @@ describe('HUANDENG production document server', () => {
       details: { occurrences: expect.any(Array) },
     });
     const before = await fs.readFile(path.join(project, '.huandeng/project.json'), 'utf8');
+    const audit = await read(
+      '/design-audit?presentationId=talk&language=en&requireSectionDividers=true',
+    );
+    expect(audit).toMatchObject({
+      deckId: session.deckId,
+      presentationId: 'talk',
+      pageCount: 2,
+      visualInspectionRequired: true,
+    });
+    expect(audit.pages.map((page: { occurrenceId: string }) => page.occurrenceId)).toEqual([
+      `talk:opening:${first}`,
+      `talk:return:${first}`,
+    ]);
+    expect(
+      (await fetch(`${server.url}/__pptd/design-audit?requireSectionDividers=maybe`)).status,
+    ).toBe(400);
+    expect((await fetch(`${server.url}/__pptd/design-audit?maxTitleSize=-1`)).status).toBe(400);
     const assets = await read('/assets?filter=used&limit=1');
     expect(assets).toMatchObject({
       scope: 'current-main',

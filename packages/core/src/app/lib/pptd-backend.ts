@@ -1,5 +1,6 @@
 import type { ActivityEvent, ActivitySnapshot } from '../../pptd/activity';
 import type { AssetLibraryOptions, AssetLibraryResult } from '../../pptd/asset-library';
+import type { DesignAuditOptions, DesignAuditReport } from '../../pptd/design-audit';
 import type { ProjectFilePreview } from '../../pptd/project-file-preview';
 import type { StoryBriefing, StoryBriefingOptions } from '../../pptd/project-insights';
 import type {
@@ -105,6 +106,10 @@ export class PptdBackend implements PptdTransport {
 
   activity(signal?: AbortSignal): Promise<ActivitySnapshot> {
     return this.request('/activity', undefined, signal);
+  }
+
+  designAudit(options: DesignAuditOptions = {}, signal?: AbortSignal): Promise<DesignAuditReport> {
+    return this.request(queryPath('/design-audit', options), undefined, signal);
   }
 
   subscribeActivity(

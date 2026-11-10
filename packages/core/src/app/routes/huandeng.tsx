@@ -38,6 +38,7 @@ import { AssetLibrary } from '@/components/pptd/asset-library';
 import { AuthoringWorkspace } from '@/components/pptd/authoring-workspace';
 import { CreateSectionDialog } from '@/components/pptd/create-section-dialog';
 import { type DesignIntentDraft, DesignIntentPanel } from '@/components/pptd/design-intent-panel';
+import { DesignQualityDialog } from '@/components/pptd/design-quality-dialog';
 import { ExportDialog } from '@/components/pptd/export-dialog';
 import { ProjectFilePreviewPanel } from '@/components/pptd/file-preview-panel';
 import { PptdInspector } from '@/components/pptd/inspector';
@@ -140,6 +141,7 @@ import {
   resolvePresentation,
   resolveProjectSections,
 } from '../../pptd/project-model';
+import { createSectionTitlePage } from '../../pptd/section-title';
 import {
   copiedTimelineTracks,
   knownTimeline,
@@ -153,6 +155,7 @@ export function HuandengEditor() {
   const snapping = useSnappingPreference();
   const [agentConnectionOpen, setAgentConnectionOpen] = useState(false);
   const [activityOpen, setActivityOpen] = useState(false);
+  const [designQualityOpen, setDesignQualityOpen] = useState(false);
   const [sectionEditorRequest, setSectionEditorRequest] = useState<{
     key: number;
     sectionId?: string;
@@ -2278,6 +2281,42 @@ export function HuandengEditor() {
               sectionsTarget={sectionsTarget}
               onManageSections={() => openSections()}
               onCloseSections={() => switchWorkspaceView('edit')}
+              onInsertSectionTitle={(sectionId) =>
+                run(async () => {
+                  if (readonly || busy || projectDirty || historyBusy)
+                    throw new Error('Save or discard the Section draft first.');
+                  await client.flushAll();
+                  const current = client.getState().snapshot;
+                  if (!current) throw new Error('The Project is no longer available.');
+                  const section = resolveProjectSections(current).find(
+                    (item) => item.section.id === sectionId,
+                  );
+                  const index = current.pages.findIndex(
+                    (item) => item.pageId === section?.section.startPageId,
+                  );
+                  if (!section || index < 0)
+                    throw new Error('The Section first Slide is unavailable.');
+                  const result = await client.apply(
+                    [
+                      {
+                        op: 'page.add',
+                        afterPageId: current.pages[index - 1]?.pageId ?? null,
+                        sectionId,
+                        page: createSectionTitlePage(
+                          current.size,
+                          section.section.title,
+                          `title-${crypto.randomUUID()}`,
+                          typeof theme.textStyles?.title?.fontFamily === 'string'
+                            ? theme.textStyles.title.fontFamily
+                            : 'Arial',
+                        ),
+                      },
+                    ],
+                    { manifest: current.manifestRevision, metadata: current.metadataRevision },
+                  );
+                  if (result.createdPages[0]) selectMainPage(result.createdPages[0].pageId);
+                })
+              }
               onDirtyChange={setProjectDirty}
               loadVersions={(id) => backend.pageHistory(id)}
               disabled={!snapshot.writable || busy}
@@ -2524,16 +2563,27 @@ export function HuandengEditor() {
             data-hd-slide-document
             data-hd-current-workspace-view={workspaceView}
           >
-            <WorkspaceViewSwitcher
-              value={workspaceView}
-              blocked={historyBusy || workspaceViewSwitchBlocked(auxiliaryDirty, textComposing)}
-              allowSections={
-                !historyBusy && !textComposing && !storyDirty && !chartDirty && !timelineDirty
-              }
-              onChange={(value) =>
-                value === 'sections' ? openSections() : switchWorkspaceView(value)
-              }
-            />
+            <div className="flex shrink-0 items-center border-b border-border bg-background">
+              <WorkspaceViewSwitcher
+                value={workspaceView}
+                blocked={historyBusy || workspaceViewSwitchBlocked(auxiliaryDirty, textComposing)}
+                allowSections={
+                  !historyBusy && !textComposing && !storyDirty && !chartDirty && !timelineDirty
+                }
+                onChange={(value) =>
+                  value === 'sections' ? openSections() : switchWorkspaceView(value)
+                }
+              />
+              <Button
+                size="xs"
+                variant="ghost"
+                className="ml-auto mr-3 shrink-0"
+                data-hd-design-quality
+                onClick={() => setDesignQualityOpen(true)}
+              >
+                {t('Design check')}
+              </Button>
+            </div>
             {editingWorkspace && (
               <div
                 className="hd-editor-toolbar flex h-11 shrink-0 items-center gap-1 border-b border-border bg-background px-3"
@@ -3218,29 +3268,14 @@ export function HuandengEditor() {
                     op: 'page.add',
                     afterPageId: sectionBoundary.afterPageId,
                     section,
-                    page: {
-                      pageType: 'section',
-                      elements: [
-                        {
-                          elementId: `e-${crypto.randomUUID()}`,
-                          elementType: 'text',
-                          bounds: [
-                            current.size[0] * 0.07,
-                            current.size[1] * 0.38,
-                            current.size[0] * 0.86,
-                            current.size[1] * 0.24,
-                          ],
-                          content: {
-                            text: definition.title,
-                            fontSize: 32,
-                            color: '#000000',
-                            fontFamily: 'Arial',
-                            align: ['left', 'middle'],
-                          },
-                        },
-                      ],
-                      notes: '',
-                    },
+                    page: createSectionTitlePage(
+                      current.size,
+                      definition.title,
+                      `title-${crypto.randomUUID()}`,
+                      typeof theme.textStyles?.title?.fontFamily === 'string'
+                        ? theme.textStyles.title.fontFamily
+                        : 'Arial',
+                    ),
                   },
                 ]
               : [
@@ -3257,6 +3292,13 @@ export function HuandengEditor() {
           }}
         />
       )}
+      <DesignQualityDialog
+        open={designQualityOpen}
+        onOpenChange={setDesignQualityOpen}
+        backend={backend}
+        snapshot={snapshot}
+        onSelectPage={selectMainPage}
+      />
       <WorkspaceSettings
         open={settingsOpen}
         onOpenChange={setSettingsOpen}

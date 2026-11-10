@@ -17,7 +17,7 @@ afterEach(async () => {
   );
 });
 async function fixture() {
-  const root = await projectTestDirectory('huandeng-operation-review-');
+  const root = await projectTestDirectory('huandeng-operation-review-', ['.']);
   directories.push(root);
   const entryPath = path.join(root, 'deck.pptd');
   await fs.writeFile(

@@ -1,4 +1,7 @@
+import { createHash } from 'node:crypto';
+import fs from 'node:fs/promises';
 import { createRequire } from 'node:module';
+import path from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { options, reportError, resolveRuntime } from './runtime.mjs';
 
@@ -18,7 +21,30 @@ try {
     const { StdioClientTransport } = await import(
       pathToFileURL(require.resolve('@modelcontextprotocol/sdk/client/stdio.js')).href
     );
-    client = new Client({ name: 'HUANDENG Plugin doctor', version: '0.17.0' });
+    const manifest = JSON.parse(
+      await fs.readFile(path.join(runtime.pluginRoot, 'plugin.json'), 'utf8'),
+    );
+    const skillPath = 'skills/huandeng-story/SKILL.md';
+    const skillSha256 = createHash('sha256')
+      .update(await fs.readFile(path.join(runtime.pluginRoot, skillPath)))
+      .digest('hex');
+    let packageIntegrity = 'source-checkout';
+    try {
+      const packaged = JSON.parse(
+        await fs.readFile(path.join(runtime.pluginRoot, 'content-manifest.json'), 'utf8'),
+      );
+      packageIntegrity =
+        packaged.version === manifest.version && packaged.files?.[skillPath] === skillSha256
+          ? 'skill-matches-package'
+          : 'mismatch';
+    } catch (error) {
+      if (error.code !== 'ENOENT') throw error;
+    }
+    if (packageIntegrity === 'mismatch')
+      throw new Error(
+        'The loaded Story skill differs from its package manifest. Rebuild/reinstall the intended plugin release.',
+      );
+    client = new Client({ name: 'HUANDENG Plugin doctor', version: manifest.version });
     const transport = new StdioClientTransport({
       command: runtime.node,
       args: [runtime.launcher],
@@ -59,6 +85,11 @@ try {
       `${JSON.stringify(
         {
           ok: true,
+          plugin: { version: manifest.version, skillSha256, packageIntegrity },
+          storyGuideSha256: createHash('sha256')
+            .update(guide.contents.map((item) => item.text ?? '').join('\n'))
+            .digest('hex'),
+          designAuditSupported: tools.tools.some((tool) => tool.name === 'huandeng_design_audit'),
           connection: 'local-stdio-mcp',
           protocolVerified: true,
           modelTaskVerified: false,

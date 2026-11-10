@@ -70,16 +70,22 @@ export async function readProjectAsset(root: string, source: string): Promise<Bu
 }
 
 export function assetSources(value: unknown, found = new Set<string>()): Set<string> {
-  if (
-    typeof value === 'string' &&
-    (/^(?:\.?\/)?(?:media|assets)\//.test(value.replace(/\\/g, '/')) ||
-      value.startsWith('data:image/'))
-  ) {
-    found.add(value);
-  } else if (Array.isArray(value)) {
+  if (Array.isArray(value)) {
     for (const item of value) assetSources(item, found);
   } else if (value && typeof value === 'object') {
-    for (const item of Object.values(value)) assetSources(item, found);
+    for (const [key, item] of Object.entries(value)) {
+      // Authored text can name project folders. Only source fields load asset bytes.
+      if (
+        (key === 'src' || key === 'url') &&
+        typeof item === 'string' &&
+        (/^(?:\.?\/)?(?:media|assets)\//.test(item.replace(/\\/g, '/')) ||
+          item.startsWith('data:image/'))
+      ) {
+        found.add(item);
+      } else {
+        assetSources(item, found);
+      }
+    }
   }
   return found;
 }

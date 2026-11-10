@@ -2,7 +2,7 @@ import fs, { type FileHandle } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { readProjectAsset } from './export-environment';
+import { assetSources, readProjectAsset } from './export-environment';
 
 const directories: string[] = [];
 const opened: FileHandle[] = [];
@@ -33,6 +33,36 @@ function observeOpen(prepare?: (handle: FileHandle) => void) {
     return handle;
   });
 }
+
+describe('semantic export asset references', () => {
+  it('collects source fields while leaving authored folder names and examples as text', () => {
+    const embedded = 'data:image/png;base64,AQ==';
+    const value = {
+      title: 'media/title.png',
+      notes: 'assets/notes.svg',
+      elements: [
+        {
+          type: 'table',
+          rows: [
+            ['pages/', 'media/', '.huandeng/', 'Exports/', 'media/example.png'].map((text) => ({
+              text,
+            })),
+          ],
+        },
+        { type: 'image', src: 'media/actual.png', sourceName: 'media/original-name.png' },
+        { type: 'image', content: { src: embedded } },
+      ],
+      background: { src: './media/background.png' },
+      theme: { fonts: [{ url: 'assets/face.woff2' }] },
+    };
+    expect([...assetSources(value)]).toEqual([
+      'media/actual.png',
+      embedded,
+      './media/background.png',
+      'assets/face.woff2',
+    ]);
+  });
+});
 
 describe('bounded project asset reads', () => {
   it.each([Buffer.from([0, 255, 41, 0, 62]), Buffer.alloc(0)])(

@@ -62,7 +62,7 @@ import {
   validateTransactionRequest,
 } from './proposal';
 import { applyRecipe, markRecipeElementOverride, removeRecipeSlot } from './recipes';
-import { sectionWithInsertedCover } from './section-actions';
+import { sectionWithInsertedCover, sectionWithInsertedTitle } from './section-actions';
 import { knownTimeline, removeTimelineTargets } from './timeline-operations';
 import {
   type AuthorReviewContext,
@@ -1785,8 +1785,21 @@ export class PptdStore {
         case 'page.duplicate': {
           check('manifest');
           check('metadata');
+          if (operation.op === 'page.add' && operation.sectionId !== undefined) {
+            if (
+              operation.section ||
+              typeof operation.sectionId !== 'string' ||
+              !operation.sectionId
+            )
+              throw new PptdError(
+                'INVALID_REQUEST',
+                'Choose a new Section or an existing Section ID.',
+              );
+          }
           const beforeSection =
-            operation.op === 'page.add' && operation.section ? this.makeSnapshot(docs) : undefined;
+            operation.op === 'page.add' && (operation.section || operation.sectionId)
+              ? this.makeSnapshot(docs)
+              : undefined;
           let source: string;
           let originalId: string | undefined;
           let duplicatedIdentity: ProjectMetadata['slides'][string] | undefined;
@@ -1836,6 +1849,13 @@ export class PptdStore {
             path: created.path,
             data: parsePage(source).value,
           });
+          if (operation.op === 'page.add' && operation.page?.pageType === 'section') {
+            const elements = operation.page.elements;
+            if (elements.length === 1 && elements[0].elementType === 'text')
+              docs.metadata.slides[created.pageId].elementRoles = {
+                [elements[0].elementId]: 'title',
+              };
+          }
           touchedPages.add(created.pageId);
           const after =
             operation.op === 'page.duplicate' && operation.afterPageId === undefined
@@ -1848,6 +1868,13 @@ export class PptdStore {
               this.makeSnapshot(docs),
               created.pageId,
               operation.section,
+            );
+          if (operation.op === 'page.add' && operation.sectionId && beforeSection)
+            docs.metadata.project = sectionWithInsertedTitle(
+              beforeSection,
+              this.makeSnapshot(docs),
+              created.pageId,
+              operation.sectionId,
             );
           break;
         }

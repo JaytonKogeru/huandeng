@@ -39,6 +39,49 @@ async function setup(ttlMs?: number) {
 }
 
 describe('export job ownership and retention', () => {
+  it('exports authored folder names without treating table text as an asset', async () => {
+    const { root, workspace } = await setup();
+    await fs.mkdir(path.join(root, 'media'));
+    const bytes = Buffer.from('actual-image-bytes');
+    await fs.writeFile(path.join(root, 'media/actual.png'), bytes);
+    const source = deckFixture([
+      {
+        elementId: 'folder-table',
+        elementType: 'table',
+        bounds: [56, 108, 848, 318],
+        rows: ['pages/', 'media/', '.huandeng/', 'Exports/'].map((text) => [
+          { text },
+          { text: 'Project folder' },
+        ]),
+      },
+      {
+        elementId: 'actual-image',
+        elementType: 'image',
+        bounds: [0, 0, 20, 20],
+        src: 'media/actual.png',
+      },
+    ]);
+    const before = JSON.stringify(source);
+    const job = await workspace.begin(source, 'png');
+    await workspace.freezeAssets(job);
+    expect([...job.assets.keys()]).toEqual(['media/actual.png']);
+    expect(await fs.readFile(job.assets.get('media/actual.png') as string)).toEqual(bytes);
+    expect(JSON.stringify(source)).toBe(before);
+    await workspace.finish(job);
+    const invalid = await workspace.begin(
+      deckFixture([
+        {
+          elementId: 'directory-image',
+          elementType: 'image',
+          bounds: [0, 0, 20, 20],
+          src: 'media/',
+        },
+      ]),
+      'png',
+    );
+    await expect(workspace.freezeAssets(invalid)).rejects.toThrow();
+    await workspace.finish(invalid, new Error('Invalid image source'));
+  });
   it('keeps a published result successful during locked-file cleanup and retries after unlocking', async () => {
     const { workspace } = await setup();
     const job = await workspace.begin(deckFixture(), 'mp4');

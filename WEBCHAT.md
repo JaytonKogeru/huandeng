@@ -1,6 +1,14 @@
 # HUANDENG Editor
 
-## Accepted Editor 0.13.0 workspace runtime
+## Active Editor 0.18.0 integration candidate
+
+The current worktree is `editor/v0.18-design-workflow`, based on `376e6b4`. Read `docs/HANDOFF-V018.md`, `SPEC-V018`, `DESIGN-V018`, `AUDIT-V018-WORKFLOW`, `FRAME-V018-WORKFLOW`, `VALIDATION-V018-WORKFLOW`, `VALIDATION-V018-UI` and `RELEASE-V018-WORKFLOW` before continuing. These records distinguish source tests, staged packages, native model trials, presentation review and installation/publication. Do not infer a released clean runtime from a dirty candidate package.
+
+The workflow now includes Frame. One Project-root AGENTS.md and one shared writer remain authoritative; `quality` / `huandeng_design_audit` are advisory read-only checks. `init` creates a new Project through the shared desktop initializer and refuses existing targets. `page.add.sectionId` can add a title-only first Slide to an existing Section without replacing Section identity or Story. Preserve real original assets and prior crops needed by operation history, use audience-language task captures, and serialize render/export per Project.
+
+Final source gates: 1,292 unit tests passed and one existing skip across 127 files, eight plugin tests, core TypeScript, Biome and production build. Shared Story skill SHA-256 is `f09f2bf2a49bfc62bc89e76fca53c5ef3d25ee08f810d51b6285d6160cdee990`. Product version is 0.18.0; core npm remains 2.3.1 with pending changesets. No npm or upstream release is authorized. Keep native Codex/Claude/DSH adapters while updating the existing account identity. The user-facing four-deck acceptance and installed/released identities are recorded in the final handoff, not implied by these source gates.
+
+## Historical accepted Editor 0.13.0 workspace runtime
 
 Clean runtime source: **`0a30f1e40b2b619bd04a9fac6cc63c30a0e84a70`**, build `2026-11-09T06:18:33.3911264Z`, Electron **38.7.2**. Client/account plugins are **0.13.0**. Read `docs/AUDIT-V013.md`, `SPEC-V013`, `IMPLEMENTATION-V013`, `VALIDATION-V013`, `RELEASE-V013`, `HANDOFF-V013`, `WORKSPACE-UX`, `POSITION-FIELDS` and `PPTX-PUBLISHING`. Runtime code is committed before packaging; the delivery-only commit records later evidence and documentation. Check the final handoff and actual origin refs before asserting installation, publication or tag state.
 

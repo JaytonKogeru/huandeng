@@ -20,4 +20,8 @@ On Windows, discover the running Editor with `Get-Process -Name 'HUANDENG Editor
 
 Use argument arrays where supported. If the workstation only exposes a shell command, quote each path for that shell; never concatenate user prose or JSON directly into executable shell syntax. Keep proposal JSON in a private Project working directory, then pass that file to `preview` / `apply`. Read UTF-8 explicitly when a PowerShell command reads text files. Keep returned process handles, epoch, request ID and actual exit status. Retrieve an uncertain result with the same receipt; do not repeat a mutation with a new ID.
 
+## Create a new Project
+
+After discovering the intended local runtime, run `node <huandeng.js> init <new-directory> --title <title>` (or the discovered Editor executable with `ELECTRON_RUN_AS_NODE=1`). It refuses an existing target, including an empty directory, and returns the canonical entry path. Open that returned entry in the Editor; CLI `open <entry> --port <available-loopback-port> --no-browser` is available for a local development runtime. Confirm context after connecting. All subsequent page changes use preview/apply, never direct source-file writes. `guide story`, `guide operations` and `init --help` work before opening a Project.
+
 The account plugin provides instructions and an existing app binding. Saving it to the account is distinct from a host installing/loading it; a CLI receipt is distinct from a completed or visually verified editing task.

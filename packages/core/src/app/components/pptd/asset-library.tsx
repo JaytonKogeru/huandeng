@@ -419,6 +419,15 @@ export function AssetLibrary({
                 : t('此文件暂不支持图片预览。')}
             </p>
           )}
+          {readyToInsert && dimensions && (
+            <p
+              className="mb-2 text-[11px] tabular-nums text-muted-foreground"
+              data-hd-asset-dimensions
+            >
+              {dimensions.width} × {dimensions.height}
+              {/\.svg$/i.test(selected.path) ? ' · SVG' : ' px'}
+            </p>
+          )}
           <details className="text-[11px] text-muted-foreground">
             <summary className="cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-ring/40">
               {t('文件位置')}

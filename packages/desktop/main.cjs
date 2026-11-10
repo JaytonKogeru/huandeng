@@ -855,8 +855,8 @@ async function createWindow() {
   const bounds = preferences.windowBounds ?? {};
   const chromeColors = () =>
     nativeTheme.shouldUseDarkColors
-      ? { color: '#171b19', symbolColor: '#e6ebe7' }
-      : { color: '#e9ecea', symbolColor: '#242826' };
+      ? { color: '#17191c', symbolColor: '#e8eaed' }
+      : { color: '#eceef0', symbolColor: '#252a2f' };
   window = new BrowserWindow({
     width: bounds.width ?? 1440,
     height: bounds.height ?? 920,

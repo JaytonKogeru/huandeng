@@ -1,9 +1,9 @@
 :root {
-  --shell-surface: light-dark(#e9ecea, #171b19);
-  --shell-content: light-dark(#242826, #e6ebe7);
-  --shell-selected: light-dark(#fcfcfb, #252b27);
-  --shell-hover: light-dark(#dde4df, #303a33);
-  --shell-border: light-dark(#d9e0da, #455047);
+  --shell-surface: light-dark(#eceef0, #17191c);
+  --shell-content: light-dark(#252a2f, #e8eaed);
+  --shell-selected: light-dark(#ffffff, #26292d);
+  --shell-hover: light-dark(#e1e4e7, #30343a);
+  --shell-border: light-dark(#dde1e5, #42474e);
   --shell-focus: light-dark(#3d7860, #91bda6);
   font:
     12px "Geist Variable",
@@ -94,7 +94,7 @@ svg {
   min-width: 115px;
   max-width: 260px;
   padding: 0 7px 0 12px;
-  border-radius: 8px 8px 0 0;
+  border-radius: 6px 6px 0 0;
   border: 1px solid transparent;
   border-bottom: 0;
   cursor: pointer;
@@ -106,7 +106,7 @@ svg {
   background: var(--shell-selected);
   border-color: var(--shell-border);
   font-weight: 600;
-  box-shadow: 0 -1px 3px #18271d08;
+  box-shadow: none;
 }
 .project-tab:focus-visible {
   outline: 2px solid var(--shell-focus);

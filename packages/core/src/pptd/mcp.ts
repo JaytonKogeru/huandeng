@@ -286,6 +286,20 @@ const tools: Tool[] = [
     annotations: read,
   },
   {
+    name: 'huandeng_design_audit',
+    description:
+      'Read advisory deck design measurements: normalized type sizes, background distribution, optional title-only Section starts and source-image sampling at 1920-wide delivery. Does not edit or approve slides. Inspect real renders after this check; honor truncation and unmeasured assets.',
+    inputSchema: objectSchema({
+      language: { type: 'string', enum: ['en', 'zh-CN'] },
+      presentationId: { type: 'string' },
+      requireSectionDividers: { type: 'boolean' },
+      expectedBackground: { type: 'string', maxLength: 100 },
+      maxTitleSize: { type: 'number', exclusiveMinimum: 0, maximum: 200 },
+      maxBodySize: { type: 'number', exclusiveMinimum: 0, maximum: 200 },
+    }),
+    annotations: read,
+  },
+  {
     name: 'huandeng_assets_list',
     description:
       'Search project media/assets and current Main-page usages, including original image names and missing file locations. Results are paginated; honor hasMore and truncated. Unreferenced means current Main only, not safe to delete. This tool does not change files.',
@@ -492,6 +506,9 @@ export function createMcpServer(client: HuandengClient) {
           result = await client.request(
             `/presentations/${encodeURIComponent(String(args.presentationId))}`,
           );
+          break;
+        case 'huandeng_design_audit':
+          result = await client.request(queryPath('/design-audit', args));
           break;
         case 'huandeng_assets_list':
           result = await client.request(queryPath('/assets', args));

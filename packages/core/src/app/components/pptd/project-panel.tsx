@@ -37,6 +37,7 @@ export interface ProjectPanelProps {
   sectionsTarget?: HTMLElement | null;
   onManageSections?: () => void;
   onCloseSections?: () => void;
+  onInsertSectionTitle?: (sectionId: string) => Promise<unknown>;
 }
 
 const fieldClass =
@@ -184,6 +185,7 @@ function ProjectPanelEditor({
   sectionsTarget,
   onManageSections,
   onCloseSections,
+  onInsertSectionTitle,
   disabled = false,
   persisted,
 }: ProjectPanelProps & { persisted: ProjectModel }) {
@@ -1103,6 +1105,12 @@ function ProjectPanelEditor({
                         });
                       }}
                       onSelectPage={onSelectPage}
+                      onInsertTitle={
+                        onInsertSectionTitle
+                          ? () => onInsertSectionTitle(selectedSection.section.id)
+                          : undefined
+                      }
+                      titleInsertionDisabled={dirty}
                     >
                       <details>
                         <summary className="cursor-pointer text-[11px] text-muted-foreground">

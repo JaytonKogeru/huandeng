@@ -132,3 +132,35 @@ export function sectionWithInsertedCover(
     definition,
   );
 }
+
+export function sectionWithInsertedTitle(
+  before: Pick<DeckSnapshot, 'pages' | 'metadata'>,
+  after: Pick<DeckSnapshot, 'pages' | 'metadata'>,
+  pageId: string,
+  sectionId: string,
+): ProjectModel {
+  const resolved = resolveProjectSections(before).find((item) => item.section.id === sectionId);
+  if (!resolved?.section.startPageId || !resolved.contiguous)
+    throw new PptdError(
+      'INVALID_REQUEST',
+      'Use first-Slide boundaries before inserting a Section title slide.',
+    );
+  const index = after.pages.findIndex((page) => page.pageId === pageId);
+  if (index < 0 || after.pages[index + 1]?.pageId !== resolved.section.startPageId)
+    throw new PptdError(
+      'INVALID_REQUEST',
+      'Insert the title slide immediately before the current first Slide of this Section.',
+    );
+  const project = readProjectModel(after.metadata);
+  const next = validateProjectModel({
+    ...project,
+    sections: project.sections.map((section) =>
+      section.id === sectionId
+        ? { ...section, startPageId: pageId, pageIds: [pageId, ...resolved.pageIds] }
+        : section,
+    ),
+  });
+  const issue = resolveProjectSections(after, next).flatMap((item) => item.diagnostics)[0];
+  if (issue) throw new PptdError('INVALID_REQUEST', issue.message);
+  return next;
+}

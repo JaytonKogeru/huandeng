@@ -253,6 +253,7 @@ export interface PageAddOperation {
   page?: PptdPage;
   afterPageId?: string | null;
   section?: { id: string; title: string; frontMatter?: boolean };
+  sectionId?: string;
 }
 
 export interface PageDuplicateOperation {

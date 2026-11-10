@@ -8,6 +8,8 @@ import { importImage } from '../../pptd/asset-import.ts';
 import { type AssetLibraryOptions, readAssetLibrary } from '../../pptd/asset-library.ts';
 import { AssetPreviewManager } from '../../pptd/asset-preview.ts';
 import { discoveryPath, runtimeRoot, type SessionDiscovery } from '../../pptd/client.ts';
+import type { DesignAuditOptions } from '../../pptd/design-audit.ts';
+import { readSlideDesignAudit } from '../../pptd/design-audit-assets.ts';
 import {
   checkpoint,
   recordCheckpoint,
@@ -272,6 +274,30 @@ export async function registerPptdRoutes(server: PptdRouteHost, _ctx?: ApiContex
       if (method === 'GET' && route === '/project-model') {
         await store.refreshExternal();
         return json(res, 200, readProjectModel(store.getSnapshot().metadata));
+      }
+      if (method === 'GET' && route === '/design-audit') {
+        let snapshot = await store.refreshExternal();
+        if (url.searchParams.has('presentationId')) {
+          snapshot = await presentationSnapshot(
+            snapshot,
+            url.searchParams.get('presentationId'),
+            (pageId, versionId) => store.readPageVersion(pageId, versionId),
+          );
+        }
+        const options: DesignAuditOptions = {};
+        if (url.searchParams.has('language'))
+          options.language = url.searchParams.get('language') as DesignAuditOptions['language'];
+        if (url.searchParams.has('expectedBackground'))
+          options.expectedBackground = url.searchParams.get('expectedBackground') ?? '';
+        for (const key of ['maxTitleSize', 'maxBodySize'] as const)
+          if (url.searchParams.has(key)) options[key] = Number(url.searchParams.get(key));
+        if (url.searchParams.has('requireSectionDividers')) {
+          const value = url.searchParams.get('requireSectionDividers');
+          if (value !== 'true' && value !== 'false')
+            throw new PptdError('INVALID_REQUEST', 'requireSectionDividers must be true or false.');
+          options.requireSectionDividers = value === 'true';
+        }
+        return json(res, 200, await readSlideDesignAudit(root, snapshot, options));
       }
       if (method === 'GET' && route === '/assets') {
         const snapshot = await store.refreshExternal();

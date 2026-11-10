@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { parseArgs } from 'node:util';
@@ -13,6 +14,8 @@ export const commonFiles = [
   'skills/huandeng-story/references/client-routing.md',
   'skills/huandeng-story/references/scientific-design.md',
   'skills/huandeng-story/references/connected-review.md',
+  'skills/huandeng-story/references/production-design.md',
+  'skills/huandeng-story/references/asset-evidence.md',
   'scripts/runtime.mjs',
   'scripts/discovery.mjs',
   'scripts/discover.mjs',
@@ -104,8 +107,19 @@ try {
       );
       files.push('.app.json', '.codex-plugin/plugin.json');
     }
+    const manifest = JSON.parse(await fs.readFile(path.join(destination, 'plugin.json'), 'utf8'));
+    const hashes = {};
+    for (const file of [...files].sort())
+      hashes[file] = createHash('sha256')
+        .update(await fs.readFile(path.join(destination, file)))
+        .digest('hex');
+    await fs.writeFile(
+      path.join(destination, 'content-manifest.json'),
+      `${JSON.stringify({ schemaVersion: 1, version: manifest.version, files: hashes }, null, 2)}\n`,
+    );
+    files.push('content-manifest.json');
     process.stdout.write(
-      `${JSON.stringify({ target: values.target, directory: destination, files: files.sort(), privateProjectFiles: 0 }, null, 2)}\n`,
+      `${JSON.stringify({ target: values.target, directory: destination, version: manifest.version, files: files.sort(), privateProjectFiles: 0 }, null, 2)}\n`,
     );
   }
 } catch (error) {

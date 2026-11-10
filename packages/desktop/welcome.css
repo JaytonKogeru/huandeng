@@ -3,12 +3,18 @@
   font-family:
     "Segoe UI", -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei UI",
     "Microsoft YaHei", sans-serif;
-  color: #242826;
-  background: #fcfcfb;
+  color: var(--foreground);
+  background: var(--background);
   font-synthesis: none;
-  --muted: #69716b;
-  --border: #dde2dd;
+  --foreground: #252a2f;
+  --background: #ffffff;
+  --sidebar: #f6f7f8;
+  --muted: #687078;
+  --border: #e1e4e7;
+  --hover: #eef0f2;
   --brand: #254d3c;
+  --brand-hover: #2d5c47;
+  --focus: #3d7860;
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
 }
 * {
@@ -31,7 +37,7 @@ button {
   flex-direction: column;
   align-items: stretch;
   padding: 40px 24px 28px;
-  background: #f2f4f0;
+  background: var(--sidebar);
   border-right: 1px solid var(--border);
 }
 .brand {
@@ -65,20 +71,22 @@ button {
   align-items: center;
   gap: 10px;
   min-height: 42px;
-  border: 1px solid #ced7cf;
+  border: 1px solid transparent;
   border-radius: 5px;
   padding: 0 11px;
-  background: #fafbf8;
-  color: #35443a;
+  background: transparent;
+  color: var(--foreground);
   font-size: 12px;
   text-align: left;
   cursor: pointer;
-  transition: transform 140ms var(--ease-out);
+  transition:
+    background-color 140ms var(--ease-out),
+    transform 140ms var(--ease-out);
 }
 .actions button.primary {
   border-color: var(--brand);
   background: var(--brand);
-  color: #fffdf1;
+  color: #ffffff;
 }
 .actions svg {
   width: 16px;
@@ -97,7 +105,7 @@ kbd {
   opacity: 0.65;
 }
 button:focus-visible {
-  outline: 2px solid #3d7860;
+  outline: 2px solid var(--focus);
   outline-offset: 3px;
 }
 button:disabled {
@@ -117,15 +125,11 @@ button:disabled {
   color: var(--muted);
 }
 .note-rule {
-  display: block;
-  width: 24px;
-  height: 2px;
-  margin-bottom: 16px;
-  background: #c9784b;
+  display: none;
 }
 .sidebar-note p {
   margin: 0 0 8px;
-  color: #45534a;
+  color: var(--foreground);
 }
 .sidebar-note > span:last-child {
   font-size: 10px;
@@ -141,7 +145,7 @@ button:disabled {
   margin-inline: auto;
   padding: 52px clamp(28px, 5vw, 72px) 24px;
   scrollbar-width: thin;
-  scrollbar-color: #ccd4cb transparent;
+  scrollbar-color: var(--border) transparent;
 }
 .page-heading {
   margin-bottom: 40px;
@@ -154,9 +158,9 @@ button:disabled {
 }
 h1 {
   margin: 0 0 12px;
-  font-size: 30px;
+  font-size: 28px;
   font-weight: 600;
-  letter-spacing: -0.6px;
+  letter-spacing: -0.4px;
 }
 .page-heading > p:last-child {
   margin: 0;
@@ -210,10 +214,10 @@ h2 {
   place-items: center;
   width: 36px;
   height: 40px;
-  border: 1px solid #dce3d9;
+  border: 1px solid var(--border);
   border-radius: 4px;
-  background: #f4f7f1;
-  color: #52705d;
+  background: var(--sidebar);
+  color: var(--muted);
 }
 .project-icon svg {
   width: 22px;
@@ -254,7 +258,7 @@ h2 {
   width: 14px;
   height: 14px;
   fill: none;
-  stroke: #738477;
+  stroke: var(--muted);
   stroke-linecap: round;
   stroke-linejoin: round;
   stroke-width: 1.5;
@@ -274,7 +278,7 @@ h2 {
   width: 48px;
   height: 48px;
   fill: none;
-  stroke: #738477;
+  stroke: var(--muted);
   stroke-width: 1.3;
   stroke-linecap: round;
   stroke-linejoin: round;
@@ -313,7 +317,7 @@ h2 {
   width: 12px;
   height: 12px;
   margin-top: 4px;
-  border: 1.5px solid #d3ded3;
+  border: 1.5px solid var(--border);
   border-top-color: var(--brand);
   border-radius: 50%;
   animation: loading 800ms linear infinite;
@@ -335,16 +339,16 @@ footer {
 }
 @media (hover: hover) and (pointer: fine) {
   .actions button:not(:disabled):hover {
-    background: #e8eee4;
-    border-color: #b8c6b9;
+    background: var(--hover);
+    border-color: var(--border);
   }
   .actions button.primary:not(:disabled):hover {
-    background: #2d5c47;
-    border-color: #2d5c47;
+    background: var(--brand-hover);
+    border-color: var(--brand-hover);
   }
   .project:not(:disabled):hover {
-    border-color: #e0e6dd;
-    background: #f1f4ee;
+    border-color: var(--border);
+    background: var(--sidebar);
   }
   .project:not(:disabled):hover .project-arrow {
     opacity: 1;
@@ -414,7 +418,7 @@ body[data-locale-ready="false"] .workspace {
 }
 .language-control select {
   min-width: 110px;
-  border: 1px solid #d6dad4;
+  border: 1px solid var(--border);
   border-radius: 5px;
   padding: 6px 8px;
   background: transparent;
@@ -422,6 +426,25 @@ body[data-locale-ready="false"] .workspace {
   font: inherit;
 }
 .language-control select:focus-visible {
-  outline: 2px solid #668374;
+  outline: 2px solid var(--focus);
   outline-offset: 2px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --foreground: #e8eaed;
+    --background: #26292d;
+    --sidebar: #1d2024;
+    --muted: #a3aab3;
+    --border: #42474e;
+    --hover: #30343a;
+    --focus: #91bda6;
+  }
+  .brand img {
+    filter: invert(1);
+  }
+  .status[data-state="error"] {
+    color: #ed9b88;
+  }
 }

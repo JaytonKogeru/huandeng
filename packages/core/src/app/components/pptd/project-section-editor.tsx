@@ -1,4 +1,4 @@
-import { Copy, Trash2 } from 'lucide-react';
+import { Copy, Plus, Trash2 } from 'lucide-react';
 import { type ReactNode, useEffect, useId, useState } from 'react';
 import { uiText as t, useHuandengLocale } from '@/lib/huandeng-locale';
 import { projectSlideTitle } from '@/lib/pptd-project-source';
@@ -22,6 +22,8 @@ export function ProjectSectionEditor({
   onSelectPage,
   children,
   showMembers = true,
+  onInsertTitle,
+  titleInsertionDisabled = false,
 }: {
   resolved: ResolvedProjectSection;
   snapshot: DeckSnapshot;
@@ -34,6 +36,8 @@ export function ProjectSectionEditor({
   onSelectPage: (pageId: string) => void;
   children?: ReactNode;
   showMembers?: boolean;
+  onInsertTitle?: () => Promise<unknown>;
+  titleInsertionDisabled?: boolean;
 }) {
   useHuandengLocale();
   const prefix = useId();
@@ -49,6 +53,7 @@ export function ProjectSectionEditor({
   const [start, setStart] = useState(initialStart);
   const [rangeError, setRangeError] = useState<string | null>(null);
   const [copyStatus, setCopyStatus] = useState('');
+  const [insertingTitle, setInsertingTitle] = useState(false);
   useEffect(() => {
     setStart(initialStart);
     setRangeError(null);
@@ -56,6 +61,10 @@ export function ProjectSectionEditor({
   const unchanged = section.startPageId === start;
   const legacyMembership = !section.startPageId && (Boolean(section.range) || pageIds.length > 0);
   const cover = pages.find((page) => page.pageId === start);
+  const hasTitleSlide =
+    cover?.data.elements.length === 1 &&
+    cover.data.elements[0].elementType === 'text' &&
+    cover.data.pageType === 'section';
   return (
     <section
       className="space-y-3 rounded-md border border-border bg-background p-2.5"
@@ -189,6 +198,42 @@ export function ProjectSectionEditor({
           'Includes this Slide and follows Main order until the next Section. The last Section continues to the end.',
         )}
       </p>
+      {onInsertTitle && (
+        <div className="space-y-2 border-t border-border pt-3" data-hd-section-title-action>
+          <p className="text-xs text-muted-foreground">
+            {t(
+              hasTitleSlide
+                ? 'This Section starts with a title slide.'
+                : 'Give this Section a title-only opening slide.',
+            )}
+          </p>
+          {!hasTitleSlide && (
+            <Button
+              size="xs"
+              variant="outline"
+              data-hd-insert-section-title={section.id}
+              disabled={
+                disabled || titleInsertionDisabled || insertingTitle || !section.startPageId
+              }
+              title={
+                titleInsertionDisabled ? t('Save or discard the Section draft first.') : undefined
+              }
+              onClick={() => {
+                setInsertingTitle(true);
+                setRangeError(null);
+                void onInsertTitle()
+                  .catch((error) =>
+                    setRangeError(error instanceof Error ? error.message : String(error)),
+                  )
+                  .finally(() => setInsertingTitle(false));
+              }}
+            >
+              <Plus />
+              {t(insertingTitle ? 'Adding title slide…' : 'Insert Section title slide')}
+            </Button>
+          )}
+        </div>
+      )}
       {legacyMembership && (
         <p
           className="rounded border border-amber-300/50 bg-amber-50/50 p-2 text-[11px] leading-relaxed text-amber-900 dark:bg-amber-950/20 dark:text-amber-100"
