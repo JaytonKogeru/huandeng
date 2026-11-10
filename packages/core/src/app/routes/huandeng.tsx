@@ -170,6 +170,10 @@ export function HuandengEditor() {
   const onHistoryBusyChange = useCallback((value: boolean) => {
     historyMutation.current = value;
     setHistoryBusy(value);
+    if (!value)
+      setUiError((error) =>
+        error === 'A page version operation is running. Wait before switching.' ? null : error,
+      );
   }, []);
   const [textComposing, setTextComposing] = useState(false);
   const timelinePageRef = useRef<PageSnapshot | null>(null);

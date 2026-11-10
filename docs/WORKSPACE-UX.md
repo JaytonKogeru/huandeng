@@ -1,5 +1,7 @@
 # Workspace UX and PowerPoint capability audit
 
+Current workspace contract: [v0.17 interface and flow](UI-WALKTHROUGH-V017.md). The historical audit below describes v0.13; its left-rail outline, modal managers, sorter gaps and Ctrl+W behavior are superseded. The six peer central workspaces preserve independent navigation; Ctrl+W cannot close Slides.
+
 Reviewed 9 November 2026 against the v0.13 candidate source. This document answers the workspace and product questions in requests 11–16. It records product decisions and source coverage; it is not a packaged-application acceptance report. New workspace behavior still requires the matching release's desktop validation. No private presentation content, names, paths, or screenshots are included.
 
 ## Product direction

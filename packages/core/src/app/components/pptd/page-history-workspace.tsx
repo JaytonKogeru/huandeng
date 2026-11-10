@@ -68,7 +68,10 @@ export function PageHistoryWorkspace({
   onRecord: (label: string) => Promise<unknown>;
 }) {
   useHuandengLocale();
-  const [versions, setVersions] = useState<PageVersionSummary[]>([]);
+  const [historyList, setHistoryList] = useState<{
+    view: 'checkpoints' | 'operations';
+    items: PageVersionSummary[];
+  }>({ view: 'checkpoints', items: [] });
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [preview, setPreview] = useState<PageVersionSnapshot | null>(null);
   const [loading, setLoading] = useState(false);
@@ -81,6 +84,7 @@ export function PageHistoryWorkspace({
   const [recording, setRecording] = useState(false);
   const mutationActive = useRef(false);
   const [refresh, setRefresh] = useState(0);
+  const versions = historyList.view === view ? historyList.items : [];
   const selectedIndex = versions.findIndex((item) => item.versionId === selectedId);
   const selected = versions[selectedIndex];
 
@@ -109,7 +113,7 @@ export function PageHistoryWorkspace({
       .pageHistory(page.pageId, view)
       .then((items) => {
         if (!active) return;
-        setVersions(items);
+        setHistoryList({ view, items });
         setSelectedId((current) =>
           items.some((item) => item.versionId === current)
             ? current
@@ -177,7 +181,7 @@ export function PageHistoryWorkspace({
     try {
       await onRestore(selectedId);
       const items = await backend.pageHistory(page.pageId, view);
-      setVersions(items);
+      setHistoryList({ view, items });
       setSelectedId(items[0]?.versionId ?? null);
       setMessage(
         `已恢复 ${page.shortCode ?? page.metadata.label ?? '这页'} 的工作稿。需要保留本轮成果时，再记录一个命名版本。`,

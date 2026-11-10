@@ -9,6 +9,8 @@ interface HarnessWindow {
   composing: boolean[];
   releasePreview: () => void;
   failRecord: () => void;
+  holdCheckpoints: boolean;
+  failHistory: () => void;
 }
 
 const coreRoot = fileURLToPath(new URL('../../../../', import.meta.url)).replace(/\\/g, '/');
@@ -37,9 +39,12 @@ document.querySelector('#sections').onclick=()=> root.render(React.createElement
  sectionEditorRequest:{key:1,sectionId:'alpha'}}));
 const versions = ['a','b','c'].map(versionId=>({versionId,kind:'checkpoint',summary:versionId,
  actor:'test',createdAt:'2026-11-10T00:00:00Z',pageRevision:'sha256:'+versionId,current:false}));
-const backend={pageHistory:async()=>versions,pageVersion: async (pageId,versionId)=>{
+const backend={pageHistory:async(_pageId,view)=>{
+ if(view==='checkpoints' && window.holdCheckpoints) await new Promise((resolve,reject)=>{window.failHistory=()=>reject(new Error('Synthetic history failure'));});
+ return view==='operations' ? [{...versions[0],versionId:'operation',kind:'edit',summary:'element.patch'}] : versions;
+},pageVersion: async (pageId,versionId)=>{
  if(versionId==='b') await new Promise(resolve=>{window.releasePreview=resolve});
- return {version:versions.find(v=>v.versionId===versionId),page:pages[0],size:[960,540],assets:'archived'};
+ return {version:versions.find(v=>v.versionId===versionId) ?? {...versions[0],versionId},page:pages[0],size:[960,540],assets:'archived'};
 }};
 const historyRoot=createRoot(central);
 document.querySelector('#history').onclick=()=> historyRoot.render(React.createElement(PageHistoryWorkspace,{
@@ -94,6 +99,31 @@ async function eventually(check: () => Promise<boolean>) {
 }
 
 describe('central management workspaces', () => {
+  it('never labels old operation rows as named versions when the new filter is delayed or fails', async () => {
+    const page = await browser.newPage();
+    try {
+      await page.goto(baseUrl);
+      await page.locator('#history').click();
+      await eventually(async () => (await page.locator('[data-hd-version]').count()) === 3);
+      await page.getByRole('button', { name: 'Operation history', exact: true }).click();
+      await eventually(
+        async () => (await page.locator('[data-hd-version="operation"]').count()) === 1,
+      );
+      await page.evaluate(() => {
+        (window as unknown as HarnessWindow).holdCheckpoints = true;
+      });
+      await page.getByRole('button', { name: 'Saved versions', exact: true }).click();
+      expect(await page.locator('[data-hd-version]').count()).toBe(0);
+      await page.evaluate(() => (window as unknown as HarnessWindow).failHistory());
+      await eventually(async () =>
+        (await page.locator('[role="alert"]').innerText()).includes('Synthetic history failure'),
+      );
+      expect(await page.locator('[data-hd-version]').count()).toBe(0);
+      expect(await page.locator('[data-hd-restore-version]').isDisabled()).toBe(true);
+    } finally {
+      await page.close();
+    }
+  });
   it('renders the shared Project draft in the central target while its sidebar is hidden', async () => {
     const page = await browser.newPage();
     page.setDefaultTimeout(2000);

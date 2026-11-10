@@ -333,6 +333,12 @@ try {
       );
       await capture('history-restored-en');
       await eventually(() => page.locator('[data-hd-workspace-view="edit"]').isEnabled());
+      assert.equal(
+        await page
+          .getByText('A page version operation is running. Wait before switching.', { exact: true })
+          .count(),
+        0,
+      );
       await view('edit');
     },
   );
