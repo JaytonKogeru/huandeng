@@ -12,195 +12,7 @@ elements:
       - 67
     role: title
     content:
-      text: 图、表与公式
-      fontFamily: Microsoft YaHei
-      fontSize: 28
-      color: "#263C34"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-  - elementId: chart-label
-    elementType: text
-    bounds:
-      - 44
-      - 125
-      - 510
-      - 28
-    content:
-      text: 12 个配对位置
-      fontFamily: Microsoft YaHei
-      fontSize: 18
-      color: "#356F68"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-  - elementId: native-chart
-    elementType: chart
-    bounds:
-      - 22
-      - 167
-      - 548
-      - 265
-    fontFamily: Microsoft YaHei
-    fontSize: 13
-    colors:
-      - "#356F68"
-      - "#A64F38"
-    legend: false
-    dataLabels: false
-    data:
-      {"cols":["position","distance"],"rows":[["1",10.7121],["2",10.7665],["3",10.5802],["4",10.3531],["5",10.4416],["6",10.4606],["7",10.2329],["8",10.4912],["9",10.5912],["10",10.4362],["11",10.8052],["12",10.8877]]}
-    series:
-        [{"type":"line","name":"C1′–C1′","encode":{"x":"position","y":"distance"},"color":"#356F68"}]
-    xAxis:
-      title: 配对位置
-    yAxis:
-      title: C1′–C1′ (Å)
-      min: 10
-      max: 11.2
-  - elementId: table-label
-    elementType: text
-    bounds:
-      - 605
-      - 125
-      - 309
-      - 45
-    content:
-      text: 选取五个位置查看原值
-      fontFamily: Microsoft YaHei
-      fontSize: 17
-      color: "#356F68"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-  - elementId: native-table
-    elementType: table
-    bounds:
-      - 605
-      - 179
-      - 309
-      - 238
-    columnWidths:
-      - 0.22
-      - 0.28
-      - 0.5
-    style:
-      cellStyle:
-        fontFamily: Microsoft YaHei
-        fontSize: 15
-        color: "#263C34"
-        border:
-          color: "#C7D3CB"
-          width: 0.6
-        padding: 9
-      firstRowStyle:
-        fill: "#E4ECE6"
-        bold: false
-    rows:
-      - - text: 位置
-          bold: true
-          align:
-            - left
-            - middle
-        - text: 配对
-          bold: true
-          align:
-            - left
-            - middle
-        - text: C1′–C1′ / Å
-          bold: true
-          align:
-            - left
-            - middle
-      - - text: "1"
-          align:
-            - left
-            - middle
-        - text: C-G
-          align:
-            - left
-            - middle
-        - text: "10.7121"
-          align:
-            - left
-            - middle
-      - - text: "4"
-          align:
-            - left
-            - middle
-        - text: G-C
-          align:
-            - left
-            - middle
-        - text: "10.3531"
-          align:
-            - left
-            - middle
-      - - text: "7"
-          align:
-            - left
-            - middle
-        - text: T-A
-          align:
-            - left
-            - middle
-        - text: "10.2329"
-          align:
-            - left
-            - middle
-      - - text: "9"
-          align:
-            - left
-            - middle
-        - text: C-G
-          align:
-            - left
-            - middle
-        - text: "10.5912"
-          align:
-            - left
-            - middle
-      - - text: "12"
-          align:
-            - left
-            - middle
-        - text: G-C
-          align:
-            - left
-            - middle
-        - text: "10.8877"
-          align:
-            - left
-            - middle
-  - elementId: formula
-    elementType: text
-    bounds:
-        [285,440,390,55]
-    content:
-      text: \[d_7=\left\|\mathbf r_{A7,C1^\prime}-\mathbf r_{B18,C1^\prime}\right\|_2=10.2329\,\text{Å}\]
-      fontFamily: Microsoft YaHei
-      fontSize: 22
-      color: "#263C34"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-  - elementId: editable
-    elementType: text
-    bounds:
-      - 44
-      - 486
-      - 820
-      - 25
-    content:
-      {"text":"PDB 1BNA · 曲线数据、表格单元格与公式可继续编辑。","fontFamily":"Microsoft YaHei","fontSize":14,"color":"#66756B","bold":false,"align":["left","top"],"lineHeight":1.3}
+      {"text":"表格和公式，也能接着改","fontFamily":"Microsoft YaHei","fontSize":28,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
   - elementId: brand-small
     elementType: image
     src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
@@ -253,4 +65,73 @@ elements:
         - top
       lineHeight: 1.3
       field: main-position
-notes: 这是本项目的原生HUANDENG图表、表格和公式，不是三张截图。曲线保留全部12个位置；表格只摘录1、4、7、9、12位以展示可编辑数值。C1′距离由公开1BNA坐标计算，方法与CSV随项目保留。
+  - elementId: native-table
+    elementType: table
+    bounds:
+        [44,144,448,294]
+    columnWidths:
+      - 0.22
+      - 0.28
+      - 0.5
+    style:
+      {"cellStyle":{"fontFamily":"Microsoft YaHei","fontSize":17,"color":"#263C34","border":{"color":"#CAD5CD","width":0.5},"padding":10},"firstRowStyle":{"fill":"#E4ECE6","bold":true}}
+    rows:
+        [[{"text":"位置","bold":true,"align":["left","middle"]},{"text":"配对","bold":true,"align":["left","middle"]},{"text":"C1′–C1′ / Å","bold":true,"align":["left","middle"]}],[{"text":"1","bold":false,"align":["left","middle"]},{"text":"C-G","bold":false,"align":["left","middle"]},{"text":"10.7121","bold":false,"align":["left","middle"]}],[{"text":"4","bold":false,"align":["left","middle"]},{"text":"G-C","bold":false,"align":["left","middle"]},{"text":"10.3531","bold":false,"align":["left","middle"]}],[{"text":"7","bold":false,"align":["left","middle"]},{"text":"T-A","bold":false,"align":["left","middle"]},{"text":"10.2329","bold":false,"align":["left","middle"]}],[{"text":"9","bold":false,"align":["left","middle"]},{"text":"C-G","bold":false,"align":["left","middle"]},{"text":"10.5912","bold":false,"align":["left","middle"]}],[{"text":"12","bold":false,"align":["left","middle"]},{"text":"G-C","bold":false,"align":["left","middle"]},{"text":"10.8877","bold":false,"align":["left","middle"]}]]
+  - elementId: measure-view
+    elementType: image
+    src: media/imported/50273f1fa204b2f0ae10463c91dd9d8ffcea87c80d861da37c0db9755d091017.png
+    sourceName: dna-duplex-position7.png
+    alt: dna-duplex-position7.png
+    bounds:
+      - 592
+      - 128
+      - 238
+      - 236
+    fit:
+      mode: contain
+    crop:
+      left: 0.285
+      right: 0.265
+      top: 0.105
+      bottom: 0.07
+  - elementId: formula
+    elementType: text
+    bounds:
+        [522,378,392,52]
+    content:
+      {"text":"\\[d_7=\\left\\|\\mathbf r_{A7,C1^\\prime}-\\mathbf r_{B18,C1^\\prime}\\right\\|_2\\]","fontFamily":"Microsoft YaHei","fontSize":22,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
+  - elementId: equation-value
+    elementType: text
+    bounds:
+      - 522
+      - 441
+      - 392
+      - 32
+    content:
+      text: d₇ = 10.2329 Å
+      fontFamily: Microsoft YaHei
+      fontSize: 23
+      color: "#A64F38"
+      bold: false
+      align:
+        - center
+        - top
+      lineHeight: 1.3
+  - elementId: native-data-caption
+    elementType: text
+    bounds:
+      - 44
+      - 479
+      - 870
+      - 25
+    content:
+      text: PDB 1BNA · 从同一份 12 行数据中选取五行
+      fontFamily: Microsoft YaHei
+      fontSize: 13
+      color: "#66756B"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+notes: "原图之外，我也希望表和公式能继续编辑。这里的表是真正的表格对象，不是一组对齐的文本框；公式仍然作为公式保留。这一点对人接手很重要：后来要改一列或修正一个数值，不需要逐个搬动假单元格。显示的五个位置来自前页的同一份数据，完整十二个值和计算脚本都留在项目里。\n\nSource: https://www.rcsb.org/structure/1BNA ; https://doi.org/10.1073/pnas.78.4.2179 . Source coordinates, calculation and all twelve values: sources/science/."

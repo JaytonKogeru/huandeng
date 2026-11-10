@@ -1,0 +1,86 @@
+[
+  {
+    "position": 1,
+    "chain_a_residue": 1,
+    "chain_b_residue": 24,
+    "base_pair": "C-G",
+    "paired_C1_distance_A": 10.7121
+  },
+  {
+    "position": 2,
+    "chain_a_residue": 2,
+    "chain_b_residue": 23,
+    "base_pair": "G-C",
+    "paired_C1_distance_A": 10.7665
+  },
+  {
+    "position": 3,
+    "chain_a_residue": 3,
+    "chain_b_residue": 22,
+    "base_pair": "C-G",
+    "paired_C1_distance_A": 10.5802
+  },
+  {
+    "position": 4,
+    "chain_a_residue": 4,
+    "chain_b_residue": 21,
+    "base_pair": "G-C",
+    "paired_C1_distance_A": 10.3531
+  },
+  {
+    "position": 5,
+    "chain_a_residue": 5,
+    "chain_b_residue": 20,
+    "base_pair": "A-T",
+    "paired_C1_distance_A": 10.4416
+  },
+  {
+    "position": 6,
+    "chain_a_residue": 6,
+    "chain_b_residue": 19,
+    "base_pair": "A-T",
+    "paired_C1_distance_A": 10.4606
+  },
+  {
+    "position": 7,
+    "chain_a_residue": 7,
+    "chain_b_residue": 18,
+    "base_pair": "T-A",
+    "paired_C1_distance_A": 10.2329
+  },
+  {
+    "position": 8,
+    "chain_a_residue": 8,
+    "chain_b_residue": 17,
+    "base_pair": "T-A",
+    "paired_C1_distance_A": 10.4912
+  },
+  {
+    "position": 9,
+    "chain_a_residue": 9,
+    "chain_b_residue": 16,
+    "base_pair": "C-G",
+    "paired_C1_distance_A": 10.5912
+  },
+  {
+    "position": 10,
+    "chain_a_residue": 10,
+    "chain_b_residue": 15,
+    "base_pair": "G-C",
+    "paired_C1_distance_A": 10.4362
+  },
+  {
+    "position": 11,
+    "chain_a_residue": 11,
+    "chain_b_residue": 14,
+    "base_pair": "C-G",
+    "paired_C1_distance_A": 10.8052
+  },
+  {
+    "position": 12,
+    "chain_a_residue": 12,
+    "chain_b_residue": 13,
+    "base_pair": "G-C",
+    "paired_C1_distance_A": 10.8877
+  }
+]

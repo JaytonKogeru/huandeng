@@ -58,10 +58,7 @@ elements:
   - elementId: distance-chart
     elementType: chart
     bounds:
-      - 298
-      - 143
-      - 616
-      - 277
+        [298,164,616,256]
     fontFamily: Microsoft YaHei
     fontSize: 13
     colors:
@@ -76,7 +73,7 @@ elements:
     xAxis:
       title: 配对位置
     yAxis:
-      {"title":"C1′–C1′ (Å)","min":10,"max":11.2}
+      {"title":"","min":10,"max":11.2}
   - elementId: focus
     elementType: text
     bounds:
@@ -162,4 +159,21 @@ elements:
         - left
         - top
       lineHeight: 1.3
-notes: "科学例页：结构视图、测量端点与曲线使用同一组真实坐标。红色虚线连接 A7 与 B18 的 C1′，曲线第7个值是相同距离。PDB 1BNA 由 X-ray diffraction 测定，报告分辨率1.90 Å。12个位置不是统计重复；距离不等于氢键长度。\n\nSources: https://www.rcsb.org/structure/1BNA ; https://doi.org/10.1073/pnas.78.4.2179 . Coordinate file, measurements and method: sources/science/. Preserve the image pixels, exact twelve chart values, axes/units, chain identity and this qualification when editing wording."
+  - elementId: chart-unit
+    elementType: text
+    bounds:
+      - 355
+      - 139
+      - 400
+      - 24
+    content:
+      text: C1′–C1′ (Å)
+      fontFamily: Microsoft YaHei
+      fontSize: 14
+      color: "#66756B"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+notes: "现在用一个公开科学例页看这套工作方式。左边是1BNA DNA结构，右边是同一组坐标计算的十二个配对位置C1′距离。位置7对应A7和B18。这个例子不是我项目的研究结果，也不是十二次独立实验；它只是让我们清楚地看到图像、数值、单位和说明如何一起保留。接下来我会改它的文字，让科学材料保持不动。\n\nSource: https://www.rcsb.org/structure/1BNA ; https://doi.org/10.1073/pnas.78.4.2179 . Source coordinates, calculation and all twelve values: sources/science/."

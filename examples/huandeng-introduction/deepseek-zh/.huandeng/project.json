@@ -310,16 +310,16 @@
       "designIntent": {
         "pageRole": "cover",
         "language": "zh-CN",
-        "purpose": "封面：以真实 1BNA 结构承托主题，提出“把研究讲清楚，不必重做三遍”。",
-        "evidence": "HUANDENG 实际 mark；PDB 1BNA 双链结构正交投影；公开产品信息。",
+        "purpose": "先讲一个故事，再做幻灯片：以真实 1BNA 结构承托“我为什么做 HUANDENG”。",
+        "evidence": "HUANDENG 实际 mark；PDB 1BNA 结构；本轮用户口述。",
         "keep": [
           "保留 HUANDENG 实际标记与 1BNA 结构来源。",
-          "深色底只用封面角色，与正文浅色系统形成层级。"
+          "保留第一人称、故事驱动的入口，不把封面做成功能发布会。"
         ],
-        "backgroundException": "封面用深墨绿底承托透明结构图，与正文浅纸色形成角色差异。",
+        "backgroundException": "封面深墨绿底承托透明结构图，和正文浅色系统分层。",
         "actor": "deepseek-harness",
-        "source": "当前 AGENTS.md、公开 1BNA 示例、HUANDENG 0.18 产品信息。",
-        "requestedChange": "从 21 页全白简稿重构为 16 页、以真实科学证据和产品界面为主的介绍。"
+        "source": "当前 AGENTS.md、用户故事、公开 1BNA 示例。",
+        "requestedChange": "把 16 页产品介绍重构为 18 页故事驱动版本；先讲组会现场和两个问题。"
       }
     },
     "442751c7-1ad1-457f-acbb-c1e8611f0ecd": {
@@ -332,16 +332,15 @@
       "designIntent": {
         "pageRole": "content",
         "language": "zh-CN",
-        "purpose": "先展示一页真正的科研内容：结构、距离曲线、数值表和来源同时成立。",
-        "evidence": "PDB 1BNA 原始坐标渲染；12 个 C1′–C1′ 距离；Drew et al. 1981；精确范围 10.23–10.89 Å。",
+        "purpose": "把“我想做的”落成一页真正的科研内容：结构、曲线、数值和来源同时成立。",
+        "evidence": "PDB 1BNA 结构；12 个 C1′–C1′ 距离；原生表格；Drew et al. 1981；10.23–10.89 Å。",
         "keep": [
-          "保留结构图、曲线、数值、来源及非独立实验说明。",
-          "不把 12 个位置写成独立重复实验或产品性能数据。",
-          "保留非零纵轴与原始坐标轴标签。"
+          "保留原始结构、曲线、原生表格、坐标轴、来源和非独立实验说明。",
+          "保留非零纵轴与精确数值；不把 12 个位置写成独立重复实验或产品性能。"
         ],
         "actor": "deepseek-harness",
-        "source": "assets/science README、CSV、measurements.json、source.json。",
-        "requestedChange": "用真实科学页建立视觉与证据标准，不先展示空界面。"
+        "source": "sources/science README、CSV、measurements.json、source.json。",
+        "requestedChange": "从开篇证据页改为故事后段的“我想做的”示例页，保留真实科学内容。"
       }
     },
     "307fe424-d34a-4b76-b801-4e8f63ba8cbb": {
@@ -356,7 +355,7 @@
       "designIntent": {
         "pageRole": "section",
         "language": "zh-CN",
-        "purpose": "Section 停顿：一份内容。",
+        "purpose": "Section 停顿：从组会说起。",
         "evidence": "仅标题与灰绿底。",
         "keep": [
           "标题页只保留 Section 标题，不添加页脚、编号或装饰对象。"
@@ -364,7 +363,7 @@
         "backgroundException": "标题停顿页使用灰绿色，建立章节节奏。",
         "actor": "deepseek-harness",
         "source": "当前 AGENTS.md 对 title-only Section 的要求。",
-        "requestedChange": "用停顿页分隔叙事，不用卡片或页脚填充。"
+        "requestedChange": "把旧“一份内容”章节改为故事起点。"
       }
     },
     "007717f6-4756-4fc1-acdb-91ac96df37e6": {
@@ -372,20 +371,22 @@
       "path": "pages/2Z2N.page",
       "state": "active",
       "components": {},
-      "elementRoles": {},
+      "elementRoles": {
+        "problem-title": "title"
+      },
       "label": "S25",
       "designIntent": {
         "pageRole": "content",
         "language": "zh-CN",
-        "purpose": "让听众认出复制幻灯片后事实分叉的问题。",
-        "evidence": "组会/会议/评审三种场合的任务差异；概念示意，不是产品界面。",
+        "purpose": "第二个问题：只改两页，却多出三份副本，历史开始分叉。",
+        "evidence": "用户关于防御性 agent 另存副本的个人经历；右侧为概念示意，不是产品界面。",
         "keep": [
-          "右侧三份版本要明确是概念示意，不伪装成真实产品界面。",
-          "保留三种听众关注点的真实差异。"
+          "明确三份副本是概念示意，不伪装成真实文件或产品界面。",
+          "保留“修改单位应是页面”的因果转折。"
         ],
         "actor": "deepseek-harness",
-        "source": "原参考中的问题页与当前科研作者任务场景。",
-        "requestedChange": "从抽象问题改为可读的关系图与真实场合差异。"
+        "source": "用户口述与当前问题页结构。",
+        "requestedChange": "把原来的“多场讲法”问题页改造成副本与历史问题。"
       }
     },
     "e42a9867-65cf-4d38-a13b-ddf588dcdc68": {
@@ -393,20 +394,22 @@
       "path": "pages/XZJN.page",
       "state": "active",
       "components": {},
-      "elementRoles": {},
+      "elementRoles": {
+        "source-title": "title"
+      },
       "label": "S26",
       "designIntent": {
         "pageRole": "content",
         "language": "zh-CN",
-        "purpose": "说明 Main Slides 与 Presentation 的引用关系：底稿一份，出场可多。",
-        "evidence": "真实 HUANDENG 项目概览截图；三种场合的讲法差异。",
+        "purpose": "一份内容，多次出场：Main Slides 共享，Presentation 只改选择、顺序和讲稿。",
+        "evidence": "真实项目概览截图；组会/会议/评审三种讲法。",
         "keep": [
-          "保留真实项目概览截图，不重绘界面。",
-          "保留 Main Slides / Presentation 术语与截图原文。"
+          "保留真实项目概览截图与 Main Slides / Presentation 术语。",
+          "不把页面复制当作复用。"
         ],
         "actor": "deepseek-harness",
-        "source": "HUANDENG 0.18 公开产品示例截图与产品模型。",
-        "requestedChange": "把抽象产品模型落到真实界面与三场演讲。"
+        "source": "HUANDENG 0.18 项目概览截图、FACTS.md。",
+        "requestedChange": "把复用页接在项目结构之后，作为“一个项目”的叙事证据。"
       }
     },
     "53547db4-e3af-4397-a930-297080fef9c4": {
@@ -419,15 +422,15 @@
       "designIntent": {
         "pageRole": "content",
         "language": "zh-CN",
-        "purpose": "区分 Position、pageId、occurrenceId、versionId 四种身份。",
-        "evidence": "真实大纲视图同时显示位置与页面短码；稳定身份说明。",
+        "purpose": "区分 Position 和 Slide ID：位置会变，页面身份不会。",
+        "evidence": "真实 HUANDENG 大纲截图；四字短码和位置同时显示。",
         "keep": [
-          "短码只用于定位，不写成 pageId。",
-          "保留真实大纲截图与四种身份的准确含义。"
+          "Slide ID 是稳定短码，不能写成 page UUID。",
+          "保留真实大纲截图与“历史跟着页面走”的结论。"
         ],
         "actor": "deepseek-harness",
-        "source": "HUANDENG 0.18 guide 与真实大纲视图截图。",
-        "requestedChange": "用真实界面 + 四词表替代页码式说明。"
+        "source": "HUANDENG 0.18 guide、真实大纲截图、用户口述。",
+        "requestedChange": "把四词表改成单一文本框，避免文本框拼表格，并接入副本问题。"
       }
     },
     "a008b83f-9735-4495-8c59-0b2a2260c244": {
@@ -450,13 +453,13 @@
         "backgroundException": "标题停顿页使用灰绿色，建立章节节奏。",
         "actor": "deepseek-harness",
         "source": "当前 AGENTS.md 对 title-only Section 的要求。",
-        "requestedChange": "在对象与 Story 页之前留出停顿。"
+        "requestedChange": "在故事问题之后，进入一页真正科研内容。"
       }
     },
     "bdd7e3ff-5214-4e26-ab77-e31dc08830a5": {
       "shortCode": "WDNH",
       "path": "pages/WDNH.page",
-      "state": "active",
+      "state": "tombstone",
       "components": {},
       "elementRoles": {},
       "label": "S29",
@@ -484,16 +487,16 @@
       "designIntent": {
         "pageRole": "content",
         "language": "zh-CN",
-        "purpose": "解释 Story 的四层用途，并说明它与讲稿的区别。",
-        "evidence": "真实页面 Story 面板截图；项目、章节、页面、讲稿四个问题；科学页保留项示例。",
+        "purpose": "把故事写进文件：项目、章节、页面、讲稿四层目的与保留项。",
+        "evidence": "真实页面 Story 面板截图；四层说明；本页数值与来源保留项。",
         "keep": [
           "保留真实 Story 面板截图。",
-          "保留这一页的证据、数值与来源约束。",
-          "把制作审计留在 supporting records，不放入观众页。"
+          "保留 Story 不等于讲稿、不等于审美批准的边界。",
+          "保留证据与数值来源约束。"
         ],
         "actor": "deepseek-harness",
-        "source": "HUANDENG 0.18 Story 面板截图与项目 Story 模型。",
-        "requestedChange": "让 Story 解释为可执行的保留约束，而不是口号。"
+        "source": "HUANDENG 0.18 Story 面板、FACTS.md、用户口述。",
+        "requestedChange": "把四词表改成单一文本框，避免文本框拼表格。"
       }
     },
     "d4aae0fc-1405-444f-b5d2-29ea75d5d7ab": {
@@ -508,15 +511,15 @@
       "designIntent": {
         "pageRole": "section",
         "language": "zh-CN",
-        "purpose": "Section 停顿：一次修改。",
+        "purpose": "Section 停顿：一个项目。",
         "evidence": "仅标题与深灰绿底。",
         "keep": [
           "标题页只保留 Section 标题，不添加页脚、编号或装饰对象。"
         ],
-        "backgroundException": "标题停顿页使用深灰绿，进入具体修改段落。",
+        "backgroundException": "标题停顿页使用深灰绿，进入项目段落。",
         "actor": "deepseek-harness",
         "source": "当前 AGENTS.md 对 title-only Section 的要求。",
-        "requestedChange": "从证据页转入协作与交付。"
+        "requestedChange": "把旧“一次修改”章节改为项目与交付段落。"
       }
     },
     "844dd3c1-4016-465d-a245-1b0f5fc01be8": {
@@ -529,16 +532,17 @@
       "designIntent": {
         "pageRole": "content",
         "language": "zh-CN",
-        "purpose": "说明外部 AI 客户端如何通过同一个本地写入器提交、预览和应用修改。",
-        "evidence": "ChatGPT、Codex、Claude Code、DeepSeek 实际标识；HUANDENG 0.18 写入链路。",
+        "purpose": "AI 在同一页上改：客户端提交事务，共享写入器检查、预览、落盘。",
+        "evidence": "真实产品标识；HUANDENG 0.18 写入链路；AI 不是直接改文件。",
         "keep": [
-          "保留真实产品标识与名称，不暗示官方背书。",
-          "写入链路以运行 guide 为准，不添加未实现的自动化承诺。"
+          "保留真实标识与产品名称，不暗示官方背书。",
+          "不把 Story 说成必然生效或自动审美批准。",
+          "写入链路以运行 guide 为准。"
         ],
-        "backgroundException": "深色页用于协作关系图，区分于正文浅色页。",
+        "backgroundException": "深色页用于 AI 协作，区分于正文浅色页。",
         "actor": "deepseek-harness",
-        "source": "brand manifest、0.18 operation guide、公开产品能力。",
-        "requestedChange": "用真实标识和可执行链路说明外部 AI 协作，不讲模型能力。"
+        "source": "0.18 operation guide、品牌 manifest、FACTS.md。",
+        "requestedChange": "把外部 AI 页从功能清单改成副本问题的回答。"
       }
     },
     "d23386ad-2c83-44fd-aa92-db09358af429": {
@@ -546,20 +550,22 @@
       "path": "pages/CKFY.page",
       "state": "active",
       "components": {},
-      "elementRoles": {},
+      "elementRoles": {
+        "change-title": "title"
+      },
       "label": "S33",
       "designIntent": {
         "pageRole": "content",
         "language": "zh-CN",
-        "purpose": "用真实修改前后说明：只改两个文本对象，其他对象、Story、讲稿与位置不动。",
-        "evidence": "同一页的两张真实修改前/后截图；title 与 lead 的 content.text 变化。",
+        "purpose": "改两页，只动这两页：真实修改前后，字段级差异，其他对象不变。",
+        "evidence": "同一页真实修改前/后截图；title 与 lead 两处 content.text 变化。",
         "keep": [
-          "保留真实修改前/后截图。",
-          "字段变化只写 title 与 lead，不夸大改动范围。"
+          "保留真实修改前后截图。",
+          "只写 title 与 lead 两个字段的变化，不夸大。"
         ],
         "actor": "deepseek-harness",
-        "source": "HUANDENG 0.18 公开产品示例截图。",
-        "requestedChange": "把“AI 修改”落到具体字段与页面范围。"
+        "source": "HUANDENG 0.18 公开产品示例截图、用户口述。",
+        "requestedChange": "把一次修改落成“只动这一页”的证据。"
       }
     },
     "21d1d0de-ddc9-49ad-ad20-75e16d889012": {
@@ -572,15 +578,15 @@
       "designIntent": {
         "pageRole": "content",
         "language": "zh-CN",
-        "purpose": "展示操作审阅与命名版本，并说明恢复只影响这一页。",
-        "evidence": "真实只读操作审阅截图；真实命名版本/恢复入口截图。",
+        "purpose": "说明每一页都有自己的历史：操作审阅与命名版本，恢复只影响这一页。",
+        "evidence": "真实操作审阅与命名版本截图；页面级恢复说明。",
         "keep": [
-          "保留真实界面与当前素材预览的说明。",
-          "命名版本固定页面与素材，不等于整份文件回滚。"
+          "保留真实界面与“不是整份文件回滚”的边界。",
+          "命名版本是页面里程碑，不等于每个操作都生成 checkpoint。"
         ],
         "actor": "deepseek-harness",
-        "source": "HUANDENG 0.18 公开产品示例截图与版本工具说明。",
-        "requestedChange": "用两个真实界面证明可选范围与回看能力。"
+        "source": "HUANDENG 0.18 公开产品示例截图、FACTS.md。",
+        "requestedChange": "把历史页从产品功能页改为副本问题的回答。"
       }
     },
     "3df19be8-3e3c-4870-83e1-94ba44549899": {
@@ -593,21 +599,22 @@
       "designIntent": {
         "pageRole": "content",
         "language": "zh-CN",
-        "purpose": "说明 PPTD、PPTX、PDF 的交付差异和静态导出边界。",
-        "evidence": "真实导出对话框；格式说明；静态导出不含点击动画。",
+        "purpose": "它可以交出去，也还没做完：PPTX/PDF/PPTD 的差异与当前未实现边界。",
+        "evidence": "真实导出对话框；原生表格；open-slide/open-slide 与 PptxGenJS 来源。",
         "keep": [
-          "保留导出格式的真实边界。",
-          "不声称静态 PPTX/PDF 携带点击动画或任意往返。"
+          "保留真实导出界面、原生表格和未实现列表。",
+          "不声称任意 PPTX 往返、完整母版、独立演讲者窗口已实现。",
+          "不把 HUANDENG 说成上游官方项目。"
         ],
         "actor": "deepseek-harness",
-        "source": "HUANDENG 0.18 导出界面与仓库发布说明。",
-        "requestedChange": "把交付写成可检查的文件，而不是流程口号。"
+        "source": "HUANDENG 0.18 导出界面、FACTS.md、仓库文档。",
+        "requestedChange": "把交付与边界合到一页，作为故事的可信收尾。"
       }
     },
     "11059243-4500-4a3e-8f4e-78638715353d": {
       "shortCode": "W4PY",
       "path": "pages/W4PY.page",
-      "state": "active",
+      "state": "tombstone",
       "components": {},
       "elementRoles": {},
       "label": "S36",
@@ -630,45 +637,143 @@
       "path": "pages/AVRB.page",
       "state": "active",
       "components": {},
-      "elementRoles": {},
+      "elementRoles": {
+        "start-title": "title"
+      },
       "label": "S37",
       "designIntent": {
         "pageRole": "content",
         "language": "zh-CN",
-        "purpose": "收束为最小上手路径：用一个真实项目、一页证据走完。",
-        "evidence": "四个可执行步骤；真实 1BNA 结构；仓库地址。",
+        "purpose": "先把故事讲清楚：讲、整理、做页、交付四步。",
+        "evidence": "真实 1BNA 结构；前文的故事、页面身份、历史与协作经验。",
         "keep": [
           "保留真实 1BNA 来源。",
           "不承诺 AI 自动完成科学判断；技术检查与作者决定分开。"
         ],
-        "backgroundException": "收尾页用浅灰绿，回到科学示例与下一步。",
+        "backgroundException": "收尾页用浅灰绿，回到故事与证据。",
         "actor": "deepseek-harness",
-        "source": "当前任务 brief、公开 1BNA 示例与仓库地址。",
-        "requestedChange": "把介绍转成听众今天可以执行的第一步。"
+        "source": "用户故事、当前 AGENTS.md、公开 1BNA 示例。",
+        "requestedChange": "把收尾从“上手流程”改为故事方法的收束。"
+      }
+    },
+    "16f2ab87-6962-4100-b2f6-1ab8077b01c7": {
+      "shortCode": "UGA7",
+      "path": "pages/UGA7.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "meeting-title": "title",
+        "meeting-quote": "heading"
+      },
+      "label": "S38",
+      "designIntent": {
+        "pageRole": "content",
+        "language": "zh-CN",
+        "purpose": "组会现场：导师一眼认出 AI 幻灯片，引出“太完整、太均匀、太安全”。",
+        "evidence": "用户本轮口述的个人观察；概念板式，不是产品界面。",
+        "keep": [
+          "保留第一人称场景和具体感受，不写成研究结论或模型排名。",
+          "保留 UGA7 的稳定身份与历史。"
+        ],
+        "actor": "deepseek-harness",
+        "source": "用户本轮口述与 sources/story/USER-STORY.zh-CN.md。",
+        "requestedChange": "把 UGA7 从空白页填成故事起点。"
+      }
+    },
+    "b6749c12-2c5c-42b4-8437-763f6a800abf": {
+      "shortCode": "PQQR",
+      "path": "pages/PQQR.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "texture-quote": "heading",
+        "texture-title": "title"
+      },
+      "label": "S39",
+      "designIntent": {
+        "pageRole": "content",
+        "language": "zh-CN",
+        "purpose": "说明 AI 质感不是丑，而是没有取舍：面面俱到、追求完整、追求免责。",
+        "evidence": "用户对 AI 幻灯片的第一手观察；不宣称模型评测或普适研究。",
+        "keep": [
+          "保留个人观察的限定，不把感受升级为模型排名或研究结论。",
+          "保留“先讲人的故事”的转折。"
+        ],
+        "backgroundException": "深色页用于叙事转折，区分于正文浅色页。",
+        "actor": "deepseek-harness",
+        "source": "用户口述、sources/story/USER-STORY.zh-CN.md、FACTS.md。",
+        "requestedChange": "把“AI 质感”从抽象评价变成可理解的故事判断。"
+      }
+    },
+    "2bda7c83-3e1b-46ee-83c7-e9b9b59a3578": {
+      "shortCode": "G8WH",
+      "path": "pages/G8WH.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "project-title": "title"
+      },
+      "label": "S40",
+      "designIntent": {
+        "pageRole": "content",
+        "language": "zh-CN",
+        "purpose": "一个项目，不是一个文件：目录、页面、素材、Story、历史和视图。",
+        "evidence": "真实项目目录树；真实工作区截图；PPTX 的包结构说明。",
+        "keep": [
+          "保留实际目录结构与真实 UI 截图。",
+          "不声称 PPTX 没有页面结构；说明 HUANDENG 是把工作目录和页面服务显式化。",
+          "保留视图入口：项目/页面/素材/文件，浏览/大纲/章节/备注/历史。"
+        ],
+        "actor": "deepseek-harness",
+        "source": "FACTS.md、真实项目目录、HUANDENG 0.18 工作区截图。",
+        "requestedChange": "用项目目录与一个文本框说明格式，不用文本框拼表格。"
+      }
+    },
+    "aab5e915-8c00-419d-a5b2-4377bd060559": {
+      "shortCode": "7PV4",
+      "path": "pages/7PV4.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S41",
+      "designIntent": {
+        "pageRole": "content",
+        "language": "zh-CN",
+        "purpose": "素材不是插图，是证据：原图、坐标、CSV、曲线和来源一起留在项目里。",
+        "evidence": "真实 1BNA 图、中文曲线、原始文件清单与素材原始分辨率截图。",
+        "keep": [
+          "保留真实科学素材、来源文件路径和原始分辨率截图。",
+          "不把素材说成装饰图库；不删除旧原图。"
+        ],
+        "actor": "deepseek-harness",
+        "source": "sources/science、MEDIA-INPUTS.json、真实资产分辨率截图。",
+        "requestedChange": "用素材证据链回答“AI 怎样不把图当装饰”。"
       }
     }
   },
   "project": {
     "schemaVersion": 1,
     "mainStory": {
-      "purpose": "用一页真实的科学内容，说明 HUANDENG 如何在保持证据的前提下，让人与外部 AI 在同一份幻灯片项目里协作、审阅和交付。",
-      "audience": "第一次接触 HUANDENG 的科研报告作者、技术写作者与开源贡献者。",
-      "takeaway": "页面只维护一次；改动有范围和回执；工具服务证据，而不是替代作者判断。"
+      "purpose": "讲清楚我为什么做 HUANDENG：AI 幻灯片缺少人的故事，修改以文件而不是页面为单位，视觉判断难以结构化；以及我如何用 Story、页面身份和项目目录回应这些问题。",
+      "audience": "第一次接触 HUANDENG 的科研报告作者、工具评估者和潜在合作者。",
+      "takeaway": "先讲人的故事，再做页；页面有身份和历史，AI 才能改得准、改得回；工具不替作者做科学和审美判断。"
     },
     "sections": [
       {
-        "id": "one-source",
-        "title": "一份内容",
+        "id": "from-group-meeting",
+        "title": "从组会说起",
         "story": {
-          "purpose": "从同一份研究被复制成多场的经验出发，说明 Main Slides 的稳定身份、演讲引用和页面身份。",
-          "audience": "需要为组会、会议与评审重复改稿的人。",
-          "takeaway": "维护一份内容；按场合重排讲法；说页面身份而不是页码。"
+          "purpose": "从组会现场和两次具体修改经历，讲清做 HUANDENG 的两个动机：AI 质感和副本历史。",
+          "audience": "有 AI 幻灯片经验的研究者。",
+          "takeaway": "问题不是 AI 不会排版，而是没有取舍，也没有以页面为单位的修改。"
         },
         "pageIds": [
           "307fe424-d34a-4b76-b801-4e8f63ba8cbb",
+          "16f2ab87-6962-4100-b2f6-1ab8077b01c7",
+          "b6749c12-2c5c-42b4-8437-763f6a800abf",
           "007717f6-4756-4fc1-acdb-91ac96df37e6",
-          "e42a9867-65cf-4d38-a13b-ddf588dcdc68",
-          "53547db4-e3af-4397-a930-297080fef9c4"
+          "53547db4-e3af-4397-a930-297080fef9c4",
+          "21d1d0de-ddc9-49ad-ad20-75e16d889012"
         ],
         "startPageId": "307fe424-d34a-4b76-b801-4e8f63ba8cbb"
       },
@@ -676,47 +781,36 @@
         "id": "one-evidence",
         "title": "一页证据",
         "story": {
-          "purpose": "展示对象级编辑与 Story 如何服务一页科学证据。",
-          "audience": "关心图、数据、来源与修改约束的作者。",
-          "takeaway": "图、图表、表格与文字各自独立；Story 写下目的和必须保留的证据。"
+          "purpose": "把抽象的 AI 质感落到一页真正的科研内容，以及它背后的素材与 Story。",
+          "audience": "关心图、数据、来源与解释的作者。",
+          "takeaway": "一页证据需要结构、数值和来源；Story 让 AI 知道该保留什么。"
         },
         "pageIds": [
           "a008b83f-9735-4495-8c59-0b2a2260c244",
-          "bdd7e3ff-5214-4e26-ab77-e31dc08830a5",
+          "442751c7-1ad1-457f-acbb-c1e8611f0ecd",
+          "aab5e915-8c00-419d-a5b2-4377bd060559",
           "81904faa-df61-47e7-a6ad-a02563b1c171"
         ],
         "startPageId": "a008b83f-9735-4495-8c59-0b2a2260c244"
       },
       {
-        "id": "one-change",
-        "title": "一次修改",
+        "id": "one-project",
+        "title": "一个项目",
         "story": {
-          "purpose": "用一个具体修改串起外部 AI 协作、操作回看、命名版本和导出。",
-          "audience": "准备和 Agent 共同修改或把稿子交出去的人。",
-          "takeaway": "修改通过同一个写入器；审阅有字段与范围；交付是静态成品。"
+          "purpose": "展示项目、页面身份、历史、复用、AI 协作和交付如何组成一个工作流。",
+          "audience": "准备试用、评估或交接 HUANDENG 项目的人。",
+          "takeaway": "一个项目、一份页面底稿、可回看的历史；AI 在同一页上改，交付仍是可打开的文件。"
         },
         "pageIds": [
           "d4aae0fc-1405-444f-b5d2-29ea75d5d7ab",
+          "2bda7c83-3e1b-46ee-83c7-e9b9b59a3578",
+          "e42a9867-65cf-4d38-a13b-ddf588dcdc68",
           "844dd3c1-4016-465d-a245-1b0f5fc01be8",
           "d23386ad-2c83-44fd-aa92-db09358af429",
-          "21d1d0de-ddc9-49ad-ad20-75e16d889012",
-          "3df19be8-3e3c-4870-83e1-94ba44549899"
-        ],
-        "startPageId": "d4aae0fc-1405-444f-b5d2-29ea75d5d7ab"
-      },
-      {
-        "id": "use-boundaries",
-        "title": "使用与边界",
-        "story": {
-          "purpose": "交代开源来源、当前边界和最小上手路径。",
-          "audience": "想试用或贡献的人。",
-          "takeaway": "先走通一页；保留来源；把未实现的能力说清楚。"
-        },
-        "pageIds": [
-          "11059243-4500-4a3e-8f4e-78638715353d",
+          "3df19be8-3e3c-4870-83e1-94ba44549899",
           "04db5827-30fd-4c66-aa01-e29962dc3981"
         ],
-        "startPageId": "11059243-4500-4a3e-8f4e-78638715353d"
+        "startPageId": "d4aae0fc-1405-444f-b5d2-29ea75d5d7ab"
       }
     ],
     "presentations": [
@@ -724,11 +818,11 @@
         "id": "full",
         "title": "完整介绍",
         "story": {
-          "purpose": "从一页科学证据讲到内容组织、对象、Story、修改、审阅、交付与边界。",
+          "purpose": "从组会故事讲到问题、一页证据、项目结构和交付边界。",
           "audience": "第一次接触 HUANDENG 的科研报告作者与工具评估者。",
-          "takeaway": "同一份内容支撑多场演讲；修改有范围与回执；工具服务证据。"
+          "takeaway": "先讲人的故事；页面有身份和历史；AI 在同一页上改，工具不替作者判断。"
         },
-        "notes": "完整版：约十二到十五分钟，建议按页面顺序讲。",
+        "notes": "完整版，约十五分钟。按页面顺序讲；三个 Section 停顿页用于换气。",
         "items": [
           {
             "id": "f01",
@@ -738,22 +832,22 @@
           {
             "id": "f02",
             "kind": "page",
-            "pageId": "442751c7-1ad1-457f-acbb-c1e8611f0ecd"
+            "pageId": "307fe424-d34a-4b76-b801-4e8f63ba8cbb"
           },
           {
             "id": "f03",
             "kind": "page",
-            "pageId": "307fe424-d34a-4b76-b801-4e8f63ba8cbb"
+            "pageId": "16f2ab87-6962-4100-b2f6-1ab8077b01c7"
           },
           {
             "id": "f04",
             "kind": "page",
-            "pageId": "007717f6-4756-4fc1-acdb-91ac96df37e6"
+            "pageId": "b6749c12-2c5c-42b4-8437-763f6a800abf"
           },
           {
             "id": "f05",
             "kind": "page",
-            "pageId": "e42a9867-65cf-4d38-a13b-ddf588dcdc68"
+            "pageId": "007717f6-4756-4fc1-acdb-91ac96df37e6"
           },
           {
             "id": "f06",
@@ -763,50 +857,60 @@
           {
             "id": "f07",
             "kind": "page",
-            "pageId": "a008b83f-9735-4495-8c59-0b2a2260c244"
+            "pageId": "21d1d0de-ddc9-49ad-ad20-75e16d889012"
           },
           {
             "id": "f08",
             "kind": "page",
-            "pageId": "bdd7e3ff-5214-4e26-ab77-e31dc08830a5"
+            "pageId": "a008b83f-9735-4495-8c59-0b2a2260c244"
           },
           {
             "id": "f09",
             "kind": "page",
-            "pageId": "81904faa-df61-47e7-a6ad-a02563b1c171"
+            "pageId": "442751c7-1ad1-457f-acbb-c1e8611f0ecd"
           },
           {
             "id": "f10",
             "kind": "page",
-            "pageId": "d4aae0fc-1405-444f-b5d2-29ea75d5d7ab"
+            "pageId": "aab5e915-8c00-419d-a5b2-4377bd060559"
           },
           {
             "id": "f11",
             "kind": "page",
-            "pageId": "844dd3c1-4016-465d-a245-1b0f5fc01be8"
+            "pageId": "81904faa-df61-47e7-a6ad-a02563b1c171"
           },
           {
             "id": "f12",
             "kind": "page",
-            "pageId": "d23386ad-2c83-44fd-aa92-db09358af429"
+            "pageId": "d4aae0fc-1405-444f-b5d2-29ea75d5d7ab"
           },
           {
             "id": "f13",
             "kind": "page",
-            "pageId": "21d1d0de-ddc9-49ad-ad20-75e16d889012"
+            "pageId": "2bda7c83-3e1b-46ee-83c7-e9b9b59a3578"
           },
           {
             "id": "f14",
             "kind": "page",
-            "pageId": "3df19be8-3e3c-4870-83e1-94ba44549899"
+            "pageId": "e42a9867-65cf-4d38-a13b-ddf588dcdc68"
           },
           {
             "id": "f15",
             "kind": "page",
-            "pageId": "11059243-4500-4a3e-8f4e-78638715353d"
+            "pageId": "844dd3c1-4016-465d-a245-1b0f5fc01be8"
           },
           {
             "id": "f16",
+            "kind": "page",
+            "pageId": "d23386ad-2c83-44fd-aa92-db09358af429"
+          },
+          {
+            "id": "f17",
+            "kind": "page",
+            "pageId": "3df19be8-3e3c-4870-83e1-94ba44549899"
+          },
+          {
+            "id": "f18",
             "kind": "page",
             "pageId": "04db5827-30fd-4c66-aa01-e29962dc3981"
           }
@@ -814,13 +918,13 @@
       },
       {
         "id": "brief",
-        "title": "短版 · 八分钟",
+        "title": "短版 · 约十分钟",
         "story": {
-          "purpose": "只保留目标画面、复制问题、一份底稿、修改与交付。",
-          "audience": "时间有限的产品介绍或组会。",
-          "takeaway": "先理解页面只维护一次，再看改动如何被审阅与交付。"
+          "purpose": "保留故事主线：组会、AI 质感、副本、页面身份、一页证据、Story 与一次修改。",
+          "audience": "时间有限的组会或产品介绍。",
+          "takeaway": "先讲人的故事，再让 AI 在同一页上改。"
         },
-        "notes": "短版复用完整版的 Main Slides，只重排页面并减少背景说明。",
+        "notes": "短版复用完整版的 Main Slides，不复制页面；删去项目结构与交付细节，保留故事与证据。",
         "items": [
           {
             "id": "b01",
@@ -830,17 +934,17 @@
           {
             "id": "b02",
             "kind": "page",
-            "pageId": "442751c7-1ad1-457f-acbb-c1e8611f0ecd"
+            "pageId": "16f2ab87-6962-4100-b2f6-1ab8077b01c7"
           },
           {
             "id": "b03",
             "kind": "page",
-            "pageId": "007717f6-4756-4fc1-acdb-91ac96df37e6"
+            "pageId": "b6749c12-2c5c-42b4-8437-763f6a800abf"
           },
           {
             "id": "b04",
             "kind": "page",
-            "pageId": "e42a9867-65cf-4d38-a13b-ddf588dcdc68"
+            "pageId": "007717f6-4756-4fc1-acdb-91ac96df37e6"
           },
           {
             "id": "b05",
@@ -850,15 +954,30 @@
           {
             "id": "b06",
             "kind": "page",
-            "pageId": "d23386ad-2c83-44fd-aa92-db09358af429"
+            "pageId": "21d1d0de-ddc9-49ad-ad20-75e16d889012"
           },
           {
             "id": "b07",
             "kind": "page",
-            "pageId": "3df19be8-3e3c-4870-83e1-94ba44549899"
+            "pageId": "442751c7-1ad1-457f-acbb-c1e8611f0ecd"
           },
           {
             "id": "b08",
+            "kind": "page",
+            "pageId": "81904faa-df61-47e7-a6ad-a02563b1c171"
+          },
+          {
+            "id": "b09",
+            "kind": "page",
+            "pageId": "844dd3c1-4016-465d-a245-1b0f5fc01be8"
+          },
+          {
+            "id": "b10",
+            "kind": "page",
+            "pageId": "d23386ad-2c83-44fd-aa92-db09358af429"
+          },
+          {
+            "id": "b11",
             "kind": "page",
             "pageId": "04db5827-30fd-4c66-aa01-e29962dc3981"
           }

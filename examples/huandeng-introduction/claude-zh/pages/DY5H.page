@@ -1,0 +1,124 @@
+background:
+  type: solid
+  color: "#F6F6F3"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 56
+      - 34
+      - 848
+      - 40
+    content:
+      text: 每一页都有自己的历史
+      fontFamily: Microsoft YaHei
+      fontSize: 26
+      lineHeight: 1.3
+      color: "#1C2321"
+      align:
+        - left
+        - top
+      bold: true
+    role: title
+  - elementId: shot-frame
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 56
+      - 84
+      - 548
+      - 362
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#CBD3CF"
+  - elementId: shot
+    elementType: image
+    bounds:
+      - 60
+      - 88
+      - 540
+      - 354
+    src: media/imported/4d42e5f1558e1b2f448e5b87abd12e17eb56b62c64853eda8b401cc93ad67b4b.png
+    sourceName: zh-CN-native-history-change-4x.png
+    fit:
+      mode: contain
+  - elementId: shot-cap
+    elementType: text
+    bounds:
+      - 56
+      - 452
+      - 548
+      - 20
+    content:
+      text: 真实界面：页面 TJ2W 的两个已记录版本。
+      fontFamily: Microsoft YaHei
+      fontSize: 11
+      lineHeight: 1.4
+      color: "#7A8480"
+      align:
+        - left
+        - top
+  - elementId: body
+    elementType: text
+    bounds:
+      - 632
+      - 84
+      - 272
+      - 400
+    content:
+      text: <p><strong><span style="color:#1C2321">不是给整份 slides 做版本管理，</span></strong></p><p><strong><span style="color:#2E6B5E">是给每一页。</span></strong></p><p><span style="font-size:8px"> </span></p><p>在左侧栏选中一页，右键“查看历史版本”。</p><p><span style="font-size:8px"> </span></p><p><strong><span style="color:#1C2321">已记录版本</span></strong></p><p>像 Git 的提交：有名字，比如“组会定稿”。</p><p><span style="font-size:8px"> </span></p><p><strong><span style="color:#1C2321">操作记录</span></strong></p><p>每一次保存的修改都在。</p><p><span style="font-size:8px"> </span></p><p>恢复只更新这一页，其他页不动。</p>
+      fontFamily: Microsoft YaHei
+      fontSize: 15
+      lineHeight: 1.55
+      color: "#3E4845"
+      align:
+        - left
+        - top
+  - elementId: ft-mark
+    elementType: image
+    bounds:
+      - 56
+      - 505
+      - 16
+      - 16
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    fit:
+      mode: contain
+  - elementId: ft-label
+    elementType: text
+    bounds:
+      - 78
+      - 505
+      - 420
+      - 16
+    content:
+      text: HUANDENG  /  以“页”为单位
+      fontFamily: Microsoft YaHei
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - left
+        - middle
+  - elementId: ft-pos
+    elementType: text
+    bounds:
+      - 824
+      - 505
+      - 80
+      - 16
+    content:
+      text: "0"
+      fontFamily: Microsoft YaHei
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - right
+        - middle
+      field: main-position
+notes: 这是我们最重要的版本管理功能。我们不是对整个 slides 做版本管理，而是对每一页都有版本管理。在左侧栏选中一页，右键查看历史版本，就能看到它的变化。已记录版本是有名字的里程碑，比如“文案已收紧”“组会定稿”；操作记录是每一次保存的修改。恢复一个版本，只更新这一页。这样 AI 改两页，就只是这两页多了两条历史，而不是目录里多出一份副本。

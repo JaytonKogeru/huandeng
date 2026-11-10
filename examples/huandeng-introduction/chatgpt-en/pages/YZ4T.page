@@ -12,15 +12,7 @@ elements:
       - 55
     role: title
     content:
-      text: Four clients, one working project
-      fontFamily: Arial
-      fontSize: 28
-      color: "#263C34"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
+      {"text":"Taking the workflow to different agents","fontFamily":"Arial","fontSize":28,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
   - elementId: client-0
     elementType: image
     src: media/imported/0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13.png
@@ -440,4 +432,4 @@ elements:
         - top
       lineHeight: 1.3
       field: main-position
-notes: Each client has its own adapter. ChatGPT uses the existing workstation connection; local Codex, Claude Code and DeepSeek Harness use local MCP. The plugin carries guidance; the connector calls the selected project’s shared writer; the Editor and agent work on the same PPTD. This is a relationship diagram, not a performance comparison.
+notes: "The workflow does not require one model. The plugin carries authoring guidance and project context. The connector sends requests to the selected project’s shared document service, where direct editor changes also arrive. For this introduction, ChatGPT, Claude Code and DeepSeek Harness made independent attempts. They can share the file and operation model while their editorial judgment is still assessed separately."

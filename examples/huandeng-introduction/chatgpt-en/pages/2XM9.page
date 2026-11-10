@@ -1,0 +1,165 @@
+pageType: content
+background:
+  type: solid
+  color: "#F7F5EF"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 44
+      - 35
+      - 870
+      - 68
+    role: title
+    content:
+      {"text":"Change two of fifty slides. Another full copy?","fontFamily":"Arial","fontSize":29,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
+  - elementId: brand-small
+    elementType: image
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    alt: huandeng.png
+    bounds:
+      - 44
+      - 510
+      - 17
+      - 17
+    fit:
+      mode: contain
+    crop:
+      left: 0.18
+      right: 0.18
+      top: 0.14
+      bottom: 0.14
+  - elementId: foot
+    elementType: text
+    bounds:
+      - 69
+      - 513
+      - 130
+      - 17
+    content:
+      text: HUANDENG
+      fontFamily: Arial
+      fontSize: 10
+      color: "#66756B"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: position
+    elementType: text
+    bounds:
+      - 884
+      - 512
+      - 30
+      - 18
+    content:
+      text: ""
+      fontFamily: Arial
+      fontSize: 10
+      color: "#66756B"
+      bold: false
+      align:
+        - right
+        - top
+      lineHeight: 1.3
+      field: main-position
+  - elementId: whole-deck
+    elementType: icon
+    iconName: fas:file-powerpoint
+    bounds:
+      - 56
+      - 155
+      - 58
+      - 58
+    fill:
+      type: solid
+      color: "#356F68"
+  - elementId: request
+    elementType: text
+    bounds:
+      - 142
+      - 166
+      - 690
+      - 44
+    content:
+      text: “Change two of the slides.”
+      fontFamily: Arial
+      fontSize: 25
+      color: "#263C34"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: copies
+    elementType: text
+    bounds:
+      - 66
+      - 280
+      - 400
+      - 176
+    content:
+      text: |-
+        deck.pptx
+        deck_revised.pptx
+        deck_final.pptx
+        deck_final_2.pptx
+      fontFamily: Consolas
+      fontSize: 22
+      color: "#66756B"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.55
+  - elementId: cause
+    elementType: line
+    bounds:
+      - 462
+      - 349
+      - 70
+      - 10
+    viewBox:
+      - 1
+      - 1
+    points: 0,0.5 1,0.5
+    border:
+      width: 1.4
+      color: "#356F68"
+    arrow:
+      - null
+      - arrow
+  - elementId: decision
+    elementType: text
+    bounds:
+      - 570
+      - 264
+      - 343
+      - 221
+    content:
+      text: |-
+        Version control suggested
+        a different editing unit:
+
+        keep the history
+        with the page that changed.
+      fontFamily: Arial
+      fontSize: 23
+      color: "#356F68"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.5
+  - elementId: illustration-note
+    elementType: text
+    bounds:
+      - 44
+      - 487
+      - 870
+      - 21
+    content:
+      {"text":"Illustrative filenames; the 50-page/two-slide scenario is my example.","fontFamily":"Arial","fontSize":12,"color":"#66756B","bold":false,"align":["left","top"],"lineHeight":1.3}
+notes: "The second problem was mundane. Suppose I already had fifty slides and wanted to change two. Some agents would preserve the original by creating another complete deck. With repeated edits, the directory could fill with dated copies. Git suggested a useful principle: record what changed in the unit being edited, rather than preserving every small revision as another full presentation.\n\nAccount source: sources/story/USER-STORY.zh-CN.md. The explanation is based on the founder’s personal experience and design judgment."

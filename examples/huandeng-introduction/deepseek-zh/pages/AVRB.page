@@ -2,7 +2,7 @@ pageType: content
 background:
   type: solid
   color: "#DDE5D9"
-notes: 收束到今天能做的第一步：用一个真实项目、一页真实证据走完流程。不要先搬整套材料，也不要让 AI 直接改文件；先预览、再应用、读回，最后自己打开交付文件检查。
+notes: "收束：先讲，再整理，再做页，最后交付。故事不是包装，而是取舍的依据。HUANDENG 还在路上：它不替人决定讲什么，只希望 AI 先听懂人怎么讲。"
 elements:
   - elementId: start-mark
     elementType: image
@@ -42,7 +42,7 @@ elements:
       - 600
       - 50
     content:
-      text: 从你的下一篇报告开始
+      text: "先把故事讲清楚"
       fontSize: 34
       fontFamily:
         ea: Microsoft YaHei
@@ -60,7 +60,7 @@ elements:
       - 500
       - 30
     content:
-      text: 不用先搬家。用一个真实项目，把一页证据走完。
+      text: "如果 AI 先听懂人的故事，幻灯片才可能像人做的。"
       fontSize: 16
       fontFamily:
         ea: Microsoft YaHei
@@ -94,7 +94,7 @@ elements:
       - 360
       - 24
     content:
-      text: 打开 deck.pptd，保留整个项目文件夹。
+      text: "讲：为什么做，给谁听，什么不能丢。"
       fontSize: 12.8
       fontFamily:
         ea: Microsoft YaHei
@@ -143,9 +143,7 @@ elements:
       - 380
       - 42
     content:
-      text: |-
-        写下受众、这一页的目的，
-        以及必须保留的证据。
+      text: "整理：把故事写进项目、章节和每一页的 Story。"
       fontSize: 12.8
       fontFamily:
         ea: Microsoft YaHei
@@ -195,7 +193,7 @@ elements:
       - 380
       - 24
     content:
-      text: 让外部 AI 读取上下文；先预览，再应用。
+      text: "做页：让 AI 在同一页上改动、预览、回看。"
       fontSize: 12.8
       fontFamily:
         ea: Microsoft YaHei
@@ -244,9 +242,7 @@ elements:
       - 380
       - 42
     content:
-      text: |-
-        读回页面，导出 PDF / PPTX，
-        再实际打开检查。
+      text: "交付：PPTX / PDF 带走，项目留在自己手里。"
       fontSize: 12.8
       fontFamily:
         ea: Microsoft YaHei
@@ -290,12 +286,9 @@ elements:
   - elementId: start-close
     elementType: text
     bounds:
-      - 48
-      - 478
-      - 420
-      - 18
+        [48,472,620,34]
     content:
-      text: 技术检查不能替代作者对科学内容和美术的决定。
+      text: "HUANDENG 还在路上。它不是要替人表达，而是让 AI 先学会听人讲。"
       fontSize: 9.2
       fontFamily:
         ea: Microsoft YaHei
@@ -329,7 +322,7 @@ elements:
       - 64
       - 18
     content:
-      text: 16 / 16
+      text: "18 / 18"
       fontSize: 9.2
       fontFamily:
         ea: Microsoft YaHei

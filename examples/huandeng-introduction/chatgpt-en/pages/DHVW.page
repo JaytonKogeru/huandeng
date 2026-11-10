@@ -12,159 +12,7 @@ elements:
       - 67
     role: title
     content:
-      text: The order changes. The page stays linked.
-      fontFamily: Arial
-      fontSize: 29
-      color: "#263C34"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-  - elementId: linked-page
-    elementType: image
-    src: "media/imported/20b7c78e9be4344089540b3a013d3de65540457409b28913638f18fd6161564d.png"
-    sourceName: 02.png
-    alt: 02.png
-    bounds:
-      - 44
-      - 161
-      - 300
-      - 169
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: stable-id
-    elementType: text
-    bounds:
-      - 44
-      - 352
-      - 300
-      - 57
-    content:
-      text: One page · the same Slide ID
-      fontFamily: Arial
-      fontSize: 17
-      color: "#356F68"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-  - elementId: position-table
-    elementType: table
-    bounds:
-      - 391
-      - 159
-      - 523
-      - 251
-    columnWidths:
-      - 0.46
-      - 0.15
-      - 0.18
-      - 0.21
-    style:
-      cellStyle:
-        fontFamily: Arial
-        fontSize: 16
-        color: "#263C34"
-        border:
-          color: "#C7D3CB"
-          width: 0.6
-        padding: 9
-      firstRowStyle:
-        fill: "#E4ECE6"
-        bold: false
-    rows:
-      - - text: Page
-          bold: true
-          align:
-            - left
-            - middle
-        - text: Main
-          bold: true
-          align:
-            - left
-            - middle
-        - text: Full
-          bold: true
-          align:
-            - left
-            - middle
-        - text: Brief
-          bold: true
-          align:
-            - left
-            - middle
-      - - text: C1′ distances · ZWZJ
-          align:
-            - left
-            - middle
-        - text: "2"
-          align:
-            - left
-            - middle
-        - text: "2"
-          align:
-            - left
-            - middle
-        - text: "3"
-          align:
-            - left
-            - middle
-      - - text: Clients and project · YZ4T
-          align:
-            - left
-            - middle
-        - text: "9"
-          align:
-            - left
-            - middle
-        - text: "9"
-          align:
-            - left
-            - middle
-        - text: "2"
-          align:
-            - left
-            - middle
-      - - text: Focused edit · ZN52
-          align:
-            - left
-            - middle
-        - text: "10"
-          align:
-            - left
-            - middle
-        - text: "10"
-          align:
-            - left
-            - middle
-        - text: "4"
-          align:
-            - left
-            - middle
-  - elementId: mapping-copy
-    elementType: text
-    bounds:
-      - 44
-      - 458
-      - 870
-      - 48
-    content:
-      text: Position follows the talk sequence; the reference still points to the original page.
-      fontFamily: Arial
-      fontSize: 19
-      color: "#66756B"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
+      {"text":"First, which page are we talking about?","fontFamily":"Arial","fontSize":29,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
   - elementId: brand-small
     elementType: image
     src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
@@ -217,4 +65,82 @@ elements:
         - top
       lineHeight: 1.3
       field: main-position
-notes: The table is a mapping of this project’s actual Main/full/brief composition, checked after final composition. Stable page identities are displayed as the real short codes; no full UUID is required to understand reuse. A pinned appearance retains the same page identity while selecting a named version.
+  - elementId: thumb-1
+    elementType: image
+    src: "media/imported/57891a9f6a53696a43685b52093aede782a6f8d05b1131157bf799c9d4db9794.png"
+    sourceName: 02.png
+    alt: 02.png
+    bounds:
+      - 44
+      - 157
+      - 300
+      - 169
+    fit:
+      mode: contain
+    crop:
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+  - elementId: identity-copy
+    elementType: text
+    bounds:
+      - 44
+      - 358
+      - 300
+      - 91
+    content:
+      text: |-
+        Position follows the sequence.
+        Slide ID stays with the page.
+      fontFamily: Arial
+      fontSize: 20
+      color: "#356F68"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.6
+  - elementId: identity-table
+    elementType: table
+    bounds:
+      - 391
+      - 157
+      - 523
+      - 247
+    columnWidths:
+      - 0.47
+      - 0.27
+      - 0.26
+    style:
+      cellStyle:
+        fontFamily: Arial
+        fontSize: 16
+        color: "#263C34"
+        border:
+          color: "#CAD5CD"
+          width: 0.5
+        padding: 10
+      firstRowStyle:
+        fill: "#E4ECE6"
+        bold: true
+    rows:
+        [[{"text":"Page · Slide ID","bold":true,"align":["left","middle"]},{"text":"Full position","bold":true,"align":["left","middle"]},{"text":"Brief position","bold":true,"align":["left","middle"]}],[{"text":"Scientific example · ZWZJ","bold":false,"align":["left","middle"]},{"text":"17","bold":false,"align":["left","middle"]},{"text":"10","bold":false,"align":["left","middle"]}],[{"text":"Workflow · YZ4T","bold":false,"align":["left","middle"]},{"text":"21","bold":false,"align":["left","middle"]},{"text":"11","bold":false,"align":["left","middle"]}],[{"text":"Asset library · 35U5","bold":false,"align":["left","middle"]},{"text":"16","bold":false,"align":["left","middle"]},{"text":"9","bold":false,"align":["left","middle"]}]]
+  - elementId: identity-takeaway
+    elementType: text
+    bounds:
+      - 44
+      - 472
+      - 870
+      - 35
+    content:
+      text: Ask for the edit by Slide ID, then inspect that page’s history.
+      fontFamily: Arial
+      fontSize: 19
+      color: "#66756B"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+notes: "If a page is the editing unit, I need a reliable way to name it. Slide four may no longer be fourth after a reorder. Position therefore describes the current sequence; the four-character Slide ID identifies the page. The table uses actual sequences from this project. That makes an editing request less ambiguous, even when two talks use the same page in different positions."

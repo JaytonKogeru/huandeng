@@ -12,151 +12,7 @@ elements:
       - 67
     role: title
     content:
-      text: 在编辑器里接着做
-      fontFamily: Microsoft YaHei
-      fontSize: 28
-      color: "#263C34"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-  - elementId: editor-working
-    elementType: image
-    src: "media/imported/5a8ee75844a1b6b472e3ab31291abb94b369b1058bdd9ee04ab24f28bd8ba001.png"
-    sourceName: "editor-native-chart.png"
-    alt: "editor-native-chart.png"
-    bounds:
-      - 44
-      - 124
-      - 631
-      - 379
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: ui-icon-0
-    elementType: icon
-    iconName: fas:object-group
-    bounds:
-      - 710
-      - 151
-      - 23
-      - 23
-    fill:
-      type: solid
-      color: "#356F68"
-  - elementId: ui-label-0
-    elementType: text
-    bounds:
-      - 748
-      - 150
-      - 166
-      - 29
-    content:
-      text: 画布
-      fontFamily: Microsoft YaHei
-      fontSize: 20
-      color: "#263C34"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-  - elementId: ui-copy-0
-    elementType: text
-    bounds:
-      - 710
-      - 191
-      - 205
-      - 62
-    content:
-      {"text":"直接选择、修改对象。","fontFamily":"Microsoft YaHei","fontSize":16,"color":"#66756B","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: ui-icon-1
-    elementType: icon
-    iconName: fas:image
-    bounds:
-      - 710
-      - 263
-      - 23
-      - 23
-    fill:
-      type: solid
-      color: "#356F68"
-  - elementId: ui-label-1
-    elementType: text
-    bounds:
-      - 748
-      - 262
-      - 166
-      - 29
-    content:
-      text: 素材
-      fontFamily: Microsoft YaHei
-      fontSize: 20
-      color: "#263C34"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-  - elementId: ui-copy-1
-    elementType: text
-    bounds:
-      - 710
-      - 303
-      - 205
-      - 62
-    content:
-      text: 原图在项目中继续使用。
-      fontFamily: Microsoft YaHei
-      fontSize: 16
-      color: "#66756B"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-  - elementId: ui-icon-2
-    elementType: icon
-    iconName: fas:note-sticky
-    bounds:
-      - 710
-      - 375
-      - 23
-      - 23
-    fill:
-      type: solid
-      color: "#356F68"
-  - elementId: ui-label-2
-    elementType: text
-    bounds:
-      - 748
-      - 374
-      - 166
-      - 29
-    content:
-      text: 讲稿
-      fontFamily: Microsoft YaHei
-      fontSize: 20
-      color: "#263C34"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-  - elementId: ui-copy-2
-    elementType: text
-    bounds:
-      - 710
-      - 415
-      - 205
-      - 62
-    content:
-      {"text":"讲稿解释细节；\n页面呈现证据。","fontFamily":"Microsoft YaHei","fontSize":16,"color":"#66756B","bold":false,"align":["left","top"],"lineHeight":1.3}
+      {"text":"人和 Agent，都回到这个编辑器","fontFamily":"Microsoft YaHei","fontSize":28,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
   - elementId: brand-small
     elementType: image
     src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
@@ -209,4 +65,46 @@ elements:
         - top
       lineHeight: 1.3
       field: main-position
-notes: 真实Editor截图，界面和页内容都使用本稿语言。这个工作区可直接选中图像、图表和文字；Agent的修改随后也在这里检查。截图用于说明操作环境；科学细节见前面的独立例页。
+  - elementId: editor-native-chart
+    elementType: image
+    src: "media/imported/675167a0b82813c8f43297d5e8823b0788e05a2ffd0e546c3d53b0fab94a61e5.png"
+    sourceName: editor-native-chart.png
+    alt: editor-native-chart.png
+    bounds:
+      - 44
+      - 127
+      - 631
+      - 379
+    fit:
+      mode: contain
+    crop:
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+  - elementId: editor-copy
+    elementType: text
+    bounds:
+      - 712
+      - 145
+      - 204
+      - 337
+    content:
+      text: |-
+        项目 / 页面 / 素材 / 文件
+        组织这份工作
+  
+        画布与图层
+        直接选择和调整对象
+  
+        Story 与属性
+        保留目的，检查细节
+      fontFamily: Microsoft YaHei
+      fontSize: 17
+      color: "#263C34"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.55
+notes: "有了文档和历史，还需要一个人愿意使用的工作区。HUANDENG Editor保留画布编辑，左边是项目、页面、素材和文件，右边可以看对象属性、图层和Story。Agent的修改也会回到同一份画面里。我希望人在这里接着改，不必为了让AI参与而放弃直接选择对象、排列图层和调整版面。"

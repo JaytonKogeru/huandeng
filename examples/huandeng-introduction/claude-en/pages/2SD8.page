@@ -11,7 +11,7 @@ elements:
       - 816
       - 72
     content:
-      text: A worked example
+      text: "What I built"
       fontFamily: Arial
       fontSize: 40
       lineHeight: 1.2
@@ -20,4 +20,4 @@ elements:
       align:
         - left
         - middle
-notes: Section 2. Let's make this concrete with one real scientific slide, then follow a single change to it from request to saved, reviewable result.
+notes: "Section 2. Those four problems led to one tool: an editor plus a plugin. Here is where it came from and what it looks like."

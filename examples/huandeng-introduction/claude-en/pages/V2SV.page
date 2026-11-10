@@ -11,7 +11,7 @@ elements:
       - 848
       - 42
     content:
-      text: A slide keeps its ID when it moves
+      text: "Say “C014”, not “slide 4”"
       fontFamily: Arial
       fontSize: 30
       lineHeight: 1.2
@@ -199,7 +199,7 @@ elements:
       - 420
       - 16
     content:
-      text: HUANDENG  /  One source, many talks
+      text: "HUANDENG  /  The page is the unit of change"
       fontFamily: Arial
       fontSize: 11
       lineHeight: 1.3
@@ -224,4 +224,4 @@ elements:
       align:
         - right
         - middle
-notes: Slide numbers are a poor way to refer to slides, because they change whenever the deck changes. HUANDENG separates the two. The status bar on the left, captured before and after moving one slide two places later, shows Position going from 2 to 4 while the Slide ID stays C014. Browse shows both on every card. So when you write in your notes, or ask an agent, to fix the chart on slide C014, that request still means the same slide next week. When a slide appears in a Presentation, each appearance is an occurrence with its own identity, so a slide used twice can have different notes each time. Footers in this deck use a live Position field, which is why the numbers stay right without anyone retyping them.
+notes: "When I talk to an agent about my slides, I used to say: fix slide four. But if the order changed since the last version, slide four is a different slide. So HUANDENG separates the two. Position is just where a slide sits now. The Slide ID is a short four-character code, letters and numbers, that belongs to the slide for good. The status bar here shows Position moving from 2 to 4 while the Slide ID stays C014. Now I can say: fix the chart on C014, and the agent knows exactly which page I mean, next week as well as today. The same ID is what page history hangs on."

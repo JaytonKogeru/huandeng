@@ -1,18 +1,25 @@
-# HUANDENG：科研演示的编辑工作流
+# 我为什么开始做幻灯
 
-ChatGPT 重做的中文项目介绍。打开本目录的 `deck.pptd`，继续编辑同一份作品；移动时保留整个文件夹。
+ChatGPT 根据作者口述重新组织的中文介绍。打开 `deck.pptd` 继续编辑；移动作品时保留整个项目目录。
 
-- Main 与“完整介绍”：19 页。
-- “简短介绍”：7 页，改变讲述顺序，并固定科学示例的命名版本。
-- 三张纯标题 Section：Main 第 3、7、12 页。
-- 原始 HUANDENG 标识、真实客户端图标、暖纸色 / 灰绿 / 沙色背景按内容角色使用。
-- 公开 PDB 1BNA 的结构、12 个距离、表格与公式组成同一个科学案例。
-- 中文 UI 与中文内容的真实截图，原生 DPR3 采集。
+这次从组会里被认出的 AI 风格、修改两页却留下整套副本、截图难以表达对象结构这几件事出发。人的故事先于页面；Editor、Story、Slide ID、逐页历史与素材库随后解释各自解决什么问题。
 
-当前素材索引见 `evidence/assets.json`；科学原始坐标、CSV、方法和复现脚本在 `sources/science/`。原图和过去导入的素材保留，避免破坏页面历史。
+## 当前内容
 
-`evidence/wording-edit.json` 与 `wording-edit-values.json` 记录精确操作：当时只改标题与说明。随后单独调整过坐标轴，并去掉仅用于高亮点的辅助曲线，以保留 PowerPoint 原生图表；原始 12 个数值未变。简稿仍固定到早期措辞修改后的版本。
+- Main / 完整介绍：27 页；简短介绍：13 页，使用同一份 Main 页面材料。
+- 完整稿第 8、13、22 页是纯标题 Section。中文标题和正文按层级控制字号，保留原有产品标识、图标、纸色／灰绿／沙色背景与有用途的图片。
+- 公开 PDB 1BNA 例页说明局部修改如何保留原图、12 个数值与出处。表格是原生对象；公式与图表按支持范围导出为可编辑对象。
+- 实际中文 Editor 截图在 1600 × 960、DPR 3 下采集，等待图表和图片完整显示。
+- 每页都有目的、保留约束和可讲述的 Notes；简短稿的科学页有这次引用自己的讲稿，并固定到真实保存过的命名版本。
 
-当前 PDF 与 PPTX 位于 `Exports/`，也随 plugin-v0.18.2 的介绍稿交付发布。PPTX 保留支持的原生文本、图表、表格和公式；功能图标作为图片交付。现场点击效果与静态导出分开。
+## 阅读与继续工作
 
-上一轮视觉稿被作者拒收。本轮经过 Agent 视觉复核与文件验证，供作者评审，不声称已经获作者认可。完整比较和限制见上级目录 README 与 docs/INTRODUCTION-DELIVERY.md。
+`Exports/deck.pdf` 与 `Exports/deck.pptx` 是 27 页完整稿；`Exports/brief.pdf` 与 `Exports/brief.pptx` 是 13 页简短稿。导出报告与各文件对应。GitHub 下载入口见[六稿索引](../README.md)。
+
+[speaker-notes.md](speaker-notes.md) 从当前完整稿和简短稿的实际 Notes 整理，便于通读；修改讲稿请回到对应页面或 Presentation 引用。
+
+作者原话、技术来源说明在 [sources/story](sources/story)；坐标、CSV、测量方法与复现脚本在 [sources/science](sources/science)。`evidence/assets.json` 索引实际素材来源与用途；`evidence/composition.json` 记录顺序，`evidence/story-verification.json` 记录结构核验，`evidence/exports.json` 绑定当前导出哈希。
+
+原有页面身份、原始素材和已保存版本继续保留。早先“只改标题与解释”的实际操作，与本轮调整坐标轴标注、改写故事的操作分开记录。简短稿的 pin 保留较早的措辞修改阶段；Main 的图表标注已经调整。
+
+作者肯定了上一轮美术效果，并要求重写故事。这一稿经过独立 Agent 审读，仍等待作者对新内容的反馈。导出核验、原生工具试验和作者接受是分别记录的结果。

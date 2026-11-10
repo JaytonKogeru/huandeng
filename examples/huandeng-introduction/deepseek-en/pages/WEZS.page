@@ -1,0 +1,23 @@
+pageType: section
+background:
+  type: solid
+  color: "#17181A"
+elements:
+  - elementId: p9-title
+    elementType: text
+    role: title
+    bounds:
+      - 80
+      - 210
+      - 760
+      - 100
+    content:
+      text: The editor
+      fontSize: 64
+      fontFamily: Georgia
+      color: "#F7F5F0"
+      lineHeight: 1
+      align:
+        - left
+        - middle
+notes: So that's what I built. I'll show you the editor now, but I want to show it as answers to those two problems, not as a tour of every button.

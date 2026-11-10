@@ -1,0 +1,132 @@
+pageType: content
+background:
+  type: solid
+  color: "#E4ECE6"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 44
+      - 35
+      - 870
+      - 68
+    role: title
+    content:
+      text: 所以，我想先把故事讲出来
+      fontFamily: Microsoft YaHei
+      fontSize: 28
+      color: "#263C34"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: brand-small
+    elementType: image
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    alt: huandeng.png
+    bounds:
+      - 44
+      - 510
+      - 17
+      - 17
+    fit:
+      mode: contain
+    crop:
+      left: 0.18
+      right: 0.18
+      top: 0.14
+      bottom: 0.14
+  - elementId: foot
+    elementType: text
+    bounds:
+      - 69
+      - 513
+      - 130
+      - 17
+    content:
+      text: HUANDENG
+      fontFamily: Microsoft YaHei
+      fontSize: 10
+      color: "#66756B"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: position
+    elementType: text
+    bounds:
+      - 884
+      - 512
+      - 30
+      - 18
+    content:
+      text: ""
+      fontFamily: Microsoft YaHei
+      fontSize: 10
+      color: "#66756B"
+      bold: false
+      align:
+        - right
+        - top
+      lineHeight: 1.3
+      field: main-position
+  - elementId: spoken
+    elementType: text
+    bounds:
+      - 55
+      - 163
+      - 831
+      - 93
+    content:
+      text: “最好的办法就是让人类给 AI 讲一个故事。”
+      fontFamily: Microsoft YaHei
+      fontSize: 29
+      color: "#263C34"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.55
+  - elementId: account-flow
+    elementType: text
+    bounds:
+      - 55
+      - 312
+      - 823
+      - 101
+    content:
+      text: |-
+        我自由地讲，AI 整理其中的逻辑，
+        再把这个逻辑变成 slides 和讲稿。
+      fontFamily: Microsoft YaHei
+      fontSize: 23
+      color: "#263C34"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.7
+  - elementId: quote-source
+    elementType: text
+    bounds:
+      - 55
+      - 458
+      - 823
+      - 24
+    content:
+      text: 来自我这次介绍项目的口述
+      fontFamily: Microsoft YaHei
+      fontSize: 13
+      color: "#66756B"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+notes: |-
+  我的理解是，AI味不只来自颜色和模板，也来自没有重点、没有取舍，却努力覆盖一切。这是我从自己的经历里形成的判断。所以我更愿意先把故事讲出来，想到哪里说到哪里，再让AI整理其中的逻辑。就像这次，我先讲为什么做HUANDENG。这样讲稿和slides长在同一条思路上，我不用在最后再去适应一套AI替我安排的逻辑。
+
+  Account source: sources/story/USER-STORY.zh-CN.md. The explanation is based on the founder’s personal experience and design judgment.

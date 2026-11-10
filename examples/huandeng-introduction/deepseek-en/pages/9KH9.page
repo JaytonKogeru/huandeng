@@ -1,0 +1,81 @@
+background:
+  type: solid
+  color: "#F7F5F0"
+elements:
+  - elementId: p5-eyebrow
+    elementType: text
+    bounds:
+      - 64
+      - 38
+      - 300
+      - 16
+    content:
+      text: 04 · THE TURN
+      fontSize: 10
+      fontFamily: Consolas
+      color: "#B43C26"
+      letterSpacing: 1.6
+      align:
+        - left
+        - top
+  - elementId: p5-quote
+    elementType: text
+    role: title
+    bounds:
+      - 64
+      - 104
+      - 800
+      - 170
+    content:
+      text: If the deck comes first, the talk becomes an explanation of the deck.
+      fontSize: 40
+      fontFamily: Georgia
+      color: "#17181A"
+      lineHeight: 1.18
+      align:
+        - left
+        - top
+  - elementId: p5-rule
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 64
+      - 300
+      - 48
+      - 2
+    fill:
+      type: solid
+      color: "#B43C26"
+  - elementId: p5-body
+    elementType: text
+    bounds:
+      - 64
+      - 330
+      - 620
+      - 150
+    content:
+      text: When I talk through a project, I double back. I remember the thing that actually mattered halfway through a sentence. That path is the talk. Building from it means I don't have to write a second script that justifies an order I never chose.
+      fontSize: 18
+      fontFamily: Segoe UI
+      color: "#3A3833"
+      lineHeight: 1.6
+      align:
+        - left
+        - top
+  - elementId: p5-folio
+    elementType: text
+    bounds:
+      - 860
+      - 512
+      - 36
+      - 14
+    content:
+      text: "5"
+      field: main-position
+      fontSize: 9.5
+      fontFamily: Consolas
+      color: "#A29C8F"
+      align:
+        - right
+        - top
+notes: There's a practical benefit I didn't expect. When I explain a project out loud, I wander. I double back. I remember the thing that mattered halfway through a sentence. That is not a defect to clean up; it is the talk. If the deck is built from that, the speaking comes with it. If the deck is built first, I end up writing a script that justifies an order I never chose. I would rather write the slides from the talk than the talk from the slides.

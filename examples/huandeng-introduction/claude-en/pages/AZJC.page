@@ -11,7 +11,7 @@ elements:
       - 848
       - 42
     content:
-      text: Read the argument before polishing slides
+      text: "Outline: read the deck as a story"
       fontFamily: Arial
       fontSize: 30
       lineHeight: 1.2
@@ -179,7 +179,7 @@ elements:
       - 420
       - 16
     content:
-      text: HUANDENG  /  One source, many talks
+      text: "HUANDENG  /  A worked example"
       fontFamily: Arial
       fontSize: 11
       lineHeight: 1.3
@@ -204,4 +204,4 @@ elements:
       align:
         - right
         - middle
-notes: "Before you adjust a single font size, read the talk as an argument. The Outline view lists every slide with its Position, title, Story summary and Slide ID, grouped by Section. You can see at once whether the order makes sense and whether a slide has lost its purpose. Browse shows the same slides as thumbnails, which is better for judging density and visual rhythm. Sections divide the deck into parts of the argument: each Section starts at a stable first slide and runs until the next Section, so inserting a slide in the middle does not break the structure. This introduction uses five Sections, each opened by a title-only slide."
+notes: "Before polishing any single slide, I read the deck as a story. The Outline view lists every slide with its title, its Story summary and its Slide ID, grouped by Section, so I can see whether the argument holds. Browse shows the same slides as thumbnails, for density and rhythm. Sections divide the talk into parts; each starts at a stable first slide and runs to the next."

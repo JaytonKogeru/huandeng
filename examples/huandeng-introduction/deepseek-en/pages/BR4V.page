@@ -1,0 +1,70 @@
+background:
+  type: solid
+  color: "#F7F5F0"
+elements:
+  - elementId: p2-eyebrow
+    elementType: text
+    bounds:
+      - 64
+      - 38
+      - 300
+      - 16
+    content:
+      text: 01 · THE ROOM
+      fontSize: 10
+      fontFamily: Consolas
+      color: "#B43C26"
+      letterSpacing: 1.6
+      align:
+        - left
+        - top
+  - elementId: p2-title
+    elementType: text
+    role: title
+    bounds:
+      - 64
+      - 84
+      - 760
+      - 120
+    content:
+      text: I could see it from the back of the room.
+      fontSize: 42
+      fontFamily: Georgia
+      color: "#17181A"
+      lineHeight: 1.1
+      align:
+        - left
+        - top
+  - elementId: p2-body
+    elementType: text
+    bounds:
+      - 64
+      - 248
+      - 520
+      - 140
+    content:
+      text: At group meeting, a deck would go up and my advisor would know. Not the template. Not the font. The deck had an answer for everything and a reason for nothing. You could feel that no one had chosen.
+      fontSize: 18
+      fontFamily: Segoe UI
+      color: "#3A3833"
+      lineHeight: 1.6
+      align:
+        - left
+        - top
+  - elementId: p2-folio
+    elementType: text
+    bounds:
+      - 860
+      - 512
+      - 36
+      - 14
+    content:
+      text: "2"
+      field: main-position
+      fontSize: 9.5
+      fontFamily: Consolas
+      color: "#A29C8F"
+      align:
+        - right
+        - top
+notes: This began in group meeting. Someone would put up a deck, and my advisor — and honestly most of the room — could tell almost immediately that a model had made it. The design was often fine. Sometimes it was better than fine. The tell was that nobody seemed to have chosen anything. I started watching for that feeling instead of for a particular template.

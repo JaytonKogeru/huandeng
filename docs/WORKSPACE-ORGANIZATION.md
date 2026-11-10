@@ -4,11 +4,13 @@ This document records the workstation cleanup accompanying the introduction rewo
 
 ## One project entry
 
-The four editable introductions live in [examples/huandeng-introduction](../examples/huandeng-introduction/README.md): `chatgpt-zh`, `chatgpt-en`, `claude-en`, and `deepseek-zh`. Each directory contains its own `deck.pptd`. Shared assets and useful reference projects are alongside those four projects. Old parallel copies under the former top-level introduction directory have been retired.
+The editable introductions live in [examples/huandeng-introduction](../examples/huandeng-introduction/README.md), which maintains the current collection and its authoring provenance. Each project has its own `deck.pptd`; shared assets and useful references live alongside the projects. The current collection contains six story editions: ChatGPT, Claude Code and DeepSeek Harness, each in Chinese and English. Old parallel copies under the former top-level introduction directory have been retired.
 
 Use `Start-Huandeng.cmd` from the main repository for the current desktop application. The top-level `D:\_Proj\README.md` is a short Chinese index pointing here and explaining the remaining related directories. No additional dated archive or active repository was created for this cleanup.
 
-## Measured cleanup
+## Earlier cleanup checkpoint
+
+The first pass counted related directory names; it was not a complete inventory of every item in `D:\_Proj`. The later all-entry pass below covers the previously missed unprefixed installer, v0.13 transfer files, and private handoff directories.
 
 | Item | Before | After | Handling |
 | --- | ---: | ---: | --- |
@@ -27,15 +29,13 @@ Git removed worktree registrations through `git worktree remove`, without forcin
 
 | Location under `D:\_Proj` | Role and reason for retention |
 | --- | --- |
-| `Huandeng` | Current source, four introductions, shared assets, current desktop package, and development entry. |
-| `Huandeng-v010-20261108` | Still runs a writer for a real research project. Retained in place; no project schema migration was attempted. |
-| `Huandeng-Handoff-Private` | Current private handoff material. Preserved at its existing location. |
-| `HUANDENG-PRIVATE-HANDOFFS` | Additional user private handoff material. Preserved at its existing location. |
+| `Huandeng` | Current source, introductions, shared assets, current desktop package, and development entry. |
+| `dsh-huandeng` | Independent DeepSeek adapter source appeared during this pass. It was not created by this cleanup or the native trial controllers; retained as potentially concurrent user work, without moving or publishing it. |
 | `FreestyleScientificSlides` | Independent FSS / ArgFrame source with local changes and an active native plugin dependency. |
 | `FSS-worktrees` | Two FSS worktrees with distinct modified and untracked source files. |
 | `FSS-PPTD-Validation` | Existing validation and reference material whose reproducibility was not established. |
 
-The main repository also retains `.verification/v04-worktree`: its audit found 76 modified or untracked source files. It is not a second public project entry. The v0.10 tree and FSS trees were not treated as disposable merely because their names are old.
+The last nested v0.4 worktree and the v0.10 research-service tree have now been retired following the source-retention and live-dependency checks below. HUANDENG has one registered worktree: main. The FSS trees retain their independent work.
 
 The old v0.18 worktree was removed after both authoring teams released its screenshot dependency. Playwright is available through the main repository's core package dependencies, so an entire historical checkout is no longer needed to run the capture helpers.
 
@@ -43,7 +43,7 @@ The old v0.18 worktree was removed after both authoring teams released its scree
 
 The only physical main-repository installation is `dist/HUANDENG-v0.18.0-win32-x64`. Its build records source revision `35dfe649d450d22a0e4e3b70661be52c67eb9f7a` with `sourceDirty=false`. The `dist/HUANDENG-win32-x64` junction points to this same directory; it contains no second binary copy. Existing shortcuts and the PPTD association point to the current package. No Editor executable or Editor source was upgraded during this rework.
 
-During directory cleanup, six identified historical public-demo or test processes were stopped. The four task-owned introduction writers remained available through rendering, export and release verification. After the release assets were published and checked, those four temporary writers were closed following fresh process and GUI dependency checks. The ordinary Editor retained the user's two research projects, and the older research writer remained available. User preferences were byte-identical before and after this service cleanup. No private project was closed, discarded, migrated, or exported.
+During the earlier introduction-rework cleanup, six identified historical public-demo or test processes were stopped. The four task-owned introduction writers remained available through rendering, export and release verification. After the release assets were published and checked, those four temporary writers were closed following fresh process and GUI dependency checks. The ordinary Editor retained the user's two research projects, and the older research writer remained available. User preferences were byte-identical before and after this service cleanup. No private project was closed, discarded, migrated, or exported.
 
 A unique earlier save-failure project, a small original draft recovery set, and a research design reference were retained under ignored verification storage. They are user data, not release material. Generated runtimes, repeated Office inputs, bulk session logs, and whole historical package copies were not retained with them.
 
@@ -53,21 +53,21 @@ The retired introduction paths in the ordinary Editor's recent list were migrate
 
 The same 0.18.0 executable was reopened. The user subsequently opened research projects; that later activity was preserved. Historical layout keys were not removed as a side effect of cleaning the visible recent list. This matters because the Editor saves its in-memory preference snapshot as a whole: overwriting a live profile would risk restoring stale state.
 
-## Plugin source, native distribution, and host deduplication
+## Earlier plugin distribution and host deduplication
 
-The current plugin source and installed native distribution are **0.18.2**. The Editor remains 0.18.0. The new guide permits an intentional background system, meaningful logos and icons, original explanatory diagrams, and scientific charts when they serve the content. It no longer treats white backgrounds, absent illustrations, or a fixed page sequence as a universal quality rule. Evidence fidelity and real Office review remain necessary. Agent visual review is recorded separately from author acceptance.
+The first rework installed native plugin **0.18.2**. The current story-rework native update is recorded below. The Editor remains 0.18.0. The new guide permits an intentional background system, meaningful logos and icons, original explanatory diagrams, and scientific charts when they serve the content. It no longer treats white backgrounds, absent illustrations, or a fixed page sequence as a universal quality rule. Evidence fidelity and real Office review remain necessary. Agent visual review is recorded separately from author acceptance.
 
 The native Claude Code and DeepSeek Harness trials actually loaded the frozen **0.18.1 candidate**. That provenance remains unchanged. Version 0.18.2 changes the remaining contradictory README examples and three version manifests; the three tested guide files have identical bytes. The final native package has 24 files. A portable marketplace wrapper adds two catalog files whose source is the relative path `./huandeng`.
 
-Codex and Claude Code were updated through their supported plugin CLI commands. The dedicated HUANDENG DeepSeek launcher now selects the generated 0.18.2 patch; ordinary DeepSeek settings were not changed. The distribution directory, Codex cache, and Claude cache each matched all 24 package files. One final doctor run verified the local stdio MCP protocol and the current public project. This is protocol verification, not another model trial. The real DSH trial used its recorded desktop-host route and explicit project patch, not the dedicated interactive launcher.
+Codex and Claude Code were updated through their supported plugin CLI commands. At that checkpoint, the dedicated HUANDENG DeepSeek launcher selected the generated 0.18.2 patch; ordinary DeepSeek settings were not changed. The distribution directory, Codex cache, and Claude cache each matched all 24 package files. One final doctor run verified the local stdio MCP protocol and the current public project. This is protocol verification, not another model trial. The real DSH trial used its recorded desktop-host route and explicit project patch, not the dedicated interactive launcher.
 
-The duplicate entries were then traced to the actual OpenAI native Windows host: a folder-marketplace installation and an installation of the owned cloud plugin. Its detail menu exposed separate **Uninstall** and **Delete plugin** actions. Only **Uninstall** was used on the cloud-backed host installation. Final installed-list inspection showed one HUANDENG, `huandeng@huandeng-local`, whose detail page showed 0.18.2 and the 0.18.2 catalog path. The owned cloud plugin still exists at 0.18.2 and remains available for installation on another host. Its source, App binding, and account identity were not deleted.
+The duplicate entries were then traced to the actual OpenAI native Windows host: a folder-marketplace installation and an installation of the owned cloud plugin. Its detail menu exposed separate **Uninstall** and **Delete plugin** actions. Only **Uninstall** was used on the cloud-backed host installation. Final installed-list inspection showed one HUANDENG, `huandeng@huandeng-local`, whose detail page showed 0.18.2 and the 0.18.2 catalog path. The owned cloud plugin was retained at 0.18.2 and remained available for installation on another host. Its source, App binding, and account identity were not deleted.
 
 The separate DC-WALT connection remained ready after the operation, with the same runtime epoch. No native Claude or DeepSeek configuration was removed for the purpose of deduplication. An optional composer query was stopped by a guard because a user draft was already present; no message was sent and no draft text was changed. The completed verification is the host's installed list and plugin detail, rather than a claim about every other client's picker or about the catalog of available owned plugins.
 
 ## Storage accounting
 
-The final free-space checkpoint increased from **138,432,684,032 bytes to 152,060,272,640 bytes**, an observed net increase of **13,627,588,608 bytes (12.692 GiB)**. The first checkpoint was taken after cleanup had already started. Concurrent authoring and export writes also affect free space, so this is a measured net difference over that interval, not an exact attribution or the entire cleanup total.
+The earlier introduction-rework free-space checkpoint increased from **138,432,684,032 bytes to 152,060,272,640 bytes**, an observed net increase of **13,627,588,608 bytes (12.692 GiB)**. The first checkpoint was taken after cleanup had already started. Concurrent authoring and export writes also affect free space, so this is a measured net difference over that interval, not an exact attribution or the entire cleanup total.
 
 The initial scan measured **45,228,656,083 apparent bytes (42.122 GiB)** across the thirteen removed top-level worktree containers. That number excludes the removed nested v0.4 release tree and precedes selective user-data retention. It must not be presented as physically reclaimed storage: package-manager hard links and shared data can make apparent file sizes count the same allocated storage more than once. Removing the twelve old main-repository packages was separately observed to increase free space by 8,565,207,040 bytes during that step; that interval is part of the later cleanup, so these figures are not added together.
 
@@ -85,3 +85,89 @@ Future HUANDENG development should start from the main repository. Use temporary
 ## Post-release duplicate archive cleanup
 
 Three redundant native/coordinator ZIP files, totaling 39,745,201 bytes, were removed after their original source members were mapped to the committed canonical files and the published packages were verified. One unique 7,608-byte DeepSeek asset-provenance record was extracted and hash-verified before its surrounding duplicate archive was removed. It remains in the existing workstation audit receipts; no new archive directory or active project was created. The original quota-time PDF, metadata, guidance and inherited documentation already retained in the canonical projects remain available.
+
+## Story rework: complete top-level follow-up
+
+The follow-up recorded at 2026-11-10 22:32 UTC examined **all 118 top-level entries**, including names without a HUANDENG prefix. This corrects the scope of the earlier audit. The work directory is named `story-20261111`; that name is not a claim about the host timezone.
+
+| All top-level items in `D:\_Proj` | Before | After |
+| --- | ---: | ---: |
+| Directories | 27 | 22 |
+| Loose files | 91 | 4 |
+
+The removed material comprised `installer-v013`, `v013-evidence-preliminary`, and 87 `v013-*` loose files. Three former top-level private handoff directories became empty after their **29 unique originals (342,153 bytes)** were moved into the main repository's ignored private-handoff area, preserving relative filenames and verifying every file's SHA-256. Private titles and paths are intentionally absent from this public document.
+
+The installer directory contained three complete historical application packages. Their 1,232 application-source files matched reachable Git objects exactly; the recorded commits were ancestors of the current repository. Generated dependencies and binaries were removed. Only small unique recovery records, preference snapshots, and useful helper differences were retained. The preliminary evidence directory held committed screenshots, superseded captures, and four small records; no duplicate capture tree was kept.
+
+The five old source transfers contained 114 members: 36 matched Git bytes, 41 were formatter-equivalent to Git, 33 had substantive differences, and four were generated checksum manifests. The 33 substantive drafts were retained as a **112,471-byte patch** against identified Git bases, with original and normalized hashes recorded locally. The old ZIPs, base64 fragments, and repeated source copies were removed after verification.
+
+Free space increased by **2,244,448,256 bytes (2.090 GiB)** during this follow-up. This is an observed net change while other work continued, not the sum of apparent file sizes and not an independently additive measure of every prior cleanup step.
+
+The current 0.18.0 GUI, both research-service children, and the separate v0.10 research service retained their process identities. The three introduction projects that the user had since opened in that GUI also remained open. The live preference file and protected user-modified fixture were byte-identical across cleanup. Shortcuts and the existing scheduled task had no dependency on the retired directories. No live profile was rewritten.
+
+The final 22 directories include independent non-HUANDENG projects, which were left intact. The four remaining loose files are the directory index and three user files outside the proven cleanup set. At that checkpoint, HUANDENG had three registered worktrees and FSS had three. The subsequent v0.10 and v0.4 retirements below reduced HUANDENG to one. Main `dist` still contains one physical Editor package plus its compatibility junction.
+
+Local receipts for this pass are `initial-audit.json`, `omitted-v013-source-audit.json`, `v013-source-retention.json`, `launch-dependencies.json`, `handoff-dependency-audit.json`, and `omitted-items-cleanup.json` under `.verification/story-20261111`. The top-level Chinese index was updated to the canonical collection entry and no longer points to the retired private directories.
+
+## Story rework: native plugin 0.18.3
+
+The frozen **0.18.3** plugin was installed through the supported Codex and Claude Code commands, retaining the single `huandeng-local` catalog name. The dedicated HUANDENG DeepSeek launcher and patch now select 0.18.3; no ordinary DeepSeek settings were written. The installed Editor remains 0.18.0.
+
+The distribution directory, Codex cache, and Claude cache each matched all **24 package files**, including the content manifest. The story skill SHA-256 is `b41675a608ebddf63933e3f0dab519aeb1bf5ea18a19bf82549e26fb16f64b82`. The portable wrapper has two catalog files using `./huandeng`; workstation-specific launchers and project patches are not included in that portable wrapper.
+
+A read-only doctor run succeeded against an existing coordinator-owned public-project writer. It did not start a second writer, open a GUI, render a deck, or repeat a model trial. The real story authoring trials retain their separately recorded candidate and session provenance. Before final packaging, Biome formatted three plugin JSON manifests without changing their parsed values. The package was rebuilt and reinstalled with the supported commands; all 24 files were reverified at all three installation roots. Guides, README and scripts are byte-identical to the native trial candidate. The original four manifest files are retained as a small historical receipt.
+
+Doctor's `plugin.skillSha256` hashes the installed plugin skill. Its separate `storyGuideSha256` hashes the text returned by the existing Editor 0.18.0 MCP resource `huandeng://guide/story`. The runtime guide is not the plugin skill, and protocol verification is not a replacement for the full package hash comparison. Final receipts are `plugin-0183-format-refresh.json` and `plugin-0183-final-doctor.json`; the earlier installation and candidate receipts remain historical evidence.
+
+A further check found the v0.10 worktree clean at `40ef08e68f6541c28728576c70e2fda24e6ba4b3`, an ancestor of main. Its service reported `writable=false` and desktop protocol 1. The saved project list alone did not prove a live client; the subsequent investigation and retirement are recorded below.
+
+## Story rework: startup measurement
+
+Two isolated launches used the installed 0.18.0 executable, a separate profile and runtime directory, and one committed public project opened read-only. The project had 19 active pages, 42 stored page files, and 10,142,914 bytes of source and media. Native authoring trials remained active while the coordinator paused its rendering and exports. The filesystem cache was warm; this was not a clean-machine or post-reboot cold-start benchmark.
+
+| Observed stage | Time |
+| --- | ---: |
+| New process, empty Home DOM interactive | 1.854 s |
+| Second launch reused that process; forwarding process exited | 1.129 s |
+| Existing window, first public-project DOM ready | 5.117 s |
+| New process restoring one project, Home DOM interactive | 1.883 s |
+| Same restore launch, project DOM ready | 6.086 s |
+
+Home readiness meant the locale had loaded and the Open button was enabled. Project readiness meant rendered page elements were attached and fonts were ready. These are observed DOM checkpoints; Home's paint timing was unavailable in the offscreen window. The results separate the early Home UI from later project readiness and do not extrapolate to the user's larger private projects.
+
+The installed `main.cjs` and repository source had the same SHA-256. In [desktop main](../packages/desktop/main.cjs), `createWindow()` loads and shows Home before startup restoration. The startup handler then awaits each restored project in sequence, processes the requested or last project afterward, and only then sets `launchReady` and drains second-instance requests. `loadProject()` waits for the document service and renderer URL load, and activates each project. This ordering can make the desired project and later open requests wait behind every earlier saved tab. The production log confirmed the bundled production editor; Vite development startup was not the cause in this probe.
+
+The smallest follow-up worth implementing is a focused restoration change: prioritize the requested or last active project, admit pending open requests before the remaining restoration batch, and restore other tabs without repeatedly changing the active tab or focus. Preserve their saved ordering and the existing single-writer checks. This can be evaluated independently of UI art or a new Editor release. No Editor source or binary was changed in this audit, and there is no evidence here that all project startup time comes from restoration order.
+
+Both test applications closed normally with exit code 0, and both temporary document-service ports closed. The original public snapshot files, the user's live preferences, the protected fixture, and the research service identity remained unchanged. The temporary project, profile, and runtime were removed after those checks. Compact receipts remain as `startup-probe-setup.json`, `startup-timings.json`, and `startup-probe-cleanup.json` in `.verification/story-20261111`.
+
+## Story rework: retiring the orphaned v0.10 service
+
+The later dependency check found the old read-only service's parent absent, no child processes, and only its listening socket in three samples over 18 seconds. No client connection was present. The same-entry discovery record was absent, and the checked runtime registrations, native client configurations, shortcuts, and PPTD association did not reference the old tree. The service was therefore an orphan, rather than a reason to retain an entire historical checkout.
+
+The installed current core successfully opened the original research entry in read-only mode using an isolated temporary runtime. No project UI, page retrieval, rendering, or export was performed. The temporary reader stopped through its normal shutdown IPC. The original 100 source and metadata files had identical aggregate hashes before validation, after validation, and after stopping the old service. Their original filesystem location was retained.
+
+The old service then received `CTRL_C_EVENT` through a console whose only clients were that exact process and the cleanup helper. Its normal shutdown handler exited with code 0. Controlled forced termination was not needed. The process identity was checked through both its creation time and a held process handle; its port was confirmed closed afterward.
+
+The ignored historical material was reduced to **23 small unique helpers or handoff records (275,268 bytes)** and a **119,575-byte semantic source patch**. Of 1,303 transferred source members, 1,215 matched reachable Git bytes, 35 more matched after formatting, 43 substantive drafts were represented in the patch, and ten were generated checksum manifests. The original user-mark image was already retained byte for byte in the committed brand assets. Whole packages, duplicate source ZIPs, transfer fragments, repeated screenshots, and build logs were removed.
+
+`git worktree remove` unregistered the clean, merged v0.10 tree. Windows reported a long-path deletion residue; that exact unregistered residue was then removed after the same source and process guards. That step reduced HUANDENG to **two registered worktrees**: main and the nested v0.4 source worktree, which was subsequently retired as recorded below. The v0.10 removal interval showed an additional **827,506,688-byte (0.771 GiB)** net free-space increase; it is reported separately from earlier intervals.
+
+The latest full top-level snapshot is **22 directories and four loose files**. During this pass, a new independent `dsh-huandeng` adapter source directory appeared, briefly taking the count to 23 before the v0.10 tree was removed. Neither the root coordinator nor the native trial controllers created it. Its source was inventoried with hashes and preserved as potentially concurrent user work. This new source directory is distinct from the retired installation and transfer artifacts.
+
+Receipts are `v010-live-dependencies.json`, `v010-current-core-validation.json`, `v010-orphan-stop.json`, `v010-retention.json`, `v010-worktree-removal.json`, and `concurrent-dsh-adapter-inventory.json` in the current ignored work directory. The top-level index has been updated accordingly.
+
+
+## Story rework: final nested-worktree retirement
+
+The final v0.4 audit found 81 modified or untracked source entries. Of these, 67 original byte sequences were already reachable Git blobs. The remaining 14 source differences were retained in a **37,667-byte patch** against identified Git bases. The patch passed `git apply --check`, was actually applied in a temporary verification directory, and reproduced every retained file's original SHA-256. No historical branch commit or whole source copy was created.
+
+Ten unique JSON verification records, totaling **1,345,348 bytes**, were retained under the existing ignored private-handoff area. A repeated result was kept once. Generated dependency trees, duplicate screenshots, test exports and full build payloads were not retained.
+
+Fresh checks of processes, 153 shortcuts, six client configurations, file associations and scheduled tasks found no dependency on the v0.4 tree. Its 2,881 generated reparse links were unlinked without following their targets. After the source-retention checks, `git worktree remove --force` removed the registration; a Windows long-path residue was then removed only within that exact unregistered directory. No process was stopped during this step.
+
+HUANDENG now has **one registered worktree**, the main repository. The final top-level inventory remains **22 directories and four loose files** because this last tree was nested inside main. FSS retains three independent worktrees. Main `dist` has one physical Editor 0.18.0 package and one compatibility junction. The six current introduction projects remain inside the canonical example collection.
+
+The removed v0.4 tree contained 1,951,776,699 apparent file bytes; 1,848,122,141 bytes belonged to files with multiple hard links. During its removal, concurrent release packaging produced a net free-space change of **minus 99,581,952 bytes**. That interval cannot establish this deletion's standalone physical recovery, and its apparent size is not a reclaimed-space claim.
+
+The private research sources and their original paths were preserved. The protected user fixture remains unchanged. This step did not rewrite the live desktop profile or alter the current application, introduction writers, unrelated projects or the newly observed independent adapter source. Receipts are `v04-retirement-audit.json`, `v04-source-retention.json`, `v04-worktree-removal.json` and the final `directory-plugin-final.json` in the current ignored work directory.

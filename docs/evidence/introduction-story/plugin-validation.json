@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "version": "0.18.3",
+  "frozenNativeSourceFiles": {
+    ".claude-plugin/plugin.json": "64b7bfcede03bb0d546b0ed8a6047c5e6a874213c646187716496e90159f66c6",
+    ".codex-plugin/plugin.json": "a08089bd8a6bd648dbd05a699c4aeeef68480092c3902e728200e7b4c3b303b6",
+    ".codex.mcp.json": "796b6d84791ab788586cf20bdb9fbd00afe205d559d4bb8aa1e66b2f1abbf51f",
+    ".mcp.json": "990fa20efd350f3196105104960a73e996c9e109cdd4984870b11afffac6505a",
+    "LICENSE": "c9d162644eab18fee59327c901e0b94dcc34f5bdc68c513b92c6d938aa96052f",
+    "README.md": "42377f7a8fadf3f7c09466904c15e63ef59ac52f7660245e3dc7b5657282d4dd",
+    "assets/icon.png": "c6cce013fd62e96048a5f10c1168ba05a2a7d6192f334d83386a4eec45732c22",
+    "mcp.json": "9f6fb1febf6d2a305f1c6377cd70f3b82d3c59660dbef45432332c12626fd3da",
+    "plugin.json": "d17733f82e2f54795d8edae4438fa215341ec5a9b70ac40b2362842f5fafd0e1",
+    "scripts/configure.mjs": "f6b4ffc7bd804bce5a277cfb8e553be2dfd5197f873c1f6603d71f3bf1395c30",
+    "scripts/discover.mjs": "0a5db74ad0a4f58c38f7605eec4c8c1441aa833bef2cf766a42c4af03db9f767",
+    "scripts/discovery.mjs": "6c64d27e9d9f0ea9d97a836ff84e735ee7801f10a5bcb6507137b0b8223ef70a",
+    "scripts/doctor.mjs": "3fb9caad3d2bbb8e1e825f463305d3bf0333b3d805043acc2f37bb2145e628e2",
+    "scripts/launch-mcp.mjs": "09e26914b4a24d2a5d583d5220848f6774522c5b8d5c0907e0d674408fe42ade",
+    "scripts/register-runtime.mjs": "beeb892fd5a3d2864b539be72bdf49c533a94f88cfeb87d94b68c90f0eebebba",
+    "scripts/runtime.mjs": "f6eb17b51fd49534da62fa56a2c40661646bc9d3b1e8b884b0241a1428e19996",
+    "skills/huandeng-story/SKILL.md": "b41675a608ebddf63933e3f0dab519aeb1bf5ea18a19bf82549e26fb16f64b82",
+    "skills/huandeng-story/agents/openai.yaml": "f550d03f5603fd7cd69f30cf1b6e5d1e24c4987c0271ab6b4553b176bde7d5ce",
+    "skills/huandeng-story/references/asset-evidence.md": "c4c5971c55d4a674f5629027c022116b52a8bde51c0c27447c4772b26f3df186",
+    "skills/huandeng-story/references/client-routing.md": "2127ab7cd1e0aaefb9c4375789d0b79f917fa74a060b6453d8a578507107c3f1",
+    "skills/huandeng-story/references/connected-review.md": "480b82235aa32ace296da74768c9a736890030f76f09a385df9c3e177e15f6d1",
+    "skills/huandeng-story/references/production-design.md": "63f7d6ab318dbb73b4f20236fd165d423556fb1bd691601a6c5c7020a4400587",
+    "skills/huandeng-story/references/scientific-design.md": "5812ea039d6a7dc147c5be2afd6a6124b4c72d348823f542aa92f2be5e040387"
+  },
+  "generatedContentManifestSha256": "1741f66627f449c1794c8904edf479d63782a1b1dd31f2083c07ee133645d3bf",
+  "guideHashes": {
+    "README.md": "42377f7a8fadf3f7c09466904c15e63ef59ac52f7660245e3dc7b5657282d4dd",
+    "skills/huandeng-story/SKILL.md": "b41675a608ebddf63933e3f0dab519aeb1bf5ea18a19bf82549e26fb16f64b82",
+    "skills/huandeng-story/references/asset-evidence.md": "c4c5971c55d4a674f5629027c022116b52a8bde51c0c27447c4772b26f3df186",
+    "skills/huandeng-story/references/production-design.md": "63f7d6ab318dbb73b4f20236fd165d423556fb1bd691601a6c5c7020a4400587",
+    "skills/huandeng-story/references/scientific-design.md": "5812ea039d6a7dc147c5be2afd6a6124b4c72d348823f542aa92f2be5e040387"
+  },
+  "postTrialPackagingChange": "Three JSON manifest files were formatted by Biome after native trials; parsed semantics, guides, README and scripts are unchanged. Final supported-CLI installs were reverified byte-for-byte.",
+  "formatRefreshSemanticEquality": true,
+  "nativeInstallation": {
+    "supportedCodexAndClaudeCli": true,
+    "verifiedPackageFilesPerRoot": 24,
+    "verifiedRoots": 3,
+    "deepseekDedicatedConfigurationUpdated": true,
+    "ordinaryDeepseekSettingsWritten": false
+  },
+  "runtimeDoctor": {
+    "ok": true,
+    "protocolVerified": true,
+    "toolCount": 22,
+    "operationReviewSupported": true,
+    "modelTaskVerified": false,
+    "runtimeStoryGuideSha256": "b65eb6be627fb5006b10617aecbdcbb1ee0d196e2527a60b82f73d4380953050",
+    "runtimeGuideSource": "Existing Editor 0.18.0 MCP resource huandeng://guide/story; distinct from the installed plugin SKILL."
+  },
+  "accountUpdate": {
+    "existingOwnedIdentityPreserved": true,
+    "version": "0.18.3",
+    "updatedTextFilesReadBack": 8,
+    "archiveFilesVerified": 20,
+    "appBindingAndAudienceRetained": true,
+    "reinstalled": false
+  },
+  "hostDeduplication": {
+    "previousHostUiVerifiedInstalledCount": 1,
+    "retainedLocalCatalog": "huandeng-local",
+    "nativeCatalogCacheVersion": "0.18.3",
+    "ownedPrivateAccountRecordRetained": true,
+    "existingConversationHotLoadingVerified": false
+  },
+  "nativeTrials": {
+    "completed": 4,
+    "claudeResponseModel": "claude-opus-5-5",
+    "deepseekConfiguredModel": "deepseek-flash",
+    "deepseekModelEvidence": "Official resolved configuration, not response metadata",
+    "findingsRetained": true
+  }
+}

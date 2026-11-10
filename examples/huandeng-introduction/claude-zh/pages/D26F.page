@@ -1,0 +1,124 @@
+background:
+  type: solid
+  color: "#F6F6F3"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 56
+      - 34
+      - 848
+      - 40
+    content:
+      text: 一份主幻灯片，多场演讲
+      fontFamily: Microsoft YaHei
+      fontSize: 26
+      lineHeight: 1.3
+      color: "#1C2321"
+      align:
+        - left
+        - top
+      bold: true
+    role: title
+  - elementId: shot-frame
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 56
+      - 88
+      - 400
+      - 306
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#CBD3CF"
+  - elementId: shot
+    elementType: image
+    bounds:
+      - 62
+      - 94
+      - 388
+      - 294
+    src: media/imported/afe675bef8594c3328129632115e6befdec36ffc2a7ad347cf1d754662ee6d07.png
+    sourceName: zh-CN-native-project-sequences-4x.png
+    fit:
+      mode: contain
+  - elementId: shot-cap
+    elementType: text
+    bounds:
+      - 56
+      - 400
+      - 400
+      - 20
+    content:
+      text: 真实界面：项目概览里的主幻灯片和一场演讲。
+      fontFamily: Microsoft YaHei
+      fontSize: 11
+      lineHeight: 1.4
+      color: "#7A8480"
+      align:
+        - left
+        - top
+  - elementId: body
+    elementType: text
+    bounds:
+      - 488
+      - 88
+      - 416
+      - 400
+    content:
+      text: <p><strong><span style="color:#2E6B5E">主幻灯片</span></strong>：所有页面的唯一来源。</p><p><span style="font-size:8px"> </span></p><p><strong><span style="color:#2E6B5E">演讲</span></strong>：从主幻灯片里挑页、排序，引用而不是复制。组会、答辩、简短介绍，各排各的。</p><p><span style="font-size:8px"> </span></p><p>主幻灯片里改一页，所有引用它的演讲一起更新；需要的时候，也可以把某场演讲固定在某个命名版本。</p><p><span style="font-size:8px"> </span></p><p><strong><span style="color:#2E6B5E">素材库</span></strong>：图片、图表和截图集中在 media，哪一页用了哪张图都查得到。</p><p><span style="font-size:8px"> </span></p><p>这份幻灯也排了一场 7 页的“组会简版”。</p>
+      fontFamily: Microsoft YaHei
+      fontSize: 15
+      lineHeight: 1.55
+      color: "#3E4845"
+      align:
+        - left
+        - top
+  - elementId: ft-mark
+    elementType: image
+    bounds:
+      - 56
+      - 505
+      - 16
+      - 16
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    fit:
+      mode: contain
+  - elementId: ft-label
+    elementType: text
+    bounds:
+      - 78
+      - 505
+      - 420
+      - 16
+    content:
+      text: HUANDENG  /  以“页”为单位
+      fontFamily: Microsoft YaHei
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - left
+        - middle
+  - elementId: ft-pos
+    elementType: text
+    bounds:
+      - 824
+      - 505
+      - 80
+      - 16
+    content:
+      text: "0"
+      fontFamily: Microsoft YaHei
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - right
+        - middle
+      field: main-position
+notes: 真正演讲的时候，我们可以只做一份 slides，但每次挑选需要的页面。主幻灯片是唯一来源，演讲只是从里面挑页、排序，是引用，不是复制。主幻灯片里改了一页，引用它的演讲都会看到更新；如果某场演讲需要保持当时的样子，可以固定到那一页的某个命名版本。素材也一样：图片、图表、截图都在素材库里，哪页用了哪张图都能查到。这份介绍本身也有一个七页的“组会简版”，就是用同一份主幻灯片排出来的。

@@ -1,0 +1,23 @@
+background:
+  type: solid
+  color: "#2D4A43"
+elements:
+  - elementId: divider-title
+    elementType: text
+    bounds:
+      - 72
+      - 226
+      - 816
+      - 72
+    content:
+      text: 我为什么要做幻灯
+      fontFamily: Microsoft YaHei
+      fontSize: 34
+      lineHeight: 1.25
+      color: "#FFFFFF"
+      align:
+        - left
+        - middle
+      bold: true
+    role: title
+notes: 第一部分。先讲动机：三件在做 slides 时让我不舒服的事。

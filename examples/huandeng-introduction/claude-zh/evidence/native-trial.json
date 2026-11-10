@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "project": "claude-zh",
+  "recordedAt": "2026-11-10T23:13:16.306443+00:00",
+  "nativeAuthor": "Claude Code",
+  "modelEvidence": {
+    "name": "claude-opus-5-5",
+    "source": "native assistant message model metadata",
+    "overrideRequested": false
+  },
+  "plugin": {
+    "version": "0.18.3",
+    "storySkillSha256": "b41675a608ebddf63933e3f0dab519aeb1bf5ea18a19bf82549e26fb16f64b82"
+  },
+  "prompt": {
+    "sha256": "36d8ec814b87b4371969b17e7c9e019a26614f032e101c99db616d574294ce76",
+    "fullUserMessageForwardedVerbatim": true,
+    "sharedWithBothNativeClients": true,
+    "containsUserEvaluationOfClaude": true,
+    "publicStoryExcerpt": "sources/story/USER-STORY.zh-CN.md",
+    "fullPromptPublished": false
+  },
+  "independence": {
+    "otherAuthorsVisualsOrTemplatesSupplied": false,
+    "requiredToMimicAnotherAuthor": false,
+    "narrativeOrderOrPageCountImposed": false,
+    "coordinatorAuthoredPageContent": false,
+    "claimScope": "Separate canonical project guidance and input routing; the complete user message, including its evaluation of the previous Claude edition, was shared with both clients."
+  },
+  "turns": [
+    {
+      "requestId": "87bd9d31-5d03-41e8-ad58-6a58d2c5c8e4",
+      "sessionId": "18c0d028-5f8b-4170-afb8-007767ff264b",
+      "state": "completed",
+      "exitCode": 0,
+      "nativeCompleted": true,
+      "elapsedSeconds": 966.13,
+      "toolCalls": 70,
+      "toolErrorCount": null,
+      "businessCompleted": true
+    }
+  ],
+  "mainPageCount": 20,
+  "presentations": [
+    {
+      "id": "lab-brief",
+      "title": "组会简版",
+      "pageCount": 7,
+      "explicitLocalNotes": 2
+    }
+  ],
+  "events": [],
+  "exports": {
+    "deck.pdf": {
+      "sha256": "01dfa04cc58173caeb00035eb2fb8c594d5594a9809c573bd64b1a70d0a8b0ba",
+      "bytes": 2092678,
+      "actor": "native author",
+      "exportPages": 20,
+      "metadataRevision": "sha256:6189d026a16d248e7cb8b338f9818376d4cc933e327db047f3480123ce827041",
+      "path": "Exports/deck.pdf",
+      "report": "Exports/deck.pdf.report.json"
+    },
+    "deck.pptx": {
+      "sha256": "ee9fb535961c4cfae693936194dda8dcf454f9ab5711dd448031e8066d1bcbe6",
+      "bytes": 1857010,
+      "actor": "native author",
+      "exportPages": 20,
+      "metadataRevision": "sha256:6189d026a16d248e7cb8b338f9818376d4cc933e327db047f3480123ce827041",
+      "path": "Exports/deck.pptx",
+      "report": "Exports/deck.pptx.report.json"
+    }
+  },
+  "ownerAcceptance": "pending",
+  "contentReview": "content-review.json",
+  "contentStatus": "candidate-with-content-findings",
+  "independentContentReviewSha256": "2b1e8d347969af797ea7b9525ef20fff85b4696a6c1568a827e80c02578db234",
+  "coordinatorShortExports": "short-exports.json",
+  "guidancePortability": "guidance-portability.json"
+}

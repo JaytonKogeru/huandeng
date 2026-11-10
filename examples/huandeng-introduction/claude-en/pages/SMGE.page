@@ -22,7 +22,7 @@ elements:
       - 796
       - 42
     content:
-      text: Try it on your next results deck
+      text: "Start with your story"
       fontFamily: Arial
       fontSize: 30
       lineHeight: 1.2
@@ -127,7 +127,7 @@ elements:
     bounds:
         [90,302,350,70]
     content:
-      text: Ask for one change. Read its preview, apply it, then review the receipt.
+      text: "Tell the agent your story first. Then ask for one change, read its preview, apply it and review it."
       fontFamily: Arial
       fontSize: 17
       lineHeight: 1.35
@@ -289,7 +289,7 @@ elements:
       - 848
       - 40
     content:
-      text: Editor and plugin 0.18. Issues, tests and pull requests are most useful where the previous slide lists gaps. This introduction is itself a HUANDENG project you can open and edit.
+      text: "Editor and plugin 0.18. Issues, tests and pull requests are most useful where the previous slide lists gaps. This introduction is itself a HUANDENG project, rebuilt from a spoken story."
       fontFamily: Arial
       fontSize: 14
       lineHeight: 1.35
@@ -297,4 +297,4 @@ elements:
       align:
         - left
         - top
-notes: "To try it, open the Editor and create a project, or open an existing deck.pptd. Then use Agent setup to copy the configuration for the AI client you already use. Start small: ask for one change to one slide, read the preview, apply it, and open the receipt. If you want to build or contribute, these three commands build and start the desktop editor from source, and the init command creates a new project folder without touching anything that already exists. The repository is listed at the bottom. This introduction is itself a HUANDENG project: open it, change a slide, and see your change in both of its Presentations. Thank you."
+notes: "If you want to try it, open the editor and start a project, or open an existing deck. Connect the AI client you already use from Agent setup. Then do what I did for this talk: tell the agent your story first, out loud and freestyle, and let it organise the story before it makes any slides. After that, ask for one change at a time, read the preview, apply it, and look at the review. The code and the build commands are on the right, and the repository is at the bottom. Thank you."

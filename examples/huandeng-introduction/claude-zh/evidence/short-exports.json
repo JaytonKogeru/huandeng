@@ -1,0 +1,26 @@
+{
+  "project": "claude-zh",
+  "presentationId": "lab-brief",
+  "actor": "coordinator mechanical export of existing native-authored Presentation",
+  "exports": {
+    "brief.pdf": {
+      "path": "Exports/brief.pdf",
+      "sha256": "401f5f4a5419dcd467dbf37d4d30e0c9d0cc74c8a34c06a020ad8c9e4d4101fd",
+      "bytes": 940700,
+      "pages": 7,
+      "originalCliFileName": "组会简版-lab-brie.pdf"
+    },
+    "brief.pptx": {
+      "path": "Exports/brief.pptx",
+      "sha256": "a429e8debdf54c77ff3b9f3f807b72e968d4f1301e5dcc6d60a1ac151d0aa475",
+      "bytes": 680954,
+      "pages": 7,
+      "originalCliFileName": "组会简版-lab-brie.pptx"
+    }
+  },
+  "coordinatorNote": "Initial verification expected an ID-only filename, but the CLI names Presentation exports with title plus ID. Reused the existing PDF receipt and normalized only these newly generated short-export filenames; Main exports were unchanged.",
+  "pdfPages": 7,
+  "pptxPages": 7,
+  "pptxNotes": 7,
+  "authoredSourceAndNativeMainExportsUnchanged": true
+}

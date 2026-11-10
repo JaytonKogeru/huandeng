@@ -1,0 +1,1299 @@
+{
+  "project": "claude-en",
+  "story": {
+    "schemaVersion": 1,
+    "mainStory": {
+      "purpose": "Tell why HUANDENG exists, from the founder's own group-meeting experience, and show the features that answer each reason.",
+      "audience": "Researchers who make scientific presentations with AI, and people who may use or contribute to HUANDENG",
+      "takeaway": "Slides need a human story; HUANDENG lets you and an AI agent build a deck from that story, one page at a time, with every change recorded."
+    },
+    "sections": [
+      {
+        "id": "sec-why",
+        "title": "Why I built it",
+        "story": {
+          "purpose": "The founder's four reasons, from group meetings and real attempts with AI.",
+          "audience": "Researchers who make scientific presentations with AI, and people who may use or contribute to HUANDENG",
+          "takeaway": "AI slides lack a human story; agents copy decks; screenshots cannot be measured; so start from the story."
+        },
+        "pageIds": [
+          "02f92b48-68df-4aac-b31a-82d1a251d37d",
+          "c51fd901-1ac1-426b-aa51-ade862d65405",
+          "99bf9e70-3522-4aa6-a1bf-6ce870f9142d",
+          "cd766544-e64b-4bab-abca-8dc01a8bad7d",
+          "a794c9d2-62ae-486b-ae08-dbf4c601fb92"
+        ],
+        "startPageId": "02f92b48-68df-4aac-b31a-82d1a251d37d"
+      },
+      {
+        "id": "sec-built",
+        "title": "What I built",
+        "story": {
+          "purpose": "Where HUANDENG comes from and what the editor looks like.",
+          "audience": "Researchers who make scientific presentations with AI, and people who may use or contribute to HUANDENG",
+          "takeaway": "PPTD plus OpenSlide's React editor, in a desktop app with a plugin."
+        },
+        "pageIds": [
+          "2022f6b4-ddd7-49f2-9864-1e41298e12bb",
+          "6ccc9401-312d-436c-897e-67fbbec228fd",
+          "417e1fea-9180-4574-acc4-493eb6282b04",
+          "49f1db15-b783-4a1b-8cff-815d4b4116e0"
+        ],
+        "startPageId": "2022f6b4-ddd7-49f2-9864-1e41298e12bb"
+      },
+      {
+        "id": "sec-example",
+        "title": "Story first: one slide, start to finish",
+        "story": {
+          "purpose": "Follow the 1BNA slide through Story, a requested change and its review.",
+          "audience": "Researchers who make scientific presentations with AI, and people who may use or contribute to HUANDENG",
+          "takeaway": "Story aligns the agent; every change is previewed and reviewable."
+        },
+        "pageIds": [
+          "6763c852-4a02-49f1-9ed7-78cfdc8f204e",
+          "e25cbd3a-6a20-4bc8-959f-eb3e1bcabefa",
+          "71d560b6-4ead-4477-a3c8-0bad5c755d0d",
+          "ce9e73d9-a17e-4e2d-8b80-4ed6e8332fd9",
+          "56c5f2a9-5146-41a3-8785-d78d8e94efa6",
+          "9ad205fe-9d24-47b7-8adb-721f66b64e8a"
+        ],
+        "startPageId": "6763c852-4a02-49f1-9ed7-78cfdc8f204e"
+      },
+      {
+        "id": "sec-page",
+        "title": "The page is the unit of change",
+        "story": {
+          "purpose": "Stable Slide IDs, per-page history and talks built by reference.",
+          "audience": "Researchers who make scientific presentations with AI, and people who may use or contribute to HUANDENG",
+          "takeaway": "Name a page once, keep its history, reuse it without copies."
+        },
+        "pageIds": [
+          "d47c2f73-4d43-429f-bc48-a9bed8dc99d4",
+          "050336e7-3878-4a2b-8727-2c4545dc1e47",
+          "3e42c654-67cb-4f39-8096-d8c0c3151d48",
+          "520e4e5e-eb41-49de-ae52-945e85096600"
+        ],
+        "startPageId": "d47c2f73-4d43-429f-bc48-a9bed8dc99d4"
+      },
+      {
+        "id": "sec-agents",
+        "title": "Working with agents",
+        "story": {
+          "purpose": "How agents connect, delivery, foundations and first steps.",
+          "audience": "Researchers who make scientific presentations with AI, and people who may use or contribute to HUANDENG",
+          "takeaway": "Agents use the same reviewable writer; start with your story."
+        },
+        "pageIds": [
+          "8704c48f-dc7b-41aa-95ae-7830550be331",
+          "b0f0b421-10ec-43b8-9e6d-88058c1d8fd3",
+          "3143e3cb-2278-4256-839a-24af78d9f6bc",
+          "2b804ca1-578d-4d8d-84ba-a05cf013de7c",
+          "9056e773-a44a-449a-8d49-900cf487bac8"
+        ],
+        "startPageId": "8704c48f-dc7b-41aa-95ae-7830550be331"
+      }
+    ],
+    "presentations": [
+      {
+        "id": "pres-full",
+        "title": "HUANDENG introduction (full, about 25 minutes)",
+        "story": {
+          "purpose": "The founder's story in full, with the worked example and the main features.",
+          "audience": "Researchers who make scientific presentations with AI, and people who may use or contribute to HUANDENG",
+          "takeaway": "Start from the story; the page is the unit of change; agents use one reviewable writer."
+        },
+        "items": [
+          {
+            "id": "full-01",
+            "kind": "page",
+            "pageId": "7d1954c5-ca5b-4eaa-a391-7b18431f6385"
+          },
+          {
+            "id": "full-story-bw88",
+            "kind": "page",
+            "pageId": "02f92b48-68df-4aac-b31a-82d1a251d37d"
+          },
+          {
+            "id": "full-story-ppkk",
+            "kind": "page",
+            "pageId": "c51fd901-1ac1-426b-aa51-ade862d65405"
+          },
+          {
+            "id": "full-02",
+            "kind": "page",
+            "pageId": "99bf9e70-3522-4aa6-a1bf-6ce870f9142d"
+          },
+          {
+            "id": "full-story-gddr",
+            "kind": "page",
+            "pageId": "cd766544-e64b-4bab-abca-8dc01a8bad7d"
+          },
+          {
+            "id": "full-story-c45u",
+            "kind": "page",
+            "pageId": "a794c9d2-62ae-486b-ae08-dbf4c601fb92"
+          },
+          {
+            "id": "full-04",
+            "kind": "page",
+            "pageId": "2022f6b4-ddd7-49f2-9864-1e41298e12bb"
+          },
+          {
+            "id": "full-story-tfjb",
+            "kind": "page",
+            "pageId": "6ccc9401-312d-436c-897e-67fbbec228fd"
+          },
+          {
+            "id": "full-added-7nhp",
+            "kind": "page",
+            "pageId": "417e1fea-9180-4574-acc4-493eb6282b04"
+          },
+          {
+            "id": "full-03",
+            "kind": "page",
+            "pageId": "49f1db15-b783-4a1b-8cff-815d4b4116e0"
+          },
+          {
+            "id": "full-09",
+            "kind": "page",
+            "pageId": "6763c852-4a02-49f1-9ed7-78cfdc8f204e"
+          },
+          {
+            "id": "full-05",
+            "kind": "page",
+            "pageId": "e25cbd3a-6a20-4bc8-959f-eb3e1bcabefa"
+          },
+          {
+            "id": "full-06",
+            "kind": "page",
+            "pageId": "71d560b6-4ead-4477-a3c8-0bad5c755d0d"
+          },
+          {
+            "id": "full-11",
+            "kind": "page",
+            "pageId": "ce9e73d9-a17e-4e2d-8b80-4ed6e8332fd9"
+          },
+          {
+            "id": "full-07",
+            "kind": "page",
+            "pageId": "56c5f2a9-5146-41a3-8785-d78d8e94efa6"
+          },
+          {
+            "id": "full-08",
+            "kind": "page",
+            "pageId": "9ad205fe-9d24-47b7-8adb-721f66b64e8a"
+          },
+          {
+            "id": "full-12",
+            "kind": "page",
+            "pageId": "d47c2f73-4d43-429f-bc48-a9bed8dc99d4"
+          },
+          {
+            "id": "full-10",
+            "kind": "page",
+            "pageId": "050336e7-3878-4a2b-8727-2c4545dc1e47"
+          },
+          {
+            "id": "full-13",
+            "kind": "page",
+            "pageId": "3e42c654-67cb-4f39-8096-d8c0c3151d48"
+          },
+          {
+            "id": "full-added-jz7u",
+            "kind": "page",
+            "pageId": "520e4e5e-eb41-49de-ae52-945e85096600"
+          },
+          {
+            "id": "full-15",
+            "kind": "page",
+            "pageId": "8704c48f-dc7b-41aa-95ae-7830550be331"
+          },
+          {
+            "id": "full-16",
+            "kind": "page",
+            "pageId": "b0f0b421-10ec-43b8-9e6d-88058c1d8fd3"
+          },
+          {
+            "id": "full-14",
+            "kind": "page",
+            "pageId": "3143e3cb-2278-4256-839a-24af78d9f6bc"
+          },
+          {
+            "id": "full-17",
+            "kind": "page",
+            "pageId": "2b804ca1-578d-4d8d-84ba-a05cf013de7c"
+          },
+          {
+            "id": "full-18",
+            "kind": "page",
+            "pageId": "9056e773-a44a-449a-8d49-900cf487bac8"
+          }
+        ]
+      },
+      {
+        "id": "pres-lab",
+        "title": "Lab-meeting version (about 8 minutes)",
+        "story": {
+          "purpose": "A short version for a group meeting: the reasons, one real slide, one change.",
+          "audience": "Researchers who make scientific presentations with AI, and people who may use or contribute to HUANDENG",
+          "takeaway": "Tell the agent your story first, then change one page at a time."
+        },
+        "items": [
+          {
+            "id": "lab-01",
+            "kind": "page",
+            "pageId": "7d1954c5-ca5b-4eaa-a391-7b18431f6385",
+            "notes": "Lab-meeting version, about eight minutes. I will skip the product tour and keep to the story: why I built this, one real slide, and how a change is made."
+          },
+          {
+            "id": "lab-02",
+            "kind": "page",
+            "pageId": "c51fd901-1ac1-426b-aa51-ade862d65405",
+            "notes": "Short version: you have all seen slides that look like AI. My view is that the look comes from having no focus and no story. Even my own previous version of this talk had that problem."
+          },
+          {
+            "id": "lab-03",
+            "kind": "page",
+            "pageId": "99bf9e70-3522-4aa6-a1bf-6ce870f9142d"
+          },
+          {
+            "id": "lab-04",
+            "kind": "page",
+            "pageId": "a794c9d2-62ae-486b-ae08-dbf4c601fb92"
+          },
+          {
+            "id": "lab-05",
+            "kind": "page",
+            "pageId": "e25cbd3a-6a20-4bc8-959f-eb3e1bcabefa",
+            "notes": "Short version: this is a real result kept as data. If a value or a label changes, the agent edits the chart object, not a picture."
+          },
+          {
+            "id": "lab-06",
+            "kind": "page",
+            "pageId": "71d560b6-4ead-4477-a3c8-0bad5c755d0d"
+          },
+          {
+            "id": "lab-07",
+            "kind": "page",
+            "pageId": "3e42c654-67cb-4f39-8096-d8c0c3151d48"
+          },
+          {
+            "id": "lab-08",
+            "kind": "page",
+            "pageId": "b0f0b421-10ec-43b8-9e6d-88058c1d8fd3"
+          },
+          {
+            "id": "lab-09",
+            "kind": "page",
+            "pageId": "9056e773-a44a-449a-8d49-900cf487bac8",
+            "notes": "Short version: try it on your next group-meeting deck. Tell the agent your story first, then ask for one change at a time."
+          }
+        ]
+      }
+    ]
+  },
+  "pages": [
+    {
+      "shortCode": "QMYQ",
+      "pageId": "7d1954c5-ca5b-4eaa-a391-7b18431f6385",
+      "position": 1,
+      "title": [
+        "Slides that start from a story"
+      ],
+      "notes": "I want to tell you why I built HUANDENG, rather than list its features. It started in group meetings, with slides that everyone could tell were made by AI, and with agents that turned two small edits into three copies of a deck. HUANDENG is a desktop slide editor where you and an AI agent work on one deck, one page at a time, starting from the story you want to tell. The molecule on the right is the worked example later in the talk: the DNA dodecamer from PDB entry 1BNA.",
+      "designIntent": {
+        "pageRole": "cover",
+        "purpose": "Name HUANDENG and its purpose; introduce the 1BNA worked example.",
+        "keep": [
+          "Exact HUANDENG mark (brand/huandeng.png), unaltered",
+          "1BNA structure image from deposited coordinates, unaltered"
+        ],
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
+        "actor": "claude-code",
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
+      },
+      "elements": {
+        "image": 2,
+        "text": 5
+      },
+      "visibleText": [
+        "HUANDENG",
+        "Slides that start from a story",
+        "Why I built HUANDENG: a desktop editor where you and an AI agent shape one deck, one page at a time.",
+        "Introduction  ·  HUANDENG Editor 0.18  ·  November 2026",
+        "Worked example in this talk: DNA dodecamer, PDB 1BNA, drawn from its deposited coordinates."
+      ],
+      "textObjects": 5,
+      "hidden": false
+    },
+    {
+      "shortCode": "BW88",
+      "pageId": "02f92b48-68df-4aac-b31a-82d1a251d37d",
+      "position": 2,
+      "title": [
+        "Why I built it"
+      ],
+      "notes": "Section 1. I will start with why. There are four reasons, and they all came from real group meetings and real attempts to make slides with AI.",
+      "designIntent": {
+        "pageRole": "section",
+        "purpose": "Title-only pause before the founder's four reasons.",
+        "keep": [
+          "Title only, Section background colour",
+          "Owner-added page identity BW88"
+        ],
+        "requestedChange": "Story-driven rework from the owner's spoken account (11 Nov 2026).",
+        "actor": "claude-code",
+        "source": "Owner message 2026-11-11; sources/story/USER-STORY.zh-CN.md"
+      },
+      "elements": {
+        "shape": 1,
+        "text": 1
+      },
+      "visibleText": [
+        "Why I built it"
+      ],
+      "textObjects": 1,
+      "hidden": false
+    },
+    {
+      "shortCode": "PPKK",
+      "pageId": "c51fd901-1ac1-426b-aa51-ade862d65405",
+      "position": 3,
+      "title": [
+        "My advisor can spot AI slides at a glance"
+      ],
+      "notes": "This is where it started. In group meetings I see more and more slides made with AI, and I think that is the direction things are going: slides are data, a file format, so of course agents will learn to make them. But my advisor, and most people in the room, can tell at a glance when a deck was made by AI. Each tool has its own style, PowerPoint, Google Slides, ChatGPT, Kimi, and they all still look like AI. I read a post on Xiaohongshu that put it well: the AI look comes from having no focus, from covering everything, from having no story, from aiming to be complete and safe. Even this talk fell into it. On the right are pages from the previous version, made by Claude Code. They look fine. My comment on them was: the visuals are good, but there is no focus, because there is no story. That is the problem this project is about.",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Reason 1: AI-made slides are recognisable at a glance; the AI look comes from no focus and no story.",
+        "keep": [
+          "Previous-version thumbnails are real renders of this project",
+          "Owner quote attributed and marked as translated",
+          "Personal observation, not a research finding"
+        ],
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
+        "actor": "claude-code",
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
+      },
+      "elements": {
+        "text": 10,
+        "shape": 7,
+        "image": 7
+      },
+      "visibleText": [
+        "My advisor can spot AI slides at a glance",
+        "In our group meetings, slides made with AI are becoming normal. Slides are data, a file format, so agents will learn to make them.\n\nBut my advisor, and most people in the room, can tell at a glance when a deck was made by AI. PowerPoint, Google Slides, ChatGPT and Kimi each have a style of their own, and all of them still look like AI.",
+        "Where the AI look comes from",
+        "•  No focus: every point gets the same weight\n•  It covers everything instead of choosing\n•  There is no story underneath\n•  It aims to be complete and safe, not to say something",
+        "Even this talk",
+        "Pages from the previous version of this talk, made by Claude Code on 10 November 2026.",
+        "“The visuals are good, but the focus is wrong. There isn't really a focus, because there is no story.”",
+        "The owner on that version, 11 November 2026 (translated from Chinese)",
+        "HUANDENG  /  Why I built it",
+        "0"
+      ],
+      "textObjects": 10,
+      "hidden": false
+    },
+    {
+      "shortCode": "RQ64",
+      "pageId": "99bf9e70-3522-4aa6-a1bf-6ce870f9142d",
+      "position": 4,
+      "title": [
+        "Two small edits should not leave three decks"
+      ],
+      "notes": "The second problem appeared when I asked an agent to change a deck. Say I have fifty slides and want two of them fixed. Many agents are cautious: instead of replacing the file, they keep the original and write a new copy. One small tweak, another copy. After an afternoon the folder is full of near-identical decks, and the history is spread across file names. That made me think of Git. Version control works because the unit of change is small and every change is recorded. So in HUANDENG the page is the unit: an edit rewrites one page file and adds to that page's history, and a named version marks a milestone. The file names and edits here are an illustration, not a real folder.",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Reason 2: cautious agents copy whole decks for small edits; take the page as the unit of change, as Git does.",
+        "keep": [
+          "Labelled as a concept diagram; file names and edits are illustrations"
+        ],
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
+        "actor": "claude-code",
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
+      },
+      "elements": {
+        "text": 18,
+        "shape": 7,
+        "line": 4,
+        "image": 1
+      },
+      "visibleText": [
+        "Two small edits should not leave three decks",
+        "What a cautious agent leaves behind",
+        "talk.pptx",
+        "The original, 50 slides",
+        "talk_v2.pptx",
+        "A full copy after fixing two slides",
+        "talk_v2_fixed_final.pptx",
+        "Another full copy after a small tweak",
+        "Two small edits, three full decks, and the history scattered across file names.",
+        "What Git taught me: the page is the unit",
+        "Slide AVNM\n\nOne page file, edited in place",
+        "Edit: title shortened\nin its operation history",
+        "Edit: figure replaced\nin its operation history",
+        "Named version\n“Lab meeting”",
+        "Every edit is recorded against that page; named versions mark the milestones.",
+        "In HUANDENG an edit rewrites one page and adds to that page's history. The deck is never copied to make a change.",
+        "HUANDENG  /  Why I built it  ·  concept diagram; file names and edits are illustrations",
+        "0"
+      ],
+      "textObjects": 18,
+      "hidden": false
+    },
+    {
+      "shortCode": "GDDR",
+      "pageId": "cd766544-e64b-4bab-abca-8dc01a8bad7d",
+      "position": 5,
+      "title": [
+        "Most tools give an agent only a screenshot"
+      ],
+      "notes": "The third problem showed up when I asked AI to work on Google Slides or PowerPoint decks. To check its own work, the agent often has to render the whole slide to a picture and look at it. That is a useful review, but it is not something you can measure, compare or optimise: every check is a fresh guess from pixels. So I wanted a slide format where the agent reads the slide as data. On the right is a real excerpt from the 1BNA slide in this very project: the chart is an object with its bounds, its twelve values and its axis range. An agent can change one value or one label without touching anything else, and the change can be diffed. I still look at renders for composition and readability; they are a review surface, not the editable model.",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Reason 3: screenshot-only review cannot be measured; show the slide as data from this project's own page file.",
+        "keep": [
+          "Code excerpt faithful to pages/AVNM.page, marked shortened",
+          "Screenshots remain a valid review surface"
+        ],
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
+        "actor": "claude-code",
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
+      },
+      "elements": {
+        "text": 10,
+        "shape": 2,
+        "image": 2
+      },
+      "visibleText": [
+        "Most tools give an agent only a screenshot",
+        "How an agent checks a slide in most tools",
+        "1  Render the whole slide to an image\n2  Look at the picture\n3  Guess what is wrong, edit, render again",
+        "What the agent gets: pixels of the 1BNA slide. Useful for judging layout, but hard to measure or compare.",
+        "What it reads in HUANDENG: the slide as data",
+        "- elementId: chart\n  elementType: chart\n  bounds: [300,128,604,280]\n  data:\n    cols: [Pair, Distance]\n    rows:\n      - [\"1\", 10.7121]\n      - [\"2\", 10.7665]\n      … 12 rows in all\n  yAxis: {type: value, min: 10, max: 11}",
+        "Excerpt from pages/AVNM.page in this project, shortened and reflowed.",
+        "An agent can target this one object, check its values and bounds, and the writer can show exactly what changed. I still look at the rendered slide for composition. The screenshot is a review, not the whole document.",
+        "HUANDENG  /  Why I built it",
+        "0"
+      ],
+      "textObjects": 10,
+      "hidden": false
+    },
+    {
+      "shortCode": "C45U",
+      "pageId": "a794c9d2-62ae-486b-ae08-dbf4c601fb92",
+      "position": 6,
+      "title": [
+        "Start from the story, not from the slides"
+      ],
+      "notes": "Here is the reason I care most about. If the AI makes the slides first, you then write a speech to fit them, and you end up following the AI's logic, which often has no soul. If you start by telling your story, freestyle, the way you would explain it to a colleague, the agent can organise that story, build the slides on it, and your own words become the speaker notes. Even improvised speech has a structure. Keeping it means the deck has a point of view, and you do not have to invent a script afterwards. This talk is an example: I told the story of why I built HUANDENG, and this version was rebuilt from that account.",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Reason 4: start from the human story, not from AI-made slides.",
+        "keep": [
+          "Labelled as a concept diagram"
+        ],
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
+        "actor": "claude-code",
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
+      },
+      "elements": {
+        "text": 15,
+        "shape": 8,
+        "line": 6,
+        "image": 1
+      },
+      "visibleText": [
+        "Start from the story, not from the slides",
+        "Slides first",
+        "The AI makes the slides",
+        "You write a script to fit them",
+        "The talk follows the AI's logic",
+        "No focus, no soul: the speaker follows the slides",
+        "Story first",
+        "You tell the story, freestyle, as you think",
+        "The agent organizes it into Story",
+        "Slides are built on that Story",
+        "Your own words become the notes",
+        "Even when you improvise, speech has its own logic. Starting from the story keeps that logic and spares you writing a script afterwards. The slides carry a human point of view, so they stop looking like AI.",
+        "This version of the talk was built this way: from the owner's spoken account of why HUANDENG exists, recorded on 11 November 2026.",
+        "HUANDENG  /  Why I built it  ·  concept diagram",
+        "0"
+      ],
+      "textObjects": 15,
+      "hidden": false
+    },
+    {
+      "shortCode": "2SD8",
+      "pageId": "2022f6b4-ddd7-49f2-9864-1e41298e12bb",
+      "position": 7,
+      "title": [
+        "What I built"
+      ],
+      "notes": "Section 2. Those four problems led to one tool: an editor plus a plugin. Here is where it came from and what it looks like.",
+      "designIntent": {
+        "pageRole": "section",
+        "purpose": "Title-only pause: what I built.",
+        "keep": [
+          "Title only, Section background colour"
+        ],
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
+        "actor": "claude-code",
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
+      },
+      "elements": {
+        "text": 1
+      },
+      "visibleText": [
+        "What I built"
+      ],
+      "textObjects": 1,
+      "hidden": false
+    },
+    {
+      "shortCode": "TFJB",
+      "pageId": "6ccc9401-312d-436c-897e-67fbbec228fd",
+      "position": 8,
+      "title": [
+        "PPTD plus React, in a desktop editor"
+      ],
+      "notes": "So what did I build? While looking at how people are teaching agents to make slides, I met the PPTD idea in the Kimi Slides ecosystem: a deck kept as a folder of page files rather than one packed file. Then I found OpenSlide, an open-source editor where every page is a React component. I thought these two ideas fit together: PPTD as the document, React as the interface. HUANDENG is that combination, packaged as an Electron desktop app. Most of the editing behaviour comes from OpenSlide; sections, views and notes borrow from PowerPoint and WPS, and the Layers panel takes its cue from Photoshop. Next to the editor sits a plugin, so that the AI client you already use can work in the same editor. Editor plus plugin is the workflow. To be precise about credit: OpenPPTD is a different project, and we reuse only its equation-conversion code. And HUANDENG has no affiliation with Kimi.",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "What I built: PPTD idea plus OpenSlide's React editor in an Electron app, with a plugin.",
+        "keep": [
+          "No Kimi affiliation or invention claim",
+          "OpenPPTD credited only for equation conversion"
+        ],
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
+        "actor": "claude-code",
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
+      },
+      "elements": {
+        "text": 14,
+        "shape": 6,
+        "line": 4,
+        "image": 3
+      },
+      "visibleText": [
+        "PPTD plus React, in a desktop editor",
+        "PPTD",
+        "A slide deck as a folder of page files. I met the idea in the Kimi Slides ecosystem.",
+        "OpenSlide",
+        "open-slide/open-slide: an open-source slide editor whose pages are React components.",
+        "Familiar editors",
+        "Sections, views and notes from PowerPoint and WPS; a Layers panel in the spirit of Photoshop.",
+        "HUANDENG Editor",
+        "An Electron desktop app: a React interface on a PPTD project, with page history and Story.",
+        "HUANDENG plugin: lets Codex, Claude Code, DeepSeek and ChatGPT work in the same editor",
+        "Editor + plugin = the HUANDENG workflow",
+        "Most editing behaviour comes from OpenSlide (MIT). OpenPPTD is a separate project; HUANDENG reuses only its equation-conversion code. HUANDENG is not affiliated with or endorsed by Kimi.",
+        "HUANDENG  /  What I built  ·  concept diagram",
+        "0"
+      ],
+      "textObjects": 14,
+      "hidden": false
+    },
+    {
+      "shortCode": "7NHP",
+      "pageId": "417e1fea-9180-4574-acc4-493eb6282b04",
+      "position": 9,
+      "title": [
+        "Unzip a PPTX: it is already pages"
+      ],
+      "notes": "Here is the format idea in one picture. If you unzip a PowerPoint file, you find that it is already organised by page: presentation.xml, then slide1.xml, slide2.xml and so on, with media, notes and charts as separate parts. The left column comes from this deck's own exported PPTX. PPTD keeps the same idea but leaves the parts open as a working folder: deck.pptd for the order, one .page file per slide, a media folder, and a .huandeng folder for Slide IDs, Story, Sections, Presentations and history. So an agent can open one page file, and nothing forces it to rewrite the whole deck. HUANDENG still exports PPTX when you need to send it. This introduction is one such folder.",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "PPTX is already organised by part; PPTD keeps the parts as a working folder.",
+        "keep": [
+          "Left column matches this deck's exported PPTX parts",
+          "Do not claim PPTX lacks page structure"
+        ],
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
+        "actor": "claude-code",
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
+      },
+      "elements": {
+        "text": 6,
+        "table": 1,
+        "shape": 3,
+        "image": 4
+      },
+      "visibleText": [
+        "Unzip a PPTX: it is already pages",
+        "PowerPoint already stores a deck as parts, one per slide, zipped into a single file. HUANDENG keeps the parts as a working folder, adds Slide IDs, Story and page history, and still exports PPTX.",
+        "This introduction is one",
+        "25 slides in 5 Sections\n2 Presentations built from them\nStory and speaker notes on every slide\nOpen the folder in the Editor to see it",
+        "HUANDENG  /  What I built",
+        "0"
+      ],
+      "textObjects": 6,
+      "hidden": false
+    },
+    {
+      "shortCode": "DKSN",
+      "pageId": "49f1db15-b783-4a1b-8cff-815d4b4116e0",
+      "position": 10,
+      "title": [
+        "The HUANDENG Editor"
+      ],
+      "notes": "This is the editor itself, running a small public example. 1, the sidebar has four tabs: Project, Pages, Assets, and Files, which shows the project folder the way VS Code shows a code repository. Assets is a real library: every figure in the project, with its original size and where it is used. 2, the views above the canvas: Normal, Browse, Outline, Sections, Notes page and History. 3, the canvas edits native objects, including tables and charts. 4, the Inspector: properties, layout, a Layers panel in the spirit of Photoshop, the Story of the slide, and checks. 5, Agent setup connects the AI client you already use, and Activity shows what it reports and what was actually saved. 6, Export and Present. There is no chat box inside the editor.",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Orient the audience in the real Editor with six numbered regions.",
+        "keep": [
+          "Real English capture en-edit-1920.png, uncropped, original aspect ratio",
+          "Markers must not hide the UI element they point to"
+        ],
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
+        "actor": "claude-code",
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
+      },
+      "elements": {
+        "text": 16,
+        "shape": 7,
+        "image": 2,
+        "line": 2
+      },
+      "visibleText": [
+        "The HUANDENG Editor",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "1  Sidebar\nProject, Pages, Assets and Files, like an IDE",
+        "2  Views\nNormal, Browse, Outline, Sections, Notes page, History",
+        "3  Canvas\nText, images, shapes, tables, charts, equations",
+        "4  Inspector\nProperties, Layout, Layers, Story, Checks",
+        "5  Agent setup · Activity\nConnect an AI client; see its reports and real saves",
+        "6  Export · Present\nPDF, PPTX or MP4; F5 / Shift+F5",
+        "Real capture: HUANDENG Editor 0.18, English interface, public example project “HUANDENG showcase”.",
+        "HUANDENG  /  What I built",
+        "0"
+      ],
+      "textObjects": 16,
+      "hidden": false
+    },
+    {
+      "shortCode": "EEGK",
+      "pageId": "6763c852-4a02-49f1-9ed7-78cfdc8f204e",
+      "position": 11,
+      "title": [
+        "Story first: one slide, start to finish"
+      ],
+      "notes": "Section 3. Now let me follow one real scientific slide: what it shows, the Story behind it, how a change is asked for, and how that change can be checked.",
+      "designIntent": {
+        "pageRole": "section",
+        "purpose": "Title-only pause: the worked example.",
+        "keep": [
+          "Title only, Section background colour"
+        ],
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
+        "actor": "claude-code",
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
+      },
+      "elements": {
+        "text": 1
+      },
+      "visibleText": [
+        "Story first: one slide, start to finish"
+      ],
+      "textObjects": 1,
+      "hidden": false
+    },
+    {
+      "shortCode": "AVNM",
+      "pageId": "e25cbd3a-6a20-4bc8-959f-eb3e1bcabefa",
+      "position": 12,
+      "title": [
+        "1BNA: twelve base-pair distances, kept as data"
+      ],
+      "notes": "Here is the kind of slide this talk is about: one real result. The structure is PDB entry 1BNA, the Dickerson–Drew DNA dodecamer, drawn from its deposited coordinates; chain A is green, chain B ochre. For each of the twelve base pairs we measured the distance between the paired C1-prime atoms. The chart is not a pasted picture: it is a HUANDENG chart object holding the twelve values from the CSV, with a labelled axis that deliberately does not start at zero, so the geometric variation is visible. If a value or a label needs to change, you edit the data, not the pixels. Be careful about what the chart says: these are twelve positions in a single crystal structure. They are not replicates and carry no error bars. The shortest distance is at pair 7, a T–A pair in the central AATT region; the longest at pair 12, a terminal G–C pair.\n\nMethod: Euclidean distance between C1′ atoms, chain A residues 1–12 ascending paired with chain B residues 24–13 descending. Values from paired-c1-distances.csv (assets/science, generate.py).\n\nSource: RCSB PDB 1BNA, https://www.rcsb.org/structure/1BNA; structure DOI 10.2210/pdb1BNA/pdb. Drew HR, Wing RM, Takano T, Broka C, Tanaka S, Itakura K, Dickerson RE. PNAS 78 (1981) 2179–2183, https://doi.org/10.1073/pnas.78.4.2179.",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Show the twelve measured C1′–C1′ distances beside the structure they were measured in.",
+        "keep": [
+          "Values exactly as in paired-c1-distances.csv",
+          "Labelled non-zero y-axis, units in Å",
+          "PDB 1BNA citation on the slide",
+          "No replicate, error-bar or trend claims"
+        ],
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
+        "actor": "claude-code",
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
+      },
+      "elements": {
+        "text": 21,
+        "image": 2,
+        "table": 1,
+        "chart": 1
+      },
+      "visibleText": [
+        "1BNA: twelve base-pair distances, kept as data",
+        "A native chart built from the source CSV, next to the structure the values were measured in.",
+        "— Chain A",
+        "— Chain B",
+        "Source: RCSB PDB 1BNA, Dickerson–Drew dodecamer, 1.90 Å X-ray (Drew et al., PNAS 78:2179–2183, 1981; doi:10.1073/pnas.78.4.2179). Distances computed from the deposited coordinates. Twelve positions in one structure: not replicates, uncertainties or hydrogen-bond lengths.",
+        "HUANDENG  /  A worked example",
+        "0",
+        "C–G",
+        "G–C",
+        "C–G",
+        "G–C",
+        "A–T",
+        "A–T",
+        "T–A",
+        "T–A",
+        "C–G",
+        "G–C",
+        "C–G",
+        "G–C",
+        "Paired position and base pair (chain A residues 1–12 with chain B 24–13)",
+        "C1′–C1′ distance (Å)"
+      ],
+      "textObjects": 21,
+      "hidden": false
+    },
+    {
+      "shortCode": "QK69",
+      "pageId": "71d560b6-4ead-4477-a3c8-0bad5c755d0d",
+      "position": 13,
+      "title": [
+        "Story tells the agent what matters"
+      ],
+      "notes": "This is the part of HUANDENG that comes most directly from the story-first idea. Every slide carries a short Story: what it is for, what must be kept, and what change was asked for. Think of it as an alignment tool between me and the agent. On the right is the Story actually recorded for the 1BNA slide: keep the exact values, keep the labelled axis and its units, keep the citation, and make no claims of replicates or trends. When an agent is asked to tidy that slide, it reads this first. Story also exists for the whole project, each Section and each Presentation. An agent's Story is its interpretation, not my approval.",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Explain slide Story using the real Story panel and the Story recorded for the 1BNA slide.",
+        "keep": [
+          "Quoted Story must match the 1BNA slide's recorded designIntent",
+          "Real capture en-focused-story-4x.png"
+        ],
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
+        "actor": "claude-code",
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
+      },
+      "elements": {
+        "text": 11,
+        "shape": 5,
+        "image": 2,
+        "table": 1
+      },
+      "visibleText": [
+        "Story tells the agent what matters",
+        "Story tab in the Inspector. Real capture from the public example project.",
+        "Story recorded for the 1BNA chart slide in this deck",
+        "This is my alignment tool: the agent reads it before it edits. People see it in Outline and in the Inspector.",
+        "Four Story levels",
+        "Main · whole project",
+        "Section · one argument",
+        "Presentation · one talk",
+        "Slide · purpose and keep",
+        "HUANDENG  /  A worked example",
+        "0"
+      ],
+      "textObjects": 11,
+      "hidden": false
+    },
+    {
+      "shortCode": "AZJC",
+      "pageId": "ce9e73d9-a17e-4e2d-8b80-4ed6e8332fd9",
+      "position": 14,
+      "title": [
+        "Outline: read the deck as a story"
+      ],
+      "notes": "Before polishing any single slide, I read the deck as a story. The Outline view lists every slide with its title, its Story summary and its Slide ID, grouped by Section, so I can see whether the argument holds. Browse shows the same slides as thumbnails, for density and rhythm. Sections divide the talk into parts; each starts at a stable first slide and runs to the next.",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Show the Outline view for reading the argument; relate Browse and Sections.",
+        "keep": [
+          "Real capture en-outline-reading-4x.png"
+        ],
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
+        "actor": "claude-code",
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
+      },
+      "elements": {
+        "text": 10,
+        "shape": 1,
+        "image": 2
+      },
+      "visibleText": [
+        "Outline: read the deck as a story",
+        "Outline view: Section, Position, title, Story summary and Slide ID for each slide. Real capture, public example project.",
+        "Outline",
+        "Titles and Story in order: does the argument hold?",
+        "Browse",
+        "Thumbnails: density and rhythm across the deck",
+        "Sections",
+        "Each starts at a stable first slide and runs to the next",
+        "HUANDENG  /  A worked example",
+        "0"
+      ],
+      "textObjects": 10,
+      "hidden": false
+    },
+    {
+      "shortCode": "6FNH",
+      "pageId": "56c5f2a9-5146-41a3-8785-d78d8e94efa6",
+      "position": 15,
+      "title": [
+        "One requested change, before and after"
+      ],
+      "notes": "Here is one change from start to finish, in the public example project. The Story for this slide said: shorten the title and the explanation, and keep the layout, every other object and the main message. On the left is the slide before; on the right, after. The table below lists exactly what changed: the title and the lead sentence. The Purpose and Keep columns, the footer and the geometry are untouched. The change was proposed as a transaction, previewed, and then applied through the shared writer, so it is recorded and can be reviewed on the next slide. The same discipline applies to a scientific slide: an edit to the 1BNA chart title must not touch the data or the citation.",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Show one requested change, before and after, with an exact diff table.",
+        "keep": [
+          "Real captures en-edit-before/after-4x.png, same scale",
+          "Diff table matches the captured text"
+        ],
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
+        "actor": "claude-code",
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
+      },
+      "elements": {
+        "text": 6,
+        "shape": 2,
+        "image": 3,
+        "line": 1,
+        "table": 1
+      },
+      "visibleText": [
+        "One requested change, before and after",
+        "Before",
+        "After",
+        "Story for this change: “Shorten the title and explanation.” Keep: the layout, all other objects, the main message. Real captures, public example project.",
+        "HUANDENG  /  A worked example",
+        "0"
+      ],
+      "textObjects": 6,
+      "hidden": false
+    },
+    {
+      "shortCode": "4V98",
+      "pageId": "9ad205fe-9d24-47b7-8adb-721f66b64e8a",
+      "position": 16,
+      "title": [
+        "Every saved change can be reviewed"
+      ],
+      "notes": "After the change is saved, anyone can open its record. 1, the receipt says which operation it was, in which project and when. 2, Before and After show the actual slide, with the changed object outlined. 3, Saved changes lists every object and field that was written; here, the text of the title and of the lead. 4, the panel also shows the slide's Story and where the slide is used: one live reference in the Quick introduction presentation, no pinned ones. This dialog is read-only. If you want the old slide back, you restore a named version from History, which affects only that slide. Changes from people and from agents arrive through the same writer, so they are reviewed in the same way.",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Show the read-only review of a saved operation.",
+        "keep": [
+          "Real capture en-operation-review-4x.png",
+          "Markers must not hide the UI element they point to"
+        ],
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
+        "actor": "claude-code",
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
+      },
+      "elements": {
+        "text": 17,
+        "shape": 5,
+        "image": 2
+      },
+      "visibleText": [
+        "Every saved change can be reviewed",
+        "1",
+        "2",
+        "3",
+        "4",
+        "1  Receipt",
+        "Which operation, in which project, and when",
+        "2  Before / After",
+        "The real slide on both sides, changed object outlined",
+        "3  Saved changes",
+        "Each object and field written, here two content.text edits",
+        "4  Story and scope",
+        "The slide's purpose and every talk that uses it",
+        "Review is read-only. Restoring a slide is a separate, explicit History action.",
+        "Review saved changes dialog. Real capture, public example project.",
+        "HUANDENG  /  A worked example",
+        "0"
+      ],
+      "textObjects": 17,
+      "hidden": false
+    },
+    {
+      "shortCode": "KM5E",
+      "pageId": "d47c2f73-4d43-429f-bc48-a9bed8dc99d4",
+      "position": 17,
+      "title": [
+        "The page is the unit of change"
+      ],
+      "notes": "Section 4. Back to the Git idea: if the page is the unit of change, each page needs a name that does not move, and a history of its own.",
+      "designIntent": {
+        "pageRole": "section",
+        "purpose": "Title-only pause: the page as the unit of change.",
+        "keep": [
+          "Title only, Section background colour"
+        ],
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
+        "actor": "claude-code",
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
+      },
+      "elements": {
+        "text": 1
+      },
+      "visibleText": [
+        "The page is the unit of change"
+      ],
+      "textObjects": 1,
+      "hidden": false
+    },
+    {
+      "shortCode": "V2SV",
+      "pageId": "050336e7-3878-4a2b-8727-2c4545dc1e47",
+      "position": 18,
+      "title": [
+        "Say “C014”, not “slide 4”"
+      ],
+      "notes": "When I talk to an agent about my slides, I used to say: fix slide four. But if the order changed since the last version, slide four is a different slide. So HUANDENG separates the two. Position is just where a slide sits now. The Slide ID is a short four-character code, letters and numbers, that belongs to the slide for good. The status bar here shows Position moving from 2 to 4 while the Slide ID stays C014. Now I can say: fix the chart on C014, and the agent knows exactly which page I mean, next week as well as today. The same ID is what page history hangs on.",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Distinguish permanent Slide ID from derived Position and occurrence.",
+        "keep": [
+          "Real status-bar captures before/after the move",
+          "Browse capture en-browse-reading-4x.png"
+        ],
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
+        "actor": "claude-code",
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
+      },
+      "elements": {
+        "text": 7,
+        "image": 4,
+        "shape": 1,
+        "table": 1
+      },
+      "visibleText": [
+        "Say “C014”, not “slide 4”",
+        "Status bar before the move",
+        "After moving the slide two places later",
+        "Position changed from 2 to 4. Slide ID C014 did not.",
+        "Browse view: every card shows Position and Slide ID. Real capture.",
+        "HUANDENG  /  The page is the unit of change",
+        "0"
+      ],
+      "textObjects": 7,
+      "hidden": false
+    },
+    {
+      "shortCode": "73AG",
+      "pageId": "3e42c654-67cb-4f39-8096-d8c0c3151d48",
+      "position": 19,
+      "title": [
+        "Every page has its own history"
+      ],
+      "notes": "This is the feature I consider most important. History is kept per page, not for the whole deck. Right-click a slide in the Pages panel and choose View version history. Saved versions are the milestones I name myself, like Before copy edit. Operation history lists every saved change to that page, each with its review. And restoring a version changes only that slide; every other slide, and every talk that uses them, stays as it is. This is what replaces the folder of copies from the beginning of the talk.",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Explain named versions, operation history and single-slide restore.",
+        "keep": [
+          "Real capture en-history-change-4x.png",
+          "Markers must not hide the UI element they point to"
+        ],
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
+        "actor": "claude-code",
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
+      },
+      "elements": {
+        "text": 13,
+        "shape": 4,
+        "image": 2
+      },
+      "visibleText": [
+        "Every page has its own history",
+        "1",
+        "2",
+        "3",
+        "1  Saved versions",
+        "Named by you, such as “Before copy edit”. Each keeps the slide, its Story and its images, and travels with the project folder.",
+        "2  Operation history",
+        "Every saved operation on this slide, each with its review.",
+        "3  Restore",
+        "Changes only this slide. Other slides, and talks that reference them, are untouched.",
+        "Right-click a slide in Pages and choose View version history. Real capture of slide N014, public example project.",
+        "HUANDENG  /  The page is the unit of change",
+        "0"
+      ],
+      "textObjects": 13,
+      "hidden": false
+    },
+    {
+      "shortCode": "JZ7U",
+      "pageId": "520e4e5e-eb41-49de-ae52-945e85096600",
+      "position": 20,
+      "title": [
+        "One Main library, two Presentations"
+      ],
+      "notes": "A HUANDENG project has one Main Slides library. A Presentation is an ordered list of references into it. On the left is the project overview in the Editor, with the Main library and one Presentation. On the right is this very deck. The full introduction you are watching has twenty-five slides. The lab-meeting version uses nine of the same slides in its own order: the reasons, the 1BNA slide and its Story, page history, agents, and how to start. The stacked previews and the grid are thumbnails rendered from this project's own export. Neither Presentation holds copies, so if I fix the 1BNA chart in Main Slides, both talks show the fix. The lab version gives four slides shorter speaker notes of their own; those notes belong to that appearance, not to the slide. If a talk has to stay frozen, for example one you have already submitted, you pin a named version of a slide there.",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "One Main library, two Presentations built by reference, with occurrence notes.",
+        "keep": [
+          "Thumbnails are real renders of this project",
+          "Counts match the project's Presentations"
+        ],
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
+        "actor": "claude-code",
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
+      },
+      "elements": {
+        "text": 7,
+        "shape": 13,
+        "image": 14,
+        "table": 1
+      },
+      "visibleText": [
+        "One Main library, two Presentations",
+        "Project overview in the Editor: Main Slides and a Presentation. Real capture, public example project.",
+        "This deck, built the same way",
+        "Full introduction\n25 slides, about 25 minutes",
+        "Lab-meeting version: 9 slides, in this order",
+        "HUANDENG  /  The page is the unit of change",
+        "0"
+      ],
+      "textObjects": 7,
+      "hidden": false
+    },
+    {
+      "shortCode": "SQNG",
+      "pageId": "8704c48f-dc7b-41aa-95ae-7830550be331",
+      "position": 21,
+      "title": [
+        "Working with agents"
+      ],
+      "notes": "Section 5. Finally, how agents actually connect, how a talk leaves the project, what HUANDENG is built on, and how to start.",
+      "designIntent": {
+        "pageRole": "section",
+        "purpose": "Title-only pause: working with agents.",
+        "keep": [
+          "Title only, Section background colour"
+        ],
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
+        "actor": "claude-code",
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
+      },
+      "elements": {
+        "text": 1
+      },
+      "visibleText": [
+        "Working with agents"
+      ],
+      "textObjects": 1,
+      "hidden": false
+    },
+    {
+      "shortCode": "AUBX",
+      "pageId": "b0f0b421-10ec-43b8-9e6d-88058c1d8fd3",
+      "position": 22,
+      "title": [
+        "Agents work through the same writer as you"
+      ],
+      "notes": "You keep the AI client you already use. Codex and Claude Code load the HUANDENG plugin locally over MCP; DeepSeek uses it through its Harness; ChatGPT reaches the local editor through a command-line route. Whatever the client, every write goes through the same shared writer that the editor window uses. It checks that the agent read the current version, applies exactly the change that was previewed, and returns a receipt. So an agent cannot quietly overwrite something I changed a minute ago. This version of the talk was written by Claude Code along exactly this route.",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Show how AI clients reach the shared writer, as a labelled concept diagram.",
+        "keep": [
+          "Official client marks from assets/brand, unaltered",
+          "Describe ChatGPT only as connecting to the local Editor"
+        ],
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
+        "actor": "claude-code",
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
+      },
+      "elements": {
+        "text": 24,
+        "image": 6,
+        "line": 7,
+        "shape": 4
+      },
+      "visibleText": [
+        "Agents work through the same writer as you",
+        "Codex",
+        "Local plugin · MCP",
+        "Claude Code",
+        "Local plugin · MCP",
+        "DeepSeek",
+        "Through Harness · MCP",
+        "ChatGPT",
+        "Local Editor · CLI",
+        "HUANDENG plugin and CLI",
+        "22 MCP tools and two guides: read, preview, apply, review, render, export",
+        "Editor window\nyou edit on the canvas",
+        "Shared writer",
+        "Checks the revision each request read, applies the exact previewed proposal, returns a receipt",
+        "Project folder",
+        "deck.pptd\npages\nmedia\n.huandeng",
+        "Preview first",
+        "The agent sees the exact fields, slides and reuse affected before anything is written.",
+        "No silent overwrite",
+        "If a slide changed after it was read, the write is refused and must be prepared again.",
+        "Reports are not saves",
+        "Activity shows what a client says it is doing apart from what was actually saved.",
+        "HUANDENG  /  Working with agents  ·  concept diagram",
+        "0"
+      ],
+      "textObjects": 24,
+      "hidden": false
+    },
+    {
+      "shortCode": "SY94",
+      "pageId": "3143e3cb-2278-4256-839a-24af78d9f6bc",
+      "position": 23,
+      "title": [
+        "Check, present and export"
+      ],
+      "notes": "Before delivering, run Design check. It reads the whole collection and reports observations: type sizes outside the range you chose, unexpected backgrounds, Sections without a title slide, images with too few pixels for the size they are shown at. It is read-only; you still look at the slides yourself. Present starts from the beginning with F5 or from the current slide with Shift+F5, in a full-screen window with click builds. Export takes the slides as saved when it starts. The project folder itself is the editable source. PPTX keeps supported objects native, so a co-author can keep editing text, tables and basic charts in PowerPoint; animation becomes static. PDF is for sharing, and MP4 plays the click builds on a timer. This deck was exported to PDF and PPTX in exactly this way.",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Show Design check, the Present menu and Export, with what each output carries.",
+        "keep": [
+          "Design check crop is a pixel-exact derivative (media/derived)",
+          "Output capabilities as stated in the project README"
+        ],
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
+        "actor": "claude-code",
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
+      },
+      "elements": {
+        "text": 6,
+        "shape": 2,
+        "image": 4,
+        "table": 1
+      },
+      "visibleText": [
+        "Check, present and export",
+        "Design check: read-only observations on type sizes, backgrounds, Section title slides and image resolution. It never edits or approves slides.",
+        "Present menu: start from the beginning or from the current slide.",
+        "Real captures from HUANDENG Editor 0.18, public example project.",
+        "HUANDENG  /  Working with agents",
+        "0"
+      ],
+      "textObjects": 6,
+      "hidden": false
+    },
+    {
+      "shortCode": "3ECM",
+      "pageId": "2b804ca1-578d-4d8d-84ba-a05cf013de7c",
+      "position": 24,
+      "title": [
+        "Built on open work, with clear gaps"
+      ],
+      "notes": "HUANDENG did not start from nothing. The editor is built on OpenSlide, under the MIT licence. Equation conversion reuses code from the OpenPPTD repository; the GitHub mark here identifies that repository, it is not an OpenPPTD logo. PowerPoint export uses PptxGenJS. On the right are things HUANDENG does not do yet, as listed in the project README: importing arbitrary PPTX files and round-tripping them, editing Google Slides directly, a separate presenter window on a second screen, inheritable slide masters, native PowerPoint animation in exported files, and a plugin marketplace. If you need one of these, that is where a contribution would help most.",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Credit code foundations and list the gaps documented in the README.",
+        "keep": [
+          "GitHub mark identifies the OpenPPTD repository only",
+          "Only gaps documented in the project README"
+        ],
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
+        "actor": "claude-code",
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
+      },
+      "elements": {
+        "text": 17,
+        "image": 4,
+        "line": 1,
+        "table": 1
+      },
+      "visibleText": [
+        "Built on open work, with clear gaps",
+        "Built on",
+        "OpenSlide",
+        "Editor foundation, MIT licence",
+        "github.com/open-slide/open-slide",
+        "OpenPPTD",
+        "Equation conversion code reused",
+        "github.com/Shingwha/open-pptd",
+        "PptxGenJS",
+        "PowerPoint export library",
+        "github.com/gitbrent/PptxGenJS",
+        "Design ideas also come from PowerPoint and WPS (sections, views, notes) and Photoshop (layers). A simple video-editor-style timeline is an idea for later.",
+        "The GitHub mark identifies the OpenPPTD repository; it is not an OpenPPTD logo. Third-party marks belong to their owners.",
+        "Not implemented yet",
+        "Listed in the project README. Each is a concrete place to contribute.",
+        "HUANDENG  /  Working with agents",
+        "0"
+      ],
+      "textObjects": 17,
+      "hidden": false
+    },
+    {
+      "shortCode": "SMGE",
+      "pageId": "9056e773-a44a-449a-8d49-900cf487bac8",
+      "position": 25,
+      "title": [
+        "Start with your story"
+      ],
+      "notes": "If you want to try it, open the editor and start a project, or open an existing deck. Connect the AI client you already use from Agent setup. Then do what I did for this talk: tell the agent your story first, out loud and freestyle, and let it organise the story before it makes any slides. After that, ask for one change at a time, read the preview, apply it, and look at the review. The code and the build commands are on the right, and the repository is at the bottom. Thank you.",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Give concrete first steps for users and contributors.",
+        "keep": [
+          "Commands match the repository README"
+        ],
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
+        "actor": "claude-code",
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
+      },
+      "elements": {
+        "image": 1,
+        "text": 15,
+        "shape": 2,
+        "line": 1
+      },
+      "visibleText": [
+        "Start with your story",
+        "Use it",
+        "1",
+        "Open the Editor. Choose Home › New project, or open an existing deck.pptd.",
+        "2",
+        "In Agent setup, copy the configuration for Codex, Claude Code, DeepSeek Harness or ChatGPT.",
+        "3",
+        "Tell the agent your story first. Then ask for one change, read its preview, apply it and review it.",
+        "Build it from source",
+        "corepack pnpm install --frozen-lockfile\ncorepack pnpm --filter @open-slide/core build\ncorepack pnpm desktop",
+        "Create a project from the command line",
+        "node packages/core/huandeng.js init Talks/Lab --title Lab",
+        "Requires Node 22.12+ and pnpm 10.17. The Windows build and shortcuts are made by scripts/Package-Huandeng.ps1.",
+        "github.com/JaytonKogeru/huandeng",
+        "Editor and plugin 0.18. Issues, tests and pull requests are most useful where the previous slide lists gaps. This introduction is itself a HUANDENG project, rebuilt from a spoken story."
+      ],
+      "textObjects": 15,
+      "hidden": false
+    }
+  ]
+}

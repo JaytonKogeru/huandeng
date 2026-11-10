@@ -12,13 +12,5 @@ elements:
       - 82
     role: title
     content:
-      text: Evidence and composition
-      fontFamily: Arial
-      fontSize: 34
-      color: "#263C34"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-notes: Section pause. The next pages demonstrate this theme through actual work.
+      {"text":"A page with an identity","fontFamily":"Arial","fontSize":34,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
+notes: "Those frustrations led me to treat the page as the unit of continuing work. I will first explain how the project is organized, how we identify the same page, and how we return to its history."

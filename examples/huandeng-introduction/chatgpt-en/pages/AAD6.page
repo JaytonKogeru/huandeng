@@ -12,15 +12,7 @@ elements:
       - 67
     role: title
     content:
-      text: One set of pages, different talks
-      fontFamily: Arial
-      fontSize: 29
-      color: "#263C34"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
+      {"text":"Choosing the pages for the next talk","fontFamily":"Arial","fontSize":29,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
   - elementId: library-icon
     elementType: icon
     iconName: fas:layer-group
@@ -49,57 +41,6 @@ elements:
         - left
         - top
       lineHeight: 1.3
-  - elementId: stack-8
-    elementType: image
-    src: "media/imported/d538853dc8d3a4477e475f2bdbe3c2b150cc749027e00d7dde3147d7e8269f97.png"
-    sourceName: 09.png
-    alt: 09.png
-    bounds:
-      - 48
-      - 220
-      - 263
-      - 148
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: stack-3
-    elementType: image
-    src: "media/imported/340ffcfc613a1ee2ba6fcde5bdb41b125d9bb9f9c23e1bd0e77c20bdd7a4adfc.png"
-    sourceName: 04.png
-    alt: 04.png
-    bounds:
-      - 65
-      - 238
-      - 263
-      - 148
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: stack-1
-    elementType: image
-    src: "media/imported/20b7c78e9be4344089540b3a013d3de65540457409b28913638f18fd6161564d.png"
-    sourceName: 02.png
-    alt: 02.png
-    bounds:
-      - 82
-      - 256
-      - 263
-      - 148
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
   - elementId: main-caption
     elementType: text
     bounds:
@@ -127,15 +68,7 @@ elements:
       - 511
       - 31
     content:
-      text: Full introduction · 19 pages (excerpt)
-      fontFamily: Arial
-      fontSize: 19
-      color: "#356F68"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
+      {"text":"Full introduction · 27 pages (excerpt)","fontFamily":"Arial","fontSize":19,"color":"#356F68","bold":false,"align":["left","top"],"lineHeight":1.3}
   - elementId: brief-label
     elementType: text
     bounds:
@@ -144,117 +77,7 @@ elements:
       - 511
       - 31
     content:
-      text: Brief introduction · 7 pages (excerpt)
-      fontFamily: Arial
-      fontSize: 19
-      color: "#356F68"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-  - elementId: sequence-0-0
-    elementType: image
-    src: "media/imported/20b7c78e9be4344089540b3a013d3de65540457409b28913638f18fd6161564d.png"
-    sourceName: 02.png
-    alt: 02.png
-    bounds:
-      - 403
-      - 174
-      - 164
-      - 92
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: sequence-0-1
-    elementType: image
-    src: "media/imported/340ffcfc613a1ee2ba6fcde5bdb41b125d9bb9f9c23e1bd0e77c20bdd7a4adfc.png"
-    sourceName: 04.png
-    alt: 04.png
-    bounds:
-      - 576
-      - 174
-      - 164
-      - 92
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: sequence-0-2
-    elementType: image
-    src: "media/imported/d538853dc8d3a4477e475f2bdbe3c2b150cc749027e00d7dde3147d7e8269f97.png"
-    sourceName: 09.png
-    alt: 09.png
-    bounds:
-      - 749
-      - 174
-      - 164
-      - 92
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: sequence-1-0
-    elementType: image
-    src: "media/imported/d538853dc8d3a4477e475f2bdbe3c2b150cc749027e00d7dde3147d7e8269f97.png"
-    sourceName: 09.png
-    alt: 09.png
-    bounds:
-      - 403
-      - 363
-      - 164
-      - 92
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: sequence-1-1
-    elementType: image
-    src: "media/imported/20b7c78e9be4344089540b3a013d3de65540457409b28913638f18fd6161564d.png"
-    sourceName: 02.png
-    alt: 02.png
-    bounds:
-      - 576
-      - 363
-      - 164
-      - 92
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: sequence-1-2
-    elementType: image
-    src: "media/imported/8ac36b164529f043662f87f234679590fb8505c1cd2dae61918b5d42ba0b86ee.png"
-    sourceName: 05.png
-    alt: 05.png
-    bounds:
-      - 749
-      - 363
-      - 164
-      - 92
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
+      {"text":"Brief introduction · 13 pages (excerpt)","fontFamily":"Arial","fontSize":19,"color":"#356F68","bold":false,"align":["left","top"],"lineHeight":1.3}
   - elementId: brand-small
     elementType: image
     src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
@@ -307,4 +130,157 @@ elements:
         - top
       lineHeight: 1.3
       field: main-position
-notes: All thumbnails are actual pages from this project. The upper row shows three ordered excerpts from the 19-page full introduction; the lower row shows three ordered excerpts from the seven-page brief introduction. The brief places the client architecture before the scientific example, reordering the talk without making another independent deck.
+  - elementId: stack-20
+    elementType: image
+    src: "media/imported/b6f72e4b8385440cdb9e9dbd2c33aca928a78070cad336ea48150318f0424c05.png"
+    sourceName: 21.png
+    alt: 21.png
+    bounds:
+      - 48
+      - 220
+      - 263
+      - 148
+    fit:
+      mode: contain
+    crop:
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+  - elementId: stack-24
+    elementType: image
+    src: "media/imported/ad1436bd2cee8cb2572a1cc7bb3d300ef5765deff111192808c17bbf7a511e8c.png"
+    sourceName: 25.png
+    alt: 25.png
+    bounds:
+      - 65
+      - 238
+      - 263
+      - 148
+    fit:
+      mode: contain
+    crop:
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+  - elementId: stack-6
+    elementType: image
+    src: "media/imported/4cb5b1e47b693a54c666a7407878b645bde57af95673a626bd331a9c00c1c9ab.png"
+    sourceName: 07.png
+    alt: 07.png
+    bounds:
+      - 82
+      - 256
+      - 263
+      - 148
+    fit:
+      mode: contain
+    crop:
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+  - elementId: sequence-0-0
+    elementType: image
+    src: "media/imported/b6f72e4b8385440cdb9e9dbd2c33aca928a78070cad336ea48150318f0424c05.png"
+    sourceName: "21.png"
+    alt: "21.png"
+    bounds:
+      - 403
+      - 174
+      - 164
+      - 92
+    fit:
+      mode: contain
+    crop:
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+  - elementId: sequence-0-1
+    elementType: image
+    src: "media/imported/ecc7da44628a50cb45b02d2bf153276841464293241faa14c440ff9a826a4f94.png"
+    sourceName: "22.png"
+    alt: "22.png"
+    bounds:
+      - 576
+      - 174
+      - 164
+      - 92
+    fit:
+      mode: contain
+    crop:
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+  - elementId: sequence-0-2
+    elementType: image
+    src: "media/imported/ac795e4a005a76ced7c67f725ace4a4976da51b81e3998d3b3011a1cd1f4f43a.png"
+    sourceName: "24.png"
+    alt: "24.png"
+    bounds:
+      - 749
+      - 174
+      - 164
+      - 92
+    fit:
+      mode: contain
+    crop:
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+  - elementId: sequence-1-0
+    elementType: image
+    src: "media/imported/ac795e4a005a76ced7c67f725ace4a4976da51b81e3998d3b3011a1cd1f4f43a.png"
+    sourceName: "24.png"
+    alt: "24.png"
+    bounds:
+      - 403
+      - 363
+      - 164
+      - 92
+    fit:
+      mode: contain
+    crop:
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+  - elementId: sequence-1-1
+    elementType: image
+    src: "media/imported/ad1436bd2cee8cb2572a1cc7bb3d300ef5765deff111192808c17bbf7a511e8c.png"
+    sourceName: "25.png"
+    alt: "25.png"
+    bounds:
+      - 576
+      - 363
+      - 164
+      - 92
+    fit:
+      mode: contain
+    crop:
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+  - elementId: sequence-1-2
+    elementType: image
+    src: "media/imported/2f599663a807d7653d19c95908427a11fc5b54346bfdfc9c83d435e60816915d.png"
+    sourceName: "14.png"
+    alt: "14.png"
+    bounds:
+      - 749
+      - 363
+      - 164
+      - 92
+    fit:
+      mode: contain
+    crop:
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+notes: "Back at a lab meeting, I will not always tell the same version of the story. Main Slides holds the complete page library. A shorter talk can select some of those pages and arrange them differently. These thumbnails come from the real full and brief presentations in this project. A live reference keeps pointing to the canonical page, so I do not have to maintain two diverging copies."

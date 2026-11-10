@@ -1,39 +1,49 @@
-# HUANDENG introduction — Claude Code English
+# HUANDENG · Claude Code · English story edition
 
-**Current delivery index, written by the coordinator.** The 20 slide pages are Claude's independent native work. This index corrects the superseded 21-page README left in the original submission; its exact bytes are retained in [the original README](evidence/native-submission/README-before-index-correction.md).
+The native client independently authored the pages, narrative, Story and Notes. The coordinator assembled this README and the Notes index without rewriting page content or visual design.
 
-Open [deck.pptd](deck.pptd) in HUANDENG Editor 0.18.0. Keep the complete directory together.
+[PPTD project](deck.pptd) · [PDF](Exports/deck.pdf) · [PowerPoint](Exports/deck.pptx) · [Extracted speaker notes](speaker-notes.md) · [Native trial](evidence/native-trial.json) · [QA](evidence/qa.json)
 
-## Current project
+**Main Slides: 25.** HUANDENG introduction (full, about 25 minutes): 25; Lab-meeting version (about 8 minutes): 9.
 
-- 20 Main pages, five Sections and four title-only divider pages.
-- Full introduction: 20 items. Lab-meeting presentation: nine items.
-- Current static exports: [PDF](https://github.com/JaytonKogeru/huandeng/releases/download/plugin-v0.18.2/huandeng-claude-en.pdf) and [PowerPoint](https://github.com/JaytonKogeru/huandeng/releases/download/plugin-v0.18.2/huandeng-claude-en.pptx), both 20 pages. The portable ZIP also includes both files under Exports/.
-- Scientific, brand and original-reference sources are bundled under [sources](sources). [SOURCES.md](SOURCES.md) records their roles.
-- [SOURCE-MANIFEST.json](SOURCE-MANIFEST.json) records current source hashes; [media/ASSETS.md](media/ASSETS.md) indexes the media, including newly authored derivatives.
+**Native model:** `claude-opus-5-5`. native assistant message model metadata.
 
-## Authorship and execution
+## Current verification
 
-Claude chose its own narrative, page count and composition using candidate plugin 0.18.1. Its first native turn hit the account's five-hour quota. The coordinator exported the saved 20-page source and completed only the full-20 / lab-9 presentation plan already present in Claude's own script. No authored page was changed.
+- Native turn: completed; exit code 0; native completion confirmed. 2 recorded turn(s).
+- PDF / PPTX: 25 / 25 pages; export reports match the reviewed source revisions.
+- PowerPoint 16.0: 25/25 pages opened read-only and rendered at 1920×1080.
+- Native PowerPoint objects: 25 Notes pages, 8 tables, 1 chart objects, 39 media parts.
+- The whole Office-rendered sequence was reviewed in contact sheets; additional full-page checks and observations are recorded in [the visual review](evidence/office-visual-review.json).
+- No blocking Office layout defect was observed within that stated review scope. Narrative and aesthetic acceptance remain with the owner.
 
-After the quota reset, the same native session completed a read-only verification turn. It confirmed that the current source and both exports agree, and made no page edits or exports. This later check does not change the first turn's incomplete status.
+## Notes and Presentations
 
-The final delivery plugin is 0.18.2. Its three design guides have identical bytes to the 0.18.1 trial guides; the later change corrects contradictory README examples and version fields.
+The Notes file reproduces the saved Main Notes and actual resolved occurrence Notes for each Presentation. A reused Main note is labelled as such; no extra short-version script was invented.
 
-## Findings retained in the native result
+- HUANDENG introduction (full, about 25 minutes) (`pres-full`): 25 pages; 0 explicit occurrence Notes.
+- Lab-meeting version (about 8 minutes) (`pres-lab`): 9 pages; 4 explicit occurrence Notes.
 
-The lab presentation's four shorter occurrence notes and a named completion version were not created. Pages 10 and 18 describe those items; that claim is not demonstrated by this project. Those two pages also lack their intended Story fields. The small closing-page thumbnail in page 10 predates a final command-text edit.
+## Sources and native record
 
-PowerPoint changes the native chart layout on page 5, causing an axis-label collision. The twelve scientific values remain intact. Later text editing uses a generic example rather than carrying the scientific example through the full workflow.
+- [User story excerpt](sources/story/USER-STORY.zh-CN.md) and [verified technical facts](sources/story/FACTS.md).
+- [Native author's handoff](evidence/native-author-report.md) preserves the current native author report or a labelled excerpt of its visible final response. Its at-the-time Office limitation is superseded by the coordinator verification above.
+- [Native trial evidence](evidence/native-trial.json) records the real model evidence, tool failures, connection recovery where applicable, and the separation between native completion and delivery completion.
+- Keep the entire project directory when moving it; the PPTD entry references its pages and assets.
 
-All 20 pages were rendered and inspected in PowerPoint 16.0, read-only. That inspection documents compatibility and defects; it does not establish author approval. No live click-build validation or completion Activity report was performed.
+## Content findings in the preserved native candidate
 
-## History and portability
+Export completion does not mean all content requirements passed. These findings remain visible in the original native candidate; the coordinator did not rewrite its pages or request an aesthetic redo.
 
-[Original submission evidence](evidence/native-submission) includes the quota-time project metadata, page hashes and then-current 18-page PDF, clearly separated from the current exports. The earlier README and media index are preserved there as historical evidence.
+- Page5 overstates other tools as screenshot-only and image checks as unmeasurable or impossible to compare.
+- Page6 presents a human story as a guarantee that slides stop looking AI-made.
+- Page24 includes a future timeline idea that the shared story brief deferred.
+- Office page12 has local crowding between the long x-axis caption and numeric ticks; the y-axis title is clear.
 
-[Original trial guidance](evidence/trial-authoring-guidance.md) retains the exact input supplied to Claude. Current [AGENTS.md](AGENTS.md) changes only resource paths for this portable folder. Named historical checkpoints and frozen image bytes stay with the source; their presence does not mean Claude recorded a new completion milestone.
+[Independent content review](evidence/content-review.json) · [Saved narrative and Notes data](evidence/narrative.json).
 
-[Coordinator index-correction receipt](evidence/index-correction.json) records the two documentation replacements and unchanged authored/source/export hashes.
+## Short-version exports
 
-[Current delivery report](https://github.com/JaytonKogeru/huandeng/blob/plugin-v0.18.2/docs/INTRODUCTION-DELIVERY.md) and [native trial record](https://github.com/JaytonKogeru/huandeng/blob/plugin-v0.18.2/docs/evidence/introduction-rework/native-trials.json) describe the full comparison.
+[PDF](Exports/brief.pdf) · [PowerPoint](Exports/brief.pptx) — 9 pages. The coordinator mechanically exported the native-authored Presentation without inventing pages, order or Notes. The native Main PDF/PPTX bytes remain unchanged.
+
+[Short export evidence](evidence/short-exports.json).

@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "edition": "claude-zh",
+  "coordinator": "ChatGPT",
+  "purpose": "Portable project entry and scratch-directory routing only",
+  "beforeSha256": "a3a22af16fef6f392f00eda8cd4704fe94240d0cafd915f7bd8178115191a431",
+  "afterSha256": "d613ca833337a23c90a2b2a209ae3094a6b2eb2eab09a88095ce15b6a629a7c4",
+  "exactBeforeFile": "evidence/guidance-before-portability.md",
+  "archiveRole": "Historical exact AGENTS bytes immediately before portability adjustment; its workstation path is not an active or portable command",
+  "changedInstruction": "Replace one workstation-specific internal work-directory prefix with resolution of this project directory and its deck.pptd",
+  "narrativeAndDesignInstructionsChanged": false,
+  "pageMediaCheckpointOrExportFilesWritten": false,
+  "nativeCreationResultRewritten": false
+}

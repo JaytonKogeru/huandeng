@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "project": "deepseek-zh",
+  "recordedAt": "2026-11-10T23:00:51.648405+00:00",
+  "nativeAuthor": "DeepSeek Harness",
+  "modelEvidence": {
+    "name": "deepseek-flash",
+    "source": "official --profile headless --dump-config, 17.config.model; configured model, not response model metadata",
+    "overrideRequested": false
+  },
+  "plugin": {
+    "version": "0.18.3",
+    "storySkillSha256": "b41675a608ebddf63933e3f0dab519aeb1bf5ea18a19bf82549e26fb16f64b82"
+  },
+  "prompt": {
+    "sha256": "36d8ec814b87b4371969b17e7c9e019a26614f032e101c99db616d574294ce76",
+    "fullUserMessageForwardedVerbatim": true,
+    "sharedWithBothNativeClients": true,
+    "containsUserEvaluationOfClaude": true,
+    "publicStoryExcerpt": "sources/story/USER-STORY.zh-CN.md",
+    "fullPromptPublished": false
+  },
+  "independence": {
+    "otherAuthorsVisualsOrTemplatesSupplied": false,
+    "requiredToMimicAnotherAuthor": false,
+    "narrativeOrderOrPageCountImposed": false,
+    "coordinatorAuthoredPageContent": false,
+    "claimScope": "Separate canonical project guidance and input routing; the complete user message, including its evaluation of the previous Claude edition, was shared with both clients."
+  },
+  "turns": [
+    {
+      "requestId": "9a068da1-6083-48f8-a2a5-353e3d411d54",
+      "sessionId": "session-c178e34f-43f9-4656-a6ea-6ba9e443b4fd",
+      "state": "completed",
+      "exitCode": 0,
+      "nativeCompleted": true,
+      "elapsedSeconds": 1214.04,
+      "toolCalls": 128,
+      "toolErrorCount": 16,
+      "businessCompleted": true
+    }
+  ],
+  "mainPageCount": 18,
+  "presentations": [
+    {
+      "id": "full",
+      "title": "完整介绍",
+      "pageCount": 18,
+      "explicitLocalNotes": 0
+    },
+    {
+      "id": "brief",
+      "title": "短版 · 约十分钟",
+      "pageCount": 11,
+      "explicitLocalNotes": 0
+    }
+  ],
+  "events": [
+    "The pre-existing GUI and its child writer exited during the trial. The coordinator restored the same existing project at its previous port; source hashes were unchanged by reopening. The cause of the GUI exit was not established.",
+    "Native shell grants and an out-of-workspace evidence write were denied. The author retained its evidence within the project. The coordinator separately performed read-only PowerPoint verification after native completion."
+  ],
+  "exports": {
+    "deck.pdf": {
+      "sha256": "378fba2a067824602fa9b8ba75382b3f89073160d332f11be7cabf8252d83e3a",
+      "bytes": 2865872,
+      "actor": "native author",
+      "exportPages": 18,
+      "metadataRevision": "sha256:9970277e15198e2af3e36f06b9bcba4977307353ea05602763eb1d12666f427b",
+      "path": "Exports/deck.pdf",
+      "report": "Exports/deck.pdf.report.json"
+    },
+    "deck.pptx": {
+      "sha256": "f66a425dfbefdcedda9a22acd28cab63d27b8c514235661ff2c62bacaa187c9b",
+      "bytes": 2614948,
+      "actor": "native author",
+      "exportPages": 18,
+      "metadataRevision": "sha256:9970277e15198e2af3e36f06b9bcba4977307353ea05602763eb1d12666f427b",
+      "path": "Exports/deck.pptx",
+      "report": "Exports/deck.pptx.report.json"
+    }
+  },
+  "ownerAcceptance": "pending",
+  "contentReview": "content-review.json",
+  "contentStatus": "candidate-with-content-findings",
+  "independentContentReviewSha256": "fe2f37ac811d6e2aac68470d9714694f4f252776913e4eb383e153fcbae36702",
+  "coordinatorShortExports": "short-exports.json",
+  "guidancePortability": "guidance-portability.json"
+}

@@ -57,7 +57,7 @@ elements:
       lineHeight: 1.3
   - elementId: live-page
     elementType: image
-    src: "media/imported/807c002590eb9ae0dee437e1ddbc5f54048975bc805ce5ae15660adf39cbaa22.png"
+    src: "media/imported/f9e22dfafbac40e92462384baf7b281b0b610704d46e23f75a1ab44d60854824.png"
     sourceName: 02.png
     alt: 02.png
     bounds:
@@ -97,7 +97,7 @@ elements:
       - 412
       - 63
     content:
-      {"text":"跟随 Main 的当前内容。\n后续调整了坐标轴与数据点标记。","fontFamily":"Microsoft YaHei","fontSize":17,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.5}
+      {"text":"跟随 Main 的当前内容。\n图表标注继续做了调整。","fontFamily":"Microsoft YaHei","fontSize":17,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.5}
   - elementId: pinned-copy
     elementType: text
     bounds:
@@ -106,17 +106,7 @@ elements:
       - 412
       - 63
     content:
-      text: |-
-        保留“措辞收紧”时的画面。
-        简短介绍中的科学页使用这一版本。
-      fontFamily: Microsoft YaHei
-      fontSize: 17
-      color: "#263C34"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.5
+      {"text":"保留“措辞收紧”时的画面。\n简短介绍可以选择这个已保存的阶段。","fontFamily":"Microsoft YaHei","fontSize":17,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.5}
   - elementId: brand-small
     elementType: image
     src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
@@ -169,4 +159,4 @@ elements:
         - top
       lineHeight: 1.3
       field: main-position
-notes: "Actual comparison: the live page uses the later axis layout and one native-editable distance series; the measurement label carries the emphasis; the pinned page uses checkpoint checkpoint:a687931507a66085784d787c9ad2d31d. Both contain the exact same twelve measured values. The brief presentation genuinely pins that named version; the full presentation follows Main."
+notes: "有时我希望演讲继续跟随主稿改动，有时我需要留住已经确认的画面。Live引用读取当前页；Pinned引用选择一个保存过的命名版本。右边保留的是之前措辞修改完成时的状态，左边则包括后来对图表标注的调整。它们共享页面身份，但选取的内容版本不同。这和演讲中的先后位置是两件事。"

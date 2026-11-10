@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "project": "claude-en",
+  "recordedAt": "2026-11-10T23:13:19.876413+00:00",
+  "nativeAuthor": "Claude Code",
+  "modelEvidence": {
+    "name": "claude-opus-5-5",
+    "source": "native assistant message model metadata",
+    "overrideRequested": false
+  },
+  "plugin": {
+    "version": "0.18.3",
+    "storySkillSha256": "b41675a608ebddf63933e3f0dab519aeb1bf5ea18a19bf82549e26fb16f64b82"
+  },
+  "prompt": {
+    "sha256": "36d8ec814b87b4371969b17e7c9e019a26614f032e101c99db616d574294ce76",
+    "fullUserMessageForwardedVerbatim": true,
+    "sharedWithBothNativeClients": true,
+    "containsUserEvaluationOfClaude": true,
+    "publicStoryExcerpt": "sources/story/USER-STORY.zh-CN.md",
+    "fullPromptPublished": false
+  },
+  "independence": {
+    "otherAuthorsVisualsOrTemplatesSupplied": false,
+    "requiredToMimicAnotherAuthor": false,
+    "narrativeOrderOrPageCountImposed": false,
+    "coordinatorAuthoredPageContent": false,
+    "claimScope": "Separate canonical project guidance and input routing; the complete user message, including its evaluation of the previous Claude edition, was shared with both clients."
+  },
+  "turns": [
+    {
+      "requestId": "e1f4ba6f-304a-4b1f-a80f-cfc8f86e5ba0",
+      "sessionId": "ec6201f1-473d-462f-a190-ad9334edd022",
+      "state": "completed",
+      "exitCode": 0,
+      "nativeCompleted": true,
+      "elapsedSeconds": 1188.79,
+      "toolCalls": 35,
+      "toolErrorCount": null,
+      "businessCompleted": false
+    },
+    {
+      "requestId": "7f91b043-d7fa-438b-ab94-6839f0122517",
+      "sessionId": "ec6201f1-473d-462f-a190-ad9334edd022",
+      "state": "completed",
+      "exitCode": 0,
+      "nativeCompleted": true,
+      "elapsedSeconds": 918.38,
+      "toolCalls": 66,
+      "toolErrorCount": null,
+      "businessCompleted": true
+    }
+  ],
+  "mainPageCount": 25,
+  "presentations": [
+    {
+      "id": "pres-full",
+      "title": "HUANDENG introduction (full, about 25 minutes)",
+      "pageCount": 25,
+      "explicitLocalNotes": 0
+    },
+    {
+      "id": "pres-lab",
+      "title": "Lab-meeting version (about 8 minutes)",
+      "pageCount": 9,
+      "explicitLocalNotes": 4
+    }
+  ],
+  "events": [
+    "The pre-existing GUI and its child writer exited during the trial. The coordinator restored the same existing project at its previous port; source hashes were unchanged by reopening. The cause of the GUI exit was not established.",
+    "The first native turn completed with a stale MCP session token and an incomplete prepared transaction. The same native session was resumed with a fresh MCP process to remove the connection blocker; the original complete user prompt was sent unchanged again."
+  ],
+  "exports": {
+    "deck.pdf": {
+      "sha256": "ae424d2b8f7e761c788f7f66b3ba4de38845293f35c6341d99543336fd34437b",
+      "bytes": 3550842,
+      "actor": "native author",
+      "exportPages": 25,
+      "metadataRevision": "sha256:be41c8a1230b88e6bbf901ad04507dcd9b086dfc24b48c1ed1ae715e3714ee52",
+      "path": "Exports/deck.pdf",
+      "report": "Exports/deck.pdf.report.json"
+    },
+    "deck.pptx": {
+      "sha256": "f6fab1ba504cca99aeec15ed9064cbe72f1c4eac3e65d0a9bfd9152172e6b22f",
+      "bytes": 3594973,
+      "actor": "native author",
+      "exportPages": 25,
+      "metadataRevision": "sha256:be41c8a1230b88e6bbf901ad04507dcd9b086dfc24b48c1ed1ae715e3714ee52",
+      "path": "Exports/deck.pptx",
+      "report": "Exports/deck.pptx.report.json"
+    }
+  },
+  "ownerAcceptance": "pending",
+  "contentReview": "content-review.json",
+  "contentStatus": "candidate-with-content-findings",
+  "independentContentReviewSha256": "a59041674735c44d2f4f34a57eec549dece31bf9067c05f29b84193765dfde96",
+  "coordinatorShortExports": "short-exports.json",
+  "guidancePortability": "guidance-portability.json"
+}

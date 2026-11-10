@@ -1,0 +1,142 @@
+background:
+  type: solid
+  color: "#F7F5F0"
+elements:
+  - elementId: p14-eyebrow
+    elementType: text
+    bounds:
+      - 64
+      - 38
+      - 300
+      - 16
+    content:
+      text: 04 · THE WORKSPACE
+      fontSize: 10
+      fontFamily: Consolas
+      color: "#B43C26"
+      letterSpacing: 1.6
+      align:
+        - left
+        - top
+  - elementId: p14-title
+    elementType: text
+    role: title
+    bounds:
+      - 64
+      - 58
+      - 420
+      - 90
+    content:
+      text: A change arrives with its diff.
+      fontSize: 32
+      fontFamily: Georgia
+      color: "#17181A"
+      lineHeight: 1.12
+      align:
+        - left
+        - top
+  - elementId: p14-body
+    elementType: text
+    bounds:
+      - 64
+      - 186
+      - 396
+      - 210
+    content:
+      text: Every save is an operation. Before accepting it, I can see which fields changed and what the page looked like before. The review is anchored to the exact saved operation, not to a chat message.
+      fontSize: 17
+      fontFamily: Segoe UI
+      color: "#3A3833"
+      lineHeight: 1.62
+      align:
+        - left
+        - top
+  - elementId: p14-line
+    elementType: text
+    bounds:
+      - 64
+      - 424
+      - 396
+      - 40
+    content:
+      text: A diff is a better conversation than 'make it better'.
+      fontSize: 15.5
+      fontFamily: Georgia
+      italic: true
+      color: "#B43C26"
+      lineHeight: 1.35
+      align:
+        - left
+        - top
+  - elementId: p14-label
+    elementType: text
+    bounds:
+      - 500
+      - 100
+      - 420
+      - 16
+    content:
+      text: SAVED CHANGES
+      fontSize: 10
+      fontFamily: Consolas
+      color: "#B43C26"
+      letterSpacing: 1.6
+      align:
+        - left
+        - top
+  - elementId: p14-shot
+    elementType: image
+    bounds:
+      - 500
+      - 128
+      - 420
+      - 251
+    src: media/imported/0148822d0496ea8ff3653d88ab2c63fd4301d97b660c3ae4dea40798a3dc0bea.png
+    sourceName: en-operation-changes-4x.png
+    fit:
+      mode: contain
+  - elementId: p14-frame
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 500
+      - 128
+      - 420
+      - 251
+    border:
+      color: "#D9D4C8"
+      width: 1
+      style: solid
+  - elementId: p14-caption
+    elementType: text
+    bounds:
+      - 500
+      - 392
+      - 420
+      - 50
+    content:
+      text: The exact fields, before the change is accepted.
+      fontSize: 10.5
+      fontFamily: Consolas
+      color: "#918B7E"
+      lineHeight: 1.5
+      align:
+        - left
+        - top
+  - elementId: p14-folio
+    elementType: text
+    bounds:
+      - 860
+      - 512
+      - 36
+      - 14
+    content:
+      text: "14"
+      field: main-position
+      fontSize: 9.5
+      fontFamily: Consolas
+      color: "#A29C8F"
+      align:
+        - right
+        - top
+notes: And when a change comes in, I can see the diff before I accept it. Not a chat message saying 'improved the slide', but the exact fields that changed, with the page's Story beside it. That turns review into something I can actually do. A diff is a better conversation than 'make it better'.

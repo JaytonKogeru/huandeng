@@ -1,0 +1,204 @@
+pageType: content
+background:
+  type: solid
+  color: "#E9EEE6"
+notes: 素材库不是装饰图片的仓库。这里的结构图、距离曲线、CSV、来源和界面截图都保留原文件、尺寸与出处。素材越像证据，越不能让它在复制、压缩和换页中丢掉来源。
+elements:
+  - elementId: material-title
+    elementType: text
+    role: title
+    bounds:
+      - 48
+      - 44
+      - 520
+      - 40
+    content:
+      text: 素材不是插图，是证据
+      fontSize: 28
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#17221C"
+      lineHeight: 1.3
+      align:
+        - left
+        - top
+  - elementId: material-lead
+    elementType: text
+    bounds:
+      - 48
+      - 92
+      - 520
+      - 44
+    content:
+      text: 原图、坐标、CSV、中文曲线和来源一起留在项目里；素材库不是附件区。
+      fontSize: 14
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#425048"
+      lineHeight: 1.55
+      align:
+        - left
+        - top
+  - elementId: material-chart
+    elementType: image
+    bounds:
+      - 48
+      - 156
+      - 330
+      - 165
+    src: media/imported/d5576a93749be3608a7127b9a45d7d92e62fa9f0258043a13835ac7c1d971e19.png
+    sourceName: paired-c1-distances-zh.png
+    fit:
+      mode: contain
+  - elementId: material-chart-cap
+    elementType: text
+    bounds:
+      - 48
+      - 326
+      - 330
+      - 24
+    content:
+      text: 12 个 C1′–C1′ 距离；同一结构的 12 个位置。
+      fontSize: 8.8
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#66756A"
+      align:
+        - left
+        - top
+  - elementId: material-dna
+    elementType: image
+    bounds:
+      - 395
+      - 150
+      - 150
+      - 150
+    src: media/imported/ff6d1434a44440fba124ccad7dfa30efa01e8c400094d4453d17d502345c1e2c.png
+    sourceName: dna-duplex-side.png
+    fit:
+      mode: contain
+  - elementId: material-dna-cap
+    elementType: text
+    bounds:
+      - 395
+      - 304
+      - 150
+      - 28
+    content:
+      text: |-
+        PDB 1BNA
+        正交投影
+      fontSize: 8.4
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#66756A"
+      lineHeight: 1.4
+      align:
+        - left
+        - top
+  - elementId: material-shot-panel
+    elementType: shape
+    bounds:
+      - 534
+      - 144
+      - 382
+      - 204
+    shapeName: rect
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      color: "#CDD6CC"
+      width: 0.8
+      style: solid
+  - elementId: material-shot
+    elementType: image
+    bounds:
+      - 540
+      - 150
+      - 370
+      - 193
+    src: media/imported/4746757e07edcb47fb7a31244b81eff453e6dd771bd3411daca09d04eedd6af7.png
+    sourceName: zh-CN-native-asset-resolution-4x.png
+    fit:
+      mode: contain
+  - elementId: material-shot-cap
+    elementType: text
+    bounds:
+      - 540
+      - 348
+      - 370
+      - 20
+    content:
+      text: 真实界面：插入素材时保留原始分辨率。
+      fontSize: 8.6
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#66756A"
+      align:
+        - left
+        - top
+  - elementId: material-note
+    elementType: text
+    bounds:
+      - 540
+      - 380
+      - 370
+      - 70
+    content:
+      text: |-
+        原始文件不覆盖。
+        尺寸、来源和版本跟着素材走。
+        换一页、换一场演讲，证据不重画。
+      fontSize: 10.8
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#2B3830"
+      lineHeight: 1.55
+      align:
+        - left
+        - top
+  - elementId: material-path
+    elementType: text
+    bounds:
+      - 48
+      - 400
+      - 450
+      - 56
+    content:
+      text: |-
+        sources/science/
+        1BNA.pdb · paired-c1-distances.csv
+        paired-c1-distances-zh.png · source.json
+      fontSize: 8.4
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Consolas
+      color: "#536656"
+      lineHeight: 1.55
+      align:
+        - left
+        - top
+  - elementId: material-caption
+    elementType: text
+    bounds:
+      - 48
+      - 470
+      - 450
+      - 30
+    content:
+      text: 这些文件随项目一起移动；图不是截图后再压缩的副本。
+      fontSize: 9
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#9E5B3E"
+      align:
+        - left
+        - top

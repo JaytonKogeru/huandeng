@@ -1,0 +1,167 @@
+background:
+  type: solid
+  color: "#F7F5F0"
+elements:
+  - elementId: p17-eyebrow
+    elementType: text
+    bounds:
+      - 64
+      - 38
+      - 300
+      - 16
+    content:
+      text: 07 · THE WORKSPACE
+      fontSize: 10
+      fontFamily: Consolas
+      color: "#B43C26"
+      letterSpacing: 1.6
+      align:
+        - left
+        - top
+  - elementId: p17-title
+    elementType: text
+    role: title
+    bounds:
+      - 64
+      - 58
+      - 430
+      - 46
+    content:
+      text: The work leaves as slides.
+      fontSize: 32
+      fontFamily: Georgia
+      color: "#17181A"
+      lineHeight: 1.1
+      align:
+        - left
+        - top
+  - elementId: p17-body
+    elementType: text
+    bounds:
+      - 64
+      - 160
+      - 420
+      - 180
+    content:
+      text: PDF for the room. Editable PPTX for the person who has to keep it. MP4 when the deck has to play itself. Export reads the saved pages, not a picture of the editor.
+      fontSize: 17
+      fontFamily: Segoe UI
+      color: "#3A3833"
+      lineHeight: 1.62
+      align:
+        - left
+        - top
+  - elementId: p17-label
+    elementType: text
+    bounds:
+      - 520
+      - 100
+      - 376
+      - 16
+    content:
+      text: EXPORT
+      fontSize: 10
+      fontFamily: Consolas
+      color: "#B43C26"
+      letterSpacing: 1.6
+      align:
+        - left
+        - top
+  - elementId: p17-shot
+    elementType: image
+    bounds:
+      - 520
+      - 128
+      - 376
+      - 177
+    src: media/imported/ea2c787b8b58f25cb8655c5df4926889bad3ebd4b293d24df5e18a54944be3eb.png
+    sourceName: en-export-4x.png
+    fit:
+      mode: contain
+  - elementId: p17-frame
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 520
+      - 128
+      - 376
+      - 177
+    border:
+      color: "#D9D4C8"
+      width: 1
+      style: solid
+  - elementId: p17-caption
+    elementType: text
+    bounds:
+      - 520
+      - 316
+      - 376
+      - 40
+    content:
+      text: "The real Export dialog: format and range. Public example project."
+      fontSize: 10.5
+      fontFamily: Consolas
+      color: "#918B7E"
+      lineHeight: 1.5
+      align:
+        - left
+        - top
+  - elementId: p17-format
+    elementType: text
+    bounds:
+      - 64
+      - 392
+      - 420
+      - 20
+    content:
+      text: PDF · PPTX · MP4
+      fontSize: 12
+      fontFamily: Consolas
+      color: "#B43C26"
+      letterSpacing: 1.4
+      align:
+        - left
+        - top
+  - elementId: p17-pptxgen
+    elementType: image
+    bounds:
+      - 64
+      - 430
+      - 30
+      - 22
+    src: media/imported/d697acf6f3c5bc265806bc8f6c4e6d58b964e0b2962392d0329a420639f45846.png
+    sourceName: pptxgenjs.png
+    fit:
+      mode: contain
+  - elementId: p17-credit
+    elementType: text
+    bounds:
+      - 104
+      - 432
+      - 300
+      - 16
+    content:
+      text: PPTX written with PptxGenJS
+      fontSize: 11.5
+      fontFamily: Consolas
+      color: "#918B7E"
+      align:
+        - left
+        - top
+  - elementId: p17-folio
+    elementType: text
+    bounds:
+      - 860
+      - 512
+      - 36
+      - 14
+    content:
+      text: "17"
+      field: main-position
+      fontSize: 9.5
+      fontFamily: Consolas
+      color: "#A29C8F"
+      align:
+        - right
+        - top
+notes: The work still has to leave the editor. PDF for the room. Editable PPTX for whoever has to keep it. MP4 when the deck has to play itself. Export reads the saved pages, not a screenshot of the editor, and the PPTX is a real editable file, not a folder of slide images. The format is a working format, not a lock-in.

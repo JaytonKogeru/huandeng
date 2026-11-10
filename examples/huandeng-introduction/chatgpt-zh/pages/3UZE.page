@@ -1,0 +1,177 @@
+pageType: content
+background:
+  type: solid
+  color: "#F7F5EF"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 44
+      - 35
+      - 870
+      - 68
+    role: title
+    content:
+      text: PPTX 里面，本来就有页面
+      fontFamily: Microsoft YaHei
+      fontSize: 28
+      color: "#263C34"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: brand-small
+    elementType: image
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    alt: huandeng.png
+    bounds:
+      - 44
+      - 510
+      - 17
+      - 17
+    fit:
+      mode: contain
+    crop:
+      left: 0.18
+      right: 0.18
+      top: 0.14
+      bottom: 0.14
+  - elementId: foot
+    elementType: text
+    bounds:
+      - 69
+      - 513
+      - 130
+      - 17
+    content:
+      text: HUANDENG
+      fontFamily: Microsoft YaHei
+      fontSize: 10
+      color: "#66756B"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: position
+    elementType: text
+    bounds:
+      - 884
+      - 512
+      - 30
+      - 18
+    content:
+      text: ""
+      fontFamily: Microsoft YaHei
+      fontSize: 10
+      color: "#66756B"
+      bold: false
+      align:
+        - right
+        - top
+      lineHeight: 1.3
+      field: main-position
+  - elementId: pptx-label
+    elementType: text
+    bounds:
+      - 44
+      - 135
+      - 360
+      - 38
+    content:
+      text: PPTX
+      fontFamily: Microsoft YaHei
+      fontSize: 24
+      color: "#356F68"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: pptx-parts
+    elementType: text
+    bounds:
+      - 44
+      - 203
+      - 380
+      - 196
+    content:
+      text: |-
+        ppt/presentation.xml
+        ppt/slides/slide1.xml
+        ppt/media/…
+        ppt/notesSlides/…
+      fontFamily: Consolas
+      fontSize: 19
+      color: "#263C34"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.9
+  - elementId: pptd-label
+    elementType: text
+    bounds:
+      - 506
+      - 135
+      - 408
+      - 41
+    content:
+      text: HUANDENG 的项目目录
+      fontFamily: Microsoft YaHei
+      fontSize: 23
+      color: "#356F68"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: pptd-parts
+    elementType: text
+    bounds:
+      - 506
+      - 203
+      - 408
+      - 196
+    content:
+      {"text":"deck.pptd\npages/7EKH.page\nmedia/…\n.huandeng/…","fontFamily":"Consolas","fontSize":20,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.9}
+  - elementId: format-point
+    elementType: text
+    bounds:
+      - 44
+      - 434
+      - 870
+      - 65
+    content:
+      text: 我把可访问的目录作为工作入口，让每一页有自己的修改与历史。
+      fontFamily: Microsoft YaHei
+      fontSize: 20
+      color: "#263C34"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.5
+  - elementId: format-source
+    elementType: text
+    bounds:
+      - 44
+      - 495
+      - 870
+      - 16
+    content:
+      text: Microsoft Learn · PresentationML structure
+      fontFamily: Microsoft YaHei
+      fontSize: 10
+      color: "#66756B"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+notes: |-
+  这里要先澄清一个容易误会的地方。PPTX内部本来就分页面、素材和备注，它是一个Open XML包。我的选择不是给PowerPoint发明页面结构，而是把日常工作的入口变成一个可访问的目录，用deck.pptd组织页面和素材。两种格式的模型不同，不能直接把PPTX改后缀当成PPTD。图中只选了与这个解释有关的真实路径类型。
+
+  Sources and precise attribution: sources/story/FACTS.md ; https://open-slide.dev/docs ; https://learn.microsoft.com/en-us/office/open-xml/presentation/structure-of-a-presentationml-document .

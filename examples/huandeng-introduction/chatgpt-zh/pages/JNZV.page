@@ -12,15 +12,7 @@ elements:
       - 67
     role: title
     content:
-      text: 改说明，保留证据
-      fontFamily: Microsoft YaHei
-      fontSize: 28
-      color: "#263C34"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
+      {"text":"这次只把说明讲清楚","fontFamily":"Microsoft YaHei","fontSize":28,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
   - elementId: request
     elementType: text
     bounds:
@@ -186,8 +178,4 @@ elements:
         - top
       lineHeight: 1.3
       field: main-position
-notes: |-
-  受控公开示例中的真实一次修改。前后使用同一页、同一显示尺度。操作只改title和context两个text值。结构图src、crop、bounds、全部chart数据、坐标轴、单位、标记、来源及其他页面均通过深度相等比较保留。
-
-  Operation: cb19f7f2-c9d6-4f76-8981-759076f20fde
-  See evidence/wording-edit.json.
+notes: "实际请求可以很小：把这一页的标题和解释讲得更清楚，保留原始图、十二个数值、坐标轴和来源。这里展示的是这次操作实际保存的修改前后。Agent通过当前版本读取、预览、保存修改，我再看结果。请求的范围与最终改动能够对应起来，才有可能放心地继续编辑同一份作品。"

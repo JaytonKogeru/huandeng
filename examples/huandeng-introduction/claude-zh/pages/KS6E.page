@@ -1,0 +1,149 @@
+background:
+  type: solid
+  color: "#F6F6F3"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 56
+      - 34
+      - 848
+      - 40
+    content:
+      text: 让 AI 改两页，目录里多出一堆副本
+      fontFamily: Microsoft YaHei
+      fontSize: 26
+      lineHeight: 1.3
+      color: "#1C2321"
+      align:
+        - left
+        - top
+      bold: true
+    role: title
+  - elementId: lead
+    elementType: text
+    bounds:
+      - 56
+      - 80
+      - 848
+      - 26
+    content:
+      text: 一份 50 页的 slides，我只想改其中两页。
+      fontFamily: Microsoft YaHei
+      fontSize: 16
+      lineHeight: 1.4
+      color: "#56615D"
+      align:
+        - left
+        - top
+  - elementId: listing-bg
+    elementType: shape
+    shapeName: rect
+    bounds:
+        [56,124,400,250]
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#CBD3CF"
+  - elementId: listing-head
+    elementType: text
+    bounds:
+      - 76
+      - 138
+      - 360
+      - 20
+    content:
+      text: 示意：反复修改后的文件夹
+      fontFamily: Microsoft YaHei
+      fontSize: 12
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - left
+        - top
+  - elementId: listing
+    elementType: text
+    bounds:
+      - 76
+      - 166
+      - 370
+      - 240
+    content:
+      text: |-
+        组会汇报.pptx
+        组会汇报_v2.pptx
+        组会汇报_v2_修改.pptx
+        组会汇报_final.pptx
+        组会汇报_final_AI改.pptx
+        组会汇报_final_AI改(1).pptx
+        组会汇报_最终版_不要再改.pptx
+      fontFamily: Consolas
+      fontSize: 14
+      lineHeight: 1.75
+      color: "#3E4845"
+      align:
+        - left
+        - top
+  - elementId: body
+    elementType: text
+    bounds:
+      - 500
+      - 128
+      - 404
+      - 300
+    content:
+      text: <p><strong><span style="color:#1C2321">有“防御性”的 agent 不会直接替换。</span></strong></p><p>改动再轻微，它也会另存一个副本，留下大量不同时间的“垃圾历史”。</p><p><span style="font-size:8px"> </span></p><p><strong><span style="color:#1C2321">这让我想到 Git。</span></strong></p><p>版本管理本来就是解决这个问题的。我们应该学它：</p><p><span style="font-size:8px"> </span></p><p><strong><span style="color:#2E6B5E">把“页”当作修改的单位，</span></strong>每一页都能做版本管理，而不是整份文件一遍遍复制。</p>
+      fontFamily: Microsoft YaHei
+      fontSize: 17
+      lineHeight: 1.6
+      color: "#3E4845"
+      align:
+        - left
+        - top
+  - elementId: ft-mark
+    elementType: image
+    bounds:
+      - 56
+      - 505
+      - 16
+      - 16
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    fit:
+      mode: contain
+  - elementId: ft-label
+    elementType: text
+    bounds:
+      - 78
+      - 505
+      - 420
+      - 16
+    content:
+      text: HUANDENG  /  为什么要做
+      fontFamily: Microsoft YaHei
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - left
+        - middle
+  - elementId: ft-pos
+    elementType: text
+    bounds:
+      - 824
+      - 505
+      - 80
+      - 16
+    content:
+      text: "0"
+      fontFamily: Microsoft YaHei
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - right
+        - middle
+      field: main-position
+notes: 第二个原因。当我让 AI 针对某几页做修改，比如一份五十页的 slides 我只想改两页，很多有防御性行为的 agent 不会直接替换，它会给你留副本。哪怕只是轻微改动，它也会创建一个新的 slides 副本。改得多了，目录里就是一堆垃圾副本和不同时间留下的垃圾历史。这让我想到 Git，想到版本管理工具。我们应该学的就是这个：把 page 当作修改的单位，然后对它做版本管理。左边的文件名是示意，不是某个真实目录。

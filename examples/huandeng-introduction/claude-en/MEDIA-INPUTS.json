@@ -1,0 +1,350 @@
+{
+  "purpose": "Byte-identical public input assets already imported through this Project writer",
+  "assets": [
+    {
+      "source": "recommended/en/en-edit-1920.png",
+      "sha256": "8af5553e393e50bc2be95658bea2336a9634fc16264b36e5b0f002f41c6fcace",
+      "kind": "actual-ui",
+      "locale": "en",
+      "use": "edit",
+      "pixels": [
+        3840,
+        2160
+      ],
+      "path": "media/imported/8af5553e393e50bc2be95658bea2336a9634fc16264b36e5b0f002f41c6fcace.png"
+    },
+    {
+      "source": "recommended/en/en-design-check-wide-4x.png",
+      "sha256": "0cef9f0b09e8273949ef418c28e1e3cb5c25c354fff6a3eeeb84e1a05c74b2b5",
+      "kind": "actual-ui",
+      "locale": "en",
+      "use": "design-check-wide",
+      "pixels": [
+        3840,
+        2128
+      ],
+      "path": "media/imported/0cef9f0b09e8273949ef418c28e1e3cb5c25c354fff6a3eeeb84e1a05c74b2b5.png"
+    },
+    {
+      "source": "recommended/en/en-export-4x.png",
+      "sha256": "ea2c787b8b58f25cb8655c5df4926889bad3ebd4b293d24df5e18a54944be3eb",
+      "kind": "actual-ui",
+      "locale": "en",
+      "use": "export",
+      "pixels": [
+        2304,
+        1088
+      ],
+      "path": "media/imported/ea2c787b8b58f25cb8655c5df4926889bad3ebd4b293d24df5e18a54944be3eb.png"
+    },
+    {
+      "source": "recommended/en/en-present-menu-4x.png",
+      "sha256": "48fe43fdc4bd5aa675f58e91a6bfaaf7eeb7df2be43384d4d89bdd61c8167f08",
+      "kind": "actual-ui",
+      "locale": "en",
+      "use": "present-menu",
+      "pixels": [
+        764,
+        288
+      ],
+      "path": "media/imported/48fe43fdc4bd5aa675f58e91a6bfaaf7eeb7df2be43384d4d89bdd61c8167f08.png"
+    },
+    {
+      "source": "recommended/en/en-browse-reading-4x.png",
+      "sha256": "d81ca1d3d956de469ebe26ea28e121e2c63e78349e97ec063068d28cfb26089d",
+      "kind": "actual-ui",
+      "locale": "en",
+      "use": "browse-reading",
+      "pixels": [
+        2192,
+        1220
+      ],
+      "path": "media/imported/d81ca1d3d956de469ebe26ea28e121e2c63e78349e97ec063068d28cfb26089d.png"
+    },
+    {
+      "source": "recommended/en/en-outline-reading-4x.png",
+      "sha256": "0c992097d40aa22917c249d80642892caad569fa7a60faf4df2089cafdc79c09",
+      "kind": "actual-ui",
+      "locale": "en",
+      "use": "outline-reading",
+      "pixels": [
+        4448,
+        1480
+      ],
+      "path": "media/imported/0c992097d40aa22917c249d80642892caad569fa7a60faf4df2089cafdc79c09.png"
+    },
+    {
+      "source": "recommended/en/en-edit-before-4x.png",
+      "sha256": "65fb18be9fabeffebdb25baa3be9de52eacc4f2a811591962df37d44a0d9a761",
+      "kind": "actual-ui",
+      "locale": "en",
+      "use": "edit-before",
+      "pixels": [
+        3152,
+        1780
+      ],
+      "path": "media/imported/65fb18be9fabeffebdb25baa3be9de52eacc4f2a811591962df37d44a0d9a761.png"
+    },
+    {
+      "source": "recommended/en/en-edit-after-4x.png",
+      "sha256": "eff7df59ca30395ee85337cd02f9183e4a88843dc8ca7005778705ae82d4e950",
+      "kind": "actual-ui",
+      "locale": "en",
+      "use": "edit-after",
+      "pixels": [
+        3152,
+        1780
+      ],
+      "path": "media/imported/eff7df59ca30395ee85337cd02f9183e4a88843dc8ca7005778705ae82d4e950.png"
+    },
+    {
+      "source": "recommended/en/en-focused-story-4x.png",
+      "sha256": "489dd2e5299200127a17f13ad647931c356f726bc48514949be359d2a5d3df3c",
+      "kind": "actual-ui",
+      "locale": "en",
+      "use": "focused-story",
+      "pixels": [
+        1196,
+        1136
+      ],
+      "path": "media/imported/489dd2e5299200127a17f13ad647931c356f726bc48514949be359d2a5d3df3c.png"
+    },
+    {
+      "source": "recommended/en/en-delivery-toolbar-4x.png",
+      "sha256": "4a073d49b9de86c7edb3d064bd1466dfc2a8222ffb0a8e31fcafeed21c23b8da",
+      "kind": "actual-ui",
+      "locale": "en",
+      "use": "delivery-toolbar",
+      "pixels": [
+        1888,
+        192
+      ],
+      "path": "media/imported/4a073d49b9de86c7edb3d064bd1466dfc2a8222ffb0a8e31fcafeed21c23b8da.png"
+    },
+    {
+      "source": "recommended/en/en-history-change-4x.png",
+      "sha256": "545313eff6d8d90331cb33a45becb21a5fe041d03f6e6c6d43207f2e5acb56fb",
+      "kind": "actual-ui",
+      "locale": "en",
+      "use": "history-change",
+      "pixels": [
+        4608,
+        3028
+      ],
+      "path": "media/imported/545313eff6d8d90331cb33a45becb21a5fe041d03f6e6c6d43207f2e5acb56fb.png"
+    },
+    {
+      "source": "recommended/en/en-project-sequences-4x.png",
+      "sha256": "72ae1ca6c88e49b22812dfcb60706f776f97abe0dd6ab5c0defa0a21fd4e9218",
+      "kind": "actual-ui",
+      "locale": "en",
+      "use": "project-sequences",
+      "pixels": [
+        1596,
+        1216
+      ],
+      "path": "media/imported/72ae1ca6c88e49b22812dfcb60706f776f97abe0dd6ab5c0defa0a21fd4e9218.png"
+    },
+    {
+      "source": "recommended/en/en-identity-before-4x.png",
+      "sha256": "4b4475913c7e4538c9b76f47056e1edca6405a8636d7fd7c591309a373101e19",
+      "kind": "actual-ui",
+      "locale": "en",
+      "use": "identity-before",
+      "pixels": [
+        1440,
+        180
+      ],
+      "path": "media/imported/4b4475913c7e4538c9b76f47056e1edca6405a8636d7fd7c591309a373101e19.png"
+    },
+    {
+      "source": "recommended/en/en-identity-after-4x.png",
+      "sha256": "cfb23a312f298e185eb847eddb1cdf9cc493d63d55082cab0cc70606789af5f5",
+      "kind": "actual-ui",
+      "locale": "en",
+      "use": "identity-after",
+      "pixels": [
+        1440,
+        180
+      ],
+      "path": "media/imported/cfb23a312f298e185eb847eddb1cdf9cc493d63d55082cab0cc70606789af5f5.png"
+    },
+    {
+      "source": "recommended/en/en-asset-resolution-4x.png",
+      "sha256": "641e5689f83444883c3f94ab5a2b622db9dffe66ce3fb6c09a9ea5c57a059e7a",
+      "kind": "actual-ui",
+      "locale": "en",
+      "use": "asset-resolution",
+      "pixels": [
+        1148,
+        600
+      ],
+      "path": "media/imported/641e5689f83444883c3f94ab5a2b622db9dffe66ce3fb6c09a9ea5c57a059e7a.png"
+    },
+    {
+      "source": "recommended/en/en-operation-history-4x.png",
+      "sha256": "2f50dcc08e136b4e7da17aa53b91a17e24179aeb260dd0e94236688dcfe3efda",
+      "kind": "actual-ui",
+      "locale": "en",
+      "use": "operation-history",
+      "pixels": [
+        4608,
+        3028
+      ],
+      "path": "media/imported/2f50dcc08e136b4e7da17aa53b91a17e24179aeb260dd0e94236688dcfe3efda.png"
+    },
+    {
+      "source": "recommended/en/en-operation-review-4x.png",
+      "sha256": "9d96638c304c763194540898ff5057a35a7ec589a0fb8bc71fc927182e992d79",
+      "kind": "actual-ui",
+      "locale": "en",
+      "use": "operation-review",
+      "pixels": [
+        4400,
+        3280
+      ],
+      "path": "media/imported/9d96638c304c763194540898ff5057a35a7ec589a0fb8bc71fc927182e992d79.png"
+    },
+    {
+      "source": "recommended/en/en-operation-changes-4x.png",
+      "sha256": "0148822d0496ea8ff3653d88ab2c63fd4301d97b660c3ae4dea40798a3dc0bea",
+      "kind": "actual-ui",
+      "locale": "en",
+      "use": "operation-changes",
+      "pixels": [
+        1152,
+        688
+      ],
+      "path": "media/imported/0148822d0496ea8ff3653d88ab2c63fd4301d97b660c3ae4dea40798a3dc0bea.png"
+    },
+    {
+      "source": "brand/codex.png",
+      "sha256": "2ce1c57dd3b312417106a487815ab1235bddce17e1fa9b32a2f048bd71ee25d3",
+      "kind": "brand",
+      "use": "Official OpenAI Codex extension icon; keep product text Codex beside it.",
+      "pixels": {
+        "width": 385,
+        "height": 385,
+        "mode": "RGBA"
+      },
+      "path": "media/imported/2ce1c57dd3b312417106a487815ab1235bddce17e1fa9b32a2f048bd71ee25d3.png"
+    },
+    {
+      "source": "brand/claude-code.png",
+      "sha256": "733f24f4c52acb15eb0fbded1cf40eb42b4ba8e62b882acac70b6234b50919a8",
+      "kind": "brand",
+      "use": "Claude product mark used beside Claude Code; not an exclusive Code symbol.",
+      "pixels": {
+        "width": 192,
+        "height": 192,
+        "mode": "P"
+      },
+      "path": "media/imported/733f24f4c52acb15eb0fbded1cf40eb42b4ba8e62b882acac70b6234b50919a8.png"
+    },
+    {
+      "source": "brand/deepseek.png",
+      "sha256": "e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc",
+      "kind": "brand",
+      "use": "DeepSeek official organization mark; not a separate Harness logo.",
+      "pixels": {
+        "width": 460,
+        "height": 460,
+        "mode": "RGB"
+      },
+      "path": "media/imported/e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc.png"
+    },
+    {
+      "source": "brand/chatgpt.png",
+      "sha256": "0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13",
+      "kind": "brand",
+      "use": "ChatGPT official mark.",
+      "pixels": {
+        "width": 720,
+        "height": 720,
+        "mode": "RGBA"
+      },
+      "path": "media/imported/0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13.png"
+    },
+    {
+      "source": "brand/open-slide.png",
+      "sha256": "44e2a2aa5f3887deae386fa73f71234961f93e006873b632ccf38b6b6f1291a1",
+      "kind": "brand",
+      "use": "Editor code foundation.",
+      "pixels": {
+        "width": 512,
+        "height": 512,
+        "mode": "RGBA"
+      },
+      "path": "media/imported/44e2a2aa5f3887deae386fa73f71234961f93e006873b632ccf38b6b6f1291a1.png"
+    },
+    {
+      "source": "brand/github-repository.png",
+      "sha256": "2a2f5cbcc74c7fa83c40127dd8b0e42c23f1157131aebe28492aa1ac27bbdc6d",
+      "kind": "brand",
+      "use": "GitHub repository symbol used beside OpenPPTD; not an OpenPPTD logo.",
+      "pixels": {
+        "width": 294,
+        "height": 288,
+        "mode": "RGBA"
+      },
+      "path": "media/imported/2a2f5cbcc74c7fa83c40127dd8b0e42c23f1157131aebe28492aa1ac27bbdc6d.png"
+    },
+    {
+      "source": "brand/pptxgenjs.png",
+      "sha256": "d697acf6f3c5bc265806bc8f6c4e6d58b964e0b2962392d0329a420639f45846",
+      "kind": "brand",
+      "use": "PPTX export library.",
+      "pixels": {
+        "width": 480,
+        "height": 349,
+        "mode": "RGBA"
+      },
+      "path": "media/imported/d697acf6f3c5bc265806bc8f6c4e6d58b964e0b2962392d0329a420639f45846.png"
+    },
+    {
+      "source": "brand/huandeng.png",
+      "sha256": "6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef",
+      "kind": "brand",
+      "use": "Default HUANDENG mark; exact pixels used on the original introduction cover and footers.",
+      "pixels": {
+        "width": 512,
+        "height": 512,
+        "mode": "RGBA"
+      },
+      "path": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png"
+    },
+    {
+      "source": "brand/huandeng-user-original.png",
+      "sha256": "bd04c9ebb0e94cdaa5ba6c3a7df8d5ae1d35236933b3ca9ab297912d7b870530",
+      "kind": "brand",
+      "use": "Unmodified user-supplied source mark retained for provenance; use huandeng.png for the existing presentation identity.",
+      "pixels": {
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA"
+      },
+      "path": "media/imported/bd04c9ebb0e94cdaa5ba6c3a7df8d5ae1d35236933b3ca9ab297912d7b870530.png"
+    },
+    {
+      "source": "science/dna-duplex-side.png",
+      "sha256": "ff6d1434a44440fba124ccad7dfa30efa01e8c400094d4453d17d502345c1e2c",
+      "kind": "public-scientific-worked-example",
+      "use": "Optional exact-coordinate demonstration; read science/README.md and source.json before use.",
+      "path": "media/imported/ff6d1434a44440fba124ccad7dfa30efa01e8c400094d4453d17d502345c1e2c.png"
+    },
+    {
+      "source": "science/dna-duplex-end.png",
+      "sha256": "342088ed88ab8fffc8ce2651cd6fbf183244f5069c7907702a957eb9cf9fa18a",
+      "kind": "public-scientific-worked-example",
+      "use": "Optional exact-coordinate demonstration; read science/README.md and source.json before use.",
+      "path": "media/imported/342088ed88ab8fffc8ce2651cd6fbf183244f5069c7907702a957eb9cf9fa18a.png"
+    },
+    {
+      "source": "science/paired-c1-distances-en.png",
+      "sha256": "a36d62e395822be26d250ca525aa072402aa68bfce609b3464f84762541bff62",
+      "kind": "public-scientific-worked-example",
+      "use": "Optional exact-coordinate demonstration; read science/README.md and source.json before use.",
+      "path": "media/imported/a36d62e395822be26d250ca525aa072402aa68bfce609b3464f84762541bff62.png"
+    }
+  ]
+}

@@ -12,13 +12,5 @@ elements:
       - 82
     role: title
     content:
-      text: People and agents
-      fontFamily: Arial
-      fontSize: 34
-      color: "#263C34"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-notes: Section pause. The next pages demonstrate this theme through actual work.
+      {"text":"Keeping the story in the work","fontFamily":"Arial","fontSize":34,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
+notes: "Page identity and history define the scope of an edit. I also wanted the human judgment to survive, so let us look inside the editor at how Story and materials carry intent and evidence into the next revision."

@@ -1,0 +1,482 @@
+background:
+  type: solid
+  color: "#F6F6F3"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 56
+      - 30
+      - 848
+      - 42
+    content:
+      text: Start from the story, not from the slides
+      fontFamily: Arial
+      fontSize: 30
+      lineHeight: 1.2
+      color: "#1C2321"
+      align:
+        - left
+        - top
+      bold: true
+    role: title
+  - elementId: a-label
+    elementType: text
+    bounds:
+      - 56
+      - 104
+      - 120
+      - 48
+    content:
+      text: Slides first
+      fontFamily: Arial
+      fontSize: 16
+      lineHeight: 1.35
+      color: "#8A5A2E"
+      align:
+        - left
+        - middle
+      bold: true
+  - elementId: a0
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 190
+      - 96
+      - 162
+      - 64
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#DCCFC1"
+  - elementId: a0t
+    elementType: text
+    bounds:
+      - 200
+      - 100
+      - 142
+      - 56
+    content:
+      text: The AI makes the slides
+      fontFamily: Arial
+      fontSize: 14
+      lineHeight: 1.3
+      color: "#1C2321"
+      align:
+        - left
+        - middle
+  - elementId: a1
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 374
+      - 96
+      - 162
+      - 64
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#DCCFC1"
+  - elementId: a1t
+    elementType: text
+    bounds:
+      - 384
+      - 100
+      - 142
+      - 56
+    content:
+      text: You write a script to fit them
+      fontFamily: Arial
+      fontSize: 14
+      lineHeight: 1.3
+      color: "#1C2321"
+      align:
+        - left
+        - middle
+  - elementId: aa1
+    elementType: line
+    bounds:
+      - 352
+      - 128
+      - 22
+      - 2
+    viewBox:
+      - 22
+      - 2
+    points: 0,1 22,1
+    border:
+      width: 1.5
+      color: "#8A5A2E"
+      style: solid
+    arrow:
+      - null
+      - arrow
+  - elementId: a2
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 558
+      - 96
+      - 162
+      - 64
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#DCCFC1"
+  - elementId: a2t
+    elementType: text
+    bounds:
+      - 568
+      - 100
+      - 142
+      - 56
+    content:
+      text: The talk follows the AI's logic
+      fontFamily: Arial
+      fontSize: 14
+      lineHeight: 1.3
+      color: "#1C2321"
+      align:
+        - left
+        - middle
+  - elementId: aa2
+    elementType: line
+    bounds:
+      - 536
+      - 128
+      - 22
+      - 2
+    viewBox:
+      - 22
+      - 2
+    points: 0,1 22,1
+    border:
+      width: 1.5
+      color: "#8A5A2E"
+      style: solid
+    arrow:
+      - null
+      - arrow
+  - elementId: a-out
+    elementType: text
+    bounds:
+      - 742
+      - 100
+      - 162
+      - 56
+    content:
+      text: "No focus, no soul: the speaker follows the slides"
+      fontFamily: Arial
+      fontSize: 13
+      lineHeight: 1.3
+      color: "#8A5A2E"
+      align:
+        - left
+        - middle
+  - elementId: aa3
+    elementType: line
+    bounds:
+      - 720
+      - 128
+      - 22
+      - 2
+    viewBox:
+      - 22
+      - 2
+    points: 0,1 22,1
+    border:
+      width: 1.5
+      color: "#8A5A2E"
+      style: solid
+    arrow:
+      - null
+      - arrow
+  - elementId: b-label
+    elementType: text
+    bounds:
+      - 56
+      - 224
+      - 120
+      - 48
+    content:
+      text: Story first
+      fontFamily: Arial
+      fontSize: 16
+      lineHeight: 1.35
+      color: "#2E6B5E"
+      align:
+        - left
+        - middle
+      bold: true
+  - elementId: b0
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 190
+      - 216
+      - 162
+      - 64
+    fill:
+      type: solid
+      color: "#2E6B5E"
+    border:
+      width: 0
+      color: "#2E6B5E"
+  - elementId: b0t
+    elementType: text
+    bounds:
+      - 200
+      - 220
+      - 142
+      - 56
+    content:
+      text: You tell the story, freestyle, as you think
+      fontFamily: Arial
+      fontSize: 14
+      lineHeight: 1.3
+      color: "#FFFFFF"
+      align:
+        - left
+        - middle
+  - elementId: b1
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 374
+      - 216
+      - 162
+      - 64
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#9DB8B0"
+  - elementId: b1t
+    elementType: text
+    bounds:
+      - 384
+      - 220
+      - 142
+      - 56
+    content:
+      text: The agent organizes it into Story
+      fontFamily: Arial
+      fontSize: 14
+      lineHeight: 1.3
+      color: "#1C2321"
+      align:
+        - left
+        - middle
+  - elementId: ba1
+    elementType: line
+    bounds:
+      - 352
+      - 248
+      - 22
+      - 2
+    viewBox:
+      - 22
+      - 2
+    points: 0,1 22,1
+    border:
+      width: 1.5
+      color: "#2E6B5E"
+      style: solid
+    arrow:
+      - null
+      - arrow
+  - elementId: b2
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 558
+      - 216
+      - 162
+      - 64
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#9DB8B0"
+  - elementId: b2t
+    elementType: text
+    bounds:
+      - 568
+      - 220
+      - 142
+      - 56
+    content:
+      text: Slides are built on that Story
+      fontFamily: Arial
+      fontSize: 14
+      lineHeight: 1.3
+      color: "#1C2321"
+      align:
+        - left
+        - middle
+  - elementId: ba2
+    elementType: line
+    bounds:
+      - 536
+      - 248
+      - 22
+      - 2
+    viewBox:
+      - 22
+      - 2
+    points: 0,1 22,1
+    border:
+      width: 1.5
+      color: "#2E6B5E"
+      style: solid
+    arrow:
+      - null
+      - arrow
+  - elementId: b3
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 742
+      - 216
+      - 162
+      - 64
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#9DB8B0"
+  - elementId: b3t
+    elementType: text
+    bounds:
+      - 752
+      - 220
+      - 142
+      - 56
+    content:
+      text: Your own words become the notes
+      fontFamily: Arial
+      fontSize: 14
+      lineHeight: 1.3
+      color: "#1C2321"
+      align:
+        - left
+        - middle
+  - elementId: ba3
+    elementType: line
+    bounds:
+      - 720
+      - 248
+      - 22
+      - 2
+    viewBox:
+      - 22
+      - 2
+    points: 0,1 22,1
+    border:
+      width: 1.5
+      color: "#2E6B5E"
+      style: solid
+    arrow:
+      - null
+      - arrow
+  - elementId: rule
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 56
+      - 320
+      - 848
+      - 1
+    fill:
+      type: solid
+      color: "#CBD3CF"
+    border:
+      width: 0
+      color: "#CBD3CF"
+  - elementId: point
+    elementType: text
+    bounds:
+      - 56
+      - 338
+      - 848
+      - 84
+    content:
+      text: Even when you improvise, speech has its own logic. Starting from the story keeps that logic and spares you writing a script afterwards. The slides carry a human point of view, so they stop looking like AI.
+      fontFamily: Arial
+      fontSize: 17
+      lineHeight: 1.45
+      color: "#1C2321"
+      align:
+        - left
+        - top
+  - elementId: this
+    elementType: text
+    bounds:
+      - 56
+      - 432
+      - 848
+      - 40
+    content:
+      text: "This version of the talk was built this way: from the owner's spoken account of why HUANDENG exists, recorded on 11 November 2026."
+      fontFamily: Arial
+      fontSize: 14
+      lineHeight: 1.4
+      color: "#2E6B5E"
+      align:
+        - left
+        - top
+      bold: true
+  - elementId: ft-mark
+    elementType: image
+    bounds:
+      - 56
+      - 505
+      - 16
+      - 16
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    fit:
+      mode: contain
+  - elementId: ft-label
+    elementType: text
+    bounds:
+      - 78
+      - 505
+      - 520
+      - 16
+    content:
+      text: HUANDENG  /  Why I built it  ·  concept diagram
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - left
+        - middle
+  - elementId: ft-pos
+    elementType: text
+    bounds:
+      - 824
+      - 505
+      - 80
+      - 16
+    content:
+      text: "0"
+      field: main-position
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - right
+        - middle
+notes: "Here is the reason I care most about. If the AI makes the slides first, you then write a speech to fit them, and you end up following the AI's logic, which often has no soul. If you start by telling your story, freestyle, the way you would explain it to a colleague, the agent can organise that story, build the slides on it, and your own words become the speaker notes. Even improvised speech has a structure. Keeping it means the deck has a point of view, and you do not have to invent a script afterwards. This talk is an example: I told the story of why I built HUANDENG, and this version was rebuilt from that account."

@@ -58,10 +58,7 @@ elements:
   - elementId: distance-chart
     elementType: chart
     bounds:
-      - 298
-      - 143
-      - 616
-      - 277
+        [298,164,616,256]
     fontFamily: Arial
     fontSize: 13
     colors:
@@ -76,7 +73,7 @@ elements:
     xAxis:
       title: Paired position
     yAxis:
-      {"title":"C1′–C1′ (Å)","min":10,"max":11.2}
+      {"title":"","min":10,"max":11.2}
   - elementId: focus
     elementType: text
     bounds:
@@ -162,4 +159,21 @@ elements:
         - left
         - top
       lineHeight: 1.3
-notes: "Scientific example: the structure, marked endpoints and curve use the same deposited coordinates. The red dashed segment joins C1′ of A7 and B18; the seventh chart value is that same distance. PDB 1BNA was measured by X-ray diffraction at a reported 1.90 Å. The twelve positions are not statistical replicates; this is not a hydrogen-bond distance.\n\nSources: https://www.rcsb.org/structure/1BNA ; https://doi.org/10.1073/pnas.78.4.2179 . Coordinate file, measurements and method: sources/science/. Preserve the image pixels, exact twelve chart values, axes/units, chain identity and this qualification when editing wording."
+  - elementId: chart-unit
+    elementType: text
+    bounds:
+      - 355
+      - 139
+      - 400
+      - 24
+    content:
+      text: C1′–C1′ (Å)
+      fontFamily: Arial
+      fontSize: 14
+      color: "#66756B"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+notes: "Here is a concrete scientific page. The 1BNA DNA structure and the twelve paired C1′ distances come from the same deposited coordinates. Position seven joins A7 and B18. This is a public worked example, not a new research result or twelve independent experiments. It makes the editing requirement tangible: the wording may change while the structure, values, units and attribution stay intact.\n\nSource: https://www.rcsb.org/structure/1BNA ; https://doi.org/10.1073/pnas.78.4.2179 . Source coordinates, calculation and all twelve values: sources/science/."

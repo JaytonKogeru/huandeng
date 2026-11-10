@@ -1,0 +1,189 @@
+pageType: content
+background:
+  type: solid
+  color: "#F7F5EF"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 44
+      - 35
+      - 870
+      - 68
+    role: title
+    content:
+      text: PPTX already contains separate pages
+      fontFamily: Arial
+      fontSize: 29
+      color: "#263C34"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: brand-small
+    elementType: image
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    alt: huandeng.png
+    bounds:
+      - 44
+      - 510
+      - 17
+      - 17
+    fit:
+      mode: contain
+    crop:
+      left: 0.18
+      right: 0.18
+      top: 0.14
+      bottom: 0.14
+  - elementId: foot
+    elementType: text
+    bounds:
+      - 69
+      - 513
+      - 130
+      - 17
+    content:
+      text: HUANDENG
+      fontFamily: Arial
+      fontSize: 10
+      color: "#66756B"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: position
+    elementType: text
+    bounds:
+      - 884
+      - 512
+      - 30
+      - 18
+    content:
+      text: ""
+      fontFamily: Arial
+      fontSize: 10
+      color: "#66756B"
+      bold: false
+      align:
+        - right
+        - top
+      lineHeight: 1.3
+      field: main-position
+  - elementId: pptx-label
+    elementType: text
+    bounds:
+      - 44
+      - 135
+      - 360
+      - 38
+    content:
+      text: PPTX
+      fontFamily: Arial
+      fontSize: 24
+      color: "#356F68"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: pptx-parts
+    elementType: text
+    bounds:
+      - 44
+      - 203
+      - 380
+      - 196
+    content:
+      text: |-
+        ppt/presentation.xml
+        ppt/slides/slide1.xml
+        ppt/media/…
+        ppt/notesSlides/…
+      fontFamily: Consolas
+      fontSize: 19
+      color: "#263C34"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.9
+  - elementId: pptd-label
+    elementType: text
+    bounds:
+      - 506
+      - 135
+      - 408
+      - 41
+    content:
+      text: A HUANDENG project folder
+      fontFamily: Arial
+      fontSize: 23
+      color: "#356F68"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: pptd-parts
+    elementType: text
+    bounds:
+      - 506
+      - 203
+      - 408
+      - 196
+    content:
+      text: |-
+        deck.pptd
+        pages/ZWZJ.page
+        media/…
+        .huandeng/…
+      fontFamily: Consolas
+      fontSize: 20
+      color: "#263C34"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.9
+  - elementId: format-point
+    elementType: text
+    bounds:
+      - 44
+      - 434
+      - 870
+      - 65
+    content:
+      text: I chose an accessible working folder, with edits and history attached to each page.
+      fontFamily: Arial
+      fontSize: 20
+      color: "#263C34"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.5
+  - elementId: format-source
+    elementType: text
+    bounds:
+      - 44
+      - 495
+      - 870
+      - 16
+    content:
+      text: Microsoft Learn · PresentationML structure
+      fontFamily: Arial
+      fontSize: 10
+      color: "#66756B"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+notes: |-
+  PPTX already separates slides, media and notes inside an Open XML package. I was not inventing the idea of a page. I wanted an accessible project directory as the everyday working surface, with deck.pptd organizing pages and assets. The two formats have different models: renaming a PPTX does not convert it into PPTD. This diagram selects the relevant parts of each structure.
+
+  Sources and precise attribution: sources/story/FACTS.md ; https://open-slide.dev/docs ; https://learn.microsoft.com/en-us/office/open-xml/presentation/structure-of-a-presentationml-document .

@@ -1,0 +1,38 @@
+{
+  "project": "claude-en",
+  "reviewer": "ChatGPT native-trial supervisor",
+  "scope": {
+    "officeContactSheets": [
+      "office/office-contact-1.jpg",
+      "office/office-contact-2.jpg",
+      "office/office-contact-3.jpg",
+      "office/office-contact-4.jpg",
+      "office/office-contact-5.jpg"
+    ],
+    "pagesCoveredByContacts": 25,
+    "fullPageOfficeInspection": [
+      12
+    ],
+    "nativeSourceAndExportRevisionChecks": true
+  },
+  "observations": [
+    "All 25 Office-rendered pages are present; the five title-only Section pauses, real UI captures, brand marks and mixed light/dark backgrounds survive the export.",
+    "The tables remain native PowerPoint tables and the scientific plot remains a native chart. Source table objects match the comparison/data relations visible in the sequence.",
+    "Full-size page12 confirms the y-axis title sits above the plot, clear of numeric tick labels. Its values, two-row fact table and structural figure remain visible.",
+    "The literal source footer 0 is a dynamic placeholder: actual Office page12 shows 12. It is not an exported page-number defect."
+  ],
+  "layoutFindings": [
+    {
+      "page": 12,
+      "severity": "local-layout-crowding",
+      "issue": "The long x-axis caption is very close to the numeric tick-label row in the PowerPoint render; it crowds that area. Preserve this observed limitation in the native candidate.",
+      "source": "office-pages/幻灯片12.PNG"
+    }
+  ],
+  "limitations": [
+    "Complete-sequence visual inspection used contact sheets; the listed scientific page was additionally inspected individually.",
+    "Independent narrative/factual findings are recorded separately and are not cleared by a successful Office render. Owner acceptance remains pending."
+  ],
+  "blockingOfficeLayoutDefectsObserved": [],
+  "sourcePptxSha256": "f6fab1ba504cca99aeec15ed9064cbe72f1c4eac3e65d0a9bfd9152172e6b22f"
+}

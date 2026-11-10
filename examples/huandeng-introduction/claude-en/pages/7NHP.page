@@ -11,7 +11,7 @@ elements:
       - 848
       - 42
     content:
-      text: A Project is a folder you own
+      text: "Unzip a PPTX: it is already pages"
       fontFamily: Arial
       fontSize: 30
       lineHeight: 1.2
@@ -28,29 +28,13 @@ elements:
       - 520
       - 320
     columnWidths:
-      - 0.4
-      - 0.6
+        [0.5,0.5]
     rows:
-      - - text: In the folder
-        - text: What it holds
-      - - text: deck.pptd
-        - text: Slide order, page size and theme
-      - - text: pages
-        - text: "One .page file per slide: objects and speaker notes"
-      - - text: media
-        - text: Original images and figures, plus derived crops
-      - - text: .huandeng · project.json
-        - text: Slide IDs, Story, Sections and Presentations
-      - - text: .huandeng · checkpoints
-        - text: Named slide versions, with their archived images
-      - - text: AGENTS.md
-        - text: The authoring brief that agents read first
-      - - text: Exports
-        - text: PDF, PPTX and export reports
+        [[{"text":"In deck.pptx (one zip package)"},{"text":"In this project folder (PPTD)"}],[{"text":"ppt/presentation.xml"},{"text":"deck.pptd: slide order, size, theme"}],[{"text":"ppt/slides/slide1.xml, slide2.xml, …"},{"text":"pages/QMYQ.page, … one file per slide"}],[{"text":"ppt/notesSlides/…"},{"text":"Speaker notes inside each .page"}],[{"text":"ppt/media/…"},{"text":"media: original figures and crops"}],[{"text":"ppt/charts/… and an embedded workbook"},{"text":"Chart data inside the page object"}],[{"text":"no equivalent"},{"text":".huandeng: Slide IDs, Story, Sections, Presentations, history"}]]
     style:
       cellStyle:
         fontFamily: Arial
-        fontSize: 14
+        fontSize: 13
         lineHeight: 1.25
         color: "#1C2321"
         align:
@@ -68,8 +52,7 @@ elements:
         bold: true
         fontSize: 12
       firstColumnStyle:
-        color: "#2E6B5E"
-        bold: true
+        {"color":"#8A5A2E","bold":false}
   - elementId: tree-note
     elementType: text
     bounds:
@@ -78,7 +61,7 @@ elements:
       - 520
       - 40
     content:
-      text: Copy or share the folder and the slides, Story, Presentations and named versions travel with it. Activity logs and write locks stay on the local machine.
+      text: "PowerPoint already stores a deck as parts, one per slide, zipped into a single file. HUANDENG keeps the parts as a working folder, adds Slide IDs, Story and page history, and still exports PPTX."
       fontFamily: Arial
       fontSize: 14
       lineHeight: 1.35
@@ -124,8 +107,8 @@ elements:
       - 124
       - 264
       - 148
-    src: media/derived/thumbs/r1-16-AUBX.png
-    sourceName: r1-16-AUBX.png
+    src: "media/derived/thumbs/r2-22-AUBX.png"
+    sourceName: "r2-22-AUBX.png"
     fit:
       mode: contain
   - elementId: stack1-f
@@ -149,8 +132,8 @@ elements:
       - 138
       - 264
       - 148
-    src: media/derived/thumbs/r1-10-V2SV.png
-    sourceName: r1-10-V2SV.png
+    src: "media/derived/thumbs/r2-18-V2SV.png"
+    sourceName: "r2-18-V2SV.png"
     fit:
       mode: contain
   - elementId: stack2-f
@@ -174,8 +157,8 @@ elements:
       - 152
       - 264
       - 148
-    src: media/derived/thumbs/r1-05-AVNM.png
-    sourceName: r1-05-AVNM.png
+    src: "media/derived/thumbs/r2-12-AVNM.png"
+    sourceName: "r2-12-AVNM.png"
     fit:
       mode: contain
   - elementId: self-stats
@@ -186,11 +169,7 @@ elements:
       - 292
       - 110
     content:
-      text: |-
-        20 slides in 5 Sections
-        2 Presentations built from them
-        Story and speaker notes on every slide
-        A named version recorded at completion
+      text: "25 slides in 5 Sections\n2 Presentations built from them\nStory and speaker notes on every slide\nOpen the folder in the Editor to see it"
       fontFamily: Arial
       fontSize: 14
       lineHeight: 1.5
@@ -217,7 +196,7 @@ elements:
       - 420
       - 16
     content:
-      text: HUANDENG  /  Connect and contribute
+      text: "HUANDENG  /  What I built"
       fontFamily: Arial
       fontSize: 11
       lineHeight: 1.3
@@ -242,4 +221,4 @@ elements:
       align:
         - right
         - middle
-notes: "Everything I have shown lives in one ordinary folder. deck.pptd holds the slide order. Each slide is its own .page file, so a change to one slide touches one file. media keeps the original figures and any derived crops. The .huandeng folder keeps identities, Story, Sections, Presentations and named versions with their archived images. AGENTS.md is a short authoring brief that an agent reads before it edits; for this deck it asks, for example, for the real HUANDENG mark and for scientific labels and citations to be kept. Exports holds the PDF and PPTX. Copy the folder to a colleague and they get the whole project. This introduction is such a project: open it in the Editor and you can see its Story, its two Presentations and its notes."
+notes: "Here is the format idea in one picture. If you unzip a PowerPoint file, you find that it is already organised by page: presentation.xml, then slide1.xml, slide2.xml and so on, with media, notes and charts as separate parts. The left column comes from this deck's own exported PPTX. PPTD keeps the same idea but leaves the parts open as a working folder: deck.pptd for the order, one .page file per slide, a media folder, and a .huandeng folder for Slide IDs, Story, Sections, Presentations and history. So an agent can open one page file, and nothing forces it to rewrite the whole deck. HUANDENG still exports PPTX when you need to send it. This introduction is one such folder."

@@ -39,7 +39,7 @@ elements:
       - 520
       - 140
     content:
-      text: Slides that stay editable while the science changes
+      text: "Slides that start from a story"
       fontFamily: Arial
       fontSize: 40
       lineHeight: 1.15
@@ -53,7 +53,7 @@ elements:
     bounds:
         [64,292,500,60]
     content:
-      text: A desktop slide editor where researchers and AI agents revise one project through one reviewable writer.
+      text: "Why I built HUANDENG: a desktop editor where you and an AI agent shape one deck, one page at a time."
       fontFamily: Arial
       fontSize: 19
       lineHeight: 1.35
@@ -104,4 +104,4 @@ elements:
       align:
         - center
         - top
-notes: "HUANDENG is a desktop slide editor for presentations that keep changing: a results deck, a thesis talk, a group-meeting update. The idea is simple. Keep one editable project of slides, build each talk from it, write down what every slide is for, and let an AI agent work on the same project through the same writer you use, so every change can be checked. In the next twenty minutes I will show the editor, follow one real scientific slide through a change, and then cover reuse, history, delivery and how to get involved. The molecule on the right is our running example: the Dickerson–Drew DNA dodecamer, PDB entry 1BNA."
+notes: "I want to tell you why I built HUANDENG, rather than list its features. It started in group meetings, with slides that everyone could tell were made by AI, and with agents that turned two small edits into three copies of a deck. HUANDENG is a desktop slide editor where you and an AI agent work on one deck, one page at a time, starting from the story you want to tell. The molecule on the right is the worked example later in the talk: the DNA dodecamer from PDB entry 1BNA."

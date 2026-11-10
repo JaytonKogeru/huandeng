@@ -1,0 +1,171 @@
+background:
+  type: solid
+  color: "#F6F6F3"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 56
+      - 34
+      - 848
+      - 40
+    content:
+      text: 一份 slides，其实是一个目录
+      fontFamily: Microsoft YaHei
+      fontSize: 26
+      lineHeight: 1.3
+      color: "#1C2321"
+      align:
+        - left
+        - top
+      bold: true
+    role: title
+  - elementId: lead
+    elementType: text
+    bounds:
+      - 56
+      - 80
+      - 848
+      - 26
+    content:
+      text: PPTX 本身也是一个按页拆开的压缩包。幻灯只是把这个目录直接摊开，入口从 .pptx 换成了 deck.pptd。
+      fontFamily: Microsoft YaHei
+      fontSize: 16
+      lineHeight: 1.4
+      color: "#56615D"
+      align:
+        - left
+        - top
+  - elementId: tree-bg
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 56
+      - 130
+      - 300
+      - 300
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#CBD3CF"
+  - elementId: tree
+    elementType: text
+    bounds:
+      - 76
+      - 146
+      - 270
+      - 270
+    content:
+      text: "claude-zh/\n├─ deck.pptd\n├─ pages/\n│  ├─ SAHG.page\n│  └─ …（共 20 页）\n├─ media/\n├─ sources/\n├─ .huandeng/\n└─ AGENTS.md"
+      fontFamily: Consolas
+      fontSize: 14
+      lineHeight: 1.7
+      color: "#3E4845"
+      align:
+        - left
+        - top
+  - elementId: parts
+    elementType: table
+    bounds:
+      - 388
+      - 130
+      - 516
+      - 300
+    columnWidths:
+      - 0.32
+      - 0.68
+    rows:
+      - - text: 部分
+        - text: 放什么
+      - - text: deck.pptd
+        - text: 入口：标题、尺寸、页面顺序
+      - - text: pages/
+        - text: 每页一个文件：对象和演讲备注
+      - - text: media/
+        - text: 素材库：原图、图表、截图
+      - - text: .huandeng/
+        - text: 页面短码、故事、章节、演讲和历史版本
+      - - text: AGENTS.md
+        - text: 给 agent 的写作说明
+    style:
+      cellStyle:
+        fontFamily: Microsoft YaHei
+        fontSize: 15
+        lineHeight: 1.35
+        color: "#1C2321"
+        align:
+          - left
+          - middle
+        border:
+          - null
+          - null
+          - width: 1
+            color: "#CBD3CF"
+            style: solid
+          - null
+      firstRowStyle:
+        color: "#2E6B5E"
+        bold: true
+  - elementId: note
+    elementType: text
+    bounds:
+      - 56
+      - 446
+      - 848
+      - 40
+    content:
+      text: 左侧栏的“文件”页就像 VS Code：整份项目怎么组织一目了然。搬动项目时，整个目录一起带走。
+      fontFamily: Microsoft YaHei
+      fontSize: 14
+      lineHeight: 1.5
+      color: "#56615D"
+      align:
+        - left
+        - top
+  - elementId: ft-mark
+    elementType: image
+    bounds:
+      - 56
+      - 505
+      - 16
+      - 16
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    fit:
+      mode: contain
+  - elementId: ft-label
+    elementType: text
+    bounds:
+      - 78
+      - 505
+      - 420
+      - 16
+    content:
+      text: HUANDENG  /  我们做了什么
+      fontFamily: Microsoft YaHei
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - left
+        - middle
+  - elementId: ft-pos
+    elementType: text
+    bounds:
+      - 824
+      - 505
+      - 80
+      - 16
+    content:
+      text: "0"
+      fontFamily: Microsoft YaHei
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - right
+        - middle
+      field: main-position
+notes: 这里要先讲一下 PPTD 的概念。我们拆开 PowerPoint 看，它其实是把一整个包整合成一个 PPTX 文件，但里面本质上也是按 page 去组织的。我们只是把入口从 PPTX 换成了目录里的 deck.pptd，整个 slides 本质上就是一个目录。左边就是这份幻灯自己的目录：deck.pptd 是入口，pages 里每页一个文件，media 是素材库，.huandeng 里放页面短码、故事、章节、演讲和历史版本，AGENTS.md 是给 agent 看的写作说明。编辑器左侧栏的“文件”页就像 VS Code 一样，可以看到整个项目是怎么组织的。

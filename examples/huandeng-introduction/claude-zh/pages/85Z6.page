@@ -1,0 +1,23 @@
+background:
+  type: solid
+  color: "#2D4A43"
+elements:
+  - elementId: divider-title
+    elementType: text
+    bounds:
+      - 72
+      - 226
+      - 816
+      - 72
+    content:
+      text: 以“页”为单位管理
+      fontFamily: Microsoft YaHei
+      fontSize: 34
+      lineHeight: 1.25
+      color: "#FFFFFF"
+      align:
+        - left
+        - middle
+      bold: true
+    role: title
+notes: 第三部分。回到第二个问题：怎样不再复制整份文件，而是一页一页地管理版本。

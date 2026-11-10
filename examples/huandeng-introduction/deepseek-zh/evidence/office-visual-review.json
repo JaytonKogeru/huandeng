@@ -1,0 +1,30 @@
+{
+  "project": "deepseek-zh",
+  "reviewer": "ChatGPT native-trial supervisor",
+  "scope": {
+    "officeContactSheets": [
+      "office/office-contact-1.jpg",
+      "office/office-contact-2.jpg",
+      "office/office-contact-3.jpg"
+    ],
+    "pagesCoveredByContacts": 18,
+    "fullPageOfficeInspection": [
+      9,
+      17
+    ],
+    "nativeSourceAndExportRevisionChecks": true
+  },
+  "observations": [
+    "All 18 PowerPoint-rendered pages are present; no visible content clipping, broken CJK glyphs, missing images or substituted layouts was observed in the contact sequence.",
+    "The two data/format tables remain native PowerPoint table objects; full-size inspection of pages 9 and 17 found readable cell content and consistent boundaries.",
+    "The duplicate-deck diagram on page 5 is an actual branching relationship, not a grid pretending to be a table.",
+    "Page 9 retains the scientific curve, deposited-structure image, units, source attribution and distinction between positions in one structure and independent experiments.",
+    "The final export page uses an actual localized export dialog and a real table; the background system and Chinese text hierarchy survive the Office render."
+  ],
+  "limitations": [
+    "This is an independent export-layout review. Narrative acceptance and final aesthetic approval remain the owner's decision.",
+    "Complete-sequence visual inspection used contact sheets; the two native-table pages were additionally inspected individually."
+  ],
+  "blockingOfficeLayoutDefectsObserved": [],
+  "sourcePptxSha256": "f66a425dfbefdcedda9a22acd28cab63d27b8c514235661ff2c62bacaa187c9b"
+}

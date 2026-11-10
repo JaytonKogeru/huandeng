@@ -4,9 +4,19 @@ Read this when creating a deck, substantially redesigning it, or making a produc
 
 ## Audit → Spec → Frame → Implement → Validate → Release
 
-Audit the story, assets and rendered pages. Specify the audience, evidence and intended visual direction. Frame a small set of representative pages, usually two or three, that exposes this deck's main visual decisions: for example a product demonstration, a concept diagram or a data comparison. Choose their roles from the material; include a divider only when the deck calls for one. Inspect concrete geometry, type, color, imagery and rhythm before expanding. Implement through transactions. Validate a contact sheet, full-size pages and exports. Release a useful named milestone and the whole Project folder.
+Audit the author's complete account, assets and rendered pages. Specify the audience, causal argument, evidence and intended visual direction. Frame a small set of representative pages, usually two or three, that exposes this deck's main visual decisions: for example a product demonstration, a concept diagram or a data comparison. Choose their roles from the material; include a divider only when the deck calls for one. Inspect concrete geometry, type, color, imagery and rhythm before expanding. Implement through transactions. Validate a contact sheet, full-size pages and exports. Release a useful named milestone and the whole Project folder.
 
 For code work, Frame can define types, module boundaries and a small runnable scaffold. It does not replace the audit or product test.
+
+## Establish the spoken argument
+
+For a new introduction or substantial rewrite, organize the author's account before selecting features or slide layouts. Trace the concrete situation, attempted work, observed friction, design choice and consequence where the source supports them. This is a reasoning check, not a mandatory dramatic arc or a fixed page sequence. Preserve meaningful uncertainty and the author's point of view; do not manufacture incidents, metrics, research findings or consensus from an anecdote.
+
+Use the narrative to choose what to include. A product feature earns its place by answering an audience question or resolving an earlier friction. Explain why the material library, page identity, a workspace or an editing operation matters in that actual work. A view name plus a screenshot is not yet a story. Keep unrelated capabilities in a reference appendix only when useful.
+
+Record the overall purpose, audience and takeaway in the existing Main/Presentation Story fields. Give each page/local Story a purpose that advances that argument and explicit preservation constraints. Use Speaker Notes for a speakable explanation and transition, rather than repeating labels or inventing a script after the visual deck is finished. These are authoring actions, not a claim that the Editor automatically generates a narrative.
+
+Read headings and notes in sequence before expanding the frames and again before delivery. If the connections reduce to “another feature” throughout, revise the argument. Share factual inputs and hard constraints across comparative client trials; keep each author's narrative, length and visual choices independent, and keep client-specific style feedback scoped to that client.
 
 ## Project policy
 
@@ -26,6 +36,12 @@ Starting ranges at 960×540; multiply by canvasWidth / 960 for another size. Exi
 
 Use regular paragraphs with selective emphasis, not long entirely bold blocks. Do not inflate short Chinese phrases. Rewrite and reflow English rather than copying Chinese coordinates. When space is insufficient, reduce wording, split the evidence or change the composition. Original scientific labels are evidence; do not mechanically resize or reconstruct them to match body defaults.
 
+## Text and data objects
+
+Use a native table for a real two-dimensional relationship: entities in rows, comparable attributes in columns. Do not simulate a table by aligning separate text boxes, rectangular cell shapes or hand-drawn rules. Keep an ordinary paragraph or bullet list in one rich-text object where practical, with internal emphasis and list formatting; split it only for a meaningful reading or interaction need. This makes later human edits manageable.
+
+A multi-panel scientific comparison, aligned plots, labels attached to evidence and nodes in an explanatory diagram are different structures. Preserve them when their geometry expresses an actual comparison or relationship. Do not flatten useful evidence into prose or apply a blanket ban on panels, boxes or arrows.
+
 ## Background and rhythm
 
 Choose a deliberate background and color system suited to the subject and references. It may use one base or related light, dark, colored and image treatments for distinct roles. Keep their relationship recognizable and check contrast, evidence fidelity and transitions across the deck. Use designIntent.backgroundException to explain an exception when the Project has explicitly requested a base-background check; do not impose a universal white-page rule.
@@ -38,7 +54,7 @@ Composition follows purpose: comparable evidence aligns; one task screenshot nee
 
 Use huandeng_design_audit when advertised, or CLI quality. Sizes normalize to 960 width, raster sampling targets a 1920-wide output. Enable divider/background checks only when requested. Flags are advisory and do not replace visual judgment.
 
-Keep exact operation IDs and review saved before/after. Render all affected pages. For a deck, inspect a contact sheet then every page at presentation size. Fix hierarchy, line breaks, image readability and unjustified repetition. Notes hold spoken context and transitions.
+Keep exact operation IDs and review saved before/after. Render all affected pages. For a deck, inspect a contact sheet then every page at presentation size. Fix hierarchy, line breaks, image readability and unjustified repetition. Also check the cause-and-effect narrative, local/Main Story alignment, and whether the complete notes can be spoken in order. Keep personal observations attributed to the speaker and verified product claims tied to actual behavior. Structured access and zero warnings do not replace this review.
 
     huandeng --entry /project/deck.pptd quality --language zh-CN
     huandeng --entry /project/deck.pptd quality --language en --max-title 34 --max-body 22 --presentation public-talk

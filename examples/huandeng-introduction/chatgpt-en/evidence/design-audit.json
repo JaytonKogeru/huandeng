@@ -1,0 +1,1809 @@
+{
+  "schemaVersion": 1,
+  "deckId": "ccf319b7-a686-4793-84cb-2ccb018336bf",
+  "presentationId": "introduction-full",
+  "revisions": {
+    "manifest": "sha256:a91f83893159ac599b47ebe38fb0b70bd7bb1b2c337f81198640a9ade0238aa7",
+    "metadata": "sha256:cbfe9d8fba20bff1c8d7a5ab1c0b3ec90e6799974113b34909a105257bcddfe9",
+    "guidance": "sha256:744dec469b9db2fc927e7257309d45d28e07f4a33325e01e99dafc2a9d0db59b"
+  },
+  "language": "en",
+  "pageCount": 27,
+  "backgrounds": [
+    {
+      "color": "#e4ece6",
+      "count": 10
+    },
+    {
+      "color": "#f7f5ef",
+      "count": 15
+    },
+    {
+      "color": "#eee9dd",
+      "count": 2
+    }
+  ],
+  "pages": [
+    {
+      "pageId": "90353b2a-6f7b-4ee5-8a8b-10bceb538190",
+      "occurrenceId": "introduction-full:full-0:90353b2a-6f7b-4ee5-8a8b-10bceb538190",
+      "pageRevision": "sha256:f0eec77ef65880ef6bdb671cc7ef4adfff5e199f76cbabba7e1b9bcaf2e3207b",
+      "renderRevision": "sha256:08d93f5e1479a924b9e464f0620fa5fb7436afd73349f3ee6edcacb7b097f872",
+      "elementsTruncated": false,
+      "position": 1,
+      "title": "HUANDENG",
+      "pageRole": "cover",
+      "titleOnly": false,
+      "background": "#e4ece6",
+      "textCharacters": 120,
+      "text": [
+        {
+          "elementId": "brand",
+          "role": "title",
+          "fontSize": 37,
+          "normalizedSize": 37,
+          "bold": false
+        },
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 31,
+          "normalizedSize": 31,
+          "bold": false
+        },
+        {
+          "elementId": "cover-copy",
+          "role": "body",
+          "fontSize": 18,
+          "normalizedSize": 18,
+          "bold": false
+        },
+        {
+          "elementId": "edition",
+          "role": "body",
+          "fontSize": 12,
+          "normalizedSize": 12,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "product-mark",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 2.33
+        },
+        {
+          "elementId": "editor-cover",
+          "source": "media/imported/d636a513fcf82df27f78c077242623f592c58f56281c53c11c42d59e1053572a.png",
+          "status": "measured",
+          "sampling": 4.26
+        }
+      ]
+    },
+    {
+      "pageId": "4f6f7d5f-d5b0-462f-b694-2874c8b3c395",
+      "occurrenceId": "introduction-full:introduction-full-story-19:4f6f7d5f-d5b0-462f-b694-2874c8b3c395",
+      "pageRevision": "sha256:f60339bfee03d5fbe9971404c1f1f17e845daac5bc1be571aa609c5cf6843109",
+      "renderRevision": "sha256:bac83c9737a6f6d7ef77c9f8ee68bbdc2a8cb587a937b07ff7f2234ffc4a2584",
+      "elementsTruncated": false,
+      "position": 2,
+      "title": "I still wanted agents to make slides",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#f7f5ef",
+      "textCharacters": 234,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 29,
+          "normalizedSize": 29,
+          "bold": false
+        },
+        {
+          "elementId": "foot",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        },
+        {
+          "elementId": "lead",
+          "role": "body",
+          "fontSize": 26,
+          "normalizedSize": 26,
+          "bold": false
+        },
+        {
+          "elementId": "thought",
+          "role": "body",
+          "fontSize": 21,
+          "normalizedSize": 21,
+          "bold": false
+        },
+        {
+          "elementId": "example-caption",
+          "role": "body",
+          "fontSize": 15,
+          "normalizedSize": 15,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "brand-small",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 10.84
+        },
+        {
+          "elementId": "thumb-1",
+          "source": "media/imported/57891a9f6a53696a43685b52093aede782a6f8d05b1131157bf799c9d4db9794.png",
+          "status": "measured",
+          "sampling": 2.62
+        }
+      ]
+    },
+    {
+      "pageId": "e21619f2-9956-4548-9ee8-fbaafd556bff",
+      "occurrenceId": "introduction-full:introduction-full-story-20:e21619f2-9956-4548-9ee8-fbaafd556bff",
+      "pageRevision": "sha256:46bf3f69a7770f4a5a21420587ee9f1101ed9069d3ed05c1d7e468920cedcfe7",
+      "renderRevision": "sha256:011515a387f2868115ab5d01373abdc81c40ab25fa6018fff285289586e29629",
+      "elementsTruncated": false,
+      "position": 3,
+      "title": "At lab meetings, people could tell",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#f7f5ef",
+      "textCharacters": 214,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 29,
+          "normalizedSize": 29,
+          "bold": false
+        },
+        {
+          "elementId": "foot",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        },
+        {
+          "elementId": "account",
+          "role": "body",
+          "fontSize": 24,
+          "normalizedSize": 24,
+          "bold": false
+        },
+        {
+          "elementId": "reflection",
+          "role": "body",
+          "fontSize": 13,
+          "normalizedSize": 13,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "brand-small",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 10.84
+        },
+        {
+          "elementId": "earlier-science",
+          "source": "media/imported/340ffcfc613a1ee2ba6fcde5bdb41b125d9bb9f9c23e1bd0e77c20bdd7a4adfc.png",
+          "status": "measured",
+          "sampling": 2.89
+        },
+        {
+          "elementId": "earlier-workflow",
+          "source": "media/imported/d538853dc8d3a4477e475f2bdbe3c2b150cc749027e00d7dde3147d7e8269f97.png",
+          "status": "measured",
+          "sampling": 2.81
+        }
+      ]
+    },
+    {
+      "pageId": "4ec264b7-018d-449c-8c8b-d9aede33a840",
+      "occurrenceId": "introduction-full:introduction-full-story-21:4ec264b7-018d-449c-8c8b-d9aede33a840",
+      "pageRevision": "sha256:6b01c6bf24fea7b725565b900af75b04841f150d0b1d945e4e7fd94e5c486b4f",
+      "renderRevision": "sha256:3d659d35230c3b83e3bc9ea452b1391fd0a7e83156a899f8423b47d78378523c",
+      "elementsTruncated": false,
+      "position": 4,
+      "title": "Change two of fifty slides. Another full copy?",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#f7f5ef",
+      "textCharacters": 308,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 29,
+          "normalizedSize": 29,
+          "bold": false
+        },
+        {
+          "elementId": "foot",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        },
+        {
+          "elementId": "request",
+          "role": "body",
+          "fontSize": 25,
+          "normalizedSize": 25,
+          "bold": false
+        },
+        {
+          "elementId": "copies",
+          "role": "body",
+          "fontSize": 22,
+          "normalizedSize": 22,
+          "bold": false
+        },
+        {
+          "elementId": "decision",
+          "role": "body",
+          "fontSize": 23,
+          "normalizedSize": 23,
+          "bold": false
+        },
+        {
+          "elementId": "illustration-note",
+          "role": "body",
+          "fontSize": 12,
+          "normalizedSize": 12,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "brand-small",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 10.84
+        }
+      ]
+    },
+    {
+      "pageId": "1ba18ad8-0701-4de6-83f5-555b949293d7",
+      "occurrenceId": "introduction-full:introduction-full-story-22:1ba18ad8-0701-4de6-83f5-555b949293d7",
+      "pageRevision": "sha256:0f403baa5ffaec60d204250861474d34a999685b75a1bcd087810f9d1310f720",
+      "renderRevision": "sha256:539e7bab898a71c069212b0fafd6d96c91f632b05c8c6d2d19227ebbf88b9c46",
+      "elementsTruncated": false,
+      "position": 5,
+      "title": "Seeing the slide is only part of editing it",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#f7f5ef",
+      "textCharacters": 232,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 29,
+          "normalizedSize": 29,
+          "bold": false
+        },
+        {
+          "elementId": "foot",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        },
+        {
+          "elementId": "structure",
+          "role": "body",
+          "fontSize": 21,
+          "normalizedSize": 21,
+          "bold": false
+        },
+        {
+          "elementId": "judgment",
+          "role": "body",
+          "fontSize": 18,
+          "normalizedSize": 18,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "brand-small",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 10.84
+        },
+        {
+          "elementId": "editor-native-chart",
+          "source": "media/imported/d636a513fcf82df27f78c077242623f592c58f56281c53c11c42d59e1053572a.png",
+          "status": "measured",
+          "sampling": 4.44
+        }
+      ]
+    },
+    {
+      "pageId": "e0b400eb-ddc1-4c42-af48-d420785b1d8f",
+      "occurrenceId": "introduction-full:introduction-full-story-23:e0b400eb-ddc1-4c42-af48-d420785b1d8f",
+      "pageRevision": "sha256:83db3b031ad040057e6d18632db52715a3d9725422accf2375fdbb676044e562",
+      "renderRevision": "sha256:60ef8a42c173929918924aedaffe06490a489119aa3718bb9662e7b6f862d601",
+      "elementsTruncated": false,
+      "position": 6,
+      "title": "So I wanted to tell the story first",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#e4ece6",
+      "textCharacters": 230,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 29,
+          "normalizedSize": 29,
+          "bold": false
+        },
+        {
+          "elementId": "foot",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        },
+        {
+          "elementId": "spoken",
+          "role": "body",
+          "fontSize": 32,
+          "normalizedSize": 32,
+          "bold": false
+        },
+        {
+          "elementId": "account-flow",
+          "role": "body",
+          "fontSize": 23,
+          "normalizedSize": 23,
+          "bold": false
+        },
+        {
+          "elementId": "quote-source",
+          "role": "body",
+          "fontSize": 13,
+          "normalizedSize": 13,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "brand-small",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 10.84
+        }
+      ]
+    },
+    {
+      "pageId": "bbcdc92a-915c-4988-a4d5-76e466d0424f",
+      "occurrenceId": "introduction-full:full-17:bbcdc92a-915c-4988-a4d5-76e466d0424f",
+      "pageRevision": "sha256:4ab9a8fc77d1937cd34fba33f87ebde268fdd8fb338c7a2dbf92d7a642d2f473",
+      "renderRevision": "sha256:ed742dda29f3bb0c299c284b19213c077b22ede09891c8518c1beab4f313961a",
+      "elementsTruncated": false,
+      "position": 7,
+      "title": "The ideas I brought together",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#e4ece6",
+      "textCharacters": 376,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 29,
+          "normalizedSize": 29,
+          "bold": false
+        },
+        {
+          "elementId": "foot",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        },
+        {
+          "elementId": "origins",
+          "role": "body",
+          "fontSize": 19,
+          "normalizedSize": 19,
+          "bold": false
+        },
+        {
+          "elementId": "specific-credits",
+          "role": "body",
+          "fontSize": 14,
+          "normalizedSize": 14,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "brand-small",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 10.84
+        },
+        {
+          "elementId": "upstream-mark",
+          "source": "media/imported/44e2a2aa5f3887deae386fa73f71234961f93e006873b632ccf38b6b6f1291a1.png",
+          "status": "measured",
+          "sampling": 3.94
+        }
+      ]
+    },
+    {
+      "pageId": "6b9fbac0-772c-435c-bce1-9cad0004af65",
+      "occurrenceId": "introduction-full:full-2:6b9fbac0-772c-435c-bce1-9cad0004af65",
+      "pageRevision": "sha256:f96758a71abad4e3399a4ce1513d680f2360bc69a506c470c787b5537b7f9381",
+      "renderRevision": "sha256:ec430bfd48622480f957b26fbd61a30c166bd6d47f40c564d11e77cf1180f8c6",
+      "elementsTruncated": false,
+      "position": 8,
+      "title": "A page with an identity",
+      "pageRole": "section",
+      "titleOnly": true,
+      "background": "#e4ece6",
+      "textCharacters": 23,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 34,
+          "normalizedSize": 34,
+          "bold": false
+        }
+      ],
+      "images": []
+    },
+    {
+      "pageId": "b911bfbe-4cd5-49cd-9da9-486025a496e6",
+      "occurrenceId": "introduction-full:introduction-full-story-24:b911bfbe-4cd5-49cd-9da9-486025a496e6",
+      "pageRevision": "sha256:02dcb753f3b55681eaf0268afca06c83c0ba5fff0f52a9492accc74a7e600de4",
+      "renderRevision": "sha256:c68793f7be2fdb154d926b19e8d5d5a744b0becb36eb70b46c0021ce460a133b",
+      "elementsTruncated": false,
+      "position": 9,
+      "title": "PPTX already contains separate pages",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#f7f5ef",
+      "textCharacters": 315,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 29,
+          "normalizedSize": 29,
+          "bold": false
+        },
+        {
+          "elementId": "foot",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        },
+        {
+          "elementId": "pptx-label",
+          "role": "body",
+          "fontSize": 24,
+          "normalizedSize": 24,
+          "bold": false
+        },
+        {
+          "elementId": "pptx-parts",
+          "role": "body",
+          "fontSize": 19,
+          "normalizedSize": 19,
+          "bold": false
+        },
+        {
+          "elementId": "pptd-label",
+          "role": "body",
+          "fontSize": 23,
+          "normalizedSize": 23,
+          "bold": false
+        },
+        {
+          "elementId": "pptd-parts",
+          "role": "body",
+          "fontSize": 20,
+          "normalizedSize": 20,
+          "bold": false
+        },
+        {
+          "elementId": "format-point",
+          "role": "body",
+          "fontSize": 20,
+          "normalizedSize": 20,
+          "bold": false
+        },
+        {
+          "elementId": "format-source",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "brand-small",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 10.84
+        }
+      ]
+    },
+    {
+      "pageId": "8050a155-9c2b-4cf5-b643-e9406b9b2b1c",
+      "occurrenceId": "introduction-full:full-16:8050a155-9c2b-4cf5-b643-e9406b9b2b1c",
+      "pageRevision": "sha256:64839d2a211d80f5d4c3a17058171ed0fa5c597e1aed088f034bea5dab276ae7",
+      "renderRevision": "sha256:229789b5c18f232d0049e2c856a2f276f07161f6174c55cdcddfd9e6d173c7c2",
+      "elementsTruncated": false,
+      "position": 10,
+      "title": "A folder I can return to",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#eee9dd",
+      "textCharacters": 133,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 29,
+          "normalizedSize": 29,
+          "bold": false
+        },
+        {
+          "elementId": "entry",
+          "role": "body",
+          "fontSize": 31,
+          "normalizedSize": 31,
+          "bold": false
+        },
+        {
+          "elementId": "folder-copy",
+          "role": "body",
+          "fontSize": 20,
+          "normalizedSize": 20,
+          "bold": false
+        },
+        {
+          "elementId": "foot",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "brand-small",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 10.84
+        }
+      ]
+    },
+    {
+      "pageId": "dc5bfe5f-326a-4b28-8536-56e51ea4397e",
+      "occurrenceId": "introduction-full:full-13:dc5bfe5f-326a-4b28-8536-56e51ea4397e",
+      "pageRevision": "sha256:52300f182267d341659b03efa9154b7eefdf863fdaeeac8a2a4ff35e6a905cb8",
+      "renderRevision": "sha256:546fa2df374ff9e1983e61700e251e1c0ec8f4162309c277b4e23b7ac608ca4f",
+      "elementsTruncated": false,
+      "position": 11,
+      "title": "First, which page are we talking about?",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#f7f5ef",
+      "textCharacters": 170,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 29,
+          "normalizedSize": 29,
+          "bold": false
+        },
+        {
+          "elementId": "foot",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        },
+        {
+          "elementId": "identity-copy",
+          "role": "body",
+          "fontSize": 20,
+          "normalizedSize": 20,
+          "bold": false
+        },
+        {
+          "elementId": "identity-takeaway",
+          "role": "body",
+          "fontSize": 19,
+          "normalizedSize": 19,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "brand-small",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 10.84
+        },
+        {
+          "elementId": "thumb-1",
+          "source": "media/imported/57891a9f6a53696a43685b52093aede782a6f8d05b1131157bf799c9d4db9794.png",
+          "status": "measured",
+          "sampling": 3.2
+        }
+      ]
+    },
+    {
+      "pageId": "6a3aec16-2347-40fe-856d-df36c1f58509",
+      "occurrenceId": "introduction-full:full-10:6a3aec16-2347-40fe-856d-df36c1f58509",
+      "pageRevision": "sha256:63790639ae0de6d80e904574f8372ad0d3c4cb9b90e97e4b3fc8e9cf4318dce0",
+      "renderRevision": "sha256:d695c1d32d8973cd97118c9769dde07a7b53f97c7f1d7a0ae5a1a2faf7f7cf00",
+      "elementsTruncated": false,
+      "position": 12,
+      "title": "Keeping the history with the page",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#f7f5ef",
+      "textCharacters": 234,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 29,
+          "normalizedSize": 29,
+          "bold": false
+        },
+        {
+          "elementId": "foot",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        },
+        {
+          "elementId": "history-story",
+          "role": "body",
+          "fontSize": 22,
+          "normalizedSize": 22,
+          "bold": false
+        },
+        {
+          "elementId": "history-source",
+          "role": "body",
+          "fontSize": 13,
+          "normalizedSize": 13,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "brand-small",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 10.84
+        },
+        {
+          "elementId": "versions-detail",
+          "source": "media/imported/91315947e96e846550cc7b331e928f06d76426e23afd63decff60ca1dec94f27.png",
+          "status": "measured",
+          "sampling": 1.25
+        }
+      ]
+    },
+    {
+      "pageId": "d497fb11-7906-414e-a529-0d97680bce51",
+      "occurrenceId": "introduction-full:full-6:d497fb11-7906-414e-a529-0d97680bce51",
+      "pageRevision": "sha256:be46b12c065e895e24541e4542a3ee7b04b498215c593af5befd07af6ca1d2ab",
+      "renderRevision": "sha256:32788665db0166a693251eadd69d105733fcbf7e1fc47e84143102a86e11355e",
+      "elementsTruncated": false,
+      "position": 13,
+      "title": "Keeping the story in the work",
+      "pageRole": "section",
+      "titleOnly": true,
+      "background": "#e4ece6",
+      "textCharacters": 29,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 34,
+          "normalizedSize": 34,
+          "bold": false
+        }
+      ],
+      "images": []
+    },
+    {
+      "pageId": "7d7d42a0-0db7-4d33-9b3f-5e1035097b50",
+      "occurrenceId": "introduction-full:full-3:7d7d42a0-0db7-4d33-9b3f-5e1035097b50",
+      "pageRevision": "sha256:50b51301174df12ebd41486f9795114703604ee3c49911f50d0dab3472c7d462",
+      "renderRevision": "sha256:eb36ce5575c4f0ed1150093b64af3b4c9efe340571243469c451cdfbae2baa48",
+      "elementsTruncated": false,
+      "position": 14,
+      "title": "The editor I return to with the agent",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#f7f5ef",
+      "textCharacters": 192,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 29,
+          "normalizedSize": 29,
+          "bold": false
+        },
+        {
+          "elementId": "foot",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        },
+        {
+          "elementId": "editor-copy",
+          "role": "body",
+          "fontSize": 17,
+          "normalizedSize": 17,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "brand-small",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 10.84
+        },
+        {
+          "elementId": "editor-native-chart",
+          "source": "media/imported/d636a513fcf82df27f78c077242623f592c58f56281c53c11c42d59e1053572a.png",
+          "status": "measured",
+          "sampling": 3.8
+        }
+      ]
+    },
+    {
+      "pageId": "4a066483-9a11-450c-be15-c0be33d52989",
+      "occurrenceId": "introduction-full:full-7:4a066483-9a11-450c-be15-c0be33d52989",
+      "pageRevision": "sha256:713172a5c2d61ea25e781c36c55633f21bfe5677dc86acf57c9b73029df897f3",
+      "renderRevision": "sha256:c2daa6673d1432085681f3b9e52fd04205dc9ab413300d2b54ed40ff86bcbfd5",
+      "elementsTruncated": false,
+      "position": 15,
+      "title": "Leaving the reason for the next edit",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#f7f5ef",
+      "textCharacters": 277,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 29,
+          "normalizedSize": 29,
+          "bold": false
+        },
+        {
+          "elementId": "purpose-label",
+          "role": "body",
+          "fontSize": 15,
+          "normalizedSize": 15,
+          "bold": false
+        },
+        {
+          "elementId": "purpose-copy",
+          "role": "body",
+          "fontSize": 21,
+          "normalizedSize": 21,
+          "bold": false
+        },
+        {
+          "elementId": "keep-label",
+          "role": "body",
+          "fontSize": 15,
+          "normalizedSize": 15,
+          "bold": false
+        },
+        {
+          "elementId": "keep-copy",
+          "role": "body",
+          "fontSize": 18,
+          "normalizedSize": 18,
+          "bold": false
+        },
+        {
+          "elementId": "foot",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "story-panel",
+          "source": "media/imported/33496f37817f8ceef75d201c98e51c6f919dfd878f310415f9836d2fefeb256c.png",
+          "status": "measured",
+          "sampling": 1.45
+        },
+        {
+          "elementId": "brand-small",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 10.84
+        }
+      ]
+    },
+    {
+      "pageId": "95189956-cdd7-4ad9-88c8-cf28a204bb68",
+      "occurrenceId": "introduction-full:full-4:95189956-cdd7-4ad9-88c8-cf28a204bb68",
+      "pageRevision": "sha256:df328a98a3ed4375cd326378b9343a703d5782920f25a814663c17616dfd0434",
+      "renderRevision": "sha256:49019e54130476348aa359c78ffcc5b3fcff3d57b9168a1b4c050566fc050b26",
+      "elementsTruncated": false,
+      "position": 16,
+      "title": "The asset library carries the work forward",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#eee9dd",
+      "textCharacters": 186,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 29,
+          "normalizedSize": 29,
+          "bold": false
+        },
+        {
+          "elementId": "foot",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        },
+        {
+          "elementId": "materials",
+          "role": "body",
+          "fontSize": 20,
+          "normalizedSize": 20,
+          "bold": false
+        },
+        {
+          "elementId": "asset-caption",
+          "role": "body",
+          "fontSize": 13,
+          "normalizedSize": 13,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "brand-small",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 10.84
+        },
+        {
+          "elementId": "assets",
+          "source": "media/imported/b8224a33c2eab63e0a7f5723b46a414c7d5fec551d9077aaf8ecb900ebaf1dc1.png",
+          "status": "measured",
+          "sampling": 1.8
+        },
+        {
+          "elementId": "source-view",
+          "source": "media/imported/342088ed88ab8fffc8ce2651cd6fbf183244f5069c7907702a957eb9cf9fa18a.png",
+          "status": "measured",
+          "sampling": 1.84
+        }
+      ]
+    },
+    {
+      "pageId": "c4b12919-5876-4acb-b63f-6a7493b54b37",
+      "occurrenceId": "introduction-full:full-1:c4b12919-5876-4acb-b63f-6a7493b54b37",
+      "pageRevision": "sha256:aee098cf7e188cd205912affa9ce10aa4a41ef17392abaeb2f43a48b9a2959ce",
+      "renderRevision": "sha256:90a571f6b23fce4f96abcee6c6443e0c52e796478971ab466e7ad8565fff7997",
+      "elementsTruncated": false,
+      "position": 17,
+      "title": "Local variation in one structure",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#f7f5ef",
+      "textCharacters": 291,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 28,
+          "normalizedSize": 28,
+          "bold": false
+        },
+        {
+          "elementId": "context",
+          "role": "body",
+          "fontSize": 15,
+          "normalizedSize": 15,
+          "bold": false
+        },
+        {
+          "elementId": "focus",
+          "role": "body",
+          "fontSize": 17,
+          "normalizedSize": 17,
+          "bold": false
+        },
+        {
+          "elementId": "scope",
+          "role": "body",
+          "fontSize": 13,
+          "normalizedSize": 13,
+          "bold": false
+        },
+        {
+          "elementId": "chain-a",
+          "role": "body",
+          "fontSize": 13,
+          "normalizedSize": 13,
+          "bold": false
+        },
+        {
+          "elementId": "chain-b",
+          "role": "body",
+          "fontSize": 13,
+          "normalizedSize": 13,
+          "bold": false
+        },
+        {
+          "elementId": "source",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        },
+        {
+          "elementId": "chart-unit",
+          "role": "body",
+          "fontSize": 14,
+          "normalizedSize": 14,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "structure",
+          "source": "media/imported/50273f1fa204b2f0ae10463c91dd9d8ffcea87c80d861da37c0db9755d091017.png",
+          "status": "measured",
+          "sampling": 1.91
+        }
+      ]
+    },
+    {
+      "pageId": "ca1eec7e-61bd-41ac-b6ab-e000d06797be",
+      "occurrenceId": "introduction-full:full-5:ca1eec7e-61bd-41ac-b6ab-e000d06797be",
+      "pageRevision": "sha256:bd0dd44e06c1a6e725d155823c044599118514a956d5c23ae2698d1baabcd973",
+      "renderRevision": "sha256:917cbaa72a7bb46c9b33995d3f4c0790f073bd117bf5c5695cb2a9be9d1d15fd",
+      "elementsTruncated": false,
+      "position": 18,
+      "title": "Tables and equations stay editable",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#f7f5ef",
+      "textCharacters": 198,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 29,
+          "normalizedSize": 29,
+          "bold": false
+        },
+        {
+          "elementId": "foot",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        },
+        {
+          "elementId": "formula",
+          "role": "body",
+          "fontSize": 22,
+          "normalizedSize": 22,
+          "bold": false
+        },
+        {
+          "elementId": "equation-value",
+          "role": "body",
+          "fontSize": 23,
+          "normalizedSize": 23,
+          "bold": false
+        },
+        {
+          "elementId": "native-data-caption",
+          "role": "body",
+          "fontSize": 13,
+          "normalizedSize": 13,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "brand-small",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 10.84
+        },
+        {
+          "elementId": "measure-view",
+          "source": "media/imported/50273f1fa204b2f0ae10463c91dd9d8ffcea87c80d861da37c0db9755d091017.png",
+          "status": "measured",
+          "sampling": 2.75
+        }
+      ]
+    },
+    {
+      "pageId": "3f5561d8-477e-4954-bee2-9877c8cddc69",
+      "occurrenceId": "introduction-full:full-9:3f5561d8-477e-4954-bee2-9877c8cddc69",
+      "pageRevision": "sha256:99c6aefdd234ce46fe79db44c9ff5ca9e9bd45614643e4f2ba06c0de882d6476",
+      "renderRevision": "sha256:ec292dac2f6d468c165fd44d1ba9d80d20c15146a14c64f3d1f0268a8367d470",
+      "elementsTruncated": false,
+      "position": 19,
+      "title": "This time, just clarify the explanation",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#e4ece6",
+      "textCharacters": 209,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 29,
+          "normalizedSize": 29,
+          "bold": false
+        },
+        {
+          "elementId": "request",
+          "role": "body",
+          "fontSize": 18,
+          "normalizedSize": 18,
+          "bold": false
+        },
+        {
+          "elementId": "before-label",
+          "role": "body",
+          "fontSize": 16,
+          "normalizedSize": 16,
+          "bold": false
+        },
+        {
+          "elementId": "after-label",
+          "role": "body",
+          "fontSize": 16,
+          "normalizedSize": 16,
+          "bold": false
+        },
+        {
+          "elementId": "scope-proof",
+          "role": "body",
+          "fontSize": 17,
+          "normalizedSize": 17,
+          "bold": false
+        },
+        {
+          "elementId": "foot",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "before",
+          "source": "media/imported/3141de6201ac50bc936475a058db4be21189dc88121aafe007f80b72ec5e7ef6.png",
+          "status": "measured",
+          "sampling": 2.33
+        },
+        {
+          "elementId": "after",
+          "source": "media/imported/0b4a19dfbcd31a26ee1008f81b6aec774bca6b3cda224eff3a5dee8fd2d9e046.png",
+          "status": "measured",
+          "sampling": 2.33
+        },
+        {
+          "elementId": "brand-small",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 10.84
+        }
+      ]
+    },
+    {
+      "pageId": "62d5734d-2fe5-441c-a50a-abaa95145b56",
+      "occurrenceId": "introduction-full:introduction-full-story-25:62d5734d-2fe5-441c-a50a-abaa95145b56",
+      "pageRevision": "sha256:365db7a8ec003db8119b64f999b88ff02cd21d3f322b1ed567a1891ebf69cd11",
+      "renderRevision": "sha256:6527ac9c08f80bc51c144a61b0a73d5c7a26d698fdeae6d33a8d7353639becfb",
+      "elementsTruncated": false,
+      "position": 20,
+      "title": "Stepping back to inspect the whole talk",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#f7f5ef",
+      "textCharacters": 165,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 29,
+          "normalizedSize": 29,
+          "bold": false
+        },
+        {
+          "elementId": "foot",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        },
+        {
+          "elementId": "views",
+          "role": "body",
+          "fontSize": 18,
+          "normalizedSize": 18,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "brand-small",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 10.84
+        },
+        {
+          "elementId": "browse",
+          "source": "media/imported/d08a58cc75bcfcfc04f93e749cfdc3de98f85ca3a0a52609300a2ac43b893927.png",
+          "status": "measured",
+          "sampling": 3.26
+        }
+      ]
+    },
+    {
+      "pageId": "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6",
+      "occurrenceId": "introduction-full:full-8:2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6",
+      "pageRevision": "sha256:8edf752ce66a75bb8da480f585e6652cd6aba6e2e24c9b4280d6b6950d80fb73",
+      "renderRevision": "sha256:bcb385b3d7f796089c6b86950aa38be667d6814b7b928ae46097b8a195eefbef",
+      "elementsTruncated": false,
+      "position": 21,
+      "title": "Taking the workflow to different agents",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#e4ece6",
+      "textCharacters": 277,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 28,
+          "normalizedSize": 28,
+          "bold": false
+        },
+        {
+          "elementId": "client-name-0",
+          "role": "body",
+          "fontSize": 18,
+          "normalizedSize": 18,
+          "bold": false
+        },
+        {
+          "elementId": "client-name-1",
+          "role": "body",
+          "fontSize": 18,
+          "normalizedSize": 18,
+          "bold": false
+        },
+        {
+          "elementId": "client-name-2",
+          "role": "body",
+          "fontSize": 18,
+          "normalizedSize": 18,
+          "bold": false
+        },
+        {
+          "elementId": "client-name-3",
+          "role": "body",
+          "fontSize": 18,
+          "normalizedSize": 18,
+          "bold": false
+        },
+        {
+          "elementId": "plugin-guidance",
+          "role": "body",
+          "fontSize": 15,
+          "normalizedSize": 15,
+          "bold": false
+        },
+        {
+          "elementId": "connector-name",
+          "role": "body",
+          "fontSize": 20,
+          "normalizedSize": 20,
+          "bold": false
+        },
+        {
+          "elementId": "connector-copy",
+          "role": "body",
+          "fontSize": 14,
+          "normalizedSize": 14,
+          "bold": false
+        },
+        {
+          "elementId": "writer-name",
+          "role": "body",
+          "fontSize": 19,
+          "normalizedSize": 19,
+          "bold": false
+        },
+        {
+          "elementId": "writer-copy",
+          "role": "body",
+          "fontSize": 14,
+          "normalizedSize": 14,
+          "bold": false
+        },
+        {
+          "elementId": "human-name",
+          "role": "body",
+          "fontSize": 20,
+          "normalizedSize": 20,
+          "bold": false
+        },
+        {
+          "elementId": "human-copy",
+          "role": "body",
+          "fontSize": 14,
+          "normalizedSize": 14,
+          "bold": false
+        },
+        {
+          "elementId": "pptd",
+          "role": "body",
+          "fontSize": 23,
+          "normalizedSize": 23,
+          "bold": false
+        },
+        {
+          "elementId": "foot",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "client-0",
+          "source": "media/imported/0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13.png",
+          "status": "measured",
+          "sampling": 5.29
+        },
+        {
+          "elementId": "client-1",
+          "source": "media/imported/2ce1c57dd3b312417106a487815ab1235bddce17e1fa9b32a2f048bd71ee25d3.png",
+          "status": "measured",
+          "sampling": 2.83
+        },
+        {
+          "elementId": "client-2",
+          "source": "media/imported/733f24f4c52acb15eb0fbded1cf40eb42b4ba8e62b882acac70b6234b50919a8.png",
+          "status": "measured",
+          "sampling": 1.41
+        },
+        {
+          "elementId": "client-3",
+          "source": "media/imported/e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc.png",
+          "status": "measured",
+          "sampling": 3.38
+        },
+        {
+          "elementId": "brand-small",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 10.84
+        }
+      ]
+    },
+    {
+      "pageId": "4a398dd0-ad74-4a36-b65e-6068ffe817a8",
+      "occurrenceId": "introduction-full:full-11:4a398dd0-ad74-4a36-b65e-6068ffe817a8",
+      "pageRevision": "sha256:268ed8538ca3027bb5ff795a53083262bd186fabef8bcc2e73743ac902d71b65",
+      "renderRevision": "sha256:449f5febef2ebd95704c5b449e3fb50e2d74bec129432d581b10f82fa6a18318",
+      "elementsTruncated": false,
+      "position": 22,
+      "title": "Back to the next lab meeting",
+      "pageRole": "section",
+      "titleOnly": true,
+      "background": "#e4ece6",
+      "textCharacters": 28,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 34,
+          "normalizedSize": 34,
+          "bold": false
+        }
+      ],
+      "images": []
+    },
+    {
+      "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7",
+      "occurrenceId": "introduction-full:full-12:3d7cd245-6d59-4123-a75f-fd400fd636c7",
+      "pageRevision": "sha256:2759052de75da61fa2fe00215c70bdcb259247f90ea8baef354cc55b4d74feee",
+      "renderRevision": "sha256:b8a70d0a1ac1a3de0ae15d0035bcc106a5c8dfe1fb92864ea28842b04be2d98f",
+      "elementsTruncated": false,
+      "position": 23,
+      "title": "Choosing the pages for the next talk",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#e4ece6",
+      "textCharacters": 195,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 29,
+          "normalizedSize": 29,
+          "bold": false
+        },
+        {
+          "elementId": "library-label",
+          "role": "body",
+          "fontSize": 20,
+          "normalizedSize": 20,
+          "bold": false
+        },
+        {
+          "elementId": "main-caption",
+          "role": "body",
+          "fontSize": 17,
+          "normalizedSize": 17,
+          "bold": false
+        },
+        {
+          "elementId": "full-label",
+          "role": "body",
+          "fontSize": 19,
+          "normalizedSize": 19,
+          "bold": false
+        },
+        {
+          "elementId": "brief-label",
+          "role": "body",
+          "fontSize": 19,
+          "normalizedSize": 19,
+          "bold": false
+        },
+        {
+          "elementId": "foot",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "brand-small",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 10.84
+        },
+        {
+          "elementId": "stack-20",
+          "source": "media/imported/b6f72e4b8385440cdb9e9dbd2c33aca928a78070cad336ea48150318f0424c05.png",
+          "status": "measured",
+          "sampling": 3.65
+        },
+        {
+          "elementId": "stack-24",
+          "source": "media/imported/ad1436bd2cee8cb2572a1cc7bb3d300ef5765deff111192808c17bbf7a511e8c.png",
+          "status": "measured",
+          "sampling": 3.65
+        },
+        {
+          "elementId": "stack-6",
+          "source": "media/imported/4cb5b1e47b693a54c666a7407878b645bde57af95673a626bd331a9c00c1c9ab.png",
+          "status": "measured",
+          "sampling": 3.65
+        },
+        {
+          "elementId": "sequence-0-0",
+          "source": "media/imported/b6f72e4b8385440cdb9e9dbd2c33aca928a78070cad336ea48150318f0424c05.png",
+          "status": "measured",
+          "sampling": 5.87
+        },
+        {
+          "elementId": "sequence-0-1",
+          "source": "media/imported/ecc7da44628a50cb45b02d2bf153276841464293241faa14c440ff9a826a4f94.png",
+          "status": "measured",
+          "sampling": 5.87
+        },
+        {
+          "elementId": "sequence-0-2",
+          "source": "media/imported/ac795e4a005a76ced7c67f725ace4a4976da51b81e3998d3b3011a1cd1f4f43a.png",
+          "status": "measured",
+          "sampling": 5.87
+        },
+        {
+          "elementId": "sequence-1-0",
+          "source": "media/imported/ac795e4a005a76ced7c67f725ace4a4976da51b81e3998d3b3011a1cd1f4f43a.png",
+          "status": "measured",
+          "sampling": 5.87
+        },
+        {
+          "elementId": "sequence-1-1",
+          "source": "media/imported/ad1436bd2cee8cb2572a1cc7bb3d300ef5765deff111192808c17bbf7a511e8c.png",
+          "status": "measured",
+          "sampling": 5.87
+        },
+        {
+          "elementId": "sequence-1-2",
+          "source": "media/imported/2f599663a807d7653d19c95908427a11fc5b54346bfdfc9c83d435e60816915d.png",
+          "status": "measured",
+          "sampling": 5.87
+        }
+      ]
+    },
+    {
+      "pageId": "095ba6fb-14f6-42b1-815a-7970ac214058",
+      "occurrenceId": "introduction-full:introduction-full-story-26:095ba6fb-14f6-42b1-815a-7970ac214058",
+      "pageRevision": "sha256:a56706b80c94e04c601b988912dc8ff20a6dea9c17954a9064c0bf990c68815f",
+      "renderRevision": "sha256:81f223db29af60093971a7fbc9dddebda03a7f2c7007a99fa088362b4be025c8",
+      "elementsTruncated": false,
+      "position": 24,
+      "title": "The same page can support another explanation",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#f7f5ef",
+      "textCharacters": 263,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 29,
+          "normalizedSize": 29,
+          "bold": false
+        },
+        {
+          "elementId": "foot",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        },
+        {
+          "elementId": "same-page",
+          "role": "body",
+          "fontSize": 19,
+          "normalizedSize": 19,
+          "bold": false
+        },
+        {
+          "elementId": "speaker-notes",
+          "role": "body",
+          "fontSize": 19,
+          "normalizedSize": 19,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "brand-small",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 10.84
+        },
+        {
+          "elementId": "thumb-1",
+          "source": "media/imported/57891a9f6a53696a43685b52093aede782a6f8d05b1131157bf799c9d4db9794.png",
+          "status": "measured",
+          "sampling": 2.4
+        }
+      ]
+    },
+    {
+      "pageId": "80c650ec-8f56-403d-8f44-d190a84ed4b4",
+      "occurrenceId": "introduction-full:full-14:80c650ec-8f56-403d-8f44-d190a84ed4b4",
+      "pageRevision": "sha256:930f2d04e5021d740563fb497313cebd5d8b7694eea9efe74654afb2f113df66",
+      "renderRevision": "sha256:a36215a1129c50a00b7c67d1245a31aa8a2a2845765c37b51b5fbb701ae542b7",
+      "elementsTruncated": false,
+      "position": 25,
+      "title": "Live and pinned references",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#f7f5ef",
+      "textCharacters": 185,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 29,
+          "normalizedSize": 29,
+          "bold": false
+        },
+        {
+          "elementId": "live-label",
+          "role": "body",
+          "fontSize": 25,
+          "normalizedSize": 25,
+          "bold": false
+        },
+        {
+          "elementId": "pin-label",
+          "role": "body",
+          "fontSize": 25,
+          "normalizedSize": 25,
+          "bold": false
+        },
+        {
+          "elementId": "live-copy",
+          "role": "body",
+          "fontSize": 17,
+          "normalizedSize": 17,
+          "bold": false
+        },
+        {
+          "elementId": "pinned-copy",
+          "role": "body",
+          "fontSize": 17,
+          "normalizedSize": 17,
+          "bold": false
+        },
+        {
+          "elementId": "foot",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "live-page",
+          "source": "media/imported/57891a9f6a53696a43685b52093aede782a6f8d05b1131157bf799c9d4db9794.png",
+          "status": "measured",
+          "sampling": 2.33
+        },
+        {
+          "elementId": "pinned-page",
+          "source": "media/imported/0b4a19dfbcd31a26ee1008f81b6aec774bca6b3cda224eff3a5dee8fd2d9e046.png",
+          "status": "measured",
+          "sampling": 2.33
+        },
+        {
+          "elementId": "brand-small",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 10.84
+        }
+      ]
+    },
+    {
+      "pageId": "e4fb0f10-ffa5-44e2-907f-b92e1b69535e",
+      "occurrenceId": "introduction-full:full-15:e4fb0f10-ffa5-44e2-907f-b92e1b69535e",
+      "pageRevision": "sha256:b55ba1069e688d1f0bb223f30ec828af3680bb8f9baeb2b45ff22004a4cb0aa6",
+      "renderRevision": "sha256:480c1ce098235384372f67bd6b42f4a184b8680be0392eee52b98b5eee244551",
+      "elementsTruncated": false,
+      "position": 26,
+      "title": "Presenting and sharing from the same project",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#f7f5ef",
+      "textCharacters": 166,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 29,
+          "normalizedSize": 29,
+          "bold": false
+        },
+        {
+          "elementId": "present-title",
+          "role": "body",
+          "fontSize": 21,
+          "normalizedSize": 21,
+          "bold": false
+        },
+        {
+          "elementId": "export-title",
+          "role": "body",
+          "fontSize": 21,
+          "normalizedSize": 21,
+          "bold": false
+        },
+        {
+          "elementId": "delivery-scope",
+          "role": "body",
+          "fontSize": 17,
+          "normalizedSize": 17,
+          "bold": false
+        },
+        {
+          "elementId": "foot",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "present-menu",
+          "source": "media/imported/fa59f55889e6e4aa240167729eb5c378bda2ed5286bff56ca741b312dd071f5a.png",
+          "status": "measured",
+          "sampling": 1.2
+        },
+        {
+          "elementId": "export-menu",
+          "source": "media/imported/c9d7c71891485ee05f86101a4341e56d1ce8c560d9a47c173715c409ce6ed149.png",
+          "status": "measured",
+          "sampling": 1.71
+        },
+        {
+          "elementId": "brand-small",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 10.84
+        }
+      ]
+    },
+    {
+      "pageId": "8f9e154d-c5c2-4d79-b809-984586f8311e",
+      "occurrenceId": "introduction-full:full-18:8f9e154d-c5c2-4d79-b809-984586f8311e",
+      "pageRevision": "sha256:0b5688b065c5b2e5752b8146a47dd3f77122d3b4125fd283931c1050452184f1",
+      "renderRevision": "sha256:5c32038ebc9a71e30dec767702f7f63456ec90c3a2f5d6eeaa37d8679f9b9077",
+      "elementsTruncated": false,
+      "position": 27,
+      "title": "Next time, I begin with my story",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#e4ece6",
+      "textCharacters": 132,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 29,
+          "normalizedSize": 29,
+          "bold": false
+        },
+        {
+          "elementId": "closing-brand",
+          "role": "body",
+          "fontSize": 38,
+          "normalizedSize": 38,
+          "bold": false
+        },
+        {
+          "elementId": "next-action",
+          "role": "body",
+          "fontSize": 24,
+          "normalizedSize": 24,
+          "bold": false
+        },
+        {
+          "elementId": "project-path",
+          "role": "body",
+          "fontSize": 16,
+          "normalizedSize": 16,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "closing-mark",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 1.98
+        },
+        {
+          "elementId": "closing-example",
+          "source": "media/imported/57891a9f6a53696a43685b52093aede782a6f8d05b1131157bf799c9d4db9794.png",
+          "status": "measured",
+          "sampling": 2.15
+        }
+      ]
+    }
+  ],
+  "sectionStarts": [
+    {
+      "id": "intro-section-1",
+      "title": "A page with an identity",
+      "pageId": "6b9fbac0-772c-435c-bce1-9cad0004af65",
+      "titleOnly": true
+    },
+    {
+      "id": "intro-section-2",
+      "title": "Keeping the story in the work",
+      "pageId": "d497fb11-7906-414e-a529-0d97680bce51",
+      "titleOnly": true
+    },
+    {
+      "id": "intro-section-3",
+      "title": "Back to the next lab meeting",
+      "pageId": "4a398dd0-ad74-4a36-b65e-6068ffe817a8",
+      "titleOnly": true
+    }
+  ],
+  "findings": [
+    {
+      "code": "DESIGN_LARGE_TYPE",
+      "severity": "warning",
+      "message": "Body type is 32 at 960-wide scale. Inspect visual weight and line breaks.",
+      "elementId": "spoken",
+      "measured": 32,
+      "recommended": 28,
+      "pageId": "e0b400eb-ddc1-4c42-af48-d420785b1d8f",
+      "occurrenceId": "introduction-full:introduction-full-story-23:e0b400eb-ddc1-4c42-af48-d420785b1d8f"
+    },
+    {
+      "code": "DESIGN_LARGE_TYPE",
+      "severity": "warning",
+      "message": "Body type is 31 at 960-wide scale. Inspect visual weight and line breaks.",
+      "elementId": "entry",
+      "measured": 31,
+      "recommended": 28,
+      "pageId": "8050a155-9c2b-4cf5-b643-e9406b9b2b1c",
+      "occurrenceId": "introduction-full:full-16:8050a155-9c2b-4cf5-b643-e9406b9b2b1c"
+    },
+    {
+      "code": "DESIGN_LARGE_TYPE",
+      "severity": "warning",
+      "message": "Body type is 38 at 960-wide scale. Inspect visual weight and line breaks.",
+      "elementId": "closing-brand",
+      "measured": 38,
+      "recommended": 28,
+      "pageId": "8f9e154d-c5c2-4d79-b809-984586f8311e",
+      "occurrenceId": "introduction-full:full-18:8f9e154d-c5c2-4d79-b809-984586f8311e"
+    }
+  ],
+  "findingCount": 3,
+  "truncated": false,
+  "limits": {
+    "maxPages": 500,
+    "maxElementsPerPage": 500,
+    "maxFindings": 500,
+    "targetWidth": 1920
+  },
+  "visualInspectionRequired": true,
+  "assetInspection": {
+    "measured": 26,
+    "omitted": [],
+    "truncated": false,
+    "maxAssets": 128,
+    "maxHeaderBytes": 524288
+  }
+}

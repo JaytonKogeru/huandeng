@@ -1,0 +1,247 @@
+background:
+  type: solid
+  color: "#F6F6F3"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 56
+      - 34
+      - 848
+      - 40
+    content:
+      text: 两条线索，合在一起
+      fontFamily: Microsoft YaHei
+      fontSize: 26
+      lineHeight: 1.3
+      color: "#1C2321"
+      align:
+        - left
+        - top
+      bold: true
+    role: title
+  - elementId: pptd-head
+    elementType: text
+    bounds:
+      - 56
+      - 104
+      - 400
+      - 26
+    content:
+      text: PPTD：把 slides 当成目录
+      fontFamily: Microsoft YaHei
+      fontSize: 19
+      lineHeight: 1.3
+      color: "#2E6B5E"
+      align:
+        - left
+        - top
+      bold: true
+  - elementId: pptd-body
+    elementType: text
+    bounds:
+      - 56
+      - 138
+      - 400
+      - 150
+    content:
+      text: <p>我是在 Kimi Slides 的生态里接触到 PPTD 这种思路的：slides 不是一个封起来的文件，而是一个 agent 能读、能写的结构化项目。</p><p><span style="font-size:8px"> </span></p><p>（这是我的灵感来源，不代表它是某种公认标准的发明者。）</p>
+      fontFamily: Microsoft YaHei
+      fontSize: 16
+      lineHeight: 1.6
+      color: "#3E4845"
+      align:
+        - left
+        - top
+  - elementId: openslide-logo
+    elementType: image
+    bounds:
+      - 500
+      - 104
+      - 28
+      - 28
+    src: media/imported/44e2a2aa5f3887deae386fa73f71234961f93e006873b632ccf38b6b6f1291a1.png
+    sourceName: open-slide.png
+    fit:
+      mode: contain
+  - elementId: os-head
+    elementType: text
+    bounds:
+      - 538
+      - 104
+      - 366
+      - 28
+    content:
+      text: open-slide：开源的代码基础
+      fontFamily: Microsoft YaHei
+      fontSize: 19
+      lineHeight: 1.3
+      color: "#2E6B5E"
+      align:
+        - left
+        - middle
+      bold: true
+  - elementId: os-body
+    elementType: text
+    bounds:
+      - 500
+      - 138
+      - 404
+      - 150
+    content:
+      text: <p>开源项目 open-slide 用 React 组织每一页 slides，编辑器的大部分操作逻辑都基于它开发。</p><p><span style="font-size:8px"> </span></p><p>此外借鉴了 WPS、PowerPoint、Photoshop 等很多软件的设计思路。</p>
+      fontFamily: Microsoft YaHei
+      fontSize: 16
+      lineHeight: 1.6
+      color: "#3E4845"
+      align:
+        - left
+        - top
+  - elementId: result
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 56
+      - 314
+      - 848
+      - 104
+    fill:
+      type: solid
+      color: "#2D4A43"
+  - elementId: result-mark-bg
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 76
+      - 338
+      - 56
+      - 56
+    fill:
+      type: solid
+      color: "#E9ECE8"
+  - elementId: result-mark
+    elementType: image
+    bounds:
+      - 80
+      - 342
+      - 48
+      - 48
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    fit:
+      mode: contain
+  - elementId: result-text
+    elementType: text
+    bounds:
+      - 148
+      - 326
+      - 736
+      - 80
+    content:
+      text: "<p><strong><span style=\"color:#FFFFFF\">幻灯 = PPTD 文档模型 + open-slide 代码基础 + Electron 桌面端</span></strong></p><p><span style=\"color:#C9D8D2\">目标：每一页都能版本管理，AI 能更好地用这个编辑器，把人的需求做出来。</span></p>"
+      fontFamily: Microsoft YaHei
+      fontSize: 17
+      lineHeight: 1.6
+      color: "#FFFFFF"
+      align:
+        - left
+        - middle
+  - elementId: gh
+    elementType: image
+    bounds:
+      - 56
+      - 440
+      - 18
+      - 18
+    src: media/imported/2a2f5cbcc74c7fa83c40127dd8b0e42c23f1157131aebe28492aa1ac27bbdc6d.png
+    sourceName: github-repository.png
+    fit:
+      mode: contain
+  - elementId: credit-1
+    elementType: text
+    bounds:
+      - 80
+      - 438
+      - 380
+      - 22
+    content:
+      text: OpenPPTD：复用其公式（MathML→OMML）转换模块
+      fontFamily: Microsoft YaHei
+      fontSize: 12
+      lineHeight: 1.4
+      color: "#7A8480"
+      align:
+        - left
+        - middle
+  - elementId: pg
+    elementType: image
+    bounds:
+      - 500
+      - 440
+      - 24
+      - 18
+    src: media/imported/d697acf6f3c5bc265806bc8f6c4e6d58b964e0b2962392d0329a420639f45846.png
+    sourceName: pptxgenjs.png
+    fit:
+      mode: contain
+  - elementId: credit-2
+    elementType: text
+    bounds:
+      - 530
+      - 438
+      - 374
+      - 22
+    content:
+      text: PptxGenJS：生成可编辑的 PPTX
+      fontFamily: Microsoft YaHei
+      fontSize: 12
+      lineHeight: 1.4
+      color: "#7A8480"
+      align:
+        - left
+        - middle
+  - elementId: ft-mark
+    elementType: image
+    bounds:
+      - 56
+      - 505
+      - 16
+      - 16
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    fit:
+      mode: contain
+  - elementId: ft-label
+    elementType: text
+    bounds:
+      - 78
+      - 505
+      - 420
+      - 16
+    content:
+      text: HUANDENG  /  我们做了什么
+      fontFamily: Microsoft YaHei
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - left
+        - middle
+  - elementId: ft-pos
+    elementType: text
+    bounds:
+      - 824
+      - 505
+      - 80
+      - 16
+    content:
+      text: "0"
+      fontFamily: Microsoft YaHei
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - right
+        - middle
+      field: main-position
+notes: 调查下来，我注意到两条线索。一条是 PPTD：我是在 Kimi Slides 这个生态里接触到这种文件组织方式的，它把 slides 变成 agent 可以读写的结构。另一条是开源工具 open-slide，它用 React 去组织 slides 的每一页。我想这两个东西其实是可以合起来的。于是我用 Electron 做了这样一个 PC 端的编辑器。它的大部分操作逻辑基于 open-slide 开发，也借鉴了 WPS、PowerPoint、Photoshop 和很多其他项目的设计思路。目的就是让 slides 更有组织：每一页都能做版本管理，AI 也能更好地使用这个编辑器，做出符合我理想的 slides。具体致谢：公式转换复用了 OpenPPTD 的模块，PPTX 导出用的是 PptxGenJS。

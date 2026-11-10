@@ -1,0 +1,3 @@
+pageType: content
+elements: [{"elementId":"section-bg","elementType":"shape","shapeName":"rect","bounds":[0,0,960,540],"fill":{"type":"solid","color":"#2D4A43"},"border":{"width":0,"color":"#2D4A43"}},{"elementId":"divider-title","elementType":"text","bounds":[72,226,816,72],"content":{"text":"Why I built it","fontFamily":"Arial","fontSize":40,"lineHeight":1.2,"color":"#FFFFFF","align":["left","middle"],"bold":true},"role":"title"}]
+notes: "Section 1. I will start with why. There are four reasons, and they all came from real group meetings and real attempts to make slides with AI."

@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "project": "deepseek-en",
+  "recordedAt": "2026-11-10T23:13:13.576788+00:00",
+  "nativeAuthor": "DeepSeek Harness",
+  "modelEvidence": {
+    "name": "deepseek-flash",
+    "source": "official --profile headless --dump-config, 17.config.model; configured model, not response model metadata",
+    "overrideRequested": false
+  },
+  "plugin": {
+    "version": "0.18.3",
+    "storySkillSha256": "b41675a608ebddf63933e3f0dab519aeb1bf5ea18a19bf82549e26fb16f64b82"
+  },
+  "prompt": {
+    "sha256": "36d8ec814b87b4371969b17e7c9e019a26614f032e101c99db616d574294ce76",
+    "fullUserMessageForwardedVerbatim": true,
+    "sharedWithBothNativeClients": true,
+    "containsUserEvaluationOfClaude": true,
+    "publicStoryExcerpt": "sources/story/USER-STORY.zh-CN.md",
+    "fullPromptPublished": false
+  },
+  "independence": {
+    "otherAuthorsVisualsOrTemplatesSupplied": false,
+    "requiredToMimicAnotherAuthor": false,
+    "narrativeOrderOrPageCountImposed": false,
+    "coordinatorAuthoredPageContent": false,
+    "claimScope": "Separate canonical project guidance and input routing; the complete user message, including its evaluation of the previous Claude edition, was shared with both clients."
+  },
+  "turns": [
+    {
+      "requestId": "0f6c7628-52d5-4117-9ea1-2a4b079fd896",
+      "sessionId": "session-d144a4b4-98eb-4ff7-bddc-6cfa2666e9c6",
+      "state": "completed",
+      "exitCode": 0,
+      "nativeCompleted": true,
+      "elapsedSeconds": 981.14,
+      "toolCalls": 137,
+      "toolErrorCount": 6,
+      "businessCompleted": true
+    }
+  ],
+  "mainPageCount": 18,
+  "presentations": [],
+  "events": [],
+  "exports": {
+    "deck.pdf": {
+      "sha256": "0604489a25614553a9be5c0739d73921794c3c7c3b89037f7ee26e474c118452",
+      "bytes": 1478136,
+      "actor": "native author",
+      "exportPages": 18,
+      "metadataRevision": "sha256:09d30e991254589f548012aabea8b4f7dc17d4de5d45964a03175727810dbde4",
+      "path": "Exports/deck.pdf",
+      "report": "Exports/deck.pdf.report.json"
+    },
+    "deck.pptx": {
+      "sha256": "4d02f32bc79805d622c78eb2db8d6e846d17a11caa153bcaf1e6653f74bfe84a",
+      "bytes": 1519124,
+      "actor": "native author",
+      "exportPages": 18,
+      "metadataRevision": "sha256:09d30e991254589f548012aabea8b4f7dc17d4de5d45964a03175727810dbde4",
+      "path": "Exports/deck.pptx",
+      "report": "Exports/deck.pptx.report.json"
+    }
+  },
+  "ownerAcceptance": "pending",
+  "contentReview": "content-review.json",
+  "contentStatus": "candidate-with-content-findings",
+  "independentContentReviewSha256": "cab3c3d146068175aeddf16248b15e5ff52e0ba3b91dc46e488bbc9397ad2be3",
+  "guidancePortability": "guidance-portability.json"
+}

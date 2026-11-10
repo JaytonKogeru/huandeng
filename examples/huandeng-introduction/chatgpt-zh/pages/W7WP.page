@@ -12,15 +12,7 @@ elements:
       - 55
     role: title
     content:
-      text: 四种入口，同一份作品
-      fontFamily: Microsoft YaHei
-      fontSize: 28
-      color: "#263C34"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
+      {"text":"把这些约定带给不同的 Agent","fontFamily":"Microsoft YaHei","fontSize":28,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
   - elementId: client-0
     elementType: image
     src: media/imported/0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13.png
@@ -440,4 +432,4 @@ elements:
         - top
       lineHeight: 1.3
       field: main-position
-notes: 四个客户端使用各自适配器。ChatGPT 通过已有的本机连接；本地 Codex、Claude Code 和 DeepSeek Harness 通过本机 MCP。Plugin 提供指导；Connector 调用选定项目的共享 writer；Editor 与 Agent 读写同一 PPTD。图示是产品关系，不是吞吐或速度比较。
+notes: "这套工作流并不要求只用一种模型。Plugin把制作约定和项目上下文交给Agent，Connector把请求送到选定项目的共享写入服务；我在Editor中的操作也作用于同一份文件。本次介绍本身就让ChatGPT、Claude Code和DeepSeek Harness各自尝试。这里的重点是它们能够在同一套文件和操作规则中工作，审美仍然要分别看结果。"

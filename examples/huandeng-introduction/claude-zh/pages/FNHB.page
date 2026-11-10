@@ -1,0 +1,128 @@
+background:
+  type: solid
+  color: "#F6F6F3"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 56
+      - 34
+      - 848
+      - 40
+    content:
+      text: 组会上，大家一眼就能看出是 AI 做的
+      fontFamily: Microsoft YaHei
+      fontSize: 26
+      lineHeight: 1.3
+      color: "#1C2321"
+      align:
+        - left
+        - top
+      bold: true
+    role: title
+  - elementId: quote
+    elementType: text
+    bounds:
+      - 56
+      - 118
+      - 380
+      - 210
+    content:
+      text: 当所有东西都能流程化，slides 本身也是一种数据、一种文件格式。让 agent 彻底掌握怎么做 slides，是势在必行的事。
+      fontFamily: Microsoft YaHei
+      fontSize: 20
+      lineHeight: 1.6
+      color: "#2E6B5E"
+      align:
+        - left
+        - top
+  - elementId: quote-src
+    elementType: text
+    bounds:
+        [56,272,380,22]
+    content:
+      text: —— 我做这个项目的出发点
+      fontFamily: Microsoft YaHei
+      fontSize: 13
+      lineHeight: 1.4
+      color: "#7A8480"
+      align:
+        - left
+        - top
+  - elementId: rule
+    elementType: line
+    bounds:
+      - 476
+      - 122
+      - 1
+      - 320
+    viewBox:
+      - 1
+      - 320
+    points: 0,0 0,320
+    border:
+      width: 1
+      color: "#CBD3CF"
+      style: solid
+    arrow: []
+  - elementId: body
+    elementType: text
+    bounds:
+      - 508
+      - 118
+      - 396
+      - 330
+    content:
+      text: <p><strong><span style="color:#1C2321">但现实是：</span></strong></p><p>开组会、看别人做 presentation 的时候，我的导师和很多人都能一眼认出 AI 风格、AI 质感。</p><p><span style="font-size:8px"> </span></p><p><strong><span style="color:#1C2321">不同工具各有各的样子：</span></strong></p><p>PowerPoint、Google Slides 里的 AI，ChatGPT、Kimi 自己的 slides 功能，风格都不一样。</p><p><span style="font-size:8px"> </span></p><p><strong><span style="color:#1C2321">可整体看，都还是很像 AI。</span></strong></p><p>缺的是那种“人的感觉”。</p>
+      fontFamily: Microsoft YaHei
+      fontSize: 17
+      lineHeight: 1.6
+      color: "#3E4845"
+      align:
+        - left
+        - top
+  - elementId: ft-mark
+    elementType: image
+    bounds:
+      - 56
+      - 505
+      - 16
+      - 16
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    fit:
+      mode: contain
+  - elementId: ft-label
+    elementType: text
+    bounds:
+      - 78
+      - 505
+      - 420
+      - 16
+    content:
+      text: HUANDENG  /  为什么要做
+      fontFamily: Microsoft YaHei
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - left
+        - middle
+  - elementId: ft-pos
+    elementType: text
+    bounds:
+      - 824
+      - 505
+      - 80
+      - 16
+    content:
+      text: "0"
+      fontFamily: Microsoft YaHei
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - right
+        - middle
+      field: main-position
+notes: 我觉得用 AI 来做精美的 slides 是势在必行的。所有东西都在流程化，slides 本身也是数据，是一种文件格式，agent 迟早要彻底掌握它。但在组会上，以及看别人做 presentation 的时候，我的导师和很多人都能一眼看出这是 AI 做的。不同的模型、不同的工具，PowerPoint、Google Slides、ChatGPT、Kimi，它们做出来的风格各不相同，但整体都还是很像 AI。所以我开始想：怎样让 AI 做的 slides 少一点这种明显的 AI 质感？这是第一个原因。（这是我个人在组会上的观察，不是一项研究结论。）

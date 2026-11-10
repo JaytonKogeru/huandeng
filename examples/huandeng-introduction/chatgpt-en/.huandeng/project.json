@@ -488,16 +488,17 @@
       "elementRoles": {},
       "label": "S24",
       "designIntent": {
-        "purpose": "Compare paired C1′ distances within one DNA structure.",
+        "purpose": "Show how a focused edit preserves the original figure, values and source in a public scientific example.",
         "keep": [
           "The source structure and pair labels",
           "All 12 values, axes and units",
           "The citation and scope of evidence"
         ],
-        "requestedChange": "Tighten the title and explanation; preserve all scientific evidence.",
+        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
         "actor": "ChatGPT",
-        "source": "Public scientific example",
-        "recordedAt": "2026-11-10T11:45:27.645Z"
+        "source": "sources/story/USER-STORY.zh-CN.md",
+        "recordedAt": "2026-11-10T22:39:21.836Z",
+        "pageRole": "content"
       }
     },
     "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6": {
@@ -509,15 +510,15 @@
       "label": "S25",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "Each client has its own adapter. ChatGPT uses the existing workstation connection; local Codex, Claude Code and DeepSeek Harness use local MCP. The plugin carries guidance; the connector calls the selected project’s shared writer; the Editor and agent work on the same PPTD. This is a relationship diagram, not a performance comparison.",
+        "purpose": "The workflow does not require one model.",
         "keep": [
           "Keep source figures, labels, measured values and citations",
           "Keep intentional background roles, product identity and meaningful density"
         ],
-        "requestedChange": "Rebuild the introduction around real scientific work",
+        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
         "actor": "ChatGPT",
-        "source": "Current introduction brief",
-        "recordedAt": "2026-11-10T11:53:34.530Z"
+        "source": "sources/story/USER-STORY.zh-CN.md",
+        "recordedAt": "2026-11-10T22:39:30.736Z"
       }
     },
     "90353b2a-6f7b-4ee5-8a8b-10bceb538190": {
@@ -529,15 +530,16 @@
       "label": "S26",
       "designIntent": {
         "pageRole": "cover",
-        "purpose": "HUANDENG is a workflow for continuing to edit scientific presentations. This introduction starts with a real scientific example, then explains how figures, data, context and reusable pages work together. The image is the actual Editor displaying the public 1BNA example in this project.",
+        "purpose": "Introduce why I started HUANDENG through concrete frustrations from preparing lab meetings.",
         "keep": [
           "Keep source figures, labels, measured values and citations",
-          "Keep intentional background roles, product identity and meaningful density"
+          "Keep intentional background roles, product identity and meaningful density",
+          "Keep the first-person motivation and actual editor image."
         ],
-        "requestedChange": "Rebuild the introduction around real scientific work",
+        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
         "actor": "ChatGPT",
-        "source": "Current introduction brief",
-        "recordedAt": "2026-11-10T12:25:35.572Z"
+        "source": "sources/story/USER-STORY.zh-CN.md",
+        "recordedAt": "2026-11-10T22:45:52.191Z"
       }
     },
     "6b9fbac0-772c-435c-bce1-9cad0004af65": {
@@ -551,15 +553,15 @@
       "label": "S27",
       "designIntent": {
         "pageRole": "section",
-        "purpose": "Section pause. The next pages demonstrate this theme through actual work.",
+        "purpose": "Those frustrations led me to treat the page as the unit of continuing work.",
         "keep": [
           "Keep source figures, labels, measured values and citations",
           "Keep intentional background roles, product identity and meaningful density"
         ],
-        "requestedChange": "Rebuild the introduction around real scientific work",
+        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
         "actor": "ChatGPT",
-        "source": "Current introduction brief",
-        "recordedAt": "2026-11-10T11:53:39.374Z"
+        "source": "sources/story/USER-STORY.zh-CN.md",
+        "recordedAt": "2026-11-10T22:39:04.527Z"
       }
     },
     "ca1eec7e-61bd-41ac-b6ab-e000d06797be": {
@@ -571,15 +573,15 @@
       "label": "S28",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "These are native HUANDENG chart, table and equation objects. The chart contains all twelve positions; the table selects positions 1, 4, 7, 9 and 12 to demonstrate editable source values. Distances are derived from public 1BNA coordinates; the method and CSV remain with the project.",
+        "purpose": "I also want the table and equation to remain editable.",
         "keep": [
           "Keep source figures, labels, measured values and citations",
           "Keep intentional background roles, product identity and meaningful density"
         ],
-        "requestedChange": "Rebuild the introduction around real scientific work",
+        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
         "actor": "ChatGPT",
-        "source": "Current introduction brief",
-        "recordedAt": "2026-11-10T12:23:32.172Z"
+        "source": "sources/story/USER-STORY.zh-CN.md",
+        "recordedAt": "2026-11-10T22:39:28.649Z"
       }
     },
     "3f5561d8-477e-4954-bee2-9877c8cddc69": {
@@ -591,15 +593,15 @@
       "label": "S29",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "A real edit in a controlled public demonstration. Both views use the same page at the same scale. Only the title and context text changed. The image source/crop/bounds, all chart data, axes, units, labels, source and other pages were preserved by a deep-equality check.",
+        "purpose": "A request can be small: make this page’s title and explanation clearer while preserving the source figure, all twelve values, axes and citation.",
         "keep": [
           "Keep source figures, labels, measured values and citations",
           "Keep intentional background roles, product identity and meaningful density"
         ],
-        "requestedChange": "Rebuild the introduction around real scientific work",
+        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
         "actor": "ChatGPT",
-        "source": "Current introduction brief",
-        "recordedAt": "2026-11-10T11:53:45.439Z"
+        "source": "sources/story/USER-STORY.zh-CN.md",
+        "recordedAt": "2026-11-10T22:39:30.047Z"
       }
     },
     "7d7d42a0-0db7-4d33-9b3f-5e1035097b50": {
@@ -611,15 +613,15 @@
       "label": "S30",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "This is the actual Editor, with both interface and slide content matching this edition. People can select images, charts and text directly, then inspect an agent’s changes in the same workspace. This overview explains the working environment; the scientific detail is shown at full scale on the example page.",
+        "purpose": "A document model still needs an editor people want to use.",
         "keep": [
           "Keep source figures, labels, measured values and citations",
           "Keep intentional background roles, product identity and meaningful density"
         ],
-        "requestedChange": "Rebuild the introduction around real scientific work",
+        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
         "actor": "ChatGPT",
-        "source": "Current introduction brief",
-        "recordedAt": "2026-11-10T12:25:40.715Z"
+        "source": "sources/story/USER-STORY.zh-CN.md",
+        "recordedAt": "2026-11-10T22:46:05.160Z"
       }
     },
     "95189956-cdd7-4ad9-88c8-cf28a204bb68": {
@@ -631,15 +633,15 @@
       "label": "S31",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "Sources: https://www.rcsb.org/structure/1BNA ; https://doi.org/10.1073/pnas.78.4.2179 . The end view is generated from the same deposited coordinates as the side view. Shared source files live in ../assets/science; portable copies are in sources/science. No private research materials are used.",
+        "purpose": "The asset library matters especially for scientific talks.",
         "keep": [
           "Keep source figures, labels, measured values and citations",
           "Keep intentional background roles, product identity and meaningful density"
         ],
-        "requestedChange": "Rebuild the introduction around real scientific work",
+        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
         "actor": "ChatGPT",
-        "source": "Current introduction brief",
-        "recordedAt": "2026-11-10T11:53:51.049Z"
+        "source": "sources/story/USER-STORY.zh-CN.md",
+        "recordedAt": "2026-11-10T22:46:18.353Z"
       }
     },
     "d497fb11-7906-414e-a529-0d97680bce51": {
@@ -653,15 +655,15 @@
       "label": "S32",
       "designIntent": {
         "pageRole": "section",
-        "purpose": "Section pause. The next pages demonstrate this theme through actual work.",
+        "purpose": "Page identity and history define the scope of an edit.",
         "keep": [
           "Keep source figures, labels, measured values and citations",
           "Keep intentional background roles, product identity and meaningful density"
         ],
-        "requestedChange": "Rebuild the introduction around real scientific work",
+        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
         "actor": "ChatGPT",
-        "source": "Current introduction brief",
-        "recordedAt": "2026-11-10T11:53:51.490Z"
+        "source": "sources/story/USER-STORY.zh-CN.md",
+        "recordedAt": "2026-11-10T22:39:13.662Z"
       }
     },
     "6a3aec16-2347-40fe-856d-df36c1f58509": {
@@ -673,15 +675,15 @@
       "label": "S33",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "The left image shows the two named versions actually saved in this project, before and after the wording edit. The right side transcribes the exact title and explanation values from that operation’s before/after snapshots returned by the shared writer. Exact operation identity and preservation checks are in evidence/wording-edit.json. Named versions and operation history serve distinct purposes.",
+        "purpose": "Stable identity lets the history stay with the page.",
         "keep": [
           "Keep source figures, labels, measured values and citations",
           "Keep intentional background roles, product identity and meaningful density"
         ],
-        "requestedChange": "Rebuild the introduction around real scientific work",
+        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
         "actor": "ChatGPT",
-        "source": "Current introduction brief",
-        "recordedAt": "2026-11-10T12:11:51.601Z"
+        "source": "sources/story/USER-STORY.zh-CN.md",
+        "recordedAt": "2026-11-10T22:39:12.683Z"
       }
     },
     "4a066483-9a11-450c-be15-c0be33d52989": {
@@ -693,15 +695,15 @@
       "label": "S34",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "Story keeps the page purpose, preservation constraints and current request. It helps the next editor understand the decisions behind the composition. The image is the actual Story panel for this scientific page.",
+        "purpose": "Story keeps the reason for the work available after the conversation ends.",
         "keep": [
           "Keep source figures, labels, measured values and citations",
           "Keep intentional background roles, product identity and meaningful density"
         ],
-        "requestedChange": "Rebuild the introduction around real scientific work",
+        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
         "actor": "ChatGPT",
-        "source": "Current introduction brief",
-        "recordedAt": "2026-11-10T11:53:52.472Z"
+        "source": "sources/story/USER-STORY.zh-CN.md",
+        "recordedAt": "2026-11-10T22:54:09.328Z"
       }
     },
     "4a398dd0-ad74-4a36-b65e-6068ffe817a8": {
@@ -715,15 +717,15 @@
       "label": "S35",
       "designIntent": {
         "pageRole": "section",
-        "purpose": "Section pause. The next pages demonstrate this theme through actual work.",
+        "purpose": "All of this has to return to the actual talk.",
         "keep": [
           "Keep source figures, labels, measured values and citations",
           "Keep intentional background roles, product identity and meaningful density"
         ],
-        "requestedChange": "Rebuild the introduction around real scientific work",
+        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
         "actor": "ChatGPT",
-        "source": "Current introduction brief",
-        "recordedAt": "2026-11-10T11:53:53.048Z"
+        "source": "sources/story/USER-STORY.zh-CN.md",
+        "recordedAt": "2026-11-10T22:39:32.019Z"
       }
     },
     "3d7cd245-6d59-4123-a75f-fd400fd636c7": {
@@ -735,15 +737,15 @@
       "label": "S36",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "All thumbnails are actual pages from this project. The upper row shows three ordered excerpts from the 19-page full introduction; the lower row shows three ordered excerpts from the seven-page brief introduction. The brief places the client architecture before the scientific example, reordering the talk without making another independent deck.",
+        "purpose": "Back at a lab meeting, I will not always tell the same version of the story.",
         "keep": [
           "Keep source figures, labels, measured values and citations",
           "Keep intentional background roles, product identity and meaningful density"
         ],
-        "requestedChange": "Rebuild the introduction around real scientific work",
+        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
         "actor": "ChatGPT",
-        "source": "Current introduction brief",
-        "recordedAt": "2026-11-10T12:23:38.383Z"
+        "source": "sources/story/USER-STORY.zh-CN.md",
+        "recordedAt": "2026-11-10T22:46:40.767Z"
       }
     },
     "dc5bfe5f-326a-4b28-8536-56e51ea4397e": {
@@ -755,15 +757,15 @@
       "label": "S37",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "The table is a mapping of this project’s actual Main/full/brief composition, checked after final composition. Stable page identities are displayed as the real short codes; no full UUID is required to understand reuse. A pinned appearance retains the same page identity while selecting a named version.",
+        "purpose": "If a page is the editing unit, I need a reliable way to name it.",
         "keep": [
           "Keep source figures, labels, measured values and citations",
           "Keep intentional background roles, product identity and meaningful density"
         ],
-        "requestedChange": "Rebuild the introduction around real scientific work",
+        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
         "actor": "ChatGPT",
-        "source": "Current introduction brief",
-        "recordedAt": "2026-11-10T12:23:44.526Z"
+        "source": "sources/story/USER-STORY.zh-CN.md",
+        "recordedAt": "2026-11-10T22:39:12.384Z"
       }
     },
     "80c650ec-8f56-403d-8f44-d190a84ed4b4": {
@@ -775,15 +777,15 @@
       "label": "S38",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "Actual comparison: the live page uses the later axis layout and one native-editable distance series; the measurement label carries the emphasis; the pinned page uses checkpoint checkpoint:891ad589ee3d84a6414cbf6af1245185. Both contain the exact same twelve measured values. The brief presentation genuinely pins that named version; the full presentation follows Main.",
+        "purpose": "Sometimes I want a talk to follow continuing edits; sometimes I need to hold a particular stage.",
         "keep": [
           "Keep source figures, labels, measured values and citations",
           "Keep intentional background roles, product identity and meaningful density"
         ],
-        "requestedChange": "Rebuild the introduction around real scientific work",
+        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
         "actor": "ChatGPT",
-        "source": "Current introduction brief",
-        "recordedAt": "2026-11-10T12:25:46.200Z"
+        "source": "sources/story/USER-STORY.zh-CN.md",
+        "recordedAt": "2026-11-10T22:51:00.842Z"
       }
     },
     "e4fb0f10-ffa5-44e2-907f-b92e1b69535e": {
@@ -795,15 +797,15 @@
       "label": "S39",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "These task captures are from this actual 19-page introduction in HUANDENG Editor v0.18, matched to the interface language. The current introduction is exported through the running writer. Static exports do not claim to carry live click builds. UI source/provenance: evidence/assets.json.",
+        "purpose": "When the talk is ready, I can present it directly or export PPTX for continued editing and PDF for reading.",
         "keep": [
           "Keep source figures, labels, measured values and citations",
           "Keep intentional background roles, product identity and meaningful density"
         ],
-        "requestedChange": "Rebuild the introduction around real scientific work",
+        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
         "actor": "ChatGPT",
-        "source": "Current introduction brief",
-        "recordedAt": "2026-11-10T12:11:57.410Z"
+        "source": "sources/story/USER-STORY.zh-CN.md",
+        "recordedAt": "2026-11-10T22:46:32.344Z"
       }
     },
     "8050a155-9c2b-4cf5-b643-e9406b9b2b1c": {
@@ -815,15 +817,15 @@
       "label": "S40",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "A PPTD is the entry to a project folder. Preserve its pages, media and .huandeng data when moving it. This introduction and the other three current editions live together inside examples/huandeng-introduction in the main repository; old working copies are not another current edition.",
+        "purpose": "Opening deck.pptd opens the project, but that entry is only one part of it.",
         "keep": [
           "Keep source figures, labels, measured values and citations",
           "Keep intentional background roles, product identity and meaningful density"
         ],
-        "requestedChange": "Rebuild the introduction around real scientific work",
+        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
         "actor": "ChatGPT",
-        "source": "Current introduction brief",
-        "recordedAt": "2026-11-10T11:53:55.787Z"
+        "source": "sources/story/USER-STORY.zh-CN.md",
+        "recordedAt": "2026-11-10T22:39:11.115Z"
       }
     },
     "bbcdc92a-915c-4988-a4d5-76e466d0424f": {
@@ -835,15 +837,15 @@
       "label": "S41",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "Code credits and licenses: packages/desktop/NOTICE.md and packages/core/src/pptd/vendor/open-pptd/NOTICE.md. Brand images retain their source bytes and provenance in ../assets/brand/manifest.json. The GitHub mark identifies the OpenPPTD repository, not a custom OpenPPTD logo. Design references are inspiration, not a claim of code reuse or affiliation. https://recent.design/ . Scientific sources: https://www.rcsb.org/structure/1BNA ; https://doi.org/10.1073/pnas.78.4.2179 .",
+        "purpose": "I then looked for existing work I could build on.",
         "keep": [
           "Keep source figures, labels, measured values and citations",
           "Keep intentional background roles, product identity and meaningful density"
         ],
-        "requestedChange": "Rebuild the introduction around real scientific work",
+        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
         "actor": "ChatGPT",
-        "source": "Current introduction brief",
-        "recordedAt": "2026-11-10T12:12:03.267Z"
+        "source": "sources/story/USER-STORY.zh-CN.md",
+        "recordedAt": "2026-11-10T22:39:02.971Z"
       }
     },
     "8f9e154d-c5c2-4d79-b809-984586f8311e": {
@@ -855,90 +857,258 @@
       "label": "S42",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "The repository contains four current introductions: ChatGPT Chinese and English, native Claude Code English, native DeepSeek Harness Chinese. They are independent authoring attempts, not four folders of dated versions. This is a review candidate, not an assertion of author acceptance.",
+        "purpose": "I started HUANDENG so that preparing the next lab meeting could begin with what I actually wanted to say.",
         "keep": [
           "Keep source figures, labels, measured values and citations",
           "Keep intentional background roles, product identity and meaningful density"
         ],
-        "requestedChange": "Rebuild the introduction around real scientific work",
+        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
         "actor": "ChatGPT",
-        "source": "Current introduction brief",
-        "recordedAt": "2026-11-10T12:24:00.256Z"
+        "source": "sources/story/USER-STORY.zh-CN.md",
+        "recordedAt": "2026-11-10T22:46:48.284Z"
+      }
+    },
+    "3410d070-9af3-44d0-911b-a60c36adbd94": {
+      "shortCode": "BEPN",
+      "path": "pages/BEPN.page",
+      "state": "tombstone",
+      "components": {},
+      "elementRoles": {},
+      "label": "S43"
+    },
+    "e21619f2-9956-4548-9ee8-fbaafd556bff": {
+      "shortCode": "P72R",
+      "path": "pages/P72R.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S44",
+      "designIntent": {
+        "purpose": "Connect the AI look recognized at lab meetings to the lack of focus in my own earlier introduction.",
+        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
+        "source": "sources/story/USER-STORY.zh-CN.md",
+        "actor": "ChatGPT",
+        "recordedAt": "2026-11-10T22:38:28.495Z",
+        "pageRole": "content",
+        "keep": [
+          "Keep actual earlier root-page previews and the personal observation."
+        ]
+      }
+    },
+    "4ec264b7-018d-449c-8c8b-d9aede33a840": {
+      "shortCode": "2XM9",
+      "path": "pages/2XM9.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S45",
+      "designIntent": {
+        "purpose": "Use the two-of-fifty editing scenario to explain why I chose page-level history.",
+        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
+        "source": "sources/story/USER-STORY.zh-CN.md",
+        "actor": "ChatGPT",
+        "recordedAt": "2026-11-10T22:38:37.348Z",
+        "pageRole": "content",
+        "keep": [
+          "Keep filenames explicitly illustrative and the original two-slide scenario."
+        ]
+      }
+    },
+    "e0b400eb-ddc1-4c42-af48-d420785b1d8f": {
+      "shortCode": "KW5P",
+      "path": "pages/KW5P.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S46",
+      "designIntent": {
+        "purpose": "Use the author’s account to explain speaking first, then organizing slides and notes from that reasoning.",
+        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
+        "source": "sources/story/USER-STORY.zh-CN.md",
+        "actor": "ChatGPT",
+        "recordedAt": "2026-11-10T22:38:46.571Z",
+        "pageRole": "content",
+        "keep": [
+          "Keep the original Chinese quotation or its labelled English translation and first-person attribution."
+        ]
+      }
+    },
+    "b911bfbe-4cd5-49cd-9da9-486025a496e6": {
+      "shortCode": "TBGV",
+      "path": "pages/TBGV.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S47",
+      "designIntent": {
+        "purpose": "Distinguish the existing PPTX package structure from the HUANDENG working folder.",
+        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
+        "source": "sources/story/USER-STORY.zh-CN.md",
+        "actor": "ChatGPT",
+        "recordedAt": "2026-11-10T22:39:04.901Z",
+        "pageRole": "content",
+        "keep": [
+          "Keep actual path types, the correct scientific Slide ID and Microsoft attribution."
+        ]
+      }
+    },
+    "4f6f7d5f-d5b0-462f-b694-2874c8b3c395": {
+      "shortCode": "YSGH",
+      "path": "pages/YSGH.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S48",
+      "designIntent": {
+        "purpose": "Explain my belief that agents will become slide authors, and why I still want to retain the person’s explanation.",
+        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
+        "source": "sources/story/USER-STORY.zh-CN.md",
+        "actor": "ChatGPT",
+        "recordedAt": "2026-11-10T22:38:27.068Z",
+        "pageRole": "content",
+        "keep": [
+          "Keep the forecast attributed to the author."
+        ]
+      }
+    },
+    "1ba18ad8-0701-4de6-83f5-555b949293d7": {
+      "shortCode": "GX5Z",
+      "path": "pages/GX5Z.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S49",
+      "designIntent": {
+        "purpose": "Explain how structure identifies objects and values while actual visual review remains necessary.",
+        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
+        "source": "sources/story/USER-STORY.zh-CN.md",
+        "actor": "ChatGPT",
+        "recordedAt": "2026-11-10T22:45:58.290Z",
+        "pageRole": "content",
+        "keep": [
+          "Keep the fully rendered actual UI and the distinction between structured and visual review."
+        ]
+      }
+    },
+    "62d5734d-2fe5-441c-a50a-abaa95145b56": {
+      "shortCode": "9QQW",
+      "path": "pages/9QQW.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S50",
+      "designIntent": {
+        "purpose": "Show how Browse, Outline and Sections help inspect the sequence of the same talk.",
+        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
+        "source": "sources/story/USER-STORY.zh-CN.md",
+        "actor": "ChatGPT",
+        "recordedAt": "2026-11-10T22:46:24.914Z",
+        "pageRole": "content",
+        "keep": [
+          "Keep the actual current Browse image and the distinct roles of the three views."
+        ]
+      }
+    },
+    "095ba6fb-14f6-42b1-815a-7970ac214058": {
+      "shortCode": "74A2",
+      "path": "pages/74A2.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S51",
+      "designIntent": {
+        "purpose": "Explain how the same page can carry different occurrence notes for different audiences.",
+        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
+        "source": "sources/story/USER-STORY.zh-CN.md",
+        "actor": "ChatGPT",
+        "recordedAt": "2026-11-10T22:52:26.209Z",
+        "pageRole": "content",
+        "keep": [
+          "Keep the current preview of the same scientific page and the distinction between Main and occurrence notes."
+        ]
       }
     }
   },
   "project": {
     "schemaVersion": 1,
     "mainStory": {
-      "purpose": "Explain how HUANDENG preserves scientific evidence while people and agents keep editing and reusing one project",
-      "audience": "Scientific presentation authors and project contributors",
-      "takeaway": "Keep source figures, data, editing intent and talk sequences with the project"
+      "purpose": "Explain why I started HUANDENG through my lab-meeting experience, then show how the human story, page history and materials stay with the work.",
+      "audience": "Scientific presenters, people working with AI agents and project contributors",
+      "takeaway": "Begin with the person’s story, then let the agent help realize it in a project that can keep evolving."
     },
     "sections": [
       {
         "id": "intro-section-0",
-        "title": "Opening",
+        "title": "The beginning",
         "story": {
-          "purpose": "Opening",
-          "audience": "",
-          "takeaway": ""
+          "purpose": "The beginning",
+          "audience": "Scientific presenters, people working with AI agents and project contributors",
+          "takeaway": "Begin with the person’s story, then let the agent help realize it in a project that can keep evolving."
         },
         "frontMatter": true,
         "pageIds": [
           "90353b2a-6f7b-4ee5-8a8b-10bceb538190",
-          "c4b12919-5876-4acb-b63f-6a7493b54b37"
+          "4f6f7d5f-d5b0-462f-b694-2874c8b3c395",
+          "e21619f2-9956-4548-9ee8-fbaafd556bff",
+          "4ec264b7-018d-449c-8c8b-d9aede33a840",
+          "1ba18ad8-0701-4de6-83f5-555b949293d7",
+          "e0b400eb-ddc1-4c42-af48-d420785b1d8f",
+          "bbcdc92a-915c-4988-a4d5-76e466d0424f"
         ],
         "startPageId": "90353b2a-6f7b-4ee5-8a8b-10bceb538190"
       },
       {
         "id": "intro-section-1",
-        "title": "Evidence and composition",
+        "title": "A page with an identity",
         "story": {
-          "purpose": "Evidence and composition",
-          "audience": "",
-          "takeaway": ""
+          "purpose": "A page with an identity",
+          "audience": "Scientific presenters, people working with AI agents and project contributors",
+          "takeaway": "Begin with the person’s story, then let the agent help realize it in a project that can keep evolving."
         },
         "pageIds": [
           "6b9fbac0-772c-435c-bce1-9cad0004af65",
-          "7d7d42a0-0db7-4d33-9b3f-5e1035097b50",
-          "95189956-cdd7-4ad9-88c8-cf28a204bb68",
-          "ca1eec7e-61bd-41ac-b6ab-e000d06797be"
+          "b911bfbe-4cd5-49cd-9da9-486025a496e6",
+          "8050a155-9c2b-4cf5-b643-e9406b9b2b1c",
+          "dc5bfe5f-326a-4b28-8536-56e51ea4397e",
+          "6a3aec16-2347-40fe-856d-df36c1f58509"
         ],
         "startPageId": "6b9fbac0-772c-435c-bce1-9cad0004af65"
       },
       {
         "id": "intro-section-2",
-        "title": "People and agents",
+        "title": "Keeping the story in the work",
         "story": {
-          "purpose": "People and agents",
-          "audience": "",
-          "takeaway": ""
+          "purpose": "Keeping the story in the work",
+          "audience": "Scientific presenters, people working with AI agents and project contributors",
+          "takeaway": "Begin with the person’s story, then let the agent help realize it in a project that can keep evolving."
         },
         "pageIds": [
           "d497fb11-7906-414e-a529-0d97680bce51",
+          "7d7d42a0-0db7-4d33-9b3f-5e1035097b50",
           "4a066483-9a11-450c-be15-c0be33d52989",
-          "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6",
+          "95189956-cdd7-4ad9-88c8-cf28a204bb68",
+          "c4b12919-5876-4acb-b63f-6a7493b54b37",
+          "ca1eec7e-61bd-41ac-b6ab-e000d06797be",
           "3f5561d8-477e-4954-bee2-9877c8cddc69",
-          "6a3aec16-2347-40fe-856d-df36c1f58509"
+          "62d5734d-2fe5-441c-a50a-abaa95145b56",
+          "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6"
         ],
         "startPageId": "d497fb11-7906-414e-a529-0d97680bce51"
       },
       {
         "id": "intro-section-3",
-        "title": "Reuse and presentation",
+        "title": "Back to the next lab meeting",
         "story": {
-          "purpose": "Reuse and presentation",
-          "audience": "",
-          "takeaway": ""
+          "purpose": "Back to the next lab meeting",
+          "audience": "Scientific presenters, people working with AI agents and project contributors",
+          "takeaway": "Begin with the person’s story, then let the agent help realize it in a project that can keep evolving."
         },
         "pageIds": [
           "4a398dd0-ad74-4a36-b65e-6068ffe817a8",
           "3d7cd245-6d59-4123-a75f-fd400fd636c7",
-          "dc5bfe5f-326a-4b28-8536-56e51ea4397e",
+          "095ba6fb-14f6-42b1-815a-7970ac214058",
           "80c650ec-8f56-403d-8f44-d190a84ed4b4",
           "e4fb0f10-ffa5-44e2-907f-b92e1b69535e",
-          "8050a155-9c2b-4cf5-b643-e9406b9b2b1c",
-          "bbcdc92a-915c-4988-a4d5-76e466d0424f",
           "8f9e154d-c5c2-4d79-b809-984586f8311e"
         ],
         "startPageId": "4a398dd0-ad74-4a36-b65e-6068ffe817a8"
@@ -949,9 +1119,9 @@
         "id": "introduction-full",
         "title": "Full introduction",
         "story": {
-          "purpose": "Explain evidence, editing and reuse through a real scientific page",
-          "audience": "",
-          "takeaway": ""
+          "purpose": "Explain why I started HUANDENG through my lab-meeting experience, then show how the human story, page history and materials stay with the work.",
+          "audience": "Scientific presenters, people working with AI agents and project contributors",
+          "takeaway": "Begin with the person’s story, then let the agent help realize it in a project that can keep evolving."
         },
         "items": [
           {
@@ -960,9 +1130,34 @@
             "pageId": "90353b2a-6f7b-4ee5-8a8b-10bceb538190"
           },
           {
-            "id": "full-1",
+            "id": "introduction-full-story-19",
             "kind": "page",
-            "pageId": "c4b12919-5876-4acb-b63f-6a7493b54b37"
+            "pageId": "4f6f7d5f-d5b0-462f-b694-2874c8b3c395"
+          },
+          {
+            "id": "introduction-full-story-20",
+            "kind": "page",
+            "pageId": "e21619f2-9956-4548-9ee8-fbaafd556bff"
+          },
+          {
+            "id": "introduction-full-story-21",
+            "kind": "page",
+            "pageId": "4ec264b7-018d-449c-8c8b-d9aede33a840"
+          },
+          {
+            "id": "introduction-full-story-22",
+            "kind": "page",
+            "pageId": "1ba18ad8-0701-4de6-83f5-555b949293d7"
+          },
+          {
+            "id": "introduction-full-story-23",
+            "kind": "page",
+            "pageId": "e0b400eb-ddc1-4c42-af48-d420785b1d8f"
+          },
+          {
+            "id": "full-17",
+            "kind": "page",
+            "pageId": "bbcdc92a-915c-4988-a4d5-76e466d0424f"
           },
           {
             "id": "full-2",
@@ -970,19 +1165,24 @@
             "pageId": "6b9fbac0-772c-435c-bce1-9cad0004af65"
           },
           {
-            "id": "full-3",
+            "id": "introduction-full-story-24",
             "kind": "page",
-            "pageId": "7d7d42a0-0db7-4d33-9b3f-5e1035097b50"
+            "pageId": "b911bfbe-4cd5-49cd-9da9-486025a496e6"
           },
           {
-            "id": "full-4",
+            "id": "full-16",
             "kind": "page",
-            "pageId": "95189956-cdd7-4ad9-88c8-cf28a204bb68"
+            "pageId": "8050a155-9c2b-4cf5-b643-e9406b9b2b1c"
           },
           {
-            "id": "full-5",
+            "id": "full-13",
             "kind": "page",
-            "pageId": "ca1eec7e-61bd-41ac-b6ab-e000d06797be"
+            "pageId": "dc5bfe5f-326a-4b28-8536-56e51ea4397e"
+          },
+          {
+            "id": "full-10",
+            "kind": "page",
+            "pageId": "6a3aec16-2347-40fe-856d-df36c1f58509"
           },
           {
             "id": "full-6",
@@ -990,14 +1190,29 @@
             "pageId": "d497fb11-7906-414e-a529-0d97680bce51"
           },
           {
+            "id": "full-3",
+            "kind": "page",
+            "pageId": "7d7d42a0-0db7-4d33-9b3f-5e1035097b50"
+          },
+          {
             "id": "full-7",
             "kind": "page",
             "pageId": "4a066483-9a11-450c-be15-c0be33d52989"
           },
           {
-            "id": "full-8",
+            "id": "full-4",
             "kind": "page",
-            "pageId": "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6"
+            "pageId": "95189956-cdd7-4ad9-88c8-cf28a204bb68"
+          },
+          {
+            "id": "full-1",
+            "kind": "page",
+            "pageId": "c4b12919-5876-4acb-b63f-6a7493b54b37"
+          },
+          {
+            "id": "full-5",
+            "kind": "page",
+            "pageId": "ca1eec7e-61bd-41ac-b6ab-e000d06797be"
           },
           {
             "id": "full-9",
@@ -1005,9 +1220,14 @@
             "pageId": "3f5561d8-477e-4954-bee2-9877c8cddc69"
           },
           {
-            "id": "full-10",
+            "id": "introduction-full-story-25",
             "kind": "page",
-            "pageId": "6a3aec16-2347-40fe-856d-df36c1f58509"
+            "pageId": "62d5734d-2fe5-441c-a50a-abaa95145b56"
+          },
+          {
+            "id": "full-8",
+            "kind": "page",
+            "pageId": "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6"
           },
           {
             "id": "full-11",
@@ -1020,9 +1240,9 @@
             "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7"
           },
           {
-            "id": "full-13",
+            "id": "introduction-full-story-26",
             "kind": "page",
-            "pageId": "dc5bfe5f-326a-4b28-8536-56e51ea4397e"
+            "pageId": "095ba6fb-14f6-42b1-815a-7970ac214058"
           },
           {
             "id": "full-14",
@@ -1035,16 +1255,6 @@
             "pageId": "e4fb0f10-ffa5-44e2-907f-b92e1b69535e"
           },
           {
-            "id": "full-16",
-            "kind": "page",
-            "pageId": "8050a155-9c2b-4cf5-b643-e9406b9b2b1c"
-          },
-          {
-            "id": "full-17",
-            "kind": "page",
-            "pageId": "bbcdc92a-915c-4988-a4d5-76e466d0424f"
-          },
-          {
             "id": "full-18",
             "kind": "page",
             "pageId": "8f9e154d-c5c2-4d79-b809-984586f8311e"
@@ -1055,9 +1265,9 @@
         "id": "introduction-short",
         "title": "Brief introduction",
         "story": {
-          "purpose": "A brief introduction through the connection model, scientific example and focused edit",
-          "audience": "",
-          "takeaway": ""
+          "purpose": "Explain why I started HUANDENG through my lab-meeting experience, then show how the human story, page history and materials stay with the work.",
+          "audience": "Scientific presenters, people working with AI agents and project contributors",
+          "takeaway": "Begin with the person’s story, then let the agent help realize it in a project that can keep evolving."
         },
         "items": [
           {
@@ -1066,30 +1276,61 @@
             "pageId": "90353b2a-6f7b-4ee5-8a8b-10bceb538190"
           },
           {
-            "id": "brief-1",
+            "id": "introduction-short-story-20",
             "kind": "page",
-            "pageId": "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6"
+            "pageId": "e21619f2-9956-4548-9ee8-fbaafd556bff"
+          },
+          {
+            "id": "introduction-short-story-21",
+            "kind": "page",
+            "pageId": "4ec264b7-018d-449c-8c8b-d9aede33a840"
+          },
+          {
+            "id": "introduction-short-story-23",
+            "kind": "page",
+            "pageId": "e0b400eb-ddc1-4c42-af48-d420785b1d8f"
+          },
+          {
+            "id": "introduction-short-story-24",
+            "kind": "page",
+            "pageId": "b911bfbe-4cd5-49cd-9da9-486025a496e6"
+          },
+          {
+            "id": "introduction-short-story-13",
+            "kind": "page",
+            "pageId": "dc5bfe5f-326a-4b28-8536-56e51ea4397e"
+          },
+          {
+            "id": "introduction-short-story-9",
+            "kind": "page",
+            "pageId": "6a3aec16-2347-40fe-856d-df36c1f58509"
+          },
+          {
+            "id": "introduction-short-story-10",
+            "kind": "page",
+            "pageId": "4a066483-9a11-450c-be15-c0be33d52989"
+          },
+          {
+            "id": "introduction-short-story-6",
+            "kind": "page",
+            "pageId": "95189956-cdd7-4ad9-88c8-cf28a204bb68"
           },
           {
             "id": "brief-2",
             "kind": "page",
             "pageId": "c4b12919-5876-4acb-b63f-6a7493b54b37",
-            "versionId": "checkpoint:891ad589ee3d84a6414cbf6af1245185"
+            "versionId": "checkpoint:891ad589ee3d84a6414cbf6af1245185",
+            "notes": "This is a public DNA example. Its figure and twelve values come from the same deposited coordinates. When I change only the explanation, I want the figure, values and source to stay intact. That is also the working agreement I want to carry to different agents."
           },
           {
-            "id": "brief-3",
+            "id": "brief-1",
             "kind": "page",
-            "pageId": "3f5561d8-477e-4954-bee2-9877c8cddc69"
+            "pageId": "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6"
           },
           {
             "id": "brief-4",
             "kind": "page",
             "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7"
-          },
-          {
-            "id": "brief-5",
-            "kind": "page",
-            "pageId": "e4fb0f10-ffa5-44e2-907f-b92e1b69535e"
           },
           {
             "id": "brief-6",

@@ -2,7 +2,7 @@ pageType: content
 background:
   type: solid
   color: "#E8EEE6"
-notes: 这页把“可回看”落到两个真实界面：操作记录显示字段级的前后变化；命名版本固定页面状态。恢复只影响这一页，这是和“整份文件回滚”最重要的区别。预览使用当前素材，历史原图要靠命名版本保存。
+notes: "如果页面是修改单位，历史就应该跟着页面。左边是操作审阅：字段级的前后变化；右边是命名版本：把重要的时刻固定下来。恢复只改这一页，不是整份 deck 的回滚。这更接近 Git 的思路，但不是把每一页说成独立仓库。"
 elements:
   - elementId: review-title
     elementType: text
@@ -13,7 +13,7 @@ elements:
       - 430
       - 40
     content:
-      text: 改过什么，能看回来
+      text: "这一页，改过什么"
       fontSize: 28
       fontFamily:
         ea: Microsoft YaHei
@@ -31,8 +31,8 @@ elements:
       - 500
       - 48
     content:
-      text: 保存后的操作有回执；命名版本固定这一页的里程碑。恢复也只影响这一页。
-      fontSize: 14.4
+      text: "每一页都有自己的历史：\n操作记录和命名版本；恢复只影响这一页。"
+      fontSize: 14.2
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
@@ -66,7 +66,7 @@ elements:
     bounds:
         [48,466,410,42]
     content:
-      text: "真实界面：保存修改的只读审阅。\n字段级前后变化；预览使用当前素材。"
+      text: "真实界面：操作审阅显示字段级变化。\n不是整份文件的回滚。"
       fontSize: 9
       fontFamily:
         ea: Microsoft YaHei
@@ -100,7 +100,7 @@ elements:
     bounds:
         [472,466,440,42]
     content:
-      text: "真实界面：命名版本与恢复入口。\n恢复只更新这一页；历史原图以版本为准。"
+      text: "真实界面：命名版本与恢复入口。\n这一页可以回到某个时刻。"
       fontSize: 9
       fontFamily:
         ea: Microsoft YaHei

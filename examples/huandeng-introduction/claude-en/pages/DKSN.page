@@ -221,9 +221,7 @@ elements:
       - 182
       - 56
     content:
-      text: |-
-        1  Pages
-        Thumbnails with Position and a permanent Slide ID
+      text: "1  Sidebar\nProject, Pages, Assets and Files, like an IDE"
       fontFamily: Arial
       fontSize: 13
       lineHeight: 1.3
@@ -356,7 +354,7 @@ elements:
       - 420
       - 16
     content:
-      text: HUANDENG  /  Introduction
+      text: "HUANDENG  /  What I built"
       fontFamily: Arial
       fontSize: 11
       lineHeight: 1.3
@@ -413,4 +411,4 @@ elements:
       color: "#2E6B5E"
       style: solid
     arrow: []
-notes: "This is the real Editor in English, running a small public example project. It is a desktop application: one window, one project per tab. 1, the Pages panel shows every slide with its position and its permanent Slide ID. 2, the tabs above the canvas switch between six views of the same slides: Normal for editing, Browse for thumbnails, Outline for titles with their Story, Sections, the Notes page and History. 3, the canvas edits native objects, including tables, charts and equations. 4, the Inspector holds properties and, importantly, the Story tab: what this slide is for and what must be kept. 5, Agent setup connects an external AI client such as Claude Code or Codex; Activity shows what that client reports and what was actually saved. 6, Export produces PDF, PPTX or video, and Present starts the show from the beginning or the current slide. There is no chat box inside the Editor; agents work from their own client."
+notes: "This is the editor itself, running a small public example. 1, the sidebar has four tabs: Project, Pages, Assets, and Files, which shows the project folder the way VS Code shows a code repository. Assets is a real library: every figure in the project, with its original size and where it is used. 2, the views above the canvas: Normal, Browse, Outline, Sections, Notes page and History. 3, the canvas edits native objects, including tables and charts. 4, the Inspector: properties, layout, a Layers panel in the spirit of Photoshop, the Story of the slide, and checks. 5, Agent setup connects the AI client you already use, and Activity shows what it reports and what was actually saved. 6, Export and Present. There is no chat box inside the editor."

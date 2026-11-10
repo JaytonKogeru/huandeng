@@ -2,7 +2,7 @@ pageType: cover
 background:
   type: solid
   color: "#16211B"
-notes: 开场。先不列功能：这页只说两件事——研究对象值得被认真讲清楚，而同一批证据不该被迫重做三遍。右侧是公开结构 PDB 1BNA 的正交投影，链 A 青绿、链 B 赭色；它也是整份介绍反复使用的科学证据。
+notes: "开场：今天不先讲功能，先讲我为什么做这件事。组会、投屏、导师一眼看出 AI 质感；我只想改两页，却得到几份副本；以及我发现，幻灯片如果没有人的故事，再漂亮也像一份标准答案。这一页先把问题提出来。"
 elements:
   - elementId: brand-mark
     elementType: image
@@ -41,7 +41,7 @@ elements:
       - 500
       - 20
     content:
-      text: 科研幻灯片编辑器  /  外部 AI 协作
+      text: "一次关于 AI 质感的追问"
       fontSize: 11.5
       fontFamily:
         ea: Microsoft YaHei
@@ -60,9 +60,7 @@ elements:
       - 530
       - 140
     content:
-      text: |-
-        把研究讲清楚，
-        不必重做三遍
+      text: "先讲一个故事，\n再做幻灯片"
       fontSize: 46
       fontFamily:
         ea: Microsoft YaHei
@@ -80,9 +78,7 @@ elements:
       - 510
       - 58
     content:
-      text: |-
-        一份科学幻灯片底稿，
-        让组会、会议与评审共用同一批证据。
+      text: "我为什么做 HUANDENG\n一份关于 AI 与人的选择的现场笔记"
       fontSize: 17
       fontFamily:
         ea: Microsoft YaHei
@@ -100,7 +96,7 @@ elements:
       - 260
       - 20
     content:
-      text: HUANDENG 0.18 · 公开介绍
+      text: "HUANDENG 0.18 · 故事版"
       fontSize: 10
       fontFamily:
         ea: Microsoft YaHei
@@ -180,7 +176,7 @@ elements:
       - 56
       - 18
     content:
-      text: 01 / 16
+      text: "01 / 18"
       fontSize: 9.5
       fontFamily:
         ea: Microsoft YaHei

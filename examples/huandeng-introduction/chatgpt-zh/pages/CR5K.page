@@ -12,13 +12,5 @@ elements:
       - 82
     role: title
     content:
-      text: 证据与版面
-      fontFamily: Microsoft YaHei
-      fontSize: 34
-      color: "#263C34"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-notes: 章节停顿。下一部分用实际页面说明这一主题。
+      {"text":"一页的身份","fontFamily":"Microsoft YaHei","fontSize":34,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
+notes: "这些困扰让我想把页面作为持续修改的单位。接下来先说清楚项目如何组织、怎样认出同一页，以及如何回到它的历史。"

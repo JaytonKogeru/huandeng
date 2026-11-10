@@ -1,53 +1,47 @@
-# HUANDENG 中文介绍 · 16 页候选
+# HUANDENG · DeepSeek Harness · 中文故事版
 
-Open `deck.pptd` in HUANDENG. Keep the entire directory together when moving it.
+当前候选由原生客户端独立完成页面、叙事、Story 与 Notes。此 README 和讲稿索引由协调者整理；页面内容与美术未由协调者改写。
 
-## What this is
+[PPTD 项目](deck.pptd) · [PDF](Exports/deck.pdf) · [PowerPoint](Exports/deck.pptx) · [实际 Notes 讲稿](speaker-notes.md) · [Native trial](evidence/native-trial.json) · [QA](evidence/qa.json)
 
-A 16-page, 960×540 Chinese introduction to HUANDENG as a scientific slide editor with external AI collaboration. It was rebuilt from the rejected 21-page edition rather than extended page by page. The new arc is:
+**Main Slides: 18.** 完整介绍: 18; 短版 · 约十分钟: 11.
 
-1. a real scientific evidence page;
-2. one source of content, stable page identity and several talk appearances;
-3. object-level editing and Story;
-4. one concrete change, external AI clients, review, delivery, boundaries and a first step.
+**Native model:** `deepseek-flash`. official --profile headless --dump-config, 17.config.model; configured model, not response model metadata.
 
-Three title-only Section pauses separate “一份内容”, “一页证据” and “一次修改”. The fourth Section, “使用与边界”, intentionally begins directly on the provenance page rather than adding another pause.
+## 当前验证
 
-Main Slides contains the complete 16-page sequence. Two real Presentations reuse it:
+- Native turn: completed; exit code 0; native completion confirmed. 1 recorded turn(s).
+- PDF / PPTX: 18 / 18 pages; export reports match the reviewed source revisions.
+- PowerPoint 16.0: 18/18 pages opened read-only and rendered at 1920×1080.
+- Native PowerPoint objects: 18 Notes pages, 2 tables, 0 chart objects, 17 media parts.
+- The whole Office-rendered sequence was reviewed in contact sheets; additional full-page checks and observations are recorded in [the visual review](evidence/office-visual-review.json).
+- No blocking Office layout defect was observed within that stated review scope. Narrative and aesthetic acceptance remain with the owner.
 
-- `完整介绍` — 16 pages, roughly 12–15 minutes.
-- `短版 · 八分钟` — 8 pages, selected and reordered from the same Main Slides.
+## Notes 与场次
 
-## Delivery files
+讲稿文件逐字提取原生作者保存的 Main Notes，并按场次列出实际解析的 occurrence Notes。没有给短版另编讲稿，也没有把沿用的 Main Notes 说成独立场次讲稿。
 
-- `Exports/deck.pdf` — final static candidate, 16 pages.
-- `Exports/deck.pptx` — final editable PowerPoint candidate, 16 pages.
-- `Exports/deck.pdf.report.json` and `Exports/deck.pptx.report.json` — native export reports.
+- 完整介绍 (`full`): 18 pages; 0 explicit occurrence Notes.
+- 短版 · 约十分钟 (`brief`): 11 pages; 0 explicit occurrence Notes.
 
-Both exports were produced from the final manifest `sha256:bb704e34cdf4fc4e448b657e8875b6a0249bb4db860ab815b4a8134ba411f498` and metadata `sha256:2d15c134d745563a6514b495e6bfebc9b059a968db158a68a45f02545d5fe2da`.
+## 来源与原生记录
 
-The PDF report is complete with no diagnostics. The PPTX report is complete, with one advisory only: `FONT_FILES_NOT_EMBEDDED` — PowerPoint uses the original font names, so font availability and native reflow can differ from the browser. An Office-level visual inspection of the exported PPTX/PDF was not performed in this shell-restricted session; the export reports verify structure, not Office rendering.
+- [User story excerpt](sources/story/USER-STORY.zh-CN.md) and [verified technical facts](sources/story/FACTS.md).
+- [Native author's handoff](evidence/native-author-report.md) is preserved as a historical author report. Its at-the-time Office limitation is superseded by the coordinator verification above.
+- [Native trial evidence](evidence/native-trial.json) records the real model evidence, tool failures, connection recovery where applicable, and the separation between native completion and delivery completion.
+- Keep the entire project directory when moving it; the PPTD entry references its pages and assets.
 
-## Provenance and scientific scope
+## 本轮内容审计的保留项
 
-- HUANDENG identity uses the supplied `huandeng-icon.png` / `huandeng.png`; third-party marks retain their original colors and proportions. Provider marks identify products and do not imply endorsement.
-- Product screenshots are actual HUANDENG 0.18 public-product UI captures. They were not redrawn or mocked.
-- The scientific example uses PDB 1BNA (Dickerson–Drew DNA dodecamer), Drew et al., PNAS 78 (1981) 2179–2183, DOI `10.1073/pnas.78.4.2179`. Structure DOI `10.2210/pdb1BNA/pdb`.
-- The twelve plotted values are C1′–C1′ Euclidean distances at twelve positions in one deposited structure. They are not independent replicates, an experiment, a performance benchmark or hydrogen-bond distances. The displayed range is 10.23–10.89 Å.
-- Sources and reproduction notes live in `../assets/science/README.md`, `source.json`, `measurements.json` and `paired-c1-distances.csv`.
+技术导出完成不代表叙事全部通过。以下问题保留在原生候选中；协调者没有替原生作者改写页面，也没有要求美术返工。
 
-`SOURCE-MANIFEST.json` records the pre-rework copied input (21 pages) and is retained as historical provenance. It does not describe the current page set. Current page paths and revisions are in `deck.pptd`, `pages/` and `.huandeng/project.json`.
+- 第3页Notes增加了用户没有逐字讲出的导师对白和时间细节，不能当成真实逐字引语；第5页的页码/副本数是作者自选示例。
+- 第16页标题说改两页，实际前后证据是同一页的标题和导语两个字段，标题与证据范围不一致。
 
-## Validation and history
+[Independent content review](evidence/content-review.json) · [Saved narrative and Notes data](evidence/narrative.json).
 
-- All 16 final pages were rendered at 1920×1080 and inspected for clipping, line breaks, image legibility, privacy and visual variation.
-- Final design audit at 960-wide normalization: 16 pages, 0 findings with `maxTitle=34`, `maxBody=22`.
-- Final page count: 16. Full Presentation: 16. Short Presentation: 8.
-- Existing named checkpoints were retained. New named milestones:
-  - `checkpoint:f1dfcc8985dcccfa545617113c262c9d` — cover
-  - `checkpoint:8b6865b495117b2e59c3583724073a18` — scientific evidence
-  - `checkpoint:2e328715d27226562139dcf639ba7794` — AI collaboration
-  - `checkpoint:f551a8cfd9266b8cb8a742039116ec0f` — review and versions
-- Applied operation receipts: `513be3ed-6348-4e47-a07e-bc15978ea880`, `e44712b2-0eda-49de-a51c-f2d66aef5b78`, `d97bc39f-aa2e-485d-a3a6-47c0daad9a12`, `600593c3-0165-4955-b69a-64e79a43f311`, `e4c39f14-72b9-4773-8aa0-4ad44e5b6428`, `a9d539f8-6f61-445a-9ed2-3b34a8887740`, `8848319d-33c2-48fc-bad5-7f2da0ff21a2`, `be4ed6d5-2bf3-41be-9e70-623af1897801`, `f9573414-3405-49c9-9c10-c62979a2d65e`, `3721e977-9cbc-49c1-a08e-ba440b7f7035`.
+## 短版导出
 
-This is a completed candidate, not author-approved artwork. The owner's visual decision remains separate from structural checks, rendered review and export reports. No commit or push was made.
+[PDF](Exports/brief.pdf) · [PowerPoint](Exports/brief.pptx) — 11 pages. 由协调者对原生作者已保存的Presentation机械导出；页面/顺序/Notes未代写。Main的原生PDF/PPTX字节未改变。
+
+[Short export evidence](evidence/short-exports.json).

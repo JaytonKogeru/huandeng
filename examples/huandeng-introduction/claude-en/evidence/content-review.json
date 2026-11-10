@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "reviewedAtUtc": "2026-11-10T23:09:29.399104+00:00",
+  "reviewer": "independent visual_audit agent",
+  "edition": "claude-en",
+  "decision": "native_submission_preserved_with_content_findings",
+  "authorAccepted": false,
+  "scope": {
+    "allPersistedNotesAndVisibleTextRead": 25,
+    "visualReferenceUsed": false,
+    "fullVisualOrOfficeReview": "Owned by native trial supervisor, not certified here",
+    "sourceAccount": "examples/huandeng-introduction/story/USER-STORY.zh-CN.md",
+    "factBrief": "examples/huandeng-introduction/story/FACTS.md"
+  },
+  "findings": [
+    {
+      "id": "CC-EN-NARR-01",
+      "pages": [
+        5
+      ],
+      "type": "technical_overstatement",
+      "issue": "The title says most tools give an agent only a screenshot. Notes say the image-based loop is not something one can measure, compare or optimise and every check is a fresh guess. These categorical claims go beyond the author's experienced friction: pixel comparisons exist, while an image lacks the direct object-addressable structure that the new workflow offers. The same page correctly retains visual review for composition."
+    },
+    {
+      "id": "CC-EN-NARR-02",
+      "pages": [
+        6
+      ],
+      "type": "goal_presented_as_guaranteed_effect",
+      "issue": "The concluding copy says a human point of view means the slides stop looking like AI. The author proposes story-first as the desired approach; this is not an established guarantee of perceived human authorship. It should be read as an aspiration rather than a measured or automatic result."
+    },
+    {
+      "id": "CC-EN-NARR-03",
+      "pages": [
+        24
+      ],
+      "type": "deferred_idea_in_current_introduction",
+      "issue": "The page adds a simple video-editor-style timeline as an idea for later. It is correctly labelled future, not a shipped feature, but this was an unformed/deferred direction kept out by the shared story brief."
+    }
+  ],
+  "observations": [
+    "The filename and edit examples on page 4 are explicitly labelled illustrations.",
+    "Page 9 correctly says PPTX has page parts and describes the PPTD page-file model as the same organizing idea rather than only a renamed entry.",
+    "Pages 16 and 22 distinguish review of saved operations from preview before applying a new transaction.",
+    "Scientific Notes correctly scope the 12 distances to paired positions in one deposited structure.",
+    "Story is explicitly described as the agent's interpretation rather than author approval."
+  ],
+  "unconfirmedForSupervisor": [],
+  "noNativeSourceOrExportEdited": true,
+  "noAestheticRedoSent": true,
+  "limits": [
+    "Semantic review of a frozen native submission only; author acceptance remains outstanding.",
+    "Claude visual material was not used as a reference for ChatGPT or DeepSeek.",
+    "Native completion, source/export integrity and Office layout are separately recorded by the trial supervisor."
+  ],
+  "inputs": [
+    {
+      "path": ".verification/story-20261111/claude-en-qa/narrative.json",
+      "bytes": 66171,
+      "sha256": "39639bfe6b0f97edfa9c0e9e7eae6d5e16ea0cdb33da178e2d05688f3083f679"
+    }
+  ],
+  "supervisorFollowup": {
+    "footerPlaceholder": "Native supervisor inspected actual Office page 12: source footer 0 is dynamically replaced with 12, so this is not a finished-output defect.",
+    "officeChart": "Supervisor separately reports local crowding of the long x-axis label near numeric ticks on actual Office page 12. This reviewer did not independently view it."
+  }
+}

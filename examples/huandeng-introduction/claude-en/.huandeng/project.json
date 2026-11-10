@@ -413,10 +413,10 @@
           "Real English capture en-edit-1920.png, uncropped, original aspect ratio",
           "Markers must not hide the UI element they point to"
         ],
-        "requestedChange": "Rework of the rejected 0.18 edition: concrete scientific example, real product evidence, purposeful backgrounds and diagrams.",
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
         "actor": "claude-code",
-        "source": "Coordinator brief 2026-11-10: HUANDENG English introduction rework (claude-en)",
-        "recordedAt": "2026-11-10T11:57:05Z"
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
       }
     },
     "2022f6b4-ddd7-49f2-9864-1e41298e12bb": {
@@ -428,14 +428,14 @@
       "label": "S23",
       "designIntent": {
         "pageRole": "section",
-        "purpose": "Title-only pause before the worked example.",
+        "purpose": "Title-only pause: what I built.",
         "keep": [
           "Title only, Section background colour"
         ],
-        "requestedChange": "Rework of the rejected 0.18 edition: concrete scientific example, real product evidence, purposeful backgrounds and diagrams.",
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
         "actor": "claude-code",
-        "source": "Coordinator brief 2026-11-10: HUANDENG English introduction rework (claude-en)",
-        "recordedAt": "2026-11-10T11:57:05Z"
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
       }
     },
     "e25cbd3a-6a20-4bc8-959f-eb3e1bcabefa": {
@@ -454,10 +454,10 @@
           "PDB 1BNA citation on the slide",
           "No replicate, error-bar or trend claims"
         ],
-        "requestedChange": "Rework of the rejected 0.18 edition: concrete scientific example, real product evidence, purposeful backgrounds and diagrams.",
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
         "actor": "claude-code",
-        "source": "Coordinator brief 2026-11-10: HUANDENG English introduction rework (claude-en)",
-        "recordedAt": "2026-11-10T11:57:05Z"
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
       }
     },
     "7d1954c5-ca5b-4eaa-a391-7b18431f6385": {
@@ -474,10 +474,10 @@
           "Exact HUANDENG mark (brand/huandeng.png), unaltered",
           "1BNA structure image from deposited coordinates, unaltered"
         ],
-        "requestedChange": "Rework of the rejected 0.18 edition: concrete scientific example, real product evidence, purposeful backgrounds and diagrams.",
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
         "actor": "claude-code",
-        "source": "Coordinator brief 2026-11-10: HUANDENG English introduction rework (claude-en)",
-        "recordedAt": "2026-11-10T11:57:05Z"
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
       }
     },
     "99bf9e70-3522-4aa6-a1bf-6ce870f9142d": {
@@ -489,14 +489,14 @@
       "label": "S26",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "Contrast drifting copied decks with one project whose Presentations reference slides.",
+        "purpose": "Reason 2: cautious agents copy whole decks for small edits; take the page as the unit of change, as Git does.",
         "keep": [
-          "Labelled as a concept diagram; file names are illustrations"
+          "Labelled as a concept diagram; file names and edits are illustrations"
         ],
-        "requestedChange": "Rework of the rejected 0.18 edition: concrete scientific example, real product evidence, purposeful backgrounds and diagrams.",
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
         "actor": "claude-code",
-        "source": "Coordinator brief 2026-11-10: HUANDENG English introduction rework (claude-en)",
-        "recordedAt": "2026-11-10T11:57:05Z"
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
       }
     },
     "71d560b6-4ead-4477-a3c8-0bad5c755d0d": {
@@ -513,10 +513,10 @@
           "Quoted Story must match the 1BNA slide's recorded designIntent",
           "Real capture en-focused-story-4x.png"
         ],
-        "requestedChange": "Rework of the rejected 0.18 edition: concrete scientific example, real product evidence, purposeful backgrounds and diagrams.",
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
         "actor": "claude-code",
-        "source": "Coordinator brief 2026-11-10: HUANDENG English introduction rework (claude-en)",
-        "recordedAt": "2026-11-10T11:57:05Z"
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
       }
     },
     "56c5f2a9-5146-41a3-8785-d78d8e94efa6": {
@@ -533,10 +533,10 @@
           "Real captures en-edit-before/after-4x.png, same scale",
           "Diff table matches the captured text"
         ],
-        "requestedChange": "Rework of the rejected 0.18 edition: concrete scientific example, real product evidence, purposeful backgrounds and diagrams.",
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
         "actor": "claude-code",
-        "source": "Coordinator brief 2026-11-10: HUANDENG English introduction rework (claude-en)",
-        "recordedAt": "2026-11-10T11:57:05Z"
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
       }
     },
     "9ad205fe-9d24-47b7-8adb-721f66b64e8a": {
@@ -553,10 +553,10 @@
           "Real capture en-operation-review-4x.png",
           "Markers must not hide the UI element they point to"
         ],
-        "requestedChange": "Rework of the rejected 0.18 edition: concrete scientific example, real product evidence, purposeful backgrounds and diagrams.",
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
         "actor": "claude-code",
-        "source": "Coordinator brief 2026-11-10: HUANDENG English introduction rework (claude-en)",
-        "recordedAt": "2026-11-10T11:57:05Z"
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
       }
     },
     "6763c852-4a02-49f1-9ed7-78cfdc8f204e": {
@@ -568,14 +568,14 @@
       "label": "S30",
       "designIntent": {
         "pageRole": "section",
-        "purpose": "Title-only pause before reuse and identity.",
+        "purpose": "Title-only pause: the worked example.",
         "keep": [
           "Title only, Section background colour"
         ],
-        "requestedChange": "Rework of the rejected 0.18 edition: concrete scientific example, real product evidence, purposeful backgrounds and diagrams.",
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
         "actor": "claude-code",
-        "source": "Coordinator brief 2026-11-10: HUANDENG English introduction rework (claude-en)",
-        "recordedAt": "2026-11-10T11:57:05Z"
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
       }
     },
     "d47c2f73-4d43-429f-bc48-a9bed8dc99d4": {
@@ -587,14 +587,14 @@
       "label": "S31",
       "designIntent": {
         "pageRole": "section",
-        "purpose": "Title-only pause before versions and delivery.",
+        "purpose": "Title-only pause: the page as the unit of change.",
         "keep": [
           "Title only, Section background colour"
         ],
-        "requestedChange": "Rework of the rejected 0.18 edition: concrete scientific example, real product evidence, purposeful backgrounds and diagrams.",
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
         "actor": "claude-code",
-        "source": "Coordinator brief 2026-11-10: HUANDENG English introduction rework (claude-en)",
-        "recordedAt": "2026-11-10T11:57:05Z"
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
       }
     },
     "8704c48f-dc7b-41aa-95ae-7830550be331": {
@@ -606,14 +606,14 @@
       "label": "S32",
       "designIntent": {
         "pageRole": "section",
-        "purpose": "Title-only pause before connection and contribution.",
+        "purpose": "Title-only pause: working with agents.",
         "keep": [
           "Title only, Section background colour"
         ],
-        "requestedChange": "Rework of the rejected 0.18 edition: concrete scientific example, real product evidence, purposeful backgrounds and diagrams.",
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
         "actor": "claude-code",
-        "source": "Coordinator brief 2026-11-10: HUANDENG English introduction rework (claude-en)",
-        "recordedAt": "2026-11-10T11:57:05Z"
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
       }
     },
     "050336e7-3878-4a2b-8727-2c4545dc1e47": {
@@ -630,10 +630,10 @@
           "Real status-bar captures before/after the move",
           "Browse capture en-browse-reading-4x.png"
         ],
-        "requestedChange": "Rework of the rejected 0.18 edition: concrete scientific example, real product evidence, purposeful backgrounds and diagrams.",
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
         "actor": "claude-code",
-        "source": "Coordinator brief 2026-11-10: HUANDENG English introduction rework (claude-en)",
-        "recordedAt": "2026-11-10T11:57:05Z"
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
       }
     },
     "ce9e73d9-a17e-4e2d-8b80-4ed6e8332fd9": {
@@ -649,10 +649,10 @@
         "keep": [
           "Real capture en-outline-reading-4x.png"
         ],
-        "requestedChange": "Rework of the rejected 0.18 edition: concrete scientific example, real product evidence, purposeful backgrounds and diagrams.",
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
         "actor": "claude-code",
-        "source": "Coordinator brief 2026-11-10: HUANDENG English introduction rework (claude-en)",
-        "recordedAt": "2026-11-10T11:57:05Z"
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
       }
     },
     "3e42c654-67cb-4f39-8096-d8c0c3151d48": {
@@ -669,10 +669,10 @@
           "Real capture en-history-change-4x.png",
           "Markers must not hide the UI element they point to"
         ],
-        "requestedChange": "Rework of the rejected 0.18 edition: concrete scientific example, real product evidence, purposeful backgrounds and diagrams.",
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
         "actor": "claude-code",
-        "source": "Coordinator brief 2026-11-10: HUANDENG English introduction rework (claude-en)",
-        "recordedAt": "2026-11-10T11:57:05Z"
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
       }
     },
     "3143e3cb-2278-4256-839a-24af78d9f6bc": {
@@ -689,10 +689,10 @@
           "Design check crop is a pixel-exact derivative (media/derived)",
           "Output capabilities as stated in the project README"
         ],
-        "requestedChange": "Rework of the rejected 0.18 edition: concrete scientific example, real product evidence, purposeful backgrounds and diagrams.",
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
         "actor": "claude-code",
-        "source": "Coordinator brief 2026-11-10: HUANDENG English introduction rework (claude-en)",
-        "recordedAt": "2026-11-10T11:57:05Z"
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
       }
     },
     "9056e773-a44a-449a-8d49-900cf487bac8": {
@@ -708,10 +708,10 @@
         "keep": [
           "Commands match the repository README"
         ],
-        "requestedChange": "Rework of the rejected 0.18 edition: concrete scientific example, real product evidence, purposeful backgrounds and diagrams.",
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
         "actor": "claude-code",
-        "source": "Coordinator brief 2026-11-10: HUANDENG English introduction rework (claude-en)",
-        "recordedAt": "2026-11-10T11:57:05Z"
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
       }
     },
     "2b804ca1-578d-4d8d-84ba-a05cf013de7c": {
@@ -728,10 +728,10 @@
           "GitHub mark identifies the OpenPPTD repository only",
           "Only gaps documented in the project README"
         ],
-        "requestedChange": "Rework of the rejected 0.18 edition: concrete scientific example, real product evidence, purposeful backgrounds and diagrams.",
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
         "actor": "claude-code",
-        "source": "Coordinator brief 2026-11-10: HUANDENG English introduction rework (claude-en)",
-        "recordedAt": "2026-11-10T11:57:05Z"
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
       }
     },
     "b0f0b421-10ec-43b8-9e6d-88058c1d8fd3": {
@@ -748,10 +748,10 @@
           "Official client marks from assets/brand, unaltered",
           "Describe ChatGPT only as connecting to the local Editor"
         ],
-        "requestedChange": "Rework of the rejected 0.18 edition: concrete scientific example, real product evidence, purposeful backgrounds and diagrams.",
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
         "actor": "claude-code",
-        "source": "Coordinator brief 2026-11-10: HUANDENG English introduction rework (claude-en)",
-        "recordedAt": "2026-11-10T11:57:05Z"
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
       }
     },
     "520e4e5e-eb41-49de-ae52-945e85096600": {
@@ -760,7 +760,19 @@
       "state": "active",
       "components": {},
       "elementRoles": {},
-      "label": "S40"
+      "label": "S40",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "One Main library, two Presentations built by reference, with occurrence notes.",
+        "keep": [
+          "Thumbnails are real renders of this project",
+          "Counts match the project's Presentations"
+        ],
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
+        "actor": "claude-code",
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
+      }
     },
     "417e1fea-9180-4574-acc4-493eb6282b04": {
       "shortCode": "7NHP",
@@ -768,92 +780,211 @@
       "state": "active",
       "components": {},
       "elementRoles": {},
-      "label": "S41"
+      "label": "S41",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "PPTX is already organised by part; PPTD keeps the parts as a working folder.",
+        "keep": [
+          "Left column matches this deck's exported PPTX parts",
+          "Do not claim PPTX lacks page structure"
+        ],
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
+        "actor": "claude-code",
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
+      }
+    },
+    "02f92b48-68df-4aac-b31a-82d1a251d37d": {
+      "shortCode": "BW88",
+      "path": "pages/BW88.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S42",
+      "themeOverride": {
+        "fontFamily": "Arial",
+        "background": "#2D4A43"
+      },
+      "designIntent": {
+        "pageRole": "section",
+        "purpose": "Title-only pause before the founder's four reasons.",
+        "keep": [
+          "Title only, Section background colour",
+          "Owner-added page identity BW88"
+        ],
+        "requestedChange": "Story-driven rework from the owner's spoken account (11 Nov 2026).",
+        "actor": "claude-code",
+        "source": "Owner message 2026-11-11; sources/story/USER-STORY.zh-CN.md"
+      }
+    },
+    "6ccc9401-312d-436c-897e-67fbbec228fd": {
+      "shortCode": "TFJB",
+      "path": "pages/TFJB.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S43",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "What I built: PPTD idea plus OpenSlide's React editor in an Electron app, with a plugin.",
+        "keep": [
+          "No Kimi affiliation or invention claim",
+          "OpenPPTD credited only for equation conversion"
+        ],
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
+        "actor": "claude-code",
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
+      }
+    },
+    "a794c9d2-62ae-486b-ae08-dbf4c601fb92": {
+      "shortCode": "C45U",
+      "path": "pages/C45U.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S44",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Reason 4: start from the human story, not from AI-made slides.",
+        "keep": [
+          "Labelled as a concept diagram"
+        ],
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
+        "actor": "claude-code",
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
+      }
+    },
+    "cd766544-e64b-4bab-abca-8dc01a8bad7d": {
+      "shortCode": "GDDR",
+      "path": "pages/GDDR.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S45",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Reason 3: screenshot-only review cannot be measured; show the slide as data from this project's own page file.",
+        "keep": [
+          "Code excerpt faithful to pages/AVNM.page, marked shortened",
+          "Screenshots remain a valid review surface"
+        ],
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
+        "actor": "claude-code",
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
+      }
+    },
+    "c51fd901-1ac1-426b-aa51-ade862d65405": {
+      "shortCode": "PPKK",
+      "path": "pages/PPKK.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S46",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Reason 1: AI-made slides are recognisable at a glance; the AI look comes from no focus and no story.",
+        "keep": [
+          "Previous-version thumbnails are real renders of this project",
+          "Owner quote attributed and marked as translated",
+          "Personal observation, not a research finding"
+        ],
+        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
+        "actor": "claude-code",
+        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "recordedAt": "2026-11-10T22:37:45Z"
+      }
     }
   },
   "project": {
     "schemaVersion": 1,
     "mainStory": {
-      "purpose": "Introduce HUANDENG through the real product and one real scientific slide (PDB 1BNA), for people who make scientific presentations.",
-      "audience": "Researchers who make and revise scientific presentations, and people who may use or contribute to HUANDENG",
-      "takeaway": "Keep one editable project, build each talk from it by reference, record what each slide must keep, and let people and agents change it through one reviewable writer."
+      "purpose": "Tell why HUANDENG exists, from the founder's own group-meeting experience, and show the features that answer each reason.",
+      "audience": "Researchers who make scientific presentations with AI, and people who may use or contribute to HUANDENG",
+      "takeaway": "Slides need a human story; HUANDENG lets you and an AI agent build a deck from that story, one page at a time, with every change recorded."
     },
     "sections": [
       {
-        "id": "sec-intro",
-        "title": "Introduction",
+        "id": "sec-why",
+        "title": "Why I built it",
         "story": {
-          "purpose": "Name the problem of drifting copies and show the real Editor.",
-          "audience": "Researchers who make and revise scientific presentations, and people who may use or contribute to HUANDENG",
-          "takeaway": "HUANDENG keeps one editable project that people and agents both work on."
+          "purpose": "The founder's four reasons, from group meetings and real attempts with AI.",
+          "audience": "Researchers who make scientific presentations with AI, and people who may use or contribute to HUANDENG",
+          "takeaway": "AI slides lack a human story; agents copy decks; screenshots cannot be measured; so start from the story."
         },
         "pageIds": [
-          "7d1954c5-ca5b-4eaa-a391-7b18431f6385",
+          "02f92b48-68df-4aac-b31a-82d1a251d37d",
+          "c51fd901-1ac1-426b-aa51-ade862d65405",
           "99bf9e70-3522-4aa6-a1bf-6ce870f9142d",
-          "49f1db15-b783-4a1b-8cff-815d4b4116e0"
+          "cd766544-e64b-4bab-abca-8dc01a8bad7d",
+          "a794c9d2-62ae-486b-ae08-dbf4c601fb92"
         ],
-        "startPageId": "7d1954c5-ca5b-4eaa-a391-7b18431f6385"
+        "startPageId": "02f92b48-68df-4aac-b31a-82d1a251d37d"
       },
       {
-        "id": "sec-example",
-        "title": "A worked example",
+        "id": "sec-built",
+        "title": "What I built",
         "story": {
-          "purpose": "Follow one real scientific slide (PDB 1BNA distances) through Story, a requested change and its review.",
-          "audience": "Researchers who make and revise scientific presentations, and people who may use or contribute to HUANDENG",
-          "takeaway": "A measured figure stays data; every change is previewed, applied through one writer and reviewable."
+          "purpose": "Where HUANDENG comes from and what the editor looks like.",
+          "audience": "Researchers who make scientific presentations with AI, and people who may use or contribute to HUANDENG",
+          "takeaway": "PPTD plus OpenSlide's React editor, in a desktop app with a plugin."
         },
         "pageIds": [
           "2022f6b4-ddd7-49f2-9864-1e41298e12bb",
-          "e25cbd3a-6a20-4bc8-959f-eb3e1bcabefa",
-          "71d560b6-4ead-4477-a3c8-0bad5c755d0d",
-          "56c5f2a9-5146-41a3-8785-d78d8e94efa6",
-          "9ad205fe-9d24-47b7-8adb-721f66b64e8a"
+          "6ccc9401-312d-436c-897e-67fbbec228fd",
+          "417e1fea-9180-4574-acc4-493eb6282b04",
+          "49f1db15-b783-4a1b-8cff-815d4b4116e0"
         ],
         "startPageId": "2022f6b4-ddd7-49f2-9864-1e41298e12bb"
       },
       {
-        "id": "sec-reuse",
-        "title": "One source, many talks",
+        "id": "sec-example",
+        "title": "Story first: one slide, start to finish",
         "story": {
-          "purpose": "Explain Main Slides vs Presentations, stable Slide ID vs Position, and reading the argument.",
-          "audience": "Researchers who make and revise scientific presentations, and people who may use or contribute to HUANDENG",
-          "takeaway": "Slides are reused by reference and keep a permanent identity."
+          "purpose": "Follow the 1BNA slide through Story, a requested change and its review.",
+          "audience": "Researchers who make scientific presentations with AI, and people who may use or contribute to HUANDENG",
+          "takeaway": "Story aligns the agent; every change is previewed and reviewable."
         },
         "pageIds": [
           "6763c852-4a02-49f1-9ed7-78cfdc8f204e",
-          "520e4e5e-eb41-49de-ae52-945e85096600",
-          "050336e7-3878-4a2b-8727-2c4545dc1e47",
-          "ce9e73d9-a17e-4e2d-8b80-4ed6e8332fd9"
+          "e25cbd3a-6a20-4bc8-959f-eb3e1bcabefa",
+          "71d560b6-4ead-4477-a3c8-0bad5c755d0d",
+          "ce9e73d9-a17e-4e2d-8b80-4ed6e8332fd9",
+          "56c5f2a9-5146-41a3-8785-d78d8e94efa6",
+          "9ad205fe-9d24-47b7-8adb-721f66b64e8a"
         ],
         "startPageId": "6763c852-4a02-49f1-9ed7-78cfdc8f204e"
       },
       {
-        "id": "sec-delivery",
-        "title": "Versions and delivery",
+        "id": "sec-page",
+        "title": "The page is the unit of change",
         "story": {
-          "purpose": "Show named versions with single-slide restore, Design check, presenting and export formats.",
-          "audience": "Researchers who make and revise scientific presentations, and people who may use or contribute to HUANDENG",
-          "takeaway": "Milestones are portable; delivery is the project plus static PDF/PPTX."
+          "purpose": "Stable Slide IDs, per-page history and talks built by reference.",
+          "audience": "Researchers who make scientific presentations with AI, and people who may use or contribute to HUANDENG",
+          "takeaway": "Name a page once, keep its history, reuse it without copies."
         },
         "pageIds": [
           "d47c2f73-4d43-429f-bc48-a9bed8dc99d4",
+          "050336e7-3878-4a2b-8727-2c4545dc1e47",
           "3e42c654-67cb-4f39-8096-d8c0c3151d48",
-          "3143e3cb-2278-4256-839a-24af78d9f6bc"
+          "520e4e5e-eb41-49de-ae52-945e85096600"
         ],
         "startPageId": "d47c2f73-4d43-429f-bc48-a9bed8dc99d4"
       },
       {
-        "id": "sec-contribute",
-        "title": "Connect and contribute",
+        "id": "sec-agents",
+        "title": "Working with agents",
         "story": {
-          "purpose": "Show how AI clients connect, what HUANDENG builds on, its gaps and how to start.",
-          "audience": "Researchers who make and revise scientific presentations, and people who may use or contribute to HUANDENG",
-          "takeaway": "Agents use the same reviewable writer; the gaps are concrete places to help."
+          "purpose": "How agents connect, delivery, foundations and first steps.",
+          "audience": "Researchers who make scientific presentations with AI, and people who may use or contribute to HUANDENG",
+          "takeaway": "Agents use the same reviewable writer; start with your story."
         },
         "pageIds": [
           "8704c48f-dc7b-41aa-95ae-7830550be331",
           "b0f0b421-10ec-43b8-9e6d-88058c1d8fd3",
-          "417e1fea-9180-4574-acc4-493eb6282b04",
+          "3143e3cb-2278-4256-839a-24af78d9f6bc",
           "2b804ca1-578d-4d8d-84ba-a05cf013de7c",
           "9056e773-a44a-449a-8d49-900cf487bac8"
         ],
@@ -863,11 +994,11 @@
     "presentations": [
       {
         "id": "pres-full",
-        "title": "HUANDENG introduction (full, about 20 minutes)",
+        "title": "HUANDENG introduction (full, about 25 minutes)",
         "story": {
-          "purpose": "Complete English introduction for researchers, built around one worked scientific slide.",
-          "audience": "Researchers who make and revise scientific presentations, and people who may use or contribute to HUANDENG",
-          "takeaway": "One editable project, talks built by reference, Story beside every slide, one reviewable writer for people and agents."
+          "purpose": "The founder's story in full, with the worked example and the main features.",
+          "audience": "Researchers who make scientific presentations with AI, and people who may use or contribute to HUANDENG",
+          "takeaway": "Start from the story; the page is the unit of change; agents use one reviewable writer."
         },
         "items": [
           {
@@ -876,9 +1007,44 @@
             "pageId": "7d1954c5-ca5b-4eaa-a391-7b18431f6385"
           },
           {
+            "id": "full-story-bw88",
+            "kind": "page",
+            "pageId": "02f92b48-68df-4aac-b31a-82d1a251d37d"
+          },
+          {
+            "id": "full-story-ppkk",
+            "kind": "page",
+            "pageId": "c51fd901-1ac1-426b-aa51-ade862d65405"
+          },
+          {
             "id": "full-02",
             "kind": "page",
             "pageId": "99bf9e70-3522-4aa6-a1bf-6ce870f9142d"
+          },
+          {
+            "id": "full-story-gddr",
+            "kind": "page",
+            "pageId": "cd766544-e64b-4bab-abca-8dc01a8bad7d"
+          },
+          {
+            "id": "full-story-c45u",
+            "kind": "page",
+            "pageId": "a794c9d2-62ae-486b-ae08-dbf4c601fb92"
+          },
+          {
+            "id": "full-04",
+            "kind": "page",
+            "pageId": "2022f6b4-ddd7-49f2-9864-1e41298e12bb"
+          },
+          {
+            "id": "full-story-tfjb",
+            "kind": "page",
+            "pageId": "6ccc9401-312d-436c-897e-67fbbec228fd"
+          },
+          {
+            "id": "full-added-7nhp",
+            "kind": "page",
+            "pageId": "417e1fea-9180-4574-acc4-493eb6282b04"
           },
           {
             "id": "full-03",
@@ -886,9 +1052,9 @@
             "pageId": "49f1db15-b783-4a1b-8cff-815d4b4116e0"
           },
           {
-            "id": "full-04",
+            "id": "full-09",
             "kind": "page",
-            "pageId": "2022f6b4-ddd7-49f2-9864-1e41298e12bb"
+            "pageId": "6763c852-4a02-49f1-9ed7-78cfdc8f204e"
           },
           {
             "id": "full-05",
@@ -901,6 +1067,11 @@
             "pageId": "71d560b6-4ead-4477-a3c8-0bad5c755d0d"
           },
           {
+            "id": "full-11",
+            "kind": "page",
+            "pageId": "ce9e73d9-a17e-4e2d-8b80-4ed6e8332fd9"
+          },
+          {
             "id": "full-07",
             "kind": "page",
             "pageId": "56c5f2a9-5146-41a3-8785-d78d8e94efa6"
@@ -911,14 +1082,9 @@
             "pageId": "9ad205fe-9d24-47b7-8adb-721f66b64e8a"
           },
           {
-            "id": "full-09",
+            "id": "full-12",
             "kind": "page",
-            "pageId": "6763c852-4a02-49f1-9ed7-78cfdc8f204e"
-          },
-          {
-            "id": "full-added-jz7u",
-            "kind": "page",
-            "pageId": "520e4e5e-eb41-49de-ae52-945e85096600"
+            "pageId": "d47c2f73-4d43-429f-bc48-a9bed8dc99d4"
           },
           {
             "id": "full-10",
@@ -926,24 +1092,14 @@
             "pageId": "050336e7-3878-4a2b-8727-2c4545dc1e47"
           },
           {
-            "id": "full-11",
-            "kind": "page",
-            "pageId": "ce9e73d9-a17e-4e2d-8b80-4ed6e8332fd9"
-          },
-          {
-            "id": "full-12",
-            "kind": "page",
-            "pageId": "d47c2f73-4d43-429f-bc48-a9bed8dc99d4"
-          },
-          {
             "id": "full-13",
             "kind": "page",
             "pageId": "3e42c654-67cb-4f39-8096-d8c0c3151d48"
           },
           {
-            "id": "full-14",
+            "id": "full-added-jz7u",
             "kind": "page",
-            "pageId": "3143e3cb-2278-4256-839a-24af78d9f6bc"
+            "pageId": "520e4e5e-eb41-49de-ae52-945e85096600"
           },
           {
             "id": "full-15",
@@ -956,9 +1112,9 @@
             "pageId": "b0f0b421-10ec-43b8-9e6d-88058c1d8fd3"
           },
           {
-            "id": "full-added-7nhp",
+            "id": "full-14",
             "kind": "page",
-            "pageId": "417e1fea-9180-4574-acc4-493eb6282b04"
+            "pageId": "3143e3cb-2278-4256-839a-24af78d9f6bc"
           },
           {
             "id": "full-17",
@@ -974,42 +1130,45 @@
       },
       {
         "id": "pres-lab",
-        "title": "Lab-meeting version",
+        "title": "Lab-meeting version (about 8 minutes)",
         "story": {
-          "purpose": "",
-          "audience": "",
-          "takeaway": ""
+          "purpose": "A short version for a group meeting: the reasons, one real slide, one change.",
+          "audience": "Researchers who make scientific presentations with AI, and people who may use or contribute to HUANDENG",
+          "takeaway": "Tell the agent your story first, then change one page at a time."
         },
         "items": [
           {
             "id": "lab-01",
             "kind": "page",
-            "pageId": "7d1954c5-ca5b-4eaa-a391-7b18431f6385"
+            "pageId": "7d1954c5-ca5b-4eaa-a391-7b18431f6385",
+            "notes": "Lab-meeting version, about eight minutes. I will skip the product tour and keep to the story: why I built this, one real slide, and how a change is made."
           },
           {
             "id": "lab-02",
             "kind": "page",
-            "pageId": "99bf9e70-3522-4aa6-a1bf-6ce870f9142d"
+            "pageId": "c51fd901-1ac1-426b-aa51-ade862d65405",
+            "notes": "Short version: you have all seen slides that look like AI. My view is that the look comes from having no focus and no story. Even my own previous version of this talk had that problem."
           },
           {
             "id": "lab-03",
             "kind": "page",
-            "pageId": "e25cbd3a-6a20-4bc8-959f-eb3e1bcabefa"
+            "pageId": "99bf9e70-3522-4aa6-a1bf-6ce870f9142d"
           },
           {
             "id": "lab-04",
             "kind": "page",
-            "pageId": "71d560b6-4ead-4477-a3c8-0bad5c755d0d"
+            "pageId": "a794c9d2-62ae-486b-ae08-dbf4c601fb92"
           },
           {
             "id": "lab-05",
             "kind": "page",
-            "pageId": "56c5f2a9-5146-41a3-8785-d78d8e94efa6"
+            "pageId": "e25cbd3a-6a20-4bc8-959f-eb3e1bcabefa",
+            "notes": "Short version: this is a real result kept as data. If a value or a label changes, the agent edits the chart object, not a picture."
           },
           {
             "id": "lab-06",
             "kind": "page",
-            "pageId": "9ad205fe-9d24-47b7-8adb-721f66b64e8a"
+            "pageId": "71d560b6-4ead-4477-a3c8-0bad5c755d0d"
           },
           {
             "id": "lab-07",
@@ -1024,7 +1183,8 @@
           {
             "id": "lab-09",
             "kind": "page",
-            "pageId": "9056e773-a44a-449a-8d49-900cf487bac8"
+            "pageId": "9056e773-a44a-449a-8d49-900cf487bac8",
+            "notes": "Short version: try it on your next group-meeting deck. Tell the agent your story first, then ask for one change at a time."
           }
         ]
       }

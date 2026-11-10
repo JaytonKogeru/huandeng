@@ -1,0 +1,233 @@
+background:
+  type: solid
+  color: "#F6F6F3"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 56
+      - 30
+      - 848
+      - 42
+    content:
+      text: Most tools give an agent only a screenshot
+      fontFamily: Arial
+      fontSize: 30
+      lineHeight: 1.2
+      color: "#1C2321"
+      align:
+        - left
+        - top
+      bold: true
+    role: title
+  - elementId: left-head
+    elementType: text
+    bounds:
+      - 56
+      - 92
+      - 380
+      - 22
+    content:
+      text: How an agent checks a slide in most tools
+      fontFamily: Arial
+      fontSize: 15
+      lineHeight: 1.35
+      color: "#8A5A2E"
+      align:
+        - left
+        - middle
+      bold: true
+  - elementId: steps
+    elementType: text
+    bounds:
+      - 56
+      - 120
+      - 380
+      - 84
+    content:
+      text: |-
+        1  Render the whole slide to an image
+        2  Look at the picture
+        3  Guess what is wrong, edit, render again
+      fontFamily: Arial
+      fontSize: 16
+      lineHeight: 1.55
+      color: "#1C2321"
+      align:
+        - left
+        - top
+  - elementId: pixels-f
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 55
+      - 215
+      - 258
+      - 146
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#B9C2BD"
+  - elementId: pixels
+    elementType: image
+    bounds:
+      - 56
+      - 216
+      - 256
+      - 144
+    src: media/derived/thumbs/r1-05-AVNM.png
+    sourceName: r1-05-AVNM.png
+    fit:
+      mode: contain
+  - elementId: pixels-label
+    elementType: text
+    bounds:
+      - 56
+      - 366
+      - 380
+      - 34
+    content:
+      text: "What the agent gets: pixels of the 1BNA slide. Useful for judging layout, but hard to measure or compare."
+      fontFamily: Arial
+      fontSize: 12.5
+      lineHeight: 1.35
+      color: "#6E7874"
+      align:
+        - left
+        - top
+  - elementId: right-head
+    elementType: text
+    bounds:
+      - 470
+      - 92
+      - 434
+      - 22
+    content:
+      text: "What it reads in HUANDENG: the slide as data"
+      fontFamily: Arial
+      fontSize: 15
+      lineHeight: 1.35
+      color: "#2E6B5E"
+      align:
+        - left
+        - middle
+      bold: true
+  - elementId: code-bg
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 470
+      - 120
+      - 434
+      - 236
+    fill:
+      type: solid
+      color: "#1F2A27"
+    border:
+      width: 0
+      color: "#1F2A27"
+  - elementId: code
+    elementType: text
+    bounds:
+      - 486
+      - 130
+      - 410
+      - 216
+    content:
+      text: |-
+        - elementId: chart
+          elementType: chart
+          bounds: [300,128,604,280]
+          data:
+            cols: [Pair, Distance]
+            rows:
+              - ["1", 10.7121]
+              - ["2", 10.7665]
+              … 12 rows in all
+          yAxis: {type: value, min: 10, max: 11}
+      fontFamily: Consolas
+      fontSize: 12.5
+      lineHeight: 1.45
+      color: "#E8EFEC"
+      align:
+        - left
+        - top
+  - elementId: code-caption
+    elementType: text
+    bounds:
+      - 470
+      - 362
+      - 434
+      - 16
+    content:
+      text: Excerpt from pages/AVNM.page in this project, shortened and reflowed.
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#6E7874"
+      align:
+        - left
+        - top
+  - elementId: point
+    elementType: text
+    bounds:
+      - 56
+      - 418
+      - 848
+      - 60
+    content:
+      text: An agent can target this one object, check its values and bounds, and the writer can show exactly what changed. I still look at the rendered slide for composition. The screenshot is a review, not the whole document.
+      fontFamily: Arial
+      fontSize: 16
+      lineHeight: 1.4
+      color: "#1C2321"
+      align:
+        - left
+        - top
+  - elementId: ft-mark
+    elementType: image
+    bounds:
+      - 56
+      - 505
+      - 16
+      - 16
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    fit:
+      mode: contain
+  - elementId: ft-label
+    elementType: text
+    bounds:
+      - 78
+      - 505
+      - 520
+      - 16
+    content:
+      text: HUANDENG  /  Why I built it
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - left
+        - middle
+  - elementId: ft-pos
+    elementType: text
+    bounds:
+      - 824
+      - 505
+      - 80
+      - 16
+    content:
+      text: "0"
+      field: main-position
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - right
+        - middle
+notes: "The third problem showed up when I asked AI to work on Google Slides or PowerPoint decks. To check its own work, the agent often has to render the whole slide to a picture and look at it. That is a useful review, but it is not something you can measure, compare or optimise: every check is a fresh guess from pixels. So I wanted a slide format where the agent reads the slide as data. On the right is a real excerpt from the 1BNA slide in this very project: the chart is an object with its bounds, its twelve values and its axis range. An agent can change one value or one label without touching anything else, and the change can be diffed. I still look at renders for composition and readability; they are a review surface, not the editable model."

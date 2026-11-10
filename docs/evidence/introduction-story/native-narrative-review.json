@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUtc": "2026-11-10T23:15:27.456176+00:00",
+  "reviewer": "Independent visual and narrative reviewer",
+  "authorAccepted": false,
+  "pathBase": "../../..",
+  "pathBaseMeaning": "All paths are repository-relative; ../../.. is relative to this JSON.",
+  "scope": "All actual visible text and persisted Notes in four completed native story submissions; selected DeepSeek evidence images. Full native layout/Office QA belongs to the trial supervisor.",
+  "reviewedMainPages": 81,
+  "notATechnicalFailureReport": true,
+  "editions": [
+    {
+      "edition": "deepseek-zh",
+      "projectPath": "examples/huandeng-introduction/deepseek-zh",
+      "mainPagesRead": 18,
+      "decision": "preserved_native_submission_with_content_findings",
+      "technicalFailure": false,
+      "technicalFailureMeaning": "These are narrative/factual scope findings, not a finding that native execution or export failed; technical QA remains separately recorded.",
+      "authorAccepted": false,
+      "originalSemanticReviewSha256": "fe2f37ac811d6e2aac68470d9714694f4f252776913e4eb383e153fcbae36702",
+      "findings": [
+        {
+          "id": "DSH-ZH-NARR-01",
+          "pages": [3, 5],
+          "category": "content_fidelity",
+          "finding": "The account was dramatized into a specific lab-meeting exchange and timing without marking the added detail. Page 3 Notes say the PPT had been shown only briefly and the supervisor then asked whether AI made it; the source says the supervisor and others could recognize AI style, but does not supply that direct quotation, timing or noncritical reaction. Page 5 adds pages 4 and 12 and exactly three copies; its Notes label the figure schematic, not these details as personal history."
+        },
+        {
+          "id": "DSH-ZH-NARR-02",
+          "pages": [16],
+          "category": "evidence_scope_mismatch",
+          "finding": "The headline says two pages were changed and only those two pages were touched. The displayed evidence and subtitle correctly show one page with two text fields changed (title and lead)."
+        }
+      ],
+      "technicalEvidencePaths": [
+        "examples/huandeng-introduction/deepseek-zh/evidence/native-trial.json",
+        "examples/huandeng-introduction/deepseek-zh/evidence/qa.json",
+        "examples/huandeng-introduction/deepseek-zh/evidence/office-visual-review.json"
+      ],
+      "reviewerDidNotModifyNativePagesOrExports": true,
+      "noAestheticRedoRequested": true
+    },
+    {
+      "edition": "deepseek-en",
+      "projectPath": "examples/huandeng-introduction/deepseek-en",
+      "mainPagesRead": 18,
+      "decision": "preserved_native_submission_with_content_findings",
+      "technicalFailure": false,
+      "technicalFailureMeaning": "These are narrative/factual scope findings, not a finding that native execution or export failed; technical QA remains separately recorded.",
+      "authorAccepted": false,
+      "originalSemanticReviewSha256": "cab3c3d146068175aeddf16248b15e5ff52e0ba3b91dc46e488bbc9397ad2be3",
+      "findings": [
+        {
+          "id": "DSH-EN-NARR-01",
+          "pages": [18],
+          "category": "deferred_idea_promoted_to_next_step",
+          "finding": "Closing Notes promise the next step as more direct manipulation, layers and image-tool editing. The author left these ideas unformed and the shared story brief keeps them out of the current introduction; this reads as a committed next step."
+        },
+        {
+          "id": "DSH-EN-NARR-02",
+          "pages": [7, 8],
+          "category": "technical_overstatement",
+          "finding": "Page 7 says a picture cannot be diffed, targeted or tested, and Notes say PowerPoint/Google Slides agents work through the screen and the loop is impossible to diff. Pixel comparisons are possible, and the lack of object-addressable structure in a screenshot is narrower than these absolute statements. Page 8 acknowledges PPTX parts, but still calls the screen the working interface. The useful point is an additional structured editing channel; it does not require these categorical claims."
+        },
+        {
+          "id": "DSH-EN-NARR-03",
+          "pages": [1, 2, 15],
+          "category": "unsupported_personal_detail",
+          "finding": "Over the last year, seeing it from the back of the room, and the asset library being the part I use most were not supplied in the author account. These additions are literary invention, not verified first-person history."
+        },
+        {
+          "id": "DSH-EN-NARR-04",
+          "pages": [14],
+          "category": "review_timing_ambiguity",
+          "finding": "The real image is Saved changes from an already saved operation, while the copy and caption call it before the change is accepted. The page does not distinguish after-save author acceptance from the separate before-apply transaction preview; the visual cannot establish that it is a pre-write preview."
+        }
+      ],
+      "technicalEvidencePaths": [
+        "examples/huandeng-introduction/deepseek-en/evidence/native-trial.json",
+        "examples/huandeng-introduction/deepseek-en/evidence/qa.json",
+        "examples/huandeng-introduction/deepseek-en/evidence/office-visual-review.json"
+      ],
+      "reviewerDidNotModifyNativePagesOrExports": true,
+      "noAestheticRedoRequested": true
+    },
+    {
+      "edition": "claude-zh",
+      "projectPath": "examples/huandeng-introduction/claude-zh",
+      "mainPagesRead": 20,
+      "decision": "preserved_native_submission_with_content_findings",
+      "technicalFailure": false,
+      "technicalFailureMeaning": "These are narrative/factual scope findings, not a finding that native execution or export failed; technical QA remains separately recorded.",
+      "authorAccepted": false,
+      "originalSemanticReviewSha256": "2b1e8d347969af797ea7b9525ef20fff85b4696a6c1568a827e80c02578db234",
+      "findings": [
+        {
+          "id": "CC-ZH-NARR-01",
+          "pages": [20],
+          "category": "explicit_content_scope_violation",
+          "finding": "The actual closing page and Notes include future asset-library optimization, simple video editing and Photoshop-like image editing. Asset-library optimization was explicitly excluded from slides by the author. The other ideas were unformed and deferred, although this page does label them as unfinished rather than shipped."
+        },
+        {
+          "id": "CC-ZH-NARR-02",
+          "pages": [9],
+          "category": "format_attribution_error",
+          "finding": "The body says HUANDENG merely spreads out the PPTX directory and replaces the .pptx entry with deck.pptd; Notes repeat that the entry is simply changed. The shared FACTS brief explicitly distinguishes the structured PPTD document model from renaming or unpacking PPTX. The fact that PPTX contains page parts is correct; the equivalence is not."
+        }
+      ],
+      "technicalEvidencePaths": [
+        "examples/huandeng-introduction/claude-zh/evidence/native-trial.json",
+        "examples/huandeng-introduction/claude-zh/evidence/qa.json",
+        "examples/huandeng-introduction/claude-zh/evidence/office-visual-review.json"
+      ],
+      "reviewerDidNotModifyNativePagesOrExports": true,
+      "noAestheticRedoRequested": true
+    },
+    {
+      "edition": "claude-en",
+      "projectPath": "examples/huandeng-introduction/claude-en",
+      "mainPagesRead": 25,
+      "decision": "preserved_native_submission_with_content_findings",
+      "technicalFailure": false,
+      "technicalFailureMeaning": "These are narrative/factual scope findings, not a finding that native execution or export failed; technical QA remains separately recorded.",
+      "authorAccepted": false,
+      "originalSemanticReviewSha256": "a59041674735c44d2f4f34a57eec549dece31bf9067c05f29b84193765dfde96",
+      "findings": [
+        {
+          "id": "CC-EN-NARR-01",
+          "pages": [5],
+          "category": "technical_overstatement",
+          "finding": "The title says most tools give an agent only a screenshot. Notes say the image-based loop is not something one can measure, compare or optimise and every check is a fresh guess. These categorical claims go beyond the author's experienced friction: pixel comparisons exist, while an image lacks the direct object-addressable structure that the new workflow offers. The same page correctly retains visual review for composition."
+        },
+        {
+          "id": "CC-EN-NARR-02",
+          "pages": [6],
+          "category": "goal_presented_as_guaranteed_effect",
+          "finding": "The concluding copy says a human point of view means the slides stop looking like AI. The author proposes story-first as the desired approach; this is not an established guarantee of perceived human authorship. It should be read as an aspiration rather than a measured or automatic result."
+        },
+        {
+          "id": "CC-EN-NARR-03",
+          "pages": [24],
+          "category": "deferred_idea_in_current_introduction",
+          "finding": "The page adds a simple video-editor-style timeline as an idea for later. It is correctly labelled future, not a shipped feature, but this was an unformed/deferred direction kept out by the shared story brief."
+        }
+      ],
+      "technicalEvidencePaths": [
+        "examples/huandeng-introduction/claude-en/evidence/native-trial.json",
+        "examples/huandeng-introduction/claude-en/evidence/qa.json",
+        "examples/huandeng-introduction/claude-en/evidence/office-visual-review.json"
+      ],
+      "reviewerDidNotModifyNativePagesOrExports": true,
+      "noAestheticRedoRequested": true
+    }
+  ],
+  "resolvedNonFinding": {
+    "edition": "claude-en",
+    "item": "Source footer 0 is a dynamic placeholder. The supervisor inspected actual Office page 12 and confirmed the rendered footer is 12; it is not a finished-artifact defect."
+  },
+  "limits": [
+    "Narrative findings are preserved as native trial outcomes; the reviewer did not rewrite the submissions.",
+    "Content findings do not mean that the client failed to execute or produce valid artifacts.",
+    "No Claude visual reference was transferred to the ChatGPT or DeepSeek authoring/review work.",
+    "Only source-derived findings, public relative paths and receipt hashes are included; no raw user prompt or runtime authorization data is reproduced."
+  ]
+}

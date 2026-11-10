@@ -12,15 +12,7 @@ elements:
       - 67
     role: title
     content:
-      text: Refine the wording. Keep the evidence.
-      fontFamily: Arial
-      fontSize: 29
-      color: "#263C34"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
+      {"text":"This time, just clarify the explanation","fontFamily":"Arial","fontSize":29,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
   - elementId: request
     elementType: text
     bounds:
@@ -186,8 +178,4 @@ elements:
         - top
       lineHeight: 1.3
       field: main-position
-notes: |-
-  A real edit in a controlled public demonstration. Both views use the same page at the same scale. Only the title and context text changed. The image source/crop/bounds, all chart data, axes, units, labels, source and other pages were preserved by a deep-equality check.
-
-  Operation: d2d18509-c72c-48e7-81cc-4251486a522e
-  See evidence/wording-edit.json.
+notes: "A request can be small: make this page’s title and explanation clearer while preserving the source figure, all twelve values, axes and citation. These are the saved before and after states of that actual operation. The agent reads the current revision, previews the change and saves it. I can then inspect whether the result matches the request."

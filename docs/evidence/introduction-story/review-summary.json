@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUtc": "2026-11-10T23:15:27.456176+00:00",
+  "authorAccepted": false,
+  "pathBase": "../../..",
+  "pathBaseMeaning": "All paths are repository-relative; ../../.. is relative to this JSON.",
+  "rootDecision": "Independent narrative/source and stated Office scope passed; all raised root issues closed.",
+  "rootMainPages": 54,
+  "briefOfficeScope": "Page 10 in each 13-page brief only.",
+  "nativeDecision": "Four native submissions retained with narrative/factual scope findings; this is not a technical-failure classification.",
+  "nativePagesRead": 81,
+  "reports": [
+    {
+      "path": "examples/huandeng-introduction/chatgpt-en/evidence/review.json",
+      "bytes": 5298,
+      "sha256": "3165a8b372b5722e07631376983f2941297016711533abd12ec4f9c629202da5"
+    },
+    {
+      "path": "examples/huandeng-introduction/chatgpt-zh/evidence/review.json",
+      "bytes": 5697,
+      "sha256": "99a51d52a6989449b79c6b2cac1bf3561e7ed3791e3f5e5e3b8388f69d41dfae"
+    },
+    {
+      "path": "docs/evidence/introduction-story/root-review.json",
+      "bytes": 30499,
+      "sha256": "dd57ac2c7edfad3804dbbec1941f038740716bbec5a72e4c8eff519ff57c17ef"
+    },
+    {
+      "path": "docs/evidence/introduction-story/native-narrative-review.json",
+      "bytes": 10365,
+      "sha256": "964499650c316c23f559a9d9977e7a411f58ec5bd230eb1a2562102b91e65b7b"
+    }
+  ]
+}

@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUtc": "2026-11-10T23:15:27.456176+00:00",
+  "edition": "chatgpt-zh",
+  "reviewer": "Independent visual and narrative reviewer",
+  "authorAccepted": false,
+  "decision": "passed_independent_review_with_stated_scope",
+  "pathBase": "../",
+  "pathBaseMeaning": "All file paths are project-root-relative; ../ is relative to this evidence/review.json.",
+  "coverage": {
+    "mainPages": 27,
+    "briefItems": 13,
+    "allMainPagesReadInOrder": true,
+    "allPersistedMainNotesRead": true,
+    "actualBriefCompositionRead": true,
+    "fullSourceImagesEnlarged": [
+      1,
+      2,
+      4,
+      5,
+      6,
+      7,
+      10,
+      11,
+      13,
+      14,
+      15,
+      16,
+      23,
+      26,
+      27
+    ],
+    "earlierRepresentativeFramesEnlarged": [
+      21,
+      22,
+      24,
+      25
+    ],
+    "nativeTables": 3,
+    "nativeCharts": 1,
+    "titleOnlySectionMainPositions": [
+      8,
+      13,
+      22
+    ]
+  },
+  "source": {
+    "entry": {
+      "path": "deck.pptd",
+      "sha256": "5ed092812df99b696cd1a016e2f10a11f2100a25100c314038c6da6d58fdd90d",
+      "bytes": 625
+    },
+    "projectMetadata": {
+      "path": ".huandeng/project.json",
+      "sha256": "5898fb966bf07e0f8d99ae22d08cdb9b94b6b5974ed15b12d4e7ddee7a9ad8dc",
+      "bytes": 51658
+    },
+    "activePageCount": 27,
+    "reviewedSourceSetSha256": "0146f18629e284f56bcb47fe8dfe8b879452d12af80dc4ea393083c6e08e7db1",
+    "sourceSetAlgorithm": "SHA-256 of UTF-8 lines sorted by path: sha256 + two spaces + project-relative path + LF. Scope: deck.pptd, active 27 .page files, and .huandeng/project.json; not a hash of the full media/archive package.",
+    "manifestRevisionAtExport": "sha256:5ed092812df99b696cd1a016e2f10a11f2100a25100c314038c6da6d58fdd90d",
+    "metadataRevisionAtExport": "sha256:5898fb966bf07e0f8d99ae22d08cdb9b94b6b5974ed15b12d4e7ddee7a9ad8dc",
+    "sourceUnchangedDuringExport": true,
+    "publicStory": {
+      "path": "sources/story/USER-STORY.zh-CN.md",
+      "sha256": "71e4021fc9cc3bc3b438e2b7d7ff950f0f5921cd4fd24b7afdd9d2c87ff503e3"
+    },
+    "facts": {
+      "path": "sources/story/FACTS.md",
+      "sha256": "029750705f9c6fe95a50db30cdb42b0f4573d6212b8c5f93d13e9a60ec6402ca"
+    }
+  },
+  "artifacts": [
+    {
+      "path": "Exports/deck.pptx",
+      "format": "pptx",
+      "pages": 27,
+      "presentationId": null,
+      "bytes": 4136276,
+      "sha256": "5f11dc887f6f5730dc39f840f4615c021bfa8249a8a15de35297d7139b04b91f"
+    },
+    {
+      "path": "Exports/deck.pdf",
+      "format": "pdf",
+      "pages": 27,
+      "presentationId": null,
+      "bytes": 3927264,
+      "sha256": "56d540bbd353c6e34c030b88f71d95a4641744b2e791aff0321f88dbcca1fe8c"
+    },
+    {
+      "path": "Exports/brief.pptx",
+      "format": "pptx",
+      "pages": 13,
+      "presentationId": "introduction-short",
+      "bytes": 3066994,
+      "sha256": "c608f311081fbbb41ea609434c84df5a24a1e4672da0efd929d783b4e03f5fd2"
+    },
+    {
+      "path": "Exports/brief.pdf",
+      "format": "pdf",
+      "pages": 13,
+      "presentationId": "introduction-short",
+      "bytes": 2942851,
+      "sha256": "17a2e7e689c40675526f94be12fdf91bb4787fd890326141f5b9292c61974ef7"
+    }
+  ],
+  "office": {
+    "officeVersion": "16.0",
+    "readOnly": true,
+    "main": {
+      "decision": "pass",
+      "finalPptxSha256": "5f11dc887f6f5730dc39f840f4615c021bfa8249a8a15de35297d7139b04b91f",
+      "initialFullSequencePagesReviewed": 27,
+      "initialFullSequencePptxSha256": "1ae37b3a845175fb87015b25f3c2210941b65c02e87a377a2bcfef9cf202118b",
+      "initialEnlargedMainPages": [
+        10,
+        11,
+        15,
+        16,
+        17,
+        18
+      ],
+      "finalCorrectionPagesRechecked": [
+        16,
+        23
+      ],
+      "finalIndependentReceiptSha256": "44d5c7e4e9f292c71d331205e5ac751bde805f8e4b94b3835bf9435e942d2628",
+      "correctionImages": [
+        {
+          "mainPosition": 16,
+          "sha256": "bf653284cceb9bead6f5b8e5efcf8bb19a241e5376ce43980cd418594cc1522a"
+        },
+        {
+          "mainPosition": 23,
+          "sha256": "d780ea9c51fc16d2979b86b38c2a96ccd313a528102e25f963f7a7a01940902f"
+        }
+      ]
+    },
+    "brief": {
+      "decision": "pass_for_selected_pin_page",
+      "totalArtifactPages": 13,
+      "selectedPagesReviewed": [
+        10
+      ],
+      "pptxSha256": "c608f311081fbbb41ea609434c84df5a24a1e4672da0efd929d783b4e03f5fd2",
+      "officeImageSha256": "a7b358190fcc78bd1ccb7e53db317336c66161ce0aad190844f6b2105d39322d",
+      "observation": "The saved 10.1-11.1 scientific chart and former position-7 marker are the actual earlier pin, distinct from current Main. Whole brief visual acceptance is outside this selected-page review."
+    }
+  },
+  "closedIssueIds": [
+    "FRAME-01",
+    "FRAME-02",
+    "FRAME-03",
+    "FRAME-04",
+    "FINAL-01",
+    "FINAL-02",
+    "FINAL-03",
+    "FINAL-04",
+    "OFFICE-01"
+  ],
+  "remainingBlockingFindings": [],
+  "limits": [
+    "Independent review is not author acceptance.",
+    "PDF artifact hashes are recorded; full PDF visual QA is owned by integration, not certified by this receipt.",
+    "Native-client editions and whole portable-package acceptance have their own records."
+  ],
+  "aggregateReview": {
+    "path": "../../../docs/evidence/introduction-story/root-review.json"
+  },
+  "sourceReviewProvenance": {
+    "originalReceiptSha256": "70e228ac7817908a8253e7dad49edd8243ff554146306512bd5351c75ccbe0fe",
+    "inputManifestSha256": "e7c0ed27b34c056e6b5debc4e782cc1ec99bb9c697e9e849d418cd200154c8a0"
+  }
+}

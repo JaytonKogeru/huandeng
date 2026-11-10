@@ -1,0 +1,26 @@
+{
+  "project": "deepseek-zh",
+  "presentationId": "brief",
+  "actor": "coordinator mechanical export of existing native-authored Presentation",
+  "exports": {
+    "brief.pdf": {
+      "path": "Exports/brief.pdf",
+      "sha256": "1ea712a66ef40091a200ec1a25f60d6740bae3ed9312158ff4597b94fedf42cf",
+      "bytes": 2219259,
+      "pages": 11,
+      "originalCliFileName": "短版 · 约十分钟-brief.pdf"
+    },
+    "brief.pptx": {
+      "path": "Exports/brief.pptx",
+      "sha256": "300eec34786b6a970dd984c21184d4be538eb0af84041fcbe247bb623b7a1f83",
+      "bytes": 2000978,
+      "pages": 11,
+      "originalCliFileName": "短版 · 约十分钟-brief.pptx"
+    }
+  },
+  "coordinatorNote": "Initial verification expected an ID-only filename, but the CLI names Presentation exports with title plus ID. Reused the existing PDF receipt and normalized only these newly generated short-export filenames; Main exports were unchanged.",
+  "pdfPages": 11,
+  "pptxPages": 11,
+  "pptxNotes": 11,
+  "authoredSourceAndNativeMainExportsUnchanged": true
+}

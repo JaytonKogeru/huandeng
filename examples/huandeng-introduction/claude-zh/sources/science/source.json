@@ -1,0 +1,88 @@
+{
+  "identifier": "PDB 1BNA",
+  "record": "https://www.rcsb.org/structure/1BNA",
+  "coordinateSource": "https://files.rcsb.org/download/1BNA.pdb",
+  "structureDOI": "https://doi.org/10.2210/pdb1BNA/pdb",
+  "primaryPublication": "Drew et al. (1981), PNAS 78:2179–2183",
+  "publicationDOI": "https://doi.org/10.1073/pnas.78.4.2179",
+  "downloadedAt": "2026-11-10T11:22:02.354988+00:00",
+  "reportedMethod": "X-ray diffraction",
+  "reportedResolutionAngstrom": 1.9,
+  "atomsUsed": 486,
+  "residuesUsed": 24,
+  "pairedPositions": 12,
+  "measurement": "Euclidean distance between C1′ atoms of chain A residues in ascending order and chain B residues in descending order.",
+  "scope": "Twelve positions in one deposited structure; not independent replicates, an experiment, a performance benchmark, or hydrogen-bond distances.",
+  "rendering": "Orthographic coordinate projection. Approximate covalent sticks are inferred by distance for visual context, not a bond-order annotation.",
+  "chainColors": {
+    "A": "#356f68",
+    "B": "#c48758"
+  },
+  "files": [
+    {
+      "path": "1BNA.pdb",
+      "sha256": "df42f1506792f191b957227b061360652adcf6f813eb69d9ec553067ea584670",
+      "bytes": 76464
+    },
+    {
+      "path": "dna-duplex-end.png",
+      "sha256": "342088ed88ab8fffc8ce2651cd6fbf183244f5069c7907702a957eb9cf9fa18a",
+      "bytes": 227166
+    },
+    {
+      "path": "dna-duplex-position7.png",
+      "sha256": "50273f1fa204b2f0ae10463c91dd9d8ffcea87c80d861da37c0db9755d091017",
+      "bytes": 172132
+    },
+    {
+      "path": "dna-duplex-side.png",
+      "sha256": "ff6d1434a44440fba124ccad7dfa30efa01e8c400094d4453d17d502345c1e2c",
+      "bytes": 165001
+    },
+    {
+      "path": "generate.py",
+      "sha256": "d0ad78b0f86661ffa93c183588649f97262084fd617c44f224e16e7f0dc1db64",
+      "bytes": 5894
+    },
+    {
+      "path": "highlight-position.py",
+      "sha256": "23bc04252f2209615515621dee0c6c1556ccd4e0fc3b4cb4663958a1a6f5b703",
+      "bytes": 1801
+    },
+    {
+      "path": "measurements.json",
+      "sha256": "c7749a06cf818f8118895129e4060e6b885d8c43d67ff8d619108fc77057cc56",
+      "bytes": 1787
+    },
+    {
+      "path": "paired-c1-distances-en.png",
+      "sha256": "a36d62e395822be26d250ca525aa072402aa68bfce609b3464f84762541bff62",
+      "bytes": 113157
+    },
+    {
+      "path": "paired-c1-distances-en.svg",
+      "sha256": "2d2a3fcb444aedaa54fba575e0f0553268ea801f603518ab315ec56d5ba68216",
+      "bytes": 29811
+    },
+    {
+      "path": "paired-c1-distances-zh.png",
+      "sha256": "d5576a93749be3608a7127b9a45d7d92e62fa9f0258043a13835ac7c1d971e19",
+      "bytes": 107361
+    },
+    {
+      "path": "paired-c1-distances-zh.svg",
+      "sha256": "8ea2fae1f1519526d08cab33486e6b16fbfb7969d770118fc58d27cfa3232f10",
+      "bytes": 28682
+    },
+    {
+      "path": "paired-c1-distances.csv",
+      "sha256": "84f6c1daa9c34184d3a6ed3eecca30b5d7e211fd5c16d55c65d40d872f8ce249",
+      "bytes": 319
+    },
+    {
+      "path": "README.md",
+      "sha256": "83bb87654efd38eb50c4495fbd47c1229a83b4febb76c9bdffe092bbda060e1b",
+      "bytes": 2850
+    }
+  ]
+}

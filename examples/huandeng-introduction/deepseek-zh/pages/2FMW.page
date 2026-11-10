@@ -2,7 +2,7 @@ pageType: content
 background:
   type: solid
   color: "#16211B"
-notes: 这页说明外部 AI 的接入方式，但不要讲成“模型能力”。重点是同一份文档、同一个写入器：客户端读取上下文，提交事务；写入器检查版本、预览并返回回执。客户端标识只说明支持的产品，不代表官方背书。
+notes: "这是我对第二个问题的回答：不要让 AI 再生成一份 deck，让它在同一个项目里改那一页。客户端读取 Story 和 revision，提交事务；共享写入器做版本检查、预览、应用，再返回回执。标识只说明支持的产品，不代表官方背书。"
 elements:
   - elementId: ai-title
     elementType: text
@@ -13,7 +13,7 @@ elements:
       - 440
       - 40
     content:
-      text: 外部 AI 写进同一个项目
+      text: "AI 在同一页上改"
       fontSize: 28
       fontFamily:
         ea: Microsoft YaHei
@@ -31,8 +31,8 @@ elements:
       - 448
       - 70
     content:
-      text: "ChatGPT、Codex、Claude Code、DeepSeek 等客户端\n连接同一个本地写入器；\n提案要经过预览和版本检查才能落盘。"
-      fontSize: 14
+      text: "它读取 Story 与 revision，提交事务；\n写入器检查、预览、落盘。"
+      fontSize: 14.4
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
@@ -390,7 +390,7 @@ elements:
       - 448
       - 28
     content:
-      text: AI 不直接改 .page；它发事务，写入器执行。
+      text: "AI 不直接改文件；它发事务，写入器执行。"
       fontSize: 10
       fontFamily:
         ea: Microsoft YaHei

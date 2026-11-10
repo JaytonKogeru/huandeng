@@ -2,20 +2,15 @@ pageType: content
 background:
   type: solid
   color: "#F4F3ED"
-notes: 先让听众看到目标画面。左侧是 1BNA 的双链结构，右侧是 12 个配对位置的 C1′–C1′ 距离。这里刻意不出现软件界面：先说明一页科研内容要同时保住结构、数值和来源。12 个点是同一结构中的 12 个位置，不是 12 次独立实验，也不是性能数据。
+notes: "讲了这么多问题，最后要落到一页真正的科研内容：结构、距离、数值、来源都在。这里不先讲功能，先看结果。十二个点是同一结构中的十二个位置，不是十二次独立实验，也不构成产品性能比较。"
 elements:
   - elementId: sci-title
     elementType: text
     role: title
     bounds:
-      - 48
-      - 42
-      - 520
-      - 74
+        [48,42,520,44]
     content:
-      text: |-
-        先看一页
-        真正的研究内容
+      text: "我想做的，是这一页"
       fontSize: 28
       fontFamily:
         ea: Microsoft YaHei
@@ -28,16 +23,10 @@ elements:
   - elementId: sci-lead
     elementType: text
     bounds:
-      - 48
-      - 128
-      - 258
-      - 78
+        [48,98,258,78]
     content:
-      text: |-
-        一张结构图、一条距离曲线、
-        一个可核对的来源。
-        这页先不谈软件。
-      fontSize: 15.2
+      text: "图、数值、来源和一句话的结论，\n都在同一页上。\n这次，不先讲功能。"
+      fontSize: 15
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial

@@ -11,7 +11,7 @@ elements:
       - 816
       - 72
     content:
-      text: Connect and contribute
+      text: "Working with agents"
       fontFamily: Arial
       fontSize: 40
       lineHeight: 1.2
@@ -20,4 +20,4 @@ elements:
       align:
         - left
         - middle
-notes: Section 5. Finally, how AI clients connect, what is inside a project folder, what HUANDENG is built on, and where help is needed.
+notes: "Section 5. Finally, how agents actually connect, how a talk leaves the project, what HUANDENG is built on, and how to start."

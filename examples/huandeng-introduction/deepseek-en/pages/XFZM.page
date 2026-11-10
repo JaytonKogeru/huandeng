@@ -1,0 +1,107 @@
+background:
+  type: solid
+  color: "#F7F5F0"
+elements:
+  - elementId: p3-eyebrow
+    elementType: text
+    bounds:
+      - 64
+      - 38
+      - 300
+      - 16
+    content:
+      text: 02 · THE TELL
+      fontSize: 10
+      fontFamily: Consolas
+      color: "#B43C26"
+      letterSpacing: 1.6
+      align:
+        - left
+        - top
+  - elementId: p3-title
+    elementType: text
+    role: title
+    bounds:
+      - 64
+      - 66
+      - 780
+      - 120
+    content:
+      text: The texture is not a style. It is an absence of focus.
+      fontSize: 38
+      fontFamily: Georgia
+      color: "#17181A"
+      lineHeight: 1.12
+      align:
+        - left
+        - top
+  - elementId: p3-lead
+    elementType: text
+    bounds:
+      - 64
+      - 204
+      - 600
+      - 64
+    content:
+      text: A deck that tries to cover everything leaves the audience nothing to hold.
+      fontSize: 21
+      fontFamily: Georgia
+      italic: true
+      color: "#55524A"
+      lineHeight: 1.45
+      align:
+        - left
+        - top
+  - elementId: p3-list
+    elementType: text
+    bounds:
+      - 64
+      - 296
+      - 560
+      - 120
+    content:
+      text: |-
+        Every point gets a slide.
+        Every slide gets a heading.
+        Every heading gets three bullets.
+      fontSize: 18.5
+      fontFamily: Segoe UI
+      color: "#3A3833"
+      lineHeight: 1.95
+      align:
+        - left
+        - top
+  - elementId: p3-point
+    elementType: text
+    bounds:
+      - 64
+      - 430
+      - 620
+      - 32
+    content:
+      text: Nothing is allowed to be the point.
+      fontSize: 17
+      fontFamily: Georgia
+      italic: true
+      color: "#B43C26"
+      lineHeight: 1.2
+      align:
+        - left
+        - top
+  - elementId: p3-folio
+    elementType: text
+    bounds:
+      - 860
+      - 512
+      - 36
+      - 14
+    content:
+      text: "3"
+      field: main-position
+      fontSize: 9.5
+      fontFamily: Consolas
+      color: "#A29C8F"
+      align:
+        - right
+        - top
+notes: The usual explanation is AI style — a font, a gradient, a layout. I don't think that's it. The deck I recognized was complete in a way a person rarely is. Every point had a slide; every slide had a heading; every heading had three bullets. Completeness was the problem. A person makes a deck by deciding what not to say. A short post I read described this as covering everything, and it named what I had been feeling. The fix had to be upstream of layout.

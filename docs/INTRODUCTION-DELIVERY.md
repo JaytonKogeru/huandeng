@@ -1,117 +1,124 @@
-# Introduction rework: delivery and review
+# Story-led introductions: delivery and review
 
-Date: 2026-11-10. Release identity: **plugin-v0.18.2**. Editor runtime: **0.18.0**, unchanged.
+Release identity: **plugin-v0.18.3**. Editor runtime: **0.18.0**, unchanged. Status: **review candidate**.
 
-The author rejected the previous introduction delivery. This milestone replaces the four introduction projects, corrects the AI authoring guidance and consolidates the local workspace. It is a review candidate, not a record of author acceptance. The independent native trials retain their actual limitations.
+The author liked the previous artwork and asked for a new explanation built from the founder’s own story. This milestone preserves useful visual work, rebuilds the root narrative, expands the independent native trials to both languages, strengthens the authoring plugin, and completes the missed workspace cleanup.
 
-[Four editions and downloads](../examples/huandeng-introduction/README.md) · [Contract](INTRODUCTION-REWORK.md) · [Visual audit](INTRODUCTION-VISUAL-AUDIT.md) · [Workspace organization](WORKSPACE-ORGANIZATION.md)
+[Six editions and downloads](../examples/huandeng-introduction/README.md) · [Story contract](INTRODUCTION-STORY-SPEC.md) · [Verbatim account](../examples/huandeng-introduction/story/USER-STORY.zh-CN.md) · [Technical facts](../examples/huandeng-introduction/story/FACTS.md) · [Workspace and startup audit](WORKSPACE-ORGANIZATION.md)
 
-## What was corrected
+## Six current projects
 
-The previous specification converted “reduce generic AI styling” into universal white backgrounds, a predetermined page count and restrictions on useful marks and visual devices. That was a requirements error. The original demo's product identity, real client marks, gray-green structural pages, scientific images and varied composition were relevant requirements.
+| Edition | Main | Other saved Presentations | Current outcome |
+| --- | ---: | --- | --- |
+| ChatGPT Chinese | 27 | Full 27; brief 13 | Narrative, visual and scoped Office review passed after concrete corrections |
+| ChatGPT English | 27 | Full 27; brief 13 | Narrative, visual and scoped Office review passed after concrete corrections |
+| Claude Code Chinese | 20 | Lab brief 7 | Native completed; content findings retained |
+| Claude Code English | 25 | Full 25; lab brief 9 | Native completed after a connection-only recovery; content findings retained |
+| DeepSeek Harness Chinese | 18 | Full 18; brief 11 | Native completed; content findings retained |
+| DeepSeek Harness English | 18 | None | Native completed; content findings retained |
 
-The new root editions use the original HUANDENG mark and the actual client marks. Paper, sage and sand backgrounds correspond to evidence, structure and source/folder pages. Images have a task: show the specimen, explain its measurement, show a real edited state or make actual page reuse visible. The design does not use emptiness or a ban on icons as a quality metric.
+There are **135 Main pages** across six canonical projects under `examples/huandeng-introduction/`. Each project has its current PDF, PPTX, editable sources, source material and a readable `speaker-notes.md`. Existing brief sequences also have static exports; no additional Presentation was invented for DeepSeek English.
 
-The audit-to-delivery chain is observable:
+The four native Main PDFs and PPTX files were exported by their actual native authors. The coordinator exported their already-saved brief sequences, produced documentation and conducted checks. It did not rewrite native page artwork or narrative to turn trial defects into passes.
 
-| Stage | Decision or evidence |
+## What changed in the explanation
+
+The previous root sequence established capabilities but did not explain why this author chose to build the tool. Its polished scientific example had become the center of a product tour. The current account makes that example evidence for a human editing need.
+
+The root editions now begin with the author’s own outlook: slides are files and structured data, so agent-assisted preparation is worth pursuing. Three practical frustrations follow: AI-looking presentations without a point; whole-deck copies after a request to change two slides; and screenshots that do not expose the objects, values and references an agent needs to edit precisely.
+
+Speaking first becomes the editorial decision. The agent organizes the reasoning in that account and develops pages and speaker notes together. Stable page identity and page history answer the copy problem. Story records purpose and preservation constraints. Assets keeps source material available. Main and Presentation reuse bring the explanation back to the next lab meeting.
+
+Three actual title-only Section pages at full positions 8, 13 and 22 provide pauses. The root 13-page brief retains the copy → identity → history relationship and carries its own speakable notes for the pinned scientific occurrence. Every root page has explicit purpose, preservation constraints and Notes; Main and Presentation Story refer to the same argument.
+
+The [fact brief](../examples/huandeng-introduction/story/FACTS.md) keeps technical attribution precise. PPTX already contains separate slide, media and notes parts. HUANDENG’s PPTD working directory is a different document model, not a renamed PPTX. OpenSlide is the React code foundation; Kimi ecosystem exposure is an inspiration claim, not proof of first invention. OpenPPTD reuse is specifically the formula-conversion modules.
+
+## Audit → Spec → Frame → Implement → Validate → Release
+
+| Stage | Concrete work |
 | --- | --- |
-| Audit | Read the nominated original 19-page demo, its project guidance, the prior contract and the FSS/ArgFrame design principles; distinguish inspected sources from uninspected historical material |
-| Spec | Restore identity, meaningful backgrounds, scientific evidence, title-only Sections, localized screenshots and independent native authorship |
-| Frame | Compare cover, science and architecture frames; reject the first misleading serial plugin diagram and replace it with clients/connector/shared writer/human editing |
-| Implement | Edit through the selected shared writer with revisions and preview/apply; preserve the original source material and exact operation records |
-| Validate | Read back project structure and source values, inspect every page, export, then render all four PPTX files in actual PowerPoint |
-| Release | Keep four canonical projects, ship complete portable sources and static exports, install the corrected plugin, and preserve honest native-trial status |
+| Audit | Read the complete current author message, the original nominated demo, historical requirements and the previous actual delivery; identify the narrative gap and the missed generic workspace artifacts |
+| Spec | Save the continuous spoken account unchanged; map twelve requirements to page/Notes/evidence checks without imposing a shared native outline or page count |
+| Frame | Build and inspect root representative pages about AI feel, copies, speaking first and format structure before expanding |
+| Implement | Apply page, Story and composition changes through the selected writer with current revisions, preview/apply and exact operation readback; retain stable identities and source materials |
+| Validate | Review full sequences, actual Notes, source objects, true tables, loaded localized screenshots, source values and static exports; inspect actual PowerPoint output and fix concrete root defects |
+| Release | Keep six current author/language directories, complete portable sources and artifact hashes; update the existing plugin identity and the current repository entry points |
 
-## Four current editions
+The last root visual changes shortened two Chinese sentences whose final punctuation wrapped onto separate lines in Office and refreshed the page-reuse thumbnail that referenced them. The source-science values and Main Notes were unchanged by that correction.
 
-| Edition | Main / full | Short presentation | Authorship and status |
-| --- | ---: | ---: | --- |
-| ChatGPT Chinese | 19 / 19 | 7 | Root-authored; peer and Office review completed; awaits author review |
-| ChatGPT English | 19 / 19 | 7 | Root-authored; peer and Office review completed; awaits author review |
-| DeepSeek Harness Chinese | 16 / 16 | 8 | Native task completed; no cosmetic rewrite; known findings retained |
-| Claude Code English | 20 / 20 | 9 | Native-authored pages; account quota interrupted final review; limited coordinator metadata completion and export |
+Other closed findings included a screenshot captured before its chart finished drawing, a purpose summary that lagged the real Story panel, editing instructions left in brief speaker notes, a stale live-page preview, missing brief History coverage and generic Section transitions. These are recorded as actual corrections, not hidden behind a generic “looks good” claim.
 
-The canonical location is `examples/huandeng-introduction/{chatgpt-zh,chatgpt-en,deepseek-zh,claude-en}`. Open each project's `deck.pptd`. Git and the project's named versions preserve history; there is no new dated parallel introduction directory.
+## Art and scientific evidence
 
-The root editions contain three actual title-only Section pages at Main positions 3, 7 and 12. Their seven-page brief changes the order and pins the scientific page to a real named version. The source projects, not just the slides describing them, contain those arrangements.
+The existing HUANDENG identity and real client marks remain. Paper, sage and sand backgrounds retain their roles, alongside scientific views, actual UI, diagrams and useful density. No rule equates a white or sparse page with human authorship.
 
-## One scientific example carried through the work
+Ordinary prose and lists use coherent rich-text objects. True row/column relationships use native table objects. Scientific annotations, real relationship diagrams and evidence panels remain legitimate separate objects. The native trials are checked against that distinction.
 
-The root editions use the public [PDB 1BNA structure](https://www.rcsb.org/structure/1BNA). Original coordinates, calculation code, CSV, structure views and source attribution travel with every project under `sources/science/`. [Source package and method](../examples/huandeng-introduction/assets/science/README.md).
+The root public example uses PDB 1BNA coordinates. Its twelve paired C1′ distances, marked A7/B18 pair, selected-value table and equation share a reproducible source package. Position seven is 10.2329 Å. These are positions within one crystal structure, not independent experiments or hydrogen-bond lengths. Coordinates, CSV, code, method and attribution travel under `sources/science/`.
 
-The structure image marks the C1′ atoms A7/B18. Their measured distance, 10.2329 Å, is the seventh point in the twelve-position series and appears in the selected-value table and equation. The values are positions within one structure, not experimental replicates, hydrogen-bond lengths or a product benchmark.
+Each current root Main PPTX contains **three native tables, one native chart and one Office equation**. The root briefs deliberately pin the earlier wording-edit state; that historical chart uses its recorded image fallback in PPTX. The current Main chart has the later axis-label refinement. This distinction is recorded in export reports rather than describing every chart in every version as native.
 
-Each root PPTX contains **two native editable charts, four native tables and one Office equation**. Scientific structure views, real UI captures and product/client marks remain images. Functional icons use documented image fallbacks in PowerPoint. Export reports describe these boundaries.
-
-A real saved copy edit changes only the scientific page's title and context. The saved operation evidence records both exact strings; the figure bytes, all twelve measurements and the original chart axes were unchanged by that transaction. A later separately recorded layout refinement changes the live chart axes and removes an auxiliary focus series to improve native Office output. It is not attributed to the earlier copy edit. The brief's pinned checkpoint intentionally preserves the earlier state.
-
-Current UI captures show the actual 19-page project and use Chinese or English interface labels to match the edition. Full workspace captures use DPR 3; small native menu crops keep their actual source pixels. Each root project's `evidence/assets.json` records imports, dimensions, captures and uses.
+The original title/explanation-only edit, later chart refinements and the current story rewrite are separate operations. The earlier pin is preserved. Current UI captures use the matching Chinese or English interface at a 1600 × 960 viewport and DPR 3; capture waits for chart SVG and image readiness.
 
 ## Independent native trials
 
-Both native authors received the source assets and the corrected 0.18.1 design guidance, with freedom to choose their own explanation, sequence and length. The final 0.18.2 package has exactly the same three design-guide hashes; its later README correction removes the remaining contradictory white-background/fixed-frame example. Do not relabel the actual trial version as 0.18.2.
+All four authoring tasks received the complete current user message verbatim. The public story excerpt ends before the workspace-cleanup digression; the full prompt stays in local task evidence. Claude received the author’s praise and specific revision requests in that message. ChatGPT and DeepSeek did not inspect or receive Claude artwork as a style template.
 
-### DeepSeek Harness Chinese
+The shared input consists of source assets, the spoken account, checked technical facts, the 0.18.3 plugin and project constraints. The authors chose their own sequence, length and design. Four project guides were available without truncation. Native accounts and models were not changed.
 
-DeepSeek completed its native task in about 18.6 minutes. Asset preloading through the supported project route resolved the previously observed shell-write limitation. The coordinator did not rewrite its pages, impose the root narrative or request aesthetic rework.
+Claude’s assistant metadata reports `claude-opus-5-5`. DeepSeek’s official resolved configuration reports `deepseek-flash`; this is configured-model evidence, not response-model metadata. The [native records](../examples/huandeng-introduction/README.md#独立试作与验收--independent-trials) distinguish these evidence types.
 
-The 16-page result restores recognizable identity, scientific imagery, green structural pages and three pure-title pauses. It still has concrete weaknesses:
+During authoring, the existing GUI and its child document services exited; the cause was not established. The same saved projects were reopened at their free previous ports after identity and source-hash checks. DeepSeek continued. Claude’s old MCP connection retained a stale session token; a fresh connection in the same native session allowed it to apply its already-prepared transaction and complete. The first incomplete business outcome and the connection-only recovery remain separately recorded.
 
-- Page 15 overstates OpenPPTD as the PPTD document foundation. The actual reused code is the MathML-to-OMML formula conversion module; the original statement remains visible as a trial defect.
-- Page 4 has a Chinese comma at a line start in PowerPoint; PDF wrapping differs.
-- Page 6 introduces several identity terms at once, and page 13's interface captures are small.
-- The scientific example is not carried through the later generic text-edit demonstration. Its distance chart is an image, not a native chart.
+### Content findings retained in native output
 
-### Claude Code English
+| Edition | Concrete remaining findings |
+| --- | --- |
+| DeepSeek Chinese | Adds a specific supervisor quotation and scene timing absent from the spoken account. A page headed as changing two slides actually demonstrates two text fields on one slide. |
+| DeepSeek English | Adds personal details not supplied by the author; makes overly absolute claims about comparing/testing images and other slide tools; blurs saved history, pre-write preview and acceptance; includes deferred future directions. |
+| Claude Chinese | Describes PPTD too much like exposing PPTX’s directory and changing its entry, weakening the checked model distinction. The ending includes asset-library improvements the author excluded and other deferred directions. |
+| Claude English | Makes overly absolute claims about screenshot-based work and presents story-first as an effect guarantee against the AI look. It reintroduces a deferred timeline idea. A long X-axis explanation remains locally crowded in the scientific example. |
 
-Claude independently authored 20 pages before its native account reached the five-hour usage limit. The native process did not complete. At interruption, its existing PDF contained only 18 pages.
+These are completed tool trials with content findings. They are not four editorial passes. Root editions underwent iterative correction; native editions retained their actual author outputs as requested. The different revision policies do not support a model-quality ranking.
 
-The coordinator exported the saved 20-page source and applied only the exact presentation plan already present in Claude's own script: full 20 pages and a nine-page lab-meeting sequence. The 41 page-file hashes and Main order remained unchanged. Four occurrence notes and a completion named version were not supplied by an exact native plan and were left unfinished. Pages 10 and 18 describe related features that are not fully demonstrated in this submitted project.
+Per-edition README, `evidence/native-trial.json`, `content-review.json`, `qa.json` and Office review records give the exact scope. A raw footer value of zero in Claude’s source was checked in the real render and resolves dynamically to the page number; it is not reported as a visible defect.
 
-The original quota receipt, old project metadata, page hashes and then-current 18-page PDF remain under `claude-en/evidence/native-submission/`, clearly identified as historical evidence. They are not another active project. The current exports both contain 20 pages.
+## Verification scope
 
-After the quota reset, the same Claude session completed a read-only verification turn. It confirmed the current source/export revisions and wrote no pages or exports. This is recorded separately as verificationRecovery; the first native turn remains incomplete. It also identified missing Story fields on pages 10 and 18 and an earlier command string in the small closing-page thumbnail. The inherited 21-page README and media index were preserved byte for byte and replaced with coordinator-labelled current indexes; the pages remain unchanged.
+All six Main presentations were opened read-only in **PowerPoint 16.0**, covering 135 pages. Full ordered Office contact sheets were inspected, with scientific charts, tables, formulas and significant text examined at larger size. After the Chinese root punctuation correction, the new 27-page PPTX was reopened and its two affected pages were rendered and reviewed against the unchanged remainder. Both root brief pinned pages were also rendered directly from their actual brief PPTX files.
 
-Claude's authored result retains a PowerPoint axis-label collision on page 5. Its twelve data values are intact and its PDF is readable. The later editing example also switches away from the scientific page. These are trial findings; they were not silently repaired or represented as completed native review.
+Main PDF/PPTX export reports match their corresponding source manifest, metadata, page and render revisions. Root full and brief exports were additionally checked for ZIP integrity, actual page/Notes counts, native object structure and occurrence Notes. Input PowerPoint copies and their source files remained byte-identical during inspection.
 
-[Native trial evidence](evidence/introduction-rework/native-trials.json) records actual authorship, coordinator actions and source hashes.
+Portable packages include Main and retained page files, images, sources, current project guidance, named checkpoints and archived checkpoint media. Machine-local operation journals are not portable artifacts. The packaging record verifies references, every archive entry and every downloaded artifact against its hash. The protected user-modified Editor fixture is outside the release change set.
 
-## Verification and its limits
+The [root review](evidence/introduction-story/root-review.json) and [independent native narrative findings](evidence/introduction-story/native-narrative-review.json) separate structural checks, visual inspection, native completion and the author’s response. No check records author acceptance.
 
-[Office evidence](evidence/introduction-rework/office-qa.json) binds the exact final PDFs/PPTX files and preview images to their SHA-256 hashes.
+## Plugin 0.18.3
 
-- All **74 pages** across 19 + 19 + 16 + 20 were rendered by PowerPoint 16.0 at 1920 × 1080 from read-only copies. Source files and input copies remained unchanged.
-- All four page sequences received contact-sheet inspection. The final root scientific layouts on pages 2 and 6 were also checked at full size for axes, table clipping and equation position.
-- Final native-source counts, real presentation membership, three root Sections, position mapping and the pinned named version were checked against the document model.
-- Every portable ZIP passed CRC and per-entry hash verification. Main pages, retained pages, image references and named-version assets resolve inside the complete project.
-- Every portable project carries 14 science files, 12 brand files and eight original-reference files. Page resources, checkpoint assets and current AGENTS resource paths resolve without a sibling assets directory. Credits notes retain optional repository-relative provenance references; portable notices and sources are included under notices/ and sources/.
-- Current native AGENTS resource paths were adjusted only for portability; the exact original trial guidance was saved first as `evidence/trial-authoring-guidance.md`.
-- Plugin configuration/discovery tests passed 8/8. Native client installation and doctor receipts verify the shipped plugin. The final formatting/source-scope gate is recorded with the release manifest.
+The Story, production-design, scientific-design and asset-evidence guidance now requires a personal experience → decision → consequence relationship, developing Notes alongside pages, source-aware personal claims, purposeful UI evidence, real tables and coherent text objects. Page purposes, keep constraints, presentation order and the spoken explanation are reviewed together.
 
-These checks demonstrate defined properties of the delivered files. They do not turn the retained native defects into a pass, prove native Claude completion or establish author acceptance.
+The frozen native package was installed through supported Codex and Claude commands. The dedicated DeepSeek configuration selects it without changing ordinary DeepSeek settings. Three installation roots each matched all 24 package files; the runtime doctor passed against the existing selected writer. Real model tasks provide separate evidence beyond the doctor.
 
-## Plugin and workspace
+The same owned private ChatGPT plugin was updated in place to 0.18.3. Its identity, presentation, app binding and access scope were retained. Updated text and the preserved archive contents were read back and hash-checked. The account-backed duplicate installation removed in the prior host cleanup was not reinstalled; updating its owned catalog record did not create another installation. The maintained local catalog remains `huandeng-local`.
 
-Plugin **0.18.2** is the maintained authoring package. The Story, scientific-design and production-design guides prioritize author requirements, source evidence and meaningful composition. A diagram, a useful icon, a dense scientific panel or an intentional background is allowed when it serves the explanation. Diagnostics do not dictate a universal visual style.
+The native trials show why guidance alone cannot certify narrative fidelity. Their specific quote, scope and guarantee errors remain visible in the audit. Editor source, runtime behavior and the 0.18.0 binary were not changed by this milestone.
 
-The existing account plugin was updated in place. In this Windows host, both the account-backed HUANDENG and the native local HUANDENG were installed; the duplicate account-backed installation was uninstalled through the actual host UI. The owned account record remains available. The host's installed list now has one HUANDENG entry, the native local 0.18.2 plugin. Native Claude/DSH installations and the working workstation channel were preserved.
+## Workspace and startup
 
-[Workspace organization](WORKSPACE-ORGANIZATION.md) records the actual retained directories, removed redundant worktrees/packages and protected active research writers. Remaining private or modified working directories are explained rather than deleted to produce a misleadingly clean listing.
+The follow-up examined all top-level entries in `D:\_Proj`, including generic `v013-*` names missed previously. It removed obsolete installers, transport fragments, repeated source packages and loose logs. Unique private originals were moved with hash verification into the existing ignored handoff area; unique source variants were reduced to small patches against reachable Git bases.
 
-The Editor source, installed 0.18.0 binary and existing Editor tag remain unchanged. This release contains plugin/example work only. Repository visibility stays private, and no upstream or npm publication is part of this milestone.
+The old v0.10 service was verified as an orphaned read-only process: its parent was gone, there were no clients, and no launch configuration depended on its old worktree. It exited normally after a console interrupt. The current core opened the same research entry read-only; source and metadata hashes stayed unchanged. The obsolete worktree was then retired. The remaining internal v0.4 worktree was also retired after preserving its unique source differences and data; Huandeng now has one registered worktree, the canonical main checkout. The current top level has **22 directories and four files**, including unrelated user projects and a newly observed independent adapter source directory preserved as possible parallel work.
 
-## Release contents and continuation
+[Workspace organization](WORKSPACE-ORGANIZATION.md) records exact counts, retained unique material and remaining project dependencies. No new dated introduction directory was created.
 
-The release contains four portable project ZIPs, four PDFs, four PPTX files, a plugin ZIP, a native-marketplace ZIP, a combined manifest and checksums. Marketplace paths are relative; private account bindings and machine-specific launch configuration are excluded.
+Startup measurements used the actual 0.18.0 executable, an isolated profile and a committed public 19-page project while native trials remained active. Empty Home became interactive in 1.854 seconds; first project readiness in an existing window took 5.117 seconds; restoring one project in a new process reached project readiness in 6.086 seconds. These are warm-cache DOM checkpoints, not a clean-machine cold-start claim.
 
-[Release](https://github.com/JaytonKogeru/huandeng/releases/tag/plugin-v0.18.2) · [Artifact manifest](evidence/introduction-rework/release-manifest.json) · [Checksums](evidence/introduction-rework/SHA256SUMS.txt).
+The observed code path restores saved projects serially before completing requested-entry handling and opening readiness. Prioritizing the desired project and admitting queued opens before the remaining restoration is a concrete follow-up. This release records the finding and measurements without claiming to have sped up the Editor.
 
-Use the four canonical projects for continued review. Keep the user's original nominated demo unchanged. Do not reinstate white-background or fixed-outline requirements from superseded 0.18 documents, recreate dated working copies, overwrite unrelated modified fixtures or report agent review as author approval.
+## Release and continuation
 
+[Release](https://github.com/JaytonKogeru/huandeng/releases/tag/plugin-v0.18.3) · [Manifest](evidence/introduction-story/release-manifest.json) · [Checksums](evidence/introduction-story/SHA256SUMS.txt) · [Source and preview index](../examples/huandeng-introduction/README.md).
 
-## Publication and final handoff verified
+Continue editing the six canonical folders. The release carries complete projects, current Main and existing brief exports, portable plugin packages and verification records. Historical releases retain their original artifacts, with their introduction entry points pointing to the current story revision. Repository visibility remains private; the Editor tag/binary and upstream/npm publishing state remain unchanged.
 
-The plugin-v0.18.2 release was published on 2026-11-10 at 13:43:36 UTC as a review prerelease. Its source is [b624e55](https://github.com/JaytonKogeru/huandeng/commit/b624e553eb584ed4e1314e402aaf03123edb4ee7). All sixteen uploaded assets matched their SHA-256 values, and [HUANDENG Core CI passed](https://github.com/JaytonKogeru/huandeng/actions/runs/42826529864).
-
-The historical Editor 0.18.0 release now points readers to these replacements and records the author's rejection of its old introduction visuals. Its tag and binary assets were preserved. Temporary introduction writers and redundant trial ZIPs were then retired as recorded in WORKSPACE-ORGANIZATION.md. The final handoff documentation does not change the tagged source projects, plugin bytes or release attachments.
+The source-scope, formatting, publication and uploaded-hash checks are recorded with the release manifest. Author feedback on the new story remains the next editorial input.

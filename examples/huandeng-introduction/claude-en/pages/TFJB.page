@@ -1,0 +1,426 @@
+background:
+  type: solid
+  color: "#F6F6F3"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 56
+      - 30
+      - 848
+      - 42
+    content:
+      text: PPTD plus React, in a desktop editor
+      fontFamily: Arial
+      fontSize: 30
+      lineHeight: 1.2
+      color: "#1C2321"
+      align:
+        - left
+        - top
+      bold: true
+    role: title
+  - elementId: src0
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 56
+      - 92
+      - 272
+      - 100
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#C7CEC9"
+  - elementId: src0h
+    elementType: text
+    bounds:
+      - 70
+      - 100
+      - 200
+      - 24
+    content:
+      text: PPTD
+      fontFamily: Arial
+      fontSize: 17
+      lineHeight: 1.35
+      color: "#1C2321"
+      align:
+        - left
+        - middle
+      bold: true
+  - elementId: src0d
+    elementType: text
+    bounds:
+      - 70
+      - 128
+      - 246
+      - 60
+    content:
+      text: A slide deck as a folder of page files. I met the idea in the Kimi Slides ecosystem.
+      fontFamily: Arial
+      fontSize: 13
+      lineHeight: 1.35
+      color: "#3E4845"
+      align:
+        - left
+        - top
+  - elementId: srca0
+    elementType: line
+    bounds:
+      - 192
+      - 192
+      - 168
+      - 40
+    viewBox:
+      - 168
+      - 40
+    points: 0,0 168,40
+    border:
+      width: 1.5
+      color: "#2E6B5E"
+      style: solid
+    arrow:
+      - null
+      - arrow
+  - elementId: src1
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 344
+      - 92
+      - 272
+      - 100
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#C7CEC9"
+  - elementId: src1h
+    elementType: text
+    bounds:
+      - 358
+      - 100
+      - 200
+      - 24
+    content:
+      text: OpenSlide
+      fontFamily: Arial
+      fontSize: 17
+      lineHeight: 1.35
+      color: "#1C2321"
+      align:
+        - left
+        - middle
+      bold: true
+  - elementId: src1d
+    elementType: text
+    bounds:
+      - 358
+      - 128
+      - 246
+      - 60
+    content:
+      text: "open-slide/open-slide: an open-source slide editor whose pages are React components."
+      fontFamily: Arial
+      fontSize: 13
+      lineHeight: 1.35
+      color: "#3E4845"
+      align:
+        - left
+        - top
+  - elementId: srca1
+    elementType: line
+    bounds:
+      - 480
+      - 192
+      - 2
+      - 40
+    viewBox:
+      - 2
+      - 40
+    points: 1,0 1,40
+    border:
+      width: 1.5
+      color: "#2E6B5E"
+      style: solid
+    arrow:
+      - null
+      - arrow
+  - elementId: src2
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 632
+      - 92
+      - 272
+      - 100
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#C7CEC9"
+  - elementId: src2h
+    elementType: text
+    bounds:
+      - 646
+      - 100
+      - 200
+      - 24
+    content:
+      text: Familiar editors
+      fontFamily: Arial
+      fontSize: 17
+      lineHeight: 1.35
+      color: "#1C2321"
+      align:
+        - left
+        - middle
+      bold: true
+  - elementId: src2d
+    elementType: text
+    bounds:
+      - 646
+      - 128
+      - 246
+      - 60
+    content:
+      text: Sections, views and notes from PowerPoint and WPS; a Layers panel in the spirit of Photoshop.
+      fontFamily: Arial
+      fontSize: 13
+      lineHeight: 1.35
+      color: "#3E4845"
+      align:
+        - left
+        - top
+  - elementId: srca2
+    elementType: line
+    bounds:
+      - 600
+      - 192
+      - 168
+      - 40
+    viewBox:
+      - 168
+      - 40
+    points: 168,0 0,40
+    border:
+      width: 1.5
+      color: "#2E6B5E"
+      style: solid
+    arrow:
+      - null
+      - arrow
+  - elementId: os-logo
+    elementType: image
+    bounds:
+      - 576
+      - 98
+      - 24
+      - 24
+    src: media/imported/44e2a2aa5f3887deae386fa73f71234961f93e006873b632ccf38b6b6f1291a1.png
+    sourceName: open-slide.png
+    fit:
+      mode: contain
+  - elementId: editor
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 236
+      - 232
+      - 488
+      - 92
+    fill:
+      type: solid
+      color: "#2E6B5E"
+    border:
+      width: 0
+      color: "#2E6B5E"
+  - elementId: editor-mark-bg
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 248
+      - 242
+      - 36
+      - 36
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 0
+      color: "#FFFFFF"
+  - elementId: editor-mark
+    elementType: image
+    bounds:
+      - 252
+      - 246
+      - 28
+      - 28
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    fit:
+      mode: contain
+  - elementId: editor-h
+    elementType: text
+    bounds:
+      - 290
+      - 244
+      - 420
+      - 30
+    content:
+      text: HUANDENG Editor
+      fontFamily: Arial
+      fontSize: 19
+      lineHeight: 1.35
+      color: "#FFFFFF"
+      align:
+        - left
+        - middle
+      bold: true
+  - elementId: editor-d
+    elementType: text
+    bounds:
+      - 252
+      - 280
+      - 460
+      - 40
+    content:
+      text: "An Electron desktop app: a React interface on a PPTD project, with page history and Story."
+      fontFamily: Arial
+      fontSize: 13.5
+      lineHeight: 1.35
+      color: "#FFFFFF"
+      align:
+        - left
+        - top
+  - elementId: plug-a
+    elementType: line
+    bounds:
+      - 480
+      - 324
+      - 2
+      - 28
+    viewBox:
+      - 2
+      - 28
+    points: 1,0 1,28
+    border:
+      width: 1.5
+      color: "#2E6B5E"
+      style: solid
+    arrow:
+      - null
+      - arrow
+  - elementId: plugin
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 236
+      - 352
+      - 488
+      - 56
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1.5
+      color: "#2E6B5E"
+  - elementId: plugin-t
+    elementType: text
+    bounds:
+      - 252
+      - 356
+      - 460
+      - 48
+    content:
+      text: "HUANDENG plugin: lets Codex, Claude Code, DeepSeek and ChatGPT work in the same editor"
+      fontFamily: Arial
+      fontSize: 13.5
+      lineHeight: 1.35
+      color: "#1C2321"
+      align:
+        - left
+        - middle
+  - elementId: together
+    elementType: text
+    bounds:
+      - 236
+      - 414
+      - 488
+      - 20
+    content:
+      text: Editor + plugin = the HUANDENG workflow
+      fontFamily: Arial
+      fontSize: 14
+      lineHeight: 1.35
+      color: "#2E6B5E"
+      align:
+        - center
+        - middle
+      bold: true
+  - elementId: credit
+    elementType: text
+    bounds:
+      - 56
+      - 448
+      - 848
+      - 44
+    content:
+      text: Most editing behaviour comes from OpenSlide (MIT). OpenPPTD is a separate project; HUANDENG reuses only its equation-conversion code. HUANDENG is not affiliated with or endorsed by Kimi.
+      fontFamily: Arial
+      fontSize: 11.5
+      lineHeight: 1.35
+      color: "#6E7874"
+      align:
+        - left
+        - top
+  - elementId: ft-mark
+    elementType: image
+    bounds:
+      - 56
+      - 505
+      - 16
+      - 16
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    fit:
+      mode: contain
+  - elementId: ft-label
+    elementType: text
+    bounds:
+      - 78
+      - 505
+      - 520
+      - 16
+    content:
+      text: HUANDENG  /  What I built  ·  concept diagram
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - left
+        - middle
+  - elementId: ft-pos
+    elementType: text
+    bounds:
+      - 824
+      - 505
+      - 80
+      - 16
+    content:
+      text: "0"
+      field: main-position
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - right
+        - middle
+notes: "So what did I build? While looking at how people are teaching agents to make slides, I met the PPTD idea in the Kimi Slides ecosystem: a deck kept as a folder of page files rather than one packed file. Then I found OpenSlide, an open-source editor where every page is a React component. I thought these two ideas fit together: PPTD as the document, React as the interface. HUANDENG is that combination, packaged as an Electron desktop app. Most of the editing behaviour comes from OpenSlide; sections, views and notes borrow from PowerPoint and WPS, and the Layers panel takes its cue from Photoshop. Next to the editor sits a plugin, so that the AI client you already use can work in the same editor. Editor plus plugin is the workflow. To be precise about credit: OpenPPTD is a different project, and we reuse only its equation-conversion code. And HUANDENG has no affiliation with Kimi."

@@ -1,0 +1,29 @@
+{
+  "project": "deepseek-en",
+  "reviewer": "ChatGPT native-trial supervisor",
+  "scope": {
+    "officeContactSheets": [
+      "office/office-contact-1.jpg",
+      "office/office-contact-2.jpg",
+      "office/office-contact-3.jpg"
+    ],
+    "pagesCoveredByContacts": 18,
+    "fullPageOfficeInspection": [
+      15
+    ],
+    "nativeSourceAndExportRevisionChecks": true
+  },
+  "observations": [
+    "All 18 Office-rendered pages are present; the dark cover/Section/closing pages and warm light-body system survive the export.",
+    "No fake table grid was observed; this edition uses paragraphs/lists and images rather than native table/chart objects.",
+    "Full-size page15 preserves the scientific image plot, axis units and numbered paired positions beside the structural image. The caption limits the data to one structure rather than independent replicates.",
+    "The UI images on identity, history, assets and export pages are readable at the displayed sizes; no blank or broken image placeholder was observed."
+  ],
+  "layoutFindings": [],
+  "limitations": [
+    "Complete-sequence visual inspection used contact sheets; the listed scientific page was additionally inspected individually.",
+    "Independent narrative/factual findings are recorded separately and are not cleared by a successful Office render. Owner acceptance remains pending."
+  ],
+  "blockingOfficeLayoutDefectsObserved": [],
+  "sourcePptxSha256": "4d02f32bc79805d622c78eb2db8d6e846d17a11caa153bcaf1e6653f74bfe84a"
+}

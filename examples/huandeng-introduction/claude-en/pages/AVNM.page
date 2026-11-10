@@ -417,10 +417,7 @@ elements:
   - elementId: y-title
     elementType: text
     bounds:
-      - 352
-      - 112
-      - 300
-      - 18
+        [352,104,300,18]
     content:
       text: C1′–C1′ distance (Å)
       fontFamily: Arial

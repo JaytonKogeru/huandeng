@@ -1,0 +1,180 @@
+pageType: content
+background:
+  type: solid
+  color: "#F7F5EF"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 44
+      - 35
+      - 870
+      - 68
+    role: title
+    content:
+      text: 五十页里改两页，为什么又多一套？
+      fontFamily: Microsoft YaHei
+      fontSize: 28
+      color: "#263C34"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: brand-small
+    elementType: image
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    alt: huandeng.png
+    bounds:
+      - 44
+      - 510
+      - 17
+      - 17
+    fit:
+      mode: contain
+    crop:
+      left: 0.18
+      right: 0.18
+      top: 0.14
+      bottom: 0.14
+  - elementId: foot
+    elementType: text
+    bounds:
+      - 69
+      - 513
+      - 130
+      - 17
+    content:
+      text: HUANDENG
+      fontFamily: Microsoft YaHei
+      fontSize: 10
+      color: "#66756B"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: position
+    elementType: text
+    bounds:
+      - 884
+      - 512
+      - 30
+      - 18
+    content:
+      text: ""
+      fontFamily: Microsoft YaHei
+      fontSize: 10
+      color: "#66756B"
+      bold: false
+      align:
+        - right
+        - top
+      lineHeight: 1.3
+      field: main-position
+  - elementId: whole-deck
+    elementType: icon
+    iconName: fas:file-powerpoint
+    bounds:
+      - 56
+      - 155
+      - 58
+      - 58
+    fill:
+      type: solid
+      color: "#356F68"
+  - elementId: request
+    elementType: text
+    bounds:
+      - 142
+      - 166
+      - 690
+      - 44
+    content:
+      text: “把其中两页改一下。”
+      fontFamily: Microsoft YaHei
+      fontSize: 25
+      color: "#263C34"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: copies
+    elementType: text
+    bounds:
+      - 66
+      - 280
+      - 400
+      - 176
+    content:
+      text: |-
+        原稿.pptx
+        修改版.pptx
+        修改版_final.pptx
+        修改版_final_2.pptx
+      fontFamily: Microsoft YaHei
+      fontSize: 22
+      color: "#66756B"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.55
+  - elementId: cause
+    elementType: line
+    bounds:
+      - 462
+      - 349
+      - 70
+      - 10
+    viewBox:
+      - 1
+      - 1
+    points: 0,0.5 1,0.5
+    border:
+      width: 1.4
+      color: "#356F68"
+    arrow:
+      - null
+      - arrow
+  - elementId: decision
+    elementType: text
+    bounds:
+      - 570
+      - 264
+      - 343
+      - 221
+    content:
+      text: |-
+        我想到版本管理：
+
+        改的是哪一页，
+        就把历史留在哪一页。
+      fontFamily: Microsoft YaHei
+      fontSize: 23
+      color: "#356F68"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.5
+  - elementId: illustration-note
+    elementType: text
+    bounds:
+      - 44
+      - 487
+      - 870
+      - 21
+    content:
+      text: 示意文件名；“50 页改 2 页”来自我的使用场景。
+      fontFamily: Microsoft YaHei
+      fontSize: 12
+      color: "#66756B"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+notes: "第二个问题很实际。假设我已经有五十页，只想修改其中两页，有的Agent为了保留原稿，会再给我一整套新文件。改动次数一多，目录里就堆满带日期、final和new的副本。我想到Git这样的版本管理工具：能不能把修改和历史落到这一页上，而不是靠不断复制整个演讲来保存过去？\n\nAccount source: sources/story/USER-STORY.zh-CN.md. The explanation is based on the founder’s personal experience and design judgment."

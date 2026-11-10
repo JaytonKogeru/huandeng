@@ -1,0 +1,84 @@
+background:
+  type: solid
+  color: "#17181A"
+elements:
+  - elementId: p18-title
+    elementType: text
+    role: title
+    bounds:
+      - 80
+      - 170
+      - 760
+      - 160
+    content:
+      text: A deck should sound like the person who made it.
+      fontSize: 44
+      fontFamily: Georgia
+      color: "#F7F5F0"
+      lineHeight: 1.15
+      align:
+        - left
+        - top
+  - elementId: p18-rule
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 80
+      - 352
+      - 48
+      - 2
+    fill:
+      type: solid
+      color: "#D9715C"
+  - elementId: p18-sub
+    elementType: text
+    bounds:
+      - 80
+      - 378
+      - 520
+      - 32
+    content:
+      text: That is the whole project.
+      fontSize: 16
+      fontFamily: Segoe UI
+      color: "#B9B3A6"
+      lineHeight: 1.4
+      align:
+        - left
+        - top
+  - elementId: p18-foot
+    elementType: text
+    bounds:
+        [80,492,300,14]
+    content:
+      text: HUANDENG / 2026
+      fontSize: 9.5
+      fontFamily: Consolas
+      color: "#8E897E"
+      letterSpacing: 1.2
+      align:
+        - left
+        - top
+  - elementId: p18-seal
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 80
+      - 420
+      - 46
+      - 46
+    fill:
+      type: solid
+      color: "#F7F5F0"
+  - elementId: p18-mark
+    elementType: image
+    bounds:
+      - 86
+      - 426
+      - 34
+      - 34
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    fit:
+      mode: contain
+notes: That's the whole project. Not a better PowerPoint, and not a machine that makes decks for you. A way to start from the thing you actually want to say, and keep the document close enough to the person that it still sounds like them. The next step is more direct manipulation — layers, the kind of editing you do in an image tool — but the order is the point. Story first; slides after.

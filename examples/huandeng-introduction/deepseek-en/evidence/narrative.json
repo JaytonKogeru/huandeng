@@ -1,0 +1,658 @@
+{
+  "project": "deepseek-en",
+  "story": {
+    "schemaVersion": 1,
+    "mainStory": {
+      "purpose": "Explain why HUANDENG exists: a story-first, page-oriented slide editor for work that has to sound like a person.",
+      "audience": "Researchers and builders who make presentations and work with AI agents.",
+      "takeaway": "The AI look is an absence of focus. HUANDENG keeps the human story beside the page, gives every page a stable identity and its own history, and lets the talk and the evidence survive the edit."
+    },
+    "sections": [
+      {
+        "id": "why-the-texture",
+        "title": "Why the texture",
+        "story": {
+          "purpose": "Follow the observations that started the project: the room that could tell, the everything-deck, the turn to story-first, and the two walls of copies and screenshot review.",
+          "audience": "Researchers and builders who make presentations and work with AI agents.",
+          "takeaway": "The problem is upstream of layout; the unit of change and the unit of review both had to become the page."
+        },
+        "pageIds": [
+          "3833f199-98ab-4056-b521-ab542137f524",
+          "bdbc20e7-5cb6-4877-8eb0-3feebad05d9d",
+          "befc82a6-f242-49f7-9b35-7eed8f3b5640",
+          "20d9cf1d-6820-42e8-9ddc-6377b4ad855b",
+          "ec65f86b-26f3-4117-9dfd-b510d19424de",
+          "d73b0924-699a-4673-818b-5d37e7c1b25a",
+          "665ad0cb-5048-4005-84bc-bf31bab632d9",
+          "32991558-c79c-4033-bce0-f8230c890bc9"
+        ],
+        "startPageId": "3833f199-98ab-4056-b521-ab542137f524"
+      },
+      {
+        "id": "the-editor",
+        "title": "The editor",
+        "story": {
+          "purpose": "Show the editor as the answer to those walls: one working document, Story beside the page, stable IDs, page history and diffs, a real materials library, shared presentations, and delivery.",
+          "audience": "Researchers and builders who make presentations and work with AI agents.",
+          "takeaway": "A page can keep its purpose, identity, evidence and history while the deck keeps changing."
+        },
+        "pageIds": [
+          "065ed891-d62a-41f1-b25e-ecd07ea2a924",
+          "d80ecf22-1b5d-41bb-87c6-4959e8b25350",
+          "d3aed85c-d9fc-4750-8ffe-caf9a4fb2d4f",
+          "bc85ec8f-af86-4cee-996e-a84a80de9670",
+          "d9fffede-4a83-4fe9-8d0f-364efc3e11e5",
+          "738289ee-5cfc-4b6f-a0f1-e0492cfafc06",
+          "b792b954-ed0c-4510-881d-bb8b297db885",
+          "c279a641-b65c-42de-8ed8-d085819d7fb6",
+          "5a72c985-b070-4936-b854-73e0c743a35b",
+          "fa252443-bd97-4339-a179-1242bf2009bb"
+        ],
+        "startPageId": "065ed891-d62a-41f1-b25e-ecd07ea2a924"
+      }
+    ],
+    "presentations": []
+  },
+  "pages": [
+    {
+      "shortCode": "98RC",
+      "pageId": "3833f199-98ab-4056-b521-ab542137f524",
+      "position": 1,
+      "title": [
+        "Why I built\nHUANDENG"
+      ],
+      "notes": "I want to start with why this exists, not with a feature list. I make slides constantly — group meeting, lab presentations, talks. Over the last year I became convinced that agents will write slides the way they now write code and text. The question I care about is not whether they can, but whether the result can sound like a person. This is the story of the two or three things that got in the way, and the editor I built around them.",
+      "designIntent": {
+        "purpose": "Open the talk as a founder's note: slides are becoming agent-written, so the writing must begin with a person.",
+        "keep": [
+          "Ink cover with the serif title",
+          "No product screenshot or logo on the cover"
+        ],
+        "requestedChange": "Story-driven revision for the English introduction.",
+        "actor": "deepseek-harness",
+        "source": "Owner's spoken account, 2026-11-10",
+        "recordedAt": "2026-11-10T22:55:22.686Z",
+        "backgroundException": "Full-page ink field on the cover.",
+        "pageRole": "cover"
+      },
+      "elements": {
+        "shape": 2,
+        "text": 4
+      },
+      "visibleText": [
+        "A FOUNDER'S NOTE",
+        "Why I built\nHUANDENG",
+        "Slides are becoming something agents can write. I wanted the writing to begin with a person.",
+        "FOUNDER'S INTRODUCTION · 2026"
+      ],
+      "textObjects": 4,
+      "hidden": false
+    },
+    {
+      "shortCode": "BR4V",
+      "pageId": "bdbc20e7-5cb6-4877-8eb0-3feebad05d9d",
+      "position": 2,
+      "title": [
+        "I could see it from the back of the room."
+      ],
+      "notes": "This began in group meeting. Someone would put up a deck, and my advisor — and honestly most of the room — could tell almost immediately that a model had made it. The design was often fine. Sometimes it was better than fine. The tell was that nobody seemed to have chosen anything. I started watching for that feeling instead of for a particular template.",
+      "designIntent": {
+        "purpose": "Ground the project in a specific room: people who make slides can recognize an AI deck before they can name why.",
+        "keep": [
+          "The room scene stays observational, not a model ranking"
+        ],
+        "requestedChange": "Story-driven revision for the English introduction.",
+        "actor": "deepseek-harness",
+        "source": "Owner's spoken account, 2026-11-10",
+        "recordedAt": "2026-11-10T22:55:22.686Z"
+      },
+      "elements": {
+        "text": 4
+      },
+      "visibleText": [
+        "01 · THE ROOM",
+        "I could see it from the back of the room.",
+        "At group meeting, a deck would go up and my advisor would know. Not the template. Not the font. The deck had an answer for everything and a reason for nothing. You could feel that no one had chosen.",
+        "2"
+      ],
+      "textObjects": 4,
+      "hidden": false
+    },
+    {
+      "shortCode": "XFZM",
+      "pageId": "befc82a6-f242-49f7-9b35-7eed8f3b5640",
+      "position": 3,
+      "title": [
+        "The texture is not a style. It is an absence of focus."
+      ],
+      "notes": "The usual explanation is AI style — a font, a gradient, a layout. I don't think that's it. The deck I recognized was complete in a way a person rarely is. Every point had a slide; every slide had a heading; every heading had three bullets. Completeness was the problem. A person makes a deck by deciding what not to say. A short post I read described this as covering everything, and it named what I had been feeling. The fix had to be upstream of layout.",
+      "designIntent": {
+        "purpose": "Name the texture as an absence of focus, not a visual style.",
+        "keep": [
+          "No invented research claim; the observation stays personal"
+        ],
+        "requestedChange": "Story-driven revision for the English introduction.",
+        "actor": "deepseek-harness",
+        "source": "Owner's spoken account, 2026-11-10",
+        "recordedAt": "2026-11-10T22:55:22.686Z"
+      },
+      "elements": {
+        "text": 6
+      },
+      "visibleText": [
+        "02 · THE TELL",
+        "The texture is not a style. It is an absence of focus.",
+        "A deck that tries to cover everything leaves the audience nothing to hold.",
+        "Every point gets a slide.\nEvery slide gets a heading.\nEvery heading gets three bullets.",
+        "Nothing is allowed to be the point.",
+        "3"
+      ],
+      "textObjects": 6,
+      "hidden": false
+    },
+    {
+      "shortCode": "TPCJ",
+      "pageId": "20d9cf1d-6820-42e8-9ddc-6377b4ad855b",
+      "position": 4,
+      "title": [
+        "So I turned the process around."
+      ],
+      "notes": "So I reversed the order. I don't ask for a deck and then write the talk. I talk first: why this exists, what I saw, what I decided, where I'm unsure. The model organizes that into a story, and we build pages from it. The Story field in the editor is where that intent lives for each page. The important part is not the feature; it's the direction of the work. The person supplies the point; the model helps with the form.",
+      "designIntent": {
+        "purpose": "Turn the process around: the founder talks first, the model organizes, pages follow.",
+        "keep": [
+          "Three-step order shown without decorative arrows"
+        ],
+        "requestedChange": "Story-driven revision for the English introduction.",
+        "actor": "deepseek-harness",
+        "source": "Owner's spoken account, 2026-11-10",
+        "recordedAt": "2026-11-10T22:55:22.686Z"
+      },
+      "elements": {
+        "text": 6
+      },
+      "visibleText": [
+        "03 · THE TURN",
+        "So I turned the process around.",
+        "Instead of asking for slides and then writing the talk, I tell the story first: why this exists, what I saw, what I decided, what I still don't know. The model organizes it. We make pages from that.",
+        "THE ORDER",
+        "I talk.\nThe model organizes.\nWe make pages.",
+        "4"
+      ],
+      "textObjects": 6,
+      "hidden": false
+    },
+    {
+      "shortCode": "9KH9",
+      "pageId": "ec65f86b-26f3-4117-9dfd-b510d19424de",
+      "position": 5,
+      "title": [
+        "If the deck comes first, the talk becomes an explanation of the deck."
+      ],
+      "notes": "There's a practical benefit I didn't expect. When I explain a project out loud, I wander. I double back. I remember the thing that mattered halfway through a sentence. That is not a defect to clean up; it is the talk. If the deck is built from that, the speaking comes with it. If the deck is built first, I end up writing a script that justifies an order I never chose. I would rather write the slides from the talk than the talk from the slides.",
+      "designIntent": {
+        "purpose": "Argue that story-first also produces the talk, instead of a script retrofitted to AI-made pages.",
+        "keep": [
+          "The claim is the founder's working experience, not a study"
+        ],
+        "requestedChange": "Story-driven revision for the English introduction.",
+        "actor": "deepseek-harness",
+        "source": "Owner's spoken account, 2026-11-10",
+        "recordedAt": "2026-11-10T22:55:22.686Z"
+      },
+      "elements": {
+        "text": 4,
+        "shape": 1
+      },
+      "visibleText": [
+        "04 · THE TURN",
+        "If the deck comes first, the talk becomes an explanation of the deck.",
+        "When I talk through a project, I double back. I remember the thing that actually mattered halfway through a sentence. That path is the talk. Building from it means I don't have to write a second script that justifies an order I never chose.",
+        "5"
+      ],
+      "textObjects": 4,
+      "hidden": false
+    },
+    {
+      "shortCode": "MG2S",
+      "pageId": "d73b0924-699a-4673-818b-5d37e7c1b25a",
+      "position": 6,
+      "title": [
+        "Change two pages. Receive a third copy of the deck."
+      ],
+      "notes": "Story-first only works if the document can keep up. When I tried to edit a real deck with an agent, two walls appeared. The first was mechanical. On a fifty-page deck, I'd ask for two pages to change. I'd get a new file. Then another. Defensive agents preserve instead of replace. The folder filled with near-duplicates and final versions, and I couldn't tell which one was the deck. Git had already solved this for code. The unit of change should be the page.",
+      "designIntent": {
+        "purpose": "Make the copy problem concrete: two changed pages arrive as another whole deck.",
+        "keep": [
+          "The file list is a labeled sketch, not screenshot evidence"
+        ],
+        "requestedChange": "Story-driven revision for the English introduction.",
+        "actor": "deepseek-harness",
+        "source": "Owner's spoken account, 2026-11-10",
+        "recordedAt": "2026-11-10T22:55:22.686Z"
+      },
+      "elements": {
+        "text": 7
+      },
+      "visibleText": [
+        "05 · THE WALL",
+        "Change two pages. Receive a third copy of the deck.",
+        "On a fifty-page deck, asking an agent to fix two pages rarely means two pages change. It means a new file. Defensive agents preserve instead of replace, so the folder fills with near-duplicates and versions nobody can name.",
+        "The unit of change should be the page.",
+        "deck_v1.pptx\ndeck_v1_copy.pptx\ndeck_v1_copy_edited.pptx\ndeck_v1_final.pptx\ndeck_v1_final_2.pptx\ndeck_v1_final_FINAL.pptx",
+        "A sketch of the failure mode. Not a screenshot.",
+        "6"
+      ],
+      "textObjects": 7,
+      "hidden": false
+    },
+    {
+      "shortCode": "V7VJ",
+      "pageId": "665ad0cb-5048-4005-84bc-bf31bab632d9",
+      "position": 7,
+      "title": [
+        "The only way to check a page was to photograph it."
+      ],
+      "notes": "The second wall was the interface. With PowerPoint or Google Slides, the agent works through the screen. To judge a page it takes a full screenshot and looks at the picture. That is a bad loop: slow, expensive, and impossible to diff. You can't ask which object moved, or check bounds, or test a revision. Visual review still matters — a person still has to look — but it cannot be the only channel. I wanted the page to have a structure the agent could address directly.",
+      "designIntent": {
+        "purpose": "Show why screenshot-only review is a poor agent interface while keeping visual review necessary.",
+        "keep": [
+          "Real page capture, not a mocked screen"
+        ],
+        "requestedChange": "Story-driven revision for the English introduction.",
+        "actor": "deepseek-harness",
+        "source": "Owner's spoken account, 2026-11-10",
+        "recordedAt": "2026-11-10T22:55:22.686Z"
+      },
+      "elements": {
+        "text": 6,
+        "image": 1,
+        "shape": 1
+      },
+      "visibleText": [
+        "06 · THE WALL",
+        "The only way to check a page was to photograph it.",
+        "The agents I used worked through the screen: to judge a page they took a full screenshot, looked at the picture, and guessed. A picture cannot be diffed, targeted, or tested. It can only be admired or redone.",
+        "Visual review is still necessary. It cannot be the only interface.",
+        "A page as pixels: the only handle was a whole picture.",
+        "7"
+      ],
+      "textObjects": 6,
+      "hidden": false
+    },
+    {
+      "shortCode": "7GWR",
+      "pageId": "32991558-c79c-4033-bce0-f8230c890bc9",
+      "position": 8,
+      "title": [
+        "So the page stopped being a picture."
+      ],
+      "notes": "That led me to the file format. PowerPoint already keeps slides as separate parts inside the .pptx package; I'm not claiming it has no structure. But the structure is packed inside one file and the working interface is the screen. I wanted the slide to be a page in a folder: a manifest, one file per page, media beside it, history underneath. That's PPTD. I first met the idea in the Kimi Slides ecosystem; the open-source open-slide project gave me pages as React components. HUANDENG is the two things put together in an Electron editor. It is not a renamed PPTX.",
+      "designIntent": {
+        "purpose": "Explain the page-as-file model and credit open-slide without claiming PPTX has no structure.",
+        "keep": [
+          "Do not claim Kimi invented PPTD",
+          "Do not call HUANDENG an unpacked PPTX"
+        ],
+        "requestedChange": "Story-driven revision for the English introduction.",
+        "actor": "deepseek-harness",
+        "source": "Owner's spoken account and checked facts, 2026-11-10",
+        "recordedAt": "2026-11-10T22:55:22.686Z"
+      },
+      "elements": {
+        "text": 7
+      },
+      "visibleText": [
+        "07 · THE WALL",
+        "So the page stopped being a picture.",
+        "PowerPoint already keeps slides as separate parts inside one package. I wanted that structure to be visible as a working folder: one file per page, media beside them, history underneath.",
+        "PPTD: pages as files, with history beside them. Built on open-slide's React page foundation, in an Electron editor. Not a renamed PPTX.",
+        "my-talk/\n  deck.pptd\n  pages/\n    cover.page\n    the-room.page\n    the-tell.page\n  media/\n    dna-duplex-side.png\n  .huandeng/\n    project.json",
+        "The PPTD working directory. Simplified.",
+        "8"
+      ],
+      "textObjects": 7,
+      "hidden": false
+    },
+    {
+      "shortCode": "WEZS",
+      "pageId": "065ed891-d62a-41f1-b25e-ecd07ea2a924",
+      "position": 9,
+      "title": [
+        "The editor"
+      ],
+      "notes": "So that's what I built. I'll show you the editor now, but I want to show it as answers to those two problems, not as a tour of every button.",
+      "designIntent": {
+        "purpose": "Pause and open the second act with the editor, title only.",
+        "keep": [
+          "Title-only ink section page"
+        ],
+        "requestedChange": "Story-driven revision for the English introduction.",
+        "actor": "deepseek-harness",
+        "source": "Owner's spoken account, 2026-11-10",
+        "recordedAt": "2026-11-10T22:55:22.686Z",
+        "backgroundException": "Ink section pause page.",
+        "pageRole": "section"
+      },
+      "elements": {
+        "text": 1
+      },
+      "visibleText": [
+        "The editor"
+      ],
+      "textObjects": 1,
+      "hidden": false
+    },
+    {
+      "shortCode": "DR4V",
+      "pageId": "d80ecf22-1b5d-41bb-87c6-4959e8b25350",
+      "position": 10,
+      "title": [
+        "One working document."
+      ],
+      "notes": "This is the whole working document. Pages on the left, the canvas, the inspector, Story, materials, files, history. The canvas is one view, not the document. The important thing is that all of it lives in one project folder. The screenshot is a public example project, not this deck — I didn't want to stage a fake one.",
+      "designIntent": {
+        "purpose": "Show the real editor as one working document: pages, canvas, inspector, Story, materials, files and history.",
+        "keep": [
+          "Real public screenshot only",
+          "Caption states it is a public example, not this deck"
+        ],
+        "requestedChange": "Story-driven revision for the English introduction.",
+        "actor": "deepseek-harness",
+        "source": "Owner's spoken account, 2026-11-10",
+        "recordedAt": "2026-11-10T22:55:22.686Z"
+      },
+      "elements": {
+        "text": 3,
+        "image": 1,
+        "shape": 1
+      },
+      "visibleText": [
+        "One working document.",
+        "Pages, Story, materials, files, and history in the same window.",
+        "HUANDENG, mid-edit. A public example project, not this deck."
+      ],
+      "textObjects": 3,
+      "hidden": false
+    },
+    {
+      "shortCode": "H29N",
+      "pageId": "d3aed85c-d9fc-4750-8ffe-caf9a4fb2d4f",
+      "position": 11,
+      "title": [
+        "The brief stays with the page."
+      ],
+      "notes": "Story is stored with the page. A prompt disappears when the chat ends; this doesn't. It records what the page is for, what must not change, and what this edit is meant to do. When another agent — or another person — opens the page, they start from the intent, not from a guess. It's an alignment tool, not a guarantee. The model can still get it wrong; but at least it's wrong against something explicit.",
+      "designIntent": {
+        "purpose": "Make Story persistent: purpose and constraints live beside the page, not in chat.",
+        "keep": [
+          "Real Story panel capture"
+        ],
+        "requestedChange": "Story-driven revision for the English introduction.",
+        "actor": "deepseek-harness",
+        "source": "Owner's spoken account, 2026-11-10",
+        "recordedAt": "2026-11-10T22:55:22.686Z"
+      },
+      "elements": {
+        "text": 6,
+        "image": 1,
+        "shape": 1
+      },
+      "visibleText": [
+        "01 · THE WORKSPACE",
+        "The brief stays with the page.",
+        "A prompt disappears when the chat ends. Story is stored in the project: what the page is for, what must not change, what this edit should do. The next agent — or the next person — starts from that.",
+        "HUANDENG STORY",
+        "Purpose, constraints, and the change being asked for.",
+        "11"
+      ],
+      "textObjects": 6,
+      "hidden": false
+    },
+    {
+      "shortCode": "89DU",
+      "pageId": "bc85ec8f-af86-4cee-996e-a84a80de9670",
+      "position": 12,
+      "title": [
+        "A page keeps its name when it moves."
+      ],
+      "notes": "This is the identity problem. If I tell an agent to change page four, and the order has changed since the last version, page four is a different page. So every page has a stable Slide ID — the four-character code — separate from its Position. In this real footer the page moved from position two to position four; the ID stayed C014. That means I can ask for C014, and the history belongs to C014 no matter where it sits.",
+      "designIntent": {
+        "purpose": "Separate Position from Slide ID with the real before/after footer evidence.",
+        "keep": [
+          "Same page C014 in both strips",
+          "Real UI crops"
+        ],
+        "requestedChange": "Story-driven revision for the English introduction.",
+        "actor": "deepseek-harness",
+        "source": "Owner's spoken account, 2026-11-10",
+        "recordedAt": "2026-11-10T22:55:22.686Z"
+      },
+      "elements": {
+        "text": 8,
+        "image": 2,
+        "shape": 2
+      },
+      "visibleText": [
+        "02 · THE WORKSPACE",
+        "A page keeps its name when it moves.",
+        "Position is where a page sits today. Slide ID is what it is.",
+        "BEFORE THE MOVE",
+        "AFTER THE MOVE",
+        "The page moved two places. The ID did not. An agent can be asked for C014, not 'page four'.",
+        "Real editor footer, same page, two positions.",
+        "12"
+      ],
+      "textObjects": 8,
+      "hidden": false
+    },
+    {
+      "shortCode": "CRUA",
+      "pageId": "d9fffede-4a83-4fe9-8d0f-364efc3e11e5",
+      "position": 13,
+      "title": [
+        "History belongs to the page."
+      ],
+      "notes": "History is per page. Each page has named versions for the moments worth keeping, and an operation history for the smaller saves. Restoring a version changes only that page. That is the Git idea, applied at the unit that actually changes. I don't need a copy of the whole deck to try a different title.",
+      "designIntent": {
+        "purpose": "Show per-page named versions and the scope of restore.",
+        "keep": [
+          "Real history screen",
+          "No claim that every keystroke is a version"
+        ],
+        "requestedChange": "Story-driven revision for the English introduction.",
+        "actor": "deepseek-harness",
+        "source": "Owner's spoken account, 2026-11-10",
+        "recordedAt": "2026-11-10T22:55:22.686Z"
+      },
+      "elements": {
+        "text": 5,
+        "image": 1,
+        "shape": 1
+      },
+      "visibleText": [
+        "03 · THE WORKSPACE",
+        "History belongs to the page.",
+        "SAVED VERSIONS",
+        "Two named versions. The older one can be read before it is restored. Restoring changes only this page.",
+        "13"
+      ],
+      "textObjects": 5,
+      "hidden": false
+    },
+    {
+      "shortCode": "MKPP",
+      "pageId": "738289ee-5cfc-4b6f-a0f1-e0492cfafc06",
+      "position": 14,
+      "title": [
+        "A change arrives with its diff."
+      ],
+      "notes": "And when a change comes in, I can see the diff before I accept it. Not a chat message saying 'improved the slide', but the exact fields that changed, with the page's Story beside it. That turns review into something I can actually do. A diff is a better conversation than 'make it better'.",
+      "designIntent": {
+        "purpose": "Show the exact saved-change diff before acceptance.",
+        "keep": [
+          "Real saved-changes crop"
+        ],
+        "requestedChange": "Story-driven revision for the English introduction.",
+        "actor": "deepseek-harness",
+        "source": "Owner's spoken account, 2026-11-10",
+        "recordedAt": "2026-11-10T22:55:22.686Z"
+      },
+      "elements": {
+        "text": 7,
+        "image": 1,
+        "shape": 1
+      },
+      "visibleText": [
+        "04 · THE WORKSPACE",
+        "A change arrives with its diff.",
+        "Every save is an operation. Before accepting it, I can see which fields changed and what the page looked like before. The review is anchored to the exact saved operation, not to a chat message.",
+        "A diff is a better conversation than 'make it better'.",
+        "SAVED CHANGES",
+        "The exact fields, before the change is accepted.",
+        "14"
+      ],
+      "textObjects": 7,
+      "hidden": false
+    },
+    {
+      "shortCode": "TJKM",
+      "pageId": "b792b954-ed0c-4510-881d-bb8b297db885",
+      "position": 15,
+      "title": [
+        "A library, not a pasteboard."
+      ],
+      "notes": "The materials library is the part I use most. Assets are stored once, at their original size, with their source and usage. This figure is a real one: C1′–C1′ distances at twelve paired positions in PDB 1BNA, one public structure. They are not independent replicates, and not hydrogen-bond distances; I use them as an example of real evidence, not as a result of the editor. The figure is referenced, not re-pasted, so the labels and pixels survive.",
+      "designIntent": {
+        "purpose": "Make the materials library real: assets stored once, referenced, with source and usage; show a real scientific figure.",
+        "keep": [
+          "PDB 1BNA citation",
+          "One structure, not independent replicates",
+          "No performance claim"
+        ],
+        "requestedChange": "Story-driven revision for the English introduction.",
+        "actor": "deepseek-harness",
+        "source": "Owner's spoken account and public 1BNA source",
+        "recordedAt": "2026-11-10T22:55:22.686Z"
+      },
+      "elements": {
+        "text": 6,
+        "image": 2,
+        "shape": 1
+      },
+      "visibleText": [
+        "05 · THE WORKSPACE",
+        "A library, not a pasteboard.",
+        "Assets live once, at their original size, with their names and usage. A figure is referenced by pages, not re-pasted into each one. When the page changes, the evidence stays.",
+        "C1′–C1′ distances across twelve paired positions in PDB 1BNA. One structure, not independent replicates.",
+        "RCSB PDB 1BNA\nDrew et al., PNAS 1981",
+        "15"
+      ],
+      "textObjects": 6,
+      "hidden": false
+    },
+    {
+      "shortCode": "444J",
+      "pageId": "c279a641-b65c-42de-8ed8-d085819d7fb6",
+      "position": 16,
+      "title": [
+        "One source, many audiences."
+      ],
+      "notes": "One source, many talks. Main Slides is the canonical deck. A Presentation is a selection and order of those pages, with notes for that room. I can give a short version and a long version without maintaining two decks. If a page is fixed, every talk that uses it moves forward. If a talk has to stay exactly as it was, I can pin a version.",
+      "designIntent": {
+        "purpose": "Show one canonical Main library and a Presentation built from it.",
+        "keep": [
+          "Real project overview capture"
+        ],
+        "requestedChange": "Story-driven revision for the English introduction.",
+        "actor": "deepseek-harness",
+        "source": "Owner's spoken account, 2026-11-10",
+        "recordedAt": "2026-11-10T22:55:22.686Z"
+      },
+      "elements": {
+        "text": 6,
+        "image": 1,
+        "shape": 1
+      },
+      "visibleText": [
+        "06 · THE WORKSPACE",
+        "One source, many audiences.",
+        "Main Slides is the canonical deck. A Presentation selects and reorders those pages, with notes for that room. Fix a page once and every talk moves forward. Pin a version when a talk must stay frozen.",
+        "MAIN / PRESENTATION",
+        "Project overview: one Main library, one presentation built from it.",
+        "16"
+      ],
+      "textObjects": 6,
+      "hidden": false
+    },
+    {
+      "shortCode": "DM3J",
+      "pageId": "5a72c985-b070-4936-b854-73e0c743a35b",
+      "position": 17,
+      "title": [
+        "The work leaves as slides."
+      ],
+      "notes": "The work still has to leave the editor. PDF for the room. Editable PPTX for whoever has to keep it. MP4 when the deck has to play itself. Export reads the saved pages, not a screenshot of the editor, and the PPTX is a real editable file, not a folder of slide images. The format is a working format, not a lock-in.",
+      "designIntent": {
+        "purpose": "Close the loop: PDF, editable PPTX and MP4 from the saved pages.",
+        "keep": [
+          "Real Export dialog",
+          "PptxGenJS credit"
+        ],
+        "requestedChange": "Story-driven revision for the English introduction.",
+        "actor": "deepseek-harness",
+        "source": "Owner's spoken account, 2026-11-10",
+        "recordedAt": "2026-11-10T22:55:22.686Z"
+      },
+      "elements": {
+        "text": 8,
+        "image": 2,
+        "shape": 1
+      },
+      "visibleText": [
+        "07 · THE WORKSPACE",
+        "The work leaves as slides.",
+        "PDF for the room. Editable PPTX for the person who has to keep it. MP4 when the deck has to play itself. Export reads the saved pages, not a picture of the editor.",
+        "EXPORT",
+        "The real Export dialog: format and range. Public example project.",
+        "PDF · PPTX · MP4",
+        "PPTX written with PptxGenJS",
+        "17"
+      ],
+      "textObjects": 8,
+      "hidden": false
+    },
+    {
+      "shortCode": "TCMD",
+      "pageId": "fa252443-bd97-4339-a179-1242bf2009bb",
+      "position": 18,
+      "title": [
+        "A deck should sound like the person who made it."
+      ],
+      "notes": "That's the whole project. Not a better PowerPoint, and not a machine that makes decks for you. A way to start from the thing you actually want to say, and keep the document close enough to the person that it still sounds like them. The next step is more direct manipulation — layers, the kind of editing you do in an image tool — but the order is the point. Story first; slides after.",
+      "designIntent": {
+        "purpose": "End on the human standard: a deck should sound like its maker.",
+        "keep": [
+          "Ink closing with one statement"
+        ],
+        "requestedChange": "Story-driven revision for the English introduction.",
+        "actor": "deepseek-harness",
+        "source": "Owner's spoken account, 2026-11-10",
+        "recordedAt": "2026-11-10T22:55:22.686Z",
+        "backgroundException": "Ink closing page."
+      },
+      "elements": {
+        "text": 3,
+        "shape": 2,
+        "image": 1
+      },
+      "visibleText": [
+        "A deck should sound like the person who made it.",
+        "That is the whole project.",
+        "HUANDENG / 2026"
+      ],
+      "textObjects": 3,
+      "hidden": false
+    }
+  ]
+}

@@ -2,7 +2,7 @@ pageType: content
 background:
   type: solid
   color: "#F4F3ED"
-notes: 让听众认出自己的经验：同一批数据要面向不同听众。问题不是“再做一版版式”，而是复制后事实开始分叉。右侧三份版本只示意不同场合的重点，不代表真实产品界面；重点是复制造成的维护成本。
+notes: "第二个问题更具体：我只有两页要改。很多 agent 有防御性，不会直接覆盖原件，而是另存一份；轻微改动也另存一份。副本一多，历史就散了。这个图是示意，不是产品界面。真正要改的不是 AI 的性格，是修改的单位。"
 elements:
   - elementId: problem-kicker
     elementType: text
@@ -12,7 +12,7 @@ elements:
       - 300
       - 18
     content:
-      text: 问题 / 01
+      text: "第二个问题 / 副本"
       fontSize: 9.5
       fontFamily:
         ea: Microsoft YaHei
@@ -31,7 +31,7 @@ elements:
       - 660
       - 40
     content:
-      text: 同一份研究，为什么要讲三遍？
+      text: "改两页，为什么多出三份副本？"
       fontSize: 27
       fontFamily:
         ea: Microsoft YaHei
@@ -49,9 +49,7 @@ elements:
       - 320
       - 94
     content:
-      text: |-
-        组会讲进展，会议讲方法，评审讲证据。
-        听众一变，我们就复制上一版，删掉无关内容，再补上新的重点。
+      text: "我想改第 4 页和第 12 页。\nAI 为了不覆盖原件，另存一份；\n轻微改动，又另存一份。"
       fontSize: 15.6
       fontFamily:
         ea: Microsoft YaHei
@@ -84,7 +82,7 @@ elements:
       - 148
       - 22
     content:
-      text: 同一批事实
+      text: "50 页的 deck"
       fontSize: 11
       fontFamily:
         ea: Microsoft YaHei
@@ -102,12 +100,8 @@ elements:
       - 148
       - 142
     content:
-      text: |-
-        数据
-        图与坐标
-        结论
-        限制条件
-      fontSize: 14
+      text: "50 页\n一份研究\n同一批图\n同一份结论"
+      fontSize: 13.8
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
@@ -124,7 +118,7 @@ elements:
       - 148
       - 26
     content:
-      text: 同一页，被复制三次
+      text: "我只想改 2 页"
       fontSize: 9.2
       fontFamily:
         ea: Microsoft YaHei
@@ -231,7 +225,7 @@ elements:
       - 194
       - 18
     content:
-      text: 组会版 · 8 分钟
+      text: "副本 1 · 组会"
       fontSize: 9.6
       fontFamily:
         ea: Microsoft YaHei
@@ -249,7 +243,7 @@ elements:
       - 194
       - 34
     content:
-      text: 下一步做什么
+      text: "第 4 页：改了一句"
       fontSize: 14.5
       fontFamily:
         ea: Microsoft YaHei
@@ -281,7 +275,7 @@ elements:
       - 194
       - 18
     content:
-      text: 会议版 · 15 分钟
+      text: "副本 2 · 会议"
       fontSize: 9.6
       fontFamily:
         ea: Microsoft YaHei
@@ -299,7 +293,7 @@ elements:
       - 194
       - 34
     content:
-      text: 把方法压到一张图
+      text: "第 4 页：又改一句"
       fontSize: 14.5
       fontFamily:
         ea: Microsoft YaHei
@@ -331,7 +325,7 @@ elements:
       - 194
       - 18
     content:
-      text: 评审版 · 逐条追问
+      text: "副本 3 · 评审"
       fontSize: 9.6
       fontFamily:
         ea: Microsoft YaHei
@@ -349,7 +343,7 @@ elements:
       - 194
       - 34
     content:
-      text: 补来源、补限制
+      text: "哪份才是最终？"
       fontSize: 14.5
       fontFamily:
         ea: Microsoft YaHei
@@ -366,9 +360,7 @@ elements:
       - 226
       - 38
     content:
-      text: |-
-        改动落在不同副本里。
-        下一次，很难说哪份最新。
+      text: "副本越多，历史越难找。"
       fontSize: 10.2
       fontFamily:
         ea: Microsoft YaHei
@@ -386,9 +378,7 @@ elements:
       - 320
       - 60
     content:
-      text: |-
-        复制的是文件，
-        不是事实。
+      text: "改两页，\n却多出三份副本。"
       fontSize: 20
       fontFamily:
         ea: Microsoft YaHei
@@ -406,7 +396,7 @@ elements:
       - 320
       - 28
     content:
-      text: 同一张图改了三次，引用却只更新了一次。
+      text: "问题不在 AI 不努力；在修改的单位不是页面。"
       fontSize: 10.2
       fontFamily:
         ea: Microsoft YaHei

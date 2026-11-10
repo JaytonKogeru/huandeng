@@ -2,7 +2,7 @@ pageType: content
 background:
   type: solid
   color: "#F4F3ED"
-notes: 用一个具体改动说明差异：同一页只改了标题与说明两个文本对象，其他对象、Story、讲稿和位置都不动。两张图是真实产品示例的修改前与修改后，避免把“AI 修改”说成整页重做。
+notes: "具体看一次修改：同一页的标题和说明被改写，其他对象、Story、讲稿和位置都不动。这不是整页重做，也不是另存一个文件。我要的是 Git 式的单位：改哪一页，就只动哪一页。"
 elements:
   - elementId: change-kicker
     elementType: text
@@ -12,7 +12,7 @@ elements:
       - 300
       - 18
     content:
-      text: 修改 / 03
+      text: "修改 / 前后"
       fontSize: 9.5
       fontFamily:
         ea: Microsoft YaHei
@@ -31,7 +31,7 @@ elements:
       - 660
       - 40
     content:
-      text: 改一处，而不是改一遍
+      text: "改两页，只动这两页"
       fontSize: 27
       fontFamily:
         ea: Microsoft YaHei
@@ -49,7 +49,7 @@ elements:
       - 660
       - 28
     content:
-      text: 同一个项目里改标题与说明；其他页面、对象和讲稿保持原位。
+      text: "这一页只改了标题和说明；其他对象、Story、讲稿与位置都没有动。"
       fontSize: 14.8
       fontFamily:
         ea: Microsoft YaHei

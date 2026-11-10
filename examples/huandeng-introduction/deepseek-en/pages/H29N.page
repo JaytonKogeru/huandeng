@@ -1,0 +1,125 @@
+background:
+  type: solid
+  color: "#F7F5F0"
+elements:
+  - elementId: p11-eyebrow
+    elementType: text
+    bounds:
+      - 64
+      - 38
+      - 300
+      - 16
+    content:
+      text: 01 · THE WORKSPACE
+      fontSize: 10
+      fontFamily: Consolas
+      color: "#B43C26"
+      letterSpacing: 1.6
+      align:
+        - left
+        - top
+  - elementId: p11-title
+    elementType: text
+    role: title
+    bounds:
+      - 64
+      - 58
+      - 430
+      - 90
+    content:
+      text: The brief stays with the page.
+      fontSize: 34
+      fontFamily: Georgia
+      color: "#17181A"
+      lineHeight: 1.12
+      align:
+        - left
+        - top
+  - elementId: p11-body
+    elementType: text
+    bounds:
+      - 64
+      - 186
+      - 420
+      - 220
+    content:
+      text: "A prompt disappears when the chat ends. Story is stored in the project: what the page is for, what must not change, what this edit should do. The next agent — or the next person — starts from that."
+      fontSize: 17.5
+      fontFamily: Segoe UI
+      color: "#3A3833"
+      lineHeight: 1.62
+      align:
+        - left
+        - top
+  - elementId: p11-label
+    elementType: text
+    bounds:
+      - 560
+      - 72
+      - 336
+      - 16
+    content:
+      text: HUANDENG STORY
+      fontSize: 10
+      fontFamily: Consolas
+      color: "#B43C26"
+      letterSpacing: 1.6
+      align:
+        - left
+        - top
+  - elementId: p11-shot
+    elementType: image
+    bounds:
+      - 560
+      - 96
+      - 336
+      - 319
+    src: media/imported/489dd2e5299200127a17f13ad647931c356f726bc48514949be359d2a5d3df3c.png
+    sourceName: en-focused-story-4x.png
+    fit:
+      mode: contain
+  - elementId: p11-frame
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 560
+      - 96
+      - 336
+      - 319
+    border:
+      color: "#D9D4C8"
+      width: 1
+      style: solid
+  - elementId: p11-caption
+    elementType: text
+    bounds:
+      - 560
+      - 424
+      - 336
+      - 50
+    content:
+      text: Purpose, constraints, and the change being asked for.
+      fontSize: 10.5
+      fontFamily: Consolas
+      color: "#918B7E"
+      lineHeight: 1.5
+      align:
+        - left
+        - top
+  - elementId: p11-folio
+    elementType: text
+    bounds:
+      - 860
+      - 512
+      - 36
+      - 14
+    content:
+      text: "11"
+      field: main-position
+      fontSize: 9.5
+      fontFamily: Consolas
+      color: "#A29C8F"
+      align:
+        - right
+        - top
+notes: Story is stored with the page. A prompt disappears when the chat ends; this doesn't. It records what the page is for, what must not change, and what this edit is meant to do. When another agent — or another person — opens the page, they start from the intent, not from a guess. It's an alignment tool, not a guarantee. The model can still get it wrong; but at least it's wrong against something explicit.

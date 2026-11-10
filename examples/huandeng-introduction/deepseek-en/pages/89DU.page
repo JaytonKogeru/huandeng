@@ -1,0 +1,180 @@
+background:
+  type: solid
+  color: "#F7F5F0"
+elements:
+  - elementId: p12-eyebrow
+    elementType: text
+    bounds:
+      - 64
+      - 38
+      - 300
+      - 16
+    content:
+      text: 02 · THE WORKSPACE
+      fontSize: 10
+      fontFamily: Consolas
+      color: "#B43C26"
+      letterSpacing: 1.6
+      align:
+        - left
+        - top
+  - elementId: p12-title
+    elementType: text
+    role: title
+    bounds:
+      - 64
+      - 58
+      - 780
+      - 56
+    content:
+      text: A page keeps its name when it moves.
+      fontSize: 32
+      fontFamily: Georgia
+      color: "#17181A"
+      lineHeight: 1.1
+      align:
+        - left
+        - top
+  - elementId: p12-lead
+    elementType: text
+    bounds:
+      - 64
+      - 128
+      - 760
+      - 40
+    content:
+      text: Position is where a page sits today. Slide ID is what it is.
+      fontSize: 18
+      fontFamily: Segoe UI
+      color: "#3A3833"
+      lineHeight: 1.4
+      align:
+        - left
+        - top
+  - elementId: p12-label1
+    elementType: text
+    bounds:
+      - 64
+      - 192
+      - 300
+      - 14
+    content:
+      text: BEFORE THE MOVE
+      fontSize: 10
+      fontFamily: Consolas
+      color: "#B43C26"
+      letterSpacing: 1.6
+      align:
+        - left
+        - top
+  - elementId: p12-img1
+    elementType: image
+    bounds:
+      - 64
+      - 212
+      - 560
+      - 70
+    src: media/imported/4b4475913c7e4538c9b76f47056e1edca6405a8636d7fd7c591309a373101e19.png
+    sourceName: en-identity-before-4x.png
+    fit:
+      mode: contain
+  - elementId: p12-frame1
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 64
+      - 212
+      - 560
+      - 70
+    border:
+      color: "#D9D4C8"
+      width: 1
+      style: solid
+  - elementId: p12-label2
+    elementType: text
+    bounds:
+      - 64
+      - 306
+      - 300
+      - 14
+    content:
+      text: AFTER THE MOVE
+      fontSize: 10
+      fontFamily: Consolas
+      color: "#B43C26"
+      letterSpacing: 1.6
+      align:
+        - left
+        - top
+  - elementId: p12-img2
+    elementType: image
+    bounds:
+      - 64
+      - 326
+      - 560
+      - 70
+    src: media/imported/cfb23a312f298e185eb847eddb1cdf9cc493d63d55082cab0cc70606789af5f5.png
+    sourceName: en-identity-after-4x.png
+    fit:
+      mode: contain
+  - elementId: p12-frame2
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 64
+      - 326
+      - 560
+      - 70
+    border:
+      color: "#D9D4C8"
+      width: 1
+      style: solid
+  - elementId: p12-body
+    elementType: text
+    bounds:
+      - 660
+      - 196
+      - 236
+      - 180
+    content:
+      text: The page moved two places. The ID did not. An agent can be asked for C014, not 'page four'.
+      fontSize: 13.5
+      fontFamily: Segoe UI
+      color: "#3A3833"
+      lineHeight: 1.65
+      align:
+        - left
+        - top
+  - elementId: p12-caption
+    elementType: text
+    bounds:
+      - 64
+      - 414
+      - 560
+      - 40
+    content:
+      text: Real editor footer, same page, two positions.
+      fontSize: 10.5
+      fontFamily: Consolas
+      color: "#918B7E"
+      lineHeight: 1.5
+      align:
+        - left
+        - top
+  - elementId: p12-folio
+    elementType: text
+    bounds:
+      - 860
+      - 512
+      - 36
+      - 14
+    content:
+      text: "12"
+      field: main-position
+      fontSize: 9.5
+      fontFamily: Consolas
+      color: "#A29C8F"
+      align:
+        - right
+        - top
+notes: This is the identity problem. If I tell an agent to change page four, and the order has changed since the last version, page four is a different page. So every page has a stable Slide ID — the four-character code — separate from its Position. In this real footer the page moved from position two to position four; the ID stayed C014. That means I can ask for C014, and the history belongs to C014 no matter where it sits.

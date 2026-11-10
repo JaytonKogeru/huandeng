@@ -99,8 +99,8 @@ elements:
       - 148
       - 176
       - 99
-    src: media/derived/thumbs/r1-16-AUBX.png
-    sourceName: r1-16-AUBX.png
+    src: "media/derived/thumbs/r2-22-AUBX.png"
+    sourceName: "r2-22-AUBX.png"
     fit:
       mode: contain
   - elementId: stack1-f
@@ -124,8 +124,8 @@ elements:
       - 160
       - 176
       - 99
-    src: media/derived/thumbs/r1-05-AVNM.png
-    sourceName: r1-05-AVNM.png
+    src: "media/derived/thumbs/r2-12-AVNM.png"
+    sourceName: "r2-12-AVNM.png"
     fit:
       mode: contain
   - elementId: stack2-f
@@ -149,8 +149,8 @@ elements:
       - 172
       - 176
       - 99
-    src: media/derived/thumbs/r1-01-QMYQ.png
-    sourceName: r1-01-QMYQ.png
+    src: "media/derived/thumbs/r2-01-QMYQ.png"
+    sourceName: "r2-01-QMYQ.png"
     fit:
       mode: contain
   - elementId: full-label
@@ -161,9 +161,7 @@ elements:
       - 200
       - 40
     content:
-      text: |-
-        Full introduction
-        20 slides, about 20 minutes
+      text: "Full introduction\n25 slides, about 25 minutes"
       fontFamily: Arial
       fontSize: 13
       lineHeight: 1.35
@@ -209,8 +207,8 @@ elements:
       - 146
       - 96
       - 54
-    src: media/derived/thumbs/r1-01-QMYQ.png
-    sourceName: r1-01-QMYQ.png
+    src: "media/derived/thumbs/r2-01-QMYQ.png"
+    sourceName: "r2-01-QMYQ.png"
     fit:
       mode: contain
   - elementId: lab2-f
@@ -234,8 +232,8 @@ elements:
       - 146
       - 96
       - 54
-    src: media/derived/thumbs/r1-02-RQ64.png
-    sourceName: r1-02-RQ64.png
+    src: "media/derived/thumbs/r2-03-PPKK.png"
+    sourceName: "r2-03-PPKK.png"
     fit:
       mode: contain
   - elementId: lab3-f
@@ -259,8 +257,8 @@ elements:
       - 146
       - 96
       - 54
-    src: media/derived/thumbs/r1-05-AVNM.png
-    sourceName: r1-05-AVNM.png
+    src: "media/derived/thumbs/r2-04-RQ64.png"
+    sourceName: "r2-04-RQ64.png"
     fit:
       mode: contain
   - elementId: lab4-f
@@ -284,8 +282,8 @@ elements:
       - 206
       - 96
       - 54
-    src: media/derived/thumbs/r1-06-QK69.png
-    sourceName: r1-06-QK69.png
+    src: "media/derived/thumbs/r2-06-C45U.png"
+    sourceName: "r2-06-C45U.png"
     fit:
       mode: contain
   - elementId: lab5-f
@@ -309,8 +307,8 @@ elements:
       - 206
       - 96
       - 54
-    src: media/derived/thumbs/r1-07-6FNH.png
-    sourceName: r1-07-6FNH.png
+    src: "media/derived/thumbs/r2-12-AVNM.png"
+    sourceName: "r2-12-AVNM.png"
     fit:
       mode: contain
   - elementId: lab6-f
@@ -334,8 +332,8 @@ elements:
       - 206
       - 96
       - 54
-    src: media/derived/thumbs/r1-08-4V98.png
-    sourceName: r1-08-4V98.png
+    src: "media/derived/thumbs/r2-13-QK69.png"
+    sourceName: "r2-13-QK69.png"
     fit:
       mode: contain
   - elementId: lab7-f
@@ -359,8 +357,8 @@ elements:
       - 266
       - 96
       - 54
-    src: media/derived/thumbs/r1-13-73AG.png
-    sourceName: r1-13-73AG.png
+    src: "media/derived/thumbs/r2-19-73AG.png"
+    sourceName: "r2-19-73AG.png"
     fit:
       mode: contain
   - elementId: lab8-f
@@ -384,8 +382,8 @@ elements:
       - 266
       - 96
       - 54
-    src: media/derived/thumbs/r1-16-AUBX.png
-    sourceName: r1-16-AUBX.png
+    src: "media/derived/thumbs/r2-22-AUBX.png"
+    sourceName: "r2-22-AUBX.png"
     fit:
       mode: contain
   - elementId: lab9-f
@@ -409,8 +407,8 @@ elements:
       - 266
       - 96
       - 54
-    src: media/derived/thumbs/r1-18-SMGE.png
-    sourceName: r1-18-SMGE.png
+    src: "media/derived/thumbs/r2-25-SMGE.png"
+    sourceName: "r2-25-SMGE.png"
     fit:
       mode: contain
   - elementId: cmp
@@ -479,7 +477,7 @@ elements:
       - 420
       - 16
     content:
-      text: HUANDENG  /  One source, many talks
+      text: "HUANDENG  /  The page is the unit of change"
       fontFamily: Arial
       fontSize: 11
       lineHeight: 1.3
@@ -504,4 +502,4 @@ elements:
       align:
         - right
         - middle
-notes: A HUANDENG project has one Main Slides library. A Presentation is an ordered list of references into it. On the left is the project overview in the Editor, with the Main library and one Presentation. On the right is this very deck. The full introduction you are watching has twenty slides. The lab-meeting version uses nine of the same slides in its own order; the stacked previews and the grid are thumbnails rendered from this project's own export. Neither Presentation holds copies, so if I fix the 1BNA chart in Main Slides, both talks show the fix. The lab version gives four slides shorter speaker notes of their own; those notes belong to that appearance, not to the slide. If a talk has to stay frozen, for example one you have already submitted, you pin a named version of a slide there.
+notes: "A HUANDENG project has one Main Slides library. A Presentation is an ordered list of references into it. On the left is the project overview in the Editor, with the Main library and one Presentation. On the right is this very deck. The full introduction you are watching has twenty-five slides. The lab-meeting version uses nine of the same slides in its own order: the reasons, the 1BNA slide and its Story, page history, agents, and how to start. The stacked previews and the grid are thumbnails rendered from this project's own export. Neither Presentation holds copies, so if I fix the 1BNA chart in Main Slides, both talks show the fix. The lab version gives four slides shorter speaker notes of their own; those notes belong to that appearance, not to the slide. If a talk has to stay frozen, for example one you have already submitted, you pin a named version of a slide there."

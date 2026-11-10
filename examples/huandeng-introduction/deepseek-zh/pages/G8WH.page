@@ -1,0 +1,145 @@
+pageType: content
+background:
+  type: solid
+  color: "#F4F3ED"
+notes: 我想让 AI 能打开的不是一整张截图，而是一个能寻址的项目：入口、页面、素材、Story、历史。这里展示的是实际目录结构和真实工作区；PPTX 本身也有包结构，HUANDENG 只是把协作所需的目录和页面服务显式化。
+elements:
+  - elementId: project-kicker
+    elementType: text
+    bounds:
+      - 48
+      - 42
+      - 300
+      - 18
+    content:
+      text: "项目结构 / 目录"
+      fontSize: 9.5
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#7D8A80"
+      letterSpacing: 1.2
+      align:
+        - left
+        - top
+  - elementId: project-title
+    elementType: text
+    role: title
+    bounds:
+      - 48
+      - 66
+      - 520
+      - 40
+    content:
+      text: 一个项目，不是一个文件
+      fontSize: 27
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#17221C"
+      lineHeight: 1.3
+      align:
+        - left
+        - top
+  - elementId: project-lead
+    elementType: text
+    bounds:
+      - 48
+      - 112
+      - 320
+      - 44
+    content:
+      text: "一个目录：页面、素材、Story 和历史。\n入口是 deck.pptd。"
+      fontSize: 13.4
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#425048"
+      lineHeight: 1.55
+      align:
+        - left
+        - top
+  - elementId: project-tree
+    elementType: text
+    bounds:
+      - 48
+      - 170
+      - 320
+      - 270
+    content:
+      text: |-
+        deck.pptd
+        ├─ pages/
+        │  ├─ CZD7.page
+        │  └─ UGA7.page
+        ├─ media/
+        │  └─ imported/…
+        ├─ .huandeng/
+        │  ├─ project.json
+        │  └─ Story / versions
+        └─ Exports/
+           └─ deck.pdf · deck.pptx
+      fontSize: 10.2
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Consolas
+      color: "#2B3830"
+      lineHeight: 1.55
+      align:
+        - left
+        - top
+  - elementId: project-shot-panel
+    elementType: shape
+    bounds:
+        [392,154,524,300]
+    shapeName: rect
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      color: "#CDD6CC"
+      width: 0.8
+      style: solid
+  - elementId: project-shot
+    elementType: image
+    bounds:
+      - 400
+      - 162
+      - 508
+      - 286
+    src: media/imported/c36ad119b97a82db8ae3dde5b04fd9853151f34ab4ed8b49cec5352594775961.png
+    sourceName: zh-CN-native-edit-overview-2x.png
+    fit:
+      mode: contain
+  - elementId: project-caption
+    elementType: text
+    bounds:
+        [400,458,508,20]
+    content:
+      text: 真实界面：左侧项目 / 页面 / 素材 / 文件；上方浏览、大纲、章节、备注、历史。
+      fontSize: 8.6
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#66756A"
+      align:
+        - left
+        - top
+  - elementId: project-note
+    elementType: text
+    bounds:
+      - 48
+      - 454
+      - 320
+      - 58
+    content:
+      text: "PPTX 本身也是开放包；HUANDENG 的选择，\n是把工作目录和页面服务显式化，\n让 AI 能定位、修改、回看；截图不是唯一反馈。"
+      fontSize: 9.4
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#425048"
+      lineHeight: 1.55
+      align:
+        - left
+        - top

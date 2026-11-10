@@ -12,13 +12,5 @@ elements:
       - 82
     role: title
     content:
-      text: 人与 Agent
-      fontFamily: Microsoft YaHei
-      fontSize: 34
-      color: "#263C34"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-notes: 章节停顿。下一部分用实际页面说明这一主题。
+      {"text":"让故事留在编辑里","fontFamily":"Microsoft YaHei","fontSize":34,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
+notes: "页面身份和历史明确了修改的边界。我还希望把人的判断留下来，所以接下来进入编辑器，看看Story和素材怎样把意图与证据带到下一次编辑。"

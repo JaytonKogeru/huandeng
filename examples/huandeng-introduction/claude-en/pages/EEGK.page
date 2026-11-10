@@ -11,7 +11,7 @@ elements:
       - 816
       - 72
     content:
-      text: One source, many talks
+      text: "Story first: one slide, start to finish"
       fontFamily: Arial
       fontSize: 40
       lineHeight: 1.2
@@ -20,4 +20,4 @@ elements:
       align:
         - left
         - middle
-notes: "Section 3. The chart slide we just edited is one slide in one project. Next: how the same slides serve several talks, and how a slide keeps its identity while the talks are rearranged."
+notes: "Section 3. Now let me follow one real scientific slide: what it shows, the Story behind it, how a change is asked for, and how that change can be checked."

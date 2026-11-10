@@ -4,7 +4,7 @@ Use this when selecting UI captures, introducing software or preparing a public 
 
 ## Purpose and locale
 
-Each screenshot proves one action. Choose the audience's actual UI language; a translated caption around Chinese UI is not an English screenshot.
+Choose each screenshot for an audience question and a visible action or state. Connect it to the work the speaker is explaining, rather than collecting every workspace as a feature catalogue. A screenshot can show an interface state; it does not establish the speaker's earlier experience or a universal claim about AI behavior. Choose the audience's actual UI language; a translated caption around Chinese UI is not an English screenshot.
 
 Capture the real running product with public/synthetic content. Preserve useful controls, selection and state. Do not generate, reconstruct or mock UI and call it a screenshot. Label conceptual architecture diagrams as such.
 

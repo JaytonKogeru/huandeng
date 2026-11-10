@@ -12,13 +12,5 @@ elements:
       - 82
     role: title
     content:
-      text: 复用与讲述
-      fontFamily: Microsoft YaHei
-      fontSize: 34
-      color: "#263C34"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-notes: 章节停顿。下一部分用实际页面说明这一主题。
+      {"text":"回到下一次组会","fontFamily":"Microsoft YaHei","fontSize":34,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
+notes: "这些操作最终要回到讲述现场。下一次组会可能有不同的时间和听众，我需要从这份材料中选择页面、准备讲稿，并带上合适的版本。"

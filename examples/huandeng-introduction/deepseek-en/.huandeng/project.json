@@ -1,0 +1,434 @@
+{
+  "schemaVersion": 1,
+  "deckId": "67f35ea4-7737-48b6-926e-cca2e1d0be3d",
+  "entry": "deck.pptd",
+  "designPolicy": "huandeng-human-scientific-v1",
+  "slides": {
+    "3833f199-98ab-4056-b521-ab542137f524": {
+      "shortCode": "98RC",
+      "path": "pages/initial.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "cover-title": "title"
+      },
+      "label": "S1",
+      "designIntent": {
+        "purpose": "Open the talk as a founder's note: slides are becoming agent-written, so the writing must begin with a person.",
+        "keep": [
+          "Ink cover with the serif title",
+          "No product screenshot or logo on the cover"
+        ],
+        "requestedChange": "Story-driven revision for the English introduction.",
+        "actor": "deepseek-harness",
+        "source": "Owner's spoken account, 2026-11-10",
+        "recordedAt": "2026-11-10T22:55:22.686Z",
+        "backgroundException": "Full-page ink field on the cover.",
+        "pageRole": "cover"
+      }
+    },
+    "bdbc20e7-5cb6-4877-8eb0-3feebad05d9d": {
+      "shortCode": "BR4V",
+      "path": "pages/BR4V.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "p2-title": "title"
+      },
+      "label": "S2",
+      "designIntent": {
+        "purpose": "Ground the project in a specific room: people who make slides can recognize an AI deck before they can name why.",
+        "keep": [
+          "The room scene stays observational, not a model ranking"
+        ],
+        "requestedChange": "Story-driven revision for the English introduction.",
+        "actor": "deepseek-harness",
+        "source": "Owner's spoken account, 2026-11-10",
+        "recordedAt": "2026-11-10T22:55:22.686Z"
+      }
+    },
+    "befc82a6-f242-49f7-9b35-7eed8f3b5640": {
+      "shortCode": "XFZM",
+      "path": "pages/XFZM.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "p3-title": "title"
+      },
+      "label": "S3",
+      "designIntent": {
+        "purpose": "Name the texture as an absence of focus, not a visual style.",
+        "keep": [
+          "No invented research claim; the observation stays personal"
+        ],
+        "requestedChange": "Story-driven revision for the English introduction.",
+        "actor": "deepseek-harness",
+        "source": "Owner's spoken account, 2026-11-10",
+        "recordedAt": "2026-11-10T22:55:22.686Z"
+      }
+    },
+    "20d9cf1d-6820-42e8-9ddc-6377b4ad855b": {
+      "shortCode": "TPCJ",
+      "path": "pages/TPCJ.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "p4-title": "title"
+      },
+      "label": "S4",
+      "designIntent": {
+        "purpose": "Turn the process around: the founder talks first, the model organizes, pages follow.",
+        "keep": [
+          "Three-step order shown without decorative arrows"
+        ],
+        "requestedChange": "Story-driven revision for the English introduction.",
+        "actor": "deepseek-harness",
+        "source": "Owner's spoken account, 2026-11-10",
+        "recordedAt": "2026-11-10T22:55:22.686Z"
+      }
+    },
+    "ec65f86b-26f3-4117-9dfd-b510d19424de": {
+      "shortCode": "9KH9",
+      "path": "pages/9KH9.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "p5-quote": "title"
+      },
+      "label": "S5",
+      "designIntent": {
+        "purpose": "Argue that story-first also produces the talk, instead of a script retrofitted to AI-made pages.",
+        "keep": [
+          "The claim is the founder's working experience, not a study"
+        ],
+        "requestedChange": "Story-driven revision for the English introduction.",
+        "actor": "deepseek-harness",
+        "source": "Owner's spoken account, 2026-11-10",
+        "recordedAt": "2026-11-10T22:55:22.686Z"
+      }
+    },
+    "d73b0924-699a-4673-818b-5d37e7c1b25a": {
+      "shortCode": "MG2S",
+      "path": "pages/MG2S.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "p6-title": "title"
+      },
+      "label": "S6",
+      "designIntent": {
+        "purpose": "Make the copy problem concrete: two changed pages arrive as another whole deck.",
+        "keep": [
+          "The file list is a labeled sketch, not screenshot evidence"
+        ],
+        "requestedChange": "Story-driven revision for the English introduction.",
+        "actor": "deepseek-harness",
+        "source": "Owner's spoken account, 2026-11-10",
+        "recordedAt": "2026-11-10T22:55:22.686Z"
+      }
+    },
+    "665ad0cb-5048-4005-84bc-bf31bab632d9": {
+      "shortCode": "V7VJ",
+      "path": "pages/V7VJ.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "p7-title": "title"
+      },
+      "label": "S7",
+      "designIntent": {
+        "purpose": "Show why screenshot-only review is a poor agent interface while keeping visual review necessary.",
+        "keep": [
+          "Real page capture, not a mocked screen"
+        ],
+        "requestedChange": "Story-driven revision for the English introduction.",
+        "actor": "deepseek-harness",
+        "source": "Owner's spoken account, 2026-11-10",
+        "recordedAt": "2026-11-10T22:55:22.686Z"
+      }
+    },
+    "32991558-c79c-4033-bce0-f8230c890bc9": {
+      "shortCode": "7GWR",
+      "path": "pages/7GWR.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "p8-title": "title"
+      },
+      "label": "S8",
+      "designIntent": {
+        "purpose": "Explain the page-as-file model and credit open-slide without claiming PPTX has no structure.",
+        "keep": [
+          "Do not claim Kimi invented PPTD",
+          "Do not call HUANDENG an unpacked PPTX"
+        ],
+        "requestedChange": "Story-driven revision for the English introduction.",
+        "actor": "deepseek-harness",
+        "source": "Owner's spoken account and checked facts, 2026-11-10",
+        "recordedAt": "2026-11-10T22:55:22.686Z"
+      }
+    },
+    "065ed891-d62a-41f1-b25e-ecd07ea2a924": {
+      "shortCode": "WEZS",
+      "path": "pages/WEZS.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "p9-title": "title"
+      },
+      "label": "S9",
+      "designIntent": {
+        "purpose": "Pause and open the second act with the editor, title only.",
+        "keep": [
+          "Title-only ink section page"
+        ],
+        "requestedChange": "Story-driven revision for the English introduction.",
+        "actor": "deepseek-harness",
+        "source": "Owner's spoken account, 2026-11-10",
+        "recordedAt": "2026-11-10T22:55:22.686Z",
+        "backgroundException": "Ink section pause page.",
+        "pageRole": "section"
+      }
+    },
+    "d80ecf22-1b5d-41bb-87c6-4959e8b25350": {
+      "shortCode": "DR4V",
+      "path": "pages/DR4V.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "p10-title": "title"
+      },
+      "label": "S10",
+      "designIntent": {
+        "purpose": "Show the real editor as one working document: pages, canvas, inspector, Story, materials, files and history.",
+        "keep": [
+          "Real public screenshot only",
+          "Caption states it is a public example, not this deck"
+        ],
+        "requestedChange": "Story-driven revision for the English introduction.",
+        "actor": "deepseek-harness",
+        "source": "Owner's spoken account, 2026-11-10",
+        "recordedAt": "2026-11-10T22:55:22.686Z"
+      }
+    },
+    "d3aed85c-d9fc-4750-8ffe-caf9a4fb2d4f": {
+      "shortCode": "H29N",
+      "path": "pages/H29N.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "p11-title": "title"
+      },
+      "label": "S11",
+      "designIntent": {
+        "purpose": "Make Story persistent: purpose and constraints live beside the page, not in chat.",
+        "keep": [
+          "Real Story panel capture"
+        ],
+        "requestedChange": "Story-driven revision for the English introduction.",
+        "actor": "deepseek-harness",
+        "source": "Owner's spoken account, 2026-11-10",
+        "recordedAt": "2026-11-10T22:55:22.686Z"
+      }
+    },
+    "bc85ec8f-af86-4cee-996e-a84a80de9670": {
+      "shortCode": "89DU",
+      "path": "pages/89DU.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "p12-title": "title"
+      },
+      "label": "S12",
+      "designIntent": {
+        "purpose": "Separate Position from Slide ID with the real before/after footer evidence.",
+        "keep": [
+          "Same page C014 in both strips",
+          "Real UI crops"
+        ],
+        "requestedChange": "Story-driven revision for the English introduction.",
+        "actor": "deepseek-harness",
+        "source": "Owner's spoken account, 2026-11-10",
+        "recordedAt": "2026-11-10T22:55:22.686Z"
+      }
+    },
+    "d9fffede-4a83-4fe9-8d0f-364efc3e11e5": {
+      "shortCode": "CRUA",
+      "path": "pages/CRUA.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "p13-title": "title"
+      },
+      "label": "S13",
+      "designIntent": {
+        "purpose": "Show per-page named versions and the scope of restore.",
+        "keep": [
+          "Real history screen",
+          "No claim that every keystroke is a version"
+        ],
+        "requestedChange": "Story-driven revision for the English introduction.",
+        "actor": "deepseek-harness",
+        "source": "Owner's spoken account, 2026-11-10",
+        "recordedAt": "2026-11-10T22:55:22.686Z"
+      }
+    },
+    "738289ee-5cfc-4b6f-a0f1-e0492cfafc06": {
+      "shortCode": "MKPP",
+      "path": "pages/MKPP.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "p14-title": "title"
+      },
+      "label": "S14",
+      "designIntent": {
+        "purpose": "Show the exact saved-change diff before acceptance.",
+        "keep": [
+          "Real saved-changes crop"
+        ],
+        "requestedChange": "Story-driven revision for the English introduction.",
+        "actor": "deepseek-harness",
+        "source": "Owner's spoken account, 2026-11-10",
+        "recordedAt": "2026-11-10T22:55:22.686Z"
+      }
+    },
+    "b792b954-ed0c-4510-881d-bb8b297db885": {
+      "shortCode": "TJKM",
+      "path": "pages/TJKM.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "p15-title": "title"
+      },
+      "label": "S15",
+      "designIntent": {
+        "purpose": "Make the materials library real: assets stored once, referenced, with source and usage; show a real scientific figure.",
+        "keep": [
+          "PDB 1BNA citation",
+          "One structure, not independent replicates",
+          "No performance claim"
+        ],
+        "requestedChange": "Story-driven revision for the English introduction.",
+        "actor": "deepseek-harness",
+        "source": "Owner's spoken account and public 1BNA source",
+        "recordedAt": "2026-11-10T22:55:22.686Z"
+      }
+    },
+    "c279a641-b65c-42de-8ed8-d085819d7fb6": {
+      "shortCode": "444J",
+      "path": "pages/444J.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "p16-title": "title"
+      },
+      "label": "S16",
+      "designIntent": {
+        "purpose": "Show one canonical Main library and a Presentation built from it.",
+        "keep": [
+          "Real project overview capture"
+        ],
+        "requestedChange": "Story-driven revision for the English introduction.",
+        "actor": "deepseek-harness",
+        "source": "Owner's spoken account, 2026-11-10",
+        "recordedAt": "2026-11-10T22:55:22.686Z"
+      }
+    },
+    "5a72c985-b070-4936-b854-73e0c743a35b": {
+      "shortCode": "DM3J",
+      "path": "pages/DM3J.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "p17-title": "title"
+      },
+      "label": "S17",
+      "designIntent": {
+        "purpose": "Close the loop: PDF, editable PPTX and MP4 from the saved pages.",
+        "keep": [
+          "Real Export dialog",
+          "PptxGenJS credit"
+        ],
+        "requestedChange": "Story-driven revision for the English introduction.",
+        "actor": "deepseek-harness",
+        "source": "Owner's spoken account, 2026-11-10",
+        "recordedAt": "2026-11-10T22:55:22.686Z"
+      }
+    },
+    "fa252443-bd97-4339-a179-1242bf2009bb": {
+      "shortCode": "TCMD",
+      "path": "pages/TCMD.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "p18-title": "title"
+      },
+      "label": "S18",
+      "designIntent": {
+        "purpose": "End on the human standard: a deck should sound like its maker.",
+        "keep": [
+          "Ink closing with one statement"
+        ],
+        "requestedChange": "Story-driven revision for the English introduction.",
+        "actor": "deepseek-harness",
+        "source": "Owner's spoken account, 2026-11-10",
+        "recordedAt": "2026-11-10T22:55:22.686Z",
+        "backgroundException": "Ink closing page."
+      }
+    }
+  },
+  "project": {
+    "schemaVersion": 1,
+    "mainStory": {
+      "purpose": "Explain why HUANDENG exists: a story-first, page-oriented slide editor for work that has to sound like a person.",
+      "audience": "Researchers and builders who make presentations and work with AI agents.",
+      "takeaway": "The AI look is an absence of focus. HUANDENG keeps the human story beside the page, gives every page a stable identity and its own history, and lets the talk and the evidence survive the edit."
+    },
+    "sections": [
+      {
+        "id": "why-the-texture",
+        "title": "Why the texture",
+        "story": {
+          "purpose": "Follow the observations that started the project: the room that could tell, the everything-deck, the turn to story-first, and the two walls of copies and screenshot review.",
+          "audience": "Researchers and builders who make presentations and work with AI agents.",
+          "takeaway": "The problem is upstream of layout; the unit of change and the unit of review both had to become the page."
+        },
+        "pageIds": [
+          "3833f199-98ab-4056-b521-ab542137f524",
+          "bdbc20e7-5cb6-4877-8eb0-3feebad05d9d",
+          "befc82a6-f242-49f7-9b35-7eed8f3b5640",
+          "20d9cf1d-6820-42e8-9ddc-6377b4ad855b",
+          "ec65f86b-26f3-4117-9dfd-b510d19424de",
+          "d73b0924-699a-4673-818b-5d37e7c1b25a",
+          "665ad0cb-5048-4005-84bc-bf31bab632d9",
+          "32991558-c79c-4033-bce0-f8230c890bc9"
+        ],
+        "startPageId": "3833f199-98ab-4056-b521-ab542137f524"
+      },
+      {
+        "id": "the-editor",
+        "title": "The editor",
+        "story": {
+          "purpose": "Show the editor as the answer to those walls: one working document, Story beside the page, stable IDs, page history and diffs, a real materials library, shared presentations, and delivery.",
+          "audience": "Researchers and builders who make presentations and work with AI agents.",
+          "takeaway": "A page can keep its purpose, identity, evidence and history while the deck keeps changing."
+        },
+        "pageIds": [
+          "065ed891-d62a-41f1-b25e-ecd07ea2a924",
+          "d80ecf22-1b5d-41bb-87c6-4959e8b25350",
+          "d3aed85c-d9fc-4750-8ffe-caf9a4fb2d4f",
+          "bc85ec8f-af86-4cee-996e-a84a80de9670",
+          "d9fffede-4a83-4fe9-8d0f-364efc3e11e5",
+          "738289ee-5cfc-4b6f-a0f1-e0492cfafc06",
+          "b792b954-ed0c-4510-881d-bb8b297db885",
+          "c279a641-b65c-42de-8ed8-d085819d7fb6",
+          "5a72c985-b070-4936-b854-73e0c743a35b",
+          "fa252443-bd97-4339-a179-1242bf2009bb"
+        ],
+        "startPageId": "065ed891-d62a-41f1-b25e-ecd07ea2a924"
+      }
+    ],
+    "presentations": []
+  }
+}

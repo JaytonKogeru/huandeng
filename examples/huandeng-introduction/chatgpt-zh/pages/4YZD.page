@@ -12,15 +12,7 @@ elements:
       - 67
     role: title
     content:
-      text: 一个文件夹，就是一个项目
-      fontFamily: Microsoft YaHei
-      fontSize: 28
-      color: "#263C34"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
+      {"text":"打开一个目录，继续同一份工作","fontFamily":"Microsoft YaHei","fontSize":28,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
   - elementId: folder-project
     elementType: icon
     iconName: fas:folder-open
@@ -57,18 +49,7 @@ elements:
       - 324
       - 126
     content:
-      text: |-
-        从这里打开作品。
-        带走整个项目文件夹，
-        继续修改和复用。
-      fontFamily: Microsoft YaHei
-      fontSize: 20
-      color: "#263C34"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.55
+      {"text":"Files 展示真实项目树。\n页面、素材、Story 和历史\n都跟着这个目录走。","fontFamily":"Microsoft YaHei","fontSize":20,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.55}
   - elementId: folder-contents
     elementType: table
     bounds:
@@ -194,4 +175,4 @@ elements:
         - top
       lineHeight: 1.3
       field: main-position
-notes: A PPTD is the entry to a project folder. Preserve its pages, media and .huandeng data when moving it. This introduction and the other three current editions live together inside examples/huandeng-introduction in the main repository; old working copies are not another current edition.
+notes: "在HUANDENG里，打开deck.pptd就进入这个项目，但它不是一个孤立文件。页面在pages里，图片在media里，Story、编排和历史在.huandeng里。AGENTS.md留下给Agent的项目约定。Files视图把这些内容直接展示出来，有点像IDE中的项目树。移动作品时要带上整个目录，这样下一次编辑还有原始材料和历史。"

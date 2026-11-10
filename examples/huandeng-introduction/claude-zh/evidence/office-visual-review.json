@@ -1,0 +1,29 @@
+{
+  "project": "claude-zh",
+  "reviewer": "ChatGPT native-trial supervisor",
+  "scope": {
+    "officeContactSheets": [
+      "office/office-contact-1.jpg",
+      "office/office-contact-2.jpg",
+      "office/office-contact-3.jpg",
+      "office/office-contact-4.jpg"
+    ],
+    "pagesCoveredByContacts": 20,
+    "fullPageOfficeInspection": [
+      18
+    ],
+    "nativeSourceAndExportRevisionChecks": true
+  },
+  "observations": [
+    "All 20 Office-rendered pages are present, including three title-only Section pauses. Chinese glyphs, product icons, native tables and real localized UI images appear intact.",
+    "The two tabular comparisons are genuine native table objects, rather than text boxes pretending to be cells.",
+    "Full-size page18 shows the 12-point native chart with a separate upper y-axis label, readable numeric ticks, coordinate-structure illustration and scientific source/scope text."
+  ],
+  "layoutFindings": [],
+  "limitations": [
+    "Complete-sequence visual inspection used contact sheets; the listed scientific page was additionally inspected individually.",
+    "Independent narrative/factual findings are recorded separately and are not cleared by a successful Office render. Owner acceptance remains pending."
+  ],
+  "blockingOfficeLayoutDefectsObserved": [],
+  "sourcePptxSha256": "ee9fb535961c4cfae693936194dda8dcf454f9ab5711dd448031e8066d1bcbe6"
+}

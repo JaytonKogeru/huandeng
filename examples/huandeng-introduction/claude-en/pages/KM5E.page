@@ -11,7 +11,7 @@ elements:
       - 816
       - 72
     content:
-      text: Versions and delivery
+      text: "The page is the unit of change"
       fontFamily: Arial
       fontSize: 40
       lineHeight: 1.2
@@ -20,4 +20,4 @@ elements:
       align:
         - left
         - middle
-notes: Section 4. Changes accumulate. How do you keep a milestone you can return to, and what leaves the project when you deliver a talk?
+notes: "Section 4. Back to the Git idea: if the page is the unit of change, each page needs a name that does not move, and a history of its own."

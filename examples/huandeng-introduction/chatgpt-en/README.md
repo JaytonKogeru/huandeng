@@ -1,18 +1,25 @@
-# HUANDENG: editing scientific presentations
+# Why I started HUANDENG
 
-A remade English introduction authored by ChatGPT. Open `deck.pptd` to continue editing the same project. Keep the entire folder when moving it.
+A story-led English introduction organized by ChatGPT from the founder’s spoken account. Open `deck.pptd` to continue editing; carry the entire project folder when moving it.
 
-- Main and Full introduction: 19 pages.
-- Brief introduction: seven pages with a different sequence and a genuinely pinned scientific example.
-- Three title-only Sections: Main positions 3, 7 and 12.
-- Original HUANDENG identity, real client marks, and paper/sage/sand backgrounds with distinct roles.
-- One public PDB 1BNA example connects the structure, twelve measured distances, table and equation.
-- Actual English UI with English authored content, captured at native DPR3.
+The explanation begins with recognizable experiences: AI-looking slides at lab meetings, whole-deck copies after small edits, and screenshots that do not expose object identity or source data. The Editor, Story, stable Slide ID, page history and asset library then answer those needs.
 
-Current image provenance is in `evidence/assets.json`. Deposited coordinates, CSV, method and reproducible scripts are in `sources/science/`. Original and previously imported image bytes remain available for document history.
+## Current composition
 
-`evidence/wording-edit.json` and `wording-edit-values.json` identify the exact title/explanation-only edit. Later independent edits refined the axes and removed an auxiliary highlight series so PowerPoint can retain native charts. The original twelve distance values are unchanged. The brief still pins the earlier saved wording-edit stage.
+- Main / Full introduction: 27 pages. Brief introduction: 13 pages selected from the same Main library.
+- Full positions 8, 13 and 22 are true title-only Section pages. The original product identity, functional icons, paper/sage/sand backgrounds and purposeful imagery remain.
+- A public PDB 1BNA example explains preserving a figure, twelve values and attribution during focused edits. Tables use native table objects; supported charts and equations remain editable in PPTX.
+- Actual English Editor captures use a 1600 × 960 viewport at DPR 3, with loaded chart and image content.
+- Every page has a purpose, preservation constraints and speakable Notes. The brief’s scientific occurrence has its own notes and pins a real saved named version.
 
-Current PDF and PPTX are in `Exports/` and in the plugin-v0.18.2 introduction delivery. Supported text, charts, tables and equations remain native in PPTX; functional icons are delivered as images. Live click effects and static exports are separate.
+## Read and continue
 
-The previous visual delivery was rejected by the author. This replacement has agent visual review and file validation and is provided for author review. It does not claim author acceptance. See the parent README and docs/INTRODUCTION-DELIVERY.md for the comparison and limitations.
+`Exports/deck.pdf` and `Exports/deck.pptx` contain the full 27-page introduction. `Exports/brief.pdf` and `Exports/brief.pptx` contain the 13-page brief. Each file has its corresponding export report. Downloads are in the [six-edition index](../README.md).
+
+[speaker-notes.md](speaker-notes.md) is extracted from the actual full and brief Notes for continuous reading. Continue editing notes on the relevant page or Presentation occurrence.
+
+The verbatim account and checked technical attribution are in [sources/story](sources/story). Deposited coordinates, CSV, method and reproducible scripts are in [sources/science](sources/science). `evidence/assets.json` indexes actual sources and uses; `evidence/composition.json` records page order; `evidence/story-verification.json` records structural checks; `evidence/exports.json` binds the current export hashes.
+
+Original identities, media and saved versions remain available. The earlier exact title/explanation-only edit is recorded separately from later chart-label refinements and this narrative rewrite. The brief’s pin preserves the earlier wording-edit stage; Main includes the later chart-label adjustment.
+
+The author liked the previous artwork and requested a better story. This revision has independent agent review and remains open for the author’s response. Export checks, native-client trial outcomes and author acceptance are recorded separately.

@@ -1,0 +1,764 @@
+{
+  "project": "claude-zh",
+  "story": {
+    "schemaVersion": 1,
+    "mainStory": {
+      "purpose": "用作者自己的故事介绍幻灯：为什么做、做了什么、怎样以页为单位让 AI 改 slides。",
+      "audience": "组会上的同学和导师，以及第一次了解幻灯的研究者",
+      "takeaway": "让人先讲故事、AI 再做页面，并以页为单位管理修改，slides 才会少一点 AI 味。"
+    },
+    "sections": [
+      {
+        "id": "why",
+        "title": "我为什么要做幻灯",
+        "story": {
+          "purpose": "讲清楚三件让作者想做幻灯的事：AI 味、修改留下的垃圾副本、只能靠截图审阅。",
+          "audience": "组会同学、导师和第一次了解幻灯的人",
+          "takeaway": "问题不在 AI 不会排版，而在没有人的故事、没有以页为单位的修改。"
+        },
+        "pageIds": [
+          "d29961e5-88d6-4906-b2cd-cfc9401c1fb9",
+          "7cf5346c-2027-4e88-b84a-af2466256234",
+          "3c2c0a36-22fc-43b0-b37f-5c3f3b97e005",
+          "6b5c5cbe-70c3-4808-8011-15f57adcbff7",
+          "6afee11a-6d00-430b-93fd-56e706c8b07c"
+        ],
+        "startPageId": "d29961e5-88d6-4906-b2cd-cfc9401c1fb9"
+      },
+      {
+        "id": "what",
+        "title": "我们做了什么",
+        "story": {
+          "purpose": "说明幻灯从哪两条线索来、项目目录长什么样、编辑器里有什么，以及“故事”如何给 AI 对齐。",
+          "audience": "想知道幻灯是什么、怎么用的人",
+          "takeaway": "幻灯 = PPTD 文档模型 + open-slide 代码基础；故事先于页面。"
+        },
+        "pageIds": [
+          "f0e6f4db-8632-4ad4-a50b-cca0f985c07d",
+          "eb92fa66-55fe-454f-8de7-90ab6bdcc401",
+          "c54a9940-fcae-48b4-9519-250637b48949",
+          "4f782a0f-4e54-441b-8e1e-70fa7a273cc2",
+          "f771a595-2222-40fa-acf2-1858bcf77e7e",
+          "9b0890f5-8baf-4a23-b32c-789990898b0c"
+        ],
+        "startPageId": "f0e6f4db-8632-4ad4-a50b-cca0f985c07d"
+      },
+      {
+        "id": "pages",
+        "title": "以“页”为单位管理",
+        "story": {
+          "purpose": "展示以页为单位的管理：页面短码、每页历史、修改审阅、一份来源多场演讲、真实科研页和共享写入口。",
+          "audience": "会让 AI 反复修改 slides 的研究者",
+          "takeaway": "改两页只多两条历史，不再多一份副本。"
+        },
+        "pageIds": [
+          "52624e1a-c1d2-43e5-af12-1d1164b62eec",
+          "46b1bcf1-bf63-4331-bb4e-760f7b8482ec",
+          "39442c0b-2570-4407-b627-44475ad8db32",
+          "3a1c7a85-86be-4daa-bf3d-019a5d40a839",
+          "8812191f-dd67-44eb-91e2-8b9521196c38",
+          "fe807e1f-34d2-4d19-9556-6e32ce00ef5e",
+          "c0366303-bca1-484b-aad6-fa732d78b631",
+          "03e261c9-fb49-4c9f-89d4-d9da6b45b204"
+        ],
+        "startPageId": "52624e1a-c1d2-43e5-af12-1d1164b62eec"
+      }
+    ],
+    "presentations": [
+      {
+        "id": "lab-brief",
+        "title": "组会简版",
+        "story": {
+          "purpose": "组会上用几分钟讲清楚动机和最核心的两个回应：故事先行、以页为单位的历史。",
+          "audience": "课题组同学和导师",
+          "takeaway": "人先讲故事；改两页只多两条历史。"
+        },
+        "items": [
+          {
+            "id": "brief-sahg",
+            "kind": "page",
+            "pageId": "1730f1f7-f4d9-4679-adc2-c9dd6cdfa2c3",
+            "notes": "组会只有几分钟，我只讲两件事：为什么 AI 做的 slides 有 AI 味，以及怎样不再让 AI 留下一堆副本。"
+          },
+          {
+            "id": "brief-fnhb",
+            "kind": "page",
+            "pageId": "7cf5346c-2027-4e88-b84a-af2466256234"
+          },
+          {
+            "id": "brief-gzbw",
+            "kind": "page",
+            "pageId": "3c2c0a36-22fc-43b0-b37f-5c3f3b97e005"
+          },
+          {
+            "id": "brief-ks6e",
+            "kind": "page",
+            "pageId": "6b5c5cbe-70c3-4808-8011-15f57adcbff7"
+          },
+          {
+            "id": "brief-3d9r",
+            "kind": "page",
+            "pageId": "f771a595-2222-40fa-acf2-1858bcf77e7e"
+          },
+          {
+            "id": "brief-dy5h",
+            "kind": "page",
+            "pageId": "39442c0b-2570-4407-b627-44475ad8db32",
+            "notes": "这就是对第二个问题的回答：每一页有自己的历史，改两页只多两条记录。细节可以会后在编辑器里看。"
+          },
+          {
+            "id": "brief-bdtw",
+            "kind": "page",
+            "pageId": "03e261c9-fb49-4c9f-89d4-d9da6b45b204"
+          }
+        ]
+      }
+    ]
+  },
+  "pages": [
+    {
+      "shortCode": "SAHG",
+      "pageId": "1730f1f7-f4d9-4679-adc2-c9dd6cdfa2c3",
+      "position": 1,
+      "title": [
+        "先讲故事，\n再做幻灯片"
+      ],
+      "notes": "今天想讲讲我为什么做幻灯这个项目。它不是从一个产品想法开始的，而是从组会开始的。我会先讲三件让我不舒服的事：AI 做的 slides 一眼就能看出来；让 AI 改两页，目录里多出一堆副本；AI 只能靠截图判断一页做得好不好。然后讲我们怎么回应它们：一个桌面编辑器加一个插件，以人讲的故事为起点，以“页”为单位管理版本。右边这个分子是后面要用到的真实科研例子，DNA 十二聚体，PDB 1BNA。",
+      "designIntent": {
+        "purpose": "开场：这是一个从组会开始的故事，并引出贯穿全篇的 DNA 例子。",
+        "pageRole": "cover",
+        "requestedChange": "按作者口述的故事重做中文版介绍（故事驱动，Claude Code 独立设计）",
+        "actor": "claude-code",
+        "source": "作者 2026-11-11 口述与反馈（sources/story/USER-STORY.zh-CN.md）",
+        "recordedAt": "2026-11-10T22:58:14Z",
+        "backgroundException": "封面用浅灰绿全幅底色（#E9ECE8）区分于内容页。"
+      },
+      "elements": {
+        "shape": 1,
+        "image": 2,
+        "text": 5
+      },
+      "visibleText": [
+        "HUANDENG 幻灯",
+        "先讲故事，\n再做幻灯片",
+        "一个从组会开始的项目：怎样让 AI 做的 slides 少一点 AI 味，多一点人的逻辑。",
+        "项目介绍  ·  HUANDENG Editor 0.18  ·  2026 年 11 月",
+        "贯穿全篇的科研例子：DNA 十二聚体 PDB 1BNA，按沉积坐标绘制。"
+      ],
+      "textObjects": 5,
+      "hidden": false
+    },
+    {
+      "shortCode": "ZX58",
+      "pageId": "d29961e5-88d6-4906-b2cd-cfc9401c1fb9",
+      "position": 2,
+      "title": [
+        "我为什么要做幻灯"
+      ],
+      "notes": "第一部分。先讲动机：三件在做 slides 时让我不舒服的事。",
+      "designIntent": {
+        "purpose": "第一章停顿页。",
+        "pageRole": "section",
+        "requestedChange": "按作者口述的故事重做中文版介绍（故事驱动，Claude Code 独立设计）",
+        "actor": "claude-code",
+        "source": "作者 2026-11-11 口述与反馈（sources/story/USER-STORY.zh-CN.md）",
+        "recordedAt": "2026-11-10T22:58:14Z",
+        "backgroundException": "仅标题的章节停顿页，深绿底色 #2D4A43。"
+      },
+      "elements": {
+        "text": 1
+      },
+      "visibleText": [
+        "我为什么要做幻灯"
+      ],
+      "textObjects": 1,
+      "hidden": false
+    },
+    {
+      "shortCode": "FNHB",
+      "pageId": "7cf5346c-2027-4e88-b84a-af2466256234",
+      "position": 3,
+      "title": [
+        "组会上，大家一眼就能看出是 AI 做的"
+      ],
+      "notes": "我觉得用 AI 来做精美的 slides 是势在必行的。所有东西都在流程化，slides 本身也是数据，是一种文件格式，agent 迟早要彻底掌握它。但在组会上，以及看别人做 presentation 的时候，我的导师和很多人都能一眼看出这是 AI 做的。不同的模型、不同的工具，PowerPoint、Google Slides、ChatGPT、Kimi，它们做出来的风格各不相同，但整体都还是很像 AI。所以我开始想：怎样让 AI 做的 slides 少一点这种明显的 AI 质感？这是第一个原因。（这是我个人在组会上的观察，不是一项研究结论。）",
+      "designIntent": {
+        "purpose": "动机一：AI 做 slides 势在必行，但组会上大家一眼能看出 AI 味。",
+        "pageRole": "content",
+        "requestedChange": "按作者口述的故事重做中文版介绍（故事驱动，Claude Code 独立设计）",
+        "actor": "claude-code",
+        "source": "作者 2026-11-11 口述与反馈（sources/story/USER-STORY.zh-CN.md）",
+        "recordedAt": "2026-11-10T22:58:14Z"
+      },
+      "elements": {
+        "text": 6,
+        "line": 1,
+        "image": 1
+      },
+      "visibleText": [
+        "组会上，大家一眼就能看出是 AI 做的",
+        "当所有东西都能流程化，slides 本身也是一种数据、一种文件格式。让 agent 彻底掌握怎么做 slides，是势在必行的事。",
+        "—— 我做这个项目的出发点",
+        "<p><strong><span style=\"color:#1C2321\">但现实是：</span></strong></p><p>开组会、看别人做 presentation 的时候，我的导师和很多人都能一眼认出 AI 风格、AI 质感。</p><p><span style=\"font-size:8px\"> </span></p><p><strong><span style=\"color:#1C2321\">不同工具各有各的样子：</span></strong></p><p>PowerPoint、Google Slides 里的 AI，ChatGPT、Kimi 自己的 slides 功能，风格都不一样。</p><p><span style=\"font-size:8px\"> </span></p><p><strong><span style=\"color:#1C2321\">可整体看，都还是很像 AI。</span></strong></p><p>缺的是那种“人的感觉”。</p>",
+        "HUANDENG  /  为什么要做",
+        "0"
+      ],
+      "textObjects": 6,
+      "hidden": false
+    },
+    {
+      "shortCode": "GZBW",
+      "pageId": "3c2c0a36-22fc-43b0-b37f-5c3f3b97e005",
+      "position": 4,
+      "title": [
+        "AI 味，来自没有重点"
+      ],
+      "notes": "为什么 AI 做的 slides 有明显的 AI 质感？我看过小红书上的一个帖子，说 AI 质感来自没有重点、面面俱到、没有故事性，而是追求全面、追求完整、追求免责。要让 slides 有人味，底层必须是人的故事。所以最好的办法，是人给 AI 讲一个故事，让 AI 把它整理组织起来，再基于这个故事去做 slides。这样还有一个好处：你像 freestyle、即兴演奏一样，想到哪儿说到哪儿，但说话本身是有逻辑的。整理之后再做 slides，就省掉了临时编讲稿这件事。反过来，如果 AI 先做 slides、人再去编讲稿，大部分情况下是你在跟着 AI 的逻辑走。",
+      "designIntent": {
+        "purpose": "解释 AI 味的来源（没有重点、面面俱到），得出“人先讲故事”的结论。",
+        "pageRole": "content",
+        "requestedChange": "按作者口述的故事重做中文版介绍（故事驱动，Claude Code 独立设计）",
+        "actor": "claude-code",
+        "source": "作者 2026-11-11 口述与反馈（sources/story/USER-STORY.zh-CN.md）",
+        "recordedAt": "2026-11-10T22:58:14Z"
+      },
+      "elements": {
+        "text": 5,
+        "table": 1,
+        "shape": 1,
+        "image": 1
+      },
+      "visibleText": [
+        "AI 味，来自没有重点",
+        "我在小红书上看到一个说法，很认同：AI 质感来自面面俱到、追求完整，而不是讲一个故事。",
+        "<p><strong><span style=\"color:#2E6B5E\">所以最好的办法：</span></strong>让人先给 AI 讲一个故事，AI 把故事整理清楚，再基于这个故事做 slides。</p>",
+        "HUANDENG  /  为什么要做",
+        "0"
+      ],
+      "textObjects": 5,
+      "hidden": false
+    },
+    {
+      "shortCode": "KS6E",
+      "pageId": "6b5c5cbe-70c3-4808-8011-15f57adcbff7",
+      "position": 5,
+      "title": [
+        "让 AI 改两页，目录里多出一堆副本"
+      ],
+      "notes": "第二个原因。当我让 AI 针对某几页做修改，比如一份五十页的 slides 我只想改两页，很多有防御性行为的 agent 不会直接替换，它会给你留副本。哪怕只是轻微改动，它也会创建一个新的 slides 副本。改得多了，目录里就是一堆垃圾副本和不同时间留下的垃圾历史。这让我想到 Git，想到版本管理工具。我们应该学的就是这个：把 page 当作修改的单位，然后对它做版本管理。左边的文件名是示意，不是某个真实目录。",
+      "designIntent": {
+        "purpose": "动机二：让 AI 改两页会留下大量副本，于是想到以页为单位的版本管理。",
+        "pageRole": "content",
+        "requestedChange": "按作者口述的故事重做中文版介绍（故事驱动，Claude Code 独立设计）",
+        "actor": "claude-code",
+        "source": "作者 2026-11-11 口述与反馈（sources/story/USER-STORY.zh-CN.md）",
+        "recordedAt": "2026-11-10T22:58:14Z",
+        "keep": [
+          "文件列表标注为示意"
+        ]
+      },
+      "elements": {
+        "text": 7,
+        "shape": 1,
+        "image": 1
+      },
+      "visibleText": [
+        "让 AI 改两页，目录里多出一堆副本",
+        "一份 50 页的 slides，我只想改其中两页。",
+        "示意：反复修改后的文件夹",
+        "组会汇报.pptx\n组会汇报_v2.pptx\n组会汇报_v2_修改.pptx\n组会汇报_final.pptx\n组会汇报_final_AI改.pptx\n组会汇报_final_AI改(1).pptx\n组会汇报_最终版_不要再改.pptx",
+        "<p><strong><span style=\"color:#1C2321\">有“防御性”的 agent 不会直接替换。</span></strong></p><p>改动再轻微，它也会另存一个副本，留下大量不同时间的“垃圾历史”。</p><p><span style=\"font-size:8px\"> </span></p><p><strong><span style=\"color:#1C2321\">这让我想到 Git。</span></strong></p><p>版本管理本来就是解决这个问题的。我们应该学它：</p><p><span style=\"font-size:8px\"> </span></p><p><strong><span style=\"color:#2E6B5E\">把“页”当作修改的单位，</span></strong>每一页都能做版本管理，而不是整份文件一遍遍复制。</p>",
+        "HUANDENG  /  为什么要做",
+        "0"
+      ],
+      "textObjects": 7,
+      "hidden": false
+    },
+    {
+      "shortCode": "2723",
+      "pageId": "6afee11a-6d00-430b-93fd-56e706c8b07c",
+      "position": 6,
+      "title": [
+        "AI 只能靠截图，判断一页做得好不好"
+      ],
+      "notes": "第三个原因。我之前让 AI 去做 Google Slides 或 PowerPoint 的时候发现，有时你需要让它按视觉去查看效果。它每次可能要做一个全图截屏，再去审计这一页做得怎么样。这件事在我看来是不可优化、不可数据化、不可量化的。所以一个更好的 slides 文件格式可能会更好。右边是同一页在幻灯里的结构片段：每个对象有自己的 ID、角色和位置，AI 可以精确定位、做边界检查、比较修改前后。截图仍然是最后审阅的好工具，只是不该是唯一的入口。",
+      "designIntent": {
+        "purpose": "动机三：AI 只能靠截图审阅页面，需要结构化的 slides 格式。",
+        "pageRole": "content",
+        "requestedChange": "按作者口述的故事重做中文版介绍（故事驱动，Claude Code 独立设计）",
+        "actor": "claude-code",
+        "source": "作者 2026-11-11 口述与反馈（sources/story/USER-STORY.zh-CN.md）",
+        "recordedAt": "2026-11-10T22:58:14Z"
+      },
+      "elements": {
+        "text": 8,
+        "shape": 2,
+        "image": 2
+      },
+      "visibleText": [
+        "AI 只能靠截图，判断一页做得好不好",
+        "在 PowerPoint、Google Slides 里让 AI 改页面，它往往要整页截图，再“看图审计”。",
+        "截图：适合人最后看一眼，但很难定位到具体对象，也很难量化“改了什么”。",
+        "elements:\n  - elementId: title\n    role: title\n    content:\n      text: 持续打磨同一份作品\n      fontSize: 26\n  - elementId: lead\n    bounds: [56, 80, 848, 26]",
+        "同一页的结构：agent 可以按对象定位、检查边界、比较前后差异。",
+        "<p><strong><span style=\"color:#2E6B5E\">所以需要一种更好的 slides 文件格式。</span></strong>截图仍然有用，但它不该是 AI 理解页面的唯一方式。</p>",
+        "HUANDENG  /  为什么要做",
+        "0"
+      ],
+      "textObjects": 8,
+      "hidden": false
+    },
+    {
+      "shortCode": "6KNX",
+      "pageId": "f0e6f4db-8632-4ad4-a50b-cca0f985c07d",
+      "position": 7,
+      "title": [
+        "我们做了什么"
+      ],
+      "notes": "第二部分。带着这三个问题，我找到了两条线索，然后把它们合在了一起。",
+      "designIntent": {
+        "purpose": "第二章停顿页。",
+        "pageRole": "section",
+        "requestedChange": "按作者口述的故事重做中文版介绍（故事驱动，Claude Code 独立设计）",
+        "actor": "claude-code",
+        "source": "作者 2026-11-11 口述与反馈（sources/story/USER-STORY.zh-CN.md）",
+        "recordedAt": "2026-11-10T22:58:14Z",
+        "backgroundException": "仅标题的章节停顿页，深绿底色 #2D4A43。"
+      },
+      "elements": {
+        "text": 1
+      },
+      "visibleText": [
+        "我们做了什么"
+      ],
+      "textObjects": 1,
+      "hidden": false
+    },
+    {
+      "shortCode": "2UCC",
+      "pageId": "eb92fa66-55fe-454f-8de7-90ab6bdcc401",
+      "position": 8,
+      "title": [
+        "两条线索，合在一起"
+      ],
+      "notes": "调查下来，我注意到两条线索。一条是 PPTD：我是在 Kimi Slides 这个生态里接触到这种文件组织方式的，它把 slides 变成 agent 可以读写的结构。另一条是开源工具 open-slide，它用 React 去组织 slides 的每一页。我想这两个东西其实是可以合起来的。于是我用 Electron 做了这样一个 PC 端的编辑器。它的大部分操作逻辑基于 open-slide 开发，也借鉴了 WPS、PowerPoint、Photoshop 和很多其他项目的设计思路。目的就是让 slides 更有组织：每一页都能做版本管理，AI 也能更好地使用这个编辑器，做出符合我理想的 slides。具体致谢：公式转换复用了 OpenPPTD 的模块，PPTX 导出用的是 PptxGenJS。",
+      "designIntent": {
+        "purpose": "两条线索：PPTD 思路与 open-slide 代码基础，合成桌面编辑器幻灯；准确致谢。",
+        "pageRole": "content",
+        "requestedChange": "按作者口述的故事重做中文版介绍（故事驱动，Claude Code 独立设计）",
+        "actor": "claude-code",
+        "source": "作者 2026-11-11 口述与反馈（sources/story/USER-STORY.zh-CN.md）",
+        "recordedAt": "2026-11-10T22:58:14Z",
+        "keep": [
+          "不声称 Kimi 是标准发明者；OpenPPTD 仅为公式转换模块"
+        ]
+      },
+      "elements": {
+        "text": 10,
+        "image": 5,
+        "shape": 2
+      },
+      "visibleText": [
+        "两条线索，合在一起",
+        "PPTD：把 slides 当成目录",
+        "<p>我是在 Kimi Slides 的生态里接触到 PPTD 这种思路的：slides 不是一个封起来的文件，而是一个 agent 能读、能写的结构化项目。</p><p><span style=\"font-size:8px\"> </span></p><p>（这是我的灵感来源，不代表它是某种公认标准的发明者。）</p>",
+        "open-slide：开源的代码基础",
+        "<p>开源项目 open-slide 用 React 组织每一页 slides，编辑器的大部分操作逻辑都基于它开发。</p><p><span style=\"font-size:8px\"> </span></p><p>此外借鉴了 WPS、PowerPoint、Photoshop 等很多软件的设计思路。</p>",
+        "<p><strong><span style=\"color:#FFFFFF\">幻灯 = PPTD 文档模型 + open-slide 代码基础 + Electron 桌面端</span></strong></p><p><span style=\"color:#C9D8D2\">目标：每一页都能版本管理，AI 能更好地用这个编辑器，把人的需求做出来。</span></p>",
+        "OpenPPTD：复用其公式（MathML→OMML）转换模块",
+        "PptxGenJS：生成可编辑的 PPTX",
+        "HUANDENG  /  我们做了什么",
+        "0"
+      ],
+      "textObjects": 10,
+      "hidden": false
+    },
+    {
+      "shortCode": "3DUH",
+      "pageId": "c54a9940-fcae-48b4-9519-250637b48949",
+      "position": 9,
+      "title": [
+        "一份 slides，其实是一个目录"
+      ],
+      "notes": "这里要先讲一下 PPTD 的概念。我们拆开 PowerPoint 看，它其实是把一整个包整合成一个 PPTX 文件，但里面本质上也是按 page 去组织的。我们只是把入口从 PPTX 换成了目录里的 deck.pptd，整个 slides 本质上就是一个目录。左边就是这份幻灯自己的目录：deck.pptd 是入口，pages 里每页一个文件，media 是素材库，.huandeng 里放页面短码、故事、章节、演讲和历史版本，AGENTS.md 是给 agent 看的写作说明。编辑器左侧栏的“文件”页就像 VS Code 一样，可以看到整个项目是怎么组织的。",
+      "designIntent": {
+        "purpose": "说明一份 slides 就是一个目录，每部分放什么。",
+        "pageRole": "content",
+        "requestedChange": "按作者口述的故事重做中文版介绍（故事驱动，Claude Code 独立设计）",
+        "actor": "claude-code",
+        "source": "作者 2026-11-11 口述与反馈（sources/story/USER-STORY.zh-CN.md）",
+        "recordedAt": "2026-11-10T22:58:14Z"
+      },
+      "elements": {
+        "text": 6,
+        "shape": 1,
+        "table": 1,
+        "image": 1
+      },
+      "visibleText": [
+        "一份 slides，其实是一个目录",
+        "PPTX 本身也是一个按页拆开的压缩包。幻灯只是把这个目录直接摊开，入口从 .pptx 换成了 deck.pptd。",
+        "claude-zh/\n├─ deck.pptd\n├─ pages/\n│  ├─ SAHG.page\n│  └─ …（共 20 页）\n├─ media/\n├─ sources/\n├─ .huandeng/\n└─ AGENTS.md",
+        "左侧栏的“文件”页就像 VS Code：整份项目怎么组织一目了然。搬动项目时，整个目录一起带走。",
+        "HUANDENG  /  我们做了什么",
+        "0"
+      ],
+      "textObjects": 6,
+      "hidden": false
+    },
+    {
+      "shortCode": "SSFR",
+      "pageId": "4f782a0f-4e54-441b-8e1e-70fa7a273cc2",
+      "position": 10,
+      "title": [
+        "幻灯 Editor：熟悉的编辑器，多了几样东西"
+      ],
+      "notes": "这就是幻灯 Editor。幻灯是一个 editor 加上一些 plugin，它们组成了幻灯的 workflow。左侧栏有项目、页面、素材、文件四个页签。项目页可以看主幻灯片和不同的演讲；页面页就是正常的页面列表；素材页真正把素材库这个概念用了起来；文件页像 VS Code 一样展示整个目录。中间除了普通画布，还有浏览视图，能看到每个章节都有什么；大纲可以看每一页的标题和简单内容；章节可以编辑每一章有什么；备注页一般用来写稿子；历史页是最重要的版本管理功能。右侧面板里有图层：PowerPoint 本身也有，但我们想更强调它。还有“故事”，下一页讲。",
+      "designIntent": {
+        "purpose": "用真实界面介绍编辑器的侧栏、视图和右侧面板。",
+        "pageRole": "content",
+        "requestedChange": "按作者口述的故事重做中文版介绍（故事驱动，Claude Code 独立设计）",
+        "actor": "claude-code",
+        "source": "作者 2026-11-11 口述与反馈（sources/story/USER-STORY.zh-CN.md）",
+        "recordedAt": "2026-11-10T22:58:14Z"
+      },
+      "elements": {
+        "text": 5,
+        "shape": 1,
+        "image": 2
+      },
+      "visibleText": [
+        "幻灯 Editor：熟悉的编辑器，多了几样东西",
+        "真实界面截图：中文界面，公开示例项目。",
+        "<p><strong><span style=\"color:#1C2321\">左侧栏</span></strong></p><p>项目 · 页面 · 素材 · 文件</p><p><span style=\"font-size:8px\"> </span></p><p><strong><span style=\"color:#1C2321\">视图</span></strong></p><p>普通 · 浏览 · 大纲 · 章节 · 备注页 · 历史</p><p><span style=\"font-size:8px\"> </span></p><p><strong><span style=\"color:#1C2321\">右侧面板</span></strong></p><p>属性 · 布局 · 图层 · 故事 · 检查</p><p><span style=\"font-size:8px\"> </span></p><p><strong><span style=\"color:#2E6B5E\">对 AI 最重要的三样</span></strong></p><p>每页的故事、页面短码、每页的历史</p>",
+        "HUANDENG  /  我们做了什么",
+        "0"
+      ],
+      "textObjects": 5,
+      "hidden": false
+    },
+    {
+      "shortCode": "3D9R",
+      "pageId": "f771a595-2222-40fa-acf2-1858bcf77e7e",
+      "position": 11,
+      "title": [
+        "每一页都写着：这一页的故事是什么"
+      ],
+      "notes": "因为我们是以人讲 story 来驱动的，所以给每一页都设计了一个 story 部分：这一页的故事是什么。它回答三个问题：这页为了什么，什么必须保留，这次要改什么。主幻灯片、每个章节、每场演讲也都有自己的故事。这是给 AI 做 alignment 的工具。AI 改一页之前，先读这一页的故事，就知道哪些东西不能动。当然它不能保证 AI 一定听话，AI 写下的理解也不等于作者认可，最后还是要人看。",
+      "designIntent": {
+        "purpose": "介绍每页的“故事”：AI 修改前的对齐工具，但不等于作者认可。",
+        "pageRole": "content",
+        "requestedChange": "按作者口述的故事重做中文版介绍（故事驱动，Claude Code 独立设计）",
+        "actor": "claude-code",
+        "source": "作者 2026-11-11 口述与反馈（sources/story/USER-STORY.zh-CN.md）",
+        "recordedAt": "2026-11-10T22:58:14Z"
+      },
+      "elements": {
+        "text": 5,
+        "shape": 1,
+        "image": 2
+      },
+      "visibleText": [
+        "每一页都写着：这一页的故事是什么",
+        "真实界面：右侧面板“故事”页。",
+        "<p><strong><span style=\"color:#1C2321\">我们是故事驱动的，所以每一页都有一个“故事”部分：</span></strong></p><p><span style=\"font-size:8px\"> </span></p><p><strong><span style=\"color:#2E6B5E\">这页为了什么</span></strong> —— 它要让听众理解什么</p><p><strong><span style=\"color:#2E6B5E\">需要保留什么</span></strong> —— 数据、图、术语、版式</p><p><strong><span style=\"color:#2E6B5E\">这次要改什么</span></strong> —— 本次请求的具体修改</p><p><span style=\"font-size:8px\"> </span></p><p>整份幻灯、每个章节、每场演讲也各有自己的故事。</p><p><span style=\"font-size:8px\"> </span></p><p>它是给 AI 用的对齐（alignment）工具：AI 改之前先读它。它不能保证 AI 一定照做，也不代表作者已经认可。</p>",
+        "HUANDENG  /  我们做了什么",
+        "0"
+      ],
+      "textObjects": 5,
+      "hidden": false
+    },
+    {
+      "shortCode": "WDFR",
+      "pageId": "9b0890f5-8baf-4a23-b32c-789990898b0c",
+      "position": 12,
+      "title": [
+        "这份幻灯，就是这样做出来的"
+      ],
+      "notes": "说一个最直接的例子：这份幻灯本身就是这么做出来的。我先把为什么做这个项目讲了一遍，完全是想到哪儿说到哪儿。AI 把这段口述整理成三个章节，然后再一页一页做出来。左边是口述原文里的三句话，右边是整理出来的结构。所以现在这份备注，基本就是我自己当时说的话。我不需要再为 AI 排好的页面现编一份讲稿。",
+      "designIntent": {
+        "purpose": "元例子：这份幻灯本身由口述整理而来，讲稿就是作者自己的话。",
+        "pageRole": "content",
+        "requestedChange": "按作者口述的故事重做中文版介绍（故事驱动，Claude Code 独立设计）",
+        "actor": "claude-code",
+        "source": "作者 2026-11-11 口述与反馈（sources/story/USER-STORY.zh-CN.md）",
+        "recordedAt": "2026-11-10T22:58:14Z"
+      },
+      "elements": {
+        "text": 7,
+        "line": 1,
+        "image": 1
+      },
+      "visibleText": [
+        "这份幻灯，就是这样做出来的",
+        "我先口述，想到哪儿说到哪儿；AI 把它整理成章节；再一页一页做出来。",
+        "<p><span style=\"color:#B9783F\">“</span>我就在考虑如何让 AI 制作的 slides 减少它这种明显的 AI 质感。<span style=\"color:#B9783F\">”</span></p><p><span style=\"font-size:8px\"> </span></p><p><span style=\"color:#B9783F\">“</span>如果你改动多的话，它可能会在你目录里创建大量的这种垃圾副本。<span style=\"color:#B9783F\">”</span></p><p><span style=\"font-size:8px\"> </span></p><p><span style=\"color:#B9783F\">“</span>所以最好的办法就是让人类给 AI 讲一个故事。<span style=\"color:#B9783F\">”</span></p>",
+        "—— 摘自口述原文",
+        "<p><strong><span style=\"color:#2E6B5E\">整理成三个章节</span></strong></p><p><span style=\"font-size:8px\"> </span></p><p><strong><span style=\"color:#1C2321\">我为什么要做幻灯</span></strong></p><p>AI 味、垃圾副本、只能看截图</p><p><span style=\"font-size:8px\"> </span></p><p><strong><span style=\"color:#1C2321\">我们做了什么</span></strong></p><p>PPTD + open-slide，编辑器和故事</p><p><span style=\"font-size:8px\"> </span></p><p><strong><span style=\"color:#1C2321\">以“页”为单位</span></strong></p><p>页面短码、每页历史、一份来源多场演讲</p>",
+        "HUANDENG  /  我们做了什么",
+        "0"
+      ],
+      "textObjects": 7,
+      "hidden": false
+    },
+    {
+      "shortCode": "85Z6",
+      "pageId": "52624e1a-c1d2-43e5-af12-1d1164b62eec",
+      "position": 13,
+      "title": [
+        "以“页”为单位管理"
+      ],
+      "notes": "第三部分。回到第二个问题：怎样不再复制整份文件，而是一页一页地管理版本。",
+      "designIntent": {
+        "purpose": "第三章停顿页。",
+        "pageRole": "section",
+        "requestedChange": "按作者口述的故事重做中文版介绍（故事驱动，Claude Code 独立设计）",
+        "actor": "claude-code",
+        "source": "作者 2026-11-11 口述与反馈（sources/story/USER-STORY.zh-CN.md）",
+        "recordedAt": "2026-11-10T22:58:14Z",
+        "backgroundException": "仅标题的章节停顿页，深绿底色 #2D4A43。"
+      },
+      "elements": {
+        "text": 1
+      },
+      "visibleText": [
+        "以“页”为单位管理"
+      ],
+      "textObjects": 1,
+      "hidden": false
+    },
+    {
+      "shortCode": "ZWM9",
+      "pageId": "46b1bcf1-bf63-4331-bb4e-760f7b8482ec",
+      "position": 14,
+      "title": [
+        "位置会变，页面短码不变"
+      ],
+      "notes": "和 AI 交流的时候，你说第一页、第二页、第三页，但如果你改过顺序，第一页第二页第三页就已经不是那个地方了。所以我们把两个东西分开：位置，是它现在在第几页，会变；页面短码，是专属于这一页的 ID，四位字母加数字的编码，随机生成、不重复。左边是同一页 HFDV 移动前后的状态栏：位置从 2 变成了 4，短码没变。你跟 AI 说 HFDV，它就知道具体是哪一页。有了这个 ID，才能对每一页做版本管理。",
+      "designIntent": {
+        "purpose": "位置会变、页面短码不变，用 HFDV 前后对比说明。",
+        "pageRole": "content",
+        "requestedChange": "按作者口述的故事重做中文版介绍（故事驱动，Claude Code 独立设计）",
+        "actor": "claude-code",
+        "source": "作者 2026-11-11 口述与反馈（sources/story/USER-STORY.zh-CN.md）",
+        "recordedAt": "2026-11-10T22:58:14Z"
+      },
+      "elements": {
+        "text": 8,
+        "image": 4,
+        "shape": 1
+      },
+      "visibleText": [
+        "位置会变，页面短码不变",
+        "跟 AI 说“改第四页”很危险：这个版本的第四页，未必是上个版本的第四页。",
+        "移动前",
+        "移动后",
+        "<p><strong><span style=\"color:#2E6B5E\">位置</span></strong>：这一页现在排第几，随时会变。</p><p><strong><span style=\"color:#2E6B5E\">页面短码</span></strong>：四位字母加数字，随机生成、不重复，跟着这一页走。</p><p><span style=\"font-size:8px\"> </span></p><p>所以直接说“改 HFDV”，AI 就知道是哪一页。</p>",
+        "真实界面：浏览视图里，每页同时显示位置和页面短码，并可直接查看历史版本。",
+        "HUANDENG  /  以“页”为单位",
+        "0"
+      ],
+      "textObjects": 8,
+      "hidden": false
+    },
+    {
+      "shortCode": "DY5H",
+      "pageId": "39442c0b-2570-4407-b627-44475ad8db32",
+      "position": 15,
+      "title": [
+        "每一页都有自己的历史"
+      ],
+      "notes": "这是我们最重要的版本管理功能。我们不是对整个 slides 做版本管理，而是对每一页都有版本管理。在左侧栏选中一页，右键查看历史版本，就能看到它的变化。已记录版本是有名字的里程碑，比如“文案已收紧”“组会定稿”；操作记录是每一次保存的修改。恢复一个版本，只更新这一页。这样 AI 改两页，就只是这两页多了两条历史，而不是目录里多出一份副本。",
+      "designIntent": {
+        "purpose": "每一页都有自己的历史，回应“垃圾副本”问题。",
+        "pageRole": "content",
+        "requestedChange": "按作者口述的故事重做中文版介绍（故事驱动，Claude Code 独立设计）",
+        "actor": "claude-code",
+        "source": "作者 2026-11-11 口述与反馈（sources/story/USER-STORY.zh-CN.md）",
+        "recordedAt": "2026-11-10T22:58:14Z"
+      },
+      "elements": {
+        "text": 5,
+        "shape": 1,
+        "image": 2
+      },
+      "visibleText": [
+        "每一页都有自己的历史",
+        "真实界面：页面 TJ2W 的两个已记录版本。",
+        "<p><strong><span style=\"color:#1C2321\">不是给整份 slides 做版本管理，</span></strong></p><p><strong><span style=\"color:#2E6B5E\">是给每一页。</span></strong></p><p><span style=\"font-size:8px\"> </span></p><p>在左侧栏选中一页，右键“查看历史版本”。</p><p><span style=\"font-size:8px\"> </span></p><p><strong><span style=\"color:#1C2321\">已记录版本</span></strong></p><p>像 Git 的提交：有名字，比如“组会定稿”。</p><p><span style=\"font-size:8px\"> </span></p><p><strong><span style=\"color:#1C2321\">操作记录</span></strong></p><p>每一次保存的修改都在。</p><p><span style=\"font-size:8px\"> </span></p><p>恢复只更新这一页，其他页不动。</p>",
+        "HUANDENG  /  以“页”为单位",
+        "0"
+      ],
+      "textObjects": 5,
+      "hidden": false
+    },
+    {
+      "shortCode": "3442",
+      "pageId": "3a1c7a85-86be-4daa-bf3d-019a5d40a839",
+      "position": 16,
+      "title": [
+        "AI 改了什么，一处一处看得见"
+      ],
+      "notes": "每一次保存的修改都可以回头看。左边是一次真实的修改：AI 收紧了一页的标题和导语。你可以在修改前和修改后之间切换，改动的对象会被框出来；右边列出这次具体改了哪些对象、哪些字段；下面是这一页的故事，以及它现在被哪些演讲引用。所以 AI 改完以后，不用再整页截图去猜它动了什么。",
+      "designIntent": {
+        "purpose": "AI 改了什么可以逐项审阅。",
+        "pageRole": "content",
+        "requestedChange": "按作者口述的故事重做中文版介绍（故事驱动，Claude Code 独立设计）",
+        "actor": "claude-code",
+        "source": "作者 2026-11-11 口述与反馈（sources/story/USER-STORY.zh-CN.md）",
+        "recordedAt": "2026-11-10T22:58:14Z"
+      },
+      "elements": {
+        "text": 5,
+        "shape": 1,
+        "image": 2
+      },
+      "visibleText": [
+        "AI 改了什么，一处一处看得见",
+        "真实界面：查看一次已保存的修改。",
+        "<p><strong><span style=\"color:#2E6B5E\">修改前 / 修改后</span></strong></p><p>同一页并排切换，改动的对象直接框出来。</p><p><span style=\"font-size:8px\"> </span></p><p><strong><span style=\"color:#2E6B5E\">改了哪些字段</span></strong></p><p>这次只动了标题和导语的文字，其他对象原样保留。</p><p><span style=\"font-size:8px\"> </span></p><p><strong><span style=\"color:#2E6B5E\">和故事放在一起</span></strong></p><p>旁边就是这一页的故事和当前用在哪些演讲里，判断这次修改有没有偏离初衷。</p>",
+        "HUANDENG  /  以“页”为单位",
+        "0"
+      ],
+      "textObjects": 5,
+      "hidden": false
+    },
+    {
+      "shortCode": "D26F",
+      "pageId": "8812191f-dd67-44eb-91e2-8b9521196c38",
+      "position": 17,
+      "title": [
+        "一份主幻灯片，多场演讲"
+      ],
+      "notes": "真正演讲的时候，我们可以只做一份 slides，但每次挑选需要的页面。主幻灯片是唯一来源，演讲只是从里面挑页、排序，是引用，不是复制。主幻灯片里改了一页，引用它的演讲都会看到更新；如果某场演讲需要保持当时的样子，可以固定到那一页的某个命名版本。素材也一样：图片、图表、截图都在素材库里，哪页用了哪张图都能查到。这份介绍本身也有一个七页的“组会简版”，就是用同一份主幻灯片排出来的。",
+      "designIntent": {
+        "purpose": "一份主幻灯片排出多场演讲，素材库集中管理。",
+        "pageRole": "content",
+        "requestedChange": "按作者口述的故事重做中文版介绍（故事驱动，Claude Code 独立设计）",
+        "actor": "claude-code",
+        "source": "作者 2026-11-11 口述与反馈（sources/story/USER-STORY.zh-CN.md）",
+        "recordedAt": "2026-11-10T22:58:14Z"
+      },
+      "elements": {
+        "text": 5,
+        "shape": 1,
+        "image": 2
+      },
+      "visibleText": [
+        "一份主幻灯片，多场演讲",
+        "真实界面：项目概览里的主幻灯片和一场演讲。",
+        "<p><strong><span style=\"color:#2E6B5E\">主幻灯片</span></strong>：所有页面的唯一来源。</p><p><span style=\"font-size:8px\"> </span></p><p><strong><span style=\"color:#2E6B5E\">演讲</span></strong>：从主幻灯片里挑页、排序，引用而不是复制。组会、答辩、简短介绍，各排各的。</p><p><span style=\"font-size:8px\"> </span></p><p>主幻灯片里改一页，所有引用它的演讲一起更新；需要的时候，也可以把某场演讲固定在某个命名版本。</p><p><span style=\"font-size:8px\"> </span></p><p><strong><span style=\"color:#2E6B5E\">素材库</span></strong>：图片、图表和截图集中在 media，哪一页用了哪张图都查得到。</p><p><span style=\"font-size:8px\"> </span></p><p>这份幻灯也排了一场 7 页的“组会简版”。</p>",
+        "HUANDENG  /  以“页”为单位",
+        "0"
+      ],
+      "textObjects": 5,
+      "hidden": false
+    },
+    {
+      "shortCode": "BRHY",
+      "pageId": "fe807e1f-34d2-4d19-9556-6e32ce00ef5e",
+      "position": 18,
+      "title": [
+        "科研页：图要保真，数据还是数据"
+      ],
+      "notes": "幻灯是给做科研的人用的，所以图和数据必须保真。这一页是开头那个 DNA 分子：PDB 1BNA，Dickerson–Drew 十二聚体，链 A 绿色，链 B 赭色。右边是十二个碱基对的 C1′ 到 C1′ 距离。它不是贴上去的图片，而是一个原生图表对象，数据来自 CSV。纵轴故意不从零开始，这样几何上的变化才看得出来。要改一个值或一个标签，改的是数据，不是像素。AI 也能精确地改它，而不是重画一张图。注意它说的是什么：这是同一个晶体结构里的十二个位置，不是重复实验，没有误差棒。最短在第 7 对，中间 AATT 区的一个 T–A；最长在第 12 对，末端的 G–C。方法：链 A 残基 1–12 依次对应链 B 残基 24–13，计算 C1′ 原子间欧氏距离。数据见 sources/science/paired-c1-distances.csv。",
+      "designIntent": {
+        "purpose": "真实科研页：图保真、数据可编辑，并说明数据的限定。",
+        "pageRole": "content",
+        "requestedChange": "按作者口述的故事重做中文版介绍（故事驱动，Claude Code 独立设计）",
+        "actor": "claude-code",
+        "source": "作者 2026-11-11 口述与反馈（sources/story/USER-STORY.zh-CN.md）",
+        "recordedAt": "2026-11-10T22:58:14Z",
+        "keep": [
+          "保留 1BNA 十二个距离数值、单位 Å、来源与“非重复实验”的限定"
+        ]
+      },
+      "elements": {
+        "text": 10,
+        "image": 2,
+        "chart": 1
+      },
+      "visibleText": [
+        "科研页：图要保真，数据还是数据",
+        "一页真实的科研 slide：结构图来自沉积坐标，折线图是由 CSV 生成的原生图表。",
+        "— 链 A",
+        "— 链 B",
+        "C1′–C1′ 距离（Å）",
+        "配对位置（链 A 残基 1–12 对应链 B 残基 24–13）",
+        "<p><strong><span style=\"color:#2E6B5E\">要改一个数值，改的是数据，不是像素。</span></strong>最短 10.23 Å（第 7 对 T–A），最长 10.89 Å（第 12 对 G–C）。</p>",
+        "来源：RCSB PDB 1BNA，Dickerson–Drew 十二聚体，1.90 Å X 射线（Drew et al., PNAS 78:2179–2183, 1981）。由沉积坐标计算；同一结构中的十二个位置，不是重复实验，也不是氢键长度。",
+        "HUANDENG  /  以“页”为单位",
+        "0"
+      ],
+      "textObjects": 10,
+      "hidden": false
+    },
+    {
+      "shortCode": "FK8W",
+      "pageId": "c0366303-bca1-484b-aad6-fa732d78b631",
+      "position": 19,
+      "title": [
+        "人和 agent，用同一个写入口"
+      ],
+      "notes": "最后讲一下 AI 怎么接进来。Codex、Claude Code、DeepSeek、ChatGPT 这些 agent，通过幻灯插件或者命令行，连接到你已经打开的那个项目。它们和你在画布上编辑用的是同一个写入器：先预览这次会改什么，再写入；如果这一页在它读完以后被你改过，写入会被拒绝，不会悄悄覆盖你的修改；每次写入都有回执，能在历史里对上。我们想证明的是，用不同的 AI 都可以在这套流程里做出好的效果。这份中文版就是 Claude Code 通过这个写入口一页一页写进来的。",
+      "designIntent": {
+        "purpose": "人和多个 agent 走同一个共享写入器：先预览、不覆盖、有回执。",
+        "pageRole": "content",
+        "requestedChange": "按作者口述的故事重做中文版介绍（故事驱动，Claude Code 独立设计）",
+        "actor": "claude-code",
+        "source": "作者 2026-11-11 口述与反馈（sources/story/USER-STORY.zh-CN.md）",
+        "recordedAt": "2026-11-10T22:58:14Z"
+      },
+      "elements": {
+        "text": 10,
+        "image": 5,
+        "line": 1
+      },
+      "visibleText": [
+        "人和 agent，用同一个写入口",
+        "不管是人在画布上改，还是 agent 通过插件改，最后都经过同一个共享写入器。",
+        "Codex",
+        "Claude Code",
+        "DeepSeek",
+        "ChatGPT",
+        "通过 HUANDENG 插件（MCP）或命令行连接到已打开的项目。",
+        "<p><strong><span style=\"color:#2E6B5E\">先预览，再写入</span></strong></p><p>agent 写之前，先看到这次会改哪些页、哪些字段，以及会影响哪些演讲。</p><p><span style=\"font-size:8px\"> </span></p><p><strong><span style=\"color:#2E6B5E\">不会悄悄覆盖</span></strong></p><p>如果这一页在它读完之后被人改过，写入会被拒绝，必须重新读、重新提议。</p><p><span style=\"font-size:8px\"> </span></p><p><strong><span style=\"color:#2E6B5E\">每次写入都有回执</span></strong></p><p>回执能在历史里找到对应的修改，回头一处一处地看。</p><p><span style=\"font-size:8px\"> </span></p><p>这份中文版就是 Claude Code 这样写进来的。</p>",
+        "HUANDENG  /  以“页”为单位",
+        "0"
+      ],
+      "textObjects": 10,
+      "hidden": false
+    },
+    {
+      "shortCode": "BDTW",
+      "pageId": "03e261c9-fb49-4c9f-89d4-d9da6b45b204",
+      "position": 20,
+      "title": [
+        "回到组会"
+      ],
+      "notes": "回到开头的组会。我希望下次在组会上放出来的 slides，大家看到的是讲的人的思路，而不是 AI 的套路。我们的做法是：人先讲故事，AI 负责整理和制作；以页为单位管理，每一页有短码、有故事、有历史；一份主幻灯片，可以排出多场演讲。还有很多没想完的地方：图层可以更强调；也许以后能结合一些简单的视频编辑、Photoshop 式的图片编辑能力；素材库也还能继续优化。目前还没有那么完整的思路，欢迎大家一起来想。",
+      "designIntent": {
+        "purpose": "收尾：回到组会，总结三点并说明还没想完的方向。",
+        "pageRole": "content",
+        "requestedChange": "按作者口述的故事重做中文版介绍（故事驱动，Claude Code 独立设计）",
+        "actor": "claude-code",
+        "source": "作者 2026-11-11 口述与反馈（sources/story/USER-STORY.zh-CN.md）",
+        "recordedAt": "2026-11-10T22:58:14Z",
+        "backgroundException": "结尾页与封面呼应，使用封面底色 #E9ECE8。"
+      },
+      "elements": {
+        "image": 1,
+        "text": 4,
+        "line": 1
+      },
+      "visibleText": [
+        "回到组会",
+        "<p><strong><span style=\"color:#2E6B5E\">人先讲故事，</span></strong>AI 负责整理和制作，页面跟着讲的人的逻辑走。</p><p><span style=\"font-size:8px\"> </span></p><p><strong><span style=\"color:#2E6B5E\">以页为单位，</span></strong>每一页有短码、有故事、有历史，不再复制整份文件。</p><p><span style=\"font-size:8px\"> </span></p><p><strong><span style=\"color:#2E6B5E\">一份来源，</span></strong>多场演讲，素材和数据都留在同一个项目里。</p>",
+        "<p><strong><span style=\"color:#1C2321\">还没想完的</span></strong></p><p><span style=\"font-size:8px\"> </span></p><p>图层：比 PowerPoint 更强调它</p><p>一些简单的视频编辑能力</p><p>一些 Photoshop 式的图片编辑能力</p><p>素材库：还可以继续优化</p>",
+        "HUANDENG Editor 0.18  ·  基于开源项目 open-slide"
+      ],
+      "textObjects": 4,
+      "hidden": false
+    }
+  ]
+}

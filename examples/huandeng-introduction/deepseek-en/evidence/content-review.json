@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "reviewedAtUtc": "2026-11-10T23:08:25.230621+00:00",
+  "reviewer": "independent visual_audit agent",
+  "edition": "deepseek-en",
+  "decision": "native_submission_preserved_with_content_findings",
+  "authorAccepted": false,
+  "scope": {
+    "allPersistedNotesAndVisibleTextRead": 18,
+    "enlargedPDFPages": [
+      12,
+      14
+    ],
+    "fullVisualOrOfficeReview": "Owned by native trial supervisor, not certified here",
+    "sourceAccount": "examples/huandeng-introduction/story/USER-STORY.zh-CN.md",
+    "factBrief": "examples/huandeng-introduction/story/FACTS.md"
+  },
+  "findings": [
+    {
+      "id": "DSH-EN-NARR-01",
+      "pages": [
+        18
+      ],
+      "type": "deferred_idea_promoted_to_next_step",
+      "issue": "Closing Notes promise the next step as more direct manipulation, layers and image-tool editing. The author left these ideas unformed and the shared story brief keeps them out of the current introduction; this reads as a committed next step."
+    },
+    {
+      "id": "DSH-EN-NARR-02",
+      "pages": [
+        7,
+        8
+      ],
+      "type": "technical_overstatement",
+      "issue": "Page 7 says a picture cannot be diffed, targeted or tested, and Notes say PowerPoint/Google Slides agents work through the screen and the loop is impossible to diff. Pixel comparisons are possible, and the lack of object-addressable structure in a screenshot is narrower than these absolute statements. Page 8 acknowledges PPTX parts, but still calls the screen the working interface. The useful point is an additional structured editing channel; it does not require these categorical claims."
+    },
+    {
+      "id": "DSH-EN-NARR-03",
+      "pages": [
+        1,
+        2,
+        15
+      ],
+      "type": "unsupported_personal_detail",
+      "issue": "Over the last year, seeing it from the back of the room, and the asset library being the part I use most were not supplied in the author account. These additions are literary invention, not verified first-person history."
+    },
+    {
+      "id": "DSH-EN-NARR-04",
+      "pages": [
+        14
+      ],
+      "type": "review_timing_ambiguity",
+      "issue": "The real image is Saved changes from an already saved operation, while the copy and caption call it before the change is accepted. The page does not distinguish after-save author acceptance from the separate before-apply transaction preview; the visual cannot establish that it is a pre-write preview."
+    }
+  ],
+  "observations": [
+    "The causal arc follows human story, unwanted copies and structure before introducing the workspace.",
+    "Page 12 accurately shows the real C014 footer moving from Position 2/6 to 4/6.",
+    "Scientific evidence is scoped to 12 positions in one PDB structure, not independent replicates or hydrogen-bond distances.",
+    "The wording retains that visual review is necessary; the technical overstatement finding is not a claim that the deck entirely omits that boundary."
+  ],
+  "noNativeSourceOrExportEdited": true,
+  "noAestheticRedoSent": true,
+  "limits": [
+    "This record identifies factual/narrative limits in a preserved native submission, not author acceptance.",
+    "No Claude visual material was used as a reference for ChatGPT or DeepSeek.",
+    "Native completion, runtime errors and Office/export inspection remain separate evidence."
+  ],
+  "inputs": [
+    {
+      "path": ".verification/story-20261111/deepseek-en-qa/narrative.json",
+      "bytes": 31697,
+      "sha256": "57ecc73322e885ee2f9122fb21d7b6875eedb9c374de4a6c52ad0eb1bf435f7d"
+    },
+    {
+      "path": ".verification/story-20261111/deepseek-en-qa/pdf-pages/slide-12.png",
+      "bytes": 83619,
+      "sha256": "b674b60e6ea02574e877aed9b97d5a757c9b2989133bd7bc91464fff975ff3cd"
+    },
+    {
+      "path": ".verification/story-20261111/deepseek-en-qa/pdf-pages/slide-14.png",
+      "bytes": 111633,
+      "sha256": "6a5f1992a3f047c3563d5e1eac3d3e169fe45dd0ef8a5c94f45d63e4c9995fa6"
+    }
+  ]
+}

@@ -1,0 +1,346 @@
+background:
+  type: solid
+  color: "#F6F6F3"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 56
+      - 30
+      - 848
+      - 42
+    content:
+      text: My advisor can spot AI slides at a glance
+      fontFamily: Arial
+      fontSize: 30
+      lineHeight: 1.2
+      color: "#1C2321"
+      align:
+        - left
+        - top
+      bold: true
+    role: title
+  - elementId: story
+    elementType: text
+    bounds:
+      - 56
+      - 92
+      - 380
+      - 196
+    content:
+      text: |-
+        In our group meetings, slides made with AI are becoming normal. Slides are data, a file format, so agents will learn to make them.
+
+        But my advisor, and most people in the room, can tell at a glance when a deck was made by AI. PowerPoint, Google Slides, ChatGPT and Kimi each have a style of their own, and all of them still look like AI.
+      fontFamily: Arial
+      fontSize: 16
+      lineHeight: 1.4
+      color: "#1C2321"
+      align:
+        - left
+        - top
+  - elementId: why-head
+    elementType: text
+    bounds:
+      - 56
+      - 300
+      - 380
+      - 22
+    content:
+      text: Where the AI look comes from
+      fontFamily: Arial
+      fontSize: 15
+      lineHeight: 1.35
+      color: "#2E6B5E"
+      align:
+        - left
+        - middle
+      bold: true
+  - elementId: why
+    elementType: text
+    bounds:
+      - 56
+      - 326
+      - 380
+      - 120
+    content:
+      text: |-
+        •  No focus: every point gets the same weight
+        •  It covers everything instead of choosing
+        •  There is no story underneath
+        •  It aims to be complete and safe, not to say something
+      fontFamily: Arial
+      fontSize: 15
+      lineHeight: 1.5
+      color: "#1C2321"
+      align:
+        - left
+        - top
+  - elementId: even-head
+    elementType: text
+    bounds:
+      - 462
+      - 92
+      - 442
+      - 22
+    content:
+      text: Even this talk
+      fontFamily: Arial
+      fontSize: 15
+      lineHeight: 1.35
+      color: "#8A5A2E"
+      align:
+        - left
+        - middle
+      bold: true
+  - elementId: prev1-f
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 461
+      - 121
+      - 143
+      - 81
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#B9C2BD"
+  - elementId: prev1
+    elementType: image
+    bounds:
+      - 462
+      - 122
+      - 141
+      - 79
+    src: media/derived/thumbs/r1-01-QMYQ.png
+    sourceName: r1-01-QMYQ.png
+    fit:
+      mode: contain
+  - elementId: prev2-f
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 612
+      - 121
+      - 143
+      - 81
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#B9C2BD"
+  - elementId: prev2
+    elementType: image
+    bounds:
+      - 613
+      - 122
+      - 141
+      - 79
+    src: media/derived/thumbs/r1-02-RQ64.png
+    sourceName: r1-02-RQ64.png
+    fit:
+      mode: contain
+  - elementId: prev3-f
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 763
+      - 121
+      - 143
+      - 81
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#B9C2BD"
+  - elementId: prev3
+    elementType: image
+    bounds:
+      - 764
+      - 122
+      - 141
+      - 79
+    src: media/derived/thumbs/r1-03-DKSN.png
+    sourceName: r1-03-DKSN.png
+    fit:
+      mode: contain
+  - elementId: prev4-f
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 461
+      - 210
+      - 143
+      - 81
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#B9C2BD"
+  - elementId: prev4
+    elementType: image
+    bounds:
+      - 462
+      - 211
+      - 141
+      - 79
+    src: media/derived/thumbs/r1-05-AVNM.png
+    sourceName: r1-05-AVNM.png
+    fit:
+      mode: contain
+  - elementId: prev5-f
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 612
+      - 210
+      - 143
+      - 81
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#B9C2BD"
+  - elementId: prev5
+    elementType: image
+    bounds:
+      - 613
+      - 211
+      - 141
+      - 79
+    src: media/derived/thumbs/r1-10-V2SV.png
+    sourceName: r1-10-V2SV.png
+    fit:
+      mode: contain
+  - elementId: prev6-f
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 763
+      - 210
+      - 143
+      - 81
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#B9C2BD"
+  - elementId: prev6
+    elementType: image
+    bounds:
+      - 764
+      - 211
+      - 141
+      - 79
+    src: media/derived/thumbs/r1-16-AUBX.png
+    sourceName: r1-16-AUBX.png
+    fit:
+      mode: contain
+  - elementId: prev-caption
+    elementType: text
+    bounds:
+      - 462
+      - 300
+      - 442
+      - 16
+    content:
+      text: "Pages from the previous version of this talk, made by Claude Code on 10 November 2026."
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#6E7874"
+      align:
+        - left
+        - top
+  - elementId: quote-bar
+    elementType: shape
+    shapeName: rect
+    bounds:
+        [462,336,3,88]
+    fill:
+      type: solid
+      color: "#8A5A2E"
+    border:
+      width: 0
+      color: "#8A5A2E"
+  - elementId: quote
+    elementType: text
+    bounds:
+        [476,334,428,64]
+    content:
+      text: “The visuals are good, but the focus is wrong. There isn't really a focus, because there is no story.”
+      fontFamily: Arial
+      fontSize: 17
+      lineHeight: 1.4
+      color: "#1C2321"
+      align:
+        - left
+        - top
+  - elementId: quote-src
+    elementType: text
+    bounds:
+      - 476
+      - 404
+      - 428
+      - 20
+    content:
+      text: The owner on that version, 11 November 2026 (translated from Chinese)
+      fontFamily: Arial
+      fontSize: 12
+      lineHeight: 1.3
+      color: "#6E7874"
+      align:
+        - left
+        - top
+  - elementId: ft-mark
+    elementType: image
+    bounds:
+      - 56
+      - 505
+      - 16
+      - 16
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    fit:
+      mode: contain
+  - elementId: ft-label
+    elementType: text
+    bounds:
+      - 78
+      - 505
+      - 520
+      - 16
+    content:
+      text: HUANDENG  /  Why I built it
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - left
+        - middle
+  - elementId: ft-pos
+    elementType: text
+    bounds:
+      - 824
+      - 505
+      - 80
+      - 16
+    content:
+      text: "0"
+      field: main-position
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - right
+        - middle
+notes: "This is where it started. In group meetings I see more and more slides made with AI, and I think that is the direction things are going: slides are data, a file format, so of course agents will learn to make them. But my advisor, and most people in the room, can tell at a glance when a deck was made by AI. Each tool has its own style, PowerPoint, Google Slides, ChatGPT, Kimi, and they all still look like AI. I read a post on Xiaohongshu that put it well: the AI look comes from having no focus, from covering everything, from having no story, from aiming to be complete and safe. Even this talk fell into it. On the right are pages from the previous version, made by Claude Code. They look fine. My comment on them was: the visuals are good, but there is no focus, because there is no story. That is the problem this project is about."

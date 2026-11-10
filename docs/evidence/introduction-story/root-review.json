@@ -1,0 +1,651 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUtc": "2026-11-10T23:15:27.456176+00:00",
+  "reviewer": "Independent visual and narrative reviewer",
+  "authorAccepted": false,
+  "decision": "passed_independent_root_review_with_stated_scope",
+  "pathBase": "../../..",
+  "pathBaseMeaning": "All path fields are repository-relative; ../../.. is relative to this JSON. Source-set digests use each activeSourceFiles.projectRelativePath.",
+  "coverage": {
+    "editions": 2,
+    "mainPagesReadInOrder": 54,
+    "persistedMainNotesRead": 54,
+    "sourceContactSheetsRead": 14,
+    "selectedFinalSourceImagesEnlarged": 29,
+    "earlierRepresentativeFrameViews": 8,
+    "officeMainPagesReadInContactSheets": 54,
+    "officeContactSheetsRead": 10,
+    "chineseReplacementMainPagesRechecked": [16, 23],
+    "briefOfficePinPagesRechecked": {
+      "chatgpt-en": [10],
+      "chatgpt-zh": [10]
+    }
+  },
+  "editions": {
+    "chatgpt-en": {
+      "projectPath": "examples/huandeng-introduction/chatgpt-en",
+      "projectReviewPath": "examples/huandeng-introduction/chatgpt-en/evidence/review.json",
+      "coverage": {
+        "mainPages": 27,
+        "briefItems": 13,
+        "allMainPagesReadInOrder": true,
+        "allPersistedMainNotesRead": true,
+        "actualBriefCompositionRead": true,
+        "fullSourceImagesEnlarged": [2, 4, 5, 7, 10, 11, 13, 14, 15, 16, 17, 23, 26, 27],
+        "earlierRepresentativeFramesEnlarged": [21, 22, 24, 25],
+        "nativeTables": 3,
+        "nativeCharts": 1,
+        "titleOnlySectionMainPositions": [8, 13, 22]
+      },
+      "source": {
+        "entry": {
+          "path": "examples/huandeng-introduction/chatgpt-en/deck.pptd",
+          "sha256": "a91f83893159ac599b47ebe38fb0b70bd7bb1b2c337f81198640a9ade0238aa7",
+          "bytes": 634
+        },
+        "projectMetadata": {
+          "path": "examples/huandeng-introduction/chatgpt-en/.huandeng/project.json",
+          "sha256": "cbfe9d8fba20bff1c8d7a5ab1c0b3ec90e6799974113b34909a105257bcddfe9",
+          "bytes": 52408
+        },
+        "activePageCount": 27,
+        "reviewedSourceSetSha256": "cc7539d441fcd00e1f35945ddccd1ee3a357664f1b36724ecca5df1f82be1a9c",
+        "sourceSetAlgorithm": "SHA-256 of UTF-8 lines sorted by path: sha256 + two spaces + project-relative path + LF. Scope: deck.pptd, active 27 .page files, and .huandeng/project.json; not a hash of the full media/archive package.",
+        "manifestRevisionAtExport": "sha256:a91f83893159ac599b47ebe38fb0b70bd7bb1b2c337f81198640a9ade0238aa7",
+        "metadataRevisionAtExport": "sha256:cbfe9d8fba20bff1c8d7a5ab1c0b3ec90e6799974113b34909a105257bcddfe9",
+        "sourceUnchangedDuringExport": true,
+        "publicStory": {
+          "path": "examples/huandeng-introduction/chatgpt-en/sources/story/USER-STORY.zh-CN.md",
+          "sha256": "71e4021fc9cc3bc3b438e2b7d7ff950f0f5921cd4fd24b7afdd9d2c87ff503e3"
+        },
+        "facts": {
+          "path": "examples/huandeng-introduction/chatgpt-en/sources/story/FACTS.md",
+          "sha256": "029750705f9c6fe95a50db30cdb42b0f4573d6212b8c5f93d13e9a60ec6402ca"
+        }
+      },
+      "activeSourceFiles": [
+        {
+          "path": "examples/huandeng-introduction/chatgpt-en/deck.pptd",
+          "sha256": "a91f83893159ac599b47ebe38fb0b70bd7bb1b2c337f81198640a9ade0238aa7",
+          "bytes": 634,
+          "projectRelativePath": "deck.pptd"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-en/.huandeng/project.json",
+          "sha256": "cbfe9d8fba20bff1c8d7a5ab1c0b3ec90e6799974113b34909a105257bcddfe9",
+          "bytes": 52408,
+          "projectRelativePath": ".huandeng/project.json"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-en/pages/9DAA.page",
+          "sha256": "f0eec77ef65880ef6bdb671cc7ef4adfff5e199f76cbabba7e1b9bcaf2e3207b",
+          "bytes": 2327,
+          "projectRelativePath": "pages/9DAA.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-en/pages/YSGH.page",
+          "sha256": "f60339bfee03d5fbe9971404c1f1f17e845daac5bc1be571aa609c5cf6843109",
+          "bytes": 3237,
+          "projectRelativePath": "pages/YSGH.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-en/pages/P72R.page",
+          "sha256": "46bf3f69a7770f4a5a21420587ee9f1101ed9069d3ed05c1d7e468920cedcfe7",
+          "bytes": 3375,
+          "projectRelativePath": "pages/P72R.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-en/pages/2XM9.page",
+          "sha256": "6b01c6bf24fea7b725565b900af75b04841f150d0b1d945e4e7fd94e5c486b4f",
+          "bytes": 3712,
+          "projectRelativePath": "pages/2XM9.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-en/pages/GX5Z.page",
+          "sha256": "0f403baa5ffaec60d204250861474d34a999685b75a1bcd087810f9d1310f720",
+          "bytes": 3046,
+          "projectRelativePath": "pages/GX5Z.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-en/pages/KW5P.page",
+          "sha256": "83db3b031ad040057e6d18632db52715a3d9725422accf2375fdbb676044e562",
+          "bytes": 2955,
+          "projectRelativePath": "pages/KW5P.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-en/pages/5HW8.page",
+          "sha256": "4ab9a8fc77d1937cd34fba33f87ebde268fdd8fb338c7a2dbf92d7a642d2f473",
+          "bytes": 3240,
+          "projectRelativePath": "pages/5HW8.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-en/pages/9VGD.page",
+          "sha256": "f96758a71abad4e3399a4ce1513d680f2360bc69a506c470c787b5537b7f9381",
+          "bytes": 551,
+          "projectRelativePath": "pages/9VGD.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-en/pages/TBGV.page",
+          "sha256": "02dcb753f3b55681eaf0268afca06c83c0ba5fff0f52a9492accc74a7e600de4",
+          "bytes": 3979,
+          "projectRelativePath": "pages/TBGV.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-en/pages/BHPP.page",
+          "sha256": "64839d2a211d80f5d4c3a17058171ed0fa5c597e1aed088f034bea5dab276ae7",
+          "bytes": 4012,
+          "projectRelativePath": "pages/BHPP.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-en/pages/DHVW.page",
+          "sha256": "52300f182267d341659b03efa9154b7eefdf863fdaeeac8a2a4ff35e6a905cb8",
+          "bytes": 3922,
+          "projectRelativePath": "pages/DHVW.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-en/pages/2ZQ3.page",
+          "sha256": "63790639ae0de6d80e904574f8372ad0d3c4cb9b90e97e4b3fc8e9cf4318dce0",
+          "bytes": 2853,
+          "projectRelativePath": "pages/2ZQ3.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-en/pages/7E4T.page",
+          "sha256": "be46b12c065e895e24541e4542a3ee7b04b498215c593af5befd07af6ca1d2ab",
+          "bytes": 575,
+          "projectRelativePath": "pages/7E4T.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-en/pages/FKA9.page",
+          "sha256": "50b51301174df12ebd41486f9795114703604ee3c49911f50d0dab3472c7d462",
+          "bytes": 2570,
+          "projectRelativePath": "pages/FKA9.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-en/pages/U8ZQ.page",
+          "sha256": "713172a5c2d61ea25e781c36c55633f21bfe5677dc86acf57c9b73029df897f3",
+          "bytes": 3418,
+          "projectRelativePath": "pages/U8ZQ.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-en/pages/35U5.page",
+          "sha256": "df328a98a3ed4375cd326378b9343a703d5782920f25a814663c17616dfd0434",
+          "bytes": 3343,
+          "projectRelativePath": "pages/35U5.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-en/pages/ZWZJ.page",
+          "sha256": "aee098cf7e188cd205912affa9ce10aa4a41ef17392abaeb2f43a48b9a2959ce",
+          "bytes": 4226,
+          "projectRelativePath": "pages/ZWZJ.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-en/pages/XF8A.page",
+          "sha256": "bd0dd44e06c1a6e725d155823c044599118514a956d5c23ae2698d1baabcd973",
+          "bytes": 4585,
+          "projectRelativePath": "pages/XF8A.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-en/pages/ZN52.page",
+          "sha256": "99c6aefdd234ce46fe79db44c9ff5ca9e9bd45614643e4f2ba06c0de882d6476",
+          "bytes": 3856,
+          "projectRelativePath": "pages/ZN52.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-en/pages/9QQW.page",
+          "sha256": "365db7a8ec003db8119b64f999b88ff02cd21d3f322b1ed567a1891ebf69cd11",
+          "bytes": 2494,
+          "projectRelativePath": "pages/9QQW.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-en/pages/YZ4T.page",
+          "sha256": "8edf752ce66a75bb8da480f585e6652cd6aba6e2e24c9b4280d6b6950d80fb73",
+          "bytes": 8254,
+          "projectRelativePath": "pages/YZ4T.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-en/pages/X5J6.page",
+          "sha256": "268ed8538ca3027bb5ff795a53083262bd186fabef8bcc2e73743ac902d71b65",
+          "bytes": 588,
+          "projectRelativePath": "pages/X5J6.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-en/pages/AAD6.page",
+          "sha256": "2759052de75da61fa2fe00215c70bdcb259247f90ea8baef354cc55b4d74feee",
+          "bytes": 6202,
+          "projectRelativePath": "pages/AAD6.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-en/pages/74A2.page",
+          "sha256": "a56706b80c94e04c601b988912dc8ff20a6dea9c17954a9064c0bf990c68815f",
+          "bytes": 2889,
+          "projectRelativePath": "pages/74A2.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-en/pages/9N3S.page",
+          "sha256": "930f2d04e5021d740563fb497313cebd5d8b7694eea9efe74654afb2f113df66",
+          "bytes": 3649,
+          "projectRelativePath": "pages/9N3S.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-en/pages/DDJN.page",
+          "sha256": "b55ba1069e688d1f0bb223f30ec828af3680bb8f9baeb2b45ff22004a4cb0aa6",
+          "bytes": 3650,
+          "projectRelativePath": "pages/DDJN.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-en/pages/ECVR.page",
+          "sha256": "0b5688b065c5b2e5752b8146a47dd3f77122d3b4125fd283931c1050452184f1",
+          "bytes": 2366,
+          "projectRelativePath": "pages/ECVR.page"
+        }
+      ],
+      "artifacts": [
+        {
+          "path": "examples/huandeng-introduction/chatgpt-en/Exports/deck.pptx",
+          "format": "pptx",
+          "pages": 27,
+          "presentationId": null,
+          "bytes": 3801831,
+          "sha256": "4288ec1edcb9decf5969cf88f32bfb7579c8e0bf43cd59ec6464d85b6f997519"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-en/Exports/deck.pdf",
+          "format": "pdf",
+          "pages": 27,
+          "presentationId": null,
+          "bytes": 3514787,
+          "sha256": "a5d12f748e91e5775e09712baeb59792f705a7b290e34de98714e2985e0592a2"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-en/Exports/brief.pptx",
+          "format": "pptx",
+          "pages": 13,
+          "presentationId": "introduction-short",
+          "bytes": 2768468,
+          "sha256": "74eddf34711ae83670517ec89363b0787b0513b84b5af43a0159fd1c3bf5f72e"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-en/Exports/brief.pdf",
+          "format": "pdf",
+          "pages": 13,
+          "presentationId": "introduction-short",
+          "bytes": 2595468,
+          "sha256": "92c90bb1dde8f8a8c1bae43e741deb87e6223d766937b163dc08d70b1fec906e"
+        }
+      ],
+      "office": {
+        "officeVersion": "16.0",
+        "readOnly": true,
+        "main": {
+          "decision": "pass",
+          "finalPptxSha256": "4288ec1edcb9decf5969cf88f32bfb7579c8e0bf43cd59ec6464d85b6f997519",
+          "initialFullSequencePagesReviewed": 27,
+          "initialFullSequencePptxSha256": "4288ec1edcb9decf5969cf88f32bfb7579c8e0bf43cd59ec6464d85b6f997519",
+          "initialEnlargedMainPages": [10, 11, 15, 17, 18, 21],
+          "finalCorrectionPagesRechecked": [],
+          "finalIndependentReceiptSha256": "e3d4e814b6b418b79df8a0643e663cc66eda66411bd2c81fe401f8128ac39cc1"
+        },
+        "brief": {
+          "decision": "pass_for_selected_pin_page",
+          "totalArtifactPages": 13,
+          "selectedPagesReviewed": [10],
+          "pptxSha256": "74eddf34711ae83670517ec89363b0787b0513b84b5af43a0159fd1c3bf5f72e",
+          "officeImageSha256": "847992efaff33715105d78147ed2d5afdfe05c8ea56076a6a27b8e811c80e8d8",
+          "observation": "The saved 10.1-11.1 scientific chart and former position-7 marker are the actual earlier pin, distinct from current Main. Whole brief visual acceptance is outside this selected-page review."
+        }
+      }
+    },
+    "chatgpt-zh": {
+      "projectPath": "examples/huandeng-introduction/chatgpt-zh",
+      "projectReviewPath": "examples/huandeng-introduction/chatgpt-zh/evidence/review.json",
+      "coverage": {
+        "mainPages": 27,
+        "briefItems": 13,
+        "allMainPagesReadInOrder": true,
+        "allPersistedMainNotesRead": true,
+        "actualBriefCompositionRead": true,
+        "fullSourceImagesEnlarged": [1, 2, 4, 5, 6, 7, 10, 11, 13, 14, 15, 16, 23, 26, 27],
+        "earlierRepresentativeFramesEnlarged": [21, 22, 24, 25],
+        "nativeTables": 3,
+        "nativeCharts": 1,
+        "titleOnlySectionMainPositions": [8, 13, 22]
+      },
+      "source": {
+        "entry": {
+          "path": "examples/huandeng-introduction/chatgpt-zh/deck.pptd",
+          "sha256": "5ed092812df99b696cd1a016e2f10a11f2100a25100c314038c6da6d58fdd90d",
+          "bytes": 625
+        },
+        "projectMetadata": {
+          "path": "examples/huandeng-introduction/chatgpt-zh/.huandeng/project.json",
+          "sha256": "5898fb966bf07e0f8d99ae22d08cdb9b94b6b5974ed15b12d4e7ddee7a9ad8dc",
+          "bytes": 51658
+        },
+        "activePageCount": 27,
+        "reviewedSourceSetSha256": "0146f18629e284f56bcb47fe8dfe8b879452d12af80dc4ea393083c6e08e7db1",
+        "sourceSetAlgorithm": "SHA-256 of UTF-8 lines sorted by path: sha256 + two spaces + project-relative path + LF. Scope: deck.pptd, active 27 .page files, and .huandeng/project.json; not a hash of the full media/archive package.",
+        "manifestRevisionAtExport": "sha256:5ed092812df99b696cd1a016e2f10a11f2100a25100c314038c6da6d58fdd90d",
+        "metadataRevisionAtExport": "sha256:5898fb966bf07e0f8d99ae22d08cdb9b94b6b5974ed15b12d4e7ddee7a9ad8dc",
+        "sourceUnchangedDuringExport": true,
+        "publicStory": {
+          "path": "examples/huandeng-introduction/chatgpt-zh/sources/story/USER-STORY.zh-CN.md",
+          "sha256": "71e4021fc9cc3bc3b438e2b7d7ff950f0f5921cd4fd24b7afdd9d2c87ff503e3"
+        },
+        "facts": {
+          "path": "examples/huandeng-introduction/chatgpt-zh/sources/story/FACTS.md",
+          "sha256": "029750705f9c6fe95a50db30cdb42b0f4573d6212b8c5f93d13e9a60ec6402ca"
+        }
+      },
+      "activeSourceFiles": [
+        {
+          "path": "examples/huandeng-introduction/chatgpt-zh/deck.pptd",
+          "sha256": "5ed092812df99b696cd1a016e2f10a11f2100a25100c314038c6da6d58fdd90d",
+          "bytes": 625,
+          "projectRelativePath": "deck.pptd"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-zh/.huandeng/project.json",
+          "sha256": "5898fb966bf07e0f8d99ae22d08cdb9b94b6b5974ed15b12d4e7ddee7a9ad8dc",
+          "bytes": 51658,
+          "projectRelativePath": ".huandeng/project.json"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-zh/pages/TTHC.page",
+          "sha256": "29d0d4b605c79053a6158e7730dfa73ce976ce1d666061a184fb20314c2ec1c3",
+          "bytes": 2369,
+          "projectRelativePath": "pages/TTHC.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-zh/pages/59RT.page",
+          "sha256": "a22f10588e5bcf4b3c559eb79d62def4da43393227e61cdece5bfe78cdf4c274",
+          "bytes": 3346,
+          "projectRelativePath": "pages/59RT.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-zh/pages/MF4X.page",
+          "sha256": "709183aba3462ec9b76c70910601c1bdb8448cbee738487c4c74152175a0a7e6",
+          "bytes": 3452,
+          "projectRelativePath": "pages/MF4X.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-zh/pages/MSVB.page",
+          "sha256": "dcb6aaad407fe1856d16c5b6dacc9741bae8dfae983c3a93329c174b27381622",
+          "bytes": 3817,
+          "projectRelativePath": "pages/MSVB.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-zh/pages/6G4G.page",
+          "sha256": "4c9ad8e30e1432d2631ec4b136e4a59556c747dcd0cd3d948dd65100217a64db",
+          "bytes": 3091,
+          "projectRelativePath": "pages/6G4G.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-zh/pages/YCXA.page",
+          "sha256": "3fb41c3fc6b05366b70d2591f7dadc5aff8e6c488cde31bef60cc8e6d4b19f92",
+          "bytes": 3031,
+          "projectRelativePath": "pages/YCXA.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-zh/pages/TZXM.page",
+          "sha256": "f7e54d26c43a1cd402c79cc21ea7311aa3a773f83a3a73ad81bfa5ca188d03d0",
+          "bytes": 3282,
+          "projectRelativePath": "pages/TZXM.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-zh/pages/CR5K.page",
+          "sha256": "9771ae4da10e5c1c4a0b12142c9e6d59000282b73ecc9783b9333545708de9f6",
+          "bytes": 521,
+          "projectRelativePath": "pages/CR5K.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-zh/pages/3UZE.page",
+          "sha256": "83f4b2a2c2a3f44c7481e48c3f0876e584b4cc11244e2514022be1c46a300e2c",
+          "bytes": 4007,
+          "projectRelativePath": "pages/3UZE.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-zh/pages/4YZD.page",
+          "sha256": "e610bfcefcab9ac111eb3727e9414690c6fcd4bf2ed892c442abb703c20ed421",
+          "bytes": 4074,
+          "projectRelativePath": "pages/4YZD.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-zh/pages/93SF.page",
+          "sha256": "0588891a93b4d11e31a5119acb056a4cfe13f98184d58d90fedca833563ea3d7",
+          "bytes": 4549,
+          "projectRelativePath": "pages/93SF.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-zh/pages/E9RN.page",
+          "sha256": "7b0165858d5fc9b0089c43e660a4e18ea4a5f436f0e32321847c4a516c036d96",
+          "bytes": 2944,
+          "projectRelativePath": "pages/E9RN.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-zh/pages/FE8A.page",
+          "sha256": "d0181e45f430f2d40c6d5f42865e7487304eb9e6b24ff73ee0847028f86b3778",
+          "bytes": 559,
+          "projectRelativePath": "pages/FE8A.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-zh/pages/ZYZB.page",
+          "sha256": "828397e43ab2ef0fdc84915bd89f7d7d522127ecdee61e8ba811a68ceb140cd1",
+          "bytes": 2588,
+          "projectRelativePath": "pages/ZYZB.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-zh/pages/HWB6.page",
+          "sha256": "60fa05029454cdc8c0a6353651c2f1c03f3c1fd8d71f3b0ca0de0c3e071b37bb",
+          "bytes": 3478,
+          "projectRelativePath": "pages/HWB6.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-zh/pages/MPTA.page",
+          "sha256": "8b5b0dbf341e31f17a24aa262af66d2803abf3b85e2034dc9651b24dfe78040a",
+          "bytes": 3292,
+          "projectRelativePath": "pages/MPTA.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-zh/pages/7EKH.page",
+          "sha256": "20048ba8b33efb694888b464fb41bccaff026c434e0f91adfff29fb8997e8ef0",
+          "bytes": 4284,
+          "projectRelativePath": "pages/7EKH.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-zh/pages/HUA9.page",
+          "sha256": "f93416f9b19a72be1d5b7113456a1fa7026a3946c6260ac379d06b0906c950db",
+          "bytes": 4637,
+          "projectRelativePath": "pages/HUA9.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-zh/pages/JNZV.page",
+          "sha256": "c299f6fef18bef2d6e3be588e425cfcafcf6336b2d4bedf67980c616302dc90b",
+          "bytes": 3921,
+          "projectRelativePath": "pages/JNZV.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-zh/pages/SE68.page",
+          "sha256": "515c98e6366135cdaa1bca15ea49772b264f2f87f76c4d9c81e0990df96a8038",
+          "bytes": 2553,
+          "projectRelativePath": "pages/SE68.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-zh/pages/W7WP.page",
+          "sha256": "bfe7475fa3d1663d1938c291cc78fb08e855016975b3eb13bfb4d05d519a349e",
+          "bytes": 8362,
+          "projectRelativePath": "pages/W7WP.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-zh/pages/36EQ.page",
+          "sha256": "86b2881a4e68dfe599266a8783f17531eb1895770177309935f3cd57f0e4fc28",
+          "bytes": 545,
+          "projectRelativePath": "pages/36EQ.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-zh/pages/U5QA.page",
+          "sha256": "490178c728233c6b9aa3f8466f58958a57463add5727dd0279214b4d612efecf",
+          "bytes": 6241,
+          "projectRelativePath": "pages/U5QA.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-zh/pages/EJBQ.page",
+          "sha256": "e4e446a0b9d9fc80f1e1cab513411d4a88e69f878dc3b92beaeb5197217e59c6",
+          "bytes": 2910,
+          "projectRelativePath": "pages/EJBQ.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-zh/pages/2856.page",
+          "sha256": "44b5353b3391e320dda17d4612d816e6bebaec38b79b66f1ad5c0062a0d55267",
+          "bytes": 3705,
+          "projectRelativePath": "pages/2856.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-zh/pages/NJM7.page",
+          "sha256": "13b2f094013787ae27c9ac380ea7d0ecdb0ef8a068a508218cdba15db864b9be",
+          "bytes": 3691,
+          "projectRelativePath": "pages/NJM7.page"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-zh/pages/E2RU.page",
+          "sha256": "dd6b0ecd4a9c27d79a88c2c84670727de0320dc7408c1666e885c16dc7d19284",
+          "bytes": 2382,
+          "projectRelativePath": "pages/E2RU.page"
+        }
+      ],
+      "artifacts": [
+        {
+          "path": "examples/huandeng-introduction/chatgpt-zh/Exports/deck.pptx",
+          "format": "pptx",
+          "pages": 27,
+          "presentationId": null,
+          "bytes": 4136276,
+          "sha256": "5f11dc887f6f5730dc39f840f4615c021bfa8249a8a15de35297d7139b04b91f"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-zh/Exports/deck.pdf",
+          "format": "pdf",
+          "pages": 27,
+          "presentationId": null,
+          "bytes": 3927264,
+          "sha256": "56d540bbd353c6e34c030b88f71d95a4641744b2e791aff0321f88dbcca1fe8c"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-zh/Exports/brief.pptx",
+          "format": "pptx",
+          "pages": 13,
+          "presentationId": "introduction-short",
+          "bytes": 3066994,
+          "sha256": "c608f311081fbbb41ea609434c84df5a24a1e4672da0efd929d783b4e03f5fd2"
+        },
+        {
+          "path": "examples/huandeng-introduction/chatgpt-zh/Exports/brief.pdf",
+          "format": "pdf",
+          "pages": 13,
+          "presentationId": "introduction-short",
+          "bytes": 2942851,
+          "sha256": "17a2e7e689c40675526f94be12fdf91bb4787fd890326141f5b9292c61974ef7"
+        }
+      ],
+      "office": {
+        "officeVersion": "16.0",
+        "readOnly": true,
+        "main": {
+          "decision": "pass",
+          "finalPptxSha256": "5f11dc887f6f5730dc39f840f4615c021bfa8249a8a15de35297d7139b04b91f",
+          "initialFullSequencePagesReviewed": 27,
+          "initialFullSequencePptxSha256": "1ae37b3a845175fb87015b25f3c2210941b65c02e87a377a2bcfef9cf202118b",
+          "initialEnlargedMainPages": [10, 11, 15, 16, 17, 18],
+          "finalCorrectionPagesRechecked": [16, 23],
+          "finalIndependentReceiptSha256": "44d5c7e4e9f292c71d331205e5ac751bde805f8e4b94b3835bf9435e942d2628",
+          "correctionImages": [
+            {
+              "mainPosition": 16,
+              "sha256": "bf653284cceb9bead6f5b8e5efcf8bb19a241e5376ce43980cd418594cc1522a"
+            },
+            {
+              "mainPosition": 23,
+              "sha256": "d780ea9c51fc16d2979b86b38c2a96ccd313a528102e25f963f7a7a01940902f"
+            }
+          ]
+        },
+        "brief": {
+          "decision": "pass_for_selected_pin_page",
+          "totalArtifactPages": 13,
+          "selectedPagesReviewed": [10],
+          "pptxSha256": "c608f311081fbbb41ea609434c84df5a24a1e4672da0efd929d783b4e03f5fd2",
+          "officeImageSha256": "a7b358190fcc78bd1ccb7e53db317336c66161ce0aad190844f6b2105d39322d",
+          "observation": "The saved 10.1-11.1 scientific chart and former position-7 marker are the actual earlier pin, distinct from current Main. Whole brief visual acceptance is outside this selected-page review."
+        }
+      }
+    }
+  },
+  "closedFindings": [
+    {
+      "id": "FRAME-01",
+      "issue": "Invented workspace-cleanup episode in the talk",
+      "resolution": "Removed; two-of-fifty remains an explicitly illustrative situation. Actual persisted Notes checked."
+    },
+    {
+      "id": "FRAME-02",
+      "issue": "Section Notes were placeholders",
+      "resolution": "Main 8, 13 and 22 now use spoken causal bridges; Notes checked."
+    },
+    {
+      "id": "FRAME-03",
+      "issue": "English title changed two edits rather than two slides",
+      "resolution": "Main 4 now says Change two of fifty slides."
+    },
+    {
+      "id": "FRAME-04",
+      "issue": "Brief omitted the history payoff",
+      "resolution": "Actual introduction-short includes History and now has 13 items."
+    },
+    {
+      "id": "FINAL-01",
+      "issue": "Chinese real Editor capture contained an unrendered chart",
+      "resolution": "Re-captured with chart readiness; final ZH renders 01, 06 and 23 individually inspected with the full curve visible."
+    },
+    {
+      "id": "FINAL-02",
+      "issue": "Main 15 purpose summary disagreed with actual Story panel",
+      "resolution": "Both render 11 files now describe the public example and preservation of figure, values and source."
+    },
+    {
+      "id": "FINAL-03",
+      "issue": "Brief science Notes were authoring instructions",
+      "resolution": "Actual metadata now contains four speakable sentences that lead to different agents; no unsupported claim that Main Notes list all values."
+    },
+    {
+      "id": "FINAL-04",
+      "issue": "Current Live preview was stale",
+      "resolution": "Both render 15 files now show current 10.0-11.2 chart at left and earlier saved wording-edit stage at right."
+    },
+    {
+      "id": "OFFICE-01",
+      "issue": "Chinese Main 16 asset sentences left punctuation alone on separate lines in actual Office",
+      "resolution": "Shortened in the same rich-text object; source design 07/13 and actual Office Main 16/23 rechecked. No remaining orphan punctuation."
+    }
+  ],
+  "assessment": {
+    "causalStory": "The first six pages establish the author, lab-meeting impression, whole-deck-copy problem, precise-editing need and story-first decision. Page identity/history and the later working example answer those needs. Reuse returns to the next talk.",
+    "factBoundaries": "Personal AI-style impressions remain personal. PPTX parts, shared writer, purpose and version concepts are distinguished. PDB 1BNA is a later worked example; 12 positions are not replicates.",
+    "editableObjects": "Native table counts and rendered reading order checked. No fake grid built from many text/shape cells observed. The architecture is a meaningful relation diagram, and directory lists use coherent text blocks.",
+    "visualContinuity": "Brand, paper/sage/sand backgrounds, real material, title-only section pauses and scientific evidence retained. Chinese hierarchy remains readable without imposing a universal font or white-background rule.",
+    "scientificEvidence": "The native chart, five selected table rows, equation and A7/B18 value agree. The two-field historical wording operation is not conflated with later axis/layout refinements.",
+    "taskEvidence": "Real task captures now support the narrative. Project/library screenshots are read as overviews; small interface chrome is not needed to establish the main claim. ZH present-menu sampling warning does not prevent reading its two actions at the reviewed size."
+  },
+  "remainingBlockingFindings": [],
+  "provenance": {
+    "originalRootReviewSha256": "70e228ac7817908a8253e7dad49edd8243ff554146306512bd5351c75ccbe0fe",
+    "finalSourceInputManifestSha256": "e7c0ed27b34c056e6b5debc4e782cc1ec99bb9c697e9e849d418cd200154c8a0",
+    "reviewedInputFileCount": 131,
+    "all54MainNotesUnchangedDuringFinalWrapFix": true
+  },
+  "limits": [
+    "This receipt records independent agent review, not author acceptance.",
+    "All Main pages were read through ordered source and Office contact sheets; selected high-risk pages were enlarged. It does not claim every page was inspected at native pixels.",
+    "Chinese unchanged Office pages rely on the prior full 27-page review plus reinspection of the two replacement pages.",
+    "Only brief scientific pin page 10 was visually reviewed in Office here. Full brief/PDF/portable-package QA is separate.",
+    "Native-client narratives are summarized in native-narrative-review.json; their content findings do not invalidate their separately recorded technical completion."
+  ]
+}

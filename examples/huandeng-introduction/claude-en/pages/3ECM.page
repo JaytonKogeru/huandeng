@@ -217,13 +217,26 @@ elements:
       align:
         - left
         - middle
-  - elementId: marks-note
+  - elementId: ideas
     elementType: text
     bounds:
       - 56
-      - 410
+      - 396
       - 400
-      - 34
+      - 50
+    content:
+      text: Design ideas also come from PowerPoint and WPS (sections, views, notes) and Photoshop (layers). A simple video-editor-style timeline is an idea for later.
+      fontFamily: Arial
+      fontSize: 12.5
+      lineHeight: 1.35
+      color: "#3E4845"
+      align:
+        - left
+        - top
+  - elementId: marks-note
+    elementType: text
+    bounds:
+        [56,452,400,34]
     content:
       text: The GitHub mark identifies the OpenPPTD repository; it is not an OpenPPTD logo. Third-party marks belong to their owners.
       fontFamily: Arial
@@ -333,7 +346,7 @@ elements:
       - 420
       - 16
     content:
-      text: HUANDENG  /  Connect and contribute
+      text: "HUANDENG  /  Working with agents"
       fontFamily: Arial
       fontSize: 11
       lineHeight: 1.3

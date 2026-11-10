@@ -6,26 +6,28 @@ HUANDENG Editor 基于 OpenSlide 的 React 编辑环境，使用 PPTD 文档后�
 
 ## 当前阶段
 
-编辑器保持 **[0.18.0](docs/RELEASE-V018.md)**；AI 插件已更新为 **0.18.2**，core npm 包仍为 2.3.1。本轮重新制作科学导向的项目介绍，整理工程目录，并修正过度限制图标、图像与背景的插件指南。当前交付与剩余问题见 [介绍重做交付记录](docs/INTRODUCTION-DELIVERY.md)，视觉依据见 [独立审计](docs/INTRODUCTION-VISUAL-AUDIT.md)。
+编辑器保持 **[0.18.0](docs/RELEASE-V018.md)**；AI 插件更新为 **0.18.3**，core npm 包仍为 2.3.1。六份介绍从作者在组会中的经历讲起：为什么想让 Agent 掌握 Slides、为什么改两页不该复制整套文件，以及为什么先讲人的故事再组织页面。当前交付见 [介绍交付记录](docs/INTRODUCTION-DELIVERY.md)，内容契约和验证见 [故事驱动 Spec](docs/INTRODUCTION-STORY-SPEC.md)。
 
 现有 Editor 0.18.0 提供中英文字号与截图约定、只读设计检查、现有章节的一键纯标题页、素材原图尺寸及安全 CLI 新建项目。工作区采用更轻的层级，GUI、CLI 和 MCP 共用检查结果。工作流为 Audit → Spec → Frame → Implement → Validate → Release。
 
 ## 项目介绍 / Introduction
 
-Keep one slide project editable across people and agents. The bilingual introductions show real editing, stable slide identity, reusable presentations and delivery.
+The founder's own account drives these introductions: a lab meeting, recognizable AI styling, whole-deck copies after a small edit, and the need to keep a human story attached to editable pages. Features answer those problems through a real scientific example, stable identity, page history, an asset library and reusable presentations.
 
-| 版本 / Edition | 可编辑项目 / Project | 页数 | 用途 |
-| --- | --- | ---: | --- |
-| ChatGPT 中文主稿 | [chatgpt-zh](examples/huandeng-introduction/chatgpt-zh) | 19 | 同一科学例页贯穿编辑、证据与复用；另有 7 页简稿 |
-| ChatGPT English | [chatgpt-en](examples/huandeng-introduction/chatgpt-en) | 19 | A scientific example connects editing, evidence and reuse; includes a 7-slide brief |
-| DeepSeek Harness 中文 | [deepseek-zh](examples/huandeng-introduction/deepseek-zh) | 16 | 独立原生完成；保留其设计与事实局限 |
-| Claude Code English | [claude-en](examples/huandeng-introduction/claude-en) | 20 | Independent native authorship; quota interrupted final review, coordinator exported saved content |
+| 版本 / Edition | 可编辑项目 / Project | Main | 简短演讲 / Brief | 状态 |
+| --- | --- | ---: | ---: | --- |
+| ChatGPT 中文 | [chatgpt-zh](examples/huandeng-introduction/chatgpt-zh) | 27 | 13 | 已按独立内容与视觉审读修订 |
+| ChatGPT English | [chatgpt-en](examples/huandeng-introduction/chatgpt-en) | 27 | 13 | Revised against independent narrative and visual review |
+| Claude Code 中文 | [claude-zh](examples/huandeng-introduction/claude-zh) | 20 | 7 | 原生完成；保留 2 项内容审读发现 |
+| Claude Code English | [claude-en](examples/huandeng-introduction/claude-en) | 25 | 9 | Native completion after connection recovery; 3 content findings retained |
+| DeepSeek Harness 中文 | [deepseek-zh](examples/huandeng-introduction/deepseek-zh) | 18 | 11 | 原生完成；保留 2 项内容审读发现 |
+| DeepSeek Harness English | [deepseek-en](examples/huandeng-introduction/deepseek-en) | 18 | — | Native completion; 4 content findings retained; no separate brief authored |
 
-[下载本轮 PowerPoint、PDF、完整 Project 与插件](https://github.com/JaytonKogeru/huandeng/releases/tag/plugin-v0.18.2) · [四稿预览与素材](examples/huandeng-introduction/README.md) · [原生实测与交付边界](docs/INTRODUCTION-DELIVERY.md) · [Editor 0.18.0](https://github.com/JaytonKogeru/huandeng/releases/tag/editor-v0.18.0)
+[下载 PowerPoint、PDF、完整 Project 与插件](https://github.com/JaytonKogeru/huandeng/releases/tag/plugin-v0.18.3) · [六稿预览与素材](examples/huandeng-introduction/README.md) · [作者故事原文](examples/huandeng-introduction/story/USER-STORY.zh-CN.md) · [原生实测与交付边界](docs/INTRODUCTION-DELIVERY.md) · [Editor 0.18.0](https://github.com/JaytonKogeru/huandeng/releases/tag/editor-v0.18.0)
 
-上一轮介绍稿的视觉交付已被作者否决。本轮文件提供给作者评审；结构检查、Agent 审读与 Office 兼容检查不代表作者已接受。
+作者认可上一轮视觉改进，本轮重点是补回叙事与因果关系。ChatGPT 两稿经过协调者修订；另四稿保留原生作者结果及事实、范围和排版问题，不作模型排名。135 张 Main 页面均完成实际 PowerPoint 只读渲染检查；技术检查与独立审读不代表作者已接受。
 
-![English introduction: product, scientific evidence, shared editing and reuse](examples/huandeng-introduction/previews/chatgpt-en-overview.png)
+![English introduction: the founder's story, scientific evidence and the workflow it motivates](examples/huandeng-introduction/previews/chatgpt-en-overview.png)
 
 ## 编辑与交付
 
@@ -172,7 +174,7 @@ MCP 现有 **22 个工具、2 个 Story/operations 指南资源**。Activity rea
     corepack pnpm exec vitest run --project unit
     corepack pnpm check
 
-完整产品规划见 [Master SPEC](docs/SPEC.md)，编辑器增量见 [SPEC-V018](docs/SPEC-V018.md)，当前介绍稿与插件设计约定见 [Introduction rework](docs/INTRODUCTION-REWORK.md)，逐项状态见 [工作流审计](docs/AUDIT-V018-WORKFLOW.md)。历史验收见 [v0.4](docs/RELEASE-V04.md)、[v0.5](docs/RELEASE-V05.md)、[v0.6](docs/RELEASE-V06.md)、[v0.7](docs/RELEASE-V07.md)，[v0.8](docs/RELEASE-V08.md)，[v0.9](docs/RELEASE-V09.md)，[v0.10](docs/RELEASE-V010.md)，[v0.11](docs/RELEASE-V011.md)，[v0.12](docs/RELEASE-V012.md)，[v0.12.1](docs/RELEASE-V0121.md)，[v0.13](docs/RELEASE-V013.md)；本轮见 [v0.18 发布记录](docs/RELEASE-V018.md)。工程接续入口是 [WEBCHAT.md](WEBCHAT.md)。
+完整产品规划见 [Master SPEC](docs/SPEC.md)，编辑器增量见 [SPEC-V018](docs/SPEC-V018.md)。当前介绍稿与插件约定见 [故事驱动 Spec](docs/INTRODUCTION-STORY-SPEC.md)，实际结果见 [交付记录](docs/INTRODUCTION-DELIVERY.md)与 [plugin 0.18.3 发布记录](docs/RELEASE-PLUGIN-0183.md)。历史验收见 [v0.4](docs/RELEASE-V04.md)、[v0.5](docs/RELEASE-V05.md)、[v0.6](docs/RELEASE-V06.md)、[v0.7](docs/RELEASE-V07.md)、[v0.8](docs/RELEASE-V08.md)、[v0.9](docs/RELEASE-V09.md)、[v0.10](docs/RELEASE-V010.md)、[v0.11](docs/RELEASE-V011.md)、[v0.12](docs/RELEASE-V012.md)、[v0.12.1](docs/RELEASE-V0121.md)、[v0.13](docs/RELEASE-V013.md)及 [Editor 0.18.0 历史发布](docs/RELEASE-V018.md)。工程接续入口是 [WEBCHAT.md](WEBCHAT.md)和[本轮交接](docs/HANDOFF-PLUGIN-0183.md)。
 
 里程碑运行单元测试、类型和格式检查，并检查实际构建与安装。桌面、科研对象、原生 PowerPoint 和真实科研项目副本的场景按具体变更风险选择，不在每次开发中重复全部压力矩阵。日常小修改只重复能够验证相应风险的检查。
 

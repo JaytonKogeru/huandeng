@@ -1,0 +1,362 @@
+{
+  "purpose": "Byte-identical public input assets already imported through this Project writer",
+  "assets": [
+    {
+      "source": "recommended/zh-CN/zh-CN-native-edit-before-4x.png",
+      "sha256": "fdcacc35c15b7a7b76d70ef9f713c605c20a7e8ca450703b6343ac8bc722bd3e",
+      "kind": "actual-ui",
+      "locale": "zh-CN",
+      "use": "edit-before",
+      "pixels": [
+        3152,
+        1780
+      ],
+      "path": "media/imported/fdcacc35c15b7a7b76d70ef9f713c605c20a7e8ca450703b6343ac8bc722bd3e.png"
+    },
+    {
+      "source": "recommended/zh-CN/zh-CN-native-edit-after-4x.png",
+      "sha256": "1590b6d7b420e2502709c533628c4fc0a0ef2278c8b6798d1f6fa8272f9059fc",
+      "kind": "actual-ui",
+      "locale": "zh-CN",
+      "use": "edit-after",
+      "pixels": [
+        3152,
+        1780
+      ],
+      "path": "media/imported/1590b6d7b420e2502709c533628c4fc0a0ef2278c8b6798d1f6fa8272f9059fc.png"
+    },
+    {
+      "source": "recommended/zh-CN/zh-CN-native-history-change-4x.png",
+      "sha256": "4d42e5f1558e1b2f448e5b87abd12e17eb56b62c64853eda8b401cc93ad67b4b",
+      "kind": "actual-ui",
+      "locale": "zh-CN",
+      "use": "history-change",
+      "pixels": [
+        4608,
+        3028
+      ],
+      "path": "media/imported/4d42e5f1558e1b2f448e5b87abd12e17eb56b62c64853eda8b401cc93ad67b4b.png"
+    },
+    {
+      "source": "recommended/zh-CN/zh-CN-native-focused-story-4x.png",
+      "sha256": "a2e5fe82bdef7371736c75dad7d686f7e06abc68b160063d44fef402651defb0",
+      "kind": "actual-ui",
+      "locale": "zh-CN",
+      "use": "focused-story",
+      "pixels": [
+        1196,
+        1060
+      ],
+      "path": "media/imported/a2e5fe82bdef7371736c75dad7d686f7e06abc68b160063d44fef402651defb0.png"
+    },
+    {
+      "source": "recommended/zh-CN/zh-CN-native-delivery-toolbar-4x.png",
+      "sha256": "90224b9de26dfd919fa6c4ee7d57d55e7662100ddc9d7838b6123a6610640c2d",
+      "kind": "actual-ui",
+      "locale": "zh-CN",
+      "use": "delivery-toolbar",
+      "pixels": [
+        1796,
+        192
+      ],
+      "path": "media/imported/90224b9de26dfd919fa6c4ee7d57d55e7662100ddc9d7838b6123a6610640c2d.png"
+    },
+    {
+      "source": "recommended/zh-CN/zh-CN-native-export-4x.png",
+      "sha256": "93c7ba236a204f434045f9c9f62d0f3be06736b95537ab6b134ef63d35273448",
+      "kind": "actual-ui",
+      "locale": "zh-CN",
+      "use": "export",
+      "pixels": [
+        2304,
+        1088
+      ],
+      "path": "media/imported/93c7ba236a204f434045f9c9f62d0f3be06736b95537ab6b134ef63d35273448.png"
+    },
+    {
+      "source": "recommended/zh-CN/zh-CN-native-present-menu-4x.png",
+      "sha256": "10ee990c863d150d06ac8ef7125b31d3f5857d0fcbce91c21960ba49eca87e96",
+      "kind": "actual-ui",
+      "locale": "zh-CN",
+      "use": "present-menu",
+      "pixels": [
+        656,
+        288
+      ],
+      "path": "media/imported/10ee990c863d150d06ac8ef7125b31d3f5857d0fcbce91c21960ba49eca87e96.png"
+    },
+    {
+      "source": "recommended/zh-CN/zh-CN-native-project-sequences-4x.png",
+      "sha256": "afe675bef8594c3328129632115e6befdec36ffc2a7ad347cf1d754662ee6d07",
+      "kind": "actual-ui",
+      "locale": "zh-CN",
+      "use": "project-sequences",
+      "pixels": [
+        1596,
+        1216
+      ],
+      "path": "media/imported/afe675bef8594c3328129632115e6befdec36ffc2a7ad347cf1d754662ee6d07.png"
+    },
+    {
+      "source": "recommended/zh-CN/zh-CN-native-browse-reading-4x.png",
+      "sha256": "0f856d8826c729d24034a9b44834bca1de9424bc8a2090c9d12e3da901ec571a",
+      "kind": "actual-ui",
+      "locale": "zh-CN",
+      "use": "browse-reading",
+      "pixels": [
+        2192,
+        1220
+      ],
+      "path": "media/imported/0f856d8826c729d24034a9b44834bca1de9424bc8a2090c9d12e3da901ec571a.png"
+    },
+    {
+      "source": "recommended/zh-CN/zh-CN-native-outline-reading-4x.png",
+      "sha256": "f5455f5cada808cb66355a623d9d2e07d5e8645a0e4cdd0ecc97220c7ab96bd5",
+      "kind": "actual-ui",
+      "locale": "zh-CN",
+      "use": "outline-reading",
+      "pixels": [
+        4448,
+        1480
+      ],
+      "path": "media/imported/f5455f5cada808cb66355a623d9d2e07d5e8645a0e4cdd0ecc97220c7ab96bd5.png"
+    },
+    {
+      "source": "recommended/zh-CN/zh-CN-native-edit-overview-2x.png",
+      "sha256": "c36ad119b97a82db8ae3dde5b04fd9853151f34ab4ed8b49cec5352594775961",
+      "kind": "actual-ui",
+      "locale": "zh-CN",
+      "use": "edit-overview",
+      "pixels": [
+        3840,
+        2160
+      ],
+      "path": "media/imported/c36ad119b97a82db8ae3dde5b04fd9853151f34ab4ed8b49cec5352594775961.png"
+    },
+    {
+      "source": "recommended/zh-CN/zh-CN-native-edit-focused-2x.png",
+      "sha256": "15179dfcf6c63e3accc20d483a17c8c608464c9b0745ac64c478d54c65e571fc",
+      "kind": "actual-ui",
+      "locale": "zh-CN",
+      "use": "edit-focused",
+      "pixels": [
+        3840,
+        2160
+      ],
+      "path": "media/imported/15179dfcf6c63e3accc20d483a17c8c608464c9b0745ac64c478d54c65e571fc.png"
+    },
+    {
+      "source": "recommended/zh-CN/zh-CN-native-asset-resolution-4x.png",
+      "sha256": "4746757e07edcb47fb7a31244b81eff453e6dd771bd3411daca09d04eedd6af7",
+      "kind": "actual-ui",
+      "locale": "zh-CN",
+      "use": "asset-resolution",
+      "pixels": [
+        1148,
+        600
+      ],
+      "path": "media/imported/4746757e07edcb47fb7a31244b81eff453e6dd771bd3411daca09d04eedd6af7.png"
+    },
+    {
+      "source": "recommended/zh-CN/zh-CN-native-design-check-4x.png",
+      "sha256": "7838348f37e12103e3f6c75c1a2d9ccc77a6b1333310e25b67a05fbc1ff70207",
+      "kind": "actual-ui",
+      "locale": "zh-CN",
+      "use": "design-check",
+      "pixels": [
+        3840,
+        2128
+      ],
+      "path": "media/imported/7838348f37e12103e3f6c75c1a2d9ccc77a6b1333310e25b67a05fbc1ff70207.png"
+    },
+    {
+      "source": "recommended/zh-CN/zh-CN-identity-before-4x.png",
+      "sha256": "56ef1c090dfe6c7ef847c12ea2f9ed6ef7a90dfd51efd5d5cc23f4e542356b58",
+      "kind": "actual-ui",
+      "locale": "zh-CN",
+      "use": "identity-before",
+      "pixels": [
+        1440,
+        180
+      ],
+      "path": "media/imported/56ef1c090dfe6c7ef847c12ea2f9ed6ef7a90dfd51efd5d5cc23f4e542356b58.png"
+    },
+    {
+      "source": "recommended/zh-CN/zh-CN-identity-after-4x.png",
+      "sha256": "99a0f26c40f623b347b71bf756622aec243fecbc66a1b031013d57de71448afe",
+      "kind": "actual-ui",
+      "locale": "zh-CN",
+      "use": "identity-after",
+      "pixels": [
+        1440,
+        180
+      ],
+      "path": "media/imported/99a0f26c40f623b347b71bf756622aec243fecbc66a1b031013d57de71448afe.png"
+    },
+    {
+      "source": "recommended/zh-CN/zh-CN-native-operation-history-4x.png",
+      "sha256": "ea69ea682746c8afbea5975f2027f75ee424af20e8132a344f036d3e3d6d2274",
+      "kind": "actual-ui",
+      "locale": "zh-CN",
+      "use": "operation-history",
+      "pixels": [
+        4608,
+        3028
+      ],
+      "path": "media/imported/ea69ea682746c8afbea5975f2027f75ee424af20e8132a344f036d3e3d6d2274.png"
+    },
+    {
+      "source": "recommended/zh-CN/zh-CN-native-operation-review-4x.png",
+      "sha256": "1f8c227e7a8a73ed668c788e46d631f17b6e6f577e9f66479d5e693fbd71d867",
+      "kind": "actual-ui",
+      "locale": "zh-CN",
+      "use": "operation-review",
+      "pixels": [
+        4400,
+        3280
+      ],
+      "path": "media/imported/1f8c227e7a8a73ed668c788e46d631f17b6e6f577e9f66479d5e693fbd71d867.png"
+    },
+    {
+      "source": "recommended/zh-CN/zh-CN-native-operation-changes-4x.png",
+      "sha256": "21fabc424f513dd09dd873134d8604b4d8518b2af74008945f693fd86ffeb7b8",
+      "kind": "actual-ui",
+      "locale": "zh-CN",
+      "use": "operation-changes",
+      "pixels": [
+        1152,
+        688
+      ],
+      "path": "media/imported/21fabc424f513dd09dd873134d8604b4d8518b2af74008945f693fd86ffeb7b8.png"
+    },
+    {
+      "source": "brand/codex.png",
+      "sha256": "2ce1c57dd3b312417106a487815ab1235bddce17e1fa9b32a2f048bd71ee25d3",
+      "kind": "brand",
+      "use": "Official OpenAI Codex extension icon; keep product text Codex beside it.",
+      "pixels": {
+        "width": 385,
+        "height": 385,
+        "mode": "RGBA"
+      },
+      "path": "media/imported/2ce1c57dd3b312417106a487815ab1235bddce17e1fa9b32a2f048bd71ee25d3.png"
+    },
+    {
+      "source": "brand/claude-code.png",
+      "sha256": "733f24f4c52acb15eb0fbded1cf40eb42b4ba8e62b882acac70b6234b50919a8",
+      "kind": "brand",
+      "use": "Claude product mark used beside Claude Code; not an exclusive Code symbol.",
+      "pixels": {
+        "width": 192,
+        "height": 192,
+        "mode": "P"
+      },
+      "path": "media/imported/733f24f4c52acb15eb0fbded1cf40eb42b4ba8e62b882acac70b6234b50919a8.png"
+    },
+    {
+      "source": "brand/deepseek.png",
+      "sha256": "e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc",
+      "kind": "brand",
+      "use": "DeepSeek official organization mark; not a separate Harness logo.",
+      "pixels": {
+        "width": 460,
+        "height": 460,
+        "mode": "RGB"
+      },
+      "path": "media/imported/e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc.png"
+    },
+    {
+      "source": "brand/chatgpt.png",
+      "sha256": "0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13",
+      "kind": "brand",
+      "use": "ChatGPT official mark.",
+      "pixels": {
+        "width": 720,
+        "height": 720,
+        "mode": "RGBA"
+      },
+      "path": "media/imported/0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13.png"
+    },
+    {
+      "source": "brand/open-slide.png",
+      "sha256": "44e2a2aa5f3887deae386fa73f71234961f93e006873b632ccf38b6b6f1291a1",
+      "kind": "brand",
+      "use": "Editor code foundation.",
+      "pixels": {
+        "width": 512,
+        "height": 512,
+        "mode": "RGBA"
+      },
+      "path": "media/imported/44e2a2aa5f3887deae386fa73f71234961f93e006873b632ccf38b6b6f1291a1.png"
+    },
+    {
+      "source": "brand/github-repository.png",
+      "sha256": "2a2f5cbcc74c7fa83c40127dd8b0e42c23f1157131aebe28492aa1ac27bbdc6d",
+      "kind": "brand",
+      "use": "GitHub repository symbol used beside OpenPPTD; not an OpenPPTD logo.",
+      "pixels": {
+        "width": 294,
+        "height": 288,
+        "mode": "RGBA"
+      },
+      "path": "media/imported/2a2f5cbcc74c7fa83c40127dd8b0e42c23f1157131aebe28492aa1ac27bbdc6d.png"
+    },
+    {
+      "source": "brand/pptxgenjs.png",
+      "sha256": "d697acf6f3c5bc265806bc8f6c4e6d58b964e0b2962392d0329a420639f45846",
+      "kind": "brand",
+      "use": "PPTX export library.",
+      "pixels": {
+        "width": 480,
+        "height": 349,
+        "mode": "RGBA"
+      },
+      "path": "media/imported/d697acf6f3c5bc265806bc8f6c4e6d58b964e0b2962392d0329a420639f45846.png"
+    },
+    {
+      "source": "brand/huandeng.png",
+      "sha256": "6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef",
+      "kind": "brand",
+      "use": "Default HUANDENG mark; exact pixels used on the original introduction cover and footers.",
+      "pixels": {
+        "width": 512,
+        "height": 512,
+        "mode": "RGBA"
+      },
+      "path": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png"
+    },
+    {
+      "source": "brand/huandeng-user-original.png",
+      "sha256": "bd04c9ebb0e94cdaa5ba6c3a7df8d5ae1d35236933b3ca9ab297912d7b870530",
+      "kind": "brand",
+      "use": "Unmodified user-supplied source mark retained for provenance; use huandeng.png for the existing presentation identity.",
+      "pixels": {
+        "width": 1254,
+        "height": 1254,
+        "mode": "RGBA"
+      },
+      "path": "media/imported/bd04c9ebb0e94cdaa5ba6c3a7df8d5ae1d35236933b3ca9ab297912d7b870530.png"
+    },
+    {
+      "source": "science/dna-duplex-side.png",
+      "sha256": "ff6d1434a44440fba124ccad7dfa30efa01e8c400094d4453d17d502345c1e2c",
+      "kind": "public-scientific-worked-example",
+      "use": "Optional exact-coordinate demonstration; read science/README.md and source.json before use.",
+      "path": "media/imported/ff6d1434a44440fba124ccad7dfa30efa01e8c400094d4453d17d502345c1e2c.png"
+    },
+    {
+      "source": "science/dna-duplex-end.png",
+      "sha256": "342088ed88ab8fffc8ce2651cd6fbf183244f5069c7907702a957eb9cf9fa18a",
+      "kind": "public-scientific-worked-example",
+      "use": "Optional exact-coordinate demonstration; read science/README.md and source.json before use.",
+      "path": "media/imported/342088ed88ab8fffc8ce2651cd6fbf183244f5069c7907702a957eb9cf9fa18a.png"
+    },
+    {
+      "source": "science/paired-c1-distances-zh.png",
+      "sha256": "d5576a93749be3608a7127b9a45d7d92e62fa9f0258043a13835ac7c1d971e19",
+      "kind": "public-scientific-worked-example",
+      "use": "Optional exact-coordinate demonstration; read science/README.md and source.json before use.",
+      "path": "media/imported/d5576a93749be3608a7127b9a45d7d92e62fa9f0258043a13835ac7c1d971e19.png"
+    }
+  ]
+}

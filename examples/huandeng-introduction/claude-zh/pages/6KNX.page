@@ -1,0 +1,23 @@
+background:
+  type: solid
+  color: "#2D4A43"
+elements:
+  - elementId: divider-title
+    elementType: text
+    bounds:
+      - 72
+      - 226
+      - 816
+      - 72
+    content:
+      text: 我们做了什么
+      fontFamily: Microsoft YaHei
+      fontSize: 34
+      lineHeight: 1.25
+      color: "#FFFFFF"
+      align:
+        - left
+        - middle
+      bold: true
+    role: title
+notes: 第二部分。带着这三个问题，我找到了两条线索，然后把它们合在了一起。

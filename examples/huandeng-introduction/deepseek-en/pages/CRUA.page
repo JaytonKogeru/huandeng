@@ -1,0 +1,109 @@
+background:
+  type: solid
+  color: "#F7F5F0"
+elements:
+  - elementId: p13-eyebrow
+    elementType: text
+    bounds:
+      - 64
+      - 38
+      - 300
+      - 16
+    content:
+      text: 03 · THE WORKSPACE
+      fontSize: 10
+      fontFamily: Consolas
+      color: "#B43C26"
+      letterSpacing: 1.6
+      align:
+        - left
+        - top
+  - elementId: p13-title
+    elementType: text
+    role: title
+    bounds:
+      - 64
+      - 58
+      - 640
+      - 46
+    content:
+      text: History belongs to the page.
+      fontSize: 30
+      fontFamily: Georgia
+      color: "#17181A"
+      lineHeight: 1.1
+      align:
+        - left
+        - top
+  - elementId: p13-shot
+    elementType: image
+    bounds:
+      - 64
+      - 112
+      - 676
+      - 424
+    src: media/imported/545313eff6d8d90331cb33a45becb21a5fe041d03f6e6c6d43207f2e5acb56fb.png
+    sourceName: en-history-change-4x.png
+    fit:
+      mode: contain
+  - elementId: p13-frame
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 64
+      - 112
+      - 676
+      - 424
+    border:
+      color: "#D9D4C8"
+      width: 1
+      style: solid
+  - elementId: p13-label
+    elementType: text
+    bounds:
+      - 764
+      - 112
+      - 132
+      - 14
+    content:
+      text: SAVED VERSIONS
+      fontSize: 9.5
+      fontFamily: Consolas
+      color: "#B43C26"
+      letterSpacing: 1.4
+      align:
+        - left
+        - top
+  - elementId: p13-note
+    elementType: text
+    bounds:
+      - 764
+      - 138
+      - 132
+      - 230
+    content:
+      text: Two named versions. The older one can be read before it is restored. Restoring changes only this page.
+      fontSize: 13
+      fontFamily: Segoe UI
+      color: "#3A3833"
+      lineHeight: 1.65
+      align:
+        - left
+        - top
+  - elementId: p13-folio
+    elementType: text
+    bounds:
+      - 860
+      - 512
+      - 36
+      - 14
+    content:
+      text: "13"
+      field: main-position
+      fontSize: 9.5
+      fontFamily: Consolas
+      color: "#A29C8F"
+      align:
+        - right
+        - top
+notes: History is per page. Each page has named versions for the moments worth keeping, and an operation history for the smaller saves. Restoring a version changes only that page. That is the Git idea, applied at the unit that actually changes. I don't need a copy of the whole deck to try a different title.

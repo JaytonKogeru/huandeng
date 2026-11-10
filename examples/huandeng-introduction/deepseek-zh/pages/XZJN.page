@@ -2,7 +2,7 @@ pageType: content
 background:
   type: solid
   color: "#E8EEE6"
-notes: 从问题转到模型。Main Slides 是页面内容的底稿；Presentations 只是引用页面并决定顺序与讲稿。右侧是真实项目概览，能看到底稿与演讲被分开呈现。左侧三种场合说明同一批页面可以用不同顺序讲。
+notes: "同一份研究要面对不同听众。组会讲下一步，会议讲结论，评审要证据。页面不复制：Main Slides 是同一批页面，Presentation 只改这次的选择、顺序和讲稿。右侧是真实项目概览，底稿和演讲分开展示。"
 elements:
   - elementId: source-kicker
     elementType: text
@@ -12,7 +12,7 @@ elements:
       - 300
       - 18
     content:
-      text: 模型 / 02
+      text: "Presentation / 复用"
       fontSize: 9.5
       fontFamily:
         ea: Microsoft YaHei
@@ -31,8 +31,8 @@ elements:
       - 430
       - 40
     content:
-      text: 底稿只有一份，出场可以很多次
-      fontSize: 25
+      text: "一份内容，多次出场"
+      fontSize: 26
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
@@ -49,7 +49,7 @@ elements:
       - 420
       - 66
     content:
-      text: Main Slides 保存页面；每场演讲只记录引用、顺序和讲稿。
+      text: "组会、会议、评审共用同一批页面；Presentation 只决定这次讲什么、按什么顺序、配哪段讲稿。"
       fontSize: 15.6
       fontFamily:
         ea: Microsoft YaHei
@@ -67,7 +67,7 @@ elements:
       - 390
       - 26
     content:
-      text: 组会 · 8 分钟
+      text: "组会 · 进展"
       fontSize: 14
       fontFamily:
         ea: Microsoft YaHei
@@ -84,7 +84,7 @@ elements:
       - 390
       - 22
     content:
-      text: 方法先讲，结果后置。
+      text: "先讲下一步，再补方法。"
       fontSize: 11.6
       fontFamily:
         ea: Microsoft YaHei
@@ -116,7 +116,7 @@ elements:
       - 390
       - 26
     content:
-      text: 会议 · 15 分钟
+      text: "会议 · 结论"
       fontSize: 14
       fontFamily:
         ea: Microsoft YaHei
@@ -165,7 +165,7 @@ elements:
       - 390
       - 26
     content:
-      text: 评审 · 逐条追问
+      text: "评审 · 证据"
       fontSize: 14
       fontFamily:
         ea: Microsoft YaHei
@@ -182,7 +182,7 @@ elements:
       - 390
       - 22
     content:
-      text: 补上来源、方法和限制。
+      text: "把来源、方法和限制补齐。"
       fontSize: 11.6
       fontFamily:
         ea: Microsoft YaHei
@@ -199,9 +199,7 @@ elements:
       - 410
       - 46
     content:
-      text: |-
-        页面只维护一次；
-        讲法按场合重排。
+      text: "页面不复制；\n出场的顺序和讲稿可以不同。"
       fontSize: 15
       fontFamily:
         ea: Microsoft YaHei

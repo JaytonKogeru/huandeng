@@ -11,7 +11,7 @@ elements:
       - 848
       - 42
     content:
-      text: Story records what each slide must keep
+      text: "Story tells the agent what matters"
       fontFamily: Arial
       fontSize: 30
       lineHeight: 1.2
@@ -128,7 +128,7 @@ elements:
       - 512
       - 48
     content:
-      text: An agent reads this before it edits the slide. People see it in Outline and in the Inspector.
+      text: "This is my alignment tool: the agent reads it before it edits. People see it in Outline and in the Inspector."
       fontFamily: Arial
       fontSize: 16
       lineHeight: 1.35
@@ -317,4 +317,4 @@ elements:
       align:
         - right
         - middle
-notes: "A slide alone does not tell the next editor what matters. HUANDENG keeps a short Story beside every slide: its purpose, what must be kept, and the change that was asked for. On the left is the Story tab from the editor. On the right is the Story I actually recorded for the 1BNA chart slide you just saw: keep the values exactly as in the CSV, keep a labelled non-zero axis with units, keep the citation, and make no claim of replicates or trends. When an AI agent is asked to tidy that slide, this is what it reads first. Story also exists for the whole project, for each Section and for each Presentation, so a change can be judged against the purpose of the talk as well as the slide. An agent's Story record is its interpretation of the request; it is not the author's approval."
+notes: "This is the part of HUANDENG that comes most directly from the story-first idea. Every slide carries a short Story: what it is for, what must be kept, and what change was asked for. Think of it as an alignment tool between me and the agent. On the right is the Story actually recorded for the 1BNA slide: keep the exact values, keep the labelled axis and its units, keep the citation, and make no claims of replicates or trends. When an agent is asked to tidy that slide, it reads this first. Story also exists for the whole project, each Section and each Presentation. An agent's Story is its interpretation, not my approval."

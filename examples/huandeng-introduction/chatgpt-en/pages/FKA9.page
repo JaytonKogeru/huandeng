@@ -12,167 +12,7 @@ elements:
       - 67
     role: title
     content:
-      text: Keep working in the Editor
-      fontFamily: Arial
-      fontSize: 29
-      color: "#263C34"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-  - elementId: editor-working
-    elementType: image
-    src: "media/imported/ab6277d08c06c42c127313ec07ec45440703eb5616e575deedf93a8e7b4ee7d6.png"
-    sourceName: "editor-native-chart.png"
-    alt: "editor-native-chart.png"
-    bounds:
-      - 44
-      - 124
-      - 631
-      - 379
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: ui-icon-0
-    elementType: icon
-    iconName: fas:object-group
-    bounds:
-      - 710
-      - 151
-      - 23
-      - 23
-    fill:
-      type: solid
-      color: "#356F68"
-  - elementId: ui-label-0
-    elementType: text
-    bounds:
-      - 748
-      - 150
-      - 166
-      - 29
-    content:
-      text: Canvas
-      fontFamily: Arial
-      fontSize: 20
-      color: "#263C34"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-  - elementId: ui-copy-0
-    elementType: text
-    bounds:
-      - 710
-      - 191
-      - 205
-      - 62
-    content:
-      text: Select and refine objects directly.
-      fontFamily: Arial
-      fontSize: 16
-      color: "#66756B"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-  - elementId: ui-icon-1
-    elementType: icon
-    iconName: fas:image
-    bounds:
-      - 710
-      - 263
-      - 23
-      - 23
-    fill:
-      type: solid
-      color: "#356F68"
-  - elementId: ui-label-1
-    elementType: text
-    bounds:
-      - 748
-      - 262
-      - 166
-      - 29
-    content:
-      text: Assets
-      fontFamily: Arial
-      fontSize: 20
-      color: "#263C34"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-  - elementId: ui-copy-1
-    elementType: text
-    bounds:
-      - 710
-      - 303
-      - 205
-      - 62
-    content:
-      text: Keep using the original source image.
-      fontFamily: Arial
-      fontSize: 16
-      color: "#66756B"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-  - elementId: ui-icon-2
-    elementType: icon
-    iconName: fas:note-sticky
-    bounds:
-      - 710
-      - 375
-      - 23
-      - 23
-    fill:
-      type: solid
-      color: "#356F68"
-  - elementId: ui-label-2
-    elementType: text
-    bounds:
-      - 748
-      - 374
-      - 166
-      - 29
-    content:
-      text: Notes
-      fontFamily: Arial
-      fontSize: 20
-      color: "#263C34"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-  - elementId: ui-copy-2
-    elementType: text
-    bounds:
-      - 710
-      - 415
-      - 205
-      - 62
-    content:
-      text: Keep the speaking detail beside the evidence.
-      fontFamily: Arial
-      fontSize: 16
-      color: "#66756B"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
+      {"text":"The editor I return to with the agent","fontFamily":"Arial","fontSize":29,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
   - elementId: brand-small
     elementType: image
     src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
@@ -225,4 +65,46 @@ elements:
         - top
       lineHeight: 1.3
       field: main-position
-notes: This is the actual Editor, with both interface and slide content matching this edition. People can select images, charts and text directly, then inspect an agent’s changes in the same workspace. This overview explains the working environment; the scientific detail is shown at full scale on the example page.
+  - elementId: editor-native-chart
+    elementType: image
+    src: "media/imported/d636a513fcf82df27f78c077242623f592c58f56281c53c11c42d59e1053572a.png"
+    sourceName: editor-native-chart.png
+    alt: editor-native-chart.png
+    bounds:
+      - 44
+      - 127
+      - 631
+      - 379
+    fit:
+      mode: contain
+    crop:
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+  - elementId: editor-copy
+    elementType: text
+    bounds:
+      - 712
+      - 145
+      - 204
+      - 337
+    content:
+      text: |-
+        Project / Pages / Assets / Files
+        Organize the work
+  
+        Canvas and layers
+        Select and refine objects
+  
+        Story and properties
+        Keep intent beside the detail
+      fontFamily: Arial
+      fontSize: 17
+      color: "#263C34"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.55
+notes: "A document model still needs an editor people want to use. The canvas remains available for direct manipulation, with Project, Pages, Assets and Files on the left and object properties, layers and Story on the right. An agent’s changes appear in that same work. I wanted AI collaboration to coexist with selecting objects, arranging layers and refining the composition by hand."

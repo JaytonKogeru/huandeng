@@ -1,0 +1,977 @@
+{
+  "schemaVersion": 1,
+  "releaseTag": "plugin-v0.18.3",
+  "repository": "JaytonKogeru/huandeng",
+  "repositoryVisibility": "private",
+  "deliveryStatus": "review-candidates",
+  "authorAcceptance": false,
+  "sourceParentCommit": "45a45a0e6404ab291da85045a575749006d5d391",
+  "editor": {
+    "version": "0.18.0",
+    "runtimeSourceCommit": "35dfe649d450d22a0e4e3b70661be52c67eb9f7a",
+    "sourceChanged": false,
+    "binaryRebuilt": false
+  },
+  "pluginVersion": "0.18.3",
+  "nativeTrialPluginVersion": "0.18.3",
+  "projects": [
+    {
+      "edition": "chatgpt-zh",
+      "projectPath": "examples/huandeng-introduction/chatgpt-zh",
+      "mainPages": 27,
+      "briefPages": 13,
+      "presentations": [
+        {
+          "id": "introduction-full",
+          "title": "完整介绍",
+          "pages": 27
+        },
+        {
+          "id": "introduction-short",
+          "title": "简短介绍",
+          "pages": 13
+        }
+      ],
+      "sourcePageCountIncludingRetired": 50,
+      "referencedImageFiles": 81,
+      "namedVersionCheckpoints": 53,
+      "pinnedOccurrences": [
+        {
+          "presentationId": "introduction-short",
+          "occurrenceId": "introduction-short:brief-2:c1fcdc66-1c25-45a6-9b98-83d16f063c3e",
+          "versionId": "checkpoint:a687931507a66085784d787c9ad2d31d"
+        }
+      ],
+      "allDocumentAssetAndCheckpointReferencesResolved": true,
+      "allFrozenAssetHashesVerified": true,
+      "exportRevisionsVerified": true,
+      "exports": [
+        {
+          "path": "Exports/deck.pdf",
+          "report": "Exports/deck.pdf.report.json",
+          "kind": "deck",
+          "format": "pdf",
+          "pages": 27,
+          "presentationId": null,
+          "sha256": "56d540bbd353c6e34c030b88f71d95a4641744b2e791aff0321f88dbcca1fe8c",
+          "bytes": 3927264,
+          "manifestRevision": "sha256:5ed092812df99b696cd1a016e2f10a11f2100a25100c314038c6da6d58fdd90d",
+          "metadataRevision": "sha256:5898fb966bf07e0f8d99ae22d08cdb9b94b6b5974ed15b12d4e7ddee7a9ad8dc",
+          "pageRevisionsVerified": true
+        },
+        {
+          "path": "Exports/deck.pptx",
+          "report": "Exports/deck.pptx.report.json",
+          "kind": "deck",
+          "format": "pptx",
+          "pages": 27,
+          "presentationId": null,
+          "sha256": "5f11dc887f6f5730dc39f840f4615c021bfa8249a8a15de35297d7139b04b91f",
+          "bytes": 4136276,
+          "manifestRevision": "sha256:5ed092812df99b696cd1a016e2f10a11f2100a25100c314038c6da6d58fdd90d",
+          "metadataRevision": "sha256:5898fb966bf07e0f8d99ae22d08cdb9b94b6b5974ed15b12d4e7ddee7a9ad8dc",
+          "pageRevisionsVerified": true
+        },
+        {
+          "path": "Exports/brief.pdf",
+          "report": "Exports/brief.pdf.report.json",
+          "kind": "brief",
+          "format": "pdf",
+          "pages": 13,
+          "presentationId": "introduction-short",
+          "sha256": "17a2e7e689c40675526f94be12fdf91bb4787fd890326141f5b9292c61974ef7",
+          "bytes": 2942851,
+          "manifestRevision": "sha256:5ed092812df99b696cd1a016e2f10a11f2100a25100c314038c6da6d58fdd90d",
+          "metadataRevision": "sha256:5898fb966bf07e0f8d99ae22d08cdb9b94b6b5974ed15b12d4e7ddee7a9ad8dc",
+          "pageRevisionsVerified": true
+        },
+        {
+          "path": "Exports/brief.pptx",
+          "report": "Exports/brief.pptx.report.json",
+          "kind": "brief",
+          "format": "pptx",
+          "pages": 13,
+          "presentationId": "introduction-short",
+          "sha256": "c608f311081fbbb41ea609434c84df5a24a1e4672da0efd929d783b4e03f5fd2",
+          "bytes": 3066994,
+          "manifestRevision": "sha256:5ed092812df99b696cd1a016e2f10a11f2100a25100c314038c6da6d58fdd90d",
+          "metadataRevision": "sha256:5898fb966bf07e0f8d99ae22d08cdb9b94b6b5974ed15b12d4e7ddee7a9ad8dc",
+          "pageRevisionsVerified": true
+        }
+      ],
+      "historicalMachinePathExceptions": [],
+      "nativeCompleted": null,
+      "authorAccepted": false,
+      "referenceScope": "PPTD pages, stable page identities, semantic image/asset fields, Presentation pins and checkpoint asset revisions. Historical prose and citation links are not runtime dependencies.",
+      "zipRoot": "huandeng-chatgpt-zh",
+      "sourceFileCount": 287,
+      "sourceManifest": "SOURCE-MANIFEST.json",
+      "sourceManifestSha256": "0f564fae3dd37fd863bd9b989216ff7700bb04a8eb93a55f8d1c2fee9ab93a97",
+      "allSourceBytesPreserved": true,
+      "relocationVerification": {
+        "method": "Extract to unrelated temporary folder, then installed huandeng check <entry>",
+        "runtime": "Editor 0.18.0 bundled core",
+        "readOnly": true,
+        "exitCode": 0,
+        "pageCount": 27,
+        "identityPersisted": true,
+        "diagnosticCount": 0,
+        "errorDiagnostics": 0,
+        "projectBytesUnchanged": true,
+        "temporaryCopyRemoved": true
+      },
+      "excluded": [],
+      "reviewStatus": "passed-independent-root-review"
+    },
+    {
+      "edition": "chatgpt-en",
+      "projectPath": "examples/huandeng-introduction/chatgpt-en",
+      "mainPages": 27,
+      "briefPages": 13,
+      "presentations": [
+        {
+          "id": "introduction-full",
+          "title": "Full introduction",
+          "pages": 27
+        },
+        {
+          "id": "introduction-short",
+          "title": "Brief introduction",
+          "pages": 13
+        }
+      ],
+      "sourcePageCountIncludingRetired": 51,
+      "referencedImageFiles": 76,
+      "namedVersionCheckpoints": 51,
+      "pinnedOccurrences": [
+        {
+          "presentationId": "introduction-short",
+          "occurrenceId": "introduction-short:brief-2:c4b12919-5876-4acb-b63f-6a7493b54b37",
+          "versionId": "checkpoint:891ad589ee3d84a6414cbf6af1245185"
+        }
+      ],
+      "allDocumentAssetAndCheckpointReferencesResolved": true,
+      "allFrozenAssetHashesVerified": true,
+      "exportRevisionsVerified": true,
+      "exports": [
+        {
+          "path": "Exports/deck.pdf",
+          "report": "Exports/deck.pdf.report.json",
+          "kind": "deck",
+          "format": "pdf",
+          "pages": 27,
+          "presentationId": null,
+          "sha256": "a5d12f748e91e5775e09712baeb59792f705a7b290e34de98714e2985e0592a2",
+          "bytes": 3514787,
+          "manifestRevision": "sha256:a91f83893159ac599b47ebe38fb0b70bd7bb1b2c337f81198640a9ade0238aa7",
+          "metadataRevision": "sha256:cbfe9d8fba20bff1c8d7a5ab1c0b3ec90e6799974113b34909a105257bcddfe9",
+          "pageRevisionsVerified": true
+        },
+        {
+          "path": "Exports/deck.pptx",
+          "report": "Exports/deck.pptx.report.json",
+          "kind": "deck",
+          "format": "pptx",
+          "pages": 27,
+          "presentationId": null,
+          "sha256": "4288ec1edcb9decf5969cf88f32bfb7579c8e0bf43cd59ec6464d85b6f997519",
+          "bytes": 3801831,
+          "manifestRevision": "sha256:a91f83893159ac599b47ebe38fb0b70bd7bb1b2c337f81198640a9ade0238aa7",
+          "metadataRevision": "sha256:cbfe9d8fba20bff1c8d7a5ab1c0b3ec90e6799974113b34909a105257bcddfe9",
+          "pageRevisionsVerified": true
+        },
+        {
+          "path": "Exports/brief.pdf",
+          "report": "Exports/brief.pdf.report.json",
+          "kind": "brief",
+          "format": "pdf",
+          "pages": 13,
+          "presentationId": "introduction-short",
+          "sha256": "92c90bb1dde8f8a8c1bae43e741deb87e6223d766937b163dc08d70b1fec906e",
+          "bytes": 2595468,
+          "manifestRevision": "sha256:a91f83893159ac599b47ebe38fb0b70bd7bb1b2c337f81198640a9ade0238aa7",
+          "metadataRevision": "sha256:cbfe9d8fba20bff1c8d7a5ab1c0b3ec90e6799974113b34909a105257bcddfe9",
+          "pageRevisionsVerified": true
+        },
+        {
+          "path": "Exports/brief.pptx",
+          "report": "Exports/brief.pptx.report.json",
+          "kind": "brief",
+          "format": "pptx",
+          "pages": 13,
+          "presentationId": "introduction-short",
+          "sha256": "74eddf34711ae83670517ec89363b0787b0513b84b5af43a0159fd1c3bf5f72e",
+          "bytes": 2768468,
+          "manifestRevision": "sha256:a91f83893159ac599b47ebe38fb0b70bd7bb1b2c337f81198640a9ade0238aa7",
+          "metadataRevision": "sha256:cbfe9d8fba20bff1c8d7a5ab1c0b3ec90e6799974113b34909a105257bcddfe9",
+          "pageRevisionsVerified": true
+        }
+      ],
+      "historicalMachinePathExceptions": [],
+      "nativeCompleted": null,
+      "authorAccepted": false,
+      "referenceScope": "PPTD pages, stable page identities, semantic image/asset fields, Presentation pins and checkpoint asset revisions. Historical prose and citation links are not runtime dependencies.",
+      "zipRoot": "huandeng-chatgpt-en",
+      "sourceFileCount": 279,
+      "sourceManifest": "SOURCE-MANIFEST.json",
+      "sourceManifestSha256": "037b96a7663ae7b3f2cd6303ed38912f514294dc28dee9f2c3748c952a35ec87",
+      "allSourceBytesPreserved": true,
+      "relocationVerification": {
+        "method": "Extract to unrelated temporary folder, then installed huandeng check <entry>",
+        "runtime": "Editor 0.18.0 bundled core",
+        "readOnly": true,
+        "exitCode": 0,
+        "pageCount": 27,
+        "identityPersisted": true,
+        "diagnosticCount": 0,
+        "errorDiagnostics": 0,
+        "projectBytesUnchanged": true,
+        "temporaryCopyRemoved": true
+      },
+      "excluded": [],
+      "reviewStatus": "passed-independent-root-review"
+    },
+    {
+      "edition": "claude-en",
+      "projectPath": "examples/huandeng-introduction/claude-en",
+      "mainPages": 25,
+      "briefPages": 9,
+      "presentations": [
+        {
+          "id": "pres-full",
+          "title": "HUANDENG introduction (full, about 25 minutes)",
+          "pages": 25
+        },
+        {
+          "id": "pres-lab",
+          "title": "Lab-meeting version (about 8 minutes)",
+          "pages": 9
+        }
+      ],
+      "sourcePageCountIncludingRetired": 46,
+      "referencedImageFiles": 95,
+      "namedVersionCheckpoints": 46,
+      "pinnedOccurrences": [],
+      "allDocumentAssetAndCheckpointReferencesResolved": true,
+      "allFrozenAssetHashesVerified": true,
+      "exportRevisionsVerified": true,
+      "exports": [
+        {
+          "path": "Exports/deck.pdf",
+          "report": "Exports/deck.pdf.report.json",
+          "kind": "deck",
+          "format": "pdf",
+          "pages": 25,
+          "presentationId": null,
+          "sha256": "ae424d2b8f7e761c788f7f66b3ba4de38845293f35c6341d99543336fd34437b",
+          "bytes": 3550842,
+          "manifestRevision": "sha256:3dca92c3abb0b57d89a0aa922d22e9df73db315bb50af6dd30192fc9c0da27c7",
+          "metadataRevision": "sha256:be41c8a1230b88e6bbf901ad04507dcd9b086dfc24b48c1ed1ae715e3714ee52",
+          "pageRevisionsVerified": true
+        },
+        {
+          "path": "Exports/deck.pptx",
+          "report": "Exports/deck.pptx.report.json",
+          "kind": "deck",
+          "format": "pptx",
+          "pages": 25,
+          "presentationId": null,
+          "sha256": "f6fab1ba504cca99aeec15ed9064cbe72f1c4eac3e65d0a9bfd9152172e6b22f",
+          "bytes": 3594973,
+          "manifestRevision": "sha256:3dca92c3abb0b57d89a0aa922d22e9df73db315bb50af6dd30192fc9c0da27c7",
+          "metadataRevision": "sha256:be41c8a1230b88e6bbf901ad04507dcd9b086dfc24b48c1ed1ae715e3714ee52",
+          "pageRevisionsVerified": true
+        },
+        {
+          "path": "Exports/brief.pdf",
+          "report": "Exports/brief.pdf.report.json",
+          "kind": "brief",
+          "format": "pdf",
+          "pages": 9,
+          "presentationId": "pres-lab",
+          "sha256": "4bb008f05851d015b299561048447bd8d8d05b0603759f952dab44acd36023cd",
+          "bytes": 1114071,
+          "manifestRevision": "sha256:3dca92c3abb0b57d89a0aa922d22e9df73db315bb50af6dd30192fc9c0da27c7",
+          "metadataRevision": "sha256:be41c8a1230b88e6bbf901ad04507dcd9b086dfc24b48c1ed1ae715e3714ee52",
+          "pageRevisionsVerified": true
+        },
+        {
+          "path": "Exports/brief.pptx",
+          "report": "Exports/brief.pptx.report.json",
+          "kind": "brief",
+          "format": "pptx",
+          "pages": 9,
+          "presentationId": "pres-lab",
+          "sha256": "91731e3fac535ecdaa192ecf9b200d4101431b79dc01443fedd1cf231fe14263",
+          "bytes": 998807,
+          "manifestRevision": "sha256:3dca92c3abb0b57d89a0aa922d22e9df73db315bb50af6dd30192fc9c0da27c7",
+          "metadataRevision": "sha256:be41c8a1230b88e6bbf901ad04507dcd9b086dfc24b48c1ed1ae715e3714ee52",
+          "pageRevisionsVerified": true
+        }
+      ],
+      "historicalMachinePathExceptions": [
+        {
+          "path": "evidence/guidance-before-portability.md",
+          "scope": "One original public-project work path is retained only as labelled immutable trial evidence."
+        }
+      ],
+      "nativeCompleted": true,
+      "authorAccepted": false,
+      "referenceScope": "PPTD pages, stable page identities, semantic image/asset fields, Presentation pins and checkpoint asset revisions. Historical prose and citation links are not runtime dependencies.",
+      "zipRoot": "huandeng-claude-en",
+      "sourceFileCount": 307,
+      "sourceManifest": "SOURCE-MANIFEST.json",
+      "sourceManifestSha256": "ea10399a2b502d27e90ba6626e3026d3c09b18ed31ba5488f9ac1fc0cec1463e",
+      "allSourceBytesPreserved": true,
+      "relocationVerification": {
+        "method": "Extract to unrelated temporary folder, then installed huandeng check <entry>",
+        "runtime": "Editor 0.18.0 bundled core",
+        "readOnly": true,
+        "exitCode": 0,
+        "pageCount": 25,
+        "identityPersisted": true,
+        "diagnosticCount": 0,
+        "errorDiagnostics": 0,
+        "projectBytesUnchanged": true,
+        "temporaryCopyRemoved": true
+      },
+      "excluded": ["desktop.ini"],
+      "reviewStatus": "candidate-with-content-findings"
+    },
+    {
+      "edition": "claude-zh",
+      "projectPath": "examples/huandeng-introduction/claude-zh",
+      "mainPages": 20,
+      "briefPages": 7,
+      "presentations": [
+        {
+          "id": "lab-brief",
+          "title": "组会简版",
+          "pages": 7
+        }
+      ],
+      "sourcePageCountIncludingRetired": 20,
+      "referencedImageFiles": 34,
+      "namedVersionCheckpoints": 20,
+      "pinnedOccurrences": [],
+      "allDocumentAssetAndCheckpointReferencesResolved": true,
+      "allFrozenAssetHashesVerified": true,
+      "exportRevisionsVerified": true,
+      "exports": [
+        {
+          "path": "Exports/deck.pdf",
+          "report": "Exports/deck.pdf.report.json",
+          "kind": "deck",
+          "format": "pdf",
+          "pages": 20,
+          "presentationId": null,
+          "sha256": "01dfa04cc58173caeb00035eb2fb8c594d5594a9809c573bd64b1a70d0a8b0ba",
+          "bytes": 2092678,
+          "manifestRevision": "sha256:6bd9a077ca9c41d65fde4a43907e4baa8944950711abf8f07248da3a61f176ec",
+          "metadataRevision": "sha256:6189d026a16d248e7cb8b338f9818376d4cc933e327db047f3480123ce827041",
+          "pageRevisionsVerified": true
+        },
+        {
+          "path": "Exports/deck.pptx",
+          "report": "Exports/deck.pptx.report.json",
+          "kind": "deck",
+          "format": "pptx",
+          "pages": 20,
+          "presentationId": null,
+          "sha256": "ee9fb535961c4cfae693936194dda8dcf454f9ab5711dd448031e8066d1bcbe6",
+          "bytes": 1857010,
+          "manifestRevision": "sha256:6bd9a077ca9c41d65fde4a43907e4baa8944950711abf8f07248da3a61f176ec",
+          "metadataRevision": "sha256:6189d026a16d248e7cb8b338f9818376d4cc933e327db047f3480123ce827041",
+          "pageRevisionsVerified": true
+        },
+        {
+          "path": "Exports/brief.pdf",
+          "report": "Exports/brief.pdf.report.json",
+          "kind": "brief",
+          "format": "pdf",
+          "pages": 7,
+          "presentationId": "lab-brief",
+          "sha256": "401f5f4a5419dcd467dbf37d4d30e0c9d0cc74c8a34c06a020ad8c9e4d4101fd",
+          "bytes": 940700,
+          "manifestRevision": "sha256:6bd9a077ca9c41d65fde4a43907e4baa8944950711abf8f07248da3a61f176ec",
+          "metadataRevision": "sha256:6189d026a16d248e7cb8b338f9818376d4cc933e327db047f3480123ce827041",
+          "pageRevisionsVerified": true
+        },
+        {
+          "path": "Exports/brief.pptx",
+          "report": "Exports/brief.pptx.report.json",
+          "kind": "brief",
+          "format": "pptx",
+          "pages": 7,
+          "presentationId": "lab-brief",
+          "sha256": "a429e8debdf54c77ff3b9f3f807b72e968d4f1301e5dcc6d60a1ac151d0aa475",
+          "bytes": 680954,
+          "manifestRevision": "sha256:6bd9a077ca9c41d65fde4a43907e4baa8944950711abf8f07248da3a61f176ec",
+          "metadataRevision": "sha256:6189d026a16d248e7cb8b338f9818376d4cc933e327db047f3480123ce827041",
+          "pageRevisionsVerified": true
+        }
+      ],
+      "historicalMachinePathExceptions": [
+        {
+          "path": "evidence/guidance-before-portability.md",
+          "scope": "One original public-project work path is retained only as labelled immutable trial evidence."
+        }
+      ],
+      "nativeCompleted": true,
+      "authorAccepted": false,
+      "referenceScope": "PPTD pages, stable page identities, semantic image/asset fields, Presentation pins and checkpoint asset revisions. Historical prose and citation links are not runtime dependencies.",
+      "zipRoot": "huandeng-claude-zh",
+      "sourceFileCount": 157,
+      "sourceManifest": "SOURCE-MANIFEST.json",
+      "sourceManifestSha256": "0bcaac8cab0495292b8e8d8a84fd476f348993b780a375f471e2ab0fc8a21052",
+      "allSourceBytesPreserved": true,
+      "relocationVerification": {
+        "method": "Extract to unrelated temporary folder, then installed huandeng check <entry>",
+        "runtime": "Editor 0.18.0 bundled core",
+        "readOnly": true,
+        "exitCode": 0,
+        "pageCount": 20,
+        "identityPersisted": true,
+        "diagnosticCount": 0,
+        "errorDiagnostics": 0,
+        "projectBytesUnchanged": true,
+        "temporaryCopyRemoved": true
+      },
+      "excluded": [],
+      "reviewStatus": "candidate-with-content-findings"
+    },
+    {
+      "edition": "deepseek-zh",
+      "projectPath": "examples/huandeng-introduction/deepseek-zh",
+      "mainPages": 18,
+      "briefPages": 11,
+      "presentations": [
+        {
+          "id": "full",
+          "title": "完整介绍",
+          "pages": 18
+        },
+        {
+          "id": "brief",
+          "title": "短版 · 约十分钟",
+          "pages": 11
+        }
+      ],
+      "sourcePageCountIncludingRetired": 41,
+      "referencedImageFiles": 36,
+      "namedVersionCheckpoints": 13,
+      "pinnedOccurrences": [],
+      "allDocumentAssetAndCheckpointReferencesResolved": true,
+      "allFrozenAssetHashesVerified": true,
+      "exportRevisionsVerified": true,
+      "exports": [
+        {
+          "path": "Exports/deck.pdf",
+          "report": "Exports/deck.pdf.report.json",
+          "kind": "deck",
+          "format": "pdf",
+          "pages": 18,
+          "presentationId": null,
+          "sha256": "378fba2a067824602fa9b8ba75382b3f89073160d332f11be7cabf8252d83e3a",
+          "bytes": 2865872,
+          "manifestRevision": "sha256:0c72d800be0dae93d48dea518e49b1a3b8a13072d66f5bff5fb290da1fc2d5a9",
+          "metadataRevision": "sha256:9970277e15198e2af3e36f06b9bcba4977307353ea05602763eb1d12666f427b",
+          "pageRevisionsVerified": true
+        },
+        {
+          "path": "Exports/deck.pptx",
+          "report": "Exports/deck.pptx.report.json",
+          "kind": "deck",
+          "format": "pptx",
+          "pages": 18,
+          "presentationId": null,
+          "sha256": "f66a425dfbefdcedda9a22acd28cab63d27b8c514235661ff2c62bacaa187c9b",
+          "bytes": 2614948,
+          "manifestRevision": "sha256:0c72d800be0dae93d48dea518e49b1a3b8a13072d66f5bff5fb290da1fc2d5a9",
+          "metadataRevision": "sha256:9970277e15198e2af3e36f06b9bcba4977307353ea05602763eb1d12666f427b",
+          "pageRevisionsVerified": true
+        },
+        {
+          "path": "Exports/brief.pdf",
+          "report": "Exports/brief.pdf.report.json",
+          "kind": "brief",
+          "format": "pdf",
+          "pages": 11,
+          "presentationId": "brief",
+          "sha256": "1ea712a66ef40091a200ec1a25f60d6740bae3ed9312158ff4597b94fedf42cf",
+          "bytes": 2219259,
+          "manifestRevision": "sha256:0c72d800be0dae93d48dea518e49b1a3b8a13072d66f5bff5fb290da1fc2d5a9",
+          "metadataRevision": "sha256:9970277e15198e2af3e36f06b9bcba4977307353ea05602763eb1d12666f427b",
+          "pageRevisionsVerified": true
+        },
+        {
+          "path": "Exports/brief.pptx",
+          "report": "Exports/brief.pptx.report.json",
+          "kind": "brief",
+          "format": "pptx",
+          "pages": 11,
+          "presentationId": "brief",
+          "sha256": "300eec34786b6a970dd984c21184d4be538eb0af84041fcbe247bb623b7a1f83",
+          "bytes": 2000978,
+          "manifestRevision": "sha256:0c72d800be0dae93d48dea518e49b1a3b8a13072d66f5bff5fb290da1fc2d5a9",
+          "metadataRevision": "sha256:9970277e15198e2af3e36f06b9bcba4977307353ea05602763eb1d12666f427b",
+          "pageRevisionsVerified": true
+        }
+      ],
+      "historicalMachinePathExceptions": [
+        {
+          "path": "evidence/guidance-before-portability.md",
+          "scope": "One original public-project work path is retained only as labelled immutable trial evidence."
+        }
+      ],
+      "nativeCompleted": true,
+      "authorAccepted": false,
+      "referenceScope": "PPTD pages, stable page identities, semantic image/asset fields, Presentation pins and checkpoint asset revisions. Historical prose and citation links are not runtime dependencies.",
+      "zipRoot": "huandeng-deepseek-zh",
+      "sourceFileCount": 196,
+      "sourceManifest": "SOURCE-MANIFEST.json",
+      "sourceManifestSha256": "98ba7f93d9b1f52e7c69efadf937aa12b71907cd7e56ae81bcf9eecc36edc7ed",
+      "allSourceBytesPreserved": true,
+      "relocationVerification": {
+        "method": "Extract to unrelated temporary folder, then installed huandeng check <entry>",
+        "runtime": "Editor 0.18.0 bundled core",
+        "readOnly": true,
+        "exitCode": 0,
+        "pageCount": 18,
+        "identityPersisted": true,
+        "diagnosticCount": 0,
+        "errorDiagnostics": 0,
+        "projectBytesUnchanged": true,
+        "temporaryCopyRemoved": true
+      },
+      "excluded": ["desktop.ini"],
+      "reviewStatus": "candidate-with-content-findings"
+    },
+    {
+      "edition": "deepseek-en",
+      "projectPath": "examples/huandeng-introduction/deepseek-en",
+      "mainPages": 18,
+      "briefPages": null,
+      "presentations": [],
+      "sourcePageCountIncludingRetired": 18,
+      "referencedImageFiles": 14,
+      "namedVersionCheckpoints": 2,
+      "pinnedOccurrences": [],
+      "allDocumentAssetAndCheckpointReferencesResolved": true,
+      "allFrozenAssetHashesVerified": true,
+      "exportRevisionsVerified": true,
+      "exports": [
+        {
+          "path": "Exports/deck.pdf",
+          "report": "Exports/deck.pdf.report.json",
+          "kind": "deck",
+          "format": "pdf",
+          "pages": 18,
+          "presentationId": null,
+          "sha256": "0604489a25614553a9be5c0739d73921794c3c7c3b89037f7ee26e474c118452",
+          "bytes": 1478136,
+          "manifestRevision": "sha256:677821e04767e8c38b070e6906a22b10e7688ff392e69575a47cbb6b6be5b48b",
+          "metadataRevision": "sha256:09d30e991254589f548012aabea8b4f7dc17d4de5d45964a03175727810dbde4",
+          "pageRevisionsVerified": true
+        },
+        {
+          "path": "Exports/deck.pptx",
+          "report": "Exports/deck.pptx.report.json",
+          "kind": "deck",
+          "format": "pptx",
+          "pages": 18,
+          "presentationId": null,
+          "sha256": "4d02f32bc79805d622c78eb2db8d6e846d17a11caa153bcaf1e6653f74bfe84a",
+          "bytes": 1519124,
+          "manifestRevision": "sha256:677821e04767e8c38b070e6906a22b10e7688ff392e69575a47cbb6b6be5b48b",
+          "metadataRevision": "sha256:09d30e991254589f548012aabea8b4f7dc17d4de5d45964a03175727810dbde4",
+          "pageRevisionsVerified": true
+        }
+      ],
+      "historicalMachinePathExceptions": [
+        {
+          "path": "evidence/guidance-before-portability.md",
+          "scope": "One original public-project work path is retained only as labelled immutable trial evidence."
+        }
+      ],
+      "nativeCompleted": true,
+      "authorAccepted": false,
+      "referenceScope": "PPTD pages, stable page identities, semantic image/asset fields, Presentation pins and checkpoint asset revisions. Historical prose and citation links are not runtime dependencies.",
+      "zipRoot": "huandeng-deepseek-en",
+      "sourceFileCount": 114,
+      "sourceManifest": "SOURCE-MANIFEST.json",
+      "sourceManifestSha256": "1d4f0a771330d8f9cec9b5526bfe38ee1629f4c586b1ddb6134b1b7a5b7b8fee",
+      "allSourceBytesPreserved": true,
+      "relocationVerification": {
+        "method": "Extract to unrelated temporary folder, then installed huandeng check <entry>",
+        "runtime": "Editor 0.18.0 bundled core",
+        "readOnly": true,
+        "exitCode": 0,
+        "pageCount": 18,
+        "identityPersisted": true,
+        "diagnosticCount": 0,
+        "errorDiagnostics": 0,
+        "projectBytesUnchanged": true,
+        "temporaryCopyRemoved": true
+      },
+      "excluded": [],
+      "reviewStatus": "candidate-with-content-findings"
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "huandeng-chatgpt-zh.zip",
+      "sha256": "fb7877f069123b8ae73417dcb243ce0b9af5cc085bf0472a9adde32534321517",
+      "bytes": 41649239,
+      "fileCount": 287,
+      "uncompressedBytes": 45101381,
+      "crcVerified": true,
+      "entryHashesVerified": true,
+      "deterministicEntryMetadata": true,
+      "project": "chatgpt-zh",
+      "kind": "zip",
+      "pages": 27,
+      "url": "https://github.com/JaytonKogeru/huandeng/releases/download/plugin-v0.18.3/huandeng-chatgpt-zh.zip"
+    },
+    {
+      "file": "huandeng-chatgpt-zh.pdf",
+      "sha256": "56d540bbd353c6e34c030b88f71d95a4641744b2e791aff0321f88dbcca1fe8c",
+      "bytes": 3927264,
+      "project": "chatgpt-zh",
+      "kind": "pdf",
+      "sequence": "Main",
+      "pages": 27,
+      "url": "https://github.com/JaytonKogeru/huandeng/releases/download/plugin-v0.18.3/huandeng-chatgpt-zh.pdf"
+    },
+    {
+      "file": "huandeng-chatgpt-zh.pptx",
+      "sha256": "5f11dc887f6f5730dc39f840f4615c021bfa8249a8a15de35297d7139b04b91f",
+      "bytes": 4136276,
+      "project": "chatgpt-zh",
+      "kind": "pptx",
+      "sequence": "Main",
+      "pages": 27,
+      "url": "https://github.com/JaytonKogeru/huandeng/releases/download/plugin-v0.18.3/huandeng-chatgpt-zh.pptx"
+    },
+    {
+      "file": "huandeng-chatgpt-zh-brief.pdf",
+      "sha256": "17a2e7e689c40675526f94be12fdf91bb4787fd890326141f5b9292c61974ef7",
+      "bytes": 2942851,
+      "project": "chatgpt-zh",
+      "kind": "pdf",
+      "sequence": "Presentation brief",
+      "pages": 13,
+      "url": "https://github.com/JaytonKogeru/huandeng/releases/download/plugin-v0.18.3/huandeng-chatgpt-zh-brief.pdf"
+    },
+    {
+      "file": "huandeng-chatgpt-zh-brief.pptx",
+      "sha256": "c608f311081fbbb41ea609434c84df5a24a1e4672da0efd929d783b4e03f5fd2",
+      "bytes": 3066994,
+      "project": "chatgpt-zh",
+      "kind": "pptx",
+      "sequence": "Presentation brief",
+      "pages": 13,
+      "url": "https://github.com/JaytonKogeru/huandeng/releases/download/plugin-v0.18.3/huandeng-chatgpt-zh-brief.pptx"
+    },
+    {
+      "file": "huandeng-chatgpt-en.zip",
+      "sha256": "116f13d96c3c2c0e74d2deb76ae016ff6b7a8cef34628d2b9b1f65b07de05d94",
+      "bytes": 37603631,
+      "fileCount": 279,
+      "uncompressedBytes": 40870935,
+      "crcVerified": true,
+      "entryHashesVerified": true,
+      "deterministicEntryMetadata": true,
+      "project": "chatgpt-en",
+      "kind": "zip",
+      "pages": 27,
+      "url": "https://github.com/JaytonKogeru/huandeng/releases/download/plugin-v0.18.3/huandeng-chatgpt-en.zip"
+    },
+    {
+      "file": "huandeng-chatgpt-en.pdf",
+      "sha256": "a5d12f748e91e5775e09712baeb59792f705a7b290e34de98714e2985e0592a2",
+      "bytes": 3514787,
+      "project": "chatgpt-en",
+      "kind": "pdf",
+      "sequence": "Main",
+      "pages": 27,
+      "url": "https://github.com/JaytonKogeru/huandeng/releases/download/plugin-v0.18.3/huandeng-chatgpt-en.pdf"
+    },
+    {
+      "file": "huandeng-chatgpt-en.pptx",
+      "sha256": "4288ec1edcb9decf5969cf88f32bfb7579c8e0bf43cd59ec6464d85b6f997519",
+      "bytes": 3801831,
+      "project": "chatgpt-en",
+      "kind": "pptx",
+      "sequence": "Main",
+      "pages": 27,
+      "url": "https://github.com/JaytonKogeru/huandeng/releases/download/plugin-v0.18.3/huandeng-chatgpt-en.pptx"
+    },
+    {
+      "file": "huandeng-chatgpt-en-brief.pdf",
+      "sha256": "92c90bb1dde8f8a8c1bae43e741deb87e6223d766937b163dc08d70b1fec906e",
+      "bytes": 2595468,
+      "project": "chatgpt-en",
+      "kind": "pdf",
+      "sequence": "Presentation brief",
+      "pages": 13,
+      "url": "https://github.com/JaytonKogeru/huandeng/releases/download/plugin-v0.18.3/huandeng-chatgpt-en-brief.pdf"
+    },
+    {
+      "file": "huandeng-chatgpt-en-brief.pptx",
+      "sha256": "74eddf34711ae83670517ec89363b0787b0513b84b5af43a0159fd1c3bf5f72e",
+      "bytes": 2768468,
+      "project": "chatgpt-en",
+      "kind": "pptx",
+      "sequence": "Presentation brief",
+      "pages": 13,
+      "url": "https://github.com/JaytonKogeru/huandeng/releases/download/plugin-v0.18.3/huandeng-chatgpt-en-brief.pptx"
+    },
+    {
+      "file": "huandeng-claude-en.zip",
+      "sha256": "76389ef826cb7077453c1802b56365a206410fb2ed53da195d29abf90d0cade8",
+      "bytes": 31503095,
+      "fileCount": 307,
+      "uncompressedBytes": 35436506,
+      "crcVerified": true,
+      "entryHashesVerified": true,
+      "deterministicEntryMetadata": true,
+      "project": "claude-en",
+      "kind": "zip",
+      "pages": 25,
+      "url": "https://github.com/JaytonKogeru/huandeng/releases/download/plugin-v0.18.3/huandeng-claude-en.zip"
+    },
+    {
+      "file": "huandeng-claude-en.pdf",
+      "sha256": "ae424d2b8f7e761c788f7f66b3ba4de38845293f35c6341d99543336fd34437b",
+      "bytes": 3550842,
+      "project": "claude-en",
+      "kind": "pdf",
+      "sequence": "Main",
+      "pages": 25,
+      "url": "https://github.com/JaytonKogeru/huandeng/releases/download/plugin-v0.18.3/huandeng-claude-en.pdf"
+    },
+    {
+      "file": "huandeng-claude-en.pptx",
+      "sha256": "f6fab1ba504cca99aeec15ed9064cbe72f1c4eac3e65d0a9bfd9152172e6b22f",
+      "bytes": 3594973,
+      "project": "claude-en",
+      "kind": "pptx",
+      "sequence": "Main",
+      "pages": 25,
+      "url": "https://github.com/JaytonKogeru/huandeng/releases/download/plugin-v0.18.3/huandeng-claude-en.pptx"
+    },
+    {
+      "file": "huandeng-claude-en-brief.pdf",
+      "sha256": "4bb008f05851d015b299561048447bd8d8d05b0603759f952dab44acd36023cd",
+      "bytes": 1114071,
+      "project": "claude-en",
+      "kind": "pdf",
+      "sequence": "Presentation brief",
+      "pages": 9,
+      "url": "https://github.com/JaytonKogeru/huandeng/releases/download/plugin-v0.18.3/huandeng-claude-en-brief.pdf"
+    },
+    {
+      "file": "huandeng-claude-en-brief.pptx",
+      "sha256": "91731e3fac535ecdaa192ecf9b200d4101431b79dc01443fedd1cf231fe14263",
+      "bytes": 998807,
+      "project": "claude-en",
+      "kind": "pptx",
+      "sequence": "Presentation brief",
+      "pages": 9,
+      "url": "https://github.com/JaytonKogeru/huandeng/releases/download/plugin-v0.18.3/huandeng-claude-en-brief.pptx"
+    },
+    {
+      "file": "huandeng-claude-zh.zip",
+      "sha256": "716cd2254c1e50956f9bc22860643be2122fcd4bc9e3051d7f67ddf89266dee1",
+      "bytes": 20205565,
+      "fileCount": 157,
+      "uncompressedBytes": 22643281,
+      "crcVerified": true,
+      "entryHashesVerified": true,
+      "deterministicEntryMetadata": true,
+      "project": "claude-zh",
+      "kind": "zip",
+      "pages": 20,
+      "url": "https://github.com/JaytonKogeru/huandeng/releases/download/plugin-v0.18.3/huandeng-claude-zh.zip"
+    },
+    {
+      "file": "huandeng-claude-zh.pdf",
+      "sha256": "01dfa04cc58173caeb00035eb2fb8c594d5594a9809c573bd64b1a70d0a8b0ba",
+      "bytes": 2092678,
+      "project": "claude-zh",
+      "kind": "pdf",
+      "sequence": "Main",
+      "pages": 20,
+      "url": "https://github.com/JaytonKogeru/huandeng/releases/download/plugin-v0.18.3/huandeng-claude-zh.pdf"
+    },
+    {
+      "file": "huandeng-claude-zh.pptx",
+      "sha256": "ee9fb535961c4cfae693936194dda8dcf454f9ab5711dd448031e8066d1bcbe6",
+      "bytes": 1857010,
+      "project": "claude-zh",
+      "kind": "pptx",
+      "sequence": "Main",
+      "pages": 20,
+      "url": "https://github.com/JaytonKogeru/huandeng/releases/download/plugin-v0.18.3/huandeng-claude-zh.pptx"
+    },
+    {
+      "file": "huandeng-claude-zh-brief.pdf",
+      "sha256": "401f5f4a5419dcd467dbf37d4d30e0c9d0cc74c8a34c06a020ad8c9e4d4101fd",
+      "bytes": 940700,
+      "project": "claude-zh",
+      "kind": "pdf",
+      "sequence": "Presentation brief",
+      "pages": 7,
+      "url": "https://github.com/JaytonKogeru/huandeng/releases/download/plugin-v0.18.3/huandeng-claude-zh-brief.pdf"
+    },
+    {
+      "file": "huandeng-claude-zh-brief.pptx",
+      "sha256": "a429e8debdf54c77ff3b9f3f807b72e968d4f1301e5dcc6d60a1ac151d0aa475",
+      "bytes": 680954,
+      "project": "claude-zh",
+      "kind": "pptx",
+      "sequence": "Presentation brief",
+      "pages": 7,
+      "url": "https://github.com/JaytonKogeru/huandeng/releases/download/plugin-v0.18.3/huandeng-claude-zh-brief.pptx"
+    },
+    {
+      "file": "huandeng-deepseek-zh.zip",
+      "sha256": "c9d45b401a7f90d4ef6997f22d8404f5715ce4c8d1834bef491af0d2e55960d6",
+      "bytes": 29122158,
+      "fileCount": 196,
+      "uncompressedBytes": 32425404,
+      "crcVerified": true,
+      "entryHashesVerified": true,
+      "deterministicEntryMetadata": true,
+      "project": "deepseek-zh",
+      "kind": "zip",
+      "pages": 18,
+      "url": "https://github.com/JaytonKogeru/huandeng/releases/download/plugin-v0.18.3/huandeng-deepseek-zh.zip"
+    },
+    {
+      "file": "huandeng-deepseek-zh.pdf",
+      "sha256": "378fba2a067824602fa9b8ba75382b3f89073160d332f11be7cabf8252d83e3a",
+      "bytes": 2865872,
+      "project": "deepseek-zh",
+      "kind": "pdf",
+      "sequence": "Main",
+      "pages": 18,
+      "url": "https://github.com/JaytonKogeru/huandeng/releases/download/plugin-v0.18.3/huandeng-deepseek-zh.pdf"
+    },
+    {
+      "file": "huandeng-deepseek-zh.pptx",
+      "sha256": "f66a425dfbefdcedda9a22acd28cab63d27b8c514235661ff2c62bacaa187c9b",
+      "bytes": 2614948,
+      "project": "deepseek-zh",
+      "kind": "pptx",
+      "sequence": "Main",
+      "pages": 18,
+      "url": "https://github.com/JaytonKogeru/huandeng/releases/download/plugin-v0.18.3/huandeng-deepseek-zh.pptx"
+    },
+    {
+      "file": "huandeng-deepseek-zh-brief.pdf",
+      "sha256": "1ea712a66ef40091a200ec1a25f60d6740bae3ed9312158ff4597b94fedf42cf",
+      "bytes": 2219259,
+      "project": "deepseek-zh",
+      "kind": "pdf",
+      "sequence": "Presentation brief",
+      "pages": 11,
+      "url": "https://github.com/JaytonKogeru/huandeng/releases/download/plugin-v0.18.3/huandeng-deepseek-zh-brief.pdf"
+    },
+    {
+      "file": "huandeng-deepseek-zh-brief.pptx",
+      "sha256": "300eec34786b6a970dd984c21184d4be538eb0af84041fcbe247bb623b7a1f83",
+      "bytes": 2000978,
+      "project": "deepseek-zh",
+      "kind": "pptx",
+      "sequence": "Presentation brief",
+      "pages": 11,
+      "url": "https://github.com/JaytonKogeru/huandeng/releases/download/plugin-v0.18.3/huandeng-deepseek-zh-brief.pptx"
+    },
+    {
+      "file": "huandeng-deepseek-en.zip",
+      "sha256": "9c6256fe27c4c3e4388b1796629cd533ba3d70eca067e422f8c573a8bf81de02",
+      "bytes": 15463048,
+      "fileCount": 114,
+      "uncompressedBytes": 17263063,
+      "crcVerified": true,
+      "entryHashesVerified": true,
+      "deterministicEntryMetadata": true,
+      "project": "deepseek-en",
+      "kind": "zip",
+      "pages": 18,
+      "url": "https://github.com/JaytonKogeru/huandeng/releases/download/plugin-v0.18.3/huandeng-deepseek-en.zip"
+    },
+    {
+      "file": "huandeng-deepseek-en.pdf",
+      "sha256": "0604489a25614553a9be5c0739d73921794c3c7c3b89037f7ee26e474c118452",
+      "bytes": 1478136,
+      "project": "deepseek-en",
+      "kind": "pdf",
+      "sequence": "Main",
+      "pages": 18,
+      "url": "https://github.com/JaytonKogeru/huandeng/releases/download/plugin-v0.18.3/huandeng-deepseek-en.pdf"
+    },
+    {
+      "file": "huandeng-deepseek-en.pptx",
+      "sha256": "4d02f32bc79805d622c78eb2db8d6e846d17a11caa153bcaf1e6653f74bfe84a",
+      "bytes": 1519124,
+      "project": "deepseek-en",
+      "kind": "pptx",
+      "sequence": "Main",
+      "pages": 18,
+      "url": "https://github.com/JaytonKogeru/huandeng/releases/download/plugin-v0.18.3/huandeng-deepseek-en.pptx"
+    },
+    {
+      "file": "HUANDENG-0.18.3-plugin.zip",
+      "sha256": "846041eacf9d179b574eaf1aa7eff9fdc008f69fcd3bbab48c8372e4c527e147",
+      "bytes": 213850,
+      "fileCount": 24,
+      "uncompressedBytes": 269596,
+      "crcVerified": true,
+      "entryHashesVerified": true,
+      "deterministicEntryMetadata": true,
+      "kind": "plugin-zip",
+      "pluginVersion": "0.18.3",
+      "purpose": "Portable plugin root for explicit native client loading or configuration",
+      "privateBindingIncluded": false,
+      "workstationPatchIncluded": false,
+      "url": "https://github.com/JaytonKogeru/huandeng/releases/download/plugin-v0.18.3/HUANDENG-0.18.3-plugin.zip"
+    },
+    {
+      "file": "HUANDENG-0.18.3-native-marketplace.zip",
+      "sha256": "41f20012864db5e8f29020fa7830da994e0a032a06a7cb8914df1b3b6282899c",
+      "bytes": 215299,
+      "fileCount": 26,
+      "uncompressedBytes": 270320,
+      "crcVerified": true,
+      "entryHashesVerified": true,
+      "deterministicEntryMetadata": true,
+      "kind": "plugin-zip",
+      "pluginVersion": "0.18.3",
+      "purpose": "Single local catalog for supported Codex and Claude marketplace installation",
+      "privateBindingIncluded": false,
+      "workstationPatchIncluded": false,
+      "url": "https://github.com/JaytonKogeru/huandeng/releases/download/plugin-v0.18.3/HUANDENG-0.18.3-native-marketplace.zip"
+    }
+  ],
+  "mainPages": 135,
+  "briefPages": 53,
+  "existingBriefSequences": 5,
+  "officeReview": {
+    "mainPagesRendered": 135,
+    "rootFinalChineseRechecks": [16, 23],
+    "rootBriefPinRechecks": {
+      "chatgpt-en": [10],
+      "chatgpt-zh": [10]
+    },
+    "evidence": "review-summary.json"
+  },
+  "nativeTrialPolicy": "Retain native authored source and Main exports. Coordinator exports only three existing brief sequences; no aesthetic or narrative redo.",
+  "pluginEvidence": "plugin-validation.json",
+  "releaseGates": "release-gates.json",
+  "sourceInventory": "portable-projects.json",
+  "gitSourcePolicy": "Editable source, metadata, retained pages, named versions and sources are tracked. Generated Exports are in release assets and complete project ZIPs.",
+  "sourceTagPolicy": "The tag pins this manifest and its source. The manifest does not include its own digest."
+}

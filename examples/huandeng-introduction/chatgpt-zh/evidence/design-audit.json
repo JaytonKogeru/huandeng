@@ -1,0 +1,1819 @@
+{
+  "schemaVersion": 1,
+  "deckId": "5e3ba52f-b72f-4326-98f5-20ae2e8cd59a",
+  "presentationId": "introduction-full",
+  "revisions": {
+    "manifest": "sha256:5ed092812df99b696cd1a016e2f10a11f2100a25100c314038c6da6d58fdd90d",
+    "metadata": "sha256:5898fb966bf07e0f8d99ae22d08cdb9b94b6b5974ed15b12d4e7ddee7a9ad8dc",
+    "guidance": "sha256:06a15a9a55e0099b8c19c4768ea5c7fdca69db39557603a3ed431d4f0f18ac05"
+  },
+  "language": "zh-CN",
+  "pageCount": 27,
+  "backgrounds": [
+    {
+      "color": "#e4ece6",
+      "count": 10
+    },
+    {
+      "color": "#f7f5ef",
+      "count": 15
+    },
+    {
+      "color": "#eee9dd",
+      "count": 2
+    }
+  ],
+  "pages": [
+    {
+      "pageId": "7995de62-e81e-46db-b250-cabc66a99b28",
+      "occurrenceId": "introduction-full:full-0:7995de62-e81e-46db-b250-cabc66a99b28",
+      "pageRevision": "sha256:29d0d4b605c79053a6158e7730dfa73ce976ce1d666061a184fb20314c2ec1c3",
+      "renderRevision": "sha256:3a52fbd98f96fdc1e9dbb7e3e6200e9e871b92f5112ea1c1b9eca755861e60e4",
+      "elementsTruncated": false,
+      "position": 1,
+      "title": "HUANDENG",
+      "pageRole": "cover",
+      "titleOnly": false,
+      "background": "#e4ece6",
+      "textCharacters": 47,
+      "text": [
+        {
+          "elementId": "brand",
+          "role": "title",
+          "fontSize": 37,
+          "normalizedSize": 37,
+          "bold": false
+        },
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 30,
+          "normalizedSize": 30,
+          "bold": false
+        },
+        {
+          "elementId": "cover-copy",
+          "role": "body",
+          "fontSize": 18,
+          "normalizedSize": 18,
+          "bold": false
+        },
+        {
+          "elementId": "edition",
+          "role": "body",
+          "fontSize": 12,
+          "normalizedSize": 12,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "product-mark",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 2.33
+        },
+        {
+          "elementId": "editor-cover",
+          "source": "media/imported/675167a0b82813c8f43297d5e8823b0788e05a2ffd0e546c3d53b0fab94a61e5.png",
+          "status": "measured",
+          "sampling": 4.26
+        }
+      ]
+    },
+    {
+      "pageId": "49c12ba5-6503-4051-83dd-05cbfa96a5f7",
+      "occurrenceId": "introduction-full:introduction-full-story-19:49c12ba5-6503-4051-83dd-05cbfa96a5f7",
+      "pageRevision": "sha256:a22f10588e5bcf4b3c559eb79d62def4da43393227e61cdece5bfe78cdf4c274",
+      "renderRevision": "sha256:93f7e7d27ce073fa45aafd96a0046730b1f853445117a2f082575cfca1114ee6",
+      "elementsTruncated": false,
+      "position": 2,
+      "title": "我仍然想让 Agent 帮我做 slides",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#f7f5ef",
+      "textCharacters": 120,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 28,
+          "normalizedSize": 28,
+          "bold": false
+        },
+        {
+          "elementId": "foot",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        },
+        {
+          "elementId": "lead",
+          "role": "body",
+          "fontSize": 26,
+          "normalizedSize": 26,
+          "bold": false
+        },
+        {
+          "elementId": "thought",
+          "role": "body",
+          "fontSize": 21,
+          "normalizedSize": 21,
+          "bold": false
+        },
+        {
+          "elementId": "example-caption",
+          "role": "body",
+          "fontSize": 15,
+          "normalizedSize": 15,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "brand-small",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 10.84
+        },
+        {
+          "elementId": "thumb-1",
+          "source": "media/imported/807c002590eb9ae0dee437e1ddbc5f54048975bc805ce5ae15660adf39cbaa22.png",
+          "status": "measured",
+          "sampling": 2.62
+        }
+      ]
+    },
+    {
+      "pageId": "f240e310-6466-4b7f-82ff-4b2668e2802c",
+      "occurrenceId": "introduction-full:introduction-full-story-20:f240e310-6466-4b7f-82ff-4b2668e2802c",
+      "pageRevision": "sha256:709183aba3462ec9b76c70910601c1bdb8448cbee738487c4c74152175a0a7e6",
+      "renderRevision": "sha256:bf2adf67507f5de6af87b4f5a25658fe79f632cbd2d6cf32cac37fe1af7ed0e6",
+      "elementsTruncated": false,
+      "position": 3,
+      "title": "在组会上，大家一眼就认出来了",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#f7f5ef",
+      "textCharacters": 94,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 28,
+          "normalizedSize": 28,
+          "bold": false
+        },
+        {
+          "elementId": "foot",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        },
+        {
+          "elementId": "account",
+          "role": "body",
+          "fontSize": 24,
+          "normalizedSize": 24,
+          "bold": false
+        },
+        {
+          "elementId": "reflection",
+          "role": "body",
+          "fontSize": 13,
+          "normalizedSize": 13,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "brand-small",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 10.84
+        },
+        {
+          "elementId": "earlier-science",
+          "source": "media/imported/e2d699f5a9b8e98977c868cc97f8cb9918567ffecbae4817def39a7fb011ec09.png",
+          "status": "measured",
+          "sampling": 2.89
+        },
+        {
+          "elementId": "earlier-workflow",
+          "source": "media/imported/407df47ae7ba47cce90a8ef6e230cc3302161d2d430a6eddbdbc0e8dacdbfaaa.png",
+          "status": "measured",
+          "sampling": 2.81
+        }
+      ]
+    },
+    {
+      "pageId": "1dc23de8-b351-483b-a93a-f02c0444a927",
+      "occurrenceId": "introduction-full:introduction-full-story-21:1dc23de8-b351-483b-a93a-f02c0444a927",
+      "pageRevision": "sha256:dcb6aaad407fe1856d16c5b6dacc9741bae8dfae983c3a93329c174b27381622",
+      "renderRevision": "sha256:c2db4498da5d75bb2fcb8903975acf74f8f360e17f8b3bea52a1c5ae96a3dbd4",
+      "elementsTruncated": false,
+      "position": 4,
+      "title": "五十页里改两页，为什么又多一套？",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#f7f5ef",
+      "textCharacters": 137,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 28,
+          "normalizedSize": 28,
+          "bold": false
+        },
+        {
+          "elementId": "foot",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        },
+        {
+          "elementId": "request",
+          "role": "body",
+          "fontSize": 25,
+          "normalizedSize": 25,
+          "bold": false
+        },
+        {
+          "elementId": "copies",
+          "role": "body",
+          "fontSize": 22,
+          "normalizedSize": 22,
+          "bold": false
+        },
+        {
+          "elementId": "decision",
+          "role": "body",
+          "fontSize": 23,
+          "normalizedSize": 23,
+          "bold": false
+        },
+        {
+          "elementId": "illustration-note",
+          "role": "body",
+          "fontSize": 12,
+          "normalizedSize": 12,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "brand-small",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 10.84
+        }
+      ]
+    },
+    {
+      "pageId": "1f6289fd-1d4c-4a03-a74d-4bc4955de868",
+      "occurrenceId": "introduction-full:introduction-full-story-22:1f6289fd-1d4c-4a03-a74d-4bc4955de868",
+      "pageRevision": "sha256:4c9ad8e30e1432d2631ec4b136e4a59556c747dcd0cd3d948dd65100217a64db",
+      "renderRevision": "sha256:0a8f6038d1aa794d046f49465ce72731f72e16a72d716b385e254b401d31ae5f",
+      "elementsTruncated": false,
+      "position": 5,
+      "title": "截图能看效果，修改还需要结构",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#f7f5ef",
+      "textCharacters": 81,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 28,
+          "normalizedSize": 28,
+          "bold": false
+        },
+        {
+          "elementId": "foot",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        },
+        {
+          "elementId": "structure",
+          "role": "body",
+          "fontSize": 21,
+          "normalizedSize": 21,
+          "bold": false
+        },
+        {
+          "elementId": "judgment",
+          "role": "body",
+          "fontSize": 18,
+          "normalizedSize": 18,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "brand-small",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 10.84
+        },
+        {
+          "elementId": "editor-native-chart",
+          "source": "media/imported/675167a0b82813c8f43297d5e8823b0788e05a2ffd0e546c3d53b0fab94a61e5.png",
+          "status": "measured",
+          "sampling": 4.44
+        }
+      ]
+    },
+    {
+      "pageId": "c91c3fe3-836f-492f-882d-905bd4d08a9b",
+      "occurrenceId": "introduction-full:introduction-full-story-23:c91c3fe3-836f-492f-882d-905bd4d08a9b",
+      "pageRevision": "sha256:3fb41c3fc6b05366b70d2591f7dadc5aff8e6c488cde31bef60cc8e6d4b19f92",
+      "renderRevision": "sha256:1850bac1168f6e078fa3bccda0371d8b823570d5f9d91730cdf62f29520c0282",
+      "elementsTruncated": false,
+      "position": 6,
+      "title": "所以，我想先把故事讲出来",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#e4ece6",
+      "textCharacters": 93,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 28,
+          "normalizedSize": 28,
+          "bold": false
+        },
+        {
+          "elementId": "foot",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        },
+        {
+          "elementId": "spoken",
+          "role": "body",
+          "fontSize": 29,
+          "normalizedSize": 29,
+          "bold": false
+        },
+        {
+          "elementId": "account-flow",
+          "role": "body",
+          "fontSize": 23,
+          "normalizedSize": 23,
+          "bold": false
+        },
+        {
+          "elementId": "quote-source",
+          "role": "body",
+          "fontSize": 13,
+          "normalizedSize": 13,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "brand-small",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 10.84
+        }
+      ]
+    },
+    {
+      "pageId": "bd3c71d1-360e-4e0c-bbb6-5938970e8876",
+      "occurrenceId": "introduction-full:full-17:bd3c71d1-360e-4e0c-bbb6-5938970e8876",
+      "pageRevision": "sha256:f7e54d26c43a1cd402c79cc21ea7311aa3a773f83a3a73ad81bfa5ca188d03d0",
+      "renderRevision": "sha256:2cd8fb610cf9bcef6e7569900532a637f67f46018b39d141f54e987e8a291e8e",
+      "elementsTruncated": false,
+      "position": 7,
+      "title": "我把这些已有的思路接在一起",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#e4ece6",
+      "textCharacters": 210,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 28,
+          "normalizedSize": 28,
+          "bold": false
+        },
+        {
+          "elementId": "foot",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        },
+        {
+          "elementId": "origins",
+          "role": "body",
+          "fontSize": 19,
+          "normalizedSize": 19,
+          "bold": false
+        },
+        {
+          "elementId": "specific-credits",
+          "role": "body",
+          "fontSize": 14,
+          "normalizedSize": 14,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "brand-small",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 10.84
+        },
+        {
+          "elementId": "upstream-mark",
+          "source": "media/imported/44e2a2aa5f3887deae386fa73f71234961f93e006873b632ccf38b6b6f1291a1.png",
+          "status": "measured",
+          "sampling": 3.94
+        }
+      ]
+    },
+    {
+      "pageId": "b55179ed-446c-42a7-a2d5-2557defac052",
+      "occurrenceId": "introduction-full:full-2:b55179ed-446c-42a7-a2d5-2557defac052",
+      "pageRevision": "sha256:9771ae4da10e5c1c4a0b12142c9e6d59000282b73ecc9783b9333545708de9f6",
+      "renderRevision": "sha256:3b866dd7c3195bac3c15e9fb183bea0cea3d4f9680577d70a78bec65a2e67de0",
+      "elementsTruncated": false,
+      "position": 8,
+      "title": "一页的身份",
+      "pageRole": "section",
+      "titleOnly": true,
+      "background": "#e4ece6",
+      "textCharacters": 5,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 34,
+          "normalizedSize": 34,
+          "bold": false
+        }
+      ],
+      "images": []
+    },
+    {
+      "pageId": "137e3366-b18f-4c91-a67c-6cd2e0e64881",
+      "occurrenceId": "introduction-full:introduction-full-story-24:137e3366-b18f-4c91-a67c-6cd2e0e64881",
+      "pageRevision": "sha256:83f4b2a2c2a3f44c7481e48c3f0876e584b4cc11244e2514022be1c46a300e2c",
+      "renderRevision": "sha256:b1284adc493ba3a0f57210c4b190ed96f3032a98ef010d53dc496fc9d854d93e",
+      "elementsTruncated": false,
+      "position": 9,
+      "title": "PPTX 里面，本来就有页面",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#f7f5ef",
+      "textCharacters": 228,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 28,
+          "normalizedSize": 28,
+          "bold": false
+        },
+        {
+          "elementId": "foot",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        },
+        {
+          "elementId": "pptx-label",
+          "role": "body",
+          "fontSize": 24,
+          "normalizedSize": 24,
+          "bold": false
+        },
+        {
+          "elementId": "pptx-parts",
+          "role": "body",
+          "fontSize": 19,
+          "normalizedSize": 19,
+          "bold": false
+        },
+        {
+          "elementId": "pptd-label",
+          "role": "body",
+          "fontSize": 23,
+          "normalizedSize": 23,
+          "bold": false
+        },
+        {
+          "elementId": "pptd-parts",
+          "role": "body",
+          "fontSize": 20,
+          "normalizedSize": 20,
+          "bold": false
+        },
+        {
+          "elementId": "format-point",
+          "role": "body",
+          "fontSize": 20,
+          "normalizedSize": 20,
+          "bold": false
+        },
+        {
+          "elementId": "format-source",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "brand-small",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 10.84
+        }
+      ]
+    },
+    {
+      "pageId": "503c86ce-673c-4229-9251-22114e5f5da9",
+      "occurrenceId": "introduction-full:full-16:503c86ce-673c-4229-9251-22114e5f5da9",
+      "pageRevision": "sha256:e610bfcefcab9ac111eb3727e9414690c6fcd4bf2ed892c442abb703c20ed421",
+      "renderRevision": "sha256:a9a286ea374f087b1b470883d0ed1ddb2a63d7832a8da6977157d90e43b66957",
+      "elementsTruncated": false,
+      "position": 10,
+      "title": "打开一个目录，继续同一份工作",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#eee9dd",
+      "textCharacters": 71,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 28,
+          "normalizedSize": 28,
+          "bold": false
+        },
+        {
+          "elementId": "entry",
+          "role": "body",
+          "fontSize": 31,
+          "normalizedSize": 31,
+          "bold": false
+        },
+        {
+          "elementId": "folder-copy",
+          "role": "body",
+          "fontSize": 20,
+          "normalizedSize": 20,
+          "bold": false
+        },
+        {
+          "elementId": "foot",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "brand-small",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 10.84
+        }
+      ]
+    },
+    {
+      "pageId": "129dfdc6-685d-48b4-972b-abff11f823e6",
+      "occurrenceId": "introduction-full:full-13:129dfdc6-685d-48b4-972b-abff11f823e6",
+      "pageRevision": "sha256:0588891a93b4d11e31a5119acb056a4cfe13f98184d58d90fedca833563ea3d7",
+      "renderRevision": "sha256:13e9f73d05f61563fd4c9344bf6da2f9fb953c12397f267888f5aedaba40bc7d",
+      "elementsTruncated": false,
+      "position": 11,
+      "title": "先说清楚，我们改的是哪一页",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#f7f5ef",
+      "textCharacters": 80,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 28,
+          "normalizedSize": 28,
+          "bold": false
+        },
+        {
+          "elementId": "foot",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        },
+        {
+          "elementId": "identity-copy",
+          "role": "body",
+          "fontSize": 20,
+          "normalizedSize": 20,
+          "bold": false
+        },
+        {
+          "elementId": "identity-takeaway",
+          "role": "body",
+          "fontSize": 19,
+          "normalizedSize": 19,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "brand-small",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 10.84
+        },
+        {
+          "elementId": "thumb-1",
+          "source": "media/imported/807c002590eb9ae0dee437e1ddbc5f54048975bc805ce5ae15660adf39cbaa22.png",
+          "status": "measured",
+          "sampling": 3.2
+        }
+      ]
+    },
+    {
+      "pageId": "ea528c6a-2423-488d-834b-056322cca744",
+      "occurrenceId": "introduction-full:full-10:ea528c6a-2423-488d-834b-056322cca744",
+      "pageRevision": "sha256:7b0165858d5fc9b0089c43e660a4e18ea4a5f436f0e32321847c4a516c036d96",
+      "renderRevision": "sha256:4177ef7b1fcdc3960c60727f56c4ebfe4e93f4232b93e07c1e4b7fc9f0e663ce",
+      "elementsTruncated": false,
+      "position": 12,
+      "title": "把历史留在这一页",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#f7f5ef",
+      "textCharacters": 90,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 28,
+          "normalizedSize": 28,
+          "bold": false
+        },
+        {
+          "elementId": "foot",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        },
+        {
+          "elementId": "history-story",
+          "role": "body",
+          "fontSize": 22,
+          "normalizedSize": 22,
+          "bold": false
+        },
+        {
+          "elementId": "history-source",
+          "role": "body",
+          "fontSize": 13,
+          "normalizedSize": 13,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "brand-small",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 10.84
+        },
+        {
+          "elementId": "versions-detail",
+          "source": "media/imported/24e7314c2324f71ccec2c6fe5827542fc861ac8549c249ae9a790ca08c198c83.png",
+          "status": "measured",
+          "sampling": 1.15
+        }
+      ]
+    },
+    {
+      "pageId": "def43d68-1767-45f5-800a-17d648750b7e",
+      "occurrenceId": "introduction-full:full-6:def43d68-1767-45f5-800a-17d648750b7e",
+      "pageRevision": "sha256:d0181e45f430f2d40c6d5f42865e7487304eb9e6b24ff73ee0847028f86b3778",
+      "renderRevision": "sha256:c72794a874ef96853aff9c1619c42236dd24bdd0202d86e3e628af408ad3e1b2",
+      "elementsTruncated": false,
+      "position": 13,
+      "title": "让故事留在编辑里",
+      "pageRole": "section",
+      "titleOnly": true,
+      "background": "#e4ece6",
+      "textCharacters": 8,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 34,
+          "normalizedSize": 34,
+          "bold": false
+        }
+      ],
+      "images": []
+    },
+    {
+      "pageId": "3483b895-bc52-43b6-a7c4-001a0d1e4526",
+      "occurrenceId": "introduction-full:full-3:3483b895-bc52-43b6-a7c4-001a0d1e4526",
+      "pageRevision": "sha256:828397e43ab2ef0fdc84915bd89f7d7d522127ecdee61e8ba811a68ceb140cd1",
+      "renderRevision": "sha256:3d46a55d724aae7c493515df3be8a67c25d15dca74fda2f6b617e0e4cb8b83f9",
+      "elementsTruncated": false,
+      "position": 14,
+      "title": "人和 Agent，都回到这个编辑器",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#f7f5ef",
+      "textCharacters": 87,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 28,
+          "normalizedSize": 28,
+          "bold": false
+        },
+        {
+          "elementId": "foot",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        },
+        {
+          "elementId": "editor-copy",
+          "role": "body",
+          "fontSize": 17,
+          "normalizedSize": 17,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "brand-small",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 10.84
+        },
+        {
+          "elementId": "editor-native-chart",
+          "source": "media/imported/675167a0b82813c8f43297d5e8823b0788e05a2ffd0e546c3d53b0fab94a61e5.png",
+          "status": "measured",
+          "sampling": 3.8
+        }
+      ]
+    },
+    {
+      "pageId": "05cd8517-c8ac-4e12-b2d0-40c438b91042",
+      "occurrenceId": "introduction-full:full-7:05cd8517-c8ac-4e12-b2d0-40c438b91042",
+      "pageRevision": "sha256:60fa05029454cdc8c0a6353651c2f1c03f3c1fd8d71f3b0ca0de0c3e071b37bb",
+      "renderRevision": "sha256:38b052707dc96b63d88a19093e1b2ec270753e4e1060209a924e61247426ff4b",
+      "elementsTruncated": false,
+      "position": 15,
+      "title": "把“为什么这样讲”留给下一次编辑",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#f7f5ef",
+      "textCharacters": 100,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 28,
+          "normalizedSize": 28,
+          "bold": false
+        },
+        {
+          "elementId": "purpose-label",
+          "role": "body",
+          "fontSize": 15,
+          "normalizedSize": 15,
+          "bold": false
+        },
+        {
+          "elementId": "purpose-copy",
+          "role": "body",
+          "fontSize": 21,
+          "normalizedSize": 21,
+          "bold": false
+        },
+        {
+          "elementId": "keep-label",
+          "role": "body",
+          "fontSize": 15,
+          "normalizedSize": 15,
+          "bold": false
+        },
+        {
+          "elementId": "keep-copy",
+          "role": "body",
+          "fontSize": 18,
+          "normalizedSize": 18,
+          "bold": false
+        },
+        {
+          "elementId": "foot",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "story-panel",
+          "source": "media/imported/a72a80938253204970ca58020c04077a4e7f79db2fcb2e5801d5e29294ec1645.png",
+          "status": "measured",
+          "sampling": 1.37
+        },
+        {
+          "elementId": "brand-small",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 10.84
+        }
+      ]
+    },
+    {
+      "pageId": "59857807-d9f3-4e58-9a60-275cd504ea16",
+      "occurrenceId": "introduction-full:full-4:59857807-d9f3-4e58-9a60-275cd504ea16",
+      "pageRevision": "sha256:8b5b0dbf341e31f17a24aa262af66d2803abf3b85e2034dc9651b24dfe78040a",
+      "renderRevision": "sha256:886ca71731a05c84002f13b486e257ea35f96ad6bccf050d8059bdcf259ba764",
+      "elementsTruncated": false,
+      "position": 16,
+      "title": "素材库承接上一轮的工作",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#eee9dd",
+      "textCharacters": 67,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 28,
+          "normalizedSize": 28,
+          "bold": false
+        },
+        {
+          "elementId": "foot",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        },
+        {
+          "elementId": "materials",
+          "role": "body",
+          "fontSize": 20,
+          "normalizedSize": 20,
+          "bold": false
+        },
+        {
+          "elementId": "asset-caption",
+          "role": "body",
+          "fontSize": 13,
+          "normalizedSize": 13,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "brand-small",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 10.84
+        },
+        {
+          "elementId": "assets",
+          "source": "media/imported/5358b331462605400b48094e049b84f1abc23ebf6ec56bf3853055aac199a377.png",
+          "status": "measured",
+          "sampling": 1.8
+        },
+        {
+          "elementId": "source-view",
+          "source": "media/imported/342088ed88ab8fffc8ce2651cd6fbf183244f5069c7907702a957eb9cf9fa18a.png",
+          "status": "measured",
+          "sampling": 1.84
+        }
+      ]
+    },
+    {
+      "pageId": "c1fcdc66-1c25-45a6-9b98-83d16f063c3e",
+      "occurrenceId": "introduction-full:full-1:c1fcdc66-1c25-45a6-9b98-83d16f063c3e",
+      "pageRevision": "sha256:20048ba8b33efb694888b464fb41bccaff026c434e0f91adfff29fb8997e8ef0",
+      "renderRevision": "sha256:5a851c529ed591ff14328971af278ac6fc5f0c69cfdae032ecbd328e01ff1475",
+      "elementsTruncated": false,
+      "position": 17,
+      "title": "同一结构里的局部差异",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#f7f5ef",
+      "textCharacters": 138,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 28,
+          "normalizedSize": 28,
+          "bold": false
+        },
+        {
+          "elementId": "context",
+          "role": "body",
+          "fontSize": 15,
+          "normalizedSize": 15,
+          "bold": false
+        },
+        {
+          "elementId": "focus",
+          "role": "body",
+          "fontSize": 17,
+          "normalizedSize": 17,
+          "bold": false
+        },
+        {
+          "elementId": "scope",
+          "role": "body",
+          "fontSize": 13,
+          "normalizedSize": 13,
+          "bold": false
+        },
+        {
+          "elementId": "chain-a",
+          "role": "body",
+          "fontSize": 13,
+          "normalizedSize": 13,
+          "bold": false
+        },
+        {
+          "elementId": "chain-b",
+          "role": "body",
+          "fontSize": 13,
+          "normalizedSize": 13,
+          "bold": false
+        },
+        {
+          "elementId": "source",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        },
+        {
+          "elementId": "chart-unit",
+          "role": "body",
+          "fontSize": 14,
+          "normalizedSize": 14,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "structure",
+          "source": "media/imported/50273f1fa204b2f0ae10463c91dd9d8ffcea87c80d861da37c0db9755d091017.png",
+          "status": "measured",
+          "sampling": 1.91
+        }
+      ]
+    },
+    {
+      "pageId": "7b5bb42e-c529-49f8-ad88-62c69b567837",
+      "occurrenceId": "introduction-full:full-5:7b5bb42e-c529-49f8-ad88-62c69b567837",
+      "pageRevision": "sha256:f93416f9b19a72be1d5b7113456a1fa7026a3946c6260ac379d06b0906c950db",
+      "renderRevision": "sha256:cf464077e58b787587b3ba120434d08d0ac66e3adac01dd0f21221ee55fa3028",
+      "elementsTruncated": false,
+      "position": 18,
+      "title": "表格和公式，也能接着改",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#f7f5ef",
+      "textCharacters": 135,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 28,
+          "normalizedSize": 28,
+          "bold": false
+        },
+        {
+          "elementId": "foot",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        },
+        {
+          "elementId": "formula",
+          "role": "body",
+          "fontSize": 22,
+          "normalizedSize": 22,
+          "bold": false
+        },
+        {
+          "elementId": "equation-value",
+          "role": "body",
+          "fontSize": 23,
+          "normalizedSize": 23,
+          "bold": false
+        },
+        {
+          "elementId": "native-data-caption",
+          "role": "body",
+          "fontSize": 13,
+          "normalizedSize": 13,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "brand-small",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 10.84
+        },
+        {
+          "elementId": "measure-view",
+          "source": "media/imported/50273f1fa204b2f0ae10463c91dd9d8ffcea87c80d861da37c0db9755d091017.png",
+          "status": "measured",
+          "sampling": 2.75
+        }
+      ]
+    },
+    {
+      "pageId": "7b69742f-16b5-4b80-acf0-1d23966aae96",
+      "occurrenceId": "introduction-full:full-9:7b69742f-16b5-4b80-acf0-1d23966aae96",
+      "pageRevision": "sha256:c299f6fef18bef2d6e3be588e425cfcafcf6336b2d4bedf67980c616302dc90b",
+      "renderRevision": "sha256:94923c3521647c0ee26449a26f6914fa32f27b706a529ee72a573aab2bb76c0e",
+      "elementsTruncated": false,
+      "position": 19,
+      "title": "这次只把说明讲清楚",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#e4ece6",
+      "textCharacters": 73,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 28,
+          "normalizedSize": 28,
+          "bold": false
+        },
+        {
+          "elementId": "request",
+          "role": "body",
+          "fontSize": 18,
+          "normalizedSize": 18,
+          "bold": false
+        },
+        {
+          "elementId": "before-label",
+          "role": "body",
+          "fontSize": 16,
+          "normalizedSize": 16,
+          "bold": false
+        },
+        {
+          "elementId": "after-label",
+          "role": "body",
+          "fontSize": 16,
+          "normalizedSize": 16,
+          "bold": false
+        },
+        {
+          "elementId": "scope-proof",
+          "role": "body",
+          "fontSize": 17,
+          "normalizedSize": 17,
+          "bold": false
+        },
+        {
+          "elementId": "foot",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "before",
+          "source": "media/imported/8c227b1f1956f9c1f7448e8f6f533ee0feaf909d19e318f5b7b69b7d728b7f28.png",
+          "status": "measured",
+          "sampling": 2.33
+        },
+        {
+          "elementId": "after",
+          "source": "media/imported/07ab1e803a9529e525b0690bb1627bee3811850424cd628f7da9f29ce42e2ab3.png",
+          "status": "measured",
+          "sampling": 2.33
+        },
+        {
+          "elementId": "brand-small",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 10.84
+        }
+      ]
+    },
+    {
+      "pageId": "8bb920ed-1c71-45ac-ad9d-aa00750b1ff6",
+      "occurrenceId": "introduction-full:introduction-full-story-25:8bb920ed-1c71-45ac-ad9d-aa00750b1ff6",
+      "pageRevision": "sha256:515c98e6366135cdaa1bca15ea49772b264f2f87f76c4d9c81e0990df96a8038",
+      "renderRevision": "sha256:2c9c0289f8243e9af721fc37a5207ed0bd7985f34f131470de559cf676e93907",
+      "elementsTruncated": false,
+      "position": 20,
+      "title": "退后一步，检查整场讲述",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#f7f5ef",
+      "textCharacters": 62,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 28,
+          "normalizedSize": 28,
+          "bold": false
+        },
+        {
+          "elementId": "foot",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        },
+        {
+          "elementId": "views",
+          "role": "body",
+          "fontSize": 18,
+          "normalizedSize": 18,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "brand-small",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 10.84
+        },
+        {
+          "elementId": "browse",
+          "source": "media/imported/68eaf36bbad303ce47f913fb2f05564119fb720ee4d4c4585894b5b1a28978b5.png",
+          "status": "measured",
+          "sampling": 3.26
+        }
+      ]
+    },
+    {
+      "pageId": "9cdec939-7f79-4142-98a4-b9543230a4ec",
+      "occurrenceId": "introduction-full:full-8:9cdec939-7f79-4142-98a4-b9543230a4ec",
+      "pageRevision": "sha256:bfe7475fa3d1663d1938c291cc78fb08e855016975b3eb13bfb4d05d519a349e",
+      "renderRevision": "sha256:cf34b965754f6defd99f0d99dd23cff5e9860ace9b3a8af2f5fc178aa158b404",
+      "elementsTruncated": false,
+      "position": 21,
+      "title": "把这些约定带给不同的 Agent",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#e4ece6",
+      "textCharacters": 146,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 28,
+          "normalizedSize": 28,
+          "bold": false
+        },
+        {
+          "elementId": "client-name-0",
+          "role": "body",
+          "fontSize": 18,
+          "normalizedSize": 18,
+          "bold": false
+        },
+        {
+          "elementId": "client-name-1",
+          "role": "body",
+          "fontSize": 18,
+          "normalizedSize": 18,
+          "bold": false
+        },
+        {
+          "elementId": "client-name-2",
+          "role": "body",
+          "fontSize": 18,
+          "normalizedSize": 18,
+          "bold": false
+        },
+        {
+          "elementId": "client-name-3",
+          "role": "body",
+          "fontSize": 18,
+          "normalizedSize": 18,
+          "bold": false
+        },
+        {
+          "elementId": "plugin-guidance",
+          "role": "body",
+          "fontSize": 15,
+          "normalizedSize": 15,
+          "bold": false
+        },
+        {
+          "elementId": "connector-name",
+          "role": "body",
+          "fontSize": 20,
+          "normalizedSize": 20,
+          "bold": false
+        },
+        {
+          "elementId": "connector-copy",
+          "role": "body",
+          "fontSize": 14,
+          "normalizedSize": 14,
+          "bold": false
+        },
+        {
+          "elementId": "writer-name",
+          "role": "body",
+          "fontSize": 22,
+          "normalizedSize": 22,
+          "bold": false
+        },
+        {
+          "elementId": "writer-copy",
+          "role": "body",
+          "fontSize": 14,
+          "normalizedSize": 14,
+          "bold": false
+        },
+        {
+          "elementId": "human-name",
+          "role": "body",
+          "fontSize": 20,
+          "normalizedSize": 20,
+          "bold": false
+        },
+        {
+          "elementId": "human-copy",
+          "role": "body",
+          "fontSize": 14,
+          "normalizedSize": 14,
+          "bold": false
+        },
+        {
+          "elementId": "pptd",
+          "role": "body",
+          "fontSize": 23,
+          "normalizedSize": 23,
+          "bold": false
+        },
+        {
+          "elementId": "foot",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "client-0",
+          "source": "media/imported/0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13.png",
+          "status": "measured",
+          "sampling": 5.29
+        },
+        {
+          "elementId": "client-1",
+          "source": "media/imported/2ce1c57dd3b312417106a487815ab1235bddce17e1fa9b32a2f048bd71ee25d3.png",
+          "status": "measured",
+          "sampling": 2.83
+        },
+        {
+          "elementId": "client-2",
+          "source": "media/imported/733f24f4c52acb15eb0fbded1cf40eb42b4ba8e62b882acac70b6234b50919a8.png",
+          "status": "measured",
+          "sampling": 1.41
+        },
+        {
+          "elementId": "client-3",
+          "source": "media/imported/e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc.png",
+          "status": "measured",
+          "sampling": 3.38
+        },
+        {
+          "elementId": "brand-small",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 10.84
+        }
+      ]
+    },
+    {
+      "pageId": "d64aef1b-eb88-4b05-a620-ae60a0e833de",
+      "occurrenceId": "introduction-full:full-11:d64aef1b-eb88-4b05-a620-ae60a0e833de",
+      "pageRevision": "sha256:86b2881a4e68dfe599266a8783f17531eb1895770177309935f3cd57f0e4fc28",
+      "renderRevision": "sha256:84a1128f486ce53aaaa628f9d3ba2aa6f806694db0674372e84746aceaea6680",
+      "elementsTruncated": false,
+      "position": 22,
+      "title": "回到下一次组会",
+      "pageRole": "section",
+      "titleOnly": true,
+      "background": "#e4ece6",
+      "textCharacters": 7,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 34,
+          "normalizedSize": 34,
+          "bold": false
+        }
+      ],
+      "images": []
+    },
+    {
+      "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
+      "occurrenceId": "introduction-full:full-12:68f5273e-3f0d-4e5d-84d1-38391280cead",
+      "pageRevision": "sha256:490178c728233c6b9aa3f8466f58958a57463add5727dd0279214b4d612efecf",
+      "renderRevision": "sha256:6bd5a0fe0d5afcaf6aad382d42de15cb289ebd163f6202ccb3148320b46b1eef",
+      "elementsTruncated": false,
+      "position": 23,
+      "title": "下一次组会，挑我需要讲的页面",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#e4ece6",
+      "textCharacters": 79,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 28,
+          "normalizedSize": 28,
+          "bold": false
+        },
+        {
+          "elementId": "library-label",
+          "role": "body",
+          "fontSize": 20,
+          "normalizedSize": 20,
+          "bold": false
+        },
+        {
+          "elementId": "main-caption",
+          "role": "body",
+          "fontSize": 17,
+          "normalizedSize": 17,
+          "bold": false
+        },
+        {
+          "elementId": "full-label",
+          "role": "body",
+          "fontSize": 19,
+          "normalizedSize": 19,
+          "bold": false
+        },
+        {
+          "elementId": "brief-label",
+          "role": "body",
+          "fontSize": 19,
+          "normalizedSize": 19,
+          "bold": false
+        },
+        {
+          "elementId": "foot",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "brand-small",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 10.84
+        },
+        {
+          "elementId": "stack-20",
+          "source": "media/imported/44de8d03a052bab619bcf4e8f50cf6a573f36957d66f9449d305f67b1ab7d1d9.png",
+          "status": "measured",
+          "sampling": 3.65
+        },
+        {
+          "elementId": "stack-24",
+          "source": "media/imported/a43f0b634474045ab3c165038f73c8b1d95eeff1a26fccc67b00c1b098886f91.png",
+          "status": "measured",
+          "sampling": 3.65
+        },
+        {
+          "elementId": "stack-6",
+          "source": "media/imported/9226e2eddd7dacac3ddbf5bbff9df2fd98052c928d37dfeac1ccb864694f3a8b.png",
+          "status": "measured",
+          "sampling": 3.65
+        },
+        {
+          "elementId": "sequence-0-0",
+          "source": "media/imported/44de8d03a052bab619bcf4e8f50cf6a573f36957d66f9449d305f67b1ab7d1d9.png",
+          "status": "measured",
+          "sampling": 5.87
+        },
+        {
+          "elementId": "sequence-0-1",
+          "source": "media/imported/32afe1c10fd98bb34467659582f53e55a3913528b4b336ede2558c59cfc763a7.png",
+          "status": "measured",
+          "sampling": 5.87
+        },
+        {
+          "elementId": "sequence-0-2",
+          "source": "media/imported/6444023800e83f11ab9b29105da06501545c81d8bc7f47164292f96be85abc5d.png",
+          "status": "measured",
+          "sampling": 5.87
+        },
+        {
+          "elementId": "sequence-1-0",
+          "source": "media/imported/6444023800e83f11ab9b29105da06501545c81d8bc7f47164292f96be85abc5d.png",
+          "status": "measured",
+          "sampling": 5.87
+        },
+        {
+          "elementId": "sequence-1-1",
+          "source": "media/imported/a43f0b634474045ab3c165038f73c8b1d95eeff1a26fccc67b00c1b098886f91.png",
+          "status": "measured",
+          "sampling": 5.87
+        },
+        {
+          "elementId": "sequence-1-2",
+          "source": "media/imported/7efb3265df1baea039e357e25a2958a94d2f33aa1f002c242ea102a1f36d0152.png",
+          "status": "measured",
+          "sampling": 5.87
+        }
+      ]
+    },
+    {
+      "pageId": "5f2fbea2-a43a-4532-9042-6a1d20c08801",
+      "occurrenceId": "introduction-full:introduction-full-story-26:5f2fbea2-a43a-4532-9042-6a1d20c08801",
+      "pageRevision": "sha256:e4e446a0b9d9fc80f1e1cab513411d4a88e69f878dc3b92beaeb5197217e59c6",
+      "renderRevision": "sha256:a08d0e512a1e8a0f43e0e25dc65f88cba0812dfc378d8f7ce515b1a8a07d7112",
+      "elementsTruncated": false,
+      "position": 24,
+      "title": "同一张页，换一种讲法",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#f7f5ef",
+      "textCharacters": 96,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 28,
+          "normalizedSize": 28,
+          "bold": false
+        },
+        {
+          "elementId": "foot",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        },
+        {
+          "elementId": "same-page",
+          "role": "body",
+          "fontSize": 19,
+          "normalizedSize": 19,
+          "bold": false
+        },
+        {
+          "elementId": "speaker-notes",
+          "role": "body",
+          "fontSize": 19,
+          "normalizedSize": 19,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "brand-small",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 10.84
+        },
+        {
+          "elementId": "thumb-1",
+          "source": "media/imported/f9e22dfafbac40e92462384baf7b281b0b610704d46e23f75a1ab44d60854824.png",
+          "status": "measured",
+          "sampling": 2.4
+        }
+      ]
+    },
+    {
+      "pageId": "baca190c-e87b-415f-9c30-7c04e3fabe17",
+      "occurrenceId": "introduction-full:full-14:baca190c-e87b-415f-9c30-7c04e3fabe17",
+      "pageRevision": "sha256:44b5353b3391e320dda17d4612d816e6bebaec38b79b66f1ad5c0062a0d55267",
+      "renderRevision": "sha256:72a3b844a1e3300595d2b4ab165372d79d176f42f940a4282d4b936f0b1117d5",
+      "elementsTruncated": false,
+      "position": 25,
+      "title": "Live 与 Pinned",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#f7f5ef",
+      "textCharacters": 88,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 28,
+          "normalizedSize": 28,
+          "bold": false
+        },
+        {
+          "elementId": "live-label",
+          "role": "body",
+          "fontSize": 25,
+          "normalizedSize": 25,
+          "bold": false
+        },
+        {
+          "elementId": "pin-label",
+          "role": "body",
+          "fontSize": 25,
+          "normalizedSize": 25,
+          "bold": false
+        },
+        {
+          "elementId": "live-copy",
+          "role": "body",
+          "fontSize": 17,
+          "normalizedSize": 17,
+          "bold": false
+        },
+        {
+          "elementId": "pinned-copy",
+          "role": "body",
+          "fontSize": 17,
+          "normalizedSize": 17,
+          "bold": false
+        },
+        {
+          "elementId": "foot",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "live-page",
+          "source": "media/imported/f9e22dfafbac40e92462384baf7b281b0b610704d46e23f75a1ab44d60854824.png",
+          "status": "measured",
+          "sampling": 2.33
+        },
+        {
+          "elementId": "pinned-page",
+          "source": "media/imported/07ab1e803a9529e525b0690bb1627bee3811850424cd628f7da9f29ce42e2ab3.png",
+          "status": "measured",
+          "sampling": 2.33
+        },
+        {
+          "elementId": "brand-small",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 10.84
+        }
+      ]
+    },
+    {
+      "pageId": "f68f052b-18ac-4286-ae3b-6f12e5c5d0d0",
+      "occurrenceId": "introduction-full:full-15:f68f052b-18ac-4286-ae3b-6f12e5c5d0d0",
+      "pageRevision": "sha256:13b2f094013787ae27c9ac380ea7d0ecdb0ef8a068a508218cdba15db864b9be",
+      "renderRevision": "sha256:9754acdcfd2a08a06770b3068c624a5a4d5d925e73606c0e3e4054afe564a4e2",
+      "elementsTruncated": false,
+      "position": 26,
+      "title": "最后，从这份项目去演讲和交付",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#f7f5ef",
+      "textCharacters": 66,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 28,
+          "normalizedSize": 28,
+          "bold": false
+        },
+        {
+          "elementId": "present-title",
+          "role": "body",
+          "fontSize": 21,
+          "normalizedSize": 21,
+          "bold": false
+        },
+        {
+          "elementId": "export-title",
+          "role": "body",
+          "fontSize": 21,
+          "normalizedSize": 21,
+          "bold": false
+        },
+        {
+          "elementId": "delivery-scope",
+          "role": "body",
+          "fontSize": 17,
+          "normalizedSize": 17,
+          "bold": false
+        },
+        {
+          "elementId": "foot",
+          "role": "body",
+          "fontSize": 10,
+          "normalizedSize": 10,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "present-menu",
+          "source": "media/imported/f2fc3977c5d34bf2860fb7bc3a6ffd3df912a6a7d0f30bab2f58e5a41902d0da.png",
+          "status": "measured",
+          "sampling": 0.98
+        },
+        {
+          "elementId": "export-menu",
+          "source": "media/imported/81adcff8c31dced146e9c92d7efaa1381e1b4f930f8b11d2edd358662ece748d.png",
+          "status": "measured",
+          "sampling": 1.71
+        },
+        {
+          "elementId": "brand-small",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 10.84
+        }
+      ]
+    },
+    {
+      "pageId": "8a9bcdf1-fcb2-4214-9743-86c110c954ca",
+      "occurrenceId": "introduction-full:full-18:8a9bcdf1-fcb2-4214-9743-86c110c954ca",
+      "pageRevision": "sha256:dd6b0ecd4a9c27d79a88c2c84670727de0320dc7408c1666e885c16dc7d19284",
+      "renderRevision": "sha256:e025e8b132e8e057780c76e75613dbe2f13fd5ebbd337b08cdaf32e1b421f40f",
+      "elementsTruncated": false,
+      "position": 27,
+      "title": "下一次，我先讲我的故事",
+      "pageRole": "content",
+      "titleOnly": false,
+      "background": "#e4ece6",
+      "textCharacters": 78,
+      "text": [
+        {
+          "elementId": "title",
+          "role": "title",
+          "fontSize": 28,
+          "normalizedSize": 28,
+          "bold": false
+        },
+        {
+          "elementId": "closing-brand",
+          "role": "body",
+          "fontSize": 38,
+          "normalizedSize": 38,
+          "bold": false
+        },
+        {
+          "elementId": "next-action",
+          "role": "body",
+          "fontSize": 24,
+          "normalizedSize": 24,
+          "bold": false
+        },
+        {
+          "elementId": "project-path",
+          "role": "body",
+          "fontSize": 16,
+          "normalizedSize": 16,
+          "bold": false
+        }
+      ],
+      "images": [
+        {
+          "elementId": "closing-mark",
+          "source": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+          "status": "measured",
+          "sampling": 1.98
+        },
+        {
+          "elementId": "closing-example",
+          "source": "media/imported/f9e22dfafbac40e92462384baf7b281b0b610704d46e23f75a1ab44d60854824.png",
+          "status": "measured",
+          "sampling": 2.15
+        }
+      ]
+    }
+  ],
+  "sectionStarts": [
+    {
+      "id": "intro-section-1",
+      "title": "一页的身份",
+      "pageId": "b55179ed-446c-42a7-a2d5-2557defac052",
+      "titleOnly": true
+    },
+    {
+      "id": "intro-section-2",
+      "title": "让故事留在编辑里",
+      "pageId": "def43d68-1767-45f5-800a-17d648750b7e",
+      "titleOnly": true
+    },
+    {
+      "id": "intro-section-3",
+      "title": "回到下一次组会",
+      "pageId": "d64aef1b-eb88-4b05-a620-ae60a0e833de",
+      "titleOnly": true
+    }
+  ],
+  "findings": [
+    {
+      "code": "DESIGN_LARGE_TYPE",
+      "severity": "warning",
+      "message": "Body type is 29 at 960-wide scale. Inspect visual weight and line breaks.",
+      "elementId": "spoken",
+      "measured": 29,
+      "recommended": 28,
+      "pageId": "c91c3fe3-836f-492f-882d-905bd4d08a9b",
+      "occurrenceId": "introduction-full:introduction-full-story-23:c91c3fe3-836f-492f-882d-905bd4d08a9b"
+    },
+    {
+      "code": "DESIGN_LARGE_TYPE",
+      "severity": "warning",
+      "message": "Body type is 31 at 960-wide scale. Inspect visual weight and line breaks.",
+      "elementId": "entry",
+      "measured": 31,
+      "recommended": 28,
+      "pageId": "503c86ce-673c-4229-9251-22114e5f5da9",
+      "occurrenceId": "introduction-full:full-16:503c86ce-673c-4229-9251-22114e5f5da9"
+    },
+    {
+      "code": "DESIGN_LOW_RESOLUTION",
+      "severity": "warning",
+      "message": "Raster source supplies 0.98 source pixels per output pixel at 1920-wide delivery. Recapture or reduce its displayed size.",
+      "elementId": "present-menu",
+      "measured": 0.98,
+      "recommended": 1,
+      "pageId": "f68f052b-18ac-4286-ae3b-6f12e5c5d0d0",
+      "occurrenceId": "introduction-full:full-15:f68f052b-18ac-4286-ae3b-6f12e5c5d0d0"
+    },
+    {
+      "code": "DESIGN_LARGE_TYPE",
+      "severity": "warning",
+      "message": "Body type is 38 at 960-wide scale. Inspect visual weight and line breaks.",
+      "elementId": "closing-brand",
+      "measured": 38,
+      "recommended": 28,
+      "pageId": "8a9bcdf1-fcb2-4214-9743-86c110c954ca",
+      "occurrenceId": "introduction-full:full-18:8a9bcdf1-fcb2-4214-9743-86c110c954ca"
+    }
+  ],
+  "findingCount": 4,
+  "truncated": false,
+  "limits": {
+    "maxPages": 500,
+    "maxElementsPerPage": 500,
+    "maxFindings": 500,
+    "targetWidth": 1920
+  },
+  "visualInspectionRequired": true,
+  "assetInspection": {
+    "measured": 27,
+    "omitted": [],
+    "truncated": false,
+    "maxAssets": 128,
+    "maxHeaderBytes": 524288
+  }
+}

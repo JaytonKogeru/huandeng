@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "reviewedAtUtc": "2026-11-10T23:08:25.232775+00:00",
+  "reviewer": "independent visual_audit agent",
+  "edition": "claude-zh",
+  "decision": "native_submission_preserved_with_content_findings",
+  "authorAccepted": false,
+  "scope": {
+    "allPersistedNotesAndVisibleTextRead": 20,
+    "enlargedPDFPages": [],
+    "fullVisualOrOfficeReview": "Owned by native trial supervisor, not certified here",
+    "sourceAccount": "examples/huandeng-introduction/story/USER-STORY.zh-CN.md",
+    "factBrief": "examples/huandeng-introduction/story/FACTS.md"
+  },
+  "findings": [
+    {
+      "id": "CC-ZH-NARR-01",
+      "pages": [
+        20
+      ],
+      "type": "explicit_content_scope_violation",
+      "issue": "The actual closing page and Notes include future asset-library optimization, simple video editing and Photoshop-like image editing. Asset-library optimization was explicitly excluded from slides by the author. The other ideas were unformed and deferred, although this page does label them as unfinished rather than shipped."
+    },
+    {
+      "id": "CC-ZH-NARR-02",
+      "pages": [
+        9
+      ],
+      "type": "format_attribution_error",
+      "issue": "The body says HUANDENG merely spreads out the PPTX directory and replaces the .pptx entry with deck.pptd; Notes repeat that the entry is simply changed. The shared FACTS brief explicitly distinguishes the structured PPTD document model from renaming or unpacking PPTX. The fact that PPTX contains page parts is correct; the equivalence is not."
+    }
+  ],
+  "observations": [
+    "Personal AI-style judgments are attributed to the author; no invented verbatim advisor dialogue was added.",
+    "Page 5 explicitly labels the filename list as a sketch rather than a real directory.",
+    "Story, readable page identity, saved-operation history and a concrete title/lead edit are distinguished in the Notes.",
+    "Page 16 correctly calls the operation already saved, and page 19 separately explains pre-write preview and revision checking.",
+    "The scientific page describes 12 paired positions in one structure with correct min/max scope, not repeats or hydrogen bonds."
+  ],
+  "noNativeSourceOrExportEdited": true,
+  "noAestheticRedoSent": true,
+  "limits": [
+    "This record identifies factual/narrative limits in a preserved native submission, not author acceptance.",
+    "No Claude visual material was used as a reference for ChatGPT or DeepSeek.",
+    "Native completion, runtime errors and Office/export inspection remain separate evidence."
+  ],
+  "inputs": [
+    {
+      "path": ".verification/story-20261111/claude-zh-qa/narrative.json",
+      "bytes": 48148,
+      "sha256": "783ec1dd3717cd6648ee7c4cdf44123b9b9b757f457333ea6cf98e5278dfbb30"
+    }
+  ]
+}

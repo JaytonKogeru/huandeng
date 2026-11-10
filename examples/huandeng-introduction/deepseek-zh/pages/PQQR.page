@@ -1,0 +1,132 @@
+pageType: content
+background:
+  type: solid
+  color: "#16211B"
+notes: 先承认 AI 已经会排版。真正让我不舒服的，是它太完整、太均匀，完整到没有取舍。这里说的是我自己的观察，不是模型评测；我不给模型排名，也不把个人感受写成研究结论。
+elements:
+  - elementId: texture-kicker
+    elementType: text
+    bounds:
+      - 48
+      - 42
+      - 300
+      - 18
+    content:
+      text: "AI 质感 / 观察"
+      fontSize: 9.5
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#8FA294"
+      letterSpacing: 1.2
+      align:
+        - left
+        - top
+  - elementId: texture-title
+    elementType: text
+    role: title
+    bounds:
+      - 48
+      - 68
+      - 620
+      - 44
+    content:
+      text: AI 质感，不是丑
+      fontSize: 30
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#F3F4EC"
+      lineHeight: 1.3
+      align:
+        - left
+        - top
+  - elementId: texture-quote
+    elementType: text
+    bounds:
+      - 48
+      - 148
+      - 780
+      - 160
+    content:
+      text: |-
+        它看起来
+        太完整了。
+      fontSize: 34
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#F3F4EC"
+      lineHeight: 1.28
+      align:
+        - left
+        - top
+  - elementId: texture-rule
+    elementType: line
+    bounds:
+      - 48
+      - 330
+      - 760
+      - 1
+    viewBox:
+      - 760
+      - 1
+    points: 0,0.5 760,0.5
+    border:
+      color: "#3D4C42"
+      width: 0.8
+      style: solid
+  - elementId: texture-attrs
+    elementType: text
+    bounds:
+      - 48
+      - 350
+      - 760
+      - 28
+    content:
+      text: 面面俱到 · 追求完整 · 追求免责
+      fontSize: 17
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#C8D9C4"
+      align:
+        - left
+        - top
+  - elementId: texture-body
+    elementType: text
+    bounds:
+      - 48
+      - 390
+      - 760
+      - 92
+    content:
+      text: |-
+        我后来看到一个说法：AI 质感来自没有重点，来自面面俱到，来自没有故事性。
+        不是模型不会排版，是它不知道这场报告到底要让听众记住什么。
+      fontSize: 14
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#C6D2C4"
+      lineHeight: 1.65
+      align:
+        - left
+        - top
+  - elementId: texture-disclosure
+    elementType: text
+    bounds:
+      - 48
+      - 498
+      - 760
+      - 26
+    content:
+      text: 这是个人观察，不是模型评测或研究结论。
+      fontSize: 8.6
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#7F9386"
+      align:
+        - left
+        - top

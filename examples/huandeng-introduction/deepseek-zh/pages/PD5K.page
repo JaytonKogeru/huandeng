@@ -2,7 +2,7 @@ pageType: section
 background:
   type: solid
   color: "#6C7E6C"
-notes: 章节停顿。接下来讲具体协作：外部 AI 如何发提案、人和写入器如何检查、修改如何被回看，最后怎样交付。
+notes: "章节停顿。故事讲清楚之后，才看这个工具把故事组织成了什么：一个项目、一组页面、一套可回看的历史。"
 elements:
   - elementId: section-title
     elementType: text
@@ -10,7 +10,7 @@ elements:
     bounds:
         [64,220,800,72]
     content:
-      text: 一次修改
+      text: "一个项目"
       fontSize: 42
       fontFamily:
         ea: Microsoft YaHei

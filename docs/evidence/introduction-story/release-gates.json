@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "scope": "Story introductions, authoring guidance, source organization and release records",
+  "pluginTests": {
+    "status": "passed",
+    "command": "node --test plugins/huandeng/scripts/configure.test.mjs plugins/huandeng/scripts/discovery.test.mjs",
+    "passedTests": 8,
+    "failedTests": 0
+  },
+  "formatGate": {
+    "status": "passed",
+    "command": "corepack pnpm check",
+    "checkedFiles": 1176,
+    "recordedAtUtc": "2026-11-10T23:29:25.317978+00:00"
+  },
+  "artifactHashesVerified": 30,
+  "portableProjectFilesVerified": 1340,
+  "officeMainPagesRendered": 135,
+  "independentReviewSummary": "review-summary.json",
+  "editorSourceChanges": 0,
+  "unrelatedFixtureUnchanged": true,
+  "authorAcceptance": false,
+  "publicationPolicy": "After source/tag push, verify uploaded and downloaded release files against SHA256SUMS before making the draft release visible."
+}

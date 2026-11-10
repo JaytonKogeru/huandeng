@@ -1,0 +1,124 @@
+background:
+  type: solid
+  color: "#F6F6F3"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 56
+      - 34
+      - 848
+      - 40
+    content:
+      text: AI 改了什么，一处一处看得见
+      fontFamily: Microsoft YaHei
+      fontSize: 26
+      lineHeight: 1.3
+      color: "#1C2321"
+      align:
+        - left
+        - top
+      bold: true
+    role: title
+  - elementId: shot-frame
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 56
+      - 84
+      - 480
+      - 362
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#CBD3CF"
+  - elementId: shot
+    elementType: image
+    bounds:
+      - 60
+      - 88
+      - 472
+      - 354
+    src: media/imported/1f8c227e7a8a73ed668c788e46d631f17b6e6f577e9f66479d5e693fbd71d867.png
+    sourceName: zh-CN-native-operation-review-4x.png
+    fit:
+      mode: contain
+  - elementId: shot-cap
+    elementType: text
+    bounds:
+      - 56
+      - 452
+      - 480
+      - 20
+    content:
+      text: 真实界面：查看一次已保存的修改。
+      fontFamily: Microsoft YaHei
+      fontSize: 11
+      lineHeight: 1.4
+      color: "#7A8480"
+      align:
+        - left
+        - top
+  - elementId: body
+    elementType: text
+    bounds:
+      - 568
+      - 84
+      - 336
+      - 400
+    content:
+      text: <p><strong><span style="color:#2E6B5E">修改前 / 修改后</span></strong></p><p>同一页并排切换，改动的对象直接框出来。</p><p><span style="font-size:8px"> </span></p><p><strong><span style="color:#2E6B5E">改了哪些字段</span></strong></p><p>这次只动了标题和导语的文字，其他对象原样保留。</p><p><span style="font-size:8px"> </span></p><p><strong><span style="color:#2E6B5E">和故事放在一起</span></strong></p><p>旁边就是这一页的故事和当前用在哪些演讲里，判断这次修改有没有偏离初衷。</p>
+      fontFamily: Microsoft YaHei
+      fontSize: 15
+      lineHeight: 1.55
+      color: "#3E4845"
+      align:
+        - left
+        - top
+  - elementId: ft-mark
+    elementType: image
+    bounds:
+      - 56
+      - 505
+      - 16
+      - 16
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    fit:
+      mode: contain
+  - elementId: ft-label
+    elementType: text
+    bounds:
+      - 78
+      - 505
+      - 420
+      - 16
+    content:
+      text: HUANDENG  /  以“页”为单位
+      fontFamily: Microsoft YaHei
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - left
+        - middle
+  - elementId: ft-pos
+    elementType: text
+    bounds:
+      - 824
+      - 505
+      - 80
+      - 16
+    content:
+      text: "0"
+      fontFamily: Microsoft YaHei
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - right
+        - middle
+      field: main-position
+notes: 每一次保存的修改都可以回头看。左边是一次真实的修改：AI 收紧了一页的标题和导语。你可以在修改前和修改后之间切换，改动的对象会被框出来；右边列出这次具体改了哪些对象、哪些字段；下面是这一页的故事，以及它现在被哪些演讲引用。所以 AI 改完以后，不用再整页截图去猜它动了什么。

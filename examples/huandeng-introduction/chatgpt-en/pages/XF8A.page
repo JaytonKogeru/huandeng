@@ -12,195 +12,7 @@ elements:
       - 67
     role: title
     content:
-      text: Figures, charts and equations
-      fontFamily: Arial
-      fontSize: 29
-      color: "#263C34"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-  - elementId: chart-label
-    elementType: text
-    bounds:
-      - 44
-      - 125
-      - 510
-      - 28
-    content:
-      text: All 12 paired positions
-      fontFamily: Arial
-      fontSize: 18
-      color: "#356F68"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-  - elementId: native-chart
-    elementType: chart
-    bounds:
-      - 22
-      - 167
-      - 548
-      - 265
-    fontFamily: Arial
-    fontSize: 13
-    colors:
-      - "#356F68"
-      - "#A64F38"
-    legend: false
-    dataLabels: false
-    data:
-      {"cols":["position","distance"],"rows":[["1",10.7121],["2",10.7665],["3",10.5802],["4",10.3531],["5",10.4416],["6",10.4606],["7",10.2329],["8",10.4912],["9",10.5912],["10",10.4362],["11",10.8052],["12",10.8877]]}
-    series:
-        [{"type":"line","name":"C1′–C1′","encode":{"x":"position","y":"distance"},"color":"#356F68"}]
-    xAxis:
-      title: Paired position
-    yAxis:
-      title: C1′–C1′ (Å)
-      min: 10
-      max: 11.2
-  - elementId: table-label
-    elementType: text
-    bounds:
-      - 605
-      - 125
-      - 309
-      - 45
-    content:
-      text: Five positions, with their source values
-      fontFamily: Arial
-      fontSize: 17
-      color: "#356F68"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-  - elementId: native-table
-    elementType: table
-    bounds:
-      - 605
-      - 179
-      - 309
-      - 238
-    columnWidths:
-      - 0.22
-      - 0.28
-      - 0.5
-    style:
-      cellStyle:
-        fontFamily: Arial
-        fontSize: 15
-        color: "#263C34"
-        border:
-          color: "#C7D3CB"
-          width: 0.6
-        padding: 9
-      firstRowStyle:
-        fill: "#E4ECE6"
-        bold: false
-    rows:
-      - - text: Site
-          bold: true
-          align:
-            - left
-            - middle
-        - text: Pair
-          bold: true
-          align:
-            - left
-            - middle
-        - text: C1′–C1′ / Å
-          bold: true
-          align:
-            - left
-            - middle
-      - - text: "1"
-          align:
-            - left
-            - middle
-        - text: C-G
-          align:
-            - left
-            - middle
-        - text: "10.7121"
-          align:
-            - left
-            - middle
-      - - text: "4"
-          align:
-            - left
-            - middle
-        - text: G-C
-          align:
-            - left
-            - middle
-        - text: "10.3531"
-          align:
-            - left
-            - middle
-      - - text: "7"
-          align:
-            - left
-            - middle
-        - text: T-A
-          align:
-            - left
-            - middle
-        - text: "10.2329"
-          align:
-            - left
-            - middle
-      - - text: "9"
-          align:
-            - left
-            - middle
-        - text: C-G
-          align:
-            - left
-            - middle
-        - text: "10.5912"
-          align:
-            - left
-            - middle
-      - - text: "12"
-          align:
-            - left
-            - middle
-        - text: G-C
-          align:
-            - left
-            - middle
-        - text: "10.8877"
-          align:
-            - left
-            - middle
-  - elementId: formula
-    elementType: text
-    bounds:
-        [285,440,390,55]
-    content:
-      text: \[d_7=\left\|\mathbf r_{A7,C1^\prime}-\mathbf r_{B18,C1^\prime}\right\|_2=10.2329\,\text{Å}\]
-      fontFamily: Arial
-      fontSize: 22
-      color: "#263C34"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-  - elementId: editable
-    elementType: text
-    bounds:
-      - 44
-      - 486
-      - 820
-      - 25
-    content:
-      {"text":"PDB 1BNA · The chart data, table cells and equation remain editable.","fontFamily":"Arial","fontSize":14,"color":"#66756B","bold":false,"align":["left","top"],"lineHeight":1.3}
+      {"text":"Tables and equations stay editable","fontFamily":"Arial","fontSize":29,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
   - elementId: brand-small
     elementType: image
     src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
@@ -253,4 +65,73 @@ elements:
         - top
       lineHeight: 1.3
       field: main-position
-notes: These are native HUANDENG chart, table and equation objects. The chart contains all twelve positions; the table selects positions 1, 4, 7, 9 and 12 to demonstrate editable source values. Distances are derived from public 1BNA coordinates; the method and CSV remain with the project.
+  - elementId: native-table
+    elementType: table
+    bounds:
+        [44,144,448,294]
+    columnWidths:
+      - 0.22
+      - 0.28
+      - 0.5
+    style:
+      {"cellStyle":{"fontFamily":"Arial","fontSize":17,"color":"#263C34","border":{"color":"#CAD5CD","width":0.5},"padding":10},"firstRowStyle":{"fill":"#E4ECE6","bold":true}}
+    rows:
+        [[{"text":"Site","bold":true,"align":["left","middle"]},{"text":"Pair","bold":true,"align":["left","middle"]},{"text":"C1′–C1′ / Å","bold":true,"align":["left","middle"]}],[{"text":"1","bold":false,"align":["left","middle"]},{"text":"C-G","bold":false,"align":["left","middle"]},{"text":"10.7121","bold":false,"align":["left","middle"]}],[{"text":"4","bold":false,"align":["left","middle"]},{"text":"G-C","bold":false,"align":["left","middle"]},{"text":"10.3531","bold":false,"align":["left","middle"]}],[{"text":"7","bold":false,"align":["left","middle"]},{"text":"T-A","bold":false,"align":["left","middle"]},{"text":"10.2329","bold":false,"align":["left","middle"]}],[{"text":"9","bold":false,"align":["left","middle"]},{"text":"C-G","bold":false,"align":["left","middle"]},{"text":"10.5912","bold":false,"align":["left","middle"]}],[{"text":"12","bold":false,"align":["left","middle"]},{"text":"G-C","bold":false,"align":["left","middle"]},{"text":"10.8877","bold":false,"align":["left","middle"]}]]
+  - elementId: measure-view
+    elementType: image
+    src: media/imported/50273f1fa204b2f0ae10463c91dd9d8ffcea87c80d861da37c0db9755d091017.png
+    sourceName: dna-duplex-position7.png
+    alt: dna-duplex-position7.png
+    bounds:
+      - 592
+      - 128
+      - 238
+      - 236
+    fit:
+      mode: contain
+    crop:
+      left: 0.285
+      right: 0.265
+      top: 0.105
+      bottom: 0.07
+  - elementId: formula
+    elementType: text
+    bounds:
+        [522,378,392,52]
+    content:
+      {"text":"\\[d_7=\\left\\|\\mathbf r_{A7,C1^\\prime}-\\mathbf r_{B18,C1^\\prime}\\right\\|_2\\]","fontFamily":"Arial","fontSize":22,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
+  - elementId: equation-value
+    elementType: text
+    bounds:
+      - 522
+      - 441
+      - 392
+      - 32
+    content:
+      text: d₇ = 10.2329 Å
+      fontFamily: Arial
+      fontSize: 23
+      color: "#A64F38"
+      bold: false
+      align:
+        - center
+        - top
+      lineHeight: 1.3
+  - elementId: native-data-caption
+    elementType: text
+    bounds:
+      - 44
+      - 479
+      - 870
+      - 25
+    content:
+      text: PDB 1BNA · five rows selected from the same twelve-position dataset
+      fontFamily: Arial
+      fontSize: 13
+      color: "#66756B"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+notes: "I also want the table and equation to remain editable. This is one native table, rather than separate text boxes arranged to resemble cells. The equation remains an equation. That matters when a person takes over and needs to change a column or a value. The five rows are selected from the same twelve-position dataset; the full source data and calculation script stay with the project.\n\nSource: https://www.rcsb.org/structure/1BNA ; https://doi.org/10.1073/pnas.78.4.2179 . Source coordinates, calculation and all twelve values: sources/science/."

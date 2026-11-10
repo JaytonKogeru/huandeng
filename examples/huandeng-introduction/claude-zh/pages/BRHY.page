@@ -1,0 +1,242 @@
+background:
+  type: solid
+  color: "#F6F6F3"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 56
+      - 34
+      - 848
+      - 40
+    content:
+      text: 科研页：图要保真，数据还是数据
+      fontFamily: Microsoft YaHei
+      fontSize: 26
+      lineHeight: 1.3
+      color: "#1C2321"
+      align:
+        - left
+        - top
+      bold: true
+    role: title
+  - elementId: lead
+    elementType: text
+    bounds:
+      - 56
+      - 80
+      - 848
+      - 26
+    content:
+      text: 一页真实的科研 slide：结构图来自沉积坐标，折线图是由 CSV 生成的原生图表。
+      fontFamily: Microsoft YaHei
+      fontSize: 16
+      lineHeight: 1.4
+      color: "#56615D"
+      align:
+        - left
+        - top
+  - elementId: structure
+    elementType: image
+    bounds:
+        [40,108,244,284]
+    src: media/imported/ff6d1434a44440fba124ccad7dfa30efa01e8c400094d4453d17d502345c1e2c.png
+    sourceName: dna-duplex-side.png
+    fit:
+      mode: contain
+  - elementId: chain-a
+    elementType: text
+    bounds:
+      - 70
+      - 392
+      - 90
+      - 18
+    content:
+      text: — 链 A
+      fontFamily: Microsoft YaHei
+      fontSize: 13
+      lineHeight: 1.3
+      color: "#3D7468"
+      align:
+        - left
+        - middle
+      bold: true
+  - elementId: chain-b
+    elementType: text
+    bounds:
+      - 160
+      - 392
+      - 90
+      - 18
+    content:
+      text: — 链 B
+      fontFamily: Microsoft YaHei
+      fontSize: 13
+      lineHeight: 1.3
+      color: "#B9783F"
+      align:
+        - left
+        - middle
+      bold: true
+  - elementId: y-title
+    elementType: text
+    bounds:
+      - 306
+      - 116
+      - 300
+      - 20
+    content:
+      text: C1′–C1′ 距离（Å）
+      fontFamily: Microsoft YaHei
+      fontSize: 13
+      lineHeight: 1.3
+      color: "#56615D"
+      align:
+        - left
+        - middle
+      bold: true
+  - elementId: chart
+    elementType: chart
+    bounds:
+      - 296
+      - 140
+      - 608
+      - 250
+    data:
+      cols:
+        - 配对位置
+        - 距离
+      rows:
+        - - "1"
+          - 10.7121
+        - - "2"
+          - 10.7665
+        - - "3"
+          - 10.5802
+        - - "4"
+          - 10.3531
+        - - "5"
+          - 10.4416
+        - - "6"
+          - 10.4606
+        - - "7"
+          - 10.2329
+        - - "8"
+          - 10.4912
+        - - "9"
+          - 10.5912
+        - - "10"
+          - 10.4362
+        - - "11"
+          - 10.8052
+        - - "12"
+          - 10.8877
+    series:
+      - type: line
+        name: C1′–C1′ 距离
+        encode:
+          x: 配对位置
+          y: 距离
+        lineColor: "#2E6B5E"
+        showSymbol: true
+    xAxis:
+      type: category
+    yAxis:
+      type: value
+      min: 10
+      max: 11
+    legend: false
+    colors:
+      - "#2E6B5E"
+    fontFamily: Microsoft YaHei
+    fontSize: 13
+  - elementId: x-title
+    elementType: text
+    bounds:
+        [346,340,558,20]
+    content:
+      text: 配对位置（链 A 残基 1–12 对应链 B 残基 24–13）
+      fontFamily: Microsoft YaHei
+      fontSize: 12
+      lineHeight: 1.3
+      color: "#56615D"
+      align:
+        - center
+        - middle
+  - elementId: takeaway
+    elementType: text
+    bounds:
+      - 56
+      - 424
+      - 848
+      - 26
+    content:
+      text: <p><strong><span style="color:#2E6B5E">要改一个数值，改的是数据，不是像素。</span></strong>最短 10.23 Å（第 7 对 T–A），最长 10.89 Å（第 12 对 G–C）。</p>
+      fontFamily: Microsoft YaHei
+      fontSize: 15
+      lineHeight: 1.4
+      color: "#3E4845"
+      align:
+        - left
+        - top
+  - elementId: source
+    elementType: text
+    bounds:
+      - 56
+      - 456
+      - 848
+      - 34
+    content:
+      text: 来源：RCSB PDB 1BNA，Dickerson–Drew 十二聚体，1.90 Å X 射线（Drew et al., PNAS 78:2179–2183, 1981）。由沉积坐标计算；同一结构中的十二个位置，不是重复实验，也不是氢键长度。
+      fontFamily: Microsoft YaHei
+      fontSize: 11
+      lineHeight: 1.4
+      color: "#7A8480"
+      align:
+        - left
+        - top
+  - elementId: ft-mark
+    elementType: image
+    bounds:
+      - 56
+      - 505
+      - 16
+      - 16
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    fit:
+      mode: contain
+  - elementId: ft-label
+    elementType: text
+    bounds:
+      - 78
+      - 505
+      - 420
+      - 16
+    content:
+      text: HUANDENG  /  以“页”为单位
+      fontFamily: Microsoft YaHei
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - left
+        - middle
+  - elementId: ft-pos
+    elementType: text
+    bounds:
+      - 824
+      - 505
+      - 80
+      - 16
+    content:
+      text: "0"
+      fontFamily: Microsoft YaHei
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - right
+        - middle
+      field: main-position
+notes: 幻灯是给做科研的人用的，所以图和数据必须保真。这一页是开头那个 DNA 分子：PDB 1BNA，Dickerson–Drew 十二聚体，链 A 绿色，链 B 赭色。右边是十二个碱基对的 C1′ 到 C1′ 距离。它不是贴上去的图片，而是一个原生图表对象，数据来自 CSV。纵轴故意不从零开始，这样几何上的变化才看得出来。要改一个值或一个标签，改的是数据，不是像素。AI 也能精确地改它，而不是重画一张图。注意它说的是什么：这是同一个晶体结构里的十二个位置，不是重复实验，没有误差棒。最短在第 7 对，中间 AATT 区的一个 T–A；最长在第 12 对，末端的 G–C。方法：链 A 残基 1–12 依次对应链 B 残基 24–13，计算 C1′ 原子间欧氏距离。数据见 sources/science/paired-c1-distances.csv。

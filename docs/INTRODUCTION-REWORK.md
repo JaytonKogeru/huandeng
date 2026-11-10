@@ -1,6 +1,8 @@
-# Introduction rework: current contract
+# Introduction rework: historical visual contract (plugin 0.18.2)
 
-Status: four review candidates implemented, inspected and packaged; see INTRODUCTION-DELIVERY.md for the exact validation scope and retained native-trial findings. The previous 0.18 introduction was rejected by the author. Technical checks and an agent's visual review are not author acceptance.
+The visual rework below is the preceding milestone. The author subsequently approved its visual improvement and supplied a founder story. The current six-edition contract is [INTRODUCTION-STORY-SPEC.md](INTRODUCTION-STORY-SPEC.md); current results and native findings are in [INTRODUCTION-DELIVERY.md](INTRODUCTION-DELIVERY.md). Earlier page counts and completion states below are historical.
+
+Historical status: four review candidates were implemented, inspected and packaged. The initial Editor 0.18 introduction had been rejected by the author. Technical checks and an agent's visual review were not author acceptance.
 
 ## Scope
 

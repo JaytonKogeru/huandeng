@@ -12,185 +12,7 @@ elements:
       - 67
     role: title
     content:
-      text: 修改有范围，也有记录
-      fontFamily: Microsoft YaHei
-      fontSize: 28
-      color: "#263C34"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-  - elementId: versions-label
-    elementType: text
-    bounds:
-      - 44
-      - 129
-      - 300
-      - 29
-    content:
-      text: 给有意义的阶段命名
-      fontFamily: Microsoft YaHei
-      fontSize: 18
-      color: "#356F68"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-  - elementId: versions
-    elementType: image
-    src: media/imported/24e7314c2324f71ccec2c6fe5827542fc861ac8549c249ae9a790ca08c198c83.png
-    sourceName: versions-detail.png
-    alt: versions-detail.png
-    bounds:
-      - 44
-      - 176
-      - 270
-      - 273
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: diff-heading
-    elementType: text
-    bounds:
-      - 365
-      - 129
-      - 549
-      - 29
-    content:
-      text: 这次修改了两段文字
-      fontFamily: Microsoft YaHei
-      fontSize: 18
-      color: "#356F68"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-  - elementId: diff-before-label
-    elementType: text
-    bounds:
-      - 365
-      - 176
-      - 249
-      - 25
-    content:
-      text: 修改前
-      fontFamily: Microsoft YaHei
-      fontSize: 14
-      color: "#66756B"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-  - elementId: diff-after-label
-    elementType: text
-    bounds:
-      - 657
-      - 176
-      - 257
-      - 25
-    content:
-      text: 修改后
-      fontFamily: Microsoft YaHei
-      fontSize: 14
-      color: "#356F68"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-  - elementId: diff-before-title
-    elementType: text
-    bounds:
-      - 365
-      - 213
-      - 249
-      - 112
-    content:
-      text: 从公开 DNA 双链坐标出发，比较各配对位置的局部几何差异
-      fontFamily: Microsoft YaHei
-      fontSize: 16
-      color: "#66756B"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.4
-  - elementId: diff-after-title
-    elementType: text
-    bounds:
-      - 657
-      - 213
-      - 257
-      - 112
-    content:
-      text: 同一结构里的局部差异
-      fontFamily: Microsoft YaHei
-      fontSize: 18
-      color: "#263C34"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.4
-  - elementId: diff-before-context
-    elementType: text
-    bounds:
-      - 365
-      - 346
-      - 249
-      - 115
-    content:
-      text: 按照残基顺序配对，计算两条链对应 C1′ 原子之间的距离，再将十二个位置画成曲线
-      fontFamily: Microsoft YaHei
-      fontSize: 16
-      color: "#66756B"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.4
-  - elementId: diff-after-context
-    elementType: text
-    bounds:
-      - 657
-      - 346
-      - 257
-      - 115
-    content:
-      text: 从原始坐标，到每个配对位置的距离
-      fontFamily: Microsoft YaHei
-      fontSize: 18
-      color: "#263C34"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.4
-  - elementId: history-copy
-    elementType: text
-    bounds:
-      - 44
-      - 477
-      - 870
-      - 37
-    content:
-      text: 操作记录回答“改了什么”；命名版本保存一页当时的完整状态。
-      fontFamily: Microsoft YaHei
-      fontSize: 16
-      color: "#66756B"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
+      {"text":"把历史留在这一页","fontFamily":"Microsoft YaHei","fontSize":28,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
   - elementId: brand-small
     elementType: image
     src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
@@ -243,4 +65,61 @@ elements:
         - top
       lineHeight: 1.3
       field: main-position
-notes: "左侧是本项目真正保存的“措辞修改前”和“科学示例·措辞收紧”两个命名版本。右侧逐字列出该操作实际修改的标题与说明，直接取自共享写入服务的操作前后快照。精确操作ID及字段保留检查见evidence/wording-edit.json。命名版本与操作记录具有不同职责。"
+  - elementId: versions-detail
+    elementType: image
+    src: media/imported/24e7314c2324f71ccec2c6fe5827542fc861ac8549c249ae9a790ca08c198c83.png
+    sourceName: versions-detail.png
+    alt: versions-detail.png
+    bounds:
+      - 44
+      - 142
+      - 300
+      - 303
+    fit:
+      mode: contain
+    crop:
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+  - elementId: history-story
+    elementType: text
+    bounds:
+      - 410
+      - 148
+      - 504
+      - 315
+    content:
+      text: |-
+        右键选中的页，可以查看历史。
+  
+        操作记录回答“改了什么”。
+        命名版本留下一个完整阶段。
+  
+        下一次修改，仍回到同一个项目。
+      fontFamily: Microsoft YaHei
+      fontSize: 22
+      color: "#263C34"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.6
+  - elementId: history-source
+    elementType: text
+    bounds:
+      - 44
+      - 477
+      - 870
+      - 25
+    content:
+      text: 左：本项目实际保存的单页版本
+      fontFamily: Microsoft YaHei
+      fontSize: 13
+      color: "#66756B"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+notes: "有了稳定身份，历史才能跟着这一页走。选中页面后可以看它的操作记录，知道哪些字段改过；也可以在有意义的阶段保存一个命名版本，回来预览或恢复。这里展示的是本项目真正保存过的单页版本。这回应了前面改两页却复制整套文件的问题：继续在同一个项目里工作，把这页的历史留在这页。"

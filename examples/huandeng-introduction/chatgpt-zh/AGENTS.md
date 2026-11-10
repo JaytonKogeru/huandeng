@@ -2,22 +2,35 @@
 
 ## Current owner direction
 
-The owner rejected the 0.18 introduction slides on 2026-11-10 for excessive simplification and lost visual requirements. This brief supersedes the former all-white, fixed-page-count, screenshot-only and uniformly sparse direction. Technical validation and an agent's visual review do not imply author approval.
+The owner positively reviewed the current artwork but requested a new version because the introduction lacks a story and feels like a product launch. Preserve useful visual work while rebuilding the argument from the author's spoken account. Earlier all-white, fixed-page-count, screenshot-only and uniformly sparse requirements remain superseded. This feedback does not accept a new narrative or exported artifact in advance; technical validation and an agent's review do not imply author approval.
 
 ## Purpose and editorial freedom
 
-Create a useful introduction to HUANDENG as a scientific slide editor with external AI collaboration. Explain the product through concrete work and convincing visual examples. Use a calm, factual voice; this is an introduction, not a launch keynote or a claims-heavy sales pitch.
+Explain why the author started HUANDENG and how concrete frustrations led to its workflow. Read sources/story/USER-STORY.zh-CN.md in full and sources/story/FACTS.md before choosing the sequence. Preserve the author's meaning while organizing repetitions and translating for this edition. Use a personal, concrete voice; this is an account of making and using a tool, not a launch keynote or a comprehensive feature inventory.
 
 Choose your own narrative, length and page order. There is no required page count or inherited page-by-page script. You may reorganize the existing edition completely under the current redesign authorization. Preserve original evidence, source provenance and useful portable versions.
 
 Study the user-selected reference at sources/reference/original-demo.pdf and its contact sheets. Learn from its product identity, true client logos, purposeful gray/gray-green backgrounds, stacked real-page previews and data figure. Preserve those strengths while improving small screenshots, heavy typography and unnecessary detail. Do not mechanically copy every layout.
+
+## Story and factual scope
+
+- Treat the group-meeting observations and the author's diagnosis of “AI feel” as personal experience and interpretation. The view that slide-making should become agent-driven is the author's motivation, not a quantified industry forecast. Do not invent incidents, citations, consensus or a universal AI-style detector.
+- Connect the author's wish for a human story to speaking first, organizing that account, aligning Main and page/local Story, and preparing a usable script in Notes. Story fields support alignment; they do not automatically generate a good narrative or establish author approval.
+- Connect the example of changing two pages in a fifty-page deck to page-level edits, stable Slide ID, changing Position, per-page history and named versions. The example is an illustration from the author, not a measured benchmark. Introduce stable identity alongside history; do not turn it into a UUID lesson.
+- Explain Main page reuse in different Presentations through actual talk selection, rather than a duplicate whole deck for each audience. Keep the asset library and the reusable page library distinct.
+- Connect the friction of inspecting and editing visual slides to inspectable PPTD files and the shared human/agent writer. PPTD does not eliminate rendered visual review or make aesthetics fully measurable. PPTX also has internal slide parts; do not claim page structure was invented here.
+- Give Project, Pages, Assets and Files a role in that work: organizing the talk, locating/editing a page, reusing original material and inspecting the project files. Connect Browse, Outline, Sections, Notes and History to seeing the argument, checking its sequence, arranging chapters, speaking and reviewing a particular page's changes. Cover the needed behavior without assigning one promotional page to every tab.
+- Verify OpenSlide/OpenPPTD/PPTD attribution against sources/story/FACTS.md and the current source notices. The author's tentative recollection of Kimi/PPTD provenance is not an established origin claim. Future video/image-editing ideas are not current capabilities; the author explicitly deferred that discussion.
+- Before expanding, write a coherent Main/Presentation Story and align each page/local purpose with it. Develop speakable Notes and transitions with the pages. Review headings plus notes as a continuous explanation. A factually correct feature list is insufficient.
+- Keep authors independent. Do not inspect or copy Claude's visual treatment as a reference for ChatGPT or DeepSeek. Share the author's account, factual corrections, assets and hard constraints; choose your own narrative, length, emphasis and layout. Client-specific praise and style feedback stay with that client.
 
 ## Visual work
 
 - Use the actual HUANDENG mark and appropriate real provider/project logos from sources/brand. Preserve their geometry, color and attribution. Product identity is meaningful content.
 - Choose a coherent background and color system by page role. White, light gray, gray-green or another justified treatment are available; all-white is not a success criterion. Avoid arbitrary color switching.
 - Let evidence and the speaker's intended comparison determine image scale, crop, density and alignment. Purposeful asymmetry, dense comparisons and mixed media are welcome. Do not make every page the same title/paragraph/one-screenshot template.
-- Make scientific visuals central. The optional public worked example in sources/science supplies exact source coordinates, derived measurements, plots and source notes. Use real figures, meaningful charts and useful tables where they explain the tool. A scientific slide should demonstrate more than screenshots of empty UI.
+- Use the optional public scientific example in sources/science only where it helps demonstrate the author's work or a specific editing decision. Preserve its exact coordinates, derived measurements and sources. Do not let a molecular plot become the main subject of this origin story merely because it is an available asset.
+- Use native table objects for a genuine row/column relationship. Never imitate table cells by aligning multiple text boxes, rectangular shapes or drawn lines. Keep ordinary paragraphs or bullet lists in one rich-text object where practical, using internal emphasis and list formatting. Purposeful scientific multi-panel figures, aligned plots and evidence annotations remain allowed; this rule does not flatten them into prose.
 - Original explanatory diagrams, meaningful arrows and annotations are allowed. They must encode a real relationship or point to actual evidence. Do not fabricate measurements, scientific results, performance numbers or a fake product interface.
 - Preserve readable axes, labels and source citations. Do not remove a complex figure or meaningful panel merely to achieve a lower text count or cleaner geometry.
 - Titles should be short and concrete. Adjust typography by language and function. At 960x540, roughly 26–32 for ordinary titles and 17–22 for body is a starting range, not an enforced template; dense scientific labels and captions have different needs.
@@ -33,7 +46,7 @@ Edit through the shared writer: read revisions, preview the exact transaction, a
 
 The current task authorizes redesign and complete delivery. Use your own judgment without waiting for per-page permission. Preserve a named completed milestone after review; avoid creating a checkpoint or a parallel folder for every small edit.
 
-Inspect the actual page sequence and individual renders. Judge visual identity, evidence coverage, scientific usefulness, readable imagery and variation as well as clipping. Export PDF and editable PPTX. A completed candidate remains subject to the owner's visual decision; do not label it author-approved.
+Inspect the actual page sequence and individual renders. Judge narrative causality, Main/local Story alignment, useful spoken Notes, visual identity, evidence coverage, readable imagery and variation as well as clipping. Check that a feature answers a motivated question, that no fake text-box table remains, and that the slide sequence sounds like the author's explanation. Export PDF and editable PPTX. A completed candidate remains subject to the owner's visual decision; do not label it author-approved.
 
 ## This edition
 

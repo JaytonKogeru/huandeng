@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "project": "chatgpt-zh",
   "locale": "zh-CN",
   "editorVersion": "0.18.0",
@@ -23,6 +23,10 @@
         {
           "pageId": "c1fcdc66-1c25-45a6-9b98-83d16f063c3e",
           "elementId": "structure"
+        },
+        {
+          "pageId": "7b5bb42e-c529-49f8-ad88-62c69b567837",
+          "elementId": "measure-view"
         }
       ]
     },
@@ -105,7 +109,51 @@
           "elementId": "product-mark"
         },
         {
+          "pageId": "49c12ba5-6503-4051-83dd-05cbfa96a5f7",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "f240e310-6466-4b7f-82ff-4b2668e2802c",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "1dc23de8-b351-483b-a93a-f02c0444a927",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "1f6289fd-1d4c-4a03-a74d-4bc4955de868",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "c91c3fe3-836f-492f-882d-905bd4d08a9b",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "bd3c71d1-360e-4e0c-bbb6-5938970e8876",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "137e3366-b18f-4c91-a67c-6cd2e0e64881",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "503c86ce-673c-4229-9251-22114e5f5da9",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "129dfdc6-685d-48b4-972b-abff11f823e6",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "ea528c6a-2423-488d-834b-056322cca744",
+          "elementId": "brand-small"
+        },
+        {
           "pageId": "3483b895-bc52-43b6-a7c4-001a0d1e4526",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "05cd8517-c8ac-4e12-b2d0-40c438b91042",
           "elementId": "brand-small"
         },
         {
@@ -117,7 +165,11 @@
           "elementId": "brand-small"
         },
         {
-          "pageId": "05cd8517-c8ac-4e12-b2d0-40c438b91042",
+          "pageId": "7b69742f-16b5-4b80-acf0-1d23966aae96",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "8bb920ed-1c71-45ac-ad9d-aa00750b1ff6",
           "elementId": "brand-small"
         },
         {
@@ -125,19 +177,11 @@
           "elementId": "brand-small"
         },
         {
-          "pageId": "7b69742f-16b5-4b80-acf0-1d23966aae96",
-          "elementId": "brand-small"
-        },
-        {
-          "pageId": "ea528c6a-2423-488d-834b-056322cca744",
-          "elementId": "brand-small"
-        },
-        {
           "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
           "elementId": "brand-small"
         },
         {
-          "pageId": "129dfdc6-685d-48b4-972b-abff11f823e6",
+          "pageId": "5f2fbea2-a43a-4532-9042-6a1d20c08801",
           "elementId": "brand-small"
         },
         {
@@ -146,14 +190,6 @@
         },
         {
           "pageId": "f68f052b-18ac-4286-ae3b-6f12e5c5d0d0",
-          "elementId": "brand-small"
-        },
-        {
-          "pageId": "503c86ce-673c-4229-9251-22114e5f5da9",
-          "elementId": "brand-small"
-        },
-        {
-          "pageId": "bd3c71d1-360e-4e0c-bbb6-5938970e8876",
           "elementId": "brand-small"
         },
         {
@@ -221,7 +257,7 @@
       "currentUses": [
         {
           "pageId": "59857807-d9f3-4e58-9a60-275cd504ea16",
-          "elementId": "end-view"
+          "elementId": "source-view"
         }
       ]
     },
@@ -237,7 +273,7 @@
       "currentUses": [
         {
           "pageId": "ea528c6a-2423-488d-834b-056322cca744",
-          "elementId": "versions"
+          "elementId": "versions-detail"
         }
       ]
     },
@@ -250,12 +286,7 @@
         897,
         918
       ],
-      "currentUses": [
-        {
-          "pageId": "05cd8517-c8ac-4e12-b2d0-40c438b91042",
-          "elementId": "story-panel"
-        }
-      ]
+      "currentUses": []
     },
     {
       "path": "media/imported/407df47ae7ba47cce90a8ef6e230cc3302161d2d430a6eddbdbc0e8dacdbfaaa.png",
@@ -268,16 +299,8 @@
       ],
       "currentUses": [
         {
-          "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
-          "elementId": "stack-8"
-        },
-        {
-          "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
-          "elementId": "sequence-0-2"
-        },
-        {
-          "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
-          "elementId": "sequence-1-0"
+          "pageId": "f240e310-6466-4b7f-82ff-4b2668e2802c",
+          "elementId": "earlier-workflow"
         }
       ]
     },
@@ -292,12 +315,8 @@
       ],
       "currentUses": [
         {
-          "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
-          "elementId": "stack-3"
-        },
-        {
-          "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
-          "elementId": "sequence-0-1"
+          "pageId": "f240e310-6466-4b7f-82ff-4b2668e2802c",
+          "elementId": "earlier-science"
         }
       ]
     },
@@ -312,28 +331,12 @@
       ],
       "currentUses": [
         {
-          "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
-          "elementId": "stack-1"
-        },
-        {
-          "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
-          "elementId": "sequence-0-0"
-        },
-        {
-          "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
-          "elementId": "sequence-1-1"
+          "pageId": "49c12ba5-6503-4051-83dd-05cbfa96a5f7",
+          "elementId": "thumb-1"
         },
         {
           "pageId": "129dfdc6-685d-48b4-972b-abff11f823e6",
-          "elementId": "linked-page"
-        },
-        {
-          "pageId": "baca190c-e87b-415f-9c30-7c04e3fabe17",
-          "elementId": "live-page"
-        },
-        {
-          "pageId": "8a9bcdf1-fcb2-4214-9743-86c110c954ca",
-          "elementId": "closing-example"
+          "elementId": "thumb-1"
         }
       ]
     },
@@ -346,12 +349,7 @@
         1920,
         1080
       ],
-      "currentUses": [
-        {
-          "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
-          "elementId": "sequence-1-2"
-        }
-      ]
+      "currentUses": []
     },
     {
       "path": "media/imported/10ee990c863d150d06ac8ef7125b31d3f5857d0fcbce91c21960ba49eca87e96.png",
@@ -387,7 +385,7 @@
       "currentUses": [
         {
           "pageId": "bd3c71d1-360e-4e0c-bbb6-5938970e8876",
-          "elementId": "credit-0"
+          "elementId": "upstream-mark"
         }
       ]
     },
@@ -400,12 +398,7 @@
         294,
         288
       ],
-      "currentUses": [
-        {
-          "pageId": "bd3c71d1-360e-4e0c-bbb6-5938970e8876",
-          "elementId": "credit-1"
-        }
-      ]
+      "currentUses": []
     },
     {
       "path": "media/imported/d697acf6f3c5bc265806bc8f6c4e6d58b964e0b2962392d0329a420639f45846.png",
@@ -416,12 +409,7 @@
         480,
         349
       ],
-      "currentUses": [
-        {
-          "pageId": "bd3c71d1-360e-4e0c-bbb6-5938970e8876",
-          "elementId": "credit-2"
-        }
-      ]
+      "currentUses": []
     },
     {
       "path": "media/imported/344ebbd51668b7b2a9e0847ea1bd0588311430af02869248f77a6cc418e9f9af.png",
@@ -443,16 +431,232 @@
         492,
         219
       ],
-      "currentUses": [
-        {
-          "pageId": "f68f052b-18ac-4286-ae3b-6f12e5c5d0d0",
-          "elementId": "present-menu"
-        }
-      ]
+      "currentUses": []
     },
     {
       "path": "media/imported/6619bc1ef150700ed910ffb558d541a52466e84f938d5e64619253e7e4ffd3aa.png",
       "sha256": "6619bc1ef150700ed910ffb558d541a52466e84f938d5e64619253e7e4ffd3aa",
+      "source": "export-current.png",
+      "kind": "actual-ui-or-operation-capture",
+      "pixels": [
+        1728,
+        816
+      ],
+      "currentUses": []
+    },
+    {
+      "path": "media/imported/5a8ee75844a1b6b472e3ab31291abb94b369b1058bdd9ee04ab24f28bd8ba001.png",
+      "sha256": "5a8ee75844a1b6b472e3ab31291abb94b369b1058bdd9ee04ab24f28bd8ba001",
+      "source": "editor-native-chart.png",
+      "kind": "actual-ui-or-operation-capture",
+      "pixels": [
+        4800,
+        2880
+      ],
+      "currentUses": []
+    },
+    {
+      "path": "media/imported/675167a0b82813c8f43297d5e8823b0788e05a2ffd0e546c3d53b0fab94a61e5.png",
+      "sha256": "675167a0b82813c8f43297d5e8823b0788e05a2ffd0e546c3d53b0fab94a61e5",
+      "source": "editor-native-chart.png",
+      "kind": "actual-ui-or-operation-capture",
+      "pixels": [
+        4800,
+        2880
+      ],
+      "currentUses": [
+        {
+          "pageId": "7995de62-e81e-46db-b250-cabc66a99b28",
+          "elementId": "editor-cover"
+        },
+        {
+          "pageId": "1f6289fd-1d4c-4a03-a74d-4bc4955de868",
+          "elementId": "editor-native-chart"
+        },
+        {
+          "pageId": "3483b895-bc52-43b6-a7c4-001a0d1e4526",
+          "elementId": "editor-native-chart"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/a72a80938253204970ca58020c04077a4e7f79db2fcb2e5801d5e29294ec1645.png",
+      "sha256": "a72a80938253204970ca58020c04077a4e7f79db2fcb2e5801d5e29294ec1645",
+      "source": "story-clean.png",
+      "kind": "actual-ui-or-operation-capture",
+      "pixels": [
+        897,
+        1035
+      ],
+      "currentUses": [
+        {
+          "pageId": "05cd8517-c8ac-4e12-b2d0-40c438b91042",
+          "elementId": "story-panel"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/5358b331462605400b48094e049b84f1abc23ebf6ec56bf3853055aac199a377.png",
+      "sha256": "5358b331462605400b48094e049b84f1abc23ebf6ec56bf3853055aac199a377",
+      "source": "assets.png",
+      "kind": "actual-ui-or-operation-capture",
+      "pixels": [
+        861,
+        1305
+      ],
+      "currentUses": [
+        {
+          "pageId": "59857807-d9f3-4e58-9a60-275cd504ea16",
+          "elementId": "assets"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/68eaf36bbad303ce47f913fb2f05564119fb720ee4d4c4585894b5b1a28978b5.png",
+      "sha256": "68eaf36bbad303ce47f913fb2f05564119fb720ee4d4c4585894b5b1a28978b5",
+      "source": "browse.png",
+      "kind": "actual-ui-or-operation-capture",
+      "pixels": [
+        3936,
+        2271
+      ],
+      "currentUses": [
+        {
+          "pageId": "8bb920ed-1c71-45ac-ad9d-aa00750b1ff6",
+          "elementId": "browse"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/44de8d03a052bab619bcf4e8f50cf6a573f36957d66f9449d305f67b1ab7d1d9.png",
+      "sha256": "44de8d03a052bab619bcf4e8f50cf6a573f36957d66f9449d305f67b1ab7d1d9",
+      "source": "21.png",
+      "kind": "rendered-project-page",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "currentUses": [
+        {
+          "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
+          "elementId": "stack-20"
+        },
+        {
+          "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
+          "elementId": "sequence-0-0"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/a43f0b634474045ab3c165038f73c8b1d95eeff1a26fccc67b00c1b098886f91.png",
+      "sha256": "a43f0b634474045ab3c165038f73c8b1d95eeff1a26fccc67b00c1b098886f91",
+      "source": "25.png",
+      "kind": "rendered-project-page",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "currentUses": [
+        {
+          "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
+          "elementId": "stack-24"
+        },
+        {
+          "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
+          "elementId": "sequence-1-1"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/9226e2eddd7dacac3ddbf5bbff9df2fd98052c928d37dfeac1ccb864694f3a8b.png",
+      "sha256": "9226e2eddd7dacac3ddbf5bbff9df2fd98052c928d37dfeac1ccb864694f3a8b",
+      "source": "07.png",
+      "kind": "rendered-project-page",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "currentUses": [
+        {
+          "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
+          "elementId": "stack-6"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/32afe1c10fd98bb34467659582f53e55a3913528b4b336ede2558c59cfc763a7.png",
+      "sha256": "32afe1c10fd98bb34467659582f53e55a3913528b4b336ede2558c59cfc763a7",
+      "source": "22.png",
+      "kind": "rendered-project-page",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "currentUses": [
+        {
+          "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
+          "elementId": "sequence-0-1"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/6444023800e83f11ab9b29105da06501545c81d8bc7f47164292f96be85abc5d.png",
+      "sha256": "6444023800e83f11ab9b29105da06501545c81d8bc7f47164292f96be85abc5d",
+      "source": "24.png",
+      "kind": "rendered-project-page",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "currentUses": [
+        {
+          "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
+          "elementId": "sequence-0-2"
+        },
+        {
+          "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
+          "elementId": "sequence-1-0"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/25d75519fb3e08d003189856b4d137b53fc0ce9c9a19072458f5ba111e261d24.png",
+      "sha256": "25d75519fb3e08d003189856b4d137b53fc0ce9c9a19072458f5ba111e261d24",
+      "source": "14.png",
+      "kind": "rendered-project-page",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "currentUses": []
+    },
+    {
+      "path": "media/imported/f9e22dfafbac40e92462384baf7b281b0b610704d46e23f75a1ab44d60854824.png",
+      "sha256": "f9e22dfafbac40e92462384baf7b281b0b610704d46e23f75a1ab44d60854824",
+      "source": "02.png",
+      "kind": "rendered-project-page",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "currentUses": [
+        {
+          "pageId": "5f2fbea2-a43a-4532-9042-6a1d20c08801",
+          "elementId": "thumb-1"
+        },
+        {
+          "pageId": "baca190c-e87b-415f-9c30-7c04e3fabe17",
+          "elementId": "live-page"
+        },
+        {
+          "pageId": "8a9bcdf1-fcb2-4214-9743-86c110c954ca",
+          "elementId": "closing-example"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/81adcff8c31dced146e9c92d7efaa1381e1b4f930f8b11d2edd358662ece748d.png",
+      "sha256": "81adcff8c31dced146e9c92d7efaa1381e1b4f930f8b11d2edd358662ece748d",
       "source": "export-current.png",
       "kind": "actual-ui-or-operation-capture",
       "pixels": [
@@ -467,126 +671,100 @@
       ]
     },
     {
-      "path": "media/imported/5a8ee75844a1b6b472e3ab31291abb94b369b1058bdd9ee04ab24f28bd8ba001.png",
-      "sha256": "5a8ee75844a1b6b472e3ab31291abb94b369b1058bdd9ee04ab24f28bd8ba001",
-      "source": "editor-native-chart.png",
+      "path": "media/imported/f2fc3977c5d34bf2860fb7bc3a6ffd3df912a6a7d0f30bab2f58e5a41902d0da.png",
+      "sha256": "f2fc3977c5d34bf2860fb7bc3a6ffd3df912a6a7d0f30bab2f58e5a41902d0da",
+      "source": "present-current.png",
       "kind": "actual-ui-or-operation-capture",
       "pixels": [
-        4800,
-        2880
+        468,
+        207
       ],
       "currentUses": [
         {
-          "pageId": "7995de62-e81e-46db-b250-cabc66a99b28",
-          "elementId": "editor-cover"
-        },
+          "pageId": "f68f052b-18ac-4286-ae3b-6f12e5c5d0d0",
+          "elementId": "present-menu"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/7efb3265df1baea039e357e25a2958a94d2f33aa1f002c242ea102a1f36d0152.png",
+      "sha256": "7efb3265df1baea039e357e25a2958a94d2f33aa1f002c242ea102a1f36d0152",
+      "source": "14.png",
+      "kind": "rendered-project-page",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "currentUses": [
         {
-          "pageId": "3483b895-bc52-43b6-a7c4-001a0d1e4526",
-          "elementId": "editor-working"
+          "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
+          "elementId": "sequence-1-2"
         }
       ]
     }
   ],
   "captures": [
     {
-      "name": "capture-manifest-clean.json",
-      "language": "zh",
-      "sourcePageId": "c1fcdc66-1c25-45a6-9b98-83d16f063c3e",
+      "locale": "zh-CN",
+      "viewport": [
+        1600,
+        960
+      ],
+      "deviceScaleFactor": 3,
       "captures": [
         {
-          "file": "editor-science.png",
+          "file": "editor-native-chart.png",
+          "pageId": "c1fcdc66-1c25-45a6-9b98-83d16f063c3e",
           "pixels": [
             4800,
             2880
           ],
-          "sha256": "a817d03a16b454b0f937e1724dbd0c82d971b1e199a9c16d60932bb91412ee38",
-          "deviceScaleFactor": 3
+          "sha256": "675167a0b82813c8f43297d5e8823b0788e05a2ffd0e546c3d53b0fab94a61e5"
         },
         {
           "file": "story-clean.png",
+          "pageId": "c1fcdc66-1c25-45a6-9b98-83d16f063c3e",
           "pixels": [
             897,
-            918
+            1035
           ],
-          "sha256": "61947540df7b4bdda27212ac945a8bc385224270a876b21b57803958b3140e0a",
-          "deviceScaleFactor": 3
+          "sha256": "a72a80938253204970ca58020c04077a4e7f79db2fcb2e5801d5e29294ec1645"
         },
         {
-          "file": "history-populated.png",
+          "file": "assets.png",
+          "pageId": "c1fcdc66-1c25-45a6-9b98-83d16f063c3e",
+          "pixels": [
+            861,
+            1305
+          ],
+          "sha256": "5358b331462605400b48094e049b84f1abc23ebf6ec56bf3853055aac199a377"
+        },
+        {
+          "file": "browse.png",
+          "pageId": "c1fcdc66-1c25-45a6-9b98-83d16f063c3e",
           "pixels": [
             3936,
             2271
           ],
-          "sha256": "2622d5a4c650f9301d8f76ad65109a2994576373b1206ed558f531ac925af6b2",
-          "deviceScaleFactor": 3
-        },
-        {
-          "file": "versions-detail.png",
-          "pixels": [
-            645,
-            696
-          ],
-          "sha256": "24e7314c2324f71ccec2c6fe5827542fc861ac8549c249ae9a790ca08c198c83",
-          "deviceScaleFactor": 3
-        },
-        {
-          "file": "operations-list.png",
-          "pixels": [
-            669,
-            1554
-          ],
-          "sha256": "f1de8412464248322435bfc113d10995cb0476e3d25fc0187fae6007c15aea9b",
-          "deviceScaleFactor": 3
-        }
-      ]
-    },
-    {
-      "name": "capture-manifest-final.json",
-      "language": "zh",
-      "sourcePageId": "c1fcdc66-1c25-45a6-9b98-83d16f063c3e",
-      "captures": [
-        {
-          "file": "editor-complete.png",
-          "pixels": [
-            4800,
-            2880
-          ],
-          "sha256": "344ebbd51668b7b2a9e0847ea1bd0588311430af02869248f77a6cc418e9f9af",
-          "deviceScaleFactor": 3
+          "sha256": "68eaf36bbad303ce47f913fb2f05564119fb720ee4d4c4585894b5b1a28978b5"
         },
         {
           "file": "export-current.png",
+          "pageId": "c1fcdc66-1c25-45a6-9b98-83d16f063c3e",
           "pixels": [
             1728,
             816
           ],
-          "sha256": "6619bc1ef150700ed910ffb558d541a52466e84f938d5e64619253e7e4ffd3aa",
-          "deviceScaleFactor": 3
+          "sha256": "81adcff8c31dced146e9c92d7efaa1381e1b4f930f8b11d2edd358662ece748d"
         },
         {
           "file": "present-current.png",
+          "pageId": "c1fcdc66-1c25-45a6-9b98-83d16f063c3e",
           "pixels": [
-            492,
-            219
+            468,
+            207
           ],
-          "sha256": "078c3109981e8b9e7cfdd6554c04814bc4ec1ab3609997223db46f503088e1f1",
-          "deviceScaleFactor": 3
-        }
-      ]
-    },
-    {
-      "name": "capture-manifest-native-chart.json",
-      "language": "zh",
-      "sourcePageId": "c1fcdc66-1c25-45a6-9b98-83d16f063c3e",
-      "captures": [
-        {
-          "file": "editor-native-chart.png",
-          "pixels": [
-            4800,
-            2880
-          ],
-          "sha256": "5a8ee75844a1b6b472e3ab31291abb94b369b1058bdd9ee04ab24f28bd8ba001",
-          "deviceScaleFactor": 3
+          "sha256": "f2fc3977c5d34bf2860fb7bc3a6ffd3df912a6a7d0f30bab2f58e5a41902d0da"
         }
       ]
     }

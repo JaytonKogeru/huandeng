@@ -1,0 +1,138 @@
+background:
+  type: solid
+  color: "#F7F5F0"
+elements:
+  - elementId: p15-eyebrow
+    elementType: text
+    bounds:
+      - 64
+      - 38
+      - 300
+      - 16
+    content:
+      text: 05 · THE WORKSPACE
+      fontSize: 10
+      fontFamily: Consolas
+      color: "#B43C26"
+      letterSpacing: 1.6
+      align:
+        - left
+        - top
+  - elementId: p15-title
+    elementType: text
+    role: title
+    bounds:
+      - 64
+      - 58
+      - 700
+      - 42
+    content:
+      text: A library, not a pasteboard.
+      fontSize: 30
+      fontFamily: Georgia
+      color: "#17181A"
+      lineHeight: 1.1
+      align:
+        - left
+        - top
+  - elementId: p15-body
+    elementType: text
+    bounds:
+      - 64
+      - 108
+      - 600
+      - 64
+    content:
+      text: "Assets live once, at their original size, with their names and usage. A figure is referenced by pages, not re-pasted into each one. When the page changes, the evidence stays."
+      fontSize: 16
+      fontFamily: Segoe UI
+      color: "#3A3833"
+      lineHeight: 1.55
+      align:
+        - left
+        - top
+  - elementId: p15-chart
+    elementType: image
+    bounds:
+      - 64
+      - 190
+      - 560
+      - 280
+    src: media/imported/a36d62e395822be26d250ca525aa072402aa68bfce609b3464f84762541bff62.png
+    sourceName: paired-c1-distances-en.png
+    fit:
+      mode: contain
+  - elementId: p15-chart-frame
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 64
+      - 190
+      - 560
+      - 280
+    border:
+      color: "#D9D4C8"
+      width: 1
+      style: solid
+  - elementId: p15-duplex
+    elementType: image
+    bounds:
+      - 660
+      - 190
+      - 220
+      - 220
+    src: media/imported/ff6d1434a44440fba124ccad7dfa30efa01e8c400094d4453d17d502345c1e2c.png
+    sourceName: dna-duplex-side.png
+    fit:
+      mode: contain
+  - elementId: p15-caption
+    elementType: text
+    bounds:
+      - 64
+      - 482
+      - 600
+      - 36
+    content:
+      text: C1′–C1′ distances across twelve paired positions in PDB 1BNA. One structure, not independent replicates.
+      fontSize: 10.5
+      fontFamily: Consolas
+      color: "#918B7E"
+      lineHeight: 1.5
+      align:
+        - left
+        - top
+  - elementId: p15-source
+    elementType: text
+    bounds:
+      - 660
+      - 424
+      - 236
+      - 50
+    content:
+      text: |-
+        RCSB PDB 1BNA
+        Drew et al., PNAS 1981
+      fontSize: 9.5
+      fontFamily: Consolas
+      color: "#918B7E"
+      lineHeight: 1.5
+      align:
+        - left
+        - top
+  - elementId: p15-folio
+    elementType: text
+    bounds:
+      - 860
+      - 512
+      - 36
+      - 14
+    content:
+      text: "15"
+      field: main-position
+      fontSize: 9.5
+      fontFamily: Consolas
+      color: "#A29C8F"
+      align:
+        - right
+        - top
+notes: "The materials library is the part I use most. Assets are stored once, at their original size, with their source and usage. This figure is a real one: C1′–C1′ distances at twelve paired positions in PDB 1BNA, one public structure. They are not independent replicates, and not hydrogen-bond distances; I use them as an example of real evidence, not as a result of the editor. The figure is referenced, not re-pasted, so the labels and pixels survive."

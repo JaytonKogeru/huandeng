@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "reviewedAtUtc": "2026-11-10T23:05:46.172819+00:00",
+  "reviewer": "independent visual_audit agent",
+  "edition": "DeepSeek Chinese story edition",
+  "decision": "native_submission_preserved_with_content_findings",
+  "authorAccepted": false,
+  "scope": {
+    "all18PagesInContacts": true,
+    "all18PersistedNotesAndVisibleTextRead": true,
+    "enlargedPDFPages": [
+      9,
+      16
+    ],
+    "officeReview": "Performed separately by native trial supervisor; not repeated here",
+    "noNativeSourceOrExportEdited": true
+  },
+  "findings": [
+    {
+      "id": "DSH-ZH-NARR-01",
+      "severity": "content_fidelity",
+      "pages": [
+        3,
+        5
+      ],
+      "issue": "The account was dramatized into a specific lab-meeting exchange and timing without marking the added detail. Page 3 Notes say the PPT had been shown only briefly and the supervisor then asked whether AI made it; the source says the supervisor and others could recognize AI style, but does not supply that direct quotation, timing or noncritical reaction. Page 5 adds pages 4 and 12 and exactly three copies; its Notes label the figure schematic, not these details as personal history.",
+      "evidence": "narrative.json pages 3 and 5; USER-STORY.zh-CN.md continuous account",
+      "consequence": "Read these specifics as author-selected dramatization/illustration, not verified biographical details. Preserve the native output and report the limitation."
+    },
+    {
+      "id": "DSH-ZH-NARR-02",
+      "severity": "evidence_scope_mismatch",
+      "pages": [
+        16
+      ],
+      "issue": "The headline says two pages were changed and only those two pages were touched. The displayed evidence and subtitle correctly show one page with two text fields changed (title and lead).",
+      "evidence": "pdf-pages/slide-16.png and narrative.json page 16",
+      "consequence": "The bounded-edit evidence supports one page/two fields. Do not cite the headline as a demonstrated two-page edit."
+    }
+  ],
+  "observations": [
+    "The 18-page sequence is causal: personal AI-style experience, unwanted copies, page identity/history, then evidence, Story and shared project use.",
+    "The two native tables reported in the source summary appear as genuine row/column relations; no faux grid made of separate text/shape cells was observed in the contact sequence.",
+    "Scientific page 9 uses the 12 paired positions from PDB 1BNA, the correct distance range and explicit non-replicate/non-benchmark scope. Its plot and source attribution are readable.",
+    "Page 4 explicitly scopes AI-style judgments as personal observations, not research or model evaluation.",
+    "No Claude visual material was consulted for this review and no style transfer was requested."
+  ],
+  "limits": [
+    "This is a short independent semantic review of the frozen native submission, not author approval.",
+    "Native completion, tool errors and export/Office checks remain owned by the native supervisor records.",
+    "No aesthetic redo or source correction was sent to DeepSeek."
+  ],
+  "inputs": [
+    {
+      "path": ".verification/story-20261111/deepseek-zh-qa/narrative.json",
+      "bytes": 41510,
+      "sha256": "61dce8fbab7c598acd80a48e394a6656ded3eafb644bc4ff3435f09a4bed2648"
+    },
+    {
+      "path": ".verification/story-20261111/deepseek-zh-qa/contact-1.jpg",
+      "bytes": 278660,
+      "sha256": "2c134cefe52078ce632021b3040d5041486e6131cec4009ce20e7e88d9917af6"
+    },
+    {
+      "path": ".verification/story-20261111/deepseek-zh-qa/contact-2.jpg",
+      "bytes": 276779,
+      "sha256": "fbdfe16836c2299c0b4db0c00cc2ff90abc9001bd92672ec9ad6c1d38f1eaf6f"
+    },
+    {
+      "path": ".verification/story-20261111/deepseek-zh-qa/contact-3.jpg",
+      "bytes": 333607,
+      "sha256": "7ee82c3c6c94ff5c7d53022de61e72a7905399b898b5f00b3091e7c1cd462a99"
+    },
+    {
+      "path": ".verification/story-20261111/deepseek-zh-qa/pdf-pages/slide-09.png",
+      "bytes": 185805,
+      "sha256": "4487d266225404bace75abab2ccd253c2abdb9819eb97241904c76337f4318fd"
+    },
+    {
+      "path": ".verification/story-20261111/deepseek-zh-qa/pdf-pages/slide-16.png",
+      "bytes": 124039,
+      "sha256": "c4e42b5caa0c9a20408bcc9305a6d1e825a5e5d37d3740aadba1732730bb3ee6"
+    }
+  ]
+}

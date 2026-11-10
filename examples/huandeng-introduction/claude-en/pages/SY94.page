@@ -192,7 +192,7 @@ elements:
       - 420
       - 16
     content:
-      text: HUANDENG  /  Versions and delivery
+      text: "HUANDENG  /  Working with agents"
       fontFamily: Arial
       fontSize: 11
       lineHeight: 1.3

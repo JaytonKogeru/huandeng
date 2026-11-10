@@ -1,0 +1,147 @@
+background:
+  type: solid
+  color: "#F6F6F3"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 56
+      - 34
+      - 848
+      - 40
+    content:
+      text: 这份幻灯，就是这样做出来的
+      fontFamily: Microsoft YaHei
+      fontSize: 26
+      lineHeight: 1.3
+      color: "#1C2321"
+      align:
+        - left
+        - top
+      bold: true
+    role: title
+  - elementId: lead
+    elementType: text
+    bounds:
+      - 56
+      - 80
+      - 848
+      - 26
+    content:
+      text: 我先口述，想到哪儿说到哪儿；AI 把它整理成章节；再一页一页做出来。
+      fontFamily: Microsoft YaHei
+      fontSize: 16
+      lineHeight: 1.4
+      color: "#56615D"
+      align:
+        - left
+        - top
+  - elementId: quotes
+    elementType: text
+    bounds:
+      - 56
+      - 128
+      - 420
+      - 330
+    content:
+      text: <p><span style="color:#B9783F">“</span>我就在考虑如何让 AI 制作的 slides 减少它这种明显的 AI 质感。<span style="color:#B9783F">”</span></p><p><span style="font-size:8px"> </span></p><p><span style="color:#B9783F">“</span>如果你改动多的话，它可能会在你目录里创建大量的这种垃圾副本。<span style="color:#B9783F">”</span></p><p><span style="font-size:8px"> </span></p><p><span style="color:#B9783F">“</span>所以最好的办法就是让人类给 AI 讲一个故事。<span style="color:#B9783F">”</span></p>
+      fontFamily: Microsoft YaHei
+      fontSize: 17
+      lineHeight: 1.65
+      color: "#1C2321"
+      align:
+        - left
+        - top
+  - elementId: quotes-src
+    elementType: text
+    bounds:
+      - 56
+      - 440
+      - 420
+      - 20
+    content:
+      text: —— 摘自口述原文
+      fontFamily: Microsoft YaHei
+      fontSize: 12
+      lineHeight: 1.4
+      color: "#7A8480"
+      align:
+        - left
+        - top
+  - elementId: rule
+    elementType: line
+    bounds:
+      - 504
+      - 132
+      - 1
+      - 316
+    viewBox:
+      - 1
+      - 316
+    points: 0,0 0,316
+    border:
+      width: 1
+      color: "#CBD3CF"
+      style: solid
+    arrow: []
+  - elementId: structure
+    elementType: text
+    bounds:
+      - 532
+      - 128
+      - 372
+      - 340
+    content:
+      text: <p><strong><span style="color:#2E6B5E">整理成三个章节</span></strong></p><p><span style="font-size:8px"> </span></p><p><strong><span style="color:#1C2321">我为什么要做幻灯</span></strong></p><p>AI 味、垃圾副本、只能看截图</p><p><span style="font-size:8px"> </span></p><p><strong><span style="color:#1C2321">我们做了什么</span></strong></p><p>PPTD + open-slide，编辑器和故事</p><p><span style="font-size:8px"> </span></p><p><strong><span style="color:#1C2321">以“页”为单位</span></strong></p><p>页面短码、每页历史、一份来源多场演讲</p>
+      fontFamily: Microsoft YaHei
+      fontSize: 16
+      lineHeight: 1.55
+      color: "#3E4845"
+      align:
+        - left
+        - top
+  - elementId: ft-mark
+    elementType: image
+    bounds:
+      - 56
+      - 505
+      - 16
+      - 16
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    fit:
+      mode: contain
+  - elementId: ft-label
+    elementType: text
+    bounds:
+      - 78
+      - 505
+      - 420
+      - 16
+    content:
+      text: HUANDENG  /  我们做了什么
+      fontFamily: Microsoft YaHei
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - left
+        - middle
+  - elementId: ft-pos
+    elementType: text
+    bounds:
+      - 824
+      - 505
+      - 80
+      - 16
+    content:
+      text: "0"
+      fontFamily: Microsoft YaHei
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - right
+        - middle
+      field: main-position
+notes: 说一个最直接的例子：这份幻灯本身就是这么做出来的。我先把为什么做这个项目讲了一遍，完全是想到哪儿说到哪儿。AI 把这段口述整理成三个章节，然后再一页一页做出来。左边是口述原文里的三句话，右边是整理出来的结构。所以现在这份备注，基本就是我自己当时说的话。我不需要再为 AI 排好的页面现编一份讲稿。

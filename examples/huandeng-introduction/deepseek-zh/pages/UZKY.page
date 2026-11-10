@@ -2,7 +2,7 @@ pageType: content
 background:
   type: solid
   color: "#F4F3ED"
-notes: Story 不是讲稿。项目、章节、页面各有自己的目的与范围，讲稿则服务当下的听众。左侧真实截图显示页面 Story 的目的、保留项和这次修改；右侧把四层放在一起，提醒它们要一致。科学页的保留项必须落到具体证据。
+notes: "为什么故事能减少 AI 质感？因为它先规定取舍。项目 Story 说为什么做，章节 Story 说这一段为什么在这里，页面 Story 说这一页要证明什么、必须保留什么，讲稿说怎么讲。Story 不是讲稿，也不是审美批准；它是给 AI 的 alignment，不保证一定做对。"
 elements:
   - elementId: story-title
     elementType: text
@@ -13,7 +13,7 @@ elements:
       - 430
       - 40
     content:
-      text: 写下这一页为什么存在
+      text: "把故事写进文件"
       fontSize: 28
       fontFamily:
         ea: Microsoft YaHei
@@ -28,7 +28,7 @@ elements:
     bounds:
         [48,90,430,62]
     content:
-      text: "Story 记录目的、保留项与这次修改；\n讲稿记录怎么讲。两者不混在一起。"
+      text: "Story 不是讲稿。\n它写这一页为什么存在、什么不能丢、这次改什么。"
       fontSize: 14.4
       fontFamily:
         ea: Microsoft YaHei
@@ -72,9 +72,7 @@ elements:
       - 300
       - 36
     content:
-      text: |-
-        真实界面：页面 Story 面板。
-        目的、保留、这次修改是三个字段。
+      text: "真实界面：页面 Story 面板。\n目的、保留、这次修改。"
       fontSize: 9
       fontFamily:
         ea: Microsoft YaHei
@@ -84,222 +82,6 @@ elements:
       align:
         - left
         - top
-  - elementId: story-layers-label
-    elementType: text
-    bounds:
-      - 392
-      - 160
-      - 300
-      - 18
-    content:
-      text: 四个层次，回答不同的问题
-      fontSize: 9.2
-      fontFamily:
-        ea: Microsoft YaHei
-        latin: Arial
-      color: "#66756A"
-      letterSpacing: 0.7
-      align:
-        - left
-        - top
-  - elementId: story-layer-1-label
-    elementType: text
-    bounds:
-      - 392
-      - 190
-      - 96
-      - 22
-    content:
-      text: 项目
-      fontSize: 11
-      fontFamily:
-        ea: Microsoft YaHei
-        latin: Arial
-      color: "#66756A"
-      align:
-        - left
-        - top
-  - elementId: story-layer-1-text
-    elementType: text
-    bounds:
-      - 500
-      - 188
-      - 410
-      - 24
-    content:
-      text: 这项工作想让谁理解什么？
-      fontSize: 14
-      fontFamily:
-        ea: Microsoft YaHei
-        latin: Arial
-      color: "#2B3830"
-      align:
-        - left
-        - top
-  - elementId: story-rule-1
-    elementType: line
-    bounds:
-      - 392
-      - 232
-      - 518
-      - 1
-    viewBox:
-      - 518
-      - 1
-    points: 0,0.5 518,0.5
-    border:
-      color: "#D4DBD2"
-      width: 0.7
-      style: solid
-  - elementId: story-layer-2-label
-    elementType: text
-    bounds:
-      - 392
-      - 250
-      - 96
-      - 22
-    content:
-      text: 章节
-      fontSize: 11
-      fontFamily:
-        ea: Microsoft YaHei
-        latin: Arial
-      color: "#66756A"
-      align:
-        - left
-        - top
-  - elementId: story-layer-2-text
-    elementType: text
-    bounds:
-      - 500
-      - 248
-      - 410
-      - 24
-    content:
-      text: 这一段为什么排在这里？
-      fontSize: 14
-      fontFamily:
-        ea: Microsoft YaHei
-        latin: Arial
-      color: "#2B3830"
-      align:
-        - left
-        - top
-  - elementId: story-rule-2
-    elementType: line
-    bounds:
-      - 392
-      - 292
-      - 518
-      - 1
-    viewBox:
-      - 518
-      - 1
-    points: 0,0.5 518,0.5
-    border:
-      color: "#D4DBD2"
-      width: 0.7
-      style: solid
-  - elementId: story-layer-3-label
-    elementType: text
-    bounds:
-      - 392
-      - 310
-      - 96
-      - 22
-    content:
-      text: 页面
-      fontSize: 11
-      fontFamily:
-        ea: Microsoft YaHei
-        latin: Arial
-      color: "#66756A"
-      align:
-        - left
-        - top
-  - elementId: story-layer-3-text
-    elementType: text
-    bounds:
-      - 500
-      - 308
-      - 410
-      - 44
-    content:
-      text: 这一页要证明什么？必须保留哪些证据与限制？
-      fontSize: 14
-      fontFamily:
-        ea: Microsoft YaHei
-        latin: Arial
-      color: "#2B3830"
-      lineHeight: 1.55
-      align:
-        - left
-        - top
-  - elementId: story-rule-3
-    elementType: line
-    bounds:
-      - 392
-      - 362
-      - 518
-      - 1
-    viewBox:
-      - 518
-      - 1
-    points: 0,0.5 518,0.5
-    border:
-      color: "#D4DBD2"
-      width: 0.7
-      style: solid
-  - elementId: story-layer-4-label
-    elementType: text
-    bounds:
-      - 392
-      - 380
-      - 96
-      - 22
-    content:
-      text: 讲稿
-      fontSize: 11
-      fontFamily:
-        ea: Microsoft YaHei
-        latin: Arial
-      color: "#66756A"
-      align:
-        - left
-        - top
-  - elementId: story-layer-4-text
-    elementType: text
-    bounds:
-      - 500
-      - 378
-      - 410
-      - 44
-    content:
-      text: 这一页怎么讲？怎样转到下一页？
-      fontSize: 14
-      fontFamily:
-        ea: Microsoft YaHei
-        latin: Arial
-      color: "#2B3830"
-      lineHeight: 1.55
-      align:
-        - left
-        - top
-  - elementId: story-rule-4
-    elementType: line
-    bounds:
-      - 392
-      - 430
-      - 518
-      - 1
-    viewBox:
-      - 518
-      - 1
-    points: 0,0.5 518,0.5
-    border:
-      color: "#D4DBD2"
-      width: 0.7
-      style: solid
   - elementId: story-keep-panel
     elementType: shape
     bounds:
@@ -341,12 +123,37 @@ elements:
       - 518
       - 18
     content:
-      text: 修改前先读懂约束，Agent 才不会把证据当装饰。
+      text: "Story 不保证 AI 一定做对；它让 AI 知道什么该改、什么不能丢。"
       fontSize: 9.6
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
       color: "#9E5B3E"
+      align:
+        - left
+        - top
+  - elementId: story-list
+    elementType: text
+    bounds:
+      - 392
+      - 160
+      - 518
+      - 240
+    content:
+      text: |-
+        项目｜为什么做这份幻灯片？
+  
+        章节｜这一段为什么排在这里？
+  
+        页面｜这一页要证明什么？必须保留什么？
+  
+        讲稿｜这一页怎么讲？
+      fontSize: 13.6
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#2B3830"
+      lineHeight: 1.55
       align:
         - left
         - top

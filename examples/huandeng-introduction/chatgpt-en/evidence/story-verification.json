@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-11-10T23:02:19.788Z",
+  "project": "chatgpt-en",
+  "checks": {
+    "composition": true,
+    "preexistingActiveIdentitiesPreserved": true,
+    "userTombstonePreserved": true,
+    "notesAndPurposeOnEveryPage": true,
+    "titleOnlySections": true,
+    "twelveValuesAndAxisCorrection": true,
+    "realPinnedVersionAndOccurrenceNotes": true,
+    "currentImagesIndexed": true,
+    "verbatimPublicStory": true,
+    "sixCurrentLocaleCaptures": true
+  },
+  "allPassed": true,
+  "pageCount": 27,
+  "fullCount": 27,
+  "briefCount": 13,
+  "currentImages": 59,
+  "assetEntries": 39,
+  "sourceStorySha256": "71e4021fc9cc3bc3b438e2b7d7ff950f0f5921cd4fd24b7afdd9d2c87ff503e3",
+  "authorAccepted": false
+}

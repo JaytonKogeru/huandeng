@@ -12,15 +12,7 @@ elements:
       - 67
     role: title
     content:
-      text: A project lives in one folder
-      fontFamily: Arial
-      fontSize: 29
-      color: "#263C34"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
+      {"text":"A folder I can return to","fontFamily":"Arial","fontSize":29,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
   - elementId: folder-project
     elementType: icon
     iconName: fas:folder-open
@@ -57,18 +49,7 @@ elements:
       - 324
       - 126
     content:
-      text: |-
-        Open the project here.
-        Carry the whole folder
-        to keep editing and reusing it.
-      fontFamily: Arial
-      fontSize: 20
-      color: "#263C34"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.55
+      {"text":"Files exposes the project tree.\nPages, materials, Story and history\ntravel with this folder.","fontFamily":"Arial","fontSize":20,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.55}
   - elementId: folder-contents
     elementType: table
     bounds:
@@ -194,4 +175,4 @@ elements:
         - top
       lineHeight: 1.3
       field: main-position
-notes: A PPTD is the entry to a project folder. Preserve its pages, media and .huandeng data when moving it. This introduction and the other three current editions live together inside examples/huandeng-introduction in the main repository; old working copies are not another current edition.
+notes: "Opening deck.pptd opens the project, but that entry is only one part of it. Pages, images, Story, composition and history live beside it. AGENTS.md keeps the authoring preferences available to the agent. The Files view exposes that working directory, much like an IDE project tree. Carrying the whole folder keeps the materials and history available for the next edit."
