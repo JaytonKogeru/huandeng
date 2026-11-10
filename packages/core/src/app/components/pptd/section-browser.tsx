@@ -18,7 +18,6 @@ import { WorkspaceSlidePreview } from './workspace-views';
 
 export function SectionBrowser({
   display,
-  onDisplayChange,
   pages,
   sections,
   size,
@@ -31,9 +30,9 @@ export function SectionBrowser({
   onEdit,
   onMove,
   onManageSections,
+  onHistory,
 }: {
   display: BrowserDisplay;
-  onDisplayChange: (display: BrowserDisplay) => void;
   pages: PageSnapshot[];
   sections: ThumbnailSection[];
   size: PageSize;
@@ -46,6 +45,7 @@ export function SectionBrowser({
   onEdit: (pageId: string, occurrenceId?: string) => void;
   onMove: (pageId: string, boundary: SlideInsertionBoundary) => void;
   onManageSections: () => void;
+  onHistory?: (pageId: string, occurrenceId?: string) => void;
 }) {
   const { t } = useHuandengLocale();
   const [query, setQuery] = useState('');
@@ -76,27 +76,10 @@ export function SectionBrowser({
     <section
       className="hd-section-browser"
       data-hd-section-browser
-      aria-label={t('Browse')}
+      aria-label={t(display === 'outline' ? 'Outline' : 'Browse')}
       data-hd-browser-display={display}
     >
       <div className="hd-browser-controls">
-        <fieldset
-          className="flex gap-1 rounded border bg-background p-1"
-          aria-label={t('Browse display')}
-        >
-          {(['thumbnails', 'outline'] as const).map((mode) => (
-            <Button
-              key={mode}
-              size="xs"
-              variant={display === mode ? 'secondary' : 'ghost'}
-              aria-pressed={display === mode}
-              data-hd-browser-display-option={mode}
-              onClick={() => onDisplayChange(mode)}
-            >
-              {t(mode === 'thumbnails' ? 'Thumbnails' : 'Outline')}
-            </Button>
-          ))}
-        </fieldset>
         <Input
           value={query}
           onChange={(event) => setQuery(event.target.value)}
@@ -254,9 +237,19 @@ export function SectionBrowser({
                             )}
                           </span>
                         </button>
-                        {!presentation && (
-                          <div className="hd-browser-moves">
-                            {([-1, 1] as const).map((direction) => (
+                        <div className="hd-browser-moves">
+                          {onHistory && (
+                            <Button
+                              variant="ghost"
+                              size="xs"
+                              data-hd-browser-history={key}
+                              onClick={() => onHistory(page.pageId, page.occurrenceId)}
+                            >
+                              {t('查看历史版本')}
+                            </Button>
+                          )}
+                          {!presentation &&
+                            ([-1, 1] as const).map((direction) => (
                               <Button
                                 key={direction}
                                 variant="ghost"
@@ -270,8 +263,7 @@ export function SectionBrowser({
                                 {direction < 0 ? <ArrowUp /> : <ArrowDown />}
                               </Button>
                             ))}
-                          </div>
-                        )}
+                        </div>
                       </article>
                     );
                   })}

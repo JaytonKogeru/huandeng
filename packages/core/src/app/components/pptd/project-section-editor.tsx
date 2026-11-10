@@ -21,6 +21,7 @@ export function ProjectSectionEditor({
   onSetFrontMatter,
   onSelectPage,
   children,
+  showMembers = true,
 }: {
   resolved: ResolvedProjectSection;
   snapshot: DeckSnapshot;
@@ -32,6 +33,7 @@ export function ProjectSectionEditor({
   onSetFrontMatter: (frontMatter: boolean) => string | null;
   onSelectPage: (pageId: string) => void;
   children?: ReactNode;
+  showMembers?: boolean;
 }) {
   useHuandengLocale();
   const prefix = useId();
@@ -211,47 +213,49 @@ export function ProjectSectionEditor({
           {t(diagnostic.message)}
         </p>
       ))}
-      <details>
-        <summary className="cursor-pointer text-[11px] font-medium">
-          {t('Slides in this Section')} · {pageIds.length}
-        </summary>
-        <div className="mt-2 max-h-64 space-y-1 overflow-y-auto overscroll-contain">
-          {pageIds.map((pageId) => {
-            const position = pages.findIndex((page) => page.pageId === pageId);
-            const page = pages[position];
-            return (
-              <button
-                type="button"
-                key={pageId}
-                disabled={!page}
-                title={`${t('Slide ID')}: ${page?.shortCode ?? pageId}\n${t('Permanent ID')}: ${pageId}`}
-                className="flex w-full items-center gap-2 rounded px-1 py-1 text-left outline-none hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring/40 disabled:opacity-50"
-                onClick={() => onSelectPage(pageId)}
-              >
-                {page && (
-                  <span className="block h-7 w-12 shrink-0 overflow-hidden rounded">
-                    <ProjectSlidePreview page={page} snapshot={snapshot} />
+      {showMembers && (
+        <details>
+          <summary className="cursor-pointer text-[11px] font-medium">
+            {t('Slides in this Section')} · {pageIds.length}
+          </summary>
+          <div className="mt-2 max-h-64 space-y-1 overflow-y-auto overscroll-contain">
+            {pageIds.map((pageId) => {
+              const position = pages.findIndex((page) => page.pageId === pageId);
+              const page = pages[position];
+              return (
+                <button
+                  type="button"
+                  key={pageId}
+                  disabled={!page}
+                  title={`${t('Slide ID')}: ${page?.shortCode ?? pageId}\n${t('Permanent ID')}: ${pageId}`}
+                  className="flex w-full items-center gap-2 rounded px-1 py-1 text-left outline-none hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring/40 disabled:opacity-50"
+                  onClick={() => onSelectPage(pageId)}
+                >
+                  {page && (
+                    <span className="block h-7 w-12 shrink-0 overflow-hidden rounded">
+                      <ProjectSlidePreview page={page} snapshot={snapshot} />
+                    </span>
+                  )}
+                  <span className="min-w-0 flex-1">
+                    <span className="block truncate text-[11px]">
+                      {page ? projectSlideTitle(page) : t('Unavailable slide')}
+                    </span>
+                    <span className="block text-[10px] text-muted-foreground">
+                      {page ? `${t('Position {position}', { position: position + 1 })} · ` : ''}
+                      {t('Slide ID')} {page?.shortCode ?? pageId}
+                    </span>
                   </span>
-                )}
-                <span className="min-w-0 flex-1">
-                  <span className="block truncate text-[11px]">
-                    {page ? projectSlideTitle(page) : t('Unavailable slide')}
-                  </span>
-                  <span className="block text-[10px] text-muted-foreground">
-                    {page ? `${t('Position {position}', { position: position + 1 })} · ` : ''}
-                    {t('Slide ID')} {page?.shortCode ?? pageId}
-                  </span>
-                </span>
-              </button>
-            );
-          })}
-          {!pageIds.length && (
-            <p className="py-2 text-[11px] text-muted-foreground">
-              {t('Choose the first Slide, then click Set first Slide.')}
-            </p>
-          )}
-        </div>
-      </details>
+                </button>
+              );
+            })}
+            {!pageIds.length && (
+              <p className="py-2 text-[11px] text-muted-foreground">
+                {t('Choose the first Slide, then click Set first Slide.')}
+              </p>
+            )}
+          </div>
+        </details>
+      )}
       {children}
     </section>
   );

@@ -45,7 +45,6 @@ describe('workspace view surfaces', () => {
     const html = renderToStaticMarkup(
       <SectionBrowser
         display="outline"
-        onDisplayChange={vi.fn()}
         pages={[authored]}
         sections={[]}
         size={[960, 540]}
@@ -75,11 +74,13 @@ describe('workspace view surfaces', () => {
     expect(html).toContain('浏览');
     expect(html).not.toContain('章节浏览');
     expect(html).toContain('普通');
-    expect(html).not.toContain('大纲');
+    expect(html).toContain('大纲');
+    expect(html).toContain('章节');
+    expect(html).toContain('历史');
     expect(html).toContain('备注页');
     expect(html).toContain('data-hd-workspace-view="notes"');
-    expect(html.match(/ disabled=""/g)).toHaveLength(2);
-    expect(html.match(/data-hd-workspace-view=/g)).toHaveLength(3);
+    expect(html.match(/ disabled=""/g)).toHaveLength(5);
+    expect(html.match(/data-hd-workspace-view=/g)).toHaveLength(6);
   });
 
   it('uses controlled outline navigation without a second view switcher', () => {
@@ -180,7 +181,6 @@ describe('workspace view surfaces', () => {
     const html = renderToStaticMarkup(
       <SectionBrowser
         display="outline"
-        onDisplayChange={vi.fn()}
         pages={[
           { ...page, occurrenceId: 'one' },
           { ...page, occurrenceId: 'two', versionId: 'version-7' },
@@ -202,7 +202,7 @@ describe('workspace view surfaces', () => {
     expect(html).toContain('data-hd-browser-card="two" data-selected="true"');
     expect(html).toContain('Main Position 9');
     expect(html).toContain('data-hd-browser-outline="two"');
-    expect(html).toContain('data-hd-browser-display-option="outline"');
+    expect(html).not.toContain('data-hd-browser-display-option');
     expect(html).not.toContain('data-hd-browser-size');
     expect(html).not.toContain('data-hd-browser-move');
     expect(html).not.toContain('draggable');

@@ -24,11 +24,12 @@ const pages = Array.from({length: 36}, (_, index) => ({
 const root = createRoot(document.querySelector('#app'));
 const noop = () => {};
 const props = {pages, sections: [], size: [960,540], theme: {}, currentPageId: 'slide-0',
-  display: 'thumbnails', onDisplayChange: value => {props.display = value; showBrowse();},
+  display: 'thumbnails',
   currentOccurrenceId: 'occurrence-0', presentation: true, disabled: false,
   onSelect: noop, onEdit: noop, onMove: noop, onManageSections: noop};
 const showBrowse = () => root.render(React.createElement(SectionBrowser, props));
-document.querySelector('#browse').onclick = showBrowse;
+document.querySelector('#browse').onclick = () => {props.display = 'thumbnails'; showBrowse();};
+document.querySelector('#outline').onclick = () => {props.display = 'outline'; showBrowse();};
 document.querySelector('#notes').onclick = () => root.render(React.createElement(NotesPageView, {
   page: pages[0], size: props.size, theme: props.theme, position: 1, count: pages.length,
   navigatingDisabled: false, onPrevious: noop, onNext: noop, value: '', disabled: true,
@@ -72,7 +73,7 @@ beforeAll(async () => {
               .hd-browser-grid {display:grid; grid-template-columns:1fr 1fr; gap:16px;}
               .hd-browser-slide {display:flex; width:100%; flex-direction:column;}
               .hd-workspace-preview {width:100%; overflow:hidden;}
-            </style></head><body><button id="browse">Browse</button><button id="notes">Notes</button>
+            </style></head><body><button id="browse">Browse</button><button id="outline">Outline</button><button id="notes">Notes</button>
             <button id="unmount">Unmount</button><button id="locale">Locale</button>
             <button id="update">Update</button><div id="app"></div>
             <script type="module" src="/workspace-preview-harness.js"></script></body></html>`);
@@ -106,7 +107,7 @@ describe('workspace preview residency in a scrolling browser', () => {
       await page.goto(baseUrl);
       await page.locator('[data-hd-browser-search]').fill('Pinned snapshot content');
       await eventually(async () => (await page.locator('[data-hd-browser-card]').count()) === 1);
-      await page.locator('[data-hd-browser-display-option="outline"]').click();
+      await page.locator('#outline').click();
       await eventually(async () => (await page.locator('[data-hd-browser-outline]').count()) === 1);
       expect(await page.locator('[data-hd-browser-search]').inputValue()).toBe(
         'Pinned snapshot content',
@@ -117,7 +118,7 @@ describe('workspace preview residency in a scrolling browser', () => {
       expect(await slide(page, 0).getAttribute('data-selected')).toBe('true');
       expect(await slide(page, 0).innerText()).toContain('Pinned version');
       expect(await page.locator('[data-hd-browser-size]').count()).toBe(0);
-      await page.locator('[data-hd-browser-display-option="thumbnails"]').click();
+      await page.locator('#browse').click();
       expect(await page.locator('[data-hd-browser-card]').count()).toBe(1);
       expect(await page.locator('[data-hd-browser-size]').count()).toBe(1);
     } finally {

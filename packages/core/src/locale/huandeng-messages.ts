@@ -1041,6 +1041,15 @@ export const editorEnglish = {
 } as const;
 
 export const editorChinese = {
+  History: '历史',
+  'Main Slide history · This pinned occurrence stays read-only.':
+    '主幻灯片历史 · 当前固定版本引用保持只读。',
+  'Select a Slide to view its history.': '请选择一页查看历史。',
+  'A page version operation is running. Wait before switching.':
+    '页面版本正在保存或恢复，请完成后再切换。',
+  'History of the selected Main Slide. Restoring changes only this Slide.':
+    '所选主幻灯片的历史。恢复只更新这一页。',
+
   row: '行',
   column: '列',
   a: '一段',

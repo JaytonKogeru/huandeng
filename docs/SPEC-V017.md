@@ -1,0 +1,18 @@
+# v0.17 — one workspace for browsing, sections and page history
+
+## Audit and decision
+
+The 10 November review identifies nested Browse/Outline controls and modal section/history workflows as remaining discontinuities. Use six peer views: **Normal / Browse / Outline / Sections / Notes page / History**. Browse and Outline differ only in representation and retain their shared filtering, grouping and selection. Sections manages the Main Slides structure in the workspace. History is page-scoped and follows the selected page; it is separate from section organization and speaker notes. Existing sidebar, card and toolbar shortcuts lead to these views rather than opening parallel dialogs.
+
+## Contract
+
+1. Keep navigation tab/width/collapse independent. Remove the secondary Thumbnails/Outline switch. Browse is the preview grid; Outline is the central title/summary list. Guard view transitions for panel drafts, composition and history mutations.
+2. Sections uses the existing Project draft, validation, expected revisions and shared save path. There must not be a second unsynchronized Project draft. The central view shows section navigation, title/start/front-matter/Story controls, and actual previews of its members. Changing a boundary updates the draft membership preview before Save; cancel restores saved definitions. Preserve legacy membership/repair messages and concurrent-edit conflicts. Section removal removes only the section definition. Main order defines membership; no implicit page creation or deletion.
+3. Keep sidebar Manage Sections and per-section shortcuts. They open Sections and select the requested/current section. Opening the view and choosing a section writes nothing. Member page selection remains available; leaving a dirty Project draft requires saving/discarding it. Clearly label Main Slides scope even if a presentation collection is selected.
+4. History is a central page workspace: page identity/title, named versions and operation records, a read-only selected-version preview, checkpoint naming and explicit restore. Preserve the same APIs and revision checks. Browsing versions never restores them. Current/selected identity must be visible and delayed loads must not show another page's data. Missing/failed previews cannot be restored. Pinned occurrences can inspect Main history but cannot mutate it; make this scope explicit.
+5. Record/restore blocks page, occurrence, collection, workspace and native leave transitions until settled. Failure clears the busy guard without claiming success. Keep existing uncertain-write/recovery behavior. Enter while composing a checkpoint name must not record. Restore only the selected Main page; do not silently replace a pinned occurrence.
+6. Preserve page IDs, Main positions, occurrence IDs, pinned data, Story/designIntent, draft/IME/Undo and the permanent Slides tab. English/Chinese controls remain complete; authored content is not translated. No new runtime dependency, writer schema or automatic scientific-content edits.
+
+## Acceptance and delivery
+
+Prove flat controls and central Sections/History with tests. Native scenarios cover section select/rename/boundary/discard/save/Undo/conflict, opening via every existing shortcut, history record/read-only preview/restore, pending and failed operations, page/occurrence identity and wide/narrow localized layouts. Run applicable unit/type/Biome and real browser tests. Obtain a fresh whole-branch review. Package exact clean source, install with rollback, restore both original projects, update local/account plugin guidance, and verify unchanged original-source hashes. Publish only the tested version milestone to origin; no npm or upstream publication.

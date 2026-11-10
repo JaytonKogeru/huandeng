@@ -91,20 +91,13 @@ async function disk(index) {
   return YAML.parse(await fs.readFile(path.join(projectRoot, pagePaths[index]), 'utf8'));
 }
 async function view(name) {
-  const primary = name === 'outline' ? 'browse' : name;
-  await page.locator(`[data-hd-workspace-view="${primary}"]`).click();
+  await page.locator(`[data-hd-workspace-view="${name}"]`).click();
   await eventually(
     async () =>
       (await page
         .locator('[data-hd-slide-document]')
-        .getAttribute('data-hd-current-workspace-view')) === primary,
+        .getAttribute('data-hd-current-workspace-view')) === name,
   );
-  if (primary === 'browse')
-    await page
-      .locator(
-        `[data-hd-browser-display-option="${name === 'outline' ? 'outline' : 'thumbnails'}"]`,
-      )
-      .click();
 }
 async function select(index) {
   await eventually(
@@ -230,6 +223,121 @@ try {
   });
 
   await check(
+    'Sections use the main workspace, preview draft membership and preserve source pages',
+    async () => {
+      const before = await api('/current');
+      await view('sections');
+      const manager = page.locator('[data-hd-sections-host] [data-hd-section-manager]');
+      await manager.waitFor();
+      assert.equal(await page.locator('[role="dialog"]').count(), 0);
+      assert.equal(await manager.locator('[data-hd-section-member]').count(), 2);
+      await manager
+        .getByRole('textbox', { name: 'Section name', exact: true })
+        .fill('Draft section name');
+      assert.equal(await page.locator('[data-hd-workspace-view="browse"]').isDisabled(), true);
+      assert.equal((await api('/current')).metadataRevision, before.metadataRevision);
+      await manager.locator('select').selectOption(ids[2]);
+      await manager.locator('[data-hd-set-section-start]').click();
+      assert.equal(await manager.locator('[data-hd-section-member]').count(), 1);
+      await capture('sections-draft-en');
+      await manager.getByRole('button', { name: 'Discard draft', exact: true }).click();
+      await eventually(
+        async () => (await manager.locator('[data-hd-section-member]').count()) === 2,
+      );
+      await manager
+        .getByRole('textbox', { name: 'Section name', exact: true })
+        .fill('Evidence group · revised');
+      await manager.getByRole('button', { name: 'Save project', exact: true }).click();
+      await eventually(
+        async () =>
+          (await api('/current')).metadata.project.sections[0].title === 'Evidence group · revised',
+      );
+      assert.deepEqual(
+        (await api('/current')).pages.map((p) => p.data),
+        before.pages.map((p) => p.data),
+      );
+      await view('edit');
+      await page.locator('[data-hd-editor-canvas]').focus();
+      await page.keyboard.press('ControlOrMeta+z');
+      await eventually(
+        async () =>
+          (await api('/current')).metadata.project.sections[0].title ===
+          before.metadata.project.sections[0].title,
+      );
+    },
+  );
+  await check(
+    'Page history is inline, blocks navigation during writes and restores only its selected page',
+    async () => {
+      await view('browse');
+      await page.locator(`[data-hd-browser-history="${ids[1]}"]`).click();
+      const history = page.locator('[data-hd-page-history]');
+      await history.waitFor();
+      assert.equal(await history.getAttribute('data-hd-page-history'), ids[1]);
+      assert.equal(await page.locator('[role="dialog"]').count(), 0);
+      let release;
+      let intercepted = false;
+      let continued = false;
+      const gate = new Promise((resolve) => {
+        release = resolve;
+      });
+      const route = '**/__pptd/pages/*/checkpoints';
+      const handler = async (request) => {
+        intercepted = true;
+        await gate;
+        await request.continue();
+        continued = true;
+      };
+      await page.route(route, handler);
+      await history
+        .getByRole('textbox', { name: 'Slide version name', exact: true })
+        .fill('Workspace milestone');
+      try {
+        await history.getByRole('button', { name: 'Save slide version', exact: true }).click();
+        await eventually(() => intercepted);
+        assert.equal(await page.locator('[data-hd-workspace-view]:disabled').count(), 5);
+        await page.locator(`[data-hd-thumbnail="${ids[2]}"]`).click();
+        assert.equal((await api('/selection')).pageId, ids[1]);
+        await page.keyboard.press('PageDown');
+        assert.equal((await api('/selection')).pageId, ids[1]);
+      } finally {
+        release();
+        await eventually(() => continued);
+        await page.unroute(route, handler);
+      }
+      await history.getByRole('button', { name: 'Workspace milestone', exact: false }).waitFor();
+      const saved = (await api(`/pages/${ids[1]}/versions?view=checkpoints`)).find(
+        (v) => v.summary === 'Workspace milestone',
+      );
+      assert.ok(saved);
+      const before = await api('/current');
+      const notes = before.pages.find((p) => p.pageId === ids[1]).data.notes;
+      await apply([{ op: 'page.notes.set', pageId: ids[1], text: 'Changed after milestone' }]);
+      await history.locator(`[data-hd-version="${saved.versionId}"]`).click();
+      const restore = history.locator('[data-hd-restore-version]');
+      await eventually(() => restore.isEnabled());
+      await restore.click();
+      await eventually(
+        async () =>
+          (await api('/current')).pages.find((p) => p.pageId === ids[1]).data.notes === notes,
+      );
+      assert.equal(
+        await page
+          .locator('[data-hd-slide-document]')
+          .getAttribute('data-hd-current-workspace-view'),
+        'history',
+      );
+      assert.deepEqual(
+        (await api('/current')).pages.filter((p) => p.pageId !== ids[1]).map((p) => p.data),
+        before.pages.filter((p) => p.pageId !== ids[1]).map((p) => p.data),
+      );
+      await capture('history-restored-en');
+      await eventually(() => page.locator('[data-hd-workspace-view="edit"]').isEnabled());
+      await view('edit');
+    },
+  );
+
+  await check(
     'Local Browse representations preserve selection and independent sidebar preferences',
     async () => {
       const navigation = page.locator('.hd-navigation');
@@ -238,11 +346,14 @@ try {
       const width = (await navigation.boundingBox()).width;
       assert.equal(width, originalWidth + 16);
       const selection = await api('/selection');
-      assert.equal(await page.locator('[data-hd-workspace-view]').count(), 3);
+      assert.equal(await page.locator('[data-hd-workspace-view]').count(), 6);
       assert.deepEqual(await page.locator('[data-hd-workspace-view]').allTextContents(), [
         'Normal',
         'Browse',
+        'Outline',
+        'Sections',
         'Notes page',
+        'History',
       ]);
       assert.equal(
         await page.locator('[data-hd-pages-outline], [data-hd-pages-thumbnails]').count(),
@@ -269,7 +380,7 @@ try {
       await page.locator('[data-hd-workspace-view="browse"]').click();
       assert.equal(
         await page.locator('[data-hd-section-browser]').getAttribute('data-hd-browser-display'),
-        'outline',
+        'thumbnails',
       );
       for (const [label, content] of [
         ['Project and Story', '[data-hd-project-editor]'],
@@ -629,6 +740,19 @@ try {
       }
       assert.equal((await api('/selection')).versionId, pinnedVersionId);
       await capture('browser-pinned-en');
+      await view('history');
+      await page.locator('[data-hd-page-history]').waitFor();
+      assert.ok(
+        (await page.locator('[data-hd-page-history]').innerText()).includes(
+          'pinned occurrence stays read-only',
+        ),
+      );
+      assert.equal(await page.locator('[data-hd-restore-version]').isDisabled(), true);
+      assert.equal(
+        await page.getByRole('textbox', { name: 'Slide version name', exact: true }).isDisabled(),
+        true,
+      );
+
       await view('notes');
       assert.equal(await page.locator('[data-hd-notes-editor]').getAttribute('readonly'), '');
       assert.equal(
@@ -825,7 +949,7 @@ try {
           );
           if (language === 'zh-CN')
             assert.equal(await page.locator('[data-hd-presentation-menu]').innerText(), '放映');
-          for (const surface of ['edit', 'outline', 'browse', 'notes']) {
+          for (const surface of ['edit', 'outline', 'browse', 'sections', 'notes', 'history']) {
             await view(surface);
             await assertPrimaryFit();
             if (surface === 'browse')

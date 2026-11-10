@@ -12,10 +12,12 @@ export type { WorkspaceView } from '@/lib/pptd-workspace-views';
 export function WorkspaceViewSwitcher({
   value,
   blocked,
+  allowSections = false,
   onChange,
 }: {
   value: WorkspaceView;
   blocked: boolean;
+  allowSections?: boolean;
   onChange: (value: WorkspaceView) => void;
 }) {
   const { t } = useHuandengLocale();
@@ -25,14 +27,14 @@ export function WorkspaceViewSwitcher({
       aria-label={t('Slide workspace views')}
       data-hd-workspace-views
     >
-      {(['edit', 'browse', 'notes'] as const).map((view) => (
+      {(['edit', 'browse', 'outline', 'sections', 'notes', 'history'] as const).map((view) => (
         <Button
           key={view}
           size="xs"
           variant={value === view ? 'secondary' : 'ghost'}
           aria-pressed={value === view}
           data-hd-workspace-view={view}
-          disabled={blocked && value !== view}
+          disabled={blocked && value !== view && !(view === 'sections' && allowSections)}
           title={
             blocked
               ? t(
@@ -42,7 +44,16 @@ export function WorkspaceViewSwitcher({
           }
           onClick={() => onChange(view)}
         >
-          {t(view === 'edit' ? 'Normal' : view === 'browse' ? 'Browse' : 'Notes page')}
+          {t(
+            {
+              edit: 'Normal',
+              browse: 'Browse',
+              outline: 'Outline',
+              sections: 'Sections',
+              notes: 'Notes page',
+              history: 'History',
+            }[view],
+          )}
         </Button>
       ))}
     </nav>

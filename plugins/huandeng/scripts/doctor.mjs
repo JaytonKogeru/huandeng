@@ -18,7 +18,7 @@ try {
     const { StdioClientTransport } = await import(
       pathToFileURL(require.resolve('@modelcontextprotocol/sdk/client/stdio.js')).href
     );
-    client = new Client({ name: 'HUANDENG Plugin doctor', version: '0.16.1' });
+    client = new Client({ name: 'HUANDENG Plugin doctor', version: '0.17.0' });
     const transport = new StdioClientTransport({
       command: runtime.node,
       args: [runtime.launcher],

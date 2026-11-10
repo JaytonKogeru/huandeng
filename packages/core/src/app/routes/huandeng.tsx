@@ -47,7 +47,7 @@ import { NotesPageView } from '@/components/pptd/notes-page-view';
 import { NotesPanel } from '@/components/pptd/notes-panel';
 import { OperationReviewDialog } from '@/components/pptd/operation-review-dialog';
 import { currentReviewTarget } from '@/components/pptd/operation-review-model';
-import { PageHistoryDialog } from '@/components/pptd/page-history-dialog';
+import { PageHistoryWorkspace } from '@/components/pptd/page-history-workspace';
 import { PageScopeBar } from '@/components/pptd/page-scope-bar';
 import { PanelResizeHandle } from '@/components/pptd/panel-resize-handle';
 import { type PresentationControls, PresentationView } from '@/components/pptd/presentation-view';
@@ -118,7 +118,6 @@ import {
   slideMoveAfterBoundary,
 } from '@/lib/pptd-thumbnail-sections';
 import {
-  type BrowserDisplay,
   workspaceEditing,
   workspaceKeyboardCommandAllowed,
   workspaceViewSwitchBlocked,
@@ -165,7 +164,13 @@ export function HuandengEditor() {
   const [previewResetKey, setPreviewResetKey] = useState(0);
   const [workspaceView, setWorkspaceView] = useState<WorkspaceView>('edit');
   const editingWorkspace = workspaceEditing(workspaceView);
-  const [browserDisplay, setBrowserDisplay] = useState<BrowserDisplay>('thumbnails');
+  const [sectionsTarget, setSectionsTarget] = useState<HTMLDivElement | null>(null);
+  const [historyBusy, setHistoryBusy] = useState(false);
+  const historyMutation = useRef(false);
+  const onHistoryBusyChange = useCallback((value: boolean) => {
+    historyMutation.current = value;
+    setHistoryBusy(value);
+  }, []);
   const [textComposing, setTextComposing] = useState(false);
   const timelinePageRef = useRef<PageSnapshot | null>(null);
   const presentationControls = useRef<PresentationControls | null>(null);
@@ -179,7 +184,10 @@ export function HuandengEditor() {
   const storyDirty = Object.values(storyDrafts).some((draft) => draft.dirty);
   const chartDirty = Object.values(chartDrafts).some((drafts) => Object.keys(drafts).length > 0);
   const auxiliaryDirty = projectDirty || storyDirty || chartDirty || timelineDirty;
-  const { client, backend, state } = usePptdDocument(auxiliaryDirty, importingImages);
+  const { client, backend, state } = usePptdDocument(
+    auxiliaryDirty || historyBusy,
+    importingImages,
+  );
   const [operationReview, setOperationReview] = useState<{
     operationId: string;
     backend: typeof backend;
@@ -278,7 +286,6 @@ export function HuandengEditor() {
   const presentationEntries = useRef(new Map<string, 'start' | 'end'>());
   const pendingPresentationPage = useRef<string | null>(null);
   const imageInputRef = useRef<HTMLInputElement | null>(null);
-  const [historyPageId, setHistoryPageId] = useState<string | null>(null);
   const [leftTab, setLeftTabState] = useState<'pages' | 'files' | 'project' | 'assets'>('pages');
   const setLeftTab = useCallback((tab: 'pages' | 'files' | 'project' | 'assets') => {
     setLeftTabState(tab);
@@ -453,16 +460,20 @@ export function HuandengEditor() {
   )
     timelinePageRef.current = page;
   const authoringPage = timelineDirty ? (timelinePageRef.current ?? page) : page;
-  const busy = state.saving || exporting || importingImages;
+  const busy = state.saving || exporting || importingImages || historyBusy;
   const presentationBlocked =
-    auxiliaryDirty || presentationLoading || !!presentationError || emptyPresentation;
+    auxiliaryDirty ||
+    historyBusy ||
+    presentationLoading ||
+    !!presentationError ||
+    emptyPresentation;
   const nextPage = pageIndex >= 0 ? viewPages[pageIndex + 1] : undefined;
   const presentationPageKey = `${page?.pageId ?? ''}:${page?.occurrenceId ?? ''}:${page?.versionId ?? ''}`;
   useLayoutEffect(() => {
     if (pendingPresentationPage.current === presentationPageKey)
       pendingPresentationPage.current = null;
   }, [presentationPageKey]);
-  const historyPage = snapshot?.pages.find((item) => item.pageId === historyPageId);
+  const historyPage = snapshot?.pages.find((item) => item.pageId === selectedPageId);
   const currentPageIdRef = useRef(selectedPageId);
   currentPageIdRef.current = selectedPageId;
 
@@ -480,7 +491,16 @@ export function HuandengEditor() {
   const switchWorkspaceView = useCallback(
     (view: WorkspaceView) => {
       if (view === workspaceView) return false;
-      if (workspaceViewSwitchBlocked(auxiliaryDirty, textComposing)) {
+      if (historyMutation.current) {
+        setUiError('A page version operation is running. Wait before switching.');
+        return false;
+      }
+      if (
+        workspaceViewSwitchBlocked(
+          view === 'sections' ? storyDirty || chartDirty || timelineDirty : auxiliaryDirty,
+          textComposing,
+        )
+      ) {
         setUiError(
           'Save or discard panel drafts and finish text composition before switching views.',
         );
@@ -493,7 +513,7 @@ export function HuandengEditor() {
       setWorkspaceView(view);
       return true;
     },
-    [workspaceView, auxiliaryDirty, textComposing],
+    [workspaceView, auxiliaryDirty, textComposing, storyDirty, chartDirty, timelineDirty],
   );
 
   const onNotesChange = (value: string) => {
@@ -506,6 +526,10 @@ export function HuandengEditor() {
 
   const selectPage = useCallback(
     (id: string, occurrenceId?: string, focusTarget?: 'canvas' | 'thumbnails') => {
+      if (historyMutation.current || textComposing) {
+        setUiError('A page version operation is running. Wait before switching.');
+        return;
+      }
       if (timelineDirty) {
         setUiError('动画还有未保存的修改，请在时间线中重试保存或还原后再切换页面。');
         return;
@@ -528,7 +552,7 @@ export function HuandengEditor() {
         { replace: true },
       );
     },
-    [setSearchParams, timelineDirty],
+    [setSearchParams, timelineDirty, textComposing],
   );
 
   useLayoutEffect(() => {
@@ -571,6 +595,10 @@ export function HuandengEditor() {
 
   const selectPresentation = useCallback(
     (id: string | null) => {
+      if (historyMutation.current || textComposing) {
+        setUiError('A page version operation is running. Wait before switching.');
+        return;
+      }
       if (new URLSearchParams(window.location.search).get('presentation') === id) return;
       if (timelineDirty) {
         setUiError('请先保存或还原时间线中的修改，再切换演讲。');
@@ -594,11 +622,15 @@ export function HuandengEditor() {
         { replace: true },
       );
     },
-    [setSearchParams, timelineDirty],
+    [setSearchParams, timelineDirty, textComposing],
   );
 
   const selectMainPage = useCallback(
     (id: string) => {
+      if (historyMutation.current || textComposing) {
+        setUiError('A page version operation is running. Wait before switching.');
+        return;
+      }
       if (timelineDirty) {
         setUiError('请先保存或还原时间线中的修改，再切换页面。');
         return;
@@ -618,11 +650,15 @@ export function HuandengEditor() {
         { replace: true },
       );
     },
-    [setSearchParams, timelineDirty],
+    [setSearchParams, timelineDirty, textComposing],
   );
 
   const selectOccurrence = useCallback(
     (presentationId: string | null, pageId: string, occurrenceId: string) => {
+      if (historyMutation.current || textComposing) {
+        setUiError('A page version operation is running. Wait before switching.');
+        return;
+      }
       if (timelineDirty) {
         setUiError('请先保存或还原时间线中的修改，再切换引用。');
         return;
@@ -644,8 +680,22 @@ export function HuandengEditor() {
         { replace: true },
       );
     },
-    [setSearchParams, timelineDirty],
+    [setSearchParams, timelineDirty, textComposing],
   );
+
+  const openSections = (sectionId?: string) => {
+    if (workspaceView !== 'sections' && !switchWorkspaceView('sections')) return;
+    setFilePreviewPath(null);
+    setSectionEditorRequest({ key: Date.now(), sectionId });
+  };
+  const openHistory = (id: string | null, occurrenceId?: string) => {
+    if (!id || historyMutation.current || auxiliaryDirty || textComposing) return;
+    if (workspaceView !== 'history' && !switchWorkspaceView('history')) return;
+    selectPage(
+      id,
+      occurrenceId ?? (id === selectedPageId ? selectedView?.occurrenceId : undefined),
+    );
+  };
 
   const insertLibraryAsset = useCallback(
     async (
@@ -1173,6 +1223,8 @@ export function HuandengEditor() {
 
   const executeKeyboardCommand = useCallback(
     (command: EditorKeyboardCommand, target: EventTarget | null) => {
+      if (historyMutation.current && command.type !== 'help' && command.type !== 'focus-region')
+        return;
       if (!workspaceKeyboardCommandAllowed(workspaceView, command)) return;
       if (command.type === 'help') {
         if (presenting) presentationControls.current?.pause();
@@ -1883,7 +1935,7 @@ export function HuandengEditor() {
               aria-label={t('当前页历史版本')}
               title={t('当前页历史版本')}
               disabled={!page}
-              onClick={() => setHistoryPageId(selectedPageId)}
+              onClick={() => openHistory(selectedPageId)}
             >
               <History />
             </Button>
@@ -2180,12 +2232,14 @@ export function HuandengEditor() {
               onSelectPresentation={selectPresentation}
               onSelectPage={(id) => {
                 selectMainPage(id);
-                setLeftTab('pages');
+                if (workspaceView !== 'sections') setLeftTab('pages');
               }}
               onSelectOccurrence={selectOccurrence}
               onApply={(operations, expected) => client.apply(operations, expected)}
               sectionEditorRequest={sectionEditorRequest}
-              onShowPages={() => setLeftTab('pages')}
+              sectionsTarget={sectionsTarget}
+              onManageSections={() => openSections()}
+              onCloseSections={() => switchWorkspaceView('edit')}
               onDirtyChange={setProjectDirty}
               loadVersions={(id) => backend.pageHistory(id)}
               disabled={!snapshot.writable || busy}
@@ -2240,8 +2294,7 @@ export function HuandengEditor() {
                 size="xs"
                 variant="outline"
                 onClick={() => {
-                  setLeftTab('pages');
-                  setSectionEditorRequest({ key: Date.now() });
+                  openSections();
                 }}
               >
                 {t('Review Sections')}
@@ -2258,16 +2311,8 @@ export function HuandengEditor() {
             />
           ) : leftTab === 'pages' ? (
             <PptdThumbnailRail
-              onEditSection={
-                selectedPresentationId
-                  ? undefined
-                  : (id) => setSectionEditorRequest({ key: Date.now(), sectionId: id })
-              }
-              onManageSections={
-                selectedPresentationId
-                  ? undefined
-                  : () => setSectionEditorRequest({ key: Date.now() })
-              }
+              onEditSection={selectedPresentationId ? undefined : (id) => openSections(id)}
+              onManageSections={selectedPresentationId ? undefined : () => openSections()}
               pages={viewPages}
               sections={selectedPresentationId ? [] : thumbnailSections}
               size={snapshot.size}
@@ -2313,7 +2358,7 @@ export function HuandengEditor() {
                   : (pageId, hidden) =>
                       void apply([{ op: 'metadata.patch', pageId, set: { hidden } }])
               }
-              onHistory={setHistoryPageId}
+              onHistory={(id) => openHistory(id)}
               onShowFile={(pageId) => {
                 selectPage(pageId);
                 setLeftTab('files');
@@ -2443,8 +2488,13 @@ export function HuandengEditor() {
           >
             <WorkspaceViewSwitcher
               value={workspaceView}
-              blocked={workspaceViewSwitchBlocked(auxiliaryDirty, textComposing)}
-              onChange={switchWorkspaceView}
+              blocked={historyBusy || workspaceViewSwitchBlocked(auxiliaryDirty, textComposing)}
+              allowSections={
+                !historyBusy && !textComposing && !storyDirty && !chartDirty && !timelineDirty
+              }
+              onChange={(value) =>
+                value === 'sections' ? openSections() : switchWorkspaceView(value)
+              }
             />
             {editingWorkspace && (
               <div
@@ -2666,11 +2716,10 @@ export function HuandengEditor() {
               </div>
             )}
             <div className="relative flex min-h-0 flex-1 flex-col">
-              {workspaceView === 'browse' ? (
+              {workspaceView === 'browse' || workspaceView === 'outline' ? (
                 <SectionBrowser
                   key={selectedPresentationId ?? 'main'}
-                  display={browserDisplay}
-                  onDisplayChange={setBrowserDisplay}
+                  display={workspaceView === 'outline' ? 'outline' : 'thumbnails'}
                   pages={viewPages}
                   sections={thumbnailSections}
                   size={snapshot.size}
@@ -2684,8 +2733,69 @@ export function HuandengEditor() {
                     if (switchWorkspaceView('edit')) selectPage(id, occurrenceId, 'canvas');
                   }}
                   onMove={moveAtBoundary}
-                  onManageSections={() => setSectionEditorRequest({ key: Date.now() })}
+                  onHistory={openHistory}
+                  onManageSections={() => openSections()}
                 />
+              ) : workspaceView === 'sections' ? (
+                <div
+                  ref={setSectionsTarget}
+                  className="flex min-h-0 min-w-0 flex-1"
+                  data-hd-sections-host
+                />
+              ) : workspaceView === 'history' ? (
+                <>
+                  {' '}
+                  {historyPage ? (
+                    <PageHistoryWorkspace
+                      key={`${historyPage.pageId}:${selectedView?.occurrenceId ?? ''}:${selectedView?.versionId ?? ''}`}
+                      page={historyPage}
+                      backend={backend}
+                      theme={theme}
+                      disabled={readonly || busy || auxiliaryDirty}
+                      pinned={!!selectedView?.versionId}
+                      onBack={() => switchWorkspaceView('edit')}
+                      onBusyChange={onHistoryBusyChange}
+                      onCompositionChange={setTextComposing}
+                      onRecord={async (label) => {
+                        await client.flushAll();
+                        const current = client.getState().snapshot;
+                        const currentPage = current?.pages.find(
+                          (item) => item.pageId === historyPage.pageId,
+                        );
+                        if (!current || !currentPage)
+                          throw new Error('页面已改变，请重新打开版本窗口。');
+                        await backend.recordPageVersion({
+                          pageId: currentPage.pageId,
+                          requestId: crypto.randomUUID(),
+                          label,
+                          expectedPageRevision: currentPage.pageRevision,
+                          expectedMetadataRevision: current.metadataRevision,
+                          actor: `huandeng-ui:${client.clientId}`,
+                        });
+                      }}
+                      onRestore={async (versionId) => {
+                        await client.flushAll();
+                        const current = client.getState().snapshot;
+                        const currentPage = current?.pages.find(
+                          (item) => item.pageId === historyPage.pageId,
+                        );
+                        if (!current || !currentPage)
+                          throw new Error('页面状态已改变，请重新打开历史版本。');
+                        await client.apply(
+                          [{ op: 'page.version.restore', pageId: currentPage.pageId, versionId }],
+                          {
+                            pages: { [currentPage.pageId]: currentPage.pageRevision },
+                            metadata: current.metadataRevision,
+                          },
+                        );
+                      }}
+                    />
+                  ) : (
+                    <p className="p-8 text-sm text-muted-foreground">
+                      {t('Select a Slide to view its history.')}
+                    </p>
+                  )}
+                </>
               ) : workspaceView === 'notes' ? (
                 <NotesPageView
                   page={page}
@@ -3297,47 +3407,7 @@ export function HuandengEditor() {
           }}
         />
       )}
-      {historyPage && (
-        <PageHistoryDialog
-          key={historyPage.pageId}
-          page={historyPage}
-          backend={backend}
-          theme={theme}
-          disabled={readonly || busy || auxiliaryDirty}
-          open={Boolean(historyPageId)}
-          onOpenChange={(open) => {
-            if (!open) setHistoryPageId(null);
-          }}
-          onRecord={async (label) => {
-            await client.flushAll();
-            const current = client.getState().snapshot;
-            const currentPage = current?.pages.find((item) => item.pageId === historyPage.pageId);
-            if (!current || !currentPage) throw new Error('页面已改变，请重新打开版本窗口。');
-            await backend.recordPageVersion({
-              pageId: currentPage.pageId,
-              requestId: crypto.randomUUID(),
-              label,
-              expectedPageRevision: currentPage.pageRevision,
-              expectedMetadataRevision: current.metadataRevision,
-              actor: `huandeng-ui:${client.clientId}`,
-            });
-          }}
-          onRestore={async (versionId) => {
-            await client.flushAll();
-            const current = client.getState().snapshot;
-            const currentPage = current?.pages.find((item) => item.pageId === historyPage.pageId);
-            if (!current || !currentPage) throw new Error('页面状态已改变，请重新打开历史版本。');
-            await client.apply(
-              [{ op: 'page.version.restore', pageId: currentPage.pageId, versionId }],
-              {
-                pages: { [currentPage.pageId]: currentPage.pageRevision },
-                metadata: current.metadataRevision,
-              },
-            );
-            selectPage(currentPage.pageId);
-          }}
-        />
-      )}
+
       <ExportDialog
         open={exportOpen}
         onOpenChange={setExportOpen}

@@ -9,7 +9,7 @@ import {
   thumbnailSectionGroups,
 } from './pptd-thumbnail-sections';
 
-export type WorkspaceView = 'edit' | 'browse' | 'notes';
+export type WorkspaceView = 'edit' | 'browse' | 'outline' | 'sections' | 'notes' | 'history';
 export type BrowserDisplay = 'thumbnails' | 'outline';
 
 export function workspaceEditing(view: WorkspaceView): boolean {
