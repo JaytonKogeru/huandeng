@@ -3,6 +3,14 @@ export const authoringEnglish = {
 } as const;
 
 export const authoringChinese = {
+  'Start this slide': '从这一页开始',
+  'Add a title': '添加标题',
+  'Set page intent': '写页面意图',
+  'Connect an Agent': '连接助手',
+  'Type a title': '输入标题',
+  'Use Slide Position': '使用页面位置编号',
+  'Updates from Main Slides order. Reordering pages changes this number without creating a Slide version.':
+    '随主幻灯片顺序更新。重排页面会改变此编号，不会创建页面版本。',
   'Displayed changes are outside saved review evidence': '当前显示的改动不在已保存的审阅证据范围内',
   'Unsaved or pending artwork is shown. Recorded evidence applies only to the saved base.':
     '当前显示未保存或待确认的画面；审阅证据仅适用于已保存的基础版本。',

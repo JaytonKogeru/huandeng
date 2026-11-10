@@ -173,6 +173,9 @@ export function createTransactionPreview(input: {
     kind: 'proposal-preview',
     schemaVersion: 1,
     deckId: input.before.deckId,
+    ...(input.before.projectGuidance
+      ? { projectGuidance: structuredClone(input.before.projectGuidance) }
+      : {}),
     requestId: input.request.requestId,
     previewHash: proposalHash(input.request),
     writable: input.before.writable,

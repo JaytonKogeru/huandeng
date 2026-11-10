@@ -14,8 +14,8 @@ const english = {
   幻灯编辑器: 'Slide editor',
   打开项目: 'Open project',
   新建项目: 'New project',
-  '选择 .pptd 文件继续编辑，或为新内容建立一个项目。':
-    'Open a .pptd file to continue, or create a project for something new.',
+  '项目是一个文件夹。选择其中的 .pptd 清单打开，移动或分享时保留整个文件夹。':
+    'A project is a folder. Open its .pptd manifest; keep the whole folder when moving or sharing it.',
   '独立页面，持续演进。': 'Independent slides. Evolving stories.',
   '编辑 · 编排 · 演示': 'Edit · Arrange · Present',
   工作空间: 'Workspace',

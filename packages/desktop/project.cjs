@@ -1,6 +1,7 @@
 const { text: desktopText } = require('./locale.cjs');
 const fs = require('node:fs/promises');
 const path = require('node:path');
+const { markProjectFolder } = require('./project-folder.cjs');
 
 async function readPreferences(file) {
   try {
@@ -23,7 +24,7 @@ function pathKey(file) {
   return process.platform === 'win32' ? resolved.toLowerCase() : resolved;
 }
 
-async function createProject(selectedPath) {
+async function createProject(selectedPath, options = {}) {
   const title = path.basename(selectedPath).replace(/\.pptd$/i, '');
   if (!title.trim()) throw new Error(desktopText('请给项目起一个名字。'));
   const root = path.join(path.dirname(selectedPath), title);
@@ -44,6 +45,8 @@ async function createProject(selectedPath) {
     `title: ${JSON.stringify(title)}\nsize: [960, 540]\npages:\n  - pages/initial.page\ntheme:\n  fontFamily: Arial\n`,
   );
   await fs.writeFile(path.join(root, '.gitignore'), 'Exports/\n');
+  await fs.copyFile(path.join(__dirname, 'project-authoring.md'), path.join(root, 'AGENTS.md'));
+  await markProjectFolder(root, options.folderMarker);
   return entryPath;
 }
 

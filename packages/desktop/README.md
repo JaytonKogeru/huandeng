@@ -6,7 +6,9 @@ Windows 桌面宿主，复用 HUANDENG 的 React 画布和 PPTD 文档服务。�
 
 双击项目根目录 `Start-Huandeng.cmd`，或安装后的 **HUANDENG Editor** 快捷方式。首次启动显示开始页；之后可以继续最近打开的项目。开始页和“文件”菜单均提供打开、新建及最近项目。
 
-“打开项目”选择已有项目的 `.pptd` 文件。“新建项目”中的名称用于建立独立文件夹，例如选择 `D:\Documents\Research.pptd` 会创建 `D:\Documents\Research\deck.pptd`，其中包含一页空白 `.page` 和 `media` 目录。项目不会自动套用布局。
+“打开项目”选择已有项目中的 `.pptd` 清单。“新建项目”中的名称用于建立独立文件夹，例如选择 `D:\Documents\Research.pptd` 会创建 `D:\Documents\Research\deck.pptd`，其中包含一页空白 `.page`、`media` 目录和可编辑的 `AGENTS.md` 创作约定。项目不会自动套用布局。整个文件夹才是完整项目，移动或分享时一起保留，不需要压缩或改扩展名。
+
+Windows 新项目使用目录内 `.huandeng/project.ico` 与 `desktop.ini` 显示 HUANDENG 文件夹图标。图标路径为相对路径，不依赖原安装位置；装饰失败不会影响项目创建。其他平台仍使用普通文件夹。已有目录的图标、`desktop.ini` 和创作约定不会被自动替换。
 
 快捷键：`Ctrl+O` 打开项目，`Ctrl+N` 新建项目，`Ctrl+W` 仅关闭当前文件预览，保留永久的幻灯片文档。通过“文件 > 关闭项目”显式关闭项目；`Ctrl+Shift+W` 或窗口关闭操作保留草稿保护。切换或关闭前会要求画布保存已完成的编辑；存在保存冲突时仍停留在当前页面。
 

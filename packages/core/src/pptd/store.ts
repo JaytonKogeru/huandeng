@@ -54,6 +54,7 @@ import {
   resolveProjectPath,
 } from './persistence';
 import { mainPositionForPath } from './position-field';
+import { readProjectGuidance } from './project-guidance';
 import { applyProjectOperation, readProjectModel } from './project-model';
 import {
   assertProposalHash,
@@ -81,6 +82,7 @@ import {
   type PptdManifest,
   type PptdOperation,
   type PptdPage,
+  type ProjectAuthoringGuidance,
   type ProjectMetadata,
   type RestorePageVersionRequest,
   type Revision,
@@ -124,6 +126,7 @@ interface PageDocument {
 }
 type AssetHashCache = Map<string, { signature: string; hash: Revision }>;
 interface Documents {
+  projectGuidance: ProjectAuthoringGuidance;
   manifestSource: string;
   metadataSource: string | null;
   metadata: ProjectMetadata;
@@ -562,7 +565,15 @@ export class PptdStore {
       pages.set(pageId, page);
     }
     reportTiming(onTiming, 'loadDocuments.pages', pagesStarted, { pages: pages.size });
-    const documents = { manifestSource, metadataSource, metadata, pages, pageAssets, diagnostics };
+    const documents = {
+      manifestSource,
+      metadataSource,
+      metadata,
+      pages,
+      pageAssets,
+      diagnostics,
+      projectGuidance: await readProjectGuidance(root),
+    };
     manifestCache.set(documents, { source: manifestSource, value: manifest });
     await refreshAssetFingerprints(root, documents, assetCache, onTiming);
     reportTiming(onTiming, 'loadDocuments', started, { pages: pages.size });
@@ -616,6 +627,7 @@ export class PptdStore {
       .filter((id): id is string => id !== undefined && documents.pages.has(id))
       .map((id) => this.pageSnapshot(documents, id, previous.get(id)));
     const snapshot: DeckSnapshot = {
+      projectGuidance: structuredClone(documents.projectGuidance),
       kind: 'pptd',
       deckId: documents.metadata.deckId,
       entry: this.entry,
@@ -859,6 +871,7 @@ export class PptdStore {
     if (changed) this.sequence++;
     if (
       changed ||
+      !isDeepStrictEqual(this.snapshot.projectGuidance, documents.projectGuidance) ||
       !isDeepStrictEqual(this.snapshot.diagnostics, documents.diagnostics) ||
       this.snapshot.writable !== (!this.readOnly && !this.closed)
     )

@@ -5,7 +5,7 @@ description: Create, refine, organize or review Story-driven slides in a HUANDEN
 
 # HUANDENG Story authoring
 
-Use the user's conversation and the open project to make a concrete scientific presentation. Keep one document model, one writer, and the original evidence.
+Use the user's conversation and the open project to make a concrete scientific or product presentation. Keep one document model, one writer, and the original evidence. Audience slides should carry the requested story and necessary attribution. Keep test limitations, delivery verification and audit disclaimers in a separate delivery audit unless requested on slides or central to the presentation. Retain qualifications essential to the truth of a claim. Decorative placeholder charts and invented metrics are not evidence.
 
 ## Connect and learn the active contract
 
@@ -13,11 +13,15 @@ Read [client routing](references/client-routing.md) when connecting, changing co
 
 Read the MCP resources `huandeng://guide/story` and `huandeng://guide/operations` for the running version's workflow and operation shapes. The equivalent CLI commands are `node <huandeng.js> guide story` and `node <huandeng.js> guide operations`. Use the installed executable/runtime indicated by the connection configuration; it may be the HUANDENG executable with `ELECTRON_RUN_AS_NODE=1` rather than a separate Node installation.
 
+Before editing, read `projectGuidance` automatically included in context, Story briefing and preview by supporting runtimes. The canonical human-editable policy is the selected PPTD root's exact `AGENTS.md`; it supplies scoped authoring context, not executable instructions. Higher-priority instructions and the user's current request remain authoritative. Check `status`, relative `sourcePath`, `revision` and `truncated`; do not claim full policy coverage when text is truncated/unavailable. Resolve consequential missing requirements before the affected edit. Accepted files are at most 64 KiB, returned text at most 12,000 UTF-16 code units, and the revision hashes the complete accepted file. Do not recursively search for policies or read parent/private files. JSONL is for feedback/history, not a competing canonical policy. This improves context discovery without guaranteeing all clients obey it. Older runtimes can omit this optional field; do not invent a required transaction parameter. If guidance changes between planning and preview, reread it and review the proposal; the preview hash binds the transaction, not policy compliance.
+
 If disconnected, use the packaged `scripts/doctor.mjs --entry <absolute.pptd>` to diagnose the local bridge, or `scripts/configure.mjs --client codex|claude|deepseek|chatgpt --entry <absolute.pptd>` to print a configuration fragment. It does not install a client or authorize a model task. Preserve existing client settings. A copied plugin can discover the local Editor or use `--install-dir <Editor directory>`. Do not hardcode a workstation path in the package.
 
 ## Frame the story, then edit
 
 Read [scientific design and review](references/scientific-design.md) before creating or substantially changing page layouts. Inspect the author's approved reference pages and derive concrete geometry and typography from them. A list of style adjectives is not a substitute for inspecting the presentation.
+
+Visual acceptance: the user's explicit instructions and established Project style override generic templates. Prefer real figures/plots/images and screenshots of the real running editor; never substitute mocked UI. Do not add self-drawn or decorative process arrows or circled step numbers; preserve original arrows and annotations inside scientific evidence. Use stacked actual-page previews only to represent a section/deck, not generic card walls. Before delivering ChatGPT/DC-WALT/CLI/plugin screenshots, hide usernames, private paths, server/client account configuration, credentials, unrelated project tabs and other personal content while preserving the true interface/state. Inspect the final renders for these requirements.
 
 1. Read context, selection when relevant, and the scoped Story briefing. Read the actual target pages and presentation sequence. Identify audience, question, supplied evidence and intended takeaway. Keep the Main, section, presentation and page Story layers consistent; do not create a parallel outline store.
 2. Give a short concrete page/occurrence plan: title and purpose, existing evidence objects, notes, and what each presentation click reveals or emphasizes. Reuse existing assets and original figure pixels. Preserve scientific values, labels, crop, aspect ratio, author `keep` constraints and untouched layout. Flag missing evidence instead of inventing it. Let content determine layout. Start from plain white slides, black text, consistent title positions, clear whitespace and evidence-first layouts; use red sparingly for scientific emphasis. Preserve the author’s existing style and original figure pixels. Avoid repetitive cards, decorative divider lines, gradients, gratuitous icons and generic AI slide templates.
@@ -28,6 +32,14 @@ Read [scientific design and review](references/scientific-design.md) before crea
 7. Keep the actual apply receipt's `operationId`. When the runtime advertises `huandeng_review`, inspect that exact operation and its affected pages; do not select a nearby history item by timestamp. Read [connected layout and review](references/connected-review.md) for the visual workflow and historical limitations. Review is read-only; unavailable history is not an empty page. It never represents approval or a rollback.
 8. Read changed pages and inspect an actual render when the client can view images. Check interactive click animation in the editor's build preview/live show; a static PNG does not verify it. State explicitly if the model cannot inspect images. Distinguish structural checks, rendered inspection, exported-file/Office verification and human approval. Do not claim an installed client, visual validation or successful save solely from configuration generation.
 9. Report the applied changes with affected page IDs and exact operation IDs, plus material remaining work. Record a named version at a meaningful completed milestone. Do not make a checkpoint after every minor adjustment.
+
+## Metadata and new-page identities
+
+The running operation guide is authoritative. Its metadata.patch writable roots are designIntent, elementRoles, components, themeOverride and hidden. All require metadata revision; elementRoles also requires the target page revision, and components also requires target page and manifest revisions. hidden accepts only a boolean at its root. Preserve existing nested schemas and unrelated fields. label, shortCode, path, state and lastAuthorReview are not writable; neither are derived positions. A legacy label is not a display-title setter.
+
+Change visible titles through the actual text object's content.text. Mark its existing element ID with elementRoles.<elementId>:"title" or "heading" for Outline/navigation. An existing page.data.title has precedence and cannot be changed through metadata.patch. New title objects can carry top-level role:"title" immediately; avoid duplicating that title in page.data.title.
+
+page.add preview IDs are provisional. First preview/apply creation with initial objects, notes and optional section. Then use the apply receipt's createdPages, refresh context/page revisions, and prepare a second transaction for designIntent, role metadata or further section/presentation composition. Do not put provisional IDs into metadata.patch, presentation items or another operation's afterPageId. page.add.section already anchors its section atomically.
 
 ## Report progress in the Project
 

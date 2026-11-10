@@ -445,7 +445,7 @@ async function chooseProject(project = tabs.active) {
 }
 async function newProject() {
   const selection = await dialog.showSaveDialog(window, {
-    title: desktopText('新建 HUANDENG 项目 · 将创建同名文件夹'),
+    title: desktopText('新建 HUANDENG 项目文件夹 · 内含 deck.pptd'),
     defaultPath: path.join(app.getPath('documents'), 'Untitled.pptd'),
     filters: [{ name: desktopText('项目名称（创建独立文件夹）'), extensions: ['pptd'] }],
     buttonLabel: desktopText('创建项目'),

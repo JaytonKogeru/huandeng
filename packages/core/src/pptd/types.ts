@@ -99,6 +99,25 @@ export interface PageSnapshot {
   metadata: SlideIdentity;
 }
 
+export interface ProjectAuthoringGuidance {
+  sourcePath: 'AGENTS.md';
+  role: 'authoring-context';
+  status: 'available' | 'missing' | 'unavailable';
+  revision: Revision | null;
+  text: string;
+  truncated: boolean;
+  byteLength: number | null;
+  limits: { maxBytes: number; maxCharacters: number };
+  reason?:
+    | 'linked-file'
+    | 'not-regular-file'
+    | 'path-mismatch'
+    | 'file-too-large'
+    | 'changed-during-read'
+    | 'invalid-utf8'
+    | 'read-error';
+}
+
 export interface PageVersionSummary {
   versionId: string;
   pageId: string;
@@ -163,6 +182,7 @@ export interface RestorePageVersionRequest {
 }
 
 export interface DeckSnapshot {
+  projectGuidance?: ProjectAuthoringGuidance;
   kind: 'pptd';
   presentationId?: string;
   deckId: string;
@@ -389,6 +409,7 @@ export interface ProposalPageImpact {
 }
 
 export interface TransactionPreview {
+  projectGuidance?: ProjectAuthoringGuidance;
   ok: true;
   kind: 'proposal-preview';
   schemaVersion: 1;

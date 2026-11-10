@@ -112,6 +112,7 @@ import {
 } from '@/lib/pptd-object-actions';
 import { useSnappingPreference, useWorkspaceLayout } from '@/lib/pptd-preferences';
 import { sectionAtBoundary } from '@/lib/pptd-section-actions';
+import { createStarterTitle } from '@/lib/pptd-starter-title';
 import {
   insertionBoundaryIndex,
   type SlideInsertionBoundary,
@@ -1136,6 +1137,39 @@ export function HuandengEditor() {
         requestAnimationFrame(() =>
           document.querySelector<HTMLElement>('[data-hd-editor-canvas]')?.focus(),
         );
+    });
+  };
+
+  const addStarterTitle = () => {
+    if (!page || readonly || busy || selectedPresentationId) return;
+    const targetId = page.pageId;
+    void run(async () => {
+      await client.flushAll();
+      const current = client.getState().snapshot;
+      const target = current?.pages.find((item) => item.pageId === targetId);
+      if (!current?.writable || !target || target.data.elements.length) return;
+      const element = createStarterTitle(
+        current.size,
+        `title-${crypto.randomUUID()}`,
+        typeof theme.textStyles?.title?.fontFamily === 'string'
+          ? theme.textStyles.title.fontFamily
+          : undefined,
+      );
+      await client.apply(
+        [
+          { op: 'element.add', pageId: targetId, element },
+          {
+            op: 'metadata.patch',
+            pageId: targetId,
+            set: { [`elementRoles.${element.elementId}`]: 'title' },
+          },
+        ],
+        { pages: { [targetId]: target.pageRevision }, metadata: current.metadataRevision },
+      );
+      if (currentPageIdRef.current !== targetId) return;
+      setInsertionTool(null);
+      setSelectedIds([element.elementId]);
+      setAutoEditId(element.elementId);
     });
   };
 
@@ -2820,6 +2854,19 @@ export function HuandengEditor() {
               ) : authoringPage ? (
                 <AuthoringWorkspace
                   onZoom={setScale}
+                  emptySlideActions={
+                    selectedPresentationId || busy
+                      ? undefined
+                      : {
+                          onAddTitle: addStarterTitle,
+                          onStory: () => {
+                            setInspectorCollapsed(false);
+                            setInspectorTab('story');
+                            if (notesDock === 'right') setNotesOpen(false);
+                          },
+                          onConnect: () => setAgentConnectionOpen(true),
+                        }
+                  }
                   canvas={{
                     page: authoringPage,
                     size: snapshot.size,
@@ -3253,6 +3300,7 @@ export function HuandengEditor() {
         onOpenChange={setAgentConnectionOpen}
         backend={backend}
         deckId={snapshot.deckId}
+        projectTitle={snapshot.title}
       />
       <KeyboardHelpDialog open={keyboardHelpOpen} onOpenChange={setKeyboardHelpOpen} />
       <Dialog open={pendingDraftsOpen} onOpenChange={setPendingDraftsOpen}>

@@ -12,6 +12,7 @@ import type { PageAnimation } from '../../../pptd/animation-model';
 import type { PageTransition } from '../../../pptd/page-transition';
 import { AnimationPanel } from './animation-panel';
 import { PptdEditorCanvas } from './editor-canvas';
+import { type EmptySlideActions, EmptySlideStart } from './empty-slide-start';
 
 interface AuthoringWorkspaceProps {
   canvas: ComponentProps<typeof PptdEditorCanvas>;
@@ -30,6 +31,7 @@ interface AuthoringWorkspaceProps {
     expectedPageRevision: string,
   ) => Promise<unknown>;
   onSelectTargets?: (elementIds: string[]) => void;
+  emptySlideActions?: EmptySlideActions;
 }
 
 export function AuthoringWorkspace({
@@ -43,6 +45,7 @@ export function AuthoringWorkspace({
   onPreviewModeChange,
   onTransitionChange,
   onSelectTargets,
+  emptySlideActions,
 }: AuthoringWorkspaceProps) {
   const viewportRef = useRef<HTMLDivElement>(null);
   const measuredScale = useRef(canvas.scale ?? 1);
@@ -119,6 +122,11 @@ export function AuthoringWorkspace({
   );
   return (
     <div className="flex min-h-0 flex-1 flex-col" data-hd-authoring-workspace>
+      <EmptySlideStart
+        page={canvas.page}
+        disabled={canvas.disabled || timelineOpen || !!canvas.insertionTool}
+        actions={emptySlideActions}
+      />
       <div
         ref={viewportRef}
         className="relative min-h-0 flex-1 overflow-auto p-6 md:p-8"

@@ -416,12 +416,13 @@ export function PptdInspector({
                       )
                     }
                   />
-                  Use Slide Position
+                  {t('Use Slide Position')}
                 </label>
                 {positionField && (
                   <p className="text-[11px] leading-relaxed text-muted-foreground">
-                    Updates from Main Slides order. Reordering pages changes this number without
-                    creating a Slide version.
+                    {t(
+                      'Updates from Main Slides order. Reordering pages changes this number without creating a Slide version.',
+                    )}
                   </p>
                 )}
                 <label

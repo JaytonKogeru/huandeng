@@ -43,8 +43,7 @@ const english = {
   '正在打开项目…': 'Opening project…',
   '打开 HUANDENG 项目': 'Open HUANDENG project',
   'PPTD 项目': 'PPTD project',
-  '新建 HUANDENG 项目 · 将创建同名文件夹':
-    'New HUANDENG project · Creates a folder with the same name',
+  '新建 HUANDENG 项目文件夹 · 内含 deck.pptd': 'New HUANDENG project folder · Contains deck.pptd',
   '项目名称（创建独立文件夹）': 'Project name (creates a separate folder)',
   创建项目: 'Create project',
   '请选择当前项目中的文件。': 'Choose a file inside the current project.',

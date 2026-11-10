@@ -13,6 +13,7 @@ import {
   type PageSnapshot,
   type PageVersionSnapshot,
   PptdError,
+  type ProjectAuthoringGuidance,
   type Revision,
   type SlideIdentity,
 } from './types';
@@ -123,6 +124,7 @@ export interface StoryBriefingOptions {
 }
 
 export interface StoryBriefing {
+  projectGuidance?: ProjectAuthoringGuidance;
   deckId: string;
   title: string;
   designPolicy: string | null;
@@ -308,6 +310,7 @@ export function storyBriefing(
     deckId: snapshot.deckId,
     title: snapshot.title,
     designPolicy: snapshot.metadata.designPolicy ?? null,
+    ...(snapshot.projectGuidance ? { projectGuidance: snapshot.projectGuidance } : {}),
     scope: page ? 'page' : presentation ? 'presentation' : 'project',
     main: { title: snapshot.title, story: project.mainStory },
     organization: {

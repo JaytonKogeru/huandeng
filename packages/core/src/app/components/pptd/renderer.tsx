@@ -617,11 +617,15 @@ function ShapeContent({ element, theme }: { element: PptdElement; theme: PptdThe
 function LineContent({ element, theme }: { element: PptdElement; theme: PptdTheme }) {
   useHuandengLocale();
   const id = useId().replace(/:/g, '');
+  const [, , width, height] = element.bounds ?? [0, 0, 120, 50];
+  const viewBox = Array.isArray(element.viewBox) ? element.viewBox : [1, 1];
   const points = textValue(element.points, '0,0 1,1')
     .trim()
     .split(/\s+/)
-    .map((point) => point.split(',').map(Number));
-  const viewBox = Array.isArray(element.viewBox) ? element.viewBox : [1, 1];
+    .map((point) => {
+      const [x, y] = point.split(',').map(Number);
+      return [(x / (viewBox[0] || 1)) * width, (y / (viewBox[1] || 1)) * height];
+    });
   const border = record(element.border);
   const arrow = Array.isArray(element.arrow) ? element.arrow : [];
   if (
@@ -648,11 +652,12 @@ function LineContent({ element, theme }: { element: PptdElement; theme: PptdThem
   return (
     <svg
       aria-hidden="true"
-      width="100%"
-      height="100%"
-      viewBox={`0 0 ${viewBox[0] || 1} ${viewBox[1] || 1}`}
+      // A zero SVG viewport hides the stroke even when overflow is visible.
+      width={width || 1}
+      height={height || 1}
+      viewBox={`0 0 ${width || 1} ${height || 1}`}
       preserveAspectRatio="none"
-      style={{ overflow: 'visible' }}
+      style={{ display: 'block', overflow: 'visible' }}
     >
       <defs>
         {(['start', 'end'] as const).map((end, index) => (
