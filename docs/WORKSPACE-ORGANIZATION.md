@@ -43,7 +43,7 @@ The old v0.18 worktree was removed after both authoring teams released its scree
 
 The only physical main-repository installation is `dist/HUANDENG-v0.18.0-win32-x64`. Its build records source revision `35dfe649d450d22a0e4e3b70661be52c67eb9f7a` with `sourceDirty=false`. The `dist/HUANDENG-win32-x64` junction points to this same directory; it contains no second binary copy. Existing shortcuts and the PPTD association point to the current package. No Editor executable or Editor source was upgraded during this rework.
 
-Only six identified historical public-demo or test processes were stopped. The four current introduction writers and the older research writer remained available. Final inspection also confirmed that the ordinary Editor process was still running with the user's two research projects. No private project was closed, discarded, migrated, or exported by the cleanup.
+During directory cleanup, six identified historical public-demo or test processes were stopped. The four task-owned introduction writers remained available through rendering, export and release verification. After the release assets were published and checked, those four temporary writers were closed following fresh process and GUI dependency checks. The ordinary Editor retained the user's two research projects, and the older research writer remained available. User preferences were byte-identical before and after this service cleanup. No private project was closed, discarded, migrated, or exported.
 
 A unique earlier save-failure project, a small original draft recovery set, and a research design reference were retained under ignored verification storage. They are user data, not release material. Generated runtimes, repeated Office inputs, bulk session logs, and whole historical package copies were not retained with them.
 
@@ -80,3 +80,8 @@ Detailed local receipts are kept under the main repository's ignored `.verificat
 The earlier native trials retain three immutable submission ZIPs, their manifests, final visible responses, bounded run receipts, and selected Office evidence. They retain the distinction between an original model submission and an assisted technical continuation. Older unaccepted introduction drafts remain historical evidence; retaining them does not claim that the user accepted their appearance. Current visual and compatibility findings belong in the introduction review, not in a successful directory-cleanup claim.
 
 Future HUANDENG development should start from the main repository. Use temporary worktrees for isolated changes and remove them after integration only when unique local changes, ignored user material, and active services have been checked. Keep a single current physical desktop package and use the compatibility alias for the existing launcher. New presentations should live in their intended project directory rather than beside another dated copy of the whole repository.
+
+
+## Post-release duplicate archive cleanup
+
+Three redundant native/coordinator ZIP files, totaling 39,745,201 bytes, were removed after their original source members were mapped to the committed canonical files and the published packages were verified. One unique 7,608-byte DeepSeek asset-provenance record was extracted and hash-verified before its surrounding duplicate archive was removed. It remains in the existing workstation audit receipts; no new archive directory or active project was created. The original quota-time PDF, metadata, guidance and inherited documentation already retained in the canonical projects remain available.

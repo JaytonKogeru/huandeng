@@ -108,3 +108,10 @@ The release contains four portable project ZIPs, four PDFs, four PPTX files, a p
 [Release](https://github.com/JaytonKogeru/huandeng/releases/tag/plugin-v0.18.2) · [Artifact manifest](evidence/introduction-rework/release-manifest.json) · [Checksums](evidence/introduction-rework/SHA256SUMS.txt).
 
 Use the four canonical projects for continued review. Keep the user's original nominated demo unchanged. Do not reinstate white-background or fixed-outline requirements from superseded 0.18 documents, recreate dated working copies, overwrite unrelated modified fixtures or report agent review as author approval.
+
+
+## Publication and final handoff verified
+
+The plugin-v0.18.2 release was published on 2026-11-10 at 13:43:36 UTC as a review prerelease. Its source is [b624e55](https://github.com/JaytonKogeru/huandeng/commit/b624e553eb584ed4e1314e402aaf03123edb4ee7). All sixteen uploaded assets matched their SHA-256 values, and [HUANDENG Core CI passed](https://github.com/JaytonKogeru/huandeng/actions/runs/42826529864).
+
+The historical Editor 0.18.0 release now points readers to these replacements and records the author's rejection of its old introduction visuals. Its tag and binary assets were preserved. Temporary introduction writers and redundant trial ZIPs were then retired as recorded in WORKSPACE-ORGANIZATION.md. The final handoff documentation does not change the tagged source projects, plugin bytes or release attachments.
