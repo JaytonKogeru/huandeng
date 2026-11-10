@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "operationId": "69b4e2f2-cc4b-436c-8120-8b94c1599449",
+  "pageId": "bcce84a7-3bb7-4444-b06b-f9606efd2f4c",
+  "changedElements": [
+    "title",
+    "lead"
+  ],
+  "expectedOnlyChanges": [
+    "content.text",
+    "content.text"
+  ],
+  "preservedOtherObjects": true,
+  "preservedOtherPages": true
+}

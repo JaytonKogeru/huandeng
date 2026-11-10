@@ -1,0 +1,98 @@
+pageType: content
+background:
+  type: solid
+  color: "#FFFFFF"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 64
+      - 45
+      - 832
+      - 55
+    role: title
+    content:
+      text: Try one small edit
+      fontFamily: Arial
+      fontSize: 30
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: footer
+    elementType: text
+    bounds:
+      - 64
+      - 506
+      - 400
+      - 16
+    content:
+      text: HUANDENG    /    21
+      fontFamily: Arial
+      fontSize: 10
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: start
+    elementType: text
+    bounds:
+      - 64
+      - 153
+      - 820
+      - 147
+    content:
+      text: |-
+        Open the example project.
+        Choose one page and improve one thing.
+      fontFamily: Arial
+      fontSize: 30
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.55
+    role: heading
+  - elementId: agent
+    elementType: text
+    bounds:
+      - 64
+      - 341
+      - 805
+      - 74
+    content:
+      text: Connect your preferred client through Agent setup when you want an agent.
+      fontFamily: Arial
+      fontSize: 19
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: finish
+    elementType: text
+    bounds:
+      - 64
+      - 448
+      - 805
+      - 40
+    content:
+      text: Inspect the result, then export it for the next reader.
+      fontFamily: Arial
+      fontSize: 20
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+notes: |-
+  Open the example and change a title or explanation. Connect your preferred client through Agent setup and request a focused edit. Inspect the result and export it. The small task makes the shared workflow visible.
+
+  Source: actual HUANDENG Editor v0.18 public example and project feature contracts. https://github.com/JaytonKogeru/huandeng; packages/core/src/pptd/agent-guide.ts; docs/SPEC-V018.md. Screenshot provenance is retained with the project assets.

@@ -1,0 +1,87 @@
+title: 让素材保持原有清晰度
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 52
+      - 44
+      - 856
+      - 70
+    content:
+      text: 让素材保持原有清晰度
+      fontSize: 28
+      fontFamily: Microsoft YaHei
+      color: "#252a2f"
+  - elementId: lead
+    elementType: text
+    bounds:
+      - 52
+      - 126
+      - 818
+      - 84
+    content:
+      text: 把原始素材留在项目中，方便下一次修改。
+      fontSize: 18
+      fontFamily: Microsoft YaHei
+      color: "#58636b"
+  - elementId: left-heading
+    elementType: text
+    bounds:
+      - 52
+      - 266
+      - 390
+      - 40
+    content:
+      text: 原始素材
+      fontSize: 20
+      fontFamily: Microsoft YaHei
+      color: "#252a2f"
+  - elementId: left-body
+    elementType: text
+    bounds:
+      - 52
+      - 320
+      - 365
+      - 116
+    content:
+      text: 保留完整分辨率，并记录清楚的来源。
+      fontSize: 17
+      fontFamily: Microsoft YaHei
+      color: "#252a2f"
+  - elementId: right-heading
+    elementType: text
+    bounds:
+      - 518
+      - 266
+      - 390
+      - 40
+    content:
+      text: 可读的局部
+      fontSize: 20
+      fontFamily: Microsoft YaHei
+      color: "#252a2f"
+  - elementId: right-body
+    elementType: text
+    bounds:
+      - 518
+      - 320
+      - 365
+      - 116
+    content:
+      text: 展示真正说明任务的界面区域。
+      fontSize: 17
+      fontFamily: Microsoft YaHei
+      color: "#252a2f"
+  - elementId: footer
+    elementType: text
+    bounds:
+      - 52
+      - 490
+      - 856
+      - 22
+    content:
+      text: HUANDENG  /  公开产品示例
+      fontSize: 11
+      fontFamily: Microsoft YaHei
+      color: "#687078"
+notes: 这是 HUANDENG 的公开产品示例，用于说明：让素材保持原有清晰度。

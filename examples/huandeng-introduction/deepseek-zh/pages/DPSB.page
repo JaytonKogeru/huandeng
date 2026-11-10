@@ -1,0 +1,149 @@
+elements:
+  - bounds:
+      - 64
+      - 52
+      - 800
+      - 42
+    content:
+      align:
+        - left
+        - top
+      color: "#121212"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 26
+      lineHeight: 1.3
+      text: 同一个写入器，同一套规则
+    elementId: t
+    elementType: text
+  - bounds:
+      - 64
+      - 104
+      - 760
+      - 34
+    content:
+      align:
+        - left
+        - top
+      color: "#3F3F3F"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 18
+      lineHeight: 1.6
+      text: 人保存、Agent 提交，都经过同一个本地文档服务。
+    elementId: lead
+    elementType: text
+  - bounds:
+      - 64
+      - 218
+      - 200
+      - 20
+    content:
+      align:
+        - left
+        - top
+      color: "#8C8C8C"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 12
+      letterSpacing: 1.5
+      lineHeight: 1.5
+      text: 写入
+    elementId: l1
+    elementType: text
+  - bounds:
+      - 64
+      - 242
+      - 760
+      - 30
+    content:
+      align:
+        - left
+        - top
+      color: "#2E2E2E"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 17
+      lineHeight: 1.7
+      text: 每次写入都带着读取时的版本。版本已经变了，请求会被拒绝，而不是覆盖别人的修改。
+    elementId: b1
+    elementType: text
+  - bounds:
+      - 64
+      - 312
+      - 200
+      - 20
+    content:
+      align:
+        - left
+        - top
+      color: "#8C8C8C"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 12
+      letterSpacing: 1.5
+      lineHeight: 1.5
+      text: 预览
+    elementId: l2
+    elementType: text
+  - bounds:
+      - 64
+      - 336
+      - 760
+      - 30
+    content:
+      align:
+        - left
+        - top
+      color: "#2E2E2E"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 17
+      lineHeight: 1.7
+      text: Agent 的改动先生成预览：哪些字段、哪些页面、影响了哪些引用，都在写入前列出。
+    elementId: b2
+    elementType: text
+  - bounds:
+      - 64
+      - 406
+      - 200
+      - 20
+    content:
+      align:
+        - left
+        - top
+      color: "#8C8C8C"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 12
+      letterSpacing: 1.5
+      lineHeight: 1.5
+      text: 授权
+    elementId: l3
+    elementType: text
+  - bounds:
+      - 64
+      - 430
+      - 760
+      - 30
+    content:
+      align:
+        - left
+        - top
+      color: "#2E2E2E"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 17
+      lineHeight: 1.7
+      text: 预览不保存，也不等于批准。是否写入，由当前任务的授权决定。
+    elementId: b3
+    elementType: text
+notes: 版本号就像“我读的是哪一版”。它让两个人同时改一页时，后到的请求不会默默覆盖先到的结果。

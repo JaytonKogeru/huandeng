@@ -1,0 +1,92 @@
+elements:
+  - bounds:
+      - 64
+      - 52
+      - 800
+      - 42
+    content:
+      align:
+        - left
+        - top
+      color: "#121212"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 26
+      lineHeight: 1.3
+      text: 保存之后，改动还能被回看
+    elementId: t
+    elementType: text
+  - bounds:
+      - 64
+      - 104
+      - 760
+      - 34
+    content:
+      align:
+        - left
+        - top
+      color: "#3F3F3F"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 18
+      lineHeight: 1.6
+      text: 每条保存记录都能单独审阅，不依赖当时的聊天记录。
+    elementId: lead
+    elementType: text
+  - bounds:
+      - 64
+      - 226
+      - 760
+      - 32
+    content:
+      align:
+        - left
+        - top
+      color: "#2E2E2E"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 17
+      lineHeight: 1.7
+      text: 审阅视图按对象列出新增、删除和变化的字段，并给出改动前后的页面。
+    elementId: b1
+    elementType: text
+  - bounds:
+      - 64
+      - 292
+      - 760
+      - 32
+    content:
+      align:
+        - left
+        - top
+      color: "#2E2E2E"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 17
+      lineHeight: 1.7
+      text: 它只读：不改文件，也不是批准记录。它的作用是让下一个人看懂发生了什么。
+    elementId: b2
+    elementType: text
+  - bounds:
+      - 64
+      - 394
+      - 820
+      - 36
+    content:
+      align:
+        - left
+        - top
+      color: "#171717"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 22
+      lineHeight: 1.5
+      text: 改动可以回看，才谈得上协作。
+    elementId: q
+    elementType: text
+notes: 保存回执是可追溯到具体操作的证据。审阅只读，不代表任何人已经批准；这一点在向合作者解释时需要说清楚。

@@ -1,0 +1,21 @@
+elements:
+  - bounds:
+      - 64
+      - 238
+      - 832
+      - 60
+    content:
+      align:
+        - left
+        - top
+      color: "#121212"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 34
+      lineHeight: 1.3
+      text: 修改与交付
+    elementId: t
+    elementType: text
+notes: 过渡：把前面几块拼起来，看一次真实的修改怎么从想法走到交付。
+pageType: section

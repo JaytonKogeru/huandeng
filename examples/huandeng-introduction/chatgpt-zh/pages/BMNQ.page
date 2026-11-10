@@ -1,0 +1,95 @@
+pageType: content
+background:
+  type: solid
+  color: "#FFFFFF"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 64
+      - 45
+      - 832
+      - 55
+    role: title
+    content:
+      {"text":"浏览看节奏，大纲看逻辑","fontFamily":"Microsoft YaHei","fontSize":28,"color":"#202423","bold":false,"align":["left","top"],"lineHeight":1.28}
+  - elementId: footer
+    elementType: text
+    bounds:
+      - 64
+      - 506
+      - 400
+      - 16
+    content:
+      text: HUANDENG    /    11
+      fontFamily: Microsoft YaHei
+      fontSize: 10
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: browse
+    elementType: image
+    src: "media/imported/0f856d8826c729d24034a9b44834bca1de9424bc8a2090c9d12e3da901ec571a.png"
+    sourceName: "zh-CN-native-browse-reading-4x.png"
+    alt: "zh CN native browse reading 4x.png"
+    bounds:
+      - 64
+      - 143
+      - 398
+      - 286
+    fit:
+      mode: contain
+    crop:
+      {"left":0,"right":0,"top":0,"bottom":0}
+  - elementId: outline
+    elementType: image
+    src: "media/imported/f5455f5cada808cb66355a623d9d2e07d5e8645a0e4cdd0ecc97220c7ab96bd5.png"
+    sourceName: "zh-CN-native-outline-reading-4x.png"
+    alt: "zh CN native outline reading 4x.png"
+    bounds:
+        [500,140,396,300]
+    fit:
+      mode: contain
+    crop:
+      {"left":0,"right":0.56,"top":0,"bottom":0}
+  - elementId: browse-caption
+    elementType: text
+    bounds:
+      - 64
+      - 451
+      - 390
+      - 27
+    content:
+      text: 页面密度与留白
+      fontFamily: Microsoft YaHei
+      fontSize: 18
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: outline-caption
+    elementType: text
+    bounds:
+      - 500
+      - 451
+      - 396
+      - 27
+    content:
+      text: 标题、论点和顺序
+      fontFamily: Microsoft YaHei
+      fontSize: 18
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+notes: |-
+  Browse 把实际缩略图放在一起，看密度与停顿。Outline 让人读标题、文字和顺序。两个视图操作同一份页面。
+
+  Source: actual HUANDENG Editor v0.18 public example and project feature contracts. https://github.com/JaytonKogeru/huandeng; packages/core/src/pptd/agent-guide.ts; docs/SPEC-V018.md. Screenshot provenance is retained with the project assets.

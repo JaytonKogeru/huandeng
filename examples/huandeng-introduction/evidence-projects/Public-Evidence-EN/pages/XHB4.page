@@ -1,0 +1,23 @@
+pageType: section
+background:
+  type: solid
+  color: "#FFFFFF"
+elements:
+  - elementId: title-f7e45339-6bae-4b32-b5a7-828b5021c373
+    elementType: text
+    role: title
+    bounds:
+      - 64
+      - 216
+      - 832
+      - 108
+    content:
+      text: A working document
+      fontSize: 34
+      fontFamily: Arial
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - middle
+notes: ""

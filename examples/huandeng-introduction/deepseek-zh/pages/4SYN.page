@@ -1,0 +1,160 @@
+elements:
+  - bounds:
+      - 64
+      - 52
+      - 800
+      - 42
+    content:
+      align:
+        - left
+        - top
+      color: "#121212"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 26
+      lineHeight: 1.3
+      text: Story 说明这一页为什么存在
+    elementId: t
+    elementType: text
+  - bounds:
+      - 64
+      - 104
+      - 760
+      - 34
+    content:
+      align:
+        - left
+        - top
+      color: "#3F3F3F"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 18
+      lineHeight: 1.6
+      text: 备注写讲什么；Story 写为什么这样改，以及改的时候不能动什么。
+    elementId: lead
+    elementType: text
+  - bounds:
+        [64,196,440,20]
+    content:
+      align:
+        - left
+        - top
+      color: "#8C8C8C"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 12
+      letterSpacing: 1.5
+      lineHeight: 1.5
+      text: MAIN STORY
+    elementId: l1
+    elementType: text
+  - bounds:
+        [64,216,440,30]
+    content:
+      align:
+        - left
+        - top
+      color: "#2E2E2E"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 17
+      lineHeight: 1.7
+      text: 这个项目面向谁，要说明什么。
+    elementId: b1
+    elementType: text
+  - bounds:
+        [64,272,440,20]
+    content:
+      align:
+        - left
+        - top
+      color: "#8C8C8C"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 10.5
+      letterSpacing: 0.8
+      lineHeight: 1.5
+      text: SECTION / PRESENTATION
+    elementId: l2
+    elementType: text
+  - bounds:
+        [64,292,440,30]
+    content:
+      align:
+        - left
+        - top
+      color: "#2E2E2E"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 17
+      lineHeight: 1.7
+      text: 这一段、这一场要完成什么。
+    elementId: b2
+    elementType: text
+  - bounds:
+        [64,348,440,20]
+    content:
+      align:
+        - left
+        - top
+      color: "#8C8C8C"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 12
+      letterSpacing: 1.5
+      lineHeight: 1.5
+      text: PAGE STORY
+    elementId: l3
+    elementType: text
+  - bounds:
+        [64,368,440,30]
+    content:
+      align:
+        - left
+        - top
+      color: "#2E2E2E"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 17
+      lineHeight: 1.7
+      text: 这一页的证据、目的，以及必须保留的内容。
+    elementId: b3
+    elementType: text
+  - bounds:
+      - 64
+      - 446
+      - 832
+      - 26
+    content:
+      align:
+        - left
+        - top
+      color: "#6A6A6A"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 15
+      lineHeight: 1.6
+      text: Agent 在动一页之前先读它。约束跟着页面走，不留在某次聊天里。
+    elementId: close
+    elementType: text
+  - bounds:
+      - 560
+      - 200
+      - 296
+      - 225
+    elementId: shot-story
+    elementType: image
+    fit:
+      mode: contain
+    sourceName: zh-CN-story-crop.png
+    src: media/imported/3c2fca738fe3e96eb9c7d1a318815924c6b2ae4dfb63250b77e1b814a48f5c5c.png
+notes: "四层 Story：整个项目、章节、演讲、页面。页面这一层最常被忽略，但它直接决定一次修改要保留什么。右侧是真实界面里的「幻灯故事」面板：上方是这页的目的，下面是「需要保留」与「这次修改」。截图 zh-CN-story-crop.png，598×454，按原比例 296×225 放置。"

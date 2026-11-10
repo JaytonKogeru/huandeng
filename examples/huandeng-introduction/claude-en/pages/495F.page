@@ -1,0 +1,133 @@
+elements:
+  - elementId: title
+    elementType: text
+    role: title
+    bounds:
+      - 56
+      - 40
+      - 848
+      - 44
+    content:
+      text: Build every talk from one set of Main Slides
+      fontFamily: Arial
+      fontSize: 28
+      lineHeight: 1.2
+      color: "#1A1D21"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: lead
+    elementType: text
+    bounds:
+      - 56
+      - 112
+      - 330
+      - 190
+    content:
+      text: Main Slides is the project’s canonical collection. A Presentation is an ordered list of references to it, whole Sections or single slides, with its own notes.
+      fontFamily: Arial
+      fontSize: 19
+      lineHeight: 1.45
+      color: "#3A3F45"
+      align:
+        - left
+        - top
+  - elementId: lead-2
+    elementType: text
+    bounds:
+        [56,282,330,84]
+    content:
+      text: Edit a Main Slide once and every talk that uses it follows.
+      fontFamily: Arial
+      fontSize: 19
+      lineHeight: 1.45
+      color: "#2D5A4A"
+      align:
+        - left
+        - top
+  - elementId: reuse-table
+    elementType: table
+    bounds:
+      - 424
+      - 112
+      - 480
+      - 300
+    columnWidths:
+      - 0.6
+      - 0.2
+      - 0.2
+    rowHeights:
+      - 0.13
+      - 0.145
+      - 0.145
+      - 0.145
+      - 0.145
+      - 0.145
+      - 0.145
+    rows:
+      - - text: Main Slide
+        - text: Full talk
+        - text: Brief
+      - - text: The same slide gets rebuilt
+        - text: "2"
+        - text: "2"
+      - - text: Build every talk from one set
+        - text: "4"
+        - text: "3"
+      - - text: A Slide keeps its ID
+        - text: "5"
+        - text: "4"
+      - - text: Story tells the next editor
+        - text: "7"
+        - text: —
+      - - text: Everything in one folder
+        - text: "9"
+        - text: "5"
+      - - text: Name a milestone, restore one page
+        - text: "17"
+        - text: "7"
+    style:
+      cellStyle:
+        fontFamily: Arial
+        fontSize: 16
+        lineHeight: 1.2
+        color: "#3A3F45"
+        align:
+          - left
+          - middle
+        border:
+          - null
+          - null
+          - width: 1
+            color: "#E1E4E8"
+            style: solid
+          - null
+      firstRowStyle:
+        fontSize: 13
+        color: "#6B7178"
+        bold: true
+        border:
+          - null
+          - null
+          - width: 1.5
+            color: "#9AA1A9"
+            style: solid
+          - null
+  - elementId: table-caption
+    elementType: text
+    bounds:
+      - 424
+      - 424
+      - 480
+      - 40
+    content:
+      text: Positions of six Main Slides in this deck’s two Presentations. The slides are the same files; only their order differs.
+      fontFamily: Arial
+      fontSize: 13
+      lineHeight: 1.35
+      color: "#6B7178"
+      align:
+        - left
+        - top
+notes: "This is the central idea. Every project has one Main Slides collection: the canonical, editable source. A Presentation does not copy slides; it lists references to Main Slides or to whole Sections, in whatever order that talk needs, and each appearance can carry its own speaker notes. The table on the right is real: it comes from this deck, which has a full Presentation and a shorter brief Presentation built from the same Main Slides. The same slide sits at different positions in each. When I correct a Main Slide, both talks show the correction."

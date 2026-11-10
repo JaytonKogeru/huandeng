@@ -1,0 +1,120 @@
+elements:
+  - elementId: title
+    elementType: text
+    role: title
+    bounds:
+      - 56
+      - 40
+      - 848
+      - 44
+    content:
+      text: Name a milestone, restore one page
+      fontFamily: Arial
+      fontSize: 28
+      lineHeight: 1.2
+      color: "#1A1D21"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: versions-shot
+    elementType: image
+    bounds:
+      - 56
+      - 104
+      - 848
+      - 132.2
+    src: media/en/history-versions.png
+    sourceName: history-versions.png
+  - elementId: h1-head
+    elementType: text
+    bounds:
+      - 56
+      - 262
+      - 400
+      - 26
+    content:
+      text: Saved versions
+      fontFamily: Arial
+      fontSize: 19
+      lineHeight: 1.2
+      color: "#1A1D21"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: h1-body
+    elementType: text
+    bounds:
+      - 56
+      - 292
+      - 400
+      - 80
+    content:
+      text: Name a version when a round of work is done. The slide and its images are archived inside the project.
+      fontFamily: Arial
+      fontSize: 18
+      lineHeight: 1.4
+      color: "#3A3F45"
+      align:
+        - left
+        - top
+  - elementId: h2-head
+    elementType: text
+    bounds:
+      - 504
+      - 262
+      - 400
+      - 26
+    content:
+      text: Operation history
+      fontFamily: Arial
+      fontSize: 19
+      lineHeight: 1.2
+      color: "#1A1D21"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: h2-body
+    elementType: text
+    bounds:
+      - 504
+      - 292
+      - 400
+      - 80
+    content:
+      text: Ordinary edits save automatically and are listed one by one, separate from the named milestones.
+      fontFamily: Arial
+      fontSize: 18
+      lineHeight: 1.4
+      color: "#3A3F45"
+      align:
+        - left
+        - top
+  - elementId: restore-shot
+    elementType: image
+    bounds:
+      - 56
+      - 410
+      - 848
+      - 32.5
+    src: media/en/history-restore.png
+    sourceName: history-restore.png
+  - elementId: restore-caption
+    elementType: text
+    bounds:
+      - 56
+      - 452
+      - 848
+      - 22
+    content:
+      text: Restoring a version is a new change to this slide only; every other slide stays as it is.
+      fontFamily: Arial
+      fontSize: 13
+      lineHeight: 1.3
+      color: "#6B7178"
+      align:
+        - left
+        - top
+notes: Autosave protects work in progress, but it does not mark the moments that matter. In History you give the selected slide a named version, such as 'Lab meeting final'. The version stores the slide and copies of the images it used inside the project folder, so it still works after you move the folder. Operation history lists the individual saved changes separately. When you restore a named version, HUANDENG writes it back as a new change to that one slide. Other slides, and Presentations that pin an older version, are not affected.

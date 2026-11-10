@@ -1,0 +1,107 @@
+pageType: content
+background:
+  type: solid
+  color: "#FFFFFF"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 64
+      - 45
+      - 832
+      - 55
+    role: title
+    content:
+      text: Intent stays beside the page
+      fontFamily: Arial
+      fontSize: 30
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: footer
+    elementType: text
+    bounds:
+      - 64
+      - 506
+      - 400
+      - 16
+    content:
+      text: HUANDENG    /    07
+      fontFamily: Arial
+      fontSize: 10
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: purpose-label
+    elementType: text
+    bounds:
+      - 64
+      - 145
+      - 340
+      - 30
+    content:
+      text: Purpose
+      fontFamily: Arial
+      fontSize: 14
+      color: "#355E4B"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: purpose
+    elementType: text
+    bounds:
+      - 64
+      - 188
+      - 390
+      - 95
+    content:
+      {"text":"Help the next editor understand\nwhat this page should do.","fontFamily":"Arial","fontSize":20,"color":"#202423","bold":false,"align":["left","top"],"lineHeight":1.28}
+  - elementId: keep-label
+    elementType: text
+    bounds:
+      - 64
+      - 320
+      - 340
+      - 30
+    content:
+      text: Keep
+      fontFamily: Arial
+      fontSize: 14
+      color: "#355E4B"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: keep
+    elementType: text
+    bounds:
+      - 64
+      - 363
+      - 390
+      - 75
+    content:
+      {"text":"Preserve the layout, main message\nand all other objects.","fontFamily":"Arial","fontSize":19,"color":"#202423","bold":false,"align":["left","top"],"lineHeight":1.28}
+  - elementId: notes-context
+    elementType: image
+    src: "media/imported/489dd2e5299200127a17f13ad647931c356f726bc48514949be359d2a5d3df3c.png"
+    sourceName: "en-focused-story-4x.png"
+    alt: "en focused story 4x.png"
+    bounds:
+        [516,128,380,340]
+    fit:
+      mode: contain
+    crop:
+      {"left":0,"right":0,"top":0,"bottom":0}
+notes: |-
+  Story records the purpose of a page, what must stay and the requested change. The next edit can begin with those constraints. Agent-authored context does not count as human approval.
+
+  Source: actual HUANDENG Editor v0.18 public example and project feature contracts. https://github.com/JaytonKogeru/huandeng; packages/core/src/pptd/agent-guide.ts; docs/SPEC-V018.md. Screenshot provenance is retained with the project assets.

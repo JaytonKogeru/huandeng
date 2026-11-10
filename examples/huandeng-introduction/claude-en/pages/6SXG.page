@@ -1,0 +1,99 @@
+elements:
+  - elementId: title
+    elementType: text
+    role: title
+    bounds:
+      - 56
+      - 40
+      - 848
+      - 44
+    content:
+      text: Deliver the project, not just a file
+      fontFamily: Arial
+      fontSize: 28
+      lineHeight: 1.2
+      color: "#1A1D21"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: d1-head
+    elementType: text
+    bounds:
+      - 56
+      - 124
+      - 400
+      - 26
+    content:
+      text: The project folder
+      fontFamily: Arial
+      fontSize: 19
+      lineHeight: 1.2
+      color: "#1A1D21"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: d1-body
+    elementType: text
+    bounds:
+      - 56
+      - 156
+      - 400
+      - 140
+    content:
+      text: Editable slides, original media, Story, Sections, Presentations and named versions. Open it on another computer and carry on where you left off.
+      fontFamily: Arial
+      fontSize: 18
+      lineHeight: 1.4
+      color: "#3A3F45"
+      align:
+        - left
+        - top
+  - elementId: d2-head
+    elementType: text
+    bounds:
+      - 504
+      - 124
+      - 400
+      - 26
+    content:
+      text: PDF and PPTX
+      fontFamily: Arial
+      fontSize: 19
+      lineHeight: 1.2
+      color: "#1A1D21"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: d2-body
+    elementType: text
+    bounds:
+      - 504
+      - 156
+      - 400
+      - 180
+    content:
+      text: Static copies for sharing, exported from Main Slides or from any Presentation. PPTX keeps supported text, images, shapes, tables, formulas and basic charts as native objects; the rest becomes an image, listed in the export report.
+      fontFamily: Arial
+      fontSize: 18
+      lineHeight: 1.4
+      color: "#3A3F45"
+      align:
+        - left
+        - top
+  - elementId: d-note
+    elementType: text
+    bounds:
+        [56,380,848,48]
+    content:
+      text: Click animations play in the Editor’s live show. Static exports keep each slide’s base state.
+      fontFamily: Arial
+      fontSize: 16
+      lineHeight: 1.4
+      color: "#6B7178"
+      align:
+        - left
+        - top
+notes: "Delivery has two parts. The project folder is the real deliverable: it is fully editable and carries the Story, the Presentations and the named versions. Hand it to a co-author and they continue from where you stopped. For people who only need to view the talk, HUANDENG exports PDF and PPTX, either of Main Slides or of a particular Presentation, including any pinned versions. In PPTX, supported objects stay native and editable in PowerPoint; anything that cannot be represented natively is exported as an image, and the export report says which objects that happened to. Click-by-click animation is a live-presentation feature and is not carried into these static files. This deck's PDF and PPTX were exported the same way."

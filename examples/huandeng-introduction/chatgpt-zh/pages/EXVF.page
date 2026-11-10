@@ -1,0 +1,98 @@
+pageType: content
+background:
+  type: solid
+  color: "#FFFFFF"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 64
+      - 45
+      - 832
+      - 55
+    role: title
+    content:
+      text: 从一次小修改开始
+      fontFamily: Microsoft YaHei
+      fontSize: 28
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: footer
+    elementType: text
+    bounds:
+      - 64
+      - 506
+      - 400
+      - 16
+    content:
+      text: HUANDENG    /    21
+      fontFamily: Microsoft YaHei
+      fontSize: 10
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: start
+    elementType: text
+    bounds:
+      - 64
+      - 153
+      - 820
+      - 147
+    content:
+      text: |-
+        打开示例项目。
+        选一页，改清楚一个地方。
+      fontFamily: Microsoft YaHei
+      fontSize: 28
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.55
+    role: heading
+  - elementId: agent
+    elementType: text
+    bounds:
+      - 64
+      - 341
+      - 805
+      - 74
+    content:
+      text: 需要 Agent 时，从 Agent setup 接入常用客户端。
+      fontFamily: Microsoft YaHei
+      fontSize: 19
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: finish
+    elementType: text
+    bounds:
+      - 64
+      - 448
+      - 805
+      - 40
+    content:
+      text: 查看实际结果，再导出给下一位读者。
+      fontFamily: Microsoft YaHei
+      fontSize: 20
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+notes: |-
+  打开示例，选一页，改一个标题或一段说明。通过 Agent setup 连接常用客户端，让它提出一次有边界的修改。检查结果，再导出。这个小任务能让共享工作流变得具体。
+
+  Source: actual HUANDENG Editor v0.18 public example and project feature contracts. https://github.com/JaytonKogeru/huandeng; packages/core/src/pptd/agent-guide.ts; docs/SPEC-V018.md. Screenshot provenance is retained with the project assets.

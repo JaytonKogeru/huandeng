@@ -1,0 +1,85 @@
+elements:
+  - elementId: title
+    elementType: text
+    role: title
+    bounds:
+      - 56
+      - 40
+      - 848
+      - 44
+    content:
+      text: Everything a talk needs lives in one folder
+      fontFamily: Arial
+      fontSize: 28
+      lineHeight: 1.2
+      color: "#1A1D21"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: folder-table
+    elementType: table
+    bounds:
+      - 56
+      - 108
+      - 848
+      - 318
+    columnWidths:
+      - 0.22
+      - 0.78
+    rowHeights:
+      - 0.1666
+      - 0.1666
+      - 0.1666
+      - 0.1666
+      - 0.1668
+      - 0.1668
+    rows:
+      - - text: deck.pptd
+        - text: The entry you open. It fixes the order of the Main Slides.
+      - - text: "pages"
+        - text: "One editable file per slide: text, images, shapes and notes."
+      - - text: "media"
+        - text: Original images and figures, kept at full resolution.
+      - - text: ".huandeng"
+        - text: Slide IDs, Story, Sections, Presentations and named versions.
+      - - text: AGENTS.md
+        - text: Your notes on audience and style, read by agents before editing.
+      - - text: "Exports"
+        - text: PDF and PPTX deliveries, regenerated from the source.
+    style:
+      cellStyle:
+        fontFamily: Arial
+        fontSize: 18
+        lineHeight: 1.25
+        color: "#3A3F45"
+        align:
+          - left
+          - middle
+        border:
+          - null
+          - null
+          - width: 1
+            color: "#E1E4E8"
+            style: solid
+          - null
+      firstColumnStyle:
+        color: "#2D5A4A"
+        bold: true
+  - elementId: folder-note
+    elementType: text
+    bounds:
+      - 56
+      - 446
+      - 848
+      - 52
+    content:
+      text: "Move or share the folder and the project comes with it: slides, media, Story and named versions."
+      fontFamily: Arial
+      fontSize: 19
+      lineHeight: 1.35
+      color: "#1A1D21"
+      align:
+        - left
+        - top
+notes: "A HUANDENG project is an ordinary folder. deck.pptd is the entry: you open it, and it lists the Main Slides in order. Each slide is its own file in pages, so editing one slide rewrites one file. Media holds the original images. The hidden .huandeng folder holds the relationships: permanent Slide IDs, the Story layers, Sections, Presentations, and named versions together with the images they used. AGENTS.md is a plain note where you write the audience and style you want; agents read it before editing. Exports holds the PDF and PPTX. Because everything is inside the folder, you can move it to another computer or keep it in version control. Working undo logs stay in the local app data and are not part of the folder."

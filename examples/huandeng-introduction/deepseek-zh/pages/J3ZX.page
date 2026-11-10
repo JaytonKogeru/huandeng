@@ -1,0 +1,130 @@
+elements:
+  - bounds:
+      - 64
+      - 52
+      - 800
+      - 42
+    content:
+      align:
+        - left
+        - top
+      color: "#121212"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 26
+      lineHeight: 1.3
+      text: 跟随最新，或固定一版
+    elementId: t
+    elementType: text
+  - bounds:
+      - 64
+      - 104
+      - 760
+      - 34
+    content:
+      align:
+        - left
+        - top
+      color: "#3F3F3F"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 18
+      lineHeight: 1.6
+      text: 一次出场默认引用 Main 的实时内容。需要复现某一场时，再把它固定下来。
+    elementId: lead
+    elementType: text
+  - bounds:
+      - 64
+      - 232
+      - 380
+      - 20
+    content:
+      align:
+        - left
+        - top
+      color: "#8C8C8C"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 12
+      letterSpacing: 1.5
+      lineHeight: 1.5
+      text: 实时引用
+    elementId: l1
+    elementType: text
+  - bounds:
+      - 64
+      - 258
+      - 380
+      - 130
+    content:
+      align:
+        - left
+        - top
+      color: "#2E2E2E"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 17
+      lineHeight: 1.8
+      text: 改 Main，所有跟随它的演讲都看到新内容。适合还在演进的报告。
+    elementId: b1
+    elementType: text
+  - bounds:
+      - 516
+      - 232
+      - 380
+      - 20
+    content:
+      align:
+        - left
+        - top
+      color: "#8C8C8C"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 12
+      letterSpacing: 1.5
+      lineHeight: 1.5
+      text: 固定版本
+    elementId: l2
+    elementType: text
+  - bounds:
+      - 516
+      - 258
+      - 380
+      - 150
+    content:
+      align:
+        - left
+        - top
+      color: "#2E2E2E"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 17
+      lineHeight: 1.8
+      text: "把这次出场固定到一个命名版本，之后只读，\n不随 Main 变化。适合已经讲过的会议版本。"
+    elementId: b2
+    elementType: text
+  - bounds:
+      - 64
+      - 430
+      - 832
+      - 26
+    content:
+      align:
+        - left
+        - top
+      color: "#6A6A6A"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 15
+      lineHeight: 1.6
+      text: 同一场演讲可以两种混用：多数页跟随，个别关键页固定。
+    elementId: close
+    elementType: text
+notes: 默认跟随，特殊场合固定。固定的只是那一次出场，不会把整页变成另一份内容。

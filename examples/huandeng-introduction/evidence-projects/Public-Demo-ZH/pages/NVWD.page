@@ -1,0 +1,87 @@
+title: 回到一个有名字的版本
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 52
+      - 44
+      - 856
+      - 70
+    content:
+      text: 回到一个有名字的版本
+      fontSize: 28
+      fontFamily: Microsoft YaHei
+      color: "#252a2f"
+  - elementId: lead
+    elementType: text
+    bounds:
+      - 52
+      - 126
+      - 818
+      - 84
+    content:
+      text: 比较修改前后，只恢复需要调整的那一页。
+      fontSize: 18
+      fontFamily: Microsoft YaHei
+      color: "#58636b"
+  - elementId: left-heading
+    elementType: text
+    bounds:
+      - 52
+      - 266
+      - 390
+      - 40
+    content:
+      text: 命名版本
+      fontSize: 20
+      fontFamily: Microsoft YaHei
+      color: "#252a2f"
+  - elementId: left-body
+    elementType: text
+    bounds:
+      - 52
+      - 320
+      - 365
+      - 116
+    content:
+      text: 在较大修改之前，保存一个容易辨认的节点。
+      fontSize: 17
+      fontFamily: Microsoft YaHei
+      color: "#252a2f"
+  - elementId: right-heading
+    elementType: text
+    bounds:
+      - 518
+      - 266
+      - 390
+      - 40
+    content:
+      text: 只恢复这一页
+      fontSize: 20
+      fontFamily: Microsoft YaHei
+      color: "#252a2f"
+  - elementId: right-body
+    elementType: text
+    bounds:
+      - 518
+      - 320
+      - 365
+      - 116
+    content:
+      text: 恢复当前页面，同时保留周围的其他工作。
+      fontSize: 17
+      fontFamily: Microsoft YaHei
+      color: "#252a2f"
+  - elementId: footer
+    elementType: text
+    bounds:
+      - 52
+      - 490
+      - 856
+      - 22
+    content:
+      text: HUANDENG  /  公开产品示例
+      fontSize: 11
+      fontFamily: Microsoft YaHei
+      color: "#687078"
+notes: 这是 HUANDENG 的公开产品示例，用于说明：回到一个有名字的版本。

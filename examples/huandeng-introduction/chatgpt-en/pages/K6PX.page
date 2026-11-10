@@ -1,0 +1,134 @@
+pageType: content
+background:
+  type: solid
+  color: "#FFFFFF"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 64
+      - 45
+      - 832
+      - 55
+    role: title
+    content:
+      text: A full introduction and a shorter talk
+      fontFamily: Arial
+      fontSize: 30
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: footer
+    elementType: text
+    bounds:
+      - 64
+      - 506
+      - 400
+      - 16
+    content:
+      text: HUANDENG    /    18
+      fontFamily: Arial
+      fontSize: 10
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: full-label
+    elementType: text
+    bounds:
+      - 64
+      - 155
+      - 360
+      - 35
+    content:
+      text: Full introduction
+      fontFamily: Arial
+      fontSize: 21
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: full
+    elementType: text
+    bounds:
+      - 64
+      - 224
+      - 360
+      - 170
+    content:
+      text: |-
+        How the work is stored
+        How people and agents edit it
+        How it is presented and shared
+      fontFamily: Arial
+      fontSize: 19
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.8
+  - elementId: short-label
+    elementType: text
+    bounds:
+      - 530
+      - 155
+      - 366
+      - 35
+    content:
+      text: Short introduction
+      fontFamily: Arial
+      fontSize: 21
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: short
+    elementType: text
+    bounds:
+      - 530
+      - 224
+      - 366
+      - 170
+    content:
+      text: |-
+        Keep the core model and a concrete workflow.
+        Leave the tool details for discussion.
+      fontFamily: Arial
+      fontSize: 19
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.8
+  - elementId: link
+    elementType: text
+    bounds:
+      - 64
+      - 443
+      - 800
+      - 35
+    content:
+      text: Both collections refer to the same pages.
+      fontFamily: Arial
+      fontSize: 19
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+notes: |-
+  This project includes a shorter Presentation that references selected Main slides without copying the content. Open that collection to adjust the sequence. A full Presentation is also included.
+
+  Source: actual HUANDENG Editor v0.18 public example and project feature contracts. https://github.com/JaytonKogeru/huandeng; packages/core/src/pptd/agent-guide.ts; docs/SPEC-V018.md. Screenshot provenance is retained with the project assets.

@@ -1,0 +1,739 @@
+{
+  "schemaVersion": 1,
+  "deckId": "5e3ba52f-b72f-4326-98f5-20ae2e8cd59a",
+  "entry": "deck.pptd",
+  "designPolicy": "huandeng-human-scientific-v1",
+  "slides": {
+    "14601661-9f67-43be-800b-7aefb6c979d8": {
+      "shortCode": "NAU6",
+      "path": "pages/initial.page",
+      "state": "tombstone",
+      "components": {},
+      "elementRoles": {},
+      "label": "S1"
+    },
+    "9ef9c0c5-5876-4d93-be42-cb3a76c2160c": {
+      "shortCode": "HGV2",
+      "path": "pages/HGV2.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S2",
+      "designIntent": {
+        "pageRole": "cover",
+        "purpose": "HUANDENG 把演示文稿作为一份可以持续修改的项目。人在 Editor 中编辑，Agent 读取同一份页面、素材和意图。接下来用实际工作解释这种协作。",
+        "keep": [
+          "保留真实截图的原始像素与正确语言",
+          "统一白色背景",
+          "保持正文常规字重与可读字号"
+        ],
+        "requestedChange": "制作可公开的 HUANDENG 工作流介绍",
+        "actor": "ChatGPT",
+        "source": "HUANDENG 项目介绍制作要求",
+        "recordedAt": "2026-11-10T08:37:24.028Z"
+      }
+    },
+    "7f7fb186-9725-4a42-b9c6-293929bf645e": {
+      "shortCode": "38FW",
+      "path": "pages/38FW.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S3",
+      "designIntent": {
+        "pageRole": "section",
+        "purpose": "先看作品怎样保存、组织，以及怎样为不同听众复用。",
+        "keep": [
+          "保留真实截图的原始像素与正确语言",
+          "统一白色背景",
+          "保持正文常规字重与可读字号"
+        ],
+        "requestedChange": "制作可公开的 HUANDENG 工作流介绍",
+        "actor": "ChatGPT",
+        "source": "HUANDENG 项目介绍制作要求",
+        "recordedAt": "2026-11-10T08:37:24.301Z"
+      }
+    },
+    "6cddb3b7-3e8c-4e43-9ab0-7f924b7e5cb2": {
+      "shortCode": "6WZY",
+      "path": "pages/6WZY.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S4",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "左边组织项目与页面，中间编辑作品，右边查看当前对象与 Story。Browse、Outline、Sections、Notes page 和 History 是同级工作视图，分别支持不同的编辑任务。",
+        "keep": [
+          "保留真实截图的原始像素与正确语言",
+          "统一白色背景",
+          "保持正文常规字重与可读字号"
+        ],
+        "requestedChange": "制作可公开的 HUANDENG 工作流介绍",
+        "actor": "ChatGPT",
+        "source": "HUANDENG 项目介绍制作要求",
+        "recordedAt": "2026-11-10T08:37:24.544Z"
+      }
+    },
+    "b3827d8a-a939-4794-8141-dfb8a6493222": {
+      "shortCode": "45KP",
+      "path": "pages/45KP.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S5",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "一份演示会经历补证据、压缩篇幅、调整顺序和反复讲述。HUANDENG 关注这些修改怎样积累在同一份作品里。示例请求是一个具体的下一步，并非自动批准。",
+        "keep": [
+          "保留真实截图的原始像素与正确语言",
+          "统一白色背景",
+          "保持正文常规字重与可读字号"
+        ],
+        "requestedChange": "制作可公开的 HUANDENG 工作流介绍",
+        "actor": "ChatGPT",
+        "source": "HUANDENG 项目介绍制作要求",
+        "recordedAt": "2026-11-10T08:40:58.951Z"
+      }
+    },
+    "6989aa82-5642-4235-9198-6b17ef327457": {
+      "shortCode": "47JX",
+      "path": "pages/47JX.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S6",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "移动或分享时保留完整文件夹。deck.pptd 是入口，pages 保存可编辑页面，media 保存源素材。AGENTS.md 放项目偏好，.huandeng 保存关系和版本。Exports 保存交付文件。",
+        "keep": [
+          "保留真实截图的原始像素与正确语言",
+          "统一白色背景",
+          "保持正文常规字重与可读字号"
+        ],
+        "requestedChange": "制作可公开的 HUANDENG 工作流介绍",
+        "actor": "ChatGPT",
+        "source": "HUANDENG 项目介绍制作要求",
+        "recordedAt": "2026-11-10T08:40:59.248Z"
+      }
+    },
+    "27ede9c2-7d61-4053-bd3f-8b8f0db722c0": {
+      "shortCode": "6NYX",
+      "path": "pages/6NYX.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S7",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Main 保存页面内容。Presentation 编排引用，可以挑选、重排，也可以引用整个 Section。修改 live 页面后，引用它的演讲会看到同一处更新。命名版本则能保留先前的表达。",
+        "keep": [
+          "保留真实截图的原始像素与正确语言",
+          "统一白色背景",
+          "保持正文常规字重与可读字号"
+        ],
+        "requestedChange": "制作可公开的 HUANDENG 工作流介绍",
+        "actor": "ChatGPT",
+        "source": "HUANDENG 项目介绍制作要求",
+        "recordedAt": "2026-11-10T08:40:59.549Z"
+      }
+    },
+    "8bae32f7-ba18-4684-9cfc-eaa87f521680": {
+      "shortCode": "RJZC",
+      "path": "pages/RJZC.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S8",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Slide ID 识别页面，Position 只表示当前集合里的顺序。重排 Main 不会让一个有效引用指向另一页。短码帮助人在界面中确认对象，工具使用稳定身份。",
+        "keep": [
+          "保留真实截图的原始像素与正确语言",
+          "统一白色背景",
+          "保持正文常规字重与可读字号"
+        ],
+        "requestedChange": "制作可公开的 HUANDENG 工作流介绍",
+        "actor": "ChatGPT",
+        "source": "HUANDENG 项目介绍制作要求",
+        "recordedAt": "2026-11-10T08:40:59.831Z"
+      }
+    },
+    "0ad112fa-6eb3-4824-b25a-eddad00367ca": {
+      "shortCode": "3DM4",
+      "path": "pages/3DM4.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S9",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Story 记录这页的目的、需要保留的内容和当前修改请求。下一次编辑能够从这些约束继续。Agent 写入的 Story 是上下文，不代表人的批准。",
+        "keep": [
+          "保留真实截图的原始像素与正确语言",
+          "统一白色背景",
+          "保持正文常规字重与可读字号"
+        ],
+        "requestedChange": "制作可公开的 HUANDENG 工作流介绍",
+        "actor": "ChatGPT",
+        "source": "HUANDENG 项目介绍制作要求",
+        "recordedAt": "2026-11-10T08:41:00.156Z"
+      }
+    },
+    "9c3962a9-c169-42a6-8192-9fe23348287a": {
+      "shortCode": "TWBJ",
+      "path": "pages/TWBJ.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S10",
+      "designIntent": {
+        "pageRole": "section",
+        "purpose": "人和 Agent 都在这份作品上继续编辑。",
+        "keep": [
+          "保留真实截图的原始像素与正确语言",
+          "统一白色背景",
+          "保持正文常规字重与可读字号"
+        ],
+        "requestedChange": "制作可公开的 HUANDENG 工作流介绍",
+        "actor": "ChatGPT",
+        "source": "HUANDENG 项目介绍制作要求",
+        "recordedAt": "2026-11-10T08:41:00.452Z"
+      }
+    },
+    "12b86dda-8727-4d3f-a9f6-234505e376f4": {
+      "shortCode": "CU33",
+      "path": "pages/CU33.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S11",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "先写清页面目的，放入需要解释的证据，再写一句观众应带走的话。确认一个内容页和一个章节页后再展开。框架包含真实对象和边界，因此 Agent 有具体参照。",
+        "keep": [
+          "保留真实截图的原始像素与正确语言",
+          "统一白色背景",
+          "保持正文常规字重与可读字号"
+        ],
+        "requestedChange": "制作可公开的 HUANDENG 工作流介绍",
+        "actor": "ChatGPT",
+        "source": "HUANDENG 项目介绍制作要求",
+        "recordedAt": "2026-11-10T08:41:00.725Z"
+      }
+    },
+    "ecfb8e27-ee8a-44fb-9ae5-252c6f53ae7e": {
+      "shortCode": "BMNQ",
+      "path": "pages/BMNQ.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S12",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Browse 把实际缩略图放在一起，看密度与停顿。Outline 让人读标题、文字和顺序。两个视图操作同一份页面。",
+        "keep": [
+          "保留真实截图的原始像素与正确语言",
+          "统一白色背景",
+          "保持正文常规字重与可读字号"
+        ],
+        "requestedChange": "制作可公开的 HUANDENG 工作流介绍",
+        "actor": "ChatGPT",
+        "source": "HUANDENG 项目介绍制作要求",
+        "recordedAt": "2026-11-10T08:41:01.086Z"
+      }
+    },
+    "be146d47-06e0-432f-89ba-58fcce1dfa66": {
+      "shortCode": "DM4Y",
+      "path": "pages/DM4Y.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S13",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "原始图像和出处与项目一起保留。解释一个功能时裁出相关区域，让截图语言匹配听众。更多像素不能解决把整窗缩得过小的问题。采样检查之后仍需查看实际画面。",
+        "keep": [
+          "保留真实截图的原始像素与正确语言",
+          "统一白色背景",
+          "保持正文常规字重与可读字号"
+        ],
+        "requestedChange": "制作可公开的 HUANDENG 工作流介绍",
+        "actor": "ChatGPT",
+        "source": "HUANDENG 项目介绍制作要求",
+        "recordedAt": "2026-11-10T08:41:01.437Z"
+      }
+    },
+    "f9c78f18-554f-421b-9bf5-1e183936bd71": {
+      "shortCode": "CB5K",
+      "path": "pages/CB5K.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S14",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "ChatGPT、Codex、Claude Code 和 DeepSeek Harness 通过各自适配入口接入。插件提供工作方法，connector 或 MCP 连接当前项目服务。共享写入服务把修改保存到正在打开的作品。各客户端需要对应配置。",
+        "keep": [
+          "保留真实截图的原始像素与正确语言",
+          "统一白色背景",
+          "保持正文常规字重与可读字号"
+        ],
+        "requestedChange": "制作可公开的 HUANDENG 工作流介绍",
+        "actor": "ChatGPT",
+        "source": "HUANDENG 项目介绍制作要求",
+        "recordedAt": "2026-11-10T08:41:01.790Z"
+      }
+    },
+    "6dc52ab1-1167-4e97-b63a-ed7bd15456ce": {
+      "shortCode": "S5B3",
+      "path": "pages/S5B3.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S15",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "先读当前页与 Story，提出具体对象修改，再预览影响范围。已获授权的修改通过同一请求保存。操作记录对应确切前后变化，之后检查实际渲染。",
+        "keep": [
+          "保留真实截图的原始像素与正确语言",
+          "统一白色背景",
+          "保持正文常规字重与可读字号"
+        ],
+        "requestedChange": "制作可公开的 HUANDENG 工作流介绍",
+        "actor": "ChatGPT",
+        "source": "HUANDENG 项目介绍制作要求",
+        "recordedAt": "2026-11-10T08:41:02.089Z"
+      }
+    },
+    "76532a33-1809-47e4-b900-249c48d94047": {
+      "shortCode": "TZBD",
+      "path": "pages/TZBD.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S16",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "History 属于当前页面，展示特定操作对应的修改。Story 记录意图，保存记录显示实际动作，帮助下一位编辑者理解一次修订。",
+        "keep": [
+          "保留真实截图的原始像素与正确语言",
+          "统一白色背景",
+          "保持正文常规字重与可读字号"
+        ],
+        "requestedChange": "制作可公开的 HUANDENG 工作流介绍",
+        "actor": "ChatGPT",
+        "source": "HUANDENG 项目介绍制作要求",
+        "recordedAt": "2026-11-10T08:41:02.461Z"
+      }
+    },
+    "9347d5e8-5df2-48b1-87a0-b5d66a4e8474": {
+      "shortCode": "NKN6",
+      "path": "pages/NKN6.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S17",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "命名版本保存一个页面的里程碑。需要回退时可以恢复这一页，无须把整套演示换回早期文件。固定引用让一场演讲继续使用已保存版本。源素材应随项目保留。",
+        "keep": [
+          "保留真实截图的原始像素与正确语言",
+          "统一白色背景",
+          "保持正文常规字重与可读字号"
+        ],
+        "requestedChange": "制作可公开的 HUANDENG 工作流介绍",
+        "actor": "ChatGPT",
+        "source": "HUANDENG 项目介绍制作要求",
+        "recordedAt": "2026-11-10T08:41:02.780Z"
+      }
+    },
+    "be2af813-d758-4376-81b6-8f7eb61815db": {
+      "shortCode": "J46H",
+      "path": "pages/J46H.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S18",
+      "designIntent": {
+        "pageRole": "section",
+        "purpose": "内容准备好后，按不同场合组织演讲并交付。",
+        "keep": [
+          "保留真实截图的原始像素与正确语言",
+          "统一白色背景",
+          "保持正文常规字重与可读字号"
+        ],
+        "requestedChange": "制作可公开的 HUANDENG 工作流介绍",
+        "actor": "ChatGPT",
+        "source": "HUANDENG 项目介绍制作要求",
+        "recordedAt": "2026-11-10T08:41:03.112Z"
+      }
+    },
+    "09bdac0e-d719-414d-b987-4294a80c54b7": {
+      "shortCode": "42PF",
+      "path": "pages/42PF.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S19",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "这套介绍项目也带有简短 Presentation，引用 Main 中的精选页面，不复制内容。打开这个集合即可继续调整顺序。完整介绍也保留为独立 Presentation。",
+        "keep": [
+          "保留真实截图的原始像素与正确语言",
+          "统一白色背景",
+          "保持正文常规字重与可读字号"
+        ],
+        "requestedChange": "制作可公开的 HUANDENG 工作流介绍",
+        "actor": "ChatGPT",
+        "source": "HUANDENG 项目介绍制作要求",
+        "recordedAt": "2026-11-10T08:41:03.508Z"
+      }
+    },
+    "0c358cbe-d2cd-49b2-ba9a-2a140abc1310": {
+      "shortCode": "QBNX",
+      "path": "pages/QBNX.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S20",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "live 引用跟随 Main 当前内容。pin 固定命名版本，适合保留某场演讲的表达。选择属于当前出现位置，决定它如何引用同一页。",
+        "keep": [
+          "保留真实截图的原始像素与正确语言",
+          "统一白色背景",
+          "保持正文常规字重与可读字号"
+        ],
+        "requestedChange": "制作可公开的 HUANDENG 工作流介绍",
+        "actor": "ChatGPT",
+        "source": "HUANDENG 项目介绍制作要求",
+        "recordedAt": "2026-11-10T08:41:03.862Z"
+      }
+    },
+    "de7edaee-e41d-4814-97de-746faab95a73": {
+      "shortCode": "GE9Q",
+      "path": "pages/GE9Q.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S21",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Editor 支持按点击出现、淡入等效果。PPTX 和 PDF 是静态交付格式，不会把实时点击顺序转换成 PowerPoint 原生动画。交付前应打开导出文件检查。",
+        "keep": [
+          "保留真实截图的原始像素与正确语言",
+          "统一白色背景",
+          "保持正文常规字重与可读字号"
+        ],
+        "requestedChange": "制作可公开的 HUANDENG 工作流介绍",
+        "actor": "ChatGPT",
+        "source": "HUANDENG 项目介绍制作要求",
+        "recordedAt": "2026-11-10T08:41:04.204Z"
+      }
+    },
+    "b28232cb-e051-4ad9-a334-8135f4c1871f": {
+      "shortCode": "EXVF",
+      "path": "pages/EXVF.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S22",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "打开示例，选一页，改一个标题或一段说明。通过 Agent setup 连接常用客户端，让它提出一次有边界的修改。检查结果，再导出。这个小任务能让共享工作流变得具体。",
+        "keep": [
+          "保留真实截图的原始像素与正确语言",
+          "统一白色背景",
+          "保持正文常规字重与可读字号"
+        ],
+        "requestedChange": "制作可公开的 HUANDENG 工作流介绍",
+        "actor": "ChatGPT",
+        "source": "HUANDENG 项目介绍制作要求",
+        "recordedAt": "2026-11-10T08:41:04.568Z"
+      }
+    },
+    "5d99dfb6-a424-4feb-b339-5ba25a5de3f2": {
+      "shortCode": "SR3W",
+      "path": "pages/SR3W.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S23",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "项目基于 open-slide 等开源工作继续开发。完整许可证和第三方说明保留在仓库中。本介绍使用真实 HUANDENG 截图与可编辑文本。仓库的公开状态由所有者管理。",
+        "keep": [
+          "保留真实截图的原始像素与正确语言",
+          "统一白色背景",
+          "保持正文常规字重与可读字号"
+        ],
+        "requestedChange": "制作可公开的 HUANDENG 工作流介绍",
+        "actor": "ChatGPT",
+        "source": "HUANDENG 项目介绍制作要求",
+        "recordedAt": "2026-11-10T08:41:04.897Z"
+      }
+    }
+  },
+  "project": {
+    "schemaVersion": 1,
+    "mainStory": {
+      "purpose": "介绍 HUANDENG 如何让人与 Agent 持续编辑同一份演示作品",
+      "audience": "演示作者与开源贡献者",
+      "takeaway": "一份作品可以持续编辑、复用和交付"
+    },
+    "sections": [
+      {
+        "id": "intro-section-0",
+        "title": "开场",
+        "story": {
+          "purpose": "开场",
+          "audience": "",
+          "takeaway": ""
+        },
+        "frontMatter": true,
+        "pageIds": [
+          "9ef9c0c5-5876-4d93-be42-cb3a76c2160c",
+          "b3827d8a-a939-4794-8141-dfb8a6493222"
+        ],
+        "startPageId": "9ef9c0c5-5876-4d93-be42-cb3a76c2160c"
+      },
+      {
+        "id": "intro-section-1",
+        "title": "一份作品",
+        "story": {
+          "purpose": "一份作品",
+          "audience": "",
+          "takeaway": ""
+        },
+        "pageIds": [
+          "7f7fb186-9725-4a42-b9c6-293929bf645e",
+          "6989aa82-5642-4235-9198-6b17ef327457",
+          "27ede9c2-7d61-4053-bd3f-8b8f0db722c0",
+          "8bae32f7-ba18-4684-9cfc-eaa87f521680",
+          "0ad112fa-6eb3-4824-b25a-eddad00367ca"
+        ],
+        "startPageId": "7f7fb186-9725-4a42-b9c6-293929bf645e"
+      },
+      {
+        "id": "intro-section-2",
+        "title": "一起编辑",
+        "story": {
+          "purpose": "一起编辑",
+          "audience": "",
+          "takeaway": ""
+        },
+        "pageIds": [
+          "9c3962a9-c169-42a6-8192-9fe23348287a",
+          "6cddb3b7-3e8c-4e43-9ab0-7f924b7e5cb2",
+          "12b86dda-8727-4d3f-a9f6-234505e376f4",
+          "ecfb8e27-ee8a-44fb-9ae5-252c6f53ae7e",
+          "be146d47-06e0-432f-89ba-58fcce1dfa66",
+          "f9c78f18-554f-421b-9bf5-1e183936bd71",
+          "6dc52ab1-1167-4e97-b63a-ed7bd15456ce",
+          "76532a33-1809-47e4-b900-249c48d94047",
+          "9347d5e8-5df2-48b1-87a0-b5d66a4e8474"
+        ],
+        "startPageId": "9c3962a9-c169-42a6-8192-9fe23348287a"
+      },
+      {
+        "id": "intro-section-3",
+        "title": "讲述与交付",
+        "story": {
+          "purpose": "讲述与交付",
+          "audience": "",
+          "takeaway": ""
+        },
+        "pageIds": [
+          "be2af813-d758-4376-81b6-8f7eb61815db",
+          "09bdac0e-d719-414d-b987-4294a80c54b7",
+          "0c358cbe-d2cd-49b2-ba9a-2a140abc1310",
+          "de7edaee-e41d-4814-97de-746faab95a73",
+          "b28232cb-e051-4ad9-a334-8135f4c1871f",
+          "5d99dfb6-a424-4feb-b339-5ba25a5de3f2"
+        ],
+        "startPageId": "be2af813-d758-4376-81b6-8f7eb61815db"
+      }
+    ],
+    "presentations": [
+      {
+        "id": "introduction-full",
+        "title": "完整介绍",
+        "story": {
+          "purpose": "完整介绍 HUANDENG 工作流",
+          "audience": "",
+          "takeaway": ""
+        },
+        "items": [
+          {
+            "id": "full-1",
+            "kind": "page",
+            "pageId": "9ef9c0c5-5876-4d93-be42-cb3a76c2160c"
+          },
+          {
+            "id": "full-2",
+            "kind": "page",
+            "pageId": "b3827d8a-a939-4794-8141-dfb8a6493222"
+          },
+          {
+            "id": "full-3",
+            "kind": "page",
+            "pageId": "7f7fb186-9725-4a42-b9c6-293929bf645e"
+          },
+          {
+            "id": "full-4",
+            "kind": "page",
+            "pageId": "6989aa82-5642-4235-9198-6b17ef327457"
+          },
+          {
+            "id": "full-5",
+            "kind": "page",
+            "pageId": "27ede9c2-7d61-4053-bd3f-8b8f0db722c0"
+          },
+          {
+            "id": "full-6",
+            "kind": "page",
+            "pageId": "8bae32f7-ba18-4684-9cfc-eaa87f521680"
+          },
+          {
+            "id": "full-7",
+            "kind": "page",
+            "pageId": "0ad112fa-6eb3-4824-b25a-eddad00367ca"
+          },
+          {
+            "id": "full-8",
+            "kind": "page",
+            "pageId": "9c3962a9-c169-42a6-8192-9fe23348287a"
+          },
+          {
+            "id": "full-9",
+            "kind": "page",
+            "pageId": "6cddb3b7-3e8c-4e43-9ab0-7f924b7e5cb2"
+          },
+          {
+            "id": "full-10",
+            "kind": "page",
+            "pageId": "12b86dda-8727-4d3f-a9f6-234505e376f4"
+          },
+          {
+            "id": "full-11",
+            "kind": "page",
+            "pageId": "ecfb8e27-ee8a-44fb-9ae5-252c6f53ae7e"
+          },
+          {
+            "id": "full-12",
+            "kind": "page",
+            "pageId": "be146d47-06e0-432f-89ba-58fcce1dfa66"
+          },
+          {
+            "id": "full-13",
+            "kind": "page",
+            "pageId": "f9c78f18-554f-421b-9bf5-1e183936bd71"
+          },
+          {
+            "id": "full-14",
+            "kind": "page",
+            "pageId": "6dc52ab1-1167-4e97-b63a-ed7bd15456ce"
+          },
+          {
+            "id": "full-15",
+            "kind": "page",
+            "pageId": "76532a33-1809-47e4-b900-249c48d94047"
+          },
+          {
+            "id": "full-16",
+            "kind": "page",
+            "pageId": "9347d5e8-5df2-48b1-87a0-b5d66a4e8474"
+          },
+          {
+            "id": "full-17",
+            "kind": "page",
+            "pageId": "be2af813-d758-4376-81b6-8f7eb61815db"
+          },
+          {
+            "id": "full-18",
+            "kind": "page",
+            "pageId": "09bdac0e-d719-414d-b987-4294a80c54b7"
+          },
+          {
+            "id": "full-19",
+            "kind": "page",
+            "pageId": "0c358cbe-d2cd-49b2-ba9a-2a140abc1310"
+          },
+          {
+            "id": "full-20",
+            "kind": "page",
+            "pageId": "de7edaee-e41d-4814-97de-746faab95a73"
+          },
+          {
+            "id": "full-21",
+            "kind": "page",
+            "pageId": "b28232cb-e051-4ad9-a334-8135f4c1871f"
+          },
+          {
+            "id": "full-22",
+            "kind": "page",
+            "pageId": "5d99dfb6-a424-4feb-b339-5ba25a5de3f2"
+          }
+        ]
+      },
+      {
+        "id": "introduction-short",
+        "title": "简短介绍",
+        "story": {
+          "purpose": "围绕共享作品与一次修改解释核心价值",
+          "audience": "",
+          "takeaway": ""
+        },
+        "items": [
+          {
+            "id": "short-1",
+            "kind": "page",
+            "pageId": "9ef9c0c5-5876-4d93-be42-cb3a76c2160c"
+          },
+          {
+            "id": "short-2",
+            "kind": "page",
+            "pageId": "b3827d8a-a939-4794-8141-dfb8a6493222"
+          },
+          {
+            "id": "short-5",
+            "kind": "page",
+            "pageId": "27ede9c2-7d61-4053-bd3f-8b8f0db722c0"
+          },
+          {
+            "id": "short-9",
+            "kind": "page",
+            "pageId": "6cddb3b7-3e8c-4e43-9ab0-7f924b7e5cb2"
+          },
+          {
+            "id": "short-13",
+            "kind": "page",
+            "pageId": "f9c78f18-554f-421b-9bf5-1e183936bd71"
+          },
+          {
+            "id": "short-14",
+            "kind": "page",
+            "pageId": "6dc52ab1-1167-4e97-b63a-ed7bd15456ce"
+          },
+          {
+            "id": "short-18",
+            "kind": "page",
+            "pageId": "09bdac0e-d719-414d-b987-4294a80c54b7"
+          },
+          {
+            "id": "short-22",
+            "kind": "page",
+            "pageId": "5d99dfb6-a424-4feb-b339-5ba25a5de3f2"
+          }
+        ]
+      }
+    ]
+  }
+}

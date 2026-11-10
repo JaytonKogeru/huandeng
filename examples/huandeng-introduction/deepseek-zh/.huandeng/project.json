@@ -1,0 +1,561 @@
+{
+  "schemaVersion": 1,
+  "deckId": "52acb4d4-d269-413c-b092-201547ab1a3b",
+  "entry": "deck.pptd",
+  "designPolicy": "huandeng-human-scientific-v1",
+  "slides": {
+    "01951010-d2bd-42bf-9bfc-4650e06d890a": {
+      "shortCode": "EP8Q",
+      "path": "pages/initial.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "cover-title": "title"
+      },
+      "label": "S1",
+      "designIntent": {
+        "evidence": "纯文字封面，不使用界面截图。",
+        "language": "zh-CN",
+        "pageRole": "cover",
+        "purpose": "封面：提出主题。"
+      }
+    },
+    "d4ebf0f3-ed10-4787-b9e9-ecb01a55dc78": {
+      "shortCode": "5GVZ",
+      "path": "pages/5GVZ.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "t": "title"
+      },
+      "label": "S2",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "用三个场合说明同一份内容被反复复制。"
+      }
+    },
+    "01c5511f-c7a9-4213-903d-13b61c1e1ac1": {
+      "shortCode": "K28C",
+      "path": "pages/K28C.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "t": "title"
+      },
+      "label": "S3",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "指出复制造成的四类分叉。"
+      }
+    },
+    "97705739-b33d-4328-849b-7e62f7adc3c8": {
+      "shortCode": "5XR7",
+      "path": "pages/5XR7.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "t": "title"
+      },
+      "label": "S4",
+      "designIntent": {
+        "pageRole": "section",
+        "purpose": "章节页：一份内容，多种讲法。"
+      }
+    },
+    "cb808a3a-beee-425d-9057-bb2a83ed2c67": {
+      "shortCode": "CS2J",
+      "path": "pages/CS2J.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "t": "title"
+      },
+      "label": "S5",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Main Slides 是唯一的内容底稿。"
+      }
+    },
+    "e3995127-e74b-4a68-87fc-95306cfb5185": {
+      "shortCode": "E8XB",
+      "path": "pages/E8XB.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "t": "title"
+      },
+      "label": "S6",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "区分页面内容与一次出场。"
+      }
+    },
+    "f13f7073-89db-4d13-9ffb-4af1205cde6b": {
+      "shortCode": "H62N",
+      "path": "pages/H62N.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "t": "title"
+      },
+      "label": "S7",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "区分稳定的 pageId 与变化的位置。"
+      }
+    },
+    "782b7959-1629-4180-b3bc-c0648a42f04e": {
+      "shortCode": "J3ZX",
+      "path": "pages/J3ZX.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "t": "title"
+      },
+      "label": "S8",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "解释跟随实时内容与固定版本。"
+      }
+    },
+    "d9256252-5e43-4d11-b3d0-a812e97aba9d": {
+      "shortCode": "8PPW",
+      "path": "pages/8PPW.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "t": "title"
+      },
+      "label": "S9",
+      "designIntent": {
+        "pageRole": "section",
+        "purpose": "章节页：Story 与协作。"
+      }
+    },
+    "1555c8df-33a5-477c-be77-f9dc449ad26c": {
+      "shortCode": "4SYN",
+      "path": "pages/4SYN.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "t": "title"
+      },
+      "label": "S10",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "说明四层 Story 各回答什么问题。"
+      }
+    },
+    "22abd1c6-af4f-4b04-a9ad-7a97157ccd48": {
+      "shortCode": "GRYJ",
+      "path": "pages/GRYJ.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "t": "title"
+      },
+      "label": "S11",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "介绍项目文件夹的组成。"
+      }
+    },
+    "97affe3a-d920-4d2c-9944-1c767f37f56c": {
+      "shortCode": "4E96",
+      "path": "pages/4E96.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "t": "title"
+      },
+      "label": "S12",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "区分编辑器、插件与连接的角色。"
+      }
+    },
+    "a20a66a0-ad17-4237-b2f9-395f57bc6c08": {
+      "shortCode": "JA2S",
+      "path": "pages/JA2S.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "t": "title"
+      },
+      "label": "S13",
+      "designIntent": {
+        "pageRole": "section",
+        "purpose": "章节页：修改与交付。"
+      }
+    },
+    "3c9b8d75-1dd4-4e6c-9cef-b78e4d1da046": {
+      "shortCode": "WQGW",
+      "path": "pages/WQGW.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "t": "title"
+      },
+      "label": "S14",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "用一个下午的修改串起完整流程。"
+      }
+    },
+    "2fc09160-3277-4b7c-ba14-a7b3982af75b": {
+      "shortCode": "DPSB",
+      "path": "pages/DPSB.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "t": "title"
+      },
+      "label": "S15",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "说明共享写入器、版本检查与预览。"
+      }
+    },
+    "3b89420e-2b81-4ab3-8327-528c0638bbab": {
+      "shortCode": "DZ9U",
+      "path": "pages/DZ9U.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "t": "title"
+      },
+      "label": "S16",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "说明保存记录的只读审阅。"
+      }
+    },
+    "4be49f74-b6a5-4098-82f2-09eac97771bc": {
+      "shortCode": "3JZP",
+      "path": "pages/3JZP.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "t": "title"
+      },
+      "label": "S17",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "说明命名版本与局部恢复。"
+      }
+    },
+    "d37a2e15-fc13-4469-9638-e887d8fa624a": {
+      "shortCode": "UBDB",
+      "path": "pages/UBDB.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "t": "title"
+      },
+      "label": "S18",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "说明 PPTX 与 PDF 的交付边界。"
+      }
+    },
+    "781c6088-5ecf-44e2-b4b4-76ee5beddc80": {
+      "shortCode": "4UY8",
+      "path": "pages/4UY8.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "t": "title"
+      },
+      "label": "S19",
+      "designIntent": {
+        "pageRole": "section",
+        "purpose": "章节页：参与进来。"
+      }
+    },
+    "e2b4355d-ba2e-4fd8-a034-fae8415f2b85": {
+      "shortCode": "GYRU",
+      "path": "pages/GYRU.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "t": "title"
+      },
+      "label": "S20",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "交代 OpenSlide 基础、命名与已知边界。"
+      }
+    },
+    "95295a02-defc-440f-9492-90eb7d3351c8": {
+      "shortCode": "TZM6",
+      "path": "pages/TZM6.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "t": "title"
+      },
+      "label": "S21",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "给出阅读、试用与贡献的入口。"
+      }
+    }
+  },
+  "project": {
+    "schemaVersion": 1,
+    "mainStory": {
+      "purpose": "说明 HUANDENG 如何用一份 Main Slides 支撑多场演讲，并让人与 Agent 的修改可审阅、可回滚、可交付。",
+      "audience": "第一次接触 HUANDENG 的研究人员、技术写作者与开源贡献者。",
+      "takeaway": "幻灯内容只维护一次；页面身份稳定；同一个写入器让协作与交付可追溯。"
+    },
+    "sections": [
+      {
+        "id": "problem",
+        "title": "问题",
+        "story": {
+          "purpose": "先让听众认出自己的处境：同一份研究被复制成多份幻灯片，随后各自分叉。",
+          "audience": "经常为不同场合改幻灯片的研究人员和技术写作者。",
+          "takeaway": "重复维护的是同一批事实，而不是版式。"
+        },
+        "pageIds": [
+          "01951010-d2bd-42bf-9bfc-4650e06d890a",
+          "d4ebf0f3-ed10-4787-b9e9-ecb01a55dc78",
+          "01c5511f-c7a9-4213-903d-13b61c1e1ac1"
+        ],
+        "startPageId": "01951010-d2bd-42bf-9bfc-4650e06d890a"
+      },
+      {
+        "id": "one-source",
+        "title": "一份内容，多种讲法",
+        "story": {
+          "purpose": "说明一份 Main Slides 如何被多场演讲引用，以及身份、位置、跟随与固定的关系。",
+          "audience": "需要为不同场合复用同一批页面的人。",
+          "takeaway": "页面只维护一次；每次出场有自己的顺序和讲稿。"
+        },
+        "pageIds": [
+          "97705739-b33d-4328-849b-7e62f7adc3c8",
+          "cb808a3a-beee-425d-9057-bb2a83ed2c67",
+          "e3995127-e74b-4a68-87fc-95306cfb5185",
+          "f13f7073-89db-4d13-9ffb-4af1205cde6b",
+          "782b7959-1629-4180-b3bc-c0648a42f04e"
+        ],
+        "startPageId": "97705739-b33d-4328-849b-7e62f7adc3c8"
+      },
+      {
+        "id": "story",
+        "title": "Story 与协作",
+        "story": {
+          "purpose": "说明 Story 记录什么，以及项目文件夹与三类角色如何共用一份文档。",
+          "audience": "要和人、Agent 共同编辑同一份内容的人。",
+          "takeaway": "写清楚目的与保留约束，修改才有依据。"
+        },
+        "pageIds": [
+          "d9256252-5e43-4d11-b3d0-a812e97aba9d",
+          "1555c8df-33a5-477c-be77-f9dc449ad26c",
+          "22abd1c6-af4f-4b04-a9ad-7a97157ccd48",
+          "97affe3a-d920-4d2c-9944-1c767f37f56c"
+        ],
+        "startPageId": "d9256252-5e43-4d11-b3d0-a812e97aba9d"
+      },
+      {
+        "id": "change-delivery",
+        "title": "修改与交付",
+        "story": {
+          "purpose": "用一个具体下午的修改，串起写入、回看、命名版本与导出交付。",
+          "audience": "准备把幻灯片交出去、或需要回看改动的人。",
+          "takeaway": "修改有回执，恢复有范围，交付有静态格式。"
+        },
+        "pageIds": [
+          "a20a66a0-ad17-4237-b2f9-395f57bc6c08",
+          "3c9b8d75-1dd4-4e6c-9cef-b78e4d1da046",
+          "2fc09160-3277-4b7c-ba14-a7b3982af75b",
+          "3b89420e-2b81-4ab3-8327-528c0638bbab",
+          "4be49f74-b6a5-4098-82f2-09eac97771bc",
+          "d37a2e15-fc13-4469-9638-e887d8fa624a"
+        ],
+        "startPageId": "a20a66a0-ad17-4237-b2f9-395f57bc6c08"
+      },
+      {
+        "id": "contribute",
+        "title": "参与进来",
+        "story": {
+          "purpose": "交代开源基础、已知边界与最低门槛的参与方式。",
+          "audience": "想试用或贡献的开发者与研究者。",
+          "takeaway": "先读文档、再用自己的项目走一遍，然后带着复现步骤参与。"
+        },
+        "pageIds": [
+          "781c6088-5ecf-44e2-b4b4-76ee5beddc80",
+          "e2b4355d-ba2e-4fd8-a034-fae8415f2b85",
+          "95295a02-defc-440f-9492-90eb7d3351c8"
+        ],
+        "startPageId": "781c6088-5ecf-44e2-b4b4-76ee5beddc80"
+      }
+    ],
+    "presentations": [
+      {
+        "id": "full",
+        "title": "完整介绍",
+        "story": {
+          "purpose": "从问题讲到内容组织、Story、修改与交付。",
+          "audience": "第一次接触项目的人。",
+          "takeaway": "一份内容支撑多场演讲，改动可审阅。"
+        },
+        "notes": "完整版：约十二分钟。",
+        "items": [
+          {
+            "id": "f01",
+            "kind": "page",
+            "pageId": "01951010-d2bd-42bf-9bfc-4650e06d890a"
+          },
+          {
+            "id": "f02",
+            "kind": "page",
+            "pageId": "d4ebf0f3-ed10-4787-b9e9-ecb01a55dc78"
+          },
+          {
+            "id": "f03",
+            "kind": "page",
+            "pageId": "01c5511f-c7a9-4213-903d-13b61c1e1ac1"
+          },
+          {
+            "id": "f04",
+            "kind": "page",
+            "pageId": "97705739-b33d-4328-849b-7e62f7adc3c8"
+          },
+          {
+            "id": "f05",
+            "kind": "page",
+            "pageId": "cb808a3a-beee-425d-9057-bb2a83ed2c67"
+          },
+          {
+            "id": "f06",
+            "kind": "page",
+            "pageId": "e3995127-e74b-4a68-87fc-95306cfb5185"
+          },
+          {
+            "id": "f07",
+            "kind": "page",
+            "pageId": "f13f7073-89db-4d13-9ffb-4af1205cde6b"
+          },
+          {
+            "id": "f08",
+            "kind": "page",
+            "pageId": "782b7959-1629-4180-b3bc-c0648a42f04e"
+          },
+          {
+            "id": "f09",
+            "kind": "page",
+            "pageId": "d9256252-5e43-4d11-b3d0-a812e97aba9d"
+          },
+          {
+            "id": "f10",
+            "kind": "page",
+            "pageId": "1555c8df-33a5-477c-be77-f9dc449ad26c"
+          },
+          {
+            "id": "f11",
+            "kind": "page",
+            "pageId": "22abd1c6-af4f-4b04-a9ad-7a97157ccd48"
+          },
+          {
+            "id": "f12",
+            "kind": "page",
+            "pageId": "97affe3a-d920-4d2c-9944-1c767f37f56c"
+          },
+          {
+            "id": "f13",
+            "kind": "page",
+            "pageId": "a20a66a0-ad17-4237-b2f9-395f57bc6c08"
+          },
+          {
+            "id": "f14",
+            "kind": "page",
+            "pageId": "3c9b8d75-1dd4-4e6c-9cef-b78e4d1da046"
+          },
+          {
+            "id": "f15",
+            "kind": "page",
+            "pageId": "2fc09160-3277-4b7c-ba14-a7b3982af75b"
+          },
+          {
+            "id": "f16",
+            "kind": "page",
+            "pageId": "3b89420e-2b81-4ab3-8327-528c0638bbab"
+          },
+          {
+            "id": "f17",
+            "kind": "page",
+            "pageId": "4be49f74-b6a5-4098-82f2-09eac97771bc"
+          },
+          {
+            "id": "f18",
+            "kind": "page",
+            "pageId": "d37a2e15-fc13-4469-9638-e887d8fa624a"
+          },
+          {
+            "id": "f19",
+            "kind": "page",
+            "pageId": "781c6088-5ecf-44e2-b4b4-76ee5beddc80"
+          },
+          {
+            "id": "f20",
+            "kind": "page",
+            "pageId": "e2b4355d-ba2e-4fd8-a034-fae8415f2b85"
+          },
+          {
+            "id": "f21",
+            "kind": "page",
+            "pageId": "95295a02-defc-440f-9492-90eb7d3351c8"
+          }
+        ]
+      },
+      {
+        "id": "brief",
+        "title": "六分钟版",
+        "story": {
+          "purpose": "只保留问题、复用、写入与交付四步。",
+          "audience": "时间有限的介绍场合。",
+          "takeaway": "先理解页面只维护一次，再看修改如何被追踪。"
+        },
+        "notes": "短版：复用同一批 Main Slides，只换顺序。",
+        "items": [
+          {
+            "id": "b01",
+            "kind": "page",
+            "pageId": "01951010-d2bd-42bf-9bfc-4650e06d890a"
+          },
+          {
+            "id": "b02",
+            "kind": "page",
+            "pageId": "cb808a3a-beee-425d-9057-bb2a83ed2c67"
+          },
+          {
+            "id": "b03",
+            "kind": "page",
+            "pageId": "e3995127-e74b-4a68-87fc-95306cfb5185"
+          },
+          {
+            "id": "b04",
+            "kind": "page",
+            "pageId": "782b7959-1629-4180-b3bc-c0648a42f04e"
+          },
+          {
+            "id": "b05",
+            "kind": "page",
+            "pageId": "2fc09160-3277-4b7c-ba14-a7b3982af75b"
+          },
+          {
+            "id": "b06",
+            "kind": "page",
+            "pageId": "d37a2e15-fc13-4469-9638-e887d8fa624a"
+          },
+          {
+            "id": "b07",
+            "kind": "page",
+            "pageId": "95295a02-defc-440f-9492-90eb7d3351c8"
+          }
+        ]
+      }
+    ]
+  }
+}

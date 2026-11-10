@@ -1,0 +1,78 @@
+pageType: content
+background:
+  type: solid
+  color: "#FFFFFF"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 64
+      - 45
+      - 832
+      - 55
+    role: title
+    content:
+      text: Keep the source quality
+      fontFamily: Arial
+      fontSize: 30
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: footer
+    elementType: text
+    bounds:
+      - 64
+      - 506
+      - 400
+      - 16
+    content:
+      text: HUANDENG    /    12
+      fontFamily: Arial
+      fontSize: 10
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: navigation-detail
+    elementType: image
+    src: "media/imported/641e5689f83444883c3f94ab5a2b622db9dffe66ce3fb6c09a9ea5c57a059e7a.png"
+    sourceName: "en-asset-resolution-4x.png"
+    alt: "en asset resolution 4x.png"
+    bounds:
+        [64,154,464,270]
+    fit:
+      mode: contain
+    crop:
+      {"left":0,"right":0,"top":0,"bottom":0}
+  - elementId: principle
+    elementType: text
+    bounds:
+        [590,162,306,120]
+    content:
+      {"text":"Show the area the audience needs to read.","fontFamily":"Arial","fontSize":22,"color":"#202423","bold":false,"align":["left","top"],"lineHeight":1.28}
+    role: heading
+  - elementId: details
+    elementType: text
+    bounds:
+        [590,320,306,134]
+    content:
+      text: |-
+        Keep the original dimensions and source.
+        Match each capture to the audience language.
+      fontFamily: Arial
+      fontSize: 18
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+notes: |-
+  Keep original images and their provenance with the project. For a feature explanation, capture the relevant region in the audience language. More pixels cannot make a tiny whole-window screenshot readable. Follow sampling diagnostics with visual inspection.
+
+  Source: actual HUANDENG Editor v0.18 public example and project feature contracts. https://github.com/JaytonKogeru/huandeng; packages/core/src/pptd/agent-guide.ts; docs/SPEC-V018.md. Screenshot provenance is retained with the project assets.

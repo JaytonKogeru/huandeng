@@ -1,0 +1,17 @@
+title: HUANDENG showcase
+size:
+  - 960
+  - 540
+pages:
+  - pages/reference.page
+  - pages/comparison.page
+  - pages/next.page
+  - pages/synthetic-4.page
+  - pages/synthetic-5.page
+  - pages/synthetic-6.page
+theme:
+  textStyles:
+    title:
+      fontFamily: Arial
+      fontSize: 30
+      color: "#222222"

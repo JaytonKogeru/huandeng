@@ -1,0 +1,98 @@
+pageType: content
+background:
+  type: solid
+  color: "#FFFFFF"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 64
+      - 45
+      - 832
+      - 55
+    role: title
+    content:
+      text: HUANDENG
+      fontFamily: Arial
+      fontSize: 30
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: footer
+    elementType: text
+    bounds:
+      - 64
+      - 506
+      - 400
+      - 16
+    content:
+      text: HUANDENG    /    22
+      fontFamily: Arial
+      fontSize: 10
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: closing
+    elementType: text
+    bounds:
+      - 64
+      - 162
+      - 832
+      - 72
+    content:
+      text: Keep shaping the work.
+      fontFamily: Arial
+      fontSize: 30
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+    role: heading
+  - elementId: repo
+    elementType: text
+    bounds:
+      - 64
+      - 293
+      - 832
+      - 48
+    content:
+      text: github.com/JaytonKogeru/huandeng
+      fontFamily: Arial
+      fontSize: 22
+      color: "#355E4B"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: thanks
+    elementType: text
+    bounds:
+      - 64
+      - 397
+      - 832
+      - 68
+    content:
+      text: |-
+        Built on open-slide and other open-source work.
+        Licenses and third-party acknowledgments live in the repository.
+      fontFamily: Arial
+      fontSize: 16
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+notes: |-
+  HUANDENG builds on open-slide and other open-source work. The repository retains licenses and third-party notices. This introduction uses actual HUANDENG captures and editable text. Repository visibility remains controlled by its owner.
+
+  Source: actual HUANDENG Editor v0.18 public example and project feature contracts. https://github.com/JaytonKogeru/huandeng; packages/core/src/pptd/agent-guide.ts; docs/SPEC-V018.md. Screenshot provenance is retained with the project assets.

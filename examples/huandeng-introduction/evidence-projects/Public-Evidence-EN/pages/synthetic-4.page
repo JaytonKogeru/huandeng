@@ -1,0 +1,88 @@
+title: Read the story across slides
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 52
+      - 44
+      - 856
+      - 70
+    content:
+      text: Read the story across slides
+      fontSize: 28
+      fontFamily: Arial
+      color: "#252a2f"
+  - elementId: lead
+    elementType: text
+    bounds:
+      - 52
+      - 126
+      - 818
+      - 84
+    content:
+      text: Review the sequence before refining individual objects.
+      fontSize: 19
+      fontFamily: Arial
+      color: "#58636b"
+  - elementId: left-heading
+    elementType: text
+    bounds:
+      - 52
+      - 266
+      - 390
+      - 40
+    content:
+      text: Browse
+      fontSize: 22
+      fontFamily: Arial
+      color: "#252a2f"
+  - elementId: left-body
+    elementType: text
+    bounds:
+      - 52
+      - 320
+      - 365
+      - 116
+    content:
+      text: See the visual rhythm and spacing of the whole presentation.
+      fontSize: 17
+      fontFamily: Arial
+      color: "#252a2f"
+  - elementId: right-heading
+    elementType: text
+    bounds:
+      - 518
+      - 266
+      - 390
+      - 40
+    content:
+      text: Outline
+      fontSize: 22
+      fontFamily: Arial
+      color: "#252a2f"
+  - elementId: right-body
+    elementType: text
+    bounds:
+      - 518
+      - 320
+      - 365
+      - 116
+    content:
+      text: Read the argument without the visual layout getting in the way.
+      fontSize: 17
+      fontFamily: Arial
+      color: "#252a2f"
+  - elementId: footer
+    elementType: text
+    bounds:
+      - 52
+      - 490
+      - 856
+      - 22
+    content:
+      text: HUANDENG  /  Public product example
+      fontSize: 11
+      fontFamily: Arial
+      color: "#687078"
+notes: Public HUANDENG product example. This slide explains read the story
+  across slides.

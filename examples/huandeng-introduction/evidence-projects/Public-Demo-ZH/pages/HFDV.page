@@ -1,0 +1,87 @@
+title: 一份源内容，多种讲述顺序
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 52
+      - 44
+      - 856
+      - 70
+    content:
+      text: 一份源内容，多种讲述顺序
+      fontSize: 28
+      fontFamily: Microsoft YaHei
+      color: "#252a2f"
+  - elementId: lead
+    elementType: text
+    bounds:
+      - 52
+      - 126
+      - 818
+      - 84
+    content:
+      text: 用相同的页面，组织简短介绍和深入讨论。
+      fontSize: 18
+      fontFamily: Microsoft YaHei
+      color: "#58636b"
+  - elementId: left-heading
+    elementType: text
+    bounds:
+      - 52
+      - 266
+      - 390
+      - 40
+    content:
+      text: 主页面库
+      fontSize: 20
+      fontFamily: Microsoft YaHei
+      color: "#252a2f"
+  - elementId: left-body
+    elementType: text
+    bounds:
+      - 52
+      - 320
+      - 365
+      - 116
+    content:
+      text: 维护一份内容，作为不同讲述顺序的共同来源。
+      fontSize: 17
+      fontFamily: Microsoft YaHei
+      color: "#252a2f"
+  - elementId: right-heading
+    elementType: text
+    bounds:
+      - 518
+      - 266
+      - 390
+      - 40
+    content:
+      text: 面向听众的顺序
+      fontSize: 20
+      fontFamily: Microsoft YaHei
+      color: "#252a2f"
+  - elementId: right-body
+    elementType: text
+    bounds:
+      - 518
+      - 320
+      - 365
+      - 116
+    content:
+      text: 选择和重排页面引用，无需复制整份内容。
+      fontSize: 17
+      fontFamily: Microsoft YaHei
+      color: "#252a2f"
+  - elementId: footer
+    elementType: text
+    bounds:
+      - 52
+      - 490
+      - 856
+      - 22
+    content:
+      text: HUANDENG  /  公开产品示例
+      fontSize: 11
+      fontFamily: Microsoft YaHei
+      color: "#687078"
+notes: 这是 HUANDENG 的公开产品示例，用于说明：一份源内容，多种讲述顺序。

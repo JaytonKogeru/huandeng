@@ -1,0 +1,117 @@
+elements:
+  - bounds:
+      - 64
+      - 52
+      - 800
+      - 42
+    content:
+      align:
+        - left
+        - top
+      color: "#121212"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 26
+      lineHeight: 1.3
+      text: pageId 是身份，Position 是位置
+    elementId: t
+    elementType: text
+  - bounds:
+      - 64
+      - 104
+      - 740
+      - 66
+    content:
+      align:
+        - left
+        - top
+      color: "#3F3F3F"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 18
+      lineHeight: 1.75
+      text: |-
+        缩略图上显示的是 Position。
+        页面真正的地址是 pageId，界面里也显示为稳定的 Slide ID。
+    elementId: lead
+    elementType: text
+  - bounds:
+        [64,206,400,100]
+    content:
+      align:
+        - left
+        - top
+      color: "#2E2E2E"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 17
+      lineHeight: 1.8
+      text: "插入、删除、重排会改变 Position。\n今天第 3 页，明天可能是第 4 页。"
+    elementId: b1
+    elementType: text
+  - bounds:
+        [64,312,400,100]
+    content:
+      align:
+        - left
+        - top
+      color: "#2E2E2E"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 17
+      lineHeight: 1.8
+      text: "pageId 不随位置变化。\n引用、审阅记录和固定版本都指向它。"
+    elementId: b2
+    elementType: text
+  - bounds:
+      - 64
+      - 462
+      - 832
+      - 26
+    content:
+      align:
+        - left
+        - top
+      color: "#6A6A6A"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 15
+      lineHeight: 1.6
+      text: 协作时说页面身份，比说页码可靠。
+    elementId: close
+    elementType: text
+  - bounds:
+      - 500
+      - 196
+      - 396
+      - 220
+    elementId: shot-browse
+    elementType: image
+    fit:
+      mode: contain
+    sourceName: zh-CN-browse-crop.png
+    src: media/imported/c48d45b781ff23f4062462182cafc4e99a660878a4ee372fa6e1d78afce54349.png
+  - bounds:
+      - 500
+      - 424
+      - 396
+      - 22
+    content:
+      align:
+        - left
+        - top
+      color: "#8C8C8C"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 12
+      lineHeight: 1.5
+      text: 真实界面：浏览视图中的位置与页面短码
+    elementId: shot-cap
+    elementType: text
+notes: "强调位置与身份的区别。右侧是真实界面截图：浏览视图里，每张页面卡片同时显示「位置 1」「页面短码 R014」。截图来自素材团队提供的 zh-CN-browse-crop.png（1096×610，按原比例 396×220 放置，未缩放变形）。"

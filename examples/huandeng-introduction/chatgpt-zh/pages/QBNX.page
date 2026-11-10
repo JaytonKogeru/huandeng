@@ -1,0 +1,148 @@
+pageType: content
+background:
+  type: solid
+  color: "#FFFFFF"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 64
+      - 45
+      - 832
+      - 55
+    role: title
+    content:
+      text: 跟随更新，或保留某次讲述
+      fontFamily: Microsoft YaHei
+      fontSize: 28
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: footer
+    elementType: text
+    bounds:
+      - 64
+      - 506
+      - 400
+      - 16
+    content:
+      text: HUANDENG    /    19
+      fontFamily: Microsoft YaHei
+      fontSize: 10
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: live
+    elementType: text
+    bounds:
+      - 64
+      - 158
+      - 360
+      - 50
+    content:
+      text: Live
+      fontFamily: Microsoft YaHei
+      fontSize: 28
+      color: "#355E4B"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+    role: heading
+  - elementId: live-copy
+    elementType: text
+    bounds:
+      - 64
+      - 238
+      - 360
+      - 80
+    content:
+      text: 跟随 Main 的当前内容。
+      fontFamily: Microsoft YaHei
+      fontSize: 20
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: live-when
+    elementType: text
+    bounds:
+      - 64
+      - 366
+      - 360
+      - 85
+    content:
+      text: 适合持续更新的介绍。
+      fontFamily: Microsoft YaHei
+      fontSize: 18
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: pinned
+    elementType: text
+    bounds:
+      - 530
+      - 158
+      - 366
+      - 50
+    content:
+      text: Pinned
+      fontFamily: Microsoft YaHei
+      fontSize: 28
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+    role: heading
+  - elementId: pinned-copy
+    elementType: text
+    bounds:
+      - 530
+      - 238
+      - 366
+      - 80
+    content:
+      text: 保留命名版本的内容。
+      fontFamily: Microsoft YaHei
+      fontSize: 20
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: pinned-when
+    elementType: text
+    bounds:
+      - 530
+      - 366
+      - 366
+      - 85
+    content:
+      text: 适合需要保留原样的讲述。
+      fontFamily: Microsoft YaHei
+      fontSize: 18
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+notes: |-
+  live 引用跟随 Main 当前内容。pin 固定命名版本，适合保留某场演讲的表达。选择属于当前出现位置，决定它如何引用同一页。
+
+  Source: actual HUANDENG Editor v0.18 public example and project feature contracts. https://github.com/JaytonKogeru/huandeng; packages/core/src/pptd/agent-guide.ts; docs/SPEC-V018.md. Screenshot provenance is retained with the project assets.

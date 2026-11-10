@@ -1,0 +1,88 @@
+title: One source, several presentations
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 52
+      - 44
+      - 856
+      - 70
+    content:
+      text: One source, several presentations
+      fontSize: 28
+      fontFamily: Arial
+      color: "#252a2f"
+  - elementId: lead
+    elementType: text
+    bounds:
+      - 52
+      - 126
+      - 818
+      - 84
+    content:
+      text: Use the same pages for a short introduction and a detailed discussion.
+      fontSize: 19
+      fontFamily: Arial
+      color: "#58636b"
+  - elementId: left-heading
+    elementType: text
+    bounds:
+      - 52
+      - 266
+      - 390
+      - 40
+    content:
+      text: Main slides
+      fontSize: 22
+      fontFamily: Arial
+      color: "#252a2f"
+  - elementId: left-body
+    elementType: text
+    bounds:
+      - 52
+      - 320
+      - 365
+      - 116
+    content:
+      text: Maintain one sequence as the source for every presentation.
+      fontSize: 17
+      fontFamily: Arial
+      color: "#252a2f"
+  - elementId: right-heading
+    elementType: text
+    bounds:
+      - 518
+      - 266
+      - 390
+      - 40
+    content:
+      text: Audience sequences
+      fontSize: 22
+      fontFamily: Arial
+      color: "#252a2f"
+  - elementId: right-body
+    elementType: text
+    bounds:
+      - 518
+      - 320
+      - 365
+      - 116
+    content:
+      text: Select and reorder references without duplicating the content.
+      fontSize: 17
+      fontFamily: Arial
+      color: "#252a2f"
+  - elementId: footer
+    elementType: text
+    bounds:
+      - 52
+      - 490
+      - 856
+      - 22
+    content:
+      text: HUANDENG  /  Public product example
+      fontSize: 11
+      fontFamily: Arial
+      color: "#687078"
+notes: Public HUANDENG product example. This slide explains one source, several
+  presentations.

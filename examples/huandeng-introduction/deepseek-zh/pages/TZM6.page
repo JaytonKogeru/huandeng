@@ -1,0 +1,186 @@
+elements:
+  - bounds:
+      - 64
+      - 52
+      - 800
+      - 42
+    content:
+      align:
+        - left
+        - top
+      color: "#121212"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 26
+      lineHeight: 1.3
+      text: 从这些问题开始参与
+    elementId: t
+    elementType: text
+  - bounds:
+      - 64
+      - 104
+      - 800
+      - 34
+    content:
+      align:
+        - left
+        - top
+      color: "#3F3F3F"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 18
+      lineHeight: 1.6
+      text: 项目地址：github.com/JaytonKogeru/huandeng
+    elementId: lead
+    elementType: text
+  - bounds:
+      - 64
+      - 236
+      - 150
+      - 20
+    content:
+      align:
+        - left
+        - top
+      color: "#8C8C8C"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 12
+      letterSpacing: 1.5
+      lineHeight: 1.5
+      text: 先读
+    elementId: k1
+    elementType: text
+  - bounds:
+      - 230
+      - 230
+      - 666
+      - 60
+    content:
+      align:
+        - left
+        - top
+      color: "#2E2E2E"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 17
+      lineHeight: 1.8
+      text: docs/PROJECTS.md 讲 Main、Section 与 Presentation；docs/SPEC.md 是文档格式与请求约定。
+    elementId: v1
+    elementType: text
+  - bounds:
+      - 64
+      - 310
+      - 150
+      - 20
+    content:
+      align:
+        - left
+        - top
+      color: "#8C8C8C"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 12
+      letterSpacing: 1.5
+      lineHeight: 1.5
+      text: 先试
+    elementId: k2
+    elementType: text
+  - bounds:
+      - 230
+      - 304
+      - 666
+      - 60
+    content:
+      align:
+        - left
+        - top
+      color: "#2E2E2E"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 17
+      lineHeight: 1.8
+      text: 从 Home 新建一个项目，用自己的 deck.pptd 走一遍：改一页、加一场演讲、导出一次。
+    elementId: v2
+    elementType: text
+  - bounds:
+      - 64
+      - 384
+      - 150
+      - 20
+    content:
+      align:
+        - left
+        - top
+      color: "#8C8C8C"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 12
+      letterSpacing: 1.5
+      lineHeight: 1.5
+      text: 可以贡献
+    elementId: k3
+    elementType: text
+  - bounds:
+      - 230
+      - 378
+      - 666
+      - 60
+    content:
+      align:
+        - left
+        - top
+      color: "#2E2E2E"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 17
+      lineHeight: 1.8
+      text: 文档与示例、界面翻译、导出兼容性问题，以及真实使用中遇到的边界。
+    elementId: v3
+    elementType: text
+  - bounds:
+      - 64
+      - 458
+      - 150
+      - 20
+    content:
+      align:
+        - left
+        - top
+      color: "#8C8C8C"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 12
+      letterSpacing: 1.5
+      lineHeight: 1.5
+      text: 提问时
+    elementId: k4
+    elementType: text
+  - bounds:
+      - 230
+      - 452
+      - 666
+      - 30
+    content:
+      align:
+        - left
+        - top
+      color: "#2E2E2E"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 17
+      lineHeight: 1.8
+      text: 附上复现步骤和环境；不要附私人项目内容、图片或路径。
+    elementId: v4
+    elementType: text
+notes: 结尾给出可执行的入口：先读两份文档，再用自己的项目走一遍，最后才是提交。贡献面包括文档、翻译、导出兼容性和边界报告。

@@ -1,0 +1,75 @@
+pageType: cover
+background:
+  type: solid
+  color: "#FFFFFF"
+elements:
+  - elementId: brand
+    elementType: text
+    bounds:
+      - 64
+      - 63
+      - 820
+      - 46
+    content:
+      text: HUANDENG
+      fontFamily: Arial
+      fontSize: 35
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: title
+    elementType: text
+    bounds:
+      - 64
+      - 185
+      - 275
+      - 110
+    role: title
+    content:
+      {"text":"Slides, edited\ntogether","fontFamily":"Arial","fontSize":30,"color":"#202423","bold":false,"align":["left","top"],"lineHeight":1.28}
+  - elementId: subtitle
+    elementType: text
+    bounds:
+      - 64
+      - 322
+      - 245
+      - 95
+    content:
+      {"text":"One project for people\nand agents to keep editing.","fontFamily":"Arial","fontSize":18,"color":"#616A67","bold":false,"align":["left","top"],"lineHeight":1.28}
+  - elementId: editor-overview
+    elementType: image
+    src: media/imported/8af5553e393e50bc2be95658bea2336a9634fc16264b36e5b0f002f41c6fcace.png
+    sourceName: en-edit-1920.png
+    alt: en edit 1920.png
+    bounds:
+      - 334
+      - 147
+      - 562
+      - 316
+    fit:
+      mode: contain
+    "crop": {"left":0,"right":0,"top":0,"bottom":0}
+  - elementId: edition
+    elementType: text
+    bounds:
+      - 64
+      - 488
+      - 500
+      - 25
+    content:
+      text: Project introduction   /   2026
+      fontFamily: Arial
+      fontSize: 12
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+notes: |-
+  HUANDENG treats a presentation as a project that remains editable. People use the Editor and agents work with the same pages, assets and intent. The following pages show how that shared workflow behaves.
+
+  Source: actual HUANDENG Editor v0.18 public example and project feature contracts. https://github.com/JaytonKogeru/huandeng; packages/core/src/pptd/agent-guide.ts; docs/SPEC-V018.md. Screenshot provenance is retained with the project assets.

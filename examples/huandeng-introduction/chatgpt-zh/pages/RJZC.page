@@ -1,0 +1,84 @@
+pageType: content
+background:
+  type: solid
+  color: "#FFFFFF"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 64
+      - 45
+      - 832
+      - 55
+    role: title
+    content:
+      text: 换了位置，仍是同一页
+      fontFamily: Microsoft YaHei
+      fontSize: 28
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: footer
+    elementType: text
+    bounds:
+      - 64
+      - 506
+      - 400
+      - 16
+    content:
+      text: HUANDENG    /    06
+      fontFamily: Microsoft YaHei
+      fontSize: 10
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: identity
+    elementType: image
+    src: "media/imported/56ef1c090dfe6c7ef847c12ea2f9ed6ef7a90dfd51efd5d5cc23f4e542356b58.png"
+    sourceName: "zh-CN-identity-before-4x.png"
+    alt: "zh CN identity before 4x.png"
+    bounds:
+        [160,170,720,60]
+    fit:
+      mode: contain
+    crop:
+      {"left":0,"right":0,"top":0.3333333333333333,"bottom":0}
+  - elementId: identity-copy
+    elementType: text
+    bounds:
+        [64,174,86,30]
+    content:
+      {"text":"调整前","fontFamily":"Microsoft YaHei","fontSize":14,"color":"#616A67","bold":false,"align":["left","top"],"lineHeight":1.28}
+  - elementId: position-copy
+    elementType: text
+    bounds:
+        [64,294,86,30]
+    content:
+      {"text":"调整后","fontFamily":"Microsoft YaHei","fontSize":14,"color":"#355E4B","bold":false,"align":["left","top"],"lineHeight":1.28}
+  - elementId: benefit
+    elementType: text
+    bounds:
+        [64,410,832,72]
+    content:
+      {"text":"顺序从 2 变成 4，Slide ID 保持不变。\n引用仍然指向原来的内容。","fontFamily":"Microsoft YaHei","fontSize":18,"color":"#616A67","bold":false,"align":["left","top"],"lineHeight":1.28}
+  - elementId: identity-after
+    elementType: image
+    src: media/imported/99a0f26c40f623b347b71bf756622aec243fecbc66a1b031013d57de71448afe.png
+    sourceName: zh-CN-identity-after-4x.png
+    alt: zh CN identity after 4x.png
+    bounds:
+        [160,290,720,60]
+    fit:
+      mode: contain
+    crop:
+      {"left":0,"right":0,"top":0.3333333333333333,"bottom":0}
+notes: |-
+  Slide ID 识别页面，Position 只表示当前集合里的顺序。重排 Main 不会让一个有效引用指向另一页。短码帮助人在界面中确认对象，工具使用稳定身份。
+
+  Source: actual HUANDENG Editor v0.18 public example and project feature contracts. https://github.com/JaytonKogeru/huandeng; packages/core/src/pptd/agent-guide.ts; docs/SPEC-V018.md. Screenshot provenance is retained with the project assets.

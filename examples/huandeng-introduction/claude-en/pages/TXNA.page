@@ -1,0 +1,105 @@
+elements:
+  - elementId: title
+    elementType: text
+    role: title
+    bounds:
+      - 56
+      - 40
+      - 848
+      - 44
+    content:
+      text: Reuse is live by default and pinned on purpose
+      fontFamily: Arial
+      fontSize: 28
+      lineHeight: 1.2
+      color: "#1A1D21"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: live-head
+    elementType: text
+    bounds:
+      - 56
+      - 124
+      - 400
+      - 26
+    content:
+      text: Live reference
+      fontFamily: Arial
+      fontSize: 19
+      lineHeight: 1.2
+      color: "#1A1D21"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: live-body
+    elementType: text
+    bounds:
+      - 56
+      - 156
+      - 400
+      - 110
+    content:
+      text: The Presentation shows the current Main Slide. Fix a label once and every talk that uses the slide picks it up.
+      fontFamily: Arial
+      fontSize: 18
+      lineHeight: 1.4
+      color: "#3A3F45"
+      align:
+        - left
+        - top
+  - elementId: pin-head
+    elementType: text
+    bounds:
+      - 504
+      - 124
+      - 400
+      - 26
+    content:
+      text: Pinned version
+      fontFamily: Arial
+      fontSize: 19
+      lineHeight: 1.2
+      color: "#1A1D21"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: pin-body
+    elementType: text
+    bounds:
+      - 504
+      - 156
+      - 400
+      - 110
+    content:
+      text: Point an appearance at a named version when a talk must not change, such as the deck you already submitted. Pinned artwork is read-only.
+      fontFamily: Arial
+      fontSize: 18
+      lineHeight: 1.4
+      color: "#3A3F45"
+      align:
+        - left
+        - top
+  - elementId: scope-label
+    elementType: text
+    bounds:
+        [56,304,700,24]
+    content:
+      text: "Before you edit, the Editor states how far the change will reach:"
+      fontFamily: Arial
+      fontSize: 16
+      lineHeight: 1.3
+      color: "#3A3F45"
+      align:
+        - left
+        - top
+  - elementId: scope-shot
+    elementType: image
+    bounds:
+        [56,338,379,41.5]
+    src: media/en/edit-scope.png
+    sourceName: edit-scope.png
+notes: "Reuse needs two modes. By default a Presentation shows the live Main Slide, which is what you want for most corrections. Sometimes a talk must stay exactly as it was, for example the version you sent to a committee. Then you record a named version of that slide and pin the appearance to it. The pinned appearance cannot be edited from that talk, and later Main edits do not touch it. The strip at the bottom is the real header above the canvas: it counts live and pinned references before you make a change, so the reach of an edit is never a surprise."

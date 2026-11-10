@@ -1,0 +1,21 @@
+elements:
+  - bounds:
+      - 64
+      - 238
+      - 832
+      - 60
+    content:
+      align:
+        - left
+        - top
+      color: "#121212"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 34
+      lineHeight: 1.3
+      text: 一份内容，多种讲法
+    elementId: t
+    elementType: text
+notes: 过渡：既然复制会分叉，就让内容只存一份，让演讲去引用它。
+pageType: section

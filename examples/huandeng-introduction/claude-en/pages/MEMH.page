@@ -1,0 +1,225 @@
+elements:
+  - elementId: title
+    elementType: text
+    role: title
+    bounds:
+      - 56
+      - 40
+      - 848
+      - 44
+    content:
+      text: Six views of the same slides
+      fontFamily: Arial
+      fontSize: 28
+      lineHeight: 1.2
+      color: "#1A1D21"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: overview-shot
+    elementType: image
+    bounds:
+      - 56
+      - 108
+      - 576
+      - 324
+    src: media/en/edit-overview.png
+    sourceName: edit-overview.png
+  - elementId: overview-caption
+    elementType: text
+    bounds:
+      - 56
+      - 442
+      - 576
+      - 22
+    content:
+      text: "Normal view: Pages on the left, the canvas, and the Inspector on the right."
+      fontFamily: Arial
+      fontSize: 13
+      lineHeight: 1.3
+      color: "#6B7178"
+      align:
+        - left
+        - top
+  - elementId: v1
+    elementType: text
+    bounds:
+        [664,110,240,22]
+    content:
+      text: "Normal"
+      fontFamily: Arial
+      fontSize: 17
+      lineHeight: 1.35
+      color: "#1A1D21"
+      align:
+        - left
+        - top
+      "bold": true
+  - elementId: v2
+    elementType: text
+    bounds:
+        [664,165,240,22]
+    content:
+      text: "Browse"
+      fontFamily: Arial
+      fontSize: 17
+      lineHeight: 1.35
+      color: "#1A1D21"
+      align:
+        - left
+        - top
+      "bold": true
+  - elementId: v3
+    elementType: text
+    bounds:
+        [664,220,240,22]
+    content:
+      text: "Outline"
+      fontFamily: Arial
+      fontSize: 17
+      lineHeight: 1.35
+      color: "#1A1D21"
+      align:
+        - left
+        - top
+      "bold": true
+  - elementId: v4
+    elementType: text
+    bounds:
+        [664,275,240,22]
+    content:
+      text: "Sections"
+      fontFamily: Arial
+      fontSize: 17
+      lineHeight: 1.35
+      color: "#1A1D21"
+      align:
+        - left
+        - top
+      "bold": true
+  - elementId: v5
+    elementType: text
+    bounds:
+        [664,330,240,22]
+    content:
+      text: "Notes page"
+      fontFamily: Arial
+      fontSize: 17
+      lineHeight: 1.35
+      color: "#1A1D21"
+      align:
+        - left
+        - top
+      "bold": true
+  - elementId: v6
+    elementType: text
+    bounds:
+        [664,385,240,22]
+    content:
+      text: "History"
+      fontFamily: Arial
+      fontSize: 17
+      lineHeight: 1.35
+      color: "#1A1D21"
+      align:
+        - left
+        - top
+      "bold": true
+  - elementId: v1-d
+    elementType: text
+    bounds:
+      - 664
+      - 133
+      - 240
+      - 22
+    content:
+      text: Edit the canvas
+      fontFamily: Arial
+      fontSize: 16
+      lineHeight: 1.3
+      color: "#4A5058"
+      align:
+        - left
+        - top
+  - elementId: v2-d
+    elementType: text
+    bounds:
+      - 664
+      - 188
+      - 240
+      - 22
+    content:
+      text: Thumbnails of the whole deck
+      fontFamily: Arial
+      fontSize: 16
+      lineHeight: 1.3
+      color: "#4A5058"
+      align:
+        - left
+        - top
+  - elementId: v3-d
+    elementType: text
+    bounds:
+      - 664
+      - 243
+      - 240
+      - 22
+    content:
+      text: Titles with their Story
+      fontFamily: Arial
+      fontSize: 16
+      lineHeight: 1.3
+      color: "#4A5058"
+      align:
+        - left
+        - top
+  - elementId: v4-d
+    elementType: text
+    bounds:
+      - 664
+      - 298
+      - 240
+      - 22
+    content:
+      text: The parts of the argument
+      fontFamily: Arial
+      fontSize: 16
+      lineHeight: 1.3
+      color: "#4A5058"
+      align:
+        - left
+        - top
+  - elementId: v5-d
+    elementType: text
+    bounds:
+      - 664
+      - 353
+      - 240
+      - 22
+    content:
+      text: The speaking script
+      fontFamily: Arial
+      fontSize: 16
+      lineHeight: 1.3
+      color: "#4A5058"
+      align:
+        - left
+        - top
+  - elementId: v6-d
+    elementType: text
+    bounds:
+      - 664
+      - 408
+      - 240
+      - 22
+    content:
+      text: Versions of one slide
+      fontFamily: Arial
+      fontSize: 16
+      lineHeight: 1.3
+      color: "#4A5058"
+      align:
+        - left
+        - top
+notes: This is the real Editor with a small public example project. The tabs above the canvas switch between six views of the same Slides document. Normal is where you edit. Browse shows thumbnails; Outline shows each title with its Story summary, which is the fastest way to read the argument. Sections manages how the deck is divided. Notes page is a large editor for the speaking script. History shows named versions and saved operations for the selected slide. Switching view never changes the content; it changes what you look at. The next section walks through these views in the order you would use them.

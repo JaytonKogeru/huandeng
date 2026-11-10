@@ -1,0 +1,115 @@
+pageType: content
+background:
+  type: solid
+  color: "#FFFFFF"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 64
+      - 45
+      - 832
+      - 55
+    role: title
+    content:
+      text: 有用的版本，可以单独保留
+      fontFamily: Microsoft YaHei
+      fontSize: 28
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: footer
+    elementType: text
+    bounds:
+      - 64
+      - 506
+      - 400
+      - 16
+    content:
+      text: HUANDENG    /    16
+      fontFamily: Microsoft YaHei
+      fontSize: 10
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: label
+    elementType: text
+    bounds:
+      - 64
+      - 149
+      - 260
+      - 25
+    content:
+      text: 例如
+      fontFamily: Microsoft YaHei
+      fontSize: 14
+      color: "#355E4B"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: version
+    elementType: text
+    bounds:
+      - 64
+      - 196
+      - 820
+      - 70
+    content:
+      text: “会议前确认版”
+      fontFamily: Microsoft YaHei
+      fontSize: 28
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+    role: heading
+  - elementId: explain
+    elementType: text
+    bounds:
+      - 64
+      - 318
+      - 730
+      - 116
+    content:
+      text: |-
+        给有意义的阶段命名。
+        需要时，只恢复这一页。
+      fontFamily: Microsoft YaHei
+      fontSize: 20
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.6
+  - elementId: distinction
+    elementType: text
+    bounds:
+      - 64
+      - 462
+      - 820
+      - 25
+    content:
+      text: 自动保存、Undo 和命名版本，各自解决不同的问题。
+      fontFamily: Microsoft YaHei
+      fontSize: 16
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+notes: |-
+  命名版本保存一个页面的里程碑。需要回退时可以恢复这一页，无须把整套演示换回早期文件。固定引用让一场演讲继续使用已保存版本。源素材应随项目保留。
+
+  Source: actual HUANDENG Editor v0.18 public example and project feature contracts. https://github.com/JaytonKogeru/huandeng; packages/core/src/pptd/agent-guide.ts; docs/SPEC-V018.md. Screenshot provenance is retained with the project assets.

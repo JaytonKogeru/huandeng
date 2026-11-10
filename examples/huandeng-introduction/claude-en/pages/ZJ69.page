@@ -1,0 +1,154 @@
+elements:
+  - elementId: title
+    elementType: text
+    role: title
+    bounds:
+      - 56
+      - 40
+      - 848
+      - 44
+    content:
+      text: Story tells the next editor what a slide is for
+      fontFamily: Arial
+      fontSize: 28
+      lineHeight: 1.2
+      color: "#1A1D21"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: l1-head
+    elementType: text
+    bounds:
+      - 56
+      - 116
+      - 400
+      - 24
+    content:
+      text: Main Story
+      fontFamily: Arial
+      fontSize: 19
+      lineHeight: 1.2
+      color: "#1A1D21"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: l1-body
+    elementType: text
+    bounds:
+      - 56
+      - 142
+      - 400
+      - 26
+    content:
+      text: Purpose, audience and takeaway of the project.
+      fontFamily: Arial
+      fontSize: 18
+      lineHeight: 1.3
+      color: "#3A3F45"
+      align:
+        - left
+        - top
+  - elementId: l2-head
+    elementType: text
+    bounds:
+      - 56
+      - 190
+      - 400
+      - 24
+    content:
+      text: Section and Presentation Story
+      fontFamily: Arial
+      fontSize: 19
+      lineHeight: 1.2
+      color: "#1A1D21"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: l2-body
+    elementType: text
+    bounds:
+      - 56
+      - 216
+      - 400
+      - 50
+    content:
+      text: What each part must establish, and how one talk adapts the source.
+      fontFamily: Arial
+      fontSize: 18
+      lineHeight: 1.3
+      color: "#3A3F45"
+      align:
+        - left
+        - top
+  - elementId: l3-head
+    elementType: text
+    bounds:
+      - 56
+      - 288
+      - 400
+      - 24
+    content:
+      text: Page Story
+      fontFamily: Arial
+      fontSize: 19
+      lineHeight: 1.2
+      color: "#1A1D21"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: l3-body
+    elementType: text
+    bounds:
+      - 56
+      - 314
+      - 400
+      - 50
+    content:
+      text: This slide’s purpose, what must be kept, and the change requested.
+      fontFamily: Arial
+      fontSize: 18
+      lineHeight: 1.3
+      color: "#3A3F45"
+      align:
+        - left
+        - top
+  - elementId: outline-shot
+    elementType: image
+    bounds:
+        [500,118,404,101.4]
+    src: media/en/outline-story.png
+    sourceName: outline-story.png
+  - elementId: outline-caption
+    elementType: text
+    bounds:
+        [500,228,404,22]
+    content:
+      text: "Outline view: each title with its Story summary."
+      fontFamily: Arial
+      fontSize: 13
+      lineHeight: 1.3
+      color: "#6B7178"
+      align:
+        - left
+        - top
+  - elementId: agent-note
+    elementType: text
+    bounds:
+      - 500
+      - 288
+      - 404
+      - 110
+    content:
+      text: An agent reads these layers before it proposes an edit, and writes its reading of your request back into page Story. That record is an interpretation, not your approval.
+      fontFamily: Arial
+      fontSize: 18
+      lineHeight: 1.4
+      color: "#3A3F45"
+      align:
+        - left
+        - top
+notes: "Story is where intent lives. It has layers. The Main Story says what the whole project is for and who it addresses. A Section Story says what each part must establish; a Presentation Story says how one talk adapts the shared slides. The Page Story is the most specific: this slide's purpose, what must not be changed, such as an original figure or approved wording, and the change currently requested. The Outline view shows titles alongside these summaries. When an agent edits, it reads the relevant layers first and records its understanding of the request on the page. HUANDENG labels that as the agent's interpretation; only you can approve a slide."

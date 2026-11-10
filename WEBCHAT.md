@@ -1,12 +1,14 @@
 # HUANDENG Editor
 
-## Active Editor 0.18.0 integration candidate
+## Current accepted Editor 0.18.0
 
-The current worktree is `editor/v0.18-design-workflow`, based on `376e6b4`. Read `docs/HANDOFF-V018.md`, `SPEC-V018`, `DESIGN-V018`, `AUDIT-V018-WORKFLOW`, `FRAME-V018-WORKFLOW`, `VALIDATION-V018-WORKFLOW`, `VALIDATION-V018-UI` and `RELEASE-V018-WORKFLOW` before continuing. These records distinguish source tests, staged packages, native model trials, presentation review and installation/publication. Do not infer a released clean runtime from a dirty candidate package.
+The accepted clean runtime is `35dfe649d450d22a0e4e3b70661be52c67eb9f7a`, built `2026-11-10T09:26:30.7136963Z` with `sourceDirty=false` and Electron 38.7.2. The milestone branch is `editor/v0.18-design-workflow`, based on `376e6b4`; later delivery changes contain only documentation and public introduction examples. Read `docs/HANDOFF-V018.md`, `SPEC-V018`, `DESIGN-V018`, `AUDIT-V018-WORKFLOW`, `FRAME-V018-WORKFLOW`, `VALIDATION-V018-WORKFLOW`, `VALIDATION-V018-UI`, `VALIDATION-V018-SLIDES`, `VALIDATION-V018-NATIVE-TRIALS` and `RELEASE-V018-WORKFLOW` before continuing. Check actual origin/tag/release state for `editor-v0.18.0`; source acceptance does not itself prove remote publication.
 
 The workflow now includes Frame. One Project-root AGENTS.md and one shared writer remain authoritative; `quality` / `huandeng_design_audit` are advisory read-only checks. `init` creates a new Project through the shared desktop initializer and refuses existing targets. `page.add.sectionId` can add a title-only first Slide to an existing Section without replacing Section identity or Story. Preserve real original assets and prior crops needed by operation history, use audience-language task captures, and serialize render/export per Project.
 
-Final source gates: 1,292 unit tests passed and one existing skip across 127 files, eight plugin tests, core TypeScript, Biome and production build. Shared Story skill SHA-256 is `f09f2bf2a49bfc62bc89e76fca53c5ef3d25ee08f810d51b6285d6160cdee990`. Product version is 0.18.0; core npm remains 2.3.1 with pending changesets. No npm or upstream release is authorized. Keep native Codex/Claude/DSH adapters while updating the existing account identity. The user-facing four-deck acceptance and installed/released identities are recorded in the final handoff, not implied by these source gates.
+Final source gates: 1,292 unit tests passed and one existing skip across 127 files, eight plugin tests, core TypeScript, Biome and production build. Shared Story skill SHA-256 is `f09f2bf2a49bfc62bc89e76fca53c5ef3d25ee08f810d51b6285d6160cdee990`. Product version is 0.18.0; core npm remains 2.3.1 with pending changesets. No npm or upstream release is authorized. The retained EXE passed isolated native open/design-check/second-instance/normal-exit acceptance. Codex and Claude are enabled at 0.18.0; DSH has an explicit versioned overlay and dedicated launcher. The existing account plugin was updated in place and read back. The user's older running Editor session was preserved; close it normally before expecting new shortcuts to select the new single instance. The separate ChatGPT code-plugin picker reference has not been proven removed.
+
+Four introductions are in `examples/huandeng-introduction`: ChatGPT Chinese and English, 22 pages each; native DeepSeek Chinese and Claude English, 21 pages each. All four have portable projects, PDF and editable PPTX, and actual PowerPoint inspection covered all 86 slides. The main editions have full/8-page presentations, real localized screenshots and named versions. The native trial report preserves first-attempt quality and clearly labels DeepSeek's blocker-only continuation. Public assets contain 120 original captures, 37 recommended, plus portable bilingual evidence projects. See `docs/evidence/v018/release-manifest.json` for exact artifact identity. Repository visibility remains private; do not infer a completed public-history audit.
 
 ## Historical accepted Editor 0.13.0 workspace runtime
 
@@ -75,7 +77,7 @@ Retain v0.10 source thumbnails/titles/Slide ID/Position/search/hover preview, re
 
 Source-preserving YAML patching must support valid indentless block sequences. Replacement flow JSON must be indented below the mapping key even when the original dash was not. Keep adjacent comments, BOM/newline convention, following fields, and opaque values; do not rewrite whole documents or weaken preview/commit validation. The synthetic shared-store regression checks read-only preview, bounded commit, and byte-restoring Undo.
 
-Agent setup only generates current-Project configuration. ChatGPT uses existing authorized DC-WALT CLI. Keep the current 20 MCP tools, Story services, and shared writer compatible (18 tools before v0.13). No built-in model runner, marketplace, arbitrary plugin executor, or new network tunnel was added. The public-source Drug Design example remains a separate conceptual example; private authoring work is never a fixture.
+Agent setup only generates current-Project configuration. ChatGPT uses existing authorized DC-WALT CLI. Keep the current 22 MCP tools, Story services, and shared writer compatible. Earlier milestones exposed fewer tools. No built-in model runner, marketplace, arbitrary plugin executor, or new network tunnel was added. The public-source Drug Design example remains a separate conceptual example; private authoring work is never a fixture.
 
 ## Persisted product and writer invariants
 
@@ -101,7 +103,7 @@ v0.8 corrected the old v0.7~398MiB GC observation: Network inspector response re
 
 ## Working paths and release
 
-Windows is authoritative: canonical checkout `D:/_Proj/Huandeng`; current worktree `D:/_Proj/Huandeng-v013-20261109`, branch `editor/v0.13-workspace`. The Linux transfer mirror has no authoritative Git history. Preserve the unrelated modified canonical fixture. Never broad-stage/reset/clean or restore a historical private document baseline.
+Windows is authoritative: canonical checkout `D:/_Proj/Huandeng`; current worktree `D:/_Proj/Huandeng-v018-20261110`, branch `editor/v0.18-design-workflow`. The Linux transfer mirror has no authoritative Git history. Preserve the unrelated modified canonical fixture. Never broad-stage/reset/clean or restore a historical private document baseline.
 
 Use `corepack pnpm` with isolated development dependencies and the frozen lockfile. The v0.13 workspace harness is `scripts/verify-workspace-v013.mjs`, using the exact `HUANDENG_DESKTOP_EXE`, no `HUANDENG_DESKTOP_APP`, and isolated synthetic profiles. Keep development, packaged, installed and private-authoring evidence separate. Scope further checks to actual remaining risk instead of automatically repeating earlier 43-group/soak matrices. Inspect screenshots before publishing only generic, masked evidence.
 

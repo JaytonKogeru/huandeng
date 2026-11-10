@@ -1,0 +1,236 @@
+elements:
+  - bounds:
+      - 64
+      - 52
+      - 800
+      - 42
+    content:
+      align:
+        - left
+        - top
+      color: "#121212"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 26
+      lineHeight: 1.3
+      text: 一个可以整个带走的项目文件夹
+    elementId: t
+    elementType: text
+  - bounds:
+      - 64
+      - 104
+      - 760
+      - 34
+    content:
+      align:
+        - left
+        - top
+      color: "#3F3F3F"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 18
+      lineHeight: 1.6
+      text: 交付的不只是一份 PPTX，而是一个还能继续编辑的项目目录。
+    elementId: lead
+    elementType: text
+  - bounds:
+      - 64
+      - 216
+      - 250
+      - 22
+    content:
+      align:
+        - left
+        - top
+      color: "#171717"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 15
+      lineHeight: 1.5
+      text: deck.pptd
+    elementId: p1
+    elementType: text
+  - bounds:
+      - 330
+      - 216
+      - 560
+      - 22
+    content:
+      align:
+        - left
+        - top
+      color: "#3D3D3D"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 16
+      lineHeight: 1.5
+      text: 入口：页序与画布尺寸
+    elementId: d1
+    elementType: text
+  - bounds:
+      - 64
+      - 256
+      - 250
+      - 22
+    content:
+      align:
+        - left
+        - top
+      color: "#171717"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 15
+      lineHeight: 1.5
+      text: pages/*.page
+    elementId: p2
+    elementType: text
+  - bounds:
+      - 330
+      - 256
+      - 560
+      - 22
+    content:
+      align:
+        - left
+        - top
+      color: "#3D3D3D"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 16
+      lineHeight: 1.5
+      text: 每一页的原始内容，叠放顺序也在页内
+    elementId: d2
+    elementType: text
+  - bounds:
+      - 64
+      - 296
+      - 250
+      - 22
+    content:
+      align:
+        - left
+        - top
+      color: "#171717"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 15
+      lineHeight: 1.5
+      text: "media 目录"
+    elementId: p3
+    elementType: text
+  - bounds:
+      - 330
+      - 296
+      - 560
+      - 22
+    content:
+      align:
+        - left
+        - top
+      color: "#3D3D3D"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 16
+      lineHeight: 1.5
+      text: 图片与素材
+    elementId: d3
+    elementType: text
+  - bounds:
+      - 64
+      - 336
+      - 250
+      - 22
+    content:
+      align:
+        - left
+        - top
+      color: "#171717"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 15
+      lineHeight: 1.5
+      text: .huandeng/
+    elementId: p4
+    elementType: text
+  - bounds:
+      - 330
+      - 336
+      - 560
+      - 22
+    content:
+      align:
+        - left
+        - top
+      color: "#3D3D3D"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 16
+      lineHeight: 1.5
+      text: 稳定身份、Story、Sections、命名版本
+    elementId: d4
+    elementType: text
+  - bounds:
+      - 64
+      - 376
+      - 250
+      - 22
+    content:
+      align:
+        - left
+        - top
+      color: "#171717"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 15
+      lineHeight: 1.5
+      text: Exports/
+    elementId: p5
+    elementType: text
+  - bounds:
+      - 330
+      - 376
+      - 560
+      - 22
+    content:
+      align:
+        - left
+        - top
+      color: "#3D3D3D"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 16
+      lineHeight: 1.5
+      text: 交付文件与导出报告
+    elementId: d5
+    elementType: text
+  - bounds:
+      - 64
+      - 446
+      - 832
+      - 26
+    content:
+      align:
+        - left
+        - top
+      color: "#6A6A6A"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 15
+      lineHeight: 1.6
+      text: 复制这个文件夹，另一台电脑上仍能打开、继续改。
+    elementId: close
+    elementType: text
+notes: 项目是一个文件夹，不是某个云端的单一文件。历史与恢复日志在本机应用数据目录，不随项目复制；命名版本和素材会随目录走。

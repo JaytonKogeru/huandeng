@@ -1,0 +1,116 @@
+pageType: content
+background:
+  type: solid
+  color: "#FFFFFF"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 64
+      - 45
+      - 832
+      - 55
+    role: title
+    content:
+      text: A concrete request becomes a saved edit
+      fontFamily: Arial
+      fontSize: 30
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: footer
+    elementType: text
+    bounds:
+      - 64
+      - 506
+      - 400
+      - 16
+    content:
+      text: HUANDENG    /    14
+      fontFamily: Arial
+      fontSize: 10
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: request
+    elementType: text
+    bounds:
+        [64,115,832,40]
+    content:
+      {"text":"Shorten the title and explanation. Keep the other objects.","fontFamily":"Arial","fontSize":18,"color":"#616A67","bold":false,"align":["left","top"],"lineHeight":1.28}
+    role: heading
+  - elementId: before-label
+    elementType: text
+    bounds:
+      - 64
+      - 182
+      - 70
+      - 30
+    content:
+      text: Before
+      fontFamily: Arial
+      fontSize: 14
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: edit-before
+    elementType: image
+    src: media/imported/65fb18be9fabeffebdb25baa3be9de52eacc4f2a811591962df37d44a0d9a761.png
+    sourceName: en-edit-before-4x.png
+    alt: en edit before 4x.png
+    bounds:
+      - 144
+      - 170
+      - 752
+      - 121
+    fit:
+      mode: contain
+    crop:
+      left: 0.04
+      right: 0.04
+      top: 0.055
+      bottom: 0.69
+  - elementId: after-label
+    elementType: text
+    bounds:
+      - 64
+      - 342
+      - 70
+      - 30
+    content:
+      text: After
+      fontFamily: Arial
+      fontSize: 14
+      color: "#355E4B"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: edit-after
+    elementType: image
+    src: media/imported/eff7df59ca30395ee85337cd02f9183e4a88843dc8ca7005778705ae82d4e950.png
+    sourceName: en-edit-after-4x.png
+    alt: en edit after 4x.png
+    bounds:
+      - 144
+      - 330
+      - 752
+      - 121
+    fit:
+      mode: contain
+    crop:
+      left: 0.04
+      right: 0.04
+      top: 0.055
+      bottom: 0.69
+notes: "Read the current page and Story, propose a focused object change and preview its impact. An authorized change is saved using the same request. Its operation record exposes the exact before and after, followed by the rendered page.\n\nSource: actual HUANDENG Editor v0.18 public example and project feature contracts. https://github.com/JaytonKogeru/huandeng; packages/core/src/pptd/agent-guide.ts; docs/SPEC-V018.md. Screenshot provenance is retained with the project assets.\nActual public-example edit: only the title and lead changed. The asset evidence records the shared-writer receipt and the unchanged objects."

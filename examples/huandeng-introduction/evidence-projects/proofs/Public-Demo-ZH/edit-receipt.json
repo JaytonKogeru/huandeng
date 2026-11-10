@@ -1,0 +1,25 @@
+{
+  "sourceProject": "Public-Demo-ZH",
+  "operationId": "e9565f23-4d1c-4b33-ab9a-2b2f1a0970a2",
+  "requestId": "6e97e2e7-61f7-46e9-9e56-72a1447b1674",
+  "actor": "HUANDENG 公开产品示例",
+  "operations": [
+    {
+      "op": "element.patch",
+      "pageId": "f53eb84b-0807-4ad7-ab75-cc19d3b2199a",
+      "elementId": "title",
+      "set": {
+        "content.text": "把修改意图留清楚"
+      }
+    },
+    {
+      "op": "element.patch",
+      "pageId": "f53eb84b-0807-4ad7-ab75-cc19d3b2199a",
+      "elementId": "lead",
+      "set": {
+        "content.text": "让下一次修改有据可循。"
+      }
+    }
+  ],
+  "sourceReceiptSha256": "fffa773364dc9de071c12d5a01cfa6009417d175f26c933fc8a29994d16f7bf7"
+}

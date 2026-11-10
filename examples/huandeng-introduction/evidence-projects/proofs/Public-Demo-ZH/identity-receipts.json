@@ -1,0 +1,26 @@
+{
+  "sourceProject": "Public-Demo-ZH",
+  "operations": [
+    {
+      "step": "move",
+      "operationId": "5c6b2214-eb51-444a-aab4-0fdfc70ab390",
+      "operations": [
+        {
+          "op": "page.move",
+          "pageId": "06249e89-bb4a-4601-9799-91fe98495465",
+          "afterPageId": "9e55175f-739d-4e8e-8a26-8646e98216c5"
+        }
+      ]
+    },
+    {
+      "step": "undo",
+      "operationId": "b6bac4a0-b606-4dcf-8d34-d899e3fb1a7a",
+      "operations": [
+        {
+          "op": "history.revert",
+          "operationId": "5c6b2214-eb51-444a-aab4-0fdfc70ab390"
+        }
+      ]
+    }
+  ]
+}

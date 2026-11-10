@@ -1,0 +1,128 @@
+elements:
+  - bounds:
+      - 64
+      - 52
+      - 800
+      - 42
+    content:
+      align:
+        - left
+        - top
+      color: "#121212"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 26
+      lineHeight: 1.3
+      text: 复制之后，版本开始分叉
+    elementId: t
+    elementType: text
+  - bounds:
+      - 64
+      - 104
+      - 720
+      - 34
+    content:
+      align:
+        - left
+        - top
+      color: "#3F3F3F"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 18
+      lineHeight: 1.6
+      text: 复制很快。代价出现在一个月以后。
+    elementId: lead
+    elementType: text
+  - bounds:
+      - 64
+      - 224
+      - 700
+      - 30
+    content:
+      align:
+        - left
+        - top
+      color: "#2E2E2E"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 17
+      lineHeight: 1.6
+      text: 会议版更新了一张图，组会版还是旧的。
+    elementId: i1
+    elementType: text
+  - bounds:
+      - 64
+      - 282
+      - 700
+      - 30
+    content:
+      align:
+        - left
+        - top
+      color: "#2E2E2E"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 17
+      lineHeight: 1.6
+      text: 同一组数字，两份文件里的写法已经不同。
+    elementId: i2
+    elementType: text
+  - bounds:
+      - 64
+      - 340
+      - 700
+      - 30
+    content:
+      align:
+        - left
+        - top
+      color: "#2E2E2E"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 17
+      lineHeight: 1.6
+      text: 评审问起方法，讲稿和正文的语气对不上。
+    elementId: i3
+    elementType: text
+  - bounds:
+      - 64
+      - 398
+      - 700
+      - 30
+    content:
+      align:
+        - left
+        - top
+      color: "#2E2E2E"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 17
+      lineHeight: 1.6
+      text: 想改一句话，先要找出它出现在哪几份文件里。
+    elementId: i4
+    elementType: text
+  - bounds:
+      - 64
+      - 452
+      - 800
+      - 26
+    content:
+      align:
+        - left
+        - top
+      color: "#6A6A6A"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 15
+      lineHeight: 1.6
+      text: 这不是排版问题，而是同一份内容被保存了很多次。
+    elementId: close
+    elementType: text
+notes: 分叉的具体表现：图、数字、措辞、引用各自漂移。这里不报数字，只举听众熟悉的场景。

@@ -1,0 +1,739 @@
+{
+  "schemaVersion": 1,
+  "deckId": "ccf319b7-a686-4793-84cb-2ccb018336bf",
+  "entry": "deck.pptd",
+  "designPolicy": "huandeng-human-scientific-v1",
+  "slides": {
+    "79beac71-a358-4867-aac0-79f3f6fe057f": {
+      "shortCode": "2X7G",
+      "path": "pages/initial.page",
+      "state": "tombstone",
+      "components": {},
+      "elementRoles": {},
+      "label": "S1"
+    },
+    "1df45e17-f76e-4bb9-9c39-38cb1e4c4aee": {
+      "shortCode": "5DF9",
+      "path": "pages/5DF9.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S2",
+      "designIntent": {
+        "pageRole": "cover",
+        "purpose": "HUANDENG treats a presentation as a project that remains editable. People use the Editor and agents work with the same pages, assets and intent. The following pages show how that shared workflow behaves.",
+        "keep": [
+          "Preserve original screenshot pixels and language",
+          "White background",
+          "Readable regular type"
+        ],
+        "requestedChange": "Create an original public HUANDENG introduction",
+        "actor": "ChatGPT",
+        "source": "HUANDENG introduction brief",
+        "recordedAt": "2026-11-10T08:37:27.305Z"
+      }
+    },
+    "0890b2bf-5765-4dd2-986e-eb14c0f7d664": {
+      "shortCode": "ZNFW",
+      "path": "pages/ZNFW.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S3",
+      "designIntent": {
+        "pageRole": "section",
+        "purpose": "First, how the work is stored, organized and reused for different audiences.",
+        "keep": [
+          "Preserve original screenshot pixels and language",
+          "White background",
+          "Readable regular type"
+        ],
+        "requestedChange": "Create an original public HUANDENG introduction",
+        "actor": "ChatGPT",
+        "source": "HUANDENG introduction brief",
+        "recordedAt": "2026-11-10T08:37:27.580Z"
+      }
+    },
+    "74a4afae-eb08-459d-8ea2-87c53120760b": {
+      "shortCode": "XAZE",
+      "path": "pages/XAZE.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S4",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "The left side organizes the project and pages, the center holds the canvas, and the Inspector describes the current object and Story. Browse, Outline, Sections, Notes page and History are peer views for different editing tasks.",
+        "keep": [
+          "Preserve original screenshot pixels and language",
+          "White background",
+          "Readable regular type"
+        ],
+        "requestedChange": "Create an original public HUANDENG introduction",
+        "actor": "ChatGPT",
+        "source": "HUANDENG introduction brief",
+        "recordedAt": "2026-11-10T08:37:27.878Z"
+      }
+    },
+    "b6045c07-ffc0-44f4-8bf4-7949db104185": {
+      "shortCode": "CS6G",
+      "path": "pages/CS6G.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S5",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "A real presentation changes as evidence, time and audiences change. HUANDENG keeps those revisions connected to the same source. The request shown here is an example of a concrete next edit.",
+        "keep": [
+          "Preserve original screenshot pixels and language",
+          "White background",
+          "Readable regular type"
+        ],
+        "requestedChange": "Create an original public HUANDENG introduction",
+        "actor": "ChatGPT",
+        "source": "HUANDENG introduction brief",
+        "recordedAt": "2026-11-10T08:41:02.421Z"
+      }
+    },
+    "22e3418a-378e-47b2-80a7-b0034561d645": {
+      "shortCode": "RURY",
+      "path": "pages/RURY.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S6",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Keep the folder together when moving or sharing the project. deck.pptd is the entry, pages contains editable slides, media holds source assets, AGENTS.md describes project preferences, and .huandeng holds relationships and versions. Exports contains delivery files.",
+        "keep": [
+          "Preserve original screenshot pixels and language",
+          "White background",
+          "Readable regular type"
+        ],
+        "requestedChange": "Create an original public HUANDENG introduction",
+        "actor": "ChatGPT",
+        "source": "HUANDENG introduction brief",
+        "recordedAt": "2026-11-10T08:41:02.676Z"
+      }
+    },
+    "20a36479-d0b7-4d25-a19c-11e2c42e0466": {
+      "shortCode": "2QKS",
+      "path": "pages/2QKS.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S7",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Main holds the slide content. A Presentation arranges references, selecting and reordering slides or including a whole Section. A live reference follows its source page. Named versions can preserve an earlier appearance.",
+        "keep": [
+          "Preserve original screenshot pixels and language",
+          "White background",
+          "Readable regular type"
+        ],
+        "requestedChange": "Create an original public HUANDENG introduction",
+        "actor": "ChatGPT",
+        "source": "HUANDENG introduction brief",
+        "recordedAt": "2026-11-10T08:41:02.982Z"
+      }
+    },
+    "b4760462-5d90-4031-9de4-e6470183e5a4": {
+      "shortCode": "R7WX",
+      "path": "pages/R7WX.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S8",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Slide identity stays stable while its position can change. Reordering the Main does not retarget an existing reference. A short code helps people recognize the slide; tools use its stable identity.",
+        "keep": [
+          "Preserve original screenshot pixels and language",
+          "White background",
+          "Readable regular type"
+        ],
+        "requestedChange": "Create an original public HUANDENG introduction",
+        "actor": "ChatGPT",
+        "source": "HUANDENG introduction brief",
+        "recordedAt": "2026-11-10T08:41:03.221Z"
+      }
+    },
+    "48115d3b-8465-47f8-86b3-02cc0aaa09a5": {
+      "shortCode": "7N8G",
+      "path": "pages/7N8G.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S9",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Story records the purpose of a page, what must stay and the requested change. The next edit can begin with those constraints. Agent-authored context does not count as human approval.",
+        "keep": [
+          "Preserve original screenshot pixels and language",
+          "White background",
+          "Readable regular type"
+        ],
+        "requestedChange": "Create an original public HUANDENG introduction",
+        "actor": "ChatGPT",
+        "source": "HUANDENG introduction brief",
+        "recordedAt": "2026-11-10T08:41:03.546Z"
+      }
+    },
+    "365c3435-94cf-4c65-a573-f4ed877058b9": {
+      "shortCode": "C2F2",
+      "path": "pages/C2F2.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S10",
+      "designIntent": {
+        "pageRole": "section",
+        "purpose": "People and agents continue editing the same project.",
+        "keep": [
+          "Preserve original screenshot pixels and language",
+          "White background",
+          "Readable regular type"
+        ],
+        "requestedChange": "Create an original public HUANDENG introduction",
+        "actor": "ChatGPT",
+        "source": "HUANDENG introduction brief",
+        "recordedAt": "2026-11-10T08:41:03.790Z"
+      }
+    },
+    "86ea885f-3676-4cd4-ac34-932d660b0f13": {
+      "shortCode": "DZSA",
+      "path": "pages/DZSA.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S11",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Write the purpose, place the evidence and state what the audience should take away. Establish an actual content page and a Section divider before expanding the deck. The frame is an editable page with real object boundaries.",
+        "keep": [
+          "Preserve original screenshot pixels and language",
+          "White background",
+          "Readable regular type"
+        ],
+        "requestedChange": "Create an original public HUANDENG introduction",
+        "actor": "ChatGPT",
+        "source": "HUANDENG introduction brief",
+        "recordedAt": "2026-11-10T08:41:04.049Z"
+      }
+    },
+    "e054f825-7083-41b0-9629-7a8f96c14af3": {
+      "shortCode": "68JS",
+      "path": "pages/68JS.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S12",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Browse puts the actual slide previews together so you can assess rhythm and density. Outline exposes the headings, text and sequence. Both views operate on the same slides.",
+        "keep": [
+          "Preserve original screenshot pixels and language",
+          "White background",
+          "Readable regular type"
+        ],
+        "requestedChange": "Create an original public HUANDENG introduction",
+        "actor": "ChatGPT",
+        "source": "HUANDENG introduction brief",
+        "recordedAt": "2026-11-10T08:41:04.403Z"
+      }
+    },
+    "5bcccf5e-9488-4546-83bb-b27212f020fb": {
+      "shortCode": "UAGK",
+      "path": "pages/UAGK.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S13",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Keep original images and their provenance with the project. For a feature explanation, capture the relevant region in the audience language. More pixels cannot make a tiny whole-window screenshot readable. Follow sampling diagnostics with visual inspection.",
+        "keep": [
+          "Preserve original screenshot pixels and language",
+          "White background",
+          "Readable regular type"
+        ],
+        "requestedChange": "Create an original public HUANDENG introduction",
+        "actor": "ChatGPT",
+        "source": "HUANDENG introduction brief",
+        "recordedAt": "2026-11-10T08:41:04.673Z"
+      }
+    },
+    "7f623c1e-8c9d-4d46-810e-ce6936cee860": {
+      "shortCode": "34VF",
+      "path": "pages/34VF.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S14",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "ChatGPT, Codex, Claude Code and DeepSeek Harness connect through their respective adapters. The plugin supplies working guidance, and a connector or MCP reaches the project service. The shared writer saves changes to the open project. Each client requires its supported setup.",
+        "keep": [
+          "Preserve original screenshot pixels and language",
+          "White background",
+          "Readable regular type"
+        ],
+        "requestedChange": "Create an original public HUANDENG introduction",
+        "actor": "ChatGPT",
+        "source": "HUANDENG introduction brief",
+        "recordedAt": "2026-11-10T08:41:04.931Z"
+      }
+    },
+    "6bed0405-aec4-479c-a1af-76f6c1649324": {
+      "shortCode": "W8TQ",
+      "path": "pages/W8TQ.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S15",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Read the current page and Story, propose a focused object change and preview its impact. An authorized change is saved using the same request. Its operation record exposes the exact before and after, followed by the rendered page.",
+        "keep": [
+          "Preserve original screenshot pixels and language",
+          "White background",
+          "Readable regular type"
+        ],
+        "requestedChange": "Create an original public HUANDENG introduction",
+        "actor": "ChatGPT",
+        "source": "HUANDENG introduction brief",
+        "recordedAt": "2026-11-10T08:41:05.252Z"
+      }
+    },
+    "2a6b5003-d5bf-40bc-bc2c-27ec62696aee": {
+      "shortCode": "8WEU",
+      "path": "pages/8WEU.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S16",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "History belongs to the current page and exposes changes for a specific operation. Story records intent; saved history records what happened. Together they explain the revision.",
+        "keep": [
+          "Preserve original screenshot pixels and language",
+          "White background",
+          "Readable regular type"
+        ],
+        "requestedChange": "Create an original public HUANDENG introduction",
+        "actor": "ChatGPT",
+        "source": "HUANDENG introduction brief",
+        "recordedAt": "2026-11-10T08:41:05.609Z"
+      }
+    },
+    "2fd684a1-b1b8-4294-bf5e-5c82962f0caf": {
+      "shortCode": "ZSBG",
+      "path": "pages/ZSBG.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S17",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "A named version records a page milestone. Restore that page without replacing the whole presentation with an older file. A pinned occurrence can keep using a saved version. Preserve the assets with the project.",
+        "keep": [
+          "Preserve original screenshot pixels and language",
+          "White background",
+          "Readable regular type"
+        ],
+        "requestedChange": "Create an original public HUANDENG introduction",
+        "actor": "ChatGPT",
+        "source": "HUANDENG introduction brief",
+        "recordedAt": "2026-11-10T08:41:05.927Z"
+      }
+    },
+    "281ab02d-288d-45f3-b44a-0bf726f4e24f": {
+      "shortCode": "RXYS",
+      "path": "pages/RXYS.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S18",
+      "designIntent": {
+        "pageRole": "section",
+        "purpose": "When the content is ready, arrange it for each occasion and deliver it.",
+        "keep": [
+          "Preserve original screenshot pixels and language",
+          "White background",
+          "Readable regular type"
+        ],
+        "requestedChange": "Create an original public HUANDENG introduction",
+        "actor": "ChatGPT",
+        "source": "HUANDENG introduction brief",
+        "recordedAt": "2026-11-10T08:41:06.295Z"
+      }
+    },
+    "c2c3bae4-6148-4001-af2a-528a000e8623": {
+      "shortCode": "K6PX",
+      "path": "pages/K6PX.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S19",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "This project includes a shorter Presentation that references selected Main slides without copying the content. Open that collection to adjust the sequence. A full Presentation is also included.",
+        "keep": [
+          "Preserve original screenshot pixels and language",
+          "White background",
+          "Readable regular type"
+        ],
+        "requestedChange": "Create an original public HUANDENG introduction",
+        "actor": "ChatGPT",
+        "source": "HUANDENG introduction brief",
+        "recordedAt": "2026-11-10T08:41:06.712Z"
+      }
+    },
+    "b5063f50-b521-4e47-bedf-1a89ea80a590": {
+      "shortCode": "JWKG",
+      "path": "pages/JWKG.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S20",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "A live occurrence follows the current Main page. A pinned occurrence uses a named version, preserving an earlier appearance for a particular talk. The choice belongs to that occurrence.",
+        "keep": [
+          "Preserve original screenshot pixels and language",
+          "White background",
+          "Readable regular type"
+        ],
+        "requestedChange": "Create an original public HUANDENG introduction",
+        "actor": "ChatGPT",
+        "source": "HUANDENG introduction brief",
+        "recordedAt": "2026-11-10T08:41:07.030Z"
+      }
+    },
+    "1143f684-f8e3-4b53-ad25-d145a48bd6c9": {
+      "shortCode": "CAH8",
+      "path": "pages/CAH8.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S21",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "The Editor supports click-driven effects such as appear and fade-in. PPTX and PDF are static delivery formats; they do not preserve the live click sequence as native PowerPoint animation. Review the exported file before delivery.",
+        "keep": [
+          "Preserve original screenshot pixels and language",
+          "White background",
+          "Readable regular type"
+        ],
+        "requestedChange": "Create an original public HUANDENG introduction",
+        "actor": "ChatGPT",
+        "source": "HUANDENG introduction brief",
+        "recordedAt": "2026-11-10T08:41:07.403Z"
+      }
+    },
+    "17d67dc7-79e7-4144-859c-c08d02a39586": {
+      "shortCode": "JEXF",
+      "path": "pages/JEXF.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S22",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Open the example and change a title or explanation. Connect your preferred client through Agent setup and request a focused edit. Inspect the result and export it. The small task makes the shared workflow visible.",
+        "keep": [
+          "Preserve original screenshot pixels and language",
+          "White background",
+          "Readable regular type"
+        ],
+        "requestedChange": "Create an original public HUANDENG introduction",
+        "actor": "ChatGPT",
+        "source": "HUANDENG introduction brief",
+        "recordedAt": "2026-11-10T08:41:07.763Z"
+      }
+    },
+    "78fbd4c6-08eb-4a3a-a7fd-5214763dec65": {
+      "shortCode": "47FX",
+      "path": "pages/47FX.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S23",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "HUANDENG builds on open-slide and other open-source work. The repository retains licenses and third-party notices. This introduction uses actual HUANDENG captures and editable text. Repository visibility remains controlled by its owner.",
+        "keep": [
+          "Preserve original screenshot pixels and language",
+          "White background",
+          "Readable regular type"
+        ],
+        "requestedChange": "Create an original public HUANDENG introduction",
+        "actor": "ChatGPT",
+        "source": "HUANDENG introduction brief",
+        "recordedAt": "2026-11-10T08:41:08.108Z"
+      }
+    }
+  },
+  "project": {
+    "schemaVersion": 1,
+    "mainStory": {
+      "purpose": "Explain how people and agents keep editing the same slide project",
+      "audience": "Presentation authors and open-source contributors",
+      "takeaway": "Keep one project editable, reusable and ready to present"
+    },
+    "sections": [
+      {
+        "id": "intro-section-0",
+        "title": "Opening",
+        "story": {
+          "purpose": "Opening",
+          "audience": "",
+          "takeaway": ""
+        },
+        "frontMatter": true,
+        "pageIds": [
+          "1df45e17-f76e-4bb9-9c39-38cb1e4c4aee",
+          "b6045c07-ffc0-44f4-8bf4-7949db104185"
+        ],
+        "startPageId": "1df45e17-f76e-4bb9-9c39-38cb1e4c4aee"
+      },
+      {
+        "id": "intro-section-1",
+        "title": "One source",
+        "story": {
+          "purpose": "One source",
+          "audience": "",
+          "takeaway": ""
+        },
+        "pageIds": [
+          "0890b2bf-5765-4dd2-986e-eb14c0f7d664",
+          "22e3418a-378e-47b2-80a7-b0034561d645",
+          "20a36479-d0b7-4d25-a19c-11e2c42e0466",
+          "b4760462-5d90-4031-9de4-e6470183e5a4",
+          "48115d3b-8465-47f8-86b3-02cc0aaa09a5"
+        ],
+        "startPageId": "0890b2bf-5765-4dd2-986e-eb14c0f7d664"
+      },
+      {
+        "id": "intro-section-2",
+        "title": "Work together",
+        "story": {
+          "purpose": "Work together",
+          "audience": "",
+          "takeaway": ""
+        },
+        "pageIds": [
+          "365c3435-94cf-4c65-a573-f4ed877058b9",
+          "74a4afae-eb08-459d-8ea2-87c53120760b",
+          "86ea885f-3676-4cd4-ac34-932d660b0f13",
+          "e054f825-7083-41b0-9629-7a8f96c14af3",
+          "5bcccf5e-9488-4546-83bb-b27212f020fb",
+          "7f623c1e-8c9d-4d46-810e-ce6936cee860",
+          "6bed0405-aec4-479c-a1af-76f6c1649324",
+          "2a6b5003-d5bf-40bc-bc2c-27ec62696aee",
+          "2fd684a1-b1b8-4294-bf5e-5c82962f0caf"
+        ],
+        "startPageId": "365c3435-94cf-4c65-a573-f4ed877058b9"
+      },
+      {
+        "id": "intro-section-3",
+        "title": "Present and share",
+        "story": {
+          "purpose": "Present and share",
+          "audience": "",
+          "takeaway": ""
+        },
+        "pageIds": [
+          "281ab02d-288d-45f3-b44a-0bf726f4e24f",
+          "c2c3bae4-6148-4001-af2a-528a000e8623",
+          "b5063f50-b521-4e47-bedf-1a89ea80a590",
+          "1143f684-f8e3-4b53-ad25-d145a48bd6c9",
+          "17d67dc7-79e7-4144-859c-c08d02a39586",
+          "78fbd4c6-08eb-4a3a-a7fd-5214763dec65"
+        ],
+        "startPageId": "281ab02d-288d-45f3-b44a-0bf726f4e24f"
+      }
+    ],
+    "presentations": [
+      {
+        "id": "introduction-full",
+        "title": "Full introduction",
+        "story": {
+          "purpose": "Introduce the full HUANDENG workflow",
+          "audience": "",
+          "takeaway": ""
+        },
+        "items": [
+          {
+            "id": "full-1",
+            "kind": "page",
+            "pageId": "1df45e17-f76e-4bb9-9c39-38cb1e4c4aee"
+          },
+          {
+            "id": "full-2",
+            "kind": "page",
+            "pageId": "b6045c07-ffc0-44f4-8bf4-7949db104185"
+          },
+          {
+            "id": "full-3",
+            "kind": "page",
+            "pageId": "0890b2bf-5765-4dd2-986e-eb14c0f7d664"
+          },
+          {
+            "id": "full-4",
+            "kind": "page",
+            "pageId": "22e3418a-378e-47b2-80a7-b0034561d645"
+          },
+          {
+            "id": "full-5",
+            "kind": "page",
+            "pageId": "20a36479-d0b7-4d25-a19c-11e2c42e0466"
+          },
+          {
+            "id": "full-6",
+            "kind": "page",
+            "pageId": "b4760462-5d90-4031-9de4-e6470183e5a4"
+          },
+          {
+            "id": "full-7",
+            "kind": "page",
+            "pageId": "48115d3b-8465-47f8-86b3-02cc0aaa09a5"
+          },
+          {
+            "id": "full-8",
+            "kind": "page",
+            "pageId": "365c3435-94cf-4c65-a573-f4ed877058b9"
+          },
+          {
+            "id": "full-9",
+            "kind": "page",
+            "pageId": "74a4afae-eb08-459d-8ea2-87c53120760b"
+          },
+          {
+            "id": "full-10",
+            "kind": "page",
+            "pageId": "86ea885f-3676-4cd4-ac34-932d660b0f13"
+          },
+          {
+            "id": "full-11",
+            "kind": "page",
+            "pageId": "e054f825-7083-41b0-9629-7a8f96c14af3"
+          },
+          {
+            "id": "full-12",
+            "kind": "page",
+            "pageId": "5bcccf5e-9488-4546-83bb-b27212f020fb"
+          },
+          {
+            "id": "full-13",
+            "kind": "page",
+            "pageId": "7f623c1e-8c9d-4d46-810e-ce6936cee860"
+          },
+          {
+            "id": "full-14",
+            "kind": "page",
+            "pageId": "6bed0405-aec4-479c-a1af-76f6c1649324"
+          },
+          {
+            "id": "full-15",
+            "kind": "page",
+            "pageId": "2a6b5003-d5bf-40bc-bc2c-27ec62696aee"
+          },
+          {
+            "id": "full-16",
+            "kind": "page",
+            "pageId": "2fd684a1-b1b8-4294-bf5e-5c82962f0caf"
+          },
+          {
+            "id": "full-17",
+            "kind": "page",
+            "pageId": "281ab02d-288d-45f3-b44a-0bf726f4e24f"
+          },
+          {
+            "id": "full-18",
+            "kind": "page",
+            "pageId": "c2c3bae4-6148-4001-af2a-528a000e8623"
+          },
+          {
+            "id": "full-19",
+            "kind": "page",
+            "pageId": "b5063f50-b521-4e47-bedf-1a89ea80a590"
+          },
+          {
+            "id": "full-20",
+            "kind": "page",
+            "pageId": "1143f684-f8e3-4b53-ad25-d145a48bd6c9"
+          },
+          {
+            "id": "full-21",
+            "kind": "page",
+            "pageId": "17d67dc7-79e7-4144-859c-c08d02a39586"
+          },
+          {
+            "id": "full-22",
+            "kind": "page",
+            "pageId": "78fbd4c6-08eb-4a3a-a7fd-5214763dec65"
+          }
+        ]
+      },
+      {
+        "id": "introduction-short",
+        "title": "Short introduction",
+        "story": {
+          "purpose": "Explain the shared project and one focused edit",
+          "audience": "",
+          "takeaway": ""
+        },
+        "items": [
+          {
+            "id": "short-1",
+            "kind": "page",
+            "pageId": "1df45e17-f76e-4bb9-9c39-38cb1e4c4aee"
+          },
+          {
+            "id": "short-2",
+            "kind": "page",
+            "pageId": "b6045c07-ffc0-44f4-8bf4-7949db104185"
+          },
+          {
+            "id": "short-5",
+            "kind": "page",
+            "pageId": "20a36479-d0b7-4d25-a19c-11e2c42e0466"
+          },
+          {
+            "id": "short-9",
+            "kind": "page",
+            "pageId": "74a4afae-eb08-459d-8ea2-87c53120760b"
+          },
+          {
+            "id": "short-13",
+            "kind": "page",
+            "pageId": "7f623c1e-8c9d-4d46-810e-ce6936cee860"
+          },
+          {
+            "id": "short-14",
+            "kind": "page",
+            "pageId": "6bed0405-aec4-479c-a1af-76f6c1649324"
+          },
+          {
+            "id": "short-18",
+            "kind": "page",
+            "pageId": "c2c3bae4-6148-4001-af2a-528a000e8623"
+          },
+          {
+            "id": "short-22",
+            "kind": "page",
+            "pageId": "78fbd4c6-08eb-4a3a-a7fd-5214763dec65"
+          }
+        ]
+      }
+    ]
+  }
+}

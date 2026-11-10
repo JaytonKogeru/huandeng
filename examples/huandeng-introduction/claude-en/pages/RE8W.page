@@ -1,0 +1,61 @@
+elements:
+  - elementId: title
+    elementType: text
+    role: title
+    bounds:
+      - 56
+      - 40
+      - 848
+      - 44
+    content:
+      text: Speaker notes stay with the slide
+      fontFamily: Arial
+      fontSize: 28
+      lineHeight: 1.2
+      color: "#1A1D21"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: notes-shot
+    elementType: image
+    bounds:
+      - 56
+      - 104
+      - 848
+      - 270
+    src: media/en/notes.png
+    sourceName: notes.png
+  - elementId: n1
+    elementType: text
+    bounds:
+      - 56
+      - 398
+      - 400
+      - 80
+    content:
+      text: Main notes travel with the slide into every talk that uses it.
+      fontFamily: Arial
+      fontSize: 18
+      lineHeight: 1.4
+      color: "#3A3F45"
+      align:
+        - left
+        - top
+  - elementId: n2
+    elementType: text
+    bounds:
+      - 504
+      - 398
+      - 400
+      - 80
+    content:
+      text: A Presentation can give one appearance its own notes, for its own audience.
+      fontFamily: Arial
+      fontSize: 18
+      lineHeight: 1.4
+      color: "#3A3F45"
+      align:
+        - left
+        - top
+notes: Notes page puts the slide next to a large script editor, which is where you write what you will actually say. These notes belong to the Main Slide, so they come along wherever the slide is reused. When one talk needs a different explanation, for example a shorter version for a general audience, that Presentation can attach its own notes to that appearance of the slide without touching the Main notes. The notes you are hearing now were written that way.

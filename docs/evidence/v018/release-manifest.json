@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 2,
+  "version": "0.18.0",
+  "sourceRevision": "35dfe649d450d22a0e4e3b70661be52c67eb9f7a",
+  "sourceDirty": false,
+  "builtAt": "2026-11-10T09:26:30.7136963Z",
+  "storySha256": "f09f2bf2a49bfc62bc89e76fca53c5ef3d25ee08f810d51b6285d6160cdee990",
+  "repository": "JaytonKogeru/huandeng",
+  "tag": "editor-v0.18.0",
+  "coreVersion": "2.3.1",
+  "electronVersion": "38.7.2",
+  "runtimeSourceNote": "The clean binary is built from sourceRevision. The milestone tag additionally includes documentation and public introduction examples.",
+  "editions": [
+    {
+      "id": "chatgpt-zh",
+      "authoringClient": "ChatGPT",
+      "language": "zh-CN",
+      "pages": 22,
+      "pureSectionDividers": 3,
+      "shortPresentationPages": 8,
+      "namedVersions": 22,
+      "status": "reviewed-primary"
+    },
+    {
+      "id": "chatgpt-en",
+      "authoringClient": "ChatGPT",
+      "language": "en",
+      "pages": 22,
+      "pureSectionDividers": 3,
+      "shortPresentationPages": 8,
+      "namedVersions": 22,
+      "status": "reviewed-primary"
+    },
+    {
+      "id": "deepseek-zh",
+      "authoringClient": "DeepSeek Harness",
+      "language": "zh-CN",
+      "pages": 21,
+      "pureSectionDividers": 4,
+      "shortPresentationPages": 7,
+      "namedVersions": 4,
+      "status": "native-trial-with-documented-blocker-only-continuation"
+    },
+    {
+      "id": "claude-en",
+      "authoringClient": "Claude Code",
+      "language": "en",
+      "pages": 21,
+      "pureSectionDividers": 4,
+      "namedVersions": 21,
+      "status": "native-first-submission"
+    }
+  ],
+  "validation": {
+    "unitTestsPassed": 1292,
+    "unitTestsSkipped": 1,
+    "unitFiles": 127,
+    "pluginTestsPassed": 8,
+    "powerPointVersion": "16.0",
+    "powerPointSlidesOpenedAndExported": 86,
+    "primaryPdfPagesVisuallyReviewed": 44,
+    "portableProjectsWithNoDiagnostics": 4
+  },
+  "assets": {
+    "originalPngs": 120,
+    "recommended": 37,
+    "reference": 37,
+    "diagnostic": 46
+  },
+  "artifacts": [
+    {
+      "name": "HUANDENG-Editor-0.18.0-win32-x64.zip",
+      "bytes": 236194192,
+      "sha256": "370569a7e14262e7c5aca8dced3a6224b5782acdf7abb67cea26a9fb4220a829",
+      "files": 29308
+    },
+    {
+      "name": "HUANDENG-0.18.0-plugin.zip",
+      "bytes": 210323,
+      "sha256": "64baf5c3bbdcb85af4f20c74039d6938ff00c355ab418bcb400af8b03fccec0b",
+      "files": 24
+    },
+    {
+      "name": "HUANDENG-0.18.0-native-marketplace.zip",
+      "bytes": 211772,
+      "sha256": "9386b1b348b9a648d8bf379a05e3feed60ba03e45a72fcb35092877d4d102e4c",
+      "files": 26
+    },
+    {
+      "name": "huandeng-chatgpt-zh.zip",
+      "bytes": 5325186,
+      "sha256": "925dba0d7b7e1fd20a7d73288b3a52411baa5308b2aac1f1564c9755288f5457",
+      "files": 84
+    },
+    {
+      "name": "huandeng-chatgpt-zh.pdf",
+      "bytes": 1427081,
+      "sha256": "e3f8f38a602eedce0acb729beb95fe60076ec8065114f3d45b4efc1c023e6c20"
+    },
+    {
+      "name": "huandeng-chatgpt-zh.pptx",
+      "bytes": 1557370,
+      "sha256": "dd3dd5c55cfc1cc877941e36eb99a3c54b704255da56c7564c236c2d5bc090a7"
+    },
+    {
+      "name": "huandeng-chatgpt-en.zip",
+      "bytes": 4416750,
+      "sha256": "b9d0fe2631c4b95191fcf9aa1a0c139022e85eabd29c328f99ebf2a7626a390c",
+      "files": 81
+    },
+    {
+      "name": "huandeng-chatgpt-en.pdf",
+      "bytes": 1072362,
+      "sha256": "c63d5f9eac1c097ef76ecfcbbbedbb65725bb2c8add227c53c406c1d1bbf1413"
+    },
+    {
+      "name": "huandeng-chatgpt-en.pptx",
+      "bytes": 1245527,
+      "sha256": "15a25175a6764697e78a5070a1a10e77a6ade002aaa15e602f065668b6910045"
+    },
+    {
+      "name": "huandeng-claude-en.zip",
+      "bytes": 1855064,
+      "sha256": "73a244877d3a2a53283fddfac6b06471d0ed57e5ae4b6681b485eb49eb270ff6",
+      "files": 69
+    },
+    {
+      "name": "huandeng-claude-en.pdf",
+      "bytes": 817341,
+      "sha256": "c5e2cf450dfa8ec600e395c31b926aa17565fce79d68ae7d9523956fd8cc7621"
+    },
+    {
+      "name": "huandeng-claude-en.pptx",
+      "bytes": 942621,
+      "sha256": "6aed9ef80c3bd10232730e0b8d92c752037e3f910fa8844b2100ad452cebcc4c"
+    },
+    {
+      "name": "huandeng-deepseek-zh.zip",
+      "bytes": 5466598,
+      "sha256": "5089253bde7dcedfaa5e098c420b2259348c31ff2449b092cada31d608035e12",
+      "files": 61
+    },
+    {
+      "name": "huandeng-deepseek-zh.pdf",
+      "bytes": 500008,
+      "sha256": "1c76bea8a26d3caee92cca1f0fc081180fde6357a2e02560d6977562c0eeea87"
+    },
+    {
+      "name": "huandeng-deepseek-zh.pptx",
+      "bytes": 370638,
+      "sha256": "c4650175315b8dff4ff1a39daf1daeba61b0458cdcb093d1c5481622587302db"
+    },
+    {
+      "name": "huandeng-ui-assets-v0.18.0.zip",
+      "bytes": 19970045,
+      "sha256": "9a9bf6bc0366d24a6f53b0b0ec2f5e6979bf7fcecf8025a3fe62a67196c1845d",
+      "files": 124
+    },
+    {
+      "name": "huandeng-public-evidence-v0.18.0.zip",
+      "bytes": 681161,
+      "sha256": "39b3183b343f563b3fd38802aeb614febd447cc62a0bdd1dfa698eac5096871f",
+      "files": 42
+    }
+  ]
+}

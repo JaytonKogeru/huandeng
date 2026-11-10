@@ -1,0 +1,24 @@
+pageType: section
+background:
+  type: solid
+  color: "#FFFFFF"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 64
+      - 217
+      - 832
+      - 86
+    role: title
+    content:
+      text: 一起编辑
+      fontFamily: Microsoft YaHei
+      fontSize: 34
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+notes: 人和 Agent 都在这份作品上继续编辑。

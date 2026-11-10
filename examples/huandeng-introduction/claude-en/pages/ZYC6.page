@@ -1,0 +1,20 @@
+elements:
+  - elementId: divider-title
+    elementType: text
+    role: title
+    bounds:
+      - 56
+      - 238
+      - 848
+      - 64
+    content:
+      text: Open source, open invitation
+      fontFamily: Arial
+      fontSize: 36
+      lineHeight: 1.2
+      color: "#1A1D21"
+      bold: true
+      align:
+        - left
+        - middle
+notes: Section 4. Where HUANDENG comes from, what it cannot do yet, and how to start using and improving it.

@@ -1,0 +1,87 @@
+title: 告诉下一位编辑者，这一页什么最重要
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 52
+      - 44
+      - 856
+      - 70
+    content:
+      text: "把修改意图留清楚"
+      fontSize: 28
+      fontFamily: Microsoft YaHei
+      color: "#252a2f"
+  - elementId: lead
+    elementType: text
+    bounds:
+      - 52
+      - 126
+      - 818
+      - 84
+    content:
+      text: "让下一次修改有据可循。"
+      fontSize: 18
+      fontFamily: Microsoft YaHei
+      color: "#58636b"
+  - elementId: left-heading
+    elementType: text
+    bounds:
+      - 52
+      - 266
+      - 390
+      - 40
+    content:
+      text: 目的
+      fontSize: 20
+      fontFamily: Microsoft YaHei
+      color: "#252a2f"
+  - elementId: left-body
+    elementType: text
+    bounds:
+      - 52
+      - 320
+      - 365
+      - 116
+    content:
+      text: 说明这一页应该帮助听众理解什么。
+      fontSize: 17
+      fontFamily: Microsoft YaHei
+      color: "#252a2f"
+  - elementId: right-heading
+    elementType: text
+    bounds:
+      - 518
+      - 266
+      - 390
+      - 40
+    content:
+      text: 保留
+      fontSize: 20
+      fontFamily: Microsoft YaHei
+      color: "#252a2f"
+  - elementId: right-body
+    elementType: text
+    bounds:
+      - 518
+      - 320
+      - 365
+      - 116
+    content:
+      text: 记录证据、术语，以及必须保留的具体细节。
+      fontSize: 17
+      fontFamily: Microsoft YaHei
+      color: "#252a2f"
+  - elementId: footer
+    elementType: text
+    bounds:
+      - 52
+      - 490
+      - 856
+      - 22
+    content:
+      text: HUANDENG  /  公开产品示例
+      fontSize: 11
+      fontFamily: Microsoft YaHei
+      color: "#687078"
+notes: 这是 HUANDENG 的公开产品示例，用于说明：告诉下一位编辑者，这一页什么最重要。

@@ -1,0 +1,153 @@
+elements:
+  - elementId: title
+    elementType: text
+    role: title
+    bounds:
+      - 56
+      - 40
+      - 848
+      - 44
+    content:
+      text: An agent’s edit is a proposal you can inspect
+      fontFamily: Arial
+      fontSize: 28
+      lineHeight: 1.2
+      color: "#1A1D21"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: s1
+    elementType: text
+    bounds:
+        [56,158,196,160]
+    content:
+      text: "The slide, its neighbours, every talk that uses it, and the Story layers."
+      fontFamily: Arial
+      fontSize: 18
+      lineHeight: 1.4
+      color: "#3A3F45"
+      align:
+        - left
+        - top
+  - elementId: s2
+    elementType: text
+    bounds:
+        [273,158,196,160]
+    content:
+      text: "The exact fields, files and talks the change would touch. Nothing is saved."
+      fontFamily: Arial
+      fontSize: 18
+      lineHeight: 1.4
+      color: "#3A3F45"
+      align:
+        - left
+        - top
+  - elementId: s3
+    elementType: text
+    bounds:
+        [490,158,196,160]
+    content:
+      text: "The same change goes to the writer, which checks again that nothing moved underneath it."
+      fontFamily: Arial
+      fontSize: 18
+      lineHeight: 1.4
+      color: "#3A3F45"
+      align:
+        - left
+        - top
+  - elementId: s4
+    elementType: text
+    bounds:
+        [708,158,196,160]
+    content:
+      text: "The before and after of the saved operation, then the rendered slide."
+      fontFamily: Arial
+      fontSize: 18
+      lineHeight: 1.4
+      color: "#3A3F45"
+      align:
+        - left
+        - top
+  - elementId: proof
+    elementType: text
+    bounds:
+        [56,372,848,56]
+    content:
+      text: "Every slide in this deck was made this way: previewed, applied through the Editor’s writer, reviewed and rendered."
+      fontFamily: Arial
+      fontSize: 19
+      lineHeight: 1.4
+      color: "#2D5A4A"
+      align:
+        - left
+        - top
+  - elementId: s1-head
+    elementType: text
+    bounds:
+      - 56
+      - 122
+      - 196
+      - 26
+    content:
+      text: 1  Read
+      fontFamily: Arial
+      fontSize: 19
+      lineHeight: 1.2
+      color: "#1A1D21"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: s2-head
+    elementType: text
+    bounds:
+      - 273
+      - 122
+      - 196
+      - 26
+    content:
+      text: 2  Preview
+      fontFamily: Arial
+      fontSize: 19
+      lineHeight: 1.2
+      color: "#1A1D21"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: s3-head
+    elementType: text
+    bounds:
+      - 490
+      - 122
+      - 196
+      - 26
+    content:
+      text: 3  Apply
+      fontFamily: Arial
+      fontSize: 19
+      lineHeight: 1.2
+      color: "#1A1D21"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: s4-head
+    elementType: text
+    bounds:
+      - 708
+      - 122
+      - 196
+      - 26
+    content:
+      text: 4  Review
+      fontFamily: Arial
+      fontSize: 19
+      lineHeight: 1.2
+      color: "#1A1D21"
+      bold: true
+      align:
+        - left
+        - top
+notes: "Here is what happens when you ask an agent to change a slide. First it reads: the page, the slides around it, the Presentations that use it, and the Story layers, so it knows what must be kept. Second, it previews the exact change. The preview lists every field and file that would change and every talk the slide appears in, without saving anything. Third, it applies that same change; the writer checks that the slide has not been edited by someone else in the meantime. Fourth, it reviews the saved operation, before and after, and renders the slide to look at the result. This presentation itself was produced through that loop by an agent working in the Editor."

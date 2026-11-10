@@ -1,0 +1,204 @@
+{
+  "schemaVersion": 1,
+  "deckId": "e163ed67-6824-4e65-9a04-ac71135424fb",
+  "entry": "deck.pptd",
+  "designPolicy": "huandeng-human-scientific-v1",
+  "slides": {
+    "4a342732-87b1-4e05-a31d-b6262ed62088": {
+      "shortCode": "YCD5",
+      "path": "pages/YCD5.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S1",
+      "hidden": false,
+      "designIntent": {
+        "purpose": "说明这一部分工作流的具体用途。",
+        "keep": [
+          "保留清晰的文字层级",
+          "保留可继续编辑的源内容"
+        ],
+        "requestedChange": "检查措辞与页面节奏。"
+      }
+    },
+    "06249e89-bb4a-4601-9799-91fe98495465": {
+      "shortCode": "HFDV",
+      "path": "pages/HFDV.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S2",
+      "hidden": false,
+      "designIntent": {
+        "purpose": "说明这一部分工作流的具体用途。",
+        "keep": [
+          "保留清晰的文字层级",
+          "保留可继续编辑的源内容"
+        ],
+        "requestedChange": "检查措辞与页面节奏。"
+      }
+    },
+    "f53eb84b-0807-4ad7-ab75-cc19d3b2199a": {
+      "shortCode": "TJ2W",
+      "path": "pages/TJ2W.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S3",
+      "hidden": false,
+      "designIntent": {
+        "purpose": "让下一位编辑者理解这一页的目的。",
+        "keep": [
+          "保留版式和其他所有对象",
+          "保留核心意思"
+        ],
+        "requestedChange": "缩短标题和说明。",
+        "actor": "公开产品示例",
+        "source": "HUANDENG 工作流审阅"
+      }
+    },
+    "9e55175f-739d-4e8e-8a26-8646e98216c5": {
+      "shortCode": "AHBB",
+      "path": "pages/AHBB.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S4",
+      "hidden": false,
+      "designIntent": {
+        "purpose": "说明这一部分工作流的具体用途。",
+        "keep": [
+          "保留清晰的文字层级",
+          "保留可继续编辑的源内容"
+        ],
+        "requestedChange": "检查措辞与页面节奏。"
+      }
+    },
+    "74d685a2-8380-4458-a26d-013fac414fa2": {
+      "shortCode": "SS6W",
+      "path": "pages/SS6W.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S5",
+      "hidden": false,
+      "designIntent": {
+        "purpose": "说明这一部分工作流的具体用途。",
+        "keep": [
+          "保留清晰的文字层级",
+          "保留可继续编辑的源内容"
+        ],
+        "requestedChange": "检查措辞与页面节奏。"
+      }
+    },
+    "f2503b60-741b-48c7-9101-d4faabc1ff43": {
+      "shortCode": "NVWD",
+      "path": "pages/NVWD.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S6",
+      "hidden": false,
+      "designIntent": {
+        "purpose": "说明这一部分工作流的具体用途。",
+        "keep": [
+          "保留清晰的文字层级",
+          "保留可继续编辑的源内容"
+        ],
+        "requestedChange": "检查措辞与页面节奏。"
+      }
+    }
+  },
+  "project": {
+    "schemaVersion": 1,
+    "mainStory": {
+      "purpose": "介绍可以持续编辑的幻灯片工作方式。",
+      "audience": "制作和审阅演示文稿的人。",
+      "takeaway": "把源内容、上下文和审阅过程留在一起。"
+    },
+    "sections": [
+      {
+        "id": "section-0",
+        "title": "一份工作文档",
+        "story": {
+          "purpose": "介绍可以持续编辑的幻灯片工作方式。",
+          "audience": "制作和审阅演示文稿的人。",
+          "takeaway": "把源内容、上下文和审阅过程留在一起。"
+        },
+        "pageIds": [
+          "4a342732-87b1-4e05-a31d-b6262ed62088",
+          "06249e89-bb4a-4601-9799-91fe98495465"
+        ],
+        "startPageId": "4a342732-87b1-4e05-a31d-b6262ed62088"
+      },
+      {
+        "id": "section-1",
+        "title": "一起编辑",
+        "story": {
+          "purpose": "介绍可以持续编辑的幻灯片工作方式。",
+          "audience": "制作和审阅演示文稿的人。",
+          "takeaway": "把源内容、上下文和审阅过程留在一起。"
+        },
+        "pageIds": [
+          "f53eb84b-0807-4ad7-ab75-cc19d3b2199a",
+          "9e55175f-739d-4e8e-8a26-8646e98216c5"
+        ],
+        "startPageId": "f53eb84b-0807-4ad7-ab75-cc19d3b2199a"
+      },
+      {
+        "id": "section-2",
+        "title": "版本与交付",
+        "story": {
+          "purpose": "介绍可以持续编辑的幻灯片工作方式。",
+          "audience": "制作和审阅演示文稿的人。",
+          "takeaway": "把源内容、上下文和审阅过程留在一起。"
+        },
+        "pageIds": [
+          "74d685a2-8380-4458-a26d-013fac414fa2",
+          "f2503b60-741b-48c7-9101-d4faabc1ff43"
+        ],
+        "startPageId": "74d685a2-8380-4458-a26d-013fac414fa2"
+      }
+    ],
+    "presentations": [
+      {
+        "id": "quick-introduction",
+        "title": "简短介绍",
+        "story": {
+          "purpose": "用三页走一遍产品工作流。",
+          "audience": "初次了解产品的人",
+          "takeaway": "从同一份可编辑内容开始。"
+        },
+        "items": [
+          {
+            "id": "intro-0",
+            "kind": "page",
+            "pageId": "4a342732-87b1-4e05-a31d-b6262ed62088"
+          },
+          {
+            "id": "intro-2",
+            "kind": "page",
+            "pageId": "f53eb84b-0807-4ad7-ab75-cc19d3b2199a"
+          },
+          {
+            "id": "intro-5",
+            "kind": "page",
+            "pageId": "f2503b60-741b-48c7-9101-d4faabc1ff43"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "sourceProject": "Public-Evidence-EN",
+  "operations": [
+    {
+      "step": "move",
+      "operationId": "77ab1b63-768f-4b33-97c8-1b4ec176abb8",
+      "operations": [
+        {
+          "op": "page.move",
+          "pageId": "70ecfcad-c22c-40c3-aaa8-3a61f57c8cea",
+          "afterPageId": "3d0ef362-f8e4-4bd2-95cb-5e9181997a60"
+        }
+      ]
+    },
+    {
+      "step": "undo",
+      "operationId": "cd0cb492-063e-4af3-8e0c-5a54f5aad17e",
+      "operations": [
+        {
+          "op": "history.revert",
+          "operationId": "77ab1b63-768f-4b33-97c8-1b4ec176abb8"
+        }
+      ]
+    }
+  ]
+}

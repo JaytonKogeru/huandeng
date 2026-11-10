@@ -1,0 +1,20 @@
+elements:
+  - elementId: divider-title
+    elementType: text
+    role: title
+    bounds:
+      - 56
+      - 238
+      - 848
+      - 64
+    content:
+      text: One source, many talks
+      fontFamily: Arial
+      fontSize: 36
+      lineHeight: 1.2
+      color: "#1A1D21"
+      bold: true
+      align:
+        - left
+        - middle
+notes: "Section 1. First, the core model: one canonical set of slides, several presentations built from it, and the Story that explains why each slide exists."

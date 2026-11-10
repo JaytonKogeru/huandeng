@@ -1,0 +1,87 @@
+title: Return to a named version
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 52
+      - 44
+      - 856
+      - 70
+    content:
+      text: Return to a named version
+      fontSize: 28
+      fontFamily: Arial
+      color: "#252a2f"
+  - elementId: lead
+    elementType: text
+    bounds:
+      - 52
+      - 126
+      - 818
+      - 84
+    content:
+      text: Compare what changed and recover only the page you need.
+      fontSize: 19
+      fontFamily: Arial
+      color: "#58636b"
+  - elementId: left-heading
+    elementType: text
+    bounds:
+      - 52
+      - 266
+      - 390
+      - 40
+    content:
+      text: Named versions
+      fontSize: 22
+      fontFamily: Arial
+      color: "#252a2f"
+  - elementId: left-body
+    elementType: text
+    bounds:
+      - 52
+      - 320
+      - 365
+      - 116
+    content:
+      text: Save a meaningful point before making a larger change.
+      fontSize: 17
+      fontFamily: Arial
+      color: "#252a2f"
+  - elementId: right-heading
+    elementType: text
+    bounds:
+      - 518
+      - 266
+      - 390
+      - 40
+    content:
+      text: Focused restore
+      fontSize: 22
+      fontFamily: Arial
+      color: "#252a2f"
+  - elementId: right-body
+    elementType: text
+    bounds:
+      - 518
+      - 320
+      - 365
+      - 116
+    content:
+      text: Restore one page while retaining the work around it.
+      fontSize: 17
+      fontFamily: Arial
+      color: "#252a2f"
+  - elementId: footer
+    elementType: text
+    bounds:
+      - 52
+      - 490
+      - 856
+      - 22
+    content:
+      text: HUANDENG  /  Public product example
+      fontSize: 11
+      fontFamily: Arial
+      color: "#687078"
+notes: Public HUANDENG product example. This slide explains return to a named version.

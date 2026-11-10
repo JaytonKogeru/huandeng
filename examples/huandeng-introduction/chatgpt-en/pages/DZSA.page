@@ -1,0 +1,100 @@
+pageType: content
+background:
+  type: solid
+  color: "#FFFFFF"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 64
+      - 45
+      - 832
+      - 55
+    role: title
+    content:
+      text: Start with a page you can explain
+      fontFamily: Arial
+      fontSize: 30
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: footer
+    elementType: text
+    bounds:
+      - 64
+      - 506
+      - 400
+      - 16
+    content:
+      text: HUANDENG    /    10
+      fontFamily: Arial
+      fontSize: 10
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: question
+    elementType: text
+    bounds:
+      - 64
+      - 156
+      - 820
+      - 118
+    content:
+      text: |-
+        What should the audience
+        understand after this page?
+      fontFamily: Arial
+      fontSize: 29
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.4
+    role: heading
+  - elementId: body
+    elementType: text
+    bounds:
+      - 64
+      - 341
+      - 820
+      - 83
+    content:
+      text: |-
+        Place the evidence before choosing the layout.
+        When one sentence is enough, leave it there.
+      fontFamily: Arial
+      fontSize: 19
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.6
+  - elementId: frame
+    elementType: text
+    bounds:
+      - 64
+      - 455
+      - 820
+      - 27
+    content:
+      text: Frame a content page and a divider before expanding the deck.
+      fontFamily: Arial
+      fontSize: 15
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+notes: |-
+  Write the purpose, place the evidence and state what the audience should take away. Establish an actual content page and a Section divider before expanding the deck. The frame is an editable page with real object boundaries.
+
+  Source: actual HUANDENG Editor v0.18 public example and project feature contracts. https://github.com/JaytonKogeru/huandeng; packages/core/src/pptd/agent-guide.ts; docs/SPEC-V018.md. Screenshot provenance is retained with the project assets.

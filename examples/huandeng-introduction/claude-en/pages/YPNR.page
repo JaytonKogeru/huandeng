@@ -1,0 +1,128 @@
+elements:
+  - elementId: title
+    elementType: text
+    role: title
+    bounds:
+      - 56
+      - 40
+      - 848
+      - 44
+    content:
+      text: Try it on your own deck, then help shape it
+      fontFamily: Arial
+      fontSize: 28
+      lineHeight: 1.2
+      color: "#1A1D21"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: run-head
+    elementType: text
+    bounds:
+      - 56
+      - 116
+      - 440
+      - 26
+    content:
+      text: Run from source
+      fontFamily: Arial
+      fontSize: 19
+      lineHeight: 1.2
+      color: "#1A1D21"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: run-code
+    elementType: text
+    bounds:
+      - 56
+      - 152
+      - 440
+      - 150
+    content:
+      text: |-
+        git clone https://github.com/JaytonKogeru/huandeng
+        cd huandeng
+        corepack pnpm install --frozen-lockfile
+        corepack pnpm --filter @open-slide/core build
+        corepack pnpm desktop
+      fontFamily: Courier New
+      fontSize: 14
+      lineHeight: 1.6
+      color: "#1A1D21"
+      align:
+        - left
+        - top
+  - elementId: run-req
+    elementType: text
+    bounds:
+        [56,280,440,22]
+    content:
+      text: Needs Node 22.12 or later and pnpm 10.17.
+      fontFamily: Arial
+      fontSize: 13
+      lineHeight: 1.3
+      color: "#6B7178"
+      align:
+        - left
+        - top
+  - elementId: help-head
+    elementType: text
+    bounds:
+      - 536
+      - 116
+      - 368
+      - 26
+    content:
+      text: Ways to contribute
+      fontFamily: Arial
+      fontSize: 19
+      lineHeight: 1.2
+      color: "#1A1D21"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: help-body
+    elementType: text
+    bounds:
+      - 536
+      - 152
+      - 368
+      - 240
+    content:
+      text: |-
+        Open an issue where the workflow breaks on a real deck.
+
+        Connect your agent and report what it got wrong.
+
+        Take on a listed gap, such as PPTX import or a presenter view.
+
+        Run typecheck, unit tests and pnpm check before a pull request.
+      fontFamily: Arial
+      fontSize: 17
+      lineHeight: 1.35
+      color: "#3A3F45"
+      align:
+        - left
+        - top
+  - elementId: repo
+    elementType: text
+    bounds:
+      - 56
+      - 452
+      - 848
+      - 30
+    content:
+      text: github.com/JaytonKogeru/huandeng
+      fontFamily: Arial
+      fontSize: 20
+      lineHeight: 1.3
+      color: "#2D5A4A"
+      bold: true
+      align:
+        - left
+        - top
+notes: "To try HUANDENG from source you need Node 22.12 or later and pnpm through corepack. Clone the repository, install with the frozen lockfile, build the core package, and start the desktop app. Then open or create a project and try it on a deck you actually maintain; that is where the useful feedback comes from. If you use an agent, the Agent setup panel generates the connection for your client. Contributions of every size help: an issue describing where the workflow broke, a report of an agent mistake with the exact operation it produced, or work on one of the gaps from the previous slide. Before opening a pull request, run the type check, the unit tests and the formatting check. The repository is at github.com/JaytonKogeru/huandeng."

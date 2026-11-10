@@ -1,0 +1,584 @@
+{
+  "schemaVersion": 1,
+  "projectTitle": "HUANDENG 工作流介绍",
+  "edition": "ChatGPT zh",
+  "capturedAt": "2026-11-10",
+  "contentPolicy": "Public synthetic product example; no private source files or accounts.",
+  "sourceCodeRevision": "35dfe649d450d22a0e4e3b70661be52c67eb9f7a",
+  "items": [
+    {
+      "path": "media/imported/64d91b7985af86f6634a4545d333921203781bfb0262752cfdbc6af7557c609d.png",
+      "sourceFile": "zh-CN-edit-1920.png",
+      "sha256": "64d91b7985af86f6634a4545d333921203781bfb0262752cfdbc6af7557c609d",
+      "pixelSize": [
+        3840,
+        2160
+      ],
+      "locale": "zh-CN",
+      "authoredSlideLanguage": "en",
+      "view": "edit",
+      "captureMethod": "Actual production Editor DOM, native DPR2 full windows and DPR4 task captures; no bitmap enlargement.",
+      "status": "diagnostic-mixed-language",
+      "source": "Actual HUANDENG production editor DOM using isolated public product example",
+      "currentUses": [],
+      "retention": "Earlier imported original retained for edit history"
+    },
+    {
+      "path": "media/imported/cf4c918b4e67354c77ec9207e554a34b09b620065b603cbe80bb3204aa9e11c9.png",
+      "sourceFile": "zh-CN-sections-1920.png",
+      "sha256": "cf4c918b4e67354c77ec9207e554a34b09b620065b603cbe80bb3204aa9e11c9",
+      "pixelSize": [
+        3840,
+        2160
+      ],
+      "locale": "zh-CN",
+      "authoredSlideLanguage": "en",
+      "view": "sections",
+      "captureMethod": "Actual production Editor DOM, native DPR2 full windows and DPR4 task captures; no bitmap enlargement.",
+      "status": "diagnostic-mixed-language",
+      "source": "Actual HUANDENG production editor DOM using isolated public product example",
+      "currentUses": [],
+      "retention": "Earlier imported original retained for edit history"
+    },
+    {
+      "path": "media/imported/1c67421d614d1cd688a194717d7c436a987576a419f7545697e8241cc37e7c11.png",
+      "sourceFile": "zh-CN-notes-1920.png",
+      "sha256": "1c67421d614d1cd688a194717d7c436a987576a419f7545697e8241cc37e7c11",
+      "pixelSize": [
+        3840,
+        2160
+      ],
+      "locale": "zh-CN",
+      "authoredSlideLanguage": "en",
+      "view": "notes",
+      "captureMethod": "Actual production Editor DOM, native DPR2 full windows and DPR4 task captures; no bitmap enlargement.",
+      "status": "diagnostic-mixed-language",
+      "source": "Actual HUANDENG production editor DOM using isolated public product example",
+      "currentUses": [],
+      "retention": "Earlier imported original retained for edit history"
+    },
+    {
+      "path": "media/imported/b6630b8a960fdbcf800d8b8636f8fb64d1a2f02d44e7426d29e1b353cacb6b47.png",
+      "sourceFile": "zh-CN-browse-1920.png",
+      "sha256": "b6630b8a960fdbcf800d8b8636f8fb64d1a2f02d44e7426d29e1b353cacb6b47",
+      "pixelSize": [
+        3840,
+        2160
+      ],
+      "locale": "zh-CN",
+      "authoredSlideLanguage": "en",
+      "view": "browse",
+      "captureMethod": "Actual production Editor DOM, native DPR2 full windows and DPR4 task captures; no bitmap enlargement.",
+      "status": "diagnostic-mixed-language",
+      "source": "Actual HUANDENG production editor DOM using isolated public product example",
+      "currentUses": [],
+      "retention": "Earlier imported original retained for edit history"
+    },
+    {
+      "path": "media/imported/e077ff89cbc9d28ddcbb6a4b4f406606f269055a256ca00e3a6b2324168f3248.png",
+      "sourceFile": "zh-CN-outline-1920.png",
+      "sha256": "e077ff89cbc9d28ddcbb6a4b4f406606f269055a256ca00e3a6b2324168f3248",
+      "pixelSize": [
+        3840,
+        2160
+      ],
+      "locale": "zh-CN",
+      "authoredSlideLanguage": "en",
+      "view": "outline",
+      "captureMethod": "Actual production Editor DOM, native DPR2 full windows and DPR4 task captures; no bitmap enlargement.",
+      "status": "diagnostic-mixed-language",
+      "source": "Actual HUANDENG production editor DOM using isolated public product example",
+      "currentUses": [],
+      "retention": "Earlier imported original retained for edit history"
+    },
+    {
+      "path": "media/imported/38a9505e4648496a3fb590ef2cabbc51f978add6cffe9c6134b1ba1c38f69ac2.png",
+      "sourceFile": "zh-CN-history-1920.png",
+      "sha256": "38a9505e4648496a3fb590ef2cabbc51f978add6cffe9c6134b1ba1c38f69ac2",
+      "pixelSize": [
+        3840,
+        2160
+      ],
+      "locale": "zh-CN",
+      "authoredSlideLanguage": "en",
+      "view": "history",
+      "captureMethod": "Actual production Editor DOM, native DPR2 full windows and DPR4 task captures; no bitmap enlargement.",
+      "status": "diagnostic-empty-state",
+      "source": "Actual HUANDENG production editor DOM using isolated public product example",
+      "currentUses": [],
+      "retention": "Earlier imported original retained for edit history"
+    },
+    {
+      "path": "media/imported/c36ad119b97a82db8ae3dde5b04fd9853151f34ab4ed8b49cec5352594775961.png",
+      "sourceFile": "zh-CN-native-edit-overview-2x.png",
+      "sha256": "c36ad119b97a82db8ae3dde5b04fd9853151f34ab4ed8b49cec5352594775961",
+      "pixelSize": [
+        3840,
+        2160
+      ],
+      "locale": "zh-CN",
+      "authoredSlideLanguage": "zh-CN",
+      "view": "edit-overview",
+      "captureMethod": "Actual production Editor DOM, native DPR2 full windows and DPR4 task captures; no bitmap enlargement.",
+      "status": "pixel-reviewed-final",
+      "source": "Actual Chinese-authored public project, shared-writer changes, native device-pixel capture",
+      "currentUses": [
+        {
+          "position": 1,
+          "pageId": "9ef9c0c5-5876-4d93-be42-cb3a76c2160c",
+          "elementId": "editor-overview",
+          "bounds": [
+            334,
+            147,
+            562,
+            316
+          ],
+          "crop": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        }
+      ],
+      "retention": "Current presentation asset"
+    },
+    {
+      "path": "media/imported/afe675bef8594c3328129632115e6befdec36ffc2a7ad347cf1d754662ee6d07.png",
+      "sourceFile": "zh-CN-native-project-sequences-4x.png",
+      "sha256": "afe675bef8594c3328129632115e6befdec36ffc2a7ad347cf1d754662ee6d07",
+      "pixelSize": [
+        1596,
+        1216
+      ],
+      "locale": "zh-CN",
+      "authoredSlideLanguage": "zh-CN",
+      "view": "project-sequences",
+      "captureMethod": "Actual production Editor DOM, native DPR2 full windows and DPR4 task captures; no bitmap enlargement.",
+      "status": "pixel-reviewed-final",
+      "source": "Actual Chinese-authored public project, shared-writer changes, native device-pixel capture",
+      "currentUses": [
+        {
+          "position": 5,
+          "pageId": "27ede9c2-7d61-4053-bd3f-8b8f0db722c0",
+          "elementId": "sections",
+          "bounds": [
+            440,
+            130,
+            456,
+            312
+          ],
+          "crop": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        }
+      ],
+      "retention": "Current presentation asset"
+    },
+    {
+      "path": "media/imported/56ef1c090dfe6c7ef847c12ea2f9ed6ef7a90dfd51efd5d5cc23f4e542356b58.png",
+      "sourceFile": "zh-CN-identity-before-4x.png",
+      "sha256": "56ef1c090dfe6c7ef847c12ea2f9ed6ef7a90dfd51efd5d5cc23f4e542356b58",
+      "pixelSize": [
+        1440,
+        180
+      ],
+      "locale": "zh-CN",
+      "authoredSlideLanguage": "zh-CN",
+      "view": "identity-before",
+      "captureMethod": "Actual production Editor DOM, native DPR2 full windows and DPR4 task captures; no bitmap enlargement.",
+      "status": "pixel-reviewed-final",
+      "source": "Actual public project task; original device pixels",
+      "currentUses": [
+        {
+          "position": 6,
+          "pageId": "8bae32f7-ba18-4684-9cfc-eaa87f521680",
+          "elementId": "identity",
+          "bounds": [
+            160,
+            170,
+            720,
+            60
+          ],
+          "crop": {
+            "left": 0,
+            "right": 0,
+            "top": 0.3333333333333333,
+            "bottom": 0
+          }
+        }
+      ],
+      "retention": "Current presentation asset"
+    },
+    {
+      "path": "media/imported/99a0f26c40f623b347b71bf756622aec243fecbc66a1b031013d57de71448afe.png",
+      "sourceFile": "zh-CN-identity-after-4x.png",
+      "sha256": "99a0f26c40f623b347b71bf756622aec243fecbc66a1b031013d57de71448afe",
+      "pixelSize": [
+        1440,
+        180
+      ],
+      "locale": "zh-CN",
+      "authoredSlideLanguage": "zh-CN",
+      "view": "identity-after",
+      "captureMethod": "Actual production Editor DOM, native DPR2 full windows and DPR4 task captures; no bitmap enlargement.",
+      "status": "pixel-reviewed-final",
+      "source": "Actual public project task; original device pixels",
+      "currentUses": [
+        {
+          "position": 6,
+          "pageId": "8bae32f7-ba18-4684-9cfc-eaa87f521680",
+          "elementId": "identity-after",
+          "bounds": [
+            160,
+            290,
+            720,
+            60
+          ],
+          "crop": {
+            "left": 0,
+            "right": 0,
+            "top": 0.3333333333333333,
+            "bottom": 0
+          }
+        }
+      ],
+      "retention": "Current presentation asset"
+    },
+    {
+      "path": "media/imported/a2e5fe82bdef7371736c75dad7d686f7e06abc68b160063d44fef402651defb0.png",
+      "sourceFile": "zh-CN-native-focused-story-4x.png",
+      "sha256": "a2e5fe82bdef7371736c75dad7d686f7e06abc68b160063d44fef402651defb0",
+      "pixelSize": [
+        1196,
+        1060
+      ],
+      "locale": "zh-CN",
+      "authoredSlideLanguage": "zh-CN",
+      "view": "focused-story",
+      "captureMethod": "Actual production Editor DOM, native DPR2 full windows and DPR4 task captures; no bitmap enlargement.",
+      "status": "pixel-reviewed-final",
+      "source": "Actual Chinese-authored public project, shared-writer changes, native device-pixel capture",
+      "currentUses": [
+        {
+          "position": 7,
+          "pageId": "0ad112fa-6eb3-4824-b25a-eddad00367ca",
+          "elementId": "notes-context",
+          "bounds": [
+            516,
+            128,
+            380,
+            340
+          ],
+          "crop": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        }
+      ],
+      "retention": "Current presentation asset"
+    },
+    {
+      "path": "media/imported/15179dfcf6c63e3accc20d483a17c8c608464c9b0745ac64c478d54c65e571fc.png",
+      "sourceFile": "zh-CN-native-edit-focused-2x.png",
+      "sha256": "15179dfcf6c63e3accc20d483a17c8c608464c9b0745ac64c478d54c65e571fc",
+      "pixelSize": [
+        3840,
+        2160
+      ],
+      "locale": "zh-CN",
+      "authoredSlideLanguage": "zh-CN",
+      "view": "edit-focused",
+      "captureMethod": "Actual production Editor DOM, native DPR2 full windows and DPR4 task captures; no bitmap enlargement.",
+      "status": "pixel-reviewed-final",
+      "source": "Actual Chinese-authored public project, shared-writer changes, native device-pixel capture",
+      "currentUses": [
+        {
+          "position": 9,
+          "pageId": "6cddb3b7-3e8c-4e43-9ab0-7f924b7e5cb2",
+          "elementId": "workspace",
+          "bounds": [
+            64,
+            126,
+            832,
+            337
+          ],
+          "crop": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0.28
+          }
+        }
+      ],
+      "retention": "Current presentation asset"
+    },
+    {
+      "path": "media/imported/0f856d8826c729d24034a9b44834bca1de9424bc8a2090c9d12e3da901ec571a.png",
+      "sourceFile": "zh-CN-native-browse-reading-4x.png",
+      "sha256": "0f856d8826c729d24034a9b44834bca1de9424bc8a2090c9d12e3da901ec571a",
+      "pixelSize": [
+        2192,
+        1220
+      ],
+      "locale": "zh-CN",
+      "authoredSlideLanguage": "zh-CN",
+      "view": "browse-reading",
+      "captureMethod": "Actual production Editor DOM, native DPR2 full windows and DPR4 task captures; no bitmap enlargement.",
+      "status": "pixel-reviewed-final",
+      "source": "Actual Chinese-authored public project, shared-writer changes, native device-pixel capture",
+      "currentUses": [
+        {
+          "position": 11,
+          "pageId": "ecfb8e27-ee8a-44fb-9ae5-252c6f53ae7e",
+          "elementId": "browse",
+          "bounds": [
+            64,
+            143,
+            398,
+            286
+          ],
+          "crop": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        }
+      ],
+      "retention": "Current presentation asset"
+    },
+    {
+      "path": "media/imported/f5455f5cada808cb66355a623d9d2e07d5e8645a0e4cdd0ecc97220c7ab96bd5.png",
+      "sourceFile": "zh-CN-native-outline-reading-4x.png",
+      "sha256": "f5455f5cada808cb66355a623d9d2e07d5e8645a0e4cdd0ecc97220c7ab96bd5",
+      "pixelSize": [
+        4448,
+        1480
+      ],
+      "locale": "zh-CN",
+      "authoredSlideLanguage": "zh-CN",
+      "view": "outline-reading",
+      "captureMethod": "Actual production Editor DOM, native DPR2 full windows and DPR4 task captures; no bitmap enlargement.",
+      "status": "pixel-reviewed-final",
+      "source": "Actual Chinese-authored public project, shared-writer changes, native device-pixel capture",
+      "currentUses": [
+        {
+          "position": 11,
+          "pageId": "ecfb8e27-ee8a-44fb-9ae5-252c6f53ae7e",
+          "elementId": "outline",
+          "bounds": [
+            500,
+            140,
+            396,
+            300
+          ],
+          "crop": {
+            "left": 0,
+            "right": 0.56,
+            "top": 0,
+            "bottom": 0
+          }
+        }
+      ],
+      "retention": "Current presentation asset"
+    },
+    {
+      "path": "media/imported/4746757e07edcb47fb7a31244b81eff453e6dd771bd3411daca09d04eedd6af7.png",
+      "sourceFile": "zh-CN-native-asset-resolution-4x.png",
+      "sha256": "4746757e07edcb47fb7a31244b81eff453e6dd771bd3411daca09d04eedd6af7",
+      "pixelSize": [
+        1148,
+        600
+      ],
+      "locale": "zh-CN",
+      "authoredSlideLanguage": "zh-CN",
+      "view": "asset-resolution",
+      "captureMethod": "Actual production Editor DOM, native DPR2 full windows and DPR4 task captures; no bitmap enlargement.",
+      "status": "pixel-reviewed-final",
+      "source": "Actual Chinese-authored public project, shared-writer changes, native device-pixel capture",
+      "currentUses": [
+        {
+          "position": 12,
+          "pageId": "be146d47-06e0-432f-89ba-58fcce1dfa66",
+          "elementId": "navigation-detail",
+          "bounds": [
+            64,
+            154,
+            464,
+            270
+          ],
+          "crop": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        }
+      ],
+      "retention": "Current presentation asset"
+    },
+    {
+      "path": "media/imported/fdcacc35c15b7a7b76d70ef9f713c605c20a7e8ca450703b6343ac8bc722bd3e.png",
+      "sourceFile": "zh-CN-native-edit-before-4x.png",
+      "sha256": "fdcacc35c15b7a7b76d70ef9f713c605c20a7e8ca450703b6343ac8bc722bd3e",
+      "pixelSize": [
+        3152,
+        1780
+      ],
+      "locale": "zh-CN",
+      "authoredSlideLanguage": "zh-CN",
+      "view": "edit-before",
+      "captureMethod": "Actual production Editor DOM, native DPR2 full windows and DPR4 task captures; no bitmap enlargement.",
+      "status": "pixel-reviewed-final",
+      "source": "Actual Chinese-authored public project, shared-writer changes, native device-pixel capture",
+      "currentUses": [
+        {
+          "position": 14,
+          "pageId": "6dc52ab1-1167-4e97-b63a-ed7bd15456ce",
+          "elementId": "edit-before",
+          "bounds": [
+            144,
+            170,
+            752,
+            121
+          ],
+          "crop": {
+            "left": 0.04,
+            "right": 0.04,
+            "top": 0.055,
+            "bottom": 0.69
+          }
+        }
+      ],
+      "retention": "Current presentation asset"
+    },
+    {
+      "path": "media/imported/1590b6d7b420e2502709c533628c4fc0a0ef2278c8b6798d1f6fa8272f9059fc.png",
+      "sourceFile": "zh-CN-native-edit-after-4x.png",
+      "sha256": "1590b6d7b420e2502709c533628c4fc0a0ef2278c8b6798d1f6fa8272f9059fc",
+      "pixelSize": [
+        3152,
+        1780
+      ],
+      "locale": "zh-CN",
+      "authoredSlideLanguage": "zh-CN",
+      "view": "edit-after",
+      "captureMethod": "Actual production Editor DOM, native DPR2 full windows and DPR4 task captures; no bitmap enlargement.",
+      "status": "pixel-reviewed-final",
+      "source": "Actual Chinese-authored public project, shared-writer changes, native device-pixel capture",
+      "currentUses": [
+        {
+          "position": 14,
+          "pageId": "6dc52ab1-1167-4e97-b63a-ed7bd15456ce",
+          "elementId": "edit-after",
+          "bounds": [
+            144,
+            330,
+            752,
+            121
+          ],
+          "crop": {
+            "left": 0.04,
+            "right": 0.04,
+            "top": 0.055,
+            "bottom": 0.69
+          }
+        }
+      ],
+      "retention": "Current presentation asset"
+    },
+    {
+      "path": "media/imported/4d42e5f1558e1b2f448e5b87abd12e17eb56b62c64853eda8b401cc93ad67b4b.png",
+      "sourceFile": "zh-CN-native-history-change-4x.png",
+      "sha256": "4d42e5f1558e1b2f448e5b87abd12e17eb56b62c64853eda8b401cc93ad67b4b",
+      "pixelSize": [
+        4608,
+        3028
+      ],
+      "locale": "zh-CN",
+      "authoredSlideLanguage": "zh-CN",
+      "view": "history-change",
+      "captureMethod": "Actual production Editor DOM, native DPR2 full windows and DPR4 task captures; no bitmap enlargement.",
+      "status": "pixel-reviewed-final",
+      "source": "Actual Chinese-authored public project, shared-writer changes, native device-pixel capture",
+      "currentUses": [],
+      "retention": "Earlier imported original retained for edit history"
+    },
+    {
+      "path": "media/imported/90224b9de26dfd919fa6c4ee7d57d55e7662100ddc9d7838b6123a6610640c2d.png",
+      "sourceFile": "zh-CN-native-delivery-toolbar-4x.png",
+      "sha256": "90224b9de26dfd919fa6c4ee7d57d55e7662100ddc9d7838b6123a6610640c2d",
+      "pixelSize": [
+        1796,
+        192
+      ],
+      "locale": "zh-CN",
+      "authoredSlideLanguage": "zh-CN",
+      "view": "delivery-toolbar",
+      "captureMethod": "Actual production Editor DOM, native DPR2 full windows and DPR4 task captures; no bitmap enlargement.",
+      "status": "pixel-reviewed-final",
+      "source": "Actual Chinese-authored public project, shared-writer changes, native device-pixel capture",
+      "currentUses": [
+        {
+          "position": 20,
+          "pageId": "de7edaee-e41d-4814-97de-746faab95a73",
+          "elementId": "delivery-toolbar",
+          "bounds": [
+            64,
+            175,
+            832,
+            85
+          ],
+          "crop": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        }
+      ],
+      "retention": "Current presentation asset"
+    },
+    {
+      "path": "media/imported/21fabc424f513dd09dd873134d8604b4d8518b2af74008945f693fd86ffeb7b8.png",
+      "sourceFile": "zh-CN-native-operation-changes-4x.png",
+      "sha256": "21fabc424f513dd09dd873134d8604b4d8518b2af74008945f693fd86ffeb7b8",
+      "pixelSize": [
+        1152,
+        688
+      ],
+      "locale": "zh-CN",
+      "authoredSlideLanguage": "zh-CN",
+      "view": "operation-changes",
+      "captureMethod": "Actual production Editor DOM, native DPR2 full windows and DPR4 task captures; no bitmap enlargement.",
+      "status": "pixel-reviewed-final",
+      "source": "Actual saved two-text edit, selected by operation receipt; read-only UI preview",
+      "currentUses": [
+        {
+          "position": 15,
+          "pageId": "76532a33-1809-47e4-b900-249c48d94047",
+          "elementId": "history",
+          "bounds": [
+            64,
+            145,
+            568,
+            310
+          ],
+          "crop": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0
+          }
+        }
+      ],
+      "retention": "Current presentation asset"
+    }
+  ]
+}

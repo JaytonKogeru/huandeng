@@ -1,0 +1,25 @@
+{
+  "sourceProject": "Public-Evidence-EN",
+  "operationId": "69b4e2f2-cc4b-436c-8120-8b94c1599449",
+  "requestId": "77c0fca0-7d17-48be-adb1-4f14493a9b23",
+  "actor": "HUANDENG public workflow example",
+  "operations": [
+    {
+      "op": "element.patch",
+      "pageId": "bcce84a7-3bb7-4444-b06b-f9606efd2f4c",
+      "elementId": "title",
+      "set": {
+        "content.text": "Leave a clear brief"
+      }
+    },
+    {
+      "op": "element.patch",
+      "pageId": "bcce84a7-3bb7-4444-b06b-f9606efd2f4c",
+      "elementId": "lead",
+      "set": {
+        "content.text": "Keep the purpose beside the page."
+      }
+    }
+  ],
+  "sourceReceiptSha256": "b25bde497d08d39418347752bb41575695d341208157489193ec2aae56b3c252"
+}

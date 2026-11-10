@@ -1,0 +1,98 @@
+pageType: content
+background:
+  type: solid
+  color: "#FFFFFF"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 64
+      - 45
+      - 832
+      - 55
+    role: title
+    content:
+      text: HUANDENG
+      fontFamily: Microsoft YaHei
+      fontSize: 28
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: footer
+    elementType: text
+    bounds:
+      - 64
+      - 506
+      - 400
+      - 16
+    content:
+      text: HUANDENG    /    22
+      fontFamily: Microsoft YaHei
+      fontSize: 10
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: closing
+    elementType: text
+    bounds:
+      - 64
+      - 162
+      - 832
+      - 72
+    content:
+      text: 把作品继续做好。
+      fontFamily: Microsoft YaHei
+      fontSize: 28
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+    role: heading
+  - elementId: repo
+    elementType: text
+    bounds:
+      - 64
+      - 293
+      - 832
+      - 48
+    content:
+      text: github.com/JaytonKogeru/huandeng
+      fontFamily: Microsoft YaHei
+      fontSize: 20
+      color: "#355E4B"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: thanks
+    elementType: text
+    bounds:
+      - 64
+      - 397
+      - 832
+      - 68
+    content:
+      text: |-
+        基于 open-slide 等开源工作。
+        许可证与第三方致谢见仓库。
+      fontFamily: Microsoft YaHei
+      fontSize: 16
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+notes: |-
+  项目基于 open-slide 等开源工作继续开发。完整许可证和第三方说明保留在仓库中。本介绍使用真实 HUANDENG 截图与可编辑文本。仓库的公开状态由所有者管理。
+
+  Source: actual HUANDENG Editor v0.18 public example and project feature contracts. https://github.com/JaytonKogeru/huandeng; packages/core/src/pptd/agent-guide.ts; docs/SPEC-V018.md. Screenshot provenance is retained with the project assets.

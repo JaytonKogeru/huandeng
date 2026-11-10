@@ -1,0 +1,83 @@
+pageType: content
+background:
+  type: solid
+  color: "#FFFFFF"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 64
+      - 45
+      - 832
+      - 55
+    role: title
+    content:
+      text: A different position, the same slide
+      fontFamily: Arial
+      fontSize: 30
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: footer
+    elementType: text
+    bounds:
+      - 64
+      - 506
+      - 400
+      - 16
+    content:
+      text: HUANDENG    /    06
+      fontFamily: Arial
+      fontSize: 10
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: identity
+    elementType: image
+    src: "media/imported/4b4475913c7e4538c9b76f47056e1edca6405a8636d7fd7c591309a373101e19.png"
+    sourceName: "en-identity-before-4x.png"
+    alt: "en identity before 4x.png"
+    bounds:
+        [160,170,720,60]
+    fit:
+      mode: contain
+    crop:
+      {"left":0,"right":0,"top":0.3333333333333333,"bottom":0}
+  - elementId: identity-copy
+    elementType: text
+    bounds:
+        [64,174,86,30]
+    content:
+      {"text":"Before","fontFamily":"Arial","fontSize":14,"color":"#616A67","bold":false,"align":["left","top"],"lineHeight":1.28}
+  - elementId: position-copy
+    elementType: text
+    bounds:
+        [64,294,86,30]
+    content:
+      {"text":"After","fontFamily":"Arial","fontSize":14,"color":"#355E4B","bold":false,"align":["left","top"],"lineHeight":1.28}
+  - elementId: benefit
+    elementType: text
+    bounds:
+        [64,410,832,72]
+    content:
+      {"text":"The position changes from 2 to 4. The Slide ID stays the same.\nExisting references still point to the same content.","fontFamily":"Arial","fontSize":18,"color":"#616A67","bold":false,"align":["left","top"],"lineHeight":1.28}
+  - elementId: identity-after
+    elementType: image
+    src: media/imported/cfb23a312f298e185eb847eddb1cdf9cc493d63d55082cab0cc70606789af5f5.png
+    sourceName: en-identity-after-4x.png
+    alt: en identity after 4x.png
+    bounds:
+        [160,290,720,60]
+    fit:
+      mode: contain
+    "crop": {"left":0,"right":0,"top":0.3333333333333333,"bottom":0}
+notes: |-
+  Slide identity stays stable while its position can change. Reordering the Main does not retarget an existing reference. A short code helps people recognize the slide; tools use its stable identity.
+
+  Source: actual HUANDENG Editor v0.18 public example and project feature contracts. https://github.com/JaytonKogeru/huandeng; packages/core/src/pptd/agent-guide.ts; docs/SPEC-V018.md. Screenshot provenance is retained with the project assets.

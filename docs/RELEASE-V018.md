@@ -13,3 +13,11 @@ CLI 新增 `huandeng init <新目录> --title <名称>`，与桌面新建项目�
 Editor、原生客户端和账号插件从同一份 Story 与设计资料构建。白名单打包、文件 SHA-256 清单和安装检查用于发现“版本号相同、内容不同”的漂移。账号插件沿用原身份和工作站连接；原生 Codex、Claude Code 与 DeepSeek Harness 继续保留各自的本地入口。
 
 核心 npm 版本与编辑器产品版本分开，变更使用 pending changeset 记录，本次不运行 npm 发布。实际安装、四套介绍文稿和发布状态见 [验收交付](HANDOFF-V018.md)；分发细节见 [工作流发布记录](RELEASE-V018-WORKFLOW.md)。
+
+## 项目介绍与实际交付
+
+本次完成四套独立文稿：ChatGPT 中文、英文主稿各 22 页，DeepSeek Harness 中文与 Claude Code 英文实测各 21 页。主稿统一白底，包含 3 张纯章节标题页、完整与 8 页简短演讲、讲者备注、Story 和逐页命名版本。四稿均提供可移植 Project、PDF 和可编辑 PPTX，入口见[项目介绍集合](../examples/huandeng-introduction/README.md)。
+
+真实 PowerPoint 16.0 已只读打开四个最终 PPTX，并逐页导出检查，共 86 页；四个 PDF 页数匹配，主稿的 44 页 PDF 也完成实际渲染审读。120 张原始 UI 截图按语言与推荐程度整理，37 张作为推荐素材，两份公开证据项目可移植打开。模型实测保留首轮风格，DeepSeek 的资产导入技术续跑单独披露。
+
+清洁源码构建为 `35dfe649d450d22a0e4e3b70661be52c67eb9f7a`；Editor 已安装，Codex/Claude/DeepSeek 入口和账号插件已核对为 0.18.0。当前旧 Editor 会话未被强制关闭；ChatGPT 的另一个 code-plugin picker 项没有被宣称删除。具体证据、原生测试局限与发布哈希见交付记录和[发布清单](evidence/v018/release-manifest.json)。

@@ -1,0 +1,167 @@
+elements:
+  - bounds:
+      - 64
+      - 52
+      - 800
+      - 42
+    content:
+      align:
+        - left
+        - top
+      color: "#121212"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 26
+      lineHeight: 1.3
+      text: 编辑器、插件与连接，写的是同一份文档
+    elementId: t
+    elementType: text
+  - bounds:
+      - 64
+      - 104
+      - 760
+      - 34
+    content:
+      align:
+        - left
+        - top
+      color: "#3F3F3F"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 18
+      lineHeight: 1.6
+      text: 三者不各自保存文件：它们通过同一个本地文档服务，读写同一个项目。
+    elementId: lead
+    elementType: text
+  - bounds:
+      - 64
+      - 228
+      - 210
+      - 20
+    content:
+      align:
+        - left
+        - top
+      color: "#8C8C8C"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 12
+      letterSpacing: 1.5
+      lineHeight: 1.5
+      text: EDITOR
+    elementId: l1
+    elementType: text
+  - bounds:
+      - 300
+      - 222
+      - 596
+      - 58
+    content:
+      align:
+        - left
+        - top
+      color: "#2E2E2E"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 17
+      lineHeight: 1.7
+      text: 桌面编辑器。人和 Agent 看到的画面、缩略图与历史都来自这里。
+    elementId: b1
+    elementType: text
+  - bounds:
+      - 64
+      - 300
+      - 210
+      - 20
+    content:
+      align:
+        - left
+        - top
+      color: "#8C8C8C"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 12
+      letterSpacing: 1.5
+      lineHeight: 1.5
+      text: PLUGIN
+    elementId: l2
+    elementType: text
+  - bounds:
+      - 300
+      - 294
+      - 596
+      - 70
+    content:
+      align:
+        - left
+        - top
+      color: "#2E2E2E"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 17
+      lineHeight: 1.7
+      text: "把文档服务封装成 Agent 可用的工具：读取、预览、提交、导出。\n当前运行版本提供 21 个工具和 2 份指南。"
+    elementId: b2
+    elementType: text
+  - bounds:
+      - 64
+      - 392
+      - 210
+      - 20
+    content:
+      align:
+        - left
+        - top
+      color: "#8C8C8C"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 12
+      letterSpacing: 1.5
+      lineHeight: 1.5
+      text: 连接
+    elementId: l3
+    elementType: text
+  - bounds:
+      - 300
+      - 386
+      - 596
+      - 40
+    content:
+      align:
+        - left
+        - top
+      color: "#2E2E2E"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 17
+      lineHeight: 1.7
+      text: 把某个客户端接到已打开的项目。生成配置不等于已经连接。
+    elementId: b3
+    elementType: text
+  - bounds:
+      - 64
+      - 452
+      - 832
+      - 26
+    content:
+      align:
+        - left
+        - top
+      color: "#6A6A6A"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 15
+      lineHeight: 1.6
+      text: 编辑器里没有聊天框，也没有模型执行器。
+    elementId: close
+    elementType: text
+notes: 三类角色不要混：编辑器是界面，插件是接口，连接是配置。它们共用一个写入器，所以不存在“Agent 改一份、人改一份”。

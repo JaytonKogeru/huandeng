@@ -1,0 +1,110 @@
+elements:
+  - bounds:
+      - 64
+      - 52
+      - 800
+      - 42
+    content:
+      align:
+        - left
+        - top
+      color: "#121212"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 26
+      lineHeight: 1.3
+      text: 它站在开源的基础上
+    elementId: t
+    elementType: text
+  - bounds:
+      - 64
+      - 104
+      - 760
+      - 34
+    content:
+      align:
+        - left
+        - top
+      color: "#3F3F3F"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 18
+      lineHeight: 1.6
+      text: HUANDENG 基于 OpenSlide，使用 PPTD 文档后端。
+    elementId: lead
+    elementType: text
+  - bounds:
+      - 64
+      - 218
+      - 760
+      - 60
+    content:
+      align:
+        - left
+        - top
+      color: "#2E2E2E"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 17
+      lineHeight: 1.8
+      text: OpenSlide 是上游的 React 编辑环境，MIT 许可。本项目保留上游声明与包名，作为兼容标识。
+    elementId: b1
+    elementType: text
+  - bounds:
+      - 64
+      - 298
+      - 760
+      - 32
+    content:
+      align:
+        - left
+        - top
+      color: "#2E2E2E"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 17
+      lineHeight: 1.8
+      text: HUANDENG 是这个工程的产品命名，不代表上游官方项目，也不代表官方 PPTD 标准。
+    elementId: b2
+    elementType: text
+  - bounds:
+      - 64
+      - 368
+      - 760
+      - 60
+    content:
+      align:
+        - left
+        - top
+      color: "#2E2E2E"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 17
+      lineHeight: 1.8
+      text: "已知边界也写在仓库里：任意 PPTX 导入与往返、Google Slides 直接编辑、\n独立演讲者窗口、可继承母版，都还没有实现。"
+    elementId: b3
+    elementType: text
+  - bounds:
+      - 64
+      - 452
+      - 832
+      - 26
+    content:
+      align:
+        - left
+        - top
+      color: "#6A6A6A"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 15
+      lineHeight: 1.6
+      text: 把边界写清楚，比把功能说满更有用。
+    elementId: close
+    elementType: text
+notes: 开源基础与许可：上游是 OpenSlide（MIT），产品命名与上游官方项目要区分。已知边界直接来自仓库说明，不回避。

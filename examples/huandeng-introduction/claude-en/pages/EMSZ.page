@@ -1,0 +1,103 @@
+elements:
+  - elementId: title
+    elementType: text
+    role: title
+    bounds:
+      - 56
+      - 40
+      - 848
+      - 44
+    content:
+      text: Built on OpenSlide, open about its gaps
+      fontFamily: Arial
+      fontSize: 28
+      lineHeight: 1.2
+      color: "#1A1D21"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: f-head
+    elementType: text
+    bounds:
+      - 56
+      - 124
+      - 400
+      - 26
+    content:
+      text: Foundations
+      fontFamily: Arial
+      fontSize: 19
+      lineHeight: 1.2
+      color: "#1A1D21"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: f-body
+    elementType: text
+    bounds:
+      - 56
+      - 160
+      - 400
+      - 200
+    content:
+      text: "OpenSlide’s React editor, MIT licensed\nA desktop app built with Electron\nSlides stored as plain, readable files\nSkills and guides shared by every agent client"
+      fontFamily: Arial
+      fontSize: 18
+      lineHeight: 1.75
+      color: "#3A3F45"
+      align:
+        - left
+        - top
+  - elementId: g-head
+    elementType: text
+    bounds:
+      - 504
+      - 124
+      - 400
+      - 26
+    content:
+      text: Not there yet
+      fontFamily: Arial
+      fontSize: 19
+      lineHeight: 1.2
+      color: "#1A1D21"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: g-body
+    elementType: text
+    bounds:
+      - 504
+      - 160
+      - 400
+      - 200
+    content:
+      text: |-
+        Importing arbitrary PPTX files
+        Editing Google Slides directly
+        A separate presenter-view window
+        Native PowerPoint animation in exports
+      fontFamily: Arial
+      fontSize: 18
+      lineHeight: 1.75
+      color: "#3A3F45"
+      align:
+        - left
+        - top
+  - elementId: naming
+    elementType: text
+    bounds:
+        [56,380,848,48]
+    content:
+      text: HUANDENG is this project’s own name. It is not an official OpenSlide release, and PPTD is not an industry standard.
+      fontFamily: Arial
+      fontSize: 16
+      lineHeight: 1.4
+      color: "#6B7178"
+      align:
+        - left
+        - top
+notes: HUANDENG did not start from zero. It builds on OpenSlide's React editing environment, which is MIT licensed, and the original notices are kept. The desktop app uses Electron, and the document format is a set of plain files, so a project can be read, compared and versioned with ordinary tools. Just as important is what it does not do yet. It cannot import arbitrary PowerPoint files, it does not edit Google Slides, there is no separate presenter window for a second screen, and exports do not contain native PowerPoint animation. Those are honest gaps, and good places to contribute.

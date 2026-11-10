@@ -1,0 +1,100 @@
+pageType: content
+background:
+  type: solid
+  color: "#FFFFFF"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 64
+      - 45
+      - 832
+      - 55
+    role: title
+    content:
+      text: 从一页可讲的内容开始
+      fontFamily: Microsoft YaHei
+      fontSize: 28
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: footer
+    elementType: text
+    bounds:
+      - 64
+      - 506
+      - 400
+      - 16
+    content:
+      text: HUANDENG    /    10
+      fontFamily: Microsoft YaHei
+      fontSize: 10
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: question
+    elementType: text
+    bounds:
+      - 64
+      - 156
+      - 820
+      - 118
+    content:
+      text: |-
+        这页结束时，
+        观众应该明白什么？
+      fontFamily: Microsoft YaHei
+      fontSize: 28
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.4
+    role: heading
+  - elementId: body
+    elementType: text
+    bounds:
+      - 64
+      - 341
+      - 820
+      - 83
+    content:
+      text: |-
+        先放证据，再决定版面。
+        一句结论已经够用时，就停在那里。
+      fontFamily: Microsoft YaHei
+      fontSize: 19
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.6
+  - elementId: frame
+    elementType: text
+    bounds:
+      - 64
+      - 455
+      - 820
+      - 27
+    content:
+      text: 先完成内容页与章节页，再扩展整套 Slides。
+      fontFamily: Microsoft YaHei
+      fontSize: 15
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+notes: |-
+  先写清页面目的，放入需要解释的证据，再写一句观众应带走的话。确认一个内容页和一个章节页后再展开。框架包含真实对象和边界，因此 Agent 有具体参照。
+
+  Source: actual HUANDENG Editor v0.18 public example and project feature contracts. https://github.com/JaytonKogeru/huandeng; packages/core/src/pptd/agent-guide.ts; docs/SPEC-V018.md. Screenshot provenance is retained with the project assets.

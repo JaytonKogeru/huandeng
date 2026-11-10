@@ -1,0 +1,87 @@
+title: 持续打磨同一份作品
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 52
+      - 44
+      - 856
+      - 70
+    content:
+      text: 持续打磨同一份作品
+      fontSize: 28
+      fontFamily: Microsoft YaHei
+      color: "#252a2f"
+  - elementId: lead
+    elementType: text
+    bounds:
+      - 52
+      - 126
+      - 818
+      - 84
+    content:
+      text: 随着思路变清楚，幻灯片仍然可以继续编辑。
+      fontSize: 18
+      fontFamily: Microsoft YaHei
+      color: "#58636b"
+  - elementId: left-heading
+    elementType: text
+    bounds:
+      - 52
+      - 266
+      - 390
+      - 40
+    content:
+      text: 同一份工作文档
+      fontSize: 20
+      fontFamily: Microsoft YaHei
+      color: "#252a2f"
+  - elementId: left-body
+    elementType: text
+    bounds:
+      - 52
+      - 320
+      - 365
+      - 116
+    content:
+      text: 页面、素材和上下文，留在自己拥有的文件夹中。
+      fontSize: 17
+      fontFamily: Microsoft YaHei
+      color: "#252a2f"
+  - elementId: right-heading
+    elementType: text
+    bounds:
+      - 518
+      - 266
+      - 390
+      - 40
+    content:
+      text: 清楚的下一步
+      fontSize: 20
+      fontFamily: Microsoft YaHei
+      color: "#252a2f"
+  - elementId: right-body
+    elementType: text
+    bounds:
+      - 518
+      - 320
+      - 365
+      - 116
+    content:
+      text: 审阅建议、调整细节，从同一份源内容继续。
+      fontSize: 17
+      fontFamily: Microsoft YaHei
+      color: "#252a2f"
+  - elementId: footer
+    elementType: text
+    bounds:
+      - 52
+      - 490
+      - 856
+      - 22
+    content:
+      text: HUANDENG  /  公开产品示例
+      fontSize: 11
+      fontFamily: Microsoft YaHei
+      color: "#687078"
+notes: 这是 HUANDENG 的公开产品示例，用于说明：持续打磨同一份作品。

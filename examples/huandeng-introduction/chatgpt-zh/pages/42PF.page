@@ -1,0 +1,126 @@
+pageType: content
+background:
+  type: solid
+  color: "#FFFFFF"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 64
+      - 45
+      - 832
+      - 55
+    role: title
+    content:
+      {"text":"完整介绍与简短介绍，共用同一份内容","fontFamily":"Microsoft YaHei","fontSize":28,"color":"#202423","bold":false,"align":["left","top"],"lineHeight":1.28}
+  - elementId: footer
+    elementType: text
+    bounds:
+      - 64
+      - 506
+      - 400
+      - 16
+    content:
+      text: HUANDENG    /    18
+      fontFamily: Microsoft YaHei
+      fontSize: 10
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: full-label
+    elementType: text
+    bounds:
+      - 64
+      - 155
+      - 360
+      - 35
+    content:
+      text: 完整介绍
+      fontFamily: Microsoft YaHei
+      fontSize: 20
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: full
+    elementType: text
+    bounds:
+      - 64
+      - 224
+      - 360
+      - 170
+    content:
+      text: |-
+        作品怎样保存
+        人与 Agent 怎样继续编辑
+        怎样讲述与交付
+      fontFamily: Microsoft YaHei
+      fontSize: 19
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.8
+  - elementId: short-label
+    elementType: text
+    bounds:
+      - 530
+      - 155
+      - 366
+      - 35
+    content:
+      text: 简短介绍
+      fontFamily: Microsoft YaHei
+      fontSize: 20
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: short
+    elementType: text
+    bounds:
+      - 530
+      - 224
+      - 366
+      - 170
+    content:
+      text: |-
+        保留核心模型与一次实际过程，
+        减少工具细节。
+      fontFamily: Microsoft YaHei
+      fontSize: 19
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.8
+  - elementId: link
+    elementType: text
+    bounds:
+      - 64
+      - 443
+      - 800
+      - 35
+    content:
+      text: 两个集合都引用同一份页面。
+      fontFamily: Microsoft YaHei
+      fontSize: 19
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+notes: |-
+  这套介绍项目也带有简短 Presentation，引用 Main 中的精选页面，不复制内容。打开这个集合即可继续调整顺序。完整介绍也保留为独立 Presentation。
+
+  Source: actual HUANDENG Editor v0.18 public example and project feature contracts. https://github.com/JaytonKogeru/huandeng; packages/core/src/pptd/agent-guide.ts; docs/SPEC-V018.md. Screenshot provenance is retained with the project assets.

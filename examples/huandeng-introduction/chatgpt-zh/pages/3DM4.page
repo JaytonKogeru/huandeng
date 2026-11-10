@@ -1,0 +1,107 @@
+pageType: content
+background:
+  type: solid
+  color: "#FFFFFF"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 64
+      - 45
+      - 832
+      - 55
+    role: title
+    content:
+      text: 把修改意图留在页面旁
+      fontFamily: Microsoft YaHei
+      fontSize: 28
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: footer
+    elementType: text
+    bounds:
+      - 64
+      - 506
+      - 400
+      - 16
+    content:
+      text: HUANDENG    /    07
+      fontFamily: Microsoft YaHei
+      fontSize: 10
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: purpose-label
+    elementType: text
+    bounds:
+      - 64
+      - 145
+      - 340
+      - 30
+    content:
+      text: 这一页要说明什么
+      fontFamily: Microsoft YaHei
+      fontSize: 14
+      color: "#355E4B"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: purpose
+    elementType: text
+    bounds:
+      - 64
+      - 188
+      - 390
+      - 95
+    content:
+      {"text":"帮助下一位编辑者理解，\n这一页要做什么。","fontFamily":"Microsoft YaHei","fontSize":20,"color":"#202423","bold":false,"align":["left","top"],"lineHeight":1.28}
+  - elementId: keep-label
+    elementType: text
+    bounds:
+      - 64
+      - 320
+      - 340
+      - 30
+    content:
+      text: 哪些内容需要保留
+      fontFamily: Microsoft YaHei
+      fontSize: 14
+      color: "#355E4B"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: keep
+    elementType: text
+    bounds:
+      - 64
+      - 363
+      - 390
+      - 75
+    content:
+      {"text":"保留版式、原意和其他对象。","fontFamily":"Microsoft YaHei","fontSize":19,"color":"#202423","bold":false,"align":["left","top"],"lineHeight":1.28}
+  - elementId: notes-context
+    elementType: image
+    src: "media/imported/a2e5fe82bdef7371736c75dad7d686f7e06abc68b160063d44fef402651defb0.png"
+    sourceName: "zh-CN-native-focused-story-4x.png"
+    alt: "zh CN native focused story 4x.png"
+    bounds:
+        [516,128,380,340]
+    fit:
+      mode: contain
+    crop:
+      {"left":0,"right":0,"top":0,"bottom":0}
+notes: |-
+  Story 记录这页的目的、需要保留的内容和当前修改请求。下一次编辑能够从这些约束继续。Agent 写入的 Story 是上下文，不代表人的批准。
+
+  Source: actual HUANDENG Editor v0.18 public example and project feature contracts. https://github.com/JaytonKogeru/huandeng; packages/core/src/pptd/agent-guide.ts; docs/SPEC-V018.md. Screenshot provenance is retained with the project assets.

@@ -1,0 +1,207 @@
+{
+  "schemaVersion": 1,
+  "deckId": "a52d8713-1df0-4860-9ab6-752718254d07",
+  "entry": "deck.pptd",
+  "project": {
+    "schemaVersion": 1,
+    "mainStory": {
+      "purpose": "Introduce a slide workflow built for continued editing.",
+      "audience": "People creating and reviewing presentations.",
+      "takeaway": "Keep the source, context and review process together."
+    },
+    "sections": [
+      {
+        "id": "section-0",
+        "title": "A working document",
+        "story": {
+          "purpose": "Explain this part of the workflow through a concrete editing task.",
+          "audience": "People making and reviewing presentations.",
+          "takeaway": "Keep the source and the purpose connected."
+        },
+        "pageIds": [
+          "a49fcf39-6fe8-4ffd-a4a5-78032e14e67c",
+          "70ecfcad-c22c-40c3-aaa8-3a61f57c8cea"
+        ],
+        "startPageId": "a49fcf39-6fe8-4ffd-a4a5-78032e14e67c"
+      },
+      {
+        "id": "section-1",
+        "title": "Editing together",
+        "story": {
+          "purpose": "Explain this part of the workflow through a concrete editing task.",
+          "audience": "People making and reviewing presentations.",
+          "takeaway": "Keep the source and the purpose connected."
+        },
+        "pageIds": [
+          "bcce84a7-3bb7-4444-b06b-f9606efd2f4c",
+          "3d0ef362-f8e4-4bd2-95cb-5e9181997a60"
+        ],
+        "startPageId": "bcce84a7-3bb7-4444-b06b-f9606efd2f4c"
+      },
+      {
+        "id": "section-2",
+        "title": "History and delivery",
+        "story": {
+          "purpose": "Explain this part of the workflow through a concrete editing task.",
+          "audience": "People making and reviewing presentations.",
+          "takeaway": "Keep the source and the purpose connected."
+        },
+        "pageIds": [
+          "e8395a60-f343-4dcc-be3c-60b57cb7abb5",
+          "bf6d644a-31c1-4a4c-ad64-2d9d328e0083"
+        ],
+        "startPageId": "e8395a60-f343-4dcc-be3c-60b57cb7abb5"
+      }
+    ],
+    "presentations": [
+      {
+        "id": "quick-introduction",
+        "title": "Quick introduction",
+        "story": {
+          "purpose": "A short product walkthrough",
+          "audience": "New users",
+          "takeaway": "Start from one editable source"
+        },
+        "items": [
+          {
+            "id": "intro-0",
+            "kind": "page",
+            "pageId": "a49fcf39-6fe8-4ffd-a4a5-78032e14e67c"
+          },
+          {
+            "id": "intro-2",
+            "kind": "page",
+            "pageId": "bcce84a7-3bb7-4444-b06b-f9606efd2f4c"
+          },
+          {
+            "id": "intro-5",
+            "kind": "page",
+            "pageId": "bf6d644a-31c1-4a4c-ad64-2d9d328e0083"
+          }
+        ]
+      }
+    ]
+  },
+  "slides": {
+    "a49fcf39-6fe8-4ffd-a4a5-78032e14e67c": {
+      "shortCode": "R014",
+      "label": "S1",
+      "path": "pages/reference.page",
+      "state": "active",
+      "designIntent": {
+        "purpose": "Explain one part of the workflow",
+        "keep": [
+          "Use a readable type hierarchy",
+          "Keep the original source editable"
+        ],
+        "requestedChange": "Review the wording and visual rhythm"
+      },
+      "elementRoles": {
+        "title": "title"
+      },
+      "hidden": false
+    },
+    "70ecfcad-c22c-40c3-aaa8-3a61f57c8cea": {
+      "shortCode": "C014",
+      "label": "S2",
+      "path": "pages/comparison.page",
+      "state": "active",
+      "designIntent": {
+        "purpose": "Explain one part of the workflow",
+        "keep": [
+          "Use a readable type hierarchy",
+          "Keep the original source editable"
+        ],
+        "requestedChange": "Review the wording and visual rhythm"
+      },
+      "elementRoles": {
+        "title": "title"
+      },
+      "hidden": false
+    },
+    "bcce84a7-3bb7-4444-b06b-f9606efd2f4c": {
+      "shortCode": "N014",
+      "label": "S3",
+      "path": "pages/next.page",
+      "state": "active",
+      "designIntent": {
+        "purpose": "Help the next editor understand what this page should do.",
+        "keep": [
+          "Keep the layout and all other objects",
+          "Preserve the main message"
+        ],
+        "requestedChange": "Shorten the title and explanation.",
+        "actor": "Public product example",
+        "source": "HUANDENG workflow review"
+      },
+      "elementRoles": {
+        "title": "title"
+      },
+      "hidden": false
+    },
+    "3d0ef362-f8e4-4bd2-95cb-5e9181997a60": {
+      "shortCode": "W004",
+      "path": "pages/synthetic-4.page",
+      "state": "active",
+      "elementRoles": {
+        "title": "title"
+      },
+      "hidden": false,
+      "designIntent": {
+        "purpose": "Explain one part of the workflow",
+        "keep": [
+          "Use a readable type hierarchy",
+          "Keep the original source editable"
+        ],
+        "requestedChange": "Review the wording and visual rhythm"
+      },
+      "label": "S4"
+    },
+    "e8395a60-f343-4dcc-be3c-60b57cb7abb5": {
+      "shortCode": "W005",
+      "path": "pages/synthetic-5.page",
+      "state": "active",
+      "elementRoles": {
+        "title": "title"
+      },
+      "hidden": false,
+      "designIntent": {
+        "purpose": "Explain one part of the workflow",
+        "keep": [
+          "Use a readable type hierarchy",
+          "Keep the original source editable"
+        ],
+        "requestedChange": "Review the wording and visual rhythm"
+      },
+      "label": "S5"
+    },
+    "bf6d644a-31c1-4a4c-ad64-2d9d328e0083": {
+      "shortCode": "W006",
+      "path": "pages/synthetic-6.page",
+      "state": "active",
+      "elementRoles": {
+        "title": "title"
+      },
+      "hidden": false,
+      "designIntent": {
+        "purpose": "Explain one part of the workflow",
+        "keep": [
+          "Use a readable type hierarchy",
+          "Keep the original source editable"
+        ],
+        "requestedChange": "Review the wording and visual rhythm"
+      },
+      "label": "S6"
+    },
+    "34bb454e-939c-4db6-9eff-3cba2fbbd91a": {
+      "shortCode": "XHB4",
+      "path": "pages/XHB4.page",
+      "state": "tombstone",
+      "components": {},
+      "elementRoles": {
+        "title-f7e45339-6bae-4b32-b5a7-828b5021c373": "title"
+      },
+      "label": "S7"
+    }
+  }
+}

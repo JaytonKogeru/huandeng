@@ -1,0 +1,91 @@
+pageType: content
+background:
+  type: solid
+  color: "#FFFFFF"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 64
+      - 45
+      - 832
+      - 55
+    role: title
+    content:
+      text: 一份 Main，多种讲法
+      fontFamily: Microsoft YaHei
+      fontSize: 28
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: footer
+    elementType: text
+    bounds:
+      - 64
+      - 506
+      - 400
+      - 16
+    content:
+      text: HUANDENG    /    05
+      fontFamily: Microsoft YaHei
+      fontSize: 10
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: lead
+    elementType: text
+    bounds:
+      - 64
+      - 140
+      - 298
+      - 145
+    content:
+      text: |-
+        页面内容集中维护。
+        演讲按听众重新编排。
+      fontFamily: Microsoft YaHei
+      fontSize: 20
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.5
+  - elementId: sections
+    elementType: image
+    src: "media/imported/afe675bef8594c3328129632115e6befdec36ffc2a7ad347cf1d754662ee6d07.png"
+    sourceName: "zh-CN-native-project-sequences-4x.png"
+    alt: "zh CN native project sequences 4x.png"
+    bounds:
+        [440,130,456,312]
+    fit:
+      mode: contain
+    crop:
+      {"left":0,"right":0,"top":0,"bottom":0}
+  - elementId: note
+    elementType: text
+    bounds:
+      - 64
+      - 444
+      - 805
+      - 40
+    content:
+      text: Main 保存作品，Presentation 保存讲述顺序。
+      fontFamily: Microsoft YaHei
+      fontSize: 17
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+notes: |-
+  Main 保存页面内容。Presentation 编排引用，可以挑选、重排，也可以引用整个 Section。修改 live 页面后，引用它的演讲会看到同一处更新。命名版本则能保留先前的表达。
+
+  Source: actual HUANDENG Editor v0.18 public example and project feature contracts. https://github.com/JaytonKogeru/huandeng; packages/core/src/pptd/agent-guide.ts; docs/SPEC-V018.md. Screenshot provenance is retained with the project assets.

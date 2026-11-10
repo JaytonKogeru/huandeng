@@ -1,0 +1,272 @@
+elements:
+  - bounds:
+      - 64
+      - 52
+      - 800
+      - 42
+    content:
+      align:
+        - left
+        - top
+      color: "#121212"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 26
+      lineHeight: 1.3
+      text: 一个下午：从组会版改出评审版
+    elementId: t
+    elementType: text
+  - bounds:
+      - 64
+      - 104
+      - 760
+      - 34
+    content:
+      align:
+        - left
+        - top
+      color: "#3F3F3F"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 18
+      lineHeight: 1.6
+      text: 同一个项目里，Main Slides 改一次，评审那场演讲引用它。
+    elementId: lead
+    elementType: text
+  - bounds:
+      - 64
+      - 178
+      - 24
+      - 20
+    content:
+      align:
+        - left
+        - top
+      color: "#A5442F"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 12
+      lineHeight: 1.6
+      text: "1"
+    elementId: n1
+    elementType: text
+  - bounds:
+      - 100
+      - 174
+      - 760
+      - 28
+    content:
+      align:
+        - left
+        - top
+      color: "#2E2E2E"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 17
+      lineHeight: 1.6
+      text: 在 Main Slides 补一页方法图，放在原第 5 页之后。
+    elementId: s1
+    elementType: text
+  - bounds:
+      - 64
+      - 224
+      - 24
+      - 20
+    content:
+      align:
+        - left
+        - top
+      color: "#A5442F"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 12
+      lineHeight: 1.6
+      text: "2"
+    elementId: n2
+    elementType: text
+  - bounds:
+      - 100
+      - 220
+      - 760
+      - 28
+    content:
+      align:
+        - left
+        - top
+      color: "#2E2E2E"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 17
+      lineHeight: 1.6
+      text: 打开评审那场 Presentation，把这一页加进去，写上这一场的讲稿。
+    elementId: s2
+    elementType: text
+  - bounds:
+      - 64
+      - 270
+      - 24
+      - 20
+    content:
+      align:
+        - left
+        - top
+      color: "#A5442F"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 12
+      lineHeight: 1.6
+      text: "3"
+    elementId: n3
+    elementType: text
+  - bounds:
+      - 100
+      - 266
+      - 760
+      - 28
+    content:
+      align:
+        - left
+        - top
+      color: "#2E2E2E"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 17
+      lineHeight: 1.6
+      text: 在页面 Story 里写清楚：这一页要证明什么，哪些标注不能动。
+    elementId: s3
+    elementType: text
+  - bounds:
+      - 64
+      - 316
+      - 24
+      - 20
+    content:
+      align:
+        - left
+        - top
+      color: "#A5442F"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 12
+      lineHeight: 1.6
+      text: "4"
+    elementId: n4
+    elementType: text
+  - bounds:
+      - 100
+      - 312
+      - 760
+      - 28
+    content:
+      align:
+        - left
+        - top
+      color: "#2E2E2E"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 17
+      lineHeight: 1.6
+      text: 让 Agent 改标题和一段说明。它先给出预览：改哪些字段、影响哪些页。
+    elementId: s4
+    elementType: text
+  - bounds:
+      - 64
+      - 362
+      - 24
+      - 20
+    content:
+      align:
+        - left
+        - top
+      color: "#A5442F"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 12
+      lineHeight: 1.6
+      text: "5"
+    elementId: n5
+    elementType: text
+  - bounds:
+      - 100
+      - 358
+      - 760
+      - 28
+    content:
+      align:
+        - left
+        - top
+      color: "#2E2E2E"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 17
+      lineHeight: 1.6
+      text: 确认后写入。历史里出现一条保存记录，点开能看改动前后的对象。
+    elementId: s5
+    elementType: text
+  - bounds:
+      - 64
+      - 408
+      - 24
+      - 20
+    content:
+      align:
+        - left
+        - top
+      color: "#A5442F"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 12
+      lineHeight: 1.6
+      text: "6"
+    elementId: n6
+    elementType: text
+  - bounds:
+      - 100
+      - 404
+      - 760
+      - 28
+    content:
+      align:
+        - left
+        - top
+      color: "#2E2E2E"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 17
+      lineHeight: 1.6
+      text: 导出 PDF 给评审；PPTX 留给合作者继续编辑。
+    elementId: s6
+    elementType: text
+  - bounds:
+      - 64
+      - 458
+      - 832
+      - 26
+    content:
+      align:
+        - left
+        - top
+      color: "#6A6A6A"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 15
+      lineHeight: 1.6
+      text: 整条链路都在同一个项目里完成，没有第二份副本。
+    elementId: close
+    elementType: text
+notes: 用一个具体场景把功能串起来：补页、加入演讲、写 Story、让 Agent 改、看回执、导出。每一步都在同一个项目里。

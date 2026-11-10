@@ -6,7 +6,24 @@ HUANDENG Editor 基于 OpenSlide 的 React 编辑环境，使用 PPTD 文档后�
 
 ## 当前阶段
 
-当前版本为 **[v0.17：六个中央工作区](docs/RELEASE-V017.md)**。源码、正式包、本机安装与插件交付的验收状态记录在 [v0.17 验收与交付](docs/HANDOFF-V017.md)，此前性能与完整测试结果见 [v0.16 Validation](docs/VALIDATION-V016.md)。编辑器和插件版本为 0.17.0，core npm 包仍为 2.3.1。
+当前版本为 **[v0.18：有明确设计约定的协作工作流](docs/RELEASE-V018.md)**。编辑器与插件版本为 0.18.0，core npm 包仍为 2.3.1。完整验收与安装状态见 [v0.18 交付记录](docs/HANDOFF-V018.md)，设计依据见 [设计说明](docs/DESIGN-V018.md)。
+
+本版统一了中英文字号与截图约定，增加只读设计检查、现有章节的一键纯标题页、素材原图尺寸及安全 CLI 新建项目。工作区采用更轻的层级，GUI、CLI 和 MCP 共用检查结果。工作流为 Audit → Spec → Frame → Implement → Validate → Release。
+
+## 项目介绍 / Introduction
+
+Keep one slide project editable across people and agents. The bilingual introductions show real editing, stable slide identity, reusable presentations and delivery.
+
+| 版本 / Edition | 可编辑项目 / Project | 页数 | 用途 |
+| --- | --- | ---: | --- |
+| ChatGPT 中文主稿 | [chatgpt-zh](examples/huandeng-introduction/chatgpt-zh) | 22 | 中文项目介绍，含 8 页简短演讲 |
+| ChatGPT English | [chatgpt-en](examples/huandeng-introduction/chatgpt-en) | 22 | English introduction with an 8-slide short talk |
+| DeepSeek Harness 中文 | [deepseek-zh](examples/huandeng-introduction/deepseek-zh) | 21 | 原生工具实测，保留技术续跑边界 |
+| Claude Code English | [claude-en](examples/huandeng-introduction/claude-en) | 21 | Independent native-client trial |
+
+[下载 PowerPoint、PDF、完整 Project 与 Editor](https://github.com/JaytonKogeru/huandeng/releases/tag/editor-v0.18.0) · [四稿说明与素材](examples/huandeng-introduction/README.md) · [原生实测评估](docs/VALIDATION-V018-NATIVE-TRIALS.md)
+
+## 编辑与交付
 
 桌面顶部以标签页保持多个 Project，Home 随时返回最近项目；切换保留各自的草稿。固定“幻灯片”文档提供 **普通 / 浏览 / 大纲 / 章节 / 备注页 / 历史** 入口，只切换中间工作区。浏览与大纲分别提供缩略图网格和页面摘要列表；章节在中央编辑共享结构草稿并预览成员；备注页提供页面预览和宽讲稿区；历史按当前页记录、预览和恢复版本。切换主视图保留左侧导航的标签、宽度与展开状态。资料文件在独立文档标签中只读显示；Ctrl+W 只关闭活动文件，不关闭幻灯片或项目。
 
@@ -47,9 +64,14 @@ Windows 桌面打包与快捷方式：
 
 内部 React 画布和本机文档服务继续复用；日常使用不打开浏览器标签。外部 Agent 通过同一服务操作当前项目，编辑器内没有聊天框或模型执行器。
 
-CLI 开发服务仍可单独启动：
+CLI 可以安全新建项目，再打开共享服务；新建命令拒绝覆盖已有目录：
 
+    node packages/core/huandeng.js init "D:/MyProject/Slides" --title "My Slides"
     node packages/core/huandeng.js open "D:/MyProject/Slides/deck.pptd" --no-browser
+
+对已保存项目运行只读设计检查：
+
+    node packages/core/huandeng.js --entry "D:/MyProject/Slides/deck.pptd" quality
 
 `--read-only` 可只读查看而不初始化身份。PNG/PDF 导出使用安装的 Chromium/Chrome/Edge，或设置 `HUANDENG_BROWSER`。Windows 默认可使用 Edge。
 
@@ -128,7 +150,7 @@ Inspector 的 Checks 可按需核对本机字体与有效回退，并测量文�
 
 打开顶部 **Activity** 可查看当前 Project 的任务阶段与实际写入记录。不同对话必须明确绑定各自的 PPTD；切换可见标签页不会改变已经绑定的 Agent 目标。Activity 展示客户端明确上报的状态，不会自动读取全部聊天或显示模型内部推理。
 
-MCP 现有 **21 个工具、2 个 Story/operations 指南资源**。Activity read/report 允许客户端按明确 Project、session 和 task 上报进展；writer 保存记录与客户端报告分开标识。Agent 先读 selection 与四层 Story briefing，结合邻页、实例备注、固定版本和素材形成计划，再用只读 preview 查看字段/文件/复用影响。按当前任务授权应用相同 payload，可用 previewHash 绑定内容；共享 writer 继续检查 CAS 与幂等请求。保存后回读、渲染并检查实际讲解顺序。hash 不能替代用户授权。
+MCP 现有 **22 个工具、2 个 Story/operations 指南资源**。Activity read/report 允许客户端按明确 Project、session 和 task 上报进展；writer 保存记录与客户端报告分开标识。Agent 先读 selection 与四层 Story briefing，结合邻页、实例备注、固定版本和素材形成计划，再用只读 preview 查看字段/文件/复用影响。按当前任务授权应用相同 payload，可用 previewHash 绑定内容；共享 writer 继续检查 CAS 与幂等请求。保存后回读、渲染并检查实际讲解顺序。hash 不能替代用户授权。
 
 早期版本的官方 DeepSeek Harness 已在独立合成项目完成读取 → preview → apply → render → 保存重开闭环；当时的 Codex 原生配置解析、Claude 原生 manifest 校验也通过。这些历史记录不代替当前版本的客户端验收。ChatGPT 通过已有授权 DC-WALT 调用同一 CLI。具体安装方式、客户端边界和示例见 [Plugin 指南](plugins/huandeng/README.md) 与 [真实任务证据](docs/evidence/v09/plugin-acceptance.json)。
 
@@ -146,7 +168,7 @@ MCP 现有 **21 个工具、2 个 Story/operations 指南资源**。Activity rea
     corepack pnpm exec vitest run --project unit
     corepack pnpm check
 
-完整产品规划见 [Master SPEC](docs/SPEC.md)，当前增量见 [SPEC-V013](docs/SPEC-V013.md)，逐项状态见 [本轮审计](docs/AUDIT-V013.md)。历史验收见 [v0.4](docs/RELEASE-V04.md)、[v0.5](docs/RELEASE-V05.md)、[v0.6](docs/RELEASE-V06.md)、[v0.7](docs/RELEASE-V07.md)，[v0.8](docs/RELEASE-V08.md)，[v0.9](docs/RELEASE-V09.md)，[v0.10](docs/RELEASE-V010.md)，[v0.11](docs/RELEASE-V011.md)，[v0.12](docs/RELEASE-V012.md)，[v0.12.1](docs/RELEASE-V0121.md)，本轮见 [v0.13 发布记录](docs/RELEASE-V013.md)。工程接续入口是 [WEBCHAT.md](WEBCHAT.md)。
+完整产品规划见 [Master SPEC](docs/SPEC.md)，当前增量见 [SPEC-V018](docs/SPEC-V018.md)，逐项状态见 [工作流审计](docs/AUDIT-V018-WORKFLOW.md)。历史验收见 [v0.4](docs/RELEASE-V04.md)、[v0.5](docs/RELEASE-V05.md)、[v0.6](docs/RELEASE-V06.md)、[v0.7](docs/RELEASE-V07.md)，[v0.8](docs/RELEASE-V08.md)，[v0.9](docs/RELEASE-V09.md)，[v0.10](docs/RELEASE-V010.md)，[v0.11](docs/RELEASE-V011.md)，[v0.12](docs/RELEASE-V012.md)，[v0.12.1](docs/RELEASE-V0121.md)，[v0.13](docs/RELEASE-V013.md)；本轮见 [v0.18 发布记录](docs/RELEASE-V018.md)。工程接续入口是 [WEBCHAT.md](WEBCHAT.md)。
 
 里程碑运行单元测试、类型和格式检查，并检查实际构建与安装。桌面、科研对象、原生 PowerPoint 和真实科研项目副本的场景按具体变更风险选择，不在每次开发中重复全部压力矩阵。日常小修改只重复能够验证相应风险的检查。
 

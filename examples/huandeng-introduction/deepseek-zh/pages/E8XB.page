@@ -1,0 +1,130 @@
+elements:
+  - bounds:
+      - 64
+      - 52
+      - 800
+      - 42
+    content:
+      align:
+        - left
+        - top
+      color: "#121212"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 26
+      lineHeight: 1.3
+      text: 同一页，可以在多场演讲里出场
+    elementId: t
+    elementType: text
+  - bounds:
+      - 64
+      - 104
+      - 760
+      - 34
+    content:
+      align:
+        - left
+        - top
+      color: "#3F3F3F"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 18
+      lineHeight: 1.6
+      text: 页面只有一份；每次被放进某场演讲，就是一次独立的出场。
+    elementId: lead
+    elementType: text
+  - bounds:
+      - 64
+      - 232
+      - 380
+      - 20
+    content:
+      align:
+        - left
+        - top
+      color: "#8C8C8C"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 12
+      letterSpacing: 1.5
+      lineHeight: 1.5
+      text: 页面 · pageId
+    elementId: l1
+    elementType: text
+  - bounds:
+      - 64
+      - 258
+      - 380
+      - 150
+    content:
+      align:
+        - left
+        - top
+      color: "#2E2E2E"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 17
+      lineHeight: 1.8
+      text: 文字、图形、素材和页面 Story 属于页面本身。改 Main，会改到所有还跟着它的出场。
+    elementId: b1
+    elementType: text
+  - bounds:
+      - 516
+      - 232
+      - 380
+      - 20
+    content:
+      align:
+        - left
+        - top
+      color: "#8C8C8C"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 12
+      letterSpacing: 1.5
+      lineHeight: 1.5
+      text: 出场 · occurrenceId
+    elementId: l2
+    elementType: text
+  - bounds:
+      - 516
+      - 258
+      - 380
+      - 150
+    content:
+      align:
+        - left
+        - top
+      color: "#2E2E2E"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 17
+      lineHeight: 1.8
+      text: "顺序、这一场的讲稿、是否固定某个版本，\n属于这次出场，不影响别的演讲。"
+    elementId: b2
+    elementType: text
+  - bounds:
+      - 64
+      - 430
+      - 832
+      - 26
+    content:
+      align:
+        - left
+        - top
+      color: "#6A6A6A"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 15
+      lineHeight: 1.6
+      text: 所以「第 3 页」不是地址。地址是身份，出场另有身份。
+    elementId: close
+    elementType: text
+notes: 这一页区分内容和一次使用。同一页可以多次出现，每次出现有自己的讲稿；但要改内容，还是回到那一页。

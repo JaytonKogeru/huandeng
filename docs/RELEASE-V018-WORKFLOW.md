@@ -1,6 +1,6 @@
 # v0.18 workflow release preparation
 
-Status: the existing private account plugin was updated in place to 0.18.0 and read back successfully. Native distributions remain prepared; combined Editor/deck acceptance controls desktop installation and the repository milestone.
+Status: the existing private account plugin was updated in place to 0.18.0 and read back successfully. The clean desktop package is installed in a versioned directory, and native Codex, Claude Code and the explicit DeepSeek adapter passed connection checks. The final section records installation evidence; the project owner controls the repository milestone.
 
 ## One source, client-specific routes
 
@@ -11,6 +11,8 @@ Do not remove native Codex merely to simplify the ChatGPT picker. Native and acc
 The existing account manifest's author and developer display values differ from the portable repository default. The prepared account update preserves the existing values and changes only version. Comparing both current manifests and the prepared manifests after removing version produced exact object equality; the App configuration also matched.
 
 ## Prepared artifacts
+
+These are the earlier staging archives. Retained clean-release archive hashes are recorded in the final section below.
 
 | Artifact | Contents | SHA-256 |
 | --- | --- | --- |
@@ -66,4 +68,24 @@ A zero-warning quality report is advisory. Human-scale typography, visual rhythm
 
 The existing account plugin was updated with its freshly observed release precondition. The service returned version 0.18.0, the same plugin identity and USER/PRIVATE scope. All 20 returned text files match the submitted overlay byte for byte and match their content-manifest hashes; the existing icon was retained. Both manifests preserve existing metadata except version, and the original App binding is unchanged. The current host's skill reader also returned the final Story hash `f09f2bf2a49bfc62bc89e76fca53c5ef3d25ee08f810d51b6285d6160cdee990`.
 
-The exhaustive personal-plugin inventory contained one HUANDENG account entry. The current managed runtime reported no installed huandeng-local plugin or registered marketplace. The separately supplied local code-plugin reference is not an obsolete second account record, and the App uninstall tool explicitly does not manage code plugins. No native Codex/Claude/DSH removal was performed. Account release and live skill delivery are verified; disappearance of a second picker entry is not asserted. Exact private release IDs, link, binding and verification receipt remain under .verification/v018-account-release.json.
+The exhaustive personal-plugin inventory contained one HUANDENG account entry. The current managed runtime reported no installed huandeng-local plugin or registered marketplace. The separately supplied local code-plugin reference is not an obsolete second account record, and the App uninstall tool explicitly does not manage code plugins. No native Codex/Claude/DSH removal was performed during this account update. The later supported native marketplace replacement is recorded below. Account release and live skill delivery are verified; disappearance of a second picker entry is not asserted. Exact private release IDs, link, binding and verification receipt remain under .verification/v018-account-release.json.
+
+## Clean package installation and retained archives
+
+The retained release is built from clean source commit `35dfe649d450d22a0e4e3b70661be52c67eb9f7a`. Its marker records `sourceDirty=false`, product/plugin 0.18.0, core 2.3.1, Electron 38.7.2 and build time `2026-11-10T09:26:30.7136963Z`. It is installed in the separate `HUANDENG-v0.18.0-win32-x64` directory. Desktop/Start Menu shortcuts, the current-user PPTD open command and the agent runtime pointer now target that retained package.
+
+Codex and Claude native inventories report huandeng@huandeng-local 0.18.0 enabled. Each installed cache and the versioned shared distribution match the 24-file content manifest. Their supported same-name marketplace source replacement used remove/add, followed by installation; Claude's removal step explicitly uninstalled the old HUANDENG before reinstalling 0.18.0. Unrelated plugins retained their versions and enabled states. This installation operation did not remove a host code-plugin entry to claim ChatGPT deduplication.
+
+DeepSeek uses a generated versioned patch with both its MCP launcher and filesystem skills provider. The actual Desktop engine passed a no-model config-merge preflight with the patch. A dedicated HUANDENG DeepSeek Start Menu launcher is available; the ordinary desktop profile and original trial patches are preserved. Codex, Claude and DeepSeek adapter doctors each initialized the selected public writer with 22 tools, plugin 0.18.0, design-audit support and the same final Story hash.
+
+The actual installed EXE also passed isolated user-data acceptance: public English example open, design dialog, second native launch routing to the public Chinese example, zero renderer errors, unchanged source fingerprints and normal exit 0. Native pixel screenshots are not claimed because hidden-window capture stalled in the optional harness step. The public [installation receipt](evidence/v018/installed-release-acceptance.json) records the measured scope.
+
+The previously running ordinary-profile Editor remained open with its private projects. A normal new launch may still route to that existing process until the user closes the old session normally; no forced restart was performed. The independent isolated run establishes that the installed 0.18.0 executable itself works.
+
+| Retained archive | Bytes | SHA-256 |
+| --- | ---: | --- |
+| HUANDENG-Editor-0.18.0-win32-x64.zip | 236,194,192 | `370569a7e14262e7c5aca8dced3a6224b5782acdf7abb67cea26a9fb4220a829` |
+| HUANDENG-0.18.0-plugin.zip | 210,323 | `64baf5c3bbdcb85af4f20c74039d6938ff00c355ab418bcb400af8b03fccec0b` |
+| HUANDENG-0.18.0-native-marketplace.zip | 211,772 | `9386b1b348b9a648d8bf379a05e3feed60ba03e45a72fcb35092877d4d102e4c` |
+
+All three retained ZIPs passed CRC verification. The plugin ZIP contains 24 files and the native marketplace ZIP 26. The release directory keeps these local artifacts for the project owner's combined deck/material manifest and repository milestone. The private account overlay is excluded from the public archive set; this installation phase did not commit, tag or push.

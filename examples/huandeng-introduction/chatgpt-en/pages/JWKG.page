@@ -1,0 +1,148 @@
+pageType: content
+background:
+  type: solid
+  color: "#FFFFFF"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 64
+      - 45
+      - 832
+      - 55
+    role: title
+    content:
+      text: Follow updates or keep a saved version
+      fontFamily: Arial
+      fontSize: 30
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: footer
+    elementType: text
+    bounds:
+      - 64
+      - 506
+      - 400
+      - 16
+    content:
+      text: HUANDENG    /    19
+      fontFamily: Arial
+      fontSize: 10
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: live
+    elementType: text
+    bounds:
+      - 64
+      - 158
+      - 360
+      - 50
+    content:
+      text: Live
+      fontFamily: Arial
+      fontSize: 30
+      color: "#355E4B"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+    role: heading
+  - elementId: live-copy
+    elementType: text
+    bounds:
+      - 64
+      - 238
+      - 360
+      - 80
+    content:
+      text: Follow the current Main page.
+      fontFamily: Arial
+      fontSize: 21
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: live-when
+    elementType: text
+    bounds:
+      - 64
+      - 366
+      - 360
+      - 85
+    content:
+      text: Useful for an introduction that keeps evolving.
+      fontFamily: Arial
+      fontSize: 18
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: pinned
+    elementType: text
+    bounds:
+      - 530
+      - 158
+      - 366
+      - 50
+    content:
+      text: Pinned
+      fontFamily: Arial
+      fontSize: 30
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+    role: heading
+  - elementId: pinned-copy
+    elementType: text
+    bounds:
+      - 530
+      - 238
+      - 366
+      - 80
+    content:
+      text: Use a named version of the page.
+      fontFamily: Arial
+      fontSize: 21
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: pinned-when
+    elementType: text
+    bounds:
+      - 530
+      - 366
+      - 366
+      - 85
+    content:
+      text: Useful when a particular talk needs to stay as delivered.
+      fontFamily: Arial
+      fontSize: 18
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+notes: |-
+  A live occurrence follows the current Main page. A pinned occurrence uses a named version, preserving an earlier appearance for a particular talk. The choice belongs to that occurrence.
+
+  Source: actual HUANDENG Editor v0.18 public example and project feature contracts. https://github.com/JaytonKogeru/huandeng; packages/core/src/pptd/agent-guide.ts; docs/SPEC-V018.md. Screenshot provenance is retained with the project assets.

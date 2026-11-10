@@ -1,0 +1,167 @@
+elements:
+  - bounds:
+      - 64
+      - 52
+      - 800
+      - 42
+    content:
+      align:
+        - left
+        - top
+      color: "#121212"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 26
+      lineHeight: 1.3
+      text: 同一份研究，为什么要讲三遍？
+    elementId: t
+    elementType: text
+  - bounds:
+      - 64
+      - 104
+      - 720
+      - 70
+    content:
+      align:
+        - left
+        - top
+      color: "#3F3F3F"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 18
+      lineHeight: 1.75
+      text: "组会讲进展，会议讲方法，评审讲证据。\n听众一变，我们就复制上一版幻灯片，删掉不再相关的内容，再补上新的重点。"
+    elementId: lead
+    elementType: text
+  - bounds:
+      - 64
+      - 240
+      - 110
+      - 20
+    content:
+      align:
+        - left
+        - top
+      color: "#8C8C8C"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 12
+      letterSpacing: 1.5
+      lineHeight: 1.5
+      text: 组会
+    elementId: l1
+    elementType: text
+  - bounds:
+      - 190
+      - 234
+      - 680
+      - 30
+    content:
+      align:
+        - left
+        - top
+      color: "#2E2E2E"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 17
+      lineHeight: 1.6
+      text: 同一批数据，关心的是下一步做什么。
+    elementId: b1
+    elementType: text
+  - bounds:
+      - 64
+      - 304
+      - 110
+      - 20
+    content:
+      align:
+        - left
+        - top
+      color: "#8C8C8C"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 12
+      letterSpacing: 1.5
+      lineHeight: 1.5
+      text: 会议
+    elementId: l2
+    elementType: text
+  - bounds:
+      - 190
+      - 298
+      - 680
+      - 30
+    content:
+      align:
+        - left
+        - top
+      color: "#2E2E2E"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 17
+      lineHeight: 1.6
+      text: 同样的结果，要压缩成十五分钟。
+    elementId: b2
+    elementType: text
+  - bounds:
+      - 64
+      - 368
+      - 110
+      - 20
+    content:
+      align:
+        - left
+        - top
+      color: "#8C8C8C"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 12
+      letterSpacing: 1.5
+      lineHeight: 1.5
+      text: 评审
+    elementId: l3
+    elementType: text
+  - bounds:
+      - 190
+      - 362
+      - 680
+      - 30
+    content:
+      align:
+        - left
+        - top
+      color: "#2E2E2E"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 17
+      lineHeight: 1.6
+      text: 同样的方法，要经得起逐条追问。
+    elementId: b3
+    elementType: text
+  - bounds:
+      - 64
+      - 432
+      - 800
+      - 26
+    content:
+      align:
+        - left
+        - top
+      color: "#6A6A6A"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 15
+      lineHeight: 1.6
+      text: 被复制的其实是同一批事实：数据、图、结论和限制条件。
+    elementId: close
+    elementType: text
+notes: 先说听众自己的经验：一场报告往往从上一版复制而来。三个场合需要的重点不同，但底层的事实是同一批。

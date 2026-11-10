@@ -1,0 +1,21 @@
+elements:
+  - bounds:
+      - 64
+      - 238
+      - 832
+      - 60
+    content:
+      align:
+        - left
+        - top
+      color: "#121212"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 34
+      lineHeight: 1.3
+      text: Story 与协作
+    elementId: t
+    elementType: text
+notes: 过渡：内容只存一份之后，怎么让下一个修改它的人（或 Agent）知道该保留什么。
+pageType: section

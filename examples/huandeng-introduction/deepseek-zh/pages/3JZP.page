@@ -1,0 +1,110 @@
+elements:
+  - bounds:
+      - 64
+      - 52
+      - 800
+      - 42
+    content:
+      align:
+        - left
+        - top
+      color: "#121212"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 26
+      lineHeight: 1.3
+      text: 命名版本：给这一页留一个里程碑
+    elementId: t
+    elementType: text
+  - bounds:
+      - 64
+      - 104
+      - 760
+      - 34
+    content:
+      align:
+        - left
+        - top
+      color: "#3F3F3F"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 18
+      lineHeight: 1.6
+      text: 自动保存让工作不丢；命名版本让你记得住。
+    elementId: lead
+    elementType: text
+  - bounds:
+      - 64
+      - 220
+      - 760
+      - 32
+    content:
+      align:
+        - left
+        - top
+      color: "#2E2E2E"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 17
+      lineHeight: 1.7
+      text: 记录命名版本时，这一页当时的本地图片和有效主题会一起归档，随项目目录迁移。
+    elementId: b1
+    elementType: text
+  - bounds:
+      - 64
+      - 286
+      - 760
+      - 32
+    content:
+      align:
+        - left
+        - top
+      color: "#2E2E2E"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 17
+      lineHeight: 1.7
+      text: 恢复只影响这一页：不回滚其他页面，也不覆盖共享素材。
+    elementId: b2
+    elementType: text
+  - bounds:
+      - 64
+      - 352
+      - 760
+      - 32
+    content:
+      align:
+        - left
+        - top
+      color: "#2E2E2E"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 17
+      lineHeight: 1.7
+      text: 普通编辑与操作记录一直都在；命名版本留给真正想记住的节点。
+    elementId: b3
+    elementType: text
+  - bounds:
+      - 64
+      - 440
+      - 832
+      - 26
+    content:
+      align:
+        - left
+        - top
+      color: "#6A6A6A"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 15
+      lineHeight: 1.6
+      text: 版本跟着项目走，不依赖某台电脑。
+    elementId: close
+    elementType: text
+notes: 命名版本是作者主动留下的路标，和自动保存不同。恢复只动这一页，图片与主题跟着版本一起归档。

@@ -1,0 +1,135 @@
+elements:
+  - elementId: title
+    elementType: text
+    role: title
+    bounds:
+      - 56
+      - 40
+      - 848
+      - 44
+    content:
+      text: The Editor holds the document; agents connect to it
+      fontFamily: Arial
+      fontSize: 28
+      lineHeight: 1.2
+      color: "#1A1D21"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: r1-head
+    elementType: text
+    bounds:
+      - 56
+      - 124
+      - 170
+      - 26
+    content:
+      text: Editor
+      fontFamily: Arial
+      fontSize: 19
+      lineHeight: 1.2
+      color: "#1A1D21"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: r1-body
+    elementType: text
+    bounds:
+      - 240
+      - 124
+      - 664
+      - 54
+    content:
+      text: The desktop app where you edit. It is also the single writer that saves every change, whether it comes from you or from an agent.
+      fontFamily: Arial
+      fontSize: 18
+      lineHeight: 1.4
+      color: "#3A3F45"
+      align:
+        - left
+        - top
+  - elementId: r2-head
+    elementType: text
+    bounds:
+      - 56
+      - 214
+      - 170
+      - 26
+    content:
+      text: Plugin
+      fontFamily: Arial
+      fontSize: 19
+      lineHeight: 1.2
+      color: "#1A1D21"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: r2-body
+    elementType: text
+    bounds:
+      - 240
+      - 214
+      - 664
+      - 54
+    content:
+      text: "A skill and two guides that teach an agent the workflow: read the Story, preview a change, apply it, then check the rendered slide."
+      fontFamily: Arial
+      fontSize: 18
+      lineHeight: 1.4
+      color: "#3A3F45"
+      align:
+        - left
+        - top
+  - elementId: r3-head
+    elementType: text
+    bounds:
+      - 56
+      - 304
+      - 170
+      - 26
+    content:
+      text: Connector
+      fontFamily: Arial
+      fontSize: 19
+      lineHeight: 1.2
+      color: "#1A1D21"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: r3-body
+    elementType: text
+    bounds:
+      - 240
+      - 304
+      - 664
+      - 80
+    content:
+      text: A local link from an agent to the open Editor. Codex, Claude Code and DeepSeek Harness connect on the same computer; ChatGPT connects to the local Editor through an authorized workstation connection.
+      fontFamily: Arial
+      fontSize: 18
+      lineHeight: 1.4
+      color: "#3A3F45"
+      align:
+        - left
+        - top
+  - elementId: footnote
+    elementType: text
+    bounds:
+      - 56
+      - 440
+      - 848
+      - 48
+    content:
+      text: The Editor has no chat box and runs no model. Agents work from outside, through the same document service the canvas uses.
+      fontFamily: Arial
+      fontSize: 16
+      lineHeight: 1.4
+      color: "#6B7178"
+      align:
+        - left
+        - top
+notes: "Three pieces of software are involved, and it helps to keep them apart. The Editor is the desktop application. Besides the canvas, it runs the local document service, and that service is the only thing that writes the project files. The plugin is what an agent loads: a skill plus a Story guide and an operations guide, so the agent knows to read context first, preview, apply and verify. The connector is the link between an agent and the Editor that is already open. The Editor's Agent setup panel generates the configuration for each client; generating it does not install or connect anything by itself. There is deliberately no chat box inside the Editor. You keep using the agent you already use."

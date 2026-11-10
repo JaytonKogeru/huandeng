@@ -1,0 +1,118 @@
+elements:
+  - bounds:
+      - 64
+      - 52
+      - 800
+      - 42
+    content:
+      align:
+        - left
+        - top
+      color: "#121212"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 26
+      lineHeight: 1.3
+      text: 交付：一个项目，两个静态文件
+    elementId: t
+    elementType: text
+  - bounds:
+      - 64
+      - 104
+      - 760
+      - 34
+    content:
+      align:
+        - left
+        - top
+      color: "#3F3F3F"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 18
+      lineHeight: 1.6
+      text: PPTX 给继续编辑的人，PDF 给评审和存档。
+    elementId: lead
+    elementType: text
+  - bounds:
+        [64,196,300,20]
+    content:
+      align:
+        - left
+        - top
+      color: "#8C8C8C"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 12
+      letterSpacing: 2
+      lineHeight: 1.5
+      text: PPTX
+    elementId: l1
+    elementType: text
+  - bounds:
+        [64,220,300,160]
+    content:
+      align:
+        - left
+        - top
+      color: "#2E2E2E"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 17
+      lineHeight: 1.8
+      text: "文字、图片、形状、表格、\n公式、图表和组合尽量\n保留为可编辑对象；不支持\n的对象逐项回退为图片，\n并写进导出报告。"
+    elementId: b1
+    elementType: text
+  - bounds:
+      - 64
+      - 424
+      - 832
+      - 54
+    content:
+      align:
+        - left
+        - top
+      color: "#6A6A6A"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 15
+      lineHeight: 1.7
+      text: |-
+        两者都是静态版式，不携带点击动画。
+        要带步骤放映，用编辑器里的预演和放映；视频是另一条兼容输出。
+    elementId: close
+    elementType: text
+  - bounds:
+      - 400
+      - 190
+      - 470
+      - 222
+    elementId: shot-export
+    elementType: image
+    fit:
+      mode: contain
+    sourceName: zh-CN-export-crop.png
+    src: media/imported/55aeff2240b17359992a897f1c20c479fbe82a111f3cd74c323e74c440657f1d.png
+  - bounds:
+      - 400
+      - 420
+      - 470
+      - 22
+    content:
+      align:
+        - left
+        - top
+      color: "#8C8C8C"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 12
+      lineHeight: 1.5
+      text: 导出对话框：格式与范围。PDF 为固定版式，适合评审与归档。
+    elementId: shot-export-cap
+    elementType: text
+notes: "导出不是“另外一个版本”，而是同一份内容的一次输出。右侧是真实导出对话框：可以选择格式（PPTX / PDF / MP4）与范围（主幻灯片或某一场演讲）；提示语说明静态输出不携带关键帧动画。PPTX 尽量保留可编辑对象；静态输出不包含点击动画。截图 zh-CN-export-crop.png，1152×544，按原比例 470×222 放置。"

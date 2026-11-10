@@ -1,0 +1,91 @@
+pageType: content
+background:
+  type: solid
+  color: "#FFFFFF"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 64
+      - 45
+      - 832
+      - 55
+    role: title
+    content:
+      text: You can see what changed
+      fontFamily: Arial
+      fontSize: 30
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: footer
+    elementType: text
+    bounds:
+      - 64
+      - 506
+      - 400
+      - 16
+    content:
+      text: HUANDENG    /    15
+      fontFamily: Arial
+      fontSize: 10
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: history
+    elementType: image
+    src: "media/imported/0148822d0496ea8ff3653d88ab2c63fd4301d97b660c3ae4dea40798a3dc0bea.png"
+    sourceName: "en-operation-changes-4x.png"
+    alt: "en operation changes 4x.png"
+    bounds:
+        [64,145,568,310]
+    fit:
+      mode: contain
+    crop:
+      {"left":0,"right":0,"top":0,"bottom":0}
+  - elementId: history-copy
+    elementType: text
+    bounds:
+      - 682
+      - 181
+      - 214
+      - 180
+    content:
+      text: |-
+        Read the changes to this page.
+        Check them against the intended edit.
+      fontFamily: Arial
+      fontSize: 20
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.55
+  - elementId: history-small
+    elementType: text
+    bounds:
+      - 682
+      - 389
+      - 214
+      - 85
+    content:
+      text: Clear scope makes the next edit easier.
+      fontFamily: Arial
+      fontSize: 16
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+notes: |-
+  History belongs to the current page and exposes changes for a specific operation. Story records intent; saved history records what happened. Together they explain the revision.
+
+  Source: actual HUANDENG Editor v0.18 public example and project feature contracts. https://github.com/JaytonKogeru/huandeng; packages/core/src/pptd/agent-guide.ts; docs/SPEC-V018.md. Screenshot provenance is retained with the project assets.

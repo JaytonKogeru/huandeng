@@ -1,0 +1,116 @@
+pageType: content
+background:
+  type: solid
+  color: "#FFFFFF"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 64
+      - 45
+      - 832
+      - 55
+    role: title
+    content:
+      text: 一次修改，从明确请求到实际保存
+      fontFamily: Microsoft YaHei
+      fontSize: 28
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: footer
+    elementType: text
+    bounds:
+      - 64
+      - 506
+      - 400
+      - 16
+    content:
+      text: HUANDENG    /    14
+      fontFamily: Microsoft YaHei
+      fontSize: 10
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: request
+    elementType: text
+    bounds:
+        [64,115,832,40]
+    content:
+      {"text":"缩短标题与说明，保留其余对象。","fontFamily":"Microsoft YaHei","fontSize":18,"color":"#616A67","bold":false,"align":["left","top"],"lineHeight":1.28}
+    role: heading
+  - elementId: before-label
+    elementType: text
+    bounds:
+      - 64
+      - 182
+      - 70
+      - 30
+    content:
+      text: 修改前
+      fontFamily: Microsoft YaHei
+      fontSize: 14
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: edit-before
+    elementType: image
+    src: media/imported/fdcacc35c15b7a7b76d70ef9f713c605c20a7e8ca450703b6343ac8bc722bd3e.png
+    sourceName: zh-CN-native-edit-before-4x.png
+    alt: zh CN native edit before 4x.png
+    bounds:
+      - 144
+      - 170
+      - 752
+      - 121
+    fit:
+      mode: contain
+    crop:
+      left: 0.04
+      right: 0.04
+      top: 0.055
+      bottom: 0.69
+  - elementId: after-label
+    elementType: text
+    bounds:
+      - 64
+      - 342
+      - 70
+      - 30
+    content:
+      text: 修改后
+      fontFamily: Microsoft YaHei
+      fontSize: 14
+      color: "#355E4B"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: edit-after
+    elementType: image
+    src: media/imported/1590b6d7b420e2502709c533628c4fc0a0ef2278c8b6798d1f6fa8272f9059fc.png
+    sourceName: zh-CN-native-edit-after-4x.png
+    alt: zh CN native edit after 4x.png
+    bounds:
+      - 144
+      - 330
+      - 752
+      - 121
+    fit:
+      mode: contain
+    crop:
+      left: 0.04
+      right: 0.04
+      top: 0.055
+      bottom: 0.69
+notes: "先读当前页与 Story，提出具体对象修改，再预览影响范围。已获授权的修改通过同一请求保存。操作记录对应确切前后变化，之后检查实际渲染。\n\nSource: actual HUANDENG Editor v0.18 public example and project feature contracts. https://github.com/JaytonKogeru/huandeng; packages/core/src/pptd/agent-guide.ts; docs/SPEC-V018.md. Screenshot provenance is retained with the project assets.\nActual public-example edit: only the title and lead changed. The asset evidence records the shared-writer receipt and the unchanged objects."

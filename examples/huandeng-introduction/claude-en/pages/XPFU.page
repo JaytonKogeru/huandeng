@@ -1,0 +1,20 @@
+elements:
+  - elementId: divider-title
+    elementType: text
+    role: title
+    bounds:
+      - 56
+      - 238
+      - 848
+      - 64
+    content:
+      text: From first slide to delivery
+      fontFamily: Arial
+      fontSize: 36
+      lineHeight: 1.2
+      color: "#1A1D21"
+      bold: true
+      align:
+        - left
+        - middle
+notes: "Section 3. A working session in the real product: organise the deck, let an agent propose an edit, review what was saved, write the script, keep milestones, and deliver."

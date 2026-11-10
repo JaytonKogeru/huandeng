@@ -1,0 +1,651 @@
+{
+  "schemaVersion": 1,
+  "deckId": "178add5e-b4dd-48ce-81ad-681ed8b90321",
+  "entry": "deck.pptd",
+  "designPolicy": "huandeng-human-scientific-v1",
+  "slides": {
+    "a829a72e-411e-4083-a1e2-ae6a0e5efbf8": {
+      "shortCode": "X5EF",
+      "path": "pages/initial.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "cover-title": "title"
+      },
+      "label": "S1",
+      "designIntent": {
+        "pageRole": "cover",
+        "purpose": "Name the project and state in one sentence what it is for.",
+        "keep": [
+          "Official HUANDENG icon unaltered",
+          "Public GitHub address"
+        ],
+        "requestedChange": "Reuse the initial blank page as the cover of the English public introduction.",
+        "actor": "claude-code",
+        "source": "Independent English introduction trial brief"
+      }
+    },
+    "6731f47f-5b41-4c69-b577-044d919c2b7c": {
+      "shortCode": "B487",
+      "path": "pages/B487.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "divider-title": "title"
+      },
+      "label": "S2",
+      "designIntent": {
+        "pageRole": "section",
+        "purpose": "Title-only divider for the core model.",
+        "keep": [
+          "Title only: no subtitle, number, footer, logo or decoration"
+        ],
+        "actor": "claude-code",
+        "source": "Independent English introduction trial brief"
+      }
+    },
+    "4af0594e-ef78-4ef8-952e-7d64a415805d": {
+      "shortCode": "4ZXH",
+      "path": "pages/4ZXH.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S3",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "State the practical problem: slides are copied and diverge across audiences, positions are not identities, intent is unrecorded.",
+        "keep": [
+          "No invented statistics or quotes"
+        ],
+        "actor": "claude-code",
+        "source": "Independent English introduction trial brief"
+      }
+    },
+    "051f56b7-59f8-4f7a-8331-a66e0762a79c": {
+      "shortCode": "495F",
+      "path": "pages/495F.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S4",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Explain one canonical Main Slides collection and several Presentations built by reference.",
+        "keep": [
+          "Table positions must match this deck's actual full and brief Presentations"
+        ],
+        "actor": "claude-code",
+        "source": "Independent English introduction trial brief"
+      }
+    },
+    "5a649795-839d-44f1-b2b2-b41110b0ebb4": {
+      "shortCode": "2DC4",
+      "path": "pages/2DC4.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S5",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Distinguish permanent Slide ID from derived Position, with real Browse evidence.",
+        "keep": [
+          "Real English Browse capture crop, original aspect ratio"
+        ],
+        "actor": "claude-code",
+        "source": "Independent English introduction trial brief"
+      }
+    },
+    "0910e952-5c4a-4218-ad9c-01146d09e194": {
+      "shortCode": "TXNA",
+      "path": "pages/TXNA.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S6",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Contrast live reuse with an explicitly pinned named version.",
+        "keep": [
+          "Real edit-scope header crop, original aspect ratio"
+        ],
+        "actor": "claude-code",
+        "source": "Independent English introduction trial brief"
+      }
+    },
+    "979ad1bc-ecae-4382-8f37-5c1f99b7b4fc": {
+      "shortCode": "ZJ69",
+      "path": "pages/ZJ69.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S7",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Explain the Story layers and how they guide edits; agent records are interpretations, not approval.",
+        "keep": [
+          "Real Outline crop, original aspect ratio"
+        ],
+        "actor": "claude-code",
+        "source": "Independent English introduction trial brief"
+      }
+    },
+    "041aae17-212b-46ca-bf97-eb72a4cf32d1": {
+      "shortCode": "87VG",
+      "path": "pages/87VG.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "divider-title": "title"
+      },
+      "label": "S8",
+      "designIntent": {
+        "pageRole": "section",
+        "purpose": "Title-only divider for project structure.",
+        "keep": [
+          "Title only: no subtitle, number, footer, logo or decoration"
+        ],
+        "actor": "claude-code",
+        "source": "Independent English introduction trial brief"
+      }
+    },
+    "7dbf6217-2ed6-4806-916b-2882b8ad3dcf": {
+      "shortCode": "WC3D",
+      "path": "pages/WC3D.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S9",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Show the role of each item in the project folder.",
+        "keep": [
+          "Folder names without trailing slashes (renderer treats media/ text as an asset path)"
+        ],
+        "actor": "claude-code",
+        "source": "Independent English introduction trial brief"
+      }
+    },
+    "a4252458-fc41-42ac-8676-90aa60c94bba": {
+      "shortCode": "NQGU",
+      "path": "pages/NQGU.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S10",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Separate the roles of Editor, plugin and connector in audience language.",
+        "keep": [
+          "Describe ChatGPT only as connecting to the local Editor; no internal connection brand names"
+        ],
+        "actor": "claude-code",
+        "source": "Independent English introduction trial brief"
+      }
+    },
+    "d6378472-cea7-4942-b068-16b43ba74dfd": {
+      "shortCode": "MEMH",
+      "path": "pages/MEMH.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S11",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Orient the audience with the whole workspace and its six views.",
+        "keep": [
+          "Full English Normal-view capture, uncropped, original aspect ratio"
+        ],
+        "actor": "claude-code",
+        "source": "Independent English introduction trial brief"
+      }
+    },
+    "fd23d630-519d-4e21-bee6-92e9bb70562d": {
+      "shortCode": "XPFU",
+      "path": "pages/XPFU.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "divider-title": "title"
+      },
+      "label": "S12",
+      "designIntent": {
+        "pageRole": "section",
+        "purpose": "Title-only divider for the working session.",
+        "keep": [
+          "Title only: no subtitle, number, footer, logo or decoration"
+        ],
+        "actor": "claude-code",
+        "source": "Independent English introduction trial brief"
+      }
+    },
+    "25d95593-ea23-46b5-baea-5350ef58b748": {
+      "shortCode": "Q3YS",
+      "path": "pages/Q3YS.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S13",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Show first-Slide Sections in the real Sections view.",
+        "keep": [
+          "Focused real Sections crop, original aspect ratio"
+        ],
+        "actor": "claude-code",
+        "source": "Independent English introduction trial brief"
+      }
+    },
+    "31052ac1-12f0-4c76-be5c-7f897576f5b2": {
+      "shortCode": "RHDQ",
+      "path": "pages/RHDQ.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S14",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Explain the read, preview, apply, review loop of an agent edit.",
+        "keep": [
+          "No drawn arrows or circled numbers"
+        ],
+        "actor": "claude-code",
+        "source": "Independent English introduction trial brief"
+      }
+    },
+    "66207d66-13fb-4fb1-8efc-51776efa609b": {
+      "shortCode": "SHBY",
+      "path": "pages/SHBY.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S15",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Explain the shared writer: revision checks, reviewable operations, reports separate from saves.",
+        "actor": "claude-code",
+        "source": "Independent English introduction trial brief"
+      }
+    },
+    "ef491079-5bc5-4ad8-bd3c-fc42973f05c6": {
+      "shortCode": "RE8W",
+      "path": "pages/RE8W.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S16",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Show Main speaker notes and occurrence-specific notes.",
+        "keep": [
+          "Real Notes page crop, original aspect ratio"
+        ],
+        "actor": "claude-code",
+        "source": "Independent English introduction trial brief"
+      }
+    },
+    "b16d13d8-b733-4fc2-b947-05669a1ce7e6": {
+      "shortCode": "WAJX",
+      "path": "pages/WAJX.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S17",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Explain named versions, operation history and single-page restore.",
+        "keep": [
+          "Real History crops, original aspect ratio"
+        ],
+        "actor": "claude-code",
+        "source": "Independent English introduction trial brief"
+      }
+    },
+    "16db2293-3e75-4b7f-984d-bbd3bc524c1c": {
+      "shortCode": "6SXG",
+      "path": "pages/6SXG.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S18",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Explain delivery as the editable project plus static PDF/PPTX, with the animation limitation.",
+        "actor": "claude-code",
+        "source": "Independent English introduction trial brief"
+      }
+    },
+    "735b8eb2-ee8b-4901-9bf7-f23c8fc1f42d": {
+      "shortCode": "ZYC6",
+      "path": "pages/ZYC6.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "divider-title": "title"
+      },
+      "label": "S19",
+      "designIntent": {
+        "pageRole": "section",
+        "purpose": "Title-only divider for open source and contribution.",
+        "keep": [
+          "Title only: no subtitle, number, footer, logo or decoration"
+        ],
+        "actor": "claude-code",
+        "source": "Independent English introduction trial brief"
+      }
+    },
+    "27c92461-1364-4ed4-89bd-61c00121f2c0": {
+      "shortCode": "EMSZ",
+      "path": "pages/EMSZ.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S20",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "State the open-source foundations and the current gaps honestly.",
+        "keep": [
+          "Only gaps documented in the public README"
+        ],
+        "actor": "claude-code",
+        "source": "Independent English introduction trial brief"
+      }
+    },
+    "37c06309-7616-4081-8828-04927207d2b8": {
+      "shortCode": "YPNR",
+      "path": "pages/YPNR.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S21",
+      "designIntent": {
+        "pageRole": "content",
+        "purpose": "Concrete getting-started commands and contribution invitation.",
+        "keep": [
+          "Commands match the public README"
+        ],
+        "actor": "claude-code",
+        "source": "Independent English introduction trial brief"
+      }
+    }
+  },
+  "project": {
+    "schemaVersion": 1,
+    "mainStory": {
+      "purpose": "Introduce the HUANDENG open-source project on GitHub: the slide-maintenance problem it addresses, its model, a real working session, and how to contribute.",
+      "audience": "Researchers, technical slide authors and open-source contributors meeting the project for the first time.",
+      "takeaway": "Keep one editable source of slides, build every talk from it, record intent beside it, and let people and agents change it through one reviewable writer."
+    },
+    "sections": [
+      {
+        "id": "sec-model",
+        "title": "One source, many talks",
+        "story": {
+          "purpose": "Establish Main Slides vs Presentations, Slide ID vs Position, live vs pinned reuse, and Story layers.",
+          "audience": "First-time visitors",
+          "takeaway": "Slides are reused by reference, identified permanently, and carry their intent."
+        },
+        "pageIds": [
+          "6731f47f-5b41-4c69-b577-044d919c2b7c",
+          "051f56b7-59f8-4f7a-8331-a66e0762a79c",
+          "5a649795-839d-44f1-b2b2-b41110b0ebb4",
+          "0910e952-5c4a-4218-ad9c-01146d09e194",
+          "979ad1bc-ecae-4382-8f37-5c1f99b7b4fc"
+        ],
+        "startPageId": "6731f47f-5b41-4c69-b577-044d919c2b7c"
+      },
+      {
+        "id": "sec-project",
+        "title": "Inside a project",
+        "story": {
+          "purpose": "Explain the folder, the Editor/plugin/connector roles, and the workspace.",
+          "audience": "Technical slide authors and contributors",
+          "takeaway": "A project is a portable folder; the Editor is the single writer agents connect to."
+        },
+        "pageIds": [
+          "041aae17-212b-46ca-bf97-eb72a4cf32d1",
+          "7dbf6217-2ed6-4806-916b-2882b8ad3dcf",
+          "a4252458-fc41-42ac-8676-90aa60c94bba",
+          "d6378472-cea7-4942-b068-16b43ba74dfd"
+        ],
+        "startPageId": "041aae17-212b-46ca-bf97-eb72a4cf32d1"
+      },
+      {
+        "id": "sec-walkthrough",
+        "title": "From first slide to delivery",
+        "story": {
+          "purpose": "Walk through a real session: Sections, an agent edit, shared writer review, notes, history and export.",
+          "audience": "Prospective users",
+          "takeaway": "Every change is inspectable, recoverable per page, and deliverable as project plus PDF/PPTX."
+        },
+        "pageIds": [
+          "fd23d630-519d-4e21-bee6-92e9bb70562d",
+          "25d95593-ea23-46b5-baea-5350ef58b748",
+          "31052ac1-12f0-4c76-be5c-7f897576f5b2",
+          "66207d66-13fb-4fb1-8efc-51776efa609b",
+          "ef491079-5bc5-4ad8-bd3c-fc42973f05c6",
+          "b16d13d8-b733-4fc2-b947-05669a1ce7e6",
+          "16db2293-3e75-4b7f-984d-bbd3bc524c1c"
+        ],
+        "startPageId": "fd23d630-519d-4e21-bee6-92e9bb70562d"
+      },
+      {
+        "id": "sec-open",
+        "title": "Open source, open invitation",
+        "story": {
+          "purpose": "Credit the foundations, state the gaps, and give concrete getting-started and contribution steps.",
+          "audience": "Potential contributors",
+          "takeaway": "The project is built in the open and has clear places to help."
+        },
+        "pageIds": [
+          "735b8eb2-ee8b-4901-9bf7-f23c8fc1f42d",
+          "27c92461-1364-4ed4-89bd-61c00121f2c0",
+          "37c06309-7616-4081-8828-04927207d2b8"
+        ],
+        "startPageId": "735b8eb2-ee8b-4901-9bf7-f23c8fc1f42d"
+      }
+    ],
+    "presentations": [
+      {
+        "id": "pres-full",
+        "title": "HUANDENG introduction (full)",
+        "story": {
+          "purpose": "Complete public introduction, about 20 minutes.",
+          "audience": "Researchers, technical slide authors and contributors",
+          "takeaway": "One source, many talks, one reviewable writer for people and agents."
+        },
+        "items": [
+          {
+            "id": "full-01",
+            "kind": "page",
+            "pageId": "a829a72e-411e-4083-a1e2-ae6a0e5efbf8"
+          },
+          {
+            "id": "full-02",
+            "kind": "page",
+            "pageId": "4af0594e-ef78-4ef8-952e-7d64a415805d"
+          },
+          {
+            "id": "full-03",
+            "kind": "page",
+            "pageId": "6731f47f-5b41-4c69-b577-044d919c2b7c"
+          },
+          {
+            "id": "full-04",
+            "kind": "page",
+            "pageId": "051f56b7-59f8-4f7a-8331-a66e0762a79c"
+          },
+          {
+            "id": "full-05",
+            "kind": "page",
+            "pageId": "5a649795-839d-44f1-b2b2-b41110b0ebb4"
+          },
+          {
+            "id": "full-06",
+            "kind": "page",
+            "pageId": "0910e952-5c4a-4218-ad9c-01146d09e194"
+          },
+          {
+            "id": "full-07",
+            "kind": "page",
+            "pageId": "979ad1bc-ecae-4382-8f37-5c1f99b7b4fc"
+          },
+          {
+            "id": "full-08",
+            "kind": "page",
+            "pageId": "041aae17-212b-46ca-bf97-eb72a4cf32d1"
+          },
+          {
+            "id": "full-09",
+            "kind": "page",
+            "pageId": "7dbf6217-2ed6-4806-916b-2882b8ad3dcf"
+          },
+          {
+            "id": "full-10",
+            "kind": "page",
+            "pageId": "a4252458-fc41-42ac-8676-90aa60c94bba"
+          },
+          {
+            "id": "full-11",
+            "kind": "page",
+            "pageId": "d6378472-cea7-4942-b068-16b43ba74dfd"
+          },
+          {
+            "id": "full-12",
+            "kind": "page",
+            "pageId": "fd23d630-519d-4e21-bee6-92e9bb70562d"
+          },
+          {
+            "id": "full-13",
+            "kind": "page",
+            "pageId": "25d95593-ea23-46b5-baea-5350ef58b748"
+          },
+          {
+            "id": "full-14",
+            "kind": "page",
+            "pageId": "31052ac1-12f0-4c76-be5c-7f897576f5b2"
+          },
+          {
+            "id": "full-15",
+            "kind": "page",
+            "pageId": "66207d66-13fb-4fb1-8efc-51776efa609b"
+          },
+          {
+            "id": "full-16",
+            "kind": "page",
+            "pageId": "ef491079-5bc5-4ad8-bd3c-fc42973f05c6"
+          },
+          {
+            "id": "full-17",
+            "kind": "page",
+            "pageId": "b16d13d8-b733-4fc2-b947-05669a1ce7e6"
+          },
+          {
+            "id": "full-18",
+            "kind": "page",
+            "pageId": "16db2293-3e75-4b7f-984d-bbd3bc524c1c"
+          },
+          {
+            "id": "full-19",
+            "kind": "page",
+            "pageId": "735b8eb2-ee8b-4901-9bf7-f23c8fc1f42d"
+          },
+          {
+            "id": "full-20",
+            "kind": "page",
+            "pageId": "27c92461-1364-4ed4-89bd-61c00121f2c0"
+          },
+          {
+            "id": "full-21",
+            "kind": "page",
+            "pageId": "37c06309-7616-4081-8828-04927207d2b8"
+          }
+        ]
+      },
+      {
+        "id": "pres-brief",
+        "title": "HUANDENG in eight slides",
+        "story": {
+          "purpose": "Short introduction, about 6 minutes, reusing Main Slides live.",
+          "audience": "Readers who want the idea and the next step quickly",
+          "takeaway": "One source, stable identity, one reviewable writer, and how to try it."
+        },
+        "items": [
+          {
+            "id": "brief-01",
+            "kind": "page",
+            "pageId": "a829a72e-411e-4083-a1e2-ae6a0e5efbf8"
+          },
+          {
+            "id": "brief-02",
+            "kind": "page",
+            "pageId": "4af0594e-ef78-4ef8-952e-7d64a415805d"
+          },
+          {
+            "id": "brief-03",
+            "kind": "page",
+            "pageId": "051f56b7-59f8-4f7a-8331-a66e0762a79c",
+            "notes": "In this short version, point to the Brief column: you are watching that column right now. The same Main Slides also form the full talk, at different positions."
+          },
+          {
+            "id": "brief-04",
+            "kind": "page",
+            "pageId": "5a649795-839d-44f1-b2b2-b41110b0ebb4"
+          },
+          {
+            "id": "brief-05",
+            "kind": "page",
+            "pageId": "7dbf6217-2ed6-4806-916b-2882b8ad3dcf"
+          },
+          {
+            "id": "brief-06",
+            "kind": "page",
+            "pageId": "66207d66-13fb-4fb1-8efc-51776efa609b",
+            "notes": "Short version: agents and people go through the same writer. Stale changes are rejected, every save can be reviewed and undone, and progress reports are kept apart from real saves."
+          },
+          {
+            "id": "brief-07",
+            "kind": "page",
+            "pageId": "b16d13d8-b733-4fc2-b947-05669a1ce7e6"
+          },
+          {
+            "id": "brief-08",
+            "kind": "page",
+            "pageId": "37c06309-7616-4081-8828-04927207d2b8"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+elements:
+  - bounds:
+      - 64
+      - 238
+      - 832
+      - 60
+    content:
+      align:
+        - left
+        - top
+      color: "#121212"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 34
+      lineHeight: 1.3
+      text: 参与进来
+    elementId: t
+    elementType: text
+notes: 过渡：最后说清楚它建立在什么之上，以及一个人可以从哪里开始。
+pageType: section

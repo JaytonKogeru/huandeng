@@ -1,0 +1,230 @@
+{
+  "kind": "Exact public Editor captures and official logo; imported for the authorized technical continuation",
+  "assets": [
+    {
+      "source_name": "zh-CN-edit-1920.png",
+      "path": "media/imported/64d91b7985af86f6634a4545d333921203781bfb0262752cfdbc6af7557c609d.png",
+      "sha256": "64d91b7985af86f6634a4545d333921203781bfb0262752cfdbc6af7557c609d",
+      "pixels": [
+        3840,
+        2160
+      ]
+    },
+    {
+      "source_name": "zh-CN-browse-1920.png",
+      "path": "media/imported/b6630b8a960fdbcf800d8b8636f8fb64d1a2f02d44e7426d29e1b353cacb6b47.png",
+      "sha256": "b6630b8a960fdbcf800d8b8636f8fb64d1a2f02d44e7426d29e1b353cacb6b47",
+      "pixels": [
+        3840,
+        2160
+      ]
+    },
+    {
+      "source_name": "zh-CN-outline-1920.png",
+      "path": "media/imported/e077ff89cbc9d28ddcbb6a4b4f406606f269055a256ca00e3a6b2324168f3248.png",
+      "sha256": "e077ff89cbc9d28ddcbb6a4b4f406606f269055a256ca00e3a6b2324168f3248",
+      "pixels": [
+        3840,
+        2160
+      ]
+    },
+    {
+      "source_name": "zh-CN-sections-1920.png",
+      "path": "media/imported/cf4c918b4e67354c77ec9207e554a34b09b620065b603cbe80bb3204aa9e11c9.png",
+      "sha256": "cf4c918b4e67354c77ec9207e554a34b09b620065b603cbe80bb3204aa9e11c9",
+      "pixels": [
+        3840,
+        2160
+      ]
+    },
+    {
+      "source_name": "zh-CN-notes-1920.png",
+      "path": "media/imported/1c67421d614d1cd688a194717d7c436a987576a419f7545697e8241cc37e7c11.png",
+      "sha256": "1c67421d614d1cd688a194717d7c436a987576a419f7545697e8241cc37e7c11",
+      "pixels": [
+        3840,
+        2160
+      ]
+    },
+    {
+      "source_name": "zh-CN-history-1920.png",
+      "path": "media/imported/38a9505e4648496a3fb590ef2cabbc51f978add6cffe9c6134b1ba1c38f69ac2.png",
+      "sha256": "38a9505e4648496a3fb590ef2cabbc51f978add6cffe9c6134b1ba1c38f69ac2",
+      "pixels": [
+        3840,
+        2160
+      ]
+    },
+    {
+      "source_name": "zh-CN-design-check-crop.png",
+      "path": "media/imported/b07bc5e2242f32d6a32afb7f74a8e2f6f68be36db00beac9681c05009ad026ca.png",
+      "sha256": "b07bc5e2242f32d6a32afb7f74a8e2f6f68be36db00beac9681c05009ad026ca",
+      "pixels": [
+        896,
+        1136
+      ]
+    },
+    {
+      "source_name": "zh-CN-design-check-full.png",
+      "path": "media/imported/f4158318aab40d527e6c5bacc0a34367e3b2b8a487e74cd25335996c231e1f8c.png",
+      "sha256": "f4158318aab40d527e6c5bacc0a34367e3b2b8a487e74cd25335996c231e1f8c",
+      "pixels": [
+        2880,
+        1920
+      ]
+    },
+    {
+      "source_name": "zh-CN-story-crop.png",
+      "path": "media/imported/3c2fca738fe3e96eb9c7d1a318815924c6b2ae4dfb63250b77e1b814a48f5c5c.png",
+      "sha256": "3c2fca738fe3e96eb9c7d1a318815924c6b2ae4dfb63250b77e1b814a48f5c5c",
+      "pixels": [
+        598,
+        454
+      ]
+    },
+    {
+      "source_name": "zh-CN-story-full.png",
+      "path": "media/imported/dd9de5abf3c96aa4fef710feb4dfcfdcf27691a2690be1b031e057885f775a72.png",
+      "sha256": "dd9de5abf3c96aa4fef710feb4dfcfdcf27691a2690be1b031e057885f775a72",
+      "pixels": [
+        2880,
+        1920
+      ]
+    },
+    {
+      "source_name": "zh-CN-asset-detail-crop.png",
+      "path": "media/imported/6b6e41d3a3beaad1b1c7bd8d3db5de6b68e9f71368ca6f06bcaaa6b8ec67de92.png",
+      "sha256": "6b6e41d3a3beaad1b1c7bd8d3db5de6b68e9f71368ca6f06bcaaa6b8ec67de92",
+      "pixels": [
+        574,
+        582
+      ]
+    },
+    {
+      "source_name": "zh-CN-asset-library-full.png",
+      "path": "media/imported/2a7569c55f19a7e024894a32ecc9ce515d19a140afc4aef7cc625d7642edc236.png",
+      "sha256": "2a7569c55f19a7e024894a32ecc9ce515d19a140afc4aef7cc625d7642edc236",
+      "pixels": [
+        2880,
+        1920
+      ]
+    },
+    {
+      "source_name": "zh-CN-export-crop.png",
+      "path": "media/imported/55aeff2240b17359992a897f1c20c479fbe82a111f3cd74c323e74c440657f1d.png",
+      "sha256": "55aeff2240b17359992a897f1c20c479fbe82a111f3cd74c323e74c440657f1d",
+      "pixels": [
+        1152,
+        544
+      ]
+    },
+    {
+      "source_name": "zh-CN-present-menu-crop.png",
+      "path": "media/imported/ba44f01d043743a082f276bc803054fe42b4faaf119060ad0dc84f4a8ebbf3a5.png",
+      "sha256": "ba44f01d043743a082f276bc803054fe42b4faaf119060ad0dc84f4a8ebbf3a5",
+      "pixels": [
+        326,
+        144
+      ]
+    },
+    {
+      "source_name": "zh-CN-browse-task-full.png",
+      "path": "media/imported/45fe62e0c134106a85dee1ed2a37a4142b82ff1c1daf41ab901e80e20a09f545.png",
+      "sha256": "45fe62e0c134106a85dee1ed2a37a4142b82ff1c1daf41ab901e80e20a09f545",
+      "pixels": [
+        2880,
+        1920
+      ]
+    },
+    {
+      "source_name": "zh-CN-browse-crop.png",
+      "path": "media/imported/c48d45b781ff23f4062462182cafc4e99a660878a4ee372fa6e1d78afce54349.png",
+      "sha256": "c48d45b781ff23f4062462182cafc4e99a660878a4ee372fa6e1d78afce54349",
+      "pixels": [
+        1096,
+        610
+      ]
+    },
+    {
+      "source_name": "zh-CN-outline-task-full.png",
+      "path": "media/imported/512c214439a9d24b636d47e199a09730f85394b397a385eccfb7fca982e1e8a2.png",
+      "sha256": "512c214439a9d24b636d47e199a09730f85394b397a385eccfb7fca982e1e8a2",
+      "pixels": [
+        2880,
+        1920
+      ]
+    },
+    {
+      "source_name": "zh-CN-outline-crop.png",
+      "path": "media/imported/c963140df95ae0888f1083421c0d6723f3518828d10defead20313aed9e24198.png",
+      "sha256": "c963140df95ae0888f1083421c0d6723f3518828d10defead20313aed9e24198",
+      "pixels": [
+        2224,
+        740
+      ]
+    },
+    {
+      "source_name": "zh-CN-sections-task-full.png",
+      "path": "media/imported/fb3518697e8512ac878fe1c7e0a1927a07406acc93f95ada23d710b855688dcd.png",
+      "sha256": "fb3518697e8512ac878fe1c7e0a1927a07406acc93f95ada23d710b855688dcd",
+      "pixels": [
+        2880,
+        1920
+      ]
+    },
+    {
+      "source_name": "zh-CN-section-action-crop.png",
+      "path": "media/imported/c819a7c6aed1ad28bd1d550a28e3e671e2802b750646fc2b3421b4ac1ecc8f47.png",
+      "sha256": "c819a7c6aed1ad28bd1d550a28e3e671e2802b750646fc2b3421b4ac1ecc8f47",
+      "pixels": [
+        1824,
+        900
+      ]
+    },
+    {
+      "source_name": "zh-CN-notes-task-full.png",
+      "path": "media/imported/533f6a11dc607269732394bf9dab2aa75771a430309047ca0adf67da30f4ab4d.png",
+      "sha256": "533f6a11dc607269732394bf9dab2aa75771a430309047ca0adf67da30f4ab4d",
+      "pixels": [
+        2880,
+        1920
+      ]
+    },
+    {
+      "source_name": "zh-CN-notes-crop.png",
+      "path": "media/imported/99530111201b19ed7b84628b9298c9e878b55f047d29017e8813cd7e4856e755.png",
+      "sha256": "99530111201b19ed7b84628b9298c9e878b55f047d29017e8813cd7e4856e755",
+      "pixels": [
+        2304,
+        1514
+      ]
+    },
+    {
+      "source_name": "zh-CN-history-task-full.png",
+      "path": "media/imported/4357a71a49dab7cbc6e8a118076ebc2d24ba94a99e93921bc5f1d49c5c4d5de4.png",
+      "sha256": "4357a71a49dab7cbc6e8a118076ebc2d24ba94a99e93921bc5f1d49c5c4d5de4",
+      "pixels": [
+        2880,
+        1920
+      ]
+    },
+    {
+      "source_name": "zh-CN-history-crop.png",
+      "path": "media/imported/d44330b5a233ec4e0d387c74967b2046d0a394105dab6525bfd536a8b644d2ad.png",
+      "sha256": "d44330b5a233ec4e0d387c74967b2046d0a394105dab6525bfd536a8b644d2ad",
+      "pixels": [
+        2304,
+        1514
+      ]
+    },
+    {
+      "source_name": "huandeng-icon.png",
+      "path": "media/imported/c6cce013fd62e96048a5f10c1168ba05a2a7d6192f334d83386a4eec45732c22.png",
+      "sha256": "c6cce013fd62e96048a5f10c1168ba05a2a7d6192f334d83386a4eec45732c22",
+      "pixels": [
+        512,
+        512
+      ]
+    }
+  ]
+}

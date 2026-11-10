@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "observedDate": "2026-11-10",
+  "scope": "Clean local package, installation, adapter and isolated desktop acceptance. No repository publication was performed by this phase.",
+  "pathConvention": "All paths are logical locations relative to named install, native-distribution, native-cache, public-example or release roots; they are not machine paths.",
+  "build": {
+    "sourceRevision": "35dfe649d450d22a0e4e3b70661be52c67eb9f7a",
+    "sourceDirty": false,
+    "productVersion": "0.18.0",
+    "pluginVersion": "0.18.0",
+    "coreVersion": "2.3.1",
+    "electronVersion": "38.7.2",
+    "nodeLinker": "hoisted",
+    "builtAt": "2026-11-10T09:26:30.7136963Z",
+    "stagingPortabilityPassed": true,
+    "relocatedPortabilityPassed": true
+  },
+  "installation": {
+    "application": "install/HUANDENG-v0.18.0-win32-x64/HUANDENG Editor.exe",
+    "separateVersionedDirectory": true,
+    "currentUserDesktopShortcutUpdated": true,
+    "currentUserStartMenuShortcutUpdated": true,
+    "currentUserPptdOpenCommandUpdated": true,
+    "agentRuntimePointerUpdated": true,
+    "priorPackageRetained": true,
+    "priorOrdinaryProfileStillRunning": true,
+    "privateProjectsNotClosed": true,
+    "ownedAcceptanceProcessesRemaining": 0,
+    "nextOrdinaryLaunch": "Can route to the existing older process until that session is closed normally. No forced restart was performed."
+  },
+  "content": {
+    "filesPerNativePackage": 24,
+    "allManifestFilesMatched": true,
+    "skillSha256": "f09f2bf2a49bfc62bc89e76fca53c5ef3d25ee08f810d51b6285d6160cdee990",
+    "runtimeStoryGuideSha256": "b65eb6be627fb5006b10617aecbdcbb1ee0d196e2527a60b82f73d4380953050"
+  },
+  "nativeAdapters": [
+    {
+      "client": "codex",
+      "pluginKey": "huandeng@huandeng-local",
+      "version": "0.18.0",
+      "installed": true,
+      "enabled": true,
+      "inventorySource": "Fresh supported CLI inventory",
+      "cache": "native-cache/codex/huandeng-local/huandeng/0.18.0",
+      "filesMatched": 24,
+      "doctor": {
+        "ok": true,
+        "tools": 22,
+        "designAuditSupported": true,
+        "skillSha256": "f09f2bf2a49bfc62bc89e76fca53c5ef3d25ee08f810d51b6285d6160cdee990",
+        "storyGuideSha256": "b65eb6be627fb5006b10617aecbdcbb1ee0d196e2527a60b82f73d4380953050"
+      }
+    },
+    {
+      "client": "claude",
+      "pluginKey": "huandeng@huandeng-local",
+      "version": "0.18.0",
+      "installed": true,
+      "enabled": true,
+      "scope": "user",
+      "inventorySource": "Fresh supported CLI inventory",
+      "cache": "native-cache/claude/huandeng-local/huandeng/0.18.0",
+      "filesMatched": 24,
+      "doctor": {
+        "ok": true,
+        "tools": 22,
+        "designAuditSupported": true,
+        "skillSha256": "f09f2bf2a49bfc62bc89e76fca53c5ef3d25ee08f810d51b6285d6160cdee990",
+        "storyGuideSha256": "b65eb6be627fb5006b10617aecbdcbb1ee0d196e2527a60b82f73d4380953050"
+      }
+    },
+    {
+      "client": "deepseek",
+      "version": "0.18.0",
+      "distribution": "native-distribution/0.18.0/huandeng",
+      "patch": "native-distribution/0.18.0/huandeng-deepseek.patch.json",
+      "explicitStartMenuLauncher": true,
+      "ordinaryDesktopProfileRewritten": false,
+      "originalTrialPatchesPreserved": true,
+      "nativeConfiguration": {
+        "engine": "DeepSeek Harness Desktop host",
+        "profile": "headless",
+        "dumpConfigExitCode": 0,
+        "mcpLauncherConfigured": true,
+        "skillProviderConfigured": true,
+        "modelTaskInvoked": false,
+        "scope": "Native configuration merge, not a claim that a new native model task called MCP."
+      },
+      "doctor": {
+        "ok": true,
+        "tools": 22,
+        "designAuditSupported": true,
+        "skillSha256": "f09f2bf2a49bfc62bc89e76fca53c5ef3d25ee08f810d51b6285d6160cdee990",
+        "storyGuideSha256": "b65eb6be627fb5006b10617aecbdcbb1ee0d196e2527a60b82f73d4380953050"
+      }
+    }
+  ],
+  "nativeUpgrade": {
+    "method": "Supported same-name marketplace remove/add followed by install for Codex and Claude.",
+    "claudePriorHuandengUninstalledDuringMarketplaceRemoval": true,
+    "huandengDeclaresUserConfigOrAuthFields": false,
+    "unrelatedPluginVersionsAndEnabledStatesRetained": true,
+    "earlierVersionedDistributionsRetained": true,
+    "chatgptPickerDeduplicationClaimed": false
+  },
+  "desktopAcceptance": {
+    "actualInstalledApplicationPathMatched": true,
+    "isolatedUserData": true,
+    "isolatedRuntime": true,
+    "publicExamples": ["public-example/en/deck.pptd", "public-example/zh/deck.pptd"],
+    "englishEditorDomRendered": true,
+    "designDialogOpened": true,
+    "qualitySummary": {
+      "slides": 1,
+      "observations": 0,
+      "backgrounds": 1
+    },
+    "secondNativeLaunchExitCode": 0,
+    "chineseEntryRoutedIntoSameWorkspace": true,
+    "workspaceProjectCount": 2,
+    "chineseProjectBecameActive": true,
+    "rendererErrors": [],
+    "originalPublicExamplesUnchanged": true,
+    "publicCopiesUnchanged": true,
+    "normalExitCode": 0,
+    "ok": true,
+    "nativePixelsCaptured": false,
+    "captureLimitation": "Two optional hidden-window capture attempts could not complete compositor capture. Their harness records were retained. This acceptance covers actual binary identity, DOM, native routing and adapters; separate UI/deck reviews provide visual evidence."
+  },
+  "archives": [
+    {
+      "path": "release/HUANDENG-Editor-0.18.0-win32-x64.zip",
+      "bytes": 236194192,
+      "files": 29308,
+      "sha256": "370569a7e14262e7c5aca8dced3a6224b5782acdf7abb67cea26a9fb4220a829",
+      "crcPassed": true
+    },
+    {
+      "path": "release/HUANDENG-0.18.0-plugin.zip",
+      "bytes": 210323,
+      "files": 24,
+      "sha256": "64baf5c3bbdcb85af4f20c74039d6938ff00c355ab418bcb400af8b03fccec0b",
+      "crcPassed": true
+    },
+    {
+      "path": "release/HUANDENG-0.18.0-native-marketplace.zip",
+      "bytes": 211772,
+      "files": 26,
+      "sha256": "9386b1b348b9a648d8bf379a05e3feed60ba03e45a72fcb35092877d4d102e4c",
+      "crcPassed": true
+    }
+  ],
+  "privateAccountOverlayIncludedInPublicArchives": false
+}

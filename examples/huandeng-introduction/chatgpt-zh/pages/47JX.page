@@ -1,0 +1,140 @@
+pageType: content
+background:
+  type: solid
+  color: "#FFFFFF"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 64
+      - 45
+      - 832
+      - 55
+    role: title
+    content:
+      text: 文件夹就是项目
+      fontFamily: Microsoft YaHei
+      fontSize: 28
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: footer
+    elementType: text
+    bounds:
+      - 64
+      - 506
+      - 400
+      - 16
+    content:
+      text: HUANDENG    /    04
+      fontFamily: Microsoft YaHei
+      fontSize: 10
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: entry
+    elementType: text
+    bounds:
+      - 64
+      - 153
+      - 340
+      - 55
+    content:
+      text: deck.pptd
+      fontFamily: Consolas
+      fontSize: 28
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+    role: heading
+  - elementId: entry-copy
+    elementType: text
+    bounds:
+      - 64
+      - 227
+      - 320
+      - 35
+    content:
+      text: 从这里打开作品
+      fontFamily: Microsoft YaHei
+      fontSize: 18
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: folder-names
+    elementType: text
+    bounds:
+      - 478
+      - 145
+      - 185
+      - 295
+    content:
+      text: |-
+        pages/
+        media/
+        AGENTS.md
+        .huandeng/
+        Exports/
+      fontFamily: Consolas
+      fontSize: 18
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 2.85
+  - elementId: folder-roles
+    elementType: text
+    bounds:
+      - 676
+      - 145
+      - 220
+      - 295
+    content:
+      text: |-
+        可编辑页面
+        原始素材
+        项目偏好
+        关系与版本
+        交付文件
+      fontFamily: Microsoft YaHei
+      fontSize: 16
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 3.20625
+  - elementId: carry
+    elementType: text
+    bounds:
+      - 64
+      - 420
+      - 370
+      - 60
+    content:
+      text: 完整文件夹可以接着编辑。
+      fontFamily: Microsoft YaHei
+      fontSize: 18
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+notes: |-
+  移动或分享时保留完整文件夹。deck.pptd 是入口，pages 保存可编辑页面，media 保存源素材。AGENTS.md 放项目偏好，.huandeng 保存关系和版本。Exports 保存交付文件。
+
+  Source: actual HUANDENG Editor v0.18 public example and project feature contracts. https://github.com/JaytonKogeru/huandeng; packages/core/src/pptd/agent-guide.ts; docs/SPEC-V018.md. Screenshot provenance is retained with the project assets.

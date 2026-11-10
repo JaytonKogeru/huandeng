@@ -1,0 +1,148 @@
+elements:
+  - elementId: title
+    elementType: text
+    role: title
+    bounds:
+      - 56
+      - 40
+      - 848
+      - 44
+    content:
+      text: The same slide gets rebuilt for every audience
+      fontFamily: Arial
+      fontSize: 28
+      lineHeight: 1.2
+      color: "#1A1D21"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: story
+    elementType: text
+    bounds:
+      - 56
+      - 124
+      - 380
+      - 190
+    content:
+      text: A results slide starts in a lab meeting. It is copied into a conference talk, trimmed for a five-minute update, and reshaped again for a thesis defence.
+      fontFamily: Arial
+      fontSize: 20
+      lineHeight: 1.45
+      color: "#3A3F45"
+      align:
+        - left
+        - top
+  - elementId: p1-head
+    elementType: text
+    bounds:
+      - 500
+      - 124
+      - 404
+      - 26
+    content:
+      text: Fixes stop at one copy
+      fontFamily: Arial
+      fontSize: 19
+      lineHeight: 1.2
+      color: "#1A1D21"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: p1-body
+    elementType: text
+    bounds:
+      - 500
+      - 154
+      - 404
+      - 50
+    content:
+      text: A corrected number in one deck stays wrong in the others.
+      fontFamily: Arial
+      fontSize: 18
+      lineHeight: 1.35
+      color: "#3A3F45"
+      align:
+        - left
+        - top
+  - elementId: p2-head
+    elementType: text
+    bounds:
+      - 500
+      - 222
+      - 404
+      - 26
+    content:
+      text: Order hides identity
+      fontFamily: Arial
+      fontSize: 19
+      lineHeight: 1.2
+      color: "#1A1D21"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: p2-body
+    elementType: text
+    bounds:
+      - 500
+      - 252
+      - 404
+      - 50
+    content:
+      text: “Slide 7” points to a different slide in every version.
+      fontFamily: Arial
+      fontSize: 18
+      lineHeight: 1.35
+      color: "#3A3F45"
+      align:
+        - left
+        - top
+  - elementId: p3-head
+    elementType: text
+    bounds:
+      - 500
+      - 320
+      - 404
+      - 26
+    content:
+      text: Intent goes unrecorded
+      fontFamily: Arial
+      fontSize: 19
+      lineHeight: 1.2
+      color: "#1A1D21"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: p3-body
+    elementType: text
+    bounds:
+      - 500
+      - 350
+      - 404
+      - 50
+    content:
+      text: Why a slide looks the way it does lives in someone’s head, not next to the slide.
+      fontFamily: Arial
+      fontSize: 18
+      lineHeight: 1.35
+      color: "#3A3F45"
+      align:
+        - left
+        - top
+  - elementId: answer
+    elementType: text
+    bounds:
+        [56,440,848,54]
+    content:
+      text: HUANDENG keeps one editable source, records the intent beside it, and makes every change reviewable.
+      fontFamily: Arial
+      fontSize: 19
+      lineHeight: 1.3
+      color: "#2D5A4A"
+      align:
+        - left
+        - top
+notes: "Start from a situation most researchers know. A good results slide is made once, then copied into every later talk. Each copy is edited separately, so a corrected value or a better figure reaches only one deck. Slide numbers do not help either: slide 7 in the lab version is slide 12 in the conference version. And the reasons behind a layout — which figure must stay, which wording a supervisor approved — are rarely written down. That matters more now that we ask AI agents to edit slides for us: they need the same context a colleague would."

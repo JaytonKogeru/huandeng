@@ -1,0 +1,102 @@
+pageType: content
+background:
+  type: solid
+  color: "#FFFFFF"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 64
+      - 45
+      - 832
+      - 55
+    role: title
+    content:
+      {"text":"不同 Agent，继续编辑同一个项目","fontFamily":"Microsoft YaHei","fontSize":28,"color":"#202423","bold":false,"align":["left","top"],"lineHeight":1.28}
+  - elementId: footer
+    elementType: text
+    bounds:
+      - 64
+      - 506
+      - 400
+      - 16
+    content:
+      text: HUANDENG    /    13
+      fontFamily: Microsoft YaHei
+      fontSize: 10
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: clients
+    elementType: text
+    bounds:
+      - 64
+      - 145
+      - 340
+      - 265
+    content:
+      text: |-
+        ChatGPT
+        Codex
+        Claude Code
+        DeepSeek Harness
+      fontFamily: Microsoft YaHei
+      fontSize: 25
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 2.4
+    role: heading
+  - elementId: project
+    elementType: text
+    bounds:
+      - 505
+      - 166
+      - 390
+      - 90
+    content:
+      text: 当前 HUANDENG 项目
+      fontFamily: Microsoft YaHei
+      fontSize: 28
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+    role: heading
+  - elementId: shared
+    elementType: text
+    bounds:
+      - 505
+      - 291
+      - 390
+      - 145
+    content:
+      {"text":"插件提供编辑规范\n连接器读写当前项目\n在编辑器中检查并继续修改","fontFamily":"Microsoft YaHei","fontSize":19,"color":"#202423","bold":false,"align":["left","top"],"lineHeight":1.7}
+  - elementId: setup
+    elementType: text
+    bounds:
+      - 64
+      - 462
+      - 800
+      - 25
+    content:
+      text: 接入说明来自 Editor 的 Agent setup。
+      fontFamily: Microsoft YaHei
+      fontSize: 15
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+notes: |-
+  ChatGPT、Codex、Claude Code 和 DeepSeek Harness 通过各自适配入口接入。插件提供工作方法，connector 或 MCP 连接当前项目服务。共享写入服务把修改保存到正在打开的作品。各客户端需要对应配置。
+
+  Source: actual HUANDENG Editor v0.18 public example and project feature contracts. https://github.com/JaytonKogeru/huandeng; packages/core/src/pptd/agent-guide.ts; docs/SPEC-V018.md. Screenshot provenance is retained with the project assets.

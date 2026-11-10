@@ -1,0 +1,39 @@
+elements:
+  - elementId: title
+    elementType: text
+    role: title
+    bounds:
+      - 56
+      - 40
+      - 848
+      - 44
+    content:
+      text: Organise the argument with Sections
+      fontFamily: Arial
+      fontSize: 28
+      lineHeight: 1.2
+      color: "#1A1D21"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: sections-shot
+    elementType: image
+    bounds:
+        [56,104,540,380]
+    src: "media/en/sections-focus.png"
+    sourceName: "sections-focus.png"
+  - elementId: sections-text
+    elementType: text
+    bounds:
+        [632,108,272,360]
+    content:
+      text: "A Section starts at its first slide and runs until the next one begins.\n\nMove a slide and its membership follows the order.\n\nA title-only opening slide, like the dividers in this talk, is optional."
+      fontFamily: Arial
+      fontSize: 18
+      lineHeight: 1.4
+      color: "#3A3F45"
+      align:
+        - left
+        - top
+notes: Begin by dividing the deck into parts. In the Sections view you pick a Section's first slide; the Section runs until the next one starts, and the last Section runs to the end. Because membership follows the slide order, dragging a slide into a different part of the deck is all it takes to move it between Sections. Each Section can have its own Story. A title-only opening slide, like the dividers in this talk, is a real slide you add on purpose; the Section itself is just organisation. Presentations can reference a whole Section, so a talk built from Sections picks up new slides automatically.

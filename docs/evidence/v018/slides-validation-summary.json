@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "passed": true,
+  "artifactReceipt": {
+    "file": "ChatGPT/audit/artifact-qa/artifact-acceptance.json",
+    "sha256": "effff2772ba5e5852e4d205778a8c45919ef03884c304999adf3b4bcd0b8d6f3"
+  },
+  "editions": [
+    {
+      "edition": "chatgpt-zh",
+      "pdfPages": 22,
+      "pptxSlides": 22,
+      "editableTextCharacters": 1618,
+      "projectCheck": {
+        "pageCount": 22,
+        "size": [960, 540],
+        "identityPersisted": true,
+        "writable": false,
+        "elementTypes": {
+          "text": 103,
+          "image": 13
+        },
+        "diagnostics": []
+      },
+      "sourceUnchanged": true,
+      "sha256": {
+        "huandeng-chatgpt-zh.pdf": "e3f8f38a602eedce0acb729beb95fe60076ec8065114f3d45b4efc1c023e6c20",
+        "huandeng-chatgpt-zh.pptx": "dd3dd5c55cfc1cc877941e36eb99a3c54b704255da56c7564c236c2d5bc090a7"
+      }
+    },
+    {
+      "edition": "chatgpt-en",
+      "pdfPages": 22,
+      "pptxSlides": 22,
+      "editableTextCharacters": 3722,
+      "projectCheck": {
+        "pageCount": 22,
+        "size": [960, 540],
+        "identityPersisted": true,
+        "writable": false,
+        "elementTypes": {
+          "text": 103,
+          "image": 13
+        },
+        "diagnostics": []
+      },
+      "sourceUnchanged": true,
+      "sha256": {
+        "huandeng-chatgpt-en.pdf": "c63d5f9eac1c097ef76ecfcbbbedbb65725bb2c8add227c53c406c1d1bbf1413",
+        "huandeng-chatgpt-en.pptx": "15a25175a6764697e78a5070a1a10e77a6ade002aaa15e602f065668b6910045"
+      }
+    },
+    {
+      "edition": "claude-en",
+      "pdfPages": 21,
+      "pptxSlides": 21,
+      "editableTextCharacters": 7419,
+      "projectCheck": {
+        "pageCount": 21,
+        "size": [960, 540],
+        "identityPersisted": true,
+        "writable": false,
+        "elementTypes": {
+          "image": 9,
+          "text": 112,
+          "table": 2
+        },
+        "diagnostics": []
+      },
+      "sourceUnchanged": true,
+      "sha256": {
+        "huandeng-claude-en.pdf": "c5e2cf450dfa8ec600e395c31b926aa17565fce79d68ae7d9523956fd8cc7621",
+        "huandeng-claude-en.pptx": "6aed9ef80c3bd10232730e0b8d92c752037e3f910fa8844b2100ad452cebcc4c"
+      }
+    },
+    {
+      "edition": "deepseek-zh",
+      "pdfPages": 21,
+      "pptxSlides": 21,
+      "editableTextCharacters": 2957,
+      "projectCheck": {
+        "pageCount": 21,
+        "size": [960, 540],
+        "identityPersisted": true,
+        "writable": false,
+        "elementTypes": {
+          "text": 139,
+          "image": 4
+        },
+        "diagnostics": []
+      },
+      "sourceUnchanged": true,
+      "sha256": {
+        "huandeng-deepseek-zh.pdf": "1c76bea8a26d3caee92cca1f0fc081180fde6357a2e02560d6977562c0eeea87",
+        "huandeng-deepseek-zh.pptx": "c4650175315b8dff4ff1a39daf1daeba61b0458cdcb093d1c5481622587302db"
+      }
+    }
+  ],
+  "office": [
+    {
+      "edition": "chatgpt-en",
+      "software": "Microsoft PowerPoint",
+      "version": "16.0",
+      "readOnly": true,
+      "openAndRepair": false,
+      "slides": 22,
+      "sourceSha256": "15a25175a6764697e78a5070a1a10e77a6ade002aaa15e602f065668b6910045",
+      "sourceUnchanged": true,
+      "machineReceipt": {
+        "file": "ChatGPT/audit/office-final-en/office-render-acceptance.json",
+        "sha256": "8d093f430426edb6049501032e4076a903f6353e47528896b083cee3e6436a2c"
+      },
+      "visualReview": {
+        "reviewer": "integration-workstream",
+        "contactSheetsReviewed": 3,
+        "result": "No observed clipping, missing images or glyph problems."
+      }
+    },
+    {
+      "edition": "chatgpt-zh",
+      "software": "Microsoft PowerPoint",
+      "version": "16.0",
+      "readOnly": true,
+      "openAndRepair": false,
+      "slides": 22,
+      "sourceSha256": "dd3dd5c55cfc1cc877941e36eb99a3c54b704255da56c7564c236c2d5bc090a7",
+      "sourceUnchanged": true,
+      "machineReceipt": {
+        "file": "ChatGPT/audit/office-final-zh/office-render-acceptance.json",
+        "sha256": "8a0612f4687cb81f11efc32abbdc6895025190f974beb970b3e8ace0dcbeb170"
+      },
+      "visualReview": {
+        "reviewer": "integration-workstream",
+        "contactSheetsReviewed": 3,
+        "result": "No observed clipping, missing images or glyph problems."
+      }
+    }
+  ],
+  "pdfVisualReview": {
+    "reviewer": "integration-workstream",
+    "renderer": "MuPDF",
+    "editions": ["chatgpt-en", "chatgpt-zh"],
+    "pagesRendered": 44,
+    "contactSheetsReviewed": 4,
+    "result": "No observed clipping, missing images or glyph problems."
+  },
+  "finalChinesePage15PeerReview": {
+    "editorRenderSha256": "e6db880b7fa398fe3ec78df01ac62ce5161c2834eb1e0c903189dc11697252ed",
+    "officeRenderSha256": "698992e412120cbacf249c8d745a649aac7bd542eabb8dbb31f994af3ded88ba",
+    "result": "Correct final caption line break in both."
+  }
+}

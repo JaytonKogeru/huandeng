@@ -1,0 +1,24 @@
+pageType: section
+background:
+  type: solid
+  color: "#FFFFFF"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 64
+      - 217
+      - 832
+      - 86
+    role: title
+    content:
+      text: One source
+      fontFamily: Arial
+      fontSize: 34
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+notes: First, how the work is stored, organized and reused for different audiences.

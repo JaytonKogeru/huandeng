@@ -1,0 +1,20 @@
+elements:
+  - elementId: divider-title
+    elementType: text
+    role: title
+    bounds:
+      - 56
+      - 238
+      - 848
+      - 64
+    content:
+      text: Inside a project
+      fontFamily: Arial
+      fontSize: 36
+      lineHeight: 1.2
+      color: "#1A1D21"
+      bold: true
+      align:
+        - left
+        - middle
+notes: Section 2. What a HUANDENG project actually is on disk, which pieces of software are involved, and what the workspace looks like.

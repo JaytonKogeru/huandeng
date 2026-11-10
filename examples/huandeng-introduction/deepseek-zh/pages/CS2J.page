@@ -1,0 +1,131 @@
+elements:
+  - bounds:
+      - 64
+      - 52
+      - 800
+      - 42
+    content:
+      align:
+        - left
+        - top
+      color: "#121212"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 26
+      lineHeight: 1.3
+      text: Main Slides：只维护一份底稿
+    elementId: t
+    elementType: text
+  - bounds:
+      - 64
+      - 104
+      - 760
+      - 34
+    content:
+      align:
+        - left
+        - top
+      color: "#3F3F3F"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 18
+      lineHeight: 1.6
+      text: 一个 Project 只有一份 Main Slides。它保存所有页面，也保存每页的身份与 Story。
+    elementId: lead
+    elementType: text
+  - bounds:
+      - 64
+      - 232
+      - 380
+      - 20
+    content:
+      align:
+        - left
+        - top
+      color: "#8C8C8C"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 12
+      letterSpacing: 2
+      lineHeight: 1.5
+      text: MAIN SLIDES
+    elementId: l1
+    elementType: text
+  - bounds:
+        [64,258,400,120]
+    content:
+      align:
+        - left
+        - top
+      color: "#2E2E2E"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 17
+      lineHeight: 1.8
+      text: "组会、会议、评审共用的页面只在这里维护。\n插入、改写、删除都作用于这份底稿。"
+    elementId: b1
+    elementType: text
+  - bounds:
+      - 516
+      - 232
+      - 380
+      - 20
+    content:
+      align:
+        - left
+        - top
+      color: "#8C8C8C"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 12
+      letterSpacing: 2
+      lineHeight: 1.5
+      text: 每一页携带
+    elementId: l2
+    elementType: text
+  - bounds:
+      - 516
+      - 258
+      - 380
+      - 140
+    content:
+      align:
+        - left
+        - top
+      color: "#2E2E2E"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 17
+      lineHeight: 1.8
+      text: |-
+        内容对象与叠放顺序
+        页面 Story 与保留约束
+        这一页的讲稿
+        命名版本
+    elementId: b2
+    elementType: text
+  - bounds:
+      - 64
+      - 430
+      - 832
+      - 26
+    content:
+      align:
+        - left
+        - top
+      color: "#6A6A6A"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 15
+      lineHeight: 1.6
+      text: Presentations 不复制页面，只引用。
+    elementId: close
+    elementType: text
+notes: Main Slides 是内容的底稿。把“页面携带什么”列出来，是为了引出下一张：演讲里的页面只是一次引用。

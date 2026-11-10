@@ -1,0 +1,103 @@
+pageType: content
+background:
+  type: solid
+  color: "#FFFFFF"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 64
+      - 45
+      - 832
+      - 55
+    role: title
+    content:
+      text: Browse for rhythm, Outline for logic
+      fontFamily: Arial
+      fontSize: 30
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: footer
+    elementType: text
+    bounds:
+      - 64
+      - 506
+      - 400
+      - 16
+    content:
+      text: HUANDENG    /    11
+      fontFamily: Arial
+      fontSize: 10
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: browse
+    elementType: image
+    src: "media/imported/d81ca1d3d956de469ebe26ea28e121e2c63e78349e97ec063068d28cfb26089d.png"
+    sourceName: "en-browse-reading-4x.png"
+    alt: "en browse reading 4x.png"
+    bounds:
+      - 64
+      - 143
+      - 398
+      - 286
+    fit:
+      mode: contain
+    crop:
+      {"left":0,"right":0,"top":0,"bottom":0}
+  - elementId: outline
+    elementType: image
+    src: "media/imported/0c992097d40aa22917c249d80642892caad569fa7a60faf4df2089cafdc79c09.png"
+    sourceName: "en-outline-reading-4x.png"
+    alt: "en outline reading 4x.png"
+    bounds:
+        [500,140,396,300]
+    fit:
+      mode: contain
+    crop:
+      {"left":0,"right":0.56,"top":0,"bottom":0}
+  - elementId: browse-caption
+    elementType: text
+    bounds:
+      - 64
+      - 451
+      - 390
+      - 27
+    content:
+      text: Density and pacing
+      fontFamily: Arial
+      fontSize: 18
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: outline-caption
+    elementType: text
+    bounds:
+      - 500
+      - 451
+      - 396
+      - 27
+    content:
+      text: Headings, argument and sequence
+      fontFamily: Arial
+      fontSize: 18
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+notes: |-
+  Browse puts the actual slide previews together so you can assess rhythm and density. Outline exposes the headings, text and sequence. Both views operate on the same slides.
+
+  Source: actual HUANDENG Editor v0.18 public example and project feature contracts. https://github.com/JaytonKogeru/huandeng; packages/core/src/pptd/agent-guide.ts; docs/SPEC-V018.md. Screenshot provenance is retained with the project assets.

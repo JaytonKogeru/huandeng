@@ -1,0 +1,119 @@
+elements:
+  - elementId: title
+    elementType: text
+    role: title
+    bounds:
+      - 56
+      - 40
+      - 848
+      - 44
+    content:
+      text: People and agents save through one writer
+      fontFamily: Arial
+      fontSize: 28
+      lineHeight: 1.2
+      color: "#1A1D21"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: w1-head
+    elementType: text
+    bounds:
+      - 56
+      - 124
+      - 400
+      - 26
+    content:
+      text: Revisions, not overwrites
+      fontFamily: Arial
+      fontSize: 19
+      lineHeight: 1.2
+      color: "#1A1D21"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: w1-body
+    elementType: text
+    bounds:
+      - 56
+      - 156
+      - 400
+      - 110
+    content:
+      text: Each change states which version of the slide it was based on. If someone saved first, the stale change is rejected and has to be re-read.
+      fontFamily: Arial
+      fontSize: 18
+      lineHeight: 1.4
+      color: "#3A3F45"
+      align:
+        - left
+        - top
+  - elementId: w2-head
+    elementType: text
+    bounds:
+      - 504
+      - 124
+      - 400
+      - 26
+    content:
+      text: Every save can be reviewed
+      fontFamily: Arial
+      fontSize: 19
+      lineHeight: 1.2
+      color: "#1A1D21"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: w2-body
+    elementType: text
+    bounds:
+      - 504
+      - 156
+      - 400
+      - 110
+    content:
+      text: "A saved operation keeps its before and after. You can inspect exactly what changed, and undo it if nobody has edited the slide since."
+      fontFamily: Arial
+      fontSize: 18
+      lineHeight: 1.4
+      color: "#3A3F45"
+      align:
+        - left
+        - top
+  - elementId: w3-head
+    elementType: text
+    bounds:
+      - 56
+      - 302
+      - 848
+      - 26
+    content:
+      text: Reports are kept apart from saves
+      fontFamily: Arial
+      fontSize: 19
+      lineHeight: 1.2
+      color: "#1A1D21"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: w3-body
+    elementType: text
+    bounds:
+      - 56
+      - 334
+      - 848
+      - 56
+    content:
+      text: The Activity panel shows what an agent says it is doing next to what the writer actually saved, so a progress message is never mistaken for a change.
+      fontFamily: Arial
+      fontSize: 18
+      lineHeight: 1.4
+      color: "#3A3F45"
+      align:
+        - left
+        - top
+notes: Because the canvas and the agents share one writer, there is one rule for everyone. Every change says which revision of the slide it started from. If you edited the slide while the agent was thinking, its change is rejected rather than silently overwriting your work; it has to read again and propose again. Every saved operation keeps its before and after, so you can open it and see exactly what the agent did, and revert it as long as nobody has edited that slide since. Finally, the Activity panel separates what a client reports, such as 'checking renders', from the receipts of what was actually saved.

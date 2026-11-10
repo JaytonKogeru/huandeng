@@ -1,0 +1,123 @@
+pageType: content
+background:
+  type: solid
+  color: "#FFFFFF"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 64
+      - 45
+      - 832
+      - 55
+    role: title
+    content:
+      text: 在 Editor 演讲，也能导出交付
+      fontFamily: Microsoft YaHei
+      fontSize: 28
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: footer
+    elementType: text
+    bounds:
+      - 64
+      - 506
+      - 400
+      - 16
+    content:
+      text: HUANDENG    /    20
+      fontFamily: Microsoft YaHei
+      fontSize: 10
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: delivery-toolbar
+    elementType: image
+    src: "media/imported/90224b9de26dfd919fa6c4ee7d57d55e7662100ddc9d7838b6123a6610640c2d.png"
+    sourceName: "zh-CN-native-delivery-toolbar-4x.png"
+    alt: "zh CN native delivery toolbar 4x.png"
+    bounds:
+        [64,175,832,85]
+    fit:
+      mode: contain
+    crop:
+      {"left":0,"right":0,"top":0,"bottom":0}
+  - elementId: present
+    elementType: text
+    bounds:
+      - 64
+      - 333
+      - 350
+      - 34
+    content:
+      text: 现场讲述
+      fontFamily: Microsoft YaHei
+      fontSize: 20
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: present-copy
+    elementType: text
+    bounds:
+      - 64
+      - 391
+      - 350
+      - 62
+    content:
+      text: 按点击逐步呈现内容。
+      fontFamily: Microsoft YaHei
+      fontSize: 18
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: deliver
+    elementType: text
+    bounds:
+      - 530
+      - 333
+      - 366
+      - 34
+    content:
+      text: 文件交付
+      fontFamily: Microsoft YaHei
+      fontSize: 20
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: deliver-copy
+    elementType: text
+    bounds:
+      - 530
+      - 391
+      - 366
+      - 62
+    content:
+      text: PPTX 与 PDF 保留静态页面。
+      fontFamily: Microsoft YaHei
+      fontSize: 18
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+notes: |-
+  Editor 支持按点击出现、淡入等效果。PPTX 和 PDF 是静态交付格式，不会把实时点击顺序转换成 PowerPoint 原生动画。交付前应打开导出文件检查。
+
+  Source: actual HUANDENG Editor v0.18 public example and project feature contracts. https://github.com/JaytonKogeru/huandeng; packages/core/src/pptd/agent-guide.ts; docs/SPEC-V018.md. Screenshot provenance is retained with the project assets.

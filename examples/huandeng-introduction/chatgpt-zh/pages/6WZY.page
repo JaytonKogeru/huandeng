@@ -1,0 +1,75 @@
+pageType: content
+background:
+  type: solid
+  color: "#FFFFFF"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 64
+      - 45
+      - 832
+      - 55
+    role: title
+    content:
+      text: 编辑界面围绕当前工作展开
+      fontFamily: Microsoft YaHei
+      fontSize: 28
+      color: "#202423"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: footer
+    elementType: text
+    bounds:
+      - 64
+      - 506
+      - 400
+      - 16
+    content:
+      text: HUANDENG    /    09
+      fontFamily: Microsoft YaHei
+      fontSize: 10
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+  - elementId: workspace
+    elementType: image
+    src: "media/imported/15179dfcf6c63e3accc20d483a17c8c608464c9b0745ac64c478d54c65e571fc.png"
+    sourceName: "zh-CN-native-edit-focused-2x.png"
+    alt: "zh CN native edit focused 2x.png"
+    bounds:
+      - 64
+      - 126
+      - 832
+      - 337
+    fit:
+      mode: contain
+    crop:
+      {"left":0,"right":0,"top":0,"bottom":0.28}
+  - elementId: caption
+    elementType: text
+    bounds:
+      - 64
+      - 471
+      - 820
+      - 24
+    content:
+      text: 组织项目     /     编辑当前页     /     查看对象与意图
+      fontFamily: Microsoft YaHei
+      fontSize: 13
+      color: "#616A67"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.28
+notes: |-
+  左边组织项目与页面，中间编辑作品，右边查看当前对象与 Story。Browse、Outline、Sections、Notes page 和 History 是同级工作视图，分别支持不同的编辑任务。
+
+  Source: actual HUANDENG Editor v0.18 public example and project feature contracts. https://github.com/JaytonKogeru/huandeng; packages/core/src/pptd/agent-guide.ts; docs/SPEC-V018.md. Screenshot provenance is retained with the project assets.
