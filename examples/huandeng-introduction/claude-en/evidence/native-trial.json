@@ -30,7 +30,7 @@
   "turns": [
     {
       "requestId": "e1f4ba6f-304a-4b1f-a80f-cfc8f86e5ba0",
-      "sessionId": "ec6201f1-473d-462f-a190-ad9334edd022",
+      "sessionId": "<native-session-001>",
       "state": "completed",
       "exitCode": 0,
       "nativeCompleted": true,
@@ -41,7 +41,7 @@
     },
     {
       "requestId": "7f91b043-d7fa-438b-ab94-6839f0122517",
-      "sessionId": "ec6201f1-473d-462f-a190-ad9334edd022",
+      "sessionId": "<native-session-001>",
       "state": "completed",
       "exitCode": 0,
       "nativeCompleted": true,

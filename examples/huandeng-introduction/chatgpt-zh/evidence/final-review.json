@@ -1,0 +1,479 @@
+{
+  "schemaVersion": 1,
+  "edition": "chatgpt-zh",
+  "reviewer": "ChatGPT 6 Astra / primary session",
+  "authoring": "Three parallel section agents authored 8 pages each; primary session orchestrated and inspected all 24 pages",
+  "visualReview": {
+    "status": "passed",
+    "scope": "Every final page inspected individually at readable presentation size",
+    "checks": [
+      "Actionable Editor workflow",
+      "Actual UI source and crop integrity",
+      "Readable screenshots and body text",
+      "Visual guides for comparisons",
+      "Accurate language/model watermark",
+      "Meaningful Notes and Story"
+    ],
+    "userAcceptance": "not asserted"
+  },
+  "pages": [
+    {
+      "position": 1,
+      "pageId": "7995de62-e81e-46db-b250-cabc66a99b28",
+      "shortCode": "TTHC",
+      "pageRevision": "sha256:8059612a92c9fa4ad13fcb76c54474b62003b14a327d29f67d2ff7d45dd43b16",
+      "title": "HUANDENG · 从一页，做到一场演讲",
+      "file": "01.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "0ed99a028bbe88033868188fdc8b29309ba3d0f18f83a1d464fefba0ad0a4891"
+    },
+    {
+      "position": 2,
+      "pageId": "1dc23de8-b351-483b-a93a-f02c0444a927",
+      "shortCode": "MSVB",
+      "pageRevision": "sha256:aaf02621ec476c481595aea34c6d00aa8e2697f5df2a4f3d8a808b37ba47aa6d",
+      "title": "把下一次修改，留在同一页",
+      "file": "02.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "1017b25beef8fff3ceb0386f9e8e90dae32d4e64d7f538227006f39a4e296ca4"
+    },
+    {
+      "position": 3,
+      "pageId": "1f6289fd-1d4c-4a03-a74d-4bc4955de868",
+      "shortCode": "6G4G",
+      "pageRevision": "sha256:8089cb331a86bcc6ee9a8515c3f11331c6ae9e1747c206450d8fa23297084108",
+      "title": "人和助手，接着改同一份项目",
+      "file": "03.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "93e1b0adb18adc10b3155275498b38839bff61294d0f57d68e368bde1be4bdda"
+    },
+    {
+      "position": 4,
+      "pageId": "b55179ed-446c-42a7-a2d5-2557defac052",
+      "shortCode": "CR5K",
+      "pageRevision": "sha256:b50e10a2624c5fa3aa85f606aafe19e2655394074d03aef5ff45d40b6e9d7cdc",
+      "title": "从 deck.pptd 打开这份项目",
+      "file": "04.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "685462ad88fa58ecdd1b956b70a2690f38f845d9bb00d7467a4d76db7470551f"
+    },
+    {
+      "position": 5,
+      "pageId": "3483b895-bc52-43b6-a7c4-001a0d1e4526",
+      "shortCode": "ZYZB",
+      "pageRevision": "sha256:48d2212dfd90d6538f32dbaf89a903b9a0c54ed3b2662292e759897ed325b7f8",
+      "title": "先选页，再在画布里选对象",
+      "file": "05.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "8c92be0693aaac3849f3875a65d8a9e7868d9144c62c39a932a23f0019f6130e"
+    },
+    {
+      "position": 6,
+      "pageId": "05cd8517-c8ac-4e12-b2d0-40c438b91042",
+      "shortCode": "HWB6",
+      "pageRevision": "sha256:037261fcb69b1b7a232769499e8d6216cec49ece82f07d51ff1ccf68ceff03f8",
+      "title": "把这页要讲什么，留在 Story",
+      "file": "06.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "e73ebae485987ceede41a264419c5cba9a6cd8048cf51eb3b28b41e63dc35a9f"
+    },
+    {
+      "position": 7,
+      "pageId": "59857807-d9f3-4e58-9a60-275cd504ea16",
+      "shortCode": "MPTA",
+      "pageRevision": "sha256:4c186ab453ce92343ab71c17dd5d26b9cde803765695d7e5b52bee96247b1dc3",
+      "title": "从素材库，把原图放到页面里",
+      "file": "07.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "a28702b2a09b480c3d2c51cdd1f397ad37779630b26155c2a2a1eda2e432d527"
+    },
+    {
+      "position": 8,
+      "pageId": "c1fcdc66-1c25-45a6-9b98-83d16f063c3e",
+      "shortCode": "7EKH",
+      "pageRevision": "sha256:61253125eb65f36d4b36aeceeb22e04c081ca87a9ff187148ec5ef42f46aa617",
+      "title": "检查画布，然后保存页面",
+      "file": "08.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "1d1a689ddecd742c22bf1867dffde76de2e22c29e6378fbe637df70d079bfccd"
+    },
+    {
+      "position": 9,
+      "pageId": "7b5bb42e-c529-49f8-ad88-62c69b567837",
+      "shortCode": "HUA9",
+      "pageRevision": "sha256:d8491b3d8d086028f9fc28e52d96b172d665d7766755e4cc0a422d50f5663e2f",
+      "title": "点中对象，再改它的属性",
+      "file": "09.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "81b65f48ac30f81eeffeec4f3f11fee307f906692e87ee2f36a72e94933d7048"
+    },
+    {
+      "position": 10,
+      "pageId": "7b69742f-16b5-4b80-acf0-1d23966aae96",
+      "shortCode": "JNZV",
+      "pageRevision": "sha256:4c244392960397586803b2956a82d4ffc7bd853ffd2e5cd68d48f9c165b24482",
+      "title": "只改两句，保留其他内容",
+      "file": "10.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "4a6c76edffe5fa10d4c88ba8ce115fa96e5e3589f2741a1d7845bebc75980412"
+    },
+    {
+      "position": 11,
+      "pageId": "129dfdc6-685d-48b4-972b-abff11f823e6",
+      "shortCode": "93SF",
+      "pageRevision": "sha256:f586d13ff4ab3b29a946b60971da646404b183f3b8267c02715deae3c225e4b6",
+      "title": "重叠时，从图层找到对象",
+      "file": "11.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "0578b619577b063dccbdb5216b8fa6c41d8ff1e7d304f690aef4f724293de863"
+    },
+    {
+      "position": 12,
+      "pageId": "ea528c6a-2423-488d-834b-056322cca744",
+      "shortCode": "E9RN",
+      "pageRevision": "sha256:07e9b474add6391fdcd37989fca3443323b9944faf7a7f11a6aee16d02501b83",
+      "title": "裁切显示范围，保留原图",
+      "file": "12.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "d8ba5ef75643e1b2d2863e5bd1c66787bf2482f59834509c54dc8684a6261fa5"
+    },
+    {
+      "position": 13,
+      "pageId": "def43d68-1767-45f5-800a-17d648750b7e",
+      "shortCode": "FE8A",
+      "pageRevision": "sha256:7a279d6b759c701f19abdcfb97e33357e4c5cde75244840df2b214c2854030c6",
+      "title": "保存后，核对这一次修改",
+      "file": "13.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "842996ef113c25e219686d5a017e529a3e8841b6296b4c072fbe1c0de4084e19"
+    },
+    {
+      "position": 14,
+      "pageId": "8bb920ed-1c71-45ac-ad9d-aa00750b1ff6",
+      "shortCode": "SE68",
+      "pageRevision": "sha256:c01873d29e04d066cd315e331ce6b49f04fb587495d0150bf4fc68cf08b20b60",
+      "title": "把怎么讲，写进备注页",
+      "file": "14.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "0ba13ef928581f65e59b6132fdbaa1dbe0fef0075086ec9a293932d2a1dd8944"
+    },
+    {
+      "position": 15,
+      "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
+      "shortCode": "U5QA",
+      "pageRevision": "sha256:c379c7ac60ead5fe487d597fe1c9b990904a1ab50e97b2a7bb9fdcef2c65ba06",
+      "title": "为这一页，留一个命名版本",
+      "file": "15.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "b10e404ddf9ca91280efa7acdd436b27974fe183a9bfc1fe55b4aa8aaec68219"
+    },
+    {
+      "position": 16,
+      "pageId": "5f2fbea2-a43a-4532-9042-6a1d20c08801",
+      "shortCode": "EJBQ",
+      "pageRevision": "sha256:4f7b1aa6881dd881934ed4a94c773f64f8b35a9195dac99615e53ef92bc1d9df",
+      "title": "重排以后，仍然认得这一页",
+      "file": "16.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "400f327665ca9545607c78fb087d3fd4d62f86474ae97af05832c3080cef97e0"
+    },
+    {
+      "position": 17,
+      "pageId": "baca190c-e87b-415f-9c30-7c04e3fabe17",
+      "shortCode": "2856",
+      "pageRevision": "sha256:b5cf2ca7068977e36580cc7530f6220048bbbb4d4d5261910ecfbbb3431f3466",
+      "title": "选页，组成这次演讲",
+      "file": "17.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "e60a8881be27b197ea2e71b2a755294094a50664d37efceb48750e00e47e9e24"
+    },
+    {
+      "position": 18,
+      "pageId": "503c86ce-673c-4229-9251-22114e5f5da9",
+      "shortCode": "4YZD",
+      "pageRevision": "sha256:97fcbcca61e55b090766f4ab0cfcfcc02733a7259d621c954d7a6a943c1c2397",
+      "title": "同一页，写这次的讲法",
+      "file": "18.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "a6c60e20c3298eab1124aab511bd21413180987cfb67ed1aa1901b61ee0412ad"
+    },
+    {
+      "position": 19,
+      "pageId": "d64aef1b-eb88-4b05-a620-ae60a0e833de",
+      "shortCode": "36EQ",
+      "pageRevision": "sha256:10cceb725981412dd51b3e8599ba3abe9b65484e6b0cad33bab770cdebc2a92e",
+      "title": "要更新，还是要定稿",
+      "file": "19.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "236af37f7ad4e56b70af64b7aed8baed25868fdfbe0be2a276836dcf759bf246"
+    },
+    {
+      "position": 20,
+      "pageId": "9cdec939-7f79-4142-98a4-b9543230a4ec",
+      "shortCode": "W7WP",
+      "pageRevision": "sha256:723ad46043083defa060a14eda946bf312953e3619b08ccc57707dc2be711c5b",
+      "title": "从当前页排练一次",
+      "file": "20.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "024cbd44cbf5fd1c3eaff2096a1e60b1e47fe6a53bb3469f753c9d7c31ca3d32"
+    },
+    {
+      "position": 21,
+      "pageId": "c91c3fe3-836f-492f-882d-905bd4d08a9b",
+      "shortCode": "YCXA",
+      "pageRevision": "sha256:4eb87db303a39d4d11aee174b6c914ee1eba71b29f02fad20db3deaad84a8a1e",
+      "title": "选好格式，也选对范围",
+      "file": "21.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "2d07df07040ff233bbb0b8e7e3be963228c0c4cd77770447ef64c170f5fac538"
+    },
+    {
+      "position": 22,
+      "pageId": "f68f052b-18ac-4286-ae3b-6f12e5c5d0d0",
+      "shortCode": "NJM7",
+      "pageRevision": "sha256:947e06a69f9adf8e4e1074b948029867d990a69c09dcc511a7f4d43162c3bd66",
+      "title": "把助手接到这份项目",
+      "file": "22.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "34a92fb041acf6a2be9ef8b90cae51413f571a769491a9bb0bd3934ba4406ff2"
+    },
+    {
+      "position": 23,
+      "pageId": "bd3c71d1-360e-4e0c-bbb6-5938970e8876",
+      "shortCode": "TZXM",
+      "pageRevision": "sha256:84f58dcb5d6672b4a0084491da183f371ba148d4194d332cb57d0de4fb2200e6",
+      "title": "按页分工，接着同一份改",
+      "file": "23.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "2cd00209820fad94c8bdea7f303411b51e9baa536585ee651c320693c047bb51"
+    },
+    {
+      "position": 24,
+      "pageId": "8a9bcdf1-fcb2-4214-9743-86c110c954ca",
+      "shortCode": "E2RU",
+      "pageRevision": "sha256:d7d98457b349b3646c29d60e903c28235601d22f67b8ddd993252eb026f18d61",
+      "title": "打开示例，完成你的第一次修改",
+      "file": "24.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "699908d7f6ecba29e76688ff806207719e5262406238b2a2cd0c6158837448ab"
+    }
+  ],
+  "finalNamedVersions": [
+    {
+      "position": 1,
+      "pageId": "7995de62-e81e-46db-b250-cabc66a99b28",
+      "shortCode": "TTHC",
+      "versionId": "checkpoint:b5d561d230fd51f8058cea30fcafadbe"
+    },
+    {
+      "position": 2,
+      "pageId": "1dc23de8-b351-483b-a93a-f02c0444a927",
+      "shortCode": "MSVB",
+      "versionId": "checkpoint:7acca9c57442a558155281962ee92ef3"
+    },
+    {
+      "position": 3,
+      "pageId": "1f6289fd-1d4c-4a03-a74d-4bc4955de868",
+      "shortCode": "6G4G",
+      "versionId": "checkpoint:972256d544f65c5c2e9a244960878699"
+    },
+    {
+      "position": 4,
+      "pageId": "b55179ed-446c-42a7-a2d5-2557defac052",
+      "shortCode": "CR5K",
+      "versionId": "checkpoint:3a5e8ec0f0f9563f94b36cbc85c2db27"
+    },
+    {
+      "position": 5,
+      "pageId": "3483b895-bc52-43b6-a7c4-001a0d1e4526",
+      "shortCode": "ZYZB",
+      "versionId": "checkpoint:8528a69b58fd5198dbd67c1956ad8d39"
+    },
+    {
+      "position": 6,
+      "pageId": "05cd8517-c8ac-4e12-b2d0-40c438b91042",
+      "shortCode": "HWB6",
+      "versionId": "checkpoint:b4e915672946c8676c1d0341269c67c5"
+    },
+    {
+      "position": 7,
+      "pageId": "59857807-d9f3-4e58-9a60-275cd504ea16",
+      "shortCode": "MPTA",
+      "versionId": "checkpoint:26eb3e596f17439470f9c967bd990736"
+    },
+    {
+      "position": 8,
+      "pageId": "c1fcdc66-1c25-45a6-9b98-83d16f063c3e",
+      "shortCode": "7EKH",
+      "versionId": "checkpoint:5b6cdab15220808e53e423579f6f2cc0"
+    },
+    {
+      "position": 9,
+      "pageId": "7b5bb42e-c529-49f8-ad88-62c69b567837",
+      "shortCode": "HUA9",
+      "versionId": "checkpoint:0470eb991d9551eb069a89aa9fb348b8"
+    },
+    {
+      "position": 10,
+      "pageId": "7b69742f-16b5-4b80-acf0-1d23966aae96",
+      "shortCode": "JNZV",
+      "versionId": "checkpoint:4e059081e94902f26ede26f4acbabbfa"
+    },
+    {
+      "position": 11,
+      "pageId": "129dfdc6-685d-48b4-972b-abff11f823e6",
+      "shortCode": "93SF",
+      "versionId": "checkpoint:58a83143028cf6400f2f4df9f835b4ce"
+    },
+    {
+      "position": 12,
+      "pageId": "ea528c6a-2423-488d-834b-056322cca744",
+      "shortCode": "E9RN",
+      "versionId": "checkpoint:d1ad4411f51afe1940fec7e840520f9e"
+    },
+    {
+      "position": 13,
+      "pageId": "def43d68-1767-45f5-800a-17d648750b7e",
+      "shortCode": "FE8A",
+      "versionId": "checkpoint:421fb741c0fbfc78faa439f442ca8d61"
+    },
+    {
+      "position": 14,
+      "pageId": "8bb920ed-1c71-45ac-ad9d-aa00750b1ff6",
+      "shortCode": "SE68",
+      "versionId": "checkpoint:5a5c5487758a093299378379c0e9e4ce"
+    },
+    {
+      "position": 15,
+      "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
+      "shortCode": "U5QA",
+      "versionId": "checkpoint:f46ebdcbd5a222bcfc43a6bd31339793"
+    },
+    {
+      "position": 16,
+      "pageId": "5f2fbea2-a43a-4532-9042-6a1d20c08801",
+      "shortCode": "EJBQ",
+      "versionId": "checkpoint:d37bd0fdaaef4ba7256ad9b1085bff8a"
+    },
+    {
+      "position": 17,
+      "pageId": "baca190c-e87b-415f-9c30-7c04e3fabe17",
+      "shortCode": "2856",
+      "versionId": "checkpoint:cba50c4c135ea71be3920f2de6dc8512"
+    },
+    {
+      "position": 18,
+      "pageId": "503c86ce-673c-4229-9251-22114e5f5da9",
+      "shortCode": "4YZD",
+      "versionId": "checkpoint:0dc32b64ec1c7cd44d350a91a32d3237"
+    },
+    {
+      "position": 19,
+      "pageId": "d64aef1b-eb88-4b05-a620-ae60a0e833de",
+      "shortCode": "36EQ",
+      "versionId": "checkpoint:371b27f81ea9d35f206f770358e0ab70"
+    },
+    {
+      "position": 20,
+      "pageId": "9cdec939-7f79-4142-98a4-b9543230a4ec",
+      "shortCode": "W7WP",
+      "versionId": "checkpoint:9ffb108fab98d9fbc687a8f3fe9dac55"
+    },
+    {
+      "position": 21,
+      "pageId": "c91c3fe3-836f-492f-882d-905bd4d08a9b",
+      "shortCode": "YCXA",
+      "versionId": "checkpoint:886d26a5d930df31c1833cfcfef5fed8"
+    },
+    {
+      "position": 22,
+      "pageId": "f68f052b-18ac-4286-ae3b-6f12e5c5d0d0",
+      "shortCode": "NJM7",
+      "versionId": "checkpoint:5019dba274d7d74dfa76822213b252fb"
+    },
+    {
+      "position": 23,
+      "pageId": "bd3c71d1-360e-4e0c-bbb6-5938970e8876",
+      "shortCode": "TZXM",
+      "versionId": "checkpoint:481185029b1d2719485236f560fd0147"
+    },
+    {
+      "position": 24,
+      "pageId": "8a9bcdf1-fcb2-4214-9743-86c110c954ca",
+      "shortCode": "E2RU",
+      "versionId": "checkpoint:facd376cfeba812928d3985dcdaa843f"
+    }
+  ]
+}

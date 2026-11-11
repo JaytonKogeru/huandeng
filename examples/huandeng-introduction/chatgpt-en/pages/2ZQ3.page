@@ -3,121 +3,158 @@ background:
   type: solid
   color: "#F7F5EF"
 elements:
+  - elementId: f-bg
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 0
+      - 0
+      - 960
+      - 540
+    fill:
+      type: solid
+      color: "#F4F1E8"
+  - elementId: f-route
+    elementType: text
+    bounds:
+      - 42
+      - 20
+      - 860
+      - 18
+    content:
+      text: HISTORY → NAMED VERSIONS
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#168C8C"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.2
   - elementId: title
     elementType: text
     bounds:
-        [42,34,880,76]
+        [42,49,875,66]
     role: title
     content:
-      {"text":"Review a change. Return to a saved stage.","fontFamily":"Georgia","fontSize":32,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.2}
-  - elementId: brand-small
-    elementType: image
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
-    sourceName: huandeng.png
-    alt: huandeng.png
+      {"text":"Name a version worth returning to","fontFamily":"Segoe UI","fontSize":32,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.1}
+  - elementId: f-foot-rule
+    elementType: shape
+    shapeName: rect
     bounds:
-        [43,512,18,18]
-    fit:
-      mode: contain
-    crop:
-      left: 0.18
-      right: 0.18
-      top: 0.14
-      bottom: 0.14
-  - elementId: foot
+      - 42
+      - 510
+      - 876
+      - 1
+    fill:
+      type: solid
+      color: "#CCD2CB"
+  - elementId: f-watermark
     elementType: text
     bounds:
-        [68,515,140,16]
+      - 42
+      - 518
+      - 700
+      - 17
     content:
-      {"text":"HUANDENG","fontFamily":"Segoe UI","fontSize":9,"color":"#5B6A62","bold":false,"align":["left","top"],"lineHeight":1.35}
-  - elementId: position
+      text: English · ChatGPT 6 Astra
+      fontFamily: Segoe UI
+      fontSize: 12
+      color: "#50646A"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.2
+  - elementId: f-position
     elementType: text
     bounds:
-        [881,514,35,18]
+      - 882
+      - 518
+      - 36
+      - 17
     content:
-      {"text":"","fontFamily":"Segoe UI","fontSize":10,"color":"#5B6A62","bold":false,"align":["right","top"],"lineHeight":1.35,"field":"main-position"}
-  - elementId: named-versions
+      text: ""
+      fontFamily: Segoe UI
+      fontSize: 12
+      color: "#50646A"
+      bold: false
+      align:
+        - right
+        - top
+      lineHeight: 1.2
+      field: main-position
+  - elementId: f-history-overview
     elementType: image
-    src: media/imported/91315947e96e846550cc7b331e928f06d76426e23afd63decff60ca1dec94f27.png
-    sourceName: versions-detail.png
-    alt: versions-detail.png
     bounds:
       - 44
-      - 148
-      - 345
-      - 321
+      - 145
+      - 521
+      - 238
+    src: media/imported/d5b46f6fc83b1a69373a5efed769e6445bc6642311177818d14ee46bf90256d5.png
+    sourceName: history-current.png
     fit:
       mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: saved-operations
+  - elementId: f-version-detail
     elementType: image
-    src: "media/imported/1b4af839b0215fcf8989c022103167aa25758bb481591f57459f6493b863c6df.png"
-    sourceName: "operation-detail.png"
-    alt: "operation-detail.png"
     bounds:
-        [523,156,354,244]
+      - 613
+      - 178
+      - 301
+      - 160
+    src: media/imported/147f9f8e677ef6e2d11376cec4e295fb6cbefb2d0f408be1869b5456cef5d770.png
+    sourceName: named-version.png
     fit:
       mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: named-caption
+  - elementId: f-version-zoom
+    elementType: line
+    bounds:
+      - 573
+      - 251
+      - 29
+      - 0
+    viewBox:
+      - 1
+      - 1
+    points: 0,0 1,1
+    border:
+      width: 2.5
+      color: "#ED6A3A"
+    arrow:
+      - null
+      - arrow
+  - elementId: f-history-steps
     elementType: text
     bounds:
       - 44
-      - 116
-      - 345
-      - 28
+      - 410
+      - 870
+      - 32
     content:
-      text: Named page versions
+      text: Name the milestone → record it → inspect its preview
       fontFamily: Segoe UI
-      fontSize: 16
-      color: "#356F68"
-      bold: false
+      fontSize: 22
+      color: "#112D32"
+      bold: true
       align:
         - left
         - top
-      lineHeight: 1.35
-  - elementId: operation-caption
+      lineHeight: 1.2
+  - elementId: f-history-use
     elementType: text
     bounds:
-      - 523
-      - 116
-      - 354
-      - 28
+      - 44
+      - 462
+      - 870
+      - 31
     content:
-      text: One saved operation
+      text: Restore this page when needed, or pin its version in one talk.
       fontFamily: Segoe UI
-      fontSize: 16
-      color: "#356F68"
+      fontSize: 19
+      color: "#168C8C"
       bold: false
       align:
         - left
         - top
-      lineHeight: 1.35
-  - elementId: history-action
-    elementType: text
-    bounds:
-      - 435
-      - 431
-      - 478
-      - 73
-    content:
-      text: |-
-        Select the page → History
-        Inspect an operation, or name a stage to preview or restore.
-      fontFamily: Segoe UI
-      fontSize: 18
-      color: "#20372F"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.45
-notes: "Select the page and open History to inspect saved operations or record a named version. An operation explains a particular change; a named version preserves a meaningful stage of the whole page. Restoring acts on the selected page. Small revisions can stay in the current project rather than becoming another full source deck."
+      lineHeight: 1.2
+notes: "After reviewing a meaningful stage, open History and record a named page version. Project map · tutorial is an actual checkpoint recorded for GX5Z during the making of this walkthrough. The expanded detail shows that saved version. Select a version to inspect its preview before restoring it. A Presentation can also pin this named version while Main continues to evolve. Give milestones names that explain their purpose; do not generate a snapshot for every keystroke."

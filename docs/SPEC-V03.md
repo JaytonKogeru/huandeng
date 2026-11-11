@@ -58,6 +58,6 @@
 
 ## 参考
 
-旧实现：`D:/_Proj/FreestyleScientificSlides/apps/pptd-desktop/vendor/open-pptd/packages/model/{table,latex}.js`，以及 `packages/renderer/{table,text}.js`。旧项目只读。
+旧实现：`<legacy-editor-checkout>/apps/pptd-desktop/vendor/open-pptd/packages/model/{table,latex}.js`，以及 `packages/renderer/{table,text}.js`。旧项目只读。
 
 KaTeX API：<https://katex.org/docs/options.html>。GitHub rename：<https://cli.github.com/manual/gh_repo_rename>。

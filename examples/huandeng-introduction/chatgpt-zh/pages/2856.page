@@ -3,116 +3,222 @@ background:
   type: solid
   color: "#F7F5EF"
 elements:
+  - elementId: zd-bg
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 0
+      - 0
+      - 960
+      - 540
+    fill:
+      type: solid
+      color: "#F4F1E8"
   - elementId: title
     elementType: text
     bounds:
-        [42,34,880,76]
+        [38,29,884,49]
     role: title
     content:
-      {"text":"继续跟进，或保留已经确定的画面","fontFamily":"Noto Serif SC","fontSize":28,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: live-label
+      {"text":"选页，组成这次演讲","fontFamily":"Noto Sans SC","fontSize":31,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.3}
+  - elementId: zd-route
     elementType: text
     bounds:
-      - 44
-      - 129
-      - 412
-      - 35
+      - 40
+      - 86
+      - 876
+      - 28
     content:
-      {"text":"Live","fontFamily":"Noto Sans SC","fontSize":25,"color":"#356F68","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: pin-label
+      text: 项目 → 编排演讲 → 选择 / 新建演讲 → 添加页面 → 保存项目
+      fontFamily: Noto Sans SC
+      fontSize: 14
+      color: "#168C8C"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: zd-accent
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 40
+      - 119
+      - 64
+      - 3
+    fill:
+      type: solid
+      color: "#ED6A3A"
+  - elementId: zd-watermark
     elementType: text
     bounds:
-      - 502
-      - 129
-      - 412
-      - 35
+      - 39
+      - 508
+      - 820
+      - 22
     content:
-      {"text":"Pinned","fontFamily":"Noto Sans SC","fontSize":25,"color":"#C48758","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: live-page
-    elementType: image
-    src: "media/imported/b104e77304d9e60e33074b365860774e8dd570ab241ec5102ee033e158f65fd4.png"
-    sourceName: "01.png"
-    alt: "01.png"
-    bounds:
-      - 44
-      - 184
-      - 412
-      - 232
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: pinned-page
-    elementType: image
-    src: media/imported/07ab1e803a9529e525b0690bb1627bee3811850424cd628f7da9f29ce42e2ab3.png
-    sourceName: evidence-after.png
-    alt: evidence-after.png
-    bounds:
-      - 502
-      - 184
-      - 412
-      - 232
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: live-copy
-    elementType: text
-    bounds:
-      - 44
-      - 443
-      - 412
-      - 63
-    content:
-      {"text":"跟随 Main 的当前内容。\n图表标注继续做了调整。","fontFamily":"Noto Sans SC","fontSize":17,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.5}
-  - elementId: pinned-copy
-    elementType: text
-    bounds:
-      - 502
-      - 443
-      - 412
-      - 63
-    content:
-      {"text":"保留“措辞收紧”时的画面。\n简短介绍可以选择这个已保存的阶段。","fontFamily":"Noto Sans SC","fontSize":17,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.5}
-  - elementId: brand-small
-    elementType: image
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
-    sourceName: huandeng.png
-    alt: huandeng.png
-    bounds:
-      - 44
-      - 510
-      - 17
-      - 17
-    fit:
-      mode: contain
-    crop:
-      left: 0.18
-      right: 0.18
-      top: 0.14
-      bottom: 0.14
-  - elementId: foot
-    elementType: text
-    bounds:
-      - 69
-      - 513
-      - 130
-      - 17
-    content:
-      {"text":"HUANDENG","fontFamily":"Noto Sans SC","fontSize":10,"color":"#66756B","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: position
+      text: Chinese · ChatGPT 6 Astra + Subagents
+      fontFamily: Noto Sans SC
+      fontSize: 13
+      color: "#53666A"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: zd-position
     elementType: text
     bounds:
       - 884
-      - 512
-      - 30
-      - 18
+      - 508
+      - 38
+      - 22
     content:
-      {"text":"","fontFamily":"Noto Sans SC","fontSize":10,"color":"#66756B","bold":false,"align":["right","top"],"lineHeight":1.3,"field":"main-position"}
-notes: "有些演讲希望跟随主稿继续更新，有些演讲要保留某个已确定阶段。Live引用读取当前Main内容；Pinned引用选择这页的一个命名版本。这里左侧是当前科学页，右侧是实际保存的措辞修改阶段。简短介绍中的科学页确实固定在这个版本。页面身份相同，选择的内容版本不同。"
+      text: ""
+      fontFamily: Noto Sans SC
+      fontSize: 13
+      color: "#53666A"
+      bold: false
+      align:
+        - right
+        - top
+      lineHeight: 1.3
+      field: main-position
+  - elementId: zd-a
+    elementType: text
+    bounds:
+      - 40
+      - 134
+      - 264
+      - 30
+    content:
+      text: 01  进入编排
+      fontFamily: Noto Sans SC
+      fontSize: 17
+      color: "#112D32"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: zd-b
+    elementType: text
+    bounds:
+      - 347
+      - 134
+      - 264
+      - 30
+    content:
+      text: 02  选择演讲
+      fontFamily: Noto Sans SC
+      fontSize: 17
+      color: "#112D32"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: zd-c
+    elementType: text
+    bounds:
+      - 654
+      - 134
+      - 270
+      - 30
+    content:
+      text: 03  添加需要的页
+      fontFamily: Noto Sans SC
+      fontSize: 17
+      color: "#112D32"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: zd-overview
+    elementType: image
+    bounds:
+      - 40
+      - 171
+      - 264
+      - 280
+    src: "media/imported/f5c48de68ebbe8baf708e15b23d0b83c25ae48b5fc390ae7bd2862c001158d51.png"
+    sourceName: "final-project-overview.png"
+    fit:
+      mode: contain
+    crop:
+      {"bottom":0.49}
+  - elementId: zd-arrange
+    elementType: image
+    bounds:
+      - 347
+      - 171
+      - 264
+      - 280
+    src: "media/imported/263b54d5b39c89f4ea166f9dd1d55b62edf90f8d0202e612eb6c69520d7a096d.png"
+    sourceName: "final-arrange-entry.png"
+    fit:
+      mode: contain
+  - elementId: zd-picker
+    elementType: image
+    bounds:
+      - 654
+      - 171
+      - 264
+      - 280
+    src: "media/imported/e3d7772cc09102aba05b4f6e1cb0e2c47ecf5bb5abb3511e4c2003ff53ebf70f.png"
+    sourceName: "final-choose-main-slide.png"
+    fit:
+      mode: contain
+  - elementId: zd-flow1
+    elementType: line
+    bounds:
+      - 313
+      - 301
+      - 24
+      - 0
+    viewBox:
+      - 1
+      - 1
+    points: 0,0 1,1
+    border:
+      width: 2.2
+      color: "#ED6A3A"
+    arrow:
+      - null
+      - arrow
+  - elementId: zd-flow2
+    elementType: line
+    bounds:
+      - 620
+      - 301
+      - 24
+      - 0
+    viewBox:
+      - 1
+      - 1
+    points: 0,0 1,1
+    border:
+      width: 2.2
+      color: "#ED6A3A"
+    arrow:
+      - null
+      - arrow
+  - elementId: zd-save
+    elementType: text
+    bounds:
+      - 40
+      - 466
+      - 883
+      - 32
+    content:
+      text: 点击＋加入，用上下箭头调顺序，最后保存项目。Main 中仍保留原页。
+      fontFamily: Noto Sans SC
+      fontSize: 18
+      color: "#112D32"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+notes: "这一步把已经做好的页面组织成一次具体演讲。左侧进入项目，点击“编排演讲”；在下拉框里选择已有演讲，或点击“新建演讲”。打开“添加幻灯片或章节”，可以按标题、页面短码或位置搜索，点击加号加入。顺序通过条目上的上下箭头调整，最后点击“保存项目”。图中搜索ZYZB后，页面和所在章节同时可选；需要单页时点“主幻灯片”区域的条目。这里保存的是本次演讲的引用顺序，Main仍是持续维护的原页。下一步为同一页准备这次听众需要的讲法。"

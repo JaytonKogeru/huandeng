@@ -1,5 +1,14 @@
 # HUANDENG · DeepSeek Harness · 中文产品介绍
 
+## Final watermark-only revision
+
+The owner froze this edition’s content and visual design. Its native author added one editable attribution object to every Main page: **Chinese · DeepSeek V4.1 Flash 1017**. Main has **22 pages**; the authored Brief has **12 occurrences**.
+
+An independent full-data comparison confirmed that all original page objects, Notes, page order, metadata, Presentation arrangements and scientific values remain unchanged. Final PDF/PPTX files were regenerated mechanically from that saved source. See the [current collection](../README.md), [freeze evidence](../../../docs/evidence/final-examples/native-watermark-freeze.json) and [final validation](../../../docs/PRODUCT-INTRODUCTION-VALIDATION.md).
+
+The records below document the earlier native authoring and reviews. Their original outcomes and retained limitations remain historical; this watermark pass does not constitute another content rewrite.
+
+
 本项目由原生 DeepSeek Harness 独立修订。协调者整理当前入口、保存的讲稿与核验材料，并机械导出作者已保存的简版；没有改写原生页面、Story、Notes 或 Main 成品。
 
 [PPTD 项目](deck.pptd) · [Main PDF](Exports/deck.pdf) · [Main PowerPoint](Exports/deck.pptx) · [12 页简版 PDF](Exports/brief.pdf) · [简版 PowerPoint](Exports/brief.pptx) · [实际保存的讲稿](speaker-notes.md)
@@ -19,6 +28,10 @@ Main PPTX 含 22 页 Notes、三张原生表格和 20 个媒体部件。科学�
 作者已更新保存的 brief 为 12 页，但原生提交仍留着上轮 11 页简版导出。协调者保留旧文件字节后，机械导出当前 12 个 authored occurrences；页、顺序、讲稿与 pin 状态均未改。新简版已核对报告、12 页 PDF/12 页 PPTX、逐页 Notes 和 PDF 联系图；没有声称另跑了一轮简版 PowerPoint。见 [brief export evidence](evidence/product-brief-export.json)。
 
 简版封面仍保留 Main 的固定页码“01 / 22”。这是原生页面遗留的文字；简版实际为 12 页，协调者没有为修正这个数字改写源页。
+
+## 署名水印
+
+本版在 Main 的 22 页和 brief 的 12 个出场页右上角加入可编辑文本“Chinese · DeepSeek V4.1 Flash 1017”。除这一署名外，正文、Story、Notes、页面身份、科学数值和演讲选择未改；`Exports/deck.*` 与 `Exports/brief.*` 已按当前 revision 重新导出。
 
 ## 保留的内容问题
 

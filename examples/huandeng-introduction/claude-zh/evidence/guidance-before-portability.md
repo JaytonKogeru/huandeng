@@ -43,4 +43,4 @@ Authoring client: Claude Code. Audience language: **Chinese**. This turn writes 
 
 The owner explicitly asks you for a new Chinese edition after praising your English work. You may read your own prior English edition as a reference, and make Chinese composition choices yourself. You may not read ChatGPT or DeepSeek editions.
 
-Internal work directory: D:\_Proj\Huandeng\.verification\story-20261111\claude-zh-work. Source asset mapping: MEDIA-INPUTS.json. Keep all final project material in this canonical directory and make no dated or parallel project copies.
+Internal work directory: <editor-checkout>\.verification\story-20261111\claude-zh-work. Source asset mapping: MEDIA-INPUTS.json. Keep all final project material in this canonical directory and make no dated or parallel project copies.

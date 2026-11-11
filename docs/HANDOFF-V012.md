@@ -28,7 +28,7 @@ Preserve all existing writer/recovery, history, Notes/docking, file-preview, lay
 
 ## Working environment
 
-Windows is authoritative: `D:/_Proj/Huandeng-v012-20261108`, branch `editor/v0.12-sections-authoring`; canonical checkout `D:/_Proj/Huandeng`. The Linux transfer mirror has no authoritative Git history. Preserve the unrelated modified canonical fixture. Never broad-stage/reset/clean or restore an old private document baseline.
+Windows is authoritative: `<workspace-checkout>`, branch `editor/v0.12-sections-authoring`; canonical checkout `<editor-checkout>`. The Linux transfer mirror has no authoritative Git history. Preserve the unrelated modified canonical fixture. Never broad-stage/reset/clean or restore an old private document baseline.
 
 Use isolated development dependencies with the frozen lockfile; hoisted development layout produced duplicate physical React instances. Production packaging independently deploys a self-contained hoisted copy and passes its own binary UI checks. If Turbo cannot find pnpm, provide the existing Corepack shim through process-local PATH; do not alter application tests to mask a launcher failure.
 

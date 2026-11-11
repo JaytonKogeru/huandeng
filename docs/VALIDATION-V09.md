@@ -78,7 +78,7 @@ DSH 有一个辅助读取时钟的 shell 请求被其 Windows ACL 拒绝，未�
 
 ## 5. 安装、普通项目与失败保留
 
-安装目标继续为 `D:/_Proj/Huandeng/dist/HUANDENG-win32-x64`。旧 0.8.0 包保存在 `D:/_Proj/Huandeng/.verification/installed-v08-backup-20261108-v09`，其身份与替换前一致。
+安装目标继续为 `<editor-checkout>/dist/HUANDENG-win32-x64`。旧 0.8.0 包保存在 `<editor-checkout>/.verification/installed-v08-backup-20261108-v09`，其身份与替换前一致。
 
 首轮 `.verification/install-v09-20261108T023832Z.json` 停在 prepared：旧窗口已有一份未保存的项目编排，正常关闭被编辑器阻止。没有替换旧包或强制终止。负责人查看实际窗口，把旧项目元数据和可见草稿备份到 `.verification/preserved-original-project-draft-v09/`，再通过原窗口的“保存项目”保留现有草稿。仅 `.huandeng/project.json` 的 project 字段更新；manifest 与全部 80 个页面（81 文件）字节不变，没有生成新的科研内容。保存前后副本、界面与独立核对回执均保留。
 

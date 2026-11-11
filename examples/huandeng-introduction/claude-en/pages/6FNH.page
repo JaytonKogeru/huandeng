@@ -226,4 +226,20 @@ elements:
       align:
         - right
         - middle
+  - elementId: attribution-watermark
+    elementType: text
+    bounds:
+      - 760
+      - 10
+      - 176
+      - 16
+    content:
+      text: English · Claude Opus 5.5
+      fontFamily: Arial
+      fontSize: 10
+      lineHeight: 1.2
+      color: "#7A8580"
+      align:
+        - right
+        - middle
 notes: "Here is one change from start to finish, in the public example project. The Story for this slide said: shorten the title and the explanation, and keep the layout, every other object and the main message. On the left is the slide before; on the right, after. The table below lists exactly what changed: the title and the lead sentence. The Purpose and Keep columns, the footer and the geometry are untouched. The change was proposed as a transaction, previewed, and then applied through the shared writer, so it is recorded and can be reviewed on the next slide. The same discipline applies to a scientific slide: an edit to the 1BNA chart title must not touch the data or the citation."

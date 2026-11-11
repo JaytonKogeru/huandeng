@@ -259,4 +259,20 @@ elements:
         - right
         - middle
       field: main-position
+  - elementId: attribution-watermark
+    elementType: text
+    bounds:
+      - 760
+      - 10
+      - 176
+      - 16
+    content:
+      text: 中文 · Claude Opus 5.5
+      fontFamily: Microsoft YaHei
+      fontSize: 10
+      lineHeight: 1.2
+      color: "#7A8580"
+      align:
+        - right
+        - middle
 notes: 幻灯不是从零开始的。编辑器基于 OpenSlide，MIT 许可。公式转换复用了 OpenPPTD 仓库的代码；这里的 GitHub 标志指的是那个仓库，不是 OpenPPTD 的标志。PowerPoint 导出用的是 PptxGenJS。右边是幻灯还没做到的事，都列在项目 README 里：导入任意 PPTX 并往返、直接编辑 Google Slides、第二屏的独立演讲者窗口、可继承母版、导出文件中的原生 PowerPoint 动画，以及插件市场。如果你需要其中某一项，那正是最需要贡献的地方。

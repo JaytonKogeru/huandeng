@@ -58,9 +58,17 @@ representative at an online or offline event.
 
 ## Enforcement
 
-Instances of abusive, harassing, or otherwise unacceptable behavior may be
-reported to the community leaders responsible for enforcement at
-hi@1wei.dev.
+HUANDENG's community is moderated by the maintainers of
+[JaytonKogeru/huandeng](https://github.com/JaytonKogeru/huandeng).
+
+A private HUANDENG conduct-reporting contact has not yet been verified. Before
+opening the project to public contributions, maintainers must publish a verified
+private contact in this section. Do not send HUANDENG incidents to the upstream
+OpenSlide maintainer's contact address.
+
+For abusive behavior or content on GitHub, use
+[GitHub's reporting options](https://docs.github.com/en/communities/maintaining-your-safety-on-github/reporting-abuse-or-spam).
+Do not post sensitive incident details or personal information in public issues.
 All complaints will be reviewed and investigated promptly and fairly.
 
 All community leaders are obligated to respect the privacy and security of the

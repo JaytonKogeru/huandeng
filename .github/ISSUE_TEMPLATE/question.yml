@@ -1,0 +1,26 @@
+name: Usage question / 使用问题
+description: Ask about setting up or using HUANDENG.
+title: "[Question]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        English and Chinese are welcome. Check the [README](https://github.com/JaytonKogeru/huandeng#readme) first.
+        Keep private project data and credentials out of this public issue. For security concerns, follow [SECURITY.md](https://github.com/JaytonKogeru/huandeng/blob/main/SECURITY.md).
+  - type: textarea
+    id: question
+    attributes:
+      label: Question / 问题
+      description: What are you trying to do, and which step needs clarification?
+    validations:
+      required: true
+  - type: input
+    id: versions
+    attributes:
+      label: Relevant versions / 相关版本
+      description: Editor, plugin, client and operating system if they affect the question.
+  - type: textarea
+    id: context
+    attributes:
+      label: What you tried / 已尝试的步骤
+      description: Include public documentation links or a sanitized example when useful.

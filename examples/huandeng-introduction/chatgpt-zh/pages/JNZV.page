@@ -3,127 +3,183 @@ background:
   type: solid
   color: "#E4ECE6"
 elements:
+  - elementId: f-paper
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 0
+      - 0
+      - 960
+      - 540
+    fill:
+      type: solid
+      color: "#F4F1E8"
   - elementId: title
     elementType: text
     bounds:
-        [42,34,880,76]
+        [36,27,884,46]
     role: title
     content:
-      {"text":"让请求和实际改动对得上","fontFamily":"Noto Serif SC","fontSize":28,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: request
+      {"text":"只改两句，保留其他内容","fontFamily":"Noto Sans SC","fontSize":31,"color":"#112D32","align":["left","top"],"lineHeight":1.35,"bold":true}
+  - elementId: f-action
     elementType: text
     bounds:
-      - 44
-      - 111
-      - 870
-      - 49
-    content:
-      {"text":"“把标题和解释收紧；原图、数值、坐标轴和来源都保留。”","fontFamily":"Noto Sans SC","fontSize":18,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: before-label
-    elementType: text
-    bounds:
-      - 44
-      - 174
-      - 412
-      - 26
-    content:
-      {"text":"修改前","fontFamily":"Noto Sans SC","fontSize":16,"color":"#66756B","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: after-label
-    elementType: text
-    bounds:
-      - 502
-      - 174
-      - 412
-      - 26
-    content:
-      {"text":"修改后","fontFamily":"Noto Sans SC","fontSize":16,"color":"#356F68","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: before
-    elementType: image
-    src: media/imported/8c227b1f1956f9c1f7448e8f6f533ee0feaf909d19e318f5b7b69b7d728b7f28.png
-    sourceName: evidence-before.png
-    alt: evidence-before.png
-    bounds:
-      - 44
-      - 209
-      - 412
-      - 232
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: after
-    elementType: image
-    src: media/imported/07ab1e803a9529e525b0690bb1627bee3811850424cd628f7da9f29ce42e2ab3.png
-    sourceName: evidence-after.png
-    alt: evidence-after.png
-    bounds:
-      - 502
-      - 209
-      - 412
-      - 232
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: preserved
-    elementType: icon
-    iconName: fas:check
-    bounds:
-      - 45
-      - 469
-      - 20
-      - 20
-    fill:
-      type: solid
-      color: "#356F68"
-  - elementId: scope-proof
-    elementType: text
-    bounds:
-      - 77
-      - 466
-      - 834
-      - 43
-    content:
-      {"text":"2 处文字变化 · 12 个数值与原图完整保留","fontFamily":"Noto Sans SC","fontSize":17,"color":"#356F68","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: brand-small
-    elementType: image
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
-    sourceName: huandeng.png
-    alt: huandeng.png
-    bounds:
-      - 44
-      - 510
-      - 17
-      - 17
-    fit:
-      mode: contain
-    crop:
-      left: 0.18
-      right: 0.18
-      top: 0.14
-      bottom: 0.14
-  - elementId: foot
-    elementType: text
-    bounds:
-      - 69
-      - 513
-      - 130
-      - 17
-    content:
-      {"text":"HUANDENG","fontFamily":"Noto Sans SC","fontSize":10,"color":"#66756B","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: position
-    elementType: text
-    bounds:
+      - 38
+      - 82
       - 884
-      - 512
-      - 30
-      - 18
+      - 28
     content:
-      {"text":"","fontFamily":"Noto Sans SC","fontSize":10,"color":"#66756B","bold":false,"align":["right","top"],"lineHeight":1.3,"field":"main-position"}
-notes: "这里展示一次真正保存过的局部编辑。请求只收紧标题和解释，原图、十二个数值、轴与出处保持不动。修改前后来自这次操作的真实快照，范围可以逐项核对。下一步不只是看最终页面好不好看，还要知道这页是谁、改过什么。\n\nSaved operation: cb19f7f2-c9d6-4f76-8981-759076f20fde. Verification: evidence/wording-edit.json."
+      text: 选中标题与引导句 → 修改 → 保存页面
+      fontFamily: Noto Sans SC
+      fontSize: 18
+      color: "#557076"
+      align:
+        - left
+        - top
+      lineHeight: 1.35
+  - elementId: f-watermark
+    elementType: text
+    bounds:
+      - 36
+      - 514
+      - 820
+      - 19
+    content:
+      text: Chinese · ChatGPT 6 Astra + Subagents
+      fontFamily: Noto Sans SC
+      fontSize: 13
+      color: "#557076"
+      align:
+        - left
+        - top
+      lineHeight: 1.35
+  - elementId: f-position
+    elementType: text
+    bounds:
+      - 878
+      - 514
+      - 44
+      - 19
+    content:
+      text: ""
+      fontFamily: Noto Sans SC
+      fontSize: 13
+      color: "#557076"
+      align:
+        - right
+        - top
+      lineHeight: 1.35
+      field: main-position
+  - elementId: f-before
+    elementType: text
+    bounds:
+      - 38
+      - 151
+      - 92
+      - 28
+    content:
+      text: 修改前
+      fontFamily: Noto Sans SC
+      fontSize: 16
+      color: "#557076"
+      align:
+        - left
+        - top
+      lineHeight: 1.35
+  - elementId: f-after
+    elementType: text
+    bounds:
+      - 38
+      - 316
+      - 92
+      - 28
+    content:
+      text: 修改后
+      fontFamily: Noto Sans SC
+      fontSize: 16
+      color: "#168C8C"
+      align:
+        - left
+        - top
+      lineHeight: 1.35
+      bold: true
+  - elementId: f-before-ui
+    elementType: image
+    bounds:
+      - 133
+      - 139
+      - 789
+      - 142
+    src: media/imported/fdcacc35c15b7a7b76d70ef9f713c605c20a7e8ca450703b6343ac8bc722bd3e.png
+    sourceName: zh-CN-native-edit-before-4x.png
+    fit:
+      mode: contain
+    crop:
+      left: 0.03
+      right: 0.03
+      top: 0.04
+      bottom: 0.64
+  - elementId: f-after-ui
+    elementType: image
+    bounds:
+      - 133
+      - 304
+      - 789
+      - 142
+    src: media/imported/1590b6d7b420e2502709c533628c4fc0a0ef2278c8b6798d1f6fa8272f9059fc.png
+    sourceName: zh-CN-native-edit-after-4x.png
+    fit:
+      mode: contain
+    crop:
+      left: 0.03
+      right: 0.03
+      top: 0.04
+      bottom: 0.64
+  - elementId: f-compare-arrow
+    elementType: line
+    bounds:
+      - 80
+      - 207
+      - 0
+      - 78
+    viewBox:
+      - 1
+      - 1
+    points: 0,0 1,1
+    border:
+      width: 2
+      color: "#ED6A3A"
+    arrow:
+      - null
+      - arrow
+  - elementId: f-new-wording
+    elementType: line
+    bounds:
+      - 148
+      - 357
+      - 507
+      - 0
+    viewBox:
+      - 1
+      - 1
+    points: 0,0 1,1
+    border:
+      width: 2
+      color: "#168C8C"
+  - elementId: f-retained
+    elementType: text
+    bounds:
+      - 133
+      - 461
+      - 790
+      - 31
+    content:
+      text: 两处文字有变化；原有版式与其他对象保留。
+      fontFamily: Noto Sans SC
+      fontSize: 18
+      color: "#112D32"
+      align:
+        - left
+        - top
+      lineHeight: 1.35
+notes: "这次只收紧标题和引导句。修改前，两句话较长；修改后，直接说“把修改意图留清楚”“让下一次修改有据可循”。请看同一尺度下的前后图，其他内容没有跟着重做。实际操作时，选中对应文字，在画布或属性面板中修改，然后点击保存页面。下一页会从图层列表选对象，解决多个对象重叠时点不准的问题。"

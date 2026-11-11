@@ -3,152 +3,161 @@ background:
   type: solid
   color: "#F7F5EF"
 elements:
+  - elementId: f-bg
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 0
+      - 0
+      - 960
+      - 540
+    fill:
+      type: solid
+      color: "#112D32"
+  - elementId: f-route
+    elementType: text
+    bounds:
+      - 42
+      - 20
+      - 860
+      - 18
+    content:
+      text: WHY WORK THIS WAY
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#91CBC3"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.2
   - elementId: title
     elementType: text
     bounds:
-        [42,34,880,76]
+        [42,49,875,66]
     role: title
     content:
-      {"text":"A small edit should stay a small edit","fontFamily":"Georgia","fontSize":32,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.2}
-  - elementId: brand-small
-    elementType: image
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
-    sourceName: huandeng.png
-    alt: huandeng.png
+      {"text":"A small edit should stay small","fontFamily":"Segoe UI","fontSize":32,"color":"#F4F1E8","bold":true,"align":["left","top"],"lineHeight":1.1}
+  - elementId: f-foot-rule
+    elementType: shape
+    shapeName: rect
     bounds:
-        [43,512,18,18]
-    fit:
-      mode: contain
-    crop:
-      left: 0.18
-      right: 0.18
-      top: 0.14
-      bottom: 0.14
-  - elementId: foot
-    elementType: text
-    bounds:
-        [68,515,140,16]
-    content:
-      {"text":"HUANDENG","fontFamily":"Segoe UI","fontSize":9,"color":"#5B6A62","bold":false,"align":["left","top"],"lineHeight":1.35}
-  - elementId: position
-    elementType: text
-    bounds:
-        [881,514,35,18]
-    content:
-      {"text":"","fontFamily":"Segoe UI","fontSize":10,"color":"#5B6A62","bold":false,"align":["right","top"],"lineHeight":1.35,"field":"main-position"}
-  - elementId: motivation
-    elementType: text
-    bounds:
-      - 44
-      - 151
-      - 468
-      - 234
-    content:
-      text: |-
-        I wanted an agent to help with slides,
-        while keeping my judgment and sources.
-  
-        That needs a clear intent,
-        and a precise place to make the next edit.
-      fontFamily: Segoe UI
-      fontSize: 21
-      color: "#20372F"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.5
-  - elementId: copy-file
-    elementType: icon
-    iconName: fas:file-powerpoint
-    bounds:
-      - 569
-      - 150
-      - 38
-      - 38
+      - 42
+      - 510
+      - 876
+      - 1
     fill:
       type: solid
-      color: "#356F68"
-  - elementId: file-copies
+      color: "#2B4C50"
+  - elementId: f-watermark
     elementType: text
     bounds:
-      - 626
-      - 153
-      - 286
-      - 122
+      - 42
+      - 518
+      - 700
+      - 17
     content:
-      text: |-
-        deck.pptx
-        deck_revised.pptx
-        deck_final_2.pptx
-      fontFamily: Consolas
-      fontSize: 18
-      color: "#5B6A62"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.6
-  - elementId: to-page
-    elementType: line
-    bounds:
-      - 651
-      - 296
-      - 0
-      - 43
-    viewBox:
-      - 1
-      - 1
-    points: 0,0 1,1
-    border:
-      width: 1.4
-      color: "#356F68"
-    arrow:
-      - null
-      - arrow
-  - elementId: page-history
-    elementType: icon
-    iconName: fas:clock-rotate-left
-    bounds:
-      - 571
-      - 377
-      - 36
-      - 36
-    fill:
-      type: solid
-      color: "#356F68"
-  - elementId: one-page
-    elementType: text
-    bounds:
-      - 625
-      - 371
-      - 290
-      - 83
-    content:
-      text: The same page + its history
-      fontFamily: Georgia
-      fontSize: 21
-      color: "#20372F"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.4
-  - elementId: illustrative
-    elementType: text
-    bounds:
-      - 44
-      - 469
-      - 872
-      - 35
-    content:
-      text: From my “change two of fifty” example; filenames are illustrative.
+      text: English · ChatGPT 6 Astra
       fontFamily: Segoe UI
       fontSize: 12
-      color: "#5B6A62"
+      color: "#B7C8C5"
       bold: false
       align:
         - left
         - top
-      lineHeight: 1.35
-notes: "Two frustrations often appeared together in my work. A deck could look complete while missing the point I wanted to make. Changing two pages in fifty could also leave another full copy. I separated those concerns: where does the human intent stay, and which page actually changed? Story keeps the intent available; page identity and history keep the revision attached to the work. The filenames illustrate my use case, not a claim about every AI tool."
+      lineHeight: 1.2
+  - elementId: f-position
+    elementType: text
+    bounds:
+      - 882
+      - 518
+      - 36
+      - 17
+    content:
+      text: ""
+      fontFamily: Segoe UI
+      fontSize: 12
+      color: "#B7C8C5"
+      bold: false
+      align:
+        - right
+        - top
+      lineHeight: 1.2
+      field: main-position
+  - elementId: f-request-label
+    elementType: text
+    bounds:
+      - 44
+      - 139
+      - 840
+      - 24
+    content:
+      text: AN EXAMPLE REQUEST
+      fontFamily: Segoe UI
+      fontSize: 13
+      color: "#91CBC3"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.2
+  - elementId: f-request
+    elementType: text
+    bounds:
+      - 44
+      - 174
+      - 850
+      - 55
+    content:
+      text: “Shorten this title. Keep the diagram and its meaning.”
+      fontFamily: Segoe UI
+      fontSize: 26
+      color: "#F4F1E8"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.2
+  - elementId: f-selected
+    elementType: image
+    bounds:
+      - 44
+      - 253
+      - 870
+      - 66
+    src: media/imported/ca03c840de136a63bf8ebfbb457795ee72825568a458ff370db66a2b95830416.png
+    sourceName: selected-title.png
+    fit:
+      mode: contain
+  - elementId: f-link
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 44
+      - 350
+      - 5
+      - 127
+    fill:
+      type: solid
+      color: "#ED6A3A"
+  - elementId: f-principle
+    elementType: text
+    bounds:
+      - 65
+      - 350
+      - 810
+      - 126
+    content:
+      text: |-
+        One focused change.
+        A saved record you can inspect.
+        A page you can keep working on.
+      fontFamily: Segoe UI
+      fontSize: 25
+      color: "#F4F1E8"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.42
+notes: "Presentation work often returns to a small request: change one explanation while keeping the evidence and useful layout. The selected title shown here belongs to the actual project map on the next page. A focused request identifies what changes and what remains. After editing, save the page and inspect that operation. The page remains part of the same working project rather than becoming an unexplained replacement deck."

@@ -11,7 +11,7 @@ Date: 2026-11-08. Contract: [Audit](AUDIT-V010.md) → [Specification](SPEC-V010
 | Build timestamp | `2026-11-08T06:50:30.6528822Z` |
 | Source state | `sourceDirty=false` |
 | Electron | 38.7.2 |
-| Authoritative worktree | `D:/_Proj/Huandeng-v010-20261108` |
+| Authoritative worktree | `<workspace-checkout>` |
 | Branch | `editor/v0.10-product-workflow` |
 
 Windows owns build provenance; Linux was an editing/transfer mirror. Later harness/documentation commits do not change the binary's source identity. Product version 0.10.0 remains separate from npm workspace versions.

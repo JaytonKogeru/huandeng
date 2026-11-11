@@ -1,0 +1,168 @@
+{
+  "schemaVersion": 1,
+  "edition": "chatgpt-zh",
+  "scope": "main",
+  "source": "examples/huandeng-introduction/chatgpt-zh/Exports/deck.pptx",
+  "sha256": "783eee58703c5a7b65cc5393d2cb1ba592a158cc9ff7f96c75a6a635ac8b14f0",
+  "pages": 24,
+  "notes": 24,
+  "nativeCharts": 0,
+  "nativeTables": 0,
+  "nativeGroups": 0,
+  "officeVersion": "16.0",
+  "powerPointExecutableVersion": "16.0.20527.20150",
+  "readOnly": true,
+  "openAndRepair": false,
+  "sourceUnchanged": true,
+  "closedOwnDocument": true,
+  "visualReview": {
+    "edition": "chatgpt-zh",
+    "scope": "main",
+    "pages": 24,
+    "contactSheets": ["001-008", "009-016", "017-024"],
+    "detailPages": [3, 4, 21],
+    "referencePages": [3, 4, 21],
+    "status": "reviewed-no-missing-content-observed",
+    "fallbackChecks": [
+      {
+        "page": 3,
+        "object": "folder icon, 6G4G",
+        "result": "cream folder visible on ink panel; silhouette and relative placement preserved"
+      },
+      {
+        "page": 4,
+        "object": "folder icon, CR5K",
+        "result": "teal folder visible; silhouette and relative placement preserved"
+      },
+      {
+        "page": 21,
+        "object": "zd-scope-focus multipoint line",
+        "result": "complete orange rectangular outline around 12-page presentation range visible; arrow also visible; matches editor reference"
+      }
+    ],
+    "observations": []
+  },
+  "renderedPageHashes": [
+    {
+      "slide": 1,
+      "sha256": "2652aa0cab750a9de971c0961a6db7291d999abe76f9afe166859fff35a0d0eb",
+      "bytes": 207708
+    },
+    {
+      "slide": 2,
+      "sha256": "8ccf295c6b90b9bf78dba29229a09a8228cfaa365c8f1000584205fd74295cd4",
+      "bytes": 178421
+    },
+    {
+      "slide": 3,
+      "sha256": "75d98b101d97cc248a7cd07f547a21c02b3f0018aa5e0fe875b60198b914c602",
+      "bytes": 76507
+    },
+    {
+      "slide": 4,
+      "sha256": "cce3b515cad35f81ef7f4f2b01b02aa4fa922591559b29ccf0588da39ae64715",
+      "bytes": 179995
+    },
+    {
+      "slide": 5,
+      "sha256": "648e66a7635035c28c63b7a4c67b45fe245cbd3417e4904fa705a79e0cab076e",
+      "bytes": 238279
+    },
+    {
+      "slide": 6,
+      "sha256": "d92c1610d56c92c20c85a6c3ff00e25d7f5d8fe41c99c3a53c11b01024d53565",
+      "bytes": 152289
+    },
+    {
+      "slide": 7,
+      "sha256": "58a07bd277d622e12e22c9453f197f1a9c0632ff273edbc9c3e1802e39df20e8",
+      "bytes": 175904
+    },
+    {
+      "slide": 8,
+      "sha256": "0359d36aeb574148c19d181e5cb3cf737b6edd27084b5a217810da50c2731968",
+      "bytes": 171358
+    },
+    {
+      "slide": 9,
+      "sha256": "0858c11eb2771af9631b3f34efec391653ea924509c65312c2ef17ec2413b524",
+      "bytes": 127747
+    },
+    {
+      "slide": 10,
+      "sha256": "d070e6a4bb398222a1c6e3890c01b99545d61f1cb1b3b72a048c0ff1df1bfc1d",
+      "bytes": 106541
+    },
+    {
+      "slide": 11,
+      "sha256": "a3ea0060db4b6464d9791d8cd048eadfc9f965d1ae48fa0e4d4235369ee0c0f7",
+      "bytes": 127963
+    },
+    {
+      "slide": 12,
+      "sha256": "5f12f7fa33aba5d7e7e4c610dd4b5c694da50dbf92580d034daccd191d3e1d6d",
+      "bytes": 150833
+    },
+    {
+      "slide": 13,
+      "sha256": "ea8c75e9f1d0144599492d394af436fca2f4ac7db89c504ffa987c1a128581d0",
+      "bytes": 164588
+    },
+    {
+      "slide": 14,
+      "sha256": "821d04508d9fcba9fc171af2c25875e8ed2332ca05d159919488752024e21587",
+      "bytes": 200155
+    },
+    {
+      "slide": 15,
+      "sha256": "000a3387f848c0fc21904a131f78c316ade8431cbffacf12ca7d77e7b5e147bf",
+      "bytes": 119398
+    },
+    {
+      "slide": 16,
+      "sha256": "324ec3d2994161f6063d8aab6c5e25c2aa60ff126a2572ef9f732a8c720034db",
+      "bytes": 78553
+    },
+    {
+      "slide": 17,
+      "sha256": "fe67a049879698cf28b167644b939cf403b4b5df2bd0cf1d31ce6c9d2d3d4beb",
+      "bytes": 253585
+    },
+    {
+      "slide": 18,
+      "sha256": "ea2ccb9b263643ef5414f57462952a9fa5b317eff208c9291efb6c2fe83c5f98",
+      "bytes": 210713
+    },
+    {
+      "slide": 19,
+      "sha256": "b3add2b901778634f408bbbdefd6f35d90a13776ad8a2dfc3b1d22cf81b9ae08",
+      "bytes": 119074
+    },
+    {
+      "slide": 20,
+      "sha256": "1b8fd8a64399aad117dcbf622535d74c7736e5e231365dbc2f743d4112385fb6",
+      "bytes": 224613
+    },
+    {
+      "slide": 21,
+      "sha256": "d592799675e6863ed0f49a558679dfe7beb9d87da960f72469f45c683c1e1a72",
+      "bytes": 129805,
+      "selectedPreview": "images/office-chatgpt-zh-main-21.png"
+    },
+    {
+      "slide": 22,
+      "sha256": "2d6992dd1d7c1ca3793e1f30f5001b25d6e791c198d15cb88df92c327ec20444",
+      "bytes": 109805
+    },
+    {
+      "slide": 23,
+      "sha256": "e86ce05ea7e0a2a9636ac45a0d3fa04955f25242646bd99444e4dc94db4c967f",
+      "bytes": 140820
+    },
+    {
+      "slide": 24,
+      "sha256": "19e858a143b98580be2ee61a806b21f4e493fe550cf4e6173069deed67e6730d",
+      "bytes": 102174
+    }
+  ]
+}

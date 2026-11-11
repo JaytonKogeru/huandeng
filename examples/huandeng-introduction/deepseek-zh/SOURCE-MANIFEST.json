@@ -1,13 +1,32 @@
 {
-  "schemaVersion": 4,
-  "releaseTag": "editor-v0.19.0",
+  "schemaVersion": 5,
   "project": "deepseek-zh",
-  "recordedAt": "2026-11-11T02:54:50.112076+00:00",
+  "recordedAt": "2026-11-11T09:56:38Z",
   "entry": "deck.pptd",
-  "pluginVersion": "0.19.0",
+  "deckId": "52acb4d4-d269-413c-b092-201547ab1a3b",
   "editorVersion": "0.19.0",
-  "native_completed": true,
-  "authorAccepted": false,
+  "pluginVersion": "0.19.0",
+  "scope": "Complete portable project with current Main pages, retained page history, checkpoints, local assets, notes, composition and evidence. Canonical generated exports are listed separately.",
+  "authoringBoundary": "Mechanical inventory and packaging only; this manifest does not imply new authoring, model execution, installation or publication.",
+  "sourceSelection": {
+    "command": "git ls-files --cached --others --exclude-standard -- examples/huandeng-introduction/deepseek-zh",
+    "scope": "Existing regular files under this project, using tracked and non-ignored untracked paths.",
+    "excluded": [
+      "SOURCE-MANIFEST.json",
+      "Exports/**",
+      "**/desktop.ini",
+      "**/Thumbs.db",
+      "**/.DS_Store",
+      ".huandeng/project.ico"
+    ],
+    "manifestSelfExcluded": true,
+    "generatedDeliveriesIncludedInGitSourceTree": false
+  },
+  "currentMainReadback": {
+    "source": "HUANDENG shared writer /__pptd/current, read-only",
+    "manifestRevision": "sha256:eda1ef98c23aad9e04891d9314a9f8349c46710d8633a8c0c92429fdca6cd62a",
+    "metadataRevision": "sha256:7977f54ff28cd8c30237fb63bc198c57e0dd81239f6e9b680448d5a7e7a2ff76"
+  },
   "activeMainPageCount": 22,
   "briefPageCount": 12,
   "allPageFileCount": 47,
@@ -15,204 +34,368 @@
     {
       "position": 1,
       "pageId": "b473ed1a-c554-4ee3-9e8e-688e00be99b9",
+      "shortCode": "CZD7",
       "path": "pages/CZD7.page",
-      "sha256": "670dbfb90bd3b8bc21913d1ec8179bdab89382bd5b475b85d5dec78da79186aa"
+      "bytes": 4220,
+      "sha256": "d379b0d8e71bd9dea10e694f643bd2be08815834110f1a6e97a596fdf9071484",
+      "pageRevision": "sha256:d379b0d8e71bd9dea10e694f643bd2be08815834110f1a6e97a596fdf9071484"
     },
     {
       "position": 2,
       "pageId": "62c6d0cc-885f-485c-a81e-baeaff6d1940",
+      "shortCode": "Z4XP",
       "path": "pages/Z4XP.page",
-      "sha256": "279e7be40a9b5e1ba8e056c167f812eed4b673b2b20b9a21250f3ee757432d2d"
+      "bytes": 9593,
+      "sha256": "84b840c35cf3582917556424a85c48338e5f5c902e12b8bfb6d8d84494af1a1e",
+      "pageRevision": "sha256:84b840c35cf3582917556424a85c48338e5f5c902e12b8bfb6d8d84494af1a1e"
     },
     {
       "position": 3,
       "pageId": "307fe424-d34a-4b76-b801-4e8f63ba8cbb",
+      "shortCode": "4ST8",
       "path": "pages/4ST8.page",
-      "sha256": "b3870d66fddd12879d9fa349cd467dfcf5d0ff09f3df8f396500526f5749a43d"
+      "bytes": 837,
+      "sha256": "80a8b2d6dedf4aa4174a4f9a30ef55824f47dad5151ea829d06c6072c7c2a006",
+      "pageRevision": "sha256:80a8b2d6dedf4aa4174a4f9a30ef55824f47dad5151ea829d06c6072c7c2a006"
     },
     {
       "position": 4,
       "pageId": "16f2ab87-6962-4100-b2f6-1ab8077b01c7",
+      "shortCode": "UGA7",
       "path": "pages/UGA7.page",
-      "sha256": "1e28605883f9c1bc61fc6ecb58541241261a9780ca9c694d1ef16318fb9413c0"
+      "bytes": 3165,
+      "sha256": "d170cb87738d0c472454ae41b6d5131ff9a563d39845019b0b4f1a72d49431d1",
+      "pageRevision": "sha256:d170cb87738d0c472454ae41b6d5131ff9a563d39845019b0b4f1a72d49431d1"
     },
     {
       "position": 5,
       "pageId": "b6749c12-2c5c-42b4-8437-763f6a800abf",
+      "shortCode": "PQQR",
       "path": "pages/PQQR.page",
-      "sha256": "c28c60f48d9a27f68b7648867c3bf976f5c7ac16116c442f206f83aec0b4c130"
+      "bytes": 3137,
+      "sha256": "dcc6c15075aa4bd3f2a0a82495aed3503afe353d147fcc31139d153de5db5d51",
+      "pageRevision": "sha256:dcc6c15075aa4bd3f2a0a82495aed3503afe353d147fcc31139d153de5db5d51"
     },
     {
       "position": 6,
       "pageId": "007717f6-4756-4fc1-acdb-91ac96df37e6",
+      "shortCode": "2Z2N",
       "path": "pages/2Z2N.page",
-      "sha256": "24d6e2f3f73ed2ee1bcbb4c557c15d041e3ffb8a4a52b4560fa23856ae25dbf2"
+      "bytes": 8067,
+      "sha256": "5961420d58824eeb9d3cad1293b7edad0f3cbcee5e894dcae1a3da843cad5e92",
+      "pageRevision": "sha256:5961420d58824eeb9d3cad1293b7edad0f3cbcee5e894dcae1a3da843cad5e92"
     },
     {
       "position": 7,
       "pageId": "a008b83f-9735-4495-8c59-0b2a2260c244",
+      "shortCode": "5MNK",
       "path": "pages/5MNK.page",
-      "sha256": "9133c407dcbaa2b72b1b3ef108b081d2e9624a551e9b3a92e24dc1786076d9fe"
+      "bytes": 852,
+      "sha256": "eae45a7e315adc1037aa9c656d6504313cc1c9ac62d3a661bf3fa736893180bc",
+      "pageRevision": "sha256:eae45a7e315adc1037aa9c656d6504313cc1c9ac62d3a661bf3fa736893180bc"
     },
     {
       "position": 8,
       "pageId": "4a40e022-4dcc-41ea-b645-a279b3f1b1e3",
+      "shortCode": "5HUQ",
       "path": "pages/5HUQ.page",
-      "sha256": "c1c974d2151c34ca4e0d0afe3c1612820b01dbeace6d76f53fc148dd8a27a4c9"
+      "bytes": 2775,
+      "sha256": "17a5e14a26f79a8ff72b43a2cdfbaf14e7cc7b9e03fa271716d0d27a62d17a7c",
+      "pageRevision": "sha256:17a5e14a26f79a8ff72b43a2cdfbaf14e7cc7b9e03fa271716d0d27a62d17a7c"
     },
     {
       "position": 9,
       "pageId": "53547db4-e3af-4397-a930-297080fef9c4",
+      "shortCode": "88WA",
       "path": "pages/88WA.page",
-      "sha256": "4253296c3b52e17362ab8041a680289fd065eb7355367d989d89945c65cf8baa"
+      "bytes": 2829,
+      "sha256": "4cc5ef726aafb7a5a9cdace571f3c3dcf64bca7cd580468e9d0b6f6b75c4f9ac",
+      "pageRevision": "sha256:4cc5ef726aafb7a5a9cdace571f3c3dcf64bca7cd580468e9d0b6f6b75c4f9ac"
     },
     {
       "position": 10,
       "pageId": "21d1d0de-ddc9-49ad-ad20-75e16d889012",
+      "shortCode": "AVJE",
       "path": "pages/AVJE.page",
-      "sha256": "31611edc273527fb2116ed36eb68c0c748516c63296fd7fc0702d72403337a4a"
+      "bytes": 3177,
+      "sha256": "8e3cf90b8490b7856721d2e4f70fcf562b8d90507cb5861263dc97a48e4803c9",
+      "pageRevision": "sha256:8e3cf90b8490b7856721d2e4f70fcf562b8d90507cb5861263dc97a48e4803c9"
     },
     {
       "position": 11,
       "pageId": "2bda7c83-3e1b-46ee-83c7-e9b9b59a3578",
+      "shortCode": "G8WH",
       "path": "pages/G8WH.page",
-      "sha256": "f19b976630eb0fa5c8c50915656e3e7ba3f723e0fc3c9a96496adb8c04e82e37"
+      "bytes": 3831,
+      "sha256": "cd312fe10ca60443ae59e5b2096138e97aa641736dbdeede71d79cf33f40b572",
+      "pageRevision": "sha256:cd312fe10ca60443ae59e5b2096138e97aa641736dbdeede71d79cf33f40b572"
     },
     {
       "position": 12,
       "pageId": "415b064f-c96d-4e9c-b38a-ff1593101ee0",
+      "shortCode": "4USM",
       "path": "pages/4USM.page",
-      "sha256": "af1623336a93001d7296d5efb7d865fd62651d474c94eb9765035d598c37e4e0"
+      "bytes": 4149,
+      "sha256": "83660c551cea6696f232e32ed4ddb9ae881838aef8e6f6ca6d5157b4f360f190",
+      "pageRevision": "sha256:83660c551cea6696f232e32ed4ddb9ae881838aef8e6f6ca6d5157b4f360f190"
     },
     {
       "position": 13,
       "pageId": "442751c7-1ad1-457f-acbb-c1e8611f0ecd",
+      "shortCode": "WMFA",
       "path": "pages/WMFA.page",
-      "sha256": "2b265983c246d9bb23f3515707f1c9e189a6f4a54184edc7f05bdcf186e6c3c8"
+      "bytes": 4226,
+      "sha256": "9adb388465df8e75b0db4aa035e18f2c61323096fb0e70e2445577dd96223ead",
+      "pageRevision": "sha256:9adb388465df8e75b0db4aa035e18f2c61323096fb0e70e2445577dd96223ead"
     },
     {
       "position": 14,
       "pageId": "aab5e915-8c00-419d-a5b2-4377bd060559",
+      "shortCode": "7PV4",
       "path": "pages/7PV4.page",
-      "sha256": "83fc7b7f0348787cb47564c282d16f4113b8db53faae04310605377292f16d62"
+      "bytes": 4808,
+      "sha256": "c8e3c9be5d9f21db0269fc37c6c18dd3c97541bc0e610651583a90d88be83aa9",
+      "pageRevision": "sha256:c8e3c9be5d9f21db0269fc37c6c18dd3c97541bc0e610651583a90d88be83aa9"
     },
     {
       "position": 15,
       "pageId": "81904faa-df61-47e7-a6ad-a02563b1c171",
+      "shortCode": "UZKY",
       "path": "pages/UZKY.page",
-      "sha256": "5a597d58b6ef8fcdf8f5c6621abca5059084f1acf61fe7192e29ecc3fd7ca7f0"
+      "bytes": 3946,
+      "sha256": "3cb2cf166348027c6931e5521207b79983dbee1c2bb256740a3987b6dea4ef09",
+      "pageRevision": "sha256:3cb2cf166348027c6931e5521207b79983dbee1c2bb256740a3987b6dea4ef09"
     },
     {
       "position": 16,
       "pageId": "d23386ad-2c83-44fd-aa92-db09358af429",
+      "shortCode": "CKFY",
       "path": "pages/CKFY.page",
-      "sha256": "a17489f79b1c439eef0be0bd254b1202e7aa34c12a938f32dca41a6b5fec5e9a"
+      "bytes": 5203,
+      "sha256": "5c88212034e25b12ac48234b99c2563875a9ab87ca43f42beaf7f419c2107c39",
+      "pageRevision": "sha256:5c88212034e25b12ac48234b99c2563875a9ab87ca43f42beaf7f419c2107c39"
     },
     {
       "position": 17,
       "pageId": "e42a9867-65cf-4d38-a13b-ddf588dcdc68",
+      "shortCode": "XZJN",
       "path": "pages/XZJN.page",
-      "sha256": "1022cb1a58b515c7c1047ffdb4d85502e563fd4c2b7ebcbd11c2f6be8d1e2cb4"
+      "bytes": 3993,
+      "sha256": "d7273ffad75f33c792ab139183cba86aa5c96c5658044c7ef407452148f299f2",
+      "pageRevision": "sha256:d7273ffad75f33c792ab139183cba86aa5c96c5658044c7ef407452148f299f2"
     },
     {
       "position": 18,
       "pageId": "844dd3c1-4016-465d-a245-1b0f5fc01be8",
+      "shortCode": "2FMW",
       "path": "pages/2FMW.page",
-      "sha256": "a764a47a73c99ae174619f46e24264af45e8bf826b24b99d17982b214218e647"
+      "bytes": 8582,
+      "sha256": "ba6548b815048ff165781864a545fc8bf368fa877980d239650ac58503c1121a",
+      "pageRevision": "sha256:ba6548b815048ff165781864a545fc8bf368fa877980d239650ac58503c1121a"
     },
     {
       "position": 19,
       "pageId": "39c44252-dda5-483d-867f-4710547c0065",
+      "shortCode": "5ZZM",
       "path": "pages/5ZZM.page",
-      "sha256": "4f89c03a1a1e29255ca2673ff539e5d6290299bf9f8321ba354d3323fa100c4b"
+      "bytes": 5695,
+      "sha256": "7d4cec464f0a4a5a9c0604eb3ea44c1019050ebf17aee6b3b137ed61dc2a9342",
+      "pageRevision": "sha256:7d4cec464f0a4a5a9c0604eb3ea44c1019050ebf17aee6b3b137ed61dc2a9342"
     },
     {
       "position": 20,
       "pageId": "3df19be8-3e3c-4870-83e1-94ba44549899",
+      "shortCode": "6DVM",
       "path": "pages/6DVM.page",
-      "sha256": "695a49474ea07f8abf61ca8cfedaee7ceef41e80cc6e07b5715e9611898dc6c2"
+      "bytes": 4311,
+      "sha256": "76ef54fa6dff8ca6e80f0cccbc72fba3a34ee34ebe26df92311bbc9b6c246b84",
+      "pageRevision": "sha256:76ef54fa6dff8ca6e80f0cccbc72fba3a34ee34ebe26df92311bbc9b6c246b84"
     },
     {
       "position": 21,
       "pageId": "bfdbde14-8414-4f84-baf4-4b413fb6a246",
+      "shortCode": "K9P9",
       "path": "pages/K9P9.page",
-      "sha256": "230101eca6d3ab38b91aeb5ca1a8d47f9eb7443a8be97b1eeac2347b0ccc0b33"
+      "bytes": 5595,
+      "sha256": "2d2c84d36fd80a114cd87f844fed8da311daa86aa0b84fe6a8cb79cdf26a8c8e",
+      "pageRevision": "sha256:2d2c84d36fd80a114cd87f844fed8da311daa86aa0b84fe6a8cb79cdf26a8c8e"
     },
     {
       "position": 22,
       "pageId": "4dd70003-c817-49c2-a367-786594eaab59",
+      "shortCode": "QHUX",
       "path": "pages/QHUX.page",
-      "sha256": "1e152bdde1a812048d7f70cda11c9e26f76b094216293112d35bd862027011ef"
+      "bytes": 4504,
+      "sha256": "643130d9fd060e673218685fe55c092ee9457fa96aced40febb3f6980a3a3215",
+      "pageRevision": "sha256:643130d9fd060e673218685fe55c092ee9457fa96aced40febb3f6980a3a3215"
     }
   ],
   "presentations": [
     {
       "id": "full",
       "title": "完整介绍",
-      "pages": 22
+      "pageCount": 22,
+      "items": [
+        {
+          "occurrenceId": "f01",
+          "pageId": "b473ed1a-c554-4ee3-9e8e-688e00be99b9"
+        },
+        {
+          "occurrenceId": "f02",
+          "pageId": "62c6d0cc-885f-485c-a81e-baeaff6d1940"
+        },
+        {
+          "occurrenceId": "f03",
+          "pageId": "307fe424-d34a-4b76-b801-4e8f63ba8cbb"
+        },
+        {
+          "occurrenceId": "f04",
+          "pageId": "16f2ab87-6962-4100-b2f6-1ab8077b01c7"
+        },
+        {
+          "occurrenceId": "f05",
+          "pageId": "b6749c12-2c5c-42b4-8437-763f6a800abf"
+        },
+        {
+          "occurrenceId": "f06",
+          "pageId": "007717f6-4756-4fc1-acdb-91ac96df37e6"
+        },
+        {
+          "occurrenceId": "f07",
+          "pageId": "a008b83f-9735-4495-8c59-0b2a2260c244"
+        },
+        {
+          "occurrenceId": "f08",
+          "pageId": "4a40e022-4dcc-41ea-b645-a279b3f1b1e3"
+        },
+        {
+          "occurrenceId": "f09",
+          "pageId": "53547db4-e3af-4397-a930-297080fef9c4"
+        },
+        {
+          "occurrenceId": "f10",
+          "pageId": "21d1d0de-ddc9-49ad-ad20-75e16d889012"
+        },
+        {
+          "occurrenceId": "f11",
+          "pageId": "2bda7c83-3e1b-46ee-83c7-e9b9b59a3578"
+        },
+        {
+          "occurrenceId": "f12",
+          "pageId": "415b064f-c96d-4e9c-b38a-ff1593101ee0"
+        },
+        {
+          "occurrenceId": "f13",
+          "pageId": "442751c7-1ad1-457f-acbb-c1e8611f0ecd"
+        },
+        {
+          "occurrenceId": "f14",
+          "pageId": "aab5e915-8c00-419d-a5b2-4377bd060559"
+        },
+        {
+          "occurrenceId": "f15",
+          "pageId": "81904faa-df61-47e7-a6ad-a02563b1c171"
+        },
+        {
+          "occurrenceId": "f16",
+          "pageId": "d23386ad-2c83-44fd-aa92-db09358af429"
+        },
+        {
+          "occurrenceId": "f17",
+          "pageId": "e42a9867-65cf-4d38-a13b-ddf588dcdc68"
+        },
+        {
+          "occurrenceId": "f18",
+          "pageId": "844dd3c1-4016-465d-a245-1b0f5fc01be8"
+        },
+        {
+          "occurrenceId": "f19",
+          "pageId": "39c44252-dda5-483d-867f-4710547c0065"
+        },
+        {
+          "occurrenceId": "f20",
+          "pageId": "3df19be8-3e3c-4870-83e1-94ba44549899"
+        },
+        {
+          "occurrenceId": "f21",
+          "pageId": "bfdbde14-8414-4f84-baf4-4b413fb6a246"
+        },
+        {
+          "occurrenceId": "f22",
+          "pageId": "4dd70003-c817-49c2-a367-786594eaab59"
+        }
+      ]
     },
     {
       "id": "brief",
       "title": "短版 · 约十分钟",
-      "pages": 12
+      "pageCount": 12,
+      "items": [
+        {
+          "occurrenceId": "b01",
+          "pageId": "b473ed1a-c554-4ee3-9e8e-688e00be99b9"
+        },
+        {
+          "occurrenceId": "b02",
+          "pageId": "62c6d0cc-885f-485c-a81e-baeaff6d1940"
+        },
+        {
+          "occurrenceId": "b03",
+          "pageId": "16f2ab87-6962-4100-b2f6-1ab8077b01c7"
+        },
+        {
+          "occurrenceId": "b04",
+          "pageId": "b6749c12-2c5c-42b4-8437-763f6a800abf"
+        },
+        {
+          "occurrenceId": "b05",
+          "pageId": "007717f6-4756-4fc1-acdb-91ac96df37e6"
+        },
+        {
+          "occurrenceId": "b06",
+          "pageId": "4a40e022-4dcc-41ea-b645-a279b3f1b1e3"
+        },
+        {
+          "occurrenceId": "b07",
+          "pageId": "442751c7-1ad1-457f-acbb-c1e8611f0ecd"
+        },
+        {
+          "occurrenceId": "b08",
+          "pageId": "81904faa-df61-47e7-a6ad-a02563b1c171"
+        },
+        {
+          "occurrenceId": "b09",
+          "pageId": "d23386ad-2c83-44fd-aa92-db09358af429"
+        },
+        {
+          "occurrenceId": "b10",
+          "pageId": "e42a9867-65cf-4d38-a13b-ddf588dcdc68"
+        },
+        {
+          "occurrenceId": "b11",
+          "pageId": "39c44252-dda5-483d-867f-4710547c0065"
+        },
+        {
+          "occurrenceId": "b12",
+          "pageId": "4dd70003-c817-49c2-a367-786594eaab59"
+        }
+      ]
     }
   ],
   "pinnedOccurrences": [],
-  "exports": [
-    {
-      "path": "Exports/deck.pdf",
-      "report": "Exports/deck.pdf.report.json",
-      "kind": "deck",
-      "format": "pdf",
-      "pages": 22,
-      "presentationId": null,
-      "sha256": "0e048750bb11d471eb22db77935ebe6740d6fdb41250077a1dddcc28a83bfd9c",
-      "bytes": 3056162,
-      "manifestRevision": "sha256:eda1ef98c23aad9e04891d9314a9f8349c46710d8633a8c0c92429fdca6cd62a",
-      "metadataRevision": "sha256:7977f54ff28cd8c30237fb63bc198c57e0dd81239f6e9b680448d5a7e7a2ff76",
-      "pageRevisionsVerified": true
-    },
-    {
-      "path": "Exports/deck.pptx",
-      "report": "Exports/deck.pptx.report.json",
-      "kind": "deck",
-      "format": "pptx",
-      "pages": 22,
-      "presentationId": null,
-      "sha256": "2d9e53fec0b9c7ae76598a1f7623dc04841d062a63a1d452f2fcc2ddf049cbf1",
-      "bytes": 2682435,
-      "manifestRevision": "sha256:eda1ef98c23aad9e04891d9314a9f8349c46710d8633a8c0c92429fdca6cd62a",
-      "metadataRevision": "sha256:7977f54ff28cd8c30237fb63bc198c57e0dd81239f6e9b680448d5a7e7a2ff76",
-      "pageRevisionsVerified": true
-    },
-    {
-      "path": "Exports/brief.pdf",
-      "report": "Exports/brief.pdf.report.json",
-      "kind": "brief",
-      "format": "pdf",
-      "pages": 12,
-      "presentationId": "brief",
-      "sha256": "f6f824f8bd3702427c55873bb6acae655bae745f71901885fcb3ef700eea87bf",
-      "bytes": 1843389,
-      "manifestRevision": "sha256:eda1ef98c23aad9e04891d9314a9f8349c46710d8633a8c0c92429fdca6cd62a",
-      "metadataRevision": "sha256:7977f54ff28cd8c30237fb63bc198c57e0dd81239f6e9b680448d5a7e7a2ff76",
-      "pageRevisionsVerified": true
-    },
-    {
-      "path": "Exports/brief.pptx",
-      "report": "Exports/brief.pptx.report.json",
-      "kind": "brief",
-      "format": "pptx",
-      "pages": 12,
-      "presentationId": "brief",
-      "sha256": "b106cb7e2e14b0b1abad26168f816799ceb98de365f5468696a1672265dfca61",
-      "bytes": 1445425,
-      "manifestRevision": "sha256:eda1ef98c23aad9e04891d9314a9f8349c46710d8633a8c0c92429fdca6cd62a",
-      "metadataRevision": "sha256:7977f54ff28cd8c30237fb63bc198c57e0dd81239f6e9b680448d5a7e7a2ff76",
-      "pageRevisionsVerified": true
-    }
-  ],
-  "files": [
+  "retention": {
+    "allPageFiles": 47,
+    "activeMainPageFiles": 22,
+    "retainedNonMainPageFiles": 25,
+    "checkpointFiles": 13,
+    "mediaFiles": 68,
+    "sourceMaterialFiles": 37,
+    "uniqueLocalAssetReferences": 36,
+    "assetRevisionChecks": 52,
+    "pinnedOccurrences": 0
+  },
+  "sourceFileCount": 223,
+  "sourceFiles": [
     {
       "path": ".gitignore",
       "bytes": 9,
@@ -290,53 +473,13 @@
     },
     {
       "path": "AGENTS.md",
-      "bytes": 7510,
-      "sha256": "3257a10a88f93700bb5299cbea70f87250997d51f78039768382dac4d04a032f"
+      "bytes": 8026,
+      "sha256": "4688f737b0413de8e9e0cbbaae5a6e491c2be23727336095399ccbf843540fa2"
     },
     {
       "path": "ASSET-PROVENANCE.json",
       "bytes": 32991,
       "sha256": "24e7432f60a069ad13ebe9397e6d263ed503477bf86801f6e19c9bd481f40257"
-    },
-    {
-      "path": "Exports/brief.pdf",
-      "bytes": 1843389,
-      "sha256": "f6f824f8bd3702427c55873bb6acae655bae745f71901885fcb3ef700eea87bf"
-    },
-    {
-      "path": "Exports/brief.pdf.report.json",
-      "bytes": 45801,
-      "sha256": "e3231d10cfec91920d7b862107da8f7edf70d70c4a3e345e95584a63001fbc90"
-    },
-    {
-      "path": "Exports/brief.pptx",
-      "bytes": 1445425,
-      "sha256": "b106cb7e2e14b0b1abad26168f816799ceb98de365f5468696a1672265dfca61"
-    },
-    {
-      "path": "Exports/brief.pptx.report.json",
-      "bytes": 53919,
-      "sha256": "fd677b48d5c3cf296400eeb625d51ed6ac28a37fd9169a68f68242c84cf2a854"
-    },
-    {
-      "path": "Exports/deck.pdf",
-      "bytes": 3056162,
-      "sha256": "0e048750bb11d471eb22db77935ebe6740d6fdb41250077a1dddcc28a83bfd9c"
-    },
-    {
-      "path": "Exports/deck.pdf.report.json",
-      "bytes": 56962,
-      "sha256": "4e3b14ed7281dbeafacb58e5227ee0ffa7307b37c483348fd9e828b68f5c2e96"
-    },
-    {
-      "path": "Exports/deck.pptx",
-      "bytes": 2682435,
-      "sha256": "2d9e53fec0b9c7ae76598a1f7623dc04841d062a63a1d452f2fcc2ddf049cbf1"
-    },
-    {
-      "path": "Exports/deck.pptx.report.json",
-      "bytes": 69636,
-      "sha256": "35679374f65fbc62558b7d5ff4bdd3f7a3d761220fe3802519575bab92746f27"
     },
     {
       "path": "LICENSE",
@@ -350,8 +493,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 5550,
-      "sha256": "ccb7499c425a2b6a42525900fbb6e858565de2ef70fa610cf8bbba122d096920"
+      "bytes": 6809,
+      "sha256": "e8e8ed4bc1e2ed7d75e5c343dc1c3b1d1f201bc1719f282c1d5db832e615abef"
     },
     {
       "path": "SEMANTIC-CORRESPONDENCE.zh-CN.md",
@@ -379,9 +522,14 @@
       "sha256": "fe2f37ac811d6e2aac68470d9714694f4f252776913e4eb383e153fcbae36702"
     },
     {
+      "path": "evidence/exports.json",
+      "bytes": 51609,
+      "sha256": "71400d03413e58ba6a78043550ff8ef80b95e98b58f4acf072cf2e42f1453fbd"
+    },
+    {
       "path": "evidence/guidance-before-portability.md",
       "bytes": 7389,
-      "sha256": "24e5684dc3284875b7260d5ed371f9e9a64422fcb2c9884aa2fd9b9e05aba01c"
+      "sha256": "62fd449085e480f00aec387bd5cf8d36c2affa628005e3599eef84060a7f3175"
     },
     {
       "path": "evidence/guidance-portability.json",
@@ -405,8 +553,13 @@
     },
     {
       "path": "evidence/native-trial.json",
-      "bytes": 3538,
-      "sha256": "0d811da8a5436665895d576cc6c36a9590c306a02bc8b126806134d40dfc5630"
+      "bytes": 3514,
+      "sha256": "af3278d24ce1e11fce7a884b6d6425f1e23ccb3b0ac47de755737bc7b1525fa2"
+    },
+    {
+      "path": "evidence/office-final-verification.json",
+      "bytes": 1500,
+      "sha256": "ca748c6a7523779ffb69d093efef25d762e1cceee633e54deb1d71ea8921dace"
     },
     {
       "path": "evidence/office-visual-review.json",
@@ -555,13 +708,13 @@
     },
     {
       "path": "evidence/product-review.json",
-      "bytes": 16167,
-      "sha256": "099f050671fd725371d2e6f36f0b47740b81c2cb485f12d1af09da3dd4ccd54d"
+      "bytes": 16119,
+      "sha256": "127a8634312d73d53e7da2d7c70739e7170c8ad99072f545aadd905b38873444"
     },
     {
       "path": "evidence/product-trial.json",
-      "bytes": 6185,
-      "sha256": "3e707c73ba3f8a4c79a80c82753dcd9e08841b62547dc7170eac39584d90671b"
+      "bytes": 6161,
+      "sha256": "1ed3b27c37cdd57e694288b2cd53fa2f749d276c5a11ddeab8d4ebff3da8543b"
     },
     {
       "path": "evidence/qa.json",
@@ -935,13 +1088,13 @@
     },
     {
       "path": "pages/2FMW.page",
-      "bytes": 8232,
-      "sha256": "a764a47a73c99ae174619f46e24264af45e8bf826b24b99d17982b214218e647"
+      "bytes": 8582,
+      "sha256": "ba6548b815048ff165781864a545fc8bf368fa877980d239650ac58503c1121a"
     },
     {
       "path": "pages/2Z2N.page",
-      "bytes": 7717,
-      "sha256": "24d6e2f3f73ed2ee1bcbb4c557c15d041e3ffb8a4a52b4560fa23856ae25dbf2"
+      "bytes": 8067,
+      "sha256": "5961420d58824eeb9d3cad1293b7edad0f3cbcee5e894dcae1a3da843cad5e92"
     },
     {
       "path": "pages/3JZP.page",
@@ -955,8 +1108,8 @@
     },
     {
       "path": "pages/4ST8.page",
-      "bytes": 487,
-      "sha256": "b3870d66fddd12879d9fa349cd467dfcf5d0ff09f3df8f396500526f5749a43d"
+      "bytes": 837,
+      "sha256": "80a8b2d6dedf4aa4174a4f9a30ef55824f47dad5151ea829d06c6072c7c2a006"
     },
     {
       "path": "pages/4SYN.page",
@@ -965,8 +1118,8 @@
     },
     {
       "path": "pages/4USM.page",
-      "bytes": 3799,
-      "sha256": "af1623336a93001d7296d5efb7d865fd62651d474c94eb9765035d598c37e4e0"
+      "bytes": 4149,
+      "sha256": "83660c551cea6696f232e32ed4ddb9ae881838aef8e6f6ca6d5157b4f360f190"
     },
     {
       "path": "pages/4UY8.page",
@@ -980,13 +1133,13 @@
     },
     {
       "path": "pages/5HUQ.page",
-      "bytes": 2425,
-      "sha256": "c1c974d2151c34ca4e0d0afe3c1612820b01dbeace6d76f53fc148dd8a27a4c9"
+      "bytes": 2775,
+      "sha256": "17a5e14a26f79a8ff72b43a2cdfbaf14e7cc7b9e03fa271716d0d27a62d17a7c"
     },
     {
       "path": "pages/5MNK.page",
-      "bytes": 502,
-      "sha256": "9133c407dcbaa2b72b1b3ef108b081d2e9624a551e9b3a92e24dc1786076d9fe"
+      "bytes": 852,
+      "sha256": "eae45a7e315adc1037aa9c656d6504313cc1c9ac62d3a661bf3fa736893180bc"
     },
     {
       "path": "pages/5XR7.page",
@@ -995,23 +1148,23 @@
     },
     {
       "path": "pages/5ZZM.page",
-      "bytes": 5345,
-      "sha256": "4f89c03a1a1e29255ca2673ff539e5d6290299bf9f8321ba354d3323fa100c4b"
+      "bytes": 5695,
+      "sha256": "7d4cec464f0a4a5a9c0604eb3ea44c1019050ebf17aee6b3b137ed61dc2a9342"
     },
     {
       "path": "pages/6DVM.page",
-      "bytes": 3961,
-      "sha256": "695a49474ea07f8abf61ca8cfedaee7ceef41e80cc6e07b5715e9611898dc6c2"
+      "bytes": 4311,
+      "sha256": "76ef54fa6dff8ca6e80f0cccbc72fba3a34ee34ebe26df92311bbc9b6c246b84"
     },
     {
       "path": "pages/7PV4.page",
-      "bytes": 4458,
-      "sha256": "83fc7b7f0348787cb47564c282d16f4113b8db53faae04310605377292f16d62"
+      "bytes": 4808,
+      "sha256": "c8e3c9be5d9f21db0269fc37c6c18dd3c97541bc0e610651583a90d88be83aa9"
     },
     {
       "path": "pages/88WA.page",
-      "bytes": 2479,
-      "sha256": "4253296c3b52e17362ab8041a680289fd065eb7355367d989d89945c65cf8baa"
+      "bytes": 2829,
+      "sha256": "4cc5ef726aafb7a5a9cdace571f3c3dcf64bca7cd580468e9d0b6f6b75c4f9ac"
     },
     {
       "path": "pages/8PPW.page",
@@ -1020,8 +1173,8 @@
     },
     {
       "path": "pages/AVJE.page",
-      "bytes": 2827,
-      "sha256": "31611edc273527fb2116ed36eb68c0c748516c63296fd7fc0702d72403337a4a"
+      "bytes": 3177,
+      "sha256": "8e3cf90b8490b7856721d2e4f70fcf562b8d90507cb5861263dc97a48e4803c9"
     },
     {
       "path": "pages/AVRB.page",
@@ -1030,8 +1183,8 @@
     },
     {
       "path": "pages/CKFY.page",
-      "bytes": 4853,
-      "sha256": "a17489f79b1c439eef0be0bd254b1202e7aa34c12a938f32dca41a6b5fec5e9a"
+      "bytes": 5203,
+      "sha256": "5c88212034e25b12ac48234b99c2563875a9ab87ca43f42beaf7f419c2107c39"
     },
     {
       "path": "pages/CS2J.page",
@@ -1040,8 +1193,8 @@
     },
     {
       "path": "pages/CZD7.page",
-      "bytes": 3870,
-      "sha256": "670dbfb90bd3b8bc21913d1ec8179bdab89382bd5b475b85d5dec78da79186aa"
+      "bytes": 4220,
+      "sha256": "d379b0d8e71bd9dea10e694f643bd2be08815834110f1a6e97a596fdf9071484"
     },
     {
       "path": "pages/DPSB.page",
@@ -1060,8 +1213,8 @@
     },
     {
       "path": "pages/G8WH.page",
-      "bytes": 3481,
-      "sha256": "f19b976630eb0fa5c8c50915656e3e7ba3f723e0fc3c9a96496adb8c04e82e37"
+      "bytes": 3831,
+      "sha256": "cd312fe10ca60443ae59e5b2096138e97aa641736dbdeede71d79cf33f40b572"
     },
     {
       "path": "pages/GRYJ.page",
@@ -1095,8 +1248,8 @@
     },
     {
       "path": "pages/K9P9.page",
-      "bytes": 5245,
-      "sha256": "230101eca6d3ab38b91aeb5ca1a8d47f9eb7443a8be97b1eeac2347b0ccc0b33"
+      "bytes": 5595,
+      "sha256": "2d2c84d36fd80a114cd87f844fed8da311daa86aa0b84fe6a8cb79cdf26a8c8e"
     },
     {
       "path": "pages/PD5K.page",
@@ -1105,13 +1258,13 @@
     },
     {
       "path": "pages/PQQR.page",
-      "bytes": 2787,
-      "sha256": "c28c60f48d9a27f68b7648867c3bf976f5c7ac16116c442f206f83aec0b4c130"
+      "bytes": 3137,
+      "sha256": "dcc6c15075aa4bd3f2a0a82495aed3503afe353d147fcc31139d153de5db5d51"
     },
     {
       "path": "pages/QHUX.page",
-      "bytes": 4154,
-      "sha256": "1e152bdde1a812048d7f70cda11c9e26f76b094216293112d35bd862027011ef"
+      "bytes": 4504,
+      "sha256": "643130d9fd060e673218685fe55c092ee9457fa96aced40febb3f6980a3a3215"
     },
     {
       "path": "pages/TZM6.page",
@@ -1125,13 +1278,13 @@
     },
     {
       "path": "pages/UGA7.page",
-      "bytes": 2899,
-      "sha256": "1e28605883f9c1bc61fc6ecb58541241261a9780ca9c694d1ef16318fb9413c0"
+      "bytes": 3165,
+      "sha256": "d170cb87738d0c472454ae41b6d5131ff9a563d39845019b0b4f1a72d49431d1"
     },
     {
       "path": "pages/UZKY.page",
-      "bytes": 3596,
-      "sha256": "5a597d58b6ef8fcdf8f5c6621abca5059084f1acf61fe7192e29ecc3fd7ca7f0"
+      "bytes": 3946,
+      "sha256": "3cb2cf166348027c6931e5521207b79983dbee1c2bb256740a3987b6dea4ef09"
     },
     {
       "path": "pages/W4PY.page",
@@ -1145,8 +1298,8 @@
     },
     {
       "path": "pages/WMFA.page",
-      "bytes": 3876,
-      "sha256": "2b265983c246d9bb23f3515707f1c9e189a6f4a54184edc7f05bdcf186e6c3c8"
+      "bytes": 4226,
+      "sha256": "9adb388465df8e75b0db4aa035e18f2c61323096fb0e70e2445577dd96223ead"
     },
     {
       "path": "pages/WQGW.page",
@@ -1155,13 +1308,13 @@
     },
     {
       "path": "pages/XZJN.page",
-      "bytes": 3643,
-      "sha256": "1022cb1a58b515c7c1047ffdb4d85502e563fd4c2b7ebcbd11c2f6be8d1e2cb4"
+      "bytes": 3993,
+      "sha256": "d7273ffad75f33c792ab139183cba86aa5c96c5658044c7ef407452148f299f2"
     },
     {
       "path": "pages/Z4XP.page",
-      "bytes": 9243,
-      "sha256": "279e7be40a9b5e1ba8e056c167f812eed4b673b2b20b9a21250f3ee757432d2d"
+      "bytes": 9593,
+      "sha256": "84b840c35cf3582917556424a85c48338e5f5c902e12b8bfb6d8d84494af1a1e"
     },
     {
       "path": "pages/initial.page",
@@ -1359,10 +1512,98 @@
       "sha256": "627a97157d6be6cf69f89644a37ced203e2f10396c944ec696de90c4109e64b0"
     }
   ],
-  "sourceInventorySha256": "c4683a085a553dea38e43e5e26eb5ab2301d6472129d3410f8a57a9f0beac0d9",
-  "supersedesHistoricalManifestSha256": "98ba7f93d9b1f52e7c69efadf937aa12b71907cd7e56ae81bcf9eecc36edc7ed",
-  "scope": "Complete portable project, retained page sources, named versions, checkpoint media, source materials, notes, evidence and canonical exports. This index excludes itself and workstation operation/runtime files.",
-  "sourceTagPolicy": "The release tag pins this source index. Editor binary source is separately recorded by the release manifest.",
-  "authoringBoundary": "Native-authored source and retained original evidence; coordinator packaging and review do not establish owner acceptance. Completion and technical continuation provenance follow the explicit final trial evidence.",
-  "historicalManifestLocation": "Git history before this product introduction release"
+  "sourceInventorySha256": "13df73cc1e9854a4141c95557f619b650b863a2f4212a7e7e3eecf0a333e35e7",
+  "sourceInventoryHashEncoding": "UTF-8 compact JSON of sourceFiles, keys sorted, no ASCII escaping, no trailing newline.",
+  "generatedDeliveries": [
+    {
+      "path": "Exports/brief.pdf",
+      "bytes": 1845720,
+      "sha256": "7d93fecacdf972ee6fc98e8736b0886c16dbe54a157fd5fd513bc601f715782d",
+      "kind": "final-delivery",
+      "collection": "brief",
+      "format": "pdf",
+      "pageCount": 12,
+      "selection": {
+        "kind": "presentation",
+        "presentationId": "brief"
+      }
+    },
+    {
+      "path": "Exports/brief.pdf.report.json",
+      "bytes": 48969,
+      "sha256": "1b7c21ad9f42533ce32f1c662870c1956f6bc1afe77b1c225690b4bb894f7798",
+      "kind": "export-report",
+      "collection": "brief",
+      "format": "pdf",
+      "pageCount": 12
+    },
+    {
+      "path": "Exports/brief.pptx",
+      "bytes": 1446808,
+      "sha256": "ef357b43f0e116e27910bc6ccb693db40b5327029525cfa5e2dfb02c71a6823a",
+      "kind": "final-delivery",
+      "collection": "brief",
+      "format": "pptx",
+      "pageCount": 12,
+      "selection": {
+        "kind": "presentation",
+        "presentationId": "brief"
+      }
+    },
+    {
+      "path": "Exports/brief.pptx.report.json",
+      "bytes": 57063,
+      "sha256": "8c7862fadd6e0e8dafabeeac31cc2dff1585bffc5abec2685aac9b724edad9cc",
+      "kind": "export-report",
+      "collection": "brief",
+      "format": "pptx",
+      "pageCount": 12
+    },
+    {
+      "path": "Exports/deck.pdf",
+      "bytes": 3059911,
+      "sha256": "db2abdad5e4a9340d7027309ade9ce2a9f181ad280388b807ed5b0a564c70798",
+      "kind": "final-delivery",
+      "collection": "main",
+      "format": "pdf",
+      "pageCount": 22,
+      "selection": {
+        "kind": "main",
+        "presentationId": null
+      }
+    },
+    {
+      "path": "Exports/deck.pdf.report.json",
+      "bytes": 61186,
+      "sha256": "173f7d089e5b6d6082e2429f9987490a5d3948309a73726e781a9ea90d3d287a",
+      "kind": "export-report",
+      "collection": "main",
+      "format": "pdf",
+      "pageCount": 22
+    },
+    {
+      "path": "Exports/deck.pptx",
+      "bytes": 2684805,
+      "sha256": "7c4f394d650b52e9b9c42ca461e02aafa6f1263eec1d4f4a7e81a6f95183df23",
+      "kind": "final-delivery",
+      "collection": "main",
+      "format": "pptx",
+      "pageCount": 22,
+      "selection": {
+        "kind": "main",
+        "presentationId": null
+      }
+    },
+    {
+      "path": "Exports/deck.pptx.report.json",
+      "bytes": 73816,
+      "sha256": "ee24f473463190ba0939eb951647d302f085c05ada18c3a815ee4305d7128fd0",
+      "kind": "export-report",
+      "collection": "main",
+      "format": "pptx",
+      "pageCount": 22
+    }
+  ],
+  "deliveryPolicy": "Generated Exports files are excluded from the Git source tree and sourceFiles; complete project ZIPs include the canonical files in generatedDeliveries.",
+  "supersedesHistoricalManifestSha256": "6ed40609e6c9662568825fb631dd33be4aff7005c4a81b7f24902c23e88327df"
 }

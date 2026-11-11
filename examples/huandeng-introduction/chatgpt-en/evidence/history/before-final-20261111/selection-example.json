@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "sourcePageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7",
+  "mainPreviewPageIds": [
+    "7d7d42a0-0db7-4d33-9b3f-5e1035097b50",
+    "95189956-cdd7-4ad9-88c8-cf28a204bb68",
+    "c4b12919-5876-4acb-b63f-6a7493b54b37",
+    "dc5bfe5f-326a-4b28-8536-56e51ea4397e"
+  ],
+  "briefPreviewPageIds": [
+    "7d7d42a0-0db7-4d33-9b3f-5e1035097b50",
+    "95189956-cdd7-4ad9-88c8-cf28a204bb68",
+    "dc5bfe5f-326a-4b28-8536-56e51ea4397e"
+  ],
+  "allBriefPreviewsAreActualLiveSelections": true
+}

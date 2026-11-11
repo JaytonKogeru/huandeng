@@ -4,10 +4,10 @@ Editor and plugin 0.15.0 are installed and verified. The canonical Windows runti
 
 ## Installed delivery
 
-- The canonical application is `D:/_Proj/Huandeng/dist/HUANDENG-win32-x64/HUANDENG Editor.exe`; existing shortcuts and file associations target it. All 29,285 staged package files matched the accepted package before replacement.
+- The canonical application is `<editor-checkout>/dist/HUANDENG-win32-x64/HUANDENG Editor.exe`; existing shortcuts and file associations target it. All 29,285 staged package files matched the accepted package before replacement.
 - Both open Projects and the last active Project were restored. The actual installed window displayed the Chinese Project strip and Section browser. All 128 tracked private project source files and the unrelated dirty repository fixture retained their pre-replacement hashes.
 - The installed bridge verified both Projects: 26 and 92 pages, 21 tools, two guides and writable context. This is protocol verification, not an agent model-task test.
-- Codex and Claude Code retain the existing enabled local plugin at 0.15.0. The DeepSeek patch/launcher is prepared and verified without changing model profiles. The existing [private account plugin](https://chatgpt.com/plugins/plugins_6af0650a3a3c8191930513288c66ea4f) was updated and read back successfully.
+- Codex and Claude Code retain the existing enabled local plugin at 0.15.0. The DeepSeek patch/launcher is prepared and verified without changing model profiles. The existing [private account plugin](https://chatgpt.com/plugins/<existing-authorized-app-id>) was updated and read back successfully.
 - Rollback packages remain beside the canonical installation: `HUANDENG-v014-backup-20261109` and `HUANDENG-v015-first-backup-20261109`. Private installation, configuration, authoring and protocol receipts remain in the user's local HUANDENG data directory; they are not included in Git.
 
 The original user window and final replacement window closed normally through their draft guards. During the first candidate installation, a newly launched hidden instance could not be targeted. After confirming its exact executable, process ownership, absence of user interaction and unchanged source hashes, only that newly launched process tree was stopped. A visible native launch restored the Projects. The final installer separates replacement from visible launch, and this recovery was not repeated.

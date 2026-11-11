@@ -3,121 +3,159 @@ background:
   type: solid
   color: "#F7F5EF"
 elements:
+  - elementId: f-paper
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 0
+      - 0
+      - 960
+      - 540
+    fill:
+      type: solid
+      color: "#F4F1E8"
   - elementId: title
     elementType: text
     bounds:
-        [42,34,880,76]
+        [36,27,884,46]
     role: title
     content:
-      {"text":"回看修改，回到一个明确的阶段","fontFamily":"Noto Serif SC","fontSize":28,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.2}
-  - elementId: brand-small
-    elementType: image
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
-    sourceName: huandeng.png
-    alt: huandeng.png
-    bounds:
-        [43,512,18,18]
-    fit:
-      mode: contain
-    crop:
-      left: 0.18
-      right: 0.18
-      top: 0.14
-      bottom: 0.14
-  - elementId: foot
+      {"text":"裁切显示范围，保留原图","fontFamily":"Noto Sans SC","fontSize":31,"color":"#112D32","align":["left","top"],"lineHeight":1.35,"bold":true}
+  - elementId: f-action
     elementType: text
     bounds:
-        [68,515,140,16]
-    content:
-      {"text":"HUANDENG","fontFamily":"Noto Sans SC","fontSize":9,"color":"#5B6A62","bold":false,"align":["left","top"],"lineHeight":1.35}
-  - elementId: position
-    elementType: text
-    bounds:
-        [881,514,35,18]
-    content:
-      {"text":"","fontFamily":"Noto Sans SC","fontSize":10,"color":"#5B6A62","bold":false,"align":["right","top"],"lineHeight":1.35,"field":"main-position"}
-  - elementId: named-versions
-    elementType: image
-    src: media/imported/24e7314c2324f71ccec2c6fe5827542fc861ac8549c249ae9a790ca08c198c83.png
-    sourceName: versions-detail.png
-    alt: versions-detail.png
-    bounds:
-      - 44
-      - 148
-      - 345
-      - 321
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: saved-operations
-    elementType: image
-    src: "media/imported/e596e2250f4130081e2d7b52a501f811546e7020d413d299938d16b5af7023bb.png"
-    sourceName: "operation-detail.png"
-    alt: "operation-detail.png"
-    bounds:
-        [523,156,354,244]
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: named-caption
-    elementType: text
-    bounds:
-      - 44
-      - 116
-      - 345
+      - 38
+      - 82
+      - 884
       - 28
     content:
-      text: 命名页面版本
-      fontFamily: Noto Sans SC
-      fontSize: 16
-      color: "#356F68"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.35
-  - elementId: operation-caption
-    elementType: text
-    bounds:
-      - 523
-      - 116
-      - 354
-      - 28
-    content:
-      text: 一次已保存的操作
-      fontFamily: Noto Sans SC
-      fontSize: 16
-      color: "#356F68"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.35
-  - elementId: history-action
-    elementType: text
-    bounds:
-      - 435
-      - 431
-      - 478
-      - 73
-    content:
-      text: |-
-        选中页面 → History
-        查看一次操作，或命名一个阶段，再预览 / 恢复。
+      text: 选图片 → 属性 → 图片与裁切
       fontFamily: Noto Sans SC
       fontSize: 18
-      color: "#20372F"
-      bold: false
+      color: "#557076"
       align:
         - left
         - top
-      lineHeight: 1.45
-notes: "选中页面，进入History，可以查看操作记录，也可以记录一个有意义的命名版本。操作回答具体改了什么，命名版本保存阶段性的整页内容；两者用途不同。恢复一个版本作用于选中的那一页。这样，小改动可以继续留在当前项目中，不必用一套新文件来代表每一次修改。"
+      lineHeight: 1.35
+  - elementId: f-watermark
+    elementType: text
+    bounds:
+      - 36
+      - 514
+      - 820
+      - 19
+    content:
+      text: Chinese · ChatGPT 6 Astra + Subagents
+      fontFamily: Noto Sans SC
+      fontSize: 13
+      color: "#557076"
+      align:
+        - left
+        - top
+      lineHeight: 1.35
+  - elementId: f-position
+    elementType: text
+    bounds:
+      - 878
+      - 514
+      - 44
+      - 19
+    content:
+      text: ""
+      fontFamily: Noto Sans SC
+      fontSize: 13
+      color: "#557076"
+      align:
+        - right
+        - top
+      lineHeight: 1.35
+      field: main-position
+  - elementId: f-original-label
+    elementType: text
+    bounds:
+      - 38
+      - 127
+      - 454
+      - 24
+    content:
+      text: 原图
+      fontFamily: Noto Sans SC
+      fontSize: 15
+      color: "#557076"
+      align:
+        - left
+        - top
+      lineHeight: 1.35
+  - elementId: f-crop-label
+    elementType: text
+    bounds:
+      - 38
+      - 387
+      - 454
+      - 25
+    content:
+      text: 页面中的显示范围
+      fontFamily: Noto Sans SC
+      fontSize: 15
+      color: "#168C8C"
+      align:
+        - left
+        - top
+      lineHeight: 1.35
+      bold: true
+  - elementId: f-original
+    elementType: image
+    bounds:
+      - 38
+      - 158
+      - 454
+      - 213
+    src: media/imported/fdcacc35c15b7a7b76d70ef9f713c605c20a7e8ca450703b6343ac8bc722bd3e.png
+    sourceName: zh-CN-native-edit-before-4x.png
+    fit:
+      mode: contain
+  - elementId: f-selected-crop
+    elementType: image
+    bounds:
+      - 38
+      - 415
+      - 454
+      - 81
+    src: media/imported/7350fdf86a28cdc8cc41cd8c3399dfc63fd2d95331db5cdadc519252b222cb3f.png
+    sourceName: tutorial-selected-image.png
+    fit:
+      mode: contain
+  - elementId: f-crop-controls
+    elementType: image
+    bounds:
+      - 547
+      - 136
+      - 375
+      - 353
+    src: media/imported/6df9fbdf421b0633d1628af5d0e3fc58d4f187fdf14d1b72e90b3ca31793268c.png
+    sourceName: tutorial-image-properties.png
+    fit:
+      mode: contain
+    crop:
+      left: 0
+      right: 0
+      top: 0.44
+      bottom: 0.08
+  - elementId: f-crop-arrow
+    elementType: line
+    bounds:
+      - 267
+      - 371
+      - 0
+      - 14
+    viewBox:
+      - 1
+      - 1
+    points: 0,0 1,1
+    border:
+      width: 2
+      color: "#ED6A3A"
+    arrow:
+      - null
+      - arrow
+notes: "截图或图像太大时，先决定这一页需要读到哪里。左上是原图，左下是这张教程页实际选中的裁切显示范围，保留了标题与引导句。右侧是同一图片的实际裁切参数，单位是原图的百分比。修改这些参数会改变页面中的显示范围，原始图片仍然保留；完整显示适配保持原图比例。把焦点放大，比把整张窗口缩成小图更容易读。"

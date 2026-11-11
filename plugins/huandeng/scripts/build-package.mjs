@@ -7,6 +7,7 @@ import { pluginRoot, reportError } from './runtime.mjs';
 export const commonFiles = [
   'plugin.json',
   'README.md',
+  'adapters/deepseek/README.md',
   'LICENSE',
   'assets/icon.png',
   'skills/huandeng-story/SKILL.md',

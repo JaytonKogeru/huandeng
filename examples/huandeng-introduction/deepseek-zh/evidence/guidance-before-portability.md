@@ -45,4 +45,4 @@ The owner likes the existing DeepSeek work and requires eliminating fake text-bo
 
 The owner has added blank page UGA7 since the last delivery. Retain that stable identity and its history; it may be filled for this authorized revision. Do not delete it by restoring an old full-deck state.
 
-Internal work directory: D:\_Proj\Huandeng\.verification\story-20261111\deepseek-zh-work. Source asset mapping: MEDIA-INPUTS.json. Keep all final project material in this canonical directory and make no dated or parallel project copies.
+Internal work directory: <editor-checkout>\.verification\story-20261111\deepseek-zh-work. Source asset mapping: MEDIA-INPUTS.json. Keep all final project material in this canonical directory and make no dated or parallel project copies.

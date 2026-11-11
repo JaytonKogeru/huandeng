@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "edition": "claude-zh",
+  "sourceBase": "repository-root",
+  "scope": "Final actual PowerPoint inspection; raw machine paths excluded",
+  "summary": "docs/evidence/final-examples/office.json",
+  "files": [
+    {
+      "edition": "claude-zh",
+      "scope": "main",
+      "source": "examples/huandeng-introduction/claude-zh/Exports/deck.pptx",
+      "sha256": "9f779c5ab4acf6747f9d37d5e5311b765156c382801779743d9774cd782aa53f",
+      "pages": 26,
+      "notes": 26,
+      "nativeCharts": 1,
+      "nativeTables": 8,
+      "nativeGroups": 0,
+      "officeVersion": "16.0",
+      "readOnly": true,
+      "openAndRepair": false,
+      "sourceUnchanged": true,
+      "closedOwnDocument": true,
+      "qa": "docs/evidence/final-examples/office/claude-zh-main.json",
+      "visualReview": "reviewed-no-missing-content-observed"
+    },
+    {
+      "edition": "claude-zh",
+      "scope": "brief",
+      "source": "examples/huandeng-introduction/claude-zh/Exports/brief.pptx",
+      "sha256": "3c1231b4ed433f76bdb292710ce330a09c947eb154a02b11b8a92f8873539004",
+      "pages": 9,
+      "notes": 9,
+      "nativeCharts": 1,
+      "nativeTables": 2,
+      "nativeGroups": 0,
+      "officeVersion": "16.0",
+      "readOnly": true,
+      "openAndRepair": false,
+      "sourceUnchanged": true,
+      "closedOwnDocument": true,
+      "qa": "docs/evidence/final-examples/office/claude-zh-brief.json",
+      "visualReview": "reviewed-no-missing-content-observed"
+    }
+  ]
+}

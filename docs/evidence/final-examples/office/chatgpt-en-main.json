@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "edition": "chatgpt-en",
+  "scope": "main",
+  "source": "examples/huandeng-introduction/chatgpt-en/Exports/deck.pptx",
+  "sha256": "5872f18984c169fbf4bb38aa4bf5c91c7bf305f418e05e78f1426e63d181497d",
+  "pages": 24,
+  "notes": 24,
+  "nativeCharts": 0,
+  "nativeTables": 0,
+  "nativeGroups": 0,
+  "officeVersion": "16.0",
+  "powerPointExecutableVersion": "16.0.20527.20150",
+  "readOnly": true,
+  "openAndRepair": false,
+  "sourceUnchanged": true,
+  "closedOwnDocument": true,
+  "visualReview": {
+    "edition": "chatgpt-en",
+    "scope": "main",
+    "pages": 24,
+    "contactSheets": ["001-008", "009-016", "017-024"],
+    "detailPages": [3, 21],
+    "referencePages": [3, 21],
+    "status": "reviewed-no-missing-content-observed",
+    "fallbackChecks": [
+      {
+        "page": 3,
+        "object": "folder icon",
+        "result": "visible; shape, teal fill, relative placement preserved versus editor PNG"
+      },
+      {
+        "page": 21,
+        "object": "two handoff folder icons",
+        "result": "both visible; silhouette, fill and relative placement preserved versus editor PNG"
+      }
+    ],
+    "observations": []
+  },
+  "renderedPageHashes": [
+    {
+      "slide": 1,
+      "sha256": "75a5785901671fe4f210bf4ab3098e1d7e82a79cd6caf53c21c24d217eec182c",
+      "bytes": 212125
+    },
+    {
+      "slide": 2,
+      "sha256": "61645cf8d397e63c504760fab7b25773acfe14f73c595aca981449131881c8a5",
+      "bytes": 75404
+    },
+    {
+      "slide": 3,
+      "sha256": "4aaf65eb9d9ce1a8ac294ad392dd72455c8ede25e5c068f623952c572a3eaf9f",
+      "bytes": 54286,
+      "selectedPreview": "images/office-chatgpt-en-main-03.png"
+    },
+    {
+      "slide": 4,
+      "sha256": "327720e01642dd0547ce7002625c9ff3da720395f28df3557ecfb0558c7a9358",
+      "bytes": 128335
+    },
+    {
+      "slide": 5,
+      "sha256": "e14de857aa4519e62a00938ace2db1e23fff56fb14d51b485c88908ab504326b",
+      "bytes": 141834
+    },
+    {
+      "slide": 6,
+      "sha256": "602f94e2432f23f43dff9eb7cb192ee9f01a5e954ea631649fed8f907b3f0e50",
+      "bytes": 118447
+    },
+    {
+      "slide": 7,
+      "sha256": "e02b9d719c6fadeca0499806fb10aa5e5a9dc99d9296434e1727304841a3ee83",
+      "bytes": 97924
+    },
+    {
+      "slide": 8,
+      "sha256": "6f4c5fd783e9ea56854c0d613294779c715d1b0f175d02a09041e4761528c078",
+      "bytes": 95652
+    },
+    {
+      "slide": 9,
+      "sha256": "2d2e615bab80a37227b1cb24250487651ca338d80bfa7cf5281b3071019d086e",
+      "bytes": 85625
+    },
+    {
+      "slide": 10,
+      "sha256": "bb299f0f84859e052c44c1dad1ccb0cf4ce7d8f80163d5d3a9792e3a2173f1e9",
+      "bytes": 95430
+    },
+    {
+      "slide": 11,
+      "sha256": "00a2e6a41d27d57fd3c031791b05963d71f1a5ac16566b0aca1f48a3a42f37bf",
+      "bytes": 70511
+    },
+    {
+      "slide": 12,
+      "sha256": "c421c113a2ccb3ff1d37a7e2612c179ae69ff41ab6fd9543889529ba8f783c54",
+      "bytes": 150286
+    },
+    {
+      "slide": 13,
+      "sha256": "9423a7a1aa201e0b50fcce2b8fcda44198d8c7794e52f85f811bffe8a5c27e8e",
+      "bytes": 208740
+    },
+    {
+      "slide": 14,
+      "sha256": "26fb8f885c01299d3546f76d764a381601669c5c628d909c232f22845522c36c",
+      "bytes": 98489
+    },
+    {
+      "slide": 15,
+      "sha256": "08a71d21d7dfe1ad2a4c2cf92ab43aa60aff05d8dbbc7614df6454b18b284503",
+      "bytes": 123947
+    },
+    {
+      "slide": 16,
+      "sha256": "140adb841d5b887dc15931ba370cd01e53cfea82906eedcbaae27e8ce43277ee",
+      "bytes": 214532
+    },
+    {
+      "slide": 17,
+      "sha256": "3f2aaa740a09986006fe56e8b37e15f80ee6e4e8494571c89ac6044c903faf7b",
+      "bytes": 210372
+    },
+    {
+      "slide": 18,
+      "sha256": "fde1d230af9a6ddd77b7bd18ce1f50b854a6e1f7bd739a4bd772d403d0e59148",
+      "bytes": 113449
+    },
+    {
+      "slide": 19,
+      "sha256": "7b79827ab510e6cba6907fac6ddb5a6b1378078908b50b8989d976f1388a704f",
+      "bytes": 137519
+    },
+    {
+      "slide": 20,
+      "sha256": "0ad16d471ad95a4c31afe365c2e23f751c508461adc9c72c81d372b437f80ca0",
+      "bytes": 126334
+    },
+    {
+      "slide": 21,
+      "sha256": "067c64921d63988fd28f76ce6a6417175e5772160081797a630edaf9d7c3ce02",
+      "bytes": 54378,
+      "selectedPreview": "images/office-chatgpt-en-main-21.png"
+    },
+    {
+      "slide": 22,
+      "sha256": "df9fee36ad248fb5fe8c54e878c3025084208e66d83f9b35f9ab9da99a609de8",
+      "bytes": 71235
+    },
+    {
+      "slide": 23,
+      "sha256": "7e3a705a9ea4475e4ce593b958afe42c19fa977682781a4ff5197be18dc853dd",
+      "bytes": 179219
+    },
+    {
+      "slide": 24,
+      "sha256": "99ca6e898991f2c02630f2362a29804500ba1e9b77866c3a205c1012f20b350d",
+      "bytes": 115406
+    }
+  ]
+}

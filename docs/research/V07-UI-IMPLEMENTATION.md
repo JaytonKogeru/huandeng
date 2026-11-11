@@ -58,7 +58,7 @@ UI 实施文件：
 
 ### Windows 候选版第二次运行与独立截图复核
 
-2026-11-07T20:56:01.313Z 的实际报告记录：隔离 Electron 38.7.2／Chrome 140.0.7339.249，11/11 检查通过，7 张 PNG，`rendererErrors=[]`，正常退出 `code=0, signal=null`。原始证据在 `D:/_Proj/Huandeng-v07-20261108/.verification/v07-ui/report.json`，运行日志为 `v07-windows-ui-candidate-r2.log`。所有截图 DPR=1，PNG 像素尺寸与对应 CSS viewport 一致。
+2026-11-07T20:56:01.313Z 的实际报告记录：隔离 Electron 38.7.2／Chrome 140.0.7339.249，11/11 检查通过，7 张 PNG，`rendererErrors=[]`，正常退出 `code=0, signal=null`。原始证据在 `<workspace-checkout>/.verification/v07-ui/report.json`，运行日志为 `v07-windows-ui-candidate-r2.log`。所有截图 DPR=1，PNG 像素尺寸与对应 CSS viewport 一致。
 
 UI 子代理通过 THUG 的只读文件工具逐张查看了七张原图；没有操纵用户的现有窗口。几何结论来自报告，视觉判断来自原始 PNG，两者分开记录：
 

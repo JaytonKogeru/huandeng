@@ -206,4 +206,20 @@ elements:
       align:
         - left
         - top
+  - bounds:
+      - 690
+      - 16
+      - 222
+      - 14
+    content:
+      align:
+        - right
+        - top
+      color: "#8C8678"
+      fontFamily: Segoe UI
+      fontSize: 9.5
+      letterSpacing: 0.4
+      text: English · DeepSeek V4.1 Flash 1017
+    elementId: attribution-watermark
+    elementType: text
 notes: Story is stored with the page. A prompt disappears when the chat ends; this doesn't. It records what the page is for, what must not change, and what this edit is meant to do. When another agent — or another person — opens the page, they start from the intent, not from a guess. It's an alignment tool, not a guarantee. The model can still get it wrong; but at least it's wrong against something explicit.

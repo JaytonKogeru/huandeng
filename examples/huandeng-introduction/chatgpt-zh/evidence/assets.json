@@ -1,655 +1,1147 @@
 {
-  "schemaVersion": 3,
-  "project": "chatgpt-zh",
-  "scope": "Current product introduction; historical media and versions are retained separately. UI capture bytes remain real Editor 0.18.0 UI, not simulated 0.19 feature evidence.",
-  "entries": [
+  "schemaVersion": 1,
+  "edition": "chatgpt-zh",
+  "scope": "Images currently referenced by Main page objects; originals and historical unused assets are retained",
+  "currentEditorCaptures": "0.19.0",
+  "retainedEvidenceCaptures": "Selected public 0.18 focused-edit, saved-operation and stable-identity captures; source filenames identify these originals",
+  "imageCount": 43,
+  "imageUses": 52,
+  "elementTypes": {
+    "shape": 38,
+    "text": 171,
+    "image": 52,
+    "line": 26,
+    "icon": 2
+  },
+  "assets": [
     {
-      "path": "media/imported/0796e3f846e4c5ad2e2943020386bb354063d5f2ce7b1a132e7b72deced72536.png",
-      "sha256": "0796e3f846e4c5ad2e2943020386bb354063d5f2ce7b1a132e7b72deced72536",
-      "pixels": [
-        1920,
-        1080
+      "path": "media/imported/6d1fb6dcc8e8a0855afe0ca1893d3a5ad8433bfefc3aa5fc3d4e13df52b834ac.png",
+      "sourceNames": [
+        "workspace-wide.png"
       ],
-      "kind": "current-page-preview",
-      "pageId": "59857807-d9f3-4e58-9a60-275cd504ea16",
-      "renderSourceIndex": 6,
-      "currentUses": [
+      "sha256": "6d1fb6dcc8e8a0855afe0ca1893d3a5ad8433bfefc3aa5fc3d4e13df52b834ac",
+      "bytes": 627577,
+      "uses": [
         {
-          "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
-          "slideId": "U5QA",
-          "elementId": "main-page-1"
-        },
-        {
-          "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
-          "slideId": "U5QA",
-          "elementId": "selected-page-1"
-        }
-      ]
-    },
-    {
-      "path": "media/imported/07ab1e803a9529e525b0690bb1627bee3811850424cd628f7da9f29ce42e2ab3.png",
-      "sha256": "07ab1e803a9529e525b0690bb1627bee3811850424cd628f7da9f29ce42e2ab3",
-      "pixels": [
-        1920,
-        1080
-      ],
-      "kind": "historical-evidence",
-      "sourceName": "evidence-after.png",
-      "reason": "Retains the actual earlier edit, saved version or its interface evidence.",
-      "currentUses": [
-        {
-          "pageId": "7b69742f-16b5-4b80-acf0-1d23966aae96",
-          "slideId": "JNZV",
-          "elementId": "after"
-        },
-        {
-          "pageId": "baca190c-e87b-415f-9c30-7c04e3fabe17",
-          "slideId": "2856",
-          "elementId": "pinned-page"
-        }
-      ]
-    },
-    {
-      "path": "media/imported/0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13.png",
-      "sha256": "0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13",
-      "pixels": [
-        720,
-        720
-      ],
-      "kind": "shared-source",
-      "source": "../assets/brand/chatgpt.png",
-      "currentUses": [
-        {
-          "pageId": "9cdec939-7f79-4142-98a4-b9543230a4ec",
-          "slideId": "W7WP",
-          "elementId": "client-0"
-        }
-      ]
-    },
-    {
-      "path": "media/imported/24e7314c2324f71ccec2c6fe5827542fc861ac8549c249ae9a790ca08c198c83.png",
-      "sha256": "24e7314c2324f71ccec2c6fe5827542fc861ac8549c249ae9a790ca08c198c83",
-      "pixels": [
-        645,
-        696
-      ],
-      "kind": "historical-evidence",
-      "sourceName": "versions-detail.png",
-      "reason": "Retains the actual earlier edit, saved version or its interface evidence.",
-      "currentUses": [
-        {
-          "pageId": "ea528c6a-2423-488d-834b-056322cca744",
-          "slideId": "E9RN",
-          "elementId": "named-versions"
-        }
-      ]
-    },
-    {
-      "path": "media/imported/2a2f5cbcc74c7fa83c40127dd8b0e42c23f1157131aebe28492aa1ac27bbdc6d.png",
-      "sha256": "2a2f5cbcc74c7fa83c40127dd8b0e42c23f1157131aebe28492aa1ac27bbdc6d",
-      "pixels": [
-        294,
-        288
-      ],
-      "kind": "shared-source",
-      "source": "../assets/brand/github-repository.png",
-      "currentUses": [
-        {
-          "pageId": "bd3c71d1-360e-4e0c-bbb6-5938970e8876",
-          "slideId": "TZXM",
-          "elementId": "credit-mark-1"
-        }
-      ]
-    },
-    {
-      "path": "media/imported/2ce1c57dd3b312417106a487815ab1235bddce17e1fa9b32a2f048bd71ee25d3.png",
-      "sha256": "2ce1c57dd3b312417106a487815ab1235bddce17e1fa9b32a2f048bd71ee25d3",
-      "pixels": [
-        385,
-        385
-      ],
-      "kind": "shared-source",
-      "source": "../assets/brand/codex.png",
-      "currentUses": [
-        {
-          "pageId": "9cdec939-7f79-4142-98a4-b9543230a4ec",
-          "slideId": "W7WP",
-          "elementId": "client-1"
-        }
-      ]
-    },
-    {
-      "path": "media/imported/2e581d36978c91cef3fdc7777d6546f05fe58d6d2b89d0d6c42954313c2d0a0e.png",
-      "sha256": "2e581d36978c91cef3fdc7777d6546f05fe58d6d2b89d0d6c42954313c2d0a0e",
-      "pixels": [
-        4800,
-        2880
-      ],
-      "kind": "current-ui-capture",
-      "captureName": "editor-native-chart.png",
-      "editorVersion": "0.18.0",
-      "locale": "zh",
-      "deviceScaleFactor": 3,
-      "publicContentOnly": true,
-      "currentUses": [
-        {
+          "position": 1,
           "pageId": "7995de62-e81e-46db-b250-cabc66a99b28",
-          "slideId": "TTHC",
-          "elementId": "editor-cover"
-        },
-        {
-          "pageId": "1f6289fd-1d4c-4a03-a74d-4bc4955de868",
-          "slideId": "6G4G",
-          "elementId": "editor-definition"
-        },
-        {
-          "pageId": "3483b895-bc52-43b6-a7c4-001a0d1e4526",
-          "slideId": "ZYZB",
-          "elementId": "workspace"
+          "elementId": "f-editor-hero",
+          "bounds": [
+            110,
+            116,
+            740,
+            393
+          ],
+          "crop": null
         }
       ]
     },
     {
-      "path": "media/imported/342088ed88ab8fffc8ce2651cd6fbf183244f5069c7907702a957eb9cf9fa18a.png",
-      "sha256": "342088ed88ab8fffc8ce2651cd6fbf183244f5069c7907702a957eb9cf9fa18a",
-      "pixels": [
-        1812,
-        1812
+      "path": "media/imported/6383e04f6d27d8cc07bc6fa705212b427be3a0792e7a66e7b02261f6420e8a9c.png",
+      "sourceNames": [
+        "current-page-history.png"
       ],
-      "kind": "shared-source",
-      "source": "../assets/science/dna-duplex-end.png",
-      "currentUses": [
+      "sha256": "6383e04f6d27d8cc07bc6fa705212b427be3a0792e7a66e7b02261f6420e8a9c",
+      "bytes": 460333,
+      "uses": [
         {
-          "pageId": "59857807-d9f3-4e58-9a60-275cd504ea16",
-          "slideId": "MPTA",
-          "elementId": "asset-end"
-        }
-      ]
-    },
-    {
-      "path": "media/imported/3a3f6fb3a98a38f01ec016c8e8fa44d63daa05aad1920192d426f74b3cca0fa5.png",
-      "sha256": "3a3f6fb3a98a38f01ec016c8e8fa44d63daa05aad1920192d426f74b3cca0fa5",
-      "pixels": [
-        861,
-        1605
-      ],
-      "kind": "current-ui-capture",
-      "captureName": "assets.png",
-      "editorVersion": "0.18.0",
-      "locale": "zh",
-      "deviceScaleFactor": 3,
-      "publicContentOnly": true,
-      "currentUses": [
-        {
-          "pageId": "59857807-d9f3-4e58-9a60-275cd504ea16",
-          "slideId": "MPTA",
-          "elementId": "asset-library"
-        }
-      ]
-    },
-    {
-      "path": "media/imported/3bbdb24950419c89e63a5c902ef6f5c60963aaed45e0b65b7f175953c0643c70.png",
-      "sha256": "3bbdb24950419c89e63a5c902ef6f5c60963aaed45e0b65b7f175953c0643c70",
-      "pixels": [
-        1920,
-        1080
-      ],
-      "kind": "current-page-preview",
-      "pageId": "129dfdc6-685d-48b4-972b-abff11f823e6",
-      "renderSourceIndex": 13,
-      "currentUses": [
-        {
-          "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
-          "slideId": "U5QA",
-          "elementId": "main-page-3"
-        },
-        {
-          "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
-          "slideId": "U5QA",
-          "elementId": "selected-page-2"
-        }
-      ]
-    },
-    {
-      "path": "media/imported/44e2a2aa5f3887deae386fa73f71234961f93e006873b632ccf38b6b6f1291a1.png",
-      "sha256": "44e2a2aa5f3887deae386fa73f71234961f93e006873b632ccf38b6b6f1291a1",
-      "pixels": [
-        512,
-        512
-      ],
-      "kind": "shared-source",
-      "source": "../assets/brand/open-slide.png",
-      "currentUses": [
-        {
-          "pageId": "bd3c71d1-360e-4e0c-bbb6-5938970e8876",
-          "slideId": "TZXM",
-          "elementId": "credit-mark-0"
-        }
-      ]
-    },
-    {
-      "path": "media/imported/50273f1fa204b2f0ae10463c91dd9d8ffcea87c80d861da37c0db9755d091017.png",
-      "sha256": "50273f1fa204b2f0ae10463c91dd9d8ffcea87c80d861da37c0db9755d091017",
-      "pixels": [
-        1572,
-        1572
-      ],
-      "kind": "shared-source",
-      "source": "../assets/science/dna-duplex-position7.png",
-      "currentUses": [
-        {
-          "pageId": "59857807-d9f3-4e58-9a60-275cd504ea16",
-          "slideId": "MPTA",
-          "elementId": "asset-side"
-        },
-        {
-          "pageId": "c1fcdc66-1c25-45a6-9b98-83d16f063c3e",
-          "slideId": "7EKH",
-          "elementId": "structure"
-        },
-        {
-          "pageId": "7b5bb42e-c529-49f8-ad88-62c69b567837",
-          "slideId": "HUA9",
-          "elementId": "measure-view"
+          "position": 2,
+          "pageId": "1dc23de8-b351-483b-a93a-f02c0444a927",
+          "elementId": "f-real-history",
+          "bounds": [
+            312,
+            138,
+            610,
+            352
+          ],
+          "crop": null
         }
       ]
     },
     {
       "path": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
-      "sha256": "6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef",
-      "pixels": [
-        512,
-        512
+      "sourceNames": [
+        "huandeng.png"
       ],
-      "kind": "shared-source",
-      "source": "../assets/brand/huandeng.png",
-      "currentUses": [
+      "sha256": "6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef",
+      "bytes": 62348,
+      "uses": [
         {
-          "pageId": "7995de62-e81e-46db-b250-cabc66a99b28",
-          "slideId": "TTHC",
-          "elementId": "product-mark"
-        },
-        {
-          "pageId": "1dc23de8-b351-483b-a93a-f02c0444a927",
-          "slideId": "MSVB",
-          "elementId": "brand-small"
-        },
-        {
+          "position": 3,
           "pageId": "1f6289fd-1d4c-4a03-a74d-4bc4955de868",
-          "slideId": "6G4G",
-          "elementId": "brand-small"
+          "elementId": "f-editor-mark",
+          "bounds": [
+            80,
+            142,
+            70,
+            70
+          ],
+          "crop": {
+            "left": 0.18,
+            "right": 0.18,
+            "top": 0.14,
+            "bottom": 0.14
+          }
         },
         {
+          "position": 24,
+          "pageId": "8a9bcdf1-fcb2-4214-9743-86c110c954ca",
+          "elementId": "zd-close-mark",
+          "bounds": [
+            42,
+            157,
+            139,
+            139
+          ],
+          "crop": {
+            "left": 0.18,
+            "right": 0.18,
+            "top": 0.14,
+            "bottom": 0.14
+          }
+        }
+      ]
+    },
+    {
+      "path": "media/imported/0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13.png",
+      "sourceNames": [
+        "chatgpt.png"
+      ],
+      "sha256": "0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13",
+      "bytes": 27900,
+      "uses": [
+        {
+          "position": 3,
           "pageId": "1f6289fd-1d4c-4a03-a74d-4bc4955de868",
-          "slideId": "6G4G",
-          "elementId": "identity"
+          "elementId": "f-agent-0",
+          "bounds": [
+            570,
+            146,
+            58,
+            58
+          ],
+          "crop": null
         },
         {
-          "pageId": "3483b895-bc52-43b6-a7c4-001a0d1e4526",
-          "slideId": "ZYZB",
-          "elementId": "brand-small"
-        },
-        {
-          "pageId": "05cd8517-c8ac-4e12-b2d0-40c438b91042",
-          "slideId": "HWB6",
-          "elementId": "brand-small"
-        },
-        {
-          "pageId": "59857807-d9f3-4e58-9a60-275cd504ea16",
-          "slideId": "MPTA",
-          "elementId": "brand-small"
-        },
-        {
-          "pageId": "7b5bb42e-c529-49f8-ad88-62c69b567837",
-          "slideId": "HUA9",
-          "elementId": "brand-small"
-        },
-        {
-          "pageId": "7b69742f-16b5-4b80-acf0-1d23966aae96",
-          "slideId": "JNZV",
-          "elementId": "brand-small"
-        },
-        {
-          "pageId": "129dfdc6-685d-48b4-972b-abff11f823e6",
-          "slideId": "93SF",
-          "elementId": "brand-small"
-        },
-        {
-          "pageId": "ea528c6a-2423-488d-834b-056322cca744",
-          "slideId": "E9RN",
-          "elementId": "brand-small"
-        },
-        {
-          "pageId": "8bb920ed-1c71-45ac-ad9d-aa00750b1ff6",
-          "slideId": "SE68",
-          "elementId": "brand-small"
-        },
-        {
-          "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
-          "slideId": "U5QA",
-          "elementId": "brand-small"
-        },
-        {
-          "pageId": "5f2fbea2-a43a-4532-9042-6a1d20c08801",
-          "slideId": "EJBQ",
-          "elementId": "brand-small"
-        },
-        {
-          "pageId": "baca190c-e87b-415f-9c30-7c04e3fabe17",
-          "slideId": "2856",
-          "elementId": "brand-small"
-        },
-        {
-          "pageId": "503c86ce-673c-4229-9251-22114e5f5da9",
-          "slideId": "4YZD",
-          "elementId": "brand-small"
-        },
-        {
-          "pageId": "9cdec939-7f79-4142-98a4-b9543230a4ec",
-          "slideId": "W7WP",
-          "elementId": "brand-small"
-        },
-        {
-          "pageId": "c91c3fe3-836f-492f-882d-905bd4d08a9b",
-          "slideId": "YCXA",
-          "elementId": "brand-small"
-        },
-        {
+          "position": 22,
           "pageId": "f68f052b-18ac-4286-ae3b-6f12e5c5d0d0",
-          "slideId": "NJM7",
-          "elementId": "brand-small"
-        },
-        {
-          "pageId": "bd3c71d1-360e-4e0c-bbb6-5938970e8876",
-          "slideId": "TZXM",
-          "elementId": "brand-small"
-        },
-        {
-          "pageId": "8a9bcdf1-fcb2-4214-9743-86c110c954ca",
-          "slideId": "E2RU",
-          "elementId": "brand-small"
-        },
-        {
-          "pageId": "8a9bcdf1-fcb2-4214-9743-86c110c954ca",
-          "slideId": "E2RU",
-          "elementId": "closing-mark"
+          "elementId": "zd-client-0",
+          "bounds": [
+            40,
+            455,
+            30,
+            30
+          ],
+          "crop": null
         }
       ]
     },
     {
       "path": "media/imported/733f24f4c52acb15eb0fbded1cf40eb42b4ba8e62b882acac70b6234b50919a8.png",
+      "sourceNames": [
+        "claude-code.png"
+      ],
       "sha256": "733f24f4c52acb15eb0fbded1cf40eb42b4ba8e62b882acac70b6234b50919a8",
-      "pixels": [
-        192,
-        192
-      ],
-      "kind": "shared-source",
-      "source": "../assets/brand/claude-code.png",
-      "currentUses": [
+      "bytes": 4787,
+      "uses": [
         {
-          "pageId": "9cdec939-7f79-4142-98a4-b9543230a4ec",
-          "slideId": "W7WP",
-          "elementId": "client-2"
-        }
-      ]
-    },
-    {
-      "path": "media/imported/8c227b1f1956f9c1f7448e8f6f533ee0feaf909d19e318f5b7b69b7d728b7f28.png",
-      "sha256": "8c227b1f1956f9c1f7448e8f6f533ee0feaf909d19e318f5b7b69b7d728b7f28",
-      "pixels": [
-        1920,
-        1080
-      ],
-      "kind": "historical-evidence",
-      "sourceName": "evidence-before.png",
-      "reason": "Retains the actual earlier edit, saved version or its interface evidence.",
-      "currentUses": [
-        {
-          "pageId": "7b69742f-16b5-4b80-acf0-1d23966aae96",
-          "slideId": "JNZV",
-          "elementId": "before"
-        }
-      ]
-    },
-    {
-      "path": "media/imported/941818c097e7c765d84aed764aebd4625997d970e40039fdfb4129bdaa04cb9f.png",
-      "sha256": "941818c097e7c765d84aed764aebd4625997d970e40039fdfb4129bdaa04cb9f",
-      "pixels": [
-        3936,
-        1950
-      ],
-      "kind": "current-ui-capture",
-      "captureName": "browse.png",
-      "editorVersion": "0.18.0",
-      "locale": "zh",
-      "deviceScaleFactor": 3,
-      "publicContentOnly": true,
-      "currentUses": [
-        {
-          "pageId": "8bb920ed-1c71-45ac-ad9d-aa00750b1ff6",
-          "slideId": "SE68",
-          "elementId": "view-browse"
-        }
-      ]
-    },
-    {
-      "path": "media/imported/98fe12cbdefc47252b8afb3b890a8b2d11485021c39dfd61114d427b1e52713d.png",
-      "sha256": "98fe12cbdefc47252b8afb3b890a8b2d11485021c39dfd61114d427b1e52713d",
-      "pixels": [
-        1920,
-        1080
-      ],
-      "kind": "current-page-preview",
-      "pageId": "3483b895-bc52-43b6-a7c4-001a0d1e4526",
-      "renderSourceIndex": 5,
-      "currentUses": [
-        {
-          "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
-          "slideId": "U5QA",
-          "elementId": "main-page-0"
+          "position": 3,
+          "pageId": "1f6289fd-1d4c-4a03-a74d-4bc4955de868",
+          "elementId": "f-agent-1",
+          "bounds": [
+            676,
+            146,
+            58,
+            58
+          ],
+          "crop": null
         },
         {
-          "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
-          "slideId": "U5QA",
-          "elementId": "selected-page-0"
-        }
-      ]
-    },
-    {
-      "path": "media/imported/a9716fe17305fefbeff4a94fbfcedf88a26b509a3b598d5326b6a9041ef5ccdf.png",
-      "sha256": "a9716fe17305fefbeff4a94fbfcedf88a26b509a3b598d5326b6a9041ef5ccdf",
-      "pixels": [
-        897,
-        1083
-      ],
-      "kind": "current-ui-capture",
-      "captureName": "story-clean.png",
-      "editorVersion": "0.18.0",
-      "locale": "zh",
-      "deviceScaleFactor": 3,
-      "publicContentOnly": true,
-      "currentUses": [
-        {
-          "pageId": "05cd8517-c8ac-4e12-b2d0-40c438b91042",
-          "slideId": "HWB6",
-          "elementId": "story-panel"
-        }
-      ]
-    },
-    {
-      "path": "media/imported/b104e77304d9e60e33074b365860774e8dd570ab241ec5102ee033e158f65fd4.png",
-      "sha256": "b104e77304d9e60e33074b365860774e8dd570ab241ec5102ee033e158f65fd4",
-      "pixels": [
-        1920,
-        1080
-      ],
-      "kind": "current-page-preview",
-      "pageId": "c1fcdc66-1c25-45a6-9b98-83d16f063c3e",
-      "renderSourceIndex": 1,
-      "currentUses": [
-        {
-          "pageId": "129dfdc6-685d-48b4-972b-abff11f823e6",
-          "slideId": "93SF",
-          "elementId": "identified-page"
-        },
-        {
-          "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
-          "slideId": "U5QA",
-          "elementId": "main-page-2"
-        },
-        {
-          "pageId": "5f2fbea2-a43a-4532-9042-6a1d20c08801",
-          "slideId": "EJBQ",
-          "elementId": "notes-science-preview"
-        },
-        {
-          "pageId": "baca190c-e87b-415f-9c30-7c04e3fabe17",
-          "slideId": "2856",
-          "elementId": "live-page"
-        },
-        {
-          "pageId": "c91c3fe3-836f-492f-882d-905bd4d08a9b",
-          "slideId": "YCXA",
-          "elementId": "shared-work"
-        }
-      ]
-    },
-    {
-      "path": "media/imported/c8fc7ecbd7b7e1c70dd5e1c77605a7aef119ff81906c1959cd9074f3d5be8518.png",
-      "sha256": "c8fc7ecbd7b7e1c70dd5e1c77605a7aef119ff81906c1959cd9074f3d5be8518",
-      "pixels": [
-        1170,
-        267
-      ],
-      "kind": "current-ui-capture",
-      "captureName": "outline-detail.png",
-      "editorVersion": "0.18.0",
-      "locale": "zh",
-      "deviceScaleFactor": 3,
-      "publicContentOnly": true,
-      "currentUses": [
-        {
-          "pageId": "8bb920ed-1c71-45ac-ad9d-aa00750b1ff6",
-          "slideId": "SE68",
-          "elementId": "view-outline"
-        }
-      ]
-    },
-    {
-      "path": "media/imported/ce8070996ec0b318d78b8e45f849283cbca6026ab9c8175a97da85e6b95c5ddc.png",
-      "sha256": "ce8070996ec0b318d78b8e45f849283cbca6026ab9c8175a97da85e6b95c5ddc",
-      "pixels": [
-        492,
-        219
-      ],
-      "kind": "current-ui-capture",
-      "captureName": "present-current.png",
-      "editorVersion": "0.18.0",
-      "locale": "zh",
-      "deviceScaleFactor": 3,
-      "publicContentOnly": true,
-      "currentUses": [
-        {
+          "position": 22,
           "pageId": "f68f052b-18ac-4286-ae3b-6f12e5c5d0d0",
-          "slideId": "NJM7",
-          "elementId": "present-menu"
-        }
-      ]
-    },
-    {
-      "path": "media/imported/d4b57fa12dec15a02948a905109f1f73245f644d6c6cc4c141c9693140419190.png",
-      "sha256": "d4b57fa12dec15a02948a905109f1f73245f644d6c6cc4c141c9693140419190",
-      "pixels": [
-        1728,
-        816
-      ],
-      "kind": "current-ui-capture",
-      "captureName": "export-current.png",
-      "editorVersion": "0.18.0",
-      "locale": "zh",
-      "deviceScaleFactor": 3,
-      "publicContentOnly": true,
-      "currentUses": [
-        {
-          "pageId": "f68f052b-18ac-4286-ae3b-6f12e5c5d0d0",
-          "slideId": "NJM7",
-          "elementId": "export-menu"
-        }
-      ]
-    },
-    {
-      "path": "media/imported/d697acf6f3c5bc265806bc8f6c4e6d58b964e0b2962392d0329a420639f45846.png",
-      "sha256": "d697acf6f3c5bc265806bc8f6c4e6d58b964e0b2962392d0329a420639f45846",
-      "pixels": [
-        480,
-        349
-      ],
-      "kind": "shared-source",
-      "source": "../assets/brand/pptxgenjs.png",
-      "currentUses": [
-        {
-          "pageId": "bd3c71d1-360e-4e0c-bbb6-5938970e8876",
-          "slideId": "TZXM",
-          "elementId": "credit-mark-2"
-        }
-      ]
-    },
-    {
-      "path": "media/imported/e435819069d4c2d1be564f200b6c1e4bd30ab731a85b36585abb0191b9ae48d5.png",
-      "sha256": "e435819069d4c2d1be564f200b6c1e4bd30ab731a85b36585abb0191b9ae48d5",
-      "pixels": [
-        1170,
-        585
-      ],
-      "kind": "current-ui-capture",
-      "captureName": "sections-detail.png",
-      "editorVersion": "0.18.0",
-      "locale": "zh",
-      "deviceScaleFactor": 3,
-      "publicContentOnly": true,
-      "currentUses": [
-        {
-          "pageId": "8bb920ed-1c71-45ac-ad9d-aa00750b1ff6",
-          "slideId": "SE68",
-          "elementId": "view-sections"
+          "elementId": "zd-client-1",
+          "bounds": [
+            265,
+            455,
+            30,
+            30
+          ],
+          "crop": null
         }
       ]
     },
     {
       "path": "media/imported/e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc.png",
-      "sha256": "e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc",
-      "pixels": [
-        460,
-        460
+      "sourceNames": [
+        "deepseek.png"
       ],
-      "kind": "shared-source",
-      "source": "../assets/brand/deepseek.png",
-      "currentUses": [
+      "sha256": "e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc",
+      "bytes": 15456,
+      "uses": [
         {
-          "pageId": "9cdec939-7f79-4142-98a4-b9543230a4ec",
-          "slideId": "W7WP",
-          "elementId": "client-3"
+          "position": 3,
+          "pageId": "1f6289fd-1d4c-4a03-a74d-4bc4955de868",
+          "elementId": "f-agent-2",
+          "bounds": [
+            782,
+            146,
+            58,
+            58
+          ],
+          "crop": null
+        },
+        {
+          "position": 22,
+          "pageId": "f68f052b-18ac-4286-ae3b-6f12e5c5d0d0",
+          "elementId": "zd-client-2",
+          "bounds": [
+            490,
+            455,
+            30,
+            30
+          ],
+          "crop": null
         }
       ]
     },
     {
-      "path": "media/imported/e596e2250f4130081e2d7b52a501f811546e7020d413d299938d16b5af7023bb.png",
-      "sha256": "e596e2250f4130081e2d7b52a501f811546e7020d413d299938d16b5af7023bb",
-      "pixels": [
-        621,
-        330
+      "path": "media/imported/abb09cdedaa62a6550085f05a67899e09e07422f8d75a0c38044f61c56b72f14.png",
+      "sourceNames": [
+        "deck-entry.png"
       ],
-      "kind": "current-ui-capture",
-      "captureName": "operation-detail.png",
-      "editorVersion": "0.18.0",
-      "locale": "zh",
-      "deviceScaleFactor": 3,
-      "publicContentOnly": true,
-      "currentUses": [
+      "sha256": "abb09cdedaa62a6550085f05a67899e09e07422f8d75a0c38044f61c56b72f14",
+      "bytes": 4368,
+      "uses": [
         {
+          "position": 4,
+          "pageId": "b55179ed-446c-42a7-a2d5-2557defac052",
+          "elementId": "f-entry-ui",
+          "bounds": [
+            49,
+            277,
+            252,
+            27
+          ],
+          "crop": null
+        }
+      ]
+    },
+    {
+      "path": "media/imported/172c9a85203bbc344eda4b7e82965f8f72839dd5b54fa442c20778ae6269fef4.png",
+      "sourceNames": [
+        "workspace-architecture.png"
+      ],
+      "sha256": "172c9a85203bbc344eda4b7e82965f8f72839dd5b54fa442c20778ae6269fef4",
+      "bytes": 652376,
+      "uses": [
+        {
+          "position": 4,
+          "pageId": "b55179ed-446c-42a7-a2d5-2557defac052",
+          "elementId": "f-open-editor",
+          "bounds": [
+            342,
+            135,
+            580,
+            348
+          ],
+          "crop": null
+        }
+      ]
+    },
+    {
+      "path": "media/imported/d95ba29140db491cc375419aea44b04dbd1b6cdb0b965a61bd9ac807b49b0728.png",
+      "sourceNames": [
+        "selected-title-top.png"
+      ],
+      "sha256": "d95ba29140db491cc375419aea44b04dbd1b6cdb0b965a61bd9ac807b49b0728",
+      "bytes": 650481,
+      "uses": [
+        {
+          "position": 5,
+          "pageId": "3483b895-bc52-43b6-a7c4-001a0d1e4526",
+          "elementId": "f-selected",
+          "bounds": [
+            65,
+            128,
+            830,
+            363
+          ],
+          "crop": null
+        },
+        {
+          "position": 8,
+          "pageId": "c1fcdc66-1c25-45a6-9b98-83d16f063c3e",
+          "elementId": "f-final-canvas",
+          "bounds": [
+            40,
+            278,
+            555,
+            228
+          ],
+          "crop": null
+        }
+      ]
+    },
+    {
+      "path": "media/imported/a376c20b0003bee8b24759a18bc45ea44c30b37bb0898a39fdf20f7113dc3769.png",
+      "sourceNames": [
+        "story-architecture.png"
+      ],
+      "sha256": "a376c20b0003bee8b24759a18bc45ea44c30b37bb0898a39fdf20f7113dc3769",
+      "bytes": 87272,
+      "uses": [
+        {
+          "position": 6,
+          "pageId": "05cd8517-c8ac-4e12-b2d0-40c438b91042",
+          "elementId": "f-story",
+          "bounds": [
+            40,
+            122,
+            370,
+            374
+          ],
+          "crop": null
+        }
+      ]
+    },
+    {
+      "path": "media/imported/ed8ac0831e298045c0a59fe14ade8b7f0a4d6aa1ced2556c2c128264cf136afc.png",
+      "sourceNames": [
+        "assets-mark.png"
+      ],
+      "sha256": "ed8ac0831e298045c0a59fe14ade8b7f0a4d6aa1ced2556c2c128264cf136afc",
+      "bytes": 87865,
+      "uses": [
+        {
+          "position": 7,
+          "pageId": "59857807-d9f3-4e58-9a60-275cd504ea16",
+          "elementId": "f-assets",
+          "bounds": [
+            40,
+            122,
+            250,
+            379
+          ],
+          "crop": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0.2
+          }
+        }
+      ]
+    },
+    {
+      "path": "media/imported/e22103b03f12a0c79bb50bb9fccfc0104102074c86ff79a84d3b5ddab11a729d.png",
+      "sourceNames": [
+        "placed-mark.png"
+      ],
+      "sha256": "e22103b03f12a0c79bb50bb9fccfc0104102074c86ff79a84d3b5ddab11a729d",
+      "bytes": 162093,
+      "uses": [
+        {
+          "position": 7,
+          "pageId": "59857807-d9f3-4e58-9a60-275cd504ea16",
+          "elementId": "f-asset-on-canvas",
+          "bounds": [
+            352,
+            188,
+            568,
+            242
+          ],
+          "crop": null
+        }
+      ]
+    },
+    {
+      "path": "media/imported/8ae6771c49c7c101d1e753cc3ee03c760be62acf87cb0f631ccc3dffeaae222c.png",
+      "sourceNames": [
+        "save-page-controls.png"
+      ],
+      "sha256": "8ae6771c49c7c101d1e753cc3ee03c760be62acf87cb0f631ccc3dffeaae222c",
+      "bytes": 15770,
+      "uses": [
+        {
+          "position": 8,
+          "pageId": "c1fcdc66-1c25-45a6-9b98-83d16f063c3e",
+          "elementId": "f-save-controls",
+          "bounds": [
+            176,
+            124,
+            608,
+            84
+          ],
+          "crop": null
+        }
+      ]
+    },
+    {
+      "path": "media/imported/b427ee844b6091fc85a0dffdf07edac2c6dfed4681a4729aa8183ab4b1f6df96.png",
+      "sourceNames": [
+        "tutorial-selected-title.png"
+      ],
+      "sha256": "b427ee844b6091fc85a0dffdf07edac2c6dfed4681a4729aa8183ab4b1f6df96",
+      "bytes": 46146,
+      "uses": [
+        {
+          "position": 9,
+          "pageId": "7b5bb42e-c529-49f8-ad88-62c69b567837",
+          "elementId": "f-selection",
+          "bounds": [
+            38,
+            143,
+            502,
+            100
+          ],
+          "crop": null
+        }
+      ]
+    },
+    {
+      "path": "media/imported/1fa001c74842ce9c0eb3213b1b66b9c104cface800d2e130952b256a5dc2a4da.png",
+      "sourceNames": [
+        "tutorial-text-properties.png"
+      ],
+      "sha256": "1fa001c74842ce9c0eb3213b1b66b9c104cface800d2e130952b256a5dc2a4da",
+      "bytes": 70668,
+      "uses": [
+        {
+          "position": 9,
+          "pageId": "7b5bb42e-c529-49f8-ad88-62c69b567837",
+          "elementId": "f-text-panel",
+          "bounds": [
+            579,
+            123,
+            343,
+            374
+          ],
+          "crop": {
+            "left": 0,
+            "right": 0,
+            "top": 0.035,
+            "bottom": 0.15
+          }
+        }
+      ]
+    },
+    {
+      "path": "media/imported/fdcacc35c15b7a7b76d70ef9f713c605c20a7e8ca450703b6343ac8bc722bd3e.png",
+      "sourceNames": [
+        "zh-CN-native-edit-before-4x.png"
+      ],
+      "sha256": "fdcacc35c15b7a7b76d70ef9f713c605c20a7e8ca450703b6343ac8bc722bd3e",
+      "bytes": 142515,
+      "uses": [
+        {
+          "position": 10,
+          "pageId": "7b69742f-16b5-4b80-acf0-1d23966aae96",
+          "elementId": "f-before-ui",
+          "bounds": [
+            133,
+            139,
+            789,
+            142
+          ],
+          "crop": {
+            "left": 0.03,
+            "right": 0.03,
+            "top": 0.04,
+            "bottom": 0.64
+          }
+        },
+        {
+          "position": 12,
           "pageId": "ea528c6a-2423-488d-834b-056322cca744",
-          "slideId": "E9RN",
-          "elementId": "saved-operations"
+          "elementId": "f-original",
+          "bounds": [
+            38,
+            158,
+            454,
+            213
+          ],
+          "crop": null
+        }
+      ]
+    },
+    {
+      "path": "media/imported/1590b6d7b420e2502709c533628c4fc0a0ef2278c8b6798d1f6fa8272f9059fc.png",
+      "sourceNames": [
+        "zh-CN-native-edit-after-4x.png"
+      ],
+      "sha256": "1590b6d7b420e2502709c533628c4fc0a0ef2278c8b6798d1f6fa8272f9059fc",
+      "bytes": 128339,
+      "uses": [
+        {
+          "position": 10,
+          "pageId": "7b69742f-16b5-4b80-acf0-1d23966aae96",
+          "elementId": "f-after-ui",
+          "bounds": [
+            133,
+            304,
+            789,
+            142
+          ],
+          "crop": {
+            "left": 0.03,
+            "right": 0.03,
+            "top": 0.04,
+            "bottom": 0.64
+          }
+        }
+      ]
+    },
+    {
+      "path": "media/imported/fbcb8a241fdc48bb57efdb806964e61e74b0004cc33ad866210a83eeca910732.png",
+      "sourceNames": [
+        "tutorial-layers.png"
+      ],
+      "sha256": "fbcb8a241fdc48bb57efdb806964e61e74b0004cc33ad866210a83eeca910732",
+      "bytes": 125583,
+      "uses": [
+        {
+          "position": 11,
+          "pageId": "129dfdc6-685d-48b4-972b-abff11f823e6",
+          "elementId": "f-layer-selection",
+          "bounds": [
+            38,
+            172,
+            410,
+            253
+          ],
+          "crop": {
+            "left": 0,
+            "right": 0,
+            "top": 0.6,
+            "bottom": 0.07
+          }
+        },
+        {
+          "position": 11,
+          "pageId": "129dfdc6-685d-48b4-972b-abff11f823e6",
+          "elementId": "f-layer-controls",
+          "bounds": [
+            511,
+            172,
+            411,
+            228.33333333333334
+          ],
+          "crop": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0.7584541062801933
+          }
+        }
+      ]
+    },
+    {
+      "path": "media/imported/7350fdf86a28cdc8cc41cd8c3399dfc63fd2d95331db5cdadc519252b222cb3f.png",
+      "sourceNames": [
+        "tutorial-selected-image.png"
+      ],
+      "sha256": "7350fdf86a28cdc8cc41cd8c3399dfc63fd2d95331db5cdadc519252b222cb3f",
+      "bytes": 61327,
+      "uses": [
+        {
+          "position": 12,
+          "pageId": "ea528c6a-2423-488d-834b-056322cca744",
+          "elementId": "f-selected-crop",
+          "bounds": [
+            38,
+            415,
+            454,
+            81
+          ],
+          "crop": null
+        }
+      ]
+    },
+    {
+      "path": "media/imported/6df9fbdf421b0633d1628af5d0e3fc58d4f187fdf14d1b72e90b3ca31793268c.png",
+      "sourceNames": [
+        "tutorial-image-properties.png"
+      ],
+      "sha256": "6df9fbdf421b0633d1628af5d0e3fc58d4f187fdf14d1b72e90b3ca31793268c",
+      "bytes": 117183,
+      "uses": [
+        {
+          "position": 12,
+          "pageId": "ea528c6a-2423-488d-834b-056322cca744",
+          "elementId": "f-crop-controls",
+          "bounds": [
+            547,
+            136,
+            375,
+            353
+          ],
+          "crop": {
+            "left": 0,
+            "right": 0,
+            "top": 0.44,
+            "bottom": 0.08
+          }
+        }
+      ]
+    },
+    {
+      "path": "media/imported/1f8c227e7a8a73ed668c788e46d631f17b6e6f577e9f66479d5e693fbd71d867.png",
+      "sourceNames": [
+        "zh-CN-native-operation-review-4x.png"
+      ],
+      "sha256": "1f8c227e7a8a73ed668c788e46d631f17b6e6f577e9f66479d5e693fbd71d867",
+      "bytes": 534346,
+      "uses": [
+        {
+          "position": 13,
+          "pageId": "def43d68-1767-45f5-800a-17d648750b7e",
+          "elementId": "f-review-dialog",
+          "bounds": [
+            38,
+            130,
+            539,
+            363
+          ],
+          "crop": null
+        }
+      ]
+    },
+    {
+      "path": "media/imported/21fabc424f513dd09dd873134d8604b4d8518b2af74008945f693fd86ffeb7b8.png",
+      "sourceNames": [
+        "zh-CN-native-operation-changes-4x.png"
+      ],
+      "sha256": "21fabc424f513dd09dd873134d8604b4d8518b2af74008945f693fd86ffeb7b8",
+      "bytes": 43547,
+      "uses": [
+        {
+          "position": 13,
+          "pageId": "def43d68-1767-45f5-800a-17d648750b7e",
+          "elementId": "f-changes-focus",
+          "bounds": [
+            622,
+            147,
+            300,
+            180
+          ],
+          "crop": null
+        }
+      ]
+    },
+    {
+      "path": "media/imported/4474e606ba2e55f83b8484e3816d9050d1e13538be1e0f1ca9fa774bc267fbf8.png",
+      "sourceNames": [
+        "tutorial-notes-nav.png"
+      ],
+      "sha256": "4474e606ba2e55f83b8484e3816d9050d1e13538be1e0f1ca9fa774bc267fbf8",
+      "bytes": 11749,
+      "uses": [
+        {
+          "position": 14,
+          "pageId": "8bb920ed-1c71-45ac-ad9d-aa00750b1ff6",
+          "elementId": "f-notes-navigation",
+          "bounds": [
+            38,
+            124,
+            515,
+            57
+          ],
+          "crop": null
+        }
+      ]
+    },
+    {
+      "path": "media/imported/b9e59499ee65d3ff33ca632826d526a808c019d00b9efa666c2d626b6c880dfb.png",
+      "sourceNames": [
+        "tutorial-notes-detail.png"
+      ],
+      "sha256": "b9e59499ee65d3ff33ca632826d526a808c019d00b9efa666c2d626b6c880dfb",
+      "bytes": 117628,
+      "uses": [
+        {
+          "position": 14,
+          "pageId": "8bb920ed-1c71-45ac-ad9d-aa00750b1ff6",
+          "elementId": "f-notes-editor",
+          "bounds": [
+            38,
+            198,
+            884,
+            273
+          ],
+          "crop": {
+            "left": 0,
+            "right": 0,
+            "top": 0,
+            "bottom": 0.28
+          }
+        }
+      ]
+    },
+    {
+      "path": "media/imported/4d42e5f1558e1b2f448e5b87abd12e17eb56b62c64853eda8b401cc93ad67b4b.png",
+      "sourceNames": [
+        "zh-CN-native-history-change-4x.png"
+      ],
+      "sha256": "4d42e5f1558e1b2f448e5b87abd12e17eb56b62c64853eda8b401cc93ad67b4b",
+      "bytes": 404643,
+      "uses": [
+        {
+          "position": 15,
+          "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
+          "elementId": "f-version-input",
+          "bounds": [
+            38,
+            161,
+            884,
+            83
+          ],
+          "crop": {
+            "left": 0.54,
+            "right": 0,
+            "top": 0.1,
+            "bottom": 0.83
+          }
+        },
+        {
+          "position": 15,
+          "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
+          "elementId": "f-version-list",
+          "bounds": [
+            38,
+            310,
+            281,
+            182
+          ],
+          "crop": {
+            "left": 0,
+            "right": 0.804,
+            "top": 0.23,
+            "bottom": 0.45
+          }
+        },
+        {
+          "position": 15,
+          "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
+          "elementId": "f-version-preview",
+          "bounds": [
+            358,
+            327,
+            564,
+            124.20496265846619
+          ],
+          "crop": {
+            "left": 0.195,
+            "right": 0.0083,
+            "top": 0.176,
+            "bottom": 0.557
+          }
+        }
+      ]
+    },
+    {
+      "path": "media/imported/56ef1c090dfe6c7ef847c12ea2f9ed6ef7a90dfd51efd5d5cc23f4e542356b58.png",
+      "sourceNames": [
+        "zh-CN-identity-before-4x.png"
+      ],
+      "sha256": "56ef1c090dfe6c7ef847c12ea2f9ed6ef7a90dfd51efd5d5cc23f4e542356b58",
+      "bytes": 11100,
+      "uses": [
+        {
+          "position": 16,
+          "pageId": "5f2fbea2-a43a-4532-9042-6a1d20c08801",
+          "elementId": "f-identity-before",
+          "bounds": [
+            38,
+            162,
+            884,
+            99
+          ],
+          "crop": {
+            "left": 0,
+            "right": 0,
+            "top": 0.2,
+            "bottom": 0
+          }
+        }
+      ]
+    },
+    {
+      "path": "media/imported/99a0f26c40f623b347b71bf756622aec243fecbc66a1b031013d57de71448afe.png",
+      "sourceNames": [
+        "zh-CN-identity-after-4x.png"
+      ],
+      "sha256": "99a0f26c40f623b347b71bf756622aec243fecbc66a1b031013d57de71448afe",
+      "bytes": 10836,
+      "uses": [
+        {
+          "position": 16,
+          "pageId": "5f2fbea2-a43a-4532-9042-6a1d20c08801",
+          "elementId": "f-identity-after",
+          "bounds": [
+            38,
+            340,
+            884,
+            99
+          ],
+          "crop": {
+            "left": 0,
+            "right": 0,
+            "top": 0.2,
+            "bottom": 0
+          }
+        }
+      ]
+    },
+    {
+      "path": "media/imported/f5c48de68ebbe8baf708e15b23d0b83c25ae48b5fc390ae7bd2862c001158d51.png",
+      "sourceNames": [
+        "final-project-overview.png"
+      ],
+      "sha256": "f5c48de68ebbe8baf708e15b23d0b83c25ae48b5fc390ae7bd2862c001158d51",
+      "bytes": 244700,
+      "uses": [
+        {
+          "position": 17,
+          "pageId": "baca190c-e87b-415f-9c30-7c04e3fabe17",
+          "elementId": "zd-overview",
+          "bounds": [
+            40,
+            171,
+            264,
+            280
+          ],
+          "crop": {
+            "bottom": 0.49
+          }
+        }
+      ]
+    },
+    {
+      "path": "media/imported/263b54d5b39c89f4ea166f9dd1d55b62edf90f8d0202e612eb6c69520d7a096d.png",
+      "sourceNames": [
+        "final-arrange-entry.png"
+      ],
+      "sha256": "263b54d5b39c89f4ea166f9dd1d55b62edf90f8d0202e612eb6c69520d7a096d",
+      "bytes": 117529,
+      "uses": [
+        {
+          "position": 17,
+          "pageId": "baca190c-e87b-415f-9c30-7c04e3fabe17",
+          "elementId": "zd-arrange",
+          "bounds": [
+            347,
+            171,
+            264,
+            280
+          ],
+          "crop": null
+        }
+      ]
+    },
+    {
+      "path": "media/imported/e3d7772cc09102aba05b4f6e1cb0e2c47ecf5bb5abb3511e4c2003ff53ebf70f.png",
+      "sourceNames": [
+        "final-choose-main-slide.png"
+      ],
+      "sha256": "e3d7772cc09102aba05b4f6e1cb0e2c47ecf5bb5abb3511e4c2003ff53ebf70f",
+      "bytes": 128612,
+      "uses": [
+        {
+          "position": 17,
+          "pageId": "baca190c-e87b-415f-9c30-7c04e3fabe17",
+          "elementId": "zd-picker",
+          "bounds": [
+            654,
+            171,
+            264,
+            280
+          ],
+          "crop": null
+        }
+      ]
+    },
+    {
+      "path": "media/imported/3f18782e6d24c490f58fcba2ffa75a7662d55313d885d35a375d0319b843be21.png",
+      "sourceNames": [
+        "final-note-edit.png"
+      ],
+      "sha256": "3f18782e6d24c490f58fcba2ffa75a7662d55313d885d35a375d0319b843be21",
+      "bytes": 102993,
+      "uses": [
+        {
+          "position": 18,
+          "pageId": "503c86ce-673c-4229-9251-22114e5f5da9",
+          "elementId": "zd-note-edit",
+          "bounds": [
+            40,
+            190,
+            300,
+            185
+          ],
+          "crop": null
+        }
+      ]
+    },
+    {
+      "path": "media/imported/e134a5a10bcaaf416f0bfb0bac8e239941a05c98076533373a2f4e2d795e120d.png",
+      "sourceNames": [
+        "final-note-read.png"
+      ],
+      "sha256": "e134a5a10bcaaf416f0bfb0bac8e239941a05c98076533373a2f4e2d795e120d",
+      "bytes": 130308,
+      "uses": [
+        {
+          "position": 18,
+          "pageId": "503c86ce-673c-4229-9251-22114e5f5da9",
+          "elementId": "zd-note-read",
+          "bounds": [
+            390,
+            185,
+            532,
+            239
+          ],
+          "crop": null
+        }
+      ]
+    },
+    {
+      "path": "media/imported/4c8b8407f917b8c63185db21824b674f1a95ba0b1dafec5af08b9e43d679bfb1.png",
+      "sourceNames": [
+        "final-live-version-choice.png"
+      ],
+      "sha256": "4c8b8407f917b8c63185db21824b674f1a95ba0b1dafec5af08b9e43d679bfb1",
+      "bytes": 26235,
+      "uses": [
+        {
+          "position": 19,
+          "pageId": "d64aef1b-eb88-4b05-a620-ae60a0e833de",
+          "elementId": "zd-live-select",
+          "bounds": [
+            40,
+            195,
+            405,
+            164
+          ],
+          "crop": null
+        }
+      ]
+    },
+    {
+      "path": "media/imported/320b757483c9843bd81c97986826cf980ac99f7c8feeb014eab86e8d61820a27.png",
+      "sourceNames": [
+        "final-pin-version-choice.png"
+      ],
+      "sha256": "320b757483c9843bd81c97986826cf980ac99f7c8feeb014eab86e8d61820a27",
+      "bytes": 31945,
+      "uses": [
+        {
+          "position": 19,
+          "pageId": "d64aef1b-eb88-4b05-a620-ae60a0e833de",
+          "elementId": "zd-pin-select",
+          "bounds": [
+            517,
+            195,
+            405,
+            164
+          ],
+          "crop": null
+        }
+      ]
+    },
+    {
+      "path": "media/imported/48544cd7d20bd9bb48e4ee375b9a0dad8e2912570386e4c40e38d6f996c68a3b.png",
+      "sourceNames": [
+        "present-menu-stable.png"
+      ],
+      "sha256": "48544cd7d20bd9bb48e4ee375b9a0dad8e2912570386e4c40e38d6f996c68a3b",
+      "bytes": 19820,
+      "uses": [
+        {
+          "position": 20,
+          "pageId": "9cdec939-7f79-4142-98a4-b9543230a4ec",
+          "elementId": "zd-present-menu",
+          "bounds": [
+            40,
+            158,
+            229,
+            100
+          ],
+          "crop": null
+        }
+      ]
+    },
+    {
+      "path": "media/imported/6915fa67d4e1225a59bd79cc1e6a64c3e4a10330c53cdf3356536c0028b1a854.png",
+      "sourceNames": [
+        "final-live-presentation.png"
+      ],
+      "sha256": "6915fa67d4e1225a59bd79cc1e6a64c3e4a10330c53cdf3356536c0028b1a854",
+      "bytes": 1358123,
+      "uses": [
+        {
+          "position": 20,
+          "pageId": "9cdec939-7f79-4142-98a4-b9543230a4ec",
+          "elementId": "zd-live-show",
+          "bounds": [
+            365,
+            147,
+            558,
+            349
+          ],
+          "crop": null
+        }
+      ]
+    },
+    {
+      "path": "media/imported/4bc79732eb823c4efeb2696b71f64f7346bf53b6a9e298d67559f1bb35f6532d.png",
+      "sourceNames": [
+        "final-export.png"
+      ],
+      "sha256": "4bc79732eb823c4efeb2696b71f64f7346bf53b6a9e298d67559f1bb35f6532d",
+      "bytes": 124206,
+      "uses": [
+        {
+          "position": 21,
+          "pageId": "c91c3fe3-836f-492f-882d-905bd4d08a9b",
+          "elementId": "zd-export",
+          "bounds": [
+            40,
+            149,
+            620,
+            292
+          ],
+          "crop": null
+        }
+      ]
+    },
+    {
+      "path": "media/imported/3ad2f74a0881b8e62177a25a2858ba6023981ff11d1d68d220d5235b2383a2d4.png",
+      "sourceNames": [
+        "assistant-client-choice.png"
+      ],
+      "sha256": "3ad2f74a0881b8e62177a25a2858ba6023981ff11d1d68d220d5235b2383a2d4",
+      "bytes": 55689,
+      "uses": [
+        {
+          "position": 22,
+          "pageId": "f68f052b-18ac-4286-ae3b-6f12e5c5d0d0",
+          "elementId": "zd-setup",
+          "bounds": [
+            40,
+            143,
+            882,
+            174
+          ],
+          "crop": null
+        }
+      ]
+    },
+    {
+      "path": "media/imported/2ce1c57dd3b312417106a487815ab1235bddce17e1fa9b32a2f048bd71ee25d3.png",
+      "sourceNames": [
+        "codex.png"
+      ],
+      "sha256": "2ce1c57dd3b312417106a487815ab1235bddce17e1fa9b32a2f048bd71ee25d3",
+      "bytes": 10969,
+      "uses": [
+        {
+          "position": 22,
+          "pageId": "f68f052b-18ac-4286-ae3b-6f12e5c5d0d0",
+          "elementId": "zd-client-3",
+          "bounds": [
+            715,
+            455,
+            30,
+            30
+          ],
+          "crop": null
+        }
+      ]
+    },
+    {
+      "path": "media/imported/eba7f76bb425a5d31e365aa0ebae5388bc5f06b42dbc9c1dc3497fdd3831d556.png",
+      "sourceNames": [
+        "saved-operation-17.png"
+      ],
+      "sha256": "eba7f76bb425a5d31e365aa0ebae5388bc5f06b42dbc9c1dc3497fdd3831d556",
+      "bytes": 65684,
+      "uses": [
+        {
+          "position": 23,
+          "pageId": "bd3c71d1-360e-4e0c-bbb6-5938970e8876",
+          "elementId": "zd-saved-receipt",
+          "bounds": [
+            536,
+            152,
+            340,
+            213
+          ],
+          "crop": null
+        }
+      ]
+    },
+    {
+      "path": "media/imported/44e2a2aa5f3887deae386fa73f71234961f93e006873b632ccf38b6b6f1291a1.png",
+      "sourceNames": [
+        "open-slide.png"
+      ],
+      "sha256": "44e2a2aa5f3887deae386fa73f71234961f93e006873b632ccf38b6b6f1291a1",
+      "bytes": 31437,
+      "uses": [
+        {
+          "position": 24,
+          "pageId": "8a9bcdf1-fcb2-4214-9743-86c110c954ca",
+          "elementId": "zd-credit-0",
+          "bounds": [
+            40,
+            441,
+            39,
+            39
+          ],
+          "crop": null
+        }
+      ]
+    },
+    {
+      "path": "media/imported/2a2f5cbcc74c7fa83c40127dd8b0e42c23f1157131aebe28492aa1ac27bbdc6d.png",
+      "sourceNames": [
+        "github-repository.png"
+      ],
+      "sha256": "2a2f5cbcc74c7fa83c40127dd8b0e42c23f1157131aebe28492aa1ac27bbdc6d",
+      "bytes": 5437,
+      "uses": [
+        {
+          "position": 24,
+          "pageId": "8a9bcdf1-fcb2-4214-9743-86c110c954ca",
+          "elementId": "zd-credit-1",
+          "bounds": [
+            340,
+            441,
+            39,
+            39
+          ],
+          "crop": null
+        }
+      ]
+    },
+    {
+      "path": "media/imported/d697acf6f3c5bc265806bc8f6c4e6d58b964e0b2962392d0329a420639f45846.png",
+      "sourceNames": [
+        "pptxgenjs.png"
+      ],
+      "sha256": "d697acf6f3c5bc265806bc8f6c4e6d58b964e0b2962392d0329a420639f45846",
+      "bytes": 15816,
+      "uses": [
+        {
+          "position": 24,
+          "pageId": "8a9bcdf1-fcb2-4214-9743-86c110c954ca",
+          "elementId": "zd-credit-2",
+          "bounds": [
+            640,
+            441,
+            39,
+            39
+          ],
+          "crop": null
         }
       ]
     }

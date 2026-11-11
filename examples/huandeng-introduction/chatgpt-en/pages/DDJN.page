@@ -3,114 +3,127 @@ background:
   type: solid
   color: "#F7F5EF"
 elements:
+  - elementId: f-bg
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 0
+      - 0
+      - 960
+      - 540
+    fill:
+      type: solid
+      color: "#F4F1E8"
+  - elementId: f-route
+    elementType: text
+    bounds:
+      - 42
+      - 20
+      - 860
+      - 18
+    content:
+      text: AGENT SETUP → CHOOSE THE CLIENT
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#168C8C"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.2
   - elementId: title
     elementType: text
     bounds:
-        [42,34,880,76]
+        [42,49,875,66]
     role: title
     content:
-      {"text":"From the working project to the audience","fontFamily":"Georgia","fontSize":32,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: present-icon
-    elementType: icon
-    iconName: fas:play
+      {"text":"Connect the assistant to this project","fontFamily":"Segoe UI","fontSize":32,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.1}
+  - elementId: f-foot-rule
+    elementType: shape
+    shapeName: rect
     bounds:
-      - 44
-      - 132
-      - 26
-      - 26
-    fill:
-      type: solid
-      color: "#356F68"
-  - elementId: present-title
-    elementType: text
-    bounds:
-      - 86
-      - 131
-      - 354
-      - 32
-    content:
-      {"text":"Present as you speak","fontFamily":"Segoe UI","fontSize":21,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: present-menu
-    elementType: image
-    src: "media/imported/fa59f55889e6e4aa240167729eb5c378bda2ed5286bff56ca741b312dd071f5a.png"
-    sourceName: "present-current.png"
-    alt: "present-current.png"
-    bounds:
-        [44,234,238,133]
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: export-icon
-    elementType: icon
-    iconName: fas:file-export
-    bounds:
-        [365,132,26,26]
-    fill:
-      type: solid
-      color: "#356F68"
-  - elementId: export-title
-    elementType: text
-    bounds:
-        [407,131,507,32]
-    content:
-      {"text":"PPTX and PDF","fontFamily":"Segoe UI","fontSize":21,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: export-menu
-    elementType: image
-    src: "media/imported/e304e3a318c00c6a52472d0e761be2ee055a51ef9a71c88cf2319f4214a9e2be.png"
-    sourceName: "export-current.png"
-    alt: "export-current.png"
-    bounds:
-        [365,205,549,238]
-    fit:
-      mode: contain
-    crop:
-      {"left":0,"right":0,"top":0,"bottom":0}
-  - elementId: delivery-scope
-    elementType: text
-    bounds:
-      - 44
-      - 477
-      - 870
-      - 40
-    content:
-      {"text":"Live playback can reveal content step by step; PPTX/PDF deliver the static slides.","fontFamily":"Segoe UI","fontSize":17,"color":"#66756B","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: brand-small
-    elementType: image
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
-    sourceName: huandeng.png
-    alt: huandeng.png
-    bounds:
-      - 44
+      - 42
       - 510
+      - 876
+      - 1
+    fill:
+      type: solid
+      color: "#CCD2CB"
+  - elementId: f-watermark
+    elementType: text
+    bounds:
+      - 42
+      - 518
+      - 700
       - 17
+    content:
+      text: English · ChatGPT 6 Astra
+      fontFamily: Segoe UI
+      fontSize: 12
+      color: "#50646A"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.2
+  - elementId: f-position
+    elementType: text
+    bounds:
+      - 882
+      - 518
+      - 36
       - 17
+    content:
+      text: ""
+      fontFamily: Segoe UI
+      fontSize: 12
+      color: "#50646A"
+      bold: false
+      align:
+        - right
+        - top
+      lineHeight: 1.2
+      field: main-position
+  - elementId: f-assistant-choice
+    elementType: image
+    bounds:
+        [44,137,870,168.30357142857142]
+    src: "media/imported/2cfabeba4179716fc245e0eb39a8e32c2fedb3d873c70e64dbc735cded1c30f3.png"
+    sourceName: "assistant-choice-complete.png"
     fit:
       mode: contain
-    crop:
-      left: 0.18
-      right: 0.18
-      top: 0.14
-      bottom: 0.14
-  - elementId: foot
+  - elementId: f-assistant-action
     elementType: text
     bounds:
-      - 69
-      - 513
-      - 130
-      - 17
+      - 44
+      - 343
+      - 870
+      - 55
     content:
-      {"text":"HUANDENG","fontFamily":"Segoe UI","fontSize":10,"color":"#66756B","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: position
+      text: Choose your client → follow setup → confirm the project entry
+      fontFamily: Segoe UI
+      fontSize: 25
+      color: "#112D32"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.2
+  - elementId: f-assistant-shared
     elementType: text
     bounds:
-      - 884
-      - 512
-      - 30
-      - 18
+      - 44
+      - 425
+      - 870
+      - 64
     content:
-      {"text":"","fontFamily":"Segoe UI","fontSize":10,"color":"#66756B","bold":false,"align":["right","top"],"lineHeight":1.3,"field":"main-position"}
-notes: "Present or export from the same working project. Click-by-click reveals belong to live playback; PPTX and PDF carry the static slides. Provide the complete PPTD project when someone needs to continue editing, and an appropriate export when they need to read or present it. Further changes return to the same source project."
+      text: The assistant edits the same pages, assets and Story that you see in the Editor.
+      fontFamily: Segoe UI
+      fontSize: 22
+      color: "#168C8C"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.2
+notes: "Open Agent setup in the desktop Editor and select the client you use. Follow its generated setup and verify the project entry before asking for an edit. Claude Code uses the HUANDENG plugin, DeepSeek Harness uses its native Cordis adapter, and ChatGPT reaches the local workflow through its connector. These clients work through the same document service. The screenshot shows the actual client selector; it does not claim that the browser-only capture itself completed native setup."

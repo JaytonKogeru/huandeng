@@ -114,7 +114,7 @@ Windows 首轮的 2 项失败是固定 writer 锁端口的系统 `EACCES`。第�
 
 ## 6. 保留对象与安装约定
 
-THUG 正式仓库为 `D:/_Proj/Huandeng`，正式程序为 `D:/_Proj/Huandeng/dist/HUANDENG-win32-x64/HUANDENG Editor.exe`，现在运行时标记为 `03a96957` / `0.5.0` / `sourceDirty=false`。旧版窗口经 `CloseMainWindow` 正常退出，没有强杀；v0.4 完整目录备份在 `D:/_Proj/Huandeng/.verification/installed-v04-backup-20261107-v05`。
+THUG 正式仓库为 `<editor-checkout>`，正式程序为 `<editor-checkout>/dist/HUANDENG-win32-x64/HUANDENG Editor.exe`，现在运行时标记为 `03a96957` / `0.5.0` / `sourceDirty=false`。旧版窗口经 `CloseMainWindow` 正常退出，没有强杀；v0.4 完整目录备份在 `<editor-checkout>/.verification/installed-v04-backup-20261107-v05`。
 
 2026-11-07 13:39:50.3573887 UTC 的安装路径核查通过：桌面与开始菜单两项快捷方式的目标、工作目录和图标均指向正式位置，图标 hash 与源码一致。最初 `install-v05.json` 的 `passed=false` 来自验证器把 Windows IconLocation 的 `,0` 索引后缀当作文件路径；程序搬迁与快捷方式实际上已经成功。仅修正验证器后，`install-paths-v05.json` 通过且 exit 0，原误报回执保持原样。
 

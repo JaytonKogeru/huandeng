@@ -4,7 +4,7 @@
 
 SPEC-V02.md 的本轮条目已完成：桌面应用、项目文件树、单页版本浏览/恢复、外部 Agent 维护 Story，以及可选布局起点。最终 Windows EXE 的六条核心流程已通过。本轮没有尚未实现的合同条目；以下是旧编辑器兼容方面的后续工作。
 
-代码在 `D:/_Proj/Huandeng`，分支 `huandeng/pptd`。桌面应用为 `dist/HUANDENG-win32-x64/HUANDENG Editor.exe`，默认入口 `Start-Huandeng.cmd`。产品显示 HUANDENG；兼容路径 `.huandeng` 与旧命令不迁移。
+代码在 `<editor-checkout>`，分支 `huandeng/pptd`。桌面应用为 `dist/HUANDENG-win32-x64/HUANDENG Editor.exe`，默认入口 `Start-Huandeng.cmd`。产品显示 HUANDENG；兼容路径 `.huandeng` 与旧命令不迁移。
 
 ## 下轮从哪里继续
 

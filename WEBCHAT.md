@@ -1,6 +1,24 @@
 # HUANDENG Editor
 
-## Current 0.19 product and introduction work
+## Final Editor walkthroughs and public source preparation
+
+Read docs/PRODUCT-INTRODUCTION-SPEC.md, PRODUCT-INTRODUCTION-VALIDATION.md, OPEN-SOURCE-READINESS.md and HANDOFF-FINAL-EXAMPLES.md for the current revision. The user froze both Claude Code and DeepSeek Harness designs and authorized language/model watermarks only. Their 95 Main pages were independently compared against the pre-watermark state: exactly one added text object per page, with original objects, Notes, metadata, order, scientific values and Presentations unchanged. Preserve that boundary.
+
+ChatGPT English is a 24-page practical Editor walkthrough authored directly by the primary session. ChatGPT Chinese is an independent 24-page tutorial authored by three parallel section agents with orchestration and personal page-by-page review by the primary session. Do not reimpose bilingual alignment or the earlier DNA example. Both short Presentations contain 12 actual occurrences, current tutorial pins and occurrence Notes. Each page has the accurate language/model watermark.
+
+The final English pin is Project map · tutorial; the Chinese pin is 保存页面 · 教程定稿. Earlier scientific versions and originals remain historical source material. Do not replace the current tutorial pins with the prior scientific pin.
+
+Main/Brief counts are ChatGPT EN 24/12, ChatGPT ZH 24/12, Claude EN 25/9, Claude ZH 26/9, DeepSeek EN 22/none and DeepSeek ZH 22/12. Current PDF/PPTX and Office checks are documented separately from earlier reviews. Owner acceptance is not inferred from technical checks.
+
+Runtime source remains C3 cadaecbf9cf1661e28464fe68b7b866f68fecabe and Editor/plugin version remains 0.19.0. The final plugin distributions add the packaged DeepSeek guide and repair its README link; runtime and shared-skill bytes remain those of the installed packages. Both package forms are built from plugins/huandeng. The final native CC watermark jobs completed; DSH saved and read back its watermark changes but retained the host's Windows ACL/process-exit failure. Keep process status, saved results and package verification distinct.
+
+The bilingual README leads with actual Editor use. Community files, source/license notices and public-source redactions support open-source preparation. The private repository's old history is not made public by cleaning today's files. Keep repository visibility, history rewriting and release publication as explicit final decisions. Do not run inherited npm publishing or push upstream.
+
+Preserve unrelated changes and the protected fixture; all document mutations still use the active shared writer and exact preview/apply/readback. The source/validation records identify what was changed and inspected.
+
+## Previous 0.19 product and introduction work
+
+This section records the preceding delivery. Its alignment requirement, scientific pins and author-review statements are historical; the final revision above and its current evidence supersede them.
 
 Read docs/PRODUCT-INTRODUCTION-SPEC.md, PRODUCT-INTRODUCTION-VALIDATION.md, EDITOR-0.19-VALIDATION.md, NATIVE-INTEGRATION-0.19.md, PROJECT-FOLDERS.md, RELEASE-V019.md and HANDOFF-V019.md. The current presentation mission is to teach what HUANDENG is, how to use it and why its design helps. The founder's story guides those choices; it is not a transcript to illustrate. The user prefers Claude English's current usefulness and design. Preserve it and the user's page edits; require substantive Chinese/English correspondence without imposing identical page breaks.
 
@@ -8,7 +26,7 @@ Final runtime source C3 is cadaecbf9cf1661e28464fe68b7b866f68fecabe. It follows 
 
 The six canonical projects remain under examples/huandeng-introduction. ChatGPT Chinese and English each have 24 Main and 12 Brief pages, with saved occurrence Notes and a historical scientific pin. DeepSeek English has 22 Main/no separate Brief; Chinese has 22 Main/12 Brief. Their native content findings remain recorded. Claude's original English session completed initial maintenance and a bounded 27-tool version/function/fact correction at 25 Main/9 Brief; its actual Office Main 12/Brief 5 retains the chart-label alignment limitation. The original Chinese session completed 26 Main/9 Brief and a nine-tool corresponding factual correction. Chinese source and four exports are verified, while its runner retains needs_attention for a denied append to DELIVERY-R2.md; that blocked log was not rewritten or bypassed. The pair's core product claims, use steps and qualifications correspond, with the collaboration example given a separate page in Chinese. Read the project reports for substantive correspondence and other current findings before claiming acceptance. Native completion is not editorial approval; the coordinator does not rewrite native source to manufacture a pass.
 
-The formal DSH package and Cordis identity are huandeng. Canonical adapter source is plugins/huandeng/adapters/deepseek; D:/_Proj/dsh-huandeng is the intentional installed-distribution name to avoid colliding with Huandeng on Windows. Default native clients use the shared 0.19 guide; actual package hashes and host activation are recorded separately from the original trial candidate and native model completion. The existing private ChatGPT plugin was updated in place; that does not prove hot-loading into an already-running conversation.
+The formal DSH package and Cordis identity are huandeng. Canonical adapter source is plugins/huandeng/adapters/deepseek; <workspace-root>/dsh-huandeng is the intentional installed-distribution name to avoid colliding with Huandeng on Windows. Default native clients use the shared 0.19 guide; actual package hashes and host activation are recorded separately from the original trial candidate and native model completion. The existing private ChatGPT plugin was updated in place; that does not prove hot-loading into an already-running conversation.
 
 File/folder launch accepts exactly one direct .pptd child and rejects ambiguity. A descriptive folder suffix is optional, with no bulk rename or generic Windows folder association. Existing folder markers are preserved. Assistant setup, dated client reports and writer-backed receipts remain distinct. The real DSH/ChatGPT collaboration trial proves independent-page saves, stale same-page refusal and a fresh style handoff, not section locks, online presence or a task scheduler.
 
@@ -65,7 +83,7 @@ The existing private ChatGPT plugin was updated in place to 0.13.0 with its acco
 - The publisher validates Project output before atomically copying a regular shared file. Retain old valid output on error/lock. Keep v3 lock-retirement tombstones nonempty to prevent stale-process ABA races. Do not rely on symbolic-link synchronization or force-close Office.
 - The authoring plugin starts from approved page references, original evidence and concrete layout choices, then inspects actual renders. Do not turn a research Project into an Editor fixture or upload its sources, figures, IDs, paths or receipts.
 
-Windows source worktree: `D:/_Proj/Huandeng-v013-20261109`, branch `editor/v0.13-workspace`; canonical checkout remains `D:/_Proj/Huandeng`. Preserve the unrelated modified fixture. Use the exact-package `scripts/verify-workspace-v013.mjs` and `scripts/verify-publisher-native.mjs` as appropriate to the remaining risk. Push only the accepted origin milestone and annotated `editor-v0.13.0`; never upstream or npm. The following release sections document preceding baselines. Current rules above supersede their right-sidebar Files, member-selection UI and 18-tool descriptions.
+Windows source worktree: `<workspace-root>/Huandeng-v013-20261109`, branch `editor/v0.13-workspace`; canonical checkout remains `<workspace-root>/Huandeng`. Preserve the unrelated modified fixture. Use the exact-package `scripts/verify-workspace-v013.mjs` and `scripts/verify-publisher-native.mjs` as appropriate to the remaining risk. Push only the accepted origin milestone and annotated `editor-v0.13.0`; never upstream or npm. The following release sections document preceding baselines. Current rules above supersede their right-sidebar Files, member-selection UI and 18-tool descriptions.
 
 ## Historical accepted Editor 0.12.1 patch
 
@@ -75,7 +93,7 @@ This patch adds readable text selection, folded Section card edges, atomic new c
 
 All 1,102 units passed with one existing platform skip across 100 files; core TypeScript, Biome 753 files and production build passed. Clean packaging passed in 79.70 seconds; the exact package passed seven synthetic UI groups in 34.92 seconds, two launches/two normal exits and no renderer errors. Independent review found no blocker and separately exercised current visibility on repeated pinned artwork. Guarded installation retained the previous package, preserved current private files and ordinary settings, matched installed bytes, reopened a fresh writable production service and passed the 18-tool/two-guide local client doctor. Raw receipts and Project inventories stay private. Public evidence is allowlisted and synthetic.
 
-Windows worktree: `D:/_Proj/Huandeng-v0121-20261109`, branch `editor/v0.12.1-authoring`; canonical checkout remains `D:/_Proj/Huandeng`. Preserve the unrelated modified canonical fixture. The invariants below remain in force; older version counts/identity describe the preceding baseline.
+Windows worktree: `<workspace-root>/Huandeng-v0121-20261109`, branch `editor/v0.12.1-authoring`; canonical checkout remains `<workspace-root>/Huandeng`. Preserve the unrelated modified canonical fixture. The invariants below remain in force; older version counts/identity describe the preceding baseline.
 
 ## Objective and preceding v0.12 baseline
 
@@ -139,7 +157,7 @@ v0.8 corrected the old v0.7~398MiB GC observation: Network inspector response re
 
 ## Working paths and release
 
-Windows is authoritative: the current checkout is `D:/_Proj/Huandeng` on `main`. The historical `Huandeng-v018-20261110` worktree was removed after its dependencies were released; the historical branch remains in Git. The Linux transfer mirror has no authoritative Git history. Preserve the unrelated modified canonical fixture. Never broad-stage/reset/clean or restore a historical private document baseline.
+Windows is authoritative: the current checkout is `<workspace-root>/Huandeng` on `main`. The historical `Huandeng-v018-20261110` worktree was removed after its dependencies were released; the historical branch remains in Git. The Linux transfer mirror has no authoritative Git history. Preserve the unrelated modified canonical fixture. Never broad-stage/reset/clean or restore a historical private document baseline.
 
 Use `corepack pnpm` with isolated development dependencies and the frozen lockfile. The v0.13 workspace harness is `scripts/verify-workspace-v013.mjs`, using the exact `HUANDENG_DESKTOP_EXE`, no `HUANDENG_DESKTOP_APP`, and isolated synthetic profiles. Keep development, packaged, installed and private-authoring evidence separate. Scope further checks to actual remaining risk instead of automatically repeating earlier 43-group/soak matrices. Inspect screenshots before publishing only generic, masked evidence.
 

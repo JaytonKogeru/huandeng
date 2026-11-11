@@ -213,4 +213,20 @@ elements:
         - right
         - middle
       field: main-position
+  - elementId: attribution-watermark
+    elementType: text
+    bounds:
+      - 760
+      - 10
+      - 176
+      - 16
+    content:
+      text: 中文 · Claude Opus 5.5
+      fontFamily: Microsoft YaHei
+      fontSize: 10
+      lineHeight: 1.2
+      color: "#7A8580"
+      align:
+        - right
+        - middle
 notes: 交付之前，先跑一遍设计检查。它读整份稿子并报告观察：超出你设定范围的字号、意料之外的背景、没有标题页的章节、显示尺寸下像素不够的图片。它是只读的，最后还是要你自己看。放映可以按 F5 从头开始，或按 Shift+F5 从当前页开始，全屏，支持点击动画。导出用的是开始导出那一刻已保存的稿子。项目文件夹本身才是可编辑的源。PPTX 尽量保留原生对象，合作者可以在 PowerPoint 里继续改文字、表格和基础图表，动画会变成静态。PDF 用来分享，MP4 按时间播放点击动画。这份稿子就是这样导出 PDF 和 PPTX 的。

@@ -40,7 +40,7 @@ v0.2 交付独立桌面窗口、项目文件树、单页版本浏览与恢复，
 - 起点 commit：**327dd09bcd530eb97647fc33fa67e99f8137d860**
 - 对应已审阅 core 版本：**2.3.1**；许可证：MIT。
 - 保留上游 monorepo、依赖锁文件与工具链，首轮不顺手升级所有依赖。
-- 代码目录固定为 **D:/_Proj/Huandeng**；当前独立 HUANDENG 仓库与 origin/upstream 发布规则见 [README](../README.md)。
+- 代码目录固定为 **<workspace-checkout> HUANDENG 仓库与 origin/upstream 发布规则见 [README](../README.md)。
 - 科研 deck 留在其原项目目录。编辑器可打开指定 PPTD，不要求复制进 OpenSlide 示例工程。
 
 OpenSlide 已有编辑与源码写回；本项目新增 PPTD backend，把 PPTD 模式的修改落到对象和页面文件。[R1][R2]
@@ -702,9 +702,9 @@ M1–M2 的写入检查使用专用 fixture；真实材料可只读检查，按�
 下列命令仅用于代码目录尚不存在的情况；存在时先读取其 AGENTS.md、Git 状态和既有修改，再接续：
 
 ```powershell
-git clone https://github.com/open-slide/open-slide.git D:/_Proj/Huandeng
-git -C D:/_Proj/Huandeng switch -c huandeng/pptd 327dd09bcd530eb97647fc33fa67e99f8137d860
-Set-Location D:/_Proj/Huandeng
+git clone https://github.com/open-slide/open-slide.git <editor-checkout>
+git -C <editor-checkout> switch -c huandeng/pptd 327dd09bcd530eb97647fc33fa67e99f8137d860
+Set-Location <editor-checkout>
 pnpm install --frozen-lockfile
 pnpm dev
 ```

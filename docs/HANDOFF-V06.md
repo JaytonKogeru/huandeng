@@ -4,9 +4,9 @@
 
 ## 当前来源
 
-实际 Windows 仓库为 `D:\_Proj\Huandeng`，本轮隔离开发位置为 `D:\_Proj\Huandeng-v06-20261108`，分支 `editor/v0.6-authoring-motion`。运行时源码提交为 `9c27465aa88b5b2b59288f5b321596ad10fcb92c`，产品版本 `0.6.0`，构建时间 `2026-11-07T16:47:49.8347220Z`，`sourceDirty=false`。
+实际 Windows 仓库为 `<editor-checkout>`，本轮隔离开发位置为 `<workspace-checkout>`，分支 `editor/v0.6-authoring-motion`。运行时源码提交为 `9c27465aa88b5b2b59288f5b321596ad10fcb92c`，产品版本 `0.6.0`，构建时间 `2026-11-07T16:47:49.8347220Z`，`sourceDirty=false`。
 
-独立包已通过自包含/搬迁、六套实际 EXE 验收共 61 项、80 页副本 20 轮性能及正式安装验收。安装位置为 `D:\\_Proj\\Huandeng\\dist\\HUANDENG-win32-x64`，旧 v0.5 保留于 `.verification/installed-v05-backup-20261108-v06`。旧窗口正常退出，没有强制关闭。桌面与开始菜单快捷方式、工作目录、图标和 About 版本均核对通过。
+独立包已通过自包含/搬迁、六套实际 EXE 验收共 61 项、80 页副本 20 轮性能及正式安装验收。安装位置为 `<editor-checkout>\\dist\\HUANDENG-win32-x64`，旧 v0.5 保留于 `.verification/installed-v05-backup-20261108-v06`。旧窗口正常退出，没有强制关闭。桌面与开始菜单快捷方式、工作目录、图标和 About 版本均核对通过。
 
 普通用户 profile 已重新打开原 80 页项目，窗口可响应，项目可写、无诊断，82 份文档源文件 hash 与测试前相同；窗口留给用户继续使用。Linux 的 `2cec4bfc` 只用于核对与传输差异，不能推送其历史。后续文档提交晚于运行时提交，构建 marker 才是已安装程序的来源。实际结果见 [发布记录](RELEASE-V06.md)、[验证报告](VALIDATION-V06.md) 和 [安全证据](evidence/ui-v06/README.md)。
 

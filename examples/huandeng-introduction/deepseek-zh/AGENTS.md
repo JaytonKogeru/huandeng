@@ -59,3 +59,7 @@ Author: DeepSeek Harness. Audience language: Chinese (zh-CN). This is the single
 Correct XZJN ordinary-prose fragmentation and inspect every page for the same construction. Do not mechanically replace prose with tables or cards.
 
 For one client job, write only this explicitly bound canonical project. The paired language may be read for semantic correspondence; changes there require its own explicitly scoped job. Do not edit another author’s project.
+
+## Final attribution maintenance
+
+The owner accepted the existing Claude and DeepSeek content and design. The current task for this canonical edition is visible language/model attribution watermarks only. Preserve all other artwork, page identities, scientific values, Notes and presentation selection. Work only on this edition; ChatGPT owns its two editions and repository documentation. Preserve previous task records, including any denied log append. Keep the current native account, model and permissions.

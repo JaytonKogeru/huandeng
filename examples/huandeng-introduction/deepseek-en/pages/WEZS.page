@@ -20,4 +20,20 @@ elements:
       align:
         - left
         - middle
+  - bounds:
+      - 690
+      - 16
+      - 222
+      - 14
+    content:
+      align:
+        - right
+        - top
+      color: "#BDB7A8"
+      fontFamily: Segoe UI
+      fontSize: 9.5
+      letterSpacing: 0.4
+      text: English · DeepSeek V4.1 Flash 1017
+    elementId: attribution-watermark
+    elementType: text
 notes: So that's what I built. I'll show you the editor now, but I want to show it as answers to those two problems, not as a tour of every button.

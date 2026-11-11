@@ -230,4 +230,20 @@ elements:
       align:
         - right
         - middle
+  - elementId: attribution-watermark
+    elementType: text
+    bounds:
+      - 760
+      - 10
+      - 176
+      - 16
+    content:
+      text: English · Claude Opus 5.5
+      fontFamily: Arial
+      fontSize: 10
+      lineHeight: 1.2
+      color: "#7A8580"
+      align:
+        - right
+        - middle
 notes: "The third problem showed up when I asked AI to work on Google Slides or PowerPoint decks. To check its own work, the agent often had to render the whole slide to a picture, look at it, and work out from the pixels which value or position to change. Images can be measured and compared, but in that loop every precise fix had to be recovered from the picture first, and it was slow. So I wanted a slide format where the agent also reads the slide as data. On the right is a real excerpt from the 1BNA slide in this very project: the chart is an object with its bounds, its twelve values and its axis range. An agent can inspect and change one value or one label directly, without touching anything else, and the change can be diffed. I still look at renders for composition and readability; they are a review surface, not the editable model."

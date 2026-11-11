@@ -20,4 +20,20 @@ elements:
       align:
         - left
         - middle
+  - elementId: attribution-watermark
+    elementType: text
+    bounds:
+      - 760
+      - 10
+      - 176
+      - 16
+    content:
+      text: English · Claude Opus 5.5
+      fontFamily: Arial
+      fontSize: 10
+      lineHeight: 1.2
+      color: "#A8C2BA"
+      align:
+        - right
+        - middle
 notes: "Section 4. Back to the Git idea: if the page is the unit of change, each page needs a name that does not move, and a history of its own."

@@ -2,7 +2,7 @@
 
 ## Current state
 
-The canonical checkout is `D:/_Proj/Huandeng`, on `main`. The milestone tag is `plugin-v0.18.3`; use that tag to identify the exact source and release manifest. Editor source and the installed Editor 0.18.0 executable were not changed. The core npm package remains 2.3.1.
+The canonical checkout is `<editor-checkout>`, on `main`. The milestone tag is `plugin-v0.18.3`; use that tag to identify the exact source and release manifest. Editor source and the installed Editor 0.18.0 executable were not changed. The core npm package remains 2.3.1.
 
 Six current projects are under `examples/huandeng-introduction`: ChatGPT ZH/EN 27 Main pages each, Claude ZH 20, Claude EN 25, DeepSeek ZH/EN 18 each. Five existing brief sequences have 13/13/7/9/11 pages respectively. DeepSeek EN has no separate Presentation. Their saved Notes and independent review boundaries are documented with each project.
 
@@ -30,7 +30,7 @@ The existing private account plugin was updated in place with its app binding an
 
 ## Workspace and startup
 
-See [workspace organization](WORKSPACE-ORGANIZATION.md) for the complete top-level sweep, retired worktrees, hash-preserved originals and compact historical source patches. Do not recreate dated project copies or loose transfer fragments in `D:/_Proj`. Unrelated user projects and unassigned concurrent work remain intact.
+See [workspace organization](WORKSPACE-ORGANIZATION.md) for the complete top-level sweep, retired worktrees, hash-preserved originals and compact historical source patches. Do not recreate dated project copies or loose transfer fragments in `<workspace-root>`. Unrelated user projects and unassigned concurrent work remain intact.
 
 Startup is diagnosed, not fixed. The measured warm-cache public sample reached Home in 1.854 seconds, first project readiness in an existing window in 5.117 seconds and restored-project readiness in 6.086 seconds. The code serializes restoration before requested-entry readiness; a future performance change needs its own source/behavior verification.
 

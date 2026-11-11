@@ -3,127 +3,114 @@ background:
   type: solid
   color: "#F7F5EF"
 elements:
+  - elementId: f-paper
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 0
+      - 0
+      - 960
+      - 540
+    fill:
+      type: solid
+      color: "#F4F1E8"
   - elementId: title
     elementType: text
     bounds:
-        [42,34,880,76]
+        [36,27,884,46]
     role: title
     content:
-      {"text":"换一个视角，检查整场演讲","fontFamily":"Noto Serif SC","fontSize":28,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.2}
-  - elementId: brand-small
-    elementType: image
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
-    sourceName: huandeng.png
-    alt: huandeng.png
+      {"text":"把怎么讲，写进备注页","fontFamily":"Noto Sans SC","fontSize":31,"color":"#112D32","align":["left","top"],"lineHeight":1.35,"bold":true}
+  - elementId: f-action
+    elementType: text
     bounds:
-        [43,512,18,18]
+      - 38
+      - 82
+      - 884
+      - 28
+    content:
+      text: 切到「备注页」→ 写讲稿 → 保存页面
+      fontFamily: Noto Sans SC
+      fontSize: 18
+      color: "#557076"
+      align:
+        - left
+        - top
+      lineHeight: 1.35
+  - elementId: f-watermark
+    elementType: text
+    bounds:
+      - 36
+      - 514
+      - 820
+      - 19
+    content:
+      text: Chinese · ChatGPT 6 Astra + Subagents
+      fontFamily: Noto Sans SC
+      fontSize: 13
+      color: "#557076"
+      align:
+        - left
+        - top
+      lineHeight: 1.35
+  - elementId: f-position
+    elementType: text
+    bounds:
+      - 878
+      - 514
+      - 44
+      - 19
+    content:
+      text: ""
+      fontFamily: Noto Sans SC
+      fontSize: 13
+      color: "#557076"
+      align:
+        - right
+        - top
+      lineHeight: 1.35
+      field: main-position
+  - elementId: f-notes-navigation
+    elementType: image
+    bounds:
+      - 38
+      - 124
+      - 515
+      - 57
+    src: media/imported/4474e606ba2e55f83b8484e3816d9050d1e13538be1e0f1ca9fa774bc267fbf8.png
+    sourceName: tutorial-notes-nav.png
     fit:
       mode: contain
-    crop:
-      left: 0.18
-      right: 0.18
-      top: 0.14
-      bottom: 0.14
-  - elementId: foot
-    elementType: text
-    bounds:
-        [68,515,140,16]
-    content:
-      {"text":"HUANDENG","fontFamily":"Noto Sans SC","fontSize":9,"color":"#5B6A62","bold":false,"align":["left","top"],"lineHeight":1.35}
-  - elementId: position
-    elementType: text
-    bounds:
-        [881,514,35,18]
-    content:
-      {"text":"","fontFamily":"Noto Sans SC","fontSize":10,"color":"#5B6A62","bold":false,"align":["right","top"],"lineHeight":1.35,"field":"main-position"}
-  - elementId: view-browse
+  - elementId: f-notes-editor
     elementType: image
-    src: "media/imported/941818c097e7c765d84aed764aebd4625997d970e40039fdfb4129bdaa04cb9f.png"
-    sourceName: browse.png
-    alt: browse.png
     bounds:
-        [43,149,429,296]
+      - 38
+      - 198
+      - 884
+      - 273
+    src: media/imported/b9e59499ee65d3ff33ca632826d526a808c019d00b9efa666c2d626b6c880dfb.png
+    sourceName: tutorial-notes-detail.png
     fit:
       mode: contain
     crop:
       left: 0
       right: 0
       top: 0
-      bottom: 0
-  - elementId: view-outline
-    elementType: image
-    src: "media/imported/c8fc7ecbd7b7e1c70dd5e1c77605a7aef119ff81906c1959cd9074f3d5be8518.png"
-    sourceName: "outline-detail.png"
-    alt: "outline-detail.png"
-    bounds:
-        [505,145,409,119]
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: view-sections
-    elementType: image
-    src: "media/imported/e435819069d4c2d1be564f200b6c1e4bd30ab731a85b36585abb0191b9ae48d5.png"
-    sourceName: "sections-detail.png"
-    alt: "sections-detail.png"
-    bounds:
-        [505,310,409,190]
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: browse-caption
+      bottom: 0.28
+  - elementId: f-notes-point
     elementType: text
     bounds:
-        [43,121,429,27]
+      - 38
+      - 481
+      - 884
+      - 25
     content:
-      text: Browse
+      text: 页上保留重点，讲稿补足解释与过渡。
       fontFamily: Noto Sans SC
-      fontSize: 16
-      color: "#356F68"
-      bold: false
+      fontSize: 18
+      color: "#168C8C"
       align:
         - left
         - top
       lineHeight: 1.35
-  - elementId: outline-caption
-    elementType: text
-    bounds:
-        [505,117,409,27]
-    content:
-      text: Outline
-      fontFamily: Noto Sans SC
-      fontSize: 16
-      color: "#356F68"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.35
-  - elementId: sections-caption
-    elementType: text
-    bounds:
-        [505,280,409,27]
-    content:
-      text: Sections
-      fontFamily: Noto Sans SC
-      fontSize: 16
-      color: "#356F68"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.35
-  - elementId: view-use
-    elementType: text
-    bounds:
-        [43,465,429,42]
-    content:
-      {"text":"Browse 看页面；Outline 读顺序；Sections 组织边界。","fontFamily":"Noto Sans SC","fontSize":15,"color":"#356F68","bold":false,"align":["left","top"],"lineHeight":1.35}
-notes: "做好单页后，需要检查整场演讲。Browse用于看实际页面和章节节奏；Outline用于快速读标题与内容线索；Sections用于组织章节边界。它们是同一套页面的不同视角。这里分别展示真实视图，避免用一个Browse截图代替三个功能。回到Normal，页面身份与内容仍然相同。"
+notes: "这一页显示刚才文字对比页的真实备注。备注补充了操作细节、比较的重点和下一页的过渡，听众看到的页面仍保留图像与关键结论。点击顶部备注页，可以在同一工作区继续写这张 Main Slide 的讲稿；写完保存页面。等到编排具体演讲时，还可以给某一次出现单独准备讲法，后面会继续说明。"

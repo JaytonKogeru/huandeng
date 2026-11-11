@@ -1,60 +1,38 @@
-# HUANDENG introduction — current authoring brief
+# HUANDENG Editor walkthrough — project instructions
 
-## Mission and current owner direction
+## Current mission
 
-Introduce HUANDENG so a scientific presenter can explain what it is, perform a representative edit, reuse material and deliver a talk. The founder's story is reasoning material for priorities and motivation. Interpret, reorganize and supplement it with verified product details. Do not merely illustrate a transcript or turn the introduction into a launch keynote.
+This is the canonical `chatgpt-en` example. Teach the real Editor through a useful working sequence: open a project, choose a page and object, use Story and original assets, edit and save, inspect the change, name a version, arrange a talk, write its Notes, choose live or pinned references, rehearse and export.
 
-Read sources/story/USER-STORY.zh-CN.md, sources/story/PRODUCT-BRIEF.md and sources/story/FACTS.md. The latest direction supersedes the previous origin-story emphasis. Preserve the author's meaning and the useful visual work, icons, original evidence, functional demonstrations and acknowledgments already present.
+Read `sources/story/PRODUCT-BRIEF.md`, the page's current Story and Notes, and the original account in `sources/story/USER-STORY.zh-CN.md`. The original account supplies motivation; the Editor tutorial supplies the page sequence. Scientific sources and older versions remain provenance and history. Do not restore the old DNA-centered sequence.
 
-Claude English is the owner's preferred content structure. Its artwork is not a reference for ChatGPT or DeepSeek: each author retains an independent design. Keep the six current projects in their existing directories.
+This final English/Chinese pair is intentionally independent. Do not impose bilingual correspondence, matching page breaks or compulsory title-only Section dividers. Sections begin at useful content pages.
 
-## Before layout
+## Authorship and current structure
 
-Write a concise explanation of the product and a topic map: audience question, takeaway, real evidence, usable action and transition. Establish a preservation inventory. Check what the audience can do after the introduction, independently of whether the story sounds coherent.
+The primary ChatGPT 6 Astra session wrote and designed all 24 English pages directly. The watermark is **English · ChatGPT 6 Astra**.
 
-Cover the Editor/project/plugin/connector relationship, opening and locating work, Story, original asset reuse, one concrete scientific edit and review, Slide ID with page history, Main/Presentation reuse and delivery. Show the work through a coherent example; do not force one promotional slide per tab. Include source and project acknowledgments.
+Main has 24 pages. The 12-occurrence short Presentation is **First edit · short talk** and uses the named **Project map · tutorial** pin. It also has actual occurrence-specific Notes. Preserve these behaviors when making a focused revision.
 
-For this author's Chinese and English editions, establish a semantic correspondence of substantive claims, demonstrations, user steps, qualifications and credits. Localized wording, type and page breaks may differ. Missing functions and contradictory claims are not translation choices. Keep a concise correspondence report.
+The user froze the four Claude Code and DeepSeek Harness editions; this project does not authorize changing another author's work. The current user request determines the scope of any subsequent editing.
 
-Frame representative pages before expansion: a product action, an evidence-led scientific page and a reuse/collaboration explanation. Inspect real geometry, typography, imagery and background relationships. There is no fixed page count or compulsory dramatic arc.
+## Visual and content contract
 
-## Content truth and useful explanation
+- Make the relevant real interface control or changed region readable at presentation size. Use current localized captures when a workflow changes.
+- Preserve original image bytes and source attribution. Use native image crops or precise real UI regions; do not invent interface screenshots.
+- Guide comparisons with matched scale, alignment, labels, arrows or focused annotations. Keep useful text, lines and diagrams native and editable.
+- Keep ordinary prose coherent. Use a native table only for an actual row/column relationship.
+- Keep Notes consistent with the displayed page and the selected talk. Story records purpose, preservation constraints and the requested change.
+- Preserve product and source attribution without turning a page into an ornamental logo list.
+- State implemented behavior accurately. Revision checks do not create section locks, automatic scheduling or guaranteed conflict-free shared metadata edits.
+- Keep scientific values, units and citations unchanged in retained source/history material.
 
-- The lab-meeting observations and diagnosis of AI feel are the author's experience and interpretation. Do not invent episodes, quotations, benchmark numbers or consensus.
-- Story stores purpose and constraints for later readers and agents. It helps alignment; it does not guarantee model obedience or aesthetic quality.
-- Slide ID is stable; Position is the current collection order. Explain identity with per-page operation history and named versions, rather than an isolated UUID lesson.
-- Main pages may be used in several Presentations, with occurrence-specific notes and optional named-version pins. The asset library and page library are distinct.
-- PPTX already contains slide parts. HUANDENG exposes a working directory and shared page-oriented model; it is not a renamed PPTX. Moving the project requires the full folder, not only deck.pptd.
-- Product claims follow the actual runtime. Structured objects and revision checks complement rendered inspection. UI screenshots must demonstrate the behavior being explained.
-- Real collaboration means clients share a project, coordinate scope and save through revision checks. Different-page edits can proceed; same-page or shared-metadata edits can conflict. Do not invent automatic section locking, scheduling or online presence.
-- Verify attribution in FACTS.md and source notices. OpenSlide is the code foundation; OpenPPTD contributes formula conversion and PptxGenJS contributes PPTX generation. Do not claim Kimi invented a universal standard or endorses HUANDENG.
-- Keep deferred video/image-editor ideas outside the current capability introduction.
+## Editing and verification
 
-## Visual and editable-object contract
+Use this project's explicit `deck.pptd` and active shared writer. Read the current context, guidance, selection, page/metadata revisions and supported operations. Preview the exact intended transaction, apply it with that preview hash, read the saved operation and inspect the actual rendering.
 
-Use the actual HUANDENG mark and appropriate original client/project logos from sources/brand. Preserve geometry, color and source attribution. Product identity and acknowledgments are meaningful content.
+Never directly rewrite `.page`, `.pptd` or `.huandeng/project.json`. Preserve stable identities, unknown fields, originals, useful named versions and unrelated edits. Different pages can be assigned separately; give shared project metadata one coordinator. Serialize render/export per project.
 
-Let real scientific images, measured plots, localized UI captures, original diagrams and actual page previews carry the explanation. Use the asset library deliberately. Text-only pages may serve a particular pause; they must not replace all product evidence. A screenshot is useful only when its relevant region is legible at presentation size.
+After the last source edit, review the affected page at readable size and inspect the sequence it belongs to. Check the actual Main or Presentation selection, pin and Notes before exporting. Read the PDF/PPTX reports and inspect the target viewer. A geometry report or successful process exit is not visual approval.
 
-Use a coherent background/color/type system. Light, dark, colored and image treatments are available where they serve the content. White and empty are not synonymous with human. Preserve independent visual judgment and avoid repetitive generic card layouts.
-
-Use a native table only for a genuine row/column relationship. Ordinary prose or a list stays in one rich-text object where practical. Never create fake tables by aligning text boxes, cell shapes or separators. Repeated heading/description rows are still fragmented prose, even without borders. Meaningful scientific panels, plot labels and relationship diagrams are allowed; their spatial structure must communicate an actual relationship.
-
-Keep original values, units, evidence colors, axes and citations. Do not substitute decorative analytics or invented UI. Use actual page thumbnails to depict a deck or section. Scientific evidence must remain editable where the product supports it.
-
-Title-only Section pauses contain only the title. Other pages follow their communicative role. Size Chinese and English by language and viewing needs; no mechanical inflation of short Chinese phrases. Use notes for speaking detail and Story for intent/keep constraints.
-
-## Editing, review and delivery
-
-Use the explicit canonical deck.pptd here and the existing shared writer. Read context, projectGuidance, selected pages and supported operations. Read revisions, preview the exact transaction, apply, read back and render. Never directly rewrite .page, .pptd or .huandeng/project.json. Preserve stable IDs, unknown fields, intervening user changes and relevant existing constraints.
-
-The requested scoped revision and delivery are authorized; continue without per-page permission. Keep useful named milestones, not a parallel folder or snapshot per small edit. Serialize exports within each project.
-
-Review mission coverage, bilingual meaning, the preservation inventory, image usefulness, typography and source object structure before declaring the candidate ready. Inspect every final page and the complete sequence. Verify exported PDF and editable PPTX separately. Geometry checks, job completion and an agent's visual review do not constitute owner approval.
-
-Give the local deck.pptd entry and containing directory first. Keep production checks and limitations in the delivery audit unless needed to interpret an on-slide claim.
-
-## This edition
-Author: ChatGPT. Audience language: English. This is the single current chatgpt-en project. Localize actual UI evidence and preserve product names and stable identifiers.
-
-For one client job, write only this explicitly bound canonical project. The paired language may be read for semantic correspondence; changes there require its own explicitly scoped job. Do not edit another author’s project.
+Deliver the complete project folder when editing will continue. Current evidence is under `evidence/`; `evidence/history/before-final-20261111/` describes the preceding design. Keep old evidence historical and distinguish reviewer checks from the owner's acceptance.

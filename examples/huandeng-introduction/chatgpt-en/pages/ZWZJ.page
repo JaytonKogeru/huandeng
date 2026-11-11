@@ -3,107 +3,165 @@ background:
   type: solid
   color: "#F7F5EF"
 elements:
+  - elementId: f-bg
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 0
+      - 0
+      - 960
+      - 540
+    fill:
+      type: solid
+      color: "#F4F1E8"
+  - elementId: f-route
+    elementType: text
+    bounds:
+      - 42
+      - 20
+      - 860
+      - 18
+    content:
+      text: INSPECTOR → LAYERS
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#168C8C"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.2
   - elementId: title
     elementType: text
     bounds:
-        [42,31,880,62]
+        [42,49,875,66]
     role: title
     content:
-      {"text":"Local variation in one structure","fontFamily":"Georgia","fontSize":32,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: context
+      {"text":"Use Layers when objects overlap","fontFamily":"Segoe UI","fontSize":32,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.1}
+  - elementId: f-foot-rule
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 42
+      - 510
+      - 876
+      - 1
+    fill:
+      type: solid
+      color: "#CCD2CB"
+  - elementId: f-watermark
     elementType: text
     bounds:
-        [43,105,870,28]
+      - 42
+      - 518
+      - 700
+      - 17
     content:
-      {"text":"PUBLIC WORKED EXAMPLE · Figure, data, units and source stay together","fontFamily":"Segoe UI","fontSize":12,"color":"#66756B","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: structure
-    elementType: image
-    src: media/imported/50273f1fa204b2f0ae10463c91dd9d8ffcea87c80d861da37c0db9755d091017.png
-    sourceName: dna-duplex-position7.png
-    alt: dna-duplex-position7.png
+      text: English · ChatGPT 6 Astra
+      fontFamily: Segoe UI
+      fontSize: 12
+      color: "#50646A"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.2
+  - elementId: f-position
+    elementType: text
     bounds:
-      - 39
-      - 140
-      - 240
-      - 339
+      - 882
+      - 518
+      - 36
+      - 17
+    content:
+      text: ""
+      fontFamily: Segoe UI
+      fontSize: 12
+      color: "#50646A"
+      bold: false
+      align:
+        - right
+        - top
+      lineHeight: 1.2
+      field: main-position
+  - elementId: f-layer-controls
+    elementType: image
+    bounds:
+        [44,165.44299999999998,418,114.114]
+    src: media/imported/39ff3c031ae70dfb09bd9bf649bed4bb537e5e070ebee51510fd080f9793e032.png
+    sourceName: layers.png
     fit:
       mode: contain
     crop:
-      left: 0.285
-      right: 0.265
-      top: 0.105
-      bottom: 0.07
-  - elementId: distance-chart
-    elementType: chart
+      {"top":0.14,"bottom":0.73}
+  - elementId: f-layer-row
+    elementType: image
     bounds:
-        [298,164,616,256]
-    fontFamily: Arial
-    fontSize: 13
-    colors:
-      - "#356F68"
-      - "#A64F38"
-    legend: false
-    dataLabels: false
-    data:
-      {"cols":["position","distance"],"rows":[["1",10.7121],["2",10.7665],["3",10.5802],["4",10.3531],["5",10.4416],["6",10.4606],["7",10.2329],["8",10.4912],["9",10.5912],["10",10.4362],["11",10.8052],["12",10.8877]]}
-    series:
-        [{"type":"line","name":"C1′–C1′","encode":{"x":"position","y":"distance"},"color":"#356F68"}]
-    xAxis:
-      title: Paired position
-    yAxis:
-      {"title":"","min":10,"max":11.2}
-  - elementId: focus
-    elementType: text
+        [44,344,418,50]
+    src: "media/imported/d33b47a23f24ca7fcd4fba45676e53bdd3d5ef40b18ab1ae7a758b25ac5fe0b5.png"
+    sourceName: layer-title.png
+    fit:
+      mode: contain
+  - elementId: f-layer-connection
+    elementType: line
     bounds:
-      - 354
-      - 432
-      - 560
+        [478,220,54,145]
+    viewBox:
+      - 1
+      - 1
+    points: "0,1 1,0"
+    border:
+      width: 2.5
+      color: "#ED6A3A"
+    arrow:
+      - null
+      - arrow
+  - elementId: f-layer-result
+    elementType: image
+    bounds:
+      - 552
+      - 195
+      - 360
       - 28
-    content:
-      {"text":"Position 7: A7–B18 C1′ distance = 10.233 Å","fontFamily":"Segoe UI","fontSize":17,"color":"#A64F38","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: scope
+    src: media/imported/ca03c840de136a63bf8ebfbb457795ee72825568a458ff370db66a2b95830416.png
+    sourceName: selected-title.png
+    fit:
+      mode: contain
+  - elementId: f-layer-action
     elementType: text
     bounds:
-      - 354
-      - 470
-      - 560
-      - 36
+      - 552
+      - 263
+      - 360
+      - 142
     content:
-      {"text":"Twelve positions in one structure; these are not experimental replicates.","fontFamily":"Segoe UI","fontSize":13,"color":"#66756B","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: chain-a
-    elementType: text
-    bounds:
-      - 45
-      - 481
-      - 90
-      - 22
-    content:
-      {"text":"Chain A","fontFamily":"Segoe UI","fontSize":13,"color":"#356F68","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: chain-b
-    elementType: text
-    bounds:
-      - 153
-      - 481
-      - 90
-      - 22
-    content:
-      {"text":"Chain B","fontFamily":"Segoe UI","fontSize":13,"color":"#C48758","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: source
+      text: |-
+        Select the name.
+        Check the selected object.
+        Adjust its stacking order.
+      fontFamily: Segoe UI
+      fontSize: 22
+      color: "#112D32"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.4
+  - elementId: f-layer-rule
     elementType: text
     bounds:
       - 44
-      - 516
-      - 830
-      - 17
+      - 476
+      - 870
+      - 27
     content:
-      {"text":"Public structure: PDB 1BNA · Drew et al., PNAS (1981)","fontFamily":"Segoe UI","fontSize":10,"color":"#66756B","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: chart-unit
-    elementType: text
-    bounds:
-      - 355
-      - 139
-      - 400
-      - 24
-    content:
-      {"text":"C1′–C1′ (Å)","fontFamily":"Segoe UI","fontSize":14,"color":"#66756B","bold":false,"align":["left","top"],"lineHeight":1.3}
-notes: "This public scientific page is the working example for the demonstration. The 1BNA structure and the twelve paired C1′ distances come from the same coordinates. At position seven, A7–B18 measures 10.2329 Å, displayed as 10.233 Å. These are positions within one structure, not independent experimental replicates. We will refine the explanation while retaining the figure, all values, axes and citation. This is a concrete editing task a scientific presenter can inspect.\n\nSources: https://www.rcsb.org/structure/1BNA ; https://doi.org/10.1073/pnas.78.4.2179 . Source coordinates and method: sources/science/."
+      text: "Forward / Backward: one step  ·  To front / To back: the end of the stack"
+      fontFamily: Segoe UI
+      fontSize: 17
+      color: "#168C8C"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.2
+notes: "Open Layers when selecting an object on the canvas is difficult. Choose the object by its name; the same object becomes selected on the canvas. Use Forward or Backward for a single step, and To front or To back for the whole stack. Check what remains visible before saving. These are actual controls and the actual title object of the project map; the connector shows the selection relationship."

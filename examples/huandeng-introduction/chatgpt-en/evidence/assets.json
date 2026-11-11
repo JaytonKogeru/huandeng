@@ -1,655 +1,840 @@
 {
-  "schemaVersion": 3,
-  "project": "chatgpt-en",
-  "scope": "Current product introduction; historical media and versions are retained separately. UI capture bytes remain real Editor 0.18.0 UI, not simulated 0.19 feature evidence.",
-  "entries": [
+  "schemaVersion": 1,
+  "edition": "chatgpt-en",
+  "scope": "Images currently referenced by Main page objects; originals and historical unused assets are retained",
+  "currentEditorCaptures": "0.19.0",
+  "retainedEvidenceCaptures": "Selected public 0.18 focused-edit, saved-operation and stable-identity captures; source filenames identify these originals",
+  "imageCount": 32,
+  "imageUses": 39,
+  "elementTypes": {
+    "shape": 57,
+    "text": 163,
+    "image": 39,
+    "icon": 3,
+    "line": 14
+  },
+  "assets": [
     {
-      "path": "media/imported/0b4a19dfbcd31a26ee1008f81b6aec774bca6b3cda224eff3a5dee8fd2d9e046.png",
-      "sha256": "0b4a19dfbcd31a26ee1008f81b6aec774bca6b3cda224eff3a5dee8fd2d9e046",
-      "pixels": [
-        1920,
-        1080
+      "path": "media/imported/f220afa82ed13d0537cee2953c1cebdf77bfd049fece33a43f9759cf3581edd6.png",
+      "sourceNames": [
+        "workspace-wide.png"
       ],
-      "kind": "historical-evidence",
-      "sourceName": "evidence-after.png",
-      "reason": "Retains the actual earlier edit, saved version or its interface evidence.",
-      "currentUses": [
+      "sha256": "f220afa82ed13d0537cee2953c1cebdf77bfd049fece33a43f9759cf3581edd6",
+      "bytes": 622192,
+      "uses": [
         {
-          "pageId": "3f5561d8-477e-4954-bee2-9877c8cddc69",
-          "slideId": "ZN52",
-          "elementId": "after"
-        },
-        {
-          "pageId": "80c650ec-8f56-403d-8f44-d190a84ed4b4",
-          "slideId": "9N3S",
-          "elementId": "pinned-page"
-        }
-      ]
-    },
-    {
-      "path": "media/imported/0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13.png",
-      "sha256": "0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13",
-      "pixels": [
-        720,
-        720
-      ],
-      "kind": "shared-source",
-      "source": "../assets/brand/chatgpt.png",
-      "currentUses": [
-        {
-          "pageId": "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6",
-          "slideId": "YZ4T",
-          "elementId": "client-0"
-        }
-      ]
-    },
-    {
-      "path": "media/imported/16dba24060f059d665d4427635db27acdd0b6d4ee14ffbac4f5aea1cc7ee0c3b.png",
-      "sha256": "16dba24060f059d665d4427635db27acdd0b6d4ee14ffbac4f5aea1cc7ee0c3b",
-      "pixels": [
-        1920,
-        1080
-      ],
-      "kind": "current-page-preview",
-      "pageId": "7d7d42a0-0db7-4d33-9b3f-5e1035097b50",
-      "renderSourceIndex": 5,
-      "currentUses": [
-        {
-          "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7",
-          "slideId": "AAD6",
-          "elementId": "main-page-0"
-        },
-        {
-          "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7",
-          "slideId": "AAD6",
-          "elementId": "selected-page-0"
-        }
-      ]
-    },
-    {
-      "path": "media/imported/1b4af839b0215fcf8989c022103167aa25758bb481591f57459f6493b863c6df.png",
-      "sha256": "1b4af839b0215fcf8989c022103167aa25758bb481591f57459f6493b863c6df",
-      "pixels": [
-        621,
-        330
-      ],
-      "kind": "current-ui-capture",
-      "captureName": "operation-detail.png",
-      "editorVersion": "0.18.0",
-      "locale": "en",
-      "deviceScaleFactor": 3,
-      "publicContentOnly": true,
-      "currentUses": [
-        {
-          "pageId": "6a3aec16-2347-40fe-856d-df36c1f58509",
-          "slideId": "2ZQ3",
-          "elementId": "saved-operations"
-        }
-      ]
-    },
-    {
-      "path": "media/imported/2a2f5cbcc74c7fa83c40127dd8b0e42c23f1157131aebe28492aa1ac27bbdc6d.png",
-      "sha256": "2a2f5cbcc74c7fa83c40127dd8b0e42c23f1157131aebe28492aa1ac27bbdc6d",
-      "pixels": [
-        294,
-        288
-      ],
-      "kind": "shared-source",
-      "source": "../assets/brand/github-repository.png",
-      "currentUses": [
-        {
-          "pageId": "bbcdc92a-915c-4988-a4d5-76e466d0424f",
-          "slideId": "5HW8",
-          "elementId": "credit-mark-1"
-        }
-      ]
-    },
-    {
-      "path": "media/imported/2ce1c57dd3b312417106a487815ab1235bddce17e1fa9b32a2f048bd71ee25d3.png",
-      "sha256": "2ce1c57dd3b312417106a487815ab1235bddce17e1fa9b32a2f048bd71ee25d3",
-      "pixels": [
-        385,
-        385
-      ],
-      "kind": "shared-source",
-      "source": "../assets/brand/codex.png",
-      "currentUses": [
-        {
-          "pageId": "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6",
-          "slideId": "YZ4T",
-          "elementId": "client-1"
-        }
-      ]
-    },
-    {
-      "path": "media/imported/3141de6201ac50bc936475a058db4be21189dc88121aafe007f80b72ec5e7ef6.png",
-      "sha256": "3141de6201ac50bc936475a058db4be21189dc88121aafe007f80b72ec5e7ef6",
-      "pixels": [
-        1920,
-        1080
-      ],
-      "kind": "historical-evidence",
-      "sourceName": "evidence-before.png",
-      "reason": "Retains the actual earlier edit, saved version or its interface evidence.",
-      "currentUses": [
-        {
-          "pageId": "3f5561d8-477e-4954-bee2-9877c8cddc69",
-          "slideId": "ZN52",
-          "elementId": "before"
-        }
-      ]
-    },
-    {
-      "path": "media/imported/342088ed88ab8fffc8ce2651cd6fbf183244f5069c7907702a957eb9cf9fa18a.png",
-      "sha256": "342088ed88ab8fffc8ce2651cd6fbf183244f5069c7907702a957eb9cf9fa18a",
-      "pixels": [
-        1812,
-        1812
-      ],
-      "kind": "shared-source",
-      "source": "../assets/science/dna-duplex-end.png",
-      "currentUses": [
-        {
-          "pageId": "95189956-cdd7-4ad9-88c8-cf28a204bb68",
-          "slideId": "35U5",
-          "elementId": "asset-end"
-        }
-      ]
-    },
-    {
-      "path": "media/imported/40926da8c8366e79c1da02d2c7e8014a0f1c42490c012400764ce96f70e7c41e.png",
-      "sha256": "40926da8c8366e79c1da02d2c7e8014a0f1c42490c012400764ce96f70e7c41e",
-      "pixels": [
-        1920,
-        1080
-      ],
-      "kind": "current-page-preview",
-      "pageId": "95189956-cdd7-4ad9-88c8-cf28a204bb68",
-      "renderSourceIndex": 6,
-      "currentUses": [
-        {
-          "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7",
-          "slideId": "AAD6",
-          "elementId": "main-page-1"
-        },
-        {
-          "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7",
-          "slideId": "AAD6",
-          "elementId": "selected-page-1"
-        }
-      ]
-    },
-    {
-      "path": "media/imported/44e2a2aa5f3887deae386fa73f71234961f93e006873b632ccf38b6b6f1291a1.png",
-      "sha256": "44e2a2aa5f3887deae386fa73f71234961f93e006873b632ccf38b6b6f1291a1",
-      "pixels": [
-        512,
-        512
-      ],
-      "kind": "shared-source",
-      "source": "../assets/brand/open-slide.png",
-      "currentUses": [
-        {
-          "pageId": "bbcdc92a-915c-4988-a4d5-76e466d0424f",
-          "slideId": "5HW8",
-          "elementId": "credit-mark-0"
-        }
-      ]
-    },
-    {
-      "path": "media/imported/50273f1fa204b2f0ae10463c91dd9d8ffcea87c80d861da37c0db9755d091017.png",
-      "sha256": "50273f1fa204b2f0ae10463c91dd9d8ffcea87c80d861da37c0db9755d091017",
-      "pixels": [
-        1572,
-        1572
-      ],
-      "kind": "shared-source",
-      "source": "../assets/science/dna-duplex-position7.png",
-      "currentUses": [
-        {
-          "pageId": "95189956-cdd7-4ad9-88c8-cf28a204bb68",
-          "slideId": "35U5",
-          "elementId": "asset-side"
-        },
-        {
-          "pageId": "c4b12919-5876-4acb-b63f-6a7493b54b37",
-          "slideId": "ZWZJ",
-          "elementId": "structure"
-        },
-        {
-          "pageId": "ca1eec7e-61bd-41ac-b6ab-e000d06797be",
-          "slideId": "XF8A",
-          "elementId": "measure-view"
-        }
-      ]
-    },
-    {
-      "path": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
-      "sha256": "6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef",
-      "pixels": [
-        512,
-        512
-      ],
-      "kind": "shared-source",
-      "source": "../assets/brand/huandeng.png",
-      "currentUses": [
-        {
+          "position": 1,
           "pageId": "90353b2a-6f7b-4ee5-8a8b-10bceb538190",
-          "slideId": "9DAA",
-          "elementId": "product-mark"
-        },
+          "elementId": "f-hero",
+          "bounds": [
+            44,
+            147,
+            872,
+            341
+          ],
+          "crop": null
+        }
+      ]
+    },
+    {
+      "path": "media/imported/ca03c840de136a63bf8ebfbb457795ee72825568a458ff370db66a2b95830416.png",
+      "sourceNames": [
+        "selected-title.png"
+      ],
+      "sha256": "ca03c840de136a63bf8ebfbb457795ee72825568a458ff370db66a2b95830416",
+      "bytes": 26494,
+      "uses": [
         {
+          "position": 2,
           "pageId": "4ec264b7-018d-449c-8c8b-d9aede33a840",
-          "slideId": "2XM9",
-          "elementId": "brand-small"
+          "elementId": "f-selected",
+          "bounds": [
+            44,
+            253,
+            870,
+            66
+          ],
+          "crop": null
         },
         {
-          "pageId": "1ba18ad8-0701-4de6-83f5-555b949293d7",
-          "slideId": "GX5Z",
-          "elementId": "brand-small"
+          "position": 4,
+          "pageId": "6b9fbac0-772c-435c-bce1-9cad0004af65",
+          "elementId": "f-title-selected",
+          "bounds": [
+            358,
+            163,
+            552,
+            42
+          ],
+          "crop": null
         },
         {
-          "pageId": "1ba18ad8-0701-4de6-83f5-555b949293d7",
-          "slideId": "GX5Z",
-          "elementId": "identity"
-        },
-        {
-          "pageId": "7d7d42a0-0db7-4d33-9b3f-5e1035097b50",
-          "slideId": "FKA9",
-          "elementId": "brand-small"
-        },
-        {
-          "pageId": "4a066483-9a11-450c-be15-c0be33d52989",
-          "slideId": "U8ZQ",
-          "elementId": "brand-small"
-        },
-        {
+          "position": 7,
           "pageId": "95189956-cdd7-4ad9-88c8-cf28a204bb68",
-          "slideId": "35U5",
-          "elementId": "brand-small"
+          "elementId": "f-text-selection",
+          "bounds": [
+            44,
+            138,
+            869,
+            66
+          ],
+          "crop": null
         },
         {
+          "position": 8,
+          "pageId": "c4b12919-5876-4acb-b63f-6a7493b54b37",
+          "elementId": "f-layer-result",
+          "bounds": [
+            552,
+            195,
+            360,
+            28
+          ],
+          "crop": null
+        }
+      ]
+    },
+    {
+      "path": "media/imported/1f84752144b6ccca6d2546748b38a94463b43b87b0f90ce10d0493f843e9d737.png",
+      "sourceNames": [
+        "page-tile.png"
+      ],
+      "sha256": "1f84752144b6ccca6d2546748b38a94463b43b87b0f90ce10d0493f843e9d737",
+      "bytes": 41298,
+      "uses": [
+        {
+          "position": 4,
+          "pageId": "6b9fbac0-772c-435c-bce1-9cad0004af65",
+          "elementId": "f-tile",
+          "bounds": [
+            44,
+            146,
+            263,
+            176
+          ],
+          "crop": null
+        },
+        {
+          "position": 24,
+          "pageId": "8f9e154d-c5c2-4d79-b809-984586f8311e",
+          "elementId": "f-first-page",
+          "bounds": [
+            44,
+            218,
+            345,
+            231
+          ],
+          "crop": null
+        }
+      ]
+    },
+    {
+      "path": "media/imported/fcba1f68de2d9e9b9d0898dc5af072891c683442d4d19581ed7ec8924dfd20a5.png",
+      "sourceNames": [
+        "properties.png"
+      ],
+      "sha256": "fcba1f68de2d9e9b9d0898dc5af072891c683442d4d19581ed7ec8924dfd20a5",
+      "bytes": 124335,
+      "uses": [
+        {
+          "position": 4,
+          "pageId": "6b9fbac0-772c-435c-bce1-9cad0004af65",
+          "elementId": "f-selected-inspector",
+          "bounds": [
+            608.3076923076923,
+            278,
+            295.3846153846155,
+            128
+          ],
+          "crop": {
+            "bottom": 0.8
+          }
+        }
+      ]
+    },
+    {
+      "path": "media/imported/c390a1dd2ae27ca035634042e2339fb6efb0aa04f2ae5ba89df36794c832041f.png",
+      "sourceNames": [
+        "story.png"
+      ],
+      "sha256": "c390a1dd2ae27ca035634042e2339fb6efb0aa04f2ae5ba89df36794c832041f",
+      "bytes": 91888,
+      "uses": [
+        {
+          "position": 5,
+          "pageId": "7d7d42a0-0db7-4d33-9b3f-5e1035097b50",
+          "elementId": "f-story-shot",
+          "bounds": [
+            71.82065997130562,
+            137,
+            375.35868005738877,
+            350
+          ],
+          "crop": {
+            "bottom": 0.18
+          }
+        }
+      ]
+    },
+    {
+      "path": "media/imported/f01fe9cecf65d49281e34248637c0b749da3e4e4e5d65c145c9a6b66ece5e84d.png",
+      "sourceNames": [
+        "assets.png"
+      ],
+      "sha256": "f01fe9cecf65d49281e34248637c0b749da3e4e4e5d65c145c9a6b66ece5e84d",
+      "bytes": 82796,
+      "uses": [
+        {
+          "position": 6,
+          "pageId": "4a066483-9a11-450c-be15-c0be33d52989",
+          "elementId": "f-assets-search",
+          "bounds": [
+            44,
+            175.14634146341461,
+            441,
+            239.70731707317074
+          ],
+          "crop": {
+            "bottom": 0.76
+          }
+        },
+        {
+          "position": 6,
+          "pageId": "4a066483-9a11-450c-be15-c0be33d52989",
+          "elementId": "f-asset-result",
+          "bounds": [
+            614,
+            165.83004836444954,
+            256,
+            216.33990327110092
+          ],
+          "crop": {
+            "top": 0.32,
+            "bottom": 0.43,
+            "right": 0.33
+          }
+        }
+      ]
+    },
+    {
+      "path": "media/imported/c1b966a30db8159507389a11a98a532ce2ef1163e30f9f1fa5a35af3c7de0e48.png",
+      "sourceNames": [
+        "text-content.png"
+      ],
+      "sha256": "c1b966a30db8159507389a11a98a532ce2ef1163e30f9f1fa5a35af3c7de0e48",
+      "bytes": 16671,
+      "uses": [
+        {
+          "position": 7,
+          "pageId": "95189956-cdd7-4ad9-88c8-cf28a204bb68",
+          "elementId": "f-text-properties",
+          "bounds": [
+            44,
+            249,
+            437,
+            210
+          ],
+          "crop": null
+        }
+      ]
+    },
+    {
+      "path": "media/imported/2802e7699a519e7c9dd8dc9bd8edee7ce07c9c7c53808a59c9cf5e80e9a44a2e.png",
+      "sourceNames": [
+        "save-page.png"
+      ],
+      "sha256": "2802e7699a519e7c9dd8dc9bd8edee7ce07c9c7c53808a59c9cf5e80e9a44a2e",
+      "bytes": 6229,
+      "uses": [
+        {
+          "position": 7,
+          "pageId": "95189956-cdd7-4ad9-88c8-cf28a204bb68",
+          "elementId": "f-save-control",
+          "bounds": [
+            531,
+            434,
+            156,
+            42
+          ],
+          "crop": null
+        }
+      ]
+    },
+    {
+      "path": "media/imported/39ff3c031ae70dfb09bd9bf649bed4bb537e5e070ebee51510fd080f9793e032.png",
+      "sourceNames": [
+        "layers.png"
+      ],
+      "sha256": "39ff3c031ae70dfb09bd9bf649bed4bb537e5e070ebee51510fd080f9793e032",
+      "bytes": 125265,
+      "uses": [
+        {
+          "position": 8,
+          "pageId": "c4b12919-5876-4acb-b63f-6a7493b54b37",
+          "elementId": "f-layer-controls",
+          "bounds": [
+            44,
+            165.44299999999998,
+            418,
+            114.114
+          ],
+          "crop": {
+            "top": 0.14,
+            "bottom": 0.73
+          }
+        }
+      ]
+    },
+    {
+      "path": "media/imported/d33b47a23f24ca7fcd4fba45676e53bdd3d5ef40b18ab1ae7a758b25ac5fe0b5.png",
+      "sourceNames": [
+        "layer-title.png"
+      ],
+      "sha256": "d33b47a23f24ca7fcd4fba45676e53bdd3d5ef40b18ab1ae7a758b25ac5fe0b5",
+      "bytes": 11139,
+      "uses": [
+        {
+          "position": 8,
+          "pageId": "c4b12919-5876-4acb-b63f-6a7493b54b37",
+          "elementId": "f-layer-row",
+          "bounds": [
+            44,
+            344,
+            418,
+            50
+          ],
+          "crop": null
+        }
+      ]
+    },
+    {
+      "path": "media/imported/65fb18be9fabeffebdb25baa3be9de52eacc4f2a811591962df37d44a0d9a761.png",
+      "sourceNames": [
+        "en-edit-before-4x.png"
+      ],
+      "sha256": "65fb18be9fabeffebdb25baa3be9de52eacc4f2a811591962df37d44a0d9a761",
+      "bytes": 129868,
+      "uses": [
+        {
+          "position": 9,
           "pageId": "ca1eec7e-61bd-41ac-b6ab-e000d06797be",
-          "slideId": "XF8A",
-          "elementId": "brand-small"
-        },
+          "elementId": "f-before",
+          "bounds": [
+            155,
+            134.2771890862944,
+            759,
+            141.44562182741114
+          ],
+          "crop": {
+            "bottom": 0.67
+          }
+        }
+      ]
+    },
+    {
+      "path": "media/imported/eff7df59ca30395ee85337cd02f9183e4a88843dc8ca7005778705ae82d4e950.png",
+      "sourceNames": [
+        "en-edit-after-4x.png"
+      ],
+      "sha256": "eff7df59ca30395ee85337cd02f9183e4a88843dc8ca7005778705ae82d4e950",
+      "bytes": 115188,
+      "uses": [
         {
+          "position": 9,
+          "pageId": "ca1eec7e-61bd-41ac-b6ab-e000d06797be",
+          "elementId": "f-after",
+          "bounds": [
+            155,
+            308.2771890862944,
+            759,
+            141.44562182741114
+          ],
+          "crop": {
+            "bottom": 0.67
+          }
+        }
+      ]
+    },
+    {
+      "path": "media/imported/0148822d0496ea8ff3653d88ab2c63fd4301d97b660c3ae4dea40798a3dc0bea.png",
+      "sourceNames": [
+        "en-operation-changes-4x.png"
+      ],
+      "sha256": "0148822d0496ea8ff3653d88ab2c63fd4301d97b660c3ae4dea40798a3dc0bea",
+      "bytes": 41519,
+      "uses": [
+        {
+          "position": 10,
           "pageId": "3f5561d8-477e-4954-bee2-9877c8cddc69",
-          "slideId": "ZN52",
-          "elementId": "brand-small"
-        },
+          "elementId": "f-operation-details",
+          "bounds": [
+            44,
+            143,
+            566,
+            338
+          ],
+          "crop": null
+        }
+      ]
+    },
+    {
+      "path": "media/imported/4b4475913c7e4538c9b76f47056e1edca6405a8636d7fd7c591309a373101e19.png",
+      "sourceNames": [
+        "en-identity-before-4x.png"
+      ],
+      "sha256": "4b4475913c7e4538c9b76f47056e1edca6405a8636d7fd7c591309a373101e19",
+      "bytes": 11726,
+      "uses": [
         {
+          "position": 11,
           "pageId": "dc5bfe5f-326a-4b28-8536-56e51ea4397e",
-          "slideId": "DHVW",
-          "elementId": "brand-small"
-        },
+          "elementId": "f-position-before",
+          "bounds": [
+            44,
+            177,
+            870,
+            109
+          ],
+          "crop": null
+        }
+      ]
+    },
+    {
+      "path": "media/imported/cfb23a312f298e185eb847eddb1cdf9cc493d63d55082cab0cc70606789af5f5.png",
+      "sourceNames": [
+        "en-identity-after-4x.png"
+      ],
+      "sha256": "cfb23a312f298e185eb847eddb1cdf9cc493d63d55082cab0cc70606789af5f5",
+      "bytes": 11294,
+      "uses": [
         {
+          "position": 11,
+          "pageId": "dc5bfe5f-326a-4b28-8536-56e51ea4397e",
+          "elementId": "f-position-after",
+          "bounds": [
+            44,
+            356,
+            870,
+            109
+          ],
+          "crop": null
+        }
+      ]
+    },
+    {
+      "path": "media/imported/d5b46f6fc83b1a69373a5efed769e6445bc6642311177818d14ee46bf90256d5.png",
+      "sourceNames": [
+        "history-current.png"
+      ],
+      "sha256": "d5b46f6fc83b1a69373a5efed769e6445bc6642311177818d14ee46bf90256d5",
+      "bytes": 319956,
+      "uses": [
+        {
+          "position": 12,
           "pageId": "6a3aec16-2347-40fe-856d-df36c1f58509",
-          "slideId": "2ZQ3",
-          "elementId": "brand-small"
-        },
+          "elementId": "f-history-overview",
+          "bounds": [
+            44,
+            145,
+            521,
+            238
+          ],
+          "crop": null
+        }
+      ]
+    },
+    {
+      "path": "media/imported/147f9f8e677ef6e2d11376cec4e295fb6cbefb2d0f408be1869b5456cef5d770.png",
+      "sourceNames": [
+        "named-version.png"
+      ],
+      "sha256": "147f9f8e677ef6e2d11376cec4e295fb6cbefb2d0f408be1869b5456cef5d770",
+      "bytes": 21488,
+      "uses": [
         {
+          "position": 12,
+          "pageId": "6a3aec16-2347-40fe-856d-df36c1f58509",
+          "elementId": "f-version-detail",
+          "bounds": [
+            613,
+            178,
+            301,
+            160
+          ],
+          "crop": null
+        }
+      ]
+    },
+    {
+      "path": "media/imported/30f68243c06ea41a7c2c31c06bde71d1e8f92cc8a6d4301597c41fbabb00f151.png",
+      "sourceNames": [
+        "browse-current.png"
+      ],
+      "sha256": "30f68243c06ea41a7c2c31c06bde71d1e8f92cc8a6d4301597c41fbabb00f151",
+      "bytes": 1058472,
+      "uses": [
+        {
+          "position": 13,
+          "pageId": "d497fb11-7906-414e-a529-0d97680bce51",
+          "elementId": "f-browse",
+          "bounds": [
+            126.92000000000007,
+            138,
+            704.1599999999999,
+            324
+          ],
+          "crop": {
+            "left": 0.185,
+            "top": 0.25,
+            "bottom": 0.15
+          }
+        }
+      ]
+    },
+    {
+      "path": "media/imported/1bb02bdf47ffbed5ec1c8cdf673115a6e9f5b22986ef2d41298b9139dfec68b9.png",
+      "sourceNames": [
+        "outline-current.png"
+      ],
+      "sha256": "1bb02bdf47ffbed5ec1c8cdf673115a6e9f5b22986ef2d41298b9139dfec68b9",
+      "bytes": 834951,
+      "uses": [
+        {
+          "position": 14,
           "pageId": "62d5734d-2fe5-441c-a50a-abaa95145b56",
-          "slideId": "9QQW",
-          "elementId": "brand-small"
-        },
+          "elementId": "f-outline-row",
+          "bounds": [
+            44.62068965517233,
+            181,
+            868.7586206896553,
+            221
+          ],
+          "crop": {
+            "left": 0.3125,
+            "right": 0.33125,
+            "top": 0.63,
+            "bottom": 0.225
+          }
+        }
+      ]
+    },
+    {
+      "path": "media/imported/b44629efe77e165d24c78442c4abd10caabe89cd0a70a9da9b68f520f84de3d9.png",
+      "sourceNames": [
+        "section-first-slide.png"
+      ],
+      "sha256": "b44629efe77e165d24c78442c4abd10caabe89cd0a70a9da9b68f520f84de3d9",
+      "bytes": 18069,
+      "uses": [
         {
+          "position": 15,
           "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7",
-          "slideId": "AAD6",
-          "elementId": "brand-small"
-        },
+          "elementId": "f-section-control",
+          "bounds": [
+            44,
+            145,
+            870,
+            74
+          ],
+          "crop": null
+        }
+      ]
+    },
+    {
+      "path": "media/imported/2134694ac1056c1685101e89dcf6f445904eadd6baceaba403246b47681f62d1.png",
+      "sourceNames": [
+        "section-range.png"
+      ],
+      "sha256": "2134694ac1056c1685101e89dcf6f445904eadd6baceaba403246b47681f62d1",
+      "bytes": 7510,
+      "uses": [
         {
+          "position": 15,
+          "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7",
+          "elementId": "f-section-range",
+          "bounds": [
+            44,
+            242,
+            870,
+            26
+          ],
+          "crop": null
+        }
+      ]
+    },
+    {
+      "path": "media/imported/7ed6b91ffce0af3fcc38532084bc96b1d90e5d7bb963ce92473079bdaf511cbe.png",
+      "sourceNames": [
+        "04.png"
+      ],
+      "sha256": "7ed6b91ffce0af3fcc38532084bc96b1d90e5d7bb963ce92473079bdaf511cbe",
+      "bytes": 159267,
+      "uses": [
+        {
+          "position": 15,
+          "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7",
+          "elementId": "f-section-start",
+          "bounds": [
+            44,
+            348,
+            238,
+            134
+          ],
+          "crop": null
+        }
+      ]
+    },
+    {
+      "path": "media/imported/46f8a5a856073ac82f7ac49354761c40f3a5ba9edbdb498f12b9c0f94db0845d.png",
+      "sourceNames": [
+        "09.png"
+      ],
+      "sha256": "46f8a5a856073ac82f7ac49354761c40f3a5ba9edbdb498f12b9c0f94db0845d",
+      "bytes": 112561,
+      "uses": [
+        {
+          "position": 15,
+          "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7",
+          "elementId": "f-section-next",
+          "bounds": [
+            676,
+            348,
+            238,
+            134
+          ],
+          "crop": null
+        }
+      ]
+    },
+    {
+      "path": "media/imported/1b8439f5934c95907ad3f66d9c4a14b6eb00d4497f3b68fb95d401a82294d3a5.png",
+      "sourceNames": [
+        "arrange.png"
+      ],
+      "sha256": "1b8439f5934c95907ad3f66d9c4a14b6eb00d4497f3b68fb95d401a82294d3a5",
+      "bytes": 125008,
+      "uses": [
+        {
+          "position": 16,
           "pageId": "095ba6fb-14f6-42b1-815a-7970ac214058",
-          "slideId": "74A2",
-          "elementId": "brand-small"
-        },
+          "elementId": "f-arrange",
+          "bounds": [
+            55.400717703349244,
+            162,
+            374.1985645933015,
+            327
+          ],
+          "crop": {
+            "bottom": 0.34
+          }
+        }
+      ]
+    },
+    {
+      "path": "media/imported/d614bf96e157bdf4db31d0bf68c977bbde5a3bc3f6eac5e84d770b676b450de9.png",
+      "sourceNames": [
+        "source-picker.png"
+      ],
+      "sha256": "d614bf96e157bdf4db31d0bf68c977bbde5a3bc3f6eac5e84d770b676b450de9",
+      "bytes": 90293,
+      "uses": [
         {
+          "position": 16,
+          "pageId": "095ba6fb-14f6-42b1-815a-7970ac214058",
+          "elementId": "f-picker",
+          "bounds": [
+            550,
+            162,
+            364,
+            327
+          ],
+          "crop": null
+        }
+      ]
+    },
+    {
+      "path": "media/imported/12af5f4077a1120516f093a91057416c35643941d1f88de158dbd54e17c6ac89.png",
+      "sourceNames": [
+        "live.png"
+      ],
+      "sha256": "12af5f4077a1120516f093a91057416c35643941d1f88de158dbd54e17c6ac89",
+      "bytes": 135744,
+      "uses": [
+        {
+          "position": 17,
           "pageId": "80c650ec-8f56-403d-8f44-d190a84ed4b4",
-          "slideId": "9N3S",
-          "elementId": "brand-small"
+          "elementId": "f-talk-notes",
+          "bounds": [
+            44,
+            148.4174524714829,
+            501,
+            334.1650950570342
+          ],
+          "crop": {
+            "top": 0.51
+          }
         },
         {
+          "position": 18,
           "pageId": "8050a155-9c2b-4cf5-b643-e9406b9b2b1c",
-          "slideId": "BHPP",
-          "elementId": "brand-small"
+          "elementId": "f-live-control",
+          "bounds": [
+            44,
+            195.40859315589356,
+            408,
+            122.1828136882129
+          ],
+          "crop": {
+            "top": 0.23,
+            "bottom": 0.55
+          }
+        }
+      ]
+    },
+    {
+      "path": "media/imported/7280597791c015409536e6b36391648a85bc8b14d59b7f058e402af1e586e80a.png",
+      "sourceNames": [
+        "pin.png"
+      ],
+      "sha256": "7280597791c015409536e6b36391648a85bc8b14d59b7f058e402af1e586e80a",
+      "bytes": 73026,
+      "uses": [
+        {
+          "position": 18,
+          "pageId": "8050a155-9c2b-4cf5-b643-e9406b9b2b1c",
+          "elementId": "f-pin-control",
+          "bounds": [
+            506,
+            193.36083650190113,
+            408,
+            126.2783269961977
+          ],
+          "crop": {
+            "top": 0.37,
+            "bottom": 0.26
+          }
+        }
+      ]
+    },
+    {
+      "path": "media/imported/9470a5f452b1bcb9d3c66b908ae85557fa40b5a717f24b464621d436494c5811.png",
+      "sourceNames": [
+        "present-talk.png"
+      ],
+      "sha256": "9470a5f452b1bcb9d3c66b908ae85557fa40b5a717f24b464621d436494c5811",
+      "bytes": 13132,
+      "uses": [
+        {
+          "position": 19,
+          "pageId": "4a398dd0-ad74-4a36-b65e-6068ffe817a8",
+          "elementId": "f-present-menu",
+          "bounds": [
+            44,
+            182,
+            441,
+            165
+          ],
+          "crop": null
+        }
+      ]
+    },
+    {
+      "path": "media/imported/608d43256094f2d6832cc74f15b988a3c0627ee4f68e14d344358f07aeeab518.png",
+      "sourceNames": [
+        "05.png"
+      ],
+      "sha256": "608d43256094f2d6832cc74f15b988a3c0627ee4f68e14d344358f07aeeab518",
+      "bytes": 192266,
+      "uses": [
+        {
+          "position": 19,
+          "pageId": "4a398dd0-ad74-4a36-b65e-6068ffe817a8",
+          "elementId": "f-present-page",
+          "bounds": [
+            559,
+            163,
+            355,
+            200
+          ],
+          "crop": null
         },
         {
-          "pageId": "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6",
-          "slideId": "YZ4T",
-          "elementId": "brand-small"
-        },
-        {
-          "pageId": "e0b400eb-ddc1-4c42-af48-d420785b1d8f",
-          "slideId": "KW5P",
-          "elementId": "brand-small"
-        },
-        {
-          "pageId": "e4fb0f10-ffa5-44e2-907f-b92e1b69535e",
-          "slideId": "DDJN",
-          "elementId": "brand-small"
-        },
-        {
+          "position": 23,
           "pageId": "bbcdc92a-915c-4988-a4d5-76e466d0424f",
-          "slideId": "5HW8",
-          "elementId": "brand-small"
-        },
-        {
-          "pageId": "8f9e154d-c5c2-4d79-b809-984586f8311e",
-          "slideId": "ECVR",
-          "elementId": "brand-small"
-        },
-        {
-          "pageId": "8f9e154d-c5c2-4d79-b809-984586f8311e",
-          "slideId": "ECVR",
-          "elementId": "closing-mark"
+          "elementId": "f-work-page-two",
+          "bounds": [
+            516,
+            181,
+            398,
+            224
+          ],
+          "crop": null
         }
       ]
     },
     {
-      "path": "media/imported/733f24f4c52acb15eb0fbded1cf40eb42b4ba8e62b882acac70b6234b50919a8.png",
-      "sha256": "733f24f4c52acb15eb0fbded1cf40eb42b4ba8e62b882acac70b6234b50919a8",
-      "pixels": [
-        192,
-        192
+      "path": "media/imported/e5357f27a6e0fb880374db8d22b2391e852c2cfef5eb0d169ebc382da020dfdf.png",
+      "sourceNames": [
+        "export-talk.png"
       ],
-      "kind": "shared-source",
-      "source": "../assets/brand/claude-code.png",
-      "currentUses": [
+      "sha256": "e5357f27a6e0fb880374db8d22b2391e852c2cfef5eb0d169ebc382da020dfdf",
+      "bytes": 81782,
+      "uses": [
         {
+          "position": 20,
           "pageId": "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6",
-          "slideId": "YZ4T",
-          "elementId": "client-2"
+          "elementId": "f-export",
+          "bounds": [
+            44,
+            132,
+            870,
+            346
+          ],
+          "crop": null
         }
       ]
     },
     {
-      "path": "media/imported/798be6b3c276d794b866e4b4c98470cd15628d4a5d372bdac62478d0fa992771.png",
-      "sha256": "798be6b3c276d794b866e4b4c98470cd15628d4a5d372bdac62478d0fa992771",
-      "pixels": [
-        1170,
-        585
+      "path": "media/imported/2cfabeba4179716fc245e0eb39a8e32c2fedb3d873c70e64dbc735cded1c30f3.png",
+      "sourceNames": [
+        "assistant-choice-complete.png"
       ],
-      "kind": "current-ui-capture",
-      "captureName": "sections-detail.png",
-      "editorVersion": "0.18.0",
-      "locale": "en",
-      "deviceScaleFactor": 3,
-      "publicContentOnly": true,
-      "currentUses": [
+      "sha256": "2cfabeba4179716fc245e0eb39a8e32c2fedb3d873c70e64dbc735cded1c30f3",
+      "bytes": 29812,
+      "uses": [
         {
-          "pageId": "62d5734d-2fe5-441c-a50a-abaa95145b56",
-          "slideId": "9QQW",
-          "elementId": "view-sections"
+          "position": 22,
+          "pageId": "e4fb0f10-ffa5-44e2-907f-b92e1b69535e",
+          "elementId": "f-assistant-choice",
+          "bounds": [
+            44,
+            137,
+            870,
+            168.30357142857142
+          ],
+          "crop": null
         }
       ]
     },
     {
-      "path": "media/imported/7def8d67182fd6dae30b5c939f222bbbfa39299583bdfd8103229d924cf2f54b.png",
-      "sha256": "7def8d67182fd6dae30b5c939f222bbbfa39299583bdfd8103229d924cf2f54b",
-      "pixels": [
-        4800,
-        2880
+      "path": "media/imported/f3a32e5704d32f592bcb1967a0473ac5597e2feb48ee50b7a5485ac799197279.png",
+      "sourceNames": [
+        "03.png"
       ],
-      "kind": "current-ui-capture",
-      "captureName": "editor-native-chart.png",
-      "editorVersion": "0.18.0",
-      "locale": "en",
-      "deviceScaleFactor": 3,
-      "publicContentOnly": true,
-      "currentUses": [
+      "sha256": "f3a32e5704d32f592bcb1967a0473ac5597e2feb48ee50b7a5485ac799197279",
+      "bytes": 101996,
+      "uses": [
         {
-          "pageId": "90353b2a-6f7b-4ee5-8a8b-10bceb538190",
-          "slideId": "9DAA",
-          "elementId": "editor-cover"
-        },
-        {
-          "pageId": "1ba18ad8-0701-4de6-83f5-555b949293d7",
-          "slideId": "GX5Z",
-          "elementId": "editor-definition"
-        },
-        {
-          "pageId": "7d7d42a0-0db7-4d33-9b3f-5e1035097b50",
-          "slideId": "FKA9",
-          "elementId": "workspace"
-        }
-      ]
-    },
-    {
-      "path": "media/imported/91315947e96e846550cc7b331e928f06d76426e23afd63decff60ca1dec94f27.png",
-      "sha256": "91315947e96e846550cc7b331e928f06d76426e23afd63decff60ca1dec94f27",
-      "pixels": [
-        645,
-        756
-      ],
-      "kind": "historical-evidence",
-      "sourceName": "versions-detail.png",
-      "reason": "Retains the actual earlier edit, saved version or its interface evidence.",
-      "currentUses": [
-        {
-          "pageId": "6a3aec16-2347-40fe-856d-df36c1f58509",
-          "slideId": "2ZQ3",
-          "elementId": "named-versions"
-        }
-      ]
-    },
-    {
-      "path": "media/imported/c6c18f35d5a85ae5dd2fd3130880776950dd5530bfcb788c460cf38574892ef2.png",
-      "sha256": "c6c18f35d5a85ae5dd2fd3130880776950dd5530bfcb788c460cf38574892ef2",
-      "pixels": [
-        861,
-        1605
-      ],
-      "kind": "current-ui-capture",
-      "captureName": "assets.png",
-      "editorVersion": "0.18.0",
-      "locale": "en",
-      "deviceScaleFactor": 3,
-      "publicContentOnly": true,
-      "currentUses": [
-        {
-          "pageId": "95189956-cdd7-4ad9-88c8-cf28a204bb68",
-          "slideId": "35U5",
-          "elementId": "asset-library"
-        }
-      ]
-    },
-    {
-      "path": "media/imported/d2eca7401ca2c38e77127c06524ac9af18ff07d24ca34fc36ef79a056efe0cf7.png",
-      "sha256": "d2eca7401ca2c38e77127c06524ac9af18ff07d24ca34fc36ef79a056efe0cf7",
-      "pixels": [
-        1170,
-        267
-      ],
-      "kind": "current-ui-capture",
-      "captureName": "outline-detail.png",
-      "editorVersion": "0.18.0",
-      "locale": "en",
-      "deviceScaleFactor": 3,
-      "publicContentOnly": true,
-      "currentUses": [
-        {
-          "pageId": "62d5734d-2fe5-441c-a50a-abaa95145b56",
-          "slideId": "9QQW",
-          "elementId": "view-outline"
-        }
-      ]
-    },
-    {
-      "path": "media/imported/d697acf6f3c5bc265806bc8f6c4e6d58b964e0b2962392d0329a420639f45846.png",
-      "sha256": "d697acf6f3c5bc265806bc8f6c4e6d58b964e0b2962392d0329a420639f45846",
-      "pixels": [
-        480,
-        349
-      ],
-      "kind": "shared-source",
-      "source": "../assets/brand/pptxgenjs.png",
-      "currentUses": [
-        {
+          "position": 23,
           "pageId": "bbcdc92a-915c-4988-a4d5-76e466d0424f",
-          "slideId": "5HW8",
-          "elementId": "credit-mark-2"
-        }
-      ]
-    },
-    {
-      "path": "media/imported/d7f8feba5f9ff8f5b719f4055b01d5473155c1eb3efcfb5d3b2c67dcd5f58dbe.png",
-      "sha256": "d7f8feba5f9ff8f5b719f4055b01d5473155c1eb3efcfb5d3b2c67dcd5f58dbe",
-      "pixels": [
-        1920,
-        1080
-      ],
-      "kind": "current-page-preview",
-      "pageId": "c4b12919-5876-4acb-b63f-6a7493b54b37",
-      "renderSourceIndex": 1,
-      "currentUses": [
-        {
-          "pageId": "dc5bfe5f-326a-4b28-8536-56e51ea4397e",
-          "slideId": "DHVW",
-          "elementId": "identified-page"
-        },
-        {
-          "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7",
-          "slideId": "AAD6",
-          "elementId": "main-page-2"
-        },
-        {
-          "pageId": "095ba6fb-14f6-42b1-815a-7970ac214058",
-          "slideId": "74A2",
-          "elementId": "notes-science-preview"
-        },
-        {
-          "pageId": "80c650ec-8f56-403d-8f44-d190a84ed4b4",
-          "slideId": "9N3S",
-          "elementId": "live-page"
-        },
-        {
-          "pageId": "e0b400eb-ddc1-4c42-af48-d420785b1d8f",
-          "slideId": "KW5P",
-          "elementId": "shared-work"
-        }
-      ]
-    },
-    {
-      "path": "media/imported/e304e3a318c00c6a52472d0e761be2ee055a51ef9a71c88cf2319f4214a9e2be.png",
-      "sha256": "e304e3a318c00c6a52472d0e761be2ee055a51ef9a71c88cf2319f4214a9e2be",
-      "pixels": [
-        1728,
-        816
-      ],
-      "kind": "current-ui-capture",
-      "captureName": "export-current.png",
-      "editorVersion": "0.18.0",
-      "locale": "en",
-      "deviceScaleFactor": 3,
-      "publicContentOnly": true,
-      "currentUses": [
-        {
-          "pageId": "e4fb0f10-ffa5-44e2-907f-b92e1b69535e",
-          "slideId": "DDJN",
-          "elementId": "export-menu"
-        }
-      ]
-    },
-    {
-      "path": "media/imported/e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc.png",
-      "sha256": "e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc",
-      "pixels": [
-        460,
-        460
-      ],
-      "kind": "shared-source",
-      "source": "../assets/brand/deepseek.png",
-      "currentUses": [
-        {
-          "pageId": "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6",
-          "slideId": "YZ4T",
-          "elementId": "client-3"
-        }
-      ]
-    },
-    {
-      "path": "media/imported/fa59f55889e6e4aa240167729eb5c378bda2ed5286bff56ca741b312dd071f5a.png",
-      "sha256": "fa59f55889e6e4aa240167729eb5c378bda2ed5286bff56ca741b312dd071f5a",
-      "pixels": [
-        573,
-        219
-      ],
-      "kind": "current-ui-capture",
-      "captureName": "present-current.png",
-      "editorVersion": "0.18.0",
-      "locale": "en",
-      "deviceScaleFactor": 3,
-      "publicContentOnly": true,
-      "currentUses": [
-        {
-          "pageId": "e4fb0f10-ffa5-44e2-907f-b92e1b69535e",
-          "slideId": "DDJN",
-          "elementId": "present-menu"
-        }
-      ]
-    },
-    {
-      "path": "media/imported/fb0e683edd84ba2bddf1608bec97f57e6dfb89f87dcaac76a09303348dcc8761.png",
-      "sha256": "fb0e683edd84ba2bddf1608bec97f57e6dfb89f87dcaac76a09303348dcc8761",
-      "pixels": [
-        897,
-        1257
-      ],
-      "kind": "current-ui-capture",
-      "captureName": "story-clean.png",
-      "editorVersion": "0.18.0",
-      "locale": "en",
-      "deviceScaleFactor": 3,
-      "publicContentOnly": true,
-      "currentUses": [
-        {
-          "pageId": "4a066483-9a11-450c-be15-c0be33d52989",
-          "slideId": "U8ZQ",
-          "elementId": "story-panel"
-        }
-      ]
-    },
-    {
-      "path": "media/imported/fc2658bba4545e2798f397d6a64a3525c7472500fa617380cc8f214d3a719bcf.png",
-      "sha256": "fc2658bba4545e2798f397d6a64a3525c7472500fa617380cc8f214d3a719bcf",
-      "pixels": [
-        3936,
-        1950
-      ],
-      "kind": "current-ui-capture",
-      "captureName": "browse.png",
-      "editorVersion": "0.18.0",
-      "locale": "en",
-      "deviceScaleFactor": 3,
-      "publicContentOnly": true,
-      "currentUses": [
-        {
-          "pageId": "62d5734d-2fe5-441c-a50a-abaa95145b56",
-          "slideId": "9QQW",
-          "elementId": "view-browse"
-        }
-      ]
-    },
-    {
-      "path": "media/imported/ff539df7ee63ab58de1ba5ce681749e514130d35fa8604db48f28bfc0fbf7b7b.png",
-      "sha256": "ff539df7ee63ab58de1ba5ce681749e514130d35fa8604db48f28bfc0fbf7b7b",
-      "pixels": [
-        1920,
-        1080
-      ],
-      "kind": "current-page-preview",
-      "pageId": "dc5bfe5f-326a-4b28-8536-56e51ea4397e",
-      "renderSourceIndex": 13,
-      "currentUses": [
-        {
-          "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7",
-          "slideId": "AAD6",
-          "elementId": "main-page-3"
-        },
-        {
-          "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7",
-          "slideId": "AAD6",
-          "elementId": "selected-page-2"
+          "elementId": "f-work-page-one",
+          "bounds": [
+            44,
+            181,
+            398,
+            224
+          ],
+          "crop": null
         }
       ]
     }

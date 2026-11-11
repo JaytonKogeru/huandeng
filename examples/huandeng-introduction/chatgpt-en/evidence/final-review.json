@@ -1,0 +1,479 @@
+{
+  "schemaVersion": 1,
+  "edition": "chatgpt-en",
+  "reviewer": "ChatGPT 6 Astra / primary session",
+  "authoring": "Primary session authored all 24 pages",
+  "visualReview": {
+    "status": "passed",
+    "scope": "Every final page inspected individually at readable presentation size",
+    "checks": [
+      "Actionable Editor workflow",
+      "Actual UI source and crop integrity",
+      "Readable screenshots and body text",
+      "Visual guides for comparisons",
+      "Accurate language/model watermark",
+      "Meaningful Notes and Story"
+    ],
+    "userAcceptance": "not asserted"
+  },
+  "pages": [
+    {
+      "position": 1,
+      "pageId": "90353b2a-6f7b-4ee5-8a8b-10bceb538190",
+      "shortCode": "9DAA",
+      "pageRevision": "sha256:6c5f64ec35a6df15a12d918df981d7ce7f9a1f8b14b239d7705b41eb5f40f9a9",
+      "title": "HUANDENG",
+      "file": "01.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "44c0b14189e74cad86fb7b48adc70ee4e59e738a3a7e2ea1ddb8b5a2aec05aa9"
+    },
+    {
+      "position": 2,
+      "pageId": "4ec264b7-018d-449c-8c8b-d9aede33a840",
+      "shortCode": "2XM9",
+      "pageRevision": "sha256:44fe01fa12c26ddc1f0e0eeb20f05dfed467e047296fafdfde76683192f188fd",
+      "title": "A small edit should stay small",
+      "file": "02.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "9af02bea446f687a2f7c8dc3009449b8fdce4c7a6de94deed9352c89b1143b25"
+    },
+    {
+      "position": 3,
+      "pageId": "1ba18ad8-0701-4de6-83f5-555b949293d7",
+      "shortCode": "GX5Z",
+      "pageRevision": "sha256:bb044b69bdb463da3f2f22f275c7eeb7ebe0000c7ae20ca5a3cebe9aff630242",
+      "title": "One project keeps the work together",
+      "file": "03.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "f3a32e5704d32f592bcb1967a0473ac5597e2feb48ee50b7a5485ac799197279"
+    },
+    {
+      "position": 4,
+      "pageId": "6b9fbac0-772c-435c-bce1-9cad0004af65",
+      "shortCode": "9VGD",
+      "pageRevision": "sha256:1f9bae1e2a969090e92c59d83f4c782350170a222f5797899cd76878e280760e",
+      "title": "Find the page, then select its object",
+      "file": "04.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "589870e2108961f56297de8a2576ba6c3a66ec53f541b09f66f5554bcdabe038"
+    },
+    {
+      "position": 5,
+      "pageId": "7d7d42a0-0db7-4d33-9b3f-5e1035097b50",
+      "shortCode": "FKA9",
+      "pageRevision": "sha256:6b80cb3bf34e9575c39e0677479b732e56d8c8bd3fc993a0b4f7caed4df1402b",
+      "title": "Write the intent beside the page",
+      "file": "05.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "608d43256094f2d6832cc74f15b988a3c0627ee4f68e14d344358f07aeeab518"
+    },
+    {
+      "position": 6,
+      "pageId": "4a066483-9a11-450c-be15-c0be33d52989",
+      "shortCode": "U8ZQ",
+      "pageRevision": "sha256:2a13831e6ef1a9dd19ac95055e0ddd9bf46b8d02f6d9307f4e583ed92fc838eb",
+      "title": "Place an original from Assets",
+      "file": "06.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "ced4180df757c1292f5eaf4f185de01d2ed20cc4e602cd0145781a678300a831"
+    },
+    {
+      "position": 7,
+      "pageId": "95189956-cdd7-4ad9-88c8-cf28a204bb68",
+      "shortCode": "35U5",
+      "pageRevision": "sha256:23e56be885ee34d69db205a9768b8222bc18784affa5d6b67ff4b9f3cb56cef4",
+      "title": "Edit the selected text, then save",
+      "file": "07.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "c037c6262f85d20bde48e0518b4ed2900e6337d8629cae3d6e4994a0a39c5134"
+    },
+    {
+      "position": 8,
+      "pageId": "c4b12919-5876-4acb-b63f-6a7493b54b37",
+      "shortCode": "ZWZJ",
+      "pageRevision": "sha256:e5261b272e60a59416a248764bb9eca42ddd92b56525635876a0fe2253c6df3c",
+      "title": "Use Layers when objects overlap",
+      "file": "08.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "8b7c1c91bcd9e22dc88a299b55373b981aa01794b135bec55dee53cb846bfa36"
+    },
+    {
+      "position": 9,
+      "pageId": "ca1eec7e-61bd-41ac-b6ab-e000d06797be",
+      "shortCode": "XF8A",
+      "pageRevision": "sha256:3d09a401bf0e8aa5dfb0b9a462e10002cc3f888d22f5216df3366e1e614bbb7f",
+      "title": "Compare the changed region at equal scale",
+      "file": "09.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "46f8a5a856073ac82f7ac49354761c40f3a5ba9edbdb498f12b9c0f94db0845d"
+    },
+    {
+      "position": 10,
+      "pageId": "3f5561d8-477e-4954-bee2-9877c8cddc69",
+      "shortCode": "ZN52",
+      "pageRevision": "sha256:b9cbdea4ce724740496ad4b2a5d27b83862544d23e29e5418bee6a5636a0c0a4",
+      "title": "Inspect the exact saved change",
+      "file": "10.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "c2fab0cc2a10cb4f7c91c2cdb7453ae6d37958af60df9e6b68bbe87d0006260f"
+    },
+    {
+      "position": 11,
+      "pageId": "dc5bfe5f-326a-4b28-8536-56e51ea4397e",
+      "shortCode": "DHVW",
+      "pageRevision": "sha256:dcb68aaa538084b204d2aff857294d5426036d9706160438005a052590143ab0",
+      "title": "Move the page without losing its identity",
+      "file": "11.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "2dc997ab62e08c5dba0947837d67d4467ae4096b2feef12db174aea934f572c1"
+    },
+    {
+      "position": 12,
+      "pageId": "6a3aec16-2347-40fe-856d-df36c1f58509",
+      "shortCode": "2ZQ3",
+      "pageRevision": "sha256:33309e37aef87ea392a9354898f2b88efd95158bc3afe0a41b20be449123cf7d",
+      "title": "Name a version worth returning to",
+      "file": "12.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "01e1e5298ec3fbeccfef7b2546f01c1be99b1d12a90ef57c6b984390ee9d81d6"
+    },
+    {
+      "position": 13,
+      "pageId": "d497fb11-7906-414e-a529-0d97680bce51",
+      "shortCode": "7E4T",
+      "pageRevision": "sha256:3c49e6d987f4031a7e98d156e83effda8991b920ca678f6292e14bb29d432ad9",
+      "title": "Step back and read the sequence",
+      "file": "13.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "684e6d6b4c4ca3672cc11d28335ca8b921bc3429f8219c5f5c40917ca8a41fba"
+    },
+    {
+      "position": 14,
+      "pageId": "62d5734d-2fe5-441c-a50a-abaa95145b56",
+      "shortCode": "9QQW",
+      "pageRevision": "sha256:697d0a98961046f6dd9c11ae3cb0b5689a49b78f95dfc263ed17df1ec0a37a8e",
+      "title": "Read the argument in Outline",
+      "file": "14.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "ef438876550b9c9f7eadf09a2c32913c1ca5a2847c394e51ea9cd31bdb4e8599"
+    },
+    {
+      "position": 15,
+      "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7",
+      "shortCode": "AAD6",
+      "pageRevision": "sha256:e9622b5d4a07cf2060e61c7d526caa276cb7f4ad4dee01f4bec3c2c9cbd31a73",
+      "title": "A Section begins at its first slide",
+      "file": "15.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "44d953c6e043a2ed3444cf63821119366573cb86787979fabe83bb5560319b64"
+    },
+    {
+      "position": 16,
+      "pageId": "095ba6fb-14f6-42b1-815a-7970ac214058",
+      "shortCode": "74A2",
+      "pageRevision": "sha256:9d37a70aad9ae345a229c34580e7dc2f7fa870ca8688946439ed42ab1895d499",
+      "title": "Choose pages for this particular talk",
+      "file": "16.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "495838eb8cd5a1302a899a45551835e49ed57d11ada250b67c83d4db83994765"
+    },
+    {
+      "position": 17,
+      "pageId": "80c650ec-8f56-403d-8f44-d190a84ed4b4",
+      "shortCode": "9N3S",
+      "pageRevision": "sha256:554d74bffed25b0b764fa122bdeca97770898e0daff1c4d57eab83c6cd4388fd",
+      "title": "Give this talk its own speaking notes",
+      "file": "17.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "5dedeaf52daff8ad59dd3bb5c59dbc286116976f1d2219f89374de79191e85b5"
+    },
+    {
+      "position": 18,
+      "pageId": "8050a155-9c2b-4cf5-b643-e9406b9b2b1c",
+      "shortCode": "BHPP",
+      "pageRevision": "sha256:30156003aef5d863fa4db976db9b9e3004ecd40f6da23c6a3c66c3ec78c99b98",
+      "title": "Choose what this occurrence follows",
+      "file": "18.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "da2a022b32cfb032ad3c49fd73cb9cb4571dc2c3bf6e0f064204d12fccf2ee21"
+    },
+    {
+      "position": 19,
+      "pageId": "4a398dd0-ad74-4a36-b65e-6068ffe817a8",
+      "shortCode": "X5J6",
+      "pageRevision": "sha256:20541aec1012d0e702a072cd28626544788c5eb297341419c137b35c946342db",
+      "title": "Rehearse from the point you are editing",
+      "file": "19.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "875f01c7851cefa35cbe96f4f4cc27d90fc38f07e8f4501a0116a881b1ac77b9"
+    },
+    {
+      "position": 20,
+      "pageId": "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6",
+      "shortCode": "YZ4T",
+      "pageRevision": "sha256:dde36df2977290400a980267a7f62b123a585f537d1ae0dff4b6a01bc2c87efb",
+      "title": "Confirm the range before you export",
+      "file": "20.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "c0d574ecf31bf3e31345c693962d23b14f400141a6f250d21e862aa8d198cf37"
+    },
+    {
+      "position": 21,
+      "pageId": "e0b400eb-ddc1-4c42-af48-d420785b1d8f",
+      "shortCode": "KW5P",
+      "pageRevision": "sha256:f63f5eef51c9c6fd084decb512bc9a0aeddedba863f848f9b431c6dbd288ee67",
+      "title": "Send the whole folder to continue editing",
+      "file": "21.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "870f4de3f2bb33123d42975cfd98a4e11b65f840fca643961bcc8e0921426142"
+    },
+    {
+      "position": 22,
+      "pageId": "e4fb0f10-ffa5-44e2-907f-b92e1b69535e",
+      "shortCode": "DDJN",
+      "pageRevision": "sha256:c07e176880842a3759ce857fc82fa83764ef370f44cadee3d91c415e3649ce62",
+      "title": "Connect the assistant to this project",
+      "file": "22.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "94f66354fc157b08fc9cc5bda1422de12195611f0384ac3f70c2bbc439febcd8"
+    },
+    {
+      "position": 23,
+      "pageId": "bbcdc92a-915c-4988-a4d5-76e466d0424f",
+      "shortCode": "5HW8",
+      "pageRevision": "sha256:67e9bca9131557d57f7ea92ae626623fceb7a8378a5aa218cf0b1c0e53abf423",
+      "title": "Divide the pages; review the returned work",
+      "file": "23.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "98bcc1e7baeed70af6beeb6a3d56556ae4e6b8f864ded1dc0809314a7683b177"
+    },
+    {
+      "position": 24,
+      "pageId": "8f9e154d-c5c2-4d79-b809-984586f8311e",
+      "shortCode": "ECVR",
+      "pageRevision": "sha256:a91ef7a09939615b1c04cc3e207cc6ed46666c5e1188e5fc97856c732df78740",
+      "title": "Open the example and make one useful edit",
+      "file": "24.png",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "32d12ca0e9c2bf43a4c7907ba5ffe98bfb90998b303d852c5fe2e9090a7d07cf"
+    }
+  ],
+  "finalNamedVersions": [
+    {
+      "position": 1,
+      "pageId": "90353b2a-6f7b-4ee5-8a8b-10bceb538190",
+      "shortCode": "9DAA",
+      "versionId": "checkpoint:ab3706a393dffb901dc62bcc21845a90"
+    },
+    {
+      "position": 2,
+      "pageId": "4ec264b7-018d-449c-8c8b-d9aede33a840",
+      "shortCode": "2XM9",
+      "versionId": "checkpoint:111662ef76b6f1e8e93024ddf0413c2f"
+    },
+    {
+      "position": 3,
+      "pageId": "1ba18ad8-0701-4de6-83f5-555b949293d7",
+      "shortCode": "GX5Z",
+      "versionId": "checkpoint:c0677a9a0e8cf36439c2076126ff42b0"
+    },
+    {
+      "position": 4,
+      "pageId": "6b9fbac0-772c-435c-bce1-9cad0004af65",
+      "shortCode": "9VGD",
+      "versionId": "checkpoint:ad8d68b4dc49dd85c3dca8a73d4f3a8d"
+    },
+    {
+      "position": 5,
+      "pageId": "7d7d42a0-0db7-4d33-9b3f-5e1035097b50",
+      "shortCode": "FKA9",
+      "versionId": "checkpoint:bd69ec3e5390bd31d2d995a24a5432e1"
+    },
+    {
+      "position": 6,
+      "pageId": "4a066483-9a11-450c-be15-c0be33d52989",
+      "shortCode": "U8ZQ",
+      "versionId": "checkpoint:9a8cf9237770725cb06e4738478132c7"
+    },
+    {
+      "position": 7,
+      "pageId": "95189956-cdd7-4ad9-88c8-cf28a204bb68",
+      "shortCode": "35U5",
+      "versionId": "checkpoint:f466feb95435c9b9de941f9c3cff98cc"
+    },
+    {
+      "position": 8,
+      "pageId": "c4b12919-5876-4acb-b63f-6a7493b54b37",
+      "shortCode": "ZWZJ",
+      "versionId": "checkpoint:68d0b3a797dfe7b3621326550223b1f1"
+    },
+    {
+      "position": 9,
+      "pageId": "ca1eec7e-61bd-41ac-b6ab-e000d06797be",
+      "shortCode": "XF8A",
+      "versionId": "checkpoint:1126bc5fda7a7b6e4fd9a72827768425"
+    },
+    {
+      "position": 10,
+      "pageId": "3f5561d8-477e-4954-bee2-9877c8cddc69",
+      "shortCode": "ZN52",
+      "versionId": "checkpoint:9731056f2c6340f7f0b9a83673981920"
+    },
+    {
+      "position": 11,
+      "pageId": "dc5bfe5f-326a-4b28-8536-56e51ea4397e",
+      "shortCode": "DHVW",
+      "versionId": "checkpoint:8e42b6d6f9ae93bdd961ef0cb89a950a"
+    },
+    {
+      "position": 12,
+      "pageId": "6a3aec16-2347-40fe-856d-df36c1f58509",
+      "shortCode": "2ZQ3",
+      "versionId": "checkpoint:927c7bf361db644d988b8b1b8e9d2e9c"
+    },
+    {
+      "position": 13,
+      "pageId": "d497fb11-7906-414e-a529-0d97680bce51",
+      "shortCode": "7E4T",
+      "versionId": "checkpoint:2815723401bac64602c80de925bab359"
+    },
+    {
+      "position": 14,
+      "pageId": "62d5734d-2fe5-441c-a50a-abaa95145b56",
+      "shortCode": "9QQW",
+      "versionId": "checkpoint:66d96b8edbe0f87c0168ae5744bb35a7"
+    },
+    {
+      "position": 15,
+      "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7",
+      "shortCode": "AAD6",
+      "versionId": "checkpoint:79cf246ddb3f8a11ffea2494b1b7cfcc"
+    },
+    {
+      "position": 16,
+      "pageId": "095ba6fb-14f6-42b1-815a-7970ac214058",
+      "shortCode": "74A2",
+      "versionId": "checkpoint:25631c3fd2c8bcc498402c2abd64e030"
+    },
+    {
+      "position": 17,
+      "pageId": "80c650ec-8f56-403d-8f44-d190a84ed4b4",
+      "shortCode": "9N3S",
+      "versionId": "checkpoint:16c63cd50f67434346628ad1f979c55f"
+    },
+    {
+      "position": 18,
+      "pageId": "8050a155-9c2b-4cf5-b643-e9406b9b2b1c",
+      "shortCode": "BHPP",
+      "versionId": "checkpoint:7b36a4b184979a602ff1d662015db02f"
+    },
+    {
+      "position": 19,
+      "pageId": "4a398dd0-ad74-4a36-b65e-6068ffe817a8",
+      "shortCode": "X5J6",
+      "versionId": "checkpoint:56fb73fe8988be566b4b0b9962e8e792"
+    },
+    {
+      "position": 20,
+      "pageId": "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6",
+      "shortCode": "YZ4T",
+      "versionId": "checkpoint:316190b1cd1735e9e2c63e204ac959e5"
+    },
+    {
+      "position": 21,
+      "pageId": "e0b400eb-ddc1-4c42-af48-d420785b1d8f",
+      "shortCode": "KW5P",
+      "versionId": "checkpoint:bed27b2f685f6623161be100ad957c81"
+    },
+    {
+      "position": 22,
+      "pageId": "e4fb0f10-ffa5-44e2-907f-b92e1b69535e",
+      "shortCode": "DDJN",
+      "versionId": "checkpoint:49c424287c17bf921544d0e665d3f96e"
+    },
+    {
+      "position": 23,
+      "pageId": "bbcdc92a-915c-4988-a4d5-76e466d0424f",
+      "shortCode": "5HW8",
+      "versionId": "checkpoint:e8665f024189b8e249eedf700d5e18c3"
+    },
+    {
+      "position": 24,
+      "pageId": "8f9e154d-c5c2-4d79-b809-984586f8311e",
+      "shortCode": "ECVR",
+      "versionId": "checkpoint:4b327b959102a9a6b91acc9a39b259a0"
+    }
+  ]
+}

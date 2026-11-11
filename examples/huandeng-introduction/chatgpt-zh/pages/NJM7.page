@@ -3,114 +3,242 @@ background:
   type: solid
   color: "#F7F5EF"
 elements:
+  - elementId: zd-bg
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 0
+      - 0
+      - 960
+      - 540
+    fill:
+      type: solid
+      color: "#F4F1E8"
   - elementId: title
     elementType: text
     bounds:
-        [42,34,880,76]
+        [38,29,884,49]
     role: title
     content:
-      {"text":"从工作项目到现场和交付文件","fontFamily":"Noto Serif SC","fontSize":28,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: present-icon
-    elementType: icon
-    iconName: fas:play
-    bounds:
-      - 44
-      - 132
-      - 26
-      - 26
-    fill:
-      type: solid
-      color: "#356F68"
-  - elementId: present-title
+      {"text":"把助手接到这份项目","fontFamily":"Noto Sans SC","fontSize":31,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.3}
+  - elementId: zd-route
     elementType: text
     bounds:
-      - 86
-      - 131
-      - 354
-      - 32
-    content:
-      {"text":"按点击讲述","fontFamily":"Noto Sans SC","fontSize":21,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: present-menu
-    elementType: image
-    src: "media/imported/ce8070996ec0b318d78b8e45f849283cbca6026ab9c8175a97da85e6b95c5ddc.png"
-    sourceName: "present-current.png"
-    alt: "present-current.png"
-    bounds:
-        [44,234,238,133]
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: export-icon
-    elementType: icon
-    iconName: fas:file-export
-    bounds:
-        [365,132,26,26]
-    fill:
-      type: solid
-      color: "#356F68"
-  - elementId: export-title
-    elementType: text
-    bounds:
-        [407,131,507,32]
-    content:
-      {"text":"PPTX 与 PDF","fontFamily":"Noto Sans SC","fontSize":21,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: export-menu
-    elementType: image
-    src: "media/imported/d4b57fa12dec15a02948a905109f1f73245f644d6c6cc4c141c9693140419190.png"
-    sourceName: "export-current.png"
-    alt: "export-current.png"
-    bounds:
-        [365,205,549,238]
-    fit:
-      mode: contain
-    crop:
-      {"left":0,"right":0,"top":0,"bottom":0}
-  - elementId: delivery-scope
-    elementType: text
-    bounds:
-      - 44
-      - 477
-      - 870
       - 40
+      - 86
+      - 876
+      - 28
     content:
-      {"text":"现场播放可以逐步展开；PPTX / PDF 交付静态页面。","fontFamily":"Noto Sans SC","fontSize":17,"color":"#66756B","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: brand-small
-    elementType: image
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
-    sourceName: huandeng.png
-    alt: huandeng.png
+      text: 编辑器顶栏 → 助手连接 → 选择客户端
+      fontFamily: Noto Sans SC
+      fontSize: 14
+      color: "#168C8C"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: zd-accent
+    elementType: shape
+    shapeName: rect
     bounds:
-      - 44
-      - 510
-      - 17
-      - 17
-    fit:
-      mode: contain
-    crop:
-      left: 0.18
-      right: 0.18
-      top: 0.14
-      bottom: 0.14
-  - elementId: foot
+      - 40
+      - 119
+      - 64
+      - 3
+    fill:
+      type: solid
+      color: "#ED6A3A"
+  - elementId: zd-watermark
     elementType: text
     bounds:
-      - 69
-      - 513
-      - 130
-      - 17
+      - 39
+      - 508
+      - 820
+      - 22
     content:
-      {"text":"HUANDENG","fontFamily":"Noto Sans SC","fontSize":10,"color":"#66756B","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: position
+      text: Chinese · ChatGPT 6 Astra + Subagents
+      fontFamily: Noto Sans SC
+      fontSize: 13
+      color: "#53666A"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: zd-position
     elementType: text
     bounds:
       - 884
-      - 512
-      - 30
-      - 18
+      - 508
+      - 38
+      - 22
     content:
-      {"text":"","fontFamily":"Noto Sans SC","fontSize":10,"color":"#66756B","bold":false,"align":["right","top"],"lineHeight":1.3,"field":"main-position"}
-notes: "准备好之后，从同一份项目放映或导出。现场逐次揭示属于播放逻辑；PPTX和PDF承载静态页面。交付给需要继续编辑的人时，提供整个PPTD项目；给查看或演讲的人，可以提供合适的导出文件。导出之后仍回到同一份源项目继续修改。"
+      text: ""
+      fontFamily: Noto Sans SC
+      fontSize: 13
+      color: "#53666A"
+      bold: false
+      align:
+        - right
+        - top
+      lineHeight: 1.3
+      field: main-position
+  - elementId: zd-setup
+    elementType: image
+    bounds:
+      - 40
+      - 143
+      - 882
+      - 174
+    src: media/imported/3ad2f74a0881b8e62177a25a2858ba6023981ff11d1d68d220d5235b2383a2d4.png
+    sourceName: assistant-client-choice.png
+    fit:
+      mode: contain
+  - elementId: zd-connect-steps
+    elementType: text
+    bounds:
+      - 40
+      - 341
+      - 880
+      - 39
+    content:
+      text: 选择客户端  →  按该客户端的说明配置  →  读取项目与选中页
+      fontFamily: Noto Sans SC
+      fontSize: 20
+      color: "#112D32"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: zd-connect-check
+    elementType: text
+    bounds:
+      - 40
+      - 394
+      - 880
+      - 42
+    content:
+      text: 先核对项目名和 Slide ID，再交给它第一项修改。
+      fontFamily: Noto Sans SC
+      fontSize: 21
+      color: "#168C8C"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: zd-client-0
+    elementType: image
+    bounds:
+      - 40
+      - 455
+      - 30
+      - 30
+    src: media/imported/0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13.png
+    sourceName: chatgpt.png
+    fit:
+      mode: contain
+  - elementId: zd-client-name-0
+    elementType: text
+    bounds:
+      - 79
+      - 460
+      - 180
+      - 29
+    content:
+      text: ChatGPT · DC-WALT
+      fontFamily: Noto Sans SC
+      fontSize: 14
+      color: "#112D32"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: zd-client-1
+    elementType: image
+    bounds:
+      - 265
+      - 455
+      - 30
+      - 30
+    src: media/imported/733f24f4c52acb15eb0fbded1cf40eb42b4ba8e62b882acac70b6234b50919a8.png
+    sourceName: claude-code.png
+    fit:
+      mode: contain
+  - elementId: zd-client-name-1
+    elementType: text
+    bounds:
+      - 304
+      - 460
+      - 180
+      - 29
+    content:
+      text: Claude Code
+      fontFamily: Noto Sans SC
+      fontSize: 14
+      color: "#112D32"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: zd-client-2
+    elementType: image
+    bounds:
+      - 490
+      - 455
+      - 30
+      - 30
+    src: media/imported/e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc.png
+    sourceName: deepseek.png
+    fit:
+      mode: contain
+  - elementId: zd-client-name-2
+    elementType: text
+    bounds:
+      - 529
+      - 460
+      - 180
+      - 29
+    content:
+      text: DeepSeek Harness
+      fontFamily: Noto Sans SC
+      fontSize: 14
+      color: "#112D32"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: zd-client-3
+    elementType: image
+    bounds:
+      - 715
+      - 455
+      - 30
+      - 30
+    src: media/imported/2ce1c57dd3b312417106a487815ab1235bddce17e1fa9b32a2f048bd71ee25d3.png
+    sourceName: codex.png
+    fit:
+      mode: contain
+  - elementId: zd-client-name-3
+    elementType: text
+    bounds:
+      - 754
+      - 460
+      - 180
+      - 29
+    content:
+      text: Codex
+      fontFamily: Noto Sans SC
+      fontSize: 14
+      color: "#112D32"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+notes: "编辑器顶部的“助手连接”会打开当前项目的助手设置。先选择Claude Code、DeepSeek Harness、Codex或ChatGPT，再按该客户端的安装与配置说明接入。Claude Code和DeepSeek使用各自的原生插件；ChatGPT通过已有的工作站连接调用这个项目。图中只展示真实客户端选择区域，配置本身并不等于连接已经成功。接入后的第一项任务应是读取项目与当前选中页，并用返回的项目名和Slide ID核对目标。确认后再提出一次具体修改。切换可见Editor标签不会自动改变一个已绑定助手的项目。接下来给协作者一个明确、可检查的分工。"

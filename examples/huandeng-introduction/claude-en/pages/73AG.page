@@ -285,4 +285,20 @@ elements:
       align:
         - right
         - middle
+  - elementId: attribution-watermark
+    elementType: text
+    bounds:
+      - 760
+      - 10
+      - 176
+      - 16
+    content:
+      text: English · Claude Opus 5.5
+      fontFamily: Arial
+      fontSize: 10
+      lineHeight: 1.2
+      color: "#7A8580"
+      align:
+        - right
+        - middle
 notes: "This is the feature I consider most important. History is kept per page, not for the whole deck. Right-click a slide in the Pages panel and choose View version history. Saved versions are the milestones I name myself, like Before copy edit. Operation history lists every saved change to that page, each with its review. And restoring a version changes only that slide; every other slide, and every talk that uses them, stays as it is. This is what replaces the folder of copies from the beginning of the talk."

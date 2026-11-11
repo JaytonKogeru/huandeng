@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "edition": "claude-zh",
+  "scope": "brief",
+  "source": "examples/huandeng-introduction/claude-zh/Exports/brief.pptx",
+  "sha256": "3c1231b4ed433f76bdb292710ce330a09c947eb154a02b11b8a92f8873539004",
+  "pages": 9,
+  "notes": 9,
+  "nativeCharts": 1,
+  "nativeTables": 2,
+  "nativeGroups": 0,
+  "officeVersion": "16.0",
+  "powerPointExecutableVersion": "16.0.20527.20150",
+  "readOnly": true,
+  "openAndRepair": false,
+  "sourceUnchanged": true,
+  "closedOwnDocument": true,
+  "visualReview": {
+    "edition": "claude-zh",
+    "scope": "brief",
+    "pages": 9,
+    "contactSheets": ["001-008"],
+    "detailPages": [9],
+    "status": "reviewed-no-missing-content-observed",
+    "observations": [
+      {
+        "page": 5,
+        "kind": "actual-office-layout",
+        "text": "Native chart visible; x-axis title and numeric ticks remain separate, as in Main page 12."
+      }
+    ]
+  },
+  "renderedPageHashes": [
+    {
+      "slide": 1,
+      "sha256": "e737de0340421eef07a0343f1943dae37832868a88563513ebda780b6e5a3c99",
+      "bytes": 99912
+    },
+    {
+      "slide": 2,
+      "sha256": "07909e5902324da8d35f30a0aa1e3ea84abcb1b3cb87993835014cbb6d093218",
+      "bytes": 190348
+    },
+    {
+      "slide": 3,
+      "sha256": "b736ee11e5fd938b04b8027eaaf8c53b13370096680a53c0be6638570a7697d6",
+      "bytes": 81579
+    },
+    {
+      "slide": 4,
+      "sha256": "18835f84f8a3457523f2e72a6e3554d5c3bd9433c3da11e6218f97694e13f873",
+      "bytes": 69453
+    },
+    {
+      "slide": 5,
+      "sha256": "a2360830e4129188856b8f3d339aaabbc5a64da17aeea430302966d990ed3cf9",
+      "bytes": 104767
+    },
+    {
+      "slide": 6,
+      "sha256": "e8da34efdc4c73909a474465e2bc535e5f7ddbe20779458b004181c2012cf8f5",
+      "bytes": 131827
+    },
+    {
+      "slide": 7,
+      "sha256": "24033e4191007c31c9e15cbb16be8e7e1a08459640c589ae80080dc42060a23c",
+      "bytes": 142906
+    },
+    {
+      "slide": 8,
+      "sha256": "088b6748bc3ef7f4da1ad12408f80e435e6bf657a45609592091914a832077c9",
+      "bytes": 99387
+    },
+    {
+      "slide": 9,
+      "sha256": "dd0acf7b9170f84d1f38e014dd1f55e0af43cf3884731f587e15ec67d2f27d93",
+      "bytes": 75425
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 2,
+  "language": "en",
+  "deckId": "ccf319b7-a686-4793-84cb-2ccb018336bf",
+  "manifestRevision": "sha256:e950bcd061b620e75122c6a790d9925149f53c0eced76746f54a33242ae58cc3",
+  "metadataRevision": "sha256:f2e7f943e13bbf9ac4f416ac4376c3078558fce9a3ea9bbf0808ee64b05a5b44",
+  "sourceUnchangedDuringExport": true,
+  "artifact": [
+    {
+      "file": "deck.pptx",
+      "sha256": "941b881619fcb4d71668f228c257bd7fb1d4a65fa273eb8dc9e0ba34ce1d225a",
+      "bytes": 3822807,
+      "pages": 24,
+      "format": "pptx",
+      "presentationId": null
+    },
+    {
+      "file": "deck.pdf",
+      "sha256": "8646521a19b919075e6dc31d559e992687f8a2aa299d3c15aa4b3779d7f1b64f",
+      "bytes": 3651372,
+      "pages": 24,
+      "format": "pdf",
+      "presentationId": null
+    },
+    {
+      "file": "brief.pptx",
+      "sha256": "9ab0806a2af2c97fbe51687a870352f4a14a29cc1c23a5e5c2482e87ee3a8603",
+      "bytes": 2864315,
+      "pages": 12,
+      "format": "pptx",
+      "presentationId": "introduction-short"
+    },
+    {
+      "file": "brief.pdf",
+      "sha256": "0488bbd5e0000ba7601a3eb47e969521370b96f7463bf06af6c66bc54eae3939",
+      "bytes": 3074530,
+      "pages": 12,
+      "format": "pdf",
+      "presentationId": "introduction-short"
+    }
+  ]
+}

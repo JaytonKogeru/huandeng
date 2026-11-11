@@ -8,7 +8,7 @@
 
 - 已发布 v0.5 基线为 `ef80f5bcb8b89361c7d2335d5c8cc7831ef15715`，本轮开始时使用的运行时为 `03a96957f854ab593400218102928d1feb3c86d0`。
 - Linux 初始传输的全部 943 个仓库文件逐一核对 SHA-256，与该基线一致；本地 `2cec4bfccfa96493006bb1268f23f8802b1ca845` 只是建立差异的快照，不作为可推送历史。
-- Windows 候选位于 `D:\_Proj\Huandeng-v06-20261108`，分支为 `editor/v0.6-authoring-motion`，使用隔离 worktree、profile 和 runtime。
+- Windows 候选位于 `<workspace-checkout>`，分支为 `editor/v0.6-authoring-motion`，使用隔离 worktree、profile 和 runtime。
 - 早期真实界面验收使用 Electron `38.7.2` 开发宿主与构建后的静态前端；第 3.2 节另使用最终打包 EXE，不能将两者的结果混记。
 - 最终 runtime 源码提交为 `9c27465aa88b5b2b59288f5b321596ad10fcb92c`；构建标记为 `productVersion: 0.6.0`、`sourceDirty: false`、`builtAt: 2026-11-07T16:47:49.8347220Z`，build/package 均退出 0。
 - 源码候选证据归档于 `.verification/v06-source-candidate`；最终包六套汇总为 `.verification/v06-packaged-gates.json`。安装与后续文档提交应保留上述 runtime 来源身份。
@@ -150,7 +150,7 @@
 | 正式安装及用户入口 | **通过** | 原路径安装、两个快捷方式/图标、About 0.6.0、三页合成项目正常退出、普通用户原 80 页项目可写且源文件未变 |
 | 重要里程碑发行身份 | `editor-v0.6.0` | 真实 Windows 历史上的源码与交付文档，annotated tag；remote refs 在推送后独立核对，不推送 Linux 传输快照历史 |
 
-正式安装目录为 `D:\\_Proj\\Huandeng\\dist\\HUANDENG-win32-x64`。准备目录的 **29,141 个文件 / 683,432,467 bytes** 逐一核对 SHA-256 和大小，与最终验收包一致；再次通过自包含检查。旧 v0.5 窗口通过 CloseMainWindow 正常退出，服务进程随之结束，未强制关闭；旧包保留于 `.verification/installed-v05-backup-20261108-v06`。
+正式安装目录为 `<editor-checkout>\\dist\\HUANDENG-win32-x64`。准备目录的 **29,141 个文件 / 683,432,467 bytes** 逐一核对 SHA-256 和大小，与最终验收包一致；再次通过自包含检查。旧 v0.5 窗口通过 CloseMainWindow 正常退出，服务进程随之结束，未强制关闭；旧包保留于 `.verification/installed-v05-backup-20261108-v06`。
 
 桌面和开始菜单快捷方式的目标、工作目录和 icon 均核对，icon 字节与源码一致。正式路径 [安装验证脚本](../scripts/verify-installed-huandeng.mjs) 于 `2026-11-07T17:03:47.985Z` 通过：独立三页合成项目、static 服务、可写、无 renderer errors，正常退出 0 / null。实际 About 菜单 handler 在临时 `showMessageBox` stub 下返回 `HUANDENG Editor 0.6.0`；没有声称拍摄原生 About 对话框。
 

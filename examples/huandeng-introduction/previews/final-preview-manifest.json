@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "kind": "selected final PDF pages; overview only",
+  "previews": [
+    {
+      "edition": "chatgpt-en",
+      "source": "chatgpt-en/Exports/deck.pdf",
+      "sourceSha256": "cf80de13d09d64c87686493fc7478f12bb5b7d42f87115f5423305647449c0d6",
+      "file": "previews/chatgpt-en-overview.png",
+      "sha256": "13ba4f06faa0faf14655b34f6eef4bca48ff1963ada60bd36855402f71b07908",
+      "selectedMainPositions": [
+        1,
+        2,
+        7,
+        9,
+        18,
+        20
+      ],
+      "pages": 24
+    },
+    {
+      "edition": "chatgpt-zh",
+      "source": "chatgpt-zh/Exports/deck.pdf",
+      "sourceSha256": "0f86b3894a3617cea59fbf75fc7fff358cba0a6471f1209549f24db9f63cf085",
+      "file": "previews/chatgpt-zh-overview.png",
+      "sha256": "9ede12cf8e6467e8f83db4942f1df584fa79b6fae3412d5693350f0174dff9a5",
+      "selectedMainPositions": [
+        1,
+        5,
+        10,
+        15,
+        20,
+        21
+      ],
+      "pages": 24
+    },
+    {
+      "edition": "claude-en",
+      "source": "claude-en/Exports/deck.pdf",
+      "sourceSha256": "1e6f4834e092c8efdd0197d96327dc2781a0550a858122ef994af6f5e22c1090",
+      "file": "previews/claude-en-overview.png",
+      "sha256": "b1b9df73cabdd276f7592223101e1ad938b46350c1a3c608312071dc7b500ceb",
+      "selectedMainPositions": [
+        1,
+        5,
+        9,
+        13,
+        17,
+        25
+      ],
+      "pages": 25
+    },
+    {
+      "edition": "claude-zh",
+      "source": "claude-zh/Exports/deck.pdf",
+      "sourceSha256": "3a388d92cc8baedce01a33a3dd1299b830bb09e36961c54c65da37b239d49b34",
+      "file": "previews/claude-zh-overview.png",
+      "sha256": "49d115628edc5014bc22592fce515ef46fa00a24da96f6d331517d438d4e8f80",
+      "selectedMainPositions": [
+        1,
+        5,
+        9,
+        13,
+        17,
+        26
+      ],
+      "pages": 26
+    },
+    {
+      "edition": "deepseek-en",
+      "source": "deepseek-en/Exports/deck.pdf",
+      "sourceSha256": "097e9bc260de61e744091664139a316280e4b2066982c688c82ad32b5b381aa5",
+      "file": "previews/deepseek-en-overview.png",
+      "sha256": "1f87fffda94201a68858e83aecb3b7b1e08eaa976e8d5c8f3060f6555b19c9fe",
+      "selectedMainPositions": [
+        1,
+        5,
+        9,
+        13,
+        17,
+        22
+      ],
+      "pages": 22
+    },
+    {
+      "edition": "deepseek-zh",
+      "source": "deepseek-zh/Exports/deck.pdf",
+      "sourceSha256": "db2abdad5e4a9340d7027309ade9ce2a9f181ad280388b807ed5b0a564c70798",
+      "file": "previews/deepseek-zh-overview.png",
+      "sha256": "47fb276d572bd70e0b69a16e97f24c8883ab61bdfcf7fed864462a68322b3763",
+      "selectedMainPositions": [
+        1,
+        5,
+        9,
+        13,
+        17,
+        22
+      ],
+      "pages": 22
+    }
+  ]
+}

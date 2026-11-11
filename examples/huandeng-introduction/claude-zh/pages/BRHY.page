@@ -236,4 +236,20 @@ elements:
         - right
         - middle
       field: main-position
+  - elementId: attribution-watermark
+    elementType: text
+    bounds:
+      - 760
+      - 10
+      - 176
+      - 16
+    content:
+      text: 中文 · Claude Opus 5.5
+      fontFamily: Microsoft YaHei
+      fontSize: 10
+      lineHeight: 1.2
+      color: "#7A8580"
+      align:
+        - right
+        - middle
 notes: "这就是这份介绍关心的那种页面：一个真实的结果。结构是 PDB 1BNA，Dickerson–Drew DNA 十二聚体，按沉积坐标绘制；链 A 绿色，链 B 赭色。对十二个碱基对，我们测了配对 C1′ 原子之间的距离。这张图不是贴上去的图片，而是一个幻灯图表对象，里面是 CSV 里的十二个数值；纵轴有标签，故意不从零开始，这样几何上的变化才看得出来。要改一个值或一个标签，改的是数据，不是像素。注意它说的是什么：这是同一个晶体结构里的十二个位置，不是重复实验，没有误差棒。最短在第 7 对，中间 AATT 区的一个 T–A；最长在第 12 对，末端的 G–C。方法：链 A 残基 1–12 依次对应链 B 残基 24–13，计算 C1′ 原子间欧氏距离。数据见 sources/science/paired-c1-distances.csv。来源：RCSB PDB 1BNA，https://www.rcsb.org/structure/1BNA；Drew HR 等，PNAS 78 (1981) 2179–2183，https://doi.org/10.1073/pnas.78.4.2179。"

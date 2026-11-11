@@ -12,7 +12,7 @@
 | v0.7 运行时代码 | `ba18ac0d95502361fb8a423a732c808218374915` |
 | 产品与宿主 | HUANDENG Editor `0.7.0`；Electron `38.7.2` |
 | 构建标记 | `sourceDirty: false`；`builtAt: 2026-11-07T21:34:36.5584922Z` |
-| 权威工作树 | `D:/_Proj/Huandeng-v07-20261108`，`editor/v0.7-workspace-video` |
+| 权威工作树 | `<workspace-checkout>`，`editor/v0.7-workspace-video` |
 | 构建 / 打包 | exit 0，分别约 5.72 / 35.13 秒 |
 | 自包含与搬迁检查 | 均通过；hoisted，2395 个依赖目录，无指向源工作树的 executable links |
 

@@ -3,159 +3,161 @@ background:
   type: solid
   color: "#E4ECE6"
 elements:
+  - elementId: zd-bg
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 0
+      - 0
+      - 960
+      - 540
+    fill:
+      type: solid
+      color: "#112D32"
   - elementId: title
     elementType: text
     bounds:
-        [42,34,880,76]
+        [38,29,884,49]
     role: title
     content:
-      {"text":"不同的助手，读写同一个项目","fontFamily":"Noto Serif SC","fontSize":28,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.2}
-  - elementId: brand-small
-    elementType: image
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
-    sourceName: huandeng.png
-    alt: huandeng.png
+      {"text":"从当前页排练一次","fontFamily":"Noto Sans SC","fontSize":31,"color":"#F4F1E8","bold":true,"align":["left","top"],"lineHeight":1.3}
+  - elementId: zd-route
+    elementType: text
     bounds:
-        [43,512,18,18]
+      - 40
+      - 86
+      - 876
+      - 28
+    content:
+      text: 先选目标演讲和起始页 → 放映菜单 → 从当前页放映
+      fontFamily: Noto Sans SC
+      fontSize: 14
+      color: "#A8D7D5"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: zd-accent
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 40
+      - 119
+      - 64
+      - 3
+    fill:
+      type: solid
+      color: "#ED6A3A"
+  - elementId: zd-watermark
+    elementType: text
+    bounds:
+      - 39
+      - 508
+      - 820
+      - 22
+    content:
+      text: Chinese · ChatGPT 6 Astra + Subagents
+      fontFamily: Noto Sans SC
+      fontSize: 13
+      color: "#BDD3D3"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: zd-position
+    elementType: text
+    bounds:
+      - 884
+      - 508
+      - 38
+      - 22
+    content:
+      text: ""
+      fontFamily: Noto Sans SC
+      fontSize: 13
+      color: "#BDD3D3"
+      bold: false
+      align:
+        - right
+        - top
+      lineHeight: 1.3
+      field: main-position
+  - elementId: zd-present-menu
+    elementType: image
+    bounds:
+      - 40
+      - 158
+      - 229
+      - 100
+    src: "media/imported/48544cd7d20bd9bb48e4ee375b9a0dad8e2912570386e4c40e38d6f996c68a3b.png"
+    sourceName: "present-menu-stable.png"
     fit:
       mode: contain
-    crop:
-      left: 0.18
-      right: 0.18
-      top: 0.14
-      bottom: 0.14
-  - elementId: foot
-    elementType: text
-    bounds:
-        [68,515,140,16]
-    content:
-      {"text":"HUANDENG","fontFamily":"Noto Sans SC","fontSize":9,"color":"#5B6A62","bold":false,"align":["left","top"],"lineHeight":1.35}
-  - elementId: position
-    elementType: text
-    bounds:
-        [881,514,35,18]
-    content:
-      {"text":"","fontFamily":"Noto Sans SC","fontSize":10,"color":"#5B6A62","bold":false,"align":["right","top"],"lineHeight":1.35,"field":"main-position"}
-  - elementId: client-0
-    elementType: image
-    src: media/imported/0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13.png
-    sourceName: chatgpt.png
-    alt: chatgpt.png
-    bounds:
-        [116,140,58,58]
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: client-name-0
-    elementType: text
-    bounds:
-        [66,217,165,35]
-    content:
-      {"text":"ChatGPT","fontFamily":"Noto Sans SC","fontSize":18,"color":"#20372F","bold":false,"align":["center","top"],"lineHeight":1.35}
-  - elementId: client-1
-    elementType: image
-    src: media/imported/2ce1c57dd3b312417106a487815ab1235bddce17e1fa9b32a2f048bd71ee25d3.png
-    sourceName: codex.png
-    alt: codex.png
-    bounds:
-        [338,140,58,58]
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: client-name-1
-    elementType: text
-    bounds:
-        [288,217,165,35]
-    content:
-      {"text":"Codex","fontFamily":"Noto Sans SC","fontSize":18,"color":"#20372F","bold":false,"align":["center","top"],"lineHeight":1.35}
-  - elementId: client-2
-    elementType: image
-    src: media/imported/733f24f4c52acb15eb0fbded1cf40eb42b4ba8e62b882acac70b6234b50919a8.png
-    sourceName: claude-code.png
-    alt: claude-code.png
-    bounds:
-        [560,140,58,58]
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: client-name-2
-    elementType: text
-    bounds:
-        [510,217,165,35]
-    content:
-      {"text":"Claude Code","fontFamily":"Noto Sans SC","fontSize":18,"color":"#20372F","bold":false,"align":["center","top"],"lineHeight":1.35}
-  - elementId: client-3
-    elementType: image
-    src: media/imported/e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc.png
-    sourceName: deepseek.png
-    alt: deepseek.png
-    bounds:
-        [782,140,58,58]
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: client-name-3
-    elementType: text
-    bounds:
-        [732,217,165,35]
-    content:
-      {"text":"DeepSeek Harness","fontFamily":"Noto Sans SC","fontSize":18,"color":"#20372F","bold":false,"align":["center","top"],"lineHeight":1.35}
-  - elementId: clients-to-writer
+  - elementId: zd-present-arrow
     elementType: line
     bounds:
-        [482,264,0,14]
+      - 285
+      - 207
+      - 57
+      - 0
     viewBox:
       - 1
       - 1
     points: 0,0 1,1
     border:
-      width: 1.4
-      color: "#356F68"
+      width: 2.2
+      color: "#ED6A3A"
     arrow:
       - null
       - arrow
-  - elementId: writer-band
-    elementType: shape
-    shapeName: rect
+  - elementId: zd-live-show
+    elementType: image
     bounds:
-        [43,286,872,61]
-    fill:
-      type: solid
-      color: "#18372E"
-  - elementId: shared-writer
+      - 365
+      - 147
+      - 558
+      - 349
+    src: "media/imported/6915fa67d4e1225a59bd79cc1e6a64c3e4a10330c53cdf3356536c0028b1a854.png"
+    sourceName: "final-live-presentation.png"
+    fit:
+      mode: contain
+  - elementId: zd-play-keys
     elementType: text
     bounds:
-        [63,301,832,37]
+      - 40
+      - 294
+      - 286
+      - 130
     content:
-      text: 同一份项目 · 共享写入服务 · 可检查的修改
-      fontFamily: Noto Serif SC
-      fontSize: 23
-      color: "#F7F5EF"
+      text: |-
+        F5  从头放映
+        Shift + F5  从当前页
+        Esc  回到编辑
+      fontFamily: Noto Sans SC
+      fontSize: 19
+      color: "#F4F1E8"
       bold: false
       align:
-        - center
+        - left
         - top
-      lineHeight: 1.35
-  - elementId: connection-context
+      lineHeight: 1.8
+  - elementId: zd-play-check
     elementType: text
     bounds:
-        [44,367,870,130]
+      - 40
+      - 456
+      - 290
+      - 44
     content:
-      {"text":"1  点击顶部“助手连接”。\n2  选择客户端，按说明完成配置。\n3  让助手读取当前项目与选中页，核对项目名和 Slide ID。","fontFamily":"Noto Sans SC","fontSize":17,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.6}
-notes: "第一次接入时，点击编辑器顶部的“助手连接”，选择客户端，按其中的说明配置。让助手实际读取当前项目和选中页，核对返回的项目名与Slide ID。不同助手通过各自原生接入使用同一个文档协议。Plugin带来约定，Connector把请求送到明确选定的工程。Editor和助手都通过共享写入服务保存。这里的客户端图标表示支持的入口，不表示这些模型此刻都在线。接入后仍要用真实读取和操作来验证项目身份与权限。"
+      text: 有点击效果时，逐次点击检查。
+      fontFamily: Noto Sans SC
+      fontSize: 16
+      color: "#A8D7D5"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+notes: "先在项目中选中要讲的那场Presentation，再选起始页。放映菜单给出两个明确入口：F5从头开始，Shift+F5从当前页开始。右图来自实际放映界面。排练时核对页面顺序、可读性，以及这一场演讲的备注；有逐次揭示效果的页面，要逐次点击确认每一步。按Esc返回编辑。这里展示的是现场播放路径，静态PNG、PDF和PPTX不会携带这些交互点击。完成排练之后，再选择合适的交付格式和范围。"

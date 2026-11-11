@@ -12,7 +12,7 @@
 | v0.8 运行时代码 | `ecba4cb24d2753841290eb5d29f68b702a4902f6` |
 | 产品 / 宿主 | HUANDENG Editor `0.8.0` / Electron `38.7.2` |
 | 构建标记 | `sourceDirty: false`；`builtAt: 2026-11-07T23:44:51.5551681Z` |
-| 权威工作树 | `D:/_Proj/Huandeng-v08-20261108`，分支 `editor/v0.8-live-presentation` |
+| 权威工作树 | `<workspace-checkout>`，分支 `editor/v0.8-live-presentation` |
 | 构建与打包 | exit 0，自包含与搬迁检查通过 |
 
 Linux 开发副本与 Windows 基线的 1044 个文件逐一核对 SHA-256；运行时代码在 Windows 干净提交后构建。Linux 快照历史不推送到 origin。后续测试和交付文档提交不改变上表的运行时来源。
@@ -124,7 +124,7 @@ raw-CDP、不启用 Network 的 **25/25** 轮合成放映通过。三张页面�
 
 第二次安装已保留旧包并替换正式目录，随后 Python 在逐文件哈希的读取缓冲区分配处出现 `MemoryError`。只读诊断确认当前解释器为 64 位、主机仍有物理及 commit 余量，不能据此还原失败瞬间原因。哈希改用单个 64 KiB 缓冲区的 `readinto`，六个空文件/边界/多块大小与 SHA-256 直接计算一致；随后以精确失败收据续验已替换目录，仍逐文件匹配原 manifest，保留 portable、安装 smoke、原件校验和普通窗口重开的全部条件。此项是交付工具的资源处理，不列为编辑器内存优化。
 
-正式安装于 **2026-11-08T00:37:26.329963Z** 完成，收据 `passed: true`。位置为 `D:/_Proj/Huandeng/dist/HUANDENG-win32-x64`。共 **29,160 个文件 / 683,846,687 字节**，正式目录的每个文件 SHA-256 与大小均匹配已验收包；portable 检查通过，旧 v0.7 包保留在 canonical `.verification/installed-v07-backup-20261108-v08`。
+正式安装于 **2026-11-08T00:37:26.329963Z** 完成，收据 `passed: true`。位置为 `<editor-checkout>/dist/HUANDENG-win32-x64`。共 **29,160 个文件 / 683,846,687 字节**，正式目录的每个文件 SHA-256 与大小均匹配已验收包；portable 检查通过，旧 v0.7 包保留在 canonical `.verification/installed-v07-backup-20261108-v08`。
 
 桌面和开始菜单两处快捷方式的目标、工作目录与图标均匹配。安装前检查没有尚在运行的 canonical 用户进程，无强制终止。安装后独立三页合成项目通过，About 为 0.8.0、static 服务、可写、本机 PATH FFmpeg/libx264 可用，rendererErrors 为空，正常 0/null 退出。About 验证执行真实菜单 handler，通过临时 showMessageBox stub 捕获参数；不是原生对话框截图。安装包不内置或下载 FFmpeg。
 

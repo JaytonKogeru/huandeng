@@ -3,111 +3,213 @@ background:
   type: solid
   color: "#EEE9DD"
 elements:
+  - elementId: f-bg
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 0
+      - 0
+      - 960
+      - 540
+    fill:
+      type: solid
+      color: "#F4F1E8"
+  - elementId: f-route
+    elementType: text
+    bounds:
+      - 42
+      - 20
+      - 860
+      - 18
+    content:
+      text: ARRANGE PRESENTATION → SLIDE VERSIONS
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#168C8C"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.2
   - elementId: title
     elementType: text
     bounds:
-        [42,34,880,76]
+        [42,49,875,66]
     role: title
     content:
-      {"text":"Take the project, not just its entry file","fontFamily":"Georgia","fontSize":32,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.2}
-  - elementId: brand-small
-    elementType: image
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
-    sourceName: huandeng.png
-    alt: huandeng.png
+      {"text":"Choose what this occurrence follows","fontFamily":"Segoe UI","fontSize":32,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.1}
+  - elementId: f-foot-rule
+    elementType: shape
+    shapeName: rect
     bounds:
-        [43,512,18,18]
-    fit:
-      mode: contain
-    crop:
-      left: 0.18
-      right: 0.18
-      top: 0.14
-      bottom: 0.14
-  - elementId: foot
+      - 42
+      - 510
+      - 876
+      - 1
+    fill:
+      type: solid
+      color: "#CCD2CB"
+  - elementId: f-watermark
     elementType: text
     bounds:
-        [68,515,140,16]
+      - 42
+      - 518
+      - 700
+      - 17
     content:
-      {"text":"HUANDENG","fontFamily":"Segoe UI","fontSize":9,"color":"#5B6A62","bold":false,"align":["left","top"],"lineHeight":1.35}
-  - elementId: position
+      text: English · ChatGPT 6 Astra
+      fontFamily: Segoe UI
+      fontSize: 12
+      color: "#50646A"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.2
+  - elementId: f-position
     elementType: text
     bounds:
-        [881,514,35,18]
+      - 882
+      - 518
+      - 36
+      - 17
     content:
-      {"text":"","fontFamily":"Segoe UI","fontSize":10,"color":"#5B6A62","bold":false,"align":["right","top"],"lineHeight":1.35,"field":"main-position"}
-  - elementId: project-folder
-    elementType: icon
-    iconName: fas:folder-open
+      text: ""
+      fontFamily: Segoe UI
+      fontSize: 12
+      color: "#50646A"
+      bold: false
+      align:
+        - right
+        - top
+      lineHeight: 1.2
+      field: main-position
+  - elementId: f-live-label
+    elementType: text
     bounds:
       - 44
       - 145
-      - 69
-      - 69
-    fill:
-      type: solid
-      color: "#356F68"
-  - elementId: project-root
-    elementType: text
-    bounds:
-      - 136
-      - 158
-      - 786
-      - 52
+      - 410
+      - 25
     content:
-      text: The complete project folder
-      fontFamily: Georgia
-      fontSize: 26
-      color: "#20372F"
-      bold: false
+      text: FOLLOW MAIN
+      fontFamily: Segoe UI
+      fontSize: 15
+      color: "#168C8C"
+      bold: true
       align:
         - left
         - top
-      lineHeight: 1.35
-  - elementId: entry-choice
+      lineHeight: 1.2
+  - elementId: f-pin-label
+    elementType: text
+    bounds:
+      - 506
+      - 145
+      - 408
+      - 25
+    content:
+      text: PIN A NAMED VERSION
+      fontFamily: Segoe UI
+      fontSize: 15
+      color: "#ED6A3A"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.2
+  - elementId: f-live-control
+    elementType: image
+    bounds:
+      - 44
+      - 195.40859315589356
+      - 408
+      - 122.1828136882129
+    src: media/imported/12af5f4077a1120516f093a91057416c35643941d1f88de158dbd54e17c6ac89.png
+    sourceName: live.png
+    fit:
+      mode: contain
+    crop:
+      top: 0.23
+      bottom: 0.55
+  - elementId: f-pin-control
+    elementType: image
+    bounds:
+      - 506
+      - 193.36083650190113
+      - 408
+      - 126.2783269961977
+    src: media/imported/7280597791c015409536e6b36391648a85bc8b14d59b7f058e402af1e586e80a.png
+    sourceName: pin.png
+    fit:
+      mode: contain
+    crop:
+      top: 0.37
+      bottom: 0.26
+  - elementId: f-choice-divider
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 478
+      - 145
+      - 2
+      - 308
+    fill:
+      type: solid
+      color: "#CAD4CF"
+  - elementId: f-live-explain
     elementType: text
     bounds:
       - 44
-      - 257
-      - 343
-      - 210
+      - 355
+      - 408
+      - 94
     content:
       text: |-
-        Open deck.pptd,
-        or choose its containing folder.
-  
-        One folder, one explicit entry.
-        Carry the folder when moving the work.
+        The talk follows later
+        changes to its Main slide.
       fontFamily: Segoe UI
-      fontSize: 20
-      color: "#20372F"
+      fontSize: 23
+      color: "#112D32"
       bold: false
       align:
         - left
         - top
-      lineHeight: 1.5
-  - elementId: project-parts
-    elementType: table
+      lineHeight: 1.2
+  - elementId: f-pin-explain
+    elementType: text
     bounds:
-      - 432
-      - 235
-      - 482
-      - 257
-    columnWidths:
-      - 0.38
-      - 0.62
-    style:
-      cellStyle:
-        fontFamily: Segoe UI
-        fontSize: 16
-        color: "#20372F"
-        border:
-          color: "#C0CDC3"
-          width: 0.5
-        padding: 9
-      firstRowStyle:
-        fill: "#E4ECE6"
-        bold: true
-    rows:
-        [[{"text":"Inside the folder","align":["left","middle"]},{"text":"Role","align":["left","middle"]}],[{"text":"deck.pptd","align":["left","middle"]},{"text":"Project entry","align":["left","middle"]}],[{"text":"pages/ + media/","align":["left","middle"]},{"text":"Pages and original assets","align":["left","middle"]}],[{"text":".huandeng/","align":["left","middle"]},{"text":"Story, composition, named versions","align":["left","middle"]}],[{"text":"AGENTS.md","align":["left","middle"]},{"text":"Authoring and collaboration guidance","align":["left","middle"]}]]
-notes: "The PPTD file is the entry; the directory is the complete project. Pages, media, Story, composition, named page versions and authoring guidance stay together. Named versions travel with the folder; machine-local operation journals stay on the computer where they were recorded. PPTX already contains slide parts too; HUANDENG exposes an accessible working folder. The new entry flow accepts a PPTD or a folder containing exactly one PPTD. A descriptive folder suffix is optional. If the folder has several entries, choose the intended file explicitly."
+      - 506
+      - 355
+      - 408
+      - 94
+    content:
+      text: |-
+        The talk keeps this
+        recorded page version.
+      fontFamily: Segoe UI
+      fontSize: 23
+      color: "#112D32"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.2
+  - elementId: f-version-scope
+    elementType: text
+    bounds:
+      - 44
+      - 476
+      - 870
+      - 26
+    content:
+      text: This choice belongs to the occurrence in the selected Presentation.
+      fontFamily: Segoe UI
+      fontSize: 18
+      color: "#112D32"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.2
+notes: "The two actual controls show different occurrence choices. Live reference follows the current Main slide. A pinned version uses a named page checkpoint, here Project map · tutorial. Choose the behavior deliberately for each talk. The public short talk includes this real pin so the distinction can be inspected. Change the version selector and save project; the Main slide itself is not restored by selecting a pin."

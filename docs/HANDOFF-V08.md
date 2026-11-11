@@ -4,7 +4,7 @@
 
 ## 当前来源与验收
 
-基线 `f3e1fa1bda590e6b69d0ef47fabff077bdde0d49`，运行时 `ecba4cb24d2753841290eb5d29f68b702a4902f6`，0.8.0、Electron 38.7.2、sourceDirty=false，构建时间 `2026-11-07T23:44:51.5551681Z`。Windows worktree 为 `D:/_Proj/Huandeng-v08-20261108`，分支 `editor/v0.8-live-presentation`。Linux 只是同文件开发/传输副本，不推其快照历史。
+基线 `f3e1fa1bda590e6b69d0ef47fabff077bdde0d49`，运行时 `ecba4cb24d2753841290eb5d29f68b702a4902f6`，0.8.0、Electron 38.7.2、sourceDirty=false，构建时间 `2026-11-07T23:44:51.5551681Z`。Windows worktree 为 `<workspace-checkout>`，分支 `editor/v0.8-live-presentation`。Linux 只是同文件开发/传输副本，不推其快照历史。
 
 代码门槛：Linux 955/955，Windows 954 pass + 1 POSIX-only skip，共 82 个文件；TypeScript、Biome 661 文件通过。打包、自包含与搬迁检查通过。最终 EXE 131/131、package smoke、25 轮放映、80 页副本 50 对编辑和安装验收通过。29,160 个文件 / 683,846,687 字节已逐一核验；00:37:26Z 完成安装，普通窗口恢复原 80 页项目，82 源文件与本轮 raw 基线一致。旧 v0.7 包保留，未强制终止用户进程。详细失败归档、恢复及最终回执见 [VALIDATION-V08](VALIDATION-V08.md)。
 
@@ -51,7 +51,7 @@ BuildPanel 是新页默认入口，旧 v1 保留高级时间线。预演隐藏�
 
 ## 工程接续与用户数据
 
-正式 canonical 仓库 `D:/_Proj/Huandeng`。既有修改 `tests/fixtures/studio/pages/identities.page` 的 SHA-256 为 `fe378a48e57b63f2b9e7286578f68eefe856a381422930a6615f920b02622832`，不得 stage、reset 或覆盖。科研原件不运行测试写入。普通用户窗口安装后留给用户；测试另建 profile/runtime 和副本。
+正式 canonical 仓库 `<editor-checkout>`。既有修改 `tests/fixtures/studio/pages/identities.page` 的 SHA-256 为 `fe378a48e57b63f2b9e7286578f68eefe856a381422930a6615f920b02622832`，不得 stage、reset 或覆盖。科研原件不运行测试写入。普通用户窗口安装后留给用户；测试另建 profile/runtime 和副本。
 
 本轮原件基线是 Windows v0.8 worktree 的 `.verification/renderer-v08/raw-runtime-50.json`（既存 v0.7 包对照，passed/originalUnchanged 均 true）；当前 82 文件与它一致。更早 v0.7 packaged 基线有一页不同，首次预检已拦截并留档，不改旧收据或原件。安装应显式 `--source-baseline` 指向本轮 raw 基线，详见 Validation。不可省略前后哈希校验或把新旧两代基线描述成完全相同。
 

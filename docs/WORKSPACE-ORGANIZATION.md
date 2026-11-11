@@ -1,16 +1,16 @@
 # Workspace organization
 
-This document records the earlier 0.18 cleanup and the current 0.19 follow-up. The maintained HUANDENG entry is `D:\_Proj\Huandeng`. The older sections retain their own version, process and storage checkpoints; they are historical records. Current runtime installation and release identity are in [HANDOFF-V019.md](HANDOFF-V019.md), and the final section below records this follow-up's directory changes.
+This document records the earlier 0.18 cleanup and the current 0.19 follow-up. The maintained HUANDENG entry is `<editor-checkout>`. The older sections retain their own version, process and storage checkpoints; they are historical records. Current runtime installation and release identity are in [HANDOFF-V019.md](HANDOFF-V019.md), and the final section below records this follow-up's directory changes.
 
 ## One project entry
 
 The editable introductions live in [examples/huandeng-introduction](../examples/huandeng-introduction/README.md), which maintains the current collection and its authoring provenance. Each project has its own `deck.pptd`; shared assets and useful references live alongside the projects. The collection contains six introduction projects: ChatGPT, Claude Code and DeepSeek Harness, each in Chinese and English. Their current content and review status are recorded in the collection index. Old parallel copies under the former top-level introduction directory have been retired.
 
-Use `Start-Huandeng.cmd` from the main repository for the current desktop application. The top-level `D:\_Proj\README.md` is a short Chinese index pointing here and explaining the remaining related directories. No additional dated archive or active repository was created for this cleanup.
+Use `Start-Huandeng.cmd` from the main repository for the current desktop application. The top-level `<workspace-checkout>` is a short Chinese index pointing here and explaining the remaining related directories. No additional dated archive or active repository was created for this cleanup.
 
 ## Earlier cleanup checkpoint
 
-The first pass counted related directory names; it was not a complete inventory of every item in `D:\_Proj`. The later all-entry pass below covers the previously missed unprefixed installer, v0.13 transfer files, and private handoff directories.
+The first pass counted related directory names; it was not a complete inventory of every item in `<workspace-root>`. The later all-entry pass below covers the previously missed unprefixed installer, v0.13 transfer files, and private handoff directories.
 
 | Item | Before | After | Handling |
 | --- | ---: | ---: | --- |
@@ -27,7 +27,7 @@ Git removed worktree registrations through `git worktree remove`, without forcin
 
 ## What remains, and why
 
-| Location under `D:\_Proj` | Role and reason for retention |
+| Location under `<workspace-root>` | Role and reason for retention |
 | --- | --- |
 | `Huandeng` | Current source, introductions, shared assets, current desktop package, and development entry. |
 | `dsh-huandeng` | Current installed native DeepSeek bundle. Its package identity is huandeng; maintained source is now inside Huandeng/plugins/huandeng/adapters/deepseek. The directory name deliberately avoids the Windows collision with Huandeng. Unique prototype bytes were preserved during the formal upgrade. |
@@ -90,7 +90,7 @@ Three redundant native/coordinator ZIP files, totaling 39,745,201 bytes, were re
 
 The follow-up recorded at 2026-11-10 22:32 UTC examined **all 118 top-level entries**, including names without a HUANDENG prefix. This corrects the scope of the earlier audit. The work directory is named `story-20261111`; that name is not a claim about the host timezone.
 
-| All top-level items in `D:\_Proj` | Before | After |
+| All top-level items in `<workspace-root>` | Before | After |
 | --- | ---: | ---: |
 | Directories | 27 | 22 |
 | Loose files | 91 | 4 |
@@ -176,7 +176,7 @@ The private research sources and their original paths were preserved. The protec
 
 The 2026-11-11 follow-up again found 22 top-level directories and four loose files, with no v013-* loose artifacts. It did not remove unrelated projects. The workspace README now distinguishes the canonical HUANDENG source from the intentional DeepSeek installation directory.
 
-The formal DSH source is plugins/huandeng/adapters/deepseek in the HUANDENG repository. D:/_Proj/dsh-huandeng contains the installed native distribution named huandeng, not another maintained product checkout. Its path is deliberately different because Windows would otherwise collide with D:/_Proj/Huandeng. Unique prototype bytes were retained before the supported native upgrade; account, model and session stores were preserved.
+The formal DSH source is plugins/huandeng/adapters/deepseek in the HUANDENG repository. <dsh-bundle-dir> contains the installed native distribution named huandeng, not another maintained product checkout. Its path is deliberately different because Windows would otherwise collide with <workspace-checkout> Unique prototype bytes were retained before the supported native upgrade; account, model and session stores were preserved.
 
 The six introductions continue in their existing author/language directories inside examples/huandeng-introduction. Eight generated Brief aliases were verified byte-identical to the normalized brief files and removed. Named page versions remain inside their projects; ordinary modifications do not create another whole project.
 
@@ -188,6 +188,6 @@ The final C3 runtime is installed in the existing versioned application path. Th
 
 The [final cleanup receipt](evidence/editor-019/cleanup.json) records retirement of three superseded application trees, two superseded Editor ZIPs, owned test fixture/profile/runtime directories and the temporary clean-build worktree. The package/fixture removal covered 92,141 files and 2,993,935,330 apparent file bytes; this is a file inventory, not a separately measured physical free-space gain. The clean-worktree residual was removed only after its 2,875 tracked files matched C3 and active process references were checked. No process was stopped for cleanup.
 
-HUANDENG has one registered worktree, main. Its dist directory contains the current C3 0.19 physical installation and the stable compatibility junction. One explicit 0.18 rollback package is retained separately, alongside the single final 0.19 release ZIP and compact verification records. The top-level D:/_Proj inventory remains 22 directories and four existing loose files, with no new dated introduction or build tree.
+HUANDENG has one registered worktree, main. Its dist directory contains the current C3 0.19 physical installation and the stable compatibility junction. One explicit 0.18 rollback package is retained separately, alongside the single final 0.19 release ZIP and compact verification records. The top-level <workspace-root> inventory remains 22 directories and four existing loose files, with no new dated introduction or build tree.
 
 All six source folders now have Windows folder markers. Four were created through the visible Application menu > File action; two pre-existing pairs were preserved. The four historically tracked desktop.ini/project.ico files were removed only from the Git index, with their local bytes and attributes unchanged. Scoped ignore rules keep these host decorations out of future commits and portable archives. The six actual project folders, their artwork, stable IDs, named versions and current exports remain the maintained work.

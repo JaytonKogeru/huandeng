@@ -4,7 +4,7 @@ A shared Story workflow for Codex, Claude Code, official DeepSeek Harness and Ch
 
 ## Start from the open project
 
-Open the intended `.pptd` in HUANDENG. The desktop **Project → Agent setup** entry generates a client-specific connection fragment. Copy it into the intended client's configuration without replacing unrelated settings. The generator does not install, enable or connect a client. Editor v0.10 renames the entry to describe this actual outcome.
+Open the intended `.pptd` in HUANDENG. The desktop **Agent setup** toolbar action generates a client-specific connection fragment. Copy it into the intended client's configuration without replacing unrelated settings. The generator does not install, enable or connect a client.
 
 For a checkout or copied plugin, the equivalent is:
 
@@ -51,7 +51,7 @@ The plugin contains the discoverable `huandeng-story` skill. Alternatively, merg
 
 Use the native `huandeng` bundle for official [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness). The current adapter targets the actual DSH 0.2.2-rc.1 host. It incorporates the user's native prototype, carries the shared skill and scripts, and reconciles open Projects without starting another writer.
 
-Build with `node plugins/huandeng/scripts/build-deepseek.mjs --output <new-absolute-directory>`, then use the running profile's official Plugin Manager to install the resulting `huandeng` package. For an existing installation, inspect its exact identity and manager result before replacement. Do not hand-edit the profile or infer live success from a saved package. The detailed lifecycle, configuration, locale/icon packaging and verification contract is in [the native adapter guide](https://github.com/YuTongjiao/Huandeng/tree/main/plugins/huandeng/adapters/deepseek).
+Build with `node plugins/huandeng/scripts/build-deepseek.mjs --output <new-absolute-directory>`, then use the running profile's official Plugin Manager to install the resulting `huandeng` package. For an existing installation, inspect its exact identity and manager result before replacement. Do not hand-edit the profile or infer live success from a saved package. The detailed lifecycle, configuration, locale/icon packaging and verification contract is in [the native adapter guide](adapters/deepseek/README.md).
 
 Once installed, `configure.mjs --client deepseek-native --entry <absolute.pptd>` generates an override for the existing `huandeng` row. Default bundle discovery exposes verified open Projects under stable, entry-derived namespaces. Explicit entries narrow a task to its intended Projects. A changed origin/epoch rebuilds only that Project's bridge; a transient failed scan retains routes.
 

@@ -1,6 +1,6 @@
 # HUANDENG v0.9 审计：通用编辑与 Story Plugin
 
-日期：2026-11-08（Australia/Sydney）。基线 `70f655d905379037a3cec4223e4da5c79c1ef175`，运行时 0.8.0 / `ecba4cb24d2753841290eb5d29f68b702a4902f6`。Windows 干净 worktree `D:/_Proj/Huandeng-v09-20261108` 与开发副本 1,074 个源文件 SHA-256 一致。本文记录实施前判断；完成情况另记 Implementation / Validation。
+日期：2026-11-08（Australia/Sydney）。基线 `70f655d905379037a3cec4223e4da5c79c1ef175`，运行时 0.8.0 / `ecba4cb24d2753841290eb5d29f68b702a4902f6`。Windows 干净 worktree `<workspace-checkout>` 与开发副本 1,074 个源文件 SHA-256 一致。本文记录实施前判断；完成情况另记 Implementation / Validation。
 
 ## 1. 产品判断
 

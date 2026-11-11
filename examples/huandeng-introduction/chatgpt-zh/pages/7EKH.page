@@ -3,107 +3,133 @@ background:
   type: solid
   color: "#F7F5EF"
 elements:
+  - elementId: f-bg
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 0
+      - 0
+      - 960
+      - 540
+    fill:
+      type: solid
+      color: "#F4F1E8"
   - elementId: title
     elementType: text
     bounds:
-        [42,31,880,62]
+        [38,29,884,48]
     role: title
     content:
-      {"text":"同一结构里的局部差异","fontFamily":"Noto Serif SC","fontSize":28,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: context
+      {"text":"检查画布，然后保存页面","fontFamily":"Noto Sans SC","fontSize":30,"color":"#112D32","align":["left","top"],"lineHeight":1.32,"bold":true}
+  - elementId: f-watermark
     elementType: text
     bounds:
-        [43,105,870,28]
+      - 38
+      - 514
+      - 800
+      - 22
     content:
-      {"text":"公开科学例页 · 原图、数据、单位与来源留在一起","fontFamily":"Noto Sans SC","fontSize":14,"color":"#66756B","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: structure
-    elementType: image
-    src: media/imported/50273f1fa204b2f0ae10463c91dd9d8ffcea87c80d861da37c0db9755d091017.png
-    sourceName: dna-duplex-position7.png
-    alt: dna-duplex-position7.png
+      text: Chinese · ChatGPT 6 Astra + Subagents
+      fontFamily: Noto Sans SC
+      fontSize: 13
+      color: "#596D70"
+      align:
+        - left
+        - top
+      lineHeight: 1.32
+  - elementId: f-position
+    elementType: text
     bounds:
-      - 39
-      - 140
-      - 240
-      - 339
+      - 882
+      - 514
+      - 40
+      - 22
+    content:
+      text: ""
+      fontFamily: Noto Sans SC
+      fontSize: 13
+      color: "#596D70"
+      align:
+        - right
+        - top
+      lineHeight: 1.32
+      field: main-position
+  - elementId: f-save-controls
+    elementType: image
+    bounds:
+      - 176
+      - 124
+      - 608
+      - 84
+    src: media/imported/8ae6771c49c7c101d1e753cc3ee03c760be62acf87cb0f631ccc3dffeaae222c.png
+    sourceName: save-page-controls.png
     fit:
       mode: contain
-    crop:
-      left: 0.285
-      right: 0.265
-      top: 0.105
-      bottom: 0.07
-  - elementId: distance-chart
-    elementType: chart
-    bounds:
-        [298,164,616,256]
-    fontFamily: Microsoft YaHei
-    fontSize: 13
-    colors:
-      - "#356F68"
-      - "#A64F38"
-    legend: false
-    dataLabels: false
-    data:
-      {"cols":["position","distance"],"rows":[["1",10.7121],["2",10.7665],["3",10.5802],["4",10.3531],["5",10.4416],["6",10.4606],["7",10.2329],["8",10.4912],["9",10.5912],["10",10.4362],["11",10.8052],["12",10.8877]]}
-    series:
-        [{"type":"line","name":"C1′–C1′","encode":{"x":"position","y":"distance"},"color":"#356F68"}]
-    xAxis:
-      title: 配对位置
-    yAxis:
-      {"title":"","min":10,"max":11.2}
-  - elementId: focus
+  - elementId: f-save-result
     elementType: text
     bounds:
-      - 354
-      - 432
-      - 560
-      - 28
+      - 176
+      - 222
+      - 608
+      - 34
     content:
-      {"text":"位置 7：A7 与 B18 的 C1′ 相距 10.233 Å","fontFamily":"Noto Sans SC","fontSize":17,"color":"#A64F38","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: scope
+      text: 确认「页面已保存」
+      fontFamily: Noto Sans SC
+      fontSize: 18
+      color: "#168C8C"
+      align:
+        - center
+        - top
+      lineHeight: 1.32
+      bold: true
+  - elementId: f-final-canvas
+    elementType: image
+    bounds:
+      - 40
+      - 278
+      - 555
+      - 228
+    src: media/imported/d95ba29140db491cc375419aea44b04dbd1b6cdb0b965a61bd9ac807b49b0728.png
+    sourceName: selected-title-top.png
+    fit:
+      mode: contain
+  - elementId: f-save-steps
     elementType: text
     bounds:
-      - 354
-      - 470
-      - 560
-      - 36
+      - 650
+      - 280
+      - 270
+      - 188
     content:
-      {"text":"12 个位置来自同一结构；它们不是独立重复实验。","fontFamily":"Noto Sans SC","fontSize":13,"color":"#66756B","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: chain-a
+      text: |-
+        1  检查标题与原图
+  
+        2  保存页面 / Ctrl+S
+  
+        3  确认保存状态
+      fontFamily: Noto Sans SC
+      fontSize: 19
+      color: "#112D32"
+      align:
+        - left
+        - top
+      lineHeight: 1.35
+  - elementId: f-project-save
     elementType: text
     bounds:
-      - 45
-      - 481
-      - 90
-      - 22
+      - 650
+      - 468
+      - 270
+      - 42
     content:
-      {"text":"链 A","fontFamily":"Noto Sans SC","fontSize":13,"color":"#356F68","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: chain-b
-    elementType: text
-    bounds:
-      - 153
-      - 481
-      - 90
-      - 22
-    content:
-      {"text":"链 B","fontFamily":"Noto Sans SC","fontSize":13,"color":"#C48758","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: source
-    elementType: text
-    bounds:
-      - 44
-      - 516
-      - 830
-      - 17
-    content:
-      {"text":"公开结构：PDB 1BNA · Drew et al., PNAS (1981)","fontFamily":"Noto Sans SC","fontSize":10,"color":"#66756B","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: chart-unit
-    elementType: text
-    bounds:
-      - 355
-      - 139
-      - 400
-      - 24
-    content:
-      {"text":"C1′–C1′ (Å)","fontFamily":"Noto Sans SC","fontSize":14,"color":"#66756B","bold":false,"align":["left","top"],"lineHeight":1.3}
-notes: "这是贯穿操作演示的一页公开科学材料。左侧是1BNA DNA结构，曲线的十二个距离来自同一组坐标。位置7的A7与B18 C1′距离为10.2329 Å，显示为10.233 Å。这些位置不是独立重复实验。稍后我们会改变说明文字，保留原图、完整数据、轴和出处。能否在一次局部修改中留下这些东西，比再生成一张漂亮图片更接近真实科研工作。\n\nSources: https://www.rcsb.org/structure/1BNA ; https://doi.org/10.1073/pnas.78.4.2179 . Source coordinates and method: sources/science/."
+      text: |-
+        演讲顺序、章节等草稿，
+        在对应面板「保存项目」。
+      fontFamily: Noto Sans SC
+      fontSize: 15
+      color: "#168C8C"
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+notes: "第一张页完成后，先看真实画布：标题是不是讲清了这页的意思，图片是否完整，重要内容有没有被挡住。然后点击顶部保存页面，或者按 Ctrl+S，确认状态显示页面已保存。图中放大的是实际保存控件和真实保存状态。页面修改和项目编排有各自的保存入口；章节、演讲顺序等项目草稿，需要在对应面板保存项目。下一步，我们就在这份项目里做一次更小、更精确的改动。"

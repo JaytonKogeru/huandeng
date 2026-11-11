@@ -3,91 +3,158 @@ background:
   type: solid
   color: "#F7F5EF"
 elements:
+  - elementId: f-bg
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 0
+      - 0
+      - 960
+      - 540
+    fill:
+      type: solid
+      color: "#F4F1E8"
+  - elementId: f-route
+    elementType: text
+    bounds:
+      - 42
+      - 20
+      - 860
+      - 18
+    content:
+      text: ASSETS → SEARCH OR IMPORT AND PLACE
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#168C8C"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.2
   - elementId: title
     elementType: text
     bounds:
-        [42,34,880,76]
+        [42,49,875,66]
     role: title
     content:
-      {"text":"Keep the reason beside the edit","fontFamily":"Georgia","fontSize":32,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.2}
-  - elementId: brand-small
-    elementType: image
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
-    sourceName: huandeng.png
-    alt: huandeng.png
+      {"text":"Place an original from Assets","fontFamily":"Segoe UI","fontSize":32,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.1}
+  - elementId: f-foot-rule
+    elementType: shape
+    shapeName: rect
     bounds:
-        [43,512,18,18]
+      - 42
+      - 510
+      - 876
+      - 1
+    fill:
+      type: solid
+      color: "#CCD2CB"
+  - elementId: f-watermark
+    elementType: text
+    bounds:
+      - 42
+      - 518
+      - 700
+      - 17
+    content:
+      text: English · ChatGPT 6 Astra
+      fontFamily: Segoe UI
+      fontSize: 12
+      color: "#50646A"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.2
+  - elementId: f-position
+    elementType: text
+    bounds:
+      - 882
+      - 518
+      - 36
+      - 17
+    content:
+      text: ""
+      fontFamily: Segoe UI
+      fontSize: 12
+      color: "#50646A"
+      bold: false
+      align:
+        - right
+        - top
+      lineHeight: 1.2
+      field: main-position
+  - elementId: f-assets-search
+    elementType: image
+    bounds:
+        [44,175.14634146341461,441,239.70731707317074]
+    src: media/imported/f01fe9cecf65d49281e34248637c0b749da3e4e4e5d65c145c9a6b66ece5e84d.png
+    sourceName: assets.png
     fit:
       mode: contain
     crop:
-      left: 0.18
-      right: 0.18
-      top: 0.14
-      bottom: 0.14
-  - elementId: foot
+      {"bottom":0.76}
+  - elementId: f-asset-result
+    elementType: image
+    bounds:
+        [614,165.83004836444954,256,216.33990327110092]
+    src: media/imported/f01fe9cecf65d49281e34248637c0b749da3e4e4e5d65c145c9a6b66ece5e84d.png
+    sourceName: assets.png
+    fit:
+      mode: contain
+    crop:
+      top: 0.32
+      bottom: 0.43
+      right: 0.33
+  - elementId: f-asset-link
+    elementType: line
+    bounds:
+      - 500
+      - 274
+      - 88
+      - 0
+    viewBox:
+      - 1
+      - 1
+    points: 0,0 1,1
+    border:
+      width: 2.5
+      color: "#ED6A3A"
+    arrow:
+      - null
+      - arrow
+  - elementId: f-asset-result-label
     elementType: text
     bounds:
-        [68,515,140,16]
+      - 589
+      - 410
+      - 313
+      - 32
     content:
-      {"text":"HUANDENG","fontFamily":"Segoe UI","fontSize":9,"color":"#5B6A62","bold":false,"align":["left","top"],"lineHeight":1.35}
-  - elementId: position
-    elementType: text
-    bounds:
-        [881,514,35,18]
-    content:
-      {"text":"","fontFamily":"Segoe UI","fontSize":10,"color":"#5B6A62","bold":false,"align":["right","top"],"lineHeight":1.35,"field":"main-position"}
-  - elementId: story-request
+      text: The matching original
+      fontFamily: Segoe UI
+      fontSize: 20
+      color: "#112D32"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.2
+  - elementId: f-assets-next
     elementType: text
     bounds:
       - 44
-      - 152
-      - 472
-      - 159
+      - 469
+      - 870
+      - 32
     content:
-      text: |-
-        “Clarify the comparison on this page.
-        Keep the figure, all 12 values, units and source.”
-      fontFamily: Georgia
-      fontSize: 25
-      color: "#20372F"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.45
-  - elementId: story-practice
-    elementType: text
-    bounds:
-      - 45
-      - 351
-      - 468
-      - 129
-    content:
-      text: |-
-        State what this page needs to explain.
-        Then identify what must stay and what may change.
-  
-        The next contributor can start here.
+      text: Drag an existing image, or choose Import and place for a new file.
       fontFamily: Segoe UI
-      fontSize: 17
-      color: "#20372F"
+      fontSize: 19
+      color: "#168C8C"
       bold: false
       align:
         - left
         - top
-      lineHeight: 1.5
-  - elementId: story-panel
-    elementType: image
-    src: "media/imported/fb0e683edd84ba2bddf1608bec97f57e6dfb89f87dcaac76a09303348dcc8761.png"
-    sourceName: story-clean.png
-    alt: story-clean.png
-    bounds:
-        [584,132,330,371]
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-notes: "The human account helps the agent understand the job. Project Story records the overall purpose; page Story records the point, the evidence to preserve and the requested change. It is not a command to print the transcript on the slide. The actual Story panel sits beside a concrete editing request. A person or another assistant taking over should read this context instead of guessing what happened in the previous conversation."
+      lineHeight: 1.2
+notes: "Open the project asset library. Search for a source by name, then drag an existing image onto the slide. Import and place adds a new original from the device. This example searches for the actual HUANDENG mark already in the project. Placement and cropping control the slide instance; keep the source image and its attribution with the project. The two crops show the real search controls and the matching result at a readable size."

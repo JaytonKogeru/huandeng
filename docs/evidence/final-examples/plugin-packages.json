@@ -1,0 +1,236 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-11-11T09:38:10.599Z",
+  "version": "0.19.0",
+  "sourceCommitAtBuild": "4151cbf3fd74c67d8b1c7b86320e8244fe34d0c4",
+  "node": "v22.21.0",
+  "sourceFiles": {
+    "plugins/huandeng/README.md": "82afa56bf9f2cb91b331e58dd2091d65acc8bac0bbfd9a37a2cc2da114eb6ec6",
+    "plugins/huandeng/scripts/build-package.mjs": "c0ba1e2d303d6ff1989c11b6069bd73c968bb0999bfc451f77ee06c9f07c7eec"
+  },
+  "change": "README native-guide link repair, linked guide in portable allowlist, and current 0.19 Agent setup toolbar wording",
+  "packages": [
+    {
+      "kind": "portable-claude-codex",
+      "directory": "dist/plugin-packages/0.19.0/portable-claude-codex/huandeng",
+      "integrity": {
+        "version": "0.19.0",
+        "files": 25,
+        "entriesVerified": 24,
+        "manifestSha256": "625f6b607791b49b17f2139ee5d007b8771cc3bf60bb9e5233ab53fbe54fb527"
+      },
+      "vendorIntegrity": null,
+      "relativeMarkdownLinks": [
+        {
+          "source": "README.md",
+          "target": "adapters/deepseek/README.md",
+          "exists": true
+        },
+        {
+          "source": "skills/huandeng-story/SKILL.md",
+          "target": "references/client-routing.md",
+          "exists": true
+        },
+        {
+          "source": "skills/huandeng-story/SKILL.md",
+          "target": "references/production-design.md",
+          "exists": true
+        },
+        {
+          "source": "skills/huandeng-story/SKILL.md",
+          "target": "references/asset-evidence.md",
+          "exists": true
+        },
+        {
+          "source": "skills/huandeng-story/SKILL.md",
+          "target": "references/scientific-design.md",
+          "exists": true
+        },
+        {
+          "source": "skills/huandeng-story/SKILL.md",
+          "target": "references/connected-review.md",
+          "exists": true
+        }
+      ],
+      "installedComparison": {
+        "added": ["adapters/deepseek/README.md"],
+        "removed": [],
+        "changed": ["README.md", "content-manifest.json"],
+        "runtimeAndGuidanceBytesUnchanged": true,
+        "installedIntegrity": {
+          "version": "0.19.0",
+          "files": 24,
+          "entriesVerified": 23,
+          "manifestSha256": "91e6590712b601544e6bdb2aad4b8e4443c6fa7756fd908f4c78c762a0eecfa9"
+        }
+      },
+      "archive": {
+        "file": "HUANDENG-Plugin-0.19.0-Claude-Codex.zip",
+        "bytes": 218882,
+        "entries": 25,
+        "sha256": "750ec8287fca22c346f4a3f75d363c6d6f0bcc58c5737a6d9e95c3f420bdd054",
+        "everyEntryMatchesBuiltDirectory": true,
+        "topLevelDirectory": "huandeng"
+      }
+    },
+    {
+      "kind": "deepseek-native",
+      "directory": "dist/plugin-packages/0.19.0/deepseek-native/dsh-huandeng",
+      "integrity": {
+        "version": "0.19.0",
+        "files": 37,
+        "entriesVerified": 36,
+        "manifestSha256": "f69719e27819f57f56acefa88d0bbcb8f1030e5f1487570fe1f79b6bdb9f5e69"
+      },
+      "vendorIntegrity": {
+        "version": "0.19.0",
+        "files": 25,
+        "entriesVerified": 24,
+        "manifestSha256": "625f6b607791b49b17f2139ee5d007b8771cc3bf60bb9e5233ab53fbe54fb527"
+      },
+      "relativeMarkdownLinks": [
+        {
+          "source": "vendor/README.md",
+          "target": "adapters/deepseek/README.md",
+          "exists": true
+        },
+        {
+          "source": "vendor/skills/huandeng-story/SKILL.md",
+          "target": "references/client-routing.md",
+          "exists": true
+        },
+        {
+          "source": "vendor/skills/huandeng-story/SKILL.md",
+          "target": "references/production-design.md",
+          "exists": true
+        },
+        {
+          "source": "vendor/skills/huandeng-story/SKILL.md",
+          "target": "references/asset-evidence.md",
+          "exists": true
+        },
+        {
+          "source": "vendor/skills/huandeng-story/SKILL.md",
+          "target": "references/scientific-design.md",
+          "exists": true
+        },
+        {
+          "source": "vendor/skills/huandeng-story/SKILL.md",
+          "target": "references/connected-review.md",
+          "exists": true
+        }
+      ],
+      "installedComparison": {
+        "added": ["vendor/adapters/deepseek/README.md"],
+        "removed": [],
+        "changed": ["content-manifest.json", "vendor/README.md", "vendor/content-manifest.json"],
+        "runtimeAndGuidanceBytesUnchanged": true,
+        "installedIntegrity": {
+          "version": "0.19.0",
+          "files": 36,
+          "entriesVerified": 35,
+          "manifestSha256": "aacc8106c15e5970999181ae23783686b0a5f5297fbe1a75a409c9edf696d4b8"
+        }
+      },
+      "archive": {
+        "file": "HUANDENG-Plugin-0.19.0-DeepSeek.zip",
+        "bytes": 399354,
+        "entries": 37,
+        "sha256": "dc221cfdf1b79b5717a9f85a7880599701aa9707a0b1afa5add32ef59a0f12f9",
+        "everyEntryMatchesBuiltDirectory": true,
+        "topLevelDirectory": "dsh-huandeng"
+      }
+    }
+  ],
+  "checks": {
+    "focusedTests": {
+      "passed": 18,
+      "failed": 0,
+      "command": "node --test plugins/huandeng/scripts/configure.test.mjs plugins/huandeng/scripts/discovery.test.mjs plugins/huandeng/adapters/deepseek/adapter.test.mjs"
+    },
+    "claudeNativeValidation": {
+      "success": true,
+      "strict": true,
+      "errors": 0,
+      "warnings": 0,
+      "command": "claude plugin validate <portable-package> --strict --json"
+    },
+    "builderBiome": {
+      "exitCode": 0,
+      "output": "Checked 1 file in 37ms. No fixes applied.",
+      "workingDirectory": "repository root"
+    },
+    "portableDoctor": {
+      "ok": true,
+      "plugin": {
+        "version": "0.19.0",
+        "skillSha256": "f4188e0934e7846346e286286041f49592bec3231747caa99d0b7b32dd9d016b",
+        "packageIntegrity": "skill-matches-package"
+      },
+      "storyGuideSha256": "411af8cf93141680a51a73586d20aaf990f2c2850caf6cfdd2caca8fdc15382c",
+      "designAuditSupported": true,
+      "connection": "local-stdio-mcp",
+      "protocolVerified": true,
+      "modelTaskVerified": false,
+      "server": {
+        "name": "HUANDENG Plugin",
+        "version": "0.9.0"
+      },
+      "toolCount": 22,
+      "operationReviewSupported": true,
+      "guides": ["huandeng://guide/story", "huandeng://guide/operations"],
+      "deck": {
+        "deckId": "5e3ba52f-b72f-4326-98f5-20ae2e8cd59a",
+        "title": "HUANDENG 工作流介绍",
+        "pageCount": 24,
+        "writable": true
+      },
+      "next": "The bridge is ready. Load the same plugin/fragment in the intended agent client and perform a scoped task to verify that client."
+    },
+    "nativeVendorDoctor": {
+      "ok": true,
+      "plugin": {
+        "version": "0.19.0",
+        "skillSha256": "f4188e0934e7846346e286286041f49592bec3231747caa99d0b7b32dd9d016b",
+        "packageIntegrity": "skill-matches-package"
+      },
+      "storyGuideSha256": "411af8cf93141680a51a73586d20aaf990f2c2850caf6cfdd2caca8fdc15382c",
+      "designAuditSupported": true,
+      "connection": "local-stdio-mcp",
+      "protocolVerified": true,
+      "modelTaskVerified": false,
+      "server": {
+        "name": "HUANDENG Plugin",
+        "version": "0.9.0"
+      },
+      "toolCount": 22,
+      "operationReviewSupported": true,
+      "guides": ["huandeng://guide/story", "huandeng://guide/operations"],
+      "deck": {
+        "deckId": "5e3ba52f-b72f-4326-98f5-20ae2e8cd59a",
+        "title": "HUANDENG 工作流介绍",
+        "pageCount": 24,
+        "writable": true
+      },
+      "next": "The bridge is ready. Load the same plugin/fragment in the intended agent client and perform a scoped task to verify that client."
+    },
+    "dshCliHelp": {
+      "exitCode": 0,
+      "evidence": "Preserved prior read-only discovery from the unchanged configured CLI; not a new Host activation or model run.",
+      "standaloneValidationCommand": false,
+      "meaning": "plugin forwards package-management arguments to pnpm; no install/update command was invoked"
+    }
+  },
+  "boundaries": {
+    "installedDistributionsUnchanged": true,
+    "runtimeAndSharedSkillBytesMatchExistingInstallation": true,
+    "newArchiveInstalledInHost": false,
+    "newNativeModelTaskPerformed": false,
+    "profileAccountOrModelChanged": false,
+    "publicationPerformed": false,
+    "existingNativeTaskEvidence": "Belongs to the previously installed distributions and their original manifest hashes; not relabelled as execution of these new archives.",
+    "doctorScope": "Real stdio protocol, guide and expected Project identity; not model execution or native DSH Host activation.",
+    "legacyServerInfoVersion": "0.9.0 is the unchanged core literal; package manifests remain 0.19.0."
+  },
+  "diagnosticRecovery": "Bare dsh and pnpm were unavailable in the no-profile shell. Used the configured installed DSH executable for help and repository-local Biome with repository working directory. Earlier unsuccessful discovery/check attempts remain in ignored raw logs."
+}

@@ -3,146 +3,120 @@ background:
   type: solid
   color: "#F7F5EF"
 elements:
-  - elementId: title
+  - elementId: f-bg
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 0
+      - 0
+      - 960
+      - 540
+    fill:
+      type: solid
+      color: "#F4F1E8"
+  - elementId: f-route
     elementType: text
     bounds:
-        [42,34,880,76]
-    role: title
+      - 42
+      - 20
+      - 860
+      - 18
     content:
-      {"text":"Start from the page in the editor","fontFamily":"Georgia","fontSize":32,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.2}
-  - elementId: eyebrow
-    elementType: text
-    bounds:
-      - 43
-      - 112
-      - 870
-      - 21
-    content:
-      text: EDITOR · LOCATE, EDIT, INSPECT
+      text: INSPECTOR → STORY
       fontFamily: Segoe UI
       fontSize: 11
-      color: "#356F68"
+      color: "#168C8C"
       bold: true
       align:
         - left
         - top
-      lineHeight: 1.35
-  - elementId: brand-small
-    elementType: image
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
-    sourceName: huandeng.png
-    alt: huandeng.png
+      lineHeight: 1.2
+  - elementId: title
+    elementType: text
     bounds:
-        [43,512,18,18]
+        [42,49,875,66]
+    role: title
+    content:
+      {"text":"Write the intent beside the page","fontFamily":"Segoe UI","fontSize":32,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.1}
+  - elementId: f-foot-rule
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 42
+      - 510
+      - 876
+      - 1
+    fill:
+      type: solid
+      color: "#CCD2CB"
+  - elementId: f-watermark
+    elementType: text
+    bounds:
+      - 42
+      - 518
+      - 700
+      - 17
+    content:
+      text: English · ChatGPT 6 Astra
+      fontFamily: Segoe UI
+      fontSize: 12
+      color: "#50646A"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.2
+  - elementId: f-position
+    elementType: text
+    bounds:
+      - 882
+      - 518
+      - 36
+      - 17
+    content:
+      text: ""
+      fontFamily: Segoe UI
+      fontSize: 12
+      color: "#50646A"
+      bold: false
+      align:
+        - right
+        - top
+      lineHeight: 1.2
+      field: main-position
+  - elementId: f-story-shot
+    elementType: image
+    bounds:
+        [71.82065997130562,137,375.35868005738877,350]
+    src: "media/imported/c390a1dd2ae27ca035634042e2339fb6efb0aa04f2ae5ba89df36794c832041f.png"
+    sourceName: "story.png"
     fit:
       mode: contain
-    crop:
-      left: 0.18
-      right: 0.18
-      top: 0.14
-      bottom: 0.14
-  - elementId: foot
+    "crop": {"bottom":0.18}
+  - elementId: f-prompt
     elementType: text
     bounds:
-        [68,515,140,16]
+        [510,151,401,133]
     content:
-      {"text":"HUANDENG","fontFamily":"Segoe UI","fontSize":9,"color":"#5B6A62","bold":false,"align":["left","top"],"lineHeight":1.35}
-  - elementId: position
+      {"text":"“Shorten the headline.\nKeep the file types\nand relationships.”","fontFamily":"Segoe UI","fontSize":27,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.2}
+  - elementId: f-story-link
+    elementType: line
+    bounds:
+        [461,182,34,0]
+    viewBox:
+      - 1
+      - 1
+    points: 1,0 0,1
+    border:
+      width: 2.5
+      color: "#ED6A3A"
+    arrow:
+      - null
+      - arrow
+  - elementId: f-story-action
     elementType: text
     bounds:
-        [881,514,35,18]
+        [510,325,401,142]
     content:
-      {"text":"","fontFamily":"Segoe UI","fontSize":10,"color":"#5B6A62","bold":false,"align":["right","top"],"lineHeight":1.35,"field":"main-position"}
-  - elementId: workspace
-    elementType: image
-    src: "media/imported/7def8d67182fd6dae30b5c939f222bbbfa39299583bdfd8103229d924cf2f54b.png"
-    sourceName: editor-native-chart.png
-    alt: editor-native-chart.png
-    bounds:
-      - 27
-      - 147
-      - 677
-      - 346
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0.14
-  - elementId: dot-1
-    elementType: shape
-    shapeName: ellipse
-    bounds:
-        [38,211,24,24]
-    fill:
-      type: solid
-      color: "#A64F38"
-  - elementId: number-1
-    elementType: text
-    bounds:
-        [38,212,24,24]
-    content:
-      text: "1"
-      fontFamily: Segoe UI
-      fontSize: 14
-      color: "#FFFFFF"
-      bold: true
-      align:
-        - center
-        - middle
-      lineHeight: 1.35
-  - elementId: dot-2
-    elementType: shape
-    shapeName: ellipse
-    bounds:
-        [377,248,24,24]
-    fill:
-      type: solid
-      color: "#A64F38"
-  - elementId: number-2
-    elementType: text
-    bounds:
-        [377,249,24,24]
-    content:
-      text: "2"
-      fontFamily: Segoe UI
-      fontSize: 14
-      color: "#FFFFFF"
-      bold: true
-      align:
-        - center
-        - middle
-      lineHeight: 1.35
-  - elementId: dot-3
-    elementType: shape
-    shapeName: ellipse
-    bounds:
-        [646,252,24,24]
-    fill:
-      type: solid
-      color: "#A64F38"
-  - elementId: number-3
-    elementType: text
-    bounds:
-        [646,253,24,24]
-    content:
-      text: "3"
-      fontFamily: Segoe UI
-      fontSize: 14
-      color: "#FFFFFF"
-      bold: true
-      align:
-        - center
-        - middle
-      lineHeight: 1.35
-  - elementId: workspace-guide
-    elementType: text
-    bounds:
-      - 729
-      - 151
-      - 192
-      - 350
-    content:
-      {"text":"1  Project / Pages / Assets / Files\nLocate the material on the left.\n\n2  Canvas\nSelect and edit objects directly.\n\n3  Properties / Layers / Story\nInspect the structure and intent.","fontFamily":"Segoe UI","fontSize":17,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.35}
-notes: "The left navigation gives access to the project, pages, assets and files. The central canvas remains available for direct object editing. The right inspector holds properties, layers and Story. Workspace views above the canvas let us browse the deck, inspect the outline, arrange sections, write notes and inspect history. An agent edits the same document. Next we will record the page intent and prepare the source material."
+      {"text":"Select the page → Story → pencil\n\nWrite the purpose, what stays,\nand this one change.","fontFamily":"Segoe UI","fontSize":20,"color":"#112D32","bold":false,"align":["left","top"],"lineHeight":1.35}
+notes: "Select the project-map page and open Story in the Inspector. Use the pencil control to record its purpose, preservation constraints and requested change. This current 0.19 capture shows the brief for the actual page in this walkthrough. Write an action that can be checked in the result. Story stores context for the next person or assistant; judging the resulting page remains part of the editing work."

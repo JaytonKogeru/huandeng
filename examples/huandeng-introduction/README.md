@@ -1,100 +1,96 @@
-# HUANDENG 产品介绍 / Product introductions
+# HUANDENG：可编辑的 Editor 教程与独立示例
+# Editable Editor walkthroughs and independent examples
 
-这组介绍的任务是让读者理解工具、看懂工作区，并完成一次有证据可查的编辑与交付。作者的经历解释为什么要做这些设计；页面顺序按观众需要理解和使用的事情组织。
-These introductions explain what HUANDENG does, how to use it and why the design helps. The founder's account informs editorial choices; each author organizes the explanation around actual work.
+这组项目让读者在故事里学会实际操作：打开项目、选页与选对象、使用素材和 Story、保存并检查改动、组织演讲、预演和导出。最终 ChatGPT 两稿围绕 Editor 操作重新制作；Claude Code 与 DeepSeek Harness 四稿按作者要求冻结，只新增语言与模型水印。
 
-Editor and AI plugins: 0.19.0. The current source/Office reviews and native-author outcomes are recorded separately in [product validation](../../docs/PRODUCT-INTRODUCTION-VALIDATION.md). These remain candidates for owner review.
+These projects connect the product story to actual editing work. The final ChatGPT editions are independent Editor walkthroughs. The four Claude Code and DeepSeek Harness editions preserve their accepted content and design, with language/model watermarks added to every page.
+
+Editor and plugin version: **0.19.0**. Current checks are recorded in [final validation](../../docs/PRODUCT-INTRODUCTION-VALIDATION.md). Earlier release files and historical evidence describe their own revisions.
 
 ## 选择一稿 / Choose an edition
 
-| 作者与语言 | Main | Brief | 可编辑入口 | 本轮状态 |
+| Edition | Main | Brief | Editable entry | Watermark / authorship |
 | --- | ---: | ---: | --- | --- |
-| ChatGPT 中文 | 24 | 12 | [chatgpt-zh/deck.pptd](chatgpt-zh/deck.pptd) | 内容、对象、视觉、中英对应及 PowerPoint 检查完成 |
-| ChatGPT English | 24 | 12 | [chatgpt-en/deck.pptd](chatgpt-en/deck.pptd) | Content, editable objects, visual, bilingual and PowerPoint checks complete |
-| Claude Code 中文 | 26 | 9 | [claude-zh/deck.pptd](claude-zh/deck.pptd) | 稿件、对应修正与四导出完成；保留原生日志追加的权限拒绝记录 |
-| Claude Code English | 25 | 9 | [claude-en/deck.pptd](claude-en/deck.pptd) | Preferred design preserved; factual/function alignment complete; retained Office chart-label issue |
-| DeepSeek Harness 中文 | 22 | 12 | [deepseek-zh/deck.pptd](deepseek-zh/deck.pptd) | 原生完成；保留 4 类内容/对应问题，Brief 已按保存序列机械导出 |
-| DeepSeek Harness English | 22 | — | [deepseek-en/deck.pptd](deepseek-en/deck.pptd) | Native completion; factual and stale-Notes findings retained |
+| ChatGPT English | 24 | 12 | [chatgpt-en/deck.pptd](chatgpt-en/deck.pptd) | English · ChatGPT 6 Astra |
+| ChatGPT 中文 | 24 | 12 | [chatgpt-zh/deck.pptd](chatgpt-zh/deck.pptd) | Chinese · ChatGPT 6 Astra + Subagents |
+| Claude Code English | 25 | 9 | [claude-en/deck.pptd](claude-en/deck.pptd) | English · Claude Opus 5.5 |
+| Claude Code 中文 | 26 | 9 | [claude-zh/deck.pptd](claude-zh/deck.pptd) | 中文 · Claude Opus 5.5 |
+| DeepSeek Harness English | 22 | — | [deepseek-en/deck.pptd](deepseek-en/deck.pptd) | English · DeepSeek V4.1 Flash 1017 |
+| DeepSeek Harness 中文 | 22 | 12 | [deepseek-zh/deck.pptd](deepseek-zh/deck.pptd) | Chinese · DeepSeek V4.1 Flash 1017 |
 
-The six canonical projects on the working machine are D:/_Proj/Huandeng/examples/huandeng-introduction/<edition>/deck.pptd. Keep using these directories; historical versions do not require another dated project tree.
+The primary ChatGPT session wrote and designed every English page. Three parallel section agents authored eight Chinese pages each; the primary session coordinated the project and personally inspected all 24 Chinese pages. The two languages do not follow a forced alignment.
 
-## 下载 / Delivery files
+The native freeze audit covers **95 pages**. Removing the one newly added attribution object from each page reproduces its prior page data exactly. Original Notes, objects, scientific values, page order, metadata and Presentation arrangements also match the frozen baseline. The [native integration record](../../docs/NATIVE-INTEGRATION-0.19.md) separates actual host execution from document and process results.
 
-The verified 0.19 delivery assets are listed in [the release](https://github.com/JaytonKogeru/huandeng/releases/tag/editor-v0.19.0). A source ZIP includes the complete editable project, current exports and export reports. A PDF or PPTX alone is not the HUANDENG project. Git maintains the editable source and evidence; each project's existing Exports/ ignore rule keeps its generated deliveries out of Git. When browsing GitHub, use the download table below. Relative Exports/ links inside a project README resolve in the complete ZIP or after a local export.
+## 先做一处修改 / Make a first edit
 
-| Edition | Complete project | Main PDF | Main PowerPoint |
-| --- | --- | --- | --- |
-| ChatGPT 中文 | [ZIP](https://github.com/JaytonKogeru/huandeng/releases/download/editor-v0.19.0/huandeng-chatgpt-zh.zip) | [PDF](https://github.com/JaytonKogeru/huandeng/releases/download/editor-v0.19.0/huandeng-chatgpt-zh.pdf) | [PPTX](https://github.com/JaytonKogeru/huandeng/releases/download/editor-v0.19.0/huandeng-chatgpt-zh.pptx) |
-| ChatGPT English | [ZIP](https://github.com/JaytonKogeru/huandeng/releases/download/editor-v0.19.0/huandeng-chatgpt-en.zip) | [PDF](https://github.com/JaytonKogeru/huandeng/releases/download/editor-v0.19.0/huandeng-chatgpt-en.pdf) | [PPTX](https://github.com/JaytonKogeru/huandeng/releases/download/editor-v0.19.0/huandeng-chatgpt-en.pptx) |
-| Claude Code 中文 | [ZIP](https://github.com/JaytonKogeru/huandeng/releases/download/editor-v0.19.0/huandeng-claude-zh.zip) | [PDF](https://github.com/JaytonKogeru/huandeng/releases/download/editor-v0.19.0/huandeng-claude-zh.pdf) | [PPTX](https://github.com/JaytonKogeru/huandeng/releases/download/editor-v0.19.0/huandeng-claude-zh.pptx) |
-| Claude Code English | [ZIP](https://github.com/JaytonKogeru/huandeng/releases/download/editor-v0.19.0/huandeng-claude-en.zip) | [PDF](https://github.com/JaytonKogeru/huandeng/releases/download/editor-v0.19.0/huandeng-claude-en.pdf) | [PPTX](https://github.com/JaytonKogeru/huandeng/releases/download/editor-v0.19.0/huandeng-claude-en.pptx) |
-| DeepSeek Harness 中文 | [ZIP](https://github.com/JaytonKogeru/huandeng/releases/download/editor-v0.19.0/huandeng-deepseek-zh.zip) | [PDF](https://github.com/JaytonKogeru/huandeng/releases/download/editor-v0.19.0/huandeng-deepseek-zh.pdf) | [PPTX](https://github.com/JaytonKogeru/huandeng/releases/download/editor-v0.19.0/huandeng-deepseek-zh.pptx) |
-| DeepSeek Harness English | [ZIP](https://github.com/JaytonKogeru/huandeng/releases/download/editor-v0.19.0/huandeng-deepseek-en.zip) | [PDF](https://github.com/JaytonKogeru/huandeng/releases/download/editor-v0.19.0/huandeng-deepseek-en.pdf) | [PPTX](https://github.com/JaytonKogeru/huandeng/releases/download/editor-v0.19.0/huandeng-deepseek-en.pptx) |
+1. Keep the complete project folder and open its `deck.pptd` in Editor 0.19. Folder opening also works when the folder directly contains exactly one `.pptd`.
+2. In the English walkthrough, find **GX5Z** and read its Story. In the Chinese walkthrough, begin with the opening and selection lessons.
+3. Select a text object, change one phrase, inspect the canvas and save.
+4. Inspect the exact saved operation. Name a page version when the result is worth keeping.
+5. Choose the short Presentation, inspect its occurrence Notes and version choice, then rehearse and export the selected range.
 
-Where a Brief exists, its release filenames add -brief before .pdf/.pptx. The same fixed files live under Exports/brief.* inside the project. Current Main files are Exports/deck.pdf and Exports/deck.pptx. DeepSeek English did not author a separate Presentation.
+The English short talk is **First edit · short talk**. The Chinese short talk is **第一次修改 · 简短演讲**. Each has 12 occurrences and a real named-version pin: **Project map · tutorial** in English and **保存页面 · 教程定稿** in Chinese.
 
-## 继续编辑 / Continue editing
+Sections begin at useful content pages. The previous title-only divider pattern and scientific pin are historical; they are not requirements of these final tutorials.
 
-1. Extract the complete project folder and open its deck.pptd, or choose the folder in Editor 0.19.
-2. Keep pages, media, .huandeng, sources and supporting files together. The entry is a launch/order manifest, not the whole deck.
-3. Choose Main or one of that author's saved Presentations. Full and Brief reference the real source pages.
-4. Read speaker-notes.md for the continuous speaking notes; edit the corresponding page/occurrence Notes in the project.
+## 交付文件 / Delivery files
 
-A folder must directly contain exactly one .pptd for folder opening. No entry or multiple entries produce an explicit error. A descriptive .huandeng suffix is optional. Windows icons can be added through the visible Application menu → File → Identify project folder route; portable archives exclude OS folder decorations. See [project folders](../../docs/PROJECT-FOLDERS.md).
+Each complete project contains editable pages, original assets, source material, named versions, Notes and supporting evidence. Main deliveries are `Exports/deck.pdf` and `Exports/deck.pptx`. Where a Brief exists, its files are `Exports/brief.pdf` and `Exports/brief.pptx`.
 
-The two ChatGPT editions use 24 Main pages and 12-occurrence briefs. Main positions 4, 13 and 19 are title-only Section pages. The sequence follows one page, one talk, then people and assistants working together. Their brief includes a real named-version pin and occurrence-specific Notes; those are saved project behavior, not a diagram of an unimplemented feature.
+There are **22 final PDF/PPTX files** across the six projects. Each format contains 143 Main pages plus 54 Brief occurrences. DeepSeek English has no authored short Presentation.
+
+Generated exports are intentionally excluded from Git. They are included in the prepared complete-project delivery archives and can be regenerated through the Editor. Public release links should be attached to the exact reviewed candidate; an earlier 0.19 download is not automatically this final revision. See [open-source readiness](../../docs/OPEN-SOURCE-READINESS.md).
+
+Use each project's README and `speaker-notes.md` to inspect its current sequence. Continue editing the corresponding source page or Presentation occurrence. Send the whole folder to another HUANDENG author; a PDF or PPTX does not contain all of that project context.
 
 ## 材料与功能 / Material and product evidence
 
-[The original spoken account](story/USER-STORY.zh-CN.md) remains unchanged. [FACTS.md](story/FACTS.md) checks technical format and source attribution. Current [PRODUCT-BRIEF.md](story/PRODUCT-BRIEF.md) separates the audience's task from the author's transcript. Portable source copies live under each project's sources/story/.
+[The original spoken account](story/USER-STORY.zh-CN.md) remains unchanged. [FACTS.md](story/FACTS.md) records technical and attribution checks. The current [PRODUCT-BRIEF.md](story/PRODUCT-BRIEF.md) describes the final tutorial mission and ownership.
 
-Each root project uses 26 current distinct images: ten shared scientific/brand sources, nine real localized UI captures, four actual page previews and three historical evidence images. The real UI captures were made from the actual installed 0.18 Editor at DPR 3 before the runtime upgrade; they are not simulated 0.19 screenshots. The later folder-entry behavior has its own 0.19 validation.
+The ChatGPT walkthroughs use real 0.19 Editor captures and selected retained 0.18 operation/identity evidence. Current captures show the actual working projects. Earlier evidence is identified as such; it is not presented as a simulated current interface. Crops remain tied to original files, and arrows, labels and diagrams remain native editable objects.
 
-- [Scientific source package](assets/science/README.md): public PDB 1BNA coordinates, reproducible C1′ distance measurements, CSV and structure views. Twelve positions from one crystal structure are not independent experimental replicates.
-- [Original nominated demo](assets/reference/README.md): the unchanged 19-page reference and its identity.
-- [Brand marks](assets/brand/README.md): HUANDENG, client and dependency assets with provenance.
-- [Earlier task screenshot library](assets/README.md): public reference and diagnostic captures.
+- [Scientific source package](assets/science/README.md): original public PDB material, measurements, CSV and reproducible views. It remains available as source and historical material.
+- [Original nominated demo](assets/reference/README.md): the unchanged reference and its identity.
+- [Brand marks](assets/brand/README.md): client and dependency marks with provenance.
+- [Screenshot library](assets/README.md): retained public interface and diagnostic captures.
 
-Genuine tables use native table objects. Ordinary prose remains coherent text where practical. Scientific figures, real UI, icons and deliberate light/dark/color backgrounds retain their communicative roles. Text-only minimalism is not an acceptance criterion.
+The final ChatGPT narrative teaches the Editor rather than using DNA measurements as its main subject. Native author editions retain their scientific demonstrations unchanged. Their native chart and table behavior is checked separately in the export and Office records.
 
-Each ChatGPT Main PPTX contains three native tables, one native chart and one Office equation, verified in PowerPoint. The chart retains the twelve source values. The Brief intentionally shows an earlier pinned scientific version with its historical image fallback. Other unsupported objects and static-animation limits are listed in each export report.
-
-Named page versions and their media travel with the project. Machine-local operation/recovery journals remain with the originating installation; selected public edit evidence is included under evidence/. Current SOURCE-MANIFEST.json describes the packaged files, not a second authoring source.
+Named page versions and archived assets travel with the project. Installation-local operation and recovery journals do not. Public evidence contains selected results and file identities; raw prompts, account bindings and private runtime state are excluded.
 
 ## 预览 / Previews
 
-### ChatGPT 中文
-
-![ChatGPT 中文：编辑页面、组织演讲和共同修改](previews/chatgpt-zh-overview.png)
+The overview images show selected pages from the final saved editions. Open the project or PDF to inspect the full sequence.
 
 ### ChatGPT English
 
-![ChatGPT English: a page, a talk and shared work](previews/chatgpt-en-overview.png)
+![English Editor walkthrough: selection, Story, comparison, versions and delivery](previews/chatgpt-en-overview.png)
 
-### Claude Code 中文
+### ChatGPT 中文
 
-![Claude Code 中文：当前原生作品](previews/claude-zh-overview.png)
+![中文 Editor 教程：定位、编辑、回看、编排与交付](previews/chatgpt-zh-overview.png)
 
 ### Claude Code English
 
-![Claude Code English: current native edition](previews/claude-en-overview.png)
+![Claude Code English: frozen native design with attribution](previews/claude-en-overview.png)
 
-### DeepSeek Harness 中文
+### Claude Code 中文
 
-![DeepSeek Harness 中文：当前原生作品](previews/deepseek-zh-overview.png)
+![Claude Code 中文：保留原生设计并新增水印](previews/claude-zh-overview.png)
 
 ### DeepSeek Harness English
 
-![DeepSeek Harness English: current native edition](previews/deepseek-en-overview.png)
+![DeepSeek Harness English: frozen native design with attribution](previews/deepseek-en-overview.png)
 
-## 独立试作与验收 / Independent trials
+### DeepSeek Harness 中文
 
-Claude English retains its successful design and the user's actual page edits. The Chinese counterpart must cover the same substantive explanation. ChatGPT and DeepSeek did not use Claude's artwork as their style template.
+![DeepSeek Harness 中文：保留原生设计并新增水印](previews/deepseek-zh-overview.png)
 
-Native results retain their real successes and shortcomings. Each project README and product-trial/product-review evidence distinguish native completion, technical recovery, coordinator-only documentation/export work and content findings. Earlier native-trial/story records remain historical. Loading an authoring guide, a zero-warning geometry audit or a successful process exit does not establish editorial approval.
+## 验收与来源 / Review and provenance
 
-Read the [current specification](../../docs/PRODUCT-INTRODUCTION-SPEC.md), [validation](../../docs/PRODUCT-INTRODUCTION-VALIDATION.md) and [native integration](../../docs/NATIVE-INTEGRATION-0.19.md). The root pair passed independent review; the owner has not yet accepted the current revision.
+The current [specification](../../docs/PRODUCT-INTRODUCTION-SPEC.md) and [validation record](../../docs/PRODUCT-INTRODUCTION-VALIDATION.md) identify the final source, render and export checks. The ChatGPT editions received personal page-by-page visual review. The four native designs remain frozen; mechanical delivery and watermark verification do not rewrite or erase earlier authoring findings.
 
-## License and integrity
+PowerPoint and PDF are checked as delivered files. A retained Office layout difference is recorded where applicable. Successful tool execution, a clean geometry report and reviewer acceptance are distinct from the owner's final review.
 
-Repository MIT terms and upstream notices apply. Scientific sources, figures, icons, captures and dependencies retain their attribution. Scoped Git attributes preserve authored bytes and checkpoint hashes. The collection's Biome configuration keeps authored formatting while retaining parsing and lint checks.
+Repository MIT terms and upstream notices remain. Scientific material, figures, icons, brand marks and third-party code retain their individual source and license terms. Scoped Git attributes preserve authored page and checkpoint bytes.

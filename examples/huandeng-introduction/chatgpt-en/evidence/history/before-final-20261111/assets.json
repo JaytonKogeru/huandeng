@@ -1,0 +1,657 @@
+{
+  "schemaVersion": 3,
+  "project": "chatgpt-en",
+  "scope": "Current product introduction; historical media and versions are retained separately. UI capture bytes remain real Editor 0.18.0 UI, not simulated 0.19 feature evidence.",
+  "entries": [
+    {
+      "path": "media/imported/0b4a19dfbcd31a26ee1008f81b6aec774bca6b3cda224eff3a5dee8fd2d9e046.png",
+      "sha256": "0b4a19dfbcd31a26ee1008f81b6aec774bca6b3cda224eff3a5dee8fd2d9e046",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "kind": "historical-evidence",
+      "sourceName": "evidence-after.png",
+      "reason": "Retains the actual earlier edit, saved version or its interface evidence.",
+      "currentUses": [
+        {
+          "pageId": "3f5561d8-477e-4954-bee2-9877c8cddc69",
+          "slideId": "ZN52",
+          "elementId": "after"
+        },
+        {
+          "pageId": "80c650ec-8f56-403d-8f44-d190a84ed4b4",
+          "slideId": "9N3S",
+          "elementId": "pinned-page"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13.png",
+      "sha256": "0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13",
+      "pixels": [
+        720,
+        720
+      ],
+      "kind": "shared-source",
+      "source": "../assets/brand/chatgpt.png",
+      "currentUses": [
+        {
+          "pageId": "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6",
+          "slideId": "YZ4T",
+          "elementId": "client-0"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/16dba24060f059d665d4427635db27acdd0b6d4ee14ffbac4f5aea1cc7ee0c3b.png",
+      "sha256": "16dba24060f059d665d4427635db27acdd0b6d4ee14ffbac4f5aea1cc7ee0c3b",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "kind": "current-page-preview",
+      "pageId": "7d7d42a0-0db7-4d33-9b3f-5e1035097b50",
+      "renderSourceIndex": 5,
+      "currentUses": [
+        {
+          "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7",
+          "slideId": "AAD6",
+          "elementId": "main-page-0"
+        },
+        {
+          "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7",
+          "slideId": "AAD6",
+          "elementId": "selected-page-0"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/1b4af839b0215fcf8989c022103167aa25758bb481591f57459f6493b863c6df.png",
+      "sha256": "1b4af839b0215fcf8989c022103167aa25758bb481591f57459f6493b863c6df",
+      "pixels": [
+        621,
+        330
+      ],
+      "kind": "current-ui-capture",
+      "captureName": "operation-detail.png",
+      "editorVersion": "0.18.0",
+      "locale": "en",
+      "deviceScaleFactor": 3,
+      "publicContentOnly": true,
+      "currentUses": [
+        {
+          "pageId": "6a3aec16-2347-40fe-856d-df36c1f58509",
+          "slideId": "2ZQ3",
+          "elementId": "saved-operations"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/2a2f5cbcc74c7fa83c40127dd8b0e42c23f1157131aebe28492aa1ac27bbdc6d.png",
+      "sha256": "2a2f5cbcc74c7fa83c40127dd8b0e42c23f1157131aebe28492aa1ac27bbdc6d",
+      "pixels": [
+        294,
+        288
+      ],
+      "kind": "shared-source",
+      "source": "../assets/brand/github-repository.png",
+      "currentUses": [
+        {
+          "pageId": "bbcdc92a-915c-4988-a4d5-76e466d0424f",
+          "slideId": "5HW8",
+          "elementId": "credit-mark-1"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/2ce1c57dd3b312417106a487815ab1235bddce17e1fa9b32a2f048bd71ee25d3.png",
+      "sha256": "2ce1c57dd3b312417106a487815ab1235bddce17e1fa9b32a2f048bd71ee25d3",
+      "pixels": [
+        385,
+        385
+      ],
+      "kind": "shared-source",
+      "source": "../assets/brand/codex.png",
+      "currentUses": [
+        {
+          "pageId": "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6",
+          "slideId": "YZ4T",
+          "elementId": "client-1"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/3141de6201ac50bc936475a058db4be21189dc88121aafe007f80b72ec5e7ef6.png",
+      "sha256": "3141de6201ac50bc936475a058db4be21189dc88121aafe007f80b72ec5e7ef6",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "kind": "historical-evidence",
+      "sourceName": "evidence-before.png",
+      "reason": "Retains the actual earlier edit, saved version or its interface evidence.",
+      "currentUses": [
+        {
+          "pageId": "3f5561d8-477e-4954-bee2-9877c8cddc69",
+          "slideId": "ZN52",
+          "elementId": "before"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/342088ed88ab8fffc8ce2651cd6fbf183244f5069c7907702a957eb9cf9fa18a.png",
+      "sha256": "342088ed88ab8fffc8ce2651cd6fbf183244f5069c7907702a957eb9cf9fa18a",
+      "pixels": [
+        1812,
+        1812
+      ],
+      "kind": "shared-source",
+      "source": "../assets/science/dna-duplex-end.png",
+      "currentUses": [
+        {
+          "pageId": "95189956-cdd7-4ad9-88c8-cf28a204bb68",
+          "slideId": "35U5",
+          "elementId": "asset-end"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/40926da8c8366e79c1da02d2c7e8014a0f1c42490c012400764ce96f70e7c41e.png",
+      "sha256": "40926da8c8366e79c1da02d2c7e8014a0f1c42490c012400764ce96f70e7c41e",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "kind": "current-page-preview",
+      "pageId": "95189956-cdd7-4ad9-88c8-cf28a204bb68",
+      "renderSourceIndex": 6,
+      "currentUses": [
+        {
+          "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7",
+          "slideId": "AAD6",
+          "elementId": "main-page-1"
+        },
+        {
+          "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7",
+          "slideId": "AAD6",
+          "elementId": "selected-page-1"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/44e2a2aa5f3887deae386fa73f71234961f93e006873b632ccf38b6b6f1291a1.png",
+      "sha256": "44e2a2aa5f3887deae386fa73f71234961f93e006873b632ccf38b6b6f1291a1",
+      "pixels": [
+        512,
+        512
+      ],
+      "kind": "shared-source",
+      "source": "../assets/brand/open-slide.png",
+      "currentUses": [
+        {
+          "pageId": "bbcdc92a-915c-4988-a4d5-76e466d0424f",
+          "slideId": "5HW8",
+          "elementId": "credit-mark-0"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/50273f1fa204b2f0ae10463c91dd9d8ffcea87c80d861da37c0db9755d091017.png",
+      "sha256": "50273f1fa204b2f0ae10463c91dd9d8ffcea87c80d861da37c0db9755d091017",
+      "pixels": [
+        1572,
+        1572
+      ],
+      "kind": "shared-source",
+      "source": "../assets/science/dna-duplex-position7.png",
+      "currentUses": [
+        {
+          "pageId": "95189956-cdd7-4ad9-88c8-cf28a204bb68",
+          "slideId": "35U5",
+          "elementId": "asset-side"
+        },
+        {
+          "pageId": "c4b12919-5876-4acb-b63f-6a7493b54b37",
+          "slideId": "ZWZJ",
+          "elementId": "structure"
+        },
+        {
+          "pageId": "ca1eec7e-61bd-41ac-b6ab-e000d06797be",
+          "slideId": "XF8A",
+          "elementId": "measure-view"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+      "sha256": "6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef",
+      "pixels": [
+        512,
+        512
+      ],
+      "kind": "shared-source",
+      "source": "../assets/brand/huandeng.png",
+      "currentUses": [
+        {
+          "pageId": "90353b2a-6f7b-4ee5-8a8b-10bceb538190",
+          "slideId": "9DAA",
+          "elementId": "product-mark"
+        },
+        {
+          "pageId": "4ec264b7-018d-449c-8c8b-d9aede33a840",
+          "slideId": "2XM9",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "1ba18ad8-0701-4de6-83f5-555b949293d7",
+          "slideId": "GX5Z",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "1ba18ad8-0701-4de6-83f5-555b949293d7",
+          "slideId": "GX5Z",
+          "elementId": "identity"
+        },
+        {
+          "pageId": "7d7d42a0-0db7-4d33-9b3f-5e1035097b50",
+          "slideId": "FKA9",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "4a066483-9a11-450c-be15-c0be33d52989",
+          "slideId": "U8ZQ",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "95189956-cdd7-4ad9-88c8-cf28a204bb68",
+          "slideId": "35U5",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "ca1eec7e-61bd-41ac-b6ab-e000d06797be",
+          "slideId": "XF8A",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "3f5561d8-477e-4954-bee2-9877c8cddc69",
+          "slideId": "ZN52",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "dc5bfe5f-326a-4b28-8536-56e51ea4397e",
+          "slideId": "DHVW",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "6a3aec16-2347-40fe-856d-df36c1f58509",
+          "slideId": "2ZQ3",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "62d5734d-2fe5-441c-a50a-abaa95145b56",
+          "slideId": "9QQW",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7",
+          "slideId": "AAD6",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "095ba6fb-14f6-42b1-815a-7970ac214058",
+          "slideId": "74A2",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "80c650ec-8f56-403d-8f44-d190a84ed4b4",
+          "slideId": "9N3S",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "8050a155-9c2b-4cf5-b643-e9406b9b2b1c",
+          "slideId": "BHPP",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6",
+          "slideId": "YZ4T",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "e0b400eb-ddc1-4c42-af48-d420785b1d8f",
+          "slideId": "KW5P",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "e4fb0f10-ffa5-44e2-907f-b92e1b69535e",
+          "slideId": "DDJN",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "bbcdc92a-915c-4988-a4d5-76e466d0424f",
+          "slideId": "5HW8",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "8f9e154d-c5c2-4d79-b809-984586f8311e",
+          "slideId": "ECVR",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "8f9e154d-c5c2-4d79-b809-984586f8311e",
+          "slideId": "ECVR",
+          "elementId": "closing-mark"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/733f24f4c52acb15eb0fbded1cf40eb42b4ba8e62b882acac70b6234b50919a8.png",
+      "sha256": "733f24f4c52acb15eb0fbded1cf40eb42b4ba8e62b882acac70b6234b50919a8",
+      "pixels": [
+        192,
+        192
+      ],
+      "kind": "shared-source",
+      "source": "../assets/brand/claude-code.png",
+      "currentUses": [
+        {
+          "pageId": "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6",
+          "slideId": "YZ4T",
+          "elementId": "client-2"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/798be6b3c276d794b866e4b4c98470cd15628d4a5d372bdac62478d0fa992771.png",
+      "sha256": "798be6b3c276d794b866e4b4c98470cd15628d4a5d372bdac62478d0fa992771",
+      "pixels": [
+        1170,
+        585
+      ],
+      "kind": "current-ui-capture",
+      "captureName": "sections-detail.png",
+      "editorVersion": "0.18.0",
+      "locale": "en",
+      "deviceScaleFactor": 3,
+      "publicContentOnly": true,
+      "currentUses": [
+        {
+          "pageId": "62d5734d-2fe5-441c-a50a-abaa95145b56",
+          "slideId": "9QQW",
+          "elementId": "view-sections"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/7def8d67182fd6dae30b5c939f222bbbfa39299583bdfd8103229d924cf2f54b.png",
+      "sha256": "7def8d67182fd6dae30b5c939f222bbbfa39299583bdfd8103229d924cf2f54b",
+      "pixels": [
+        4800,
+        2880
+      ],
+      "kind": "current-ui-capture",
+      "captureName": "editor-native-chart.png",
+      "editorVersion": "0.18.0",
+      "locale": "en",
+      "deviceScaleFactor": 3,
+      "publicContentOnly": true,
+      "currentUses": [
+        {
+          "pageId": "90353b2a-6f7b-4ee5-8a8b-10bceb538190",
+          "slideId": "9DAA",
+          "elementId": "editor-cover"
+        },
+        {
+          "pageId": "1ba18ad8-0701-4de6-83f5-555b949293d7",
+          "slideId": "GX5Z",
+          "elementId": "editor-definition"
+        },
+        {
+          "pageId": "7d7d42a0-0db7-4d33-9b3f-5e1035097b50",
+          "slideId": "FKA9",
+          "elementId": "workspace"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/91315947e96e846550cc7b331e928f06d76426e23afd63decff60ca1dec94f27.png",
+      "sha256": "91315947e96e846550cc7b331e928f06d76426e23afd63decff60ca1dec94f27",
+      "pixels": [
+        645,
+        756
+      ],
+      "kind": "historical-evidence",
+      "sourceName": "versions-detail.png",
+      "reason": "Retains the actual earlier edit, saved version or its interface evidence.",
+      "currentUses": [
+        {
+          "pageId": "6a3aec16-2347-40fe-856d-df36c1f58509",
+          "slideId": "2ZQ3",
+          "elementId": "named-versions"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/c6c18f35d5a85ae5dd2fd3130880776950dd5530bfcb788c460cf38574892ef2.png",
+      "sha256": "c6c18f35d5a85ae5dd2fd3130880776950dd5530bfcb788c460cf38574892ef2",
+      "pixels": [
+        861,
+        1605
+      ],
+      "kind": "current-ui-capture",
+      "captureName": "assets.png",
+      "editorVersion": "0.18.0",
+      "locale": "en",
+      "deviceScaleFactor": 3,
+      "publicContentOnly": true,
+      "currentUses": [
+        {
+          "pageId": "95189956-cdd7-4ad9-88c8-cf28a204bb68",
+          "slideId": "35U5",
+          "elementId": "asset-library"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/d2eca7401ca2c38e77127c06524ac9af18ff07d24ca34fc36ef79a056efe0cf7.png",
+      "sha256": "d2eca7401ca2c38e77127c06524ac9af18ff07d24ca34fc36ef79a056efe0cf7",
+      "pixels": [
+        1170,
+        267
+      ],
+      "kind": "current-ui-capture",
+      "captureName": "outline-detail.png",
+      "editorVersion": "0.18.0",
+      "locale": "en",
+      "deviceScaleFactor": 3,
+      "publicContentOnly": true,
+      "currentUses": [
+        {
+          "pageId": "62d5734d-2fe5-441c-a50a-abaa95145b56",
+          "slideId": "9QQW",
+          "elementId": "view-outline"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/d697acf6f3c5bc265806bc8f6c4e6d58b964e0b2962392d0329a420639f45846.png",
+      "sha256": "d697acf6f3c5bc265806bc8f6c4e6d58b964e0b2962392d0329a420639f45846",
+      "pixels": [
+        480,
+        349
+      ],
+      "kind": "shared-source",
+      "source": "../assets/brand/pptxgenjs.png",
+      "currentUses": [
+        {
+          "pageId": "bbcdc92a-915c-4988-a4d5-76e466d0424f",
+          "slideId": "5HW8",
+          "elementId": "credit-mark-2"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/d7f8feba5f9ff8f5b719f4055b01d5473155c1eb3efcfb5d3b2c67dcd5f58dbe.png",
+      "sha256": "d7f8feba5f9ff8f5b719f4055b01d5473155c1eb3efcfb5d3b2c67dcd5f58dbe",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "kind": "current-page-preview",
+      "pageId": "c4b12919-5876-4acb-b63f-6a7493b54b37",
+      "renderSourceIndex": 1,
+      "currentUses": [
+        {
+          "pageId": "dc5bfe5f-326a-4b28-8536-56e51ea4397e",
+          "slideId": "DHVW",
+          "elementId": "identified-page"
+        },
+        {
+          "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7",
+          "slideId": "AAD6",
+          "elementId": "main-page-2"
+        },
+        {
+          "pageId": "095ba6fb-14f6-42b1-815a-7970ac214058",
+          "slideId": "74A2",
+          "elementId": "notes-science-preview"
+        },
+        {
+          "pageId": "80c650ec-8f56-403d-8f44-d190a84ed4b4",
+          "slideId": "9N3S",
+          "elementId": "live-page"
+        },
+        {
+          "pageId": "e0b400eb-ddc1-4c42-af48-d420785b1d8f",
+          "slideId": "KW5P",
+          "elementId": "shared-work"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/e304e3a318c00c6a52472d0e761be2ee055a51ef9a71c88cf2319f4214a9e2be.png",
+      "sha256": "e304e3a318c00c6a52472d0e761be2ee055a51ef9a71c88cf2319f4214a9e2be",
+      "pixels": [
+        1728,
+        816
+      ],
+      "kind": "current-ui-capture",
+      "captureName": "export-current.png",
+      "editorVersion": "0.18.0",
+      "locale": "en",
+      "deviceScaleFactor": 3,
+      "publicContentOnly": true,
+      "currentUses": [
+        {
+          "pageId": "e4fb0f10-ffa5-44e2-907f-b92e1b69535e",
+          "slideId": "DDJN",
+          "elementId": "export-menu"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc.png",
+      "sha256": "e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc",
+      "pixels": [
+        460,
+        460
+      ],
+      "kind": "shared-source",
+      "source": "../assets/brand/deepseek.png",
+      "currentUses": [
+        {
+          "pageId": "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6",
+          "slideId": "YZ4T",
+          "elementId": "client-3"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/fa59f55889e6e4aa240167729eb5c378bda2ed5286bff56ca741b312dd071f5a.png",
+      "sha256": "fa59f55889e6e4aa240167729eb5c378bda2ed5286bff56ca741b312dd071f5a",
+      "pixels": [
+        573,
+        219
+      ],
+      "kind": "current-ui-capture",
+      "captureName": "present-current.png",
+      "editorVersion": "0.18.0",
+      "locale": "en",
+      "deviceScaleFactor": 3,
+      "publicContentOnly": true,
+      "currentUses": [
+        {
+          "pageId": "e4fb0f10-ffa5-44e2-907f-b92e1b69535e",
+          "slideId": "DDJN",
+          "elementId": "present-menu"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/fb0e683edd84ba2bddf1608bec97f57e6dfb89f87dcaac76a09303348dcc8761.png",
+      "sha256": "fb0e683edd84ba2bddf1608bec97f57e6dfb89f87dcaac76a09303348dcc8761",
+      "pixels": [
+        897,
+        1257
+      ],
+      "kind": "current-ui-capture",
+      "captureName": "story-clean.png",
+      "editorVersion": "0.18.0",
+      "locale": "en",
+      "deviceScaleFactor": 3,
+      "publicContentOnly": true,
+      "currentUses": [
+        {
+          "pageId": "4a066483-9a11-450c-be15-c0be33d52989",
+          "slideId": "U8ZQ",
+          "elementId": "story-panel"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/fc2658bba4545e2798f397d6a64a3525c7472500fa617380cc8f214d3a719bcf.png",
+      "sha256": "fc2658bba4545e2798f397d6a64a3525c7472500fa617380cc8f214d3a719bcf",
+      "pixels": [
+        3936,
+        1950
+      ],
+      "kind": "current-ui-capture",
+      "captureName": "browse.png",
+      "editorVersion": "0.18.0",
+      "locale": "en",
+      "deviceScaleFactor": 3,
+      "publicContentOnly": true,
+      "currentUses": [
+        {
+          "pageId": "62d5734d-2fe5-441c-a50a-abaa95145b56",
+          "slideId": "9QQW",
+          "elementId": "view-browse"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/ff539df7ee63ab58de1ba5ce681749e514130d35fa8604db48f28bfc0fbf7b7b.png",
+      "sha256": "ff539df7ee63ab58de1ba5ce681749e514130d35fa8604db48f28bfc0fbf7b7b",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "kind": "current-page-preview",
+      "pageId": "dc5bfe5f-326a-4b28-8536-56e51ea4397e",
+      "renderSourceIndex": 13,
+      "currentUses": [
+        {
+          "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7",
+          "slideId": "AAD6",
+          "elementId": "main-page-3"
+        },
+        {
+          "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7",
+          "slideId": "AAD6",
+          "elementId": "selected-page-2"
+        }
+      ]
+    }
+  ]
+}

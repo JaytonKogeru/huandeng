@@ -1,93 +1,93 @@
-# Product introduction: current validation
+# Final Editor examples: validation
 
-Status: 0.19 implementation and delivery validation complete. The ChatGPT pair has completed source, independent content/visual and actual PowerPoint checks. Native client results, final package and ordinary installation have separate verified records. Author acceptance remains pending.
+**Current result:** the two ChatGPT Editor walkthroughs are complete and personally reviewed, all four native editions preserve their frozen source content with watermarks added, and all 22 final PDF/PPTX files have passed structural delivery checks. The 11 PPTX files were opened read-only in actual PowerPoint and rendered. One pre-existing Claude English chart-label layout issue remains documented.
 
-This record supersedes the current-delivery interpretation of [the 0.18.3 story report](INTRODUCTION-DELIVERY.md). That report remains a historical account of its own artifacts. The governing requirements are in [PRODUCT-INTRODUCTION-SPEC.md](PRODUCT-INTRODUCTION-SPEC.md).
+This is the November 11 final revision under the [current specification](PRODUCT-INTRODUCTION-SPEC.md). The [previous 0.19 validation](PRODUCT-INTRODUCTION-VALIDATION-PREVIOUS-019.md) remains a historical record. Public historical documents have machine-specific identifiers generalized as described in the [source audit](PUBLIC-SOURCE-AUDIT.md).
 
-## The correction to the editorial task
+## Corrected editorial goal
 
-The preceding task rewarded a coherent retelling of the founder’s account. That was insufficient for a product introduction. The current audience must understand what HUANDENG is, find their way through the Editor, make a focused edit, preserve evidence, review a change, reuse pages and deliver a talk. Personal experience explains the design choices; it does not supply every page’s content or dictate the spoken order.
+The earlier ChatGPT editions still gave too much space to the product's origin and scientific slide example. The final editions teach the Editor through actual work: open a project, locate a page and object, use Story and original assets, edit and save, inspect the change, name a version, arrange a talk, write its Notes, choose live or pinned references, rehearse and export.
 
-The root sequence is now organized around work: one page, one talk, then people and assistants working together. Two early pages establish the motivation and product components. A scientific example demonstrates editing with preserved material. Stable identity precedes history, then selection, occurrence Notes and fixed versions explain reuse. Assistant setup includes actual connection steps rather than logos alone.
+The primary session wrote and designed every English page. Three parallel section agents authored eight Chinese pages each. The primary session coordinated shared metadata and personally inspected every final Chinese page. English and Chinese are independent explanations, with no forced semantic or page alignment.
 
-Claude English remains the owner’s preferred reference for content usefulness and successful composition. Its artwork is not a style template for the other authors. Its maintenance task preserves user changes, while Claude Chinese is required to cover the same substantive explanation.
+The DNA source package and earlier named versions remain available as provenance and history. They no longer organize the ChatGPT tutorial.
 
-## Traceable acceptance checks
+## Final editions
 
-| Requirement | Current evidence |
-| --- | --- |
-| Explain what, how and why | Root Main 24 / Brief 12 follow an editing and delivery task, with corresponding Chinese and English topics and Notes. |
-| Interpret the story and repair the order | Product definition appears early; source Story preserves the founder’s account separately from the authored explanation. |
-| Preserve visual material and identity | Each root project currently uses 26 distinct images: 10 shared scientific/brand sources, nine current real UI captures, four actual page previews and three historical evidence images. |
-| Retain icons and acknowledgments | HUANDENG, client and dependency marks are present; attribution distinguishes OpenSlide, OpenPPTD formula reuse, PptxGenJS and the Kimi inspiration context. |
-| Avoid imitation prose tables | Independent inspection found three genuine native tables in each root Main; ordinary paragraphs and lists remain coherent text objects. |
-| Bilingual correspondence | Root pairs have matching substantive topics, claims, evidence and sequence; language-specific line wrapping is retained. Native pair correspondence is reviewed separately. |
-| Demonstrate real page reuse | Full 24 / Brief 12, exact stable IDs, a real named-version pin, local occurrence Notes and three actual live brief selections are present in the source project. |
-| Preserve scientific meaning | The original twelve distances, units, coordinates and method remain. Exact values are also present in the exported native Main chart. |
-| Keep the source project together | The six canonical folders remain under examples/huandeng-introduction; moving a deck requires its entire directory. |
-| File and folder launch | Editor 0.19 resolves one direct .pptd child; zero or multiple entries produce explicit errors. Existing folder customization is retained. |
-| Distinguish setup from real work | Setup, client-reported tasks and writer-backed saved receipts have distinct evidence and UI states. |
-| Test shared-project collaboration | A real ChatGPT/DSH fixture retained independent page edits, rejected a stale same-page apply and completed a fresh content-to-style handoff. |
-| Test actual native clients | Both DSH editions and both Claude continuations completed in their original native sessions. Earlier failures, export limitations and content findings remain separate from completion. |
+| Edition | Main | Brief | Visible watermark |
+| --- | ---: | ---: | --- |
+| ChatGPT English | 24 | 12 | English · ChatGPT 6 Astra |
+| ChatGPT Chinese | 24 | 12 | Chinese · ChatGPT 6 Astra + Subagents |
+| Claude English | 25 | 9 | English · Claude Opus 5.5 |
+| Claude Chinese | 26 | 9 | 中文 · Claude Opus 5.5 |
+| DeepSeek English | 22 | — | English · DeepSeek V4.1 Flash 1017 |
+| DeepSeek Chinese | 22 | 12 | Chinese · DeepSeek V4.1 Flash 1017 |
 
-## Root source and visual review
+These are 143 Main pages and 54 Brief occurrences. The [collection index](../examples/huandeng-introduction/README.md) links the six editable entries.
 
-The two current source projects each contain 24 Main pages and a 12-occurrence brief. Section pages at Main positions 4, 13 and 19 contain only the chapter title. The existing page IDs, useful media and meaningful history are retained; three redundant origin-story pages were deliberately retired using the shared writer. The earlier pre-existing English tombstone remains.
+## ChatGPT source and visual checks
 
-Every current page has a purpose, preservation constraints and Notes. Each brief follows its own actual sequence; the selected scientific occurrence pins the earlier wording-edit stage and has its own speaking notes. The root semantic maps and composition records are stored inside each project.
+Both projects retain their stable page identities, originals and meaningful history. Page and metadata edits used the active shared writer with fresh revisions, exact preview/apply and saved-operation readback. Every final page has Notes and current Story purpose and preservation constraints. Forty-eight final named page versions were recorded after visual review.
 
-The [independent review](evidence/product-introduction/root-review.json) is bound to [source and render fingerprints](evidence/product-introduction/root-inputs.json). It covered all 48 Main pages in ordered contact sheets, relevant full-page renders, source objects and all 24 Brief occurrences’ composition and Notes. Five concrete issues were closed:
+The primary session inspected all 48 final Editor renders individually. The review checked readable UI regions, actual controls, complete crops, visible comparison guides, layout, Notes/Story consistency and the correct editable watermark. Concrete crop problems in the English Assets, text-properties, Layers and assistant-selector views were corrected and rendered again. Chinese section owners also reviewed their final returned pages before integration.
 
-1. Add the actual assistant-setup path and a project/Slide ID read as the connection check.
-2. Enlarge real History, Outline and Sections task regions so that the relevant fields can be read.
-3. Remove an orphan Chinese character and keep the actual occurrence Notes consistent.
-4. Give each Section its own transition and correct Brief-specific next-page transitions.
-5. Replace a purported Brief thumbnail that was not actually selected, and avoid displaying current Main artwork as if it were the pinned historical occurrence.
+| Current image use | English | Chinese |
+| --- | ---: | ---: |
+| Distinct referenced image files | 32 | 43 |
+| Image instances on Main pages | 39 | 52 |
+| Main pages personally reviewed | 24 | 24 |
 
-An automated design report returned zero findings in each root project. That did not detect all five issues; source-aware editorial and visual review was necessary. No record treats a zero-warning report as author approval.
+These counts describe current image objects, not a quality score. They include actual Editor regions, page previews and retained public operation/identity evidence. Current captures use Editor 0.19; selected prior 0.18 evidence is identified by source. Image originals and their hashes remain available; native crops preserve the original files.
 
-## Actual export and Office checks
+The English short talk is **First edit · short talk**, with 12 occurrences and the named **Project map · tutorial** pin. The Chinese short talk is **第一次修改 · 简短演讲**, with 12 occurrences and **保存页面 · 教程定稿** pinned. Both include actual occurrence-specific Notes. Sections begin at useful content pages; the earlier title-only divider pattern and scientific pin are historical.
 
-The four final root PPTX files were opened read-only in PowerPoint 16.0. Both 24-page Main presentations were rendered in full; both unique pinned scientific pages were also rendered from their actual 12-page Brief files. The eight ordered Main Office sheets, scientific chart, Chinese table/equation, occurrence quote and both historical Brief pages were visually inspected. Source files and inspection copies remained unchanged.
+Current per-project records:
 
-Each Main PPTX contains three native tables, one native chart and one Office equation. The exact twelve scientific values survive in the chart’s numeric cache. The Brief deliberately uses the earlier named page, whose chart retains its historical image fallback and typography. The current Main chart has the later unit/axis spacing correction; historical artwork is not silently rewritten.
+- [English personal review](../examples/huandeng-introduction/chatgpt-en/evidence/final-review.json), [assets](../examples/huandeng-introduction/chatgpt-en/evidence/assets.json), [composition](../examples/huandeng-introduction/chatgpt-en/evidence/composition.json) and [Notes](../examples/huandeng-introduction/chatgpt-en/speaker-notes.md).
+- [Chinese personal review](../examples/huandeng-introduction/chatgpt-zh/evidence/final-review.json), [assets](../examples/huandeng-introduction/chatgpt-zh/evidence/assets.json), [composition](../examples/huandeng-introduction/chatgpt-zh/evidence/composition.json) and [Notes](../examples/huandeng-introduction/chatgpt-zh/speaker-notes.md).
 
-All eight PDF/PPTX exports passed actual page counts, export-report correspondence, ZIP/Notes checks where applicable, and occurrence Notes verification. PPTX/PDF remain static delivery formats. Current hashes and precise checks are in each project’s evidence/exports.json and evidence/office-product-verification.json; the [Office visual record](evidence/product-introduction/office-review.json) states what was actually viewed.
+Earlier root evidence is retained under each project's `evidence/history/before-final-20261111`; it does not validate the current artwork.
 
-## Native authoring and instruction compliance
+## Native freeze verification
 
-The native authors receive the same current mission, the full owner feedback, scientific/material sources and hard object rules. Each retains its own design direction. Loading an untruncated guide is evidence of availability, not proof that its instructions were followed.
+The owner froze both Claude Code and DeepSeek Harness editions. Their native authors added the language/model watermarks.
 
-The first DSH English attempts saved real work and then failed on malformed JSON. Inspection found invalid syntax inside complete tool arguments; it did not establish a transport truncation defect. Native shell execution also hit an existing Windows ACL restriction. Strict one-operation tool calls then allowed the same native session to finish 103 calls and export a 22-page English draft. The earlier failures remain part of the trial.
+A separate read-only comparison checked all **95 Main pages** against the pre-watermark baseline. Each page has exactly one new attribution text object. Removing that object reproduces the entire prior page data. Original element order, objects, Notes, scientific values, metadata, stable page order and Presentation arrangements remain unchanged. Both Claude native chart objects and their data match the baseline.
 
-The completed English draft contains 22 Main pages, five genuine native tables and substantially more real scientific/UI imagery. Independent review retained five concrete problem classes: a false claim that PPTX has no page identity; old Notes/designIntent that no longer match revised artwork; a displayed scientific Story example that differs from the current source; conflation of Main order and Presentation metadata revisions; and the author's inaccurate claim to have used the old prototype package. The current README corrects the package provenance without rewriting the native report. Native completion therefore does not establish a complete editorial pass.
+The [full freeze report](evidence/final-examples/native-watermark-freeze.json) includes per-page results and aggregate data hashes. This verifies the authorized maintenance boundary; it does not rewrite prior authoring findings as new passes.
 
-The Chinese counterpart completed 181 actual native tool calls against the final bundle without the earlier JSON interruption. Its Main has 22 pages, with authored 22-page Full and 12-page Brief Presentations. The criticized XZJN arrangement now uses one coherent source-copy rich-text object. Source inspection also confirmed that the three observations on page 4 and Story hierarchy on page 15 each remain a single text object. They are not misclassified as fake tables merely because their text is arranged in rows. Chinese review retained four content problem classes: an unsupplied literal utterance attributed to the academic supervisor; the same Main-order revision error as the English version; old cover/CKFY Story goals; and incomplete correspondence for named-version pins, MP4 limits and the uses of Browse/Outline/Sections. It covered all 22 PDF/Office pages in sequence, ten key Office pages at full size and all Main Notes. No new clipping, missing imagery or native-table overflow was found. The old 11-page Brief export was stale relative to the actual authored 12-page sequence. The coordinator exported that saved sequence mechanically and verified all twelve source revisions, occurrences and inherited Notes plus both PDF contact sheets. Main exports and source stayed unchanged. The Brief's native fixed cover count still says 01 / 22; this is recorded as a retained editorial limitation. No separate Brief Office review is claimed. The pair's substantive correspondence is documented in deepseek-zh/evidence/product-correspondence-review.json; equal page counts do not conceal its missing or contradictory content.
+Both Claude native watermark jobs exited successfully. Both DeepSeek native tasks reported completion and saved their watermark changes through the real native bundle, but their processes retained the host's Windows ACL/permission failure and exited with code 1. The saved project results were independently verified. No permission bypass, account/profile change or raw-MCP substitution was used to erase that distinction. See [native job outcomes](evidence/final-examples/native-watermark-jobs.json).
 
-Claude’s initial maintenance attempt reached the configured account’s usage limit before saving changes. After reset, the same English session completed an 18-tool maintenance stage for QK69/V2SV and related metadata. A subsequent bounded 27-tool native continuation corrected current-version/function correspondence and two unsupported assertions: screenshot inspection is difficult in the described workflow, rather than inherently unmeasurable; Story can preserve human judgment without guaranteeing a particular visual style. That continuation changed text/Notes and relevant Story on Main pages 1, 5, 6, 22 and 25, plus one Section Story. Main 25 / Brief 9, page order, object counts, geometry and original material remained. AVNM and 7NHP stayed byte-identical. All four final exports were generated by the native author against current revisions; the coordinator normalized the Brief delivery filenames.
+## Final PDF/PPTX checks
 
-The original Chinese session completed a 51-tool revision, producing 26 Main pages and a nine-page Brief with four local Notes. A subsequent nine-tool continuation corrected the corresponding assertions on Main pages 5 and 6 and their Notes/Story, recorded two named page versions, and generated all four current exports. Native completion is true, but the runner retains needs_attention because a PowerShell append to its DELIVERY-R2.md work log was denied by the permission mechanism. The coordinator neither bypassed that restriction nor wrote the denied log. Read-only source/export checks established the saved result; the author's stale mention of a seven-page Brief is superseded by the actual nine-occurrence sequence and files.
+All **22 files**, representing **11 saved collections**, were regenerated from the final source through installed Editor 0.19.0. Canonical filenames are `Exports/deck.pdf`, `Exports/deck.pptx` and, where authored, `Exports/brief.pdf` and `Exports/brief.pptx`.
 
-The final pair covers corresponding current product features, evidence, use steps and limits, including the 0.19 file-or-folder rule and the actual DSH/ChatGPT collaboration test. Chinese presents that test on an additional page; English carries the equivalent explanation in its existing agents page and Notes. This accounts for the 26/25 page difference without treating page counts as evidence of parity.
+The [export report](evidence/final-examples/exports.json) records:
 
-The prior complete 25/26-page Office review remains documented. After the bounded corrections, all five changed English pages and both changed Chinese pages were reviewed in their actual new PDF and PowerPoint renders. The other 20 English and 24 Chinese slide XML/relationship parts matched the previous Office inputs byte for byte. All 51 Main Notes and 18 Brief Notes were matched to the saved source; all four current PPTX scientific chart caches retained the exact twelve source CSV values. This is focused validation of the new exports, not a claim that every unchanged page was rendered again. Original tiny illustration thumbnails remain snapshots of their earlier capture; the Chinese page-20 miniature of page 6 was deliberately not regenerated.
+- 197 PDF pages and 197 PPTX slides, in the expected saved order.
+- Exact attribution text on all **394 delivered pages** across both formats.
+- All **197 PPTX Notes** matching the resolved page or occurrence Notes, with Unicode and whitespace normalization.
+- Correct 960 × 540 dimensions, ZIP integrity, relationships, media/native-object counts and file SHA-256.
+- Nine verified image-fallback uses across the ChatGPT Main/Brief outputs.
 
-Actual PowerPoint inspection retained one English export limitation on Main page 12 and its actual Brief page 5: the native curve and measurements are correct, but separately placed base-pair labels do not align with Office’s numeric x-axis ticks, and the long x-axis explanation overlaps that row. Both appearances were rendered and viewed in Office; the Editor/PDF rendering is readable. The Chinese scientific page was checked separately and did not reproduce that misplaced-label issue. The English result is not a complete PPTX visual pass, and the protected native-authored page was not silently rewritten to erase the trial finding.
+Those fallbacks cover five folder-icon objects and one multi-point emphasis line, reused where appropriate. The exported PNG resources are present and nonempty; extracted pixels and actual PowerPoint renders preserve their appearance. These particular objects are images in PPTX while remaining native editable objects in the HUANDENG project. The report retains `UNSUPPORTED_OBJECT` / `UNSUPPORTED_LINE_PATH` warnings rather than concealing the fallback.
 
-The formal DSH adapter, host activation, native failure diagnosis and actual two-client collaboration have their own [integration record](NATIVE-INTEGRATION-0.19.md). Root did not rewrite native author content to turn a failed requirement into a passing test.
+Fonts are not embedded. The exporter's native-chart advisory is separate from actual Office inspection.
 
-## Directory, source and release boundaries
+## Actual PowerPoint inspection
 
-D:/_Proj/Huandeng is the sole maintained product source. The DSH package is named huandeng; D:/_Proj/dsh-huandeng is its intentional installed distribution, with canonical adapter source inside plugins/huandeng/adapters/deepseek. The directory-name distinction avoids a Windows collision with the product repository.
+All **11 final PPTX files / 197 slides** were opened using PowerPoint's read-only `Open2007` route with repair disabled, and rendered to individual PNGs. Original exports and identical inspection copies retained their SHA-256 values. The [Office record](evidence/final-examples/office.json) identifies the exact files, actual application version and inspection scope.
 
-The top-level workspace scan still found 22 directories and four loose files, with no v013-* loose artifacts. Other independent projects remain. Eight generated Brief aliases were byte-identical to their canonical brief files and were removed after fresh hash checks; only the fixed delivery names remain.
+The final ChatGPT Main pages received full visual review in Office. The file-folder icons and Chinese export-range emphasis line were compared with the current Editor images; no missing graphics or severe displacement was found. The primary session also directly inspected the English project-map and handoff pages and the Chinese export-range page in Office.
 
-The feature/plugin commit C1 is aff4ac28753bb2d4422f2f993f2409742afaecf9, containing 53 scoped paths. Navigation correction C2 is f8ec88f73eef0db18a35b2e9b5024a70b7ffe734; its 21 related unit checks and two delayed-open cases passed. Final runtime C3 is cadaecbf9cf1661e28464fe68b7b866f68fecabe, adding a visible Application menu entry in five desktop files. Its exact clean build passed 78 focused tests, one CAS case, three browser checks, 18 plugin tests, type/build/Biome, eight native workflow gates, two navigation cases and four actual visible-menu checks. Example work and the unrelated user-modified fixture remain outside these runtime commits. The delivery commit contains slides, documentation and verification records without changing the executable’s C3 source identity.
+Claude English retains its earlier **Main page 12 / Brief page 5** issue: the native chart's long x-axis explanation overlaps the numeric tick-label band in PowerPoint. Its source values and curve remain correct, and the native chart is present. The primary session inspected the actual final Office page. The Chinese counterpart does not show that overlap. The frozen source was not changed to hide the finding.
 
-An early startup probe actively changed native foreground focus before each screenshot. Its blank and later visible samples therefore cannot establish an unassisted foreground-startup defect or a display fix. The corrected source-level checks launched from an actually focused test button and then used passive desktop capture: Home and six public read-only projects both rendered normally, without additional foreground manipulation, automatic clicks or reloads. This corrects the measurement boundary; it is not a claim of improved cold-start speed. The independently reproduced navigation races and their passing regression cases remain valid.
+PDF/Editor appearance and native PowerPoint layout are therefore reported separately. Technical checks and reviewer judgment do not assert the owner's acceptance of the rebuilt ChatGPT designs.
 
-The ordinary C2 installation preserved all 1,238 reviewed source/export files and restored all six selected pages, but actual desktop use exposed an inaccessible File menu under the Windows hidden-titlebar configuration. Internal menu-action checks had not established human reachability. C3 adds the visible Application menu button and routes only the trusted shell to the existing native menu. Source and exact-package physical-click checks verified English/Chinese access, new folder identification, retained customization and the disabled Home state. The first packaged menu run's metadata hash guard lacked a complete pre-initialization baseline; its failure is retained without inventing missing evidence. A targeted repeat recorded both writers fully initialized, then proved all six authored fixture files unchanged before/after the menu operations and normal exit. The final ordinary C3 installation used a fresh 1,240-file snapshot after the completed Claude edits. All those source/export files and both pre-existing marker pairs remained byte-identical. The ordinary launch showed all six tabs; actual tab/page actions then restored and verified the six previous short IDs, active DeepSeek English and maximized state. This was verified restoration work, not proof of automatic selected-page restoration. Four additional folders were identified through the visible menu. Three default-client protocol checks and all six refreshed DSH project routes passed against the installed C3 runtime without a model call or source mutation.
+## Runtime, plugins and public-source boundary
 
-The raw Git whitespace check returns exit 2 for preserved source formatting. The tracked worktree comparison has fourteen diagnostics in eleven frozen files. A separate temporary index covering the complete proposed delivery, including new files, has forty-two diagnostics in seventeen frozen files: twelve two-space blank lines inside YAML text scalars, six README/historical-notes trailing blank lines, and twenty-four Markdown hard line breaks in the original native reports. The [exact preservation baseline](evidence/frozen-source-whitespace.json) separately binds both modes to each path, line, file hash and line bytes in the reviewed project inventory. The delivery gate still runs the raw check and rejects any added, missing or changed diagnostic; it verifies actual staged bytes before committing. No global whitespace rule is disabled and no frozen authored source is reformatted to erase the warnings. This is an explicit release-specific exception, not a clean raw-check claim.
+The Editor runtime remains 0.19.0 at source C3 `cadaecbf9cf1661e28464fe68b7b866f68fecabe`; core npm remains 2.3.1. This final example/documentation milestone does not rebuild or relabel that executable.
 
-Installation, final package fingerprint, source/delivery commit distinction and publication are recorded in the 0.19 release handoff. The repository remains private, and neither upstream nor npm publication is part of this milestone.
+Both client-package forms are built inside the engineering project from `plugins/huandeng`. The final packaging changes repair documentation links, include the linked native guide and correct the current Agent setup toolbar route. Runtime, adapter and shared skill bytes remain identical to the existing native installation. Package integrity/protocol checks and real native task evidence are kept distinct in [native integration](NATIVE-INTEGRATION-0.19.md).
+
+Public-source cleanup preserves licenses and source attribution while removing private account bindings, native session identities and machine-specific document paths from the candidate tree. It does not erase private Git history. The [readiness record](OPEN-SOURCE-READINESS.md) describes the clean source snapshot, prepared delivery files and remaining publication decisions.

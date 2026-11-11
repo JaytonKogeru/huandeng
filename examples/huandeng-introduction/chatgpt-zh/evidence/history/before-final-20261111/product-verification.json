@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-11-11T01:48:03.074Z",
+  "project": "chatgpt-zh",
+  "checks": {
+    "mainOrder": true,
+    "presentationSelections": true,
+    "identityAndIntent": true,
+    "intentionalRetirement": true,
+    "preexistingTombstonePreserved": true,
+    "titleOnlySections": true,
+    "originalTwelveValues": true,
+    "realNamedVersionAndOccurrenceNotes": true
+  },
+  "pageCount": 24,
+  "fullCount": 24,
+  "briefCount": 12,
+  "allPassed": true,
+  "visualApproval": false,
+  "authorAccepted": false,
+  "manifestRevision": "sha256:b1d2bfdbd1f20d973d9b5d607d830970ab9960373fd4d251bb91a4c24349e68c",
+  "metadataRevision": "sha256:d8b7742e01097217eb421d8c6b1eb6a2258e52f6aa7a037f9a07884bfaffcf76",
+  "phase": "product-introduction-0.19",
+  "sourceStory": "sources/story/USER-STORY.zh-CN.md",
+  "editorialContract": "sources/story/PRODUCT-BRIEF.md",
+  "automatedDesignFindings": 1,
+  "automatedDesignTruncated": false,
+  "independentReview": "../../../../docs/PRODUCT-INTRODUCTION-VALIDATION.md",
+  "scopeNote": "Structural checks are separate from independent visual review, native-client completion and author acceptance."
+}

@@ -1,0 +1,2777 @@
+{
+  "schemaVersion": 1,
+  "auditedAt": "2026-11-11T08:37:47.206Z",
+  "result": "pass",
+  "totalPages": 95,
+  "addedAttributionObjects": 95,
+  "verification": "Read-only baseline comparison. Structural presence, text and bounds verified; no new visual acceptance or export claim.",
+  "originalAuditSha256": "4b082b94b3a936e581eca8d5793770987bb926b97ce0784cea68f29920c6f44c",
+  "editions": [
+    {
+      "edition": "claude-en",
+      "pass": true,
+      "comparisonScope": "Frozen baseline versus committed current state; no writes, exports, renders or writer startup",
+      "requestedAttribution": "English · Claude Opus 5.5",
+      "languageLabelAliases": {
+        "Chinese": "Chinese or 中文"
+      },
+      "pageCount": {
+        "baseline": 25,
+        "current": 25
+      },
+      "stablePageIdOrderUnchanged": true,
+      "shortCodeOrderUnchanged": true,
+      "originalPagesAndMetadataUnchanged": true,
+      "exactlyOneAddedAttributionPerPage": true,
+      "addedTextCounts": {
+        "English · Claude Opus 5.5": 25
+      },
+      "baselineOriginalElementCount": 436,
+      "currentElementCount": 461,
+      "metadataUnchanged": true,
+      "projectUnchanged": true,
+      "manifestUnchanged": true,
+      "metadataRevisionUnchanged": true,
+      "manifestRevisionUnchanged": true,
+      "pageRevisionChangedCount": 25,
+      "originalPageDataHashes": {
+        "baseline": "6be8153a4cc32345ace920010d56b637057aa7f96c9825dab9866513d642b7df",
+        "currentWithoutAddedObjects": "6be8153a4cc32345ace920010d56b637057aa7f96c9825dab9866513d642b7df"
+      },
+      "notesHashes": {
+        "baseline": "310e521d54c439af5e9516e222ad616f536fef38c7fbff548935987f4ad7ec15",
+        "current": "310e521d54c439af5e9516e222ad616f536fef38c7fbff548935987f4ad7ec15"
+      },
+      "metadataHashes": {
+        "baseline": "3e3f4fee2642a42eee99754daab42516f7ce92098bbebacfcfd1e4fd8c68de5c",
+        "current": "3e3f4fee2642a42eee99754daab42516f7ce92098bbebacfcfd1e4fd8c68de5c"
+      },
+      "projectHashes": {
+        "baseline": "5e1717d88757afb07538fd74df25f34a2a197fd8db8745a1b382a317a0d2c16d",
+        "current": "5e1717d88757afb07538fd74df25f34a2a197fd8db8745a1b382a317a0d2c16d"
+      },
+      "chartElementCount": {
+        "baseline": 1,
+        "current": 1
+      },
+      "chartObjectsAndValuesUnchanged": true,
+      "chartHashes": {
+        "baseline": "8f3d737b57d44ab3c0288f46ce985069c16f870366fd5b1dc59520b7450bd222",
+        "current": "8f3d737b57d44ab3c0288f46ce985069c16f870366fd5b1dc59520b7450bd222"
+      },
+      "presentationStructure": [
+        {
+          "ordinal": 1,
+          "storedItems": 25,
+          "pinnedItems": 0
+        },
+        {
+          "ordinal": 2,
+          "storedItems": 9,
+          "pinnedItems": 0
+        }
+      ],
+      "presentationsIncludingPinsAndNotesUnchanged": true,
+      "snapshotStableAcrossReadback": true,
+      "baselineElementTypes": {
+        "image": 68,
+        "text": 253,
+        "shape": 80,
+        "line": 26,
+        "table": 8,
+        "chart": 1
+      },
+      "currentElementTypes": {
+        "image": 68,
+        "text": 278,
+        "shape": 80,
+        "line": 26,
+        "table": 8,
+        "chart": 1
+      },
+      "differences": {
+        "metadata": {
+          "count": 0,
+          "items": [],
+          "truncated": false
+        },
+        "project": {
+          "count": 0,
+          "items": [],
+          "truncated": false
+        },
+        "manifest": {
+          "count": 0,
+          "items": [],
+          "truncated": false
+        }
+      },
+      "pages": [
+        {
+          "shortCode": "QMYQ",
+          "position": 1,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#7A8580",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "BW88",
+          "position": 2,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#A8C2BA",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "PPKK",
+          "position": 3,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#7A8580",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "RQ64",
+          "position": 4,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#7A8580",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "GDDR",
+          "position": 5,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#7A8580",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "C45U",
+          "position": 6,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#7A8580",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "2SD8",
+          "position": 7,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#A8C2BA",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "TFJB",
+          "position": 8,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#7A8580",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "7NHP",
+          "position": 9,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#7A8580",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "DKSN",
+          "position": 10,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#7A8580",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "EEGK",
+          "position": 11,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#A8C2BA",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "AVNM",
+          "position": 12,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#7A8580",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "QK69",
+          "position": 13,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#7A8580",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "AZJC",
+          "position": 14,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#7A8580",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "6FNH",
+          "position": 15,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#7A8580",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "4V98",
+          "position": 16,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#7A8580",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "KM5E",
+          "position": 17,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#A8C2BA",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "V2SV",
+          "position": 18,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#7A8580",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "73AG",
+          "position": 19,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#7A8580",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "JZ7U",
+          "position": 20,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#7A8580",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "SQNG",
+          "position": 21,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#A8C2BA",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "AUBX",
+          "position": 22,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#7A8580",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "SY94",
+          "position": 23,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#7A8580",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "3ECM",
+          "position": 24,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#7A8580",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "SMGE",
+          "position": 25,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#7A8580",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "edition": "claude-zh",
+      "pass": true,
+      "comparisonScope": "Frozen baseline versus committed current state; no writes, exports, renders or writer startup",
+      "requestedAttribution": "Chinese · Claude Opus 5.5",
+      "languageLabelAliases": {
+        "Chinese": "Chinese or 中文"
+      },
+      "pageCount": {
+        "baseline": 26,
+        "current": 26
+      },
+      "stablePageIdOrderUnchanged": true,
+      "shortCodeOrderUnchanged": true,
+      "originalPagesAndMetadataUnchanged": true,
+      "exactlyOneAddedAttributionPerPage": true,
+      "addedTextCounts": {
+        "中文 · Claude Opus 5.5": 26
+      },
+      "baselineOriginalElementCount": 334,
+      "currentElementCount": 360,
+      "metadataUnchanged": true,
+      "projectUnchanged": true,
+      "manifestUnchanged": true,
+      "metadataRevisionUnchanged": true,
+      "manifestRevisionUnchanged": true,
+      "pageRevisionChangedCount": 26,
+      "originalPageDataHashes": {
+        "baseline": "b5603d07e2cb1fbeda5967603f6384f1703337170b4c4332fca10aa591d027d3",
+        "currentWithoutAddedObjects": "b5603d07e2cb1fbeda5967603f6384f1703337170b4c4332fca10aa591d027d3"
+      },
+      "notesHashes": {
+        "baseline": "a797ab37cdb2e5cce87d73fd27bd633f6066985843ce3d4b828fbc5b9d6fd013",
+        "current": "a797ab37cdb2e5cce87d73fd27bd633f6066985843ce3d4b828fbc5b9d6fd013"
+      },
+      "metadataHashes": {
+        "baseline": "84de82cb1f5de3af6b3f93be376ee1843a54ffded1aa5e88178278099c7e0828",
+        "current": "84de82cb1f5de3af6b3f93be376ee1843a54ffded1aa5e88178278099c7e0828"
+      },
+      "projectHashes": {
+        "baseline": "6d58d44aa1636f8b654b40732706b61a8a8e1379e3a930aac3b506abc5b216c4",
+        "current": "6d58d44aa1636f8b654b40732706b61a8a8e1379e3a930aac3b506abc5b216c4"
+      },
+      "chartElementCount": {
+        "baseline": 1,
+        "current": 1
+      },
+      "chartObjectsAndValuesUnchanged": true,
+      "chartHashes": {
+        "baseline": "c9ad4529dde0d206b12b03ecab34e3d6db3450baaa608fe15c3a4f52e1407e4c",
+        "current": "c9ad4529dde0d206b12b03ecab34e3d6db3450baaa608fe15c3a4f52e1407e4c"
+      },
+      "presentationStructure": [
+        {
+          "ordinal": 1,
+          "storedItems": 26,
+          "pinnedItems": 0
+        },
+        {
+          "ordinal": 2,
+          "storedItems": 9,
+          "pinnedItems": 0
+        }
+      ],
+      "presentationsIncludingPinsAndNotesUnchanged": true,
+      "snapshotStableAcrossReadback": true,
+      "baselineElementTypes": {
+        "shape": 63,
+        "image": 64,
+        "text": 180,
+        "line": 18,
+        "table": 8,
+        "chart": 1
+      },
+      "currentElementTypes": {
+        "shape": 63,
+        "image": 64,
+        "text": 206,
+        "line": 18,
+        "table": 8,
+        "chart": 1
+      },
+      "differences": {
+        "metadata": {
+          "count": 0,
+          "items": [],
+          "truncated": false
+        },
+        "project": {
+          "count": 0,
+          "items": [],
+          "truncated": false
+        },
+        "manifest": {
+          "count": 0,
+          "items": [],
+          "truncated": false
+        }
+      },
+      "pages": [
+        {
+          "shortCode": "SAHG",
+          "position": 1,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "中文 · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#7A8580",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "ZX58",
+          "position": 2,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "中文 · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#A8C2BA",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "FNHB",
+          "position": 3,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "中文 · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#7A8580",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "KS6E",
+          "position": 4,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "中文 · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#7A8580",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "2723",
+          "position": 5,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "中文 · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#7A8580",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "GZBW",
+          "position": 6,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "中文 · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#7A8580",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "6KNX",
+          "position": 7,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "中文 · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#A8C2BA",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "2UCC",
+          "position": 8,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "中文 · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#7A8580",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "3DUH",
+          "position": 9,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "中文 · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#7A8580",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "SSFR",
+          "position": 10,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "中文 · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#7A8580",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "MC4X",
+          "position": 11,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "中文 · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#A8C2BA",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "BRHY",
+          "position": 12,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "中文 · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#7A8580",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "3D9R",
+          "position": 13,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "中文 · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#7A8580",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "A9FE",
+          "position": 14,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "中文 · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#7A8580",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "GBXR",
+          "position": 15,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "中文 · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#7A8580",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "3442",
+          "position": 16,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "中文 · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#7A8580",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "85Z6",
+          "position": 17,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "中文 · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#A8C2BA",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "ZWM9",
+          "position": 18,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "中文 · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#7A8580",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "DY5H",
+          "position": 19,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "中文 · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#7A8580",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "D26F",
+          "position": 20,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "中文 · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#7A8580",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "XVAD",
+          "position": 21,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "中文 · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#A8C2BA",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "FK8W",
+          "position": 22,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "中文 · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#7A8580",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "7K3P",
+          "position": 23,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "中文 · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#7A8580",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "J28N",
+          "position": 24,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "中文 · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#7A8580",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "YS6V",
+          "position": 25,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "中文 · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#7A8580",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "BDTW",
+          "position": 26,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "中文 · Claude Opus 5.5",
+              "bounds": [760, 10, 176, 16],
+              "fontSize": 10,
+              "color": "#7A8580",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "edition": "deepseek-en",
+      "pass": true,
+      "comparisonScope": "Frozen baseline versus committed current state; no writes, exports, renders or writer startup",
+      "requestedAttribution": "English · DeepSeek V4.1 Flash 1017",
+      "languageLabelAliases": {
+        "Chinese": "Chinese or 中文"
+      },
+      "pageCount": {
+        "baseline": 22,
+        "current": 22
+      },
+      "stablePageIdOrderUnchanged": true,
+      "shortCodeOrderUnchanged": true,
+      "originalPagesAndMetadataUnchanged": true,
+      "exactlyOneAddedAttributionPerPage": true,
+      "addedTextCounts": {
+        "English · DeepSeek V4.1 Flash 1017": 22
+      },
+      "baselineOriginalElementCount": 253,
+      "currentElementCount": 275,
+      "metadataUnchanged": true,
+      "projectUnchanged": true,
+      "manifestUnchanged": true,
+      "metadataRevisionUnchanged": true,
+      "manifestRevisionUnchanged": true,
+      "pageRevisionChangedCount": 22,
+      "originalPageDataHashes": {
+        "baseline": "90f73de959383687dae30188115ca596a7c93af0a66c9b74668a5a520f5a3f83",
+        "currentWithoutAddedObjects": "90f73de959383687dae30188115ca596a7c93af0a66c9b74668a5a520f5a3f83"
+      },
+      "notesHashes": {
+        "baseline": "d7b8fc0396843538dbcaccd0c46ac01cc94bcf0e222e6a812062e1ad3938f0d5",
+        "current": "d7b8fc0396843538dbcaccd0c46ac01cc94bcf0e222e6a812062e1ad3938f0d5"
+      },
+      "metadataHashes": {
+        "baseline": "a8f4156b53cb6baf26895e62563e3b1e5b7d8cae9fa07e3e6243e1d8ade40eb0",
+        "current": "a8f4156b53cb6baf26895e62563e3b1e5b7d8cae9fa07e3e6243e1d8ade40eb0"
+      },
+      "projectHashes": {
+        "baseline": "6d39a8dd781c09cea17d21a121fadd628690b22058c847fe625cc97879e9927e",
+        "current": "6d39a8dd781c09cea17d21a121fadd628690b22058c847fe625cc97879e9927e"
+      },
+      "chartElementCount": {
+        "baseline": 0,
+        "current": 0
+      },
+      "chartObjectsAndValuesUnchanged": true,
+      "chartHashes": {
+        "baseline": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "current": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "presentationStructure": [],
+      "presentationsIncludingPinsAndNotesUnchanged": true,
+      "snapshotStableAcrossReadback": true,
+      "baselineElementTypes": {
+        "shape": 39,
+        "text": 162,
+        "image": 47,
+        "table": 5
+      },
+      "currentElementTypes": {
+        "shape": 39,
+        "text": 184,
+        "image": 47,
+        "table": 5
+      },
+      "differences": {
+        "metadata": {
+          "count": 0,
+          "items": [],
+          "truncated": false
+        },
+        "project": {
+          "count": 0,
+          "items": [],
+          "truncated": false
+        },
+        "manifest": {
+          "count": 0,
+          "items": [],
+          "truncated": false
+        }
+      },
+      "pages": [
+        {
+          "shortCode": "98RC",
+          "position": 1,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · DeepSeek V4.1 Flash 1017",
+              "bounds": [690, 16, 222, 14],
+              "fontSize": 9.5,
+              "color": "#BDB7A8",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "BR4V",
+          "position": 2,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · DeepSeek V4.1 Flash 1017",
+              "bounds": [690, 16, 222, 14],
+              "fontSize": 9.5,
+              "color": "#8C8678",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "XFZM",
+          "position": 3,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · DeepSeek V4.1 Flash 1017",
+              "bounds": [690, 16, 222, 14],
+              "fontSize": 9.5,
+              "color": "#8C8678",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "TPCJ",
+          "position": 4,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · DeepSeek V4.1 Flash 1017",
+              "bounds": [690, 16, 222, 14],
+              "fontSize": 9.5,
+              "color": "#8C8678",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "MG2S",
+          "position": 5,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · DeepSeek V4.1 Flash 1017",
+              "bounds": [690, 16, 222, 14],
+              "fontSize": 9.5,
+              "color": "#8C8678",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "V7VJ",
+          "position": 6,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · DeepSeek V4.1 Flash 1017",
+              "bounds": [690, 16, 222, 14],
+              "fontSize": 9.5,
+              "color": "#8C8678",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "7GWR",
+          "position": 7,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · DeepSeek V4.1 Flash 1017",
+              "bounds": [690, 16, 222, 14],
+              "fontSize": 9.5,
+              "color": "#8C8678",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "WEZS",
+          "position": 8,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · DeepSeek V4.1 Flash 1017",
+              "bounds": [690, 16, 222, 14],
+              "fontSize": 9.5,
+              "color": "#BDB7A8",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "DR4V",
+          "position": 9,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · DeepSeek V4.1 Flash 1017",
+              "bounds": [690, 16, 222, 14],
+              "fontSize": 9.5,
+              "color": "#8C8678",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "KWPT",
+          "position": 10,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · DeepSeek V4.1 Flash 1017",
+              "bounds": [690, 16, 222, 14],
+              "fontSize": 9.5,
+              "color": "#8C8678",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "H29N",
+          "position": 11,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · DeepSeek V4.1 Flash 1017",
+              "bounds": [690, 16, 222, 14],
+              "fontSize": 9.5,
+              "color": "#8C8678",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "MKPP",
+          "position": 12,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · DeepSeek V4.1 Flash 1017",
+              "bounds": [690, 16, 222, 14],
+              "fontSize": 9.5,
+              "color": "#8C8678",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "89DU",
+          "position": 13,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · DeepSeek V4.1 Flash 1017",
+              "bounds": [690, 16, 222, 14],
+              "fontSize": 9.5,
+              "color": "#8C8678",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "CRUA",
+          "position": 14,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · DeepSeek V4.1 Flash 1017",
+              "bounds": [690, 16, 222, 14],
+              "fontSize": 9.5,
+              "color": "#8C8678",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "CBCQ",
+          "position": 15,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · DeepSeek V4.1 Flash 1017",
+              "bounds": [690, 16, 222, 14],
+              "fontSize": 9.5,
+              "color": "#8C8678",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "444J",
+          "position": 16,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · DeepSeek V4.1 Flash 1017",
+              "bounds": [690, 16, 222, 14],
+              "fontSize": 9.5,
+              "color": "#8C8678",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "TJKM",
+          "position": 17,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · DeepSeek V4.1 Flash 1017",
+              "bounds": [690, 16, 222, 14],
+              "fontSize": 9.5,
+              "color": "#8C8678",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "EKZK",
+          "position": 18,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · DeepSeek V4.1 Flash 1017",
+              "bounds": [690, 16, 222, 14],
+              "fontSize": 9.5,
+              "color": "#8C8678",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "DM3J",
+          "position": 19,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · DeepSeek V4.1 Flash 1017",
+              "bounds": [690, 16, 222, 14],
+              "fontSize": 9.5,
+              "color": "#8C8678",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "JYJD",
+          "position": 20,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · DeepSeek V4.1 Flash 1017",
+              "bounds": [690, 16, 222, 14],
+              "fontSize": 9.5,
+              "color": "#8C8678",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "AEUJ",
+          "position": 21,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · DeepSeek V4.1 Flash 1017",
+              "bounds": [690, 16, 222, 14],
+              "fontSize": 9.5,
+              "color": "#8C8678",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "TCMD",
+          "position": 22,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "attribution-watermark",
+              "text": "English · DeepSeek V4.1 Flash 1017",
+              "bounds": [690, 16, 222, 14],
+              "fontSize": 9.5,
+              "color": "#BDB7A8",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "edition": "deepseek-zh",
+      "pass": true,
+      "comparisonScope": "Frozen baseline versus committed current state; no writes, exports, renders or writer startup",
+      "requestedAttribution": "Chinese · DeepSeek V4.1 Flash 1017",
+      "languageLabelAliases": {
+        "Chinese": "Chinese or 中文"
+      },
+      "pageCount": {
+        "baseline": 22,
+        "current": 22
+      },
+      "stablePageIdOrderUnchanged": true,
+      "shortCodeOrderUnchanged": true,
+      "originalPagesAndMetadataUnchanged": true,
+      "exactlyOneAddedAttributionPerPage": true,
+      "addedTextCounts": {
+        "Chinese · DeepSeek V4.1 Flash 1017": 22
+      },
+      "baselineOriginalElementCount": 245,
+      "currentElementCount": 267,
+      "metadataUnchanged": true,
+      "projectUnchanged": true,
+      "manifestUnchanged": true,
+      "metadataRevisionUnchanged": true,
+      "manifestRevisionUnchanged": true,
+      "pageRevisionChangedCount": 22,
+      "originalPageDataHashes": {
+        "baseline": "c0ce6012eab299638b44d762fb443c7c2d80bff47e8dc5c8d8802b90c22f761e",
+        "currentWithoutAddedObjects": "c0ce6012eab299638b44d762fb443c7c2d80bff47e8dc5c8d8802b90c22f761e"
+      },
+      "notesHashes": {
+        "baseline": "4087a4b89e23ae0decbdb9dece6305cee0ad91899ce0b772b08f2a24a67316c3",
+        "current": "4087a4b89e23ae0decbdb9dece6305cee0ad91899ce0b772b08f2a24a67316c3"
+      },
+      "metadataHashes": {
+        "baseline": "074aa9a85d7cbb46773aa35d780b72fb01bd3b54638acf6af81a84c2a8628f99",
+        "current": "074aa9a85d7cbb46773aa35d780b72fb01bd3b54638acf6af81a84c2a8628f99"
+      },
+      "projectHashes": {
+        "baseline": "1db34ce77a83640a3d1f95955d599ee06ed4059eccd36dbe056f17d660f51155",
+        "current": "1db34ce77a83640a3d1f95955d599ee06ed4059eccd36dbe056f17d660f51155"
+      },
+      "chartElementCount": {
+        "baseline": 0,
+        "current": 0
+      },
+      "chartObjectsAndValuesUnchanged": true,
+      "chartHashes": {
+        "baseline": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "current": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "presentationStructure": [
+        {
+          "ordinal": 1,
+          "storedItems": 22,
+          "pinnedItems": 0
+        },
+        {
+          "ordinal": 2,
+          "storedItems": 12,
+          "pinnedItems": 0
+        }
+      ],
+      "presentationsIncludingPinsAndNotesUnchanged": true,
+      "snapshotStableAcrossReadback": true,
+      "baselineElementTypes": {
+        "image": 34,
+        "text": 168,
+        "shape": 27,
+        "line": 13,
+        "table": 3
+      },
+      "currentElementTypes": {
+        "image": 34,
+        "text": 190,
+        "shape": 27,
+        "line": 13,
+        "table": 3
+      },
+      "differences": {
+        "metadata": {
+          "count": 0,
+          "items": [],
+          "truncated": false
+        },
+        "project": {
+          "count": 0,
+          "items": [],
+          "truncated": false
+        },
+        "manifest": {
+          "count": 0,
+          "items": [],
+          "truncated": false
+        }
+      },
+      "pages": [
+        {
+          "shortCode": "CZD7",
+          "position": 1,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "model-watermark",
+              "text": "Chinese · DeepSeek V4.1 Flash 1017",
+              "bounds": [690, 16, 222, 14],
+              "fontSize": 9.5,
+              "color": "#AFC0B1",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "Z4XP",
+          "position": 2,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "model-watermark",
+              "text": "Chinese · DeepSeek V4.1 Flash 1017",
+              "bounds": [690, 16, 222, 14],
+              "fontSize": 9.5,
+              "color": "#6E7B72",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "4ST8",
+          "position": 3,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "model-watermark",
+              "text": "Chinese · DeepSeek V4.1 Flash 1017",
+              "bounds": [690, 16, 222, 14],
+              "fontSize": 9.5,
+              "color": "#E8ECDE",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "UGA7",
+          "position": 4,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "model-watermark",
+              "text": "Chinese · DeepSeek V4.1 Flash 1017",
+              "bounds": [690, 16, 222, 14],
+              "fontSize": 9.5,
+              "color": "#6E7B72",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "PQQR",
+          "position": 5,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "model-watermark",
+              "text": "Chinese · DeepSeek V4.1 Flash 1017",
+              "bounds": [690, 16, 222, 14],
+              "fontSize": 9.5,
+              "color": "#AFC0B1",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "2Z2N",
+          "position": 6,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "model-watermark",
+              "text": "Chinese · DeepSeek V4.1 Flash 1017",
+              "bounds": [690, 16, 222, 14],
+              "fontSize": 9.5,
+              "color": "#6E7B72",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "5MNK",
+          "position": 7,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "model-watermark",
+              "text": "Chinese · DeepSeek V4.1 Flash 1017",
+              "bounds": [690, 16, 222, 14],
+              "fontSize": 9.5,
+              "color": "#F1EFE4",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "5HUQ",
+          "position": 8,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "model-watermark",
+              "text": "Chinese · DeepSeek V4.1 Flash 1017",
+              "bounds": [690, 16, 222, 14],
+              "fontSize": 9.5,
+              "color": "#6E7B72",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "88WA",
+          "position": 9,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "model-watermark",
+              "text": "Chinese · DeepSeek V4.1 Flash 1017",
+              "bounds": [690, 16, 222, 14],
+              "fontSize": 9.5,
+              "color": "#6E7B72",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "AVJE",
+          "position": 10,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "model-watermark",
+              "text": "Chinese · DeepSeek V4.1 Flash 1017",
+              "bounds": [690, 16, 222, 14],
+              "fontSize": 9.5,
+              "color": "#6E7B72",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "G8WH",
+          "position": 11,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "model-watermark",
+              "text": "Chinese · DeepSeek V4.1 Flash 1017",
+              "bounds": [690, 16, 222, 14],
+              "fontSize": 9.5,
+              "color": "#6E7B72",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "4USM",
+          "position": 12,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "model-watermark",
+              "text": "Chinese · DeepSeek V4.1 Flash 1017",
+              "bounds": [690, 16, 222, 14],
+              "fontSize": 9.5,
+              "color": "#6E7B72",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "WMFA",
+          "position": 13,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "model-watermark",
+              "text": "Chinese · DeepSeek V4.1 Flash 1017",
+              "bounds": [690, 16, 222, 14],
+              "fontSize": 9.5,
+              "color": "#6E7B72",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "7PV4",
+          "position": 14,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "model-watermark",
+              "text": "Chinese · DeepSeek V4.1 Flash 1017",
+              "bounds": [690, 16, 222, 14],
+              "fontSize": 9.5,
+              "color": "#6E7B72",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "UZKY",
+          "position": 15,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "model-watermark",
+              "text": "Chinese · DeepSeek V4.1 Flash 1017",
+              "bounds": [690, 16, 222, 14],
+              "fontSize": 9.5,
+              "color": "#6E7B72",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "CKFY",
+          "position": 16,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "model-watermark",
+              "text": "Chinese · DeepSeek V4.1 Flash 1017",
+              "bounds": [690, 16, 222, 14],
+              "fontSize": 9.5,
+              "color": "#6E7B72",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "XZJN",
+          "position": 17,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "model-watermark",
+              "text": "Chinese · DeepSeek V4.1 Flash 1017",
+              "bounds": [690, 16, 222, 14],
+              "fontSize": 9.5,
+              "color": "#6E7B72",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "2FMW",
+          "position": 18,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "model-watermark",
+              "text": "Chinese · DeepSeek V4.1 Flash 1017",
+              "bounds": [690, 16, 222, 14],
+              "fontSize": 9.5,
+              "color": "#AFC0B1",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "5ZZM",
+          "position": 19,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "model-watermark",
+              "text": "Chinese · DeepSeek V4.1 Flash 1017",
+              "bounds": [690, 16, 222, 14],
+              "fontSize": 9.5,
+              "color": "#6E7B72",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "6DVM",
+          "position": 20,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "model-watermark",
+              "text": "Chinese · DeepSeek V4.1 Flash 1017",
+              "bounds": [690, 16, 222, 14],
+              "fontSize": 9.5,
+              "color": "#6E7B72",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "K9P9",
+          "position": 21,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "model-watermark",
+              "text": "Chinese · DeepSeek V4.1 Flash 1017",
+              "bounds": [690, 16, 222, 14],
+              "fontSize": 9.5,
+              "color": "#6E7B72",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        },
+        {
+          "shortCode": "QHUX",
+          "position": 22,
+          "originalDataUnchanged": true,
+          "metadataUnchanged": true,
+          "notesUnchanged": true,
+          "assetsUnchanged": true,
+          "originalElementOrderUnchanged": true,
+          "duplicateElementIds": [],
+          "addedObjectCount": 1,
+          "matchingAttributionCount": 1,
+          "watermarks": [
+            {
+              "elementId": "model-watermark",
+              "text": "Chinese · DeepSeek V4.1 Flash 1017",
+              "bounds": [690, 16, 222, 14],
+              "fontSize": 9.5,
+              "color": "#5E6C62",
+              "positiveArea": true,
+              "insideCanvas": true,
+              "notExplicitlyHidden": true,
+              "topOfStack": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

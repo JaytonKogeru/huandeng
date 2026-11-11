@@ -3,94 +3,134 @@ background:
   type: solid
   color: "#EEE9DD"
 elements:
+  - elementId: f-bg
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 0
+      - 0
+      - 960
+      - 540
+    fill:
+      type: solid
+      color: "#F4F1E8"
   - elementId: title
     elementType: text
     bounds:
-        [42,34,880,76]
+        [38,29,884,48]
     role: title
     content:
-      {"text":"下一次修改，仍然找得到原材料","fontFamily":"Noto Serif SC","fontSize":28,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.2}
-  - elementId: brand-small
-    elementType: image
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
-    sourceName: huandeng.png
-    alt: huandeng.png
-    bounds:
-        [43,512,18,18]
-    fit:
-      mode: contain
-    crop:
-      left: 0.18
-      right: 0.18
-      top: 0.14
-      bottom: 0.14
-  - elementId: foot
+      {"text":"从素材库，把原图放到页面里","fontFamily":"Noto Sans SC","fontSize":30,"color":"#112D32","align":["left","top"],"lineHeight":1.32,"bold":true}
+  - elementId: f-watermark
     elementType: text
     bounds:
-        [68,515,140,16]
+      - 38
+      - 514
+      - 800
+      - 22
     content:
-      {"text":"HUANDENG","fontFamily":"Noto Sans SC","fontSize":9,"color":"#5B6A62","bold":false,"align":["left","top"],"lineHeight":1.35}
-  - elementId: position
+      text: Chinese · ChatGPT 6 Astra + Subagents
+      fontFamily: Noto Sans SC
+      fontSize: 13
+      color: "#596D70"
+      align:
+        - left
+        - top
+      lineHeight: 1.32
+  - elementId: f-position
     elementType: text
     bounds:
-        [881,514,35,18]
+      - 882
+      - 514
+      - 40
+      - 22
     content:
-      {"text":"","fontFamily":"Noto Sans SC","fontSize":10,"color":"#5B6A62","bold":false,"align":["right","top"],"lineHeight":1.35,"field":"main-position"}
-  - elementId: asset-library
+      text: ""
+      fontFamily: Noto Sans SC
+      fontSize: 13
+      color: "#596D70"
+      align:
+        - right
+        - top
+      lineHeight: 1.32
+      field: main-position
+  - elementId: f-assets
     elementType: image
-    src: "media/imported/3a3f6fb3a98a38f01ec016c8e8fa44d63daa05aad1920192d426f74b3cca0fa5.png"
-    sourceName: assets.png
-    alt: assets.png
     bounds:
-      - 43
-      - 143
-      - 282
-      - 347
+      - 40
+      - 122
+      - 250
+      - 379
+    src: media/imported/ed8ac0831e298045c0a59fe14ade8b7f0a4d6aa1ced2556c2c128264cf136afc.png
+    sourceName: assets-mark.png
     fit:
       mode: contain
     crop:
       left: 0
       right: 0
       top: 0
-      bottom: 0
-  - elementId: asset-side
-    elementType: image
-    src: media/imported/50273f1fa204b2f0ae10463c91dd9d8ffcea87c80d861da37c0db9755d091017.png
-    sourceName: dna-duplex-position7.png
-    alt: dna-duplex-position7.png
-    bounds:
-      - 364
-      - 140
-      - 166
-      - 276
-    fit:
-      mode: contain
-    crop:
-      left: 0.285
-      right: 0.265
-      top: 0.105
-      bottom: 0.07
-  - elementId: asset-end
-    elementType: image
-    src: media/imported/342088ed88ab8fffc8ce2651cd6fbf183244f5069c7907702a957eb9cf9fa18a.png
-    sourceName: dna-duplex-end.png
-    alt: dna-duplex-end.png
-    bounds:
-      - 641
-      - 147
-      - 205
-      - 205
-    fit:
-      mode: contain
-    crop:
-      left: 0.27
-      right: 0.25
-      top: 0.26
-      bottom: 0.27
-  - elementId: asset-caption
+      bottom: 0.2
+  - elementId: f-asset-action
     elementType: text
     bounds:
-        [366,387,548,113]
+      - 352
+      - 122
+      - 566
+      - 34
     content:
-      {"text":"同一份 1BNA 坐标，两种视角。\n\n在 Assets 中找到并复用；\n坐标、原值、方法与来源随项目保留。","fontFamily":"Noto Sans SC","fontSize":18,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.5}
-notes: "素材库的价值是在下一轮还能找到同一份原材料。这里的两个DNA视角、坐标和距离表来自同一个公开结构。导入后，可以从Assets查找和再次放入页面；来源说明和计算方法也随项目保留。不要为了换一种版式重新造一张看似相同却数值不同的图。我们随后会用这些材料完成一页科学示例。"
+      text: 找到原图 → 拖到当前页
+      fontFamily: Noto Sans SC
+      fontSize: 21
+      color: "#168C8C"
+      align:
+        - left
+        - top
+      lineHeight: 1.32
+      bold: true
+  - elementId: f-asset-on-canvas
+    elementType: image
+    bounds:
+      - 352
+      - 188
+      - 568
+      - 242
+    src: media/imported/e22103b03f12a0c79bb50bb9fccfc0104102074c86ff79a84d3b5ddab11a729d.png
+    sourceName: placed-mark.png
+    fit:
+      mode: contain
+  - elementId: f-place-arrow
+    elementType: line
+    bounds:
+      - 293
+      - 315
+      - 45
+      - 0
+    viewBox:
+      - 1
+      - 1
+    points: 0,0 1,1
+    border:
+      width: 2
+      color: "#ED6A3A"
+    arrow:
+      - null
+      - arrow
+  - elementId: f-reuse-copy
+    elementType: text
+    bounds:
+      - 352
+      - 453
+      - 566
+      - 57
+    content:
+      text: |-
+        已有素材可再次拖入；新图用「导入并放置」。
+        原始文件与使用它的页面一起留在项目里。
+      fontFamily: Noto Sans SC
+      fontSize: 17
+      color: "#112D32"
+      align:
+        - left
+        - top
+      lineHeight: 1.45
+notes: "左侧切到素材。在搜索框输入名称，找到项目里已经保存的原图；这里以 HUANDENG 标记为例。同一份标记已经被多个页面使用，卡片会显示使用情况。把它拖到画布，就能继续调整大小和位置。新图片则通过导入并放置进入项目。右边是真实画布中被选中的同一标记，保留了原始图形。素材库解决的是找回与复用原材料，Main Slides 里的整张页面复用将在后面介绍。"

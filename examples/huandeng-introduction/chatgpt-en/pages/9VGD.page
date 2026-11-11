@@ -3,11 +3,238 @@ background:
   type: solid
   color: "#E4ECE6"
 elements:
+  - elementId: f-bg
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 0
+      - 0
+      - 960
+      - 540
+    fill:
+      type: solid
+      color: "#F4F1E8"
+  - elementId: f-route
+    elementType: text
+    bounds:
+      - 42
+      - 20
+      - 860
+      - 18
+    content:
+      text: PAGES → CANVAS → PROPERTIES
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#168C8C"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.2
   - elementId: title
     elementType: text
     bounds:
-        [52,218,850,100]
+        [42,49,875,66]
     role: title
     content:
-      {"text":"Make one page work","fontFamily":"Georgia","fontSize":42,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.25}
-notes: "Start with one page: locate the work, keep its intent and evidence, and inspect a focused edit."
+      {"text":"Find the page, then select its object","fontFamily":"Segoe UI","fontSize":32,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.1}
+  - elementId: f-foot-rule
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 42
+      - 510
+      - 876
+      - 1
+    fill:
+      type: solid
+      color: "#CCD2CB"
+  - elementId: f-watermark
+    elementType: text
+    bounds:
+      - 42
+      - 518
+      - 700
+      - 17
+    content:
+      text: English · ChatGPT 6 Astra
+      fontFamily: Segoe UI
+      fontSize: 12
+      color: "#50646A"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.2
+  - elementId: f-position
+    elementType: text
+    bounds:
+      - 882
+      - 518
+      - 36
+      - 17
+    content:
+      text: ""
+      fontFamily: Segoe UI
+      fontSize: 12
+      color: "#50646A"
+      bold: false
+      align:
+        - right
+        - top
+      lineHeight: 1.2
+      field: main-position
+  - elementId: f-tile
+    elementType: image
+    bounds:
+      - 44
+      - 146
+      - 263
+      - 176
+    src: media/imported/1f84752144b6ccca6d2546748b38a94463b43b87b0f90ce10d0493f843e9d737.png
+    sourceName: page-tile.png
+    fit:
+      mode: contain
+  - elementId: f-step-one
+    elementType: text
+    bounds:
+      - 44
+      - 339
+      - 270
+      - 29
+    content:
+      text: 1  Choose the page
+      fontFamily: Segoe UI
+      fontSize: 21
+      color: "#112D32"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.2
+  - elementId: f-id
+    elementType: text
+    bounds:
+      - 44
+      - 379
+      - 270
+      - 42
+    content:
+      text: GX5Z · the project map
+      fontFamily: Segoe UI
+      fontSize: 18
+      color: "#50646A"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.2
+  - elementId: f-select-arrow
+    elementType: line
+    bounds:
+      - 315
+      - 213
+      - 29
+      - 0
+    viewBox:
+      - 1
+      - 1
+    points: 0,0 1,1
+    border:
+      width: 2.5
+      color: "#ED6A3A"
+    arrow:
+      - null
+      - arrow
+  - elementId: f-title-selected
+    elementType: image
+    bounds:
+      - 358
+      - 163
+      - 552
+      - 42
+    src: media/imported/ca03c840de136a63bf8ebfbb457795ee72825568a458ff370db66a2b95830416.png
+    sourceName: selected-title.png
+    fit:
+      mode: contain
+  - elementId: f-step-two
+    elementType: text
+    bounds:
+      - 358
+      - 223
+      - 552
+      - 32
+    content:
+      text: 2  Click an object on the canvas
+      fontFamily: Segoe UI
+      fontSize: 21
+      color: "#112D32"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.2
+  - elementId: f-selected-inspector
+    elementType: image
+    bounds:
+        [608.3076923076923,278,295.3846153846155,128]
+    src: media/imported/fcba1f68de2d9e9b9d0898dc5af072891c683442d4d19581ed7ec8924dfd20a5.png
+    sourceName: properties.png
+    fit:
+      mode: contain
+    crop:
+      bottom: 0.8
+  - elementId: f-inspector-help
+    elementType: text
+    bounds:
+      - 358
+      - 296
+      - 222
+      - 86
+    content:
+      text: |-
+        Properties follows
+        your selection.
+      fontFamily: Segoe UI
+      fontSize: 21
+      color: "#112D32"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.2
+  - elementId: f-inspector-arrow
+    elementType: line
+    bounds:
+      - 567
+      - 340
+      - 27
+      - 0
+    viewBox:
+      - 1
+      - 1
+    points: 0,0 1,1
+    border:
+      width: 2.5
+      color: "#ED6A3A"
+    arrow:
+      - null
+      - arrow
+  - elementId: f-blank
+    elementType: text
+    bounds:
+      - 44
+      - 466
+      - 860
+      - 30
+    content:
+      text: "Start from a blank slide: use + in the page sidebar."
+      fontFamily: Segoe UI
+      fontSize: 19
+      color: "#168C8C"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.2
+notes: "Open the slide thumbnails and choose GX5Z, the project map used in this walkthrough. Click its title on the canvas. The selection outline identifies the object, and the Inspector now describes that selected object. The fragments are enlarged actual Editor captures of the same page. To start with an empty page instead, use the plus control in the page sidebar. Selection does not save a content change."

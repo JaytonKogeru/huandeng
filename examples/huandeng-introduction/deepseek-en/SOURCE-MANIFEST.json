@@ -1,181 +1,250 @@
 {
-  "schemaVersion": 4,
-  "releaseTag": "editor-v0.19.0",
+  "schemaVersion": 5,
   "project": "deepseek-en",
-  "recordedAt": "2026-11-11T02:17:07.270640+00:00",
+  "recordedAt": "2026-11-11T09:56:38Z",
   "entry": "deck.pptd",
-  "pluginVersion": "0.19.0",
+  "deckId": "67f35ea4-7737-48b6-926e-cca2e1d0be3d",
   "editorVersion": "0.19.0",
-  "native_completed": true,
-  "authorAccepted": false,
+  "pluginVersion": "0.19.0",
+  "scope": "Complete portable project with current Main pages, retained page history, checkpoints, local assets, notes, composition and evidence. Canonical generated exports are listed separately.",
+  "authoringBoundary": "Mechanical inventory and packaging only; this manifest does not imply new authoring, model execution, installation or publication.",
+  "sourceSelection": {
+    "command": "git ls-files --cached --others --exclude-standard -- examples/huandeng-introduction/deepseek-en",
+    "scope": "Existing regular files under this project, using tracked and non-ignored untracked paths.",
+    "excluded": [
+      "SOURCE-MANIFEST.json",
+      "Exports/**",
+      "**/desktop.ini",
+      "**/Thumbs.db",
+      "**/.DS_Store",
+      ".huandeng/project.ico"
+    ],
+    "manifestSelfExcluded": true,
+    "generatedDeliveriesIncludedInGitSourceTree": false
+  },
+  "currentMainReadback": {
+    "source": "HUANDENG shared writer /__pptd/current, read-only",
+    "manifestRevision": "sha256:a04481bddcf474d449f75f3481de7dd01a672c11de4c558c2f3f201822673cae",
+    "metadataRevision": "sha256:0ea967ff2a5437fcf1f641f01a36853db90c781a6469e4af0215f1b2efe79e78"
+  },
   "activeMainPageCount": 22,
-  "briefPageCount": 0,
+  "briefPageCount": null,
   "allPageFileCount": 23,
   "activeMainPages": [
     {
       "position": 1,
       "pageId": "3833f199-98ab-4056-b521-ab542137f524",
+      "shortCode": "98RC",
       "path": "pages/initial.page",
-      "sha256": "871746aa469de1288b2c33a19f4dec5581ce89fe9c2c0468be721a61a0aae2c0"
+      "bytes": 3069,
+      "sha256": "2591a070e8be2ccaed635f9f58385cc7cd0944577336b1aa354a8784b656e0b5",
+      "pageRevision": "sha256:2591a070e8be2ccaed635f9f58385cc7cd0944577336b1aa354a8784b656e0b5"
     },
     {
       "position": 2,
       "pageId": "bdbc20e7-5cb6-4877-8eb0-3feebad05d9d",
+      "shortCode": "BR4V",
       "path": "pages/BR4V.page",
-      "sha256": "3d8c6666dc7e4447c3783bb60fe2742a488a58f6b1ba7ad4b76395d28633220e"
+      "bytes": 6170,
+      "sha256": "f151adac8a05f61ef4f5a6cb1bb67554723f32868706c747c41b2892875fa23d",
+      "pageRevision": "sha256:f151adac8a05f61ef4f5a6cb1bb67554723f32868706c747c41b2892875fa23d"
     },
     {
       "position": 3,
       "pageId": "befc82a6-f242-49f7-9b35-7eed8f3b5640",
+      "shortCode": "XFZM",
       "path": "pages/XFZM.page",
-      "sha256": "5d11da15a71c9252704a41971df45bb0b581e057a83a0dbf4e87839b12ddbe4c"
+      "bytes": 2774,
+      "sha256": "69b31fbc8cb68ee36eac047fb179c745d60de2147fa533efb2a4fe1ff4e5ee8f",
+      "pageRevision": "sha256:69b31fbc8cb68ee36eac047fb179c745d60de2147fa533efb2a4fe1ff4e5ee8f"
     },
     {
       "position": 4,
       "pageId": "20d9cf1d-6820-42e8-9ddc-6377b4ad855b",
+      "shortCode": "TPCJ",
       "path": "pages/TPCJ.page",
-      "sha256": "87e5e3d38a8047d9d8812c972b55c43a841595d2696fdd5bfddd85e24df2dae4"
+      "bytes": 3844,
+      "sha256": "64a724f443e3a998123f7f849e17403cc5429f28078553f4dd63d4c27db351f9",
+      "pageRevision": "sha256:64a724f443e3a998123f7f849e17403cc5429f28078553f4dd63d4c27db351f9"
     },
     {
       "position": 5,
       "pageId": "d73b0924-699a-4673-818b-5d37e7c1b25a",
+      "shortCode": "MG2S",
       "path": "pages/MG2S.page",
-      "sha256": "7415e622372331e218a5a433f9e31fd5e7c0c901d5391ace6aa1864a57a30f63"
+      "bytes": 4341,
+      "sha256": "955de22a96dd4940f6f223a0c2ed93d8fb3beea1d4f609e06b6fb9d6d67e85b3",
+      "pageRevision": "sha256:955de22a96dd4940f6f223a0c2ed93d8fb3beea1d4f609e06b6fb9d6d67e85b3"
     },
     {
       "position": 6,
       "pageId": "665ad0cb-5048-4005-84bc-bf31bab632d9",
+      "shortCode": "V7VJ",
       "path": "pages/V7VJ.page",
-      "sha256": "49c00f78b5e48147e617274f4dd73beea06b05f985ddbbc72626eb71869d382f"
+      "bytes": 4221,
+      "sha256": "36bae879048b9cf227a60cf77d9c6adddc47622c7857308d39907f20e0bc1585",
+      "pageRevision": "sha256:36bae879048b9cf227a60cf77d9c6adddc47622c7857308d39907f20e0bc1585"
     },
     {
       "position": 7,
       "pageId": "32991558-c79c-4033-bce0-f8230c890bc9",
+      "shortCode": "7GWR",
       "path": "pages/7GWR.page",
-      "sha256": "3c9176d1592b125d95851c238329245a106de22f9e50764807736044606deed8"
+      "bytes": 6874,
+      "sha256": "822100075129639ce050f2c4985dc3ca1ea50803c4b90bd98d2f6a94023a1317",
+      "pageRevision": "sha256:822100075129639ce050f2c4985dc3ca1ea50803c4b90bd98d2f6a94023a1317"
     },
     {
       "position": 8,
       "pageId": "065ed891-d62a-41f1-b25e-ecd07ea2a924",
+      "shortCode": "WEZS",
       "path": "pages/WEZS.page",
-      "sha256": "47991ca1e0a2c792d514166bbe699015bf390f1c242ddb33ef898c58bd3c62c3"
+      "bytes": 827,
+      "sha256": "2d1dbaa74c78bb6223bb588291b4746fe1f96244b3841cf051a22e1bb49b1981",
+      "pageRevision": "sha256:2d1dbaa74c78bb6223bb588291b4746fe1f96244b3841cf051a22e1bb49b1981"
     },
     {
       "position": 9,
       "pageId": "d80ecf22-1b5d-41bb-87c6-4959e8b25350",
+      "shortCode": "DR4V",
       "path": "pages/DR4V.page",
-      "sha256": "ae06a77c40e9067cbb8bcc32e6eed991e071bcc8732e04bc8d1801193c059918"
+      "bytes": 2084,
+      "sha256": "7bba5a7532f5c79012f7a2c6f67512a17cab2a3eb06efd4c641a481800965164",
+      "pageRevision": "sha256:7bba5a7532f5c79012f7a2c6f67512a17cab2a3eb06efd4c641a481800965164"
     },
     {
       "position": 10,
       "pageId": "dc6dccad-86a9-4629-a4aa-e494e5d6f53b",
+      "shortCode": "KWPT",
       "path": "pages/KWPT.page",
-      "sha256": "58595436ec4604f61c36c0d521eeabd1a5386fca7299af0e074f5c2d6015c6c8"
+      "bytes": 4660,
+      "sha256": "db50e852b43504cd9068ca4e34e76398462cdb0d90e1cb25e710b06d7ea1474b",
+      "pageRevision": "sha256:db50e852b43504cd9068ca4e34e76398462cdb0d90e1cb25e710b06d7ea1474b"
     },
     {
       "position": 11,
       "pageId": "d3aed85c-d9fc-4750-8ffe-caf9a4fb2d4f",
+      "shortCode": "H29N",
       "path": "pages/H29N.page",
-      "sha256": "37e67381fe4c430694ef3645ef9502f6f48e36b4b37ddf7cf4b3cf3642865018"
+      "bytes": 4974,
+      "sha256": "126e17db8432b316c5998da0eecedb5ad1448d25597f9ef8dcfd0c7c439cc9c6",
+      "pageRevision": "sha256:126e17db8432b316c5998da0eecedb5ad1448d25597f9ef8dcfd0c7c439cc9c6"
     },
     {
       "position": 12,
       "pageId": "738289ee-5cfc-4b6f-a0f1-e0492cfafc06",
+      "shortCode": "MKPP",
       "path": "pages/MKPP.page",
-      "sha256": "8577d372201eb3f8ece5916152f0e1ea244675c6aec1ae224ebe1720915c62c7"
+      "bytes": 3907,
+      "sha256": "9465ef03e8b613c354fb6fd94622372719e329ac609991ae95cb7a6bb1b24060",
+      "pageRevision": "sha256:9465ef03e8b613c354fb6fd94622372719e329ac609991ae95cb7a6bb1b24060"
     },
     {
       "position": 13,
       "pageId": "bc85ec8f-af86-4cee-996e-a84a80de9670",
+      "shortCode": "89DU",
       "path": "pages/89DU.page",
-      "sha256": "ff2d8f10c05df9444faa152524ccc49e8ea44bf9346882bcab2c9c35876755b7"
+      "bytes": 4169,
+      "sha256": "da5245b0977649ded111ed66a72989aeba7d86725a9a044a167740eea6fbc1da",
+      "pageRevision": "sha256:da5245b0977649ded111ed66a72989aeba7d86725a9a044a167740eea6fbc1da"
     },
     {
       "position": 14,
       "pageId": "d9fffede-4a83-4fe9-8d0f-364efc3e11e5",
+      "shortCode": "CRUA",
       "path": "pages/CRUA.page",
-      "sha256": "a59794147718218580f726195e3b0d2410d852078e9ddf15e143cd1dfa87d851"
+      "bytes": 2664,
+      "sha256": "3b3cd89de43cf4994eb62c88d808cabed10264081ded849ebb860739c233cd78",
+      "pageRevision": "sha256:3b3cd89de43cf4994eb62c88d808cabed10264081ded849ebb860739c233cd78"
     },
     {
       "position": 15,
       "pageId": "80408aa9-3064-441e-91d6-d7f861e69976",
+      "shortCode": "CBCQ",
       "path": "pages/CBCQ.page",
-      "sha256": "1a48ac005a7b7c1fe4014340b5001e63868c4982a0a0dd1c3e3e4c2fe8e06c10"
+      "bytes": 4303,
+      "sha256": "4c9bca95ab8ed2d8b26fe338f1dcf7892eb4f3a5ba71d188682d4216aaf60993",
+      "pageRevision": "sha256:4c9bca95ab8ed2d8b26fe338f1dcf7892eb4f3a5ba71d188682d4216aaf60993"
     },
     {
       "position": 16,
       "pageId": "c279a641-b65c-42de-8ed8-d085819d7fb6",
+      "shortCode": "444J",
       "path": "pages/444J.page",
-      "sha256": "3177a4c99b74061b0d4238d46f562b01bda8342a103ec70c370f7b62b943a8d1"
+      "bytes": 3143,
+      "sha256": "285a80fc1a995c63fe2b913f09f5e6328389157f9119b830d02c905470623f55",
+      "pageRevision": "sha256:285a80fc1a995c63fe2b913f09f5e6328389157f9119b830d02c905470623f55"
     },
     {
       "position": 17,
       "pageId": "b792b954-ed0c-4510-881d-bb8b297db885",
+      "shortCode": "TJKM",
       "path": "pages/TJKM.page",
-      "sha256": "adb619cd34352e2096d46a04f97451632ba292152cb9388ccffe027d47725cbd"
+      "bytes": 4628,
+      "sha256": "82bd7a6da188e2247a559b3f7d6d1d943c8fb95b80ac1e703b2df1169839fcde",
+      "pageRevision": "sha256:82bd7a6da188e2247a559b3f7d6d1d943c8fb95b80ac1e703b2df1169839fcde"
     },
     {
       "position": 18,
       "pageId": "adf2f702-72d3-40bf-876c-bdd59f216edf",
+      "shortCode": "EKZK",
       "path": "pages/EKZK.page",
-      "sha256": "be67987ff22ec973bc4958510143daaf7ce00947b19167136fdfde17a6724c67"
+      "bytes": 4251,
+      "sha256": "b87714cb0f354e4b255b1794bca944a45fee6e58712b2e6e0f6310fb4106bc91",
+      "pageRevision": "sha256:b87714cb0f354e4b255b1794bca944a45fee6e58712b2e6e0f6310fb4106bc91"
     },
     {
       "position": 19,
       "pageId": "5a72c985-b070-4936-b854-73e0c743a35b",
+      "shortCode": "DM3J",
       "path": "pages/DM3J.page",
-      "sha256": "225fa2588bb3f542aa3e023f6c97c89f131ddd4f291fa4663952440e2dd5cfbd"
+      "bytes": 4648,
+      "sha256": "d83b2965a4ce02c257e8bae3bfd4973bb7734fe3f601bc8157420e3f158ea925",
+      "pageRevision": "sha256:d83b2965a4ce02c257e8bae3bfd4973bb7734fe3f601bc8157420e3f158ea925"
     },
     {
       "position": 20,
       "pageId": "781faa6c-86dd-413e-9dab-7f7df945fa69",
+      "shortCode": "JYJD",
       "path": "pages/JYJD.page",
-      "sha256": "9d5d9132bb29e216c12495d3da1ba0ed5e47181c4dae4ec6d3ece08907fdf587"
+      "bytes": 3115,
+      "sha256": "017d822ba623a9793255bd77e85402447672387e7e358451f1981626e6159ab8",
+      "pageRevision": "sha256:017d822ba623a9793255bd77e85402447672387e7e358451f1981626e6159ab8"
     },
     {
       "position": 21,
       "pageId": "0123bfb5-2c7b-4dd8-b340-e2f001e46547",
+      "shortCode": "AEUJ",
       "path": "pages/AEUJ.page",
-      "sha256": "126ef737c3acb80ba8f6c60c959de7f9971f50ca1c7338ebb0c51371d34c482c"
+      "bytes": 2484,
+      "sha256": "50ce9260f4df2dc1f22b0d3045353a7d91e984df111c3582a05a9b607e104226",
+      "pageRevision": "sha256:50ce9260f4df2dc1f22b0d3045353a7d91e984df111c3582a05a9b607e104226"
     },
     {
       "position": 22,
       "pageId": "fa252443-bd97-4339-a179-1242bf2009bb",
+      "shortCode": "TCMD",
       "path": "pages/TCMD.page",
-      "sha256": "5c792a7334d595189473004b58fabaf06ac742d976c21511351e83b6bc38477f"
+      "bytes": 2248,
+      "sha256": "4ed3a1c7879b07130a6330e4e6496a5e50ca7c0d0a8d033919144312034a35b8",
+      "pageRevision": "sha256:4ed3a1c7879b07130a6330e4e6496a5e50ca7c0d0a8d033919144312034a35b8"
     }
   ],
   "presentations": [],
   "pinnedOccurrences": [],
-  "exports": [
-    {
-      "path": "Exports/deck.pdf",
-      "report": "Exports/deck.pdf.report.json",
-      "kind": "deck",
-      "format": "pdf",
-      "pages": 22,
-      "presentationId": null,
-      "sha256": "f3409017a2f89bfc22dd9d940acc8661da468879f14b845dfbf809e47fdba124",
-      "bytes": 1883408,
-      "manifestRevision": "sha256:a04481bddcf474d449f75f3481de7dd01a672c11de4c558c2f3f201822673cae",
-      "metadataRevision": "sha256:0ea967ff2a5437fcf1f641f01a36853db90c781a6469e4af0215f1b2efe79e78",
-      "pageRevisionsVerified": true
-    },
-    {
-      "path": "Exports/deck.pptx",
-      "report": "Exports/deck.pptx.report.json",
-      "kind": "deck",
-      "format": "pptx",
-      "pages": 22,
-      "presentationId": null,
-      "sha256": "0fba26c2fa9a98fd51ee4522a7597d9fd08e31138df4865312aa2d48dc542c32",
-      "bytes": 1967977,
-      "manifestRevision": "sha256:a04481bddcf474d449f75f3481de7dd01a672c11de4c558c2f3f201822673cae",
-      "metadataRevision": "sha256:0ea967ff2a5437fcf1f641f01a36853db90c781a6469e4af0215f1b2efe79e78",
-      "pageRevisionsVerified": true
-    }
-  ],
-  "files": [
+  "retention": {
+    "allPageFiles": 23,
+    "activeMainPageFiles": 22,
+    "retainedNonMainPageFiles": 1,
+    "checkpointFiles": 2,
+    "mediaFiles": 31,
+    "sourceMaterialFiles": 37,
+    "uniqueLocalAssetReferences": 21,
+    "assetRevisionChecks": 45,
+    "pinnedOccurrences": 0
+  },
+  "sourceFileCount": 136,
+  "sourceFiles": [
     {
       "path": ".gitignore",
       "bytes": 9,
@@ -198,28 +267,8 @@
     },
     {
       "path": "AGENTS.md",
-      "bytes": 7497,
-      "sha256": "7225464b22bdba7185442a8098ee6630b4777b37d1bb53da346a373e582dc832"
-    },
-    {
-      "path": "Exports/deck.pdf",
-      "bytes": 1883408,
-      "sha256": "f3409017a2f89bfc22dd9d940acc8661da468879f14b845dfbf809e47fdba124"
-    },
-    {
-      "path": "Exports/deck.pdf.report.json",
-      "bytes": 59189,
-      "sha256": "b89afb85523adc137b38fb2a47dbf3b26a559b1454315bb64b1fb81b84df79bc"
-    },
-    {
-      "path": "Exports/deck.pptx",
-      "bytes": 1967977,
-      "sha256": "0fba26c2fa9a98fd51ee4522a7597d9fd08e31138df4865312aa2d48dc542c32"
-    },
-    {
-      "path": "Exports/deck.pptx.report.json",
-      "bytes": 73114,
-      "sha256": "cec2ef49cdbcf5a8ab2d0de04fbac78f3279880a8532b64c910b34465148fc91"
+      "bytes": 8013,
+      "sha256": "f26bf8edc5ddfb40129b1447bc0faace68753adcfe89d55345ad70b38b3c147a"
     },
     {
       "path": "LICENSE",
@@ -233,8 +282,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 3767,
-      "sha256": "5855337079fafb0e0fd8b8f76ee99b3eaa7bc9247eaf1aed7c64770a4f747d9a"
+      "bytes": 4704,
+      "sha256": "2c2837fb71f69bfe76982b0781320738e90a54d7379563e7f8c3d4fe05cfb2e7"
     },
     {
       "path": "SOURCES.md",
@@ -262,9 +311,14 @@
       "sha256": "cab3c3d146068175aeddf16248b15e5ff52e0ba3b91dc46e488bbc9397ad2be3"
     },
     {
+      "path": "evidence/exports.json",
+      "bytes": 32453,
+      "sha256": "9a5bc60cb871048e8d8157dda2a50c69e3f8a436de43b144e893ba19605313dd"
+    },
+    {
       "path": "evidence/guidance-before-portability.md",
       "bytes": 7179,
-      "sha256": "46b02d4097b6e06a0aedccae2887c4ebde594b915f19db2fbebbb20596e98b93"
+      "sha256": "15edd472da730f825a6e3082a3fe15ea7a1f593eebf7e92fc79a8c3d3b38de0d"
     },
     {
       "path": "evidence/guidance-portability.json",
@@ -283,8 +337,13 @@
     },
     {
       "path": "evidence/native-trial.json",
-      "bytes": 2754,
-      "sha256": "be8c786b9b71db884b9d1ecbb480dd06661ea015377516b9c7740e1b1f2598ca"
+      "bytes": 2730,
+      "sha256": "dbb23dba90418734522661dc92a3531e6a600d7b2434255cbe6afd62a8cff7ab"
+    },
+    {
+      "path": "evidence/office-final-verification.json",
+      "bytes": 866,
+      "sha256": "b076a050e8a3a8e9c3672a7a708dc4fa044d320a23d53f96119697bac3abe94b"
     },
     {
       "path": "evidence/office-visual-review.json",
@@ -383,13 +442,13 @@
     },
     {
       "path": "evidence/product-review.json",
-      "bytes": 11666,
-      "sha256": "edc23ee914e8a2f243c77880f074e24573d7ed5f1cfa92de910e75ba8659d353"
+      "bytes": 11642,
+      "sha256": "e1a9188371913bc8ab65f157775c711c3ec55ba28b46bd8303335b87457f5d65"
     },
     {
       "path": "evidence/product-trial.json",
-      "bytes": 5544,
-      "sha256": "9d81570bb0067fde5ec6623bb0ee86ddac4c8fc53cd98eb1944f076041492bcb"
+      "bytes": 5448,
+      "sha256": "442a9f85ca4ea5f3ba6cde7d088e854a93ce7cd76df9a118511a3e0c6fdfd28f"
     },
     {
       "path": "evidence/qa.json",
@@ -563,18 +622,18 @@
     },
     {
       "path": "pages/444J.page",
-      "bytes": 2827,
-      "sha256": "3177a4c99b74061b0d4238d46f562b01bda8342a103ec70c370f7b62b943a8d1"
+      "bytes": 3143,
+      "sha256": "285a80fc1a995c63fe2b913f09f5e6328389157f9119b830d02c905470623f55"
     },
     {
       "path": "pages/7GWR.page",
-      "bytes": 6632,
-      "sha256": "3c9176d1592b125d95851c238329245a106de22f9e50764807736044606deed8"
+      "bytes": 6874,
+      "sha256": "822100075129639ce050f2c4985dc3ca1ea50803c4b90bd98d2f6a94023a1317"
     },
     {
       "path": "pages/89DU.page",
-      "bytes": 3853,
-      "sha256": "ff2d8f10c05df9444faa152524ccc49e8ea44bf9346882bcab2c9c35876755b7"
+      "bytes": 4169,
+      "sha256": "da5245b0977649ded111ed66a72989aeba7d86725a9a044a167740eea6fbc1da"
     },
     {
       "path": "pages/9KH9.page",
@@ -583,98 +642,98 @@
     },
     {
       "path": "pages/AEUJ.page",
-      "bytes": 2242,
-      "sha256": "126ef737c3acb80ba8f6c60c959de7f9971f50ca1c7338ebb0c51371d34c482c"
+      "bytes": 2484,
+      "sha256": "50ce9260f4df2dc1f22b0d3045353a7d91e984df111c3582a05a9b607e104226"
     },
     {
       "path": "pages/BR4V.page",
-      "bytes": 5928,
-      "sha256": "3d8c6666dc7e4447c3783bb60fe2742a488a58f6b1ba7ad4b76395d28633220e"
+      "bytes": 6170,
+      "sha256": "f151adac8a05f61ef4f5a6cb1bb67554723f32868706c747c41b2892875fa23d"
     },
     {
       "path": "pages/CBCQ.page",
-      "bytes": 3987,
-      "sha256": "1a48ac005a7b7c1fe4014340b5001e63868c4982a0a0dd1c3e3e4c2fe8e06c10"
+      "bytes": 4303,
+      "sha256": "4c9bca95ab8ed2d8b26fe338f1dcf7892eb4f3a5ba71d188682d4216aaf60993"
     },
     {
       "path": "pages/CRUA.page",
-      "bytes": 2348,
-      "sha256": "a59794147718218580f726195e3b0d2410d852078e9ddf15e143cd1dfa87d851"
+      "bytes": 2664,
+      "sha256": "3b3cd89de43cf4994eb62c88d808cabed10264081ded849ebb860739c233cd78"
     },
     {
       "path": "pages/DM3J.page",
-      "bytes": 4332,
-      "sha256": "225fa2588bb3f542aa3e023f6c97c89f131ddd4f291fa4663952440e2dd5cfbd"
+      "bytes": 4648,
+      "sha256": "d83b2965a4ce02c257e8bae3bfd4973bb7734fe3f601bc8157420e3f158ea925"
     },
     {
       "path": "pages/DR4V.page",
-      "bytes": 1768,
-      "sha256": "ae06a77c40e9067cbb8bcc32e6eed991e071bcc8732e04bc8d1801193c059918"
+      "bytes": 2084,
+      "sha256": "7bba5a7532f5c79012f7a2c6f67512a17cab2a3eb06efd4c641a481800965164"
     },
     {
       "path": "pages/EKZK.page",
-      "bytes": 4009,
-      "sha256": "be67987ff22ec973bc4958510143daaf7ce00947b19167136fdfde17a6724c67"
+      "bytes": 4251,
+      "sha256": "b87714cb0f354e4b255b1794bca944a45fee6e58712b2e6e0f6310fb4106bc91"
     },
     {
       "path": "pages/H29N.page",
-      "bytes": 4658,
-      "sha256": "37e67381fe4c430694ef3645ef9502f6f48e36b4b37ddf7cf4b3cf3642865018"
+      "bytes": 4974,
+      "sha256": "126e17db8432b316c5998da0eecedb5ad1448d25597f9ef8dcfd0c7c439cc9c6"
     },
     {
       "path": "pages/JYJD.page",
-      "bytes": 2873,
-      "sha256": "9d5d9132bb29e216c12495d3da1ba0ed5e47181c4dae4ec6d3ece08907fdf587"
+      "bytes": 3115,
+      "sha256": "017d822ba623a9793255bd77e85402447672387e7e358451f1981626e6159ab8"
     },
     {
       "path": "pages/KWPT.page",
-      "bytes": 4344,
-      "sha256": "58595436ec4604f61c36c0d521eeabd1a5386fca7299af0e074f5c2d6015c6c8"
+      "bytes": 4660,
+      "sha256": "db50e852b43504cd9068ca4e34e76398462cdb0d90e1cb25e710b06d7ea1474b"
     },
     {
       "path": "pages/MG2S.page",
-      "bytes": 4099,
-      "sha256": "7415e622372331e218a5a433f9e31fd5e7c0c901d5391ace6aa1864a57a30f63"
+      "bytes": 4341,
+      "sha256": "955de22a96dd4940f6f223a0c2ed93d8fb3beea1d4f609e06b6fb9d6d67e85b3"
     },
     {
       "path": "pages/MKPP.page",
-      "bytes": 3665,
-      "sha256": "8577d372201eb3f8ece5916152f0e1ea244675c6aec1ae224ebe1720915c62c7"
+      "bytes": 3907,
+      "sha256": "9465ef03e8b613c354fb6fd94622372719e329ac609991ae95cb7a6bb1b24060"
     },
     {
       "path": "pages/TCMD.page",
-      "bytes": 1932,
-      "sha256": "5c792a7334d595189473004b58fabaf06ac742d976c21511351e83b6bc38477f"
+      "bytes": 2248,
+      "sha256": "4ed3a1c7879b07130a6330e4e6496a5e50ca7c0d0a8d033919144312034a35b8"
     },
     {
       "path": "pages/TJKM.page",
-      "bytes": 4386,
-      "sha256": "adb619cd34352e2096d46a04f97451632ba292152cb9388ccffe027d47725cbd"
+      "bytes": 4628,
+      "sha256": "82bd7a6da188e2247a559b3f7d6d1d943c8fb95b80ac1e703b2df1169839fcde"
     },
     {
       "path": "pages/TPCJ.page",
-      "bytes": 3602,
-      "sha256": "87e5e3d38a8047d9d8812c972b55c43a841595d2696fdd5bfddd85e24df2dae4"
+      "bytes": 3844,
+      "sha256": "64a724f443e3a998123f7f849e17403cc5429f28078553f4dd63d4c27db351f9"
     },
     {
       "path": "pages/V7VJ.page",
-      "bytes": 3979,
-      "sha256": "49c00f78b5e48147e617274f4dd73beea06b05f985ddbbc72626eb71869d382f"
+      "bytes": 4221,
+      "sha256": "36bae879048b9cf227a60cf77d9c6adddc47622c7857308d39907f20e0bc1585"
     },
     {
       "path": "pages/WEZS.page",
-      "bytes": 511,
-      "sha256": "47991ca1e0a2c792d514166bbe699015bf390f1c242ddb33ef898c58bd3c62c3"
+      "bytes": 827,
+      "sha256": "2d1dbaa74c78bb6223bb588291b4746fe1f96244b3841cf051a22e1bb49b1981"
     },
     {
       "path": "pages/XFZM.page",
-      "bytes": 2458,
-      "sha256": "5d11da15a71c9252704a41971df45bb0b581e057a83a0dbf4e87839b12ddbe4c"
+      "bytes": 2774,
+      "sha256": "69b31fbc8cb68ee36eac047fb179c745d60de2147fa533efb2a4fe1ff4e5ee8f"
     },
     {
       "path": "pages/initial.page",
-      "bytes": 2827,
-      "sha256": "871746aa469de1288b2c33a19f4dec5581ce89fe9c2c0468be721a61a0aae2c0"
+      "bytes": 3069,
+      "sha256": "2591a070e8be2ccaed635f9f58385cc7cd0944577336b1aa354a8784b656e0b5"
     },
     {
       "path": "sources/brand/README.md",
@@ -867,10 +926,54 @@
       "sha256": "f151d265617f8ba3df1b9fcff5e13d8604062ea02bbc226543b2632c7c9b0387"
     }
   ],
-  "sourceInventorySha256": "dc4c2d90c6577b91bf0f40d90f238ec4f90973422c4754137f6de9eac64b64d5",
-  "supersedesHistoricalManifestSha256": "1d4f0a771330d8f9cec9b5526bfe38ee1629f4c586b1ddb6134b1b7a5b7b8fee",
-  "scope": "Complete portable project, retained page sources, named versions, checkpoint media, source materials, notes, evidence and canonical exports. This index excludes itself and workstation operation/runtime files.",
-  "sourceTagPolicy": "The release tag pins this source index. Editor binary source is separately recorded by the release manifest.",
-  "authoringBoundary": "Native-authored source and retained original evidence; coordinator packaging and review do not establish owner acceptance. Completion and technical continuation provenance follow the explicit final trial evidence.",
-  "historicalManifestLocation": "Git history before this product introduction release"
+  "sourceInventorySha256": "3c4c6b9c87866c636f259b8bd2b00f1bb606798635985c8389ee2ad6b3389b9b",
+  "sourceInventoryHashEncoding": "UTF-8 compact JSON of sourceFiles, keys sorted, no ASCII escaping, no trailing newline.",
+  "generatedDeliveries": [
+    {
+      "path": "Exports/deck.pdf",
+      "bytes": 1887916,
+      "sha256": "097e9bc260de61e744091664139a316280e4b2066982c688c82ad32b5b381aa5",
+      "kind": "final-delivery",
+      "collection": "main",
+      "format": "pdf",
+      "pageCount": 22,
+      "selection": {
+        "kind": "main",
+        "presentationId": null
+      }
+    },
+    {
+      "path": "Exports/deck.pdf.report.json",
+      "bytes": 63545,
+      "sha256": "1712c9bd8c321f5c9911b060a7d4aa28e63696110825a35f1db103e770fd4227",
+      "kind": "export-report",
+      "collection": "main",
+      "format": "pdf",
+      "pageCount": 22
+    },
+    {
+      "path": "Exports/deck.pptx",
+      "bytes": 1970275,
+      "sha256": "8c3748040729342ba8831c7e38a311b16eb38398b887145fe7c442b31c32af99",
+      "kind": "final-delivery",
+      "collection": "main",
+      "format": "pptx",
+      "pageCount": 22,
+      "selection": {
+        "kind": "main",
+        "presentationId": null
+      }
+    },
+    {
+      "path": "Exports/deck.pptx.report.json",
+      "bytes": 77426,
+      "sha256": "e0a75f1a84daa9842c4371baa8d1bf4acd950b7767cb96bc5d38dc7c94ca8601",
+      "kind": "export-report",
+      "collection": "main",
+      "format": "pptx",
+      "pageCount": 22
+    }
+  ],
+  "deliveryPolicy": "Generated Exports files are excluded from the Git source tree and sourceFiles; complete project ZIPs include the canonical files in generatedDeliveries.",
+  "supersedesHistoricalManifestSha256": "14072500fded005c29d64ac4010aa643f23a2381eacaebfcd190ab566a7a2ec9"
 }

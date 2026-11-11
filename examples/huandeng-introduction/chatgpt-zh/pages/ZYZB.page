@@ -3,146 +3,175 @@ background:
   type: solid
   color: "#F7F5EF"
 elements:
+  - elementId: f-bg
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 0
+      - 0
+      - 960
+      - 540
+    fill:
+      type: solid
+      color: "#F4F1E8"
   - elementId: title
     elementType: text
     bounds:
-        [42,34,880,76]
+        [38,29,884,48]
     role: title
     content:
-      {"text":"先在同一张画布上找到它","fontFamily":"Noto Serif SC","fontSize":28,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.2}
-  - elementId: eyebrow
+      {"text":"先选页，再在画布里选对象","fontFamily":"Noto Sans SC","fontSize":30,"color":"#112D32","align":["left","top"],"lineHeight":1.32,"bold":true}
+  - elementId: f-watermark
     elementType: text
     bounds:
-      - 43
-      - 112
-      - 870
-      - 21
+      - 38
+      - 514
+      - 800
+      - 22
     content:
-      text: EDITOR · 定位、编辑、检查
+      text: Chinese · ChatGPT 6 Astra + Subagents
       fontFamily: Noto Sans SC
-      fontSize: 11
-      color: "#356F68"
-      bold: true
+      fontSize: 13
+      color: "#596D70"
       align:
         - left
         - top
-      lineHeight: 1.35
-  - elementId: brand-small
-    elementType: image
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
-    sourceName: huandeng.png
-    alt: huandeng.png
+      lineHeight: 1.32
+  - elementId: f-position
+    elementType: text
     bounds:
-        [43,512,18,18]
+      - 882
+      - 514
+      - 40
+      - 22
+    content:
+      text: ""
+      fontFamily: Noto Sans SC
+      fontSize: 13
+      color: "#596D70"
+      align:
+        - right
+        - top
+      lineHeight: 1.32
+      field: main-position
+  - elementId: f-zone-pages
+    elementType: text
+    bounds:
+      - 40
+      - 85
+      - 190
+      - 31
+    content:
+      text: 1  选中页面
+      fontFamily: Noto Sans SC
+      fontSize: 17
+      color: "#168C8C"
+      align:
+        - left
+        - top
+      lineHeight: 1.32
+  - elementId: f-zone-canvas
+    elementType: text
+    bounds:
+      - 335
+      - 85
+      - 246
+      - 31
+    content:
+      text: 2  点画布中的对象
+      fontFamily: Noto Sans SC
+      fontSize: 17
+      color: "#168C8C"
+      align:
+        - center
+        - top
+      lineHeight: 1.32
+  - elementId: f-zone-inspector
+    elementType: text
+    bounds:
+      - 700
+      - 85
+      - 222
+      - 31
+    content:
+      text: 3  查看属性 / 图层
+      fontFamily: Noto Sans SC
+      fontSize: 17
+      color: "#168C8C"
+      align:
+        - center
+        - top
+      lineHeight: 1.32
+  - elementId: f-selected
+    elementType: image
+    bounds:
+      - 65
+      - 128
+      - 830
+      - 363
+    src: media/imported/d95ba29140db491cc375419aea44b04dbd1b6cdb0b965a61bd9ac807b49b0728.png
+    sourceName: selected-title-top.png
     fit:
       mode: contain
-    crop:
-      left: 0.18
-      right: 0.18
-      top: 0.14
-      bottom: 0.14
-  - elementId: foot
+  - elementId: f-page-pointer
+    elementType: line
+    bounds:
+      - 80
+      - 116
+      - 0
+      - 48
+    viewBox:
+      - 1
+      - 1
+    points: 0,0 1,1
+    border:
+      width: 2
+      color: "#ED6A3A"
+    arrow:
+      - null
+      - arrow
+  - elementId: f-canvas-pointer
+    elementType: line
+    bounds:
+        [458,116,0,176]
+    viewBox:
+      - 1
+      - 1
+    points: 0,0 1,1
+    border:
+      width: 2
+      color: "#ED6A3A"
+    arrow:
+      - null
+      - arrow
+  - elementId: f-inspector-pointer
+    elementType: line
+    bounds:
+        [811,116,0,55]
+    viewBox:
+      - 1
+      - 1
+    points: 0,0 1,1
+    border:
+      width: 2
+      color: "#ED6A3A"
+    arrow:
+      - null
+      - arrow
+  - elementId: f-crop-caption
     elementType: text
     bounds:
-        [68,515,140,16]
+      - 65
+      - 493
+      - 830
+      - 21
     content:
-      {"text":"HUANDENG","fontFamily":"Noto Sans SC","fontSize":9,"color":"#5B6A62","bold":false,"align":["left","top"],"lineHeight":1.35}
-  - elementId: position
-    elementType: text
-    bounds:
-        [881,514,35,18]
-    content:
-      {"text":"","fontFamily":"Noto Sans SC","fontSize":10,"color":"#5B6A62","bold":false,"align":["right","top"],"lineHeight":1.35,"field":"main-position"}
-  - elementId: workspace
-    elementType: image
-    src: "media/imported/2e581d36978c91cef3fdc7777d6546f05fe58d6d2b89d0d6c42954313c2d0a0e.png"
-    sourceName: editor-native-chart.png
-    alt: editor-native-chart.png
-    bounds:
-      - 27
-      - 147
-      - 677
-      - 346
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0.14
-  - elementId: dot-1
-    elementType: shape
-    shapeName: ellipse
-    bounds:
-        [38,211,24,24]
-    fill:
-      type: solid
-      color: "#A64F38"
-  - elementId: number-1
-    elementType: text
-    bounds:
-        [38,212,24,24]
-    content:
-      text: "1"
+      text: 真实选中状态 · 工作区局部
       fontFamily: Noto Sans SC
-      fontSize: 14
-      color: "#FFFFFF"
-      bold: true
+      fontSize: 13
+      color: "#596D70"
       align:
-        - center
-        - middle
-      lineHeight: 1.35
-  - elementId: dot-2
-    elementType: shape
-    shapeName: ellipse
-    bounds:
-        [377,248,24,24]
-    fill:
-      type: solid
-      color: "#A64F38"
-  - elementId: number-2
-    elementType: text
-    bounds:
-        [377,249,24,24]
-    content:
-      text: "2"
-      fontFamily: Noto Sans SC
-      fontSize: 14
-      color: "#FFFFFF"
-      bold: true
-      align:
-        - center
-        - middle
-      lineHeight: 1.35
-  - elementId: dot-3
-    elementType: shape
-    shapeName: ellipse
-    bounds:
-        [646,252,24,24]
-    fill:
-      type: solid
-      color: "#A64F38"
-  - elementId: number-3
-    elementType: text
-    bounds:
-        [646,253,24,24]
-    content:
-      text: "3"
-      fontFamily: Noto Sans SC
-      fontSize: 14
-      color: "#FFFFFF"
-      bold: true
-      align:
-        - center
-        - middle
-      lineHeight: 1.35
-  - elementId: workspace-guide
-    elementType: text
-    bounds:
-      - 729
-      - 151
-      - 192
-      - 350
-    content:
-      {"text":"1  项目 / 页面 / 素材 / 文件\n从左侧找到要处理的内容。\n\n2  画布\n人可以直接编辑对象。\n\n3  属性 / 图层 / Story\n查看结构与这一页的意图。","fontFamily":"Noto Sans SC","fontSize":17,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.35}
-notes: "先认识工作区。左侧可以在项目、页面、素材和文件间切换。中间仍是可以手动选择和修改对象的画布。右侧保留属性、图层和Story。上方视图用于浏览整套页面、检查大纲、调整章节、写备注或查历史。接入Agent之后，它的修改也会出现在这份页面里。接下来我们先留下一页的意图，再准备要用的素材。"
+        - left
+        - top
+      lineHeight: 1.32
+notes: "从左侧页面缩略图选择要处理的页面，这里选中的是 6G4G。在画布上点标题，选框出现，说明现在选中的是这个文字对象；右侧属性随选择切换，可以看到文字、字号、坐标等。图层页能从对象列表定位，Story 留这一页的目的。先分清页面选择和对象选择，后面的局部改动才有明确对象。截图是正在运行的 0.19 编辑器真实选中状态。"

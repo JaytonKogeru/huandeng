@@ -477,4 +477,20 @@ elements:
       align:
         - right
         - middle
+  - elementId: attribution-watermark
+    elementType: text
+    bounds:
+      - 760
+      - 10
+      - 176
+      - 16
+    content:
+      text: English · Claude Opus 5.5
+      fontFamily: Arial
+      fontSize: 10
+      lineHeight: 1.2
+      color: "#7A8580"
+      align:
+        - right
+        - middle
 notes: "The second problem appeared when I asked an agent to change a deck. Say I have fifty slides and want two of them fixed. Many agents are cautious: instead of replacing the file, they keep the original and write a new copy. One small tweak, another copy. After an afternoon the folder is full of near-identical decks, and the history is spread across file names. That made me think of Git. Version control works because the unit of change is small and every change is recorded. So in HUANDENG the page is the unit: an edit rewrites one page file and adds to that page's history, and a named version marks a milestone. The file names and edits here are an illustration, not a real folder."

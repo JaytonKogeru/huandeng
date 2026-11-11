@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "edition": "claude-en",
+  "sourceBase": "repository-root",
+  "scope": "Final actual PowerPoint inspection; raw machine paths excluded",
+  "summary": "docs/evidence/final-examples/office.json",
+  "files": [
+    {
+      "edition": "claude-en",
+      "scope": "main",
+      "source": "examples/huandeng-introduction/claude-en/Exports/deck.pptx",
+      "sha256": "f405e81302812ff21b407862929613fa00582bf348adea22f404618c5f52f400",
+      "pages": 25,
+      "notes": 25,
+      "nativeCharts": 1,
+      "nativeTables": 8,
+      "nativeGroups": 0,
+      "officeVersion": "16.0",
+      "readOnly": true,
+      "openAndRepair": false,
+      "sourceUnchanged": true,
+      "closedOwnDocument": true,
+      "qa": "docs/evidence/final-examples/office/claude-en-main.json",
+      "visualReview": "reviewed-with-known-chart-axis-overlap"
+    },
+    {
+      "edition": "claude-en",
+      "scope": "brief",
+      "source": "examples/huandeng-introduction/claude-en/Exports/brief.pptx",
+      "sha256": "96547ec7b944db023a14efc7ab04fa5b1ec337b8cf15afe3a9c6bbbc7f9b77ee",
+      "pages": 9,
+      "notes": 9,
+      "nativeCharts": 1,
+      "nativeTables": 2,
+      "nativeGroups": 0,
+      "officeVersion": "16.0",
+      "readOnly": true,
+      "openAndRepair": false,
+      "sourceUnchanged": true,
+      "closedOwnDocument": true,
+      "qa": "docs/evidence/final-examples/office/claude-en-brief.json",
+      "visualReview": "reviewed-with-known-chart-axis-overlap"
+    }
+  ]
+}

@@ -121,4 +121,20 @@ elements:
         - right
         - middle
       field: main-position
+  - elementId: attribution-watermark
+    elementType: text
+    bounds:
+      - 760
+      - 10
+      - 176
+      - 16
+    content:
+      text: 中文 · Claude Opus 5.5
+      fontFamily: Microsoft YaHei
+      fontSize: 10
+      lineHeight: 1.2
+      color: "#7A8580"
+      align:
+        - right
+        - middle
 notes: 打磨任何一页之前，我会先把整份稿子当故事读一遍。大纲视图按章节列出每一页的标题、故事摘要和页面短码，我能看出论证是否成立。浏览视图用缩略图显示同样的页面，看密度和节奏。章节把讲述分成几部分，每章从一个稳定的首页开始，到下一章为止。

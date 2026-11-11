@@ -4,7 +4,7 @@
 
 核对日期：2026-11-07（Australia/Sydney）。对照的是 THUG 上现有源码，不是网上产品测评。
 
-旧项目：`D:/_Proj/FreestyleScientificSlides/apps/pptd-desktop`，桌面包 0.2.1，内置 open-pptd 2.0.2，Electron 38.7.2。该项目有用户未提交修改，本轮只读检查。
+旧项目：`<legacy-editor-checkout>/apps/pptd-desktop`，桌面包 0.2.1，内置 open-pptd 2.0.2，Electron 38.7.2。该项目有用户未提交修改，本轮只读检查。
 
 ## 核对结果
 

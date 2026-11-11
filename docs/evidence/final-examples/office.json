@@ -1,0 +1,444 @@
+{
+  "status": "structural-and-actual-pixel-review-complete",
+  "files": 11,
+  "pages": 197,
+  "notes": 197,
+  "nativeCharts": 4,
+  "allSourcesUnchanged": true,
+  "allOpenedReadOnlyWithoutRepair": true,
+  "visualMethod": "Actual PowerPoint PNGs inspected as 800x450-per-slide contact sheets, with listed detail pages inspected as full 1600x900 PNGs. Listed ChatGPT fallback pages compared against current 1920x1080 Editor PNGs.",
+  "actualLayoutIssues": [
+    {
+      "edition": "claude-en",
+      "scope": "main",
+      "observation": {
+        "page": 12,
+        "kind": "actual-office-layout",
+        "severity": "visible-overlap",
+        "text": "X-axis title overlaps part of numeric tick-label band; chart line, values, base-pair annotations, structure illustration and native chart remain present."
+      }
+    },
+    {
+      "edition": "deepseek-zh",
+      "scope": "main",
+      "observation": {
+        "page": 12,
+        "kind": "actual-office-layout",
+        "severity": "minor-wrap",
+        "text": "The short descriptive paragraph ends with a punctuation mark on a following line; all text is present, no clipping. Source is frozen."
+      }
+    },
+    {
+      "edition": "claude-en",
+      "scope": "brief",
+      "observation": {
+        "page": 5,
+        "kind": "actual-office-layout",
+        "severity": "visible-overlap",
+        "text": "Same native chart as Main page 12: x-axis title overlaps numeric tick-label band. Plot, base-pair annotations, structure and native chart all remain present."
+      }
+    }
+  ],
+  "filesDetail": [
+    {
+      "edition": "claude-en",
+      "scope": "main",
+      "source": "examples/huandeng-introduction/claude-en/Exports/deck.pptx",
+      "sha256": "f405e81302812ff21b407862929613fa00582bf348adea22f404618c5f52f400",
+      "pages": 25,
+      "notes": 25,
+      "nativeCharts": 1,
+      "nativeTables": 8,
+      "nativeGroups": 0,
+      "officeVersion": "16.0",
+      "readOnly": true,
+      "openAndRepair": false,
+      "sourceUnchanged": true,
+      "closedOwnDocument": true,
+      "qa": "office/claude-en-main.json",
+      "visualReview": "reviewed-with-known-chart-axis-overlap"
+    },
+    {
+      "edition": "claude-zh",
+      "scope": "main",
+      "source": "examples/huandeng-introduction/claude-zh/Exports/deck.pptx",
+      "sha256": "9f779c5ab4acf6747f9d37d5e5311b765156c382801779743d9774cd782aa53f",
+      "pages": 26,
+      "notes": 26,
+      "nativeCharts": 1,
+      "nativeTables": 8,
+      "nativeGroups": 0,
+      "officeVersion": "16.0",
+      "readOnly": true,
+      "openAndRepair": false,
+      "sourceUnchanged": true,
+      "closedOwnDocument": true,
+      "qa": "office/claude-zh-main.json",
+      "visualReview": "reviewed-no-missing-content-observed"
+    },
+    {
+      "edition": "deepseek-en",
+      "scope": "main",
+      "source": "examples/huandeng-introduction/deepseek-en/Exports/deck.pptx",
+      "sha256": "8c3748040729342ba8831c7e38a311b16eb38398b887145fe7c442b31c32af99",
+      "pages": 22,
+      "notes": 22,
+      "nativeCharts": 0,
+      "nativeTables": 5,
+      "nativeGroups": 0,
+      "officeVersion": "16.0",
+      "readOnly": true,
+      "openAndRepair": false,
+      "sourceUnchanged": true,
+      "closedOwnDocument": true,
+      "qa": "office/deepseek-en-main.json",
+      "visualReview": "reviewed-no-missing-content-observed"
+    },
+    {
+      "edition": "deepseek-zh",
+      "scope": "main",
+      "source": "examples/huandeng-introduction/deepseek-zh/Exports/deck.pptx",
+      "sha256": "7c4f394d650b52e9b9c42ca461e02aafa6f1263eec1d4f4a7e81a6f95183df23",
+      "pages": 22,
+      "notes": 22,
+      "nativeCharts": 0,
+      "nativeTables": 3,
+      "nativeGroups": 0,
+      "officeVersion": "16.0",
+      "readOnly": true,
+      "openAndRepair": false,
+      "sourceUnchanged": true,
+      "closedOwnDocument": true,
+      "qa": "office/deepseek-zh-main.json",
+      "visualReview": "reviewed-no-severe-layout-loss-observed"
+    },
+    {
+      "edition": "chatgpt-en",
+      "scope": "main",
+      "source": "examples/huandeng-introduction/chatgpt-en/Exports/deck.pptx",
+      "sha256": "5872f18984c169fbf4bb38aa4bf5c91c7bf305f418e05e78f1426e63d181497d",
+      "pages": 24,
+      "notes": 24,
+      "nativeCharts": 0,
+      "nativeTables": 0,
+      "nativeGroups": 0,
+      "officeVersion": "16.0",
+      "readOnly": true,
+      "openAndRepair": false,
+      "sourceUnchanged": true,
+      "closedOwnDocument": true,
+      "qa": "office/chatgpt-en-main.json",
+      "visualReview": "reviewed-no-missing-content-observed"
+    },
+    {
+      "edition": "chatgpt-zh",
+      "scope": "main",
+      "source": "examples/huandeng-introduction/chatgpt-zh/Exports/deck.pptx",
+      "sha256": "783eee58703c5a7b65cc5393d2cb1ba592a158cc9ff7f96c75a6a635ac8b14f0",
+      "pages": 24,
+      "notes": 24,
+      "nativeCharts": 0,
+      "nativeTables": 0,
+      "nativeGroups": 0,
+      "officeVersion": "16.0",
+      "readOnly": true,
+      "openAndRepair": false,
+      "sourceUnchanged": true,
+      "closedOwnDocument": true,
+      "qa": "office/chatgpt-zh-main.json",
+      "visualReview": "reviewed-no-missing-content-observed"
+    },
+    {
+      "edition": "claude-en",
+      "scope": "brief",
+      "source": "examples/huandeng-introduction/claude-en/Exports/brief.pptx",
+      "sha256": "96547ec7b944db023a14efc7ab04fa5b1ec337b8cf15afe3a9c6bbbc7f9b77ee",
+      "pages": 9,
+      "notes": 9,
+      "nativeCharts": 1,
+      "nativeTables": 2,
+      "nativeGroups": 0,
+      "officeVersion": "16.0",
+      "readOnly": true,
+      "openAndRepair": false,
+      "sourceUnchanged": true,
+      "closedOwnDocument": true,
+      "qa": "office/claude-en-brief.json",
+      "visualReview": "reviewed-with-known-chart-axis-overlap"
+    },
+    {
+      "edition": "claude-zh",
+      "scope": "brief",
+      "source": "examples/huandeng-introduction/claude-zh/Exports/brief.pptx",
+      "sha256": "3c1231b4ed433f76bdb292710ce330a09c947eb154a02b11b8a92f8873539004",
+      "pages": 9,
+      "notes": 9,
+      "nativeCharts": 1,
+      "nativeTables": 2,
+      "nativeGroups": 0,
+      "officeVersion": "16.0",
+      "readOnly": true,
+      "openAndRepair": false,
+      "sourceUnchanged": true,
+      "closedOwnDocument": true,
+      "qa": "office/claude-zh-brief.json",
+      "visualReview": "reviewed-no-missing-content-observed"
+    },
+    {
+      "edition": "deepseek-zh",
+      "scope": "brief",
+      "source": "examples/huandeng-introduction/deepseek-zh/Exports/brief.pptx",
+      "sha256": "ef357b43f0e116e27910bc6ccb693db40b5327029525cfa5e2dfb02c71a6823a",
+      "pages": 12,
+      "notes": 12,
+      "nativeCharts": 0,
+      "nativeTables": 2,
+      "nativeGroups": 0,
+      "officeVersion": "16.0",
+      "readOnly": true,
+      "openAndRepair": false,
+      "sourceUnchanged": true,
+      "closedOwnDocument": true,
+      "qa": "office/deepseek-zh-brief.json",
+      "visualReview": "reviewed-no-missing-content-observed"
+    },
+    {
+      "edition": "chatgpt-en",
+      "scope": "brief",
+      "source": "examples/huandeng-introduction/chatgpt-en/Exports/brief.pptx",
+      "sha256": "ba7c6fb76ebf2ca41a1bab0d150d729585079f11a0e7f1fd084580c3e734cdd6",
+      "pages": 12,
+      "notes": 12,
+      "nativeCharts": 0,
+      "nativeTables": 0,
+      "nativeGroups": 0,
+      "officeVersion": "16.0",
+      "readOnly": true,
+      "openAndRepair": false,
+      "sourceUnchanged": true,
+      "closedOwnDocument": true,
+      "qa": "office/chatgpt-en-brief.json",
+      "visualReview": "reviewed-no-missing-content-observed"
+    },
+    {
+      "edition": "chatgpt-zh",
+      "scope": "brief",
+      "source": "examples/huandeng-introduction/chatgpt-zh/Exports/brief.pptx",
+      "sha256": "9ee79a81d5f87122cbc1a1199b0511f337b77013a4048d7f6294c2f3d253ff73",
+      "pages": 12,
+      "notes": 12,
+      "nativeCharts": 0,
+      "nativeTables": 0,
+      "nativeGroups": 0,
+      "officeVersion": "16.0",
+      "readOnly": true,
+      "openAndRepair": false,
+      "sourceUnchanged": true,
+      "closedOwnDocument": true,
+      "qa": "office/chatgpt-zh-brief.json",
+      "visualReview": "reviewed-no-missing-content-observed"
+    }
+  ],
+  "schemaVersion": 1,
+  "pathBase": "docs/evidence/final-examples",
+  "visualReview": {
+    "method": "Actual PowerPoint PNGs inspected as 800x450-per-slide contact sheets, with listed detail pages inspected as full 1600x900 PNGs. Listed ChatGPT fallback pages compared against current 1920x1080 Editor PNGs.",
+    "reviewer": "ChatGPT 6 Astra / zh_delivery",
+    "sourceDesignChanged": false,
+    "allPagesInspected": 197,
+    "files": [
+      {
+        "edition": "claude-en",
+        "scope": "main",
+        "pages": 25,
+        "contactSheets": ["001-008", "009-016", "017-024", "025-025"],
+        "detailPages": [12],
+        "status": "reviewed-with-known-chart-axis-overlap",
+        "observations": [
+          {
+            "page": 12,
+            "kind": "actual-office-layout",
+            "severity": "visible-overlap",
+            "text": "X-axis title overlaps part of numeric tick-label band; chart line, values, base-pair annotations, structure illustration and native chart remain present."
+          }
+        ],
+        "otherPages": "No missing content, blank slides, gross displacement or page clipping seen at 800x450 contact sheet scale."
+      },
+      {
+        "edition": "claude-zh",
+        "scope": "main",
+        "pages": 26,
+        "contactSheets": ["001-008", "009-016", "017-024", "025-026"],
+        "detailPages": [12],
+        "status": "reviewed-no-missing-content-observed",
+        "observations": [
+          {
+            "page": 12,
+            "kind": "actual-office-layout",
+            "text": "Native chart visible. X-axis title sits just above baseline and remains separate from numeric ticks; no EN-style tick/title collision observed."
+          }
+        ]
+      },
+      {
+        "edition": "deepseek-en",
+        "scope": "main",
+        "pages": 22,
+        "contactSheets": ["001-008", "009-016", "017-022"],
+        "detailPages": [],
+        "status": "reviewed-no-missing-content-observed",
+        "observations": [],
+        "limits": "All pages inspected in 800x450-per-slide contact sheets; source content/design was frozen and was not revised."
+      },
+      {
+        "edition": "deepseek-zh",
+        "scope": "main",
+        "pages": 22,
+        "contactSheets": ["001-008", "009-016", "017-022"],
+        "detailPages": [],
+        "status": "reviewed-no-severe-layout-loss-observed",
+        "observations": [
+          {
+            "page": 12,
+            "kind": "actual-office-layout",
+            "severity": "minor-wrap",
+            "text": "The short descriptive paragraph ends with a punctuation mark on a following line; all text is present, no clipping. Source is frozen."
+          }
+        ],
+        "limits": "All pages inspected in 800x450-per-slide contact sheets."
+      },
+      {
+        "edition": "chatgpt-en",
+        "scope": "main",
+        "pages": 24,
+        "contactSheets": ["001-008", "009-016", "017-024"],
+        "detailPages": [3, 21],
+        "referencePages": [3, 21],
+        "status": "reviewed-no-missing-content-observed",
+        "fallbackChecks": [
+          {
+            "page": 3,
+            "object": "folder icon",
+            "result": "visible; shape, teal fill, relative placement preserved versus editor PNG"
+          },
+          {
+            "page": 21,
+            "object": "two handoff folder icons",
+            "result": "both visible; silhouette, fill and relative placement preserved versus editor PNG"
+          }
+        ],
+        "observations": []
+      },
+      {
+        "edition": "chatgpt-zh",
+        "scope": "main",
+        "pages": 24,
+        "contactSheets": ["001-008", "009-016", "017-024"],
+        "detailPages": [3, 4, 21],
+        "referencePages": [3, 4, 21],
+        "status": "reviewed-no-missing-content-observed",
+        "fallbackChecks": [
+          {
+            "page": 3,
+            "object": "folder icon, 6G4G",
+            "result": "cream folder visible on ink panel; silhouette and relative placement preserved"
+          },
+          {
+            "page": 4,
+            "object": "folder icon, CR5K",
+            "result": "teal folder visible; silhouette and relative placement preserved"
+          },
+          {
+            "page": 21,
+            "object": "zd-scope-focus multipoint line",
+            "result": "complete orange rectangular outline around 12-page presentation range visible; arrow also visible; matches editor reference"
+          }
+        ],
+        "observations": []
+      },
+      {
+        "edition": "claude-en",
+        "scope": "brief",
+        "pages": 9,
+        "contactSheets": ["001-008", "009-009"],
+        "detailPages": [5],
+        "status": "reviewed-with-known-chart-axis-overlap",
+        "observations": [
+          {
+            "page": 5,
+            "kind": "actual-office-layout",
+            "severity": "visible-overlap",
+            "text": "Same native chart as Main page 12: x-axis title overlaps numeric tick-label band. Plot, base-pair annotations, structure and native chart all remain present."
+          }
+        ]
+      },
+      {
+        "edition": "claude-zh",
+        "scope": "brief",
+        "pages": 9,
+        "contactSheets": ["001-008"],
+        "detailPages": [9],
+        "status": "reviewed-no-missing-content-observed",
+        "observations": [
+          {
+            "page": 5,
+            "kind": "actual-office-layout",
+            "text": "Native chart visible; x-axis title and numeric ticks remain separate, as in Main page 12."
+          }
+        ]
+      },
+      {
+        "edition": "deepseek-zh",
+        "scope": "brief",
+        "pages": 12,
+        "contactSheets": ["001-008", "009-012"],
+        "detailPages": [],
+        "status": "reviewed-no-missing-content-observed",
+        "observations": [],
+        "limits": "All pages inspected in 800x450-per-slide contact sheets."
+      },
+      {
+        "edition": "chatgpt-en",
+        "scope": "brief",
+        "pages": 12,
+        "contactSheets": ["001-008", "009-012"],
+        "detailPages": [2],
+        "referencePages": [3],
+        "status": "reviewed-no-missing-content-observed",
+        "fallbackChecks": [
+          {
+            "page": 2,
+            "object": "GX5Z pinned folder icon",
+            "result": "visible with matching silhouette, teal fill and placement versus Main/reference page 3"
+          }
+        ],
+        "observations": []
+      },
+      {
+        "edition": "chatgpt-zh",
+        "scope": "brief",
+        "pages": 12,
+        "contactSheets": ["001-008", "009-012"],
+        "detailPages": [2, 11],
+        "referencePages": [3, 21],
+        "status": "reviewed-no-missing-content-observed",
+        "fallbackChecks": [
+          {
+            "page": 2,
+            "object": "6G4G folder icon",
+            "result": "cream folder visibly preserved; matches Main/reference page 3"
+          },
+          {
+            "page": 11,
+            "object": "zd-scope-focus multipoint line",
+            "result": "full orange range outline and arrow visible; matches Main/reference page 21"
+          }
+        ],
+        "observations": []
+      }
+    ]
+  },
+  "primarySessionOfficeDetailReview": {
+    "pages": ["chatgpt-en/main/3", "chatgpt-en/main/21", "chatgpt-zh/main/21", "claude-en/main/12"],
+    "scope": "Actual final PowerPoint PNGs personally inspected; Editor visual review of all 48 ChatGPT Main pages is recorded separately."
+  }
+}

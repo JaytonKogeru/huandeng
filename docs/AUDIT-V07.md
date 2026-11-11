@@ -6,7 +6,7 @@
 
 ## 1. 总结与证据边界
 
-本轮在已交付 v0.6 上继续推进。Windows 权威源码为 `20e9e531a04933b3285bf707e2ff57a57085ecdc`，已安装运行时为 `9c27465aa88b5b2b59288f5b321596ad10fcb92c`。Linux 工作副本与 Windows 的 996 个跟踪文件逐一 SHA-256 相同；Linux 本地快照仅用于开发，不推送其 Git 历史。隔离 Windows 工作树为 `D:/_Proj/Huandeng-v07-20261108`。
+本轮在已交付 v0.6 上继续推进。Windows 权威源码为 `20e9e531a04933b3285bf707e2ff57a57085ecdc`，已安装运行时为 `9c27465aa88b5b2b59288f5b321596ad10fcb92c`。Linux 工作副本与 Windows 的 996 个跟踪文件逐一 SHA-256 相同；Linux 本地快照仅用于开发，不推送其 Git 历史。隔离 Windows 工作树为 `<workspace-checkout>`。
 
 按用户要求，三个专项均先学习一手资料，再只读核对项目：
 

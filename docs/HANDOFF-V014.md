@@ -10,7 +10,7 @@ Plugin work follows the same evidence chain: inspect Project and approved refere
 
 ## Installation
 
-Canonical executable: `D:/_Proj/Huandeng/dist/HUANDENG-win32-x64/HUANDENG Editor.exe`. The previous package remains at sibling `HUANDENG-v013-backup-20261109`. Two previously open Projects and their active selection were restored. Normal close flushed drafts; post-close source hashes and the unrelated dirty fixture were preserved. Detailed receipts are in the user's local HUANDENG upgrade directory, outside Git.
+Canonical executable: `<editor-checkout>/dist/HUANDENG-win32-x64/HUANDENG Editor.exe`. The previous package remains at sibling `HUANDENG-v013-backup-20261109`. Two previously open Projects and their active selection were restored. Normal close flushed drafts; post-close source hashes and the unrelated dirty fixture were preserved. Detailed receipts are in the user's local HUANDENG upgrade directory, outside Git.
 
 Codex and Claude local catalogs now use the durable 0.14.0 directory. The DeepSeek patch/launcher is available in the same versioned catalog; existing profiles and model settings were left intact. The original private account plugin is 0.14.0, with unchanged identity, connection, interface, prompts and audience. A running chat may need a new session to read updated skills; no hot-reload or model execution is implied by installation.
 

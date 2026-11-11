@@ -1,5 +1,14 @@
 # HUANDENG · Claude Code · English product introduction
 
+## Final watermark-only revision
+
+The owner froze this edition’s content and visual design. Its native author added one editable attribution object to every Main page: **English · Claude Opus 5.5**. Main has **25 pages**; the authored Brief has **9 occurrences**.
+
+An independent full-data comparison confirmed that all original page objects, Notes, page order, metadata, Presentation arrangements and scientific values remain unchanged. Final PDF/PPTX files were regenerated mechanically from that saved source. See the [current collection](../README.md), [freeze evidence](../../../docs/evidence/final-examples/native-watermark-freeze.json) and [final validation](../../../docs/PRODUCT-INTRODUCTION-VALIDATION.md).
+
+The records below document the earlier native authoring and reviews. Their original outcomes and retained limitations remain historical; this watermark pass does not constitute another content rewrite.
+
+
 The native author completed this revision in the original session. The coordinator assembled this index, exact saved Notes and read-only evidence; it did not rewrite authored pages, Story or metadata.
 
 [PPTD project](deck.pptd) · [Main PDF](Exports/deck.pdf) · [Main PowerPoint](Exports/deck.pptx) · [9-page Brief PDF](Exports/brief.pdf) · [9-page Brief PowerPoint](Exports/brief.pptx) · [Saved speaker notes](speaker-notes.md)

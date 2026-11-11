@@ -154,4 +154,20 @@ elements:
         - right
         - middle
       field: main-position
+  - elementId: attribution-watermark
+    elementType: text
+    bounds:
+      - 760
+      - 10
+      - 176
+      - 16
+    content:
+      text: 中文 · Claude Opus 5.5
+      fontFamily: Microsoft YaHei
+      fontSize: 10
+      lineHeight: 1.2
+      color: "#7A8580"
+      align:
+        - right
+        - middle
 notes: 既然所有客户端都走同一个写入器，人和多个 agent 就可以同时开工。比如 ChatGPT 起草内容，Claude Code 再做整体视觉整理；或者一个 agent 负责一章。写入器的规则很简单：改不同页面的提议都能保存；同一页哪怕改的是不同对象，后到的那一次会被拒绝，要重新读取再提议；故事、章节这些项目信息共用一个版本号，也可能冲突。交接的时候，写清楚是哪次操作、哪一页、哪个版本，下一位先读保存后的结果再动手。0.19 做过一次真实测试：DeepSeek Harness 的原生会话和 ChatGPT 共用一个三页的测试项目，各改各的页面都保留了，过期的同页写入被拒绝，之后的风格交接保留了另一方的内容。要说清楚：现在没有章节锁、没有自动排班，也没有在线状态显示。分工靠人事先约定。

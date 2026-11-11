@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 1,
+  "edition": "deepseek-zh",
+  "scope": "main",
+  "source": "examples/huandeng-introduction/deepseek-zh/Exports/deck.pptx",
+  "sha256": "7c4f394d650b52e9b9c42ca461e02aafa6f1263eec1d4f4a7e81a6f95183df23",
+  "pages": 22,
+  "notes": 22,
+  "nativeCharts": 0,
+  "nativeTables": 3,
+  "nativeGroups": 0,
+  "officeVersion": "16.0",
+  "powerPointExecutableVersion": "16.0.20527.20150",
+  "readOnly": true,
+  "openAndRepair": false,
+  "sourceUnchanged": true,
+  "closedOwnDocument": true,
+  "visualReview": {
+    "edition": "deepseek-zh",
+    "scope": "main",
+    "pages": 22,
+    "contactSheets": ["001-008", "009-016", "017-022"],
+    "detailPages": [],
+    "status": "reviewed-no-severe-layout-loss-observed",
+    "observations": [
+      {
+        "page": 12,
+        "kind": "actual-office-layout",
+        "severity": "minor-wrap",
+        "text": "The short descriptive paragraph ends with a punctuation mark on a following line; all text is present, no clipping. Source is frozen."
+      }
+    ],
+    "limits": "All pages inspected in 800x450-per-slide contact sheets."
+  },
+  "renderedPageHashes": [
+    {
+      "slide": 1,
+      "sha256": "c62fce96f08af8c10c78269ec50c2c2ede7d25ab612e74c47dd5cd61c091286d",
+      "bytes": 88660
+    },
+    {
+      "slide": 2,
+      "sha256": "33707b646cff1aeca9a863359ebbebf53ea7e2a0a58112f4e269e00846641c02",
+      "bytes": 58371
+    },
+    {
+      "slide": 3,
+      "sha256": "d7e3202b5e3fe0ce9ed6113e3f8774dc732941b4bc1e2dfaff12506c4f1ae256",
+      "bytes": 6680
+    },
+    {
+      "slide": 4,
+      "sha256": "948d5f40982aa83f3586aae458b0e55b8340bfaed674d52d1b8d9214e9374b9d",
+      "bytes": 40004
+    },
+    {
+      "slide": 5,
+      "sha256": "50ba73ff953884254e6ab2ef914ef767e6731848af0a1d96f9447c530be7b666",
+      "bytes": 39174
+    },
+    {
+      "slide": 6,
+      "sha256": "4ce35b2ecc52711704014fe2f4f6b405e41d2d4af056f2458776082b951a800a",
+      "bytes": 56065
+    },
+    {
+      "slide": 7,
+      "sha256": "a5bba5faae3107ebae0c9f83a6a338270b5a7377be55d7dc222b56209181c6a6",
+      "bytes": 4882
+    },
+    {
+      "slide": 8,
+      "sha256": "f1ca1ac22b00edecd5dc81ece2d6ba9c5527fa8c81a5fe1e62fad443c8134be7",
+      "bytes": 146854
+    },
+    {
+      "slide": 9,
+      "sha256": "ae54fabff7525d9ef93ab113879ace42c1a72989c33b25d1c72659335274358c",
+      "bytes": 103834
+    },
+    {
+      "slide": 10,
+      "sha256": "26a59c464e3509d1f00bdbf4fb2120b0960437de41390f506edae8ef9a8a1684",
+      "bytes": 150982
+    },
+    {
+      "slide": 11,
+      "sha256": "28fba35d19f84d49379b9b816555ce6a57cc597706f7f8dc419b50bad77a837c",
+      "bytes": 110495
+    },
+    {
+      "slide": 12,
+      "sha256": "3229892501d8f05e960a1eeaa6249ac5aa5698420d0a7e3287f1fad6ecea1b06",
+      "bytes": 95213
+    },
+    {
+      "slide": 13,
+      "sha256": "828a606d34f790d69da3df11fe036c9840393784d9b8c48a16c79792d49f7e70",
+      "bytes": 124488
+    },
+    {
+      "slide": 14,
+      "sha256": "4257328acd61aae95babb9b0bc918bffbcba09e3dd049321bfb6610a136457ac",
+      "bytes": 113079
+    },
+    {
+      "slide": 15,
+      "sha256": "55d8e83572fe66e71b182fa710d8c5f3265919ffac19e67a4b944f7899295696",
+      "bytes": 100715
+    },
+    {
+      "slide": 16,
+      "sha256": "d83a5ec0c1117817907f519d21d72ccd08069b97295382398fe432d457d2e3b8",
+      "bytes": 84298
+    },
+    {
+      "slide": 17,
+      "sha256": "73fac573485b5c8eb5f62823ab79c06fc1f5ae9a472d6baf7dd73465b3138719",
+      "bytes": 117358
+    },
+    {
+      "slide": 18,
+      "sha256": "2d150003dfc73137577ab92b7557756ccf5845f516b1c6aa191c2ca440cf2572",
+      "bytes": 53246
+    },
+    {
+      "slide": 19,
+      "sha256": "ef33d37bfa3df39e2f90361f0bfc8f65ecf50610267a4bbeeecb1a250f9181a7",
+      "bytes": 49950
+    },
+    {
+      "slide": 20,
+      "sha256": "e40356a9084bdab763b84c2ba51ad964350e0d1daf9f5e87b880d37a1128fd39",
+      "bytes": 91666
+    },
+    {
+      "slide": 21,
+      "sha256": "280ad2611615d1dc0b92b45569f02970da8a157e496e806f2456b16d895f9fb9",
+      "bytes": 51214
+    },
+    {
+      "slide": 22,
+      "sha256": "68d0cab11764a872aec14ea8d54b13c38e1098dc6b0f54cddd30eeff23c52c98",
+      "bytes": 72161
+    }
+  ]
+}

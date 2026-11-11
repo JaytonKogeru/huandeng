@@ -3,180 +3,255 @@ background:
   type: solid
   color: "#E4ECE6"
 elements:
+  - elementId: zd-bg
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 0
+      - 0
+      - 960
+      - 540
+    fill:
+      type: solid
+      color: "#F4F1E8"
   - elementId: title
     elementType: text
     bounds:
-        [42,34,880,76]
+        [38,29,884,49]
     role: title
     content:
-      {"text":"幻灯站在这些工作的基础上","fontFamily":"Noto Serif SC","fontSize":28,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.2}
-  - elementId: brand-small
-    elementType: image
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
-    sourceName: huandeng.png
-    alt: huandeng.png
-    bounds:
-        [43,512,18,18]
-    fit:
-      mode: contain
-    crop:
-      left: 0.18
-      right: 0.18
-      top: 0.14
-      bottom: 0.14
-  - elementId: foot
+      {"text":"按页分工，接着同一份改","fontFamily":"Noto Sans SC","fontSize":31,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.3}
+  - elementId: zd-route
     elementType: text
     bounds:
-        [68,515,140,16]
+      - 40
+      - 86
+      - 876
+      - 28
     content:
-      {"text":"HUANDENG","fontFamily":"Noto Sans SC","fontSize":9,"color":"#5B6A62","bold":false,"align":["left","top"],"lineHeight":1.35}
-  - elementId: position
-    elementType: text
-    bounds:
-        [881,514,35,18]
-    content:
-      {"text":"","fontFamily":"Noto Sans SC","fontSize":10,"color":"#5B6A62","bold":false,"align":["right","top"],"lineHeight":1.35,"field":"main-position"}
-  - elementId: credit-mark-0
-    elementType: image
-    src: media/imported/44e2a2aa5f3887deae386fa73f71234961f93e006873b632ccf38b6b6f1291a1.png
-    sourceName: open-slide.png
-    alt: open-slide.png
-    bounds:
-      - 44
-      - 145
-      - 62
-      - 62
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: credit-name-0
-    elementType: text
-    bounds:
-      - 126
-      - 161
-      - 203
-      - 43
-    content:
-      text: OpenSlide
-      fontFamily: Noto Serif SC
-      fontSize: 23
-      color: "#20372F"
+      text: "先说清 Slide ID 和修改范围；保存后，在历史中核对操作记录"
+      fontFamily: Noto Sans SC
+      fontSize: 14
+      color: "#168C8C"
       bold: false
       align:
         - left
         - top
-      lineHeight: 1.35
-  - elementId: credit-mark-1
-    elementType: image
-    src: media/imported/2a2f5cbcc74c7fa83c40127dd8b0e42c23f1157131aebe28492aa1ac27bbdc6d.png
-    sourceName: github-repository.png
-    alt: github-repository.png
+      lineHeight: 1.3
+  - elementId: zd-accent
+    elementType: shape
+    shapeName: rect
     bounds:
-      - 345
-      - 145
-      - 62
-      - 62
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: credit-name-1
+      - 40
+      - 119
+      - 64
+      - 3
+    fill:
+      type: solid
+      color: "#ED6A3A"
+  - elementId: zd-watermark
     elementType: text
     bounds:
-      - 427
-      - 161
-      - 203
-      - 43
+      - 39
+      - 508
+      - 820
+      - 22
     content:
-      text: OpenPPTD
-      fontFamily: Noto Serif SC
-      fontSize: 23
-      color: "#20372F"
+      text: Chinese · ChatGPT 6 Astra + Subagents
+      fontFamily: Noto Sans SC
+      fontSize: 13
+      color: "#53666A"
       bold: false
       align:
         - left
         - top
-      lineHeight: 1.35
-  - elementId: credit-mark-2
-    elementType: image
-    src: media/imported/d697acf6f3c5bc265806bc8f6c4e6d58b964e0b2962392d0329a420639f45846.png
-    sourceName: pptxgenjs.png
-    alt: pptxgenjs.png
-    bounds:
-      - 646
-      - 145
-      - 62
-      - 62
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: credit-name-2
+      lineHeight: 1.3
+  - elementId: zd-position
     elementType: text
     bounds:
-      - 728
-      - 161
-      - 203
-      - 43
+      - 884
+      - 508
+      - 38
+      - 22
     content:
-      text: PptxGenJS
-      fontFamily: Noto Serif SC
-      fontSize: 23
-      color: "#20372F"
+      text: ""
+      fontFamily: Noto Sans SC
+      fontSize: 13
+      color: "#53666A"
       bold: false
+      align:
+        - right
+        - top
+      lineHeight: 1.3
+      field: main-position
+  - elementId: zd-owner-band
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 40
+      - 156
+      - 420
+      - 58
+    fill:
+      type: solid
+      color: "#112D32"
+  - elementId: zd-owner
+    elementType: text
+    bounds:
+      - 58
+      - 171
+      - 384
+      - 35
+    content:
+      text: 你：定重点、选证据、看结果
+      fontFamily: Noto Sans SC
+      fontSize: 20
+      color: "#F4F1E8"
+      bold: true
       align:
         - left
         - top
-      lineHeight: 1.35
-  - elementId: credit-contributions
+      lineHeight: 1.3
+  - elementId: zd-task-a
     elementType: text
     bounds:
-      - 44
-      - 257
-      - 870
-      - 189
+      - 40
+      - 251
+      - 214
+      - 32
+    content:
+      text: 2856 · 编排演讲页
+      fontFamily: Noto Sans SC
+      fontSize: 18
+      color: "#112D32"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: zd-task-b
+    elementType: text
+    bounds:
+      - 270
+      - 251
+      - 214
+      - 32
+    content:
+      text: 4YZD · 演讲备注页
+      fontFamily: Noto Sans SC
+      fontSize: 18
+      color: "#112D32"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: zd-task-a-in
+    elementType: line
+    bounds:
+      - 152
+      - 219
+      - 0
+      - 24
+    viewBox:
+      - 1
+      - 1
+    points: 0,0 1,1
+    border:
+      width: 2.2
+      color: "#168C8C"
+    arrow:
+      - null
+      - arrow
+  - elementId: zd-task-b-in
+    elementType: line
+    bounds:
+      - 374
+      - 219
+      - 0
+      - 24
+    viewBox:
+      - 1
+      - 1
+    points: 0,0 1,1
+    border:
+      width: 2.2
+      color: "#168C8C"
+    arrow:
+      - null
+      - arrow
+  - elementId: zd-handoff
+    elementType: text
+    bounds:
+      - 40
+      - 316
+      - 420
+      - 160
     content:
       text: |-
-        OpenSlide：编辑器的代码基础。
-        OpenPPTD：公式转换模块。PptxGenJS：PPTX 文件生成。
+        交接时留下：
+        页 ID、要改什么、必须保留什么。
   
-        PPTD 思路借鉴 Kimi Slides 生态。图表、公式与功能图标分别使用
-        Apache ECharts、KaTeX 与 Font Awesome Free。
+        同页出现冲突，先重读当前结果。
       fontFamily: Noto Sans SC
       fontSize: 19
-      color: "#20372F"
+      color: "#112D32"
       bold: false
       align:
         - left
         - top
-      lineHeight: 1.5
-  - elementId: science-credits
+      lineHeight: 1.45
+  - elementId: zd-handoff-to-review
+    elementType: line
+    bounds:
+      - 468
+      - 284
+      - 40
+      - 0
+    viewBox:
+      - 1
+      - 1
+    points: 0,0 1,1
+    border:
+      width: 2.2
+      color: "#ED6A3A"
+    arrow:
+      - null
+      - arrow
+  - elementId: zd-saved-receipt
+    elementType: image
+    bounds:
+        [536,152,340,213]
+    src: "media/imported/eba7f76bb425a5d31e365aa0ebae5388bc5f06b42dbc9c1dc3497fdd3831d556.png"
+    sourceName: "saved-operation-17.png"
+    fit:
+      mode: contain
+  - elementId: zd-review-action
     elementType: text
     bounds:
-      - 44
-      - 453
-      - 870
-      - 49
+        [534,385,384,81]
     content:
-      text: |-
-        科学例页：RCSB PDB 1BNA · Drew et al., PNAS (1981)
-        交互与视觉参考：PowerPoint、WPS、Recent。来源与许可证随项目保留。
+      text: "历史 → 操作记录\n找到刚才的保存，再看前后。"
       fontFamily: Noto Sans SC
-      fontSize: 12
-      color: "#5B6A62"
+      fontSize: 20
+      color: "#112D32"
       bold: false
       align:
         - left
         - top
       lineHeight: 1.5
-notes: "HUANDENG的代码基础来自OpenSlide。OpenPPTD贡献公式转换模块，PptxGenJS负责PPTX生成。PPTD思路受到Kimi Slides生态的启发，但这不等于宣称某个通用标准的发明归属。图表、公式和图标也使用相应开源工作。公开DNA例页来源于PDB 1BNA及Drew等人的研究。项目保留来源和许可证，第三方标记不表示背书。\n\nSources and scope: sources/brand/manifest.json; notices/; sources/science/source.json; https://recent.design/ . The GitHub mark identifies the OpenPPTD repository, not an OpenPPTD product logo."
+  - elementId: zd-review-label
+    elementType: text
+    bounds:
+        [534,473,384,30]
+    content:
+      text: "本轮第 17 页的实际保存记录。"
+      fontFamily: Noto Sans SC
+      fontSize: 15
+      color: "#168C8C"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+notes: "让多个助手合作时，先按稳定的Slide ID分配页面，再说清每页的目标和不能改的证据。图中2856与4YZD就是这份教程中的编排和备注页；给不同页面分工，可以减少同时改同一页的冲突。交接给下一个助手时，提供页ID、具体任务、保护范围，以及已经保存的操作。保存后，选中目标页，进入“历史→操作记录”，找到刚才的保存。右侧是真实的本轮第17页保存记录，操作摘要、时间、作者和短回执号都在一起；完整操作ID是a368d2ea-b979-4be3-bac1-fea93b3774a0。通过对应回执查看Before/After，再回到当前页检查。若同页或共享编排发生冲突，重新读当前结果再调整提案。这一页展示任务分配与检查方法，不代表系统自动安排了团队。"

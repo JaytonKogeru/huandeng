@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "edition": "deepseek-zh",
+  "sourceBase": "repository-root",
+  "scope": "Final actual PowerPoint inspection; raw machine paths excluded",
+  "summary": "docs/evidence/final-examples/office.json",
+  "files": [
+    {
+      "edition": "deepseek-zh",
+      "scope": "main",
+      "source": "examples/huandeng-introduction/deepseek-zh/Exports/deck.pptx",
+      "sha256": "7c4f394d650b52e9b9c42ca461e02aafa6f1263eec1d4f4a7e81a6f95183df23",
+      "pages": 22,
+      "notes": 22,
+      "nativeCharts": 0,
+      "nativeTables": 3,
+      "nativeGroups": 0,
+      "officeVersion": "16.0",
+      "readOnly": true,
+      "openAndRepair": false,
+      "sourceUnchanged": true,
+      "closedOwnDocument": true,
+      "qa": "docs/evidence/final-examples/office/deepseek-zh-main.json",
+      "visualReview": "reviewed-no-severe-layout-loss-observed"
+    },
+    {
+      "edition": "deepseek-zh",
+      "scope": "brief",
+      "source": "examples/huandeng-introduction/deepseek-zh/Exports/brief.pptx",
+      "sha256": "ef357b43f0e116e27910bc6ccb693db40b5327029525cfa5e2dfb02c71a6823a",
+      "pages": 12,
+      "notes": 12,
+      "nativeCharts": 0,
+      "nativeTables": 2,
+      "nativeGroups": 0,
+      "officeVersion": "16.0",
+      "readOnly": true,
+      "openAndRepair": false,
+      "sourceUnchanged": true,
+      "closedOwnDocument": true,
+      "qa": "docs/evidence/final-examples/office/deepseek-zh-brief.json",
+      "visualReview": "reviewed-no-missing-content-observed"
+    }
+  ]
+}

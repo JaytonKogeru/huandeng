@@ -10,7 +10,7 @@
 | --- | --- |
 | 运行时来源 | `9c27465aa88b5b2b59288f5b321596ad10fcb92c` |
 | 构建 | `2026-11-07T16:47:49.8347220Z`；`sourceDirty=false`；Electron 38.7.2；build/package exit 0 |
-| 正式路径 | `D:\\_Proj\\Huandeng\\dist\\HUANDENG-win32-x64\\HUANDENG Editor.exe` |
+| 正式路径 | `<editor-checkout>\\dist\\HUANDENG-win32-x64\\HUANDENG Editor.exe` |
 | 用户入口 | 桌面与开始菜单“HUANDENG Editor”快捷方式，目标/工作目录/图标一致 |
 | 升级保护 | 旧 v0.5 窗口正常退出；旧包保留在 `.verification/installed-v05-backup-20261108-v06` |
 | 安装核对 | 29,141 文件、683,432,467 bytes，待安装副本与验收包逐文件 SHA-256/大小一致；自包含检查通过 |

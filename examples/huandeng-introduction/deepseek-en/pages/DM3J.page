@@ -190,4 +190,20 @@ elements:
       align:
         - left
         - top
+  - bounds:
+      - 690
+      - 16
+      - 222
+      - 14
+    content:
+      align:
+        - right
+        - top
+      color: "#8C8678"
+      fontFamily: Segoe UI
+      fontSize: 9.5
+      letterSpacing: 0.4
+      text: English · DeepSeek V4.1 Flash 1017
+    elementId: attribution-watermark
+    elementType: text
 notes: The work still has to leave the editor. PDF for the room. Editable PPTX for whoever has to keep it. MP4 when the deck has to play itself. Export reads the saved pages, not a screenshot of the editor, and the PPTX is a real editable file, not a folder of slide images. The format is a working format, not a lock-in.

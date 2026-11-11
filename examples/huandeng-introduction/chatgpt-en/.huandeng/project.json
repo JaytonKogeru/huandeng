@@ -485,16 +485,18 @@
       "path": "pages/ZWZJ.page",
       "state": "active",
       "components": {},
-      "elementRoles": {},
+      "elementRoles": {
+        "title": "title"
+      },
       "label": "S24",
       "designIntent": {
-        "purpose": "This public scientific page is the working example for the demonstration",
+        "purpose": "Teach selection through Layers and checking object stacking.",
         "keep": [
-          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table.",
-          "Keep all twelve C1′ distances, units, chain labels, source and the non-replicate qualification."
+          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
+          "Keep stable page identity, editable objects and the correct author watermark."
         ],
-        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
-        "actor": "ChatGPT",
+        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
+        "actor": "ChatGPT 6 Astra",
         "source": "sources/story/PRODUCT-BRIEF.md",
         "recordedAt": "2026-11-11T00:50:51.295Z",
         "pageRole": "content"
@@ -505,16 +507,19 @@
       "path": "pages/YZ4T.page",
       "state": "active",
       "components": {},
-      "elementRoles": {},
+      "elementRoles": {
+        "title": "title"
+      },
       "label": "S25",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "For the first connection, open Agent setup at the top of the editor, choose the client and follow its setup instructions",
+        "purpose": "Check the delivery format, collection and page count before export.",
         "keep": [
-          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
+          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
+          "Keep stable page identity, editable objects and the correct author watermark."
         ],
-        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
-        "actor": "ChatGPT",
+        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
+        "actor": "ChatGPT 6 Astra",
         "source": "sources/story/PRODUCT-BRIEF.md",
         "recordedAt": "2026-11-11T01:36:36.082Z"
       }
@@ -524,16 +529,19 @@
       "path": "pages/9DAA.page",
       "state": "active",
       "components": {},
-      "elementRoles": {},
+      "elementRoles": {
+        "title": "title"
+      },
       "label": "S26",
       "designIntent": {
         "pageRole": "cover",
-        "purpose": "HUANDENG is an editing workflow for scientific presentations",
+        "purpose": "Show the real Editor and a practical path from opening a project to editing and delivery.",
         "keep": [
-          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
+          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
+          "Keep stable page identity, editable objects and the correct author watermark."
         ],
-        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
-        "actor": "ChatGPT",
+        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
+        "actor": "ChatGPT 6 Astra",
         "source": "sources/story/PRODUCT-BRIEF.md",
         "recordedAt": "2026-11-11T01:05:02.473Z"
       }
@@ -548,13 +556,14 @@
       },
       "label": "S27",
       "designIntent": {
-        "pageRole": "section",
-        "purpose": "Start with one page: locate the work, keep its intent and evidence, and inspect a focused edit.",
+        "pageRole": "content",
+        "purpose": "Teach page selection, object selection and the Inspector relationship.",
         "keep": [
-          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
+          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
+          "Keep stable page identity, editable objects and the correct author watermark."
         ],
-        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
-        "actor": "ChatGPT",
+        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
+        "actor": "ChatGPT 6 Astra",
         "source": "sources/story/PRODUCT-BRIEF.md",
         "recordedAt": "2026-11-11T01:36:15.874Z"
       }
@@ -564,16 +573,19 @@
       "path": "pages/XF8A.page",
       "state": "active",
       "components": {},
-      "elementRoles": {},
+      "elementRoles": {
+        "title": "title"
+      },
       "label": "S28",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "The preceding chart retains all twelve source values",
+        "purpose": "Teach an aligned, readable before-and-after comparison of a focused edit.",
         "keep": [
-          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
+          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
+          "Keep stable page identity, editable objects and the correct author watermark."
         ],
-        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
-        "actor": "ChatGPT",
+        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
+        "actor": "ChatGPT 6 Astra",
         "source": "sources/story/PRODUCT-BRIEF.md",
         "recordedAt": "2026-11-11T01:17:50.599Z"
       }
@@ -583,16 +595,19 @@
       "path": "pages/ZN52.page",
       "state": "active",
       "components": {},
-      "elementRoles": {},
+      "elementRoles": {
+        "title": "title"
+      },
       "label": "S29",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "This is an actual saved edit",
+        "purpose": "Teach inspection of the exact saved objects and properties.",
         "keep": [
-          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
+          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
+          "Keep stable page identity, editable objects and the correct author watermark."
         ],
-        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
-        "actor": "ChatGPT",
+        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
+        "actor": "ChatGPT 6 Astra",
         "source": "sources/story/PRODUCT-BRIEF.md",
         "recordedAt": "2026-11-11T00:51:03.820Z"
       }
@@ -602,16 +617,19 @@
       "path": "pages/FKA9.page",
       "state": "active",
       "components": {},
-      "elementRoles": {},
+      "elementRoles": {
+        "title": "title"
+      },
       "label": "S30",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "The left navigation gives access to the project, pages, assets and files",
+        "purpose": "Teach a durable brief: purpose, preservation constraints and the requested change.",
         "keep": [
-          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
+          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
+          "Keep stable page identity, editable objects and the correct author watermark."
         ],
-        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
-        "actor": "ChatGPT",
+        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
+        "actor": "ChatGPT 6 Astra",
         "source": "sources/story/PRODUCT-BRIEF.md",
         "recordedAt": "2026-11-11T01:05:14.758Z"
       }
@@ -621,16 +639,19 @@
       "path": "pages/35U5.page",
       "state": "active",
       "components": {},
-      "elementRoles": {},
+      "elementRoles": {
+        "title": "title"
+      },
       "label": "S31",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "The asset library keeps the original material available for the next revision",
+        "purpose": "Teach selected text editing, canvas inspection and an explicit save.",
         "keep": [
-          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
+          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
+          "Keep stable page identity, editable objects and the correct author watermark."
         ],
-        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
-        "actor": "ChatGPT",
+        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
+        "actor": "ChatGPT 6 Astra",
         "source": "sources/story/PRODUCT-BRIEF.md",
         "recordedAt": "2026-11-11T01:05:28.150Z"
       }
@@ -645,13 +666,14 @@
       },
       "label": "S32",
       "designIntent": {
-        "pageRole": "section",
-        "purpose": "Once a page can keep evolving, assemble the talk: inspect its rhythm, select the pages and adapt the explanation to this audience.",
+        "pageRole": "content",
+        "purpose": "Use the actual page grid to inspect rhythm and density across a sequence.",
         "keep": [
-          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
+          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
+          "Keep stable page identity, editable objects and the correct author watermark."
         ],
-        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
-        "actor": "ChatGPT",
+        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
+        "actor": "ChatGPT 6 Astra",
         "source": "sources/story/PRODUCT-BRIEF.md",
         "recordedAt": "2026-11-11T01:36:22.061Z"
       }
@@ -661,16 +683,19 @@
       "path": "pages/2ZQ3.page",
       "state": "active",
       "components": {},
-      "elementRoles": {},
+      "elementRoles": {
+        "title": "title"
+      },
       "label": "S33",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "Select the page and open History to inspect saved operations or record a named version",
+        "purpose": "Teach naming, inspecting and reusing a meaningful page version.",
         "keep": [
-          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
+          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
+          "Keep stable page identity, editable objects and the correct author watermark."
         ],
-        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
-        "actor": "ChatGPT",
+        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
+        "actor": "ChatGPT 6 Astra",
         "source": "sources/story/PRODUCT-BRIEF.md",
         "recordedAt": "2026-11-11T01:36:43.979Z"
       }
@@ -680,16 +705,19 @@
       "path": "pages/U8ZQ.page",
       "state": "active",
       "components": {},
-      "elementRoles": {},
+      "elementRoles": {
+        "title": "title"
+      },
       "label": "S34",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "The human account helps the agent understand the job",
+        "purpose": "Teach how to find and place an existing original or import a new asset.",
         "keep": [
-          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
+          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
+          "Keep stable page identity, editable objects and the correct author watermark."
         ],
-        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
-        "actor": "ChatGPT",
+        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
+        "actor": "ChatGPT 6 Astra",
         "source": "sources/story/PRODUCT-BRIEF.md",
         "recordedAt": "2026-11-11T01:05:21.373Z"
       }
@@ -704,13 +732,14 @@
       },
       "label": "S35",
       "designIntent": {
-        "pageRole": "section",
-        "purpose": "With pages and talks organized, we can bring people and assistants into the same project and explain setup, division of work, handoff and delivery.",
+        "pageRole": "content",
+        "purpose": "Rehearse the selected talk from the beginning or current page.",
         "keep": [
-          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
+          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
+          "Keep stable page identity, editable objects and the correct author watermark."
         ],
-        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
-        "actor": "ChatGPT",
+        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
+        "actor": "ChatGPT 6 Astra",
         "source": "sources/story/PRODUCT-BRIEF.md",
         "recordedAt": "2026-11-11T01:36:28.537Z"
       }
@@ -720,16 +749,19 @@
       "path": "pages/AAD6.page",
       "state": "active",
       "components": {},
-      "elementRoles": {},
+      "elementRoles": {
+        "title": "title"
+      },
       "label": "S36",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "Main Slides is the continuing page library",
+        "purpose": "Explain Section membership through first-slide boundaries.",
         "keep": [
-          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
+          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
+          "Keep stable page identity, editable objects and the correct author watermark."
         ],
-        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
-        "actor": "ChatGPT",
+        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
+        "actor": "ChatGPT 6 Astra",
         "source": "sources/story/PRODUCT-BRIEF.md",
         "recordedAt": "2026-11-11T01:45:06.729Z"
       }
@@ -739,16 +771,19 @@
       "path": "pages/DHVW.page",
       "state": "active",
       "components": {},
-      "elementRoles": {},
+      "elementRoles": {
+        "title": "title"
+      },
       "label": "S37",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "Position is the current order; after rearranging, slide four can mean a different page",
+        "purpose": "Distinguish stable page identity from its changing position.",
         "keep": [
-          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
+          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
+          "Keep stable page identity, editable objects and the correct author watermark."
         ],
-        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
-        "actor": "ChatGPT",
+        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
+        "actor": "ChatGPT 6 Astra",
         "source": "sources/story/PRODUCT-BRIEF.md",
         "recordedAt": "2026-11-11T01:12:51.711Z"
       }
@@ -758,16 +793,19 @@
       "path": "pages/9N3S.page",
       "state": "active",
       "components": {},
-      "elementRoles": {},
+      "elementRoles": {
+        "title": "title"
+      },
       "label": "S38",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "Some talks should follow continuing edits; others need a particular settled stage",
+        "purpose": "Give one occurrence in a talk its own speaking notes.",
         "keep": [
-          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
+          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
+          "Keep stable page identity, editable objects and the correct author watermark."
         ],
-        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
-        "actor": "ChatGPT",
+        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
+        "actor": "ChatGPT 6 Astra",
         "source": "sources/story/PRODUCT-BRIEF.md",
         "recordedAt": "2026-11-11T01:12:58.990Z"
       }
@@ -777,16 +815,19 @@
       "path": "pages/DDJN.page",
       "state": "active",
       "components": {},
-      "elementRoles": {},
+      "elementRoles": {
+        "title": "title"
+      },
       "label": "S39",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "Present or export from the same working project",
+        "purpose": "Connect a supported assistant to the same project through its client setup.",
         "keep": [
-          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
+          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
+          "Keep stable page identity, editable objects and the correct author watermark."
         ],
-        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
-        "actor": "ChatGPT",
+        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
+        "actor": "ChatGPT 6 Astra",
         "source": "sources/story/PRODUCT-BRIEF.md",
         "recordedAt": "2026-11-11T01:05:42.522Z"
       }
@@ -796,16 +837,19 @@
       "path": "pages/BHPP.page",
       "state": "active",
       "components": {},
-      "elementRoles": {},
+      "elementRoles": {
+        "title": "title"
+      },
       "label": "S40",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "The PPTD file is the entry; the directory is the complete project",
+        "purpose": "Choose between following Main and pinning a named page version.",
         "keep": [
-          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
+          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
+          "Keep stable page identity, editable objects and the correct author watermark."
         ],
-        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
-        "actor": "ChatGPT",
+        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
+        "actor": "ChatGPT 6 Astra",
         "source": "sources/story/PRODUCT-BRIEF.md",
         "recordedAt": "2026-11-11T01:20:40.915Z"
       }
@@ -815,16 +859,19 @@
       "path": "pages/5HW8.page",
       "state": "active",
       "components": {},
-      "elementRoles": {},
+      "elementRoles": {
+        "title": "title"
+      },
       "label": "S41",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "HUANDENG builds on OpenSlide",
+        "purpose": "Assign page ownership, coordinate shared structure and inspect every result.",
         "keep": [
-          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
+          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
+          "Keep stable page identity, editable objects and the correct author watermark."
         ],
-        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
-        "actor": "ChatGPT",
+        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
+        "actor": "ChatGPT 6 Astra",
         "source": "sources/story/PRODUCT-BRIEF.md",
         "recordedAt": "2026-11-11T00:54:45.980Z"
       }
@@ -834,16 +881,19 @@
       "path": "pages/ECVR.page",
       "state": "active",
       "components": {},
-      "elementRoles": {},
+      "elementRoles": {
+        "title": "title"
+      },
       "label": "S42",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "Open this example and select the scientific page",
+        "purpose": "Complete a first useful edit and retain the project source attributions.",
         "keep": [
-          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
+          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
+          "Keep stable page identity, editable objects and the correct author watermark."
         ],
-        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
-        "actor": "ChatGPT",
+        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
+        "actor": "ChatGPT 6 Astra",
         "source": "sources/story/PRODUCT-BRIEF.md",
         "recordedAt": "2026-11-11T00:54:54.308Z"
       }
@@ -880,17 +930,20 @@
       "path": "pages/2XM9.page",
       "state": "active",
       "components": {},
-      "elementRoles": {},
+      "elementRoles": {
+        "title": "title"
+      },
       "label": "S45",
       "designIntent": {
-        "purpose": "Two frustrations often appeared together in my work",
-        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
+        "purpose": "Connect focused revisions to preserving useful work and inspecting what changed.",
+        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "actor": "ChatGPT",
+        "actor": "ChatGPT 6 Astra",
         "recordedAt": "2026-11-11T00:50:07.975Z",
         "pageRole": "content",
         "keep": [
-          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
+          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
+          "Keep stable page identity, editable objects and the correct author watermark."
         ]
       }
     },
@@ -899,17 +952,20 @@
       "path": "pages/KW5P.page",
       "state": "active",
       "components": {},
-      "elementRoles": {},
+      "elementRoles": {
+        "title": "title"
+      },
       "label": "S46",
       "designIntent": {
-        "purpose": "Work can be divided by pages, or passed from content drafting to visual refinement",
-        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
+        "purpose": "Hand off the complete folder so another person can continue editing.",
+        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "actor": "ChatGPT",
+        "actor": "ChatGPT 6 Astra",
         "recordedAt": "2026-11-11T01:17:57.780Z",
         "pageRole": "content",
         "keep": [
-          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
+          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
+          "Keep stable page identity, editable objects and the correct author watermark."
         ]
       }
     },
@@ -956,17 +1012,20 @@
       "path": "pages/GX5Z.page",
       "state": "active",
       "components": {},
-      "elementRoles": {},
+      "elementRoles": {
+        "title": "title"
+      },
       "label": "S49",
       "designIntent": {
-        "purpose": "The Editor is the workspace for inspection, direct editing and presentation",
-        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
+        "purpose": "Explain the working folder and the roles of its entry, pages, assets and history.",
+        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "actor": "ChatGPT",
+        "actor": "ChatGPT 6 Astra",
         "recordedAt": "2026-11-11T01:05:08.017Z",
         "pageRole": "content",
         "keep": [
-          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
+          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
+          "Keep stable page identity, editable objects and the correct author watermark."
         ]
       }
     },
@@ -975,17 +1034,20 @@
       "path": "pages/9QQW.page",
       "state": "active",
       "components": {},
-      "elementRoles": {},
+      "elementRoles": {
+        "title": "title"
+      },
       "label": "S50",
       "designIntent": {
-        "purpose": "After editing individual pages, inspect the talk as a whole",
-        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
+        "purpose": "Use Outline to read the page purpose and its place in the argument.",
+        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "actor": "ChatGPT",
+        "actor": "ChatGPT 6 Astra",
         "recordedAt": "2026-11-11T01:36:50.820Z",
         "pageRole": "content",
         "keep": [
-          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
+          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
+          "Keep stable page identity, editable objects and the correct author watermark."
         ]
       }
     },
@@ -994,17 +1056,20 @@
       "path": "pages/74A2.page",
       "state": "active",
       "components": {},
-      "elementRoles": {},
+      "elementRoles": {
+        "title": "title"
+      },
       "label": "S51",
       "designIntent": {
-        "purpose": "Reusing a page does not require reading the same script",
-        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
+        "purpose": "Build a talk by selecting references from the Main page library.",
+        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "actor": "ChatGPT",
+        "actor": "ChatGPT 6 Astra",
         "recordedAt": "2026-11-11T01:36:58.466Z",
         "pageRole": "content",
         "keep": [
-          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
+          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
+          "Keep stable page identity, editable objects and the correct author watermark."
         ]
       }
     }
@@ -1012,18 +1077,18 @@
   "project": {
     "schemaVersion": 1,
     "mainStory": {
-      "purpose": "Introduce what HUANDENG is, how to complete a scientific-page edit, and why intent, evidence, page history and talk composition belong in one working project.",
-      "audience": "Scientific presenters, people creating slides with agents and open-source contributors",
-      "takeaway": "Open one working project and use page intent and evidence to guide editing, review, reuse and delivery."
+      "purpose": "Teach the HUANDENG workflow from opening a project to editing, review, talk composition and delivery.",
+      "audience": "People making presentations with or without an AI assistant.",
+      "takeaway": "Use one working project, inspect every edit, and reuse the pages for each audience."
     },
     "sections": [
       {
         "id": "intro-section-0",
-        "title": "Introducing HUANDENG",
+        "title": "Open a working project",
         "story": {
-          "purpose": "Introducing HUANDENG",
-          "audience": "Scientific presenters, people creating slides with agents and open-source contributors",
-          "takeaway": "Open one working project and use page intent and evidence to guide editing, review, reuse and delivery."
+          "purpose": "Open a working project",
+          "audience": "People learning the HUANDENG Editor",
+          "takeaway": "Perform the demonstrated action in the same working project."
         },
         "frontMatter": true,
         "pageIds": [
@@ -1035,70 +1100,94 @@
       },
       {
         "id": "intro-section-1",
-        "title": "Make one page work",
+        "title": "Make a focused edit",
         "story": {
-          "purpose": "Make one page work",
-          "audience": "Scientific presenters, people creating slides with agents and open-source contributors",
-          "takeaway": "Open one working project and use page intent and evidence to guide editing, review, reuse and delivery."
+          "purpose": "Make a focused edit",
+          "audience": "People learning the HUANDENG Editor",
+          "takeaway": "Perform the demonstrated action in the same working project."
         },
         "pageIds": [
           "6b9fbac0-772c-435c-bce1-9cad0004af65",
           "7d7d42a0-0db7-4d33-9b3f-5e1035097b50",
           "4a066483-9a11-450c-be15-c0be33d52989",
           "95189956-cdd7-4ad9-88c8-cf28a204bb68",
-          "c4b12919-5876-4acb-b63f-6a7493b54b37",
-          "ca1eec7e-61bd-41ac-b6ab-e000d06797be",
-          "3f5561d8-477e-4954-bee2-9877c8cddc69",
-          "dc5bfe5f-326a-4b28-8536-56e51ea4397e",
-          "6a3aec16-2347-40fe-856d-df36c1f58509"
+          "c4b12919-5876-4acb-b63f-6a7493b54b37"
         ],
         "startPageId": "6b9fbac0-772c-435c-bce1-9cad0004af65"
       },
       {
         "id": "intro-section-2",
-        "title": "Turn pages into a talk",
+        "title": "Review and keep versions",
         "story": {
-          "purpose": "Turn pages into a talk",
-          "audience": "Scientific presenters, people creating slides with agents and open-source contributors",
-          "takeaway": "Open one working project and use page intent and evidence to guide editing, review, reuse and delivery."
+          "purpose": "Review and keep versions",
+          "audience": "People learning the HUANDENG Editor",
+          "takeaway": "Perform the demonstrated action in the same working project."
+        },
+        "pageIds": [
+          "ca1eec7e-61bd-41ac-b6ab-e000d06797be",
+          "3f5561d8-477e-4954-bee2-9877c8cddc69",
+          "dc5bfe5f-326a-4b28-8536-56e51ea4397e",
+          "6a3aec16-2347-40fe-856d-df36c1f58509"
+        ],
+        "startPageId": "ca1eec7e-61bd-41ac-b6ab-e000d06797be"
+      },
+      {
+        "id": "intro-section-3",
+        "title": "Read the whole sequence",
+        "story": {
+          "purpose": "Read the whole sequence",
+          "audience": "People learning the HUANDENG Editor",
+          "takeaway": "Perform the demonstrated action in the same working project."
         },
         "pageIds": [
           "d497fb11-7906-414e-a529-0d97680bce51",
           "62d5734d-2fe5-441c-a50a-abaa95145b56",
-          "3d7cd245-6d59-4123-a75f-fd400fd636c7",
-          "095ba6fb-14f6-42b1-815a-7970ac214058",
-          "80c650ec-8f56-403d-8f44-d190a84ed4b4",
-          "8050a155-9c2b-4cf5-b643-e9406b9b2b1c"
+          "3d7cd245-6d59-4123-a75f-fd400fd636c7"
         ],
         "startPageId": "d497fb11-7906-414e-a529-0d97680bce51"
       },
       {
-        "id": "intro-section-3",
-        "title": "Work with people and agents",
+        "id": "intro-section-4",
+        "title": "Build and deliver a talk",
         "story": {
-          "purpose": "Work with people and agents",
-          "audience": "Scientific presenters, people creating slides with agents and open-source contributors",
-          "takeaway": "Open one working project and use page intent and evidence to guide editing, review, reuse and delivery."
+          "purpose": "Build and deliver a talk",
+          "audience": "People learning the HUANDENG Editor",
+          "takeaway": "Perform the demonstrated action in the same working project."
         },
         "pageIds": [
+          "095ba6fb-14f6-42b1-815a-7970ac214058",
+          "80c650ec-8f56-403d-8f44-d190a84ed4b4",
+          "8050a155-9c2b-4cf5-b643-e9406b9b2b1c",
           "4a398dd0-ad74-4a36-b65e-6068ffe817a8",
           "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6",
-          "e0b400eb-ddc1-4c42-af48-d420785b1d8f",
+          "e0b400eb-ddc1-4c42-af48-d420785b1d8f"
+        ],
+        "startPageId": "095ba6fb-14f6-42b1-815a-7970ac214058"
+      },
+      {
+        "id": "intro-section-5",
+        "title": "Continue with an assistant",
+        "story": {
+          "purpose": "Continue with an assistant",
+          "audience": "People learning the HUANDENG Editor",
+          "takeaway": "Perform the demonstrated action in the same working project."
+        },
+        "pageIds": [
           "e4fb0f10-ffa5-44e2-907f-b92e1b69535e",
           "bbcdc92a-915c-4988-a4d5-76e466d0424f",
           "8f9e154d-c5c2-4d79-b809-984586f8311e"
         ],
-        "startPageId": "4a398dd0-ad74-4a36-b65e-6068ffe817a8"
+        "startPageId": "e4fb0f10-ffa5-44e2-907f-b92e1b69535e"
       }
     ],
     "presentations": [
       {
         "id": "introduction-full",
-        "title": "Full introduction",
+        "title": "Editor walkthrough",
         "story": {
-          "purpose": "Introduce what HUANDENG is, how to complete a scientific-page edit, and why intent, evidence, page history and talk composition belong in one working project.",
-          "audience": "Scientific presenters, people creating slides with agents and open-source contributors",
-          "takeaway": "Open one working project and use page intent and evidence to guide editing, review, reuse and delivery."
+          "purpose": "Teach a practical HUANDENG editing and delivery workflow.",
+          "audience": "People new to the Editor",
+          "takeaway": "Open, edit, review and reuse one working project."
         },
         "items": [
           {
@@ -1225,11 +1314,11 @@
       },
       {
         "id": "introduction-short",
-        "title": "Brief introduction",
+        "title": "First edit · short talk",
         "story": {
-          "purpose": "Introduce what HUANDENG is, how to complete a scientific-page edit, and why intent, evidence, page history and talk composition belong in one working project.",
-          "audience": "Scientific presenters, people creating slides with agents and open-source contributors",
-          "takeaway": "Open one working project and use page intent and evidence to guide editing, review, reuse and delivery."
+          "purpose": "Teach a practical HUANDENG editing and delivery workflow.",
+          "audience": "People new to the Editor",
+          "takeaway": "Open, edit, review and reuse one working project."
         },
         "items": [
           {
@@ -1238,20 +1327,21 @@
             "pageId": "90353b2a-6f7b-4ee5-8a8b-10bceb538190"
           },
           {
-            "id": "introduction-short-story-21",
-            "kind": "page",
-            "pageId": "4ec264b7-018d-449c-8c8b-d9aede33a840"
-          },
-          {
             "id": "introduction-short-product-22",
             "kind": "page",
-            "pageId": "1ba18ad8-0701-4de6-83f5-555b949293d7"
+            "pageId": "1ba18ad8-0701-4de6-83f5-555b949293d7",
+            "versionId": "checkpoint:48c8cc57a4164ade03e9e753f4d8a9e2"
           },
           {
             "id": "introduction-short-product-5",
             "kind": "page",
             "pageId": "7d7d42a0-0db7-4d33-9b3f-5e1035097b50",
-            "notes": "Locate the shared work: project, pages, assets and files on the left, direct editing in the canvas, and properties, layers and Story on the right. An assistant works on that same page. In this brief talk we next find the original material in Assets and inspect a focused edit."
+            "notes": "For this short introduction, open Story and point to the purpose, preservation list and requested change. Ask the audience to write one focused editing request. Keep the speaking detail here; the page itself remains shared with the full walkthrough."
+          },
+          {
+            "id": "introduction-short-tutorial-3",
+            "kind": "page",
+            "pageId": "4a066483-9a11-450c-be15-c0be33d52989"
           },
           {
             "id": "introduction-short-story-6",
@@ -1259,11 +1349,9 @@
             "pageId": "95189956-cdd7-4ad9-88c8-cf28a204bb68"
           },
           {
-            "id": "brief-2",
+            "id": "introduction-short-tutorial-5",
             "kind": "page",
-            "pageId": "c4b12919-5876-4acb-b63f-6a7493b54b37",
-            "versionId": "checkpoint:891ad589ee3d84a6414cbf6af1245185",
-            "notes": "For this talk, change only the explanation. Keep the figure, all twelve values, units and source. The page need not be copied; this talk pins the saved wording-edit stage."
+            "pageId": "ca1eec7e-61bd-41ac-b6ab-e000d06797be"
           },
           {
             "id": "introduction-short-product-4",
@@ -1271,15 +1359,14 @@
             "pageId": "3f5561d8-477e-4954-bee2-9877c8cddc69"
           },
           {
-            "id": "introduction-short-story-13",
+            "id": "introduction-short-tutorial-7",
             "kind": "page",
-            "pageId": "dc5bfe5f-326a-4b28-8536-56e51ea4397e"
+            "pageId": "095ba6fb-14f6-42b1-815a-7970ac214058"
           },
           {
-            "id": "brief-4",
+            "id": "introduction-short-tutorial-8",
             "kind": "page",
-            "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7",
-            "notes": "The brief talk selects from the same Main pages while retaining their Slide IDs. These actual pages show the selection relationship. Next we connect assistants to this project and then consider division of work and handoff."
+            "pageId": "8050a155-9c2b-4cf5-b643-e9406b9b2b1c"
           },
           {
             "id": "brief-1",
@@ -1287,9 +1374,9 @@
             "pageId": "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6"
           },
           {
-            "id": "introduction-short-story-23",
+            "id": "introduction-short-tutorial-10",
             "kind": "page",
-            "pageId": "e0b400eb-ddc1-4c42-af48-d420785b1d8f"
+            "pageId": "e4fb0f10-ffa5-44e2-907f-b92e1b69535e"
           },
           {
             "id": "brief-6",

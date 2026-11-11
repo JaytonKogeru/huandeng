@@ -3,80 +3,170 @@ background:
   type: solid
   color: "#F7F5EF"
 elements:
+  - elementId: f-paper
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 0
+      - 0
+      - 960
+      - 540
+    fill:
+      type: solid
+      color: "#F4F1E8"
   - elementId: title
     elementType: text
     bounds:
-        [42,34,880,76]
+        [36,27,884,46]
     role: title
     content:
-      {"text":"页面相同，这次讲述可以不同","fontFamily":"Noto Serif SC","fontSize":28,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.2}
-  - elementId: brand-small
-    elementType: image
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
-    sourceName: huandeng.png
-    alt: huandeng.png
-    bounds:
-        [43,512,18,18]
-    fit:
-      mode: contain
-    crop:
-      left: 0.18
-      right: 0.18
-      top: 0.14
-      bottom: 0.14
-  - elementId: foot
+      {"text":"重排以后，仍然认得这一页","fontFamily":"Noto Sans SC","fontSize":31,"color":"#112D32","align":["left","top"],"lineHeight":1.35,"bold":true}
+  - elementId: f-action
     elementType: text
     bounds:
-        [68,515,140,16]
+      - 38
+      - 82
+      - 884
+      - 28
     content:
-      {"text":"HUANDENG","fontFamily":"Noto Sans SC","fontSize":9,"color":"#5B6A62","bold":false,"align":["left","top"],"lineHeight":1.35}
-  - elementId: position
+      text: 在浏览视图调整顺序，再用 Slide ID 回到它的历史
+      fontFamily: Noto Sans SC
+      fontSize: 18
+      color: "#557076"
+      align:
+        - left
+        - top
+      lineHeight: 1.35
+  - elementId: f-watermark
     elementType: text
     bounds:
-        [881,514,35,18]
+      - 36
+      - 514
+      - 820
+      - 19
     content:
-      {"text":"","fontFamily":"Noto Sans SC","fontSize":10,"color":"#5B6A62","bold":false,"align":["right","top"],"lineHeight":1.35,"field":"main-position"}
-  - elementId: notes-science-preview
-    elementType: image
-    src: media/imported/b104e77304d9e60e33074b365860774e8dd570ab241ec5102ee033e158f65fd4.png
-    sourceName: 01.png
-    alt: 01.png
+      text: Chinese · ChatGPT 6 Astra + Subagents
+      fontFamily: Noto Sans SC
+      fontSize: 13
+      color: "#557076"
+      align:
+        - left
+        - top
+      lineHeight: 1.35
+  - elementId: f-position
+    elementType: text
     bounds:
-      - 43
-      - 145
-      - 450
-      - 253
+      - 878
+      - 514
+      - 44
+      - 19
+    content:
+      text: ""
+      fontFamily: Noto Sans SC
+      fontSize: 13
+      color: "#557076"
+      align:
+        - right
+        - top
+      lineHeight: 1.35
+      field: main-position
+  - elementId: f-order-before
+    elementType: text
+    bounds:
+      - 38
+      - 127
+      - 884
+      - 26
+    content:
+      text: 重排前
+      fontFamily: Noto Sans SC
+      fontSize: 16
+      color: "#557076"
+      align:
+        - left
+        - top
+      lineHeight: 1.35
+  - elementId: f-order-after
+    elementType: text
+    bounds:
+      - 38
+      - 305
+      - 884
+      - 26
+    content:
+      text: 重排后
+      fontFamily: Noto Sans SC
+      fontSize: 16
+      color: "#168C8C"
+      align:
+        - left
+        - top
+      lineHeight: 1.35
+      bold: true
+  - elementId: f-identity-before
+    elementType: image
+    bounds:
+      - 38
+      - 162
+      - 884
+      - 99
+    src: media/imported/56ef1c090dfe6c7ef847c12ea2f9ed6ef7a90dfd51efd5d5cc23f4e542356b58.png
+    sourceName: zh-CN-identity-before-4x.png
     fit:
       mode: contain
     crop:
       left: 0
       right: 0
-      top: 0
+      top: 0.2
       bottom: 0
-  - elementId: same-page-id
+  - elementId: f-identity-after
+    elementType: image
+    bounds:
+      - 38
+      - 340
+      - 884
+      - 99
+    src: media/imported/99a0f26c40f623b347b71bf756622aec243fecbc66a1b031013d57de71448afe.png
+    sourceName: zh-CN-identity-after-4x.png
+    fit:
+      mode: contain
+    crop:
+      left: 0
+      right: 0
+      top: 0.2
+      bottom: 0
+  - elementId: f-order-arrow
+    elementType: line
+    bounds:
+      - 480
+      - 272
+      - 0
+      - 22
+    viewBox:
+      - 1
+      - 1
+    points: 0,0 1,1
+    border:
+      width: 2
+      color: "#ED6A3A"
+    arrow:
+      - null
+      - arrow
+  - elementId: f-identity-point
     elementType: text
     bounds:
-      - 43
-      - 419
-      - 450
-      - 34
+      - 38
+      - 468
+      - 884
+      - 32
     content:
-      text: Slide ID 7EKH
+      text: 位置变了，Slide ID 保持 HFDV。
       fontFamily: Noto Sans SC
-      fontSize: 17
-      color: "#356F68"
-      bold: false
+      fontSize: 22
+      color: "#168C8C"
       align:
         - left
         - top
       lineHeight: 1.35
-  - elementId: local-notes
-    elementType: text
-    bounds:
-      - 540
-      - 153
-      - 374
-      - 333
-    content:
-      {"text":"Presentation → 备注页\n\n“这次只改讲法。\n原图、12 个数值、单位\n与来源保持不变。”\n\n讲稿属于这次出现；\nMain Notes 仍保留通用解释。","fontFamily":"Noto Sans SC","fontSize":20,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.5}
-notes: "复用页面不等于每次照读同一段话。Main Notes可以保留通用解释；Presentation中的一次出现可以有自己的讲稿。我们在本项目的短介绍里，用同一张科学页说明“编辑时保留证据”，而完整讲述可以多解释测量方法。修改的是这次出现的Notes，不是另造一张页面。"
+      bold: true
+notes: "这里是公开示例页面 HFDV 的真实重排结果。它原来位于第2页，移动后在第4页；四字符 Slide ID 仍然是 HFDV。位置回答“这场编排里排第几”，Slide ID 帮我们确认“还是哪一张页”。查历史、继续修改或者在另一个演讲中引用时，认准这一页即可。接下来就从这套 Main 页面中选择材料，组织一场具体的演讲。"

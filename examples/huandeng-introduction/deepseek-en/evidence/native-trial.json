@@ -30,7 +30,7 @@
   "turns": [
     {
       "requestId": "0f6c7628-52d5-4117-9ea1-2a4b079fd896",
-      "sessionId": "session-d144a4b4-98eb-4ff7-bddc-6cfa2666e9c6",
+      "sessionId": "<native-session-003>",
       "state": "completed",
       "exitCode": 0,
       "nativeCompleted": true,

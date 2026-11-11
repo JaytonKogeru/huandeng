@@ -1,35 +1,36 @@
-# HUANDENG — scientific slides kept as a working project
+# HUANDENG — a practical Editor walkthrough
 
-Open [deck.pptd](deck.pptd) in this folder. With Editor 0.19, you can also open the project folder itself. Keep the entire folder together when moving the project.
+Open [deck.pptd](deck.pptd) in Editor 0.19, keeping this whole folder together.
 
-This introduction explains what HUANDENG is, how to work in it and why its page identity, original materials and revision history help. The founder’s experience motivates the design; the main explanation follows a practical editing task.
+This final 24-page walkthrough was written and designed directly by the primary **ChatGPT 6 Astra** session. Every page carries **English · ChatGPT 6 Astra**. The Chinese edition is an independent explanation made through parallel section work.
 
-## What is in this project
+## Learn by making a focused edit
 
-- Main and Full introduction contain **24 pages**. Brief introduction selects **12 occurrences** from the same page library.
-- Three title-only section pages appear at Main positions **4, 13 and 19**: make one page work; turn pages into a talk; work with people and agents.
-- A public PDB 1BNA example preserves the original molecular views, twelve C1′–C1′ measurements, units and source. These are positions in one structure, not independent experimental replicates.
-- Native tables, a chart and a distance equation demonstrate editable scientific content. Ordinary prose and lists remain coherent text objects.
-- Real localized interface captures show the Editor, Story, Assets, saved operations, named versions, Browse, Outline, Sections, presentation creation and delivery.
-- The product, client and dependency marks and the acknowledgment page remain. Paper, sage and sand support the sequence; white space is not treated as a proxy for human authorship.
+Find **GX5Z**, “One project keeps the work together.” Read Story, select its title, change one phrase, save and inspect the operation. Then open **First edit · short talk** to see how a Presentation reuses pages and can pin a named version.
 
-The practical sequence starts in the Editor, preserves intent and evidence during a scoped edit, identifies the page, reviews its history, selects pages for a talk, and connects assistants to the same project. The Chinese counterpart covers the same substantive topics and demonstrations.
+| Main pages | What you learn |
+| --- | --- |
+| 1–3 | Open the working project and understand its folder. |
+| 4–8 | Select a page and object, write Story, reuse an original, edit and save, and use Layers. |
+| 9–12 | Compare a focused change, inspect the saved operation, preserve identity and name a version. |
+| 13–15 | Read the sequence in Browse and Outline, and set Section boundaries. |
+| 16–21 | Arrange a talk, write its Notes, choose live or pinned references, rehearse, export and hand off the folder. |
+| 22–24 | Connect an assistant, divide page ownership, review results and make your first edit. |
 
-## Present, export and continue editing
+The large UI regions are actual Editor captures. Equal-scale comparisons, arrows and labels guide the eye. Text and diagrams remain native editable objects. The earlier scientific example is retained in sources and history; it no longer organizes the tutorial.
 
-The complete and short talks are saved Presentations in the project. The short scientific occurrence has its own Notes and pins a real earlier named version. Main retains the later chart-label refinement. The selection illustration uses three actual live pages selected by the brief.
+## Main and the short talk
 
-[Exports/deck.pdf](Exports/deck.pdf) and [Exports/deck.pptx](Exports/deck.pptx) contain the 24-page Main delivery. [Exports/brief.pdf](Exports/brief.pdf) and [Exports/brief.pptx](Exports/brief.pptx) contain the 12-page brief. Each export has a report, and [speaker-notes.md](speaker-notes.md) is extracted from the actual page and occurrence Notes.
+Main and **Editor walkthrough** each contain 24 pages. **First edit · short talk** contains 12 actual occurrences. Its project-map occurrence pins **Project map · tutorial**, and its Story occurrence has talk-specific Notes. These are saved project behaviors.
 
-Edit the relevant page or presentation occurrence to continue. Stable page IDs, original media and meaningful named stages are preserved. Machine-local operation journals remain on the originating computer; named page versions and their referenced media travel with the folder.
+[speaker-notes.md](speaker-notes.md) is extracted from the current Main and resolved short sequence. Edit the corresponding page or occurrence Notes to change the script.
 
-## Evidence and review
+After export, local delivery files are `Exports/deck.pdf`, `Exports/deck.pptx`, `Exports/brief.pdf` and `Exports/brief.pptx`. They are included in complete delivery archives; Git intentionally excludes generated exports.
 
-The verbatim account and revised product mission are in [sources/story](sources/story). Coordinates, CSV, method and reproducible scientific scripts are in [sources/science](sources/science).
+## Sources and verification
 
-Current records are [product verification](evidence/product-verification.json), [semantic topics](evidence/semantic-map.json), [composition](evidence/composition.json), [asset provenance](evidence/assets.json), [actual selection example](evidence/selection-example.json), [export hashes](evidence/exports.json) and [PowerPoint checks](evidence/office-product-verification.json). The existing story-verification record describes the preceding revision and is retained as history.
+The founder's original account stays in [sources/story](sources/story). Original scientific material, brand marks and older captures remain available with their attribution. Named versions archive page artwork and its local assets; installation-local operation logs remain on the originating computer.
 
-The collaboration example is backed by a real ChatGPT/DeepSeek shared-project test: distinct-page edits survived, a stale same-page proposal was rejected, and a fresh style handoff preserved content. Task allocation across three assistants is explicitly illustrative; it does not claim automatic section locks, scheduling or a completed three-client native test.
+The current [personal visual review](evidence/final-review.json), [composition](evidence/composition.json) and [final validation](../../../docs/PRODUCT-INTRODUCTION-VALIDATION.md) identify the reviewed pages, actual short-talk selection and delivery checks. Earlier evidence is retained under `evidence/history/before-final-20261111` and describes the previous design.
 
-Independent review covered all 24 Main pages, all 12 brief occurrences, both languages and the editable object structure. [Current validation](https://github.com/JaytonKogeru/huandeng/blob/editor-v0.19.0/docs/PRODUCT-INTRODUCTION-VALIDATION.md) separates those checks from native-client trials and the author’s acceptance. This remains a review candidate.
-
+Every final page was personally inspected by the primary session after the last source edit. The result is a review candidate; technical checks do not assert the owner's acceptance.

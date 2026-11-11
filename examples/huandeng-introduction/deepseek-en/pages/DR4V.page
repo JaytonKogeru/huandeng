@@ -73,4 +73,20 @@ elements:
       align:
         - left
         - top
+  - bounds:
+      - 690
+      - 16
+      - 222
+      - 14
+    content:
+      align:
+        - right
+        - top
+      color: "#8C8678"
+      fontFamily: Segoe UI
+      fontSize: 9.5
+      letterSpacing: 0.4
+      text: English · DeepSeek V4.1 Flash 1017
+    elementId: attribution-watermark
+    elementType: text
 notes: This is the whole working document. Pages on the left, the canvas, the inspector, Story, materials, files, history. The canvas is one view, not the document. The important thing is that all of it lives in one project folder. The screenshot is a public example project, not this deck — I didn't want to stage a fake one.

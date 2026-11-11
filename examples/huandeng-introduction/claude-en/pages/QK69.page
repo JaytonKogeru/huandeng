@@ -308,4 +308,20 @@ elements:
       align:
         - right
         - middle
+  - elementId: attribution-watermark
+    elementType: text
+    bounds:
+      - 760
+      - 10
+      - 176
+      - 16
+    content:
+      text: English · Claude Opus 5.5
+      fontFamily: Arial
+      fontSize: 10
+      lineHeight: 1.2
+      color: "#7A8580"
+      align:
+        - right
+        - middle
 notes: "This is the part of HUANDENG that comes most directly from the story-first idea. Every slide carries a short Story: what it is for, what must be kept, and what change was asked for. Think of it as an alignment tool between me and the agent. On the right is the Story actually recorded for the 1BNA slide: keep the exact values, keep the labelled axis and its units, keep the citation, and make no claims of replicates or trends. When an agent is asked to tidy that slide, it reads this first. Story also exists for the whole project, each Section and each Presentation. An agent's Story is its interpretation, not my approval."

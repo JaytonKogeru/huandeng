@@ -60,3 +60,7 @@ Preserve the successful current Claude English structure and artwork. Align Chin
 
 For one client job, write only this explicitly bound canonical project. The paired language may be read for semantic correspondence; changes there require its own explicitly scoped job. Do not edit another author’s project.
 This preferred English edition is a maintenance scope: preserve the successful structure and artwork, and preserve the user’s AVNM table height of 75.567. Do not rebuild it. Limit edits to necessary factual corrections, editable-object repairs that retain the appearance, and additions justified by verified current product behavior. Chinese alignment happens in the separate Chinese job. A new set of design frames is not required for unchanged pages.
+
+## Final attribution maintenance
+
+The owner accepted the existing Claude and DeepSeek content and design. The current task for this canonical edition is visible language/model attribution watermarks only. Preserve all other artwork, page identities, scientific values, Notes and presentation selection. Work only on this edition; ChatGPT owns its two editions and repository documentation. Preserve previous task records, including any denied log append. Keep the current native account, model and permissions.

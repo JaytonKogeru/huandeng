@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "scope": "Final native watermark maintenance against previously installed 0.19.0 packages",
+  "editions": [
+    {
+      "edition": "claude-en",
+      "pages": 25,
+      "nativeCompletionReported": true,
+      "processExitCode": 0,
+      "savedWatermarkVerified": true
+    },
+    {
+      "edition": "claude-zh",
+      "pages": 26,
+      "nativeCompletionReported": true,
+      "processExitCode": 0,
+      "savedWatermarkVerified": true
+    },
+    {
+      "edition": "deepseek-en",
+      "pages": 22,
+      "nativeCompletionReported": true,
+      "processExitCode": 1,
+      "savedWatermarkVerified": true,
+      "retainedFailure": "Host Windows ACL grantWrite / SetNamedSecurityInfoW failure; no permission bypass"
+    },
+    {
+      "edition": "deepseek-zh",
+      "pages": 22,
+      "nativeCompletionReported": true,
+      "processExitCode": 1,
+      "savedWatermarkVerified": true,
+      "retainedFailure": "Host Windows ACL grantWrite / SetNamedSecurityInfoW failure; no permission bypass"
+    }
+  ],
+  "verification": "Actual native tool use plus independent shared-writer baseline comparison. Raw session identifiers, prompts and account/profile state stay private.",
+  "packageBoundary": "These tasks ran in existing installed packages. New ZIPs have independently verified package/protocol checks; identical runtime and skill bytes are not relabelled as a new ZIP native model trial.",
+  "exports": "Final deliveries regenerated mechanically by the coordinator from the saved source."
+}

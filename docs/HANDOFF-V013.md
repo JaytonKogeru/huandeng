@@ -35,7 +35,7 @@ The reviewed **HUANDENG-ShareBox-Slides** task is installed and enabled, using `
 
 Prioritize PPTX import/round-trip, a true presenter display, native animation export, reusable master/layout semantics and richer source/reference management as separate designs. The current Activity surface is enough for explicit parallel client tasks; a built-in autonomous model runner is not implied. [Workspace UX](WORKSPACE-UX.md) records the PowerPoint feature audit and design rationale.
 
-The Windows isolated source worktree is `D:/_Proj/Huandeng-v013-20261109`; canonical is `D:/_Proj/Huandeng`. Preserve the unrelated modified canonical fixture. Push only a tested milestone to origin and retain upstream attribution.
+The Windows isolated source worktree is `<workspace-checkout>`; canonical is `<editor-checkout>`. Preserve the unrelated modified canonical fixture. Push only a tested milestone to origin and retain upstream attribution.
 
 ## Origin milestone
 

@@ -1,159 +1,323 @@
-# Introducing HUANDENG: speaker notes
+# Speaker notes — chatgpt-en
 
-Extracted from the actual project Notes. Continue editing on the page or the relevant Presentation occurrence.
+These Notes are extracted verbatim from the final saved Main pages and resolved Brief occurrences. The order, pinned versions, and occurrence overrides below match the final exports.
 
-## Full introduction
+## Main Slides
 
-### 1. Scientific slides, kept as a working project · 9DAA
+### 1. HUANDENG — 9DAA
 
-HUANDENG is an editing workflow for scientific presentations. It brings together a visual editor, a portable working project and access for AI agents. It began with my experience preparing lab meetings: I wanted help with repetitive work while retaining the judgment, original material and a clear place to make the next edit. We will locate a page, preserve its intent and evidence, inspect a change and turn the pages into a talk.
+Main position: 1 · Notes source: `main-page`.
 
-### 2. A small edit should stay a small edit · 2XM9
+<!-- notes:main-1 -->
+HUANDENG is a desktop editing workspace around a local slide project. This walkthrough follows an actual project through a focused edit, a saved review, reusable talk composition and export. The image is the current 0.19 Editor with this project open. We will enlarge the relevant controls on the following pages. Start by opening deck.pptd from the complete example folder.
+<!-- /notes:main-1 -->
 
-Two frustrations often appeared together in my work. A deck could look complete while missing the point I wanted to make. Changing two pages in fifty could also leave another full copy. I separated those concerns: where does the human intent stay, and which page actually changed? Story keeps the intent available; page identity and history keep the revision attached to the work. The filenames illustrate my use case, not a claim about every AI tool.
+### 2. A small edit should stay small — 2XM9
 
-### 3. What comes together in HUANDENG? · GX5Z
+Main position: 2 · Notes source: `main-page`.
 
-The Editor is the workspace for inspection, direct editing and presentation. The folder containing the PPTD entry is the complete project, with pages, assets and history. A plugin supplies authoring and collaboration guidance; a connector binds the assistant to the selected project’s shared writer. People and assistants can therefore work on the same source. The next section starts with that shared page.
+<!-- notes:main-2 -->
+Presentation work often returns to a small request: change one explanation while keeping the evidence and useful layout. The selected title shown here belongs to the actual project map on the next page. A focused request identifies what changes and what remains. After editing, save the page and inspect that operation. The page remains part of the same working project rather than becoming an unexplained replacement deck.
+<!-- /notes:main-2 -->
 
-### 4. Make one page work · 9VGD
+### 3. One project keeps the work together — GX5Z
 
-Start with one page: locate the work, keep its intent and evidence, and inspect a focused edit.
+Main position: 3 · Notes source: `main-page`.
 
-### 5. Start from the page in the editor · FKA9
+<!-- notes:main-3 -->
+Open the example project from its folder. The .pptd file is the entry point and page order; individual .page files hold editable page content. Images and supporting sources stay beside them. HUANDENG opens this working folder in the Editor. Share the complete folder when another person needs to continue editing. The diagram is a conceptual map of the actual project structure, not a screenshot.
+<!-- /notes:main-3 -->
 
-The left navigation gives access to the project, pages, assets and files. The central canvas remains available for direct object editing. The right inspector holds properties, layers and Story. Workspace views above the canvas let us browse the deck, inspect the outline, arrange sections, write notes and inspect history. An agent edits the same document. Next we will record the page intent and prepare the source material.
+### 4. Find the page, then select its object — 9VGD
 
-### 6. Keep the reason beside the edit · U8ZQ
+Main position: 4 · Notes source: `main-page`.
 
-The human account helps the agent understand the job. Project Story records the overall purpose; page Story records the point, the evidence to preserve and the requested change. It is not a command to print the transcript on the slide. The actual Story panel sits beside a concrete editing request. A person or another assistant taking over should read this context instead of guessing what happened in the previous conversation.
+<!-- notes:main-4 -->
+Open the slide thumbnails and choose GX5Z, the project map used in this walkthrough. Click its title on the canvas. The selection outline identifies the object, and the Inspector now describes that selected object. The fragments are enlarged actual Editor captures of the same page. To start with an empty page instead, use the plus control in the page sidebar. Selection does not save a content change.
+<!-- /notes:main-4 -->
 
-### 7. Keep the original material within reach · 35U5
+### 5. Write the intent beside the page — FKA9
 
-The asset library keeps the original material available for the next revision. These two DNA views, coordinates and distance table come from one public structure. After import, Assets lets us locate the material and reuse it on a page; the source record and method remain with the project. A new composition should not require inventing a similar-looking figure with different data. We will use this material in the scientific example.
+Main position: 5 · Notes source: `main-page`.
 
-### 8. Local variation in one structure · ZWZJ
+<!-- notes:main-5 -->
+Select the project-map page and open Story in the Inspector. Use the pencil control to record its purpose, preservation constraints and requested change. This current 0.19 capture shows the brief for the actual page in this walkthrough. Write an action that can be checked in the result. Story stores context for the next person or assistant; judging the resulting page remains part of the editing work.
+<!-- /notes:main-5 -->
 
-This public scientific page is the working example for the demonstration. The 1BNA structure and the twelve paired C1′ distances come from the same coordinates. At position seven, A7–B18 measures 10.2329 Å, displayed as 10.233 Å. These are positions within one structure, not independent experimental replicates. We will refine the explanation while retaining the figure, all values, axes and citation. This is a concrete editing task a scientific presenter can inspect.
+### 6. Place an original from Assets — U8ZQ
 
-Sources: https://www.rcsb.org/structure/1BNA ; https://doi.org/10.1073/pnas.78.4.2179 . Source coordinates and method: sources/science/.
+Main position: 6 · Notes source: `main-page`.
 
-### 9. Keep charts, tables and equations editable · XF8A
+<!-- notes:main-6 -->
+Open the project asset library. Search for a source by name, then drag an existing image onto the slide. Import and place adds a new original from the device. This example searches for the actual HUANDENG mark already in the project. Placement and cropping control the slide instance; keep the source image and its attribution with the project. The two crops show the real search controls and the matching result at a readable size.
+<!-- /notes:main-6 -->
 
-The preceding chart retains all twelve source values. This page selects five positions in a native table and keeps the distance calculation as an editable equation. A person can work with actual cells, a chart series and the equation instead of moving imitation cell text boxes. The plot and table use the same public data, so values and units can be checked together.
+### 7. Edit the selected text, then save — 35U5
 
-### 10. Match the saved change to the request · ZN52
+Main position: 7 · Notes source: `main-page`.
 
-This is an actual saved edit. The request tightened the title and explanation while retaining the figure, all twelve values, axes and source. The before and after views come from that operation’s real snapshots. The scope can be checked directly. Next we need to identify the page and follow its history, as well as inspect the final appearance.
+<!-- notes:main-7 -->
+Select the title and open Properties. Edit Text content for that object, and use the font and alignment controls when the change requires them. Check the canvas at presentation scale before clicking Save slides in the top bar. A saved-operation record can then be inspected in History. The capture shows the actual selected title and Properties fields; this page does not pretend that a new edit has already happened.
+<!-- /notes:main-7 -->
 
-Saved operation: d2d18509-c72c-48e7-81cc-4251486a522e. Verification: evidence/wording-edit.json.
+### 8. Use Layers when objects overlap — ZWZJ
 
-### 11. Identify the page. Then follow its history. · DHVW
+Main position: 8 · Notes source: `main-page`.
 
-Position is the current order; after rearranging, slide four can mean a different page. Slide ID preserves the page identity. The mapping here uses this project’s full and brief presentations. Name the stable ID and the intended object when asking an assistant for a change. History follows that same page instead of an ambiguous position number.
+<!-- notes:main-8 -->
+Open Layers when selecting an object on the canvas is difficult. Choose the object by its name; the same object becomes selected on the canvas. Use Forward or Backward for a single step, and To front or To back for the whole stack. Check what remains visible before saving. These are actual controls and the actual title object of the project map; the connector shows the selection relationship.
+<!-- /notes:main-8 -->
 
-### 12. Review a change. Return to a saved stage. · 2ZQ3
+### 9. Compare the changed region at equal scale — XF8A
 
-Select the page and open History to inspect saved operations or record a named version. An operation explains a particular change; a named version preserves a meaningful stage of the whole page. Restoring acts on the selected page. Small revisions can stay in the current project rather than becoming another full source deck.
+Main position: 9 · Notes source: `main-page`.
 
-### 13. Turn pages into a talk · 7E4T
+<!-- notes:main-9 -->
+The public product fixture changes the headline and explanatory sentence only. These are crops of its actual saved before and after page states, aligned at identical scale. The orange bars identify the region to inspect without drawing across its wording. The full original images remain in the project. Compare the new language against the request, then inspect the saved changes to verify the scope.
+<!-- /notes:main-9 -->
 
-Once a page can keep evolving, assemble the talk: inspect its rhythm, select the pages and adapt the explanation to this audience.
+### 10. Inspect the exact saved change — ZN52
 
-### 14. Step back and inspect the whole talk · 9QQW
+Main position: 10 · Notes source: `main-page`.
 
-After editing individual pages, inspect the talk as a whole. Browse shows actual pages and section rhythm. Outline makes headings and content cues easy to scan. Sections organizes chapter boundaries. These are views of the same pages. Each shown view is captured from the actual editor. Returning to Normal keeps the same page identities and content.
+<!-- notes:main-10 -->
+Open History for the edited page and choose its operation record. The saved changes list identifies the actual objects and properties changed by that operation. Here the public fixture reports content.text for the title and lead, matching the two-sentence request. Review the before and after page states as well. A successful save is evidence of a persisted change, not a substitute for assessing whether the page reads well.
+<!-- /notes:main-10 -->
 
-### 15. Keep the pages. Change the selection. · AAD6
+### 11. Move the page without losing its identity — DHVW
 
-Main Slides is the continuing page library. Open Project, Arrange Presentation and New Presentation; select pages, set their order and save Project. The upper row shows part of Main. The lower row shows three actual selections in this project’s brief talk, each referring to its original Slide ID. Next we will give one page the notes for this particular talk.
+Main position: 11 · Notes source: `main-page`.
 
-### 16. The same page can carry a different script · 74A2
+<!-- notes:main-11 -->
+This real public fixture moves a page from position 2 to position 4 in a six-page Main. Its short Slide ID, C014, stays the same. Position describes the current ordering; identity connects the content, history and Presentation references. When collaborating, name the page by its short ID rather than relying only on a changing position. These are actual before and after Editor status strips.
+<!-- /notes:main-11 -->
 
-Reusing a page does not require reading the same script. Main Notes can keep the general explanation; one occurrence in a Presentation can hold its own notes. The brief introduction uses this scientific page to explain evidence preservation, while a longer account can explain the method. The local notes belong to this appearance; the page need not be duplicated.
+### 12. Name a version worth returning to — 2ZQ3
 
-### 17. Follow the page, or hold a saved version · 9N3S
+Main position: 12 · Notes source: `main-page`.
 
-Some talks should follow continuing edits; others need a particular settled stage. Live uses the current Main page; Pinned selects a named version of that page. The left is the current scientific example; the right is the actual saved wording-edit stage. The brief introduction really pins that version. The identity is the same, while the selected content version differs.
+<!-- notes:main-12 -->
+After reviewing a meaningful stage, open History and record a named page version. Project map · tutorial is an actual checkpoint recorded for GX5Z during the making of this walkthrough. The expanded detail shows that saved version. Select a version to inspect its preview before restoring it. A Presentation can also pin this named version while Main continues to evolve. Give milestones names that explain their purpose; do not generate a snapshot for every keystroke.
+<!-- /notes:main-12 -->
 
-### 18. Take the project, not just its entry file · BHPP
+### 13. Step back and read the sequence — 7E4T
 
-The PPTD file is the entry; the directory is the complete project. Pages, media, Story, composition, named page versions and authoring guidance stay together. Named versions travel with the folder; machine-local operation journals stay on the computer where they were recorded. PPTX already contains slide parts too; HUANDENG exposes an accessible working folder. The new entry flow accepts a PPTD or a folder containing exactly one PPTD. A descriptive folder suffix is optional. If the folder has several entries, choose the intended file explicitly.
+Main position: 13 · Notes source: `main-page`.
 
-### 19. Work with people and agents · X5J6
+<!-- notes:main-13 -->
+Switch to Browse to inspect the actual pages together. Look for repeated layouts, sudden density changes and pages whose main point is difficult to see. Section boundaries keep related material together. Double-click a slide, or select it and press Enter, to return to editing. The capture is this project in the current Editor, rather than an invented grid.
+<!-- /notes:main-13 -->
 
-With pages and talks organized, we can bring people and assistants into the same project and explain setup, division of work, handoff and delivery.
+### 14. Read the argument in Outline — 9QQW
 
-### 20. Different assistants, one working project · YZ4T
+Main position: 14 · Notes source: `main-page`.
 
-For the first connection, open Agent setup at the top of the editor, choose the client and follow its setup instructions. Ask the assistant to read the project and selected page, then check the returned project name and Slide ID. Different assistants use native integrations with the same document contract. The plugin carries guidance; the connector binds requests to the explicitly chosen project. The Editor and assistants save through the shared writer. The marks identify supported routes, not models currently online. A real read and task are still needed to verify the selected project and access.
+<!-- notes:main-14 -->
+Switch to Outline to inspect a page through its title, purpose and identity. The enlarged row is the project-map page, GX5Z. Read the sequence as an argument: what does each page add, and what prepares the next one? Double-click a row to return to editing. Page purpose is stored in Story, so update that brief when the intention changes.
+<!-- /notes:main-14 -->
 
-### 21. Divide the work. Make the handoff explicit. · KW5P
+### 15. A Section begins at its first slide — AAD6
 
-Work can be divided by pages, or passed from content drafting to visual refinement. A handoff needs page IDs, the task and evidence-preservation constraints. Different-page saves can proceed independently. A same-page or shared-metadata conflict requires rereading and reconciling the intended change. Activity distinguishes client reports from saved receipts; configuration alone is not online presence. The diagram illustrates task allocation. In a separate controlled test, native DeepSeek Harness and ChatGPT saved distinct pages from the same starting state. A stale same-page proposal was rejected; after rereading, a focused font and color handoff succeeded. Claude Code did not participate in this round’s parallel test. See evidence/collaboration.json.
+Main position: 15 · Notes source: `main-page`.
 
-### 22. From the working project to the audience · DDJN
+<!-- notes:main-15 -->
+Open Sections, select the section and choose its First Slide. A section continues from that slide until the next section starts; moving those boundaries changes membership. The screenshot is the real Make a focused edit section, starting at page 4 and currently covering pages 4 through 8. A section does not require an empty divider slide. Save project after changing the structure.
+<!-- /notes:main-15 -->
 
-Present or export from the same working project. Click-by-click reveals belong to live playback; PPTX and PDF carry the static slides. Provide the complete PPTD project when someone needs to continue editing, and an appropriate export when they need to read or present it. Further changes return to the same source project.
+### 16. Choose pages for this particular talk — 74A2
 
-### 23. Built on work worth acknowledging · 5HW8
+Main position: 16 · Notes source: `main-page`.
 
-HUANDENG builds on OpenSlide. OpenPPTD contributes formula-conversion modules and PptxGenJS supplies PPTX generation. The PPTD approach was inspired by the Kimi Slides ecosystem; that is not a claim about inventing a universal standard. Charts, formulas and functional icons also build on open-source work. The public DNA example comes from PDB 1BNA and Drew and colleagues. Sources and licenses stay with the project; third-party marks do not imply endorsement.
+<!-- notes:main-16 -->
+In Project, choose Arrange Presentation. Create or select a Presentation, then choose pages from Main. The screenshots show First edit · short talk and the source picker filtered to GX5Z. Click the plus beside a page or Section to append its reference; reorder the occurrences for this audience and save project. A Presentation reuses the source page instead of creating a detached copy.
+<!-- /notes:main-16 -->
 
-Sources and scope: sources/brand/manifest.json; notices/; sources/science/source.json; https://recent.design/ . The GitHub mark identifies the OpenPPTD repository, not an OpenPPTD product logo.
+### 17. Give this talk its own speaking notes — 9N3S
 
-### 24. Open a page. Try one specific edit. · ECVR
+Main position: 17 · Notes source: `main-page`.
 
-Open this example and select the scientific page. Use its Slide ID to ask for one small change: clarify the explanation while preserving the figure, all twelve values, units and source. Inspect the proposal, then the saved page and history. The person can keep shaping the explanation throughout the work. Intent, evidence and revisions stay available for the next edit.
+<!-- notes:main-17 -->
+Expand Notes and version for a page occurrence. Enable This occurrence uses its own speaker notes, then write the script for this talk. The image is the actual FKA9 occurrence in First edit · short talk. Its page content remains shared with Main, while these notes are specific to the occurrence. Select the same talk and page in Notes page when rehearsing. Save project for edits in the arrangement form; use Save slides for edits in the Notes page.
+<!-- /notes:main-17 -->
 
-## Brief introduction
+### 18. Choose what this occurrence follows — BHPP
 
-### 1. Scientific slides, kept as a working project · 9DAA
+Main position: 18 · Notes source: `main-page`.
 
-HUANDENG is an editing workflow for scientific presentations. It brings together a visual editor, a portable working project and access for AI agents. It began with my experience preparing lab meetings: I wanted help with repetitive work while retaining the judgment, original material and a clear place to make the next edit. We will locate a page, preserve its intent and evidence, inspect a change and turn the pages into a talk.
+<!-- notes:main-18 -->
+The two actual controls show different occurrence choices. Live reference follows the current Main slide. A pinned version uses a named page checkpoint, here Project map · tutorial. Choose the behavior deliberately for each talk. The public short talk includes this real pin so the distinction can be inspected. Change the version selector and save project; the Main slide itself is not restored by selecting a pin.
+<!-- /notes:main-18 -->
 
-### 2. A small edit should stay a small edit · 2XM9
+### 19. Rehearse from the point you are editing — X5J6
 
-Two frustrations often appeared together in my work. A deck could look complete while missing the point I wanted to make. Changing two pages in fifty could also leave another full copy. I separated those concerns: where does the human intent stay, and which page actually changed? Story keeps the intent available; page identity and history keep the revision attached to the work. The filenames illustrate my use case, not a claim about every AI tool.
+Main position: 19 · Notes source: `main-page`.
 
-### 3. What comes together in HUANDENG? · GX5Z
+<!-- notes:main-19 -->
+Select the Presentation you intend to show. The Present menu can start at the beginning or at the current slide. The current page shown here is the Story tutorial used in the short talk. Check the first displayed page and the sequence as you rehearse, then use Escape to return to editing. This is a rehearsal step, before sending a delivery file.
+<!-- /notes:main-19 -->
 
-The Editor is the workspace for inspection, direct editing and presentation. The folder containing the PPTD entry is the complete project, with pages, assets and history. A plugin supplies authoring and collaboration guidance; a connector binds the assistant to the selected project’s shared writer. People and assistants can therefore work on the same source. The next section starts with that shared page.
+### 20. Confirm the range before you export — YZ4T
 
-### 4. Start from the page in the editor · FKA9
+Main position: 20 · Notes source: `main-page`.
 
-Locate the shared work: project, pages, assets and files on the left, direct editing in the canvas, and properties, layers and Story on the right. An assistant works on that same page. In this brief talk we next find the original material in Assets and inspect a focused edit.
+<!-- notes:main-20 -->
+Open Export after saving your edits. Confirm both the format and the selected range. The actual dialog here targets First edit · short talk with 12 slides. PDF is a fixed-page delivery; PPTX contains editable supported objects; PNG creates slide images. PPTX and PDF use the static base layout, while timeline animation has a separate video export. Open the exported file once to check its pages, fonts and any native chart layout before sharing.
+<!-- /notes:main-20 -->
 
-### 5. Keep the original material within reach · 35U5
+### 21. Send the whole folder to continue editing — KW5P
 
-The asset library keeps the original material available for the next revision. These two DNA views, coordinates and distance table come from one public structure. After import, Assets lets us locate the material and reuse it on a page; the source record and method remain with the project. A new composition should not require inventing a similar-looking figure with different data. We will use this material in the scientific example.
+Main position: 21 · Notes source: `main-page`.
 
-### 6. Local variation in one structure · ZWZJ
+<!-- notes:main-21 -->
+When another person will continue in HUANDENG, send the complete working folder. It contains deck.pptd, page files, original media, supporting sources and project history. Sending only deck.pptd leaves referenced material behind. The diagram names the actual project parts and the next editing action. A PDF or PPTX is useful for delivery, but returning to this shared project requires its working folder.
+<!-- /notes:main-21 -->
 
-For this talk, change only the explanation. Keep the figure, all twelve values, units and source. The page need not be copied; this talk pins the saved wording-edit stage.
+### 22. Connect the assistant to this project — DDJN
 
-### 7. Match the saved change to the request · ZN52
+Main position: 22 · Notes source: `main-page`.
 
-This is an actual saved edit. The request tightened the title and explanation while retaining the figure, all twelve values, axes and source. The before and after views come from that operation’s real snapshots. The scope can be checked directly. Next we need to identify the page and follow its history, as well as inspect the final appearance.
+<!-- notes:main-22 -->
+Open Agent setup in the desktop Editor and select the client you use. Follow its generated setup and verify the project entry before asking for an edit. Claude Code uses the HUANDENG plugin, DeepSeek Harness uses its native Cordis adapter, and ChatGPT reaches the local workflow through its connector. These clients work through the same document service. The screenshot shows the actual client selector; it does not claim that the browser-only capture itself completed native setup.
+<!-- /notes:main-22 -->
 
-Saved operation: d2d18509-c72c-48e7-81cc-4251486a522e. Verification: evidence/wording-edit.json.
+### 23. Divide the pages; review the returned work — 5HW8
 
-### 8. Identify the page. Then follow its history. · DHVW
+Main position: 23 · Notes source: `main-page`.
 
-Position is the current order; after rearranging, slide four can mean a different page. Slide ID preserves the page identity. The mapping here uses this project’s full and brief presentations. Name the stable ID and the intended object when asking an assistant for a change. History follows that same page instead of an ambiguous position number.
+<!-- notes:main-23 -->
+Agree on the scope before work begins. Different pages can be edited in parallel; a person can also hand a page from content drafting to visual refinement. This diagram illustrates a division between the project map and the Story tutorial, using actual page previews. Give shared project structure one owner, avoid simultaneous changes to the same page, and review every saved result at presentation size. Revision checks expose conflicts; they do not replace visual judgment. This English edition was authored by the main ChatGPT session.
+<!-- /notes:main-23 -->
 
-### 9. Keep the pages. Change the selection. · AAD6
+### 24. Open the example and make one useful edit — ECVR
 
-The brief talk selects from the same Main pages while retaining their Slide IDs. These actual pages show the selection relationship. Next we connect assistants to this project and then consider division of work and handoff.
+Main position: 24 · Notes source: `main-page`.
 
-### 10. Different assistants, one working project · YZ4T
+<!-- notes:main-24 -->
+Open examples/huandeng-introduction/chatgpt-en/deck.pptd with the complete folder present. Find GX5Z, read its Story, make one small wording change, save and inspect the operation. Then open First edit · short talk and see how its pinned project-map version differs from following Main. HUANDENG builds on OpenSlide. OpenPPTD contributes formula conversion, PptxGenJS contributes PowerPoint generation, and Font Awesome provides icons. Original software notices and asset sources remain with this repository.
+<!-- /notes:main-24 -->
 
-For the first connection, open Agent setup at the top of the editor, choose the client and follow its setup instructions. Ask the assistant to read the project and selected page, then check the returned project name and Slide ID. Different assistants use native integrations with the same document contract. The plugin carries guidance; the connector binds requests to the explicitly chosen project. The Editor and assistants save through the shared writer. The marks identify supported routes, not models currently online. A real read and task are still needed to verify the selected project and access.
+## Brief — First edit · short talk
 
-### 11. Divide the work. Make the handoff explicit. · KW5P
+Presentation ID: `introduction-short`.
 
-Work can be divided by pages, or passed from content drafting to visual refinement. A handoff needs page IDs, the task and evidence-preservation constraints. Different-page saves can proceed independently. A same-page or shared-metadata conflict requires rereading and reconciling the intended change. Activity distinguishes client reports from saved receipts; configuration alone is not online presence. The diagram illustrates task allocation. In a separate controlled test, native DeepSeek Harness and ChatGPT saved distinct pages from the same starting state. A stale same-page proposal was rejected; after rereading, a focused font and color handoff succeeded. Claude Code did not participate in this round’s parallel test. See evidence/collaboration.json.
+### 1. HUANDENG — 9DAA
 
-### 12. Open a page. Try one specific edit. · ECVR
+Main position: 1 · Notes source: `main-page`.
 
-Open this example and select the scientific page. Use its Slide ID to ask for one small change: clarify the explanation while preserving the figure, all twelve values, units and source. Inspect the proposal, then the saved page and history. The person can keep shaping the explanation throughout the work. Intent, evidence and revisions stay available for the next edit.
+Occurrence: `introduction-short:brief-0:90353b2a-6f7b-4ee5-8a8b-10bceb538190`.
+
+<!-- notes:brief-1 -->
+HUANDENG is a desktop editing workspace around a local slide project. This walkthrough follows an actual project through a focused edit, a saved review, reusable talk composition and export. The image is the current 0.19 Editor with this project open. We will enlarge the relevant controls on the following pages. Start by opening deck.pptd from the complete example folder.
+<!-- /notes:brief-1 -->
+
+### 2. One project keeps the work together — GX5Z
+
+Main position: 3 · Notes source: `pinned-page`.
+
+Occurrence: `introduction-short:introduction-short-product-22:1ba18ad8-0701-4de6-83f5-555b949293d7`.
+
+Pinned version: `checkpoint:48c8cc57a4164ade03e9e753f4d8a9e2`.
+
+<!-- notes:brief-2 -->
+Open the example project from its folder. The .pptd file is the entry point and page order; individual .page files hold editable page content. Images and supporting sources stay beside them. HUANDENG opens this working folder in the Editor. Share the complete folder when another person needs to continue editing. The diagram is a conceptual map of the actual project structure, not a screenshot.
+<!-- /notes:brief-2 -->
+
+### 3. Write the intent beside the page — FKA9
+
+Main position: 5 · Notes source: `occurrence-override`.
+
+Occurrence: `introduction-short:introduction-short-product-5:7d7d42a0-0db7-4d33-9b3f-5e1035097b50`.
+
+<!-- notes:brief-3 -->
+For this short introduction, open Story and point to the purpose, preservation list and requested change. Ask the audience to write one focused editing request. Keep the speaking detail here; the page itself remains shared with the full walkthrough.
+<!-- /notes:brief-3 -->
+
+### 4. Place an original from Assets — U8ZQ
+
+Main position: 6 · Notes source: `main-page`.
+
+Occurrence: `introduction-short:introduction-short-tutorial-3:4a066483-9a11-450c-be15-c0be33d52989`.
+
+<!-- notes:brief-4 -->
+Open the project asset library. Search for a source by name, then drag an existing image onto the slide. Import and place adds a new original from the device. This example searches for the actual HUANDENG mark already in the project. Placement and cropping control the slide instance; keep the source image and its attribution with the project. The two crops show the real search controls and the matching result at a readable size.
+<!-- /notes:brief-4 -->
+
+### 5. Edit the selected text, then save — 35U5
+
+Main position: 7 · Notes source: `main-page`.
+
+Occurrence: `introduction-short:introduction-short-story-6:95189956-cdd7-4ad9-88c8-cf28a204bb68`.
+
+<!-- notes:brief-5 -->
+Select the title and open Properties. Edit Text content for that object, and use the font and alignment controls when the change requires them. Check the canvas at presentation scale before clicking Save slides in the top bar. A saved-operation record can then be inspected in History. The capture shows the actual selected title and Properties fields; this page does not pretend that a new edit has already happened.
+<!-- /notes:brief-5 -->
+
+### 6. Compare the changed region at equal scale — XF8A
+
+Main position: 9 · Notes source: `main-page`.
+
+Occurrence: `introduction-short:introduction-short-tutorial-5:ca1eec7e-61bd-41ac-b6ab-e000d06797be`.
+
+<!-- notes:brief-6 -->
+The public product fixture changes the headline and explanatory sentence only. These are crops of its actual saved before and after page states, aligned at identical scale. The orange bars identify the region to inspect without drawing across its wording. The full original images remain in the project. Compare the new language against the request, then inspect the saved changes to verify the scope.
+<!-- /notes:brief-6 -->
+
+### 7. Inspect the exact saved change — ZN52
+
+Main position: 10 · Notes source: `main-page`.
+
+Occurrence: `introduction-short:introduction-short-product-4:3f5561d8-477e-4954-bee2-9877c8cddc69`.
+
+<!-- notes:brief-7 -->
+Open History for the edited page and choose its operation record. The saved changes list identifies the actual objects and properties changed by that operation. Here the public fixture reports content.text for the title and lead, matching the two-sentence request. Review the before and after page states as well. A successful save is evidence of a persisted change, not a substitute for assessing whether the page reads well.
+<!-- /notes:brief-7 -->
+
+### 8. Choose pages for this particular talk — 74A2
+
+Main position: 16 · Notes source: `main-page`.
+
+Occurrence: `introduction-short:introduction-short-tutorial-7:095ba6fb-14f6-42b1-815a-7970ac214058`.
+
+<!-- notes:brief-8 -->
+In Project, choose Arrange Presentation. Create or select a Presentation, then choose pages from Main. The screenshots show First edit · short talk and the source picker filtered to GX5Z. Click the plus beside a page or Section to append its reference; reorder the occurrences for this audience and save project. A Presentation reuses the source page instead of creating a detached copy.
+<!-- /notes:brief-8 -->
+
+### 9. Choose what this occurrence follows — BHPP
+
+Main position: 18 · Notes source: `main-page`.
+
+Occurrence: `introduction-short:introduction-short-tutorial-8:8050a155-9c2b-4cf5-b643-e9406b9b2b1c`.
+
+<!-- notes:brief-9 -->
+The two actual controls show different occurrence choices. Live reference follows the current Main slide. A pinned version uses a named page checkpoint, here Project map · tutorial. Choose the behavior deliberately for each talk. The public short talk includes this real pin so the distinction can be inspected. Change the version selector and save project; the Main slide itself is not restored by selecting a pin.
+<!-- /notes:brief-9 -->
+
+### 10. Confirm the range before you export — YZ4T
+
+Main position: 20 · Notes source: `main-page`.
+
+Occurrence: `introduction-short:brief-1:2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6`.
+
+<!-- notes:brief-10 -->
+Open Export after saving your edits. Confirm both the format and the selected range. The actual dialog here targets First edit · short talk with 12 slides. PDF is a fixed-page delivery; PPTX contains editable supported objects; PNG creates slide images. PPTX and PDF use the static base layout, while timeline animation has a separate video export. Open the exported file once to check its pages, fonts and any native chart layout before sharing.
+<!-- /notes:brief-10 -->
+
+### 11. Connect the assistant to this project — DDJN
+
+Main position: 22 · Notes source: `main-page`.
+
+Occurrence: `introduction-short:introduction-short-tutorial-10:e4fb0f10-ffa5-44e2-907f-b92e1b69535e`.
+
+<!-- notes:brief-11 -->
+Open Agent setup in the desktop Editor and select the client you use. Follow its generated setup and verify the project entry before asking for an edit. Claude Code uses the HUANDENG plugin, DeepSeek Harness uses its native Cordis adapter, and ChatGPT reaches the local workflow through its connector. These clients work through the same document service. The screenshot shows the actual client selector; it does not claim that the browser-only capture itself completed native setup.
+<!-- /notes:brief-11 -->
+
+### 12. Open the example and make one useful edit — ECVR
+
+Main position: 24 · Notes source: `main-page`.
+
+Occurrence: `introduction-short:brief-6:8f9e154d-c5c2-4d79-b809-984586f8311e`.
+
+<!-- notes:brief-12 -->
+Open examples/huandeng-introduction/chatgpt-en/deck.pptd with the complete folder present. Find GX5Z, read its Story, make one small wording change, save and inspect the operation. Then open First edit · short talk and see how its pinned project-map version differs from following Main. HUANDENG builds on OpenSlide. OpenPPTD contributes formula conversion, PptxGenJS contributes PowerPoint generation, and Font Awesome provides icons. Original software notices and asset sources remain with this repository.
+<!-- /notes:brief-12 -->

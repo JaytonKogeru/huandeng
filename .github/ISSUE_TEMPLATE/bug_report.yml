@@ -1,69 +1,76 @@
-name: Bug report
-description: Report a problem with the open-slide runtime, CLI, or scaffolder.
+name: Bug report / 问题报告
+description: Report a reproducible HUANDENG Editor, plugin or export problem.
 title: "[Bug]: "
 labels: ["bug"]
 body:
   - type: markdown
     attributes:
       value: |
-        Thanks for taking the time to file a bug. Please fill in the sections below so we can reproduce it quickly.
+        English and Chinese are welcome. Use public or synthetic examples and remove private content from screenshots and logs.
+        For a possible vulnerability, follow [SECURITY.md](https://github.com/JaytonKogeru/huandeng/blob/main/SECURITY.md) instead of posting exploit details here.
   - type: textarea
     id: summary
     attributes:
-      label: Summary
-      description: A clear, concise description of the bug.
-      placeholder: When I run `pnpm dev`, the inspector overlay…
+      label: Summary / 问题概述
+      description: What went wrong, and which task did it prevent?
     validations:
       required: true
-  - type: textarea
-    id: reproduction
+  - type: dropdown
+    id: entry
     attributes:
-      label: Steps to reproduce
-      description: Minimal, numbered steps. A link to a repo or sandbox is ideal.
-      placeholder: |
-        1. `npx @open-slide/cli init repro`
-        2. `cd repro && pnpm dev`
-        3. Open http://localhost:5173 and click …
-    validations:
-      required: true
-  - type: textarea
-    id: expected
-    attributes:
-      label: Expected behaviour
-    validations:
-      required: true
-  - type: textarea
-    id: actual
-    attributes:
-      label: Actual behaviour
-      description: Include screenshots, stack traces, or console output if relevant.
-    validations:
-      required: true
-  - type: input
-    id: package
-    attributes:
-      label: Affected package
-      description: e.g. `@open-slide/core`, `@open-slide/cli`, or "scaffolded project".
+      label: Entry point / 操作入口
+      multiple: true
+      options:
+        - Desktop Editor
+        - CLI / document service
+        - MCP / agent plugin
+        - PNG / PDF / PPTX / video export
+        - Public example or documentation
+        - Other
     validations:
       required: true
   - type: input
     id: version
     attributes:
-      label: Version
-      description: Output of `npm ls @open-slide/core` (or the CLI version you ran).
-      placeholder: "@open-slide/core@1.2.3"
+      label: Versions / 版本
+      description: Editor version; plugin and host versions if relevant; source commit for a development checkout.
+      placeholder: "Editor 0.19.0; plugin version; client/host version or commit"
     validations:
       required: true
   - type: input
     id: environment
     attributes:
-      label: Environment
-      description: Node version, package manager, OS, browser (if it's a runtime/UI bug).
-      placeholder: "Node 20.11.1, pnpm 10.17.0, macOS 14.5, Chrome 126"
+      label: Environment / 运行环境
+      description: Operating system and installation method; Node/pnpm for source builds; browser only if relevant.
+      placeholder: "Windows 11; packaged desktop / source checkout; relevant client"
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce / 复现步骤
+      description: Name a public fixture or provide a minimal sanitized example. Do not upload a private project folder.
+      placeholder: |
+        1. Open or create a public example project.
+        2. Select a page or object and perform the relevant action.
+        3. Describe the result.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior / 预期结果
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior / 实际结果
+      description: Include useful screenshots or error text after removing credentials, private paths and presentation content.
     validations:
       required: true
   - type: textarea
     id: extra
     attributes:
-      label: Additional context
-      description: Anything else worth knowing — recent upgrades, related issues, workarounds tried.
+      label: Additional context / 补充信息
+      description: Related issues, a recent version change or a workaround you tried.

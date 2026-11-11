@@ -1,23 +1,30 @@
-# HUANDENG introduction: editorial and product brief
+# HUANDENG Editor walkthrough: final editorial brief
 
-The founder's account in USER-STORY.zh-CN.md provides motivation and priorities. Interpret it rather than reproducing its spoken order. The presentation's job is to introduce HUANDENG: what it is, how to use it, and why its page-oriented workflow helps scientific presentation work.
+The founder's account in USER-STORY.zh-CN.md supplies motivation and priorities. Preserve that source verbatim. The audience's task is to open the Editor, make a useful edit, inspect it, arrange a talk and deliver it.
 
-The owner's preferred current edition is Claude English. Preserve its successful structure and useful visual work. Other editions need stronger product explanation. This is a content lesson, not permission for ChatGPT or DeepSeek to imitate Claude's artwork. DeepSeek English's typography is worth preserving; it needs substantially better use of real visual assets. Ordinary prose must not be fragmented into fake-table text boxes.
+## Current ownership and scope
 
-Cover these audience questions through a coherent example rather than a tab catalogue:
-- What is the relationship among the Editor, project folder, .pptd entry, plugin and connector?
-- How do I open the project, locate a page and edit it with the canvas or an assistant?
-- How do Story, original assets and the editable scientific objects preserve intent and evidence?
-- How do stable Slide ID, changing Position, saved operations and named versions work together?
-- How do Main pages become different Presentations, including occurrence notes and live/pinned uses?
-- How do I review a result, present it and deliver a portable project plus useful exports?
-- What can different assistants do together, and which concurrency behavior has actually been tested?
-- Which upstream projects and source materials made this work possible?
+- The primary ChatGPT session authors the English walkthrough directly.
+- Three parallel section agents author the Chinese walkthrough under the primary session's orchestration and personal visual review.
+- The English and Chinese editions are independent explanations; page-for-page or topic-for-topic alignment is not required.
+- Claude Code and DeepSeek Harness editions are frozen. This round only adds the accurate language/model watermark to every page and refreshes mechanical delivery files. Their prior designs, Notes, object data, page order and project arrangements stay intact.
 
-Show real localized UI at a legible scale, meaningful original images, product/client icons, actual page previews, native plots/tables/equations and source acknowledgments. Keep the user's original scientific evidence intact. A plain background or low object count is not a quality test.
+## What each ChatGPT walkthrough must teach
 
-For each author's Chinese/English pair, maintain a semantic map of topics, claims, demonstrations, user steps and acknowledgments. Localize explanation and reflow layout; do not silently remove product functions from one language. Record real exceptions.
+Connect the story to actions in the real Editor: opening a project; choosing a page and object; finding or importing original assets; writing purpose and constraints in Story; editing and saving; inspecting the exact change; using stable identity and named history; reading sequence in Browse, Outline and Sections; selecting pages for a Presentation; choosing occurrence Notes and live or pinned versions; rehearsing; exporting the intended range; and continuing with an assistant in the same project.
 
-Keep personal observations personal. No invented mentor quotations, performance measurements, product superiority claims or origin claims. Consult FACTS.md and current source behavior. If the implementation is changing during this revision, distinguish implemented, tested and proposed behavior.
+Every page needs a clear takeaway and an actionable role in that sequence. Notes carry the spoken explanation. Story carries purpose, preservation constraints and the requested change. Sections start at useful content pages; an empty divider is not required.
 
-The useful closing is a concrete first action with this project's .pptd and directory, not a slogan alone. Complete source projects remain in the existing six example folders; no dated parallel active copies.
+Use real interface pixels at a readable scale. Preserve original screenshots and assets. Crop through native image properties or select a precise real UI region. Use arrows, matched scale, alignment and labels to guide comparisons. Native text, shapes and diagrams should remain editable. A successful export or zero geometry findings cannot replace looking at the actual page.
+
+The scientific source package and earlier examples remain available for provenance and history. DNA measurements and scientific slide content are not the organizing example for these Editor tutorials.
+
+## Authorship on every page
+
+Use the actual production method: English · ChatGPT 6 Astra; Chinese · ChatGPT 6 Astra + Subagents. Native editions retain their Claude Opus 5.5 or DeepSeek V4.1 Flash 1017 language/model labels. Watermarks must remain readable, editable and outside the main instructional content.
+
+## Verification and delivery
+
+Keep all six canonical project directories. Use the active shared writer with fresh revisions, exact preview/apply and saved-operation readback. Preserve stable page identity, originals and named history. Review each final page personally, check the short Presentation's real occurrences and notes, and inspect final PDF/PPTX output. A project is delivered as its complete folder.
+
+Do not infer owner acceptance from automated checks or agent review. Public release preparation includes bilingual documentation, source and license attribution, distributable native plugins and a clean public source candidate; visibility changes and release publication are separate decisions.

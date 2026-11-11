@@ -68,6 +68,6 @@ THUG 上用户已修改的 `tests/fixtures/studio/pages/identities.page`（B6XA�
 
 ## 工程入口
 
-源代码：`D:/_Proj/Huandeng`。桌面产物：`dist/HUANDENG-win32-x64/HUANDENG Editor.exe`。启动：`Start-Huandeng.cmd`。安装快捷方式：`scripts/Install-Huandeng.ps1`。
+源代码：`<editor-checkout>`。桌面产物：`dist/HUANDENG-win32-x64/HUANDENG Editor.exe`。启动：`Start-Huandeng.cmd`。安装快捷方式：`scripts/Install-Huandeng.ps1`。
 
 未发布 npm、GitHub release 或公共服务。本地源码继续保留 OpenSlide MIT 声明。

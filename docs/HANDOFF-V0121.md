@@ -23,6 +23,6 @@ All 1,102 unit tests pass with one existing platform skip, core TypeScript passe
 
 Raw local receipts, native output, installer records and personal Project data stay outside Git. Public evidence is an allowlist of build/test/install outcomes plus visually inspected synthetic screenshots. The canonical unrelated page fixture must remain unchanged. Current-change privacy review does not erase older historical traces.
 
-The source worktree is `D:/_Proj/Huandeng-v0121-20261109`, branch `editor/v0.12.1-authoring`; canonical checkout remains `D:/_Proj/Huandeng`. Preserve the current ordinary profile and private Project. Integration verifies installed bytes, protected current files and the fresh writable service before resuming authoring.
+The source worktree is `<workspace-checkout>`, branch `editor/v0.12.1-authoring`; canonical checkout remains `<editor-checkout>`. Preserve the current ordinary profile and private Project. Integration verifies installed bytes, protected current files and the fresh writable service before resuming authoring.
 
 Only origin receives the approved tested milestone, with release/handoff records. Verify actual remote refs after push. Do not push upstream, publish npm, rewrite history or change repository visibility. Documentation-only commits after acceptance do not change the runtime source identity above.

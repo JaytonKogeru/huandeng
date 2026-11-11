@@ -3,108 +3,163 @@ background:
   type: solid
   color: "#E4ECE6"
 elements:
+  - elementId: zd-bg
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 0
+      - 0
+      - 960
+      - 540
+    fill:
+      type: solid
+      color: "#F4F1E8"
   - elementId: title
     elementType: text
     bounds:
-        [42,34,880,76]
+        [38,29,884,49]
     role: title
     content:
-      {"text":"分工可以并行，交接必须说清","fontFamily":"Noto Serif SC","fontSize":28,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.2}
-  - elementId: brand-small
-    elementType: image
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
-    sourceName: huandeng.png
-    alt: huandeng.png
-    bounds:
-        [43,512,18,18]
-    fit:
-      mode: contain
-    crop:
-      left: 0.18
-      right: 0.18
-      top: 0.14
-      bottom: 0.14
-  - elementId: foot
+      {"text":"选好格式，也选对范围","fontFamily":"Noto Sans SC","fontSize":31,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.3}
+  - elementId: zd-route
     elementType: text
     bounds:
-        [68,515,140,16]
+      - 40
+      - 86
+      - 876
+      - 28
     content:
-      {"text":"HUANDENG","fontFamily":"Noto Sans SC","fontSize":9,"color":"#5B6A62","bold":false,"align":["left","top"],"lineHeight":1.35}
-  - elementId: position
-    elementType: text
-    bounds:
-        [881,514,35,18]
-    content:
-      {"text":"","fontFamily":"Noto Sans SC","fontSize":10,"color":"#5B6A62","bold":false,"align":["right","top"],"lineHeight":1.35,"field":"main-position"}
-  - elementId: handoff-work
-    elementType: text
-    bounds:
-      - 44
-      - 155
-      - 380
-      - 247
-    content:
-      {"text":"分工示例 · 先按页分工\nChatGPT：内容草稿\nDeepSeek：另一组页面\n\n再按阶段交接\nClaude Code：检查并优化视觉","fontFamily":"Noto Sans SC","fontSize":20,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.45}
-  - elementId: handoff-arrow
-    elementType: line
-    bounds:
-      - 439
-      - 270
-      - 79
-      - 0
-    viewBox:
-      - 1
-      - 1
-    points: 0,0 1,1
-    border:
-      width: 1.4
-      color: "#356F68"
-    arrow:
-      - null
-      - arrow
-  - elementId: shared-work
-    elementType: image
-    src: media/imported/b104e77304d9e60e33074b365860774e8dd570ab241ec5102ee033e158f65fd4.png
-    sourceName: 01.png
-    alt: 01.png
-    bounds:
-      - 552
-      - 152
-      - 362
-      - 204
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: handoff-contract
-    elementType: text
-    bounds:
-      - 551
-      - 388
-      - 365
-      - 100
-    content:
-      text: |-
-        页 ID + 任务 + 必须保留的证据
-        接手先读当前页，再提交可检查的修改。
+      text: 导出 → 格式 → 范围 → 开始导出
       fontFamily: Noto Sans SC
-      fontSize: 18
-      color: "#20372F"
+      fontSize: 14
+      color: "#168C8C"
       bold: false
       align:
         - left
         - top
-      lineHeight: 1.5
-  - elementId: collaboration-limit
+      lineHeight: 1.3
+  - elementId: zd-accent
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 40
+      - 119
+      - 64
+      - 3
+    fill:
+      type: solid
+      color: "#ED6A3A"
+  - elementId: zd-watermark
     elementType: text
     bounds:
-      - 44
-      - 467
-      - 471
-      - 42
+      - 39
+      - 508
+      - 820
+      - 22
     content:
-      {"text":"ChatGPT + DeepSeek 已实测：分开改页、拒绝过时提交，\n重新读取后接手样式修改。","fontFamily":"Noto Sans SC","fontSize":12,"color":"#5B6A62","bold":false,"align":["left","top"],"lineHeight":1.35}
-notes: "可以按页面分工，也可以先让一个助手整理内容，再让另一个优化视觉。分工前要说清页ID、任务、素材与数值保护范围。不同页的保存可以独立进行；同页或者共享编排元数据发生冲突时，要重新读取再合并意图。活动记录显示助手上报和真实保存回执，但不把配置存在等同在线。这个图是分工示意。独立技术测试已让真实DeepSeek Harness与ChatGPT基于同一初始状态分别修改不同页，两者均成功保存；过时的同页提交被拒绝，重新读取后完成了字体与颜色的局部交接。Claude Code未参与本轮并行实测。测试证据见evidence/collaboration.json。"
+      text: Chinese · ChatGPT 6 Astra + Subagents
+      fontFamily: Noto Sans SC
+      fontSize: 13
+      color: "#53666A"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: zd-position
+    elementType: text
+    bounds:
+      - 884
+      - 508
+      - 38
+      - 22
+    content:
+      text: ""
+      fontFamily: Noto Sans SC
+      fontSize: 13
+      color: "#53666A"
+      bold: false
+      align:
+        - right
+        - top
+      lineHeight: 1.3
+      field: main-position
+  - elementId: zd-export
+    elementType: image
+    bounds:
+      - 40
+      - 149
+      - 620
+      - 292
+    src: "media/imported/4bc79732eb823c4efeb2696b71f64f7346bf53b6a9e298d67559f1bb35f6532d.png"
+    sourceName: "final-export.png"
+    fit:
+      mode: contain
+  - elementId: zd-export-uses
+    elementType: text
+    bounds:
+      - 705
+      - 159
+      - 220
+      - 228
+    content:
+      text: |-
+        PPTX · 常规演示
+  
+        PDF · 阅读审阅
+  
+        完整项目 · 接着编辑
+      fontFamily: Noto Sans SC
+      fontSize: 19
+      color: "#112D32"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.4
+  - elementId: zd-scope-focus
+    elementType: line
+    bounds:
+        [354,262,281,43]
+    viewBox:
+      - 1
+      - 1
+    points: 0,0 1,0 1,1 0,1 0,0
+    border:
+      width: 2
+      color: "#ED6A3A"
+  - elementId: zd-scope-arrow
+    elementType: line
+    bounds:
+      - 636
+      - 285
+      - 38
+      - 51
+    viewBox:
+      - 1
+      - 1
+    points: 1,1 0,0
+    border:
+      width: 2.2
+      color: "#ED6A3A"
+    arrow:
+      - null
+      - arrow
+  - elementId: zd-project-delivery
+    elementType: text
+    bounds:
+      - 40
+      - 458
+      - 884
+      - 43
+    content:
+      text: 需要继续编辑：带走完整目录，包含 deck.pptd、pages/、media/、.huandeng/。
+      fontFamily: Noto Sans SC
+      fontSize: 17
+      color: "#112D32"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+notes: "点击导出，先选格式，再检查范围。图中选择PowerPoint，并把范围设为“第一次修改 · 简短演讲”，因此输出的是这一场演讲的页面顺序，而不是整套Main。需要阅读审阅可以导出PDF；需要用常规演示软件继续使用可选PPTX。若接收者要在HUANDENG里继续修改，交付的是完整项目文件夹：deck.pptd是入口，pages和media保存页面与素材，.huandeng保存Story、编排和命名版本。把AGENTS.md、sources和notices一并保留。命名版本随项目携带，机器本地操作日志仍属于原电脑。导出后回到同一份源项目继续维护。下一步把助手接入同一份工作。"

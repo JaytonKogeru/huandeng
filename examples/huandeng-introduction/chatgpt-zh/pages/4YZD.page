@@ -3,111 +3,163 @@ background:
   type: solid
   color: "#EEE9DD"
 elements:
+  - elementId: zd-bg
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 0
+      - 0
+      - 960
+      - 540
+    fill:
+      type: solid
+      color: "#F4F1E8"
   - elementId: title
     elementType: text
     bounds:
-        [42,34,880,76]
+        [38,29,884,49]
     role: title
     content:
-      {"text":"带走整个项目，才方便接着做","fontFamily":"Noto Serif SC","fontSize":28,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.2}
-  - elementId: brand-small
-    elementType: image
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
-    sourceName: huandeng.png
-    alt: huandeng.png
-    bounds:
-        [43,512,18,18]
-    fit:
-      mode: contain
-    crop:
-      left: 0.18
-      right: 0.18
-      top: 0.14
-      bottom: 0.14
-  - elementId: foot
+      {"text":"同一页，写这次的讲法","fontFamily":"Noto Sans SC","fontSize":31,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.3}
+  - elementId: zd-route
     elementType: text
     bounds:
-        [68,515,140,16]
+      - 40
+      - 86
+      - 876
+      - 28
     content:
-      {"text":"HUANDENG","fontFamily":"Noto Sans SC","fontSize":9,"color":"#5B6A62","bold":false,"align":["left","top"],"lineHeight":1.35}
-  - elementId: position
-    elementType: text
+      text: 编排演讲 → 备注与版本 → 本次引用使用独立演讲备注
+      fontFamily: Noto Sans SC
+      fontSize: 14
+      color: "#168C8C"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: zd-accent
+    elementType: shape
+    shapeName: rect
     bounds:
-        [881,514,35,18]
-    content:
-      {"text":"","fontFamily":"Noto Sans SC","fontSize":10,"color":"#5B6A62","bold":false,"align":["right","top"],"lineHeight":1.35,"field":"main-position"}
-  - elementId: project-folder
-    elementType: icon
-    iconName: fas:folder-open
-    bounds:
-      - 44
-      - 145
-      - 69
-      - 69
+      - 40
+      - 119
+      - 64
+      - 3
     fill:
       type: solid
-      color: "#356F68"
-  - elementId: project-root
+      color: "#ED6A3A"
+  - elementId: zd-watermark
     elementType: text
     bounds:
-      - 136
-      - 158
-      - 786
-      - 52
+      - 39
+      - 508
+      - 820
+      - 22
     content:
-      text: 整个项目文件夹
-      fontFamily: Noto Serif SC
-      fontSize: 26
-      color: "#20372F"
+      text: Chinese · ChatGPT 6 Astra + Subagents
+      fontFamily: Noto Sans SC
+      fontSize: 13
+      color: "#53666A"
       bold: false
       align:
         - left
         - top
-      lineHeight: 1.35
-  - elementId: entry-choice
+      lineHeight: 1.3
+  - elementId: zd-position
     elementType: text
     bounds:
-      - 44
-      - 257
-      - 343
-      - 210
+      - 884
+      - 508
+      - 38
+      - 22
     content:
-      text: |-
-        打开 deck.pptd，
-        或选择它所在的文件夹。
-  
-        一个目录，一个明确的入口。
-        移动时，把目录一起带走。
+      text: ""
+      fontFamily: Noto Sans SC
+      fontSize: 13
+      color: "#53666A"
+      bold: false
+      align:
+        - right
+        - top
+      lineHeight: 1.3
+      field: main-position
+  - elementId: zd-left-label
+    elementType: text
+    bounds:
+      - 40
+      - 140
+      - 407
+      - 31
+    content:
+      text: 写在这次引用里
       fontFamily: Noto Sans SC
       fontSize: 20
-      color: "#20372F"
+      color: "#112D32"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: zd-right-label
+    elementType: text
+    bounds:
+        [390,140,532,31]
+    content:
+      text: 在“备注页”读出来
+      fontFamily: Noto Sans SC
+      fontSize: 20
+      color: "#112D32"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: zd-note-edit
+    elementType: image
+    bounds:
+        [40,190,300,185]
+    src: "media/imported/3f18782e6d24c490f58fcba2ffa75a7662d55313d885d35a375d0319b843be21.png"
+    sourceName: "final-note-edit.png"
+    fit:
+      mode: contain
+  - elementId: zd-note-read
+    elementType: image
+    bounds:
+        [390,185,532,239]
+    src: "media/imported/e134a5a10bcaaf416f0bfb0bac8e239941a05c98076533373a2f4e2d795e120d.png"
+    sourceName: "final-note-read.png"
+    fit:
+      mode: contain
+  - elementId: zd-note-arrow
+    elementType: line
+    bounds:
+        [351,287,28,0]
+    viewBox:
+      - 1
+      - 1
+    points: 0,0 1,1
+    border:
+      width: 2.2
+      color: "#ED6A3A"
+    arrow:
+      - null
+      - arrow
+  - elementId: zd-notes-result
+    elementType: text
+    bounds:
+      - 40
+      - 457
+      - 880
+      - 40
+    content:
+      text: 画面继续复用；讲稿跟着这次演讲走。
+      fontFamily: Noto Sans SC
+      fontSize: 20
+      color: "#168C8C"
       bold: false
       align:
         - left
         - top
-      lineHeight: 1.5
-  - elementId: project-parts
-    elementType: table
-    bounds:
-      - 432
-      - 235
-      - 482
-      - 257
-    columnWidths:
-      - 0.38
-      - 0.62
-    style:
-      cellStyle:
-        fontFamily: Noto Sans SC
-        fontSize: 16
-        color: "#20372F"
-        border:
-          color: "#C0CDC3"
-          width: 0.5
-        padding: 9
-      firstRowStyle:
-        fill: "#E4ECE6"
-        bold: true
-    rows:
-        [[{"text":"目录中的内容","align":["left","middle"]},{"text":"用途","align":["left","middle"]}],[{"text":"deck.pptd","align":["left","middle"]},{"text":"项目启动入口","align":["left","middle"]}],[{"text":"pages/ + media/","align":["left","middle"]},{"text":"页面与原始素材","align":["left","middle"]}],[{"text":".huandeng/","align":["left","middle"]},{"text":"Story、编排、命名版本","align":["left","middle"]}],[{"text":"AGENTS.md","align":["left","middle"]},{"text":"制作与协作约定","align":["left","middle"]}]]
-notes: "deck.pptd是启动入口，整个目录才是完整项目。pages存页面，media存素材，.huandeng保存Story、编排和命名页面版本，AGENTS.md留制作约定。命名版本随目录携带；机器本地的操作日志留在生成它的电脑。PPTX内部本来也有页面等部件；HUANDENG选择把工作项目直接放在可访问的目录中。新入口可以选择.pptd，也可以选择包含唯一.pptd的文件夹。目录后缀可以帮助辨认，但不是打开的必要条件；多个入口时要明确选择。"
+      lineHeight: 1.3
+notes: "同一张页面可以向不同听众讲不同的重点。打开编排条目的“备注与版本”，勾选“本次引用使用独立演讲备注”，在下面写这一次要讲的话，再保存项目。右侧是真实“备注页”中同一处引用的讲稿；它与左侧输入的内容对应。此时改的是本次演讲中的这一次出现，Main Notes仍能保留通用说明。排练前先确认当前选中的是目标演讲，再进入备注页。接下来选择的是画面版本：继续跟随Main，还是保留一个已经定稿的阶段。"

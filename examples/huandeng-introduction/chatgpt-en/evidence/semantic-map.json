@@ -1,332 +1,224 @@
 {
-  "schemaVersion": 2,
-  "language": "en",
-  "fullCount": 24,
-  "briefCount": 12,
-  "topics": [
+  "schemaVersion": 1,
+  "edition": "chatgpt-en",
+  "mission": "Teach the Editor through actual editing and delivery actions",
+  "bilingualAlignmentRequired": false,
+  "pages": [
     {
       "position": 1,
-      "topicIndex": 0,
       "pageId": "90353b2a-6f7b-4ee5-8a8b-10bceb538190",
-      "slideId": "9DAA",
-      "title": "Scientific slides,\nkept as a working project",
-      "purpose": "HUANDENG is an editing workflow for scientific presentations",
-      "notes": "HUANDENG is an editing workflow for scientific presentations. It brings together a visual editor, a portable working project and access for AI agents. It began with my experience preparing lab meetings: I wanted help with repetitive work while retaining the judgment, original material and a clear place to make the next edit. We will locate a page, preserve its intent and evidence, inspect a change and turn the pages into a talk.",
-      "objectTypes": {
-        "shape": 2,
-        "image": 2,
-        "text": 4
-      }
+      "shortCode": "9DAA",
+      "title": "HUANDENG",
+      "purpose": "Show the real Editor and a practical path from opening a project to editing and delivery.",
+      "pageRevision": "sha256:6c5f64ec35a6df15a12d918df981d7ce7f9a1f8b14b239d7705b41eb5f40f9a9",
+      "notesPresent": true
     },
     {
       "position": 2,
-      "topicIndex": 21,
       "pageId": "4ec264b7-018d-449c-8c8b-d9aede33a840",
-      "slideId": "2XM9",
-      "title": "A small edit should stay a small edit",
-      "purpose": "Two frustrations often appeared together in my work",
-      "notes": "Two frustrations often appeared together in my work. A deck could look complete while missing the point I wanted to make. Changing two pages in fifty could also leave another full copy. I separated those concerns: where does the human intent stay, and which page actually changed? Story keeps the intent available; page identity and history keep the revision attached to the work. The filenames illustrate my use case, not a claim about every AI tool.",
-      "objectTypes": {
-        "text": 7,
-        "image": 1,
-        "icon": 2,
-        "line": 1
-      }
+      "shortCode": "2XM9",
+      "title": "A small edit should stay small",
+      "purpose": "Connect focused revisions to preserving useful work and inspecting what changed.",
+      "pageRevision": "sha256:44fe01fa12c26ddc1f0e0eeb20f05dfed467e047296fafdfde76683192f188fd",
+      "notesPresent": true
     },
     {
       "position": 3,
-      "topicIndex": 22,
       "pageId": "1ba18ad8-0701-4de6-83f5-555b949293d7",
-      "slideId": "GX5Z",
-      "title": "What comes together in HUANDENG?",
-      "purpose": "The Editor is the workspace for inspection, direct editing and presentation",
-      "notes": "The Editor is the workspace for inspection, direct editing and presentation. The folder containing the PPTD entry is the complete project, with pages, assets and history. A plugin supplies authoring and collaboration guidance; a connector binds the assistant to the selected project’s shared writer. People and assistants can therefore work on the same source. The next section starts with that shared page.",
-      "objectTypes": {
-        "text": 5,
-        "image": 3
-      }
+      "shortCode": "GX5Z",
+      "title": "One project keeps the work together",
+      "purpose": "Explain the working folder and the roles of its entry, pages, assets and history.",
+      "pageRevision": "sha256:bb044b69bdb463da3f2f22f275c7eeb7ebe0000c7ae20ca5a3cebe9aff630242",
+      "notesPresent": true
     },
     {
       "position": 4,
-      "topicIndex": 2,
       "pageId": "6b9fbac0-772c-435c-bce1-9cad0004af65",
-      "slideId": "9VGD",
-      "title": "Make one page work",
-      "purpose": "Start with one page: locate the work, keep its intent and evidence, and inspect a focused edit.",
-      "notes": "Start with one page: locate the work, keep its intent and evidence, and inspect a focused edit.",
-      "objectTypes": {
-        "text": 1
-      }
+      "shortCode": "9VGD",
+      "title": "Find the page, then select its object",
+      "purpose": "Teach page selection, object selection and the Inspector relationship.",
+      "pageRevision": "sha256:1f9bae1e2a969090e92c59d83f4c782350170a222f5797899cd76878e280760e",
+      "notesPresent": true
     },
     {
       "position": 5,
-      "topicIndex": 5,
       "pageId": "7d7d42a0-0db7-4d33-9b3f-5e1035097b50",
-      "slideId": "FKA9",
-      "title": "Start from the page in the editor",
-      "purpose": "The left navigation gives access to the project, pages, assets and files",
-      "notes": "The left navigation gives access to the project, pages, assets and files. The central canvas remains available for direct object editing. The right inspector holds properties, layers and Story. Workspace views above the canvas let us browse the deck, inspect the outline, arrange sections, write notes and inspect history. An agent edits the same document. Next we will record the page intent and prepare the source material.",
-      "objectTypes": {
-        "text": 8,
-        "image": 2,
-        "shape": 3
-      }
+      "shortCode": "FKA9",
+      "title": "Write the intent beside the page",
+      "purpose": "Teach a durable brief: purpose, preservation constraints and the requested change.",
+      "pageRevision": "sha256:6b80cb3bf34e9575c39e0677479b732e56d8c8bd3fc993a0b4f7caed4df1402b",
+      "notesPresent": true
     },
     {
       "position": 6,
-      "topicIndex": 10,
       "pageId": "4a066483-9a11-450c-be15-c0be33d52989",
-      "slideId": "U8ZQ",
-      "title": "Keep the reason beside the edit",
-      "purpose": "The human account helps the agent understand the job",
-      "notes": "The human account helps the agent understand the job. Project Story records the overall purpose; page Story records the point, the evidence to preserve and the requested change. It is not a command to print the transcript on the slide. The actual Story panel sits beside a concrete editing request. A person or another assistant taking over should read this context instead of guessing what happened in the previous conversation.",
-      "objectTypes": {
-        "text": 5,
-        "image": 2
-      }
+      "shortCode": "U8ZQ",
+      "title": "Place an original from Assets",
+      "purpose": "Teach how to find and place an existing original or import a new asset.",
+      "pageRevision": "sha256:2a13831e6ef1a9dd19ac95055e0ddd9bf46b8d02f6d9307f4e583ed92fc838eb",
+      "notesPresent": true
     },
     {
       "position": 7,
-      "topicIndex": 6,
       "pageId": "95189956-cdd7-4ad9-88c8-cf28a204bb68",
-      "slideId": "35U5",
-      "title": "Keep the original material within reach",
-      "purpose": "The asset library keeps the original material available for the next revision",
-      "notes": "The asset library keeps the original material available for the next revision. These two DNA views, coordinates and distance table come from one public structure. After import, Assets lets us locate the material and reuse it on a page; the source record and method remain with the project. A new composition should not require inventing a similar-looking figure with different data. We will use this material in the scientific example.",
-      "objectTypes": {
-        "text": 4,
-        "image": 4
-      }
+      "shortCode": "35U5",
+      "title": "Edit the selected text, then save",
+      "purpose": "Teach selected text editing, canvas inspection and an explicit save.",
+      "pageRevision": "sha256:23e56be885ee34d69db205a9768b8222bc18784affa5d6b67ff4b9f3cb56cef4",
+      "notesPresent": true
     },
     {
       "position": 8,
-      "topicIndex": 1,
       "pageId": "c4b12919-5876-4acb-b63f-6a7493b54b37",
-      "slideId": "ZWZJ",
-      "title": "Local variation in one structure",
-      "purpose": "This public scientific page is the working example for the demonstration",
-      "notes": "This public scientific page is the working example for the demonstration. The 1BNA structure and the twelve paired C1′ distances come from the same coordinates. At position seven, A7–B18 measures 10.2329 Å, displayed as 10.233 Å. These are positions within one structure, not independent experimental replicates. We will refine the explanation while retaining the figure, all values, axes and citation. This is a concrete editing task a scientific presenter can inspect.\n\nSources: https://www.rcsb.org/structure/1BNA ; https://doi.org/10.1073/pnas.78.4.2179 . Source coordinates and method: sources/science/.",
-      "objectTypes": {
-        "text": 8,
-        "image": 1,
-        "chart": 1
-      }
+      "shortCode": "ZWZJ",
+      "title": "Use Layers when objects overlap",
+      "purpose": "Teach selection through Layers and checking object stacking.",
+      "pageRevision": "sha256:e5261b272e60a59416a248764bb9eca42ddd92b56525635876a0fe2253c6df3c",
+      "notesPresent": true
     },
     {
       "position": 9,
-      "topicIndex": 3,
       "pageId": "ca1eec7e-61bd-41ac-b6ab-e000d06797be",
-      "slideId": "XF8A",
-      "title": "Keep charts, tables and equations editable",
-      "purpose": "The preceding chart retains all twelve source values",
-      "notes": "The preceding chart retains all twelve source values. This page selects five positions in a native table and keeps the distance calculation as an editable equation. A person can work with actual cells, a chart series and the equation instead of moving imitation cell text boxes. The plot and table use the same public data, so values and units can be checked together.",
-      "objectTypes": {
-        "text": 6,
-        "image": 2,
-        "table": 1
-      }
+      "shortCode": "XF8A",
+      "title": "Compare the changed region at equal scale",
+      "purpose": "Teach an aligned, readable before-and-after comparison of a focused edit.",
+      "pageRevision": "sha256:3d09a401bf0e8aa5dfb0b9a462e10002cc3f888d22f5216df3366e1e614bbb7f",
+      "notesPresent": true
     },
     {
       "position": 10,
-      "topicIndex": 4,
       "pageId": "3f5561d8-477e-4954-bee2-9877c8cddc69",
-      "slideId": "ZN52",
-      "title": "Match the saved change to the request",
-      "purpose": "This is an actual saved edit",
-      "notes": "This is an actual saved edit. The request tightened the title and explanation while retaining the figure, all twelve values, axes and source. The before and after views come from that operation’s real snapshots. The scope can be checked directly. Next we need to identify the page and follow its history, as well as inspect the final appearance.\n\nSaved operation: d2d18509-c72c-48e7-81cc-4251486a522e. Verification: evidence/wording-edit.json.",
-      "objectTypes": {
-        "text": 7,
-        "image": 3,
-        "icon": 1
-      }
+      "shortCode": "ZN52",
+      "title": "Inspect the exact saved change",
+      "purpose": "Teach inspection of the exact saved objects and properties.",
+      "pageRevision": "sha256:b9cbdea4ce724740496ad4b2a5d27b83862544d23e29e5418bee6a5636a0c0a4",
+      "notesPresent": true
     },
     {
       "position": 11,
-      "topicIndex": 13,
       "pageId": "dc5bfe5f-326a-4b28-8536-56e51ea4397e",
-      "slideId": "DHVW",
-      "title": "Identify the page. Then follow its history.",
-      "purpose": "Position is the current order; after rearranging, slide four can mean a different page",
-      "notes": "Position is the current order; after rearranging, slide four can mean a different page. Slide ID preserves the page identity. The mapping here uses this project’s full and brief presentations. Name the stable ID and the intended object when asking an assistant for a change. History follows that same page instead of an ambiguous position number.",
-      "objectTypes": {
-        "text": 5,
-        "image": 2,
-        "table": 1
-      }
+      "shortCode": "DHVW",
+      "title": "Move the page without losing its identity",
+      "purpose": "Distinguish stable page identity from its changing position.",
+      "pageRevision": "sha256:dcb68aaa538084b204d2aff857294d5426036d9706160438005a052590143ab0",
+      "notesPresent": true
     },
     {
       "position": 12,
-      "topicIndex": 9,
       "pageId": "6a3aec16-2347-40fe-856d-df36c1f58509",
-      "slideId": "2ZQ3",
-      "title": "Review a change. Return to a saved stage.",
-      "purpose": "Select the page and open History to inspect saved operations or record a named version",
-      "notes": "Select the page and open History to inspect saved operations or record a named version. An operation explains a particular change; a named version preserves a meaningful stage of the whole page. Restoring acts on the selected page. Small revisions can stay in the current project rather than becoming another full source deck.",
-      "objectTypes": {
-        "text": 6,
-        "image": 3
-      }
+      "shortCode": "2ZQ3",
+      "title": "Name a version worth returning to",
+      "purpose": "Teach naming, inspecting and reusing a meaningful page version.",
+      "pageRevision": "sha256:33309e37aef87ea392a9354898f2b88efd95158bc3afe0a41b20be449123cf7d",
+      "notesPresent": true
     },
     {
       "position": 13,
-      "topicIndex": 7,
       "pageId": "d497fb11-7906-414e-a529-0d97680bce51",
-      "slideId": "7E4T",
-      "title": "Turn pages into a talk",
-      "purpose": "Once a page can keep evolving, assemble the talk: inspect its rhythm, select the pages and adapt the explanation to this audience.",
-      "notes": "Once a page can keep evolving, assemble the talk: inspect its rhythm, select the pages and adapt the explanation to this audience.",
-      "objectTypes": {
-        "text": 1
-      }
+      "shortCode": "7E4T",
+      "title": "Step back and read the sequence",
+      "purpose": "Use the actual page grid to inspect rhythm and density across a sequence.",
+      "pageRevision": "sha256:3c49e6d987f4031a7e98d156e83effda8991b920ca678f6292e14bb29d432ad9",
+      "notesPresent": true
     },
     {
       "position": 14,
-      "topicIndex": 25,
       "pageId": "62d5734d-2fe5-441c-a50a-abaa95145b56",
-      "slideId": "9QQW",
-      "title": "Step back and inspect the whole talk",
-      "purpose": "After editing individual pages, inspect the talk as a whole",
-      "notes": "After editing individual pages, inspect the talk as a whole. Browse shows actual pages and section rhythm. Outline makes headings and content cues easy to scan. Sections organizes chapter boundaries. These are views of the same pages. Each shown view is captured from the actual editor. Returning to Normal keeps the same page identities and content.",
-      "objectTypes": {
-        "text": 7,
-        "image": 4
-      }
+      "shortCode": "9QQW",
+      "title": "Read the argument in Outline",
+      "purpose": "Use Outline to read the page purpose and its place in the argument.",
+      "pageRevision": "sha256:697d0a98961046f6dd9c11ae3cb0b5689a49b78f95dfc263ed17df1ec0a37a8e",
+      "notesPresent": true
     },
     {
       "position": 15,
-      "topicIndex": 12,
       "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7",
-      "slideId": "AAD6",
-      "title": "Keep the pages. Change the selection.",
-      "purpose": "Main Slides is the continuing page library",
-      "notes": "Main Slides is the continuing page library. Open Project, Arrange Presentation and New Presentation; select pages, set their order and save Project. The upper row shows part of Main. The lower row shows three actual selections in this project’s brief talk, each referring to its original Slide ID. Next we will give one page the notes for this particular talk.",
-      "objectTypes": {
-        "text": 7,
-        "image": 8,
-        "line": 1
-      }
+      "shortCode": "AAD6",
+      "title": "A Section begins at its first slide",
+      "purpose": "Explain Section membership through first-slide boundaries.",
+      "pageRevision": "sha256:e9622b5d4a07cf2060e61c7d526caa276cb7f4ad4dee01f4bec3c2c9cbd31a73",
+      "notesPresent": true
     },
     {
       "position": 16,
-      "topicIndex": 26,
       "pageId": "095ba6fb-14f6-42b1-815a-7970ac214058",
-      "slideId": "74A2",
-      "title": "The same page can carry a different script",
-      "purpose": "Reusing a page does not require reading the same script",
-      "notes": "Reusing a page does not require reading the same script. Main Notes can keep the general explanation; one occurrence in a Presentation can hold its own notes. The brief introduction uses this scientific page to explain evidence preservation, while a longer account can explain the method. The local notes belong to this appearance; the page need not be duplicated.",
-      "objectTypes": {
-        "text": 5,
-        "image": 2
-      }
+      "shortCode": "74A2",
+      "title": "Choose pages for this particular talk",
+      "purpose": "Build a talk by selecting references from the Main page library.",
+      "pageRevision": "sha256:9d37a70aad9ae345a229c34580e7dc2f7fa870ca8688946439ed42ab1895d499",
+      "notesPresent": true
     },
     {
       "position": 17,
-      "topicIndex": 14,
       "pageId": "80c650ec-8f56-403d-8f44-d190a84ed4b4",
-      "slideId": "9N3S",
-      "title": "Follow the page, or hold a saved version",
-      "purpose": "Some talks should follow continuing edits; others need a particular settled stage",
-      "notes": "Some talks should follow continuing edits; others need a particular settled stage. Live uses the current Main page; Pinned selects a named version of that page. The left is the current scientific example; the right is the actual saved wording-edit stage. The brief introduction really pins that version. The identity is the same, while the selected content version differs.",
-      "objectTypes": {
-        "text": 7,
-        "image": 3
-      }
+      "shortCode": "9N3S",
+      "title": "Give this talk its own speaking notes",
+      "purpose": "Give one occurrence in a talk its own speaking notes.",
+      "pageRevision": "sha256:554d74bffed25b0b764fa122bdeca97770898e0daff1c4d57eab83c6cd4388fd",
+      "notesPresent": true
     },
     {
       "position": 18,
-      "topicIndex": 16,
       "pageId": "8050a155-9c2b-4cf5-b643-e9406b9b2b1c",
-      "slideId": "BHPP",
-      "title": "Take the project, not just its entry file",
-      "purpose": "The PPTD file is the entry; the directory is the complete project",
-      "notes": "The PPTD file is the entry; the directory is the complete project. Pages, media, Story, composition, named page versions and authoring guidance stay together. Named versions travel with the folder; machine-local operation journals stay on the computer where they were recorded. PPTX already contains slide parts too; HUANDENG exposes an accessible working folder. The new entry flow accepts a PPTD or a folder containing exactly one PPTD. A descriptive folder suffix is optional. If the folder has several entries, choose the intended file explicitly.",
-      "objectTypes": {
-        "text": 5,
-        "image": 1,
-        "icon": 1,
-        "table": 1
-      }
+      "shortCode": "BHPP",
+      "title": "Choose what this occurrence follows",
+      "purpose": "Choose between following Main and pinning a named page version.",
+      "pageRevision": "sha256:30156003aef5d863fa4db976db9b9e3004ecd40f6da23c6a3c66c3ec78c99b98",
+      "notesPresent": true
     },
     {
       "position": 19,
-      "topicIndex": 11,
       "pageId": "4a398dd0-ad74-4a36-b65e-6068ffe817a8",
-      "slideId": "X5J6",
-      "title": "Work with people and agents",
-      "purpose": "With pages and talks organized, we can bring people and assistants into the same project and explain setup, division of work, handoff and delivery.",
-      "notes": "With pages and talks organized, we can bring people and assistants into the same project and explain setup, division of work, handoff and delivery.",
-      "objectTypes": {
-        "text": 1
-      }
+      "shortCode": "X5J6",
+      "title": "Rehearse from the point you are editing",
+      "purpose": "Rehearse the selected talk from the beginning or current page.",
+      "pageRevision": "sha256:20541aec1012d0e702a072cd28626544788c5eb297341419c137b35c946342db",
+      "notesPresent": true
     },
     {
       "position": 20,
-      "topicIndex": 8,
       "pageId": "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6",
-      "slideId": "YZ4T",
-      "title": "Different assistants, one working project",
-      "purpose": "For the first connection, open Agent setup at the top of the editor, choose the client and follow its setup instructions",
-      "notes": "For the first connection, open Agent setup at the top of the editor, choose the client and follow its setup instructions. Ask the assistant to read the project and selected page, then check the returned project name and Slide ID. Different assistants use native integrations with the same document contract. The plugin carries guidance; the connector binds requests to the explicitly chosen project. The Editor and assistants save through the shared writer. The marks identify supported routes, not models currently online. A real read and task are still needed to verify the selected project and access.",
-      "objectTypes": {
-        "text": 9,
-        "image": 5,
-        "line": 1,
-        "shape": 1
-      }
+      "shortCode": "YZ4T",
+      "title": "Confirm the range before you export",
+      "purpose": "Check the delivery format, collection and page count before export.",
+      "pageRevision": "sha256:dde36df2977290400a980267a7f62b123a585f537d1ae0dff4b6a01bc2c87efb",
+      "notesPresent": true
     },
     {
       "position": 21,
-      "topicIndex": 23,
       "pageId": "e0b400eb-ddc1-4c42-af48-d420785b1d8f",
-      "slideId": "KW5P",
-      "title": "Divide the work. Make the handoff explicit.",
-      "purpose": "Work can be divided by pages, or passed from content drafting to visual refinement",
-      "notes": "Work can be divided by pages, or passed from content drafting to visual refinement. A handoff needs page IDs, the task and evidence-preservation constraints. Different-page saves can proceed independently. A same-page or shared-metadata conflict requires rereading and reconciling the intended change. Activity distinguishes client reports from saved receipts; configuration alone is not online presence. The diagram illustrates task allocation. In a separate controlled test, native DeepSeek Harness and ChatGPT saved distinct pages from the same starting state. A stale same-page proposal was rejected; after rereading, a focused font and color handoff succeeded. Claude Code did not participate in this round’s parallel test. See evidence/collaboration.json.",
-      "objectTypes": {
-        "text": 6,
-        "image": 2,
-        "line": 1
-      }
+      "shortCode": "KW5P",
+      "title": "Send the whole folder to continue editing",
+      "purpose": "Hand off the complete folder so another person can continue editing.",
+      "pageRevision": "sha256:f63f5eef51c9c6fd084decb512bc9a0aeddedba863f848f9b431c6dbd288ee67",
+      "notesPresent": true
     },
     {
       "position": 22,
-      "topicIndex": 15,
       "pageId": "e4fb0f10-ffa5-44e2-907f-b92e1b69535e",
-      "slideId": "DDJN",
-      "title": "From the working project to the audience",
-      "purpose": "Present or export from the same working project",
-      "notes": "Present or export from the same working project. Click-by-click reveals belong to live playback; PPTX and PDF carry the static slides. Provide the complete PPTD project when someone needs to continue editing, and an appropriate export when they need to read or present it. Further changes return to the same source project.",
-      "objectTypes": {
-        "text": 6,
-        "icon": 2,
-        "image": 3
-      }
+      "shortCode": "DDJN",
+      "title": "Connect the assistant to this project",
+      "purpose": "Connect a supported assistant to the same project through its client setup.",
+      "pageRevision": "sha256:c07e176880842a3759ce857fc82fa83764ef370f44cadee3d91c415e3649ce62",
+      "notesPresent": true
     },
     {
       "position": 23,
-      "topicIndex": 17,
       "pageId": "bbcdc92a-915c-4988-a4d5-76e466d0424f",
-      "slideId": "5HW8",
-      "title": "Built on work worth acknowledging",
-      "purpose": "HUANDENG builds on OpenSlide",
-      "notes": "HUANDENG builds on OpenSlide. OpenPPTD contributes formula-conversion modules and PptxGenJS supplies PPTX generation. The PPTD approach was inspired by the Kimi Slides ecosystem; that is not a claim about inventing a universal standard. Charts, formulas and functional icons also build on open-source work. The public DNA example comes from PDB 1BNA and Drew and colleagues. Sources and licenses stay with the project; third-party marks do not imply endorsement.\n\nSources and scope: sources/brand/manifest.json; notices/; sources/science/source.json; https://recent.design/ . The GitHub mark identifies the OpenPPTD repository, not an OpenPPTD product logo.",
-      "objectTypes": {
-        "text": 8,
-        "image": 4
-      }
+      "shortCode": "5HW8",
+      "title": "Divide the pages; review the returned work",
+      "purpose": "Assign page ownership, coordinate shared structure and inspect every result.",
+      "pageRevision": "sha256:67e9bca9131557d57f7ea92ae626623fceb7a8378a5aa218cf0b1c0e53abf423",
+      "notesPresent": true
     },
     {
       "position": 24,
-      "topicIndex": 18,
       "pageId": "8f9e154d-c5c2-4d79-b809-984586f8311e",
-      "slideId": "ECVR",
-      "title": "Open a page. Try one specific edit.",
-      "purpose": "Open this example and select the scientific page",
-      "notes": "Open this example and select the scientific page. Use its Slide ID to ask for one small change: clarify the explanation while preserving the figure, all twelve values, units and source. Inspect the proposal, then the saved page and history. The person can keep shaping the explanation throughout the work. Intent, evidence and revisions stay available for the next edit.",
-      "objectTypes": {
-        "text": 6,
-        "image": 2
-      }
+      "shortCode": "ECVR",
+      "title": "Open the example and make one useful edit",
+      "purpose": "Complete a first useful edit and retain the project source attributions.",
+      "pageRevision": "sha256:a91ef7a09939615b1c04cc3e207cc6ed46666c5e1188e5fc97856c732df78740",
+      "notesPresent": true
     }
   ]
 }

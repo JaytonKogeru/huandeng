@@ -3,11 +3,201 @@ background:
   type: solid
   color: "#E4ECE6"
 elements:
+  - elementId: zd-bg
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 0
+      - 0
+      - 960
+      - 540
+    fill:
+      type: solid
+      color: "#F4F1E8"
   - elementId: title
     elementType: text
     bounds:
-        [52,218,850,100]
+        [38,29,884,49]
     role: title
     content:
-      {"text":"与人和 Agent 一起做","fontFamily":"Noto Serif SC","fontSize":36,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.25}
-notes: "页面与演讲已经组织起来，接下来说明人和不同助手怎样接入同一个项目、分工、交接与交付。"
+      {"text":"要更新，还是要定稿","fontFamily":"Noto Sans SC","fontSize":31,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.3}
+  - elementId: zd-route
+    elementType: text
+    bounds:
+      - 40
+      - 86
+      - 876
+      - 28
+    content:
+      text: 编排演讲 → 备注与版本 → 页面版本 → 保存项目
+      fontFamily: Noto Sans SC
+      fontSize: 14
+      color: "#168C8C"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: zd-accent
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 40
+      - 119
+      - 64
+      - 3
+    fill:
+      type: solid
+      color: "#ED6A3A"
+  - elementId: zd-watermark
+    elementType: text
+    bounds:
+      - 39
+      - 508
+      - 820
+      - 22
+    content:
+      text: Chinese · ChatGPT 6 Astra + Subagents
+      fontFamily: Noto Sans SC
+      fontSize: 13
+      color: "#53666A"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: zd-position
+    elementType: text
+    bounds:
+      - 884
+      - 508
+      - 38
+      - 22
+    content:
+      text: ""
+      fontFamily: Noto Sans SC
+      fontSize: 13
+      color: "#53666A"
+      bold: false
+      align:
+        - right
+        - top
+      lineHeight: 1.3
+      field: main-position
+  - elementId: zd-live-heading
+    elementType: text
+    bounds:
+      - 40
+      - 146
+      - 404
+      - 35
+    content:
+      text: 继续跟随 Main
+      fontFamily: Noto Sans SC
+      fontSize: 23
+      color: "#112D32"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: zd-pin-heading
+    elementType: text
+    bounds:
+      - 517
+      - 146
+      - 405
+      - 35
+    content:
+      text: 保留命名版本
+      fontFamily: Noto Sans SC
+      fontSize: 23
+      color: "#112D32"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: zd-live-select
+    elementType: image
+    bounds:
+      - 40
+      - 195
+      - 405
+      - 164
+    src: "media/imported/4c8b8407f917b8c63185db21824b674f1a95ba0b1dafec5af08b9e43d679bfb1.png"
+    sourceName: "final-live-version-choice.png"
+    fit:
+      mode: contain
+  - elementId: zd-pin-select
+    elementType: image
+    bounds:
+      - 517
+      - 195
+      - 405
+      - 164
+    src: "media/imported/320b757483c9843bd81c97986826cf980ac99f7c8feeb014eab86e8d61820a27.png"
+    sourceName: "final-pin-version-choice.png"
+    fit:
+      mode: contain
+  - elementId: zd-live-rule
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 40
+      - 377
+      - 405
+      - 3
+    fill:
+      type: solid
+      color: "#168C8C"
+  - elementId: zd-pin-rule
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 517
+      - 377
+      - 405
+      - 3
+    fill:
+      type: solid
+      color: "#ED6A3A"
+  - elementId: zd-live-copy
+    elementType: text
+    bounds:
+      - 40
+      - 394
+      - 405
+      - 86
+    content:
+      text: |-
+        选择“实时引用”
+        后续修改 Main，演讲中的画面随之更新。
+      fontFamily: Noto Sans SC
+      fontSize: 19
+      color: "#112D32"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+  - elementId: zd-pin-copy
+    elementType: text
+    bounds:
+      - 517
+      - 394
+      - 405
+      - 86
+    content:
+      text: |-
+        选择一个已命名的页面版本
+        继续改 Main，这场演讲仍使用定稿画面。
+      fontFamily: Noto Sans SC
+      fontSize: 19
+      color: "#112D32"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.3
+notes: "要决定一场演讲是否跟随主稿更新，就在条目的“备注与版本”里选择“页面版本”。左图显示实时引用，后面继续改Main时，这处引用会跟着变。右图选择的是已存在的命名版本，因此可以保留已经排练过的画面。命名版本先在该页的历史工作区记录，随后在这里刷新并选择。两个截图取自实际演讲条目的版本控件，比较的是两种选项，不是两套复制文件。选定后保存项目。接下来在目标演讲中从当前页开始排练，核对顺序、讲稿和点击节奏。"

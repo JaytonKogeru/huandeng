@@ -1,117 +1,98 @@
-# Contributing to open-slide
+# Contributing to HUANDENG
 
-Thanks for your interest in improving open-slide! This guide covers the workflow for contributing to the framework itself — the `@open-slide/core` runtime, the `@open-slide/cli` scaffolder, and the supporting apps.
+HUANDENG contains a desktop slide editor, a PPTD document service and CLI, agent integrations, and public examples. Issues and pull requests are welcome in English or Chinese.
 
-If you're authoring slides inside a scaffolded project, you don't need this file — drive your deck through your coding agent or edit `slides/<id>/index.tsx` directly.
+This is the [HUANDENG repository](https://github.com/JaytonKogeru/huandeng). [OpenSlide](https://github.com/open-slide/open-slide) is the upstream project on which it is based. Preserve its MIT license and attribution, and send HUANDENG changes to this repository.
 
-## Ways to contribute
+## Start with the task
 
-- **Report a bug** via the [bug report template](./.github/ISSUE_TEMPLATE/bug_report.yml). Include a minimal reproduction.
-- **Propose a feature** via the [feature request template](./.github/ISSUE_TEMPLATE/feature_request.yml). Describe the problem before the solution.
-- **Ask a question or share what you're building** in [GitHub Discussions](https://github.com/open-slide/open-slide/discussions).
-- **Send a pull request** — see below.
+- Report a reproducible problem through the [bug report form](https://github.com/JaytonKogeru/huandeng/issues/new?template=bug_report.yml).
+- Describe a proposed improvement through the [feature request form](https://github.com/JaytonKogeru/huandeng/issues/new?template=feature_request.yml).
+- Ask a usage question through the [question form](https://github.com/JaytonKogeru/huandeng/issues/new?template=question.yml).
+- Follow [SECURITY.md](SECURITY.md) for a possible vulnerability. Keep exploit details out of public issues.
+- For a substantial change, open an issue first to agree on the problem and scope.
 
-For non-trivial changes, please open an issue or discussion first so we can align on direction before you invest the time.
+Contributors are expected to follow the [Code of Conduct](CODE_OF_CONDUCT.md).
 
-## Repo layout
+## Repository layout
 
-pnpm + Turbo monorepo.
+| Path | Role |
+| --- | --- |
+| `packages/core` | Editor UI, PPTD document service, runtime and `huandeng` CLI; retains the `@open-slide/core` package name |
+| `packages/desktop` | Electron shell, native menus, project windows and desktop integration |
+| `packages/cli` | The inherited `@open-slide/cli` scaffolder |
+| `plugins/huandeng` | Shared authoring skill, MCP launcher and client adapters |
+| `examples/huandeng-introduction` | Public, editable introduction projects and their evidence assets |
+| `tests` | Public fixtures and integration checks |
+| `docs` | Architecture, document contracts, workflows, validation and release records |
+| `scripts` | Packaging, installation and development utilities |
+| `apps/demo`, `apps/web` | Upstream framework demo and website workspaces |
 
-| Path | Package | Role |
-| --- | --- | --- |
-| [`packages/core`](packages/core) | `@open-slide/core` | Runtime (viewer, present mode, inspector), Vite plugin, `open-slide` dev/build CLI. |
-| [`packages/cli`](packages/cli) | `@open-slide/cli` | `npx @open-slide/cli init` scaffolder + project template. |
-| [`apps/demo`](apps/demo) | private | Local consumer of `@open-slide/core` via `workspace:*`. The dogfood target for the framework. |
-| [`apps/web`](apps/web) | private | Marketing site (Next.js). |
+## Development setup
 
-## Prerequisites
+Use Node.js 22.12 or newer and pnpm 10.17.0, as pinned in `package.json`. The packaged desktop workflow is currently documented for Windows.
 
-- **Node.js 22+** (matches CI).
-- **pnpm 10.17.0+** — `corepack enable` will pick up the version pinned in `package.json`.
-- A Unix-y shell. Windows works via WSL.
-
-## Getting set up
-
-```bash
-git clone https://github.com/open-slide/open-slide.git
-cd open-slide
-pnpm install
+```sh
+git clone https://github.com/JaytonKogeru/huandeng.git
+cd huandeng
+corepack pnpm install --frozen-lockfile
+corepack pnpm --filter @open-slide/core build
+corepack pnpm desktop
 ```
 
-Then run the demo against the local `@open-slide/core`:
+The core build produces the Editor frontend. For frontend development, set `HUANDENG_DEV_SERVER=1` in your shell before starting the desktop or CLI. See the [desktop guide](packages/desktop/README.md) for build and installation details.
 
-```bash
-pnpm dev
+## Make a focused change
+
+Create a branch in your fork and keep the pull request focused on one problem. Match the surrounding code style, preserve unrelated local changes, and avoid repository-wide formatting.
+
+Keep document editing inside the shared Editor/CLI/MCP writer. When changing a public example, do not bypass that service by directly rewriting `.page`, `.pptd` or `.huandeng/project.json`. Read the current revision, preview the intended transaction, apply that same transaction, then check the saved result and actual rendering. See the [document specification](docs/SPEC.md) and [Story guide](docs/STORY.md).
+
+The files under `packages/core/src/app/components/ui` are generated UI components. Change their generation source or regeneration workflow when needed. Add a dependency only when its cost and purpose are justified.
+
+## Check the affected behavior
+
+The current core CI runs:
+
+```sh
+corepack pnpm check
+corepack pnpm --filter @open-slide/core typecheck
+corepack pnpm exec vitest run --project unit
+corepack pnpm --filter @open-slide/core build
 ```
 
-`apps/demo` is the fastest way to exercise framework changes — edit `packages/core`, the demo hot-reloads.
+Run the relevant checks before submitting code. Add a focused regression test when a bug or new behavior needs one. For a documentation-only change, check the changed links, examples and formatting.
 
-## Useful scripts
+For Editor changes, exercise the affected workflow in the actual app. For visual changes, inspect the rendered pages and include useful before/after images. For an export change, open the relevant output in its target viewer; state whether native PowerPoint objects were actually checked in PowerPoint. Successful JSON validation or export generation alone does not establish visual quality.
 
-```bash
-pnpm dev          # turbo: runs demo against local core
-pnpm build        # build all packages
-pnpm typecheck    # tsc across the graph
-pnpm check        # biome (format + lint + organize imports)
-pnpm check:fix    # auto-fix what biome can
-pnpm test         # vitest
-```
+Describe what you checked and what remains unverified. Keep release or author approval claims tied to explicit evidence.
 
-Filter to one package:
+## Public examples and assets
 
-```bash
-pnpm core <script>   # e.g. pnpm core build
-pnpm cli <script>
-```
+Use public or synthetic fixtures. Do not include private presentations, unpublished figures, credentials, account bindings, local session records or screenshots containing private information.
 
-## Pull request workflow
+Keep each asset's source, license and attribution. Preserve the original image and make display crops through native image properties where possible. Check that a project remains usable with its local assets when copied to another directory.
 
-1. **Fork & branch.** Branch off `main`. Keep branches focused — one logical change per PR.
-2. **Make your change.** Match the surrounding style. Don't reformat unrelated code.
-3. **Run the checks before pushing:**
-   ```bash
-   pnpm check       # must pass — CI enforces it
-   pnpm typecheck
-   pnpm test
-   ```
-   `pnpm check:fix` will auto-fix most formatting and lint issues.
-4. **Add a changeset if you touched `packages/core` or `packages/cli`:**
-   ```bash
-   pnpm changeset
-   ```
-   Pick the affected package(s) and the right bump:
-   - `patch` — bug fixes, internal refactors, polish.
-   - `minor` — new public API, additive features.
-   - `major` — breaking changes.
+Include generated exports only when they are part of the proposed example or needed to review an export change. Keep author/model watermarks accurate for the edition being edited.
 
-   Apps (`apps/demo`, `apps/web`) and root tooling do **not** need a changeset.
+## Agent plugin changes
 
-   Keep the description **short and direct** — one line, present-tense, what changed from a user's perspective. Match the tone of existing `.changeset/*.md` files. No paragraphs, no rationale, no "this PR…".
+Keep the plugin manifests, launcher and shared `huandeng-story` skill consistent. Build client packages from repository sources; do not treat edits to an installed client cache as the implementation.
 
-   > Good: `Replace spinner with a hairline + sliding bar for slide and presenter loading states.`
-   >
-   > Bad: `This change introduces a new loading indicator because the previous spinner felt heavy…`
+Verify a changed adapter inside its actual host when the change affects loading, configuration, lifecycle or tool access. Configuration generation and host discovery are separate from a successful model task.
 
-   Don't bump versions or edit `CHANGELOG.md` by hand — `changeset version` owns that.
-5. **Open the PR.** Describe the problem, the change, and how you tested it. Link related issues. Screenshots or short clips help for UI changes.
-6. **Address review feedback** by pushing follow-up commits. We'll squash on merge.
+See the [plugin guide](plugins/huandeng/README.md) and [DeepSeek adapter guide](plugins/huandeng/adapters/deepseek/README.md). Plugin packages must not contain credentials, machine-specific project bindings or conversation history.
 
-## Style & conventions
+## Pull requests and releases
 
-- **Biome must pass.** Formatting, lint, and import organisation are all enforced by `pnpm check`.
-- **No casual dependencies.** The `core` runtime ships to users — every dep inflates install size. Prefer a small piece of inline code over a new package.
-- **Default to writing no comments.** Only add one when the *why* is non-obvious — a hidden constraint, a subtle invariant, a workaround for a specific bug. Don't explain *what* the code does; well-named identifiers handle that.
-- **Leave `packages/core/src/app/components/ui` alone.** It's shadcn-generated and biome-ignored unless you're regenerating it.
+Explain the problem, the change and its resulting behavior. Include the affected components, relevant issue links, validation evidence and any material limitation. The [pull request template](.github/pull_request_template.md) provides this structure.
 
-## Testing
+External contributors should open a pull request from their fork. Maintainers handle release branches, version metadata and milestone tags under the [release policy](docs/RELEASE-POLICY.md). The HUANDENG Editor and plugin versions are distinct from the inherited npm package versions.
 
-- Unit tests run via `pnpm test` (Vitest). Add tests next to the code (`*.test.ts`) when fixing a bug or adding logic that warrants it.
-- For runtime/UI changes, please verify the change in `apps/demo` and describe what you exercised in the PR.
+**Do not run `pnpm release`, `npm publish` or `changeset publish` for HUANDENG.** The inherited release script publishes the OpenSlide-scoped packages and is not the HUANDENG release path. Never push this product's changes to the upstream OpenSlide remote.
 
-## Releases
+## License and attribution
 
-Releases are cut by the maintainer via `pnpm release`, which builds `@open-slide/core` + `@open-slide/cli` and runs `changeset publish`. Contributors don't need to publish anything — just land the changeset alongside your code.
+Contributions are made under the repository's [MIT license](LICENSE). Submit only material you have the right to contribute. Retain original copyright statements and relevant third-party notices.
 
-## Questions
-
-Open a [discussion](https://github.com/open-slide/open-slide/discussions) — happy to help.
+HUANDENG is an independent derivative of OpenSlide, not an official upstream release. See the [preserved upstream README](docs/UPSTREAM_README.md) and [desktop third-party notices](packages/desktop/NOTICE.md).

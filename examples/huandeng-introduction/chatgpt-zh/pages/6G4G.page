@@ -3,113 +3,291 @@ background:
   type: solid
   color: "#F7F5EF"
 elements:
+  - elementId: f-bg
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 0
+      - 0
+      - 960
+      - 540
+    fill:
+      type: solid
+      color: "#F4F1E8"
   - elementId: title
     elementType: text
     bounds:
-        [42,34,880,76]
+        [38,29,884,48]
     role: title
     content:
-      {"text":"幻灯把什么放到了一起？","fontFamily":"Noto Serif SC","fontSize":28,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.2}
-  - elementId: brand-small
-    elementType: image
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
-    sourceName: huandeng.png
-    alt: huandeng.png
-    bounds:
-        [43,512,18,18]
-    fit:
-      mode: contain
-    crop:
-      left: 0.18
-      right: 0.18
-      top: 0.14
-      bottom: 0.14
-  - elementId: foot
+      {"text":"人和助手，接着改同一份项目","fontFamily":"Noto Sans SC","fontSize":30,"color":"#112D32","align":["left","top"],"lineHeight":1.32,"bold":true}
+  - elementId: f-step
     elementType: text
     bounds:
-        [68,515,140,16]
+      - 39
+      - 91
+      - 400
+      - 24
     content:
-      {"text":"HUANDENG","fontFamily":"Noto Sans SC","fontSize":9,"color":"#5B6A62","bold":false,"align":["left","top"],"lineHeight":1.35}
-  - elementId: position
-    elementType: text
-    bounds:
-        [881,514,35,18]
-    content:
-      {"text":"","fontFamily":"Noto Sans SC","fontSize":10,"color":"#5B6A62","bold":false,"align":["right","top"],"lineHeight":1.35,"field":"main-position"}
-  - elementId: identity
-    elementType: image
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
-    sourceName: huandeng.png
-    alt: huandeng.png
-    bounds:
-      - 44
-      - 148
-      - 94
-      - 94
-    fit:
-      mode: contain
-    crop:
-      left: 0.18
-      right: 0.18
-      top: 0.14
-      bottom: 0.14
-  - elementId: definition
-    elementType: text
-    bounds:
-      - 169
-      - 149
-      - 744
-      - 92
-    content:
-      text: |-
-        一个让人和 Agent
-        共同编辑科研演示的工作流。
-      fontFamily: Noto Serif SC
-      fontSize: 27
-      color: "#20372F"
-      bold: false
+      text: 开始一份工作
+      fontFamily: Noto Sans SC
+      fontSize: 13
+      color: "#168C8C"
       align:
         - left
         - top
-      lineHeight: 1.35
-  - elementId: editor-definition
-    elementType: image
-    src: "media/imported/2e581d36978c91cef3fdc7777d6546f05fe58d6d2b89d0d6c42954313c2d0a0e.png"
-    sourceName: editor-native-chart.png
-    alt: editor-native-chart.png
+      lineHeight: 1.32
+  - elementId: f-watermark
+    elementType: text
     bounds:
-      - 44
-      - 291
-      - 374
-      - 190
+      - 38
+      - 514
+      - 800
+      - 22
+    content:
+      text: Chinese · ChatGPT 6 Astra + Subagents
+      fontFamily: Noto Sans SC
+      fontSize: 13
+      color: "#596D70"
+      align:
+        - left
+        - top
+      lineHeight: 1.32
+  - elementId: f-position
+    elementType: text
+    bounds:
+      - 882
+      - 514
+      - 40
+      - 22
+    content:
+      text: ""
+      fontFamily: Noto Sans SC
+      fontSize: 13
+      color: "#596D70"
+      align:
+        - right
+        - top
+      lineHeight: 1.32
+      field: main-position
+  - elementId: f-editor-mark
+    elementType: image
+    bounds:
+      - 80
+      - 142
+      - 70
+      - 70
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
     fit:
       mode: contain
     crop:
-      left: 0.15
-      right: 0.15
-      top: 0.05
-      bottom: 0.08
-  - elementId: parts
+      left: 0.18
+      right: 0.18
+      top: 0.14
+      bottom: 0.14
+  - elementId: f-editor-label
     elementType: text
     bounds:
-      - 466
-      - 287
-      - 445
-      - 202
+      - 170
+      - 148
+      - 290
+      - 32
     content:
-      text: |-
-        Editor：查看、编辑与放映。
-  
-        Project folder：页面、素材与历史。
-  
-        Plugin + Connector：让助手带着约定，
-        读写选定项目。
+      text: HUANDENG Editor
+      fontFamily: Noto Sans SC
+      fontSize: 24
+      color: "#112D32"
+      align:
+        - left
+        - top
+      lineHeight: 1.32
+      bold: true
+  - elementId: f-editor-use
+    elementType: text
+    bounds:
+      - 170
+      - 194
+      - 305
+      - 32
+    content:
+      text: 打开、选择、修改、放映
       fontFamily: Noto Sans SC
       fontSize: 18
-      color: "#20372F"
-      bold: false
+      color: "#112D32"
       align:
         - left
         - top
-      lineHeight: 1.4
-notes: "先把几个名字放清楚。HUANDENG Editor是人查看、手动修改和放映的工作区。PPTD所在的目录是完整项目，页面、素材和历史留在里面。Plugin提供制作与协作约定；Connector把助手接到选定项目的共享写入服务。人和Agent不是各自维护一套源稿。先从同一张页开始，后面的操作才有共同的对象。"
+      lineHeight: 1.32
+  - elementId: f-agent-0
+    elementType: image
+    bounds:
+      - 570
+      - 146
+      - 58
+      - 58
+    src: media/imported/0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13.png
+    sourceName: chatgpt.png
+    fit:
+      mode: contain
+  - elementId: f-agent-1
+    elementType: image
+    bounds:
+      - 676
+      - 146
+      - 58
+      - 58
+    src: media/imported/733f24f4c52acb15eb0fbded1cf40eb42b4ba8e62b882acac70b6234b50919a8.png
+    sourceName: claude-code.png
+    fit:
+      mode: contain
+  - elementId: f-agent-2
+    elementType: image
+    bounds:
+      - 782
+      - 146
+      - 58
+      - 58
+    src: media/imported/e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc.png
+    sourceName: deepseek.png
+    fit:
+      mode: contain
+  - elementId: f-agent-label
+    elementType: text
+    bounds:
+      - 569
+      - 221
+      - 310
+      - 32
+    content:
+      text: 你的 AI 助手
+      fontFamily: Noto Sans SC
+      fontSize: 22
+      color: "#112D32"
+      align:
+        - left
+        - top
+      lineHeight: 1.32
+      bold: true
+  - elementId: f-agent-use
+    elementType: text
+    bounds:
+      - 517
+      - 269
+      - 405
+      - 48
+    content:
+      text: Plugin 提供约定 · Connector 接入项目
+      fontFamily: Noto Sans SC
+      fontSize: 16
+      color: "#112D32"
+      align:
+        - left
+        - top
+      lineHeight: 1.32
+  - elementId: f-editor-arrow
+    elementType: line
+    bounds:
+      - 265
+      - 251
+      - 0
+      - 94
+    viewBox:
+      - 1
+      - 1
+    points: 0,0 1,1
+    border:
+      width: 2
+      color: "#168C8C"
+    arrow:
+      - null
+      - arrow
+  - elementId: f-agent-arrow
+    elementType: line
+    bounds:
+      - 724
+      - 313
+      - 0
+      - 32
+    viewBox:
+      - 1
+      - 1
+    points: 0,0 1,1
+    border:
+      width: 2
+      color: "#168C8C"
+    arrow:
+      - null
+      - arrow
+  - elementId: f-project-band
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 54
+      - 358
+      - 852
+      - 126
+    fill:
+      type: solid
+      color: "#112D32"
+  - elementId: f-folder
+    elementType: icon
+    iconName: fas:folder-open
+    bounds:
+      - 82
+      - 389
+      - 50
+      - 50
+    fill:
+      type: solid
+      color: "#F4F1E8"
+  - elementId: f-project-label
+    elementType: text
+    bounds:
+      - 158
+      - 377
+      - 348
+      - 38
+    content:
+      text: 同一份工作项目
+      fontFamily: Noto Sans SC
+      fontSize: 25
+      color: "#F4F1E8"
+      align:
+        - left
+        - top
+      lineHeight: 1.32
+      bold: true
+  - elementId: f-project-parts
+    elementType: text
+    bounds:
+      - 158
+      - 430
+      - 710
+      - 32
+    content:
+      text: deck.pptd  ·  pages/  ·  media/  ·  .huandeng/
+      fontFamily: Noto Sans SC
+      fontSize: 18
+      color: "#D7E9E7"
+      align:
+        - left
+        - top
+      lineHeight: 1.32
+  - elementId: f-project-model
+    elementType: text
+    bounds:
+      - 776
+      - 119
+      - 132
+      - 23
+    content:
+      text: 概念关系图
+      fontFamily: Noto Sans SC
+      fontSize: 13
+      color: "#596D70"
+      align:
+        - right
+        - top
+      lineHeight: 1.32
+notes: "先把三个角色分清。HUANDENG Editor 是我们打开、选择、编辑和放映页面的桌面工作区。Plugin 给助手提供制作与协作约定，Connector 将它连接到明确选定的项目。两边的修改通过同一个共享写入服务，落到同一份项目中。deck.pptd 是入口，页面和素材都在项目目录。接下来实际打开这个入口。第三方标记来源见 sources/brand/manifest.json。"

@@ -3,94 +3,147 @@ background:
   type: solid
   color: "#EEE9DD"
 elements:
+  - elementId: f-bg
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 0
+      - 0
+      - 960
+      - 540
+    fill:
+      type: solid
+      color: "#F4F1E8"
+  - elementId: f-route
+    elementType: text
+    bounds:
+      - 42
+      - 20
+      - 860
+      - 18
+    content:
+      text: PROPERTIES → TEXT CONTENT → SAVE SLIDES
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#168C8C"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.2
   - elementId: title
     elementType: text
     bounds:
-        [42,34,880,76]
+        [42,49,875,66]
     role: title
     content:
-      {"text":"Keep the original material within reach","fontFamily":"Georgia","fontSize":32,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.2}
-  - elementId: brand-small
-    elementType: image
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
-    sourceName: huandeng.png
-    alt: huandeng.png
+      {"text":"Edit the selected text, then save","fontFamily":"Segoe UI","fontSize":32,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.1}
+  - elementId: f-foot-rule
+    elementType: shape
+    shapeName: rect
     bounds:
-        [43,512,18,18]
-    fit:
-      mode: contain
-    crop:
-      left: 0.18
-      right: 0.18
-      top: 0.14
-      bottom: 0.14
-  - elementId: foot
+      - 42
+      - 510
+      - 876
+      - 1
+    fill:
+      type: solid
+      color: "#CCD2CB"
+  - elementId: f-watermark
     elementType: text
     bounds:
-        [68,515,140,16]
+      - 42
+      - 518
+      - 700
+      - 17
     content:
-      {"text":"HUANDENG","fontFamily":"Segoe UI","fontSize":9,"color":"#5B6A62","bold":false,"align":["left","top"],"lineHeight":1.35}
-  - elementId: position
+      text: English · ChatGPT 6 Astra
+      fontFamily: Segoe UI
+      fontSize: 12
+      color: "#50646A"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.2
+  - elementId: f-position
     elementType: text
     bounds:
-        [881,514,35,18]
+      - 882
+      - 518
+      - 36
+      - 17
     content:
-      {"text":"","fontFamily":"Segoe UI","fontSize":10,"color":"#5B6A62","bold":false,"align":["right","top"],"lineHeight":1.35,"field":"main-position"}
-  - elementId: asset-library
+      text: ""
+      fontFamily: Segoe UI
+      fontSize: 12
+      color: "#50646A"
+      bold: false
+      align:
+        - right
+        - top
+      lineHeight: 1.2
+      field: main-position
+  - elementId: f-text-selection
     elementType: image
-    src: "media/imported/c6c18f35d5a85ae5dd2fd3130880776950dd5530bfcb788c460cf38574892ef2.png"
-    sourceName: assets.png
-    alt: assets.png
     bounds:
-      - 43
-      - 143
-      - 282
-      - 347
+      - 44
+      - 138
+      - 869
+      - 66
+    src: media/imported/ca03c840de136a63bf8ebfbb457795ee72825568a458ff370db66a2b95830416.png
+    sourceName: selected-title.png
     fit:
       mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: asset-side
+  - elementId: f-text-properties
     elementType: image
-    src: media/imported/50273f1fa204b2f0ae10463c91dd9d8ffcea87c80d861da37c0db9755d091017.png
-    sourceName: dna-duplex-position7.png
-    alt: dna-duplex-position7.png
     bounds:
-      - 364
-      - 140
-      - 166
-      - 276
+        [44,249,437,210]
+    src: "media/imported/c1b966a30db8159507389a11a98a532ce2ef1163e30f9f1fa5a35af3c7de0e48.png"
+    sourceName: "text-content.png"
     fit:
       mode: contain
-    crop:
-      left: 0.285
-      right: 0.265
-      top: 0.105
-      bottom: 0.07
-  - elementId: asset-end
-    elementType: image
-    src: media/imported/342088ed88ab8fffc8ce2651cd6fbf183244f5069c7907702a957eb9cf9fa18a.png
-    sourceName: dna-duplex-end.png
-    alt: dna-duplex-end.png
-    bounds:
-      - 641
-      - 147
-      - 205
-      - 205
-    fit:
-      mode: contain
-    crop:
-      left: 0.27
-      right: 0.25
-      top: 0.26
-      bottom: 0.27
-  - elementId: asset-caption
+  - elementId: f-text-steps
     elementType: text
     bounds:
-        [366,387,548,113]
+      - 531
+      - 248
+      - 375
+      - 193
     content:
-      {"text":"Two views of the same 1BNA coordinates.\n\nFind and reuse them in Assets;\nkeep coordinates, values, method and source with the project.","fontFamily":"Segoe UI","fontSize":17,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.5}
-notes: "The asset library keeps the original material available for the next revision. These two DNA views, coordinates and distance table come from one public structure. After import, Assets lets us locate the material and reuse it on a page; the source record and method remain with the project. A new composition should not require inventing a similar-looking figure with different data. We will use this material in the scientific example."
+      {"text":"1  Edit Text content\n\n2  Check the canvas\n\n3  Save the change","fontFamily":"Segoe UI","fontSize":22,"color":"#112D32","bold":false,"align":["left","top"],"lineHeight":1.35}
+  - elementId: f-text-pointer
+    elementType: line
+    bounds:
+      - 488
+      - 292
+      - 25
+      - 0
+    viewBox:
+      - 1
+      - 1
+    points: 1,0 0,1
+    border:
+      width: 2.5
+      color: "#ED6A3A"
+    arrow:
+      - null
+      - arrow
+  - elementId: f-save-state
+    elementType: text
+    bounds:
+        [702,437,208,49]
+    content:
+      {"text":"Available after\nan unsaved edit","fontFamily":"Segoe UI","fontSize":15,"color":"#168C8C","bold":false,"align":["left","top"],"lineHeight":1.3}
+  - elementId: f-save-control
+    elementType: image
+    bounds:
+      - 531
+      - 434
+      - 156
+      - 42
+    src: media/imported/2802e7699a519e7c9dd8dc9bd8edee7ce07c9c7c53808a59c9cf5e80e9a44a2e.png
+    sourceName: save-page.png
+    fit:
+      mode: contain
+notes: "Select the title and open Properties. Edit Text content for that object, and use the font and alignment controls when the change requires them. Check the canvas at presentation scale before clicking Save slides in the top bar. A saved-operation record can then be inspected in History. The capture shows the actual selected title and Properties fields; this page does not pretend that a new edit has already happened."

@@ -201,4 +201,20 @@ elements:
         - right
         - middle
       field: main-position
+  - elementId: attribution-watermark
+    elementType: text
+    bounds:
+      - 760
+      - 10
+      - 176
+      - 16
+    content:
+      text: 中文 · Claude Opus 5.5
+      fontFamily: Microsoft YaHei
+      fontSize: 10
+      lineHeight: 1.2
+      color: "#7A8580"
+      align:
+        - right
+        - middle
 notes: 这是一次修改从头到尾的样子，在公开示例项目里。这一页的故事写着：缩短标题和说明，保留版式、其他所有对象和核心意思。左边是修改前，右边是修改后。下面的表格列出了到底改了什么：标题和导语。目的、保留两栏、页脚和位置都没动。这次修改先作为一个事务提出、预览，然后通过共享写入器写入，所以它被记录下来，下一页就能回看。科研页也是同样的规矩：改 1BNA 图表的标题，不能碰数据和引用。

@@ -1,348 +1,733 @@
 {
-  "schemaVersion": 3,
-  "project": "chatgpt-en",
-  "main": [
-    {
-      "position": 1,
-      "pageId": "90353b2a-6f7b-4ee5-8a8b-10bceb538190",
-      "slideId": "9DAA"
-    },
-    {
-      "position": 2,
-      "pageId": "4ec264b7-018d-449c-8c8b-d9aede33a840",
-      "slideId": "2XM9"
-    },
-    {
-      "position": 3,
-      "pageId": "1ba18ad8-0701-4de6-83f5-555b949293d7",
-      "slideId": "GX5Z"
-    },
-    {
-      "position": 4,
-      "pageId": "6b9fbac0-772c-435c-bce1-9cad0004af65",
-      "slideId": "9VGD"
-    },
-    {
-      "position": 5,
-      "pageId": "7d7d42a0-0db7-4d33-9b3f-5e1035097b50",
-      "slideId": "FKA9"
-    },
-    {
-      "position": 6,
-      "pageId": "4a066483-9a11-450c-be15-c0be33d52989",
-      "slideId": "U8ZQ"
-    },
-    {
-      "position": 7,
-      "pageId": "95189956-cdd7-4ad9-88c8-cf28a204bb68",
-      "slideId": "35U5"
-    },
-    {
-      "position": 8,
-      "pageId": "c4b12919-5876-4acb-b63f-6a7493b54b37",
-      "slideId": "ZWZJ"
-    },
-    {
-      "position": 9,
-      "pageId": "ca1eec7e-61bd-41ac-b6ab-e000d06797be",
-      "slideId": "XF8A"
-    },
-    {
-      "position": 10,
-      "pageId": "3f5561d8-477e-4954-bee2-9877c8cddc69",
-      "slideId": "ZN52"
-    },
-    {
-      "position": 11,
-      "pageId": "dc5bfe5f-326a-4b28-8536-56e51ea4397e",
-      "slideId": "DHVW"
-    },
-    {
-      "position": 12,
-      "pageId": "6a3aec16-2347-40fe-856d-df36c1f58509",
-      "slideId": "2ZQ3"
-    },
-    {
-      "position": 13,
-      "pageId": "d497fb11-7906-414e-a529-0d97680bce51",
-      "slideId": "7E4T"
-    },
-    {
-      "position": 14,
-      "pageId": "62d5734d-2fe5-441c-a50a-abaa95145b56",
-      "slideId": "9QQW"
-    },
-    {
-      "position": 15,
-      "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7",
-      "slideId": "AAD6"
-    },
-    {
-      "position": 16,
-      "pageId": "095ba6fb-14f6-42b1-815a-7970ac214058",
-      "slideId": "74A2"
-    },
-    {
-      "position": 17,
-      "pageId": "80c650ec-8f56-403d-8f44-d190a84ed4b4",
-      "slideId": "9N3S"
-    },
-    {
-      "position": 18,
-      "pageId": "8050a155-9c2b-4cf5-b643-e9406b9b2b1c",
-      "slideId": "BHPP"
-    },
-    {
-      "position": 19,
-      "pageId": "4a398dd0-ad74-4a36-b65e-6068ffe817a8",
-      "slideId": "X5J6"
-    },
-    {
-      "position": 20,
-      "pageId": "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6",
-      "slideId": "YZ4T"
-    },
-    {
-      "position": 21,
-      "pageId": "e0b400eb-ddc1-4c42-af48-d420785b1d8f",
-      "slideId": "KW5P"
-    },
-    {
-      "position": 22,
-      "pageId": "e4fb0f10-ffa5-44e2-907f-b92e1b69535e",
-      "slideId": "DDJN"
-    },
-    {
-      "position": 23,
-      "pageId": "bbcdc92a-915c-4988-a4d5-76e466d0424f",
-      "slideId": "5HW8"
-    },
-    {
-      "position": 24,
-      "pageId": "8f9e154d-c5c2-4d79-b809-984586f8311e",
-      "slideId": "ECVR"
-    }
-  ],
-  "presentations": [
-    {
-      "id": "introduction-full",
-      "title": "Full introduction",
-      "story": {
-        "purpose": "Introduce what HUANDENG is, how to complete a scientific-page edit, and why intent, evidence, page history and talk composition belong in one working project.",
-        "audience": "Scientific presenters, people creating slides with agents and open-source contributors",
-        "takeaway": "Open one working project and use page intent and evidence to guide editing, review, reuse and delivery."
-      },
-      "items": [
-        {
-          "id": "full-0",
-          "kind": "page",
-          "pageId": "90353b2a-6f7b-4ee5-8a8b-10bceb538190"
+  "schemaVersion": 2,
+  "edition": "chatgpt-en",
+  "entry": "deck.pptd",
+  "extractedAt": "2026-11-11T09:33:14Z",
+  "scope": "Exact saved Main and resolved Brief composition and Notes; no Notes rewritten.",
+  "sourceManifestRevision": "sha256:e950bcd061b620e75122c6a790d9925149f53c0eced76746f54a33242ae58cc3",
+  "sourceMetadataRevision": "sha256:836b515a3e8ba1604702a078fa03f452979ee32d139dbc325094596577164f7f",
+  "collections": {
+    "main": {
+      "title": "Main Slides",
+      "presentationId": null,
+      "pageCount": 24,
+      "exports": {
+        "pdf": {
+          "file": "Exports/deck.pdf",
+          "sha256": "cf80de13d09d64c87686493fc7478f12bb5b7d42f87115f5423305647449c0d6"
         },
-        {
-          "id": "introduction-full-story-21",
-          "kind": "page",
-          "pageId": "4ec264b7-018d-449c-8c8b-d9aede33a840"
-        },
-        {
-          "id": "introduction-full-story-22",
-          "kind": "page",
-          "pageId": "1ba18ad8-0701-4de6-83f5-555b949293d7"
-        },
-        {
-          "id": "full-2",
-          "kind": "page",
-          "pageId": "6b9fbac0-772c-435c-bce1-9cad0004af65"
-        },
-        {
-          "id": "full-3",
-          "kind": "page",
-          "pageId": "7d7d42a0-0db7-4d33-9b3f-5e1035097b50"
-        },
-        {
-          "id": "full-7",
-          "kind": "page",
-          "pageId": "4a066483-9a11-450c-be15-c0be33d52989"
-        },
-        {
-          "id": "full-4",
-          "kind": "page",
-          "pageId": "95189956-cdd7-4ad9-88c8-cf28a204bb68"
-        },
-        {
-          "id": "full-1",
-          "kind": "page",
-          "pageId": "c4b12919-5876-4acb-b63f-6a7493b54b37"
-        },
-        {
-          "id": "full-5",
-          "kind": "page",
-          "pageId": "ca1eec7e-61bd-41ac-b6ab-e000d06797be"
-        },
-        {
-          "id": "full-9",
-          "kind": "page",
-          "pageId": "3f5561d8-477e-4954-bee2-9877c8cddc69"
-        },
-        {
-          "id": "full-13",
-          "kind": "page",
-          "pageId": "dc5bfe5f-326a-4b28-8536-56e51ea4397e"
-        },
-        {
-          "id": "full-10",
-          "kind": "page",
-          "pageId": "6a3aec16-2347-40fe-856d-df36c1f58509"
-        },
-        {
-          "id": "full-6",
-          "kind": "page",
-          "pageId": "d497fb11-7906-414e-a529-0d97680bce51"
-        },
-        {
-          "id": "introduction-full-story-25",
-          "kind": "page",
-          "pageId": "62d5734d-2fe5-441c-a50a-abaa95145b56"
-        },
-        {
-          "id": "full-12",
-          "kind": "page",
-          "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7"
-        },
-        {
-          "id": "introduction-full-story-26",
-          "kind": "page",
-          "pageId": "095ba6fb-14f6-42b1-815a-7970ac214058"
-        },
-        {
-          "id": "full-14",
-          "kind": "page",
-          "pageId": "80c650ec-8f56-403d-8f44-d190a84ed4b4"
-        },
-        {
-          "id": "full-16",
-          "kind": "page",
-          "pageId": "8050a155-9c2b-4cf5-b643-e9406b9b2b1c"
-        },
-        {
-          "id": "full-11",
-          "kind": "page",
-          "pageId": "4a398dd0-ad74-4a36-b65e-6068ffe817a8"
-        },
-        {
-          "id": "full-8",
-          "kind": "page",
-          "pageId": "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6"
-        },
-        {
-          "id": "introduction-full-story-23",
-          "kind": "page",
-          "pageId": "e0b400eb-ddc1-4c42-af48-d420785b1d8f"
-        },
-        {
-          "id": "full-15",
-          "kind": "page",
-          "pageId": "e4fb0f10-ffa5-44e2-907f-b92e1b69535e"
-        },
-        {
-          "id": "full-17",
-          "kind": "page",
-          "pageId": "bbcdc92a-915c-4988-a4d5-76e466d0424f"
-        },
-        {
-          "id": "full-18",
-          "kind": "page",
-          "pageId": "8f9e154d-c5c2-4d79-b809-984586f8311e"
+        "pptx": {
+          "file": "Exports/deck.pptx",
+          "sha256": "5872f18984c169fbf4bb38aa4bf5c91c7bf305f418e05e78f1426e63d181497d"
         }
-      ]
-    },
-    {
-      "id": "introduction-short",
-      "title": "Brief introduction",
-      "story": {
-        "purpose": "Introduce what HUANDENG is, how to complete a scientific-page edit, and why intent, evidence, page history and talk composition belong in one working project.",
-        "audience": "Scientific presenters, people creating slides with agents and open-source contributors",
-        "takeaway": "Open one working project and use page intent and evidence to guide editing, review, reuse and delivery."
       },
-      "items": [
+      "pages": [
         {
-          "id": "brief-0",
-          "kind": "page",
-          "pageId": "90353b2a-6f7b-4ee5-8a8b-10bceb538190"
+          "position": 1,
+          "mainPosition": 1,
+          "pageId": "90353b2a-6f7b-4ee5-8a8b-10bceb538190",
+          "shortCode": "9DAA",
+          "pagePath": "pages/9DAA.page",
+          "title": "HUANDENG",
+          "pageRevision": "sha256:6c5f64ec35a6df15a12d918df981d7ce7f9a1f8b14b239d7705b41eb5f40f9a9",
+          "renderRevision": "sha256:6fdf5fe939ac846a890dce0712b267e301fe6c111e0f1990aec9eb285ae58bed",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "HUANDENG is a desktop editing workspace around a local slide project. This walkthrough follows an actual project through a focused edit, a saved review, reusable talk composition and export. The image is the current 0.19 Editor with this project open. We will enlarge the relevant controls on the following pages. Start by opening deck.pptd from the complete example folder.",
+          "occurrenceNotesOverride": null,
+          "notes": "HUANDENG is a desktop editing workspace around a local slide project. This walkthrough follows an actual project through a focused edit, a saved review, reusable talk composition and export. The image is the current 0.19 Editor with this project open. We will enlarge the relevant controls on the following pages. Start by opening deck.pptd from the complete example folder.",
+          "notesUtf8Sha256": "aa6fcbf17b6379333b4993a07bee0ee95da0e65f62b09f8960ac31de000568e2"
         },
         {
-          "id": "introduction-short-story-21",
-          "kind": "page",
-          "pageId": "4ec264b7-018d-449c-8c8b-d9aede33a840"
+          "position": 2,
+          "mainPosition": 2,
+          "pageId": "4ec264b7-018d-449c-8c8b-d9aede33a840",
+          "shortCode": "2XM9",
+          "pagePath": "pages/2XM9.page",
+          "title": "A small edit should stay small",
+          "pageRevision": "sha256:44fe01fa12c26ddc1f0e0eeb20f05dfed467e047296fafdfde76683192f188fd",
+          "renderRevision": "sha256:64cae15895bae98ddb257ef9dd8998a6d876f9df3e95552510d53c9bfbbbf244",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "Presentation work often returns to a small request: change one explanation while keeping the evidence and useful layout. The selected title shown here belongs to the actual project map on the next page. A focused request identifies what changes and what remains. After editing, save the page and inspect that operation. The page remains part of the same working project rather than becoming an unexplained replacement deck.",
+          "occurrenceNotesOverride": null,
+          "notes": "Presentation work often returns to a small request: change one explanation while keeping the evidence and useful layout. The selected title shown here belongs to the actual project map on the next page. A focused request identifies what changes and what remains. After editing, save the page and inspect that operation. The page remains part of the same working project rather than becoming an unexplained replacement deck.",
+          "notesUtf8Sha256": "b024c51a8fa88aa83225a28a0ddbab5d2c87457dd5639b6c10427625c6193cad"
         },
         {
-          "id": "introduction-short-product-22",
-          "kind": "page",
-          "pageId": "1ba18ad8-0701-4de6-83f5-555b949293d7"
+          "position": 3,
+          "mainPosition": 3,
+          "pageId": "1ba18ad8-0701-4de6-83f5-555b949293d7",
+          "shortCode": "GX5Z",
+          "pagePath": "pages/GX5Z.page",
+          "title": "One project keeps the work together",
+          "pageRevision": "sha256:bb044b69bdb463da3f2f22f275c7eeb7ebe0000c7ae20ca5a3cebe9aff630242",
+          "renderRevision": "sha256:7f0fb0186cc686507203dfb664e90c367c549870c3af7c9bcc5c07b69393d80e",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "Open the example project from its folder. The .pptd file is the entry point and page order; individual .page files hold editable page content. Images and supporting sources stay beside them. HUANDENG opens this working folder in the Editor. Share the complete folder when another person needs to continue editing. The diagram is a conceptual map of the actual project structure, not a screenshot.",
+          "occurrenceNotesOverride": null,
+          "notes": "Open the example project from its folder. The .pptd file is the entry point and page order; individual .page files hold editable page content. Images and supporting sources stay beside them. HUANDENG opens this working folder in the Editor. Share the complete folder when another person needs to continue editing. The diagram is a conceptual map of the actual project structure, not a screenshot.",
+          "notesUtf8Sha256": "cce911a28b04bcf063ccbbdc7989aada18ce39e5d8540c0cc7ddcbf105b7d96e"
         },
         {
-          "id": "introduction-short-product-5",
-          "kind": "page",
+          "position": 4,
+          "mainPosition": 4,
+          "pageId": "6b9fbac0-772c-435c-bce1-9cad0004af65",
+          "shortCode": "9VGD",
+          "pagePath": "pages/9VGD.page",
+          "title": "Find the page, then select its object",
+          "pageRevision": "sha256:1f9bae1e2a969090e92c59d83f4c782350170a222f5797899cd76878e280760e",
+          "renderRevision": "sha256:3811fd8d89f79dda07debfbeb49890e7c4616ae35ac19dc34747882ee4d9a682",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "Open the slide thumbnails and choose GX5Z, the project map used in this walkthrough. Click its title on the canvas. The selection outline identifies the object, and the Inspector now describes that selected object. The fragments are enlarged actual Editor captures of the same page. To start with an empty page instead, use the plus control in the page sidebar. Selection does not save a content change.",
+          "occurrenceNotesOverride": null,
+          "notes": "Open the slide thumbnails and choose GX5Z, the project map used in this walkthrough. Click its title on the canvas. The selection outline identifies the object, and the Inspector now describes that selected object. The fragments are enlarged actual Editor captures of the same page. To start with an empty page instead, use the plus control in the page sidebar. Selection does not save a content change.",
+          "notesUtf8Sha256": "f1eb3a3dd6cb34e1c7b2051435ea55034a09adefe3f92bb202c62e4b12739bde"
+        },
+        {
+          "position": 5,
+          "mainPosition": 5,
           "pageId": "7d7d42a0-0db7-4d33-9b3f-5e1035097b50",
-          "notes": "Locate the shared work: project, pages, assets and files on the left, direct editing in the canvas, and properties, layers and Story on the right. An assistant works on that same page. In this brief talk we next find the original material in Assets and inspect a focused edit."
+          "shortCode": "FKA9",
+          "pagePath": "pages/FKA9.page",
+          "title": "Write the intent beside the page",
+          "pageRevision": "sha256:6b80cb3bf34e9575c39e0677479b732e56d8c8bd3fc993a0b4f7caed4df1402b",
+          "renderRevision": "sha256:5bb9c4631ac9ac156d77309022f27a3729563daaeb37c6375f49616679fa766f",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "Select the project-map page and open Story in the Inspector. Use the pencil control to record its purpose, preservation constraints and requested change. This current 0.19 capture shows the brief for the actual page in this walkthrough. Write an action that can be checked in the result. Story stores context for the next person or assistant; judging the resulting page remains part of the editing work.",
+          "occurrenceNotesOverride": null,
+          "notes": "Select the project-map page and open Story in the Inspector. Use the pencil control to record its purpose, preservation constraints and requested change. This current 0.19 capture shows the brief for the actual page in this walkthrough. Write an action that can be checked in the result. Story stores context for the next person or assistant; judging the resulting page remains part of the editing work.",
+          "notesUtf8Sha256": "477a42b314ad11310eb4e321d6a7e389628b4fed2f47e65f33c49064018c45ef"
         },
         {
-          "id": "introduction-short-story-6",
-          "kind": "page",
-          "pageId": "95189956-cdd7-4ad9-88c8-cf28a204bb68"
+          "position": 6,
+          "mainPosition": 6,
+          "pageId": "4a066483-9a11-450c-be15-c0be33d52989",
+          "shortCode": "U8ZQ",
+          "pagePath": "pages/U8ZQ.page",
+          "title": "Place an original from Assets",
+          "pageRevision": "sha256:2a13831e6ef1a9dd19ac95055e0ddd9bf46b8d02f6d9307f4e583ed92fc838eb",
+          "renderRevision": "sha256:a04934858b88f1de01599854749fc99d180a3021e4d0bf3038181ae9701674a4",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "Open the project asset library. Search for a source by name, then drag an existing image onto the slide. Import and place adds a new original from the device. This example searches for the actual HUANDENG mark already in the project. Placement and cropping control the slide instance; keep the source image and its attribution with the project. The two crops show the real search controls and the matching result at a readable size.",
+          "occurrenceNotesOverride": null,
+          "notes": "Open the project asset library. Search for a source by name, then drag an existing image onto the slide. Import and place adds a new original from the device. This example searches for the actual HUANDENG mark already in the project. Placement and cropping control the slide instance; keep the source image and its attribution with the project. The two crops show the real search controls and the matching result at a readable size.",
+          "notesUtf8Sha256": "6ea8798467ae8a69b0cb39f9eada4eaa608c4fff415f3e6ba3f2affab4c481da"
         },
         {
-          "id": "brief-2",
-          "kind": "page",
+          "position": 7,
+          "mainPosition": 7,
+          "pageId": "95189956-cdd7-4ad9-88c8-cf28a204bb68",
+          "shortCode": "35U5",
+          "pagePath": "pages/35U5.page",
+          "title": "Edit the selected text, then save",
+          "pageRevision": "sha256:23e56be885ee34d69db205a9768b8222bc18784affa5d6b67ff4b9f3cb56cef4",
+          "renderRevision": "sha256:e90e30ad0dd1d07f7303c240f2098592c58ef7ab9ddd0c52eac6334af3e8db40",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "Select the title and open Properties. Edit Text content for that object, and use the font and alignment controls when the change requires them. Check the canvas at presentation scale before clicking Save slides in the top bar. A saved-operation record can then be inspected in History. The capture shows the actual selected title and Properties fields; this page does not pretend that a new edit has already happened.",
+          "occurrenceNotesOverride": null,
+          "notes": "Select the title and open Properties. Edit Text content for that object, and use the font and alignment controls when the change requires them. Check the canvas at presentation scale before clicking Save slides in the top bar. A saved-operation record can then be inspected in History. The capture shows the actual selected title and Properties fields; this page does not pretend that a new edit has already happened.",
+          "notesUtf8Sha256": "a332f5baa565130be56b17196b554957dcc641ce8207be51c635b09fdec0fef1"
+        },
+        {
+          "position": 8,
+          "mainPosition": 8,
           "pageId": "c4b12919-5876-4acb-b63f-6a7493b54b37",
-          "versionId": "checkpoint:891ad589ee3d84a6414cbf6af1245185",
-          "notes": "For this talk, change only the explanation. Keep the figure, all twelve values, units and source. The page need not be copied; this talk pins the saved wording-edit stage."
+          "shortCode": "ZWZJ",
+          "pagePath": "pages/ZWZJ.page",
+          "title": "Use Layers when objects overlap",
+          "pageRevision": "sha256:e5261b272e60a59416a248764bb9eca42ddd92b56525635876a0fe2253c6df3c",
+          "renderRevision": "sha256:a8eec202cabc0072f807a2c79d99b588fca30cd125881abed1c025654f2bc070",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "Open Layers when selecting an object on the canvas is difficult. Choose the object by its name; the same object becomes selected on the canvas. Use Forward or Backward for a single step, and To front or To back for the whole stack. Check what remains visible before saving. These are actual controls and the actual title object of the project map; the connector shows the selection relationship.",
+          "occurrenceNotesOverride": null,
+          "notes": "Open Layers when selecting an object on the canvas is difficult. Choose the object by its name; the same object becomes selected on the canvas. Use Forward or Backward for a single step, and To front or To back for the whole stack. Check what remains visible before saving. These are actual controls and the actual title object of the project map; the connector shows the selection relationship.",
+          "notesUtf8Sha256": "350131a660b0f230e4b87785da15ae5070f54ecc7f3ab587d4dd3840b07c5d85"
         },
         {
-          "id": "introduction-short-product-4",
-          "kind": "page",
-          "pageId": "3f5561d8-477e-4954-bee2-9877c8cddc69"
+          "position": 9,
+          "mainPosition": 9,
+          "pageId": "ca1eec7e-61bd-41ac-b6ab-e000d06797be",
+          "shortCode": "XF8A",
+          "pagePath": "pages/XF8A.page",
+          "title": "Compare the changed region at equal scale",
+          "pageRevision": "sha256:3d09a401bf0e8aa5dfb0b9a462e10002cc3f888d22f5216df3366e1e614bbb7f",
+          "renderRevision": "sha256:9572e47462cc3702820eceb93019c172ca05cbaaf715d3ff3b9baf42da823981",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "The public product fixture changes the headline and explanatory sentence only. These are crops of its actual saved before and after page states, aligned at identical scale. The orange bars identify the region to inspect without drawing across its wording. The full original images remain in the project. Compare the new language against the request, then inspect the saved changes to verify the scope.",
+          "occurrenceNotesOverride": null,
+          "notes": "The public product fixture changes the headline and explanatory sentence only. These are crops of its actual saved before and after page states, aligned at identical scale. The orange bars identify the region to inspect without drawing across its wording. The full original images remain in the project. Compare the new language against the request, then inspect the saved changes to verify the scope.",
+          "notesUtf8Sha256": "cac8f45f9927fb0685c8ddf2d639c12403102c936d70537cac9afc4215749d01"
         },
         {
-          "id": "introduction-short-story-13",
-          "kind": "page",
-          "pageId": "dc5bfe5f-326a-4b28-8536-56e51ea4397e"
+          "position": 10,
+          "mainPosition": 10,
+          "pageId": "3f5561d8-477e-4954-bee2-9877c8cddc69",
+          "shortCode": "ZN52",
+          "pagePath": "pages/ZN52.page",
+          "title": "Inspect the exact saved change",
+          "pageRevision": "sha256:b9cbdea4ce724740496ad4b2a5d27b83862544d23e29e5418bee6a5636a0c0a4",
+          "renderRevision": "sha256:be787d22841b10b4169e9a1a9945e48e212f987a82c9b19fa7f855e7855e8738",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "Open History for the edited page and choose its operation record. The saved changes list identifies the actual objects and properties changed by that operation. Here the public fixture reports content.text for the title and lead, matching the two-sentence request. Review the before and after page states as well. A successful save is evidence of a persisted change, not a substitute for assessing whether the page reads well.",
+          "occurrenceNotesOverride": null,
+          "notes": "Open History for the edited page and choose its operation record. The saved changes list identifies the actual objects and properties changed by that operation. Here the public fixture reports content.text for the title and lead, matching the two-sentence request. Review the before and after page states as well. A successful save is evidence of a persisted change, not a substitute for assessing whether the page reads well.",
+          "notesUtf8Sha256": "99975ba9716680df7ac5ba78d2d4a284ece27d3c7d51fc9a07810ea8c5bad410"
         },
         {
-          "id": "brief-4",
-          "kind": "page",
+          "position": 11,
+          "mainPosition": 11,
+          "pageId": "dc5bfe5f-326a-4b28-8536-56e51ea4397e",
+          "shortCode": "DHVW",
+          "pagePath": "pages/DHVW.page",
+          "title": "Move the page without losing its identity",
+          "pageRevision": "sha256:dcb68aaa538084b204d2aff857294d5426036d9706160438005a052590143ab0",
+          "renderRevision": "sha256:bf26e103f6334a5267ac99190e84ee9b2a13e7d4b64e2236beef091f477f1cce",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "This real public fixture moves a page from position 2 to position 4 in a six-page Main. Its short Slide ID, C014, stays the same. Position describes the current ordering; identity connects the content, history and Presentation references. When collaborating, name the page by its short ID rather than relying only on a changing position. These are actual before and after Editor status strips.",
+          "occurrenceNotesOverride": null,
+          "notes": "This real public fixture moves a page from position 2 to position 4 in a six-page Main. Its short Slide ID, C014, stays the same. Position describes the current ordering; identity connects the content, history and Presentation references. When collaborating, name the page by its short ID rather than relying only on a changing position. These are actual before and after Editor status strips.",
+          "notesUtf8Sha256": "7579aa35b6f63ef7599d66bf614da6f3ef0f06cb0861cb4a892b61cf5f5ff724"
+        },
+        {
+          "position": 12,
+          "mainPosition": 12,
+          "pageId": "6a3aec16-2347-40fe-856d-df36c1f58509",
+          "shortCode": "2ZQ3",
+          "pagePath": "pages/2ZQ3.page",
+          "title": "Name a version worth returning to",
+          "pageRevision": "sha256:33309e37aef87ea392a9354898f2b88efd95158bc3afe0a41b20be449123cf7d",
+          "renderRevision": "sha256:dd68de0975fc55640a5ac3cce47794cae87cdacd1a02ca57eb2fcea5ae8b80c8",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "After reviewing a meaningful stage, open History and record a named page version. Project map · tutorial is an actual checkpoint recorded for GX5Z during the making of this walkthrough. The expanded detail shows that saved version. Select a version to inspect its preview before restoring it. A Presentation can also pin this named version while Main continues to evolve. Give milestones names that explain their purpose; do not generate a snapshot for every keystroke.",
+          "occurrenceNotesOverride": null,
+          "notes": "After reviewing a meaningful stage, open History and record a named page version. Project map · tutorial is an actual checkpoint recorded for GX5Z during the making of this walkthrough. The expanded detail shows that saved version. Select a version to inspect its preview before restoring it. A Presentation can also pin this named version while Main continues to evolve. Give milestones names that explain their purpose; do not generate a snapshot for every keystroke.",
+          "notesUtf8Sha256": "499546c86860081a7187755011152090df240930697604582b6465b6baab52f5"
+        },
+        {
+          "position": 13,
+          "mainPosition": 13,
+          "pageId": "d497fb11-7906-414e-a529-0d97680bce51",
+          "shortCode": "7E4T",
+          "pagePath": "pages/7E4T.page",
+          "title": "Step back and read the sequence",
+          "pageRevision": "sha256:3c49e6d987f4031a7e98d156e83effda8991b920ca678f6292e14bb29d432ad9",
+          "renderRevision": "sha256:f79fbd9b07a40acf3c2779467b1c3e2dc7ea6e9b997845444d169237551db2ab",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "Switch to Browse to inspect the actual pages together. Look for repeated layouts, sudden density changes and pages whose main point is difficult to see. Section boundaries keep related material together. Double-click a slide, or select it and press Enter, to return to editing. The capture is this project in the current Editor, rather than an invented grid.",
+          "occurrenceNotesOverride": null,
+          "notes": "Switch to Browse to inspect the actual pages together. Look for repeated layouts, sudden density changes and pages whose main point is difficult to see. Section boundaries keep related material together. Double-click a slide, or select it and press Enter, to return to editing. The capture is this project in the current Editor, rather than an invented grid.",
+          "notesUtf8Sha256": "a8e2a1bc7ba7ef15d83de844019d3e0e89446a8b2955026bbf42b75e1f8a948d"
+        },
+        {
+          "position": 14,
+          "mainPosition": 14,
+          "pageId": "62d5734d-2fe5-441c-a50a-abaa95145b56",
+          "shortCode": "9QQW",
+          "pagePath": "pages/9QQW.page",
+          "title": "Read the argument in Outline",
+          "pageRevision": "sha256:697d0a98961046f6dd9c11ae3cb0b5689a49b78f95dfc263ed17df1ec0a37a8e",
+          "renderRevision": "sha256:db26c97c38382648aafa911c90829a23b53e45c829b901ea7262f7071081a5eb",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "Switch to Outline to inspect a page through its title, purpose and identity. The enlarged row is the project-map page, GX5Z. Read the sequence as an argument: what does each page add, and what prepares the next one? Double-click a row to return to editing. Page purpose is stored in Story, so update that brief when the intention changes.",
+          "occurrenceNotesOverride": null,
+          "notes": "Switch to Outline to inspect a page through its title, purpose and identity. The enlarged row is the project-map page, GX5Z. Read the sequence as an argument: what does each page add, and what prepares the next one? Double-click a row to return to editing. Page purpose is stored in Story, so update that brief when the intention changes.",
+          "notesUtf8Sha256": "dd30c46e3d4a8cadde23215e4f1444c2b85c981c58eb61a64bcca4e93f403005"
+        },
+        {
+          "position": 15,
+          "mainPosition": 15,
           "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7",
-          "notes": "The brief talk selects from the same Main pages while retaining their Slide IDs. These actual pages show the selection relationship. Next we connect assistants to this project and then consider division of work and handoff."
+          "shortCode": "AAD6",
+          "pagePath": "pages/AAD6.page",
+          "title": "A Section begins at its first slide",
+          "pageRevision": "sha256:e9622b5d4a07cf2060e61c7d526caa276cb7f4ad4dee01f4bec3c2c9cbd31a73",
+          "renderRevision": "sha256:71fa5b0c46f3395cca8cc306a80554820c49eec91d253b4641d31eedc4f771f4",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "Open Sections, select the section and choose its First Slide. A section continues from that slide until the next section starts; moving those boundaries changes membership. The screenshot is the real Make a focused edit section, starting at page 4 and currently covering pages 4 through 8. A section does not require an empty divider slide. Save project after changing the structure.",
+          "occurrenceNotesOverride": null,
+          "notes": "Open Sections, select the section and choose its First Slide. A section continues from that slide until the next section starts; moving those boundaries changes membership. The screenshot is the real Make a focused edit section, starting at page 4 and currently covering pages 4 through 8. A section does not require an empty divider slide. Save project after changing the structure.",
+          "notesUtf8Sha256": "e6ad726040c7028fa6a6276850e3bb9ad598acef184c4b99369f16e81ae73625"
         },
         {
-          "id": "brief-1",
-          "kind": "page",
-          "pageId": "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6"
+          "position": 16,
+          "mainPosition": 16,
+          "pageId": "095ba6fb-14f6-42b1-815a-7970ac214058",
+          "shortCode": "74A2",
+          "pagePath": "pages/74A2.page",
+          "title": "Choose pages for this particular talk",
+          "pageRevision": "sha256:9d37a70aad9ae345a229c34580e7dc2f7fa870ca8688946439ed42ab1895d499",
+          "renderRevision": "sha256:60a4dd4dbc0b78c49fcc64208b0b1cccb7b6a8c6d4921990579fc9a1d13c4507",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "In Project, choose Arrange Presentation. Create or select a Presentation, then choose pages from Main. The screenshots show First edit · short talk and the source picker filtered to GX5Z. Click the plus beside a page or Section to append its reference; reorder the occurrences for this audience and save project. A Presentation reuses the source page instead of creating a detached copy.",
+          "occurrenceNotesOverride": null,
+          "notes": "In Project, choose Arrange Presentation. Create or select a Presentation, then choose pages from Main. The screenshots show First edit · short talk and the source picker filtered to GX5Z. Click the plus beside a page or Section to append its reference; reorder the occurrences for this audience and save project. A Presentation reuses the source page instead of creating a detached copy.",
+          "notesUtf8Sha256": "5f952f3bd0707784301b77584fa9d2fcd316dca8fe905a65fcbe4ccb4ae47a51"
         },
         {
-          "id": "introduction-short-story-23",
-          "kind": "page",
-          "pageId": "e0b400eb-ddc1-4c42-af48-d420785b1d8f"
+          "position": 17,
+          "mainPosition": 17,
+          "pageId": "80c650ec-8f56-403d-8f44-d190a84ed4b4",
+          "shortCode": "9N3S",
+          "pagePath": "pages/9N3S.page",
+          "title": "Give this talk its own speaking notes",
+          "pageRevision": "sha256:554d74bffed25b0b764fa122bdeca97770898e0daff1c4d57eab83c6cd4388fd",
+          "renderRevision": "sha256:1f3c6ae4591effd47a20a9c216f30292734cb0d61b07dca01f806c8ba654ee55",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "Expand Notes and version for a page occurrence. Enable This occurrence uses its own speaker notes, then write the script for this talk. The image is the actual FKA9 occurrence in First edit · short talk. Its page content remains shared with Main, while these notes are specific to the occurrence. Select the same talk and page in Notes page when rehearsing. Save project for edits in the arrangement form; use Save slides for edits in the Notes page.",
+          "occurrenceNotesOverride": null,
+          "notes": "Expand Notes and version for a page occurrence. Enable This occurrence uses its own speaker notes, then write the script for this talk. The image is the actual FKA9 occurrence in First edit · short talk. Its page content remains shared with Main, while these notes are specific to the occurrence. Select the same talk and page in Notes page when rehearsing. Save project for edits in the arrangement form; use Save slides for edits in the Notes page.",
+          "notesUtf8Sha256": "33450837194e82b6acbdf6bcc3ac48a137f71229c6aeeb3f3dfe62425f6b8373"
         },
         {
-          "id": "brief-6",
-          "kind": "page",
-          "pageId": "8f9e154d-c5c2-4d79-b809-984586f8311e"
+          "position": 18,
+          "mainPosition": 18,
+          "pageId": "8050a155-9c2b-4cf5-b643-e9406b9b2b1c",
+          "shortCode": "BHPP",
+          "pagePath": "pages/BHPP.page",
+          "title": "Choose what this occurrence follows",
+          "pageRevision": "sha256:30156003aef5d863fa4db976db9b9e3004ecd40f6da23c6a3c66c3ec78c99b98",
+          "renderRevision": "sha256:5de9821a24bac2703edb936a508939ba577847b890abeb9a313a308d529386ba",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "The two actual controls show different occurrence choices. Live reference follows the current Main slide. A pinned version uses a named page checkpoint, here Project map · tutorial. Choose the behavior deliberately for each talk. The public short talk includes this real pin so the distinction can be inspected. Change the version selector and save project; the Main slide itself is not restored by selecting a pin.",
+          "occurrenceNotesOverride": null,
+          "notes": "The two actual controls show different occurrence choices. Live reference follows the current Main slide. A pinned version uses a named page checkpoint, here Project map · tutorial. Choose the behavior deliberately for each talk. The public short talk includes this real pin so the distinction can be inspected. Change the version selector and save project; the Main slide itself is not restored by selecting a pin.",
+          "notesUtf8Sha256": "9fef3c6103e8ea180c507aa72233247dfa4230de4bdab0339abaeb98208f8b35"
+        },
+        {
+          "position": 19,
+          "mainPosition": 19,
+          "pageId": "4a398dd0-ad74-4a36-b65e-6068ffe817a8",
+          "shortCode": "X5J6",
+          "pagePath": "pages/X5J6.page",
+          "title": "Rehearse from the point you are editing",
+          "pageRevision": "sha256:20541aec1012d0e702a072cd28626544788c5eb297341419c137b35c946342db",
+          "renderRevision": "sha256:6d92b1810863ce33abe3d2d05be6cf7bdfeb19d4d70b3069d5688f6ae7d6a015",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "Select the Presentation you intend to show. The Present menu can start at the beginning or at the current slide. The current page shown here is the Story tutorial used in the short talk. Check the first displayed page and the sequence as you rehearse, then use Escape to return to editing. This is a rehearsal step, before sending a delivery file.",
+          "occurrenceNotesOverride": null,
+          "notes": "Select the Presentation you intend to show. The Present menu can start at the beginning or at the current slide. The current page shown here is the Story tutorial used in the short talk. Check the first displayed page and the sequence as you rehearse, then use Escape to return to editing. This is a rehearsal step, before sending a delivery file.",
+          "notesUtf8Sha256": "d593895194bee79670cc5308920eac36204ac77bf14dba8955db1162893d0ec7"
+        },
+        {
+          "position": 20,
+          "mainPosition": 20,
+          "pageId": "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6",
+          "shortCode": "YZ4T",
+          "pagePath": "pages/YZ4T.page",
+          "title": "Confirm the range before you export",
+          "pageRevision": "sha256:dde36df2977290400a980267a7f62b123a585f537d1ae0dff4b6a01bc2c87efb",
+          "renderRevision": "sha256:8d751af2e114ec6f61f24be3dfcc99eac674d4f02e08ec24a2cb5a7f8890bb48",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "Open Export after saving your edits. Confirm both the format and the selected range. The actual dialog here targets First edit · short talk with 12 slides. PDF is a fixed-page delivery; PPTX contains editable supported objects; PNG creates slide images. PPTX and PDF use the static base layout, while timeline animation has a separate video export. Open the exported file once to check its pages, fonts and any native chart layout before sharing.",
+          "occurrenceNotesOverride": null,
+          "notes": "Open Export after saving your edits. Confirm both the format and the selected range. The actual dialog here targets First edit · short talk with 12 slides. PDF is a fixed-page delivery; PPTX contains editable supported objects; PNG creates slide images. PPTX and PDF use the static base layout, while timeline animation has a separate video export. Open the exported file once to check its pages, fonts and any native chart layout before sharing.",
+          "notesUtf8Sha256": "0072f3afc5ebcd48f335f4bf5d0e93b1dbd1679e2b5d6256211784736154af99"
+        },
+        {
+          "position": 21,
+          "mainPosition": 21,
+          "pageId": "e0b400eb-ddc1-4c42-af48-d420785b1d8f",
+          "shortCode": "KW5P",
+          "pagePath": "pages/KW5P.page",
+          "title": "Send the whole folder to continue editing",
+          "pageRevision": "sha256:f63f5eef51c9c6fd084decb512bc9a0aeddedba863f848f9b431c6dbd288ee67",
+          "renderRevision": "sha256:aef89a9b49b5a26c432666376a5096a0e062c0bbe9ecc97559ffc58b06843d04",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "When another person will continue in HUANDENG, send the complete working folder. It contains deck.pptd, page files, original media, supporting sources and project history. Sending only deck.pptd leaves referenced material behind. The diagram names the actual project parts and the next editing action. A PDF or PPTX is useful for delivery, but returning to this shared project requires its working folder.",
+          "occurrenceNotesOverride": null,
+          "notes": "When another person will continue in HUANDENG, send the complete working folder. It contains deck.pptd, page files, original media, supporting sources and project history. Sending only deck.pptd leaves referenced material behind. The diagram names the actual project parts and the next editing action. A PDF or PPTX is useful for delivery, but returning to this shared project requires its working folder.",
+          "notesUtf8Sha256": "1c1fab26399c1f798a3ade9735d395fa0562bbf978ed1980236bbb589b7b530e"
+        },
+        {
+          "position": 22,
+          "mainPosition": 22,
+          "pageId": "e4fb0f10-ffa5-44e2-907f-b92e1b69535e",
+          "shortCode": "DDJN",
+          "pagePath": "pages/DDJN.page",
+          "title": "Connect the assistant to this project",
+          "pageRevision": "sha256:c07e176880842a3759ce857fc82fa83764ef370f44cadee3d91c415e3649ce62",
+          "renderRevision": "sha256:c30ad0037d05bf1f617a9e29791d7609e5a48cbc2f4d6e70911b2ed08e985a0f",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "Open Agent setup in the desktop Editor and select the client you use. Follow its generated setup and verify the project entry before asking for an edit. Claude Code uses the HUANDENG plugin, DeepSeek Harness uses its native Cordis adapter, and ChatGPT reaches the local workflow through its connector. These clients work through the same document service. The screenshot shows the actual client selector; it does not claim that the browser-only capture itself completed native setup.",
+          "occurrenceNotesOverride": null,
+          "notes": "Open Agent setup in the desktop Editor and select the client you use. Follow its generated setup and verify the project entry before asking for an edit. Claude Code uses the HUANDENG plugin, DeepSeek Harness uses its native Cordis adapter, and ChatGPT reaches the local workflow through its connector. These clients work through the same document service. The screenshot shows the actual client selector; it does not claim that the browser-only capture itself completed native setup.",
+          "notesUtf8Sha256": "09aff57522a4dfd68b206e95b7d423a7321d481ac9463075d59cfcd4af35dfb7"
+        },
+        {
+          "position": 23,
+          "mainPosition": 23,
+          "pageId": "bbcdc92a-915c-4988-a4d5-76e466d0424f",
+          "shortCode": "5HW8",
+          "pagePath": "pages/5HW8.page",
+          "title": "Divide the pages; review the returned work",
+          "pageRevision": "sha256:67e9bca9131557d57f7ea92ae626623fceb7a8378a5aa218cf0b1c0e53abf423",
+          "renderRevision": "sha256:5cbee3628de77b2d1f8c263596bf596eca7f0ac6daa95ac9e87acd862f3912a9",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "Agree on the scope before work begins. Different pages can be edited in parallel; a person can also hand a page from content drafting to visual refinement. This diagram illustrates a division between the project map and the Story tutorial, using actual page previews. Give shared project structure one owner, avoid simultaneous changes to the same page, and review every saved result at presentation size. Revision checks expose conflicts; they do not replace visual judgment. This English edition was authored by the main ChatGPT session.",
+          "occurrenceNotesOverride": null,
+          "notes": "Agree on the scope before work begins. Different pages can be edited in parallel; a person can also hand a page from content drafting to visual refinement. This diagram illustrates a division between the project map and the Story tutorial, using actual page previews. Give shared project structure one owner, avoid simultaneous changes to the same page, and review every saved result at presentation size. Revision checks expose conflicts; they do not replace visual judgment. This English edition was authored by the main ChatGPT session.",
+          "notesUtf8Sha256": "8a970034276ebaf323d2eeaaa9a38e30747c115295d454df6c9b5a64e641fbd6"
+        },
+        {
+          "position": 24,
+          "mainPosition": 24,
+          "pageId": "8f9e154d-c5c2-4d79-b809-984586f8311e",
+          "shortCode": "ECVR",
+          "pagePath": "pages/ECVR.page",
+          "title": "Open the example and make one useful edit",
+          "pageRevision": "sha256:a91ef7a09939615b1c04cc3e207cc6ed46666c5e1188e5fc97856c732df78740",
+          "renderRevision": "sha256:440c270314eaf6a7d2961cd20abd606c15b040e44bfd1898c7638ba59661311c",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "Open examples/huandeng-introduction/chatgpt-en/deck.pptd with the complete folder present. Find GX5Z, read its Story, make one small wording change, save and inspect the operation. Then open First edit · short talk and see how its pinned project-map version differs from following Main. HUANDENG builds on OpenSlide. OpenPPTD contributes formula conversion, PptxGenJS contributes PowerPoint generation, and Font Awesome provides icons. Original software notices and asset sources remain with this repository.",
+          "occurrenceNotesOverride": null,
+          "notes": "Open examples/huandeng-introduction/chatgpt-en/deck.pptd with the complete folder present. Find GX5Z, read its Story, make one small wording change, save and inspect the operation. Then open First edit · short talk and see how its pinned project-map version differs from following Main. HUANDENG builds on OpenSlide. OpenPPTD contributes formula conversion, PptxGenJS contributes PowerPoint generation, and Font Awesome provides icons. Original software notices and asset sources remain with this repository.",
+          "notesUtf8Sha256": "624590b446d6e91709874b7c63d3500f84ce8f68ec6f31a7816b8fa3b9f0eefa"
         }
-      ]
-    }
-  ],
-  "sectionStarts": [
-    {
-      "position": 4,
-      "slideId": "9VGD"
+      ],
+      "pinnedOccurrences": 0,
+      "occurrenceNotesOverrides": 0
     },
-    {
-      "position": 13,
-      "slideId": "7E4T"
-    },
-    {
-      "position": 19,
-      "slideId": "X5J6"
+    "brief": {
+      "title": "First edit · short talk",
+      "presentationId": "introduction-short",
+      "pageCount": 12,
+      "exports": {
+        "pdf": {
+          "file": "Exports/brief.pdf",
+          "sha256": "b11f2ec95feb417cf6eba4d5f3f7e07250576320f1caad0d565b498031256fa3"
+        },
+        "pptx": {
+          "file": "Exports/brief.pptx",
+          "sha256": "ba7c6fb76ebf2ca41a1bab0d150d729585079f11a0e7f1fd084580c3e734cdd6"
+        }
+      },
+      "pages": [
+        {
+          "position": 1,
+          "mainPosition": 1,
+          "pageId": "90353b2a-6f7b-4ee5-8a8b-10bceb538190",
+          "shortCode": "9DAA",
+          "pagePath": "pages/9DAA.page",
+          "title": "HUANDENG",
+          "pageRevision": "sha256:6c5f64ec35a6df15a12d918df981d7ce7f9a1f8b14b239d7705b41eb5f40f9a9",
+          "renderRevision": "sha256:6fdf5fe939ac846a890dce0712b267e301fe6c111e0f1990aec9eb285ae58bed",
+          "occurrenceId": "introduction-short:brief-0:90353b2a-6f7b-4ee5-8a8b-10bceb538190",
+          "presentationItemId": "brief-0",
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "HUANDENG is a desktop editing workspace around a local slide project. This walkthrough follows an actual project through a focused edit, a saved review, reusable talk composition and export. The image is the current 0.19 Editor with this project open. We will enlarge the relevant controls on the following pages. Start by opening deck.pptd from the complete example folder.",
+          "occurrenceNotesOverride": null,
+          "notes": "HUANDENG is a desktop editing workspace around a local slide project. This walkthrough follows an actual project through a focused edit, a saved review, reusable talk composition and export. The image is the current 0.19 Editor with this project open. We will enlarge the relevant controls on the following pages. Start by opening deck.pptd from the complete example folder.",
+          "notesUtf8Sha256": "aa6fcbf17b6379333b4993a07bee0ee95da0e65f62b09f8960ac31de000568e2"
+        },
+        {
+          "position": 2,
+          "mainPosition": 3,
+          "pageId": "1ba18ad8-0701-4de6-83f5-555b949293d7",
+          "shortCode": "GX5Z",
+          "pagePath": "pages/GX5Z.page",
+          "title": "One project keeps the work together",
+          "pageRevision": "sha256:bb044b69bdb463da3f2f22f275c7eeb7ebe0000c7ae20ca5a3cebe9aff630242",
+          "renderRevision": "sha256:accc9aebc9f59984bdf29fc241ab5d7edefddb44da226020f946ce1cb5e07c30",
+          "occurrenceId": "introduction-short:introduction-short-product-22:1ba18ad8-0701-4de6-83f5-555b949293d7",
+          "presentationItemId": "introduction-short-product-22",
+          "versionId": "checkpoint:48c8cc57a4164ade03e9e753f4d8a9e2",
+          "pinned": true,
+          "notesSource": "pinned-page",
+          "pageNotes": "Open the example project from its folder. The .pptd file is the entry point and page order; individual .page files hold editable page content. Images and supporting sources stay beside them. HUANDENG opens this working folder in the Editor. Share the complete folder when another person needs to continue editing. The diagram is a conceptual map of the actual project structure, not a screenshot.",
+          "occurrenceNotesOverride": null,
+          "notes": "Open the example project from its folder. The .pptd file is the entry point and page order; individual .page files hold editable page content. Images and supporting sources stay beside them. HUANDENG opens this working folder in the Editor. Share the complete folder when another person needs to continue editing. The diagram is a conceptual map of the actual project structure, not a screenshot.",
+          "notesUtf8Sha256": "cce911a28b04bcf063ccbbdc7989aada18ce39e5d8540c0cc7ddcbf105b7d96e"
+        },
+        {
+          "position": 3,
+          "mainPosition": 5,
+          "pageId": "7d7d42a0-0db7-4d33-9b3f-5e1035097b50",
+          "shortCode": "FKA9",
+          "pagePath": "pages/FKA9.page",
+          "title": "Write the intent beside the page",
+          "pageRevision": "sha256:6b80cb3bf34e9575c39e0677479b732e56d8c8bd3fc993a0b4f7caed4df1402b",
+          "renderRevision": "sha256:5bb9c4631ac9ac156d77309022f27a3729563daaeb37c6375f49616679fa766f",
+          "occurrenceId": "introduction-short:introduction-short-product-5:7d7d42a0-0db7-4d33-9b3f-5e1035097b50",
+          "presentationItemId": "introduction-short-product-5",
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "occurrence-override",
+          "pageNotes": "For this short introduction, open Story and point to the purpose, preservation list and requested change. Ask the audience to write one focused editing request. Keep the speaking detail here; the page itself remains shared with the full walkthrough.",
+          "occurrenceNotesOverride": "For this short introduction, open Story and point to the purpose, preservation list and requested change. Ask the audience to write one focused editing request. Keep the speaking detail here; the page itself remains shared with the full walkthrough.",
+          "notes": "For this short introduction, open Story and point to the purpose, preservation list and requested change. Ask the audience to write one focused editing request. Keep the speaking detail here; the page itself remains shared with the full walkthrough.",
+          "notesUtf8Sha256": "60e906974f61b60178ece64d068170672f6e4c41cbced59e95edf3ebaec32408"
+        },
+        {
+          "position": 4,
+          "mainPosition": 6,
+          "pageId": "4a066483-9a11-450c-be15-c0be33d52989",
+          "shortCode": "U8ZQ",
+          "pagePath": "pages/U8ZQ.page",
+          "title": "Place an original from Assets",
+          "pageRevision": "sha256:2a13831e6ef1a9dd19ac95055e0ddd9bf46b8d02f6d9307f4e583ed92fc838eb",
+          "renderRevision": "sha256:a04934858b88f1de01599854749fc99d180a3021e4d0bf3038181ae9701674a4",
+          "occurrenceId": "introduction-short:introduction-short-tutorial-3:4a066483-9a11-450c-be15-c0be33d52989",
+          "presentationItemId": "introduction-short-tutorial-3",
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "Open the project asset library. Search for a source by name, then drag an existing image onto the slide. Import and place adds a new original from the device. This example searches for the actual HUANDENG mark already in the project. Placement and cropping control the slide instance; keep the source image and its attribution with the project. The two crops show the real search controls and the matching result at a readable size.",
+          "occurrenceNotesOverride": null,
+          "notes": "Open the project asset library. Search for a source by name, then drag an existing image onto the slide. Import and place adds a new original from the device. This example searches for the actual HUANDENG mark already in the project. Placement and cropping control the slide instance; keep the source image and its attribution with the project. The two crops show the real search controls and the matching result at a readable size.",
+          "notesUtf8Sha256": "6ea8798467ae8a69b0cb39f9eada4eaa608c4fff415f3e6ba3f2affab4c481da"
+        },
+        {
+          "position": 5,
+          "mainPosition": 7,
+          "pageId": "95189956-cdd7-4ad9-88c8-cf28a204bb68",
+          "shortCode": "35U5",
+          "pagePath": "pages/35U5.page",
+          "title": "Edit the selected text, then save",
+          "pageRevision": "sha256:23e56be885ee34d69db205a9768b8222bc18784affa5d6b67ff4b9f3cb56cef4",
+          "renderRevision": "sha256:e90e30ad0dd1d07f7303c240f2098592c58ef7ab9ddd0c52eac6334af3e8db40",
+          "occurrenceId": "introduction-short:introduction-short-story-6:95189956-cdd7-4ad9-88c8-cf28a204bb68",
+          "presentationItemId": "introduction-short-story-6",
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "Select the title and open Properties. Edit Text content for that object, and use the font and alignment controls when the change requires them. Check the canvas at presentation scale before clicking Save slides in the top bar. A saved-operation record can then be inspected in History. The capture shows the actual selected title and Properties fields; this page does not pretend that a new edit has already happened.",
+          "occurrenceNotesOverride": null,
+          "notes": "Select the title and open Properties. Edit Text content for that object, and use the font and alignment controls when the change requires them. Check the canvas at presentation scale before clicking Save slides in the top bar. A saved-operation record can then be inspected in History. The capture shows the actual selected title and Properties fields; this page does not pretend that a new edit has already happened.",
+          "notesUtf8Sha256": "a332f5baa565130be56b17196b554957dcc641ce8207be51c635b09fdec0fef1"
+        },
+        {
+          "position": 6,
+          "mainPosition": 9,
+          "pageId": "ca1eec7e-61bd-41ac-b6ab-e000d06797be",
+          "shortCode": "XF8A",
+          "pagePath": "pages/XF8A.page",
+          "title": "Compare the changed region at equal scale",
+          "pageRevision": "sha256:3d09a401bf0e8aa5dfb0b9a462e10002cc3f888d22f5216df3366e1e614bbb7f",
+          "renderRevision": "sha256:9572e47462cc3702820eceb93019c172ca05cbaaf715d3ff3b9baf42da823981",
+          "occurrenceId": "introduction-short:introduction-short-tutorial-5:ca1eec7e-61bd-41ac-b6ab-e000d06797be",
+          "presentationItemId": "introduction-short-tutorial-5",
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "The public product fixture changes the headline and explanatory sentence only. These are crops of its actual saved before and after page states, aligned at identical scale. The orange bars identify the region to inspect without drawing across its wording. The full original images remain in the project. Compare the new language against the request, then inspect the saved changes to verify the scope.",
+          "occurrenceNotesOverride": null,
+          "notes": "The public product fixture changes the headline and explanatory sentence only. These are crops of its actual saved before and after page states, aligned at identical scale. The orange bars identify the region to inspect without drawing across its wording. The full original images remain in the project. Compare the new language against the request, then inspect the saved changes to verify the scope.",
+          "notesUtf8Sha256": "cac8f45f9927fb0685c8ddf2d639c12403102c936d70537cac9afc4215749d01"
+        },
+        {
+          "position": 7,
+          "mainPosition": 10,
+          "pageId": "3f5561d8-477e-4954-bee2-9877c8cddc69",
+          "shortCode": "ZN52",
+          "pagePath": "pages/ZN52.page",
+          "title": "Inspect the exact saved change",
+          "pageRevision": "sha256:b9cbdea4ce724740496ad4b2a5d27b83862544d23e29e5418bee6a5636a0c0a4",
+          "renderRevision": "sha256:be787d22841b10b4169e9a1a9945e48e212f987a82c9b19fa7f855e7855e8738",
+          "occurrenceId": "introduction-short:introduction-short-product-4:3f5561d8-477e-4954-bee2-9877c8cddc69",
+          "presentationItemId": "introduction-short-product-4",
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "Open History for the edited page and choose its operation record. The saved changes list identifies the actual objects and properties changed by that operation. Here the public fixture reports content.text for the title and lead, matching the two-sentence request. Review the before and after page states as well. A successful save is evidence of a persisted change, not a substitute for assessing whether the page reads well.",
+          "occurrenceNotesOverride": null,
+          "notes": "Open History for the edited page and choose its operation record. The saved changes list identifies the actual objects and properties changed by that operation. Here the public fixture reports content.text for the title and lead, matching the two-sentence request. Review the before and after page states as well. A successful save is evidence of a persisted change, not a substitute for assessing whether the page reads well.",
+          "notesUtf8Sha256": "99975ba9716680df7ac5ba78d2d4a284ece27d3c7d51fc9a07810ea8c5bad410"
+        },
+        {
+          "position": 8,
+          "mainPosition": 16,
+          "pageId": "095ba6fb-14f6-42b1-815a-7970ac214058",
+          "shortCode": "74A2",
+          "pagePath": "pages/74A2.page",
+          "title": "Choose pages for this particular talk",
+          "pageRevision": "sha256:9d37a70aad9ae345a229c34580e7dc2f7fa870ca8688946439ed42ab1895d499",
+          "renderRevision": "sha256:60a4dd4dbc0b78c49fcc64208b0b1cccb7b6a8c6d4921990579fc9a1d13c4507",
+          "occurrenceId": "introduction-short:introduction-short-tutorial-7:095ba6fb-14f6-42b1-815a-7970ac214058",
+          "presentationItemId": "introduction-short-tutorial-7",
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "In Project, choose Arrange Presentation. Create or select a Presentation, then choose pages from Main. The screenshots show First edit · short talk and the source picker filtered to GX5Z. Click the plus beside a page or Section to append its reference; reorder the occurrences for this audience and save project. A Presentation reuses the source page instead of creating a detached copy.",
+          "occurrenceNotesOverride": null,
+          "notes": "In Project, choose Arrange Presentation. Create or select a Presentation, then choose pages from Main. The screenshots show First edit · short talk and the source picker filtered to GX5Z. Click the plus beside a page or Section to append its reference; reorder the occurrences for this audience and save project. A Presentation reuses the source page instead of creating a detached copy.",
+          "notesUtf8Sha256": "5f952f3bd0707784301b77584fa9d2fcd316dca8fe905a65fcbe4ccb4ae47a51"
+        },
+        {
+          "position": 9,
+          "mainPosition": 18,
+          "pageId": "8050a155-9c2b-4cf5-b643-e9406b9b2b1c",
+          "shortCode": "BHPP",
+          "pagePath": "pages/BHPP.page",
+          "title": "Choose what this occurrence follows",
+          "pageRevision": "sha256:30156003aef5d863fa4db976db9b9e3004ecd40f6da23c6a3c66c3ec78c99b98",
+          "renderRevision": "sha256:5de9821a24bac2703edb936a508939ba577847b890abeb9a313a308d529386ba",
+          "occurrenceId": "introduction-short:introduction-short-tutorial-8:8050a155-9c2b-4cf5-b643-e9406b9b2b1c",
+          "presentationItemId": "introduction-short-tutorial-8",
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "The two actual controls show different occurrence choices. Live reference follows the current Main slide. A pinned version uses a named page checkpoint, here Project map · tutorial. Choose the behavior deliberately for each talk. The public short talk includes this real pin so the distinction can be inspected. Change the version selector and save project; the Main slide itself is not restored by selecting a pin.",
+          "occurrenceNotesOverride": null,
+          "notes": "The two actual controls show different occurrence choices. Live reference follows the current Main slide. A pinned version uses a named page checkpoint, here Project map · tutorial. Choose the behavior deliberately for each talk. The public short talk includes this real pin so the distinction can be inspected. Change the version selector and save project; the Main slide itself is not restored by selecting a pin.",
+          "notesUtf8Sha256": "9fef3c6103e8ea180c507aa72233247dfa4230de4bdab0339abaeb98208f8b35"
+        },
+        {
+          "position": 10,
+          "mainPosition": 20,
+          "pageId": "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6",
+          "shortCode": "YZ4T",
+          "pagePath": "pages/YZ4T.page",
+          "title": "Confirm the range before you export",
+          "pageRevision": "sha256:dde36df2977290400a980267a7f62b123a585f537d1ae0dff4b6a01bc2c87efb",
+          "renderRevision": "sha256:8d751af2e114ec6f61f24be3dfcc99eac674d4f02e08ec24a2cb5a7f8890bb48",
+          "occurrenceId": "introduction-short:brief-1:2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6",
+          "presentationItemId": "brief-1",
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "Open Export after saving your edits. Confirm both the format and the selected range. The actual dialog here targets First edit · short talk with 12 slides. PDF is a fixed-page delivery; PPTX contains editable supported objects; PNG creates slide images. PPTX and PDF use the static base layout, while timeline animation has a separate video export. Open the exported file once to check its pages, fonts and any native chart layout before sharing.",
+          "occurrenceNotesOverride": null,
+          "notes": "Open Export after saving your edits. Confirm both the format and the selected range. The actual dialog here targets First edit · short talk with 12 slides. PDF is a fixed-page delivery; PPTX contains editable supported objects; PNG creates slide images. PPTX and PDF use the static base layout, while timeline animation has a separate video export. Open the exported file once to check its pages, fonts and any native chart layout before sharing.",
+          "notesUtf8Sha256": "0072f3afc5ebcd48f335f4bf5d0e93b1dbd1679e2b5d6256211784736154af99"
+        },
+        {
+          "position": 11,
+          "mainPosition": 22,
+          "pageId": "e4fb0f10-ffa5-44e2-907f-b92e1b69535e",
+          "shortCode": "DDJN",
+          "pagePath": "pages/DDJN.page",
+          "title": "Connect the assistant to this project",
+          "pageRevision": "sha256:c07e176880842a3759ce857fc82fa83764ef370f44cadee3d91c415e3649ce62",
+          "renderRevision": "sha256:c30ad0037d05bf1f617a9e29791d7609e5a48cbc2f4d6e70911b2ed08e985a0f",
+          "occurrenceId": "introduction-short:introduction-short-tutorial-10:e4fb0f10-ffa5-44e2-907f-b92e1b69535e",
+          "presentationItemId": "introduction-short-tutorial-10",
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "Open Agent setup in the desktop Editor and select the client you use. Follow its generated setup and verify the project entry before asking for an edit. Claude Code uses the HUANDENG plugin, DeepSeek Harness uses its native Cordis adapter, and ChatGPT reaches the local workflow through its connector. These clients work through the same document service. The screenshot shows the actual client selector; it does not claim that the browser-only capture itself completed native setup.",
+          "occurrenceNotesOverride": null,
+          "notes": "Open Agent setup in the desktop Editor and select the client you use. Follow its generated setup and verify the project entry before asking for an edit. Claude Code uses the HUANDENG plugin, DeepSeek Harness uses its native Cordis adapter, and ChatGPT reaches the local workflow through its connector. These clients work through the same document service. The screenshot shows the actual client selector; it does not claim that the browser-only capture itself completed native setup.",
+          "notesUtf8Sha256": "09aff57522a4dfd68b206e95b7d423a7321d481ac9463075d59cfcd4af35dfb7"
+        },
+        {
+          "position": 12,
+          "mainPosition": 24,
+          "pageId": "8f9e154d-c5c2-4d79-b809-984586f8311e",
+          "shortCode": "ECVR",
+          "pagePath": "pages/ECVR.page",
+          "title": "Open the example and make one useful edit",
+          "pageRevision": "sha256:a91ef7a09939615b1c04cc3e207cc6ed46666c5e1188e5fc97856c732df78740",
+          "renderRevision": "sha256:440c270314eaf6a7d2961cd20abd606c15b040e44bfd1898c7638ba59661311c",
+          "occurrenceId": "introduction-short:brief-6:8f9e154d-c5c2-4d79-b809-984586f8311e",
+          "presentationItemId": "brief-6",
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "Open examples/huandeng-introduction/chatgpt-en/deck.pptd with the complete folder present. Find GX5Z, read its Story, make one small wording change, save and inspect the operation. Then open First edit · short talk and see how its pinned project-map version differs from following Main. HUANDENG builds on OpenSlide. OpenPPTD contributes formula conversion, PptxGenJS contributes PowerPoint generation, and Font Awesome provides icons. Original software notices and asset sources remain with this repository.",
+          "occurrenceNotesOverride": null,
+          "notes": "Open examples/huandeng-introduction/chatgpt-en/deck.pptd with the complete folder present. Find GX5Z, read its Story, make one small wording change, save and inspect the operation. Then open First edit · short talk and see how its pinned project-map version differs from following Main. HUANDENG builds on OpenSlide. OpenPPTD contributes formula conversion, PptxGenJS contributes PowerPoint generation, and Font Awesome provides icons. Original software notices and asset sources remain with this repository.",
+          "notesUtf8Sha256": "624590b446d6e91709874b7c63d3500f84ce8f68ec6f31a7816b8fa3b9f0eefa"
+        }
+      ],
+      "pinnedOccurrences": 1,
+      "occurrenceNotesOverrides": 1
     }
-  ]
+  }
 }

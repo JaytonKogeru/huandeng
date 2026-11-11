@@ -3,91 +3,136 @@ background:
   type: solid
   color: "#F7F5EF"
 elements:
+  - elementId: f-bg
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 0
+      - 0
+      - 960
+      - 540
+    fill:
+      type: solid
+      color: "#F4F1E8"
   - elementId: title
     elementType: text
     bounds:
-        [42,34,880,76]
+        [38,29,884,48]
     role: title
     content:
-      {"text":"把“为什么改”留在页面旁边","fontFamily":"Noto Serif SC","fontSize":28,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.2}
-  - elementId: brand-small
-    elementType: image
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
-    sourceName: huandeng.png
-    alt: huandeng.png
+      {"text":"把这页要讲什么，留在 Story","fontFamily":"Noto Sans SC","fontSize":30,"color":"#112D32","align":["left","top"],"lineHeight":1.32,"bold":true}
+  - elementId: f-watermark
+    elementType: text
     bounds:
-        [43,512,18,18]
+      - 38
+      - 514
+      - 800
+      - 22
+    content:
+      text: Chinese · ChatGPT 6 Astra + Subagents
+      fontFamily: Noto Sans SC
+      fontSize: 13
+      color: "#596D70"
+      align:
+        - left
+        - top
+      lineHeight: 1.32
+  - elementId: f-position
+    elementType: text
+    bounds:
+      - 882
+      - 514
+      - 40
+      - 22
+    content:
+      text: ""
+      fontFamily: Noto Sans SC
+      fontSize: 13
+      color: "#596D70"
+      align:
+        - right
+        - top
+      lineHeight: 1.32
+      field: main-position
+  - elementId: f-story
+    elementType: image
+    bounds:
+      - 40
+      - 122
+      - 370
+      - 374
+    src: media/imported/a376c20b0003bee8b24759a18bc45ea44c30b37bb0898a39fdf20f7113dc3769.png
+    sourceName: story-architecture.png
     fit:
       mode: contain
-    crop:
-      left: 0.18
-      right: 0.18
-      top: 0.14
-      bottom: 0.14
-  - elementId: foot
+  - elementId: f-purpose-guide
     elementType: text
     bounds:
-        [68,515,140,16]
-    content:
-      {"text":"HUANDENG","fontFamily":"Noto Sans SC","fontSize":9,"color":"#5B6A62","bold":false,"align":["left","top"],"lineHeight":1.35}
-  - elementId: position
-    elementType: text
-    bounds:
-        [881,514,35,18]
-    content:
-      {"text":"","fontFamily":"Noto Sans SC","fontSize":10,"color":"#5B6A62","bold":false,"align":["right","top"],"lineHeight":1.35,"field":"main-position"}
-  - elementId: story-request
-    elementType: text
-    bounds:
-      - 44
-      - 152
-      - 472
+      - 462
       - 159
+      - 454
+      - 242
     content:
       text: |-
-        “把这页的比较关系讲清楚。
-        原图、12 个数值、单位与来源都保留。”
-      fontFamily: Noto Serif SC
-      fontSize: 25
-      color: "#20372F"
-      bold: false
+        目的：这页帮助读者理解什么？
+  
+        保留：哪些内容必须留下？
+  
+        修改：这次具体调整哪里？
+      fontFamily: Noto Sans SC
+      fontSize: 21
+      color: "#112D32"
+      align:
+        - left
+        - top
+      lineHeight: 1.4
+  - elementId: f-edit-arrow
+    elementType: line
+    bounds:
+        [392,164,55,0]
+    viewBox:
+      - 1
+      - 1
+    points: 1,0 0,0
+    border:
+      width: 2
+      color: "#ED6A3A"
+    arrow:
+      - null
+      - arrow
+  - elementId: f-pencil-guide
+    elementType: text
+    bounds:
+      - 462
+      - 112
+      - 450
+      - 32
+    content:
+      text: 点铅笔，填写并保存
+      fontFamily: Noto Sans SC
+      fontSize: 17
+      color: "#168C8C"
+      align:
+        - left
+        - top
+      lineHeight: 1.32
+      bold: true
+  - elementId: f-story-handoff
+    elementType: text
+    bounds:
+      - 462
+      - 423
+      - 454
+      - 66
+    content:
+      text: |-
+        下一位作者打开这一页，
+        就能接着你的意图做。
+      fontFamily: Noto Sans SC
+      fontSize: 18
+      color: "#168C8C"
       align:
         - left
         - top
       lineHeight: 1.45
-  - elementId: story-practice
-    elementType: text
-    bounds:
-      - 45
-      - 351
-      - 468
-      - 129
-    content:
-      text: |-
-        先写这页要解决什么。
-        再说哪些不能改，哪些允许调整。
-  
-        下一位作者从这里接手。
-      fontFamily: Noto Sans SC
-      fontSize: 18
-      color: "#20372F"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.5
-  - elementId: story-panel
-    elementType: image
-    src: "media/imported/a9716fe17305fefbeff4a94fbfcedf88a26b509a3b598d5326b6a9041ef5ccdf.png"
-    sourceName: story-clean.png
-    alt: story-clean.png
-    bounds:
-        [584,132,330,371]
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-notes: "讲故事是为了让Agent理解我们要完成什么。项目Story记录整场介绍的目的；这一页的Story记录具体论点、哪些材料必须保留，以及这次想改哪里。它不是把口述逐句印到页面上的要求。右侧是真实Story面板，左侧是一条可以直接执行的请求。下一位作者或另一个助手接手时，应先读这一页，而不是猜测上一轮对话。"
+notes: "选择页面后，打开右侧 Story。这里的目的告诉下一位作者这页帮助听众理解什么；保留项说明哪些标记、数据或关系不能随意改；这次修改说明当前的具体任务。点右上角铅笔填写并保存。左边是真实的 6G4G Story，目的、保留项和修改方向都对应上一页概念关系图。Story 给后续编辑提供上下文，我们仍然要检查最后的实际画面。"

@@ -3,108 +3,209 @@ background:
   type: solid
   color: "#E4ECE6"
 elements:
+  - elementId: f-bg
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 0
+      - 0
+      - 960
+      - 540
+    fill:
+      type: solid
+      color: "#F4F1E8"
+  - elementId: f-route
+    elementType: text
+    bounds:
+      - 42
+      - 20
+      - 860
+      - 18
+    content:
+      text: PROJECT HANDOFF
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#168C8C"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.2
   - elementId: title
     elementType: text
     bounds:
-        [42,34,880,76]
+        [42,49,875,66]
     role: title
     content:
-      {"text":"Divide the work. Make the handoff explicit.","fontFamily":"Georgia","fontSize":32,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.2}
-  - elementId: brand-small
-    elementType: image
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
-    sourceName: huandeng.png
-    alt: huandeng.png
+      {"text":"Send the whole folder to continue editing","fontFamily":"Segoe UI","fontSize":32,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.1}
+  - elementId: f-foot-rule
+    elementType: shape
+    shapeName: rect
     bounds:
-        [43,512,18,18]
-    fit:
-      mode: contain
-    crop:
-      left: 0.18
-      right: 0.18
-      top: 0.14
-      bottom: 0.14
-  - elementId: foot
+      - 42
+      - 510
+      - 876
+      - 1
+    fill:
+      type: solid
+      color: "#CCD2CB"
+  - elementId: f-watermark
     elementType: text
     bounds:
-        [68,515,140,16]
+      - 42
+      - 518
+      - 700
+      - 17
     content:
-      {"text":"HUANDENG","fontFamily":"Segoe UI","fontSize":9,"color":"#5B6A62","bold":false,"align":["left","top"],"lineHeight":1.35}
-  - elementId: position
+      text: English · ChatGPT 6 Astra
+      fontFamily: Segoe UI
+      fontSize: 12
+      color: "#50646A"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.2
+  - elementId: f-position
     elementType: text
     bounds:
-        [881,514,35,18]
+      - 882
+      - 518
+      - 36
+      - 17
     content:
-      {"text":"","fontFamily":"Segoe UI","fontSize":10,"color":"#5B6A62","bold":false,"align":["right","top"],"lineHeight":1.35,"field":"main-position"}
-  - elementId: handoff-work
-    elementType: text
+      text: ""
+      fontFamily: Segoe UI
+      fontSize: 12
+      color: "#50646A"
+      bold: false
+      align:
+        - right
+        - top
+      lineHeight: 1.2
+      field: main-position
+  - elementId: f-folder-panel
+    elementType: shape
+    shapeName: rect
     bounds:
       - 44
-      - 155
-      - 380
-      - 247
+      - 143
+      - 539
+      - 326
+    fill:
+      type: solid
+      color: "#FFFFFF"
+  - elementId: f-handoff-folder
+    elementType: icon
+    iconName: fas:folder-open
+    bounds:
+      - 73
+      - 172
+      - 73
+      - 73
+    fill:
+      type: solid
+      color: "#168C8C"
+  - elementId: f-handoff-name
+    elementType: text
+    bounds:
+      - 164
+      - 180
+      - 382
+      - 39
     content:
-      {"text":"Example allocation · divide the pages\nChatGPT: content draft\nDeepSeek: another page group\n\nThen hand off a stage\nClaude Code: inspect and refine the visuals","fontFamily":"Segoe UI","fontSize":20,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.45}
-  - elementId: handoff-arrow
+      text: The working folder
+      fontFamily: Segoe UI
+      fontSize: 27
+      color: "#112D32"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.2
+  - elementId: f-handoff-files
+    elementType: text
+    bounds:
+      - 75
+      - 258
+      - 466
+      - 151
+    content:
+      text: |-
+        deck.pptd
+        pages/  ·  media/
+        sources/  ·  .huandeng/
+      fontFamily: Consolas
+      fontSize: 24
+      color: "#112D32"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.55
+  - elementId: f-handoff-arrow
     elementType: line
     bounds:
-      - 439
-      - 270
-      - 79
+      - 602
+      - 305
+      - 68
       - 0
     viewBox:
       - 1
       - 1
     points: 0,0 1,1
     border:
-      width: 1.4
-      color: "#356F68"
+      width: 2.5
+      color: "#ED6A3A"
     arrow:
       - null
       - arrow
-  - elementId: shared-work
-    elementType: image
-    src: media/imported/d7f8feba5f9ff8f5b719f4055b01d5473155c1eb3efcfb5d3b2c67dcd5f58dbe.png
-    sourceName: 01.png
-    alt: 01.png
+  - elementId: f-handoff-open
+    elementType: icon
+    iconName: fas:folder-open
     bounds:
-      - 552
-      - 152
-      - 362
-      - 204
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: handoff-contract
+      - 707
+      - 174
+      - 67
+      - 67
+    fill:
+      type: solid
+      color: "#168C8C"
+  - elementId: f-handoff-next
     elementType: text
     bounds:
-      - 551
-      - 388
-      - 365
-      - 100
+      - 705
+      - 265
+      - 210
+      - 132
     content:
       text: |-
-        Page IDs + task + evidence to preserve
-        Read the current page before saving a reviewable change.
+        On the next computer,
+        open deck.pptd
+        from that folder.
       fontFamily: Segoe UI
-      fontSize: 18
-      color: "#20372F"
+      fontSize: 22
+      color: "#112D32"
       bold: false
       align:
         - left
         - top
-      lineHeight: 1.5
-  - elementId: collaboration-limit
+      lineHeight: 1.35
+  - elementId: f-handoff-keep
     elementType: text
     bounds:
       - 44
-      - 467
-      - 471
-      - 42
+      - 481
+      - 870
+      - 23
     content:
-      {"text":"Checked with ChatGPT + DeepSeek: independent page saves,\nstale-write rejection and a focused style handoff.","fontFamily":"Segoe UI","fontSize":12,"color":"#5B6A62","bold":false,"align":["left","top"],"lineHeight":1.35}
-notes: "Work can be divided by pages, or passed from content drafting to visual refinement. A handoff needs page IDs, the task and evidence-preservation constraints. Different-page saves can proceed independently. A same-page or shared-metadata conflict requires rereading and reconciling the intended change. Activity distinguishes client reports from saved receipts; configuration alone is not online presence. The diagram illustrates task allocation. In a separate controlled test, native DeepSeek Harness and ChatGPT saved distinct pages from the same starting state. A stale same-page proposal was rejected; after rereading, a focused font and color handoff succeeded. Claude Code did not participate in this round’s parallel test. See evidence/collaboration.json."
+      text: Originals and page history travel with the project.
+      fontFamily: Segoe UI
+      fontSize: 18
+      color: "#168C8C"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.2
+notes: "When another person will continue in HUANDENG, send the complete working folder. It contains deck.pptd, page files, original media, supporting sources and project history. Sending only deck.pptd leaves referenced material behind. The diagram names the actual project parts and the next editing action. A PDF or PPTX is useful for delivery, but returning to this shared project requires its working folder."

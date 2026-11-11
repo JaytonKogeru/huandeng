@@ -177,4 +177,20 @@ elements:
       align:
         - right
         - top
+  - bounds:
+      - 690
+      - 16
+      - 222
+      - 14
+    content:
+      align:
+        - right
+        - top
+      color: "#8C8678"
+      fontFamily: Segoe UI
+      fontSize: 9.5
+      letterSpacing: 0.4
+      text: English · DeepSeek V4.1 Flash 1017
+    elementId: attribution-watermark
+    elementType: text
 notes: This is the identity problem. If I tell an agent to change page four, and the order has changed since the last version, page four is a different page. So every page has a stable Slide ID — the four-character code — separate from its Position. In this real footer the page moved from position two to position four; the ID stayed C014. That means I can ask for C014, and the history belongs to C014 no matter where it sits.

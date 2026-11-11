@@ -11,7 +11,7 @@ The resumed work follows Audit → Specification → Implementation → Validati
 
 ## Recovery
 
-The Windows v0.10 worktree is `D:/_Proj/Huandeng-v010-20261108`, branch `editor/v0.10-product-workflow`, starting at f62dd72. The canonical installed application remains v0.9. The old isolated v010 UX harness was found under the v09 worktree; its waiting process is not active product development. The recovered source ZIP SHA-256 is `b9eb1276f59a1400c77c748f1f432b4f1ff5321bf43e98079dfecfc8133dcb88`. Local editing is a transfer snapshot only; Windows retains authoritative Git history and build provenance.
+The Windows v0.10 worktree is `<workspace-checkout>`, branch `editor/v0.10-product-workflow`, starting at f62dd72. The canonical installed application remains v0.9. The old isolated v010 UX harness was found under the v09 worktree; its waiting process is not active product development. The recovered source ZIP SHA-256 is `b9eb1276f59a1400c77c748f1f432b4f1ff5321bf43e98079dfecfc8133dcb88`. Local editing is a transfer snapshot only; Windows retains authoritative Git history and build provenance.
 
 ## Implemented behavior
 

@@ -43,4 +43,4 @@ Authoring client: DeepSeek Harness. Audience language: **English**. This turn wr
 
 The owner likes the existing DeepSeek work and requires eliminating fake text-box tables. Develop your own narrative and visual decisions; do not read or borrow the Claude or ChatGPT designs.
 
-Internal work directory: D:\_Proj\Huandeng\.verification\story-20261111\deepseek-en-work. Source asset mapping: MEDIA-INPUTS.json. Keep all final project material in this canonical directory and make no dated or parallel project copies.
+Internal work directory: <editor-checkout>\.verification\story-20261111\deepseek-en-work. Source asset mapping: MEDIA-INPUTS.json. Keep all final project material in this canonical directory and make no dated or parallel project copies.

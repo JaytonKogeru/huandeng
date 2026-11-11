@@ -4,7 +4,7 @@
 
 ## 当前交付
 
-- Windows canonical：`D:/_Proj/Huandeng`；工作树：`D:/_Proj/Huandeng-v07-20261108`；分支 `editor/v0.7-workspace-video`。
+- Windows canonical：`<editor-checkout>`；工作树：`<workspace-checkout>`；分支 `editor/v0.7-workspace-video`。
 - 已安装运行时：`ba18ac0d95502361fb8a423a732c808218374915`；0.7.0；`sourceDirty=false`；构建 `2026-11-07T21:34:36.5584922Z`。
 - 安装：canonical 的 `dist/HUANDENG-win32-x64`。29,153 个文件 / 683,653,487 bytes 与最终包一致。旧 v0.6 包在 `.verification/installed-v06-backup-20261108-v07`；旧用户窗口正常 CloseMainWindow 退出，无强制终止。
 - 普通用户 profile 已重新打开原 80 页项目，可写、无诊断、窗口响应、视频编码器可用。82 份源文件 hash 不变。保留该窗口，不用它作测试写入。

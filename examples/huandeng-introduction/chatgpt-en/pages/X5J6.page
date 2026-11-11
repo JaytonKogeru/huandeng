@@ -3,11 +3,179 @@ background:
   type: solid
   color: "#E4ECE6"
 elements:
+  - elementId: f-bg
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 0
+      - 0
+      - 960
+      - 540
+    fill:
+      type: solid
+      color: "#F4F1E8"
+  - elementId: f-route
+    elementType: text
+    bounds:
+      - 42
+      - 20
+      - 860
+      - 18
+    content:
+      text: PRESENT → FROM CURRENT SLIDE
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#168C8C"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.2
   - elementId: title
     elementType: text
     bounds:
-        [52,218,850,100]
+        [42,49,875,66]
     role: title
     content:
-      {"text":"Work with people and agents","fontFamily":"Georgia","fontSize":42,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.25}
-notes: "With pages and talks organized, we can bring people and assistants into the same project and explain setup, division of work, handoff and delivery."
+      {"text":"Rehearse from the point you are editing","fontFamily":"Segoe UI","fontSize":32,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.1}
+  - elementId: f-foot-rule
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 42
+      - 510
+      - 876
+      - 1
+    fill:
+      type: solid
+      color: "#CCD2CB"
+  - elementId: f-watermark
+    elementType: text
+    bounds:
+      - 42
+      - 518
+      - 700
+      - 17
+    content:
+      text: English · ChatGPT 6 Astra
+      fontFamily: Segoe UI
+      fontSize: 12
+      color: "#50646A"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.2
+  - elementId: f-position
+    elementType: text
+    bounds:
+      - 882
+      - 518
+      - 36
+      - 17
+    content:
+      text: ""
+      fontFamily: Segoe UI
+      fontSize: 12
+      color: "#50646A"
+      bold: false
+      align:
+        - right
+        - top
+      lineHeight: 1.2
+      field: main-position
+  - elementId: f-present-menu
+    elementType: image
+    bounds:
+      - 44
+      - 182
+      - 441
+      - 165
+    src: media/imported/9470a5f452b1bcb9d3c66b908ae85557fa40b5a717f24b464621d436494c5811.png
+    sourceName: present-talk.png
+    fit:
+      mode: contain
+  - elementId: f-present-link
+    elementType: line
+    bounds:
+      - 500
+      - 264
+      - 36
+      - 0
+    viewBox:
+      - 1
+      - 1
+    points: 0,0 1,1
+    border:
+      width: 2.5
+      color: "#ED6A3A"
+    arrow:
+      - null
+      - arrow
+  - elementId: f-present-page
+    elementType: image
+    bounds:
+      - 559
+      - 163
+      - 355
+      - 200
+    src: media/imported/608d43256094f2d6832cc74f15b988a3c0627ee4f68e14d344358f07aeeab518.png
+    sourceName: 05.png
+    fit:
+      mode: contain
+  - elementId: f-present-start
+    elementType: text
+    bounds:
+      - 44
+      - 386
+      - 441
+      - 83
+    content:
+      text: |-
+        Start at the beginning,
+        or continue from this page.
+      fontFamily: Segoe UI
+      fontSize: 23
+      color: "#112D32"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.2
+  - elementId: f-present-current
+    elementType: text
+    bounds:
+      - 559
+      - 387
+      - 355
+      - 71
+    content:
+      text: |-
+        The selected page
+        starts this rehearsal.
+      fontFamily: Segoe UI
+      fontSize: 22
+      color: "#112D32"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.2
+  - elementId: f-present-return
+    elementType: text
+    bounds:
+      - 559
+      - 473
+      - 355
+      - 26
+    content:
+      text: Esc returns to editing.
+      fontFamily: Segoe UI
+      fontSize: 18
+      color: "#168C8C"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.2
+notes: "Select the Presentation you intend to show. The Present menu can start at the beginning or at the current slide. The current page shown here is the Story tutorial used in the short talk. Check the first displayed page and the sequence as you rehearse, then use Escape to return to editing. This is a rehearsal step, before sending a delivery file."

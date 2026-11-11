@@ -1,6 +1,6 @@
 # Huandeng Editor · v0.1 实施记录
 
-更新：2026-11-07。工程位置：D:\_Proj\Huandeng。分支：huandeng/pptd。
+更新：2026-11-07。工程位置：<workspace-checkout>/pptd。
 
 本记录描述实际代码和验证结果，产品合同保留在 [SPEC.md](SPEC.md)。本次交付是可以运行、原位编辑和导出的本地开发版本。
 

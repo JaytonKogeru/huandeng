@@ -1,0 +1,97 @@
+{
+  "schemaVersion": 1,
+  "edition": "chatgpt-en",
+  "scope": "brief",
+  "source": "examples/huandeng-introduction/chatgpt-en/Exports/brief.pptx",
+  "sha256": "ba7c6fb76ebf2ca41a1bab0d150d729585079f11a0e7f1fd084580c3e734cdd6",
+  "pages": 12,
+  "notes": 12,
+  "nativeCharts": 0,
+  "nativeTables": 0,
+  "nativeGroups": 0,
+  "officeVersion": "16.0",
+  "powerPointExecutableVersion": "16.0.20527.20150",
+  "readOnly": true,
+  "openAndRepair": false,
+  "sourceUnchanged": true,
+  "closedOwnDocument": true,
+  "visualReview": {
+    "edition": "chatgpt-en",
+    "scope": "brief",
+    "pages": 12,
+    "contactSheets": ["001-008", "009-012"],
+    "detailPages": [2],
+    "referencePages": [3],
+    "status": "reviewed-no-missing-content-observed",
+    "fallbackChecks": [
+      {
+        "page": 2,
+        "object": "GX5Z pinned folder icon",
+        "result": "visible with matching silhouette, teal fill and placement versus Main/reference page 3"
+      }
+    ],
+    "observations": []
+  },
+  "renderedPageHashes": [
+    {
+      "slide": 1,
+      "sha256": "75a5785901671fe4f210bf4ab3098e1d7e82a79cd6caf53c21c24d217eec182c",
+      "bytes": 212125
+    },
+    {
+      "slide": 2,
+      "sha256": "4aaf65eb9d9ce1a8ac294ad392dd72455c8ede25e5c068f623952c572a3eaf9f",
+      "bytes": 54286
+    },
+    {
+      "slide": 3,
+      "sha256": "e14de857aa4519e62a00938ace2db1e23fff56fb14d51b485c88908ab504326b",
+      "bytes": 141834
+    },
+    {
+      "slide": 4,
+      "sha256": "602f94e2432f23f43dff9eb7cb192ee9f01a5e954ea631649fed8f907b3f0e50",
+      "bytes": 118447
+    },
+    {
+      "slide": 5,
+      "sha256": "e02b9d719c6fadeca0499806fb10aa5e5a9dc99d9296434e1727304841a3ee83",
+      "bytes": 97924
+    },
+    {
+      "slide": 6,
+      "sha256": "2d2e615bab80a37227b1cb24250487651ca338d80bfa7cf5281b3071019d086e",
+      "bytes": 85625
+    },
+    {
+      "slide": 7,
+      "sha256": "bb299f0f84859e052c44c1dad1ccb0cf4ce7d8f80163d5d3a9792e3a2173f1e9",
+      "bytes": 95430
+    },
+    {
+      "slide": 8,
+      "sha256": "140adb841d5b887dc15931ba370cd01e53cfea82906eedcbaae27e8ce43277ee",
+      "bytes": 214532
+    },
+    {
+      "slide": 9,
+      "sha256": "fde1d230af9a6ddd77b7bd18ce1f50b854a6e1f7bd739a4bd772d403d0e59148",
+      "bytes": 113449
+    },
+    {
+      "slide": 10,
+      "sha256": "0ad16d471ad95a4c31afe365c2e23f751c508461adc9c72c81d372b437f80ca0",
+      "bytes": 126334
+    },
+    {
+      "slide": 11,
+      "sha256": "df9fee36ad248fb5fe8c54e878c3025084208e66d83f9b35f9ab9da99a609de8",
+      "bytes": 71235
+    },
+    {
+      "slide": 12,
+      "sha256": "99ca6e898991f2c02630f2362a29804500ba1e9b77866c3a205c1012f20b350d",
+      "bytes": 115406
+    }
+  ]
+}

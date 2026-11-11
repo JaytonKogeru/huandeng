@@ -20,4 +20,20 @@ elements:
       align:
         - left
         - middle
+  - elementId: attribution-watermark
+    elementType: text
+    bounds:
+      - 760
+      - 10
+      - 176
+      - 16
+    content:
+      text: English · Claude Opus 5.5
+      fontFamily: Arial
+      fontSize: 10
+      lineHeight: 1.2
+      color: "#A8C2BA"
+      align:
+        - right
+        - middle
 notes: "Section 5. Finally, how agents actually connect, how a talk leaves the project, what HUANDENG is built on, and how to start."

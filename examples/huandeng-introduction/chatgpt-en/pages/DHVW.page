@@ -3,162 +3,175 @@ background:
   type: solid
   color: "#F7F5EF"
 elements:
+  - elementId: f-bg
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 0
+      - 0
+      - 960
+      - 540
+    fill:
+      type: solid
+      color: "#F4F1E8"
+  - elementId: f-route
+    elementType: text
+    bounds:
+      - 42
+      - 20
+      - 860
+      - 18
+    content:
+      text: PAGES → REORDER
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#168C8C"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.2
   - elementId: title
     elementType: text
     bounds:
-        [42,34,880,76]
+        [42,49,875,66]
     role: title
     content:
-      {"text":"Identify the page. Then follow its history.","fontFamily":"Georgia","fontSize":32,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.2}
-  - elementId: brand-small
-    elementType: image
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
-    sourceName: huandeng.png
-    alt: huandeng.png
+      {"text":"Move the page without losing its identity","fontFamily":"Segoe UI","fontSize":32,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.1}
+  - elementId: f-foot-rule
+    elementType: shape
+    shapeName: rect
     bounds:
-        [43,512,18,18]
-    fit:
-      mode: contain
-    crop:
-      left: 0.18
-      right: 0.18
-      top: 0.14
-      bottom: 0.14
-  - elementId: foot
+      - 42
+      - 510
+      - 876
+      - 1
+    fill:
+      type: solid
+      color: "#CCD2CB"
+  - elementId: f-watermark
     elementType: text
     bounds:
-        [68,515,140,16]
-    content:
-      {"text":"HUANDENG","fontFamily":"Segoe UI","fontSize":9,"color":"#5B6A62","bold":false,"align":["left","top"],"lineHeight":1.35}
-  - elementId: position
-    elementType: text
-    bounds:
-        [881,514,35,18]
-    content:
-      {"text":"","fontFamily":"Segoe UI","fontSize":10,"color":"#5B6A62","bold":false,"align":["right","top"],"lineHeight":1.35,"field":"main-position"}
-  - elementId: identified-page
-    elementType: image
-    src: media/imported/d7f8feba5f9ff8f5b719f4055b01d5473155c1eb3efcfb5d3b2c67dcd5f58dbe.png
-    sourceName: 01.png
-    alt: 01.png
-    bounds:
-      - 43
-      - 153
-      - 413
-      - 232
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: named-page
-    elementType: text
-    bounds:
-      - 43
-      - 407
-      - 413
-      - 87
-    content:
-      text: Ask for ZWZJ, with a precise change.
-      fontFamily: Georgia
-      fontSize: 23
-      color: "#20372F"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.35
-  - elementId: identity-map
-    elementType: table
-    bounds:
-      - 517
-      - 168
-      - 397
-      - 228
-    columnWidths:
-      - 0.38
-      - 0.31
-      - 0.31
-    style:
-      cellStyle:
-        fontFamily: Segoe UI
-        fontSize: 16
-        color: "#20372F"
-        border:
-          color: "#BFCFC4"
-          width: 0.6
-        padding: 10
-      firstRowStyle:
-        fill: "#E4ECE6"
-        bold: true
-    rows:
-      - - text: Slide ID
-          align:
-            - left
-            - middle
-        - text: Full talk
-          align:
-            - left
-            - middle
-        - text: Brief talk
-          align:
-            - left
-            - middle
-      - - text: ZWZJ
-          align:
-            - left
-            - middle
-        - text: "8"
-          align:
-            - left
-            - middle
-        - text: "6"
-          align:
-            - left
-            - middle
-      - - text: YZ4T
-          align:
-            - left
-            - middle
-        - text: "20"
-          align:
-            - left
-            - middle
-        - text: "10"
-          align:
-            - left
-            - middle
-      - - text: ZN52
-          align:
-            - left
-            - middle
-        - text: "10"
-          align:
-            - left
-            - middle
-        - text: "7"
-          align:
-            - left
-            - middle
-  - elementId: identity-meaning
-    elementType: text
-    bounds:
+      - 42
       - 518
-      - 429
-      - 395
-      - 68
+      - 700
+      - 17
     content:
-      text: |-
-        One identity, different positions.
-        History belongs to that page too.
+      text: English · ChatGPT 6 Astra
       fontFamily: Segoe UI
-      fontSize: 19
-      color: "#356F68"
+      fontSize: 12
+      color: "#50646A"
       bold: false
       align:
         - left
         - top
-      lineHeight: 1.5
-notes: "Position is the current order; after rearranging, slide four can mean a different page. Slide ID preserves the page identity. The mapping here uses this project’s full and brief presentations. Name the stable ID and the intended object when asking an assistant for a change. History follows that same page instead of an ambiguous position number."
+      lineHeight: 1.2
+  - elementId: f-position
+    elementType: text
+    bounds:
+      - 882
+      - 518
+      - 36
+      - 17
+    content:
+      text: ""
+      fontFamily: Segoe UI
+      fontSize: 12
+      color: "#50646A"
+      bold: false
+      align:
+        - right
+        - top
+      lineHeight: 1.2
+      field: main-position
+  - elementId: f-position-before-label
+    elementType: text
+    bounds:
+      - 44
+      - 140
+      - 870
+      - 24
+    content:
+      text: BEFORE REORDER
+      fontFamily: Segoe UI
+      fontSize: 14
+      color: "#50646A"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.2
+  - elementId: f-position-before
+    elementType: image
+    bounds:
+      - 44
+      - 177
+      - 870
+      - 109
+    src: media/imported/4b4475913c7e4538c9b76f47056e1edca6405a8636d7fd7c591309a373101e19.png
+    sourceName: en-identity-before-4x.png
+    fit:
+      mode: contain
+  - elementId: f-position-after-label
+    elementType: text
+    bounds:
+      - 44
+      - 319
+      - 870
+      - 24
+    content:
+      text: AFTER REORDER
+      fontFamily: Segoe UI
+      fontSize: 14
+      color: "#168C8C"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.2
+  - elementId: f-position-after
+    elementType: image
+    bounds:
+      - 44
+      - 356
+      - 870
+      - 109
+    src: media/imported/cfb23a312f298e185eb847eddb1cdf9cc493d63d55082cab0cc70606789af5f5.png
+    sourceName: en-identity-after-4x.png
+    fit:
+      mode: contain
+  - elementId: f-reorder-direction
+    elementType: line
+    bounds:
+      - 867
+      - 293
+      - 0
+      - 35
+    viewBox:
+      - 1
+      - 1
+    points: 0,0 1,1
+    border:
+      width: 2.5
+      color: "#ED6A3A"
+    arrow:
+      - null
+      - arrow
+  - elementId: f-identity-note
+    elementType: text
+    bounds:
+      - 44
+      - 481
+      - 870
+      - 24
+    content:
+      text: Different position. The same C014 page and its history.
+      fontFamily: Segoe UI
+      fontSize: 18
+      color: "#112D32"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.2
+notes: "This real public fixture moves a page from position 2 to position 4 in a six-page Main. Its short Slide ID, C014, stays the same. Position describes the current ordering; identity connects the content, history and Presentation references. When collaborating, name the page by its short ID rather than relying only on a changing position. These are actual before and after Editor status strips."

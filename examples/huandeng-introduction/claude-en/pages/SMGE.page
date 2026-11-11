@@ -297,4 +297,20 @@ elements:
       align:
         - left
         - top
+  - elementId: attribution-watermark
+    elementType: text
+    bounds:
+      - 760
+      - 10
+      - 176
+      - 16
+    content:
+      text: English · Claude Opus 5.5
+      fontFamily: Arial
+      fontSize: 10
+      lineHeight: 1.2
+      color: "#7A8580"
+      align:
+        - right
+        - middle
 notes: "If you want to try it, open the editor and start a project, or open an existing one. You can open the .pptd file itself, or the project folder, as long as that folder directly contains exactly one .pptd; if it has none, or several, the Editor says so and asks you to choose the file. The folder is the project: pages, media and the .huandeng metadata live beside the .pptd, so copy or share the whole folder, not just the .pptd. Connect the AI client you already use from Agent setup. Then do what I did for this talk: tell the agent your story first, out loud and freestyle, and let it organise the story before it makes any slides. After that, ask for one change at a time, read the preview, apply it, and look at the review. The code and the build commands are on the right, and the repository is at the bottom. Thank you."

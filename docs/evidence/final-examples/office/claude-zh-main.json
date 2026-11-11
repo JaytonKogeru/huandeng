@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "edition": "claude-zh",
+  "scope": "main",
+  "source": "examples/huandeng-introduction/claude-zh/Exports/deck.pptx",
+  "sha256": "9f779c5ab4acf6747f9d37d5e5311b765156c382801779743d9774cd782aa53f",
+  "pages": 26,
+  "notes": 26,
+  "nativeCharts": 1,
+  "nativeTables": 8,
+  "nativeGroups": 0,
+  "officeVersion": "16.0",
+  "powerPointExecutableVersion": "16.0.20527.20150",
+  "readOnly": true,
+  "openAndRepair": false,
+  "sourceUnchanged": true,
+  "closedOwnDocument": true,
+  "visualReview": {
+    "edition": "claude-zh",
+    "scope": "main",
+    "pages": 26,
+    "contactSheets": ["001-008", "009-016", "017-024", "025-026"],
+    "detailPages": [12],
+    "status": "reviewed-no-missing-content-observed",
+    "observations": [
+      {
+        "page": 12,
+        "kind": "actual-office-layout",
+        "text": "Native chart visible. X-axis title sits just above baseline and remains separate from numeric ticks; no EN-style tick/title collision observed."
+      }
+    ]
+  },
+  "renderedPageHashes": [
+    {
+      "slide": 1,
+      "sha256": "e737de0340421eef07a0343f1943dae37832868a88563513ebda780b6e5a3c99",
+      "bytes": 99912
+    },
+    {
+      "slide": 2,
+      "sha256": "7666a670573f1994aed126640b6b7e4cdb15d111c1271315359298c4c1bc65f6",
+      "bytes": 7035
+    },
+    {
+      "slide": 3,
+      "sha256": "07909e5902324da8d35f30a0aa1e3ea84abcb1b3cb87993835014cbb6d093218",
+      "bytes": 190348
+    },
+    {
+      "slide": 4,
+      "sha256": "b736ee11e5fd938b04b8027eaaf8c53b13370096680a53c0be6638570a7697d6",
+      "bytes": 81579
+    },
+    {
+      "slide": 5,
+      "sha256": "dffa4ac20b68444bdcabfcc58a3972ab062cc33728887530a8369cb6360c0595",
+      "bytes": 124796
+    },
+    {
+      "slide": 6,
+      "sha256": "18835f84f8a3457523f2e72a6e3554d5c3bd9433c3da11e6218f97694e13f873",
+      "bytes": 69453
+    },
+    {
+      "slide": 7,
+      "sha256": "961a65a65a4cf48bc675c02fd98f8c8b9f42fa2748f23b2500f8096ff92fc3f0",
+      "bytes": 5443
+    },
+    {
+      "slide": 8,
+      "sha256": "8b8d09e2f31c47e58eb755b221cd75276217bd0c6b2b15d96f0230515403676a",
+      "bytes": 81289
+    },
+    {
+      "slide": 9,
+      "sha256": "302e05c549e482866216d2e43cf3248c31e9350144f91850b2403321653124ee",
+      "bytes": 127086
+    },
+    {
+      "slide": 10,
+      "sha256": "9702429edae8fc41181886781f3a6ff1344b5cfead325b9c1829dd51356dc253",
+      "bytes": 141960
+    },
+    {
+      "slide": 11,
+      "sha256": "56723f17dad42aef310d6550a61fb7ed96991a8ec84ba44f46bb4142f6874805",
+      "bytes": 7611
+    },
+    {
+      "slide": 12,
+      "sha256": "a2360830e4129188856b8f3d339aaabbc5a64da17aeea430302966d990ed3cf9",
+      "bytes": 104767,
+      "selectedPreview": "images/office-claude-zh-main-12.png"
+    },
+    {
+      "slide": 13,
+      "sha256": "e8da34efdc4c73909a474465e2bc535e5f7ddbe20779458b004181c2012cf8f5",
+      "bytes": 131827
+    },
+    {
+      "slide": 14,
+      "sha256": "d686c15f1d6350e5b1d6a5e01528df05c2e61b96498787b2e888e177cf979cbb",
+      "bytes": 113159
+    },
+    {
+      "slide": 15,
+      "sha256": "d169b5ba0c6d9eaa42a53484153939590ed02dc0c1ea98cad05b58c51ab93b8f",
+      "bytes": 99625
+    },
+    {
+      "slide": 16,
+      "sha256": "273bf2da760f259fa01782514f20b71b7c1b96b336220a79dc3ae281fa578934",
+      "bytes": 164262
+    },
+    {
+      "slide": 17,
+      "sha256": "3b849475114483c53da36fb5e6e47f809d77bf573b31ee91d3af4dccd61ba671",
+      "bytes": 7300
+    },
+    {
+      "slide": 18,
+      "sha256": "ca74a7ad5ddd0a12b52c96a25d7d23ab2ea94a5f5d66cc79dae263ac4f9e7770",
+      "bytes": 127407
+    },
+    {
+      "slide": 19,
+      "sha256": "24033e4191007c31c9e15cbb16be8e7e1a08459640c589ae80080dc42060a23c",
+      "bytes": 142906
+    },
+    {
+      "slide": 20,
+      "sha256": "e97ab2c8cb664afc9c1124cc8ab98bba326d15d7481bba1a5c33c3e506495b24",
+      "bytes": 190141
+    },
+    {
+      "slide": 21,
+      "sha256": "e102c1ee841fb8ce13a6e3da7d5f4ee4957df8eb63994b5c245f97367737967f",
+      "bytes": 5635
+    },
+    {
+      "slide": 22,
+      "sha256": "088b6748bc3ef7f4da1ad12408f80e435e6bf657a45609592091914a832077c9",
+      "bytes": 99387
+    },
+    {
+      "slide": 23,
+      "sha256": "f577ab04008ab1740ff5ce839b27e04b0a41ee3ca48b436c29c1cbd168ce0fb7",
+      "bytes": 87359
+    },
+    {
+      "slide": 24,
+      "sha256": "25519a97f4507aba09143762467912561efd5412fc9a660a78fad005b02a45b2",
+      "bytes": 143677
+    },
+    {
+      "slide": 25,
+      "sha256": "07b00ae3607c5f719cbbdf1cdeeba2a80c6f9ace18ea153ec7dc98637803b4c8",
+      "bytes": 81863
+    },
+    {
+      "slide": 26,
+      "sha256": "dd0acf7b9170f84d1f38e014dd1f55e0af43cf3884731f587e15ec67d2f27d93",
+      "bytes": 75425
+    }
+  ]
+}

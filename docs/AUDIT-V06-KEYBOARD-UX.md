@@ -168,13 +168,13 @@ Renderer 每个 frame 都是 `tabIndex=0`，缩放/旋转也是 button；组合�
 
 [verify-keyboard-v06.mjs](../scripts/verify-keyboard-v06.mjs) 初版使用独立合成项目、profile 和 runtime，覆盖 12 组真实 Electron 操作：对象 Tab、连续移动与撤销、组合、原生剪切/粘贴、图层、IME、属性/表格、帮助/折叠、缩略图、重复引用与演示、固定版本只读导航、外部删除后的焦点。
 
-**Windows 首轮实际结果：12/12 通过，渲染错误 0，正常退出 code 0、signal null。** 运行时间为 `2026-11-07T16:08:04.611Z`，Electron `38.7.2`。证据记录在 `D:\_Proj\Huandeng-v06-20261108\.verification\keyboard-v06.json`，同目录保留截图和进程日志；最终截图已复核。此轮对应首次 69 文件同步后的源码候选，**不是最终安装包验收**，不据此宣称后续改动或最终发布包已通过。
+**Windows 首轮实际结果：12/12 通过，渲染错误 0，正常退出 code 0、signal null。** 运行时间为 `2026-11-07T16:08:04.611Z`，Electron `38.7.2`。证据记录在 `<workspace-checkout>\.verification\keyboard-v06.json`，同目录保留截图和进程日志；最终截图已复核。此轮对应首次 69 文件同步后的源码候选，**不是最终安装包验收**，不据此宣称后续改动或最终发布包已通过。
 
 随后对动画整合做只读焦点复核，发现放映中的新 range 控件未进入原有 button-only Tab 循环，且 range 的输入作用域会吞掉 Esc。独立 keyboard helper 已修复：Tab/F6 包含可见启用的原生控件，放映态 Esc 能退出，range 的方向键/Home/End 保留原生行为。另允许时间线非输入区域派发文档 Undo/Redo；字段原生历史仍独立，实际写入门控由 route 检查只读页面、未保存动画草稿和事务占用。TimelinePanel 自行处理预览 Esc，优先取消拖动/当前字段，再回到基础版式而不丢弃草稿。
 
 脚本新增时间线组，核对 F6 进入时间线、预览不改基础坐标、已保存关键帧从时间线按钮 Ctrl+Z/Ctrl+Shift+Z 撤销重做、Esc 返回编辑，以及放映 range 的 Tab/End/Esc。后续又加入真实对象移动/缩放的 Esc 取消组，最终脚本共 14 组。
 
-**Windows 修订候选实际结果：14/14 通过，`rendererErrors: []`，正常退出 code 0、signal null。** 记录时间为 `2026-11-07T16:35:01.308Z`，收据为 `D:\_Proj\Huandeng-v06-20261108\.verification\keyboard-v06.json`。本轮包含稳定画布 Tab 入口、根 Enter、时间线历史命令与预览退出、放映 range，以及实际鼠标移动/缩放取消后的坐标、原文件字节、历史和事务检查；没有用早先 12 组结果代替新增场景。本轮仍为隔离 worktree 的**源码候选验收，不能代替最终安装包验收**。
+**Windows 修订候选实际结果：14/14 通过，`rendererErrors: []`，正常退出 code 0、signal null。** 记录时间为 `2026-11-07T16:35:01.308Z`，收据为 `<workspace-checkout>\.verification\keyboard-v06.json`。本轮包含稳定画布 Tab 入口、根 Enter、时间线历史命令与预览退出、放映 range，以及实际鼠标移动/缩放取消后的坐标、原文件字节、历史和事务检查；没有用早先 12 组结果代替新增场景。本轮仍为隔离 worktree 的**源码候选验收，不能代替最终安装包验收**。
 
 本轮仍不承诺画布表格内的电子表格式导航、组内钻取模式、完整屏幕阅读器兼容，以及任意输入法/系统快捷键组合。它们需要独立交互设计与实际平台验收。
 
@@ -192,7 +192,7 @@ Renderer 每个 frame 都是 `tabIndex=0`，缩放/旋转也是 button；组合�
 
 ## 11. 快速页面导航的时序修复
 
-固定 Tab 入口后的候选通过 20 轮性能复测，但接着执行的键盘脚本在缩略图导航组失败：快速 ↑↓/End/Home 导航后，Home → Enter → PageDown 应从第一页前进到第二页，实际停在第三页。此前的缩略图及画布 focus 断言均通过，渲染错误为零。失败收据保留在 `D:\_Proj\Huandeng-v06-20261108\.verification\v06-pre-navigation-fix`，没有在测试中加延时掩盖。
+固定 Tab 入口后的候选通过 20 轮性能复测，但接着执行的键盘脚本在缩略图导航组失败：快速 ↑↓/End/Home 导航后，Home → Enter → PageDown 应从第一页前进到第二页，实际停在第三页。此前的缩略图及画布 focus 断言均通过，渲染错误为零。失败收据保留在 `<workspace-checkout>\.verification\v06-pre-navigation-fix`，没有在测试中加延时掩盖。
 
 源码核对确认实际入口使用 `BrowserRouter`。当前锁定的 React Router 7.18.4 在 `history.replaceState` 同步更新 URL 后，通过 `React.startTransition` 更新路由渲染；`useSearchParams` 回调中的参数也来自上次渲染的闭包，不能当作 React state 的排队更新。因此缩略图已聚焦新位置时，route 闭包的 `pageIndex` 仍可能是前一位置。
 

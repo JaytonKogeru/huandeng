@@ -32,7 +32,7 @@ Sections are dynamic references until expanded into individual Presentation item
 
 ## Verification and installation
 
-The accepted package was built from committed, clean source at `2026-11-07T10:03:16.5150028Z`. The actual packaged EXE passed six desktop workflows, then the same package was installed at `D:/_Proj/Huandeng/dist/HUANDENG-win32-x64/HUANDENG Editor.exe`. A separate launch from this formal path verified the document service, a temporary project, the About version `0.4.0`, and no renderer errors. Desktop and Start Menu shortcuts point to the formal path. The prior installed build remains in `D:/_Proj/Huandeng/.verification/installed-v03-backup-20261107`.
+The accepted package was built from committed, clean source at `2026-11-07T10:03:16.5150028Z`. The actual packaged EXE passed six desktop workflows, then the same package was installed at `<editor-checkout>/dist/HUANDENG-win32-x64/HUANDENG Editor.exe`. A separate launch from this formal path verified the document service, a temporary project, the About version `0.4.0`, and no renderer errors. Desktop and Start Menu shortcuts point to the formal path. The prior installed build remains in `<editor-checkout>/.verification/installed-v03-backup-20261107`.
 
 | Gate | Observed result | Evidence |
 | --- | --- | --- |

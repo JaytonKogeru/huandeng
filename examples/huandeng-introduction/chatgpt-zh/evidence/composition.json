@@ -1,348 +1,733 @@
 {
-  "schemaVersion": 3,
-  "project": "chatgpt-zh",
-  "main": [
-    {
-      "position": 1,
-      "pageId": "7995de62-e81e-46db-b250-cabc66a99b28",
-      "slideId": "TTHC"
-    },
-    {
-      "position": 2,
-      "pageId": "1dc23de8-b351-483b-a93a-f02c0444a927",
-      "slideId": "MSVB"
-    },
-    {
-      "position": 3,
-      "pageId": "1f6289fd-1d4c-4a03-a74d-4bc4955de868",
-      "slideId": "6G4G"
-    },
-    {
-      "position": 4,
-      "pageId": "b55179ed-446c-42a7-a2d5-2557defac052",
-      "slideId": "CR5K"
-    },
-    {
-      "position": 5,
-      "pageId": "3483b895-bc52-43b6-a7c4-001a0d1e4526",
-      "slideId": "ZYZB"
-    },
-    {
-      "position": 6,
-      "pageId": "05cd8517-c8ac-4e12-b2d0-40c438b91042",
-      "slideId": "HWB6"
-    },
-    {
-      "position": 7,
-      "pageId": "59857807-d9f3-4e58-9a60-275cd504ea16",
-      "slideId": "MPTA"
-    },
-    {
-      "position": 8,
-      "pageId": "c1fcdc66-1c25-45a6-9b98-83d16f063c3e",
-      "slideId": "7EKH"
-    },
-    {
-      "position": 9,
-      "pageId": "7b5bb42e-c529-49f8-ad88-62c69b567837",
-      "slideId": "HUA9"
-    },
-    {
-      "position": 10,
-      "pageId": "7b69742f-16b5-4b80-acf0-1d23966aae96",
-      "slideId": "JNZV"
-    },
-    {
-      "position": 11,
-      "pageId": "129dfdc6-685d-48b4-972b-abff11f823e6",
-      "slideId": "93SF"
-    },
-    {
-      "position": 12,
-      "pageId": "ea528c6a-2423-488d-834b-056322cca744",
-      "slideId": "E9RN"
-    },
-    {
-      "position": 13,
-      "pageId": "def43d68-1767-45f5-800a-17d648750b7e",
-      "slideId": "FE8A"
-    },
-    {
-      "position": 14,
-      "pageId": "8bb920ed-1c71-45ac-ad9d-aa00750b1ff6",
-      "slideId": "SE68"
-    },
-    {
-      "position": 15,
-      "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
-      "slideId": "U5QA"
-    },
-    {
-      "position": 16,
-      "pageId": "5f2fbea2-a43a-4532-9042-6a1d20c08801",
-      "slideId": "EJBQ"
-    },
-    {
-      "position": 17,
-      "pageId": "baca190c-e87b-415f-9c30-7c04e3fabe17",
-      "slideId": "2856"
-    },
-    {
-      "position": 18,
-      "pageId": "503c86ce-673c-4229-9251-22114e5f5da9",
-      "slideId": "4YZD"
-    },
-    {
-      "position": 19,
-      "pageId": "d64aef1b-eb88-4b05-a620-ae60a0e833de",
-      "slideId": "36EQ"
-    },
-    {
-      "position": 20,
-      "pageId": "9cdec939-7f79-4142-98a4-b9543230a4ec",
-      "slideId": "W7WP"
-    },
-    {
-      "position": 21,
-      "pageId": "c91c3fe3-836f-492f-882d-905bd4d08a9b",
-      "slideId": "YCXA"
-    },
-    {
-      "position": 22,
-      "pageId": "f68f052b-18ac-4286-ae3b-6f12e5c5d0d0",
-      "slideId": "NJM7"
-    },
-    {
-      "position": 23,
-      "pageId": "bd3c71d1-360e-4e0c-bbb6-5938970e8876",
-      "slideId": "TZXM"
-    },
-    {
-      "position": 24,
-      "pageId": "8a9bcdf1-fcb2-4214-9743-86c110c954ca",
-      "slideId": "E2RU"
-    }
-  ],
-  "presentations": [
-    {
-      "id": "introduction-full",
-      "title": "完整介绍",
-      "story": {
-        "purpose": "介绍HUANDENG是什么、如何完成一次科学页面编辑、为什么把意图、证据、页面历史和演讲复用留在一个项目里。",
-        "audience": "科研演讲作者、使用Agent制作演示的人和开源项目贡献者",
-        "takeaway": "打开同一份项目，围绕一页的意图和证据进行修改、检查、复用与交付。"
-      },
-      "items": [
-        {
-          "id": "full-0",
-          "kind": "page",
-          "pageId": "7995de62-e81e-46db-b250-cabc66a99b28"
+  "schemaVersion": 2,
+  "edition": "chatgpt-zh",
+  "entry": "deck.pptd",
+  "extractedAt": "2026-11-11T09:33:14Z",
+  "scope": "Exact saved Main and resolved Brief composition and Notes; no Notes rewritten.",
+  "sourceManifestRevision": "sha256:b1d2bfdbd1f20d973d9b5d607d830970ab9960373fd4d251bb91a4c24349e68c",
+  "sourceMetadataRevision": "sha256:0b6fedc01bdb613857c9817b555cd3afb402c245e3604f250cd57d4516c2beaf",
+  "collections": {
+    "main": {
+      "title": "Main Slides",
+      "presentationId": null,
+      "pageCount": 24,
+      "exports": {
+        "pdf": {
+          "file": "Exports/deck.pdf",
+          "sha256": "0f86b3894a3617cea59fbf75fc7fff358cba0a6471f1209549f24db9f63cf085"
         },
-        {
-          "id": "introduction-full-story-21",
-          "kind": "page",
-          "pageId": "1dc23de8-b351-483b-a93a-f02c0444a927"
-        },
-        {
-          "id": "introduction-full-story-22",
-          "kind": "page",
-          "pageId": "1f6289fd-1d4c-4a03-a74d-4bc4955de868"
-        },
-        {
-          "id": "full-2",
-          "kind": "page",
-          "pageId": "b55179ed-446c-42a7-a2d5-2557defac052"
-        },
-        {
-          "id": "full-3",
-          "kind": "page",
-          "pageId": "3483b895-bc52-43b6-a7c4-001a0d1e4526"
-        },
-        {
-          "id": "full-7",
-          "kind": "page",
-          "pageId": "05cd8517-c8ac-4e12-b2d0-40c438b91042"
-        },
-        {
-          "id": "full-4",
-          "kind": "page",
-          "pageId": "59857807-d9f3-4e58-9a60-275cd504ea16"
-        },
-        {
-          "id": "full-1",
-          "kind": "page",
-          "pageId": "c1fcdc66-1c25-45a6-9b98-83d16f063c3e"
-        },
-        {
-          "id": "full-5",
-          "kind": "page",
-          "pageId": "7b5bb42e-c529-49f8-ad88-62c69b567837"
-        },
-        {
-          "id": "full-9",
-          "kind": "page",
-          "pageId": "7b69742f-16b5-4b80-acf0-1d23966aae96"
-        },
-        {
-          "id": "full-13",
-          "kind": "page",
-          "pageId": "129dfdc6-685d-48b4-972b-abff11f823e6"
-        },
-        {
-          "id": "full-10",
-          "kind": "page",
-          "pageId": "ea528c6a-2423-488d-834b-056322cca744"
-        },
-        {
-          "id": "full-6",
-          "kind": "page",
-          "pageId": "def43d68-1767-45f5-800a-17d648750b7e"
-        },
-        {
-          "id": "introduction-full-story-25",
-          "kind": "page",
-          "pageId": "8bb920ed-1c71-45ac-ad9d-aa00750b1ff6"
-        },
-        {
-          "id": "full-12",
-          "kind": "page",
-          "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead"
-        },
-        {
-          "id": "introduction-full-story-26",
-          "kind": "page",
-          "pageId": "5f2fbea2-a43a-4532-9042-6a1d20c08801"
-        },
-        {
-          "id": "full-14",
-          "kind": "page",
-          "pageId": "baca190c-e87b-415f-9c30-7c04e3fabe17"
-        },
-        {
-          "id": "full-16",
-          "kind": "page",
-          "pageId": "503c86ce-673c-4229-9251-22114e5f5da9"
-        },
-        {
-          "id": "full-11",
-          "kind": "page",
-          "pageId": "d64aef1b-eb88-4b05-a620-ae60a0e833de"
-        },
-        {
-          "id": "full-8",
-          "kind": "page",
-          "pageId": "9cdec939-7f79-4142-98a4-b9543230a4ec"
-        },
-        {
-          "id": "introduction-full-story-23",
-          "kind": "page",
-          "pageId": "c91c3fe3-836f-492f-882d-905bd4d08a9b"
-        },
-        {
-          "id": "full-15",
-          "kind": "page",
-          "pageId": "f68f052b-18ac-4286-ae3b-6f12e5c5d0d0"
-        },
-        {
-          "id": "full-17",
-          "kind": "page",
-          "pageId": "bd3c71d1-360e-4e0c-bbb6-5938970e8876"
-        },
-        {
-          "id": "full-18",
-          "kind": "page",
-          "pageId": "8a9bcdf1-fcb2-4214-9743-86c110c954ca"
+        "pptx": {
+          "file": "Exports/deck.pptx",
+          "sha256": "783eee58703c5a7b65cc5393d2cb1ba592a158cc9ff7f96c75a6a635ac8b14f0"
         }
-      ]
-    },
-    {
-      "id": "introduction-short",
-      "title": "简短介绍",
-      "story": {
-        "purpose": "介绍HUANDENG是什么、如何完成一次科学页面编辑、为什么把意图、证据、页面历史和演讲复用留在一个项目里。",
-        "audience": "科研演讲作者、使用Agent制作演示的人和开源项目贡献者",
-        "takeaway": "打开同一份项目，围绕一页的意图和证据进行修改、检查、复用与交付。"
       },
-      "items": [
+      "pages": [
         {
-          "id": "brief-0",
-          "kind": "page",
-          "pageId": "7995de62-e81e-46db-b250-cabc66a99b28"
+          "position": 1,
+          "mainPosition": 1,
+          "pageId": "7995de62-e81e-46db-b250-cabc66a99b28",
+          "shortCode": "TTHC",
+          "pagePath": "pages/TTHC.page",
+          "title": "HUANDENG · 从一页，做到一场演讲",
+          "pageRevision": "sha256:8059612a92c9fa4ad13fcb76c54474b62003b14a327d29f67d2ff7d45dd43b16",
+          "renderRevision": "sha256:3d913b55fa0a5ad6bdf3fa43d728d81b670d42777de40ac0cfb883194f16cd57",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "HUANDENG 是一个可视化幻灯片编辑器，也是一套把人和 AI 助手连到同一份项目的工作流。我们从打开一个项目开始，实际看页面在哪里、Story 怎么写、素材如何放进去、修改如何保存；随后再把页面组织成一场可以放映和交付的演讲。中间这张图就来自正在运行的 0.19 编辑器，画布上是本介绍的工作流关系图。",
+          "occurrenceNotesOverride": null,
+          "notes": "HUANDENG 是一个可视化幻灯片编辑器，也是一套把人和 AI 助手连到同一份项目的工作流。我们从打开一个项目开始，实际看页面在哪里、Story 怎么写、素材如何放进去、修改如何保存；随后再把页面组织成一场可以放映和交付的演讲。中间这张图就来自正在运行的 0.19 编辑器，画布上是本介绍的工作流关系图。",
+          "notesUtf8Sha256": "a619d9ccda716f9c2f4e6a408d55aa8da3ab84c9b88ba5ff16f3389134ac5114"
         },
         {
-          "id": "introduction-short-story-21",
-          "kind": "page",
-          "pageId": "1dc23de8-b351-483b-a93a-f02c0444a927"
+          "position": 2,
+          "mainPosition": 2,
+          "pageId": "1dc23de8-b351-483b-a93a-f02c0444a927",
+          "shortCode": "MSVB",
+          "pagePath": "pages/MSVB.page",
+          "title": "把下一次修改，留在同一页",
+          "pageRevision": "sha256:aaf02621ec476c481595aea34c6d00aa8e2697f5df2a4f3d8a808b37ba47aa6d",
+          "renderRevision": "sha256:83dc830691262cc4f4b95a26079c9d0f114d0db8499cfab78b4ffb2345a3f5c1",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "这个项目的起点是我的组会准备。我希望 AI 帮忙制作，也希望页面能表达我的判断；当五十页里只改两页时，下一次还应该找得到那两页的意图、原图和修改。HUANDENG 因而把 Story、页面身份和页面历史留在同一个项目。右图是这份介绍中 6G4G 的真实操作记录及当前页面预览，展示刚才这次制作留下的记录；它不是一个宣称只改了两句的实验。随后会具体演示怎么检查一次小修改。",
+          "occurrenceNotesOverride": null,
+          "notes": "这个项目的起点是我的组会准备。我希望 AI 帮忙制作，也希望页面能表达我的判断；当五十页里只改两页时，下一次还应该找得到那两页的意图、原图和修改。HUANDENG 因而把 Story、页面身份和页面历史留在同一个项目。右图是这份介绍中 6G4G 的真实操作记录及当前页面预览，展示刚才这次制作留下的记录；它不是一个宣称只改了两句的实验。随后会具体演示怎么检查一次小修改。",
+          "notesUtf8Sha256": "fa241a96091b6c2fdfe603ac7ff160c0ea46cc49096725f5eabc7ac13627c11d"
         },
         {
-          "id": "introduction-short-product-22",
-          "kind": "page",
-          "pageId": "1f6289fd-1d4c-4a03-a74d-4bc4955de868"
+          "position": 3,
+          "mainPosition": 3,
+          "pageId": "1f6289fd-1d4c-4a03-a74d-4bc4955de868",
+          "shortCode": "6G4G",
+          "pagePath": "pages/6G4G.page",
+          "title": "人和助手，接着改同一份项目",
+          "pageRevision": "sha256:8089cb331a86bcc6ee9a8515c3f11331c6ae9e1747c206450d8fa23297084108",
+          "renderRevision": "sha256:3adbea6de92121c8fb3461ac1896fb107b33e9ad5e45801f9ba8350495f014a8",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "先把三个角色分清。HUANDENG Editor 是我们打开、选择、编辑和放映页面的桌面工作区。Plugin 给助手提供制作与协作约定，Connector 将它连接到明确选定的项目。两边的修改通过同一个共享写入服务，落到同一份项目中。deck.pptd 是入口，页面和素材都在项目目录。接下来实际打开这个入口。第三方标记来源见 sources/brand/manifest.json。",
+          "occurrenceNotesOverride": null,
+          "notes": "先把三个角色分清。HUANDENG Editor 是我们打开、选择、编辑和放映页面的桌面工作区。Plugin 给助手提供制作与协作约定，Connector 将它连接到明确选定的项目。两边的修改通过同一个共享写入服务，落到同一份项目中。deck.pptd 是入口，页面和素材都在项目目录。接下来实际打开这个入口。第三方标记来源见 sources/brand/manifest.json。",
+          "notesUtf8Sha256": "7813272bd1cea09bbb8425a3030ee17f32bffd6b2b155da5a4b4a53de8309e54"
         },
         {
-          "id": "introduction-short-product-5",
-          "kind": "page",
+          "position": 4,
+          "mainPosition": 4,
+          "pageId": "b55179ed-446c-42a7-a2d5-2557defac052",
+          "shortCode": "CR5K",
+          "pagePath": "pages/CR5K.page",
+          "title": "从 deck.pptd 打开这份项目",
+          "pageRevision": "sha256:b50e10a2624c5fa3aa85f606aafe19e2655394074d03aef5ff45d40b6e9d7cdc",
+          "renderRevision": "sha256:9e72bbf4836efbdabc8d12e32c650a2cea74393f10f2882ec1803aaf5faa5795",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "先找到示例项目文件夹，打开里面的 deck.pptd。它是项目入口，完整内容仍在同一个目录：页面在 pages，图片在 media，Story、编排和命名页面版本在 .huandeng。进入编辑器后，在左侧页面列表选择一页即可继续做。要从空白页开始，点页面栏的 ＋「新增页面」。截图左侧是这个项目真实的文件树局部，右侧是打开后的编辑工作区。若要在另一台电脑继续，带走整个项目目录。也可以选择只含一个直接 .pptd 文件的文件夹；多个入口时要明确选择。",
+          "occurrenceNotesOverride": null,
+          "notes": "先找到示例项目文件夹，打开里面的 deck.pptd。它是项目入口，完整内容仍在同一个目录：页面在 pages，图片在 media，Story、编排和命名页面版本在 .huandeng。进入编辑器后，在左侧页面列表选择一页即可继续做。要从空白页开始，点页面栏的 ＋「新增页面」。截图左侧是这个项目真实的文件树局部，右侧是打开后的编辑工作区。若要在另一台电脑继续，带走整个项目目录。也可以选择只含一个直接 .pptd 文件的文件夹；多个入口时要明确选择。",
+          "notesUtf8Sha256": "8f1d9da9be69044e8b0ce628d052ee7b3e653a0ebf2d1418859ae2e2b1677453"
+        },
+        {
+          "position": 5,
+          "mainPosition": 5,
           "pageId": "3483b895-bc52-43b6-a7c4-001a0d1e4526",
-          "notes": "先找到同一份工作。左侧在项目、页面、素材和文件间切换；中间直接编辑；右侧保留属性、图层和Story。请求助手修改时，它处理的也是这页。短介绍接下来先从素材库找到原图，再看一次局部修改。"
+          "shortCode": "ZYZB",
+          "pagePath": "pages/ZYZB.page",
+          "title": "先选页，再在画布里选对象",
+          "pageRevision": "sha256:48d2212dfd90d6538f32dbaf89a903b9a0c54ed3b2662292e759897ed325b7f8",
+          "renderRevision": "sha256:fb1635aadea4411607ab0f1239625fa6264a9585e5b6737c1163f90c7436c17f",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "从左侧页面缩略图选择要处理的页面，这里选中的是 6G4G。在画布上点标题，选框出现，说明现在选中的是这个文字对象；右侧属性随选择切换，可以看到文字、字号、坐标等。图层页能从对象列表定位，Story 留这一页的目的。先分清页面选择和对象选择，后面的局部改动才有明确对象。截图是正在运行的 0.19 编辑器真实选中状态。",
+          "occurrenceNotesOverride": null,
+          "notes": "从左侧页面缩略图选择要处理的页面，这里选中的是 6G4G。在画布上点标题，选框出现，说明现在选中的是这个文字对象；右侧属性随选择切换，可以看到文字、字号、坐标等。图层页能从对象列表定位，Story 留这一页的目的。先分清页面选择和对象选择，后面的局部改动才有明确对象。截图是正在运行的 0.19 编辑器真实选中状态。",
+          "notesUtf8Sha256": "baed738fa5ae7d724d29f7759e785f30a7e0a480c4a6611a98d51f83b2fd7c5a"
         },
         {
-          "id": "introduction-short-story-6",
-          "kind": "page",
-          "pageId": "59857807-d9f3-4e58-9a60-275cd504ea16"
+          "position": 6,
+          "mainPosition": 6,
+          "pageId": "05cd8517-c8ac-4e12-b2d0-40c438b91042",
+          "shortCode": "HWB6",
+          "pagePath": "pages/HWB6.page",
+          "title": "把这页要讲什么，留在 Story",
+          "pageRevision": "sha256:037261fcb69b1b7a232769499e8d6216cec49ece82f07d51ff1ccf68ceff03f8",
+          "renderRevision": "sha256:63bb7c87552be4d35c0940a8e98345e21a9e3d8604c1bd2e4390f9ebdd62d756",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "选择页面后，打开右侧 Story。这里的目的告诉下一位作者这页帮助听众理解什么；保留项说明哪些标记、数据或关系不能随意改；这次修改说明当前的具体任务。点右上角铅笔填写并保存。左边是真实的 6G4G Story，目的、保留项和修改方向都对应上一页概念关系图。Story 给后续编辑提供上下文，我们仍然要检查最后的实际画面。",
+          "occurrenceNotesOverride": null,
+          "notes": "选择页面后，打开右侧 Story。这里的目的告诉下一位作者这页帮助听众理解什么；保留项说明哪些标记、数据或关系不能随意改；这次修改说明当前的具体任务。点右上角铅笔填写并保存。左边是真实的 6G4G Story，目的、保留项和修改方向都对应上一页概念关系图。Story 给后续编辑提供上下文，我们仍然要检查最后的实际画面。",
+          "notesUtf8Sha256": "1347bc24fae50331cf1301bbbdb8b6af4c6aeb2df948ac32788c779b9d1f2165"
         },
         {
-          "id": "brief-2",
-          "kind": "page",
+          "position": 7,
+          "mainPosition": 7,
+          "pageId": "59857807-d9f3-4e58-9a60-275cd504ea16",
+          "shortCode": "MPTA",
+          "pagePath": "pages/MPTA.page",
+          "title": "从素材库，把原图放到页面里",
+          "pageRevision": "sha256:4c186ab453ce92343ab71c17dd5d26b9cde803765695d7e5b52bee96247b1dc3",
+          "renderRevision": "sha256:cd9671b0dc539a33b45c754c0ddb3d8195c7025c32fc234735aae56018dcf9b4",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "左侧切到素材。在搜索框输入名称，找到项目里已经保存的原图；这里以 HUANDENG 标记为例。同一份标记已经被多个页面使用，卡片会显示使用情况。把它拖到画布，就能继续调整大小和位置。新图片则通过导入并放置进入项目。右边是真实画布中被选中的同一标记，保留了原始图形。素材库解决的是找回与复用原材料，Main Slides 里的整张页面复用将在后面介绍。",
+          "occurrenceNotesOverride": null,
+          "notes": "左侧切到素材。在搜索框输入名称，找到项目里已经保存的原图；这里以 HUANDENG 标记为例。同一份标记已经被多个页面使用，卡片会显示使用情况。把它拖到画布，就能继续调整大小和位置。新图片则通过导入并放置进入项目。右边是真实画布中被选中的同一标记，保留了原始图形。素材库解决的是找回与复用原材料，Main Slides 里的整张页面复用将在后面介绍。",
+          "notesUtf8Sha256": "f5333634c398118c5c8b2ab13aa50815323fa9b66ea7bd00be9596a18b008d47"
+        },
+        {
+          "position": 8,
+          "mainPosition": 8,
           "pageId": "c1fcdc66-1c25-45a6-9b98-83d16f063c3e",
-          "versionId": "checkpoint:a687931507a66085784d787c9ad2d31d",
-          "notes": "这次只改讲法。原图、12个数值、单位与来源保持不变。页面不必复制；这次演讲固定使用已经保存的措辞修改阶段。"
+          "shortCode": "7EKH",
+          "pagePath": "pages/7EKH.page",
+          "title": "检查画布，然后保存页面",
+          "pageRevision": "sha256:61253125eb65f36d4b36aeceeb22e04c081ca87a9ff187148ec5ef42f46aa617",
+          "renderRevision": "sha256:38eb5269b9fc390b638da888719ecb6084d4ba41976f44c90a6270421ca81121",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "第一张页完成后，先看真实画布：标题是不是讲清了这页的意思，图片是否完整，重要内容有没有被挡住。然后点击顶部保存页面，或者按 Ctrl+S，确认状态显示页面已保存。图中放大的是实际保存控件和真实保存状态。页面修改和项目编排有各自的保存入口；章节、演讲顺序等项目草稿，需要在对应面板保存项目。下一步，我们就在这份项目里做一次更小、更精确的改动。",
+          "occurrenceNotesOverride": null,
+          "notes": "第一张页完成后，先看真实画布：标题是不是讲清了这页的意思，图片是否完整，重要内容有没有被挡住。然后点击顶部保存页面，或者按 Ctrl+S，确认状态显示页面已保存。图中放大的是实际保存控件和真实保存状态。页面修改和项目编排有各自的保存入口；章节、演讲顺序等项目草稿，需要在对应面板保存项目。下一步，我们就在这份项目里做一次更小、更精确的改动。",
+          "notesUtf8Sha256": "29097c12e80080ef5d796934a59898933ad2377d153cf99f0c100b5e14ea20d1"
         },
         {
-          "id": "introduction-short-product-4",
-          "kind": "page",
-          "pageId": "7b69742f-16b5-4b80-acf0-1d23966aae96"
+          "position": 9,
+          "mainPosition": 9,
+          "pageId": "7b5bb42e-c529-49f8-ad88-62c69b567837",
+          "shortCode": "HUA9",
+          "pagePath": "pages/HUA9.page",
+          "title": "点中对象，再改它的属性",
+          "pageRevision": "sha256:d8491b3d8d086028f9fc28e52d96b172d665d7766755e4cc0a422d50f5663e2f",
+          "renderRevision": "sha256:295f2dddebee3c771795faa71ffb42ba3043e3b3e5acd4a18129f6c9dd8a539a",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "先看画布上的选框，确认自己选中了标题。右侧属性面板随这个对象切换：文本内容、字体、字号和行距都在这里。也可以双击画布文字直接编辑。这张图显示的就是前后对比教程页，左侧选中的标题与右侧文本内容完全对应。完成修改后保存页面，再检查实际画面。",
+          "occurrenceNotesOverride": null,
+          "notes": "先看画布上的选框，确认自己选中了标题。右侧属性面板随这个对象切换：文本内容、字体、字号和行距都在这里。也可以双击画布文字直接编辑。这张图显示的就是前后对比教程页，左侧选中的标题与右侧文本内容完全对应。完成修改后保存页面，再检查实际画面。",
+          "notesUtf8Sha256": "09b81a4d5f337343197ac63d178b56d9c257362f693e4d8dbf63c48095c6c0b1"
         },
         {
-          "id": "introduction-short-story-13",
-          "kind": "page",
-          "pageId": "129dfdc6-685d-48b4-972b-abff11f823e6"
+          "position": 10,
+          "mainPosition": 10,
+          "pageId": "7b69742f-16b5-4b80-acf0-1d23966aae96",
+          "shortCode": "JNZV",
+          "pagePath": "pages/JNZV.page",
+          "title": "只改两句，保留其他内容",
+          "pageRevision": "sha256:4c244392960397586803b2956a82d4ffc7bd853ffd2e5cd68d48f9c165b24482",
+          "renderRevision": "sha256:bc3466ca87567704d051e79a285ef137cee037f54e589fe1359234e4bcebc9f6",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "这次只收紧标题和引导句。修改前，两句话较长；修改后，直接说“把修改意图留清楚”“让下一次修改有据可循”。请看同一尺度下的前后图，其他内容没有跟着重做。实际操作时，选中对应文字，在画布或属性面板中修改，然后点击保存页面。下一页会从图层列表选对象，解决多个对象重叠时点不准的问题。",
+          "occurrenceNotesOverride": null,
+          "notes": "这次只收紧标题和引导句。修改前，两句话较长；修改后，直接说“把修改意图留清楚”“让下一次修改有据可循”。请看同一尺度下的前后图，其他内容没有跟着重做。实际操作时，选中对应文字，在画布或属性面板中修改，然后点击保存页面。下一页会从图层列表选对象，解决多个对象重叠时点不准的问题。",
+          "notesUtf8Sha256": "7d27b8d5f37f6ab1153fd15dd5b53599787cd9aa23e9724f7124cfe430d2f850"
         },
         {
-          "id": "brief-4",
-          "kind": "page",
+          "position": 11,
+          "mainPosition": 11,
+          "pageId": "129dfdc6-685d-48b4-972b-abff11f823e6",
+          "shortCode": "93SF",
+          "pagePath": "pages/93SF.page",
+          "title": "重叠时，从图层找到对象",
+          "pageRevision": "sha256:f586d13ff4ab3b29a946b60971da646404b183f3b8267c02715deae3c225e4b6",
+          "renderRevision": "sha256:88fc7e6f5680e37907166aa8395e899e51b23c5c557d9f3fe71d8a050ae2bc98",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "当文字、图片和形状重叠时，可以直接从图层列表点选。左图选中“只改两句，保留其他内容”这个标题，右图放大同一面板的层级操作。Forward 和 Backward 各移动一层，To front 和 To back 移到最前或最后。列表上方的对象先显示；按住 Shift 可以多选。这里只调整所需对象的层级，再保存页面。",
+          "occurrenceNotesOverride": null,
+          "notes": "当文字、图片和形状重叠时，可以直接从图层列表点选。左图选中“只改两句，保留其他内容”这个标题，右图放大同一面板的层级操作。Forward 和 Backward 各移动一层，To front 和 To back 移到最前或最后。列表上方的对象先显示；按住 Shift 可以多选。这里只调整所需对象的层级，再保存页面。",
+          "notesUtf8Sha256": "92734ef8cbb73f81b3e938e3a31883568204d4f8c80045363a905222b4901ba0"
+        },
+        {
+          "position": 12,
+          "mainPosition": 12,
+          "pageId": "ea528c6a-2423-488d-834b-056322cca744",
+          "shortCode": "E9RN",
+          "pagePath": "pages/E9RN.page",
+          "title": "裁切显示范围，保留原图",
+          "pageRevision": "sha256:07e9b474add6391fdcd37989fca3443323b9944faf7a7f11a6aee16d02501b83",
+          "renderRevision": "sha256:0e3e1ead812dd463f5786769ddd8cf7eedf600f87ad4e068eeacf4ca2867cf29",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "截图或图像太大时，先决定这一页需要读到哪里。左上是原图，左下是这张教程页实际选中的裁切显示范围，保留了标题与引导句。右侧是同一图片的实际裁切参数，单位是原图的百分比。修改这些参数会改变页面中的显示范围，原始图片仍然保留；完整显示适配保持原图比例。把焦点放大，比把整张窗口缩成小图更容易读。",
+          "occurrenceNotesOverride": null,
+          "notes": "截图或图像太大时，先决定这一页需要读到哪里。左上是原图，左下是这张教程页实际选中的裁切显示范围，保留了标题与引导句。右侧是同一图片的实际裁切参数，单位是原图的百分比。修改这些参数会改变页面中的显示范围，原始图片仍然保留；完整显示适配保持原图比例。把焦点放大，比把整张窗口缩成小图更容易读。",
+          "notesUtf8Sha256": "90cbca67a44d0c840a90940c5c8d316da6b6c7eac3bcdb16ff138b23ca93eb60"
+        },
+        {
+          "position": 13,
+          "mainPosition": 13,
+          "pageId": "def43d68-1767-45f5-800a-17d648750b7e",
+          "shortCode": "FE8A",
+          "pagePath": "pages/FE8A.page",
+          "title": "保存后，核对这一次修改",
+          "pageRevision": "sha256:7a279d6b759c701f19abdcfb97e33357e4c5cde75244840df2b214c2854030c6",
+          "renderRevision": "sha256:e4a67429e99a6fd57802468606b5e398525d15592a48d8da98490d2d7d0ff8b1",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "保存以后，进入历史的操作记录，打开这次修改。左图是实际的修改查看器，能切换修改前与修改后；右图把已保存的修改放大，标题 title 和引导句 lead 各有一条内容变化。选择记录会在画布中定位对象。这里核对的是“说要改什么”和“实际改了什么”是否一致。看完字段变化，再看完整画面是否读得清楚。",
+          "occurrenceNotesOverride": null,
+          "notes": "保存以后，进入历史的操作记录，打开这次修改。左图是实际的修改查看器，能切换修改前与修改后；右图把已保存的修改放大，标题 title 和引导句 lead 各有一条内容变化。选择记录会在画布中定位对象。这里核对的是“说要改什么”和“实际改了什么”是否一致。看完字段变化，再看完整画面是否读得清楚。",
+          "notesUtf8Sha256": "214c872047a052afa9142cab940f244a450639b5f73f2620a360ea1fe4dda092"
+        },
+        {
+          "position": 14,
+          "mainPosition": 14,
+          "pageId": "8bb920ed-1c71-45ac-ad9d-aa00750b1ff6",
+          "shortCode": "SE68",
+          "pagePath": "pages/SE68.page",
+          "title": "把怎么讲，写进备注页",
+          "pageRevision": "sha256:c01873d29e04d066cd315e331ce6b49f04fb587495d0150bf4fc68cf08b20b60",
+          "renderRevision": "sha256:8a8b5bb363cc1e071905256bd34f2c905c2554c6336e79bed8654ea61b73db35",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "这一页显示刚才文字对比页的真实备注。备注补充了操作细节、比较的重点和下一页的过渡，听众看到的页面仍保留图像与关键结论。点击顶部备注页，可以在同一工作区继续写这张 Main Slide 的讲稿；写完保存页面。等到编排具体演讲时，还可以给某一次出现单独准备讲法，后面会继续说明。",
+          "occurrenceNotesOverride": null,
+          "notes": "这一页显示刚才文字对比页的真实备注。备注补充了操作细节、比较的重点和下一页的过渡，听众看到的页面仍保留图像与关键结论。点击顶部备注页，可以在同一工作区继续写这张 Main Slide 的讲稿；写完保存页面。等到编排具体演讲时，还可以给某一次出现单独准备讲法，后面会继续说明。",
+          "notesUtf8Sha256": "b90e09b0a8f09fb90ac8c92a7e2c0a1371d3895da7913f5459aa033ba52ed645"
+        },
+        {
+          "position": 15,
+          "mainPosition": 15,
           "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
-          "notes": "短介绍从同一份Main页面中选出需要的内容，保留原来的Slide ID。这里用真实页面展示选页关系。接下来说明不同助手如何接入这个项目，再看分工与交接。"
+          "shortCode": "U5QA",
+          "pagePath": "pages/U5QA.page",
+          "title": "为这一页，留一个命名版本",
+          "pageRevision": "sha256:c379c7ac60ead5fe487d597fe1c9b990904a1ab50e97b2a7bb9fdcef2c65ba06",
+          "renderRevision": "sha256:d6b1cf6cac855fa7142983226e41694dccf092af71f25fec08d5e570cc2a9195",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "当这一页走到一个值得保留的阶段，例如修改文字之前或组会定稿，就到历史视图为它记录一个版本名。图中“修改文字之前”和“文案已收紧”是公开教程实际保存的两个版本。点选版本会打开只读预览；确认以后可以把该版本恢复为当前页，恢复影响的是这一页。命名版本也能给后面的演讲引用提供一个明确的固定画面。",
+          "occurrenceNotesOverride": null,
+          "notes": "当这一页走到一个值得保留的阶段，例如修改文字之前或组会定稿，就到历史视图为它记录一个版本名。图中“修改文字之前”和“文案已收紧”是公开教程实际保存的两个版本。点选版本会打开只读预览；确认以后可以把该版本恢复为当前页，恢复影响的是这一页。命名版本也能给后面的演讲引用提供一个明确的固定画面。",
+          "notesUtf8Sha256": "896c7f9c8bd90e36d4371dc6e8e277bc65f187c8cec59826d60b3b3ad83dcd67"
         },
         {
-          "id": "brief-1",
-          "kind": "page",
-          "pageId": "9cdec939-7f79-4142-98a4-b9543230a4ec"
+          "position": 16,
+          "mainPosition": 16,
+          "pageId": "5f2fbea2-a43a-4532-9042-6a1d20c08801",
+          "shortCode": "EJBQ",
+          "pagePath": "pages/EJBQ.page",
+          "title": "重排以后，仍然认得这一页",
+          "pageRevision": "sha256:4f7b1aa6881dd881934ed4a94c773f64f8b35a9195dac99615e53ef92bc1d9df",
+          "renderRevision": "sha256:4e854b74764d930800581293c843e1776cb2d0ddc19cc8b2dde972c713c9020c",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "这里是公开示例页面 HFDV 的真实重排结果。它原来位于第2页，移动后在第4页；四字符 Slide ID 仍然是 HFDV。位置回答“这场编排里排第几”，Slide ID 帮我们确认“还是哪一张页”。查历史、继续修改或者在另一个演讲中引用时，认准这一页即可。接下来就从这套 Main 页面中选择材料，组织一场具体的演讲。",
+          "occurrenceNotesOverride": null,
+          "notes": "这里是公开示例页面 HFDV 的真实重排结果。它原来位于第2页，移动后在第4页；四字符 Slide ID 仍然是 HFDV。位置回答“这场编排里排第几”，Slide ID 帮我们确认“还是哪一张页”。查历史、继续修改或者在另一个演讲中引用时，认准这一页即可。接下来就从这套 Main 页面中选择材料，组织一场具体的演讲。",
+          "notesUtf8Sha256": "371944d34ac8b6112efb8a902cb7124310638ba7f387099c4de45c3f93e17a8a"
         },
         {
-          "id": "introduction-short-story-23",
-          "kind": "page",
-          "pageId": "c91c3fe3-836f-492f-882d-905bd4d08a9b"
+          "position": 17,
+          "mainPosition": 17,
+          "pageId": "baca190c-e87b-415f-9c30-7c04e3fabe17",
+          "shortCode": "2856",
+          "pagePath": "pages/2856.page",
+          "title": "选页，组成这次演讲",
+          "pageRevision": "sha256:b5cf2ca7068977e36580cc7530f6220048bbbb4d4d5261910ecfbbb3431f3466",
+          "renderRevision": "sha256:0699e9208b009e0435cd643fb45e9a66da4112382dc085f6e97d07dc6063d19d",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "这一步把已经做好的页面组织成一次具体演讲。左侧进入项目，点击“编排演讲”；在下拉框里选择已有演讲，或点击“新建演讲”。打开“添加幻灯片或章节”，可以按标题、页面短码或位置搜索，点击加号加入。顺序通过条目上的上下箭头调整，最后点击“保存项目”。图中搜索ZYZB后，页面和所在章节同时可选；需要单页时点“主幻灯片”区域的条目。这里保存的是本次演讲的引用顺序，Main仍是持续维护的原页。下一步为同一页准备这次听众需要的讲法。",
+          "occurrenceNotesOverride": null,
+          "notes": "这一步把已经做好的页面组织成一次具体演讲。左侧进入项目，点击“编排演讲”；在下拉框里选择已有演讲，或点击“新建演讲”。打开“添加幻灯片或章节”，可以按标题、页面短码或位置搜索，点击加号加入。顺序通过条目上的上下箭头调整，最后点击“保存项目”。图中搜索ZYZB后，页面和所在章节同时可选；需要单页时点“主幻灯片”区域的条目。这里保存的是本次演讲的引用顺序，Main仍是持续维护的原页。下一步为同一页准备这次听众需要的讲法。",
+          "notesUtf8Sha256": "ef366237b7239582c27862866d2faa636c2fab3d46cead026e8c29a17c373ccb"
         },
         {
-          "id": "brief-6",
-          "kind": "page",
-          "pageId": "8a9bcdf1-fcb2-4214-9743-86c110c954ca"
+          "position": 18,
+          "mainPosition": 18,
+          "pageId": "503c86ce-673c-4229-9251-22114e5f5da9",
+          "shortCode": "4YZD",
+          "pagePath": "pages/4YZD.page",
+          "title": "同一页，写这次的讲法",
+          "pageRevision": "sha256:97fcbcca61e55b090766f4ab0cfcfcc02733a7259d621c954d7a6a943c1c2397",
+          "renderRevision": "sha256:02b3929a873cfa324bbdd870afeb63fa60baee4bd2814a62a5d76adb4f7885a6",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "同一张页面可以向不同听众讲不同的重点。打开编排条目的“备注与版本”，勾选“本次引用使用独立演讲备注”，在下面写这一次要讲的话，再保存项目。右侧是真实“备注页”中同一处引用的讲稿；它与左侧输入的内容对应。此时改的是本次演讲中的这一次出现，Main Notes仍能保留通用说明。排练前先确认当前选中的是目标演讲，再进入备注页。接下来选择的是画面版本：继续跟随Main，还是保留一个已经定稿的阶段。",
+          "occurrenceNotesOverride": null,
+          "notes": "同一张页面可以向不同听众讲不同的重点。打开编排条目的“备注与版本”，勾选“本次引用使用独立演讲备注”，在下面写这一次要讲的话，再保存项目。右侧是真实“备注页”中同一处引用的讲稿；它与左侧输入的内容对应。此时改的是本次演讲中的这一次出现，Main Notes仍能保留通用说明。排练前先确认当前选中的是目标演讲，再进入备注页。接下来选择的是画面版本：继续跟随Main，还是保留一个已经定稿的阶段。",
+          "notesUtf8Sha256": "337de5e0e3321fb4f390aa2c272a3d653ccca5d7be666fb1babcc2a3298d461e"
+        },
+        {
+          "position": 19,
+          "mainPosition": 19,
+          "pageId": "d64aef1b-eb88-4b05-a620-ae60a0e833de",
+          "shortCode": "36EQ",
+          "pagePath": "pages/36EQ.page",
+          "title": "要更新，还是要定稿",
+          "pageRevision": "sha256:10cceb725981412dd51b3e8599ba3abe9b65484e6b0cad33bab770cdebc2a92e",
+          "renderRevision": "sha256:1f18f4db9ffb2a193814652889c9a4ae09208ca175697aaa7187b2e51188f4d0",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "要决定一场演讲是否跟随主稿更新，就在条目的“备注与版本”里选择“页面版本”。左图显示实时引用，后面继续改Main时，这处引用会跟着变。右图选择的是已存在的命名版本，因此可以保留已经排练过的画面。命名版本先在该页的历史工作区记录，随后在这里刷新并选择。两个截图取自实际演讲条目的版本控件，比较的是两种选项，不是两套复制文件。选定后保存项目。接下来在目标演讲中从当前页开始排练，核对顺序、讲稿和点击节奏。",
+          "occurrenceNotesOverride": null,
+          "notes": "要决定一场演讲是否跟随主稿更新，就在条目的“备注与版本”里选择“页面版本”。左图显示实时引用，后面继续改Main时，这处引用会跟着变。右图选择的是已存在的命名版本，因此可以保留已经排练过的画面。命名版本先在该页的历史工作区记录，随后在这里刷新并选择。两个截图取自实际演讲条目的版本控件，比较的是两种选项，不是两套复制文件。选定后保存项目。接下来在目标演讲中从当前页开始排练，核对顺序、讲稿和点击节奏。",
+          "notesUtf8Sha256": "b9e7c7183bc58495db2f07fc791d122c6d218a0a2436a56bd2b5fa59283015c8"
+        },
+        {
+          "position": 20,
+          "mainPosition": 20,
+          "pageId": "9cdec939-7f79-4142-98a4-b9543230a4ec",
+          "shortCode": "W7WP",
+          "pagePath": "pages/W7WP.page",
+          "title": "从当前页排练一次",
+          "pageRevision": "sha256:723ad46043083defa060a14eda946bf312953e3619b08ccc57707dc2be711c5b",
+          "renderRevision": "sha256:5ed6553fc7f3a1e0018628d2c2c38c77bdc8f75b34860c4c5297f184c9f57446",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "先在项目中选中要讲的那场Presentation，再选起始页。放映菜单给出两个明确入口：F5从头开始，Shift+F5从当前页开始。右图来自实际放映界面。排练时核对页面顺序、可读性，以及这一场演讲的备注；有逐次揭示效果的页面，要逐次点击确认每一步。按Esc返回编辑。这里展示的是现场播放路径，静态PNG、PDF和PPTX不会携带这些交互点击。完成排练之后，再选择合适的交付格式和范围。",
+          "occurrenceNotesOverride": null,
+          "notes": "先在项目中选中要讲的那场Presentation，再选起始页。放映菜单给出两个明确入口：F5从头开始，Shift+F5从当前页开始。右图来自实际放映界面。排练时核对页面顺序、可读性，以及这一场演讲的备注；有逐次揭示效果的页面，要逐次点击确认每一步。按Esc返回编辑。这里展示的是现场播放路径，静态PNG、PDF和PPTX不会携带这些交互点击。完成排练之后，再选择合适的交付格式和范围。",
+          "notesUtf8Sha256": "2a3c451c759792a9d743cf557650bfa309042a465afef007708c2df58a72f01e"
+        },
+        {
+          "position": 21,
+          "mainPosition": 21,
+          "pageId": "c91c3fe3-836f-492f-882d-905bd4d08a9b",
+          "shortCode": "YCXA",
+          "pagePath": "pages/YCXA.page",
+          "title": "选好格式，也选对范围",
+          "pageRevision": "sha256:4eb87db303a39d4d11aee174b6c914ee1eba71b29f02fad20db3deaad84a8a1e",
+          "renderRevision": "sha256:e4dd00036ca2de75757eaf3f5630bb68349f434a5b2cbd232760e457e43d7c86",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "点击导出，先选格式，再检查范围。图中选择PowerPoint，并把范围设为“第一次修改 · 简短演讲”，因此输出的是这一场演讲的页面顺序，而不是整套Main。需要阅读审阅可以导出PDF；需要用常规演示软件继续使用可选PPTX。若接收者要在HUANDENG里继续修改，交付的是完整项目文件夹：deck.pptd是入口，pages和media保存页面与素材，.huandeng保存Story、编排和命名版本。把AGENTS.md、sources和notices一并保留。命名版本随项目携带，机器本地操作日志仍属于原电脑。导出后回到同一份源项目继续维护。下一步把助手接入同一份工作。",
+          "occurrenceNotesOverride": null,
+          "notes": "点击导出，先选格式，再检查范围。图中选择PowerPoint，并把范围设为“第一次修改 · 简短演讲”，因此输出的是这一场演讲的页面顺序，而不是整套Main。需要阅读审阅可以导出PDF；需要用常规演示软件继续使用可选PPTX。若接收者要在HUANDENG里继续修改，交付的是完整项目文件夹：deck.pptd是入口，pages和media保存页面与素材，.huandeng保存Story、编排和命名版本。把AGENTS.md、sources和notices一并保留。命名版本随项目携带，机器本地操作日志仍属于原电脑。导出后回到同一份源项目继续维护。下一步把助手接入同一份工作。",
+          "notesUtf8Sha256": "61691637957935c4442be4ab8ed2951165f12cb14480df7e41302efb682902b6"
+        },
+        {
+          "position": 22,
+          "mainPosition": 22,
+          "pageId": "f68f052b-18ac-4286-ae3b-6f12e5c5d0d0",
+          "shortCode": "NJM7",
+          "pagePath": "pages/NJM7.page",
+          "title": "把助手接到这份项目",
+          "pageRevision": "sha256:947e06a69f9adf8e4e1074b948029867d990a69c09dcc511a7f4d43162c3bd66",
+          "renderRevision": "sha256:765437dcf67524104bd6061151a4b801bfc612c22044cc4e95b369fce2215cd4",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "编辑器顶部的“助手连接”会打开当前项目的助手设置。先选择Claude Code、DeepSeek Harness、Codex或ChatGPT，再按该客户端的安装与配置说明接入。Claude Code和DeepSeek使用各自的原生插件；ChatGPT通过已有的工作站连接调用这个项目。图中只展示真实客户端选择区域，配置本身并不等于连接已经成功。接入后的第一项任务应是读取项目与当前选中页，并用返回的项目名和Slide ID核对目标。确认后再提出一次具体修改。切换可见Editor标签不会自动改变一个已绑定助手的项目。接下来给协作者一个明确、可检查的分工。",
+          "occurrenceNotesOverride": null,
+          "notes": "编辑器顶部的“助手连接”会打开当前项目的助手设置。先选择Claude Code、DeepSeek Harness、Codex或ChatGPT，再按该客户端的安装与配置说明接入。Claude Code和DeepSeek使用各自的原生插件；ChatGPT通过已有的工作站连接调用这个项目。图中只展示真实客户端选择区域，配置本身并不等于连接已经成功。接入后的第一项任务应是读取项目与当前选中页，并用返回的项目名和Slide ID核对目标。确认后再提出一次具体修改。切换可见Editor标签不会自动改变一个已绑定助手的项目。接下来给协作者一个明确、可检查的分工。",
+          "notesUtf8Sha256": "45ebfde6cc7800f120d8fc241d50465c6eed14e47ee17ddea491ed8b043a3c65"
+        },
+        {
+          "position": 23,
+          "mainPosition": 23,
+          "pageId": "bd3c71d1-360e-4e0c-bbb6-5938970e8876",
+          "shortCode": "TZXM",
+          "pagePath": "pages/TZXM.page",
+          "title": "按页分工，接着同一份改",
+          "pageRevision": "sha256:84f58dcb5d6672b4a0084491da183f371ba148d4194d332cb57d0de4fb2200e6",
+          "renderRevision": "sha256:11c97ddab31b48f17f1304e9e5fd0e622dda52a3fdcf494056c71a56b4e97f98",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "让多个助手合作时，先按稳定的Slide ID分配页面，再说清每页的目标和不能改的证据。图中2856与4YZD就是这份教程中的编排和备注页；给不同页面分工，可以减少同时改同一页的冲突。交接给下一个助手时，提供页ID、具体任务、保护范围，以及已经保存的操作。保存后，选中目标页，进入“历史→操作记录”，找到刚才的保存。右侧是真实的本轮第17页保存记录，操作摘要、时间、作者和短回执号都在一起；完整操作ID是a368d2ea-b979-4be3-bac1-fea93b3774a0。通过对应回执查看Before/After，再回到当前页检查。若同页或共享编排发生冲突，重新读当前结果再调整提案。这一页展示任务分配与检查方法，不代表系统自动安排了团队。",
+          "occurrenceNotesOverride": null,
+          "notes": "让多个助手合作时，先按稳定的Slide ID分配页面，再说清每页的目标和不能改的证据。图中2856与4YZD就是这份教程中的编排和备注页；给不同页面分工，可以减少同时改同一页的冲突。交接给下一个助手时，提供页ID、具体任务、保护范围，以及已经保存的操作。保存后，选中目标页，进入“历史→操作记录”，找到刚才的保存。右侧是真实的本轮第17页保存记录，操作摘要、时间、作者和短回执号都在一起；完整操作ID是a368d2ea-b979-4be3-bac1-fea93b3774a0。通过对应回执查看Before/After，再回到当前页检查。若同页或共享编排发生冲突，重新读当前结果再调整提案。这一页展示任务分配与检查方法，不代表系统自动安排了团队。",
+          "notesUtf8Sha256": "0078dd42ad59b022fb24437775924213593bfc286cb9e0ffdc9f779514c7ed7f"
+        },
+        {
+          "position": 24,
+          "mainPosition": 24,
+          "pageId": "8a9bcdf1-fcb2-4214-9743-86c110c954ca",
+          "shortCode": "E2RU",
+          "pagePath": "pages/E2RU.page",
+          "title": "打开示例，完成你的第一次修改",
+          "pageRevision": "sha256:d7d98457b349b3646c29d60e903c28235601d22f67b8ddd993252eb026f18d61",
+          "renderRevision": "sha256:a0d045082f01e11e92c21f746f586c23a87806393542a1aafe3610525ec96125",
+          "occurrenceId": null,
+          "presentationItemId": null,
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "这份演示就是一个可以继续编辑的HUANDENG项目。打开chatgpt-zh目录中的deck.pptd，选一张有明确对象的页面，读Story，用Slide ID提出一次小修改。先保留原图、数据、单位和出处，再调整解释或布局；保存后回看前后和页面历史。完成后仍留下完整项目，下一次就在这里继续。HUANDENG以OpenSlide为代码基础；OpenPPTD贡献MathML到OMML公式转换模块；PptxGenJS负责PPTX生成。PPTD思路受到Kimi Slides生态启发。图表、公式和图标分别使用Apache ECharts、KaTeX与Font Awesome Free。GitHub图标在这里指OpenPPTD仓库，并非该项目的产品Logo。公开DNA素材来源为RCSB PDB 1BNA、Drew等PNAS 1981研究，完整许可证与来源保留在sources和notices中。Sources: https://github.com/open-slide/open-slide ; https://github.com/gitbrent/PptxGenJS ; packages/core/src/pptd/vendor/open-pptd/NOTICE.md ; https://www.rcsb.org/structure/1BNA ; https://doi.org/10.1073/pnas.78.4.2179 .",
+          "occurrenceNotesOverride": null,
+          "notes": "这份演示就是一个可以继续编辑的HUANDENG项目。打开chatgpt-zh目录中的deck.pptd，选一张有明确对象的页面，读Story，用Slide ID提出一次小修改。先保留原图、数据、单位和出处，再调整解释或布局；保存后回看前后和页面历史。完成后仍留下完整项目，下一次就在这里继续。HUANDENG以OpenSlide为代码基础；OpenPPTD贡献MathML到OMML公式转换模块；PptxGenJS负责PPTX生成。PPTD思路受到Kimi Slides生态启发。图表、公式和图标分别使用Apache ECharts、KaTeX与Font Awesome Free。GitHub图标在这里指OpenPPTD仓库，并非该项目的产品Logo。公开DNA素材来源为RCSB PDB 1BNA、Drew等PNAS 1981研究，完整许可证与来源保留在sources和notices中。Sources: https://github.com/open-slide/open-slide ; https://github.com/gitbrent/PptxGenJS ; packages/core/src/pptd/vendor/open-pptd/NOTICE.md ; https://www.rcsb.org/structure/1BNA ; https://doi.org/10.1073/pnas.78.4.2179 .",
+          "notesUtf8Sha256": "6ec6f0d2ba3defa65767cbff936a1abef9db5474da5799d68693e66ca1b89dab"
         }
-      ]
-    }
-  ],
-  "sectionStarts": [
-    {
-      "position": 4,
-      "slideId": "CR5K"
+      ],
+      "pinnedOccurrences": 0,
+      "occurrenceNotesOverrides": 0
     },
-    {
-      "position": 13,
-      "slideId": "FE8A"
-    },
-    {
-      "position": 19,
-      "slideId": "36EQ"
+    "brief": {
+      "title": "第一次修改 · 简短演讲",
+      "presentationId": "introduction-short",
+      "pageCount": 12,
+      "exports": {
+        "pdf": {
+          "file": "Exports/brief.pdf",
+          "sha256": "9ec6f908e24c3b7ec3520e6e59393be1c41683ebd4282e99838ca9c1bd0957de"
+        },
+        "pptx": {
+          "file": "Exports/brief.pptx",
+          "sha256": "9ee79a81d5f87122cbc1a1199b0511f337b77013a4048d7f6294c2f3d253ff73"
+        }
+      },
+      "pages": [
+        {
+          "position": 1,
+          "mainPosition": 1,
+          "pageId": "7995de62-e81e-46db-b250-cabc66a99b28",
+          "shortCode": "TTHC",
+          "pagePath": "pages/TTHC.page",
+          "title": "HUANDENG · 从一页，做到一场演讲",
+          "pageRevision": "sha256:8059612a92c9fa4ad13fcb76c54474b62003b14a327d29f67d2ff7d45dd43b16",
+          "renderRevision": "sha256:3d913b55fa0a5ad6bdf3fa43d728d81b670d42777de40ac0cfb883194f16cd57",
+          "occurrenceId": "introduction-short:brief-0:7995de62-e81e-46db-b250-cabc66a99b28",
+          "presentationItemId": "brief-0",
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "HUANDENG 是一个可视化幻灯片编辑器，也是一套把人和 AI 助手连到同一份项目的工作流。我们从打开一个项目开始，实际看页面在哪里、Story 怎么写、素材如何放进去、修改如何保存；随后再把页面组织成一场可以放映和交付的演讲。中间这张图就来自正在运行的 0.19 编辑器，画布上是本介绍的工作流关系图。",
+          "occurrenceNotesOverride": null,
+          "notes": "HUANDENG 是一个可视化幻灯片编辑器，也是一套把人和 AI 助手连到同一份项目的工作流。我们从打开一个项目开始，实际看页面在哪里、Story 怎么写、素材如何放进去、修改如何保存；随后再把页面组织成一场可以放映和交付的演讲。中间这张图就来自正在运行的 0.19 编辑器，画布上是本介绍的工作流关系图。",
+          "notesUtf8Sha256": "a619d9ccda716f9c2f4e6a408d55aa8da3ab84c9b88ba5ff16f3389134ac5114"
+        },
+        {
+          "position": 2,
+          "mainPosition": 3,
+          "pageId": "1f6289fd-1d4c-4a03-a74d-4bc4955de868",
+          "shortCode": "6G4G",
+          "pagePath": "pages/6G4G.page",
+          "title": "人和助手，接着改同一份项目",
+          "pageRevision": "sha256:8089cb331a86bcc6ee9a8515c3f11331c6ae9e1747c206450d8fa23297084108",
+          "renderRevision": "sha256:3adbea6de92121c8fb3461ac1896fb107b33e9ad5e45801f9ba8350495f014a8",
+          "occurrenceId": "introduction-short:introduction-short-product-22:1f6289fd-1d4c-4a03-a74d-4bc4955de868",
+          "presentationItemId": "introduction-short-product-22",
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "先把三个角色分清。HUANDENG Editor 是我们打开、选择、编辑和放映页面的桌面工作区。Plugin 给助手提供制作与协作约定，Connector 将它连接到明确选定的项目。两边的修改通过同一个共享写入服务，落到同一份项目中。deck.pptd 是入口，页面和素材都在项目目录。接下来实际打开这个入口。第三方标记来源见 sources/brand/manifest.json。",
+          "occurrenceNotesOverride": null,
+          "notes": "先把三个角色分清。HUANDENG Editor 是我们打开、选择、编辑和放映页面的桌面工作区。Plugin 给助手提供制作与协作约定，Connector 将它连接到明确选定的项目。两边的修改通过同一个共享写入服务，落到同一份项目中。deck.pptd 是入口，页面和素材都在项目目录。接下来实际打开这个入口。第三方标记来源见 sources/brand/manifest.json。",
+          "notesUtf8Sha256": "7813272bd1cea09bbb8425a3030ee17f32bffd6b2b155da5a4b4a53de8309e54"
+        },
+        {
+          "position": 3,
+          "mainPosition": 5,
+          "pageId": "3483b895-bc52-43b6-a7c4-001a0d1e4526",
+          "shortCode": "ZYZB",
+          "pagePath": "pages/ZYZB.page",
+          "title": "先选页，再在画布里选对象",
+          "pageRevision": "sha256:48d2212dfd90d6538f32dbaf89a903b9a0c54ed3b2662292e759897ed325b7f8",
+          "renderRevision": "sha256:fb1635aadea4411607ab0f1239625fa6264a9585e5b6737c1163f90c7436c17f",
+          "occurrenceId": "introduction-short:introduction-short-product-5:3483b895-bc52-43b6-a7c4-001a0d1e4526",
+          "presentationItemId": "introduction-short-product-5",
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "occurrence-override",
+          "pageNotes": "这场简短演讲先用 ZYZB 解释页面栏、画布与检查器。请观众指出当前选择的页面和对象，然后进入 Story 写下一次修改的目的。备注属于本场演讲的这次引用，主幻灯片继续共用。",
+          "occurrenceNotesOverride": "这场简短演讲先用 ZYZB 解释页面栏、画布与检查器。请观众指出当前选择的页面和对象，然后进入 Story 写下一次修改的目的。备注属于本场演讲的这次引用，主幻灯片继续共用。",
+          "notes": "这场简短演讲先用 ZYZB 解释页面栏、画布与检查器。请观众指出当前选择的页面和对象，然后进入 Story 写下一次修改的目的。备注属于本场演讲的这次引用，主幻灯片继续共用。",
+          "notesUtf8Sha256": "45f0d01b486c63abbbbdbbd282e6b083a1ebf66e57c8943fd522f0476b5d04d2"
+        },
+        {
+          "position": 4,
+          "mainPosition": 6,
+          "pageId": "05cd8517-c8ac-4e12-b2d0-40c438b91042",
+          "shortCode": "HWB6",
+          "pagePath": "pages/HWB6.page",
+          "title": "把这页要讲什么，留在 Story",
+          "pageRevision": "sha256:037261fcb69b1b7a232769499e8d6216cec49ece82f07d51ff1ccf68ceff03f8",
+          "renderRevision": "sha256:63bb7c87552be4d35c0940a8e98345e21a9e3d8604c1bd2e4390f9ebdd62d756",
+          "occurrenceId": "introduction-short:introduction-short-tutorial-3:05cd8517-c8ac-4e12-b2d0-40c438b91042",
+          "presentationItemId": "introduction-short-tutorial-3",
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "选择页面后，打开右侧 Story。这里的目的告诉下一位作者这页帮助听众理解什么；保留项说明哪些标记、数据或关系不能随意改；这次修改说明当前的具体任务。点右上角铅笔填写并保存。左边是真实的 6G4G Story，目的、保留项和修改方向都对应上一页概念关系图。Story 给后续编辑提供上下文，我们仍然要检查最后的实际画面。",
+          "occurrenceNotesOverride": null,
+          "notes": "选择页面后，打开右侧 Story。这里的目的告诉下一位作者这页帮助听众理解什么；保留项说明哪些标记、数据或关系不能随意改；这次修改说明当前的具体任务。点右上角铅笔填写并保存。左边是真实的 6G4G Story，目的、保留项和修改方向都对应上一页概念关系图。Story 给后续编辑提供上下文，我们仍然要检查最后的实际画面。",
+          "notesUtf8Sha256": "1347bc24fae50331cf1301bbbdb8b6af4c6aeb2df948ac32788c779b9d1f2165"
+        },
+        {
+          "position": 5,
+          "mainPosition": 8,
+          "pageId": "c1fcdc66-1c25-45a6-9b98-83d16f063c3e",
+          "shortCode": "7EKH",
+          "pagePath": "pages/7EKH.page",
+          "title": "检查画布，然后保存页面",
+          "pageRevision": "sha256:9be4cf4086c9fa38a7e496b09bb4c9c1521a826d61a734702f464eb63e475189",
+          "renderRevision": "sha256:f87718a2c2ca984e75ced4f77f62d2f2636e014e6ff8e1fac83e1fcbdeaef7b5",
+          "occurrenceId": "introduction-short:brief-2:c1fcdc66-1c25-45a6-9b98-83d16f063c3e",
+          "presentationItemId": "brief-2",
+          "versionId": "checkpoint:d4c0badba7d36d6e248cd1c378e41a4f",
+          "pinned": true,
+          "notesSource": "pinned-page",
+          "pageNotes": "第一张页完成后，先看真实画布：标题是不是讲清了这页的意思，图片是否完整，重要内容有没有被挡住。然后点击顶部保存页面，或者按 Ctrl+S，确认状态显示页面已保存。图中放大的是实际保存控件和真实保存状态。页面修改和项目编排有各自的保存入口；章节、演讲顺序等项目草稿，需要在对应面板保存项目。下一步，我们就在这份项目里做一次更小、更精确的改动。",
+          "occurrenceNotesOverride": null,
+          "notes": "第一张页完成后，先看真实画布：标题是不是讲清了这页的意思，图片是否完整，重要内容有没有被挡住。然后点击顶部保存页面，或者按 Ctrl+S，确认状态显示页面已保存。图中放大的是实际保存控件和真实保存状态。页面修改和项目编排有各自的保存入口；章节、演讲顺序等项目草稿，需要在对应面板保存项目。下一步，我们就在这份项目里做一次更小、更精确的改动。",
+          "notesUtf8Sha256": "29097c12e80080ef5d796934a59898933ad2377d153cf99f0c100b5e14ea20d1"
+        },
+        {
+          "position": 6,
+          "mainPosition": 10,
+          "pageId": "7b69742f-16b5-4b80-acf0-1d23966aae96",
+          "shortCode": "JNZV",
+          "pagePath": "pages/JNZV.page",
+          "title": "只改两句，保留其他内容",
+          "pageRevision": "sha256:4c244392960397586803b2956a82d4ffc7bd853ffd2e5cd68d48f9c165b24482",
+          "renderRevision": "sha256:bc3466ca87567704d051e79a285ef137cee037f54e589fe1359234e4bcebc9f6",
+          "occurrenceId": "introduction-short:introduction-short-product-4:7b69742f-16b5-4b80-acf0-1d23966aae96",
+          "presentationItemId": "introduction-short-product-4",
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "这次只收紧标题和引导句。修改前，两句话较长；修改后，直接说“把修改意图留清楚”“让下一次修改有据可循”。请看同一尺度下的前后图，其他内容没有跟着重做。实际操作时，选中对应文字，在画布或属性面板中修改，然后点击保存页面。下一页会从图层列表选对象，解决多个对象重叠时点不准的问题。",
+          "occurrenceNotesOverride": null,
+          "notes": "这次只收紧标题和引导句。修改前，两句话较长；修改后，直接说“把修改意图留清楚”“让下一次修改有据可循”。请看同一尺度下的前后图，其他内容没有跟着重做。实际操作时，选中对应文字，在画布或属性面板中修改，然后点击保存页面。下一页会从图层列表选对象，解决多个对象重叠时点不准的问题。",
+          "notesUtf8Sha256": "7d27b8d5f37f6ab1153fd15dd5b53599787cd9aa23e9724f7124cfe430d2f850"
+        },
+        {
+          "position": 7,
+          "mainPosition": 13,
+          "pageId": "def43d68-1767-45f5-800a-17d648750b7e",
+          "shortCode": "FE8A",
+          "pagePath": "pages/FE8A.page",
+          "title": "保存后，核对这一次修改",
+          "pageRevision": "sha256:7a279d6b759c701f19abdcfb97e33357e4c5cde75244840df2b214c2854030c6",
+          "renderRevision": "sha256:e4a67429e99a6fd57802468606b5e398525d15592a48d8da98490d2d7d0ff8b1",
+          "occurrenceId": "introduction-short:introduction-short-tutorial-6:def43d68-1767-45f5-800a-17d648750b7e",
+          "presentationItemId": "introduction-short-tutorial-6",
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "保存以后，进入历史的操作记录，打开这次修改。左图是实际的修改查看器，能切换修改前与修改后；右图把已保存的修改放大，标题 title 和引导句 lead 各有一条内容变化。选择记录会在画布中定位对象。这里核对的是“说要改什么”和“实际改了什么”是否一致。看完字段变化，再看完整画面是否读得清楚。",
+          "occurrenceNotesOverride": null,
+          "notes": "保存以后，进入历史的操作记录，打开这次修改。左图是实际的修改查看器，能切换修改前与修改后；右图把已保存的修改放大，标题 title 和引导句 lead 各有一条内容变化。选择记录会在画布中定位对象。这里核对的是“说要改什么”和“实际改了什么”是否一致。看完字段变化，再看完整画面是否读得清楚。",
+          "notesUtf8Sha256": "214c872047a052afa9142cab940f244a450639b5f73f2620a360ea1fe4dda092"
+        },
+        {
+          "position": 8,
+          "mainPosition": 17,
+          "pageId": "baca190c-e87b-415f-9c30-7c04e3fabe17",
+          "shortCode": "2856",
+          "pagePath": "pages/2856.page",
+          "title": "选页，组成这次演讲",
+          "pageRevision": "sha256:b5cf2ca7068977e36580cc7530f6220048bbbb4d4d5261910ecfbbb3431f3466",
+          "renderRevision": "sha256:0699e9208b009e0435cd643fb45e9a66da4112382dc085f6e97d07dc6063d19d",
+          "occurrenceId": "introduction-short:introduction-short-tutorial-7:baca190c-e87b-415f-9c30-7c04e3fabe17",
+          "presentationItemId": "introduction-short-tutorial-7",
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "这一步把已经做好的页面组织成一次具体演讲。左侧进入项目，点击“编排演讲”；在下拉框里选择已有演讲，或点击“新建演讲”。打开“添加幻灯片或章节”，可以按标题、页面短码或位置搜索，点击加号加入。顺序通过条目上的上下箭头调整，最后点击“保存项目”。图中搜索ZYZB后，页面和所在章节同时可选；需要单页时点“主幻灯片”区域的条目。这里保存的是本次演讲的引用顺序，Main仍是持续维护的原页。下一步为同一页准备这次听众需要的讲法。",
+          "occurrenceNotesOverride": null,
+          "notes": "这一步把已经做好的页面组织成一次具体演讲。左侧进入项目，点击“编排演讲”；在下拉框里选择已有演讲，或点击“新建演讲”。打开“添加幻灯片或章节”，可以按标题、页面短码或位置搜索，点击加号加入。顺序通过条目上的上下箭头调整，最后点击“保存项目”。图中搜索ZYZB后，页面和所在章节同时可选；需要单页时点“主幻灯片”区域的条目。这里保存的是本次演讲的引用顺序，Main仍是持续维护的原页。下一步为同一页准备这次听众需要的讲法。",
+          "notesUtf8Sha256": "ef366237b7239582c27862866d2faa636c2fab3d46cead026e8c29a17c373ccb"
+        },
+        {
+          "position": 9,
+          "mainPosition": 18,
+          "pageId": "503c86ce-673c-4229-9251-22114e5f5da9",
+          "shortCode": "4YZD",
+          "pagePath": "pages/4YZD.page",
+          "title": "同一页，写这次的讲法",
+          "pageRevision": "sha256:97fcbcca61e55b090766f4ab0cfcfcc02733a7259d621c954d7a6a943c1c2397",
+          "renderRevision": "sha256:02b3929a873cfa324bbdd870afeb63fa60baee4bd2814a62a5d76adb4f7885a6",
+          "occurrenceId": "introduction-short:introduction-short-tutorial-8:503c86ce-673c-4229-9251-22114e5f5da9",
+          "presentationItemId": "introduction-short-tutorial-8",
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "同一张页面可以向不同听众讲不同的重点。打开编排条目的“备注与版本”，勾选“本次引用使用独立演讲备注”，在下面写这一次要讲的话，再保存项目。右侧是真实“备注页”中同一处引用的讲稿；它与左侧输入的内容对应。此时改的是本次演讲中的这一次出现，Main Notes仍能保留通用说明。排练前先确认当前选中的是目标演讲，再进入备注页。接下来选择的是画面版本：继续跟随Main，还是保留一个已经定稿的阶段。",
+          "occurrenceNotesOverride": null,
+          "notes": "同一张页面可以向不同听众讲不同的重点。打开编排条目的“备注与版本”，勾选“本次引用使用独立演讲备注”，在下面写这一次要讲的话，再保存项目。右侧是真实“备注页”中同一处引用的讲稿；它与左侧输入的内容对应。此时改的是本次演讲中的这一次出现，Main Notes仍能保留通用说明。排练前先确认当前选中的是目标演讲，再进入备注页。接下来选择的是画面版本：继续跟随Main，还是保留一个已经定稿的阶段。",
+          "notesUtf8Sha256": "337de5e0e3321fb4f390aa2c272a3d653ccca5d7be666fb1babcc2a3298d461e"
+        },
+        {
+          "position": 10,
+          "mainPosition": 19,
+          "pageId": "d64aef1b-eb88-4b05-a620-ae60a0e833de",
+          "shortCode": "36EQ",
+          "pagePath": "pages/36EQ.page",
+          "title": "要更新，还是要定稿",
+          "pageRevision": "sha256:10cceb725981412dd51b3e8599ba3abe9b65484e6b0cad33bab770cdebc2a92e",
+          "renderRevision": "sha256:1f18f4db9ffb2a193814652889c9a4ae09208ca175697aaa7187b2e51188f4d0",
+          "occurrenceId": "introduction-short:introduction-short-tutorial-9:d64aef1b-eb88-4b05-a620-ae60a0e833de",
+          "presentationItemId": "introduction-short-tutorial-9",
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "要决定一场演讲是否跟随主稿更新，就在条目的“备注与版本”里选择“页面版本”。左图显示实时引用，后面继续改Main时，这处引用会跟着变。右图选择的是已存在的命名版本，因此可以保留已经排练过的画面。命名版本先在该页的历史工作区记录，随后在这里刷新并选择。两个截图取自实际演讲条目的版本控件，比较的是两种选项，不是两套复制文件。选定后保存项目。接下来在目标演讲中从当前页开始排练，核对顺序、讲稿和点击节奏。",
+          "occurrenceNotesOverride": null,
+          "notes": "要决定一场演讲是否跟随主稿更新，就在条目的“备注与版本”里选择“页面版本”。左图显示实时引用，后面继续改Main时，这处引用会跟着变。右图选择的是已存在的命名版本，因此可以保留已经排练过的画面。命名版本先在该页的历史工作区记录，随后在这里刷新并选择。两个截图取自实际演讲条目的版本控件，比较的是两种选项，不是两套复制文件。选定后保存项目。接下来在目标演讲中从当前页开始排练，核对顺序、讲稿和点击节奏。",
+          "notesUtf8Sha256": "b9e7c7183bc58495db2f07fc791d122c6d218a0a2436a56bd2b5fa59283015c8"
+        },
+        {
+          "position": 11,
+          "mainPosition": 21,
+          "pageId": "c91c3fe3-836f-492f-882d-905bd4d08a9b",
+          "shortCode": "YCXA",
+          "pagePath": "pages/YCXA.page",
+          "title": "选好格式，也选对范围",
+          "pageRevision": "sha256:4eb87db303a39d4d11aee174b6c914ee1eba71b29f02fad20db3deaad84a8a1e",
+          "renderRevision": "sha256:e4dd00036ca2de75757eaf3f5630bb68349f434a5b2cbd232760e457e43d7c86",
+          "occurrenceId": "introduction-short:introduction-short-story-23:c91c3fe3-836f-492f-882d-905bd4d08a9b",
+          "presentationItemId": "introduction-short-story-23",
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "点击导出，先选格式，再检查范围。图中选择PowerPoint，并把范围设为“第一次修改 · 简短演讲”，因此输出的是这一场演讲的页面顺序，而不是整套Main。需要阅读审阅可以导出PDF；需要用常规演示软件继续使用可选PPTX。若接收者要在HUANDENG里继续修改，交付的是完整项目文件夹：deck.pptd是入口，pages和media保存页面与素材，.huandeng保存Story、编排和命名版本。把AGENTS.md、sources和notices一并保留。命名版本随项目携带，机器本地操作日志仍属于原电脑。导出后回到同一份源项目继续维护。下一步把助手接入同一份工作。",
+          "occurrenceNotesOverride": null,
+          "notes": "点击导出，先选格式，再检查范围。图中选择PowerPoint，并把范围设为“第一次修改 · 简短演讲”，因此输出的是这一场演讲的页面顺序，而不是整套Main。需要阅读审阅可以导出PDF；需要用常规演示软件继续使用可选PPTX。若接收者要在HUANDENG里继续修改，交付的是完整项目文件夹：deck.pptd是入口，pages和media保存页面与素材，.huandeng保存Story、编排和命名版本。把AGENTS.md、sources和notices一并保留。命名版本随项目携带，机器本地操作日志仍属于原电脑。导出后回到同一份源项目继续维护。下一步把助手接入同一份工作。",
+          "notesUtf8Sha256": "61691637957935c4442be4ab8ed2951165f12cb14480df7e41302efb682902b6"
+        },
+        {
+          "position": 12,
+          "mainPosition": 24,
+          "pageId": "8a9bcdf1-fcb2-4214-9743-86c110c954ca",
+          "shortCode": "E2RU",
+          "pagePath": "pages/E2RU.page",
+          "title": "打开示例，完成你的第一次修改",
+          "pageRevision": "sha256:d7d98457b349b3646c29d60e903c28235601d22f67b8ddd993252eb026f18d61",
+          "renderRevision": "sha256:a0d045082f01e11e92c21f746f586c23a87806393542a1aafe3610525ec96125",
+          "occurrenceId": "introduction-short:brief-6:8a9bcdf1-fcb2-4214-9743-86c110c954ca",
+          "presentationItemId": "brief-6",
+          "versionId": null,
+          "pinned": false,
+          "notesSource": "main-page",
+          "pageNotes": "这份演示就是一个可以继续编辑的HUANDENG项目。打开chatgpt-zh目录中的deck.pptd，选一张有明确对象的页面，读Story，用Slide ID提出一次小修改。先保留原图、数据、单位和出处，再调整解释或布局；保存后回看前后和页面历史。完成后仍留下完整项目，下一次就在这里继续。HUANDENG以OpenSlide为代码基础；OpenPPTD贡献MathML到OMML公式转换模块；PptxGenJS负责PPTX生成。PPTD思路受到Kimi Slides生态启发。图表、公式和图标分别使用Apache ECharts、KaTeX与Font Awesome Free。GitHub图标在这里指OpenPPTD仓库，并非该项目的产品Logo。公开DNA素材来源为RCSB PDB 1BNA、Drew等PNAS 1981研究，完整许可证与来源保留在sources和notices中。Sources: https://github.com/open-slide/open-slide ; https://github.com/gitbrent/PptxGenJS ; packages/core/src/pptd/vendor/open-pptd/NOTICE.md ; https://www.rcsb.org/structure/1BNA ; https://doi.org/10.1073/pnas.78.4.2179 .",
+          "occurrenceNotesOverride": null,
+          "notes": "这份演示就是一个可以继续编辑的HUANDENG项目。打开chatgpt-zh目录中的deck.pptd，选一张有明确对象的页面，读Story，用Slide ID提出一次小修改。先保留原图、数据、单位和出处，再调整解释或布局；保存后回看前后和页面历史。完成后仍留下完整项目，下一次就在这里继续。HUANDENG以OpenSlide为代码基础；OpenPPTD贡献MathML到OMML公式转换模块；PptxGenJS负责PPTX生成。PPTD思路受到Kimi Slides生态启发。图表、公式和图标分别使用Apache ECharts、KaTeX与Font Awesome Free。GitHub图标在这里指OpenPPTD仓库，并非该项目的产品Logo。公开DNA素材来源为RCSB PDB 1BNA、Drew等PNAS 1981研究，完整许可证与来源保留在sources和notices中。Sources: https://github.com/open-slide/open-slide ; https://github.com/gitbrent/PptxGenJS ; packages/core/src/pptd/vendor/open-pptd/NOTICE.md ; https://www.rcsb.org/structure/1BNA ; https://doi.org/10.1073/pnas.78.4.2179 .",
+          "notesUtf8Sha256": "6ec6f0d2ba3defa65767cbff936a1abef9db5474da5799d68693e66ca1b89dab"
+        }
+      ],
+      "pinnedOccurrences": 1,
+      "occurrenceNotesOverrides": 1
     }
-  ]
+  }
 }

@@ -3,80 +3,160 @@ background:
   type: solid
   color: "#F7F5EF"
 elements:
+  - elementId: f-bg
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 0
+      - 0
+      - 960
+      - 540
+    fill:
+      type: solid
+      color: "#F4F1E8"
+  - elementId: f-route
+    elementType: text
+    bounds:
+      - 42
+      - 20
+      - 860
+      - 18
+    content:
+      text: PROJECT → ARRANGE PRESENTATION
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#168C8C"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.2
   - elementId: title
     elementType: text
     bounds:
-        [42,34,880,76]
+        [42,49,875,66]
     role: title
     content:
-      {"text":"The same page can carry a different script","fontFamily":"Georgia","fontSize":32,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.2}
-  - elementId: brand-small
-    elementType: image
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
-    sourceName: huandeng.png
-    alt: huandeng.png
+      {"text":"Choose pages for this particular talk","fontFamily":"Segoe UI","fontSize":32,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.1}
+  - elementId: f-foot-rule
+    elementType: shape
+    shapeName: rect
     bounds:
-        [43,512,18,18]
-    fit:
-      mode: contain
-    crop:
-      left: 0.18
-      right: 0.18
-      top: 0.14
-      bottom: 0.14
-  - elementId: foot
+      - 42
+      - 510
+      - 876
+      - 1
+    fill:
+      type: solid
+      color: "#CCD2CB"
+  - elementId: f-watermark
     elementType: text
     bounds:
-        [68,515,140,16]
+      - 42
+      - 518
+      - 700
+      - 17
     content:
-      {"text":"HUANDENG","fontFamily":"Segoe UI","fontSize":9,"color":"#5B6A62","bold":false,"align":["left","top"],"lineHeight":1.35}
-  - elementId: position
-    elementType: text
-    bounds:
-        [881,514,35,18]
-    content:
-      {"text":"","fontFamily":"Segoe UI","fontSize":10,"color":"#5B6A62","bold":false,"align":["right","top"],"lineHeight":1.35,"field":"main-position"}
-  - elementId: notes-science-preview
-    elementType: image
-    src: media/imported/d7f8feba5f9ff8f5b719f4055b01d5473155c1eb3efcfb5d3b2c67dcd5f58dbe.png
-    sourceName: 01.png
-    alt: 01.png
-    bounds:
-      - 43
-      - 145
-      - 450
-      - 253
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: same-page-id
-    elementType: text
-    bounds:
-      - 43
-      - 419
-      - 450
-      - 34
-    content:
-      text: Slide ID ZWZJ
+      text: English · ChatGPT 6 Astra
       fontFamily: Segoe UI
-      fontSize: 17
-      color: "#356F68"
+      fontSize: 12
+      color: "#50646A"
       bold: false
       align:
         - left
         - top
-      lineHeight: 1.35
-  - elementId: local-notes
+      lineHeight: 1.2
+  - elementId: f-position
     elementType: text
     bounds:
-      - 540
-      - 153
-      - 374
-      - 333
+      - 882
+      - 518
+      - 36
+      - 17
     content:
-      {"text":"Presentation → Notes page\n\n“For this talk, change only the explanation.\nKeep the figure, all twelve values,\nunits and source.”\n\nThese notes belong to this appearance. Main Notes keep the general explanation.","fontFamily":"Segoe UI","fontSize":18,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.5}
-notes: "Reusing a page does not require reading the same script. Main Notes can keep the general explanation; one occurrence in a Presentation can hold its own notes. The brief introduction uses this scientific page to explain evidence preservation, while a longer account can explain the method. The local notes belong to this appearance; the page need not be duplicated."
+      text: ""
+      fontFamily: Segoe UI
+      fontSize: 12
+      color: "#50646A"
+      bold: false
+      align:
+        - right
+        - top
+      lineHeight: 1.2
+      field: main-position
+  - elementId: f-arrange-label
+    elementType: text
+    bounds:
+      - 44
+      - 128
+      - 414
+      - 25
+    content:
+      text: 1  Choose or create the Presentation
+      fontFamily: Segoe UI
+      fontSize: 15
+      color: "#112D32"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.2
+  - elementId: f-pick-label
+    elementType: text
+    bounds:
+      - 550
+      - 128
+      - 366
+      - 25
+    content:
+      text: 2  Find a Main slide and add it
+      fontFamily: Segoe UI
+      fontSize: 15
+      color: "#112D32"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.2
+  - elementId: f-arrange
+    elementType: image
+    bounds:
+      - 55.400717703349244
+      - 162
+      - 374.1985645933015
+      - 327
+    src: media/imported/1b8439f5934c95907ad3f66d9c4a14b6eb00d4497f3b68fb95d401a82294d3a5.png
+    sourceName: arrange.png
+    fit:
+      mode: contain
+    crop:
+      bottom: 0.34
+  - elementId: f-picker
+    elementType: image
+    bounds:
+      - 550
+      - 162
+      - 364
+      - 327
+    src: media/imported/d614bf96e157bdf4db31d0bf68c977bbde5a3bc3f6eac5e84d770b676b450de9.png
+    sourceName: source-picker.png
+    fit:
+      mode: contain
+  - elementId: f-arrange-link
+    elementType: line
+    bounds:
+      - 468
+      - 317
+      - 52
+      - 0
+    viewBox:
+      - 1
+      - 1
+    points: 0,0 1,1
+    border:
+      width: 2.5
+      color: "#ED6A3A"
+    arrow:
+      - null
+      - arrow
+notes: "In Project, choose Arrange Presentation. Create or select a Presentation, then choose pages from Main. The screenshots show First edit · short talk and the source picker filtered to GX5Z. Click the plus beside a page or Section to append its reference; reorder the occurrences for this audience and save project. A Presentation reuses the source page instead of creating a detached copy."

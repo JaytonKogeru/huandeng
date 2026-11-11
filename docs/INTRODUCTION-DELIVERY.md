@@ -68,7 +68,7 @@ All four authoring tasks received the complete current user message verbatim. Th
 
 The shared input consists of source assets, the spoken account, checked technical facts, the 0.18.3 plugin and project constraints. The authors chose their own sequence, length and design. Four project guides were available without truncation. Native accounts and models were not changed.
 
-Claude’s assistant metadata reports `claude-opus-5-5`. DeepSeek’s official resolved configuration reports `deepseek-flash`; this is configured-model evidence, not response-model metadata. The [native records](../examples/huandeng-introduction/README.md#独立试作与验收--independent-trials) distinguish these evidence types.
+Claude’s assistant metadata reports `claude-opus-5-5`. DeepSeek’s official resolved configuration reports `deepseek-flash`; this is configured-model evidence, not response-model metadata. The [native records](NATIVE-INTEGRATION-0.19.md) distinguish these evidence types.
 
 During authoring, the existing GUI and its child document services exited; the cause was not established. The same saved projects were reopened at their free previous ports after identity and source-hash checks. DeepSeek continued. Claude’s old MCP connection retained a stale session token; a fresh connection in the same native session allowed it to apply its already-prepared transaction and complete. The first incomplete business outcome and the connection-only recovery remain separately recorded.
 
@@ -107,7 +107,7 @@ The native trials show why guidance alone cannot certify narrative fidelity. The
 
 ## Workspace and startup
 
-The follow-up examined all top-level entries in `D:\_Proj`, including generic `v013-*` names missed previously. It removed obsolete installers, transport fragments, repeated source packages and loose logs. Unique private originals were moved with hash verification into the existing ignored handoff area; unique source variants were reduced to small patches against reachable Git bases.
+The follow-up examined all top-level entries in `<workspace-root>`, including generic `v013-*` names missed previously. It removed obsolete installers, transport fragments, repeated source packages and loose logs. Unique private originals were moved with hash verification into the existing ignored handoff area; unique source variants were reduced to small patches against reachable Git bases.
 
 The old v0.10 service was verified as an orphaned read-only process: its parent was gone, there were no clients, and no launch configuration depended on its old worktree. It exited normally after a console interrupt. The current core opened the same research entry read-only; source and metadata hashes stayed unchanged. The obsolete worktree was then retired. The remaining internal v0.4 worktree was also retired after preserving its unique source differences and data; Huandeng now has one registered worktree, the canonical main checkout. The current top level has **22 directories and four files**, including unrelated user projects and a newly observed independent adapter source directory preserved as possible parallel work.
 

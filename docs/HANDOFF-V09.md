@@ -4,13 +4,13 @@
 
 ## 1. 来源和交付状态
 
-工作树为 `D:/_Proj/Huandeng-v09-20261108`，canonical 为 `D:/_Proj/Huandeng`。Windows 工作树是本轮提交与打包来源；此前 Linux 副本只用于开发与传输，不推其快照历史。编辑器版本 0.9.0 与上游 core 的 npm 包版本是两套标识。
+工作树为 `<workspace-checkout>`，canonical 为 `<editor-checkout>`。Windows 工作树是本轮提交与打包来源；此前 Linux 副本只用于开发与传输，不推其快照历史。编辑器版本 0.9.0 与上游 core 的 npm 包版本是两套标识。
 
 最终干净运行时为 `17de86d0b49f23c3c7aafe901f3de748d3bcc7e3`，Electron 38.7.2，sourceDirty=false，构建时间 `2026-11-08T02:35:06.3605865Z`。最终包 UI/Agent/现场放映 **6/6**、排列 **6/6** 通过；两套报告均无 renderer 错误，各有两次 code 0 / signal null 正常退出。负责人已复审英文与 Agent 截图。
 
 最终包原始回执位于工作树的 `.verification/editor-v09/huandeng-editor-v09-i03OYb/acceptance.json` 与 `.verification/arrangement-v09/huandeng-arrangement-v09-Lod1dl/result.json`。此前 `fd30e4fd` / `JtTkQK` 为前轮候选证据，不能与最终包身份混写。
 
-**实际安装已完成。** 29,201 文件 / 684,294,324 bytes 与验收包一致；正式位置仍是 `D:/_Proj/Huandeng/dist/HUANDENG-win32-x64`，两处快捷方式已核对，旧 v0.8 包保存在 canonical `.verification/installed-v08-backup-20261108-v09`。普通 profile 已重开 80 页项目，生产静态前端、可写、0 诊断、响应窗口与新服务父子关系通过，窗口保持打开。
+**实际安装已完成。** 29,201 文件 / 684,294,324 bytes 与验收包一致；正式位置仍是 `<editor-checkout>/dist/HUANDENG-win32-x64`，两处快捷方式已核对，旧 v0.8 包保存在 canonical `.verification/installed-v08-backup-20261108-v09`。普通 profile 已重开 80 页项目，生产静态前端、可写、0 诊断、响应窗口与新服务父子关系通过，窗口保持打开。
 
 首次安装因旧窗口已有未保存项目编排而停在替换前。负责人备份原元数据与草稿画面，经正常“保存项目”保留原有编排；仅项目元数据更新，manifest/全部80页保持字节不变。随后以当前82文件为基线安装/重开，全部一致。成功回执 `.verification/install-v09-20261108T024834Z.json`，失败与保存备份保留。详见 [VALIDATION-V09](VALIDATION-V09.md)。
 
@@ -79,7 +79,7 @@ Plugin 随桌面包携带；项目面板与原生菜单的“连接 Agent”生�
 在 Windows 工作树、已有开发依赖的 PowerShell 中执行。以下是后续按风险选用的命令，不要求每个小改动重跑全部组合。
 
 ```powershell
-Set-Location 'D:/_Proj/Huandeng-v09-20261108'
+Set-Location '<workspace-checkout>'
 & .\node_modules\.bin\vitest.cmd run --project unit packages/core/src/app/lib/inspector/geometry.test.ts packages/core/src/app/lib/pptd-geometry.test.ts
 node --test plugins/huandeng/scripts/configure.test.mjs
 corepack pnpm --filter @open-slide/core typecheck
@@ -90,7 +90,7 @@ corepack pnpm --filter @open-slide/core build
 正式候选的聚焦桌面检查使用独立 profile/runtime 和全部合成文稿：
 
 ```powershell
-$env:HUANDENG_DESKTOP_EXE = 'D:/_Proj/Huandeng-v09-20261108/dist/HUANDENG-win32-x64/HUANDENG Editor.exe'
+$env:HUANDENG_DESKTOP_EXE = '<workspace-checkout>/dist/HUANDENG-win32-x64/HUANDENG Editor.exe'
 node scripts/verify-editor-v09.mjs
 node scripts/verify-arrangement-v09.mjs
 ```

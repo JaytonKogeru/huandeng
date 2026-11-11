@@ -1,0 +1,348 @@
+{
+  "schemaVersion": 3,
+  "project": "chatgpt-en",
+  "main": [
+    {
+      "position": 1,
+      "pageId": "90353b2a-6f7b-4ee5-8a8b-10bceb538190",
+      "slideId": "9DAA"
+    },
+    {
+      "position": 2,
+      "pageId": "4ec264b7-018d-449c-8c8b-d9aede33a840",
+      "slideId": "2XM9"
+    },
+    {
+      "position": 3,
+      "pageId": "1ba18ad8-0701-4de6-83f5-555b949293d7",
+      "slideId": "GX5Z"
+    },
+    {
+      "position": 4,
+      "pageId": "6b9fbac0-772c-435c-bce1-9cad0004af65",
+      "slideId": "9VGD"
+    },
+    {
+      "position": 5,
+      "pageId": "7d7d42a0-0db7-4d33-9b3f-5e1035097b50",
+      "slideId": "FKA9"
+    },
+    {
+      "position": 6,
+      "pageId": "4a066483-9a11-450c-be15-c0be33d52989",
+      "slideId": "U8ZQ"
+    },
+    {
+      "position": 7,
+      "pageId": "95189956-cdd7-4ad9-88c8-cf28a204bb68",
+      "slideId": "35U5"
+    },
+    {
+      "position": 8,
+      "pageId": "c4b12919-5876-4acb-b63f-6a7493b54b37",
+      "slideId": "ZWZJ"
+    },
+    {
+      "position": 9,
+      "pageId": "ca1eec7e-61bd-41ac-b6ab-e000d06797be",
+      "slideId": "XF8A"
+    },
+    {
+      "position": 10,
+      "pageId": "3f5561d8-477e-4954-bee2-9877c8cddc69",
+      "slideId": "ZN52"
+    },
+    {
+      "position": 11,
+      "pageId": "dc5bfe5f-326a-4b28-8536-56e51ea4397e",
+      "slideId": "DHVW"
+    },
+    {
+      "position": 12,
+      "pageId": "6a3aec16-2347-40fe-856d-df36c1f58509",
+      "slideId": "2ZQ3"
+    },
+    {
+      "position": 13,
+      "pageId": "d497fb11-7906-414e-a529-0d97680bce51",
+      "slideId": "7E4T"
+    },
+    {
+      "position": 14,
+      "pageId": "62d5734d-2fe5-441c-a50a-abaa95145b56",
+      "slideId": "9QQW"
+    },
+    {
+      "position": 15,
+      "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7",
+      "slideId": "AAD6"
+    },
+    {
+      "position": 16,
+      "pageId": "095ba6fb-14f6-42b1-815a-7970ac214058",
+      "slideId": "74A2"
+    },
+    {
+      "position": 17,
+      "pageId": "80c650ec-8f56-403d-8f44-d190a84ed4b4",
+      "slideId": "9N3S"
+    },
+    {
+      "position": 18,
+      "pageId": "8050a155-9c2b-4cf5-b643-e9406b9b2b1c",
+      "slideId": "BHPP"
+    },
+    {
+      "position": 19,
+      "pageId": "4a398dd0-ad74-4a36-b65e-6068ffe817a8",
+      "slideId": "X5J6"
+    },
+    {
+      "position": 20,
+      "pageId": "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6",
+      "slideId": "YZ4T"
+    },
+    {
+      "position": 21,
+      "pageId": "e0b400eb-ddc1-4c42-af48-d420785b1d8f",
+      "slideId": "KW5P"
+    },
+    {
+      "position": 22,
+      "pageId": "e4fb0f10-ffa5-44e2-907f-b92e1b69535e",
+      "slideId": "DDJN"
+    },
+    {
+      "position": 23,
+      "pageId": "bbcdc92a-915c-4988-a4d5-76e466d0424f",
+      "slideId": "5HW8"
+    },
+    {
+      "position": 24,
+      "pageId": "8f9e154d-c5c2-4d79-b809-984586f8311e",
+      "slideId": "ECVR"
+    }
+  ],
+  "presentations": [
+    {
+      "id": "introduction-full",
+      "title": "Full introduction",
+      "story": {
+        "purpose": "Introduce what HUANDENG is, how to complete a scientific-page edit, and why intent, evidence, page history and talk composition belong in one working project.",
+        "audience": "Scientific presenters, people creating slides with agents and open-source contributors",
+        "takeaway": "Open one working project and use page intent and evidence to guide editing, review, reuse and delivery."
+      },
+      "items": [
+        {
+          "id": "full-0",
+          "kind": "page",
+          "pageId": "90353b2a-6f7b-4ee5-8a8b-10bceb538190"
+        },
+        {
+          "id": "introduction-full-story-21",
+          "kind": "page",
+          "pageId": "4ec264b7-018d-449c-8c8b-d9aede33a840"
+        },
+        {
+          "id": "introduction-full-story-22",
+          "kind": "page",
+          "pageId": "1ba18ad8-0701-4de6-83f5-555b949293d7"
+        },
+        {
+          "id": "full-2",
+          "kind": "page",
+          "pageId": "6b9fbac0-772c-435c-bce1-9cad0004af65"
+        },
+        {
+          "id": "full-3",
+          "kind": "page",
+          "pageId": "7d7d42a0-0db7-4d33-9b3f-5e1035097b50"
+        },
+        {
+          "id": "full-7",
+          "kind": "page",
+          "pageId": "4a066483-9a11-450c-be15-c0be33d52989"
+        },
+        {
+          "id": "full-4",
+          "kind": "page",
+          "pageId": "95189956-cdd7-4ad9-88c8-cf28a204bb68"
+        },
+        {
+          "id": "full-1",
+          "kind": "page",
+          "pageId": "c4b12919-5876-4acb-b63f-6a7493b54b37"
+        },
+        {
+          "id": "full-5",
+          "kind": "page",
+          "pageId": "ca1eec7e-61bd-41ac-b6ab-e000d06797be"
+        },
+        {
+          "id": "full-9",
+          "kind": "page",
+          "pageId": "3f5561d8-477e-4954-bee2-9877c8cddc69"
+        },
+        {
+          "id": "full-13",
+          "kind": "page",
+          "pageId": "dc5bfe5f-326a-4b28-8536-56e51ea4397e"
+        },
+        {
+          "id": "full-10",
+          "kind": "page",
+          "pageId": "6a3aec16-2347-40fe-856d-df36c1f58509"
+        },
+        {
+          "id": "full-6",
+          "kind": "page",
+          "pageId": "d497fb11-7906-414e-a529-0d97680bce51"
+        },
+        {
+          "id": "introduction-full-story-25",
+          "kind": "page",
+          "pageId": "62d5734d-2fe5-441c-a50a-abaa95145b56"
+        },
+        {
+          "id": "full-12",
+          "kind": "page",
+          "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7"
+        },
+        {
+          "id": "introduction-full-story-26",
+          "kind": "page",
+          "pageId": "095ba6fb-14f6-42b1-815a-7970ac214058"
+        },
+        {
+          "id": "full-14",
+          "kind": "page",
+          "pageId": "80c650ec-8f56-403d-8f44-d190a84ed4b4"
+        },
+        {
+          "id": "full-16",
+          "kind": "page",
+          "pageId": "8050a155-9c2b-4cf5-b643-e9406b9b2b1c"
+        },
+        {
+          "id": "full-11",
+          "kind": "page",
+          "pageId": "4a398dd0-ad74-4a36-b65e-6068ffe817a8"
+        },
+        {
+          "id": "full-8",
+          "kind": "page",
+          "pageId": "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6"
+        },
+        {
+          "id": "introduction-full-story-23",
+          "kind": "page",
+          "pageId": "e0b400eb-ddc1-4c42-af48-d420785b1d8f"
+        },
+        {
+          "id": "full-15",
+          "kind": "page",
+          "pageId": "e4fb0f10-ffa5-44e2-907f-b92e1b69535e"
+        },
+        {
+          "id": "full-17",
+          "kind": "page",
+          "pageId": "bbcdc92a-915c-4988-a4d5-76e466d0424f"
+        },
+        {
+          "id": "full-18",
+          "kind": "page",
+          "pageId": "8f9e154d-c5c2-4d79-b809-984586f8311e"
+        }
+      ]
+    },
+    {
+      "id": "introduction-short",
+      "title": "Brief introduction",
+      "story": {
+        "purpose": "Introduce what HUANDENG is, how to complete a scientific-page edit, and why intent, evidence, page history and talk composition belong in one working project.",
+        "audience": "Scientific presenters, people creating slides with agents and open-source contributors",
+        "takeaway": "Open one working project and use page intent and evidence to guide editing, review, reuse and delivery."
+      },
+      "items": [
+        {
+          "id": "brief-0",
+          "kind": "page",
+          "pageId": "90353b2a-6f7b-4ee5-8a8b-10bceb538190"
+        },
+        {
+          "id": "introduction-short-story-21",
+          "kind": "page",
+          "pageId": "4ec264b7-018d-449c-8c8b-d9aede33a840"
+        },
+        {
+          "id": "introduction-short-product-22",
+          "kind": "page",
+          "pageId": "1ba18ad8-0701-4de6-83f5-555b949293d7"
+        },
+        {
+          "id": "introduction-short-product-5",
+          "kind": "page",
+          "pageId": "7d7d42a0-0db7-4d33-9b3f-5e1035097b50",
+          "notes": "Locate the shared work: project, pages, assets and files on the left, direct editing in the canvas, and properties, layers and Story on the right. An assistant works on that same page. In this brief talk we next find the original material in Assets and inspect a focused edit."
+        },
+        {
+          "id": "introduction-short-story-6",
+          "kind": "page",
+          "pageId": "95189956-cdd7-4ad9-88c8-cf28a204bb68"
+        },
+        {
+          "id": "brief-2",
+          "kind": "page",
+          "pageId": "c4b12919-5876-4acb-b63f-6a7493b54b37",
+          "versionId": "checkpoint:891ad589ee3d84a6414cbf6af1245185",
+          "notes": "For this talk, change only the explanation. Keep the figure, all twelve values, units and source. The page need not be copied; this talk pins the saved wording-edit stage."
+        },
+        {
+          "id": "introduction-short-product-4",
+          "kind": "page",
+          "pageId": "3f5561d8-477e-4954-bee2-9877c8cddc69"
+        },
+        {
+          "id": "introduction-short-story-13",
+          "kind": "page",
+          "pageId": "dc5bfe5f-326a-4b28-8536-56e51ea4397e"
+        },
+        {
+          "id": "brief-4",
+          "kind": "page",
+          "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7",
+          "notes": "The brief talk selects from the same Main pages while retaining their Slide IDs. These actual pages show the selection relationship. Next we connect assistants to this project and then consider division of work and handoff."
+        },
+        {
+          "id": "brief-1",
+          "kind": "page",
+          "pageId": "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6"
+        },
+        {
+          "id": "introduction-short-story-23",
+          "kind": "page",
+          "pageId": "e0b400eb-ddc1-4c42-af48-d420785b1d8f"
+        },
+        {
+          "id": "brief-6",
+          "kind": "page",
+          "pageId": "8f9e154d-c5c2-4d79-b809-984586f8311e"
+        }
+      ]
+    }
+  ],
+  "sectionStarts": [
+    {
+      "position": 4,
+      "slideId": "9VGD"
+    },
+    {
+      "position": 13,
+      "slideId": "7E4T"
+    },
+    {
+      "position": 19,
+      "slideId": "X5J6"
+    }
+  ]
+}

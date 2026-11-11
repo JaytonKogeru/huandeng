@@ -1,5 +1,14 @@
 # HUANDENG · DeepSeek Harness · English product introduction
 
+## Final watermark-only revision
+
+The owner froze this edition’s content and visual design. Its native author added one editable attribution object to every Main page: **English · DeepSeek V4.1 Flash 1017**. Main has **22 pages**; this edition has no separate authored Brief.
+
+An independent full-data comparison confirmed that all original page objects, Notes, page order, metadata, Presentation arrangements and scientific values remain unchanged. Final PDF/PPTX files were regenerated mechanically from that saved source. See the [current collection](../README.md), [freeze evidence](../../../docs/evidence/final-examples/native-watermark-freeze.json) and [final validation](../../../docs/PRODUCT-INTRODUCTION-VALIDATION.md).
+
+The records below document the earlier native authoring and reviews. Their original outcomes and retained limitations remain historical; this watermark pass does not constitute another content rewrite.
+
+
 The native author independently revised this project. The coordinator assembled this entry, exact saved Notes and read-only verification evidence without changing authored pages, Story, metadata or exports.
 
 [PPTD project](deck.pptd) · [PDF](Exports/deck.pdf) · [PowerPoint](Exports/deck.pptx) · [Saved speaker notes](speaker-notes.md) · [Current trial](evidence/product-trial.json) · [Current QA](evidence/product-qa.json) · [Content review](evidence/product-review.json)

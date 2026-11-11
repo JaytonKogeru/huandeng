@@ -1,0 +1,348 @@
+{
+  "schemaVersion": 3,
+  "project": "chatgpt-zh",
+  "main": [
+    {
+      "position": 1,
+      "pageId": "7995de62-e81e-46db-b250-cabc66a99b28",
+      "slideId": "TTHC"
+    },
+    {
+      "position": 2,
+      "pageId": "1dc23de8-b351-483b-a93a-f02c0444a927",
+      "slideId": "MSVB"
+    },
+    {
+      "position": 3,
+      "pageId": "1f6289fd-1d4c-4a03-a74d-4bc4955de868",
+      "slideId": "6G4G"
+    },
+    {
+      "position": 4,
+      "pageId": "b55179ed-446c-42a7-a2d5-2557defac052",
+      "slideId": "CR5K"
+    },
+    {
+      "position": 5,
+      "pageId": "3483b895-bc52-43b6-a7c4-001a0d1e4526",
+      "slideId": "ZYZB"
+    },
+    {
+      "position": 6,
+      "pageId": "05cd8517-c8ac-4e12-b2d0-40c438b91042",
+      "slideId": "HWB6"
+    },
+    {
+      "position": 7,
+      "pageId": "59857807-d9f3-4e58-9a60-275cd504ea16",
+      "slideId": "MPTA"
+    },
+    {
+      "position": 8,
+      "pageId": "c1fcdc66-1c25-45a6-9b98-83d16f063c3e",
+      "slideId": "7EKH"
+    },
+    {
+      "position": 9,
+      "pageId": "7b5bb42e-c529-49f8-ad88-62c69b567837",
+      "slideId": "HUA9"
+    },
+    {
+      "position": 10,
+      "pageId": "7b69742f-16b5-4b80-acf0-1d23966aae96",
+      "slideId": "JNZV"
+    },
+    {
+      "position": 11,
+      "pageId": "129dfdc6-685d-48b4-972b-abff11f823e6",
+      "slideId": "93SF"
+    },
+    {
+      "position": 12,
+      "pageId": "ea528c6a-2423-488d-834b-056322cca744",
+      "slideId": "E9RN"
+    },
+    {
+      "position": 13,
+      "pageId": "def43d68-1767-45f5-800a-17d648750b7e",
+      "slideId": "FE8A"
+    },
+    {
+      "position": 14,
+      "pageId": "8bb920ed-1c71-45ac-ad9d-aa00750b1ff6",
+      "slideId": "SE68"
+    },
+    {
+      "position": 15,
+      "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
+      "slideId": "U5QA"
+    },
+    {
+      "position": 16,
+      "pageId": "5f2fbea2-a43a-4532-9042-6a1d20c08801",
+      "slideId": "EJBQ"
+    },
+    {
+      "position": 17,
+      "pageId": "baca190c-e87b-415f-9c30-7c04e3fabe17",
+      "slideId": "2856"
+    },
+    {
+      "position": 18,
+      "pageId": "503c86ce-673c-4229-9251-22114e5f5da9",
+      "slideId": "4YZD"
+    },
+    {
+      "position": 19,
+      "pageId": "d64aef1b-eb88-4b05-a620-ae60a0e833de",
+      "slideId": "36EQ"
+    },
+    {
+      "position": 20,
+      "pageId": "9cdec939-7f79-4142-98a4-b9543230a4ec",
+      "slideId": "W7WP"
+    },
+    {
+      "position": 21,
+      "pageId": "c91c3fe3-836f-492f-882d-905bd4d08a9b",
+      "slideId": "YCXA"
+    },
+    {
+      "position": 22,
+      "pageId": "f68f052b-18ac-4286-ae3b-6f12e5c5d0d0",
+      "slideId": "NJM7"
+    },
+    {
+      "position": 23,
+      "pageId": "bd3c71d1-360e-4e0c-bbb6-5938970e8876",
+      "slideId": "TZXM"
+    },
+    {
+      "position": 24,
+      "pageId": "8a9bcdf1-fcb2-4214-9743-86c110c954ca",
+      "slideId": "E2RU"
+    }
+  ],
+  "presentations": [
+    {
+      "id": "introduction-full",
+      "title": "完整介绍",
+      "story": {
+        "purpose": "介绍HUANDENG是什么、如何完成一次科学页面编辑、为什么把意图、证据、页面历史和演讲复用留在一个项目里。",
+        "audience": "科研演讲作者、使用Agent制作演示的人和开源项目贡献者",
+        "takeaway": "打开同一份项目，围绕一页的意图和证据进行修改、检查、复用与交付。"
+      },
+      "items": [
+        {
+          "id": "full-0",
+          "kind": "page",
+          "pageId": "7995de62-e81e-46db-b250-cabc66a99b28"
+        },
+        {
+          "id": "introduction-full-story-21",
+          "kind": "page",
+          "pageId": "1dc23de8-b351-483b-a93a-f02c0444a927"
+        },
+        {
+          "id": "introduction-full-story-22",
+          "kind": "page",
+          "pageId": "1f6289fd-1d4c-4a03-a74d-4bc4955de868"
+        },
+        {
+          "id": "full-2",
+          "kind": "page",
+          "pageId": "b55179ed-446c-42a7-a2d5-2557defac052"
+        },
+        {
+          "id": "full-3",
+          "kind": "page",
+          "pageId": "3483b895-bc52-43b6-a7c4-001a0d1e4526"
+        },
+        {
+          "id": "full-7",
+          "kind": "page",
+          "pageId": "05cd8517-c8ac-4e12-b2d0-40c438b91042"
+        },
+        {
+          "id": "full-4",
+          "kind": "page",
+          "pageId": "59857807-d9f3-4e58-9a60-275cd504ea16"
+        },
+        {
+          "id": "full-1",
+          "kind": "page",
+          "pageId": "c1fcdc66-1c25-45a6-9b98-83d16f063c3e"
+        },
+        {
+          "id": "full-5",
+          "kind": "page",
+          "pageId": "7b5bb42e-c529-49f8-ad88-62c69b567837"
+        },
+        {
+          "id": "full-9",
+          "kind": "page",
+          "pageId": "7b69742f-16b5-4b80-acf0-1d23966aae96"
+        },
+        {
+          "id": "full-13",
+          "kind": "page",
+          "pageId": "129dfdc6-685d-48b4-972b-abff11f823e6"
+        },
+        {
+          "id": "full-10",
+          "kind": "page",
+          "pageId": "ea528c6a-2423-488d-834b-056322cca744"
+        },
+        {
+          "id": "full-6",
+          "kind": "page",
+          "pageId": "def43d68-1767-45f5-800a-17d648750b7e"
+        },
+        {
+          "id": "introduction-full-story-25",
+          "kind": "page",
+          "pageId": "8bb920ed-1c71-45ac-ad9d-aa00750b1ff6"
+        },
+        {
+          "id": "full-12",
+          "kind": "page",
+          "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead"
+        },
+        {
+          "id": "introduction-full-story-26",
+          "kind": "page",
+          "pageId": "5f2fbea2-a43a-4532-9042-6a1d20c08801"
+        },
+        {
+          "id": "full-14",
+          "kind": "page",
+          "pageId": "baca190c-e87b-415f-9c30-7c04e3fabe17"
+        },
+        {
+          "id": "full-16",
+          "kind": "page",
+          "pageId": "503c86ce-673c-4229-9251-22114e5f5da9"
+        },
+        {
+          "id": "full-11",
+          "kind": "page",
+          "pageId": "d64aef1b-eb88-4b05-a620-ae60a0e833de"
+        },
+        {
+          "id": "full-8",
+          "kind": "page",
+          "pageId": "9cdec939-7f79-4142-98a4-b9543230a4ec"
+        },
+        {
+          "id": "introduction-full-story-23",
+          "kind": "page",
+          "pageId": "c91c3fe3-836f-492f-882d-905bd4d08a9b"
+        },
+        {
+          "id": "full-15",
+          "kind": "page",
+          "pageId": "f68f052b-18ac-4286-ae3b-6f12e5c5d0d0"
+        },
+        {
+          "id": "full-17",
+          "kind": "page",
+          "pageId": "bd3c71d1-360e-4e0c-bbb6-5938970e8876"
+        },
+        {
+          "id": "full-18",
+          "kind": "page",
+          "pageId": "8a9bcdf1-fcb2-4214-9743-86c110c954ca"
+        }
+      ]
+    },
+    {
+      "id": "introduction-short",
+      "title": "简短介绍",
+      "story": {
+        "purpose": "介绍HUANDENG是什么、如何完成一次科学页面编辑、为什么把意图、证据、页面历史和演讲复用留在一个项目里。",
+        "audience": "科研演讲作者、使用Agent制作演示的人和开源项目贡献者",
+        "takeaway": "打开同一份项目，围绕一页的意图和证据进行修改、检查、复用与交付。"
+      },
+      "items": [
+        {
+          "id": "brief-0",
+          "kind": "page",
+          "pageId": "7995de62-e81e-46db-b250-cabc66a99b28"
+        },
+        {
+          "id": "introduction-short-story-21",
+          "kind": "page",
+          "pageId": "1dc23de8-b351-483b-a93a-f02c0444a927"
+        },
+        {
+          "id": "introduction-short-product-22",
+          "kind": "page",
+          "pageId": "1f6289fd-1d4c-4a03-a74d-4bc4955de868"
+        },
+        {
+          "id": "introduction-short-product-5",
+          "kind": "page",
+          "pageId": "3483b895-bc52-43b6-a7c4-001a0d1e4526",
+          "notes": "先找到同一份工作。左侧在项目、页面、素材和文件间切换；中间直接编辑；右侧保留属性、图层和Story。请求助手修改时，它处理的也是这页。短介绍接下来先从素材库找到原图，再看一次局部修改。"
+        },
+        {
+          "id": "introduction-short-story-6",
+          "kind": "page",
+          "pageId": "59857807-d9f3-4e58-9a60-275cd504ea16"
+        },
+        {
+          "id": "brief-2",
+          "kind": "page",
+          "pageId": "c1fcdc66-1c25-45a6-9b98-83d16f063c3e",
+          "versionId": "checkpoint:a687931507a66085784d787c9ad2d31d",
+          "notes": "这次只改讲法。原图、12个数值、单位与来源保持不变。页面不必复制；这次演讲固定使用已经保存的措辞修改阶段。"
+        },
+        {
+          "id": "introduction-short-product-4",
+          "kind": "page",
+          "pageId": "7b69742f-16b5-4b80-acf0-1d23966aae96"
+        },
+        {
+          "id": "introduction-short-story-13",
+          "kind": "page",
+          "pageId": "129dfdc6-685d-48b4-972b-abff11f823e6"
+        },
+        {
+          "id": "brief-4",
+          "kind": "page",
+          "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
+          "notes": "短介绍从同一份Main页面中选出需要的内容，保留原来的Slide ID。这里用真实页面展示选页关系。接下来说明不同助手如何接入这个项目，再看分工与交接。"
+        },
+        {
+          "id": "brief-1",
+          "kind": "page",
+          "pageId": "9cdec939-7f79-4142-98a4-b9543230a4ec"
+        },
+        {
+          "id": "introduction-short-story-23",
+          "kind": "page",
+          "pageId": "c91c3fe3-836f-492f-882d-905bd4d08a9b"
+        },
+        {
+          "id": "brief-6",
+          "kind": "page",
+          "pageId": "8a9bcdf1-fcb2-4214-9743-86c110c954ca"
+        }
+      ]
+    }
+  ],
+  "sectionStarts": [
+    {
+      "position": 4,
+      "slideId": "CR5K"
+    },
+    {
+      "position": 13,
+      "slideId": "FE8A"
+    },
+    {
+      "position": 19,
+      "slideId": "36EQ"
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "edition": "claude-en",
+  "scope": "brief",
+  "source": "examples/huandeng-introduction/claude-en/Exports/brief.pptx",
+  "sha256": "96547ec7b944db023a14efc7ab04fa5b1ec337b8cf15afe3a9c6bbbc7f9b77ee",
+  "pages": 9,
+  "notes": 9,
+  "nativeCharts": 1,
+  "nativeTables": 2,
+  "nativeGroups": 0,
+  "officeVersion": "16.0",
+  "powerPointExecutableVersion": "16.0.20527.20150",
+  "readOnly": true,
+  "openAndRepair": false,
+  "sourceUnchanged": true,
+  "closedOwnDocument": true,
+  "visualReview": {
+    "edition": "claude-en",
+    "scope": "brief",
+    "pages": 9,
+    "contactSheets": ["001-008", "009-009"],
+    "detailPages": [5],
+    "status": "reviewed-with-known-chart-axis-overlap",
+    "observations": [
+      {
+        "page": 5,
+        "kind": "actual-office-layout",
+        "severity": "visible-overlap",
+        "text": "Same native chart as Main page 12: x-axis title overlaps numeric tick-label band. Plot, base-pair annotations, structure and native chart all remain present."
+      }
+    ]
+  },
+  "renderedPageHashes": [
+    {
+      "slide": 1,
+      "sha256": "b6557c30acd7fa07737a33dce79c7b41a9fe1775758b34e44d0c29d6add507fb",
+      "bytes": 99481
+    },
+    {
+      "slide": 2,
+      "sha256": "bfbf307cc9e74a37ef177180c34799c8b497c56af6b75f9aeed1879b593c0360",
+      "bytes": 187791
+    },
+    {
+      "slide": 3,
+      "sha256": "bae651122f5fb134a9edec953d7950e681a11a0c2ed1d98eafb7943543b1d2af",
+      "bytes": 79809
+    },
+    {
+      "slide": 4,
+      "sha256": "addfeace06d9f45dbd5b0a4f85e8c17e6620d98d420855332cdde303c67ca979",
+      "bytes": 63334
+    },
+    {
+      "slide": 5,
+      "sha256": "956eec820ad0cbb6c66ed92a8c8232c4770aea3d207a4171a3a55c7292cfe462",
+      "bytes": 104871,
+      "selectedPreview": "images/office-claude-en-brief-05.png"
+    },
+    {
+      "slide": 6,
+      "sha256": "ef0bd8eec3e6699e672ac67729fd04b8dffe3bdfb7248670c5731dc7bc4f3ff7",
+      "bytes": 130590
+    },
+    {
+      "slide": 7,
+      "sha256": "7c3643dbbe59e39841036b5b1840c9eff78d5c4b79c13d367b27222999a68e8e",
+      "bytes": 144591
+    },
+    {
+      "slide": 8,
+      "sha256": "665dd39e71e6be93678ab6f975b44cf99c18f899f207517e189b216ffa514a8d",
+      "bytes": 92194
+    },
+    {
+      "slide": 9,
+      "sha256": "413f7b3f1f3254e8d05c2365cbc423c20a96ff9c5ea1b35101024bd045e6b80e",
+      "bytes": 70011
+    }
+  ]
+}

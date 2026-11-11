@@ -3,116 +3,140 @@ background:
   type: solid
   color: "#F7F5EF"
 elements:
+  - elementId: f-bg
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 0
+      - 0
+      - 960
+      - 540
+    fill:
+      type: solid
+      color: "#F4F1E8"
+  - elementId: f-route
+    elementType: text
+    bounds:
+      - 42
+      - 20
+      - 860
+      - 18
+    content:
+      text: ARRANGE PRESENTATION → NOTES AND VERSION
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#168C8C"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.2
   - elementId: title
     elementType: text
     bounds:
-        [42,34,880,76]
+        [42,49,875,66]
     role: title
     content:
-      {"text":"Follow the page, or hold a saved version","fontFamily":"Georgia","fontSize":32,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: live-label
-    elementType: text
+      {"text":"Give this talk its own speaking notes","fontFamily":"Segoe UI","fontSize":32,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.1}
+  - elementId: f-foot-rule
+    elementType: shape
+    shapeName: rect
     bounds:
-      - 44
-      - 129
-      - 412
-      - 35
-    content:
-      {"text":"Live","fontFamily":"Segoe UI","fontSize":25,"color":"#356F68","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: pin-label
-    elementType: text
-    bounds:
-      - 502
-      - 129
-      - 412
-      - 35
-    content:
-      {"text":"Pinned","fontFamily":"Segoe UI","fontSize":25,"color":"#C48758","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: live-page
-    elementType: image
-    src: "media/imported/d7f8feba5f9ff8f5b719f4055b01d5473155c1eb3efcfb5d3b2c67dcd5f58dbe.png"
-    sourceName: "01.png"
-    alt: "01.png"
-    bounds:
-      - 44
-      - 184
-      - 412
-      - 232
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: pinned-page
-    elementType: image
-    src: media/imported/0b4a19dfbcd31a26ee1008f81b6aec774bca6b3cda224eff3a5dee8fd2d9e046.png
-    sourceName: evidence-after.png
-    alt: evidence-after.png
-    bounds:
-      - 502
-      - 184
-      - 412
-      - 232
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: live-copy
-    elementType: text
-    bounds:
-      - 44
-      - 443
-      - 412
-      - 63
-    content:
-      {"text":"Follows the current Main page.\nThe chart labels have been refined.","fontFamily":"Segoe UI","fontSize":17,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.5}
-  - elementId: pinned-copy
-    elementType: text
-    bounds:
-      - 502
-      - 443
-      - 412
-      - 63
-    content:
-      {"text":"Keeps the saved wording-edit stage.\nA talk can select this earlier version.","fontFamily":"Segoe UI","fontSize":17,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.5}
-  - elementId: brand-small
-    elementType: image
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
-    sourceName: huandeng.png
-    alt: huandeng.png
-    bounds:
-      - 44
+      - 42
       - 510
+      - 876
+      - 1
+    fill:
+      type: solid
+      color: "#CCD2CB"
+  - elementId: f-watermark
+    elementType: text
+    bounds:
+      - 42
+      - 518
+      - 700
       - 17
+    content:
+      text: English · ChatGPT 6 Astra
+      fontFamily: Segoe UI
+      fontSize: 12
+      color: "#50646A"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.2
+  - elementId: f-position
+    elementType: text
+    bounds:
+      - 882
+      - 518
+      - 36
       - 17
+    content:
+      text: ""
+      fontFamily: Segoe UI
+      fontSize: 12
+      color: "#50646A"
+      bold: false
+      align:
+        - right
+        - top
+      lineHeight: 1.2
+      field: main-position
+  - elementId: f-talk-notes
+    elementType: image
+    bounds:
+      - 44
+      - 148.4174524714829
+      - 501
+      - 334.1650950570342
+    src: media/imported/12af5f4077a1120516f093a91057416c35643941d1f88de158dbd54e17c6ac89.png
+    sourceName: live.png
     fit:
       mode: contain
     crop:
-      left: 0.18
-      right: 0.18
-      top: 0.14
-      bottom: 0.14
-  - elementId: foot
+      top: 0.51
+  - elementId: f-talk-notes-steps
     elementType: text
     bounds:
-      - 69
-      - 513
-      - 130
-      - 17
+      - 589
+      - 168
+      - 321
+      - 237
     content:
-      {"text":"HUANDENG","fontFamily":"Segoe UI","fontSize":10,"color":"#66756B","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: position
+      text: |-
+        Enable the notes override.
+  
+        Write for this audience.
+  
+        Open Notes page
+        to rehearse the script.
+      fontFamily: Segoe UI
+      fontSize: 22
+      color: "#112D32"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.25
+  - elementId: f-talk-notes-rule
     elementType: text
     bounds:
-      - 884
-      - 512
-      - 30
-      - 18
+      - 589
+      - 431
+      - 321
+      - 63
     content:
-      {"text":"","fontFamily":"Segoe UI","fontSize":10,"color":"#66756B","bold":false,"align":["right","top"],"lineHeight":1.3,"field":"main-position"}
-notes: "Some talks should follow continuing edits; others need a particular settled stage. Live uses the current Main page; Pinned selects a named version of that page. The left is the current scientific example; the right is the actual saved wording-edit stage. The brief introduction really pins that version. The identity is the same, while the selected content version differs."
+      text: |-
+        The page stays shared;
+        the script belongs to this talk.
+      fontFamily: Segoe UI
+      fontSize: 19
+      color: "#168C8C"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.2
+notes: "Expand Notes and version for a page occurrence. Enable This occurrence uses its own speaker notes, then write the script for this talk. The image is the actual FKA9 occurrence in First edit · short talk. Its page content remains shared with Main, while these notes are specific to the occurrence. Select the same talk and page in Notes page when rehearsing. Save project for edits in the arrangement form; use Save slides for edits in the Notes page."

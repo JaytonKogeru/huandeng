@@ -46,7 +46,7 @@ Receipts record the actual source revision. Real research output stays ignored; 
 
 Preserve the pre-existing modified THUG fixture `tests/fixtures/studio/pages/identities.page`, SHA-256 `FE378A48E57B63F2B9E7286578F68EEFE856A381422930A6615F920B02622832`. It is excluded from editor commits. Formal research inputs are read and hash-checked; all test changes and exports use temporary copies.
 
-Canonical repository: `D:/_Proj/Huandeng`. Build in isolated verification worktrees. Established executable: `D:/_Proj/Huandeng/dist/HUANDENG-win32-x64/HUANDENG Editor.exe`. Desktop and Start Menu shortcuts target that path. Previous build: `D:/_Proj/Huandeng/.verification/installed-v03-backup-20261107`. Refuse replacement while the application is running; preserve this backup for a deliberate rollback.
+Canonical repository: `<editor-checkout>`. Build in isolated verification worktrees. Established executable: `<editor-checkout>/dist/HUANDENG-win32-x64/HUANDENG Editor.exe`. Desktop and Start Menu shortcuts target that path. Previous build: `<editor-checkout>/.verification/installed-v03-backup-20261107`. Refuse replacement while the application is running; preserve this backup for a deliberate rollback.
 
 Final runtime worktree: `.verification/v04-release`. Full private research-copy evidence is under its `.verification/real-project-v04/runs/2026-11-07T09-58-31-388Z-1a857588`. Actual PowerPoint PNGs and the source-preserving COM receipt are at canonical `.verification/native-v04/real-final-c2`. The prior `real-final-7c3` retains the failed visual baseline. These ignored directories contain research content and must not be committed.
 

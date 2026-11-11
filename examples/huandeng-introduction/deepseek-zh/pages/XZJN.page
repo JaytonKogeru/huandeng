@@ -167,3 +167,21 @@ elements:
       align:
         - left
         - top
+  - elementId: model-watermark
+    elementType: text
+    bounds:
+      - 690
+      - 16
+      - 222
+      - 14
+    content:
+      text: Chinese · DeepSeek V4.1 Flash 1017
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 9.5
+      color: "#6E7B72"
+      letterSpacing: 0.4
+      align:
+        - right
+        - top

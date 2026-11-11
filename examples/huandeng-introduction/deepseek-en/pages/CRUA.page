@@ -106,4 +106,20 @@ elements:
       align:
         - right
         - top
+  - bounds:
+      - 690
+      - 16
+      - 222
+      - 14
+    content:
+      align:
+        - right
+        - top
+      color: "#8C8678"
+      fontFamily: Segoe UI
+      fontSize: 9.5
+      letterSpacing: 0.4
+      text: English · DeepSeek V4.1 Flash 1017
+    elementId: attribution-watermark
+    elementType: text
 notes: History is per page. Each page has named versions for the moments worth keeping, and an operation history for the smaller saves. Restoring a version changes only that page. That is the Git idea, applied at the unit that actually changes. I don't need a copy of the whole deck to try a different title.

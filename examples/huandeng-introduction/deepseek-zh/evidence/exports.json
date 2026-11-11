@@ -1,0 +1,1605 @@
+{
+  "schemaVersion": 2,
+  "edition": "deepseek-zh",
+  "generatedAt": "2026-11-11T09:30:03Z",
+  "toolVersion": "HUANDENG 0.19.0",
+  "status": "passed",
+  "scope": "Final frozen-source PDF/PPTX exports and structural validation; Office visual QA is recorded separately.",
+  "pathBase": "project-root",
+  "records": [
+    {
+      "edition": "deepseek-zh",
+      "collection": "main",
+      "selection": {
+        "kind": "main",
+        "presentationId": null
+      },
+      "file": "Exports/deck.pdf",
+      "format": "pdf",
+      "sha256": "db2abdad5e4a9340d7027309ade9ce2a9f181ad280388b807ed5b0a564c70798",
+      "bytes": 3059911,
+      "pageCount": 22,
+      "expectedPageCount": 22,
+      "pageSizePt": [
+        960,
+        540
+      ],
+      "watermark": "Chinese · DeepSeek V4.1 Flash 1017",
+      "watermarkPages": 22,
+      "status": "passed",
+      "writerComplete": true,
+      "writerErrorCount": 0,
+      "warnings": [],
+      "warningCount": 0,
+      "pages": [
+        {
+          "position": 1,
+          "pageId": "b473ed1a-c554-4ee3-9e8e-688e00be99b9",
+          "sizePt": [
+            960.0,
+            540.0
+          ],
+          "watermarkPresent": true,
+          "textBlocks": 10,
+          "textSpans": 33,
+          "imageReferences": 2,
+          "vectorDrawingGroups": 6
+        },
+        {
+          "position": 2,
+          "pageId": "62c6d0cc-885f-485c-a81e-baeaff6d1940",
+          "sizePt": [
+            960.0,
+            540.0
+          ],
+          "watermarkPresent": true,
+          "textBlocks": 25,
+          "textSpans": 46,
+          "imageReferences": 4,
+          "vectorDrawingGroups": 9
+        },
+        {
+          "position": 3,
+          "pageId": "307fe424-d34a-4b76-b801-4e8f63ba8cbb",
+          "sizePt": [
+            960.0,
+            540.0
+          ],
+          "watermarkPresent": true,
+          "textBlocks": 2,
+          "textSpans": 2,
+          "imageReferences": 0,
+          "vectorDrawingGroups": 5
+        },
+        {
+          "position": 4,
+          "pageId": "16f2ab87-6962-4100-b2f6-1ab8077b01c7",
+          "sizePt": [
+            960.0,
+            540.0
+          ],
+          "watermarkPresent": true,
+          "textBlocks": 11,
+          "textSpans": 24,
+          "imageReferences": 0,
+          "vectorDrawingGroups": 8
+        },
+        {
+          "position": 5,
+          "pageId": "b6749c12-2c5c-42b4-8437-763f6a800abf",
+          "sizePt": [
+            960.0,
+            540.0
+          ],
+          "watermarkPresent": true,
+          "textBlocks": 8,
+          "textSpans": 19,
+          "imageReferences": 0,
+          "vectorDrawingGroups": 6
+        },
+        {
+          "position": 6,
+          "pageId": "007717f6-4756-4fc1-acdb-91ac96df37e6",
+          "sizePt": [
+            960.0,
+            540.0
+          ],
+          "watermarkPresent": true,
+          "textBlocks": 21,
+          "textSpans": 46,
+          "imageReferences": 0,
+          "vectorDrawingGroups": 14
+        },
+        {
+          "position": 7,
+          "pageId": "a008b83f-9735-4495-8c59-0b2a2260c244",
+          "sizePt": [
+            960.0,
+            540.0
+          ],
+          "watermarkPresent": true,
+          "textBlocks": 2,
+          "textSpans": 2,
+          "imageReferences": 0,
+          "vectorDrawingGroups": 5
+        },
+        {
+          "position": 8,
+          "pageId": "4a40e022-4dcc-41ea-b645-a279b3f1b1e3",
+          "sizePt": [
+            960.0,
+            540.0
+          ],
+          "watermarkPresent": true,
+          "textBlocks": 11,
+          "textSpans": 23,
+          "imageReferences": 1,
+          "vectorDrawingGroups": 6
+        },
+        {
+          "position": 9,
+          "pageId": "53547db4-e3af-4397-a930-297080fef9c4",
+          "sizePt": [
+            960.0,
+            540.0
+          ],
+          "watermarkPresent": true,
+          "textBlocks": 7,
+          "textSpans": 24,
+          "imageReferences": 1,
+          "vectorDrawingGroups": 6
+        },
+        {
+          "position": 10,
+          "pageId": "21d1d0de-ddc9-49ad-ad20-75e16d889012",
+          "sizePt": [
+            960.0,
+            540.0
+          ],
+          "watermarkPresent": true,
+          "textBlocks": 6,
+          "textSpans": 8,
+          "imageReferences": 2,
+          "vectorDrawingGroups": 7
+        },
+        {
+          "position": 11,
+          "pageId": "2bda7c83-3e1b-46ee-83c7-e9b9b59a3578",
+          "sizePt": [
+            960.0,
+            540.0
+          ],
+          "watermarkPresent": true,
+          "textBlocks": 16,
+          "textSpans": 41,
+          "imageReferences": 1,
+          "vectorDrawingGroups": 6
+        },
+        {
+          "position": 12,
+          "pageId": "415b064f-c96d-4e9c-b38a-ff1593101ee0",
+          "sizePt": [
+            960.0,
+            540.0
+          ],
+          "watermarkPresent": true,
+          "textBlocks": 16,
+          "textSpans": 22,
+          "imageReferences": 1,
+          "vectorDrawingGroups": 8
+        },
+        {
+          "position": 13,
+          "pageId": "442751c7-1ad1-457f-acbb-c1e8611f0ecd",
+          "sizePt": [
+            960.0,
+            540.0
+          ],
+          "watermarkPresent": true,
+          "textBlocks": 10,
+          "textSpans": 41,
+          "imageReferences": 2,
+          "vectorDrawingGroups": 22
+        },
+        {
+          "position": 14,
+          "pageId": "aab5e915-8c00-419d-a5b2-4377bd060559",
+          "sizePt": [
+            960.0,
+            540.0
+          ],
+          "watermarkPresent": true,
+          "textBlocks": 12,
+          "textSpans": 21,
+          "imageReferences": 3,
+          "vectorDrawingGroups": 6
+        },
+        {
+          "position": 15,
+          "pageId": "81904faa-df61-47e7-a6ad-a02563b1c171",
+          "sizePt": [
+            960.0,
+            540.0
+          ],
+          "watermarkPresent": true,
+          "textBlocks": 11,
+          "textSpans": 23,
+          "imageReferences": 1,
+          "vectorDrawingGroups": 7
+        },
+        {
+          "position": 16,
+          "pageId": "d23386ad-2c83-44fd-aa92-db09358af429",
+          "sizePt": [
+            960.0,
+            540.0
+          ],
+          "watermarkPresent": true,
+          "textBlocks": 8,
+          "textSpans": 24,
+          "imageReferences": 2,
+          "vectorDrawingGroups": 8
+        },
+        {
+          "position": 17,
+          "pageId": "e42a9867-65cf-4d38-a13b-ddf588dcdc68",
+          "sizePt": [
+            960.0,
+            540.0
+          ],
+          "watermarkPresent": true,
+          "textBlocks": 16,
+          "textSpans": 29,
+          "imageReferences": 1,
+          "vectorDrawingGroups": 6
+        },
+        {
+          "position": 18,
+          "pageId": "844dd3c1-4016-465d-a245-1b0f5fc01be8",
+          "sizePt": [
+            960.0,
+            540.0
+          ],
+          "watermarkPresent": true,
+          "textBlocks": 21,
+          "textSpans": 42,
+          "imageReferences": 3,
+          "vectorDrawingGroups": 11
+        },
+        {
+          "position": 19,
+          "pageId": "39c44252-dda5-483d-867f-4710547c0065",
+          "sizePt": [
+            960.0,
+            540.0
+          ],
+          "watermarkPresent": true,
+          "textBlocks": 16,
+          "textSpans": 113,
+          "imageReferences": 3,
+          "vectorDrawingGroups": 39
+        },
+        {
+          "position": 20,
+          "pageId": "3df19be8-3e3c-4870-83e1-94ba44549899",
+          "sizePt": [
+            960.0,
+            540.0
+          ],
+          "watermarkPresent": true,
+          "textBlocks": 11,
+          "textSpans": 67,
+          "imageReferences": 1,
+          "vectorDrawingGroups": 30
+        },
+        {
+          "position": 21,
+          "pageId": "bfdbde14-8414-4f84-baf4-4b413fb6a246",
+          "sizePt": [
+            960.0,
+            540.0
+          ],
+          "watermarkPresent": true,
+          "textBlocks": 16,
+          "textSpans": 41,
+          "imageReferences": 4,
+          "vectorDrawingGroups": 5
+        },
+        {
+          "position": 22,
+          "pageId": "4dd70003-c817-49c2-a367-786594eaab59",
+          "sizePt": [
+            960.0,
+            540.0
+          ],
+          "watermarkPresent": true,
+          "textBlocks": 13,
+          "textSpans": 36,
+          "imageReferences": 2,
+          "vectorDrawingGroups": 5
+        }
+      ],
+      "objectSemantics": "PDF counts describe text, image references and vector drawing groups; editable table/chart semantics and speaker notes are not part of this PDF check."
+    },
+    {
+      "edition": "deepseek-zh",
+      "collection": "main",
+      "selection": {
+        "kind": "main",
+        "presentationId": null
+      },
+      "file": "Exports/deck.pptx",
+      "format": "pptx",
+      "sha256": "7c4f394d650b52e9b9c42ca461e02aafa6f1263eec1d4f4a7e81a6f95183df23",
+      "bytes": 2684805,
+      "pageCount": 22,
+      "expectedPageCount": 22,
+      "pageSizePt": [
+        960.0,
+        540.0
+      ],
+      "watermark": "Chinese · DeepSeek V4.1 Flash 1017",
+      "watermarkPages": 22,
+      "status": "passed",
+      "writerComplete": true,
+      "writerErrorCount": 0,
+      "warnings": [
+        {
+          "code": "FONT_FILES_NOT_EMBEDDED",
+          "severity": "warning"
+        }
+      ],
+      "warningCount": 1,
+      "nativeCounts": {
+        "text": 190,
+        "images": 34,
+        "tables": 3,
+        "charts": 0,
+        "groups": 0,
+        "shapes": 230,
+        "connectors": 0
+      },
+      "notes": {
+        "parts": 22,
+        "usedParts": 22,
+        "matchingPages": 22,
+        "nonemptyPages": 22,
+        "comparison": "NFKC text with whitespace and zero-width separators normalized; resolved occurrence override takes precedence"
+      },
+      "chartParts": 0,
+      "chartsInsideGroups": 0,
+      "zip": {
+        "entries": 122,
+        "duplicatePaths": [],
+        "crcFailure": null
+      },
+      "pages": [
+        {
+          "position": 1,
+          "pageId": "b473ed1a-c554-4ee3-9e8e-688e00be99b9",
+          "occurrenceId": null,
+          "slidePart": "ppt/slides/slide1.xml",
+          "counts": {
+            "text": 9,
+            "images": 2,
+            "tables": 0,
+            "charts": 0,
+            "groups": 0,
+            "shapes": 10,
+            "connectors": 0
+          },
+          "sourceElementTypes": {
+            "image": 2,
+            "text": 9,
+            "shape": 1
+          },
+          "watermarkTextObjects": 1,
+          "chartTargets": [],
+          "chartsInsideGroups": 0,
+          "notesPart": "ppt/notesSlides/notesSlide1.xml",
+          "notesExpectedChars": 97,
+          "notesActualChars": 97,
+          "notesExpectedSha256": "4079d2763053dbf3378b2e53847bed232f1bc32c1bc650be225d00612b848071",
+          "notesActualSha256": "4079d2763053dbf3378b2e53847bed232f1bc32c1bc650be225d00612b848071",
+          "notesMatch": true
+        },
+        {
+          "position": 2,
+          "pageId": "62c6d0cc-885f-485c-a81e-baeaff6d1940",
+          "occurrenceId": null,
+          "slidePart": "ppt/slides/slide2.xml",
+          "counts": {
+            "text": 21,
+            "images": 4,
+            "tables": 0,
+            "charts": 0,
+            "groups": 0,
+            "shapes": 25,
+            "connectors": 0
+          },
+          "sourceElementTypes": {
+            "text": 21,
+            "shape": 3,
+            "image": 4,
+            "line": 1
+          },
+          "watermarkTextObjects": 1,
+          "chartTargets": [],
+          "chartsInsideGroups": 0,
+          "notesPart": "ppt/notesSlides/notesSlide2.xml",
+          "notesExpectedChars": 77,
+          "notesActualChars": 77,
+          "notesExpectedSha256": "642228ba509c118b7088cf6377901b6c258acb3de690ffb58538183a5726d99e",
+          "notesActualSha256": "642228ba509c118b7088cf6377901b6c258acb3de690ffb58538183a5726d99e",
+          "notesMatch": true
+        },
+        {
+          "position": 3,
+          "pageId": "307fe424-d34a-4b76-b801-4e8f63ba8cbb",
+          "occurrenceId": null,
+          "slidePart": "ppt/slides/slide3.xml",
+          "counts": {
+            "text": 2,
+            "images": 0,
+            "tables": 0,
+            "charts": 0,
+            "groups": 0,
+            "shapes": 2,
+            "connectors": 0
+          },
+          "sourceElementTypes": {
+            "text": 2
+          },
+          "watermarkTextObjects": 1,
+          "chartTargets": [],
+          "chartsInsideGroups": 0,
+          "notesPart": "ppt/notesSlides/notesSlide3.xml",
+          "notesExpectedChars": 28,
+          "notesActualChars": 28,
+          "notesExpectedSha256": "166ea778b3a4e37f92e66ed4510688ec706f8931c3586ed8b0abb7c2a19e1cbd",
+          "notesActualSha256": "166ea778b3a4e37f92e66ed4510688ec706f8931c3586ed8b0abb7c2a19e1cbd",
+          "notesMatch": true
+        },
+        {
+          "position": 4,
+          "pageId": "16f2ab87-6962-4100-b2f6-1ab8077b01c7",
+          "occurrenceId": null,
+          "slidePart": "ppt/slides/slide4.xml",
+          "counts": {
+            "text": 8,
+            "images": 0,
+            "tables": 0,
+            "charts": 0,
+            "groups": 0,
+            "shapes": 11,
+            "connectors": 0
+          },
+          "sourceElementTypes": {
+            "shape": 2,
+            "text": 8,
+            "line": 1
+          },
+          "watermarkTextObjects": 1,
+          "chartTargets": [],
+          "chartsInsideGroups": 0,
+          "notesPart": "ppt/notesSlides/notesSlide4.xml",
+          "notesExpectedChars": 115,
+          "notesActualChars": 115,
+          "notesExpectedSha256": "d21ca25f204337d5a42c7f5c12334972944159dad73a287e1535488f3dad3987",
+          "notesActualSha256": "d21ca25f204337d5a42c7f5c12334972944159dad73a287e1535488f3dad3987",
+          "notesMatch": true
+        },
+        {
+          "position": 5,
+          "pageId": "b6749c12-2c5c-42b4-8437-763f6a800abf",
+          "occurrenceId": null,
+          "slidePart": "ppt/slides/slide5.xml",
+          "counts": {
+            "text": 7,
+            "images": 0,
+            "tables": 0,
+            "charts": 0,
+            "groups": 0,
+            "shapes": 8,
+            "connectors": 0
+          },
+          "sourceElementTypes": {
+            "text": 7,
+            "line": 1
+          },
+          "watermarkTextObjects": 1,
+          "chartTargets": [],
+          "chartsInsideGroups": 0,
+          "notesPart": "ppt/notesSlides/notesSlide5.xml",
+          "notesExpectedChars": 81,
+          "notesActualChars": 81,
+          "notesExpectedSha256": "f609af8c8ba4331f17c2f650138d63e265721caf90cbf9c8f2394c874270c3cc",
+          "notesActualSha256": "f609af8c8ba4331f17c2f650138d63e265721caf90cbf9c8f2394c874270c3cc",
+          "notesMatch": true
+        },
+        {
+          "position": 6,
+          "pageId": "007717f6-4756-4fc1-acdb-91ac96df37e6",
+          "occurrenceId": null,
+          "slidePart": "ppt/slides/slide6.xml",
+          "counts": {
+            "text": 16,
+            "images": 0,
+            "tables": 0,
+            "charts": 0,
+            "groups": 0,
+            "shapes": 25,
+            "connectors": 0
+          },
+          "sourceElementTypes": {
+            "text": 16,
+            "shape": 4,
+            "line": 5
+          },
+          "watermarkTextObjects": 1,
+          "chartTargets": [],
+          "chartsInsideGroups": 0,
+          "notesPart": "ppt/notesSlides/notesSlide6.xml",
+          "notesExpectedChars": 104,
+          "notesActualChars": 104,
+          "notesExpectedSha256": "aa444ac09b401d0c46f144b4db2386bc6a56f6669327bd4191ff19eb2ce231d3",
+          "notesActualSha256": "aa444ac09b401d0c46f144b4db2386bc6a56f6669327bd4191ff19eb2ce231d3",
+          "notesMatch": true
+        },
+        {
+          "position": 7,
+          "pageId": "a008b83f-9735-4495-8c59-0b2a2260c244",
+          "occurrenceId": null,
+          "slidePart": "ppt/slides/slide7.xml",
+          "counts": {
+            "text": 2,
+            "images": 0,
+            "tables": 0,
+            "charts": 0,
+            "groups": 0,
+            "shapes": 2,
+            "connectors": 0
+          },
+          "sourceElementTypes": {
+            "text": 2
+          },
+          "watermarkTextObjects": 1,
+          "chartTargets": [],
+          "chartsInsideGroups": 0,
+          "notesPart": "ppt/notesSlides/notesSlide7.xml",
+          "notesExpectedChars": 35,
+          "notesActualChars": 35,
+          "notesExpectedSha256": "6392d68936484b99e3fcfb83a71d9c730a68fa3604bf93f419e01be1de22b11f",
+          "notesActualSha256": "6392d68936484b99e3fcfb83a71d9c730a68fa3604bf93f419e01be1de22b11f",
+          "notesMatch": true
+        },
+        {
+          "position": 8,
+          "pageId": "4a40e022-4dcc-41ea-b645-a279b3f1b1e3",
+          "occurrenceId": null,
+          "slidePart": "ppt/slides/slide8.xml",
+          "counts": {
+            "text": 5,
+            "images": 1,
+            "tables": 0,
+            "charts": 0,
+            "groups": 0,
+            "shapes": 6,
+            "connectors": 0
+          },
+          "sourceElementTypes": {
+            "text": 5,
+            "image": 1,
+            "line": 1
+          },
+          "watermarkTextObjects": 1,
+          "chartTargets": [],
+          "chartsInsideGroups": 0,
+          "notesPart": "ppt/notesSlides/notesSlide8.xml",
+          "notesExpectedChars": 96,
+          "notesActualChars": 96,
+          "notesExpectedSha256": "43365d98211ad8617260e7797e8cc35924b49ff8751f80a1eaa08feec0c20ee2",
+          "notesActualSha256": "43365d98211ad8617260e7797e8cc35924b49ff8751f80a1eaa08feec0c20ee2",
+          "notesMatch": true
+        },
+        {
+          "position": 9,
+          "pageId": "53547db4-e3af-4397-a930-297080fef9c4",
+          "occurrenceId": null,
+          "slidePart": "ppt/slides/slide9.xml",
+          "counts": {
+            "text": 5,
+            "images": 1,
+            "tables": 0,
+            "charts": 0,
+            "groups": 0,
+            "shapes": 6,
+            "connectors": 0
+          },
+          "sourceElementTypes": {
+            "text": 5,
+            "shape": 1,
+            "image": 1
+          },
+          "watermarkTextObjects": 1,
+          "chartTargets": [],
+          "chartsInsideGroups": 0,
+          "notesPart": "ppt/notesSlides/notesSlide9.xml",
+          "notesExpectedChars": 123,
+          "notesActualChars": 123,
+          "notesExpectedSha256": "61aaa621b22078974650e42f3185e9dd9bf5fb199abebc67859edfa6be9ddea2",
+          "notesActualSha256": "61aaa621b22078974650e42f3185e9dd9bf5fb199abebc67859edfa6be9ddea2",
+          "notesMatch": true
+        },
+        {
+          "position": 10,
+          "pageId": "21d1d0de-ddc9-49ad-ad20-75e16d889012",
+          "occurrenceId": null,
+          "slidePart": "ppt/slides/slide10.xml",
+          "counts": {
+            "text": 5,
+            "images": 2,
+            "tables": 0,
+            "charts": 0,
+            "groups": 0,
+            "shapes": 7,
+            "connectors": 0
+          },
+          "sourceElementTypes": {
+            "text": 5,
+            "shape": 2,
+            "image": 2
+          },
+          "watermarkTextObjects": 1,
+          "chartTargets": [],
+          "chartsInsideGroups": 0,
+          "notesPart": "ppt/notesSlides/notesSlide10.xml",
+          "notesExpectedChars": 105,
+          "notesActualChars": 105,
+          "notesExpectedSha256": "36dac8b8927c60c0cd71c8df58c88a66904e94116bd7a81206f528186beb7c44",
+          "notesActualSha256": "36dac8b8927c60c0cd71c8df58c88a66904e94116bd7a81206f528186beb7c44",
+          "notesMatch": true
+        },
+        {
+          "position": 11,
+          "pageId": "2bda7c83-3e1b-46ee-83c7-e9b9b59a3578",
+          "occurrenceId": null,
+          "slidePart": "ppt/slides/slide11.xml",
+          "counts": {
+            "text": 7,
+            "images": 1,
+            "tables": 0,
+            "charts": 0,
+            "groups": 0,
+            "shapes": 8,
+            "connectors": 0
+          },
+          "sourceElementTypes": {
+            "text": 7,
+            "shape": 1,
+            "image": 1
+          },
+          "watermarkTextObjects": 1,
+          "chartTargets": [],
+          "chartsInsideGroups": 0,
+          "notesPart": "ppt/notesSlides/notesSlide11.xml",
+          "notesExpectedChars": 143,
+          "notesActualChars": 143,
+          "notesExpectedSha256": "1a12b23b6a3672e02dd60b10bbda6395efd365ef5046efdb32411432d465460c",
+          "notesActualSha256": "1a12b23b6a3672e02dd60b10bbda6395efd365ef5046efdb32411432d465460c",
+          "notesMatch": true
+        },
+        {
+          "position": 12,
+          "pageId": "415b064f-c96d-4e9c-b38a-ff1593101ee0",
+          "occurrenceId": null,
+          "slidePart": "ppt/slides/slide12.xml",
+          "counts": {
+            "text": 7,
+            "images": 1,
+            "tables": 0,
+            "charts": 0,
+            "groups": 0,
+            "shapes": 10,
+            "connectors": 0
+          },
+          "sourceElementTypes": {
+            "text": 7,
+            "shape": 2,
+            "image": 1,
+            "line": 1
+          },
+          "watermarkTextObjects": 1,
+          "chartTargets": [],
+          "chartsInsideGroups": 0,
+          "notesPart": "ppt/notesSlides/notesSlide12.xml",
+          "notesExpectedChars": 103,
+          "notesActualChars": 103,
+          "notesExpectedSha256": "b8ca83f2b1d69b87aa0409932e10ba75012680d11fab3313def1518d3d181d34",
+          "notesActualSha256": "b8ca83f2b1d69b87aa0409932e10ba75012680d11fab3313def1518d3d181d34",
+          "notesMatch": true
+        },
+        {
+          "position": 13,
+          "pageId": "442751c7-1ad1-457f-acbb-c1e8611f0ecd",
+          "occurrenceId": null,
+          "slidePart": "ppt/slides/slide13.xml",
+          "counts": {
+            "text": 7,
+            "images": 2,
+            "tables": 1,
+            "charts": 0,
+            "groups": 0,
+            "shapes": 7,
+            "connectors": 0
+          },
+          "sourceElementTypes": {
+            "text": 7,
+            "image": 2,
+            "table": 1
+          },
+          "watermarkTextObjects": 1,
+          "chartTargets": [],
+          "chartsInsideGroups": 0,
+          "notesPart": "ppt/notesSlides/notesSlide13.xml",
+          "notesExpectedChars": 120,
+          "notesActualChars": 120,
+          "notesExpectedSha256": "228e5e9a3bb69974d15dded8d25652c69be975cd0b89c8f34635533fac47dc00",
+          "notesActualSha256": "228e5e9a3bb69974d15dded8d25652c69be975cd0b89c8f34635533fac47dc00",
+          "notesMatch": true
+        },
+        {
+          "position": 14,
+          "pageId": "aab5e915-8c00-419d-a5b2-4377bd060559",
+          "occurrenceId": null,
+          "slidePart": "ppt/slides/slide14.xml",
+          "counts": {
+            "text": 9,
+            "images": 3,
+            "tables": 0,
+            "charts": 0,
+            "groups": 0,
+            "shapes": 10,
+            "connectors": 0
+          },
+          "sourceElementTypes": {
+            "text": 9,
+            "image": 3,
+            "shape": 1
+          },
+          "watermarkTextObjects": 1,
+          "chartTargets": [],
+          "chartsInsideGroups": 0,
+          "notesPart": "ppt/notesSlides/notesSlide14.xml",
+          "notesExpectedChars": 76,
+          "notesActualChars": 76,
+          "notesExpectedSha256": "6e527fea33dfd6f18f464e07131c2853ebc7968f51b96149488b493faeda6177",
+          "notesActualSha256": "6e527fea33dfd6f18f464e07131c2853ebc7968f51b96149488b493faeda6177",
+          "notesMatch": true
+        },
+        {
+          "position": 15,
+          "pageId": "81904faa-df61-47e7-a6ad-a02563b1c171",
+          "occurrenceId": null,
+          "slidePart": "ppt/slides/slide15.xml",
+          "counts": {
+            "text": 7,
+            "images": 1,
+            "tables": 0,
+            "charts": 0,
+            "groups": 0,
+            "shapes": 9,
+            "connectors": 0
+          },
+          "sourceElementTypes": {
+            "text": 7,
+            "shape": 2,
+            "image": 1
+          },
+          "watermarkTextObjects": 1,
+          "chartTargets": [],
+          "chartsInsideGroups": 0,
+          "notesPart": "ppt/notesSlides/notesSlide15.xml",
+          "notesExpectedChars": 138,
+          "notesActualChars": 138,
+          "notesExpectedSha256": "4ee0f6fb950f99e70db9199efa289a0b7d5cf19fd0aa12d236d4f54b7a7ffca6",
+          "notesActualSha256": "4ee0f6fb950f99e70db9199efa289a0b7d5cf19fd0aa12d236d4f54b7a7ffca6",
+          "notesMatch": true
+        },
+        {
+          "position": 16,
+          "pageId": "d23386ad-2c83-44fd-aa92-db09358af429",
+          "occurrenceId": null,
+          "slidePart": "ppt/slides/slide16.xml",
+          "counts": {
+            "text": 10,
+            "images": 2,
+            "tables": 0,
+            "charts": 0,
+            "groups": 0,
+            "shapes": 13,
+            "connectors": 0
+          },
+          "sourceElementTypes": {
+            "text": 10,
+            "shape": 2,
+            "image": 2,
+            "line": 1
+          },
+          "watermarkTextObjects": 1,
+          "chartTargets": [],
+          "chartsInsideGroups": 0,
+          "notesPart": "ppt/notesSlides/notesSlide16.xml",
+          "notesExpectedChars": 85,
+          "notesActualChars": 85,
+          "notesExpectedSha256": "afc373db7e887ac54825751193dd9a3987fd39a4fef2212d3023096951c3b9c2",
+          "notesActualSha256": "afc373db7e887ac54825751193dd9a3987fd39a4fef2212d3023096951c3b9c2",
+          "notesMatch": true
+        },
+        {
+          "position": 17,
+          "pageId": "e42a9867-65cf-4d38-a13b-ddf588dcdc68",
+          "occurrenceId": null,
+          "slidePart": "ppt/slides/slide17.xml",
+          "counts": {
+            "text": 8,
+            "images": 1,
+            "tables": 0,
+            "charts": 0,
+            "groups": 0,
+            "shapes": 9,
+            "connectors": 0
+          },
+          "sourceElementTypes": {
+            "text": 8,
+            "shape": 1,
+            "image": 1
+          },
+          "watermarkTextObjects": 1,
+          "chartTargets": [],
+          "chartsInsideGroups": 0,
+          "notesPart": "ppt/notesSlides/notesSlide17.xml",
+          "notesExpectedChars": 104,
+          "notesActualChars": 104,
+          "notesExpectedSha256": "7af937e07427aa827a87bf4cdc9558ad86d4c3d2ba8d2ca348f22de2f749c957",
+          "notesActualSha256": "7af937e07427aa827a87bf4cdc9558ad86d4c3d2ba8d2ca348f22de2f749c957",
+          "notesMatch": true
+        },
+        {
+          "position": 18,
+          "pageId": "844dd3c1-4016-465d-a245-1b0f5fc01be8",
+          "occurrenceId": null,
+          "slidePart": "ppt/slides/slide18.xml",
+          "counts": {
+            "text": 19,
+            "images": 3,
+            "tables": 0,
+            "charts": 0,
+            "groups": 0,
+            "shapes": 25,
+            "connectors": 0
+          },
+          "sourceElementTypes": {
+            "text": 19,
+            "shape": 4,
+            "image": 3,
+            "line": 2
+          },
+          "watermarkTextObjects": 1,
+          "chartTargets": [],
+          "chartsInsideGroups": 0,
+          "notesPart": "ppt/notesSlides/notesSlide18.xml",
+          "notesExpectedChars": 115,
+          "notesActualChars": 115,
+          "notesExpectedSha256": "9ad8e1f4a80016b06167d2b5acee61868d23dd482244919d8ab56a19b0778798",
+          "notesActualSha256": "9ad8e1f4a80016b06167d2b5acee61868d23dd482244919d8ab56a19b0778798",
+          "notesMatch": true
+        },
+        {
+          "position": 19,
+          "pageId": "39c44252-dda5-483d-867f-4710547c0065",
+          "occurrenceId": null,
+          "slidePart": "ppt/slides/slide19.xml",
+          "counts": {
+            "text": 9,
+            "images": 3,
+            "tables": 1,
+            "charts": 0,
+            "groups": 0,
+            "shapes": 9,
+            "connectors": 0
+          },
+          "sourceElementTypes": {
+            "text": 9,
+            "table": 1,
+            "image": 3
+          },
+          "watermarkTextObjects": 1,
+          "chartTargets": [],
+          "chartsInsideGroups": 0,
+          "notesPart": "ppt/notesSlides/notesSlide19.xml",
+          "notesExpectedChars": 195,
+          "notesActualChars": 195,
+          "notesExpectedSha256": "6936370e1d37a2906802d611f77ed313aa9e89a3a42a82d9d49a1d6ab244eb38",
+          "notesActualSha256": "6936370e1d37a2906802d611f77ed313aa9e89a3a42a82d9d49a1d6ab244eb38",
+          "notesMatch": true
+        },
+        {
+          "position": 20,
+          "pageId": "3df19be8-3e3c-4870-83e1-94ba44549899",
+          "occurrenceId": null,
+          "slidePart": "ppt/slides/slide20.xml",
+          "counts": {
+            "text": 7,
+            "images": 1,
+            "tables": 1,
+            "charts": 0,
+            "groups": 0,
+            "shapes": 8,
+            "connectors": 0
+          },
+          "sourceElementTypes": {
+            "text": 7,
+            "shape": 1,
+            "image": 1,
+            "table": 1
+          },
+          "watermarkTextObjects": 1,
+          "chartTargets": [],
+          "chartsInsideGroups": 0,
+          "notesPart": "ppt/notesSlides/notesSlide20.xml",
+          "notesExpectedChars": 115,
+          "notesActualChars": 115,
+          "notesExpectedSha256": "b17902065991aad2301f4bfbf3aa34f3f9618b0ca98e562f04b1523d430ecc27",
+          "notesActualSha256": "b17902065991aad2301f4bfbf3aa34f3f9618b0ca98e562f04b1523d430ecc27",
+          "notesMatch": true
+        },
+        {
+          "position": 21,
+          "pageId": "bfdbde14-8414-4f84-baf4-4b413fb6a246",
+          "occurrenceId": null,
+          "slidePart": "ppt/slides/slide21.xml",
+          "counts": {
+            "text": 11,
+            "images": 4,
+            "tables": 0,
+            "charts": 0,
+            "groups": 0,
+            "shapes": 11,
+            "connectors": 0
+          },
+          "sourceElementTypes": {
+            "text": 11,
+            "image": 4
+          },
+          "watermarkTextObjects": 1,
+          "chartTargets": [],
+          "chartsInsideGroups": 0,
+          "notesPart": "ppt/notesSlides/notesSlide21.xml",
+          "notesExpectedChars": 158,
+          "notesActualChars": 158,
+          "notesExpectedSha256": "371c40d8c026fec1fcb7af4cd61e41ffaa291e452e02024ab0063a01c24a33f9",
+          "notesActualSha256": "371c40d8c026fec1fcb7af4cd61e41ffaa291e452e02024ab0063a01c24a33f9",
+          "notesMatch": true
+        },
+        {
+          "position": 22,
+          "pageId": "4dd70003-c817-49c2-a367-786594eaab59",
+          "occurrenceId": null,
+          "slidePart": "ppt/slides/slide22.xml",
+          "counts": {
+            "text": 9,
+            "images": 2,
+            "tables": 0,
+            "charts": 0,
+            "groups": 0,
+            "shapes": 9,
+            "connectors": 0
+          },
+          "sourceElementTypes": {
+            "image": 2,
+            "text": 9
+          },
+          "watermarkTextObjects": 1,
+          "chartTargets": [],
+          "chartsInsideGroups": 0,
+          "notesPart": "ppt/notesSlides/notesSlide22.xml",
+          "notesExpectedChars": 174,
+          "notesActualChars": 174,
+          "notesExpectedSha256": "94c9656972d325db233c40ea91ec2f1fc60a3f257d3bcb1faf2c742f59f3e143",
+          "notesActualSha256": "94c9656972d325db233c40ea91ec2f1fc60a3f257d3bcb1faf2c742f59f3e143",
+          "notesMatch": true
+        }
+      ],
+      "fallbackImages": []
+    },
+    {
+      "edition": "deepseek-zh",
+      "collection": "brief",
+      "selection": {
+        "kind": "presentation",
+        "presentationId": "brief"
+      },
+      "file": "Exports/brief.pdf",
+      "format": "pdf",
+      "sha256": "7d93fecacdf972ee6fc98e8736b0886c16dbe54a157fd5fd513bc601f715782d",
+      "bytes": 1845720,
+      "pageCount": 12,
+      "expectedPageCount": 12,
+      "pageSizePt": [
+        960,
+        540
+      ],
+      "watermark": "Chinese · DeepSeek V4.1 Flash 1017",
+      "watermarkPages": 12,
+      "status": "passed",
+      "writerComplete": true,
+      "writerErrorCount": 0,
+      "warnings": [],
+      "warningCount": 0,
+      "pages": [
+        {
+          "position": 1,
+          "pageId": "b473ed1a-c554-4ee3-9e8e-688e00be99b9",
+          "sizePt": [
+            960.0,
+            540.0
+          ],
+          "watermarkPresent": true,
+          "textBlocks": 10,
+          "textSpans": 33,
+          "imageReferences": 2,
+          "vectorDrawingGroups": 6
+        },
+        {
+          "position": 2,
+          "pageId": "62c6d0cc-885f-485c-a81e-baeaff6d1940",
+          "sizePt": [
+            960.0,
+            540.0
+          ],
+          "watermarkPresent": true,
+          "textBlocks": 25,
+          "textSpans": 46,
+          "imageReferences": 4,
+          "vectorDrawingGroups": 9
+        },
+        {
+          "position": 3,
+          "pageId": "16f2ab87-6962-4100-b2f6-1ab8077b01c7",
+          "sizePt": [
+            960.0,
+            540.0
+          ],
+          "watermarkPresent": true,
+          "textBlocks": 11,
+          "textSpans": 24,
+          "imageReferences": 0,
+          "vectorDrawingGroups": 8
+        },
+        {
+          "position": 4,
+          "pageId": "b6749c12-2c5c-42b4-8437-763f6a800abf",
+          "sizePt": [
+            960.0,
+            540.0
+          ],
+          "watermarkPresent": true,
+          "textBlocks": 8,
+          "textSpans": 19,
+          "imageReferences": 0,
+          "vectorDrawingGroups": 6
+        },
+        {
+          "position": 5,
+          "pageId": "007717f6-4756-4fc1-acdb-91ac96df37e6",
+          "sizePt": [
+            960.0,
+            540.0
+          ],
+          "watermarkPresent": true,
+          "textBlocks": 21,
+          "textSpans": 46,
+          "imageReferences": 0,
+          "vectorDrawingGroups": 14
+        },
+        {
+          "position": 6,
+          "pageId": "4a40e022-4dcc-41ea-b645-a279b3f1b1e3",
+          "sizePt": [
+            960.0,
+            540.0
+          ],
+          "watermarkPresent": true,
+          "textBlocks": 11,
+          "textSpans": 23,
+          "imageReferences": 1,
+          "vectorDrawingGroups": 6
+        },
+        {
+          "position": 7,
+          "pageId": "442751c7-1ad1-457f-acbb-c1e8611f0ecd",
+          "sizePt": [
+            960.0,
+            540.0
+          ],
+          "watermarkPresent": true,
+          "textBlocks": 10,
+          "textSpans": 41,
+          "imageReferences": 2,
+          "vectorDrawingGroups": 22
+        },
+        {
+          "position": 8,
+          "pageId": "81904faa-df61-47e7-a6ad-a02563b1c171",
+          "sizePt": [
+            960.0,
+            540.0
+          ],
+          "watermarkPresent": true,
+          "textBlocks": 11,
+          "textSpans": 23,
+          "imageReferences": 1,
+          "vectorDrawingGroups": 7
+        },
+        {
+          "position": 9,
+          "pageId": "d23386ad-2c83-44fd-aa92-db09358af429",
+          "sizePt": [
+            960.0,
+            540.0
+          ],
+          "watermarkPresent": true,
+          "textBlocks": 8,
+          "textSpans": 24,
+          "imageReferences": 2,
+          "vectorDrawingGroups": 8
+        },
+        {
+          "position": 10,
+          "pageId": "e42a9867-65cf-4d38-a13b-ddf588dcdc68",
+          "sizePt": [
+            960.0,
+            540.0
+          ],
+          "watermarkPresent": true,
+          "textBlocks": 16,
+          "textSpans": 29,
+          "imageReferences": 1,
+          "vectorDrawingGroups": 6
+        },
+        {
+          "position": 11,
+          "pageId": "39c44252-dda5-483d-867f-4710547c0065",
+          "sizePt": [
+            960.0,
+            540.0
+          ],
+          "watermarkPresent": true,
+          "textBlocks": 16,
+          "textSpans": 113,
+          "imageReferences": 3,
+          "vectorDrawingGroups": 39
+        },
+        {
+          "position": 12,
+          "pageId": "4dd70003-c817-49c2-a367-786594eaab59",
+          "sizePt": [
+            960.0,
+            540.0
+          ],
+          "watermarkPresent": true,
+          "textBlocks": 13,
+          "textSpans": 36,
+          "imageReferences": 2,
+          "vectorDrawingGroups": 5
+        }
+      ],
+      "objectSemantics": "PDF counts describe text, image references and vector drawing groups; editable table/chart semantics and speaker notes are not part of this PDF check."
+    },
+    {
+      "edition": "deepseek-zh",
+      "collection": "brief",
+      "selection": {
+        "kind": "presentation",
+        "presentationId": "brief"
+      },
+      "file": "Exports/brief.pptx",
+      "format": "pptx",
+      "sha256": "ef357b43f0e116e27910bc6ccb693db40b5327029525cfa5e2dfb02c71a6823a",
+      "bytes": 1446808,
+      "pageCount": 12,
+      "expectedPageCount": 12,
+      "pageSizePt": [
+        960.0,
+        540.0
+      ],
+      "watermark": "Chinese · DeepSeek V4.1 Flash 1017",
+      "watermarkPages": 12,
+      "status": "passed",
+      "writerComplete": true,
+      "writerErrorCount": 0,
+      "warnings": [
+        {
+          "code": "FONT_FILES_NOT_EMBEDDED",
+          "severity": "warning"
+        }
+      ],
+      "warningCount": 1,
+      "nativeCounts": {
+        "text": 116,
+        "images": 18,
+        "tables": 2,
+        "charts": 0,
+        "groups": 0,
+        "shapes": 141,
+        "connectors": 0
+      },
+      "notes": {
+        "parts": 12,
+        "usedParts": 12,
+        "matchingPages": 12,
+        "nonemptyPages": 12,
+        "comparison": "NFKC text with whitespace and zero-width separators normalized; resolved occurrence override takes precedence"
+      },
+      "chartParts": 0,
+      "chartsInsideGroups": 0,
+      "zip": {
+        "entries": 74,
+        "duplicatePaths": [],
+        "crcFailure": null
+      },
+      "pages": [
+        {
+          "position": 1,
+          "pageId": "b473ed1a-c554-4ee3-9e8e-688e00be99b9",
+          "occurrenceId": "brief:b01:b473ed1a-c554-4ee3-9e8e-688e00be99b9",
+          "slidePart": "ppt/slides/slide1.xml",
+          "counts": {
+            "text": 9,
+            "images": 2,
+            "tables": 0,
+            "charts": 0,
+            "groups": 0,
+            "shapes": 10,
+            "connectors": 0
+          },
+          "sourceElementTypes": {
+            "image": 2,
+            "text": 9,
+            "shape": 1
+          },
+          "watermarkTextObjects": 1,
+          "chartTargets": [],
+          "chartsInsideGroups": 0,
+          "notesPart": "ppt/notesSlides/notesSlide1.xml",
+          "notesExpectedChars": 97,
+          "notesActualChars": 97,
+          "notesExpectedSha256": "4079d2763053dbf3378b2e53847bed232f1bc32c1bc650be225d00612b848071",
+          "notesActualSha256": "4079d2763053dbf3378b2e53847bed232f1bc32c1bc650be225d00612b848071",
+          "notesMatch": true
+        },
+        {
+          "position": 2,
+          "pageId": "62c6d0cc-885f-485c-a81e-baeaff6d1940",
+          "occurrenceId": "brief:b02:62c6d0cc-885f-485c-a81e-baeaff6d1940",
+          "slidePart": "ppt/slides/slide2.xml",
+          "counts": {
+            "text": 21,
+            "images": 4,
+            "tables": 0,
+            "charts": 0,
+            "groups": 0,
+            "shapes": 25,
+            "connectors": 0
+          },
+          "sourceElementTypes": {
+            "text": 21,
+            "shape": 3,
+            "image": 4,
+            "line": 1
+          },
+          "watermarkTextObjects": 1,
+          "chartTargets": [],
+          "chartsInsideGroups": 0,
+          "notesPart": "ppt/notesSlides/notesSlide2.xml",
+          "notesExpectedChars": 77,
+          "notesActualChars": 77,
+          "notesExpectedSha256": "642228ba509c118b7088cf6377901b6c258acb3de690ffb58538183a5726d99e",
+          "notesActualSha256": "642228ba509c118b7088cf6377901b6c258acb3de690ffb58538183a5726d99e",
+          "notesMatch": true
+        },
+        {
+          "position": 3,
+          "pageId": "16f2ab87-6962-4100-b2f6-1ab8077b01c7",
+          "occurrenceId": "brief:b03:16f2ab87-6962-4100-b2f6-1ab8077b01c7",
+          "slidePart": "ppt/slides/slide3.xml",
+          "counts": {
+            "text": 8,
+            "images": 0,
+            "tables": 0,
+            "charts": 0,
+            "groups": 0,
+            "shapes": 11,
+            "connectors": 0
+          },
+          "sourceElementTypes": {
+            "shape": 2,
+            "text": 8,
+            "line": 1
+          },
+          "watermarkTextObjects": 1,
+          "chartTargets": [],
+          "chartsInsideGroups": 0,
+          "notesPart": "ppt/notesSlides/notesSlide3.xml",
+          "notesExpectedChars": 115,
+          "notesActualChars": 115,
+          "notesExpectedSha256": "d21ca25f204337d5a42c7f5c12334972944159dad73a287e1535488f3dad3987",
+          "notesActualSha256": "d21ca25f204337d5a42c7f5c12334972944159dad73a287e1535488f3dad3987",
+          "notesMatch": true
+        },
+        {
+          "position": 4,
+          "pageId": "b6749c12-2c5c-42b4-8437-763f6a800abf",
+          "occurrenceId": "brief:b04:b6749c12-2c5c-42b4-8437-763f6a800abf",
+          "slidePart": "ppt/slides/slide4.xml",
+          "counts": {
+            "text": 7,
+            "images": 0,
+            "tables": 0,
+            "charts": 0,
+            "groups": 0,
+            "shapes": 8,
+            "connectors": 0
+          },
+          "sourceElementTypes": {
+            "text": 7,
+            "line": 1
+          },
+          "watermarkTextObjects": 1,
+          "chartTargets": [],
+          "chartsInsideGroups": 0,
+          "notesPart": "ppt/notesSlides/notesSlide4.xml",
+          "notesExpectedChars": 81,
+          "notesActualChars": 81,
+          "notesExpectedSha256": "f609af8c8ba4331f17c2f650138d63e265721caf90cbf9c8f2394c874270c3cc",
+          "notesActualSha256": "f609af8c8ba4331f17c2f650138d63e265721caf90cbf9c8f2394c874270c3cc",
+          "notesMatch": true
+        },
+        {
+          "position": 5,
+          "pageId": "007717f6-4756-4fc1-acdb-91ac96df37e6",
+          "occurrenceId": "brief:b05:007717f6-4756-4fc1-acdb-91ac96df37e6",
+          "slidePart": "ppt/slides/slide5.xml",
+          "counts": {
+            "text": 16,
+            "images": 0,
+            "tables": 0,
+            "charts": 0,
+            "groups": 0,
+            "shapes": 25,
+            "connectors": 0
+          },
+          "sourceElementTypes": {
+            "text": 16,
+            "shape": 4,
+            "line": 5
+          },
+          "watermarkTextObjects": 1,
+          "chartTargets": [],
+          "chartsInsideGroups": 0,
+          "notesPart": "ppt/notesSlides/notesSlide5.xml",
+          "notesExpectedChars": 104,
+          "notesActualChars": 104,
+          "notesExpectedSha256": "aa444ac09b401d0c46f144b4db2386bc6a56f6669327bd4191ff19eb2ce231d3",
+          "notesActualSha256": "aa444ac09b401d0c46f144b4db2386bc6a56f6669327bd4191ff19eb2ce231d3",
+          "notesMatch": true
+        },
+        {
+          "position": 6,
+          "pageId": "4a40e022-4dcc-41ea-b645-a279b3f1b1e3",
+          "occurrenceId": "brief:b06:4a40e022-4dcc-41ea-b645-a279b3f1b1e3",
+          "slidePart": "ppt/slides/slide6.xml",
+          "counts": {
+            "text": 5,
+            "images": 1,
+            "tables": 0,
+            "charts": 0,
+            "groups": 0,
+            "shapes": 6,
+            "connectors": 0
+          },
+          "sourceElementTypes": {
+            "text": 5,
+            "image": 1,
+            "line": 1
+          },
+          "watermarkTextObjects": 1,
+          "chartTargets": [],
+          "chartsInsideGroups": 0,
+          "notesPart": "ppt/notesSlides/notesSlide6.xml",
+          "notesExpectedChars": 96,
+          "notesActualChars": 96,
+          "notesExpectedSha256": "43365d98211ad8617260e7797e8cc35924b49ff8751f80a1eaa08feec0c20ee2",
+          "notesActualSha256": "43365d98211ad8617260e7797e8cc35924b49ff8751f80a1eaa08feec0c20ee2",
+          "notesMatch": true
+        },
+        {
+          "position": 7,
+          "pageId": "442751c7-1ad1-457f-acbb-c1e8611f0ecd",
+          "occurrenceId": "brief:b07:442751c7-1ad1-457f-acbb-c1e8611f0ecd",
+          "slidePart": "ppt/slides/slide7.xml",
+          "counts": {
+            "text": 7,
+            "images": 2,
+            "tables": 1,
+            "charts": 0,
+            "groups": 0,
+            "shapes": 7,
+            "connectors": 0
+          },
+          "sourceElementTypes": {
+            "text": 7,
+            "image": 2,
+            "table": 1
+          },
+          "watermarkTextObjects": 1,
+          "chartTargets": [],
+          "chartsInsideGroups": 0,
+          "notesPart": "ppt/notesSlides/notesSlide7.xml",
+          "notesExpectedChars": 120,
+          "notesActualChars": 120,
+          "notesExpectedSha256": "228e5e9a3bb69974d15dded8d25652c69be975cd0b89c8f34635533fac47dc00",
+          "notesActualSha256": "228e5e9a3bb69974d15dded8d25652c69be975cd0b89c8f34635533fac47dc00",
+          "notesMatch": true
+        },
+        {
+          "position": 8,
+          "pageId": "81904faa-df61-47e7-a6ad-a02563b1c171",
+          "occurrenceId": "brief:b08:81904faa-df61-47e7-a6ad-a02563b1c171",
+          "slidePart": "ppt/slides/slide8.xml",
+          "counts": {
+            "text": 7,
+            "images": 1,
+            "tables": 0,
+            "charts": 0,
+            "groups": 0,
+            "shapes": 9,
+            "connectors": 0
+          },
+          "sourceElementTypes": {
+            "text": 7,
+            "shape": 2,
+            "image": 1
+          },
+          "watermarkTextObjects": 1,
+          "chartTargets": [],
+          "chartsInsideGroups": 0,
+          "notesPart": "ppt/notesSlides/notesSlide8.xml",
+          "notesExpectedChars": 138,
+          "notesActualChars": 138,
+          "notesExpectedSha256": "4ee0f6fb950f99e70db9199efa289a0b7d5cf19fd0aa12d236d4f54b7a7ffca6",
+          "notesActualSha256": "4ee0f6fb950f99e70db9199efa289a0b7d5cf19fd0aa12d236d4f54b7a7ffca6",
+          "notesMatch": true
+        },
+        {
+          "position": 9,
+          "pageId": "d23386ad-2c83-44fd-aa92-db09358af429",
+          "occurrenceId": "brief:b09:d23386ad-2c83-44fd-aa92-db09358af429",
+          "slidePart": "ppt/slides/slide9.xml",
+          "counts": {
+            "text": 10,
+            "images": 2,
+            "tables": 0,
+            "charts": 0,
+            "groups": 0,
+            "shapes": 13,
+            "connectors": 0
+          },
+          "sourceElementTypes": {
+            "text": 10,
+            "shape": 2,
+            "image": 2,
+            "line": 1
+          },
+          "watermarkTextObjects": 1,
+          "chartTargets": [],
+          "chartsInsideGroups": 0,
+          "notesPart": "ppt/notesSlides/notesSlide9.xml",
+          "notesExpectedChars": 85,
+          "notesActualChars": 85,
+          "notesExpectedSha256": "afc373db7e887ac54825751193dd9a3987fd39a4fef2212d3023096951c3b9c2",
+          "notesActualSha256": "afc373db7e887ac54825751193dd9a3987fd39a4fef2212d3023096951c3b9c2",
+          "notesMatch": true
+        },
+        {
+          "position": 10,
+          "pageId": "e42a9867-65cf-4d38-a13b-ddf588dcdc68",
+          "occurrenceId": "brief:b10:e42a9867-65cf-4d38-a13b-ddf588dcdc68",
+          "slidePart": "ppt/slides/slide10.xml",
+          "counts": {
+            "text": 8,
+            "images": 1,
+            "tables": 0,
+            "charts": 0,
+            "groups": 0,
+            "shapes": 9,
+            "connectors": 0
+          },
+          "sourceElementTypes": {
+            "text": 8,
+            "shape": 1,
+            "image": 1
+          },
+          "watermarkTextObjects": 1,
+          "chartTargets": [],
+          "chartsInsideGroups": 0,
+          "notesPart": "ppt/notesSlides/notesSlide10.xml",
+          "notesExpectedChars": 104,
+          "notesActualChars": 104,
+          "notesExpectedSha256": "7af937e07427aa827a87bf4cdc9558ad86d4c3d2ba8d2ca348f22de2f749c957",
+          "notesActualSha256": "7af937e07427aa827a87bf4cdc9558ad86d4c3d2ba8d2ca348f22de2f749c957",
+          "notesMatch": true
+        },
+        {
+          "position": 11,
+          "pageId": "39c44252-dda5-483d-867f-4710547c0065",
+          "occurrenceId": "brief:b11:39c44252-dda5-483d-867f-4710547c0065",
+          "slidePart": "ppt/slides/slide11.xml",
+          "counts": {
+            "text": 9,
+            "images": 3,
+            "tables": 1,
+            "charts": 0,
+            "groups": 0,
+            "shapes": 9,
+            "connectors": 0
+          },
+          "sourceElementTypes": {
+            "text": 9,
+            "table": 1,
+            "image": 3
+          },
+          "watermarkTextObjects": 1,
+          "chartTargets": [],
+          "chartsInsideGroups": 0,
+          "notesPart": "ppt/notesSlides/notesSlide11.xml",
+          "notesExpectedChars": 195,
+          "notesActualChars": 195,
+          "notesExpectedSha256": "6936370e1d37a2906802d611f77ed313aa9e89a3a42a82d9d49a1d6ab244eb38",
+          "notesActualSha256": "6936370e1d37a2906802d611f77ed313aa9e89a3a42a82d9d49a1d6ab244eb38",
+          "notesMatch": true
+        },
+        {
+          "position": 12,
+          "pageId": "4dd70003-c817-49c2-a367-786594eaab59",
+          "occurrenceId": "brief:b12:4dd70003-c817-49c2-a367-786594eaab59",
+          "slidePart": "ppt/slides/slide12.xml",
+          "counts": {
+            "text": 9,
+            "images": 2,
+            "tables": 0,
+            "charts": 0,
+            "groups": 0,
+            "shapes": 9,
+            "connectors": 0
+          },
+          "sourceElementTypes": {
+            "image": 2,
+            "text": 9
+          },
+          "watermarkTextObjects": 1,
+          "chartTargets": [],
+          "chartsInsideGroups": 0,
+          "notesPart": "ppt/notesSlides/notesSlide12.xml",
+          "notesExpectedChars": 174,
+          "notesActualChars": 174,
+          "notesExpectedSha256": "94c9656972d325db233c40ea91ec2f1fc60a3f257d3bcb1faf2c742f59f3e143",
+          "notesActualSha256": "94c9656972d325db233c40ea91ec2f1fc60a3f257d3bcb1faf2c742f59f3e143",
+          "notesMatch": true
+        }
+      ],
+      "fallbackImages": []
+    }
+  ]
+}

@@ -3,159 +3,113 @@ background:
   type: solid
   color: "#E4ECE6"
 elements:
-  - elementId: title
-    elementType: text
-    bounds:
-        [42,34,880,76]
-    role: title
-    content:
-      {"text":"Different assistants, one working project","fontFamily":"Georgia","fontSize":32,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.2}
-  - elementId: brand-small
-    elementType: image
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
-    sourceName: huandeng.png
-    alt: huandeng.png
-    bounds:
-        [43,512,18,18]
-    fit:
-      mode: contain
-    crop:
-      left: 0.18
-      right: 0.18
-      top: 0.14
-      bottom: 0.14
-  - elementId: foot
-    elementType: text
-    bounds:
-        [68,515,140,16]
-    content:
-      {"text":"HUANDENG","fontFamily":"Segoe UI","fontSize":9,"color":"#5B6A62","bold":false,"align":["left","top"],"lineHeight":1.35}
-  - elementId: position
-    elementType: text
-    bounds:
-        [881,514,35,18]
-    content:
-      {"text":"","fontFamily":"Segoe UI","fontSize":10,"color":"#5B6A62","bold":false,"align":["right","top"],"lineHeight":1.35,"field":"main-position"}
-  - elementId: client-0
-    elementType: image
-    src: media/imported/0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13.png
-    sourceName: chatgpt.png
-    alt: chatgpt.png
-    bounds:
-        [116,140,58,58]
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: client-name-0
-    elementType: text
-    bounds:
-        [66,217,165,35]
-    content:
-      {"text":"ChatGPT","fontFamily":"Segoe UI","fontSize":18,"color":"#20372F","bold":false,"align":["center","top"],"lineHeight":1.35}
-  - elementId: client-1
-    elementType: image
-    src: media/imported/2ce1c57dd3b312417106a487815ab1235bddce17e1fa9b32a2f048bd71ee25d3.png
-    sourceName: codex.png
-    alt: codex.png
-    bounds:
-        [338,140,58,58]
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: client-name-1
-    elementType: text
-    bounds:
-        [288,217,165,35]
-    content:
-      {"text":"Codex","fontFamily":"Segoe UI","fontSize":18,"color":"#20372F","bold":false,"align":["center","top"],"lineHeight":1.35}
-  - elementId: client-2
-    elementType: image
-    src: media/imported/733f24f4c52acb15eb0fbded1cf40eb42b4ba8e62b882acac70b6234b50919a8.png
-    sourceName: claude-code.png
-    alt: claude-code.png
-    bounds:
-        [560,140,58,58]
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: client-name-2
-    elementType: text
-    bounds:
-        [510,217,165,35]
-    content:
-      {"text":"Claude Code","fontFamily":"Segoe UI","fontSize":18,"color":"#20372F","bold":false,"align":["center","top"],"lineHeight":1.35}
-  - elementId: client-3
-    elementType: image
-    src: media/imported/e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc.png
-    sourceName: deepseek.png
-    alt: deepseek.png
-    bounds:
-        [782,140,58,58]
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: client-name-3
-    elementType: text
-    bounds:
-        [732,217,165,35]
-    content:
-      {"text":"DeepSeek Harness","fontFamily":"Segoe UI","fontSize":18,"color":"#20372F","bold":false,"align":["center","top"],"lineHeight":1.35}
-  - elementId: clients-to-writer
-    elementType: line
-    bounds:
-        [482,264,0,14]
-    viewBox:
-      - 1
-      - 1
-    points: 0,0 1,1
-    border:
-      width: 1.4
-      color: "#356F68"
-    arrow:
-      - null
-      - arrow
-  - elementId: writer-band
+  - elementId: f-bg
     elementType: shape
     shapeName: rect
     bounds:
-        [43,286,872,61]
+      - 0
+      - 0
+      - 960
+      - 540
     fill:
       type: solid
-      color: "#18372E"
-  - elementId: shared-writer
+      color: "#F4F1E8"
+  - elementId: f-route
     elementType: text
     bounds:
-        [63,301,832,37]
+      - 42
+      - 20
+      - 860
+      - 18
     content:
-      text: One project · Shared writer · Reviewable changes
-      fontFamily: Georgia
-      fontSize: 22
-      color: "#F7F5EF"
+      text: EXPORT → FORMAT AND RANGE
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#168C8C"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.2
+  - elementId: title
+    elementType: text
+    bounds:
+        [42,49,875,66]
+    role: title
+    content:
+      {"text":"Confirm the range before you export","fontFamily":"Segoe UI","fontSize":32,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.1}
+  - elementId: f-foot-rule
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 42
+      - 510
+      - 876
+      - 1
+    fill:
+      type: solid
+      color: "#CCD2CB"
+  - elementId: f-watermark
+    elementType: text
+    bounds:
+      - 42
+      - 518
+      - 700
+      - 17
+    content:
+      text: English · ChatGPT 6 Astra
+      fontFamily: Segoe UI
+      fontSize: 12
+      color: "#50646A"
       bold: false
       align:
-        - center
+        - left
         - top
-      lineHeight: 1.35
-  - elementId: connection-context
+      lineHeight: 1.2
+  - elementId: f-position
     elementType: text
     bounds:
-        [44,367,870,130]
+      - 882
+      - 518
+      - 36
+      - 17
     content:
-      {"text":"1  Open Agent setup at the top right.\n2  Select your client and follow its setup instructions.\n3  Ask it to read this project and selected page; check the project name and Slide ID.","fontFamily":"Segoe UI","fontSize":17,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.6}
-notes: "For the first connection, open Agent setup at the top of the editor, choose the client and follow its setup instructions. Ask the assistant to read the project and selected page, then check the returned project name and Slide ID. Different assistants use native integrations with the same document contract. The plugin carries guidance; the connector binds requests to the explicitly chosen project. The Editor and assistants save through the shared writer. The marks identify supported routes, not models currently online. A real read and task are still needed to verify the selected project and access."
+      text: ""
+      fontFamily: Segoe UI
+      fontSize: 12
+      color: "#50646A"
+      bold: false
+      align:
+        - right
+        - top
+      lineHeight: 1.2
+      field: main-position
+  - elementId: f-export
+    elementType: image
+    bounds:
+      - 44
+      - 132
+      - 870
+      - 346
+    src: media/imported/e5357f27a6e0fb880374db8d22b2391e852c2cfef5eb0d169ebc382da020dfdf.png
+    sourceName: export-talk.png
+    fit:
+      mode: contain
+  - elementId: f-export-formats
+    elementType: text
+    bounds:
+      - 44
+      - 484
+      - 870
+      - 24
+    content:
+      text: "PDF: fixed pages  ·  PPTX: editable objects  ·  PNG: slide images"
+      fontFamily: Segoe UI
+      fontSize: 18
+      color: "#168C8C"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.2
+notes: "Open Export after saving your edits. Confirm both the format and the selected range. The actual dialog here targets First edit · short talk with 12 slides. PDF is a fixed-page delivery; PPTX contains editable supported objects; PNG creates slide images. PPTX and PDF use the static base layout, while timeline animation has a separate video export. Open the exported file once to check its pages, fonts and any native chart layout before sharing."

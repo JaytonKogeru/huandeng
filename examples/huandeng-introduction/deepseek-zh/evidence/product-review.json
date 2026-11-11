@@ -113,7 +113,7 @@
   },
   "recordedAt": "2026-11-11T02:50:21.686549+00:00",
   "nativeExecution": {
-    "session": "session-c178e34f-43f9-4656-a6ea-6ba9e443b4fd",
+    "session": "<native-session-004>",
     "completedRequest": "a212e565-dd92-4d2f-98c5-a15e7d1e13fe",
     "nativeCompleted": true,
     "exitCode": 0,
@@ -123,7 +123,7 @@
         "state": "completed",
         "exitCode": 0,
         "nativeCompleted": true,
-        "sessionId": "session-c178e34f-43f9-4656-a6ea-6ba9e443b4fd",
+        "sessionId": "<native-session-004>",
         "seconds": 1124.75,
         "toolCounts": {
           "skill": 1,

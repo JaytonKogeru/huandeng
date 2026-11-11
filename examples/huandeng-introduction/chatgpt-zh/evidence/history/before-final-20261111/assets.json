@@ -1,0 +1,657 @@
+{
+  "schemaVersion": 3,
+  "project": "chatgpt-zh",
+  "scope": "Current product introduction; historical media and versions are retained separately. UI capture bytes remain real Editor 0.18.0 UI, not simulated 0.19 feature evidence.",
+  "entries": [
+    {
+      "path": "media/imported/0796e3f846e4c5ad2e2943020386bb354063d5f2ce7b1a132e7b72deced72536.png",
+      "sha256": "0796e3f846e4c5ad2e2943020386bb354063d5f2ce7b1a132e7b72deced72536",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "kind": "current-page-preview",
+      "pageId": "59857807-d9f3-4e58-9a60-275cd504ea16",
+      "renderSourceIndex": 6,
+      "currentUses": [
+        {
+          "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
+          "slideId": "U5QA",
+          "elementId": "main-page-1"
+        },
+        {
+          "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
+          "slideId": "U5QA",
+          "elementId": "selected-page-1"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/07ab1e803a9529e525b0690bb1627bee3811850424cd628f7da9f29ce42e2ab3.png",
+      "sha256": "07ab1e803a9529e525b0690bb1627bee3811850424cd628f7da9f29ce42e2ab3",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "kind": "historical-evidence",
+      "sourceName": "evidence-after.png",
+      "reason": "Retains the actual earlier edit, saved version or its interface evidence.",
+      "currentUses": [
+        {
+          "pageId": "7b69742f-16b5-4b80-acf0-1d23966aae96",
+          "slideId": "JNZV",
+          "elementId": "after"
+        },
+        {
+          "pageId": "baca190c-e87b-415f-9c30-7c04e3fabe17",
+          "slideId": "2856",
+          "elementId": "pinned-page"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13.png",
+      "sha256": "0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13",
+      "pixels": [
+        720,
+        720
+      ],
+      "kind": "shared-source",
+      "source": "../assets/brand/chatgpt.png",
+      "currentUses": [
+        {
+          "pageId": "9cdec939-7f79-4142-98a4-b9543230a4ec",
+          "slideId": "W7WP",
+          "elementId": "client-0"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/24e7314c2324f71ccec2c6fe5827542fc861ac8549c249ae9a790ca08c198c83.png",
+      "sha256": "24e7314c2324f71ccec2c6fe5827542fc861ac8549c249ae9a790ca08c198c83",
+      "pixels": [
+        645,
+        696
+      ],
+      "kind": "historical-evidence",
+      "sourceName": "versions-detail.png",
+      "reason": "Retains the actual earlier edit, saved version or its interface evidence.",
+      "currentUses": [
+        {
+          "pageId": "ea528c6a-2423-488d-834b-056322cca744",
+          "slideId": "E9RN",
+          "elementId": "named-versions"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/2a2f5cbcc74c7fa83c40127dd8b0e42c23f1157131aebe28492aa1ac27bbdc6d.png",
+      "sha256": "2a2f5cbcc74c7fa83c40127dd8b0e42c23f1157131aebe28492aa1ac27bbdc6d",
+      "pixels": [
+        294,
+        288
+      ],
+      "kind": "shared-source",
+      "source": "../assets/brand/github-repository.png",
+      "currentUses": [
+        {
+          "pageId": "bd3c71d1-360e-4e0c-bbb6-5938970e8876",
+          "slideId": "TZXM",
+          "elementId": "credit-mark-1"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/2ce1c57dd3b312417106a487815ab1235bddce17e1fa9b32a2f048bd71ee25d3.png",
+      "sha256": "2ce1c57dd3b312417106a487815ab1235bddce17e1fa9b32a2f048bd71ee25d3",
+      "pixels": [
+        385,
+        385
+      ],
+      "kind": "shared-source",
+      "source": "../assets/brand/codex.png",
+      "currentUses": [
+        {
+          "pageId": "9cdec939-7f79-4142-98a4-b9543230a4ec",
+          "slideId": "W7WP",
+          "elementId": "client-1"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/2e581d36978c91cef3fdc7777d6546f05fe58d6d2b89d0d6c42954313c2d0a0e.png",
+      "sha256": "2e581d36978c91cef3fdc7777d6546f05fe58d6d2b89d0d6c42954313c2d0a0e",
+      "pixels": [
+        4800,
+        2880
+      ],
+      "kind": "current-ui-capture",
+      "captureName": "editor-native-chart.png",
+      "editorVersion": "0.18.0",
+      "locale": "zh",
+      "deviceScaleFactor": 3,
+      "publicContentOnly": true,
+      "currentUses": [
+        {
+          "pageId": "7995de62-e81e-46db-b250-cabc66a99b28",
+          "slideId": "TTHC",
+          "elementId": "editor-cover"
+        },
+        {
+          "pageId": "1f6289fd-1d4c-4a03-a74d-4bc4955de868",
+          "slideId": "6G4G",
+          "elementId": "editor-definition"
+        },
+        {
+          "pageId": "3483b895-bc52-43b6-a7c4-001a0d1e4526",
+          "slideId": "ZYZB",
+          "elementId": "workspace"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/342088ed88ab8fffc8ce2651cd6fbf183244f5069c7907702a957eb9cf9fa18a.png",
+      "sha256": "342088ed88ab8fffc8ce2651cd6fbf183244f5069c7907702a957eb9cf9fa18a",
+      "pixels": [
+        1812,
+        1812
+      ],
+      "kind": "shared-source",
+      "source": "../assets/science/dna-duplex-end.png",
+      "currentUses": [
+        {
+          "pageId": "59857807-d9f3-4e58-9a60-275cd504ea16",
+          "slideId": "MPTA",
+          "elementId": "asset-end"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/3a3f6fb3a98a38f01ec016c8e8fa44d63daa05aad1920192d426f74b3cca0fa5.png",
+      "sha256": "3a3f6fb3a98a38f01ec016c8e8fa44d63daa05aad1920192d426f74b3cca0fa5",
+      "pixels": [
+        861,
+        1605
+      ],
+      "kind": "current-ui-capture",
+      "captureName": "assets.png",
+      "editorVersion": "0.18.0",
+      "locale": "zh",
+      "deviceScaleFactor": 3,
+      "publicContentOnly": true,
+      "currentUses": [
+        {
+          "pageId": "59857807-d9f3-4e58-9a60-275cd504ea16",
+          "slideId": "MPTA",
+          "elementId": "asset-library"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/3bbdb24950419c89e63a5c902ef6f5c60963aaed45e0b65b7f175953c0643c70.png",
+      "sha256": "3bbdb24950419c89e63a5c902ef6f5c60963aaed45e0b65b7f175953c0643c70",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "kind": "current-page-preview",
+      "pageId": "129dfdc6-685d-48b4-972b-abff11f823e6",
+      "renderSourceIndex": 13,
+      "currentUses": [
+        {
+          "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
+          "slideId": "U5QA",
+          "elementId": "main-page-3"
+        },
+        {
+          "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
+          "slideId": "U5QA",
+          "elementId": "selected-page-2"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/44e2a2aa5f3887deae386fa73f71234961f93e006873b632ccf38b6b6f1291a1.png",
+      "sha256": "44e2a2aa5f3887deae386fa73f71234961f93e006873b632ccf38b6b6f1291a1",
+      "pixels": [
+        512,
+        512
+      ],
+      "kind": "shared-source",
+      "source": "../assets/brand/open-slide.png",
+      "currentUses": [
+        {
+          "pageId": "bd3c71d1-360e-4e0c-bbb6-5938970e8876",
+          "slideId": "TZXM",
+          "elementId": "credit-mark-0"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/50273f1fa204b2f0ae10463c91dd9d8ffcea87c80d861da37c0db9755d091017.png",
+      "sha256": "50273f1fa204b2f0ae10463c91dd9d8ffcea87c80d861da37c0db9755d091017",
+      "pixels": [
+        1572,
+        1572
+      ],
+      "kind": "shared-source",
+      "source": "../assets/science/dna-duplex-position7.png",
+      "currentUses": [
+        {
+          "pageId": "59857807-d9f3-4e58-9a60-275cd504ea16",
+          "slideId": "MPTA",
+          "elementId": "asset-side"
+        },
+        {
+          "pageId": "c1fcdc66-1c25-45a6-9b98-83d16f063c3e",
+          "slideId": "7EKH",
+          "elementId": "structure"
+        },
+        {
+          "pageId": "7b5bb42e-c529-49f8-ad88-62c69b567837",
+          "slideId": "HUA9",
+          "elementId": "measure-view"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+      "sha256": "6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef",
+      "pixels": [
+        512,
+        512
+      ],
+      "kind": "shared-source",
+      "source": "../assets/brand/huandeng.png",
+      "currentUses": [
+        {
+          "pageId": "7995de62-e81e-46db-b250-cabc66a99b28",
+          "slideId": "TTHC",
+          "elementId": "product-mark"
+        },
+        {
+          "pageId": "1dc23de8-b351-483b-a93a-f02c0444a927",
+          "slideId": "MSVB",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "1f6289fd-1d4c-4a03-a74d-4bc4955de868",
+          "slideId": "6G4G",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "1f6289fd-1d4c-4a03-a74d-4bc4955de868",
+          "slideId": "6G4G",
+          "elementId": "identity"
+        },
+        {
+          "pageId": "3483b895-bc52-43b6-a7c4-001a0d1e4526",
+          "slideId": "ZYZB",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "05cd8517-c8ac-4e12-b2d0-40c438b91042",
+          "slideId": "HWB6",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "59857807-d9f3-4e58-9a60-275cd504ea16",
+          "slideId": "MPTA",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "7b5bb42e-c529-49f8-ad88-62c69b567837",
+          "slideId": "HUA9",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "7b69742f-16b5-4b80-acf0-1d23966aae96",
+          "slideId": "JNZV",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "129dfdc6-685d-48b4-972b-abff11f823e6",
+          "slideId": "93SF",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "ea528c6a-2423-488d-834b-056322cca744",
+          "slideId": "E9RN",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "8bb920ed-1c71-45ac-ad9d-aa00750b1ff6",
+          "slideId": "SE68",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
+          "slideId": "U5QA",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "5f2fbea2-a43a-4532-9042-6a1d20c08801",
+          "slideId": "EJBQ",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "baca190c-e87b-415f-9c30-7c04e3fabe17",
+          "slideId": "2856",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "503c86ce-673c-4229-9251-22114e5f5da9",
+          "slideId": "4YZD",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "9cdec939-7f79-4142-98a4-b9543230a4ec",
+          "slideId": "W7WP",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "c91c3fe3-836f-492f-882d-905bd4d08a9b",
+          "slideId": "YCXA",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "f68f052b-18ac-4286-ae3b-6f12e5c5d0d0",
+          "slideId": "NJM7",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "bd3c71d1-360e-4e0c-bbb6-5938970e8876",
+          "slideId": "TZXM",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "8a9bcdf1-fcb2-4214-9743-86c110c954ca",
+          "slideId": "E2RU",
+          "elementId": "brand-small"
+        },
+        {
+          "pageId": "8a9bcdf1-fcb2-4214-9743-86c110c954ca",
+          "slideId": "E2RU",
+          "elementId": "closing-mark"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/733f24f4c52acb15eb0fbded1cf40eb42b4ba8e62b882acac70b6234b50919a8.png",
+      "sha256": "733f24f4c52acb15eb0fbded1cf40eb42b4ba8e62b882acac70b6234b50919a8",
+      "pixels": [
+        192,
+        192
+      ],
+      "kind": "shared-source",
+      "source": "../assets/brand/claude-code.png",
+      "currentUses": [
+        {
+          "pageId": "9cdec939-7f79-4142-98a4-b9543230a4ec",
+          "slideId": "W7WP",
+          "elementId": "client-2"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/8c227b1f1956f9c1f7448e8f6f533ee0feaf909d19e318f5b7b69b7d728b7f28.png",
+      "sha256": "8c227b1f1956f9c1f7448e8f6f533ee0feaf909d19e318f5b7b69b7d728b7f28",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "kind": "historical-evidence",
+      "sourceName": "evidence-before.png",
+      "reason": "Retains the actual earlier edit, saved version or its interface evidence.",
+      "currentUses": [
+        {
+          "pageId": "7b69742f-16b5-4b80-acf0-1d23966aae96",
+          "slideId": "JNZV",
+          "elementId": "before"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/941818c097e7c765d84aed764aebd4625997d970e40039fdfb4129bdaa04cb9f.png",
+      "sha256": "941818c097e7c765d84aed764aebd4625997d970e40039fdfb4129bdaa04cb9f",
+      "pixels": [
+        3936,
+        1950
+      ],
+      "kind": "current-ui-capture",
+      "captureName": "browse.png",
+      "editorVersion": "0.18.0",
+      "locale": "zh",
+      "deviceScaleFactor": 3,
+      "publicContentOnly": true,
+      "currentUses": [
+        {
+          "pageId": "8bb920ed-1c71-45ac-ad9d-aa00750b1ff6",
+          "slideId": "SE68",
+          "elementId": "view-browse"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/98fe12cbdefc47252b8afb3b890a8b2d11485021c39dfd61114d427b1e52713d.png",
+      "sha256": "98fe12cbdefc47252b8afb3b890a8b2d11485021c39dfd61114d427b1e52713d",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "kind": "current-page-preview",
+      "pageId": "3483b895-bc52-43b6-a7c4-001a0d1e4526",
+      "renderSourceIndex": 5,
+      "currentUses": [
+        {
+          "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
+          "slideId": "U5QA",
+          "elementId": "main-page-0"
+        },
+        {
+          "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
+          "slideId": "U5QA",
+          "elementId": "selected-page-0"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/a9716fe17305fefbeff4a94fbfcedf88a26b509a3b598d5326b6a9041ef5ccdf.png",
+      "sha256": "a9716fe17305fefbeff4a94fbfcedf88a26b509a3b598d5326b6a9041ef5ccdf",
+      "pixels": [
+        897,
+        1083
+      ],
+      "kind": "current-ui-capture",
+      "captureName": "story-clean.png",
+      "editorVersion": "0.18.0",
+      "locale": "zh",
+      "deviceScaleFactor": 3,
+      "publicContentOnly": true,
+      "currentUses": [
+        {
+          "pageId": "05cd8517-c8ac-4e12-b2d0-40c438b91042",
+          "slideId": "HWB6",
+          "elementId": "story-panel"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/b104e77304d9e60e33074b365860774e8dd570ab241ec5102ee033e158f65fd4.png",
+      "sha256": "b104e77304d9e60e33074b365860774e8dd570ab241ec5102ee033e158f65fd4",
+      "pixels": [
+        1920,
+        1080
+      ],
+      "kind": "current-page-preview",
+      "pageId": "c1fcdc66-1c25-45a6-9b98-83d16f063c3e",
+      "renderSourceIndex": 1,
+      "currentUses": [
+        {
+          "pageId": "129dfdc6-685d-48b4-972b-abff11f823e6",
+          "slideId": "93SF",
+          "elementId": "identified-page"
+        },
+        {
+          "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
+          "slideId": "U5QA",
+          "elementId": "main-page-2"
+        },
+        {
+          "pageId": "5f2fbea2-a43a-4532-9042-6a1d20c08801",
+          "slideId": "EJBQ",
+          "elementId": "notes-science-preview"
+        },
+        {
+          "pageId": "baca190c-e87b-415f-9c30-7c04e3fabe17",
+          "slideId": "2856",
+          "elementId": "live-page"
+        },
+        {
+          "pageId": "c91c3fe3-836f-492f-882d-905bd4d08a9b",
+          "slideId": "YCXA",
+          "elementId": "shared-work"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/c8fc7ecbd7b7e1c70dd5e1c77605a7aef119ff81906c1959cd9074f3d5be8518.png",
+      "sha256": "c8fc7ecbd7b7e1c70dd5e1c77605a7aef119ff81906c1959cd9074f3d5be8518",
+      "pixels": [
+        1170,
+        267
+      ],
+      "kind": "current-ui-capture",
+      "captureName": "outline-detail.png",
+      "editorVersion": "0.18.0",
+      "locale": "zh",
+      "deviceScaleFactor": 3,
+      "publicContentOnly": true,
+      "currentUses": [
+        {
+          "pageId": "8bb920ed-1c71-45ac-ad9d-aa00750b1ff6",
+          "slideId": "SE68",
+          "elementId": "view-outline"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/ce8070996ec0b318d78b8e45f849283cbca6026ab9c8175a97da85e6b95c5ddc.png",
+      "sha256": "ce8070996ec0b318d78b8e45f849283cbca6026ab9c8175a97da85e6b95c5ddc",
+      "pixels": [
+        492,
+        219
+      ],
+      "kind": "current-ui-capture",
+      "captureName": "present-current.png",
+      "editorVersion": "0.18.0",
+      "locale": "zh",
+      "deviceScaleFactor": 3,
+      "publicContentOnly": true,
+      "currentUses": [
+        {
+          "pageId": "f68f052b-18ac-4286-ae3b-6f12e5c5d0d0",
+          "slideId": "NJM7",
+          "elementId": "present-menu"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/d4b57fa12dec15a02948a905109f1f73245f644d6c6cc4c141c9693140419190.png",
+      "sha256": "d4b57fa12dec15a02948a905109f1f73245f644d6c6cc4c141c9693140419190",
+      "pixels": [
+        1728,
+        816
+      ],
+      "kind": "current-ui-capture",
+      "captureName": "export-current.png",
+      "editorVersion": "0.18.0",
+      "locale": "zh",
+      "deviceScaleFactor": 3,
+      "publicContentOnly": true,
+      "currentUses": [
+        {
+          "pageId": "f68f052b-18ac-4286-ae3b-6f12e5c5d0d0",
+          "slideId": "NJM7",
+          "elementId": "export-menu"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/d697acf6f3c5bc265806bc8f6c4e6d58b964e0b2962392d0329a420639f45846.png",
+      "sha256": "d697acf6f3c5bc265806bc8f6c4e6d58b964e0b2962392d0329a420639f45846",
+      "pixels": [
+        480,
+        349
+      ],
+      "kind": "shared-source",
+      "source": "../assets/brand/pptxgenjs.png",
+      "currentUses": [
+        {
+          "pageId": "bd3c71d1-360e-4e0c-bbb6-5938970e8876",
+          "slideId": "TZXM",
+          "elementId": "credit-mark-2"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/e435819069d4c2d1be564f200b6c1e4bd30ab731a85b36585abb0191b9ae48d5.png",
+      "sha256": "e435819069d4c2d1be564f200b6c1e4bd30ab731a85b36585abb0191b9ae48d5",
+      "pixels": [
+        1170,
+        585
+      ],
+      "kind": "current-ui-capture",
+      "captureName": "sections-detail.png",
+      "editorVersion": "0.18.0",
+      "locale": "zh",
+      "deviceScaleFactor": 3,
+      "publicContentOnly": true,
+      "currentUses": [
+        {
+          "pageId": "8bb920ed-1c71-45ac-ad9d-aa00750b1ff6",
+          "slideId": "SE68",
+          "elementId": "view-sections"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc.png",
+      "sha256": "e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc",
+      "pixels": [
+        460,
+        460
+      ],
+      "kind": "shared-source",
+      "source": "../assets/brand/deepseek.png",
+      "currentUses": [
+        {
+          "pageId": "9cdec939-7f79-4142-98a4-b9543230a4ec",
+          "slideId": "W7WP",
+          "elementId": "client-3"
+        }
+      ]
+    },
+    {
+      "path": "media/imported/e596e2250f4130081e2d7b52a501f811546e7020d413d299938d16b5af7023bb.png",
+      "sha256": "e596e2250f4130081e2d7b52a501f811546e7020d413d299938d16b5af7023bb",
+      "pixels": [
+        621,
+        330
+      ],
+      "kind": "current-ui-capture",
+      "captureName": "operation-detail.png",
+      "editorVersion": "0.18.0",
+      "locale": "zh",
+      "deviceScaleFactor": 3,
+      "publicContentOnly": true,
+      "currentUses": [
+        {
+          "pageId": "ea528c6a-2423-488d-834b-056322cca744",
+          "slideId": "E9RN",
+          "elementId": "saved-operations"
+        }
+      ]
+    }
+  ]
+}

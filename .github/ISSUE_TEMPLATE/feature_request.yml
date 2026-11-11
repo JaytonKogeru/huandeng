@@ -1,41 +1,46 @@
-name: Feature request
-description: Suggest a new capability for open-slide.
+name: Feature request / 功能建议
+description: Describe a presentation workflow that HUANDENG should support better.
 title: "[Feature]: "
 labels: ["request"]
 body:
+  - type: markdown
+    attributes:
+      value: English and Chinese are welcome. Please use public or synthetic examples.
   - type: textarea
     id: problem
     attributes:
-      label: Problem
-      description: What are you trying to do that open-slide makes hard or impossible today?
+      label: Task and current difficulty / 任务与当前困难
+      description: What are you trying to accomplish, who needs it, and where does the workflow stop?
     validations:
       required: true
   - type: textarea
     id: proposal
     attributes:
-      label: Proposed solution
-      description: How would you like it to work? API sketches, screenshots, or example usage are welcome.
+      label: Proposed behavior / 期望行为
+      description: Describe the result you need. A sketch or example can help.
+    validations:
+      required: true
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Affected area / 相关功能
+      multiple: true
+      options:
+        - Editor canvas and object properties
+        - PPTD document service, assets and history
+        - Story, Sections and Presentations
+        - Playback and export
+        - Agent plugin or client adapter
+        - Documentation and public examples
+        - Not sure
     validations:
       required: true
   - type: textarea
     id: alternatives
     attributes:
-      label: Alternatives considered
-      description: Workarounds you've tried or other approaches you've thought about.
-  - type: dropdown
-    id: scope
-    attributes:
-      label: Which package would this affect?
-      multiple: true
-      options:
-        - "@open-slide/core (runtime, inspector, present mode, CLI)"
-        - "@open-slide/cli (scaffolder / template)"
-        - Agent skills (create-slide, slide-authoring, apply-comments)
-        - Docs / marketing site
-        - Not sure
-    validations:
-      required: true
+      label: Current workaround / 当前替代办法
+      description: What have you tried, and what remains difficult?
   - type: textarea
     id: extra
     attributes:
-      label: Additional context
+      label: Additional context / 补充信息

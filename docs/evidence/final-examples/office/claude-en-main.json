@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 1,
+  "edition": "claude-en",
+  "scope": "main",
+  "source": "examples/huandeng-introduction/claude-en/Exports/deck.pptx",
+  "sha256": "f405e81302812ff21b407862929613fa00582bf348adea22f404618c5f52f400",
+  "pages": 25,
+  "notes": 25,
+  "nativeCharts": 1,
+  "nativeTables": 8,
+  "nativeGroups": 0,
+  "officeVersion": "16.0",
+  "powerPointExecutableVersion": "16.0.20527.20150",
+  "readOnly": true,
+  "openAndRepair": false,
+  "sourceUnchanged": true,
+  "closedOwnDocument": true,
+  "visualReview": {
+    "edition": "claude-en",
+    "scope": "main",
+    "pages": 25,
+    "contactSheets": ["001-008", "009-016", "017-024", "025-025"],
+    "detailPages": [12],
+    "status": "reviewed-with-known-chart-axis-overlap",
+    "observations": [
+      {
+        "page": 12,
+        "kind": "actual-office-layout",
+        "severity": "visible-overlap",
+        "text": "X-axis title overlaps part of numeric tick-label band; chart line, values, base-pair annotations, structure illustration and native chart remain present."
+      }
+    ],
+    "otherPages": "No missing content, blank slides, gross displacement or page clipping seen at 800x450 contact sheet scale."
+  },
+  "renderedPageHashes": [
+    {
+      "slide": 1,
+      "sha256": "b6557c30acd7fa07737a33dce79c7b41a9fe1775758b34e44d0c29d6add507fb",
+      "bytes": 99481
+    },
+    {
+      "slide": 2,
+      "sha256": "a317c93680749e98ac6232815dcedf9697e280135f3b414f8b4862de35e0084f",
+      "bytes": 6974
+    },
+    {
+      "slide": 3,
+      "sha256": "bfbf307cc9e74a37ef177180c34799c8b497c56af6b75f9aeed1879b593c0360",
+      "bytes": 187791
+    },
+    {
+      "slide": 4,
+      "sha256": "bae651122f5fb134a9edec953d7950e681a11a0c2ed1d98eafb7943543b1d2af",
+      "bytes": 79809
+    },
+    {
+      "slide": 5,
+      "sha256": "49b6dde8612f7210dedc12f2b136681804462d460a7eb3abdd83655809ced3ca",
+      "bytes": 116928
+    },
+    {
+      "slide": 6,
+      "sha256": "addfeace06d9f45dbd5b0a4f85e8c17e6620d98d420855332cdde303c67ca979",
+      "bytes": 63334
+    },
+    {
+      "slide": 7,
+      "sha256": "d5f60cbc57d048bd25918e744977ff77ba1226849fac3f998899590b788d2cfb",
+      "bytes": 4895
+    },
+    {
+      "slide": 8,
+      "sha256": "80bf9219276fa2bdd0462ec630ad46c27b69a4181e2993150e5c9e6bf95f266f",
+      "bytes": 69748
+    },
+    {
+      "slide": 9,
+      "sha256": "fa44c1261a66542e13a619638e73c31d77f1405a5dd213d5f6ceef5e6f1af558",
+      "bytes": 122065
+    },
+    {
+      "slide": 10,
+      "sha256": "331d2e0c6ea152743c07840680f235bcb7c2d74e19016695fad2f17946fb2a12",
+      "bytes": 157698
+    },
+    {
+      "slide": 11,
+      "sha256": "a76dca0528de70359e050c01156eb7b7153ed834e3330743b5ab5ecc1e2163d9",
+      "bytes": 8644
+    },
+    {
+      "slide": 12,
+      "sha256": "956eec820ad0cbb6c66ed92a8c8232c4770aea3d207a4171a3a55c7292cfe462",
+      "bytes": 104871,
+      "selectedPreview": "images/office-claude-en-main-12.png"
+    },
+    {
+      "slide": 13,
+      "sha256": "ef0bd8eec3e6699e672ac67729fd04b8dffe3bdfb7248670c5731dc7bc4f3ff7",
+      "bytes": 130590
+    },
+    {
+      "slide": 14,
+      "sha256": "0fccd697db7536055b19c098a39cbc9792a23ae8690f6926aaae76aceab4c23e",
+      "bytes": 102481
+    },
+    {
+      "slide": 15,
+      "sha256": "bb8e28700a807f1509a846efad0d31dfffad118a71e01045bb6065bf99bf1a57",
+      "bytes": 88141
+    },
+    {
+      "slide": 16,
+      "sha256": "576ff1e6f4d54aaed7c0decf885841df28aa8da4543acb3963d85b6d824ff0f9",
+      "bytes": 164384
+    },
+    {
+      "slide": 17,
+      "sha256": "cc017c6eeabee9f5cddbc1c82b3aa91f5a698c9517fcdf515ea67fb234598676",
+      "bytes": 7659
+    },
+    {
+      "slide": 18,
+      "sha256": "e907c7644b0f2ef6491da72db28be03c652cea2bf9b88c671e96b25765db9635",
+      "bytes": 122095
+    },
+    {
+      "slide": 19,
+      "sha256": "7c3643dbbe59e39841036b5b1840c9eff78d5c4b79c13d367b27222999a68e8e",
+      "bytes": 144591
+    },
+    {
+      "slide": 20,
+      "sha256": "bb3a151304f13b97071e20707204036b9521c9565ddac04c98bbb0b17b34ac36",
+      "bytes": 234217
+    },
+    {
+      "slide": 21,
+      "sha256": "88b85a61461caa2672e80c9f5d6cf2153a59369316a70d4a281c8a4070c43efd",
+      "bytes": 7371
+    },
+    {
+      "slide": 22,
+      "sha256": "665dd39e71e6be93678ab6f975b44cf99c18f899f207517e189b216ffa514a8d",
+      "bytes": 92194
+    },
+    {
+      "slide": 23,
+      "sha256": "3ef747ef4325835a1342cf66b7112e655100aab760e1908f89c00ec087915e63",
+      "bytes": 157868
+    },
+    {
+      "slide": 24,
+      "sha256": "0800e9e0815359acf51b2c629eb4dac01d29cb6bcec70bb8ef8c36205258e8cd",
+      "bytes": 81364
+    },
+    {
+      "slide": 25,
+      "sha256": "413f7b3f1f3254e8d05c2365cbc423c20a96ff9c5ea1b35101024bd045e6b80e",
+      "bytes": 70011
+    }
+  ]
+}

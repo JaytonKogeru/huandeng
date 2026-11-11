@@ -8,12 +8,12 @@ Accepted runtime: **0.10.0**, clean source `54513193b5e8004d51815265b75d99e6425c
 
 | Purpose | Location |
 | --- | --- |
-| Authoritative development worktree | `D:/_Proj/Huandeng-v010-20261108` |
+| Authoritative development worktree | `<workspace-checkout>` |
 | Development branch | `editor/v0.10-product-workflow` |
-| Canonical repository | `D:/_Proj/Huandeng` |
-| Established installed directory | `D:/_Proj/Huandeng/dist/HUANDENG-win32-x64` |
-| Established executable | `D:/_Proj/Huandeng/dist/HUANDENG-win32-x64/HUANDENG Editor.exe` |
-| Installation rollback destination | `D:/_Proj/Huandeng/.verification/installed-v09-backup-20261108-v010` |
+| Canonical repository | `<editor-checkout>` |
+| Established installed directory | `<editor-checkout>/dist/HUANDENG-win32-x64` |
+| Established executable | `<editor-checkout>/dist/HUANDENG-win32-x64/HUANDENG Editor.exe` |
+| Installation rollback destination | `<editor-checkout>/.verification/installed-v09-backup-20261108-v010` |
 | Release destination | Private `origin`, `JaytonKogeru/huandeng` |
 | Milestone tag | `editor-v0.10.0` |
 
@@ -33,7 +33,7 @@ English is the fresh-profile default; Chinese remains optional with core terms i
 
 Object right-click menus, shortcuts and Inspector share formatting/layer actions and Undo. Properties, Layers, Story and Checks retain drafts when switching views. Notes resizes and docks below or right; panel preferences survive immediate normal close. Assets starts with images while supporting files remain accessible. Agent setup generates instructions; ChatGPT uses existing DC-WALT and adds no reverse proxy, public endpoint or tunnel.
 
-The native Project is `examples/drug-design-v010/deck.pptd`; its canonical delivery path is `D:/_Proj/Huandeng/examples/drug-design-v010/deck.pptd`. Ten editable Main Slides and three Sections supply full/brief Presentations. Choose a collection, use F5/Shift+F5 to present, then Export. Slide edits and Project arrangement have distinct save actions. Instructions: [WORKFLOW-V010](WORKFLOW-V010.md).
+The native Project is `examples/drug-design-v010/deck.pptd`; its canonical delivery path is `<editor-checkout>/examples/drug-design-v010/deck.pptd`. Ten editable Main Slides and three Sections supply full/brief Presentations. Choose a collection, use F5/Shift+F5 to present, then Export. Slide edits and Project arrangement have distinct save actions. Instructions: [WORKFLOW-V010](WORKFLOW-V010.md).
 
 ## Acceptance and evidence
 

@@ -653,4 +653,20 @@ elements:
       align:
         - right
         - middle
+  - elementId: attribution-watermark
+    elementType: text
+    bounds:
+      - 760
+      - 10
+      - 176
+      - 16
+    content:
+      text: English · Claude Opus 5.5
+      fontFamily: Arial
+      fontSize: 10
+      lineHeight: 1.2
+      color: "#7A8580"
+      align:
+        - right
+        - middle
 notes: "You keep the AI client you already use. Codex and Claude Code load the HUANDENG plugin locally over MCP; DeepSeek uses it through its Harness; ChatGPT reaches the local editor through a command-line route. Whatever the client, every write goes through the same shared writer that the editor window uses. The writer saves one transaction at a time and checks the revisions each request read. So several people and agents can work on one project: edits to different pages can both be saved, while a second edit to the same page, even to a different object, is refused if it was prepared from an older version. Story, Section and Presentation information shares one metadata revision, so those edits can conflict too. After a refusal, read the saved result and prepare a fresh preview. In 0.19 this was tested for real: a native DeepSeek Harness session and ChatGPT shared a three-page test project. Their independent page edits both survived, a stale same-page write was rejected once, and the following style handoff kept the other client's content. That run did not include a native Claude Code session, and it is not a claim of simultaneous raw file writes. There are no section locks, no automatic scheduling and no online presence: you agree who does what, and for a handoff you name the operation, the page and the revision. An agent's activity report is its own claim; the writer receipt is the record of what was saved. This version of the talk was written by Claude Code along this route."

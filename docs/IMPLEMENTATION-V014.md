@@ -9,7 +9,7 @@
 
 ## Global Constraints
 
-- Worktree `D:/_Proj/Huandeng-v014-20261109`, base `5040bb1`; preserve unrelated files and private Projects.
+- Worktree `<workspace-checkout>`, base `5040bb1`; preserve unrelated files and private Projects.
 - Synthetic fixtures only. One revision-checked writer; no direct document writes from UI/plugin.
 - English/Simplified Chinese, light/dark, 1040px/1600px desktop widths.
 - Exact operation identity; null only for truly absent sides; unavailable history fails honestly; current-asset/theme limitations visible.

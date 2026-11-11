@@ -4,7 +4,34 @@ This milestone incorporates the user's DeepSeek Harness prototype into the canon
 
 The public evidence separates installation, protocol connectivity, native model execution and visual acceptance. [Installation evidence](evidence/native-integration/installation.json), [real collaboration evidence](evidence/native-integration/collaboration.json) and the [native JSON failure diagnosis](evidence/native-integration/invalid-json-diagnostic.json) contain no account bindings, credentials, raw session prompts or private profile paths.
 
-## Packages and identities
+## Final example maintenance and distribution refresh
+
+The final watermark pass exercised both clients inside their actual native hosts. Both Claude jobs completed with process exit 0. Both DeepSeek jobs used the installed native Cordis bundle and saved all requested attribution objects; their processes retained an existing Windows ACL failure and exited 1. Independent shared-writer comparison verified all 95 native pages: exactly one new watermark per page, with original content, Notes, metadata, order, scientific values and Presentations unchanged. [Native outcomes](evidence/final-examples/native-watermark-jobs.json) · [Full freeze audit](evidence/final-examples/native-watermark-freeze.json)
+
+The final repository-built candidate packages are in the engineering project's `dist/plugin-packages/0.19.0/`. Both maintain version 0.19.0. Their changes are documentation-only: the native adapter guide is now included in the portable allowlist, its README link resolves inside the package, and the Agent setup instructions use the current toolbar action. Runtime, adapter and shared skill bytes match the existing installation.
+
+| Candidate | Directory within that output root | Files | ZIP |
+| --- | --- | ---: | --- |
+| Claude Code / Codex | `portable-claude-codex/huandeng` | 25 | `HUANDENG-Plugin-0.19.0-Claude-Codex.zip` |
+| DeepSeek Harness native | `deepseek-native/dsh-huandeng` | 37 | `HUANDENG-Plugin-0.19.0-DeepSeek.zip` |
+
+The DeepSeek ZIP preserves the `dsh-huandeng` top-level directory to avoid a Windows directory-name collision. Its internal npm package and Cordis row are still `huandeng`. Both forms are built from the canonical `plugins/huandeng` source.
+
+Final ZIP SHA-256:
+
+- Claude Code / Codex: `750ec8287fca22c346f4a3f75d363c6d6f0bcc58c5737a6d9e95c3f420bdd054`.
+- DeepSeek native: `dc221cfdf1b79b5717a9f85a7880599701aa9707a0b1afa5add32ef59a0f12f9`.
+
+Final content-manifest SHA-256:
+
+- Portable: `625f6b607791b49b17f2139ee5d007b8771cc3bf60bb9e5233ab53fbe54fb527`.
+- Native: `f69719e27819f57f56acefa88d0bbcb8f1030e5f1487570fe1f79b6bdb9f5e69`.
+
+Manifest entries, native/vendor nesting, ZIP bytes and relative documentation links were checked. All 18 focused configuration/discovery/packaging tests passed. Claude's strict native plugin validation returned zero errors and warnings. Both new package forms' real stdio doctor checks found 22 tools, the expected project and both runtime guides. [Package verification](evidence/final-examples/plugin-packages.json)
+
+These new ZIPs were not installed over the running clients and did not receive another model trial. The actual watermark jobs retain the identity of the installed baseline packages below; byte-identical runtime code does not turn that into a new-archive execution claim. Accounts, models, profiles and existing installations were preserved. The DSH CLI has no standalone plugin-validate mode; its package-management entry was inspected without installing or updating a profile.
+
+## Installed baseline packages and identities
 
 | Distribution | Contents | Identity |
 | --- | --- | --- |
@@ -21,7 +48,7 @@ node plugins/huandeng/scripts/build-deepseek.mjs --output <another-new-absolute-
 
 Both builders use Node's built-in modules, explicit file lists and generated SHA-256 manifests. They do not install dependencies, modify source or lockfiles, write client settings or start a document writer. The native bundle's `vendor/` is also a complete portable plugin. The plugin-local Git attributes preserve the reviewed guidance bytes; those attributes are not packaged.
 
-The final portable content-manifest SHA-256 is `91e6590712b601544e6bdb2aad4b8e4443c6fa7756fd908f4c78c762a0eecfa9`. The final native manifest is `aacc8106c15e5970999181ae23783686b0a5f5297fbe1a75a409c9edf696d4b8`. The shared `SKILL.md` is `f4188e0934e7846346e286286041f49592bec3231747caa99d0b7b32dd9d016b`.
+The installed baseline portable content-manifest SHA-256 is `91e6590712b601544e6bdb2aad4b8e4443c6fa7756fd908f4c78c762a0eecfa9`. The installed baseline native manifest is `aacc8106c15e5970999181ae23783686b0a5f5297fbe1a75a409c9edf696d4b8`. The shared `SKILL.md` is `f4188e0934e7846346e286286041f49592bec3231747caa99d0b7b32dd9d016b`.
 
 The default Claude Code and Codex/Windows-host marketplace registrations point to the maintained per-user 0.19.0 HUANDENG distribution. Both catalogs use the relative plugin source `./huandeng`; each client then maintains its own installed cache. The round's verification marketplace is a build/portable-packaging input, not a default catalog dependency. Explicit native trials retain their separately recorded immutable candidate path; that provenance does not turn the candidate into another maintained source repository.
 

@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "edition": "deepseek-en",
+  "scope": "main",
+  "source": "examples/huandeng-introduction/deepseek-en/Exports/deck.pptx",
+  "sha256": "8c3748040729342ba8831c7e38a311b16eb38398b887145fe7c442b31c32af99",
+  "pages": 22,
+  "notes": 22,
+  "nativeCharts": 0,
+  "nativeTables": 5,
+  "nativeGroups": 0,
+  "officeVersion": "16.0",
+  "powerPointExecutableVersion": "16.0.20527.20150",
+  "readOnly": true,
+  "openAndRepair": false,
+  "sourceUnchanged": true,
+  "closedOwnDocument": true,
+  "visualReview": {
+    "edition": "deepseek-en",
+    "scope": "main",
+    "pages": 22,
+    "contactSheets": ["001-008", "009-016", "017-022"],
+    "detailPages": [],
+    "status": "reviewed-no-missing-content-observed",
+    "observations": [],
+    "limits": "All pages inspected in 800x450-per-slide contact sheets; source content/design was frozen and was not revised."
+  },
+  "renderedPageHashes": [
+    {
+      "slide": 1,
+      "sha256": "9af35575945f7a5a2d780a4749f94d282a35c9b538a9d24ac7d6cf4048f83bc0",
+      "bytes": 87564
+    },
+    {
+      "slide": 2,
+      "sha256": "5e6be8b19d45155b04ef074ba31dfded46bb4a1c6d5fa90705bf6b14003e1380",
+      "bytes": 59594
+    },
+    {
+      "slide": 3,
+      "sha256": "f725623c7dff37ef15cd8f22ea5b5f0d205617fbabf481a36d69134bb167b905",
+      "bytes": 26249
+    },
+    {
+      "slide": 4,
+      "sha256": "72441b5be287fcbb2a3dc9f6a1301be8226adb09f53c12890f2cf030c6dc0fd9",
+      "bytes": 52319
+    },
+    {
+      "slide": 5,
+      "sha256": "f955778823a732b5c1832008eb906b97a065ab2453a2eefbfe6ca1a4b6627e87",
+      "bytes": 43667
+    },
+    {
+      "slide": 6,
+      "sha256": "d5802cf41576f077490e0375ffd6b2669adfc318b29112e1ec26123af8210eda",
+      "bytes": 70541
+    },
+    {
+      "slide": 7,
+      "sha256": "2c46d363baf47df292b18e66f6b0159e2cca9fc45d033464af24c7945ffedf12",
+      "bytes": 55189
+    },
+    {
+      "slide": 8,
+      "sha256": "4a333b1ccbdcb62aa5adf461d4474d0c5ce689d14f92139dccc5efb56f5a1c5f",
+      "bytes": 6426
+    },
+    {
+      "slide": 9,
+      "sha256": "842b714bab3b6ba6fef2027db1938377edce80f50ff4fe8ab4b13687f9cb6281",
+      "bytes": 159549
+    },
+    {
+      "slide": 10,
+      "sha256": "bfca6cf8a07cb55d2d29912a043beea2cffc7d0f6de43a9a68088cf6698453b2",
+      "bytes": 113858
+    },
+    {
+      "slide": 11,
+      "sha256": "9c661bc190e7265c0b609e21b35f3d854261a2ac48c4f98dcece2663c40b756e",
+      "bytes": 121376
+    },
+    {
+      "slide": 12,
+      "sha256": "0022d2ea9ce21ae482edcfd72b213e520dae26cf7d0b38b1a9ab07d1b7e4cdf8",
+      "bytes": 78456
+    },
+    {
+      "slide": 13,
+      "sha256": "cb902c484b923cb8af13d30d58b5c2edcd296ce23b37c72b872519c8a86aee24",
+      "bytes": 56696
+    },
+    {
+      "slide": 14,
+      "sha256": "24b363397cac51ae733d303a517c8f3e62a81ee861fa2d3e0296cf3eed8e24ef",
+      "bytes": 154438
+    },
+    {
+      "slide": 15,
+      "sha256": "dcd874ee80363c22ba272e812c857d449a1bf33e7c939c075f5b58f3d45c02f6",
+      "bytes": 127190
+    },
+    {
+      "slide": 16,
+      "sha256": "75afba2d7303aeee51bddf3697ea6aef222db5478b660d7dffb0214d222a572f",
+      "bytes": 122652
+    },
+    {
+      "slide": 17,
+      "sha256": "00d319c99ec850ecef51a3c4a0552ef345a9f8e7bc9961a89e2b2f908f61f788",
+      "bytes": 111571
+    },
+    {
+      "slide": 18,
+      "sha256": "ae9aeed8c55732276ba129a6515e8b599a7fb93960bd8b92deedac7a1b476605",
+      "bytes": 56267
+    },
+    {
+      "slide": 19,
+      "sha256": "ea18d3d0d7f75e7bdc6da1534bc3c8ba86614499002e1efa24f822b93dd7a624",
+      "bytes": 82837
+    },
+    {
+      "slide": 20,
+      "sha256": "ea402f70f9f307f54d79715bfe6b04a6d668da89f521d3c97e6e451273962e10",
+      "bytes": 44048
+    },
+    {
+      "slide": 21,
+      "sha256": "cda813fe99dc84d51ca6f58e2b712aece478f2aacb887adf66d332c77e494ba1",
+      "bytes": 22530
+    },
+    {
+      "slide": 22,
+      "sha256": "c3035c3da5c2467433c794e934a8032f8ff4a7c47cf1f4da2a3fee8362ee9054",
+      "bytes": 29900
+    }
+  ]
+}

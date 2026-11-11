@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "edition": "deepseek-en",
+  "sourceBase": "repository-root",
+  "scope": "Final actual PowerPoint inspection; raw machine paths excluded",
+  "summary": "docs/evidence/final-examples/office.json",
+  "files": [
+    {
+      "edition": "deepseek-en",
+      "scope": "main",
+      "source": "examples/huandeng-introduction/deepseek-en/Exports/deck.pptx",
+      "sha256": "8c3748040729342ba8831c7e38a311b16eb38398b887145fe7c442b31c32af99",
+      "pages": 22,
+      "notes": 22,
+      "nativeCharts": 0,
+      "nativeTables": 5,
+      "nativeGroups": 0,
+      "officeVersion": "16.0",
+      "readOnly": true,
+      "openAndRepair": false,
+      "sourceUnchanged": true,
+      "closedOwnDocument": true,
+      "qa": "docs/evidence/final-examples/office/deepseek-en-main.json",
+      "visualReview": "reviewed-no-missing-content-observed"
+    }
+  ]
+}

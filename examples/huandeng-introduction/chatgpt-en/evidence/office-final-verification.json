@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "edition": "chatgpt-en",
+  "sourceBase": "repository-root",
+  "scope": "Final actual PowerPoint inspection; raw machine paths excluded",
+  "summary": "docs/evidence/final-examples/office.json",
+  "files": [
+    {
+      "edition": "chatgpt-en",
+      "scope": "main",
+      "source": "examples/huandeng-introduction/chatgpt-en/Exports/deck.pptx",
+      "sha256": "5872f18984c169fbf4bb38aa4bf5c91c7bf305f418e05e78f1426e63d181497d",
+      "pages": 24,
+      "notes": 24,
+      "nativeCharts": 0,
+      "nativeTables": 0,
+      "nativeGroups": 0,
+      "officeVersion": "16.0",
+      "readOnly": true,
+      "openAndRepair": false,
+      "sourceUnchanged": true,
+      "closedOwnDocument": true,
+      "qa": "docs/evidence/final-examples/office/chatgpt-en-main.json",
+      "visualReview": "reviewed-no-missing-content-observed"
+    },
+    {
+      "edition": "chatgpt-en",
+      "scope": "brief",
+      "source": "examples/huandeng-introduction/chatgpt-en/Exports/brief.pptx",
+      "sha256": "ba7c6fb76ebf2ca41a1bab0d150d729585079f11a0e7f1fd084580c3e734cdd6",
+      "pages": 12,
+      "notes": 12,
+      "nativeCharts": 0,
+      "nativeTables": 0,
+      "nativeGroups": 0,
+      "officeVersion": "16.0",
+      "readOnly": true,
+      "openAndRepair": false,
+      "sourceUnchanged": true,
+      "closedOwnDocument": true,
+      "qa": "docs/evidence/final-examples/office/chatgpt-en-brief.json",
+      "visualReview": "reviewed-no-missing-content-observed"
+    }
+  ]
+}

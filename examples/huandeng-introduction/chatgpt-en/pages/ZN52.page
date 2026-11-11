@@ -3,127 +3,148 @@ background:
   type: solid
   color: "#E4ECE6"
 elements:
+  - elementId: f-bg
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 0
+      - 0
+      - 960
+      - 540
+    fill:
+      type: solid
+      color: "#F4F1E8"
+  - elementId: f-route
+    elementType: text
+    bounds:
+      - 42
+      - 20
+      - 860
+      - 18
+    content:
+      text: HISTORY → OPERATIONS
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#168C8C"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.2
   - elementId: title
     elementType: text
     bounds:
-        [42,34,880,76]
+        [42,49,875,66]
     role: title
     content:
-      {"text":"Match the saved change to the request","fontFamily":"Georgia","fontSize":32,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: request
-    elementType: text
+      {"text":"Inspect the exact saved change","fontFamily":"Segoe UI","fontSize":32,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.1}
+  - elementId: f-foot-rule
+    elementType: shape
+    shapeName: rect
     bounds:
-      - 44
-      - 111
-      - 870
-      - 49
-    content:
-      {"text":"“Tighten the title and explanation; keep the figure, values, axes and source.”","fontFamily":"Segoe UI","fontSize":18,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: before-label
-    elementType: text
-    bounds:
-      - 44
-      - 174
-      - 412
-      - 26
-    content:
-      {"text":"Before","fontFamily":"Segoe UI","fontSize":16,"color":"#66756B","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: after-label
-    elementType: text
-    bounds:
-      - 502
-      - 174
-      - 412
-      - 26
-    content:
-      {"text":"After","fontFamily":"Segoe UI","fontSize":16,"color":"#356F68","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: before
-    elementType: image
-    src: media/imported/3141de6201ac50bc936475a058db4be21189dc88121aafe007f80b72ec5e7ef6.png
-    sourceName: evidence-before.png
-    alt: evidence-before.png
-    bounds:
-      - 44
-      - 209
-      - 412
-      - 232
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: after
-    elementType: image
-    src: media/imported/0b4a19dfbcd31a26ee1008f81b6aec774bca6b3cda224eff3a5dee8fd2d9e046.png
-    sourceName: evidence-after.png
-    alt: evidence-after.png
-    bounds:
-      - 502
-      - 209
-      - 412
-      - 232
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: preserved
-    elementType: icon
-    iconName: fas:check
-    bounds:
-      - 45
-      - 469
-      - 20
-      - 20
+      - 42
+      - 510
+      - 876
+      - 1
     fill:
       type: solid
-      color: "#356F68"
-  - elementId: scope-proof
+      color: "#CCD2CB"
+  - elementId: f-watermark
     elementType: text
     bounds:
-      - 77
-      - 466
-      - 834
-      - 43
+      - 42
+      - 518
+      - 700
+      - 17
     content:
-      {"text":"Two text values changed · All 12 values and the original figure preserved","fontFamily":"Segoe UI","fontSize":17,"color":"#356F68","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: brand-small
+      text: English · ChatGPT 6 Astra
+      fontFamily: Segoe UI
+      fontSize: 12
+      color: "#50646A"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.2
+  - elementId: f-position
+    elementType: text
+    bounds:
+      - 882
+      - 518
+      - 36
+      - 17
+    content:
+      text: ""
+      fontFamily: Segoe UI
+      fontSize: 12
+      color: "#50646A"
+      bold: false
+      align:
+        - right
+        - top
+      lineHeight: 1.2
+      field: main-position
+  - elementId: f-operation-details
     elementType: image
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
-    sourceName: huandeng.png
-    alt: huandeng.png
     bounds:
       - 44
-      - 510
-      - 17
-      - 17
+      - 143
+      - 566
+      - 338
+    src: media/imported/0148822d0496ea8ff3653d88ab2c63fd4301d97b660c3ae4dea40798a3dc0bea.png
+    sourceName: en-operation-changes-4x.png
     fit:
       mode: contain
-    crop:
-      left: 0.18
-      right: 0.18
-      top: 0.14
-      bottom: 0.14
-  - elementId: foot
+  - elementId: f-operation-instruction
     elementType: text
     bounds:
-      - 69
-      - 513
-      - 130
-      - 17
+      - 648
+      - 155
+      - 264
+      - 198
     content:
-      {"text":"HUANDENG","fontFamily":"Segoe UI","fontSize":10,"color":"#66756B","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: position
+      text: |-
+        Open the operation.
+  
+        Check the changed objects.
+  
+        Read both page states.
+      fontFamily: Segoe UI
+      fontSize: 21
+      color: "#112D32"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.32
+  - elementId: f-operation-mark
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 630
+      - 148
+      - 4
+      - 318
+    fill:
+      type: solid
+      color: "#ED6A3A"
+  - elementId: f-operation-result
     elementType: text
     bounds:
-      - 884
-      - 512
-      - 30
-      - 18
+      - 648
+      - 391
+      - 264
+      - 81
     content:
-      {"text":"","fontFamily":"Segoe UI","fontSize":10,"color":"#66756B","bold":false,"align":["right","top"],"lineHeight":1.3,"field":"main-position"}
-notes: "This is an actual saved edit. The request tightened the title and explanation while retaining the figure, all twelve values, axes and source. The before and after views come from that operation’s real snapshots. The scope can be checked directly. Next we need to identify the page and follow its history, as well as inspect the final appearance.\n\nSaved operation: d2d18509-c72c-48e7-81cc-4251486a522e. Verification: evidence/wording-edit.json."
+      text: |-
+        Expected here:
+        only title and lead text.
+      fontFamily: Segoe UI
+      fontSize: 21
+      color: "#168C8C"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.2
+notes: "Open History for the edited page and choose its operation record. The saved changes list identifies the actual objects and properties changed by that operation. Here the public fixture reports content.text for the title and lead, matching the two-sentence request. Review the before and after page states as well. A successful save is evidence of a persisted change, not a substitute for assessing whether the page reads well."

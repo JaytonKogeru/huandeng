@@ -4,7 +4,7 @@ Status: runtime C3, same-path ordinary installation and fresh client checks veri
 
 ## Canonical work and source identity
 
-Maintain product source in D:/_Proj/Huandeng. The six ongoing introductions are examples/huandeng-introduction/{chatgpt-en,chatgpt-zh,claude-en,claude-zh,deepseek-en,deepseek-zh}/deck.pptd. Continue in those projects through the selected shared writer, preserving their stable page identities.
+Maintain product source in <workspace-checkout> The six ongoing introductions are examples/huandeng-introduction/{chatgpt-en,chatgpt-zh,claude-en,claude-zh,deepseek-en,deepseek-zh}/deck.pptd. Continue in those projects through the selected shared writer, preserving their stable page identities.
 
 Final runtime source C3 is cadaecbf9cf1661e28464fe68b7b866f68fecabe. Feature/plugin source C1 is aff4ac28753bb2d4422f2f993f2409742afaecf9; navigation correction C2 is f8ec88f73eef0db18a35b2e9b5024a70b7ffe734. The executable is a clean C3 build, including the visible Application menu button. Unchanged plugin distributions were reproduced from C1. Editor/plugin version is 0.19.0, core npm remains 2.3.1 and sourceDirty is false.
 
@@ -12,7 +12,7 @@ The Windows archive is HUANDENG-Editor-0.19.0-win32-x64.zip, 236214422 bytes, SH
 
 The later delivery commit D contains examples, documentation and compact evidence. Tag editor-v0.19.0 pins D; release-manifest.json identifies D, C3 and C1 separately. Never change the executable's marker to D. A runtime or bundled-plugin source change after C3 requires a new source commit, clean build and appropriate package checks.
 
-The DSH package and Cordis identity remain huandeng. D:/_Proj/dsh-huandeng is the intentional installed-distribution name: Huandeng would collide with the canonical repository on Windows. Maintained adapter source is plugins/huandeng/adapters/deepseek.
+The DSH package and Cordis identity remain huandeng. <dsh-bundle-dir> is the intentional installed-distribution name: Huandeng would collide with the canonical repository on Windows. Maintained adapter source is plugins/huandeng/adapters/deepseek.
 
 ## Presentation state
 
@@ -48,7 +48,7 @@ The installed physical path is dist/HUANDENG-v0.19.0-win32-x64, with the establi
 
 Use the visible top-left Application menu > File > Identify project folder route for unmarked projects. All six introductions now have folder markers: four were added through the visible menu and the two existing pairs were preserved. Windows desktop.ini and .huandeng/project.ico decorations are local-only. The four previously tracked files were removed from the Git index only; their local bytes and attributes were rechecked unchanged. Artwork and historical page assets are not decoration files.
 
-The workspace scan found no v013-* loose files in D:/_Proj; unrelated projects remain intact. Eight duplicate generated Brief aliases were removed after current hash checks. Temporary verification/build work stays under ignored .verification. Cleanup retained one current C3 installation, one explicit 0.18 rollback and one final release ZIP. The superseded C1/C2 and dirty candidates, older ZIPs, owned test directories and clean-build worktree were retired after their guards passed; main is the sole HUANDENG worktree. Compact failed/pass reports remain.
+The workspace scan found no v013-* loose files in <workspace-root> unrelated projects remain intact. Eight duplicate generated Brief aliases were removed after current hash checks. Temporary verification/build work stays under ignored .verification. Cleanup retained one current C3 installation, one explicit 0.18 rollback and one final release ZIP. The superseded C1/C2 and dirty candidates, older ZIPs, owned test directories and clean-build worktree were retired after their guards passed; main is the sole HUANDENG worktree. Compact failed/pass reports remain.
 
 ## Verification and release rules
 

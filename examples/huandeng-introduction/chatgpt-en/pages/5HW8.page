@@ -3,181 +3,169 @@ background:
   type: solid
   color: "#E4ECE6"
 elements:
+  - elementId: f-bg
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 0
+      - 0
+      - 960
+      - 540
+    fill:
+      type: solid
+      color: "#F4F1E8"
+  - elementId: f-route
+    elementType: text
+    bounds:
+      - 42
+      - 20
+      - 860
+      - 18
+    content:
+      text: PEOPLE AND ASSISTANTS → SHARED PROJECT
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#168C8C"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.2
   - elementId: title
     elementType: text
     bounds:
-        [42,34,880,76]
+        [42,49,875,66]
     role: title
     content:
-      {"text":"Built on work worth acknowledging","fontFamily":"Georgia","fontSize":32,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.2}
-  - elementId: brand-small
-    elementType: image
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
-    sourceName: huandeng.png
-    alt: huandeng.png
+      {"text":"Divide the pages; review the returned work","fontFamily":"Segoe UI","fontSize":32,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.1}
+  - elementId: f-foot-rule
+    elementType: shape
+    shapeName: rect
     bounds:
-        [43,512,18,18]
-    fit:
-      mode: contain
-    crop:
-      left: 0.18
-      right: 0.18
-      top: 0.14
-      bottom: 0.14
-  - elementId: foot
+      - 42
+      - 510
+      - 876
+      - 1
+    fill:
+      type: solid
+      color: "#CCD2CB"
+  - elementId: f-watermark
     elementType: text
     bounds:
-        [68,515,140,16]
+      - 42
+      - 518
+      - 700
+      - 17
     content:
-      {"text":"HUANDENG","fontFamily":"Segoe UI","fontSize":9,"color":"#5B6A62","bold":false,"align":["left","top"],"lineHeight":1.35}
-  - elementId: position
-    elementType: text
-    bounds:
-        [881,514,35,18]
-    content:
-      {"text":"","fontFamily":"Segoe UI","fontSize":10,"color":"#5B6A62","bold":false,"align":["right","top"],"lineHeight":1.35,"field":"main-position"}
-  - elementId: credit-mark-0
-    elementType: image
-    src: media/imported/44e2a2aa5f3887deae386fa73f71234961f93e006873b632ccf38b6b6f1291a1.png
-    sourceName: open-slide.png
-    alt: open-slide.png
-    bounds:
-      - 44
-      - 145
-      - 62
-      - 62
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: credit-name-0
-    elementType: text
-    bounds:
-      - 126
-      - 161
-      - 203
-      - 43
-    content:
-      text: OpenSlide
-      fontFamily: Georgia
-      fontSize: 23
-      color: "#20372F"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.35
-  - elementId: credit-mark-1
-    elementType: image
-    src: media/imported/2a2f5cbcc74c7fa83c40127dd8b0e42c23f1157131aebe28492aa1ac27bbdc6d.png
-    sourceName: github-repository.png
-    alt: github-repository.png
-    bounds:
-      - 345
-      - 145
-      - 62
-      - 62
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: credit-name-1
-    elementType: text
-    bounds:
-      - 427
-      - 161
-      - 203
-      - 43
-    content:
-      text: OpenPPTD
-      fontFamily: Georgia
-      fontSize: 23
-      color: "#20372F"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.35
-  - elementId: credit-mark-2
-    elementType: image
-    src: media/imported/d697acf6f3c5bc265806bc8f6c4e6d58b964e0b2962392d0329a420639f45846.png
-    sourceName: pptxgenjs.png
-    alt: pptxgenjs.png
-    bounds:
-      - 646
-      - 145
-      - 62
-      - 62
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: credit-name-2
-    elementType: text
-    bounds:
-      - 728
-      - 161
-      - 203
-      - 43
-    content:
-      text: PptxGenJS
-      fontFamily: Georgia
-      fontSize: 23
-      color: "#20372F"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.35
-  - elementId: credit-contributions
-    elementType: text
-    bounds:
-      - 44
-      - 257
-      - 870
-      - 189
-    content:
-      text: |-
-        OpenSlide supplies the editor code foundation.
-        OpenPPTD contributes formula conversion; PptxGenJS generates PPTX.
-  
-        The PPTD approach was inspired by the Kimi Slides ecosystem.
-        Charts, formulas and functional icons use Apache ECharts, KaTeX
-        and Font Awesome Free.
-      fontFamily: Segoe UI
-      fontSize: 18
-      color: "#20372F"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.5
-  - elementId: science-credits
-    elementType: text
-    bounds:
-      - 44
-      - 453
-      - 870
-      - 49
-    content:
-      text: |-
-        Scientific example: RCSB PDB 1BNA · Drew et al., PNAS (1981)
-        Interaction/design references: PowerPoint, WPS, Recent. Sources and licenses stay with the project.
+      text: English · ChatGPT 6 Astra
       fontFamily: Segoe UI
       fontSize: 12
-      color: "#5B6A62"
+      color: "#50646A"
       bold: false
       align:
         - left
         - top
-      lineHeight: 1.5
-notes: "HUANDENG builds on OpenSlide. OpenPPTD contributes formula-conversion modules and PptxGenJS supplies PPTX generation. The PPTD approach was inspired by the Kimi Slides ecosystem; that is not a claim about inventing a universal standard. Charts, formulas and functional icons also build on open-source work. The public DNA example comes from PDB 1BNA and Drew and colleagues. Sources and licenses stay with the project; third-party marks do not imply endorsement.\n\nSources and scope: sources/brand/manifest.json; notices/; sources/science/source.json; https://recent.design/ . The GitHub mark identifies the OpenPPTD repository, not an OpenPPTD product logo."
+      lineHeight: 1.2
+  - elementId: f-position
+    elementType: text
+    bounds:
+      - 882
+      - 518
+      - 36
+      - 17
+    content:
+      text: ""
+      fontFamily: Segoe UI
+      fontSize: 12
+      color: "#50646A"
+      bold: false
+      align:
+        - right
+        - top
+      lineHeight: 1.2
+      field: main-position
+  - elementId: f-work-one
+    elementType: text
+    bounds:
+      - 44
+      - 137
+      - 398
+      - 28
+    content:
+      text: GX5Z · explain the project
+      fontFamily: Segoe UI
+      fontSize: 19
+      color: "#112D32"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.2
+  - elementId: f-work-two
+    elementType: text
+    bounds:
+      - 516
+      - 137
+      - 398
+      - 28
+    content:
+      text: FKA9 · teach the Story brief
+      fontFamily: Segoe UI
+      fontSize: 19
+      color: "#112D32"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.2
+  - elementId: f-work-page-one
+    elementType: image
+    bounds:
+      - 44
+      - 181
+      - 398
+      - 224
+    src: media/imported/f3a32e5704d32f592bcb1967a0473ac5597e2feb48ee50b7a5485ac799197279.png
+    sourceName: 03.png
+    fit:
+      mode: contain
+  - elementId: f-work-page-two
+    elementType: image
+    bounds:
+      - 516
+      - 181
+      - 398
+      - 224
+    src: media/imported/608d43256094f2d6832cc74f15b988a3c0627ee4f68e14d344358f07aeeab518.png
+    sourceName: 05.png
+    fit:
+      mode: contain
+  - elementId: f-work-divider
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 478
+      - 177
+      - 2
+      - 233
+    fill:
+      type: solid
+      color: "#CCD6D1"
+  - elementId: f-work-review
+    elementType: text
+    bounds:
+      - 44
+      - 448
+      - 870
+      - 53
+    content:
+      text: Agree on page ownership. Save focused changes. Inspect every returned page.
+      fontFamily: Segoe UI
+      fontSize: 22
+      color: "#112D32"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.2
+notes: "Agree on the scope before work begins. Different pages can be edited in parallel; a person can also hand a page from content drafting to visual refinement. This diagram illustrates a division between the project map and the Story tutorial, using actual page previews. Give shared project structure one owner, avoid simultaneous changes to the same page, and review every saved result at presentation size. Revision checks expose conflicts; they do not replace visual judgment. This English edition was authored by the main ChatGPT session."

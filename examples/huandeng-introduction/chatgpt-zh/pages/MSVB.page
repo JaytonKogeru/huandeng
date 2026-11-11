@@ -3,152 +3,143 @@ background:
   type: solid
   color: "#F7F5EF"
 elements:
+  - elementId: f-bg
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 0
+      - 0
+      - 960
+      - 540
+    fill:
+      type: solid
+      color: "#F4F1E8"
   - elementId: title
     elementType: text
     bounds:
-        [42,34,880,76]
+        [38,29,884,48]
     role: title
     content:
-      {"text":"小改动，不该变成另一套文件","fontFamily":"Noto Serif SC","fontSize":28,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.2}
-  - elementId: brand-small
-    elementType: image
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
-    sourceName: huandeng.png
-    alt: huandeng.png
-    bounds:
-        [43,512,18,18]
-    fit:
-      mode: contain
-    crop:
-      left: 0.18
-      right: 0.18
-      top: 0.14
-      bottom: 0.14
-  - elementId: foot
+      {"text":"把下一次修改，留在同一页","fontFamily":"Noto Sans SC","fontSize":30,"color":"#112D32","align":["left","top"],"lineHeight":1.32,"bold":true}
+  - elementId: f-watermark
     elementType: text
     bounds:
-        [68,515,140,16]
+      - 38
+      - 514
+      - 800
+      - 22
     content:
-      {"text":"HUANDENG","fontFamily":"Noto Sans SC","fontSize":9,"color":"#5B6A62","bold":false,"align":["left","top"],"lineHeight":1.35}
-  - elementId: position
+      text: Chinese · ChatGPT 6 Astra + Subagents
+      fontFamily: Noto Sans SC
+      fontSize: 13
+      color: "#596D70"
+      align:
+        - left
+        - top
+      lineHeight: 1.32
+  - elementId: f-position
     elementType: text
     bounds:
-        [881,514,35,18]
+      - 882
+      - 514
+      - 40
+      - 22
     content:
-      {"text":"","fontFamily":"Noto Sans SC","fontSize":10,"color":"#5B6A62","bold":false,"align":["right","top"],"lineHeight":1.35,"field":"main-position"}
-  - elementId: motivation
+      text: ""
+      fontFamily: Noto Sans SC
+      fontSize: 13
+      color: "#596D70"
+      align:
+        - right
+        - top
+      lineHeight: 1.32
+      field: main-position
+  - elementId: f-origin
     elementType: text
     bounds:
-      - 44
-      - 151
-      - 468
-      - 234
+      - 40
+      - 126
+      - 240
+      - 35
+    content:
+      text: 起点：组会准备
+      fontFamily: Noto Sans SC
+      fontSize: 18
+      color: "#168C8C"
+      align:
+        - left
+        - top
+      lineHeight: 1.32
+      bold: true
+  - elementId: f-motivation
+    elementType: text
+    bounds:
+      - 40
+      - 180
+      - 250
+      - 168
+    content:
+      {"text":"50 页里只改 2 页，\n我还想保留自己的判断，\n以及原图与修改的位置。","fontFamily":"Noto Sans SC","fontSize":21,"color":"#112D32","align":["left","top"],"lineHeight":1.48}
+  - elementId: f-result
+    elementType: text
+    bounds:
+      - 40
+      - 383
+      - 250
+      - 78
     content:
       text: |-
-        我希望 Agent 帮我制作，
-        也希望自己的判断与原材料留下来。
-  
-        从“讲清我要做什么”，
-        到“只修改需要改的那一页”。
+        这页的 Story 与历史，
+        继续跟着这页走。
       fontFamily: Noto Sans SC
-      fontSize: 22
-      color: "#20372F"
-      bold: false
+      fontSize: 18
+      color: "#168C8C"
       align:
         - left
         - top
       lineHeight: 1.5
-  - elementId: copy-file
-    elementType: icon
-    iconName: fas:file-powerpoint
+  - elementId: f-real-history
+    elementType: image
     bounds:
-      - 569
-      - 150
-      - 38
-      - 38
-    fill:
-      type: solid
-      color: "#356F68"
-  - elementId: file-copies
-    elementType: text
-    bounds:
-      - 626
-      - 153
-      - 286
-      - 122
-    content:
-      text: |-
-        deck.pptx
-        deck_revised.pptx
-        deck_final_2.pptx
-      fontFamily: Consolas
-      fontSize: 18
-      color: "#5B6A62"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.6
-  - elementId: to-page
+      - 312
+      - 138
+      - 610
+      - 352
+    src: media/imported/6383e04f6d27d8cc07bc6fa705212b427be3a0792e7a66e7b02261f6420e8a9c.png
+    sourceName: current-page-history.png
+    fit:
+      mode: contain
+  - elementId: f-to-record
     elementType: line
     bounds:
-      - 651
-      - 296
+      - 257
+      - 349
+      - 45
       - 0
-      - 43
     viewBox:
       - 1
       - 1
     points: 0,0 1,1
     border:
-      width: 1.4
-      color: "#356F68"
+      width: 2
+      color: "#ED6A3A"
     arrow:
       - null
       - arrow
-  - elementId: page-history
-    elementType: icon
-    iconName: fas:clock-rotate-left
-    bounds:
-      - 571
-      - 377
-      - 36
-      - 36
-    fill:
-      type: solid
-      color: "#356F68"
-  - elementId: one-page
+  - elementId: f-history-caption
     elementType: text
     bounds:
-      - 625
-      - 371
-      - 290
-      - 83
+      - 312
+      - 100
+      - 609
+      - 29
     content:
-      text: 同一页 + 它的修改历史
-      fontFamily: Noto Serif SC
-      fontSize: 21
-      color: "#20372F"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.4
-  - elementId: illustrative
-    elementType: text
-    bounds:
-      - 44
-      - 469
-      - 872
-      - 35
-    content:
-      text: 来自我的“50 页里改 2 页”场景；文件名为示意。
+      text: 本项目 6G4G · 真实页面历史
       fontFamily: Noto Sans SC
-      fontSize: 12
-      color: "#5B6A62"
-      bold: false
+      fontSize: 15
+      color: "#596D70"
       align:
         - left
         - top
-      lineHeight: 1.35
-notes: "我的困扰有两个经常同时出现：AI做出的页面看似完整，却没有突出我真正想讲的东西；只改五十页中的两页，又可能留下另一整套文件。于是我把问题重新拆成：人的意图留在哪里，以及这次到底修改了哪一页。Story负责保存判断，页面身份与历史负责让小改动留在原来的工作里。这里的文件名是场景示意，不是对所有AI工具的结论。"
+      lineHeight: 1.32
+notes: "这个项目的起点是我的组会准备。我希望 AI 帮忙制作，也希望页面能表达我的判断；当五十页里只改两页时，下一次还应该找得到那两页的意图、原图和修改。HUANDENG 因而把 Story、页面身份和页面历史留在同一个项目。右图是这份介绍中 6G4G 的真实操作记录及当前页面预览，展示刚才这次制作留下的记录；它不是一个宣称只改了两句的实验。随后会具体演示怎么检查一次小修改。"
