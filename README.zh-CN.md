@@ -1,6 +1,6 @@
 # HUANDENG Editor
 
-[English](README.md) · 简体中文
+[English](README.md) | 简体中文
 
 **把幻灯片做成可以持续修改、重复使用，并能与 AI 助手共同编辑的项目。**
 
@@ -8,9 +8,17 @@ HUANDENG 是一个本地桌面幻灯片编辑器。你在画布里选对象、�
 
 ![HUANDENG 0.19 中文工作区：页面列表、画布与右侧属性面板](docs/images/editor-zh-019.png)
 
-当前桌面与 Plugin 版本为 **0.19.0**。Windows 桌面是当前完成交付验证的路径；可编辑示例、发布说明和实际验收记录分别保留在仓库中。
+当前桌面与 Plugin 的**本地候选版本为 0.20.0**。Windows 候选包与两种客户端包已完成构建及检查，具体变化和验证见 [0.20 候选说明](docs/RELEASE-V020.md)。这不是已经公开发布的版本。
 
-[打开产品介绍示例](examples/huandeng-introduction/README.md) · [桌面启动与打包](packages/desktop/README.md) · [助手接入](plugins/huandeng/README.md) · [0.19 发布说明](docs/RELEASE-V019.md)
+上图是实际使用中的 0.19 工作项目；下文的**项目规则**视图是 0.20 候选版新增界面。既有截图保留真实的版本标识。
+
+[打开产品介绍示例](examples/huandeng-introduction/README.md) | [桌面启动与打包](packages/desktop/README.md) | [助手接入](plugins/huandeng/README.md) | [0.20 本地候选说明](docs/RELEASE-V020.md)
+
+## 为什么做幻灯
+
+这个项目从组会里的两个困扰开始：AI 做出的页面看起来完整，却没有表达讲者真正的重点；五十页只改两页，又得到一整套新文件。作者仍然希望让 agent 帮忙，同时保留自己的讲法、原图和修改判断。[原始口述故事](examples/huandeng-introduction/story/USER-STORY.zh-CN.md)记录了这条起点。
+
+因此，幻灯把故事放在排页之前，把一页作为可以识别、修改和回看的单位。Editor 让人看见并编辑作品，Plugin 帮助手理解上下文、操作同一份项目；原始素材、Story、备注和历史留在工作旁边。作者决定该讲什么，也亲自判断实际画面。介绍示例把这些动机、架构和实际操作组织成一个故事，具体约定见[叙事规格](docs/INTRODUCTION-STORY-SPEC.md)。
 
 ## 先做一处修改
 
@@ -63,6 +71,20 @@ powershell -NoProfile -File scripts/Install-Huandeng.ps1
 
 详细依赖与打包选项见[桌面说明](packages/desktop/README.md)。PNG / PDF 输出需要 Chromium、Chrome 或 Edge；可通过 `HUANDENG_BROWSER` 指定浏览器。Windows 默认可使用 Edge。
 
+## 从故事到成品的工作流程
+
+本仓库的幻灯片创作遵守 **Audit、Spec、Implement、Validate、Release**。先理解作者和已有证据，再组织论证、设计页面，最后检查实际效果与交付结果。
+
+| 阶段 | 要完成的工作 |
+| --- | --- |
+| Audit：审计 | 读完整原故事、项目约定、历史页面和真实渲染，确定哪些该保留、哪里出了问题。 |
+| Spec：设计规格 | 组织完整叙事，把教学放在有动机的位置，围绕证据设计有代表性的页面。 |
+| Implement：实现 | 通过共享 writer 做明确修改，保留原材料、页面身份与有意义的历史。 |
+| Validate：核验 | 看每张受影响页面和完整顺序，检查视觉关系、界面位置引导、讲稿与导出画面。 |
+| Release：交付 | 保存可继续使用的项目、所需交付格式、准确来源和实际核验结果。 |
+
+[介绍项目的创作约定](docs/INTRODUCTION-STORY-SPEC.md)具体说明这些阶段。技术检查帮助发现问题，实际视觉审查负责判断讲解是否成立；科学数据图应使用合适的专业绘图工具，保留数据、单位和来源，再放进编辑器。
+
 ## 从一页，组织成一场演讲
 
 **Main Slides 是项目的页面库。** 页面的永久 ID 和界面里的短 Slide ID 用于认出同一页；Position 表示它当前排在哪里。重排页面会改变位置，不会改变页面身份。需要跟同事或助手讨论某页时，可以复制 Slide ID。[位置与身份](docs/POSITION-FIELDS.md)
@@ -79,9 +101,11 @@ powershell -NoProfile -File scripts/Install-Huandeng.ps1
 
 Story 记录项目、章节、演讲和单页的目的与约束；Notes 记录实际要讲的话。助手读取这些信息时，也会看到邻页、素材和这页被哪些演讲使用。作者无需在每次对话里重新解释全部背景。Story 是可继续工作的上下文，最终画面仍需要实际检查。[Story 约定](docs/STORY.md)
 
+0.20 候选版的「项目」页增加**项目规则**：直接显示项目根目录 `AGENTS.md` 的原文和来源，可以打开完整文件预览，也可以在编辑文件后刷新读取。它使用同一份作者约定，不另建一份规则，也不把 AI 摘要当作原文。
+
 ### 保留原材料，也保留改动依据
 
-素材库索引项目中的原图和页面使用位置，支持按原文件名查找、预览与复用。导入保留原始文件字节，相同内容可复用同一份素材。操作记录用于查看具体保存；**命名页面版本**记录明确的里程碑，并把当时引用的本地素材一起归档。命名版本随项目文件夹移动，本机操作和恢复日志留在原安装环境。[素材与科研对象](docs/SCIENTIFIC-OBJECTS.md) · [版本规则](docs/RELEASE-POLICY.md)
+素材库索引项目中的原图和页面使用位置，支持按原文件名查找、预览与复用。导入保留原始文件字节，相同内容可复用同一份素材。操作记录用于查看具体保存；**命名页面版本**记录明确的里程碑，并把当时引用的本地素材一起归档。命名版本随项目文件夹移动，本机操作和恢复日志留在原安装环境。[素材与科研对象](docs/SCIENTIFIC-OBJECTS.md) | [版本规则](docs/RELEASE-POLICY.md)
 
 ### 用不同视图处理不同尺度的工作
 
@@ -89,7 +113,7 @@ Story 记录项目、章节、演讲和单页的目的与约束；Notes 记录�
 
 ### 保存结果可以核对
 
-页面修改与项目编排分别保存。助手的进度报告和文档服务的实际保存回执分开显示；保存后的操作可以查看前后画面及变更对象。检查面板可以测量内容范围、检查本机字体，并标明已经过期的结果。它帮助定位问题，不能代替作者的视觉判断或 PowerPoint 中的交付检查。[原生接入与协作记录](docs/NATIVE-INTEGRATION-0.19.md) · [PowerPoint 兼容范围](docs/POWERPOINT-COMPARISON.md)
+页面修改与项目编排分别保存。助手的进度报告和文档服务的实际保存回执分开显示；保存后的操作可以查看前后画面及变更对象。检查面板可以测量内容范围、检查本机字体，并标明已经过期的结果。它帮助定位问题，不能代替作者的视觉判断或 PowerPoint 中的交付检查。[原生接入与协作记录](docs/NATIVE-INTEGRATION-0.19.md) | [PowerPoint 兼容范围](docs/POWERPOINT-COMPARISON.md)
 
 ## 架构：多个入口，一份文档状态
 
@@ -97,15 +121,15 @@ Electron 提供桌面窗口、文件对话框和项目标签页；React 画布�
 
 ```mermaid
 flowchart TB
-    E["Editor · Electron / React"] --> W["本机文档服务 · 共享 writer"]
+    E["Editor: Electron / React"] --> W["本机文档服务：共享 writer"]
     A["AI 客户端 + HUANDENG Plugin"] --> C["CLI / MCP"]
     C --> W
-    W --> P["项目目录 · 页面 / 素材 / Story / 命名版本"]
+    W --> P["项目目录：页面 / 素材 / Story / 命名版本"]
     W --> J["本机操作记录与恢复日志"]
     W --> X["渲染与导出"]
 ```
 
-过期的页面版本会产生冲突，客户端需要读取新状态再形成修改。不同页面可以分工处理；同一页及共享的 Story、章节、演讲元数据需要协调。任务标签本身不构成锁，也不会自动安排助手。外部程序绕过服务直接改文件，不在这个协作协议中。[协议规格](docs/SPEC.md) · [实际协作验证](docs/NATIVE-INTEGRATION-0.19.md)
+过期的页面版本会产生冲突，客户端需要读取新状态再形成修改。不同页面可以分工处理；同一页及共享的 Story、章节、演讲元数据需要协调。任务标签本身不构成锁，也不会自动安排助手。外部程序绕过服务直接改文件，不在这个协作协议中。[协议规格](docs/SPEC.md) | [实际协作验证](docs/NATIVE-INTEGRATION-0.19.md)
 
 ### 项目里有什么
 
@@ -129,12 +153,23 @@ flowchart TB
 
 | 客户端 | 工程内的接入形式 | 入口 |
 | --- | --- | --- |
-| Claude Code | 原生 `.claude-plugin/plugin.json`、`.mcp.json` 与共享 `skills/` | [本地 Plugin](plugins/huandeng/README.md#claude-code) |
-| DeepSeek Harness | 原生 `huandeng` bundle；适配器、构建脚本和共享内容均在本仓库 | [DSH 原生适配器](plugins/huandeng/adapters/deepseek/README.md) |
+| Claude Code | `plugins/huandeng/.claude-plugin/plugin.json`、`.mcp.json` 与 `skills/` | [本地 Plugin](plugins/huandeng/README.md#claude-code) |
+| DeepSeek Harness | `plugins/huandeng/adapters/deepseek/` 的原生 Cordis 适配器，连同共享技能与启动器打包 | [DSH 原生适配器](plugins/huandeng/adapters/deepseek/README.md) |
 | Codex | Portable Plugin、兼容 manifest 或生成的 MCP TOML 配置 | [Codex 接入](plugins/huandeng/README.md#codex) |
 | ChatGPT | 通过已有授权工作站连接调用同一 CLI；账户绑定独立于公开本地包 | [工作站接入](plugins/huandeng/README.md#chatgpt-through-the-existing-workstation) |
 
-Claude Code 和 DeepSeek Harness 的包都由 `plugins/huandeng` 内的源码构建。DSH 原生 bundle 使用官方宿主管理安装，并为每个项目维护工具路由；原来的 raw MCP patch 是另一个兼容接入方式。具体客户端版本、安装过程与真实模型任务证据见[0.19 原生集成](docs/NATIVE-INTEGRATION-0.19.md)。
+Claude Code 和 DeepSeek Harness 的包都由工程内部的 `plugins/huandeng` 源码构建。在仓库根目录执行，且每次选择一个新的输出目录：
+
+```sh
+node plugins/huandeng/scripts/build-package.mjs --target local --output "$PWD/dist/plugin-packages/local-build"
+node plugins/huandeng/scripts/build-deepseek.mjs --output "$PWD/dist/plugin-packages/deepseek-build"
+```
+
+每条命令会在指定目录下生成 `huandeng/` 包。本次本地候选包位于 `dist/plugin-packages/0.20.0/portable-claude-codex/huandeng` 和 `dist/plugin-packages/0.20.0/deepseek-native/huandeng`，两者都在工程内部。桌面候选包位于 `dist/HUANDENG-v0.20.0-win32-x64`。这些是构建输出，持续维护的源码仍是 `plugins/huandeng`。安装时使用各客户端支持的 Plugin loader 或管理器。
+
+0.20 候选版还增加面向原生客户端的项目原图导入与真实 Editor 截图工具。打包后的 MCP 报告 0.20.0 与 24 个工具；素材获取和截图已对接未改动的兼容 0.19 writer 实测。打包没有替换已有运行环境，也不等于尚未结束的原生作者任务已经完成。具体边界见[候选说明](docs/RELEASE-V020.md)。
+
+DSH 原生 bundle 使用官方宿主管理安装，并为每个项目维护工具路由；原来的 raw MCP patch 是另一个兼容接入方式。Claude Code 与 DSH 的实际宿主检查、安装及模型任务结果见[0.19 原生集成](docs/NATIVE-INTEGRATION-0.19.md)，不能仅凭包内有 manifest 就宣称原生任务已经成功。
 
 CLI 也能读取已打开的项目，例如：
 
@@ -147,7 +182,7 @@ node packages/core/huandeng.js --entry examples/huandeng-introduction/chatgpt-zh
 
 ## 格式与当前边界
 
-编辑器支持文字、图片、形状、线条、图标、组合、原生表格、图表和 LaTeX 公式。PPTX 对支持的对象写入可编辑结构；不支持的对象回退会列入导出报告。检查报告与实际导出画面后再交付。[科研对象](docs/SCIENTIFIC-OBJECTS.md) · [PowerPoint 差异说明](docs/POWERPOINT-COMPARISON.md)
+编辑器支持文字、图片、形状、线条、图标、组合、原生表格、图表和 LaTeX 公式。PPTX 对支持的对象写入可编辑结构；不支持的对象回退会列入导出报告。检查报告与实际导出画面后再交付。[科研对象](docs/SCIENTIFIC-OBJECTS.md) | [PowerPoint 差异说明](docs/POWERPOINT-COMPARISON.md)
 
 - PNG、PDF、PPTX 输出静态版式；Editor 内的点击步骤不会自动变成 PowerPoint 动画。
 - MP4 是单独的无声定时输出，需要带 libx264 的 FFmpeg；它有明确的动画素材限制。
@@ -155,6 +190,8 @@ node packages/core/huandeng.js --entry examples/huandeng-introduction/chatgpt-zh
 - 本机字体和 Office 排版可能影响最终外观。检查面板与导出报告提供线索，真实渲染和目标软件检查负责确认结果。
 
 ## 开发与贡献
+
+参与开发请先阅读 [CONTRIBUTING.md](CONTRIBUTING.md)，其中有问题报告、功能建议和使用提问的入口，以及开发环境、检查范围与 PR 说明。欢迎中英文反馈。潜在安全问题请按 [SECURITY.md](SECURITY.md) 的私密报告状态与流程处理；社区参与遵守[行为准则](CODE_OF_CONDUCT.md)。
 
 | 目录 | 内容 |
 | --- | --- |
@@ -181,4 +218,6 @@ HUANDENG 基于 [OpenSlide](https://github.com/open-slide/open-slide) 的 React 
 
 图表使用 Apache ECharts，数学排版使用 KaTeX，图标使用 Font Awesome Free；PPTX 生成使用 PptxGenJS，公式导出使用单独标注的 OpenPPTD 转换模块。发行包保留这些组件的许可和来源说明。[第三方声明](packages/desktop/NOTICE.md)
 
-示例中的研究材料、品牌标记和截图按各自的来源说明使用；软件许可不会自动改变素材的许可。介绍项目的[素材与来源入口](examples/huandeng-introduction/README.md#材料与功能--material-and-product-evidence)保留了这些记录。
+[完整致谢与设计参考](docs/ACKNOWLEDGMENTS.md)恢复原介绍中的十五项明确来源，并保留三十三项完整研究参考及各自贡献。PowerPoint、WPS、Kimi、PPTist、Slidev、Presenton、PPTAgent、PPT Master、open-kimi-ppt-skill、OpenSlides Studio、OPF、VS Code 等借鉴关系都在其中；设计参考与代码复用分开说明。OpenSlides Studio 与作为代码基础的 OpenSlide 是两个不同项目。
+
+示例中的研究材料、品牌标记和截图按各自的来源说明使用；软件许可不会自动改变素材的许可。介绍项目的[素材与来源入口](examples/huandeng-introduction/README.md)保留了这些记录。

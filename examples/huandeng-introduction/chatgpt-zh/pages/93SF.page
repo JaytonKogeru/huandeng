@@ -3,7 +3,7 @@ background:
   type: solid
   color: "#F7F5EF"
 elements:
-  - elementId: f-paper
+  - elementId: v-bg
     elementType: shape
     shapeName: rect
     bounds:
@@ -13,154 +13,67 @@ elements:
       - 540
     fill:
       type: solid
-      color: "#F4F1E8"
+      color: "#FFFFFF"
   - elementId: title
     elementType: text
     bounds:
-        [36,27,884,46]
+        [38,29,884,58]
     role: title
     content:
-      {"text":"重叠时，从图层找到对象","fontFamily":"Noto Sans SC","fontSize":31,"color":"#112D32","align":["left","top"],"lineHeight":1.35,"bold":true}
-  - elementId: f-action
+      {"text":"退远一点，看整段故事","fontFamily":"Segoe UI","fontSize":25,"color":"#25282C","bold":true,"lineHeight":1.16,"align":["left","top"]}
+  - elementId: v-watermark
     elementType: text
     bounds:
       - 38
-      - 82
-      - 884
-      - 28
+      - 520
+      - 750
+      - 12
     content:
-      text: 右侧「图层」→ 点选对象 → 调整前后顺序
-      fontFamily: Noto Sans SC
-      fontSize: 18
-      color: "#557076"
+      text: chinese chatgpt 6 astra + subagent
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
+      bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.35
-  - elementId: f-watermark
+  - elementId: v-position
     elementType: text
     bounds:
-      - 36
-      - 514
-      - 820
-      - 19
-    content:
-      text: Chinese · ChatGPT 6 Astra + Subagents
-      fontFamily: Noto Sans SC
-      fontSize: 13
-      color: "#557076"
-      align:
-        - left
-        - top
-      lineHeight: 1.35
-  - elementId: f-position
-    elementType: text
-    bounds:
-      - 878
-      - 514
-      - 44
-      - 19
+      - 885
+      - 520
+      - 37
+      - 12
     content:
       text: ""
-      fontFamily: Noto Sans SC
-      fontSize: 13
-      color: "#557076"
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
+      bold: false
+      lineHeight: 1.16
       align:
         - right
         - top
-      lineHeight: 1.35
       field: main-position
-  - elementId: f-layer-step
+  - elementId: v-place
     elementType: text
     bounds:
       - 38
-      - 129
-      - 410
-      - 29
-    content:
-      text: ① 在列表中选中标题
-      fontFamily: Noto Sans SC
-      fontSize: 18
-      color: "#168C8C"
-      align:
-        - left
-        - top
-      lineHeight: 1.35
-      bold: true
-  - elementId: f-order-step
-    elementType: text
-    bounds:
-      - 511
-      - 129
-      - 410
-      - 29
-    content:
-      text: ② 调整显示顺序
-      fontFamily: Noto Sans SC
-      fontSize: 18
-      color: "#168C8C"
-      align:
-        - left
-        - top
-      lineHeight: 1.35
-      bold: true
-  - elementId: f-layer-selection
-    elementType: image
-    bounds:
-      - 38
-      - 172
-      - 410
-      - 253
-    src: media/imported/fbcb8a241fdc48bb57efdb806964e61e74b0004cc33ad866210a83eeca910732.png
-    sourceName: tutorial-layers.png
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0.6
-      bottom: 0.07
-  - elementId: f-layer-controls
-    elementType: image
-    bounds:
-        [511,172,411,228.33333333333334]
-    src: media/imported/fbcb8a241fdc48bb57efdb806964e61e74b0004cc33ad866210a83eeca910732.png
-    sourceName: tutorial-layers.png
-    fit:
-      mode: contain
-    crop:
-      {"left":0,"right":0,"top":0,"bottom":0.7584541062801933}
-  - elementId: f-layer-arrow
-    elementType: line
-    bounds:
-      - 463
-      - 280
-      - 32
-      - 0
-    viewBox:
-      - 1
-      - 1
-    points: 0,0 1,1
-    border:
-      width: 2
-      color: "#ED6A3A"
-    arrow:
-      - null
-      - arrow
-  - elementId: f-layer-result
-    elementType: text
-    bounds:
-      - 38
-      - 457
+      - 79
       - 884
-      - 30
+      - 25
     content:
-      text: 上方图层先显示；Shift 可多选。
-      fontFamily: Noto Sans SC
-      fontSize: 19
-      color: "#112D32"
-      align:
-        - left
-        - top
-      lineHeight: 1.35
-notes: "当文字、图片和形状重叠时，可以直接从图层列表点选。左图选中“只改两句，保留其他内容”这个标题，右图放大同一面板的层级操作。Forward 和 Backward 各移动一层，To front 和 To back 移到最前或最后。列表上方的对象先显示；按住 Shift 可以多选。这里只调整所需对象的层级，再保存页面。"
+      {"text":"顶部选择演讲，在画布上方打开“浏览”。","fontFamily":"Segoe UI","fontSize":13,"color":"#25282C","bold":false,"lineHeight":1.16,"align":["left","top"]}
+  - elementId: v-browser
+    elementType: image
+    bounds:
+      - 38
+      - 110
+      - 884
+      - 395
+    src: "media/imported/3a7f8489f77e14fd51d2026440d6c8db055e8c6b551d26e4ed7cfe7b4bea2d85.png"
+    sourceName: browse.png
+    fit:
+      mode: contain
+notes: "选择短演讲，然后打开Browse，退远一点看真实页面顺序。标题独占章节页负责停顿，证据页推进叙事。需要调整时双击回到该页；Outline帮助读讲述逻辑，Sections帮助组织段落。这是当前短演讲的实际界面，不是手工伪造的缩略图。"

@@ -3,7 +3,7 @@ background:
   type: solid
   color: "#F7F5EF"
 elements:
-  - elementId: f-bg
+  - elementId: v-bg
     elementType: shape
     shapeName: rect
     bounds:
@@ -13,126 +13,193 @@ elements:
       - 540
     fill:
       type: solid
-      color: "#F4F1E8"
+      color: "#FFFFFF"
   - elementId: title
     elementType: text
     bounds:
-        [38,29,884,48]
+        [38,29,884,58]
     role: title
     content:
-      {"text":"把这页要讲什么，留在 Story","fontFamily":"Noto Sans SC","fontSize":30,"color":"#112D32","align":["left","top"],"lineHeight":1.32,"bold":true}
-  - elementId: f-watermark
+      {"text":"把讲这一页的理由留在旁边","fontFamily":"Segoe UI","fontSize":25,"color":"#25282C","bold":true,"lineHeight":1.16,"align":["left","top"]}
+  - elementId: v-watermark
     elementType: text
     bounds:
       - 38
-      - 514
-      - 800
-      - 22
+      - 520
+      - 750
+      - 12
     content:
-      text: Chinese · ChatGPT 6 Astra + Subagents
-      fontFamily: Noto Sans SC
-      fontSize: 13
-      color: "#596D70"
+      text: chinese chatgpt 6 astra + subagent
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
+      bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.32
-  - elementId: f-position
+  - elementId: v-position
     elementType: text
     bounds:
-      - 882
-      - 514
-      - 40
-      - 22
+      - 885
+      - 520
+      - 37
+      - 12
     content:
       text: ""
-      fontFamily: Noto Sans SC
-      fontSize: 13
-      color: "#596D70"
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
+      bold: false
+      lineHeight: 1.16
       align:
         - right
         - top
-      lineHeight: 1.32
       field: main-position
-  - elementId: f-story
+  - elementId: v-scope
+    elementType: text
+    bounds:
+      - 38
+      - 85
+      - 884
+      - 29
+    content:
+      {"text":"这一页要说什么，哪些证据要保留，这一次具体改哪里。","fontFamily":"Segoe UI","fontSize":15,"color":"#25282C","bold":false,"lineHeight":1.16,"align":["left","top"]}
+  - elementId: v-context
     elementType: image
     bounds:
-      - 40
-      - 122
-      - 370
-      - 374
-    src: media/imported/a376c20b0003bee8b24759a18bc45ea44c30b37bb0898a39fdf20f7113dc3769.png
-    sourceName: story-architecture.png
+      - 38
+      - 132
+      - 593
+      - 282
+    src: "media/imported/7c41b4661f3058a09ef6d4e377f2de007a2a8ac7f12f6f0873f8a09c3cb0eb1e.png"
+    sourceName: story.png
     fit:
       mode: contain
-  - elementId: f-purpose-guide
+  - elementId: v-story
+    elementType: image
+    bounds:
+        [660,171.30769230769232,262,181.3846153846154]
+    src: media/imported/cd16ea78aaeec51d2a8c4c5bb67bac1190a72fe9c96c08e96325af414e3beb1e.png
+    sourceName: story-detail.png
+    fit:
+      mode: contain
+    "crop": {"bottom":0.25}
+  - elementId: v-source-story-top
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 525.1071428571429
+      - 148.94285714285715
+      - 105.89285714285714
+      - 1.6
+    fill:
+      type: solid
+      color: "#3B607E"
+  - elementId: v-source-story-bottom
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 525.1071428571429
+      - 412.7809523809524
+      - 105.89285714285714
+      - 1.6
+    fill:
+      type: solid
+      color: "#3B607E"
+  - elementId: v-source-story-left
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 525.1071428571429
+      - 148.94285714285715
+      - 1.6
+      - 265.43809523809523
+    fill:
+      type: solid
+      color: "#3B607E"
+  - elementId: v-source-story-right
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 629.4
+      - 148.94285714285715
+      - 1.6
+      - 265.43809523809523
+    fill:
+      type: solid
+      color: "#3B607E"
+  - elementId: v-marker-1
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+      - 519
+      - 156
+      - 20
+      - 20
+    fill:
+      type: solid
+      color: "#25282C"
+  - elementId: v-marker-text-1
     elementType: text
     bounds:
-      - 462
-      - 159
-      - 454
-      - 242
+      - 519
+      - 158
+      - 20
+      - 17
     content:
-      text: |-
-        目的：这页帮助读者理解什么？
-  
-        保留：哪些内容必须留下？
-  
-        修改：这次具体调整哪里？
-      fontFamily: Noto Sans SC
-      fontSize: 21
-      color: "#112D32"
-      align:
-        - left
-        - top
-      lineHeight: 1.4
-  - elementId: f-edit-arrow
-    elementType: line
-    bounds:
-        [392,164,55,0]
-    viewBox:
-      - 1
-      - 1
-    points: 1,0 0,0
-    border:
-      width: 2
-      color: "#ED6A3A"
-    arrow:
-      - null
-      - arrow
-  - elementId: f-pencil-guide
-    elementType: text
-    bounds:
-      - 462
-      - 112
-      - 450
-      - 32
-    content:
-      text: 点铅笔，填写并保存
-      fontFamily: Noto Sans SC
-      fontSize: 17
-      color: "#168C8C"
-      align:
-        - left
-        - top
-      lineHeight: 1.32
+      text: "1"
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#FFFFFF"
       bold: true
-  - elementId: f-story-handoff
+      lineHeight: 1.16
+      align:
+        - center
+        - top
+  - elementId: v-marker-1-detail
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+      - 647
+      - 121
+      - 20
+      - 20
+    fill:
+      type: solid
+      color: "#25282C"
+  - elementId: v-marker-text-1-detail
     elementType: text
     bounds:
-      - 462
-      - 423
-      - 454
-      - 66
+      - 647
+      - 123
+      - 20
+      - 17
     content:
-      text: |-
-        下一位作者打开这一页，
-        就能接着你的意图做。
-      fontFamily: Noto Sans SC
+      text: "1"
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#FFFFFF"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - center
+        - top
+  - elementId: v-story-meaning
+    elementType: text
+    bounds:
+      - 38
+      - 447
+      - 584
+      - 52
+    content:
+      text: 把“为什么改”和“哪些不能丢”留在一起。
+      fontFamily: Segoe UI
       fontSize: 18
-      color: "#168C8C"
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.45
-notes: "选择页面后，打开右侧 Story。这里的目的告诉下一位作者这页帮助听众理解什么；保留项说明哪些标记、数据或关系不能随意改；这次修改说明当前的具体任务。点右上角铅笔填写并保存。左边是真实的 6G4G Story，目的、保留项和修改方向都对应上一页概念关系图。Story 给后续编辑提供上下文，我们仍然要检查最后的实际画面。"
+notes: "Story不是又一份演讲稿。Project和Section记录整体目的与听众，这一页记录具体要说什么、哪些证据必须保留、这次改哪里。图中的实际页任务仅改标题，保留专业图、数值、单位与引用。左边给出完整Editor位置，右边读清本页Story。"

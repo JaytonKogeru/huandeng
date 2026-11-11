@@ -3,7 +3,7 @@ background:
   type: solid
   color: "#EEE9DD"
 elements:
-  - elementId: zd-bg
+  - elementId: v-bg
     elementType: shape
     shapeName: rect
     bounds:
@@ -13,153 +13,105 @@ elements:
       - 540
     fill:
       type: solid
-      color: "#F4F1E8"
+      color: "#FFFFFF"
   - elementId: title
     elementType: text
     bounds:
-        [38,29,884,49]
+        [38,29,884,58]
     role: title
     content:
-      {"text":"同一页，写这次的讲法","fontFamily":"Noto Sans SC","fontSize":31,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.3}
-  - elementId: zd-route
+      {"text":"引用当前页，或留住一个版本","fontFamily":"Segoe UI","fontSize":25,"color":"#25282C","bold":true,"lineHeight":1.16,"align":["left","top"]}
+  - elementId: v-watermark
     elementType: text
     bounds:
-      - 40
-      - 86
-      - 876
-      - 28
-    content:
-      text: 编排演讲 → 备注与版本 → 本次引用使用独立演讲备注
-      fontFamily: Noto Sans SC
-      fontSize: 14
-      color: "#168C8C"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-  - elementId: zd-accent
-    elementType: shape
-    shapeName: rect
-    bounds:
-      - 40
-      - 119
-      - 64
-      - 3
-    fill:
-      type: solid
-      color: "#ED6A3A"
-  - elementId: zd-watermark
-    elementType: text
-    bounds:
-      - 39
-      - 508
-      - 820
-      - 22
-    content:
-      text: Chinese · ChatGPT 6 Astra + Subagents
-      fontFamily: Noto Sans SC
-      fontSize: 13
-      color: "#53666A"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-  - elementId: zd-position
-    elementType: text
-    bounds:
-      - 884
-      - 508
       - 38
-      - 22
+      - 520
+      - 750
+      - 12
+    content:
+      text: chinese chatgpt 6 astra + subagent
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-position
+    elementType: text
+    bounds:
+      - 885
+      - 520
+      - 37
+      - 12
     content:
       text: ""
-      fontFamily: Noto Sans SC
-      fontSize: 13
-      color: "#53666A"
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
       bold: false
+      lineHeight: 1.16
       align:
         - right
         - top
-      lineHeight: 1.3
       field: main-position
-  - elementId: zd-left-label
+  - elementId: v-context
+    elementType: image
+    bounds:
+      - 38
+      - 112
+      - 568
+      - 270
+    src: "media/imported/88148310e9c0837c8f1c719e1b04b741453bcd4e4822de72c0ff1bd2c1d299e0.png"
+    sourceName: pin.png
+    fit:
+      mode: contain
+  - elementId: v-detail
+    elementType: image
+    bounds:
+      - 653
+      - 112
+      - 269
+      - 323
+    src: "media/imported/ae9b3efcb19d248384f8bdcfe526ca19247930d4b7a09ccabb233994e3d14495.png"
+    sourceName: pin-detail.png
+    fit:
+      mode: contain
+  - elementId: v-location
     elementType: text
     bounds:
-      - 40
-      - 140
-      - 407
-      - 31
+      - 38
+      - 406
+      - 568
+      - 52
     content:
-      text: 写在这次引用里
-      fontFamily: Noto Sans SC
-      fontSize: 20
-      color: "#112D32"
+      text: Project 中打开“编排演讲”，展开这一页。
+      fontFamily: Segoe UI
+      fontSize: 17
+      color: "#25282C"
       bold: true
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.3
-  - elementId: zd-right-label
+  - elementId: v-choice
     elementType: text
     bounds:
-        [390,140,532,31]
+      - 653
+      - 455
+      - 269
+      - 49
     content:
-      text: 在“备注页”读出来
-      fontFamily: Noto Sans SC
-      fontSize: 20
-      color: "#112D32"
-      bold: true
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-  - elementId: zd-note-edit
-    elementType: image
-    bounds:
-        [40,190,300,185]
-    src: "media/imported/3f18782e6d24c490f58fcba2ffa75a7662d55313d885d35a375d0319b843be21.png"
-    sourceName: "final-note-edit.png"
-    fit:
-      mode: contain
-  - elementId: zd-note-read
-    elementType: image
-    bounds:
-        [390,185,532,239]
-    src: "media/imported/e134a5a10bcaaf416f0bfb0bac8e239941a05c98076533373a2f4e2d795e120d.png"
-    sourceName: "final-note-read.png"
-    fit:
-      mode: contain
-  - elementId: zd-note-arrow
-    elementType: line
-    bounds:
-        [351,287,28,0]
-    viewBox:
-      - 1
-      - 1
-    points: 0,0 1,1
-    border:
-      width: 2.2
-      color: "#ED6A3A"
-    arrow:
-      - null
-      - arrow
-  - elementId: zd-notes-result
-    elementType: text
-    bounds:
-      - 40
-      - 457
-      - 880
-      - 40
-    content:
-      text: 画面继续复用；讲稿跟着这次演讲走。
-      fontFamily: Noto Sans SC
-      fontSize: 20
-      color: "#168C8C"
+      text: |-
+        Live 跟随 Main。
+        命名版本保留这一次定稿。
+      fontFamily: Segoe UI
+      fontSize: 14
+      color: "#25282C"
       bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.3
-notes: "同一张页面可以向不同听众讲不同的重点。打开编排条目的“备注与版本”，勾选“本次引用使用独立演讲备注”，在下面写这一次要讲的话，再保存项目。右侧是真实“备注页”中同一处引用的讲稿；它与左侧输入的内容对应。此时改的是本次演讲中的这一次出现，Main Notes仍能保留通用说明。排练前先确认当前选中的是目标演讲，再进入备注页。接下来选择的是画面版本：继续跟随Main，还是保留一个已经定稿的阶段。"
+notes: "Main页的live引用会跟随当前内容；固定到已记录命名版本的引用保持该版本。短演讲里的科学页实际固定在“保留来源的科学图”版本，而Story页有本次出现备注。选择取决于这次演讲是否还要继续跟进修改。"

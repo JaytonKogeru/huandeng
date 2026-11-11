@@ -3,7 +3,7 @@ background:
   type: solid
   color: "#F7F5EF"
 elements:
-  - elementId: zd-bg
+  - elementId: v-bg
     elementType: shape
     shapeName: rect
     bounds:
@@ -13,232 +13,196 @@ elements:
       - 540
     fill:
       type: solid
-      color: "#F4F1E8"
+      color: "#FFFFFF"
   - elementId: title
     elementType: text
     bounds:
-        [38,29,884,49]
+        [38,29,884,58]
     role: title
     content:
-      {"text":"把助手接到这份项目","fontFamily":"Noto Sans SC","fontSize":31,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.3}
-  - elementId: zd-route
+      {"text":"Agent 的完成报告，应该连着真实工作","fontFamily":"Segoe UI","fontSize":25,"color":"#25282C","bold":true,"lineHeight":1.16,"align":["left","top"]}
+  - elementId: v-watermark
     elementType: text
     bounds:
-      - 40
-      - 86
-      - 876
-      - 28
-    content:
-      text: 编辑器顶栏 → 助手连接 → 选择客户端
-      fontFamily: Noto Sans SC
-      fontSize: 14
-      color: "#168C8C"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-  - elementId: zd-accent
-    elementType: shape
-    shapeName: rect
-    bounds:
-      - 40
-      - 119
-      - 64
-      - 3
-    fill:
-      type: solid
-      color: "#ED6A3A"
-  - elementId: zd-watermark
-    elementType: text
-    bounds:
-      - 39
-      - 508
-      - 820
-      - 22
-    content:
-      text: Chinese · ChatGPT 6 Astra + Subagents
-      fontFamily: Noto Sans SC
-      fontSize: 13
-      color: "#53666A"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-  - elementId: zd-position
-    elementType: text
-    bounds:
-      - 884
-      - 508
       - 38
-      - 22
+      - 520
+      - 750
+      - 12
+    content:
+      text: chinese chatgpt 6 astra + subagent
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-position
+    elementType: text
+    bounds:
+      - 885
+      - 520
+      - 37
+      - 12
     content:
       text: ""
-      fontFamily: Noto Sans SC
-      fontSize: 13
-      color: "#53666A"
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
       bold: false
+      lineHeight: 1.16
       align:
         - right
         - top
-      lineHeight: 1.3
       field: main-position
-  - elementId: zd-setup
-    elementType: image
-    bounds:
-      - 40
-      - 143
-      - 882
-      - 174
-    src: media/imported/3ad2f74a0881b8e62177a25a2858ba6023981ff11d1d68d220d5235b2383a2d4.png
-    sourceName: assistant-client-choice.png
-    fit:
-      mode: contain
-  - elementId: zd-connect-steps
+  - elementId: v-meaning
     elementType: text
     bounds:
-      - 40
-      - 341
-      - 880
-      - 39
+      - 38
+      - 80
+      - 884
+      - 25
     content:
-      text: 选择客户端  →  按该客户端的说明配置  →  读取项目与选中页
-      fontFamily: Noto Sans SC
-      fontSize: 20
-      color: "#112D32"
+      {"text":"在顶部打开“活动”，解析报告中的回执，再核对实际保存记录。","fontFamily":"Segoe UI","fontSize":14,"color":"#25282C","bold":false,"lineHeight":1.16,"align":["left","top"]}
+  - elementId: v-activity
+    elementType: image
+    bounds:
+        [47,99,866,412.3809523809524]
+    src: "media/imported/16ec52d7b12c79fae636bee4975a0598960f8d25f56493f25d90b59f07726abb.png"
+    sourceName: activity.png
+    fit:
+      mode: contain
+  - elementId: v-report-source-top
+    elementType: shape
+    shapeName: rect
+    bounds:
+        [201.64285714285714,419.62619047619046,550.5285714285715,1.7]
+    fill:
+      type: solid
+      color: "#3B607E"
+  - elementId: v-report-source-bottom
+    elementType: shape
+    shapeName: rect
+    bounds:
+        [201.64285714285714,470.5047619047619,550.5285714285715,1.7]
+    fill:
+      type: solid
+      color: "#3B607E"
+  - elementId: v-report-source-left
+    elementType: shape
+    shapeName: rect
+    bounds:
+        [201.64285714285714,419.62619047619046,1.7,52.57857142857143]
+    fill:
+      type: solid
+      color: "#3B607E"
+  - elementId: v-report-source-right
+    elementType: shape
+    shapeName: rect
+    bounds:
+        [750.4714285714285,419.62619047619046,1.7,52.57857142857143]
+    fill:
+      type: solid
+      color: "#3B607E"
+  - elementId: v-report-inset
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 229
+      - 228
+      - 523
+      - 155
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#91A6B5"
+  - elementId: v-report-heading
+    elementType: text
+    bounds:
+      - 250
+      - 240
+      - 481
+      - 22
+    content:
+      text: 这条报告引用了实际保存的操作
+      fontFamily: Segoe UI
+      fontSize: 14
+      color: "#25282C"
       bold: true
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.3
-  - elementId: zd-connect-check
-    elementType: text
-    bounds:
-      - 40
-      - 394
-      - 880
-      - 42
-    content:
-      text: 先核对项目名和 Slide ID，再交给它第一项修改。
-      fontFamily: Noto Sans SC
-      fontSize: 21
-      color: "#168C8C"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-  - elementId: zd-client-0
+  - elementId: v-report-detail
     elementType: image
     bounds:
-      - 40
-      - 455
-      - 30
-      - 30
-    src: media/imported/0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13.png
-    sourceName: chatgpt.png
+      - 264.3352941176471
+      - 272
+      - 452.32941176470587
+      - 96
+    src: media/imported/22817513bf05210af81698c80f66e1bcf6e7f1151ee16dbd452ea10f94daf361.png
+    sourceName: activity-report.png
     fit:
       mode: contain
-  - elementId: zd-client-name-0
+    crop:
+      right: 0.55
+  - elementId: v-marker-1
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+      - 230
+      - 228
+      - 20
+      - 20
+    fill:
+      type: solid
+      color: "#25282C"
+  - elementId: v-marker-text-1
     elementType: text
     bounds:
-      - 79
-      - 460
-      - 180
-      - 29
+      - 230
+      - 230
+      - 20
+      - 17
     content:
-      text: ChatGPT · DC-WALT
-      fontFamily: Noto Sans SC
-      fontSize: 14
-      color: "#112D32"
-      bold: false
+      text: "1"
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#FFFFFF"
+      bold: true
+      lineHeight: 1.16
       align:
-        - left
+        - center
         - top
-      lineHeight: 1.3
-  - elementId: zd-client-1
-    elementType: image
+  - elementId: v-marker-1-source
+    elementType: shape
+    shapeName: ellipse
     bounds:
-      - 265
-      - 455
-      - 30
-      - 30
-    src: media/imported/733f24f4c52acb15eb0fbded1cf40eb42b4ba8e62b882acac70b6234b50919a8.png
-    sourceName: claude-code.png
-    fit:
-      mode: contain
-  - elementId: zd-client-name-1
+      - 189
+      - 413
+      - 20
+      - 20
+    fill:
+      type: solid
+      color: "#25282C"
+  - elementId: v-marker-text-1-source
     elementType: text
     bounds:
-      - 304
-      - 460
-      - 180
-      - 29
+      - 189
+      - 415
+      - 20
+      - 17
     content:
-      text: Claude Code
-      fontFamily: Noto Sans SC
-      fontSize: 14
-      color: "#112D32"
-      bold: false
+      text: "1"
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#FFFFFF"
+      bold: true
+      lineHeight: 1.16
       align:
-        - left
+        - center
         - top
-      lineHeight: 1.3
-  - elementId: zd-client-2
-    elementType: image
-    bounds:
-      - 490
-      - 455
-      - 30
-      - 30
-    src: media/imported/e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc.png
-    sourceName: deepseek.png
-    fit:
-      mode: contain
-  - elementId: zd-client-name-2
-    elementType: text
-    bounds:
-      - 529
-      - 460
-      - 180
-      - 29
-    content:
-      text: DeepSeek Harness
-      fontFamily: Noto Sans SC
-      fontSize: 14
-      color: "#112D32"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-  - elementId: zd-client-3
-    elementType: image
-    bounds:
-      - 715
-      - 455
-      - 30
-      - 30
-    src: media/imported/2ce1c57dd3b312417106a487815ab1235bddce17e1fa9b32a2f048bd71ee25d3.png
-    sourceName: codex.png
-    fit:
-      mode: contain
-  - elementId: zd-client-name-3
-    elementType: text
-    bounds:
-      - 754
-      - 460
-      - 180
-      - 29
-    content:
-      text: Codex
-      fontFamily: Noto Sans SC
-      fontSize: 14
-      color: "#112D32"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-notes: "编辑器顶部的“助手连接”会打开当前项目的助手设置。先选择Claude Code、DeepSeek Harness、Codex或ChatGPT，再按该客户端的安装与配置说明接入。Claude Code和DeepSeek使用各自的原生插件；ChatGPT通过已有的工作站连接调用这个项目。图中只展示真实客户端选择区域，配置本身并不等于连接已经成功。接入后的第一项任务应是读取项目与当前选中页，并用返回的项目名和Slide ID核对目标。确认后再提出一次具体修改。切换可见Editor标签不会自动改变一个已绑定助手的项目。接下来给协作者一个明确、可检查的分工。"
+notes: "真实Activity中，这一条agent完成报告引用了本项目的实际保存操作。报告本身只是声明，Review changes打开实际收据，才能看到发生了什么。Plugin给出创作方法；连接器接入同一个writer。客户端连接方法保留在项目说明中，此页不使用缺少桌面bridge的浏览器Agent setup作为成功演示。"

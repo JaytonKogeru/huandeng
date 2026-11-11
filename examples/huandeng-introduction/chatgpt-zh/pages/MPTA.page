@@ -3,7 +3,7 @@ background:
   type: solid
   color: "#EEE9DD"
 elements:
-  - elementId: f-bg
+  - elementId: v-bg
     elementType: shape
     shapeName: rect
     bounds:
@@ -13,124 +13,323 @@ elements:
       - 540
     fill:
       type: solid
-      color: "#F4F1E8"
+      color: "#FFFFFF"
   - elementId: title
     elementType: text
     bounds:
-        [38,29,884,48]
+        [38,29,884,58]
     role: title
     content:
-      {"text":"从素材库，把原图放到页面里","fontFamily":"Noto Sans SC","fontSize":30,"color":"#112D32","align":["left","top"],"lineHeight":1.32,"bold":true}
-  - elementId: f-watermark
+      {"text":"素材保留原件，页面使用实例","fontFamily":"Segoe UI","fontSize":25,"color":"#25282C","bold":true,"lineHeight":1.16,"align":["left","top"]}
+  - elementId: v-watermark
     elementType: text
     bounds:
       - 38
-      - 514
-      - 800
-      - 22
+      - 520
+      - 750
+      - 12
     content:
-      text: Chinese · ChatGPT 6 Astra + Subagents
-      fontFamily: Noto Sans SC
-      fontSize: 13
-      color: "#596D70"
+      text: chinese chatgpt 6 astra + subagent
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
+      bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.32
-  - elementId: f-position
+  - elementId: v-position
     elementType: text
     bounds:
-      - 882
-      - 514
-      - 40
-      - 22
+      - 885
+      - 520
+      - 37
+      - 12
     content:
       text: ""
-      fontFamily: Noto Sans SC
-      fontSize: 13
-      color: "#596D70"
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
+      bold: false
+      lineHeight: 1.16
       align:
         - right
         - top
-      lineHeight: 1.32
       field: main-position
-  - elementId: f-assets
+  - elementId: v-original-label
+    elementType: text
+    bounds:
+      - 38
+      - 92
+      - 215
+      - 27
+    content:
+      text: 原始素材
+      fontFamily: Segoe UI
+      fontSize: 16
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-original
     elementType: image
     bounds:
-      - 40
-      - 122
-      - 250
-      - 379
-    src: media/imported/ed8ac0831e298045c0a59fe14ade8b7f0a4d6aa1ced2556c2c128264cf136afc.png
-    sourceName: assets-mark.png
+      - 42
+      - 133
+      - 210
+      - 350
+    src: media/imported/48d96c3f63dc8ce717d4bcece8d2af93fb73c7560342a1596ad9cf23a1421792.png
+    sourceName: 1bna-projected-bonds.png
+    fit:
+      mode: contain
+  - elementId: v-instances-label
+    elementType: text
+    bounds:
+      - 300
+      - 92
+      - 323
+      - 27
+    content:
+      text: 同一原图的两个实例
+      fontFamily: Segoe UI
+      fontSize: 16
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-top-crop
+    elementType: image
+    bounds:
+      - 310.875
+      - 137
+      - 266.25000000000006
+      - 142
+    src: media/imported/48d96c3f63dc8ce717d4bcece8d2af93fb73c7560342a1596ad9cf23a1421792.png
+    sourceName: 1bna-projected-bonds.png
     fit:
       mode: contain
     crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0.2
-  - elementId: f-asset-action
-    elementType: text
-    bounds:
-      - 352
-      - 122
-      - 566
-      - 34
-    content:
-      text: 找到原图 → 拖到当前页
-      fontFamily: Noto Sans SC
-      fontSize: 21
-      color: "#168C8C"
-      align:
-        - left
-        - top
-      lineHeight: 1.32
-      bold: true
-  - elementId: f-asset-on-canvas
+      bottom: 0.68
+  - elementId: v-bottom-crop
     elementType: image
     bounds:
-      - 352
-      - 188
-      - 568
-      - 242
-    src: media/imported/e22103b03f12a0c79bb50bb9fccfc0104102074c86ff79a84d3b5ddab11a729d.png
-    sourceName: placed-mark.png
+      - 322.2857142857143
+      - 326
+      - 243.42857142857144
+      - 142
+    src: media/imported/48d96c3f63dc8ce717d4bcece8d2af93fb73c7560342a1596ad9cf23a1421792.png
+    sourceName: 1bna-projected-bonds.png
     fit:
       mode: contain
-  - elementId: f-place-arrow
-    elementType: line
+    crop:
+      top: 0.65
+  - elementId: v-original-a-top
+    elementType: shape
+    shapeName: rect
     bounds:
-      - 293
-      - 315
-      - 45
-      - 0
-    viewBox:
-      - 1
-      - 1
-    points: 0,0 1,1
-    border:
-      width: 2
-      color: "#ED6A3A"
-    arrow:
-      - null
-      - arrow
-  - elementId: f-reuse-copy
+      - 42
+      - 133
+      - 210
+      - 1.6
+    fill:
+      type: solid
+      color: "#3B607E"
+  - elementId: v-original-a-bottom
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 42
+      - 243.4
+      - 210
+      - 1.6
+    fill:
+      type: solid
+      color: "#3B607E"
+  - elementId: v-original-a-left
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 42
+      - 133
+      - 1.6
+      - 112
+    fill:
+      type: solid
+      color: "#3B607E"
+  - elementId: v-original-a-right
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 250.4
+      - 133
+      - 1.6
+      - 112
+    fill:
+      type: solid
+      color: "#3B607E"
+  - elementId: v-original-b-top
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 42
+      - 361
+      - 210
+      - 1.6
+    fill:
+      type: solid
+      color: "#75818A"
+  - elementId: v-original-b-bottom
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 42
+      - 481.4
+      - 210
+      - 1.6
+    fill:
+      type: solid
+      color: "#75818A"
+  - elementId: v-original-b-left
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 42
+      - 361
+      - 1.6
+      - 122
+    fill:
+      type: solid
+      color: "#75818A"
+  - elementId: v-original-b-right
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 250.4
+      - 361
+      - 1.6
+      - 122
+    fill:
+      type: solid
+      color: "#75818A"
+  - elementId: v-a
     elementType: text
     bounds:
-      - 352
-      - 453
-      - 566
-      - 57
+      - 262
+      - 169
+      - 30
+      - 20
     content:
-      text: |-
-        已有素材可再次拖入；新图用「导入并放置」。
-        原始文件与使用它的页面一起留在项目里。
-      fontFamily: Noto Sans SC
-      fontSize: 17
-      color: "#112D32"
+      text: A
+      fontFamily: Segoe UI
+      fontSize: 13
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.45
-notes: "左侧切到素材。在搜索框输入名称，找到项目里已经保存的原图；这里以 HUANDENG 标记为例。同一份标记已经被多个页面使用，卡片会显示使用情况。把它拖到画布，就能继续调整大小和位置。新图片则通过导入并放置进入项目。右边是真实画布中被选中的同一标记，保留了原始图形。素材库解决的是找回与复用原材料，Main Slides 里的整张页面复用将在后面介绍。"
+  - elementId: v-b
+    elementType: text
+    bounds:
+      - 262
+      - 411
+      - 30
+      - 20
+    content:
+      text: B
+      fontFamily: Segoe UI
+      fontSize: 13
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-a-detail
+    elementType: text
+    bounds:
+      - 302
+      - 120
+      - 35
+      - 17
+    content:
+      text: A
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-b-detail
+    elementType: text
+    bounds:
+      - 302
+      - 307
+      - 35
+      - 17
+    content:
+      text: B
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-editor
+    elementType: image
+    bounds:
+      - 636
+      - 134
+      - 286
+      - 136
+    src: "media/imported/2f09337fd5b28fd1c9d3e71e5bf798e6c08335a700127bd0f6bfd890626ad3dd.png"
+    sourceName: assets.png
+    fit:
+      mode: contain
+  - elementId: v-location
+    elementType: text
+    bounds:
+      - 636
+      - 295
+      - 286
+      - 59
+    content:
+      text: |-
+        左侧 Assets
+        找到原图，再放到画布。
+      fontFamily: Segoe UI
+      fontSize: 15
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-instance-explanation
+    elementType: text
+    bounds:
+      - 636
+      - 391
+      - 286
+      - 83
+    content:
+      text: |-
+        裁切只改变这一处的显示范围。
+        其他实例继续使用同一份原件。
+      fontFamily: Segoe UI
+      fontSize: 15
+      color: "#25282C"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+notes: "原图是一份真实坐标投影。右侧两幅是这份原图在页面中的不同裁切实例，并没有另造结构或覆盖原图。原始素材仍可从左侧Assets找到。原图的投影和配色保持一致，裁切区域有对应标记。本页展示图像实例，不做额外的科学推断。"

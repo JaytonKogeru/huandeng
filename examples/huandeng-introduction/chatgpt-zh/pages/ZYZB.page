@@ -3,7 +3,7 @@ background:
   type: solid
   color: "#F7F5EF"
 elements:
-  - elementId: f-bg
+  - elementId: v-bg
     elementType: shape
     shapeName: rect
     bounds:
@@ -13,165 +13,324 @@ elements:
       - 540
     fill:
       type: solid
-      color: "#F4F1E8"
+      color: "#FFFFFF"
   - elementId: title
     elementType: text
     bounds:
-        [38,29,884,48]
+        [38,29,884,58]
     role: title
     content:
-      {"text":"先选页，再在画布里选对象","fontFamily":"Noto Sans SC","fontSize":30,"color":"#112D32","align":["left","top"],"lineHeight":1.32,"bold":true}
-  - elementId: f-watermark
+      {"text":"打开项目，先认清工作现场","fontFamily":"Segoe UI","fontSize":25,"color":"#25282C","bold":true,"lineHeight":1.16,"align":["left","top"]}
+  - elementId: v-watermark
     elementType: text
     bounds:
       - 38
-      - 514
-      - 800
-      - 22
+      - 520
+      - 750
+      - 12
     content:
-      text: Chinese · ChatGPT 6 Astra + Subagents
-      fontFamily: Noto Sans SC
-      fontSize: 13
-      color: "#596D70"
+      text: chinese chatgpt 6 astra + subagent
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
+      bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.32
-  - elementId: f-position
+  - elementId: v-position
     elementType: text
     bounds:
-      - 882
-      - 514
-      - 40
-      - 22
+      - 885
+      - 520
+      - 37
+      - 12
     content:
       text: ""
-      fontFamily: Noto Sans SC
-      fontSize: 13
-      color: "#596D70"
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
+      bold: false
+      lineHeight: 1.16
       align:
         - right
         - top
-      lineHeight: 1.32
       field: main-position
-  - elementId: f-zone-pages
-    elementType: text
-    bounds:
-      - 40
-      - 85
-      - 190
-      - 31
-    content:
-      text: 1  选中页面
-      fontFamily: Noto Sans SC
-      fontSize: 17
-      color: "#168C8C"
-      align:
-        - left
-        - top
-      lineHeight: 1.32
-  - elementId: f-zone-canvas
-    elementType: text
-    bounds:
-      - 335
-      - 85
-      - 246
-      - 31
-    content:
-      text: 2  点画布中的对象
-      fontFamily: Noto Sans SC
-      fontSize: 17
-      color: "#168C8C"
-      align:
-        - center
-        - top
-      lineHeight: 1.32
-  - elementId: f-zone-inspector
-    elementType: text
-    bounds:
-      - 700
-      - 85
-      - 222
-      - 31
-    content:
-      text: 3  查看属性 / 图层
-      fontFamily: Noto Sans SC
-      fontSize: 17
-      color: "#168C8C"
-      align:
-        - center
-        - top
-      lineHeight: 1.32
-  - elementId: f-selected
+  - elementId: v-editor
     elementType: image
     bounds:
-      - 65
-      - 128
-      - 830
-      - 363
-    src: media/imported/d95ba29140db491cc375419aea44b04dbd1b6cdb0b965a61bd9ac807b49b0728.png
-    sourceName: selected-title-top.png
+      - 38
+      - 101
+      - 884
+      - 421
+    src: media/imported/c4d2b4a8e56f149f1162146e3ff8909bc7253a088b4a589d91226d3f0666933d.png
+    sourceName: workspace.png
     fit:
       mode: contain
-  - elementId: f-page-pointer
-    elementType: line
+  - elementId: v-key-0
+    elementType: shape
+    shapeName: ellipse
     bounds:
-      - 80
-      - 116
-      - 0
-      - 48
-    viewBox:
-      - 1
-      - 1
-    points: 0,0 1,1
-    border:
-      width: 2
-      color: "#ED6A3A"
-    arrow:
-      - null
-      - arrow
-  - elementId: f-canvas-pointer
-    elementType: line
-    bounds:
-        [458,116,0,176]
-    viewBox:
-      - 1
-      - 1
-    points: 0,0 1,1
-    border:
-      width: 2
-      color: "#ED6A3A"
-    arrow:
-      - null
-      - arrow
-  - elementId: f-inspector-pointer
-    elementType: line
-    bounds:
-        [811,116,0,55]
-    viewBox:
-      - 1
-      - 1
-    points: 0,0 1,1
-    border:
-      width: 2
-      color: "#ED6A3A"
-    arrow:
-      - null
-      - arrow
-  - elementId: f-crop-caption
+      - 38
+      - 76
+      - 15
+      - 15
+    fill:
+      type: solid
+      color: "#25282C"
+  - elementId: v-key-no-0
     elementType: text
     bounds:
-      - 65
-      - 493
-      - 830
-      - 21
+      - 38
+      - 77
+      - 15
+      - 14
     content:
-      text: 真实选中状态 · 工作区局部
-      fontFamily: Noto Sans SC
-      fontSize: 13
-      color: "#596D70"
+      text: "1"
+      fontFamily: Segoe UI
+      fontSize: 9
+      color: "#FFFFFF"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - center
+        - top
+  - elementId: v-key-label-0
+    elementType: text
+    bounds:
+      - 58
+      - 75
+      - 197
+      - 20
+    content:
+      {"text":"项目、页面、素材与文件","fontFamily":"Segoe UI","fontSize":12,"color":"#25282C","bold":false,"lineHeight":1.16,"align":["left","top"]}
+  - elementId: v-key-1
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+      - 260
+      - 76
+      - 15
+      - 15
+    fill:
+      type: solid
+      color: "#25282C"
+  - elementId: v-key-no-1
+    elementType: text
+    bounds:
+      - 260
+      - 77
+      - 15
+      - 14
+    content:
+      text: "2"
+      fontFamily: Segoe UI
+      fontSize: 9
+      color: "#FFFFFF"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - center
+        - top
+  - elementId: v-key-label-1
+    elementType: text
+    bounds:
+      - 280
+      - 75
+      - 197
+      - 20
+    content:
+      text: 切换工作视图
+      fontFamily: Segoe UI
+      fontSize: 12
+      color: "#25282C"
+      bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.32
-notes: "从左侧页面缩略图选择要处理的页面，这里选中的是 6G4G。在画布上点标题，选框出现，说明现在选中的是这个文字对象；右侧属性随选择切换，可以看到文字、字号、坐标等。图层页能从对象列表定位，Story 留这一页的目的。先分清页面选择和对象选择，后面的局部改动才有明确对象。截图是正在运行的 0.19 编辑器真实选中状态。"
+  - elementId: v-key-2
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+      - 482
+      - 76
+      - 15
+      - 15
+    fill:
+      type: solid
+      color: "#25282C"
+  - elementId: v-key-no-2
+    elementType: text
+    bounds:
+      - 482
+      - 77
+      - 15
+      - 14
+    content:
+      text: "3"
+      fontFamily: Segoe UI
+      fontSize: 9
+      color: "#FFFFFF"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - center
+        - top
+  - elementId: v-key-label-2
+    elementType: text
+    bounds:
+      - 502
+      - 75
+      - 197
+      - 20
+    content:
+      text: 直接编辑画布
+      fontFamily: Segoe UI
+      fontSize: 12
+      color: "#25282C"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-key-3
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+      - 704
+      - 76
+      - 15
+      - 15
+    fill:
+      type: solid
+      color: "#25282C"
+  - elementId: v-key-no-3
+    elementType: text
+    bounds:
+      - 704
+      - 77
+      - 15
+      - 14
+    content:
+      text: "4"
+      fontFamily: Segoe UI
+      fontSize: 9
+      color: "#FFFFFF"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - center
+        - top
+  - elementId: v-key-label-3
+    elementType: text
+    bounds:
+      - 724
+      - 75
+      - 197
+      - 20
+    content:
+      text: 查看属性与故事
+      fontFamily: Segoe UI
+      fontSize: 12
+      color: "#25282C"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-marker-1
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+        [18,128,20,20]
+    fill:
+      type: solid
+      color: "#25282C"
+  - elementId: v-marker-text-1
+    elementType: text
+    bounds:
+        [18,130,20,17]
+    content:
+      text: "1"
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#FFFFFF"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - center
+        - top
+  - elementId: v-marker-2
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+        [198,128,20,20]
+    fill:
+      type: solid
+      color: "#25282C"
+  - elementId: v-marker-text-2
+    elementType: text
+    bounds:
+        [198,130,20,17]
+    content:
+      text: "2"
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#FFFFFF"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - center
+        - top
+  - elementId: v-marker-3
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+      - 212
+      - 238
+      - 20
+      - 20
+    fill:
+      type: solid
+      color: "#25282C"
+  - elementId: v-marker-text-3
+    elementType: text
+    bounds:
+      - 212
+      - 240
+      - 20
+      - 17
+    content:
+      text: "3"
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#FFFFFF"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - center
+        - top
+  - elementId: v-marker-4
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+        [886,145,20,20]
+    fill:
+      type: solid
+      color: "#25282C"
+  - elementId: v-marker-text-4
+    elementType: text
+    bounds:
+        [886,147,20,17]
+    content:
+      text: "4"
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#FFFFFF"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - center
+        - top
+notes: "左边选项目、页、素材和文件；上方切换工作视图；中间画布直接编辑；右边Inspector跟随当前对象。先建立这张完整的空间地图，再讲局部操作。本页截图是root独立在自己的项目中捕获。"

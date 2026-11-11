@@ -1,36 +1,37 @@
-# HUANDENG — a practical Editor walkthrough
+# HUANDENG: keep working on the same document
 
-Open [deck.pptd](deck.pptd) in Editor 0.19, keeping this whole folder together.
+Open [deck.pptd](deck.pptd) in the HUANDENG Editor and keep this complete folder together.
 
-This final 24-page walkthrough was written and designed directly by the primary **ChatGPT 6 Astra** session. Every page carries **English · ChatGPT 6 Astra**. The Chinese edition is an independent explanation made through parallel section work.
+The founder wants help making slides while retaining the story, evidence and judgment that make the work their own. A small edit should not require another copy of an entire deck. This introduction follows that argument through the project architecture, real editing work, page history, reuse for another talk and the tools from which HUANDENG learned.
 
-## Learn by making a focused edit
+## This revision
 
-Find **GX5Z**, “One project keeps the work together.” Read Story, select its title, change one phrase, save and inspect the operation. Then open **First edit · short talk** to see how a Presentation reuses pages and can pin a named version.
+The primary **ChatGPT 6 Astra** session personally writes and designs the English revision. Its saved Main has **28 pages**. The Chinese edition develops its own argument and does not follow a forced page-by-page translation.
 
-| Main pages | What you learn |
-| --- | --- |
-| 1–3 | Open the working project and understand its folder. |
-| 4–8 | Select a page and object, write Story, reuse an original, edit and save, and use Layers. |
-| 9–12 | Compare a focused change, inspect the saved operation, preserve identity and name a version. |
-| 13–15 | Read the sequence in Browse and Outline, and set Section boundaries. |
-| 16–21 | Arrange a talk, write its Notes, choose live or pinned references, rehearse, export and hand off the folder. |
-| 22–24 | Connect an assistant, divide page ownership, review results and make your first edit. |
+Cover and content pages use the exact watermark `english chatgpt 6 astra`. Actual Section divider pages contain **only their title**, without a watermark, number, subtitle or decoration. These pauses are part of the narrative.
 
-The large UI regions are actual Editor captures. Equal-scale comparisons, arrows and labels guide the eye. Text and diagrams remain native editable objects. The earlier scientific example is retained in sources and history; it no longer organizes the tutorial.
+The existing installed shared writer is 0.19.0. Screenshots of Project Rules come from the built and checked 0.20.0 local candidate. This edition has completed this round's internal visual and output review. The candidate has not been published as a public release, and internal review does not assert the author's final acceptance.
 
-## Main and the short talk
+## Follow the story in the Editor
 
-Main and **Editor walkthrough** each contain 24 pages. **First edit · short talk** contains 12 actual occurrences. Its project-map occurrence pins **Project map · tutorial**, and its Story occurrence has talk-specific Notes. These are saved project behaviors.
+The opening establishes the author's problem: a recognizable generated style, choices that are lost, and two edits among fifty pages. The working-document architecture then makes the solution concrete. A complete Editor view introduces the workspace before located details explain Story, Rules and a focused edit.
 
-[speaker-notes.md](speaker-notes.md) is extracted from the current Main and resolved short sequence. Edit the corresponding page or occurrence Notes to change the script.
+Original material and a professional scientific plot show how evidence stays traceable. Saved-change review, stable page identity and history explain what continues when a page changes. Browse and Presentation arrangement lead to another talk made from the same Main pages. Agent collaboration and formal acknowledgments complete the account.
 
-After export, local delivery files are `Exports/deck.pdf`, `Exports/deck.pptx`, `Exports/brief.pdf` and `Exports/brief.pptx`. They are included in complete delivery archives; Git intentionally excludes generated exports.
+Use **Browse** to read the full rhythm. Open a page's **Story** to inspect its purpose and preservation constraints, and **Notes** for the spoken explanation. For a UI detail, use the whole-window location and matching marker on that page. The teaching serves the surrounding argument.
 
-## Sources and verification
+## Main and a shorter introduction
 
-The founder's original account stays in [sources/story](sources/story). Original scientific material, brand marks and older captures remain available with their attribution. Named versions archive page artwork and its local assets; installation-local operation logs remain on the originating computer.
+Main and **The continuing working document** contain 28 pages. **A shorter introduction** contains 19 saved occurrences, including its Section pauses. Inspect its actual references, occurrence Notes and version choices in the Editor.
 
-The current [personal visual review](evidence/final-review.json), [composition](evidence/composition.json) and [final validation](../../../docs/PRODUCT-INTRODUCTION-VALIDATION.md) identify the reviewed pages, actual short-talk selection and delivery checks. Earlier evidence is retained under `evidence/history/before-final-20261111` and describes the previous design.
+The Notes stored with pages and Presentation occurrences are the spoken source. [speaker-notes.md](speaker-notes.md) has been generated from the actual saved Main and the resolved shorter Presentation, including named-version and occurrence-specific Notes.
 
-Every final page was personally inspected by the primary session after the last source edit. The result is a review candidate; technical checks do not assert the owner's acceptance.
+Main and the shorter Presentation have been exported to `Exports/deck.pdf`, `Exports/deck.pptx`, `Exports/brief.pdf` and `Exports/brief.pptx`. The final 28-slide and 19-slide PPTX files opened and closed read-only in PowerPoint with repair disabled and without changing the files. The final output received internal visual review. Git excludes these generated files.
+
+## Sources and review status
+
+The [founder's original account](sources/story/USER-STORY.zh-CN.md) stays unchanged. [Source notes](sources/SOURCE-NOTES.en.md) explain independent acquisition, the public scientific case, same-author bilingual reuse and the boundary between current material and retained history. [Visual provenance](sources/visual-provenance.json) records the images actually used by Main and the resolved shorter Presentation. [Acknowledgments](sources/ACKNOWLEDGMENTS.md) preserve the original 15 on-slide references and the complete 33-source inventory, with their distinct contributions.
+
+The current design follows [AGENTS.md](AGENTS.md). Earlier evidence files, including `evidence/final-review.json` and `evidence/composition.json`, describe their recorded revision until regenerated. They do not certify this 28-page revision. The repository's [historical validation](../../../docs/PRODUCT-INTRODUCTION-VALIDATION.md) explicitly records that boundary.
+
+Any later page change requires renewed review of the affected output. The completed internal review and the author's final acceptance remain separate conclusions. Move the whole project folder to continue editing; installation-local operation logs do not travel with it.

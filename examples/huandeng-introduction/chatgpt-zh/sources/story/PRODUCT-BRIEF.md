@@ -1,30 +1,44 @@
-# HUANDENG Editor walkthrough: final editorial brief
+# HUANDENG introduction: current editorial brief
 
-The founder's account in USER-STORY.zh-CN.md supplies motivation and priorities. Preserve that source verbatim. The audience's task is to open the Editor, make a useful edit, inspect it, arrange a talk and deliver it.
+Updated 2026-11-11. This brief corrects the superseded tutorial-only interpretation. It is an editorial organization of the author's account and corrections, not a replacement for them or a record of final acceptance.
 
-## Current ownership and scope
+The original [USER-STORY.zh-CN.md](USER-STORY.zh-CN.md) remains unchanged. The [project authoring rules](../../AGENTS.md) and [edition overview](../../README.md) explain the narrative, visual and source requirements. Explicit author instructions govern both documents.
 
-- The primary ChatGPT session authors the English walkthrough directly.
-- Three parallel section agents author the Chinese walkthrough under the primary session's orchestration and personal visual review.
-- The English and Chinese editions are independent explanations; page-for-page or topic-for-topic alignment is not required.
-- Claude Code and DeepSeek Harness editions are frozen. This round only adds the accurate language/model watermark to every page and refreshes mechanical delivery files. Their prior designs, Notes, object data, page order and project arrangements stay intact.
+## The story and its practical teaching
 
-## What each ChatGPT walkthrough must teach
+Begin with the founder's experience: generated slides can look recognizably artificial and miss the speaker's choices; two changes in fifty pages can create another full copy. The author wants to tell the story freely, preserve original evidence, and continue working on the same document with an agent.
 
-Connect the story to actions in the real Editor: opening a project; choosing a page and object; finding or importing original assets; writing purpose and constraints in Story; editing and saving; inspecting the exact change; using stable identity and named history; reading sequence in Browse, Outline and Sections; selecting pages for a Presentation; choosing occurrence Notes and live or pinned versions; rehearsing; exporting the intended range; and continuing with an assistant in the same project.
+Explain how page-oriented project files, OpenSlide's foundation, an Electron Editor, Story, original Assets, stable page identity, history and reusable Presentations respond to those needs. Show the architecture and the reasoning behind it. Teach Editor actions when they answer the audience's question, then return to the consequence for the story.
 
-Every page needs a clear takeaway and an actionable role in that sequence. Notes carry the spoken explanation. Story carries purpose, preservation constraints and the requested change. Sections start at useful content pages; an empty divider is not required.
+A complete account includes the project's motivation, ideas, architecture, evidence, a representative edit, review and history, reuse for another audience, agent collaboration and formal acknowledgments. A public scientific case may show traceable data and a professional plot without becoming the main story. Removing that case entirely is not required.
 
-Use real interface pixels at a readable scale. Preserve original screenshots and assets. Crop through native image properties or select a precise real UI region. Use arrows, matched scale, alignment and labels to guide comparisons. Native text, shapes and diagrams should remain editable. A successful export or zero geometry findings cannot replace looking at the actual page.
+## Current ownership and saved scope
 
-The scientific source package and earlier examples remain available for provenance and history. DNA measurements and scientific slide content are not the organizing example for these Editor tutorials.
+- The primary ChatGPT session personally authors the English revision and personally revises the Chinese edition from its subagent baseline, with investigative and review support.
+- Current saved ChatGPT sequences are 28 Main / 19 short occurrences in English and 31 Main / 21 short occurrences in Chinese. The two arguments are independently organized.
+- Claude Code retains its successful story and design while performing focused author review. The last native review jobs hit the host's five-hour usage limit; that review is incomplete.
+- DeepSeek Harness continues its own audit and refinement, especially top-left text labels and consistency across pages. The old watermark-only freeze no longer defines this scope.
 
-## Authorship on every page
+## Composition and material
 
-Use the actual production method: English · ChatGPT 6 Astra; Chinese · ChatGPT 6 Astra + Subagents. Native editions retain their Claude Opus 5.5 or DeepSeek V4.1 Flash 1017 language/model labels. Watermarks must remain readable, editable and outside the main instructional content.
+Actual title-only Section pages are mandatory at narrative turns. They contain only a title, with no watermark, page number, logo, subtitle or decoration. Section metadata is separate.
 
-## Verification and delivery
+Most story and explanation pages make meaningful visuals their main material. Ordinary prose should not overwhelm a small decorative screenshot. Establish where a UI detail sits in the complete Editor; matched markers and a useful enlarged detail must communicate a real spatial relationship. Comparisons need aligned objects and a clear account of what changed and what remained.
 
-Keep all six canonical project directories. Use the active shared writer with fresh revisions, exact preview/apply and saved-operation readback. Preserve stable page identity, originals and named history. Review each final page personally, check the short Presentation's real occurrences and notes, and inspect final PDF/PPTX output. A project is delivered as its complete folder.
+Avoid decorative middle-dot separators, character-arrow chains, thin line arrows, generic accent bars and stock color treatments. Use appropriate graphical relationships and inspect actual pixels. Do not calculate a human-feeling or AI-feeling score.
 
-Do not infer owner acceptance from automated checks or agent review. Public release preparation includes bilingual documentation, source and license attribution, distributable native plugins and a clean public source candidate; visibility changes and release publication are separate decisions.
+Every author independently acquires active assets. The old shared image pool is history, not an input to this revision. Same-author bilingual reuse may be documented honestly. Private research examples inform judgment but cannot supply public artwork. Plot scientific data with appropriate professional tools and preserve its source, units and reproducible method.
+
+The complete [acknowledgments](../ACKNOWLEDGMENTS.md) distinguish code contributions, dependencies, design inspiration and researched alternatives. Retain the original 15 named on-slide references and access to the complete 33-source inventory.
+
+## Authorship labels
+
+Cover/content watermarks are exact lowercase strings: `english chatgpt 6 astra`, `chinese chatgpt 6 astra + subagent`, `english claude opus5.5`, `chinese claude opus5.5`, `english deepseek v4.1flash1017` and `chinese deepseek v4.1flash1017`. Title-only Section slides remain title-only.
+
+## Authoring, validation and release
+
+Follow Audit, Spec, Implement, Validate and Release. Representative composition review belongs within Spec. Preserve stable page identity, original materials, meaningful history and unrelated edits; use the active shared writer with current revisions and exact preview/apply.
+
+Visual judgment, saved-document behavior and final PDF/PPTX checks are separate obligations. Old evidence validates only the revision it records. The existing installed writer is 0.19.0; the 0.20.0 Editor/plugin candidate and its Rules UI require milestone verification before release claims.
+
+Deliver complete editable projects and their actual reviewed outputs. Maintain bilingual documentation, notices and native packages within the engineering project. Public visibility changes, publication and license changes are separate decisions.

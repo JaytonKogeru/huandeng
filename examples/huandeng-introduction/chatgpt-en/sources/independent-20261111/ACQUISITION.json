@@ -1,0 +1,10 @@
+{
+  "author": "ChatGPT 6 Astra / root",
+  "acquisition": "Fresh independent HTTPS download; no prepared source or figure copied from other authors or common assets",
+  "url": "https://files.rcsb.org/download/1BNA.pdb",
+  "source_page": "https://www.rcsb.org/structure/1BNA",
+  "sha256": "df42f1506792f191b957227b061360652adcf6f813eb69d9ec553067ea584670",
+  "method": "Euclidean C1' distances A1..A12 versus antiparallel B24..B13. One static crystallographic structure; no replicate uncertainty. Structure picture uses principal-axis projection and same-chain 0.7–1.86 Å visual bond-distance connections, not chemical bond orders.",
+  "bilingual_reuse": "Independent input acquired once by root for its own English and Chinese editions",
+  "citation": "Drew et al. (1981), PNAS 78, 2179–2183. PDB 1BNA."
+}

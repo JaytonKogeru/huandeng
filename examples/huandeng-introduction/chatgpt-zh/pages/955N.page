@@ -1,0 +1,208 @@
+pageType: content
+background:
+  type: solid
+  color: "#FFFFFF"
+elements:
+  - elementId: v-bg
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 0
+      - 0
+      - 960
+      - 540
+    fill:
+      type: solid
+      color: "#FFFFFF"
+  - elementId: title
+    elementType: text
+    bounds:
+      - 38
+      - 29
+      - 884
+      - 58
+    role: title
+    content:
+      text: 先把我想讲的讲出来
+      fontFamily: Segoe UI
+      fontSize: 25
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-watermark
+    elementType: text
+    bounds:
+      - 38
+      - 520
+      - 750
+      - 12
+    content:
+      text: chinese chatgpt 6 astra + subagent
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-position
+    elementType: text
+    bounds:
+      - 885
+      - 520
+      - 37
+      - 12
+    content:
+      text: ""
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - right
+        - top
+      field: main-position
+  - elementId: v-transcript
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 38
+      - 121
+      - 326
+      - 350
+    fill:
+      type: solid
+      color: "#F2F3F3"
+  - elementId: v-source-label
+    elementType: text
+    bounds:
+      - 56
+      - 138
+      - 289
+      - 25
+    content:
+      text: 原始口述，先保留下来
+      fontFamily: Segoe UI
+      fontSize: 13
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-source
+    elementType: text
+    bounds:
+      - 56
+      - 184
+      - 289
+      - 213
+    content:
+      {"text":"所以为了让 slides 有人味，\n那必须要有人的故事作为底层。\n所以最好的办法就是让人类给 AI \n讲一个故事。就比如说我现在就是\n在人类在给 AI 讲一个故事，\n然后让这个 AI 把这个故事给我\n整理组织起来。然后再基于人类\n讲的故事再去做 slides。","fontFamily":"Microsoft YaHei","fontSize":15,"color":"#25282C","bold":false,"lineHeight":1.45,"align":["left","top"]}
+  - elementId: v-source-name
+    elementType: text
+    bounds:
+      - 56
+      - 429
+      - 289
+      - 24
+    content:
+      text: USER-STORY.zh-CN.md
+      fontFamily: Consolas
+      fontSize: 11
+      color: "#63696F"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-page-0
+    elementType: image
+    bounds:
+      - 405
+      - 116
+      - 201
+      - 113
+    src: "media/imported/6716e7d999b5e46b7bd50b08b80c5183bc7e49ee19202a4f5ce8a27298503cca.png"
+    sourceName: "copies.png"
+    fit:
+      mode: contain
+  - elementId: v-link-0
+    elementType: text
+    bounds:
+      - 629
+      - 140
+      - 289
+      - 63
+    content:
+      text: 为什么只改两页，却多出整套副本
+      fontFamily: Segoe UI
+      fontSize: 17
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-page-1
+    elementType: image
+    bounds:
+      - 405
+      - 244
+      - 201
+      - 113
+    src: "media/imported/cf98cd924cfbb52419082ec95000b282b9cd661320cb8cea27db2a5e2c72b6f9.png"
+    sourceName: "orientation.png"
+    fit:
+      mode: contain
+  - elementId: v-link-1
+    elementType: text
+    bounds:
+      - 629
+      - 268
+      - 289
+      - 63
+    content:
+      text: 怎样把判断留在工作现场
+      fontFamily: Segoe UI
+      fontSize: 17
+      color: "#25282C"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-page-2
+    elementType: image
+    bounds:
+      - 405
+      - 372
+      - 201
+      - 113
+    src: "media/imported/1ec93b9cc0e4a1934e7b56fafa2f055a8ddfabb750d6fb220f3b00fd1daafcbb.png"
+    sourceName: "case-after.png"
+    fit:
+      mode: contain
+  - elementId: v-link-2
+    elementType: text
+    bounds:
+      - 629
+      - 396
+      - 289
+      - 63
+    content:
+      text: 怎样让原图与数据继续跟着页面
+      fontFamily: Segoe UI
+      fontSize: 17
+      color: "#25282C"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+notes: "作者先自由讲述，agent再组织关系、补足必要的解释，不能倒过来让人迁就已经生成的页面。左边保留的是原始连续口述摘录；右边是本次组织出的叙事与实物页面，二者身份不同。"

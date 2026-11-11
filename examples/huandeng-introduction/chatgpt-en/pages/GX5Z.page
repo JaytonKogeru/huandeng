@@ -3,7 +3,7 @@ background:
   type: solid
   color: "#F7F5EF"
 elements:
-  - elementId: f-bg
+  - elementId: v-bg
     elementType: shape
     shapeName: rect
     bounds:
@@ -13,261 +13,195 @@ elements:
       - 540
     fill:
       type: solid
-      color: "#F4F1E8"
-  - elementId: f-route
-    elementType: text
-    bounds:
-      - 42
-      - 20
-      - 860
-      - 18
-    content:
-      text: PROJECT → FILES
-      fontFamily: Segoe UI
-      fontSize: 11
-      color: "#168C8C"
-      bold: true
-      align:
-        - left
-        - top
-      lineHeight: 1.2
+      color: "#FFFFFF"
   - elementId: title
     elementType: text
     bounds:
-        [42,49,875,66]
+        [38,29,884,58]
     role: title
     content:
-      {"text":"One project keeps the work together","fontFamily":"Segoe UI","fontSize":32,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.1}
-  - elementId: f-foot-rule
-    elementType: shape
-    shapeName: rect
-    bounds:
-      - 42
-      - 510
-      - 876
-      - 1
-    fill:
-      type: solid
-      color: "#CCD2CB"
-  - elementId: f-watermark
+      {"text":"A deck is already a collection of parts","fontFamily":"Segoe UI","fontSize":25,"color":"#25282C","bold":true,"lineHeight":1.16,"align":["left","top"]}
+  - elementId: v-watermark
     elementType: text
     bounds:
-      - 42
-      - 518
-      - 700
-      - 17
+      - 38
+      - 520
+      - 750
+      - 12
     content:
-      text: English · ChatGPT 6 Astra
+      text: english chatgpt 6 astra
       fontFamily: Segoe UI
-      fontSize: 12
-      color: "#50646A"
+      fontSize: 8
+      color: "#6D7379"
       bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.2
-  - elementId: f-position
+  - elementId: v-position
     elementType: text
     bounds:
-      - 882
-      - 518
-      - 36
-      - 17
+      - 885
+      - 520
+      - 37
+      - 12
     content:
       text: ""
       fontFamily: Segoe UI
-      fontSize: 12
-      color: "#50646A"
+      fontSize: 8
+      color: "#6D7379"
       bold: false
+      lineHeight: 1.16
       align:
         - right
         - top
-      lineHeight: 1.2
       field: main-position
-  - elementId: f-folder
-    elementType: icon
-    iconName: fas:folder-open
+  - elementId: v-parts
+    elementType: table
     bounds:
-      - 51
-      - 135
-      - 58
-      - 58
-    fill:
-      type: solid
-      color: "#168C8C"
-  - elementId: f-folder-label
-    elementType: text
-    bounds:
-      - 128
-      - 143
-      - 600
-      - 40
-    content:
-      text: Your working project
-      fontFamily: Segoe UI
-      fontSize: 27
-      color: "#112D32"
-      bold: true
-      align:
-        - left
-        - top
-      lineHeight: 1.2
-  - elementId: f-folder-bg
-    elementType: shape
-    shapeName: rect
-    bounds:
-      - 43
-      - 203
-      - 874
-      - 247
-    fill:
-      type: solid
-      color: "#FFFFFF"
-  - elementId: f-entry
-    elementType: text
-    bounds:
-      - 67
-      - 225
-      - 300
       - 38
-    content:
-      text: deck.pptd
-      fontFamily: Consolas
-      fontSize: 25
-      color: "#112D32"
-      bold: true
-      align:
-        - left
-        - top
-      lineHeight: 1.2
-  - elementId: f-entry-label
+      - 108
+      - 535
+      - 272
+    columnWidths:
+      - 0.43
+      - 0.57
+    rows:
+      - - text: Parts inside a PPTX
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: true
+          fill: "#E8ECEF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+        - text: The HUANDENG working Project
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: true
+          fill: "#E8ECEF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+      - - text: ppt/slides/slideN.xml
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: true
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+        - text: pages/<Slide ID>.page
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: false
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+      - - text: ppt/media/
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: true
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+        - text: media/ original assets
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: false
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+      - - text: ppt/notesSlides/
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: true
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+        - text: Speaker notes inside each page
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: false
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+      - - text: presentation.xml
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: true
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+        - text: deck.pptd entry and page order
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: false
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+  - elementId: v-files-context
+    elementType: image
+    bounds:
+      - 609
+      - 109
+      - 313
+      - 149
+    src: "media/imported/a8ea8ce9e94e8537b49128f0eb0215ad1ff72fd1a5d71c4c1d716ab58261368b.png"
+    sourceName: files.png
+    fit:
+      mode: contain
+  - elementId: v-files-label
     elementType: text
     bounds:
-      - 67
-      - 268
-      - 340
-      - 46
-    content:
-      text: Open this entry in HUANDENG
-      fontFamily: Segoe UI
-      fontSize: 19
-      color: "#112D32"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.2
-  - elementId: f-entry-arrow
-    elementType: line
-    bounds:
-      - 404
-      - 248
-      - 65
-      - 0
-    viewBox:
-      - 1
-      - 1
-    points: 0,0 1,1
-    border:
-      width: 2.5
-      color: "#ED6A3A"
-    arrow:
-      - null
-      - arrow
-  - elementId: f-pages
-    elementType: text
-    bounds:
-      - 510
-      - 225
-      - 350
-      - 34
-    content:
-      text: pages/*.page
-      fontFamily: Consolas
-      fontSize: 23
-      color: "#112D32"
-      bold: true
-      align:
-        - left
-        - top
-      lineHeight: 1.2
-  - elementId: f-pages-label
-    elementType: text
-    bounds:
-      - 510
-      - 265
-      - 360
+      - 609
+      - 278
+      - 313
       - 45
     content:
-      text: Edit and version individual slides
+      text: Files at the left opens the Project tree
       fontFamily: Segoe UI
-      fontSize: 19
-      color: "#112D32"
-      bold: false
+      fontSize: 14
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.2
-  - elementId: f-folder-sep
-    elementType: shape
-    shapeName: rect
-    bounds:
-      - 67
-      - 329
-      - 826
-      - 1
-    fill:
-      type: solid
-      color: "#D5DEDA"
-  - elementId: f-support
+  - elementId: v-added
     elementType: text
     bounds:
-      - 67
-      - 350
-      - 804
-      - 33
+      - 38
+      - 418
+      - 884
+      - 62
     content:
-      text: media/  ·  sources/  ·  .huandeng/
-      fontFamily: Consolas
-      fontSize: 23
-      color: "#112D32"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.2
-  - elementId: f-support-label
-    elementType: text
-    bounds:
-      - 67
-      - 392
-      - 804
-      - 32
-    content:
-      text: Original assets, evidence, project settings and page history
-      fontFamily: Segoe UI
-      fontSize: 19
-      color: "#112D32"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.2
-  - elementId: f-action
-    elementType: text
-    bounds:
-      - 44
-      - 468
-      - 860
-      - 30
-    content:
-      text: Keep the whole folder when moving or sharing the editable project.
+      text: |-
+        The added context is what makes the work continue:
+        Story, stable identity, page history and different talks.
       fontFamily: Segoe UI
       fontSize: 18
-      color: "#168C8C"
+      color: "#25282C"
       bold: true
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.2
-notes: "Open the example project from its folder. The .pptd file is the entry point and page order; individual .page files hold editable page content. Images and supporting sources stay beside them. HUANDENG opens this working folder in the Editor. Share the complete folder when another person needs to continue editing. The diagram is a conceptual map of the actual project structure, not a screenshot."
+notes: "A PPTX is a package of slide XML, media and notes. HUANDENG exposes a continuing directory project: the entry orders pages, page files hold objects and notes, media keeps originals, and project metadata holds Story, stable identity and history. It is not merely a renamed PPTX. Files makes those parts visible in the Editor."

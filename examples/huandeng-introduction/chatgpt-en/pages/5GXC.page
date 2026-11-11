@@ -1,0 +1,184 @@
+pageType: content
+background:
+  type: solid
+  color: "#FFFFFF"
+elements:
+  - elementId: v-bg
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 0
+      - 0
+      - 960
+      - 540
+    fill:
+      type: solid
+      color: "#FFFFFF"
+  - elementId: title
+    elementType: text
+    bounds:
+      - 38
+      - 29
+      - 884
+      - 58
+    role: title
+    content:
+      text: The rules stay in the Project
+      fontFamily: Segoe UI
+      fontSize: 25
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-watermark
+    elementType: text
+    bounds:
+      - 38
+      - 520
+      - 750
+      - 12
+    content:
+      text: english chatgpt 6 astra
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-position
+    elementType: text
+    bounds:
+      - 885
+      - 520
+      - 37
+      - 12
+    content:
+      text: ""
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - right
+        - top
+      field: main-position
+  - elementId: v-rules-detail
+    elementType: image
+    bounds:
+      - 38
+      - 110
+      - 359
+      - 369
+    src: media/imported/418567b6383867b64e5cffaee6a8de14015cfe599aa387bc16d3e335396426b8.png
+    sourceName: rules-detail.png
+    fit:
+      mode: contain
+  - elementId: v-full-editor
+    elementType: image
+    bounds:
+      - 439
+      - 110
+      - 483
+      - 230
+    src: media/imported/97b55eebc040fbd1b5940aeb119d55b981503cc479c2842e008d1b4a8b7471a8.png
+    sourceName: rules-full.png
+    fit:
+      mode: contain
+  - elementId: v-marker-1
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+      - 34
+      - 100
+      - 20
+      - 20
+    fill:
+      type: solid
+      color: "#25282C"
+  - elementId: v-marker-text-1
+    elementType: text
+    bounds:
+      - 34
+      - 102
+      - 20
+      - 17
+    content:
+      text: "1"
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#FFFFFF"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - center
+        - top
+  - elementId: v-marker-1-location
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+      - 438
+      - 132
+      - 20
+      - 20
+    fill:
+      type: solid
+      color: "#25282C"
+  - elementId: v-marker-text-1-location
+    elementType: text
+    bounds:
+      - 438
+      - 134
+      - 20
+      - 17
+    content:
+      text: "1"
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#FFFFFF"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - center
+        - top
+  - elementId: v-rule-meaning
+    elementType: text
+    bounds:
+      - 439
+      - 373
+      - 483
+      - 63
+    content:
+      text: |-
+        Read the rules in Project at the left.
+        Open AGENTS.md to read the same file in full.
+      fontFamily: Segoe UI
+      fontSize: 18
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-refresh
+    elementType: text
+    bounds:
+      - 439
+      - 463
+      - 483
+      - 40
+    content:
+      text: After an external file change, use Refresh Project rules.
+      fontFamily: Segoe UI
+      fontSize: 13
+      color: "#63696F"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+notes: "Editor 0.20.0 displays the exact root AGENTS.md in Project. Open the file for the complete text; after external edits, Refresh Project rules updates both the sidebar and an open full preview. Root independently captured this real 0.20 example with the actual authoring rules. Visibility supports inspection; it does not guarantee model obedience."

@@ -3,7 +3,7 @@ background:
   type: solid
   color: "#E4ECE6"
 elements:
-  - elementId: f-paper
+  - elementId: v-section-paper
     elementType: shape
     shapeName: rect
     bounds:
@@ -13,135 +13,12 @@ elements:
       - 540
     fill:
       type: solid
-      color: "#F4F1E8"
+      color: "#FFFFFF"
   - elementId: title
     elementType: text
     bounds:
-        [36,27,884,46]
+        [70,237,820,72]
     role: title
     content:
-      {"text":"保存后，核对这一次修改","fontFamily":"Noto Sans SC","fontSize":31,"color":"#112D32","align":["left","top"],"lineHeight":1.35,"bold":true}
-  - elementId: f-action
-    elementType: text
-    bounds:
-      - 38
-      - 82
-      - 884
-      - 28
-    content:
-      text: 历史 → 操作记录 → 查看已保存的修改
-      fontFamily: Noto Sans SC
-      fontSize: 18
-      color: "#557076"
-      align:
-        - left
-        - top
-      lineHeight: 1.35
-  - elementId: f-watermark
-    elementType: text
-    bounds:
-      - 36
-      - 514
-      - 820
-      - 19
-    content:
-      text: Chinese · ChatGPT 6 Astra + Subagents
-      fontFamily: Noto Sans SC
-      fontSize: 13
-      color: "#557076"
-      align:
-        - left
-        - top
-      lineHeight: 1.35
-  - elementId: f-position
-    elementType: text
-    bounds:
-      - 878
-      - 514
-      - 44
-      - 19
-    content:
-      text: ""
-      fontFamily: Noto Sans SC
-      fontSize: 13
-      color: "#557076"
-      align:
-        - right
-        - top
-      lineHeight: 1.35
-      field: main-position
-  - elementId: f-review-dialog
-    elementType: image
-    bounds:
-      - 38
-      - 130
-      - 539
-      - 363
-    src: media/imported/1f8c227e7a8a73ed668c788e46d631f17b6e6f577e9f66479d5e693fbd71d867.png
-    sourceName: zh-CN-native-operation-review-4x.png
-    fit:
-      mode: contain
-  - elementId: f-changes-focus
-    elementType: image
-    bounds:
-      - 622
-      - 147
-      - 300
-      - 180
-    src: media/imported/21fabc424f513dd09dd873134d8604b4d8518b2af74008945f693fd86ffeb7b8.png
-    sourceName: zh-CN-native-operation-changes-4x.png
-    fit:
-      mode: contain
-  - elementId: f-detail-link
-    elementType: line
-    bounds:
-      - 570
-      - 251
-      - 35
-      - 0
-    viewBox:
-      - 1
-      - 1
-    points: 0,0 1,1
-    border:
-      width: 2
-      color: "#ED6A3A"
-    arrow:
-      - null
-      - arrow
-  - elementId: f-review-copy
-    elementType: text
-    bounds:
-      - 622
-      - 354
-      - 300
-      - 72
-    content:
-      text: |-
-        两条文字修改，
-        对应两个对象。
-      fontFamily: Noto Sans SC
-      fontSize: 24
-      color: "#112D32"
-      align:
-        - left
-        - top
-      lineHeight: 1.35
-      bold: true
-  - elementId: f-review-use
-    elementType: text
-    bounds:
-      - 622
-      - 448
-      - 300
-      - 44
-    content:
-      text: 点记录定位；切换前后核对。
-      fontFamily: Noto Sans SC
-      fontSize: 17
-      color: "#557076"
-      align:
-        - left
-        - top
-      lineHeight: 1.35
-notes: "保存以后，进入历史的操作记录，打开这次修改。左图是实际的修改查看器，能切换修改前与修改后；右图把已保存的修改放大，标题 title 和引导句 lead 各有一条内容变化。选择记录会在画布中定位对象。这里核对的是“说要改什么”和“实际改了什么”是否一致。看完字段变化，再看完整画面是否读得清楚。"
+      {"text":"只改这一页","fontFamily":"Segoe UI","fontSize":35,"color":"#25282C","bold":true,"lineHeight":1.16,"align":["left","top"]}
+notes: "在这里停顿，进入故事的下一段。章节页严格只有标题。"

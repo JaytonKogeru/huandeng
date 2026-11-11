@@ -3,7 +3,7 @@ background:
   type: solid
   color: "#F7F5EF"
 elements:
-  - elementId: f-bg
+  - elementId: v-bg
     elementType: shape
     shapeName: rect
     bounds:
@@ -13,125 +13,75 @@ elements:
       - 540
     fill:
       type: solid
-      color: "#F4F1E8"
-  - elementId: f-route
-    elementType: text
-    bounds:
-      - 42
-      - 20
-      - 860
-      - 18
-    content:
-      text: WORKSPACE → OUTLINE
-      fontFamily: Segoe UI
-      fontSize: 11
-      color: "#168C8C"
-      bold: true
-      align:
-        - left
-        - top
-      lineHeight: 1.2
+      color: "#FFFFFF"
   - elementId: title
     elementType: text
     bounds:
-        [42,49,875,66]
+        [38,29,884,58]
     role: title
     content:
-      {"text":"Read the argument in Outline","fontFamily":"Segoe UI","fontSize":32,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.1}
-  - elementId: f-foot-rule
-    elementType: shape
-    shapeName: rect
-    bounds:
-      - 42
-      - 510
-      - 876
-      - 1
-    fill:
-      type: solid
-      color: "#CCD2CB"
-  - elementId: f-watermark
+      {"text":"Read the sequence","fontFamily":"Segoe UI","fontSize":25,"color":"#25282C","bold":true,"lineHeight":1.16,"align":["left","top"]}
+  - elementId: v-watermark
     elementType: text
     bounds:
-      - 42
-      - 518
-      - 700
-      - 17
+      - 38
+      - 520
+      - 750
+      - 12
     content:
-      text: English · ChatGPT 6 Astra
+      text: english chatgpt 6 astra
       fontFamily: Segoe UI
-      fontSize: 12
-      color: "#50646A"
+      fontSize: 8
+      color: "#6D7379"
       bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.2
-  - elementId: f-position
+  - elementId: v-position
     elementType: text
     bounds:
-      - 882
-      - 518
-      - 36
-      - 17
+      - 885
+      - 520
+      - 37
+      - 12
     content:
       text: ""
       fontFamily: Segoe UI
-      fontSize: 12
-      color: "#50646A"
+      fontSize: 8
+      color: "#6D7379"
       bold: false
+      lineHeight: 1.16
       align:
         - right
         - top
-      lineHeight: 1.2
       field: main-position
-  - elementId: f-outline-label
+  - elementId: v-place
     elementType: text
     bounds:
-      - 44
-      - 136
-      - 870
-      - 26
+      - 38
+      - 79
+      - 884
+      - 25
     content:
-      text: An actual Outline row · enlarged
+      text: Select the talk in the header, then open Browse above the canvas.
       fontFamily: Segoe UI
-      fontSize: 14
-      color: "#50646A"
+      fontSize: 13
+      color: "#25282C"
       bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.2
-  - elementId: f-outline-row
+  - elementId: v-browser
     elementType: image
     bounds:
-      - 44.62068965517233
-      - 181
-      - 868.7586206896553
-      - 221
-    src: "media/imported/1bb02bdf47ffbed5ec1c8cdf673115a6e9f5b22986ef2d41298b9139dfec68b9.png"
-    sourceName: outline-current.png
+      - 38
+      - 110
+      - 884
+      - 395
+    src: "media/imported/81c0e78984da6b2ab4006a1d7ee52b73628415b3e29c3d82a1f4ec0135efe6ae.png"
+    sourceName: browse.png
     fit:
       mode: contain
-    crop:
-      left: 0.3125
-      right: 0.33125
-      top: 0.63
-      bottom: 0.225
-  - elementId: f-outline-action
-    elementType: text
-    bounds:
-      - 44
-      - 443
-      - 870
-      - 53
-    content:
-      text: Read the title and purpose. Then open the row to improve that page.
-      fontFamily: Segoe UI
-      fontSize: 22
-      color: "#112D32"
-      bold: true
-      align:
-        - left
-        - top
-      lineHeight: 1.2
-notes: "Switch to Outline to inspect a page through its title, purpose and identity. The enlarged row is the project-map page, GX5Z. Read the sequence as an argument: what does each page add, and what prepares the next one? Double-click a row to return to editing. Page purpose is stored in Story, so update that brief when the intention changes."
+notes: "Choose the shorter Presentation and open Browse to read the actual sequence. Title-only Section slides provide pauses; evidence pages advance the argument. Double-click a page to return to editing. Outline supports the spoken logic; Sections organizes the larger parts. This is the real shorter talk in the Editor."

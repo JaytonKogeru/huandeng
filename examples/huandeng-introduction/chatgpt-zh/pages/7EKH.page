@@ -3,7 +3,7 @@ background:
   type: solid
   color: "#F7F5EF"
 elements:
-  - elementId: f-bg
+  - elementId: v-bg
     elementType: shape
     shapeName: rect
     bounds:
@@ -13,123 +13,137 @@ elements:
       - 540
     fill:
       type: solid
-      color: "#F4F1E8"
+      color: "#FFFFFF"
   - elementId: title
     elementType: text
     bounds:
-        [38,29,884,48]
+        [38,29,884,58]
     role: title
     content:
-      {"text":"检查画布，然后保存页面","fontFamily":"Noto Sans SC","fontSize":30,"color":"#112D32","align":["left","top"],"lineHeight":1.32,"bold":true}
-  - elementId: f-watermark
+      {"text":"先说清楚，这一次只改哪里","fontFamily":"Segoe UI","fontSize":25,"color":"#25282C","bold":true,"lineHeight":1.16,"align":["left","top"]}
+  - elementId: v-watermark
     elementType: text
     bounds:
       - 38
-      - 514
-      - 800
-      - 22
+      - 520
+      - 750
+      - 12
     content:
-      text: Chinese · ChatGPT 6 Astra + Subagents
-      fontFamily: Noto Sans SC
-      fontSize: 13
-      color: "#596D70"
+      text: chinese chatgpt 6 astra + subagent
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
+      bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.32
-  - elementId: f-position
+  - elementId: v-position
     elementType: text
     bounds:
-      - 882
-      - 514
-      - 40
-      - 22
+      - 885
+      - 520
+      - 37
+      - 12
     content:
       text: ""
-      fontFamily: Noto Sans SC
-      fontSize: 13
-      color: "#596D70"
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
+      bold: false
+      lineHeight: 1.16
       align:
         - right
         - top
-      lineHeight: 1.32
       field: main-position
-  - elementId: f-save-controls
-    elementType: image
-    bounds:
-      - 176
-      - 124
-      - 608
-      - 84
-    src: media/imported/8ae6771c49c7c101d1e753cc3ee03c760be62acf87cb0f631ccc3dffeaae222c.png
-    sourceName: save-page-controls.png
-    fit:
-      mode: contain
-  - elementId: f-save-result
+  - elementId: v-before-label
     elementType: text
     bounds:
-      - 176
-      - 222
-      - 608
-      - 34
+      - 38
+      - 94
+      - 423
+      - 24
     content:
-      text: 确认「页面已保存」
-      fontFamily: Noto Sans SC
-      fontSize: 18
-      color: "#168C8C"
-      align:
-        - center
-        - top
-      lineHeight: 1.32
+      text: 修改前
+      fontFamily: Segoe UI
+      fontSize: 14
+      color: "#25282C"
       bold: true
-  - elementId: f-final-canvas
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-after-label
+    elementType: text
+    bounds:
+      - 499
+      - 94
+      - 423
+      - 24
+    content:
+      text: 修改后，仍是同一页
+      fontFamily: Segoe UI
+      fontSize: 14
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-before
     elementType: image
     bounds:
-      - 40
-      - 278
-      - 555
-      - 228
-    src: media/imported/d95ba29140db491cc375419aea44b04dbd1b6cdb0b965a61bd9ac807b49b0728.png
-    sourceName: selected-title-top.png
+      - 38
+      - 128
+      - 423
+      - 238
+    src: media/imported/6668b37b8afdd533c5382b5e19b83c1a4978fba6c4f5584a8e08753aedb8b6e0.png
+    sourceName: case-before.png
     fit:
       mode: contain
-  - elementId: f-save-steps
+  - elementId: v-after
+    elementType: image
+    bounds:
+      - 499
+      - 128
+      - 423
+      - 238
+    src: media/imported/1ec93b9cc0e4a1934e7b56fafa2f055a8ddfabb750d6fb220f3b00fd1daafcbb.png
+    sourceName: case-after.png
+    fit:
+      mode: contain
+  - elementId: v-keep
     elementType: text
     bounds:
-      - 650
-      - 280
-      - 270
-      - 188
+      - 38
+      - 393
+      - 884
+      - 58
     content:
-      text: |-
-        1  检查标题与原图
-  
-        2  保存页面 / Ctrl+S
-  
-        3  确认保存状态
-      fontFamily: Noto Sans SC
-      fontSize: 19
-      color: "#112D32"
+      text: 标题的说法改变了。图、数据、来源与页的身份都留下来。
+      fontFamily: Segoe UI
+      fontSize: 20
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.35
-  - elementId: f-project-save
+  - elementId: v-return
     elementType: text
     bounds:
-      - 650
-      - 468
-      - 270
-      - 42
+      - 38
+      - 469
+      - 884
+      - 25
     content:
-      text: |-
-        演讲顺序、章节等草稿，
-        在对应面板「保存项目」。
-      fontFamily: Noto Sans SC
+      text: 下一次作者要改的，仍是这份工作。
+      fontFamily: Segoe UI
       fontSize: 15
-      color: "#168C8C"
+      color: "#63696F"
+      bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.3
-notes: "第一张页完成后，先看真实画布：标题是不是讲清了这页的意思，图片是否完整，重要内容有没有被挡住。然后点击顶部保存页面，或者按 Ctrl+S，确认状态显示页面已保存。图中放大的是实际保存控件和真实保存状态。页面修改和项目编排有各自的保存入口；章节、演讲顺序等项目草稿，需要在对应面板保存项目。下一步，我们就在这份项目里做一次更小、更精确的改动。"
+notes: "回到开始的问题：不是让agent再做整套文件，而是在一页里保留要讲什么、哪些证据不能丢、已经改过什么，以及当前演讲怎样使用它。这个实物例子只改标题，原图和数据保持不变。将完整目录交给下一位作者，才能继续使用这些关系。"

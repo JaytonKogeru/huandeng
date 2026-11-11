@@ -1,323 +1,290 @@
-# Speaker notes — chatgpt-en
+# Speaker notes
 
-These Notes are extracted verbatim from the final saved Main pages and resolved Brief occurrences. The order, pinned versions, and occurrence overrides below match the final exports.
+Extracted from the saved Main pages and resolved short Presentation. Named versions and occurrence-specific Notes are resolved by the Editor.
 
-## Main Slides
+## Main
 
-### 1. HUANDENG — 9DAA
+### 1. HUANDENG
 
-Main position: 1 · Notes source: `main-page`.
+Slide ID: 9DAA / Main position: 1
 
-<!-- notes:main-1 -->
-HUANDENG is a desktop editing workspace around a local slide project. This walkthrough follows an actual project through a focused edit, a saved review, reusable talk composition and export. The image is the current 0.19 Editor with this project open. We will enlarge the relevant controls on the following pages. Start by opening deck.pptd from the complete example folder.
-<!-- /notes:main-1 -->
+HUANDENG begins with the founder’s lab-meeting experience: use agents while retaining the speaker’s reasoning, original evidence and the next editing decision. The whole project folder is the continuing work; deck.pptd is its entry point.
 
-### 2. A small edit should stay small — 2XM9
+### 2. At lab meetings, people could tell
 
-Main position: 2 · Notes source: `main-page`.
+Slide ID: XU8A / Main position: 2
 
-<!-- notes:main-2 -->
-Presentation work often returns to a small request: change one explanation while keeping the evidence and useful layout. The selected title shown here belongs to the actual project map on the next page. A focused request identifies what changes and what remains. After editing, save the page and inspect that operation. The page remains part of the same working project rather than becoming an unexplained replacement deck.
-<!-- /notes:main-2 -->
+This is the founder’s experience at lab meetings, not a universal benchmark. He still believed agents should help make slides: slides are structured files. The problem was a complete-looking deck without the speaker’s choices. The page studies here are deliberately drawn illustrations of uniform emphasis, not another author’s artwork.
 
-### 3. One project keeps the work together — GX5Z
+### 3. Two edits, another fifty-page file
 
-Main position: 3 · Notes source: `main-page`.
+Slide ID: 2XM9 / Main position: 3
 
-<!-- notes:main-3 -->
-Open the example project from its folder. The .pptd file is the entry point and page order; individual .page files hold editable page content. Images and supporting sources stay beside them. HUANDENG opens this working folder in the Editor. Share the complete folder when another person needs to continue editing. The diagram is a conceptual map of the actual project structure, not a screenshot.
-<!-- /notes:main-3 -->
+The fifty-page, two-edit example comes from the founder. A and B identify the same changed pages in each full-file copy. On the right, versions stay under those two identities. This is a relational illustration; actual Editor history follows later.
 
-### 4. Find the page, then select its object — 9VGD
+### 4. Tell the story before laying out the pages
 
-Main position: 4 · Notes source: `main-page`.
+Slide ID: 2UW6 / Main position: 4
 
-<!-- notes:main-4 -->
-Open the slide thumbnails and choose GX5Z, the project map used in this walkthrough. Click its title on the canvas. The selection outline identifies the object, and the Inspector now describes that selected object. The fragments are enlarged actual Editor captures of the same page. To start with an empty page instead, use the plus control in the page sidebar. Selection does not save a content change.
-<!-- /notes:main-4 -->
+The author speaks first, freely. The agent organizes relationships and adds necessary explanation; it does not replace the account with its own feature tour. The left is a concise English translation of the preserved Chinese passage about story-first authorship. The right is our editorial organization, illustrated by this project’s actual pages. These are different kinds of authority.
 
-### 5. Write the intent beside the page — FKA9
+### 5. A working document
 
-Main position: 5 · Notes source: `main-page`.
+Slide ID: 9VGD / Main position: 5
 
-<!-- notes:main-5 -->
-Select the project-map page and open Story in the Inspector. Use the pencil control to record its purpose, preservation constraints and requested change. This current 0.19 capture shows the brief for the actual page in this walkthrough. Write an action that can be checked in the result. Story stores context for the next person or assistant; judging the resulting page remains part of the editing work.
-<!-- /notes:main-5 -->
+Pause before the next part of the argument. This is deliberately a title-only Section slide.
 
-### 6. Place an original from Assets — U8ZQ
+### 6. A deck is already a collection of parts
 
-Main position: 6 · Notes source: `main-page`.
+Slide ID: GX5Z / Main position: 6
 
-<!-- notes:main-6 -->
-Open the project asset library. Search for a source by name, then drag an existing image onto the slide. Import and place adds a new original from the device. This example searches for the actual HUANDENG mark already in the project. Placement and cropping control the slide instance; keep the source image and its attribution with the project. The two crops show the real search controls and the matching result at a readable size.
-<!-- /notes:main-6 -->
+A PPTX is a package of slide XML, media and notes. HUANDENG exposes a continuing directory project: the entry orders pages, page files hold objects and notes, media keeps originals, and project metadata holds Story, stable identity and history. It is not merely a renamed PPTX. Files makes those parts visible in the Editor.
 
-### 7. Edit the selected text, then save — 35U5
+### 7. What HUANDENG adds
 
-Main position: 7 · Notes source: `main-page`.
+Slide ID: KW5P / Main position: 7
 
-<!-- notes:main-7 -->
-Select the title and open Properties. Edit Text content for that object, and use the font and alignment controls when the change requires them. Check the canvas at presentation scale before clicking Save slides in the top bar. A saved-operation record can then be inspected in History. The capture shows the actual selected title and Properties fields; this page does not pretend that a new edit has already happened.
-<!-- /notes:main-7 -->
+OpenSlide supplies the React editor foundation; Electron hosts the desktop app; the PPTD directory is the continuing working project. Editor and agent submit revision-checked changes through the same writer. The plugin supplies authoring guidance and tool usage, not a second document database. Story, originals and page history remain with the project. This diagram does not imply automatic scheduling or section locks.
 
-### 8. Use Layers when objects overlap — ZWZJ
+### 8. Find your place in the Editor
 
-Main position: 8 · Notes source: `main-page`.
+Slide ID: 2ZQ3 / Main position: 8
 
-<!-- notes:main-8 -->
-Open Layers when selecting an object on the canvas is difficult. Choose the object by its name; the same object becomes selected on the canvas. Use Forward or Backward for a single step, and To front or To back for the whole stack. Check what remains visible before saving. These are actual controls and the actual title object of the project map; the connector shows the selection relationship.
-<!-- /notes:main-8 -->
+The Editor gives the work a stable spatial map: navigation on the left, views above the canvas, the canvas in the center, and the Inspector on the right. This actual complete window establishes where later details belong. It was independently captured by root in this project.
 
-### 9. Compare the changed region at equal scale — XF8A
+### 9. Leave a clear brief beside the page
 
-Main position: 9 · Notes source: `main-page`.
+Slide ID: FKA9 / Main position: 9
 
-<!-- notes:main-9 -->
-The public product fixture changes the headline and explanatory sentence only. These are crops of its actual saved before and after page states, aligned at identical scale. The orange bars identify the region to inspect without drawing across its wording. The full original images remain in the project. Compare the new language against the request, then inspect the saved changes to verify the scope.
-<!-- /notes:main-9 -->
+Story is not another speaker script. Project and Section record the wider purpose and audience; the page records what it should say, what must remain and what this edit changes. In this actual page brief, only the title may change; the plot, values, units and citation must remain. The complete Editor locates the real Story inspector.
 
-### 10. Inspect the exact saved change — ZN52
+### 10. The rules stay in the Project
 
-Main position: 10 · Notes source: `main-page`.
+Slide ID: 5GXC / Main position: 10
 
-<!-- notes:main-10 -->
-Open History for the edited page and choose its operation record. The saved changes list identifies the actual objects and properties changed by that operation. Here the public fixture reports content.text for the title and lead, matching the two-sentence request. Review the before and after page states as well. A successful save is evidence of a persisted change, not a substitute for assessing whether the page reads well.
-<!-- /notes:main-10 -->
+Editor 0.20.0 displays the exact root AGENTS.md in Project. Open the file for the complete text; after external edits, Refresh Project rules updates both the sidebar and an open full preview. Root independently captured this real 0.20 example with the actual authoring rules. Visibility supports inspection; it does not guarantee model obedience.
 
-### 11. Move the page without losing its identity — DHVW
+### 11. Make one change
 
-Main position: 11 · Notes source: `main-page`.
+Slide ID: 7E4T / Main position: 11
 
-<!-- notes:main-11 -->
-This real public fixture moves a page from position 2 to position 4 in a six-page Main. Its short Slide ID, C014, stays the same. Position describes the current ordering; identity connects the content, history and Presentation references. When collaborating, name the page by its short ID rather than relying only on a changing position. These are actual before and after Editor status strips.
-<!-- /notes:main-11 -->
+Pause before the next part of the argument. This is deliberately a title-only Section slide.
 
-### 12. Name a version worth returning to — 2ZQ3
+### 12. Keep the figure connected to its source
 
-Main position: 12 · Notes source: `main-page`.
+Slide ID: U8ZQ / Main position: 12
 
-<!-- notes:main-12 -->
-After reviewing a meaningful stage, open History and record a named page version. Project map · tutorial is an actual checkpoint recorded for GX5Z during the making of this walkthrough. The expanded detail shows that saved version. Select a version to inspect its preview before restoring it. A Presentation can also pin this named version while Main continues to evolve. Give milestones names that explain their purpose; do not generate a snapshot for every keystroke.
-<!-- /notes:main-12 -->
+This figure was independently generated with Matplotlib from a fresh RCSB 1BNA coordinate download. The figure, CSV and script are real files in this Project. The complete Editor at the right locates Files; the larger directory shows the original materials. Captures document a real authoring stage. The scientific page is retained as a named version and used as a fixed version in the short talk. No measured curve is drawn from slide lines.
 
-### 13. Step back and read the sequence — 7E4T
+### 13. Change the claim; keep the evidence
 
-Main position: 13 · Notes source: `main-page`.
+Slide ID: 35U5 / Main position: 13
 
-<!-- notes:main-13 -->
-Switch to Browse to inspect the actual pages together. Look for repeated layouts, sudden density changes and pages whose main point is difficult to see. Section boundaries keep related material together. Double-click a slide, or select it and press Enter, to return to editing. The capture is this project in the current Editor, rather than an invented grid.
-<!-- /notes:main-13 -->
+Select the title on the canvas or in Layers. This actual Editor state shows the same object selected on the canvas and in Properties, with Text content at the right. Edit the wording, then Save slides. The example transaction changed only the title, retaining the figure, data, units and source; the next page reviews that saved operation.
 
-### 14. Read the argument in Outline — 9QQW
+### 14. Inspect what was saved
 
-Main position: 14 · Notes source: `main-page`.
+Slide ID: ZN52 / Main position: 14
 
-<!-- notes:main-14 -->
-Switch to Outline to inspect a page through its title, purpose and identity. The enlarged row is the project-map page, GX5Z. Read the sequence as an argument: what does each page add, and what prepares the next one? Double-click a row to return to editing. Page purpose is stored in Story, so update that brief when the intention changes.
-<!-- /notes:main-14 -->
+Open Activity in the header and choose Review changes for the actual saved operation. This transaction changed only title.content.text. The review brings the real page, object-level change and its Story together. Review is read-only; restoring a named version is a separate History action.
 
-### 15. A Section begins at its first slide — AAD6
+### 15. Find the same slide after moving it
 
-Main position: 15 · Notes source: `main-page`.
+Slide ID: DHVW / Main position: 15
 
-<!-- notes:main-15 -->
-Open Sections, select the section and choose its First Slide. A section continues from that slide until the next section starts; moving those boundaries changes membership. The screenshot is the real Make a focused edit section, starting at page 4 and currently covering pages 4 through 8. A section does not require an empty divider slide. Save project after changing the structure.
-<!-- /notes:main-15 -->
+These are actual Editor states before and after a controlled page move. The move changes Main position, not Slide ID. The page was then restored to its intended position in the complete narrative. Its short code still locates it and History still belongs to that page.
 
-### 16. Choose pages for this particular talk — 74A2
+### 16. Keep the source and the instance distinct
 
-Main position: 16 · Notes source: `main-page`.
+Slide ID: ZWZJ / Main position: 16
 
-<!-- notes:main-16 -->
-In Project, choose Arrange Presentation. Create or select a Presentation, then choose pages from Main. The screenshots show First edit · short talk and the source picker filtered to GX5Z. Click the plus beside a page or Section to append its reference; reorder the occurrences for this audience and save project. A Presentation reuses the source page instead of creating a detached copy.
-<!-- /notes:main-16 -->
+One original coordinate-based image can have multiple page instances. These two details are crops of the same original, not new structures or overwritten originals. Assets keeps the source available. Matched region marks identify where each detail comes from; this demonstrates image instances, not a new scientific inference.
 
-### 17. Give this talk its own speaking notes — 9N3S
+### 17. Return to the next talk
 
-Main position: 17 · Notes source: `main-page`.
+Slide ID: X5J6 / Main position: 17
 
-<!-- notes:main-17 -->
-Expand Notes and version for a page occurrence. Enable This occurrence uses its own speaker notes, then write the script for this talk. The image is the actual FKA9 occurrence in First edit · short talk. Its page content remains shared with Main, while these notes are specific to the occurrence. Select the same talk and page in Notes page when rehearsing. Save project for edits in the arrangement form; use Save slides for edits in the Notes page.
-<!-- /notes:main-17 -->
+Pause before the next part of the argument. This is deliberately a title-only Section slide.
 
-### 18. Choose what this occurrence follows — BHPP
+### 18. Read the sequence
 
-Main position: 18 · Notes source: `main-page`.
+Slide ID: 9QQW / Main position: 18
 
-<!-- notes:main-18 -->
-The two actual controls show different occurrence choices. Live reference follows the current Main slide. A pinned version uses a named page checkpoint, here Project map · tutorial. Choose the behavior deliberately for each talk. The public short talk includes this real pin so the distinction can be inspected. Change the version selector and save project; the Main slide itself is not restored by selecting a pin.
-<!-- /notes:main-18 -->
+Choose the shorter Presentation and open Browse to read the actual sequence. Title-only Section slides provide pauses; evidence pages advance the argument. Double-click a page to return to editing. Outline supports the spoken logic; Sections organizes the larger parts. This is the real shorter talk in the Editor.
 
-### 19. Rehearse from the point you are editing — X5J6
+### 19. One library, two different talks
 
-Main position: 19 · Notes source: `main-page`.
+Slide ID: 74A2 / Main position: 19
 
-<!-- notes:main-19 -->
-Select the Presentation you intend to show. The Present menu can start at the beginning or at the current slide. The current page shown here is the Story tutorial used in the short talk. Check the first displayed page and the sequence as you rehearse, then use Escape to return to editing. This is a rehearsal step, before sending a delivery file.
-<!-- /notes:main-19 -->
+Main retains the page library. A Presentation references those pages in the order a particular audience needs. The full introduction and shorter lab meeting do not require copied decks. The screenshot and sequences are real project data; the page images are this author’s own renders. Pin a named version to fix content, or add occurrence notes to change the telling.
 
-### 20. Confirm the range before you export — YZ4T
+### 20. Keep this talk's notes with this occurrence
 
-Main position: 20 · Notes source: `main-page`.
+Slide ID: 9N3S / Main position: 20
 
-<!-- notes:main-20 -->
-Open Export after saving your edits. Confirm both the format and the selected range. The actual dialog here targets First edit · short talk with 12 slides. PDF is a fixed-page delivery; PPTX contains editable supported objects; PNG creates slide images. PPTX and PDF use the static base layout, while timeline animation has a separate video export. Open the exported file once to check its pages, fonts and any native chart layout before sharing.
-<!-- /notes:main-20 -->
+The selected Presentation has a shorter occurrence-specific note for the Story page. Main notes remain the fuller explanation. This is how another talk can use the same page while changing the spoken argument. The actual Notes view places the page and its script together.
 
-### 21. Send the whole folder to continue editing — KW5P
+### 21. Choose a live page or a fixed version
 
-Main position: 21 · Notes source: `main-page`.
+Slide ID: BHPP / Main position: 21
 
-<!-- notes:main-21 -->
-When another person will continue in HUANDENG, send the complete working folder. It contains deck.pptd, page files, original media, supporting sources and project history. Sending only deck.pptd leaves referenced material behind. The diagram names the actual project parts and the next editing action. A PDF or PPTX is useful for delivery, but returning to this shared project requires its working folder.
-<!-- /notes:main-21 -->
+A live reference follows the current Main page. A reference pinned to a real named version retains that version. In the shorter talk the scientific example is actually pinned to the retained-source version; the Story page has occurrence-specific notes. Choose according to whether this talk should follow further edits.
 
-### 22. Connect the assistant to this project — DDJN
+### 22. Rehearse, then export
 
-Main position: 22 · Notes source: `main-page`.
+Slide ID: YZ4T / Main position: 22
 
-<!-- notes:main-22 -->
-Open Agent setup in the desktop Editor and select the client you use. Follow its generated setup and verify the project entry before asking for an edit. Claude Code uses the HUANDENG plugin, DeepSeek Harness uses its native Cordis adapter, and ChatGPT reaches the local workflow through its connector. These clients work through the same document service. The screenshot shows the actual client selector; it does not claim that the browser-only capture itself completed native setup.
-<!-- /notes:main-22 -->
+Use Present in the header to rehearse from the current page or the beginning. In Export, verify the selected Main or Presentation and the output format. Continued editing needs the complete project folder; PDF/PPTX are delivery formats, not replacements for all project context.
 
-### 23. Divide the pages; review the returned work — 5HW8
+### 23. Keep the work yours
 
-Main position: 23 · Notes source: `main-page`.
+Slide ID: 3WQH / Main position: 23
 
-<!-- notes:main-23 -->
-Agree on the scope before work begins. Different pages can be edited in parallel; a person can also hand a page from content drafting to visual refinement. This diagram illustrates a division between the project map and the Story tutorial, using actual page previews. Give shared project structure one owner, avoid simultaneous changes to the same page, and review every saved result at presentation size. Revision checks expose conflicts; they do not replace visual judgment. This English edition was authored by the main ChatGPT session.
-<!-- /notes:main-23 -->
+Pause before the next part of the argument. This is deliberately a title-only Section slide.
 
-### 24. Open the example and make one useful edit — ECVR
+### 24. A reported result should lead to real work
 
-Main position: 24 · Notes source: `main-page`.
+Slide ID: DDJN / Main position: 24
 
-<!-- notes:main-24 -->
-Open examples/huandeng-introduction/chatgpt-en/deck.pptd with the complete folder present. Find GX5Z, read its Story, make one small wording change, save and inspect the operation. Then open First edit · short talk and see how its pinned project-map version differs from following Main. HUANDENG builds on OpenSlide. OpenPPTD contributes formula conversion, PptxGenJS contributes PowerPoint generation, and Font Awesome provides icons. Original software notices and asset sources remain with this repository.
-<!-- /notes:main-24 -->
+In the real Activity view, this agent completion report references an actual saved operation in this Project. A report is a claim; Review changes opens the real receipt so the user can inspect what happened. The plugin supplies authoring method and the connector reaches the same writer. Client connection steps remain in the project documentation; this page does not present a browser-only setup failure as a successful desktop connection.
 
-## Brief — First edit · short talk
+### 25. A useful hand-off keeps the working context
 
-Presentation ID: `introduction-short`.
+Slide ID: XF8A / Main position: 25
 
-### 1. HUANDENG — 9DAA
+The complete Project directory carries the continuing work. Open deck.pptd: pages, original assets, scientific data and scripts, Story and history remain together. An exported file serves delivery; it should not become the only source for the next edit. The actual Files view shows independently acquired materials in this project.
 
-Main position: 1 · Notes source: `main-page`.
+### 26. Built on open work
 
-Occurrence: `introduction-short:brief-0:90353b2a-6f7b-4ee5-8a8b-10bceb538190`.
+Slide ID: 5HW8 / Main position: 26
 
-<!-- notes:brief-1 -->
-HUANDENG is a desktop editing workspace around a local slide project. This walkthrough follows an actual project through a focused edit, a saved review, reusable talk composition and export. The image is the current 0.19 Editor with this project open. We will enlarge the relevant controls on the following pages. Start by opening deck.pptd from the complete example folder.
-<!-- /notes:brief-1 -->
+These formal acknowledgments restore the fifteen sources explicitly named in the original introduction. Code reuse, runtime dependencies, product inspiration and researched alternatives are different relationships. The complete thirty-three-source historical record is in docs/ACKNOWLEDGMENTS.md and the project sources. OpenSlides Studio is openslides.dev, distinct from the OpenSlide editor upstream.
 
-### 2. One project keeps the work together — GX5Z
+### 27. Ideas worth acknowledging
 
-Main position: 3 · Notes source: `pinned-page`.
+Slide ID: AAD6 / Main position: 27
 
-Occurrence: `introduction-short:introduction-short-product-22:1ba18ad8-0701-4de6-83f5-555b949293d7`.
+These formal acknowledgments restore the fifteen sources explicitly named in the original introduction. Code reuse, runtime dependencies, product inspiration and researched alternatives are different relationships. The complete thirty-three-source historical record is in docs/ACKNOWLEDGMENTS.md and the project sources. OpenSlides Studio is openslides.dev, distinct from the OpenSlide editor upstream.
 
-Pinned version: `checkpoint:48c8cc57a4164ade03e9e753f4d8a9e2`.
+### 28. Start with your story
 
-<!-- notes:brief-2 -->
-Open the example project from its folder. The .pptd file is the entry point and page order; individual .page files hold editable page content. Images and supporting sources stay beside them. HUANDENG opens this working folder in the Editor. Share the complete folder when another person needs to continue editing. The diagram is a conceptual map of the actual project structure, not a screenshot.
-<!-- /notes:brief-2 -->
+Slide ID: ECVR / Main position: 28
 
-### 3. Write the intent beside the page — FKA9
+HUANDENG begins with the founder’s lab-meeting experience: use agents while retaining the speaker’s reasoning, original evidence and the next editing decision. The whole project folder is the continuing work; deck.pptd is its entry point.
 
-Main position: 5 · Notes source: `occurrence-override`.
+## Short Presentation
 
-Occurrence: `introduction-short:introduction-short-product-5:7d7d42a0-0db7-4d33-9b3f-5e1035097b50`.
+### 1. HUANDENG
 
-<!-- notes:brief-3 -->
-For this short introduction, open Story and point to the purpose, preservation list and requested change. Ask the audience to write one focused editing request. Keep the speaking detail here; the page itself remains shared with the full walkthrough.
-<!-- /notes:brief-3 -->
+Slide ID: 9DAA / Main position: 1
 
-### 4. Place an original from Assets — U8ZQ
+HUANDENG begins with the founder’s lab-meeting experience: use agents while retaining the speaker’s reasoning, original evidence and the next editing decision. The whole project folder is the continuing work; deck.pptd is its entry point.
 
-Main position: 6 · Notes source: `main-page`.
+### 2. At lab meetings, people could tell
 
-Occurrence: `introduction-short:introduction-short-tutorial-3:4a066483-9a11-450c-be15-c0be33d52989`.
+Slide ID: XU8A / Main position: 2
 
-<!-- notes:brief-4 -->
-Open the project asset library. Search for a source by name, then drag an existing image onto the slide. Import and place adds a new original from the device. This example searches for the actual HUANDENG mark already in the project. Placement and cropping control the slide instance; keep the source image and its attribution with the project. The two crops show the real search controls and the matching result at a readable size.
-<!-- /notes:brief-4 -->
+This is the founder’s experience at lab meetings, not a universal benchmark. He still believed agents should help make slides: slides are structured files. The problem was a complete-looking deck without the speaker’s choices. The page studies here are deliberately drawn illustrations of uniform emphasis, not another author’s artwork.
 
-### 5. Edit the selected text, then save — 35U5
+### 3. Two edits, another fifty-page file
 
-Main position: 7 · Notes source: `main-page`.
+Slide ID: 2XM9 / Main position: 3
 
-Occurrence: `introduction-short:introduction-short-story-6:95189956-cdd7-4ad9-88c8-cf28a204bb68`.
+The fifty-page, two-edit example comes from the founder. A and B identify the same changed pages in each full-file copy. On the right, versions stay under those two identities. This is a relational illustration; actual Editor history follows later.
 
-<!-- notes:brief-5 -->
-Select the title and open Properties. Edit Text content for that object, and use the font and alignment controls when the change requires them. Check the canvas at presentation scale before clicking Save slides in the top bar. A saved-operation record can then be inspected in History. The capture shows the actual selected title and Properties fields; this page does not pretend that a new edit has already happened.
-<!-- /notes:brief-5 -->
+### 4. Tell the story before laying out the pages
 
-### 6. Compare the changed region at equal scale — XF8A
+Slide ID: 2UW6 / Main position: 4
 
-Main position: 9 · Notes source: `main-page`.
+The author speaks first, freely. The agent organizes relationships and adds necessary explanation; it does not replace the account with its own feature tour. The left is a concise English translation of the preserved Chinese passage about story-first authorship. The right is our editorial organization, illustrated by this project’s actual pages. These are different kinds of authority.
 
-Occurrence: `introduction-short:introduction-short-tutorial-5:ca1eec7e-61bd-41ac-b6ab-e000d06797be`.
+### 5. A working document
 
-<!-- notes:brief-6 -->
-The public product fixture changes the headline and explanatory sentence only. These are crops of its actual saved before and after page states, aligned at identical scale. The orange bars identify the region to inspect without drawing across its wording. The full original images remain in the project. Compare the new language against the request, then inspect the saved changes to verify the scope.
-<!-- /notes:brief-6 -->
+Slide ID: 9VGD / Main position: 5
 
-### 7. Inspect the exact saved change — ZN52
+Pause before the next part of the argument. This is deliberately a title-only Section slide.
 
-Main position: 10 · Notes source: `main-page`.
+### 6. A deck is already a collection of parts
 
-Occurrence: `introduction-short:introduction-short-product-4:3f5561d8-477e-4954-bee2-9877c8cddc69`.
+Slide ID: GX5Z / Main position: 6
 
-<!-- notes:brief-7 -->
-Open History for the edited page and choose its operation record. The saved changes list identifies the actual objects and properties changed by that operation. Here the public fixture reports content.text for the title and lead, matching the two-sentence request. Review the before and after page states as well. A successful save is evidence of a persisted change, not a substitute for assessing whether the page reads well.
-<!-- /notes:brief-7 -->
+A PPTX is a package of slide XML, media and notes. HUANDENG exposes a continuing directory project: the entry orders pages, page files hold objects and notes, media keeps originals, and project metadata holds Story, stable identity and history. It is not merely a renamed PPTX. Files makes those parts visible in the Editor.
 
-### 8. Choose pages for this particular talk — 74A2
+### 7. What HUANDENG adds
 
-Main position: 16 · Notes source: `main-page`.
+Slide ID: KW5P / Main position: 7
 
-Occurrence: `introduction-short:introduction-short-tutorial-7:095ba6fb-14f6-42b1-815a-7970ac214058`.
+OpenSlide supplies the React editor foundation; Electron hosts the desktop app; the PPTD directory is the continuing working project. Editor and agent submit revision-checked changes through the same writer. The plugin supplies authoring guidance and tool usage, not a second document database. Story, originals and page history remain with the project. This diagram does not imply automatic scheduling or section locks.
 
-<!-- notes:brief-8 -->
-In Project, choose Arrange Presentation. Create or select a Presentation, then choose pages from Main. The screenshots show First edit · short talk and the source picker filtered to GX5Z. Click the plus beside a page or Section to append its reference; reorder the occurrences for this audience and save project. A Presentation reuses the source page instead of creating a detached copy.
-<!-- /notes:brief-8 -->
+### 8. Find your place in the Editor
 
-### 9. Choose what this occurrence follows — BHPP
+Slide ID: 2ZQ3 / Main position: 8
 
-Main position: 18 · Notes source: `main-page`.
+The Editor gives the work a stable spatial map: navigation on the left, views above the canvas, the canvas in the center, and the Inspector on the right. This actual complete window establishes where later details belong. It was independently captured by root in this project.
 
-Occurrence: `introduction-short:introduction-short-tutorial-8:8050a155-9c2b-4cf5-b643-e9406b9b2b1c`.
+### 9. Leave a clear brief beside the page
 
-<!-- notes:brief-9 -->
-The two actual controls show different occurrence choices. Live reference follows the current Main slide. A pinned version uses a named page checkpoint, here Project map · tutorial. Choose the behavior deliberately for each talk. The public short talk includes this real pin so the distinction can be inspected. Change the version selector and save project; the Main slide itself is not restored by selecting a pin.
-<!-- /notes:brief-9 -->
+Slide ID: FKA9 / Main position: 9
 
-### 10. Confirm the range before you export — YZ4T
+In this shorter talk, emphasize the author’s purpose and one preservation instruction. Keep the detailed tour for the full introduction.
 
-Main position: 20 · Notes source: `main-page`.
+### 10. Make one change
 
-Occurrence: `introduction-short:brief-1:2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6`.
+Slide ID: 7E4T / Main position: 11
 
-<!-- notes:brief-10 -->
-Open Export after saving your edits. Confirm both the format and the selected range. The actual dialog here targets First edit · short talk with 12 slides. PDF is a fixed-page delivery; PPTX contains editable supported objects; PNG creates slide images. PPTX and PDF use the static base layout, while timeline animation has a separate video export. Open the exported file once to check its pages, fonts and any native chart layout before sharing.
-<!-- /notes:brief-10 -->
+Pause before the next part of the argument. This is deliberately a title-only Section slide.
 
-### 11. Connect the assistant to this project — DDJN
+### 11. Keep the figure connected to its source
 
-Main position: 22 · Notes source: `main-page`.
+Slide ID: U8ZQ / Main position: 12 / Named version: checkpoint:13230a34ae519255eb0dbb33727db43c
 
-Occurrence: `introduction-short:introduction-short-tutorial-10:e4fb0f10-ffa5-44e2-907f-b92e1b69535e`.
+This is a small scientific case inside the HUANDENG story, not a DNA lecture. I downloaded 1BNA directly from RCSB and calculated paired C1-prime distances with NumPy, then drew this figure with Matplotlib. The points are measurements from one static structure; no replicate uncertainty is inferred. The two chain colors identify the deposited chains. The molecular projection is an illustration from real coordinates, with distance-based bond connections. Keep data, units, source and original figure when revising this page. In the Editor, Assets contains the original image and Files contains the data and script. Source: https://www.rcsb.org/structure/1BNA ; Drew et al., PNAS 78, 2179–2183 (1981).
 
-<!-- notes:brief-11 -->
-Open Agent setup in the desktop Editor and select the client you use. Follow its generated setup and verify the project entry before asking for an edit. Claude Code uses the HUANDENG plugin, DeepSeek Harness uses its native Cordis adapter, and ChatGPT reaches the local workflow through its connector. These clients work through the same document service. The screenshot shows the actual client selector; it does not claim that the browser-only capture itself completed native setup.
-<!-- /notes:brief-11 -->
+### 12. Inspect what was saved
 
-### 12. Open the example and make one useful edit — ECVR
+Slide ID: ZN52 / Main position: 14
 
-Main position: 24 · Notes source: `main-page`.
+Open Activity in the header and choose Review changes for the actual saved operation. This transaction changed only title.content.text. The review brings the real page, object-level change and its Story together. Review is read-only; restoring a named version is a separate History action.
 
-Occurrence: `introduction-short:brief-6:8f9e154d-c5c2-4d79-b809-984586f8311e`.
+### 13. Return to the next talk
 
-<!-- notes:brief-12 -->
-Open examples/huandeng-introduction/chatgpt-en/deck.pptd with the complete folder present. Find GX5Z, read its Story, make one small wording change, save and inspect the operation. Then open First edit · short talk and see how its pinned project-map version differs from following Main. HUANDENG builds on OpenSlide. OpenPPTD contributes formula conversion, PptxGenJS contributes PowerPoint generation, and Font Awesome provides icons. Original software notices and asset sources remain with this repository.
-<!-- /notes:brief-12 -->
+Slide ID: X5J6 / Main position: 17
+
+Pause before the next part of the argument. This is deliberately a title-only Section slide.
+
+### 14. One library, two different talks
+
+Slide ID: 74A2 / Main position: 19
+
+Main retains the page library. A Presentation references those pages in the order a particular audience needs. The full introduction and shorter lab meeting do not require copied decks. The screenshot and sequences are real project data; the page images are this author’s own renders. Pin a named version to fix content, or add occurrence notes to change the telling.
+
+### 15. A reported result should lead to real work
+
+Slide ID: DDJN / Main position: 24
+
+In the real Activity view, this agent completion report references an actual saved operation in this Project. A report is a claim; Review changes opens the real receipt so the user can inspect what happened. The plugin supplies authoring method and the connector reaches the same writer. Client connection steps remain in the project documentation; this page does not present a browser-only setup failure as a successful desktop connection.
+
+### 16. Keep the work yours
+
+Slide ID: 3WQH / Main position: 23
+
+Pause before the next part of the argument. This is deliberately a title-only Section slide.
+
+### 17. Built on open work
+
+Slide ID: 5HW8 / Main position: 26
+
+These formal acknowledgments restore the fifteen sources explicitly named in the original introduction. Code reuse, runtime dependencies, product inspiration and researched alternatives are different relationships. The complete thirty-three-source historical record is in docs/ACKNOWLEDGMENTS.md and the project sources. OpenSlides Studio is openslides.dev, distinct from the OpenSlide editor upstream.
+
+### 18. Ideas worth acknowledging
+
+Slide ID: AAD6 / Main position: 27
+
+These formal acknowledgments restore the fifteen sources explicitly named in the original introduction. Code reuse, runtime dependencies, product inspiration and researched alternatives are different relationships. The complete thirty-three-source historical record is in docs/ACKNOWLEDGMENTS.md and the project sources. OpenSlides Studio is openslides.dev, distinct from the OpenSlide editor upstream.
+
+### 19. Start with your story
+
+Slide ID: ECVR / Main position: 28
+
+HUANDENG begins with the founder’s lab-meeting experience: use agents while retaining the speaker’s reasoning, original evidence and the next editing decision. The whole project folder is the continuing work; deck.pptd is its entry point.
+

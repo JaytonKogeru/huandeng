@@ -1,0 +1,713 @@
+{
+  "date": "2026-11-11",
+  "author": "ChatGPT 6 Astra / root",
+  "scope": "Images in the current Main and resolved short Presentation; retained historical media is outside this list. English/Chinese reuse within this same author is allowed and recorded.",
+  "images": [
+    {
+      "src": "media/imported/c4d2b4a8e56f149f1162146e3ff8909bc7253a088b4a589d91226d3f0666933d.png",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "TTHC",
+          "elementId": "v-editor"
+        },
+        {
+          "collection": "Main",
+          "slideId": "TZXM",
+          "elementId": "v-editor-shot"
+        },
+        {
+          "collection": "Main",
+          "slideId": "ZYZB",
+          "elementId": "v-editor"
+        },
+        {
+          "collection": "Main",
+          "slideId": "E2RU",
+          "elementId": "v-editor"
+        },
+        {
+          "collection": "Short Presentation",
+          "slideId": "TTHC",
+          "elementId": "v-editor"
+        },
+        {
+          "collection": "Short Presentation",
+          "slideId": "ZYZB",
+          "elementId": "v-editor"
+        },
+        {
+          "collection": "Short Presentation",
+          "slideId": "E2RU",
+          "elementId": "v-editor"
+        }
+      ],
+      "sha256": "c4d2b4a8e56f149f1162146e3ff8909bc7253a088b4a589d91226d3f0666933d",
+      "originalName": "workspace.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "independent actual Editor capture",
+      "captureVersion": "0.19.0 working project",
+      "context": "Actual authoring state; Rules uses an isolated candidate fixture. Captured pixels are evidence of that state, not a live Editor."
+    },
+    {
+      "src": "media/imported/6716e7d999b5e46b7bd50b08b80c5183bc7e49ee19202a4f5ce8a27298503cca.png",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "955N",
+          "elementId": "v-page-0"
+        },
+        {
+          "collection": "Short Presentation",
+          "slideId": "955N",
+          "elementId": "v-page-0"
+        }
+      ],
+      "sha256": "6716e7d999b5e46b7bd50b08b80c5183bc7e49ee19202a4f5ce8a27298503cca",
+      "originalName": "copies.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "composition of this author’s own rendered pages",
+      "captureVersion": null
+    },
+    {
+      "src": "media/imported/cf98cd924cfbb52419082ec95000b282b9cd661320cb8cea27db2a5e2c72b6f9.png",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "955N",
+          "elementId": "v-page-1"
+        },
+        {
+          "collection": "Short Presentation",
+          "slideId": "955N",
+          "elementId": "v-page-1"
+        }
+      ],
+      "sha256": "cf98cd924cfbb52419082ec95000b282b9cd661320cb8cea27db2a5e2c72b6f9",
+      "originalName": "orientation.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "composition of this author’s own rendered pages",
+      "captureVersion": null
+    },
+    {
+      "src": "media/imported/1ec93b9cc0e4a1934e7b56fafa2f055a8ddfabb750d6fb220f3b00fd1daafcbb.png",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "955N",
+          "elementId": "v-page-2"
+        },
+        {
+          "collection": "Main",
+          "slideId": "7EKH",
+          "elementId": "v-after"
+        },
+        {
+          "collection": "Short Presentation",
+          "slideId": "955N",
+          "elementId": "v-page-2"
+        }
+      ],
+      "sha256": "1ec93b9cc0e4a1934e7b56fafa2f055a8ddfabb750d6fb220f3b00fd1daafcbb",
+      "originalName": "case-after.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "independent actual Editor capture",
+      "captureVersion": "0.19.0 working project",
+      "context": "Actual authoring state; Rules uses an isolated candidate fixture. Captured pixels are evidence of that state, not a live Editor."
+    },
+    {
+      "src": "media/imported/babe8b69ad93c12b48a5d2ed09db64db53ab36fc50d584b19a250e5d2aaa81b7.png",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "6G4G",
+          "elementId": "v-project"
+        },
+        {
+          "collection": "Main",
+          "slideId": "2MC2",
+          "elementId": "v-editor"
+        }
+      ],
+      "sha256": "babe8b69ad93c12b48a5d2ed09db64db53ab36fc50d584b19a250e5d2aaa81b7",
+      "originalName": "source-files.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "independent actual Editor capture",
+      "captureVersion": "0.19.0 working project",
+      "context": "Actual authoring state; Rules uses an isolated candidate fixture. Captured pixels are evidence of that state, not a live Editor."
+    },
+    {
+      "src": "media/imported/7c41b4661f3058a09ef6d4e377f2de007a2a8ac7f12f6f0873f8a09c3cb0eb1e.png",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "HWB6",
+          "elementId": "v-context"
+        },
+        {
+          "collection": "Short Presentation",
+          "slideId": "HWB6",
+          "elementId": "v-context"
+        }
+      ],
+      "sha256": "7c41b4661f3058a09ef6d4e377f2de007a2a8ac7f12f6f0873f8a09c3cb0eb1e",
+      "originalName": "story.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "independent actual Editor capture",
+      "captureVersion": "0.19.0 working project",
+      "context": "Actual authoring state; Rules uses an isolated candidate fixture. Captured pixels are evidence of that state, not a live Editor."
+    },
+    {
+      "src": "media/imported/cd16ea78aaeec51d2a8c4c5bb67bac1190a72fe9c96c08e96325af414e3beb1e.png",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "HWB6",
+          "elementId": "v-story"
+        },
+        {
+          "collection": "Short Presentation",
+          "slideId": "HWB6",
+          "elementId": "v-story"
+        }
+      ],
+      "sha256": "cd16ea78aaeec51d2a8c4c5bb67bac1190a72fe9c96c08e96325af414e3beb1e",
+      "originalName": "story-detail.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "independent actual Editor capture",
+      "captureVersion": "0.19.0 working project",
+      "context": "Actual authoring state; Rules uses an isolated candidate fixture. Captured pixels are evidence of that state, not a live Editor."
+    },
+    {
+      "src": "media/imported/7b6eca4050b52d95eba0102f23d575bda1096e875e8215774ca562e76a0419e8.png",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "GQRA",
+          "elementId": "v-rules-detail"
+        }
+      ],
+      "sha256": "7b6eca4050b52d95eba0102f23d575bda1096e875e8215774ca562e76a0419e8",
+      "originalName": "rules-detail.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "independent actual Editor capture",
+      "captureVersion": "0.20.0 candidate",
+      "context": "Actual authoring state; Rules uses an isolated candidate fixture. Captured pixels are evidence of that state, not a live Editor."
+    },
+    {
+      "src": "media/imported/16fd89ab7efcc78679a1288702353bad0bafc0a3c1a560eb6199030b3ee58b8c.png",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "GQRA",
+          "elementId": "v-full-editor"
+        }
+      ],
+      "sha256": "16fd89ab7efcc78679a1288702353bad0bafc0a3c1a560eb6199030b3ee58b8c",
+      "originalName": "rules-full.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "independent actual Editor capture",
+      "captureVersion": "0.20.0 candidate",
+      "context": "Actual authoring state; Rules uses an isolated candidate fixture. Captured pixels are evidence of that state, not a live Editor."
+    },
+    {
+      "src": "media/imported/39819c232af65fded16e1dbd21a65d0321e66a1a9ab97d5114daebda2d263cd8.png",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "9RZG",
+          "elementId": "v-files-context"
+        },
+        {
+          "collection": "Short Presentation",
+          "slideId": "9RZG",
+          "elementId": "v-files-context"
+        }
+      ],
+      "sha256": "39819c232af65fded16e1dbd21a65d0321e66a1a9ab97d5114daebda2d263cd8",
+      "originalName": "files.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "independent actual Editor capture",
+      "captureVersion": "0.19.0 working project",
+      "context": "Actual authoring state; Rules uses an isolated candidate fixture. Captured pixels are evidence of that state, not a live Editor."
+    },
+    {
+      "src": "media/imported/48d96c3f63dc8ce717d4bcece8d2af93fb73c7560342a1596ad9cf23a1421792.png",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "MPTA",
+          "elementId": "v-original"
+        },
+        {
+          "collection": "Main",
+          "slideId": "MPTA",
+          "elementId": "v-top-crop"
+        },
+        {
+          "collection": "Main",
+          "slideId": "MPTA",
+          "elementId": "v-bottom-crop"
+        },
+        {
+          "collection": "Short Presentation",
+          "slideId": "MPTA",
+          "elementId": "v-original"
+        },
+        {
+          "collection": "Short Presentation",
+          "slideId": "MPTA",
+          "elementId": "v-top-crop"
+        },
+        {
+          "collection": "Short Presentation",
+          "slideId": "MPTA",
+          "elementId": "v-bottom-crop"
+        }
+      ],
+      "sha256": "48d96c3f63dc8ce717d4bcece8d2af93fb73c7560342a1596ad9cf23a1421792",
+      "originalName": "1bna-projected-bonds.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "public RCSB acquisition and Python derivation",
+      "captureVersion": null,
+      "sourceRecord": "independent-20261111/ACQUISITION.json"
+    },
+    {
+      "src": "media/imported/2f09337fd5b28fd1c9d3e71e5bf798e6c08335a700127bd0f6bfd890626ad3dd.png",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "MPTA",
+          "elementId": "v-editor"
+        },
+        {
+          "collection": "Short Presentation",
+          "slideId": "MPTA",
+          "elementId": "v-editor"
+        }
+      ],
+      "sha256": "2f09337fd5b28fd1c9d3e71e5bf798e6c08335a700127bd0f6bfd890626ad3dd",
+      "originalName": "assets.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "independent actual Editor capture",
+      "captureVersion": "0.19.0 working project",
+      "context": "Actual authoring state; Rules uses an isolated candidate fixture. Captured pixels are evidence of that state, not a live Editor."
+    },
+    {
+      "src": "media/imported/6668b37b8afdd533c5382b5e19b83c1a4978fba6c4f5584a8e08753aedb8b6e0.png",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "7EKH",
+          "elementId": "v-before"
+        }
+      ],
+      "sha256": "6668b37b8afdd533c5382b5e19b83c1a4978fba6c4f5584a8e08753aedb8b6e0",
+      "originalName": "case-before.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "independent actual Editor capture",
+      "captureVersion": "0.19.0 working project",
+      "context": "Actual authoring state; Rules uses an isolated candidate fixture. Captured pixels are evidence of that state, not a live Editor."
+    },
+    {
+      "src": "media/imported/f997eb77721d8d5b9392fb759e52f7a55b9ada9a182593c976cf20c8dc31faa4.png",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "HUA9",
+          "elementId": "v-editor"
+        }
+      ],
+      "sha256": "f997eb77721d8d5b9392fb759e52f7a55b9ada9a182593c976cf20c8dc31faa4",
+      "originalName": "properties.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "independent actual Editor capture",
+      "captureVersion": "0.19.0 working project",
+      "context": "Actual authoring state; Rules uses an isolated candidate fixture. Captured pixels are evidence of that state, not a live Editor."
+    },
+    {
+      "src": "media/imported/921c93f645de5a3cbce0ae279cb692c34a7e1a953dc434f867b83ff619a8043d.png",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "2MC2",
+          "elementId": "v-plot"
+        }
+      ],
+      "sha256": "921c93f645de5a3cbce0ae279cb692c34a7e1a953dc434f867b83ff619a8043d",
+      "originalName": "c1-distances-zh.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "public RCSB acquisition and Python derivation",
+      "captureVersion": null,
+      "sourceRecord": "independent-20261111/ACQUISITION.json"
+    },
+    {
+      "src": "media/imported/d995ac594e6ed47c1444cc802b36032f05134765b46c9ffc43f86faea28b3ccc.png",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "2MC2",
+          "elementId": "v-files"
+        }
+      ],
+      "sha256": "d995ac594e6ed47c1444cc802b36032f05134765b46c9ffc43f86faea28b3ccc",
+      "originalName": "source-folder.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "independent actual Editor capture",
+      "captureVersion": "0.19.0 working project",
+      "context": "Actual authoring state; Rules uses an isolated candidate fixture. Captured pixels are evidence of that state, not a live Editor."
+    },
+    {
+      "src": "media/imported/29e3c274ddf1a682473483424794563e61b5da1f602bcac00c61bdf665e14bb4.png",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "JNZV",
+          "elementId": "v-review"
+        },
+        {
+          "collection": "Short Presentation",
+          "slideId": "JNZV",
+          "elementId": "v-review"
+        }
+      ],
+      "sha256": "29e3c274ddf1a682473483424794563e61b5da1f602bcac00c61bdf665e14bb4",
+      "originalName": "review-dialog.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "independent actual Editor capture",
+      "captureVersion": "0.19.0 working project",
+      "context": "Actual authoring state; Rules uses an isolated candidate fixture. Captured pixels are evidence of that state, not a live Editor."
+    },
+    {
+      "src": "media/imported/aad43058da3a9dda3093d1893ac1c0557413b81e0102e0c508c0e451507469d2.png",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "JNZV",
+          "elementId": "v-location"
+        },
+        {
+          "collection": "Short Presentation",
+          "slideId": "JNZV",
+          "elementId": "v-location"
+        }
+      ],
+      "sha256": "aad43058da3a9dda3093d1893ac1c0557413b81e0102e0c508c0e451507469d2",
+      "originalName": "review.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "independent actual Editor capture",
+      "captureVersion": "0.19.0 working project",
+      "context": "Actual authoring state; Rules uses an isolated candidate fixture. Captured pixels are evidence of that state, not a live Editor."
+    },
+    {
+      "src": "media/imported/3452ac51de790c0a6ddb337b4853fe1de9dc5878496d9ab9f69e2bc6693054b5.png",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "EJBQ",
+          "elementId": "v-before"
+        },
+        {
+          "collection": "Main",
+          "slideId": "EJBQ",
+          "elementId": "v-actual-status-0"
+        }
+      ],
+      "sha256": "3452ac51de790c0a6ddb337b4853fe1de9dc5878496d9ab9f69e2bc6693054b5",
+      "originalName": "identity-before.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "independent actual Editor capture",
+      "captureVersion": "0.19.0 working project",
+      "context": "Actual authoring state; Rules uses an isolated candidate fixture. Captured pixels are evidence of that state, not a live Editor."
+    },
+    {
+      "src": "media/imported/075f11e93e1e8ebbf3a76e0f6295a0ab116e17482d6027f4c6d83d6fd7b6b900.png",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "EJBQ",
+          "elementId": "v-after"
+        },
+        {
+          "collection": "Main",
+          "slideId": "EJBQ",
+          "elementId": "v-actual-status-1"
+        }
+      ],
+      "sha256": "075f11e93e1e8ebbf3a76e0f6295a0ab116e17482d6027f4c6d83d6fd7b6b900",
+      "originalName": "identity-after.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "independent actual Editor capture",
+      "captureVersion": "0.19.0 working project",
+      "context": "Actual authoring state; Rules uses an isolated candidate fixture. Captured pixels are evidence of that state, not a live Editor."
+    },
+    {
+      "src": "media/imported/54618d1ce4abe1c1a71d66e01921e0bda8a662fb1afecde1d448bcb9911ea333.png",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "U5QA",
+          "elementId": "v-editor"
+        },
+        {
+          "collection": "Short Presentation",
+          "slideId": "U5QA",
+          "elementId": "v-editor"
+        }
+      ],
+      "sha256": "54618d1ce4abe1c1a71d66e01921e0bda8a662fb1afecde1d448bcb9911ea333",
+      "originalName": "history.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "independent actual Editor capture",
+      "captureVersion": "0.19.0 working project",
+      "context": "Actual authoring state; Rules uses an isolated candidate fixture. Captured pixels are evidence of that state, not a live Editor."
+    },
+    {
+      "src": "media/imported/3a7f8489f77e14fd51d2026440d6c8db055e8c6b551d26e4ed7cfe7b4bea2d85.png",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "93SF",
+          "elementId": "v-browser"
+        }
+      ],
+      "sha256": "3a7f8489f77e14fd51d2026440d6c8db055e8c6b551d26e4ed7cfe7b4bea2d85",
+      "originalName": "browse.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "independent actual Editor capture",
+      "captureVersion": "0.19.0 working project",
+      "context": "Actual authoring state; Rules uses an isolated candidate fixture. Captured pixels are evidence of that state, not a live Editor."
+    },
+    {
+      "src": "media/imported/23f76d11c4e416bee638ec4818f0ea2d855c29c3f49152e00a30a838b26fc49c.png",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "SE68",
+          "elementId": "v-editor"
+        }
+      ],
+      "sha256": "23f76d11c4e416bee638ec4818f0ea2d855c29c3f49152e00a30a838b26fc49c",
+      "originalName": "notes.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "independent actual Editor capture",
+      "captureVersion": "0.19.0 working project",
+      "context": "Actual authoring state; Rules uses an isolated candidate fixture. Captured pixels are evidence of that state, not a live Editor."
+    },
+    {
+      "src": "media/imported/bb2aafe89ae8453058cc017d1030460956cbfdd0df229b191141467c093ae6dc.png",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "2856",
+          "elementId": "v-project"
+        },
+        {
+          "collection": "Short Presentation",
+          "slideId": "2856",
+          "elementId": "v-project"
+        }
+      ],
+      "sha256": "bb2aafe89ae8453058cc017d1030460956cbfdd0df229b191141467c093ae6dc",
+      "originalName": "project.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "independent actual Editor capture",
+      "captureVersion": "0.19.0 working project",
+      "context": "Actual authoring state; Rules uses an isolated candidate fixture. Captured pixels are evidence of that state, not a live Editor."
+    },
+    {
+      "src": "media/imported/bc8fe0b9f2d382659c13fe58f05e6e3c3beb76e49c15b749255fc5db10a79317.png",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "2856",
+          "elementId": "v-full"
+        },
+        {
+          "collection": "Short Presentation",
+          "slideId": "2856",
+          "elementId": "v-full"
+        }
+      ],
+      "sha256": "bc8fe0b9f2d382659c13fe58f05e6e3c3beb76e49c15b749255fc5db10a79317",
+      "originalName": "talk-full.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "composition of this author’s own rendered pages",
+      "captureVersion": null
+    },
+    {
+      "src": "media/imported/1d03caf7ac617729324b1e0eab2733201ab139b42db2c39fca1860895048cbe1.png",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "2856",
+          "elementId": "v-short"
+        },
+        {
+          "collection": "Short Presentation",
+          "slideId": "2856",
+          "elementId": "v-short"
+        }
+      ],
+      "sha256": "1d03caf7ac617729324b1e0eab2733201ab139b42db2c39fca1860895048cbe1",
+      "originalName": "talk-short.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "composition of this author’s own rendered pages",
+      "captureVersion": null
+    },
+    {
+      "src": "media/imported/88148310e9c0837c8f1c719e1b04b741453bcd4e4822de72c0ff1bd2c1d299e0.png",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "4YZD",
+          "elementId": "v-context"
+        }
+      ],
+      "sha256": "88148310e9c0837c8f1c719e1b04b741453bcd4e4822de72c0ff1bd2c1d299e0",
+      "originalName": "pin.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "independent actual Editor capture",
+      "captureVersion": "0.19.0 working project",
+      "context": "Actual authoring state; Rules uses an isolated candidate fixture. Captured pixels are evidence of that state, not a live Editor."
+    },
+    {
+      "src": "media/imported/ae9b3efcb19d248384f8bdcfe526ca19247930d4b7a09ccabb233994e3d14495.png",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "4YZD",
+          "elementId": "v-detail"
+        }
+      ],
+      "sha256": "ae9b3efcb19d248384f8bdcfe526ca19247930d4b7a09ccabb233994e3d14495",
+      "originalName": "pin-detail.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "independent actual Editor capture",
+      "captureVersion": "0.19.0 working project",
+      "context": "Actual authoring state; Rules uses an isolated candidate fixture. Captured pixels are evidence of that state, not a live Editor."
+    },
+    {
+      "src": "media/imported/a27f0de7f60a2256b5d32a2502a647774b22381b1b368ecba995bab4459ccf5b.png",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "YCXA",
+          "elementId": "v-editor"
+        }
+      ],
+      "sha256": "a27f0de7f60a2256b5d32a2502a647774b22381b1b368ecba995bab4459ccf5b",
+      "originalName": "export.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "independent actual Editor capture",
+      "captureVersion": "0.19.0 working project",
+      "context": "Actual authoring state; Rules uses an isolated candidate fixture. Captured pixels are evidence of that state, not a live Editor."
+    },
+    {
+      "src": "media/imported/223d5e6a6341ca08df4b10971bff140273362d2f40b8e86128027e52c08c33d4.png",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "YCXA",
+          "elementId": "v-export"
+        }
+      ],
+      "sha256": "223d5e6a6341ca08df4b10971bff140273362d2f40b8e86128027e52c08c33d4",
+      "originalName": "export-detail.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "independent actual Editor capture",
+      "captureVersion": "0.19.0 working project",
+      "context": "Actual authoring state; Rules uses an isolated candidate fixture. Captured pixels are evidence of that state, not a live Editor."
+    },
+    {
+      "src": "media/imported/46ffeb2a41810671ffbbf7ee6c09eb0935f5bebbd3cf6c0d898808451fcaf805.png",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "YCXA",
+          "elementId": "v-present-entry"
+        }
+      ],
+      "sha256": "46ffeb2a41810671ffbbf7ee6c09eb0935f5bebbd3cf6c0d898808451fcaf805",
+      "originalName": "present-menu.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "independent actual Editor capture",
+      "captureVersion": "0.19.0 working project",
+      "context": "Actual authoring state; Rules uses an isolated candidate fixture. Captured pixels are evidence of that state, not a live Editor."
+    },
+    {
+      "src": "media/imported/16ec52d7b12c79fae636bee4975a0598960f8d25f56493f25d90b59f07726abb.png",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "NJM7",
+          "elementId": "v-activity"
+        },
+        {
+          "collection": "Short Presentation",
+          "slideId": "NJM7",
+          "elementId": "v-activity"
+        }
+      ],
+      "sha256": "16ec52d7b12c79fae636bee4975a0598960f8d25f56493f25d90b59f07726abb",
+      "originalName": "activity.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "independent actual Editor capture",
+      "captureVersion": "0.19.0 working project",
+      "context": "Actual authoring state; Rules uses an isolated candidate fixture. Captured pixels are evidence of that state, not a live Editor."
+    },
+    {
+      "src": "media/imported/22817513bf05210af81698c80f66e1bcf6e7f1151ee16dbd452ea10f94daf361.png",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "NJM7",
+          "elementId": "v-report-detail"
+        },
+        {
+          "collection": "Short Presentation",
+          "slideId": "NJM7",
+          "elementId": "v-report-detail"
+        }
+      ],
+      "sha256": "22817513bf05210af81698c80f66e1bcf6e7f1151ee16dbd452ea10f94daf361",
+      "originalName": "activity-report.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "independent actual Editor capture",
+      "captureVersion": "0.19.0 working project",
+      "context": "Actual authoring state; Rules uses an isolated candidate fixture. Captured pixels are evidence of that state, not a live Editor."
+    },
+    {
+      "src": "media/.huandeng-versions/48d96c3f63dc8ce717d4bcece8d2af93fb73c7560342a1596ad9cf23a1421792.png",
+      "uses": [
+        {
+          "collection": "Short Presentation",
+          "slideId": "2MC2",
+          "elementId": "v-molecule"
+        }
+      ],
+      "sha256": "48d96c3f63dc8ce717d4bcece8d2af93fb73c7560342a1596ad9cf23a1421792",
+      "originalName": "1bna-projected-bonds.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "public RCSB acquisition and Python derivation",
+      "captureVersion": null,
+      "sourceRecord": "independent-20261111/ACQUISITION.json"
+    },
+    {
+      "src": "media/.huandeng-versions/921c93f645de5a3cbce0ae279cb692c34a7e1a953dc434f867b83ff619a8043d.png",
+      "uses": [
+        {
+          "collection": "Short Presentation",
+          "slideId": "2MC2",
+          "elementId": "v-plot"
+        }
+      ],
+      "sha256": "921c93f645de5a3cbce0ae279cb692c34a7e1a953dc434f867b83ff619a8043d",
+      "originalName": "c1-distances-zh.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "public RCSB acquisition and Python derivation",
+      "captureVersion": null,
+      "sourceRecord": "independent-20261111/ACQUISITION.json"
+    }
+  ]
+}

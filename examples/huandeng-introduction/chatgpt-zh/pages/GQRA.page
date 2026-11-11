@@ -1,0 +1,184 @@
+pageType: content
+background:
+  type: solid
+  color: "#FFFFFF"
+elements:
+  - elementId: v-bg
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 0
+      - 0
+      - 960
+      - 540
+    fill:
+      type: solid
+      color: "#FFFFFF"
+  - elementId: title
+    elementType: text
+    bounds:
+      - 38
+      - 29
+      - 884
+      - 58
+    role: title
+    content:
+      text: 规则也应该看得见
+      fontFamily: Segoe UI
+      fontSize: 25
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-watermark
+    elementType: text
+    bounds:
+      - 38
+      - 520
+      - 750
+      - 12
+    content:
+      text: chinese chatgpt 6 astra + subagent
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-position
+    elementType: text
+    bounds:
+      - 885
+      - 520
+      - 37
+      - 12
+    content:
+      text: ""
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - right
+        - top
+      field: main-position
+  - elementId: v-rules-detail
+    elementType: image
+    bounds:
+      - 38
+      - 110
+      - 359
+      - 369
+    src: media/imported/7b6eca4050b52d95eba0102f23d575bda1096e875e8215774ca562e76a0419e8.png
+    sourceName: rules-detail.png
+    fit:
+      mode: contain
+  - elementId: v-full-editor
+    elementType: image
+    bounds:
+      - 439
+      - 110
+      - 483
+      - 230
+    src: media/imported/16fd89ab7efcc78679a1288702353bad0bafc0a3c1a560eb6199030b3ee58b8c.png
+    sourceName: rules-full.png
+    fit:
+      mode: contain
+  - elementId: v-marker-1
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+      - 34
+      - 100
+      - 20
+      - 20
+    fill:
+      type: solid
+      color: "#25282C"
+  - elementId: v-marker-text-1
+    elementType: text
+    bounds:
+      - 34
+      - 102
+      - 20
+      - 17
+    content:
+      text: "1"
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#FFFFFF"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - center
+        - top
+  - elementId: v-marker-1-location
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+      - 438
+      - 132
+      - 20
+      - 20
+    fill:
+      type: solid
+      color: "#25282C"
+  - elementId: v-marker-text-1-location
+    elementType: text
+    bounds:
+      - 438
+      - 134
+      - 20
+      - 17
+    content:
+      text: "1"
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#FFFFFF"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - center
+        - top
+  - elementId: v-rule-meaning
+    elementType: text
+    bounds:
+      - 439
+      - 373
+      - 483
+      - 63
+    content:
+      text: |-
+        左侧 Project 中查看规则。
+        打开 AGENTS.md，读同一份全文。
+      fontFamily: Segoe UI
+      fontSize: 18
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-refresh
+    elementType: text
+    bounds:
+      - 439
+      - 463
+      - 483
+      - 40
+    content:
+      text: 外部文件改动后，点击刷新项目规则。
+      fontFamily: Segoe UI
+      fontSize: 13
+      color: "#63696F"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+notes: "Editor 0.20.0把项目根目录AGENTS.md原文直接放在Project tab。打开文件可读全文；外部修改后点击刷新项目规则，侧栏和已打开全文一起更新。截图来自root独立捕获的0.20隔离示例，规则是本次真实的原文，不是另一个摘要。可见性便于检查，并不保证模型自动遵守。"

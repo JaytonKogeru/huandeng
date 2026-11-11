@@ -1,6 +1,6 @@
 # HUANDENG Editor
 
-English · [简体中文](README.zh-CN.md)
+English | [简体中文](README.zh-CN.md)
 
 **A desktop slide editor where you and your AI assistants work on the same local project.**
 
@@ -8,20 +8,28 @@ Open a page, select an object, make a focused change, and keep the work that sti
 
 ![HUANDENG 0.19 Editor: page navigation, editable canvas and the Story inspector](docs/images/editor-en-019.png)
 
-[Try the editable examples](examples/huandeng-introduction/README.md) · [Desktop setup](packages/desktop/README.md) · [Connect an assistant](plugins/huandeng/README.md) · [Contribute](CONTRIBUTING.md)
+[Try the editable examples](examples/huandeng-introduction/README.md) | [Desktop setup](packages/desktop/README.md) | [Connect an assistant](plugins/huandeng/README.md) | [Contribute](CONTRIBUTING.md)
 
-The current Editor and plugin version is **0.19.0**. Windows is the packaged desktop workflow verified for this release. HUANDENG builds on OpenSlide and retains its MIT license and attribution.
+The current local Editor and plugin candidate is **0.20.0**. The Windows package and both client-package forms have been built and checked; see the [0.20 candidate notes](docs/RELEASE-V020.md). This is a local candidate, not a published public release. HUANDENG builds on OpenSlide and retains its MIT license and attribution.
+
+The screenshot above is a real 0.19 working project. The new **Project rules** view described below belongs to the 0.20 candidate; the existing screenshot keeps its actual version.
+
+## Why HUANDENG
+
+The project began with a researcher's recurring frustrations: slides that looked complete but missed the speaker's point, and a small revision that produced another copy of an entire deck. The [founder's spoken account](examples/huandeng-introduction/story/USER-STORY.zh-CN.md) starts from group meetings and the wish to keep working with agents while retaining the author's own judgment.
+
+That experience shapes the workflow. Tell the story first, keep original evidence close, and give each page an identity and history. The Editor makes the work visible and editable; plugins give assistants the context and operations to continue it. The author decides what matters and reviews the actual result. The [introduction specification](docs/INTRODUCTION-STORY-SPEC.md) connects those motives to practical demonstrations and acknowledgments.
 
 ## Make your first useful edit
 
-1. Open a project from Home. The English walkthrough starts at `examples/huandeng-introduction/chatgpt-en/deck.pptd`; keep its complete folder.
-2. In **Pages**, find **GX5Z**, “One project keeps the work together.” Open **Story** and read the page's purpose and preservation constraints.
-3. Click the title on the canvas. In **Properties → Text content**, change one phrase, then check the result on the canvas.
+1. Open a complete example project from Home, such as `examples/huandeng-introduction/chatgpt-en/deck.pptd`.
+2. Choose a page in **Pages** and read its **Story**: what it should explain and what must be preserved.
+3. Select a text object on the canvas. In **Properties**, edit **Text content**, then inspect the result in the context of the whole page.
 4. Choose **Save slides** or press **Ctrl+S**. Inspect the saved operation and the objects it changed.
 5. Record a named page version when you have a result worth keeping.
-6. Open **First edit · short talk**. Its 12-page sequence demonstrates references, talk-specific notes and a pinned page version. Rehearse it, then check the format and range in **Export**.
+6. From **Project**, arrange a Presentation using the pages you want to speak about. Save the project, rehearse the selected talk, then check the format and range in **Export**.
 
-The walkthrough itself is editable: its interface images are real captures, while its text, arrows and diagrams remain native page objects. The [example collection](examples/huandeng-introduction/README.md) also includes independent Chinese, Claude Code and DeepSeek Harness editions.
+The [example collection](examples/huandeng-introduction/README.md) contains editable English and Chinese introductions by ChatGPT, Claude Code and DeepSeek Harness. Their stories explain the project and incorporate real editing tasks; they need not use the same page sequence.
 
 ## Get started
 
@@ -29,7 +37,7 @@ The walkthrough itself is editable: its interface images are real captures, whil
 
 Extract the complete Windows desktop package and run **HUANDENG Editor.exe**. Keep the application folder together. Home can create a new project or open an existing `.pptd`; opening a folder works when it has one unambiguous project entry.
 
-A new project starts with one blank page. Add text or shapes on the canvas, and use **Assets → Import and place** for an image. The [desktop guide](packages/desktop/README.md) covers packaging, shortcuts and project windows; the [0.19 release notes](docs/RELEASE-V019.md) describe the current release.
+A new project starts with one blank page. Add text or shapes on the canvas, and use **Assets → Import and place** for an image. The [desktop guide](packages/desktop/README.md) covers packaging, shortcuts and project windows. The current Windows candidate is prepared at `dist/HUANDENG-v0.20.0-win32-x64`; the [0.20 candidate notes](docs/RELEASE-V020.md) describe its changes and checks. The [0.19 release notes](docs/RELEASE-V019.md) remain the record of that earlier milestone.
 
 ### Run from source
 
@@ -53,6 +61,20 @@ powershell -NoProfile -File scripts/Install-Huandeng.ps1
 ```
 
 The desktop host uses Electron 38.7.2. See the [build options](packages/desktop/README.md) before replacing an existing application directory.
+
+## A story-led authoring workflow
+
+For slide work in this repository, use **Audit, Spec, Implement, Validate, Release**. A useful edit begins with the author's intent and existing evidence, then develops into a visual explanation the author can keep working on.
+
+| Stage | Work to complete |
+| --- | --- |
+| Audit | Read the source story, project instructions, existing pages and real rendered output. Understand what to preserve and what is failing. |
+| Spec | Organize the argument, weave teaching into the story, and design representative pages around their evidence. |
+| Implement | Make focused changes through the shared writer; retain original material, page identity and meaningful history. |
+| Validate | Inspect every affected page and the complete sequence, including visual meaning, UI orientation, Notes and the exported result. |
+| Release | Save the usable project and requested delivery formats, with accurate sources and a record of what was verified. |
+
+The [authoring contract](docs/INTRODUCTION-STORY-SPEC.md) applies this process to the introduction examples. Technical checks help find problems; actual visual review determines whether the explanation works. Scientific plots should come from suitable plotting tools and retain their data and source context.
 
 ## How the work fits together
 
@@ -81,6 +103,8 @@ Save page edits with **Save slides**; save structural changes in the project arr
 
 Story records why the project, a Section, a Presentation or a page exists. Page Story also preserves editing constraints. Notes hold what the speaker will say. An assistant can read this context together with neighboring pages and asset information before proposing a change.
 
+In the 0.20 candidate, open **Project rules** in **Project** to read the canonical root `AGENTS.md` text and its source. Open the full file in the workspace preview or refresh the rules after editing it. The view preserves the author's instructions instead of creating a second rule set or substituting an AI summary.
+
 Assets preserve original file bytes and expose their uses in the project. Display crops are editable image properties. Named page versions archive the page and its referenced local assets, so a recorded result can travel with the project folder.
 
 Automatic saves, recorded operations, named page versions and Git commits serve different purposes. Named versions travel with the project; the installation's operation and recovery logs remain local. See [Story](docs/STORY.md), [project folders](docs/PROJECT-FOLDERS.md) and the [versioning policy](docs/RELEASE-POLICY.md).
@@ -91,12 +115,23 @@ Open **Agent setup** in the Editor, choose your client, follow its configuration
 
 | Client | Integration maintained in this repository |
 | --- | --- |
-| Claude Code | A native `.claude-plugin/plugin.json`, `.mcp.json` and shared `skills/` in the portable plugin. |
-| DeepSeek Harness | A native Cordis `huandeng` bundle with host lifecycle and per-project routing; its adapter and package builder are in this repository. |
+| Claude Code | Native manifests at `plugins/huandeng/.claude-plugin/plugin.json` and `plugins/huandeng/.mcp.json`, with `plugins/huandeng/skills/`. |
+| DeepSeek Harness | Native Cordis adapter at `plugins/huandeng/adapters/deepseek/`, including host lifecycle and per-project routing, packaged with the shared skill and launcher. |
 | Codex | The portable plugin, compatibility manifest or generated MCP TOML configuration. |
 | ChatGPT | The same local CLI through an authorized workstation connection; account bindings stay separate from the public package. |
 
-Start with the [plugin guide](plugins/huandeng/README.md) or [DeepSeek native adapter](plugins/huandeng/adapters/deepseek/README.md). Both distributable package forms are built from `plugins/huandeng`. Client setup, host loading, a completed model task and a good finished slide are separate checks; the [native integration record](docs/NATIVE-INTEGRATION-0.19.md) records what was actually exercised.
+Start with the [plugin guide](plugins/huandeng/README.md) or [DeepSeek native adapter](plugins/huandeng/adapters/deepseek/README.md). Both package forms are maintained in this engineering repository. Build them from the repository root, choosing a new output directory for each build:
+
+```sh
+node plugins/huandeng/scripts/build-package.mjs --target local --output "$PWD/dist/plugin-packages/local-build"
+node plugins/huandeng/scripts/build-deepseek.mjs --output "$PWD/dist/plugin-packages/deepseek-build"
+```
+
+Each command creates a `huandeng/` package inside its output directory. The current local candidate packages are `dist/plugin-packages/0.20.0/portable-claude-codex/huandeng` and `dist/plugin-packages/0.20.0/deepseek-native/huandeng`. Both are inside this engineering project. Generated packages are build outputs; the maintained source is `plugins/huandeng`. Use the client's supported plugin loader or manager to install the appropriate form.
+
+The 0.20 candidate also adds project-bound original-image import and real Editor capture tools for native clients. The packaged MCP reports 0.20.0 and 24 tools; its acquisition and capture checks ran against an unchanged compatible 0.19 writer. Packaging did not replace an existing runtime or complete an unfinished native author task. Details and limits are in the [candidate notes](docs/RELEASE-V020.md).
+
+Client setup, host loading, a completed model task and a good finished slide are separate checks. The [native integration record](docs/NATIVE-INTEGRATION-0.19.md) records the actual Claude Code and DeepSeek host checks and task outcomes; it does not infer them from a package manifest.
 
 The shared [huandeng-story skill](plugins/huandeng/skills/huandeng-story/SKILL.md) reads the author's source material and existing pages, develops the argument and visual treatment, previews the proposed changes, then inspects the saved result and real rendering.
 
@@ -115,10 +150,10 @@ Electron provides desktop windows, file dialogs and project tabs. The React Edit
 
 ```mermaid
 flowchart TB
-    E["Editor · Electron / React"] --> W["Local document service · shared writer"]
+    E["Editor: Electron / React"] --> W["Local document service: shared writer"]
     A["AI clients + HUANDENG plugin"] --> C["CLI / MCP"]
     C --> W
-    W --> P["Project folder · pages, assets, Story, named versions"]
+    W --> P["Project folder: pages, assets, Story, named versions"]
     W --> J["Local operation and recovery journal"]
     W --> X["Render and export"]
 ```
@@ -175,4 +210,6 @@ HUANDENG builds on [OpenSlide](https://github.com/open-slide/open-slide). Its MI
 
 Apache ECharts supplies charts, KaTeX supplies mathematical layout, Font Awesome Free supplies icons, and PptxGenJS supplies PowerPoint generation. The separately attributed OpenPPTD conversion modules support equation export. See [third-party notices](packages/desktop/NOTICE.md) and the [OpenPPTD notice](packages/core/src/pptd/vendor/open-pptd/NOTICE.md).
 
-Figures, brand marks and other example assets retain their own source and license terms. The software license does not relicense those materials. Their [source records](examples/huandeng-introduction/README.md#材料与功能--material-and-product-evidence) stay with the editable examples.
+The [complete acknowledgments and design references](docs/ACKNOWLEDGMENTS.md) explain the original fifteen introduction credits and the full thirty-three-item research inventory. They include PowerPoint, WPS, Kimi, PPTist, Slidev, Presenton, PPTAgent, PPT Master, open-kimi-ppt-skill, OpenSlides Studio, OPF and VS Code, with the specific ideas each contributed. OpenSlides Studio is separate from the OpenSlide codebase.
+
+Figures, brand marks and other example assets retain their own source and license terms. The software license does not relicense those materials. Their [source records](examples/huandeng-introduction/README.md) stay with the editable examples.

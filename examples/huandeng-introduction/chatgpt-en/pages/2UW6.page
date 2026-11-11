@@ -1,0 +1,200 @@
+pageType: content
+background:
+  type: solid
+  color: "#FFFFFF"
+elements:
+  - elementId: v-bg
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 0
+      - 0
+      - 960
+      - 540
+    fill:
+      type: solid
+      color: "#FFFFFF"
+  - elementId: title
+    elementType: text
+    bounds:
+      - 38
+      - 29
+      - 884
+      - 58
+    role: title
+    content:
+      text: Tell the story before laying out the pages
+      fontFamily: Segoe UI
+      fontSize: 25
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-watermark
+    elementType: text
+    bounds:
+      - 38
+      - 520
+      - 750
+      - 12
+    content:
+      text: english chatgpt 6 astra
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-position
+    elementType: text
+    bounds:
+      - 885
+      - 520
+      - 37
+      - 12
+    content:
+      text: ""
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - right
+        - top
+      field: main-position
+  - elementId: v-transcript
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 38
+      - 121
+      - 326
+      - 350
+    fill:
+      type: solid
+      color: "#F2F3F3"
+  - elementId: v-source-label
+    elementType: text
+    bounds:
+      - 56
+      - 138
+      - 289
+      - 25
+    content:
+      {"text":"From the original account, translated","fontFamily":"Segoe UI","fontSize":13,"color":"#25282C","bold":true,"lineHeight":1.16,"align":["left","top"]}
+  - elementId: v-source
+    elementType: text
+    bounds:
+      - 56
+      - 184
+      - 289
+      - 213
+    content:
+      {"text":"For slides to feel human, a human story has to be the foundation. The person tells the story; the agent organizes it. The slides are made from that story.","fontFamily":"Segoe UI","fontSize":16,"color":"#25282C","bold":false,"lineHeight":1.45,"align":["left","top"]}
+  - elementId: v-source-name
+    elementType: text
+    bounds:
+      - 56
+      - 429
+      - 289
+      - 24
+    content:
+      text: USER-STORY.zh-CN.md
+      fontFamily: Consolas
+      fontSize: 11
+      color: "#63696F"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-page-0
+    elementType: image
+    bounds:
+      - 405
+      - 116
+      - 201
+      - 113
+    src: "media/imported/37da1b10c55906884a27e2bd5d677bb896f140bfa95bcdc945af324e9767b1ea.png"
+    sourceName: "copies.png"
+    fit:
+      mode: contain
+  - elementId: v-link-0
+    elementType: text
+    bounds:
+      - 629
+      - 140
+      - 289
+      - 63
+    content:
+      text: Why two edits create another complete file
+      fontFamily: Segoe UI
+      fontSize: 17
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-page-1
+    elementType: image
+    bounds:
+      - 405
+      - 244
+      - 201
+      - 113
+    src: "media/imported/86234a79a0404f135640bf4b124e1fb5f1682ac90dcd040e4bad0372f0aab7f3.png"
+    sourceName: "orientation.png"
+    fit:
+      mode: contain
+  - elementId: v-link-1
+    elementType: text
+    bounds:
+      - 629
+      - 268
+      - 289
+      - 63
+    content:
+      text: How the work keeps the author’s intent
+      fontFamily: Segoe UI
+      fontSize: 17
+      color: "#25282C"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-page-2
+    elementType: image
+    bounds:
+      - 405
+      - 372
+      - 201
+      - 113
+    src: "media/imported/3fe781c908017547c9c1fa58aa91cd601dc17972fc02649aa1bb22f8fe833299.png"
+    sourceName: "case-after.png"
+    fit:
+      mode: contain
+  - elementId: v-link-2
+    elementType: text
+    bounds:
+      - 629
+      - 396
+      - 289
+      - 63
+    content:
+      text: How original evidence stays available
+      fontFamily: Segoe UI
+      fontSize: 17
+      color: "#25282C"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+notes: "The author speaks first, freely. The agent organizes relationships and adds necessary explanation; it does not replace the account with its own feature tour. The left is a concise English translation of the preserved Chinese passage about story-first authorship. The right is our editorial organization, illustrated by this project’s actual pages. These are different kinds of authority."

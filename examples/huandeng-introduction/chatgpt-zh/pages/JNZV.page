@@ -3,7 +3,7 @@ background:
   type: solid
   color: "#E4ECE6"
 elements:
-  - elementId: f-paper
+  - elementId: v-bg
     elementType: shape
     shapeName: rect
     bounds:
@@ -13,173 +13,89 @@ elements:
       - 540
     fill:
       type: solid
-      color: "#F4F1E8"
+      color: "#FFFFFF"
   - elementId: title
     elementType: text
     bounds:
-        [36,27,884,46]
+        [38,29,884,58]
     role: title
     content:
-      {"text":"只改两句，保留其他内容","fontFamily":"Noto Sans SC","fontSize":31,"color":"#112D32","align":["left","top"],"lineHeight":1.35,"bold":true}
-  - elementId: f-action
+      {"text":"这次保存，具体改了什么","fontFamily":"Segoe UI","fontSize":25,"color":"#25282C","bold":true,"lineHeight":1.16,"align":["left","top"]}
+  - elementId: v-watermark
     elementType: text
     bounds:
       - 38
-      - 82
-      - 884
-      - 28
+      - 520
+      - 750
+      - 12
     content:
-      text: 选中标题与引导句 → 修改 → 保存页面
-      fontFamily: Noto Sans SC
-      fontSize: 18
-      color: "#557076"
+      text: chinese chatgpt 6 astra + subagent
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
+      bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.35
-  - elementId: f-watermark
+  - elementId: v-position
     elementType: text
     bounds:
-      - 36
-      - 514
-      - 820
-      - 19
-    content:
-      text: Chinese · ChatGPT 6 Astra + Subagents
-      fontFamily: Noto Sans SC
-      fontSize: 13
-      color: "#557076"
-      align:
-        - left
-        - top
-      lineHeight: 1.35
-  - elementId: f-position
-    elementType: text
-    bounds:
-      - 878
-      - 514
-      - 44
-      - 19
+      - 885
+      - 520
+      - 37
+      - 12
     content:
       text: ""
-      fontFamily: Noto Sans SC
-      fontSize: 13
-      color: "#557076"
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
+      bold: false
+      lineHeight: 1.16
       align:
         - right
         - top
-      lineHeight: 1.35
       field: main-position
-  - elementId: f-before
-    elementType: text
-    bounds:
-      - 38
-      - 151
-      - 92
-      - 28
-    content:
-      text: 修改前
-      fontFamily: Noto Sans SC
-      fontSize: 16
-      color: "#557076"
-      align:
-        - left
-        - top
-      lineHeight: 1.35
-  - elementId: f-after
-    elementType: text
-    bounds:
-      - 38
-      - 316
-      - 92
-      - 28
-    content:
-      text: 修改后
-      fontFamily: Noto Sans SC
-      fontSize: 16
-      color: "#168C8C"
-      align:
-        - left
-        - top
-      lineHeight: 1.35
-      bold: true
-  - elementId: f-before-ui
+  - elementId: v-review
     elementType: image
     bounds:
-      - 133
-      - 139
-      - 789
-      - 142
-    src: media/imported/fdcacc35c15b7a7b76d70ef9f713c605c20a7e8ca450703b6343ac8bc722bd3e.png
-    sourceName: zh-CN-native-edit-before-4x.png
+      - 59.066378546099315
+      - 105
+      - 601.8672429078014
+      - 395
+    src: media/imported/29e3c274ddf1a682473483424794563e61b5da1f602bcac00c61bdf665e14bb4.png
+    sourceName: review-dialog.png
     fit:
       mode: contain
     crop:
-      left: 0.03
-      right: 0.03
-      top: 0.04
-      bottom: 0.64
-  - elementId: f-after-ui
+      bottom: 0.06
+  - elementId: v-location
     elementType: image
     bounds:
-      - 133
-      - 304
-      - 789
-      - 142
-    src: media/imported/1590b6d7b420e2502709c533628c4fc0a0ef2278c8b6798d1f6fa8272f9059fc.png
-    sourceName: zh-CN-native-edit-after-4x.png
+      - 704
+      - 108
+      - 218
+      - 104
+    src: "media/imported/aad43058da3a9dda3093d1893ac1c0557413b81e0102e0c508c0e451507469d2.png"
+    sourceName: review.png
     fit:
       mode: contain
-    crop:
-      left: 0.03
-      right: 0.03
-      top: 0.04
-      bottom: 0.64
-  - elementId: f-compare-arrow
-    elementType: line
-    bounds:
-      - 80
-      - 207
-      - 0
-      - 78
-    viewBox:
-      - 1
-      - 1
-    points: 0,0 1,1
-    border:
-      width: 2
-      color: "#ED6A3A"
-    arrow:
-      - null
-      - arrow
-  - elementId: f-new-wording
-    elementType: line
-    bounds:
-      - 148
-      - 357
-      - 507
-      - 0
-    viewBox:
-      - 1
-      - 1
-    points: 0,0 1,1
-    border:
-      width: 2
-      color: "#168C8C"
-  - elementId: f-retained
+  - elementId: v-entry
     elementType: text
     bounds:
-      - 133
-      - 461
-      - 790
-      - 31
+      - 704
+      - 227
+      - 218
+      - 44
     content:
-      text: 两处文字有变化；原有版式与其他对象保留。
-      fontFamily: Noto Sans SC
-      fontSize: 18
-      color: "#112D32"
-      align:
-        - left
-        - top
-      lineHeight: 1.35
-notes: "这次只收紧标题和引导句。修改前，两句话较长；修改后，直接说“把修改意图留清楚”“让下一次修改有据可循”。请看同一尺度下的前后图，其他内容没有跟着重做。实际操作时，选中对应文字，在画布或属性面板中修改，然后点击保存页面。下一页会从图层列表选对象，解决多个对象重叠时点不准的问题。"
+      {"text":"入口在顶部“活动”。","fontFamily":"Segoe UI","fontSize":14,"color":"#25282C","bold":true,"lineHeight":1.16,"align":["left","top"]}
+  - elementId: v-meaning
+    elementType: text
+    bounds:
+      - 704
+      - 294
+      - 218
+      - 199
+    content:
+      {"text":"选中改变的对象，\n看实际页面中的变化。\n\n图、数据和来源仍在。\n\n此处只读。\n恢复版本请用“历史”。","fontFamily":"Segoe UI","fontSize":15,"color":"#25282C","bold":false,"lineHeight":1.35,"align":["left","top"]}
+notes: "从顶部Activity进入真实操作记录，再选择Review changes。这次真实事务只改了title对象的content.text。保存变化窗口把实际页面、对象变化和该页Story放在一起。这里是只读查看；恢复到某个命名版本要进入History单独执行。"

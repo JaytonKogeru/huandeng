@@ -1,0 +1,218 @@
+pageType: content
+background:
+  type: solid
+  color: "#FFFFFF"
+elements:
+  - elementId: v-bg
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 0
+      - 0
+      - 960
+      - 540
+    fill:
+      type: solid
+      color: "#FFFFFF"
+  - elementId: title
+    elementType: text
+    bounds:
+      - 38
+      - 29
+      - 884
+      - 58
+    role: title
+    content:
+      text: PPTX 展开后，本来就有这些部分
+      fontFamily: Segoe UI
+      fontSize: 25
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-watermark
+    elementType: text
+    bounds:
+      - 38
+      - 520
+      - 750
+      - 12
+    content:
+      text: chinese chatgpt 6 astra + subagent
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-position
+    elementType: text
+    bounds:
+      - 885
+      - 520
+      - 37
+      - 12
+    content:
+      text: ""
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - right
+        - top
+      field: main-position
+  - elementId: v-parts
+    elementType: table
+    bounds:
+      - 38
+      - 108
+      - 535
+      - 272
+    columnWidths:
+      - 0.43
+      - 0.57
+    rows:
+      - - text: PPTX 包里的部分
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: true
+          fill: "#E8ECEF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+        - text: HUANDENG 的工作项目
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: true
+          fill: "#E8ECEF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+      - - text: ppt/slides/slideN.xml
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: true
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+        - text: pages/<Slide ID>.page
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: false
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+      - - text: ppt/media/
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: true
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+        - text: media/ 原始素材
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: false
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+      - - text: ppt/notesSlides/
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: true
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+        - text: 每页里的演讲备注
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: false
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+      - - text: presentation.xml
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: true
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+        - text: deck.pptd 入口与页面顺序
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: false
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+  - elementId: v-files-context
+    elementType: image
+    bounds:
+      - 609
+      - 109
+      - 313
+      - 149
+    src: "media/imported/39819c232af65fded16e1dbd21a65d0321e66a1a9ab97d5114daebda2d263cd8.png"
+    sourceName: files.png
+    fit:
+      mode: contain
+  - elementId: v-files-label
+    elementType: text
+    bounds:
+      - 609
+      - 278
+      - 313
+      - 45
+    content:
+      text: 左侧 Files，查看项目组成
+      fontFamily: Segoe UI
+      fontSize: 14
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-added
+    elementType: text
+    bounds:
+      - 38
+      - 418
+      - 884
+      - 62
+    content:
+      text: |-
+        新增的是一份持续工作所需的上下文：
+        Story、稳定身份、逐页历史与不同演讲。
+      fontFamily: Segoe UI
+      fontSize: 18
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+notes: "PowerPoint的PPTX是包含XML页面、媒体和备注的ZIP包。HUANDENG使用目录式工作项目：入口组织页，页文件保存对象和备注，媒体保留原图，再把Story、稳定身份和历史放到项目里。不是把pptx改一个扩展名。Files让这些部分在Editor里可见。"

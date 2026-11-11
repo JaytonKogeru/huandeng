@@ -1,0 +1,218 @@
+pageType: content
+background:
+  type: solid
+  color: "#FFFFFF"
+elements:
+  - elementId: v-bg
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 0
+      - 0
+      - 960
+      - 540
+    fill:
+      type: solid
+      color: "#FFFFFF"
+  - elementId: title
+    elementType: text
+    bounds:
+      - 38
+      - 29
+      - 884
+      - 58
+    role: title
+    content:
+      {"text":"数据图来自专业工具，源文件留在项目里","fontFamily":"Segoe UI","fontSize":25,"color":"#25282C","bold":true,"lineHeight":1.16,"align":["left","top"]}
+  - elementId: v-watermark
+    elementType: text
+    bounds:
+      - 38
+      - 520
+      - 750
+      - 12
+    content:
+      text: chinese chatgpt 6 astra + subagent
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-position
+    elementType: text
+    bounds:
+      - 885
+      - 520
+      - 37
+      - 12
+    content:
+      text: ""
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - right
+        - top
+      field: main-position
+  - elementId: v-evidence-title
+    elementType: text
+    bounds:
+      - 38
+      - 100
+      - 585
+      - 25
+    content:
+      text: 1BNA 配对 C1′ 原子距离
+      fontFamily: Segoe UI
+      fontSize: 16
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-plot
+    elementType: image
+    bounds:
+        [30,143,592,260]
+    src: media/imported/921c93f645de5a3cbce0ae279cb692c34a7e1a953dc434f867b83ff619a8043d.png
+    sourceName: c1-distances-zh.png
+    fit:
+      mode: contain
+  - elementId: v-source-title
+    elementType: text
+    bounds:
+      - 655
+      - 100
+      - 267
+      - 25
+    content:
+      text: Files 中的同一份原始材料
+      fontFamily: Segoe UI
+      fontSize: 14
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-editor
+    elementType: image
+    bounds:
+      - 655
+      - 137
+      - 267
+      - 127
+    src: media/imported/babe8b69ad93c12b48a5d2ed09db64db53ab36fc50d584b19a250e5d2aaa81b7.png
+    sourceName: source-files.png
+    fit:
+      mode: contain
+  - elementId: v-files
+    elementType: image
+    bounds:
+      - 655
+      - 283
+      - 267
+      - 211
+    src: media/imported/d995ac594e6ed47c1444cc802b36032f05134765b46c9ffc43f86faea28b3ccc.png
+    sourceName: source-folder.png
+    fit:
+      mode: contain
+  - elementId: v-marker-1
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+      - 648
+      - 159
+      - 20
+      - 20
+    fill:
+      type: solid
+      color: "#25282C"
+  - elementId: v-marker-text-1
+    elementType: text
+    bounds:
+      - 648
+      - 161
+      - 20
+      - 17
+    content:
+      text: "1"
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#FFFFFF"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - center
+        - top
+  - elementId: v-marker-1-detail
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+      - 648
+      - 273
+      - 20
+      - 20
+    fill:
+      type: solid
+      color: "#25282C"
+  - elementId: v-marker-text-1-detail
+    elementType: text
+    bounds:
+      - 648
+      - 275
+      - 20
+      - 17
+    content:
+      text: "1"
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#FFFFFF"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - center
+        - top
+  - elementId: v-method
+    elementType: text
+    bounds:
+      - 38
+      - 425
+      - 570
+      - 61
+    content:
+      text: |-
+        原始坐标、计算出的 CSV、绘图脚本。
+        保存图时，也保存它的来处。
+      fontFamily: Segoe UI
+      fontSize: 17
+      color: "#25282C"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-source
+    elementType: text
+    bounds:
+      - 38
+      - 493
+      - 586
+      - 17
+    content:
+      text: RCSB PDB 1BNA / Drew et al., PNAS (1981)
+      fontFamily: Segoe UI
+      fontSize: 10
+      color: "#63696F"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+notes: "这一页的主图由root独立获取RCSB 1BNA坐标并用Matplotlib生成。图、CSV与脚本是实际存在的项目文件。右边完整Editor中的Files位置与其放大目录对应。界面来自制作中的真实工作阶段，科学原页已保存在同一页的命名版本；短演讲固定引用这个版本。不是手工在slides拼出测量曲线。"

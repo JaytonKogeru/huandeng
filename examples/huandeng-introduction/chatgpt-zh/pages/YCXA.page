@@ -3,7 +3,7 @@ background:
   type: solid
   color: "#E4ECE6"
 elements:
-  - elementId: zd-bg
+  - elementId: v-bg
     elementType: shape
     shapeName: rect
     bounds:
@@ -13,153 +13,118 @@ elements:
       - 540
     fill:
       type: solid
-      color: "#F4F1E8"
+      color: "#FFFFFF"
   - elementId: title
     elementType: text
     bounds:
-        [38,29,884,49]
+        [38,29,884,58]
     role: title
     content:
-      {"text":"选好格式，也选对范围","fontFamily":"Noto Sans SC","fontSize":31,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.3}
-  - elementId: zd-route
+      {"text":"先试讲，再交付","fontFamily":"Segoe UI","fontSize":25,"color":"#25282C","bold":true,"lineHeight":1.16,"align":["left","top"]}
+  - elementId: v-watermark
     elementType: text
     bounds:
-      - 40
-      - 86
-      - 876
-      - 28
-    content:
-      text: 导出 → 格式 → 范围 → 开始导出
-      fontFamily: Noto Sans SC
-      fontSize: 14
-      color: "#168C8C"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-  - elementId: zd-accent
-    elementType: shape
-    shapeName: rect
-    bounds:
-      - 40
-      - 119
-      - 64
-      - 3
-    fill:
-      type: solid
-      color: "#ED6A3A"
-  - elementId: zd-watermark
-    elementType: text
-    bounds:
-      - 39
-      - 508
-      - 820
-      - 22
-    content:
-      text: Chinese · ChatGPT 6 Astra + Subagents
-      fontFamily: Noto Sans SC
-      fontSize: 13
-      color: "#53666A"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-  - elementId: zd-position
-    elementType: text
-    bounds:
-      - 884
-      - 508
       - 38
-      - 22
+      - 520
+      - 750
+      - 12
+    content:
+      text: chinese chatgpt 6 astra + subagent
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-position
+    elementType: text
+    bounds:
+      - 885
+      - 520
+      - 37
+      - 12
     content:
       text: ""
-      fontFamily: Noto Sans SC
-      fontSize: 13
-      color: "#53666A"
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
       bold: false
+      lineHeight: 1.16
       align:
         - right
         - top
-      lineHeight: 1.3
       field: main-position
-  - elementId: zd-export
+  - elementId: v-editor
     elementType: image
     bounds:
-      - 40
-      - 149
-      - 620
-      - 292
-    src: "media/imported/4bc79732eb823c4efeb2696b71f64f7346bf53b6a9e298d67559f1bb35f6532d.png"
-    sourceName: "final-export.png"
+      - 38
+      - 111
+      - 596
+      - 284
+    src: media/imported/a27f0de7f60a2256b5d32a2502a647774b22381b1b368ecba995bab4459ccf5b.png
+    sourceName: export.png
     fit:
       mode: contain
-  - elementId: zd-export-uses
+  - elementId: v-export
+    elementType: image
+    bounds:
+      - 672
+      - 116
+      - 250
+      - 151
+    src: media/imported/223d5e6a6341ca08df4b10971bff140273362d2f40b8e86128027e52c08c33d4.png
+    sourceName: export-detail.png
+    fit:
+      mode: contain
+  - elementId: v-present-entry
+    elementType: image
+    bounds:
+      - 38
+      - 414
+      - 276
+      - 99
+    src: media/imported/46ffeb2a41810671ffbbf7ee6c09eb0935f5bebbd3cf6c0d898808451fcaf805.png
+    sourceName: present-menu.png
+    fit:
+      mode: contain
+  - elementId: v-action
     elementType: text
     bounds:
-      - 705
-      - 159
-      - 220
-      - 228
+      - 342
+      - 430
+      - 292
+      - 63
     content:
       text: |-
-        PPTX · 常规演示
-  
-        PDF · 阅读审阅
-  
-        完整项目 · 接着编辑
-      fontFamily: Noto Sans SC
-      fontSize: 19
-      color: "#112D32"
+        顶部放映与导出入口。
+        交付前确认演讲范围与格式。
+      fontFamily: Segoe UI
+      fontSize: 15
+      color: "#25282C"
       bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.4
-  - elementId: zd-scope-focus
-    elementType: line
-    bounds:
-        [354,262,281,43]
-    viewBox:
-      - 1
-      - 1
-    points: 0,0 1,0 1,1 0,1 0,0
-    border:
-      width: 2
-      color: "#ED6A3A"
-  - elementId: zd-scope-arrow
-    elementType: line
-    bounds:
-      - 636
-      - 285
-      - 38
-      - 51
-    viewBox:
-      - 1
-      - 1
-    points: 1,1 0,0
-    border:
-      width: 2.2
-      color: "#ED6A3A"
-    arrow:
-      - null
-      - arrow
-  - elementId: zd-project-delivery
+  - elementId: v-continuing
     elementType: text
     bounds:
-      - 40
-      - 458
-      - 884
-      - 43
+      - 672
+      - 344
+      - 250
+      - 106
     content:
-      text: 需要继续编辑：带走完整目录，包含 deck.pptd、pages/、media/、.huandeng/。
-      fontFamily: Noto Sans SC
+      text: |-
+        要接着改：带上整个项目目录。
+        要拿去讲：导出这次选择的演讲。
+      fontFamily: Segoe UI
       fontSize: 17
-      color: "#112D32"
-      bold: false
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.3
-notes: "点击导出，先选格式，再检查范围。图中选择PowerPoint，并把范围设为“第一次修改 · 简短演讲”，因此输出的是这一场演讲的页面顺序，而不是整套Main。需要阅读审阅可以导出PDF；需要用常规演示软件继续使用可选PPTX。若接收者要在HUANDENG里继续修改，交付的是完整项目文件夹：deck.pptd是入口，pages和media保存页面与素材，.huandeng保存Story、编排和命名版本。把AGENTS.md、sources和notices一并保留。命名版本随项目携带，机器本地操作日志仍属于原电脑。导出后回到同一份源项目继续维护。下一步把助手接入同一份工作。"
+notes: "顶部Present菜单可以从当前页或开头放映。Export先确认要交付的是Main还是某场Presentation，以及对应格式。继续编辑需要完整项目文件夹；PDF/PPTX是面向听众或其他软件的输出，不能代替项目里的全部工作上下文。"

@@ -1,10 +1,16 @@
-# Final Editor examples: validation
+# Historical validation: the superseded 24-page tutorial revision
 
-**Current result:** the two ChatGPT Editor walkthroughs are complete and personally reviewed, all four native editions preserve their frozen source content with watermarks added, and all 22 final PDF/PPTX files have passed structural delivery checks. The 11 PPTX files were opened read-only in actual PowerPoint and rendered. One pre-existing Claude English chart-label layout issue remains documented.
+**Status updated 2026-11-11:** this document preserves the earlier revision's reported checks. It does not validate the current ChatGPT English 28-page / 19-occurrence or Chinese 31-page / 21-occurrence projects. Current visual review and final output checks remain in progress. The [current implementation scope](PRODUCT-INTRODUCTION-SPEC.md) and [story contract](INTRODUCTION-STORY-SPEC.md) govern the revised work.
 
-This is the November 11 final revision under the [current specification](PRODUCT-INTRODUCTION-SPEC.md). The [previous 0.19 validation](PRODUCT-INTRODUCTION-VALIDATION-PREVIOUS-019.md) remains a historical record. Public historical documents have machine-specific identifiers generalized as described in the [source audit](PUBLIC-SOURCE-AUDIT.md).
+The earlier tutorial-only interpretation, removal of title-only Section pages and watermark-only native freeze below are superseded. Current Section pages must contain only a title. The primary session now personally revises both ChatGPT editions. Claude Code's last native review jobs were interrupted by the host's five-hour usage limit; DeepSeek continues its own revision. The 0.20.0 Editor/plugin candidate is not declared released by this record.
 
-## Corrected editorial goal
+Everything below describes the old saved source and outputs. File links may now point to paths that are being updated; an old result applies only to its recorded revision or hash. Preserve the record without treating its editorial assumptions, counts, watermark strings or claimed passes as current instructions.
+
+**Result reported at that revision:** the two ChatGPT Editor walkthroughs were recorded as complete and personally reviewed, the four native editions preserved their then-frozen source content with watermarks added, and 22 PDF/PPTX files passed structural delivery checks. The 11 PPTX files were opened read-only in actual PowerPoint and rendered. One pre-existing Claude English chart-label layout issue was documented. Those technical checks did not establish that the author's narrative and design requirements had been met.
+
+The [previous 0.19 validation](PRODUCT-INTRODUCTION-VALIDATION-PREVIOUS-019.md) is also historical. Public historical documents have machine-specific identifiers generalized as described in the [source audit](PUBLIC-SOURCE-AUDIT.md).
+
+## Historical editorial premise, subsequently corrected
 
 The earlier ChatGPT editions still gave too much space to the product's origin and scientific slide example. The final editions teach the Editor through actual work: open a project, locate a page and object, use Story and original assets, edit and save, inspect the change, name a version, arrange a talk, write its Notes, choose live or pinned references, rehearse and export.
 
@@ -12,7 +18,7 @@ The primary session wrote and designed every English page. Three parallel sectio
 
 The DNA source package and earlier named versions remain available as provenance and history. They no longer organize the ChatGPT tutorial.
 
-## Final editions
+## Editions at the historical baseline
 
 | Edition | Main | Brief | Visible watermark |
 | --- | ---: | ---: | --- |
@@ -31,7 +37,7 @@ Both projects retain their stable page identities, originals and meaningful hist
 
 The primary session inspected all 48 final Editor renders individually. The review checked readable UI regions, actual controls, complete crops, visible comparison guides, layout, Notes/Story consistency and the correct editable watermark. Concrete crop problems in the English Assets, text-properties, Layers and assistant-selector views were corrected and rendered again. Chinese section owners also reviewed their final returned pages before integration.
 
-| Current image use | English | Chinese |
+| Image use at the historical baseline | English | Chinese |
 | --- | ---: | ---: |
 | Distinct referenced image files | 32 | 43 |
 | Image instances on Main pages | 39 | 52 |
@@ -41,7 +47,7 @@ These counts describe current image objects, not a quality score. They include a
 
 The English short talk is **First edit · short talk**, with 12 occurrences and the named **Project map · tutorial** pin. The Chinese short talk is **第一次修改 · 简短演讲**, with 12 occurrences and **保存页面 · 教程定稿** pinned. Both include actual occurrence-specific Notes. Sections begin at useful content pages; the earlier title-only divider pattern and scientific pin are historical.
 
-Current per-project records:
+Evidence paths recorded at that revision (not acceptance of their current contents):
 
 - [English personal review](../examples/huandeng-introduction/chatgpt-en/evidence/final-review.json), [assets](../examples/huandeng-introduction/chatgpt-en/evidence/assets.json), [composition](../examples/huandeng-introduction/chatgpt-en/evidence/composition.json) and [Notes](../examples/huandeng-introduction/chatgpt-en/speaker-notes.md).
 - [Chinese personal review](../examples/huandeng-introduction/chatgpt-zh/evidence/final-review.json), [assets](../examples/huandeng-introduction/chatgpt-zh/evidence/assets.json), [composition](../examples/huandeng-introduction/chatgpt-zh/evidence/composition.json) and [Notes](../examples/huandeng-introduction/chatgpt-zh/speaker-notes.md).

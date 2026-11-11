@@ -3,7 +3,7 @@ background:
   type: solid
   color: "#F7F5EF"
 elements:
-  - elementId: f-bg
+  - elementId: v-bg
     elementType: shape
     shapeName: rect
     bounds:
@@ -13,148 +13,203 @@ elements:
       - 540
     fill:
       type: solid
-      color: "#F4F1E8"
-  - elementId: f-route
-    elementType: text
-    bounds:
-      - 42
-      - 20
-      - 860
-      - 18
-    content:
-      text: ASSETS → SEARCH OR IMPORT AND PLACE
-      fontFamily: Segoe UI
-      fontSize: 11
-      color: "#168C8C"
-      bold: true
-      align:
-        - left
-        - top
-      lineHeight: 1.2
+      color: "#FFFFFF"
   - elementId: title
     elementType: text
     bounds:
-        [42,49,875,66]
+        [38,29,884,58]
     role: title
     content:
-      {"text":"Place an original from Assets","fontFamily":"Segoe UI","fontSize":32,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.1}
-  - elementId: f-foot-rule
-    elementType: shape
-    shapeName: rect
-    bounds:
-      - 42
-      - 510
-      - 876
-      - 1
-    fill:
-      type: solid
-      color: "#CCD2CB"
-  - elementId: f-watermark
+      {"text":"Keep the figure connected to its source","fontFamily":"Segoe UI","fontSize":25,"color":"#25282C","bold":true,"lineHeight":1.16,"align":["left","top"]}
+  - elementId: v-watermark
     elementType: text
     bounds:
-      - 42
-      - 518
-      - 700
-      - 17
+      - 38
+      - 520
+      - 750
+      - 12
     content:
-      text: English · ChatGPT 6 Astra
+      text: english chatgpt 6 astra
       fontFamily: Segoe UI
-      fontSize: 12
-      color: "#50646A"
+      fontSize: 8
+      color: "#6D7379"
       bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.2
-  - elementId: f-position
+  - elementId: v-position
     elementType: text
     bounds:
-      - 882
-      - 518
-      - 36
-      - 17
+      - 885
+      - 520
+      - 37
+      - 12
     content:
       text: ""
       fontFamily: Segoe UI
-      fontSize: 12
-      color: "#50646A"
+      fontSize: 8
+      color: "#6D7379"
       bold: false
+      lineHeight: 1.16
       align:
         - right
         - top
-      lineHeight: 1.2
       field: main-position
-  - elementId: f-assets-search
-    elementType: image
-    bounds:
-        [44,175.14634146341461,441,239.70731707317074]
-    src: media/imported/f01fe9cecf65d49281e34248637c0b749da3e4e4e5d65c145c9a6b66ece5e84d.png
-    sourceName: assets.png
-    fit:
-      mode: contain
-    crop:
-      {"bottom":0.76}
-  - elementId: f-asset-result
-    elementType: image
-    bounds:
-        [614,165.83004836444954,256,216.33990327110092]
-    src: media/imported/f01fe9cecf65d49281e34248637c0b749da3e4e4e5d65c145c9a6b66ece5e84d.png
-    sourceName: assets.png
-    fit:
-      mode: contain
-    crop:
-      top: 0.32
-      bottom: 0.43
-      right: 0.33
-  - elementId: f-asset-link
-    elementType: line
-    bounds:
-      - 500
-      - 274
-      - 88
-      - 0
-    viewBox:
-      - 1
-      - 1
-    points: 0,0 1,1
-    border:
-      width: 2.5
-      color: "#ED6A3A"
-    arrow:
-      - null
-      - arrow
-  - elementId: f-asset-result-label
+  - elementId: v-evidence-title
     elementType: text
     bounds:
-      - 589
-      - 410
-      - 313
-      - 32
+      - 38
+      - 100
+      - 585
+      - 25
     content:
-      text: The matching original
+      text: Paired C1′ distances in 1BNA
       fontFamily: Segoe UI
-      fontSize: 20
-      color: "#112D32"
+      fontSize: 16
+      color: "#25282C"
       bold: true
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.2
-  - elementId: f-assets-next
+  - elementId: v-plot
+    elementType: image
+    bounds:
+        [30,143,592,260]
+    src: media/imported/100ad526416a549cafb6c2eee907480f9809a05ecacc70d2b9455a086ea5dc33.png
+    sourceName: c1-distances-en.png
+    fit:
+      mode: contain
+  - elementId: v-source-title
     elementType: text
     bounds:
-      - 44
-      - 469
-      - 870
-      - 32
+      - 655
+      - 100
+      - 267
+      - 25
     content:
-      text: Drag an existing image, or choose Import and place for a new file.
+      text: The original materials in Files
       fontFamily: Segoe UI
-      fontSize: 19
-      color: "#168C8C"
-      bold: false
+      fontSize: 14
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.2
-notes: "Open the project asset library. Search for a source by name, then drag an existing image onto the slide. Import and place adds a new original from the device. This example searches for the actual HUANDENG mark already in the project. Placement and cropping control the slide instance; keep the source image and its attribution with the project. The two crops show the real search controls and the matching result at a readable size."
+  - elementId: v-editor
+    elementType: image
+    bounds:
+      - 655
+      - 137
+      - 267
+      - 127
+    src: media/imported/6b9a15edcd68879b8e90c8ab3e78b6af6aac0fa523f61feceb3cc1ab22677584.png
+    sourceName: source-files.png
+    fit:
+      mode: contain
+  - elementId: v-files
+    elementType: image
+    bounds:
+      - 655
+      - 283
+      - 267
+      - 211
+    src: media/imported/3be9a18358da5c3deb953d4f8fc29d8bd266dffb0f4a48839fc274a82aab90ae.png
+    sourceName: source-folder.png
+    fit:
+      mode: contain
+  - elementId: v-marker-1
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+      - 648
+      - 159
+      - 20
+      - 20
+    fill:
+      type: solid
+      color: "#25282C"
+  - elementId: v-marker-text-1
+    elementType: text
+    bounds:
+      - 648
+      - 161
+      - 20
+      - 17
+    content:
+      text: "1"
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#FFFFFF"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - center
+        - top
+  - elementId: v-marker-1-detail
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+      - 648
+      - 273
+      - 20
+      - 20
+    fill:
+      type: solid
+      color: "#25282C"
+  - elementId: v-marker-text-1-detail
+    elementType: text
+    bounds:
+      - 648
+      - 275
+      - 20
+      - 17
+    content:
+      text: "1"
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#FFFFFF"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - center
+        - top
+  - elementId: v-method
+    elementType: text
+    bounds:
+      - 38
+      - 425
+      - 570
+      - 61
+    content:
+      text: |-
+        Original coordinates, a measured CSV, a plotting script.
+        The figure stays traceable when the page changes.
+      fontFamily: Segoe UI
+      fontSize: 17
+      color: "#25282C"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-source
+    elementType: text
+    bounds:
+      - 38
+      - 493
+      - 586
+      - 17
+    content:
+      text: RCSB PDB 1BNA / Drew et al., PNAS (1981)
+      fontFamily: Segoe UI
+      fontSize: 10
+      color: "#63696F"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+notes: "This figure was independently generated with Matplotlib from a fresh RCSB 1BNA coordinate download. The figure, CSV and script are real files in this Project. The complete Editor at the right locates Files; the larger directory shows the original materials. Captures document a real authoring stage. The scientific page is retained as a named version and used as a fixed version in the short talk. No measured curve is drawn from slide lines."

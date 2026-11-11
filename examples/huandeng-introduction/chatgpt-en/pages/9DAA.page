@@ -3,7 +3,7 @@ background:
   type: solid
   color: "#E4ECE6"
 elements:
-  - elementId: f-bg
+  - elementId: v-bg
     elementType: shape
     shapeName: rect
     bounds:
@@ -13,117 +13,75 @@ elements:
       - 540
     fill:
       type: solid
-      color: "#F4F1E8"
-  - elementId: f-route
-    elementType: text
-    bounds:
-      - 42
-      - 20
-      - 860
-      - 18
-    content:
-      text: A PRACTICAL EDITOR WALKTHROUGH
-      fontFamily: Segoe UI
-      fontSize: 11
-      color: "#168C8C"
-      bold: true
-      align:
-        - left
-        - top
-      lineHeight: 1.2
+      color: "#25282C"
   - elementId: title
     elementType: text
     bounds:
-        [42,49,875,66]
+        [38,29,884,58]
     role: title
     content:
-      {"text":"HUANDENG","fontFamily":"Segoe UI","fontSize":40,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.1}
-  - elementId: f-foot-rule
-    elementType: shape
-    shapeName: rect
-    bounds:
-      - 42
-      - 510
-      - 876
-      - 1
-    fill:
-      type: solid
-      color: "#CCD2CB"
-  - elementId: f-watermark
+      {"text":"HUANDENG","fontFamily":"Segoe UI","fontSize":32,"color":"#FFFFFF","bold":true,"lineHeight":1.16,"align":["left","top"]}
+  - elementId: v-watermark
     elementType: text
     bounds:
-      - 42
-      - 518
-      - 700
-      - 17
+      - 38
+      - 520
+      - 750
+      - 12
     content:
-      text: English · ChatGPT 6 Astra
+      text: english chatgpt 6 astra
       fontFamily: Segoe UI
-      fontSize: 12
-      color: "#50646A"
+      fontSize: 8
+      color: "#B7BCC1"
       bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.2
-  - elementId: f-position
+  - elementId: v-position
     elementType: text
     bounds:
-      - 882
-      - 518
-      - 36
-      - 17
+      - 885
+      - 520
+      - 37
+      - 12
     content:
       text: ""
       fontFamily: Segoe UI
-      fontSize: 12
-      color: "#50646A"
+      fontSize: 8
+      color: "#B7BCC1"
       bold: false
+      lineHeight: 1.16
       align:
         - right
         - top
-      lineHeight: 1.2
       field: main-position
-  - elementId: f-lead
+  - elementId: v-subtitle
     elementType: text
     bounds:
-      - 44
-      - 101
-      - 870
+      - 38
+      - 79
+      - 875
       - 30
     content:
-      text: Open a project. Make a focused edit. Deliver a talk.
+      text: A working document for the next conversation.
       fontFamily: Segoe UI
-      fontSize: 22
-      color: "#112D32"
+      fontSize: 16
+      color: "#D0D5D9"
       bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.2
-  - elementId: f-hero
+  - elementId: v-editor
     elementType: image
     bounds:
-        [44,147,872,341]
-    src: "media/imported/f220afa82ed13d0537cee2953c1cebdf77bfd049fece33a43f9759cf3581edd6.png"
-    sourceName: "workspace-wide.png"
+      - 38
+      - 126
+      - 884
+      - 377
+    src: media/imported/04ceb84ead94a20229fd342cef76cc2013c55fa07f02d8cfef80e266dfbecfff.png
+    sourceName: workspace.png
     fit:
       mode: contain
-  - elementId: f-hero-caption
-    elementType: text
-    bounds:
-      - 44
-      - 489
-      - 860
-      - 16
-    content:
-      text: The Editor · this working project · 0.19
-      fontFamily: Segoe UI
-      fontSize: 11
-      color: "#50646A"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.2
-notes: "HUANDENG is a desktop editing workspace around a local slide project. This walkthrough follows an actual project through a focused edit, a saved review, reusable talk composition and export. The image is the current 0.19 Editor with this project open. We will enlarge the relevant controls on the following pages. Start by opening deck.pptd from the complete example folder."
+notes: "HUANDENG begins with the founder’s lab-meeting experience: use agents while retaining the speaker’s reasoning, original evidence and the next editing decision. The whole project folder is the continuing work; deck.pptd is its entry point."

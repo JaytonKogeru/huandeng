@@ -3,7 +3,7 @@ background:
   type: solid
   color: "#F7F5EF"
 elements:
-  - elementId: f-bg
+  - elementId: v-bg
     elementType: shape
     shapeName: rect
     bounds:
@@ -13,165 +13,238 @@ elements:
       - 540
     fill:
       type: solid
-      color: "#F4F1E8"
-  - elementId: f-route
-    elementType: text
-    bounds:
-      - 42
-      - 20
-      - 860
-      - 18
-    content:
-      text: PAGES → REORDER
-      fontFamily: Segoe UI
-      fontSize: 11
-      color: "#168C8C"
-      bold: true
-      align:
-        - left
-        - top
-      lineHeight: 1.2
+      color: "#FFFFFF"
   - elementId: title
     elementType: text
     bounds:
-        [42,49,875,66]
+        [38,29,884,58]
     role: title
     content:
-      {"text":"Move the page without losing its identity","fontFamily":"Segoe UI","fontSize":32,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.1}
-  - elementId: f-foot-rule
-    elementType: shape
-    shapeName: rect
-    bounds:
-      - 42
-      - 510
-      - 876
-      - 1
-    fill:
-      type: solid
-      color: "#CCD2CB"
-  - elementId: f-watermark
+      {"text":"Find the same slide after moving it","fontFamily":"Segoe UI","fontSize":25,"color":"#25282C","bold":true,"lineHeight":1.16,"align":["left","top"]}
+  - elementId: v-watermark
     elementType: text
     bounds:
-      - 42
-      - 518
-      - 700
-      - 17
+      - 38
+      - 520
+      - 750
+      - 12
     content:
-      text: English · ChatGPT 6 Astra
+      text: english chatgpt 6 astra
       fontFamily: Segoe UI
-      fontSize: 12
-      color: "#50646A"
+      fontSize: 8
+      color: "#6D7379"
       bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.2
-  - elementId: f-position
+  - elementId: v-position
     elementType: text
     bounds:
-      - 882
-      - 518
-      - 36
-      - 17
+      - 885
+      - 520
+      - 37
+      - 12
     content:
       text: ""
       fontFamily: Segoe UI
-      fontSize: 12
-      color: "#50646A"
+      fontSize: 8
+      color: "#6D7379"
       bold: false
+      lineHeight: 1.16
       align:
         - right
         - top
-      lineHeight: 1.2
       field: main-position
-  - elementId: f-position-before-label
+  - elementId: v-before-label
     elementType: text
     bounds:
-      - 44
-      - 140
-      - 870
+      - 38
+      - 102
+      - 423
       - 24
     content:
-      text: BEFORE REORDER
+      text: Before the move
       fontFamily: Segoe UI
-      fontSize: 14
-      color: "#50646A"
+      fontSize: 15
+      color: "#25282C"
       bold: true
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.2
-  - elementId: f-position-before
-    elementType: image
-    bounds:
-      - 44
-      - 177
-      - 870
-      - 109
-    src: media/imported/4b4475913c7e4538c9b76f47056e1edca6405a8636d7fd7c591309a373101e19.png
-    sourceName: en-identity-before-4x.png
-    fit:
-      mode: contain
-  - elementId: f-position-after-label
+  - elementId: v-after-label
     elementType: text
     bounds:
-      - 44
-      - 319
-      - 870
+      - 499
+      - 102
+      - 423
       - 24
     content:
-      text: AFTER REORDER
+      text: After the move
       fontFamily: Segoe UI
-      fontSize: 14
-      color: "#168C8C"
+      fontSize: 15
+      color: "#25282C"
       bold: true
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.2
-  - elementId: f-position-after
+  - elementId: v-before
     elementType: image
     bounds:
-      - 44
-      - 356
-      - 870
-      - 109
-    src: media/imported/cfb23a312f298e185eb847eddb1cdf9cc493d63d55082cab0cc70606789af5f5.png
-    sourceName: en-identity-after-4x.png
+      - 38
+      - 143
+      - 423
+      - 202
+    src: media/imported/4911f33522904608fcedde6ff4889017563409d9fbd36bdb1a229b0e5181e99f.png
+    sourceName: identity-before.png
     fit:
       mode: contain
-  - elementId: f-reorder-direction
-    elementType: line
+  - elementId: v-after
+    elementType: image
     bounds:
-      - 867
-      - 293
-      - 0
-      - 35
-    viewBox:
-      - 1
-      - 1
-    points: 0,0 1,1
-    border:
-      width: 2.5
-      color: "#ED6A3A"
-    arrow:
-      - null
-      - arrow
-  - elementId: f-identity-note
+      - 499
+      - 143
+      - 423
+      - 202
+    src: media/imported/27423f5db8191b2fab189e9580ac5767f12212cdb320329beff7d80db37e72c9.png
+    sourceName: identity-after.png
+    fit:
+      mode: contain
+  - elementId: v-status-source-0-top
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 110.51428571428572
+      - 337.425
+      - 93.66428571428571
+      - 1.8
+    fill:
+      type: solid
+      color: "#3B607E"
+  - elementId: v-status-source-0-bottom
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 110.51428571428572
+      - 343.2
+      - 93.66428571428571
+      - 1.8
+    fill:
+      type: solid
+      color: "#3B607E"
+  - elementId: v-status-source-0-left
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 110.51428571428572
+      - 337.425
+      - 1.8
+      - 7.575
+    fill:
+      type: solid
+      color: "#3B607E"
+  - elementId: v-status-source-0-right
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 202.37857142857143
+      - 337.425
+      - 1.8
+      - 7.575
+    fill:
+      type: solid
+      color: "#3B607E"
+  - elementId: v-actual-status-0
+    elementType: image
+    bounds:
+      - 37.99999999999997
+      - 378.44354838709677
+      - 423.00000000000006
+      - 34.112903225806434
+    src: media/imported/4911f33522904608fcedde6ff4889017563409d9fbd36bdb1a229b0e5181e99f.png
+    sourceName: identity-before.png
+    fit:
+      mode: contain
+    crop:
+      left: 0.17142857142857143
+      right: 0.6071428571428571
+      top: 0.9625
+  - elementId: v-status-source-1-top
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 571.5142857142857
+      - 337.425
+      - 93.66428571428571
+      - 1.8
+    fill:
+      type: solid
+      color: "#3B607E"
+  - elementId: v-status-source-1-bottom
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 571.5142857142857
+      - 343.2
+      - 93.66428571428571
+      - 1.8
+    fill:
+      type: solid
+      color: "#3B607E"
+  - elementId: v-status-source-1-left
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 571.5142857142857
+      - 337.425
+      - 1.8
+      - 7.575
+    fill:
+      type: solid
+      color: "#3B607E"
+  - elementId: v-status-source-1-right
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 663.3785714285715
+      - 337.425
+      - 1.8
+      - 7.575
+    fill:
+      type: solid
+      color: "#3B607E"
+  - elementId: v-actual-status-1
+    elementType: image
+    bounds:
+      - 499
+      - 378.44354838709677
+      - 423.00000000000006
+      - 34.112903225806434
+    src: media/imported/27423f5db8191b2fab189e9580ac5767f12212cdb320329beff7d80db37e72c9.png
+    sourceName: identity-after.png
+    fit:
+      mode: contain
+    crop:
+      left: 0.17142857142857143
+      right: 0.6071428571428571
+      top: 0.9625
+  - elementId: v-actual-caption
     elementType: text
     bounds:
-      - 44
-      - 481
-      - 870
-      - 24
+      - 38
+      - 449
+      - 884
+      - 50
     content:
-      text: Different position. The same C014 page and its history.
+      text: The position changes; the real status bar keeps the same Slide ID.
       fontFamily: Segoe UI
       fontSize: 18
-      color: "#112D32"
+      color: "#25282C"
       bold: true
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.2
-notes: "This real public fixture moves a page from position 2 to position 4 in a six-page Main. Its short Slide ID, C014, stays the same. Position describes the current ordering; identity connects the content, history and Presentation references. When collaborating, name the page by its short ID rather than relying only on a changing position. These are actual before and after Editor status strips."
+notes: "These are actual Editor states before and after a controlled page move. The move changes Main position, not Slide ID. The page was then restored to its intended position in the complete narrative. Its short code still locates it and History still belongs to that page."

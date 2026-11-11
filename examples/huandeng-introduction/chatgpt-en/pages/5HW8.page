@@ -3,7 +3,7 @@ background:
   type: solid
   color: "#E4ECE6"
 elements:
-  - elementId: f-bg
+  - elementId: v-bg
     elementType: shape
     shapeName: rect
     bounds:
@@ -13,159 +13,183 @@ elements:
       - 540
     fill:
       type: solid
-      color: "#F4F1E8"
-  - elementId: f-route
-    elementType: text
-    bounds:
-      - 42
-      - 20
-      - 860
-      - 18
-    content:
-      text: PEOPLE AND ASSISTANTS → SHARED PROJECT
-      fontFamily: Segoe UI
-      fontSize: 11
-      color: "#168C8C"
-      bold: true
-      align:
-        - left
-        - top
-      lineHeight: 1.2
+      color: "#FFFFFF"
   - elementId: title
     elementType: text
     bounds:
-        [42,49,875,66]
+        [38,29,884,58]
     role: title
     content:
-      {"text":"Divide the pages; review the returned work","fontFamily":"Segoe UI","fontSize":32,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.1}
-  - elementId: f-foot-rule
-    elementType: shape
-    shapeName: rect
-    bounds:
-      - 42
-      - 510
-      - 876
-      - 1
-    fill:
-      type: solid
-      color: "#CCD2CB"
-  - elementId: f-watermark
+      {"text":"Built on open work","fontFamily":"Segoe UI","fontSize":25,"color":"#25282C","bold":true,"lineHeight":1.16,"align":["left","top"]}
+  - elementId: v-watermark
     elementType: text
     bounds:
-      - 42
-      - 518
-      - 700
-      - 17
+      - 38
+      - 520
+      - 750
+      - 12
     content:
-      text: English · ChatGPT 6 Astra
+      text: english chatgpt 6 astra
       fontFamily: Segoe UI
-      fontSize: 12
-      color: "#50646A"
+      fontSize: 8
+      color: "#6D7379"
       bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.2
-  - elementId: f-position
+  - elementId: v-position
     elementType: text
     bounds:
-      - 882
-      - 518
-      - 36
-      - 17
+      - 885
+      - 520
+      - 37
+      - 12
     content:
       text: ""
       fontFamily: Segoe UI
-      fontSize: 12
-      color: "#50646A"
+      fontSize: 8
+      color: "#6D7379"
       bold: false
+      lineHeight: 1.16
       align:
         - right
         - top
-      lineHeight: 1.2
       field: main-position
-  - elementId: f-work-one
+  - elementId: v-foundations
+    elementType: table
+    bounds:
+      - 38
+      - 111
+      - 884
+      - 221
+    columnWidths:
+      - 0.32
+      - 0.68
+    rows:
+      - - text: Foundation
+          fontSize: 18
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: true
+          fill: "#E8ECEF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+        - text: Concrete contribution
+          fontSize: 18
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: true
+          fill: "#E8ECEF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+      - - text: OpenSlide
+          fontSize: 18
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: true
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+        - text: React editor codebase
+          fontSize: 18
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: false
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+      - - text: OpenPPTD
+          fontSize: 18
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: true
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+        - text: Reused formula-conversion modules
+          fontSize: 18
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: false
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+      - - text: PptxGenJS
+          fontSize: 18
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: true
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+        - text: PPTX generation
+          fontSize: 18
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: false
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+  - elementId: v-runtime-title
     elementType: text
     bounds:
-      - 44
-      - 137
-      - 398
-      - 28
+      - 38
+      - 365
+      - 884
+      - 27
     content:
-      text: GX5Z · explain the project
+      text: Other runtime foundations
       fontFamily: Segoe UI
-      fontSize: 19
-      color: "#112D32"
+      fontSize: 18
+      color: "#25282C"
       bold: true
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.2
-  - elementId: f-work-two
+  - elementId: v-runtime
     elementType: text
     bounds:
-      - 516
-      - 137
-      - 398
-      - 28
+      - 38
+      - 408
+      - 884
+      - 61
     content:
-      text: FKA9 · teach the Story brief
+      text: |-
+        React and Electron provide the interface and desktop application.
+        Apache ECharts, KaTeX and Font Awesome support charts, equations and icons.
       fontFamily: Segoe UI
-      fontSize: 19
-      color: "#112D32"
-      bold: true
+      fontSize: 16
+      color: "#25282C"
+      bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.2
-  - elementId: f-work-page-one
-    elementType: image
-    bounds:
-      - 44
-      - 181
-      - 398
-      - 224
-    src: media/imported/f3a32e5704d32f592bcb1967a0473ac5597e2feb48ee50b7a5485ac799197279.png
-    sourceName: 03.png
-    fit:
-      mode: contain
-  - elementId: f-work-page-two
-    elementType: image
-    bounds:
-      - 516
-      - 181
-      - 398
-      - 224
-    src: media/imported/608d43256094f2d6832cc74f15b988a3c0627ee4f68e14d344358f07aeeab518.png
-    sourceName: 05.png
-    fit:
-      mode: contain
-  - elementId: f-work-divider
-    elementType: shape
-    shapeName: rect
-    bounds:
-      - 478
-      - 177
-      - 2
-      - 233
-    fill:
-      type: solid
-      color: "#CCD6D1"
-  - elementId: f-work-review
+  - elementId: v-notices
     elementType: text
     bounds:
-      - 44
-      - 448
-      - 870
-      - 53
+      - 38
+      - 487
+      - 884
+      - 18
     content:
-      text: Agree on page ownership. Save focused changes. Inspect every returned page.
+      text: "Licenses and exact reuse: LICENSE, NOTICE and THIRD_PARTY_NOTICES"
       fontFamily: Segoe UI
-      fontSize: 22
-      color: "#112D32"
-      bold: true
+      fontSize: 11
+      color: "#63696F"
+      bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.2
-notes: "Agree on the scope before work begins. Different pages can be edited in parallel; a person can also hand a page from content drafting to visual refinement. This diagram illustrates a division between the project map and the Story tutorial, using actual page previews. Give shared project structure one owner, avoid simultaneous changes to the same page, and review every saved result at presentation size. Revision checks expose conflicts; they do not replace visual judgment. This English edition was authored by the main ChatGPT session."
+notes: "These formal acknowledgments restore the fifteen sources explicitly named in the original introduction. Code reuse, runtime dependencies, product inspiration and researched alternatives are different relationships. The complete thirty-three-source historical record is in docs/ACKNOWLEDGMENTS.md and the project sources. OpenSlides Studio is openslides.dev, distinct from the OpenSlide editor upstream."

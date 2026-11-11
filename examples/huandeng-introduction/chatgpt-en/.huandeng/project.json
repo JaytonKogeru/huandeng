@@ -490,15 +490,14 @@
       },
       "label": "S24",
       "designIntent": {
-        "purpose": "Teach selection through Layers and checking object stacking.",
+        "purpose": "Keep the source and the instance distinct",
         "keep": [
-          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
-          "Keep stable page identity, editable objects and the correct author watermark."
+          "Keep the founder’s argument, actual evidence, spatial context and source attribution."
         ],
-        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
-        "actor": "ChatGPT 6 Astra",
+        "requestedChange": "Continue from this narrative; make a scoped change without replacing the story.",
+        "actor": "ChatGPT 6 Astra / root",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "recordedAt": "2026-11-11T00:50:51.295Z",
+        "recordedAt": "2026-11-11T12:29:40.331Z",
         "pageRole": "content"
       }
     },
@@ -513,15 +512,14 @@
       "label": "S25",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "Check the delivery format, collection and page count before export.",
+        "purpose": "Rehearse, then export",
         "keep": [
-          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
-          "Keep stable page identity, editable objects and the correct author watermark."
+          "Keep the founder’s argument, actual evidence, spatial context and source attribution."
         ],
-        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
-        "actor": "ChatGPT 6 Astra",
+        "requestedChange": "Continue from this narrative; make a scoped change without replacing the story.",
+        "actor": "ChatGPT 6 Astra / root",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "recordedAt": "2026-11-11T01:36:36.082Z"
+        "recordedAt": "2026-11-11T12:29:40.331Z"
       }
     },
     "90353b2a-6f7b-4ee5-8a8b-10bceb538190": {
@@ -535,15 +533,14 @@
       "label": "S26",
       "designIntent": {
         "pageRole": "cover",
-        "purpose": "Show the real Editor and a practical path from opening a project to editing and delivery.",
+        "purpose": "HUANDENG",
         "keep": [
-          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
-          "Keep stable page identity, editable objects and the correct author watermark."
+          "Keep the founder’s argument, actual evidence, spatial context and source attribution."
         ],
-        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
-        "actor": "ChatGPT 6 Astra",
+        "requestedChange": "Continue from this narrative; make a scoped change without replacing the story.",
+        "actor": "ChatGPT 6 Astra / root",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "recordedAt": "2026-11-11T01:05:02.473Z"
+        "recordedAt": "2026-11-11T12:29:40.329Z"
       }
     },
     "6b9fbac0-772c-435c-bce1-9cad0004af65": {
@@ -556,16 +553,15 @@
       },
       "label": "S27",
       "designIntent": {
-        "pageRole": "content",
-        "purpose": "Teach page selection, object selection and the Inspector relationship.",
+        "pageRole": "section",
+        "purpose": "A working document",
         "keep": [
-          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
-          "Keep stable page identity, editable objects and the correct author watermark."
+          "Keep the founder’s argument, actual evidence, spatial context and source attribution."
         ],
-        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
-        "actor": "ChatGPT 6 Astra",
+        "requestedChange": "Continue from this narrative; make a scoped change without replacing the story.",
+        "actor": "ChatGPT 6 Astra / root",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "recordedAt": "2026-11-11T01:36:15.874Z"
+        "recordedAt": "2026-11-11T12:29:40.331Z"
       }
     },
     "ca1eec7e-61bd-41ac-b6ab-e000d06797be": {
@@ -579,15 +575,14 @@
       "label": "S28",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "Teach an aligned, readable before-and-after comparison of a focused edit.",
+        "purpose": "A useful hand-off keeps the working context",
         "keep": [
-          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
-          "Keep stable page identity, editable objects and the correct author watermark."
+          "Keep the founder’s argument, actual evidence, spatial context and source attribution."
         ],
-        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
-        "actor": "ChatGPT 6 Astra",
+        "requestedChange": "Continue from this narrative; make a scoped change without replacing the story.",
+        "actor": "ChatGPT 6 Astra / root",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "recordedAt": "2026-11-11T01:17:50.599Z"
+        "recordedAt": "2026-11-11T12:29:40.331Z"
       }
     },
     "3f5561d8-477e-4954-bee2-9877c8cddc69": {
@@ -601,15 +596,14 @@
       "label": "S29",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "Teach inspection of the exact saved objects and properties.",
+        "purpose": "Inspect what was saved",
         "keep": [
-          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
-          "Keep stable page identity, editable objects and the correct author watermark."
+          "Keep the founder’s argument, actual evidence, spatial context and source attribution."
         ],
-        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
-        "actor": "ChatGPT 6 Astra",
+        "requestedChange": "Continue from this narrative; make a scoped change without replacing the story.",
+        "actor": "ChatGPT 6 Astra / root",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "recordedAt": "2026-11-11T00:51:03.820Z"
+        "recordedAt": "2026-11-11T12:29:40.331Z"
       }
     },
     "7d7d42a0-0db7-4d33-9b3f-5e1035097b50": {
@@ -623,15 +617,14 @@
       "label": "S30",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "Teach a durable brief: purpose, preservation constraints and the requested change.",
+        "purpose": "Leave a clear brief beside the page",
         "keep": [
-          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
-          "Keep stable page identity, editable objects and the correct author watermark."
+          "Keep the founder’s argument, actual evidence, spatial context and source attribution."
         ],
-        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
-        "actor": "ChatGPT 6 Astra",
+        "requestedChange": "Continue from this narrative; make a scoped change without replacing the story.",
+        "actor": "ChatGPT 6 Astra / root",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "recordedAt": "2026-11-11T01:05:14.758Z"
+        "recordedAt": "2026-11-11T12:29:40.331Z"
       }
     },
     "95189956-cdd7-4ad9-88c8-cf28a204bb68": {
@@ -645,15 +638,14 @@
       "label": "S31",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "Teach selected text editing, canvas inspection and an explicit save.",
+        "purpose": "Change the claim; keep the evidence",
         "keep": [
-          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
-          "Keep stable page identity, editable objects and the correct author watermark."
+          "Keep the founder’s argument, actual evidence, spatial context and source attribution."
         ],
-        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
-        "actor": "ChatGPT 6 Astra",
+        "requestedChange": "Continue from this narrative; make a scoped change without replacing the story.",
+        "actor": "ChatGPT 6 Astra / root",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "recordedAt": "2026-11-11T01:05:28.150Z"
+        "recordedAt": "2026-11-11T12:29:40.331Z"
       }
     },
     "d497fb11-7906-414e-a529-0d97680bce51": {
@@ -666,16 +658,15 @@
       },
       "label": "S32",
       "designIntent": {
-        "pageRole": "content",
-        "purpose": "Use the actual page grid to inspect rhythm and density across a sequence.",
+        "pageRole": "section",
+        "purpose": "Make one change",
         "keep": [
-          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
-          "Keep stable page identity, editable objects and the correct author watermark."
+          "Keep the founder’s argument, actual evidence, spatial context and source attribution."
         ],
-        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
-        "actor": "ChatGPT 6 Astra",
+        "requestedChange": "Continue from this narrative; make a scoped change without replacing the story.",
+        "actor": "ChatGPT 6 Astra / root",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "recordedAt": "2026-11-11T01:36:22.061Z"
+        "recordedAt": "2026-11-11T12:29:40.331Z"
       }
     },
     "6a3aec16-2347-40fe-856d-df36c1f58509": {
@@ -689,15 +680,14 @@
       "label": "S33",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "Teach naming, inspecting and reusing a meaningful page version.",
+        "purpose": "Find your place in the Editor",
         "keep": [
-          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
-          "Keep stable page identity, editable objects and the correct author watermark."
+          "Keep the founder’s argument, actual evidence, spatial context and source attribution."
         ],
-        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
-        "actor": "ChatGPT 6 Astra",
+        "requestedChange": "Continue from this narrative; make a scoped change without replacing the story.",
+        "actor": "ChatGPT 6 Astra / root",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "recordedAt": "2026-11-11T01:36:43.979Z"
+        "recordedAt": "2026-11-11T12:29:40.331Z"
       }
     },
     "4a066483-9a11-450c-be15-c0be33d52989": {
@@ -711,15 +701,14 @@
       "label": "S34",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "Teach how to find and place an existing original or import a new asset.",
+        "purpose": "Keep the figure connected to its source",
         "keep": [
-          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
-          "Keep stable page identity, editable objects and the correct author watermark."
+          "Keep the founder’s argument, actual evidence, spatial context and source attribution."
         ],
-        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
-        "actor": "ChatGPT 6 Astra",
-        "source": "sources/story/PRODUCT-BRIEF.md",
-        "recordedAt": "2026-11-11T01:05:21.373Z"
+        "requestedChange": "Continue from this narrative; make a scoped change without replacing the story.",
+        "actor": "ChatGPT 6 Astra / root",
+        "source": "sources/independent-20261111/ACQUISITION.json",
+        "recordedAt": "2026-11-11T12:29:40.331Z"
       }
     },
     "4a398dd0-ad74-4a36-b65e-6068ffe817a8": {
@@ -732,16 +721,15 @@
       },
       "label": "S35",
       "designIntent": {
-        "pageRole": "content",
-        "purpose": "Rehearse the selected talk from the beginning or current page.",
+        "pageRole": "section",
+        "purpose": "Return to the next talk",
         "keep": [
-          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
-          "Keep stable page identity, editable objects and the correct author watermark."
+          "Keep the founder’s argument, actual evidence, spatial context and source attribution."
         ],
-        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
-        "actor": "ChatGPT 6 Astra",
+        "requestedChange": "Continue from this narrative; make a scoped change without replacing the story.",
+        "actor": "ChatGPT 6 Astra / root",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "recordedAt": "2026-11-11T01:36:28.537Z"
+        "recordedAt": "2026-11-11T12:29:40.331Z"
       }
     },
     "3d7cd245-6d59-4123-a75f-fd400fd636c7": {
@@ -755,15 +743,14 @@
       "label": "S36",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "Explain Section membership through first-slide boundaries.",
+        "purpose": "Ideas worth acknowledging",
         "keep": [
-          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
-          "Keep stable page identity, editable objects and the correct author watermark."
+          "Keep the founder’s argument, actual evidence, spatial context and source attribution."
         ],
-        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
-        "actor": "ChatGPT 6 Astra",
+        "requestedChange": "Continue from this narrative; make a scoped change without replacing the story.",
+        "actor": "ChatGPT 6 Astra / root",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "recordedAt": "2026-11-11T01:45:06.729Z"
+        "recordedAt": "2026-11-11T12:29:40.331Z"
       }
     },
     "dc5bfe5f-326a-4b28-8536-56e51ea4397e": {
@@ -777,15 +764,14 @@
       "label": "S37",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "Distinguish stable page identity from its changing position.",
+        "purpose": "Find the same slide after moving it",
         "keep": [
-          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
-          "Keep stable page identity, editable objects and the correct author watermark."
+          "Keep the founder’s argument, actual evidence, spatial context and source attribution."
         ],
-        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
-        "actor": "ChatGPT 6 Astra",
+        "requestedChange": "Continue from this narrative; make a scoped change without replacing the story.",
+        "actor": "ChatGPT 6 Astra / root",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "recordedAt": "2026-11-11T01:12:51.711Z"
+        "recordedAt": "2026-11-11T12:29:40.331Z"
       }
     },
     "80c650ec-8f56-403d-8f44-d190a84ed4b4": {
@@ -799,15 +785,14 @@
       "label": "S38",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "Give one occurrence in a talk its own speaking notes.",
+        "purpose": "Keep this talk's notes with this occurrence",
         "keep": [
-          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
-          "Keep stable page identity, editable objects and the correct author watermark."
+          "Keep the founder’s argument, actual evidence, spatial context and source attribution."
         ],
-        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
-        "actor": "ChatGPT 6 Astra",
+        "requestedChange": "Continue from this narrative; make a scoped change without replacing the story.",
+        "actor": "ChatGPT 6 Astra / root",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "recordedAt": "2026-11-11T01:12:58.990Z"
+        "recordedAt": "2026-11-11T12:29:40.331Z"
       }
     },
     "e4fb0f10-ffa5-44e2-907f-b92e1b69535e": {
@@ -821,15 +806,14 @@
       "label": "S39",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "Connect a supported assistant to the same project through its client setup.",
+        "purpose": "A reported result should lead to real work",
         "keep": [
-          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
-          "Keep stable page identity, editable objects and the correct author watermark."
+          "Keep the founder’s argument, actual evidence, spatial context and source attribution."
         ],
-        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
-        "actor": "ChatGPT 6 Astra",
+        "requestedChange": "Continue from this narrative; make a scoped change without replacing the story.",
+        "actor": "ChatGPT 6 Astra / root",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "recordedAt": "2026-11-11T01:05:42.522Z"
+        "recordedAt": "2026-11-11T12:29:40.331Z"
       }
     },
     "8050a155-9c2b-4cf5-b643-e9406b9b2b1c": {
@@ -843,15 +827,14 @@
       "label": "S40",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "Choose between following Main and pinning a named page version.",
+        "purpose": "Choose a live page or a fixed version",
         "keep": [
-          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
-          "Keep stable page identity, editable objects and the correct author watermark."
+          "Keep the founder’s argument, actual evidence, spatial context and source attribution."
         ],
-        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
-        "actor": "ChatGPT 6 Astra",
+        "requestedChange": "Continue from this narrative; make a scoped change without replacing the story.",
+        "actor": "ChatGPT 6 Astra / root",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "recordedAt": "2026-11-11T01:20:40.915Z"
+        "recordedAt": "2026-11-11T12:29:40.331Z"
       }
     },
     "bbcdc92a-915c-4988-a4d5-76e466d0424f": {
@@ -865,15 +848,14 @@
       "label": "S41",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "Assign page ownership, coordinate shared structure and inspect every result.",
+        "purpose": "Built on open work",
         "keep": [
-          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
-          "Keep stable page identity, editable objects and the correct author watermark."
+          "Keep the founder’s argument, actual evidence, spatial context and source attribution."
         ],
-        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
-        "actor": "ChatGPT 6 Astra",
+        "requestedChange": "Continue from this narrative; make a scoped change without replacing the story.",
+        "actor": "ChatGPT 6 Astra / root",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "recordedAt": "2026-11-11T00:54:45.980Z"
+        "recordedAt": "2026-11-11T12:29:40.331Z"
       }
     },
     "8f9e154d-c5c2-4d79-b809-984586f8311e": {
@@ -887,15 +869,14 @@
       "label": "S42",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "Complete a first useful edit and retain the project source attributions.",
+        "purpose": "Start with your story",
         "keep": [
-          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
-          "Keep stable page identity, editable objects and the correct author watermark."
+          "Keep the founder’s argument, actual evidence, spatial context and source attribution."
         ],
-        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
-        "actor": "ChatGPT 6 Astra",
+        "requestedChange": "Continue from this narrative; make a scoped change without replacing the story.",
+        "actor": "ChatGPT 6 Astra / root",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "recordedAt": "2026-11-11T00:54:54.308Z"
+        "recordedAt": "2026-11-11T12:29:40.331Z"
       }
     },
     "3410d070-9af3-44d0-911b-a60c36adbd94": {
@@ -935,15 +916,14 @@
       },
       "label": "S45",
       "designIntent": {
-        "purpose": "Connect focused revisions to preserving useful work and inspecting what changed.",
-        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
+        "purpose": "Two edits, another fifty-page file",
+        "requestedChange": "Continue from this narrative; make a scoped change without replacing the story.",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "actor": "ChatGPT 6 Astra",
-        "recordedAt": "2026-11-11T00:50:07.975Z",
+        "actor": "ChatGPT 6 Astra / root",
+        "recordedAt": "2026-11-11T12:29:40.331Z",
         "pageRole": "content",
         "keep": [
-          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
-          "Keep stable page identity, editable objects and the correct author watermark."
+          "Keep the founder’s argument, actual evidence, spatial context and source attribution."
         ]
       }
     },
@@ -957,15 +937,14 @@
       },
       "label": "S46",
       "designIntent": {
-        "purpose": "Hand off the complete folder so another person can continue editing.",
-        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
+        "purpose": "What HUANDENG adds",
+        "requestedChange": "Continue from this narrative; make a scoped change without replacing the story.",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "actor": "ChatGPT 6 Astra",
-        "recordedAt": "2026-11-11T01:17:57.780Z",
+        "actor": "ChatGPT 6 Astra / root",
+        "recordedAt": "2026-11-11T12:29:40.331Z",
         "pageRole": "content",
         "keep": [
-          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
-          "Keep stable page identity, editable objects and the correct author watermark."
+          "Keep the founder’s argument, actual evidence, spatial context and source attribution."
         ]
       }
     },
@@ -1017,15 +996,14 @@
       },
       "label": "S49",
       "designIntent": {
-        "purpose": "Explain the working folder and the roles of its entry, pages, assets and history.",
-        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
+        "purpose": "A deck is already a collection of parts",
+        "requestedChange": "Continue from this narrative; make a scoped change without replacing the story.",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "actor": "ChatGPT 6 Astra",
-        "recordedAt": "2026-11-11T01:05:08.017Z",
+        "actor": "ChatGPT 6 Astra / root",
+        "recordedAt": "2026-11-11T12:29:40.331Z",
         "pageRole": "content",
         "keep": [
-          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
-          "Keep stable page identity, editable objects and the correct author watermark."
+          "Keep the founder’s argument, actual evidence, spatial context and source attribution."
         ]
       }
     },
@@ -1039,15 +1017,14 @@
       },
       "label": "S50",
       "designIntent": {
-        "purpose": "Use Outline to read the page purpose and its place in the argument.",
-        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
+        "purpose": "Read the sequence",
+        "requestedChange": "Continue from this narrative; make a scoped change without replacing the story.",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "actor": "ChatGPT 6 Astra",
-        "recordedAt": "2026-11-11T01:36:50.820Z",
+        "actor": "ChatGPT 6 Astra / root",
+        "recordedAt": "2026-11-11T12:29:40.331Z",
         "pageRole": "content",
         "keep": [
-          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
-          "Keep stable page identity, editable objects and the correct author watermark."
+          "Keep the founder’s argument, actual evidence, spatial context and source attribution."
         ]
       }
     },
@@ -1061,133 +1038,195 @@
       },
       "label": "S51",
       "designIntent": {
-        "purpose": "Build a talk by selecting references from the Main page library.",
-        "requestedChange": "Teach an actionable Editor workflow through clear pictures and a focused narrative.",
+        "purpose": "One library, two different talks",
+        "requestedChange": "Continue from this narrative; make a scoped change without replacing the story.",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "actor": "ChatGPT 6 Astra",
-        "recordedAt": "2026-11-11T01:36:58.466Z",
+        "actor": "ChatGPT 6 Astra / root",
+        "recordedAt": "2026-11-11T12:29:40.331Z",
         "pageRole": "content",
         "keep": [
-          "Keep actual interface pixels, source attribution and the demonstrated behavior.",
-          "Keep stable page identity, editable objects and the correct author watermark."
+          "Keep the founder’s argument, actual evidence, spatial context and source attribution."
         ]
+      }
+    },
+    "f7bc5cc5-0da9-4379-b8a5-20b664cf4989": {
+      "shortCode": "XU8A",
+      "path": "pages/XU8A.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S52",
+      "designIntent": {
+        "purpose": "At lab meetings, people could tell",
+        "keep": [
+          "Keep the founder’s argument, actual evidence, spatial context and source attribution."
+        ],
+        "requestedChange": "Continue from this narrative; make a scoped change without replacing the story.",
+        "actor": "ChatGPT 6 Astra / root",
+        "recordedAt": "2026-11-11T12:29:40.331Z"
+      }
+    },
+    "f211491a-e8bb-4b16-bde9-9bbe30d15ff8": {
+      "shortCode": "2UW6",
+      "path": "pages/2UW6.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S53",
+      "designIntent": {
+        "purpose": "Tell the story before laying out the pages",
+        "keep": [
+          "Keep the founder’s argument, actual evidence, spatial context and source attribution."
+        ],
+        "requestedChange": "Continue from this narrative; make a scoped change without replacing the story.",
+        "actor": "ChatGPT 6 Astra / root",
+        "recordedAt": "2026-11-11T12:29:40.331Z"
+      }
+    },
+    "19afe5c2-426b-4e52-8cc9-f2c616f4f621": {
+      "shortCode": "5GXC",
+      "path": "pages/5GXC.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S54",
+      "designIntent": {
+        "purpose": "The rules stay in the Project",
+        "keep": [
+          "Keep the founder’s argument, actual evidence, spatial context and source attribution."
+        ],
+        "requestedChange": "Continue from this narrative; make a scoped change without replacing the story.",
+        "actor": "ChatGPT 6 Astra / root",
+        "recordedAt": "2026-11-11T12:29:40.331Z"
+      }
+    },
+    "b58daf2e-1ca1-4195-9412-580d9bb6af39": {
+      "shortCode": "3WQH",
+      "path": "pages/3WQH.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S55",
+      "designIntent": {
+        "purpose": "Keep the work yours",
+        "keep": [
+          "Keep the founder’s argument, actual evidence, spatial context and source attribution."
+        ],
+        "requestedChange": "Continue from this narrative; make a scoped change without replacing the story.",
+        "actor": "ChatGPT 6 Astra / root",
+        "recordedAt": "2026-11-11T12:29:40.331Z",
+        "pageRole": "section"
       }
     }
   },
   "project": {
     "schemaVersion": 1,
     "mainStory": {
-      "purpose": "Teach the HUANDENG workflow from opening a project to editing, review, talk composition and delivery.",
-      "audience": "People making presentations with or without an AI assistant.",
-      "takeaway": "Use one working project, inspect every edit, and reuse the pages for each audience."
+      "purpose": "Explain why HUANDENG keeps the author’s story, evidence and next edit in one continuing Project.",
+      "audience": "Scientific presenters and contributors",
+      "takeaway": "Start from the author’s story, make a focused change, inspect it and reuse the work for the next talk."
     },
     "sections": [
       {
-        "id": "intro-section-0",
-        "title": "Open a working project",
+        "id": "narrative-en-0",
+        "title": "Why I started",
         "story": {
-          "purpose": "Open a working project",
-          "audience": "People learning the HUANDENG Editor",
-          "takeaway": "Perform the demonstrated action in the same working project."
+          "purpose": "Explain why HUANDENG keeps the author’s story, evidence and next edit in one continuing Project.",
+          "audience": "Scientific presenters and contributors",
+          "takeaway": "Start from the author’s story, make a focused change, inspect it and reuse the work for the next talk."
         },
         "frontMatter": true,
         "pageIds": [
           "90353b2a-6f7b-4ee5-8a8b-10bceb538190",
+          "f7bc5cc5-0da9-4379-b8a5-20b664cf4989",
           "4ec264b7-018d-449c-8c8b-d9aede33a840",
-          "1ba18ad8-0701-4de6-83f5-555b949293d7"
+          "f211491a-e8bb-4b16-bde9-9bbe30d15ff8"
         ],
         "startPageId": "90353b2a-6f7b-4ee5-8a8b-10bceb538190"
       },
       {
-        "id": "intro-section-1",
-        "title": "Make a focused edit",
+        "id": "narrative-en-1",
+        "title": "A working document",
         "story": {
-          "purpose": "Make a focused edit",
-          "audience": "People learning the HUANDENG Editor",
-          "takeaway": "Perform the demonstrated action in the same working project."
+          "purpose": "A working document",
+          "audience": "Scientific presenters and contributors",
+          "takeaway": "Start from the author’s story, make a focused change, inspect it and reuse the work for the next talk."
         },
         "pageIds": [
           "6b9fbac0-772c-435c-bce1-9cad0004af65",
+          "1ba18ad8-0701-4de6-83f5-555b949293d7",
+          "e0b400eb-ddc1-4c42-af48-d420785b1d8f",
+          "6a3aec16-2347-40fe-856d-df36c1f58509",
           "7d7d42a0-0db7-4d33-9b3f-5e1035097b50",
-          "4a066483-9a11-450c-be15-c0be33d52989",
-          "95189956-cdd7-4ad9-88c8-cf28a204bb68",
-          "c4b12919-5876-4acb-b63f-6a7493b54b37"
+          "19afe5c2-426b-4e52-8cc9-f2c616f4f621"
         ],
         "startPageId": "6b9fbac0-772c-435c-bce1-9cad0004af65"
       },
       {
-        "id": "intro-section-2",
-        "title": "Review and keep versions",
+        "id": "narrative-en-2",
+        "title": "Make one change",
         "story": {
-          "purpose": "Review and keep versions",
-          "audience": "People learning the HUANDENG Editor",
-          "takeaway": "Perform the demonstrated action in the same working project."
-        },
-        "pageIds": [
-          "ca1eec7e-61bd-41ac-b6ab-e000d06797be",
-          "3f5561d8-477e-4954-bee2-9877c8cddc69",
-          "dc5bfe5f-326a-4b28-8536-56e51ea4397e",
-          "6a3aec16-2347-40fe-856d-df36c1f58509"
-        ],
-        "startPageId": "ca1eec7e-61bd-41ac-b6ab-e000d06797be"
-      },
-      {
-        "id": "intro-section-3",
-        "title": "Read the whole sequence",
-        "story": {
-          "purpose": "Read the whole sequence",
-          "audience": "People learning the HUANDENG Editor",
-          "takeaway": "Perform the demonstrated action in the same working project."
+          "purpose": "Make one change",
+          "audience": "Scientific presenters and contributors",
+          "takeaway": "Start from the author’s story, make a focused change, inspect it and reuse the work for the next talk."
         },
         "pageIds": [
           "d497fb11-7906-414e-a529-0d97680bce51",
-          "62d5734d-2fe5-441c-a50a-abaa95145b56",
-          "3d7cd245-6d59-4123-a75f-fd400fd636c7"
+          "4a066483-9a11-450c-be15-c0be33d52989",
+          "95189956-cdd7-4ad9-88c8-cf28a204bb68",
+          "3f5561d8-477e-4954-bee2-9877c8cddc69",
+          "dc5bfe5f-326a-4b28-8536-56e51ea4397e",
+          "c4b12919-5876-4acb-b63f-6a7493b54b37"
         ],
         "startPageId": "d497fb11-7906-414e-a529-0d97680bce51"
       },
       {
-        "id": "intro-section-4",
-        "title": "Build and deliver a talk",
+        "id": "narrative-en-3",
+        "title": "Return to the next talk",
         "story": {
-          "purpose": "Build and deliver a talk",
-          "audience": "People learning the HUANDENG Editor",
-          "takeaway": "Perform the demonstrated action in the same working project."
+          "purpose": "Return to the next talk",
+          "audience": "Scientific presenters and contributors",
+          "takeaway": "Start from the author’s story, make a focused change, inspect it and reuse the work for the next talk."
         },
         "pageIds": [
+          "4a398dd0-ad74-4a36-b65e-6068ffe817a8",
+          "62d5734d-2fe5-441c-a50a-abaa95145b56",
           "095ba6fb-14f6-42b1-815a-7970ac214058",
           "80c650ec-8f56-403d-8f44-d190a84ed4b4",
           "8050a155-9c2b-4cf5-b643-e9406b9b2b1c",
-          "4a398dd0-ad74-4a36-b65e-6068ffe817a8",
-          "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6",
-          "e0b400eb-ddc1-4c42-af48-d420785b1d8f"
+          "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6"
         ],
-        "startPageId": "095ba6fb-14f6-42b1-815a-7970ac214058"
+        "startPageId": "4a398dd0-ad74-4a36-b65e-6068ffe817a8"
       },
       {
-        "id": "intro-section-5",
-        "title": "Continue with an assistant",
+        "id": "narrative-en-4",
+        "title": "Keep the work yours",
         "story": {
-          "purpose": "Continue with an assistant",
-          "audience": "People learning the HUANDENG Editor",
-          "takeaway": "Perform the demonstrated action in the same working project."
+          "purpose": "Keep the work yours",
+          "audience": "Scientific presenters and contributors",
+          "takeaway": "Start from the author’s story, make a focused change, inspect it and reuse the work for the next talk."
         },
         "pageIds": [
+          "b58daf2e-1ca1-4195-9412-580d9bb6af39",
           "e4fb0f10-ffa5-44e2-907f-b92e1b69535e",
+          "ca1eec7e-61bd-41ac-b6ab-e000d06797be",
           "bbcdc92a-915c-4988-a4d5-76e466d0424f",
+          "3d7cd245-6d59-4123-a75f-fd400fd636c7",
           "8f9e154d-c5c2-4d79-b809-984586f8311e"
         ],
-        "startPageId": "e4fb0f10-ffa5-44e2-907f-b92e1b69535e"
+        "startPageId": "b58daf2e-1ca1-4195-9412-580d9bb6af39"
       }
     ],
     "presentations": [
       {
         "id": "introduction-full",
-        "title": "Editor walkthrough",
+        "title": "The continuing working document",
         "story": {
-          "purpose": "Teach a practical HUANDENG editing and delivery workflow.",
-          "audience": "People new to the Editor",
-          "takeaway": "Open, edit, review and reuse one working project."
+          "purpose": "Explain why HUANDENG keeps the author’s story, evidence and next edit in one continuing Project.",
+          "audience": "Scientific presenters and contributors",
+          "takeaway": "Start from the author’s story, make a focused change, inspect it and reuse the work for the next talk."
         },
         "items": [
           {
@@ -1196,14 +1235,19 @@
             "pageId": "90353b2a-6f7b-4ee5-8a8b-10bceb538190"
           },
           {
+            "id": "introduction-full-narrative-1",
+            "kind": "page",
+            "pageId": "f7bc5cc5-0da9-4379-b8a5-20b664cf4989"
+          },
+          {
             "id": "introduction-full-story-21",
             "kind": "page",
             "pageId": "4ec264b7-018d-449c-8c8b-d9aede33a840"
           },
           {
-            "id": "introduction-full-story-22",
+            "id": "introduction-full-narrative-3",
             "kind": "page",
-            "pageId": "1ba18ad8-0701-4de6-83f5-555b949293d7"
+            "pageId": "f211491a-e8bb-4b16-bde9-9bbe30d15ff8"
           },
           {
             "id": "full-2",
@@ -1211,9 +1255,34 @@
             "pageId": "6b9fbac0-772c-435c-bce1-9cad0004af65"
           },
           {
+            "id": "introduction-full-story-22",
+            "kind": "page",
+            "pageId": "1ba18ad8-0701-4de6-83f5-555b949293d7"
+          },
+          {
+            "id": "introduction-full-story-23",
+            "kind": "page",
+            "pageId": "e0b400eb-ddc1-4c42-af48-d420785b1d8f"
+          },
+          {
+            "id": "full-10",
+            "kind": "page",
+            "pageId": "6a3aec16-2347-40fe-856d-df36c1f58509"
+          },
+          {
             "id": "full-3",
             "kind": "page",
             "pageId": "7d7d42a0-0db7-4d33-9b3f-5e1035097b50"
+          },
+          {
+            "id": "introduction-full-narrative-9",
+            "kind": "page",
+            "pageId": "19afe5c2-426b-4e52-8cc9-f2c616f4f621"
+          },
+          {
+            "id": "full-6",
+            "kind": "page",
+            "pageId": "d497fb11-7906-414e-a529-0d97680bce51"
           },
           {
             "id": "full-7",
@@ -1226,16 +1295,6 @@
             "pageId": "95189956-cdd7-4ad9-88c8-cf28a204bb68"
           },
           {
-            "id": "full-1",
-            "kind": "page",
-            "pageId": "c4b12919-5876-4acb-b63f-6a7493b54b37"
-          },
-          {
-            "id": "full-5",
-            "kind": "page",
-            "pageId": "ca1eec7e-61bd-41ac-b6ab-e000d06797be"
-          },
-          {
             "id": "full-9",
             "kind": "page",
             "pageId": "3f5561d8-477e-4954-bee2-9877c8cddc69"
@@ -1246,24 +1305,19 @@
             "pageId": "dc5bfe5f-326a-4b28-8536-56e51ea4397e"
           },
           {
-            "id": "full-10",
+            "id": "full-1",
             "kind": "page",
-            "pageId": "6a3aec16-2347-40fe-856d-df36c1f58509"
+            "pageId": "c4b12919-5876-4acb-b63f-6a7493b54b37"
           },
           {
-            "id": "full-6",
+            "id": "full-11",
             "kind": "page",
-            "pageId": "d497fb11-7906-414e-a529-0d97680bce51"
+            "pageId": "4a398dd0-ad74-4a36-b65e-6068ffe817a8"
           },
           {
             "id": "introduction-full-story-25",
             "kind": "page",
             "pageId": "62d5734d-2fe5-441c-a50a-abaa95145b56"
-          },
-          {
-            "id": "full-12",
-            "kind": "page",
-            "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7"
           },
           {
             "id": "introduction-full-story-26",
@@ -1281,19 +1335,14 @@
             "pageId": "8050a155-9c2b-4cf5-b643-e9406b9b2b1c"
           },
           {
-            "id": "full-11",
-            "kind": "page",
-            "pageId": "4a398dd0-ad74-4a36-b65e-6068ffe817a8"
-          },
-          {
             "id": "full-8",
             "kind": "page",
             "pageId": "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6"
           },
           {
-            "id": "introduction-full-story-23",
+            "id": "introduction-full-narrative-22",
             "kind": "page",
-            "pageId": "e0b400eb-ddc1-4c42-af48-d420785b1d8f"
+            "pageId": "b58daf2e-1ca1-4195-9412-580d9bb6af39"
           },
           {
             "id": "full-15",
@@ -1301,9 +1350,19 @@
             "pageId": "e4fb0f10-ffa5-44e2-907f-b92e1b69535e"
           },
           {
+            "id": "full-5",
+            "kind": "page",
+            "pageId": "ca1eec7e-61bd-41ac-b6ab-e000d06797be"
+          },
+          {
             "id": "full-17",
             "kind": "page",
             "pageId": "bbcdc92a-915c-4988-a4d5-76e466d0424f"
+          },
+          {
+            "id": "full-12",
+            "kind": "page",
+            "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7"
           },
           {
             "id": "full-18",
@@ -1314,11 +1373,11 @@
       },
       {
         "id": "introduction-short",
-        "title": "First edit · short talk",
+        "title": "A shorter introduction",
         "story": {
-          "purpose": "Teach a practical HUANDENG editing and delivery workflow.",
-          "audience": "People new to the Editor",
-          "takeaway": "Open, edit, review and reuse one working project."
+          "purpose": "Explain why HUANDENG keeps the author’s story, evidence and next edit in one continuing Project.",
+          "audience": "Scientific presenters and contributors",
+          "takeaway": "Start from the author’s story, make a focused change, inspect it and reuse the work for the next talk."
         },
         "items": [
           {
@@ -1327,31 +1386,56 @@
             "pageId": "90353b2a-6f7b-4ee5-8a8b-10bceb538190"
           },
           {
+            "id": "introduction-short-narrative-1",
+            "kind": "page",
+            "pageId": "f7bc5cc5-0da9-4379-b8a5-20b664cf4989"
+          },
+          {
+            "id": "introduction-short-narrative-2",
+            "kind": "page",
+            "pageId": "4ec264b7-018d-449c-8c8b-d9aede33a840"
+          },
+          {
+            "id": "introduction-short-narrative-3",
+            "kind": "page",
+            "pageId": "f211491a-e8bb-4b16-bde9-9bbe30d15ff8"
+          },
+          {
+            "id": "introduction-short-narrative-6b9fbac0-772c-435c-bce1-9cad0004af65",
+            "kind": "page",
+            "pageId": "6b9fbac0-772c-435c-bce1-9cad0004af65"
+          },
+          {
             "id": "introduction-short-product-22",
             "kind": "page",
-            "pageId": "1ba18ad8-0701-4de6-83f5-555b949293d7",
-            "versionId": "checkpoint:48c8cc57a4164ade03e9e753f4d8a9e2"
+            "pageId": "1ba18ad8-0701-4de6-83f5-555b949293d7"
+          },
+          {
+            "id": "introduction-short-narrative-5",
+            "kind": "page",
+            "pageId": "e0b400eb-ddc1-4c42-af48-d420785b1d8f"
+          },
+          {
+            "id": "introduction-short-narrative-6",
+            "kind": "page",
+            "pageId": "6a3aec16-2347-40fe-856d-df36c1f58509"
           },
           {
             "id": "introduction-short-product-5",
             "kind": "page",
             "pageId": "7d7d42a0-0db7-4d33-9b3f-5e1035097b50",
-            "notes": "For this short introduction, open Story and point to the purpose, preservation list and requested change. Ask the audience to write one focused editing request. Keep the speaking detail here; the page itself remains shared with the full walkthrough."
+            "notes": "In this shorter talk, emphasize the author’s purpose and one preservation instruction. Keep the detailed tour for the full introduction."
+          },
+          {
+            "id": "introduction-short-narrative-d497fb11-7906-414e-a529-0d97680bce51",
+            "kind": "page",
+            "pageId": "d497fb11-7906-414e-a529-0d97680bce51"
           },
           {
             "id": "introduction-short-tutorial-3",
             "kind": "page",
-            "pageId": "4a066483-9a11-450c-be15-c0be33d52989"
-          },
-          {
-            "id": "introduction-short-story-6",
-            "kind": "page",
-            "pageId": "95189956-cdd7-4ad9-88c8-cf28a204bb68"
-          },
-          {
-            "id": "introduction-short-tutorial-5",
-            "kind": "page",
-            "pageId": "ca1eec7e-61bd-41ac-b6ab-e000d06797be"
+            "pageId": "4a066483-9a11-450c-be15-c0be33d52989",
+            "versionId": "checkpoint:13230a34ae519255eb0dbb33727db43c"
           },
           {
             "id": "introduction-short-product-4",
@@ -1359,24 +1443,34 @@
             "pageId": "3f5561d8-477e-4954-bee2-9877c8cddc69"
           },
           {
+            "id": "introduction-short-narrative-4a398dd0-ad74-4a36-b65e-6068ffe817a8",
+            "kind": "page",
+            "pageId": "4a398dd0-ad74-4a36-b65e-6068ffe817a8"
+          },
+          {
             "id": "introduction-short-tutorial-7",
             "kind": "page",
             "pageId": "095ba6fb-14f6-42b1-815a-7970ac214058"
           },
           {
-            "id": "introduction-short-tutorial-8",
-            "kind": "page",
-            "pageId": "8050a155-9c2b-4cf5-b643-e9406b9b2b1c"
-          },
-          {
-            "id": "brief-1",
-            "kind": "page",
-            "pageId": "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6"
-          },
-          {
             "id": "introduction-short-tutorial-10",
             "kind": "page",
             "pageId": "e4fb0f10-ffa5-44e2-907f-b92e1b69535e"
+          },
+          {
+            "id": "introduction-short-narrative-b58daf2e-1ca1-4195-9412-580d9bb6af39",
+            "kind": "page",
+            "pageId": "b58daf2e-1ca1-4195-9412-580d9bb6af39"
+          },
+          {
+            "id": "introduction-short-narrative-12",
+            "kind": "page",
+            "pageId": "bbcdc92a-915c-4988-a4d5-76e466d0424f"
+          },
+          {
+            "id": "introduction-short-narrative-13",
+            "kind": "page",
+            "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7"
           },
           {
             "id": "brief-6",

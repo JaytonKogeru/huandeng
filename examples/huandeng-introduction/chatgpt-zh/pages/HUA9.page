@@ -3,7 +3,7 @@ background:
   type: solid
   color: "#F7F5EF"
 elements:
-  - elementId: f-paper
+  - elementId: v-bg
     elementType: shape
     shapeName: rect
     bounds:
@@ -13,142 +13,159 @@ elements:
       - 540
     fill:
       type: solid
-      color: "#F4F1E8"
+      color: "#FFFFFF"
   - elementId: title
     elementType: text
     bounds:
-        [36,27,884,46]
+        [38,29,884,58]
     role: title
     content:
-      {"text":"点中对象，再改它的属性","fontFamily":"Noto Sans SC","fontSize":31,"color":"#112D32","align":["left","top"],"lineHeight":1.35,"bold":true}
-  - elementId: f-action
+      {"text":"看见对象，再改它","fontFamily":"Segoe UI","fontSize":25,"color":"#25282C","bold":true,"lineHeight":1.16,"align":["left","top"]}
+  - elementId: v-watermark
     elementType: text
     bounds:
       - 38
-      - 82
-      - 884
-      - 28
+      - 520
+      - 750
+      - 12
     content:
-      text: 点选标题 → 右侧「属性」→ 修改文字 → 保存页面
-      fontFamily: Noto Sans SC
-      fontSize: 18
-      color: "#557076"
+      text: chinese chatgpt 6 astra + subagent
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
+      bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.35
-  - elementId: f-watermark
+  - elementId: v-position
     elementType: text
     bounds:
-      - 36
-      - 514
-      - 820
-      - 19
-    content:
-      text: Chinese · ChatGPT 6 Astra + Subagents
-      fontFamily: Noto Sans SC
-      fontSize: 13
-      color: "#557076"
-      align:
-        - left
-        - top
-      lineHeight: 1.35
-  - elementId: f-position
-    elementType: text
-    bounds:
-      - 878
-      - 514
-      - 44
-      - 19
+      - 885
+      - 520
+      - 37
+      - 12
     content:
       text: ""
-      fontFamily: Noto Sans SC
-      fontSize: 13
-      color: "#557076"
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
+      bold: false
+      lineHeight: 1.16
       align:
         - right
         - top
-      lineHeight: 1.35
       field: main-position
-  - elementId: f-selection
-    elementType: image
-    bounds:
-      - 38
-      - 143
-      - 502
-      - 100
-    src: media/imported/b427ee844b6091fc85a0dffdf07edac2c6dfed4681a4729aa8183ab4b1f6df96.png
-    sourceName: tutorial-selected-title.png
-    fit:
-      mode: contain
-  - elementId: f-text-panel
-    elementType: image
-    bounds:
-      - 579
-      - 123
-      - 343
-      - 374
-    src: media/imported/1fa001c74842ce9c0eb3213b1b66b9c104cface800d2e130952b256a5dc2a4da.png
-    sourceName: tutorial-text-properties.png
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0.035
-      bottom: 0.15
-  - elementId: f-selection-link
-    elementType: line
-    bounds:
-      - 467
-      - 258
-      - 81
-      - 28
-    viewBox:
-      - 1
-      - 1
-    points: 0,0 1,1
-    border:
-      width: 2
-      color: "#ED6A3A"
-    arrow:
-      - null
-      - arrow
-  - elementId: f-one-object
+  - elementId: v-instruction
     elementType: text
     bounds:
       - 38
-      - 276
-      - 445
-      - 78
+      - 79
+      - 884
+      - 24
     content:
-      text: |-
-        画布与属性面板，
-        指向同一个对象。
-      fontFamily: Noto Sans SC
-      fontSize: 25
-      color: "#112D32"
+      text: 1 选中画布上的标题     2 在右侧修改文字     3 保存页面
+      fontFamily: Segoe UI
+      fontSize: 13
+      color: "#25282C"
+      bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.35
+  - elementId: v-editor
+    elementType: image
+    bounds:
+      - 38
+      - 108
+      - 884
+      - 401
+    src: "media/imported/f997eb77721d8d5b9392fb759e52f7a55b9ada9a182593c976cf20c8dc31faa4.png"
+    sourceName: properties.png
+    fit:
+      mode: contain
+  - elementId: v-marker-1
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+      - 244
+      - 222
+      - 20
+      - 20
+    fill:
+      type: solid
+      color: "#25282C"
+  - elementId: v-marker-text-1
+    elementType: text
+    bounds:
+      - 244
+      - 224
+      - 20
+      - 17
+    content:
+      text: "1"
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#FFFFFF"
       bold: true
-  - elementId: f-edit-guide
+      lineHeight: 1.16
+      align:
+        - center
+        - top
+  - elementId: v-marker-2
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+      - 879
+      - 437
+      - 20
+      - 20
+    fill:
+      type: solid
+      color: "#25282C"
+  - elementId: v-marker-text-2
     elementType: text
     bounds:
-      - 38
-      - 384
-      - 473
-      - 64
+      - 879
+      - 439
+      - 20
+      - 17
     content:
-      text: |-
-        文字内容、字号、行距在右侧修改。
-        确认画面后，保存页面。
-      fontFamily: Noto Sans SC
-      fontSize: 18
-      color: "#112D32"
+      text: "2"
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#FFFFFF"
+      bold: true
+      lineHeight: 1.16
       align:
-        - left
+        - center
         - top
-      lineHeight: 1.35
-notes: "先看画布上的选框，确认自己选中了标题。右侧属性面板随这个对象切换：文本内容、字体、字号和行距都在这里。也可以双击画布文字直接编辑。这张图显示的就是前后对比教程页，左侧选中的标题与右侧文本内容完全对应。完成修改后保存页面，再检查实际画面。"
+  - elementId: v-marker-3
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+      - 732
+      - 105
+      - 20
+      - 20
+    fill:
+      type: solid
+      color: "#25282C"
+  - elementId: v-marker-text-3
+    elementType: text
+    bounds:
+      - 732
+      - 107
+      - 20
+      - 17
+    content:
+      text: "3"
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#FFFFFF"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - center
+        - top
+notes: "先在画布或Layers中选中标题。实际截图保留了被选中的标题和右边Properties里的Text content，两个位置属于同一个对象。修改文字后保存页面。这个示例真实事务只改标题，保留图、数据、单位和来源，下一页可在Review中核对。"

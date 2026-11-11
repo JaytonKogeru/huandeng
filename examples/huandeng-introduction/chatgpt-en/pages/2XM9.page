@@ -3,7 +3,7 @@ background:
   type: solid
   color: "#F7F5EF"
 elements:
-  - elementId: f-bg
+  - elementId: v-bg
     elementType: shape
     shapeName: rect
     bounds:
@@ -13,151 +13,2254 @@ elements:
       - 540
     fill:
       type: solid
-      color: "#112D32"
-  - elementId: f-route
-    elementType: text
-    bounds:
-      - 42
-      - 20
-      - 860
-      - 18
-    content:
-      text: WHY WORK THIS WAY
-      fontFamily: Segoe UI
-      fontSize: 11
-      color: "#91CBC3"
-      bold: true
-      align:
-        - left
-        - top
-      lineHeight: 1.2
+      color: "#FFFFFF"
   - elementId: title
     elementType: text
     bounds:
-        [42,49,875,66]
+        [38,29,884,58]
     role: title
     content:
-      {"text":"A small edit should stay small","fontFamily":"Segoe UI","fontSize":32,"color":"#F4F1E8","bold":true,"align":["left","top"],"lineHeight":1.1}
-  - elementId: f-foot-rule
-    elementType: shape
-    shapeName: rect
-    bounds:
-      - 42
-      - 510
-      - 876
-      - 1
-    fill:
-      type: solid
-      color: "#2B4C50"
-  - elementId: f-watermark
+      {"text":"Two edits, another fifty-page file","fontFamily":"Segoe UI","fontSize":25,"color":"#25282C","bold":true,"lineHeight":1.16,"align":["left","top"]}
+  - elementId: v-watermark
     elementType: text
     bounds:
-      - 42
-      - 518
-      - 700
-      - 17
+      - 38
+      - 520
+      - 750
+      - 12
     content:
-      text: English · ChatGPT 6 Astra
+      text: english chatgpt 6 astra
       fontFamily: Segoe UI
-      fontSize: 12
-      color: "#B7C8C5"
+      fontSize: 8
+      color: "#6D7379"
       bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.2
-  - elementId: f-position
+  - elementId: v-position
     elementType: text
     bounds:
-      - 882
-      - 518
-      - 36
-      - 17
+      - 885
+      - 520
+      - 37
+      - 12
     content:
       text: ""
       fontFamily: Segoe UI
-      fontSize: 12
-      color: "#B7C8C5"
+      fontSize: 8
+      color: "#6D7379"
       bold: false
+      lineHeight: 1.16
       align:
         - right
         - top
-      lineHeight: 1.2
       field: main-position
-  - elementId: f-request-label
+  - elementId: v-left
     elementType: text
     bounds:
-      - 44
-      - 139
-      - 840
-      - 24
+      - 38
+      - 101
+      - 546
+      - 26
     content:
-      text: AN EXAMPLE REQUEST
+      text: Each revision adds a complete deck
       fontFamily: Segoe UI
-      fontSize: 13
-      color: "#91CBC3"
+      fontSize: 16
+      color: "#25282C"
       bold: true
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.2
-  - elementId: f-request
+  - elementId: v-right
     elementType: text
     bounds:
-      - 44
-      - 174
-      - 850
-      - 55
+      - 642
+      - 101
+      - 280
+      - 26
     content:
-      text: “Shorten this title. Keep the diagram and its meaning.”
+      text: Keep the changes with these pages
       fontFamily: Segoe UI
-      fontSize: 26
-      color: "#F4F1E8"
-      bold: false
+      fontSize: 16
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.2
-  - elementId: f-selected
-    elementType: image
-    bounds:
-      - 44
-      - 253
-      - 870
-      - 66
-    src: media/imported/ca03c840de136a63bf8ebfbb457795ee72825568a458ff370db66a2b95830416.png
-    sourceName: selected-title.png
-    fit:
-      mode: contain
-  - elementId: f-link
+  - elementId: v-deck-shadow-0
     elementType: shape
     shapeName: rect
     bounds:
-      - 44
-      - 350
-      - 5
-      - 127
+      - 43
+      - 161
+      - 172
+      - 252
     fill:
       type: solid
-      color: "#ED6A3A"
-  - elementId: f-principle
+      color: "#E1E5E8"
+  - elementId: v-deck-0
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 38
+      - 155
+      - 172
+      - 252
+    fill:
+      type: solid
+      color: "#F7F8F9"
+    border:
+      width: 1
+      color: "#C8CFD4"
+  - elementId: v-file-0
     elementType: text
     bounds:
-      - 65
-      - 350
-      - 810
-      - 126
+      - 48
+      - 168
+      - 153
+      - 32
     content:
-      text: |-
-        One focused change.
-        A saved record you can inspect.
-        A page you can keep working on.
+      text: deck.pptx
       fontFamily: Segoe UI
-      fontSize: 25
-      color: "#F4F1E8"
-      bold: false
+      fontSize: 11
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.42
-notes: "Presentation work often returns to a small request: change one explanation while keeping the evidence and useful layout. The selected title shown here belongs to the actual project map on the next page. A focused request identifies what changes and what remains. After editing, save the page and inspect that operation. The page remains part of the same working project rather than becoming an unexplained replacement deck."
+  - elementId: v-cell-0-0
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 49
+      - 213
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-1
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 79
+      - 213
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-2
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 109
+      - 213
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-3
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 139
+      - 213
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-4
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 169
+      - 213
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-5
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 49
+      - 230
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-6
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 79
+      - 230
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-7
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 109
+      - 230
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-8
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 139
+      - 230
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-9
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 169
+      - 230
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-10
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 49
+      - 247
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-11
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 79
+      - 247
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-12
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 109
+      - 247
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-13
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 139
+      - 247
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-14
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 169
+      - 247
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-15
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 49
+      - 264
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-16
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 79
+      - 264
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#91A5B3"
+  - elementId: v-id-0-16
+    elementType: text
+    bounds:
+      - 79
+      - 263
+      - 24
+      - 14
+    content:
+      text: A
+      fontFamily: Segoe UI
+      fontSize: 10
+      color: "#FFFFFF"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - center
+        - top
+  - elementId: v-cell-0-17
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 109
+      - 264
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-18
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 139
+      - 264
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-19
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 169
+      - 264
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-20
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 49
+      - 281
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-21
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 79
+      - 281
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-22
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 109
+      - 281
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-23
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 139
+      - 281
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-24
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 169
+      - 281
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-25
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 49
+      - 298
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-26
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 79
+      - 298
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-27
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 109
+      - 298
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-28
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 139
+      - 298
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-29
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 169
+      - 298
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-30
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 49
+      - 315
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-31
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 79
+      - 315
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-32
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 109
+      - 315
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-33
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 139
+      - 315
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#91A5B3"
+  - elementId: v-id-0-33
+    elementType: text
+    bounds:
+      - 139
+      - 314
+      - 24
+      - 14
+    content:
+      text: B
+      fontFamily: Segoe UI
+      fontSize: 10
+      color: "#FFFFFF"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - center
+        - top
+  - elementId: v-cell-0-34
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 169
+      - 315
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-35
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 49
+      - 332
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-36
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 79
+      - 332
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-37
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 109
+      - 332
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-38
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 139
+      - 332
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-39
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 169
+      - 332
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-40
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 49
+      - 349
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-41
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 79
+      - 349
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-42
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 109
+      - 349
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-43
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 139
+      - 349
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-44
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 169
+      - 349
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-45
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 49
+      - 366
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-46
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 79
+      - 366
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-47
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 109
+      - 366
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-48
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 139
+      - 366
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-0-49
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 169
+      - 366
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-deck-shadow-1
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 232
+      - 183
+      - 172
+      - 252
+    fill:
+      type: solid
+      color: "#E1E5E8"
+  - elementId: v-deck-1
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 227
+      - 177
+      - 172
+      - 252
+    fill:
+      type: solid
+      color: "#F7F8F9"
+    border:
+      width: 1
+      color: "#C8CFD4"
+  - elementId: v-file-1
+    elementType: text
+    bounds:
+      - 237
+      - 190
+      - 153
+      - 32
+    content:
+      text: deck-revised.pptx
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-cell-1-0
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 238
+      - 235
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-1
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 268
+      - 235
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-2
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 298
+      - 235
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-3
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 328
+      - 235
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-4
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 358
+      - 235
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-5
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 238
+      - 252
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-6
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 268
+      - 252
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-7
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 298
+      - 252
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-8
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 328
+      - 252
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-9
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 358
+      - 252
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-10
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 238
+      - 269
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-11
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 268
+      - 269
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-12
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 298
+      - 269
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-13
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 328
+      - 269
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-14
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 358
+      - 269
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-15
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 238
+      - 286
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-16
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 268
+      - 286
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#5D7A8F"
+  - elementId: v-id-1-16
+    elementType: text
+    bounds:
+      - 268
+      - 285
+      - 24
+      - 14
+    content:
+      text: A
+      fontFamily: Segoe UI
+      fontSize: 10
+      color: "#FFFFFF"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - center
+        - top
+  - elementId: v-cell-1-17
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 298
+      - 286
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-18
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 328
+      - 286
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-19
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 358
+      - 286
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-20
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 238
+      - 303
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-21
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 268
+      - 303
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-22
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 298
+      - 303
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-23
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 328
+      - 303
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-24
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 358
+      - 303
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-25
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 238
+      - 320
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-26
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 268
+      - 320
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-27
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 298
+      - 320
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-28
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 328
+      - 320
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-29
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 358
+      - 320
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-30
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 238
+      - 337
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-31
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 268
+      - 337
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-32
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 298
+      - 337
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-33
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 328
+      - 337
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#5D7A8F"
+  - elementId: v-id-1-33
+    elementType: text
+    bounds:
+      - 328
+      - 336
+      - 24
+      - 14
+    content:
+      text: B
+      fontFamily: Segoe UI
+      fontSize: 10
+      color: "#FFFFFF"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - center
+        - top
+  - elementId: v-cell-1-34
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 358
+      - 337
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-35
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 238
+      - 354
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-36
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 268
+      - 354
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-37
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 298
+      - 354
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-38
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 328
+      - 354
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-39
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 358
+      - 354
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-40
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 238
+      - 371
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-41
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 268
+      - 371
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-42
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 298
+      - 371
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-43
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 328
+      - 371
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-44
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 358
+      - 371
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-45
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 238
+      - 388
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-46
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 268
+      - 388
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-47
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 298
+      - 388
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-48
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 328
+      - 388
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-1-49
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 358
+      - 388
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-deck-shadow-2
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 421
+      - 205
+      - 172
+      - 252
+    fill:
+      type: solid
+      color: "#E1E5E8"
+  - elementId: v-deck-2
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 416
+      - 199
+      - 172
+      - 252
+    fill:
+      type: solid
+      color: "#F7F8F9"
+    border:
+      width: 1
+      color: "#C8CFD4"
+  - elementId: v-file-2
+    elementType: text
+    bounds:
+      - 426
+      - 212
+      - 153
+      - 32
+    content:
+      text: deck-final-2.pptx
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-cell-2-0
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 427
+      - 257
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-1
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 457
+      - 257
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-2
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 487
+      - 257
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-3
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 517
+      - 257
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-4
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 547
+      - 257
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-5
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 427
+      - 274
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-6
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 457
+      - 274
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-7
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 487
+      - 274
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-8
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 517
+      - 274
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-9
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 547
+      - 274
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-10
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 427
+      - 291
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-11
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 457
+      - 291
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-12
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 487
+      - 291
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-13
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 517
+      - 291
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-14
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 547
+      - 291
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-15
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 427
+      - 308
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-16
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 457
+      - 308
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#294E6A"
+  - elementId: v-id-2-16
+    elementType: text
+    bounds:
+      - 457
+      - 307
+      - 24
+      - 14
+    content:
+      text: A
+      fontFamily: Segoe UI
+      fontSize: 10
+      color: "#FFFFFF"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - center
+        - top
+  - elementId: v-cell-2-17
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 487
+      - 308
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-18
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 517
+      - 308
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-19
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 547
+      - 308
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-20
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 427
+      - 325
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-21
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 457
+      - 325
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-22
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 487
+      - 325
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-23
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 517
+      - 325
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-24
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 547
+      - 325
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-25
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 427
+      - 342
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-26
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 457
+      - 342
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-27
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 487
+      - 342
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-28
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 517
+      - 342
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-29
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 547
+      - 342
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-30
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 427
+      - 359
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-31
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 457
+      - 359
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-32
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 487
+      - 359
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-33
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 517
+      - 359
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#294E6A"
+  - elementId: v-id-2-33
+    elementType: text
+    bounds:
+      - 517
+      - 358
+      - 24
+      - 14
+    content:
+      text: B
+      fontFamily: Segoe UI
+      fontSize: 10
+      color: "#FFFFFF"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - center
+        - top
+  - elementId: v-cell-2-34
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 547
+      - 359
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-35
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 427
+      - 376
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-36
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 457
+      - 376
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-37
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 487
+      - 376
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-38
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 517
+      - 376
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-39
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 547
+      - 376
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-40
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 427
+      - 393
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-41
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 457
+      - 393
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-42
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 487
+      - 393
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-43
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 517
+      - 393
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-44
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 547
+      - 393
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-45
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 427
+      - 410
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-46
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 457
+      - 410
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-47
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 487
+      - 410
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-48
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 517
+      - 410
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-cell-2-49
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 547
+      - 410
+      - 24
+      - 13
+    fill:
+      type: solid
+      color: "#DEE3E7"
+  - elementId: v-page-A
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 650
+      - 160
+      - 127
+      - 180
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#AAB8C2"
+  - elementId: v-page-id-A
+    elementType: text
+    bounds:
+      - 660
+      - 173
+      - 105
+      - 29
+    content:
+      text: A
+      fontFamily: Segoe UI
+      fontSize: 24
+      color: "#3B607E"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-page-title-A
+    elementType: text
+    bounds:
+      - 660
+      - 211
+      - 108
+      - 43
+    content:
+      text: Revise the claim
+      fontFamily: Segoe UI
+      fontSize: 14
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-page-figure-A
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 660
+      - 264
+      - 107
+      - 54
+    fill:
+      type: solid
+      color: "#9BB2C2"
+  - elementId: v-version-A0
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 650
+      - 360
+      - 127
+      - 23
+    fill:
+      type: solid
+      color: "#EEF1F3"
+  - elementId: v-version-text-A0
+    elementType: text
+    bounds:
+      - 659
+      - 364
+      - 110
+      - 16
+    content:
+      text: Version 1
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#25282C"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-version-A1
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 650
+      - 389
+      - 127
+      - 23
+    fill:
+      type: solid
+      color: "#DCE4E9"
+  - elementId: v-version-text-A1
+    elementType: text
+    bounds:
+      - 659
+      - 393
+      - 110
+      - 16
+    content:
+      text: Version 2
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#25282C"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-version-A2
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 650
+      - 418
+      - 127
+      - 23
+    fill:
+      type: solid
+      color: "#C2D0DB"
+  - elementId: v-version-text-A2
+    elementType: text
+    bounds:
+      - 659
+      - 422
+      - 110
+      - 16
+    content:
+      text: Version 3
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#25282C"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-page-B
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 793
+      - 160
+      - 127
+      - 180
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#AAB8C2"
+  - elementId: v-page-id-B
+    elementType: text
+    bounds:
+      - 803
+      - 173
+      - 105
+      - 29
+    content:
+      text: B
+      fontFamily: Segoe UI
+      fontSize: 24
+      color: "#3B607E"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-page-title-B
+    elementType: text
+    bounds:
+      - 803
+      - 211
+      - 108
+      - 43
+    content:
+      {"text":"Clarify a caption","fontFamily":"Segoe UI","fontSize":14,"color":"#25282C","bold":true,"lineHeight":1.16,"align":["left","top"]}
+  - elementId: v-page-figure-B
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 803
+      - 264
+      - 107
+      - 54
+    fill:
+      type: solid
+      color: "#CAD5DD"
+  - elementId: v-version-B0
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 793
+      - 360
+      - 127
+      - 23
+    fill:
+      type: solid
+      color: "#EEF1F3"
+  - elementId: v-version-text-B0
+    elementType: text
+    bounds:
+      - 802
+      - 364
+      - 110
+      - 16
+    content:
+      text: Version 1
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#25282C"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-version-B1
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 793
+      - 389
+      - 127
+      - 23
+    fill:
+      type: solid
+      color: "#DCE4E9"
+  - elementId: v-version-text-B1
+    elementType: text
+    bounds:
+      - 802
+      - 393
+      - 110
+      - 16
+    content:
+      text: Version 2
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#25282C"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-version-B2
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 793
+      - 418
+      - 127
+      - 23
+    fill:
+      type: solid
+      color: "#C2D0DB"
+  - elementId: v-version-text-B2
+    elementType: text
+    bounds:
+      - 802
+      - 422
+      - 110
+      - 16
+    content:
+      text: Version 3
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#25282C"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-last
+    elementType: text
+    bounds:
+      - 642
+      - 466
+      - 280
+      - 42
+    content:
+      text: The same page identity, ready for the next edit.
+      fontFamily: Segoe UI
+      fontSize: 15
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+notes: "The fifty-page, two-edit example comes from the founder. A and B identify the same changed pages in each full-file copy. On the right, versions stay under those two identities. This is a relational illustration; actual Editor history follows later."

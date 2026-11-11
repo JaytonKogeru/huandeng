@@ -3,7 +3,7 @@ background:
   type: solid
   color: "#EEE9DD"
 elements:
-  - elementId: f-bg
+  - elementId: v-bg
     elementType: shape
     shapeName: rect
     bounds:
@@ -13,137 +13,153 @@ elements:
       - 540
     fill:
       type: solid
-      color: "#F4F1E8"
-  - elementId: f-route
-    elementType: text
-    bounds:
-      - 42
-      - 20
-      - 860
-      - 18
-    content:
-      text: PROPERTIES → TEXT CONTENT → SAVE SLIDES
-      fontFamily: Segoe UI
-      fontSize: 11
-      color: "#168C8C"
-      bold: true
-      align:
-        - left
-        - top
-      lineHeight: 1.2
+      color: "#FFFFFF"
   - elementId: title
     elementType: text
     bounds:
-        [42,49,875,66]
+        [38,29,884,58]
     role: title
     content:
-      {"text":"Edit the selected text, then save","fontFamily":"Segoe UI","fontSize":32,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.1}
-  - elementId: f-foot-rule
-    elementType: shape
-    shapeName: rect
-    bounds:
-      - 42
-      - 510
-      - 876
-      - 1
-    fill:
-      type: solid
-      color: "#CCD2CB"
-  - elementId: f-watermark
+      {"text":"Change the claim; keep the evidence","fontFamily":"Segoe UI","fontSize":25,"color":"#25282C","bold":true,"lineHeight":1.16,"align":["left","top"]}
+  - elementId: v-watermark
     elementType: text
     bounds:
-      - 42
-      - 518
-      - 700
-      - 17
+      - 38
+      - 520
+      - 750
+      - 12
     content:
-      text: English · ChatGPT 6 Astra
+      text: english chatgpt 6 astra
       fontFamily: Segoe UI
-      fontSize: 12
-      color: "#50646A"
+      fontSize: 8
+      color: "#6D7379"
       bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.2
-  - elementId: f-position
+  - elementId: v-position
     elementType: text
     bounds:
-      - 882
-      - 518
-      - 36
-      - 17
+      - 885
+      - 520
+      - 37
+      - 12
     content:
       text: ""
       fontFamily: Segoe UI
-      fontSize: 12
-      color: "#50646A"
+      fontSize: 8
+      color: "#6D7379"
       bold: false
+      lineHeight: 1.16
       align:
         - right
         - top
-      lineHeight: 1.2
       field: main-position
-  - elementId: f-text-selection
-    elementType: image
-    bounds:
-      - 44
-      - 138
-      - 869
-      - 66
-    src: media/imported/ca03c840de136a63bf8ebfbb457795ee72825568a458ff370db66a2b95830416.png
-    sourceName: selected-title.png
-    fit:
-      mode: contain
-  - elementId: f-text-properties
-    elementType: image
-    bounds:
-        [44,249,437,210]
-    src: "media/imported/c1b966a30db8159507389a11a98a532ce2ef1163e30f9f1fa5a35af3c7de0e48.png"
-    sourceName: "text-content.png"
-    fit:
-      mode: contain
-  - elementId: f-text-steps
+  - elementId: v-instruction
     elementType: text
     bounds:
-      - 531
-      - 248
-      - 375
-      - 193
+      - 38
+      - 79
+      - 884
+      - 24
     content:
-      {"text":"1  Edit Text content\n\n2  Check the canvas\n\n3  Save the change","fontFamily":"Segoe UI","fontSize":22,"color":"#112D32","bold":false,"align":["left","top"],"lineHeight":1.35}
-  - elementId: f-text-pointer
-    elementType: line
-    bounds:
-      - 488
-      - 292
-      - 25
-      - 0
-    viewBox:
-      - 1
-      - 1
-    points: 1,0 0,1
-    border:
-      width: 2.5
-      color: "#ED6A3A"
-    arrow:
-      - null
-      - arrow
-  - elementId: f-save-state
-    elementType: text
-    bounds:
-        [702,437,208,49]
-    content:
-      {"text":"Available after\nan unsaved edit","fontFamily":"Segoe UI","fontSize":15,"color":"#168C8C","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: f-save-control
+      text: 1 Select the title on the canvas     2 Edit Text content at the right     3 Save slides
+      fontFamily: Segoe UI
+      fontSize: 13
+      color: "#25282C"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-editor
     elementType: image
     bounds:
-      - 531
-      - 434
-      - 156
-      - 42
-    src: media/imported/2802e7699a519e7c9dd8dc9bd8edee7ce07c9c7c53808a59c9cf5e80e9a44a2e.png
-    sourceName: save-page.png
+      - 38
+      - 108
+      - 884
+      - 401
+    src: "media/imported/4bd5f60d775ec9cfda7d5d8dc9dddc8b0c35048ac46e59ce1c3dbe760ba46a97.png"
+    sourceName: properties.png
     fit:
       mode: contain
-notes: "Select the title and open Properties. Edit Text content for that object, and use the font and alignment controls when the change requires them. Check the canvas at presentation scale before clicking Save slides in the top bar. A saved-operation record can then be inspected in History. The capture shows the actual selected title and Properties fields; this page does not pretend that a new edit has already happened."
+  - elementId: v-marker-1
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+        [244,222,20,20]
+    fill:
+      type: solid
+      color: "#25282C"
+  - elementId: v-marker-text-1
+    elementType: text
+    bounds:
+        [244,224,20,17]
+    content:
+      text: "1"
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#FFFFFF"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - center
+        - top
+  - elementId: v-marker-2
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+      - 879
+      - 437
+      - 20
+      - 20
+    fill:
+      type: solid
+      color: "#25282C"
+  - elementId: v-marker-text-2
+    elementType: text
+    bounds:
+      - 879
+      - 439
+      - 20
+      - 17
+    content:
+      text: "2"
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#FFFFFF"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - center
+        - top
+  - elementId: v-marker-3
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+      - 732
+      - 105
+      - 20
+      - 20
+    fill:
+      type: solid
+      color: "#25282C"
+  - elementId: v-marker-text-3
+    elementType: text
+    bounds:
+      - 732
+      - 107
+      - 20
+      - 17
+    content:
+      text: "3"
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#FFFFFF"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - center
+        - top
+notes: "Select the title on the canvas or in Layers. This actual Editor state shows the same object selected on the canvas and in Properties, with Text content at the right. Edit the wording, then Save slides. The example transaction changed only the title, retaining the figure, data, units and source; the next page reviews that saved operation."

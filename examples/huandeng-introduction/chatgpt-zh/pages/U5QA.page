@@ -3,7 +3,7 @@ background:
   type: solid
   color: "#E4ECE6"
 elements:
-  - elementId: f-paper
+  - elementId: v-bg
     elementType: shape
     shapeName: rect
     bounds:
@@ -13,170 +13,75 @@ elements:
       - 540
     fill:
       type: solid
-      color: "#F4F1E8"
+      color: "#FFFFFF"
   - elementId: title
     elementType: text
     bounds:
-        [36,27,884,46]
+        [38,29,884,58]
     role: title
     content:
-      {"text":"为这一页，留一个命名版本","fontFamily":"Noto Sans SC","fontSize":31,"color":"#112D32","align":["left","top"],"lineHeight":1.35,"bold":true}
-  - elementId: f-action
+      {"text":"回到上一版，仍是同一页","fontFamily":"Segoe UI","fontSize":25,"color":"#25282C","bold":true,"lineHeight":1.16,"align":["left","top"]}
+  - elementId: v-watermark
     elementType: text
     bounds:
       - 38
-      - 82
-      - 884
-      - 28
+      - 520
+      - 750
+      - 12
     content:
-      text: 历史 → 输入版本名 → 记录页面版本
-      fontFamily: Noto Sans SC
-      fontSize: 18
-      color: "#557076"
+      text: chinese chatgpt 6 astra + subagent
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
+      bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.35
-  - elementId: f-watermark
+  - elementId: v-position
     elementType: text
     bounds:
-      - 36
-      - 514
-      - 820
-      - 19
-    content:
-      text: Chinese · ChatGPT 6 Astra + Subagents
-      fontFamily: Noto Sans SC
-      fontSize: 13
-      color: "#557076"
-      align:
-        - left
-        - top
-      lineHeight: 1.35
-  - elementId: f-position
-    elementType: text
-    bounds:
-      - 878
-      - 514
-      - 44
-      - 19
+      - 885
+      - 520
+      - 37
+      - 12
     content:
       text: ""
-      fontFamily: Noto Sans SC
-      fontSize: 13
-      color: "#557076"
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
+      bold: false
+      lineHeight: 1.16
       align:
         - right
         - top
-      lineHeight: 1.35
       field: main-position
-  - elementId: f-version-step1
+  - elementId: v-lead
     elementType: text
     bounds:
       - 38
-      - 126
+      - 80
       - 884
-      - 25
+      - 26
     content:
-      text: ① 给这个阶段命名
-      fontFamily: Noto Sans SC
-      fontSize: 17
-      color: "#168C8C"
+      text: 选中这一页，打开历史，再选择它的命名版本。
+      fontFamily: Segoe UI
+      fontSize: 14
+      color: "#63696F"
+      bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.35
-      bold: true
-  - elementId: f-version-input
+  - elementId: v-editor
     elementType: image
     bounds:
       - 38
-      - 161
+      - 115
       - 884
-      - 83
-    src: media/imported/4d42e5f1558e1b2f448e5b87abd12e17eb56b62c64853eda8b401cc93ad67b4b.png
-    sourceName: zh-CN-native-history-change-4x.png
+      - 395
+    src: media/imported/54618d1ce4abe1c1a71d66e01921e0bda8a662fb1afecde1d448bcb9911ea333.png
+    sourceName: history.png
     fit:
       mode: contain
-    crop:
-      left: 0.54
-      right: 0
-      top: 0.1
-      bottom: 0.83
-  - elementId: f-version-step2
-    elementType: text
-    bounds:
-      - 38
-      - 271
-      - 884
-      - 25
-    content:
-      text: ② 选中版本，先看预览
-      fontFamily: Noto Sans SC
-      fontSize: 17
-      color: "#168C8C"
-      align:
-        - left
-        - top
-      lineHeight: 1.35
-      bold: true
-  - elementId: f-version-list
-    elementType: image
-    bounds:
-      - 38
-      - 310
-      - 281
-      - 182
-    src: media/imported/4d42e5f1558e1b2f448e5b87abd12e17eb56b62c64853eda8b401cc93ad67b4b.png
-    sourceName: zh-CN-native-history-change-4x.png
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0.804
-      top: 0.23
-      bottom: 0.45
-  - elementId: f-version-preview
-    elementType: image
-    bounds:
-        [358,327,564,124.20496265846619]
-    src: media/imported/4d42e5f1558e1b2f448e5b87abd12e17eb56b62c64853eda8b401cc93ad67b4b.png
-    sourceName: zh-CN-native-history-change-4x.png
-    fit:
-      mode: contain
-    crop:
-      {"left":0.195,"right":0.0083,"top":0.176,"bottom":0.557}
-  - elementId: f-version-link
-    elementType: line
-    bounds:
-      - 317
-      - 399
-      - 30
-      - 0
-    viewBox:
-      - 1
-      - 1
-    points: 0,0 1,1
-    border:
-      width: 2
-      color: "#ED6A3A"
-    arrow:
-      - null
-      - arrow
-  - elementId: f-version-preview-note
-    elementType: text
-    bounds:
-      - 358
-      - 462
-      - 564
-      - 30
-    content:
-      text: 预览是只读的；确认后再恢复这一页。
-      fontFamily: Noto Sans SC
-      fontSize: 18
-      color: "#557076"
-      align:
-        - left
-        - top
-      lineHeight: 1.35
-notes: "当这一页走到一个值得保留的阶段，例如修改文字之前或组会定稿，就到历史视图为它记录一个版本名。图中“修改文字之前”和“文案已收紧”是公开教程实际保存的两个版本。点选版本会打开只读预览；确认以后可以把该版本恢复为当前页，恢复影响的是这一页。命名版本也能给后面的演讲引用提供一个明确的固定画面。"
+notes: "命名页版本是一个明确的里程碑，与自动操作记录和Git历史不同。实际History中保留了本案例改标题前后的版本。恢复会修改当前页面，因此这里演示的是查看，不执行恢复。"

@@ -1,48 +1,54 @@
-# Final Editor examples and open-source preparation
+# HUANDENG introduction: current implementation scope
 
-This is the current specification for the November 11 final revision. It supersedes the previous introduction brief's bilingual-alignment and scientific-demo requirements. The [previous 0.19 specification](PRODUCT-INTRODUCTION-SPEC-PREVIOUS-019.md) is retained as a historical implementation record.
+Updated 2026-11-11. The authoritative editorial contract for these examples is [INTRODUCTION-STORY-SPEC.md](INTRODUCTION-STORY-SPEC.md), read together with the unchanged [founder's account](../examples/huandeng-introduction/story/USER-STORY.zh-CN.md) and explicit author corrections. This document states the current implementation scope. It does not certify completed visual review, exports or release.
 
-## The corrected goal
+The earlier 24-page tutorial-only interpretation replaced the author's story instead of weaving teaching into it. Its removal of required title-only Section pages was also incorrect. The [historical validation](PRODUCT-INTRODUCTION-VALIDATION.md) preserves that revision's reported checks; it does not make that interpretation a current requirement. The [previous 0.19 specification](PRODUCT-INTRODUCTION-SPEC-PREVIOUS-019.md) is likewise historical.
 
-A coherent story about making HUANDENG was not sufficient. The reader must learn to use its Editor through that story. Large headings with small screenshots, demonstrations of scientific slide content and formal launch-style pages do not meet this goal.
+## Narrative and evidence
 
-The revised ChatGPT examples teach a complete working path: open a project, locate and edit a page, preserve intent and original material, inspect a save, use history, organize a talk, rehearse and deliver it. Real Editor regions, readable image scale and explicit comparison guides carry the explanation.
+Tell why HUANDENG exists: the founder's group-meeting experience, author judgment, two changes among fifty pages, and the wish to continue one working document. Explain the project architecture and the reasons for page identity, Story, original Assets, history and reusable Presentations. Editor teaching enters where an action answers a need in that argument.
 
-## Edition ownership
+Retain idea sources, formal acknowledgments and a useful public scientific case. The case demonstrates evidence and editing scope without becoming the project's main subject. Use professional scientific plotting tools and preserve source data, units and the reproducible method.
 
-| Edition | Work authorized in this revision |
+The English and Chinese introductions may use different narrative structures. Their current saved scopes are 28 Main pages / 19 short occurrences and 31 Main pages / 21 short occurrences. Counts describe the implementation at this revision, not an aesthetic target.
+
+## Ownership and material boundaries
+
+| Edition | Current work |
 | --- | --- |
-| ChatGPT English | The primary session writes and designs all pages directly. |
-| ChatGPT Chinese | Parallel section agents produce the pages; the primary session coordinates the shared project and personally reviews every final page. |
-| Claude Code, both languages | Freeze content and design; native author adds language/model watermarks. |
-| DeepSeek Harness, both languages | Freeze content and design; native author adds language/model watermarks. |
+| ChatGPT English | Primary session personally writes and designs the revision. |
+| ChatGPT Chinese | Primary session personally revises the previous subagent baseline, supported by investigation and independent review. |
+| Claude Code English/Chinese | Preserve the successful work and perform focused native author review; the last jobs were interrupted by the host's five-hour usage limit. |
+| DeepSeek Harness English/Chinese | Continue native author audit and revision, particularly top-left labels and consistent page design. |
 
-The two ChatGPT walkthroughs need not align in sequence, examples or layout. Use accurate authorship labels: English · ChatGPT 6 Astra, Chinese · ChatGPT 6 Astra + Subagents, the corresponding Claude Opus 5.5 labels, and the corresponding DeepSeek V4.1 Flash 1017 labels.
+The earlier watermark-only freeze is superseded. Each author acquires its own active materials. Retained shared assets and earlier preloads are historical records; they are not inputs to current independent authoring. Same-author bilingual reuse is allowed with honest provenance. Private research projects are design references, not sources of public figures or screenshots.
 
-## Editorial and visual requirements
+## Visual requirements
 
-1. Each page connects a concrete audience question to an Editor action or a useful model of the project.
-2. Use actual localized interface captures. Show the necessary control or comparison at a readable scale; preserve original assets.
-3. Guide before/after comparisons with equal scale, alignment, arrows or focused annotations.
-4. Keep ordinary prose coherent and native objects editable. Use tables for genuine two-dimensional data and diagrams for relationships.
-5. Keep page Notes and Story consistent with the current artwork. Demonstrate real Presentation references, occurrence Notes and a named-version pin.
-6. Retain the founder's original account, scientific evidence, dependency notices and useful history. These sources support the project without dominating the tutorial.
-7. Personally inspect every ChatGPT page after the last source edit. Keep technical verification separate from owner acceptance.
+Actual Section slides contain only their title. No watermark, number, subtitle, logo or decoration appears on them. Section metadata does not replace those narrative pauses.
 
-## Source and collaboration boundaries
+Most storytelling and explanation pages use substantial visual evidence. Layout follows the relationship being explained; it is not a repeated grid of text and decorative pictures. Use purposeful density, restrained ordinary headings and readable detail.
 
-All page, manifest and project-metadata changes go through the active shared writer, current revisions, exact preview/apply and saved-operation readback. Preserve stable identities, unknown fields and meaningful versions. Different pages can be assigned in parallel; shared project metadata has one coordinator.
+UI teaching needs both Editor location and a readable demonstrated area. A detached crop is insufficient, and a token unreadable whole-window thumbnail does not repair it. Comparisons use matched frames and meaningful changed/retained relationships.
 
-The six existing example directories remain canonical. Keep unrelated work unchanged. Preserve the user-modified fixture outside this milestone. Frozen native pages may receive only a watermark object; compare the complete before/after page data after removing that object, and compare metadata, order and Notes separately.
+Avoid decorative middle-dot separators, character-arrow chains, thin line arrows, generic accent bars and stock color treatments. These are project-specific design requirements. Correct scientific symbols and necessary content remain intact. Do not assign numerical AI-feeling or human-feeling scores.
 
-## Delivery checks
+Cover and content pages use the exact lowercase labels in each edition's AGENTS.md. ChatGPT's labels are `english chatgpt 6 astra` and `chinese chatgpt 6 astra + subagent`; native labels use `claude opus5.5` or `deepseek v4.1flash1017` with their corresponding language prefix. Title-only Section pages are exempt.
 
-Export the actual saved Main and short Presentation sequences. Check page counts, every watermark, Notes, native objects, source/export hashes and the real target viewer. PowerPoint inspection must open the actual final files read-only and state any retained rendering limitation. No repeated or unsupported acceptance claim can substitute for evidence.
+## Implementation and validation
 
-The release candidate includes the editable projects, PDF/PPTX deliveries, current previews, bilingual README, contribution and security instructions, preserved licenses and both client-plugin package forms.
+Follow Audit, Spec, Implement, Validate and Release. Inspect representative frames within Spec before expanding the page sequence. Respect the original source and explicit author corrections; do not rewrite rules to excuse a design choice.
 
-## Native plugins and open-source preparation
+Use the existing shared writer for page, manifest and metadata changes, with fresh revisions, exact preview/apply and saved-operation readback. Preserve stable identities, useful history, unknown fields, originals and unrelated user changes. Serialize shared metadata and exports.
 
-Keep the portable Claude Code/Codex plugin and native DeepSeek Harness adapter in `plugins/huandeng`. Verify actual host use as well as package manifests and protocol connectivity. Keep accounts, profiles and installed client identities intact. Distinguish model execution, saved document effects and process exit status.
+Personally inspect the saved artwork and its sequence after the final change. Verify the story, teaching context, visual relationships, density, Section pages, acknowledgments, data figures and independent acquisition. Then inspect final PDF/PPTX output, resolved Notes and actual Presentation references where affected. A clean geometry report or successful process cannot certify taste or author acceptance.
 
-Read the actual dependency and source notices. Audit the public source candidate for credentials, private bindings and machine-specific evidence. Preserve truthful historical validation while labeling it as historical. Complete local checks and reviewable artifacts before any public visibility change, publication or history rewrite.
+The [collection index](../examples/huandeng-introduction/README.md) reports the current saved editions. Existing previews and exports must be refreshed against them. Earlier evidence files describe their recorded revisions until regenerated; do not carry an earlier pass forward.
+
+## Editor, plugins and open-source preparation
+
+The installed shared writer is 0.19.0. The 0.20.0 Editor/plugin candidate adds a Project Rules view showing canonical project guidance and is undergoing milestone verification. Rules captures identify that candidate; this specification does not announce it as released.
+
+Keep the Claude Code/Codex plugin and DeepSeek Harness adapter sources within `plugins/huandeng`, with build outputs under the engineering project's `dist/plugin-packages`. Verify actual native-host behavior separately from package manifests and MCP connectivity. Do not invent task success when a usage limit or host error prevents completion.
+
+Maintain bilingual README, contribution and security guidance, existing license terms and the complete [acknowledgments](ACKNOWLEDGMENTS.md). A release candidate contains the editable projects and genuinely reviewed outputs. Public repository visibility, release publication and any license change require their own explicit decision.

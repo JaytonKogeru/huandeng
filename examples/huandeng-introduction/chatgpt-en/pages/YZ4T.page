@@ -3,7 +3,7 @@ background:
   type: solid
   color: "#E4ECE6"
 elements:
-  - elementId: f-bg
+  - elementId: v-bg
     elementType: shape
     shapeName: rect
     bounds:
@@ -13,103 +13,118 @@ elements:
       - 540
     fill:
       type: solid
-      color: "#F4F1E8"
-  - elementId: f-route
-    elementType: text
-    bounds:
-      - 42
-      - 20
-      - 860
-      - 18
-    content:
-      text: EXPORT → FORMAT AND RANGE
-      fontFamily: Segoe UI
-      fontSize: 11
-      color: "#168C8C"
-      bold: true
-      align:
-        - left
-        - top
-      lineHeight: 1.2
+      color: "#FFFFFF"
   - elementId: title
     elementType: text
     bounds:
-        [42,49,875,66]
+        [38,29,884,58]
     role: title
     content:
-      {"text":"Confirm the range before you export","fontFamily":"Segoe UI","fontSize":32,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.1}
-  - elementId: f-foot-rule
-    elementType: shape
-    shapeName: rect
-    bounds:
-      - 42
-      - 510
-      - 876
-      - 1
-    fill:
-      type: solid
-      color: "#CCD2CB"
-  - elementId: f-watermark
+      {"text":"Rehearse, then export","fontFamily":"Segoe UI","fontSize":25,"color":"#25282C","bold":true,"lineHeight":1.16,"align":["left","top"]}
+  - elementId: v-watermark
     elementType: text
     bounds:
-      - 42
-      - 518
-      - 700
-      - 17
+      - 38
+      - 520
+      - 750
+      - 12
     content:
-      text: English · ChatGPT 6 Astra
+      text: english chatgpt 6 astra
       fontFamily: Segoe UI
-      fontSize: 12
-      color: "#50646A"
+      fontSize: 8
+      color: "#6D7379"
       bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.2
-  - elementId: f-position
+  - elementId: v-position
     elementType: text
     bounds:
-      - 882
-      - 518
-      - 36
-      - 17
+      - 885
+      - 520
+      - 37
+      - 12
     content:
       text: ""
       fontFamily: Segoe UI
-      fontSize: 12
-      color: "#50646A"
+      fontSize: 8
+      color: "#6D7379"
       bold: false
+      lineHeight: 1.16
       align:
         - right
         - top
-      lineHeight: 1.2
       field: main-position
-  - elementId: f-export
+  - elementId: v-editor
     elementType: image
     bounds:
-      - 44
-      - 132
-      - 870
-      - 346
-    src: media/imported/e5357f27a6e0fb880374db8d22b2391e852c2cfef5eb0d169ebc382da020dfdf.png
-    sourceName: export-talk.png
+      - 38
+      - 111
+      - 596
+      - 284
+    src: media/imported/36e0ff7b67573c02025bb5dfbaa26012e1e54a40fe0d3a993335adefa2823600.png
+    sourceName: export.png
     fit:
       mode: contain
-  - elementId: f-export-formats
+  - elementId: v-export
+    elementType: image
+    bounds:
+      - 672
+      - 116
+      - 250
+      - 151
+    src: media/imported/85f6d534679651684f4719cb04c10fddcc095733f26f91321311c04e94fa46a0.png
+    sourceName: export-detail.png
+    fit:
+      mode: contain
+  - elementId: v-present-entry
+    elementType: image
+    bounds:
+      - 38
+      - 414
+      - 276
+      - 99
+    src: media/imported/a28822b7753c69bc28cf3b8fde46cc6f064cd79bdea6b9b25e4d1ee85de34808.png
+    sourceName: present-menu.png
+    fit:
+      mode: contain
+  - elementId: v-action
     elementType: text
     bounds:
-      - 44
-      - 484
-      - 870
-      - 24
+      - 342
+      - 430
+      - 292
+      - 63
     content:
-      text: "PDF: fixed pages  ·  PPTX: editable objects  ·  PNG: slide images"
+      text: |-
+        Present and Export are in the header.
+        Check the talk and format before delivery.
       fontFamily: Segoe UI
-      fontSize: 18
-      color: "#168C8C"
-      bold: true
+      fontSize: 15
+      color: "#25282C"
+      bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.2
-notes: "Open Export after saving your edits. Confirm both the format and the selected range. The actual dialog here targets First edit · short talk with 12 slides. PDF is a fixed-page delivery; PPTX contains editable supported objects; PNG creates slide images. PPTX and PDF use the static base layout, while timeline animation has a separate video export. Open the exported file once to check its pages, fonts and any native chart layout before sharing."
+  - elementId: v-continuing
+    elementType: text
+    bounds:
+      - 672
+      - 344
+      - 250
+      - 106
+    content:
+      text: |-
+        To keep editing: share the whole Project.
+        To present: export this selected talk.
+      fontFamily: Segoe UI
+      fontSize: 17
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+notes: "Use Present in the header to rehearse from the current page or the beginning. In Export, verify the selected Main or Presentation and the output format. Continued editing needs the complete project folder; PDF/PPTX are delivery formats, not replacements for all project context."

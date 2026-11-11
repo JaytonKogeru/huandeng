@@ -3,7 +3,7 @@ background:
   type: solid
   color: "#F7F5EF"
 elements:
-  - elementId: f-bg
+  - elementId: v-bg
     elementType: shape
     shapeName: rect
     bounds:
@@ -13,155 +13,323 @@ elements:
       - 540
     fill:
       type: solid
-      color: "#F4F1E8"
-  - elementId: f-route
-    elementType: text
-    bounds:
-      - 42
-      - 20
-      - 860
-      - 18
-    content:
-      text: INSPECTOR → LAYERS
-      fontFamily: Segoe UI
-      fontSize: 11
-      color: "#168C8C"
-      bold: true
-      align:
-        - left
-        - top
-      lineHeight: 1.2
+      color: "#FFFFFF"
   - elementId: title
     elementType: text
     bounds:
-        [42,49,875,66]
+        [38,29,884,58]
     role: title
     content:
-      {"text":"Use Layers when objects overlap","fontFamily":"Segoe UI","fontSize":32,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.1}
-  - elementId: f-foot-rule
+      {"text":"Keep the source and the instance distinct","fontFamily":"Segoe UI","fontSize":25,"color":"#25282C","bold":true,"lineHeight":1.16,"align":["left","top"]}
+  - elementId: v-watermark
+    elementType: text
+    bounds:
+      - 38
+      - 520
+      - 750
+      - 12
+    content:
+      text: english chatgpt 6 astra
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-position
+    elementType: text
+    bounds:
+      - 885
+      - 520
+      - 37
+      - 12
+    content:
+      text: ""
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - right
+        - top
+      field: main-position
+  - elementId: v-original-label
+    elementType: text
+    bounds:
+      - 38
+      - 92
+      - 215
+      - 27
+    content:
+      text: Original asset
+      fontFamily: Segoe UI
+      fontSize: 16
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-original
+    elementType: image
+    bounds:
+      - 42
+      - 133
+      - 210
+      - 350
+    src: media/imported/48d96c3f63dc8ce717d4bcece8d2af93fb73c7560342a1596ad9cf23a1421792.png
+    sourceName: 1bna-projected-bonds.png
+    fit:
+      mode: contain
+  - elementId: v-instances-label
+    elementType: text
+    bounds:
+      - 300
+      - 92
+      - 323
+      - 27
+    content:
+      text: Two instances of the same image
+      fontFamily: Segoe UI
+      fontSize: 16
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-top-crop
+    elementType: image
+    bounds:
+      - 310.875
+      - 137
+      - 266.25000000000006
+      - 142
+    src: media/imported/48d96c3f63dc8ce717d4bcece8d2af93fb73c7560342a1596ad9cf23a1421792.png
+    sourceName: 1bna-projected-bonds.png
+    fit:
+      mode: contain
+    crop:
+      bottom: 0.68
+  - elementId: v-bottom-crop
+    elementType: image
+    bounds:
+      - 322.2857142857143
+      - 326
+      - 243.42857142857144
+      - 142
+    src: media/imported/48d96c3f63dc8ce717d4bcece8d2af93fb73c7560342a1596ad9cf23a1421792.png
+    sourceName: 1bna-projected-bonds.png
+    fit:
+      mode: contain
+    crop:
+      top: 0.65
+  - elementId: v-original-a-top
     elementType: shape
     shapeName: rect
     bounds:
       - 42
-      - 510
-      - 876
-      - 1
+      - 133
+      - 210
+      - 1.6
     fill:
       type: solid
-      color: "#CCD2CB"
-  - elementId: f-watermark
-    elementType: text
+      color: "#3B607E"
+  - elementId: v-original-a-bottom
+    elementType: shape
+    shapeName: rect
     bounds:
       - 42
-      - 518
-      - 700
-      - 17
+      - 243.4
+      - 210
+      - 1.6
+    fill:
+      type: solid
+      color: "#3B607E"
+  - elementId: v-original-a-left
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 42
+      - 133
+      - 1.6
+      - 112
+    fill:
+      type: solid
+      color: "#3B607E"
+  - elementId: v-original-a-right
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 250.4
+      - 133
+      - 1.6
+      - 112
+    fill:
+      type: solid
+      color: "#3B607E"
+  - elementId: v-original-b-top
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 42
+      - 361
+      - 210
+      - 1.6
+    fill:
+      type: solid
+      color: "#75818A"
+  - elementId: v-original-b-bottom
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 42
+      - 481.4
+      - 210
+      - 1.6
+    fill:
+      type: solid
+      color: "#75818A"
+  - elementId: v-original-b-left
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 42
+      - 361
+      - 1.6
+      - 122
+    fill:
+      type: solid
+      color: "#75818A"
+  - elementId: v-original-b-right
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 250.4
+      - 361
+      - 1.6
+      - 122
+    fill:
+      type: solid
+      color: "#75818A"
+  - elementId: v-a
+    elementType: text
+    bounds:
+      - 262
+      - 169
+      - 30
+      - 20
     content:
-      text: English · ChatGPT 6 Astra
+      text: A
       fontFamily: Segoe UI
-      fontSize: 12
-      color: "#50646A"
-      bold: false
+      fontSize: 13
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.2
-  - elementId: f-position
+  - elementId: v-b
     elementType: text
     bounds:
-      - 882
-      - 518
-      - 36
+      - 262
+      - 411
+      - 30
+      - 20
+    content:
+      text: B
+      fontFamily: Segoe UI
+      fontSize: 13
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-a-detail
+    elementType: text
+    bounds:
+      - 302
+      - 120
+      - 35
       - 17
     content:
-      text: ""
+      text: A
       fontFamily: Segoe UI
-      fontSize: 12
-      color: "#50646A"
-      bold: false
+      fontSize: 11
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
       align:
-        - right
+        - left
         - top
-      lineHeight: 1.2
-      field: main-position
-  - elementId: f-layer-controls
-    elementType: image
-    bounds:
-        [44,165.44299999999998,418,114.114]
-    src: media/imported/39ff3c031ae70dfb09bd9bf649bed4bb537e5e070ebee51510fd080f9793e032.png
-    sourceName: layers.png
-    fit:
-      mode: contain
-    crop:
-      {"top":0.14,"bottom":0.73}
-  - elementId: f-layer-row
-    elementType: image
-    bounds:
-        [44,344,418,50]
-    src: "media/imported/d33b47a23f24ca7fcd4fba45676e53bdd3d5ef40b18ab1ae7a758b25ac5fe0b5.png"
-    sourceName: layer-title.png
-    fit:
-      mode: contain
-  - elementId: f-layer-connection
-    elementType: line
-    bounds:
-        [478,220,54,145]
-    viewBox:
-      - 1
-      - 1
-    points: "0,1 1,0"
-    border:
-      width: 2.5
-      color: "#ED6A3A"
-    arrow:
-      - null
-      - arrow
-  - elementId: f-layer-result
-    elementType: image
-    bounds:
-      - 552
-      - 195
-      - 360
-      - 28
-    src: media/imported/ca03c840de136a63bf8ebfbb457795ee72825568a458ff370db66a2b95830416.png
-    sourceName: selected-title.png
-    fit:
-      mode: contain
-  - elementId: f-layer-action
+  - elementId: v-b-detail
     elementType: text
     bounds:
-      - 552
-      - 263
-      - 360
-      - 142
+      - 302
+      - 307
+      - 35
+      - 17
+    content:
+      text: B
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-editor
+    elementType: image
+    bounds:
+      - 636
+      - 134
+      - 286
+      - 136
+    src: "media/imported/622e3978b28c3cc9a5001617422564cdee63119f0b475874f1970518f269e201.png"
+    sourceName: assets.png
+    fit:
+      mode: contain
+  - elementId: v-location
+    elementType: text
+    bounds:
+      - 636
+      - 295
+      - 286
+      - 59
     content:
       text: |-
-        Select the name.
-        Check the selected object.
-        Adjust its stacking order.
+        Assets at the left
+        Find the original, then place it.
       fontFamily: Segoe UI
-      fontSize: 22
-      color: "#112D32"
-      bold: false
+      fontSize: 15
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.4
-  - elementId: f-layer-rule
+  - elementId: v-instance-explanation
     elementType: text
     bounds:
-      - 44
-      - 476
-      - 870
-      - 27
+      - 636
+      - 391
+      - 286
+      - 83
     content:
-      text: "Forward / Backward: one step  ·  To front / To back: the end of the stack"
+      text: |-
+        Cropping changes this instance’s visible area.
+        Other instances keep the same original.
       fontFamily: Segoe UI
-      fontSize: 17
-      color: "#168C8C"
+      fontSize: 15
+      color: "#25282C"
       bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.2
-notes: "Open Layers when selecting an object on the canvas is difficult. Choose the object by its name; the same object becomes selected on the canvas. Use Forward or Backward for a single step, and To front or To back for the whole stack. Check what remains visible before saving. These are actual controls and the actual title object of the project map; the connector shows the selection relationship."
+notes: "One original coordinate-based image can have multiple page instances. These two details are crops of the same original, not new structures or overwritten originals. Assets keeps the source available. Matched region marks identify where each detail comes from; this demonstrates image instances, not a new scientific inference."

@@ -1,0 +1,35 @@
+pageType: section
+background:
+  type: solid
+  color: "#FFFFFF"
+elements:
+  - elementId: v-section-paper
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 0
+      - 0
+      - 960
+      - 540
+    fill:
+      type: solid
+      color: "#FFFFFF"
+  - elementId: title
+    elementType: text
+    bounds:
+      - 70
+      - 237
+      - 820
+      - 72
+    role: title
+    content:
+      text: Keep the work yours
+      fontFamily: Segoe UI
+      fontSize: 35
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+notes: Pause before the next part of the argument. This is deliberately a title-only Section slide.

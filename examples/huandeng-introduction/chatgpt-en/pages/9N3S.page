@@ -3,7 +3,7 @@ background:
   type: solid
   color: "#F7F5EF"
 elements:
-  - elementId: f-bg
+  - elementId: v-bg
     elementType: shape
     shapeName: rect
     bounds:
@@ -13,130 +13,75 @@ elements:
       - 540
     fill:
       type: solid
-      color: "#F4F1E8"
-  - elementId: f-route
-    elementType: text
-    bounds:
-      - 42
-      - 20
-      - 860
-      - 18
-    content:
-      text: ARRANGE PRESENTATION → NOTES AND VERSION
-      fontFamily: Segoe UI
-      fontSize: 11
-      color: "#168C8C"
-      bold: true
-      align:
-        - left
-        - top
-      lineHeight: 1.2
+      color: "#FFFFFF"
   - elementId: title
     elementType: text
     bounds:
-        [42,49,875,66]
+        [38,29,884,58]
     role: title
     content:
-      {"text":"Give this talk its own speaking notes","fontFamily":"Segoe UI","fontSize":32,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.1}
-  - elementId: f-foot-rule
-    elementType: shape
-    shapeName: rect
-    bounds:
-      - 42
-      - 510
-      - 876
-      - 1
-    fill:
-      type: solid
-      color: "#CCD2CB"
-  - elementId: f-watermark
+      {"text":"Keep this talk's notes with this occurrence","fontFamily":"Segoe UI","fontSize":25,"color":"#25282C","bold":true,"lineHeight":1.16,"align":["left","top"]}
+  - elementId: v-watermark
     elementType: text
     bounds:
-      - 42
-      - 518
-      - 700
-      - 17
+      - 38
+      - 520
+      - 750
+      - 12
     content:
-      text: English · ChatGPT 6 Astra
+      text: english chatgpt 6 astra
       fontFamily: Segoe UI
-      fontSize: 12
-      color: "#50646A"
+      fontSize: 8
+      color: "#6D7379"
       bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.2
-  - elementId: f-position
+  - elementId: v-position
     elementType: text
     bounds:
-      - 882
-      - 518
-      - 36
-      - 17
+      - 885
+      - 520
+      - 37
+      - 12
     content:
       text: ""
       fontFamily: Segoe UI
-      fontSize: 12
-      color: "#50646A"
+      fontSize: 8
+      color: "#6D7379"
       bold: false
+      lineHeight: 1.16
       align:
         - right
         - top
-      lineHeight: 1.2
       field: main-position
-  - elementId: f-talk-notes
+  - elementId: v-lead
+    elementType: text
+    bounds:
+      - 38
+      - 80
+      - 884
+      - 26
+    content:
+      text: Choose the Presentation first. Its Notes can carry this telling of a shared page.
+      fontFamily: Segoe UI
+      fontSize: 14
+      color: "#63696F"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-editor
     elementType: image
     bounds:
-      - 44
-      - 148.4174524714829
-      - 501
-      - 334.1650950570342
-    src: media/imported/12af5f4077a1120516f093a91057416c35643941d1f88de158dbd54e17c6ac89.png
-    sourceName: live.png
+      - 38
+      - 115
+      - 884
+      - 395
+    src: "media/imported/fbcbb33ffa9094842f36fb52e34b0a52a4b6c32858aa615f2b751d50f7b715a0.png"
+    sourceName: notes.png
     fit:
       mode: contain
-    crop:
-      top: 0.51
-  - elementId: f-talk-notes-steps
-    elementType: text
-    bounds:
-      - 589
-      - 168
-      - 321
-      - 237
-    content:
-      text: |-
-        Enable the notes override.
-  
-        Write for this audience.
-  
-        Open Notes page
-        to rehearse the script.
-      fontFamily: Segoe UI
-      fontSize: 22
-      color: "#112D32"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.25
-  - elementId: f-talk-notes-rule
-    elementType: text
-    bounds:
-      - 589
-      - 431
-      - 321
-      - 63
-    content:
-      text: |-
-        The page stays shared;
-        the script belongs to this talk.
-      fontFamily: Segoe UI
-      fontSize: 19
-      color: "#168C8C"
-      bold: true
-      align:
-        - left
-        - top
-      lineHeight: 1.2
-notes: "Expand Notes and version for a page occurrence. Enable This occurrence uses its own speaker notes, then write the script for this talk. The image is the actual FKA9 occurrence in First edit · short talk. Its page content remains shared with Main, while these notes are specific to the occurrence. Select the same talk and page in Notes page when rehearsing. Save project for edits in the arrangement form; use Save slides for edits in the Notes page."
+notes: "The selected Presentation has a shorter occurrence-specific note for the Story page. Main notes remain the fuller explanation. This is how another talk can use the same page while changing the spoken argument. The actual Notes view places the page and its script together."

@@ -3,7 +3,7 @@ background:
   type: solid
   color: "#E4ECE6"
 elements:
-  - elementId: f-bg
+  - elementId: v-section-paper
     elementType: shape
     shapeName: rect
     bounds:
@@ -13,107 +13,12 @@ elements:
       - 540
     fill:
       type: solid
-      color: "#F4F1E8"
-  - elementId: f-route
-    elementType: text
-    bounds:
-      - 42
-      - 20
-      - 860
-      - 18
-    content:
-      text: WORKSPACE → BROWSE
-      fontFamily: Segoe UI
-      fontSize: 11
-      color: "#168C8C"
-      bold: true
-      align:
-        - left
-        - top
-      lineHeight: 1.2
+      color: "#FFFFFF"
   - elementId: title
     elementType: text
     bounds:
-        [42,49,875,66]
+        [70,237,820,72]
     role: title
     content:
-      {"text":"Step back and read the sequence","fontFamily":"Segoe UI","fontSize":32,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.1}
-  - elementId: f-foot-rule
-    elementType: shape
-    shapeName: rect
-    bounds:
-      - 42
-      - 510
-      - 876
-      - 1
-    fill:
-      type: solid
-      color: "#CCD2CB"
-  - elementId: f-watermark
-    elementType: text
-    bounds:
-      - 42
-      - 518
-      - 700
-      - 17
-    content:
-      text: English · ChatGPT 6 Astra
-      fontFamily: Segoe UI
-      fontSize: 12
-      color: "#50646A"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.2
-  - elementId: f-position
-    elementType: text
-    bounds:
-      - 882
-      - 518
-      - 36
-      - 17
-    content:
-      text: ""
-      fontFamily: Segoe UI
-      fontSize: 12
-      color: "#50646A"
-      bold: false
-      align:
-        - right
-        - top
-      lineHeight: 1.2
-      field: main-position
-  - elementId: f-browse
-    elementType: image
-    bounds:
-      - 126.92000000000007
-      - 138
-      - 704.1599999999999
-      - 324
-    src: "media/imported/30f68243c06ea41a7c2c31c06bde71d1e8f92cc8a6d4301597c41fbabb00f151.png"
-    sourceName: browse-current.png
-    fit:
-      mode: contain
-    crop:
-      left: 0.185
-      top: 0.25
-      bottom: 0.15
-  - elementId: f-browse-action
-    elementType: text
-    bounds:
-      - 44
-      - 477
-      - 870
-      - 29
-    content:
-      text: Browse the rhythm. Double-click the page that needs attention.
-      fontFamily: Segoe UI
-      fontSize: 20
-      color: "#112D32"
-      bold: true
-      align:
-        - left
-        - top
-      lineHeight: 1.2
-notes: "Switch to Browse to inspect the actual pages together. Look for repeated layouts, sudden density changes and pages whose main point is difficult to see. Section boundaries keep related material together. Double-click a slide, or select it and press Enter, to return to editing. The capture is this project in the current Editor, rather than an invented grid."
+      {"text":"Make one change","fontFamily":"Segoe UI","fontSize":35,"color":"#25282C","bold":true,"lineHeight":1.16,"align":["left","top"]}
+notes: "Pause before the next part of the argument. This is deliberately a title-only Section slide."

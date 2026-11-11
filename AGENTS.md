@@ -11,6 +11,14 @@ HUANDENG is an AI-native desktop slide editor built on the OpenSlide codebase. P
 
 See docs/RELEASE-POLICY.md and docs/STORY.md.
 
+## Slide and example authoring
+
+All agents changing HUANDENG slides follow Audit, Spec, Implement, Validate, Release in that order. Audit the user's original story, historical feedback, current project rules and actual reference images before making a page. Write the narrative and visual intent before implementation. Validate actual rendered pages and the teaching relationship, then export the reviewed source.
+
+The author's story remains the authority. Add necessary explanations and teaching to that story; do not replace it with a feature list or an operation tour. Do not rewrite rules to justify an interpretation the user did not give. Title-only Section slides are real pages, with no watermark, page number or ornament. Visual evidence should carry explanatory pages; a UI detail must retain an intelligible place in the Editor. Use professional plotting tools for scientific figures. Do not turn visual judgement into an aesthetic score.
+
+For this introduction comparison, ChatGPT, Claude Code and DeepSeek acquire their own active materials. Retained shared sources and historical versions are not an independent acquisition. See docs/INTRODUCTION-STORY-SPEC.md and the selected example's AGENTS.md for its exact scope and attribution.
+
 ---
 # open-slide — Framework Repo Guide
 

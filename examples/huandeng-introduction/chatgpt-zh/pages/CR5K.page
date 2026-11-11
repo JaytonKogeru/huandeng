@@ -3,7 +3,7 @@ background:
   type: solid
   color: "#E4ECE6"
 elements:
-  - elementId: f-bg
+  - elementId: v-section-paper
     elementType: shape
     shapeName: rect
     bounds:
@@ -13,164 +13,12 @@ elements:
       - 540
     fill:
       type: solid
-      color: "#F4F1E8"
+      color: "#FFFFFF"
   - elementId: title
     elementType: text
     bounds:
-        [38,29,884,48]
+        [70,237,820,72]
     role: title
     content:
-      {"text":"从 deck.pptd 打开这份项目","fontFamily":"Noto Sans SC","fontSize":30,"color":"#112D32","align":["left","top"],"lineHeight":1.32,"bold":true}
-  - elementId: f-watermark
-    elementType: text
-    bounds:
-      - 38
-      - 514
-      - 800
-      - 22
-    content:
-      text: Chinese · ChatGPT 6 Astra + Subagents
-      fontFamily: Noto Sans SC
-      fontSize: 13
-      color: "#596D70"
-      align:
-        - left
-        - top
-      lineHeight: 1.32
-  - elementId: f-position
-    elementType: text
-    bounds:
-      - 882
-      - 514
-      - 40
-      - 22
-    content:
-      text: ""
-      fontFamily: Noto Sans SC
-      fontSize: 13
-      color: "#596D70"
-      align:
-        - right
-        - top
-      lineHeight: 1.32
-      field: main-position
-  - elementId: f-folder
-    elementType: icon
-    iconName: fas:folder-open
-    bounds:
-      - 44
-      - 139
-      - 52
-      - 52
-    fill:
-      type: solid
-      color: "#168C8C"
-  - elementId: f-folder-label
-    elementType: text
-    bounds:
-      - 112
-      - 146
-      - 190
-      - 36
-    content:
-      text: 项目文件夹
-      fontFamily: Noto Sans SC
-      fontSize: 23
-      color: "#112D32"
-      align:
-        - left
-        - top
-      lineHeight: 1.32
-      bold: true
-  - elementId: f-entry-step
-    elementType: text
-    bounds:
-      - 43
-      - 217
-      - 270
-      - 34
-    content:
-      text: 打开其中的入口文件
-      fontFamily: Noto Sans SC
-      fontSize: 18
-      color: "#112D32"
-      align:
-        - left
-        - top
-      lineHeight: 1.32
-  - elementId: f-entry-panel
-    elementType: shape
-    shapeName: rect
-    bounds:
-      - 40
-      - 266
-      - 271
-      - 53
-    fill:
-      type: solid
-      color: "#FFFFFF"
-  - elementId: f-entry-ui
-    elementType: image
-    bounds:
-      - 49
-      - 277
-      - 252
-      - 27
-    src: media/imported/abb09cdedaa62a6550085f05a67899e09e07422f8d75a0c38044f61c56b72f14.png
-    sourceName: deck-entry.png
-    fit:
-      mode: contain
-  - elementId: f-open-arrow
-    elementType: line
-    bounds:
-      - 273
-      - 338
-      - 55
-      - 0
-    viewBox:
-      - 1
-      - 1
-    points: 0,0 1,1
-    border:
-      width: 2
-      color: "#ED6A3A"
-    arrow:
-      - null
-      - arrow
-  - elementId: f-open-copy
-    elementType: text
-    bounds:
-      - 43
-      - 372
-      - 269
-      - 80
-    content:
-      {"text":"进入编辑器，选一页。\n空白页：点页面栏 ＋。","fontFamily":"Noto Sans SC","fontSize":19,"color":"#112D32","align":["left","top"],"lineHeight":1.5}
-  - elementId: f-open-editor
-    elementType: image
-    bounds:
-      - 342
-      - 135
-      - 580
-      - 348
-    src: media/imported/172c9a85203bbc344eda4b7e82965f8f72839dd5b54fa442c20778ae6269fef4.png
-    sourceName: workspace-architecture.png
-    fit:
-      mode: contain
-  - elementId: f-folder-copy
-    elementType: text
-    bounds:
-      - 342
-      - 483
-      - 580
-      - 27
-    content:
-      text: 移动工作时，请带上整个项目文件夹。
-      fontFamily: Noto Sans SC
-      fontSize: 15
-      color: "#168C8C"
-      align:
-        - left
-        - top
-      lineHeight: 1.32
-notes: "先找到示例项目文件夹，打开里面的 deck.pptd。它是项目入口，完整内容仍在同一个目录：页面在 pages，图片在 media，Story、编排和命名页面版本在 .huandeng。进入编辑器后，在左侧页面列表选择一页即可继续做。要从空白页开始，点页面栏的 ＋「新增页面」。截图左侧是这个项目真实的文件树局部，右侧是打开后的编辑工作区。若要在另一台电脑继续，带走整个项目目录。也可以选择只含一个直接 .pptd 文件的文件夹；多个入口时要明确选择。"
+      {"text":"把故事留在工作里","fontFamily":"Segoe UI","fontSize":35,"color":"#25282C","bold":true,"lineHeight":1.16,"align":["left","top"]}
+notes: "在这里停顿，进入故事的下一段。章节页严格只有标题。"

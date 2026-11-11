@@ -1,0 +1,584 @@
+pageType: content
+background:
+  type: solid
+  color: "#FFFFFF"
+elements:
+  - elementId: v-bg
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 0
+      - 0
+      - 960
+      - 540
+    fill:
+      type: solid
+      color: "#FFFFFF"
+  - elementId: title
+    elementType: text
+    bounds:
+      - 38
+      - 29
+      - 884
+      - 58
+    role: title
+    content:
+      text: At lab meetings, people could tell
+      fontFamily: Segoe UI
+      fontSize: 25
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-watermark
+    elementType: text
+    bounds:
+      - 38
+      - 520
+      - 750
+      - 12
+    content:
+      text: english chatgpt 6 astra
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-position
+    elementType: text
+    bounds:
+      - 885
+      - 520
+      - 37
+      - 12
+    content:
+      text: ""
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - right
+        - top
+      field: main-position
+  - elementId: v-caption
+    elementType: text
+    bounds:
+      - 38
+      - 88
+      - 875
+      - 30
+    content:
+      text: Completeness can hide the reason for the talk.
+      fontFamily: Segoe UI
+      fontSize: 17
+      color: "#25282C"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-paper-back-0
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 43
+      - 162
+      - 170
+      - 238
+    fill:
+      type: solid
+      color: "#E3E6E8"
+  - elementId: v-paper-0
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 38
+      - 157
+      - 170
+      - 238
+    fill:
+      type: solid
+      color: "#F8F9FA"
+    border:
+      width: 1
+      color: "#CCD1D5"
+  - elementId: v-paper-title-0
+    elementType: text
+    bounds:
+      - 52
+      - 173
+      - 142
+      - 25
+    content:
+      text: Overview
+      fontFamily: Segoe UI
+      fontSize: 15
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-equal-block-0-0
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 52
+      - 218
+      - 142
+      - 23
+    fill:
+      type: solid
+      color: "#E1E5E8"
+  - elementId: v-equal-ink-0-0
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 60
+      - 226
+      - 108
+      - 3
+    fill:
+      type: solid
+      color: "#A7B0B7"
+  - elementId: v-equal-block-0-1
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 52
+      - 249
+      - 142
+      - 23
+    fill:
+      type: solid
+      color: "#E1E5E8"
+  - elementId: v-equal-ink-0-1
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 60
+      - 257
+      - 108
+      - 3
+    fill:
+      type: solid
+      color: "#A7B0B7"
+  - elementId: v-equal-block-0-2
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 52
+      - 280
+      - 142
+      - 23
+    fill:
+      type: solid
+      color: "#E1E5E8"
+  - elementId: v-equal-ink-0-2
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 60
+      - 288
+      - 108
+      - 3
+    fill:
+      type: solid
+      color: "#A7B0B7"
+  - elementId: v-equal-block-0-3
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 52
+      - 311
+      - 142
+      - 23
+    fill:
+      type: solid
+      color: "#E1E5E8"
+  - elementId: v-equal-ink-0-3
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 60
+      - 319
+      - 108
+      - 3
+    fill:
+      type: solid
+      color: "#A7B0B7"
+  - elementId: v-equal-block-0-4
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 52
+      - 342
+      - 142
+      - 23
+    fill:
+      type: solid
+      color: "#E1E5E8"
+  - elementId: v-equal-ink-0-4
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 60
+      - 350
+      - 108
+      - 3
+    fill:
+      type: solid
+      color: "#A7B0B7"
+  - elementId: v-paper-back-1
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 227
+      - 185
+      - 170
+      - 238
+    fill:
+      type: solid
+      color: "#E3E6E8"
+  - elementId: v-paper-1
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 222
+      - 180
+      - 170
+      - 238
+    fill:
+      type: solid
+      color: "#F8F9FA"
+    border:
+      width: 1
+      color: "#CCD1D5"
+  - elementId: v-paper-title-1
+    elementType: text
+    bounds:
+      - 236
+      - 196
+      - 142
+      - 25
+    content:
+      text: Capabilities
+      fontFamily: Segoe UI
+      fontSize: 15
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-equal-block-1-0
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 236
+      - 241
+      - 142
+      - 23
+    fill:
+      type: solid
+      color: "#E1E5E8"
+  - elementId: v-equal-ink-1-0
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 244
+      - 249
+      - 108
+      - 3
+    fill:
+      type: solid
+      color: "#A7B0B7"
+  - elementId: v-equal-block-1-1
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 236
+      - 272
+      - 142
+      - 23
+    fill:
+      type: solid
+      color: "#E1E5E8"
+  - elementId: v-equal-ink-1-1
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 244
+      - 280
+      - 108
+      - 3
+    fill:
+      type: solid
+      color: "#A7B0B7"
+  - elementId: v-equal-block-1-2
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 236
+      - 303
+      - 142
+      - 23
+    fill:
+      type: solid
+      color: "#E1E5E8"
+  - elementId: v-equal-ink-1-2
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 244
+      - 311
+      - 108
+      - 3
+    fill:
+      type: solid
+      color: "#A7B0B7"
+  - elementId: v-equal-block-1-3
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 236
+      - 334
+      - 142
+      - 23
+    fill:
+      type: solid
+      color: "#E1E5E8"
+  - elementId: v-equal-ink-1-3
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 244
+      - 342
+      - 108
+      - 3
+    fill:
+      type: solid
+      color: "#A7B0B7"
+  - elementId: v-equal-block-1-4
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 236
+      - 365
+      - 142
+      - 23
+    fill:
+      type: solid
+      color: "#E1E5E8"
+  - elementId: v-equal-ink-1-4
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 244
+      - 373
+      - 108
+      - 3
+    fill:
+      type: solid
+      color: "#A7B0B7"
+  - elementId: v-paper-back-2
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 411
+      - 208
+      - 170
+      - 238
+    fill:
+      type: solid
+      color: "#E3E6E8"
+  - elementId: v-paper-2
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 406
+      - 203
+      - 170
+      - 238
+    fill:
+      type: solid
+      color: "#F8F9FA"
+    border:
+      width: 1
+      color: "#CCD1D5"
+  - elementId: v-paper-title-2
+    elementType: text
+    bounds:
+      - 420
+      - 219
+      - 142
+      - 25
+    content:
+      text: Benefits
+      fontFamily: Segoe UI
+      fontSize: 15
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-equal-block-2-0
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 420
+      - 264
+      - 142
+      - 23
+    fill:
+      type: solid
+      color: "#E1E5E8"
+  - elementId: v-equal-ink-2-0
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 428
+      - 272
+      - 108
+      - 3
+    fill:
+      type: solid
+      color: "#A7B0B7"
+  - elementId: v-equal-block-2-1
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 420
+      - 295
+      - 142
+      - 23
+    fill:
+      type: solid
+      color: "#E1E5E8"
+  - elementId: v-equal-ink-2-1
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 428
+      - 303
+      - 108
+      - 3
+    fill:
+      type: solid
+      color: "#A7B0B7"
+  - elementId: v-equal-block-2-2
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 420
+      - 326
+      - 142
+      - 23
+    fill:
+      type: solid
+      color: "#E1E5E8"
+  - elementId: v-equal-ink-2-2
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 428
+      - 334
+      - 108
+      - 3
+    fill:
+      type: solid
+      color: "#A7B0B7"
+  - elementId: v-equal-block-2-3
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 420
+      - 357
+      - 142
+      - 23
+    fill:
+      type: solid
+      color: "#E1E5E8"
+  - elementId: v-equal-ink-2-3
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 428
+      - 365
+      - 108
+      - 3
+    fill:
+      type: solid
+      color: "#A7B0B7"
+  - elementId: v-equal-block-2-4
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 420
+      - 388
+      - 142
+      - 23
+    fill:
+      type: solid
+      color: "#E1E5E8"
+  - elementId: v-equal-ink-2-4
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 428
+      - 396
+      - 108
+      - 3
+    fill:
+      type: solid
+      color: "#A7B0B7"
+  - elementId: v-voice
+    elementType: text
+    bounds:
+      - 635
+      - 150
+      - 288
+      - 73
+    content:
+      text: |-
+        I still wanted agents
+        to help make slides.
+      fontFamily: Segoe UI
+      fontSize: 22
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-reason
+    elementType: text
+    bounds:
+      - 635
+      - 251
+      - 288
+      - 200
+    content:
+      text: |-
+        The missing part was the speaker’s judgement:
+  
+        why this problem matters,
+        which evidence earns its place,
+        and what this talk should say.
+      fontFamily: Segoe UI
+      fontSize: 16
+      color: "#25282C"
+      bold: false
+      lineHeight: 1.4
+      align:
+        - left
+        - top
+notes: "This is the founder’s experience at lab meetings, not a universal benchmark. He still believed agents should help make slides: slides are structured files. The problem was a complete-looking deck without the speaker’s choices. The page studies here are deliberately drawn illustrations of uniform emphasis, not another author’s artwork."

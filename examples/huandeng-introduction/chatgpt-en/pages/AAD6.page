@@ -3,7 +3,7 @@ background:
   type: solid
   color: "#E4ECE6"
 elements:
-  - elementId: f-bg
+  - elementId: v-bg
     elementType: shape
     shapeName: rect
     bounds:
@@ -13,187 +13,203 @@ elements:
       - 540
     fill:
       type: solid
-      color: "#F4F1E8"
-  - elementId: f-route
-    elementType: text
-    bounds:
-      - 42
-      - 20
-      - 860
-      - 18
-    content:
-      text: WORKSPACE → SECTIONS
-      fontFamily: Segoe UI
-      fontSize: 11
-      color: "#168C8C"
-      bold: true
-      align:
-        - left
-        - top
-      lineHeight: 1.2
+      color: "#FFFFFF"
   - elementId: title
     elementType: text
     bounds:
-        [42,49,875,66]
+        [38,29,884,58]
     role: title
     content:
-      {"text":"A Section begins at its first slide","fontFamily":"Segoe UI","fontSize":32,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.1}
-  - elementId: f-foot-rule
-    elementType: shape
-    shapeName: rect
-    bounds:
-      - 42
-      - 510
-      - 876
-      - 1
-    fill:
-      type: solid
-      color: "#CCD2CB"
-  - elementId: f-watermark
+      {"text":"Ideas worth acknowledging","fontFamily":"Segoe UI","fontSize":25,"color":"#25282C","bold":true,"lineHeight":1.16,"align":["left","top"]}
+  - elementId: v-watermark
     elementType: text
     bounds:
-      - 42
-      - 518
-      - 700
-      - 17
+      - 38
+      - 520
+      - 750
+      - 12
     content:
-      text: English · ChatGPT 6 Astra
+      text: english chatgpt 6 astra
       fontFamily: Segoe UI
-      fontSize: 12
-      color: "#50646A"
+      fontSize: 8
+      color: "#6D7379"
       bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.2
-  - elementId: f-position
+  - elementId: v-position
     elementType: text
     bounds:
-      - 882
-      - 518
-      - 36
-      - 17
+      - 885
+      - 520
+      - 37
+      - 12
     content:
       text: ""
       fontFamily: Segoe UI
-      fontSize: 12
-      color: "#50646A"
+      fontSize: 8
+      color: "#6D7379"
       bold: false
+      lineHeight: 1.16
       align:
         - right
         - top
-      lineHeight: 1.2
       field: main-position
-  - elementId: f-section-control
-    elementType: image
+  - elementId: v-ideas
+    elementType: table
     bounds:
-      - 44
-      - 145
-      - 870
-      - 74
-    src: media/imported/b44629efe77e165d24c78442c4abd10caabe89cd0a70a9da9b68f520f84de3d9.png
-    sourceName: section-first-slide.png
-    fit:
-      mode: contain
-  - elementId: f-section-range
-    elementType: image
-    bounds:
-      - 44
-      - 242
-      - 870
-      - 26
-    src: media/imported/2134694ac1056c1685101e89dcf6f445904eadd6baceaba403246b47681f62d1.png
-    sourceName: section-range.png
-    fit:
-      mode: contain
-  - elementId: f-section-rule
+      - 38
+      - 107
+      - 884
+      - 333
+    columnWidths:
+      - 0.41
+      - 0.59
+    rows:
+      - - text: Reference
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: true
+          fill: "#E8ECEF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+        - text: What it helped us think through
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: true
+          fill: "#E8ECEF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+      - - text: PowerPoint / WPS
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: true
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+        - text: Sections, notes, presenting and contextual actions
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: false
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+      - - text: Kimi / Moonshot / open-kimi-ppt-skill
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: true
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+        - text: Agent workflows and community PPTD conventions
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: false
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+      - - text: PPTist / VS Code
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: true
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+        - text: Canvas interaction, shortcuts and workspaces
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: false
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+      - - text: Slidev / Presenton
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: true
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+        - text: Local sources, themes and design references
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: false
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+      - - text: PPTAgent / PPTMaster
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: true
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+        - text: Generation, visual review and native PPTX
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: false
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+      - - text: OpenSlides Studio / OPF
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: true
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+        - text: Explicit identity, revisions and patch contracts
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: false
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+  - elementId: v-further
     elementType: text
     bounds:
+      - 38
+      - 461
+      - 884
       - 44
-      - 294
-      - 870
-      - 31
     content:
-      text: The next Section sets the end of this one.
+      text: |-
+        And a wider study of editors, animation and interfaces.
+        All 33 historical references and their roles are in ACKNOWLEDGMENTS.md.
       fontFamily: Segoe UI
-      fontSize: 22
-      color: "#112D32"
-      bold: true
+      fontSize: 14
+      color: "#25282C"
+      bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.2
-  - elementId: f-section-start
-    elementType: image
-    bounds:
-      - 44
-      - 348
-      - 238
-      - 134
-    src: media/imported/7ed6b91ffce0af3fcc38532084bc96b1d90e5d7bb963ce92473079bdaf511cbe.png
-    sourceName: 04.png
-    fit:
-      mode: contain
-  - elementId: f-section-next
-    elementType: image
-    bounds:
-      - 676
-      - 348
-      - 238
-      - 134
-    src: media/imported/46f8a5a856073ac82f7ac49354761c40f3a5ba9edbdb498f12b9c0f94db0845d.png
-    sourceName: 09.png
-    fit:
-      mode: contain
-  - elementId: f-section-span
-    elementType: line
-    bounds:
-      - 302
-      - 414
-      - 346
-      - 0
-    viewBox:
-      - 1
-      - 1
-    points: 0,0 1,1
-    border:
-      width: 2.5
-      color: "#ED6A3A"
-    arrow:
-      - null
-      - arrow
-  - elementId: f-section-span-label
-    elementType: text
-    bounds:
-      - 326
-      - 371
-      - 297
-      - 30
-    content:
-      text: Pages 4–8
-      fontFamily: Segoe UI
-      fontSize: 22
-      color: "#168C8C"
-      bold: true
-      align:
-        - center
-        - top
-      lineHeight: 1.2
-  - elementId: f-section-next-label
-    elementType: text
-    bounds:
-      - 321
-      - 450
-      - 311
-      - 25
-    content:
-      text: Next Section begins at 9
-      fontFamily: Segoe UI
-      fontSize: 17
-      color: "#112D32"
-      bold: false
-      align:
-        - center
-        - top
-      lineHeight: 1.2
-notes: "Open Sections, select the section and choose its First Slide. A section continues from that slide until the next section starts; moving those boundaries changes membership. The screenshot is the real Make a focused edit section, starting at page 4 and currently covering pages 4 through 8. A section does not require an empty divider slide. Save project after changing the structure."
+notes: "These formal acknowledgments restore the fifteen sources explicitly named in the original introduction. Code reuse, runtime dependencies, product inspiration and researched alternatives are different relationships. The complete thirty-three-source historical record is in docs/ACKNOWLEDGMENTS.md and the project sources. OpenSlides Studio is openslides.dev, distinct from the OpenSlide editor upstream."

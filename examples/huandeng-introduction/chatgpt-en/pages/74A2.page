@@ -3,7 +3,7 @@ background:
   type: solid
   color: "#F7F5EF"
 elements:
-  - elementId: f-bg
+  - elementId: v-bg
     elementType: shape
     shapeName: rect
     bounds:
@@ -13,150 +13,167 @@ elements:
       - 540
     fill:
       type: solid
-      color: "#F4F1E8"
-  - elementId: f-route
-    elementType: text
-    bounds:
-      - 42
-      - 20
-      - 860
-      - 18
-    content:
-      text: PROJECT → ARRANGE PRESENTATION
-      fontFamily: Segoe UI
-      fontSize: 11
-      color: "#168C8C"
-      bold: true
-      align:
-        - left
-        - top
-      lineHeight: 1.2
+      color: "#FFFFFF"
   - elementId: title
     elementType: text
     bounds:
-        [42,49,875,66]
+        [38,29,884,58]
     role: title
     content:
-      {"text":"Choose pages for this particular talk","fontFamily":"Segoe UI","fontSize":32,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.1}
-  - elementId: f-foot-rule
-    elementType: shape
-    shapeName: rect
-    bounds:
-      - 42
-      - 510
-      - 876
-      - 1
-    fill:
-      type: solid
-      color: "#CCD2CB"
-  - elementId: f-watermark
+      {"text":"One library, two different talks","fontFamily":"Segoe UI","fontSize":25,"color":"#25282C","bold":true,"lineHeight":1.16,"align":["left","top"]}
+  - elementId: v-watermark
     elementType: text
     bounds:
-      - 42
-      - 518
-      - 700
-      - 17
+      - 38
+      - 520
+      - 750
+      - 12
     content:
-      text: English · ChatGPT 6 Astra
+      text: english chatgpt 6 astra
       fontFamily: Segoe UI
-      fontSize: 12
-      color: "#50646A"
+      fontSize: 8
+      color: "#6D7379"
       bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.2
-  - elementId: f-position
+  - elementId: v-position
     elementType: text
     bounds:
-      - 882
-      - 518
-      - 36
-      - 17
+      - 885
+      - 520
+      - 37
+      - 12
     content:
       text: ""
       fontFamily: Segoe UI
-      fontSize: 12
-      color: "#50646A"
+      fontSize: 8
+      color: "#6D7379"
       bold: false
+      lineHeight: 1.16
       align:
         - right
         - top
-      lineHeight: 1.2
       field: main-position
-  - elementId: f-arrange-label
+  - elementId: v-project
+    elementType: image
+    bounds:
+      - 38
+      - 110
+      - 420
+      - 200
+    src: "media/imported/3cceec6c3b8f7decdace0191a7b786492308a44b8a82119233e961f651a3c377.png"
+    sourceName: project.png
+    fit:
+      mode: contain
+  - elementId: v-main-label
     elementType: text
     bounds:
-      - 44
-      - 128
-      - 414
-      - 25
+      - 38
+      - 329
+      - 420
+      - 24
     content:
-      text: 1  Choose or create the Presentation
+      text: Project retains one Main library.
       fontFamily: Segoe UI
       fontSize: 15
-      color: "#112D32"
+      color: "#25282C"
       bold: true
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.2
-  - elementId: f-pick-label
+  - elementId: v-full
+    elementType: image
+    bounds:
+      - 493
+      - 111
+      - 429
+      - 178
+    src: media/imported/11acb75d85e5ea923b4a10633649e03b23ef7ce5996dec64d3c319a4b562f636.png
+    sourceName: talk-full.png
+    fit:
+      mode: contain
+  - elementId: v-short
+    elementType: image
+    bounds:
+      - 493
+      - 328
+      - 429
+      - 133
+    src: "media/imported/1525b9746e1bb29cb4af4b81baf389f43077a27a2cb7188dbb4fe89afde01c8b.png"
+    sourceName: talk-short.png
+    fit:
+      mode: contain
+  - elementId: v-full-label
     elementType: text
     bounds:
-      - 550
-      - 128
-      - 366
-      - 25
+      - 493
+      - 86
+      - 429
+      - 23
     content:
-      text: 2  Find a Main slide and add it
+      text: Full introduction, 28 pages
       fontFamily: Segoe UI
       fontSize: 15
-      color: "#112D32"
+      color: "#25282C"
       bold: true
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.2
-  - elementId: f-arrange
-    elementType: image
+  - elementId: v-short-label
+    elementType: text
     bounds:
-      - 55.400717703349244
-      - 162
-      - 374.1985645933015
-      - 327
-    src: media/imported/1b8439f5934c95907ad3f66d9c4a14b6eb00d4497f3b68fb95d401a82294d3a5.png
-    sourceName: arrange.png
-    fit:
-      mode: contain
-    crop:
-      bottom: 0.34
-  - elementId: f-picker
-    elementType: image
+      - 493
+      - 303
+      - 429
+      - 23
+    content:
+      text: Shorter talk, 19 pages
+      fontFamily: Segoe UI
+      fontSize: 15
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-reference
+    elementType: text
     bounds:
-      - 550
-      - 162
-      - 364
-      - 327
-    src: media/imported/d614bf96e157bdf4db31d0bf68c977bbde5a3bc3f6eac5e84d770b676b450de9.png
-    sourceName: source-picker.png
-    fit:
-      mode: contain
-  - elementId: f-arrange-link
-    elementType: line
+      - 38
+      - 395
+      - 420
+      - 82
+    content:
+      text: |-
+        Reference the same pages in another order.
+        Originals, Story and history stay with them.
+      fontFamily: Segoe UI
+      fontSize: 18
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-selection
+    elementType: text
     bounds:
-      - 468
-      - 317
-      - 52
-      - 0
-    viewBox:
-      - 1
-      - 1
-    points: 0,0 1,1
-    border:
-      width: 2.5
-      color: "#ED6A3A"
-    arrow:
-      - null
-      - arrow
-notes: "In Project, choose Arrange Presentation. Create or select a Presentation, then choose pages from Main. The screenshots show First edit · short talk and the source picker filtered to GX5Z. Click the plus beside a page or Section to append its reference; reorder the occurrences for this audience and save project. A Presentation reuses the source page instead of creating a detached copy."
+      - 493
+      - 480
+      - 429
+      - 20
+    content:
+      text: Selected referenced pages shown.
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#63696F"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+notes: "Main retains the page library. A Presentation references those pages in the order a particular audience needs. The full introduction and shorter lab meeting do not require copied decks. The screenshot and sequences are real project data; the page images are this author’s own renders. Pin a named version to fix content, or add occurrence notes to change the telling."

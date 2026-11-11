@@ -3,7 +3,7 @@ background:
   type: solid
   color: "#F7F5EF"
 elements:
-  - elementId: f-paper
+  - elementId: v-bg
     elementType: shape
     shapeName: rect
     bounds:
@@ -13,104 +13,75 @@ elements:
       - 540
     fill:
       type: solid
-      color: "#F4F1E8"
+      color: "#FFFFFF"
   - elementId: title
     elementType: text
     bounds:
-        [36,27,884,46]
+        [38,29,884,58]
     role: title
     content:
-      {"text":"把怎么讲，写进备注页","fontFamily":"Noto Sans SC","fontSize":31,"color":"#112D32","align":["left","top"],"lineHeight":1.35,"bold":true}
-  - elementId: f-action
+      {"text":"为口头讲述准备大纲与备注","fontFamily":"Segoe UI","fontSize":25,"color":"#25282C","bold":true,"lineHeight":1.16,"align":["left","top"]}
+  - elementId: v-watermark
     elementType: text
     bounds:
       - 38
-      - 82
-      - 884
-      - 28
+      - 520
+      - 750
+      - 12
     content:
-      text: 切到「备注页」→ 写讲稿 → 保存页面
-      fontFamily: Noto Sans SC
-      fontSize: 18
-      color: "#557076"
+      text: chinese chatgpt 6 astra + subagent
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
+      bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.35
-  - elementId: f-watermark
+  - elementId: v-position
     elementType: text
     bounds:
-      - 36
-      - 514
-      - 820
-      - 19
-    content:
-      text: Chinese · ChatGPT 6 Astra + Subagents
-      fontFamily: Noto Sans SC
-      fontSize: 13
-      color: "#557076"
-      align:
-        - left
-        - top
-      lineHeight: 1.35
-  - elementId: f-position
-    elementType: text
-    bounds:
-      - 878
-      - 514
-      - 44
-      - 19
+      - 885
+      - 520
+      - 37
+      - 12
     content:
       text: ""
-      fontFamily: Noto Sans SC
-      fontSize: 13
-      color: "#557076"
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
+      bold: false
+      lineHeight: 1.16
       align:
         - right
         - top
-      lineHeight: 1.35
       field: main-position
-  - elementId: f-notes-navigation
-    elementType: image
-    bounds:
-      - 38
-      - 124
-      - 515
-      - 57
-    src: media/imported/4474e606ba2e55f83b8484e3816d9050d1e13538be1e0f1ca9fa774bc267fbf8.png
-    sourceName: tutorial-notes-nav.png
-    fit:
-      mode: contain
-  - elementId: f-notes-editor
-    elementType: image
-    bounds:
-      - 38
-      - 198
-      - 884
-      - 273
-    src: media/imported/b9e59499ee65d3ff33ca632826d526a808c019d00b9efa666c2d626b6c880dfb.png
-    sourceName: tutorial-notes-detail.png
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0.28
-  - elementId: f-notes-point
+  - elementId: v-lead
     elementType: text
     bounds:
       - 38
-      - 481
+      - 80
       - 884
-      - 25
+      - 26
     content:
-      text: 页上保留重点，讲稿补足解释与过渡。
-      fontFamily: Noto Sans SC
-      fontSize: 18
-      color: "#168C8C"
+      text: 先选择这次演讲，再写这一处页面的讲法。
+      fontFamily: Segoe UI
+      fontSize: 14
+      color: "#63696F"
+      bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.35
-notes: "这一页显示刚才文字对比页的真实备注。备注补充了操作细节、比较的重点和下一页的过渡，听众看到的页面仍保留图像与关键结论。点击顶部备注页，可以在同一工作区继续写这张 Main Slide 的讲稿；写完保存页面。等到编排具体演讲时，还可以给某一次出现单独准备讲法，后面会继续说明。"
+  - elementId: v-editor
+    elementType: image
+    bounds:
+      - 38
+      - 115
+      - 884
+      - 395
+    src: "media/imported/23f76d11c4e416bee638ec4818f0ea2d855c29c3f49152e00a30a838b26fc49c.png"
+    sourceName: notes.png
+    fit:
+      mode: contain
+notes: "本次短演讲给Story页写了更短的出现备注，Main页保留完整解释。同一页因此能服务不同的口头讲述，不需要复制整页。实际备注视图把页面与讲稿放在一起。"

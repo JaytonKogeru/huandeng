@@ -490,15 +490,14 @@
       },
       "label": "S24",
       "designIntent": {
-        "purpose": "让读者知道手动编辑后如何确认保存，并区分页面与编排草稿。",
+        "purpose": "让下一次修改留在同一份工作里",
         "keep": [
-          "保留真实界面的语言、原始图片和来源。",
-          "保留稳定 Slide ID、可编辑对象和正确作者水印。"
+          "保留作者的论点、真实证据、界面位置感和来源说明。"
         ],
-        "requestedChange": "把操作步骤融入可以继续编辑的教程，让每页教会一个明确动作。",
-        "actor": "ChatGPT 6 Astra + Subagents",
+        "requestedChange": "以这段叙事为基础做有范围的修改，不替换作者的故事。",
+        "actor": "ChatGPT 6 Astra / root",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "recordedAt": "2026-11-11T00:50:54.847Z",
+        "recordedAt": "2026-11-11T12:29:40.736Z",
         "pageRole": "content"
       }
     },
@@ -513,15 +512,14 @@
       "label": "S25",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "用真实放映菜单与实际放映截图教会从目标演讲当前页启动及退出。",
+        "purpose": "开源基础与致谢",
         "keep": [
-          "保留真实界面的语言、原始图片和来源。",
-          "保留稳定 Slide ID、可编辑对象和正确作者水印。"
+          "保留作者的论点、真实证据、界面位置感和来源说明。"
         ],
-        "requestedChange": "把操作步骤融入可以继续编辑的教程，让每页教会一个明确动作。",
-        "actor": "ChatGPT 6 Astra + Subagents",
+        "requestedChange": "以这段叙事为基础做有范围的修改，不替换作者的故事。",
+        "actor": "ChatGPT 6 Astra / root",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "recordedAt": "2026-11-11T01:36:41.475Z"
+        "recordedAt": "2026-11-11T12:29:40.736Z"
       }
     },
     "7995de62-e81e-46db-b250-cabc66a99b28": {
@@ -535,15 +533,14 @@
       "label": "S26",
       "designIntent": {
         "pageRole": "cover",
-        "purpose": "开场明确演示任务：教会打开、编辑、复用与交付。",
+        "purpose": "从我的组会开始",
         "keep": [
-          "保留真实界面的语言、原始图片和来源。",
-          "保留稳定 Slide ID、可编辑对象和正确作者水印。"
+          "保留作者的论点、真实证据、界面位置感和来源说明。"
         ],
-        "requestedChange": "把操作步骤融入可以继续编辑的教程，让每页教会一个明确动作。",
-        "actor": "ChatGPT 6 Astra + Subagents",
+        "requestedChange": "以这段叙事为基础做有范围的修改，不替换作者的故事。",
+        "actor": "ChatGPT 6 Astra / root",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "recordedAt": "2026-11-11T01:16:03.560Z"
+        "recordedAt": "2026-11-11T12:29:40.736Z"
       }
     },
     "b55179ed-446c-42a7-a2d5-2557defac052": {
@@ -556,16 +553,15 @@
       },
       "label": "S27",
       "designIntent": {
-        "pageRole": "content",
-        "purpose": "让读者找到启动入口，并理解整个项目文件夹应随工作携带。",
+        "pageRole": "section",
+        "purpose": "把故事留在工作里",
         "keep": [
-          "保留真实界面的语言、原始图片和来源。",
-          "保留稳定 Slide ID、可编辑对象和正确作者水印。"
+          "保留作者的论点、真实证据、界面位置感和来源说明。"
         ],
-        "requestedChange": "把操作步骤融入可以继续编辑的教程，让每页教会一个明确动作。",
-        "actor": "ChatGPT 6 Astra + Subagents",
+        "requestedChange": "以这段叙事为基础做有范围的修改，不替换作者的故事。",
+        "actor": "ChatGPT 6 Astra / root",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "recordedAt": "2026-11-11T01:36:19.781Z"
+        "recordedAt": "2026-11-11T12:29:40.736Z"
       }
     },
     "7b5bb42e-c529-49f8-ad88-62c69b567837": {
@@ -579,15 +575,14 @@
       "label": "S28",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "点选标题 → 右侧「属性」→ 修改文字 → 保存页面",
+        "purpose": "看见对象，再改它",
         "keep": [
-          "保留真实界面的语言、原始图片和来源。",
-          "保留稳定 Slide ID、可编辑对象和正确作者水印。"
+          "保留作者的论点、真实证据、界面位置感和来源说明。"
         ],
-        "requestedChange": "把操作步骤融入可以继续编辑的教程，让每页教会一个明确动作。",
-        "actor": "ChatGPT 6 Astra + Subagents",
+        "requestedChange": "以这段叙事为基础做有范围的修改，不替换作者的故事。",
+        "actor": "ChatGPT 6 Astra / root",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "recordedAt": "2026-11-11T01:17:46.216Z"
+        "recordedAt": "2026-11-11T12:29:40.736Z"
       }
     },
     "7b69742f-16b5-4b80-acf0-1d23966aae96": {
@@ -601,15 +596,14 @@
       "label": "S29",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "选中标题与引导句 → 修改 → 保存页面",
+        "purpose": "这次保存，具体改了什么",
         "keep": [
-          "保留真实界面的语言、原始图片和来源。",
-          "保留稳定 Slide ID、可编辑对象和正确作者水印。"
+          "保留作者的论点、真实证据、界面位置感和来源说明。"
         ],
-        "requestedChange": "把操作步骤融入可以继续编辑的教程，让每页教会一个明确动作。",
-        "actor": "ChatGPT 6 Astra + Subagents",
+        "requestedChange": "以这段叙事为基础做有范围的修改，不替换作者的故事。",
+        "actor": "ChatGPT 6 Astra / root",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "recordedAt": "2026-11-11T00:51:08.802Z"
+        "recordedAt": "2026-11-11T12:29:40.736Z"
       }
     },
     "3483b895-bc52-43b6-a7c4-001a0d1e4526": {
@@ -623,15 +617,14 @@
       "label": "S30",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "教会页面选择、对象选择与属性面板的对应关系。",
+        "purpose": "打开项目，先认清工作现场",
         "keep": [
-          "保留真实界面的语言、原始图片和来源。",
-          "保留稳定 Slide ID、可编辑对象和正确作者水印。"
+          "保留作者的论点、真实证据、界面位置感和来源说明。"
         ],
-        "requestedChange": "把操作步骤融入可以继续编辑的教程，让每页教会一个明确动作。",
-        "actor": "ChatGPT 6 Astra + Subagents",
+        "requestedChange": "以这段叙事为基础做有范围的修改，不替换作者的故事。",
+        "actor": "ChatGPT 6 Astra / root",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "recordedAt": "2026-11-11T01:05:20.422Z"
+        "recordedAt": "2026-11-11T12:29:40.736Z"
       }
     },
     "59857807-d9f3-4e58-9a60-275cd504ea16": {
@@ -645,15 +638,14 @@
       "label": "S31",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "演示找到已有素材、拖到页面，以及导入新图的实际入口。",
+        "purpose": "素材保留原件，页面使用实例",
         "keep": [
-          "保留真实界面的语言、原始图片和来源。",
-          "保留稳定 Slide ID、可编辑对象和正确作者水印。"
+          "保留作者的论点、真实证据、界面位置感和来源说明。"
         ],
-        "requestedChange": "把操作步骤融入可以继续编辑的教程，让每页教会一个明确动作。",
-        "actor": "ChatGPT 6 Astra + Subagents",
+        "requestedChange": "以这段叙事为基础做有范围的修改，不替换作者的故事。",
+        "actor": "ChatGPT 6 Astra / root",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "recordedAt": "2026-11-11T01:05:34.698Z"
+        "recordedAt": "2026-11-11T12:29:40.736Z"
       }
     },
     "def43d68-1767-45f5-800a-17d648750b7e": {
@@ -666,16 +658,15 @@
       },
       "label": "S32",
       "designIntent": {
-        "pageRole": "content",
-        "purpose": "历史 → 操作记录 → 查看已保存的修改",
+        "pageRole": "section",
+        "purpose": "只改这一页",
         "keep": [
-          "保留真实界面的语言、原始图片和来源。",
-          "保留稳定 Slide ID、可编辑对象和正确作者水印。"
+          "保留作者的论点、真实证据、界面位置感和来源说明。"
         ],
-        "requestedChange": "把操作步骤融入可以继续编辑的教程，让每页教会一个明确动作。",
-        "actor": "ChatGPT 6 Astra + Subagents",
+        "requestedChange": "以这段叙事为基础做有范围的修改，不替换作者的故事。",
+        "actor": "ChatGPT 6 Astra / root",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "recordedAt": "2026-11-11T01:36:26.897Z"
+        "recordedAt": "2026-11-11T12:29:40.736Z"
       }
     },
     "ea528c6a-2423-488d-834b-056322cca744": {
@@ -689,15 +680,14 @@
       "label": "S33",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "选图片 → 属性 → 图片与裁切",
+        "purpose": "工具与设计参考",
         "keep": [
-          "保留真实界面的语言、原始图片和来源。",
-          "保留稳定 Slide ID、可编辑对象和正确作者水印。"
+          "保留作者的论点、真实证据、界面位置感和来源说明。"
         ],
-        "requestedChange": "把操作步骤融入可以继续编辑的教程，让每页教会一个明确动作。",
-        "actor": "ChatGPT 6 Astra + Subagents",
+        "requestedChange": "以这段叙事为基础做有范围的修改，不替换作者的故事。",
+        "actor": "ChatGPT 6 Astra / root",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "recordedAt": "2026-11-11T01:36:49.627Z"
+        "recordedAt": "2026-11-11T12:29:40.736Z"
       }
     },
     "05cd8517-c8ac-4e12-b2d0-40c438b91042": {
@@ -711,15 +701,14 @@
       "label": "S34",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "让读者用目的、保留项和具体修改三个字段留下可继续执行的要求。",
+        "purpose": "把讲这一页的理由留在旁边",
         "keep": [
-          "保留真实界面的语言、原始图片和来源。",
-          "保留稳定 Slide ID、可编辑对象和正确作者水印。"
+          "保留作者的论点、真实证据、界面位置感和来源说明。"
         ],
-        "requestedChange": "把操作步骤融入可以继续编辑的教程，让每页教会一个明确动作。",
-        "actor": "ChatGPT 6 Astra + Subagents",
+        "requestedChange": "以这段叙事为基础做有范围的修改，不替换作者的故事。",
+        "actor": "ChatGPT 6 Astra / root",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "recordedAt": "2026-11-11T01:05:26.847Z"
+        "recordedAt": "2026-11-11T12:29:40.736Z"
       }
     },
     "d64aef1b-eb88-4b05-a620-ae60a0e833de": {
@@ -732,16 +721,15 @@
       },
       "label": "S35",
       "designIntent": {
-        "pageRole": "content",
-        "purpose": "通过真实页面版本选择控件解释Live和Pinned的实际用途。",
+        "pageRole": "section",
+        "purpose": "带到下一次组会",
         "keep": [
-          "保留真实界面的语言、原始图片和来源。",
-          "保留稳定 Slide ID、可编辑对象和正确作者水印。"
+          "保留作者的论点、真实证据、界面位置感和来源说明。"
         ],
-        "requestedChange": "把操作步骤融入可以继续编辑的教程，让每页教会一个明确动作。",
-        "actor": "ChatGPT 6 Astra + Subagents",
+        "requestedChange": "以这段叙事为基础做有范围的修改，不替换作者的故事。",
+        "actor": "ChatGPT 6 Astra / root",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "recordedAt": "2026-11-11T01:36:34.307Z"
+        "recordedAt": "2026-11-11T12:29:40.736Z"
       }
     },
     "68f5273e-3f0d-4e5d-84d1-38391280cead": {
@@ -755,15 +743,14 @@
       "label": "S36",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "历史 → 输入版本名 → 记录页面版本",
+        "purpose": "回到上一版，仍是同一页",
         "keep": [
-          "保留真实界面的语言、原始图片和来源。",
-          "保留稳定 Slide ID、可编辑对象和正确作者水印。"
+          "保留作者的论点、真实证据、界面位置感和来源说明。"
         ],
-        "requestedChange": "把操作步骤融入可以继续编辑的教程，让每页教会一个明确动作。",
-        "actor": "ChatGPT 6 Astra + Subagents",
+        "requestedChange": "以这段叙事为基础做有范围的修改，不替换作者的故事。",
+        "actor": "ChatGPT 6 Astra / root",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "recordedAt": "2026-11-11T01:45:11.109Z"
+        "recordedAt": "2026-11-11T12:29:40.736Z"
       }
     },
     "129dfdc6-685d-48b4-972b-abff11f823e6": {
@@ -777,15 +764,14 @@
       "label": "S37",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "右侧「图层」→ 点选对象 → 调整前后顺序",
+        "purpose": "退远一点，看整段故事",
         "keep": [
-          "保留真实界面的语言、原始图片和来源。",
-          "保留稳定 Slide ID、可编辑对象和正确作者水印。"
+          "保留作者的论点、真实证据、界面位置感和来源说明。"
         ],
-        "requestedChange": "把操作步骤融入可以继续编辑的教程，让每页教会一个明确动作。",
-        "actor": "ChatGPT 6 Astra + Subagents",
+        "requestedChange": "以这段叙事为基础做有范围的修改，不替换作者的故事。",
+        "actor": "ChatGPT 6 Astra / root",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "recordedAt": "2026-11-11T01:12:57.564Z"
+        "recordedAt": "2026-11-11T12:29:40.736Z"
       }
     },
     "baca190c-e87b-415f-9c30-7c04e3fabe17": {
@@ -799,15 +785,14 @@
       "label": "S38",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "从Main挑选页面并编排这次演讲，而不复制整套源稿。",
+        "purpose": "用同一批页面，组织两场演讲",
         "keep": [
-          "保留真实界面的语言、原始图片和来源。",
-          "保留稳定 Slide ID、可编辑对象和正确作者水印。"
+          "保留作者的论点、真实证据、界面位置感和来源说明。"
         ],
-        "requestedChange": "把操作步骤融入可以继续编辑的教程，让每页教会一个明确动作。",
-        "actor": "ChatGPT 6 Astra + Subagents",
+        "requestedChange": "以这段叙事为基础做有范围的修改，不替换作者的故事。",
+        "actor": "ChatGPT 6 Astra / root",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "recordedAt": "2026-11-11T01:13:04.618Z"
+        "recordedAt": "2026-11-11T12:29:40.736Z"
       }
     },
     "f68f052b-18ac-4286-ae3b-6f12e5c5d0d0": {
@@ -821,15 +806,14 @@
       "label": "S39",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "以真实客户端选择界面说明助手接入的第一步和项目身份核对。",
+        "purpose": "Agent 的完成报告，应该连着真实工作",
         "keep": [
-          "保留真实界面的语言、原始图片和来源。",
-          "保留稳定 Slide ID、可编辑对象和正确作者水印。"
+          "保留作者的论点、真实证据、界面位置感和来源说明。"
         ],
-        "requestedChange": "把操作步骤融入可以继续编辑的教程，让每页教会一个明确动作。",
-        "actor": "ChatGPT 6 Astra + Subagents",
+        "requestedChange": "以这段叙事为基础做有范围的修改，不替换作者的故事。",
+        "actor": "ChatGPT 6 Astra / root",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "recordedAt": "2026-11-11T01:05:49.094Z"
+        "recordedAt": "2026-11-11T12:29:40.736Z"
       }
     },
     "503c86ce-673c-4229-9251-22114e5f5da9": {
@@ -843,15 +827,14 @@
       "label": "S40",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "教会用户为一个Presentation occurrence设置独立演讲备注。",
+        "purpose": "引用当前页，或留住一个版本",
         "keep": [
-          "保留真实界面的语言、原始图片和来源。",
-          "保留稳定 Slide ID、可编辑对象和正确作者水印。"
+          "保留作者的论点、真实证据、界面位置感和来源说明。"
         ],
-        "requestedChange": "把操作步骤融入可以继续编辑的教程，让每页教会一个明确动作。",
-        "actor": "ChatGPT 6 Astra + Subagents",
+        "requestedChange": "以这段叙事为基础做有范围的修改，不替换作者的故事。",
+        "actor": "ChatGPT 6 Astra / root",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "recordedAt": "2026-11-11T01:20:45.023Z"
+        "recordedAt": "2026-11-11T12:29:40.736Z"
       }
     },
     "bd3c71d1-360e-4e0c-bbb6-5938970e8876": {
@@ -865,15 +848,14 @@
       "label": "S41",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "说明可执行的分页面协作、交接内容与真实保存回执检查。",
+        "purpose": "我们把哪些东西接在一起",
         "keep": [
-          "保留真实界面的语言、原始图片和来源。",
-          "保留稳定 Slide ID、可编辑对象和正确作者水印。"
+          "保留作者的论点、真实证据、界面位置感和来源说明。"
         ],
-        "requestedChange": "把操作步骤融入可以继续编辑的教程，让每页教会一个明确动作。",
-        "actor": "ChatGPT 6 Astra + Subagents",
+        "requestedChange": "以这段叙事为基础做有范围的修改，不替换作者的故事。",
+        "actor": "ChatGPT 6 Astra / root",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "recordedAt": "2026-11-11T00:54:52.087Z"
+        "recordedAt": "2026-11-11T12:29:40.736Z"
       }
     },
     "8a9bcdf1-fcb2-4214-9743-86c110c954ca": {
@@ -887,15 +869,14 @@
       "label": "S42",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "给用户一个可以立即完成的练习，并保留项目携带方式和来源致谢。",
+        "purpose": "下一次，从自己的故事开始",
         "keep": [
-          "保留真实界面的语言、原始图片和来源。",
-          "保留稳定 Slide ID、可编辑对象和正确作者水印。"
+          "保留作者的论点、真实证据、界面位置感和来源说明。"
         ],
-        "requestedChange": "把操作步骤融入可以继续编辑的教程，让每页教会一个明确动作。",
-        "actor": "ChatGPT 6 Astra + Subagents",
+        "requestedChange": "以这段叙事为基础做有范围的修改，不替换作者的故事。",
+        "actor": "ChatGPT 6 Astra / root",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "recordedAt": "2026-11-11T00:55:00.713Z"
+        "recordedAt": "2026-11-11T12:29:40.736Z"
       }
     },
     "f240e310-6466-4b7f-82ff-4b2668e2802c": {
@@ -927,15 +908,14 @@
       },
       "label": "S44",
       "designIntent": {
-        "purpose": "用创始人的实际工作动机引出页面级持续修改与历史。",
-        "requestedChange": "把操作步骤融入可以继续编辑的教程，让每页教会一个明确动作。",
+        "purpose": "五十页，只改其中两页",
+        "requestedChange": "以这段叙事为基础做有范围的修改，不替换作者的故事。",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "actor": "ChatGPT 6 Astra + Subagents",
-        "recordedAt": "2026-11-11T00:50:12.094Z",
+        "actor": "ChatGPT 6 Astra / root",
+        "recordedAt": "2026-11-11T12:29:40.736Z",
         "pageRole": "content",
         "keep": [
-          "保留真实界面的语言、原始图片和来源。",
-          "保留稳定 Slide ID、可编辑对象和正确作者水印。"
+          "保留作者的论点、真实证据、界面位置感和来源说明。"
         ]
       }
     },
@@ -949,15 +929,14 @@
       },
       "label": "S45",
       "designIntent": {
-        "purpose": "教会导出格式和Main/Presentation范围选择，并说明完整Project交付。",
-        "requestedChange": "把操作步骤融入可以继续编辑的教程，让每页教会一个明确动作。",
+        "purpose": "先试讲，再交付",
+        "requestedChange": "以这段叙事为基础做有范围的修改，不替换作者的故事。",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "actor": "ChatGPT 6 Astra + Subagents",
-        "recordedAt": "2026-11-11T01:17:52.288Z",
+        "actor": "ChatGPT 6 Astra / root",
+        "recordedAt": "2026-11-11T12:29:40.736Z",
         "pageRole": "content",
         "keep": [
-          "保留真实界面的语言、原始图片和来源。",
-          "保留稳定 Slide ID、可编辑对象和正确作者水印。"
+          "保留作者的论点、真实证据、界面位置感和来源说明。"
         ]
       }
     },
@@ -1009,15 +988,14 @@
       },
       "label": "S48",
       "designIntent": {
-        "purpose": "用一个概念关系图解释 Editor、项目目录和助手接入的分工。",
-        "requestedChange": "把操作步骤融入可以继续编辑的教程，让每页教会一个明确动作。",
+        "purpose": "让下一次修改留在同一份工作里",
+        "requestedChange": "以这段叙事为基础做有范围的修改，不替换作者的故事。",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "actor": "ChatGPT 6 Astra + Subagents",
-        "recordedAt": "2026-11-11T01:05:13.404Z",
+        "actor": "ChatGPT 6 Astra / root",
+        "recordedAt": "2026-11-11T12:29:40.736Z",
         "pageRole": "content",
         "keep": [
-          "保留真实界面的语言、原始图片和来源。",
-          "保留稳定 Slide ID、可编辑对象和正确作者水印。"
+          "保留作者的论点、真实证据、界面位置感和来源说明。"
         ]
       }
     },
@@ -1031,15 +1009,14 @@
       },
       "label": "S49",
       "designIntent": {
-        "purpose": "切到「备注页」→ 写讲稿 → 保存页面",
-        "requestedChange": "把操作步骤融入可以继续编辑的教程，让每页教会一个明确动作。",
+        "purpose": "为口头讲述准备大纲与备注",
+        "requestedChange": "以这段叙事为基础做有范围的修改，不替换作者的故事。",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "actor": "ChatGPT 6 Astra + Subagents",
-        "recordedAt": "2026-11-11T01:36:57.801Z",
+        "actor": "ChatGPT 6 Astra / root",
+        "recordedAt": "2026-11-11T12:29:40.736Z",
         "pageRole": "content",
         "keep": [
-          "保留真实界面的语言、原始图片和来源。",
-          "保留稳定 Slide ID、可编辑对象和正确作者水印。"
+          "保留作者的论点、真实证据、界面位置感和来源说明。"
         ]
       }
     },
@@ -1053,15 +1030,14 @@
       },
       "label": "S50",
       "designIntent": {
-        "purpose": "在浏览视图调整顺序，再用 Slide ID 回到它的历史",
-        "requestedChange": "把操作步骤融入可以继续编辑的教程，让每页教会一个明确动作。",
+        "purpose": "位置会变，这一页不会丢",
+        "requestedChange": "以这段叙事为基础做有范围的修改，不替换作者的故事。",
         "source": "sources/story/PRODUCT-BRIEF.md",
-        "actor": "ChatGPT 6 Astra + Subagents",
-        "recordedAt": "2026-11-11T01:37:05.722Z",
+        "actor": "ChatGPT 6 Astra / root",
+        "recordedAt": "2026-11-11T12:29:40.736Z",
         "pageRole": "content",
         "keep": [
-          "保留真实界面的语言、原始图片和来源。",
-          "保留稳定 Slide ID、可编辑对象和正确作者水印。"
+          "保留作者的论点、真实证据、界面位置感和来源说明。"
         ]
       }
     },
@@ -1072,110 +1048,255 @@
       "components": {},
       "elementRoles": {},
       "label": "S51"
+    },
+    "d2f02696-9de1-4257-872f-766038798a02": {
+      "shortCode": "YAQR",
+      "path": "pages/YAQR.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S52",
+      "designIntent": {
+        "purpose": "为什么还要做幻灯",
+        "keep": [
+          "保留作者的论点、真实证据、界面位置感和来源说明。"
+        ],
+        "requestedChange": "以这段叙事为基础做有范围的修改，不替换作者的故事。",
+        "actor": "ChatGPT 6 Astra / root",
+        "recordedAt": "2026-11-11T12:29:40.736Z",
+        "pageRole": "section"
+      }
+    },
+    "7698fc40-109d-49ef-8786-7feaf6e182a2": {
+      "shortCode": "J2BE",
+      "path": "pages/J2BE.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S53",
+      "designIntent": {
+        "purpose": "人能认出 AI，却看不到我的选择",
+        "keep": [
+          "保留作者的论点、真实证据、界面位置感和来源说明。"
+        ],
+        "requestedChange": "以这段叙事为基础做有范围的修改，不替换作者的故事。",
+        "actor": "ChatGPT 6 Astra / root",
+        "recordedAt": "2026-11-11T12:29:40.736Z"
+      }
+    },
+    "ff9d2adf-5b9f-40fe-9c28-dd54b4c5b88f": {
+      "shortCode": "955N",
+      "path": "pages/955N.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S54",
+      "designIntent": {
+        "purpose": "先把我想讲的讲出来",
+        "keep": [
+          "保留作者的论点、真实证据、界面位置感和来源说明。"
+        ],
+        "requestedChange": "以这段叙事为基础做有范围的修改，不替换作者的故事。",
+        "actor": "ChatGPT 6 Astra / root",
+        "recordedAt": "2026-11-11T12:29:40.736Z"
+      }
+    },
+    "a55c05d5-afe8-432d-a6e6-e2f3fc1a25d1": {
+      "shortCode": "GQRA",
+      "path": "pages/GQRA.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S55",
+      "designIntent": {
+        "purpose": "规则也应该看得见",
+        "keep": [
+          "保留作者的论点、真实证据、界面位置感和来源说明。"
+        ],
+        "requestedChange": "以这段叙事为基础做有范围的修改，不替换作者的故事。",
+        "actor": "ChatGPT 6 Astra / root",
+        "recordedAt": "2026-11-11T12:29:40.736Z"
+      }
+    },
+    "70012e51-ad4b-42c6-a8c1-c5b66fd44374": {
+      "shortCode": "9RZG",
+      "path": "pages/9RZG.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S56",
+      "designIntent": {
+        "purpose": "PPTX 展开后，本来就有这些部分",
+        "keep": [
+          "保留作者的论点、真实证据、界面位置感和来源说明。"
+        ],
+        "requestedChange": "以这段叙事为基础做有范围的修改，不替换作者的故事。",
+        "actor": "ChatGPT 6 Astra / root",
+        "recordedAt": "2026-11-11T12:29:40.736Z"
+      }
+    },
+    "2604265c-5d4e-40ed-88f5-a8eccfa43abe": {
+      "shortCode": "2MC2",
+      "path": "pages/2MC2.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S57",
+      "designIntent": {
+        "purpose": "数据图来自专业工具，源文件留在项目里",
+        "keep": [
+          "保留作者的论点、真实证据、界面位置感和来源说明。"
+        ],
+        "requestedChange": "以这段叙事为基础做有范围的修改，不替换作者的故事。",
+        "actor": "ChatGPT 6 Astra / root",
+        "source": "sources/independent-20261111/ACQUISITION.json",
+        "recordedAt": "2026-11-11T12:29:40.736Z"
+      }
+    },
+    "c8b55fa1-d959-4aef-ac94-3b505233faeb": {
+      "shortCode": "T86S",
+      "path": "pages/T86S.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S58",
+      "designIntent": {
+        "purpose": "把来源说清楚",
+        "keep": [
+          "保留作者的论点、真实证据、界面位置感和来源说明。"
+        ],
+        "requestedChange": "以这段叙事为基础做有范围的修改，不替换作者的故事。",
+        "actor": "ChatGPT 6 Astra / root",
+        "recordedAt": "2026-11-11T12:29:40.736Z",
+        "pageRole": "section"
+      }
     }
   },
   "project": {
     "schemaVersion": 1,
     "mainStory": {
-      "purpose": "通过真实Editor操作教会打开项目、局部编辑、版本回看、组织演讲和交付。",
-      "audience": "希望自己编辑或与AI协作制作演示的人。",
-      "takeaway": "在同一份项目中持续修改，用实际画面判断结果，按听众组织演讲。"
+      "purpose": "从组会经历出发，讲清为什么让故事、证据和下一次修改留在同一份项目里。",
+      "audience": "科研演讲者与项目贡献者",
+      "takeaway": "先有自己的故事，再做一处明确修改，检查它，并带到下一次演讲。"
     },
     "sections": [
       {
-        "id": "intro-section-0",
-        "title": "理解并打开项目",
+        "id": "narrative-zh-0",
+        "title": "开场",
         "story": {
-          "purpose": "理解并打开项目",
-          "audience": "希望自己编辑或与助手协作制作演示的人",
-          "takeaway": "在同一份项目中完成本段的实际操作。"
+          "purpose": "从组会经历出发，讲清为什么让故事、证据和下一次修改留在同一份项目里。",
+          "audience": "科研演讲者与项目贡献者",
+          "takeaway": "先有自己的故事，再做一处明确修改，检查它，并带到下一次演讲。"
         },
         "frontMatter": true,
         "pageIds": [
-          "7995de62-e81e-46db-b250-cabc66a99b28",
-          "1dc23de8-b351-483b-a93a-f02c0444a927",
-          "1f6289fd-1d4c-4a03-a74d-4bc4955de868"
+          "7995de62-e81e-46db-b250-cabc66a99b28"
         ],
         "startPageId": "7995de62-e81e-46db-b250-cabc66a99b28"
       },
       {
-        "id": "intro-section-1",
-        "title": "从定位到保存",
+        "id": "narrative-zh-1",
+        "title": "为什么还要做幻灯",
         "story": {
-          "purpose": "从定位到保存",
-          "audience": "希望自己编辑或与助手协作制作演示的人",
-          "takeaway": "在同一份项目中完成本段的实际操作。"
+          "purpose": "为什么还要做幻灯",
+          "audience": "科研演讲者与项目贡献者",
+          "takeaway": "先有自己的故事，再做一处明确修改，检查它，并带到下一次演讲。"
+        },
+        "pageIds": [
+          "d2f02696-9de1-4257-872f-766038798a02",
+          "7698fc40-109d-49ef-8786-7feaf6e182a2",
+          "1dc23de8-b351-483b-a93a-f02c0444a927",
+          "ff9d2adf-5b9f-40fe-9c28-dd54b4c5b88f",
+          "1f6289fd-1d4c-4a03-a74d-4bc4955de868"
+        ],
+        "startPageId": "d2f02696-9de1-4257-872f-766038798a02"
+      },
+      {
+        "id": "narrative-zh-2",
+        "title": "把故事留在工作里",
+        "story": {
+          "purpose": "把故事留在工作里",
+          "audience": "科研演讲者与项目贡献者",
+          "takeaway": "先有自己的故事，再做一处明确修改，检查它，并带到下一次演讲。"
         },
         "pageIds": [
           "b55179ed-446c-42a7-a2d5-2557defac052",
-          "3483b895-bc52-43b6-a7c4-001a0d1e4526",
           "05cd8517-c8ac-4e12-b2d0-40c438b91042",
+          "a55c05d5-afe8-432d-a6e6-e2f3fc1a25d1",
+          "70012e51-ad4b-42c6-a8c1-c5b66fd44374",
+          "bd3c71d1-360e-4e0c-bbb6-5938970e8876",
+          "3483b895-bc52-43b6-a7c4-001a0d1e4526",
           "59857807-d9f3-4e58-9a60-275cd504ea16",
-          "c1fcdc66-1c25-45a6-9b98-83d16f063c3e"
+          "c1fcdc66-1c25-45a6-9b98-83d16f063c3e",
+          "7b5bb42e-c529-49f8-ad88-62c69b567837",
+          "2604265c-5d4e-40ed-88f5-a8eccfa43abe"
         ],
         "startPageId": "b55179ed-446c-42a7-a2d5-2557defac052"
       },
       {
-        "id": "intro-section-2",
-        "title": "精确编辑与版本回看",
+        "id": "narrative-zh-3",
+        "title": "只改这一页",
         "story": {
-          "purpose": "精确编辑与版本回看",
-          "audience": "希望自己编辑或与助手协作制作演示的人",
-          "takeaway": "在同一份项目中完成本段的实际操作。"
+          "purpose": "只改这一页",
+          "audience": "科研演讲者与项目贡献者",
+          "takeaway": "先有自己的故事，再做一处明确修改，检查它，并带到下一次演讲。"
         },
         "pageIds": [
-          "7b5bb42e-c529-49f8-ad88-62c69b567837",
-          "7b69742f-16b5-4b80-acf0-1d23966aae96",
-          "129dfdc6-685d-48b4-972b-abff11f823e6",
-          "ea528c6a-2423-488d-834b-056322cca744",
           "def43d68-1767-45f5-800a-17d648750b7e",
-          "8bb920ed-1c71-45ac-ad9d-aa00750b1ff6",
+          "7b69742f-16b5-4b80-acf0-1d23966aae96",
+          "5f2fbea2-a43a-4532-9042-6a1d20c08801",
           "68f5273e-3f0d-4e5d-84d1-38391280cead",
-          "5f2fbea2-a43a-4532-9042-6a1d20c08801"
+          "129dfdc6-685d-48b4-972b-abff11f823e6",
+          "8bb920ed-1c71-45ac-ad9d-aa00750b1ff6"
         ],
-        "startPageId": "7b5bb42e-c529-49f8-ad88-62c69b567837"
+        "startPageId": "def43d68-1767-45f5-800a-17d648750b7e"
       },
       {
-        "id": "intro-section-3",
-        "title": "组织演讲并交付",
+        "id": "narrative-zh-4",
+        "title": "带到下一次组会",
         "story": {
-          "purpose": "组织演讲并交付",
-          "audience": "希望自己编辑或与助手协作制作演示的人",
-          "takeaway": "在同一份项目中完成本段的实际操作。"
+          "purpose": "带到下一次组会",
+          "audience": "科研演讲者与项目贡献者",
+          "takeaway": "先有自己的故事，再做一处明确修改，检查它，并带到下一次演讲。"
         },
         "pageIds": [
+          "d64aef1b-eb88-4b05-a620-ae60a0e833de",
           "baca190c-e87b-415f-9c30-7c04e3fabe17",
           "503c86ce-673c-4229-9251-22114e5f5da9",
-          "d64aef1b-eb88-4b05-a620-ae60a0e833de",
-          "9cdec939-7f79-4142-98a4-b9543230a4ec",
-          "c91c3fe3-836f-492f-882d-905bd4d08a9b"
+          "c91c3fe3-836f-492f-882d-905bd4d08a9b",
+          "f68f052b-18ac-4286-ae3b-6f12e5c5d0d0"
         ],
-        "startPageId": "baca190c-e87b-415f-9c30-7c04e3fabe17"
+        "startPageId": "d64aef1b-eb88-4b05-a620-ae60a0e833de"
       },
       {
-        "id": "intro-section-4",
-        "title": "接入助手，继续协作",
+        "id": "narrative-zh-5",
+        "title": "把来源说清楚",
         "story": {
-          "purpose": "接入助手，继续协作",
-          "audience": "希望自己编辑或与助手协作制作演示的人",
-          "takeaway": "在同一份项目中完成本段的实际操作。"
+          "purpose": "把来源说清楚",
+          "audience": "科研演讲者与项目贡献者",
+          "takeaway": "先有自己的故事，再做一处明确修改，检查它，并带到下一次演讲。"
         },
         "pageIds": [
-          "f68f052b-18ac-4286-ae3b-6f12e5c5d0d0",
-          "bd3c71d1-360e-4e0c-bbb6-5938970e8876",
+          "c8b55fa1-d959-4aef-ac94-3b505233faeb",
+          "9cdec939-7f79-4142-98a4-b9543230a4ec",
+          "ea528c6a-2423-488d-834b-056322cca744",
           "8a9bcdf1-fcb2-4214-9743-86c110c954ca"
         ],
-        "startPageId": "f68f052b-18ac-4286-ae3b-6f12e5c5d0d0"
+        "startPageId": "c8b55fa1-d959-4aef-ac94-3b505233faeb"
       }
     ],
     "presentations": [
       {
         "id": "introduction-full",
-        "title": "Editor 实用教程",
+        "title": "从组会开始的完整介绍",
         "story": {
-          "purpose": "通过实际界面完成编辑、回看和演讲交付。",
-          "audience": "首次使用 HUANDENG 的人",
-          "takeaway": "打开项目，做一次小修改，看清结果，再组织成演讲。"
+          "purpose": "从组会经历出发，讲清为什么让故事、证据和下一次修改留在同一份项目里。",
+          "audience": "科研演讲者与项目贡献者",
+          "takeaway": "先有自己的故事，再做一处明确修改，检查它，并带到下一次演讲。"
         },
         "items": [
           {
@@ -1184,9 +1305,24 @@
             "pageId": "7995de62-e81e-46db-b250-cabc66a99b28"
           },
           {
+            "id": "introduction-full-narrative-1",
+            "kind": "page",
+            "pageId": "d2f02696-9de1-4257-872f-766038798a02"
+          },
+          {
+            "id": "introduction-full-narrative-2",
+            "kind": "page",
+            "pageId": "7698fc40-109d-49ef-8786-7feaf6e182a2"
+          },
+          {
             "id": "introduction-full-story-21",
             "kind": "page",
             "pageId": "1dc23de8-b351-483b-a93a-f02c0444a927"
+          },
+          {
+            "id": "introduction-full-narrative-4",
+            "kind": "page",
+            "pageId": "ff9d2adf-5b9f-40fe-9c28-dd54b4c5b88f"
           },
           {
             "id": "introduction-full-story-22",
@@ -1199,14 +1335,29 @@
             "pageId": "b55179ed-446c-42a7-a2d5-2557defac052"
           },
           {
-            "id": "full-3",
-            "kind": "page",
-            "pageId": "3483b895-bc52-43b6-a7c4-001a0d1e4526"
-          },
-          {
             "id": "full-7",
             "kind": "page",
             "pageId": "05cd8517-c8ac-4e12-b2d0-40c438b91042"
+          },
+          {
+            "id": "introduction-full-narrative-8",
+            "kind": "page",
+            "pageId": "a55c05d5-afe8-432d-a6e6-e2f3fc1a25d1"
+          },
+          {
+            "id": "introduction-full-narrative-9",
+            "kind": "page",
+            "pageId": "70012e51-ad4b-42c6-a8c1-c5b66fd44374"
+          },
+          {
+            "id": "full-17",
+            "kind": "page",
+            "pageId": "bd3c71d1-360e-4e0c-bbb6-5938970e8876"
+          },
+          {
+            "id": "full-3",
+            "kind": "page",
+            "pageId": "3483b895-bc52-43b6-a7c4-001a0d1e4526"
           },
           {
             "id": "full-4",
@@ -1224,19 +1375,9 @@
             "pageId": "7b5bb42e-c529-49f8-ad88-62c69b567837"
           },
           {
-            "id": "full-9",
+            "id": "introduction-full-narrative-15",
             "kind": "page",
-            "pageId": "7b69742f-16b5-4b80-acf0-1d23966aae96"
-          },
-          {
-            "id": "full-13",
-            "kind": "page",
-            "pageId": "129dfdc6-685d-48b4-972b-abff11f823e6"
-          },
-          {
-            "id": "full-10",
-            "kind": "page",
-            "pageId": "ea528c6a-2423-488d-834b-056322cca744"
+            "pageId": "2604265c-5d4e-40ed-88f5-a8eccfa43abe"
           },
           {
             "id": "full-6",
@@ -1244,9 +1385,14 @@
             "pageId": "def43d68-1767-45f5-800a-17d648750b7e"
           },
           {
-            "id": "introduction-full-story-25",
+            "id": "full-9",
             "kind": "page",
-            "pageId": "8bb920ed-1c71-45ac-ad9d-aa00750b1ff6"
+            "pageId": "7b69742f-16b5-4b80-acf0-1d23966aae96"
+          },
+          {
+            "id": "introduction-full-story-26",
+            "kind": "page",
+            "pageId": "5f2fbea2-a43a-4532-9042-6a1d20c08801"
           },
           {
             "id": "full-12",
@@ -1254,9 +1400,19 @@
             "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead"
           },
           {
-            "id": "introduction-full-story-26",
+            "id": "full-13",
             "kind": "page",
-            "pageId": "5f2fbea2-a43a-4532-9042-6a1d20c08801"
+            "pageId": "129dfdc6-685d-48b4-972b-abff11f823e6"
+          },
+          {
+            "id": "introduction-full-story-25",
+            "kind": "page",
+            "pageId": "8bb920ed-1c71-45ac-ad9d-aa00750b1ff6"
+          },
+          {
+            "id": "full-11",
+            "kind": "page",
+            "pageId": "d64aef1b-eb88-4b05-a620-ae60a0e833de"
           },
           {
             "id": "full-14",
@@ -1269,16 +1425,6 @@
             "pageId": "503c86ce-673c-4229-9251-22114e5f5da9"
           },
           {
-            "id": "full-11",
-            "kind": "page",
-            "pageId": "d64aef1b-eb88-4b05-a620-ae60a0e833de"
-          },
-          {
-            "id": "full-8",
-            "kind": "page",
-            "pageId": "9cdec939-7f79-4142-98a4-b9543230a4ec"
-          },
-          {
             "id": "introduction-full-story-23",
             "kind": "page",
             "pageId": "c91c3fe3-836f-492f-882d-905bd4d08a9b"
@@ -1289,9 +1435,19 @@
             "pageId": "f68f052b-18ac-4286-ae3b-6f12e5c5d0d0"
           },
           {
-            "id": "full-17",
+            "id": "introduction-full-narrative-27",
             "kind": "page",
-            "pageId": "bd3c71d1-360e-4e0c-bbb6-5938970e8876"
+            "pageId": "c8b55fa1-d959-4aef-ac94-3b505233faeb"
+          },
+          {
+            "id": "full-8",
+            "kind": "page",
+            "pageId": "9cdec939-7f79-4142-98a4-b9543230a4ec"
+          },
+          {
+            "id": "full-10",
+            "kind": "page",
+            "pageId": "ea528c6a-2423-488d-834b-056322cca744"
           },
           {
             "id": "full-18",
@@ -1302,11 +1458,11 @@
       },
       {
         "id": "introduction-short",
-        "title": "第一次修改 · 简短演讲",
+        "title": "一次简短的组会介绍",
         "story": {
-          "purpose": "通过实际界面完成编辑、回看和演讲交付。",
-          "audience": "首次使用 HUANDENG 的人",
-          "takeaway": "打开项目，做一次小修改，看清结果，再组织成演讲。"
+          "purpose": "从组会经历出发，讲清为什么让故事、证据和下一次修改留在同一份项目里。",
+          "audience": "科研演讲者与项目贡献者",
+          "takeaway": "先有自己的故事，再做一处明确修改，检查它，并带到下一次演讲。"
         },
         "items": [
           {
@@ -1315,26 +1471,61 @@
             "pageId": "7995de62-e81e-46db-b250-cabc66a99b28"
           },
           {
-            "id": "introduction-short-product-22",
+            "id": "introduction-short-narrative-d2f02696-9de1-4257-872f-766038798a02",
             "kind": "page",
-            "pageId": "1f6289fd-1d4c-4a03-a74d-4bc4955de868"
+            "pageId": "d2f02696-9de1-4257-872f-766038798a02"
           },
           {
-            "id": "introduction-short-product-5",
+            "id": "introduction-short-narrative-1",
             "kind": "page",
-            "pageId": "3483b895-bc52-43b6-a7c4-001a0d1e4526",
-            "notes": "这场简短演讲先用 ZYZB 解释页面栏、画布与检查器。请观众指出当前选择的页面和对象，然后进入 Story 写下一次修改的目的。备注属于本场演讲的这次引用，主幻灯片继续共用。"
+            "pageId": "7698fc40-109d-49ef-8786-7feaf6e182a2"
+          },
+          {
+            "id": "introduction-short-narrative-2",
+            "kind": "page",
+            "pageId": "1dc23de8-b351-483b-a93a-f02c0444a927"
+          },
+          {
+            "id": "introduction-short-narrative-3",
+            "kind": "page",
+            "pageId": "ff9d2adf-5b9f-40fe-9c28-dd54b4c5b88f"
+          },
+          {
+            "id": "introduction-short-narrative-b55179ed-446c-42a7-a2d5-2557defac052",
+            "kind": "page",
+            "pageId": "b55179ed-446c-42a7-a2d5-2557defac052"
           },
           {
             "id": "introduction-short-tutorial-3",
             "kind": "page",
-            "pageId": "05cd8517-c8ac-4e12-b2d0-40c438b91042"
+            "pageId": "05cd8517-c8ac-4e12-b2d0-40c438b91042",
+            "notes": "这次短讲只强调作者的目的与一条需要保留的内容。详细操作留给完整介绍。"
           },
           {
-            "id": "brief-2",
+            "id": "introduction-short-narrative-5",
             "kind": "page",
-            "pageId": "c1fcdc66-1c25-45a6-9b98-83d16f063c3e",
-            "versionId": "checkpoint:d4c0badba7d36d6e248cd1c378e41a4f"
+            "pageId": "70012e51-ad4b-42c6-a8c1-c5b66fd44374"
+          },
+          {
+            "id": "introduction-short-product-5",
+            "kind": "page",
+            "pageId": "3483b895-bc52-43b6-a7c4-001a0d1e4526"
+          },
+          {
+            "id": "introduction-short-narrative-7",
+            "kind": "page",
+            "pageId": "59857807-d9f3-4e58-9a60-275cd504ea16"
+          },
+          {
+            "id": "introduction-short-narrative-8",
+            "kind": "page",
+            "pageId": "2604265c-5d4e-40ed-88f5-a8eccfa43abe",
+            "versionId": "checkpoint:949d9a5826a51fa2bedb955c79625f96"
+          },
+          {
+            "id": "introduction-short-narrative-def43d68-1767-45f5-800a-17d648750b7e",
+            "kind": "page",
+            "pageId": "def43d68-1767-45f5-800a-17d648750b7e"
           },
           {
             "id": "introduction-short-product-4",
@@ -1342,9 +1533,14 @@
             "pageId": "7b69742f-16b5-4b80-acf0-1d23966aae96"
           },
           {
-            "id": "introduction-short-tutorial-6",
+            "id": "introduction-short-narrative-10",
             "kind": "page",
-            "pageId": "def43d68-1767-45f5-800a-17d648750b7e"
+            "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead"
+          },
+          {
+            "id": "introduction-short-narrative-d64aef1b-eb88-4b05-a620-ae60a0e833de",
+            "kind": "page",
+            "pageId": "d64aef1b-eb88-4b05-a620-ae60a0e833de"
           },
           {
             "id": "introduction-short-tutorial-7",
@@ -1352,19 +1548,24 @@
             "pageId": "baca190c-e87b-415f-9c30-7c04e3fabe17"
           },
           {
-            "id": "introduction-short-tutorial-8",
+            "id": "introduction-short-narrative-12",
             "kind": "page",
-            "pageId": "503c86ce-673c-4229-9251-22114e5f5da9"
+            "pageId": "f68f052b-18ac-4286-ae3b-6f12e5c5d0d0"
           },
           {
-            "id": "introduction-short-tutorial-9",
+            "id": "introduction-short-narrative-c8b55fa1-d959-4aef-ac94-3b505233faeb",
             "kind": "page",
-            "pageId": "d64aef1b-eb88-4b05-a620-ae60a0e833de"
+            "pageId": "c8b55fa1-d959-4aef-ac94-3b505233faeb"
           },
           {
-            "id": "introduction-short-story-23",
+            "id": "introduction-short-narrative-13",
             "kind": "page",
-            "pageId": "c91c3fe3-836f-492f-882d-905bd4d08a9b"
+            "pageId": "9cdec939-7f79-4142-98a4-b9543230a4ec"
+          },
+          {
+            "id": "introduction-short-narrative-14",
+            "kind": "page",
+            "pageId": "ea528c6a-2423-488d-834b-056322cca744"
           },
           {
             "id": "brief-6",

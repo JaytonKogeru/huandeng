@@ -3,7 +3,7 @@ background:
   type: solid
   color: "#F7F5EF"
 elements:
-  - elementId: f-paper
+  - elementId: v-bg
     elementType: shape
     shapeName: rect
     bounds:
@@ -13,149 +13,203 @@ elements:
       - 540
     fill:
       type: solid
-      color: "#F4F1E8"
+      color: "#FFFFFF"
   - elementId: title
     elementType: text
     bounds:
-        [36,27,884,46]
+        [38,29,884,58]
     role: title
     content:
-      {"text":"裁切显示范围，保留原图","fontFamily":"Noto Sans SC","fontSize":31,"color":"#112D32","align":["left","top"],"lineHeight":1.35,"bold":true}
-  - elementId: f-action
+      {"text":"工具与设计参考","fontFamily":"Segoe UI","fontSize":25,"color":"#25282C","bold":true,"lineHeight":1.16,"align":["left","top"]}
+  - elementId: v-watermark
     elementType: text
     bounds:
       - 38
-      - 82
-      - 884
-      - 28
+      - 520
+      - 750
+      - 12
     content:
-      text: 选图片 → 属性 → 图片与裁切
-      fontFamily: Noto Sans SC
-      fontSize: 18
-      color: "#557076"
+      text: chinese chatgpt 6 astra + subagent
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
+      bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.35
-  - elementId: f-watermark
+  - elementId: v-position
     elementType: text
     bounds:
-      - 36
-      - 514
-      - 820
-      - 19
-    content:
-      text: Chinese · ChatGPT 6 Astra + Subagents
-      fontFamily: Noto Sans SC
-      fontSize: 13
-      color: "#557076"
-      align:
-        - left
-        - top
-      lineHeight: 1.35
-  - elementId: f-position
-    elementType: text
-    bounds:
-      - 878
-      - 514
-      - 44
-      - 19
+      - 885
+      - 520
+      - 37
+      - 12
     content:
       text: ""
-      fontFamily: Noto Sans SC
-      fontSize: 13
-      color: "#557076"
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
+      bold: false
+      lineHeight: 1.16
       align:
         - right
         - top
-      lineHeight: 1.35
       field: main-position
-  - elementId: f-original-label
+  - elementId: v-ideas
+    elementType: table
+    bounds:
+      - 38
+      - 107
+      - 884
+      - 333
+    columnWidths:
+      - 0.41
+      - 0.59
+    rows:
+      - - text: 参考
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: true
+          fill: "#E8ECEF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+        - text: 带来的启发
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: true
+          fill: "#E8ECEF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+      - - text: PowerPoint / WPS
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: true
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+        - text: 章节、备注、放映与上下文操作
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: false
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+      - - text: Kimi / Moonshot / open-kimi-ppt-skill
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: true
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+        - text: Agent制作流程与PPTD社区格式
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: false
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+      - - text: PPTist / VS Code
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: true
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+        - text: 画布操作、快捷键、工作区与面板
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: false
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+      - - text: Slidev / Presenton
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: true
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+        - text: 本地源、主题与设计参考
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: false
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+      - - text: PPTAgent / PPTMaster
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: true
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+        - text: 生成、视觉审阅与原生PPTX表达
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: false
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+      - - text: OpenSlides Studio / OPF
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: true
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+        - text: 显式对象身份、版本与补丁契约
+          fontSize: 14
+          fontFamily: Segoe UI
+          color: "#25282C"
+          bold: false
+          fill: "#FFFFFF"
+          border:
+            width: 0.5
+            color: "#D3D9DD"
+  - elementId: v-further
     elementType: text
     bounds:
       - 38
-      - 127
-      - 454
-      - 24
+      - 461
+      - 884
+      - 44
     content:
-      text: 原图
-      fontFamily: Noto Sans SC
-      fontSize: 15
-      color: "#557076"
+      text: |-
+        以及更广泛的编辑、动画与界面研究。
+        完整33项及各自关系见 ACKNOWLEDGMENTS.md。
+      fontFamily: Segoe UI
+      fontSize: 14
+      color: "#25282C"
+      bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.35
-  - elementId: f-crop-label
-    elementType: text
-    bounds:
-      - 38
-      - 387
-      - 454
-      - 25
-    content:
-      text: 页面中的显示范围
-      fontFamily: Noto Sans SC
-      fontSize: 15
-      color: "#168C8C"
-      align:
-        - left
-        - top
-      lineHeight: 1.35
-      bold: true
-  - elementId: f-original
-    elementType: image
-    bounds:
-      - 38
-      - 158
-      - 454
-      - 213
-    src: media/imported/fdcacc35c15b7a7b76d70ef9f713c605c20a7e8ca450703b6343ac8bc722bd3e.png
-    sourceName: zh-CN-native-edit-before-4x.png
-    fit:
-      mode: contain
-  - elementId: f-selected-crop
-    elementType: image
-    bounds:
-      - 38
-      - 415
-      - 454
-      - 81
-    src: media/imported/7350fdf86a28cdc8cc41cd8c3399dfc63fd2d95331db5cdadc519252b222cb3f.png
-    sourceName: tutorial-selected-image.png
-    fit:
-      mode: contain
-  - elementId: f-crop-controls
-    elementType: image
-    bounds:
-      - 547
-      - 136
-      - 375
-      - 353
-    src: media/imported/6df9fbdf421b0633d1628af5d0e3fc58d4f187fdf14d1b72e90b3ca31793268c.png
-    sourceName: tutorial-image-properties.png
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0.44
-      bottom: 0.08
-  - elementId: f-crop-arrow
-    elementType: line
-    bounds:
-      - 267
-      - 371
-      - 0
-      - 14
-    viewBox:
-      - 1
-      - 1
-    points: 0,0 1,1
-    border:
-      width: 2
-      color: "#ED6A3A"
-    arrow:
-      - null
-      - arrow
-notes: "截图或图像太大时，先决定这一页需要读到哪里。左上是原图，左下是这张教程页实际选中的裁切显示范围，保留了标题与引导句。右侧是同一图片的实际裁切参数，单位是原图的百分比。修改这些参数会改变页面中的显示范围，原始图片仍然保留；完整显示适配保持原图比例。把焦点放大，比把整张窗口缩成小图更容易读。"
+notes: "正式致谢恢复原作品明确列出的十五项来源。代码复用、运行依赖、交互借鉴与调研参考是不同关系，不能混称。完整三十三项历史参考与对应说明在docs/ACKNOWLEDGMENTS.md；链接亦保留在项目sources中。OpenSlides Studio是openslides.dev，与OpenSlide编辑器上游不同。"

@@ -3,7 +3,7 @@ background:
   type: solid
   color: "#E4ECE6"
 elements:
-  - elementId: zd-bg
+  - elementId: v-bg
     elementType: shape
     shapeName: rect
     bounds:
@@ -13,245 +13,386 @@ elements:
       - 540
     fill:
       type: solid
-      color: "#F4F1E8"
+      color: "#FFFFFF"
   - elementId: title
     elementType: text
     bounds:
-        [38,29,884,49]
+        [38,29,884,58]
     role: title
     content:
-      {"text":"按页分工，接着同一份改","fontFamily":"Noto Sans SC","fontSize":31,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.3}
-  - elementId: zd-route
+      {"text":"我们把哪些东西接在一起","fontFamily":"Segoe UI","fontSize":25,"color":"#25282C","bold":true,"lineHeight":1.16,"align":["left","top"]}
+  - elementId: v-watermark
     elementType: text
     bounds:
-      - 40
-      - 86
-      - 876
-      - 28
-    content:
-      text: "先说清 Slide ID 和修改范围；保存后，在历史中核对操作记录"
-      fontFamily: Noto Sans SC
-      fontSize: 14
-      color: "#168C8C"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-  - elementId: zd-accent
-    elementType: shape
-    shapeName: rect
-    bounds:
-      - 40
-      - 119
-      - 64
-      - 3
-    fill:
-      type: solid
-      color: "#ED6A3A"
-  - elementId: zd-watermark
-    elementType: text
-    bounds:
-      - 39
-      - 508
-      - 820
-      - 22
-    content:
-      text: Chinese · ChatGPT 6 Astra + Subagents
-      fontFamily: Noto Sans SC
-      fontSize: 13
-      color: "#53666A"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-  - elementId: zd-position
-    elementType: text
-    bounds:
-      - 884
-      - 508
       - 38
-      - 22
+      - 520
+      - 750
+      - 12
+    content:
+      text: chinese chatgpt 6 astra + subagent
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-position
+    elementType: text
+    bounds:
+      - 885
+      - 520
+      - 37
+      - 12
     content:
       text: ""
-      fontFamily: Noto Sans SC
-      fontSize: 13
-      color: "#53666A"
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
       bold: false
+      lineHeight: 1.16
       align:
         - right
         - top
-      lineHeight: 1.3
       field: main-position
-  - elementId: zd-owner-band
+  - elementId: v-editor-frame
     elementType: shape
     shapeName: rect
     bounds:
-      - 40
-      - 156
-      - 420
-      - 58
+      - 38
+      - 119
+      - 395
+      - 220
     fill:
       type: solid
-      color: "#112D32"
-  - elementId: zd-owner
+      color: "#F4F5F6"
+    border:
+      width: 1
+      color: "#BEC6CC"
+  - elementId: v-editor-heading
     elementType: text
     bounds:
-      - 58
-      - 171
-      - 384
-      - 35
+      - 56
+      - 132
+      - 355
+      - 27
     content:
-      text: 你：定重点、选证据、看结果
-      fontFamily: Noto Sans SC
+      text: HUANDENG Editor
+      fontFamily: Segoe UI
       fontSize: 20
-      color: "#F4F1E8"
+      color: "#25282C"
       bold: true
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.3
-  - elementId: zd-task-a
+  - elementId: v-editor-stack
     elementType: text
     bounds:
-      - 40
-      - 251
-      - 214
-      - 32
+      - 56
+      - 166
+      - 355
+      - 23
     content:
-      text: 2856 · 编排演讲页
-      fontFamily: Noto Sans SC
-      fontSize: 18
-      color: "#112D32"
-      bold: true
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-  - elementId: zd-task-b
-    elementType: text
-    bounds:
-      - 270
-      - 251
-      - 214
-      - 32
-    content:
-      text: 4YZD · 演讲备注页
-      fontFamily: Noto Sans SC
-      fontSize: 18
-      color: "#112D32"
-      bold: true
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-  - elementId: zd-task-a-in
-    elementType: line
-    bounds:
-      - 152
-      - 219
-      - 0
-      - 24
-    viewBox:
-      - 1
-      - 1
-    points: 0,0 1,1
-    border:
-      width: 2.2
-      color: "#168C8C"
-    arrow:
-      - null
-      - arrow
-  - elementId: zd-task-b-in
-    elementType: line
-    bounds:
-      - 374
-      - 219
-      - 0
-      - 24
-    viewBox:
-      - 1
-      - 1
-    points: 0,0 1,1
-    border:
-      width: 2.2
-      color: "#168C8C"
-    arrow:
-      - null
-      - arrow
-  - elementId: zd-handoff
-    elementType: text
-    bounds:
-      - 40
-      - 316
-      - 420
-      - 160
-    content:
-      text: |-
-        交接时留下：
-        页 ID、要改什么、必须保留什么。
-  
-        同页出现冲突，先重读当前结果。
-      fontFamily: Noto Sans SC
-      fontSize: 19
-      color: "#112D32"
+      text: React / Electron
+      fontFamily: Segoe UI
+      fontSize: 13
+      color: "#63696F"
       bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.45
-  - elementId: zd-handoff-to-review
-    elementType: line
-    bounds:
-      - 468
-      - 284
-      - 40
-      - 0
-    viewBox:
-      - 1
-      - 1
-    points: 0,0 1,1
-    border:
-      width: 2.2
-      color: "#ED6A3A"
-    arrow:
-      - null
-      - arrow
-  - elementId: zd-saved-receipt
+  - elementId: v-editor-shot
     elementType: image
     bounds:
-        [536,152,340,213]
-    src: "media/imported/eba7f76bb425a5d31e365aa0ebae5388bc5f06b42dbc9c1dc3497fdd3831d556.png"
-    sourceName: "saved-operation-17.png"
+      - 56
+      - 202
+      - 355
+      - 121
+    src: media/imported/c4d2b4a8e56f149f1162146e3ff8909bc7253a088b4a589d91226d3f0666933d.png
+    sourceName: workspace.png
     fit:
       mode: contain
-  - elementId: zd-review-action
+  - elementId: v-agent-frame
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 590
+      - 119
+      - 332
+      - 220
+    fill:
+      type: solid
+      color: "#F4F5F6"
+    border:
+      width: 1
+      color: "#BEC6CC"
+  - elementId: v-agent-heading
     elementType: text
     bounds:
-        [534,385,384,81]
+      - 608
+      - 132
+      - 294
+      - 27
     content:
-      text: "历史 → 操作记录\n找到刚才的保存，再看前后。"
-      fontFamily: Noto Sans SC
+      text: 你正在使用的 agent
+      fontFamily: Segoe UI
       fontSize: 20
-      color: "#112D32"
-      bold: false
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.5
-  - elementId: zd-review-label
+  - elementId: v-agent-copy
     elementType: text
     bounds:
-        [534,473,384,30]
+      - 608
+      - 178
+      - 294
+      - 139
     content:
-      text: "本轮第 17 页的实际保存记录。"
-      fontFamily: Noto Sans SC
+      text: |-
+        HUANDENG plugin
+        创作方法与项目规则
+  
+        Connector / MCP
+        读取项目，提交操作
+      fontFamily: Segoe UI
       fontSize: 15
-      color: "#168C8C"
+      color: "#25282C"
       bold: false
+      lineHeight: 1.3
       align:
         - left
         - top
-      lineHeight: 1.3
-notes: "让多个助手合作时，先按稳定的Slide ID分配页面，再说清每页的目标和不能改的证据。图中2856与4YZD就是这份教程中的编排和备注页；给不同页面分工，可以减少同时改同一页的冲突。交接给下一个助手时，提供页ID、具体任务、保护范围，以及已经保存的操作。保存后，选中目标页，进入“历史→操作记录”，找到刚才的保存。右侧是真实的本轮第17页保存记录，操作摘要、时间、作者和短回执号都在一起；完整操作ID是a368d2ea-b979-4be3-bac1-fea93b3774a0。通过对应回执查看Before/After，再回到当前页检查。若同页或共享编排发生冲突，重新读当前结果再调整提案。这一页展示任务分配与检查方法，不代表系统自动安排了团队。"
+  - elementId: v-writer
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 456
+      - 201
+      - 112
+      - 104
+    fill:
+      type: solid
+      color: "#25282C"
+  - elementId: v-writer-name
+    elementType: text
+    bounds:
+      - 466
+      - 218
+      - 92
+      - 65
+    content:
+      text: |-
+        同一
+        writer
+      fontFamily: Segoe UI
+      fontSize: 20
+      color: "#FFFFFF"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - center
+        - top
+  - elementId: v-editor-join
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 433
+      - 247
+      - 23
+      - 12
+    fill:
+      type: solid
+      color: "#667B8B"
+  - elementId: v-agent-join
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 568
+      - 247
+      - 22
+      - 12
+    fill:
+      type: solid
+      color: "#667B8B"
+  - elementId: v-writer-stem
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 506
+      - 305
+      - 12
+      - 63
+    fill:
+      type: solid
+      color: "#667B8B"
+  - elementId: v-project
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 38
+      - 368
+      - 884
+      - 122
+    fill:
+      type: solid
+      color: "#E8ECEF"
+  - elementId: v-project-title
+    elementType: text
+    bounds:
+      - 56
+      - 382
+      - 847
+      - 28
+    content:
+      text: 一份 PPTD 工作项目
+      fontFamily: Segoe UI
+      fontSize: 18
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-file-0
+    elementType: text
+    bounds:
+      - 56
+      - 424
+      - 197
+      - 22
+    content:
+      text: deck.pptd
+      fontFamily: Consolas
+      fontSize: 16
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-file-note-0
+    elementType: text
+    bounds:
+      - 56
+      - 453
+      - 197
+      - 26
+    content:
+      text: 入口与顺序
+      fontFamily: Segoe UI
+      fontSize: 13
+      color: "#25282C"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-file-1
+    elementType: text
+    bounds:
+      - 269
+      - 424
+      - 197
+      - 22
+    content:
+      text: pages/
+      fontFamily: Consolas
+      fontSize: 16
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-file-note-1
+    elementType: text
+    bounds:
+      - 269
+      - 453
+      - 197
+      - 26
+    content:
+      text: 对象与备注
+      fontFamily: Segoe UI
+      fontSize: 13
+      color: "#25282C"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-file-2
+    elementType: text
+    bounds:
+      - 482
+      - 424
+      - 197
+      - 22
+    content:
+      text: media/
+      fontFamily: Consolas
+      fontSize: 16
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-file-note-2
+    elementType: text
+    bounds:
+      - 482
+      - 453
+      - 197
+      - 26
+    content:
+      text: 原始素材
+      fontFamily: Segoe UI
+      fontSize: 13
+      color: "#25282C"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-file-3
+    elementType: text
+    bounds:
+      - 695
+      - 424
+      - 197
+      - 22
+    content:
+      text: .huandeng/
+      fontFamily: Consolas
+      fontSize: 16
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-file-note-3
+    elementType: text
+    bounds:
+      - 695
+      - 453
+      - 197
+      - 26
+    content:
+      text: Story、身份与历史
+      fontFamily: Segoe UI
+      fontSize: 13
+      color: "#25282C"
+      bold: false
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+notes: "OpenSlide提供React编辑器基础，Electron承载桌面应用，PPTD目录是持续工作项目。Editor和agent通过同一writer提交带修订前提的操作；plugin提供创作规则和使用方法，不是另一个文档数据库。Story、原图与逐页历史都跟着项目走。这里是架构关系示意，不宣称自动调度或锁。"

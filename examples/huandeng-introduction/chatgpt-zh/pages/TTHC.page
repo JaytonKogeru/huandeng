@@ -3,7 +3,7 @@ background:
   type: solid
   color: "#E4ECE6"
 elements:
-  - elementId: f-bg
+  - elementId: v-bg
     elementType: shape
     shapeName: rect
     bounds:
@@ -13,72 +13,75 @@ elements:
       - 540
     fill:
       type: solid
-      color: "#112D32"
+      color: "#25282C"
   - elementId: title
     elementType: text
     bounds:
-        [38,29,884,48]
+        [38,29,884,58]
     role: title
     content:
-      {"text":"HUANDENG · 从一页，做到一场演讲","fontFamily":"Noto Sans SC","fontSize":30,"color":"#F4F1E8","align":["left","top"],"lineHeight":1.32,"bold":true}
-  - elementId: f-watermark
+      {"text":"从我的组会开始","fontFamily":"Segoe UI","fontSize":32,"color":"#FFFFFF","bold":true,"lineHeight":1.16,"align":["left","top"]}
+  - elementId: v-watermark
     elementType: text
     bounds:
       - 38
-      - 514
-      - 800
-      - 22
+      - 520
+      - 750
+      - 12
     content:
-      text: Chinese · ChatGPT 6 Astra + Subagents
-      fontFamily: Noto Sans SC
-      fontSize: 13
-      color: "#BDD5D5"
+      text: chinese chatgpt 6 astra + subagent
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#B7BCC1"
+      bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.32
-  - elementId: f-position
+  - elementId: v-position
     elementType: text
     bounds:
-      - 882
-      - 514
-      - 40
-      - 22
+      - 885
+      - 520
+      - 37
+      - 12
     content:
       text: ""
-      fontFamily: Noto Sans SC
-      fontSize: 13
-      color: "#BDD5D5"
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#B7BCC1"
+      bold: false
+      lineHeight: 1.16
       align:
         - right
         - top
-      lineHeight: 1.32
       field: main-position
-  - elementId: f-subtitle
+  - elementId: v-subtitle
     elementType: text
     bounds:
-      - 39
-      - 81
-      - 882
+      - 38
+      - 79
+      - 875
       - 30
     content:
-      text: 打开项目 → 做好一页 → 组织讲述 → 放映与交付
-      fontFamily: Noto Sans SC
-      fontSize: 18
-      color: "#BCD9D8"
+      text: 一个故事，一份可以继续修改的工作。
+      fontFamily: Segoe UI
+      fontSize: 16
+      color: "#D0D5D9"
+      bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.32
-  - elementId: f-editor-hero
+  - elementId: v-editor
     elementType: image
     bounds:
-      - 110
-      - 116
-      - 740
-      - 393
-    src: media/imported/6d1fb6dcc8e8a0855afe0ca1893d3a5ad8433bfefc3aa5fc3d4e13df52b834ac.png
-    sourceName: workspace-wide.png
+      - 38
+      - 126
+      - 884
+      - 377
+    src: media/imported/c4d2b4a8e56f149f1162146e3ff8909bc7253a088b4a589d91226d3f0666933d.png
+    sourceName: workspace.png
     fit:
       mode: contain
-notes: "HUANDENG 是一个可视化幻灯片编辑器，也是一套把人和 AI 助手连到同一份项目的工作流。我们从打开一个项目开始，实际看页面在哪里、Story 怎么写、素材如何放进去、修改如何保存；随后再把页面组织成一场可以放映和交付的演讲。中间这张图就来自正在运行的 0.19 编辑器，画布上是本介绍的工作流关系图。"
+notes: "幻灯从真实的组会经历开始：让agent帮忙，同时保留自己讲什么、用什么证据以及下一次改哪里这些判断。继续工作需要整个项目文件夹；deck.pptd是入口。"

@@ -3,7 +3,7 @@ background:
   type: solid
   color: "#F7F5EF"
 elements:
-  - elementId: f-bg
+  - elementId: v-bg
     elementType: shape
     shapeName: rect
     bounds:
@@ -13,150 +13,75 @@ elements:
       - 540
     fill:
       type: solid
-      color: "#F4F1E8"
-  - elementId: f-route
-    elementType: text
-    bounds:
-      - 42
-      - 20
-      - 860
-      - 18
-    content:
-      text: HISTORY → OPERATIONS → BEFORE / AFTER
-      fontFamily: Segoe UI
-      fontSize: 11
-      color: "#168C8C"
-      bold: true
-      align:
-        - left
-        - top
-      lineHeight: 1.2
+      color: "#FFFFFF"
   - elementId: title
     elementType: text
     bounds:
-        [42,49,875,66]
+        [38,29,884,58]
     role: title
     content:
-      {"text":"Compare the changed region at equal scale","fontFamily":"Segoe UI","fontSize":32,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.1}
-  - elementId: f-foot-rule
-    elementType: shape
-    shapeName: rect
-    bounds:
-      - 42
-      - 510
-      - 876
-      - 1
-    fill:
-      type: solid
-      color: "#CCD2CB"
-  - elementId: f-watermark
+      {"text":"A useful hand-off keeps the working context","fontFamily":"Segoe UI","fontSize":25,"color":"#25282C","bold":true,"lineHeight":1.16,"align":["left","top"]}
+  - elementId: v-watermark
     elementType: text
     bounds:
-      - 42
-      - 518
-      - 700
-      - 17
+      - 38
+      - 520
+      - 750
+      - 12
     content:
-      text: English · ChatGPT 6 Astra
+      text: english chatgpt 6 astra
       fontFamily: Segoe UI
-      fontSize: 12
-      color: "#50646A"
+      fontSize: 8
+      color: "#6D7379"
       bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.2
-  - elementId: f-position
+  - elementId: v-position
     elementType: text
     bounds:
-      - 882
-      - 518
-      - 36
-      - 17
+      - 885
+      - 520
+      - 37
+      - 12
     content:
       text: ""
       fontFamily: Segoe UI
-      fontSize: 12
-      color: "#50646A"
+      fontSize: 8
+      color: "#6D7379"
       bold: false
+      lineHeight: 1.16
       align:
         - right
         - top
-      lineHeight: 1.2
       field: main-position
-  - elementId: f-before-label
-    elementType: text
-    bounds:
-        [44,142,102,25]
-    content:
-      {"text":"BEFORE","fontFamily":"Segoe UI","fontSize":14,"color":"#50646A","bold":true,"align":["left","top"],"lineHeight":1.2}
-  - elementId: f-after-label
-    elementType: text
-    bounds:
-        [44,316,102,25]
-    content:
-      {"text":"AFTER","fontFamily":"Segoe UI","fontSize":14,"color":"#168C8C","bold":true,"align":["left","top"],"lineHeight":1.2}
-  - elementId: f-before
+  - elementId: v-project
     elementType: image
     bounds:
-        [155,134.2771890862944,759,141.44562182741114]
-    src: media/imported/65fb18be9fabeffebdb25baa3be9de52eacc4f2a811591962df37d44a0d9a761.png
-    sourceName: en-edit-before-4x.png
+      - 38
+      - 110
+      - 884
+      - 378
+    src: "media/imported/6b9a15edcd68879b8e90c8ab3e78b6af6aac0fa523f61feceb3cc1ab22677584.png"
+    sourceName: source-files.png
     fit:
       mode: contain
-    "crop": {"bottom":0.67}
-  - elementId: f-after
-    elementType: image
-    bounds:
-        [155,308.2771890862944,759,141.44562182741114]
-    src: media/imported/eff7df59ca30395ee85337cd02f9183e4a88843dc8ca7005778705ae82d4e950.png
-    sourceName: en-edit-after-4x.png
-    fit:
-      mode: contain
-    "crop": {"bottom":0.67}
-  - elementId: f-before-bracket
-    elementType: shape
-    shapeName: rect
-    bounds:
-      - 145
-      - 140
-      - 4
-      - 129
-    fill:
-      type: solid
-      color: "#ED6A3A"
-  - elementId: f-after-bracket
-    elementType: shape
-    shapeName: rect
-    bounds:
-      - 145
-      - 314
-      - 4
-      - 129
-    fill:
-      type: solid
-      color: "#ED6A3A"
-  - elementId: f-transition
-    elementType: line
-    bounds:
-      - 91
-      - 188
-      - 0
-      - 112
-    viewBox:
-      - 1
-      - 1
-    points: 0,0 1,1
-    border:
-      width: 2.5
-      color: "#ED6A3A"
-    arrow:
-      - null
-      - arrow
-  - elementId: f-compare-takeaway
+  - elementId: v-handoff
     elementType: text
     bounds:
-        [44,469,870,27]
+      - 38
+      - 487
+      - 884
+      - 27
     content:
-      {"text":"Two sentences change; the page identity and remaining layout stay put.","fontFamily":"Segoe UI","fontSize":19,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.2}
-notes: "The public product fixture changes the headline and explanatory sentence only. These are crops of its actual saved before and after page states, aligned at identical scale. The orange bars identify the region to inspect without drawing across its wording. The full original images remain in the project. Compare the new language against the request, then inspect the saved changes to verify the scope."
+      text: The next author opens the same entry and continues.
+      fontFamily: Segoe UI
+      fontSize: 16
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+notes: "The complete Project directory carries the continuing work. Open deck.pptd: pages, original assets, scientific data and scripts, Story and history remain together. An exported file serves delivery; it should not become the only source for the next edit. The actual Files view shows independently acquired materials in this project."

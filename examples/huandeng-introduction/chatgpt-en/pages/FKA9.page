@@ -3,7 +3,7 @@ background:
   type: solid
   color: "#F7F5EF"
 elements:
-  - elementId: f-bg
+  - elementId: v-bg
     elementType: shape
     shapeName: rect
     bounds:
@@ -13,110 +13,193 @@ elements:
       - 540
     fill:
       type: solid
-      color: "#F4F1E8"
-  - elementId: f-route
-    elementType: text
-    bounds:
-      - 42
-      - 20
-      - 860
-      - 18
-    content:
-      text: INSPECTOR → STORY
-      fontFamily: Segoe UI
-      fontSize: 11
-      color: "#168C8C"
-      bold: true
-      align:
-        - left
-        - top
-      lineHeight: 1.2
+      color: "#FFFFFF"
   - elementId: title
     elementType: text
     bounds:
-        [42,49,875,66]
+        [38,29,884,58]
     role: title
     content:
-      {"text":"Write the intent beside the page","fontFamily":"Segoe UI","fontSize":32,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.1}
-  - elementId: f-foot-rule
-    elementType: shape
-    shapeName: rect
-    bounds:
-      - 42
-      - 510
-      - 876
-      - 1
-    fill:
-      type: solid
-      color: "#CCD2CB"
-  - elementId: f-watermark
+      {"text":"Leave a clear brief beside the page","fontFamily":"Segoe UI","fontSize":25,"color":"#25282C","bold":true,"lineHeight":1.16,"align":["left","top"]}
+  - elementId: v-watermark
     elementType: text
     bounds:
-      - 42
-      - 518
-      - 700
-      - 17
+      - 38
+      - 520
+      - 750
+      - 12
     content:
-      text: English · ChatGPT 6 Astra
+      text: english chatgpt 6 astra
       fontFamily: Segoe UI
-      fontSize: 12
-      color: "#50646A"
+      fontSize: 8
+      color: "#6D7379"
       bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.2
-  - elementId: f-position
+  - elementId: v-position
     elementType: text
     bounds:
-      - 882
-      - 518
-      - 36
-      - 17
+      - 885
+      - 520
+      - 37
+      - 12
     content:
       text: ""
       fontFamily: Segoe UI
-      fontSize: 12
-      color: "#50646A"
+      fontSize: 8
+      color: "#6D7379"
       bold: false
+      lineHeight: 1.16
       align:
         - right
         - top
-      lineHeight: 1.2
       field: main-position
-  - elementId: f-story-shot
+  - elementId: v-scope
+    elementType: text
+    bounds:
+      - 38
+      - 85
+      - 884
+      - 29
+    content:
+      {"text":"What this page should say, what must remain, and what this edit changes.","fontFamily":"Segoe UI","fontSize":15,"color":"#25282C","bold":false,"lineHeight":1.16,"align":["left","top"]}
+  - elementId: v-context
     elementType: image
     bounds:
-        [71.82065997130562,137,375.35868005738877,350]
-    src: "media/imported/c390a1dd2ae27ca035634042e2339fb6efb0aa04f2ae5ba89df36794c832041f.png"
-    sourceName: "story.png"
+      - 38
+      - 132
+      - 593
+      - 282
+    src: "media/imported/e26f1224338029ce60895273fba9cf24462c61cb4c380e5f7083c736d6caac68.png"
+    sourceName: story.png
     fit:
       mode: contain
-    "crop": {"bottom":0.18}
-  - elementId: f-prompt
+  - elementId: v-story
+    elementType: image
+    bounds:
+        [660,152.5777591973244,262,218.84448160535118]
+    src: media/imported/8f6bb7bf1aad67fe077b5e446a7b9c65e37eb851aa25aa7fa2a3be0794288cf6.png
+    sourceName: story-detail.png
+    fit:
+      mode: contain
+    "crop": {"bottom":0.25}
+  - elementId: v-source-story-top
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 525.1071428571429
+      - 148.94285714285715
+      - 105.89285714285714
+      - 1.6
+    fill:
+      type: solid
+      color: "#3B607E"
+  - elementId: v-source-story-bottom
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 525.1071428571429
+      - 412.7809523809524
+      - 105.89285714285714
+      - 1.6
+    fill:
+      type: solid
+      color: "#3B607E"
+  - elementId: v-source-story-left
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 525.1071428571429
+      - 148.94285714285715
+      - 1.6
+      - 265.43809523809523
+    fill:
+      type: solid
+      color: "#3B607E"
+  - elementId: v-source-story-right
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 629.4
+      - 148.94285714285715
+      - 1.6
+      - 265.43809523809523
+    fill:
+      type: solid
+      color: "#3B607E"
+  - elementId: v-marker-1
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+      - 519
+      - 156
+      - 20
+      - 20
+    fill:
+      type: solid
+      color: "#25282C"
+  - elementId: v-marker-text-1
     elementType: text
     bounds:
-        [510,151,401,133]
+      - 519
+      - 158
+      - 20
+      - 17
     content:
-      {"text":"“Shorten the headline.\nKeep the file types\nand relationships.”","fontFamily":"Segoe UI","fontSize":27,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.2}
-  - elementId: f-story-link
-    elementType: line
+      text: "1"
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#FFFFFF"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - center
+        - top
+  - elementId: v-marker-1-detail
+    elementType: shape
+    shapeName: ellipse
     bounds:
-        [461,182,34,0]
-    viewBox:
-      - 1
-      - 1
-    points: 1,0 0,1
-    border:
-      width: 2.5
-      color: "#ED6A3A"
-    arrow:
-      - null
-      - arrow
-  - elementId: f-story-action
+      - 647
+      - 121
+      - 20
+      - 20
+    fill:
+      type: solid
+      color: "#25282C"
+  - elementId: v-marker-text-1-detail
     elementType: text
     bounds:
-        [510,325,401,142]
+      - 647
+      - 123
+      - 20
+      - 17
     content:
-      {"text":"Select the page → Story → pencil\n\nWrite the purpose, what stays,\nand this one change.","fontFamily":"Segoe UI","fontSize":20,"color":"#112D32","bold":false,"align":["left","top"],"lineHeight":1.35}
-notes: "Select the project-map page and open Story in the Inspector. Use the pencil control to record its purpose, preservation constraints and requested change. This current 0.19 capture shows the brief for the actual page in this walkthrough. Write an action that can be checked in the result. Story stores context for the next person or assistant; judging the resulting page remains part of the editing work."
+      text: "1"
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#FFFFFF"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - center
+        - top
+  - elementId: v-story-meaning
+    elementType: text
+    bounds:
+      - 38
+      - 447
+      - 584
+      - 52
+    content:
+      text: Keep the reason for the edit beside the evidence it must preserve.
+      fontFamily: Segoe UI
+      fontSize: 18
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+notes: "Story is not another speaker script. Project and Section record the wider purpose and audience; the page records what it should say, what must remain and what this edit changes. In this actual page brief, only the title may change; the plot, values, units and citation must remain. The complete Editor locates the real Story inspector."

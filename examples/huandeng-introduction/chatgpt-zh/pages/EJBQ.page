@@ -3,7 +3,7 @@ background:
   type: solid
   color: "#F7F5EF"
 elements:
-  - elementId: f-paper
+  - elementId: v-bg
     elementType: shape
     shapeName: rect
     bounds:
@@ -13,160 +13,238 @@ elements:
       - 540
     fill:
       type: solid
-      color: "#F4F1E8"
+      color: "#FFFFFF"
   - elementId: title
     elementType: text
     bounds:
-        [36,27,884,46]
+        [38,29,884,58]
     role: title
     content:
-      {"text":"重排以后，仍然认得这一页","fontFamily":"Noto Sans SC","fontSize":31,"color":"#112D32","align":["left","top"],"lineHeight":1.35,"bold":true}
-  - elementId: f-action
+      {"text":"位置会变，这一页不会丢","fontFamily":"Segoe UI","fontSize":25,"color":"#25282C","bold":true,"lineHeight":1.16,"align":["left","top"]}
+  - elementId: v-watermark
     elementType: text
     bounds:
       - 38
-      - 82
-      - 884
-      - 28
+      - 520
+      - 750
+      - 12
     content:
-      text: 在浏览视图调整顺序，再用 Slide ID 回到它的历史
-      fontFamily: Noto Sans SC
-      fontSize: 18
-      color: "#557076"
+      text: chinese chatgpt 6 astra + subagent
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
+      bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.35
-  - elementId: f-watermark
+  - elementId: v-position
     elementType: text
     bounds:
-      - 36
-      - 514
-      - 820
-      - 19
-    content:
-      text: Chinese · ChatGPT 6 Astra + Subagents
-      fontFamily: Noto Sans SC
-      fontSize: 13
-      color: "#557076"
-      align:
-        - left
-        - top
-      lineHeight: 1.35
-  - elementId: f-position
-    elementType: text
-    bounds:
-      - 878
-      - 514
-      - 44
-      - 19
+      - 885
+      - 520
+      - 37
+      - 12
     content:
       text: ""
-      fontFamily: Noto Sans SC
-      fontSize: 13
-      color: "#557076"
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
+      bold: false
+      lineHeight: 1.16
       align:
         - right
         - top
-      lineHeight: 1.35
       field: main-position
-  - elementId: f-order-before
+  - elementId: v-before-label
     elementType: text
     bounds:
       - 38
-      - 127
-      - 884
-      - 26
+      - 102
+      - 423
+      - 24
     content:
-      text: 重排前
-      fontFamily: Noto Sans SC
-      fontSize: 16
-      color: "#557076"
-      align:
-        - left
-        - top
-      lineHeight: 1.35
-  - elementId: f-order-after
-    elementType: text
-    bounds:
-      - 38
-      - 305
-      - 884
-      - 26
-    content:
-      text: 重排后
-      fontFamily: Noto Sans SC
-      fontSize: 16
-      color: "#168C8C"
-      align:
-        - left
-        - top
-      lineHeight: 1.35
+      text: 移动前
+      fontFamily: Segoe UI
+      fontSize: 15
+      color: "#25282C"
       bold: true
-  - elementId: f-identity-before
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-after-label
+    elementType: text
+    bounds:
+      - 499
+      - 102
+      - 423
+      - 24
+    content:
+      text: 移动后
+      fontFamily: Segoe UI
+      fontSize: 15
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+  - elementId: v-before
     elementType: image
     bounds:
       - 38
-      - 162
-      - 884
-      - 99
-    src: media/imported/56ef1c090dfe6c7ef847c12ea2f9ed6ef7a90dfd51efd5d5cc23f4e542356b58.png
-    sourceName: zh-CN-identity-before-4x.png
+      - 143
+      - 423
+      - 202
+    src: media/imported/3452ac51de790c0a6ddb337b4853fe1de9dc5878496d9ab9f69e2bc6693054b5.png
+    sourceName: identity-before.png
     fit:
       mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0.2
-      bottom: 0
-  - elementId: f-identity-after
+  - elementId: v-after
     elementType: image
     bounds:
-      - 38
-      - 340
-      - 884
-      - 99
-    src: media/imported/99a0f26c40f623b347b71bf756622aec243fecbc66a1b031013d57de71448afe.png
-    sourceName: zh-CN-identity-after-4x.png
+      - 499
+      - 143
+      - 423
+      - 202
+    src: media/imported/075f11e93e1e8ebbf3a76e0f6295a0ab116e17482d6027f4c6d83d6fd7b6b900.png
+    sourceName: identity-after.png
+    fit:
+      mode: contain
+  - elementId: v-status-source-0-top
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 110.51428571428572
+      - 337.425
+      - 93.66428571428571
+      - 1.8
+    fill:
+      type: solid
+      color: "#3B607E"
+  - elementId: v-status-source-0-bottom
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 110.51428571428572
+      - 343.2
+      - 93.66428571428571
+      - 1.8
+    fill:
+      type: solid
+      color: "#3B607E"
+  - elementId: v-status-source-0-left
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 110.51428571428572
+      - 337.425
+      - 1.8
+      - 7.575
+    fill:
+      type: solid
+      color: "#3B607E"
+  - elementId: v-status-source-0-right
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 202.37857142857143
+      - 337.425
+      - 1.8
+      - 7.575
+    fill:
+      type: solid
+      color: "#3B607E"
+  - elementId: v-actual-status-0
+    elementType: image
+    bounds:
+      - 37.99999999999997
+      - 378.44354838709677
+      - 423.00000000000006
+      - 34.112903225806434
+    src: media/imported/3452ac51de790c0a6ddb337b4853fe1de9dc5878496d9ab9f69e2bc6693054b5.png
+    sourceName: identity-before.png
     fit:
       mode: contain
     crop:
-      left: 0
-      right: 0
-      top: 0.2
-      bottom: 0
-  - elementId: f-order-arrow
-    elementType: line
+      left: 0.17142857142857143
+      right: 0.6071428571428571
+      top: 0.9625
+  - elementId: v-status-source-1-top
+    elementType: shape
+    shapeName: rect
     bounds:
-      - 480
-      - 272
-      - 0
-      - 22
-    viewBox:
-      - 1
-      - 1
-    points: 0,0 1,1
-    border:
-      width: 2
-      color: "#ED6A3A"
-    arrow:
-      - null
-      - arrow
-  - elementId: f-identity-point
+      - 571.5142857142857
+      - 337.425
+      - 93.66428571428571
+      - 1.8
+    fill:
+      type: solid
+      color: "#3B607E"
+  - elementId: v-status-source-1-bottom
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 571.5142857142857
+      - 343.2
+      - 93.66428571428571
+      - 1.8
+    fill:
+      type: solid
+      color: "#3B607E"
+  - elementId: v-status-source-1-left
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 571.5142857142857
+      - 337.425
+      - 1.8
+      - 7.575
+    fill:
+      type: solid
+      color: "#3B607E"
+  - elementId: v-status-source-1-right
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 663.3785714285715
+      - 337.425
+      - 1.8
+      - 7.575
+    fill:
+      type: solid
+      color: "#3B607E"
+  - elementId: v-actual-status-1
+    elementType: image
+    bounds:
+      - 499
+      - 378.44354838709677
+      - 423.00000000000006
+      - 34.112903225806434
+    src: media/imported/075f11e93e1e8ebbf3a76e0f6295a0ab116e17482d6027f4c6d83d6fd7b6b900.png
+    sourceName: identity-after.png
+    fit:
+      mode: contain
+    crop:
+      left: 0.17142857142857143
+      right: 0.6071428571428571
+      top: 0.9625
+  - elementId: v-actual-caption
     elementType: text
     bounds:
       - 38
-      - 468
+      - 449
       - 884
-      - 32
+      - 50
     content:
-      text: 位置变了，Slide ID 保持 HFDV。
-      fontFamily: Noto Sans SC
-      fontSize: 22
-      color: "#168C8C"
+      text: 位置变了；状态栏里的 Slide ID 始终相同。
+      fontFamily: Segoe UI
+      fontSize: 18
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.35
-      bold: true
-notes: "这里是公开示例页面 HFDV 的真实重排结果。它原来位于第2页，移动后在第4页；四字符 Slide ID 仍然是 HFDV。位置回答“这场编排里排第几”，Slide ID 帮我们确认“还是哪一张页”。查历史、继续修改或者在另一个演讲中引用时，认准这一页即可。接下来就从这套 Main 页面中选择材料，组织一场具体的演讲。"
+notes: "这是同一页真实移动前后的Editor状态，不是换一个标签的示意。移动只改变Main位置，Slide ID不变。随后已把页面恢复到完整叙事中的原位置。通过页短码可以再次找到它，History仍属于这页。"

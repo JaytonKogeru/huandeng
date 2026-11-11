@@ -3,7 +3,7 @@ background:
   type: solid
   color: "#E4ECE6"
 elements:
-  - elementId: f-bg
+  - elementId: v-bg
     elementType: shape
     shapeName: rect
     bounds:
@@ -13,138 +13,112 @@ elements:
       - 540
     fill:
       type: solid
-      color: "#F4F1E8"
-  - elementId: f-route
-    elementType: text
-    bounds:
-      - 42
-      - 20
-      - 860
-      - 18
-    content:
-      text: HISTORY → OPERATIONS
-      fontFamily: Segoe UI
-      fontSize: 11
-      color: "#168C8C"
-      bold: true
-      align:
-        - left
-        - top
-      lineHeight: 1.2
+      color: "#FFFFFF"
   - elementId: title
     elementType: text
     bounds:
-        [42,49,875,66]
+        [38,29,884,58]
     role: title
     content:
-      {"text":"Inspect the exact saved change","fontFamily":"Segoe UI","fontSize":32,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.1}
-  - elementId: f-foot-rule
-    elementType: shape
-    shapeName: rect
-    bounds:
-      - 42
-      - 510
-      - 876
-      - 1
-    fill:
-      type: solid
-      color: "#CCD2CB"
-  - elementId: f-watermark
+      {"text":"Inspect what was saved","fontFamily":"Segoe UI","fontSize":25,"color":"#25282C","bold":true,"lineHeight":1.16,"align":["left","top"]}
+  - elementId: v-watermark
     elementType: text
     bounds:
-      - 42
-      - 518
-      - 700
-      - 17
+      - 38
+      - 520
+      - 750
+      - 12
     content:
-      text: English · ChatGPT 6 Astra
+      text: english chatgpt 6 astra
       fontFamily: Segoe UI
-      fontSize: 12
-      color: "#50646A"
+      fontSize: 8
+      color: "#6D7379"
       bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.2
-  - elementId: f-position
+  - elementId: v-position
     elementType: text
     bounds:
-      - 882
-      - 518
-      - 36
-      - 17
+      - 885
+      - 520
+      - 37
+      - 12
     content:
       text: ""
       fontFamily: Segoe UI
-      fontSize: 12
-      color: "#50646A"
+      fontSize: 8
+      color: "#6D7379"
       bold: false
+      lineHeight: 1.16
       align:
         - right
         - top
-      lineHeight: 1.2
       field: main-position
-  - elementId: f-operation-details
+  - elementId: v-review
     elementType: image
     bounds:
-      - 44
-      - 143
-      - 566
-      - 338
-    src: media/imported/0148822d0496ea8ff3653d88ab2c63fd4301d97b660c3ae4dea40798a3dc0bea.png
-    sourceName: en-operation-changes-4x.png
+      - 59.066378546099315
+      - 105
+      - 601.8672429078014
+      - 395
+    src: media/imported/d621bc00960e3273a63888644218e6ad6a261230819b3cf0d03170099bc04212.png
+    sourceName: review-dialog.png
     fit:
       mode: contain
-  - elementId: f-operation-instruction
+    crop:
+      bottom: 0.06
+  - elementId: v-location
+    elementType: image
+    bounds:
+      - 704
+      - 108
+      - 218
+      - 104
+    src: "media/imported/050c82ed825a16cda0b4c390de1c81bfedbf93a44dd1c0304e57ef74540b24f9.png"
+    sourceName: review.png
+    fit:
+      mode: contain
+  - elementId: v-entry
     elementType: text
     bounds:
-      - 648
-      - 155
-      - 264
-      - 198
+      - 704
+      - 227
+      - 218
+      - 44
     content:
-      text: |-
-        Open the operation.
-  
-        Check the changed objects.
-  
-        Read both page states.
+      text: Start from Activity in the header.
       fontFamily: Segoe UI
-      fontSize: 21
-      color: "#112D32"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.32
-  - elementId: f-operation-mark
-    elementType: shape
-    shapeName: rect
-    bounds:
-      - 630
-      - 148
-      - 4
-      - 318
-    fill:
-      type: solid
-      color: "#ED6A3A"
-  - elementId: f-operation-result
-    elementType: text
-    bounds:
-      - 648
-      - 391
-      - 264
-      - 81
-    content:
-      text: |-
-        Expected here:
-        only title and lead text.
-      fontFamily: Segoe UI
-      fontSize: 21
-      color: "#168C8C"
+      fontSize: 14
+      color: "#25282C"
       bold: true
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.2
-notes: "Open History for the edited page and choose its operation record. The saved changes list identifies the actual objects and properties changed by that operation. Here the public fixture reports content.text for the title and lead, matching the two-sentence request. Review the before and after page states as well. A successful save is evidence of a persisted change, not a substitute for assessing whether the page reads well."
+  - elementId: v-meaning
+    elementType: text
+    bounds:
+      - 704
+      - 294
+      - 218
+      - 199
+    content:
+      text: |-
+        Select the changed object.
+        See it on the real page.
+  
+        The figure and its source remain.
+  
+        This view is read-only.
+        Use History to restore.
+      fontFamily: Segoe UI
+      fontSize: 15
+      color: "#25282C"
+      bold: false
+      lineHeight: 1.35
+      align:
+        - left
+        - top
+notes: "Open Activity in the header and choose Review changes for the actual saved operation. This transaction changed only title.content.text. The review brings the real page, object-level change and its Story together. Review is read-only; restoring a named version is a separate History action."

@@ -3,7 +3,7 @@ background:
   type: solid
   color: "#F7F5EF"
 elements:
-  - elementId: f-bg
+  - elementId: v-bg
     elementType: shape
     shapeName: rect
     bounds:
@@ -13,117 +13,196 @@ elements:
       - 540
     fill:
       type: solid
-      color: "#F4F1E8"
-  - elementId: f-route
-    elementType: text
-    bounds:
-      - 42
-      - 20
-      - 860
-      - 18
-    content:
-      text: AGENT SETUP → CHOOSE THE CLIENT
-      fontFamily: Segoe UI
-      fontSize: 11
-      color: "#168C8C"
-      bold: true
-      align:
-        - left
-        - top
-      lineHeight: 1.2
+      color: "#FFFFFF"
   - elementId: title
     elementType: text
     bounds:
-        [42,49,875,66]
+        [38,29,884,58]
     role: title
     content:
-      {"text":"Connect the assistant to this project","fontFamily":"Segoe UI","fontSize":32,"color":"#112D32","bold":true,"align":["left","top"],"lineHeight":1.1}
-  - elementId: f-foot-rule
-    elementType: shape
-    shapeName: rect
-    bounds:
-      - 42
-      - 510
-      - 876
-      - 1
-    fill:
-      type: solid
-      color: "#CCD2CB"
-  - elementId: f-watermark
+      {"text":"A reported result should lead to real work","fontFamily":"Segoe UI","fontSize":25,"color":"#25282C","bold":true,"lineHeight":1.16,"align":["left","top"]}
+  - elementId: v-watermark
     elementType: text
     bounds:
-      - 42
-      - 518
-      - 700
-      - 17
+      - 38
+      - 520
+      - 750
+      - 12
     content:
-      text: English · ChatGPT 6 Astra
+      text: english chatgpt 6 astra
       fontFamily: Segoe UI
-      fontSize: 12
-      color: "#50646A"
+      fontSize: 8
+      color: "#6D7379"
       bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.2
-  - elementId: f-position
+  - elementId: v-position
     elementType: text
     bounds:
-      - 882
-      - 518
-      - 36
-      - 17
+      - 885
+      - 520
+      - 37
+      - 12
     content:
       text: ""
       fontFamily: Segoe UI
-      fontSize: 12
-      color: "#50646A"
+      fontSize: 8
+      color: "#6D7379"
       bold: false
+      lineHeight: 1.16
       align:
         - right
         - top
-      lineHeight: 1.2
       field: main-position
-  - elementId: f-assistant-choice
+  - elementId: v-meaning
+    elementType: text
+    bounds:
+      - 38
+      - 80
+      - 884
+      - 25
+    content:
+      {"text":"Open Activity, then choose Resolve reported receipt to inspect the saved operation.","fontFamily":"Segoe UI","fontSize":14,"color":"#25282C","bold":false,"lineHeight":1.16,"align":["left","top"]}
+  - elementId: v-activity
     elementType: image
     bounds:
-        [44,137,870,168.30357142857142]
-    src: "media/imported/2cfabeba4179716fc245e0eb39a8e32c2fedb3d873c70e64dbc735cded1c30f3.png"
-    sourceName: "assistant-choice-complete.png"
+        [47,99,866,412.3809523809524]
+    src: "media/imported/17e6055f31c39f60cd90942271df7d88dcb721386fa3dd4f3e0e927a5c441c24.png"
+    sourceName: activity.png
     fit:
       mode: contain
-  - elementId: f-assistant-action
+  - elementId: v-report-source-top
+    elementType: shape
+    shapeName: rect
+    bounds:
+        [201.64285714285714,419.62619047619046,550.5285714285715,1.7]
+    fill:
+      type: solid
+      color: "#3B607E"
+  - elementId: v-report-source-bottom
+    elementType: shape
+    shapeName: rect
+    bounds:
+        [201.64285714285714,470.5047619047619,550.5285714285715,1.7]
+    fill:
+      type: solid
+      color: "#3B607E"
+  - elementId: v-report-source-left
+    elementType: shape
+    shapeName: rect
+    bounds:
+        [201.64285714285714,419.62619047619046,1.7,52.57857142857143]
+    fill:
+      type: solid
+      color: "#3B607E"
+  - elementId: v-report-source-right
+    elementType: shape
+    shapeName: rect
+    bounds:
+        [750.4714285714285,419.62619047619046,1.7,52.57857142857143]
+    fill:
+      type: solid
+      color: "#3B607E"
+  - elementId: v-report-inset
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 229
+      - 228
+      - 523
+      - 155
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#91A6B5"
+  - elementId: v-report-heading
     elementType: text
     bounds:
-      - 44
-      - 343
-      - 870
-      - 55
+      - 250
+      - 240
+      - 481
+      - 22
     content:
-      text: Choose your client → follow setup → confirm the project entry
+      text: This report points to a saved operation
       fontFamily: Segoe UI
-      fontSize: 25
-      color: "#112D32"
+      fontSize: 14
+      color: "#25282C"
       bold: true
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.2
-  - elementId: f-assistant-shared
+  - elementId: v-report-detail
+    elementType: image
+    bounds:
+      - 264.3352941176471
+      - 272
+      - 452.32941176470587
+      - 96
+    src: media/imported/93d44b0bbeeece3c2444bf6a6f6252dc295176d23bfbb9de9ca39e504e469896.png
+    sourceName: activity-report.png
+    fit:
+      mode: contain
+    crop:
+      right: 0.55
+  - elementId: v-marker-1
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+      - 230
+      - 228
+      - 20
+      - 20
+    fill:
+      type: solid
+      color: "#25282C"
+  - elementId: v-marker-text-1
     elementType: text
     bounds:
-      - 44
-      - 425
-      - 870
-      - 64
+      - 230
+      - 230
+      - 20
+      - 17
     content:
-      text: The assistant edits the same pages, assets and Story that you see in the Editor.
+      text: "1"
       fontFamily: Segoe UI
-      fontSize: 22
-      color: "#168C8C"
-      bold: false
+      fontSize: 11
+      color: "#FFFFFF"
+      bold: true
+      lineHeight: 1.16
       align:
-        - left
+        - center
         - top
-      lineHeight: 1.2
-notes: "Open Agent setup in the desktop Editor and select the client you use. Follow its generated setup and verify the project entry before asking for an edit. Claude Code uses the HUANDENG plugin, DeepSeek Harness uses its native Cordis adapter, and ChatGPT reaches the local workflow through its connector. These clients work through the same document service. The screenshot shows the actual client selector; it does not claim that the browser-only capture itself completed native setup."
+  - elementId: v-marker-1-source
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+      - 189
+      - 413
+      - 20
+      - 20
+    fill:
+      type: solid
+      color: "#25282C"
+  - elementId: v-marker-text-1-source
+    elementType: text
+    bounds:
+      - 189
+      - 415
+      - 20
+      - 17
+    content:
+      text: "1"
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#FFFFFF"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - center
+        - top
+notes: "In the real Activity view, this agent completion report references an actual saved operation in this Project. A report is a claim; Review changes opens the real receipt so the user can inspect what happened. The plugin supplies authoring method and the connector reaches the same writer. Client connection steps remain in the project documentation; this page does not present a browser-only setup failure as a successful desktop connection."

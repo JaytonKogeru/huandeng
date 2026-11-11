@@ -1,0 +1,35 @@
+pageType: section
+background:
+  type: solid
+  color: "#FFFFFF"
+elements:
+  - elementId: v-section-paper
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 0
+      - 0
+      - 960
+      - 540
+    fill:
+      type: solid
+      color: "#FFFFFF"
+  - elementId: title
+    elementType: text
+    bounds:
+      - 70
+      - 237
+      - 820
+      - 72
+    role: title
+    content:
+      text: 为什么还要做幻灯
+      fontFamily: Segoe UI
+      fontSize: 35
+      color: "#25282C"
+      bold: true
+      lineHeight: 1.16
+      align:
+        - left
+        - top
+notes: 在这里停顿，进入故事的下一段。章节页严格只有标题。

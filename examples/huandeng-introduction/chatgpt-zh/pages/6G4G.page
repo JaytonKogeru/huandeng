@@ -3,7 +3,7 @@ background:
   type: solid
   color: "#F7F5EF"
 elements:
-  - elementId: f-bg
+  - elementId: v-bg
     elementType: shape
     shapeName: rect
     bounds:
@@ -13,281 +13,75 @@ elements:
       - 540
     fill:
       type: solid
-      color: "#F4F1E8"
+      color: "#FFFFFF"
   - elementId: title
     elementType: text
     bounds:
-        [38,29,884,48]
+        [38,29,884,58]
     role: title
     content:
-      {"text":"人和助手，接着改同一份项目","fontFamily":"Noto Sans SC","fontSize":30,"color":"#112D32","align":["left","top"],"lineHeight":1.32,"bold":true}
-  - elementId: f-step
-    elementType: text
-    bounds:
-      - 39
-      - 91
-      - 400
-      - 24
-    content:
-      text: 开始一份工作
-      fontFamily: Noto Sans SC
-      fontSize: 13
-      color: "#168C8C"
-      align:
-        - left
-        - top
-      lineHeight: 1.32
-  - elementId: f-watermark
+      {"text":"让下一次修改留在同一份工作里","fontFamily":"Segoe UI","fontSize":25,"color":"#25282C","bold":true,"lineHeight":1.16,"align":["left","top"]}
+  - elementId: v-watermark
     elementType: text
     bounds:
       - 38
-      - 514
-      - 800
-      - 22
+      - 520
+      - 750
+      - 12
     content:
-      text: Chinese · ChatGPT 6 Astra + Subagents
-      fontFamily: Noto Sans SC
-      fontSize: 13
-      color: "#596D70"
+      text: chinese chatgpt 6 astra + subagent
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
+      bold: false
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.32
-  - elementId: f-position
+  - elementId: v-position
     elementType: text
     bounds:
-      - 882
-      - 514
-      - 40
-      - 22
+      - 885
+      - 520
+      - 37
+      - 12
     content:
       text: ""
-      fontFamily: Noto Sans SC
-      fontSize: 13
-      color: "#596D70"
+      fontFamily: Segoe UI
+      fontSize: 8
+      color: "#6D7379"
+      bold: false
+      lineHeight: 1.16
       align:
         - right
         - top
-      lineHeight: 1.32
       field: main-position
-  - elementId: f-editor-mark
+  - elementId: v-project
     elementType: image
     bounds:
-      - 80
-      - 142
-      - 70
-      - 70
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
-    sourceName: huandeng.png
-    fit:
-      mode: contain
-    crop:
-      left: 0.18
-      right: 0.18
-      top: 0.14
-      bottom: 0.14
-  - elementId: f-editor-label
-    elementType: text
-    bounds:
-      - 170
-      - 148
-      - 290
-      - 32
-    content:
-      text: HUANDENG Editor
-      fontFamily: Noto Sans SC
-      fontSize: 24
-      color: "#112D32"
-      align:
-        - left
-        - top
-      lineHeight: 1.32
-      bold: true
-  - elementId: f-editor-use
-    elementType: text
-    bounds:
-      - 170
-      - 194
-      - 305
-      - 32
-    content:
-      text: 打开、选择、修改、放映
-      fontFamily: Noto Sans SC
-      fontSize: 18
-      color: "#112D32"
-      align:
-        - left
-        - top
-      lineHeight: 1.32
-  - elementId: f-agent-0
-    elementType: image
-    bounds:
-      - 570
-      - 146
-      - 58
-      - 58
-    src: media/imported/0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13.png
-    sourceName: chatgpt.png
-    fit:
-      mode: contain
-  - elementId: f-agent-1
-    elementType: image
-    bounds:
-      - 676
-      - 146
-      - 58
-      - 58
-    src: media/imported/733f24f4c52acb15eb0fbded1cf40eb42b4ba8e62b882acac70b6234b50919a8.png
-    sourceName: claude-code.png
-    fit:
-      mode: contain
-  - elementId: f-agent-2
-    elementType: image
-    bounds:
-      - 782
-      - 146
-      - 58
-      - 58
-    src: media/imported/e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc.png
-    sourceName: deepseek.png
-    fit:
-      mode: contain
-  - elementId: f-agent-label
-    elementType: text
-    bounds:
-      - 569
-      - 221
-      - 310
-      - 32
-    content:
-      text: 你的 AI 助手
-      fontFamily: Noto Sans SC
-      fontSize: 22
-      color: "#112D32"
-      align:
-        - left
-        - top
-      lineHeight: 1.32
-      bold: true
-  - elementId: f-agent-use
-    elementType: text
-    bounds:
-      - 517
-      - 269
-      - 405
-      - 48
-    content:
-      text: Plugin 提供约定 · Connector 接入项目
-      fontFamily: Noto Sans SC
-      fontSize: 16
-      color: "#112D32"
-      align:
-        - left
-        - top
-      lineHeight: 1.32
-  - elementId: f-editor-arrow
-    elementType: line
-    bounds:
-      - 265
-      - 251
-      - 0
-      - 94
-    viewBox:
-      - 1
-      - 1
-    points: 0,0 1,1
-    border:
-      width: 2
-      color: "#168C8C"
-    arrow:
-      - null
-      - arrow
-  - elementId: f-agent-arrow
-    elementType: line
-    bounds:
-      - 724
-      - 313
-      - 0
-      - 32
-    viewBox:
-      - 1
-      - 1
-    points: 0,0 1,1
-    border:
-      width: 2
-      color: "#168C8C"
-    arrow:
-      - null
-      - arrow
-  - elementId: f-project-band
-    elementType: shape
-    shapeName: rect
-    bounds:
-      - 54
-      - 358
-      - 852
-      - 126
-    fill:
-      type: solid
-      color: "#112D32"
-  - elementId: f-folder
-    elementType: icon
-    iconName: fas:folder-open
-    bounds:
-      - 82
-      - 389
-      - 50
-      - 50
-    fill:
-      type: solid
-      color: "#F4F1E8"
-  - elementId: f-project-label
-    elementType: text
-    bounds:
-      - 158
-      - 377
-      - 348
       - 38
+      - 110
+      - 884
+      - 378
+    src: "media/imported/babe8b69ad93c12b48a5d2ed09db64db53ab36fc50d584b19a250e5d2aaa81b7.png"
+    sourceName: source-files.png
+    fit:
+      mode: contain
+  - elementId: v-handoff
+    elementType: text
+    bounds:
+      - 38
+      - 487
+      - 884
+      - 27
     content:
-      text: 同一份工作项目
-      fontFamily: Noto Sans SC
-      fontSize: 25
-      color: "#F4F1E8"
-      align:
-        - left
-        - top
-      lineHeight: 1.32
+      text: 下一位作者打开同一个入口，接着改。
+      fontFamily: Segoe UI
+      fontSize: 16
+      color: "#25282C"
       bold: true
-  - elementId: f-project-parts
-    elementType: text
-    bounds:
-      - 158
-      - 430
-      - 710
-      - 32
-    content:
-      text: deck.pptd  ·  pages/  ·  media/  ·  .huandeng/
-      fontFamily: Noto Sans SC
-      fontSize: 18
-      color: "#D7E9E7"
+      lineHeight: 1.16
       align:
         - left
         - top
-      lineHeight: 1.32
-  - elementId: f-project-model
-    elementType: text
-    bounds:
-      - 776
-      - 119
-      - 132
-      - 23
-    content:
-      text: 概念关系图
-      fontFamily: Noto Sans SC
-      fontSize: 13
-      color: "#596D70"
-      align:
-        - right
-        - top
-      lineHeight: 1.32
-notes: "先把三个角色分清。HUANDENG Editor 是我们打开、选择、编辑和放映页面的桌面工作区。Plugin 给助手提供制作与协作约定，Connector 将它连接到明确选定的项目。两边的修改通过同一个共享写入服务，落到同一份项目中。deck.pptd 是入口，页面和素材都在项目目录。接下来实际打开这个入口。第三方标记来源见 sources/brand/manifest.json。"
+notes: "完整项目目录是继续工作的载体。用deck.pptd打开，页面、原始素材、科学数据与脚本、Story和历史仍在项目里。导出的文件服务于交付，不应成为下一轮继续工作的唯一来源。实际Files视图展示本项目独立取得的资料。"
