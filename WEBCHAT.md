@@ -1,6 +1,26 @@
 # HUANDENG Editor
 
-## Current introduction and plugin rework
+## Current 0.19 product and introduction work
+
+Read docs/PRODUCT-INTRODUCTION-SPEC.md, PRODUCT-INTRODUCTION-VALIDATION.md, EDITOR-0.19-VALIDATION.md, NATIVE-INTEGRATION-0.19.md, PROJECT-FOLDERS.md, RELEASE-V019.md and HANDOFF-V019.md. The current presentation mission is to teach what HUANDENG is, how to use it and why its design helps. The founder's story guides those choices; it is not a transcript to illustrate. The user prefers Claude English's current usefulness and design. Preserve it and the user's page edits; require substantive Chinese/English correspondence without imposing identical page breaks.
+
+Final runtime source C3 is cadaecbf9cf1661e28464fe68b7b866f68fecabe. It follows feature/plugin commit C1 aff4ac28753bb2d4422f2f993f2409742afaecf9 and navigation correction C2 f8ec88f73eef0db18a35b2e9b5024a70b7ffe734. C3 adds the visible workspace Application menu button, routing only the trusted shell to the existing native menu. Runtime packaging and final installed checks are bound to C3; unchanged plugin packages retain C1 provenance. Core npm remains 2.3.1. The delivery commit contains verified public examples/docs/evidence and must not be misrepresented as the executable's build source. Use current release and validation records for completed gates.
+
+The six canonical projects remain under examples/huandeng-introduction. ChatGPT Chinese and English each have 24 Main and 12 Brief pages, with saved occurrence Notes and a historical scientific pin. DeepSeek English has 22 Main/no separate Brief; Chinese has 22 Main/12 Brief. Their native content findings remain recorded. Claude's original English session completed initial maintenance and a bounded 27-tool version/function/fact correction at 25 Main/9 Brief; its actual Office Main 12/Brief 5 retains the chart-label alignment limitation. The original Chinese session completed 26 Main/9 Brief and a nine-tool corresponding factual correction. Chinese source and four exports are verified, while its runner retains needs_attention for a denied append to DELIVERY-R2.md; that blocked log was not rewritten or bypassed. The pair's core product claims, use steps and qualifications correspond, with the collaboration example given a separate page in Chinese. Read the project reports for substantive correspondence and other current findings before claiming acceptance. Native completion is not editorial approval; the coordinator does not rewrite native source to manufacture a pass.
+
+The formal DSH package and Cordis identity are huandeng. Canonical adapter source is plugins/huandeng/adapters/deepseek; D:/_Proj/dsh-huandeng is the intentional installed-distribution name to avoid colliding with Huandeng on Windows. Default native clients use the shared 0.19 guide; actual package hashes and host activation are recorded separately from the original trial candidate and native model completion. The existing private ChatGPT plugin was updated in place; that does not prove hot-loading into an already-running conversation.
+
+File/folder launch accepts exactly one direct .pptd child and rejects ambiguity. A descriptive folder suffix is optional, with no bulk rename or generic Windows folder association. Existing folder markers are preserved. Assistant setup, dated client reports and writer-backed receipts remain distinct. The real DSH/ChatGPT collaboration trial proves independent-page saves, stale same-page refusal and a fresh style handoff, not section locks, online presence or a task scheduler.
+
+Preserve stable IDs, source evidence, original icons, purposeful backgrounds and acknowledgments. Ordinary prose stays coherent; genuine tabular relationships use native tables. Read object structure and final Notes, not just geometry reports. The actual rendered result, bilingual meaning and audience usefulness each need review. Other authors do not copy Claude's artwork.
+
+Preserve tests/fixtures/studio/pages/identities.page at SHA-256 fe378a48e57b63f2b9e7286578f68eefe856a381422930a6615f920b02622832, unchanged and unstaged. The founder-story source remains at 71e4021fc9cc3bc3b438e2b7d7ff950f0f5921cd4fd24b7afdd9d2c87ff503e3. Preserve Claude English's current AVNM and 7NHP user edits. No unrelated resets, broad add/clean, account/model changes, upstream/npm publication or repository-visibility change.
+
+Keep one maintained product checkout and the six existing source projects. Temporary build verification stays inside the ignored work area and is retired after exact archive checks. No new top-level dated project copies. All .page/.pptd/project metadata edits use the selected shared writer, fresh revisions, exact preview/apply and receipt readback.
+
+## Historical 0.18.3 introduction and plugin rework
+
+The following section is the prior milestone's record. Its mission, page counts, plugin/runtime state and acceptance claims are historical; the current 0.19 section and linked evidence supersede them.
 
 The author approved the prior visual improvement but asked for the founder's story to drive the introduction. Read docs/INTRODUCTION-STORY-SPEC.md, INTRODUCTION-DELIVERY.md and WORKSPACE-ORGANIZATION.md. The original visual audit remains relevant; the story contract supersedes earlier page counts and feature-first outlines. This round leaves Editor source and the installed 0.18.0 binary unchanged.
 

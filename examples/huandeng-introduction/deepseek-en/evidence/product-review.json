@@ -1,0 +1,176 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "ChatGPT independent visual/requirements reviewer",
+  "project": "deepseek-en",
+  "round": "product-intro-20261111",
+  "reviewStatus": "completed_with_retained_content_limitations",
+  "authorAccepted": false,
+  "scope": {
+    "mainPages": 22,
+    "pdfContactSheetsViewed": [1, 2, 3, 4],
+    "pdfFullPagesViewed": [2, 4, 6, 7, 10, 11, 12, 14, 15, 16, 18, 19, 20, 21],
+    "allMainNotesRead": true,
+    "sourceObjectsChecked": "Five native tables and the ordinary numbered-prose block on page 21; page 11 Story table compared with current page 10 designIntent.",
+    "powerPointVisualReview": true,
+    "unchangedNativeSourceRequired": true,
+    "powerPointContactSheetsViewed": [1, 2, 3, 4],
+    "powerPointFullPagesViewed": [4, 10, 11, 12, 18, 19]
+  },
+  "nativeExecution": {
+    "session": "session-d144a4b4-98eb-4ff7-bddc-6cfa2666e9c6",
+    "completedRequest": "8f442b48-bd2c-45ff-83ca-9ab228880155",
+    "nativeCompleted": true,
+    "exitCode": 0,
+    "priorFailedRequests": [
+      "66e237b1-739e-4627-b6ed-7598de2fca3f",
+      "622006eb-46a4-4e5a-8cb3-29a744aebc01",
+      "13e7daa5-9563-4a18-ba32-fc917a8c616d"
+    ],
+    "interpretation": "Completion follows an explicitly labelled technical continuation on the same original session. It is not first-pass success or author acceptance. The provider failures were malformed complete tool JSON, not a HUANDENG transaction validation failure."
+  },
+  "assessment": {
+    "productMission": "Substantial improvement: product definition, project structure, real editor, scientific evidence, Story, focused edit, identity/history, views, reuse, assets, collaboration boundaries, delivery, credits and a first action are now visible.",
+    "visual": "The English Georgia/Segoe UI/Consolas direction remains. Real UI crops, preserved scientific assets and client/upstream marks now carry explanation. No clipped text or missing image was observed in the reviewed PDF pages.",
+    "objectContract": "The five native tables express actual field/value, format/behavior or before/after relationships. The first-action list is one editable text object. No repeated heading/body pseudo-table defect like the rejected Chinese XZJN page was observed in this English submission.",
+    "science": "Page 10 explicitly identifies one PDB 1BNA structure and twelve paired C1-prime distances, not independent replicates or a performance benchmark. It accurately describes the curve as an original asset; this deck has no native chart.",
+    "remaining": "Content and metadata defects below prevent an unqualified correctness/ready-to-present claim. Preserve the native submission and report these limitations; no aesthetic redo or coordinator page edits are authorized by this review."
+  },
+  "findings": [
+    {
+      "id": "DSE-PRODUCT-01",
+      "severity": "content_error",
+      "pages": [4],
+      "shortCodes": ["TPCJ"],
+      "finding": "The native PPTX/PPTD comparison says PPTX has no page identity. PPTX already has slide parts and slide identifiers.",
+      "evidence": "The actual exported PPTX contains 22 p:sldId entries in ppt/presentation.xml, including IDs 256 and 257. The shared FACTS.md also explicitly rejects a no-page-structure claim.",
+      "neededQualification": "Describe HUANDENG's exposed working-page identity and page-history workflow, rather than the absence of PPTX slide IDs.",
+      "status": "retained_native_output"
+    },
+    {
+      "id": "DSE-PRODUCT-02",
+      "severity": "speaker_notes_and_story_mismatch",
+      "pages": [1, 2, 4, 6, 22],
+      "shortCodes": ["98RC", "BR4V", "TPCJ", "V7VJ", "TCMD"],
+      "finding": "Several revised pages retain incompatible prior Notes or constraints: page 2 defines the product but its Notes tell the old group-meeting anecdote; page 4 explains the folder but its Notes discuss talking first and Story. Page 6 Notes overgeneralize PowerPoint/Google Slides as screen-only and impossible to diff. Page 22 Notes reintroduce deferred layer/image-tool plans. Page 1 keep says no product screenshot or logo on the cover although the current visible ink cover contains the product logo and structure.",
+      "neededQualification": "Notes and page Story must describe the current page; the founder's interface experience is personal motivation, not a universal claim about other tools. This debt is wider than the native author's admitted designIntent-only debt.",
+      "status": "retained_native_output"
+    },
+    {
+      "id": "DSE-PRODUCT-03",
+      "severity": "evidence_mismatch",
+      "pages": [11],
+      "shortCodes": ["H29N"],
+      "finding": "The caption says the native table quotes this deck's 1BNA page, but its 'This change' cell still says 'First authoring of the English edition.' Current page 10 designIntent instead says 'Product-introduction revision, 2026-11-11.' Purpose and Keep wording also differ.",
+      "evidence": "Actual H29N.page p11-table and p11-caption were compared with current KWPT.page designIntent through the frozen narrative snapshot.",
+      "neededQualification": "Either quote the current saved fields or label the table as an illustrative earlier example. Do not present stale metadata as a current quote.",
+      "status": "retained_native_output"
+    },
+    {
+      "id": "DSE-PRODUCT-04",
+      "severity": "technical_qualification",
+      "pages": [18],
+      "shortCodes": ["EKZK"],
+      "finding": "The collaboration wording groups Story, Sections and order into one metadata revision. Main order uses the manifest revision; Presentation composition order is metadata.",
+      "evidence": "Current packages/core/src/pptd/store.ts page.move calls check('manifest') and writeOrder. This was independently read after confirmation by the workflow reviewer.",
+      "neededQualification": "Differentiate Main page order from Presentation composition; otherwise retain the correct page-level conflict and no-online-presence explanation.",
+      "status": "retained_native_output"
+    },
+    {
+      "id": "DSE-PRODUCT-05",
+      "severity": "native_report_correction",
+      "pages": [],
+      "finding": "The native final response calls the installed DSH HUANDENG bundle a 0.1.0 prototype and attributes missing refresh/schema/stable namespaces to it. This is not the bundle actually used for this English run.",
+      "evidence": "The English run used the officially installed immutable 0.19.0 candidate bundle, skill f4188e0934e7846346e286286041f49592bec3231747caa99d0b7b32dd9d016b and native manifest db0ef319d1ebfaccabbedfa16fe8509e8e4c4b4e753483710fd2d78f1ac4cf44; its actual tool namespace was mcp__huandeng-deepseek-128cecc77e.",
+      "neededQualification": "Preserve the author report as testimony, with this coordinator correction. Do not use its prototype diagnosis as an observed installation fact. The later Chinese run uses a separately recorded final bundle.",
+      "status": "retained_author_report_with_coordinator_correction"
+    }
+  ],
+  "nonBlockingVisualLimits": [
+    {
+      "page": 15,
+      "finding": "The Outline crop communicates the view and page titles, but its small internal text is not fully readable at presentation scale. This is a remaining local evidence-legibility limitation, not a reason to rerun the native author for taste."
+    }
+  ],
+  "decisions": {
+    "nativeSourceEditedByReviewer": false,
+    "nativeExportsRegeneratedByReviewer": false,
+    "feedbackForAestheticRedoSent": false,
+    "acceptance": "Native authoring and export completed. PowerPoint 16.0 read-only rendering of all 22 pages and the targeted full-page table/science checks revealed no additional layout defect. Independent content limitations remain; owner acceptance is not implied."
+  },
+  "recordedAt": "2026-11-11T02:06:24.885918+00:00",
+  "sourceHashes": {
+    "deck.pptd": "a04481bddcf474d449f75f3481de7dd01a672c11de4c558c2f3f201822673cae",
+    ".huandeng/project.json": "0ea967ff2a5437fcf1f641f01a36853db90c781a6469e4af0215f1b2efe79e78",
+    "pages/444J.page": "3177a4c99b74061b0d4238d46f562b01bda8342a103ec70c370f7b62b943a8d1",
+    "pages/7GWR.page": "3c9176d1592b125d95851c238329245a106de22f9e50764807736044606deed8",
+    "pages/89DU.page": "ff2d8f10c05df9444faa152524ccc49e8ea44bf9346882bcab2c9c35876755b7",
+    "pages/9KH9.page": "14fa0098154fe608799679c466c42009e7dd11696644c8b3dfdc6c7c49421be4",
+    "pages/AEUJ.page": "126ef737c3acb80ba8f6c60c959de7f9971f50ca1c7338ebb0c51371d34c482c",
+    "pages/BR4V.page": "3d8c6666dc7e4447c3783bb60fe2742a488a58f6b1ba7ad4b76395d28633220e",
+    "pages/CBCQ.page": "1a48ac005a7b7c1fe4014340b5001e63868c4982a0a0dd1c3e3e4c2fe8e06c10",
+    "pages/CRUA.page": "a59794147718218580f726195e3b0d2410d852078e9ddf15e143cd1dfa87d851",
+    "pages/DM3J.page": "225fa2588bb3f542aa3e023f6c97c89f131ddd4f291fa4663952440e2dd5cfbd",
+    "pages/DR4V.page": "ae06a77c40e9067cbb8bcc32e6eed991e071bcc8732e04bc8d1801193c059918",
+    "pages/EKZK.page": "be67987ff22ec973bc4958510143daaf7ce00947b19167136fdfde17a6724c67",
+    "pages/H29N.page": "37e67381fe4c430694ef3645ef9502f6f48e36b4b37ddf7cf4b3cf3642865018",
+    "pages/initial.page": "871746aa469de1288b2c33a19f4dec5581ce89fe9c2c0468be721a61a0aae2c0",
+    "pages/JYJD.page": "9d5d9132bb29e216c12495d3da1ba0ed5e47181c4dae4ec6d3ece08907fdf587",
+    "pages/KWPT.page": "58595436ec4604f61c36c0d521eeabd1a5386fca7299af0e074f5c2d6015c6c8",
+    "pages/MG2S.page": "7415e622372331e218a5a433f9e31fd5e7c0c901d5391ace6aa1864a57a30f63",
+    "pages/MKPP.page": "8577d372201eb3f8ece5916152f0e1ea244675c6aec1ae224ebe1720915c62c7",
+    "pages/TCMD.page": "5c792a7334d595189473004b58fabaf06ac742d976c21511351e83b6bc38477f",
+    "pages/TJKM.page": "adb619cd34352e2096d46a04f97451632ba292152cb9388ccffe027d47725cbd",
+    "pages/TPCJ.page": "87e5e3d38a8047d9d8812c972b55c43a841595d2696fdd5bfddd85e24df2dae4",
+    "pages/V7VJ.page": "49c00f78b5e48147e617274f4dd73beea06b05f985ddbbc72626eb71869d382f",
+    "pages/WEZS.page": "47991ca1e0a2c792d514166bbe699015bf390f1c242ddb33ef898c58bd3c62c3",
+    "pages/XFZM.page": "5d11da15a71c9252704a41971df45bb0b581e057a83a0dbf4e87839b12ddbe4c"
+  },
+  "sourceUnchangedAfterReview": true,
+  "artifacts": [
+    {
+      "path": "../Exports/deck.pdf",
+      "sha256": "f3409017a2f89bfc22dd9d940acc8661da468879f14b845dfbf809e47fdba124",
+      "bytes": 1883408
+    },
+    {
+      "path": "../Exports/deck.pptx",
+      "sha256": "0fba26c2fa9a98fd51ee4522a7597d9fd08e31138df4865312aa2d48dc542c32",
+      "bytes": 1967977
+    }
+  ],
+  "pptxIdentityCheck": {
+    "part": "ppt/presentation.xml",
+    "slideIdCount": 22,
+    "firstTwoIds": ["256", "257"]
+  },
+  "officeCheck": {
+    "pages": 22,
+    "officeVersion": "16.0",
+    "sourceAndReadOnlyCopyUnchanged": true,
+    "scope": "All four Office contact sheets; full-size pages 4,10,11,12,18,19. No observed clipping, missing image or table overflow within this scope. The measured curve is a retained raster asset, not a native chart."
+  },
+  "sourceHashesRoot": "..",
+  "internalReviewSha256": "fdb7adaadbac7bbb6093897713bbc9ea76732d604b03c5b68574ce0c73ee45b2",
+  "portableEvidence": [
+    "product-narrative.json",
+    "product-qa.json",
+    "product-native-author-report.md",
+    "product-assets.json"
+  ],
+  "sourceEvidence": [
+    "../pages/TPCJ.page",
+    "../pages/BR4V.page",
+    "../pages/V7VJ.page",
+    "../pages/H29N.page",
+    "../pages/KWPT.page",
+    "../pages/EKZK.page",
+    "../sources/story/FACTS.md"
+  ],
+  "sourceCodeCheck": {
+    "repository": "https://github.com/JaytonKogeru/huandeng",
+    "path": "packages/core/src/pptd/store.ts",
+    "sha256": "745fadf1085eb5de4f8ed1017182f68bdd840e2a12e766928799469df7fd5d1a",
+    "operation": "page.move",
+    "observedRevisionScope": "manifest"
+  }
+}

@@ -1,0 +1,527 @@
+{
+  "schemaVersion": 1,
+  "scope": "Images referenced by the 22 active Main pages; historical/unused assets are preserved separately.",
+  "images": [
+    {
+      "path": "../media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+      "sha256": "6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef",
+      "sourceNames": ["huandeng.png"],
+      "usedIn": [
+        {
+          "position": 1,
+          "slideId": "98RC",
+          "elementId": "cover-mark"
+        },
+        {
+          "position": 2,
+          "slideId": "BR4V",
+          "elementId": "p2-editor-mark"
+        },
+        {
+          "position": 2,
+          "slideId": "BR4V",
+          "elementId": "p2-mark"
+        },
+        {
+          "position": 4,
+          "slideId": "TPCJ",
+          "elementId": "p4-mark"
+        },
+        {
+          "position": 5,
+          "slideId": "MG2S",
+          "elementId": "p6-mark"
+        },
+        {
+          "position": 6,
+          "slideId": "V7VJ",
+          "elementId": "p7-mark"
+        },
+        {
+          "position": 7,
+          "slideId": "7GWR",
+          "elementId": "p8-editor-mark"
+        },
+        {
+          "position": 7,
+          "slideId": "7GWR",
+          "elementId": "p8-mark"
+        },
+        {
+          "position": 10,
+          "slideId": "KWPT",
+          "elementId": "p10-mark"
+        },
+        {
+          "position": 11,
+          "slideId": "H29N",
+          "elementId": "p11-mark"
+        },
+        {
+          "position": 12,
+          "slideId": "MKPP",
+          "elementId": "p14-mark"
+        },
+        {
+          "position": 15,
+          "slideId": "CBCQ",
+          "elementId": "pv-mark"
+        },
+        {
+          "position": 17,
+          "slideId": "TJKM",
+          "elementId": "p15-mark"
+        },
+        {
+          "position": 17,
+          "slideId": "TJKM",
+          "elementId": "p15-mark-foot"
+        },
+        {
+          "position": 19,
+          "slideId": "DM3J",
+          "elementId": "p17-mark"
+        },
+        {
+          "position": 22,
+          "slideId": "TCMD",
+          "elementId": "p18-mark"
+        }
+      ],
+      "pixels": [512, 512],
+      "publicInput": {
+        "source": "brand/huandeng.png",
+        "kind": "brand",
+        "use": "Default HUANDENG mark; exact pixels used on the original introduction cover and footers."
+      }
+    },
+    {
+      "path": "../media/imported/ff6d1434a44440fba124ccad7dfa30efa01e8c400094d4453d17d502345c1e2c.png",
+      "sha256": "ff6d1434a44440fba124ccad7dfa30efa01e8c400094d4453d17d502345c1e2c",
+      "sourceNames": ["dna-duplex-side.png"],
+      "usedIn": [
+        {
+          "position": 1,
+          "slideId": "98RC",
+          "elementId": "cover-structure"
+        },
+        {
+          "position": 10,
+          "slideId": "KWPT",
+          "elementId": "p10-duplex"
+        },
+        {
+          "position": 17,
+          "slideId": "TJKM",
+          "elementId": "p15-structure"
+        }
+      ],
+      "pixels": [1572, 1572],
+      "publicInput": {
+        "source": "science/dna-duplex-side.png",
+        "kind": "public-scientific-worked-example",
+        "use": "Optional exact-coordinate demonstration; read science/README.md and source.json before use."
+      }
+    },
+    {
+      "path": "../media/imported/733f24f4c52acb15eb0fbded1cf40eb42b4ba8e62b882acac70b6234b50919a8.png",
+      "sha256": "733f24f4c52acb15eb0fbded1cf40eb42b4ba8e62b882acac70b6234b50919a8",
+      "sourceNames": ["claude-code.png"],
+      "usedIn": [
+        {
+          "position": 2,
+          "slideId": "BR4V",
+          "elementId": "p2-logo-claude"
+        },
+        {
+          "position": 7,
+          "slideId": "7GWR",
+          "elementId": "p8-plugin-logo-claude"
+        },
+        {
+          "position": 18,
+          "slideId": "EKZK",
+          "elementId": "pa-logo-claude"
+        }
+      ],
+      "pixels": [192, 192],
+      "publicInput": {
+        "source": "brand/claude-code.png",
+        "kind": "brand",
+        "use": "Claude product mark used beside Claude Code; not an exclusive Code symbol."
+      }
+    },
+    {
+      "path": "../media/imported/0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13.png",
+      "sha256": "0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13",
+      "sourceNames": ["chatgpt.png"],
+      "usedIn": [
+        {
+          "position": 2,
+          "slideId": "BR4V",
+          "elementId": "p2-logo-chatgpt"
+        },
+        {
+          "position": 7,
+          "slideId": "7GWR",
+          "elementId": "p8-plugin-logo-chatgpt"
+        },
+        {
+          "position": 18,
+          "slideId": "EKZK",
+          "elementId": "pa-logo-chatgpt"
+        }
+      ],
+      "pixels": [720, 720],
+      "publicInput": {
+        "source": "brand/chatgpt.png",
+        "kind": "brand",
+        "use": "ChatGPT official mark."
+      }
+    },
+    {
+      "path": "../media/imported/e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc.png",
+      "sha256": "e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc",
+      "sourceNames": ["deepseek.png"],
+      "usedIn": [
+        {
+          "position": 2,
+          "slideId": "BR4V",
+          "elementId": "p2-logo-deepseek"
+        },
+        {
+          "position": 7,
+          "slideId": "7GWR",
+          "elementId": "p8-plugin-logo-deepseek"
+        },
+        {
+          "position": 18,
+          "slideId": "EKZK",
+          "elementId": "pa-logo-deepseek"
+        }
+      ],
+      "pixels": [460, 460],
+      "publicInput": {
+        "source": "brand/deepseek.png",
+        "kind": "brand",
+        "use": "DeepSeek official organization mark; not a separate Harness logo."
+      }
+    },
+    {
+      "path": "../media/imported/65fb18be9fabeffebdb25baa3be9de52eacc4f2a811591962df37d44a0d9a761.png",
+      "sha256": "65fb18be9fabeffebdb25baa3be9de52eacc4f2a811591962df37d44a0d9a761",
+      "sourceNames": ["en-edit-before-4x.png"],
+      "usedIn": [
+        {
+          "position": 6,
+          "slideId": "V7VJ",
+          "elementId": "p7-shot"
+        },
+        {
+          "position": 12,
+          "slideId": "MKPP",
+          "elementId": "p14-before"
+        }
+      ],
+      "pixels": [3152, 1780],
+      "publicInput": {
+        "source": "recommended/en/en-edit-before-4x.png",
+        "kind": "actual-ui",
+        "locale": "en",
+        "use": "edit-before"
+      }
+    },
+    {
+      "path": "../media/imported/44e2a2aa5f3887deae386fa73f71234961f93e006873b632ccf38b6b6f1291a1.png",
+      "sha256": "44e2a2aa5f3887deae386fa73f71234961f93e006873b632ccf38b6b6f1291a1",
+      "sourceNames": ["open-slide.png"],
+      "usedIn": [
+        {
+          "position": 7,
+          "slideId": "7GWR",
+          "elementId": "p8-box2-logo"
+        },
+        {
+          "position": 20,
+          "slideId": "JYJD",
+          "elementId": "pc-logo-openslide"
+        }
+      ],
+      "pixels": [512, 512],
+      "publicInput": {
+        "source": "brand/open-slide.png",
+        "kind": "brand",
+        "use": "Editor code foundation."
+      }
+    },
+    {
+      "path": "../media/imported/8af5553e393e50bc2be95658bea2336a9634fc16264b36e5b0f002f41c6fcace.png",
+      "sha256": "8af5553e393e50bc2be95658bea2336a9634fc16264b36e5b0f002f41c6fcace",
+      "sourceNames": ["en-edit-1920.png"],
+      "usedIn": [
+        {
+          "position": 9,
+          "slideId": "DR4V",
+          "elementId": "p10-shot"
+        },
+        {
+          "position": 17,
+          "slideId": "TJKM",
+          "elementId": "p15-ui"
+        }
+      ],
+      "pixels": [3840, 2160],
+      "publicInput": {
+        "source": "recommended/en/en-edit-1920.png",
+        "kind": "actual-ui",
+        "locale": "en",
+        "use": "edit"
+      }
+    },
+    {
+      "path": "../media/imported/a36d62e395822be26d250ca525aa072402aa68bfce609b3464f84762541bff62.png",
+      "sha256": "a36d62e395822be26d250ca525aa072402aa68bfce609b3464f84762541bff62",
+      "sourceNames": ["paired-c1-distances-en.png"],
+      "usedIn": [
+        {
+          "position": 10,
+          "slideId": "KWPT",
+          "elementId": "p10-chart"
+        },
+        {
+          "position": 17,
+          "slideId": "TJKM",
+          "elementId": "p15-chart"
+        }
+      ],
+      "pixels": [2700, 1350],
+      "publicInput": {
+        "source": "science/paired-c1-distances-en.png",
+        "kind": "public-scientific-worked-example",
+        "use": "Optional exact-coordinate demonstration; read science/README.md and source.json before use."
+      }
+    },
+    {
+      "path": "../media/imported/489dd2e5299200127a17f13ad647931c356f726bc48514949be359d2a5d3df3c.png",
+      "sha256": "489dd2e5299200127a17f13ad647931c356f726bc48514949be359d2a5d3df3c",
+      "sourceNames": ["en-focused-story-4x.png"],
+      "usedIn": [
+        {
+          "position": 11,
+          "slideId": "H29N",
+          "elementId": "p11-shot"
+        }
+      ],
+      "pixels": [1196, 1136],
+      "publicInput": {
+        "source": "recommended/en/en-focused-story-4x.png",
+        "kind": "actual-ui",
+        "locale": "en",
+        "use": "focused-story"
+      }
+    },
+    {
+      "path": "../media/imported/eff7df59ca30395ee85337cd02f9183e4a88843dc8ca7005778705ae82d4e950.png",
+      "sha256": "eff7df59ca30395ee85337cd02f9183e4a88843dc8ca7005778705ae82d4e950",
+      "sourceNames": ["en-edit-after-4x.png"],
+      "usedIn": [
+        {
+          "position": 12,
+          "slideId": "MKPP",
+          "elementId": "p14-after"
+        }
+      ],
+      "pixels": [3152, 1780],
+      "publicInput": {
+        "source": "recommended/en/en-edit-after-4x.png",
+        "kind": "actual-ui",
+        "locale": "en",
+        "use": "edit-after"
+      }
+    },
+    {
+      "path": "../media/imported/4b4475913c7e4538c9b76f47056e1edca6405a8636d7fd7c591309a373101e19.png",
+      "sha256": "4b4475913c7e4538c9b76f47056e1edca6405a8636d7fd7c591309a373101e19",
+      "sourceNames": ["en-identity-before-4x.png"],
+      "usedIn": [
+        {
+          "position": 13,
+          "slideId": "89DU",
+          "elementId": "p12-img1"
+        }
+      ],
+      "pixels": [1440, 180],
+      "publicInput": {
+        "source": "recommended/en/en-identity-before-4x.png",
+        "kind": "actual-ui",
+        "locale": "en",
+        "use": "identity-before"
+      }
+    },
+    {
+      "path": "../media/imported/cfb23a312f298e185eb847eddb1cdf9cc493d63d55082cab0cc70606789af5f5.png",
+      "sha256": "cfb23a312f298e185eb847eddb1cdf9cc493d63d55082cab0cc70606789af5f5",
+      "sourceNames": ["en-identity-after-4x.png"],
+      "usedIn": [
+        {
+          "position": 13,
+          "slideId": "89DU",
+          "elementId": "p12-img2"
+        }
+      ],
+      "pixels": [1440, 180],
+      "publicInput": {
+        "source": "recommended/en/en-identity-after-4x.png",
+        "kind": "actual-ui",
+        "locale": "en",
+        "use": "identity-after"
+      }
+    },
+    {
+      "path": "../media/imported/545313eff6d8d90331cb33a45becb21a5fe041d03f6e6c6d43207f2e5acb56fb.png",
+      "sha256": "545313eff6d8d90331cb33a45becb21a5fe041d03f6e6c6d43207f2e5acb56fb",
+      "sourceNames": ["en-history-change-4x.png"],
+      "usedIn": [
+        {
+          "position": 14,
+          "slideId": "CRUA",
+          "elementId": "p13-shot"
+        }
+      ],
+      "pixels": [4608, 3028],
+      "publicInput": {
+        "source": "recommended/en/en-history-change-4x.png",
+        "kind": "actual-ui",
+        "locale": "en",
+        "use": "history-change"
+      }
+    },
+    {
+      "path": "../media/imported/d81ca1d3d956de469ebe26ea28e121e2c63e78349e97ec063068d28cfb26089d.png",
+      "sha256": "d81ca1d3d956de469ebe26ea28e121e2c63e78349e97ec063068d28cfb26089d",
+      "sourceNames": ["en-browse-reading-4x.png"],
+      "usedIn": [
+        {
+          "position": 15,
+          "slideId": "CBCQ",
+          "elementId": "pv-browse"
+        }
+      ],
+      "pixels": [2192, 1220],
+      "publicInput": {
+        "source": "recommended/en/en-browse-reading-4x.png",
+        "kind": "actual-ui",
+        "locale": "en",
+        "use": "browse-reading"
+      }
+    },
+    {
+      "path": "../media/imported/0c992097d40aa22917c249d80642892caad569fa7a60faf4df2089cafdc79c09.png",
+      "sha256": "0c992097d40aa22917c249d80642892caad569fa7a60faf4df2089cafdc79c09",
+      "sourceNames": ["en-outline-reading-4x.png"],
+      "usedIn": [
+        {
+          "position": 15,
+          "slideId": "CBCQ",
+          "elementId": "pv-outline"
+        }
+      ],
+      "pixels": [4448, 1480],
+      "publicInput": {
+        "source": "recommended/en/en-outline-reading-4x.png",
+        "kind": "actual-ui",
+        "locale": "en",
+        "use": "outline-reading"
+      }
+    },
+    {
+      "path": "../media/imported/72ae1ca6c88e49b22812dfcb60706f776f97abe0dd6ab5c0defa0a21fd4e9218.png",
+      "sha256": "72ae1ca6c88e49b22812dfcb60706f776f97abe0dd6ab5c0defa0a21fd4e9218",
+      "sourceNames": ["en-project-sequences-4x.png"],
+      "usedIn": [
+        {
+          "position": 16,
+          "slideId": "444J",
+          "elementId": "p16-shot"
+        }
+      ],
+      "pixels": [1596, 1216],
+      "publicInput": {
+        "source": "recommended/en/en-project-sequences-4x.png",
+        "kind": "actual-ui",
+        "locale": "en",
+        "use": "project-sequences"
+      }
+    },
+    {
+      "path": "../media/imported/ea2c787b8b58f25cb8655c5df4926889bad3ebd4b293d24df5e18a54944be3eb.png",
+      "sha256": "ea2c787b8b58f25cb8655c5df4926889bad3ebd4b293d24df5e18a54944be3eb",
+      "sourceNames": ["en-export-4x.png"],
+      "usedIn": [
+        {
+          "position": 19,
+          "slideId": "DM3J",
+          "elementId": "p17-shot"
+        }
+      ],
+      "pixels": [2304, 1088],
+      "publicInput": {
+        "source": "recommended/en/en-export-4x.png",
+        "kind": "actual-ui",
+        "locale": "en",
+        "use": "export"
+      }
+    },
+    {
+      "path": "../media/imported/2a2f5cbcc74c7fa83c40127dd8b0e42c23f1157131aebe28492aa1ac27bbdc6d.png",
+      "sha256": "2a2f5cbcc74c7fa83c40127dd8b0e42c23f1157131aebe28492aa1ac27bbdc6d",
+      "sourceNames": ["github-repository.png"],
+      "usedIn": [
+        {
+          "position": 20,
+          "slideId": "JYJD",
+          "elementId": "pc-logo-openpptd"
+        }
+      ],
+      "pixels": [294, 288],
+      "publicInput": {
+        "source": "brand/github-repository.png",
+        "kind": "brand",
+        "use": "GitHub repository symbol used beside OpenPPTD; not an OpenPPTD logo."
+      }
+    },
+    {
+      "path": "../media/imported/d697acf6f3c5bc265806bc8f6c4e6d58b964e0b2962392d0329a420639f45846.png",
+      "sha256": "d697acf6f3c5bc265806bc8f6c4e6d58b964e0b2962392d0329a420639f45846",
+      "sourceNames": ["pptxgenjs.png"],
+      "usedIn": [
+        {
+          "position": 20,
+          "slideId": "JYJD",
+          "elementId": "pc-logo-pptxgenjs"
+        }
+      ],
+      "pixels": [480, 349],
+      "publicInput": {
+        "source": "brand/pptxgenjs.png",
+        "kind": "brand",
+        "use": "PPTX export library."
+      }
+    }
+  ],
+  "sourceManifests": [
+    {
+      "path": "../MEDIA-INPUTS.json",
+      "sha256": "c9be96e6927684180cb5413a125845128b12633498ce05b15be2c77364d273e1"
+    },
+    {
+      "path": "../sources/brand/manifest.json",
+      "sha256": "65b686dc2a66d35e4821a120343aec485dc1941dcefa913d7cc5a42d4f3ef7c0"
+    },
+    {
+      "path": "../sources/science/source.json",
+      "sha256": "6cc19ce8ad1a3e97a6ccffee65e86a09aacc414dac51c29761f7070901c27fd4"
+    }
+  ],
+  "noImageReencoding": true
+}

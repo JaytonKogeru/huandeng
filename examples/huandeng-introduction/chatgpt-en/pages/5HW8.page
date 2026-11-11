@@ -6,23 +6,17 @@ elements:
   - elementId: title
     elementType: text
     bounds:
-      - 44
-      - 35
-      - 870
-      - 67
+        [42,34,880,76]
     role: title
     content:
-      {"text":"The ideas I brought together","fontFamily":"Arial","fontSize":29,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
+      {"text":"Built on work worth acknowledging","fontFamily":"Georgia","fontSize":32,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.2}
   - elementId: brand-small
     elementType: image
     src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
     sourceName: huandeng.png
     alt: huandeng.png
     bounds:
-      - 44
-      - 510
-      - 17
-      - 17
+        [43,512,18,18]
     fit:
       mode: contain
     crop:
@@ -33,39 +27,16 @@ elements:
   - elementId: foot
     elementType: text
     bounds:
-      - 69
-      - 513
-      - 130
-      - 17
+        [68,515,140,16]
     content:
-      text: HUANDENG
-      fontFamily: Arial
-      fontSize: 10
-      color: "#66756B"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
+      {"text":"HUANDENG","fontFamily":"Segoe UI","fontSize":9,"color":"#5B6A62","bold":false,"align":["left","top"],"lineHeight":1.35}
   - elementId: position
     elementType: text
     bounds:
-      - 884
-      - 512
-      - 30
-      - 18
+        [881,514,35,18]
     content:
-      text: ""
-      fontFamily: Arial
-      fontSize: 10
-      color: "#66756B"
-      bold: false
-      align:
-        - right
-        - top
-      lineHeight: 1.3
-      field: main-position
-  - elementId: upstream-mark
+      {"text":"","fontFamily":"Segoe UI","fontSize":10,"color":"#5B6A62","bold":false,"align":["right","top"],"lineHeight":1.35,"field":"main-position"}
+  - elementId: credit-mark-0
     elementType: image
     src: media/imported/44e2a2aa5f3887deae386fa73f71234961f93e006873b632ccf38b6b6f1291a1.png
     sourceName: open-slide.png
@@ -73,8 +44,8 @@ elements:
     bounds:
       - 44
       - 145
-      - 65
-      - 65
+      - 62
+      - 62
     fit:
       mode: contain
     crop:
@@ -82,48 +53,131 @@ elements:
       right: 0
       top: 0
       bottom: 0
-  - elementId: origins
+  - elementId: credit-name-0
     elementType: text
     bounds:
-      - 139
-      - 144
-      - 775
-      - 278
+      - 126
+      - 161
+      - 203
+      - 43
     content:
-      text: |-
-        The OpenSlide codebase
-        React pages, canvas and editing interactions
-  
-        The PPTD approach
-        Encountered through the Kimi Slides ecosystem
-  
-        HUANDENG Editor
-        A PPTD document model with React / Electron
-      fontFamily: Arial
-      fontSize: 19
-      color: "#263C34"
+      text: OpenSlide
+      fontFamily: Georgia
+      fontSize: 23
+      color: "#20372F"
       bold: false
       align:
         - left
         - top
-      lineHeight: 1.6
-  - elementId: specific-credits
+      lineHeight: 1.35
+  - elementId: credit-mark-1
+    elementType: image
+    src: media/imported/2a2f5cbcc74c7fa83c40127dd8b0e42c23f1157131aebe28492aa1ac27bbdc6d.png
+    sourceName: github-repository.png
+    alt: github-repository.png
+    bounds:
+      - 345
+      - 145
+      - 62
+      - 62
+    fit:
+      mode: contain
+    crop:
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+  - elementId: credit-name-1
+    elementType: text
+    bounds:
+      - 427
+      - 161
+      - 203
+      - 43
+    content:
+      text: OpenPPTD
+      fontFamily: Georgia
+      fontSize: 23
+      color: "#20372F"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.35
+  - elementId: credit-mark-2
+    elementType: image
+    src: media/imported/d697acf6f3c5bc265806bc8f6c4e6d58b964e0b2962392d0329a420639f45846.png
+    sourceName: pptxgenjs.png
+    alt: pptxgenjs.png
+    bounds:
+      - 646
+      - 145
+      - 62
+      - 62
+    fit:
+      mode: contain
+    crop:
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+  - elementId: credit-name-2
+    elementType: text
+    bounds:
+      - 728
+      - 161
+      - 203
+      - 43
+    content:
+      text: PptxGenJS
+      fontFamily: Georgia
+      fontSize: 23
+      color: "#20372F"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.35
+  - elementId: credit-contributions
     elementType: text
     bounds:
       - 44
-      - 448
+      - 257
       - 870
-      - 51
+      - 189
     content:
       text: |-
-        Other code contributions: OpenPPTD formula conversion and PptxGenJS export.
-        Interaction references include PowerPoint, WPS, layer editors and IDEs.
-      fontFamily: Arial
-      fontSize: 14
-      color: "#66756B"
+        OpenSlide supplies the editor code foundation.
+        OpenPPTD contributes formula conversion; PptxGenJS generates PPTX.
+  
+        The PPTD approach was inspired by the Kimi Slides ecosystem.
+        Charts, formulas and functional icons use Apache ECharts, KaTeX
+        and Font Awesome Free.
+      fontFamily: Segoe UI
+      fontSize: 18
+      color: "#20372F"
       bold: false
       align:
         - left
         - top
-      lineHeight: 1.6
-notes: "I then looked for existing work I could build on. I encountered the PPTD approach in the Kimi Slides ecosystem. OpenSlide already connected React pages to a canvas and editing tools. HUANDENG builds on the OpenSlide codebase, with a PPTD document model and an Electron desktop application. These existing projects gave me foundations to combine. OpenPPTD contributes the formula conversion modules.\n\nSources and precise attribution: sources/story/FACTS.md ; https://open-slide.dev/docs ; https://learn.microsoft.com/en-us/office/open-xml/presentation/structure-of-a-presentationml-document ."
+      lineHeight: 1.5
+  - elementId: science-credits
+    elementType: text
+    bounds:
+      - 44
+      - 453
+      - 870
+      - 49
+    content:
+      text: |-
+        Scientific example: RCSB PDB 1BNA · Drew et al., PNAS (1981)
+        Interaction/design references: PowerPoint, WPS, Recent. Sources and licenses stay with the project.
+      fontFamily: Segoe UI
+      fontSize: 12
+      color: "#5B6A62"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.5
+notes: "HUANDENG builds on OpenSlide. OpenPPTD contributes formula-conversion modules and PptxGenJS supplies PPTX generation. The PPTD approach was inspired by the Kimi Slides ecosystem; that is not a claim about inventing a universal standard. Charts, formulas and functional icons also build on open-source work. The public DNA example comes from PDB 1BNA and Drew and colleagues. Sources and licenses stay with the project; third-party marks do not imply endorsement.\n\nSources and scope: sources/brand/manifest.json; notices/; sources/science/source.json; https://recent.design/ . The GitHub mark identifies the OpenPPTD repository, not an OpenPPTD product logo."

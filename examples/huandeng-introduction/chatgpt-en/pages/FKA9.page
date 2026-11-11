@@ -6,23 +6,34 @@ elements:
   - elementId: title
     elementType: text
     bounds:
-      - 44
-      - 35
-      - 870
-      - 67
+        [42,34,880,76]
     role: title
     content:
-      {"text":"The editor I return to with the agent","fontFamily":"Arial","fontSize":29,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
+      {"text":"Start from the page in the editor","fontFamily":"Georgia","fontSize":32,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.2}
+  - elementId: eyebrow
+    elementType: text
+    bounds:
+      - 43
+      - 112
+      - 870
+      - 21
+    content:
+      text: EDITOR · LOCATE, EDIT, INSPECT
+      fontFamily: Segoe UI
+      fontSize: 11
+      color: "#356F68"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.35
   - elementId: brand-small
     elementType: image
     src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
     sourceName: huandeng.png
     alt: huandeng.png
     bounds:
-      - 44
-      - 510
-      - 17
-      - 17
+        [43,512,18,18]
     fit:
       mode: contain
     crop:
@@ -33,78 +44,105 @@ elements:
   - elementId: foot
     elementType: text
     bounds:
-      - 69
-      - 513
-      - 130
-      - 17
+        [68,515,140,16]
     content:
-      text: HUANDENG
-      fontFamily: Arial
-      fontSize: 10
-      color: "#66756B"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
+      {"text":"HUANDENG","fontFamily":"Segoe UI","fontSize":9,"color":"#5B6A62","bold":false,"align":["left","top"],"lineHeight":1.35}
   - elementId: position
     elementType: text
     bounds:
-      - 884
-      - 512
-      - 30
-      - 18
+        [881,514,35,18]
     content:
-      text: ""
-      fontFamily: Arial
-      fontSize: 10
-      color: "#66756B"
-      bold: false
-      align:
-        - right
-        - top
-      lineHeight: 1.3
-      field: main-position
-  - elementId: editor-native-chart
+      {"text":"","fontFamily":"Segoe UI","fontSize":10,"color":"#5B6A62","bold":false,"align":["right","top"],"lineHeight":1.35,"field":"main-position"}
+  - elementId: workspace
     elementType: image
-    src: "media/imported/d636a513fcf82df27f78c077242623f592c58f56281c53c11c42d59e1053572a.png"
+    src: "media/imported/7def8d67182fd6dae30b5c939f222bbbfa39299583bdfd8103229d924cf2f54b.png"
     sourceName: editor-native-chart.png
     alt: editor-native-chart.png
     bounds:
-      - 44
-      - 127
-      - 631
-      - 379
+      - 27
+      - 147
+      - 677
+      - 346
     fit:
       mode: contain
     crop:
       left: 0
       right: 0
       top: 0
-      bottom: 0
-  - elementId: editor-copy
+      bottom: 0.14
+  - elementId: dot-1
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+        [38,211,24,24]
+    fill:
+      type: solid
+      color: "#A64F38"
+  - elementId: number-1
     elementType: text
     bounds:
-      - 712
-      - 145
-      - 204
-      - 337
+        [38,212,24,24]
     content:
-      text: |-
-        Project / Pages / Assets / Files
-        Organize the work
-  
-        Canvas and layers
-        Select and refine objects
-  
-        Story and properties
-        Keep intent beside the detail
-      fontFamily: Arial
-      fontSize: 17
-      color: "#263C34"
-      bold: false
+      text: "1"
+      fontFamily: Segoe UI
+      fontSize: 14
+      color: "#FFFFFF"
+      bold: true
       align:
-        - left
-        - top
-      lineHeight: 1.55
-notes: "A document model still needs an editor people want to use. The canvas remains available for direct manipulation, with Project, Pages, Assets and Files on the left and object properties, layers and Story on the right. An agent’s changes appear in that same work. I wanted AI collaboration to coexist with selecting objects, arranging layers and refining the composition by hand."
+        - center
+        - middle
+      lineHeight: 1.35
+  - elementId: dot-2
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+        [377,248,24,24]
+    fill:
+      type: solid
+      color: "#A64F38"
+  - elementId: number-2
+    elementType: text
+    bounds:
+        [377,249,24,24]
+    content:
+      text: "2"
+      fontFamily: Segoe UI
+      fontSize: 14
+      color: "#FFFFFF"
+      bold: true
+      align:
+        - center
+        - middle
+      lineHeight: 1.35
+  - elementId: dot-3
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+        [646,252,24,24]
+    fill:
+      type: solid
+      color: "#A64F38"
+  - elementId: number-3
+    elementType: text
+    bounds:
+        [646,253,24,24]
+    content:
+      text: "3"
+      fontFamily: Segoe UI
+      fontSize: 14
+      color: "#FFFFFF"
+      bold: true
+      align:
+        - center
+        - middle
+      lineHeight: 1.35
+  - elementId: workspace-guide
+    elementType: text
+    bounds:
+      - 729
+      - 151
+      - 192
+      - 350
+    content:
+      {"text":"1  Project / Pages / Assets / Files\nLocate the material on the left.\n\n2  Canvas\nSelect and edit objects directly.\n\n3  Properties / Layers / Story\nInspect the structure and intent.","fontFamily":"Segoe UI","fontSize":17,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.35}
+notes: "The left navigation gives access to the project, pages, assets and files. The central canvas remains available for direct object editing. The right inspector holds properties, layers and Story. Workspace views above the canvas let us browse the deck, inspect the outline, arrange sections, write notes and inspect history. An agent edits the same document. Next we will record the page intent and prepare the source material."

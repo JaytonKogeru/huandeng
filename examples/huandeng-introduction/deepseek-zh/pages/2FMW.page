@@ -75,7 +75,7 @@ elements:
       - 300
       - 22
     content:
-      text: "ChatGPT / Codex"
+      text: "ChatGPT"
       fontSize: 14.6
       fontFamily:
         ea: Microsoft YaHei
@@ -92,7 +92,7 @@ elements:
       - 300
       - 20
     content:
-      text: "读取上下文 · 提交提案"
+      text: "授权工作站"
       fontSize: 8.8
       fontFamily:
         ea: Microsoft YaHei
@@ -140,7 +140,7 @@ elements:
     bounds:
         [104,283,300,20]
     content:
-      text: 本机指南 · MCP
+      text: "本机插件 · MCP"
       fontSize: 9.4
       fontFamily:
         ea: Microsoft YaHei

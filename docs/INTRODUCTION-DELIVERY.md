@@ -1,5 +1,7 @@
 # Story-led introductions: delivery and review
 
+Historical record for plugin-v0.18.3. The current product-introduction objective and verification are in [the 0.19 specification](PRODUCT-INTRODUCTION-SPEC.md) and [current validation](PRODUCT-INTRODUCTION-VALIDATION.md). Counts, outcomes and artifacts below describe that earlier milestone; they do not certify the present six working projects.
+
 Release identity: **plugin-v0.18.3**. Editor runtime: **0.18.0**, unchanged. Status: **review candidate**.
 
 The author liked the previous artwork and asked for a new explanation built from the founder’s own story. This milestone preserves useful visual work, rebuilds the root narrative, expands the independent native trials to both languages, strengthens the authoring plugin, and completes the missed workspace cleanup.

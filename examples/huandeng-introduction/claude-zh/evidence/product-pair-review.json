@@ -1,0 +1,387 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-11T04:41:26.338432+00:00",
+  "round": "product-intro-20261111",
+  "actor": "Independent final substantive correspondence review",
+  "authorAccepted": false,
+  "finalFactGateClosed": true,
+  "englishPages": 25,
+  "chinesePages": 26,
+  "mapping": [
+    {
+      "topic": "Product and scientific example",
+      "english": {
+        "position": 1,
+        "slideId": "QMYQ"
+      },
+      "chinese": {
+        "position": 1,
+        "slideId": "SAHG"
+      },
+      "substantiveCorrespondence": true
+    },
+    {
+      "topic": "Motivation section",
+      "english": {
+        "position": 2,
+        "slideId": "BW88"
+      },
+      "chinese": {
+        "position": 2,
+        "slideId": "ZX58"
+      },
+      "substantiveCorrespondence": true
+    },
+    {
+      "topic": "Personal AI-style experience",
+      "english": {
+        "position": 3,
+        "slideId": "PPKK"
+      },
+      "chinese": {
+        "position": 3,
+        "slideId": "FNHB"
+      },
+      "substantiveCorrespondence": true
+    },
+    {
+      "topic": "Two-page edits and duplicate decks",
+      "english": {
+        "position": 4,
+        "slideId": "RQ64"
+      },
+      "chinese": {
+        "position": 4,
+        "slideId": "KS6E"
+      },
+      "substantiveCorrespondence": true
+    },
+    {
+      "topic": "Structured page data and visual review",
+      "english": {
+        "position": 5,
+        "slideId": "GDDR"
+      },
+      "chinese": {
+        "position": 5,
+        "slideId": "2723"
+      },
+      "substantiveCorrespondence": true
+    },
+    {
+      "topic": "Story-first working order",
+      "english": {
+        "position": 6,
+        "slideId": "C45U"
+      },
+      "chinese": {
+        "position": 6,
+        "slideId": "GZBW"
+      },
+      "substantiveCorrespondence": true
+    },
+    {
+      "topic": "Product section",
+      "english": {
+        "position": 7,
+        "slideId": "2SD8"
+      },
+      "chinese": {
+        "position": 7,
+        "slideId": "6KNX"
+      },
+      "substantiveCorrespondence": true
+    },
+    {
+      "topic": "Origins and component roles",
+      "english": {
+        "position": 8,
+        "slideId": "TFJB"
+      },
+      "chinese": {
+        "position": 8,
+        "slideId": "2UCC"
+      },
+      "substantiveCorrespondence": true
+    },
+    {
+      "topic": "PPTX parts and PPTD folder",
+      "english": {
+        "position": 9,
+        "slideId": "7NHP"
+      },
+      "chinese": {
+        "position": 9,
+        "slideId": "3DUH"
+      },
+      "substantiveCorrespondence": true
+    },
+    {
+      "topic": "Real Editor orientation",
+      "english": {
+        "position": 10,
+        "slideId": "DKSN"
+      },
+      "chinese": {
+        "position": 10,
+        "slideId": "SSFR"
+      },
+      "substantiveCorrespondence": true
+    },
+    {
+      "topic": "One-page story section",
+      "english": {
+        "position": 11,
+        "slideId": "EEGK"
+      },
+      "chinese": {
+        "position": 11,
+        "slideId": "MC4X"
+      },
+      "substantiveCorrespondence": true
+    },
+    {
+      "topic": "1BNA twelve-position evidence",
+      "english": {
+        "position": 12,
+        "slideId": "AVNM"
+      },
+      "chinese": {
+        "position": 12,
+        "slideId": "BRHY"
+      },
+      "substantiveCorrespondence": true
+    },
+    {
+      "topic": "Actual page Story fields",
+      "english": {
+        "position": 13,
+        "slideId": "QK69"
+      },
+      "chinese": {
+        "position": 13,
+        "slideId": "3D9R"
+      },
+      "substantiveCorrespondence": true
+    },
+    {
+      "topic": "Browse / Outline / Sections",
+      "english": {
+        "position": 14,
+        "slideId": "AZJC"
+      },
+      "chinese": {
+        "position": 14,
+        "slideId": "A9FE"
+      },
+      "substantiveCorrespondence": true
+    },
+    {
+      "topic": "Focused before/after change",
+      "english": {
+        "position": 15,
+        "slideId": "6FNH"
+      },
+      "chinese": {
+        "position": 15,
+        "slideId": "GBXR"
+      },
+      "substantiveCorrespondence": true
+    },
+    {
+      "topic": "Read-only change review",
+      "english": {
+        "position": 16,
+        "slideId": "4V98"
+      },
+      "chinese": {
+        "position": 16,
+        "slideId": "3442"
+      },
+      "substantiveCorrespondence": true
+    },
+    {
+      "topic": "Page identity section",
+      "english": {
+        "position": 17,
+        "slideId": "KM5E"
+      },
+      "chinese": {
+        "position": 17,
+        "slideId": "85Z6"
+      },
+      "substantiveCorrespondence": true
+    },
+    {
+      "topic": "Slide ID / Position / occurrence",
+      "english": {
+        "position": 18,
+        "slideId": "V2SV"
+      },
+      "chinese": {
+        "position": 18,
+        "slideId": "ZWM9"
+      },
+      "substantiveCorrespondence": true
+    },
+    {
+      "topic": "Per-page operation and version history",
+      "english": {
+        "position": 19,
+        "slideId": "73AG"
+      },
+      "chinese": {
+        "position": 19,
+        "slideId": "DY5H"
+      },
+      "substantiveCorrespondence": true
+    },
+    {
+      "topic": "Main and two Presentations",
+      "english": {
+        "position": 20,
+        "slideId": "JZ7U"
+      },
+      "chinese": {
+        "position": 20,
+        "slideId": "D26F"
+      },
+      "substantiveCorrespondence": true
+    },
+    {
+      "topic": "Agent section",
+      "english": {
+        "position": 21,
+        "slideId": "SQNG"
+      },
+      "chinese": {
+        "position": 21,
+        "slideId": "XVAD"
+      },
+      "substantiveCorrespondence": true
+    },
+    {
+      "topic": "Real clients and shared writer",
+      "english": {
+        "position": 22,
+        "slideId": "AUBX"
+      },
+      "chinese": {
+        "position": 22,
+        "slideId": "FK8W"
+      },
+      "substantiveCorrespondence": true
+    },
+    {
+      "topic": "Review / present / export",
+      "english": {
+        "position": 23,
+        "slideId": "SY94"
+      },
+      "chinese": {
+        "position": 24,
+        "slideId": "J28N"
+      },
+      "substantiveCorrespondence": true
+    },
+    {
+      "topic": "Open-source credits and limits",
+      "english": {
+        "position": 24,
+        "slideId": "3ECM"
+      },
+      "chinese": {
+        "position": 25,
+        "slideId": "YS6V"
+      },
+      "substantiveCorrespondence": true
+    },
+    {
+      "topic": "First-use steps",
+      "english": {
+        "position": 25,
+        "slideId": "SMGE"
+      },
+      "chinese": {
+        "position": 26,
+        "slideId": "BDTW"
+      },
+      "substantiveCorrespondence": true
+    }
+  ],
+  "briefs": {
+    "english": {
+      "pages": 9,
+      "mainPositions": [1, 3, 4, 6, 12, 13, 19, 22, 25]
+    },
+    "chinese": {
+      "pages": 9,
+      "mainPositions": [1, 3, 4, 6, 12, 13, 19, 22, 26]
+    },
+    "localNotesEach": 4,
+    "pinsEach": 0,
+    "purpose": "Both are shorter founder-story/scientific-example talks, not complete feature tours."
+  },
+  "conclusion": "Both editions now explain the same current 0.19 product claims, evidence, use steps and collaboration boundaries. The existing English layout carries these facts in its agents and first-use pages/Notes; Chinese retains an additional dedicated collaboration case. Page count and localized layout may differ without dropping the substantive content.",
+  "resolvedGaps": [
+    "Current product labels are 0.19.0 in both languages; accurately dated 0.18 screenshot captions remain historical.",
+    "English first-use page/Notes now cover file-or-folder entry, exactly one direct .pptd and moving the complete project directory.",
+    "English agents page/Notes now cover the actual DSH + ChatGPT fixture and the same conflict/coordination boundaries as Chinese page 23.",
+    "Both page-5 claims now describe experienced screenshot-workflow friction and acknowledge that images can be measured and compared.",
+    "Both page-6 descriptions retain author judgment and require visual review without promising automatic removal of AI appearance."
+  ],
+  "evidenceMapping": [
+    {
+      "topic": "Current release and entry",
+      "english": ["QMYQ", "SMGE"],
+      "chinese": ["SAHG", "3DUH", "BDTW"]
+    },
+    {
+      "topic": "Verified collaboration and limits",
+      "english": ["AUBX"],
+      "chinese": ["FK8W", "7K3P"]
+    },
+    {
+      "topic": "Screenshot review and object data",
+      "english": ["GDDR"],
+      "chinese": ["2723"]
+    },
+    {
+      "topic": "Story and continued visual judgment",
+      "english": ["C45U"],
+      "chinese": ["GZBW"]
+    }
+  ],
+  "differences": [
+    "Chinese keeps a separate collaboration example page; English adds no page and carries its content in existing agents Notes.",
+    "English uses a small native extrema table and Chinese uses prose for the same scientific values.",
+    "English ordinary gaps list remains a one-column table under the explicit preferred-art preservation scope; Chinese uses one rich-text object.",
+    "DC-WALT identifies the workstation transport; local CLI identifies an execution route. These labels are not contradictory."
+  ],
+  "retainedLimits": [
+    "The known English Office chart annotation issue remains on unchanged AVNM; source values are correct.",
+    "Existing miniature page previews retain original snapshot bytes and were not regenerated for wording-only edits.",
+    "Chinese final native output and exports completed, but its runner remains needs_attention because a PowerShell append to DELIVERY-R2.md was denied. The coordinator did not write that file or change permissions."
+  ],
+  "nativeStates": {
+    "claude-en": {
+      "nativeCompletedFlag": true,
+      "runnerState": "completed"
+    },
+    "claude-zh": {
+      "nativeCompletedFlag": true,
+      "runnerState": "needs_attention"
+    }
+  },
+  "sourceMetadataSha256": {
+    "claude-en": "87ae2d7556ff3c1148ecabcecf437ef66ea4f08166de7018bdda536f15e74619",
+    "claude-zh": "00056b9948c065bddd11e7be2fb53c166d05b2d03e6cd5962812e678e81187f4"
+  },
+  "internalReviewSha256": "647202b3bc429b0edcc1b614a468fd6340c1cf6b6549840efbe8850a93a91e31",
+  "nativeVisibleReportSha256": {
+    "claude-en": "6c56e200882e18c122161307a2ea1bd1dfaa2c8268ae1b735ffd5c1983ec6742",
+    "claude-zh": "8e86ac69f37bad099699fc7a4e31acb39fa0258be539ce549dbe25e1bab67bad"
+  },
+  "priorIncompletePairReviewSha256": "7d2235dedbc968e779aa2c5514d66469e1102c58db4b1854a4b2040d8ca25950",
+  "noCoordinatorAuthoredPageEdits": true
+}

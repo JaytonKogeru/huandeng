@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "file": "HUANDENG-Editor-0.19.0-win32-x64.zip",
+  "rootDirectory": "HUANDENG-v0.19.0-win32-x64/",
+  "sourceCommit": "cadaecbf9cf1661e28464fe68b7b866f68fecabe",
+  "sourceDirty": false,
+  "sha256": "4a484088a2d5a0c2c08e8234df71330a60c6057e1e5e3cb2a4a77c3404385aad",
+  "bytes": 236214422,
+  "entryCount": 29313,
+  "packageContentSha256": "23d938dc4520a97e2754934a48131b8eed889961d096333fb3338d0f5ea3e3e5",
+  "everyEntryHashMatchesPackage": true,
+  "entryInventorySha256": "9323d1327910c0bd32ffef3eab40394dbe29ad81aec2ddb7211da0f6e8c09df7"
+}

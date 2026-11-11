@@ -3,16 +3,35 @@ background:
   type: solid
   color: "#E4ECE6"
 elements:
+  - elementId: cover-field
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 0
+      - 0
+      - 337
+      - 540
+    fill:
+      type: solid
+      color: "#18372E"
+  - elementId: mark-paper
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 30
+      - 35
+      - 90
+      - 90
+    fill:
+      type: solid
+      color: "#F7F5EF"
   - elementId: product-mark
     elementType: image
     src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
     sourceName: huandeng.png
     alt: huandeng.png
     bounds:
-      - 41
-      - 45
-      - 79
-      - 79
+        [36,42,77,77]
     fit:
       mode: contain
     crop:
@@ -23,46 +42,42 @@ elements:
   - elementId: brand
     elementType: text
     bounds:
-      - 139
-      - 65
-      - 600
-      - 55
+        [137,62,185,45]
     content:
-      text: HUANDENG
-      fontFamily: Microsoft YaHei
-      fontSize: 37
-      color: "#263C34"
+      {"text":"HUANDENG","fontFamily":"Noto Serif SC","fontSize":26,"color":"#F7F5EF","bold":false,"align":["left","top"],"lineHeight":1.35}
+  - elementId: title
+    elementType: text
+    bounds:
+        [36,187,282,170]
+    role: title
+    content:
+      {"text":"科研演示，\n持续编辑","fontFamily":"Noto Serif SC","fontSize":35,"color":"#F7F5EF","bold":false,"align":["left","top"],"lineHeight":1.3}
+  - elementId: cover-intent
+    elementType: text
+    bounds:
+      - 38
+      - 409
+      - 278
+      - 78
+    content:
+      text: |-
+        意图、原图和修改，
+        留在同一份工作里。
+      fontFamily: Noto Sans SC
+      fontSize: 18
+      color: "#D6E3D9"
       bold: false
       align:
         - left
         - top
-      lineHeight: 1.3
-  - elementId: title
-    elementType: text
-    bounds:
-        [45,194,300,112]
-    role: title
-    content:
-      {"text":"我为什么开始做幻灯","fontFamily":"Microsoft YaHei","fontSize":30,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: cover-copy
-    elementType: text
-    bounds:
-      - 45
-      - 336
-      - 291
-      - 92
-    content:
-      {"text":"从一次次组会，\n到一份可以继续修改的作品。","fontFamily":"Microsoft YaHei","fontSize":18,"color":"#66756B","bold":false,"align":["left","top"],"lineHeight":1.6}
+      lineHeight: 1.5
   - elementId: editor-cover
     elementType: image
-    src: "media/imported/675167a0b82813c8f43297d5e8823b0788e05a2ffd0e546c3d53b0fab94a61e5.png"
+    src: "media/imported/2e581d36978c91cef3fdc7777d6546f05fe58d6d2b89d0d6c42954313c2d0a0e.png"
     sourceName: "editor-native-chart.png"
     alt: "editor-native-chart.png"
     bounds:
-      - 352
-      - 161
-      - 564
-      - 338
+        [367,169,559,335]
     fit:
       mode: contain
     crop:
@@ -73,18 +88,7 @@ elements:
   - elementId: edition
     elementType: text
     bounds:
-      - 45
-      - 504
-      - 820
-      - 24
+        [370,127,548,26]
     content:
-      text: 项目介绍 · 中文
-      fontFamily: Microsoft YaHei
-      fontSize: 12
-      color: "#66756B"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-notes: "我想先讲讲，为什么会开始做幻灯。起点是开组会时很具体的困扰：我想让AI帮我做slides，但我仍然希望听众能听到我的判断。还有一个麻烦是改两页也会留下整套新副本。后来我开始把人的故事、页面的身份和可以持续编辑的材料放到同一个项目里。这就是HUANDENG的来由。"
+      {"text":"项目介绍 · 中文","fontFamily":"Noto Sans SC","fontSize":12,"color":"#356F68","bold":false,"align":["left","top"],"lineHeight":1.35}
+notes: "HUANDENG是一个面向科研演示的编辑工作流。它把可视化编辑器、可携带的项目目录和Agent接入放到一起。起点来自我的组会经历：我希望AI接手制作中的重复劳动，但页面的判断、原图和后续修改仍然属于同一份工作。这次介绍会直接走一遍：找到一页，保留意图与证据，完成一次可检查的修改，再把页面组织成演讲。"

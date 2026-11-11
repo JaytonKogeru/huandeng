@@ -6,23 +6,17 @@ elements:
   - elementId: title
     elementType: text
     bounds:
-      - 44
-      - 35
-      - 870
-      - 68
+        [42,34,880,76]
     role: title
     content:
-      {"text":"Change two of fifty slides. Another full copy?","fontFamily":"Arial","fontSize":29,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
+      {"text":"A small edit should stay a small edit","fontFamily":"Georgia","fontSize":32,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.2}
   - elementId: brand-small
     elementType: image
     src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
     sourceName: huandeng.png
     alt: huandeng.png
     bounds:
-      - 44
-      - 510
-      - 17
-      - 17
+        [43,512,18,18]
     fit:
       mode: contain
     crop:
@@ -33,133 +27,128 @@ elements:
   - elementId: foot
     elementType: text
     bounds:
-      - 69
-      - 513
-      - 130
-      - 17
+        [68,515,140,16]
     content:
-      text: HUANDENG
-      fontFamily: Arial
-      fontSize: 10
-      color: "#66756B"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
+      {"text":"HUANDENG","fontFamily":"Segoe UI","fontSize":9,"color":"#5B6A62","bold":false,"align":["left","top"],"lineHeight":1.35}
   - elementId: position
     elementType: text
     bounds:
-      - 884
-      - 512
-      - 30
-      - 18
+        [881,514,35,18]
     content:
-      text: ""
-      fontFamily: Arial
-      fontSize: 10
-      color: "#66756B"
-      bold: false
-      align:
-        - right
-        - top
-      lineHeight: 1.3
-      field: main-position
-  - elementId: whole-deck
-    elementType: icon
-    iconName: fas:file-powerpoint
-    bounds:
-      - 56
-      - 155
-      - 58
-      - 58
-    fill:
-      type: solid
-      color: "#356F68"
-  - elementId: request
+      {"text":"","fontFamily":"Segoe UI","fontSize":10,"color":"#5B6A62","bold":false,"align":["right","top"],"lineHeight":1.35,"field":"main-position"}
+  - elementId: motivation
     elementType: text
     bounds:
-      - 142
-      - 166
-      - 690
       - 44
+      - 151
+      - 468
+      - 234
     content:
-      text: “Change two of the slides.”
-      fontFamily: Arial
-      fontSize: 25
-      color: "#263C34"
+      text: |-
+        I wanted an agent to help with slides,
+        while keeping my judgment and sources.
+  
+        That needs a clear intent,
+        and a precise place to make the next edit.
+      fontFamily: Segoe UI
+      fontSize: 21
+      color: "#20372F"
       bold: false
       align:
         - left
         - top
-      lineHeight: 1.3
-  - elementId: copies
+      lineHeight: 1.5
+  - elementId: copy-file
+    elementType: icon
+    iconName: fas:file-powerpoint
+    bounds:
+      - 569
+      - 150
+      - 38
+      - 38
+    fill:
+      type: solid
+      color: "#356F68"
+  - elementId: file-copies
     elementType: text
     bounds:
-      - 66
-      - 280
-      - 400
-      - 176
+      - 626
+      - 153
+      - 286
+      - 122
     content:
       text: |-
         deck.pptx
         deck_revised.pptx
-        deck_final.pptx
         deck_final_2.pptx
       fontFamily: Consolas
-      fontSize: 22
-      color: "#66756B"
+      fontSize: 18
+      color: "#5B6A62"
       bold: false
       align:
         - left
         - top
-      lineHeight: 1.55
-  - elementId: cause
+      lineHeight: 1.6
+  - elementId: to-page
     elementType: line
     bounds:
-      - 462
-      - 349
-      - 70
-      - 10
+      - 651
+      - 296
+      - 0
+      - 43
     viewBox:
       - 1
       - 1
-    points: 0,0.5 1,0.5
+    points: 0,0 1,1
     border:
       width: 1.4
       color: "#356F68"
     arrow:
       - null
       - arrow
-  - elementId: decision
+  - elementId: page-history
+    elementType: icon
+    iconName: fas:clock-rotate-left
+    bounds:
+      - 571
+      - 377
+      - 36
+      - 36
+    fill:
+      type: solid
+      color: "#356F68"
+  - elementId: one-page
     elementType: text
     bounds:
-      - 570
-      - 264
-      - 343
-      - 221
+      - 625
+      - 371
+      - 290
+      - 83
     content:
-      text: |-
-        Version control suggested
-        a different editing unit:
-
-        keep the history
-        with the page that changed.
-      fontFamily: Arial
-      fontSize: 23
-      color: "#356F68"
+      text: The same page + its history
+      fontFamily: Georgia
+      fontSize: 21
+      color: "#20372F"
       bold: false
       align:
         - left
         - top
-      lineHeight: 1.5
-  - elementId: illustration-note
+      lineHeight: 1.4
+  - elementId: illustrative
     elementType: text
     bounds:
       - 44
-      - 487
-      - 870
-      - 21
+      - 469
+      - 872
+      - 35
     content:
-      {"text":"Illustrative filenames; the 50-page/two-slide scenario is my example.","fontFamily":"Arial","fontSize":12,"color":"#66756B","bold":false,"align":["left","top"],"lineHeight":1.3}
-notes: "The second problem was mundane. Suppose I already had fifty slides and wanted to change two. Some agents would preserve the original by creating another complete deck. With repeated edits, the directory could fill with dated copies. Git suggested a useful principle: record what changed in the unit being edited, rather than preserving every small revision as another full presentation.\n\nAccount source: sources/story/USER-STORY.zh-CN.md. The explanation is based on the founder’s personal experience and design judgment."
+      text: From my “change two of fifty” example; filenames are illustrative.
+      fontFamily: Segoe UI
+      fontSize: 12
+      color: "#5B6A62"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.35
+notes: "Two frustrations often appeared together in my work. A deck could look complete while missing the point I wanted to make. Changing two pages in fifty could also leave another full copy. I separated those concerns: where does the human intent stay, and which page actually changed? Story keeps the intent available; page identity and history keep the revision attached to the work. The filenames illustrate my use case, not a claim about every AI tool."

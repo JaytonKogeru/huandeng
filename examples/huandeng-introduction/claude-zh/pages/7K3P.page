@@ -1,0 +1,157 @@
+background:
+  type: solid
+  color: "#F6F6F3"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 56
+      - 34
+      - 848
+      - 40
+    content:
+      text: 几个 agent 可以同时改同一个项目
+      fontFamily: Microsoft YaHei
+      fontSize: 26
+      lineHeight: 1.3
+      color: "#1C2321"
+      align:
+        - left
+        - top
+      bold: true
+    role: title
+  - elementId: lead
+    elementType: text
+    bounds:
+      - 56
+      - 78
+      - 848
+      - 26
+    content:
+      text: 例如：ChatGPT 起草内容，Claude Code 做视觉整理；或者每个 agent 负责不同的章节。
+      fontFamily: Microsoft YaHei
+      fontSize: 16
+      lineHeight: 1.4
+      color: "#56615D"
+      align:
+        - left
+        - top
+  - elementId: rules
+    elementType: table
+    bounds:
+      - 56
+      - 120
+      - 520
+      - 250
+    columnWidths:
+      - 0.36
+      - 0.64
+    rows:
+        [[{"text":"情况"},{"text":"写入器怎么处理"}],[{"text":"同时改不同的页面"},{"text":"各自的提议都能保存"}],[{"text":"改同一页（哪怕不同对象）"},{"text":"后到的写入被拒绝，重新读取后再提议"}],[{"text":"改故事、章节等项目信息"},{"text":"共享同一个版本号，同样可能冲突"}],[{"text":"内容交给设计接手"},{"text":"写明操作、页面和版本；下一位先读已保存的结果再改"}]]
+    style:
+      cellStyle:
+        fontFamily: Microsoft YaHei
+        fontSize: 13
+        lineHeight: 1.35
+        color: "#1C2321"
+        align:
+          - left
+          - middle
+        border:
+          - null
+          - null
+          - width: 1
+            color: "#CBD3CF"
+            style: solid
+          - null
+      firstRowStyle:
+        color: "#2E6B5E"
+        bold: true
+  - elementId: not
+    elementType: text
+    bounds:
+      - 56
+      - 386
+      - 520
+      - 90
+    content:
+      text: <p><strong><span style="color:#1C2321">现在没有的：</span></strong></p><p>章节锁、自动排班、在线状态。分工靠事先约定范围，冲突由写入器拦下。</p>
+      fontFamily: Microsoft YaHei
+      fontSize: 13.5
+      lineHeight: 1.6
+      color: "#56615D"
+      align:
+        - left
+        - top
+  - elementId: trial-bg
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 608
+      - 120
+      - 296
+      - 356
+    fill:
+      type: solid
+      color: "#E3EAE6"
+  - elementId: trial
+    elementType: text
+    bounds:
+      - 628
+      - 136
+      - 260
+      - 330
+    content:
+      text: <p><strong><span style="color:#2E6B5E">真实测试（0.19）</span></strong></p><p><span style="font-size:8px"> </span></p><p>一个 DeepSeek Harness 原生会话和 ChatGPT 共用一个 3 页的测试项目：</p><p><span style="font-size:8px"> </span></p><p>·  各自修改不同的页面，修改都保留了</p><p>·  一次过期的同页写入被拒绝</p><p>·  之后的风格交接保留了另一方的内容</p><p><span style="font-size:8px"> </span></p><p><span style="font-size:11px;color:#7A8480">来源：docs/NATIVE-INTEGRATION-0.19.md。尚未做 Claude 原生的协作测试。</span></p>
+      fontFamily: Microsoft YaHei
+      fontSize: 13.5
+      lineHeight: 1.6
+      color: "#3E4845"
+      align:
+        - left
+        - top
+  - elementId: ft-mark
+    elementType: image
+    bounds:
+      - 56
+      - 505
+      - 16
+      - 16
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    fit:
+      mode: contain
+  - elementId: ft-label
+    elementType: text
+    bounds:
+      - 78
+      - 505
+      - 600
+      - 16
+    content:
+      text: HUANDENG  /  和 agent 一起工作
+      fontFamily: Microsoft YaHei
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - left
+        - middle
+  - elementId: ft-pos
+    elementType: text
+    bounds:
+      - 824
+      - 505
+      - 80
+      - 16
+    content:
+      text: "0"
+      fontFamily: Microsoft YaHei
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - right
+        - middle
+      field: main-position
+notes: 既然所有客户端都走同一个写入器，人和多个 agent 就可以同时开工。比如 ChatGPT 起草内容，Claude Code 再做整体视觉整理；或者一个 agent 负责一章。写入器的规则很简单：改不同页面的提议都能保存；同一页哪怕改的是不同对象，后到的那一次会被拒绝，要重新读取再提议；故事、章节这些项目信息共用一个版本号，也可能冲突。交接的时候，写清楚是哪次操作、哪一页、哪个版本，下一位先读保存后的结果再动手。0.19 做过一次真实测试：DeepSeek Harness 的原生会话和 ChatGPT 共用一个三页的测试项目，各改各的页面都保留了，过期的同页写入被拒绝，之后的风格交接保留了另一方的内容。要说清楚：现在没有章节锁、没有自动排班，也没有在线状态显示。分工靠人事先约定。

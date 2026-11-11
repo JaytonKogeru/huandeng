@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "cadaecbf9cf1661e28464fe68b7b866f68fecabe",
+  "confirmedBehavior": "Accepted later user navigation wins over a pending project load, including the current tab and Home. Background restored projects do not change the remembered selection. Failed pending selected loads reconcile active service and UI state.",
+  "sourceUnitCasesPassed": 21,
+  "actualSourceElectronRegressions": [
+    "Delayed startup restore then explicit same-tab selection remains selected",
+    "User selects pending project that then fails; previous project, title and remembered state agree"
+  ],
+  "exactPackagedRegressions": [
+    {
+      "laterChoice": "B",
+      "openedInBackground": true,
+      "passed": true
+    },
+    {
+      "laterChoice": "Home",
+      "openedInBackground": true,
+      "passed": true
+    }
+  ],
+  "normalExit": {
+    "code": 0,
+    "signal": null
+  },
+  "sixExistingWriterEpochsPreserved": true,
+  "foregroundValidation": {
+    "sourceRuntime": "C2",
+    "homePassed": true,
+    "sixPublicProjectCopiesPassed": true,
+    "method": "Real click on a dedicated launcher starts the app in the foreground; raw read-only state and passive desktop captures after launch, without forced foreground or screenshot focus emulation.",
+    "normalExits": 2,
+    "privateScreenshotsPublished": false
+  },
+  "measurementCorrection": "Earlier probes forced native foreground before every screenshot. They cannot establish an unmodified startup baseline. Correctly foregrounded Home and six-project checks passed. This release does not claim a blank-screen fix or a startup-speed improvement."
+}

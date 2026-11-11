@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "verifiedAtUtc": "2026-11-11T01:47:15.948770+00:00",
+  "kind": "real-Desktop-automatic-route-removal",
+  "initialRoutes": 7,
+  "remainingRoutes": 6,
+  "removedRoute": "disposable-public-collaboration-fixture",
+  "fixtureStoppedNormally": true,
+  "forceTerminationUsed": false,
+  "fixtureSourceHashesUnchanged": true,
+  "sixExistingWriterEpochsUnchanged": true,
+  "sixExistingTransportProcessIdentitiesUnchanged": true,
+  "desktopMainAndBackendPreserved": true,
+  "profileEditedForThisTest": false,
+  "fixtureWriterRestarted": false,
+  "scope": "Observed automatic removal after the fixture writer stopped. This observation does not measure the exact removal latency or establish real-host epoch replacement/late-open timing; those paths have focused unit coverage.",
+  "evidenceDigests": {
+    "desktop-native-final-receipt.json": "96028354dd3d48cbf56a5f870686e99c9d2c8789acca3e133e8602eed2364f83",
+    "desktop-after-fixture-receipt.json": "5d8484be75064257395358c7e6a493274c6593961f3bb46cbe87d877e25fdb94",
+    "collaboration-fixture-shutdown.json": "daf0dfec8c3c575ba9a0afd4291ac342a41ac8b1307c2ef0a9fbd696dc26bd62"
+  }
+}

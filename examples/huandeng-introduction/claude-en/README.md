@@ -1,49 +1,37 @@
-# HUANDENG · Claude Code · English story edition
+# HUANDENG · Claude Code · English product introduction
 
-The native client independently authored the pages, narrative, Story and Notes. The coordinator assembled this README and the Notes index without rewriting page content or visual design.
+The native author completed this revision in the original session. The coordinator assembled this index, exact saved Notes and read-only evidence; it did not rewrite authored pages, Story or metadata.
 
-[PPTD project](deck.pptd) · [PDF](Exports/deck.pdf) · [PowerPoint](Exports/deck.pptx) · [Extracted speaker notes](speaker-notes.md) · [Native trial](evidence/native-trial.json) · [QA](evidence/qa.json)
+[PPTD project](deck.pptd) · [Main PDF](Exports/deck.pdf) · [Main PowerPoint](Exports/deck.pptx) · [9-page Brief PDF](Exports/brief.pdf) · [9-page Brief PowerPoint](Exports/brief.pptx) · [Saved speaker notes](speaker-notes.md)
 
-**Main Slides: 25.** HUANDENG introduction (full, about 25 minutes): 25; Lab-meeting version (about 8 minutes): 9.
+**Main: 25 pages. Full Presentation: 25. Brief: 9 pages, four occurrence Notes, no pins.** This is a preserved native candidate, not owner acceptance.
 
-**Native model:** `claude-opus-5-5`. native assistant message model metadata.
+## What changed and who did it
 
-## Current verification
+The preceding completed native task made 18 tool calls. A separately scoped factual continuation made 27 calls in the same session, preserving account/model and the existing design. It corrected the screenshot-measurement and Story-guarantee claims in visible text, relevant Notes and Story. This was a content-correctness gate, not a taste-based rerun or first-pass approval.
 
-- Native turn: completed; exit code 0; native completion confirmed. 2 recorded turn(s).
-- PDF / PPTX: 25 / 25 pages; export reports match the reviewed source revisions.
-- PowerPoint 16.0: 25/25 pages opened read-only and rendered at 1920×1080.
-- Native PowerPoint objects: 25 Notes pages, 8 tables, 1 chart objects, 39 media parts.
-- The whole Office-rendered sequence was reviewed in contact sheets; additional full-page checks and observations are recorded in [the visual review](evidence/office-visual-review.json).
-- No blocking Office layout defect was observed within that stated review scope. Narrative and aesthetic acceptance remain with the owner.
+The English continuation also aligns current 0.19 release labels, the file-or-folder opening rule and actual DSH + ChatGPT collaboration facts. AVNM and 7NHP remain byte-identical to the protected user-edited baseline, including AVNM’s table height 75.567. The existing 25-page structure and art are retained.
 
-## Notes and Presentations
+The native author exported all four final Main/Brief PDF/PPTX artifacts. Their reports and resolved Notes match the saved source. The coordinator only standardized any title-based Brief filenames without changing native bytes. Earlier export provenance is retained separately; the preceding English Brief had been mechanically exported by the coordinator, and is not confused with these final native artifacts.
 
-The Notes file reproduces the saved Main Notes and actual resolved occurrence Notes for each Presentation. A reused Main note is labelled as such; no extra short-version script was invented.
+## Verification scope and retained limits
 
-- HUANDENG introduction (full, about 25 minutes) (`pres-full`): 25 pages; 0 explicit occurrence Notes.
-- Lab-meeting version (about 8 minutes) (`pres-lab`): 9 pages; 4 explicit occurrence Notes.
+The preceding complete 25-page deck was actually rendered read-only in PowerPoint 16.0 and reviewed in full contact sheets plus selected full pages. After this factual continuation, only the changed pages were visually rechecked and targeted current Office renders were inspected. Unchanged pages are linked by identical source hashes to the prior evidence; this is not a claim that every page of the new PPTX was rendered again.
 
-## Sources and native record
+**Known Office limitation:** preceding actual Main page 12 and Brief occurrence 5 show native numeric X-axis placement misaligned with manually positioned pair labels, and a long axis explanation presses into the tick line. AVNM’s source is unchanged, so the limitation remains disclosed; no full PowerPoint visual pass is claimed. Its PDF/Editor appearance is readable. The ordinary gaps list on page 24 also remains a one-column native table under the explicit art-preservation scope.
 
-- [User story excerpt](sources/story/USER-STORY.zh-CN.md) and [verified technical facts](sources/story/FACTS.md).
-- [Native author's handoff](evidence/native-author-report.md) preserves the current native author report or a labelled excerpt of its visible final response. Its at-the-time Office limitation is superseded by the coordinator verification above.
-- [Native trial evidence](evidence/native-trial.json) records the real model evidence, tool failures, connection recovery where applicable, and the separation between native completion and delivery completion.
-- Keep the entire project directory when moving it; the PPTD entry references its pages and assets.
+All twelve native chart values in final Main and Brief match the public CSV exactly. Main PPTX retains one native chart and eight native tables. Current Brief PDFs and all nine resolved Notes were verified; Main-numbered footers remain in the Brief. No new complete Brief Office pass is claimed.
 
-## Content findings in the preserved native candidate
+The language pair now carries corresponding core product claims, evidence, use steps and boundaries. Chinese uses an additional dedicated collaboration page; English covers the same verified facts in the existing agents explanation and Notes. A real DSH + ChatGPT fixture is evidence of coordinated revision-checked saves, not a native Claude collaboration test, online presence, section locks or automatic scheduling. [Independent correspondence](evidence/product-pair-review.json).
 
-Export completion does not mean all content requirements passed. These findings remain visible in the original native candidate; the coordinator did not rewrite its pages or request an aesthetic redo.
+## Evidence and use
 
-- Page5 overstates other tools as screenshot-only and image checks as unmeasurable or impossible to compare.
-- Page6 presents a human story as a guarantee that slides stop looking AI-made.
-- Page24 includes a future timeline idea that the shared story brief deferred.
-- Office page12 has local crowding between the long x-axis caption and numeric ticks; the y-axis title is clear.
+[Current native trial](evidence/product-trial.json) · [Current QA](evidence/product-qa.json) · [Independent review](evidence/product-review.json) · [Prior full-sequence evidence](evidence/product-prior-stage.json) · [Brief provenance](evidence/product-brief.json) · [Native values](evidence/product-science-check.json) · [Image use](evidence/product-assets.json) · [Visible final author report](evidence/product-native-author-report.md)
 
-[Independent content review](evidence/content-review.json) · [Saved narrative and Notes data](evidence/narrative.json).
+Keep the whole directory when moving the project. deck.pptd is the entry; pages, media and metadata belong together. [Sources and notices](SOURCES.md), [public input manifest](MEDIA-INPUTS.json) and [technical facts](sources/story/FACTS.md) preserve provenance. The 1BNA example measures twelve positions of one public structure, not experimental replicates or a product benchmark.
 
-## Short-version exports
+Existing unprefixed evidence describes older submissions. Its counts/hashes remain historical, not claims about current exports. Archived before-product README/Notes preserve exact bytes and retain the original project-root relative-link origin.
 
-[PDF](Exports/brief.pdf) · [PowerPoint](Exports/brief.pptx) — 9 pages. The coordinator mechanically exported the native-authored Presentation without inventing pages, order or Notes. The native Main PDF/PPTX bytes remain unchanged.
+![Current native PDF cover](evidence/product-preview.png)
 
-[Short export evidence](evidence/short-exports.json).
+Existing miniature page previews retain their original snapshot bytes; only the actual affected page bodies were refreshed in this wording-only maintenance.

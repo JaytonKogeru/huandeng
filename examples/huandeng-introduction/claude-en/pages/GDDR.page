@@ -10,7 +10,7 @@ elements:
       - 848
       - 42
     content:
-      text: Most tools give an agent only a screenshot
+      text: "Screenshots alone made agent edits slow to check"
       fontFamily: Arial
       fontSize: 30
       lineHeight: 1.2
@@ -28,7 +28,7 @@ elements:
       - 380
       - 22
     content:
-      text: How an agent checks a slide in most tools
+      text: "Checking a slide from screenshots"
       fontFamily: Arial
       fontSize: 15
       lineHeight: 1.35
@@ -89,7 +89,7 @@ elements:
       - 380
       - 34
     content:
-      text: "What the agent gets: pixels of the 1BNA slide. Useful for judging layout, but hard to measure or compare."
+      text: "What the agent gets: pixels of the 1BNA slide. Good for judging layout; exact values and positions have to be inferred."
       fontFamily: Arial
       fontSize: 12.5
       lineHeight: 1.35
@@ -230,4 +230,4 @@ elements:
       align:
         - right
         - middle
-notes: "The third problem showed up when I asked AI to work on Google Slides or PowerPoint decks. To check its own work, the agent often has to render the whole slide to a picture and look at it. That is a useful review, but it is not something you can measure, compare or optimise: every check is a fresh guess from pixels. So I wanted a slide format where the agent reads the slide as data. On the right is a real excerpt from the 1BNA slide in this very project: the chart is an object with its bounds, its twelve values and its axis range. An agent can change one value or one label without touching anything else, and the change can be diffed. I still look at renders for composition and readability; they are a review surface, not the editable model."
+notes: "The third problem showed up when I asked AI to work on Google Slides or PowerPoint decks. To check its own work, the agent often had to render the whole slide to a picture, look at it, and work out from the pixels which value or position to change. Images can be measured and compared, but in that loop every precise fix had to be recovered from the picture first, and it was slow. So I wanted a slide format where the agent also reads the slide as data. On the right is a real excerpt from the 1BNA slide in this very project: the chart is an object with its bounds, its twelve values and its axis range. An agent can inspect and change one value or one label directly, without touching anything else, and the change can be diffed. I still look at renders for composition and readability; they are a review surface, not the editable model."

@@ -1,0 +1,292 @@
+{
+  "schemaVersion": 1,
+  "pluginVersion": "0.19.0",
+  "verifiedAtUtc": "2026-11-11T01:37:47.083866+00:00",
+  "packages": {
+    "portable": {
+      "files": 24,
+      "manifestSha256": "91e6590712b601544e6bdb2aad4b8e4443c6fa7756fd908f4c78c762a0eecfa9"
+    },
+    "deepseekNative": {
+      "files": 36,
+      "manifestSha256": "aacc8106c15e5970999181ae23783686b0a5f5297fbe1a75a409c9edf696d4b8"
+    },
+    "privateAccountBindingsInPublicPackages": false,
+    "skillSha256": "f4188e0934e7846346e286286041f49592bec3231747caa99d0b7b32dd9d016b",
+    "trialManifestSha256": "db0ef319d1ebfaccabbedfa16fe8509e8e4c4b4e753483710fd2d78f1ac4cf44",
+    "finalDifferencesFromTrial": [
+      {
+        "path": "content-manifest.json",
+        "before": "db0ef319d1ebfaccabbedfa16fe8509e8e4c4b4e753483710fd2d78f1ac4cf44",
+        "after": "aacc8106c15e5970999181ae23783686b0a5f5297fbe1a75a409c9edf696d4b8"
+      },
+      {
+        "path": "lib/projects.mjs",
+        "before": "73fe39c5b68c574cdfe933f17da4c1f91deff3c9d23a45b28f39e327e0bbffdb",
+        "after": "195d211dec09e6ad3edec3c6fb9e0f845dce5a2d7b5bdb48b2d759fa37bddfee"
+      },
+      {
+        "path": "README.md",
+        "before": "252667229c8bd10c8364a502f3acb165dbbf0a50eab8cd6f783413f7f5242ac6",
+        "after": "060a41d14f943d9167bea213f6bb104913dc30c7d61ec386246fdf68de620690"
+      },
+      {
+        "path": "vendor/content-manifest.json",
+        "before": "515c9894b2d55fdc5f0683f6c0e2a9289033227d56c99c9b6df847df17d419b4",
+        "after": "91e6590712b601544e6bdb2aad4b8e4443c6fa7756fd908f4c78c762a0eecfa9"
+      },
+      {
+        "path": "vendor/README.md",
+        "before": "bbcdcacc64de3eb248a73d524cfc4cddab20d2cb7bd174d6fec8c7df3daa47a6",
+        "after": "a78c64e0f6b8cd5a8f40b46ff0eee676c0e910214a28751268c5b4c46fe2afe1"
+      }
+    ]
+  },
+  "defaultClients": {
+    "codex": {
+      "identity": "huandeng@huandeng-local",
+      "method": "supported marketplace/plugin CLI",
+      "filesMatched": 24
+    },
+    "claudeCode": {
+      "identity": "huandeng@huandeng-local",
+      "method": "supported marketplace/plugin CLI",
+      "filesMatched": 24,
+      "nativeMcpListConnected": true,
+      "modelCallInThisProtocolCheck": false
+    },
+    "commonInstalledRoot": {
+      "filesMatched": 24
+    },
+    "deepseekDesktop": {
+      "hostVersion": "0.2.2-rc.1",
+      "package": "huandeng",
+      "cordisEntry": "huandeng",
+      "method": "official Plugins UI remove/install/enable with HMR",
+      "filesMatched": 36,
+      "bundleAndComponentEnabled": true,
+      "componentReportedRunning": true,
+      "mainAndBackendProcessesPreserved": true,
+      "unrelatedProfileManifestUnchanged": true,
+      "profilePatchUnchanged": true,
+      "transportsObserved": 7,
+      "documentWritersStartedByAdapter": 0,
+      "bindings": [
+        "chatgpt-en",
+        "chatgpt-zh",
+        "claude-en",
+        "claude-zh",
+        "deepseek-en",
+        "deepseek-zh",
+        "disposable-public-collaboration-fixture"
+      ],
+      "desktopConversationModelCallTested": false
+    },
+    "deepseekHeadless": {
+      "method": "official plugin add to existing headless profile",
+      "nativeTrialCandidatePreserved": true,
+      "rawMcpRowsAdded": false,
+      "accountModelAndSessionStoreChanged": false,
+      "actualNativeFixtureCalls": 48,
+      "actualNativeFixtureCompleted": true,
+      "finalDefaultInstalled": true,
+      "finalFilesMatched": 36,
+      "finalManifestSha256": "aacc8106c15e5970999181ae23783686b0a5f5297fbe1a75a409c9edf696d4b8",
+      "officialRemoveAndAddExitCodes": [0, 0],
+      "unrelatedManifestAndProfilePatchUnchanged": true,
+      "changedOnlyAfterAuthorProcessesExited": true,
+      "finalInstallationReceiptSha256": "871e4271dd13431e6b1cb8dbe46860ae4a72769b505d73edab118aca38b7b946"
+    }
+  },
+  "dedicatedShortcut": {
+    "name": "HUANDENG DeepSeek.lnk",
+    "sameIdentity": true,
+    "target": "official DeepSeek Harness Desktop executable",
+    "arguments": "",
+    "workingDirectory": "directory of the official Desktop executable",
+    "legacyTuiAndAlternateStoreNoLongerLaunchedByThisShortcut": true,
+    "historicalTuiConfigurationChanged": false,
+    "ordinaryDSHConfigurationChanged": false,
+    "readbackVerified": true
+  },
+  "protocolDoctor": {
+    "ok": true,
+    "toolCount": 22,
+    "protocolVerified": true,
+    "modelTaskVerified": false,
+    "runtimeGuideSha256": "b65eb6be627fb5006b10617aecbdcbb1ee0d196e2527a60b82f73d4380953050",
+    "runtimeGuideIsPackagedSkill": false,
+    "testedEditorRuntimeVersion": "0.18.0",
+    "phase": "Initial compatibility check before the Editor upgrade; retained as history."
+  },
+  "canonicalTests": {
+    "passed": 18,
+    "failed": 0,
+    "testFiles": [
+      "plugins/huandeng/scripts/configure.test.mjs",
+      "plugins/huandeng/scripts/discovery.test.mjs",
+      "plugins/huandeng/adapters/deepseek/adapter.test.mjs"
+    ],
+    "logSha256": "5e8e29857abe5696ab3bbd039040b4dd9cc3fad29fd2999bf2678fd5f0d90316"
+  },
+  "limitations": [
+    "Native Claude Code collaboration was not exercised by this acceptance test; the author route had reached its existing account quota.",
+    "DSH native pwsh failed with a Windows sandbox ACL error in the current author session. The CLI file interface exists, but that does not establish native shell availability.",
+    "Desktop activation and transport observation do not prove a model followed the authoring guide. Actual native execution evidence is recorded separately.",
+    "The malformed-JSON diagnosis covers three failed author attempts. A later strict-one-operation continuation completed; retained content and visual findings remain separate from native completion."
+  ],
+  "routingLifecycleEvidence": "routing-lifecycle.json",
+  "currentDesktopProjectRoutes": {
+    "observedAtUtc": "2026-11-11T01:47:15.948770+00:00",
+    "count": 6,
+    "fixtureServiceRetired": true
+  },
+  "defaultCatalogSource": {
+    "observedAtUtc": "2026-11-11T02:59:20.307922+00:00",
+    "identity": "huandeng-local",
+    "version": "0.19.0",
+    "role": "Maintained per-user versioned HUANDENG distribution",
+    "sameRegisteredRootForClaudeAndCodex": true,
+    "relativePluginSource": "./huandeng",
+    "verificationDirectoryIsDefaultDependency": false,
+    "portableManifestSha256": "91e6590712b601544e6bdb2aad4b8e4443c6fa7756fd908f4c78c762a0eecfa9",
+    "catalogSha256": [
+      "02b9d5745009867105ebd28e15823986c06a21a47068ce324865e20bf30d3ece",
+      "0e35ab823c02edecb1ea1bc2c9c60403f7c97798e98b8f6ea116cb8ea95ec9c7"
+    ],
+    "readOnlyInventory": true,
+    "reinstalledDuringInventory": false,
+    "sourceReceiptSha256": "54d814f6271a9b4b907c770082a7bd2ac24d7468c16c4d18b5ce4b55f58f396b"
+  },
+  "postUpgradeProtocolChecks": {
+    "atUtc": "2026-11-11T05:01:50.120473+00:00",
+    "runtimeVersion": "0.19.0",
+    "runtimeSourceCommit": "cadaecbf9cf1661e28464fe68b7b866f68fecabe",
+    "runtimeRegistrationReadback": {
+      "sha256": "22260ed9ce3278a45ae7d0d85e93597dd09d5a9268e4e659ed6bc5d64b75da1a",
+      "applicationMatchesInstalled": true,
+      "installedSourceCommit": "cadaecbf9cf1661e28464fe68b7b866f68fecabe",
+      "fields": ["application", "schemaVersion"]
+    },
+    "nativeClaudeMcpList": {
+      "exitCode": 0,
+      "huandengConnected": true,
+      "lineCount": 1,
+      "modelCalled": false
+    },
+    "sourceFilesUnchanged": 54,
+    "dshProfileFilesUnchanged": true,
+    "configWritesPerformed": false,
+    "modelOrAccountOverride": false,
+    "authoringTaskClaimed": false,
+    "defaultInstalledClients": [
+      {
+        "client": "codex",
+        "defaultPackageFilesMatched": 24,
+        "runtimeVersion": "0.19.0",
+        "runtimeDiscoveredBy": "running-editor",
+        "protocolVerified": true,
+        "modelTaskVerified": false,
+        "toolCount": 22,
+        "server": {
+          "name": "HUANDENG Plugin",
+          "version": "0.9.0"
+        },
+        "skillSha256": "f4188e0934e7846346e286286041f49592bec3231747caa99d0b7b32dd9d016b",
+        "runtimeStoryGuideSha256": "411af8cf93141680a51a73586d20aaf990f2c2850caf6cfdd2caca8fdc15382c",
+        "pages": 24
+      },
+      {
+        "client": "claude",
+        "defaultPackageFilesMatched": 24,
+        "runtimeVersion": "0.19.0",
+        "runtimeDiscoveredBy": "running-editor",
+        "protocolVerified": true,
+        "modelTaskVerified": false,
+        "toolCount": 22,
+        "server": {
+          "name": "HUANDENG Plugin",
+          "version": "0.9.0"
+        },
+        "skillSha256": "f4188e0934e7846346e286286041f49592bec3231747caa99d0b7b32dd9d016b",
+        "runtimeStoryGuideSha256": "411af8cf93141680a51a73586d20aaf990f2c2850caf6cfdd2caca8fdc15382c",
+        "pages": 24
+      },
+      {
+        "client": "deepseek",
+        "defaultPackageFilesMatched": 24,
+        "runtimeVersion": "0.19.0",
+        "runtimeDiscoveredBy": "running-editor",
+        "protocolVerified": true,
+        "modelTaskVerified": false,
+        "toolCount": 22,
+        "server": {
+          "name": "HUANDENG Plugin",
+          "version": "0.9.0"
+        },
+        "skillSha256": "f4188e0934e7846346e286286041f49592bec3231747caa99d0b7b32dd9d016b",
+        "runtimeStoryGuideSha256": "411af8cf93141680a51a73586d20aaf990f2c2850caf6cfdd2caca8fdc15382c",
+        "pages": 24
+      }
+    ],
+    "sourceReceiptSha256": "3377acec026b3cdd61133c51f30648dac374e6e7193b779787646a6e805d949f",
+    "serverInfoVersionMeaning": {
+      "observedServerInfo": {
+        "name": "HUANDENG Plugin",
+        "version": "0.9.0"
+      },
+      "sourcePath": "packages/core/src/pptd/mcp.ts",
+      "sourceFunction": "createMcpServer",
+      "meaning": "A legacy literal in the core MCP server implementation; it is not read from the plugin manifest or installed Editor version.",
+      "packageVersion": "0.19.0",
+      "editorRuntimeVersion": "0.19.0",
+      "allVersionFieldsEqual": false
+    }
+  },
+  "runtimeRegistrationUpgrade": {
+    "atUtc": "2026-11-11T02:37:09.973381+00:00",
+    "executed": true,
+    "beforeSha256": "15b760859cfebb66fa4fc0226eb48ac2000883d2a2e4c9a59fcf539cecdfb953",
+    "afterSha256": "22260ed9ce3278a45ae7d0d85e93597dd09d5a9268e4e659ed6bc5d64b75da1a",
+    "sourceCommit": "aff4ac28753bb2d4422f2f993f2409742afaecf9",
+    "version": "0.19.0",
+    "changedFields": ["application"],
+    "unknownFieldsPreserved": true,
+    "aclUnchanged": true,
+    "profilesModified": false,
+    "accountModelSessionStoreModified": false,
+    "cleanPackageMarkerSha256": "6eb99e8fd2f3b0f0ad005b6ebc6adbd43e029b8a49d75f6fa6b592d9b77847cf",
+    "knownRegistrationTimestampFields": [],
+    "target": "Existing application field in the HUANDENG-owned runtime registration",
+    "sourceReceiptSha256": "5ecb69afe36053c35418fcc5ee7c577be2a308308787df4cc444db2c5c24f818"
+  },
+  "desktopRuntimeRemount": {
+    "atUtc": "2026-11-11T05:01:29.498830+00:00",
+    "nativeHostMainAndBackendPreserved": true,
+    "runtimeVersion": "0.19.0",
+    "runtimeSourceCommit": "cadaecbf9cf1661e28464fe68b7b866f68fecabe",
+    "transportsCreatedAfter": "2026-11-11T04:54:15.9780368Z",
+    "oldCoreTransportsRemaining": 0,
+    "newCoreTransports": 6,
+    "nativeFilesMatched": 36,
+    "entries": ["chatgpt-en", "chatgpt-zh", "claude-en", "claude-zh", "deepseek-en", "deepseek-zh"],
+    "manifestSha256": "aacc8106c15e5970999181ae23783686b0a5f5297fbe1a75a409c9edf696d4b8",
+    "readOnly": true,
+    "sourceReceiptSha256": "ac8b65b9a23d671c4eec5f59faf696883210f306c1fe7f428d94e967cc3a5f95"
+  },
+  "hostIdentityEvidence": "host-plugin-identities.json",
+  "nativeAuthoringRecovery": {
+    "evidence": "../../../examples/huandeng-introduction/deepseek-en/evidence/product-trial.json",
+    "evidenceSha256": "9d81570bb0067fde5ec6623bb0ee86ddac4c8fc53cd98eb1944f076041492bcb",
+    "failedPriorTurns": 3,
+    "sameOriginalSession": true,
+    "strictOneOperationPerCall": true,
+    "completedContinuation": true,
+    "exitCode": 0,
+    "toolCalls": 103,
+    "sequentialExports": 2,
+    "mainPages": 22,
+    "authorAccepted": false,
+    "trialNativeManifestSha256": "db0ef319d1ebfaccabbedfa16fe8509e8e4c4b4e753483710fd2d78f1ac4cf44"
+  }
+}

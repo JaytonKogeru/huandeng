@@ -1,0 +1,773 @@
+{
+  "schemaVersion": 1,
+  "scope": "Images used by active Main pages",
+  "images": [
+    {
+      "path": "../media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+      "sha256": "6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef",
+      "usedIn": [
+        {
+          "position": 1,
+          "slideId": "SAHG",
+          "elementId": "mark"
+        },
+        {
+          "position": 3,
+          "slideId": "FNHB",
+          "elementId": "ft-mark"
+        },
+        {
+          "position": 4,
+          "slideId": "KS6E",
+          "elementId": "ft-mark"
+        },
+        {
+          "position": 5,
+          "slideId": "2723",
+          "elementId": "ft-mark"
+        },
+        {
+          "position": 6,
+          "slideId": "GZBW",
+          "elementId": "ft-mark"
+        },
+        {
+          "position": 8,
+          "slideId": "2UCC",
+          "elementId": "editor-mark"
+        },
+        {
+          "position": 8,
+          "slideId": "2UCC",
+          "elementId": "ft-mark"
+        },
+        {
+          "position": 9,
+          "slideId": "3DUH",
+          "elementId": "ft-mark"
+        },
+        {
+          "position": 10,
+          "slideId": "SSFR",
+          "elementId": "ft-mark"
+        },
+        {
+          "position": 12,
+          "slideId": "BRHY",
+          "elementId": "ft-mark"
+        },
+        {
+          "position": 13,
+          "slideId": "3D9R",
+          "elementId": "ft-mark"
+        },
+        {
+          "position": 14,
+          "slideId": "A9FE",
+          "elementId": "ft-mark"
+        },
+        {
+          "position": 15,
+          "slideId": "GBXR",
+          "elementId": "ft-mark"
+        },
+        {
+          "position": 16,
+          "slideId": "3442",
+          "elementId": "ft-mark"
+        },
+        {
+          "position": 18,
+          "slideId": "ZWM9",
+          "elementId": "ft-mark"
+        },
+        {
+          "position": 19,
+          "slideId": "DY5H",
+          "elementId": "ft-mark"
+        },
+        {
+          "position": 20,
+          "slideId": "D26F",
+          "elementId": "ft-mark"
+        },
+        {
+          "position": 22,
+          "slideId": "FK8W",
+          "elementId": "plugin-mark"
+        },
+        {
+          "position": 22,
+          "slideId": "FK8W",
+          "elementId": "ft-mark"
+        },
+        {
+          "position": 23,
+          "slideId": "7K3P",
+          "elementId": "ft-mark"
+        },
+        {
+          "position": 24,
+          "slideId": "J28N",
+          "elementId": "ft-mark"
+        },
+        {
+          "position": 25,
+          "slideId": "YS6V",
+          "elementId": "ft-mark"
+        },
+        {
+          "position": 26,
+          "slideId": "BDTW",
+          "elementId": "mark"
+        }
+      ],
+      "pixels": [512, 512],
+      "publicInput": {
+        "source": "brand/huandeng.png",
+        "kind": "brand",
+        "use": "Default HUANDENG mark; exact pixels used on the original introduction cover and footers."
+      }
+    },
+    {
+      "path": "../media/imported/ff6d1434a44440fba124ccad7dfa30efa01e8c400094d4453d17d502345c1e2c.png",
+      "sha256": "ff6d1434a44440fba124ccad7dfa30efa01e8c400094d4453d17d502345c1e2c",
+      "usedIn": [
+        {
+          "position": 1,
+          "slideId": "SAHG",
+          "elementId": "structure"
+        },
+        {
+          "position": 12,
+          "slideId": "BRHY",
+          "elementId": "structure"
+        }
+      ],
+      "pixels": [1572, 1572],
+      "publicInput": {
+        "source": "science/dna-duplex-side.png",
+        "kind": "public-scientific-worked-example",
+        "use": "Optional exact-coordinate demonstration; read science/README.md and source.json before use."
+      }
+    },
+    {
+      "path": "../media/imported/999b519e23de475d7b6d3773ba51dab3d658e27d9274e1b6942141af20b50468.png",
+      "sha256": "999b519e23de475d7b6d3773ba51dab3d658e27d9274e1b6942141af20b50468",
+      "usedIn": [
+        {
+          "position": 3,
+          "slideId": "FNHB",
+          "elementId": "prev"
+        }
+      ],
+      "pixels": [1960, 1740]
+    },
+    {
+      "path": "../media/imported/addec469960657bbe7cc1896c11a1c1c506151ce1ec8726ab168ad54035fe55c.png",
+      "sha256": "addec469960657bbe7cc1896c11a1c1c506151ce1ec8726ab168ad54035fe55c",
+      "usedIn": [
+        {
+          "position": 5,
+          "slideId": "2723",
+          "elementId": "pixels"
+        },
+        {
+          "position": 9,
+          "slideId": "3DUH",
+          "elementId": "stack1"
+        },
+        {
+          "position": 20,
+          "slideId": "D26F",
+          "elementId": "stack1"
+        },
+        {
+          "position": 20,
+          "slideId": "D26F",
+          "elementId": "lab5"
+        }
+      ],
+      "pixels": [640, 360]
+    },
+    {
+      "path": "../media/imported/44e2a2aa5f3887deae386fa73f71234961f93e006873b632ccf38b6b6f1291a1.png",
+      "sha256": "44e2a2aa5f3887deae386fa73f71234961f93e006873b632ccf38b6b6f1291a1",
+      "usedIn": [
+        {
+          "position": 8,
+          "slideId": "2UCC",
+          "elementId": "os-logo"
+        },
+        {
+          "position": 25,
+          "slideId": "YS6V",
+          "elementId": "os-logo"
+        }
+      ],
+      "pixels": [512, 512],
+      "publicInput": {
+        "source": "brand/open-slide.png",
+        "kind": "brand",
+        "use": "Editor code foundation."
+      }
+    },
+    {
+      "path": "../media/imported/139908f5af1e263e63d40bf985acdb4824583483a7067517d885aacc861163bd.png",
+      "sha256": "139908f5af1e263e63d40bf985acdb4824583483a7067517d885aacc861163bd",
+      "usedIn": [
+        {
+          "position": 9,
+          "slideId": "3DUH",
+          "elementId": "stack0"
+        },
+        {
+          "position": 20,
+          "slideId": "D26F",
+          "elementId": "stack0"
+        },
+        {
+          "position": 20,
+          "slideId": "D26F",
+          "elementId": "lab8"
+        }
+      ],
+      "pixels": [640, 360]
+    },
+    {
+      "path": "../media/imported/e902a43b7e7fbbecc1ebf129bcc3b39e4359a321beda7f122435e93fd41e15ed.png",
+      "sha256": "e902a43b7e7fbbecc1ebf129bcc3b39e4359a321beda7f122435e93fd41e15ed",
+      "usedIn": [
+        {
+          "position": 9,
+          "slideId": "3DUH",
+          "elementId": "stack2"
+        },
+        {
+          "position": 20,
+          "slideId": "D26F",
+          "elementId": "stack2"
+        },
+        {
+          "position": 20,
+          "slideId": "D26F",
+          "elementId": "lab1"
+        }
+      ],
+      "pixels": [640, 360]
+    },
+    {
+      "path": "../media/imported/c36ad119b97a82db8ae3dde5b04fd9853151f34ab4ed8b49cec5352594775961.png",
+      "sha256": "c36ad119b97a82db8ae3dde5b04fd9853151f34ab4ed8b49cec5352594775961",
+      "usedIn": [
+        {
+          "position": 10,
+          "slideId": "SSFR",
+          "elementId": "shot"
+        }
+      ],
+      "pixels": [3840, 2160],
+      "publicInput": {
+        "source": "recommended/zh-CN/zh-CN-native-edit-overview-2x.png",
+        "kind": "actual-ui",
+        "locale": "zh-CN",
+        "use": "edit-overview"
+      }
+    },
+    {
+      "path": "../media/imported/a2e5fe82bdef7371736c75dad7d686f7e06abc68b160063d44fef402651defb0.png",
+      "sha256": "a2e5fe82bdef7371736c75dad7d686f7e06abc68b160063d44fef402651defb0",
+      "usedIn": [
+        {
+          "position": 13,
+          "slideId": "3D9R",
+          "elementId": "story-shot"
+        }
+      ],
+      "pixels": [1196, 1060],
+      "publicInput": {
+        "source": "recommended/zh-CN/zh-CN-native-focused-story-4x.png",
+        "kind": "actual-ui",
+        "locale": "zh-CN",
+        "use": "focused-story"
+      }
+    },
+    {
+      "path": "../media/imported/f5455f5cada808cb66355a623d9d2e07d5e8645a0e4cdd0ecc97220c7ab96bd5.png",
+      "sha256": "f5455f5cada808cb66355a623d9d2e07d5e8645a0e4cdd0ecc97220c7ab96bd5",
+      "usedIn": [
+        {
+          "position": 14,
+          "slideId": "A9FE",
+          "elementId": "outline-shot"
+        }
+      ],
+      "pixels": [4448, 1480],
+      "publicInput": {
+        "source": "recommended/zh-CN/zh-CN-native-outline-reading-4x.png",
+        "kind": "actual-ui",
+        "locale": "zh-CN",
+        "use": "outline-reading"
+      }
+    },
+    {
+      "path": "../media/imported/fdcacc35c15b7a7b76d70ef9f713c605c20a7e8ca450703b6343ac8bc722bd3e.png",
+      "sha256": "fdcacc35c15b7a7b76d70ef9f713c605c20a7e8ca450703b6343ac8bc722bd3e",
+      "usedIn": [
+        {
+          "position": 15,
+          "slideId": "GBXR",
+          "elementId": "before-shot"
+        }
+      ],
+      "pixels": [3152, 1780],
+      "publicInput": {
+        "source": "recommended/zh-CN/zh-CN-native-edit-before-4x.png",
+        "kind": "actual-ui",
+        "locale": "zh-CN",
+        "use": "edit-before"
+      }
+    },
+    {
+      "path": "../media/imported/1590b6d7b420e2502709c533628c4fc0a0ef2278c8b6798d1f6fa8272f9059fc.png",
+      "sha256": "1590b6d7b420e2502709c533628c4fc0a0ef2278c8b6798d1f6fa8272f9059fc",
+      "usedIn": [
+        {
+          "position": 15,
+          "slideId": "GBXR",
+          "elementId": "after-shot"
+        }
+      ],
+      "pixels": [3152, 1780],
+      "publicInput": {
+        "source": "recommended/zh-CN/zh-CN-native-edit-after-4x.png",
+        "kind": "actual-ui",
+        "locale": "zh-CN",
+        "use": "edit-after"
+      }
+    },
+    {
+      "path": "../media/imported/1f8c227e7a8a73ed668c788e46d631f17b6e6f577e9f66479d5e693fbd71d867.png",
+      "sha256": "1f8c227e7a8a73ed668c788e46d631f17b6e6f577e9f66479d5e693fbd71d867",
+      "usedIn": [
+        {
+          "position": 16,
+          "slideId": "3442",
+          "elementId": "shot"
+        }
+      ],
+      "pixels": [4400, 3280],
+      "publicInput": {
+        "source": "recommended/zh-CN/zh-CN-native-operation-review-4x.png",
+        "kind": "actual-ui",
+        "locale": "zh-CN",
+        "use": "operation-review"
+      }
+    },
+    {
+      "path": "../media/imported/56ef1c090dfe6c7ef847c12ea2f9ed6ef7a90dfd51efd5d5cc23f4e542356b58.png",
+      "sha256": "56ef1c090dfe6c7ef847c12ea2f9ed6ef7a90dfd51efd5d5cc23f4e542356b58",
+      "usedIn": [
+        {
+          "position": 18,
+          "slideId": "ZWM9",
+          "elementId": "before"
+        }
+      ],
+      "pixels": [1440, 180],
+      "publicInput": {
+        "source": "recommended/zh-CN/zh-CN-identity-before-4x.png",
+        "kind": "actual-ui",
+        "locale": "zh-CN",
+        "use": "identity-before"
+      }
+    },
+    {
+      "path": "../media/imported/99a0f26c40f623b347b71bf756622aec243fecbc66a1b031013d57de71448afe.png",
+      "sha256": "99a0f26c40f623b347b71bf756622aec243fecbc66a1b031013d57de71448afe",
+      "usedIn": [
+        {
+          "position": 18,
+          "slideId": "ZWM9",
+          "elementId": "after"
+        }
+      ],
+      "pixels": [1440, 180],
+      "publicInput": {
+        "source": "recommended/zh-CN/zh-CN-identity-after-4x.png",
+        "kind": "actual-ui",
+        "locale": "zh-CN",
+        "use": "identity-after"
+      }
+    },
+    {
+      "path": "../media/imported/0f856d8826c729d24034a9b44834bca1de9424bc8a2090c9d12e3da901ec571a.png",
+      "sha256": "0f856d8826c729d24034a9b44834bca1de9424bc8a2090c9d12e3da901ec571a",
+      "usedIn": [
+        {
+          "position": 18,
+          "slideId": "ZWM9",
+          "elementId": "browse-shot"
+        }
+      ],
+      "pixels": [2192, 1220],
+      "publicInput": {
+        "source": "recommended/zh-CN/zh-CN-native-browse-reading-4x.png",
+        "kind": "actual-ui",
+        "locale": "zh-CN",
+        "use": "browse-reading"
+      }
+    },
+    {
+      "path": "../media/imported/4d42e5f1558e1b2f448e5b87abd12e17eb56b62c64853eda8b401cc93ad67b4b.png",
+      "sha256": "4d42e5f1558e1b2f448e5b87abd12e17eb56b62c64853eda8b401cc93ad67b4b",
+      "usedIn": [
+        {
+          "position": 19,
+          "slideId": "DY5H",
+          "elementId": "history-shot"
+        }
+      ],
+      "pixels": [4608, 3028],
+      "publicInput": {
+        "source": "recommended/zh-CN/zh-CN-native-history-change-4x.png",
+        "kind": "actual-ui",
+        "locale": "zh-CN",
+        "use": "history-change"
+      }
+    },
+    {
+      "path": "../media/imported/afe675bef8594c3328129632115e6befdec36ffc2a7ad347cf1d754662ee6d07.png",
+      "sha256": "afe675bef8594c3328129632115e6befdec36ffc2a7ad347cf1d754662ee6d07",
+      "usedIn": [
+        {
+          "position": 20,
+          "slideId": "D26F",
+          "elementId": "seq-shot"
+        }
+      ],
+      "pixels": [1596, 1216],
+      "publicInput": {
+        "source": "recommended/zh-CN/zh-CN-native-project-sequences-4x.png",
+        "kind": "actual-ui",
+        "locale": "zh-CN",
+        "use": "project-sequences"
+      }
+    },
+    {
+      "path": "../media/imported/a093995fccfaaf4067908cb974e770022131e26fc0fc7c58c4493903da0d2892.png",
+      "sha256": "a093995fccfaaf4067908cb974e770022131e26fc0fc7c58c4493903da0d2892",
+      "usedIn": [
+        {
+          "position": 20,
+          "slideId": "D26F",
+          "elementId": "lab2"
+        }
+      ],
+      "pixels": [640, 360]
+    },
+    {
+      "path": "../media/imported/5701dd54487fe7ad05ea9617e5b2215e4a791fa48b3ac9bd0d1cd4053ded39f8.png",
+      "sha256": "5701dd54487fe7ad05ea9617e5b2215e4a791fa48b3ac9bd0d1cd4053ded39f8",
+      "usedIn": [
+        {
+          "position": 20,
+          "slideId": "D26F",
+          "elementId": "lab3"
+        }
+      ],
+      "pixels": [640, 360]
+    },
+    {
+      "path": "../media/imported/793498a33d301c1060c803ee845bd505c0c4cb6f4decd6fff5a7c0baf3393edd.png",
+      "sha256": "793498a33d301c1060c803ee845bd505c0c4cb6f4decd6fff5a7c0baf3393edd",
+      "usedIn": [
+        {
+          "position": 20,
+          "slideId": "D26F",
+          "elementId": "lab4"
+        }
+      ],
+      "pixels": [640, 360]
+    },
+    {
+      "path": "../media/imported/8ee7fe6f7ac361f67129f4b30eb4470726fd54c777f5c65042dbbc9be684faf8.png",
+      "sha256": "8ee7fe6f7ac361f67129f4b30eb4470726fd54c777f5c65042dbbc9be684faf8",
+      "usedIn": [
+        {
+          "position": 20,
+          "slideId": "D26F",
+          "elementId": "lab6"
+        }
+      ],
+      "pixels": [640, 360]
+    },
+    {
+      "path": "../media/imported/fde6b4fc5610efeb84425fc14ce24207748a08026f4db53cb3c0868879f6d475.png",
+      "sha256": "fde6b4fc5610efeb84425fc14ce24207748a08026f4db53cb3c0868879f6d475",
+      "usedIn": [
+        {
+          "position": 20,
+          "slideId": "D26F",
+          "elementId": "lab7"
+        }
+      ],
+      "pixels": [640, 360]
+    },
+    {
+      "path": "../media/imported/c794bd8788cecac51d34496ff01935f3fe368e517fe61fed61f0055244e1d410.png",
+      "sha256": "c794bd8788cecac51d34496ff01935f3fe368e517fe61fed61f0055244e1d410",
+      "usedIn": [
+        {
+          "position": 20,
+          "slideId": "D26F",
+          "elementId": "lab9"
+        }
+      ],
+      "pixels": [640, 360]
+    },
+    {
+      "path": "../media/imported/2ce1c57dd3b312417106a487815ab1235bddce17e1fa9b32a2f048bd71ee25d3.png",
+      "sha256": "2ce1c57dd3b312417106a487815ab1235bddce17e1fa9b32a2f048bd71ee25d3",
+      "usedIn": [
+        {
+          "position": 22,
+          "slideId": "FK8W",
+          "elementId": "codex-logo"
+        }
+      ],
+      "pixels": [385, 385],
+      "publicInput": {
+        "source": "brand/codex.png",
+        "kind": "brand",
+        "use": "Official OpenAI Codex extension icon; keep product text Codex beside it."
+      }
+    },
+    {
+      "path": "../media/imported/733f24f4c52acb15eb0fbded1cf40eb42b4ba8e62b882acac70b6234b50919a8.png",
+      "sha256": "733f24f4c52acb15eb0fbded1cf40eb42b4ba8e62b882acac70b6234b50919a8",
+      "usedIn": [
+        {
+          "position": 22,
+          "slideId": "FK8W",
+          "elementId": "claude-logo"
+        }
+      ],
+      "pixels": [192, 192],
+      "publicInput": {
+        "source": "brand/claude-code.png",
+        "kind": "brand",
+        "use": "Claude product mark used beside Claude Code; not an exclusive Code symbol."
+      }
+    },
+    {
+      "path": "../media/imported/e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc.png",
+      "sha256": "e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc",
+      "usedIn": [
+        {
+          "position": 22,
+          "slideId": "FK8W",
+          "elementId": "deepseek-logo"
+        }
+      ],
+      "pixels": [460, 460],
+      "publicInput": {
+        "source": "brand/deepseek.png",
+        "kind": "brand",
+        "use": "DeepSeek official organization mark; not a separate Harness logo."
+      }
+    },
+    {
+      "path": "../media/imported/0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13.png",
+      "sha256": "0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13",
+      "usedIn": [
+        {
+          "position": 22,
+          "slideId": "FK8W",
+          "elementId": "chatgpt-logo"
+        }
+      ],
+      "pixels": [720, 720],
+      "publicInput": {
+        "source": "brand/chatgpt.png",
+        "kind": "brand",
+        "use": "ChatGPT official mark."
+      }
+    },
+    {
+      "path": "../media/imported/1e6586bf8fce075f9426da199ac19b23b0f1665699c017abd73b2590a28fc891.png",
+      "sha256": "1e6586bf8fce075f9426da199ac19b23b0f1665699c017abd73b2590a28fc891",
+      "usedIn": [
+        {
+          "position": 24,
+          "slideId": "J28N",
+          "elementId": "check-shot"
+        }
+      ],
+      "pixels": [2700, 2128]
+    },
+    {
+      "path": "../media/imported/93c7ba236a204f434045f9c9f62d0f3be06736b95537ab6b134ef63d35273448.png",
+      "sha256": "93c7ba236a204f434045f9c9f62d0f3be06736b95537ab6b134ef63d35273448",
+      "usedIn": [
+        {
+          "position": 24,
+          "slideId": "J28N",
+          "elementId": "export-shot"
+        }
+      ],
+      "pixels": [2304, 1088],
+      "publicInput": {
+        "source": "recommended/zh-CN/zh-CN-native-export-4x.png",
+        "kind": "actual-ui",
+        "locale": "zh-CN",
+        "use": "export"
+      }
+    },
+    {
+      "path": "../media/imported/10ee990c863d150d06ac8ef7125b31d3f5857d0fcbce91c21960ba49eca87e96.png",
+      "sha256": "10ee990c863d150d06ac8ef7125b31d3f5857d0fcbce91c21960ba49eca87e96",
+      "usedIn": [
+        {
+          "position": 24,
+          "slideId": "J28N",
+          "elementId": "present-shot"
+        }
+      ],
+      "pixels": [656, 288],
+      "publicInput": {
+        "source": "recommended/zh-CN/zh-CN-native-present-menu-4x.png",
+        "kind": "actual-ui",
+        "locale": "zh-CN",
+        "use": "present-menu"
+      }
+    },
+    {
+      "path": "../media/imported/2a2f5cbcc74c7fa83c40127dd8b0e42c23f1157131aebe28492aa1ac27bbdc6d.png",
+      "sha256": "2a2f5cbcc74c7fa83c40127dd8b0e42c23f1157131aebe28492aa1ac27bbdc6d",
+      "usedIn": [
+        {
+          "position": 25,
+          "slideId": "YS6V",
+          "elementId": "op-logo"
+        }
+      ],
+      "pixels": [294, 288],
+      "publicInput": {
+        "source": "brand/github-repository.png",
+        "kind": "brand",
+        "use": "GitHub repository symbol used beside OpenPPTD; not an OpenPPTD logo."
+      }
+    },
+    {
+      "path": "../media/imported/d697acf6f3c5bc265806bc8f6c4e6d58b964e0b2962392d0329a420639f45846.png",
+      "sha256": "d697acf6f3c5bc265806bc8f6c4e6d58b964e0b2962392d0329a420639f45846",
+      "usedIn": [
+        {
+          "position": 25,
+          "slideId": "YS6V",
+          "elementId": "pg-logo"
+        }
+      ],
+      "pixels": [480, 349],
+      "publicInput": {
+        "source": "brand/pptxgenjs.png",
+        "kind": "brand",
+        "use": "PPTX export library."
+      }
+    }
+  ],
+  "originalAssetHashesPreserved": {
+    "media/.huandeng-versions/0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13.png": "0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13",
+    "media/.huandeng-versions/0f856d8826c729d24034a9b44834bca1de9424bc8a2090c9d12e3da901ec571a.png": "0f856d8826c729d24034a9b44834bca1de9424bc8a2090c9d12e3da901ec571a",
+    "media/.huandeng-versions/10ee990c863d150d06ac8ef7125b31d3f5857d0fcbce91c21960ba49eca87e96.png": "10ee990c863d150d06ac8ef7125b31d3f5857d0fcbce91c21960ba49eca87e96",
+    "media/.huandeng-versions/139908f5af1e263e63d40bf985acdb4824583483a7067517d885aacc861163bd.png": "139908f5af1e263e63d40bf985acdb4824583483a7067517d885aacc861163bd",
+    "media/.huandeng-versions/1590b6d7b420e2502709c533628c4fc0a0ef2278c8b6798d1f6fa8272f9059fc.png": "1590b6d7b420e2502709c533628c4fc0a0ef2278c8b6798d1f6fa8272f9059fc",
+    "media/.huandeng-versions/1e6586bf8fce075f9426da199ac19b23b0f1665699c017abd73b2590a28fc891.png": "1e6586bf8fce075f9426da199ac19b23b0f1665699c017abd73b2590a28fc891",
+    "media/.huandeng-versions/1f8c227e7a8a73ed668c788e46d631f17b6e6f577e9f66479d5e693fbd71d867.png": "1f8c227e7a8a73ed668c788e46d631f17b6e6f577e9f66479d5e693fbd71d867",
+    "media/.huandeng-versions/2a2f5cbcc74c7fa83c40127dd8b0e42c23f1157131aebe28492aa1ac27bbdc6d.png": "2a2f5cbcc74c7fa83c40127dd8b0e42c23f1157131aebe28492aa1ac27bbdc6d",
+    "media/.huandeng-versions/2ce1c57dd3b312417106a487815ab1235bddce17e1fa9b32a2f048bd71ee25d3.png": "2ce1c57dd3b312417106a487815ab1235bddce17e1fa9b32a2f048bd71ee25d3",
+    "media/.huandeng-versions/44e2a2aa5f3887deae386fa73f71234961f93e006873b632ccf38b6b6f1291a1.png": "44e2a2aa5f3887deae386fa73f71234961f93e006873b632ccf38b6b6f1291a1",
+    "media/.huandeng-versions/4d42e5f1558e1b2f448e5b87abd12e17eb56b62c64853eda8b401cc93ad67b4b.png": "4d42e5f1558e1b2f448e5b87abd12e17eb56b62c64853eda8b401cc93ad67b4b",
+    "media/.huandeng-versions/56ef1c090dfe6c7ef847c12ea2f9ed6ef7a90dfd51efd5d5cc23f4e542356b58.png": "56ef1c090dfe6c7ef847c12ea2f9ed6ef7a90dfd51efd5d5cc23f4e542356b58",
+    "media/.huandeng-versions/5701dd54487fe7ad05ea9617e5b2215e4a791fa48b3ac9bd0d1cd4053ded39f8.png": "5701dd54487fe7ad05ea9617e5b2215e4a791fa48b3ac9bd0d1cd4053ded39f8",
+    "media/.huandeng-versions/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png": "6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef",
+    "media/.huandeng-versions/733f24f4c52acb15eb0fbded1cf40eb42b4ba8e62b882acac70b6234b50919a8.png": "733f24f4c52acb15eb0fbded1cf40eb42b4ba8e62b882acac70b6234b50919a8",
+    "media/.huandeng-versions/793498a33d301c1060c803ee845bd505c0c4cb6f4decd6fff5a7c0baf3393edd.png": "793498a33d301c1060c803ee845bd505c0c4cb6f4decd6fff5a7c0baf3393edd",
+    "media/.huandeng-versions/8ee7fe6f7ac361f67129f4b30eb4470726fd54c777f5c65042dbbc9be684faf8.png": "8ee7fe6f7ac361f67129f4b30eb4470726fd54c777f5c65042dbbc9be684faf8",
+    "media/.huandeng-versions/93c7ba236a204f434045f9c9f62d0f3be06736b95537ab6b134ef63d35273448.png": "93c7ba236a204f434045f9c9f62d0f3be06736b95537ab6b134ef63d35273448",
+    "media/.huandeng-versions/999b519e23de475d7b6d3773ba51dab3d658e27d9274e1b6942141af20b50468.png": "999b519e23de475d7b6d3773ba51dab3d658e27d9274e1b6942141af20b50468",
+    "media/.huandeng-versions/99a0f26c40f623b347b71bf756622aec243fecbc66a1b031013d57de71448afe.png": "99a0f26c40f623b347b71bf756622aec243fecbc66a1b031013d57de71448afe",
+    "media/.huandeng-versions/a093995fccfaaf4067908cb974e770022131e26fc0fc7c58c4493903da0d2892.png": "a093995fccfaaf4067908cb974e770022131e26fc0fc7c58c4493903da0d2892",
+    "media/.huandeng-versions/a2e5fe82bdef7371736c75dad7d686f7e06abc68b160063d44fef402651defb0.png": "a2e5fe82bdef7371736c75dad7d686f7e06abc68b160063d44fef402651defb0",
+    "media/.huandeng-versions/addec469960657bbe7cc1896c11a1c1c506151ce1ec8726ab168ad54035fe55c.png": "addec469960657bbe7cc1896c11a1c1c506151ce1ec8726ab168ad54035fe55c",
+    "media/.huandeng-versions/afe675bef8594c3328129632115e6befdec36ffc2a7ad347cf1d754662ee6d07.png": "afe675bef8594c3328129632115e6befdec36ffc2a7ad347cf1d754662ee6d07",
+    "media/.huandeng-versions/c36ad119b97a82db8ae3dde5b04fd9853151f34ab4ed8b49cec5352594775961.png": "c36ad119b97a82db8ae3dde5b04fd9853151f34ab4ed8b49cec5352594775961",
+    "media/.huandeng-versions/c794bd8788cecac51d34496ff01935f3fe368e517fe61fed61f0055244e1d410.png": "c794bd8788cecac51d34496ff01935f3fe368e517fe61fed61f0055244e1d410",
+    "media/.huandeng-versions/d697acf6f3c5bc265806bc8f6c4e6d58b964e0b2962392d0329a420639f45846.png": "d697acf6f3c5bc265806bc8f6c4e6d58b964e0b2962392d0329a420639f45846",
+    "media/.huandeng-versions/e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc.png": "e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc",
+    "media/.huandeng-versions/e902a43b7e7fbbecc1ebf129bcc3b39e4359a321beda7f122435e93fd41e15ed.png": "e902a43b7e7fbbecc1ebf129bcc3b39e4359a321beda7f122435e93fd41e15ed",
+    "media/.huandeng-versions/f5455f5cada808cb66355a623d9d2e07d5e8645a0e4cdd0ecc97220c7ab96bd5.png": "f5455f5cada808cb66355a623d9d2e07d5e8645a0e4cdd0ecc97220c7ab96bd5",
+    "media/.huandeng-versions/fdcacc35c15b7a7b76d70ef9f713c605c20a7e8ca450703b6343ac8bc722bd3e.png": "fdcacc35c15b7a7b76d70ef9f713c605c20a7e8ca450703b6343ac8bc722bd3e",
+    "media/.huandeng-versions/fde6b4fc5610efeb84425fc14ce24207748a08026f4db53cb3c0868879f6d475.png": "fde6b4fc5610efeb84425fc14ce24207748a08026f4db53cb3c0868879f6d475",
+    "media/.huandeng-versions/ff6d1434a44440fba124ccad7dfa30efa01e8c400094d4453d17d502345c1e2c.png": "ff6d1434a44440fba124ccad7dfa30efa01e8c400094d4453d17d502345c1e2c",
+    "media/imported/0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13.png": "0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13",
+    "media/imported/0f856d8826c729d24034a9b44834bca1de9424bc8a2090c9d12e3da901ec571a.png": "0f856d8826c729d24034a9b44834bca1de9424bc8a2090c9d12e3da901ec571a",
+    "media/imported/10ee990c863d150d06ac8ef7125b31d3f5857d0fcbce91c21960ba49eca87e96.png": "10ee990c863d150d06ac8ef7125b31d3f5857d0fcbce91c21960ba49eca87e96",
+    "media/imported/139908f5af1e263e63d40bf985acdb4824583483a7067517d885aacc861163bd.png": "139908f5af1e263e63d40bf985acdb4824583483a7067517d885aacc861163bd",
+    "media/imported/15179dfcf6c63e3accc20d483a17c8c608464c9b0745ac64c478d54c65e571fc.png": "15179dfcf6c63e3accc20d483a17c8c608464c9b0745ac64c478d54c65e571fc",
+    "media/imported/1590b6d7b420e2502709c533628c4fc0a0ef2278c8b6798d1f6fa8272f9059fc.png": "1590b6d7b420e2502709c533628c4fc0a0ef2278c8b6798d1f6fa8272f9059fc",
+    "media/imported/1e6586bf8fce075f9426da199ac19b23b0f1665699c017abd73b2590a28fc891.png": "1e6586bf8fce075f9426da199ac19b23b0f1665699c017abd73b2590a28fc891",
+    "media/imported/1f8c227e7a8a73ed668c788e46d631f17b6e6f577e9f66479d5e693fbd71d867.png": "1f8c227e7a8a73ed668c788e46d631f17b6e6f577e9f66479d5e693fbd71d867",
+    "media/imported/21fabc424f513dd09dd873134d8604b4d8518b2af74008945f693fd86ffeb7b8.png": "21fabc424f513dd09dd873134d8604b4d8518b2af74008945f693fd86ffeb7b8",
+    "media/imported/2a2f5cbcc74c7fa83c40127dd8b0e42c23f1157131aebe28492aa1ac27bbdc6d.png": "2a2f5cbcc74c7fa83c40127dd8b0e42c23f1157131aebe28492aa1ac27bbdc6d",
+    "media/imported/2ce1c57dd3b312417106a487815ab1235bddce17e1fa9b32a2f048bd71ee25d3.png": "2ce1c57dd3b312417106a487815ab1235bddce17e1fa9b32a2f048bd71ee25d3",
+    "media/imported/342088ed88ab8fffc8ce2651cd6fbf183244f5069c7907702a957eb9cf9fa18a.png": "342088ed88ab8fffc8ce2651cd6fbf183244f5069c7907702a957eb9cf9fa18a",
+    "media/imported/44e2a2aa5f3887deae386fa73f71234961f93e006873b632ccf38b6b6f1291a1.png": "44e2a2aa5f3887deae386fa73f71234961f93e006873b632ccf38b6b6f1291a1",
+    "media/imported/4746757e07edcb47fb7a31244b81eff453e6dd771bd3411daca09d04eedd6af7.png": "4746757e07edcb47fb7a31244b81eff453e6dd771bd3411daca09d04eedd6af7",
+    "media/imported/4d42e5f1558e1b2f448e5b87abd12e17eb56b62c64853eda8b401cc93ad67b4b.png": "4d42e5f1558e1b2f448e5b87abd12e17eb56b62c64853eda8b401cc93ad67b4b",
+    "media/imported/56ef1c090dfe6c7ef847c12ea2f9ed6ef7a90dfd51efd5d5cc23f4e542356b58.png": "56ef1c090dfe6c7ef847c12ea2f9ed6ef7a90dfd51efd5d5cc23f4e542356b58",
+    "media/imported/5701dd54487fe7ad05ea9617e5b2215e4a791fa48b3ac9bd0d1cd4053ded39f8.png": "5701dd54487fe7ad05ea9617e5b2215e4a791fa48b3ac9bd0d1cd4053ded39f8",
+    "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png": "6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef",
+    "media/imported/733f24f4c52acb15eb0fbded1cf40eb42b4ba8e62b882acac70b6234b50919a8.png": "733f24f4c52acb15eb0fbded1cf40eb42b4ba8e62b882acac70b6234b50919a8",
+    "media/imported/7838348f37e12103e3f6c75c1a2d9ccc77a6b1333310e25b67a05fbc1ff70207.png": "7838348f37e12103e3f6c75c1a2d9ccc77a6b1333310e25b67a05fbc1ff70207",
+    "media/imported/793498a33d301c1060c803ee845bd505c0c4cb6f4decd6fff5a7c0baf3393edd.png": "793498a33d301c1060c803ee845bd505c0c4cb6f4decd6fff5a7c0baf3393edd",
+    "media/imported/8ee7fe6f7ac361f67129f4b30eb4470726fd54c777f5c65042dbbc9be684faf8.png": "8ee7fe6f7ac361f67129f4b30eb4470726fd54c777f5c65042dbbc9be684faf8",
+    "media/imported/90224b9de26dfd919fa6c4ee7d57d55e7662100ddc9d7838b6123a6610640c2d.png": "90224b9de26dfd919fa6c4ee7d57d55e7662100ddc9d7838b6123a6610640c2d",
+    "media/imported/93c7ba236a204f434045f9c9f62d0f3be06736b95537ab6b134ef63d35273448.png": "93c7ba236a204f434045f9c9f62d0f3be06736b95537ab6b134ef63d35273448",
+    "media/imported/999b519e23de475d7b6d3773ba51dab3d658e27d9274e1b6942141af20b50468.png": "999b519e23de475d7b6d3773ba51dab3d658e27d9274e1b6942141af20b50468",
+    "media/imported/99a0f26c40f623b347b71bf756622aec243fecbc66a1b031013d57de71448afe.png": "99a0f26c40f623b347b71bf756622aec243fecbc66a1b031013d57de71448afe",
+    "media/imported/a093995fccfaaf4067908cb974e770022131e26fc0fc7c58c4493903da0d2892.png": "a093995fccfaaf4067908cb974e770022131e26fc0fc7c58c4493903da0d2892",
+    "media/imported/a2e5fe82bdef7371736c75dad7d686f7e06abc68b160063d44fef402651defb0.png": "a2e5fe82bdef7371736c75dad7d686f7e06abc68b160063d44fef402651defb0",
+    "media/imported/addec469960657bbe7cc1896c11a1c1c506151ce1ec8726ab168ad54035fe55c.png": "addec469960657bbe7cc1896c11a1c1c506151ce1ec8726ab168ad54035fe55c",
+    "media/imported/afe675bef8594c3328129632115e6befdec36ffc2a7ad347cf1d754662ee6d07.png": "afe675bef8594c3328129632115e6befdec36ffc2a7ad347cf1d754662ee6d07",
+    "media/imported/bd04c9ebb0e94cdaa5ba6c3a7df8d5ae1d35236933b3ca9ab297912d7b870530.png": "bd04c9ebb0e94cdaa5ba6c3a7df8d5ae1d35236933b3ca9ab297912d7b870530",
+    "media/imported/c36ad119b97a82db8ae3dde5b04fd9853151f34ab4ed8b49cec5352594775961.png": "c36ad119b97a82db8ae3dde5b04fd9853151f34ab4ed8b49cec5352594775961",
+    "media/imported/c794bd8788cecac51d34496ff01935f3fe368e517fe61fed61f0055244e1d410.png": "c794bd8788cecac51d34496ff01935f3fe368e517fe61fed61f0055244e1d410",
+    "media/imported/d5576a93749be3608a7127b9a45d7d92e62fa9f0258043a13835ac7c1d971e19.png": "d5576a93749be3608a7127b9a45d7d92e62fa9f0258043a13835ac7c1d971e19",
+    "media/imported/d697acf6f3c5bc265806bc8f6c4e6d58b964e0b2962392d0329a420639f45846.png": "d697acf6f3c5bc265806bc8f6c4e6d58b964e0b2962392d0329a420639f45846",
+    "media/imported/e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc.png": "e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc",
+    "media/imported/e902a43b7e7fbbecc1ebf129bcc3b39e4359a321beda7f122435e93fd41e15ed.png": "e902a43b7e7fbbecc1ebf129bcc3b39e4359a321beda7f122435e93fd41e15ed",
+    "media/imported/ea69ea682746c8afbea5975f2027f75ee424af20e8132a344f036d3e3d6d2274.png": "ea69ea682746c8afbea5975f2027f75ee424af20e8132a344f036d3e3d6d2274",
+    "media/imported/f5455f5cada808cb66355a623d9d2e07d5e8645a0e4cdd0ecc97220c7ab96bd5.png": "f5455f5cada808cb66355a623d9d2e07d5e8645a0e4cdd0ecc97220c7ab96bd5",
+    "media/imported/fdcacc35c15b7a7b76d70ef9f713c605c20a7e8ca450703b6343ac8bc722bd3e.png": "fdcacc35c15b7a7b76d70ef9f713c605c20a7e8ca450703b6343ac8bc722bd3e",
+    "media/imported/fde6b4fc5610efeb84425fc14ce24207748a08026f4db53cb3c0868879f6d475.png": "fde6b4fc5610efeb84425fc14ce24207748a08026f4db53cb3c0868879f6d475",
+    "media/imported/ff6d1434a44440fba124ccad7dfa30efa01e8c400094d4453d17d502345c1e2c.png": "ff6d1434a44440fba124ccad7dfa30efa01e8c400094d4453d17d502345c1e2c"
+  },
+  "hashRoot": "..",
+  "sourceManifests": [
+    {
+      "path": "../MEDIA-INPUTS.json",
+      "sha256": "33f88b44a6b9c72546bb19588cbd313768c4c28588f9f2e84cb63cc5a5a8e0e2"
+    },
+    {
+      "path": "../sources/brand/manifest.json",
+      "sha256": "65b686dc2a66d35e4821a120343aec485dc1941dcefa913d7cc5a42d4f3ef7c0"
+    },
+    {
+      "path": "../sources/science/source.json",
+      "sha256": "6cc19ce8ad1a3e97a6ccffee65e86a09aacc414dac51c29761f7070901c27fd4"
+    }
+  ],
+  "noImageReencoding": true
+}

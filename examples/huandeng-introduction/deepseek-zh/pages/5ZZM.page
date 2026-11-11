@@ -1,0 +1,236 @@
+pageType: content
+background:
+  type: solid
+  color: "#F4F3ED"
+notes: 几个助手可以接同一个项目，但不是同时改所有东西。不同页面可以各自保存；同一页会 revision 冲突，即使改的是不同对象；项目 Story、章节和顺序共用 metadata revision，需要协调。活动面板记录声明阶段和已保存回执，不是在线状态、自动章节锁或排班。内容到美术的交接也要先读已保存 operation 和 revision，再 preview、apply、render。
+elements:
+  - elementId: agents-kicker
+    elementType: text
+    bounds:
+      - 48
+      - 42
+      - 300
+      - 18
+    content:
+      text: 协作 / 多助手
+      fontSize: 9.5
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#7D8A80"
+      letterSpacing: 1.2
+      align:
+        - left
+        - top
+  - elementId: agents-title
+    elementType: text
+    role: title
+    bounds:
+      - 48
+      - 66
+      - 620
+      - 40
+    content:
+      text: 几个助手，一个写入器
+      fontSize: 27
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#17221C"
+      lineHeight: 1.3
+      align:
+        - left
+        - top
+  - elementId: agents-lead
+    elementType: text
+    bounds:
+      - 48
+      - 112
+      - 860
+      - 30
+    content:
+      text: 不同页面可以并行；同一页和共享元数据要协调。
+      fontSize: 14.4
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#425048"
+      align:
+        - left
+        - top
+  - elementId: agents-table
+    elementType: table
+    bounds:
+      - 48
+      - 168
+      - 568
+      - 312
+    columnWidths:
+      - 0.3
+      - 0.7
+    rowHeights:
+      - 0.14
+      - 0.17
+      - 0.17
+      - 0.18
+      - 0.17
+      - 0.17
+    style:
+      cellStyle:
+        fontSize: 8.8
+        color: "#25322B"
+        lineHeight: 1.3
+        border:
+          color: "#D5DCD2"
+          width: 0.6
+          style: solid
+      firstRowStyle:
+        fill: "#DCE4D9"
+        bold: true
+        fontSize: 8.6
+      firstColumnStyle:
+        bold: true
+        fontSize: 8.7
+    rows:
+      - - text: 范围
+        - text: 实际发生
+      - - text: 不同页面
+        - text: 各自保存；事务只声明自己改的页面
+      - - text: 同一页面
+        - text: revision 冲突，即使改的是不同对象
+      - - text: Story / 章节 / 顺序
+        - text: 共用 metadata revision，需要协调
+      - - text: 内容 → 美术
+        - text: 读取已保存 operation/revision，再 preview → apply → render
+      - - text: 活动面板
+        - text: 声明阶段与已保存回执；不是在线状态或章节锁
+  - elementId: agents-client-1
+    elementType: image
+    bounds:
+      - 648
+      - 174
+      - 24
+      - 24
+    src: media/imported/733f24f4c52acb15eb0fbded1cf40eb42b4ba8e62b882acac70b6234b50919a8.png
+    sourceName: claude-code.png
+    fit:
+      mode: contain
+  - elementId: agents-name-1
+    elementType: text
+    bounds:
+      - 682
+      - 172
+      - 230
+      - 34
+    content:
+      text: |-
+        Claude Code
+        本机插件
+      fontSize: 10.6
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#2B3830"
+      lineHeight: 1.45
+      align:
+        - left
+        - top
+  - elementId: agents-client-2
+    elementType: image
+    bounds:
+      - 648
+      - 232
+      - 24
+      - 24
+    src: media/imported/0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13.png
+    sourceName: chatgpt.png
+    fit:
+      mode: contain
+  - elementId: agents-name-2
+    elementType: text
+    bounds:
+      - 682
+      - 230
+      - 230
+      - 34
+    content:
+      text: |-
+        ChatGPT
+        授权工作站
+      fontSize: 10.6
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#2B3830"
+      lineHeight: 1.45
+      align:
+        - left
+        - top
+  - elementId: agents-client-3
+    elementType: image
+    bounds:
+      - 648
+      - 290
+      - 24
+      - 24
+    src: media/imported/e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc.png
+    sourceName: deepseek.png
+    fit:
+      mode: contain
+  - elementId: agents-name-3
+    elementType: text
+    bounds:
+      - 682
+      - 288
+      - 230
+      - 34
+    content:
+      text: |-
+        DeepSeek
+        Harness / MCP
+      fontSize: 10.6
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#2B3830"
+      lineHeight: 1.45
+      align:
+        - left
+        - top
+  - elementId: agents-note
+    elementType: text
+    bounds:
+      - 648
+      - 354
+      - 264
+      - 100
+    content:
+      text: |-
+        可以同时开工，但不是自动排班。
+        同页冲突由 revision 保护；先读回，再重做。
+      fontSize: 9.4
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#9E5B3E"
+      lineHeight: 1.55
+      align:
+        - left
+        - top
+  - elementId: agents-foot
+    elementType: text
+    bounds:
+      - 48
+      - 500
+      - 864
+      - 18
+    content:
+      text: 客户端标识只说明支持的产品，不代表官方背书。
+      fontSize: 8.2
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#7D8A80"
+      align:
+        - left
+        - top

@@ -6,13 +6,10 @@ elements:
   - elementId: title
     elementType: text
     bounds:
-      - 44
-      - 35
-      - 870
-      - 67
+        [42,34,880,76]
     role: title
     content:
-      {"text":"表格和公式，也能接着改","fontFamily":"Microsoft YaHei","fontSize":28,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
+      {"text":"图、表和公式，都能接着修改","fontFamily":"Noto Serif SC","fontSize":28,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
   - elementId: brand-small
     elementType: image
     src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
@@ -38,15 +35,7 @@ elements:
       - 130
       - 17
     content:
-      text: HUANDENG
-      fontFamily: Microsoft YaHei
-      fontSize: 10
-      color: "#66756B"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
+      {"text":"HUANDENG","fontFamily":"Noto Sans SC","fontSize":10,"color":"#66756B","bold":false,"align":["left","top"],"lineHeight":1.3}
   - elementId: position
     elementType: text
     bounds:
@@ -55,16 +44,7 @@ elements:
       - 30
       - 18
     content:
-      text: ""
-      fontFamily: Microsoft YaHei
-      fontSize: 10
-      color: "#66756B"
-      bold: false
-      align:
-        - right
-        - top
-      lineHeight: 1.3
-      field: main-position
+      {"text":"","fontFamily":"Noto Sans SC","fontSize":10,"color":"#66756B","bold":false,"align":["right","top"],"lineHeight":1.3,"field":"main-position"}
   - elementId: native-table
     elementType: table
     bounds:
@@ -99,7 +79,7 @@ elements:
     bounds:
         [522,378,392,52]
     content:
-      {"text":"\\[d_7=\\left\\|\\mathbf r_{A7,C1^\\prime}-\\mathbf r_{B18,C1^\\prime}\\right\\|_2\\]","fontFamily":"Microsoft YaHei","fontSize":22,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
+      {"text":"\\[d_7=\\left\\|\\mathbf r_{A7,C1^\\prime}-\\mathbf r_{B18,C1^\\prime}\\right\\|_2\\]","fontFamily":"Noto Sans SC","fontSize":22,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
   - elementId: equation-value
     elementType: text
     bounds:
@@ -108,15 +88,7 @@ elements:
       - 392
       - 32
     content:
-      text: d₇ = 10.2329 Å
-      fontFamily: Microsoft YaHei
-      fontSize: 23
-      color: "#A64F38"
-      bold: false
-      align:
-        - center
-        - top
-      lineHeight: 1.3
+      {"text":"d₇ = 10.2329 Å","fontFamily":"Noto Sans SC","fontSize":23,"color":"#A64F38","bold":false,"align":["center","top"],"lineHeight":1.3}
   - elementId: native-data-caption
     elementType: text
     bounds:
@@ -125,13 +97,5 @@ elements:
       - 870
       - 25
     content:
-      text: PDB 1BNA · 从同一份 12 行数据中选取五行
-      fontFamily: Microsoft YaHei
-      fontSize: 13
-      color: "#66756B"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-notes: "原图之外，我也希望表和公式能继续编辑。这里的表是真正的表格对象，不是一组对齐的文本框；公式仍然作为公式保留。这一点对人接手很重要：后来要改一列或修正一个数值，不需要逐个搬动假单元格。显示的五个位置来自前页的同一份数据，完整十二个值和计算脚本都留在项目里。\n\nSource: https://www.rcsb.org/structure/1BNA ; https://doi.org/10.1073/pnas.78.4.2179 . Source coordinates, calculation and all twelve values: sources/science/."
+      {"text":"PDB 1BNA · 从同一份 12 行数据中选取五行","fontFamily":"Noto Sans SC","fontSize":13,"color":"#66756B","bold":false,"align":["left","top"],"lineHeight":1.3}
+notes: "前一页的图表保留十二个位置的原值。这一页用真正的表格摘取其中五个位置，并保留距离计算公式。人可以修改真正的单元格、系列和公式，不必移动许多假单元格文本框。图和表使用同一份公开数据，值与单位可以一起核对。"

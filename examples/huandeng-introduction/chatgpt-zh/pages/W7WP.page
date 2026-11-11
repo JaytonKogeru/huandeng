@@ -6,390 +6,17 @@ elements:
   - elementId: title
     elementType: text
     bounds:
-      - 44
-      - 35
-      - 870
-      - 55
+        [42,34,880,76]
     role: title
     content:
-      {"text":"把这些约定带给不同的 Agent","fontFamily":"Microsoft YaHei","fontSize":28,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: client-0
-    elementType: image
-    src: media/imported/0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13.png
-    sourceName: chatgpt.png
-    alt: chatgpt.png
-    bounds:
-      - 115
-      - 123
-      - 68
-      - 68
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: client-name-0
-    elementType: text
-    bounds:
-      - 66
-      - 204
-      - 166
-      - 29
-    content:
-      text: ChatGPT
-      fontFamily: Microsoft YaHei
-      fontSize: 18
-      color: "#263C34"
-      bold: false
-      align:
-        - center
-        - top
-      lineHeight: 1.3
-  - elementId: client-1
-    elementType: image
-    src: media/imported/2ce1c57dd3b312417106a487815ab1235bddce17e1fa9b32a2f048bd71ee25d3.png
-    sourceName: codex.png
-    alt: codex.png
-    bounds:
-      - 337
-      - 123
-      - 68
-      - 68
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: client-name-1
-    elementType: text
-    bounds:
-      - 288
-      - 204
-      - 166
-      - 29
-    content:
-      text: Codex
-      fontFamily: Microsoft YaHei
-      fontSize: 18
-      color: "#263C34"
-      bold: false
-      align:
-        - center
-        - top
-      lineHeight: 1.3
-  - elementId: client-2
-    elementType: image
-    src: media/imported/733f24f4c52acb15eb0fbded1cf40eb42b4ba8e62b882acac70b6234b50919a8.png
-    sourceName: claude-code.png
-    alt: claude-code.png
-    bounds:
-      - 559
-      - 123
-      - 68
-      - 68
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: client-name-2
-    elementType: text
-    bounds:
-      - 510
-      - 204
-      - 166
-      - 29
-    content:
-      text: Claude Code
-      fontFamily: Microsoft YaHei
-      fontSize: 18
-      color: "#263C34"
-      bold: false
-      align:
-        - center
-        - top
-      lineHeight: 1.3
-  - elementId: client-3
-    elementType: image
-    src: media/imported/e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc.png
-    sourceName: deepseek.png
-    alt: deepseek.png
-    bounds:
-      - 781
-      - 123
-      - 68
-      - 68
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: client-name-3
-    elementType: text
-    bounds:
-      - 732
-      - 204
-      - 166
-      - 29
-    content:
-      text: DeepSeek Harness
-      fontFamily: Microsoft YaHei
-      fontSize: 18
-      color: "#263C34"
-      bold: false
-      align:
-        - center
-        - top
-      lineHeight: 1.3
-  - elementId: plugin-guidance
-    elementType: text
-    bounds:
-      - 44
-      - 253
-      - 870
-      - 28
-    content:
-      text: Plugin：编辑规范、项目偏好与参考
-      fontFamily: Microsoft YaHei
-      fontSize: 15
-      color: "#66756B"
-      bold: false
-      align:
-        - center
-        - top
-      lineHeight: 1.3
-  - elementId: connector-box
-    elementType: shape
-    shapeName: rect
-    bounds:
-      - 44
-      - 326
-      - 224
-      - 78
-    fill:
-      type: solid
-      color: "#F8FAF6"
-  - elementId: writer-box
-    elementType: shape
-    shapeName: rect
-    bounds:
-      - 344
-      - 326
-      - 272
-      - 78
-    fill:
-      type: solid
-      color: "#F8FAF6"
-  - elementId: human-box
-    elementType: shape
-    shapeName: rect
-    bounds:
-      - 692
-      - 326
-      - 222
-      - 78
-    fill:
-      type: solid
-      color: "#F8FAF6"
-  - elementId: connector-name
-    elementType: text
-    bounds:
-      - 63
-      - 341
-      - 184
-      - 27
-    content:
-      text: Connector
-      fontFamily: Microsoft YaHei
-      fontSize: 20
-      color: "#356F68"
-      bold: false
-      align:
-        - center
-        - top
-      lineHeight: 1.3
-  - elementId: connector-copy
-    elementType: text
-    bounds:
-      - 63
-      - 376
-      - 184
-      - 24
-    content:
-      text: 接收 Agent 的读写请求
-      fontFamily: Microsoft YaHei
-      fontSize: 14
-      color: "#263C34"
-      bold: false
-      align:
-        - center
-        - top
-      lineHeight: 1.3
-  - elementId: writer-name
-    elementType: text
-    bounds:
-      - 353
-      - 341
-      - 254
-      - 30
-    content:
-      text: 共享写入服务
-      fontFamily: Microsoft YaHei
-      fontSize: 22
-      color: "#356F68"
-      bold: false
-      align:
-        - center
-        - top
-      lineHeight: 1.3
-  - elementId: writer-copy
-    elementType: text
-    bounds:
-      - 353
-      - 377
-      - 254
-      - 24
-    content:
-      text: 保存修改 · 保留历史
-      fontFamily: Microsoft YaHei
-      fontSize: 14
-      color: "#263C34"
-      bold: false
-      align:
-        - center
-        - top
-      lineHeight: 1.3
-  - elementId: human-name
-    elementType: text
-    bounds:
-      - 705
-      - 341
-      - 194
-      - 28
-    content:
-      text: 人在画布上编辑
-      fontFamily: Microsoft YaHei
-      fontSize: 20
-      color: "#356F68"
-      bold: false
-      align:
-        - center
-        - top
-      lineHeight: 1.3
-  - elementId: human-copy
-    elementType: text
-    bounds:
-      - 705
-      - 377
-      - 194
-      - 24
-    content:
-      text: 选择、修改、检查
-      fontFamily: Microsoft YaHei
-      fontSize: 14
-      color: "#263C34"
-      bold: false
-      align:
-        - center
-        - top
-      lineHeight: 1.3
-  - elementId: agent-link
-    elementType: line
-    bounds:
-      - 271
-      - 358
-      - 70
-      - 16
-    viewBox:
-      - 1
-      - 1
-    points: 0,0.5 1,0.5
-    border:
-      width: 1.5
-      color: "#356F68"
-    arrow:
-      - arrow
-      - arrow
-  - elementId: human-link
-    elementType: line
-    bounds:
-      - 619
-      - 358
-      - 70
-      - 16
-    viewBox:
-      - 1
-      - 1
-    points: 0,0.5 1,0.5
-    border:
-      width: 1.5
-      color: "#356F68"
-    arrow:
-      - arrow
-      - arrow
-  - elementId: file-link
-    elementType: line
-    bounds:
-      - 473
-      - 407
-      - 16
-      - 43
-    viewBox:
-      - 1
-      - 1
-    points: 0.5,0 0.5,1
-    border:
-      width: 1.5
-      color: "#356F68"
-    arrow:
-      - null
-      - arrow
-  - elementId: folder
-    elementType: icon
-    iconName: fas:folder-open
-    bounds:
-      - 370
-      - 462
-      - 27
-      - 27
-    fill:
-      type: solid
-      color: "#356F68"
-  - elementId: pptd
-    elementType: text
-    bounds:
-      - 414
-      - 462
-      - 200
-      - 31
-    content:
-      text: deck.pptd
-      fontFamily: Consolas
-      fontSize: 23
-      color: "#263C34"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
+      {"text":"不同的助手，读写同一个项目","fontFamily":"Noto Serif SC","fontSize":28,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.2}
   - elementId: brand-small
     elementType: image
     src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
     sourceName: huandeng.png
     alt: huandeng.png
     bounds:
-      - 44
-      - 510
-      - 17
-      - 17
+        [43,512,18,18]
     fit:
       mode: contain
     crop:
@@ -400,36 +27,135 @@ elements:
   - elementId: foot
     elementType: text
     bounds:
-      - 69
-      - 513
-      - 130
-      - 17
+        [68,515,140,16]
     content:
-      text: HUANDENG
-      fontFamily: Microsoft YaHei
-      fontSize: 10
-      color: "#66756B"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
+      {"text":"HUANDENG","fontFamily":"Noto Sans SC","fontSize":9,"color":"#5B6A62","bold":false,"align":["left","top"],"lineHeight":1.35}
   - elementId: position
     elementType: text
     bounds:
-      - 884
-      - 512
-      - 30
-      - 18
+        [881,514,35,18]
     content:
-      text: ""
-      fontFamily: Microsoft YaHei
-      fontSize: 10
-      color: "#66756B"
+      {"text":"","fontFamily":"Noto Sans SC","fontSize":10,"color":"#5B6A62","bold":false,"align":["right","top"],"lineHeight":1.35,"field":"main-position"}
+  - elementId: client-0
+    elementType: image
+    src: media/imported/0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13.png
+    sourceName: chatgpt.png
+    alt: chatgpt.png
+    bounds:
+        [116,140,58,58]
+    fit:
+      mode: contain
+    crop:
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+  - elementId: client-name-0
+    elementType: text
+    bounds:
+        [66,217,165,35]
+    content:
+      {"text":"ChatGPT","fontFamily":"Noto Sans SC","fontSize":18,"color":"#20372F","bold":false,"align":["center","top"],"lineHeight":1.35}
+  - elementId: client-1
+    elementType: image
+    src: media/imported/2ce1c57dd3b312417106a487815ab1235bddce17e1fa9b32a2f048bd71ee25d3.png
+    sourceName: codex.png
+    alt: codex.png
+    bounds:
+        [338,140,58,58]
+    fit:
+      mode: contain
+    crop:
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+  - elementId: client-name-1
+    elementType: text
+    bounds:
+        [288,217,165,35]
+    content:
+      {"text":"Codex","fontFamily":"Noto Sans SC","fontSize":18,"color":"#20372F","bold":false,"align":["center","top"],"lineHeight":1.35}
+  - elementId: client-2
+    elementType: image
+    src: media/imported/733f24f4c52acb15eb0fbded1cf40eb42b4ba8e62b882acac70b6234b50919a8.png
+    sourceName: claude-code.png
+    alt: claude-code.png
+    bounds:
+        [560,140,58,58]
+    fit:
+      mode: contain
+    crop:
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+  - elementId: client-name-2
+    elementType: text
+    bounds:
+        [510,217,165,35]
+    content:
+      {"text":"Claude Code","fontFamily":"Noto Sans SC","fontSize":18,"color":"#20372F","bold":false,"align":["center","top"],"lineHeight":1.35}
+  - elementId: client-3
+    elementType: image
+    src: media/imported/e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc.png
+    sourceName: deepseek.png
+    alt: deepseek.png
+    bounds:
+        [782,140,58,58]
+    fit:
+      mode: contain
+    crop:
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+  - elementId: client-name-3
+    elementType: text
+    bounds:
+        [732,217,165,35]
+    content:
+      {"text":"DeepSeek Harness","fontFamily":"Noto Sans SC","fontSize":18,"color":"#20372F","bold":false,"align":["center","top"],"lineHeight":1.35}
+  - elementId: clients-to-writer
+    elementType: line
+    bounds:
+        [482,264,0,14]
+    viewBox:
+      - 1
+      - 1
+    points: 0,0 1,1
+    border:
+      width: 1.4
+      color: "#356F68"
+    arrow:
+      - null
+      - arrow
+  - elementId: writer-band
+    elementType: shape
+    shapeName: rect
+    bounds:
+        [43,286,872,61]
+    fill:
+      type: solid
+      color: "#18372E"
+  - elementId: shared-writer
+    elementType: text
+    bounds:
+        [63,301,832,37]
+    content:
+      text: 同一份项目 · 共享写入服务 · 可检查的修改
+      fontFamily: Noto Serif SC
+      fontSize: 23
+      color: "#F7F5EF"
       bold: false
       align:
-        - right
+        - center
         - top
-      lineHeight: 1.3
-      field: main-position
-notes: "这套工作流并不要求只用一种模型。Plugin把制作约定和项目上下文交给Agent，Connector把请求送到选定项目的共享写入服务；我在Editor中的操作也作用于同一份文件。本次介绍本身就让ChatGPT、Claude Code和DeepSeek Harness各自尝试。这里的重点是它们能够在同一套文件和操作规则中工作，审美仍然要分别看结果。"
+      lineHeight: 1.35
+  - elementId: connection-context
+    elementType: text
+    bounds:
+        [44,367,870,130]
+    content:
+      {"text":"1  点击顶部“助手连接”。\n2  选择客户端，按说明完成配置。\n3  让助手读取当前项目与选中页，核对项目名和 Slide ID。","fontFamily":"Noto Sans SC","fontSize":17,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.6}
+notes: "第一次接入时，点击编辑器顶部的“助手连接”，选择客户端，按其中的说明配置。让助手实际读取当前项目和选中页，核对返回的项目名与Slide ID。不同助手通过各自原生接入使用同一个文档协议。Plugin带来约定，Connector把请求送到明确选定的工程。Editor和助手都通过共享写入服务保存。这里的客户端图标表示支持的入口，不表示这些模型此刻都在线。接入后仍要用真实读取和操作来验证项目身份与权限。"

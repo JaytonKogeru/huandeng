@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "round": "product-intro-20261111",
+  "reviewer": "ChatGPT independent requirements/visual reviewer",
+  "editions": ["deepseek-en", "deepseek-zh"],
+  "scope": "Current saved Main pages, actual Notes and page-level Story; native semantic map checked against source. This is not owner acceptance.",
+  "authorAccepted": false,
+  "conclusion": "Substantial product coverage now corresponds, with independent layout and type. Full substantive parity is not yet established: the Chinese edition omits a usable explanation of pinning and the English MP4 limits, and compresses view purposes. Both repeat the Main-order/metadata revision error. Chinese correctly avoids several English factual overstatements; alignment must not copy those errors.",
+  "topics": [
+    {
+      "topic": "Product definition and Editor/project/plugin/connector/assistant relationship",
+      "en": [2],
+      "zh": [2],
+      "status": "covered"
+    },
+    {
+      "topic": "AI quality as the founder's diagnosis",
+      "en": [3],
+      "zh": [4, 5],
+      "status": "covered_with_source_fidelity_limit",
+      "note": "ZH uses reconstructed direct speech without marking it as paraphrase; do not treat it as an owner's literal quotation."
+    },
+    {
+      "topic": "Local edits should not create whole-deck copies",
+      "en": [5],
+      "zh": [6],
+      "status": "covered"
+    },
+    {
+      "topic": "Project folder, entry and portability",
+      "en": [4],
+      "zh": [11],
+      "status": "covered_with_English_error_corrected_in_Chinese",
+      "note": "EN falsely says PPTX lacks page identity. ZH acknowledges PPTX slide structure and adds verified 0.19 folder-entry qualifications."
+    },
+    {
+      "topic": "Structured pages and visual review",
+      "en": [6, 7],
+      "zh": [12],
+      "status": "covered_with_different_depth",
+      "note": "ZH avoids EN Notes' screen-only generalization. EN separately explains the React/Electron code foundation; Chinese concentrates on structured objects and review, with upstream attribution on page 21."
+    },
+    {
+      "topic": "Real workspace",
+      "en": [9],
+      "zh": [8],
+      "status": "covered"
+    },
+    {
+      "topic": "Scientific evidence and preserved values",
+      "en": [10],
+      "zh": [13],
+      "status": "covered",
+      "note": "Both use one PDB 1BNA structure, twelve C1-prime paired distances and measured raster curve assets. Neither edition has a native chart; each has native tables."
+    },
+    {
+      "topic": "Story purpose, Keep and requested change",
+      "en": [11],
+      "zh": [15],
+      "status": "covered_with_English_evidence_mismatch",
+      "note": "EN says the displayed table quotes the current science page, but it quotes earlier fields. ZH labels a real public example interface and qualifies Story as alignment rather than a guarantee."
+    },
+    {
+      "topic": "One focused edit with before/after evidence",
+      "en": [12],
+      "zh": [16],
+      "status": "covered_with_Chinese_metadata_debt",
+      "note": "ZH visible page and Notes correctly show one page/two text fields; its old purpose still says two pages."
+    },
+    {
+      "topic": "Position versus stable Slide ID",
+      "en": [13],
+      "zh": [9],
+      "status": "covered"
+    },
+    {
+      "topic": "Page operation history and named versions",
+      "en": [14],
+      "zh": [10],
+      "status": "covered"
+    },
+    {
+      "topic": "Browse and Outline as different review views",
+      "en": [15],
+      "zh": [8, 9],
+      "status": "partial",
+      "note": "ZH names peer views and shows Outline for identity; it does not explain Browse overview and Outline argument-review purposes as fully as EN."
+    },
+    {
+      "topic": "Main/Presentation reuse, occurrence Notes and optional pin",
+      "en": [16],
+      "zh": [17],
+      "status": "partial",
+      "note": "Selection/order/Notes are present in both. ZH does not explain optional named-version pins."
+    },
+    {
+      "topic": "Original assets, resolution and provenance",
+      "en": [17],
+      "zh": [14],
+      "status": "covered"
+    },
+    {
+      "topic": "Native assistants and revision conflict boundaries",
+      "en": [18],
+      "zh": [18, 19],
+      "status": "covered_with_shared_technical_error",
+      "note": "Both group order into metadata revision without distinguishing Main order's manifest revision. Different-page writes and same-page conflicts are otherwise appropriately qualified."
+    },
+    {
+      "topic": "Editable and static delivery, including MP4",
+      "en": [19],
+      "zh": [20],
+      "status": "partial",
+      "note": "Both explain PPTD/PPTX/PDF. EN explains MP4 timed click builds, 720p/1080p and no audio. ZH has a visible MP4 interface hint but no equivalent spoken/captioned capability and limit explanation."
+    },
+    {
+      "topic": "Upstream project, formula conversion and export credits",
+      "en": [20],
+      "zh": [21],
+      "status": "covered"
+    },
+    {
+      "topic": "Product boundaries",
+      "en": [20],
+      "zh": [20],
+      "status": "covered_with_English_Notes_debt",
+      "note": "EN closing Notes revive deferred layer/image tool plans that the current brief asks to exclude."
+    },
+    {
+      "topic": "Usable first action",
+      "en": [21],
+      "zh": [22],
+      "status": "covered",
+      "note": "Chinese explicitly explains Agent setup and verified folder/.pptd entry behavior."
+    }
+  ],
+  "nativeCorrespondenceReportCheck": {
+    "path": "../SEMANTIC-CORRESPONDENCE.zh-CN.md",
+    "finding": "Its copy-problem row names Chinese page 5; the actual copy-problem page is Main 6 (2Z2N). Its general coverage statement does not resolve the pin/MP4 scope gaps.",
+    "originalPreserved": true,
+    "sha256": "e8d95f5faffa357facbd69885a5269caa83a70bfe1a95cc634b4e21d63db5e5c"
+  },
+  "presentations": {
+    "en": {
+      "main": 22,
+      "presentations": []
+    },
+    "zh": {
+      "main": 22,
+      "full": 22,
+      "brief": 12,
+      "briefMainPositions": [1, 2, 4, 5, 6, 8, 13, 15, 16, 17, 19, 22],
+      "briefPins": 0,
+      "briefLocalNotes": 0
+    }
+  },
+  "coordinatorActions": {
+    "authoredPageChanges": false,
+    "tasteRedoRequested": false,
+    "englishMainExportsRegenerated": false,
+    "chineseMainExportsRegenerated": false,
+    "chineseBrief": "Completed mechanical export of the actual saved 12-page Presentation, without authored content, Notes or metadata changes. Native Main exports remain unchanged."
+  },
+  "rootCorroboration": {
+    "en": "Root viewed all four current contact sheets (22 pages) and corroborated improved image integration and coherent serif direction; this is not a claim that Root read every full page or Notes.",
+    "zh": "Root viewed all four current contact sheets (22 pages) and corroborated the improved functional sequence, assets, icons and credits. No aesthetic redo was requested."
+  },
+  "recordedAt": "2026-11-11T02:50:21.704103+00:00",
+  "internalReviewSha256": "484a07bb6e5d63b0b88321a2de83cb7e4db13e80e25fcbe31f1af3fd15fc2402",
+  "comparisonEvidence": {
+    "englishEdition": "deepseek-en",
+    "englishPublicReviewSha256": "edc23ee914e8a2f243c77880f074e24573d7ed5f1cfa92de910e75ba8659d353",
+    "chineseReview": "product-review.json"
+  }
+}

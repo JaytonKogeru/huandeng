@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "project": "deepseek-en",
+  "round": "product-intro-20261111",
+  "nativeAuthor": "DeepSeek Harness",
+  "sourceAuthorship": "Native author only; coordinator packaging and read-only QA are identified separately.",
+  "nativeCompleted": true,
+  "firstPassCompleted": false,
+  "allTurnsCompleted": false,
+  "authorAccepted": false,
+  "modelEvidence": {
+    "responseModelMetadata": null,
+    "modelOverrideRequested": false,
+    "accountOrEngineChanged": false
+  },
+  "plugin": {
+    "version": "0.19.0",
+    "kind": "officially installed native headless bundle, immutable candidate",
+    "skillSha256": "f4188e0934e7846346e286286041f49592bec3231747caa99d0b7b32dd9d016b",
+    "nativeManifestSha256": "db0ef319d1ebfaccabbedfa16fe8509e8e4c4b4e753483710fd2d78f1ac4cf44",
+    "portableContentManifestSha256": "515c9894b2d55fdc5f0683f6c0e2a9289033227d56c99c9b6df847df17d419b4"
+  },
+  "prompt": {
+    "ownerFeedbackSha256": "f6c50dd7d397657a9f00e04c6f26a9fbf676c8cbbf4dccfdb093e8a77a6fe896",
+    "ownerFeedbackForwardedUnchanged": true,
+    "technicalContinuationExplicitlyLabelled": true,
+    "completedTurnPromptSha256": "6ffb2cb7b8bb249fb0acea26b1fe4b83d5f4d00a38559e3969e5dea005935a0f",
+    "fullPromptPublished": false
+  },
+  "turns": [
+    {
+      "requestId": "66e237b1-739e-4627-b6ed-7598de2fca3f",
+      "state": "failed",
+      "exitCode": 1,
+      "nativeCompleted": false,
+      "sessionId": "session-d144a4b4-98eb-4ff7-bddc-6cfa2666e9c6",
+      "seconds": 811.84,
+      "toolCounts": {
+        "pwsh": 1,
+        "glob": 7,
+        "read": 38,
+        "create_goal": 1,
+        "todo_write": 1,
+        "mcp__huandeng-deepseek-128cecc77e__huandeng_context": 1,
+        "mcp__huandeng-deepseek-128cecc77e__huandeng_selection_read": 1,
+        "mcp__huandeng-deepseek-128cecc77e__huandeng_project": 1,
+        "grep": 2,
+        "mcp__huandeng-deepseek-128cecc77e__huandeng_preview": 9,
+        "mcp__huandeng-deepseek-128cecc77e__huandeng_apply": 9,
+        "mcp__huandeng-deepseek-128cecc77e__huandeng_render": 12
+      },
+      "toolErrorCount": 4
+    },
+    {
+      "requestId": "622006eb-46a4-4e5a-8cb3-29a744aebc01",
+      "state": "failed",
+      "exitCode": 1,
+      "nativeCompleted": false,
+      "sessionId": "session-d144a4b4-98eb-4ff7-bddc-6cfa2666e9c6",
+      "seconds": 70.45,
+      "toolCounts": {},
+      "toolErrorCount": 0
+    },
+    {
+      "requestId": "13e7daa5-9563-4a18-ba32-fc917a8c616d",
+      "state": "failed",
+      "exitCode": 1,
+      "nativeCompleted": false,
+      "sessionId": "session-d144a4b4-98eb-4ff7-bddc-6cfa2666e9c6",
+      "seconds": 55.11,
+      "toolCounts": {
+        "mcp__huandeng-deepseek-128cecc77e__huandeng_context": 1,
+        "mcp__huandeng-deepseek-128cecc77e__huandeng_preview": 1,
+        "mcp__huandeng-deepseek-128cecc77e__huandeng_apply": 1
+      },
+      "toolErrorCount": 0
+    },
+    {
+      "requestId": "8f442b48-bd2c-45ff-83ca-9ab228880155",
+      "state": "completed",
+      "exitCode": 0,
+      "nativeCompleted": true,
+      "sessionId": "session-d144a4b4-98eb-4ff7-bddc-6cfa2666e9c6",
+      "seconds": 639.24,
+      "toolCounts": {
+        "mcp__huandeng-deepseek-128cecc77e__huandeng_preview": 49,
+        "mcp__huandeng-deepseek-128cecc77e__huandeng_apply": 47,
+        "mcp__huandeng-deepseek-128cecc77e__huandeng_render": 4,
+        "mcp__huandeng-deepseek-128cecc77e__huandeng_design_audit": 1,
+        "mcp__huandeng-deepseek-128cecc77e__huandeng_export": 2
+      },
+      "toolErrorCount": 3
+    }
+  ],
+  "technicalRecovery": {
+    "sameOriginalSession": true,
+    "reason": "Three complete tool-input JSON parse failures in the native provider; no evidence of ordinary tail truncation or cross-block aggregation.",
+    "successfulAdjustment": "Strictly one operation in each preview/apply call.",
+    "nativeShell": "ACL-denied; no permission expansion or shell workaround was applied."
+  },
+  "mainPages": 22,
+  "presentations": [],
+  "contentStatus": "preserved native candidate with retained correctness and Notes/Story findings",
+  "nativeFinalReportCorrection": "The actual English bundle was 0.19.0, not the 0.1.0 prototype described by the author.",
+  "coordinatorEditedAuthoredPages": false,
+  "coordinatorReexportedNativeDeck": false,
+  "evidence": [
+    {
+      "path": "product-qa.json",
+      "sha256": "49ebc273bfc3ef3785aef20270b2bd93202371995fd1d35aaa08e526837d8132"
+    },
+    {
+      "path": "product-review.json",
+      "sha256": "edc23ee914e8a2f243c77880f074e24573d7ed5f1cfa92de910e75ba8659d353"
+    },
+    {
+      "path": "product-narrative.json",
+      "sha256": "6ee51e836cd3d9d3ecda499c9e8e6e3d11c55cae7ffaec80c5958a230b677242"
+    },
+    {
+      "path": "product-assets.json",
+      "sha256": "525fa41ad65ba4c7a176e0f009bc50741a970013265b23858acefe19414cbce5"
+    },
+    {
+      "path": "product-native-author-report.md",
+      "sha256": "745499424c70c0a4aae49bc10add74372ec31a5e3335678eb5df5654a76d90f6"
+    }
+  ],
+  "historicalEvidencePreserved": {
+    "native-trial.json": "be8c786b9b71db884b9d1ecbb480dd06661ea015377516b9c7740e1b1f2598ca",
+    "qa.json": "9938b4e75065e04d163660fda475165669f528f0d5f166f2dc0cdeb925806b06",
+    "content-review.json": "cab3c3d146068175aeddf16248b15e5ff52e0ba3b91dc46e488bbc9397ad2be3",
+    "native-author-report.md": "ee7553c4956e9dfa8849cfad841e07fa612cf03d1cd010024a861474c4f4f1fc",
+    "narrative.json": "57ecc73322e885ee2f9122fb21d7b6875eedb9c374de4a6c52ad0eb1bf435f7d",
+    "office-visual-review.json": "ffed791e150f0395a74c05c3554e0fa46d5746976e02435996d27fa9fc196388"
+  }
+}

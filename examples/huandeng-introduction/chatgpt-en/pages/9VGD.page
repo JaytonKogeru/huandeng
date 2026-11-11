@@ -6,11 +6,8 @@ elements:
   - elementId: title
     elementType: text
     bounds:
-      - 55
-      - 221
-      - 850
-      - 82
+        [52,218,850,100]
     role: title
     content:
-      {"text":"A page with an identity","fontFamily":"Arial","fontSize":34,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
-notes: "Those frustrations led me to treat the page as the unit of continuing work. I will first explain how the project is organized, how we identify the same page, and how we return to its history."
+      {"text":"Make one page work","fontFamily":"Georgia","fontSize":42,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.25}
+notes: "Start with one page: locate the work, keep its intent and evidence, and inspect a focused edit."

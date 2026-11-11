@@ -6,23 +6,34 @@ elements:
   - elementId: title
     elementType: text
     bounds:
-      - 44
-      - 35
-      - 870
-      - 67
+        [42,34,880,76]
     role: title
     content:
-      {"text":"人和 Agent，都回到这个编辑器","fontFamily":"Microsoft YaHei","fontSize":28,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
+      {"text":"先在同一张画布上找到它","fontFamily":"Noto Serif SC","fontSize":28,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.2}
+  - elementId: eyebrow
+    elementType: text
+    bounds:
+      - 43
+      - 112
+      - 870
+      - 21
+    content:
+      text: EDITOR · 定位、编辑、检查
+      fontFamily: Noto Sans SC
+      fontSize: 11
+      color: "#356F68"
+      bold: true
+      align:
+        - left
+        - top
+      lineHeight: 1.35
   - elementId: brand-small
     elementType: image
     src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
     sourceName: huandeng.png
     alt: huandeng.png
     bounds:
-      - 44
-      - 510
-      - 17
-      - 17
+        [43,512,18,18]
     fit:
       mode: contain
     crop:
@@ -33,78 +44,105 @@ elements:
   - elementId: foot
     elementType: text
     bounds:
-      - 69
-      - 513
-      - 130
-      - 17
+        [68,515,140,16]
     content:
-      text: HUANDENG
-      fontFamily: Microsoft YaHei
-      fontSize: 10
-      color: "#66756B"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
+      {"text":"HUANDENG","fontFamily":"Noto Sans SC","fontSize":9,"color":"#5B6A62","bold":false,"align":["left","top"],"lineHeight":1.35}
   - elementId: position
     elementType: text
     bounds:
-      - 884
-      - 512
-      - 30
-      - 18
+        [881,514,35,18]
     content:
-      text: ""
-      fontFamily: Microsoft YaHei
-      fontSize: 10
-      color: "#66756B"
-      bold: false
-      align:
-        - right
-        - top
-      lineHeight: 1.3
-      field: main-position
-  - elementId: editor-native-chart
+      {"text":"","fontFamily":"Noto Sans SC","fontSize":10,"color":"#5B6A62","bold":false,"align":["right","top"],"lineHeight":1.35,"field":"main-position"}
+  - elementId: workspace
     elementType: image
-    src: "media/imported/675167a0b82813c8f43297d5e8823b0788e05a2ffd0e546c3d53b0fab94a61e5.png"
+    src: "media/imported/2e581d36978c91cef3fdc7777d6546f05fe58d6d2b89d0d6c42954313c2d0a0e.png"
     sourceName: editor-native-chart.png
     alt: editor-native-chart.png
     bounds:
-      - 44
-      - 127
-      - 631
-      - 379
+      - 27
+      - 147
+      - 677
+      - 346
     fit:
       mode: contain
     crop:
       left: 0
       right: 0
       top: 0
-      bottom: 0
-  - elementId: editor-copy
+      bottom: 0.14
+  - elementId: dot-1
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+        [38,211,24,24]
+    fill:
+      type: solid
+      color: "#A64F38"
+  - elementId: number-1
     elementType: text
     bounds:
-      - 712
-      - 145
-      - 204
-      - 337
+        [38,212,24,24]
     content:
-      text: |-
-        项目 / 页面 / 素材 / 文件
-        组织这份工作
-  
-        画布与图层
-        直接选择和调整对象
-  
-        Story 与属性
-        保留目的，检查细节
-      fontFamily: Microsoft YaHei
-      fontSize: 17
-      color: "#263C34"
-      bold: false
+      text: "1"
+      fontFamily: Noto Sans SC
+      fontSize: 14
+      color: "#FFFFFF"
+      bold: true
       align:
-        - left
-        - top
-      lineHeight: 1.55
-notes: "有了文档和历史，还需要一个人愿意使用的工作区。HUANDENG Editor保留画布编辑，左边是项目、页面、素材和文件，右边可以看对象属性、图层和Story。Agent的修改也会回到同一份画面里。我希望人在这里接着改，不必为了让AI参与而放弃直接选择对象、排列图层和调整版面。"
+        - center
+        - middle
+      lineHeight: 1.35
+  - elementId: dot-2
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+        [377,248,24,24]
+    fill:
+      type: solid
+      color: "#A64F38"
+  - elementId: number-2
+    elementType: text
+    bounds:
+        [377,249,24,24]
+    content:
+      text: "2"
+      fontFamily: Noto Sans SC
+      fontSize: 14
+      color: "#FFFFFF"
+      bold: true
+      align:
+        - center
+        - middle
+      lineHeight: 1.35
+  - elementId: dot-3
+    elementType: shape
+    shapeName: ellipse
+    bounds:
+        [646,252,24,24]
+    fill:
+      type: solid
+      color: "#A64F38"
+  - elementId: number-3
+    elementType: text
+    bounds:
+        [646,253,24,24]
+    content:
+      text: "3"
+      fontFamily: Noto Sans SC
+      fontSize: 14
+      color: "#FFFFFF"
+      bold: true
+      align:
+        - center
+        - middle
+      lineHeight: 1.35
+  - elementId: workspace-guide
+    elementType: text
+    bounds:
+      - 729
+      - 151
+      - 192
+      - 350
+    content:
+      {"text":"1  项目 / 页面 / 素材 / 文件\n从左侧找到要处理的内容。\n\n2  画布\n人可以直接编辑对象。\n\n3  属性 / 图层 / Story\n查看结构与这一页的意图。","fontFamily":"Noto Sans SC","fontSize":17,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.35}
+notes: "先认识工作区。左侧可以在项目、页面、素材和文件间切换。中间仍是可以手动选择和修改对象的画布。右侧保留属性、图层和Story。上方视图用于浏览整套页面、检查大纲、调整章节、写备注或查历史。接入Agent之后，它的修改也会出现在这份页面里。接下来我们先留下一页的意图，再准备要用的素材。"

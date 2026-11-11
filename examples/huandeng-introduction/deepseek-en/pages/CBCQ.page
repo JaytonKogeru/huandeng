@@ -1,0 +1,175 @@
+background:
+  type: solid
+  color: "#F7F5F0"
+elements:
+  - elementId: pv-eyebrow
+    elementType: text
+    bounds:
+      - 64
+      - 32
+      - 300
+      - 14
+    content:
+      text: 05 / VIEWS
+      fontFamily: Consolas
+      fontSize: 10
+      color: "#B43C26"
+      letterSpacing: 1.6
+      align:
+        - left
+        - top
+  - elementId: pv-title
+    elementType: text
+    role: title
+    bounds:
+      - 64
+      - 52
+      - 760
+      - 42
+    content:
+      text: Browse the deck. Read the argument.
+      fontFamily: Georgia
+      fontSize: 30
+      color: "#17181A"
+      lineHeight: 1.1
+      align:
+        - left
+        - top
+  - elementId: pv-body
+    elementType: text
+    bounds:
+      - 64
+      - 104
+      - 300
+      - 260
+    content:
+      text: Browse shows thumbnails, Section groups and stable Slide IDs. Outline shows titles and Story summaries, so you can read the argument before editing a page. Sections, Notes and History are peer views, not nested tabs.
+      fontFamily: Segoe UI
+      fontSize: 14.5
+      color: "#3A3833"
+      lineHeight: 1.6
+      align:
+        - left
+        - top
+  - elementId: pv-browse
+    elementType: image
+    bounds:
+      - 390
+      - 104
+      - 440
+      - 245
+    src: media/imported/d81ca1d3d956de469ebe26ea28e121e2c63e78349e97ec063068d28cfb26089d.png
+    sourceName: en-browse-reading-4x.png
+    fit:
+      mode: contain
+  - elementId: pv-browse-frame
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 390
+      - 104
+      - 440
+      - 245
+    border:
+      width: 1
+      color: "#D9D4C8"
+      style: solid
+  - elementId: pv-outline-label
+    elementType: text
+    bounds:
+      - 390
+      - 350
+      - 440
+      - 16
+    content:
+      text: OUTLINE
+      fontFamily: Consolas
+      fontSize: 9
+      color: "#B43C26"
+      letterSpacing: 1.4
+      align:
+        - left
+        - top
+  - elementId: pv-outline
+    elementType: image
+    bounds:
+      - 390
+      - 370
+      - 440
+      - 147
+    src: media/imported/0c992097d40aa22917c249d80642892caad569fa7a60faf4df2089cafdc79c09.png
+    sourceName: en-outline-reading-4x.png
+    fit:
+      mode: contain
+  - elementId: pv-outline-frame
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 390
+      - 370
+      - 440
+      - 147
+    border:
+      width: 1
+      color: "#D9D4C8"
+      style: solid
+  - elementId: pv-caption
+    elementType: text
+    bounds:
+      - 64
+      - 390
+      - 300
+      - 60
+    content:
+      text: Real captures, public example project. Sections and Notes are peers, not nested tabs.
+      fontFamily: Consolas
+      fontSize: 9.5
+      color: "#918B7E"
+      lineHeight: 1.5
+      align:
+        - left
+        - top
+  - elementId: pv-mark
+    elementType: image
+    bounds:
+      - 56
+      - 508
+      - 12
+      - 12
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    fit:
+      mode: contain
+  - elementId: pv-footer
+    elementType: text
+    bounds:
+      - 74
+      - 508
+      - 300
+      - 12
+    content:
+      text: HUANDENG / VIEWS
+      fontFamily: Consolas
+      fontSize: 9
+      color: "#918B7E"
+      letterSpacing: 1.1
+      align:
+        - left
+        - top
+  - elementId: pv-folio
+    elementType: text
+    bounds:
+      - 860
+      - 512
+      - 36
+      - 14
+    content:
+      text: "15"
+      field: main-position
+      fontFamily: Consolas
+      fontSize: 9.5
+      color: "#A29C8F"
+      align:
+        - right
+        - top
+notes: "These are the views around the canvas. Browse groups pages by Section and shows the stable Slide ID under each thumbnail. Outline is a reading view: title, a short Story summary, and the ID, so I can check the argument before opening a page. Sections edits the shared chapter structure; Notes gives a wide page for the talk; History is per page. They are peer views over one Main deck, not separate documents. The captures are from the public example project."

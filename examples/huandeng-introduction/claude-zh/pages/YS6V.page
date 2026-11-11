@@ -1,0 +1,262 @@
+background:
+  type: solid
+  color: "#F6F6F3"
+elements:
+  - elementId: title
+    elementType: text
+    bounds:
+      - 56
+      - 34
+      - 848
+      - 40
+    content:
+      text: 站在开源项目上，也说清还没做到的
+      fontFamily: Microsoft YaHei
+      fontSize: 26
+      lineHeight: 1.3
+      color: "#1C2321"
+      align:
+        - left
+        - top
+      bold: true
+    role: title
+  - elementId: built-head
+    elementType: text
+    bounds:
+      - 56
+      - 92
+      - 400
+      - 24
+    content:
+      text: 基于
+      fontFamily: Microsoft YaHei
+      fontSize: 17
+      lineHeight: 1.3
+      color: "#1C2321"
+      align:
+        - left
+        - top
+      bold: true
+  - elementId: os-logo
+    elementType: image
+    bounds:
+      - 56
+      - 134
+      - 44
+      - 44
+    src: media/imported/44e2a2aa5f3887deae386fa73f71234961f93e006873b632ccf38b6b6f1291a1.png
+    sourceName: open-slide.png
+    fit:
+      mode: contain
+  - elementId: os-t
+    elementType: text
+    bounds:
+      - 116
+      - 130
+      - 340
+      - 64
+    content:
+      text: <p><strong><span style="color:#1C2321">OpenSlide</span></strong></p><p>编辑器基础，MIT 许可</p><p><span style="font-size:11.5px;color:#7A8480">github.com/open-slide/open-slide</span></p>
+      fontFamily: Microsoft YaHei
+      fontSize: 14
+      lineHeight: 1.45
+      color: "#3E4845"
+      align:
+        - left
+        - top
+  - elementId: op-logo
+    elementType: image
+    bounds:
+      - 56
+      - 220
+      - 44
+      - 44
+    src: media/imported/2a2f5cbcc74c7fa83c40127dd8b0e42c23f1157131aebe28492aa1ac27bbdc6d.png
+    sourceName: github-repository.png
+    fit:
+      mode: contain
+  - elementId: op-t
+    elementType: text
+    bounds:
+      - 116
+      - 216
+      - 340
+      - 64
+    content:
+      text: <p><strong><span style="color:#1C2321">OpenPPTD</span></strong></p><p>复用其公式转换代码</p><p><span style="font-size:11.5px;color:#7A8480">github.com/Shingwha/open-pptd</span></p>
+      fontFamily: Microsoft YaHei
+      fontSize: 14
+      lineHeight: 1.45
+      color: "#3E4845"
+      align:
+        - left
+        - top
+  - elementId: pg-logo
+    elementType: image
+    bounds:
+      - 56
+      - 306
+      - 44
+      - 44
+    src: media/imported/d697acf6f3c5bc265806bc8f6c4e6d58b964e0b2962392d0329a420639f45846.png
+    sourceName: pptxgenjs.png
+    fit:
+      mode: contain
+  - elementId: pg-t
+    elementType: text
+    bounds:
+      - 116
+      - 302
+      - 340
+      - 64
+    content:
+      text: <p><strong><span style="color:#1C2321">PptxGenJS</span></strong></p><p>PowerPoint 导出库</p><p><span style="font-size:11.5px;color:#7A8480">github.com/gitbrent/PptxGenJS</span></p>
+      fontFamily: Microsoft YaHei
+      fontSize: 14
+      lineHeight: 1.45
+      color: "#3E4845"
+      align:
+        - left
+        - top
+  - elementId: ideas
+    elementType: text
+    bounds:
+      - 56
+      - 384
+      - 400
+      - 44
+    content:
+      text: 设计思路还来自 PowerPoint 和 WPS（章节、视图、备注），以及 Photoshop（图层）。
+      fontFamily: Microsoft YaHei
+      fontSize: 12.5
+      lineHeight: 1.5
+      color: "#56615D"
+      align:
+        - left
+        - top
+  - elementId: marks-note
+    elementType: text
+    bounds:
+      - 56
+      - 436
+      - 400
+      - 40
+    content:
+      text: GitHub 标志用来指代 OpenPPTD 仓库，不是 OpenPPTD 的标志。第三方标志归各自所有者。
+      fontFamily: Microsoft YaHei
+      fontSize: 11
+      lineHeight: 1.45
+      color: "#7A8480"
+      align:
+        - left
+        - top
+  - elementId: divider
+    elementType: line
+    bounds:
+      - 478
+      - 96
+      - 1
+      - 380
+    viewBox:
+      - 1
+      - 380
+    points: 0,0 0,380
+    border:
+      width: 1
+      color: "#CBD3CF"
+      style: solid
+    arrow: []
+  - elementId: gaps-head
+    elementType: text
+    bounds:
+      - 504
+      - 92
+      - 400
+      - 24
+    content:
+      text: 还没实现
+      fontFamily: Microsoft YaHei
+      fontSize: 17
+      lineHeight: 1.3
+      color: "#1C2321"
+      align:
+        - left
+        - top
+      bold: true
+  - elementId: gaps
+    elementType: text
+    bounds:
+      - 504
+      - 130
+      - 400
+      - 250
+    content:
+      text: <p>·  导入任意 PPTX 文件，以及来回往返</p><p>·  直接编辑 Google Slides</p><p>·  第二块屏幕上的独立演讲者窗口</p><p>·  可继承的幻灯片母版</p><p>·  导出 PPTX 中的原生 PowerPoint 动画</p><p>·  编辑器的插件市场</p>
+      fontFamily: Microsoft YaHei
+      fontSize: 14.5
+      lineHeight: 1.85
+      color: "#3E4845"
+      align:
+        - left
+        - top
+  - elementId: gaps-note
+    elementType: text
+    bounds:
+      - 504
+      - 400
+      - 400
+      - 40
+    content:
+      text: 这些都列在项目 README 里，每一项都是可以贡献的地方。
+      fontFamily: Microsoft YaHei
+      fontSize: 13
+      lineHeight: 1.5
+      color: "#56615D"
+      align:
+        - left
+        - top
+  - elementId: ft-mark
+    elementType: image
+    bounds:
+      - 56
+      - 505
+      - 16
+      - 16
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    fit:
+      mode: contain
+  - elementId: ft-label
+    elementType: text
+    bounds:
+      - 78
+      - 505
+      - 600
+      - 16
+    content:
+      text: HUANDENG  /  和 agent 一起工作
+      fontFamily: Microsoft YaHei
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - left
+        - middle
+  - elementId: ft-pos
+    elementType: text
+    bounds:
+      - 824
+      - 505
+      - 80
+      - 16
+    content:
+      text: "0"
+      fontFamily: Microsoft YaHei
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - right
+        - middle
+      field: main-position
+notes: 幻灯不是从零开始的。编辑器基于 OpenSlide，MIT 许可。公式转换复用了 OpenPPTD 仓库的代码；这里的 GitHub 标志指的是那个仓库，不是 OpenPPTD 的标志。PowerPoint 导出用的是 PptxGenJS。右边是幻灯还没做到的事，都列在项目 README 里：导入任意 PPTX 并往返、直接编辑 Google Slides、第二屏的独立演讲者窗口、可继承母版、导出文件中的原生 PowerPoint 动画，以及插件市场。如果你需要其中某一项，那正是最需要贡献的地方。

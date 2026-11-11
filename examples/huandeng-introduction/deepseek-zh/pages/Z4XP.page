@@ -1,0 +1,479 @@
+pageType: content
+background:
+  type: solid
+  color: "#F4F3ED"
+notes: 先把产品说清楚：项目目录是文档，Editor 是工作台，插件或连接器只是把外部助手接到同一个写入器。它不是把项目复制给每个助手，也不是让每个助手各改一份。
+elements:
+  - elementId: def-kicker
+    elementType: text
+    bounds:
+      - 48
+      - 42
+      - 300
+      - 18
+    content:
+      text: 产品 / 结构
+      fontSize: 9.5
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#7D8A80"
+      letterSpacing: 1.2
+      align:
+        - left
+        - top
+  - elementId: def-title
+    elementType: text
+    role: title
+    bounds:
+      - 48
+      - 66
+      - 720
+      - 40
+    content:
+      text: 一个项目，一个写入器
+      fontSize: 27
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#17221C"
+      lineHeight: 1.3
+      align:
+        - left
+        - top
+  - elementId: def-lead
+    elementType: text
+    bounds:
+      - 48
+      - 112
+      - 864
+      - 44
+    content:
+      text: 项目目录是文档，Editor 是工作台；插件/连接器把助手接到同一个写入器。
+      fontSize: 14.4
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#425048"
+      lineHeight: 1.55
+      align:
+        - left
+        - top
+  - elementId: def-project-card
+    elementType: shape
+    bounds:
+      - 48
+      - 184
+      - 250
+      - 212
+    shapeName: rect
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      color: "#D4DBD2"
+      width: 0.8
+      style: solid
+  - elementId: def-project-head
+    elementType: text
+    bounds:
+      - 64
+      - 200
+      - 218
+      - 22
+    content:
+      text: 项目目录
+      fontSize: 14.5
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#17221C"
+      align:
+        - left
+        - top
+  - elementId: def-project-path
+    elementType: text
+    bounds:
+      - 64
+      - 228
+      - 218
+      - 112
+    content:
+      text: |-
+        deck.pptd
+        pages/*.page
+        media/
+        .huandeng/
+      fontSize: 9.8
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Consolas
+      color: "#2B3830"
+      lineHeight: 1.65
+      align:
+        - left
+        - top
+  - elementId: def-project-note
+    elementType: text
+    bounds:
+      - 64
+      - 352
+      - 218
+      - 34
+    content:
+      text: 一个目录一个入口；移动时连页面和素材一起走。
+      fontSize: 8.8
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#66756A"
+      lineHeight: 1.45
+      align:
+        - left
+        - top
+  - elementId: def-editor-card
+    elementType: shape
+    bounds:
+      - 340
+      - 184
+      - 250
+      - 212
+    shapeName: rect
+    fill:
+      type: solid
+      color: "#16211B"
+    border:
+      color: "#16211B"
+      width: 0
+  - elementId: def-editor-mark
+    elementType: image
+    bounds:
+      - 356
+      - 200
+      - 26
+      - 26
+    src: media/imported/c6cce013fd62e96048a5f10c1168ba05a2a7d6192f334d83386a4eec45732c22.png
+    sourceName: huandeng-icon.png
+    fit:
+      mode: contain
+  - elementId: def-editor-head
+    elementType: text
+    bounds:
+      - 392
+      - 202
+      - 184
+      - 22
+    content:
+      text: HUANDENG Editor
+      fontSize: 14
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#F3F4EC"
+      align:
+        - left
+        - top
+  - elementId: def-editor-sub
+    elementType: text
+    bounds:
+      - 356
+      - 240
+      - 218
+      - 76
+    content:
+      text: |-
+        画布 · Story
+        素材 · 历史
+        事务与 revision
+      fontSize: 11.4
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#B9C7B9"
+      lineHeight: 1.65
+      align:
+        - left
+        - top
+  - elementId: def-editor-note
+    elementType: text
+    bounds:
+      - 356
+      - 344
+      - 218
+      - 28
+    content:
+      text: 同一份文档的工作台
+      fontSize: 8.8
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#8FA294"
+      align:
+        - left
+        - top
+  - elementId: def-assist-card
+    elementType: shape
+    bounds:
+      - 632
+      - 184
+      - 280
+      - 212
+    shapeName: rect
+    fill:
+      type: solid
+      color: "#E3E9DF"
+    border:
+      color: "#C8D2C6"
+      width: 0.8
+      style: solid
+  - elementId: def-assist-head
+    elementType: text
+    bounds:
+      - 648
+      - 200
+      - 248
+      - 22
+    content:
+      text: 外部助手
+      fontSize: 14.5
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#17221C"
+      align:
+        - left
+        - top
+  - elementId: def-client-1
+    elementType: image
+    bounds:
+      - 648
+      - 238
+      - 24
+      - 24
+    src: media/imported/733f24f4c52acb15eb0fbded1cf40eb42b4ba8e62b882acac70b6234b50919a8.png
+    sourceName: claude-code.png
+    fit:
+      mode: contain
+  - elementId: def-name-1
+    elementType: text
+    bounds:
+      - 682
+      - 238
+      - 214
+      - 34
+    content:
+      text: |-
+        Claude Code
+        本机插件
+      fontSize: 10.8
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#2B3830"
+      lineHeight: 1.45
+      align:
+        - left
+        - top
+  - elementId: def-client-2
+    elementType: image
+    bounds:
+      - 648
+      - 282
+      - 24
+      - 24
+    src: media/imported/0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13.png
+    sourceName: chatgpt.png
+    fit:
+      mode: contain
+  - elementId: def-name-2
+    elementType: text
+    bounds:
+      - 682
+      - 282
+      - 214
+      - 34
+    content:
+      text: |-
+        ChatGPT
+        授权工作站
+      fontSize: 10.8
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#2B3830"
+      lineHeight: 1.45
+      align:
+        - left
+        - top
+  - elementId: def-client-3
+    elementType: image
+    bounds:
+      - 648
+      - 326
+      - 24
+      - 24
+    src: media/imported/e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc.png
+    sourceName: deepseek.png
+    fit:
+      mode: contain
+  - elementId: def-name-3
+    elementType: text
+    bounds:
+      - 682
+      - 326
+      - 214
+      - 34
+    content:
+      text: |-
+        DeepSeek
+        Harness / MCP
+      fontSize: 10.8
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#2B3830"
+      lineHeight: 1.45
+      align:
+        - left
+        - top
+  - elementId: def-assist-note
+    elementType: text
+    bounds:
+      - 648
+      - 370
+      - 248
+      - 18
+    content:
+      text: 插件/连接器只负责连接。
+      fontSize: 8.8
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#66756A"
+      align:
+        - left
+        - top
+  - elementId: def-arrow-1
+    elementType: text
+    bounds:
+      - 304
+      - 266
+      - 30
+      - 28
+    content:
+      text: →
+      fontSize: 22
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#536656"
+      align:
+        - center
+        - top
+  - elementId: def-arrow-2
+    elementType: text
+    bounds:
+      - 596
+      - 266
+      - 30
+      - 28
+    content:
+      text: →
+      fontSize: 22
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#536656"
+      align:
+        - center
+        - top
+  - elementId: def-arrow-label-1
+    elementType: text
+    bounds:
+      - 296
+      - 300
+      - 46
+      - 30
+    content:
+      text: |-
+        打开
+        编辑
+      fontSize: 7.8
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#7D8A80"
+      lineHeight: 1.4
+      align:
+        - center
+        - top
+  - elementId: def-arrow-label-2
+    elementType: text
+    bounds:
+      - 588
+      - 300
+      - 56
+      - 30
+    content:
+      text: |-
+        事务
+        revision
+      fontSize: 7.8
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#7D8A80"
+      lineHeight: 1.4
+      align:
+        - center
+        - top
+  - elementId: def-rule
+    elementType: line
+    bounds:
+      - 48
+      - 426
+      - 864
+      - 1
+    viewBox:
+      - 864
+      - 1
+    points: 0,0.5 864,0.5
+    border:
+      color: "#D4DBD2"
+      width: 0.7
+      style: solid
+  - elementId: def-close
+    elementType: text
+    bounds:
+      - 48
+      - 440
+      - 864
+      - 34
+    content:
+      text: 同一个项目，同一个写入器；助手不是另开一份 deck，而是在同一页上提交改动。
+      fontSize: 12.4
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#2B3830"
+      lineHeight: 1.45
+      align:
+        - left
+        - top
+  - elementId: def-disclosure
+    elementType: text
+    bounds:
+      - 48
+      - 486
+      - 864
+      - 24
+    content:
+      text: ChatGPT 通过授权工作站接入；标识只说明支持的产品，不代表官方背书。
+      fontSize: 8.4
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#7D8A80"
+      align:
+        - left
+        - top

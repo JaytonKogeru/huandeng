@@ -27,27 +27,11 @@ elements:
       - 430
       - 90
     content:
-      text: The brief stays with the page.
+      text: "Story tells the agent what to keep."
       fontSize: 34
       fontFamily: Georgia
       color: "#17181A"
       lineHeight: 1.12
-      align:
-        - left
-        - top
-  - elementId: p11-body
-    elementType: text
-    bounds:
-      - 64
-      - 186
-      - 420
-      - 220
-    content:
-      text: "A prompt disappears when the chat ends. Story is stored in the project: what the page is for, what must not change, what this edit should do. The next agent — or the next person — starts from that."
-      fontSize: 17.5
-      fontFamily: Segoe UI
-      color: "#3A3833"
-      lineHeight: 1.62
       align:
         - left
         - top
@@ -98,7 +82,7 @@ elements:
       - 336
       - 50
     content:
-      text: Purpose, constraints, and the change being asked for.
+      text: "Story panel, public example; the table quotes this deck's 1BNA page."
       fontSize: 10.5
       fontFamily: Consolas
       color: "#918B7E"
@@ -121,5 +105,105 @@ elements:
       color: "#A29C8F"
       align:
         - right
+        - top
+  - elementId: p11-table
+    elementType: table
+    bounds:
+      - 64
+      - 186
+      - 440
+      - 230
+    columnWidths:
+      - 0.27
+      - 0.73
+    rows:
+      - - text: Purpose
+        - text: Show the twelve measured C1′–C1′ distances beside the structure they were measured in.
+      - - text: Keep
+        - text: |-
+            Values exactly as in paired-c1-distances.csv
+            Labelled non-zero y-axis and Å units
+            PDB 1BNA citation on the slide
+            No replicate, error-bar or trend claim
+      - - text: This change
+        - text: First authoring of the English edition.
+    style:
+      cellStyle:
+        fontFamily: Segoe UI
+        fontSize: 11.5
+        lineHeight: 1.35
+        color: "#1C2321"
+        align:
+          - left
+          - top
+        border:
+          - null
+          - null
+          - width: 1
+            color: "#D9D4C8"
+            style: solid
+          - null
+      firstColumnStyle:
+        fontSize: 11
+        color: "#B43C26"
+        bold: true
+  - elementId: p11-note
+    elementType: text
+    bounds:
+      - 64
+      - 428
+      - 440
+      - 36
+    content:
+      text: Story is an alignment tool, not a guarantee. Main, Section and Presentation also carry it.
+      fontFamily: Consolas
+      fontSize: 9.5
+      color: "#918B7E"
+      lineHeight: 1.4
+      align:
+        - left
+        - top
+  - elementId: p11-levels
+    elementType: text
+    bounds:
+      - 64
+      - 470
+      - 440
+      - 16
+    content:
+      text: MAIN / SECTION / PRESENTATION / PAGE
+      fontFamily: Consolas
+      fontSize: 8.5
+      color: "#625E55"
+      letterSpacing: 1.3
+      align:
+        - left
+        - top
+  - elementId: p11-mark
+    elementType: image
+    bounds:
+      - 56
+      - 508
+      - 12
+      - 12
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    fit:
+      mode: contain
+  - elementId: p11-footer
+    elementType: text
+    bounds:
+      - 74
+      - 508
+      - 300
+      - 12
+    content:
+      text: HUANDENG / STORY
+      fontFamily: Consolas
+      fontSize: 9
+      color: "#918B7E"
+      letterSpacing: 1.1
+      align:
+        - left
         - top
 notes: Story is stored with the page. A prompt disappears when the chat ends; this doesn't. It records what the page is for, what must not change, and what this edit is meant to do. When another agent — or another person — opens the page, they start from the intent, not from a guess. It's an alignment tool, not a guarantee. The model can still get it wrong; but at least it's wrong against something explicit.

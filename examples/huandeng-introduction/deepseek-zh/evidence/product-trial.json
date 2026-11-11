@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "project": "deepseek-zh",
+  "round": "product-intro-20261111",
+  "nativeAuthor": "DeepSeek Harness",
+  "sourceAuthorship": "Native author only; coordinator documentation, QA and mechanical brief export are separate.",
+  "nativeCompleted": true,
+  "firstAuthoredTurnOfThisRoundCompleted": true,
+  "authorAccepted": false,
+  "modelEvidence": {
+    "responseModelMetadata": null,
+    "modelOverrideRequested": false,
+    "accountOrEngineChanged": false
+  },
+  "plugin": {
+    "version": "0.19.0",
+    "kind": "officially installed final native headless bundle",
+    "skillSha256": "f4188e0934e7846346e286286041f49592bec3231747caa99d0b7b32dd9d016b",
+    "nativeManifestSha256": "aacc8106c15e5970999181ae23783686b0a5f5297fbe1a75a409c9edf696d4b8"
+  },
+  "prompt": {
+    "ownerFeedbackSha256": "f6c50dd7d397657a9f00e04c6f26a9fbf676c8cbbf4dccfdb093e8a77a6fe896",
+    "ownerFeedbackForwardedUnchanged": true,
+    "coordinatorRoutingExplicitlyLabelled": true,
+    "completedTurnPromptSha256": "a052f40c39bd98cc215758104cf5993fc055c65506edae8db28e332f34fc91e3",
+    "fullPromptPublished": false
+  },
+  "turns": [
+    {
+      "requestId": "a212e565-dd92-4d2f-98c5-a15e7d1e13fe",
+      "state": "completed",
+      "exitCode": 0,
+      "nativeCompleted": true,
+      "sessionId": "session-c178e34f-43f9-4656-a6ea-6ba9e443b4fd",
+      "seconds": 1124.75,
+      "toolCounts": {
+        "skill": 1,
+        "read_mcp_resource": 2,
+        "mcp__huandeng-deepseek-1ec66556db__huandeng_context": 1,
+        "mcp__huandeng-deepseek-1ec66556db__huandeng_selection_read": 1,
+        "read": 25,
+        "glob": 6,
+        "mcp__huandeng-deepseek-1ec66556db__huandeng_assets_list": 1,
+        "mcp__huandeng-deepseek-1ec66556db__huandeng_page_read": 17,
+        "grep": 15,
+        "read_image": 7,
+        "mcp__huandeng-deepseek-1ec66556db__huandeng_preview": 32,
+        "mcp__huandeng-deepseek-1ec66556db__huandeng_apply": 32,
+        "mcp__huandeng-deepseek-1ec66556db__huandeng_render": 24,
+        "subagent": 1,
+        "list_agents": 6,
+        "send_message": 2,
+        "write": 2,
+        "mcp__huandeng-deepseek-1ec66556db__huandeng_design_audit": 3,
+        "mcp__huandeng-deepseek-1ec66556db__huandeng_export": 2,
+        "mcp__huandeng-deepseek-1ec66556db__huandeng_activity_report": 1
+      },
+      "toolErrorCount": 1
+    }
+  ],
+  "technicalRecovery": {
+    "sameOriginalSession": true,
+    "providerJsonFailureInThisTurn": false,
+    "singleOperationCallsRequestedProactively": true,
+    "permissionExpansion": false
+  },
+  "mainPages": 22,
+  "presentations": [
+    {
+      "id": "full",
+      "count": 22,
+      "sameAsMain": true,
+      "localNotes": 0,
+      "pins": 0
+    },
+    {
+      "id": "brief",
+      "count": 12,
+      "localNotes": 0,
+      "pins": 0
+    }
+  ],
+  "contentStatus": "Preserved native candidate with retained source-fidelity, revision-scope, Story/Notes and bilingual coverage findings.",
+  "coordinatorEditedAuthoredPages": false,
+  "coordinatorReexportedNativeMain": false,
+  "coordinatorExportedSavedBrief": true,
+  "briefDisposition": "Native rebuilt full22 and brief12 but left previous 11-page brief exports. Coordinator exported the exact authored 12 occurrences and inherited Notes, retaining previous bytes in the internal trial archive.",
+  "evidence": [
+    {
+      "path": "product-qa.json",
+      "sha256": "7d630483469e4bfd3553c4069d1676d7e9b51051f8f041b50cf68f55c453175d"
+    },
+    {
+      "path": "product-review.json",
+      "sha256": "099f050671fd725371d2e6f36f0b47740b81c2cb485f12d1af09da3dd4ccd54d"
+    },
+    {
+      "path": "product-narrative.json",
+      "sha256": "44aa72d7f94af4088cf06df928ff36d24175492aa174f0318799e067d3b628f1"
+    },
+    {
+      "path": "product-assets.json",
+      "sha256": "5e5b5ef458d1f89500f37c7d0cd3ca40f8f63037f147f6be7a684fa4949704ab"
+    },
+    {
+      "path": "product-native-author-report.md",
+      "sha256": "03af6d8b04570f96ef3c165a65f108f076db5480d548afb24600b81f3c4917c4"
+    },
+    {
+      "path": "product-brief-export.json",
+      "sha256": "6c6e5306045cd02cd880c485509d51bb9756b62fc5af8b887b1e2015a427a2fb"
+    },
+    {
+      "path": "product-correspondence-review.json",
+      "sha256": "fd29b5f93c1440b34a5bf8dad9a7d9dce6700618f21c9ddb69d85624d6431279"
+    },
+    {
+      "path": "product-native-README.md",
+      "sha256": "2570c4c469d24c01b7b2e9915d9bb090431fd507f2a3f6eb2bf93bcbdcf2bbe5"
+    }
+  ],
+  "archivedReadmeLinkOrigin": "Project root README.md; archived product-native-README.md retains the native original bytes and relative-link meaning.",
+  "historicalEvidencePreserved": {
+    "content-review.json": "fe2f37ac811d6e2aac68470d9714694f4f252776913e4eb383e153fcbae36702",
+    "guidance-before-portability.md": "24e5684dc3284875b7260d5ed371f9e9a64422fcb2c9884aa2fd9b9e05aba01c",
+    "guidance-portability.json": "9f7fca8e823c9d72e22644b651c8ad8c920830de58642279de7c4457668a71e5",
+    "narrative.json": "61dce8fbab7c598acd80a48e394a6656ded3eafb644bc4ff3435f09a4bed2648",
+    "native-author-report.md": "2e31c4f8eb8a4d43e8386003c9c961012a515f19121ad095ee760a457f0e26cc",
+    "native-trial.json": "0d811da8a5436665895d576cc6c36a9590c306a02bc8b126806134d40dfc5630",
+    "office-visual-review.json": "8d97a378b8e5558e20d7f4328a1c355503971351367a20d0af29bedf06b15552",
+    "portable-packaging.json": "15300e9f0f4ecd610e9f19f82a26922f02af42a9816a6b77222d8823f26a1136",
+    "qa.json": "022088eba9e110f4c2ac26c7a613f1ea85086238ee288b38e29c0a8c7d10bdeb",
+    "short-exports.json": "8aaf0eea0d8826d1923e4bb1420ef25714a9119dba2475f3a35309039b414533",
+    "trial-authoring-guidance.md": "6c613a211161db7a9eac7765a4bcc93517d3c67bc1275beacdb476e63c223dc5",
+    "visual-review.json": "f1b0978042181862877e9797127369a5f22f1c19d74ca84b53bff74ad650276e",
+    "native-submission/receipt.json": "80c0434e19ff289e69d70b934200f62144cd4510d8204f43359936f98b75cae2",
+    "office/office-contact-1.jpg": "530547ee818dea3cd3f4053976be379b0329b3036bd9d606d9eae2fc0b0e1f0e",
+    "office/office-contact-2.jpg": "c57439369e3c51060533800b69fa193756cbd20ba07d47350feab89ce7ede2b6",
+    "office/office-contact-3.jpg": "b0c4b62286e8b6438e8c83b661bf4bb7b90ee9ba7edc7b41682292119aebb800"
+  }
+}

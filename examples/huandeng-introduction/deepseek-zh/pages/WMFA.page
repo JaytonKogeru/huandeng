@@ -2,7 +2,7 @@ pageType: content
 background:
   type: solid
   color: "#F4F3ED"
-notes: "讲了这么多问题，最后要落到一页真正的科研内容：结构、距离、数值、来源都在。这里不先讲功能，先看结果。十二个点是同一结构中的十二个位置，不是十二次独立实验，也不构成产品性能比较。"
+notes: "这一页作为编辑器的科学证据示例：Dickerson–Drew DNA dodecamer，PDB 1BNA。C1′–C1′ 距离是同一结构中的 12 个位置，不是独立重复实验，也不是氢键长度。图和结构来自同一组坐标，页面保留原生表格和来源。"
 elements:
   - elementId: sci-title
     elementType: text
@@ -10,7 +10,7 @@ elements:
     bounds:
         [48,42,520,44]
     content:
-      text: "我想做的，是这一页"
+      text: "一页能承载真实证据"
       fontSize: 28
       fontFamily:
         ea: Microsoft YaHei
@@ -25,7 +25,7 @@ elements:
     bounds:
         [48,98,258,78]
     content:
-      text: "图、数值、来源和一句话的结论，\n都在同一页上。\n这次，不先讲功能。"
+      text: "结构、数值、来源，都在同一页上。\n下一次修改，仍能保留它们。"
       fontSize: 15
       fontFamily:
         ea: Microsoft YaHei

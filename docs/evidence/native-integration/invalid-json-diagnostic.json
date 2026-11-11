@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 1,
+  "source": "official persisted assistant/attempt stream; read-only exact failed native session",
+  "rawContentCopied": false,
+  "reasoningOrPromptExported": false,
+  "attempts": [
+    {
+      "sequence": 1185,
+      "timeUtc": "2026-11-11T01:07:19.299000+00:00",
+      "turn": 2,
+      "step": 51,
+      "recordTypes": {
+        "chunk": 5,
+        "reasoning-chunks": 1,
+        "tool-call-chunks": 2
+      },
+      "translatedFinishRecords": [
+        {
+          "kind": "error",
+          "failure": {
+            "message": "DeepSeek Messages stream: tool input is invalid JSON",
+            "code": "MALFORMED_RESPONSE"
+          }
+        }
+      ],
+      "toolBlocks": [
+        {
+          "blockIndex": 1,
+          "toolName": "mcp__huandeng-deepseek-128cecc77e__huandeng_preview",
+          "closed": true,
+          "bytes": 19420,
+          "sha256": "a9a0b4f03a37e29d81ed8714139a7773748dd41ec8a1332ceaa46c900d8add59",
+          "deltaPieces": 6929,
+          "deltaConcatMatchesClosed": true,
+          "validJson": false,
+          "error": "Expecting ',' delimiter",
+          "characterOffset": 7702,
+          "line": 1,
+          "column": 7703,
+          "remainingCharacters": 11714,
+          "syntaxOnlyContext": "xxxxxxxxxxx\": {\"xxxxx\": \"xxxxxxx\", \"xxxx\": xxxx}}}}, {\"xxxxxxxxx\": \"xxxxxxxxx\", \"xxxxxxxxxxx\": \"xxxx",
+          "syntaxContextOffset": 50
+        }
+      ]
+    },
+    {
+      "sequence": 1196,
+      "timeUtc": "2026-11-11T01:12:28.876000+00:00",
+      "turn": 3,
+      "step": 1,
+      "recordTypes": {
+        "chunk": 5,
+        "reasoning-chunks": 1,
+        "tool-call-chunks": 2
+      },
+      "translatedFinishRecords": [
+        {
+          "kind": "error",
+          "failure": {
+            "message": "DeepSeek Messages stream: tool input is invalid JSON",
+            "code": "MALFORMED_RESPONSE"
+          }
+        }
+      ],
+      "toolBlocks": [
+        {
+          "blockIndex": 1,
+          "toolName": "mcp__huandeng-deepseek-128cecc77e__huandeng_preview",
+          "closed": true,
+          "bytes": 17561,
+          "sha256": "256229a8d6c511d444ba552efd9c3d8bd75f95d1194fe7a800978bf9d03b5c63",
+          "deltaPieces": 6259,
+          "deltaConcatMatchesClosed": true,
+          "validJson": false,
+          "error": "Expecting ',' delimiter",
+          "characterOffset": 3205,
+          "line": 1,
+          "column": 3206,
+          "remainingCharacters": 14354,
+          "syntaxOnlyContext": "xxxx\": \"xxxxxxxxxxxx\", \"xxx\": {\"xxxx\": \"xxxxxxx\"}}}, {\"xxxxxxxxx\": \"xxxxxxxxx\", \"xxxxxxxxxxx\": \"xxxx",
+          "syntaxContextOffset": 50
+        }
+      ]
+    },
+    {
+      "sequence": 1225,
+      "timeUtc": "2026-11-11T01:16:21.506000+00:00",
+      "turn": 4,
+      "step": 4,
+      "recordTypes": {
+        "chunk": 5,
+        "reasoning-chunks": 1,
+        "tool-call-chunks": 2
+      },
+      "translatedFinishRecords": [
+        {
+          "kind": "error",
+          "failure": {
+            "message": "DeepSeek Messages stream: tool input is invalid JSON",
+            "code": "MALFORMED_RESPONSE"
+          }
+        }
+      ],
+      "toolBlocks": [
+        {
+          "blockIndex": 1,
+          "toolName": "mcp__huandeng-deepseek-128cecc77e__huandeng_preview",
+          "closed": true,
+          "bytes": 6091,
+          "sha256": "2ad9e5a8e86b43a15c05e2840ccdf0bed18c6e43b13d6e80a69561a9c5129ec8",
+          "deltaPieces": 2133,
+          "deltaConcatMatchesClosed": true,
+          "validJson": false,
+          "error": "Expecting ',' delimiter",
+          "characterOffset": 1484,
+          "line": 1,
+          "column": 1485,
+          "remainingCharacters": 4607,
+          "syntaxOnlyContext": "x\": \"xxxxxxxxxxxxxxx\", \"xxx\": {\"xxxx\": \"xxxxxxx\"}}}, {\"xxxxxxxxx\": \"xxxxxxxxxxxxxx\", \"xxxxxxxxxxx\": ",
+          "syntaxContextOffset": 50
+        }
+      ]
+    }
+  ],
+  "providerParserSha256": "955dc7bc7ca6c857ff4a7e373b87c143b96a4c43fc80325b67dc0982600dcc75",
+  "parserFacts": {
+    "errorAfterMessageStop": true,
+    "providerBlocksAlreadyClosed": true,
+    "recognizedMaxTokensExcluded": true,
+    "earlyStreamEndHasDifferentCode": true,
+    "providerRequestAlwaysStreams": true
+  }
+}

@@ -1,0 +1,259 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-11T04:30:40.208389+00:00",
+  "project": "claude-en",
+  "presentationId": "pres-lab",
+  "count": 9,
+  "mainPositions": [1, 3, 4, 6, 12, 13, 19, 22, 25],
+  "artifactAuthor": "native Claude author",
+  "coordinatorAction": "Archive preceding brief and normalize current native nine-page artifact filenames; no export or authored edits",
+  "sourceHashes": {
+    "deck.pptd": "3dca92c3abb0b57d89a0aa922d22e9df73db315bb50af6dd30192fc9c0da27c7",
+    ".huandeng/project.json": "87ae2d7556ff3c1148ecabcecf437ef66ea4f08166de7018bdda536f15e74619",
+    "pages/2DC4.page": "f46ad048e3212823d3b6b58d1edc4af561c6efb99a4bfaf8d0d31caeaca9b1bb",
+    "pages/2SD8.page": "1fe2551ed220ce6ac6a96655497adec48c2774bbb07c1cc60a5ca37c5af52e6d",
+    "pages/3ECM.page": "99ff3707c13809f368eedc75e5743146c3757a086b63c12b5129ef1edd0590b2",
+    "pages/495F.page": "ead692f1b8b53daeb9989b66b3970835feeb4f69528f3afbd75f5e81af2e5724",
+    "pages/4V98.page": "e7a5889d3af8c2ff4e8d0adb2cc64aaf3a5d6452c95dc4d15462ffc3ff67364e",
+    "pages/4ZXH.page": "3c54a1d07e6fc5467e3393b0f51559328553bf0e28914f04abe334d3157ecdc3",
+    "pages/6FNH.page": "91d5a75001cf671f1b1357ce1587d17052d7287f9e8900117877010b8df1749b",
+    "pages/6SXG.page": "3fb8ef6f1915ceecc49a81c0b73c62ad52131646bfc5678bf76e3b2f83f0aa3c",
+    "pages/73AG.page": "5e843bdb2a001945d502e3539375c6e6642934666ac1c7857c17cea78f8d7f05",
+    "pages/7NHP.page": "7f8a7b224c0b4e80c014a9c2fac1a5001b270172625477ca770e2e109ff48f8e",
+    "pages/87VG.page": "50fce32b1aecab59351e787b0548bcc1841975ae60f832b1e2eae841311f7b5b",
+    "pages/AUBX.page": "4b1898a643494c6f06067ba229ff3f6d8d23f3bc89763e6e05dc7ad2f1ab77b9",
+    "pages/AVNM.page": "21f2134a7d402d04ace4a125f22cbc93ac9edd8e5056b7dfc1a0121f86c23260",
+    "pages/AZJC.page": "2a05d64160af4d20c75fc65a956dd4848268a85ba27478ba171f206ee6fd93c5",
+    "pages/B487.page": "7abc2a17d1db6e5af624e756fb74ea986efebc26c915d84552c42d4ad6aa3ccc",
+    "pages/BW88.page": "fdf95817e086939f4d77643534459d4379ee5edc4915dfb476b1c6355a5f6f4b",
+    "pages/C45U.page": "e0fecda65e0b76b57f9cdc9570ed99365b3ea473a4f57650fe612860b4400c71",
+    "pages/DKSN.page": "5e83e9f27db38f6f4ac7cce21293beeaee2b0cb53f98ad7ff6b8caddb58f75e4",
+    "pages/EEGK.page": "69cad11890ea98767cd7c41012f12a7f6fe3717fa73978006b57606aa78b69ef",
+    "pages/EMSZ.page": "f80cdc62a802e9249d58a18cdf12093f681008bee5eae3b088bff53e687cb8a1",
+    "pages/GDDR.page": "eda619c4e5d1bb4d97f1c8459c07facb4b66fa3feaecbb136e77a4e358c4c793",
+    "pages/initial.page": "d7a1284435ff793c11286e96e6bc8d1b22a21aa60659c1c167172f66b4f57362",
+    "pages/JZ7U.page": "a96f41b8a9618e300ab77dadcdd38fe852176d61f92d49f7c7b307a04cb59c75",
+    "pages/KM5E.page": "410cc176ac90cd21d864c3c9c2f98e5ed9f5ceabc6bae5c0fa5cd8db6f085d0e",
+    "pages/MEMH.page": "a13754e5b9079da6788979534635e685d1431b1e7f0f1da7cf7d1113defeb983",
+    "pages/NQGU.page": "ca16e319d0f97b041d12079b9cbc243ce303e119101d0bf413faad8c83d1821f",
+    "pages/PPKK.page": "255bee35b484a7697e7e67ecab9e263b4eaa91358f418e5f92b3a1a6b51ecfa1",
+    "pages/Q3YS.page": "3ba355dbe44eaec1c48b6d45fcfb5d1ffe23c841d805f49f5e74394e917f6e96",
+    "pages/QK69.page": "231d5525b078ee79eb31b36bd5ca79fc2d2de3803e23bd6d684f2608f9b360dc",
+    "pages/QMYQ.page": "9280f13d361e3765b72fdc5acdc44118c6944070f6022a96e64270c40ca6b61f",
+    "pages/RE8W.page": "07942024f6586ea2ddc54ce5a43a2ad47c565f66aa8976a4c26bbc9226234cc6",
+    "pages/RHDQ.page": "4829be14088e66a6b8aa200b5114ff9fc202d2d97075fbea61079cf1893c1a2c",
+    "pages/RQ64.page": "b94713e640a998aeae6c045a35f5f5ffb815b9ef891b2513a371b6b2ac528d11",
+    "pages/SHBY.page": "876bbae9e1fa03def7d4d3edb35ad1a20ac0ee334a7d62684835ca3d9094ad2a",
+    "pages/SMGE.page": "63c3c226ae39e054cd51effd791a2d9483e7c4ee2c50dbae3a9fbd2513f7cd1b",
+    "pages/SQNG.page": "ac66e61678e319d911e2c8a41c91822d9b99f035e85b37a1a8ac2365f08ddb2b",
+    "pages/SY94.page": "d1115e67dda0ab9244c54012d57610223f201e67a28314e6ed5d181553b4496c",
+    "pages/TFJB.page": "316a829f8934874e6f63f16d93c4936b72727c358efd018b4a4021b377365ec6",
+    "pages/TXNA.page": "6121e0ba4066be220a9cf6233085cdedbede0596e8a6afd3c05e41b354595327",
+    "pages/V2SV.page": "8edc0e70c7ab43ec662bedc8d168aa6861b5b8d97b4e8222f1c1f5a83de003cc",
+    "pages/WAJX.page": "06a9ae42a663b3f5d35453cbdb0d97589afde3dc247cd895342bcc930ff231aa",
+    "pages/WC3D.page": "6b6d3fed9af41422a956f25b75f178a77548ef4ad20f6094fe3a54b8a5a456b1",
+    "pages/XPFU.page": "44ce56b654890c254ae3334cb7327516001c9870431af777fa1c442933496ba1",
+    "pages/YPNR.page": "528cf8cca5aa33e504fc94aa0d8c21bd40b0a74b6a0299b1c92cb1af8657000d",
+    "pages/ZJ69.page": "3e546618d07c86d578080024db1682d481cc252980b3ba11b8b663662cad24d8",
+    "pages/ZYC6.page": "f42ddc980a72cee358afca3fe3bd0f8ef4661f121ac1c0d3c48392933e67c1f0"
+  },
+  "sourceUnchanged": true,
+  "chineseSourceUnchanged": true,
+  "nativeMainExportsUnchanged": true,
+  "localNotes": 4,
+  "pins": 0,
+  "oldExports": [
+    {
+      "fileName": "brief.pdf",
+      "sha256": "8873d27385aa4b5fb092aab49fae16ca764295280062e8f98a19e67fc051b6e1",
+      "bytes": 1114031
+    },
+    {
+      "fileName": "brief.pdf.report.json",
+      "sha256": "73c3a302a016ecd9e20ce5d8aa1e725e9f9479fc339f47ee8ec19e300cc8493f",
+      "bytes": 62007
+    },
+    {
+      "fileName": "brief.pptx",
+      "sha256": "a0045607a67998071bde00a384f49d68d2cb9b52b56b7ff279c6566b78b85ba6",
+      "bytes": 998836
+    },
+    {
+      "fileName": "brief.pptx.report.json",
+      "sha256": "9f355dc6173c78af6f37743d76903bb693c889092254ea38f914b7dedfd787e9",
+      "bytes": 70437
+    }
+  ],
+  "oldPdfPages": 9,
+  "oldBytesRetainedInInternalTrialArchive": true,
+  "exports": [
+    {
+      "path": "../Exports/brief.pdf",
+      "sha256": "5a3b9cc46dd5a0424d5819463ecbee3913958c75ee5c1417133c53521016d85e",
+      "bytes": 1114109,
+      "reportPath": "../Exports/brief.pdf.report.json",
+      "reportSha256": "fbfda639cb5ada7b8f5f1a0482ed219d2e852a90286a761eb3332426bf7f6bd3",
+      "actor": "native Claude author",
+      "pageCount": 9,
+      "nativeFilename": "Lab-meeting version (about 8 minutes)-pres-lab.pdf",
+      "nativeMtime": 1794371244.2707841,
+      "coordinatorAction": "Standardized filename only; exact native bytes preserved"
+    },
+    {
+      "path": "../Exports/brief.pptx",
+      "sha256": "b51256d996f2de0440b1a0462930dd9b565a303c158e1e8cd3fd0b6480ac0841",
+      "bytes": 999381,
+      "reportPath": "../Exports/brief.pptx.report.json",
+      "reportSha256": "c37b21008664e69d5f6331758758900dcb3d15578e5c39dd794474962d3c5d84",
+      "actor": "native Claude author",
+      "pageCount": 9,
+      "nativeFilename": "Lab-meeting version (about 8 minutes)-pres-lab.pptx",
+      "nativeMtime": 1794371258.1586123,
+      "coordinatorAction": "Standardized filename only; exact native bytes preserved"
+    }
+  ],
+  "pptxStructure": {
+    "slides": 9,
+    "notes": 9,
+    "tables": 2,
+    "charts": 1
+  },
+  "notesReadback": [
+    {
+      "position": 1,
+      "pageId": "7d1954c5-ca5b-4eaa-a391-7b18431f6385",
+      "matchesSavedResolvedNotes": true,
+      "noteSource": "occurrence"
+    },
+    {
+      "position": 2,
+      "pageId": "c51fd901-1ac1-426b-aa51-ade862d65405",
+      "matchesSavedResolvedNotes": true,
+      "noteSource": "occurrence"
+    },
+    {
+      "position": 3,
+      "pageId": "99bf9e70-3522-4aa6-a1bf-6ce870f9142d",
+      "matchesSavedResolvedNotes": true,
+      "noteSource": "Main"
+    },
+    {
+      "position": 4,
+      "pageId": "a794c9d2-62ae-486b-ae08-dbf4c601fb92",
+      "matchesSavedResolvedNotes": true,
+      "noteSource": "Main"
+    },
+    {
+      "position": 5,
+      "pageId": "e25cbd3a-6a20-4bc8-959f-eb3e1bcabefa",
+      "matchesSavedResolvedNotes": true,
+      "noteSource": "occurrence"
+    },
+    {
+      "position": 6,
+      "pageId": "71d560b6-4ead-4477-a3c8-0bad5c755d0d",
+      "matchesSavedResolvedNotes": true,
+      "noteSource": "Main"
+    },
+    {
+      "position": 7,
+      "pageId": "3e42c654-67cb-4f39-8096-d8c0c3151d48",
+      "matchesSavedResolvedNotes": true,
+      "noteSource": "Main"
+    },
+    {
+      "position": 8,
+      "pageId": "b0f0b421-10ec-43b8-9e6d-88058c1d8fd3",
+      "matchesSavedResolvedNotes": true,
+      "noteSource": "Main"
+    },
+    {
+      "position": 9,
+      "pageId": "9056e773-a44a-449a-8d49-900cf487bac8",
+      "matchesSavedResolvedNotes": true,
+      "noteSource": "occurrence"
+    }
+  ],
+  "pdfRenders": [
+    {
+      "position": 1,
+      "mainPosition": 1,
+      "sha256": "a0d6dfa498326a765bee47715d40b9da34010b860517377636e18e3c1ca4f8c7",
+      "pixels": [1920, 1080]
+    },
+    {
+      "position": 2,
+      "mainPosition": 3,
+      "sha256": "587b3123fc04fa1a390960c050948d4ed713d38dde71e78576bda66da9468a5c",
+      "pixels": [1920, 1080]
+    },
+    {
+      "position": 3,
+      "mainPosition": 4,
+      "sha256": "ada24aebf2ea54d8a2027b4aff018e7e7590f5a00f47356acf653a76c8f507ca",
+      "pixels": [1920, 1080]
+    },
+    {
+      "position": 4,
+      "mainPosition": 6,
+      "sha256": "9972d8305a1ad6f629f9cc72b383149bd16460f8497e5e62a627114298b835cb",
+      "pixels": [1920, 1080]
+    },
+    {
+      "position": 5,
+      "mainPosition": 12,
+      "sha256": "8f3220f0caefc56150cec04108c977754d00feea5efe4544ad893631cf037ac1",
+      "pixels": [1920, 1080]
+    },
+    {
+      "position": 6,
+      "mainPosition": 13,
+      "sha256": "99c02132a7049a0f57ef7d91965e2c0fe58bd5f8564029e935e6d2ab3504a1c4",
+      "pixels": [1920, 1080]
+    },
+    {
+      "position": 7,
+      "mainPosition": 19,
+      "sha256": "317504c306a720154c50d059fceecbdbba44b7bbc4141d2630785469b827a891",
+      "pixels": [1920, 1080]
+    },
+    {
+      "position": 8,
+      "mainPosition": 22,
+      "sha256": "83a5d9dc1816284cd8b16c224c9f319efafc42a8a5bd95cb38b91caaf34f1e6c",
+      "pixels": [1920, 1080]
+    },
+    {
+      "position": 9,
+      "mainPosition": 25,
+      "sha256": "58854be7995505567fe38646045d579b5802634b03e2bb0bacbaba7729302b24",
+      "pixels": [1920, 1080]
+    }
+  ],
+  "visualReviewPending": false,
+  "authorAccepted": false,
+  "visualReview": {
+    "currentPdfContactsViewed": [1, 2],
+    "allNineCurrentPdfPagesSeen": true,
+    "mainNumberedFootersPreserved": true,
+    "currentSeparateBriefOfficeRenderClaimed": false,
+    "notesReadback": "All nine Notes match saved resolved Notes; four occurrence Notes."
+  },
+  "sourceHashesRoot": "..",
+  "contactSheets": [
+    {
+      "path": "product-brief/contact-1.jpg",
+      "sha256": "3cb8b2dd1f20ccc3599e5207cb9d7f94af5d4cfeff9f9f1c5194b70974bd9970"
+    },
+    {
+      "path": "product-brief/contact-2.jpg",
+      "sha256": "9cca7f05462a67987b03c436087bb3522d94e08723281ad2a8f2809e6566dbed"
+    }
+  ],
+  "powerPointScope": "The preceding complete Main deck was rendered in actual Office; current affected Main pages were checked separately. Current Brief PDF/Notes/caches were verified. No new complete Brief Office run is claimed.",
+  "retainedPriorScienceEvidence": {
+    "path": "product-office-prior/brief-slide-05.png",
+    "sha256": "faeff013b12cbe2b62f9b8f0924ffa25f419924a0f398c0c039fcd09a70b9c01",
+    "scope": "Actual preceding Brief occurrence 5; its AVNM source bytes remain unchanged. This is not a new render of the current Brief artifact."
+  }
+}

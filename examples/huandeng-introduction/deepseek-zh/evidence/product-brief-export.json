@@ -1,0 +1,285 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-11T02:48:05.759227+00:00",
+  "actor": "Coordinator mechanical export, not native author continuation",
+  "project": "deepseek-zh",
+  "presentationId": "brief",
+  "count": 12,
+  "mainPositions": [1, 2, 4, 5, 6, 8, 13, 15, 16, 17, 19, 22],
+  "sourceHashes": {
+    "deck.pptd": "eda1ef98c23aad9e04891d9314a9f8349c46710d8633a8c0c92429fdca6cd62a",
+    ".huandeng/project.json": "7977f54ff28cd8c30237fb63bc198c57e0dd81239f6e9b680448d5a7e7a2ff76",
+    "pages/2FMW.page": "a764a47a73c99ae174619f46e24264af45e8bf826b24b99d17982b214218e647",
+    "pages/2Z2N.page": "24d6e2f3f73ed2ee1bcbb4c557c15d041e3ffb8a4a52b4560fa23856ae25dbf2",
+    "pages/3JZP.page": "5349188fb18ba1db2bd44418144f2552e23c80cc8ce64469489f371a263edf11",
+    "pages/4E96.page": "6e5397629c1022bf35cd9f1d1c47287382f071ab60edee623e38d8ebd8eb5bd4",
+    "pages/4ST8.page": "b3870d66fddd12879d9fa349cd467dfcf5d0ff09f3df8f396500526f5749a43d",
+    "pages/4SYN.page": "e3968de7d78a92ed12f4ade0155a28d0ad11fd554fe9919ee2a478e992699f80",
+    "pages/4USM.page": "af1623336a93001d7296d5efb7d865fd62651d474c94eb9765035d598c37e4e0",
+    "pages/4UY8.page": "89995ede64499619f6e9e0aba9dbd62c31be342059ba0df918913270d838d544",
+    "pages/5GVZ.page": "6c6e5c29f1715b5e955c23fc9bd3286149c4cff74ddf06a14ea03be7f1f548ef",
+    "pages/5HUQ.page": "c1c974d2151c34ca4e0d0afe3c1612820b01dbeace6d76f53fc148dd8a27a4c9",
+    "pages/5MNK.page": "9133c407dcbaa2b72b1b3ef108b081d2e9624a551e9b3a92e24dc1786076d9fe",
+    "pages/5XR7.page": "66ed6078f4e8b91d848742ecf65d8264cb01a53f4068683b41add8429cdb7f86",
+    "pages/5ZZM.page": "4f89c03a1a1e29255ca2673ff539e5d6290299bf9f8321ba354d3323fa100c4b",
+    "pages/6DVM.page": "695a49474ea07f8abf61ca8cfedaee7ceef41e80cc6e07b5715e9611898dc6c2",
+    "pages/7PV4.page": "83fc7b7f0348787cb47564c282d16f4113b8db53faae04310605377292f16d62",
+    "pages/88WA.page": "4253296c3b52e17362ab8041a680289fd065eb7355367d989d89945c65cf8baa",
+    "pages/8PPW.page": "4d8cad1faff2875363cb6d9e5ef912d1fe4f60f8502ddb9eb96f02512118625c",
+    "pages/AVJE.page": "31611edc273527fb2116ed36eb68c0c748516c63296fd7fc0702d72403337a4a",
+    "pages/AVRB.page": "8b273ae91c572e6f43feab8b6ef5ac3f6e871f92ab8b6fb2c3607a2afc6c276f",
+    "pages/CKFY.page": "a17489f79b1c439eef0be0bd254b1202e7aa34c12a938f32dca41a6b5fec5e9a",
+    "pages/CS2J.page": "2a53666902fc9065cd8d85fa8ea3288ab09688cc7563804e3ed1a95696c24b18",
+    "pages/CZD7.page": "670dbfb90bd3b8bc21913d1ec8179bdab89382bd5b475b85d5dec78da79186aa",
+    "pages/DPSB.page": "2cefa797139d7cbb281d4ccb4fa731302d4423facc0c07494d099f13d0080390",
+    "pages/DZ9U.page": "186e01eaa13527c25e80e1c5cd642a813b2335975c77a8099a60ec85dd5e3066",
+    "pages/E8XB.page": "373f6f9d9cfefce71189bd77c25b61ac70161c91f5dd346744823dc89ad67a0f",
+    "pages/G8WH.page": "f19b976630eb0fa5c8c50915656e3e7ba3f723e0fc3c9a96496adb8c04e82e37",
+    "pages/GRYJ.page": "72a38e7b06f6b8916a95e8472ad5c4a92bd171d6c055866c7008db3e0df24035",
+    "pages/GYRU.page": "f9c28cd810711f32adf2bbffcc2398c101c8ff6a16403ecd098023269626b691",
+    "pages/H62N.page": "900d13f7a73a7b242ac38213f7f055b73ee63538dc5edd634ca0f815276ce68f",
+    "pages/initial.page": "1b8eba932edcb6a1cedb87eae9f93a1c3f02fc54302dbadf3f2ead7d01cd44e5",
+    "pages/J3ZX.page": "4b2b869138d24925414aa016cd4a26c266cc82800af9b4416e76d91b79990f81",
+    "pages/JA2S.page": "e2b73ca3c3db0cc34a635f2bfb275da0e097838ad56a8251ab3ae196fdba82f3",
+    "pages/K28C.page": "ee2585eec8de697b3fb8449e35d69ec964a52bea8872da72bf67168793258b44",
+    "pages/K9P9.page": "230101eca6d3ab38b91aeb5ca1a8d47f9eb7443a8be97b1eeac2347b0ccc0b33",
+    "pages/PD5K.page": "bd06d6e27e0db349e716497ebc99bd280ab02c5dcd366256493f4bfb53a41025",
+    "pages/PQQR.page": "c28c60f48d9a27f68b7648867c3bf976f5c7ac16116c442f206f83aec0b4c130",
+    "pages/QHUX.page": "1e152bdde1a812048d7f70cda11c9e26f76b094216293112d35bd862027011ef",
+    "pages/TZM6.page": "4efb4ce91666a3a96ec26ea345d7784f4949966bd0fb68b9f5b3919530ca537b",
+    "pages/UBDB.page": "876605e2b1b95cc9806bdd852d8b8c95280dd311dd3cf57f9eb1a441696b3d70",
+    "pages/UGA7.page": "1e28605883f9c1bc61fc6ecb58541241261a9780ca9c694d1ef16318fb9413c0",
+    "pages/UZKY.page": "5a597d58b6ef8fcdf8f5c6621abca5059084f1acf61fe7192e29ecc3fd7ca7f0",
+    "pages/W4PY.page": "0e54ad488c93f9893a8a6cff5d53e9e7b2f0aff00b21625e0469357d95263439",
+    "pages/WDNH.page": "bacdc0a72df7e96a470c5f1ff385e361162f3c16a12ade8c02a04a7cad90b96f",
+    "pages/WMFA.page": "2b265983c246d9bb23f3515707f1c9e189a6f4a54184edc7f05bdcf186e6c3c8",
+    "pages/WQGW.page": "a458960ce2c7caab1c7ef74ea825f95999afcc8309b9ba0d5d309a2af7d0034d",
+    "pages/XZJN.page": "1022cb1a58b515c7c1047ffdb4d85502e563fd4c2b7ebcbd11c2f6be8d1e2cb4",
+    "pages/Z4XP.page": "279e7be40a9b5e1ba8e056c167f812eed4b673b2b20b9a21250f3ee757432d2d"
+  },
+  "sourceUnchanged": true,
+  "nativeMainExportsUnchanged": true,
+  "pins": 0,
+  "localNotes": 0,
+  "oldExports": [
+    {
+      "fileName": "brief.pdf",
+      "sha256": "1ea712a66ef40091a200ec1a25f60d6740bae3ed9312158ff4597b94fedf42cf",
+      "bytes": 2219259
+    },
+    {
+      "fileName": "brief.pdf.report.json",
+      "sha256": "eb1c2806c136cbf766368cec5ed2e48284ec75a860ac4127d6702de0744a4920",
+      "bytes": 44057
+    },
+    {
+      "fileName": "brief.pptx",
+      "sha256": "300eec34786b6a970dd984c21184d4be538eb0af84041fcbe247bb623b7a1f83",
+      "bytes": 2000978
+    },
+    {
+      "fileName": "brief.pptx.report.json",
+      "sha256": "95d639c595665ea5ab9cb8bdd093aac3ae94614f5802f358cb317100f96526b7",
+      "bytes": 51880
+    }
+  ],
+  "oldPdfPages": 11,
+  "oldRevisions": {
+    "manifestRevision": "sha256:0c72d800be0dae93d48dea518e49b1a3b8a13072d66f5bff5fb290da1fc2d5a9",
+    "metadataRevision": "sha256:9970277e15198e2af3e36f06b9bcba4977307353ea05602763eb1d12666f427b"
+  },
+  "oldBytesRetainedInInternalTrialArchive": true,
+  "exports": [
+    {
+      "path": "../Exports/brief.pdf",
+      "sha256": "f6f824f8bd3702427c55873bb6acae655bae745f71901885fcb3ef700eea87bf",
+      "bytes": 1843389,
+      "reportPath": "../Exports/brief.pdf.report.json",
+      "reportSha256": "e3231d10cfec91920d7b862107da8f7edf70d70c4a3e345e95584a63001fbc90",
+      "actor": "coordinator mechanical export of unchanged native-authored Presentation",
+      "pageCount": 12,
+      "metadataRevision": "sha256:7977f54ff28cd8c30237fb63bc198c57e0dd81239f6e9b680448d5a7e7a2ff76",
+      "manifestRevision": "sha256:eda1ef98c23aad9e04891d9314a9f8349c46710d8633a8c0c92429fdca6cd62a",
+      "emittedFilename": "短版 · 约十分钟-brief.pdf",
+      "canonicalRenamePreservedBytes": true
+    },
+    {
+      "path": "../Exports/brief.pptx",
+      "sha256": "b106cb7e2e14b0b1abad26168f816799ceb98de365f5468696a1672265dfca61",
+      "bytes": 1445425,
+      "reportPath": "../Exports/brief.pptx.report.json",
+      "reportSha256": "fd677b48d5c3cf296400eeb625d51ed6ac28a37fd9169a68f68242c84cf2a854",
+      "actor": "coordinator mechanical export of unchanged native-authored Presentation",
+      "pageCount": 12,
+      "metadataRevision": "sha256:7977f54ff28cd8c30237fb63bc198c57e0dd81239f6e9b680448d5a7e7a2ff76",
+      "manifestRevision": "sha256:eda1ef98c23aad9e04891d9314a9f8349c46710d8633a8c0c92429fdca6cd62a",
+      "emittedFilename": "短版 · 约十分钟-brief.pptx",
+      "canonicalRenamePreservedBytes": true
+    }
+  ],
+  "pptxStructure": {
+    "slides": 12,
+    "notes": 12,
+    "tables": 2
+  },
+  "notesReadback": [
+    {
+      "position": 1,
+      "pageId": "b473ed1a-c554-4ee3-9e8e-688e00be99b9",
+      "matchesSavedMainNotes": true
+    },
+    {
+      "position": 2,
+      "pageId": "62c6d0cc-885f-485c-a81e-baeaff6d1940",
+      "matchesSavedMainNotes": true
+    },
+    {
+      "position": 3,
+      "pageId": "16f2ab87-6962-4100-b2f6-1ab8077b01c7",
+      "matchesSavedMainNotes": true
+    },
+    {
+      "position": 4,
+      "pageId": "b6749c12-2c5c-42b4-8437-763f6a800abf",
+      "matchesSavedMainNotes": true
+    },
+    {
+      "position": 5,
+      "pageId": "007717f6-4756-4fc1-acdb-91ac96df37e6",
+      "matchesSavedMainNotes": true
+    },
+    {
+      "position": 6,
+      "pageId": "4a40e022-4dcc-41ea-b645-a279b3f1b1e3",
+      "matchesSavedMainNotes": true
+    },
+    {
+      "position": 7,
+      "pageId": "442751c7-1ad1-457f-acbb-c1e8611f0ecd",
+      "matchesSavedMainNotes": true
+    },
+    {
+      "position": 8,
+      "pageId": "81904faa-df61-47e7-a6ad-a02563b1c171",
+      "matchesSavedMainNotes": true
+    },
+    {
+      "position": 9,
+      "pageId": "d23386ad-2c83-44fd-aa92-db09358af429",
+      "matchesSavedMainNotes": true
+    },
+    {
+      "position": 10,
+      "pageId": "e42a9867-65cf-4d38-a13b-ddf588dcdc68",
+      "matchesSavedMainNotes": true
+    },
+    {
+      "position": 11,
+      "pageId": "39c44252-dda5-483d-867f-4710547c0065",
+      "matchesSavedMainNotes": true
+    },
+    {
+      "position": 12,
+      "pageId": "4dd70003-c817-49c2-a367-786594eaab59",
+      "matchesSavedMainNotes": true
+    }
+  ],
+  "pdfRenders": [
+    {
+      "position": 1,
+      "mainPosition": 1,
+      "sha256": "ab257f9d6d0ad707fc3b8b21827f1265cc6de86dd4943f9c4b26c4d98e1d957f",
+      "pixels": [1920, 1080]
+    },
+    {
+      "position": 2,
+      "mainPosition": 2,
+      "sha256": "8eb1f44467718c42613f775fcb9a67671931a60f5b5013446d887904f0420485",
+      "pixels": [1920, 1080]
+    },
+    {
+      "position": 3,
+      "mainPosition": 4,
+      "sha256": "0c3fe1e06ee00feb635a8b7baae7a8e15eadda4b88880c40cdb3091b0de2d762",
+      "pixels": [1920, 1080]
+    },
+    {
+      "position": 4,
+      "mainPosition": 5,
+      "sha256": "8a39167e5e703863684973c223a1b263fe6e830ba5a3c5e4c96a523d8c839a2b",
+      "pixels": [1920, 1080]
+    },
+    {
+      "position": 5,
+      "mainPosition": 6,
+      "sha256": "5df0969ee1ecc285b2d3331fc9e9ac96c088abc69e787d04c330ee8fcfddf2d1",
+      "pixels": [1920, 1080]
+    },
+    {
+      "position": 6,
+      "mainPosition": 8,
+      "sha256": "c994c7360e0210215cfa36edf72b0fd950cb2a79464868a1a4b3928452aba56e",
+      "pixels": [1920, 1080]
+    },
+    {
+      "position": 7,
+      "mainPosition": 13,
+      "sha256": "bac27a9a9cdfea6ee6466df1b1fc3574b72c7d80cd4be4af57ebec663071eb5b",
+      "pixels": [1920, 1080]
+    },
+    {
+      "position": 8,
+      "mainPosition": 15,
+      "sha256": "368cd4e51ce80ba45ad65697a803fae7c1a52260c239c7a30447eeba63219dad",
+      "pixels": [1920, 1080]
+    },
+    {
+      "position": 9,
+      "mainPosition": 16,
+      "sha256": "c0a4aade28f1d6ea38f709f6dfb2840751e56faab0be243826191689621488a7",
+      "pixels": [1920, 1080]
+    },
+    {
+      "position": 10,
+      "mainPosition": 17,
+      "sha256": "14d566e352c643618a1f87a1e9269973d00c00634937037a1c585d0433e9ac06",
+      "pixels": [1920, 1080]
+    },
+    {
+      "position": 11,
+      "mainPosition": 19,
+      "sha256": "d72a6a940fb702d4092adaf60d761a53d10e86e9d70614582253f5d399d5dda9",
+      "pixels": [1920, 1080]
+    },
+    {
+      "position": 12,
+      "mainPosition": 22,
+      "sha256": "c856cd14d207d9f88a6cc1a5465dee1b412fc434a12c0a54371ef2e96e62de37",
+      "pixels": [1920, 1080]
+    }
+  ],
+  "contacts": [
+    {
+      "fileName": "brief-contact-1.jpg",
+      "sha256": "095ff99ac7f4a9d0e917fcb596611e8499518f06c286ba27187e42252dc2fca6",
+      "pixels": [2000, 810]
+    },
+    {
+      "fileName": "brief-contact-2.jpg",
+      "sha256": "8a6664a6924413162bf685f6a0b12e17512b1967db8124491365256cb8141028",
+      "pixels": [2000, 810]
+    }
+  ],
+  "powerPointScope": "Main 22 pages were rendered and reviewed; this brief has no distinct pinned page or local Note. No separate brief Office run is claimed.",
+  "visualReviewPending": false,
+  "authorAccepted": false,
+  "cliSha256": "68fa3efe3ee5fbf7ab76ad6a64b5360b229edadaf12aa8ca1ceb6ce1f60f56c8",
+  "pdfVisualReview": {
+    "contactSheetsViewed": [1, 2],
+    "fullPagesViewed": [1],
+    "conclusion": "The actual twelve-page selection rendered without new clipping or missing assets. Its cover retains the native fixed Main counter 01 / 22; this is a retained authoring limitation, not a claim that the brief has 22 pages.",
+    "authorAccepted": false
+  },
+  "sourceHashesRoot": "..",
+  "contactSheets": ["product-brief/contact-1.jpg", "product-brief/contact-2.jpg"]
+}

@@ -75,7 +75,7 @@ elements:
   - elementId: extremes
     elementType: table
     bounds:
-        [56,384,236,70]
+        [56,384,236,75.567]
     columnWidths:
         [0.38,0.26,0.36]
     rows:

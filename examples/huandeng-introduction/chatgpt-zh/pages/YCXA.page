@@ -6,31 +6,17 @@ elements:
   - elementId: title
     elementType: text
     bounds:
-      - 44
-      - 35
-      - 870
-      - 68
+        [42,34,880,76]
     role: title
     content:
-      text: 所以，我想先把故事讲出来
-      fontFamily: Microsoft YaHei
-      fontSize: 28
-      color: "#263C34"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
+      {"text":"分工可以并行，交接必须说清","fontFamily":"Noto Serif SC","fontSize":28,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.2}
   - elementId: brand-small
     elementType: image
     src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
     sourceName: huandeng.png
     alt: huandeng.png
     bounds:
-      - 44
-      - 510
-      - 17
-      - 17
+        [43,512,18,18]
     fit:
       mode: contain
     crop:
@@ -41,92 +27,84 @@ elements:
   - elementId: foot
     elementType: text
     bounds:
-      - 69
-      - 513
-      - 130
-      - 17
+        [68,515,140,16]
     content:
-      text: HUANDENG
-      fontFamily: Microsoft YaHei
-      fontSize: 10
-      color: "#66756B"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
+      {"text":"HUANDENG","fontFamily":"Noto Sans SC","fontSize":9,"color":"#5B6A62","bold":false,"align":["left","top"],"lineHeight":1.35}
   - elementId: position
     elementType: text
     bounds:
-      - 884
-      - 512
-      - 30
-      - 18
+        [881,514,35,18]
     content:
-      text: ""
-      fontFamily: Microsoft YaHei
-      fontSize: 10
-      color: "#66756B"
-      bold: false
-      align:
-        - right
-        - top
-      lineHeight: 1.3
-      field: main-position
-  - elementId: spoken
+      {"text":"","fontFamily":"Noto Sans SC","fontSize":10,"color":"#5B6A62","bold":false,"align":["right","top"],"lineHeight":1.35,"field":"main-position"}
+  - elementId: handoff-work
     elementType: text
     bounds:
-      - 55
-      - 163
-      - 831
-      - 93
+      - 44
+      - 155
+      - 380
+      - 247
     content:
-      text: “最好的办法就是让人类给 AI 讲一个故事。”
-      fontFamily: Microsoft YaHei
-      fontSize: 29
-      color: "#263C34"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.55
-  - elementId: account-flow
+      {"text":"分工示例 · 先按页分工\nChatGPT：内容草稿\nDeepSeek：另一组页面\n\n再按阶段交接\nClaude Code：检查并优化视觉","fontFamily":"Noto Sans SC","fontSize":20,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.45}
+  - elementId: handoff-arrow
+    elementType: line
+    bounds:
+      - 439
+      - 270
+      - 79
+      - 0
+    viewBox:
+      - 1
+      - 1
+    points: 0,0 1,1
+    border:
+      width: 1.4
+      color: "#356F68"
+    arrow:
+      - null
+      - arrow
+  - elementId: shared-work
+    elementType: image
+    src: media/imported/b104e77304d9e60e33074b365860774e8dd570ab241ec5102ee033e158f65fd4.png
+    sourceName: 01.png
+    alt: 01.png
+    bounds:
+      - 552
+      - 152
+      - 362
+      - 204
+    fit:
+      mode: contain
+    crop:
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+  - elementId: handoff-contract
     elementType: text
     bounds:
-      - 55
-      - 312
-      - 823
-      - 101
+      - 551
+      - 388
+      - 365
+      - 100
     content:
       text: |-
-        我自由地讲，AI 整理其中的逻辑，
-        再把这个逻辑变成 slides 和讲稿。
-      fontFamily: Microsoft YaHei
-      fontSize: 23
-      color: "#263C34"
+        页 ID + 任务 + 必须保留的证据
+        接手先读当前页，再提交可检查的修改。
+      fontFamily: Noto Sans SC
+      fontSize: 18
+      color: "#20372F"
       bold: false
       align:
         - left
         - top
-      lineHeight: 1.7
-  - elementId: quote-source
+      lineHeight: 1.5
+  - elementId: collaboration-limit
     elementType: text
     bounds:
-      - 55
-      - 458
-      - 823
-      - 24
+      - 44
+      - 467
+      - 471
+      - 42
     content:
-      text: 来自我这次介绍项目的口述
-      fontFamily: Microsoft YaHei
-      fontSize: 13
-      color: "#66756B"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-notes: |-
-  我的理解是，AI味不只来自颜色和模板，也来自没有重点、没有取舍，却努力覆盖一切。这是我从自己的经历里形成的判断。所以我更愿意先把故事讲出来，想到哪里说到哪里，再让AI整理其中的逻辑。就像这次，我先讲为什么做HUANDENG。这样讲稿和slides长在同一条思路上，我不用在最后再去适应一套AI替我安排的逻辑。
-
-  Account source: sources/story/USER-STORY.zh-CN.md. The explanation is based on the founder’s personal experience and design judgment.
+      {"text":"ChatGPT + DeepSeek 已实测：分开改页、拒绝过时提交，\n重新读取后接手样式修改。","fontFamily":"Noto Sans SC","fontSize":12,"color":"#5B6A62","bold":false,"align":["left","top"],"lineHeight":1.35}
+notes: "可以按页面分工，也可以先让一个助手整理内容，再让另一个优化视觉。分工前要说清页ID、任务、素材与数值保护范围。不同页的保存可以独立进行；同页或者共享编排元数据发生冲突时，要重新读取再合并意图。活动记录显示助手上报和真实保存回执，但不把配置存在等同在线。这个图是分工示意。独立技术测试已让真实DeepSeek Harness与ChatGPT基于同一初始状态分别修改不同页，两者均成功保存；过时的同页提交被拒绝，重新读取后完成了字体与颜色的局部交接。Claude Code未参与本轮并行实测。测试证据见evidence/collaboration.json。"

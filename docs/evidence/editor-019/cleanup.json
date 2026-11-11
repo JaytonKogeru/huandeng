@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-11-11T05:09:23.128643+00:00",
+  "runtimeSourceCommit": "cadaecbf9cf1661e28464fe68b7b866f68fecabe",
+  "scope": "Only owned reproducible Editor build checkout, superseded application candidates, temporary fixture/profile/runtime children and two superseded Editor ZIPs",
+  "reproducibleOwnedDirectoriesRemoved": 135,
+  "supersededArchivesRemoved": 2,
+  "removedPackageAndFixtureFiles": 92141,
+  "removedPackageAndFixtureBytes": 2993935330,
+  "cleanBuildWorktreeRemoved": true,
+  "cleanBuildWorktreeRegistrationRemoved": true,
+  "worktreeResidualTrackedFilesComparedToCommit": 2875,
+  "processesStoppedForCleanup": 0,
+  "authoredFilesAndExportsPreserved": 1240,
+  "finalArchiveUnchanged": true,
+  "finalArchiveSha256": "4a484088a2d5a0c2c08e8234df71330a60c6057e1e5e3cb2a4a77c3404385aad",
+  "installedPackageFingerprint": "23d938dc4520a97e2754934a48131b8eed889961d096333fb3338d0f5ea3e3e5",
+  "retained": [
+    "One current 0.19 C3 physical installation and stable alias",
+    "One explicit 0.18 rollback package",
+    "One canonical final 0.19 release ZIP",
+    "Compact scripts, failed/pass reports and necessary private screenshots",
+    "All six canonical project folders, assets, authored source, page histories and exports",
+    "User Editor and DeepSeek application/profile/session state"
+  ],
+  "notes": "Git worktree removal returned Function not implemented after unregistering the owned checkout. The remaining tracked bytes were checked against C3, active process references rechecked, and only that residual directory was removed with long-path-aware traversal. The original failure was retained."
+}

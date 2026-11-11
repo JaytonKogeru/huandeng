@@ -1,0 +1,224 @@
+{
+  "schemaVersion": 1,
+  "project": "claude-zh",
+  "round": "product-intro-20261111",
+  "nativeAuthor": "Claude Code",
+  "nativeCompleted": true,
+  "authorAccepted": false,
+  "firstSubmissionContentPass": false,
+  "sameOriginalSession": true,
+  "stages": [
+    {
+      "requestId": "cc50a62b-35ff-4c8b-a6f4-dc59a02deb10",
+      "state": "completed",
+      "exitCode": 0,
+      "nativeCompleted": true,
+      "seconds": 1227.39,
+      "toolCounts": {
+        "PowerShell": 27,
+        "Write": 9,
+        "Read": 12,
+        "Grep": 1,
+        "ToolSearch": 1,
+        "mcp__plugin_huandeng_huandeng__huandeng_presentation_read": 1
+      },
+      "toolErrorCount": null,
+      "sessionIdSha256": "146d50f729298b104df9536fb580379112e1ef4aa1b90bfb5bf64f3a95777b3e",
+      "toolErrorCountStatus": "Not emitted by the Claude result; no zero-error claim."
+    },
+    {
+      "requestId": "cd89c973-7f0e-4a0d-a2f7-0d6fc4ddfaaf",
+      "state": "needs_attention",
+      "exitCode": 0,
+      "nativeCompleted": true,
+      "seconds": 168.93,
+      "toolCounts": {
+        "PowerShell": 6,
+        "Write": 1,
+        "Read": 2
+      },
+      "toolErrorCount": null,
+      "sessionIdSha256": "146d50f729298b104df9536fb580379112e1ef4aa1b90bfb5bf64f3a95777b3e",
+      "toolErrorCountStatus": "Not emitted by the Claude result; no zero-error claim."
+    }
+  ],
+  "finalNativeRequestId": "cd89c973-7f0e-4a0d-a2f7-0d6fc4ddfaaf",
+  "finalNativeToolCalls": 9,
+  "model": {
+    "reported": "claude-opus-5-5",
+    "overrideRequested": false,
+    "accountChanged": false,
+    "sessionUsageNotReportedAsCurrentTurnCost": true
+  },
+  "plugin": {
+    "version": "0.19.0",
+    "kind": "Immutable formal native Claude portable candidate",
+    "skillSha256": "f4188e0934e7846346e286286041f49592bec3231747caa99d0b7b32dd9d016b",
+    "contentManifestSha256": "515c9894b2d55fdc5f0683f6c0e2a9289033227d56c99c9b6df847df17d419b4"
+  },
+  "prompt": {
+    "finalPromptSha256": "a8e4f1e3c8645a22a39168d955f3eb11c1673cbbad82630cf5b6212c3810d23e",
+    "ownerFeedbackSha256": "f6c50dd7d397657a9f00e04c6f26a9fbf676c8cbbf4dccfdb093e8a77a6fe896",
+    "ownerFeedbackForwardedUnchanged": true,
+    "coordinatorScopeExplicit": true,
+    "rawPromptPublished": false
+  },
+  "mainPages": 26,
+  "presentations": [
+    {
+      "id": "full",
+      "name": "幻灯介绍（完整版，约 25 分钟）",
+      "pages": 26,
+      "mainPositions": [
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25,
+        26
+      ],
+      "localNotes": 0,
+      "pins": 0
+    },
+    {
+      "id": "lab-brief",
+      "name": "组会简版（约 8 分钟）",
+      "pages": 9,
+      "mainPositions": [1, 3, 4, 6, 12, 13, 19, 22, 26],
+      "localNotes": 4,
+      "pins": 0
+    }
+  ],
+  "finalArtifactAuthor": "Native Claude author, Main and Brief",
+  "coordinatorAuthoredEdits": false,
+  "coordinatorFinalReexport": false,
+  "coordinatorBriefAction": "Filename normalization only, exact native bytes preserved",
+  "historicalEvidencePreserved": {
+    "content-review.json": "2b1e8d347969af797ea7b9525ef20fff85b4696a6c1568a827e80c02578db234",
+    "guidance-before-portability.md": "a3a22af16fef6f392f00eda8cd4704fe94240d0cafd915f7bd8178115191a431",
+    "guidance-portability.json": "02accd7263d7bd40a76f86e32bfd2c824ec8bc9bf483fc6b80ac62c1b262a372",
+    "narrative.json": "783ec1dd3717cd6648ee7c4cdf44123b9b9b757f457333ea6cf98e5278dfbb30",
+    "native-author-report.md": "2c46c1812a7f1d46c81136b2f1c6a24d6c0549e74cd3498d3e956fe7936af31f",
+    "native-trial.json": "8e85f79711b894b1da65c31e20804aa0a5f5f2cafc29c8201731276364f0a0d0",
+    "office-visual-review.json": "9d95d9b2759f99be20ab3d4b52d61fd7ef8d2e340911ba2f741123a0b3c96321",
+    "qa.json": "e1c6dd1f293fb40721bfbcb94378b56ec2455cbb4d9ce34298204ba208e88e8a",
+    "short-exports.json": "00e29f72dfafe22de8fdc470610a90a58574b7de20d709c5862aa6ea8913580b",
+    "office/office-contact-1.jpg": "f8568dd506016cd8bce450160d491cd5e742363fc83fff2cfa68580a76b4388f",
+    "office/office-contact-2.jpg": "2cea1a88a897e5f83f47557a9bc3d28e219686f478a4b19fee3c93f16c66bc83",
+    "office/office-contact-3.jpg": "fe3066ce2e0332f3af381f0b6dec7f1ac3a65e5fb0fa8694e8edf43f33cca0a7",
+    "office/office-contact-4.jpg": "c8bd9ef604f1bebee3dd2fcda23bcaf46cf9c96ba93e5a1001c8651e099b9664"
+  },
+  "archivedDocumentOrigins": [
+    {
+      "path": "before-product-README.md",
+      "sha256": "dc64f5fdbe99796dd10c1d78d10b05a0eed8aebb4564118e809809b2e02a2594",
+      "originalLocation": "README.md",
+      "relativeLinksResolveFrom": "project root"
+    },
+    {
+      "path": "before-product-speaker-notes.md",
+      "sha256": "26bfc1fd0ead3554c2083a93585baae26610ecc88a03ab6be5384d5f4aad5320",
+      "originalLocation": "speaker-notes.md",
+      "relativeLinksResolveFrom": "project root"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "product-preview.png",
+      "sha256": "189deae77981d1728d7a0a19abcf7a1a67ab487b5d2ace36e64b70cf7fed33c6"
+    },
+    {
+      "path": "product-narrative.json",
+      "sha256": "f66dc4f2e7e7291f73b2c106605d69a528c4704918869135b6931acc395c3c0e"
+    },
+    {
+      "path": "product-native-author-report.md",
+      "sha256": "f27498844879b58ee25d241833d0292cf502fceed3966532614e510b11a00c5c"
+    },
+    {
+      "path": "product-prior-author-report.md",
+      "sha256": "6e93b1f8ed7023dd16d7c7c961e0fa7ed8cdac01001d5d5559ccbcae71b65761"
+    },
+    {
+      "path": "product-pair-review.json",
+      "sha256": "70023c7ccf39b0af71c8b021b4f3c9babc2739b991fe13b35d1467cbb44552a8"
+    },
+    {
+      "path": "product-review.json",
+      "sha256": "a7fdc4c3a5bd9e9ac17881cf64e96b4f947c1ee24c132fca0769feca648e0fbc"
+    },
+    {
+      "path": "product-science-check.json",
+      "sha256": "b2755bebed0e49aafdd0516b8c6b2668b737c2ab519637fe4c15db7cf3a46d38"
+    },
+    {
+      "path": "product-brief.json",
+      "sha256": "0e6a9078c18dd6c8e525bc4286af44b159ef50f9ecd016940f9a7466eb7992e1"
+    },
+    {
+      "path": "product-prior-stage.json",
+      "sha256": "2f9ac83e1cfc10c96091d15bc51e7f225ed833449362a454aedb295ae28a3e4c"
+    },
+    {
+      "path": "product-qa.json",
+      "sha256": "20a9b156fec764a004db744b712edd68ef6acfb04c21c1a86630a15b8990b50a"
+    },
+    {
+      "path": "product-assets.json",
+      "sha256": "b676bf231eeabe12ab5535bdbed240547140567f734ea8e3b49c5381ef363550"
+    },
+    {
+      "path": "product-collaboration-evidence.md",
+      "sha256": "b435282cabd6b08bdfccf5bb658da2b3130fc696edce9bce90037187b6a0abbd"
+    }
+  ],
+  "runnerState": "needs_attention",
+  "bookkeepingDenial": {
+    "tool": "PowerShell",
+    "action": "Append the author working log DELIVERY-R2.md outside the bound project",
+    "recordedResult": "Permission denied; native author reported interactive approval unavailable.",
+    "sourceAndExports": "Independently verified after the denial; no retry or permission change.",
+    "deniedFileWrittenByCoordinator": false
+  },
+  "nativeReportCorrections": [
+    "The preceding canonical Brief was nine pages, not seven; final counts are based on actual artifacts."
+  ],
+  "portableReferenceAdaptations": [
+    {
+      "path": "product-collaboration-evidence.md",
+      "sha256": "b435282cabd6b08bdfccf5bb658da2b3130fc696edce9bce90037187b6a0abbd",
+      "originalLocation": "docs/NATIVE-INTEGRATION-0.19.md",
+      "originalSha256": "635a90ff4b83e02a92575345256e88a268b14d7de250d723cf711adc7e65952e",
+      "repositoryTag": "editor-v0.19.0",
+      "coordinatorAction": "Added provenance note and normalized six repository-relative links; reference prose otherwise unchanged.",
+      "normalizedLinks": [
+        {
+          "originalTarget": "../plugins/huandeng/adapters/deepseek/README.md",
+          "repositoryPath": "plugins/huandeng/adapters/deepseek/README.md",
+          "portableUrl": "https://github.com/JaytonKogeru/huandeng/blob/editor-v0.19.0/plugins/huandeng/adapters/deepseek/README.md"
+        },
+        {
+          "originalTarget": "evidence/native-integration/installation.json",
+          "repositoryPath": "docs/evidence/native-integration/installation.json",
+          "portableUrl": "https://github.com/JaytonKogeru/huandeng/blob/editor-v0.19.0/docs/evidence/native-integration/installation.json"
+        },
+        {
+          "originalTarget": "evidence/native-integration/collaboration.json",
+          "repositoryPath": "docs/evidence/native-integration/collaboration.json",
+          "portableUrl": "https://github.com/JaytonKogeru/huandeng/blob/editor-v0.19.0/docs/evidence/native-integration/collaboration.json"
+        },
+        {
+          "originalTarget": "evidence/native-integration/invalid-json-diagnostic.json",
+          "repositoryPath": "docs/evidence/native-integration/invalid-json-diagnostic.json",
+          "portableUrl": "https://github.com/JaytonKogeru/huandeng/blob/editor-v0.19.0/docs/evidence/native-integration/invalid-json-diagnostic.json"
+        },
+        {
+          "originalTarget": "evidence/native-integration/host-plugin-identities.json",
+          "repositoryPath": "docs/evidence/native-integration/host-plugin-identities.json",
+          "portableUrl": "https://github.com/JaytonKogeru/huandeng/blob/editor-v0.19.0/docs/evidence/native-integration/host-plugin-identities.json"
+        },
+        {
+          "originalTarget": "evidence/native-integration/routing-lifecycle.json",
+          "repositoryPath": "docs/evidence/native-integration/routing-lifecycle.json",
+          "portableUrl": "https://github.com/JaytonKogeru/huandeng/blob/editor-v0.19.0/docs/evidence/native-integration/routing-lifecycle.json"
+        }
+      ]
+    }
+  ]
+}

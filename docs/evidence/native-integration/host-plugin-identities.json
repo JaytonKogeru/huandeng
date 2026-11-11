@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "scope": "Current default configuration and account release metadata; no current composer or picker inspection.",
+  "nativeHost": {
+    "application": "OpenAI.Codex Windows application",
+    "observedAtUtc": "2026-11-11T02:33:32.970439+00:00",
+    "configuredHuandengEntries": [
+      {
+        "identity": "huandeng@huandeng-local",
+        "enabled": true,
+        "configuredKeys": ["enabled"]
+      }
+    ],
+    "installedCache": {
+      "identity": "huandeng@huandeng-local",
+      "version": "0.19.0",
+      "manifestSha256": "91e6590712b601544e6bdb2aad4b8e4443c6fa7756fd908f4c78c762a0eecfa9"
+    },
+    "configOrInstallationChanged": false
+  },
+  "ownedAccountPlugin": {
+    "observedAtUtc": "2026-11-11 02:33:20 UTC",
+    "sameIdentityAsInPlaceUpdate": true,
+    "identitySha256": "f439b64d35308e3e0597b422cecabfe226a7228467fb2109c22b84d5711b5fc3",
+    "version": "0.19.0",
+    "scope": "USER",
+    "discoverability": "PRIVATE",
+    "releasedFilesVerified": 20,
+    "metadataAndBoundAppPreserved": true,
+    "archiveSha256": "79aeb087b0e6ee0d9b66f0c56d921b4ea03aebc813da24957a0c3fd827d35682",
+    "currentlyInstalledInThisHostClaimed": false
+  },
+  "historicalHostRemoval": {
+    "observedAtUtc": "2026-11-10T13:11:47.222474+00:00",
+    "method": "Native plugin detail Uninstall; owned account record retained.",
+    "installedSidebarCountAfterAction": 1,
+    "retainedIdentity": "huandeng@huandeng-local",
+    "retainedVersionAtThatTime": "0.18.2",
+    "ownedCloudRecordPreserved": true,
+    "currentReverification": false
+  },
+  "identityLayers": [
+    "The local catalog plugin and the owned private account plugin are distinct plugin identities.",
+    "The account plugin bound app is a connector layer, distinct from those two plugin identities."
+  ],
+  "notClaimed": [
+    "Current composer/picker entry count",
+    "Hot-loaded skill version in the current conversation",
+    "Removal of the owned cloud record",
+    "A new uninstall or installation change during this inventory"
+  ],
+  "sourceReceiptSha256": {
+    "defaultInventory": "9de3fb31d40233eb19a73afbd6cfa114312aeb7d8f4646f46fb76e536e71a73a",
+    "accountMetadata": "1cc81eaebf2fe6ea4ba60624eeaa53c2fed715a1e4bb0edcbb295bffbe86faac",
+    "accountReleaseReadback": "49c6cc42ab40983f5bf819efac7b0d0e04d4c519a6b7a2fc11c700200b50a60b",
+    "historicalUninstall": "ff988ab683e72b615a03d2555210ca1c92604c03351dcdc6ca193725117f0b9d"
+  }
+}

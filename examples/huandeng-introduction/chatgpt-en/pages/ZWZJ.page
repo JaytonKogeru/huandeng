@@ -6,38 +6,16 @@ elements:
   - elementId: title
     elementType: text
     bounds:
-      - 44
-      - 30
-      - 870
-      - 66
+        [42,31,880,62]
     role: title
     content:
-      text: "Local variation in one structure"
-      fontFamily: Arial
-      fontSize: 28
-      color: "#263C34"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
+      {"text":"Local variation in one structure","fontFamily":"Georgia","fontSize":32,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
   - elementId: context
     elementType: text
     bounds:
-      - 44
-      - 101
-      - 850
-      - 25
+        [43,105,870,28]
     content:
-      text: "From deposited coordinates to the distance at each paired position"
-      fontFamily: Arial
-      fontSize: 15
-      color: "#66756B"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
+      {"text":"PUBLIC WORKED EXAMPLE · Figure, data, units and source stay together","fontFamily":"Segoe UI","fontSize":12,"color":"#66756B","bold":false,"align":["left","top"],"lineHeight":1.3}
   - elementId: structure
     elementType: image
     src: media/imported/50273f1fa204b2f0ae10463c91dd9d8ffcea87c80d861da37c0db9755d091017.png
@@ -82,15 +60,7 @@ elements:
       - 560
       - 28
     content:
-      text: "Position 7: A7–B18 C1′ distance = 10.233 Å"
-      fontFamily: Arial
-      fontSize: 17
-      color: "#A64F38"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
+      {"text":"Position 7: A7–B18 C1′ distance = 10.233 Å","fontFamily":"Segoe UI","fontSize":17,"color":"#A64F38","bold":false,"align":["left","top"],"lineHeight":1.3}
   - elementId: scope
     elementType: text
     bounds:
@@ -99,15 +69,7 @@ elements:
       - 560
       - 36
     content:
-      text: Twelve positions in one structure; these are not experimental replicates.
-      fontFamily: Arial
-      fontSize: 13
-      color: "#66756B"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
+      {"text":"Twelve positions in one structure; these are not experimental replicates.","fontFamily":"Segoe UI","fontSize":13,"color":"#66756B","bold":false,"align":["left","top"],"lineHeight":1.3}
   - elementId: chain-a
     elementType: text
     bounds:
@@ -116,15 +78,7 @@ elements:
       - 90
       - 22
     content:
-      text: Chain A
-      fontFamily: Arial
-      fontSize: 13
-      color: "#356F68"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
+      {"text":"Chain A","fontFamily":"Segoe UI","fontSize":13,"color":"#356F68","bold":false,"align":["left","top"],"lineHeight":1.3}
   - elementId: chain-b
     elementType: text
     bounds:
@@ -133,15 +87,7 @@ elements:
       - 90
       - 22
     content:
-      text: Chain B
-      fontFamily: Arial
-      fontSize: 13
-      color: "#C48758"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
+      {"text":"Chain B","fontFamily":"Segoe UI","fontSize":13,"color":"#C48758","bold":false,"align":["left","top"],"lineHeight":1.3}
   - elementId: source
     elementType: text
     bounds:
@@ -150,15 +96,7 @@ elements:
       - 830
       - 17
     content:
-      text: "Public structure: PDB 1BNA · Drew et al., PNAS (1981)"
-      fontFamily: Arial
-      fontSize: 10
-      color: "#66756B"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
+      {"text":"Public structure: PDB 1BNA · Drew et al., PNAS (1981)","fontFamily":"Segoe UI","fontSize":10,"color":"#66756B","bold":false,"align":["left","top"],"lineHeight":1.3}
   - elementId: chart-unit
     elementType: text
     bounds:
@@ -167,13 +105,5 @@ elements:
       - 400
       - 24
     content:
-      text: C1′–C1′ (Å)
-      fontFamily: Arial
-      fontSize: 14
-      color: "#66756B"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-notes: "Here is a concrete scientific page. The 1BNA DNA structure and the twelve paired C1′ distances come from the same deposited coordinates. Position seven joins A7 and B18. This is a public worked example, not a new research result or twelve independent experiments. It makes the editing requirement tangible: the wording may change while the structure, values, units and attribution stay intact.\n\nSource: https://www.rcsb.org/structure/1BNA ; https://doi.org/10.1073/pnas.78.4.2179 . Source coordinates, calculation and all twelve values: sources/science/."
+      {"text":"C1′–C1′ (Å)","fontFamily":"Segoe UI","fontSize":14,"color":"#66756B","bold":false,"align":["left","top"],"lineHeight":1.3}
+notes: "This public scientific page is the working example for the demonstration. The 1BNA structure and the twelve paired C1′ distances come from the same coordinates. At position seven, A7–B18 measures 10.2329 Å, displayed as 10.233 Å. These are positions within one structure, not independent experimental replicates. We will refine the explanation while retaining the figure, all values, axes and citation. This is a concrete editing task a scientific presenter can inspect.\n\nSources: https://www.rcsb.org/structure/1BNA ; https://doi.org/10.1073/pnas.78.4.2179 . Source coordinates and method: sources/science/."

@@ -6,88 +6,34 @@ elements:
   - elementId: title
     elementType: text
     bounds:
-      - 44
-      - 35
-      - 870
-      - 67
+        [42,34,880,76]
     role: title
     content:
-      {"text":"下一次组会，挑我需要讲的页面","fontFamily":"Microsoft YaHei","fontSize":28,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: library-icon
-    elementType: icon
-    iconName: fas:layer-group
+      {"text":"保留一套页面，选择不同讲法","fontFamily":"Noto Serif SC","fontSize":28,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.2}
+  - elementId: eyebrow
+    elementType: text
     bounds:
-      - 44
-      - 130
-      - 28
-      - 28
-    fill:
-      type: solid
+      - 43
+      - 112
+      - 870
+      - 21
+    content:
+      text: MAIN SLIDES → PRESENTATION SLIDES
+      fontFamily: Noto Sans SC
+      fontSize: 11
       color: "#356F68"
-  - elementId: library-label
-    elementType: text
-    bounds:
-      - 87
-      - 129
-      - 300
-      - 32
-    content:
-      text: 主稿 · 页面材料库
-      fontFamily: Microsoft YaHei
-      fontSize: 20
-      color: "#263C34"
-      bold: false
+      bold: true
       align:
         - left
         - top
-      lineHeight: 1.3
-  - elementId: main-caption
-    elementType: text
-    bounds:
-      - 44
-      - 434
-      - 300
-      - 67
-    content:
-      text: |-
-        维护一份内容，
-        让不同演讲引用它。
-      fontFamily: Microsoft YaHei
-      fontSize: 17
-      color: "#66756B"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.6
-  - elementId: full-label
-    elementType: text
-    bounds:
-      - 403
-      - 128
-      - 511
-      - 31
-    content:
-      {"text":"完整介绍 · 27 页（节选）","fontFamily":"Microsoft YaHei","fontSize":19,"color":"#356F68","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: brief-label
-    elementType: text
-    bounds:
-      - 403
-      - 317
-      - 511
-      - 31
-    content:
-      {"text":"简短介绍 · 13 页（节选）","fontFamily":"Microsoft YaHei","fontSize":19,"color":"#356F68","bold":false,"align":["left","top"],"lineHeight":1.3}
+      lineHeight: 1.35
   - elementId: brand-small
     elementType: image
     src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
     sourceName: huandeng.png
     alt: huandeng.png
     bounds:
-      - 44
-      - 510
-      - 17
-      - 17
+        [43,512,18,18]
     fit:
       mode: contain
     crop:
@@ -98,189 +44,178 @@ elements:
   - elementId: foot
     elementType: text
     bounds:
-      - 69
-      - 513
-      - 130
-      - 17
+        [68,515,140,16]
     content:
-      text: HUANDENG
-      fontFamily: Microsoft YaHei
-      fontSize: 10
-      color: "#66756B"
+      {"text":"HUANDENG","fontFamily":"Noto Sans SC","fontSize":9,"color":"#5B6A62","bold":false,"align":["left","top"],"lineHeight":1.35}
+  - elementId: position
+    elementType: text
+    bounds:
+        [881,514,35,18]
+    content:
+      {"text":"","fontFamily":"Noto Sans SC","fontSize":10,"color":"#5B6A62","bold":false,"align":["right","top"],"lineHeight":1.35,"field":"main-position"}
+  - elementId: library-label
+    elementType: text
+    bounds:
+        [43,150,860,28]
+    content:
+      {"text":"Main · 页面材料节选","fontFamily":"Noto Sans SC","fontSize":18,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.35}
+  - elementId: main-page-0
+    elementType: image
+    src: "media/imported/98fe12cbdefc47252b8afb3b890a8b2d11485021c39dfd61114d427b1e52713d.png"
+    sourceName: 05.png
+    alt: 05.png
+    bounds:
+      - 43
+      - 191
+      - 205
+      - 115
+    fit:
+      mode: contain
+    crop:
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+  - elementId: main-page-1
+    elementType: image
+    src: "media/imported/0796e3f846e4c5ad2e2943020386bb354063d5f2ce7b1a132e7b72deced72536.png"
+    sourceName: "06.png"
+    alt: "06.png"
+    bounds:
+      - 268
+      - 191
+      - 205
+      - 115
+    fit:
+      mode: contain
+    crop:
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+  - elementId: main-page-2
+    elementType: image
+    src: media/imported/b104e77304d9e60e33074b365860774e8dd570ab241ec5102ee033e158f65fd4.png
+    sourceName: 01.png
+    alt: 01.png
+    bounds:
+      - 493
+      - 191
+      - 205
+      - 115
+    fit:
+      mode: contain
+    crop:
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+  - elementId: main-page-3
+    elementType: image
+    src: "media/imported/3bbdb24950419c89e63a5c902ef6f5c60963aaed45e0b65b7f175953c0643c70.png"
+    sourceName: "13.png"
+    alt: "13.png"
+    bounds:
+      - 718
+      - 191
+      - 205
+      - 115
+    fit:
+      mode: contain
+    crop:
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+  - elementId: selection-link
+    elementType: line
+    bounds:
+      - 491
+      - 314
+      - 0
+      - 43
+    viewBox:
+      - 1
+      - 1
+    points: 0,0 1,1
+    border:
+      width: 1.4
+      color: "#356F68"
+    arrow:
+      - null
+      - arrow
+  - elementId: selection-copy
+    elementType: text
+    bounds:
+        [42,333,370,153]
+    content:
+      {"text":"项目 → 编排演讲 → 新建演讲\n选页、调整顺序，保存项目。","fontFamily":"Noto Serif SC","fontSize":19,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.3}
+  - elementId: selected-page-0
+    elementType: image
+    src: "media/imported/98fe12cbdefc47252b8afb3b890a8b2d11485021c39dfd61114d427b1e52713d.png"
+    sourceName: 05.png
+    alt: 05.png
+    bounds:
+      - 440
+      - 374
+      - 141
+      - 79
+    fit:
+      mode: contain
+    crop:
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+  - elementId: selected-page-1
+    elementType: image
+    src: "media/imported/0796e3f846e4c5ad2e2943020386bb354063d5f2ce7b1a132e7b72deced72536.png"
+    sourceName: "06.png"
+    alt: "06.png"
+    bounds:
+      - 595
+      - 374
+      - 141
+      - 79
+    fit:
+      mode: contain
+    crop:
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+  - elementId: selected-page-2
+    elementType: image
+    src: "media/imported/3bbdb24950419c89e63a5c902ef6f5c60963aaed45e0b65b7f175953c0643c70.png"
+    sourceName: "13.png"
+    alt: "13.png"
+    bounds:
+      - 750
+      - 374
+      - 141
+      - 79
+    fit:
+      mode: contain
+    crop:
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+  - elementId: talk-caption
+    elementType: text
+    bounds:
+      - 440
+      - 467
+      - 478
+      - 35
+    content:
+      text: 短介绍中的选页示意 · 仍是同一批页面
+      fontFamily: Noto Sans SC
+      fontSize: 12
+      color: "#5B6A62"
       bold: false
       align:
         - left
         - top
-      lineHeight: 1.3
-  - elementId: position
-    elementType: text
-    bounds:
-      - 884
-      - 512
-      - 30
-      - 18
-    content:
-      text: ""
-      fontFamily: Microsoft YaHei
-      fontSize: 10
-      color: "#66756B"
-      bold: false
-      align:
-        - right
-        - top
-      lineHeight: 1.3
-      field: main-position
-  - elementId: stack-20
-    elementType: image
-    src: "media/imported/44de8d03a052bab619bcf4e8f50cf6a573f36957d66f9449d305f67b1ab7d1d9.png"
-    sourceName: 21.png
-    alt: 21.png
-    bounds:
-      - 48
-      - 220
-      - 263
-      - 148
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: stack-24
-    elementType: image
-    src: "media/imported/a43f0b634474045ab3c165038f73c8b1d95eeff1a26fccc67b00c1b098886f91.png"
-    sourceName: 25.png
-    alt: 25.png
-    bounds:
-      - 65
-      - 238
-      - 263
-      - 148
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: stack-6
-    elementType: image
-    src: "media/imported/9226e2eddd7dacac3ddbf5bbff9df2fd98052c928d37dfeac1ccb864694f3a8b.png"
-    sourceName: 07.png
-    alt: 07.png
-    bounds:
-      - 82
-      - 256
-      - 263
-      - 148
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: sequence-0-0
-    elementType: image
-    src: "media/imported/44de8d03a052bab619bcf4e8f50cf6a573f36957d66f9449d305f67b1ab7d1d9.png"
-    sourceName: "21.png"
-    alt: "21.png"
-    bounds:
-      - 403
-      - 174
-      - 164
-      - 92
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: sequence-0-1
-    elementType: image
-    src: "media/imported/32afe1c10fd98bb34467659582f53e55a3913528b4b336ede2558c59cfc763a7.png"
-    sourceName: "22.png"
-    alt: "22.png"
-    bounds:
-      - 576
-      - 174
-      - 164
-      - 92
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: sequence-0-2
-    elementType: image
-    src: "media/imported/6444023800e83f11ab9b29105da06501545c81d8bc7f47164292f96be85abc5d.png"
-    sourceName: "24.png"
-    alt: "24.png"
-    bounds:
-      - 749
-      - 174
-      - 164
-      - 92
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: sequence-1-0
-    elementType: image
-    src: "media/imported/6444023800e83f11ab9b29105da06501545c81d8bc7f47164292f96be85abc5d.png"
-    sourceName: "24.png"
-    alt: "24.png"
-    bounds:
-      - 403
-      - 363
-      - 164
-      - 92
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: sequence-1-1
-    elementType: image
-    src: "media/imported/a43f0b634474045ab3c165038f73c8b1d95eeff1a26fccc67b00c1b098886f91.png"
-    sourceName: "25.png"
-    alt: "25.png"
-    bounds:
-      - 576
-      - 363
-      - 164
-      - 92
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: sequence-1-2
-    elementType: image
-    src: "media/imported/7efb3265df1baea039e357e25a2958a94d2f33aa1f002c242ea102a1f36d0152.png"
-    sourceName: "14.png"
-    alt: "14.png"
-    bounds:
-      - 749
-      - 363
-      - 164
-      - 92
-    fit:
-      mode: contain
-    crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-notes: "回到开组会这件事，我不一定每次都讲同样的内容。Main Slides保存完整的页面材料；一次简短介绍可以挑其中一部分，并换一个顺序。这里的缩略图就是本项目真实的完整稿和简短稿。改动一个live页面时，它的引用继续指向这一页。我不需要维护两套越来越不一致的副本。"
+      lineHeight: 1.35
+notes: "Main Slides保存可持续积累的页面。进入项目、编排演讲、新建演讲，选页、确定顺序并保存项目。图上方是Main的部分页面，下方是本项目短介绍中实际入选的三页；每次出现仍指向原来的Slide ID。下一页说明同一张页面怎样带上这次演讲自己的讲稿。"

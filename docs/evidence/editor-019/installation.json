@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-11-11T05:02:31.849024+00:00",
+  "productVersion": "0.19.0",
+  "runtimeSourceCommit": "cadaecbf9cf1661e28464fe68b7b866f68fecabe",
+  "sourceDirty": false,
+  "status": "installed-and-verified",
+  "installedPackageContentSha256": "23d938dc4520a97e2754934a48131b8eed889961d096333fb3338d0f5ea3e3e5",
+  "transition": {
+    "method": "Normal application close; verified exact package promoted to the existing physical 0.19 path; ordinary profile reopened without entry, welcome or profile flags",
+    "normalExitCode": 0,
+    "previousWritersRetired": 6,
+    "applicationProcessesRetired": 17,
+    "forcedTerminations": 0,
+    "unrelatedProcessesStopped": 0,
+    "stableAliasShortcutsAssociationAndUserChoicePreserved": true,
+    "deepseekApplicationAndAccountSessionPreserved": true,
+    "oldDeepseekRoutesAutomaticallyDisposed": 6,
+    "runtimeRegistration": "Existing physical 0.19 registration remained correct; final C3 switch required no repeated registration write"
+  },
+  "restoration": {
+    "projectCount": 6,
+    "tabOrderPreserved": true,
+    "allSelectedStableSlideIdsRestored": true,
+    "activeProjectRestored": true,
+    "priorWindowMaximizedStateRestored": true,
+    "allSixShowedSavedState": true,
+    "authoredSourceAndExportFilesCompared": 1240,
+    "changedFiles": 0,
+    "unexpectedAddedFiles": 0,
+    "allPreserved": true,
+    "method": "Actual project tab clicks and exact page-button UI Automation Invoke restored the original stable slide IDs. This is not automatic selected-page restoration."
+  },
+  "foregroundObservation": {
+    "method": "Actual mouse click in an owned foreground launcher started the normal installed executable; subsequent Editor capture was passive",
+    "sixWritersSeconds": 47.096,
+    "completeEditorObservedSeconds": 51.983,
+    "editorWasForeground": true,
+    "allSixTabsAndPageCanvasVisible": true,
+    "scope": "One observed normal-profile launch; not a startup performance benchmark or evidence of a blank-screen fix",
+    "fullDesktopPixelsPrivate": true,
+    "setupContinuation": "A first launcher timed out without receiving a click and never started Editor. The next launcher was brought to the foreground before the actual launch gesture; no post-launch Editor focus emulation was used."
+  },
+  "folderIdentity": {
+    "userRoute": "Visible application menu -> File -> Identify project folder",
+    "newProjects": ["chatgpt-en", "chatgpt-zh", "claude-zh", "deepseek-en"],
+    "existingProjectsPreserved": ["claude-en", "deepseek-zh"],
+    "allFourApplied": true,
+    "existingTwoByteIdentical": true,
+    "iniIconFile": ".huandeng\\project.ico",
+    "relativeResource": true,
+    "iniSha256": "4ff03a6184405c0ea81a005c9b462334dfd4014e9021016433e22e14e143126d",
+    "iconSha256": "ec42522dc8f0adda9afda1dd401a8e402cfea72c76b50c63994c4c67451d0efa",
+    "iniHiddenAndSystem": true,
+    "noFolderRenaming": true,
+    "noDirectCoordinatorMarkerWrites": true,
+    "explorerRenderedIconPixelsNotClaimed": true,
+    "verificationContinuation": "The first real menu action succeeded, but the verifier expected a close-button accelerator suffix absent in the ordinary Chinese dialog. The existing success dialog was read and closed; the action was not repeated."
+  },
+  "receipts": {
+    "switch-state.json": "06d3adf47e2056f6f75e32baa1ac9a3e4139272bcb5cd4723c60c3caf0c9c3c8",
+    "normal-close.json": "e9497e9194da09639547db292931cac940ab4fed7d731e100098bf3e47fe1c4e",
+    "normal-relaunch.json": "75deb386e7381852c24df73c8f46ab7b42702cd7eb0647b8bd424fc3e36caabe",
+    "selection-restoration.json": "870f2a6e953c64901cf62f03ea7aa7bd9449c6f52e2e943b293952890bcd4bbf",
+    "folder-markers.json": "ad596a65e76be66a0b2d9f0081f750a299aadf06404e895dc1cd91f77b2b0870",
+    "preservation-after-markers.json": "dcce4a64f2b05d8fd124bba89b92e69a54841e52a053685ed0a87c8dc7c17b62"
+  }
+}

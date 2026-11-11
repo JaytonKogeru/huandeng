@@ -10,7 +10,7 @@ elements:
       - 816
       - 72
     content:
-      text: 我们做了什么
+      text: "我做了什么"
       fontFamily: Microsoft YaHei
       fontSize: 34
       lineHeight: 1.25
@@ -20,4 +20,4 @@ elements:
         - middle
       bold: true
     role: title
-notes: 第二部分。带着这三个问题，我找到了两条线索，然后把它们合在了一起。
+notes: "第二部分。这四个问题最后变成一个工具：一个编辑器加一个插件。下面讲它从哪里来、长什么样。"

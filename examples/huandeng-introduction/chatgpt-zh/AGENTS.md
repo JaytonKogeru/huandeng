@@ -1,53 +1,60 @@
-# HUANDENG introduction — authoring brief
+# HUANDENG introduction — current authoring brief
 
-## Current owner direction
+## Mission and current owner direction
 
-The owner positively reviewed the current artwork but requested a new version because the introduction lacks a story and feels like a product launch. Preserve useful visual work while rebuilding the argument from the author's spoken account. Earlier all-white, fixed-page-count, screenshot-only and uniformly sparse requirements remain superseded. This feedback does not accept a new narrative or exported artifact in advance; technical validation and an agent's review do not imply author approval.
+Introduce HUANDENG so a scientific presenter can explain what it is, perform a representative edit, reuse material and deliver a talk. The founder's story is reasoning material for priorities and motivation. Interpret, reorganize and supplement it with verified product details. Do not merely illustrate a transcript or turn the introduction into a launch keynote.
 
-## Purpose and editorial freedom
+Read sources/story/USER-STORY.zh-CN.md, sources/story/PRODUCT-BRIEF.md and sources/story/FACTS.md. The latest direction supersedes the previous origin-story emphasis. Preserve the author's meaning and the useful visual work, icons, original evidence, functional demonstrations and acknowledgments already present.
 
-Explain why the author started HUANDENG and how concrete frustrations led to its workflow. Read sources/story/USER-STORY.zh-CN.md in full and sources/story/FACTS.md before choosing the sequence. Preserve the author's meaning while organizing repetitions and translating for this edition. Use a personal, concrete voice; this is an account of making and using a tool, not a launch keynote or a comprehensive feature inventory.
+Claude English is the owner's preferred content structure. Its artwork is not a reference for ChatGPT or DeepSeek: each author retains an independent design. Keep the six current projects in their existing directories.
 
-Choose your own narrative, length and page order. There is no required page count or inherited page-by-page script. You may reorganize the existing edition completely under the current redesign authorization. Preserve original evidence, source provenance and useful portable versions.
+## Before layout
 
-Study the user-selected reference at sources/reference/original-demo.pdf and its contact sheets. Learn from its product identity, true client logos, purposeful gray/gray-green backgrounds, stacked real-page previews and data figure. Preserve those strengths while improving small screenshots, heavy typography and unnecessary detail. Do not mechanically copy every layout.
+Write a concise explanation of the product and a topic map: audience question, takeaway, real evidence, usable action and transition. Establish a preservation inventory. Check what the audience can do after the introduction, independently of whether the story sounds coherent.
 
-## Story and factual scope
+Cover the Editor/project/plugin/connector relationship, opening and locating work, Story, original asset reuse, one concrete scientific edit and review, Slide ID with page history, Main/Presentation reuse and delivery. Show the work through a coherent example; do not force one promotional slide per tab. Include source and project acknowledgments.
 
-- Treat the group-meeting observations and the author's diagnosis of “AI feel” as personal experience and interpretation. The view that slide-making should become agent-driven is the author's motivation, not a quantified industry forecast. Do not invent incidents, citations, consensus or a universal AI-style detector.
-- Connect the author's wish for a human story to speaking first, organizing that account, aligning Main and page/local Story, and preparing a usable script in Notes. Story fields support alignment; they do not automatically generate a good narrative or establish author approval.
-- Connect the example of changing two pages in a fifty-page deck to page-level edits, stable Slide ID, changing Position, per-page history and named versions. The example is an illustration from the author, not a measured benchmark. Introduce stable identity alongside history; do not turn it into a UUID lesson.
-- Explain Main page reuse in different Presentations through actual talk selection, rather than a duplicate whole deck for each audience. Keep the asset library and the reusable page library distinct.
-- Connect the friction of inspecting and editing visual slides to inspectable PPTD files and the shared human/agent writer. PPTD does not eliminate rendered visual review or make aesthetics fully measurable. PPTX also has internal slide parts; do not claim page structure was invented here.
-- Give Project, Pages, Assets and Files a role in that work: organizing the talk, locating/editing a page, reusing original material and inspecting the project files. Connect Browse, Outline, Sections, Notes and History to seeing the argument, checking its sequence, arranging chapters, speaking and reviewing a particular page's changes. Cover the needed behavior without assigning one promotional page to every tab.
-- Verify OpenSlide/OpenPPTD/PPTD attribution against sources/story/FACTS.md and the current source notices. The author's tentative recollection of Kimi/PPTD provenance is not an established origin claim. Future video/image-editing ideas are not current capabilities; the author explicitly deferred that discussion.
-- Before expanding, write a coherent Main/Presentation Story and align each page/local purpose with it. Develop speakable Notes and transitions with the pages. Review headings plus notes as a continuous explanation. A factually correct feature list is insufficient.
-- Keep authors independent. Do not inspect or copy Claude's visual treatment as a reference for ChatGPT or DeepSeek. Share the author's account, factual corrections, assets and hard constraints; choose your own narrative, length, emphasis and layout. Client-specific praise and style feedback stay with that client.
+For this author's Chinese and English editions, establish a semantic correspondence of substantive claims, demonstrations, user steps, qualifications and credits. Localized wording, type and page breaks may differ. Missing functions and contradictory claims are not translation choices. Keep a concise correspondence report.
 
-## Visual work
+Frame representative pages before expansion: a product action, an evidence-led scientific page and a reuse/collaboration explanation. Inspect real geometry, typography, imagery and background relationships. There is no fixed page count or compulsory dramatic arc.
 
-- Use the actual HUANDENG mark and appropriate real provider/project logos from sources/brand. Preserve their geometry, color and attribution. Product identity is meaningful content.
-- Choose a coherent background and color system by page role. White, light gray, gray-green or another justified treatment are available; all-white is not a success criterion. Avoid arbitrary color switching.
-- Let evidence and the speaker's intended comparison determine image scale, crop, density and alignment. Purposeful asymmetry, dense comparisons and mixed media are welcome. Do not make every page the same title/paragraph/one-screenshot template.
-- Use the optional public scientific example in sources/science only where it helps demonstrate the author's work or a specific editing decision. Preserve its exact coordinates, derived measurements and sources. Do not let a molecular plot become the main subject of this origin story merely because it is an available asset.
-- Use native table objects for a genuine row/column relationship. Never imitate table cells by aligning multiple text boxes, rectangular shapes or drawn lines. Keep ordinary paragraphs or bullet lists in one rich-text object where practical, using internal emphasis and list formatting. Purposeful scientific multi-panel figures, aligned plots and evidence annotations remain allowed; this rule does not flatten them into prose.
-- Original explanatory diagrams, meaningful arrows and annotations are allowed. They must encode a real relationship or point to actual evidence. Do not fabricate measurements, scientific results, performance numbers or a fake product interface.
-- Preserve readable axes, labels and source citations. Do not remove a complex figure or meaningful panel merely to achieve a lower text count or cleaner geometry.
-- Titles should be short and concrete. Adjust typography by language and function. At 960x540, roughly 26–32 for ordinary titles and 17–22 for body is a starting range, not an enforced template; dense scientific labels and captions have different needs.
-- Include genuine title-only Section pauses where they improve the talk, as requested by the owner. Keep their visible content to the Section title; background/color may carry the established visual identity.
-- Reuse actual page thumbnails when depicting a slide library or Presentation. Screenshots must show real product state, at a useful displayed scale and in the audience's language.
-- Put speaking detail in Notes. Keep production audits, self-evaluation and delivery limitations in supporting records unless they are part of the talk's actual subject.
+## Content truth and useful explanation
 
-## Product and editing contract
+- The lab-meeting observations and diagnosis of AI feel are the author's experience and interpretation. Do not invent episodes, quotations, benchmark numbers or consensus.
+- Story stores purpose and constraints for later readers and agents. It helps alignment; it does not guarantee model obedience or aesthetic quality.
+- Slide ID is stable; Position is the current collection order. Explain identity with per-page operation history and named versions, rather than an isolated UUID lesson.
+- Main pages may be used in several Presentations, with occurrence-specific notes and optional named-version pins. The asset library and page library are distinct.
+- PPTX already contains slide parts. HUANDENG exposes a working directory and shared page-oriented model; it is not a renamed PPTX. Moving the project requires the full folder, not only deck.pptd.
+- Product claims follow the actual runtime. Structured objects and revision checks complement rendered inspection. UI screenshots must demonstrate the behavior being explained.
+- Real collaboration means clients share a project, coordinate scope and save through revision checks. Different-page edits can proceed; same-page or shared-metadata edits can conflict. Do not invent automatic section locking, scheduling or online presence.
+- Verify attribution in FACTS.md and source notices. OpenSlide is the code foundation; OpenPPTD contributes formula conversion and PptxGenJS contributes PPTX generation. Do not claim Kimi invented a universal standard or endorses HUANDENG.
+- Keep deferred video/image-editor ideas outside the current capability introduction.
 
-Use the explicit canonical deck.pptd in this directory. Read actual context, pages, Story, assets and supported operations from the 0.18 runtime. Update inherited Story/keep fields that encode the superseded all-white or sparse-layout direction; retain factual and source-preservation constraints.
+## Visual and editable-object contract
 
-Edit through the shared writer: read revisions, preview the exact transaction, apply it, then read back and render. Never directly rewrite .page, .pptd or .huandeng/project.json. The folder, media and named checkpoints belong to one editable Project. Temporary rendering/export jobs run sequentially per Project.
+Use the actual HUANDENG mark and appropriate original client/project logos from sources/brand. Preserve geometry, color and source attribution. Product identity and acknowledgments are meaningful content.
 
-The current task authorizes redesign and complete delivery. Use your own judgment without waiting for per-page permission. Preserve a named completed milestone after review; avoid creating a checkpoint or a parallel folder for every small edit.
+Let real scientific images, measured plots, localized UI captures, original diagrams and actual page previews carry the explanation. Use the asset library deliberately. Text-only pages may serve a particular pause; they must not replace all product evidence. A screenshot is useful only when its relevant region is legible at presentation size.
 
-Inspect the actual page sequence and individual renders. Judge narrative causality, Main/local Story alignment, useful spoken Notes, visual identity, evidence coverage, readable imagery and variation as well as clipping. Check that a feature answers a motivated question, that no fake text-box table remains, and that the slide sequence sounds like the author's explanation. Export PDF and editable PPTX. A completed candidate remains subject to the owner's visual decision; do not label it author-approved.
+Use a coherent background/color/type system. Light, dark, colored and image treatments are available where they serve the content. White and empty are not synonymous with human. Preserve independent visual judgment and avoid repetitive generic card layouts.
+
+Use a native table only for a genuine row/column relationship. Ordinary prose or a list stays in one rich-text object where practical. Never create fake tables by aligning text boxes, cell shapes or separators. Repeated heading/description rows are still fragmented prose, even without borders. Meaningful scientific panels, plot labels and relationship diagrams are allowed; their spatial structure must communicate an actual relationship.
+
+Keep original values, units, evidence colors, axes and citations. Do not substitute decorative analytics or invented UI. Use actual page thumbnails to depict a deck or section. Scientific evidence must remain editable where the product supports it.
+
+Title-only Section pauses contain only the title. Other pages follow their communicative role. Size Chinese and English by language and viewing needs; no mechanical inflation of short Chinese phrases. Use notes for speaking detail and Story for intent/keep constraints.
+
+## Editing, review and delivery
+
+Use the explicit canonical deck.pptd here and the existing shared writer. Read context, projectGuidance, selected pages and supported operations. Read revisions, preview the exact transaction, apply, read back and render. Never directly rewrite .page, .pptd or .huandeng/project.json. Preserve stable IDs, unknown fields, intervening user changes and relevant existing constraints.
+
+The requested scoped revision and delivery are authorized; continue without per-page permission. Keep useful named milestones, not a parallel folder or snapshot per small edit. Serialize exports within each project.
+
+Review mission coverage, bilingual meaning, the preservation inventory, image usefulness, typography and source object structure before declaring the candidate ready. Inspect every final page and the complete sequence. Verify exported PDF and editable PPTX separately. Geometry checks, job completion and an agent's visual review do not constitute owner approval.
+
+Give the local deck.pptd entry and containing directory first. Keep production checks and limitations in the delivery audit unless needed to interpret an on-slide claim.
 
 ## This edition
+Author: ChatGPT. Audience language: Chinese (zh-CN). This is the single current chatgpt-zh project. Localize actual UI evidence and preserve product names and stable identifiers.
 
-Authoring client: ChatGPT. Audience language: Chinese (zh-CN). Localize the explanation and choose appropriate actual UI evidence. Keep product names and technical identifiers where useful. This is the single current chatgpt-zh project; do not create a dated sibling or another active copy.
+For one client job, write only this explicitly bound canonical project. The paired language may be read for semantic correspondence; changes there require its own explicitly scoped job. Do not edit another author’s project.

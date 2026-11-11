@@ -31,7 +31,7 @@ elements:
       - 660
       - 40
     content:
-      text: "改两页，只动这两页"
+      text: "一次修改，只动这一页"
       fontSize: 27
       fontFamily:
         ea: Microsoft YaHei

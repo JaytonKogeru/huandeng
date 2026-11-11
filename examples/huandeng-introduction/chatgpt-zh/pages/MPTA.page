@@ -6,23 +6,17 @@ elements:
   - elementId: title
     elementType: text
     bounds:
-      - 44
-      - 35
-      - 870
-      - 67
+        [42,34,880,76]
     role: title
     content:
-      {"text":"素材库承接上一轮的工作","fontFamily":"Microsoft YaHei","fontSize":28,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
+      {"text":"下一次修改，仍然找得到原材料","fontFamily":"Noto Serif SC","fontSize":28,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.2}
   - elementId: brand-small
     elementType: image
     src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
     sourceName: huandeng.png
     alt: huandeng.png
     bounds:
-      - 44
-      - 510
-      - 17
-      - 17
+        [43,512,18,18]
     fit:
       mode: contain
     crop:
@@ -33,48 +27,25 @@ elements:
   - elementId: foot
     elementType: text
     bounds:
-      - 69
-      - 513
-      - 130
-      - 17
+        [68,515,140,16]
     content:
-      text: HUANDENG
-      fontFamily: Microsoft YaHei
-      fontSize: 10
-      color: "#66756B"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
+      {"text":"HUANDENG","fontFamily":"Noto Sans SC","fontSize":9,"color":"#5B6A62","bold":false,"align":["left","top"],"lineHeight":1.35}
   - elementId: position
     elementType: text
     bounds:
-      - 884
-      - 512
-      - 30
-      - 18
+        [881,514,35,18]
     content:
-      text: ""
-      fontFamily: Microsoft YaHei
-      fontSize: 10
-      color: "#66756B"
-      bold: false
-      align:
-        - right
-        - top
-      lineHeight: 1.3
-      field: main-position
-  - elementId: assets
+      {"text":"","fontFamily":"Noto Sans SC","fontSize":10,"color":"#5B6A62","bold":false,"align":["right","top"],"lineHeight":1.35,"field":"main-position"}
+  - elementId: asset-library
     elementType: image
-    src: "media/imported/5358b331462605400b48094e049b84f1abc23ebf6ec56bf3853055aac199a377.png"
+    src: "media/imported/3a3f6fb3a98a38f01ec016c8e8fa44d63daa05aad1920192d426f74b3cca0fa5.png"
     sourceName: assets.png
     alt: assets.png
     bounds:
-      - 44
-      - 132
-      - 252
-      - 363
+      - 43
+      - 143
+      - 282
+      - 347
     fit:
       mode: contain
     crop:
@@ -82,16 +53,33 @@ elements:
       right: 0
       top: 0
       bottom: 0
-  - elementId: source-view
+  - elementId: asset-side
+    elementType: image
+    src: media/imported/50273f1fa204b2f0ae10463c91dd9d8ffcea87c80d861da37c0db9755d091017.png
+    sourceName: dna-duplex-position7.png
+    alt: dna-duplex-position7.png
+    bounds:
+      - 364
+      - 140
+      - 166
+      - 276
+    fit:
+      mode: contain
+    crop:
+      left: 0.285
+      right: 0.265
+      top: 0.105
+      bottom: 0.07
+  - elementId: asset-end
     elementType: image
     src: media/imported/342088ed88ab8fffc8ce2651cd6fbf183244f5069c7907702a957eb9cf9fa18a.png
     sourceName: dna-duplex-end.png
     alt: dna-duplex-end.png
     bounds:
-      - 363
-      - 145
-      - 236
-      - 236
+      - 641
+      - 147
+      - 205
+      - 205
     fit:
       mode: contain
     crop:
@@ -99,30 +87,10 @@ elements:
       right: 0.25
       top: 0.26
       bottom: 0.27
-  - elementId: materials
-    elementType: text
-    bounds:
-      - 640
-      - 167
-      - 274
-      - 264
-    content:
-      {"text":"原图、视角、数据和出处。\n下次修改，仍找得到依据。","fontFamily":"Microsoft YaHei","fontSize":20,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.6}
   - elementId: asset-caption
     elementType: text
     bounds:
-      - 44
-      - 478
-      - 870
-      - 28
+        [366,387,548,113]
     content:
-      text: 真实素材面板 · 公开 PDB 1BNA 示例
-      fontFamily: Microsoft YaHei
-      fontSize: 13
-      color: "#66756B"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-notes: "素材库对我尤其重要。科学slides会反复用到同一张结构图、另一视角、原始数据和出处。如果素材只是在对话里临时生成或散落在别处，下一次修改就很容易失去依据。在这里它们属于项目，可以继续选用。右侧是同一份1BNA坐标的另一个视角。素材不是为了把页面填满，它承接了上一轮工作的证据。\n\nSource: https://www.rcsb.org/structure/1BNA ; https://doi.org/10.1073/pnas.78.4.2179 . Source coordinates, calculation and all twelve values: sources/science/."
+      {"text":"同一份 1BNA 坐标，两种视角。\n\n在 Assets 中找到并复用；\n坐标、原值、方法与来源随项目保留。","fontFamily":"Noto Sans SC","fontSize":18,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.5}
+notes: "素材库的价值是在下一轮还能找到同一份原材料。这里的两个DNA视角、坐标和距离表来自同一个公开结构。导入后，可以从Assets查找和再次放入页面；来源说明和计算方法也随项目保留。不要为了换一种版式重新造一张看似相同却数值不同的图。我们随后会用这些材料完成一页科学示例。"

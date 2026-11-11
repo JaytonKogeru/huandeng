@@ -2,7 +2,7 @@ pageType: content
 background:
   type: solid
   color: "#F4F3ED"
-notes: 我想让 AI 能打开的不是一整张截图，而是一个能寻址的项目：入口、页面、素材、Story、历史。这里展示的是实际目录结构和真实工作区；PPTX 本身也有包结构，HUANDENG 只是把协作所需的目录和页面服务显式化。
+notes: "打开项目文件夹或 deck.pptd，0.19 都支持；一个目录只解析一个入口。目录名可以加 .huandeng 后缀，但不是必需，也不会获得系统级双击关联。移动项目要带 pages、media、.huandeng。PPTX 也有包结构，HUANDENG 是把工作目录和页面服务显式化。"
 elements:
   - elementId: project-kicker
     elementType: text
@@ -31,7 +31,7 @@ elements:
       - 520
       - 40
     content:
-      text: 一个项目，不是一个文件
+      text: "文件夹就是项目"
       fontSize: 27
       fontFamily:
         ea: Microsoft YaHei
@@ -49,7 +49,7 @@ elements:
       - 320
       - 44
     content:
-      text: "一个目录：页面、素材、Story 和历史。\n入口是 deck.pptd。"
+      text: "打开项目文件夹，或其中的 deck.pptd。\n一个目录只有一个入口。"
       fontSize: 13.4
       fontFamily:
         ea: Microsoft YaHei
@@ -133,8 +133,8 @@ elements:
       - 320
       - 58
     content:
-      text: "PPTX 本身也是开放包；HUANDENG 的选择，\n是把工作目录和页面服务显式化，\n让 AI 能定位、修改、回看；截图不是唯一反馈。"
-      fontSize: 9.4
+      text: "PPTX 也是开放包；HUANDENG 把目录和页面服务显式化。\n目录可以叫 Study.huandeng，但不是必需。\n移动时连 pages、media、.huandeng 一起走。"
+      fontSize: 8.8
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial

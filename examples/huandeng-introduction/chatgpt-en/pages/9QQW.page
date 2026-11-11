@@ -6,31 +6,17 @@ elements:
   - elementId: title
     elementType: text
     bounds:
-      - 44
-      - 35
-      - 870
-      - 68
+        [42,34,880,76]
     role: title
     content:
-      text: Stepping back to inspect the whole talk
-      fontFamily: Arial
-      fontSize: 29
-      color: "#263C34"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
+      {"text":"Step back and inspect the whole talk","fontFamily":"Georgia","fontSize":32,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.2}
   - elementId: brand-small
     elementType: image
     src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
     sourceName: huandeng.png
     alt: huandeng.png
     bounds:
-      - 44
-      - 510
-      - 17
-      - 17
+        [43,512,18,18]
     fit:
       mode: contain
     crop:
@@ -41,48 +27,22 @@ elements:
   - elementId: foot
     elementType: text
     bounds:
-      - 69
-      - 513
-      - 130
-      - 17
+        [68,515,140,16]
     content:
-      text: HUANDENG
-      fontFamily: Arial
-      fontSize: 10
-      color: "#66756B"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
+      {"text":"HUANDENG","fontFamily":"Segoe UI","fontSize":9,"color":"#5B6A62","bold":false,"align":["left","top"],"lineHeight":1.35}
   - elementId: position
     elementType: text
     bounds:
-      - 884
-      - 512
-      - 30
-      - 18
+        [881,514,35,18]
     content:
-      text: ""
-      fontFamily: Arial
-      fontSize: 10
-      color: "#66756B"
-      bold: false
-      align:
-        - right
-        - top
-      lineHeight: 1.3
-      field: main-position
-  - elementId: browse
+      {"text":"","fontFamily":"Segoe UI","fontSize":10,"color":"#5B6A62","bold":false,"align":["right","top"],"lineHeight":1.35,"field":"main-position"}
+  - elementId: view-browse
     elementType: image
-    src: "media/imported/d08a58cc75bcfcfc04f93e749cfdc3de98f85ca3a0a52609300a2ac43b893927.png"
+    src: "media/imported/fc2658bba4545e2798f397d6a64a3525c7472500fa617380cc8f214d3a719bcf.png"
     sourceName: browse.png
     alt: browse.png
     bounds:
-      - 44
-      - 129
-      - 604
-      - 363
+        [43,149,429,296]
     fit:
       mode: contain
     crop:
@@ -90,29 +50,80 @@ elements:
       right: 0
       top: 0
       bottom: 0
-  - elementId: views
+  - elementId: view-outline
+    elementType: image
+    src: "media/imported/d2eca7401ca2c38e77127c06524ac9af18ff07d24ca34fc36ef79a056efe0cf7.png"
+    sourceName: "outline-detail.png"
+    alt: "outline-detail.png"
+    bounds:
+        [505,145,409,119]
+    fit:
+      mode: contain
+    crop:
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+  - elementId: view-sections
+    elementType: image
+    src: "media/imported/798be6b3c276d794b866e4b4c98470cd15628d4a5d372bdac62478d0fa992771.png"
+    sourceName: "sections-detail.png"
+    alt: "sections-detail.png"
+    bounds:
+        [505,310,409,190]
+    fit:
+      mode: contain
+    crop:
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+  - elementId: browse-caption
     elementType: text
     bounds:
-      - 694
-      - 136
-      - 220
-      - 353
+        [43,121,429,27]
     content:
-      text: |-
-        Browse
-        See the pages in each section
-
-        Outline
-        Read the sequence of headings
-
-        Sections
-        Set the boundaries of each group
-      fontFamily: Arial
-      fontSize: 18
-      color: "#263C34"
+      text: Browse
+      fontFamily: Segoe UI
+      fontSize: 16
+      color: "#356F68"
       bold: false
       align:
         - left
         - top
-      lineHeight: 1.55
-notes: I also need to step back from the current slide. Browse shows the actual pages by section, Outline makes the sequence of headings easier to inspect, and Sections lets me organize those groups. These are views of the same work. This is where I check whether a chapter answers the question that led to it, rather than simply adding more features.
+      lineHeight: 1.35
+  - elementId: outline-caption
+    elementType: text
+    bounds:
+        [505,117,409,27]
+    content:
+      text: Outline
+      fontFamily: Segoe UI
+      fontSize: 16
+      color: "#356F68"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.35
+  - elementId: sections-caption
+    elementType: text
+    bounds:
+        [505,280,409,27]
+    content:
+      text: Sections
+      fontFamily: Segoe UI
+      fontSize: 16
+      color: "#356F68"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.35
+  - elementId: view-use
+    elementType: text
+    bounds:
+        [43,465,429,42]
+    content:
+      {"text":"Browse the pages. Read the outline. Organize the sections.","fontFamily":"Segoe UI","fontSize":15,"color":"#356F68","bold":false,"align":["left","top"],"lineHeight":1.35}
+notes: "After editing individual pages, inspect the talk as a whole. Browse shows actual pages and section rhythm. Outline makes headings and content cues easy to scan. Sections organizes chapter boundaries. These are views of the same pages. Each shown view is captured from the actual editor. Returning to Normal keeps the same page identities and content."

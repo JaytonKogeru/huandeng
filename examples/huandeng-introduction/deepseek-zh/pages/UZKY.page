@@ -13,7 +13,7 @@ elements:
       - 430
       - 40
     content:
-      text: "把故事写进文件"
+      text: "Story 告诉助手该保留什么"
       fontSize: 28
       fontFamily:
         ea: Microsoft YaHei

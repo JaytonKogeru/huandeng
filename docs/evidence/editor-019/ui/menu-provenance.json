@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "productVersion": "0.19.0",
+  "binarySourceCommit": "cadaecbf9cf1661e28464fe68b7b866f68fecabe",
+  "sourceDirty": false,
+  "captureMethod": "Actual Windows desktop crop within the owned synthetic app after real UIAutomation mouse input; no native menu/dialog stubbing, enlargement, redrawing or focus-emulation screenshot. This is an interaction capture, not a passive startup measurement.",
+  "files": [
+    {
+      "file": "application-menu-en.png",
+      "language": "en",
+      "state": "Active synthetic project; folder identity command enabled",
+      "sha256": "1b76447fd157071b805b2aba1b817d8987b852b3f9931649a42d2bbb33867d91",
+      "bytes": 24962,
+      "pixelSize": [410, 420],
+      "unchangedCaptureBytes": true,
+      "coordinatorVisuallyInspected": true
+    },
+    {
+      "file": "application-menu-zh.png",
+      "language": "zh-CN",
+      "state": "Home selected; project-only commands disabled",
+      "sha256": "06fc95cb18c5873897d4b472181f9eb925f8761b5bf331be37090a382ce3cbe8",
+      "bytes": 28885,
+      "pixelSize": [410, 420],
+      "unchangedCaptureBytes": true,
+      "coordinatorVisuallyInspected": true
+    }
+  ]
+}

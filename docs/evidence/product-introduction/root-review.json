@@ -1,0 +1,104 @@
+{
+  "recordedAt": "2026-11-11T01:46:31.193030+00:00",
+  "status": "passed_with_documented_scope",
+  "authorAccepted": false,
+  "scope": {
+    "mainSourcePages": 48,
+    "contactSheetsViewed": 8,
+    "allMainNotesRead": true,
+    "briefCompositionAndLocalNotesRead": true,
+    "exportAndOfficeAcceptance": false,
+    "briefOccurrences": 24,
+    "followUpFullPagesViewed": [
+      "en:08",
+      "en:09",
+      "en:25",
+      "zh:08",
+      "zh:09",
+      "zh:25",
+      "zh:26",
+      "en:12",
+      "zh:12"
+    ]
+  },
+  "findings": [
+    {
+      "id": "R1",
+      "kind": "product_action_gap",
+      "editions": ["en", "zh"],
+      "mainPositions": [20, 24],
+      "sourceIndices": [8, 18],
+      "finding": "No actual first assistant-connection path appears in the complete deck or Notes. The product explanation needs the existing Agent setup entry, chosen-client configuration, and a real scoped read to confirm the project. Configuration alone must not be presented as connection.",
+      "status": "resolved",
+      "verifiedAt": "2026-11-11T01:44:56.555578+00:00",
+      "resolution": "Actual source08 EN/ZH shows setup, client instructions, then a real project/selection read; actual Notes distinguish route from online presence."
+    },
+    {
+      "id": "R2",
+      "kind": "task_screenshot_legibility",
+      "editions": ["en", "zh"],
+      "mainPositions": [12, 14],
+      "sourceIndices": [9, 25],
+      "finding": "The operation list is displayed as a roughly 110px-wide tall strip; the Outline and Sections workspaces are each reduced to 287px width with their empty regions intact. The relevant entries and fields cannot be read at presentation size. Crop a small relevant task region and enlarge its real pixels.",
+      "status": "resolved",
+      "verifiedAt": "2026-11-11T01:44:56.555606+00:00",
+      "resolution": "Actual source09 and source25 EN/ZH crops enlarge the operation record and relevant Outline/Sections task regions."
+    },
+    {
+      "id": "R3",
+      "kind": "chinese_wrapping",
+      "editions": ["zh"],
+      "mainPositions": [16],
+      "sourceIndices": [26],
+      "finding": "The Notes quote ends in an isolated final line containing only the final character and punctuation. Shorten the quote while preserving meaning, and keep the actual brief occurrence Notes consistent with it. Preserve the single rich-text object.",
+      "status": "resolved",
+      "verifiedAt": "2026-11-11T01:44:56.555611+00:00",
+      "resolution": "Actual ZH source26 has a clean quote; current Brief occurrence brief-2 contains matching text and retains its named checkpoint pin."
+    },
+    {
+      "id": "R4",
+      "kind": "spoken_sequence",
+      "editions": ["en", "zh"],
+      "mainPositions": [4, 13, 19, 15],
+      "sourceIndices": [2, 7, 11, 12],
+      "finding": "Brief occurrence brief-4 inherits a transition to a different script, but the next brief page introduces assistants. Supply occurrence-specific Notes for the actual brief sequence. The three title-only Sections also repeat one generic placeholder sentence rather than their specific transition.",
+      "status": "resolved",
+      "verifiedAt": "2026-11-11T01:44:56.555616+00:00",
+      "resolution": "All three Section Notes have distinct task transitions; actual brief-4 now transitions to assistants, and the Editor occurrence has a brief-specific transition."
+    },
+    {
+      "id": "R5",
+      "status": "resolved",
+      "kind": "actual_composition_evidence_mismatch",
+      "editions": ["en", "zh"],
+      "mainPositions": [15],
+      "sourceIndices": [12],
+      "finding": "The refreshed reuse page claims an excerpt from the current Brief, but its History thumbnail is not present in that Brief. Its science thumbnail also shows current Main while the actual Brief occurrence is pinned to a historical wording stage.",
+      "suggestedMinimalCorrection": "Use actual live Brief selections Editor (source05), Assets (source06) and identity table (source13) for the selected row; replace the top History example with source13. No change to Brief count is needed.",
+      "resolution": "Actual source12 EN/ZH now shows Main excerpt [5,6,1,13] and selected excerpt [5,6,13]. All three selected thumbnail bytes match current renders, each page is present as a live occurrence in the actual 12-page Brief, and the real science pin remains unchanged elsewhere.",
+      "verifiedAt": "2026-11-11T01:46:31.193030+00:00"
+    }
+  ],
+  "confirmedStrengths": [
+    "The product is defined early; personal motivation now leads into a coherent editing and delivery task.",
+    "The two Main sequences have matching substantive topics, claims, evidence and order.",
+    "Three native tables express genuine row/column relationships; ordinary prose and lists are not fragmented into fake rows. Anchored interface numbers and meaningful relationship diagrams remain appropriate.",
+    "Original scientific values, units, source scope, figure relationships and real edit/version evidence remain intelligible.",
+    "HUANDENG, client marks and upstream project acknowledgments are present with qualified attribution.",
+    "The latest Chinese cover wrap and chart-versus-five-row-table Notes corrections were actually inspected.",
+    "The collaboration caption limits the actual test to ChatGPT and DeepSeek; the Claude allocation is labelled an example."
+  ],
+  "nonBlockingNote": "Chinese Main14 contains a production-review sentence in its speaking Notes about avoiding use of one Browse image for three functions; it can be removed while cleaning the Notes.",
+  "blockingFindings": 0,
+  "limitations": [
+    "This is an independent content, source-object and source-render review, not owner approval.",
+    "All 48 Main pages were viewed in sequence contact sheets; relevant pages and all changed visual corrections were also viewed at full-page size.",
+    "PDF/PPTX and actual PowerPoint rendering require their separate final artifact checks.",
+    "The visible collaboration claim is limited to the separately recorded ChatGPT plus DeepSeek fixture; Claude participation is not claimed.",
+    "Named checkpoints travel with the project; machine-local operation history does not. The actual current Notes preserve that qualification."
+  ],
+  "noAuthorSourceEditedByReviewer": true,
+  "inputManifest": "root-inputs.json",
+  "inputManifestSha256": "607863df37017698b4a070bf1e17b813386b0b7e067ae0f2bdfa594a1015288a",
+  "historicalOriginalManifestSha256": "3eeb0601f1c929a9f1163dc0ba19a2b8a3e9e3ebf32ea093958382c41c0961c2"
+}

@@ -1,0 +1,449 @@
+{
+  "schemaVersion": 1,
+  "project": "claude-zh",
+  "round": "product-intro-20261111",
+  "recordedAt": "2026-11-11T04:39:54.877339+00:00",
+  "reviewer": "Independent coordinator",
+  "authorAccepted": false,
+  "finalFactGateClosed": true,
+  "nativeRequestId": "cd89c973-7f0e-4a0d-a2f7-0d6fc4ddfaaf",
+  "nativeToolCalls": 9,
+  "mainPages": 26,
+  "briefPages": 9,
+  "briefLocalNotes": 4,
+  "briefPins": 0,
+  "currentReviewScope": {
+    "sourceChangePages": [5, 6],
+    "currentPdfFullPagesViewed": [5, 6],
+    "currentOfficeFullPagesViewed": [5, 6],
+    "currentBriefPdfContactsViewed": 2,
+    "currentBriefPdfPages": 9,
+    "allMainPptxNotesReadbackCount": 26,
+    "priorFullSequenceCarriedOnlyForUnchangedSource": true
+  },
+  "conclusion": "The two precise factual claims are corrected in their existing Chinese layout and relevant Notes/Story. Existing product coverage and original evidence remain intact.",
+  "resolvedFacts": [
+    "Screenshot review is described as the founder experienced it; the current text no longer claims images cannot be measured or compared.",
+    "Story is explained as preserving the author perspective with continued visual review, not a guarantee of removing AI appearance."
+  ],
+  "preservation": {
+    "mainOrderUnchanged": true,
+    "layoutGeometryAndObjectCountsUnchanged": true,
+    "originalAssetFilesVerified": 75,
+    "protectedEnglishPageHashes": null,
+    "onlyDataPathsChanged": ["text content", "Notes"],
+    "pageStoriesUpdated": true
+  },
+  "changedPages": [
+    {
+      "position": 5,
+      "slideId": "2723",
+      "pageId": "6afee11a-6d00-430b-93fd-56e706c8b07c",
+      "pagePath": "pages/2723.page",
+      "dataChanges": [
+        "/elements/0/content/text",
+        "/elements/1/content/text",
+        "/elements/2/content/text",
+        "/elements/5/content/text",
+        "/notes"
+      ],
+      "storyChanges": ["/purpose", "/recordedAt", "/requestedChange"],
+      "oldPageSha256": "b86e4403e2cb680f7c7f344a313062e35c4a64131ffbf3f78ac9911b2194de3d",
+      "newPageSha256": "0139406f2d9bd5fa7bddb81b5fbc7b2041989d5c2d8fd622590fb936bc7322e2"
+    },
+    {
+      "position": 6,
+      "slideId": "GZBW",
+      "pageId": "3c2c0a36-22fc-43b0-b37f-5c3f3b97e005",
+      "pagePath": "pages/GZBW.page",
+      "dataChanges": ["/elements/3/content/text", "/notes"],
+      "storyChanges": ["/purpose", "/recordedAt", "/requestedChange"],
+      "oldPageSha256": "598e15da597aea64fcb8294965c082a3cd7f2207601e0fcdda2879cf64cf1b53",
+      "newPageSha256": "d26c977b30c5b8b1c625a242d7735d8f25c98b570d655464b58b769be0c44f53"
+    }
+  ],
+  "retainedFindings": [],
+  "retainedOfficeLimitations": [],
+  "fullCurrentOfficePassClaimed": false,
+  "nativeFirstSubmissionPassedAllRequirements": false,
+  "coordinatorAuthoredEdits": false,
+  "noAestheticRedo": true,
+  "sourceHashesRoot": "..",
+  "sourceHashes": {
+    "deck.pptd": "325af19fad49f7e43bcf117a67774f96946d29863ef424d4a01d0d722801eb2b",
+    ".huandeng/project.json": "00056b9948c065bddd11e7be2fb53c166d05b2d03e6cd5962812e678e81187f4",
+    "pages/2723.page": "0139406f2d9bd5fa7bddb81b5fbc7b2041989d5c2d8fd622590fb936bc7322e2",
+    "pages/2UCC.page": "b7ec8fdbe8edf9090043fc32e1cc19f41056282f0b3457dda86e0e224239b542",
+    "pages/3442.page": "acf8b4cfb50a2737bb2c223fd49c84ef46d19102c7e72dfb3667570e0f1c6f1f",
+    "pages/3D9R.page": "ad6e01acb9762d63440b24702ced37f9bb3f7793c5b2558a61e5231ff610b874",
+    "pages/3DUH.page": "4667010bdeebffcf4bfbfdd4f83e064499847d2d7e12f5fc4dfaa230ab7099ee",
+    "pages/6KNX.page": "d66dfa584158fa1bdc8659d02f68d20b5b71e2f5974564f8c45ee5b5cf48cac2",
+    "pages/7K3P.page": "b0d9f6de9804a9d9b2529d0b9424850c839efb891ecc11de017aef8898840958",
+    "pages/85Z6.page": "a9d8a88d54bc0e8e033c8629812d337027e96dfba00cac2582c5278cc70f5aca",
+    "pages/A9FE.page": "f90f9ad50473cc67bd9a01421a09e9a94a90921b40e54ab54d4e06beb8790ae6",
+    "pages/BDTW.page": "2e814d90fac2535503cfe2fd89715412a173d9451c2b6692a9712f92739f4238",
+    "pages/BRHY.page": "40986fc22b765c5ec9b88c98feb4f6d235f9d86c3ac78887c3417bbad149a01c",
+    "pages/D26F.page": "81561530ed1eedda077353e920bf1c143c486269424cd87eec7d66b2a456dcff",
+    "pages/DY5H.page": "c601a32ed95c88ce6e9a82722027917dc4550af5d3cb5d1270785dc97667761e",
+    "pages/FK8W.page": "66017a133fd72b47fe8439bbe2733f22974c7aa2460cf48aca620404d919e314",
+    "pages/FNHB.page": "b26ad19dc2ac94d1da1dafbe7d61519072626a877e8da885b7a81703dd0c8c3a",
+    "pages/GBXR.page": "e56806615d8aa2660fe36b4affad49a873220f11d6ed9861adc52886a6d19c0d",
+    "pages/GZBW.page": "d26c977b30c5b8b1c625a242d7735d8f25c98b570d655464b58b769be0c44f53",
+    "pages/initial.page": "9e1f07666cb02af420246cc50842106002881090ac871c5fc1eacf4d1b85ae82",
+    "pages/J28N.page": "574b8fe1e97a1e6c3355c1a1282e1b35696f5dac5225e08aef18443206daa83d",
+    "pages/KS6E.page": "16bcad0a1034cde7dcb4287f8df365e650a5434d103375a4cf3e0107807045d3",
+    "pages/MC4X.page": "dd70a0902d63dda8b6e9024107c56f7eaf097355b004ebd713045d7da82f4649",
+    "pages/SSFR.page": "7a61536ef1c0d075d157a018510ccc07a3f239509326803e9232bdff77f476e5",
+    "pages/WDFR.page": "ba59fce178dcafc71e6fe8b593b4b7fb39befec03fb9528f171942284879d403",
+    "pages/XVAD.page": "629a5fd049386ef293d685a799be1c3d8763bf58a01144100fe2aaad1d46046b",
+    "pages/YS6V.page": "8f9209bbe28dc7c3eb3e0dee557cc6b97c461dd79b85dc6c97ed928d1c2bf0e5",
+    "pages/ZWM9.page": "549d9adccd8f763e7f5798aeb293a7def541ddf50e4c6d9d51b712cda53df931",
+    "pages/ZX58.page": "73ba3814ea4f2a8fedadacd185401351fe74dbe899e1d968e2d4ab367f21810a"
+  },
+  "artifacts": [
+    {
+      "path": "../Exports/deck.pdf",
+      "sha256": "ef44c276c8f76443f2b66d4308f8cda203ff024ab76397471026afef4b3a5ae0",
+      "bytes": 4478327,
+      "actor": "native author"
+    },
+    {
+      "path": "../Exports/deck.pptx",
+      "sha256": "6b1f92827402324bd0c3c087b090dc7af19186e48f27f6f4243ac13ae6cafc26",
+      "bytes": 4360405,
+      "actor": "native author"
+    },
+    {
+      "path": "../Exports/brief.pdf",
+      "sha256": "da1ec5631883923c51ec7703d327858abb56c0a76163b20609811fc5b0ccaf4e",
+      "bytes": 1982216,
+      "reportPath": "../Exports/brief.pdf.report.json",
+      "reportSha256": "a8ab8b596b9c3df2e38df3b33c46a5ae2bd4d6c9abc6fbfa342e9c122eed5a3a",
+      "actor": "native Claude author",
+      "pageCount": 9,
+      "nativeFilename": "组会简版（约 8 分钟）-lab-brie.pdf",
+      "nativeMtime": 1794371602.9337313,
+      "coordinatorAction": "Standardized filename only; exact native bytes preserved"
+    },
+    {
+      "path": "../Exports/brief.pptx",
+      "sha256": "4a79c1ff49e8fe89c84f8aba3c34b02c5c7f33e96215ff2545c7d040c6ffc45e",
+      "bytes": 1689954,
+      "reportPath": "../Exports/brief.pptx.report.json",
+      "reportSha256": "f9d80b307a7889a2a3d16513a64f06e0cfbb3afbf84c6e612bea27c4885f33cd",
+      "actor": "native Claude author",
+      "pageCount": 9,
+      "nativeFilename": "组会简版（约 8 分钟）-lab-brie.pptx",
+      "nativeMtime": 1794371609.0230157,
+      "coordinatorAction": "Standardized filename only; exact native bytes preserved"
+    }
+  ],
+  "previousEvidence": {
+    "reviewSha256": "32dea96e7e9a5debed35a10268d8f19f772b9bab7f6faf3fd28be3fdcadf7074",
+    "inspectionSha256": "2d89de92279d0fd71b87de4567c493bf1b81d7b4018b5aad9336a27a3e037f4a",
+    "officeReceiptSha256": "3a547005a98cf997cba7c1f2b83147c140ce7d7247d4fe2afe778bfd3aa243a1",
+    "fullMainPages": 26,
+    "sciencePageSourceUnchanged": true,
+    "newWholeDeckOfficeInspectionClaimed": false
+  },
+  "currentOfficeReceiptSha256": "8da7a167d92db29b68f1c128a27502fa69358309494bb65dc22faad323fc1587",
+  "nativeChartCheckSha256": "f675f91716e538fd6842d4edbad11ca9d36159897bf02fd9c455598b0e4b0c7a",
+  "mainNotes": [
+    {
+      "position": 1,
+      "slideId": "SAHG",
+      "exportedNotesMatchSavedSource": true
+    },
+    {
+      "position": 2,
+      "slideId": "ZX58",
+      "exportedNotesMatchSavedSource": true
+    },
+    {
+      "position": 3,
+      "slideId": "FNHB",
+      "exportedNotesMatchSavedSource": true
+    },
+    {
+      "position": 4,
+      "slideId": "KS6E",
+      "exportedNotesMatchSavedSource": true
+    },
+    {
+      "position": 5,
+      "slideId": "2723",
+      "exportedNotesMatchSavedSource": true
+    },
+    {
+      "position": 6,
+      "slideId": "GZBW",
+      "exportedNotesMatchSavedSource": true
+    },
+    {
+      "position": 7,
+      "slideId": "6KNX",
+      "exportedNotesMatchSavedSource": true
+    },
+    {
+      "position": 8,
+      "slideId": "2UCC",
+      "exportedNotesMatchSavedSource": true
+    },
+    {
+      "position": 9,
+      "slideId": "3DUH",
+      "exportedNotesMatchSavedSource": true
+    },
+    {
+      "position": 10,
+      "slideId": "SSFR",
+      "exportedNotesMatchSavedSource": true
+    },
+    {
+      "position": 11,
+      "slideId": "MC4X",
+      "exportedNotesMatchSavedSource": true
+    },
+    {
+      "position": 12,
+      "slideId": "BRHY",
+      "exportedNotesMatchSavedSource": true
+    },
+    {
+      "position": 13,
+      "slideId": "3D9R",
+      "exportedNotesMatchSavedSource": true
+    },
+    {
+      "position": 14,
+      "slideId": "A9FE",
+      "exportedNotesMatchSavedSource": true
+    },
+    {
+      "position": 15,
+      "slideId": "GBXR",
+      "exportedNotesMatchSavedSource": true
+    },
+    {
+      "position": 16,
+      "slideId": "3442",
+      "exportedNotesMatchSavedSource": true
+    },
+    {
+      "position": 17,
+      "slideId": "85Z6",
+      "exportedNotesMatchSavedSource": true
+    },
+    {
+      "position": 18,
+      "slideId": "ZWM9",
+      "exportedNotesMatchSavedSource": true
+    },
+    {
+      "position": 19,
+      "slideId": "DY5H",
+      "exportedNotesMatchSavedSource": true
+    },
+    {
+      "position": 20,
+      "slideId": "D26F",
+      "exportedNotesMatchSavedSource": true
+    },
+    {
+      "position": 21,
+      "slideId": "XVAD",
+      "exportedNotesMatchSavedSource": true
+    },
+    {
+      "position": 22,
+      "slideId": "FK8W",
+      "exportedNotesMatchSavedSource": true
+    },
+    {
+      "position": 23,
+      "slideId": "7K3P",
+      "exportedNotesMatchSavedSource": true
+    },
+    {
+      "position": 24,
+      "slideId": "J28N",
+      "exportedNotesMatchSavedSource": true
+    },
+    {
+      "position": 25,
+      "slideId": "YS6V",
+      "exportedNotesMatchSavedSource": true
+    },
+    {
+      "position": 26,
+      "slideId": "BDTW",
+      "exportedNotesMatchSavedSource": true
+    }
+  ],
+  "unchangedOoxmlChecks": [
+    {
+      "position": 1,
+      "slideId": "SAHG",
+      "slideXmlIdentical": true,
+      "relationshipsIdentical": true
+    },
+    {
+      "position": 2,
+      "slideId": "ZX58",
+      "slideXmlIdentical": true,
+      "relationshipsIdentical": true
+    },
+    {
+      "position": 3,
+      "slideId": "FNHB",
+      "slideXmlIdentical": true,
+      "relationshipsIdentical": true
+    },
+    {
+      "position": 4,
+      "slideId": "KS6E",
+      "slideXmlIdentical": true,
+      "relationshipsIdentical": true
+    },
+    {
+      "position": 7,
+      "slideId": "6KNX",
+      "slideXmlIdentical": true,
+      "relationshipsIdentical": true
+    },
+    {
+      "position": 8,
+      "slideId": "2UCC",
+      "slideXmlIdentical": true,
+      "relationshipsIdentical": true
+    },
+    {
+      "position": 9,
+      "slideId": "3DUH",
+      "slideXmlIdentical": true,
+      "relationshipsIdentical": true
+    },
+    {
+      "position": 10,
+      "slideId": "SSFR",
+      "slideXmlIdentical": true,
+      "relationshipsIdentical": true
+    },
+    {
+      "position": 11,
+      "slideId": "MC4X",
+      "slideXmlIdentical": true,
+      "relationshipsIdentical": true
+    },
+    {
+      "position": 12,
+      "slideId": "BRHY",
+      "slideXmlIdentical": true,
+      "relationshipsIdentical": true
+    },
+    {
+      "position": 13,
+      "slideId": "3D9R",
+      "slideXmlIdentical": true,
+      "relationshipsIdentical": true
+    },
+    {
+      "position": 14,
+      "slideId": "A9FE",
+      "slideXmlIdentical": true,
+      "relationshipsIdentical": true
+    },
+    {
+      "position": 15,
+      "slideId": "GBXR",
+      "slideXmlIdentical": true,
+      "relationshipsIdentical": true
+    },
+    {
+      "position": 16,
+      "slideId": "3442",
+      "slideXmlIdentical": true,
+      "relationshipsIdentical": true
+    },
+    {
+      "position": 17,
+      "slideId": "85Z6",
+      "slideXmlIdentical": true,
+      "relationshipsIdentical": true
+    },
+    {
+      "position": 18,
+      "slideId": "ZWM9",
+      "slideXmlIdentical": true,
+      "relationshipsIdentical": true
+    },
+    {
+      "position": 19,
+      "slideId": "DY5H",
+      "slideXmlIdentical": true,
+      "relationshipsIdentical": true
+    },
+    {
+      "position": 20,
+      "slideId": "D26F",
+      "slideXmlIdentical": true,
+      "relationshipsIdentical": true
+    },
+    {
+      "position": 21,
+      "slideId": "XVAD",
+      "slideXmlIdentical": true,
+      "relationshipsIdentical": true
+    },
+    {
+      "position": 22,
+      "slideId": "FK8W",
+      "slideXmlIdentical": true,
+      "relationshipsIdentical": true
+    },
+    {
+      "position": 23,
+      "slideId": "7K3P",
+      "slideXmlIdentical": true,
+      "relationshipsIdentical": true
+    },
+    {
+      "position": 24,
+      "slideId": "J28N",
+      "slideXmlIdentical": true,
+      "relationshipsIdentical": true
+    },
+    {
+      "position": 25,
+      "slideId": "YS6V",
+      "slideXmlIdentical": true,
+      "relationshipsIdentical": true
+    },
+    {
+      "position": 26,
+      "slideId": "BDTW",
+      "slideXmlIdentical": true,
+      "relationshipsIdentical": true
+    }
+  ],
+  "briefReceiptSha256": "cac23cc13146eca1300e83f34c78b8dc87f448430a0b37c3a7c6956f004bbcd2",
+  "runnerState": "needs_attention",
+  "bookkeepingDenial": {
+    "tool": "PowerShell",
+    "action": "Append the author working log DELIVERY-R2.md outside the bound project",
+    "recordedResult": "Permission denied; native author reported interactive approval unavailable.",
+    "sourceAndExports": "Independently verified after the denial; no retry or permission change.",
+    "deniedFileWrittenByCoordinator": false
+  },
+  "nativeCompletedFlag": true,
+  "retainedPreviewScope": "Existing miniature page previews are preserved snapshots; wording-only maintenance did not regenerate their original image bytes. The actual Main and Brief page bodies are current.",
+  "internalReviewSha256": "34e2f388186796e5876c99276d01e8ae00205ff081934c3eff09e8dbaa5d5548",
+  "evidence": [
+    "product-qa.json",
+    "product-brief.json",
+    "product-narrative.json",
+    "product-pair-review.json",
+    "product-science-check.json",
+    "product-assets.json"
+  ]
+}

@@ -1,197 +1,159 @@
-# Why I started HUANDENG: speaker notes
+# Introducing HUANDENG: speaker notes
 
-Extracted from the actual project Notes. Continue editing on the corresponding page.
+Extracted from the actual project Notes. Continue editing on the page or the relevant Presentation occurrence.
 
 ## Full introduction
 
-### 1. Why I started HUANDENG · 9DAA
+### 1. Scientific slides, kept as a working project · 9DAA
 
-I want to begin with why I started HUANDENG. At lab meetings, I wanted AI to help prepare slides while keeping my own judgment visible. I also kept running into another problem: changing two slides could leave me with another complete copy of the deck. Those experiences led me to put the human story, page identity and editable material into one project.
+HUANDENG is an editing workflow for scientific presentations. It brings together a visual editor, a portable working project and access for AI agents. It began with my experience preparing lab meetings: I wanted help with repetitive work while retaining the judgment, original material and a clear place to make the next edit. We will locate a page, preserve its intent and evidence, inspect a change and turn the pages into a talk.
 
-### 2. I still wanted agents to make slides · YSGH
+### 2. A small edit should stay a small edit · 2XM9
 
-I was not looking for a return to doing everything by hand. Slides are files and structured data. If an agent can work with code, objects and sources, I expect it to become a capable slide author too. That is my starting belief. The question for me was how to keep my own explanation intact as more of the preparation becomes automated.
+Two frustrations often appeared together in my work. A deck could look complete while missing the point I wanted to make. Changing two pages in fifty could also leave another full copy. I separated those concerns: where does the human intent stay, and which page actually changed? Story keeps the intent available; page identity and history keep the revision attached to the work. The filenames illustrate my use case, not a claim about every AI tool.
 
-Account source: sources/story/USER-STORY.zh-CN.md. The explanation is based on the founder’s personal experience and design judgment.
+### 3. What comes together in HUANDENG? · GX5Z
 
-### 3. At lab meetings, people could tell · P72R
+The Editor is the workspace for inspection, direct editing and presentation. The folder containing the PPTD entry is the complete project, with pages, assets and history. A plugin supplies authoring and collaboration guidance; a connector binds the assistant to the selected project’s shared writer. People and assistants can therefore work on the same source. The next section starts with that shared page.
 
-At lab meetings and other presentations, I noticed how readily people recognized AI-made slides. The tools had different styles, but the slides often tried to cover everything. I found the same problem in my own introduction: there was plenty of material, yet the point was hard to follow. The images here are earlier pages from my own introduction. These pages made me look again at the story I was trying to tell.
+### 4. Make one page work · 9VGD
 
-Account source: sources/story/USER-STORY.zh-CN.md. The explanation is based on the founder’s personal experience and design judgment.
+Start with one page: locate the work, keep its intent and evidence, and inspect a focused edit.
 
-### 4. Change two of fifty slides. Another full copy? · 2XM9
+### 5. Start from the page in the editor · FKA9
 
-The second problem was mundane. Suppose I already had fifty slides and wanted to change two. Some agents would preserve the original by creating another complete deck. With repeated edits, the directory could fill with dated copies. Git suggested a useful principle: record what changed in the unit being edited, rather than preserving every small revision as another full presentation.
+The left navigation gives access to the project, pages, assets and files. The central canvas remains available for direct object editing. The right inspector holds properties, layers and Story. Workspace views above the canvas let us browse the deck, inspect the outline, arrange sections, write notes and inspect history. An agent edits the same document. Next we will record the page intent and prepare the source material.
 
-Account source: sources/story/USER-STORY.zh-CN.md. The explanation is based on the founder’s personal experience and design judgment.
+### 6. Keep the reason beside the edit · U8ZQ
 
-### 5. Seeing the slide is only part of editing it · GX5Z
+The human account helps the agent understand the job. Project Story records the overall purpose; page Story records the point, the evidence to preserve and the requested change. It is not a command to print the transcript on the slide. The actual Story panel sits beside a concrete editing request. A person or another assistant taking over should read this context instead of guessing what happened in the previous conversation.
 
-The third problem was precision. Screenshots are useful: I still need to see the composition and judge whether figures and labels work together. But a screenshot alone does not identify the object, its data or its uses elsewhere in a project. I wanted the picture and the structure together. The structure enables precise edits and checks; it does not replace looking at the slide.
+### 7. Keep the original material within reach · 35U5
 
-Account source: sources/story/USER-STORY.zh-CN.md. The explanation is based on the founder’s personal experience and design judgment.
+The asset library keeps the original material available for the next revision. These two DNA views, coordinates and distance table come from one public structure. After import, Assets lets us locate the material and reuse it on a page; the source record and method remain with the project. A new composition should not require inventing a similar-looking figure with different data. We will use this material in the scientific example.
 
-### 6. So I wanted to tell the story first · KW5P
+### 8. Local variation in one structure · ZWZJ
 
-My working hypothesis is that the AI feel comes partly from trying to cover everything without deciding what matters. I would rather speak first, even roughly, and have the agent organize the logic already present in that account. That is what I did for this introduction. The talk and the slides can then grow from the same reasoning, instead of my inventing a speech to fit a deck the AI has already made.
+This public scientific page is the working example for the demonstration. The 1BNA structure and the twelve paired C1′ distances come from the same coordinates. At position seven, A7–B18 measures 10.2329 Å, displayed as 10.233 Å. These are positions within one structure, not independent experimental replicates. We will refine the explanation while retaining the figure, all values, axes and citation. This is a concrete editing task a scientific presenter can inspect.
 
-Account source: sources/story/USER-STORY.zh-CN.md. The explanation is based on the founder’s personal experience and design judgment.
+Sources: https://www.rcsb.org/structure/1BNA ; https://doi.org/10.1073/pnas.78.4.2179 . Source coordinates and method: sources/science/.
 
-### 7. The ideas I brought together · 5HW8
+### 9. Keep charts, tables and equations editable · XF8A
 
-I then looked for existing work I could build on. I encountered the PPTD approach in the Kimi Slides ecosystem. OpenSlide already connected React pages to a canvas and editing tools. HUANDENG builds on the OpenSlide codebase, with a PPTD document model and an Electron desktop application. These existing projects gave me foundations to combine. OpenPPTD contributes the formula conversion modules.
+The preceding chart retains all twelve source values. This page selects five positions in a native table and keeps the distance calculation as an editable equation. A person can work with actual cells, a chart series and the equation instead of moving imitation cell text boxes. The plot and table use the same public data, so values and units can be checked together.
 
-Sources and precise attribution: sources/story/FACTS.md ; https://open-slide.dev/docs ; https://learn.microsoft.com/en-us/office/open-xml/presentation/structure-of-a-presentationml-document .
+### 10. Match the saved change to the request · ZN52
 
-### 8. A page with an identity · 9VGD
+This is an actual saved edit. The request tightened the title and explanation while retaining the figure, all twelve values, axes and source. The before and after views come from that operation’s real snapshots. The scope can be checked directly. Next we need to identify the page and follow its history, as well as inspect the final appearance.
 
-Those frustrations led me to treat the page as the unit of continuing work. I will first explain how the project is organized, how we identify the same page, and how we return to its history.
+Saved operation: d2d18509-c72c-48e7-81cc-4251486a522e. Verification: evidence/wording-edit.json.
 
-### 9. PPTX already contains separate pages · TBGV
+### 11. Identify the page. Then follow its history. · DHVW
 
-PPTX already separates slides, media and notes inside an Open XML package. I was not inventing the idea of a page. I wanted an accessible project directory as the everyday working surface, with deck.pptd organizing pages and assets. The two formats have different models: renaming a PPTX does not convert it into PPTD. This diagram selects the relevant parts of each structure.
+Position is the current order; after rearranging, slide four can mean a different page. Slide ID preserves the page identity. The mapping here uses this project’s full and brief presentations. Name the stable ID and the intended object when asking an assistant for a change. History follows that same page instead of an ambiguous position number.
 
-Sources and precise attribution: sources/story/FACTS.md ; https://open-slide.dev/docs ; https://learn.microsoft.com/en-us/office/open-xml/presentation/structure-of-a-presentationml-document .
+### 12. Review a change. Return to a saved stage. · 2ZQ3
 
-### 10. A folder I can return to · BHPP
+Select the page and open History to inspect saved operations or record a named version. An operation explains a particular change; a named version preserves a meaningful stage of the whole page. Restoring acts on the selected page. Small revisions can stay in the current project rather than becoming another full source deck.
 
-Opening deck.pptd opens the project, but that entry is only one part of it. Pages, images, Story, composition and history live beside it. AGENTS.md keeps the authoring preferences available to the agent. The Files view exposes that working directory, much like an IDE project tree. Carrying the whole folder keeps the materials and history available for the next edit.
+### 13. Turn pages into a talk · 7E4T
 
-### 11. First, which page are we talking about? · DHVW
+Once a page can keep evolving, assemble the talk: inspect its rhythm, select the pages and adapt the explanation to this audience.
 
-If a page is the editing unit, I need a reliable way to name it. Slide four may no longer be fourth after a reorder. Position therefore describes the current sequence; the four-character Slide ID identifies the page. The table uses actual sequences from this project. That makes an editing request less ambiguous, even when two talks use the same page in different positions.
+### 14. Step back and inspect the whole talk · 9QQW
 
-### 12. Keeping the history with the page · 2ZQ3
+After editing individual pages, inspect the talk as a whole. Browse shows actual pages and section rhythm. Outline makes headings and content cues easy to scan. Sections organizes chapter boundaries. These are views of the same pages. Each shown view is captured from the actual editor. Returning to Normal keeps the same page identities and content.
 
-Stable identity lets the history stay with the page. I can inspect its operations to see what changed, and save a named version at a meaningful stage for later review or restore. These are real page versions saved in this project. This is my response to the full-deck copy problem: keep working in one project, with the history attached to the page being changed.
+### 15. Keep the pages. Change the selection. · AAD6
 
-### 13. Keeping the story in the work · 7E4T
+Main Slides is the continuing page library. Open Project, Arrange Presentation and New Presentation; select pages, set their order and save Project. The upper row shows part of Main. The lower row shows three actual selections in this project’s brief talk, each referring to its original Slide ID. Next we will give one page the notes for this particular talk.
 
-Page identity and history define the scope of an edit. I also wanted the human judgment to survive, so let us look inside the editor at how Story and materials carry intent and evidence into the next revision.
+### 16. The same page can carry a different script · 74A2
 
-### 14. The editor I return to with the agent · FKA9
+Reusing a page does not require reading the same script. Main Notes can keep the general explanation; one occurrence in a Presentation can hold its own notes. The brief introduction uses this scientific page to explain evidence preservation, while a longer account can explain the method. The local notes belong to this appearance; the page need not be duplicated.
 
-A document model still needs an editor people want to use. The canvas remains available for direct manipulation, with Project, Pages, Assets and Files on the left and object properties, layers and Story on the right. An agent’s changes appear in that same work. I wanted AI collaboration to coexist with selecting objects, arranging layers and refining the composition by hand.
+### 17. Follow the page, or hold a saved version · 9N3S
 
-### 15. Leaving the reason for the next edit · U8ZQ
+Some talks should follow continuing edits; others need a particular settled stage. Live uses the current Main page; Pinned selects a named version of that page. The left is the current scientific example; the right is the actual saved wording-edit stage. The brief introduction really pins that version. The identity is the same, while the selected content version differs.
 
-Story keeps the reason for the work available after the conversation ends. At the project level it records the purpose of the talk. On a page it records the point being made and what an edit must preserve. This scientific example keeps the structure, twelve values and source attribution. Story gives both the agent and my future self context; it is not a switch that guarantees judgment.
+### 18. Take the project, not just its entry file · BHPP
 
-### 16. The asset library carries the work forward · 35U5
+The PPTD file is the entry; the directory is the complete project. Pages, media, Story, composition, named page versions and authoring guidance stay together. Named versions travel with the folder; machine-local operation journals stay on the computer where they were recorded. PPTX already contains slide parts too; HUANDENG exposes an accessible working folder. The new entry flow accepts a PPTD or a folder containing exactly one PPTD. A descriptive folder suffix is optional. If the folder has several entries, choose the intended file explicitly.
 
-The asset library matters especially for scientific talks. A structure image, another view, source data and attribution will often be used again. If those materials exist only in a conversation or scattered files, the next edit loses its foundation. Here they belong to the project and remain available. The alternate 1BNA view on the right comes from the same coordinates, preserving a connection to the evidence.
+### 19. Work with people and agents · X5J6
 
-Source: https://www.rcsb.org/structure/1BNA ; https://doi.org/10.1073/pnas.78.4.2179 . Source coordinates, calculation and all twelve values: sources/science/.
+With pages and talks organized, we can bring people and assistants into the same project and explain setup, division of work, handoff and delivery.
 
-### 17. Local variation in one structure · ZWZJ
+### 20. Different assistants, one working project · YZ4T
 
-Here is a concrete scientific page. The 1BNA DNA structure and the twelve paired C1′ distances come from the same deposited coordinates. Position seven joins A7 and B18. This is a public worked example, not a new research result or twelve independent experiments. It makes the editing requirement tangible: the wording may change while the structure, values, units and attribution stay intact.
+For the first connection, open Agent setup at the top of the editor, choose the client and follow its setup instructions. Ask the assistant to read the project and selected page, then check the returned project name and Slide ID. Different assistants use native integrations with the same document contract. The plugin carries guidance; the connector binds requests to the explicitly chosen project. The Editor and assistants save through the shared writer. The marks identify supported routes, not models currently online. A real read and task are still needed to verify the selected project and access.
 
-Source: https://www.rcsb.org/structure/1BNA ; https://doi.org/10.1073/pnas.78.4.2179 . Source coordinates, calculation and all twelve values: sources/science/.
+### 21. Divide the work. Make the handoff explicit. · KW5P
 
-### 18. Tables and equations stay editable · XF8A
+Work can be divided by pages, or passed from content drafting to visual refinement. A handoff needs page IDs, the task and evidence-preservation constraints. Different-page saves can proceed independently. A same-page or shared-metadata conflict requires rereading and reconciling the intended change. Activity distinguishes client reports from saved receipts; configuration alone is not online presence. The diagram illustrates task allocation. In a separate controlled test, native DeepSeek Harness and ChatGPT saved distinct pages from the same starting state. A stale same-page proposal was rejected; after rereading, a focused font and color handoff succeeded. Claude Code did not participate in this round’s parallel test. See evidence/collaboration.json.
 
-I also want the table and equation to remain editable. This is one native table, rather than separate text boxes arranged to resemble cells. The equation remains an equation. That matters when a person takes over and needs to change a column or a value. The five rows are selected from the same twelve-position dataset; the full source data and calculation script stay with the project.
+### 22. From the working project to the audience · DDJN
 
-Source: https://www.rcsb.org/structure/1BNA ; https://doi.org/10.1073/pnas.78.4.2179 . Source coordinates, calculation and all twelve values: sources/science/.
+Present or export from the same working project. Click-by-click reveals belong to live playback; PPTX and PDF carry the static slides. Provide the complete PPTD project when someone needs to continue editing, and an appropriate export when they need to read or present it. Further changes return to the same source project.
 
-### 19. This time, just clarify the explanation · ZN52
+### 23. Built on work worth acknowledging · 5HW8
 
-A request can be small: make this page’s title and explanation clearer while preserving the source figure, all twelve values, axes and citation. These are the saved before and after states of that actual operation. The agent reads the current revision, previews the change and saves it. I can then inspect whether the result matches the request.
+HUANDENG builds on OpenSlide. OpenPPTD contributes formula-conversion modules and PptxGenJS supplies PPTX generation. The PPTD approach was inspired by the Kimi Slides ecosystem; that is not a claim about inventing a universal standard. Charts, formulas and functional icons also build on open-source work. The public DNA example comes from PDB 1BNA and Drew and colleagues. Sources and licenses stay with the project; third-party marks do not imply endorsement.
 
-### 20. Stepping back to inspect the whole talk · 9QQW
+Sources and scope: sources/brand/manifest.json; notices/; sources/science/source.json; https://recent.design/ . The GitHub mark identifies the OpenPPTD repository, not an OpenPPTD product logo.
 
-I also need to step back from the current slide. Browse shows the actual pages by section, Outline makes the sequence of headings easier to inspect, and Sections lets me organize those groups. These are views of the same work. This is where I check whether a chapter answers the question that led to it, rather than simply adding more features.
+### 24. Open a page. Try one specific edit. · ECVR
 
-### 21. Taking the workflow to different agents · YZ4T
-
-The workflow does not require one model. The plugin carries authoring guidance and project context. The connector sends requests to the selected project’s shared document service, where direct editor changes also arrive. For this introduction, ChatGPT, Claude Code and DeepSeek Harness made independent attempts. They can share the file and operation model while their editorial judgment is still assessed separately.
-
-### 22. Back to the next lab meeting · X5J6
-
-All of this has to return to the actual talk. The next lab meeting may have different listeners or a different amount of time. I need to choose pages from this material, prepare the notes, and bring the appropriate version.
-
-### 23. Choosing the pages for the next talk · AAD6
-
-Back at a lab meeting, I will not always tell the same version of the story. Main Slides holds the complete page library. A shorter talk can select some of those pages and arrange them differently. These thumbnails come from the real full and brief presentations in this project. A live reference keeps pointing to the canonical page, so I do not have to maintain two diverging copies.
-
-### 24. The same page can support another explanation · 74A2
-
-The same page may serve different listeners. Its Main notes hold the general explanation, while one occurrence in a Presentation can have its own speaker notes. In a lab meeting I might explain the measurement; in this project introduction I use the page to explain evidence preservation. The picture can stay the same while the purpose and spoken explanation change.
-
-### 25. Live and pinned references · 9N3S
-
-Sometimes I want a talk to follow continuing edits; sometimes I need to hold a particular stage. Live uses the current page. Pinned selects a saved named version. The right image preserves the earlier wording-edit stage; the left includes later chart-label refinements. The page identity is shared while the selected content version differs. That is separate from where the page appears in the talk.
-
-### 26. Presenting and sharing from the same project · DDJN
-
-When the talk is ready, I can present it directly or export PPTX for continued editing and PDF for reading. This is the actual export entry in the current project. Live reveals belong to playback; static files carry the final page. Delivery should grow out of the same working project rather than creating yet another source deck to keep track of.
-
-### 27. Next time, I begin with my story · ECVR
-
-I started HUANDENG so that preparing the next lab meeting could begin with what I actually wanted to say. The agent can help organize, build and revise it. The materials, page identity and history stay in the project, and I can return to the same work. This introduction itself grew from my spoken account. What I want to preserve is the human judgment behind the presentation.
+Open this example and select the scientific page. Use its Slide ID to ask for one small change: clarify the explanation while preserving the figure, all twelve values, units and source. Inspect the proposal, then the saved page and history. The person can keep shaping the explanation throughout the work. Intent, evidence and revisions stay available for the next edit.
 
 ## Brief introduction
 
-### 1. Why I started HUANDENG · 9DAA
+### 1. Scientific slides, kept as a working project · 9DAA
 
-I want to begin with why I started HUANDENG. At lab meetings, I wanted AI to help prepare slides while keeping my own judgment visible. I also kept running into another problem: changing two slides could leave me with another complete copy of the deck. Those experiences led me to put the human story, page identity and editable material into one project.
+HUANDENG is an editing workflow for scientific presentations. It brings together a visual editor, a portable working project and access for AI agents. It began with my experience preparing lab meetings: I wanted help with repetitive work while retaining the judgment, original material and a clear place to make the next edit. We will locate a page, preserve its intent and evidence, inspect a change and turn the pages into a talk.
 
-### 2. At lab meetings, people could tell · P72R
+### 2. A small edit should stay a small edit · 2XM9
 
-At lab meetings and other presentations, I noticed how readily people recognized AI-made slides. The tools had different styles, but the slides often tried to cover everything. I found the same problem in my own introduction: there was plenty of material, yet the point was hard to follow. The images here are earlier pages from my own introduction. These pages made me look again at the story I was trying to tell.
+Two frustrations often appeared together in my work. A deck could look complete while missing the point I wanted to make. Changing two pages in fifty could also leave another full copy. I separated those concerns: where does the human intent stay, and which page actually changed? Story keeps the intent available; page identity and history keep the revision attached to the work. The filenames illustrate my use case, not a claim about every AI tool.
 
-Account source: sources/story/USER-STORY.zh-CN.md. The explanation is based on the founder’s personal experience and design judgment.
+### 3. What comes together in HUANDENG? · GX5Z
 
-### 3. Change two of fifty slides. Another full copy? · 2XM9
+The Editor is the workspace for inspection, direct editing and presentation. The folder containing the PPTD entry is the complete project, with pages, assets and history. A plugin supplies authoring and collaboration guidance; a connector binds the assistant to the selected project’s shared writer. People and assistants can therefore work on the same source. The next section starts with that shared page.
 
-The second problem was mundane. Suppose I already had fifty slides and wanted to change two. Some agents would preserve the original by creating another complete deck. With repeated edits, the directory could fill with dated copies. Git suggested a useful principle: record what changed in the unit being edited, rather than preserving every small revision as another full presentation.
+### 4. Start from the page in the editor · FKA9
 
-Account source: sources/story/USER-STORY.zh-CN.md. The explanation is based on the founder’s personal experience and design judgment.
+Locate the shared work: project, pages, assets and files on the left, direct editing in the canvas, and properties, layers and Story on the right. An assistant works on that same page. In this brief talk we next find the original material in Assets and inspect a focused edit.
 
-### 4. So I wanted to tell the story first · KW5P
+### 5. Keep the original material within reach · 35U5
 
-My working hypothesis is that the AI feel comes partly from trying to cover everything without deciding what matters. I would rather speak first, even roughly, and have the agent organize the logic already present in that account. That is what I did for this introduction. The talk and the slides can then grow from the same reasoning, instead of my inventing a speech to fit a deck the AI has already made.
+The asset library keeps the original material available for the next revision. These two DNA views, coordinates and distance table come from one public structure. After import, Assets lets us locate the material and reuse it on a page; the source record and method remain with the project. A new composition should not require inventing a similar-looking figure with different data. We will use this material in the scientific example.
 
-Account source: sources/story/USER-STORY.zh-CN.md. The explanation is based on the founder’s personal experience and design judgment.
+### 6. Local variation in one structure · ZWZJ
 
-### 5. PPTX already contains separate pages · TBGV
+For this talk, change only the explanation. Keep the figure, all twelve values, units and source. The page need not be copied; this talk pins the saved wording-edit stage.
 
-PPTX already separates slides, media and notes inside an Open XML package. I was not inventing the idea of a page. I wanted an accessible project directory as the everyday working surface, with deck.pptd organizing pages and assets. The two formats have different models: renaming a PPTX does not convert it into PPTD. This diagram selects the relevant parts of each structure.
+### 7. Match the saved change to the request · ZN52
 
-Sources and precise attribution: sources/story/FACTS.md ; https://open-slide.dev/docs ; https://learn.microsoft.com/en-us/office/open-xml/presentation/structure-of-a-presentationml-document .
+This is an actual saved edit. The request tightened the title and explanation while retaining the figure, all twelve values, axes and source. The before and after views come from that operation’s real snapshots. The scope can be checked directly. Next we need to identify the page and follow its history, as well as inspect the final appearance.
 
-### 6. First, which page are we talking about? · DHVW
+Saved operation: d2d18509-c72c-48e7-81cc-4251486a522e. Verification: evidence/wording-edit.json.
 
-If a page is the editing unit, I need a reliable way to name it. Slide four may no longer be fourth after a reorder. Position therefore describes the current sequence; the four-character Slide ID identifies the page. The table uses actual sequences from this project. That makes an editing request less ambiguous, even when two talks use the same page in different positions.
+### 8. Identify the page. Then follow its history. · DHVW
 
-### 7. Keeping the history with the page · 2ZQ3
+Position is the current order; after rearranging, slide four can mean a different page. Slide ID preserves the page identity. The mapping here uses this project’s full and brief presentations. Name the stable ID and the intended object when asking an assistant for a change. History follows that same page instead of an ambiguous position number.
 
-Stable identity lets the history stay with the page. I can inspect its operations to see what changed, and save a named version at a meaningful stage for later review or restore. These are real page versions saved in this project. This is my response to the full-deck copy problem: keep working in one project, with the history attached to the page being changed.
+### 9. Keep the pages. Change the selection. · AAD6
 
-### 8. Leaving the reason for the next edit · U8ZQ
+The brief talk selects from the same Main pages while retaining their Slide IDs. These actual pages show the selection relationship. Next we connect assistants to this project and then consider division of work and handoff.
 
-Story keeps the reason for the work available after the conversation ends. At the project level it records the purpose of the talk. On a page it records the point being made and what an edit must preserve. This scientific example keeps the structure, twelve values and source attribution. Story gives both the agent and my future self context; it is not a switch that guarantees judgment.
+### 10. Different assistants, one working project · YZ4T
 
-### 9. The asset library carries the work forward · 35U5
+For the first connection, open Agent setup at the top of the editor, choose the client and follow its setup instructions. Ask the assistant to read the project and selected page, then check the returned project name and Slide ID. Different assistants use native integrations with the same document contract. The plugin carries guidance; the connector binds requests to the explicitly chosen project. The Editor and assistants save through the shared writer. The marks identify supported routes, not models currently online. A real read and task are still needed to verify the selected project and access.
 
-The asset library matters especially for scientific talks. A structure image, another view, source data and attribution will often be used again. If those materials exist only in a conversation or scattered files, the next edit loses its foundation. Here they belong to the project and remain available. The alternate 1BNA view on the right comes from the same coordinates, preserving a connection to the evidence.
+### 11. Divide the work. Make the handoff explicit. · KW5P
 
-Source: https://www.rcsb.org/structure/1BNA ; https://doi.org/10.1073/pnas.78.4.2179 . Source coordinates, calculation and all twelve values: sources/science/.
+Work can be divided by pages, or passed from content drafting to visual refinement. A handoff needs page IDs, the task and evidence-preservation constraints. Different-page saves can proceed independently. A same-page or shared-metadata conflict requires rereading and reconciling the intended change. Activity distinguishes client reports from saved receipts; configuration alone is not online presence. The diagram illustrates task allocation. In a separate controlled test, native DeepSeek Harness and ChatGPT saved distinct pages from the same starting state. A stale same-page proposal was rejected; after rereading, a focused font and color handoff succeeded. Claude Code did not participate in this round’s parallel test. See evidence/collaboration.json.
 
-### 10. Local variation in one structure · ZWZJ
+### 12. Open a page. Try one specific edit. · ECVR
 
-This is a public DNA example. Its figure and twelve values come from the same deposited coordinates. When I change only the explanation, I want the figure, values and source to stay intact. That is also the working agreement I want to carry to different agents.
-
-### 11. Taking the workflow to different agents · YZ4T
-
-The workflow does not require one model. The plugin carries authoring guidance and project context. The connector sends requests to the selected project’s shared document service, where direct editor changes also arrive. For this introduction, ChatGPT, Claude Code and DeepSeek Harness made independent attempts. They can share the file and operation model while their editorial judgment is still assessed separately.
-
-### 12. Choosing the pages for the next talk · AAD6
-
-Back at a lab meeting, I will not always tell the same version of the story. Main Slides holds the complete page library. A shorter talk can select some of those pages and arrange them differently. These thumbnails come from the real full and brief presentations in this project. A live reference keeps pointing to the canonical page, so I do not have to maintain two diverging copies.
-
-### 13. Next time, I begin with my story · ECVR
-
-I started HUANDENG so that preparing the next lab meeting could begin with what I actually wanted to say. The agent can help organize, build and revise it. The materials, page identity and history stay in the project, and I can return to the same work. This introduction itself grew from my spoken account. What I want to preserve is the human judgment behind the presentation.
+Open this example and select the scientific page. Use its Slide ID to ask for one small change: clarify the explanation while preserving the figure, all twelve values, units and source. Inspect the proposal, then the saved page and history. The person can keep shaping the explanation throughout the work. Intent, evidence and revisions stay available for the next edit.

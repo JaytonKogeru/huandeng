@@ -6,11 +6,8 @@ elements:
   - elementId: title
     elementType: text
     bounds:
-      - 55
-      - 221
-      - 850
-      - 82
+        [52,218,850,100]
     role: title
     content:
-      {"text":"一页的身份","fontFamily":"Microsoft YaHei","fontSize":34,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
-notes: "这些困扰让我想把页面作为持续修改的单位。接下来先说清楚项目如何组织、怎样认出同一页，以及如何回到它的历史。"
+      {"text":"做好一页","fontFamily":"Noto Serif SC","fontSize":36,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.25}
+notes: "先从一张页开始：找到编辑位置，留下目的与证据，再完成一次可检查的局部修改。"

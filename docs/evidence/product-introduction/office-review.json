@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "status": "passed_with_documented_scope",
+  "reviewer": "ChatGPT coordinator",
+  "authorAccepted": false,
+  "mainPagesViewedInEightOrderedOfficeSheets": 48,
+  "briefHistoricalPagesViewedAtFullSize": 2,
+  "additionalFullSizeOfficeChecks": [
+    "en Main8 scientific chart and unit spacing",
+    "zh Main9 native table and Office equation",
+    "zh Main16 occurrence Notes quote"
+  ],
+  "allEightExportsStructuralChecksPassed": true,
+  "sourceAndInputCopiesUnchanged": true,
+  "exactChartData": [
+    {
+      "project": "chatgpt-en",
+      "nativeChartContainsExactTwelveValues": true
+    },
+    {
+      "project": "chatgpt-zh",
+      "nativeChartContainsExactTwelveValues": true
+    }
+  ],
+  "historicalBriefChart": "The actual earlier named page uses its recorded image fallback and original type/axis treatment. It is not described as the current native Main chart.",
+  "scopeNote": "Main Office renders and the unique pinned Brief pages were visually inspected. Common live Brief pages reuse the same artwork. Notes and source composition were independently reviewed; author acceptance is pending."
+}

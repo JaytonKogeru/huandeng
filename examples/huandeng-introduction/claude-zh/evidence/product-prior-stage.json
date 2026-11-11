@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "project": "claude-zh",
+  "stage": "Completed native submission preceding the explicitly scoped final factual continuation",
+  "nativeRequestId": "cc50a62b-35ff-4c8b-a6f4-dc59a02deb10",
+  "mainPages": 26,
+  "nativeModel": "claude-opus-5-5",
+  "nativeToolCalls": 51,
+  "sourceHashes": {
+    "deck.pptd": "325af19fad49f7e43bcf117a67774f96946d29863ef424d4a01d0d722801eb2b",
+    ".huandeng/project.json": "6b9eb1aca2b7ee72bbbfe10d3de8898198dface8e2e928ee0ad91600f5497f29",
+    "pages/2723.page": "b86e4403e2cb680f7c7f344a313062e35c4a64131ffbf3f78ac9911b2194de3d",
+    "pages/2UCC.page": "b7ec8fdbe8edf9090043fc32e1cc19f41056282f0b3457dda86e0e224239b542",
+    "pages/3442.page": "acf8b4cfb50a2737bb2c223fd49c84ef46d19102c7e72dfb3667570e0f1c6f1f",
+    "pages/3D9R.page": "ad6e01acb9762d63440b24702ced37f9bb3f7793c5b2558a61e5231ff610b874",
+    "pages/3DUH.page": "4667010bdeebffcf4bfbfdd4f83e064499847d2d7e12f5fc4dfaa230ab7099ee",
+    "pages/6KNX.page": "d66dfa584158fa1bdc8659d02f68d20b5b71e2f5974564f8c45ee5b5cf48cac2",
+    "pages/7K3P.page": "b0d9f6de9804a9d9b2529d0b9424850c839efb891ecc11de017aef8898840958",
+    "pages/85Z6.page": "a9d8a88d54bc0e8e033c8629812d337027e96dfba00cac2582c5278cc70f5aca",
+    "pages/A9FE.page": "f90f9ad50473cc67bd9a01421a09e9a94a90921b40e54ab54d4e06beb8790ae6",
+    "pages/BDTW.page": "2e814d90fac2535503cfe2fd89715412a173d9451c2b6692a9712f92739f4238",
+    "pages/BRHY.page": "40986fc22b765c5ec9b88c98feb4f6d235f9d86c3ac78887c3417bbad149a01c",
+    "pages/D26F.page": "81561530ed1eedda077353e920bf1c143c486269424cd87eec7d66b2a456dcff",
+    "pages/DY5H.page": "c601a32ed95c88ce6e9a82722027917dc4550af5d3cb5d1270785dc97667761e",
+    "pages/FK8W.page": "66017a133fd72b47fe8439bbe2733f22974c7aa2460cf48aca620404d919e314",
+    "pages/FNHB.page": "b26ad19dc2ac94d1da1dafbe7d61519072626a877e8da885b7a81703dd0c8c3a",
+    "pages/GBXR.page": "e56806615d8aa2660fe36b4affad49a873220f11d6ed9861adc52886a6d19c0d",
+    "pages/GZBW.page": "598e15da597aea64fcb8294965c082a3cd7f2207601e0fcdda2879cf64cf1b53",
+    "pages/initial.page": "9e1f07666cb02af420246cc50842106002881090ac871c5fc1eacf4d1b85ae82",
+    "pages/J28N.page": "574b8fe1e97a1e6c3355c1a1282e1b35696f5dac5225e08aef18443206daa83d",
+    "pages/KS6E.page": "16bcad0a1034cde7dcb4287f8df365e650a5434d103375a4cf3e0107807045d3",
+    "pages/MC4X.page": "dd70a0902d63dda8b6e9024107c56f7eaf097355b004ebd713045d7da82f4649",
+    "pages/SSFR.page": "7a61536ef1c0d075d157a018510ccc07a3f239509326803e9232bdff77f476e5",
+    "pages/WDFR.page": "ba59fce178dcafc71e6fe8b593b4b7fb39befec03fb9528f171942284879d403",
+    "pages/XVAD.page": "629a5fd049386ef293d685a799be1c3d8763bf58a01144100fe2aaad1d46046b",
+    "pages/YS6V.page": "8f9209bbe28dc7c3eb3e0dee557cc6b97c461dd79b85dc6c97ed928d1c2bf0e5",
+    "pages/ZWM9.page": "549d9adccd8f763e7f5798aeb293a7def541ddf50e4c6d9d51b712cda53df931",
+    "pages/ZX58.page": "73ba3814ea4f2a8fedadacd185401351fe74dbe899e1d968e2d4ab367f21810a"
+  },
+  "sourceHashesAreHistorical": true,
+  "priorMetadataSha256": "6b9eb1aca2b7ee72bbbfe10d3de8898198dface8e2e928ee0ad91600f5497f29",
+  "mainArtifacts": [
+    {
+      "sha256": "d4306f7c83b9b0b33dca3d4597144b84442fefaa482db3ac9a26d0eaeef11f15",
+      "bytes": 4476432,
+      "actor": "native author",
+      "exportPages": 26,
+      "fileName": "deck.pdf"
+    },
+    {
+      "sha256": "33e0a50055e0e6e2504a7cf31e7a25e5e1332031931932fc7d3ca4883ced48ad",
+      "bytes": 4360189,
+      "actor": "native author",
+      "exportPages": 26,
+      "fileName": "deck.pptx"
+    }
+  ],
+  "powerPoint": {
+    "version": "16.0",
+    "mainPages": 26,
+    "inputSha256": "33e0a50055e0e6e2504a7cf31e7a25e5e1332031931932fc7d3ca4883ced48ad",
+    "sourceAndCopyUnchanged": true,
+    "allFiveContactSheetsViewed": true,
+    "fullPagesViewed": [6, 12, 13, 20, 23],
+    "contactSheets": [
+      {
+        "path": "product-office-prior/contact-1.jpg",
+        "sha256": "64f90d3875509212f70aa8567390050c34317562377c5ace2c86e3ff87f3a308"
+      },
+      {
+        "path": "product-office-prior/contact-2.jpg",
+        "sha256": "7c95302ddef30a5dc6dcd5f54333d56cf43cd02eef84484f3a8e65ffa65bf151"
+      },
+      {
+        "path": "product-office-prior/contact-3.jpg",
+        "sha256": "e543889d843258ae697265a78404440b7fa698939a00ca46ca2c2d1f6548dc8b"
+      },
+      {
+        "path": "product-office-prior/contact-4.jpg",
+        "sha256": "031ae73780388ebdc41ff49e93e7a971e45845eb488e7fce1e64744c40950de1"
+      },
+      {
+        "path": "product-office-prior/contact-5.jpg",
+        "sha256": "ad02bd1cdc9c9e7c2f99df86b520c1b420e688af57cab3208973160aa152102f"
+      }
+    ]
+  },
+  "englishPriorBriefActor": null,
+  "originalInspectionSha256": "2d89de92279d0fd71b87de4567c493bf1b81d7b4018b5aad9336a27a3e037f4a",
+  "originalOfficeReceiptSha256": "3a547005a98cf997cba7c1f2b83147c140ce7d7247d4fe2afe778bfd3aa243a1",
+  "authorAccepted": false
+}

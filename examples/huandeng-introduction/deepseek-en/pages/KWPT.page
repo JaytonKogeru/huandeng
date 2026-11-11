@@ -1,0 +1,191 @@
+background:
+  type: solid
+  color: "#F7F5F0"
+elements:
+  - elementId: p10-eyebrow
+    elementType: text
+    bounds:
+      - 64
+      - 32
+      - 300
+      - 14
+    content:
+      text: 03 / WORKED EXAMPLE
+      fontFamily: Consolas
+      fontSize: 10
+      color: "#B43C26"
+      letterSpacing: 1.6
+      align:
+        - left
+        - top
+  - elementId: p10-title
+    elementType: text
+    role: title
+    bounds:
+      - 64
+      - 52
+      - 760
+      - 42
+    content:
+      text: A page can carry real evidence.
+      fontFamily: Georgia
+      fontSize: 30
+      color: "#17181A"
+      lineHeight: 1.1
+      align:
+        - left
+        - top
+  - elementId: p10-sub
+    elementType: text
+    bounds:
+      - 64
+      - 94
+      - 760
+      - 20
+    content:
+      text: One public structure, one measured plot, one editable page.
+      fontFamily: Segoe UI
+      fontSize: 13
+      color: "#625E55"
+      lineHeight: 1.3
+      align:
+        - left
+        - top
+  - elementId: p10-chart
+    elementType: image
+    bounds:
+      - 64
+      - 126
+      - 560
+      - 280
+    src: media/imported/a36d62e395822be26d250ca525aa072402aa68bfce609b3464f84762541bff62.png
+    sourceName: paired-c1-distances-en.png
+    fit:
+      mode: contain
+  - elementId: p10-chart-frame
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 64
+      - 126
+      - 560
+      - 280
+    border:
+      width: 1
+      color: "#D9D4C8"
+      style: solid
+  - elementId: p10-duplex
+    elementType: image
+    bounds:
+      - 660
+      - 126
+      - 220
+      - 220
+    src: media/imported/ff6d1434a44440fba124ccad7dfa30efa01e8c400094d4453d17d502345c1e2c.png
+    sourceName: dna-duplex-side.png
+    fit:
+      mode: contain
+  - elementId: p10-label
+    elementType: text
+    bounds:
+      - 660
+      - 100
+      - 220
+      - 16
+    content:
+      text: PDB 1BNA
+      fontFamily: Consolas
+      fontSize: 9.5
+      color: "#B43C26"
+      letterSpacing: 1.4
+      align:
+        - left
+        - top
+  - elementId: p10-source
+    elementType: text
+    bounds:
+      - 660
+      - 356
+      - 220
+      - 50
+    content:
+      text: |-
+        RCSB PDB 1BNA
+        Drew et al., PNAS 1981
+      fontFamily: Consolas
+      fontSize: 9.5
+      color: "#918B7E"
+      lineHeight: 1.5
+      align:
+        - left
+        - top
+  - elementId: p10-body
+    elementType: text
+    bounds:
+        [64,408,620,44]
+    content:
+      text: "C1′–C1′ distances at twelve paired positions in the DNA dodecamer. The plot is an original measured figure, stored once in the asset library."
+      fontFamily: Segoe UI
+      fontSize: 14
+      color: "#3A3833"
+      lineHeight: 1.55
+      align:
+        - left
+        - top
+  - elementId: p10-caption
+    elementType: text
+    bounds:
+        [64,462,640,40]
+    content:
+      text: "One structure, not independent replicates. Values from the deposited coordinates."
+      fontFamily: Consolas
+      fontSize: 10.5
+      color: "#918B7E"
+      lineHeight: 1.5
+      align:
+        - left
+        - top
+  - elementId: p10-mark
+    elementType: image
+    bounds:
+      - 56
+      - 508
+      - 12
+      - 12
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    fit:
+      mode: contain
+  - elementId: p10-footer
+    elementType: text
+    bounds:
+      - 74
+      - 508
+      - 300
+      - 12
+    content:
+      text: HUANDENG / WORKED EXAMPLE
+      fontFamily: Consolas
+      fontSize: 9
+      color: "#918B7E"
+      letterSpacing: 1.1
+      align:
+        - left
+        - top
+  - elementId: p10-folio
+    elementType: text
+    bounds:
+      - 860
+      - 512
+      - 36
+      - 14
+    content:
+      text: "10"
+      field: main-position
+      fontFamily: Consolas
+      fontSize: 9.5
+      color: "#A29C8F"
+      align:
+        - right
+        - top
+notes: "This is the scientific worked example: the Dickerson–Drew DNA dodecamer, PDB 1BNA. The plot measures C1′–C1′ distances at twelve paired positions within one deposited structure. It is not an experiment run by HUANDENG, not independent replicates, and not a set of hydrogen-bond lengths. The chart is an original measured figure kept in the asset library; the structure is drawn from the same coordinates. On the next page, this page's Story says what an edit must preserve."

@@ -6,13 +6,10 @@ elements:
   - elementId: title
     elementType: text
     bounds:
-      - 44
-      - 35
-      - 870
-      - 67
+        [42,34,880,76]
     role: title
     content:
-      {"text":"最后，从这份项目去演讲和交付","fontFamily":"Microsoft YaHei","fontSize":28,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
+      {"text":"从工作项目到现场和交付文件","fontFamily":"Noto Serif SC","fontSize":28,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
   - elementId: present-icon
     elementType: icon
     iconName: fas:play
@@ -32,18 +29,10 @@ elements:
       - 354
       - 32
     content:
-      text: 按点击讲述
-      fontFamily: Microsoft YaHei
-      fontSize: 21
-      color: "#263C34"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
+      {"text":"按点击讲述","fontFamily":"Noto Sans SC","fontSize":21,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
   - elementId: present-menu
     elementType: image
-    src: "media/imported/f2fc3977c5d34bf2860fb7bc3a6ffd3df912a6a7d0f30bab2f58e5a41902d0da.png"
+    src: "media/imported/ce8070996ec0b318d78b8e45f849283cbca6026ab9c8175a97da85e6b95c5ddc.png"
     sourceName: "present-current.png"
     alt: "present-current.png"
     bounds:
@@ -68,18 +57,10 @@ elements:
     bounds:
         [407,131,507,32]
     content:
-      text: PPTX 与 PDF
-      fontFamily: Microsoft YaHei
-      fontSize: 21
-      color: "#263C34"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
+      {"text":"PPTX 与 PDF","fontFamily":"Noto Sans SC","fontSize":21,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
   - elementId: export-menu
     elementType: image
-    src: "media/imported/81adcff8c31dced146e9c92d7efaa1381e1b4f930f8b11d2edd358662ece748d.png"
+    src: "media/imported/d4b57fa12dec15a02948a905109f1f73245f644d6c6cc4c141c9693140419190.png"
     sourceName: "export-current.png"
     alt: "export-current.png"
     bounds:
@@ -96,15 +77,7 @@ elements:
       - 870
       - 40
     content:
-      text: 现场播放可以逐步展开；PPTX / PDF 交付静态页面。
-      fontFamily: Microsoft YaHei
-      fontSize: 17
-      color: "#66756B"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
+      {"text":"现场播放可以逐步展开；PPTX / PDF 交付静态页面。","fontFamily":"Noto Sans SC","fontSize":17,"color":"#66756B","bold":false,"align":["left","top"],"lineHeight":1.3}
   - elementId: brand-small
     elementType: image
     src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
@@ -130,15 +103,7 @@ elements:
       - 130
       - 17
     content:
-      text: HUANDENG
-      fontFamily: Microsoft YaHei
-      fontSize: 10
-      color: "#66756B"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
+      {"text":"HUANDENG","fontFamily":"Noto Sans SC","fontSize":10,"color":"#66756B","bold":false,"align":["left","top"],"lineHeight":1.3}
   - elementId: position
     elementType: text
     bounds:
@@ -147,14 +112,5 @@ elements:
       - 30
       - 18
     content:
-      text: ""
-      fontFamily: Microsoft YaHei
-      fontSize: 10
-      color: "#66756B"
-      bold: false
-      align:
-        - right
-        - top
-      lineHeight: 1.3
-      field: main-position
-notes: "准备好之后，可以直接放映，也可以导出给别人继续使用的PPTX和方便阅读的PDF。这里是当前项目的真实导出入口。现场逐步展开属于播放逻辑，静态文件承载最终页面。对我来说，交付也应该沿用这一份项目，而不是为了导出又创建一个不知道以后要改哪份的源稿。"
+      {"text":"","fontFamily":"Noto Sans SC","fontSize":10,"color":"#66756B","bold":false,"align":["right","top"],"lineHeight":1.3,"field":"main-position"}
+notes: "准备好之后，从同一份项目放映或导出。现场逐次揭示属于播放逻辑；PPTX和PDF承载静态页面。交付给需要继续编辑的人时，提供整个PPTD项目；给查看或演讲的人，可以提供合适的导出文件。导出之后仍回到同一份源项目继续修改。"

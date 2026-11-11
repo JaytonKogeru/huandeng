@@ -1,46 +1,43 @@
-# HUANDENG · Claude Code · 中文故事版
+# HUANDENG · Claude Code · Chinese product introduction
 
-当前候选由原生客户端独立完成页面、叙事、Story 与 Notes。此 README 和讲稿索引由协调者整理；页面内容与美术未由协调者改写。
+The native author completed this revision in the original session. The coordinator assembled this index, exact saved Notes and read-only evidence; it did not rewrite authored pages, Story or metadata.
 
-[PPTD 项目](deck.pptd) · [PDF](Exports/deck.pdf) · [PowerPoint](Exports/deck.pptx) · [实际 Notes 讲稿](speaker-notes.md) · [Native trial](evidence/native-trial.json) · [QA](evidence/qa.json)
+[PPTD project](deck.pptd) · [Main PDF](Exports/deck.pdf) · [Main PowerPoint](Exports/deck.pptx) · [9-page Brief PDF](Exports/brief.pdf) · [9-page Brief PowerPoint](Exports/brief.pptx) · [Saved speaker notes](speaker-notes.md)
 
-**Main Slides: 20.** 组会简版: 7.
+**Native-run boundary:** the final native result has native_completed=true and exit code 0, but the runner is needs_attention. A PowerShell request to append DELIVERY-R2.md in the author working directory was denied; the author reported that interactive approval was unavailable. The two page repairs and all four final exports were independently verified. No permission/account change, denied-file rewrite or whole-task retry was performed.
 
-**Native model:** `claude-opus-5-5`. native assistant message model metadata.
+**Main: 26 pages. Full Presentation: 26. Brief: 9 pages, four occurrence Notes, no pins.** This is a preserved native candidate, not owner acceptance.
 
-## 当前验证
+## What changed and who did it
 
-- Native turn: completed; exit code 0; native completion confirmed. 1 recorded turn(s).
-- PDF / PPTX: 20 / 20 pages; export reports match the reviewed source revisions.
-- PowerPoint 16.0: 20/20 pages opened read-only and rendered at 1920×1080.
-- Native PowerPoint objects: 20 Notes pages, 2 tables, 1 chart objects, 17 media parts.
-- The whole Office-rendered sequence was reviewed in contact sheets; additional full-page checks and observations are recorded in [the visual review](evidence/office-visual-review.json).
-- No blocking Office layout defect was observed within that stated review scope. Narrative and aesthetic acceptance remain with the owner.
+The preceding completed native task made 51 tool calls. A separately scoped factual continuation made 9 calls in the same session, preserving account/model and the existing design. It corrected the screenshot-measurement and Story-guarantee claims in visible text, relevant Notes and Story. This was a content-correctness gate, not a taste-based rerun or first-pass approval.
 
-## Notes 与场次
+The Chinese continuation changes only the corresponding page-5/page-6 statements and associated Notes/Story. The 26-page layout, original evidence and dedicated verified collaboration page remain intact.
 
-讲稿文件逐字提取原生作者保存的 Main Notes，并按场次列出实际解析的 occurrence Notes。没有给短版另编讲稿，也没有把沿用的 Main Notes 说成独立场次讲稿。
+The native author exported all four final Main/Brief PDF/PPTX artifacts. Their reports and resolved Notes match the saved source. The coordinator only standardized any title-based Brief filenames without changing native bytes. Earlier export provenance is retained separately; the preceding English Brief had been mechanically exported by the coordinator, and is not confused with these final native artifacts.
 
-- 组会简版 (`lab-brief`): 7 pages; 2 explicit occurrence Notes.
+## Verification scope and retained limits
 
-## 来源与原生记录
+The preceding complete 26-page deck was actually rendered read-only in PowerPoint 16.0 and reviewed in full contact sheets plus selected full pages. After this factual continuation, only the changed pages were visually rechecked and targeted current Office renders were inspected. Unchanged pages are linked by identical source hashes to the prior evidence; this is not a claim that every page of the new PPTX was rendered again.
 
-- [User story excerpt](sources/story/USER-STORY.zh-CN.md) and [verified technical facts](sources/story/FACTS.md).
-- [Native author's handoff](evidence/native-author-report.md) preserves the current native author report or a labelled excerpt of its visible final response. Its at-the-time Office limitation is superseded by the coordinator verification above.
-- [Native trial evidence](evidence/native-trial.json) records the real model evidence, tool failures, connection recovery where applicable, and the separation between native completion and delivery completion.
-- Keep the entire project directory when moving it; the PPTD entry references its pages and assets.
+The Chinese scientific page was independently checked in actual Office before this factual pass and remains source-identical. It does not have the English manual pair-label alignment problem. No new blocking overflow or missing content was found on the affected current pages within the documented scope.
 
-## 本轮内容审计的保留项
+All twelve native chart values in final Main and Brief match the public CSV exactly. Main PPTX retains one native chart and eight native tables. Current Brief PDFs and all nine resolved Notes were verified; Main-numbered footers remain in the Brief. No new complete Brief Office pass is claimed.
 
-技术导出完成不代表叙事全部通过。以下问题保留在原生候选中；协调者没有替原生作者改写页面，也没有要求美术返工。
+The language pair now carries corresponding core product claims, evidence, use steps and boundaries. Chinese uses an additional dedicated collaboration page; English covers the same verified facts in the existing agents explanation and Notes. A real DSH + ChatGPT fixture is evidence of coordinated revision-checked saves, not a native Claude collaboration test, online presence, section locks or automatic scheduling. [Independent correspondence](evidence/product-pair-review.json).
 
-- 第9页把PPTD说成将PPTX目录摊开、替换入口，未保持两种文件模型的技术区别。
-- 第20页又放入用户要求暂不进入slides的素材库优化，以及尚未形成方案的视频/图片方向。
+## Evidence and use
 
-[Independent content review](evidence/content-review.json) · [Saved narrative and Notes data](evidence/narrative.json).
+[Current native trial](evidence/product-trial.json) · [Current QA](evidence/product-qa.json) · [Independent review](evidence/product-review.json) · [Prior full-sequence evidence](evidence/product-prior-stage.json) · [Brief provenance](evidence/product-brief.json) · [Native values](evidence/product-science-check.json) · [Image use](evidence/product-assets.json) · [Visible final author report](evidence/product-native-author-report.md)
 
-## 短版导出
+Keep the whole directory when moving the project. deck.pptd is the entry; pages, media and metadata belong together. [Sources and notices](SOURCES.md), [public input manifest](MEDIA-INPUTS.json) and [technical facts](sources/story/FACTS.md) preserve provenance. The 1BNA example measures twelve positions of one public structure, not experimental replicates or a product benchmark.
 
-[PDF](Exports/brief.pdf) · [PowerPoint](Exports/brief.pptx) — 7 pages. 由协调者对原生作者已保存的Presentation机械导出；页面/顺序/Notes未代写。Main的原生PDF/PPTX字节未改变。
+Existing unprefixed evidence describes older submissions. Its counts/hashes remain historical, not claims about current exports. Archived before-product README/Notes preserve exact bytes and retain the original project-root relative-link origin.
 
-[Short export evidence](evidence/short-exports.json).
+![Current native PDF cover](evidence/product-preview.png)
+
+## Native handoff clarification
+
+The handoff calls the preceding canonical Brief seven pages. The retained prior artifact and saved sequence were already nine pages after earlier filename normalization. Final Main26/Brief9 counts and all current reports are verified from the files, not inferred from that sentence.
+
+Existing miniature page previews retain their original snapshot bytes; only the actual affected page bodies were refreshed in this wording-only maintenance.

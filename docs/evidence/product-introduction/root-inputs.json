@@ -1,0 +1,776 @@
+{
+  "schemaVersion": 1,
+  "scope": "Independent pre-export source/render and resolved Brief Notes review",
+  "capturedAt": "2026-11-11T01:46:26.948702+00:00",
+  "authorAccepted": false,
+  "editions": [
+    {
+      "language": "en",
+      "deckId": "ccf319b7-a686-4793-84cb-2ccb018336bf",
+      "manifestRevision": "sha256:e950bcd061b620e75122c6a790d9925149f53c0eced76746f54a33242ae58cc3",
+      "metadataRevision": "sha256:f2e7f943e13bbf9ac4f416ac4376c3078558fce9a3ea9bbf0808ee64b05a5b44",
+      "entrySha256": "e950bcd061b620e75122c6a790d9925149f53c0eced76746f54a33242ae58cc3",
+      "metadataSourceSha256": "f2e7f943e13bbf9ac4f416ac4376c3078558fce9a3ea9bbf0808ee64b05a5b44",
+      "pageCount": 24,
+      "briefCount": 12,
+      "pages": [
+        {
+          "mainPosition": 1,
+          "sourceIndex": 0,
+          "pageId": "90353b2a-6f7b-4ee5-8a8b-10bceb538190",
+          "shortCode": "9DAA",
+          "source": "examples/huandeng-introduction/chatgpt-en/pages/9DAA.page",
+          "sourceSha256": "ccf333b334fb8b45ce883048e0b2518d16b16cbbe9b2e1632df5dd9ee4adcb49",
+          "pageRevision": "sha256:ccf333b334fb8b45ce883048e0b2518d16b16cbbe9b2e1632df5dd9ee4adcb49",
+          "renderRevision": "sha256:bf265f78346fcfc5e4a5d94038f579658f05e565cb1a92d64ecc2c305ed40953",
+          "renderSha256": "d653eff47aa9fb2c356b67f53c6d7d0f15d7c7aa936cedbe42045588e5c884dc",
+          "elements": {
+            "shape": 2,
+            "image": 2,
+            "text": 4
+          }
+        },
+        {
+          "mainPosition": 2,
+          "sourceIndex": 21,
+          "pageId": "4ec264b7-018d-449c-8c8b-d9aede33a840",
+          "shortCode": "2XM9",
+          "source": "examples/huandeng-introduction/chatgpt-en/pages/2XM9.page",
+          "sourceSha256": "dae99f53a3ec8e84ca981f1ed4576b4438cfe751412e528a03c3bf5148dea9c6",
+          "pageRevision": "sha256:dae99f53a3ec8e84ca981f1ed4576b4438cfe751412e528a03c3bf5148dea9c6",
+          "renderRevision": "sha256:d21254c58e55743438dd42ce27d34b8b7531ba04dc8fb35141cb6bd0f13ec185",
+          "renderSha256": "33d0418719d8cd7771f1634b73b20aa16c216ea8457e054de63462cbbb5ab69c",
+          "elements": {
+            "text": 7,
+            "image": 1,
+            "icon": 2,
+            "line": 1
+          }
+        },
+        {
+          "mainPosition": 3,
+          "sourceIndex": 22,
+          "pageId": "1ba18ad8-0701-4de6-83f5-555b949293d7",
+          "shortCode": "GX5Z",
+          "source": "examples/huandeng-introduction/chatgpt-en/pages/GX5Z.page",
+          "sourceSha256": "41adb0b66af6fd5917ead62cde08b2e581b929915065d5fe6d7d99ead71a4f29",
+          "pageRevision": "sha256:41adb0b66af6fd5917ead62cde08b2e581b929915065d5fe6d7d99ead71a4f29",
+          "renderRevision": "sha256:deb6c8d3cc35a91af28a60b58d87411b338e1da2a4e62de2b9904e5e7f07a698",
+          "renderSha256": "fb1b2bc588a8df1937dc335f322c412e20b2b836eb7742be45b666888810de92",
+          "elements": {
+            "text": 5,
+            "image": 3
+          }
+        },
+        {
+          "mainPosition": 4,
+          "sourceIndex": 2,
+          "pageId": "6b9fbac0-772c-435c-bce1-9cad0004af65",
+          "shortCode": "9VGD",
+          "source": "examples/huandeng-introduction/chatgpt-en/pages/9VGD.page",
+          "sourceSha256": "2e40bb0e8daa1cd36f55719f864e79485b4a00b59d20966d81da35c688039809",
+          "pageRevision": "sha256:2e40bb0e8daa1cd36f55719f864e79485b4a00b59d20966d81da35c688039809",
+          "renderRevision": "sha256:59003a7a6d660687dbec9518d943a4896f9a7406f989d5b6af36bbf3ec2bb1f0",
+          "renderSha256": "16b2ca0f2e2aab37d2e3dc0c0121b51461778adee1eb84b6d2c68484349095ac",
+          "elements": {
+            "text": 1
+          }
+        },
+        {
+          "mainPosition": 5,
+          "sourceIndex": 5,
+          "pageId": "7d7d42a0-0db7-4d33-9b3f-5e1035097b50",
+          "shortCode": "FKA9",
+          "source": "examples/huandeng-introduction/chatgpt-en/pages/FKA9.page",
+          "sourceSha256": "12137ca549637d699431188cfc6a6eaebbc3b6a8e1e995fb74117d33fb97e3ff",
+          "pageRevision": "sha256:12137ca549637d699431188cfc6a6eaebbc3b6a8e1e995fb74117d33fb97e3ff",
+          "renderRevision": "sha256:619e3073134371b2459d3074bcf10aa45e39203a629d73ff86a9ce7bbf90af83",
+          "renderSha256": "16dba24060f059d665d4427635db27acdd0b6d4ee14ffbac4f5aea1cc7ee0c3b",
+          "elements": {
+            "text": 8,
+            "image": 2,
+            "shape": 3
+          }
+        },
+        {
+          "mainPosition": 6,
+          "sourceIndex": 10,
+          "pageId": "4a066483-9a11-450c-be15-c0be33d52989",
+          "shortCode": "U8ZQ",
+          "source": "examples/huandeng-introduction/chatgpt-en/pages/U8ZQ.page",
+          "sourceSha256": "68edbf9a98ed9c5800bf106810626966d434e30f57957431fc53f558c664220d",
+          "pageRevision": "sha256:68edbf9a98ed9c5800bf106810626966d434e30f57957431fc53f558c664220d",
+          "renderRevision": "sha256:3cbf80c4cd30e332e60a21440e13d926b9ef8ac7346df04512fefccee0651b8c",
+          "renderSha256": "985e5e191721c532cbfdca61da87491973d187ccbee51ab829db856d308e36e3",
+          "elements": {
+            "text": 5,
+            "image": 2
+          }
+        },
+        {
+          "mainPosition": 7,
+          "sourceIndex": 6,
+          "pageId": "95189956-cdd7-4ad9-88c8-cf28a204bb68",
+          "shortCode": "35U5",
+          "source": "examples/huandeng-introduction/chatgpt-en/pages/35U5.page",
+          "sourceSha256": "fbb16e934f23bbf309e289114d42f770f61a0792f29c6fce42d9e118c2cfbc07",
+          "pageRevision": "sha256:fbb16e934f23bbf309e289114d42f770f61a0792f29c6fce42d9e118c2cfbc07",
+          "renderRevision": "sha256:a06edef427c0828ece2e720d578f7c5e94f847e44b2748cfb280758967618ec3",
+          "renderSha256": "40926da8c8366e79c1da02d2c7e8014a0f1c42490c012400764ce96f70e7c41e",
+          "elements": {
+            "text": 4,
+            "image": 4
+          }
+        },
+        {
+          "mainPosition": 8,
+          "sourceIndex": 1,
+          "pageId": "c4b12919-5876-4acb-b63f-6a7493b54b37",
+          "shortCode": "ZWZJ",
+          "source": "examples/huandeng-introduction/chatgpt-en/pages/ZWZJ.page",
+          "sourceSha256": "28c64e8e9f101003527f42a0e9c23f1f7b376b91b23b0865eef4cfe084a9d8ad",
+          "pageRevision": "sha256:28c64e8e9f101003527f42a0e9c23f1f7b376b91b23b0865eef4cfe084a9d8ad",
+          "renderRevision": "sha256:86ded6cd13b54235f2e08da03e98a6907f404a1192764d54ea63f64372598321",
+          "renderSha256": "d7f8feba5f9ff8f5b719f4055b01d5473155c1eb3efcfb5d3b2c67dcd5f58dbe",
+          "elements": {
+            "text": 8,
+            "image": 1,
+            "chart": 1
+          }
+        },
+        {
+          "mainPosition": 9,
+          "sourceIndex": 3,
+          "pageId": "ca1eec7e-61bd-41ac-b6ab-e000d06797be",
+          "shortCode": "XF8A",
+          "source": "examples/huandeng-introduction/chatgpt-en/pages/XF8A.page",
+          "sourceSha256": "31226971f005900272ae478387aab51ddef8e170397dc7bcdf5c890a70481a72",
+          "pageRevision": "sha256:31226971f005900272ae478387aab51ddef8e170397dc7bcdf5c890a70481a72",
+          "renderRevision": "sha256:363882ee331ee60130de5a7c9bc8b49ec6b5993fe9a33c6e979f08fb7c695db7",
+          "renderSha256": "2adb2e40aa59a52f3221667fa38e3fe4107fb499fcb6aecf27352b9c29d5a866",
+          "elements": {
+            "text": 6,
+            "image": 2,
+            "table": 1
+          }
+        },
+        {
+          "mainPosition": 10,
+          "sourceIndex": 4,
+          "pageId": "3f5561d8-477e-4954-bee2-9877c8cddc69",
+          "shortCode": "ZN52",
+          "source": "examples/huandeng-introduction/chatgpt-en/pages/ZN52.page",
+          "sourceSha256": "a42c7b6d7796aeb52e16a0829232c387250d06c94daaf2050b395b5c8b660b7e",
+          "pageRevision": "sha256:a42c7b6d7796aeb52e16a0829232c387250d06c94daaf2050b395b5c8b660b7e",
+          "renderRevision": "sha256:370fb31c38fac099b5b4c04f3c6f635b8739f0a3d2ada9f2d5927b4cba561c0e",
+          "renderSha256": "96c57f08ebd46a8b23a15e2a97a57eb697a753e40edc1d10b8455857e466ad9e",
+          "elements": {
+            "text": 7,
+            "image": 3,
+            "icon": 1
+          }
+        },
+        {
+          "mainPosition": 11,
+          "sourceIndex": 13,
+          "pageId": "dc5bfe5f-326a-4b28-8536-56e51ea4397e",
+          "shortCode": "DHVW",
+          "source": "examples/huandeng-introduction/chatgpt-en/pages/DHVW.page",
+          "sourceSha256": "b001c3591ebd96189b07f3d83c0c1f994bffb1c43a4d0f4f7517e1dbe89702b4",
+          "pageRevision": "sha256:b001c3591ebd96189b07f3d83c0c1f994bffb1c43a4d0f4f7517e1dbe89702b4",
+          "renderRevision": "sha256:e249c6154995a5e9e9e1c7a5c32d76c404c256b1c14bb7b953dc507353a072ca",
+          "renderSha256": "ff539df7ee63ab58de1ba5ce681749e514130d35fa8604db48f28bfc0fbf7b7b",
+          "elements": {
+            "text": 5,
+            "image": 2,
+            "table": 1
+          }
+        },
+        {
+          "mainPosition": 12,
+          "sourceIndex": 9,
+          "pageId": "6a3aec16-2347-40fe-856d-df36c1f58509",
+          "shortCode": "2ZQ3",
+          "source": "examples/huandeng-introduction/chatgpt-en/pages/2ZQ3.page",
+          "sourceSha256": "de0a7cca9c31938240f956c5a0ebcec5ed390c72f460478429da109e6a2cbbc9",
+          "pageRevision": "sha256:de0a7cca9c31938240f956c5a0ebcec5ed390c72f460478429da109e6a2cbbc9",
+          "renderRevision": "sha256:5bf4039a428ecbae8155883dafc59fc948aa554cea2d32f5598b5085b1f1f0e1",
+          "renderSha256": "e243625acd2cdf4a3ca24b1ede56a5d56bf01e032c9318342731f4a3e1a38d40",
+          "elements": {
+            "text": 6,
+            "image": 3
+          }
+        },
+        {
+          "mainPosition": 13,
+          "sourceIndex": 7,
+          "pageId": "d497fb11-7906-414e-a529-0d97680bce51",
+          "shortCode": "7E4T",
+          "source": "examples/huandeng-introduction/chatgpt-en/pages/7E4T.page",
+          "sourceSha256": "7050333392bdeff72cc99e6496c62d255a2da6c4b5ef38aa4547abaaeaffd79e",
+          "pageRevision": "sha256:7050333392bdeff72cc99e6496c62d255a2da6c4b5ef38aa4547abaaeaffd79e",
+          "renderRevision": "sha256:c900ff69c84b8e814548c646afc9ecf51253cb4ac5dff0e4c65e764c7729bf85",
+          "renderSha256": "ab82ab2f09e8611fc0e015acc2845460356cb5073111237d39fdfa30c9b2e66c",
+          "elements": {
+            "text": 1
+          }
+        },
+        {
+          "mainPosition": 14,
+          "sourceIndex": 25,
+          "pageId": "62d5734d-2fe5-441c-a50a-abaa95145b56",
+          "shortCode": "9QQW",
+          "source": "examples/huandeng-introduction/chatgpt-en/pages/9QQW.page",
+          "sourceSha256": "54dd4317b94e08540adbd68240ef9ba1d35234a0e848157a31837cb009b2d949",
+          "pageRevision": "sha256:54dd4317b94e08540adbd68240ef9ba1d35234a0e848157a31837cb009b2d949",
+          "renderRevision": "sha256:8bf9961afe95a522df72f8185e28eed13ae40aba3243ce95cfe49a28367ec51e",
+          "renderSha256": "81b9d22420485449c308bd0523bffec3250cc534a3bba19ccbe3429a687a04ec",
+          "elements": {
+            "text": 7,
+            "image": 4
+          }
+        },
+        {
+          "mainPosition": 15,
+          "sourceIndex": 12,
+          "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7",
+          "shortCode": "AAD6",
+          "source": "examples/huandeng-introduction/chatgpt-en/pages/AAD6.page",
+          "sourceSha256": "2394ac3b9ab1a2286a4b8ac3e32ef13f772ebe45e5f0c8817360ed1e85b656f4",
+          "pageRevision": "sha256:2394ac3b9ab1a2286a4b8ac3e32ef13f772ebe45e5f0c8817360ed1e85b656f4",
+          "renderRevision": "sha256:2fb6f4abb209ce558eb48fbffd5f9255ab15318698525ac652e15a1556ca3fef",
+          "renderSha256": "5fd524ab010ec328287776b3af9867df924afd5ff9c5b394e72c6d0708638b09",
+          "elements": {
+            "text": 7,
+            "image": 8,
+            "line": 1
+          }
+        },
+        {
+          "mainPosition": 16,
+          "sourceIndex": 26,
+          "pageId": "095ba6fb-14f6-42b1-815a-7970ac214058",
+          "shortCode": "74A2",
+          "source": "examples/huandeng-introduction/chatgpt-en/pages/74A2.page",
+          "sourceSha256": "70abf99632c11ee834a654520f9d87f1119fa834f7a71c7e7f72fc4e171a53b3",
+          "pageRevision": "sha256:70abf99632c11ee834a654520f9d87f1119fa834f7a71c7e7f72fc4e171a53b3",
+          "renderRevision": "sha256:abbef462f758403038ecee070fbcfb0e77a13f6f81f40db013568af016041e64",
+          "renderSha256": "a093cc3c16d74293d1dd8af8d9ddbd8b517892e0f44e717d04800a8ddccde247",
+          "elements": {
+            "text": 5,
+            "image": 2
+          }
+        },
+        {
+          "mainPosition": 17,
+          "sourceIndex": 14,
+          "pageId": "80c650ec-8f56-403d-8f44-d190a84ed4b4",
+          "shortCode": "9N3S",
+          "source": "examples/huandeng-introduction/chatgpt-en/pages/9N3S.page",
+          "sourceSha256": "d4ceb6c5fc15e8a0c5216a284b820e7a16fc3c2b28789fb5e6e55dd23cc5da90",
+          "pageRevision": "sha256:d4ceb6c5fc15e8a0c5216a284b820e7a16fc3c2b28789fb5e6e55dd23cc5da90",
+          "renderRevision": "sha256:3277bb616bd250f64d06d4b66e3a146ac9680162cffda087a136bbe55dfd81d0",
+          "renderSha256": "29cf57923a63961a7f1dce113bec3c494a81436659101f49ea316457068311ff",
+          "elements": {
+            "text": 7,
+            "image": 3
+          }
+        },
+        {
+          "mainPosition": 18,
+          "sourceIndex": 16,
+          "pageId": "8050a155-9c2b-4cf5-b643-e9406b9b2b1c",
+          "shortCode": "BHPP",
+          "source": "examples/huandeng-introduction/chatgpt-en/pages/BHPP.page",
+          "sourceSha256": "724314910fd5bb6e2f848502da2154f652e545e9c7cb1cfcfa9a9d1501fc5181",
+          "pageRevision": "sha256:724314910fd5bb6e2f848502da2154f652e545e9c7cb1cfcfa9a9d1501fc5181",
+          "renderRevision": "sha256:2185b31b2e663fe9f9d1bb030eb84fee6bdf8dec06b7b8981a1f9985c995942c",
+          "renderSha256": "1a6e12147c74638f1aeb97459ab0b6b0611f7d103fea808d00ae6f167e1958b9",
+          "elements": {
+            "text": 5,
+            "image": 1,
+            "icon": 1,
+            "table": 1
+          }
+        },
+        {
+          "mainPosition": 19,
+          "sourceIndex": 11,
+          "pageId": "4a398dd0-ad74-4a36-b65e-6068ffe817a8",
+          "shortCode": "X5J6",
+          "source": "examples/huandeng-introduction/chatgpt-en/pages/X5J6.page",
+          "sourceSha256": "a0c6e074f29806fb2167723488065cc71eea0a25942615a3c1c4cc5bab8fe428",
+          "pageRevision": "sha256:a0c6e074f29806fb2167723488065cc71eea0a25942615a3c1c4cc5bab8fe428",
+          "renderRevision": "sha256:a58cf4cd4d67a955a01e7904729805999d4fdc92fef4788d1fc663d64dfb3c97",
+          "renderSha256": "7f0b1de500c703c947716af52890ea1a46b834c1411b4d34f0d498f204d415fa",
+          "elements": {
+            "text": 1
+          }
+        },
+        {
+          "mainPosition": 20,
+          "sourceIndex": 8,
+          "pageId": "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6",
+          "shortCode": "YZ4T",
+          "source": "examples/huandeng-introduction/chatgpt-en/pages/YZ4T.page",
+          "sourceSha256": "5ee01925e5150d0c2f2fc1967093d8cb7bfb5b98a0eeb96d620980ff7a9ff86c",
+          "pageRevision": "sha256:5ee01925e5150d0c2f2fc1967093d8cb7bfb5b98a0eeb96d620980ff7a9ff86c",
+          "renderRevision": "sha256:ba2b0ad944ca01a382d44c5041a024310c9cca87bae8abeaeaf50ee2a71d73f6",
+          "renderSha256": "dfab107f1922ab4b1db6f66b0f15d7cdee059adbbcecca027c022c938e2f0fa7",
+          "elements": {
+            "text": 9,
+            "image": 5,
+            "line": 1,
+            "shape": 1
+          }
+        },
+        {
+          "mainPosition": 21,
+          "sourceIndex": 23,
+          "pageId": "e0b400eb-ddc1-4c42-af48-d420785b1d8f",
+          "shortCode": "KW5P",
+          "source": "examples/huandeng-introduction/chatgpt-en/pages/KW5P.page",
+          "sourceSha256": "d2e40ba4672550d646874be493e708baf33ad23c9552f854cc2814dea8cd45d8",
+          "pageRevision": "sha256:d2e40ba4672550d646874be493e708baf33ad23c9552f854cc2814dea8cd45d8",
+          "renderRevision": "sha256:29559e177a1f6e987f3ceb03e48f51ddc7c919e8f899f6741bc5b77cefa14d6f",
+          "renderSha256": "0b61df7483be7fae122661f9d0dbf882415a7af2570d7cdaf5b92bf886f753ea",
+          "elements": {
+            "text": 6,
+            "image": 2,
+            "line": 1
+          }
+        },
+        {
+          "mainPosition": 22,
+          "sourceIndex": 15,
+          "pageId": "e4fb0f10-ffa5-44e2-907f-b92e1b69535e",
+          "shortCode": "DDJN",
+          "source": "examples/huandeng-introduction/chatgpt-en/pages/DDJN.page",
+          "sourceSha256": "62bf757750ec3bf4e95686a12255bac522a027a63ca3bda4650be1f91f4ad05d",
+          "pageRevision": "sha256:62bf757750ec3bf4e95686a12255bac522a027a63ca3bda4650be1f91f4ad05d",
+          "renderRevision": "sha256:404770748fb4ef96a7c51b41bc4a9c22355f81885b279303d012e97aeddfc774",
+          "renderSha256": "69242e90547d3b1d4eed13172c71c6b896ca81dd29396bf399737ee352b53d4c",
+          "elements": {
+            "text": 6,
+            "icon": 2,
+            "image": 3
+          }
+        },
+        {
+          "mainPosition": 23,
+          "sourceIndex": 17,
+          "pageId": "bbcdc92a-915c-4988-a4d5-76e466d0424f",
+          "shortCode": "5HW8",
+          "source": "examples/huandeng-introduction/chatgpt-en/pages/5HW8.page",
+          "sourceSha256": "6cbf93b5abe2937be396f8a39472162e0bf4d9a746aacba2eaa8b0d18a3415a3",
+          "pageRevision": "sha256:6cbf93b5abe2937be396f8a39472162e0bf4d9a746aacba2eaa8b0d18a3415a3",
+          "renderRevision": "sha256:1aea8317881edb7aa741dc44f4659fb12bb5f1b8b06b43a7ef0262996c3b4442",
+          "renderSha256": "eab14aa7f5149c1d9b041a412cfeef2797b22deb691857920f3869907a98b37d",
+          "elements": {
+            "text": 8,
+            "image": 4
+          }
+        },
+        {
+          "mainPosition": 24,
+          "sourceIndex": 18,
+          "pageId": "8f9e154d-c5c2-4d79-b809-984586f8311e",
+          "shortCode": "ECVR",
+          "source": "examples/huandeng-introduction/chatgpt-en/pages/ECVR.page",
+          "sourceSha256": "d8b91a3d4f4d45eb028fdc1e5d5adcab793287d8bf2e7cda6c3e445fb5ab626b",
+          "pageRevision": "sha256:d8b91a3d4f4d45eb028fdc1e5d5adcab793287d8bf2e7cda6c3e445fb5ab626b",
+          "renderRevision": "sha256:f5ea90f48a0927a93ec55418c127121932ae0219477191f6205a1e47b270a8b1",
+          "renderSha256": "42e226d976c3e9c3d5aec9c86b8047570fe5223c74da1f0fed1c996a2e7cb614",
+          "elements": {
+            "text": 6,
+            "image": 2
+          }
+        }
+      ]
+    },
+    {
+      "language": "zh",
+      "deckId": "5e3ba52f-b72f-4326-98f5-20ae2e8cd59a",
+      "manifestRevision": "sha256:b1d2bfdbd1f20d973d9b5d607d830970ab9960373fd4d251bb91a4c24349e68c",
+      "metadataRevision": "sha256:d8b7742e01097217eb421d8c6b1eb6a2258e52f6aa7a037f9a07884bfaffcf76",
+      "entrySha256": "b1d2bfdbd1f20d973d9b5d607d830970ab9960373fd4d251bb91a4c24349e68c",
+      "metadataSourceSha256": "d8b7742e01097217eb421d8c6b1eb6a2258e52f6aa7a037f9a07884bfaffcf76",
+      "pageCount": 24,
+      "briefCount": 12,
+      "pages": [
+        {
+          "mainPosition": 1,
+          "sourceIndex": 0,
+          "pageId": "7995de62-e81e-46db-b250-cabc66a99b28",
+          "shortCode": "TTHC",
+          "source": "examples/huandeng-introduction/chatgpt-zh/pages/TTHC.page",
+          "sourceSha256": "679879a11fdc545616678325d9083c7d699f3b06f1398639be667aa86d608394",
+          "pageRevision": "sha256:679879a11fdc545616678325d9083c7d699f3b06f1398639be667aa86d608394",
+          "renderRevision": "sha256:513abcded1280597b4b95018b1f666e1022d41b1ad240a0a579ae6444d90cf85",
+          "renderSha256": "2e5ca561f3eefce07b22c85819a848ff38a1e0e44e3e6edf95bb99c72e371756",
+          "elements": {
+            "shape": 2,
+            "image": 2,
+            "text": 4
+          }
+        },
+        {
+          "mainPosition": 2,
+          "sourceIndex": 21,
+          "pageId": "1dc23de8-b351-483b-a93a-f02c0444a927",
+          "shortCode": "MSVB",
+          "source": "examples/huandeng-introduction/chatgpt-zh/pages/MSVB.page",
+          "sourceSha256": "681fcdd4c77ec34eec37358ccceb0d0955b48246feda252eab8c2b46c62b0ff6",
+          "pageRevision": "sha256:681fcdd4c77ec34eec37358ccceb0d0955b48246feda252eab8c2b46c62b0ff6",
+          "renderRevision": "sha256:25262fe746cd728ada1faa729176d01b03d887d6e91506a9f2dcd35543bd628d",
+          "renderSha256": "9ae8c1473d41a3fe79c29cee1a59e57efacac3296594bb7ef8753a22631ffb93",
+          "elements": {
+            "text": 7,
+            "image": 1,
+            "icon": 2,
+            "line": 1
+          }
+        },
+        {
+          "mainPosition": 3,
+          "sourceIndex": 22,
+          "pageId": "1f6289fd-1d4c-4a03-a74d-4bc4955de868",
+          "shortCode": "6G4G",
+          "source": "examples/huandeng-introduction/chatgpt-zh/pages/6G4G.page",
+          "sourceSha256": "9dab60353397ef900974b32503c5d9023f92339e227d31803011a7d976f4e09e",
+          "pageRevision": "sha256:9dab60353397ef900974b32503c5d9023f92339e227d31803011a7d976f4e09e",
+          "renderRevision": "sha256:d44191a52c1feeb4f53a326a937bf41fcdec09ed66bd8618f6e216cb62f6b38a",
+          "renderSha256": "0178f75d0e7d3cb6b2dd556f6a9716deda4c4006838daea213c25e4581ea949a",
+          "elements": {
+            "text": 5,
+            "image": 3
+          }
+        },
+        {
+          "mainPosition": 4,
+          "sourceIndex": 2,
+          "pageId": "b55179ed-446c-42a7-a2d5-2557defac052",
+          "shortCode": "CR5K",
+          "source": "examples/huandeng-introduction/chatgpt-zh/pages/CR5K.page",
+          "sourceSha256": "a99d76876f64f58f0a14e85595a7ffa712dabbd8842408ba5024cf95fc13852a",
+          "pageRevision": "sha256:a99d76876f64f58f0a14e85595a7ffa712dabbd8842408ba5024cf95fc13852a",
+          "renderRevision": "sha256:72c5a15c510cd4b91d4f193ba6b0d5e0e89fe92b98ea6eb351929249657f9fee",
+          "renderSha256": "65a4d8c7462294ae537763602007870f9ccf3ed15e950a513c3959886977276e",
+          "elements": {
+            "text": 1
+          }
+        },
+        {
+          "mainPosition": 5,
+          "sourceIndex": 5,
+          "pageId": "3483b895-bc52-43b6-a7c4-001a0d1e4526",
+          "shortCode": "ZYZB",
+          "source": "examples/huandeng-introduction/chatgpt-zh/pages/ZYZB.page",
+          "sourceSha256": "1cd05230c748a4a400a72212d2a9c64dcb2b6ead749bade46d736febc909727d",
+          "pageRevision": "sha256:1cd05230c748a4a400a72212d2a9c64dcb2b6ead749bade46d736febc909727d",
+          "renderRevision": "sha256:a669c230cec6652fffa74a430a51b2521e2201166a262f5c8365cf45f3ea4255",
+          "renderSha256": "98fe12cbdefc47252b8afb3b890a8b2d11485021c39dfd61114d427b1e52713d",
+          "elements": {
+            "text": 8,
+            "image": 2,
+            "shape": 3
+          }
+        },
+        {
+          "mainPosition": 6,
+          "sourceIndex": 10,
+          "pageId": "05cd8517-c8ac-4e12-b2d0-40c438b91042",
+          "shortCode": "HWB6",
+          "source": "examples/huandeng-introduction/chatgpt-zh/pages/HWB6.page",
+          "sourceSha256": "caa4c992b32ce78944dfff1a535f1b05ddecc899a7c7bf6f6fdc791e6facedd9",
+          "pageRevision": "sha256:caa4c992b32ce78944dfff1a535f1b05ddecc899a7c7bf6f6fdc791e6facedd9",
+          "renderRevision": "sha256:4db03c7b66dcdfaa1a257e7560964c5e44dc1f71efd9576428b102109c4fa731",
+          "renderSha256": "9978b697ef0c5227455bd803d3af2f5b0b5abe61d80a376658886d7f080bf507",
+          "elements": {
+            "text": 5,
+            "image": 2
+          }
+        },
+        {
+          "mainPosition": 7,
+          "sourceIndex": 6,
+          "pageId": "59857807-d9f3-4e58-9a60-275cd504ea16",
+          "shortCode": "MPTA",
+          "source": "examples/huandeng-introduction/chatgpt-zh/pages/MPTA.page",
+          "sourceSha256": "70847e38a46592098209a01499cefa6b86207048fea417a32ba564afefde4ef4",
+          "pageRevision": "sha256:70847e38a46592098209a01499cefa6b86207048fea417a32ba564afefde4ef4",
+          "renderRevision": "sha256:6b3a213bb15049f3e346f5ec2cd21c7c6a2f17658e5a21dfe8ef6e5cbba71349",
+          "renderSha256": "0796e3f846e4c5ad2e2943020386bb354063d5f2ce7b1a132e7b72deced72536",
+          "elements": {
+            "text": 4,
+            "image": 4
+          }
+        },
+        {
+          "mainPosition": 8,
+          "sourceIndex": 1,
+          "pageId": "c1fcdc66-1c25-45a6-9b98-83d16f063c3e",
+          "shortCode": "7EKH",
+          "source": "examples/huandeng-introduction/chatgpt-zh/pages/7EKH.page",
+          "sourceSha256": "8cc9bbdcf6cf617f521a87af87662f7a42797b5d93f2148a1c0e1e6e4f968a6e",
+          "pageRevision": "sha256:8cc9bbdcf6cf617f521a87af87662f7a42797b5d93f2148a1c0e1e6e4f968a6e",
+          "renderRevision": "sha256:b5649661d155a828892d14411e1ad98139a61a4a2b164e8587dea1ab2052dccb",
+          "renderSha256": "b104e77304d9e60e33074b365860774e8dd570ab241ec5102ee033e158f65fd4",
+          "elements": {
+            "text": 8,
+            "image": 1,
+            "chart": 1
+          }
+        },
+        {
+          "mainPosition": 9,
+          "sourceIndex": 3,
+          "pageId": "7b5bb42e-c529-49f8-ad88-62c69b567837",
+          "shortCode": "HUA9",
+          "source": "examples/huandeng-introduction/chatgpt-zh/pages/HUA9.page",
+          "sourceSha256": "cdd5795dec906b4b33cd69630337b224e55e11578a274d980beb8679514c1f64",
+          "pageRevision": "sha256:cdd5795dec906b4b33cd69630337b224e55e11578a274d980beb8679514c1f64",
+          "renderRevision": "sha256:41032b73db736ed161a2d8d4b1211e93d03a6c9f7ea191387c0ccfc1f16bf0ab",
+          "renderSha256": "d0de3ede12eef199041c49331868ad1b1fc578afa0a8777333f3abf3d6be3270",
+          "elements": {
+            "text": 6,
+            "image": 2,
+            "table": 1
+          }
+        },
+        {
+          "mainPosition": 10,
+          "sourceIndex": 4,
+          "pageId": "7b69742f-16b5-4b80-acf0-1d23966aae96",
+          "shortCode": "JNZV",
+          "source": "examples/huandeng-introduction/chatgpt-zh/pages/JNZV.page",
+          "sourceSha256": "588ac4998d5b26a6e2783b3259b74f40fa6ab4a3d5d6f101cba8f11826da3f3e",
+          "pageRevision": "sha256:588ac4998d5b26a6e2783b3259b74f40fa6ab4a3d5d6f101cba8f11826da3f3e",
+          "renderRevision": "sha256:a41ca1766b7c82abd79136ff2a2ac0c77226bcdf5f6934d3e54f4baf8a9ed790",
+          "renderSha256": "1b6e9fa570b5b2dfc9db1edca4b3c2b74dd2cb22b4646af81f22443dc7c71d46",
+          "elements": {
+            "text": 7,
+            "image": 3,
+            "icon": 1
+          }
+        },
+        {
+          "mainPosition": 11,
+          "sourceIndex": 13,
+          "pageId": "129dfdc6-685d-48b4-972b-abff11f823e6",
+          "shortCode": "93SF",
+          "source": "examples/huandeng-introduction/chatgpt-zh/pages/93SF.page",
+          "sourceSha256": "1e278bd93708f4cbde9f53b3e42c4d22a397009e1c03da2e9557b1c3c25b08f0",
+          "pageRevision": "sha256:1e278bd93708f4cbde9f53b3e42c4d22a397009e1c03da2e9557b1c3c25b08f0",
+          "renderRevision": "sha256:e09281a6957930285129a683fddcbf53ca75c5a742913e499ac70c912d891468",
+          "renderSha256": "3bbdb24950419c89e63a5c902ef6f5c60963aaed45e0b65b7f175953c0643c70",
+          "elements": {
+            "text": 5,
+            "image": 2,
+            "table": 1
+          }
+        },
+        {
+          "mainPosition": 12,
+          "sourceIndex": 9,
+          "pageId": "ea528c6a-2423-488d-834b-056322cca744",
+          "shortCode": "E9RN",
+          "source": "examples/huandeng-introduction/chatgpt-zh/pages/E9RN.page",
+          "sourceSha256": "c753af7e6dc4aafaca47e45df47ea24a17404a5f8e487142c8046f32a9381ce9",
+          "pageRevision": "sha256:c753af7e6dc4aafaca47e45df47ea24a17404a5f8e487142c8046f32a9381ce9",
+          "renderRevision": "sha256:04d5dc9a8f1418b767138711a7716c2ee4ab68a7e8ce9113eab7472c659609ce",
+          "renderSha256": "12f997f7e8b2b8220d450d00ebb787281476a4a5b1cdb716231c35f19db2f955",
+          "elements": {
+            "text": 6,
+            "image": 3
+          }
+        },
+        {
+          "mainPosition": 13,
+          "sourceIndex": 7,
+          "pageId": "def43d68-1767-45f5-800a-17d648750b7e",
+          "shortCode": "FE8A",
+          "source": "examples/huandeng-introduction/chatgpt-zh/pages/FE8A.page",
+          "sourceSha256": "855b2bcb18e1aa97a967eaa3c5484636f5abc14b0b2ded7d51e11d29ac85966c",
+          "pageRevision": "sha256:855b2bcb18e1aa97a967eaa3c5484636f5abc14b0b2ded7d51e11d29ac85966c",
+          "renderRevision": "sha256:53d19d949263b67a38791387a21294ec264ddd73f48e07bc21495a45d4128c45",
+          "renderSha256": "ada25d5542d229610984c4027918d16954d28e7e49a5873acfb447a1f611dcbf",
+          "elements": {
+            "text": 1
+          }
+        },
+        {
+          "mainPosition": 14,
+          "sourceIndex": 25,
+          "pageId": "8bb920ed-1c71-45ac-ad9d-aa00750b1ff6",
+          "shortCode": "SE68",
+          "source": "examples/huandeng-introduction/chatgpt-zh/pages/SE68.page",
+          "sourceSha256": "aa0efe9f0d1da6ce435e5399b74adc0b7c943aa5a8877f57182661b59ebc9786",
+          "pageRevision": "sha256:aa0efe9f0d1da6ce435e5399b74adc0b7c943aa5a8877f57182661b59ebc9786",
+          "renderRevision": "sha256:57eca359da6a6c25b3f6824a96d9934988fd086401b399d162e76a8239aa628f",
+          "renderSha256": "e19f9c27473616a8c07b3335c8935bf9340998f6cb44b20bf1b7586d3c57e22b",
+          "elements": {
+            "text": 7,
+            "image": 4
+          }
+        },
+        {
+          "mainPosition": 15,
+          "sourceIndex": 12,
+          "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
+          "shortCode": "U5QA",
+          "source": "examples/huandeng-introduction/chatgpt-zh/pages/U5QA.page",
+          "sourceSha256": "04dd9721a8a5e5e8efa86c82c82a697696e42e82c3c0df5a965fda6621acdfd1",
+          "pageRevision": "sha256:04dd9721a8a5e5e8efa86c82c82a697696e42e82c3c0df5a965fda6621acdfd1",
+          "renderRevision": "sha256:9cac932668f5c4f0da8853ffe4270273d826ddda28e374ebfd0f20c376c7914e",
+          "renderSha256": "49da3d2d39beccf295b10b5b64d66d3215751bf39fc78d2f538d2693659a131e",
+          "elements": {
+            "text": 7,
+            "image": 8,
+            "line": 1
+          }
+        },
+        {
+          "mainPosition": 16,
+          "sourceIndex": 26,
+          "pageId": "5f2fbea2-a43a-4532-9042-6a1d20c08801",
+          "shortCode": "EJBQ",
+          "source": "examples/huandeng-introduction/chatgpt-zh/pages/EJBQ.page",
+          "sourceSha256": "f97b2e0edc614c393adc907bd67c43934c2e000ad4940d6d1c62c5893c748bd2",
+          "pageRevision": "sha256:f97b2e0edc614c393adc907bd67c43934c2e000ad4940d6d1c62c5893c748bd2",
+          "renderRevision": "sha256:ee4f829b3de79b744cc93135c9568642075b6055d8f369ee857abfdc95e8956c",
+          "renderSha256": "c53e728a3cecf352ab8905038932ee4bc8daf35b45fe9c8d9285cc37bc889dbc",
+          "elements": {
+            "text": 5,
+            "image": 2
+          }
+        },
+        {
+          "mainPosition": 17,
+          "sourceIndex": 14,
+          "pageId": "baca190c-e87b-415f-9c30-7c04e3fabe17",
+          "shortCode": "2856",
+          "source": "examples/huandeng-introduction/chatgpt-zh/pages/2856.page",
+          "sourceSha256": "a148aa5b527fc71dfa3fe841c83c3e8c1102eebf920ee4c7fb8fb84cbbab3847",
+          "pageRevision": "sha256:a148aa5b527fc71dfa3fe841c83c3e8c1102eebf920ee4c7fb8fb84cbbab3847",
+          "renderRevision": "sha256:19b5940f64dd981dc4cde82a89484f3dd44483f79a70139661c787d6a7796436",
+          "renderSha256": "7505e36c8372bec610c6ff63c3fd6d6545ab1604f5698310c16b12b5e89b62ab",
+          "elements": {
+            "text": 7,
+            "image": 3
+          }
+        },
+        {
+          "mainPosition": 18,
+          "sourceIndex": 16,
+          "pageId": "503c86ce-673c-4229-9251-22114e5f5da9",
+          "shortCode": "4YZD",
+          "source": "examples/huandeng-introduction/chatgpt-zh/pages/4YZD.page",
+          "sourceSha256": "09b28360673341cb00ca362af915b067d7d4f076db75ba7e6d7e593385c6dced",
+          "pageRevision": "sha256:09b28360673341cb00ca362af915b067d7d4f076db75ba7e6d7e593385c6dced",
+          "renderRevision": "sha256:deef07f5333fafea5cf145da5d4ea2933a93efce5f9d7b7fceac9b7033e2754c",
+          "renderSha256": "bb1951c139224f3d8f0a5de03dc68859609382c41adeb4969a91b4094bf09ed6",
+          "elements": {
+            "text": 5,
+            "image": 1,
+            "icon": 1,
+            "table": 1
+          }
+        },
+        {
+          "mainPosition": 19,
+          "sourceIndex": 11,
+          "pageId": "d64aef1b-eb88-4b05-a620-ae60a0e833de",
+          "shortCode": "36EQ",
+          "source": "examples/huandeng-introduction/chatgpt-zh/pages/36EQ.page",
+          "sourceSha256": "698015b6f9e5a1f418af3e2ac5bd05ca550768d3993f03f74642442485748173",
+          "pageRevision": "sha256:698015b6f9e5a1f418af3e2ac5bd05ca550768d3993f03f74642442485748173",
+          "renderRevision": "sha256:f9a40a358912cca4366e9322418e5845f6ebfe27f54e5f69f574226a5bfc17ea",
+          "renderSha256": "c4a8447aa0385e01add1b5dcd1e0ff36c43e9f042062e90bb4df51c32531dddb",
+          "elements": {
+            "text": 1
+          }
+        },
+        {
+          "mainPosition": 20,
+          "sourceIndex": 8,
+          "pageId": "9cdec939-7f79-4142-98a4-b9543230a4ec",
+          "shortCode": "W7WP",
+          "source": "examples/huandeng-introduction/chatgpt-zh/pages/W7WP.page",
+          "sourceSha256": "ed1d77a0816cfe8d6c10eeee5738fea14cd40e5672d68ffb2bada36456bd51e0",
+          "pageRevision": "sha256:ed1d77a0816cfe8d6c10eeee5738fea14cd40e5672d68ffb2bada36456bd51e0",
+          "renderRevision": "sha256:3c816e89bff0b78b878d027139e5854d1774b83a198b822fd9dd8900d1e7a8b2",
+          "renderSha256": "6354a76228039464f1bcc43c21e02be44d0fbad916b930ca95617369ffb380b9",
+          "elements": {
+            "text": 9,
+            "image": 5,
+            "line": 1,
+            "shape": 1
+          }
+        },
+        {
+          "mainPosition": 21,
+          "sourceIndex": 23,
+          "pageId": "c91c3fe3-836f-492f-882d-905bd4d08a9b",
+          "shortCode": "YCXA",
+          "source": "examples/huandeng-introduction/chatgpt-zh/pages/YCXA.page",
+          "sourceSha256": "0864a31f4a9f85902f4fc761e4dc7b2c35ec32a6cf0edfed1a6d6b4bfd4e16c1",
+          "pageRevision": "sha256:0864a31f4a9f85902f4fc761e4dc7b2c35ec32a6cf0edfed1a6d6b4bfd4e16c1",
+          "renderRevision": "sha256:c87c3945c43f4779da50606aa6bded6b899dc76f7c6edeeea4306419277485ad",
+          "renderSha256": "b34b962f38a129705cef87dadd47ee6d06cebf3a968b6d2a68f2859f0d055c43",
+          "elements": {
+            "text": 6,
+            "image": 2,
+            "line": 1
+          }
+        },
+        {
+          "mainPosition": 22,
+          "sourceIndex": 15,
+          "pageId": "f68f052b-18ac-4286-ae3b-6f12e5c5d0d0",
+          "shortCode": "NJM7",
+          "source": "examples/huandeng-introduction/chatgpt-zh/pages/NJM7.page",
+          "sourceSha256": "79b07a78d4da656b4f71a5eeee3f45fc00329554fd43d909cdba80debfa3a017",
+          "pageRevision": "sha256:79b07a78d4da656b4f71a5eeee3f45fc00329554fd43d909cdba80debfa3a017",
+          "renderRevision": "sha256:29cc2a8377d900e3eb034cc6bcf6fb18e0e29e4fb1e6bde0fa2f95b10247377b",
+          "renderSha256": "a7d616bdee577ddc8b097e79e56ea86be62f5a61cff94780e2ab6bef699af782",
+          "elements": {
+            "text": 6,
+            "icon": 2,
+            "image": 3
+          }
+        },
+        {
+          "mainPosition": 23,
+          "sourceIndex": 17,
+          "pageId": "bd3c71d1-360e-4e0c-bbb6-5938970e8876",
+          "shortCode": "TZXM",
+          "source": "examples/huandeng-introduction/chatgpt-zh/pages/TZXM.page",
+          "sourceSha256": "08795dab49538bad2e71be3009747c4a0c185a37611fc89852a9ba6d10374109",
+          "pageRevision": "sha256:08795dab49538bad2e71be3009747c4a0c185a37611fc89852a9ba6d10374109",
+          "renderRevision": "sha256:912b0aebb21632749764cb70e393421e4558414f1fe1174bdc86f55e02c27cb3",
+          "renderSha256": "efd3ea43fba98e0fd1551d705f4fd74dcd9ad7ef77fb8fec6c57d0977499fadb",
+          "elements": {
+            "text": 8,
+            "image": 4
+          }
+        },
+        {
+          "mainPosition": 24,
+          "sourceIndex": 18,
+          "pageId": "8a9bcdf1-fcb2-4214-9743-86c110c954ca",
+          "shortCode": "E2RU",
+          "source": "examples/huandeng-introduction/chatgpt-zh/pages/E2RU.page",
+          "sourceSha256": "6b4d637f9c104d7e1abbae269b5bde15575c507cddc606541ee35b3b4e31eb27",
+          "pageRevision": "sha256:6b4d637f9c104d7e1abbae269b5bde15575c507cddc606541ee35b3b4e31eb27",
+          "renderRevision": "sha256:b24c24f932f55efab68cfaf2ebc77983fc4c75a72a6fedac7136f498eee5c7f7",
+          "renderSha256": "ed6433dee7a37a98a2d150e234d47969e83c96fa00f95bb4f4da5f97a2abf75b",
+          "elements": {
+            "text": 6,
+            "image": 2
+          }
+        }
+      ]
+    }
+  ]
+}

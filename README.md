@@ -6,28 +6,30 @@ HUANDENG Editor 基于 OpenSlide 的 React 编辑环境，使用 PPTD 文档后�
 
 ## 当前阶段
 
-编辑器保持 **[0.18.0](docs/RELEASE-V018.md)**；AI 插件更新为 **0.18.3**，core npm 包仍为 2.3.1。六份介绍从作者在组会中的经历讲起：为什么想让 Agent 掌握 Slides、为什么改两页不该复制整套文件，以及为什么先讲人的故事再组织页面。当前交付见 [介绍交付记录](docs/INTRODUCTION-DELIVERY.md)，内容契约和验证见 [故事驱动 Spec](docs/INTRODUCTION-STORY-SPEC.md)。
+**Editor / AI plugin 0.19.0 已完成安装与交付验证**；core npm 包仍为 2.3.1。本轮把介绍稿的任务重新明确为：让读者理解 HUANDENG 是什么、怎么用、为什么这些设计有帮助。作者的经历用于判断重点和解释设计，页面按实际工作组织。当前要求见 [产品介绍 Spec](docs/PRODUCT-INTRODUCTION-SPEC.md)，逐项结果见 [验证记录](docs/PRODUCT-INTRODUCTION-VALIDATION.md)。
 
-现有 Editor 0.18.0 提供中英文字号与截图约定、只读设计检查、现有章节的一键纯标题页、素材原图尺寸及安全 CLI 新建项目。工作区采用更轻的层级，GUI、CLI 和 MCP 共用检查结果。工作流为 Audit → Spec → Frame → Implement → Validate → Release。
+0.19.0 增加项目目录入口、现有项目的文件夹图标设置，并把助手配置、客户端报告和真实保存记录讲清楚。项目在后台恢复或打开时，晚到的加载结果会尊重用户后来的标签页或 Home 选择。DeepSeek 使用正式原生 bundle，Claude Code、Codex 与 ChatGPT 共享当前作者指南。GUI、CLI 和 MCP 继续共用文档服务。工作流为 Audit → Spec → Frame → Implement → Validate → Release。
 
 ## 项目介绍 / Introduction
 
-The founder's own account drives these introductions: a lab meeting, recognizable AI styling, whole-deck copies after a small edit, and the need to keep a human story attached to editable pages. Features answer those problems through a real scientific example, stable identity, page history, an asset library and reusable presentations.
+These introductions explain the tool through actual work: edit a scientific page, preserve its evidence, review a change, reuse pages for another audience, and work with an assistant. The founder's account explains why these choices matter. The original account is retained separately from the presentation's authored sequence.
 
 | 版本 / Edition | 可编辑项目 / Project | Main | 简短演讲 / Brief | 状态 |
 | --- | --- | ---: | ---: | --- |
-| ChatGPT 中文 | [chatgpt-zh](examples/huandeng-introduction/chatgpt-zh) | 27 | 13 | 已按独立内容与视觉审读修订 |
-| ChatGPT English | [chatgpt-en](examples/huandeng-introduction/chatgpt-en) | 27 | 13 | Revised against independent narrative and visual review |
-| Claude Code 中文 | [claude-zh](examples/huandeng-introduction/claude-zh) | 20 | 7 | 原生完成；保留 2 项内容审读发现 |
-| Claude Code English | [claude-en](examples/huandeng-introduction/claude-en) | 25 | 9 | Native completion after connection recovery; 3 content findings retained |
-| DeepSeek Harness 中文 | [deepseek-zh](examples/huandeng-introduction/deepseek-zh) | 18 | 11 | 原生完成；保留 2 项内容审读发现 |
-| DeepSeek Harness English | [deepseek-en](examples/huandeng-introduction/deepseek-en) | 18 | — | Native completion; 4 content findings retained; no separate brief authored |
+| ChatGPT 中文 | [chatgpt-zh](examples/huandeng-introduction/chatgpt-zh) | 24 | 12 | 已完成内容、视觉与 PowerPoint 检查；待作者评审 |
+| ChatGPT English | [chatgpt-en](examples/huandeng-introduction/chatgpt-en) | 24 | 12 | Content, visual and PowerPoint checks complete; owner review pending |
+| Claude Code 中文 | [claude-zh](examples/huandeng-introduction/claude-zh) | 26 | 9 | 稿件、对应修正与导出完成；原生日志追加被拒已记录 |
+| Claude Code English | [claude-en](examples/huandeng-introduction/claude-en) | 25 | 9 | Preferred design preserved; factual/function alignment complete; retained Office chart-label issue |
+| DeepSeek Harness 中文 | [deepseek-zh](examples/huandeng-introduction/deepseek-zh) | 22 | 12 | 原生完成；保留 4 类内容或语义对应问题 |
+| DeepSeek Harness English | [deepseek-en](examples/huandeng-introduction/deepseek-en) | 22 | — | Native completion; current factual/Notes findings retained in its README |
 
-[下载 PowerPoint、PDF、完整 Project 与插件](https://github.com/JaytonKogeru/huandeng/releases/tag/plugin-v0.18.3) · [六稿预览与素材](examples/huandeng-introduction/README.md) · [作者故事原文](examples/huandeng-introduction/story/USER-STORY.zh-CN.md) · [原生实测与交付边界](docs/INTRODUCTION-DELIVERY.md) · [Editor 0.18.0](https://github.com/JaytonKogeru/huandeng/releases/tag/editor-v0.18.0)
+[0.19 发布与产物](docs/RELEASE-V019.md) · [六稿入口、预览与下载](examples/huandeng-introduction/README.md) · [作者故事原文](examples/huandeng-introduction/story/USER-STORY.zh-CN.md) · [当前实测与交付边界](docs/PRODUCT-INTRODUCTION-VALIDATION.md) · [原生插件](docs/NATIVE-INTEGRATION-0.19.md)
 
-作者认可上一轮视觉改进，本轮重点是补回叙事与因果关系。ChatGPT 两稿经过协调者修订；另四稿保留原生作者结果及事实、范围和排版问题，不作模型排名。135 张 Main 页面均完成实际 PowerPoint 只读渲染检查；技术检查与独立审读不代表作者已接受。
+Git 目录维护可编辑源与证据。完整项目 ZIP 包含当前 Exports；在 GitHub 上查看 PDF/PPTX，请使用上方“六稿入口、预览与下载”的发布附件链接。
 
-![English introduction: the founder's story, scientific evidence and the workflow it motivates](examples/huandeng-introduction/previews/chatgpt-en-overview.png)
+作者最认可 Claude English 的介绍方式。本轮保留它的有效设计，把其余版本的功能覆盖和可操作性单独验收。ChatGPT 两稿已完成 48 张 Main 页面及短版特殊引用的实际 PowerPoint 检查；原生作者的完成状态、事实问题和中英对应单独记录。作者认可、技术完成与独立审读是不同结果。
+
+![Claude English introduction: the owner's preferred presentation of the Editor and workflow](examples/huandeng-introduction/previews/claude-en-overview.png)
 
 ## 编辑与交付
 
@@ -45,13 +47,13 @@ PPTX 先生成在 Project 的 Exports/，检查后更新固定共享副本；保
 
 入门见 [Workspace UX](docs/WORKSPACE-UX.md)、[v0.17 操作流程](docs/UI-WALKTHROUGH-V017.md) 与[完整工作流](docs/WORKFLOW-V010.md)。私人 Project 内容、图片、标识、路径、截图及详细收据不进入工具仓库或插件包。仓库保持 private；旧提交中的历史标识/路径痕迹需在公开前另行清理，本轮不改写历史。
 
-PPTD 是编辑源文件。PPTX 对支持的文本、图片、形状、线条、表格、图表、公式和组合保留原生对象，逐对象回退列入导出报告；动画仍为静态。任意 PPTX 导入/往返、Google Slides 直接编辑、独立演讲者窗口、可继承母版与编辑器插件市场仍未实现。版本规则见[发布规则](docs/RELEASE-POLICY.md)。
+.pptd 是项目的启动与页序清单；完整编辑源是它所在的目录。PPTX 对支持的文本、图片、形状、线条、表格、图表、公式和组合保留原生对象，逐对象回退列入导出报告；动画仍为静态。任意 PPTX 导入/往返、Google Slides 直接编辑、独立演讲者窗口、可继承母版与编辑器插件市场仍未实现。版本规则见[发布规则](docs/RELEASE-POLICY.md)。
 
 ## 启动桌面编辑器
 
 Windows 双击 **HUANDENG Editor** 快捷方式，或运行 `Start-Huandeng.cmd`。应用使用独立 Electron 窗口；启动时恢复最近打开的 Project 标签页，Home 始终提供最近项目、新建与打开入口。
 
-通过 Home 或窗口的“打开项目”选择自己的 `deck.pptd`，项目在新标签页中打开；已打开的同一项目会回到原标签页。“新建项目”创建独立文件夹、manifest 和空白 `.page`。不默认打开仓库示例。已有项目不需要复制进软件目录。
+通过 Home 或 File 的打开入口选择 `.pptd`，也可以用“打开项目文件夹”选择包含它的目录。目录的直接子级必须恰有一个 `.pptd`；零个或多个都会明确报错，不猜选入口。已打开的同一项目会回到原标签页。“新建项目”创建独立文件夹、manifest 和空白 `.page`。文件夹可以有 `.huandeng` 等可读后缀；它仍是普通目录，资源管理器双击仍打开文件夹。现有项目可从左上角的应用菜单进入 File / 文件，显式设置产品图标；已有自定义图标会保留。见 [项目文件夹](docs/PROJECT-FOLDERS.md)。
 
 开发启动需要 Node 22.12+ 和 pnpm 10.17.0：
 
@@ -68,12 +70,18 @@ Windows 桌面打包与快捷方式：
 
 完整桌面产物在 `dist/HUANDENG-win32-x64/HUANDENG Editor.exe`。打包时也可用 `-ElectronRuntimePath` 指定已安装的 Electron 38.7.2 运行目录。详见 [桌面说明](packages/desktop/README.md)。
 
+升级后正常关闭旧 Editor，再打开新版本并刷新现有 Agent 连接。如果曾注册运行时位置，也需更新这个回退指针；安装快捷方式不会自动更新它：
+
+    node plugins/huandeng/scripts/register-runtime.mjs --install-dir "D:/_Proj/Huandeng/dist/HUANDENG-win32-x64"
+
+命令中的目录换成实际新安装目录。已运行的新 Editor 优先参与发现；没有 GUI 时，旧的注册指针仍可能指向保留的旧版。手工固定了旧 executable/CLI 路径的客户端配置也应重新生成。见 [0.19 原生集成](docs/NATIVE-INTEGRATION-0.19.md)。
+
 内部 React 画布和本机文档服务继续复用；日常使用不打开浏览器标签。外部 Agent 通过同一服务操作当前项目，编辑器内没有聊天框或模型执行器。
 
 CLI 可以安全新建项目，再打开共享服务；新建命令拒绝覆盖已有目录：
 
     node packages/core/huandeng.js init "D:/MyProject/Slides" --title "My Slides"
-    node packages/core/huandeng.js open "D:/MyProject/Slides/deck.pptd" --no-browser
+    node packages/core/huandeng.js open "D:/MyProject/Slides" --no-browser
 
 对已保存项目运行只读设计检查：
 
@@ -158,7 +166,7 @@ Inspector 的 Checks 可按需核对本机字体与有效回退，并测量文�
 
 MCP 现有 **22 个工具、2 个 Story/operations 指南资源**。Activity read/report 允许客户端按明确 Project、session 和 task 上报进展；writer 保存记录与客户端报告分开标识。Agent 先读 selection 与四层 Story briefing，结合邻页、实例备注、固定版本和素材形成计划，再用只读 preview 查看字段/文件/复用影响。按当前任务授权应用相同 payload，可用 previewHash 绑定内容；共享 writer 继续检查 CAS 与幂等请求。保存后回读、渲染并检查实际讲解顺序。hash 不能替代用户授权。
 
-早期版本的官方 DeepSeek Harness 已在独立合成项目完成读取 → preview → apply → render → 保存重开闭环；当时的 Codex 原生配置解析、Claude 原生 manifest 校验也通过。这些历史记录不代替当前版本的客户端验收。ChatGPT 通过已有授权 DC-WALT 调用同一 CLI。具体安装方式、客户端边界和示例见 [Plugin 指南](plugins/huandeng/README.md) 与 [真实任务证据](docs/evidence/v09/plugin-acceptance.json)。
+0.19 的正式 DeepSeek bundle 已在官方 Desktop 与 headless 路径加载；Claude Code / Codex 的默认安装与共同 24 文件包核对一致。ChatGPT 通过已有授权 DC-WALT 调用同一 CLI。本轮真实 DSH 与 ChatGPT 在同一项目完成不同页编辑、同页过期请求拒绝及重新读取后的视觉交接。分别安排 section 不会产生隔离锁，共用 Story、章节或演讲结构仍需协调。配置、模型任务完成和页面质量分别验收，见 [原生集成与实测](docs/NATIVE-INTEGRATION-0.19.md)及 [Plugin 指南](plugins/huandeng/README.md)。
 
 ## 科学内容和设计
 
@@ -174,7 +182,7 @@ MCP 现有 **22 个工具、2 个 Story/operations 指南资源**。Activity rea
     corepack pnpm exec vitest run --project unit
     corepack pnpm check
 
-完整产品规划见 [Master SPEC](docs/SPEC.md)，编辑器增量见 [SPEC-V018](docs/SPEC-V018.md)。当前介绍稿与插件约定见 [故事驱动 Spec](docs/INTRODUCTION-STORY-SPEC.md)，实际结果见 [交付记录](docs/INTRODUCTION-DELIVERY.md)与 [plugin 0.18.3 发布记录](docs/RELEASE-PLUGIN-0183.md)。历史验收见 [v0.4](docs/RELEASE-V04.md)、[v0.5](docs/RELEASE-V05.md)、[v0.6](docs/RELEASE-V06.md)、[v0.7](docs/RELEASE-V07.md)、[v0.8](docs/RELEASE-V08.md)、[v0.9](docs/RELEASE-V09.md)、[v0.10](docs/RELEASE-V010.md)、[v0.11](docs/RELEASE-V011.md)、[v0.12](docs/RELEASE-V012.md)、[v0.12.1](docs/RELEASE-V0121.md)、[v0.13](docs/RELEASE-V013.md)及 [Editor 0.18.0 历史发布](docs/RELEASE-V018.md)。工程接续入口是 [WEBCHAT.md](WEBCHAT.md)和[本轮交接](docs/HANDOFF-PLUGIN-0183.md)。
+完整产品规划见 [Master SPEC](docs/SPEC.md)，编辑器增量见 [SPEC-V018](docs/SPEC-V018.md)。当前介绍稿、目录入口与原生插件约定见 [产品 Spec](docs/PRODUCT-INTRODUCTION-SPEC.md)，实际结果见 [产品验证](docs/PRODUCT-INTRODUCTION-VALIDATION.md)、[Editor 验证](docs/EDITOR-0.19-VALIDATION.md)、[原生集成](docs/NATIVE-INTEGRATION-0.19.md)与 [0.19 发布记录](docs/RELEASE-V019.md)。历史验收见 [v0.4](docs/RELEASE-V04.md)、[v0.5](docs/RELEASE-V05.md)、[v0.6](docs/RELEASE-V06.md)、[v0.7](docs/RELEASE-V07.md)、[v0.8](docs/RELEASE-V08.md)、[v0.9](docs/RELEASE-V09.md)、[v0.10](docs/RELEASE-V010.md)、[v0.11](docs/RELEASE-V011.md)、[v0.12](docs/RELEASE-V012.md)、[v0.12.1](docs/RELEASE-V0121.md)、[v0.13](docs/RELEASE-V013.md)及 [Editor 0.18.0 历史发布](docs/RELEASE-V018.md)。工程接续入口是 [WEBCHAT.md](WEBCHAT.md)和[0.19 交接](docs/HANDOFF-V019.md)。
 
 里程碑运行单元测试、类型和格式检查，并检查实际构建与安装。桌面、科研对象、原生 PowerPoint 和真实科研项目副本的场景按具体变更风险选择，不在每次开发中重复全部压力矩阵。日常小修改只重复能够验证相应风险的检查。
 

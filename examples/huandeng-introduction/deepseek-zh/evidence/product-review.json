@@ -1,0 +1,266 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "ChatGPT independent visual/requirements reviewer",
+  "project": "deepseek-zh",
+  "round": "product-intro-20261111",
+  "reviewStatus": "completed_with_retained_content_limitations",
+  "authorAccepted": false,
+  "scope": {
+    "mainPages": 22,
+    "pdfContactSheetsViewed": [1, 2, 3, 4],
+    "pdfFullPagesViewed": [4, 17],
+    "allMainNotesRead": true,
+    "powerPointContactSheetsViewed": [1, 2, 3, 4],
+    "powerPointFullPagesViewed": [8, 10, 11, 13, 14, 15, 16, 19, 20, 22],
+    "powerPointVisualReview": true,
+    "sourceObjectsChecked": "UGA7 meeting-observations, UZKY story-list and XZJN source-copy are coherent single text objects; all three native tables carry real field/value or condition/behavior relationships.",
+    "unchangedNativeSourceRequired": true
+  },
+  "assessment": {
+    "productMission": "The submission now defines the product on page 2, uses three problem pages as motivation, then explains the workspace, identity, history, folder, structured pages, scientific evidence, assets, Story, focused editing, reuse, agents, delivery and credits.",
+    "visual": "The Chinese green/ink identity remains independent of the English serif treatment. Real public Chinese interface captures, native tables, scientific assets and client/upstream marks now carry product explanation. No additional clipping, missing image or native-table overflow was observed in the reviewed Office scope.",
+    "objectContract": "The specific XZJN defect is repaired. Its three audience paragraphs form one rich-text object. The three observations on page 4 and the Story-level list on page 15 also each use one text object; they are not fake tables.",
+    "science": "Page 13 identifies the twelve C1-prime distances as twelve positions in one PDB 1BNA structure, not independent replicates, hydrogen-bond lengths or a product benchmark. The Chinese-labelled curve is an original raster asset; the metadata table is native.",
+    "remaining": "Retained claims and stale page-level metadata prevent an unqualified correctness or ready-to-present assertion. Technical completion and visual inspection do not imply owner approval."
+  },
+  "findings": [
+    {
+      "id": "DSZ-PRODUCT-01",
+      "severity": "source_fidelity",
+      "pages": [4],
+      "shortCodes": ["UGA7"],
+      "finding": "The page presents '这是 AI 做的吧？' as the advisor's utterance, and the saved Notes say '导师就说'. The user's preserved account describes recognition of AI style but supplies no such verbatim line. Neither page nor Notes marks this as paraphrase or an illustrative reconstruction.",
+      "neededQualification": "Label reconstructed dialogue as a paraphrase, or use the owner's documented description without invented direct speech.",
+      "status": "retained_native_output"
+    },
+    {
+      "id": "DSZ-PRODUCT-02",
+      "severity": "technical_qualification",
+      "pages": [19],
+      "shortCodes": ["5ZZM"],
+      "finding": "The native collaboration table and Notes group Story, Sections and order into metadata revision. Main page order is guarded by manifest revision; Presentation composition order is metadata.",
+      "evidence": "Current page.move implementation checks manifest and calls writeOrder. Other page-level conflict and no-online-presence qualifications on this page are accurate.",
+      "neededQualification": "Distinguish Main order from Presentation composition.",
+      "status": "retained_native_output"
+    },
+    {
+      "id": "DSZ-PRODUCT-03",
+      "severity": "speaker_notes_and_story_mismatch",
+      "pages": [1, 16],
+      "shortCodes": ["CZD7", "CKFY"],
+      "finding": "Page-level alignment data still includes prior objectives: the cover requestedChange describes turning 16 product pages into 18 story pages and its Notes say the talk will not start with functions; current Main has 22 product pages and defines the product immediately after the cover. Page 16 purpose says '改两页，只动这两页' although its visible evidence and revised Notes correctly show one page with title/lead changes.",
+      "neededQualification": "Project and Section Story were refreshed, but page-level Story and Notes are not uniformly synchronized with the new mission and evidence.",
+      "status": "retained_native_output"
+    },
+    {
+      "id": "DSZ-PRODUCT-04",
+      "severity": "bilingual_scope_gap",
+      "pages": [8, 9, 17, 20],
+      "shortCodes": ["5HUQ", "88WA", "XZJN", "6DVM"],
+      "finding": "Most substantive topics correspond, but the Chinese edition does not explain the English edition's optional named-version pin in reuse, nor its MP4 timed-build/resolution/no-audio boundary. MP4 appears in the real export interface image, not as a usable spoken explanation. Browse/Outline are named and shown, but their distinct argument-review purpose is less developed than English page 15.",
+      "neededQualification": "Treat correspondence as substantial but incomplete. Combining views into other pages is valid; equivalent capabilities and limitations still need to remain understandable.",
+      "status": "retained_native_output"
+    }
+  ],
+  "nonBlockingVisualLimits": [
+    {
+      "page": 10,
+      "finding": "The paired History captures show real operation and version interfaces, but much internal UI text is small at presentation scale. Their labels communicate the function; they do not make every operation field readable."
+    },
+    {
+      "page": 11,
+      "finding": "The directory-tree drawing uses deck.pptd as its top node and places pages/media/.huandeng beneath it. Surrounding prose correctly distinguishes the folder and its entry, but the tree visually blurs that relationship; the working folder should be the parent and deck.pptd its sibling entry file."
+    },
+    {
+      "collection": "brief",
+      "page": 1,
+      "finding": "The brief inherits the source cover and its fixed 01 / 22 counter. No source text was changed during mechanical export; the exported brief has twelve pages."
+    }
+  ],
+  "decisions": {
+    "nativeSourceEditedByReviewer": false,
+    "nativeMainExportsRegeneratedByReviewer": false,
+    "feedbackForAestheticRedoSent": false,
+    "acceptance": "Preserve this completed native candidate and report its concrete limitations. No aesthetic redo was requested."
+  },
+  "presentationReview": {
+    "full": {
+      "count": 22,
+      "allCurrentMainPages": true,
+      "sameOrderAsMain": true,
+      "localNotes": 0,
+      "pins": 0
+    },
+    "brief": {
+      "count": 12,
+      "mainPositions": [1, 2, 4, 5, 6, 8, 13, 15, 16, 17, 19, 22],
+      "allCurrentMainPages": true,
+      "retiredReferences": 0,
+      "localNotes": 0,
+      "pins": 0,
+      "sequenceAssessment": "A coherent shortened selection from product definition and motivation through workspace, science, Story, focused edit, reuse, collaboration and a first action; actual saved Notes are inherited from Main. It does not include the separate export/credits pages and is not a newly adapted speaking script.",
+      "nativeExportsCurrent": false,
+      "staleNativeExportPages": 11,
+      "disposition": "Coordinator mechanically exported the unchanged native-authored 12-page Presentation. Previous 11-page export bytes are retained internally; the native author did not make these new brief exports.",
+      "coverCounterLiteral": "01 / 22",
+      "coverCounterDisposition": "Retained fixed Main counter in the unchanged native cover; actual brief has 12 pages.",
+      "deliveryExportsCurrent": true,
+      "coordinatorExportCompleted": true,
+      "exportReceiptSha256": "6c16adff44b95389d797517d0a944e16be90f3b87cad77f81fc4c0145a34011f",
+      "pdfContactSheetsViewed": [1, 2],
+      "pptxNotesMatchActualSavedMain": true
+    }
+  },
+  "recordedAt": "2026-11-11T02:50:21.686549+00:00",
+  "nativeExecution": {
+    "session": "session-c178e34f-43f9-4656-a6ea-6ba9e443b4fd",
+    "completedRequest": "a212e565-dd92-4d2f-98c5-a15e7d1e13fe",
+    "nativeCompleted": true,
+    "exitCode": 0,
+    "turns": [
+      {
+        "requestId": "a212e565-dd92-4d2f-98c5-a15e7d1e13fe",
+        "state": "completed",
+        "exitCode": 0,
+        "nativeCompleted": true,
+        "sessionId": "session-c178e34f-43f9-4656-a6ea-6ba9e443b4fd",
+        "seconds": 1124.75,
+        "toolCounts": {
+          "skill": 1,
+          "read_mcp_resource": 2,
+          "mcp__huandeng-deepseek-1ec66556db__huandeng_context": 1,
+          "mcp__huandeng-deepseek-1ec66556db__huandeng_selection_read": 1,
+          "read": 25,
+          "glob": 6,
+          "mcp__huandeng-deepseek-1ec66556db__huandeng_assets_list": 1,
+          "mcp__huandeng-deepseek-1ec66556db__huandeng_page_read": 17,
+          "grep": 15,
+          "read_image": 7,
+          "mcp__huandeng-deepseek-1ec66556db__huandeng_preview": 32,
+          "mcp__huandeng-deepseek-1ec66556db__huandeng_apply": 32,
+          "mcp__huandeng-deepseek-1ec66556db__huandeng_render": 24,
+          "subagent": 1,
+          "list_agents": 6,
+          "send_message": 2,
+          "write": 2,
+          "mcp__huandeng-deepseek-1ec66556db__huandeng_design_audit": 3,
+          "mcp__huandeng-deepseek-1ec66556db__huandeng_export": 2,
+          "mcp__huandeng-deepseek-1ec66556db__huandeng_activity_report": 1
+        },
+        "toolErrorCount": 1
+      }
+    ],
+    "interpretation": "This Chinese product turn completed in the original Chinese session with the final officially installed 0.19.0 bundle. No preceding provider-JSON failure belongs to this Chinese turn; those English failures remain separately recorded."
+  },
+  "sourceHashes": {
+    "deck.pptd": "eda1ef98c23aad9e04891d9314a9f8349c46710d8633a8c0c92429fdca6cd62a",
+    ".huandeng/project.json": "7977f54ff28cd8c30237fb63bc198c57e0dd81239f6e9b680448d5a7e7a2ff76",
+    "pages/2FMW.page": "a764a47a73c99ae174619f46e24264af45e8bf826b24b99d17982b214218e647",
+    "pages/2Z2N.page": "24d6e2f3f73ed2ee1bcbb4c557c15d041e3ffb8a4a52b4560fa23856ae25dbf2",
+    "pages/3JZP.page": "5349188fb18ba1db2bd44418144f2552e23c80cc8ce64469489f371a263edf11",
+    "pages/4E96.page": "6e5397629c1022bf35cd9f1d1c47287382f071ab60edee623e38d8ebd8eb5bd4",
+    "pages/4ST8.page": "b3870d66fddd12879d9fa349cd467dfcf5d0ff09f3df8f396500526f5749a43d",
+    "pages/4SYN.page": "e3968de7d78a92ed12f4ade0155a28d0ad11fd554fe9919ee2a478e992699f80",
+    "pages/4USM.page": "af1623336a93001d7296d5efb7d865fd62651d474c94eb9765035d598c37e4e0",
+    "pages/4UY8.page": "89995ede64499619f6e9e0aba9dbd62c31be342059ba0df918913270d838d544",
+    "pages/5GVZ.page": "6c6e5c29f1715b5e955c23fc9bd3286149c4cff74ddf06a14ea03be7f1f548ef",
+    "pages/5HUQ.page": "c1c974d2151c34ca4e0d0afe3c1612820b01dbeace6d76f53fc148dd8a27a4c9",
+    "pages/5MNK.page": "9133c407dcbaa2b72b1b3ef108b081d2e9624a551e9b3a92e24dc1786076d9fe",
+    "pages/5XR7.page": "66ed6078f4e8b91d848742ecf65d8264cb01a53f4068683b41add8429cdb7f86",
+    "pages/5ZZM.page": "4f89c03a1a1e29255ca2673ff539e5d6290299bf9f8321ba354d3323fa100c4b",
+    "pages/6DVM.page": "695a49474ea07f8abf61ca8cfedaee7ceef41e80cc6e07b5715e9611898dc6c2",
+    "pages/7PV4.page": "83fc7b7f0348787cb47564c282d16f4113b8db53faae04310605377292f16d62",
+    "pages/88WA.page": "4253296c3b52e17362ab8041a680289fd065eb7355367d989d89945c65cf8baa",
+    "pages/8PPW.page": "4d8cad1faff2875363cb6d9e5ef912d1fe4f60f8502ddb9eb96f02512118625c",
+    "pages/AVJE.page": "31611edc273527fb2116ed36eb68c0c748516c63296fd7fc0702d72403337a4a",
+    "pages/AVRB.page": "8b273ae91c572e6f43feab8b6ef5ac3f6e871f92ab8b6fb2c3607a2afc6c276f",
+    "pages/CKFY.page": "a17489f79b1c439eef0be0bd254b1202e7aa34c12a938f32dca41a6b5fec5e9a",
+    "pages/CS2J.page": "2a53666902fc9065cd8d85fa8ea3288ab09688cc7563804e3ed1a95696c24b18",
+    "pages/CZD7.page": "670dbfb90bd3b8bc21913d1ec8179bdab89382bd5b475b85d5dec78da79186aa",
+    "pages/DPSB.page": "2cefa797139d7cbb281d4ccb4fa731302d4423facc0c07494d099f13d0080390",
+    "pages/DZ9U.page": "186e01eaa13527c25e80e1c5cd642a813b2335975c77a8099a60ec85dd5e3066",
+    "pages/E8XB.page": "373f6f9d9cfefce71189bd77c25b61ac70161c91f5dd346744823dc89ad67a0f",
+    "pages/G8WH.page": "f19b976630eb0fa5c8c50915656e3e7ba3f723e0fc3c9a96496adb8c04e82e37",
+    "pages/GRYJ.page": "72a38e7b06f6b8916a95e8472ad5c4a92bd171d6c055866c7008db3e0df24035",
+    "pages/GYRU.page": "f9c28cd810711f32adf2bbffcc2398c101c8ff6a16403ecd098023269626b691",
+    "pages/H62N.page": "900d13f7a73a7b242ac38213f7f055b73ee63538dc5edd634ca0f815276ce68f",
+    "pages/initial.page": "1b8eba932edcb6a1cedb87eae9f93a1c3f02fc54302dbadf3f2ead7d01cd44e5",
+    "pages/J3ZX.page": "4b2b869138d24925414aa016cd4a26c266cc82800af9b4416e76d91b79990f81",
+    "pages/JA2S.page": "e2b73ca3c3db0cc34a635f2bfb275da0e097838ad56a8251ab3ae196fdba82f3",
+    "pages/K28C.page": "ee2585eec8de697b3fb8449e35d69ec964a52bea8872da72bf67168793258b44",
+    "pages/K9P9.page": "230101eca6d3ab38b91aeb5ca1a8d47f9eb7443a8be97b1eeac2347b0ccc0b33",
+    "pages/PD5K.page": "bd06d6e27e0db349e716497ebc99bd280ab02c5dcd366256493f4bfb53a41025",
+    "pages/PQQR.page": "c28c60f48d9a27f68b7648867c3bf976f5c7ac16116c442f206f83aec0b4c130",
+    "pages/QHUX.page": "1e152bdde1a812048d7f70cda11c9e26f76b094216293112d35bd862027011ef",
+    "pages/TZM6.page": "4efb4ce91666a3a96ec26ea345d7784f4949966bd0fb68b9f5b3919530ca537b",
+    "pages/UBDB.page": "876605e2b1b95cc9806bdd852d8b8c95280dd311dd3cf57f9eb1a441696b3d70",
+    "pages/UGA7.page": "1e28605883f9c1bc61fc6ecb58541241261a9780ca9c694d1ef16318fb9413c0",
+    "pages/UZKY.page": "5a597d58b6ef8fcdf8f5c6621abca5059084f1acf61fe7192e29ecc3fd7ca7f0",
+    "pages/W4PY.page": "0e54ad488c93f9893a8a6cff5d53e9e7b2f0aff00b21625e0469357d95263439",
+    "pages/WDNH.page": "bacdc0a72df7e96a470c5f1ff385e361162f3c16a12ade8c02a04a7cad90b96f",
+    "pages/WMFA.page": "2b265983c246d9bb23f3515707f1c9e189a6f4a54184edc7f05bdcf186e6c3c8",
+    "pages/WQGW.page": "a458960ce2c7caab1c7ef74ea825f95999afcc8309b9ba0d5d309a2af7d0034d",
+    "pages/XZJN.page": "1022cb1a58b515c7c1047ffdb4d85502e563fd4c2b7ebcbd11c2f6be8d1e2cb4",
+    "pages/Z4XP.page": "279e7be40a9b5e1ba8e056c167f812eed4b673b2b20b9a21250f3ee757432d2d"
+  },
+  "sourceUnchanged": true,
+  "artifacts": [
+    {
+      "path": "../Exports/deck.pdf",
+      "sha256": "0e048750bb11d471eb22db77935ebe6740d6fdb41250077a1dddcc28a83bfd9c",
+      "bytes": 3056162,
+      "actor": "native author"
+    },
+    {
+      "path": "../Exports/deck.pptx",
+      "sha256": "2d9e53fec0b9c7ae76598a1f7623dc04841d062a63a1d452f2fcc2ddf049cbf1",
+      "bytes": 2682435,
+      "actor": "native author"
+    },
+    {
+      "path": "../Exports/brief.pdf",
+      "sha256": "f6f824f8bd3702427c55873bb6acae655bae745f71901885fcb3ef700eea87bf",
+      "bytes": 1843389,
+      "actor": "coordinator mechanical export of unchanged native-authored Presentation"
+    },
+    {
+      "path": "../Exports/brief.pptx",
+      "sha256": "b106cb7e2e14b0b1abad26168f816799ceb98de365f5468696a1672265dfca61",
+      "bytes": 1445425,
+      "actor": "coordinator mechanical export of unchanged native-authored Presentation"
+    }
+  ],
+  "powerPoint": {
+    "version": "16.0",
+    "pages": 22,
+    "sourceAndReadOnlyCopyUnchanged": true,
+    "inputSha256": "2d9e53fec0b9c7ae76598a1f7623dc04841d062a63a1d452f2fcc2ddf049cbf1",
+    "scope": "All 22 Main pages rendered; four contact sheets and ten full pages independently viewed. No separate brief Office run is claimed."
+  },
+  "sourceHashesRoot": "..",
+  "internalReviewSha256": "4232b538da2a462b6a285d4d91b772f1dd7700d7ce477ed0a9d1acbaa350f5b7",
+  "portableEvidence": [
+    "product-narrative.json",
+    "product-qa.json",
+    "product-native-author-report.md",
+    "product-assets.json",
+    "product-brief-export.json",
+    "product-correspondence-review.json"
+  ],
+  "sourceEvidence": [
+    "../pages/UGA7.page",
+    "../pages/5ZZM.page",
+    "../pages/CZD7.page",
+    "../pages/CKFY.page",
+    "../pages/XZJN.page",
+    "../pages/UZKY.page",
+    "../sources/story/FACTS.md"
+  ],
+  "sourceCodeCheck": {
+    "repository": "https://github.com/JaytonKogeru/huandeng",
+    "path": "packages/core/src/pptd/store.ts",
+    "sha256": "745fadf1085eb5de4f8ed1017182f68bdd840e2a12e766928799469df7fd5d1a",
+    "operation": "page.move",
+    "observedRevisionScope": "manifest"
+  }
+}

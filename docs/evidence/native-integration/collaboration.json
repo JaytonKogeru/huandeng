@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "test": "native-DSH-and-ChatGPT-shared-writer",
+  "recordedAtUtc": "2026-11-11T01:23:37.835067+00:00",
+  "fixture": {
+    "kind": "disposable-public-three-page-engineering-fixture",
+    "deckId": "9dc6a423-507c-456e-842b-b6d1e7c43249",
+    "sourceFiles": [
+      {
+        "path": "deck.pptd",
+        "bytes": 155,
+        "sha256": "0dfefa6312dfcef36d342f50e5795fa63fe85af03f4cd4d8e6399d7b1ef45a56"
+      },
+      {
+        "path": ".huandeng/project.json",
+        "bytes": 796,
+        "sha256": "45652c6645932151f9094388aab03f198f493281f8ac40396ee8eeeeffd62da3"
+      },
+      {
+        "path": "AGENTS.md",
+        "bytes": 380,
+        "sha256": "cda0d75db85d40bcd575fb34c0a1af4e053deac206a2e78cd841483a04edeeae"
+      },
+      {
+        "path": "pages/initial.page",
+        "bytes": 215,
+        "sha256": "58362ae47bd845364a93b5a1c2792574f61c67f85f1eef67554cdc94a8e2f58a"
+      },
+      {
+        "path": "pages/NM8X.page",
+        "bytes": 341,
+        "sha256": "12df41b8435b9ef3fd7d364b8e30e522d03eabbcf3ffb9fa6461fc7f74fd681e"
+      },
+      {
+        "path": "pages/V6S2.page",
+        "bytes": 305,
+        "sha256": "640ea3fc424f2ecf8df80f84c542abe540752fe5ef579dcd768a3bf28a856769"
+      }
+    ]
+  },
+  "nativeCompletion": {
+    "engine": "DeepSeek Harness",
+    "hostVersion": "0.2.2-rc.1",
+    "state": "completed",
+    "exitCode": 0,
+    "nativeCompleted": true,
+    "toolCalls": 48,
+    "configuredModelUnchanged": true,
+    "coordinatorAuthoredTest": true
+  },
+  "loadedPlugin": {
+    "version": "0.19.0",
+    "nativeTrialManifestSha256": "db0ef319d1ebfaccabbedfa16fe8509e8e4c4b4e753483710fd2d78f1ac4cf44",
+    "skillSha256": "f4188e0934e7846346e286286041f49592bec3231747caa99d0b7b32dd9d016b",
+    "route": "official headless native bundle, one existing huandeng row with an explicit fixture entry",
+    "laterDefaultDiscoveryFix": "A separate Desktop validation found and fixed the host-normalized empty entries array. This pinned-entry test used the original frozen candidate; the guide bytes and pinned-route behavior were unchanged."
+  },
+  "operations": {
+    "chatgptIndependent": "0897ddda-be59-45be-b425-ca80a511d89a",
+    "deepseekIndependent": "7ab608e3-392a-46b2-8713-7caa882a1413",
+    "chatgptContentHandoff": "c2249c4c-0023-4108-80b6-3855dbbcc40f",
+    "deepseekStyleHandoff": "c1613b3b-2050-4078-a01f-bc9c565569f9"
+  },
+  "outcomes": {
+    "differentPageBaselinePreserved": true,
+    "samePageStaleProposalRejected": true,
+    "samePageErrorCode": "REVISION_CONFLICT",
+    "staleProposalAttempts": 1,
+    "originalExpectedRevisionRetained": true,
+    "contentHandoffText": "Content handed off by ChatGPT",
+    "focusedStyleFields": ["content.fontSize", "content.color"],
+    "nativeRendered": true,
+    "nativeReviewedPeerOperation": true,
+    "independentlyCheckedFinalPageSource": true,
+    "writerReceiptAndFailureEventsVerified": true
+  },
+  "observedNativeTools": {
+    "mcp__huandeng-collabor-44b5b2ef02__huandeng_context": 1,
+    "mcp__huandeng-collabor-44b5b2ef02__huandeng_page_read": 8,
+    "mcp__huandeng-collabor-44b5b2ef02__huandeng_preview": 3,
+    "mcp__huandeng-collabor-44b5b2ef02__huandeng_apply": 3,
+    "mcp__huandeng-collabor-44b5b2ef02__huandeng_review": 2,
+    "mcp__huandeng-collabor-44b5b2ef02__huandeng_render": 1
+  },
+  "limitations": [
+    "The two clients prepared against the same baseline and committed through one serialized writer. This is not proof of simultaneous filesystem writes.",
+    "Only ChatGPT plus DSH were exercised here. Native Claude Code collaboration remained quota-blocked.",
+    "No section locks, scheduling, live cursors or assistant presence were implemented or inferred.",
+    "The native agent reported a Windows shell sandbox ACL failure and used file tools for barrier markers; no permissions were changed.",
+    "An agent render review is not author aesthetic approval."
+  ],
+  "evidenceDigests": {
+    "nativeResult": "5d3505867a7f4f0439d757c3138f1c99dddc6af982aa37e5570caf26eb0bf2b3",
+    "nativeStatus": "c9a06431af1f0d12343acd2f60736968f8244b920d6784d21f050d1adc19bdb9",
+    "toolEvents": "37d33a40130fe242f5416be82e05ea53954e4d786b47de271890784067ddfc84",
+    "writerActivity": "a895092883f7b2a16e2af56ca13b1ba078317b90a01809d4814b33ea25448b9d",
+    "coordinatorReceipt": "d0cb5b3d6ff7e48848a0426cf62f6459c67449139987ab2e08a471962d01b209",
+    "operationReviews": "7c8a6f6aac1d5fb7318469262bfdb09500177fa9d0b0a8e6e385583b385aa41b"
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "project": "claude-en",
+  "stage": "Completed native submission preceding the explicitly scoped final factual continuation",
+  "nativeRequestId": "70cb9448-8e3f-4d4d-9ad7-5deb40e25b11",
+  "mainPages": 25,
+  "nativeModel": "claude-opus-5-5",
+  "nativeToolCalls": 18,
+  "sourceHashes": {
+    "deck.pptd": "3dca92c3abb0b57d89a0aa922d22e9df73db315bb50af6dd30192fc9c0da27c7",
+    ".huandeng/project.json": "cb2a0c66606c3986d1319d08bb150d31036452a43de5ebaa11bed3d39acbfe8b",
+    "pages/2DC4.page": "f46ad048e3212823d3b6b58d1edc4af561c6efb99a4bfaf8d0d31caeaca9b1bb",
+    "pages/2SD8.page": "1fe2551ed220ce6ac6a96655497adec48c2774bbb07c1cc60a5ca37c5af52e6d",
+    "pages/3ECM.page": "99ff3707c13809f368eedc75e5743146c3757a086b63c12b5129ef1edd0590b2",
+    "pages/495F.page": "ead692f1b8b53daeb9989b66b3970835feeb4f69528f3afbd75f5e81af2e5724",
+    "pages/4V98.page": "e7a5889d3af8c2ff4e8d0adb2cc64aaf3a5d6452c95dc4d15462ffc3ff67364e",
+    "pages/4ZXH.page": "3c54a1d07e6fc5467e3393b0f51559328553bf0e28914f04abe334d3157ecdc3",
+    "pages/6FNH.page": "91d5a75001cf671f1b1357ce1587d17052d7287f9e8900117877010b8df1749b",
+    "pages/6SXG.page": "3fb8ef6f1915ceecc49a81c0b73c62ad52131646bfc5678bf76e3b2f83f0aa3c",
+    "pages/73AG.page": "5e843bdb2a001945d502e3539375c6e6642934666ac1c7857c17cea78f8d7f05",
+    "pages/7NHP.page": "7f8a7b224c0b4e80c014a9c2fac1a5001b270172625477ca770e2e109ff48f8e",
+    "pages/87VG.page": "50fce32b1aecab59351e787b0548bcc1841975ae60f832b1e2eae841311f7b5b",
+    "pages/AUBX.page": "1d96f1e13b616c9777c340245af9909d4b5f768beb193beeec99736e36fc6234",
+    "pages/AVNM.page": "21f2134a7d402d04ace4a125f22cbc93ac9edd8e5056b7dfc1a0121f86c23260",
+    "pages/AZJC.page": "2a05d64160af4d20c75fc65a956dd4848268a85ba27478ba171f206ee6fd93c5",
+    "pages/B487.page": "7abc2a17d1db6e5af624e756fb74ea986efebc26c915d84552c42d4ad6aa3ccc",
+    "pages/BW88.page": "fdf95817e086939f4d77643534459d4379ee5edc4915dfb476b1c6355a5f6f4b",
+    "pages/C45U.page": "fc07a50f239380091db6956274c22f68b361447790687ce18016d27e7c6b4470",
+    "pages/DKSN.page": "5e83e9f27db38f6f4ac7cce21293beeaee2b0cb53f98ad7ff6b8caddb58f75e4",
+    "pages/EEGK.page": "69cad11890ea98767cd7c41012f12a7f6fe3717fa73978006b57606aa78b69ef",
+    "pages/EMSZ.page": "f80cdc62a802e9249d58a18cdf12093f681008bee5eae3b088bff53e687cb8a1",
+    "pages/GDDR.page": "49f2508f75d4f39c892ae78747920ad6d849a8555aa1165f1cac23825a33841a",
+    "pages/initial.page": "d7a1284435ff793c11286e96e6bc8d1b22a21aa60659c1c167172f66b4f57362",
+    "pages/JZ7U.page": "a96f41b8a9618e300ab77dadcdd38fe852176d61f92d49f7c7b307a04cb59c75",
+    "pages/KM5E.page": "410cc176ac90cd21d864c3c9c2f98e5ed9f5ceabc6bae5c0fa5cd8db6f085d0e",
+    "pages/MEMH.page": "a13754e5b9079da6788979534635e685d1431b1e7f0f1da7cf7d1113defeb983",
+    "pages/NQGU.page": "ca16e319d0f97b041d12079b9cbc243ce303e119101d0bf413faad8c83d1821f",
+    "pages/PPKK.page": "255bee35b484a7697e7e67ecab9e263b4eaa91358f418e5f92b3a1a6b51ecfa1",
+    "pages/Q3YS.page": "3ba355dbe44eaec1c48b6d45fcfb5d1ffe23c841d805f49f5e74394e917f6e96",
+    "pages/QK69.page": "231d5525b078ee79eb31b36bd5ca79fc2d2de3803e23bd6d684f2608f9b360dc",
+    "pages/QMYQ.page": "681f14ed601352ba2a1f8744fb366190303bbd81ebf8c7d3d478fe384c1c3452",
+    "pages/RE8W.page": "07942024f6586ea2ddc54ce5a43a2ad47c565f66aa8976a4c26bbc9226234cc6",
+    "pages/RHDQ.page": "4829be14088e66a6b8aa200b5114ff9fc202d2d97075fbea61079cf1893c1a2c",
+    "pages/RQ64.page": "b94713e640a998aeae6c045a35f5f5ffb815b9ef891b2513a371b6b2ac528d11",
+    "pages/SHBY.page": "876bbae9e1fa03def7d4d3edb35ad1a20ac0ee334a7d62684835ca3d9094ad2a",
+    "pages/SMGE.page": "bb37e3a522c2c17c32097037cd0d1a10cf6848f8ae0cd94527092f0c9869cb5f",
+    "pages/SQNG.page": "ac66e61678e319d911e2c8a41c91822d9b99f035e85b37a1a8ac2365f08ddb2b",
+    "pages/SY94.page": "d1115e67dda0ab9244c54012d57610223f201e67a28314e6ed5d181553b4496c",
+    "pages/TFJB.page": "316a829f8934874e6f63f16d93c4936b72727c358efd018b4a4021b377365ec6",
+    "pages/TXNA.page": "6121e0ba4066be220a9cf6233085cdedbede0596e8a6afd3c05e41b354595327",
+    "pages/V2SV.page": "8edc0e70c7ab43ec662bedc8d168aa6861b5b8d97b4e8222f1c1f5a83de003cc",
+    "pages/WAJX.page": "06a9ae42a663b3f5d35453cbdb0d97589afde3dc247cd895342bcc930ff231aa",
+    "pages/WC3D.page": "6b6d3fed9af41422a956f25b75f178a77548ef4ad20f6094fe3a54b8a5a456b1",
+    "pages/XPFU.page": "44ce56b654890c254ae3334cb7327516001c9870431af777fa1c442933496ba1",
+    "pages/YPNR.page": "528cf8cca5aa33e504fc94aa0d8c21bd40b0a74b6a0299b1c92cb1af8657000d",
+    "pages/ZJ69.page": "3e546618d07c86d578080024db1682d481cc252980b3ba11b8b663662cad24d8",
+    "pages/ZYC6.page": "f42ddc980a72cee358afca3fe3bd0f8ef4661f121ac1c0d3c48392933e67c1f0"
+  },
+  "sourceHashesAreHistorical": true,
+  "priorMetadataSha256": "cb2a0c66606c3986d1319d08bb150d31036452a43de5ebaa11bed3d39acbfe8b",
+  "mainArtifacts": [
+    {
+      "sha256": "e2c0cbd11fe71c48d5226bde285b48aee0bd3edd1d11ecf14e7353ab23aa282e",
+      "bytes": 3550889,
+      "actor": "native author",
+      "exportPages": 25,
+      "fileName": "deck.pdf"
+    },
+    {
+      "sha256": "f45725990664bfa15106826efba5a2ad2142a38b001d3895bf80a374d19b5813",
+      "bytes": 3595017,
+      "actor": "native author",
+      "exportPages": 25,
+      "fileName": "deck.pptx"
+    }
+  ],
+  "powerPoint": {
+    "version": "16.0",
+    "mainPages": 25,
+    "inputSha256": "f45725990664bfa15106826efba5a2ad2142a38b001d3895bf80a374d19b5813",
+    "sourceAndCopyUnchanged": true,
+    "allFiveContactSheetsViewed": true,
+    "fullPagesViewed": [9, 12, 13, 18, 20, 23, 25],
+    "contactSheets": [
+      {
+        "path": "product-office-prior/contact-1.jpg",
+        "sha256": "c5c68278b41aca176bdb3c19654d567458fccaf8d75633d35c651d374654bee4"
+      },
+      {
+        "path": "product-office-prior/contact-2.jpg",
+        "sha256": "5be2d3dd312990d05cb1131b6e4b4721fd86e6235f4df2e89e002b1c18236593"
+      },
+      {
+        "path": "product-office-prior/contact-3.jpg",
+        "sha256": "4499ac78a0766e8329acc005e012f9ecb57a175ad6a1bd93f9956ae875839b05"
+      },
+      {
+        "path": "product-office-prior/contact-4.jpg",
+        "sha256": "13526714a2933f9585cf8107a2c0a687a9e1d027957db19257e425dd8eee16ce"
+      },
+      {
+        "path": "product-office-prior/contact-5.jpg",
+        "sha256": "c6a98507a52e9d3ad56669e5a3fbc0c1d8513e254b0c448ef7969023bf14f838"
+      }
+    ]
+  },
+  "englishPriorBriefActor": "Coordinator mechanical export of unchanged saved nine-page Presentation",
+  "originalInspectionSha256": "319fcd0d2052b39a3b9db770460f8731af997775348ea89f4bfa104973b716ff",
+  "originalOfficeReceiptSha256": "be250645b27c51992f01b937d607ccc676fb76694321643b9a38a76c01651ac2",
+  "authorAccepted": false
+}

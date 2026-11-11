@@ -332,15 +332,15 @@
       "designIntent": {
         "pageRole": "content",
         "language": "zh-CN",
-        "purpose": "把“我想做的”落成一页真正的科研内容：结构、曲线、数值和来源同时成立。",
-        "evidence": "PDB 1BNA 结构；12 个 C1′–C1′ 距离；原生表格；Drew et al. 1981；10.23–10.89 Å。",
+        "purpose": "一页能承载真实证据：结构、曲线、原生表格、数值和来源在同页成立。",
+        "evidence": "PDB 1BNA；12 个 C1′–C1′ 距离；原生表格；Drew et al. 1981；10.23–10.89 Å。",
         "keep": [
-          "保留原始结构、曲线、原生表格、坐标轴、来源和非独立实验说明。",
-          "保留非零纵轴与精确数值；不把 12 个位置写成独立重复实验或产品性能。"
+          "保留原图、曲线、原生表格、坐标轴和来源。",
+          "不把 12 个位置写成独立重复实验或产品性能。"
         ],
         "actor": "deepseek-harness",
-        "source": "sources/science README、CSV、measurements.json、source.json。",
-        "requestedChange": "从开篇证据页改为故事后段的“我想做的”示例页，保留真实科学内容。"
+        "source": "sources/science、FACTS.md、真实页面。",
+        "requestedChange": "从故事页改为编辑器的科学证据示例。"
       }
     },
     "307fe424-d34a-4b76-b801-4e8f63ba8cbb": {
@@ -445,15 +445,15 @@
       "designIntent": {
         "pageRole": "section",
         "language": "zh-CN",
-        "purpose": "Section 停顿：一页证据。",
+        "purpose": "Section 停顿：编辑器。",
         "evidence": "仅标题与灰绿底。",
         "keep": [
-          "标题页只保留 Section 标题，不添加页脚、编号或装饰对象。"
+          "标题页只保留 Section 标题，不添加页脚或装饰。"
         ],
-        "backgroundException": "标题停顿页使用灰绿色，建立章节节奏。",
+        "backgroundException": "标题停顿页使用灰绿色。",
         "actor": "deepseek-harness",
-        "source": "当前 AGENTS.md 对 title-only Section 的要求。",
-        "requestedChange": "在故事问题之后，进入一页真正科研内容。"
+        "source": "当前 AGENTS.md；0.19 产品结构。",
+        "requestedChange": "从“一页证据”章节改为产品与工作流。"
       }
     },
     "bdd7e3ff-5214-4e26-ab77-e31dc08830a5": {
@@ -502,7 +502,7 @@
     "d4aae0fc-1405-444f-b5d2-29ea75d5d7ab": {
       "shortCode": "PD5K",
       "path": "pages/PD5K.page",
-      "state": "active",
+      "state": "tombstone",
       "components": {},
       "elementRoles": {
         "section-title": "title"
@@ -635,7 +635,7 @@
     "04db5827-30fd-4c66-aa01-e29962dc3981": {
       "shortCode": "AVRB",
       "path": "pages/AVRB.page",
-      "state": "active",
+      "state": "tombstone",
       "components": {},
       "elementRoles": {
         "start-title": "title"
@@ -717,16 +717,16 @@
       "designIntent": {
         "pageRole": "content",
         "language": "zh-CN",
-        "purpose": "一个项目，不是一个文件：目录、页面、素材、Story、历史和视图。",
-        "evidence": "真实项目目录树；真实工作区截图；PPTX 的包结构说明。",
+        "purpose": "文件夹就是项目：目录、入口、页面/素材/Story/历史；0.19 支持打开文件夹或 deck.pptd。",
+        "evidence": "真实目录树；真实工作区截图；0.19 文件夹入口验证。",
         "keep": [
-          "保留实际目录结构与真实 UI 截图。",
-          "不声称 PPTX 没有页面结构；说明 HUANDENG 是把工作目录和页面服务显式化。",
-          "保留视图入口：项目/页面/素材/文件，浏览/大纲/章节/备注/历史。"
+          "保留实际目录结构、真实截图和 deck.pptd 入口。",
+          "不声称 PPTX 没有页面结构；不声称系统级文件夹双击关联。",
+          "目录后缀可选用，不是必需。"
         ],
         "actor": "deepseek-harness",
-        "source": "FACTS.md、真实项目目录、HUANDENG 0.18 工作区截图。",
-        "requestedChange": "用项目目录与一个文本框说明格式，不用文本框拼表格。"
+        "source": "0.19 validation、FACTS.md、真实项目目录。",
+        "requestedChange": "把项目页从故事说明改为可用的打开与移动说明。"
       }
     },
     "aab5e915-8c00-419d-a5b2-4377bd060559": {
@@ -749,68 +749,181 @@
         "source": "sources/science、MEDIA-INPUTS.json、真实资产分辨率截图。",
         "requestedChange": "用素材证据链回答“AI 怎样不把图当装饰”。"
       }
+    },
+    "62c6d0cc-885f-485c-a81e-baeaff6d1940": {
+      "shortCode": "Z4XP",
+      "path": "pages/Z4XP.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "def-title": "title"
+      },
+      "label": "S42",
+      "designIntent": {
+        "purpose": "定义产品结构：项目目录是文档，Editor 是工作台，插件/连接器把外部助手接到同一个写入器。",
+        "evidence": "真实 HUANDENG、Claude Code、ChatGPT、DeepSeek 标识；0.19 项目/写入器模型。",
+        "keep": [
+          "保留真实标识与授权工作站限定。",
+          "不声称自动章节锁、排班或在线状态。"
+        ],
+        "source": "AGENTS.md、0.19 guides、FACTS.md。",
+        "requestedChange": "补充产品定义和 Editor/project/plugin 关系。"
+      }
+    },
+    "4a40e022-4dcc-41ea-b645-a279b3f1b1e3": {
+      "shortCode": "5HUQ",
+      "path": "pages/5HUQ.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "work-title": "title"
+      },
+      "label": "S43",
+      "designIntent": {
+        "purpose": "展示真实工作区与同级视图：页面/章节、画布、属性与 Story、素材/文件/历史。",
+        "evidence": "0.18 中文公开示例全窗口截图。",
+        "keep": [
+          "保留真实中文 UI 截图；不把截图当作整份文档。",
+          "不将页面、素材、文件、历史描述为另一份文档。"
+        ],
+        "source": "HUANDENG 0.18 公开示例截图。",
+        "requestedChange": "补充真实工作区画面，替代文字堆叠。"
+      }
+    },
+    "415b064f-c96d-4e9c-b38a-ff1593101ee0": {
+      "shortCode": "4USM",
+      "path": "pages/4USM.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "data-title": "title"
+      },
+      "label": "S44",
+      "designIntent": {
+        "purpose": "说明页面是结构化对象：文字、图、表和线可寻址，截图只是审阅面。",
+        "evidence": "真实操作审阅截图；当前 1BNA 页面的对象参数。",
+        "keep": [
+          "保留真实操作审阅截图。",
+          "不声称 PPTX 没有结构；不声称截图能完成审阅。"
+        ],
+        "source": "0.19 操作指南、真实页面对象。",
+        "requestedChange": "补充结构化页面与 revision 的产品解释。"
+      }
+    },
+    "39c44252-dda5-483d-867f-4710547c0065": {
+      "shortCode": "5ZZM",
+      "path": "pages/5ZZM.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "agents-title": "title"
+      },
+      "label": "S45",
+      "designIntent": {
+        "purpose": "说明多助手共享一个写入器的真实边界：不同页面可并行，同页/共享元数据会冲突。",
+        "evidence": "真实客户端标识；0.19 协作/并发说明。",
+        "keep": [
+          "保留 ChatGPT 授权工作站限定。",
+          "不声称自动排班、章节锁或在线状态。",
+          "活动面板不是在线状态。"
+        ],
+        "source": "0.19 协作说明、FACTS.md。",
+        "requestedChange": "补充多助手协作边界，避免宣传过度。"
+      }
+    },
+    "bfdbde14-8414-4f84-baf4-4b413fb6a246": {
+      "shortCode": "K9P9",
+      "path": "pages/K9P9.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "credits-title": "title"
+      },
+      "label": "S46",
+      "designIntent": {
+        "purpose": "说明开源来源、商标归属和仍未完成的能力。",
+        "evidence": "OpenSlide、OpenPPTD 仓库标识、PptxGenJS、HUANDENG 实际标识；0.19 边界。",
+        "keep": [
+          "保留真实标识与归属说明。",
+          "不声称 Kimi 发明标准或背书。"
+        ],
+        "source": "FACTS.md、sources/brand。",
+        "requestedChange": "恢复被移除的致谢和当前边界。"
+      }
+    },
+    "4dd70003-c817-49c2-a367-786594eaab59": {
+      "shortCode": "QHUX",
+      "path": "pages/QHUX.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "start-title": "title"
+      },
+      "label": "S47",
+      "designIntent": {
+        "purpose": "给出可执行的第一步：打开文件夹或 deck.pptd，接助手，改一页，交付并带走整个目录。",
+        "evidence": "0.19 文件夹/入口行为；当前项目相对路径。",
+        "keep": [
+          "保留当前 deck.pptd 路径和整个目录一起移动的提醒。",
+          "不承诺系统级文件夹关联。",
+          "保留 1BNA 来源。"
+        ],
+        "source": "0.19 validation、当前项目路径。",
+        "requestedChange": "用可用行动替代口号收尾。"
+      }
     }
   },
   "project": {
     "schemaVersion": 1,
     "mainStory": {
-      "purpose": "讲清楚我为什么做 HUANDENG：AI 幻灯片缺少人的故事，修改以文件而不是页面为单位，视觉判断难以结构化；以及我如何用 Story、页面身份和项目目录回应这些问题。",
-      "audience": "第一次接触 HUANDENG 的科研报告作者、工具评估者和潜在合作者。",
-      "takeaway": "先讲人的故事，再做页；页面有身份和历史，AI 才能改得准、改得回；工具不替作者做科学和审美判断。"
+      "purpose": "介绍 HUANDENG 是一个围绕项目目录、页面身份、Story、素材和 revision 工作的桌面幻灯片编辑器；讲清它为何存在、怎么用、哪些边界真实存在。",
+      "audience": "科研报告作者、需要和多个 AI 助手协作的人、工具评估者。",
+      "takeaway": "项目是目录，页面是修改单位；Story 保留人的目的，素材保留证据，revision 保留协作边界；交付 PDF/PPTX，整个目录带走。"
     },
     "sections": [
       {
-        "id": "from-group-meeting",
+        "id": "problems",
         "title": "从组会说起",
         "story": {
-          "purpose": "从组会现场和两次具体修改经历，讲清做 HUANDENG 的两个动机：AI 质感和副本历史。",
+          "purpose": "用组会现场、AI 质感和副本问题，说明为什么要把页面当作修改单位。",
           "audience": "有 AI 幻灯片经验的研究者。",
-          "takeaway": "问题不是 AI 不会排版，而是没有取舍，也没有以页面为单位的修改。"
+          "takeaway": "问题在取舍和修改单位，不只在排版。"
         },
         "pageIds": [
           "307fe424-d34a-4b76-b801-4e8f63ba8cbb",
           "16f2ab87-6962-4100-b2f6-1ab8077b01c7",
           "b6749c12-2c5c-42b4-8437-763f6a800abf",
-          "007717f6-4756-4fc1-acdb-91ac96df37e6",
-          "53547db4-e3af-4397-a930-297080fef9c4",
-          "21d1d0de-ddc9-49ad-ad20-75e16d889012"
+          "007717f6-4756-4fc1-acdb-91ac96df37e6"
         ],
         "startPageId": "307fe424-d34a-4b76-b801-4e8f63ba8cbb"
       },
       {
-        "id": "one-evidence",
-        "title": "一页证据",
+        "id": "editor",
+        "title": "编辑器",
         "story": {
-          "purpose": "把抽象的 AI 质感落到一页真正的科研内容，以及它背后的素材与 Story。",
-          "audience": "关心图、数据、来源与解释的作者。",
-          "takeaway": "一页证据需要结构、数值和来源；Story 让 AI 知道该保留什么。"
+          "purpose": "从项目结构、打开方式、工作区、页面数据、Story、素材、身份、历史、修改、复用、多助手和交付，完整介绍工具怎么用、为什么好。",
+          "audience": "准备试用、评估或交接 HUANDENG 项目的人。",
+          "takeaway": "一个目录、一份页面底稿、可回看的历史；不同页面可以并行，同页冲突由 revision 保护；交付 PDF/PPTX，整个目录带走。"
         },
         "pageIds": [
           "a008b83f-9735-4495-8c59-0b2a2260c244",
+          "4a40e022-4dcc-41ea-b645-a279b3f1b1e3",
+          "53547db4-e3af-4397-a930-297080fef9c4",
+          "21d1d0de-ddc9-49ad-ad20-75e16d889012",
+          "2bda7c83-3e1b-46ee-83c7-e9b9b59a3578",
+          "415b064f-c96d-4e9c-b38a-ff1593101ee0",
           "442751c7-1ad1-457f-acbb-c1e8611f0ecd",
           "aab5e915-8c00-419d-a5b2-4377bd060559",
-          "81904faa-df61-47e7-a6ad-a02563b1c171"
-        ],
-        "startPageId": "a008b83f-9735-4495-8c59-0b2a2260c244"
-      },
-      {
-        "id": "one-project",
-        "title": "一个项目",
-        "story": {
-          "purpose": "展示项目、页面身份、历史、复用、AI 协作和交付如何组成一个工作流。",
-          "audience": "准备试用、评估或交接 HUANDENG 项目的人。",
-          "takeaway": "一个项目、一份页面底稿、可回看的历史；AI 在同一页上改，交付仍是可打开的文件。"
-        },
-        "pageIds": [
-          "d4aae0fc-1405-444f-b5d2-29ea75d5d7ab",
-          "2bda7c83-3e1b-46ee-83c7-e9b9b59a3578",
+          "81904faa-df61-47e7-a6ad-a02563b1c171",
+          "d23386ad-2c83-44fd-aa92-db09358af429",
           "e42a9867-65cf-4d38-a13b-ddf588dcdc68",
           "844dd3c1-4016-465d-a245-1b0f5fc01be8",
-          "d23386ad-2c83-44fd-aa92-db09358af429",
+          "39c44252-dda5-483d-867f-4710547c0065",
           "3df19be8-3e3c-4870-83e1-94ba44549899",
-          "04db5827-30fd-4c66-aa01-e29962dc3981"
+          "bfdbde14-8414-4f84-baf4-4b413fb6a246",
+          "4dd70003-c817-49c2-a367-786594eaab59"
         ],
-        "startPageId": "d4aae0fc-1405-444f-b5d2-29ea75d5d7ab"
+        "startPageId": "a008b83f-9735-4495-8c59-0b2a2260c244"
       }
     ],
     "presentations": [
@@ -818,11 +931,11 @@
         "id": "full",
         "title": "完整介绍",
         "story": {
-          "purpose": "从组会故事讲到问题、一页证据、项目结构和交付边界。",
+          "purpose": "从产品结构、问题、工作区、证据、Story、历史、修改、复用、多助手到交付，完整介绍 HUANDENG。",
           "audience": "第一次接触 HUANDENG 的科研报告作者与工具评估者。",
-          "takeaway": "先讲人的故事；页面有身份和历史；AI 在同一页上改，工具不替作者判断。"
+          "takeaway": "先看一个项目怎么工作，再看它为什么能帮人保留判断和证据。"
         },
-        "notes": "完整版，约十五分钟。按页面顺序讲；三个 Section 停顿页用于换气。",
+        "notes": "完整版，约十五分钟。产品和功能为主，组会故事只作为问题入口。",
         "items": [
           {
             "id": "f01",
@@ -832,72 +945,72 @@
           {
             "id": "f02",
             "kind": "page",
-            "pageId": "307fe424-d34a-4b76-b801-4e8f63ba8cbb"
+            "pageId": "62c6d0cc-885f-485c-a81e-baeaff6d1940"
           },
           {
             "id": "f03",
             "kind": "page",
-            "pageId": "16f2ab87-6962-4100-b2f6-1ab8077b01c7"
+            "pageId": "307fe424-d34a-4b76-b801-4e8f63ba8cbb"
           },
           {
             "id": "f04",
             "kind": "page",
-            "pageId": "b6749c12-2c5c-42b4-8437-763f6a800abf"
+            "pageId": "16f2ab87-6962-4100-b2f6-1ab8077b01c7"
           },
           {
             "id": "f05",
             "kind": "page",
-            "pageId": "007717f6-4756-4fc1-acdb-91ac96df37e6"
+            "pageId": "b6749c12-2c5c-42b4-8437-763f6a800abf"
           },
           {
             "id": "f06",
             "kind": "page",
-            "pageId": "53547db4-e3af-4397-a930-297080fef9c4"
+            "pageId": "007717f6-4756-4fc1-acdb-91ac96df37e6"
           },
           {
             "id": "f07",
             "kind": "page",
-            "pageId": "21d1d0de-ddc9-49ad-ad20-75e16d889012"
+            "pageId": "a008b83f-9735-4495-8c59-0b2a2260c244"
           },
           {
             "id": "f08",
             "kind": "page",
-            "pageId": "a008b83f-9735-4495-8c59-0b2a2260c244"
+            "pageId": "4a40e022-4dcc-41ea-b645-a279b3f1b1e3"
           },
           {
             "id": "f09",
             "kind": "page",
-            "pageId": "442751c7-1ad1-457f-acbb-c1e8611f0ecd"
+            "pageId": "53547db4-e3af-4397-a930-297080fef9c4"
           },
           {
             "id": "f10",
             "kind": "page",
-            "pageId": "aab5e915-8c00-419d-a5b2-4377bd060559"
+            "pageId": "21d1d0de-ddc9-49ad-ad20-75e16d889012"
           },
           {
             "id": "f11",
             "kind": "page",
-            "pageId": "81904faa-df61-47e7-a6ad-a02563b1c171"
+            "pageId": "2bda7c83-3e1b-46ee-83c7-e9b9b59a3578"
           },
           {
             "id": "f12",
             "kind": "page",
-            "pageId": "d4aae0fc-1405-444f-b5d2-29ea75d5d7ab"
+            "pageId": "415b064f-c96d-4e9c-b38a-ff1593101ee0"
           },
           {
             "id": "f13",
             "kind": "page",
-            "pageId": "2bda7c83-3e1b-46ee-83c7-e9b9b59a3578"
+            "pageId": "442751c7-1ad1-457f-acbb-c1e8611f0ecd"
           },
           {
             "id": "f14",
             "kind": "page",
-            "pageId": "e42a9867-65cf-4d38-a13b-ddf588dcdc68"
+            "pageId": "aab5e915-8c00-419d-a5b2-4377bd060559"
           },
           {
             "id": "f15",
             "kind": "page",
-            "pageId": "844dd3c1-4016-465d-a245-1b0f5fc01be8"
+            "pageId": "81904faa-df61-47e7-a6ad-a02563b1c171"
           },
           {
             "id": "f16",
@@ -907,12 +1020,32 @@
           {
             "id": "f17",
             "kind": "page",
-            "pageId": "3df19be8-3e3c-4870-83e1-94ba44549899"
+            "pageId": "e42a9867-65cf-4d38-a13b-ddf588dcdc68"
           },
           {
             "id": "f18",
             "kind": "page",
-            "pageId": "04db5827-30fd-4c66-aa01-e29962dc3981"
+            "pageId": "844dd3c1-4016-465d-a245-1b0f5fc01be8"
+          },
+          {
+            "id": "f19",
+            "kind": "page",
+            "pageId": "39c44252-dda5-483d-867f-4710547c0065"
+          },
+          {
+            "id": "f20",
+            "kind": "page",
+            "pageId": "3df19be8-3e3c-4870-83e1-94ba44549899"
+          },
+          {
+            "id": "f21",
+            "kind": "page",
+            "pageId": "bfdbde14-8414-4f84-baf4-4b413fb6a246"
+          },
+          {
+            "id": "f22",
+            "kind": "page",
+            "pageId": "4dd70003-c817-49c2-a367-786594eaab59"
           }
         ]
       },
@@ -920,11 +1053,11 @@
         "id": "brief",
         "title": "短版 · 约十分钟",
         "story": {
-          "purpose": "保留故事主线：组会、AI 质感、副本、页面身份、一页证据、Story 与一次修改。",
+          "purpose": "保留产品结构、问题、工作区、证据、Story、修改、复用与多助手，删去部分演示细节。",
           "audience": "时间有限的组会或产品介绍。",
-          "takeaway": "先讲人的故事，再让 AI 在同一页上改。"
+          "takeaway": "一个项目，一个写入器；页面可以改、可以审阅，也可以多次出场。"
         },
-        "notes": "短版复用完整版的 Main Slides，不复制页面；删去项目结构与交付细节，保留故事与证据。",
+        "notes": "短版复用完整版的 Main Slides，不复制页面。",
         "items": [
           {
             "id": "b01",
@@ -934,27 +1067,27 @@
           {
             "id": "b02",
             "kind": "page",
-            "pageId": "16f2ab87-6962-4100-b2f6-1ab8077b01c7"
+            "pageId": "62c6d0cc-885f-485c-a81e-baeaff6d1940"
           },
           {
             "id": "b03",
             "kind": "page",
-            "pageId": "b6749c12-2c5c-42b4-8437-763f6a800abf"
+            "pageId": "16f2ab87-6962-4100-b2f6-1ab8077b01c7"
           },
           {
             "id": "b04",
             "kind": "page",
-            "pageId": "007717f6-4756-4fc1-acdb-91ac96df37e6"
+            "pageId": "b6749c12-2c5c-42b4-8437-763f6a800abf"
           },
           {
             "id": "b05",
             "kind": "page",
-            "pageId": "53547db4-e3af-4397-a930-297080fef9c4"
+            "pageId": "007717f6-4756-4fc1-acdb-91ac96df37e6"
           },
           {
             "id": "b06",
             "kind": "page",
-            "pageId": "21d1d0de-ddc9-49ad-ad20-75e16d889012"
+            "pageId": "4a40e022-4dcc-41ea-b645-a279b3f1b1e3"
           },
           {
             "id": "b07",
@@ -969,17 +1102,22 @@
           {
             "id": "b09",
             "kind": "page",
-            "pageId": "844dd3c1-4016-465d-a245-1b0f5fc01be8"
+            "pageId": "d23386ad-2c83-44fd-aa92-db09358af429"
           },
           {
             "id": "b10",
             "kind": "page",
-            "pageId": "d23386ad-2c83-44fd-aa92-db09358af429"
+            "pageId": "e42a9867-65cf-4d38-a13b-ddf588dcdc68"
           },
           {
             "id": "b11",
             "kind": "page",
-            "pageId": "04db5827-30fd-4c66-aa01-e29962dc3981"
+            "pageId": "39c44252-dda5-483d-867f-4710547c0065"
+          },
+          {
+            "id": "b12",
+            "kind": "page",
+            "pageId": "4dd70003-c817-49c2-a367-786594eaab59"
           }
         ]
       }

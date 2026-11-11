@@ -6,13 +6,10 @@ elements:
   - elementId: title
     elementType: text
     bounds:
-      - 44
-      - 35
-      - 870
-      - 67
+        [42,34,880,76]
     role: title
     content:
-      {"text":"这次只把说明讲清楚","fontFamily":"Microsoft YaHei","fontSize":28,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
+      {"text":"让请求和实际改动对得上","fontFamily":"Noto Serif SC","fontSize":28,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
   - elementId: request
     elementType: text
     bounds:
@@ -21,15 +18,7 @@ elements:
       - 870
       - 49
     content:
-      text: “把标题和解释收紧；原图、数值、坐标轴和来源都保留。”
-      fontFamily: Microsoft YaHei
-      fontSize: 18
-      color: "#263C34"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
+      {"text":"“把标题和解释收紧；原图、数值、坐标轴和来源都保留。”","fontFamily":"Noto Sans SC","fontSize":18,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
   - elementId: before-label
     elementType: text
     bounds:
@@ -38,15 +27,7 @@ elements:
       - 412
       - 26
     content:
-      text: 修改前
-      fontFamily: Microsoft YaHei
-      fontSize: 16
-      color: "#66756B"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
+      {"text":"修改前","fontFamily":"Noto Sans SC","fontSize":16,"color":"#66756B","bold":false,"align":["left","top"],"lineHeight":1.3}
   - elementId: after-label
     elementType: text
     bounds:
@@ -55,15 +36,7 @@ elements:
       - 412
       - 26
     content:
-      text: 修改后
-      fontFamily: Microsoft YaHei
-      fontSize: 16
-      color: "#356F68"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
+      {"text":"修改后","fontFamily":"Noto Sans SC","fontSize":16,"color":"#356F68","bold":false,"align":["left","top"],"lineHeight":1.3}
   - elementId: before
     elementType: image
     src: media/imported/8c227b1f1956f9c1f7448e8f6f533ee0feaf909d19e318f5b7b69b7d728b7f28.png
@@ -117,15 +90,7 @@ elements:
       - 834
       - 43
     content:
-      text: 2 处文字变化 · 12 个数值与原图完整保留
-      fontFamily: Microsoft YaHei
-      fontSize: 17
-      color: "#356F68"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
+      {"text":"2 处文字变化 · 12 个数值与原图完整保留","fontFamily":"Noto Sans SC","fontSize":17,"color":"#356F68","bold":false,"align":["left","top"],"lineHeight":1.3}
   - elementId: brand-small
     elementType: image
     src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
@@ -151,15 +116,7 @@ elements:
       - 130
       - 17
     content:
-      text: HUANDENG
-      fontFamily: Microsoft YaHei
-      fontSize: 10
-      color: "#66756B"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
+      {"text":"HUANDENG","fontFamily":"Noto Sans SC","fontSize":10,"color":"#66756B","bold":false,"align":["left","top"],"lineHeight":1.3}
   - elementId: position
     elementType: text
     bounds:
@@ -168,14 +125,5 @@ elements:
       - 30
       - 18
     content:
-      text: ""
-      fontFamily: Microsoft YaHei
-      fontSize: 10
-      color: "#66756B"
-      bold: false
-      align:
-        - right
-        - top
-      lineHeight: 1.3
-      field: main-position
-notes: "实际请求可以很小：把这一页的标题和解释讲得更清楚，保留原始图、十二个数值、坐标轴和来源。这里展示的是这次操作实际保存的修改前后。Agent通过当前版本读取、预览、保存修改，我再看结果。请求的范围与最终改动能够对应起来，才有可能放心地继续编辑同一份作品。"
+      {"text":"","fontFamily":"Noto Sans SC","fontSize":10,"color":"#66756B","bold":false,"align":["right","top"],"lineHeight":1.3,"field":"main-position"}
+notes: "这里展示一次真正保存过的局部编辑。请求只收紧标题和解释，原图、十二个数值、轴与出处保持不动。修改前后来自这次操作的真实快照，范围可以逐项核对。下一步不只是看最终页面好不好看，还要知道这页是谁、改过什么。\n\nSaved operation: cb19f7f2-c9d6-4f76-8981-759076f20fde. Verification: evidence/wording-edit.json."

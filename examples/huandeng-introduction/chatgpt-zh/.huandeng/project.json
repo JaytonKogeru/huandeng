@@ -488,16 +488,15 @@
       "elementRoles": {},
       "label": "S24",
       "designIntent": {
-        "purpose": "用一个公开科学页说明局部编辑如何保留原图、数值与来源。",
+        "purpose": "这是贯穿操作演示的一页公开科学材料",
         "keep": [
-          "原始结构与配对标记",
-          "12 个原值、坐标轴和单位",
-          "来源与证据范围"
+          "保留真实产品截图、原始科学数据和素材、明确出处以及本页实际演示的功能。普通文字不要拆成假表格。",
+          "保留全部十二个C1′距离、单位、链标识、来源和非重复实验的说明。"
         ],
-        "requestedChange": "根据作者口述，让这一页解释一个真实经历或对应的设计选择。",
+        "requestedChange": "解释产品与实际使用方法；以作者的叙述决定重点，不复述口述。",
         "actor": "ChatGPT",
-        "source": "sources/story/USER-STORY.zh-CN.md",
-        "recordedAt": "2026-11-10T22:36:30.617Z",
+        "source": "sources/story/PRODUCT-BRIEF.md",
+        "recordedAt": "2026-11-11T00:50:54.847Z",
         "pageRole": "content"
       }
     },
@@ -510,15 +509,14 @@
       "label": "S25",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "这套工作流并不要求只用一种模型。",
+        "purpose": "第一次接入时，点击编辑器顶部的“助手连接”，选择客户端，按其中的说明配置",
         "keep": [
-          "Keep source figures, labels, measured values and citations",
-          "Keep intentional background roles, product identity and meaningful density"
+          "保留真实产品截图、原始科学数据和素材、明确出处以及本页实际演示的功能。普通文字不要拆成假表格。"
         ],
-        "requestedChange": "根据作者口述，让这一页解释一个真实经历或对应的设计选择。",
+        "requestedChange": "解释产品与实际使用方法；以作者的叙述决定重点，不复述口述。",
         "actor": "ChatGPT",
-        "source": "sources/story/USER-STORY.zh-CN.md",
-        "recordedAt": "2026-11-10T22:36:40.287Z"
+        "source": "sources/story/PRODUCT-BRIEF.md",
+        "recordedAt": "2026-11-11T01:36:41.475Z"
       }
     },
     "7995de62-e81e-46db-b250-cabc66a99b28": {
@@ -530,16 +528,14 @@
       "label": "S26",
       "designIntent": {
         "pageRole": "cover",
-        "purpose": "从组会中的真实困扰出发，介绍我为什么做HUANDENG。",
+        "purpose": "HUANDENG是一个面向科研演示的编辑工作流",
         "keep": [
-          "Keep source figures, labels, measured values and citations",
-          "Keep intentional background roles, product identity and meaningful density",
-          "保留第一人称动机与实际编辑器画面。"
+          "保留真实产品截图、原始科学数据和素材、明确出处以及本页实际演示的功能。普通文字不要拆成假表格。"
         ],
-        "requestedChange": "根据作者口述，让这一页解释一个真实经历或对应的设计选择。",
+        "requestedChange": "解释产品与实际使用方法；以作者的叙述决定重点，不复述口述。",
         "actor": "ChatGPT",
-        "source": "sources/story/USER-STORY.zh-CN.md",
-        "recordedAt": "2026-11-10T22:50:56.829Z"
+        "source": "sources/story/PRODUCT-BRIEF.md",
+        "recordedAt": "2026-11-11T01:16:03.560Z"
       }
     },
     "b55179ed-446c-42a7-a2d5-2557defac052": {
@@ -553,15 +549,14 @@
       "label": "S27",
       "designIntent": {
         "pageRole": "section",
-        "purpose": "这些困扰让我想把页面作为持续修改的单位。",
+        "purpose": "先从一张页开始：找到编辑位置，留下目的与证据，再完成一次可检查的局部修改",
         "keep": [
-          "Keep source figures, labels, measured values and citations",
-          "Keep intentional background roles, product identity and meaningful density"
+          "保留真实产品截图、原始科学数据和素材、明确出处以及本页实际演示的功能。普通文字不要拆成假表格。"
         ],
-        "requestedChange": "根据作者口述，让这一页解释一个真实经历或对应的设计选择。",
+        "requestedChange": "解释产品与实际使用方法；以作者的叙述决定重点，不复述口述。",
         "actor": "ChatGPT",
-        "source": "sources/story/USER-STORY.zh-CN.md",
-        "recordedAt": "2026-11-10T22:36:13.517Z"
+        "source": "sources/story/PRODUCT-BRIEF.md",
+        "recordedAt": "2026-11-11T01:36:19.781Z"
       }
     },
     "7b5bb42e-c529-49f8-ad88-62c69b567837": {
@@ -573,15 +568,14 @@
       "label": "S28",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "原图之外，我也希望表和公式能继续编辑。",
+        "purpose": "前一页的图表保留十二个位置的原值",
         "keep": [
-          "Keep source figures, labels, measured values and citations",
-          "Keep intentional background roles, product identity and meaningful density"
+          "保留真实产品截图、原始科学数据和素材、明确出处以及本页实际演示的功能。普通文字不要拆成假表格。"
         ],
-        "requestedChange": "根据作者口述，让这一页解释一个真实经历或对应的设计选择。",
+        "requestedChange": "解释产品与实际使用方法；以作者的叙述决定重点，不复述口述。",
         "actor": "ChatGPT",
-        "source": "sources/story/USER-STORY.zh-CN.md",
-        "recordedAt": "2026-11-10T22:36:37.099Z"
+        "source": "sources/story/PRODUCT-BRIEF.md",
+        "recordedAt": "2026-11-11T01:17:46.216Z"
       }
     },
     "7b69742f-16b5-4b80-acf0-1d23966aae96": {
@@ -593,15 +587,14 @@
       "label": "S29",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "实际请求可以很小：把这一页的标题和解释讲得更清楚，保留原始图、十二个数值、坐标轴和来源。",
+        "purpose": "这里展示一次真正保存过的局部编辑",
         "keep": [
-          "Keep source figures, labels, measured values and citations",
-          "Keep intentional background roles, product identity and meaningful density"
+          "保留真实产品截图、原始科学数据和素材、明确出处以及本页实际演示的功能。普通文字不要拆成假表格。"
         ],
-        "requestedChange": "根据作者口述，让这一页解释一个真实经历或对应的设计选择。",
+        "requestedChange": "解释产品与实际使用方法；以作者的叙述决定重点，不复述口述。",
         "actor": "ChatGPT",
-        "source": "sources/story/USER-STORY.zh-CN.md",
-        "recordedAt": "2026-11-10T22:36:38.153Z"
+        "source": "sources/story/PRODUCT-BRIEF.md",
+        "recordedAt": "2026-11-11T00:51:08.802Z"
       }
     },
     "3483b895-bc52-43b6-a7c4-001a0d1e4526": {
@@ -613,15 +606,14 @@
       "label": "S30",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "有了文档和历史，还需要一个人愿意使用的工作区。",
+        "purpose": "先认识工作区",
         "keep": [
-          "Keep source figures, labels, measured values and citations",
-          "Keep intentional background roles, product identity and meaningful density"
+          "保留真实产品截图、原始科学数据和素材、明确出处以及本页实际演示的功能。普通文字不要拆成假表格。"
         ],
-        "requestedChange": "根据作者口述，让这一页解释一个真实经历或对应的设计选择。",
+        "requestedChange": "解释产品与实际使用方法；以作者的叙述决定重点，不复述口述。",
         "actor": "ChatGPT",
-        "source": "sources/story/USER-STORY.zh-CN.md",
-        "recordedAt": "2026-11-10T22:51:07.645Z"
+        "source": "sources/story/PRODUCT-BRIEF.md",
+        "recordedAt": "2026-11-11T01:05:20.422Z"
       }
     },
     "59857807-d9f3-4e58-9a60-275cd504ea16": {
@@ -633,15 +625,14 @@
       "label": "S31",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "素材库对我尤其重要。",
+        "purpose": "素材库的价值是在下一轮还能找到同一份原材料",
         "keep": [
-          "Keep source figures, labels, measured values and citations",
-          "Keep intentional background roles, product identity and meaningful density"
+          "保留真实产品截图、原始科学数据和素材、明确出处以及本页实际演示的功能。普通文字不要拆成假表格。"
         ],
-        "requestedChange": "根据作者口述，让这一页解释一个真实经历或对应的设计选择。",
+        "requestedChange": "解释产品与实际使用方法；以作者的叙述决定重点，不复述口述。",
         "actor": "ChatGPT",
-        "source": "sources/story/USER-STORY.zh-CN.md",
-        "recordedAt": "2026-11-10T23:06:07.324Z"
+        "source": "sources/story/PRODUCT-BRIEF.md",
+        "recordedAt": "2026-11-11T01:05:34.698Z"
       }
     },
     "def43d68-1767-45f5-800a-17d648750b7e": {
@@ -655,15 +646,14 @@
       "label": "S32",
       "designIntent": {
         "pageRole": "section",
-        "purpose": "页面身份和历史明确了修改的边界。",
+        "purpose": "单页可以继续编辑之后，再组织整场演讲：检查节奏，选择页面，为这次听众调整讲法",
         "keep": [
-          "Keep source figures, labels, measured values and citations",
-          "Keep intentional background roles, product identity and meaningful density"
+          "保留真实产品截图、原始科学数据和素材、明确出处以及本页实际演示的功能。普通文字不要拆成假表格。"
         ],
-        "requestedChange": "根据作者口述，让这一页解释一个真实经历或对应的设计选择。",
+        "requestedChange": "解释产品与实际使用方法；以作者的叙述决定重点，不复述口述。",
         "actor": "ChatGPT",
-        "source": "sources/story/USER-STORY.zh-CN.md",
-        "recordedAt": "2026-11-10T22:36:22.355Z"
+        "source": "sources/story/PRODUCT-BRIEF.md",
+        "recordedAt": "2026-11-11T01:36:26.897Z"
       }
     },
     "ea528c6a-2423-488d-834b-056322cca744": {
@@ -675,15 +665,14 @@
       "label": "S33",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "有了稳定身份，历史才能跟着这一页走。",
+        "purpose": "选中页面，进入History，可以查看操作记录，也可以记录一个有意义的命名版本",
         "keep": [
-          "Keep source figures, labels, measured values and citations",
-          "Keep intentional background roles, product identity and meaningful density"
+          "保留真实产品截图、原始科学数据和素材、明确出处以及本页实际演示的功能。普通文字不要拆成假表格。"
         ],
-        "requestedChange": "根据作者口述，让这一页解释一个真实经历或对应的设计选择。",
+        "requestedChange": "解释产品与实际使用方法；以作者的叙述决定重点，不复述口述。",
         "actor": "ChatGPT",
-        "source": "sources/story/USER-STORY.zh-CN.md",
-        "recordedAt": "2026-11-10T22:36:21.627Z"
+        "source": "sources/story/PRODUCT-BRIEF.md",
+        "recordedAt": "2026-11-11T01:36:49.627Z"
       }
     },
     "05cd8517-c8ac-4e12-b2d0-40c438b91042": {
@@ -695,15 +684,14 @@
       "label": "S34",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "Story是我把人的讲述留下来的位置。",
+        "purpose": "讲故事是为了让Agent理解我们要完成什么",
         "keep": [
-          "Keep source figures, labels, measured values and citations",
-          "Keep intentional background roles, product identity and meaningful density"
+          "保留真实产品截图、原始科学数据和素材、明确出处以及本页实际演示的功能。普通文字不要拆成假表格。"
         ],
-        "requestedChange": "根据作者口述，让这一页解释一个真实经历或对应的设计选择。",
+        "requestedChange": "解释产品与实际使用方法；以作者的叙述决定重点，不复述口述。",
         "actor": "ChatGPT",
-        "source": "sources/story/USER-STORY.zh-CN.md",
-        "recordedAt": "2026-11-10T22:54:05.481Z"
+        "source": "sources/story/PRODUCT-BRIEF.md",
+        "recordedAt": "2026-11-11T01:05:26.847Z"
       }
     },
     "d64aef1b-eb88-4b05-a620-ae60a0e833de": {
@@ -717,15 +705,14 @@
       "label": "S35",
       "designIntent": {
         "pageRole": "section",
-        "purpose": "这些操作最终要回到讲述现场。",
+        "purpose": "页面与演讲已经组织起来，接下来说明人和不同助手怎样接入同一个项目、分工、交接与交付",
         "keep": [
-          "Keep source figures, labels, measured values and citations",
-          "Keep intentional background roles, product identity and meaningful density"
+          "保留真实产品截图、原始科学数据和素材、明确出处以及本页实际演示的功能。普通文字不要拆成假表格。"
         ],
-        "requestedChange": "根据作者口述，让这一页解释一个真实经历或对应的设计选择。",
+        "requestedChange": "解释产品与实际使用方法；以作者的叙述决定重点，不复述口述。",
         "actor": "ChatGPT",
-        "source": "sources/story/USER-STORY.zh-CN.md",
-        "recordedAt": "2026-11-10T22:36:41.171Z"
+        "source": "sources/story/PRODUCT-BRIEF.md",
+        "recordedAt": "2026-11-11T01:36:34.307Z"
       }
     },
     "68f5273e-3f0d-4e5d-84d1-38391280cead": {
@@ -737,15 +724,14 @@
       "label": "S36",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "回到开组会这件事，我不一定每次都讲同样的内容。",
+        "purpose": "Main Slides保存可持续积累的页面",
         "keep": [
-          "Keep source figures, labels, measured values and citations",
-          "Keep intentional background roles, product identity and meaningful density"
+          "保留真实产品截图、原始科学数据和素材、明确出处以及本页实际演示的功能。普通文字不要拆成假表格。"
         ],
-        "requestedChange": "根据作者口述，让这一页解释一个真实经历或对应的设计选择。",
+        "requestedChange": "解释产品与实际使用方法；以作者的叙述决定重点，不复述口述。",
         "actor": "ChatGPT",
-        "source": "sources/story/USER-STORY.zh-CN.md",
-        "recordedAt": "2026-11-10T23:06:12.982Z"
+        "source": "sources/story/PRODUCT-BRIEF.md",
+        "recordedAt": "2026-11-11T01:45:11.109Z"
       }
     },
     "129dfdc6-685d-48b4-972b-abff11f823e6": {
@@ -757,15 +743,14 @@
       "label": "S37",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "把一页作为修改单位，还有一个前提：我们得知道说的是哪一页。",
+        "purpose": "Position只是当前顺序；重排后第四页可能就不是原来的第四页",
         "keep": [
-          "Keep source figures, labels, measured values and citations",
-          "Keep intentional background roles, product identity and meaningful density"
+          "保留真实产品截图、原始科学数据和素材、明确出处以及本页实际演示的功能。普通文字不要拆成假表格。"
         ],
-        "requestedChange": "根据作者口述，让这一页解释一个真实经历或对应的设计选择。",
+        "requestedChange": "解释产品与实际使用方法；以作者的叙述决定重点，不复述口述。",
         "actor": "ChatGPT",
-        "source": "sources/story/USER-STORY.zh-CN.md",
-        "recordedAt": "2026-11-10T22:36:20.445Z"
+        "source": "sources/story/PRODUCT-BRIEF.md",
+        "recordedAt": "2026-11-11T01:12:57.564Z"
       }
     },
     "baca190c-e87b-415f-9c30-7c04e3fabe17": {
@@ -777,15 +762,14 @@
       "label": "S38",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "有时我希望演讲继续跟随主稿改动，有时我需要留住已经确认的画面。",
+        "purpose": "有些演讲希望跟随主稿继续更新，有些演讲要保留某个已确定阶段",
         "keep": [
-          "Keep source figures, labels, measured values and citations",
-          "Keep intentional background roles, product identity and meaningful density"
+          "保留真实产品截图、原始科学数据和素材、明确出处以及本页实际演示的功能。普通文字不要拆成假表格。"
         ],
-        "requestedChange": "根据作者口述，让这一页解释一个真实经历或对应的设计选择。",
+        "requestedChange": "解释产品与实际使用方法；以作者的叙述决定重点，不复述口述。",
         "actor": "ChatGPT",
-        "source": "sources/story/USER-STORY.zh-CN.md",
-        "recordedAt": "2026-11-10T22:51:45.922Z"
+        "source": "sources/story/PRODUCT-BRIEF.md",
+        "recordedAt": "2026-11-11T01:13:04.618Z"
       }
     },
     "f68f052b-18ac-4286-ae3b-6f12e5c5d0d0": {
@@ -797,15 +781,14 @@
       "label": "S39",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "准备好之后，可以直接放映，也可以导出给别人继续使用的PPTX和方便阅读的PDF。",
+        "purpose": "准备好之后，从同一份项目放映或导出",
         "keep": [
-          "Keep source figures, labels, measured values and citations",
-          "Keep intentional background roles, product identity and meaningful density"
+          "保留真实产品截图、原始科学数据和素材、明确出处以及本页实际演示的功能。普通文字不要拆成假表格。"
         ],
-        "requestedChange": "根据作者口述，让这一页解释一个真实经历或对应的设计选择。",
+        "requestedChange": "解释产品与实际使用方法；以作者的叙述决定重点，不复述口述。",
         "actor": "ChatGPT",
-        "source": "sources/story/USER-STORY.zh-CN.md",
-        "recordedAt": "2026-11-10T22:51:30.119Z"
+        "source": "sources/story/PRODUCT-BRIEF.md",
+        "recordedAt": "2026-11-11T01:05:49.094Z"
       }
     },
     "503c86ce-673c-4229-9251-22114e5f5da9": {
@@ -817,15 +800,14 @@
       "label": "S40",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "在HUANDENG里，打开deck.pptd就进入这个项目，但它不是一个孤立文件。",
+        "purpose": "deck.pptd是启动入口，整个目录才是完整项目",
         "keep": [
-          "Keep source figures, labels, measured values and citations",
-          "Keep intentional background roles, product identity and meaningful density"
+          "保留真实产品截图、原始科学数据和素材、明确出处以及本页实际演示的功能。普通文字不要拆成假表格。"
         ],
-        "requestedChange": "根据作者口述，让这一页解释一个真实经历或对应的设计选择。",
+        "requestedChange": "解释产品与实际使用方法；以作者的叙述决定重点，不复述口述。",
         "actor": "ChatGPT",
-        "source": "sources/story/USER-STORY.zh-CN.md",
-        "recordedAt": "2026-11-10T22:36:19.402Z"
+        "source": "sources/story/PRODUCT-BRIEF.md",
+        "recordedAt": "2026-11-11T01:20:45.023Z"
       }
     },
     "bd3c71d1-360e-4e0c-bbb6-5938970e8876": {
@@ -837,15 +819,14 @@
       "label": "S41",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "接下来我开始找技术上可以借用的思路。",
+        "purpose": "HUANDENG的代码基础来自OpenSlide",
         "keep": [
-          "Keep source figures, labels, measured values and citations",
-          "Keep intentional background roles, product identity and meaningful density"
+          "保留真实产品截图、原始科学数据和素材、明确出处以及本页实际演示的功能。普通文字不要拆成假表格。"
         ],
-        "requestedChange": "根据作者口述，让这一页解释一个真实经历或对应的设计选择。",
+        "requestedChange": "解释产品与实际使用方法；以作者的叙述决定重点，不复述口述。",
         "actor": "ChatGPT",
-        "source": "sources/story/USER-STORY.zh-CN.md",
-        "recordedAt": "2026-11-10T22:36:12.722Z"
+        "source": "sources/story/PRODUCT-BRIEF.md",
+        "recordedAt": "2026-11-11T00:54:52.087Z"
       }
     },
     "8a9bcdf1-fcb2-4214-9743-86c110c954ca": {
@@ -857,21 +838,20 @@
       "label": "S42",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "我做HUANDENG，是希望下一次准备组会时，先把我真正想讲的事情讲出来，再让Agent帮我整理、制作和修改。",
+        "purpose": "最直接的试法是打开这份示例，选择科学页，用Slide ID说清楚一次小修改：把解释讲得更清楚，原图、十二个数值、单位和来源都保留",
         "keep": [
-          "Keep source figures, labels, measured values and citations",
-          "Keep intentional background roles, product identity and meaningful density"
+          "保留真实产品截图、原始科学数据和素材、明确出处以及本页实际演示的功能。普通文字不要拆成假表格。"
         ],
-        "requestedChange": "根据作者口述，让这一页解释一个真实经历或对应的设计选择。",
+        "requestedChange": "解释产品与实际使用方法；以作者的叙述决定重点，不复述口述。",
         "actor": "ChatGPT",
-        "source": "sources/story/USER-STORY.zh-CN.md",
-        "recordedAt": "2026-11-10T22:51:40.512Z"
+        "source": "sources/story/PRODUCT-BRIEF.md",
+        "recordedAt": "2026-11-11T00:55:00.713Z"
       }
     },
     "f240e310-6466-4b7f-82ff-4b2668e2802c": {
       "shortCode": "MF4X",
       "path": "pages/MF4X.page",
-      "state": "active",
+      "state": "tombstone",
       "components": {},
       "elementRoles": {},
       "label": "S43",
@@ -895,14 +875,14 @@
       "elementRoles": {},
       "label": "S44",
       "designIntent": {
-        "purpose": "用修改五十页中的两页的情境，解释为什么把版本管理落到页面。",
-        "requestedChange": "根据作者口述，让这一页解释一个真实经历或对应的设计选择。",
-        "source": "sources/story/USER-STORY.zh-CN.md",
+        "purpose": "我的困扰有两个经常同时出现：AI做出的页面看似完整，却没有突出我真正想讲的东西；只改五十页中的两页，又可能留下另一整套文件",
+        "requestedChange": "解释产品与实际使用方法；以作者的叙述决定重点，不复述口述。",
+        "source": "sources/story/PRODUCT-BRIEF.md",
         "actor": "ChatGPT",
-        "recordedAt": "2026-11-10T22:35:58.858Z",
+        "recordedAt": "2026-11-11T00:50:12.094Z",
         "pageRole": "content",
         "keep": [
-          "文件名仍明确是示意；不要加入目录清理经历或虚构测试。"
+          "保留真实产品截图、原始科学数据和素材、明确出处以及本页实际演示的功能。普通文字不要拆成假表格。"
         ]
       }
     },
@@ -914,21 +894,21 @@
       "elementRoles": {},
       "label": "S45",
       "designIntent": {
-        "purpose": "以作者原话说明先讲故事，再整理和制作slides与讲稿。",
-        "requestedChange": "根据作者口述，让这一页解释一个真实经历或对应的设计选择。",
-        "source": "sources/story/USER-STORY.zh-CN.md",
+        "purpose": "可以按页面分工，也可以先让一个助手整理内容，再让另一个优化视觉",
+        "requestedChange": "解释产品与实际使用方法；以作者的叙述决定重点，不复述口述。",
+        "source": "sources/story/PRODUCT-BRIEF.md",
         "actor": "ChatGPT",
-        "recordedAt": "2026-11-10T22:36:06.835Z",
+        "recordedAt": "2026-11-11T01:17:52.288Z",
         "pageRole": "content",
         "keep": [
-          "保留中文原话或明确的英文翻译，以及第一人称判断。"
+          "保留真实产品截图、原始科学数据和素材、明确出处以及本页实际演示的功能。普通文字不要拆成假表格。"
         ]
       }
     },
     "137e3366-b18f-4c91-a67c-6cd2e0e64881": {
       "shortCode": "3UZE",
       "path": "pages/3UZE.page",
-      "state": "active",
+      "state": "tombstone",
       "components": {},
       "elementRoles": {},
       "label": "S46",
@@ -947,7 +927,7 @@
     "49c12ba5-6503-4051-83dd-05cbfa96a5f7": {
       "shortCode": "59RT",
       "path": "pages/59RT.page",
-      "state": "active",
+      "state": "tombstone",
       "components": {},
       "elementRoles": {},
       "label": "S47",
@@ -971,14 +951,14 @@
       "elementRoles": {},
       "label": "S48",
       "designIntent": {
-        "purpose": "说明结构能帮助准确定位对象和数值，真实视觉审查仍然必要。",
-        "requestedChange": "根据作者口述，让这一页解释一个真实经历或对应的设计选择。",
-        "source": "sources/story/USER-STORY.zh-CN.md",
+        "purpose": "先把几个名字放清楚",
+        "requestedChange": "解释产品与实际使用方法；以作者的叙述决定重点，不复述口述。",
+        "source": "sources/story/PRODUCT-BRIEF.md",
         "actor": "ChatGPT",
-        "recordedAt": "2026-11-10T22:51:01.941Z",
+        "recordedAt": "2026-11-11T01:05:13.404Z",
         "pageRole": "content",
         "keep": [
-          "保留已绘出图表的真实截图；不声称审美可完全量化。"
+          "保留真实产品截图、原始科学数据和素材、明确出处以及本页实际演示的功能。普通文字不要拆成假表格。"
         ]
       }
     },
@@ -990,14 +970,14 @@
       "elementRoles": {},
       "label": "S49",
       "designIntent": {
-        "purpose": "说明Browse、Outline、Sections如何帮助检查同一场讲述的顺序。",
-        "requestedChange": "根据作者口述，让这一页解释一个真实经历或对应的设计选择。",
-        "source": "sources/story/USER-STORY.zh-CN.md",
+        "purpose": "做好单页后，需要检查整场演讲",
+        "requestedChange": "解释产品与实际使用方法；以作者的叙述决定重点，不复述口述。",
+        "source": "sources/story/PRODUCT-BRIEF.md",
         "actor": "ChatGPT",
-        "recordedAt": "2026-11-10T22:51:24.095Z",
+        "recordedAt": "2026-11-11T01:36:57.801Z",
         "pageRole": "content",
         "keep": [
-          "使用当前项目实际浏览画面；保持三个视图的功能边界。"
+          "保留真实产品截图、原始科学数据和素材、明确出处以及本页实际演示的功能。普通文字不要拆成假表格。"
         ]
       }
     },
@@ -1009,14 +989,14 @@
       "elementRoles": {},
       "label": "S50",
       "designIntent": {
-        "purpose": "说明同一页如何为不同听众保留不同的Presentation讲稿。",
-        "requestedChange": "根据作者口述，让这一页解释一个真实经历或对应的设计选择。",
-        "source": "sources/story/USER-STORY.zh-CN.md",
+        "purpose": "复用页面不等于每次照读同一段话",
+        "requestedChange": "解释产品与实际使用方法；以作者的叙述决定重点，不复述口述。",
+        "source": "sources/story/PRODUCT-BRIEF.md",
         "actor": "ChatGPT",
-        "recordedAt": "2026-11-10T22:36:44.998Z",
+        "recordedAt": "2026-11-11T01:37:05.722Z",
         "pageRole": "content",
         "keep": [
-          "保留同一科学页的当前预览，以及Main notes与引用Notes的区别。"
+          "保留真实产品截图、原始科学数据和素材、明确出处以及本页实际演示的功能。普通文字不要拆成假表格。"
         ]
       }
     }
@@ -1024,43 +1004,43 @@
   "project": {
     "schemaVersion": 1,
     "mainStory": {
-      "purpose": "从我的组会经历出发，解释为什么做HUANDENG，以及人的故事、单页历史和素材如何留在同一份作品里。",
-      "audience": "科研演讲作者、使用Agent做slides的人和项目贡献者",
-      "takeaway": "先由人讲出想表达的故事，再让Agent在可继续编辑的项目里帮助实现。"
+      "purpose": "介绍HUANDENG是什么、如何完成一次科学页面编辑、为什么把意图、证据、页面历史和演讲复用留在一个项目里。",
+      "audience": "科研演讲作者、使用Agent制作演示的人和开源项目贡献者",
+      "takeaway": "打开同一份项目，围绕一页的意图和证据进行修改、检查、复用与交付。"
     },
     "sections": [
       {
         "id": "intro-section-0",
-        "title": "起点",
+        "title": "认识幻灯",
         "story": {
-          "purpose": "起点",
-          "audience": "科研演讲作者、使用Agent做slides的人和项目贡献者",
-          "takeaway": "先由人讲出想表达的故事，再让Agent在可继续编辑的项目里帮助实现。"
+          "purpose": "认识幻灯",
+          "audience": "科研演讲作者、使用Agent制作演示的人和开源项目贡献者",
+          "takeaway": "打开同一份项目，围绕一页的意图和证据进行修改、检查、复用与交付。"
         },
         "frontMatter": true,
         "pageIds": [
           "7995de62-e81e-46db-b250-cabc66a99b28",
-          "49c12ba5-6503-4051-83dd-05cbfa96a5f7",
-          "f240e310-6466-4b7f-82ff-4b2668e2802c",
           "1dc23de8-b351-483b-a93a-f02c0444a927",
-          "1f6289fd-1d4c-4a03-a74d-4bc4955de868",
-          "c91c3fe3-836f-492f-882d-905bd4d08a9b",
-          "bd3c71d1-360e-4e0c-bbb6-5938970e8876"
+          "1f6289fd-1d4c-4a03-a74d-4bc4955de868"
         ],
         "startPageId": "7995de62-e81e-46db-b250-cabc66a99b28"
       },
       {
         "id": "intro-section-1",
-        "title": "一页的身份",
+        "title": "做好一页",
         "story": {
-          "purpose": "一页的身份",
-          "audience": "科研演讲作者、使用Agent做slides的人和项目贡献者",
-          "takeaway": "先由人讲出想表达的故事，再让Agent在可继续编辑的项目里帮助实现。"
+          "purpose": "做好一页",
+          "audience": "科研演讲作者、使用Agent制作演示的人和开源项目贡献者",
+          "takeaway": "打开同一份项目，围绕一页的意图和证据进行修改、检查、复用与交付。"
         },
         "pageIds": [
           "b55179ed-446c-42a7-a2d5-2557defac052",
-          "137e3366-b18f-4c91-a67c-6cd2e0e64881",
-          "503c86ce-673c-4229-9251-22114e5f5da9",
+          "3483b895-bc52-43b6-a7c4-001a0d1e4526",
+          "05cd8517-c8ac-4e12-b2d0-40c438b91042",
+          "59857807-d9f3-4e58-9a60-275cd504ea16",
+          "c1fcdc66-1c25-45a6-9b98-83d16f063c3e",
+          "7b5bb42e-c529-49f8-ad88-62c69b567837",
+          "7b69742f-16b5-4b80-acf0-1d23966aae96",
           "129dfdc6-685d-48b4-972b-abff11f823e6",
           "ea528c6a-2423-488d-834b-056322cca744"
         ],
@@ -1068,39 +1048,36 @@
       },
       {
         "id": "intro-section-2",
-        "title": "让故事留在编辑里",
+        "title": "组织一场演讲",
         "story": {
-          "purpose": "让故事留在编辑里",
-          "audience": "科研演讲作者、使用Agent做slides的人和项目贡献者",
-          "takeaway": "先由人讲出想表达的故事，再让Agent在可继续编辑的项目里帮助实现。"
+          "purpose": "组织一场演讲",
+          "audience": "科研演讲作者、使用Agent制作演示的人和开源项目贡献者",
+          "takeaway": "打开同一份项目，围绕一页的意图和证据进行修改、检查、复用与交付。"
         },
         "pageIds": [
           "def43d68-1767-45f5-800a-17d648750b7e",
-          "3483b895-bc52-43b6-a7c4-001a0d1e4526",
-          "05cd8517-c8ac-4e12-b2d0-40c438b91042",
-          "59857807-d9f3-4e58-9a60-275cd504ea16",
-          "c1fcdc66-1c25-45a6-9b98-83d16f063c3e",
-          "7b5bb42e-c529-49f8-ad88-62c69b567837",
-          "7b69742f-16b5-4b80-acf0-1d23966aae96",
           "8bb920ed-1c71-45ac-ad9d-aa00750b1ff6",
-          "9cdec939-7f79-4142-98a4-b9543230a4ec"
+          "68f5273e-3f0d-4e5d-84d1-38391280cead",
+          "5f2fbea2-a43a-4532-9042-6a1d20c08801",
+          "baca190c-e87b-415f-9c30-7c04e3fabe17",
+          "503c86ce-673c-4229-9251-22114e5f5da9"
         ],
         "startPageId": "def43d68-1767-45f5-800a-17d648750b7e"
       },
       {
         "id": "intro-section-3",
-        "title": "回到下一次组会",
+        "title": "与人和 Agent 一起做",
         "story": {
-          "purpose": "回到下一次组会",
-          "audience": "科研演讲作者、使用Agent做slides的人和项目贡献者",
-          "takeaway": "先由人讲出想表达的故事，再让Agent在可继续编辑的项目里帮助实现。"
+          "purpose": "与人和 Agent 一起做",
+          "audience": "科研演讲作者、使用Agent制作演示的人和开源项目贡献者",
+          "takeaway": "打开同一份项目，围绕一页的意图和证据进行修改、检查、复用与交付。"
         },
         "pageIds": [
           "d64aef1b-eb88-4b05-a620-ae60a0e833de",
-          "68f5273e-3f0d-4e5d-84d1-38391280cead",
-          "5f2fbea2-a43a-4532-9042-6a1d20c08801",
-          "baca190c-e87b-415f-9c30-7c04e3fabe17",
+          "9cdec939-7f79-4142-98a4-b9543230a4ec",
+          "c91c3fe3-836f-492f-882d-905bd4d08a9b",
           "f68f052b-18ac-4286-ae3b-6f12e5c5d0d0",
+          "bd3c71d1-360e-4e0c-bbb6-5938970e8876",
           "8a9bcdf1-fcb2-4214-9743-86c110c954ca"
         ],
         "startPageId": "d64aef1b-eb88-4b05-a620-ae60a0e833de"
@@ -1111,25 +1088,15 @@
         "id": "introduction-full",
         "title": "完整介绍",
         "story": {
-          "purpose": "从我的组会经历出发，解释为什么做HUANDENG，以及人的故事、单页历史和素材如何留在同一份作品里。",
-          "audience": "科研演讲作者、使用Agent做slides的人和项目贡献者",
-          "takeaway": "先由人讲出想表达的故事，再让Agent在可继续编辑的项目里帮助实现。"
+          "purpose": "介绍HUANDENG是什么、如何完成一次科学页面编辑、为什么把意图、证据、页面历史和演讲复用留在一个项目里。",
+          "audience": "科研演讲作者、使用Agent制作演示的人和开源项目贡献者",
+          "takeaway": "打开同一份项目，围绕一页的意图和证据进行修改、检查、复用与交付。"
         },
         "items": [
           {
             "id": "full-0",
             "kind": "page",
             "pageId": "7995de62-e81e-46db-b250-cabc66a99b28"
-          },
-          {
-            "id": "introduction-full-story-19",
-            "kind": "page",
-            "pageId": "49c12ba5-6503-4051-83dd-05cbfa96a5f7"
-          },
-          {
-            "id": "introduction-full-story-20",
-            "kind": "page",
-            "pageId": "f240e310-6466-4b7f-82ff-4b2668e2802c"
           },
           {
             "id": "introduction-full-story-21",
@@ -1142,44 +1109,9 @@
             "pageId": "1f6289fd-1d4c-4a03-a74d-4bc4955de868"
           },
           {
-            "id": "introduction-full-story-23",
-            "kind": "page",
-            "pageId": "c91c3fe3-836f-492f-882d-905bd4d08a9b"
-          },
-          {
-            "id": "full-17",
-            "kind": "page",
-            "pageId": "bd3c71d1-360e-4e0c-bbb6-5938970e8876"
-          },
-          {
             "id": "full-2",
             "kind": "page",
             "pageId": "b55179ed-446c-42a7-a2d5-2557defac052"
-          },
-          {
-            "id": "introduction-full-story-24",
-            "kind": "page",
-            "pageId": "137e3366-b18f-4c91-a67c-6cd2e0e64881"
-          },
-          {
-            "id": "full-16",
-            "kind": "page",
-            "pageId": "503c86ce-673c-4229-9251-22114e5f5da9"
-          },
-          {
-            "id": "full-13",
-            "kind": "page",
-            "pageId": "129dfdc6-685d-48b4-972b-abff11f823e6"
-          },
-          {
-            "id": "full-10",
-            "kind": "page",
-            "pageId": "ea528c6a-2423-488d-834b-056322cca744"
-          },
-          {
-            "id": "full-6",
-            "kind": "page",
-            "pageId": "def43d68-1767-45f5-800a-17d648750b7e"
           },
           {
             "id": "full-3",
@@ -1212,19 +1144,24 @@
             "pageId": "7b69742f-16b5-4b80-acf0-1d23966aae96"
           },
           {
+            "id": "full-13",
+            "kind": "page",
+            "pageId": "129dfdc6-685d-48b4-972b-abff11f823e6"
+          },
+          {
+            "id": "full-10",
+            "kind": "page",
+            "pageId": "ea528c6a-2423-488d-834b-056322cca744"
+          },
+          {
+            "id": "full-6",
+            "kind": "page",
+            "pageId": "def43d68-1767-45f5-800a-17d648750b7e"
+          },
+          {
             "id": "introduction-full-story-25",
             "kind": "page",
             "pageId": "8bb920ed-1c71-45ac-ad9d-aa00750b1ff6"
-          },
-          {
-            "id": "full-8",
-            "kind": "page",
-            "pageId": "9cdec939-7f79-4142-98a4-b9543230a4ec"
-          },
-          {
-            "id": "full-11",
-            "kind": "page",
-            "pageId": "d64aef1b-eb88-4b05-a620-ae60a0e833de"
           },
           {
             "id": "full-12",
@@ -1242,9 +1179,34 @@
             "pageId": "baca190c-e87b-415f-9c30-7c04e3fabe17"
           },
           {
+            "id": "full-16",
+            "kind": "page",
+            "pageId": "503c86ce-673c-4229-9251-22114e5f5da9"
+          },
+          {
+            "id": "full-11",
+            "kind": "page",
+            "pageId": "d64aef1b-eb88-4b05-a620-ae60a0e833de"
+          },
+          {
+            "id": "full-8",
+            "kind": "page",
+            "pageId": "9cdec939-7f79-4142-98a4-b9543230a4ec"
+          },
+          {
+            "id": "introduction-full-story-23",
+            "kind": "page",
+            "pageId": "c91c3fe3-836f-492f-882d-905bd4d08a9b"
+          },
+          {
             "id": "full-15",
             "kind": "page",
             "pageId": "f68f052b-18ac-4286-ae3b-6f12e5c5d0d0"
+          },
+          {
+            "id": "full-17",
+            "kind": "page",
+            "pageId": "bd3c71d1-360e-4e0c-bbb6-5938970e8876"
           },
           {
             "id": "full-18",
@@ -1257,9 +1219,9 @@
         "id": "introduction-short",
         "title": "简短介绍",
         "story": {
-          "purpose": "从我的组会经历出发，解释为什么做HUANDENG，以及人的故事、单页历史和素材如何留在同一份作品里。",
-          "audience": "科研演讲作者、使用Agent做slides的人和项目贡献者",
-          "takeaway": "先由人讲出想表达的故事，再让Agent在可继续编辑的项目里帮助实现。"
+          "purpose": "介绍HUANDENG是什么、如何完成一次科学页面编辑、为什么把意图、证据、页面历史和演讲复用留在一个项目里。",
+          "audience": "科研演讲作者、使用Agent制作演示的人和开源项目贡献者",
+          "takeaway": "打开同一份项目，围绕一页的意图和证据进行修改、检查、复用与交付。"
         },
         "items": [
           {
@@ -1268,39 +1230,20 @@
             "pageId": "7995de62-e81e-46db-b250-cabc66a99b28"
           },
           {
-            "id": "introduction-short-story-20",
-            "kind": "page",
-            "pageId": "f240e310-6466-4b7f-82ff-4b2668e2802c"
-          },
-          {
             "id": "introduction-short-story-21",
             "kind": "page",
             "pageId": "1dc23de8-b351-483b-a93a-f02c0444a927"
           },
           {
-            "id": "introduction-short-story-23",
+            "id": "introduction-short-product-22",
             "kind": "page",
-            "pageId": "c91c3fe3-836f-492f-882d-905bd4d08a9b"
+            "pageId": "1f6289fd-1d4c-4a03-a74d-4bc4955de868"
           },
           {
-            "id": "introduction-short-story-24",
+            "id": "introduction-short-product-5",
             "kind": "page",
-            "pageId": "137e3366-b18f-4c91-a67c-6cd2e0e64881"
-          },
-          {
-            "id": "introduction-short-story-13",
-            "kind": "page",
-            "pageId": "129dfdc6-685d-48b4-972b-abff11f823e6"
-          },
-          {
-            "id": "introduction-short-story-9",
-            "kind": "page",
-            "pageId": "ea528c6a-2423-488d-834b-056322cca744"
-          },
-          {
-            "id": "introduction-short-story-10",
-            "kind": "page",
-            "pageId": "05cd8517-c8ac-4e12-b2d0-40c438b91042"
+            "pageId": "3483b895-bc52-43b6-a7c4-001a0d1e4526",
+            "notes": "先找到同一份工作。左侧在项目、页面、素材和文件间切换；中间直接编辑；右侧保留属性、图层和Story。请求助手修改时，它处理的也是这页。短介绍接下来先从素材库找到原图，再看一次局部修改。"
           },
           {
             "id": "introduction-short-story-6",
@@ -1312,7 +1255,23 @@
             "kind": "page",
             "pageId": "c1fcdc66-1c25-45a6-9b98-83d16f063c3e",
             "versionId": "checkpoint:a687931507a66085784d787c9ad2d31d",
-            "notes": "这是一张公开的DNA结构例页。图和十二个数值来自同一份坐标。当我只想改讲法时，图、数值和来源应该一起保留下来。这也是我希望不同Agent遵守的工作约定。"
+            "notes": "这次只改讲法。原图、12个数值、单位与来源保持不变。页面不必复制；这次演讲固定使用已经保存的措辞修改阶段。"
+          },
+          {
+            "id": "introduction-short-product-4",
+            "kind": "page",
+            "pageId": "7b69742f-16b5-4b80-acf0-1d23966aae96"
+          },
+          {
+            "id": "introduction-short-story-13",
+            "kind": "page",
+            "pageId": "129dfdc6-685d-48b4-972b-abff11f823e6"
+          },
+          {
+            "id": "brief-4",
+            "kind": "page",
+            "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
+            "notes": "短介绍从同一份Main页面中选出需要的内容，保留原来的Slide ID。这里用真实页面展示选页关系。接下来说明不同助手如何接入这个项目，再看分工与交接。"
           },
           {
             "id": "brief-1",
@@ -1320,9 +1279,9 @@
             "pageId": "9cdec939-7f79-4142-98a4-b9543230a4ec"
           },
           {
-            "id": "brief-4",
+            "id": "introduction-short-story-23",
             "kind": "page",
-            "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead"
+            "pageId": "c91c3fe3-836f-492f-882d-905bd4d08a9b"
           },
           {
             "id": "brief-6",

@@ -6,13 +6,10 @@ elements:
   - elementId: title
     elementType: text
     bounds:
-      - 44
-      - 35
-      - 870
-      - 67
+        [42,34,880,76]
     role: title
     content:
-      {"text":"This time, just clarify the explanation","fontFamily":"Arial","fontSize":29,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
+      {"text":"Match the saved change to the request","fontFamily":"Georgia","fontSize":32,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
   - elementId: request
     elementType: text
     bounds:
@@ -21,15 +18,7 @@ elements:
       - 870
       - 49
     content:
-      text: “Tighten the title and explanation; keep the figure, values, axes and source.”
-      fontFamily: Arial
-      fontSize: 18
-      color: "#263C34"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
+      {"text":"“Tighten the title and explanation; keep the figure, values, axes and source.”","fontFamily":"Segoe UI","fontSize":18,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
   - elementId: before-label
     elementType: text
     bounds:
@@ -38,15 +27,7 @@ elements:
       - 412
       - 26
     content:
-      text: Before
-      fontFamily: Arial
-      fontSize: 16
-      color: "#66756B"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
+      {"text":"Before","fontFamily":"Segoe UI","fontSize":16,"color":"#66756B","bold":false,"align":["left","top"],"lineHeight":1.3}
   - elementId: after-label
     elementType: text
     bounds:
@@ -55,15 +36,7 @@ elements:
       - 412
       - 26
     content:
-      text: After
-      fontFamily: Arial
-      fontSize: 16
-      color: "#356F68"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
+      {"text":"After","fontFamily":"Segoe UI","fontSize":16,"color":"#356F68","bold":false,"align":["left","top"],"lineHeight":1.3}
   - elementId: before
     elementType: image
     src: media/imported/3141de6201ac50bc936475a058db4be21189dc88121aafe007f80b72ec5e7ef6.png
@@ -117,15 +90,7 @@ elements:
       - 834
       - 43
     content:
-      text: Two text values changed · All 12 values and the original figure preserved
-      fontFamily: Arial
-      fontSize: 17
-      color: "#356F68"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
+      {"text":"Two text values changed · All 12 values and the original figure preserved","fontFamily":"Segoe UI","fontSize":17,"color":"#356F68","bold":false,"align":["left","top"],"lineHeight":1.3}
   - elementId: brand-small
     elementType: image
     src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
@@ -151,15 +116,7 @@ elements:
       - 130
       - 17
     content:
-      text: HUANDENG
-      fontFamily: Arial
-      fontSize: 10
-      color: "#66756B"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
+      {"text":"HUANDENG","fontFamily":"Segoe UI","fontSize":10,"color":"#66756B","bold":false,"align":["left","top"],"lineHeight":1.3}
   - elementId: position
     elementType: text
     bounds:
@@ -168,14 +125,5 @@ elements:
       - 30
       - 18
     content:
-      text: ""
-      fontFamily: Arial
-      fontSize: 10
-      color: "#66756B"
-      bold: false
-      align:
-        - right
-        - top
-      lineHeight: 1.3
-      field: main-position
-notes: "A request can be small: make this page’s title and explanation clearer while preserving the source figure, all twelve values, axes and citation. These are the saved before and after states of that actual operation. The agent reads the current revision, previews the change and saves it. I can then inspect whether the result matches the request."
+      {"text":"","fontFamily":"Segoe UI","fontSize":10,"color":"#66756B","bold":false,"align":["right","top"],"lineHeight":1.3,"field":"main-position"}
+notes: "This is an actual saved edit. The request tightened the title and explanation while retaining the figure, all twelve values, axes and source. The before and after views come from that operation’s real snapshots. The scope can be checked directly. Next we need to identify the page and follow its history, as well as inspect the final appearance.\n\nSaved operation: d2d18509-c72c-48e7-81cc-4251486a522e. Verification: evidence/wording-edit.json."

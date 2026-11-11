@@ -6,11 +6,8 @@ elements:
   - elementId: title
     elementType: text
     bounds:
-      - 55
-      - 221
-      - 850
-      - 82
+        [52,218,850,100]
     role: title
     content:
-      {"text":"回到下一次组会","fontFamily":"Microsoft YaHei","fontSize":34,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
-notes: "这些操作最终要回到讲述现场。下一次组会可能有不同的时间和听众，我需要从这份材料中选择页面、准备讲稿，并带上合适的版本。"
+      {"text":"与人和 Agent 一起做","fontFamily":"Noto Serif SC","fontSize":36,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.25}
+notes: "页面与演讲已经组织起来，接下来说明人和不同助手怎样接入同一个项目、分工、交接与交付。"

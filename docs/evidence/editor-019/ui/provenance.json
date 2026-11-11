@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "productVersion": "0.19.0",
+  "binarySourceCommit": "aff4ac28753bb2d4422f2f993f2409742afaecf9",
+  "sourceDirty": false,
+  "captureMethod": "Direct Electron compositor captures from exact-C packaged native UI verification at devicePixelRatio 2; no enlargement, redraw, or image editing.",
+  "phase": "Original C1 pre-install capture retained byte for byte; corresponding interface behaviors were rerun in final C3. These pixel bytes retain their original C1 provenance.",
+  "provenance": "Synthetic fixture. Named client reports are explicitly synthetic test reports, not evidence of real Claude Code or DeepSeek authoring. Saved change is a real Notes-only writer operation on this synthetic project. Native picker selection was stubbed; actual UI/IPC/resolver/writer executed.",
+  "files": [
+    {
+      "file": "folder-actions-en.png",
+      "language": "en",
+      "role": "Home file and folder actions",
+      "sha256": "41fae9b4a38260819f9457fbf9b1c922f9863e1a8de0bf3522c30b41eee51776",
+      "bytes": 32900,
+      "pixelSize": [488, 730],
+      "unchangedCaptureBytes": true,
+      "coordinatorVisuallyInspected": true,
+      "independentRootReview": true
+    },
+    {
+      "file": "folder-actions-zh.png",
+      "language": "zh-CN",
+      "role": "Home file and folder actions",
+      "sha256": "4284db8d794ea6d9991349cbdb90e918fdd8435171d48e432b187b18fe6a3225",
+      "bytes": 36886,
+      "pixelSize": [488, 730],
+      "unchangedCaptureBytes": true,
+      "coordinatorVisuallyInspected": true,
+      "independentRootReview": true
+    },
+    {
+      "file": "reported-work-en.png",
+      "language": "en",
+      "role": "Explicit reports and saved writer receipts",
+      "sha256": "cf99faa92edfe434e091bd19687eff314c280832acb395cdd8c28aab4dd6fdbc",
+      "bytes": 108199,
+      "pixelSize": [1224, 926],
+      "unchangedCaptureBytes": true,
+      "coordinatorVisuallyInspected": true,
+      "independentRootReview": true
+    },
+    {
+      "file": "reported-work-zh.png",
+      "language": "zh-CN",
+      "role": "Explicit reports and saved writer receipts",
+      "sha256": "591d253af08540ddf17adf1973216ded7d70679a255afe636da58f27bfee0344",
+      "bytes": 112993,
+      "pixelSize": [1224, 926],
+      "unchangedCaptureBytes": true,
+      "coordinatorVisuallyInspected": true,
+      "independentRootReview": true
+    },
+    {
+      "file": "home-zh.png",
+      "language": "zh-CN",
+      "role": "Complete empty Home",
+      "sha256": "100c1df92ce22bf01dfdf37547a1067978efa32ebd1c953a74d46efe387d7910",
+      "bytes": 137164,
+      "pixelSize": [2880, 1836],
+      "unchangedCaptureBytes": true,
+      "coordinatorVisuallyInspected": true,
+      "independentRootReview": false
+    }
+  ]
+}

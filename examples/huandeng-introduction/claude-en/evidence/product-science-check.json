@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "project": "claude-en",
+  "source": {
+    "path": "../sources/science/paired-c1-distances.csv",
+    "sha256": "84f6c1daa9c34184d3a6ed3eecca30b5d7e211fd5c16d55c65d40d872f8ce249"
+  },
+  "artifacts": [
+    {
+      "path": "../Exports/deck.pptx",
+      "sha256": "77028c71cb447a6b15f25f9bce55d888c9c28f6f0b4b5fcaaf4ef76025f26ad6",
+      "chartPart": "ppt/charts/huandeng-12-7-chart1.xml",
+      "chartPartSha256": "3b13d1831ecc16d255ac963b3af322fbcc9be3254fe2b2fb15941c9b6a53539b",
+      "values": [
+        10.7121, 10.7665, 10.5802, 10.3531, 10.4416, 10.4606, 10.2329, 10.4912, 10.5912, 10.4362,
+        10.8052, 10.8877
+      ],
+      "matchesPublicCsvExactly": true
+    },
+    {
+      "path": "../Exports/brief.pptx",
+      "sha256": "b51256d996f2de0440b1a0462930dd9b565a303c158e1e8cd3fd0b6480ac0841",
+      "chartPart": "ppt/charts/huandeng-5-7-chart2.xml",
+      "chartPartSha256": "3b13d1831ecc16d255ac963b3af322fbcc9be3254fe2b2fb15941c9b6a53539b",
+      "values": [
+        10.7121, 10.7665, 10.5802, 10.3531, 10.4416, 10.4606, 10.2329, 10.4912, 10.5912, 10.4362,
+        10.8052, 10.8877
+      ],
+      "matchesPublicCsvExactly": true
+    }
+  ],
+  "claim": "Twelve positions in one public 1BNA structure; exact native cache equality does not validate manual Office annotations."
+}

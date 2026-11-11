@@ -6,23 +6,20 @@ elements:
   - elementId: title
     elementType: text
     bounds:
-      - 44
-      - 35
-      - 870
-      - 67
+        [42,34,880,76]
     role: title
     content:
-      {"text":"下一次，我先讲我的故事","fontFamily":"Microsoft YaHei","fontSize":28,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: closing-mark
+      {"text":"打开一页，试一次具体的修改","fontFamily":"Noto Serif SC","fontSize":28,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.2}
+  - elementId: brand-small
     elementType: image
     src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
     sourceName: huandeng.png
     alt: huandeng.png
     bounds:
-      - 44
-      - 154
-      - 93
-      - 93
+      - 43
+      - 512
+      - 18
+      - 18
     fit:
       mode: contain
     crop:
@@ -30,64 +27,109 @@ elements:
       right: 0.18
       top: 0.14
       bottom: 0.14
-  - elementId: closing-brand
+  - elementId: foot
     elementType: text
     bounds:
-      - 160
-      - 182
-      - 710
-      - 54
+      - 68
+      - 515
+      - 140
+      - 16
     content:
       text: HUANDENG
-      fontFamily: Microsoft YaHei
-      fontSize: 38
-      color: "#263C34"
+      fontFamily: Noto Sans SC
+      fontSize: 9
+      color: "#5B6A62"
       bold: false
       align:
         - left
         - top
-      lineHeight: 1.3
-  - elementId: next-action
+      lineHeight: 1.35
+  - elementId: position
     elementType: text
     bounds:
-      - 44
-      - 309
-      - 366
-      - 103
+      - 881
+      - 514
+      - 35
+      - 18
     content:
-      {"text":"先说清楚我想讲什么。\n再和 Agent 继续做这份作品。","fontFamily":"Microsoft YaHei","fontSize":24,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.5}
-  - elementId: closing-example
+      text: ""
+      fontFamily: Noto Sans SC
+      fontSize: 10
+      color: "#5B6A62"
+      bold: false
+      align:
+        - right
+        - top
+      lineHeight: 1.35
+      field: main-position
+  - elementId: closing-mark
     elementType: image
-    src: "media/imported/f9e22dfafbac40e92462384baf7b281b0b610704d46e23f75a1ab44d60854824.png"
-    sourceName: 02.png
-    alt: 02.png
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    alt: huandeng.png
     bounds:
-      - 467
-      - 277
-      - 447
-      - 251
+        [43,150,78,78]
     fit:
       mode: contain
     crop:
-      left: 0
-      right: 0
-      top: 0
-      bottom: 0
-  - elementId: project-path
+      left: 0.18
+      right: 0.18
+      top: 0.14
+      bottom: 0.14
+  - elementId: try-request
+    elementType: text
+    bounds:
+      - 155
+      - 153
+      - 752
+      - 109
+    content:
+      text: |-
+        “修改 7EKH 的解释。
+        保留原图、12 个数值、单位与来源。”
+      fontFamily: Noto Serif SC
+      fontSize: 27
+      color: "#20372F"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.45
+  - elementId: try-steps
     elementType: text
     bounds:
       - 44
-      - 456
-      - 409
-      - 57
+      - 326
+      - 870
+      - 126
     content:
-      text: examples/huandeng-introduction/
+      text: |-
+        1  打开本项目的 deck.pptd 或项目文件夹。
+        2  选择这页，读 Story，并向助手提出请求。
+        3  检查预览、实际页面和这次保存的历史。
+      fontFamily: Noto Sans SC
+      fontSize: 20
+      color: "#20372F"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.7
+  - elementId: project-entry
+    elementType: text
+    bounds:
+      - 44
+      - 476
+      - 870
+      - 29
+    content:
+      text: examples/huandeng-introduction/chatgpt-zh/deck.pptd
       fontFamily: Consolas
-      fontSize: 16
+      fontSize: 14
       color: "#356F68"
       bold: false
       align:
         - left
         - top
-      lineHeight: 1.3
-notes: "我做HUANDENG，是希望下一次准备组会时，先把我真正想讲的事情讲出来，再让Agent帮我整理、制作和修改。素材、页面身份和历史留在项目里，我可以回到同一份工作继续做。这份介绍本身也是从我的口述重新整理出来的。最终我想留下的，是人的判断能够跟着作品走。"
+      lineHeight: 1.35
+notes: "最直接的试法是打开这份示例，选择科学页，用Slide ID说清楚一次小修改：把解释讲得更清楚，原图、十二个数值、单位和来源都保留。先检查预览，再看保存后的页面和历史。人不需要把全部控制交出去，也不需要在最后适应一套陌生的讲述逻辑。意图、证据和修改留在同一份工作里，可以继续做下一次。"

@@ -12,3 +12,7 @@ test-results
 
 .verification/
 tests/fixtures/studio/Exports/
+
+# Local Windows folder decoration; project artwork remains versioned.
+/examples/huandeng-introduction/*/desktop.ini
+/examples/huandeng-introduction/*/.huandeng/project.ico

@@ -1,47 +1,52 @@
-# HUANDENG · DeepSeek Harness · 中文故事版
+# HUANDENG · DeepSeek Harness · 中文产品介绍
 
-当前候选由原生客户端独立完成页面、叙事、Story 与 Notes。此 README 和讲稿索引由协调者整理；页面内容与美术未由协调者改写。
+本项目由原生 DeepSeek Harness 独立修订。协调者整理当前入口、保存的讲稿与核验材料，并机械导出作者已保存的简版；没有改写原生页面、Story、Notes 或 Main 成品。
 
-[PPTD 项目](deck.pptd) · [PDF](Exports/deck.pdf) · [PowerPoint](Exports/deck.pptx) · [实际 Notes 讲稿](speaker-notes.md) · [Native trial](evidence/native-trial.json) · [QA](evidence/qa.json)
+[PPTD 项目](deck.pptd) · [Main PDF](Exports/deck.pdf) · [Main PowerPoint](Exports/deck.pptx) · [12 页简版 PDF](Exports/brief.pdf) · [简版 PowerPoint](Exports/brief.pptx) · [实际保存的讲稿](speaker-notes.md)
 
-**Main Slides: 18.** 完整介绍: 18; 短版 · 约十分钟: 11.
+**当前 Main 22 页；full 22 页；brief 12 页。** full 与 Main 同序、同页面、同讲稿。brief 选择 Main 的 1、2、4、5、6、8、13、15、16、17、19、22 页，全部引用当前页面，没有 pinned version 或独立 occurrence Notes。它继承 Main 的实际讲稿，没有另写一套短版脚本。
 
-**Native model:** `deepseek-flash`. official --profile headless --dump-config, 17.config.model; configured model, not response model metadata.
+这是保留具体内容局限的原生候选，不代表作者已接受。
 
-## 当前验证
+## 实际完成与交付边界
 
-- Native turn: completed; exit code 0; native completion confirmed. 1 recorded turn(s).
-- PDF / PPTX: 18 / 18 pages; export reports match the reviewed source revisions.
-- PowerPoint 16.0: 18/18 pages opened read-only and rendered at 1920×1080.
-- Native PowerPoint objects: 18 Notes pages, 2 tables, 0 chart objects, 17 media parts.
-- The whole Office-rendered sequence was reviewed in contact sheets; additional full-page checks and observations are recorded in [the visual review](evidence/office-visual-review.json).
-- No blocking Office layout defect was observed within that stated review scope. Narrative and aesthetic acceptance remain with the owner.
+本轮使用正式安装的 HUANDENG 0.19.0 headless 原生包，在原来的中文会话完成。该轮原生工具轨迹、配置来源与实际完成状态见 [current trial](evidence/product-trial.json)。没有更换模型、账号或扩大权限。
 
-## Notes 与场次
+原生作者导出了当前 22 页 Main PDF/PPTX；报告与保存的 source revision 一致。协调者用 PowerPoint 16.0 只读打开独立副本并渲染 22 页，原文件和副本 SHA 均未改变。全部四张 Office 联系图，以及 8、10、11、13、14、15、16、19、20、22 页全尺寸画面已实际审读；该范围内未发现新增裁切、缺图或原生表格溢出。
 
-讲稿文件逐字提取原生作者保存的 Main Notes，并按场次列出实际解析的 occurrence Notes。没有给短版另编讲稿，也没有把沿用的 Main Notes 说成独立场次讲稿。
+Main PPTX 含 22 页 Notes、三张原生表格和 20 个媒体部件。科学曲线与真实界面是原始图像；这份稿件没有原生 chart。字体未嵌入的导出 advisory 保留在原报告中。
 
-- 完整介绍 (`full`): 18 pages; 0 explicit occurrence Notes.
-- 短版 · 约十分钟 (`brief`): 11 pages; 0 explicit occurrence Notes.
+作者已更新保存的 brief 为 12 页，但原生提交仍留着上轮 11 页简版导出。协调者保留旧文件字节后，机械导出当前 12 个 authored occurrences；页、顺序、讲稿与 pin 状态均未改。新简版已核对报告、12 页 PDF/12 页 PPTX、逐页 Notes 和 PDF 联系图；没有声称另跑了一轮简版 PowerPoint。见 [brief export evidence](evidence/product-brief-export.json)。
 
-## 来源与原生记录
+简版封面仍保留 Main 的固定页码“01 / 22”。这是原生页面遗留的文字；简版实际为 12 页，协调者没有为修正这个数字改写源页。
 
-- [User story excerpt](sources/story/USER-STORY.zh-CN.md) and [verified technical facts](sources/story/FACTS.md).
-- [Native author's handoff](evidence/native-author-report.md) is preserved as a historical author report. Its at-the-time Office limitation is superseded by the coordinator verification above.
-- [Native trial evidence](evidence/native-trial.json) records the real model evidence, tool failures, connection recovery where applicable, and the separation between native completion and delivery completion.
-- Keep the entire project directory when moving it; the PPTD entry references its pages and assets.
+## 保留的内容问题
 
-## 本轮内容审计的保留项
+- 第 4 页使用“这是 AI 做的吧？”并在讲稿中归为导师原话。用户只描述了识别 AI 风格的现象，没有提供这句逐字对白；当前稿未标明这是改写或示意。
+- 第 19 页把 Story、章节和“顺序”一并归入 metadata revision。Main 页面顺序属于 manifest revision；Presentation 内部顺序才属于 metadata。英文稿也保留了同一错误。
+- Project/Section Story 已更新，但个别 page Story/Notes 仍旧：封面的 requestedChange 还写从 16 页产品版改为 18 页故事版；第 16 页实际展示同一页两个文字字段的变化，purpose 却仍写“改两页”。
+- 中英语义对应已覆盖大部分产品主题，但中文未讲清英文的可选命名版本 pin，也没有对应 MP4 的定时点击构建、分辨率和无音频限定。中文截图中能看到 MP4 入口；这不等于已作可用说明。浏览/大纲的不同用途也比英文解释得少。
 
-技术导出完成不代表叙事全部通过。以下问题保留在原生候选中；协调者没有替原生作者改写页面，也没有要求美术返工。
+这些是内容、元数据和对应范围的问题，不是原生客户端或 Office 渲染失败。协调者没有改写这些页面，也没有要求作者按美术偏好重做。
 
-- 第3页Notes增加了用户没有逐字讲出的导师对白和时间细节，不能当成真实逐字引语；第5页的页码/副本数是作者自选示例。
-- 第16页标题说改两页，实际前后证据是同一页的标题和导语两个字段，标题与证据范围不一致。
+用户指出的 XZJN 散文碎片问题已实际修复：三种场合的文字在一个 rich-text 对象中。第 4 页三组观察、第 15 页 Story 层级说明也各是一个文本对象，不能仅因视觉分行误判为假表格。三张原生表格表达的均是真实二维关系。
 
-[Independent content review](evidence/content-review.json) · [Saved narrative and Notes data](evidence/narrative.json).
+[独立审读](evidence/product-review.json) · [实际 Story 与 Notes](evidence/product-narrative.json) · [独立语义对应审读](evidence/product-correspondence-review.json) · [原生对应记录](SEMANTIC-CORRESPONDENCE.zh-CN.md) · [原生最终答复](evidence/product-native-author-report.md)
 
-## 短版导出
+原生对应记录把“副本问题”的中文页码写成 5，实际是 Main 6；原记录保留原字节，独立审读使用实际位置。
 
-[PDF](Exports/brief.pdf) · [PowerPoint](Exports/brief.pptx) — 11 pages. 由协调者对原生作者已保存的Presentation机械导出；页面/顺序/Notes未代写。Main的原生PDF/PPTX字节未改变。
+## 使用与来源
 
-[Short export evidence](evidence/short-exports.json).
+移动时保留整个项目目录，包括 deck.pptd、pages、media、.huandeng、来源文件和说明。不要只复制入口文件。
+
+[当前图像使用表](evidence/product-assets.json) · [公共素材输入](MEDIA-INPUTS.json) · [来源与声明](SOURCES.md) · [技术事实](sources/story/FACTS.md)。1BNA 的十二个配对位置属于同一结构，不是独立重复实验或产品性能比较。
+
+截图沿用公开的 0.18 中文界面并在页内注明；产品封面与入口功能写 0.19。没有把旧截图冒充为新版本实拍。原图字节和来源保留。
+
+## 历史材料
+
+原有 evidence/native-trial.json、qa.json、content-review.json、short-exports.json 等未加 product- 前缀的材料属于此前 18 页 Main / 11 页简版试作，其旧 hash 和页数不能用于声明当前 Exports 文件已验收。本轮以 product-* 材料为准。
+
+[原生当前 README 原件](evidence/product-native-README.md) 保留作者原字节，其相对链接以原位置“项目根 README.md”解释；当前可用入口是本文件。上轮讲稿也作为历史材料保留。
+
+![当前原生 PDF 封面](evidence/product-preview.png)

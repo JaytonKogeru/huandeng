@@ -6,11 +6,8 @@ elements:
   - elementId: title
     elementType: text
     bounds:
-      - 55
-      - 221
-      - 850
-      - 82
+        [52,218,850,100]
     role: title
     content:
-      {"text":"Back to the next lab meeting","fontFamily":"Arial","fontSize":34,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
-notes: "All of this has to return to the actual talk. The next lab meeting may have different listeners or a different amount of time. I need to choose pages from this material, prepare the notes, and bring the appropriate version."
+      {"text":"Work with people and agents","fontFamily":"Georgia","fontSize":42,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.25}
+notes: "With pages and talks organized, we can bring people and assistants into the same project and explain setup, division of work, handoff and delivery."

@@ -454,9 +454,9 @@
           "PDB 1BNA citation on the slide",
           "No replicate, error-bar or trend claims"
         ],
-        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
+        "requestedChange": "Move the y-axis title clear of the tick labels; values, axis range and citation unchanged.",
         "actor": "claude-code",
-        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "source": "Owner feedback, 11 Nov 2026: the y-axis label sat too close to the tick numbers",
         "recordedAt": "2026-11-10T22:37:45Z"
       }
     },
@@ -708,9 +708,9 @@
         "keep": [
           "Commands match the repository README"
         ],
-        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
+        "requestedChange": "Name release 0.19.0 and the current open rule: a .pptd file or a folder with exactly one direct .pptd; the folder is the project.",
         "actor": "claude-code",
-        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "source": "Coordinator correspondence check, 11 Nov 2026; docs/PROJECT-FOLDERS.md and docs/NATIVE-INTEGRATION-0.19.md",
         "recordedAt": "2026-11-10T22:37:45Z"
       }
     },
@@ -748,9 +748,9 @@
           "Official client marks from assets/brand, unaltered",
           "Describe ChatGPT only as connecting to the local Editor"
         ],
-        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
+        "requestedChange": "Add the verified 0.19 collaboration facts: different-page saves, stale same-page rejection, shared metadata conflicts, no locks, scheduling or presence.",
         "actor": "claude-code",
-        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "source": "Coordinator correspondence check, 11 Nov 2026; docs/PROJECT-FOLDERS.md and docs/NATIVE-INTEGRATION-0.19.md",
         "recordedAt": "2026-11-10T22:37:45Z"
       }
     },
@@ -846,13 +846,13 @@
       "label": "S44",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "Reason 4: start from the human story, not from AI-made slides.",
+        "purpose": "Reason 4: start from the human story so the slides keep the author's judgment; visual review remains necessary.",
         "keep": [
           "Labelled as a concept diagram"
         ],
-        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
+        "requestedChange": "Remove the claim that a story-first deck stops looking like AI; keep the comparison diagram.",
         "actor": "claude-code",
-        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "source": "Coordinator correspondence check, 11 Nov 2026; docs/PROJECT-FOLDERS.md and docs/NATIVE-INTEGRATION-0.19.md",
         "recordedAt": "2026-11-10T22:37:45Z"
       }
     },
@@ -865,14 +865,14 @@
       "label": "S45",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "Reason 3: screenshot-only review cannot be measured; show the slide as data from this project's own page file.",
+        "purpose": "Reason 3: screenshot-driven checks were slow and indirect; reading object values and bounds from the page file makes precise inspection and edits straightforward.",
         "keep": [
           "Code excerpt faithful to pages/AVNM.page, marked shortened",
           "Screenshots remain a valid review surface"
         ],
-        "requestedChange": "Story-driven rework: organise the founder's reasons for building HUANDENG and show the features that answer them.",
+        "requestedChange": "Correct the absolute claim that screenshots cannot be measured; keep the founder's experience and the real AVNM.page excerpt.",
         "actor": "claude-code",
-        "source": "Owner's spoken story, 11 Nov 2026 (sources/story/USER-STORY.zh-CN.md); facts in sources/story/FACTS.md",
+        "source": "Coordinator correspondence check, 11 Nov 2026; docs/PROJECT-FOLDERS.md and docs/NATIVE-INTEGRATION-0.19.md",
         "recordedAt": "2026-11-10T22:37:45Z"
       }
     },
@@ -912,7 +912,7 @@
         "story": {
           "purpose": "The founder's four reasons, from group meetings and real attempts with AI.",
           "audience": "Researchers who make scientific presentations with AI, and people who may use or contribute to HUANDENG",
-          "takeaway": "AI slides lack a human story; agents copy decks; screenshots cannot be measured; so start from the story."
+          "takeaway": "AI slides lack a human story; agents copy decks; screenshot-only checks are slow and indirect; so start from the story."
         },
         "pageIds": [
           "02f92b48-68df-4aac-b31a-82d1a251d37d",

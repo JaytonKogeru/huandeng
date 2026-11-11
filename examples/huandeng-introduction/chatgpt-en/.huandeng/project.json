@@ -488,16 +488,15 @@
       "elementRoles": {},
       "label": "S24",
       "designIntent": {
-        "purpose": "Show how a focused edit preserves the original figure, values and source in a public scientific example.",
+        "purpose": "This public scientific page is the working example for the demonstration",
         "keep": [
-          "The source structure and pair labels",
-          "All 12 values, axes and units",
-          "The citation and scope of evidence"
+          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table.",
+          "Keep all twelve C1′ distances, units, chain labels, source and the non-replicate qualification."
         ],
-        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
+        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
         "actor": "ChatGPT",
-        "source": "sources/story/USER-STORY.zh-CN.md",
-        "recordedAt": "2026-11-10T22:39:21.836Z",
+        "source": "sources/story/PRODUCT-BRIEF.md",
+        "recordedAt": "2026-11-11T00:50:51.295Z",
         "pageRole": "content"
       }
     },
@@ -510,15 +509,14 @@
       "label": "S25",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "The workflow does not require one model.",
+        "purpose": "For the first connection, open Agent setup at the top of the editor, choose the client and follow its setup instructions",
         "keep": [
-          "Keep source figures, labels, measured values and citations",
-          "Keep intentional background roles, product identity and meaningful density"
+          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
         ],
-        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
+        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
         "actor": "ChatGPT",
-        "source": "sources/story/USER-STORY.zh-CN.md",
-        "recordedAt": "2026-11-10T22:39:30.736Z"
+        "source": "sources/story/PRODUCT-BRIEF.md",
+        "recordedAt": "2026-11-11T01:36:36.082Z"
       }
     },
     "90353b2a-6f7b-4ee5-8a8b-10bceb538190": {
@@ -530,16 +528,14 @@
       "label": "S26",
       "designIntent": {
         "pageRole": "cover",
-        "purpose": "Introduce why I started HUANDENG through concrete frustrations from preparing lab meetings.",
+        "purpose": "HUANDENG is an editing workflow for scientific presentations",
         "keep": [
-          "Keep source figures, labels, measured values and citations",
-          "Keep intentional background roles, product identity and meaningful density",
-          "Keep the first-person motivation and actual editor image."
+          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
         ],
-        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
+        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
         "actor": "ChatGPT",
-        "source": "sources/story/USER-STORY.zh-CN.md",
-        "recordedAt": "2026-11-10T22:45:52.191Z"
+        "source": "sources/story/PRODUCT-BRIEF.md",
+        "recordedAt": "2026-11-11T01:05:02.473Z"
       }
     },
     "6b9fbac0-772c-435c-bce1-9cad0004af65": {
@@ -553,15 +549,14 @@
       "label": "S27",
       "designIntent": {
         "pageRole": "section",
-        "purpose": "Those frustrations led me to treat the page as the unit of continuing work.",
+        "purpose": "Start with one page: locate the work, keep its intent and evidence, and inspect a focused edit.",
         "keep": [
-          "Keep source figures, labels, measured values and citations",
-          "Keep intentional background roles, product identity and meaningful density"
+          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
         ],
-        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
+        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
         "actor": "ChatGPT",
-        "source": "sources/story/USER-STORY.zh-CN.md",
-        "recordedAt": "2026-11-10T22:39:04.527Z"
+        "source": "sources/story/PRODUCT-BRIEF.md",
+        "recordedAt": "2026-11-11T01:36:15.874Z"
       }
     },
     "ca1eec7e-61bd-41ac-b6ab-e000d06797be": {
@@ -573,15 +568,14 @@
       "label": "S28",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "I also want the table and equation to remain editable.",
+        "purpose": "The preceding chart retains all twelve source values",
         "keep": [
-          "Keep source figures, labels, measured values and citations",
-          "Keep intentional background roles, product identity and meaningful density"
+          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
         ],
-        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
+        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
         "actor": "ChatGPT",
-        "source": "sources/story/USER-STORY.zh-CN.md",
-        "recordedAt": "2026-11-10T22:39:28.649Z"
+        "source": "sources/story/PRODUCT-BRIEF.md",
+        "recordedAt": "2026-11-11T01:17:50.599Z"
       }
     },
     "3f5561d8-477e-4954-bee2-9877c8cddc69": {
@@ -593,15 +587,14 @@
       "label": "S29",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "A request can be small: make this page’s title and explanation clearer while preserving the source figure, all twelve values, axes and citation.",
+        "purpose": "This is an actual saved edit",
         "keep": [
-          "Keep source figures, labels, measured values and citations",
-          "Keep intentional background roles, product identity and meaningful density"
+          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
         ],
-        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
+        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
         "actor": "ChatGPT",
-        "source": "sources/story/USER-STORY.zh-CN.md",
-        "recordedAt": "2026-11-10T22:39:30.047Z"
+        "source": "sources/story/PRODUCT-BRIEF.md",
+        "recordedAt": "2026-11-11T00:51:03.820Z"
       }
     },
     "7d7d42a0-0db7-4d33-9b3f-5e1035097b50": {
@@ -613,15 +606,14 @@
       "label": "S30",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "A document model still needs an editor people want to use.",
+        "purpose": "The left navigation gives access to the project, pages, assets and files",
         "keep": [
-          "Keep source figures, labels, measured values and citations",
-          "Keep intentional background roles, product identity and meaningful density"
+          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
         ],
-        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
+        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
         "actor": "ChatGPT",
-        "source": "sources/story/USER-STORY.zh-CN.md",
-        "recordedAt": "2026-11-10T22:46:05.160Z"
+        "source": "sources/story/PRODUCT-BRIEF.md",
+        "recordedAt": "2026-11-11T01:05:14.758Z"
       }
     },
     "95189956-cdd7-4ad9-88c8-cf28a204bb68": {
@@ -633,15 +625,14 @@
       "label": "S31",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "The asset library matters especially for scientific talks.",
+        "purpose": "The asset library keeps the original material available for the next revision",
         "keep": [
-          "Keep source figures, labels, measured values and citations",
-          "Keep intentional background roles, product identity and meaningful density"
+          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
         ],
-        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
+        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
         "actor": "ChatGPT",
-        "source": "sources/story/USER-STORY.zh-CN.md",
-        "recordedAt": "2026-11-10T22:46:18.353Z"
+        "source": "sources/story/PRODUCT-BRIEF.md",
+        "recordedAt": "2026-11-11T01:05:28.150Z"
       }
     },
     "d497fb11-7906-414e-a529-0d97680bce51": {
@@ -655,15 +646,14 @@
       "label": "S32",
       "designIntent": {
         "pageRole": "section",
-        "purpose": "Page identity and history define the scope of an edit.",
+        "purpose": "Once a page can keep evolving, assemble the talk: inspect its rhythm, select the pages and adapt the explanation to this audience.",
         "keep": [
-          "Keep source figures, labels, measured values and citations",
-          "Keep intentional background roles, product identity and meaningful density"
+          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
         ],
-        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
+        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
         "actor": "ChatGPT",
-        "source": "sources/story/USER-STORY.zh-CN.md",
-        "recordedAt": "2026-11-10T22:39:13.662Z"
+        "source": "sources/story/PRODUCT-BRIEF.md",
+        "recordedAt": "2026-11-11T01:36:22.061Z"
       }
     },
     "6a3aec16-2347-40fe-856d-df36c1f58509": {
@@ -675,15 +665,14 @@
       "label": "S33",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "Stable identity lets the history stay with the page.",
+        "purpose": "Select the page and open History to inspect saved operations or record a named version",
         "keep": [
-          "Keep source figures, labels, measured values and citations",
-          "Keep intentional background roles, product identity and meaningful density"
+          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
         ],
-        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
+        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
         "actor": "ChatGPT",
-        "source": "sources/story/USER-STORY.zh-CN.md",
-        "recordedAt": "2026-11-10T22:39:12.683Z"
+        "source": "sources/story/PRODUCT-BRIEF.md",
+        "recordedAt": "2026-11-11T01:36:43.979Z"
       }
     },
     "4a066483-9a11-450c-be15-c0be33d52989": {
@@ -695,15 +684,14 @@
       "label": "S34",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "Story keeps the reason for the work available after the conversation ends.",
+        "purpose": "The human account helps the agent understand the job",
         "keep": [
-          "Keep source figures, labels, measured values and citations",
-          "Keep intentional background roles, product identity and meaningful density"
+          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
         ],
-        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
+        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
         "actor": "ChatGPT",
-        "source": "sources/story/USER-STORY.zh-CN.md",
-        "recordedAt": "2026-11-10T22:54:09.328Z"
+        "source": "sources/story/PRODUCT-BRIEF.md",
+        "recordedAt": "2026-11-11T01:05:21.373Z"
       }
     },
     "4a398dd0-ad74-4a36-b65e-6068ffe817a8": {
@@ -717,15 +705,14 @@
       "label": "S35",
       "designIntent": {
         "pageRole": "section",
-        "purpose": "All of this has to return to the actual talk.",
+        "purpose": "With pages and talks organized, we can bring people and assistants into the same project and explain setup, division of work, handoff and delivery.",
         "keep": [
-          "Keep source figures, labels, measured values and citations",
-          "Keep intentional background roles, product identity and meaningful density"
+          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
         ],
-        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
+        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
         "actor": "ChatGPT",
-        "source": "sources/story/USER-STORY.zh-CN.md",
-        "recordedAt": "2026-11-10T22:39:32.019Z"
+        "source": "sources/story/PRODUCT-BRIEF.md",
+        "recordedAt": "2026-11-11T01:36:28.537Z"
       }
     },
     "3d7cd245-6d59-4123-a75f-fd400fd636c7": {
@@ -737,15 +724,14 @@
       "label": "S36",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "Back at a lab meeting, I will not always tell the same version of the story.",
+        "purpose": "Main Slides is the continuing page library",
         "keep": [
-          "Keep source figures, labels, measured values and citations",
-          "Keep intentional background roles, product identity and meaningful density"
+          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
         ],
-        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
+        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
         "actor": "ChatGPT",
-        "source": "sources/story/USER-STORY.zh-CN.md",
-        "recordedAt": "2026-11-10T22:46:40.767Z"
+        "source": "sources/story/PRODUCT-BRIEF.md",
+        "recordedAt": "2026-11-11T01:45:06.729Z"
       }
     },
     "dc5bfe5f-326a-4b28-8536-56e51ea4397e": {
@@ -757,15 +743,14 @@
       "label": "S37",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "If a page is the editing unit, I need a reliable way to name it.",
+        "purpose": "Position is the current order; after rearranging, slide four can mean a different page",
         "keep": [
-          "Keep source figures, labels, measured values and citations",
-          "Keep intentional background roles, product identity and meaningful density"
+          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
         ],
-        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
+        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
         "actor": "ChatGPT",
-        "source": "sources/story/USER-STORY.zh-CN.md",
-        "recordedAt": "2026-11-10T22:39:12.384Z"
+        "source": "sources/story/PRODUCT-BRIEF.md",
+        "recordedAt": "2026-11-11T01:12:51.711Z"
       }
     },
     "80c650ec-8f56-403d-8f44-d190a84ed4b4": {
@@ -777,15 +762,14 @@
       "label": "S38",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "Sometimes I want a talk to follow continuing edits; sometimes I need to hold a particular stage.",
+        "purpose": "Some talks should follow continuing edits; others need a particular settled stage",
         "keep": [
-          "Keep source figures, labels, measured values and citations",
-          "Keep intentional background roles, product identity and meaningful density"
+          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
         ],
-        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
+        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
         "actor": "ChatGPT",
-        "source": "sources/story/USER-STORY.zh-CN.md",
-        "recordedAt": "2026-11-10T22:51:00.842Z"
+        "source": "sources/story/PRODUCT-BRIEF.md",
+        "recordedAt": "2026-11-11T01:12:58.990Z"
       }
     },
     "e4fb0f10-ffa5-44e2-907f-b92e1b69535e": {
@@ -797,15 +781,14 @@
       "label": "S39",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "When the talk is ready, I can present it directly or export PPTX for continued editing and PDF for reading.",
+        "purpose": "Present or export from the same working project",
         "keep": [
-          "Keep source figures, labels, measured values and citations",
-          "Keep intentional background roles, product identity and meaningful density"
+          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
         ],
-        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
+        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
         "actor": "ChatGPT",
-        "source": "sources/story/USER-STORY.zh-CN.md",
-        "recordedAt": "2026-11-10T22:46:32.344Z"
+        "source": "sources/story/PRODUCT-BRIEF.md",
+        "recordedAt": "2026-11-11T01:05:42.522Z"
       }
     },
     "8050a155-9c2b-4cf5-b643-e9406b9b2b1c": {
@@ -817,15 +800,14 @@
       "label": "S40",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "Opening deck.pptd opens the project, but that entry is only one part of it.",
+        "purpose": "The PPTD file is the entry; the directory is the complete project",
         "keep": [
-          "Keep source figures, labels, measured values and citations",
-          "Keep intentional background roles, product identity and meaningful density"
+          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
         ],
-        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
+        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
         "actor": "ChatGPT",
-        "source": "sources/story/USER-STORY.zh-CN.md",
-        "recordedAt": "2026-11-10T22:39:11.115Z"
+        "source": "sources/story/PRODUCT-BRIEF.md",
+        "recordedAt": "2026-11-11T01:20:40.915Z"
       }
     },
     "bbcdc92a-915c-4988-a4d5-76e466d0424f": {
@@ -837,15 +819,14 @@
       "label": "S41",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "I then looked for existing work I could build on.",
+        "purpose": "HUANDENG builds on OpenSlide",
         "keep": [
-          "Keep source figures, labels, measured values and citations",
-          "Keep intentional background roles, product identity and meaningful density"
+          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
         ],
-        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
+        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
         "actor": "ChatGPT",
-        "source": "sources/story/USER-STORY.zh-CN.md",
-        "recordedAt": "2026-11-10T22:39:02.971Z"
+        "source": "sources/story/PRODUCT-BRIEF.md",
+        "recordedAt": "2026-11-11T00:54:45.980Z"
       }
     },
     "8f9e154d-c5c2-4d79-b809-984586f8311e": {
@@ -857,15 +838,14 @@
       "label": "S42",
       "designIntent": {
         "pageRole": "content",
-        "purpose": "I started HUANDENG so that preparing the next lab meeting could begin with what I actually wanted to say.",
+        "purpose": "Open this example and select the scientific page",
         "keep": [
-          "Keep source figures, labels, measured values and citations",
-          "Keep intentional background roles, product identity and meaningful density"
+          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
         ],
-        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
+        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
         "actor": "ChatGPT",
-        "source": "sources/story/USER-STORY.zh-CN.md",
-        "recordedAt": "2026-11-10T22:46:48.284Z"
+        "source": "sources/story/PRODUCT-BRIEF.md",
+        "recordedAt": "2026-11-11T00:54:54.308Z"
       }
     },
     "3410d070-9af3-44d0-911b-a60c36adbd94": {
@@ -879,7 +859,7 @@
     "e21619f2-9956-4548-9ee8-fbaafd556bff": {
       "shortCode": "P72R",
       "path": "pages/P72R.page",
-      "state": "active",
+      "state": "tombstone",
       "components": {},
       "elementRoles": {},
       "label": "S44",
@@ -903,14 +883,14 @@
       "elementRoles": {},
       "label": "S45",
       "designIntent": {
-        "purpose": "Use the two-of-fifty editing scenario to explain why I chose page-level history.",
-        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
-        "source": "sources/story/USER-STORY.zh-CN.md",
+        "purpose": "Two frustrations often appeared together in my work",
+        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
+        "source": "sources/story/PRODUCT-BRIEF.md",
         "actor": "ChatGPT",
-        "recordedAt": "2026-11-10T22:38:37.348Z",
+        "recordedAt": "2026-11-11T00:50:07.975Z",
         "pageRole": "content",
         "keep": [
-          "Keep filenames explicitly illustrative and the original two-slide scenario."
+          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
         ]
       }
     },
@@ -922,21 +902,21 @@
       "elementRoles": {},
       "label": "S46",
       "designIntent": {
-        "purpose": "Use the author’s account to explain speaking first, then organizing slides and notes from that reasoning.",
-        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
-        "source": "sources/story/USER-STORY.zh-CN.md",
+        "purpose": "Work can be divided by pages, or passed from content drafting to visual refinement",
+        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
+        "source": "sources/story/PRODUCT-BRIEF.md",
         "actor": "ChatGPT",
-        "recordedAt": "2026-11-10T22:38:46.571Z",
+        "recordedAt": "2026-11-11T01:17:57.780Z",
         "pageRole": "content",
         "keep": [
-          "Keep the original Chinese quotation or its labelled English translation and first-person attribution."
+          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
         ]
       }
     },
     "b911bfbe-4cd5-49cd-9da9-486025a496e6": {
       "shortCode": "TBGV",
       "path": "pages/TBGV.page",
-      "state": "active",
+      "state": "tombstone",
       "components": {},
       "elementRoles": {},
       "label": "S47",
@@ -955,7 +935,7 @@
     "4f6f7d5f-d5b0-462f-b694-2874c8b3c395": {
       "shortCode": "YSGH",
       "path": "pages/YSGH.page",
-      "state": "active",
+      "state": "tombstone",
       "components": {},
       "elementRoles": {},
       "label": "S48",
@@ -979,14 +959,14 @@
       "elementRoles": {},
       "label": "S49",
       "designIntent": {
-        "purpose": "Explain how structure identifies objects and values while actual visual review remains necessary.",
-        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
-        "source": "sources/story/USER-STORY.zh-CN.md",
+        "purpose": "The Editor is the workspace for inspection, direct editing and presentation",
+        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
+        "source": "sources/story/PRODUCT-BRIEF.md",
         "actor": "ChatGPT",
-        "recordedAt": "2026-11-10T22:45:58.290Z",
+        "recordedAt": "2026-11-11T01:05:08.017Z",
         "pageRole": "content",
         "keep": [
-          "Keep the fully rendered actual UI and the distinction between structured and visual review."
+          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
         ]
       }
     },
@@ -998,14 +978,14 @@
       "elementRoles": {},
       "label": "S50",
       "designIntent": {
-        "purpose": "Show how Browse, Outline and Sections help inspect the sequence of the same talk.",
-        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
-        "source": "sources/story/USER-STORY.zh-CN.md",
+        "purpose": "After editing individual pages, inspect the talk as a whole",
+        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
+        "source": "sources/story/PRODUCT-BRIEF.md",
         "actor": "ChatGPT",
-        "recordedAt": "2026-11-10T22:46:24.914Z",
+        "recordedAt": "2026-11-11T01:36:50.820Z",
         "pageRole": "content",
         "keep": [
-          "Keep the actual current Browse image and the distinct roles of the three views."
+          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
         ]
       }
     },
@@ -1017,14 +997,14 @@
       "elementRoles": {},
       "label": "S51",
       "designIntent": {
-        "purpose": "Explain how the same page can carry different occurrence notes for different audiences.",
-        "requestedChange": "Use the founder’s account to explain one experience or the design choice it prompted.",
-        "source": "sources/story/USER-STORY.zh-CN.md",
+        "purpose": "Reusing a page does not require reading the same script",
+        "requestedChange": "Explain the product and its use; interpret the founder’s account to choose the emphasis.",
+        "source": "sources/story/PRODUCT-BRIEF.md",
         "actor": "ChatGPT",
-        "recordedAt": "2026-11-10T22:52:26.209Z",
+        "recordedAt": "2026-11-11T01:36:58.466Z",
         "pageRole": "content",
         "keep": [
-          "Keep the current preview of the same scientific page and the distinction between Main and occurrence notes."
+          "Keep actual product captures, original scientific data/assets, attribution and the demonstrated function. Do not fragment ordinary prose into a fake table."
         ]
       }
     }
@@ -1032,43 +1012,43 @@
   "project": {
     "schemaVersion": 1,
     "mainStory": {
-      "purpose": "Explain why I started HUANDENG through my lab-meeting experience, then show how the human story, page history and materials stay with the work.",
-      "audience": "Scientific presenters, people working with AI agents and project contributors",
-      "takeaway": "Begin with the person’s story, then let the agent help realize it in a project that can keep evolving."
+      "purpose": "Introduce what HUANDENG is, how to complete a scientific-page edit, and why intent, evidence, page history and talk composition belong in one working project.",
+      "audience": "Scientific presenters, people creating slides with agents and open-source contributors",
+      "takeaway": "Open one working project and use page intent and evidence to guide editing, review, reuse and delivery."
     },
     "sections": [
       {
         "id": "intro-section-0",
-        "title": "The beginning",
+        "title": "Introducing HUANDENG",
         "story": {
-          "purpose": "The beginning",
-          "audience": "Scientific presenters, people working with AI agents and project contributors",
-          "takeaway": "Begin with the person’s story, then let the agent help realize it in a project that can keep evolving."
+          "purpose": "Introducing HUANDENG",
+          "audience": "Scientific presenters, people creating slides with agents and open-source contributors",
+          "takeaway": "Open one working project and use page intent and evidence to guide editing, review, reuse and delivery."
         },
         "frontMatter": true,
         "pageIds": [
           "90353b2a-6f7b-4ee5-8a8b-10bceb538190",
-          "4f6f7d5f-d5b0-462f-b694-2874c8b3c395",
-          "e21619f2-9956-4548-9ee8-fbaafd556bff",
           "4ec264b7-018d-449c-8c8b-d9aede33a840",
-          "1ba18ad8-0701-4de6-83f5-555b949293d7",
-          "e0b400eb-ddc1-4c42-af48-d420785b1d8f",
-          "bbcdc92a-915c-4988-a4d5-76e466d0424f"
+          "1ba18ad8-0701-4de6-83f5-555b949293d7"
         ],
         "startPageId": "90353b2a-6f7b-4ee5-8a8b-10bceb538190"
       },
       {
         "id": "intro-section-1",
-        "title": "A page with an identity",
+        "title": "Make one page work",
         "story": {
-          "purpose": "A page with an identity",
-          "audience": "Scientific presenters, people working with AI agents and project contributors",
-          "takeaway": "Begin with the person’s story, then let the agent help realize it in a project that can keep evolving."
+          "purpose": "Make one page work",
+          "audience": "Scientific presenters, people creating slides with agents and open-source contributors",
+          "takeaway": "Open one working project and use page intent and evidence to guide editing, review, reuse and delivery."
         },
         "pageIds": [
           "6b9fbac0-772c-435c-bce1-9cad0004af65",
-          "b911bfbe-4cd5-49cd-9da9-486025a496e6",
-          "8050a155-9c2b-4cf5-b643-e9406b9b2b1c",
+          "7d7d42a0-0db7-4d33-9b3f-5e1035097b50",
+          "4a066483-9a11-450c-be15-c0be33d52989",
+          "95189956-cdd7-4ad9-88c8-cf28a204bb68",
+          "c4b12919-5876-4acb-b63f-6a7493b54b37",
+          "ca1eec7e-61bd-41ac-b6ab-e000d06797be",
+          "3f5561d8-477e-4954-bee2-9877c8cddc69",
           "dc5bfe5f-326a-4b28-8536-56e51ea4397e",
           "6a3aec16-2347-40fe-856d-df36c1f58509"
         ],
@@ -1076,39 +1056,36 @@
       },
       {
         "id": "intro-section-2",
-        "title": "Keeping the story in the work",
+        "title": "Turn pages into a talk",
         "story": {
-          "purpose": "Keeping the story in the work",
-          "audience": "Scientific presenters, people working with AI agents and project contributors",
-          "takeaway": "Begin with the person’s story, then let the agent help realize it in a project that can keep evolving."
+          "purpose": "Turn pages into a talk",
+          "audience": "Scientific presenters, people creating slides with agents and open-source contributors",
+          "takeaway": "Open one working project and use page intent and evidence to guide editing, review, reuse and delivery."
         },
         "pageIds": [
           "d497fb11-7906-414e-a529-0d97680bce51",
-          "7d7d42a0-0db7-4d33-9b3f-5e1035097b50",
-          "4a066483-9a11-450c-be15-c0be33d52989",
-          "95189956-cdd7-4ad9-88c8-cf28a204bb68",
-          "c4b12919-5876-4acb-b63f-6a7493b54b37",
-          "ca1eec7e-61bd-41ac-b6ab-e000d06797be",
-          "3f5561d8-477e-4954-bee2-9877c8cddc69",
           "62d5734d-2fe5-441c-a50a-abaa95145b56",
-          "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6"
+          "3d7cd245-6d59-4123-a75f-fd400fd636c7",
+          "095ba6fb-14f6-42b1-815a-7970ac214058",
+          "80c650ec-8f56-403d-8f44-d190a84ed4b4",
+          "8050a155-9c2b-4cf5-b643-e9406b9b2b1c"
         ],
         "startPageId": "d497fb11-7906-414e-a529-0d97680bce51"
       },
       {
         "id": "intro-section-3",
-        "title": "Back to the next lab meeting",
+        "title": "Work with people and agents",
         "story": {
-          "purpose": "Back to the next lab meeting",
-          "audience": "Scientific presenters, people working with AI agents and project contributors",
-          "takeaway": "Begin with the person’s story, then let the agent help realize it in a project that can keep evolving."
+          "purpose": "Work with people and agents",
+          "audience": "Scientific presenters, people creating slides with agents and open-source contributors",
+          "takeaway": "Open one working project and use page intent and evidence to guide editing, review, reuse and delivery."
         },
         "pageIds": [
           "4a398dd0-ad74-4a36-b65e-6068ffe817a8",
-          "3d7cd245-6d59-4123-a75f-fd400fd636c7",
-          "095ba6fb-14f6-42b1-815a-7970ac214058",
-          "80c650ec-8f56-403d-8f44-d190a84ed4b4",
+          "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6",
+          "e0b400eb-ddc1-4c42-af48-d420785b1d8f",
           "e4fb0f10-ffa5-44e2-907f-b92e1b69535e",
+          "bbcdc92a-915c-4988-a4d5-76e466d0424f",
           "8f9e154d-c5c2-4d79-b809-984586f8311e"
         ],
         "startPageId": "4a398dd0-ad74-4a36-b65e-6068ffe817a8"
@@ -1119,25 +1096,15 @@
         "id": "introduction-full",
         "title": "Full introduction",
         "story": {
-          "purpose": "Explain why I started HUANDENG through my lab-meeting experience, then show how the human story, page history and materials stay with the work.",
-          "audience": "Scientific presenters, people working with AI agents and project contributors",
-          "takeaway": "Begin with the person’s story, then let the agent help realize it in a project that can keep evolving."
+          "purpose": "Introduce what HUANDENG is, how to complete a scientific-page edit, and why intent, evidence, page history and talk composition belong in one working project.",
+          "audience": "Scientific presenters, people creating slides with agents and open-source contributors",
+          "takeaway": "Open one working project and use page intent and evidence to guide editing, review, reuse and delivery."
         },
         "items": [
           {
             "id": "full-0",
             "kind": "page",
             "pageId": "90353b2a-6f7b-4ee5-8a8b-10bceb538190"
-          },
-          {
-            "id": "introduction-full-story-19",
-            "kind": "page",
-            "pageId": "4f6f7d5f-d5b0-462f-b694-2874c8b3c395"
-          },
-          {
-            "id": "introduction-full-story-20",
-            "kind": "page",
-            "pageId": "e21619f2-9956-4548-9ee8-fbaafd556bff"
           },
           {
             "id": "introduction-full-story-21",
@@ -1150,44 +1117,9 @@
             "pageId": "1ba18ad8-0701-4de6-83f5-555b949293d7"
           },
           {
-            "id": "introduction-full-story-23",
-            "kind": "page",
-            "pageId": "e0b400eb-ddc1-4c42-af48-d420785b1d8f"
-          },
-          {
-            "id": "full-17",
-            "kind": "page",
-            "pageId": "bbcdc92a-915c-4988-a4d5-76e466d0424f"
-          },
-          {
             "id": "full-2",
             "kind": "page",
             "pageId": "6b9fbac0-772c-435c-bce1-9cad0004af65"
-          },
-          {
-            "id": "introduction-full-story-24",
-            "kind": "page",
-            "pageId": "b911bfbe-4cd5-49cd-9da9-486025a496e6"
-          },
-          {
-            "id": "full-16",
-            "kind": "page",
-            "pageId": "8050a155-9c2b-4cf5-b643-e9406b9b2b1c"
-          },
-          {
-            "id": "full-13",
-            "kind": "page",
-            "pageId": "dc5bfe5f-326a-4b28-8536-56e51ea4397e"
-          },
-          {
-            "id": "full-10",
-            "kind": "page",
-            "pageId": "6a3aec16-2347-40fe-856d-df36c1f58509"
-          },
-          {
-            "id": "full-6",
-            "kind": "page",
-            "pageId": "d497fb11-7906-414e-a529-0d97680bce51"
           },
           {
             "id": "full-3",
@@ -1220,19 +1152,24 @@
             "pageId": "3f5561d8-477e-4954-bee2-9877c8cddc69"
           },
           {
+            "id": "full-13",
+            "kind": "page",
+            "pageId": "dc5bfe5f-326a-4b28-8536-56e51ea4397e"
+          },
+          {
+            "id": "full-10",
+            "kind": "page",
+            "pageId": "6a3aec16-2347-40fe-856d-df36c1f58509"
+          },
+          {
+            "id": "full-6",
+            "kind": "page",
+            "pageId": "d497fb11-7906-414e-a529-0d97680bce51"
+          },
+          {
             "id": "introduction-full-story-25",
             "kind": "page",
             "pageId": "62d5734d-2fe5-441c-a50a-abaa95145b56"
-          },
-          {
-            "id": "full-8",
-            "kind": "page",
-            "pageId": "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6"
-          },
-          {
-            "id": "full-11",
-            "kind": "page",
-            "pageId": "4a398dd0-ad74-4a36-b65e-6068ffe817a8"
           },
           {
             "id": "full-12",
@@ -1250,9 +1187,34 @@
             "pageId": "80c650ec-8f56-403d-8f44-d190a84ed4b4"
           },
           {
+            "id": "full-16",
+            "kind": "page",
+            "pageId": "8050a155-9c2b-4cf5-b643-e9406b9b2b1c"
+          },
+          {
+            "id": "full-11",
+            "kind": "page",
+            "pageId": "4a398dd0-ad74-4a36-b65e-6068ffe817a8"
+          },
+          {
+            "id": "full-8",
+            "kind": "page",
+            "pageId": "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6"
+          },
+          {
+            "id": "introduction-full-story-23",
+            "kind": "page",
+            "pageId": "e0b400eb-ddc1-4c42-af48-d420785b1d8f"
+          },
+          {
             "id": "full-15",
             "kind": "page",
             "pageId": "e4fb0f10-ffa5-44e2-907f-b92e1b69535e"
+          },
+          {
+            "id": "full-17",
+            "kind": "page",
+            "pageId": "bbcdc92a-915c-4988-a4d5-76e466d0424f"
           },
           {
             "id": "full-18",
@@ -1265,9 +1227,9 @@
         "id": "introduction-short",
         "title": "Brief introduction",
         "story": {
-          "purpose": "Explain why I started HUANDENG through my lab-meeting experience, then show how the human story, page history and materials stay with the work.",
-          "audience": "Scientific presenters, people working with AI agents and project contributors",
-          "takeaway": "Begin with the person’s story, then let the agent help realize it in a project that can keep evolving."
+          "purpose": "Introduce what HUANDENG is, how to complete a scientific-page edit, and why intent, evidence, page history and talk composition belong in one working project.",
+          "audience": "Scientific presenters, people creating slides with agents and open-source contributors",
+          "takeaway": "Open one working project and use page intent and evidence to guide editing, review, reuse and delivery."
         },
         "items": [
           {
@@ -1276,39 +1238,20 @@
             "pageId": "90353b2a-6f7b-4ee5-8a8b-10bceb538190"
           },
           {
-            "id": "introduction-short-story-20",
-            "kind": "page",
-            "pageId": "e21619f2-9956-4548-9ee8-fbaafd556bff"
-          },
-          {
             "id": "introduction-short-story-21",
             "kind": "page",
             "pageId": "4ec264b7-018d-449c-8c8b-d9aede33a840"
           },
           {
-            "id": "introduction-short-story-23",
+            "id": "introduction-short-product-22",
             "kind": "page",
-            "pageId": "e0b400eb-ddc1-4c42-af48-d420785b1d8f"
+            "pageId": "1ba18ad8-0701-4de6-83f5-555b949293d7"
           },
           {
-            "id": "introduction-short-story-24",
+            "id": "introduction-short-product-5",
             "kind": "page",
-            "pageId": "b911bfbe-4cd5-49cd-9da9-486025a496e6"
-          },
-          {
-            "id": "introduction-short-story-13",
-            "kind": "page",
-            "pageId": "dc5bfe5f-326a-4b28-8536-56e51ea4397e"
-          },
-          {
-            "id": "introduction-short-story-9",
-            "kind": "page",
-            "pageId": "6a3aec16-2347-40fe-856d-df36c1f58509"
-          },
-          {
-            "id": "introduction-short-story-10",
-            "kind": "page",
-            "pageId": "4a066483-9a11-450c-be15-c0be33d52989"
+            "pageId": "7d7d42a0-0db7-4d33-9b3f-5e1035097b50",
+            "notes": "Locate the shared work: project, pages, assets and files on the left, direct editing in the canvas, and properties, layers and Story on the right. An assistant works on that same page. In this brief talk we next find the original material in Assets and inspect a focused edit."
           },
           {
             "id": "introduction-short-story-6",
@@ -1320,7 +1263,23 @@
             "kind": "page",
             "pageId": "c4b12919-5876-4acb-b63f-6a7493b54b37",
             "versionId": "checkpoint:891ad589ee3d84a6414cbf6af1245185",
-            "notes": "This is a public DNA example. Its figure and twelve values come from the same deposited coordinates. When I change only the explanation, I want the figure, values and source to stay intact. That is also the working agreement I want to carry to different agents."
+            "notes": "For this talk, change only the explanation. Keep the figure, all twelve values, units and source. The page need not be copied; this talk pins the saved wording-edit stage."
+          },
+          {
+            "id": "introduction-short-product-4",
+            "kind": "page",
+            "pageId": "3f5561d8-477e-4954-bee2-9877c8cddc69"
+          },
+          {
+            "id": "introduction-short-story-13",
+            "kind": "page",
+            "pageId": "dc5bfe5f-326a-4b28-8536-56e51ea4397e"
+          },
+          {
+            "id": "brief-4",
+            "kind": "page",
+            "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7",
+            "notes": "The brief talk selects from the same Main pages while retaining their Slide IDs. These actual pages show the selection relationship. Next we connect assistants to this project and then consider division of work and handoff."
           },
           {
             "id": "brief-1",
@@ -1328,9 +1287,9 @@
             "pageId": "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6"
           },
           {
-            "id": "brief-4",
+            "id": "introduction-short-story-23",
             "kind": "page",
-            "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7"
+            "pageId": "e0b400eb-ddc1-4c42-af48-d420785b1d8f"
           },
           {
             "id": "brief-6",

@@ -1,41 +1,37 @@
-# HUANDENG · DeepSeek Harness · English story edition
+# HUANDENG · DeepSeek Harness · English product introduction
 
-The native client independently authored the pages, narrative, Story and Notes. The coordinator assembled this README and the Notes index without rewriting page content or visual design.
+The native author independently revised this project. The coordinator assembled this entry, exact saved Notes and read-only verification evidence without changing authored pages, Story, metadata or exports.
 
-[PPTD project](deck.pptd) · [PDF](Exports/deck.pdf) · [PowerPoint](Exports/deck.pptx) · [Extracted speaker notes](speaker-notes.md) · [Native trial](evidence/native-trial.json) · [QA](evidence/qa.json)
+[PPTD project](deck.pptd) · [PDF](Exports/deck.pdf) · [PowerPoint](Exports/deck.pptx) · [Saved speaker notes](speaker-notes.md) · [Current trial](evidence/product-trial.json) · [Current QA](evidence/product-qa.json) · [Content review](evidence/product-review.json)
 
-**Main Slides: 18.** This native edition did not create an additional Presentation.
+**Current Main: 22 pages. No additional Presentation.** This is a preserved native submission with the content limitations below, not owner acceptance.
 
-**Native model:** `deepseek-flash`. official --profile headless --dump-config, 17.config.model; configured model, not response model metadata.
+## What was actually completed
 
-## Current verification
+The same original DeepSeek session completed after three provider failures and a labelled technical continuation using one operation per tool call. The completed turn used the officially installed HUANDENG 0.19.0 candidate bundle; the author's final report incorrectly called it a 0.1.0 prototype. The lineage, exact bundle hashes and correction are in the current trial record.
 
-- Native turn: completed; exit code 0; native completion confirmed. 1 recorded turn(s).
-- PDF / PPTX: 18 / 18 pages; export reports match the reviewed source revisions.
-- PowerPoint 16.0: 18/18 pages opened read-only and rendered at 1920×1080.
-- Native PowerPoint objects: 18 Notes pages, 0 tables, 0 chart objects, 13 media parts.
-- The whole Office-rendered sequence was reviewed in contact sheets; additional full-page checks and observations are recorded in [the visual review](evidence/office-visual-review.json).
-- No blocking Office layout defect was observed within that stated review scope. Narrative and aesthetic acceptance remain with the owner.
+The native author exported the current 22-page PDF and PPTX. Their reports match the saved source revisions. PowerPoint 16.0 opened a separate read-only copy and rendered all 22 pages at 1920×1080 without changing either PPTX. All four Office contact sheets and full pages 4, 10, 11, 12, 18 and 19 were inspected. No additional clipping, missing image or native-table overflow was observed in that scope.
 
-## Notes and Presentations
+The PPTX contains 22 Notes pages, five native tables and 20 media parts. The scientific curve is a retained original raster asset, as the page itself states; this candidate contains no native chart.
 
-The Notes file reproduces the saved Main Notes and actual resolved occurrence Notes for each Presentation. A reused Main note is labelled as such; no extra short-version script was invented.
+## Retained content limitations
 
+- Page 4 incorrectly says PPTX has no page identity. PPTX already has slide parts and identifiers.
+- Several revised pages retain earlier Notes or constraints. Pages 2 and 4 speak to their previous subjects; page 6 overgeneralizes other slide tools as screen-only; page 22 Notes reintroduce deferred image/layer plans. The cover's old Keep instruction also conflicts with its current logo.
+- Page 11 claims to quote the current scientific page's Story, but the displayed fields are an earlier example.
+- Page 18 conflates Main order's manifest revision with Presentation composition's metadata revision.
+- The native handoff's prototype-package diagnosis is incorrect. Its original wording is preserved with a coordinator correction.
 
-## Sources and native record
+These are content and metadata limits, not an Office rendering failure. The coordinator did not repair the native pages or request a taste-based redo. [Exact review](evidence/product-review.json) · [Actual Story and Notes](evidence/product-narrative.json) · [Visible author handoff](evidence/product-native-author-report.md).
 
-- [User story excerpt](sources/story/USER-STORY.zh-CN.md) and [verified technical facts](sources/story/FACTS.md).
-- [Native author's handoff](evidence/native-author-report.md) preserves the current native author report or a labelled excerpt of its visible final response. Its at-the-time Office limitation is superseded by the coordinator verification above.
-- [Native trial evidence](evidence/native-trial.json) records the real model evidence, tool failures, connection recovery where applicable, and the separation between native completion and delivery completion.
-- Keep the entire project directory when moving it; the PPTD entry references its pages and assets.
+## Sources and use
 
-## Content findings in the preserved native candidate
+Keep the whole directory when moving the project. deck.pptd is its entry; pages, media and project metadata belong together.
 
-Export completion does not mean all content requirements passed. These findings remain visible in the original native candidate; the coordinator did not rewrite its pages or request an aesthetic redo.
+[Current image use](evidence/product-assets.json), [public input manifest](MEDIA-INPUTS.json), [sources and notices](SOURCES.md), [technical facts](sources/story/FACTS.md) and the source packages preserve provenance. The 1BNA example uses twelve positions from one public structure, not independent replicates or a HUANDENG performance benchmark.
 
-- Pages7–8 overstate image comparisons and PowerPoint/Google Slides workflows; screenshots are not object-addressable slide models, but they can still be compared or tested.
-- Pages1,2,15 add personal timing, setting and usage details absent from the spoken account.
-- Page14 uses an already-saved history image without clearly distinguishing it from preview before writing.
-- Page18 Notes promote deferred layers/image-editing ideas into a next step.
+## Historical evidence
 
-[Independent content review](evidence/content-review.json) · [Saved narrative and Notes data](evidence/narrative.json).
+The existing [story-round native trial](evidence/native-trial.json), qa.json, content-review.json and other unprefixed evidence describe the earlier 18-page story submission. Their recorded hashes and counts are historical; they are not a claim about the current export files. The current revision uses the product-* evidence linked above.
+
+![Current native PDF cover](evidence/product-preview.png)

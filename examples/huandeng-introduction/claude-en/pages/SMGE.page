@@ -73,7 +73,7 @@ elements:
       - 350
       - 70
     content:
-      text: Open the Editor. Choose Home › New project, or open an existing deck.pptd.
+      text: "Open the Editor. Choose Home › New project, or open a .pptd file or the folder that holds it."
       fontFamily: Arial
       fontSize: 17
       lineHeight: 1.35
@@ -289,7 +289,7 @@ elements:
       - 848
       - 40
     content:
-      text: "Editor and plugin 0.18. Issues, tests and pull requests are most useful where the previous slide lists gaps. This introduction is itself a HUANDENG project, rebuilt from a spoken story."
+      text: "Editor and plugin 0.19.0. Move or share the whole project folder, not only the .pptd. Issues, tests and pull requests are most useful where the previous slide lists gaps."
       fontFamily: Arial
       fontSize: 14
       lineHeight: 1.35
@@ -297,4 +297,4 @@ elements:
       align:
         - left
         - top
-notes: "If you want to try it, open the editor and start a project, or open an existing deck. Connect the AI client you already use from Agent setup. Then do what I did for this talk: tell the agent your story first, out loud and freestyle, and let it organise the story before it makes any slides. After that, ask for one change at a time, read the preview, apply it, and look at the review. The code and the build commands are on the right, and the repository is at the bottom. Thank you."
+notes: "If you want to try it, open the editor and start a project, or open an existing one. You can open the .pptd file itself, or the project folder, as long as that folder directly contains exactly one .pptd; if it has none, or several, the Editor says so and asks you to choose the file. The folder is the project: pages, media and the .huandeng metadata live beside the .pptd, so copy or share the whole folder, not just the .pptd. Connect the AI client you already use from Agent setup. Then do what I did for this talk: tell the agent your story first, out loud and freestyle, and let it organise the story before it makes any slides. After that, ask for one change at a time, read the preview, apply it, and look at the review. The code and the build commands are on the right, and the repository is at the bottom. Thank you."

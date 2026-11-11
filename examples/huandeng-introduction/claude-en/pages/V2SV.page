@@ -145,18 +145,7 @@ elements:
       - 0.38
       - 0.42
     rows:
-      - - text: Identifier
-        - text: What it names
-        - text: Changes when
-      - - text: Slide ID
-        - text: One slide's content, e.g. C014
-        - text: Never; use it in search, notes and requests to an agent
-      - - text: Position
-        - text: Its place in the current order
-        - text: Slides are added, removed or moved
-      - - text: Occurrence
-        - text: One appearance of a slide in a Presentation
-        - text: That Presentation is rearranged
+        [[{"text":"Identifier"},{"text":"What it names"},{"text":"Changes when"}],[{"text":"Slide ID"},{"text":"One slide's content, e.g. C014"},{"text":"Never; use it in search, notes and requests to an agent"}],[{"text":"Position"},{"text":"Its place in the current order"},{"text":"Slides are added, removed or moved"}],[{"text":"Occurrence"},{"text":"One appearance of a slide in a Presentation"},{"text":"Not when reordered; only its place moves"}]]
     style:
       cellStyle:
         fontFamily: Arial

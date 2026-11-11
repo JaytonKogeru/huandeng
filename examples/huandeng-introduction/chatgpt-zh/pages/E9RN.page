@@ -6,23 +6,17 @@ elements:
   - elementId: title
     elementType: text
     bounds:
-      - 44
-      - 35
-      - 870
-      - 67
+        [42,34,880,76]
     role: title
     content:
-      {"text":"把历史留在这一页","fontFamily":"Microsoft YaHei","fontSize":28,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
+      {"text":"回看修改，回到一个明确的阶段","fontFamily":"Noto Serif SC","fontSize":28,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.2}
   - elementId: brand-small
     elementType: image
     src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
     sourceName: huandeng.png
     alt: huandeng.png
     bounds:
-      - 44
-      - 510
-      - 17
-      - 17
+        [43,512,18,18]
     fit:
       mode: contain
     crop:
@@ -33,48 +27,25 @@ elements:
   - elementId: foot
     elementType: text
     bounds:
-      - 69
-      - 513
-      - 130
-      - 17
+        [68,515,140,16]
     content:
-      text: HUANDENG
-      fontFamily: Microsoft YaHei
-      fontSize: 10
-      color: "#66756B"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
+      {"text":"HUANDENG","fontFamily":"Noto Sans SC","fontSize":9,"color":"#5B6A62","bold":false,"align":["left","top"],"lineHeight":1.35}
   - elementId: position
     elementType: text
     bounds:
-      - 884
-      - 512
-      - 30
-      - 18
+        [881,514,35,18]
     content:
-      text: ""
-      fontFamily: Microsoft YaHei
-      fontSize: 10
-      color: "#66756B"
-      bold: false
-      align:
-        - right
-        - top
-      lineHeight: 1.3
-      field: main-position
-  - elementId: versions-detail
+      {"text":"","fontFamily":"Noto Sans SC","fontSize":10,"color":"#5B6A62","bold":false,"align":["right","top"],"lineHeight":1.35,"field":"main-position"}
+  - elementId: named-versions
     elementType: image
     src: media/imported/24e7314c2324f71ccec2c6fe5827542fc861ac8549c249ae9a790ca08c198c83.png
     sourceName: versions-detail.png
     alt: versions-detail.png
     bounds:
       - 44
-      - 142
-      - 300
-      - 303
+      - 148
+      - 345
+      - 321
     fit:
       mode: contain
     crop:
@@ -82,44 +53,71 @@ elements:
       right: 0
       top: 0
       bottom: 0
-  - elementId: history-story
-    elementType: text
+  - elementId: saved-operations
+    elementType: image
+    src: "media/imported/e596e2250f4130081e2d7b52a501f811546e7020d413d299938d16b5af7023bb.png"
+    sourceName: "operation-detail.png"
+    alt: "operation-detail.png"
     bounds:
-      - 410
-      - 148
-      - 504
-      - 315
-    content:
-      text: |-
-        右键选中的页，可以查看历史。
-  
-        操作记录回答“改了什么”。
-        命名版本留下一个完整阶段。
-  
-        下一次修改，仍回到同一个项目。
-      fontFamily: Microsoft YaHei
-      fontSize: 22
-      color: "#263C34"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.6
-  - elementId: history-source
+        [523,156,354,244]
+    fit:
+      mode: contain
+    crop:
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+  - elementId: named-caption
     elementType: text
     bounds:
       - 44
-      - 477
-      - 870
-      - 25
+      - 116
+      - 345
+      - 28
     content:
-      text: 左：本项目实际保存的单页版本
-      fontFamily: Microsoft YaHei
-      fontSize: 13
-      color: "#66756B"
+      text: 命名页面版本
+      fontFamily: Noto Sans SC
+      fontSize: 16
+      color: "#356F68"
       bold: false
       align:
         - left
         - top
-      lineHeight: 1.3
-notes: "有了稳定身份，历史才能跟着这一页走。选中页面后可以看它的操作记录，知道哪些字段改过；也可以在有意义的阶段保存一个命名版本，回来预览或恢复。这里展示的是本项目真正保存过的单页版本。这回应了前面改两页却复制整套文件的问题：继续在同一个项目里工作，把这页的历史留在这页。"
+      lineHeight: 1.35
+  - elementId: operation-caption
+    elementType: text
+    bounds:
+      - 523
+      - 116
+      - 354
+      - 28
+    content:
+      text: 一次已保存的操作
+      fontFamily: Noto Sans SC
+      fontSize: 16
+      color: "#356F68"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.35
+  - elementId: history-action
+    elementType: text
+    bounds:
+      - 435
+      - 431
+      - 478
+      - 73
+    content:
+      text: |-
+        选中页面 → History
+        查看一次操作，或命名一个阶段，再预览 / 恢复。
+      fontFamily: Noto Sans SC
+      fontSize: 18
+      color: "#20372F"
+      bold: false
+      align:
+        - left
+        - top
+      lineHeight: 1.45
+notes: "选中页面，进入History，可以查看操作记录，也可以记录一个有意义的命名版本。操作回答具体改了什么，命名版本保存阶段性的整页内容；两者用途不同。恢复一个版本作用于选中的那一页。这样，小改动可以继续留在当前项目中，不必用一套新文件来代表每一次修改。"

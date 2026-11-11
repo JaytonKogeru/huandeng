@@ -1,0 +1,235 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-11T04:38:04.972372+00:00",
+  "project": "claude-zh",
+  "presentationId": "lab-brief",
+  "count": 9,
+  "mainPositions": [1, 3, 4, 6, 12, 13, 19, 22, 26],
+  "artifactAuthor": "native Claude author",
+  "coordinatorAction": "Archive preceding nine-page brief and normalize current native nine-page artifact filenames; no export or authored edits",
+  "sourceHashes": {
+    "deck.pptd": "325af19fad49f7e43bcf117a67774f96946d29863ef424d4a01d0d722801eb2b",
+    ".huandeng/project.json": "00056b9948c065bddd11e7be2fb53c166d05b2d03e6cd5962812e678e81187f4",
+    "pages/2723.page": "0139406f2d9bd5fa7bddb81b5fbc7b2041989d5c2d8fd622590fb936bc7322e2",
+    "pages/2UCC.page": "b7ec8fdbe8edf9090043fc32e1cc19f41056282f0b3457dda86e0e224239b542",
+    "pages/3442.page": "acf8b4cfb50a2737bb2c223fd49c84ef46d19102c7e72dfb3667570e0f1c6f1f",
+    "pages/3D9R.page": "ad6e01acb9762d63440b24702ced37f9bb3f7793c5b2558a61e5231ff610b874",
+    "pages/3DUH.page": "4667010bdeebffcf4bfbfdd4f83e064499847d2d7e12f5fc4dfaa230ab7099ee",
+    "pages/6KNX.page": "d66dfa584158fa1bdc8659d02f68d20b5b71e2f5974564f8c45ee5b5cf48cac2",
+    "pages/7K3P.page": "b0d9f6de9804a9d9b2529d0b9424850c839efb891ecc11de017aef8898840958",
+    "pages/85Z6.page": "a9d8a88d54bc0e8e033c8629812d337027e96dfba00cac2582c5278cc70f5aca",
+    "pages/A9FE.page": "f90f9ad50473cc67bd9a01421a09e9a94a90921b40e54ab54d4e06beb8790ae6",
+    "pages/BDTW.page": "2e814d90fac2535503cfe2fd89715412a173d9451c2b6692a9712f92739f4238",
+    "pages/BRHY.page": "40986fc22b765c5ec9b88c98feb4f6d235f9d86c3ac78887c3417bbad149a01c",
+    "pages/D26F.page": "81561530ed1eedda077353e920bf1c143c486269424cd87eec7d66b2a456dcff",
+    "pages/DY5H.page": "c601a32ed95c88ce6e9a82722027917dc4550af5d3cb5d1270785dc97667761e",
+    "pages/FK8W.page": "66017a133fd72b47fe8439bbe2733f22974c7aa2460cf48aca620404d919e314",
+    "pages/FNHB.page": "b26ad19dc2ac94d1da1dafbe7d61519072626a877e8da885b7a81703dd0c8c3a",
+    "pages/GBXR.page": "e56806615d8aa2660fe36b4affad49a873220f11d6ed9861adc52886a6d19c0d",
+    "pages/GZBW.page": "d26c977b30c5b8b1c625a242d7735d8f25c98b570d655464b58b769be0c44f53",
+    "pages/initial.page": "9e1f07666cb02af420246cc50842106002881090ac871c5fc1eacf4d1b85ae82",
+    "pages/J28N.page": "574b8fe1e97a1e6c3355c1a1282e1b35696f5dac5225e08aef18443206daa83d",
+    "pages/KS6E.page": "16bcad0a1034cde7dcb4287f8df365e650a5434d103375a4cf3e0107807045d3",
+    "pages/MC4X.page": "dd70a0902d63dda8b6e9024107c56f7eaf097355b004ebd713045d7da82f4649",
+    "pages/SSFR.page": "7a61536ef1c0d075d157a018510ccc07a3f239509326803e9232bdff77f476e5",
+    "pages/WDFR.page": "ba59fce178dcafc71e6fe8b593b4b7fb39befec03fb9528f171942284879d403",
+    "pages/XVAD.page": "629a5fd049386ef293d685a799be1c3d8763bf58a01144100fe2aaad1d46046b",
+    "pages/YS6V.page": "8f9209bbe28dc7c3eb3e0dee557cc6b97c461dd79b85dc6c97ed928d1c2bf0e5",
+    "pages/ZWM9.page": "549d9adccd8f763e7f5798aeb293a7def541ddf50e4c6d9d51b712cda53df931",
+    "pages/ZX58.page": "73ba3814ea4f2a8fedadacd185401351fe74dbe899e1d968e2d4ab367f21810a"
+  },
+  "sourceUnchanged": true,
+  "englishSourceUnchanged": true,
+  "nativeMainExportsUnchanged": true,
+  "localNotes": 4,
+  "pins": 0,
+  "oldExports": [
+    {
+      "fileName": "brief.pdf",
+      "sha256": "2ae481940aae7fc4ac3a7d1b920b56c83a2f991a43baaaab4e5462f35b1e0414",
+      "bytes": 1980827
+    },
+    {
+      "fileName": "brief.pdf.report.json",
+      "sha256": "9b6370ab7c7bd622bc7fab1f5a6e234d587d1ab64df292d3bbae943a63dac659",
+      "bytes": 41680
+    },
+    {
+      "fileName": "brief.pptx",
+      "sha256": "a8e6382535c540644c0ff37907f767f47a396c3e5f42055476286e7d60801a1f",
+      "bytes": 1689820
+    },
+    {
+      "fileName": "brief.pptx.report.json",
+      "sha256": "25697e70dab0ddfc2b9a7ff14553316fcb6206df0a13f42f21e3b36412f30096",
+      "bytes": 48782
+    }
+  ],
+  "oldPdfPages": 9,
+  "oldBytesRetainedInInternalTrialArchive": true,
+  "exports": [
+    {
+      "path": "../Exports/brief.pdf",
+      "sha256": "da1ec5631883923c51ec7703d327858abb56c0a76163b20609811fc5b0ccaf4e",
+      "bytes": 1982216,
+      "reportPath": "../Exports/brief.pdf.report.json",
+      "reportSha256": "a8ab8b596b9c3df2e38df3b33c46a5ae2bd4d6c9abc6fbfa342e9c122eed5a3a",
+      "actor": "native Claude author",
+      "pageCount": 9,
+      "nativeFilename": "组会简版（约 8 分钟）-lab-brie.pdf",
+      "nativeMtime": 1794371602.9337313,
+      "coordinatorAction": "Standardized filename only; exact native bytes preserved"
+    },
+    {
+      "path": "../Exports/brief.pptx",
+      "sha256": "4a79c1ff49e8fe89c84f8aba3c34b02c5c7f33e96215ff2545c7d040c6ffc45e",
+      "bytes": 1689954,
+      "reportPath": "../Exports/brief.pptx.report.json",
+      "reportSha256": "f9d80b307a7889a2a3d16513a64f06e0cfbb3afbf84c6e612bea27c4885f33cd",
+      "actor": "native Claude author",
+      "pageCount": 9,
+      "nativeFilename": "组会简版（约 8 分钟）-lab-brie.pptx",
+      "nativeMtime": 1794371609.0230157,
+      "coordinatorAction": "Standardized filename only; exact native bytes preserved"
+    }
+  ],
+  "pptxStructure": {
+    "slides": 9,
+    "notes": 9,
+    "tables": 2,
+    "charts": 1
+  },
+  "notesReadback": [
+    {
+      "position": 1,
+      "pageId": "1730f1f7-f4d9-4679-adc2-c9dd6cdfa2c3",
+      "matchesSavedResolvedNotes": true,
+      "noteSource": "occurrence"
+    },
+    {
+      "position": 2,
+      "pageId": "7cf5346c-2027-4e88-b84a-af2466256234",
+      "matchesSavedResolvedNotes": true,
+      "noteSource": "occurrence"
+    },
+    {
+      "position": 3,
+      "pageId": "6b5c5cbe-70c3-4808-8011-15f57adcbff7",
+      "matchesSavedResolvedNotes": true,
+      "noteSource": "Main"
+    },
+    {
+      "position": 4,
+      "pageId": "3c2c0a36-22fc-43b0-b37f-5c3f3b97e005",
+      "matchesSavedResolvedNotes": true,
+      "noteSource": "Main"
+    },
+    {
+      "position": 5,
+      "pageId": "fe807e1f-34d2-4d19-9556-6e32ce00ef5e",
+      "matchesSavedResolvedNotes": true,
+      "noteSource": "occurrence"
+    },
+    {
+      "position": 6,
+      "pageId": "f771a595-2222-40fa-acf2-1858bcf77e7e",
+      "matchesSavedResolvedNotes": true,
+      "noteSource": "Main"
+    },
+    {
+      "position": 7,
+      "pageId": "39442c0b-2570-4407-b627-44475ad8db32",
+      "matchesSavedResolvedNotes": true,
+      "noteSource": "Main"
+    },
+    {
+      "position": 8,
+      "pageId": "c0366303-bca1-484b-aad6-fa732d78b631",
+      "matchesSavedResolvedNotes": true,
+      "noteSource": "Main"
+    },
+    {
+      "position": 9,
+      "pageId": "03e261c9-fb49-4c9f-89d4-d9da6b45b204",
+      "matchesSavedResolvedNotes": true,
+      "noteSource": "occurrence"
+    }
+  ],
+  "pdfRenders": [
+    {
+      "position": 1,
+      "mainPosition": 1,
+      "sha256": "189deae77981d1728d7a0a19abcf7a1a67ab487b5d2ace36e64b70cf7fed33c6",
+      "pixels": [1920, 1080]
+    },
+    {
+      "position": 2,
+      "mainPosition": 3,
+      "sha256": "5725c148037df6850eb88267844a12d532bf040467441bf003f228eb5457ccfc",
+      "pixels": [1920, 1080]
+    },
+    {
+      "position": 3,
+      "mainPosition": 4,
+      "sha256": "fab93a77cf142c600f5e21cc580a712191cdf6e1d5bc819e14a52abf2fefd8b8",
+      "pixels": [1920, 1080]
+    },
+    {
+      "position": 4,
+      "mainPosition": 6,
+      "sha256": "cbad666f17a806e5445b182a99155e067c30b038e190c79ca00e6790a8b1c68e",
+      "pixels": [1920, 1080]
+    },
+    {
+      "position": 5,
+      "mainPosition": 12,
+      "sha256": "fb907e8353249e8e0053a8e64264173687fd2b36a4fd37cb2ccb4817dc1b3813",
+      "pixels": [1920, 1080]
+    },
+    {
+      "position": 6,
+      "mainPosition": 13,
+      "sha256": "12be76d0ff232d76aa82374a5eb1ac6bf72d906cc309dd7cbc8149408b5a1a0d",
+      "pixels": [1920, 1080]
+    },
+    {
+      "position": 7,
+      "mainPosition": 19,
+      "sha256": "c909e2cc05479a891bc8360ad0617873af94be0fccb272c7fd86132af93d22bb",
+      "pixels": [1920, 1080]
+    },
+    {
+      "position": 8,
+      "mainPosition": 22,
+      "sha256": "ea58a11d66e88ded3880db8a7b13825932e7a304faa4156977a6106ee28e710a",
+      "pixels": [1920, 1080]
+    },
+    {
+      "position": 9,
+      "mainPosition": 26,
+      "sha256": "e106f04005083a7190f172d7f788d2b9fc149c720f449ec5badb80eed20dd8e4",
+      "pixels": [1920, 1080]
+    }
+  ],
+  "visualReviewPending": false,
+  "authorAccepted": false,
+  "visualReview": {
+    "currentPdfContactsViewed": [1, 2],
+    "allNineCurrentPdfPagesSeen": true,
+    "mainNumberedFootersPreserved": true,
+    "currentSeparateBriefOfficeRenderClaimed": false,
+    "notesReadback": "All nine Notes match saved resolved Notes; four occurrence Notes."
+  },
+  "sourceHashesRoot": "..",
+  "contactSheets": [
+    {
+      "path": "product-brief/contact-1.jpg",
+      "sha256": "622633aaf22ea0261e02099561af1ec9da0e8aca091310dc9bc074a5004da634"
+    },
+    {
+      "path": "product-brief/contact-2.jpg",
+      "sha256": "008a14b544b48e012da30952f683f0ec642277604c8db17b3c678a210219b9d7"
+    }
+  ],
+  "powerPointScope": "The preceding complete Main deck was rendered in actual Office; current affected Main pages were checked separately. Current Brief PDF/Notes/caches were verified. No new complete Brief Office run is claimed."
+}

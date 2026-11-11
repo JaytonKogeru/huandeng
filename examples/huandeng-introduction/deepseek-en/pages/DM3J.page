@@ -38,13 +38,10 @@ elements:
   - elementId: p17-body
     elementType: text
     bounds:
-      - 64
-      - 160
-      - 420
-      - 180
+        [64,150,420,170]
     content:
-      text: PDF for the room. Editable PPTX for the person who has to keep it. MP4 when the deck has to play itself. Export reads the saved pages, not a picture of the editor.
-      fontSize: 17
+      text: "The project folder is the editable source. PDF for the room; PPTX for the co-author; MP4 for timed playback. Export reads the saved pages, not a screenshot."
+      fontSize: 16
       fontFamily: Segoe UI
       color: "#3A3833"
       lineHeight: 1.62
@@ -106,48 +103,6 @@ elements:
       align:
         - left
         - top
-  - elementId: p17-format
-    elementType: text
-    bounds:
-      - 64
-      - 392
-      - 420
-      - 20
-    content:
-      text: PDF · PPTX · MP4
-      fontSize: 12
-      fontFamily: Consolas
-      color: "#B43C26"
-      letterSpacing: 1.4
-      align:
-        - left
-        - top
-  - elementId: p17-pptxgen
-    elementType: image
-    bounds:
-      - 64
-      - 430
-      - 30
-      - 22
-    src: media/imported/d697acf6f3c5bc265806bc8f6c4e6d58b964e0b2962392d0329a420639f45846.png
-    sourceName: pptxgenjs.png
-    fit:
-      mode: contain
-  - elementId: p17-credit
-    elementType: text
-    bounds:
-      - 104
-      - 432
-      - 300
-      - 16
-    content:
-      text: PPTX written with PptxGenJS
-      fontSize: 11.5
-      fontFamily: Consolas
-      color: "#918B7E"
-      align:
-        - left
-        - top
   - elementId: p17-folio
     elementType: text
     bounds:
@@ -163,5 +118,76 @@ elements:
       color: "#A29C8F"
       align:
         - right
+        - top
+  - elementId: p17-table
+    elementType: table
+    bounds:
+      - 64
+      - 340
+      - 832
+      - 148
+    columnWidths:
+      - 0.22
+      - 0.78
+    rows:
+      - - text: Output
+        - text: What it carries
+      - - text: PPTD project
+        - text: pages, notes, Story, sections, presentations, named versions
+      - - text: PPTX
+        - text: native text, images, shapes, tables; supported charts and equations; animation static
+      - - text: PDF
+        - text: static pages for sharing and archiving
+      - - text: MP4
+        - text: timed click builds, 720p or 1080p, no audio
+    style:
+      cellStyle:
+        fontFamily: Segoe UI
+        fontSize: 10.5
+        lineHeight: 1.25
+        color: "#1C2321"
+        align:
+          - left
+          - middle
+        border:
+          - null
+          - null
+          - width: 1
+            color: "#D9D4C8"
+            style: solid
+          - null
+      firstRowStyle:
+        fontSize: 9.5
+        bold: true
+        color: "#625E55"
+      firstColumnStyle:
+        color: "#B43C26"
+        bold: true
+  - elementId: p17-mark
+    elementType: image
+    bounds:
+      - 56
+      - 508
+      - 12
+      - 12
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    fit:
+      mode: contain
+  - elementId: p17-footer
+    elementType: text
+    bounds:
+      - 74
+      - 508
+      - 300
+      - 12
+    content:
+      text: HUANDENG / DELIVERY
+      fontFamily: Consolas
+      fontSize: 9
+      color: "#918B7E"
+      letterSpacing: 1.1
+      align:
+        - left
         - top
 notes: The work still has to leave the editor. PDF for the room. Editable PPTX for whoever has to keep it. MP4 when the deck has to play itself. Export reads the saved pages, not a screenshot of the editor, and the PPTX is a real editable file, not a folder of slide images. The format is a working format, not a lock-in.

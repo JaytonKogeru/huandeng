@@ -89,16 +89,7 @@ elements:
       - 0.2
       - 0.8
     rows:
-      - - text: Purpose
-        - text: Show the twelve measured C1′–C1′ distances beside the structure they were measured in.
-      - - text: Keep
-        - text: |-
-            Values exactly as in paired-c1-distances.csv
-            Labelled non-zero y-axis, units in Å
-            PDB 1BNA citation on the slide
-            No replicate, error-bar or trend claims
-      - - text: This change
-        - text: First authoring for the English introduction
+        [[{"text":"Purpose"},{"text":"Show the twelve measured C1′–C1′ distances beside the structure they were measured in."}],[{"text":"Keep"},{"text":"Values exactly as in paired-c1-distances.csv\nLabelled non-zero y-axis, units in Å\nPDB 1BNA citation on the slide\nNo replicate, error-bar or trend claims"}],[{"text":"This change"},{"text":"Move the y-axis title clear of the tick labels; values, axis range and citation unchanged."}]]
     style:
       cellStyle:
         fontFamily: Arial

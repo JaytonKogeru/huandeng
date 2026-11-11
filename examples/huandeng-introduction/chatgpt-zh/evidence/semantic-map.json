@@ -1,0 +1,332 @@
+{
+  "schemaVersion": 2,
+  "language": "zh",
+  "fullCount": 24,
+  "briefCount": 12,
+  "topics": [
+    {
+      "position": 1,
+      "topicIndex": 0,
+      "pageId": "7995de62-e81e-46db-b250-cabc66a99b28",
+      "slideId": "TTHC",
+      "title": "科研演示，\n持续编辑",
+      "purpose": "HUANDENG是一个面向科研演示的编辑工作流",
+      "notes": "HUANDENG是一个面向科研演示的编辑工作流。它把可视化编辑器、可携带的项目目录和Agent接入放到一起。起点来自我的组会经历：我希望AI接手制作中的重复劳动，但页面的判断、原图和后续修改仍然属于同一份工作。这次介绍会直接走一遍：找到一页，保留意图与证据，完成一次可检查的修改，再把页面组织成演讲。",
+      "objectTypes": {
+        "shape": 2,
+        "image": 2,
+        "text": 4
+      }
+    },
+    {
+      "position": 2,
+      "topicIndex": 21,
+      "pageId": "1dc23de8-b351-483b-a93a-f02c0444a927",
+      "slideId": "MSVB",
+      "title": "小改动，不该变成另一套文件",
+      "purpose": "我的困扰有两个经常同时出现：AI做出的页面看似完整，却没有突出我真正想讲的东西；只改五十页中的两页，又可能留下另一整套文件",
+      "notes": "我的困扰有两个经常同时出现：AI做出的页面看似完整，却没有突出我真正想讲的东西；只改五十页中的两页，又可能留下另一整套文件。于是我把问题重新拆成：人的意图留在哪里，以及这次到底修改了哪一页。Story负责保存判断，页面身份与历史负责让小改动留在原来的工作里。这里的文件名是场景示意，不是对所有AI工具的结论。",
+      "objectTypes": {
+        "text": 7,
+        "image": 1,
+        "icon": 2,
+        "line": 1
+      }
+    },
+    {
+      "position": 3,
+      "topicIndex": 22,
+      "pageId": "1f6289fd-1d4c-4a03-a74d-4bc4955de868",
+      "slideId": "6G4G",
+      "title": "幻灯把什么放到了一起？",
+      "purpose": "先把几个名字放清楚",
+      "notes": "先把几个名字放清楚。HUANDENG Editor是人查看、手动修改和放映的工作区。PPTD所在的目录是完整项目，页面、素材和历史留在里面。Plugin提供制作与协作约定；Connector把助手接到选定项目的共享写入服务。人和Agent不是各自维护一套源稿。先从同一张页开始，后面的操作才有共同的对象。",
+      "objectTypes": {
+        "text": 5,
+        "image": 3
+      }
+    },
+    {
+      "position": 4,
+      "topicIndex": 2,
+      "pageId": "b55179ed-446c-42a7-a2d5-2557defac052",
+      "slideId": "CR5K",
+      "title": "做好一页",
+      "purpose": "先从一张页开始：找到编辑位置，留下目的与证据，再完成一次可检查的局部修改",
+      "notes": "先从一张页开始：找到编辑位置，留下目的与证据，再完成一次可检查的局部修改。",
+      "objectTypes": {
+        "text": 1
+      }
+    },
+    {
+      "position": 5,
+      "topicIndex": 5,
+      "pageId": "3483b895-bc52-43b6-a7c4-001a0d1e4526",
+      "slideId": "ZYZB",
+      "title": "先在同一张画布上找到它",
+      "purpose": "先认识工作区",
+      "notes": "先认识工作区。左侧可以在项目、页面、素材和文件间切换。中间仍是可以手动选择和修改对象的画布。右侧保留属性、图层和Story。上方视图用于浏览整套页面、检查大纲、调整章节、写备注或查历史。接入Agent之后，它的修改也会出现在这份页面里。接下来我们先留下一页的意图，再准备要用的素材。",
+      "objectTypes": {
+        "text": 8,
+        "image": 2,
+        "shape": 3
+      }
+    },
+    {
+      "position": 6,
+      "topicIndex": 10,
+      "pageId": "05cd8517-c8ac-4e12-b2d0-40c438b91042",
+      "slideId": "HWB6",
+      "title": "把“为什么改”留在页面旁边",
+      "purpose": "讲故事是为了让Agent理解我们要完成什么",
+      "notes": "讲故事是为了让Agent理解我们要完成什么。项目Story记录整场介绍的目的；这一页的Story记录具体论点、哪些材料必须保留，以及这次想改哪里。它不是把口述逐句印到页面上的要求。右侧是真实Story面板，左侧是一条可以直接执行的请求。下一位作者或另一个助手接手时，应先读这一页，而不是猜测上一轮对话。",
+      "objectTypes": {
+        "text": 5,
+        "image": 2
+      }
+    },
+    {
+      "position": 7,
+      "topicIndex": 6,
+      "pageId": "59857807-d9f3-4e58-9a60-275cd504ea16",
+      "slideId": "MPTA",
+      "title": "下一次修改，仍然找得到原材料",
+      "purpose": "素材库的价值是在下一轮还能找到同一份原材料",
+      "notes": "素材库的价值是在下一轮还能找到同一份原材料。这里的两个DNA视角、坐标和距离表来自同一个公开结构。导入后，可以从Assets查找和再次放入页面；来源说明和计算方法也随项目保留。不要为了换一种版式重新造一张看似相同却数值不同的图。我们随后会用这些材料完成一页科学示例。",
+      "objectTypes": {
+        "text": 4,
+        "image": 4
+      }
+    },
+    {
+      "position": 8,
+      "topicIndex": 1,
+      "pageId": "c1fcdc66-1c25-45a6-9b98-83d16f063c3e",
+      "slideId": "7EKH",
+      "title": "同一结构里的局部差异",
+      "purpose": "这是贯穿操作演示的一页公开科学材料",
+      "notes": "这是贯穿操作演示的一页公开科学材料。左侧是1BNA DNA结构，曲线的十二个距离来自同一组坐标。位置7的A7与B18 C1′距离为10.2329 Å，显示为10.233 Å。这些位置不是独立重复实验。稍后我们会改变说明文字，保留原图、完整数据、轴和出处。能否在一次局部修改中留下这些东西，比再生成一张漂亮图片更接近真实科研工作。\n\nSources: https://www.rcsb.org/structure/1BNA ; https://doi.org/10.1073/pnas.78.4.2179 . Source coordinates and method: sources/science/.",
+      "objectTypes": {
+        "text": 8,
+        "image": 1,
+        "chart": 1
+      }
+    },
+    {
+      "position": 9,
+      "topicIndex": 3,
+      "pageId": "7b5bb42e-c529-49f8-ad88-62c69b567837",
+      "slideId": "HUA9",
+      "title": "图、表和公式，都能接着修改",
+      "purpose": "前一页的图表保留十二个位置的原值",
+      "notes": "前一页的图表保留十二个位置的原值。这一页用真正的表格摘取其中五个位置，并保留距离计算公式。人可以修改真正的单元格、系列和公式，不必移动许多假单元格文本框。图和表使用同一份公开数据，值与单位可以一起核对。",
+      "objectTypes": {
+        "text": 6,
+        "image": 2,
+        "table": 1
+      }
+    },
+    {
+      "position": 10,
+      "topicIndex": 4,
+      "pageId": "7b69742f-16b5-4b80-acf0-1d23966aae96",
+      "slideId": "JNZV",
+      "title": "让请求和实际改动对得上",
+      "purpose": "这里展示一次真正保存过的局部编辑",
+      "notes": "这里展示一次真正保存过的局部编辑。请求只收紧标题和解释，原图、十二个数值、轴与出处保持不动。修改前后来自这次操作的真实快照，范围可以逐项核对。下一步不只是看最终页面好不好看，还要知道这页是谁、改过什么。\n\nSaved operation: cb19f7f2-c9d6-4f76-8981-759076f20fde. Verification: evidence/wording-edit.json.",
+      "objectTypes": {
+        "text": 7,
+        "image": 3,
+        "icon": 1
+      }
+    },
+    {
+      "position": 11,
+      "topicIndex": 13,
+      "pageId": "129dfdc6-685d-48b4-972b-abff11f823e6",
+      "slideId": "93SF",
+      "title": "先认出这一页，再查看它的历史",
+      "purpose": "Position只是当前顺序；重排后第四页可能就不是原来的第四页",
+      "notes": "Position只是当前顺序；重排后第四页可能就不是原来的第四页。Slide ID保留这一页的身份。右侧选页关系来自本项目完整介绍和简短介绍的实际编排。请求助手修改时，用这个稳定ID再说明要改的对象，就不会把两个版本中的第四页混在一起。历史也沿着同一页的身份查看。",
+      "objectTypes": {
+        "text": 5,
+        "image": 2,
+        "table": 1
+      }
+    },
+    {
+      "position": 12,
+      "topicIndex": 9,
+      "pageId": "ea528c6a-2423-488d-834b-056322cca744",
+      "slideId": "E9RN",
+      "title": "回看修改，回到一个明确的阶段",
+      "purpose": "选中页面，进入History，可以查看操作记录，也可以记录一个有意义的命名版本",
+      "notes": "选中页面，进入History，可以查看操作记录，也可以记录一个有意义的命名版本。操作回答具体改了什么，命名版本保存阶段性的整页内容；两者用途不同。恢复一个版本作用于选中的那一页。这样，小改动可以继续留在当前项目中，不必用一套新文件来代表每一次修改。",
+      "objectTypes": {
+        "text": 6,
+        "image": 3
+      }
+    },
+    {
+      "position": 13,
+      "topicIndex": 7,
+      "pageId": "def43d68-1767-45f5-800a-17d648750b7e",
+      "slideId": "FE8A",
+      "title": "组织一场演讲",
+      "purpose": "单页可以继续编辑之后，再组织整场演讲：检查节奏，选择页面，为这次听众调整讲法",
+      "notes": "单页可以继续编辑之后，再组织整场演讲：检查节奏，选择页面，为这次听众调整讲法。",
+      "objectTypes": {
+        "text": 1
+      }
+    },
+    {
+      "position": 14,
+      "topicIndex": 25,
+      "pageId": "8bb920ed-1c71-45ac-ad9d-aa00750b1ff6",
+      "slideId": "SE68",
+      "title": "换一个视角，检查整场演讲",
+      "purpose": "做好单页后，需要检查整场演讲",
+      "notes": "做好单页后，需要检查整场演讲。Browse用于看实际页面和章节节奏；Outline用于快速读标题与内容线索；Sections用于组织章节边界。它们是同一套页面的不同视角。这里分别展示真实视图，避免用一个Browse截图代替三个功能。回到Normal，页面身份与内容仍然相同。",
+      "objectTypes": {
+        "text": 7,
+        "image": 4
+      }
+    },
+    {
+      "position": 15,
+      "topicIndex": 12,
+      "pageId": "68f5273e-3f0d-4e5d-84d1-38391280cead",
+      "slideId": "U5QA",
+      "title": "保留一套页面，选择不同讲法",
+      "purpose": "Main Slides保存可持续积累的页面",
+      "notes": "Main Slides保存可持续积累的页面。进入项目、编排演讲、新建演讲，选页、确定顺序并保存项目。图上方是Main的部分页面，下方是本项目短介绍中实际入选的三页；每次出现仍指向原来的Slide ID。下一页说明同一张页面怎样带上这次演讲自己的讲稿。",
+      "objectTypes": {
+        "text": 7,
+        "image": 8,
+        "line": 1
+      }
+    },
+    {
+      "position": 16,
+      "topicIndex": 26,
+      "pageId": "5f2fbea2-a43a-4532-9042-6a1d20c08801",
+      "slideId": "EJBQ",
+      "title": "页面相同，这次讲述可以不同",
+      "purpose": "复用页面不等于每次照读同一段话",
+      "notes": "复用页面不等于每次照读同一段话。Main Notes可以保留通用解释；Presentation中的一次出现可以有自己的讲稿。我们在本项目的短介绍里，用同一张科学页说明“编辑时保留证据”，而完整讲述可以多解释测量方法。修改的是这次出现的Notes，不是另造一张页面。",
+      "objectTypes": {
+        "text": 5,
+        "image": 2
+      }
+    },
+    {
+      "position": 17,
+      "topicIndex": 14,
+      "pageId": "baca190c-e87b-415f-9c30-7c04e3fabe17",
+      "slideId": "2856",
+      "title": "继续跟进，或保留已经确定的画面",
+      "purpose": "有些演讲希望跟随主稿继续更新，有些演讲要保留某个已确定阶段",
+      "notes": "有些演讲希望跟随主稿继续更新，有些演讲要保留某个已确定阶段。Live引用读取当前Main内容；Pinned引用选择这页的一个命名版本。这里左侧是当前科学页，右侧是实际保存的措辞修改阶段。简短介绍中的科学页确实固定在这个版本。页面身份相同，选择的内容版本不同。",
+      "objectTypes": {
+        "text": 7,
+        "image": 3
+      }
+    },
+    {
+      "position": 18,
+      "topicIndex": 16,
+      "pageId": "503c86ce-673c-4229-9251-22114e5f5da9",
+      "slideId": "4YZD",
+      "title": "带走整个项目，才方便接着做",
+      "purpose": "deck.pptd是启动入口，整个目录才是完整项目",
+      "notes": "deck.pptd是启动入口，整个目录才是完整项目。pages存页面，media存素材，.huandeng保存Story、编排和命名页面版本，AGENTS.md留制作约定。命名版本随目录携带；机器本地的操作日志留在生成它的电脑。PPTX内部本来也有页面等部件；HUANDENG选择把工作项目直接放在可访问的目录中。新入口可以选择.pptd，也可以选择包含唯一.pptd的文件夹。目录后缀可以帮助辨认，但不是打开的必要条件；多个入口时要明确选择。",
+      "objectTypes": {
+        "text": 5,
+        "image": 1,
+        "icon": 1,
+        "table": 1
+      }
+    },
+    {
+      "position": 19,
+      "topicIndex": 11,
+      "pageId": "d64aef1b-eb88-4b05-a620-ae60a0e833de",
+      "slideId": "36EQ",
+      "title": "与人和 Agent 一起做",
+      "purpose": "页面与演讲已经组织起来，接下来说明人和不同助手怎样接入同一个项目、分工、交接与交付",
+      "notes": "页面与演讲已经组织起来，接下来说明人和不同助手怎样接入同一个项目、分工、交接与交付。",
+      "objectTypes": {
+        "text": 1
+      }
+    },
+    {
+      "position": 20,
+      "topicIndex": 8,
+      "pageId": "9cdec939-7f79-4142-98a4-b9543230a4ec",
+      "slideId": "W7WP",
+      "title": "不同的助手，读写同一个项目",
+      "purpose": "第一次接入时，点击编辑器顶部的“助手连接”，选择客户端，按其中的说明配置",
+      "notes": "第一次接入时，点击编辑器顶部的“助手连接”，选择客户端，按其中的说明配置。让助手实际读取当前项目和选中页，核对返回的项目名与Slide ID。不同助手通过各自原生接入使用同一个文档协议。Plugin带来约定，Connector把请求送到明确选定的工程。Editor和助手都通过共享写入服务保存。这里的客户端图标表示支持的入口，不表示这些模型此刻都在线。接入后仍要用真实读取和操作来验证项目身份与权限。",
+      "objectTypes": {
+        "text": 9,
+        "image": 5,
+        "line": 1,
+        "shape": 1
+      }
+    },
+    {
+      "position": 21,
+      "topicIndex": 23,
+      "pageId": "c91c3fe3-836f-492f-882d-905bd4d08a9b",
+      "slideId": "YCXA",
+      "title": "分工可以并行，交接必须说清",
+      "purpose": "可以按页面分工，也可以先让一个助手整理内容，再让另一个优化视觉",
+      "notes": "可以按页面分工，也可以先让一个助手整理内容，再让另一个优化视觉。分工前要说清页ID、任务、素材与数值保护范围。不同页的保存可以独立进行；同页或者共享编排元数据发生冲突时，要重新读取再合并意图。活动记录显示助手上报和真实保存回执，但不把配置存在等同在线。这个图是分工示意。独立技术测试已让真实DeepSeek Harness与ChatGPT基于同一初始状态分别修改不同页，两者均成功保存；过时的同页提交被拒绝，重新读取后完成了字体与颜色的局部交接。Claude Code未参与本轮并行实测。测试证据见evidence/collaboration.json。",
+      "objectTypes": {
+        "text": 6,
+        "image": 2,
+        "line": 1
+      }
+    },
+    {
+      "position": 22,
+      "topicIndex": 15,
+      "pageId": "f68f052b-18ac-4286-ae3b-6f12e5c5d0d0",
+      "slideId": "NJM7",
+      "title": "从工作项目到现场和交付文件",
+      "purpose": "准备好之后，从同一份项目放映或导出",
+      "notes": "准备好之后，从同一份项目放映或导出。现场逐次揭示属于播放逻辑；PPTX和PDF承载静态页面。交付给需要继续编辑的人时，提供整个PPTD项目；给查看或演讲的人，可以提供合适的导出文件。导出之后仍回到同一份源项目继续修改。",
+      "objectTypes": {
+        "text": 6,
+        "icon": 2,
+        "image": 3
+      }
+    },
+    {
+      "position": 23,
+      "topicIndex": 17,
+      "pageId": "bd3c71d1-360e-4e0c-bbb6-5938970e8876",
+      "slideId": "TZXM",
+      "title": "幻灯站在这些工作的基础上",
+      "purpose": "HUANDENG的代码基础来自OpenSlide",
+      "notes": "HUANDENG的代码基础来自OpenSlide。OpenPPTD贡献公式转换模块，PptxGenJS负责PPTX生成。PPTD思路受到Kimi Slides生态的启发，但这不等于宣称某个通用标准的发明归属。图表、公式和图标也使用相应开源工作。公开DNA例页来源于PDB 1BNA及Drew等人的研究。项目保留来源和许可证，第三方标记不表示背书。\n\nSources and scope: sources/brand/manifest.json; notices/; sources/science/source.json; https://recent.design/ . The GitHub mark identifies the OpenPPTD repository, not an OpenPPTD product logo.",
+      "objectTypes": {
+        "text": 8,
+        "image": 4
+      }
+    },
+    {
+      "position": 24,
+      "topicIndex": 18,
+      "pageId": "8a9bcdf1-fcb2-4214-9743-86c110c954ca",
+      "slideId": "E2RU",
+      "title": "打开一页，试一次具体的修改",
+      "purpose": "最直接的试法是打开这份示例，选择科学页，用Slide ID说清楚一次小修改：把解释讲得更清楚，原图、十二个数值、单位和来源都保留",
+      "notes": "最直接的试法是打开这份示例，选择科学页，用Slide ID说清楚一次小修改：把解释讲得更清楚，原图、十二个数值、单位和来源都保留。先检查预览，再看保存后的页面和历史。人不需要把全部控制交出去，也不需要在最后适应一套陌生的讲述逻辑。意图、证据和修改留在同一份工作里，可以继续做下一次。",
+      "objectTypes": {
+        "text": 6,
+        "image": 2
+      }
+    }
+  ]
+}

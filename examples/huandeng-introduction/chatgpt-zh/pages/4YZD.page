@@ -6,133 +6,17 @@ elements:
   - elementId: title
     elementType: text
     bounds:
-      - 44
-      - 35
-      - 870
-      - 67
+        [42,34,880,76]
     role: title
     content:
-      {"text":"打开一个目录，继续同一份工作","fontFamily":"Microsoft YaHei","fontSize":28,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.3}
-  - elementId: folder-project
-    elementType: icon
-    iconName: fas:folder-open
-    bounds:
-      - 44
-      - 145
-      - 77
-      - 77
-    fill:
-      type: solid
-      color: "#356F68"
-  - elementId: entry
-    elementType: text
-    bounds:
-      - 44
-      - 252
-      - 339
-      - 57
-    content:
-      text: deck.pptd
-      fontFamily: Consolas
-      fontSize: 31
-      color: "#263C34"
-      bold: false
-      align:
-        - left
-        - top
-      lineHeight: 1.3
-  - elementId: folder-copy
-    elementType: text
-    bounds:
-      - 44
-      - 339
-      - 324
-      - 126
-    content:
-      {"text":"Files 展示真实项目树。\n页面、素材、Story 和历史\n都跟着这个目录走。","fontFamily":"Microsoft YaHei","fontSize":20,"color":"#263C34","bold":false,"align":["left","top"],"lineHeight":1.55}
-  - elementId: folder-contents
-    elementType: table
-    bounds:
-      - 409
-      - 141
-      - 505
-      - 333
-    columnWidths:
-      - 0.42
-      - 0.58
-    style:
-      cellStyle:
-        fontFamily: Microsoft YaHei
-        fontSize: 17
-        color: "#263C34"
-        border:
-          color: "#C7D3CB"
-          width: 0.6
-        padding: 9
-      firstRowStyle:
-        fill: "#E4ECE6"
-        bold: false
-    rows:
-      - - text: 项目内容
-          bold: true
-          align:
-            - left
-            - middle
-        - text: 用途
-          bold: true
-          align:
-            - left
-            - middle
-      - - text: pages/
-          align:
-            - left
-            - middle
-        - text: 可编辑页面
-          align:
-            - left
-            - middle
-      - - text: media/
-          align:
-            - left
-            - middle
-        - text: 图像与素材
-          align:
-            - left
-            - middle
-      - - text: AGENTS.md
-          align:
-            - left
-            - middle
-        - text: 项目作者偏好
-          align:
-            - left
-            - middle
-      - - text: .huandeng/
-          align:
-            - left
-            - middle
-        - text: 引用、Story 与版本
-          align:
-            - left
-            - middle
-      - - text: Exports/
-          align:
-            - left
-            - middle
-        - text: PPTX、PDF 等交付文件
-          align:
-            - left
-            - middle
+      {"text":"带走整个项目，才方便接着做","fontFamily":"Noto Serif SC","fontSize":28,"color":"#20372F","bold":false,"align":["left","top"],"lineHeight":1.2}
   - elementId: brand-small
     elementType: image
     src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
     sourceName: huandeng.png
     alt: huandeng.png
     bounds:
-      - 44
-      - 510
-      - 17
-      - 17
+        [43,512,18,18]
     fit:
       mode: contain
     crop:
@@ -143,36 +27,87 @@ elements:
   - elementId: foot
     elementType: text
     bounds:
-      - 69
-      - 513
-      - 130
-      - 17
+        [68,515,140,16]
     content:
-      text: HUANDENG
-      fontFamily: Microsoft YaHei
-      fontSize: 10
-      color: "#66756B"
+      {"text":"HUANDENG","fontFamily":"Noto Sans SC","fontSize":9,"color":"#5B6A62","bold":false,"align":["left","top"],"lineHeight":1.35}
+  - elementId: position
+    elementType: text
+    bounds:
+        [881,514,35,18]
+    content:
+      {"text":"","fontFamily":"Noto Sans SC","fontSize":10,"color":"#5B6A62","bold":false,"align":["right","top"],"lineHeight":1.35,"field":"main-position"}
+  - elementId: project-folder
+    elementType: icon
+    iconName: fas:folder-open
+    bounds:
+      - 44
+      - 145
+      - 69
+      - 69
+    fill:
+      type: solid
+      color: "#356F68"
+  - elementId: project-root
+    elementType: text
+    bounds:
+      - 136
+      - 158
+      - 786
+      - 52
+    content:
+      text: 整个项目文件夹
+      fontFamily: Noto Serif SC
+      fontSize: 26
+      color: "#20372F"
       bold: false
       align:
         - left
         - top
-      lineHeight: 1.3
-  - elementId: position
+      lineHeight: 1.35
+  - elementId: entry-choice
     elementType: text
     bounds:
-      - 884
-      - 512
-      - 30
-      - 18
+      - 44
+      - 257
+      - 343
+      - 210
     content:
-      text: ""
-      fontFamily: Microsoft YaHei
-      fontSize: 10
-      color: "#66756B"
+      text: |-
+        打开 deck.pptd，
+        或选择它所在的文件夹。
+  
+        一个目录，一个明确的入口。
+        移动时，把目录一起带走。
+      fontFamily: Noto Sans SC
+      fontSize: 20
+      color: "#20372F"
       bold: false
       align:
-        - right
+        - left
         - top
-      lineHeight: 1.3
-      field: main-position
-notes: "在HUANDENG里，打开deck.pptd就进入这个项目，但它不是一个孤立文件。页面在pages里，图片在media里，Story、编排和历史在.huandeng里。AGENTS.md留下给Agent的项目约定。Files视图把这些内容直接展示出来，有点像IDE中的项目树。移动作品时要带上整个目录，这样下一次编辑还有原始材料和历史。"
+      lineHeight: 1.5
+  - elementId: project-parts
+    elementType: table
+    bounds:
+      - 432
+      - 235
+      - 482
+      - 257
+    columnWidths:
+      - 0.38
+      - 0.62
+    style:
+      cellStyle:
+        fontFamily: Noto Sans SC
+        fontSize: 16
+        color: "#20372F"
+        border:
+          color: "#C0CDC3"
+          width: 0.5
+        padding: 9
+      firstRowStyle:
+        fill: "#E4ECE6"
+        bold: true
+    rows:
+        [[{"text":"目录中的内容","align":["left","middle"]},{"text":"用途","align":["left","middle"]}],[{"text":"deck.pptd","align":["left","middle"]},{"text":"项目启动入口","align":["left","middle"]}],[{"text":"pages/ + media/","align":["left","middle"]},{"text":"页面与原始素材","align":["left","middle"]}],[{"text":".huandeng/","align":["left","middle"]},{"text":"Story、编排、命名版本","align":["left","middle"]}],[{"text":"AGENTS.md","align":["left","middle"]},{"text":"制作与协作约定","align":["left","middle"]}]]
+notes: "deck.pptd是启动入口，整个目录才是完整项目。pages存页面，media存素材，.huandeng保存Story、编排和命名页面版本，AGENTS.md留制作约定。命名版本随目录携带；机器本地的操作日志留在生成它的电脑。PPTX内部本来也有页面等部件；HUANDENG选择把工作项目直接放在可访问的目录中。新入口可以选择.pptd，也可以选择包含唯一.pptd的文件夹。目录后缀可以帮助辨认，但不是打开的必要条件；多个入口时要明确选择。"

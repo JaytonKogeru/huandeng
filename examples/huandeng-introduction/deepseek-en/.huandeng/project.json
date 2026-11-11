@@ -32,18 +32,17 @@
       "path": "pages/BR4V.page",
       "state": "active",
       "components": {},
-      "elementRoles": {
-        "p2-title": "title"
-      },
+      "elementRoles": {},
       "label": "S2",
       "designIntent": {
-        "purpose": "Ground the project in a specific room: people who make slides can recognize an AI deck before they can name why.",
+        "purpose": "Define the product in one page: one project, one writer, any assistant; explain the Editor/project/plugin/connector relationship.",
         "keep": [
-          "The room scene stays observational, not a model ranking"
+          "Concept diagram, not a fake screenshot",
+          "Client marks identify routes, not endorsements"
         ],
-        "requestedChange": "Story-driven revision for the English introduction.",
+        "requestedChange": "Product-introduction revision, 2026-11-11.",
         "actor": "deepseek-harness",
-        "source": "Owner's spoken account, 2026-11-10",
+        "source": "Owner feedback plus product docs",
         "recordedAt": "2026-11-10T22:55:22.686Z"
       }
     },
@@ -72,25 +71,24 @@
       "path": "pages/TPCJ.page",
       "state": "active",
       "components": {},
-      "elementRoles": {
-        "p4-title": "title"
-      },
+      "elementRoles": {},
       "label": "S4",
       "designIntent": {
-        "purpose": "Turn the process around: the founder talks first, the model organizes, pages follow.",
+        "purpose": "Explain the PPTD project folder against the PPTX package, and that moving the deck means moving the full folder.",
         "keep": [
-          "Three-step order shown without decorative arrows"
+          "Native table, not text boxes arranged as cells",
+          "Open XML claim stays factual"
         ],
-        "requestedChange": "Story-driven revision for the English introduction.",
+        "requestedChange": "Product-introduction revision, 2026-11-11.",
         "actor": "deepseek-harness",
-        "source": "Owner's spoken account, 2026-11-10",
+        "source": "Product brief and FACTS.md",
         "recordedAt": "2026-11-10T22:55:22.686Z"
       }
     },
     "ec65f86b-26f3-4117-9dfd-b510d19424de": {
       "shortCode": "9KH9",
       "path": "pages/9KH9.page",
-      "state": "active",
+      "state": "tombstone",
       "components": {},
       "elementRoles": {
         "p5-quote": "title"
@@ -112,9 +110,7 @@
       "path": "pages/MG2S.page",
       "state": "active",
       "components": {},
-      "elementRoles": {
-        "p6-title": "title"
-      },
+      "elementRoles": {},
       "label": "S6",
       "designIntent": {
         "purpose": "Make the copy problem concrete: two changed pages arrive as another whole deck.",
@@ -132,9 +128,7 @@
       "path": "pages/V7VJ.page",
       "state": "active",
       "components": {},
-      "elementRoles": {
-        "p7-title": "title"
-      },
+      "elementRoles": {},
       "label": "S7",
       "designIntent": {
         "purpose": "Show why screenshot-only review is a poor agent interface while keeping visual review necessary.",
@@ -152,9 +146,7 @@
       "path": "pages/7GWR.page",
       "state": "active",
       "components": {},
-      "elementRoles": {
-        "p8-title": "title"
-      },
+      "elementRoles": {},
       "label": "S8",
       "designIntent": {
         "purpose": "Explain the page-as-file model and credit open-slide without claiming PPTX has no structure.",
@@ -278,9 +270,7 @@
       "path": "pages/MKPP.page",
       "state": "active",
       "components": {},
-      "elementRoles": {
-        "p14-title": "title"
-      },
+      "elementRoles": {},
       "label": "S14",
       "designIntent": {
         "purpose": "Show the exact saved-change diff before acceptance.",
@@ -298,9 +288,7 @@
       "path": "pages/TJKM.page",
       "state": "active",
       "components": {},
-      "elementRoles": {
-        "p15-title": "title"
-      },
+      "elementRoles": {},
       "label": "S15",
       "designIntent": {
         "purpose": "Make the materials library real: assets stored once, referenced, with source and usage; show a real scientific figure.",
@@ -376,54 +364,108 @@
         "recordedAt": "2026-11-10T22:55:22.686Z",
         "backgroundException": "Ink closing page."
       }
+    },
+    "dc6dccad-86a9-4629-a4aa-e494e5d6f53b": {
+      "shortCode": "KWPT",
+      "path": "pages/KWPT.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S19",
+      "designIntent": {
+        "purpose": "Carry one real scientific page: 12 C1′–C1′ distances beside the 1BNA structure, with citation and a no-replicates qualification.",
+        "keep": [
+          "Original plot and structure assets, not regenerated data",
+          "PDB 1BNA citation and units",
+          "No independent-replicate or trend claim"
+        ],
+        "requestedChange": "Product-introduction revision, 2026-11-11.",
+        "actor": "deepseek-harness",
+        "source": "Public RCSB PDB 1BNA and FACTS.md"
+      }
+    },
+    "80408aa9-3064-441e-91d6-d7f861e69976": {
+      "shortCode": "CBCQ",
+      "path": "pages/CBCQ.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S20"
+    },
+    "adf2f702-72d3-40bf-876c-bdd59f216edf": {
+      "shortCode": "EKZK",
+      "path": "pages/EKZK.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S21"
+    },
+    "781faa6c-86dd-413e-9dab-7f7df945fa69": {
+      "shortCode": "JYJD",
+      "path": "pages/JYJD.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S22"
+    },
+    "0123bfb5-2c7b-4dd8-b340-e2f001e46547": {
+      "shortCode": "AEUJ",
+      "path": "pages/AEUJ.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S23"
     }
   },
   "project": {
     "schemaVersion": 1,
     "mainStory": {
-      "purpose": "Explain why HUANDENG exists: a story-first, page-oriented slide editor for work that has to sound like a person.",
-      "audience": "Researchers and builders who make presentations and work with AI agents.",
-      "takeaway": "The AI look is an absence of focus. HUANDENG keeps the human story beside the page, gives every page a stable identity and its own history, and lets the talk and the evidence survive the edit."
+      "purpose": "Introduce HUANDENG as a working product: what it is, how a presenter uses it, and why its page-oriented, story-first model helps.",
+      "audience": "Researchers and builders who make scientific or product presentations with AI agents.",
+      "takeaway": "The audience should be able to explain the editor/project/plugin relationship, open a project, use Story and real assets, review a page-level change, reuse Main pages in a Presentation, deliver PDF/PPTX, and state the collaboration limits."
     },
     "sections": [
       {
-        "id": "why-the-texture",
-        "title": "Why the texture",
+        "id": "why-this-exists",
+        "title": "Why this exists",
         "story": {
-          "purpose": "Follow the observations that started the project: the room that could tell, the everything-deck, the turn to story-first, and the two walls of copies and screenshot review.",
-          "audience": "Researchers and builders who make presentations and work with AI agents.",
-          "takeaway": "The problem is upstream of layout; the unit of change and the unit of review both had to become the page."
+          "purpose": "Explain the observations and design consequences behind HUANDENG: AI-looking decks, whole-deck copies, screenshot-only review, and the page-as-file model.",
+          "audience": "Researchers and builders who make scientific or product presentations with AI agents.",
+          "takeaway": "The problem is upstream of layout; the page is the unit of change and the unit of review."
         },
         "pageIds": [
-          "3833f199-98ab-4056-b521-ab542137f524",
           "bdbc20e7-5cb6-4877-8eb0-3feebad05d9d",
           "befc82a6-f242-49f7-9b35-7eed8f3b5640",
           "20d9cf1d-6820-42e8-9ddc-6377b4ad855b",
-          "ec65f86b-26f3-4117-9dfd-b510d19424de",
           "d73b0924-699a-4673-818b-5d37e7c1b25a",
           "665ad0cb-5048-4005-84bc-bf31bab632d9",
           "32991558-c79c-4033-bce0-f8230c890bc9"
         ],
-        "startPageId": "3833f199-98ab-4056-b521-ab542137f524"
+        "startPageId": "bdbc20e7-5cb6-4877-8eb0-3feebad05d9d"
       },
       {
         "id": "the-editor",
         "title": "The editor",
         "story": {
-          "purpose": "Show the editor as the answer to those walls: one working document, Story beside the page, stable IDs, page history and diffs, a real materials library, shared presentations, and delivery.",
-          "audience": "Researchers and builders who make presentations and work with AI agents.",
-          "takeaway": "A page can keep its purpose, identity, evidence and history while the deck keeps changing."
+          "purpose": "Show the working editor through a real scientific page, Story, a reviewed change, identity and history, views, reuse, assets, multi-agent boundaries, credits and a first action.",
+          "audience": "Researchers and builders who make scientific or product presentations with AI agents.",
+          "takeaway": "A page can keep its purpose, identity, evidence and history while the deck and the team keep changing."
         },
         "pageIds": [
           "065ed891-d62a-41f1-b25e-ecd07ea2a924",
           "d80ecf22-1b5d-41bb-87c6-4959e8b25350",
+          "dc6dccad-86a9-4629-a4aa-e494e5d6f53b",
           "d3aed85c-d9fc-4750-8ffe-caf9a4fb2d4f",
+          "738289ee-5cfc-4b6f-a0f1-e0492cfafc06",
           "bc85ec8f-af86-4cee-996e-a84a80de9670",
           "d9fffede-4a83-4fe9-8d0f-364efc3e11e5",
-          "738289ee-5cfc-4b6f-a0f1-e0492cfafc06",
-          "b792b954-ed0c-4510-881d-bb8b297db885",
+          "80408aa9-3064-441e-91d6-d7f861e69976",
           "c279a641-b65c-42de-8ed8-d085819d7fb6",
+          "b792b954-ed0c-4510-881d-bb8b297db885",
+          "adf2f702-72d3-40bf-876c-bdd59f216edf",
           "5a72c985-b070-4936-b854-73e0c743a35b",
+          "781faa6c-86dd-413e-9dab-7f7df945fa69",
+          "0123bfb5-2c7b-4dd8-b340-e2f001e46547",
           "fa252443-bd97-4339-a179-1242bf2009bb"
         ],
         "startPageId": "065ed891-d62a-41f1-b25e-ecd07ea2a924"

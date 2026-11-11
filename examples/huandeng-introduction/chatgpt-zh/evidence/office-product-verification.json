@@ -1,0 +1,271 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    {
+      "project": "chatgpt-zh",
+      "file": "deck.pptx",
+      "sha256": "2d2a794606a2056bb82035c60737e92793548d6de3f80bbb500448a26f969d3e",
+      "expectedPages": 24,
+      "sourceReportMatches": true,
+      "nativeTables": 3,
+      "nativeCharts": 1,
+      "equations": 1,
+      "notes": 24,
+      "openedReadOnly": true,
+      "renderWidth": 1920,
+      "renderHeight": 1080,
+      "officeVersion": "16.0",
+      "presentationsBefore": 0,
+      "actualSlideCount": 24,
+      "remainingPresentations": 0,
+      "sourceUnchanged": true,
+      "copyUnchanged": true,
+      "seconds": 13.36,
+      "renderedPages": [
+        {
+          "page": 1,
+          "sha256": "a0828ce812a8c058b1a1d96d5f2d2e0b80a80c8855da8e2282474a657a8cbcf5",
+          "pixels": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "page": 2,
+          "sha256": "7457bb2a2ab377b3f8f5d473577570875e90c4823b431479597a87d8b103dcb7",
+          "pixels": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "page": 3,
+          "sha256": "6e89fa86cfa5ad584461f1f0292f3f4e7f30f8eb0acd5eab8cf6a9b57e5f90b2",
+          "pixels": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "page": 4,
+          "sha256": "ebf96f7e82005381851cac72c98bc2b0fdc267345b000eb9a309768b6d21b59c",
+          "pixels": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "page": 5,
+          "sha256": "888d126095ee8438af4dceb8cd967afd58180e9be2bd0a9fe147bd11ae9c05db",
+          "pixels": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "page": 6,
+          "sha256": "cd3f4d9eb0431c2e3f7689b5bc54f5cf5b3a97d29bff0c7cf4cd3dc5ef534519",
+          "pixels": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "page": 7,
+          "sha256": "7000a1d0fe3998a12600e6e93f6c5170eb6ffa9d818d496a0f80bc459fda6fc8",
+          "pixels": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "page": 8,
+          "sha256": "7aae71917a27c33cf2ce2735c53c1985786bce81a19813a288fdfa5e9d1bf0f2",
+          "pixels": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "page": 9,
+          "sha256": "0ffd103bef1ce39c06fa3f36f1352389f61d725e613611a5eff6dab43f22fac6",
+          "pixels": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "page": 10,
+          "sha256": "34270ed1d78bf22a3a6f74c86a2e570a3cba0ee098272bebcd22ab52f4e5b6cb",
+          "pixels": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "page": 11,
+          "sha256": "8930ffca81cd9937ff8a3fd93b37b28c409ca7ad5af925c8d240806eddff8294",
+          "pixels": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "page": 12,
+          "sha256": "78ecc5631ce7cb2b0fa9957cfcc9898c906acc5d9844f7c190db29cfe98838ad",
+          "pixels": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "page": 13,
+          "sha256": "825d06834158bd01b2409853c21d054f0a938dc408a2b12cc69fc7a81877cdac",
+          "pixels": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "page": 14,
+          "sha256": "16bf7aef3dd1bf66218a8eb50044c0b6b660310e88c199db107f73b9614f1630",
+          "pixels": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "page": 15,
+          "sha256": "45eee6e02cd62cddaa0946bc09a761130a17f86d6d7871e6cd73d3dc4d6ba1c6",
+          "pixels": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "page": 16,
+          "sha256": "3481dc470665217031b96f83872c0411296fc9acc9ded933081569221fddd2e5",
+          "pixels": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "page": 17,
+          "sha256": "84acf2a66d9608852da0578cf6c7913c7cfa554607a79ae0faa86f331da491c5",
+          "pixels": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "page": 18,
+          "sha256": "f01e2a039f0b32dd3e3de2bdbfcf60c33de64fa53edbcd54119fd535367b6b98",
+          "pixels": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "page": 19,
+          "sha256": "d92973e5edd0d91121c9f2f5ce3de34bcf38956cc966b3e8d683208aade05976",
+          "pixels": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "page": 20,
+          "sha256": "efd60da432908616f9d1c20702f9a1c35677d4cc34549978794b867bedd9f55f",
+          "pixels": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "page": 21,
+          "sha256": "b3aeda1130c16d870e71179a5df94c26e2a7636154de5a6a4b461df00bd7f3da",
+          "pixels": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "page": 22,
+          "sha256": "77ba06084112d69c32e526114564ccd809ac625e21bfb4e7777add0a597a3cdd",
+          "pixels": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "page": 23,
+          "sha256": "af38b7765a9dcdbd2459cb03b5263cb4928a88fd10eb8619531653f64211ca88",
+          "pixels": [
+            1920,
+            1080
+          ]
+        },
+        {
+          "page": 24,
+          "sha256": "cc6671c6eb499dd445cd6db4f684f8f7b5773a398df6cd52011be6d7e8ab50fb",
+          "pixels": [
+            1920,
+            1080
+          ]
+        }
+      ]
+    },
+    {
+      "project": "chatgpt-zh",
+      "file": "deck.pdf",
+      "sha256": "948e4e98b8e4fd2423045c3a02c8c31b49cb21496547da140af50c3e55b42dca",
+      "expectedPages": 24,
+      "sourceReportMatches": true,
+      "pdfTextPages": 24,
+      "renderedPages": []
+    },
+    {
+      "project": "chatgpt-zh",
+      "file": "brief.pptx",
+      "sha256": "b15c3dd8b52e886b1ed1d7c19ff61ff3247c70098543c2664c7a37e0f0c8a150",
+      "expectedPages": 12,
+      "sourceReportMatches": true,
+      "nativeTables": 1,
+      "nativeCharts": 0,
+      "equations": 0,
+      "notes": 12,
+      "pinnedOccurrenceNotesVerified": true,
+      "openedReadOnly": true,
+      "renderWidth": 1920,
+      "renderHeight": 1080,
+      "officeVersion": "16.0",
+      "presentationsBefore": 0,
+      "actualSlideCount": 12,
+      "remainingPresentations": 0,
+      "sourceUnchanged": true,
+      "copyUnchanged": true,
+      "seconds": 10.82,
+      "renderedPages": [
+        {
+          "page": 6,
+          "sha256": "0f79b3ff122562a086e31fe83af8a6b42584f5514693a96a15ed8a4718bcc15f",
+          "pixels": [
+            1920,
+            1080
+          ]
+        }
+      ]
+    },
+    {
+      "project": "chatgpt-zh",
+      "file": "brief.pdf",
+      "sha256": "ff67a598aadcf1422b1f39c985c2a1b1813fa7ac8feff634f69a26a5320c411d",
+      "expectedPages": 12,
+      "sourceReportMatches": true,
+      "pdfTextPages": 12,
+      "renderedPages": []
+    }
+  ],
+  "visualInspectionRecordedSeparately": true
+}

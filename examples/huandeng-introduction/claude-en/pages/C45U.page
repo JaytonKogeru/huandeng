@@ -410,7 +410,7 @@ elements:
       - 848
       - 84
     content:
-      text: Even when you improvise, speech has its own logic. Starting from the story keeps that logic and spares you writing a script afterwards. The slides carry a human point of view, so they stop looking like AI.
+      text: "Even when you improvise, speech has its own logic. Starting from the story keeps that logic and spares you writing a script afterwards. The slides keep your point of view; reviewing the rendered pages is still how you catch what looks generic."
       fontFamily: Arial
       fontSize: 17
       lineHeight: 1.45
@@ -479,4 +479,4 @@ elements:
       align:
         - right
         - middle
-notes: "Here is the reason I care most about. If the AI makes the slides first, you then write a speech to fit them, and you end up following the AI's logic, which often has no soul. If you start by telling your story, freestyle, the way you would explain it to a colleague, the agent can organise that story, build the slides on it, and your own words become the speaker notes. Even improvised speech has a structure. Keeping it means the deck has a point of view, and you do not have to invent a script afterwards. This talk is an example: I told the story of why I built HUANDENG, and this version was rebuilt from that account."
+notes: "Here is the reason I care most about. If the AI makes the slides first, you then write a speech to fit them, and you end up following the AI's logic, which often has no soul. If you start by telling your story, freestyle, the way you would explain it to a colleague, the agent can organise that story, build the slides on it, and your own words become the speaker notes. Even improvised speech has a structure. Keeping it helps the deck keep your judgment and point of view, and you do not have to invent a script afterwards. It does not by itself remove an AI look: I still review the rendered pages. This talk is an example: I told the story of why I built HUANDENG, and this version was rebuilt from that account."

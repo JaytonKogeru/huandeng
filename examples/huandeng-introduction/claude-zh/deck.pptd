@@ -4,22 +4,28 @@ pages:
   - pages/initial.page
   - pages/ZX58.page
   - pages/FNHB.page
-  - pages/GZBW.page
   - pages/KS6E.page
   - pages/2723.page
+  - pages/GZBW.page
   - pages/6KNX.page
   - pages/2UCC.page
   - pages/3DUH.page
   - pages/SSFR.page
+  - pages/MC4X.page
+  - pages/BRHY.page
   - pages/3D9R.page
-  - pages/WDFR.page
+  - pages/A9FE.page
+  - pages/GBXR.page
+  - pages/3442.page
   - pages/85Z6.page
   - pages/ZWM9.page
   - pages/DY5H.page
-  - pages/3442.page
   - pages/D26F.page
-  - pages/BRHY.page
+  - pages/XVAD.page
   - pages/FK8W.page
+  - pages/7K3P.page
+  - pages/J28N.page
+  - pages/YS6V.page
   - pages/BDTW.page
 theme:
   fontFamily: Arial

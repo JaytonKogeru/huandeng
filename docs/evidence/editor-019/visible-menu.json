@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "cadaecbf9cf1661e28464fe68b7b866f68fecabe",
+  "sourceDirty": false,
+  "method": "Actual UIAutomation mouse and keyboard input to visible shell button and native menus; native dialogs are not stubbed",
+  "checks": [
+    {
+      "name": "Visible menu -> File -> Identify project folder writes relative icon",
+      "passed": true,
+      "iniSha256": "4ff03a6184405c0ea81a005c9b462334dfd4014e9021016433e22e14e143126d",
+      "iconSha256": "ec42522dc8f0adda9afda1dd401a8e402cfea72c76b50c63994c4c67451d0efa"
+    },
+    {
+      "name": "Existing custom desktop.ini preserved byte for byte",
+      "passed": true,
+      "sha256": "6e8482095d543148373dba681adab54013afe8160fb06121e30f1035c63d18c5"
+    },
+    {
+      "name": "Home without active project disables marker action",
+      "passed": true
+    },
+    {
+      "name": "Chinese visible application menu and File label",
+      "passed": true
+    }
+  ],
+  "authoredManifestPageAndMetadataFilesUnchanged": true,
+  "unchangedFileCount": 6,
+  "normalExit": {
+    "code": 0,
+    "forced": false
+  },
+  "earlierAttempt": "The first menu run completed four UI actions but its final file guard failed. It did not persist the before-map, so the original delta is not retrospectively attributed. The same immutable package was rerun after both fixture writers initialized, with complete before/after hashes and a further post-close check.",
+  "readinessObservation": "In the instrumented run, the second project metadata was absent at the first click and was created 2.647 seconds later. The baseline was taken only after both projects had stable IDs and labels. No product change or arbitrary startup delay was introduced."
+}

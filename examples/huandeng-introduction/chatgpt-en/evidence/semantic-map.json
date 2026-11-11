@@ -1,0 +1,332 @@
+{
+  "schemaVersion": 2,
+  "language": "en",
+  "fullCount": 24,
+  "briefCount": 12,
+  "topics": [
+    {
+      "position": 1,
+      "topicIndex": 0,
+      "pageId": "90353b2a-6f7b-4ee5-8a8b-10bceb538190",
+      "slideId": "9DAA",
+      "title": "Scientific slides,\nkept as a working project",
+      "purpose": "HUANDENG is an editing workflow for scientific presentations",
+      "notes": "HUANDENG is an editing workflow for scientific presentations. It brings together a visual editor, a portable working project and access for AI agents. It began with my experience preparing lab meetings: I wanted help with repetitive work while retaining the judgment, original material and a clear place to make the next edit. We will locate a page, preserve its intent and evidence, inspect a change and turn the pages into a talk.",
+      "objectTypes": {
+        "shape": 2,
+        "image": 2,
+        "text": 4
+      }
+    },
+    {
+      "position": 2,
+      "topicIndex": 21,
+      "pageId": "4ec264b7-018d-449c-8c8b-d9aede33a840",
+      "slideId": "2XM9",
+      "title": "A small edit should stay a small edit",
+      "purpose": "Two frustrations often appeared together in my work",
+      "notes": "Two frustrations often appeared together in my work. A deck could look complete while missing the point I wanted to make. Changing two pages in fifty could also leave another full copy. I separated those concerns: where does the human intent stay, and which page actually changed? Story keeps the intent available; page identity and history keep the revision attached to the work. The filenames illustrate my use case, not a claim about every AI tool.",
+      "objectTypes": {
+        "text": 7,
+        "image": 1,
+        "icon": 2,
+        "line": 1
+      }
+    },
+    {
+      "position": 3,
+      "topicIndex": 22,
+      "pageId": "1ba18ad8-0701-4de6-83f5-555b949293d7",
+      "slideId": "GX5Z",
+      "title": "What comes together in HUANDENG?",
+      "purpose": "The Editor is the workspace for inspection, direct editing and presentation",
+      "notes": "The Editor is the workspace for inspection, direct editing and presentation. The folder containing the PPTD entry is the complete project, with pages, assets and history. A plugin supplies authoring and collaboration guidance; a connector binds the assistant to the selected project’s shared writer. People and assistants can therefore work on the same source. The next section starts with that shared page.",
+      "objectTypes": {
+        "text": 5,
+        "image": 3
+      }
+    },
+    {
+      "position": 4,
+      "topicIndex": 2,
+      "pageId": "6b9fbac0-772c-435c-bce1-9cad0004af65",
+      "slideId": "9VGD",
+      "title": "Make one page work",
+      "purpose": "Start with one page: locate the work, keep its intent and evidence, and inspect a focused edit.",
+      "notes": "Start with one page: locate the work, keep its intent and evidence, and inspect a focused edit.",
+      "objectTypes": {
+        "text": 1
+      }
+    },
+    {
+      "position": 5,
+      "topicIndex": 5,
+      "pageId": "7d7d42a0-0db7-4d33-9b3f-5e1035097b50",
+      "slideId": "FKA9",
+      "title": "Start from the page in the editor",
+      "purpose": "The left navigation gives access to the project, pages, assets and files",
+      "notes": "The left navigation gives access to the project, pages, assets and files. The central canvas remains available for direct object editing. The right inspector holds properties, layers and Story. Workspace views above the canvas let us browse the deck, inspect the outline, arrange sections, write notes and inspect history. An agent edits the same document. Next we will record the page intent and prepare the source material.",
+      "objectTypes": {
+        "text": 8,
+        "image": 2,
+        "shape": 3
+      }
+    },
+    {
+      "position": 6,
+      "topicIndex": 10,
+      "pageId": "4a066483-9a11-450c-be15-c0be33d52989",
+      "slideId": "U8ZQ",
+      "title": "Keep the reason beside the edit",
+      "purpose": "The human account helps the agent understand the job",
+      "notes": "The human account helps the agent understand the job. Project Story records the overall purpose; page Story records the point, the evidence to preserve and the requested change. It is not a command to print the transcript on the slide. The actual Story panel sits beside a concrete editing request. A person or another assistant taking over should read this context instead of guessing what happened in the previous conversation.",
+      "objectTypes": {
+        "text": 5,
+        "image": 2
+      }
+    },
+    {
+      "position": 7,
+      "topicIndex": 6,
+      "pageId": "95189956-cdd7-4ad9-88c8-cf28a204bb68",
+      "slideId": "35U5",
+      "title": "Keep the original material within reach",
+      "purpose": "The asset library keeps the original material available for the next revision",
+      "notes": "The asset library keeps the original material available for the next revision. These two DNA views, coordinates and distance table come from one public structure. After import, Assets lets us locate the material and reuse it on a page; the source record and method remain with the project. A new composition should not require inventing a similar-looking figure with different data. We will use this material in the scientific example.",
+      "objectTypes": {
+        "text": 4,
+        "image": 4
+      }
+    },
+    {
+      "position": 8,
+      "topicIndex": 1,
+      "pageId": "c4b12919-5876-4acb-b63f-6a7493b54b37",
+      "slideId": "ZWZJ",
+      "title": "Local variation in one structure",
+      "purpose": "This public scientific page is the working example for the demonstration",
+      "notes": "This public scientific page is the working example for the demonstration. The 1BNA structure and the twelve paired C1′ distances come from the same coordinates. At position seven, A7–B18 measures 10.2329 Å, displayed as 10.233 Å. These are positions within one structure, not independent experimental replicates. We will refine the explanation while retaining the figure, all values, axes and citation. This is a concrete editing task a scientific presenter can inspect.\n\nSources: https://www.rcsb.org/structure/1BNA ; https://doi.org/10.1073/pnas.78.4.2179 . Source coordinates and method: sources/science/.",
+      "objectTypes": {
+        "text": 8,
+        "image": 1,
+        "chart": 1
+      }
+    },
+    {
+      "position": 9,
+      "topicIndex": 3,
+      "pageId": "ca1eec7e-61bd-41ac-b6ab-e000d06797be",
+      "slideId": "XF8A",
+      "title": "Keep charts, tables and equations editable",
+      "purpose": "The preceding chart retains all twelve source values",
+      "notes": "The preceding chart retains all twelve source values. This page selects five positions in a native table and keeps the distance calculation as an editable equation. A person can work with actual cells, a chart series and the equation instead of moving imitation cell text boxes. The plot and table use the same public data, so values and units can be checked together.",
+      "objectTypes": {
+        "text": 6,
+        "image": 2,
+        "table": 1
+      }
+    },
+    {
+      "position": 10,
+      "topicIndex": 4,
+      "pageId": "3f5561d8-477e-4954-bee2-9877c8cddc69",
+      "slideId": "ZN52",
+      "title": "Match the saved change to the request",
+      "purpose": "This is an actual saved edit",
+      "notes": "This is an actual saved edit. The request tightened the title and explanation while retaining the figure, all twelve values, axes and source. The before and after views come from that operation’s real snapshots. The scope can be checked directly. Next we need to identify the page and follow its history, as well as inspect the final appearance.\n\nSaved operation: d2d18509-c72c-48e7-81cc-4251486a522e. Verification: evidence/wording-edit.json.",
+      "objectTypes": {
+        "text": 7,
+        "image": 3,
+        "icon": 1
+      }
+    },
+    {
+      "position": 11,
+      "topicIndex": 13,
+      "pageId": "dc5bfe5f-326a-4b28-8536-56e51ea4397e",
+      "slideId": "DHVW",
+      "title": "Identify the page. Then follow its history.",
+      "purpose": "Position is the current order; after rearranging, slide four can mean a different page",
+      "notes": "Position is the current order; after rearranging, slide four can mean a different page. Slide ID preserves the page identity. The mapping here uses this project’s full and brief presentations. Name the stable ID and the intended object when asking an assistant for a change. History follows that same page instead of an ambiguous position number.",
+      "objectTypes": {
+        "text": 5,
+        "image": 2,
+        "table": 1
+      }
+    },
+    {
+      "position": 12,
+      "topicIndex": 9,
+      "pageId": "6a3aec16-2347-40fe-856d-df36c1f58509",
+      "slideId": "2ZQ3",
+      "title": "Review a change. Return to a saved stage.",
+      "purpose": "Select the page and open History to inspect saved operations or record a named version",
+      "notes": "Select the page and open History to inspect saved operations or record a named version. An operation explains a particular change; a named version preserves a meaningful stage of the whole page. Restoring acts on the selected page. Small revisions can stay in the current project rather than becoming another full source deck.",
+      "objectTypes": {
+        "text": 6,
+        "image": 3
+      }
+    },
+    {
+      "position": 13,
+      "topicIndex": 7,
+      "pageId": "d497fb11-7906-414e-a529-0d97680bce51",
+      "slideId": "7E4T",
+      "title": "Turn pages into a talk",
+      "purpose": "Once a page can keep evolving, assemble the talk: inspect its rhythm, select the pages and adapt the explanation to this audience.",
+      "notes": "Once a page can keep evolving, assemble the talk: inspect its rhythm, select the pages and adapt the explanation to this audience.",
+      "objectTypes": {
+        "text": 1
+      }
+    },
+    {
+      "position": 14,
+      "topicIndex": 25,
+      "pageId": "62d5734d-2fe5-441c-a50a-abaa95145b56",
+      "slideId": "9QQW",
+      "title": "Step back and inspect the whole talk",
+      "purpose": "After editing individual pages, inspect the talk as a whole",
+      "notes": "After editing individual pages, inspect the talk as a whole. Browse shows actual pages and section rhythm. Outline makes headings and content cues easy to scan. Sections organizes chapter boundaries. These are views of the same pages. Each shown view is captured from the actual editor. Returning to Normal keeps the same page identities and content.",
+      "objectTypes": {
+        "text": 7,
+        "image": 4
+      }
+    },
+    {
+      "position": 15,
+      "topicIndex": 12,
+      "pageId": "3d7cd245-6d59-4123-a75f-fd400fd636c7",
+      "slideId": "AAD6",
+      "title": "Keep the pages. Change the selection.",
+      "purpose": "Main Slides is the continuing page library",
+      "notes": "Main Slides is the continuing page library. Open Project, Arrange Presentation and New Presentation; select pages, set their order and save Project. The upper row shows part of Main. The lower row shows three actual selections in this project’s brief talk, each referring to its original Slide ID. Next we will give one page the notes for this particular talk.",
+      "objectTypes": {
+        "text": 7,
+        "image": 8,
+        "line": 1
+      }
+    },
+    {
+      "position": 16,
+      "topicIndex": 26,
+      "pageId": "095ba6fb-14f6-42b1-815a-7970ac214058",
+      "slideId": "74A2",
+      "title": "The same page can carry a different script",
+      "purpose": "Reusing a page does not require reading the same script",
+      "notes": "Reusing a page does not require reading the same script. Main Notes can keep the general explanation; one occurrence in a Presentation can hold its own notes. The brief introduction uses this scientific page to explain evidence preservation, while a longer account can explain the method. The local notes belong to this appearance; the page need not be duplicated.",
+      "objectTypes": {
+        "text": 5,
+        "image": 2
+      }
+    },
+    {
+      "position": 17,
+      "topicIndex": 14,
+      "pageId": "80c650ec-8f56-403d-8f44-d190a84ed4b4",
+      "slideId": "9N3S",
+      "title": "Follow the page, or hold a saved version",
+      "purpose": "Some talks should follow continuing edits; others need a particular settled stage",
+      "notes": "Some talks should follow continuing edits; others need a particular settled stage. Live uses the current Main page; Pinned selects a named version of that page. The left is the current scientific example; the right is the actual saved wording-edit stage. The brief introduction really pins that version. The identity is the same, while the selected content version differs.",
+      "objectTypes": {
+        "text": 7,
+        "image": 3
+      }
+    },
+    {
+      "position": 18,
+      "topicIndex": 16,
+      "pageId": "8050a155-9c2b-4cf5-b643-e9406b9b2b1c",
+      "slideId": "BHPP",
+      "title": "Take the project, not just its entry file",
+      "purpose": "The PPTD file is the entry; the directory is the complete project",
+      "notes": "The PPTD file is the entry; the directory is the complete project. Pages, media, Story, composition, named page versions and authoring guidance stay together. Named versions travel with the folder; machine-local operation journals stay on the computer where they were recorded. PPTX already contains slide parts too; HUANDENG exposes an accessible working folder. The new entry flow accepts a PPTD or a folder containing exactly one PPTD. A descriptive folder suffix is optional. If the folder has several entries, choose the intended file explicitly.",
+      "objectTypes": {
+        "text": 5,
+        "image": 1,
+        "icon": 1,
+        "table": 1
+      }
+    },
+    {
+      "position": 19,
+      "topicIndex": 11,
+      "pageId": "4a398dd0-ad74-4a36-b65e-6068ffe817a8",
+      "slideId": "X5J6",
+      "title": "Work with people and agents",
+      "purpose": "With pages and talks organized, we can bring people and assistants into the same project and explain setup, division of work, handoff and delivery.",
+      "notes": "With pages and talks organized, we can bring people and assistants into the same project and explain setup, division of work, handoff and delivery.",
+      "objectTypes": {
+        "text": 1
+      }
+    },
+    {
+      "position": 20,
+      "topicIndex": 8,
+      "pageId": "2a72d7c5-2dd7-42e0-99cd-bd68ea396cf6",
+      "slideId": "YZ4T",
+      "title": "Different assistants, one working project",
+      "purpose": "For the first connection, open Agent setup at the top of the editor, choose the client and follow its setup instructions",
+      "notes": "For the first connection, open Agent setup at the top of the editor, choose the client and follow its setup instructions. Ask the assistant to read the project and selected page, then check the returned project name and Slide ID. Different assistants use native integrations with the same document contract. The plugin carries guidance; the connector binds requests to the explicitly chosen project. The Editor and assistants save through the shared writer. The marks identify supported routes, not models currently online. A real read and task are still needed to verify the selected project and access.",
+      "objectTypes": {
+        "text": 9,
+        "image": 5,
+        "line": 1,
+        "shape": 1
+      }
+    },
+    {
+      "position": 21,
+      "topicIndex": 23,
+      "pageId": "e0b400eb-ddc1-4c42-af48-d420785b1d8f",
+      "slideId": "KW5P",
+      "title": "Divide the work. Make the handoff explicit.",
+      "purpose": "Work can be divided by pages, or passed from content drafting to visual refinement",
+      "notes": "Work can be divided by pages, or passed from content drafting to visual refinement. A handoff needs page IDs, the task and evidence-preservation constraints. Different-page saves can proceed independently. A same-page or shared-metadata conflict requires rereading and reconciling the intended change. Activity distinguishes client reports from saved receipts; configuration alone is not online presence. The diagram illustrates task allocation. In a separate controlled test, native DeepSeek Harness and ChatGPT saved distinct pages from the same starting state. A stale same-page proposal was rejected; after rereading, a focused font and color handoff succeeded. Claude Code did not participate in this round’s parallel test. See evidence/collaboration.json.",
+      "objectTypes": {
+        "text": 6,
+        "image": 2,
+        "line": 1
+      }
+    },
+    {
+      "position": 22,
+      "topicIndex": 15,
+      "pageId": "e4fb0f10-ffa5-44e2-907f-b92e1b69535e",
+      "slideId": "DDJN",
+      "title": "From the working project to the audience",
+      "purpose": "Present or export from the same working project",
+      "notes": "Present or export from the same working project. Click-by-click reveals belong to live playback; PPTX and PDF carry the static slides. Provide the complete PPTD project when someone needs to continue editing, and an appropriate export when they need to read or present it. Further changes return to the same source project.",
+      "objectTypes": {
+        "text": 6,
+        "icon": 2,
+        "image": 3
+      }
+    },
+    {
+      "position": 23,
+      "topicIndex": 17,
+      "pageId": "bbcdc92a-915c-4988-a4d5-76e466d0424f",
+      "slideId": "5HW8",
+      "title": "Built on work worth acknowledging",
+      "purpose": "HUANDENG builds on OpenSlide",
+      "notes": "HUANDENG builds on OpenSlide. OpenPPTD contributes formula-conversion modules and PptxGenJS supplies PPTX generation. The PPTD approach was inspired by the Kimi Slides ecosystem; that is not a claim about inventing a universal standard. Charts, formulas and functional icons also build on open-source work. The public DNA example comes from PDB 1BNA and Drew and colleagues. Sources and licenses stay with the project; third-party marks do not imply endorsement.\n\nSources and scope: sources/brand/manifest.json; notices/; sources/science/source.json; https://recent.design/ . The GitHub mark identifies the OpenPPTD repository, not an OpenPPTD product logo.",
+      "objectTypes": {
+        "text": 8,
+        "image": 4
+      }
+    },
+    {
+      "position": 24,
+      "topicIndex": 18,
+      "pageId": "8f9e154d-c5c2-4d79-b809-984586f8311e",
+      "slideId": "ECVR",
+      "title": "Open a page. Try one specific edit.",
+      "purpose": "Open this example and select the scientific page",
+      "notes": "Open this example and select the scientific page. Use its Slide ID to ask for one small change: clarify the explanation while preserving the figure, all twelve values, units and source. Inspect the proposal, then the saved page and history. The person can keep shaping the explanation throughout the work. Intent, evidence and revisions stay available for the next edit.",
+      "objectTypes": {
+        "text": 6,
+        "image": 2
+      }
+    }
+  ]
+}

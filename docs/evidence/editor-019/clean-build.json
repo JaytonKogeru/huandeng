@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "productVersion": "0.19.0",
+  "binarySourceCommit": "cadaecbf9cf1661e28464fe68b7b866f68fecabe",
+  "sourceDirty": false,
+  "sourceCleanAfterAllGates": true,
+  "independentDependencies": true,
+  "testCounts": {
+    "focusedUnitPassed": 78,
+    "sharedWriterCasPassed": 1,
+    "sharedWriterCasFilteredSkipped": 25,
+    "browserPassed": 3,
+    "pluginAdapterPassed": 18,
+    "packagedNativePassed": 8,
+    "packagedExplicitNavigationPassed": 2,
+    "visibleMenuPassed": 4,
+    "rendererErrors": 0
+  },
+  "lint": {
+    "checkedFiles": 1190,
+    "exitCode": 0,
+    "informationalDiagnostics": 20,
+    "fixesApplied": false
+  },
+  "buildMarker": {
+    "electronVersion": "38.7.2",
+    "desktopProtocol": 1,
+    "builtAt": "2026-11-11T04:42:53.9565255Z",
+    "sourceDirty": false,
+    "productVersion": "0.19.0",
+    "nodeLinker": "hoisted",
+    "product": "HUANDENG Editor",
+    "sourceRevision": "cadaecbf9cf1661e28464fe68b7b866f68fecabe"
+  },
+  "protectedFiles": [
+    {
+      "path": "tests/fixtures/studio/pages/identities.page",
+      "sha256": "fe378a48e57b63f2b9e7286578f68eefe856a381422930a6615f920b02622832",
+      "actualSha256": "fe378a48e57b63f2b9e7286578f68eefe856a381422930a6615f920b02622832",
+      "unchanged": true
+    },
+    {
+      "path": "examples/huandeng-introduction/claude-en/pages/AVNM.page",
+      "sha256": "21f2134a7d402d04ace4a125f22cbc93ac9edd8e5056b7dfc1a0121f86c23260",
+      "actualSha256": "21f2134a7d402d04ace4a125f22cbc93ac9edd8e5056b7dfc1a0121f86c23260",
+      "unchanged": true
+    },
+    {
+      "path": "examples/huandeng-introduction/claude-en/pages/7NHP.page",
+      "sha256": "7f8a7b224c0b4e80c014a9c2fac1a5001b270172625477ca770e2e109ff48f8e",
+      "actualSha256": "7f8a7b224c0b4e80c014a9c2fac1a5001b270172625477ca770e2e109ff48f8e",
+      "unchanged": true
+    }
+  ],
+  "scope": "Exact committed runtime; focused gates, not an all-repository unit-test claim. Presentation/docs delivery commits are separate."
+}

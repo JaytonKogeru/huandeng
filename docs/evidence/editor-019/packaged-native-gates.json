@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "cadaecbf9cf1661e28464fe68b7b866f68fecabe",
+  "sourceDirty": false,
+  "checks": [
+    {
+      "name": "Home exposes file and folder entry without renaming",
+      "passed": true
+    },
+    {
+      "name": "Open folder button requests directory picker and resolves real project",
+      "passed": true
+    },
+    {
+      "name": "Native folder and explicit manifest launches reuse one tab and writer",
+      "passed": true
+    },
+    {
+      "name": "Invalid explicit entry never falls back to a different candidate Project",
+      "passed": true
+    },
+    {
+      "name": "Built CLI accepts folder for check and active session discovery",
+      "passed": true
+    },
+    {
+      "name": "Explicit folder identity uses actual manifest and preserves an existing marker",
+      "passed": true
+    },
+    {
+      "name": "Assistant setup separates two explicit client reports from a saved receipt",
+      "passed": true
+    },
+    {
+      "name": "Ambiguous folder shows candidates and opens no unintended project",
+      "passed": true
+    }
+  ],
+  "rendererErrorCount": 0,
+  "normalExit": {
+    "code": 0,
+    "signal": null
+  },
+  "existingUserWriterCount": 6,
+  "existingUserWriterIdentitiesAndEpochsUnchanged": true,
+  "scope": "Packaged HUANDENG Editor 0.19.0 with its production frontend; synthetic only; native chooser selection is stubbed",
+  "captureScope": "Synthetic project with explicitly labeled synthetic reports. Actual controls, IPC, writer and renderer; chooser result stubbed. Not native-model authorship evidence.",
+  "visuallyInspectedScreenshots": [
+    {
+      "file": "public-folder-actions-en.png",
+      "sha256": "41fae9b4a38260819f9457fbf9b1c922f9863e1a8de0bf3522c30b41eee51776"
+    },
+    {
+      "file": "public-folder-actions-zh.png",
+      "sha256": "4284db8d794ea6d9991349cbdb90e918fdd8435171d48e432b187b18fe6a3225"
+    },
+    {
+      "file": "public-reported-work-en.png",
+      "sha256": "3e2c204362995aa9d90be1e9a2caf986b2e193a1cca2894fb9795f02dd552978"
+    },
+    {
+      "file": "public-reported-work-zh.png",
+      "sha256": "c1bdbbb7a335fc3cbcfb8f59748a85dffd8349171c610fb3753488eb0d6e7a8e"
+    },
+    {
+      "file": "06-ambiguous-folder.png",
+      "sha256": "83f15cb58016a911c59c46a5f4fc6ab676d3394150d820a3d782dc01214b0894"
+    }
+  ]
+}

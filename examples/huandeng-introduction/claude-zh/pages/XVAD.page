@@ -1,0 +1,23 @@
+background:
+  type: solid
+  color: "#2D4A43"
+elements:
+  - elementId: divider-title
+    elementType: text
+    bounds:
+      - 72
+      - 226
+      - 816
+      - 72
+    content:
+      text: 和 agent 一起工作
+      fontFamily: Microsoft YaHei
+      fontSize: 34
+      lineHeight: 1.25
+      color: "#FFFFFF"
+      align:
+        - left
+        - middle
+      bold: true
+    role: title
+notes: 第五部分。最后讲 agent 怎么接进来、几个 agent 怎么一起干活、稿子怎么交付、幻灯站在哪些项目上，以及怎么开始。

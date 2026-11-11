@@ -41,7 +41,7 @@ elements:
       - 500
       - 20
     content:
-      text: "一次关于 AI 质感的追问"
+      text: "桌面幻灯片编辑器 / 0.19"
       fontSize: 11.5
       fontFamily:
         ea: Microsoft YaHei
@@ -60,7 +60,7 @@ elements:
       - 530
       - 140
     content:
-      text: "先讲一个故事，\n再做幻灯片"
+      text: "一份可以\n继续修改的幻灯片"
       fontSize: 46
       fontFamily:
         ea: Microsoft YaHei
@@ -78,7 +78,7 @@ elements:
       - 510
       - 58
     content:
-      text: "我为什么做 HUANDENG\n一份关于 AI 与人的选择的现场笔记"
+      text: "项目、页面、Story 和历史，\n留在同一个工作目录里。"
       fontSize: 17
       fontFamily:
         ea: Microsoft YaHei
@@ -96,7 +96,7 @@ elements:
       - 260
       - 20
     content:
-      text: "HUANDENG 0.18 · 故事版"
+      text: "HUANDENG 0.19 · 2026"
       fontSize: 10
       fontFamily:
         ea: Microsoft YaHei
@@ -176,7 +176,7 @@ elements:
       - 56
       - 18
     content:
-      text: "01 / 18"
+      text: "01 / 22"
       fontSize: 9.5
       fontFamily:
         ea: Microsoft YaHei

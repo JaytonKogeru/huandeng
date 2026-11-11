@@ -59,135 +59,29 @@ elements:
       align:
         - left
         - top
-  - elementId: source-row-1
+  - elementId: source-copy
     elementType: text
     bounds:
       - 48
-      - 212
+      - 206
       - 390
-      - 26
+      - 170
     content:
-      text: "组会 · 进展"
-      fontSize: 14
-      fontFamily:
-        ea: Microsoft YaHei
-        latin: Arial
-      color: "#17221C"
-      align:
-        - left
-        - top
-  - elementId: source-desc-1
-    elementType: text
-    bounds:
-      - 48
-      - 236
-      - 390
-      - 22
-    content:
-      text: "先讲下一步，再补方法。"
+      text: |-
+        组会 · 进展
+        先讲下一步，再补方法。
+  
+        会议 · 结论
+        同一张图，换成比较框架。
+  
+        评审 · 证据
+        把来源、方法和限制补齐。
       fontSize: 11.6
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
-      color: "#66756A"
-      align:
-        - left
-        - top
-  - elementId: source-rule-1
-    elementType: line
-    bounds:
-      - 48
-      - 264
-      - 390
-      - 1
-    viewBox:
-      - 390
-      - 1
-    points: 0,0.5 390,0.5
-    border:
-      color: "#C6D0C5"
-      width: 0.7
-      style: solid
-  - elementId: source-row-2
-    elementType: text
-    bounds:
-      - 48
-      - 278
-      - 390
-      - 26
-    content:
-      text: "会议 · 结论"
-      fontSize: 14
-      fontFamily:
-        ea: Microsoft YaHei
-        latin: Arial
-      color: "#17221C"
-      align:
-        - left
-        - top
-  - elementId: source-desc-2
-    elementType: text
-    bounds:
-      - 48
-      - 302
-      - 390
-      - 22
-    content:
-      text: 同一张图，换成比较框架。
-      fontSize: 11.6
-      fontFamily:
-        ea: Microsoft YaHei
-        latin: Arial
-      color: "#66756A"
-      align:
-        - left
-        - top
-  - elementId: source-rule-2
-    elementType: line
-    bounds:
-      - 48
-      - 330
-      - 390
-      - 1
-    viewBox:
-      - 390
-      - 1
-    points: 0,0.5 390,0.5
-    border:
-      color: "#C6D0C5"
-      width: 0.7
-      style: solid
-  - elementId: source-row-3
-    elementType: text
-    bounds:
-      - 48
-      - 344
-      - 390
-      - 26
-    content:
-      text: "评审 · 证据"
-      fontSize: 14
-      fontFamily:
-        ea: Microsoft YaHei
-        latin: Arial
-      color: "#17221C"
-      align:
-        - left
-        - top
-  - elementId: source-desc-3
-    elementType: text
-    bounds:
-      - 48
-      - 368
-      - 390
-      - 22
-    content:
-      text: "把来源、方法和限制补齐。"
-      fontSize: 11.6
-      fontFamily:
-        ea: Microsoft YaHei
-        latin: Arial
-      color: "#66756A"
+      color: "#2B3830"
+      lineHeight: 1.55
       align:
         - left
         - top

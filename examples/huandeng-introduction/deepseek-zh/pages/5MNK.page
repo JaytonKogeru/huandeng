@@ -2,7 +2,7 @@ pageType: section
 background:
   type: solid
   color: "#879783"
-notes: 章节停顿。接下来从“怎么放对象”讲到“怎么让页面说得清”：画面不是一张不可拆的截图，Story 也不是讲稿。
+notes: "从组会问题转到工具本身：先看项目结构，再看工作区。这里不是第二段故事。"
 elements:
   - elementId: section-title
     elementType: text
@@ -10,7 +10,7 @@ elements:
     bounds:
         [64,220,800,72]
     content:
-      text: 一页证据
+      text: "编辑器"
       fontSize: 42
       fontFamily:
         ea: Microsoft YaHei

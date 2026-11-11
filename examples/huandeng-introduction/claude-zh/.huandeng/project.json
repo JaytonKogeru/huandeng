@@ -9,17 +9,15 @@
       "path": "pages/initial.page",
       "state": "active",
       "components": {},
-      "elementRoles": {
-        "title": "title"
-      },
+      "elementRoles": {},
       "label": "S1",
       "designIntent": {
-        "purpose": "开场：这是一个从组会开始的故事，并引出贯穿全篇的 DNA 例子。",
+        "purpose": "开场：说明这是一份产品介绍，动机来自作者的组会经历，并引出 1BNA 实例。",
         "pageRole": "cover",
-        "requestedChange": "按作者口述的故事重做中文版介绍（故事驱动，Claude Code 独立设计）",
+        "requestedChange": "按作者 2026-11-11 反馈，以 Claude 英文版最终稿为内容结构重做中文版：产品介绍为主，故事为抓手",
         "actor": "claude-code",
-        "source": "作者 2026-11-11 口述与反馈（sources/story/USER-STORY.zh-CN.md）",
-        "recordedAt": "2026-11-10T22:58:14Z",
+        "source": "作者反馈与 sources/story/PRODUCT-BRIEF.md；对应 claude-en 最终稿",
+        "recordedAt": "2026-11-11T03:36:38Z",
         "backgroundException": "封面用浅灰绿全幅底色（#E9ECE8）区分于内容页。"
       }
     },
@@ -31,12 +29,12 @@
       "elementRoles": {},
       "label": "S2",
       "designIntent": {
-        "purpose": "第一章停顿页。",
+        "purpose": "章节停顿页：我为什么做幻灯",
         "pageRole": "section",
-        "requestedChange": "按作者口述的故事重做中文版介绍（故事驱动，Claude Code 独立设计）",
+        "requestedChange": "按作者 2026-11-11 反馈，以 Claude 英文版最终稿为内容结构重做中文版：产品介绍为主，故事为抓手",
         "actor": "claude-code",
-        "source": "作者 2026-11-11 口述与反馈（sources/story/USER-STORY.zh-CN.md）",
-        "recordedAt": "2026-11-10T22:58:14Z",
+        "source": "作者反馈与 sources/story/PRODUCT-BRIEF.md；对应 claude-en 最终稿",
+        "recordedAt": "2026-11-11T03:36:38Z",
         "backgroundException": "仅标题的章节停顿页，深绿底色 #2D4A43。"
       }
     },
@@ -45,15 +43,17 @@
       "path": "pages/FNHB.page",
       "state": "active",
       "components": {},
-      "elementRoles": {},
+      "elementRoles": {
+        "title": "title"
+      },
       "label": "S3",
       "designIntent": {
-        "purpose": "动机一：AI 做 slides 势在必行，但组会上大家一眼能看出 AI 味。",
+        "purpose": "动机一：组会上一眼能认出 AI 做的 slides；说明作者对 AI 味来源的理解，并以本介绍的上一版为例。",
         "pageRole": "content",
-        "requestedChange": "按作者口述的故事重做中文版介绍（故事驱动，Claude Code 独立设计）",
+        "requestedChange": "按作者 2026-11-11 反馈，以 Claude 英文版最终稿为内容结构重做中文版：产品介绍为主，故事为抓手",
         "actor": "claude-code",
-        "source": "作者 2026-11-11 口述与反馈（sources/story/USER-STORY.zh-CN.md）",
-        "recordedAt": "2026-11-10T22:58:14Z"
+        "source": "作者反馈与 sources/story/PRODUCT-BRIEF.md；对应 claude-en 最终稿",
+        "recordedAt": "2026-11-11T03:36:38Z"
       }
     },
     "3c2c0a36-22fc-43b0-b37f-5c3f3b97e005": {
@@ -61,15 +61,17 @@
       "path": "pages/GZBW.page",
       "state": "active",
       "components": {},
-      "elementRoles": {},
+      "elementRoles": {
+        "title": "title"
+      },
       "label": "S4",
       "designIntent": {
-        "purpose": "解释 AI 味的来源（没有重点、面面俱到），得出“人先讲故事”的结论。",
+        "purpose": "核心理由：对比“先做页面”和“先讲故事”两种流程；故事先行帮助保留作者的判断和讲述逻辑，但不保证消除 AI 味。",
         "pageRole": "content",
-        "requestedChange": "按作者口述的故事重做中文版介绍（故事驱动，Claude Code 独立设计）",
+        "requestedChange": "修正保证式表述：说明目标与帮助，而非保证；保留 agent 重新组织并补充产品细节的说明。",
         "actor": "claude-code",
-        "source": "作者 2026-11-11 口述与反馈（sources/story/USER-STORY.zh-CN.md）",
-        "recordedAt": "2026-11-10T22:58:14Z"
+        "source": "作者反馈与 sources/story/PRODUCT-BRIEF.md；对应 claude-en 最终稿",
+        "recordedAt": "2026-11-11T04:32:03Z"
       }
     },
     "6b5c5cbe-70c3-4808-8011-15f57adcbff7": {
@@ -77,17 +79,19 @@
       "path": "pages/KS6E.page",
       "state": "active",
       "components": {},
-      "elementRoles": {},
+      "elementRoles": {
+        "title": "title"
+      },
       "label": "S5",
       "designIntent": {
-        "purpose": "动机二：让 AI 改两页会留下大量副本，于是想到以页为单位的版本管理。",
+        "purpose": "动机二：agent 改稿留下整份副本；由 Git 得到以页为修改单位的设计。",
         "pageRole": "content",
-        "requestedChange": "按作者口述的故事重做中文版介绍（故事驱动，Claude Code 独立设计）",
+        "requestedChange": "按作者 2026-11-11 反馈，以 Claude 英文版最终稿为内容结构重做中文版：产品介绍为主，故事为抓手",
         "actor": "claude-code",
-        "source": "作者 2026-11-11 口述与反馈（sources/story/USER-STORY.zh-CN.md）",
-        "recordedAt": "2026-11-10T22:58:14Z",
+        "source": "作者反馈与 sources/story/PRODUCT-BRIEF.md；对应 claude-en 最终稿",
+        "recordedAt": "2026-11-11T03:36:38Z",
         "keep": [
-          "文件列表标注为示意"
+          "文件名与修改条目标注为示意"
         ]
       }
     },
@@ -96,15 +100,17 @@
       "path": "pages/2723.page",
       "state": "active",
       "components": {},
-      "elementRoles": {},
+      "elementRoles": {
+        "title": "title"
+      },
       "label": "S6",
       "designIntent": {
-        "purpose": "动机三：AI 只能靠截图审阅页面，需要结构化的 slides 格式。",
+        "purpose": "动机三：作者在截图驱动的修改中遇到的麻烦（数值和位置要从像素反推）；幻灯让 agent 直接读到对象的数值和边界并精确修改，渲染图仍用于审阅。",
         "pageRole": "content",
-        "requestedChange": "按作者口述的故事重做中文版介绍（故事驱动，Claude Code 独立设计）",
+        "requestedChange": "修正绝对化表述：截图并非不能度量，问题在于精确修改需从像素反推；保留作者经历与真实页面片段。",
         "actor": "claude-code",
-        "source": "作者 2026-11-11 口述与反馈（sources/story/USER-STORY.zh-CN.md）",
-        "recordedAt": "2026-11-10T22:58:14Z"
+        "source": "作者反馈与 sources/story/PRODUCT-BRIEF.md；对应 claude-en 最终稿",
+        "recordedAt": "2026-11-11T04:32:03Z"
       }
     },
     "f0e6f4db-8632-4ad4-a50b-cca0f985c07d": {
@@ -115,12 +121,12 @@
       "elementRoles": {},
       "label": "S7",
       "designIntent": {
-        "purpose": "第二章停顿页。",
+        "purpose": "章节停顿页：我做了什么",
         "pageRole": "section",
-        "requestedChange": "按作者口述的故事重做中文版介绍（故事驱动，Claude Code 独立设计）",
+        "requestedChange": "按作者 2026-11-11 反馈，以 Claude 英文版最终稿为内容结构重做中文版：产品介绍为主，故事为抓手",
         "actor": "claude-code",
-        "source": "作者 2026-11-11 口述与反馈（sources/story/USER-STORY.zh-CN.md）",
-        "recordedAt": "2026-11-10T22:58:14Z",
+        "source": "作者反馈与 sources/story/PRODUCT-BRIEF.md；对应 claude-en 最终稿",
+        "recordedAt": "2026-11-11T03:36:38Z",
         "backgroundException": "仅标题的章节停顿页，深绿底色 #2D4A43。"
       }
     },
@@ -129,17 +135,19 @@
       "path": "pages/2UCC.page",
       "state": "active",
       "components": {},
-      "elementRoles": {},
+      "elementRoles": {
+        "title": "title"
+      },
       "label": "S8",
       "designIntent": {
-        "purpose": "两条线索：PPTD 思路与 open-slide 代码基础，合成桌面编辑器幻灯；准确致谢。",
+        "purpose": "说明幻灯的来源（PPTD 思路、OpenSlide、熟悉的编辑器）和编辑器+插件的关系，并准确致谢。",
         "pageRole": "content",
-        "requestedChange": "按作者口述的故事重做中文版介绍（故事驱动，Claude Code 独立设计）",
+        "requestedChange": "按作者 2026-11-11 反馈，以 Claude 英文版最终稿为内容结构重做中文版：产品介绍为主，故事为抓手",
         "actor": "claude-code",
-        "source": "作者 2026-11-11 口述与反馈（sources/story/USER-STORY.zh-CN.md）",
-        "recordedAt": "2026-11-10T22:58:14Z",
+        "source": "作者反馈与 sources/story/PRODUCT-BRIEF.md；对应 claude-en 最终稿",
+        "recordedAt": "2026-11-11T03:36:38Z",
         "keep": [
-          "不声称 Kimi 是标准发明者；OpenPPTD 仅为公式转换模块"
+          "不声称 Kimi 发明标准或背书；OpenPPTD 仅为公式转换代码"
         ]
       }
     },
@@ -148,15 +156,20 @@
       "path": "pages/3DUH.page",
       "state": "active",
       "components": {},
-      "elementRoles": {},
+      "elementRoles": {
+        "title": "title"
+      },
       "label": "S9",
       "designIntent": {
-        "purpose": "说明一份 slides 就是一个目录，每部分放什么。",
+        "purpose": "对比 PPTX 包结构和 PPTD 项目目录，说明项目文件夹是完整的可编辑源。",
         "pageRole": "content",
-        "requestedChange": "按作者口述的故事重做中文版介绍（故事驱动，Claude Code 独立设计）",
+        "requestedChange": "按作者 2026-11-11 反馈，以 Claude 英文版最终稿为内容结构重做中文版：产品介绍为主，故事为抓手",
         "actor": "claude-code",
-        "source": "作者 2026-11-11 口述与反馈（sources/story/USER-STORY.zh-CN.md）",
-        "recordedAt": "2026-11-10T22:58:14Z"
+        "source": "作者反馈与 sources/story/PRODUCT-BRIEF.md；对应 claude-en 最终稿",
+        "recordedAt": "2026-11-11T03:36:38Z",
+        "keep": [
+          "不声称 PPTX 没有页结构；PPTD 不是改名的 PPTX"
+        ]
       }
     },
     "4f782a0f-4e54-441b-8e1e-70fa7a273cc2": {
@@ -164,15 +177,17 @@
       "path": "pages/SSFR.page",
       "state": "active",
       "components": {},
-      "elementRoles": {},
+      "elementRoles": {
+        "title": "title"
+      },
       "label": "S10",
       "designIntent": {
-        "purpose": "用真实界面介绍编辑器的侧栏、视图和右侧面板。",
+        "purpose": "用真实中文界面介绍编辑器的六个区域。",
         "pageRole": "content",
-        "requestedChange": "按作者口述的故事重做中文版介绍（故事驱动，Claude Code 独立设计）",
+        "requestedChange": "按作者 2026-11-11 反馈，以 Claude 英文版最终稿为内容结构重做中文版：产品介绍为主，故事为抓手",
         "actor": "claude-code",
-        "source": "作者 2026-11-11 口述与反馈（sources/story/USER-STORY.zh-CN.md）",
-        "recordedAt": "2026-11-10T22:58:14Z"
+        "source": "作者反馈与 sources/story/PRODUCT-BRIEF.md；对应 claude-en 最终稿",
+        "recordedAt": "2026-11-11T03:36:38Z"
       }
     },
     "f771a595-2222-40fa-acf2-1858bcf77e7e": {
@@ -180,21 +195,23 @@
       "path": "pages/3D9R.page",
       "state": "active",
       "components": {},
-      "elementRoles": {},
+      "elementRoles": {
+        "title": "title"
+      },
       "label": "S11",
       "designIntent": {
-        "purpose": "介绍每页的“故事”：AI 修改前的对齐工具，但不等于作者认可。",
+        "purpose": "说明每页故事（目的/保留/这次修改）如何对齐 agent，并展示 1BNA 页实际记录的故事。",
         "pageRole": "content",
-        "requestedChange": "按作者口述的故事重做中文版介绍（故事驱动，Claude Code 独立设计）",
+        "requestedChange": "按作者 2026-11-11 反馈，以 Claude 英文版最终稿为内容结构重做中文版：产品介绍为主，故事为抓手",
         "actor": "claude-code",
-        "source": "作者 2026-11-11 口述与反馈（sources/story/USER-STORY.zh-CN.md）",
-        "recordedAt": "2026-11-10T22:58:14Z"
+        "source": "作者反馈与 sources/story/PRODUCT-BRIEF.md；对应 claude-en 最终稿",
+        "recordedAt": "2026-11-11T03:36:38Z"
       }
     },
     "9b0890f5-8baf-4a23-b32c-789990898b0c": {
       "shortCode": "WDFR",
       "path": "pages/WDFR.page",
-      "state": "active",
+      "state": "tombstone",
       "components": {},
       "elementRoles": {},
       "label": "S12",
@@ -215,12 +232,12 @@
       "elementRoles": {},
       "label": "S13",
       "designIntent": {
-        "purpose": "第三章停顿页。",
+        "purpose": "章节停顿页：以“页”为单位修改",
         "pageRole": "section",
-        "requestedChange": "按作者口述的故事重做中文版介绍（故事驱动，Claude Code 独立设计）",
+        "requestedChange": "按作者 2026-11-11 反馈，以 Claude 英文版最终稿为内容结构重做中文版：产品介绍为主，故事为抓手",
         "actor": "claude-code",
-        "source": "作者 2026-11-11 口述与反馈（sources/story/USER-STORY.zh-CN.md）",
-        "recordedAt": "2026-11-10T22:58:14Z",
+        "source": "作者反馈与 sources/story/PRODUCT-BRIEF.md；对应 claude-en 最终稿",
+        "recordedAt": "2026-11-11T03:36:38Z",
         "backgroundException": "仅标题的章节停顿页，深绿底色 #2D4A43。"
       }
     },
@@ -229,15 +246,17 @@
       "path": "pages/ZWM9.page",
       "state": "active",
       "components": {},
-      "elementRoles": {},
+      "elementRoles": {
+        "title": "title"
+      },
       "label": "S14",
       "designIntent": {
-        "purpose": "位置会变、页面短码不变，用 HFDV 前后对比说明。",
+        "purpose": "区分页面短码、位置和演讲中的出现，用真实状态栏前后对比说明。",
         "pageRole": "content",
-        "requestedChange": "按作者口述的故事重做中文版介绍（故事驱动，Claude Code 独立设计）",
+        "requestedChange": "按作者 2026-11-11 反馈，以 Claude 英文版最终稿为内容结构重做中文版：产品介绍为主，故事为抓手",
         "actor": "claude-code",
-        "source": "作者 2026-11-11 口述与反馈（sources/story/USER-STORY.zh-CN.md）",
-        "recordedAt": "2026-11-10T22:58:14Z"
+        "source": "作者反馈与 sources/story/PRODUCT-BRIEF.md；对应 claude-en 最终稿",
+        "recordedAt": "2026-11-11T03:36:38Z"
       }
     },
     "39442c0b-2570-4407-b627-44475ad8db32": {
@@ -245,15 +264,17 @@
       "path": "pages/DY5H.page",
       "state": "active",
       "components": {},
-      "elementRoles": {},
+      "elementRoles": {
+        "title": "title"
+      },
       "label": "S15",
       "designIntent": {
-        "purpose": "每一页都有自己的历史，回应“垃圾副本”问题。",
+        "purpose": "介绍按页保存的历史：命名版本、操作记录和只影响单页的恢复。",
         "pageRole": "content",
-        "requestedChange": "按作者口述的故事重做中文版介绍（故事驱动，Claude Code 独立设计）",
+        "requestedChange": "按作者 2026-11-11 反馈，以 Claude 英文版最终稿为内容结构重做中文版：产品介绍为主，故事为抓手",
         "actor": "claude-code",
-        "source": "作者 2026-11-11 口述与反馈（sources/story/USER-STORY.zh-CN.md）",
-        "recordedAt": "2026-11-10T22:58:14Z"
+        "source": "作者反馈与 sources/story/PRODUCT-BRIEF.md；对应 claude-en 最终稿",
+        "recordedAt": "2026-11-11T03:36:38Z"
       }
     },
     "3a1c7a85-86be-4daa-bf3d-019a5d40a839": {
@@ -261,15 +282,17 @@
       "path": "pages/3442.page",
       "state": "active",
       "components": {},
-      "elementRoles": {},
+      "elementRoles": {
+        "title": "title"
+      },
       "label": "S16",
       "designIntent": {
-        "purpose": "AI 改了什么可以逐项审阅。",
+        "purpose": "说明修改审阅对话框的四个部分，以及审阅与恢复的区别。",
         "pageRole": "content",
-        "requestedChange": "按作者口述的故事重做中文版介绍（故事驱动，Claude Code 独立设计）",
+        "requestedChange": "按作者 2026-11-11 反馈，以 Claude 英文版最终稿为内容结构重做中文版：产品介绍为主，故事为抓手",
         "actor": "claude-code",
-        "source": "作者 2026-11-11 口述与反馈（sources/story/USER-STORY.zh-CN.md）",
-        "recordedAt": "2026-11-10T22:58:14Z"
+        "source": "作者反馈与 sources/story/PRODUCT-BRIEF.md；对应 claude-en 最终稿",
+        "recordedAt": "2026-11-11T03:36:38Z"
       }
     },
     "8812191f-dd67-44eb-91e2-8b9521196c38": {
@@ -277,15 +300,17 @@
       "path": "pages/D26F.page",
       "state": "active",
       "components": {},
-      "elementRoles": {},
+      "elementRoles": {
+        "title": "title"
+      },
       "label": "S17",
       "designIntent": {
-        "purpose": "一份主幻灯片排出多场演讲，素材库集中管理。",
+        "purpose": "说明主幻灯片与演讲的关系：引用不复制、本场备注、固定版本，并以本介绍的两场演讲为例。",
         "pageRole": "content",
-        "requestedChange": "按作者口述的故事重做中文版介绍（故事驱动，Claude Code 独立设计）",
+        "requestedChange": "按作者 2026-11-11 反馈，以 Claude 英文版最终稿为内容结构重做中文版：产品介绍为主，故事为抓手",
         "actor": "claude-code",
-        "source": "作者 2026-11-11 口述与反馈（sources/story/USER-STORY.zh-CN.md）",
-        "recordedAt": "2026-11-10T22:58:14Z"
+        "source": "作者反馈与 sources/story/PRODUCT-BRIEF.md；对应 claude-en 最终稿",
+        "recordedAt": "2026-11-11T03:36:38Z"
       }
     },
     "fe807e1f-34d2-4d19-9556-6e32ce00ef5e": {
@@ -296,14 +321,17 @@
       "elementRoles": {},
       "label": "S18",
       "designIntent": {
-        "purpose": "真实科研页：图保真、数据可编辑，并说明数据的限定。",
+        "purpose": "展示十二个 C1′–C1′ 距离与测量它们的 1BNA 结构。",
         "pageRole": "content",
-        "requestedChange": "按作者口述的故事重做中文版介绍（故事驱动，Claude Code 独立设计）",
+        "requestedChange": "把纵轴标题移到刻度数字上方，避免挤在一起；数值、坐标范围和引用不变。",
         "actor": "claude-code",
-        "source": "作者 2026-11-11 口述与反馈（sources/story/USER-STORY.zh-CN.md）",
-        "recordedAt": "2026-11-10T22:58:14Z",
+        "source": "作者反馈与 sources/story/PRODUCT-BRIEF.md；对应 claude-en 最终稿",
+        "recordedAt": "2026-11-11T03:36:38Z",
         "keep": [
-          "保留 1BNA 十二个距离数值、单位 Å、来源与“非重复实验”的限定"
+          "数值与 paired-c1-distances.csv 完全一致",
+          "纵轴有标签、不从零开始，单位 Å",
+          "页面上保留 PDB 1BNA 引用",
+          "不作重复实验、误差棒或趋势的说法"
         ]
       }
     },
@@ -312,15 +340,20 @@
       "path": "pages/FK8W.page",
       "state": "active",
       "components": {},
-      "elementRoles": {},
+      "elementRoles": {
+        "title": "title"
+      },
       "label": "S19",
       "designIntent": {
-        "purpose": "人和多个 agent 走同一个共享写入器：先预览、不覆盖、有回执。",
+        "purpose": "说明四种客户端如何通过插件连接到共享写入器，以及预览、版本核对和上报/保存的区别。",
         "pageRole": "content",
-        "requestedChange": "按作者口述的故事重做中文版介绍（故事驱动，Claude Code 独立设计）",
+        "requestedChange": "按作者 2026-11-11 反馈，以 Claude 英文版最终稿为内容结构重做中文版：产品介绍为主，故事为抓手",
         "actor": "claude-code",
-        "source": "作者 2026-11-11 口述与反馈（sources/story/USER-STORY.zh-CN.md）",
-        "recordedAt": "2026-11-10T22:58:14Z"
+        "source": "作者反馈与 sources/story/PRODUCT-BRIEF.md；对应 claude-en 最终稿",
+        "recordedAt": "2026-11-11T03:36:38Z",
+        "keep": [
+          "ChatGPT 的连接方式按实际界面写为 DC-WALT 工作站连接"
+        ]
       }
     },
     "03e261c9-fb49-4c9f-89d4-d9da6b45b204": {
@@ -328,103 +361,403 @@
       "path": "pages/BDTW.page",
       "state": "active",
       "components": {},
-      "elementRoles": {},
+      "elementRoles": {
+        "title": "title"
+      },
       "label": "S20",
       "designIntent": {
-        "purpose": "收尾：回到组会，总结三点并说明还没想完的方向。",
+        "purpose": "结尾：给出打开项目、连接助手和第一步操作，以及源码构建方式。",
         "pageRole": "content",
-        "requestedChange": "按作者口述的故事重做中文版介绍（故事驱动，Claude Code 独立设计）",
+        "requestedChange": "按作者 2026-11-11 反馈，以 Claude 英文版最终稿为内容结构重做中文版：产品介绍为主，故事为抓手",
         "actor": "claude-code",
-        "source": "作者 2026-11-11 口述与反馈（sources/story/USER-STORY.zh-CN.md）",
-        "recordedAt": "2026-11-10T22:58:14Z",
+        "source": "作者反馈与 sources/story/PRODUCT-BRIEF.md；对应 claude-en 最终稿",
+        "recordedAt": "2026-11-11T03:36:38Z",
         "backgroundException": "结尾页与封面呼应，使用封面底色 #E9ECE8。"
+      }
+    },
+    "fe9de5f2-1700-494a-a828-9a53ad013ad3": {
+      "shortCode": "MC4X",
+      "path": "pages/MC4X.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S21",
+      "designIntent": {
+        "purpose": "章节停顿页：故事先行：一页从头到尾",
+        "pageRole": "section",
+        "requestedChange": "按作者 2026-11-11 反馈，以 Claude 英文版最终稿为内容结构重做中文版：产品介绍为主，故事为抓手",
+        "actor": "claude-code",
+        "source": "作者反馈与 sources/story/PRODUCT-BRIEF.md；对应 claude-en 最终稿",
+        "recordedAt": "2026-11-11T03:36:38Z",
+        "backgroundException": "仅标题的章节停顿页，深绿底色 #2D4A43。"
+      }
+    },
+    "f170be87-3cc3-473c-b6a8-5195c388fc2b": {
+      "shortCode": "A9FE",
+      "path": "pages/A9FE.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S22",
+      "designIntent": {
+        "purpose": "介绍大纲、浏览、章节视图如何帮助按故事审读整份稿子。",
+        "pageRole": "content",
+        "requestedChange": "按作者 2026-11-11 反馈，以 Claude 英文版最终稿为内容结构重做中文版：产品介绍为主，故事为抓手",
+        "actor": "claude-code",
+        "source": "作者反馈与 sources/story/PRODUCT-BRIEF.md；对应 claude-en 最终稿",
+        "recordedAt": "2026-11-11T03:36:38Z"
+      }
+    },
+    "17469d21-0a7c-4e46-9399-bdd6c0e56fde": {
+      "shortCode": "GBXR",
+      "path": "pages/GBXR.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S23",
+      "designIntent": {
+        "purpose": "用真实前后截图和差异表展示一次按故事执行的修改。",
+        "pageRole": "content",
+        "requestedChange": "按作者 2026-11-11 反馈，以 Claude 英文版最终稿为内容结构重做中文版：产品介绍为主，故事为抓手",
+        "actor": "claude-code",
+        "source": "作者反馈与 sources/story/PRODUCT-BRIEF.md；对应 claude-en 最终稿",
+        "recordedAt": "2026-11-11T03:36:38Z"
+      }
+    },
+    "b0d821f0-59cd-4439-ae6b-11b6cc0ad8de": {
+      "shortCode": "XVAD",
+      "path": "pages/XVAD.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S24",
+      "designIntent": {
+        "purpose": "章节停顿页：和 agent 一起工作",
+        "pageRole": "section",
+        "requestedChange": "按作者 2026-11-11 反馈，以 Claude 英文版最终稿为内容结构重做中文版：产品介绍为主，故事为抓手",
+        "actor": "claude-code",
+        "source": "作者反馈与 sources/story/PRODUCT-BRIEF.md；对应 claude-en 最终稿",
+        "recordedAt": "2026-11-11T03:36:38Z",
+        "backgroundException": "仅标题的章节停顿页，深绿底色 #2D4A43。"
+      }
+    },
+    "8234d122-f35e-45a0-9f1e-df1700227c45": {
+      "shortCode": "7K3P",
+      "path": "pages/7K3P.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S25",
+      "designIntent": {
+        "purpose": "说明多个 agent 与人协作的实际规则和 0.19 的真实测试，不夸大为锁或调度。",
+        "pageRole": "content",
+        "requestedChange": "按作者 2026-11-11 反馈，以 Claude 英文版最终稿为内容结构重做中文版：产品介绍为主，故事为抓手",
+        "actor": "claude-code",
+        "source": "作者反馈与 sources/story/PRODUCT-BRIEF.md；对应 claude-en 最终稿",
+        "recordedAt": "2026-11-11T03:36:38Z",
+        "keep": [
+          "只陈述 docs/NATIVE-INTEGRATION-0.19.md 中已测试的行为",
+          "不声称章节锁、自动排班或在线状态"
+        ]
+      }
+    },
+    "5908c201-19f3-4dbc-a8e1-98356dcb6366": {
+      "shortCode": "J28N",
+      "path": "pages/J28N.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S26",
+      "designIntent": {
+        "purpose": "介绍交付前的设计检查、放映方式和四种输出各包含什么。",
+        "pageRole": "content",
+        "requestedChange": "按作者 2026-11-11 反馈，以 Claude 英文版最终稿为内容结构重做中文版：产品介绍为主，故事为抓手",
+        "actor": "claude-code",
+        "source": "作者反馈与 sources/story/PRODUCT-BRIEF.md；对应 claude-en 最终稿",
+        "recordedAt": "2026-11-11T03:36:38Z"
+      }
+    },
+    "e6f84b12-57f7-4d4d-863c-35bc118032cc": {
+      "shortCode": "YS6V",
+      "path": "pages/YS6V.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {},
+      "label": "S27",
+      "designIntent": {
+        "purpose": "致谢上游项目并列出尚未实现的功能。",
+        "pageRole": "content",
+        "requestedChange": "按作者 2026-11-11 反馈，以 Claude 英文版最终稿为内容结构重做中文版：产品介绍为主，故事为抓手",
+        "actor": "claude-code",
+        "source": "作者反馈与 sources/story/PRODUCT-BRIEF.md；对应 claude-en 最终稿",
+        "recordedAt": "2026-11-11T03:36:38Z",
+        "keep": [
+          "保留 OpenSlide、OpenPPTD、PptxGenJS 的标志与链接"
+        ]
       }
     }
   },
   "project": {
     "schemaVersion": 1,
     "mainStory": {
-      "purpose": "用作者自己的故事介绍幻灯：为什么做、做了什么、怎样以页为单位让 AI 改 slides。",
-      "audience": "组会上的同学和导师，以及第一次了解幻灯的研究者",
-      "takeaway": "让人先讲故事、AI 再做页面，并以页为单位管理修改，slides 才会少一点 AI 味。"
+      "purpose": "从作者自己的组会经历讲起，说明为什么做幻灯，并展示回应每个理由的功能：怎么打开、编辑、审阅、复用和交付。",
+      "audience": "用 AI 做科研演示的研究者，以及可能使用或参与幻灯开发的人",
+      "takeaway": "slides 需要人的故事；幻灯让你和 AI agent 从这个故事出发，一页一页地做稿子，每次修改都有记录。"
     },
     "sections": [
       {
         "id": "why",
-        "title": "我为什么要做幻灯",
+        "title": "我为什么做幻灯",
         "story": {
-          "purpose": "讲清楚三件让作者想做幻灯的事：AI 味、修改留下的垃圾副本、只能靠截图审阅。",
-          "audience": "组会同学、导师和第一次了解幻灯的人",
-          "takeaway": "问题不在 AI 不会排版，而在没有人的故事、没有以页为单位的修改。"
+          "purpose": "作者的四个理由：组会上的 AI 味、agent 留下的副本、截图驱动修改的麻烦、先讲故事。",
+          "audience": "用 AI 做科研演示的研究者，以及可能使用或参与幻灯开发的人",
+          "takeaway": "在我看来，AI 做的 slides 常缺少人的故事；agent 会复制整份稿子；只靠截图修改既慢又难精确；所以从故事开始。"
         },
         "pageIds": [
           "d29961e5-88d6-4906-b2cd-cfc9401c1fb9",
           "7cf5346c-2027-4e88-b84a-af2466256234",
-          "3c2c0a36-22fc-43b0-b37f-5c3f3b97e005",
           "6b5c5cbe-70c3-4808-8011-15f57adcbff7",
-          "6afee11a-6d00-430b-93fd-56e706c8b07c"
+          "6afee11a-6d00-430b-93fd-56e706c8b07c",
+          "3c2c0a36-22fc-43b0-b37f-5c3f3b97e005"
         ],
         "startPageId": "d29961e5-88d6-4906-b2cd-cfc9401c1fb9"
       },
       {
         "id": "what",
-        "title": "我们做了什么",
+        "title": "我做了什么",
         "story": {
-          "purpose": "说明幻灯从哪两条线索来、项目目录长什么样、编辑器里有什么，以及“故事”如何给 AI 对齐。",
-          "audience": "想知道幻灯是什么、怎么用的人",
-          "takeaway": "幻灯 = PPTD 文档模型 + open-slide 代码基础；故事先于页面。"
+          "purpose": "幻灯从哪里来、项目目录是什么、编辑器长什么样。",
+          "audience": "用 AI 做科研演示的研究者，以及可能使用或参与幻灯开发的人",
+          "takeaway": "PPTD 思路加 OpenSlide 的 React 编辑器，做成桌面应用，再配一个插件。"
         },
         "pageIds": [
           "f0e6f4db-8632-4ad4-a50b-cca0f985c07d",
           "eb92fa66-55fe-454f-8de7-90ab6bdcc401",
           "c54a9940-fcae-48b4-9519-250637b48949",
-          "4f782a0f-4e54-441b-8e1e-70fa7a273cc2",
-          "f771a595-2222-40fa-acf2-1858bcf77e7e",
-          "9b0890f5-8baf-4a23-b32c-789990898b0c"
+          "4f782a0f-4e54-441b-8e1e-70fa7a273cc2"
         ],
         "startPageId": "f0e6f4db-8632-4ad4-a50b-cca0f985c07d"
       },
       {
         "id": "pages",
-        "title": "以“页”为单位管理",
+        "title": "以“页”为单位修改",
         "story": {
-          "purpose": "展示以页为单位的管理：页面短码、每页历史、修改审阅、一份来源多场演讲、真实科研页和共享写入口。",
-          "audience": "会让 AI 反复修改 slides 的研究者",
-          "takeaway": "改两页只多两条历史，不再多一份副本。"
+          "purpose": "稳定的页面短码、按页的历史、按引用组成的演讲。",
+          "audience": "用 AI 做科研演示的研究者，以及可能使用或参与幻灯开发的人",
+          "takeaway": "给一页起一次名字，保留它的历史，复用时不复制。"
         },
         "pageIds": [
           "52624e1a-c1d2-43e5-af12-1d1164b62eec",
           "46b1bcf1-bf63-4331-bb4e-760f7b8482ec",
           "39442c0b-2570-4407-b627-44475ad8db32",
-          "3a1c7a85-86be-4daa-bf3d-019a5d40a839",
-          "8812191f-dd67-44eb-91e2-8b9521196c38",
-          "fe807e1f-34d2-4d19-9556-6e32ce00ef5e",
-          "c0366303-bca1-484b-aad6-fa732d78b631",
-          "03e261c9-fb49-4c9f-89d4-d9da6b45b204"
+          "8812191f-dd67-44eb-91e2-8b9521196c38"
         ],
         "startPageId": "52624e1a-c1d2-43e5-af12-1d1164b62eec"
+      },
+      {
+        "id": "story",
+        "title": "故事先行：一页从头到尾",
+        "story": {
+          "purpose": "跟着 1BNA 这一页走完故事、一次修改和它的审阅。",
+          "audience": "用 AI 做科研演示的研究者，以及可能使用或参与幻灯开发的人",
+          "takeaway": "故事让 agent 对齐；每次修改都先预览，并且能回看。"
+        },
+        "pageIds": [
+          "fe9de5f2-1700-494a-a828-9a53ad013ad3",
+          "fe807e1f-34d2-4d19-9556-6e32ce00ef5e",
+          "f771a595-2222-40fa-acf2-1858bcf77e7e",
+          "f170be87-3cc3-473c-b6a8-5195c388fc2b",
+          "17469d21-0a7c-4e46-9399-bdd6c0e56fde",
+          "3a1c7a85-86be-4daa-bf3d-019a5d40a839"
+        ],
+        "startPageId": "fe9de5f2-1700-494a-a828-9a53ad013ad3"
+      },
+      {
+        "id": "agents",
+        "title": "和 agent 一起工作",
+        "story": {
+          "purpose": "agent 怎么接入、怎么协作、怎么交付、站在哪些项目上、怎么开始。",
+          "audience": "用 AI 做科研演示的研究者，以及可能使用或参与幻灯开发的人",
+          "takeaway": "agent 和你走同一个可审阅的写入器；从你的故事开始。"
+        },
+        "pageIds": [
+          "b0d821f0-59cd-4439-ae6b-11b6cc0ad8de",
+          "c0366303-bca1-484b-aad6-fa732d78b631",
+          "8234d122-f35e-45a0-9f1e-df1700227c45",
+          "5908c201-19f3-4dbc-a8e1-98356dcb6366",
+          "e6f84b12-57f7-4d4d-863c-35bc118032cc",
+          "03e261c9-fb49-4c9f-89d4-d9da6b45b204"
+        ],
+        "startPageId": "b0d821f0-59cd-4439-ae6b-11b6cc0ad8de"
       }
     ],
     "presentations": [
       {
-        "id": "lab-brief",
-        "title": "组会简版",
+        "id": "full",
+        "title": "幻灯介绍（完整版，约 25 分钟）",
         "story": {
-          "purpose": "组会上用几分钟讲清楚动机和最核心的两个回应：故事先行、以页为单位的历史。",
-          "audience": "课题组同学和导师",
-          "takeaway": "人先讲故事；改两页只多两条历史。"
+          "purpose": "完整讲述作者的理由、1BNA 实例和主要功能。",
+          "audience": "用 AI 做科研演示的研究者，以及可能使用或参与幻灯开发的人",
+          "takeaway": "从故事开始；页面是修改单位；agent 走同一个可审阅的写入器。"
+        },
+        "items": [
+          {
+            "id": "full-sahg",
+            "kind": "page",
+            "pageId": "1730f1f7-f4d9-4679-adc2-c9dd6cdfa2c3"
+          },
+          {
+            "id": "full-zx58",
+            "kind": "page",
+            "pageId": "d29961e5-88d6-4906-b2cd-cfc9401c1fb9"
+          },
+          {
+            "id": "full-fnhb",
+            "kind": "page",
+            "pageId": "7cf5346c-2027-4e88-b84a-af2466256234"
+          },
+          {
+            "id": "full-ks6e",
+            "kind": "page",
+            "pageId": "6b5c5cbe-70c3-4808-8011-15f57adcbff7"
+          },
+          {
+            "id": "full-2723",
+            "kind": "page",
+            "pageId": "6afee11a-6d00-430b-93fd-56e706c8b07c"
+          },
+          {
+            "id": "full-gzbw",
+            "kind": "page",
+            "pageId": "3c2c0a36-22fc-43b0-b37f-5c3f3b97e005"
+          },
+          {
+            "id": "full-6knx",
+            "kind": "page",
+            "pageId": "f0e6f4db-8632-4ad4-a50b-cca0f985c07d"
+          },
+          {
+            "id": "full-2ucc",
+            "kind": "page",
+            "pageId": "eb92fa66-55fe-454f-8de7-90ab6bdcc401"
+          },
+          {
+            "id": "full-3duh",
+            "kind": "page",
+            "pageId": "c54a9940-fcae-48b4-9519-250637b48949"
+          },
+          {
+            "id": "full-ssfr",
+            "kind": "page",
+            "pageId": "4f782a0f-4e54-441b-8e1e-70fa7a273cc2"
+          },
+          {
+            "id": "full-mc4x",
+            "kind": "page",
+            "pageId": "fe9de5f2-1700-494a-a828-9a53ad013ad3"
+          },
+          {
+            "id": "full-brhy",
+            "kind": "page",
+            "pageId": "fe807e1f-34d2-4d19-9556-6e32ce00ef5e"
+          },
+          {
+            "id": "full-3d9r",
+            "kind": "page",
+            "pageId": "f771a595-2222-40fa-acf2-1858bcf77e7e"
+          },
+          {
+            "id": "full-a9fe",
+            "kind": "page",
+            "pageId": "f170be87-3cc3-473c-b6a8-5195c388fc2b"
+          },
+          {
+            "id": "full-gbxr",
+            "kind": "page",
+            "pageId": "17469d21-0a7c-4e46-9399-bdd6c0e56fde"
+          },
+          {
+            "id": "full-3442",
+            "kind": "page",
+            "pageId": "3a1c7a85-86be-4daa-bf3d-019a5d40a839"
+          },
+          {
+            "id": "full-85z6",
+            "kind": "page",
+            "pageId": "52624e1a-c1d2-43e5-af12-1d1164b62eec"
+          },
+          {
+            "id": "full-zwm9",
+            "kind": "page",
+            "pageId": "46b1bcf1-bf63-4331-bb4e-760f7b8482ec"
+          },
+          {
+            "id": "full-dy5h",
+            "kind": "page",
+            "pageId": "39442c0b-2570-4407-b627-44475ad8db32"
+          },
+          {
+            "id": "full-d26f",
+            "kind": "page",
+            "pageId": "8812191f-dd67-44eb-91e2-8b9521196c38"
+          },
+          {
+            "id": "full-xvad",
+            "kind": "page",
+            "pageId": "b0d821f0-59cd-4439-ae6b-11b6cc0ad8de"
+          },
+          {
+            "id": "full-fk8w",
+            "kind": "page",
+            "pageId": "c0366303-bca1-484b-aad6-fa732d78b631"
+          },
+          {
+            "id": "full-7k3p",
+            "kind": "page",
+            "pageId": "8234d122-f35e-45a0-9f1e-df1700227c45"
+          },
+          {
+            "id": "full-j28n",
+            "kind": "page",
+            "pageId": "5908c201-19f3-4dbc-a8e1-98356dcb6366"
+          },
+          {
+            "id": "full-ys6v",
+            "kind": "page",
+            "pageId": "e6f84b12-57f7-4d4d-863c-35bc118032cc"
+          },
+          {
+            "id": "full-bdtw",
+            "kind": "page",
+            "pageId": "03e261c9-fb49-4c9f-89d4-d9da6b45b204"
+          }
+        ]
+      },
+      {
+        "id": "lab-brief",
+        "title": "组会简版（约 8 分钟）",
+        "story": {
+          "purpose": "组会上的短版：几个理由、一张真实页面、一次修改。",
+          "audience": "用 AI 做科研演示的研究者，以及可能使用或参与幻灯开发的人",
+          "takeaway": "先把故事讲给 agent，再一次只改一页。"
         },
         "items": [
           {
             "id": "brief-sahg",
             "kind": "page",
             "pageId": "1730f1f7-f4d9-4679-adc2-c9dd6cdfa2c3",
-            "notes": "组会只有几分钟，我只讲两件事：为什么 AI 做的 slides 有 AI 味，以及怎样不再让 AI 留下一堆副本。"
+            "notes": "组会简版，大约八分钟。我跳过产品导览，只讲故事：为什么做它、一张真实的页面、一次修改怎么完成。"
           },
           {
             "id": "brief-fnhb",
             "kind": "page",
-            "pageId": "7cf5346c-2027-4e88-b84a-af2466256234"
+            "pageId": "7cf5346c-2027-4e88-b84a-af2466256234",
+            "notes": "简短地说：大家都见过一眼就像 AI 做的 slides。我认为这种感觉来自没有重点、没有故事。连这份介绍的上一版也有这个问题。"
+          },
+          {
+            "id": "brief-ks6e",
+            "kind": "page",
+            "pageId": "6b5c5cbe-70c3-4808-8011-15f57adcbff7"
           },
           {
             "id": "brief-gzbw",
@@ -432,9 +765,10 @@
             "pageId": "3c2c0a36-22fc-43b0-b37f-5c3f3b97e005"
           },
           {
-            "id": "brief-ks6e",
+            "id": "brief-brhy",
             "kind": "page",
-            "pageId": "6b5c5cbe-70c3-4808-8011-15f57adcbff7"
+            "pageId": "fe807e1f-34d2-4d19-9556-6e32ce00ef5e",
+            "notes": "简短地说：这是一个以数据保存的真实结果。要改一个值或一个标签，agent 改的是图表对象，而不是一张图片。"
           },
           {
             "id": "brief-3d9r",
@@ -444,13 +778,18 @@
           {
             "id": "brief-dy5h",
             "kind": "page",
-            "pageId": "39442c0b-2570-4407-b627-44475ad8db32",
-            "notes": "这就是对第二个问题的回答：每一页有自己的历史，改两页只多两条记录。细节可以会后在编辑器里看。"
+            "pageId": "39442c0b-2570-4407-b627-44475ad8db32"
+          },
+          {
+            "id": "brief-fk8w",
+            "kind": "page",
+            "pageId": "c0366303-bca1-484b-aad6-fa732d78b631"
           },
           {
             "id": "brief-bdtw",
             "kind": "page",
-            "pageId": "03e261c9-fb49-4c9f-89d4-d9da6b45b204"
+            "pageId": "03e261c9-fb49-4c9f-89d4-d9da6b45b204",
+            "notes": "简短地说：下次组会的稿子可以试试。先把故事讲给 agent，再一次只改一处。"
           }
         ]
       }
