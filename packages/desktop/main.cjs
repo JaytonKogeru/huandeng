@@ -23,6 +23,7 @@ const { createProject, pathKey, readPreferences, writePreferences } = require('.
 const { startService, stopService } = require('./service.cjs');
 const { resolveProjectEntry } = require('./project-entry.cjs');
 const { markProjectFolder } = require('./project-folder.cjs');
+const { createProjectRestore, createNavigationController } = require('./project-restore.cjs');
 const { agentConfiguration } = require('./agent-setup.cjs');
 const { version: editorVersion } = require('./release.json');
 const { migratePreferences } = require('./branding.cjs');
@@ -68,6 +69,16 @@ let presentationRestoreFullscreen = false;
 let presentationRestoresPending = 0;
 let launchReady = false;
 const pendingLaunchRequests = [];
+const startupRestore = createProjectRestore({
+  schedule: operate,
+  loadProject,
+  showHome,
+  onError: (error) => log(`Restore Project: ${String(error)}\n`),
+});
+const navigation = createNavigationController({
+  schedule: operate,
+  onIntent: () => startupRestore.interrupt(),
+});
 const fullscreenController = createFullscreenController({
   getWindow: () => window,
   onSettled: layoutViews,
@@ -133,12 +144,14 @@ function savePreferences() {
     .then(() => writePreferences(preferencesFile, snapshot));
   return preferenceWrites;
 }
-function saveTabPreferences() {
+function saveTabPreferences(preserveSelection = false) {
   preferences.openProjects = tabs
     .list()
     .map(({ service }) => ({ entryPath: service.entryPath, readOnly: service.readOnly }));
-  preferences.lastProject = activeService?.entryPath ?? null;
-  preferences.lastReadOnly = activeService?.readOnly ?? false;
+  if (!preserveSelection) {
+    preferences.lastProject = activeService?.entryPath ?? null;
+    preferences.lastReadOnly = activeService?.readOnly ?? false;
+  }
   return savePreferences();
 }
 async function changeLocale(locale) {
@@ -205,6 +218,12 @@ function operate(action) {
   operations = result;
   return result;
 }
+function navigate(action) {
+  return navigation.run(action);
+}
+function navigateNow(action) {
+  return navigation.now(action);
+}
 function showError(error) {
   const message = error instanceof Error ? error.message : String(error);
   log(`${new Date().toISOString()} ${message}\n`);
@@ -252,6 +271,7 @@ function cycleProject(direction) {
   const projects = tabs.list();
   if (!projects.length) return;
   const index = projects.findIndex((item) => item.id === tabs.activeId);
+  navigation.capture();
   activateProject(projects[(index + direction + projects.length) % projects.length].id);
 }
 async function flushBeforeLeave(project) {
@@ -276,14 +296,16 @@ async function flushBeforeLeave(project) {
   });
   if (result?.workspaceLayout) await project.layoutWriter.save(result.workspaceLayout);
 }
-async function rememberProject(service) {
+async function rememberProject(service, preserveSelection = false) {
   preferences.recentProjects = [
     { entryPath: service.entryPath, title: service.title, openedAt: new Date().toISOString() },
     ...preferences.recentProjects.filter(
       (item) => pathKey(item.entryPath) !== pathKey(service.entryPath),
     ),
   ].slice(0, 12);
-  await saveTabPreferences().catch((error) => log(`Preferences: ${String(error)}\n`));
+  await saveTabPreferences(preserveSelection).catch((error) =>
+    log(`Preferences: ${String(error)}\n`),
+  );
   app.addRecentDocument(service.entryPath);
   buildMenu();
   send(homeView?.webContents, 'huandeng:recents-changed');
@@ -372,16 +394,20 @@ function notifyRendererLoss(project, message) {
     .then(({ response }) => {
       if (!window || tabs.get(project.id) !== project || !project.rendererLost) return;
       if (response === 0)
-        void operate(async () => {
+        void navigate(async (activation) => {
           await rendererRecovery.reload(project);
-          activateProject(project.id);
+          if (activation()) activateProject(project.id);
         }).catch(showError);
-      if (response === 1) void operate(() => closeProject(project.id)).catch(showError);
+      if (response === 1) void navigate(() => closeProject(project.id)).catch(showError);
     })
     .catch(showError);
 }
 
 async function loadProject(entry, options = {}) {
+  // Capture the accepted request before any asynchronous resolution or loading.
+  const activation = options.activate ?? navigation.activation();
+  const shouldActivate = () =>
+    typeof activation === 'function' ? activation() : activation !== false;
   const canonical = await resolveProjectEntry(entry);
   const entryKey = pathKey(canonical);
   const existing = tabs.find(entryKey);
@@ -391,8 +417,10 @@ async function loadProject(entry, options = {}) {
         'This Project is already open in a different read/write mode. Close its tab before changing modes.',
       );
     if (existing.rendererLost) await rendererRecovery.reload(existing);
-    activateProject(existing.id);
-    window.focus();
+    if (shouldActivate()) {
+      activateProject(existing.id);
+      window.focus();
+    }
     return { entryPath: canonical };
   }
   status(desktopText('正在打开项目…'));
@@ -413,20 +441,29 @@ async function loadProject(entry, options = {}) {
   view.setVisible(false);
   window.contentView.addChildView(view);
   configureContents(view.webContents, project);
+  layoutViews();
+  publishWorkspace();
+  let activated = false;
   try {
     await view.webContents.loadURL(`${service.url}/huandeng`);
-    activateProject(project.id);
+    activated = shouldActivate();
+    if (activated) activateProject(project.id);
   } catch (error) {
+    const wasActive = tabs.activeId === project.id;
     tabs.remove(project.id);
     window.contentView.removeChildView(view);
     view.webContents.close();
-    await stopService(service);
+    activeService = tabs.active?.service ?? null;
     layoutViews();
+    updateTitle();
+    buildMenu();
     publishWorkspace();
+    await saveTabPreferences(!wasActive).catch((issue) => log(`Preferences: ${String(issue)}\n`));
+    await stopService(service);
     throw error;
   }
   send(view.webContents, 'huandeng:context-changed', context(project));
-  await rememberProject(service);
+  await rememberProject(service, !activated);
   return { entryPath: service.entryPath };
 }
 async function showHome() {
@@ -480,6 +517,7 @@ async function newProject() {
   return loadProject(await createProject(selection.filePath));
 }
 async function closeProject(id) {
+  const activation = navigation.activation();
   const project = tabs.get(id);
   if (!project) return;
   await flushBeforeLeave(project);
@@ -519,7 +557,7 @@ async function closeProject(id) {
   updateTitle();
   buildMenu();
   publishWorkspace();
-  activeContents()?.focus();
+  if (activation()) activeContents()?.focus();
   await stopService(project.service);
   await publisher.flush().catch((error) => {
     if (error.code !== 'ENOENT') log(`PPTX publish: ${String(error)}\n`);
@@ -541,9 +579,9 @@ async function revealPath(relativePath, project = tabs.active) {
   await fs.access(target);
   shell.showItemInFolder(target);
 }
-function menuAction(action) {
+function menuAction(action, navigation = false) {
   return () => {
-    void operate(action).catch(showError);
+    void (navigation ? navigate(action) : operate(action)).catch(showError);
   };
 }
 const nativeEditCommands = new Set(['cut', 'copy', 'paste', 'selectAll', 'undo', 'redo']);
@@ -604,7 +642,7 @@ function buildMenu() {
   const recent = preferences.recentProjects.map((item) => ({
     label: item.title || path.basename(path.dirname(item.entryPath)),
     sublabel: item.entryPath,
-    click: menuAction(() => loadProject(item.entryPath)),
+    click: menuAction(() => loadProject(item.entryPath), true),
   }));
   const template = [
     {
@@ -613,17 +651,17 @@ function buildMenu() {
         {
           label: desktopText('新建项目…'),
           accelerator: 'CmdOrCtrl+N',
-          click: menuAction(newProject),
+          click: menuAction(newProject, true),
         },
         {
           label: desktopText('打开 PPTD 文件…'),
           accelerator: 'CmdOrCtrl+O',
-          click: menuAction(chooseProject),
+          click: menuAction(chooseProject, true),
         },
         {
           label: desktopText('打开项目文件夹…'),
           accelerator: 'CmdOrCtrl+Shift+O',
-          click: menuAction(() => chooseProject(tabs.active, true)),
+          click: menuAction(() => chooseProject(tabs.active, true), true),
         },
         {
           label: desktopText('最近项目'),
@@ -645,7 +683,7 @@ function buildMenu() {
         {
           label: desktopText('回到开始页'),
           enabled: Boolean(activeService),
-          click: menuAction(showHome),
+          click: () => void navigateNow(showHome).catch(showError),
         },
         {
           label: desktopText('助手连接…'),
@@ -662,7 +700,10 @@ function buildMenu() {
         {
           label: desktopText('关闭项目'),
           enabled: Boolean(activeService),
-          click: menuAction(() => closeProject(tabs.activeId)),
+          click: () => {
+            const target = tabs.activeId;
+            void navigate(() => closeProject(target)).catch(showError);
+          },
         },
         {
           label: desktopText('关闭窗口'),
@@ -794,10 +835,10 @@ function registerIpc() {
   const handle = (name, handler) =>
     ipcMain.handle(name, (event, ...args) => handler(assertSender(event), ...args));
   handle('huandeng:open-project', (sender) =>
-    operate(() => chooseProject(sender.project ?? tabs.active)),
+    navigate(() => chooseProject(sender.project ?? tabs.active)),
   );
   handle('huandeng:open-project-folder', (sender) =>
-    operate(() => chooseProject(sender.project ?? tabs.active, true)),
+    navigate(() => chooseProject(sender.project ?? tabs.active, true)),
   );
   handle('huandeng:identify-project-folder', (sender) =>
     operate(() => identifyProjectFolder(requireProject(sender))),
@@ -805,23 +846,25 @@ function registerIpc() {
   handle('huandeng:open-dropped-projects', (sender, paths) => {
     if (sender.project || !Array.isArray(paths) || !paths.length || paths.length > 12)
       throw new Error('Drop up to 12 project folders or .pptd files on Home.');
-    return operate(async () => {
+    return navigate(async () => {
       const entries = await Promise.all(paths.map((entry) => resolveProjectEntry(entry)));
       let result;
       for (const entry of [...new Set(entries)]) result = await loadProject(entry);
       return result;
     });
   });
-  handle('huandeng:new-project', () => operate(newProject));
+  handle('huandeng:new-project', () => navigate(newProject));
   handle('huandeng:get-context', (sender) => context(sender.project));
   handle('huandeng:get-workspace', () => workspaceState());
   handle('huandeng:activate-project', (sender, id) => {
     if (!sender.shell) throw new Error('Project switching belongs to the workspace.');
-    return operate(() => activateProject(id));
+    if (id !== null && !tabs.get(id)) throw new Error('This Project tab is no longer open.');
+    return navigateNow(() => activateProject(id));
   });
   handle('huandeng:close-project', (sender, id) => {
     const target = sender.shell ? id : requireProject(sender).id;
-    return operate(() => closeProject(target));
+    if (!tabs.get(target)) return;
+    return navigate(() => closeProject(target));
   });
   handle('huandeng:project-state', (sender, value) => {
     const project = requireProject(sender);
@@ -858,7 +901,7 @@ function registerIpc() {
   handle('huandeng:get-snapping', () => preferences.snapping !== false);
   handle('huandeng:set-snapping', (_sender, enabled) => operate(() => changeSnapping(enabled)));
   handle('huandeng:edit-native', (sender, command) => editNative(command, sender.contents));
-  handle('huandeng:show-home', () => operate(showHome));
+  handle('huandeng:show-home', () => navigateNow(showHome));
   handle('huandeng:reveal-path', (sender, relativePath) =>
     revealPath(relativePath, requireProject(sender)),
   );
@@ -886,7 +929,7 @@ function registerIpc() {
       (candidate) => pathKey(candidate.entryPath) === pathKey(entry),
     );
     if (!item) throw new Error(desktopText('这个项目不在最近项目中，请通过“打开项目”选择。'));
-    return operate(() => loadProject(item.entryPath));
+    return navigate(() => loadProject(item.entryPath));
   });
   ipcMain.on('huandeng:before-leave-result', (event, result) => {
     try {
@@ -969,6 +1012,7 @@ async function createWindow() {
     event.preventDefault();
     if (closing) return;
     closing = true;
+    startupRestore.stop();
     void operate(async () => {
       const ordered = [
         ...tabs.list().filter((item) => item.id !== tabs.activeId),
@@ -1015,19 +1059,27 @@ async function createWindow() {
   publishWorkspace();
   window.show();
 }
-function openLaunchRequest(requested) {
+function openLaunchRequest(requested, capturedActivation) {
+  const activation =
+    capturedActivation ??
+    (requested.entry || requested.welcome ? navigation.capture() : () => true);
   if (!window || !launchReady) {
-    pendingLaunchRequests.push(requested);
+    pendingLaunchRequests.push({ requested, activation });
     return;
   }
-  if (window.isMinimized()) window.restore();
-  window.focus();
-  void operate(async () => {
-    if (requested.error)
-      throw new Error('The --entry option requires a .pptd file or project folder path.');
-    if (requested.entry) return loadProject(requested.entry, requested);
-    if (requested.welcome) return showHome();
-  }).catch(showError);
+  if (activation()) {
+    if (window.isMinimized()) window.restore();
+    window.focus();
+  }
+  void navigation
+    .runCaptured(activation, async () => {
+      if (requested.error)
+        throw new Error('The --entry option requires a .pptd file or project folder path.');
+      if (requested.entry)
+        return loadProject(requested.entry, { ...requested, activate: activation });
+      if (requested.welcome && activation()) return showHome();
+    })
+    .catch(showError);
 }
 // Capture the original process arguments before Chromium rebuilds second-instance argv.
 const startupRequest = parseLaunchRequest(process.argv, { packaged: app.isPackaged });
@@ -1050,7 +1102,7 @@ else {
   app.on('open-file', (event, entry) => {
     event.preventDefault();
     if (!window) macEntry = entry;
-    else void operate(() => loadProject(entry)).catch(showError);
+    else void navigate(() => loadProject(entry)).catch(showError);
   });
   void app
     .whenReady()
@@ -1071,24 +1123,20 @@ else {
       registerIpc();
       await createWindow();
       const requested = startupRequest;
-      if (!requested.welcome && !requested.error)
-        for (const item of restore.slice(0, 12)) {
-          if (typeof item?.entryPath !== 'string') continue;
-          await operate(() =>
-            loadProject(item.entryPath, { readOnly: item.readOnly === true }),
-          ).catch((error) => log(`Restore Project: ${String(error)}\n`));
-        }
       const entry =
         macEntry ?? requested.entry ?? (requested.welcome || requested.error ? null : lastProject);
-      if (entry)
-        await operate(() =>
-          loadProject(entry, { readOnly: requested.entry ? requested.readOnly : lastReadOnly }),
-        ).catch(showError);
-      else await operate(showHome);
+      await startupRestore
+        .run({
+          projects: requested.welcome || requested.error ? [] : restore,
+          entry,
+          readOnly: requested.entry ? requested.readOnly : lastReadOnly,
+        })
+        .catch(showError);
       if (requested.error)
         showError(new Error('The --entry option requires a .pptd file or project folder path.'));
       launchReady = true;
-      for (const pending of pendingLaunchRequests.splice(0)) openLaunchRequest(pending);
+      for (const { requested: pending, activation } of pendingLaunchRequests.splice(0))
+        openLaunchRequest(pending, activation);
     })
     .catch((error) => {
       dialog.showErrorBox('HUANDENG Editor', String(error));

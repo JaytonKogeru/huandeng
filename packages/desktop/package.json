@@ -32,6 +32,7 @@
     "agent-setup.cjs",
     "workspace.cjs",
     "project-tabs.cjs",
+    "project-restore.cjs",
     "launch-request.cjs",
     "workspace-shell.html",
     "workspace-shell.css",

@@ -20,7 +20,9 @@ function render(state) {
     .querySelector('.project-strip')
     .setAttribute('aria-label', label('Project workspace', '项目工作区'));
   tabs.setAttribute('aria-label', label('Open Projects', '已打开的项目'));
-  const focusedId = document.activeElement?.closest('[data-project-id]')?.dataset.projectId;
+  const focusedId = document.hasFocus()
+    ? document.activeElement?.closest('[data-project-id]')?.dataset.projectId
+    : null;
   tabs.replaceChildren();
   home.setAttribute('aria-pressed', String(state.activeId === null));
   home.title = label('Home', '开始页');
