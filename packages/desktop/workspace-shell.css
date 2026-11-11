@@ -55,6 +55,7 @@ button:focus-visible {
 button:hover {
   background: var(--shell-hover);
 }
+.menu,
 .home,
 .open {
   width: 32px;

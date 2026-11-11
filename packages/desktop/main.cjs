@@ -834,6 +834,10 @@ function requireProject(sender) {
 function registerIpc() {
   const handle = (name, handler) =>
     ipcMain.handle(name, (event, ...args) => handler(assertSender(event), ...args));
+  handle('huandeng:show-application-menu', (sender) => {
+    if (!sender.shell) throw new Error('Application menu belongs to the workspace.');
+    Menu.getApplicationMenu()?.popup({ window });
+  });
   handle('huandeng:open-project', (sender) =>
     navigate(() => chooseProject(sender.project ?? tabs.active)),
   );

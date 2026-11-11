@@ -34,6 +34,7 @@ contextBridge.exposeInMainWorld('huandengDesktop', {
   platform: process.platform,
   workspaceTabs: true,
   getWorkspace: () => ipcRenderer.invoke('huandeng:get-workspace'),
+  showApplicationMenu: () => ipcRenderer.invoke('huandeng:show-application-menu'),
   activateProject: (id) => ipcRenderer.invoke('huandeng:activate-project', id),
   closeProject: (id) => ipcRenderer.invoke('huandeng:close-project', id),
   reportProjectState: (value) => ipcRenderer.invoke('huandeng:project-state', value),

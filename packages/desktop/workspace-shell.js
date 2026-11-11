@@ -1,5 +1,6 @@
 const desktop = window.huandengDesktop;
 const tabs = document.getElementById('project-tabs');
+const menu = document.getElementById('workspace-menu');
 const home = document.getElementById('workspace-home');
 const open = document.getElementById('workspace-open');
 const status = document.getElementById('workspace-status');
@@ -25,6 +26,8 @@ function render(state) {
     : null;
   tabs.replaceChildren();
   home.setAttribute('aria-pressed', String(state.activeId === null));
+  menu.title = label('Application menu', '应用菜单');
+  menu.setAttribute('aria-label', menu.title);
   home.title = label('Home', '开始页');
   home.setAttribute('aria-label', home.title);
   open.title = label('Open Project · Ctrl+O', '打开项目 · Ctrl+O');
@@ -108,6 +111,9 @@ function render(state) {
     .querySelector('[aria-selected="true"]')
     ?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
 }
+menu.addEventListener('click', () => {
+  void run(() => desktop.showApplicationMenu());
+});
 home.addEventListener('click', () => {
   void run(() => desktop.showHome());
 });
