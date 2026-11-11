@@ -1,4 +1,6 @@
 const path = require('node:path');
+const { statSync } = require('node:fs');
+const { validProjectPath } = require('./project-entry.cjs');
 
 const schemaVersion = 1;
 const invalidEntry = 'invalid-entry';
@@ -14,19 +16,44 @@ function isPptdPath(value) {
   );
 }
 
-function parseLaunchRequest(argv, { packaged = true, cwd = process.cwd(), pathApi = path } = {}) {
+function existingDirectory(candidate) {
+  try {
+    return statSync(candidate).isDirectory();
+  } catch {
+    return false;
+  }
+}
+
+function parseLaunchRequest(
+  argv,
+  { packaged = true, cwd = process.cwd(), pathApi = path, isDirectory = existingDirectory } = {},
+) {
   const args = Array.isArray(argv)
     ? argv.slice(packaged ? 1 : 2).filter((arg) => typeof arg === 'string')
     : [];
   const entryIndex = args.indexOf('--entry');
   const entryEquals = args.find((arg) => arg.startsWith('--entry='));
-  const explicit =
-    entryEquals === undefined ? args[entryIndex + 1] : entryEquals.slice('--entry='.length);
   const hasEntryOption = entryIndex !== -1 || entryEquals !== undefined;
-  // Chromium can move switches before positional arguments in second-instance argv.
-  // A switch is never an entry. A real bare .pptd remains a safe legacy fallback.
-  const entry =
-    (hasEntryOption && isPptdPath(explicit) ? explicit : undefined) ?? args.find(isPptdPath);
+  let valueIndex = entryIndex + 1;
+  // Chromium inserts these known switches into second-instance argv. Do not skip
+  // arbitrary switches: an invalid explicit option must not open another Project.
+  if (entryEquals === undefined && entryIndex !== -1)
+    while (
+      args[valueIndex] === '--allow-file-access-from-files' ||
+      /^--original-process-start-time=\d+$/.test(args[valueIndex] ?? '')
+    )
+      valueIndex += 1;
+  const explicit =
+    entryEquals === undefined ? args[valueIndex] : entryEquals.slice('--entry='.length);
+  const entry = hasEntryOption
+    ? validProjectPath(explicit)
+      ? explicit
+      : undefined
+    : args.find(
+        (value) =>
+          isPptdPath(value) ||
+          (validProjectPath(value) && isDirectory(pathApi.resolve(cwd, value))),
+      );
   return {
     ...(entry ? { entry: pathApi.resolve(cwd, entry) } : {}),
     readOnly: args.includes('--read-only'),
@@ -68,7 +95,7 @@ function readLaunchData(data, { pathApi = path } = {}) {
     typeof request.readOnly !== 'boolean' ||
     typeof request.welcome !== 'boolean' ||
     (request.entry !== undefined &&
-      (!isPptdPath(request.entry) || !pathApi.isAbsolute(request.entry))) ||
+      (!validProjectPath(request.entry) || !pathApi.isAbsolute(request.entry))) ||
     (request.error !== undefined && request.error !== invalidEntry) ||
     (request.error !== undefined && request.entry !== undefined)
   )

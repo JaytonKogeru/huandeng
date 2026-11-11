@@ -448,3 +448,20 @@ body[data-locale-ready="false"] .workspace {
     color: #ed9b88;
   }
 }
+
+.project-drop {
+  margin: 0 0 20px;
+  padding: 14px 18px;
+  border: 1px dashed var(--border);
+  border-radius: 5px;
+  color: var(--muted);
+  font-size: 12px;
+}
+.project-drop[data-active="true"] {
+  border-color: var(--brand);
+  background: var(--hover);
+  color: var(--brand);
+}
+.status[data-state="error"] {
+  white-space: pre-line;
+}

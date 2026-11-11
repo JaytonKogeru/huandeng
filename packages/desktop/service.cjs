@@ -7,6 +7,7 @@ const os = require('node:os');
 const path = require('node:path');
 const { setTimeout: delay } = require('node:timers/promises');
 const { pathKey } = require('./project.cjs');
+const { resolveProjectEntry } = require('./project-entry.cjs');
 
 function runtimeRoot() {
   return (
@@ -97,7 +98,7 @@ function availablePort() {
 }
 
 async function startService(entry, options = {}) {
-  const entryPath = await fs.realpath(path.resolve(entry));
+  const entryPath = await resolveProjectEntry(entry);
   if (path.extname(entryPath).toLowerCase() !== '.pptd') {
     throw new Error(desktopText('请选择项目中的 .pptd 文件。'));
   }

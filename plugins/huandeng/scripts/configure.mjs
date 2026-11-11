@@ -22,6 +22,19 @@ export function configuration(client, runtime) {
   }
   if (client === 'claude' || client === 'mcp')
     return `${JSON.stringify({ mcpServers: { huandeng: server } }, null, 2)}\n`;
+  if (client === 'deepseek-native') {
+    const config = {};
+    const mapping = {
+      HUANDENG_CLI: 'cli',
+      HUANDENG_INSTALL_DIR: 'installDir',
+      HUANDENG_RUNTIME_DIR: 'runtimeDir',
+      HUANDENG_URL: 'url',
+    };
+    if (runtime.env.HUANDENG_ENTRY) config.entries = [runtime.env.HUANDENG_ENTRY];
+    for (const [key, field] of Object.entries(mapping))
+      if (runtime.env[key]) config[field] = runtime.env[key];
+    return JSON.stringify([{ id: 'huandeng', config }], null, 2) + '\n';
+  }
   if (client === 'deepseek') {
     // JSON is a YAML subset accepted by DSH's --patch. These are actual Cordis rows, not generic MCP config.
     return `${JSON.stringify(
@@ -83,7 +96,7 @@ export function configuration(client, runtime) {
       2,
     )}\n`;
   }
-  throw new Error('Choose --client codex, claude, deepseek, chatgpt, or mcp.');
+  throw new Error('Choose --client codex, claude, deepseek-native, deepseek, chatgpt, or mcp.');
 }
 
 if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {
@@ -91,7 +104,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.ar
     const values = options({ client: { type: 'string' }, 'auto-project': { type: 'boolean' } });
     if (values.help)
       process.stdout.write(
-        'Usage: node configure.mjs --client codex|claude|deepseek|chatgpt|mcp [--entry <absolute.pptd>] [--cli <huandeng.js>] [--install-dir <Editor directory>] [--url <loopback-origin>] [--runtime-dir <absolute>] [--auto-project]\nPrints a mergeable configuration fragment. Does not write client settings or connect to a model.\n',
+        'Usage: node configure.mjs --client codex|claude|deepseek-native|deepseek|chatgpt|mcp [--entry <absolute.pptd>] [--cli <huandeng.js>] [--install-dir <Editor directory>] [--url <loopback-origin>] [--runtime-dir <absolute>] [--auto-project]\nPrints a mergeable configuration fragment. Does not write client settings or connect to a model.\nFor DSH, install the native bundle first and use deepseek-native for its existing row. deepseek is the compatibility --patch route; do not combine both in one profile.\n',
       );
     else {
       if (

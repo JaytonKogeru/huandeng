@@ -19,7 +19,17 @@ it('initializes a portable parseable Project and refuses to overwrite it', async
   expect(store.getSnapshot().pages).toHaveLength(1);
   expect(store.getSnapshot().title).toBe('A clear "story"');
   await store.close();
-  expect(await fs.readFile(path.join(directory, 'AGENTS.md'), 'utf8')).toContain('author');
+  const guidance = await fs.readFile(path.join(directory, 'AGENTS.md'), 'utf8');
+  for (const requirement of [
+    'mission',
+    'reasoning input',
+    'native table',
+    'bilingual editions',
+    'acknowledgments',
+  ])
+    expect(guidance).toContain(requirement);
+  expect(guidance).not.toContain('Start with white backgrounds');
+  expect(guidance).not.toContain('Keep ordinary backgrounds white');
   await fs.appendFile(created.entry, '# Preserve this authored content\n');
   await expect(initializeProject(directory)).rejects.toMatchObject({ code: 'EEXIST' });
   expect(await fs.readFile(created.entry, 'utf8')).toContain('Preserve this authored content');

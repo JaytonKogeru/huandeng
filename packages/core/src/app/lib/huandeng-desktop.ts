@@ -54,6 +54,8 @@ export interface HuandengDesktop {
   }>;
   onAgentConnection?(callback: () => void): () => void;
   openProject(): Promise<{ entryPath: string } | null>;
+  openProjectFolder?(): Promise<{ entryPath: string } | null>;
+  identifyProjectFolder?(): Promise<{ status: string; reason?: string; message?: string } | null>;
   newProject(): Promise<{ entryPath: string } | null>;
   recentProjects(): Promise<{ entryPath: string; title: string; openedAt: string }[]>;
   openRecent(entryPath: string): Promise<void>;

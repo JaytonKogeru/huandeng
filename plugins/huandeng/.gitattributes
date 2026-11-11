@@ -1,0 +1,2 @@
+# Keep distributed guide bytes identical to their reviewed content manifests.
+skills/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

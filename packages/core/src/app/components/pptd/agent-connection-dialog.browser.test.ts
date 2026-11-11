@@ -6,6 +6,8 @@ import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 
 interface HarnessWindow {
   copies: string[];
+  reports: Record<string, unknown>[];
+  reviewed: string[];
   failSetup: boolean;
   holdClient: string | null;
   releaseSetup?: () => void;
@@ -24,6 +26,8 @@ import { createRoot } from 'react-dom/client';
 import { AgentConnectionDialog } from '/src/app/components/pptd/agent-connection-dialog.tsx';
 import { setUiLocale } from '/src/app/lib/huandeng-locale.ts';
 window.copies = [];
+window.reports = [];
+window.reviewed = [];
 window.failSetup = false;
 window.holdClient = null;
 window.project = 'one';
@@ -35,11 +39,12 @@ window.huandengDesktop = {getAgentConfiguration: async client => {
   return {client, entryPath: 'D:/' + project + '/deck.pptd', pluginPath: 'D:/plugin',
     configuration: 'exact\\n' + client + '/' + project};
 }};
-const backend = {activity: async () => ({deckId: window.project, events: []}), subscribeActivity: () => () => {}};
+const backend = {activity: async () => ({deckId: window.project, events: window.reports}), subscribeActivity: () => () => {}};
 const root = createRoot(document.querySelector('#app'));
 window.renderDialog = () => root.render(React.createElement(AgentConnectionDialog, {
   open: true, onOpenChange: value => {window.dialogClosed = !value;}, backend,
   deckId: window.project, projectTitle: 'Authored ' + window.project,
+  onReview: id => window.reviewed.push(id),
 }));
 window.setLocale = setUiLocale;
 window.renderDialog();
@@ -86,13 +91,80 @@ afterAll(async () => {
 });
 
 describe('Assistant setup interactions', () => {
+  it('shows independent client reports and opens only the selected exact receipt', async () => {
+    const page = await browser.newPage();
+    page.setDefaultTimeout(5_000);
+    try {
+      await page.goto(baseUrl);
+      await page.locator('[data-hd-agent-setup-ready]').waitFor({ timeout: 20_000 });
+      await page.evaluate(() => {
+        const harness = window as unknown as HarnessWindow;
+        harness.project = 'reports';
+        const base = {
+          deckId: 'reports',
+          epoch: 'epoch',
+          timestamp: '2026-11-11T00:00:00Z',
+          status: 'running',
+          taskId: 'task',
+          requestId: 'request',
+          summary: 'Declared task',
+        };
+        harness.reports = [
+          {
+            ...base,
+            sequence: 1,
+            source: 'client',
+            actor: 'Claude Code',
+            sessionId: 'claude',
+            operationIds: ['claimed-receipt'],
+          },
+          {
+            ...base,
+            sequence: 2,
+            source: 'client',
+            actor: 'DeepSeek Harness',
+            sessionId: 'deepseek',
+          },
+          {
+            ...base,
+            sequence: 3,
+            source: 'writer',
+            actor: 'Shared writer',
+            sessionId: 'writer',
+            status: 'completed',
+            summary: 'Saved 1 Slide',
+            operationId: 'saved-receipt',
+          },
+        ];
+        harness.renderDialog();
+      });
+      await page
+        .locator('[data-hd-client-report]')
+        .filter({ hasText: 'DeepSeek Harness' })
+        .waitFor();
+      expect(await page.locator('[data-hd-client-report]').count()).toBe(2);
+      expect(await page.locator('[data-hd-saved-evidence]').innerText()).toContain(
+        'Slides saved: 1',
+      );
+      await page.locator('[data-hd-saved-receipt="saved-receipt"]').click();
+      expect(await page.evaluate(() => (window as unknown as HarnessWindow).reviewed)).toEqual([
+        'saved-receipt',
+      ]);
+      expect(await page.evaluate(() => (window as unknown as HarnessWindow).dialogClosed)).toBe(
+        true,
+      );
+    } finally {
+      await page.close();
+    }
+  }, 30_000);
+
   it('copies exact configuration and a read-only task, keeps advanced closed, and localizes close', async () => {
     const page = await browser.newPage();
     page.setDefaultTimeout(5_000);
     page.on('pageerror', (error) => console.error(error.message));
     try {
       await page.goto(baseUrl);
-      await page.locator('[data-hd-agent-setup-ready]').waitFor();
+      await page.locator('[data-hd-agent-setup-ready]').waitFor({ timeout: 20_000 });
       expect(await page.locator('[data-hd-agent-project]').innerText()).toContain('Authored one');
       expect(await page.locator('[data-hd-agent-advanced]').getAttribute('open')).toBeNull();
       expect(await page.locator('textarea').isVisible()).toBe(false);
@@ -134,7 +206,7 @@ describe('Assistant setup interactions', () => {
     page.on('pageerror', (error) => console.error(error.message));
     try {
       await page.goto(baseUrl);
-      await page.locator('[data-hd-agent-setup-ready]').waitFor();
+      await page.locator('[data-hd-agent-setup-ready]').waitFor({ timeout: 20_000 });
       await page.evaluate(() => {
         (window as unknown as HarnessWindow).holdClient = 'codex';
       });

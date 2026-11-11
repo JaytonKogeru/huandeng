@@ -1,4 +1,15 @@
 export const connectionChinese = {
+  'Assistant setup': '助手设置',
+  'Reported work in this Project': '此项目中的工作上报',
+  'Reported: {status}': '上报状态：{status}',
+  'These are explicit client reports, not a live connection or execution check.':
+    '这些是客户端主动上报的记录，不代表当前在线或仍在执行。',
+  'No saved change recorded yet.': '尚无实际保存记录。',
+  'Save completed': '已保存',
+  'Save failed': '保存失败',
+  'Saved changes are writer records. Reported receipt IDs are verified only when opened.':
+    '保存记录由共享写入服务生成。客户端声明的回执 ID 需打开后核验。',
+  'Open Activity': '打开动态',
   'Set up your assistant for this Project.': '为这个项目设置助手。',
   'Project for this configuration': '此配置对应的项目',
   'An existing Agent session stays bound to its configured Project when you switch editor tabs. To change Projects, update the client configuration and reconnect explicitly.':

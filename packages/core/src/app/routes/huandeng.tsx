@@ -3343,6 +3343,11 @@ export function HuandengEditor() {
         backend={backend}
         deckId={snapshot.deckId}
         projectTitle={snapshot.title}
+        pageLabels={Object.fromEntries(
+          snapshot.pages.map((item) => [item.pageId, item.shortCode ?? item.pageId]),
+        )}
+        onReview={(operationId) => setOperationReview({ operationId, backend })}
+        onOpenActivity={() => setActivityOpen(true)}
       />
       <KeyboardHelpDialog open={keyboardHelpOpen} onOpenChange={setKeyboardHelpOpen} />
       <Dialog open={pendingDraftsOpen} onOpenChange={setPendingDraftsOpen}>

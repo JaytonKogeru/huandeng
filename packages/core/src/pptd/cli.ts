@@ -5,6 +5,7 @@ import { agentGuide } from './agent-guide.ts';
 import { connectClient } from './client.ts';
 import { launchHuandeng } from './launch.ts';
 import { startMcp } from './mcp.ts';
+import { resolveProjectEntry } from './project-entry.cjs';
 import { initializeProject } from './project-initialize.cjs';
 import { openPptdStore } from './store.ts';
 import type { TransactionRequest } from './types.ts';
@@ -12,7 +13,7 @@ import type { TransactionRequest } from './types.ts';
 const program = new Command('huandeng')
   .description('HUANDENG Editor — one document for people and external agents')
   .option('--url <url>', 'connect to an active local editor')
-  .option('--entry <path>', 'find the active editor for this PPTD file');
+  .option('--entry <path>', 'find the active editor for this PPTD file or project folder');
 const print = (value: unknown): void => {
   process.stdout.write(`${JSON.stringify(value, null, 2)}\n`);
 };
@@ -39,7 +40,7 @@ program
   });
 program
   .command('open <entry>')
-  .description('Open a PPTD document in a local visual editor')
+  .description('Open a PPTD file or project folder in a local visual editor')
   .option('--port <port>', 'loopback port', '4850')
   .option('--read-only', 'inspect without initializing identities or writing source files')
   .option('--no-browser', 'keep the server running without opening a browser')
@@ -52,7 +53,10 @@ program
   .command('check <entry>')
   .description('Parse a PPTD without changing files')
   .action(async (entry) => {
-    const store = await openPptdStore({ entryPath: entry, readOnly: true });
+    const store = await openPptdStore({
+      entryPath: await resolveProjectEntry(entry),
+      readOnly: true,
+    });
     try {
       const snapshot = store.getSnapshot();
       const elementTypes: Record<string, number> = {};

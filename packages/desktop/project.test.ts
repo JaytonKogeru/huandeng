@@ -88,6 +88,76 @@ describe('Windows project folder marker', () => {
     expect(runAttributes).toHaveBeenCalledTimes(2);
   });
 
+  it('removes only its unchanged marker files after an attribute failure so a retry can succeed', async () => {
+    const entry = await prepare();
+    const root = path.dirname(entry);
+    const before = await fs.readFile(entry);
+    const iconPath = path.join(root, '.huandeng/project.ico');
+    const iniPath = path.join(root, 'desktop.ini');
+    const failed = await markProjectFolder(root, {
+      platform: 'win32',
+      runAttributes: async () => {
+        expect(await fs.readFile(iconPath)).toEqual(
+          await fs.readFile(path.join(import.meta.dirname, 'icon.ico')),
+        );
+        expect((await fs.readFile(iniPath)).toString('utf16le')).toContain('open deck.pptd;');
+        throw new Error('Injected attribute failure after both files were written');
+      },
+    });
+    expect(failed.status).toBe('unavailable');
+    await expect(fs.stat(iconPath)).rejects.toMatchObject({ code: 'ENOENT' });
+    await expect(fs.stat(iniPath)).rejects.toMatchObject({ code: 'ENOENT' });
+    expect(await fs.readFile(entry)).toEqual(before);
+    expect(
+      await markProjectFolder(root, {
+        platform: 'win32',
+        runAttributes: vi.fn().mockResolvedValue(undefined),
+      }),
+    ).toMatchObject({ status: 'marked' });
+  });
+
+  it('preserves a customization changed during a failed marker attempt', async () => {
+    const entry = await prepare();
+    const root = path.dirname(entry);
+    const iniPath = path.join(root, 'desktop.ini');
+    const authored = 'New author-supplied settings';
+    expect(
+      await markProjectFolder(root, {
+        platform: 'win32',
+        runAttributes: async () => {
+          await fs.writeFile(iniPath, authored);
+          throw new Error('Injected failure after an author change');
+        },
+      }),
+    ).toMatchObject({ status: 'unavailable' });
+    expect(await fs.readFile(iniPath, 'utf8')).toBe(authored);
+    expect(await fs.readFile(path.join(root, '.huandeng/project.ico'))).toEqual(
+      await fs.readFile(path.join(import.meta.dirname, 'icon.ico')),
+    );
+    expect(
+      await markProjectFolder(root, {
+        platform: 'win32',
+        runAttributes: vi.fn().mockResolvedValue(undefined),
+      }),
+    ).toMatchObject({ status: 'skipped', reason: 'existing-customization' });
+    expect(await fs.readFile(iniPath, 'utf8')).toBe(authored);
+  });
+
+  it('identifies an existing project whose entry is not named deck.pptd', async () => {
+    const entry = await prepare();
+    const root = path.dirname(entry);
+    const renamed = path.join(root, '研究.PPTD');
+    await fs.rename(entry, renamed);
+    const runAttributes = vi.fn().mockResolvedValue(undefined);
+    expect(await markProjectFolder(root, { platform: 'win32', runAttributes })).toMatchObject({
+      status: 'marked',
+    });
+    expect((await fs.readFile(path.join(root, 'desktop.ini'))).toString('utf16le')).toContain(
+      'open 研究.PPTD;',
+    );
+    expect(await fs.readFile(renamed, 'utf8')).toContain('pages/initial.page');
+  });
+
   it('preserves author-supplied directory customization', async () => {
     const entry = await prepare();
     const root = path.dirname(entry);

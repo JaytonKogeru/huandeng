@@ -110,7 +110,13 @@ test('session discovery rejects remote, stale, mismatched and old-protocol recor
   });
   assert.equal(calls, 1);
   assert.deepEqual(found, [
-    { entry: f.entry, url: 'http://127.0.0.1:12345', title: 'Synthetic', writable: true },
+    {
+      entry: f.entry,
+      url: 'http://127.0.0.1:12345',
+      epoch: 'test',
+      title: 'Synthetic',
+      writable: true,
+    },
   ]);
   assert.ok(!JSON.stringify(found).includes('must-never-escape'));
   assert.deepEqual(

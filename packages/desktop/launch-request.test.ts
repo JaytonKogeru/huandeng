@@ -16,6 +16,49 @@ const options = { packaged: true, cwd, pathApi: path.win32 };
 const plain = { entry, readOnly: false, welcome: false };
 
 describe('native desktop launch requests', () => {
+  it('accepts a folder through explicit, positional and structured launch paths', () => {
+    const folder = 'C:\\Projects\\研究 Talk.huandeng';
+    const directoryOptions = { ...options, isDirectory: (value: string) => value === folder };
+    const request = { ...plain, entry: folder };
+    for (const args of [['--entry', folder], [`--entry=${folder}`], [folder]])
+      expect(parseLaunchRequest(['editor.exe', ...args], directoryOptions)).toEqual(request);
+    expect(readLaunchData(createLaunchData(request), options)).toEqual(request);
+    expect(
+      secondInstanceRequest(
+        ['editor.exe', '--entry', '--allow-file-access-from-files', folder],
+        cwd,
+        null,
+        directoryOptions,
+      ),
+    ).toEqual(request);
+  });
+
+  it('preserves an explicit invalid path for a real resolver error instead of opening another project', () => {
+    expect(
+      parseLaunchRequest(['editor.exe', '--entry', 'missing-folder', entry], options).entry,
+    ).toBe(path.win32.resolve(cwd, 'missing-folder'));
+  });
+
+  it.each([
+    ['--entry=', entry],
+    ['--entry=--unsafe.pptd', entry],
+    ['--entry', '--welcome', entry],
+    ['--entry', '--unknown-chromium-flag', entry],
+    ['--entry', '', entry],
+    ['--entry', '\0', entry],
+    ['--entry', '--unsafe.pptd', entry],
+  ])(
+    'rejects the invalid explicit entry instead of choosing another candidate: %j',
+    (...args: string[]) => {
+      const result = parseLaunchRequest(['editor.exe', ...args], options);
+      expect(result.error).toBe('invalid-entry');
+      expect(result.entry).toBeUndefined();
+      expect(secondInstanceRequest(['editor.exe', ...args], cwd, undefined, options)).toEqual(
+        result,
+      );
+    },
+  );
+
   it.each([['--entry', entry], [`--entry=${entry}`], [entry]])(
     'accepts the original CLI form %j with Unicode and spaces',
     (...args: string[]) => {
@@ -97,7 +140,7 @@ describe('native desktop launch requests', () => {
     expect(readLaunchData(data, options)).toBe(null);
     expect(
       secondInstanceRequest(
-        ['editor.exe', '--entry', '--chromium-flag', entry],
+        ['editor.exe', '--entry', '--allow-file-access-from-files', entry],
         cwd,
         data,
         options,

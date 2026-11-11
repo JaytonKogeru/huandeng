@@ -17,14 +17,18 @@
         <div class="actions">
           <button type="button" id="open-project" class="primary" aria-keyshortcuts="Control+O">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7V5a1 1 0 0 1 1-1h5l2 3h9a1 1 0 0 1 1 1v2M3 9h18l-3 11H3a1 1 0 0 1-1-1V6" /></svg>
-            <span data-ui-text="打开项目">打开项目</span><kbd>Ctrl O</kbd>
+            <span data-ui-text="打开 PPTD">打开 PPTD</span><kbd>Ctrl O</kbd>
+          </button>
+          <button type="button" id="open-folder" aria-keyshortcuts="Control+Shift+O">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7V5a1 1 0 0 1 1-1h5l2 3h9a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z" /></svg>
+            <span data-ui-text="打开文件夹">打开文件夹</span>
           </button>
           <button type="button" id="new-project" aria-keyshortcuts="Control+N">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>
             <span data-ui-text="新建项目">新建项目</span><kbd>Ctrl N</kbd>
           </button>
         </div>
-        <p class="project-note" data-ui-text="项目是一个文件夹。选择其中的 .pptd 清单打开，移动或分享时保留整个文件夹。">项目是一个文件夹。选择其中的 .pptd 清单打开，移动或分享时保留整个文件夹。</p>
+        <p class="project-note" data-ui-text="项目是一个文件夹。可以打开文件夹或其中的 .pptd 清单；移动或分享时保留整个文件夹。">项目是一个文件夹。可以打开文件夹或其中的 .pptd 清单；移动或分享时保留整个文件夹。</p>
         <div class="sidebar-note">
           <span class="note-rule"></span>
           <p data-ui-text="独立页面，持续演进。">独立页面，持续演进。</p>
@@ -44,6 +48,7 @@
           <h1 data-ui-text="继续项目">继续项目</h1>
           <p data-ui-text="打开最近的文稿，从上次的进度继续。">打开最近的文稿，从上次的进度继续。</p>
         </header>
+        <p id="project-drop" class="project-drop" data-ui-text="也可以将项目文件夹或 .pptd 文件拖到这里">也可以将项目文件夹或 .pptd 文件拖到这里</p>
         <section class="recents" aria-labelledby="recent-heading">
           <div class="section-heading">
             <h2 id="recent-heading"><span data-ui-text="最近项目">最近项目</span> <span id="recent-count"></span></h2>

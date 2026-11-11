@@ -2,6 +2,7 @@ import { createHash } from 'node:crypto';
 import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
+import { resolveProjectEntry } from './project-entry.cjs';
 import type {
   DeckSnapshot,
   TransactionPreview,
@@ -17,7 +18,7 @@ export function runtimeRoot(): string {
 }
 
 export async function discoveryPath(entryPath: string): Promise<string> {
-  const canonical = await fs.realpath(path.resolve(entryPath));
+  const canonical = await resolveProjectEntry(entryPath);
   const normalized = process.platform === 'win32' ? canonical.toLowerCase() : canonical;
   return path.join(
     runtimeRoot(),
@@ -89,13 +90,16 @@ export async function connectClient(options: {
   url?: string;
   entry?: string;
 }): Promise<HuandengClient> {
+  const entry = options.entry ? await resolveProjectEntry(options.entry) : undefined;
   let url = options.url;
   if (!url) {
-    if (!options.entry)
-      throw new Error('Pass --entry path/to/deck.pptd or --url http://127.0.0.1:4850.');
+    if (!entry)
+      throw new Error(
+        'Pass --entry path/to/deck.pptd (or its folder) or --url http://127.0.0.1:4850.',
+      );
     try {
       const record: SessionDiscovery = JSON.parse(
-        await fs.readFile(await discoveryPath(options.entry), 'utf8'),
+        await fs.readFile(await discoveryPath(entry), 'utf8'),
       );
       url = record.url;
     } catch {
@@ -106,9 +110,9 @@ export async function connectClient(options: {
   }
   const client = new HuandengClient(url);
   const snapshot = await client.session();
-  if (options.entry) {
+  if (entry) {
     const [requested, actual] = await Promise.all([
-      fs.realpath(path.resolve(options.entry)),
+      fs.realpath(entry),
       fs.realpath(snapshot.entry),
     ]);
     if (requested !== actual)

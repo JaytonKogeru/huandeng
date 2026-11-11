@@ -1,6 +1,14 @@
+import { createElement } from 'react';
+import { renderToStaticMarkup } from 'react-dom/server';
 import { describe, expect, it } from 'vitest';
 import type { ActivityEvent } from '../../../pptd/activity';
-import { latestClientReport, mergeReportEvidence } from './agent-report-evidence';
+import {
+  AgentEvidenceRows,
+  latestClientReport,
+  mergeActivityEvents,
+  mergeReportEvidence,
+  recentClientReports,
+} from './agent-report-evidence';
 
 function event(
   sequence: number,
@@ -23,6 +31,59 @@ function event(
 }
 
 describe('Agent setup observed report', () => {
+  it('keeps multiple assistant sessions visible and never upgrades reports into presence', () => {
+    const first = { ...event(1, 'client'), actor: 'Claude', sessionId: 'one' };
+    const newer = { ...first, sequence: 4, summary: 'Updated report' };
+    const second = { ...event(2, 'client'), actor: 'DeepSeek', sessionId: 'two' };
+    const another = { ...event(3, 'client'), actor: 'Claude', sessionId: 'three' };
+    const events = [first, newer, second, another, event(5, 'writer'), event(6, 'client', 'other')];
+    expect(recentClientReports(events, 'test-project')).toEqual([newer, another, second]);
+    expect(mergeActivityEvents([newer], [first, newer], 'test-project')).toEqual([newer, first]);
+    const html = renderToStaticMarkup(
+      createElement(AgentEvidenceRows, { events, deckId: 'test-project' }),
+    );
+    expect(html).toContain('DeepSeek');
+    expect(html.match(/data-hd-client-report/g)).toHaveLength(3);
+    expect(html).toContain('Reported: running');
+    expect(html).toContain('not a live connection or execution check');
+    expect(html).not.toContain('Connected clients');
+  });
+
+  it('keeps exact reported and saved receipt actions separate and avoids absence claims on storage error', () => {
+    const reported = {
+      ...event(1, 'client'),
+      operationIds: ['client-claim'],
+      pageIds: ['page-id'],
+    };
+    const saved = {
+      ...event(2, 'writer'),
+      operationId: 'actual-save',
+      status: 'completed' as const,
+    };
+    const html = renderToStaticMarkup(
+      createElement(AgentEvidenceRows, {
+        events: [reported, saved, { ...event(3, 'writer'), status: 'failed' }],
+        deckId: 'test-project',
+        pageLabels: { 'page-id': 'AB2C' },
+        onReview: () => {},
+      }),
+    );
+    expect(html).toContain('data-hd-reported-receipt="client-claim"');
+    expect(html).toContain('data-hd-saved-receipt="actual-save"');
+    expect(html).toContain('AB2C');
+    expect(html).toContain('Save completed');
+    expect(html).toContain('Save failed');
+    const unavailable = renderToStaticMarkup(
+      createElement(AgentEvidenceRows, {
+        events: [],
+        deckId: 'test-project',
+        historyUnavailable: true,
+      }),
+    );
+    expect(unavailable).not.toContain('No client report recorded yet');
+    expect(unavailable).not.toContain('No saved change recorded yet');
+  });
+
   it('never treats a writer receipt or another Project report as a client connection observation', () => {
     expect(
       latestClientReport(

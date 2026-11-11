@@ -129,12 +129,18 @@ export function AgentConnectionDialog({
   backend,
   deckId,
   projectTitle,
+  pageLabels,
+  onReview,
+  onOpenActivity,
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   backend?: PptdBackend;
   deckId?: string;
   projectTitle?: string;
+  pageLabels?: Record<string, string>;
+  onReview?: (operationId: string) => void;
+  onOpenActivity?: () => void;
 }) {
   const { t } = useHuandengLocale();
   const [client, setClient] = useState<AgentClient>('chatgpt');
@@ -191,7 +197,7 @@ export function AgentConnectionDialog({
           <X className="size-3.5" />
         </DialogClose>
         <DialogHeader>
-          <DialogTitle>{t('连接 Agent')}</DialogTitle>
+          <DialogTitle>{t('Assistant setup')}</DialogTitle>
           <DialogDescription>{t('Set up your assistant for this Project.')}</DialogDescription>
         </DialogHeader>
         <label className="flex items-center gap-3 text-sm">
@@ -243,7 +249,29 @@ export function AgentConnectionDialog({
             }}
           />
         )}
-        {open && backend && deckId && <AgentReportEvidence backend={backend} deckId={deckId} />}
+        {open && backend && deckId && (
+          <AgentReportEvidence
+            backend={backend}
+            deckId={deckId}
+            pageLabels={pageLabels}
+            onReview={
+              onReview
+                ? (id) => {
+                    onOpenChange(false);
+                    onReview(id);
+                  }
+                : undefined
+            }
+            onOpenActivity={
+              onOpenActivity
+                ? () => {
+                    onOpenChange(false);
+                    onOpenActivity();
+                  }
+                : undefined
+            }
+          />
+        )}
       </DialogContent>
     </Dialog>
   );

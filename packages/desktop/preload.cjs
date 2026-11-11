@@ -1,4 +1,4 @@
-const { contextBridge, ipcRenderer } = require('electron');
+const { contextBridge, ipcRenderer, webUtils } = require('electron');
 
 const leaveHandlers = new Set();
 
@@ -52,6 +52,16 @@ contextBridge.exposeInMainWorld('huandengDesktop', {
   setSnapping: (enabled) => ipcRenderer.invoke('huandeng:set-snapping', enabled),
   onSnappingChanged: (callback) => subscribe('huandeng:snapping-changed', callback),
   openProject: () => ipcRenderer.invoke('huandeng:open-project'),
+  openProjectFolder: () => ipcRenderer.invoke('huandeng:open-project-folder'),
+  identifyProjectFolder: () => ipcRenderer.invoke('huandeng:identify-project-folder'),
+  openDroppedProjects: (files) => {
+    if (!Array.isArray(files) || !files.length || files.length > 12)
+      throw new Error('Drop up to 12 project folders or .pptd files on Home.');
+    return ipcRenderer.invoke(
+      'huandeng:open-dropped-projects',
+      files.map((file) => webUtils.getPathForFile(file)),
+    );
+  },
   newProject: () => ipcRenderer.invoke('huandeng:new-project'),
   recentProjects: () => ipcRenderer.invoke('huandeng:recent-projects'),
   openRecent: (entryPath) => ipcRenderer.invoke('huandeng:open-recent', entryPath),

@@ -1,0 +1,49 @@
+{
+  "name": "huandeng",
+  "description": "Use HUANDENG Projects, shared-writer editing, and authoring guidance in DeepSeek Harness.",
+  "private": true,
+  "type": "module",
+  "main": "lib/index.mjs",
+  "exports": {
+    ".": "./lib/index.mjs",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./assets/icon.png"
+  },
+  "files": [
+    "lib",
+    "vendor",
+    "assets",
+    "locale",
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE",
+    "SOURCE.json",
+    "content-manifest.json"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=22.12.0",
+    "dsh": ">=0.2.2-rc.1 <0.3.0"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "~4.1.0",
+    "@deepseek-ai/dsh-mcp-client": ">=0.2.2-rc.1 <0.3.0",
+    "@deepseek-ai/dsh-skill-filesystem": ">=0.2.2-rc.1 <0.3.0",
+    "@deepseek-ai/schemastery": "~3.19.0"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/dsh-mcp-client": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-skill-filesystem": {
+      "optional": true
+    }
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

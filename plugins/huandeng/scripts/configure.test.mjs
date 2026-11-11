@@ -113,3 +113,26 @@ test('reusable DeepSeek configuration adds its own provider without pinning a pr
     /reusable local-client/,
   );
 });
+
+test('native DeepSeek configuration targets the installed bundle without duplicate raw providers', async () => {
+  const f = await fixture();
+  const runtime = await resolveRuntime(
+    { entry: f.entry, url: 'http://127.0.0.1:4850' },
+    f.plugin,
+    {},
+  );
+  const patch = JSON.parse(configuration('deepseek-native', runtime));
+  assert.deepEqual(patch, [
+    {
+      id: 'huandeng',
+      config: {
+        entries: [runtime.entry],
+        cli: runtime.cli,
+        runtimeDir: runtime.env.HUANDENG_RUNTIME_DIR,
+        url: 'http://127.0.0.1:4850',
+      },
+    },
+  ]);
+  assert.ok(!JSON.stringify(patch).includes('insert'));
+  assert.ok(!JSON.stringify(patch).includes('skill-filesystem'));
+});

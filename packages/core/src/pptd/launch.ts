@@ -1,9 +1,9 @@
 import { spawn } from 'node:child_process';
 import { existsSync } from 'node:fs';
-import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { closePptdServer } from '../vite/routes/pptd.ts';
+import { resolveProjectEntry } from './project-entry.cjs';
 import { createPptdStaticServer } from './static-server.ts';
 
 interface LaunchOptions {
@@ -67,7 +67,7 @@ async function createDevelopmentServer(entryPath: string, options: LaunchOptions
 }
 
 export async function launchHuandeng(entry: string, options: LaunchOptions = {}) {
-  const entryPath = await fs.realpath(path.resolve(entry));
+  const entryPath = await resolveProjectEntry(entry);
   process.env.HUANDENG_DECK = entryPath;
   process.env.HUANDENG_READ_ONLY = options.readOnly ? '1' : '0';
   const clientRoot = process.env.HUANDENG_DEV_SERVER === '1' ? null : productionEditorRoot();

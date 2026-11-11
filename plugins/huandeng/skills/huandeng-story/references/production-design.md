@@ -8,15 +8,19 @@ Audit the author's complete account, assets and rendered pages. Specify the audi
 
 For code work, Frame can define types, module boundaries and a small runnable scaffold. It does not replace the audit or product test.
 
-## Establish the spoken argument
+## Establish the presentation's job
 
-For a new introduction or substantial rewrite, organize the author's account before selecting features or slide layouts. Trace the concrete situation, attempted work, observed friction, design choice and consequence where the source supports them. This is a reasoning check, not a mandatory dramatic arc or a fixed page sequence. Preserve meaningful uncertainty and the author's point of view; do not manufacture incidents, metrics, research findings or consensus from an anecdote.
+Start with the audience, what they need to understand or do, and the evidence that can teach it. The author's account is reasoning material: infer the motivation, priorities and useful distinctions, then organize the explanation. Do not treat the spoken order, every anecdote or a cause-and-effect story arc as a compulsory slide sequence. Correct weak transitions and add verified details that the audience needs. Preserve the author's meaning without merely illustrating a transcript.
 
-Use the narrative to choose what to include. A product feature earns its place by answering an audience question or resolving an earlier friction. Explain why the material library, page identity, a workspace or an editing operation matters in that actual work. A view name plus a screenshot is not yet a story. Keep unrelated capabilities in a reference appendix only when useful.
+For a product introduction, the sequence must make clear what the tool is, how its parts work together, how to perform a representative task, and why the design helps that task. Show a usable route from opening a project to editing, review, reuse and delivery where relevant. A feature earns space through audience usefulness as well as its connection to the founding story. Neither an exhaustive inventory nor an origin story alone meets this job.
 
-Record the overall purpose, audience and takeaway in the existing Main/Presentation Story fields. Give each page/local Story a purpose that advances that argument and explicit preservation constraints. Use Speaker Notes for a speakable explanation and transition, rather than repeating labels or inventing a script after the visual deck is finished. These are authoring actions, not a claim that the Editor automatically generates a narrative.
+Before layout, write a short argument and a topic map with each audience question, takeaway, evidence, practical action and transition. Keep a preservation inventory of valuable existing pages, icons, original figures, examples and acknowledgments. Reuse them deliberately; a rewrite does not authorize silently dropping useful content. Do not invent incidents, metrics, research findings or consensus from an anecdote.
 
-Read headings and notes in sequence before expanding the frames and again before delivery. If the connections reduce to “another feature” throughout, revise the argument. Share factual inputs and hard constraints across comparative client trials; keep each author's narrative, length and visual choices independent, and keep client-specific style feedback scoped to that client.
+Record overall purpose, audience and takeaway in the existing Main/Presentation Story fields. Give each page/local Story a purpose and explicit preservation constraints. Use Speaker Notes for the speakable explanation, rather than printing every narrative link on slides. Story is an alignment aid, not a requirement that every page narrate an episode.
+
+For requested bilingual editions of the same introduction, establish a semantic topic map before separate layout work. Both languages must contain the same substantive claims, demonstrations, user steps, qualifications and acknowledgments. Titles, text lengths and page breaks may differ when the correspondence is recorded. A fluent translation or matching page count alone is insufficient.
+
+Read headings and notes in sequence, then separately test the presentation's job: can the audience explain the tool and perform the demonstrated task? Review missing functionality, pointless repetition and the first usable next step. Share facts and hard constraints across comparative client trials; keep each author's layout choices independent. Do not copy another client's artwork unless the user requests that reference.
 
 ## Project policy
 
@@ -38,7 +42,7 @@ Use regular paragraphs with selective emphasis, not long entirely bold blocks. D
 
 ## Text and data objects
 
-Use a native table for a real two-dimensional relationship: entities in rows, comparable attributes in columns. Do not simulate a table by aligning separate text boxes, rectangular cell shapes or hand-drawn rules. Keep an ordinary paragraph or bullet list in one rich-text object where practical, with internal emphasis and list formatting; split it only for a meaningful reading or interaction need. This makes later human edits manageable.
+Use a native table for a real two-dimensional relationship: entities in rows, comparable attributes in columns. Do not simulate a table by aligning separate text boxes, rectangular cell shapes or hand-drawn rules. Keep an ordinary paragraph or bullet list in one rich-text object where practical, with internal emphasis and list formatting; split it only for a meaningful reading or interaction need. This makes later human edits manageable. Repeating a heading box, a description box and a separator for each ordinary list item is still fragmented prose even without cell borders. Read the editable object tree as well as the rendered image. Do not force a prose list into a native table merely to satisfy the object rule; choose a table only when the row/column relationship is real.
 
 A multi-panel scientific comparison, aligned plots, labels attached to evidence and nodes in an explanatory diagram are different structures. Preserve them when their geometry expresses an actual comparison or relationship. Do not flatten useful evidence into prose or apply a blanket ban on panels, boxes or arrows.
 
@@ -54,7 +58,7 @@ Composition follows purpose: comparable evidence aligns; one task screenshot nee
 
 Use huandeng_design_audit when advertised, or CLI quality. Sizes normalize to 960 width, raster sampling targets a 1920-wide output. Enable divider/background checks only when requested. Flags are advisory and do not replace visual judgment.
 
-Keep exact operation IDs and review saved before/after. Render all affected pages. For a deck, inspect a contact sheet then every page at presentation size. Fix hierarchy, line breaks, image readability and unjustified repetition. Also check the cause-and-effect narrative, local/Main Story alignment, and whether the complete notes can be spoken in order. Keep personal observations attributed to the speaker and verified product claims tied to actual behavior. Structured access and zero warnings do not replace this review.
+Keep exact operation IDs and review saved before/after. Render all affected pages. For a deck, inspect a contact sheet then every page at presentation size. Fix hierarchy, line breaks, image readability and unjustified repetition. Also check the presentation's practical job, local/Main Story alignment, preservation inventory, bilingual topic correspondence when applicable, and whether the notes can be spoken in order. Ask which audience question each image answers and whether every claimed workflow step is actually shown or clearly explained. Keep personal observations attributed to the speaker and verified product claims tied to actual behavior. Structured access and zero warnings do not replace this review.
 
     huandeng --entry /project/deck.pptd quality --language zh-CN
     huandeng --entry /project/deck.pptd quality --language en --max-title 34 --max-body 22 --presentation public-talk

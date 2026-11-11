@@ -3,6 +3,17 @@ const english = {
   文件: 'File',
   '新建项目…': 'New project…',
   '打开项目…': 'Open project…',
+  '打开 PPTD 文件…': 'Open PPTD file…',
+  '打开项目文件夹…': 'Open project folder…',
+  打开项目文件夹: 'Open project folder',
+  '设置项目文件夹图标…': 'Identify project folder…',
+  项目文件夹标识: 'Project folder identity',
+  '项目文件夹已添加 HUANDENG 图标。': 'The project folder now has a HUANDENG icon.',
+  '已保留这个文件夹现有的图标设置。': 'The folder’s existing icon settings were preserved.',
+  '此系统暂不支持项目文件夹图标。项目文件仍可正常打开。':
+    'Folder icons are not supported on this system. The project still opens normally.',
+  '未能设置项目文件夹图标。幻灯内容未改变。':
+    'The folder icon could not be set. Slide content was not changed.',
   最近项目: 'Recent projects',
   暂无最近项目: 'No recent projects',
   在文件管理器中显示: 'Show in file manager',
@@ -66,6 +77,13 @@ const english = {
   'HUANDENG 文档服务尚未构建。请先运行 corepack pnpm --filter @open-slide/core build。':
     'The HUANDENG document service has not been built. Run corepack pnpm --filter @open-slide/core build first.',
   '请选择项目中的 .pptd 文件。': 'Choose the project’s .pptd file.',
+  '请选择 .pptd 文件或项目文件夹。': 'Choose a .pptd file or project folder.',
+  '这个文件夹中没有 .pptd 入口文件。请选择项目文件夹，或新建项目。':
+    'This folder has no .pptd entry file. Choose a project folder or create a new project.',
+  '这个文件夹中有多个 .pptd 文件。请明确打开其中一个：':
+    'This folder contains several .pptd files. Open the intended file explicitly:',
+  '文件夹中的入口链接到了其他位置。请明确打开实际项目。':
+    'The folder entry links outside this project. Open its actual project explicitly.',
   '文档服务未能启动（{status}）。\n{output}':
     'The document service did not start ({status}).\n{output}',
   '文档服务需要重新构建。': 'The document service needs to be rebuilt.',

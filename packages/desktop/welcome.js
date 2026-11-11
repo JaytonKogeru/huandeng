@@ -4,6 +4,8 @@ const projectList = document.getElementById('recent-projects');
 const recentCount = document.getElementById('recent-count');
 const emptyRecents = document.getElementById('empty-recents');
 const openButton = document.getElementById('open-project');
+const folderButton = document.getElementById('open-folder');
+const dropZone = document.getElementById('project-drop');
 const newButton = document.getElementById('new-project');
 let busy = false;
 let locale = 'zh-CN';
@@ -13,9 +15,12 @@ const english = {
   项目入口: 'Project actions',
   幻灯编辑器: 'Slide editor',
   打开项目: 'Open project',
+  '打开 PPTD': 'Open PPTD',
+  打开文件夹: 'Open folder',
+  '也可以将项目文件夹或 .pptd 文件拖到这里': 'Or drop a project folder or .pptd file here',
   新建项目: 'New project',
-  '项目是一个文件夹。选择其中的 .pptd 清单打开，移动或分享时保留整个文件夹。':
-    'A project is a folder. Open its .pptd manifest; keep the whole folder when moving or sharing it.',
+  '项目是一个文件夹。可以打开文件夹或其中的 .pptd 清单；移动或分享时保留整个文件夹。':
+    'A project is a folder. Open the folder or its .pptd manifest; keep the whole folder when moving or sharing it.',
   '独立页面，持续演进。': 'Independent slides. Evolving stories.',
   '编辑 · 编排 · 演示': 'Edit · Arrange · Present',
   工作空间: 'Workspace',
@@ -62,11 +67,16 @@ localeSelect.addEventListener('change', () => {
     .then(applyLocale)
     .catch((error) => {
       localeSelect.value = previous;
-      statusElement.textContent = error instanceof Error ? error.message : String(error);
+      statusElement.textContent = errorMessage(error);
       statusElement.dataset.state = 'error';
     });
 });
 desktop.onLocaleChanged?.(applyLocale);
+
+function errorMessage(error) {
+  const message = error instanceof Error ? error.message : String(error);
+  return message.replace(/^Error invoking remote method 'huandeng:[^']+': Error: /, '');
+}
 
 function setBusy(value) {
   busy = value;
@@ -86,7 +96,7 @@ async function run(action, message) {
     statusElement.textContent = '';
     statusElement.dataset.state = 'idle';
   } catch (error) {
-    statusElement.textContent = error instanceof Error ? error.message : String(error);
+    statusElement.textContent = errorMessage(error);
     statusElement.dataset.state = 'error';
   } finally {
     setBusy(false);
@@ -94,7 +104,26 @@ async function run(action, message) {
 }
 
 openButton.addEventListener('click', () => run(() => desktop.openProject(), t('正在打开项目…')));
+folderButton.addEventListener('click', () =>
+  run(() => desktop.openProjectFolder(), t('正在打开项目…')),
+);
 newButton.addEventListener('click', () => run(() => desktop.newProject(), t('正在新建项目…')));
+document.addEventListener('dragover', (event) => {
+  if (!event.dataTransfer.types.includes('Files')) return;
+  event.preventDefault();
+  event.dataTransfer.dropEffect = busy ? 'none' : 'copy';
+  dropZone.dataset.active = String(!busy);
+});
+document.addEventListener('dragleave', (event) => {
+  if (!event.relatedTarget) delete dropZone.dataset.active;
+});
+document.addEventListener('drop', (event) => {
+  if (!event.dataTransfer.types.includes('Files')) return;
+  event.preventDefault();
+  delete dropZone.dataset.active;
+  const files = Array.from(event.dataTransfer.files);
+  if (files.length) void run(() => desktop.openDroppedProjects(files), t('正在打开项目…'));
+});
 desktop.onStatus(({ message }) => {
   if (!message && busy) return;
   statusElement.textContent = message;
@@ -106,6 +135,7 @@ if (desktop.platform === 'darwin') {
     key.textContent = key.textContent.replace('Ctrl', '⌘');
   }
   openButton.setAttribute('aria-keyshortcuts', 'Meta+O');
+  folderButton.setAttribute('aria-keyshortcuts', 'Meta+Shift+O');
   newButton.setAttribute('aria-keyshortcuts', 'Meta+N');
 }
 
@@ -185,7 +215,7 @@ desktop.onRecentsChanged?.(() => {
       renderProjects(projects);
     })
     .catch((error) => {
-      statusElement.textContent = error instanceof Error ? error.message : String(error);
+      statusElement.textContent = errorMessage(error);
     });
 });
 
@@ -196,6 +226,6 @@ void Promise.all([desktop.getLocale?.() ?? Promise.resolve('zh-CN'), desktop.rec
   })
   .catch((error) => {
     applyLocale(locale);
-    statusElement.textContent = error instanceof Error ? error.message : String(error);
+    statusElement.textContent = errorMessage(error);
     statusElement.dataset.state = 'error';
   });

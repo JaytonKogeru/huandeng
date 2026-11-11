@@ -191,9 +191,10 @@ export async function discoverSessions(environment = process.env, settings = {})
       const actual = await fs.realpath(snapshot.entry);
       if (!samePath(entry, actual, settings.platform ?? process.platform)) return;
       if (record.epoch && snapshot.epoch && record.epoch !== snapshot.epoch) return;
-      found.set(entry, {
+      found.set((settings.platform ?? process.platform) === 'win32' ? entry.toLowerCase() : entry, {
         entry,
         url,
+        ...(typeof snapshot.epoch === 'string' ? { epoch: snapshot.epoch } : {}),
         title: typeof snapshot.title === 'string' ? snapshot.title : path.basename(entry),
         writable: snapshot.writable === true,
       });

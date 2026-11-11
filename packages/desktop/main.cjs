@@ -21,6 +21,8 @@ const path = require('node:path');
 const { fileURLToPath } = require('node:url');
 const { createProject, pathKey, readPreferences, writePreferences } = require('./project.cjs');
 const { startService, stopService } = require('./service.cjs');
+const { resolveProjectEntry } = require('./project-entry.cjs');
+const { markProjectFolder } = require('./project-folder.cjs');
 const { agentConfiguration } = require('./agent-setup.cjs');
 const { version: editorVersion } = require('./release.json');
 const { migratePreferences } = require('./branding.cjs');
@@ -380,7 +382,7 @@ function notifyRendererLoss(project, message) {
 }
 
 async function loadProject(entry, options = {}) {
-  const canonical = await fs.realpath(path.resolve(entry));
+  const canonical = await resolveProjectEntry(entry);
   const entryKey = pathKey(canonical);
   const existing = tabs.find(entryKey);
   if (existing) {
@@ -431,18 +433,42 @@ async function showHome() {
   activateProject(null);
   send(homeView?.webContents, 'huandeng:recents-changed');
 }
-async function chooseProject(project = tabs.active) {
+async function chooseProject(project = tabs.active, folder = false) {
   const selection = await dialog.showOpenDialog(window, {
-    title: desktopText('打开 HUANDENG 项目'),
+    title: desktopText(folder ? '打开项目文件夹' : '打开 HUANDENG 项目'),
     defaultPath: project?.service.entryPath ?? preferences.lastProject ?? app.getPath('documents'),
-    filters: [{ name: desktopText('PPTD 项目'), extensions: ['pptd'] }],
-    properties: ['openFile', 'multiSelections'],
+    ...(folder ? {} : { filters: [{ name: desktopText('PPTD 项目'), extensions: ['pptd'] }] }),
+    properties: [folder ? 'openDirectory' : 'openFile', 'multiSelections'],
   });
   if (selection.canceled || !selection.filePaths.length) return null;
   let result;
   for (const entry of selection.filePaths) result = await loadProject(entry);
   return result;
 }
+async function identifyProjectFolder(project = tabs.active) {
+  if (!project || project.service.readOnly) return null;
+  const result = await markProjectFolder(path.dirname(project.service.entryPath), {
+    entryPath: project.service.entryPath,
+  });
+  const message =
+    result.status === 'marked'
+      ? '项目文件夹已添加 HUANDENG 图标。'
+      : result.status === 'skipped' &&
+          ['existing-customization', 'existing-icon'].includes(result.reason)
+        ? '已保留这个文件夹现有的图标设置。'
+        : result.status === 'unsupported'
+          ? '此系统暂不支持项目文件夹图标。项目文件仍可正常打开。'
+          : '未能设置项目文件夹图标。幻灯内容未改变。';
+  await dialog.showMessageBox(window, {
+    type: result.status === 'unavailable' ? 'warning' : 'info',
+    title: desktopText('项目文件夹标识'),
+    message: desktopText(message),
+    detail: result.message ?? path.dirname(project.service.entryPath),
+    buttons: [desktopText('关闭')],
+  });
+  return result;
+}
+
 async function newProject() {
   const selection = await dialog.showSaveDialog(window, {
     title: desktopText('新建 HUANDENG 项目文件夹 · 内含 deck.pptd'),
@@ -590,9 +616,14 @@ function buildMenu() {
           click: menuAction(newProject),
         },
         {
-          label: desktopText('打开项目…'),
+          label: desktopText('打开 PPTD 文件…'),
           accelerator: 'CmdOrCtrl+O',
           click: menuAction(chooseProject),
+        },
+        {
+          label: desktopText('打开项目文件夹…'),
+          accelerator: 'CmdOrCtrl+Shift+O',
+          click: menuAction(() => chooseProject(tabs.active, true)),
         },
         {
           label: desktopText('最近项目'),
@@ -605,6 +636,11 @@ function buildMenu() {
           label: desktopText('在文件管理器中显示'),
           enabled: Boolean(activeService),
           click: menuAction(() => revealPath()),
+        },
+        {
+          label: desktopText('设置项目文件夹图标…'),
+          enabled: Boolean(activeService && !activeService.readOnly),
+          click: menuAction(identifyProjectFolder),
         },
         {
           label: desktopText('回到开始页'),
@@ -760,6 +796,22 @@ function registerIpc() {
   handle('huandeng:open-project', (sender) =>
     operate(() => chooseProject(sender.project ?? tabs.active)),
   );
+  handle('huandeng:open-project-folder', (sender) =>
+    operate(() => chooseProject(sender.project ?? tabs.active, true)),
+  );
+  handle('huandeng:identify-project-folder', (sender) =>
+    operate(() => identifyProjectFolder(requireProject(sender))),
+  );
+  handle('huandeng:open-dropped-projects', (sender, paths) => {
+    if (sender.project || !Array.isArray(paths) || !paths.length || paths.length > 12)
+      throw new Error('Drop up to 12 project folders or .pptd files on Home.');
+    return operate(async () => {
+      const entries = await Promise.all(paths.map((entry) => resolveProjectEntry(entry)));
+      let result;
+      for (const entry of [...new Set(entries)]) result = await loadProject(entry);
+      return result;
+    });
+  });
   handle('huandeng:new-project', () => operate(newProject));
   handle('huandeng:get-context', (sender) => context(sender.project));
   handle('huandeng:get-workspace', () => workspaceState());
@@ -971,7 +1023,8 @@ function openLaunchRequest(requested) {
   if (window.isMinimized()) window.restore();
   window.focus();
   void operate(async () => {
-    if (requested.error) throw new Error('The --entry option requires a .pptd file path.');
+    if (requested.error)
+      throw new Error('The --entry option requires a .pptd file or project folder path.');
     if (requested.entry) return loadProject(requested.entry, requested);
     if (requested.welcome) return showHome();
   }).catch(showError);
@@ -1018,7 +1071,7 @@ else {
       registerIpc();
       await createWindow();
       const requested = startupRequest;
-      if (!requested.welcome)
+      if (!requested.welcome && !requested.error)
         for (const item of restore.slice(0, 12)) {
           if (typeof item?.entryPath !== 'string') continue;
           await operate(() =>
@@ -1032,7 +1085,8 @@ else {
           loadProject(entry, { readOnly: requested.entry ? requested.readOnly : lastReadOnly }),
         ).catch(showError);
       else await operate(showHome);
-      if (requested.error) showError(new Error('The --entry option requires a .pptd file path.'));
+      if (requested.error)
+        showError(new Error('The --entry option requires a .pptd file or project folder path.'));
       launchReady = true;
       for (const pending of pendingLaunchRequests.splice(0)) openLaunchRequest(pending);
     })
