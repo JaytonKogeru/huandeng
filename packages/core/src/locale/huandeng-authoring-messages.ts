@@ -3,6 +3,23 @@ export const authoringEnglish = {
 } as const;
 
 export const authoringChinese = {
+  'Project rules': '项目规则',
+  'Refresh Project rules': '刷新项目规则',
+  'Source: AGENTS.md at the Project root': '来源：项目根目录的 AGENTS.md',
+  'Open AGENTS.md': '打开 AGENTS.md',
+  'AGENTS.md is empty.': 'AGENTS.md 目前为空。',
+  'Only part of AGENTS.md is shown here. Open the file to read the full text.':
+    '此处只显示部分 AGENTS.md；打开文件可阅读完整原文。',
+  'No AGENTS.md was found at the Project root.': '项目根目录中没有 AGENTS.md。',
+  'Project rules are unavailable in the current snapshot.': '当前项目快照未提供可读的规则。',
+  'Linked AGENTS.md files are not read.': '无法读取作为链接的 AGENTS.md。',
+  'AGENTS.md is not a regular file.': 'AGENTS.md 不是普通文件。',
+  'AGENTS.md does not resolve to the Project root.': 'AGENTS.md 未指向项目根目录内的文件。',
+  'AGENTS.md exceeds the guidance size limit. Open the file to read it.':
+    'AGENTS.md 超出了规则读取上限；请打开文件阅读。',
+  'AGENTS.md changed while it was being read.': 'AGENTS.md 在读取期间发生了变化。',
+  'AGENTS.md is not valid UTF-8 text.': 'AGENTS.md 不是有效的 UTF-8 文本。',
+  'AGENTS.md could not be read.': '无法读取 AGENTS.md。',
   'Start this slide': '从这一页开始',
   'Add a title': '添加标题',
   'Set page intent': '写页面意图',

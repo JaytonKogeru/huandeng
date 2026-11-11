@@ -24,7 +24,9 @@ it('initializes a portable parseable Project and refuses to overwrite it', async
     'mission',
     'reasoning input',
     'native table',
-    'bilingual editions',
+    'bilingual correspondence',
+    'Audit → Spec → Implement → Validate → Release',
+    'representative composition plans (Frame)',
     'acknowledgments',
   ])
     expect(guidance).toContain(requirement);

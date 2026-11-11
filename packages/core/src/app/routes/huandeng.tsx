@@ -54,6 +54,7 @@ import { PanelResizeHandle } from '@/components/pptd/panel-resize-handle';
 import { type PresentationControls, PresentationView } from '@/components/pptd/presentation-view';
 import { ProjectOverview } from '@/components/pptd/project-overview';
 import { ProjectPanel } from '@/components/pptd/project-panel';
+import { ProjectRules } from '@/components/pptd/project-rules';
 import { PptdProjectTree } from '@/components/pptd/project-tree';
 import { RecipePanel } from '@/components/pptd/recipe-panel';
 import type { PptdTheme } from '@/components/pptd/renderer';
@@ -2257,6 +2258,12 @@ export function HuandengEditor() {
             </Button>
           </div>
           <div className={leftTab === 'project' ? 'min-h-0 flex-1 overflow-y-auto' : 'hidden'}>
+            <ProjectRules
+              guidance={snapshot.projectGuidance}
+              onOpenFile={openFilePreview}
+              refreshing={busy}
+              onRefresh={() => void run(async () => client.refresh())}
+            />
             <ProjectOverview
               snapshot={snapshot}
               selectedPageId={selectedPageId}
@@ -3096,6 +3103,11 @@ export function HuandengEditor() {
                 backend={backend}
                 path={path}
                 active={filePreviewPath === path}
+                refreshKey={
+                  path === 'AGENTS.md'
+                    ? (snapshot.projectGuidance?.revision ?? snapshot.projectGuidance?.status)
+                    : undefined
+                }
                 onClose={() => closeFilePreview(path)}
                 onShowProperties={() => setFilePreviewPath(null)}
               />

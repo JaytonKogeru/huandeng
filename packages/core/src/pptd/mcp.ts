@@ -7,8 +7,18 @@ import {
   ReadResourceRequestSchema,
   type Tool,
 } from '@modelcontextprotocol/sdk/types.js';
+import huandengPluginManifest from '../../../../plugins/huandeng/plugin.json';
 import { agentGuide, agentGuides } from './agent-guide';
+import { acquireEditorCapture, acquireImage } from './asset-acquisition';
 import type { HuandengClient } from './client.ts';
+import {
+  captureDialogs,
+  captureInspectors,
+  captureLocales,
+  captureSidebars,
+  captureViewports,
+  captureViews,
+} from './editor-capture-options';
 import { canonicalToolName } from './tool-names.ts';
 import type { TransactionRequest } from './types.ts';
 
@@ -300,6 +310,62 @@ const tools: Tool[] = [
     annotations: read,
   },
   {
+    name: 'huandeng_asset_import',
+    description:
+      'Import an original image into this bound Project without inserting or changing slides. Supply a credential-free public HTTPS image URL (16 MiB, no private/reserved addresses) or original base64 bytes (32 MiB). Returns the real image, content-addressed asset path, dimensions and source. Each author must choose and acquire their own source when independence is required.',
+    inputSchema: {
+      ...objectSchema(
+        {
+          deckId: { type: 'string' },
+          name: { type: 'string', minLength: 1, maxLength: 180 },
+          base64: { type: 'string', maxLength: 45 * 1024 * 1024 },
+          url: { type: 'string', maxLength: 4096 },
+        },
+        ['deckId', 'name'],
+      ),
+      oneOf: [{ required: ['base64'] }, { required: ['url'] }],
+    },
+    annotations: { readOnlyHint: false, destructiveHint: false, openWorldHint: true },
+  },
+  {
+    name: 'huandeng_editor_capture',
+    description:
+      'Capture the real complete Editor interface for this bound Project in an isolated read-only browser context, then import the PNG asset. Select existing page/object IDs and enumerated workspace/sidebar/inspector states, or one Export dialog, named History version or actual Activity receipt Review. Returns the actual image, source state and reusable asset path. Does not save pages, change the human selection, accept scripts or visit caller-supplied URLs.',
+    inputSchema: objectSchema(
+      {
+        deckId: { type: 'string' },
+        ...pageProperty,
+        objectId: { type: 'string' },
+        dialog: {
+          type: 'string',
+          enum: [...captureDialogs],
+          description: 'Open the existing Export dialog without starting an export.',
+        },
+        historyVersionId: {
+          type: 'string',
+          minLength: 1,
+          maxLength: 160,
+          description: 'Select an existing named version of this page in History; no restore.',
+        },
+        reviewOperationId: {
+          type: 'string',
+          minLength: 1,
+          maxLength: 160,
+          description:
+            'Open a real saved receipt affecting this page, already visible in this Project Activity. Missing or mismatched receipts fail.',
+        },
+        view: { type: 'string', enum: [...captureViews] },
+        sidebar: { type: 'string', enum: [...captureSidebars] },
+        inspector: { type: 'string', enum: [...captureInspectors] },
+        locale: { type: 'string', enum: [...captureLocales] },
+        viewport: { type: 'string', enum: Object.keys(captureViewports) },
+        name: { type: 'string', minLength: 1, maxLength: 180 },
+      },
+      ['deckId'],
+    ),
+    annotations: { readOnlyHint: false, destructiveHint: false, openWorldHint: false },
+  },
+  {
     name: 'huandeng_assets_list',
     description:
       'Search project media/assets and current Main-page usages, including original image names and missing file locations. Results are paginated; honor hasMore and truncated. Unreferenced means current Main only, not safe to delete. This tool does not change files.',
@@ -407,7 +473,7 @@ function queryPath(endpoint: string, args: Record<string, unknown>): string {
 
 export function createMcpServer(client: HuandengClient) {
   const server = new Server(
-    { name: 'HUANDENG Plugin', version: '0.9.0' },
+    { name: 'HUANDENG Plugin', version: huandengPluginManifest.version },
     {
       capabilities: { tools: {}, resources: {} },
       instructions:
@@ -510,6 +576,39 @@ export function createMcpServer(client: HuandengClient) {
         case 'huandeng_design_audit':
           result = await client.request(queryPath('/design-audit', args));
           break;
+        case 'huandeng_asset_import':
+        case 'huandeng_editor_capture': {
+          const asset = await (canonicalToolName(request.params.name) === 'huandeng_asset_import'
+            ? acquireImage
+            : acquireEditorCapture)(client, args);
+          const imageUrl = new URL('/__pptd/asset', client.url);
+          imageUrl.searchParams.set('path', asset.path);
+          const response = await fetch(imageUrl);
+          if (!response.ok) throw new Error('Could not read the acquired image.');
+          const mimeType = response.headers.get('content-type')?.split(';')[0] ?? 'image/png';
+          if (mimeType === 'image/svg+xml')
+            return {
+              content: [
+                {
+                  type: 'text' as const,
+                  text: JSON.stringify({
+                    ...asset,
+                    preview: 'Use huandeng_render after placing this original SVG.',
+                  }),
+                },
+              ],
+            };
+          return {
+            content: [
+              {
+                type: 'image' as const,
+                mimeType,
+                data: Buffer.from(await response.arrayBuffer()).toString('base64'),
+              },
+              { type: 'text' as const, text: JSON.stringify(asset) },
+            ],
+          };
+        }
         case 'huandeng_assets_list':
           result = await client.request(queryPath('/assets', args));
           break;

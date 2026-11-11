@@ -1,6 +1,7 @@
 import { Client } from '@modelcontextprotocol/sdk/client/index.js';
 import { InMemoryTransport } from '@modelcontextprotocol/sdk/inMemory.js';
 import { afterEach, describe, expect, it, vi } from 'vitest';
+import huandengPluginManifest from '../../../../plugins/huandeng/plugin.json';
 import { HuandengClient } from './client';
 import { createMcpServer } from './mcp';
 
@@ -26,6 +27,15 @@ async function connection() {
 }
 
 describe('HUANDENG MCP project and Story context', () => {
+  it('identifies the canonical plugin release during initialization', async () => {
+    const { client, request } = await connection();
+    expect(client.getServerVersion()).toEqual({
+      name: 'HUANDENG Plugin',
+      version: huandengPluginManifest.version,
+    });
+    expect(request).not.toHaveBeenCalled();
+  });
+
   it('exposes exact operation review as a read-only Project-scoped tool', async () => {
     const { client, request } = await connection();
     const { tools } = await client.listTools();
@@ -72,7 +82,7 @@ describe('HUANDENG MCP project and Story context', () => {
   it('advertises the three context tools as read-only alongside the compatible writer tools', async () => {
     const { client } = await connection();
     const { tools } = await client.listTools();
-    expect(tools).toHaveLength(22);
+    expect(tools).toHaveLength(24);
     for (const name of [
       'huandeng_story_briefing',
       'huandeng_presentation_read',
@@ -104,6 +114,13 @@ describe('HUANDENG MCP project and Story context', () => {
       text: expect.stringContaining('previewHash'),
     });
     expect(guide.contents[0]).toMatchObject({ text: expect.stringContaining('huandeng_review') });
+    const operations = await client.readResource({ uri: 'huandeng://guide/operations' });
+    expect(operations.contents[0]).toMatchObject({
+      text: expect.stringContaining('"crop.left":0.25'),
+    });
+    expect(operations.contents[0]).toMatchObject({
+      text: expect.stringContaining('"fit.mode":"contain"'),
+    });
     expect(request).not.toHaveBeenCalled();
     const transaction = {
       requestId: 'proposal',
@@ -144,6 +161,29 @@ describe('HUANDENG MCP project and Story context', () => {
     expect(request).toHaveBeenLastCalledWith('/video/cancel', { jobId: 'job/id' });
     await client.callTool({ name: 'huandeng_export', arguments: { format: 'pptx' } });
     expect(request).toHaveBeenLastCalledWith('/export', { format: 'pptx' });
+  });
+
+  it('advertises bound asset acquisition without arbitrary browser or filesystem input', async () => {
+    const { client } = await connection();
+    const { tools } = await client.listTools();
+    const capture = tools.find((tool) => tool.name === 'huandeng_editor_capture');
+    expect(capture).toMatchObject({
+      annotations: { readOnlyHint: false, destructiveHint: false, openWorldHint: false },
+      inputSchema: { required: ['deckId'], additionalProperties: false },
+    });
+    expect(capture?.inputSchema.properties).not.toHaveProperty('url');
+    expect(capture?.inputSchema.properties).not.toHaveProperty('script');
+    expect(capture?.inputSchema.properties).not.toHaveProperty('path');
+    expect(capture?.inputSchema.properties).toHaveProperty(
+      'dialog',
+      expect.objectContaining({ enum: ['none', 'export'] }),
+    );
+    expect(capture?.inputSchema.properties).toHaveProperty('historyVersionId');
+    expect(capture?.inputSchema.properties).toHaveProperty('reviewOperationId');
+    expect(tools.find((tool) => tool.name === 'huandeng_asset_import')).toMatchObject({
+      annotations: { readOnlyHint: false, destructiveHint: false, openWorldHint: true },
+      inputSchema: { required: ['deckId', 'name'], additionalProperties: false },
+    });
   });
 
   it('routes scoped Story, resolved presentations and paginated assets to the active writer', async () => {

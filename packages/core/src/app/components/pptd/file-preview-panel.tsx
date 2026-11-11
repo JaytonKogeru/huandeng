@@ -11,7 +11,7 @@ export interface ProjectFilePreviewPanelProps {
   path: string;
   onClose: () => void;
   onShowProperties?: () => void;
-  refreshKey?: number;
+  refreshKey?: string | number;
   active?: boolean;
 }
 
