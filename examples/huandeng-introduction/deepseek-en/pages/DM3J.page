@@ -5,12 +5,9 @@ elements:
   - elementId: p17-eyebrow
     elementType: text
     bounds:
-      - 64
-      - 38
-      - 300
-      - 16
+        [64,18,300,14]
     content:
-      text: 07 · THE WORKSPACE
+      text: "02 / THE EDITOR"
       fontSize: 10
       fontFamily: Consolas
       color: "#B43C26"
@@ -22,13 +19,10 @@ elements:
     elementType: text
     role: title
     bounds:
-      - 64
-      - 58
-      - 430
-      - 46
+        [64,44,760,42]
     content:
       text: The work leaves as slides.
-      fontSize: 32
+      fontSize: 30
       fontFamily: Georgia
       color: "#17181A"
       lineHeight: 1.1
@@ -38,9 +32,9 @@ elements:
   - elementId: p17-body
     elementType: text
     bounds:
-        [64,150,420,170]
+        [64,104,330,300]
     content:
-      text: "The project folder is the editable source. PDF for the room; PPTX for the co-author; MP4 for timed playback. Export reads the saved pages, not a screenshot."
+      text: "The project folder is the editable source. Export reads the saved pages, not a screenshot.\n\nPPTX — editable text, images, shapes, tables; supported charts and equations.\nPDF — static pages for the room or archive.\nMP4 — timed click builds, 720p or 1080p, no audio."
       fontSize: 16
       fontFamily: Segoe UI
       color: "#3A3833"
@@ -51,38 +45,30 @@ elements:
   - elementId: p17-label
     elementType: text
     bounds:
-      - 520
-      - 100
-      - 376
-      - 16
+        [430,88,520,16]
     content:
-      text: EXPORT
-      fontSize: 10
+      text: "REAL EXPORT DIALOG"
+      fontSize: 9.5
       fontFamily: Consolas
       color: "#B43C26"
-      letterSpacing: 1.6
+      letterSpacing: 1.4
       align:
         - left
         - top
   - elementId: p17-shot
     elementType: image
     bounds:
-      - 520
-      - 128
-      - 376
-      - 177
-    src: media/imported/ea2c787b8b58f25cb8655c5df4926889bad3ebd4b293d24df5e18a54944be3eb.png
-    sourceName: en-export-4x.png
+        [430,112,520,292]
+    src: "media/imported/7c7ee2715718cbc3a6ad656a9d8878decdd7ae2213bc3d9db07f64f076f97381.png"
+    sourceName: "deepseek-en-export-current-1920.png"
     fit:
       mode: contain
+    "crop": {"left":0.345, "top": 0.36, "right": 0.34, "bottom": 0.34}
   - elementId: p17-frame
     elementType: shape
     shapeName: rect
     bounds:
-      - 520
-      - 128
-      - 376
-      - 177
+        [430,112,520,292]
     border:
       color: "#D9D4C8"
       width: 1
@@ -90,12 +76,9 @@ elements:
   - elementId: p17-caption
     elementType: text
     bounds:
-      - 520
-      - 316
-      - 376
-      - 40
+        [430,412,520,30]
     content:
-      text: "The real Export dialog: format and range. Public example project."
+      text: "Real Export dialog for this project, 2026-11-11."
       fontSize: 10.5
       fontFamily: Consolas
       color: "#918B7E"
@@ -119,50 +102,6 @@ elements:
       align:
         - right
         - top
-  - elementId: p17-table
-    elementType: table
-    bounds:
-      - 64
-      - 340
-      - 832
-      - 148
-    columnWidths:
-      - 0.22
-      - 0.78
-    rows:
-      - - text: Output
-        - text: What it carries
-      - - text: PPTD project
-        - text: pages, notes, Story, sections, presentations, named versions
-      - - text: PPTX
-        - text: native text, images, shapes, tables; supported charts and equations; animation static
-      - - text: PDF
-        - text: static pages for sharing and archiving
-      - - text: MP4
-        - text: timed click builds, 720p or 1080p, no audio
-    style:
-      cellStyle:
-        fontFamily: Segoe UI
-        fontSize: 10.5
-        lineHeight: 1.25
-        color: "#1C2321"
-        align:
-          - left
-          - middle
-        border:
-          - null
-          - null
-          - width: 1
-            color: "#D9D4C8"
-            style: solid
-          - null
-      firstRowStyle:
-        fontSize: 9.5
-        bold: true
-        color: "#625E55"
-      firstColumnStyle:
-        color: "#B43C26"
-        bold: true
   - elementId: p17-mark
     elementType: image
     bounds:
@@ -182,7 +121,7 @@ elements:
       - 300
       - 12
     content:
-      text: HUANDENG / DELIVERY
+      text: "HUANDENG / EXPORT"
       fontFamily: Consolas
       fontSize: 9
       color: "#918B7E"
@@ -200,10 +139,10 @@ elements:
         - right
         - top
       color: "#8C8678"
-      fontFamily: Segoe UI
+      fontFamily: "Consolas"
       fontSize: 9.5
       letterSpacing: 0.4
-      text: English · DeepSeek V4.1 Flash 1017
+      text: "english deepseek v4.1flash1017"
     elementId: attribution-watermark
     elementType: text
 notes: The work still has to leave the editor. PDF for the room. Editable PPTX for whoever has to keep it. MP4 when the deck has to play itself. Export reads the saved pages, not a screenshot of the editor, and the PPTX is a real editable file, not a folder of slide images. The format is a working format, not a lock-in.

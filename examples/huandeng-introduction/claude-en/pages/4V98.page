@@ -24,10 +24,7 @@ elements:
     elementType: shape
     shapeName: rect
     bounds:
-      - 55
-      - 87
-      - 522
-      - 390
+        [55,139,454,339]
     fill:
       type: solid
       color: "#FFFFFF"
@@ -37,22 +34,41 @@ elements:
   - elementId: review-shot
     elementType: image
     bounds:
+        [56,140,452,337]
+    src: "media/independent-20261111/ui/review-dialog-mpl.png"
+    sourceName: "review-dialog-mpl.png"
+    fit:
+      mode: contain
+  - elementId: activity-frame
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 55
+      - 87
+      - 322
+      - 46
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      width: 1
+      color: "#C7CEC9"
+  - elementId: activity-shot
+    elementType: image
+    bounds:
       - 56
       - 88
-      - 520
-      - 388
-    src: media/imported/9d96638c304c763194540898ff5057a35a7ec589a0fb8bc71fc927182e992d79.png
-    sourceName: en-operation-review-4x.png
+      - 320
+      - 44
+    src: "media/independent-20261111/ui/activity-receipt-mpl.png"
+    sourceName: "activity-receipt-mpl.png"
     fit:
       mode: contain
   - elementId: m1
     elementType: shape
     shapeName: ellipse
     bounds:
-      - 150
-      - 90
-      - 20
-      - 20
+        [170,112,20,20]
     fill:
       type: solid
       color: "#2E6B5E"
@@ -62,10 +78,7 @@ elements:
   - elementId: m1t
     elementType: text
     bounds:
-      - 150
-      - 90
-      - 20
-      - 20
+        [170,112,20,20]
     content:
       text: "1"
       fontFamily: Arial
@@ -80,10 +93,7 @@ elements:
     elementType: shape
     shapeName: ellipse
     bounds:
-      - 448
-      - 168
-      - 20
-      - 20
+        [356,162,20,20]
     fill:
       type: solid
       color: "#2E6B5E"
@@ -93,10 +103,7 @@ elements:
   - elementId: m2t
     elementType: text
     bounds:
-      - 448
-      - 168
-      - 20
-      - 20
+        [356,162,20,20]
     content:
       text: "2"
       fontFamily: Arial
@@ -111,10 +118,7 @@ elements:
     elementType: shape
     shapeName: ellipse
     bounds:
-      - 540
-      - 192
-      - 20
-      - 20
+        [397,207,20,20]
     fill:
       type: solid
       color: "#2E6B5E"
@@ -124,10 +128,7 @@ elements:
   - elementId: m3t
     elementType: text
     bounds:
-      - 540
-      - 192
-      - 20
-      - 20
+        [397,207,20,20]
     content:
       text: "3"
       fontFamily: Arial
@@ -142,7 +143,7 @@ elements:
     elementType: shape
     shapeName: ellipse
     bounds:
-        [520,268,20,20]
+        [446,227,20,20]
     fill:
       type: solid
       color: "#2E6B5E"
@@ -152,7 +153,7 @@ elements:
   - elementId: m4t
     elementType: text
     bounds:
-        [520,268,20,20]
+        [446,227,20,20]
     content:
       text: "4"
       fontFamily: Arial
@@ -166,12 +167,9 @@ elements:
   - elementId: k1h
     elementType: text
     bounds:
-      - 604
-      - 92
-      - 300
-      - 20
+        [540,92,364,20]
     content:
-      text: 1  Receipt
+      text: "1  Open it from Activity"
       fontFamily: Arial
       fontSize: 15
       lineHeight: 1.3
@@ -183,12 +181,9 @@ elements:
   - elementId: k1d
     elementType: text
     bounds:
-      - 626
-      - 114
-      - 278
-      - 40
+        [562,114,342,40]
     content:
-      text: Which operation, in which project, and when
+      text: "Each saved receipt lists its slides and a Review changes button"
       fontFamily: Arial
       fontSize: 14
       lineHeight: 1.3
@@ -199,12 +194,9 @@ elements:
   - elementId: k2h
     elementType: text
     bounds:
-      - 604
-      - 170
-      - 300
-      - 20
+        [540,170,364,20]
     content:
-      text: 2  Before / After
+      text: "2  Receipt"
       fontFamily: Arial
       fontSize: 15
       lineHeight: 1.3
@@ -216,12 +208,9 @@ elements:
   - elementId: k2d
     elementType: text
     bounds:
-      - 626
-      - 192
-      - 278
-      - 40
+        [562,192,342,40]
     content:
-      text: The real slide on both sides, changed object outlined
+      text: "Which operation, by whom and when: here claude-code, 10:53:36 PM"
       fontFamily: Arial
       fontSize: 14
       lineHeight: 1.3
@@ -232,12 +221,9 @@ elements:
   - elementId: k3h
     elementType: text
     bounds:
-      - 604
-      - 248
-      - 300
-      - 20
+        [540,248,364,20]
     content:
-      text: 3  Saved changes
+      text: "3  Before / After"
       fontFamily: Arial
       fontSize: 15
       lineHeight: 1.3
@@ -249,12 +235,9 @@ elements:
   - elementId: k3d
     elementType: text
     bounds:
-      - 626
-      - 270
-      - 278
-      - 40
+        [562,270,342,40]
     content:
-      text: Each object and field written, here two content.text edits
+      text: "The real slide in both states, at the same scale"
       fontFamily: Arial
       fontSize: 14
       lineHeight: 1.3
@@ -265,12 +248,9 @@ elements:
   - elementId: k4h
     elementType: text
     bounds:
-      - 604
-      - 326
-      - 300
-      - 20
+        [540,326,364,20]
     content:
-      text: 4  Story and scope
+      text: "4  Saved changes"
       fontFamily: Arial
       fontSize: 15
       lineHeight: 1.3
@@ -282,12 +262,9 @@ elements:
   - elementId: k4d
     elementType: text
     bounds:
-      - 626
-      - 348
-      - 278
-      - 40
+        [562,348,342,40]
     content:
-      text: The slide's purpose and every talk that uses it
+      text: "Every object and field written: the chart and its axis titles removed, the figure added, title, lead, notes, Story"
       fontFamily: Arial
       fontSize: 14
       lineHeight: 1.3
@@ -298,29 +275,23 @@ elements:
   - elementId: readonly
     elementType: text
     bounds:
-      - 604
-      - 410
-      - 300
-      - 60
+        [540,410,364,60]
     content:
       text: Review is read-only. Restoring a slide is a separate, explicit History action.
       fontFamily: Arial
       fontSize: 14
       lineHeight: 1.35
       color: "#2E6B5E"
-      bold: true
+      bold: false
       align:
         - left
         - top
   - elementId: caption
     elementType: text
     bounds:
-      - 56
-      - 482
-      - 520
-      - 16
+        [56,482,452,16]
     content:
-      text: Review saved changes dialog. Real capture, public example project.
+      text: "Activity panel and the Review dialog for operation 8d3042fd. Real captures, this project."
       fontFamily: Arial
       fontSize: 11
       lineHeight: 1.3
@@ -335,7 +306,7 @@ elements:
       - 505
       - 16
       - 16
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    src: "media/independent-20261111/brand/huandeng.png"
     sourceName: huandeng.png
     fit:
       mode: contain
@@ -380,7 +351,7 @@ elements:
       - 176
       - 16
     content:
-      text: English · Claude Opus 5.5
+      text: "english claude opus5.5"
       fontFamily: Arial
       fontSize: 10
       lineHeight: 1.2
@@ -388,4 +359,4 @@ elements:
       align:
         - right
         - middle
-notes: "After the change is saved, anyone can open its record. 1, the receipt says which operation it was, in which project and when. 2, Before and After show the actual slide, with the changed object outlined. 3, Saved changes lists every object and field that was written; here, the text of the title and of the lead. 4, the panel also shows the slide's Story and where the slide is used: one live reference in the Quick introduction presentation, no pinned ones. This dialog is read-only. If you want the old slide back, you restore a named version from History, which affects only that slide. Changes from people and from agents arrive through the same writer, so they are reviewed in the same way."
+notes: "After the change is saved, anyone can open its record, and this is where to find it. 1, the Activity panel lists every saved writer receipt with the slides it touched; Review changes opens it. 2, the receipt says which operation it was, who made it and when: here, Claude Code at 10:53 in the evening. 3, Before and After show the actual slide in both states. 4, Saved changes lists every object and field that was written: the slide chart and its two axis titles removed, the new figure added, the title, the lead, the speaker notes and the Story. This dialog is read-only. If you want the old slide back, you restore a named version from History, which affects only that slide. Changes from people and from agents arrive through the same writer, so they are reviewed in the same way."

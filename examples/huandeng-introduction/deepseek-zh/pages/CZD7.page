@@ -96,7 +96,7 @@ elements:
       - 260
       - 20
     content:
-      text: "HUANDENG 0.19 · 2026"
+      text: "HUANDENG 0.19, 2026"
       fontSize: 10
       fontFamily:
         ea: Microsoft YaHei
@@ -123,6 +123,21 @@ elements:
       align:
         - left
         - top
+  - elementId: cover-dna-plate
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 594
+      - 66
+      - 330
+      - 330
+    fill:
+      type: solid
+      color: "#F7F5F0"
+    border:
+      color: "#F7F5F0"
+      width: 0
+      style: solid
   - elementId: cover-dna
     elementType: image
     bounds:
@@ -130,8 +145,8 @@ elements:
       - 76
       - 310
       - 310
-    src: media/imported/342088ed88ab8fffc8ce2651cd6fbf183244f5069c7907702a957eb9cf9fa18a.png
-    sourceName: dna-duplex-end.png
+    src: "media/imported/4d9fa07ff878f8ab785c00869eb9a9149b6c3c85e5ca57a56855da7d0665da38.jpg"
+    sourceName: "pdb-1bna-rcsb-official.jpg"
     fit:
       mode: contain
   - elementId: cover-dna-note
@@ -142,9 +157,7 @@ elements:
       - 310
       - 38
     content:
-      text: |-
-        PDB 1BNA · Dickerson–Drew DNA dodecamer
-        正交投影；链 A 青绿，链 B 赭色。
+      text: "RCSB PDB 1BNA · Dickerson–Drew DNA dodecamer\n官方结构图；链 A 青绿，链 B 赭色。"
       fontSize: 9.2
       fontFamily:
         ea: Microsoft YaHei
@@ -168,23 +181,6 @@ elements:
     border:
       color: "#3A493F"
       width: 0
-  - elementId: cover-no
-    elementType: text
-    bounds:
-      - 856
-      - 490
-      - 56
-      - 18
-    content:
-      text: "01 / 22"
-      fontSize: 9.5
-      fontFamily:
-        ea: Microsoft YaHei
-        latin: Arial
-      color: "#7E9184"
-      align:
-        - right
-        - top
   - elementId: model-watermark
     elementType: text
     bounds:
@@ -193,7 +189,7 @@ elements:
       - 222
       - 14
     content:
-      text: Chinese · DeepSeek V4.1 Flash 1017
+      text: "chinese deepseek v4.1flash1017"
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial

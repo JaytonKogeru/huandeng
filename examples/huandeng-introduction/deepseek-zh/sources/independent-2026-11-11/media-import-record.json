@@ -1,0 +1,21 @@
+{
+  "method": "content-addressed placement into media/imported; no existing file overwritten or removed",
+  "records": [
+    {
+      "sourceFile": "sources/independent-2026-11-11/paired-c1-distances-deepseek-zh-2026-11-11.png",
+      "sourceSha256": "704bfa992d6df4f7f2f53fd2d83a34bf09fe28ca55c2798fff5871aa3eecb6b4",
+      "projectAsset": "media/imported/704bfa992d6df4f7f2f53fd2d83a34bf09fe28ca55c2798fff5871aa3eecb6b4.png",
+      "alreadyPresent": false,
+      "origin": "own matplotlib chart from recomputed distances; script sources/independent-2026-11-11/acquire.py",
+      "placedAt": "2026-11-11T13:31:55.277889+00:00"
+    },
+    {
+      "sourceFile": "sources/independent-2026-11-11/1bna-pdbe-vertical.png",
+      "sourceSha256": "a61ef1eacf2dd49461a13d2f2dbef9811f894311463b8627ae79634dd4c584b5",
+      "projectAsset": "media/imported/a61ef1eacf2dd49461a13d2f2dbef9811f894311463b8627ae79634dd4c584b5.png",
+      "alreadyPresent": true,
+      "origin": "PDBe 1BNA deposited-chain front image, retrieved 2026-11-11, composited on white, whitespace cropped, rotated 90 degrees; sources/independent-2026-11-11/derive_crops.py",
+      "placedAt": "2026-11-11T13:31:55.278578+00:00"
+    }
+  ]
+}

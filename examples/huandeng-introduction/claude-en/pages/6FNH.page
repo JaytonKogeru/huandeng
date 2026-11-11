@@ -28,7 +28,7 @@ elements:
       - 412
       - 22
     content:
-      text: Before
+      text: "Before: a chart object drawn inside the slide"
       fontFamily: Arial
       fontSize: 15
       lineHeight: 1.3
@@ -45,7 +45,7 @@ elements:
       - 412
       - 22
     content:
-      text: After
+      text: "After: a Matplotlib figure drawn from the data"
       fontFamily: Arial
       fontSize: 15
       lineHeight: 1.3
@@ -58,10 +58,7 @@ elements:
     elementType: shape
     shapeName: rect
     bounds:
-      - 55
-      - 115
-      - 414
-      - 235
+        [55,115,414,234]
     fill:
       type: solid
       color: "#FFFFFF"
@@ -71,22 +68,16 @@ elements:
   - elementId: before-shot
     elementType: image
     bounds:
-      - 56
-      - 116
-      - 412
-      - 233
-    src: media/imported/65fb18be9fabeffebdb25baa3be9de52eacc4f2a811591962df37d44a0d9a761.png
-    sourceName: en-edit-before-4x.png
+        [56,116,412,232]
+    src: "media/independent-20261111/ui/review-slide-before.png"
+    sourceName: "review-slide-before.png"
     fit:
       mode: contain
   - elementId: after-frame
     elementType: shape
     shapeName: rect
     bounds:
-      - 491
-      - 115
-      - 414
-      - 235
+        [491,115,414,234]
     fill:
       type: solid
       color: "#FFFFFF"
@@ -96,56 +87,21 @@ elements:
   - elementId: after-shot
     elementType: image
     bounds:
-      - 492
-      - 116
-      - 412
-      - 233
-    src: media/imported/eff7df59ca30395ee85337cd02f9183e4a88843dc8ca7005778705ae82d4e950.png
-    sourceName: en-edit-after-4x.png
+        [492,116,412,232]
+    src: "media/independent-20261111/ui/review-slide-after.png"
+    sourceName: "review-slide-after.png"
     fit:
       mode: contain
-  - elementId: arrow
-    elementType: line
-    bounds:
-      - 470
-      - 231
-      - 20
-      - 2
-    viewBox:
-      - 20
-      - 2
-    points: 0,1 20,1
-    border:
-      width: 1.5
-      color: "#2E6B5E"
-      style: solid
-    arrow:
-      - null
-      - arrow
   - elementId: diff
     elementType: table
     bounds:
-      - 56
-      - 366
-      - 848
-      - 106
+        [56,356,848,106]
     columnWidths:
       - 0.22
       - 0.39
       - 0.39
     rows:
-      - - text: Object
-        - text: Before
-        - text: After
-      - - text: Title
-        - text: Tell the next editor what matters
-        - text: Leave a clear brief
-      - - text: Lead
-        - text: Write the purpose and constraints next to the page.
-        - text: Keep the purpose beside the page.
-      - - text: Everything else
-        - text: Purpose and Keep columns, footer, layout
-        - text: Unchanged
+        [[{"text":"Object"},{"text":"Before"},{"text":"After"}],[{"text":"The plot"},{"text":"Native slide chart, twelve values typed in"},{"text":"Matplotlib figure, placed as an image"}],[{"text":"Where the numbers live"},{"text":"Inside the slide object"},{"text":"paired-c1-distances.csv and plot_c1_distances.py"}],[{"text":"Values, axis, citation, table"},{"text":"As in the CSV"},{"text":"Unchanged"}]]
     style:
       cellStyle:
         fontFamily: Arial
@@ -172,9 +128,9 @@ elements:
   - elementId: caption
     elementType: text
     bounds:
-        [56,484,848,16]
+        [56,474,848,28]
     content:
-      text: "Story for this change: “Shorten the title and explanation.” Keep: the layout, all other objects, the main message. Real captures, public example project."
+      text: "Slide AVNM, operation 8d3042fd. Story: “Replace the in-slide chart with a Matplotlib figure drawn from paired-c1-distances.csv…”. Before and After from the Review dialog in this project."
       fontFamily: Arial
       fontSize: 11.5
       lineHeight: 1.3
@@ -189,7 +145,7 @@ elements:
       - 505
       - 16
       - 16
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    src: "media/independent-20261111/brand/huandeng.png"
     sourceName: huandeng.png
     fit:
       mode: contain
@@ -234,7 +190,7 @@ elements:
       - 176
       - 16
     content:
-      text: English · Claude Opus 5.5
+      text: "english claude opus5.5"
       fontFamily: Arial
       fontSize: 10
       lineHeight: 1.2
@@ -242,4 +198,4 @@ elements:
       align:
         - right
         - middle
-notes: "Here is one change from start to finish, in the public example project. The Story for this slide said: shorten the title and the explanation, and keep the layout, every other object and the main message. On the left is the slide before; on the right, after. The table below lists exactly what changed: the title and the lead sentence. The Purpose and Keep columns, the footer and the geometry are untouched. The change was proposed as a transaction, previewed, and then applied through the shared writer, so it is recorded and can be reviewed on the next slide. The same discipline applies to a scientific slide: an edit to the 1BNA chart title must not touch the data or the citation."
+notes: "Here is one change from start to finish, on the 1BNA slide itself. When I reviewed the deck, my feedback was direct: data plots should be drawn with a professional tool, such as a Python package, from the data, not built inside the slide. A chart drawn inside a slide is one of the strongest sources of the AI look; even here, the agent had already had to patch its labels once, because PowerPoint placed them differently. So the request in the Story was: replace the slide chart with a Matplotlib figure drawn from the CSV, and keep the values, the axis range, the citation and the summary table. On the left is the slide before; on the right, after, at the same scale. The table lists what changed: the numbers now live in the data file and a short plotting script in the project, and the figure is regenerated from them, never retouched. The change was proposed as a transaction, previewed and applied through the shared writer, so it can be reviewed on the next slide."

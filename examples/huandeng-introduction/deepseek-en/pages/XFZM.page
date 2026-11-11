@@ -5,12 +5,9 @@ elements:
   - elementId: p3-eyebrow
     elementType: text
     bounds:
-      - 64
-      - 38
-      - 300
-      - 16
+        [64,18,300,14]
     content:
-      text: 02 · THE TELL
+      text: "01 / WHY THIS EXISTS"
       fontSize: 10
       fontFamily: Consolas
       color: "#B43C26"
@@ -22,13 +19,10 @@ elements:
     elementType: text
     role: title
     bounds:
-      - 64
-      - 66
-      - 780
-      - 120
+        [64,44,780,84]
     content:
       text: The texture is not a style. It is an absence of focus.
-      fontSize: 38
+      fontSize: 30
       fontFamily: Georgia
       color: "#17181A"
       lineHeight: 1.12
@@ -38,13 +32,10 @@ elements:
   - elementId: p3-lead
     elementType: text
     bounds:
-      - 64
-      - 204
-      - 600
-      - 64
+        [64,108,832,56]
     content:
       text: A deck that tries to cover everything leaves the audience nothing to hold.
-      fontSize: 21
+      fontSize: 19.5
       fontFamily: Georgia
       italic: true
       color: "#55524A"
@@ -52,32 +43,10 @@ elements:
       align:
         - left
         - top
-  - elementId: p3-list
-    elementType: text
-    bounds:
-      - 64
-      - 296
-      - 560
-      - 120
-    content:
-      text: |-
-        Every point gets a slide.
-        Every slide gets a heading.
-        Every heading gets three bullets.
-      fontSize: 18.5
-      fontFamily: Segoe UI
-      color: "#3A3833"
-      lineHeight: 1.95
-      align:
-        - left
-        - top
   - elementId: p3-point
     elementType: text
     bounds:
-      - 64
-      - 430
-      - 620
-      - 32
+        [64,474,832,26]
     content:
       text: Nothing is allowed to be the point.
       fontSize: 17
@@ -114,10 +83,141 @@ elements:
         - right
         - top
       color: "#8C8678"
-      fontFamily: Segoe UI
+      fontFamily: "Consolas"
       fontSize: 9.5
       letterSpacing: 0.4
-      text: English · DeepSeek V4.1 Flash 1017
+      text: "english deepseek v4.1flash1017"
     elementId: attribution-watermark
     elementType: text
-notes: The usual explanation is AI style — a font, a gradient, a layout. I don't think that's it. The deck I recognized was complete in a way a person rarely is. Every point had a slide; every slide had a heading; every heading had three bullets. Completeness was the problem. A person makes a deck by deciding what not to say. A short post I read described this as covering everything, and it named what I had been feeling. The fix had to be upstream of layout.
+  - elementId: p3-mark
+    elementType: image
+    bounds:
+      - 56
+      - 508
+      - 12
+      - 12
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    fit:
+      mode: contain
+  - elementId: p3-footer
+    elementType: text
+    bounds:
+      - 74
+      - 508
+      - 300
+      - 12
+    content:
+      text: HUANDENG / THE TELL
+      fontFamily: Consolas
+      fontSize: 9
+      color: "#918B7E"
+      letterSpacing: 1.1
+      align:
+        - left
+        - top
+  - elementId: p3-label-complete
+    elementType: text
+    bounds:
+      - 64
+      - 180
+      - 400
+      - 16
+    content:
+      text: COMPLETE / EVERY POINT
+      fontFamily: Consolas
+      fontSize: 9.5
+      color: "#625E55"
+      letterSpacing: 1.4
+      align:
+        - left
+        - top
+  - elementId: p3-img-complete
+    elementType: image
+    bounds:
+      - 64
+      - 200
+      - 400
+      - 225
+    src: media/imported/2ce522def55c847111dcdf2901c87242dfd83b8316c03a068eff19d925fd1517.png
+    sourceName: deepseek-en-p3-complete-page-1920.png
+    fit:
+      mode: contain
+    crop:
+      left: 0.166
+      top: 0.241
+      right: 0.174
+      bottom: 0.098
+  - elementId: p3-frame-complete
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 64
+      - 200
+      - 400
+      - 225
+    border:
+      width: 1
+      color: "#D9D4C8"
+      style: solid
+  - elementId: p3-label-chosen
+    elementType: text
+    bounds:
+      - 496
+      - 180
+      - 400
+      - 16
+    content:
+      text: CHOSEN / ONE PAUSE
+      fontFamily: Consolas
+      fontSize: 9.5
+      color: "#B43C26"
+      letterSpacing: 1.4
+      align:
+        - left
+        - top
+  - elementId: p3-img-chosen
+    elementType: image
+    bounds:
+      - 496
+      - 200
+      - 400
+      - 225
+    src: media/imported/96aa92734c227156f21cf1a73ae50fc2206020fd151d7f74580a8a9c07e045f2.png
+    sourceName: deepseek-en-p3-chosen-page-1920.png
+    fit:
+      mode: contain
+    crop:
+      left: 0.166
+      top: 0.241
+      right: 0.174
+      bottom: 0.098
+  - elementId: p3-frame-chosen
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 496
+      - 200
+      - 400
+      - 225
+    border:
+      width: 1
+      color: "#D9D4C8"
+      style: solid
+  - elementId: p3-note
+    elementType: text
+    bounds:
+      - 64
+      - 436
+      - 832
+      - 26
+    content:
+      text: Both pages are from this deck. The first covers every point; the second chooses to say one thing.
+      fontFamily: Consolas
+      fontSize: 9.5
+      color: "#918B7E"
+      lineHeight: 1.4
+      align:
+        - left
+        - top
+notes: "The usual explanation is AI style — a font, a gradient, a layout. I don't think that's it. The deck I recognized was complete in a way a person rarely is. Every point had a slide; every slide had a heading; every heading had three bullets. Completeness was the problem. A person makes a deck by deciding what not to say. The left page is a real page from this deck that tries to cover every point; the right is a Section divider that chooses one pause. The difference is not decoration; it is focus."

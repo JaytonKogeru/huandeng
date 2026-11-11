@@ -7,17 +7,14 @@ elements:
   - elementId: texture-kicker
     elementType: text
     bounds:
-      - 48
-      - 42
-      - 300
-      - 18
+        [48,18,420,14]
     content:
       text: "AI 质感 / 观察"
       fontSize: 9.5
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
-      color: "#8FA294"
+      color: "#AFC0B1"
       letterSpacing: 1.2
       align:
         - left
@@ -26,13 +23,10 @@ elements:
     elementType: text
     role: title
     bounds:
-      - 48
-      - 68
-      - 620
-      - 44
+        [48,44,620,44]
     content:
       text: AI 质感，不是丑
-      fontSize: 30
+      fontSize: 28
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
@@ -84,7 +78,7 @@ elements:
       - 760
       - 28
     content:
-      text: 面面俱到 · 追求完整 · 追求免责
+      text: "面面俱到，追求完整，追求免责"
       fontSize: 17
       fontFamily:
         ea: Microsoft YaHei
@@ -138,7 +132,7 @@ elements:
       - 222
       - 14
     content:
-      text: Chinese · DeepSeek V4.1 Flash 1017
+      text: "chinese deepseek v4.1flash1017"
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial

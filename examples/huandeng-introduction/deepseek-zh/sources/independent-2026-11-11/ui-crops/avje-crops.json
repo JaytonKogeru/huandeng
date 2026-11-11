@@ -1,0 +1,42 @@
+{
+  "records": [
+    {
+      "source": "media/imported/2875ddd4b67f1f6bbff903c649dd851a4fc928c8545ca1d2234ee53b55991e70.png",
+      "sourceSha256": "2875ddd4b67f1f6bbff903c649dd851a4fc928c8545ca1d2234ee53b55991e70",
+      "cropBoxPx": [
+        500,
+        110,
+        3272,
+        1660
+      ],
+      "path": "sources/independent-2026-11-11/ui-crops/avje-history.png",
+      "size": [
+        2772,
+        1550
+      ],
+      "aspect": 1.7884,
+      "sha256": "e2e48393a2f62b6559bf78e4f0d8070ea6aae99258fb773d164a00c766191753",
+      "asset": "media/imported/e2e48393a2f62b6559bf78e4f0d8070ea6aae99258fb773d164a00c766191753.png",
+      "note": "History workspace: page header, 已记录版本/操作记录 tabs, the named version list and its read-only preview."
+    },
+    {
+      "source": "media/imported/b9d1f2ac50a8778b6ce1dfd7616a683979c034cfba8d9444ca2d405aa43d4f80.png",
+      "sourceSha256": "b9d1f2ac50a8778b6ce1dfd7616a683979c034cfba8d9444ca2d405aa43d4f80",
+      "cropBoxPx": [
+        700,
+        220,
+        3080,
+        1720
+      ],
+      "path": "sources/independent-2026-11-11/ui-crops/avje-review.png",
+      "size": [
+        2380,
+        1500
+      ],
+      "aspect": 1.5867,
+      "sha256": "c3dbc13b6ef2f97edebda3060340c47bcb3c50b02be9490c95708aa552b2f667",
+      "asset": "media/imported/c3dbc13b6ef2f97edebda3060340c47bcb3c50b02be9490c95708aa552b2f667.png",
+      "note": "Saved-operation review dialog: affected page, before/after tabs, and the list of changed objects."
+    }
+  ]
+}

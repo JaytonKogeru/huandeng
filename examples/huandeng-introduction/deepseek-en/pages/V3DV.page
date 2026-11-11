@@ -1,0 +1,157 @@
+background:
+  type: solid
+  color: "#F7F5F0"
+elements:
+  - elementId: po-eyebrow
+    elementType: text
+    bounds:
+      - 64
+      - 18
+      - 300
+      - 14
+    content:
+      text: 02 / THE EDITOR
+      fontFamily: Consolas
+      fontSize: 10
+      color: "#B43C26"
+      letterSpacing: 1.6
+      align:
+        - left
+        - top
+  - elementId: po-title
+    elementType: text
+    role: title
+    bounds:
+      - 64
+      - 44
+      - 760
+      - 42
+    content:
+      text: Outline reads the argument.
+      fontFamily: Georgia
+      fontSize: 30
+      color: "#17181A"
+      lineHeight: 1.1
+      align:
+        - left
+        - top
+  - elementId: po-body
+    elementType: text
+    bounds:
+        [64,90,832,30]
+    content:
+      text: "Each row carries the page title, its Story summary and the stable Slide ID."
+      fontFamily: Segoe UI
+      fontSize: 16
+      color: "#3A3833"
+      lineHeight: 1.65
+      align:
+        - left
+        - top
+  - elementId: po-label
+    elementType: text
+    bounds:
+        [64,132,832,16]
+    content:
+      text: OUTLINE / STORY SUMMARIES
+      fontFamily: Consolas
+      fontSize: 9.5
+      color: "#B43C26"
+      letterSpacing: 1.4
+      align:
+        - left
+        - top
+  - elementId: po-shot
+    elementType: image
+    bounds:
+        [64,156,832,225]
+    src: "media/imported/b1fed06d99426b92f590e1ef8042f8634d87a8275566eb573616525d1ff5a931.png"
+    sourceName: "deepseek-en-outline-current-1920.png"
+    fit:
+      mode: contain
+    crop:
+      left: 0.255
+      top: 0.45
+      right: 0.15
+      bottom: 0.28
+  - elementId: po-frame
+    elementType: shape
+    shapeName: rect
+    bounds:
+        [64,156,832,225]
+    border:
+      width: 1
+      color: "#D9D4C8"
+      style: solid
+  - elementId: po-caption
+    elementType: text
+    bounds:
+        [64,396,832,24]
+    content:
+      text: Real Outline view of this deck, 2026-11-11. Titles and Story summaries are readable before edit.
+      fontFamily: Consolas
+      fontSize: 9.5
+      color: "#918B7E"
+      lineHeight: 1.5
+      align:
+        - left
+        - top
+  - elementId: po-mark
+    elementType: image
+    bounds:
+      - 56
+      - 508
+      - 12
+      - 12
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    fit:
+      mode: contain
+  - elementId: po-footer
+    elementType: text
+    bounds:
+      - 74
+      - 508
+      - 300
+      - 12
+    content:
+      text: HUANDENG / OUTLINE
+      fontFamily: Consolas
+      fontSize: 9
+      color: "#918B7E"
+      letterSpacing: 1.1
+      align:
+        - left
+        - top
+  - elementId: po-folio
+    elementType: text
+    bounds:
+      - 860
+      - 512
+      - 36
+      - 14
+    content:
+      text: "16"
+      field: main-position
+      fontFamily: Consolas
+      fontSize: 9.5
+      color: "#A29C8F"
+      align:
+        - right
+        - top
+  - elementId: attribution-watermark
+    elementType: text
+    bounds:
+      - 690
+      - 16
+      - 222
+      - 14
+    content:
+      text: english deepseek v4.1flash1017
+      fontFamily: Consolas
+      fontSize: 9.5
+      color: "#8C8678"
+      letterSpacing: 0.4
+      align:
+        - right
+        - top

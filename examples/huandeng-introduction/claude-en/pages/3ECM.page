@@ -44,7 +44,7 @@ elements:
       - 140
       - 44
       - 44
-    src: media/imported/44e2a2aa5f3887deae386fa73f71234961f93e006873b632ccf38b6b6f1291a1.png
+    src: "media/independent-20261111/brand/open-slide.png"
     sourceName: open-slide.png
     fit:
       mode: contain
@@ -104,8 +104,8 @@ elements:
       - 232
       - 44
       - 44
-    src: media/imported/2a2f5cbcc74c7fa83c40127dd8b0e42c23f1157131aebe28492aa1ac27bbdc6d.png
-    sourceName: github-repository.png
+    src: "media/independent-20261111/brand/github-mark.png"
+    sourceName: "github-mark.png"
     fit:
       mode: contain
   - elementId: op-name
@@ -164,7 +164,7 @@ elements:
       - 324
       - 44
       - 44
-    src: media/imported/d697acf6f3c5bc265806bc8f6c4e6d58b964e0b2962392d0329a420639f45846.png
+    src: "media/independent-20261111/brand/pptxgenjs.png"
     sourceName: pptxgenjs.png
     fit:
       mode: contain
@@ -225,7 +225,7 @@ elements:
       - 400
       - 50
     content:
-      text: Design ideas also come from PowerPoint and WPS (sections, views, notes) and Photoshop (layers). A simple video-editor-style timeline is an idea for later.
+      text: "PowerPoint, WPS, VS Code and the other projects that shaped the design are credited on the next slide. A simple video-editor-style timeline is an idea for later."
       fontFamily: Arial
       fontSize: 12.5
       lineHeight: 1.35
@@ -334,7 +334,7 @@ elements:
       - 505
       - 16
       - 16
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    src: "media/independent-20261111/brand/huandeng.png"
     sourceName: huandeng.png
     fit:
       mode: contain
@@ -379,7 +379,7 @@ elements:
       - 176
       - 16
     content:
-      text: English · Claude Opus 5.5
+      text: "english claude opus5.5"
       fontFamily: Arial
       fontSize: 10
       lineHeight: 1.2

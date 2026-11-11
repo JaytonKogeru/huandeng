@@ -129,9 +129,9 @@ node plugins/huandeng/scripts/build-deepseek.mjs --output "$PWD/dist/plugin-pack
 
 Each command creates a `huandeng/` package inside its output directory. The current local candidate packages are `dist/plugin-packages/0.20.0/portable-claude-codex/huandeng` and `dist/plugin-packages/0.20.0/deepseek-native/huandeng`. Both are inside this engineering project. Generated packages are build outputs; the maintained source is `plugins/huandeng`. Use the client's supported plugin loader or manager to install the appropriate form.
 
-The 0.20 candidate also adds project-bound original-image import and real Editor capture tools for native clients. The packaged MCP reports 0.20.0 and 24 tools; its acquisition and capture checks ran against an unchanged compatible 0.19 writer. Packaging did not replace an existing runtime or complete an unfinished native author task. Details and limits are in the [candidate notes](docs/RELEASE-V020.md).
+The 0.20 candidate also adds project-bound original-image import and real Editor capture tools for native clients. The packaged MCP reports 0.20.0 and 24 tools; its acquisition and capture checks ran against an unchanged compatible 0.19 writer. Packaging did not replace an existing runtime. Details and limits are in the [candidate notes](docs/RELEASE-V020.md).
 
-Client setup, host loading, a completed model task and a good finished slide are separate checks. The [native integration record](docs/NATIVE-INTEGRATION-0.19.md) records the actual Claude Code and DeepSeek host checks and task outcomes; it does not infer them from a package manifest.
+The [current native integration record](docs/NATIVE-INTEGRATION-0.20.md) distinguishes actual DeepSeek model tool calls, Claude Code's connected plugin, the host-denied Chinese MCP request, and completed native CLI authoring. It also records the saved examples and independent Office checks. The [0.19 integration record](docs/NATIVE-INTEGRATION-0.19.md) remains dated history; a package manifest or connected label alone does not establish a completed model task.
 
 The shared [huandeng-story skill](plugins/huandeng/skills/huandeng-story/SKILL.md) reads the author's source material and existing pages, develops the argument and visual treatment, previews the proposed changes, then inspects the saved result and real rendering.
 

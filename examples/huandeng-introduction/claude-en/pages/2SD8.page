@@ -20,20 +20,4 @@ elements:
       align:
         - left
         - middle
-  - elementId: attribution-watermark
-    elementType: text
-    bounds:
-      - 760
-      - 10
-      - 176
-      - 16
-    content:
-      text: English · Claude Opus 5.5
-      fontFamily: Arial
-      fontSize: 10
-      lineHeight: 1.2
-      color: "#A8C2BA"
-      align:
-        - right
-        - middle
 notes: "Section 2. Those four problems led to one tool: an editor plus a plugin. Here is where it came from and what it looks like."

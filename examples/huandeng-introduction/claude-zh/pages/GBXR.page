@@ -75,8 +75,8 @@ elements:
       - 116
       - 412
       - 233
-    src: media/imported/fdcacc35c15b7a7b76d70ef9f713c605c20a7e8ca450703b6343ac8bc722bd3e.png
-    sourceName: zh-CN-native-edit-before-4x.png
+    src: "media/imported/5caf141d5d3d63da4ef8a14769e0fb34189bf5e4ccd9c4718c9d869e1bb04391.png"
+    sourceName: "own-review-before.png"
     fit:
       mode: contain
   - elementId: after-frame
@@ -100,8 +100,8 @@ elements:
       - 116
       - 412
       - 233
-    src: media/imported/1590b6d7b420e2502709c533628c4fc0a0ef2278c8b6798d1f6fa8272f9059fc.png
-    sourceName: zh-CN-native-edit-after-4x.png
+    src: "media/imported/e7a6aedaa3658fcf58fab22463c09da4c1ab4dcc380ed058e917463e5b93c678.png"
+    sourceName: "own-review-after.png"
     fit:
       mode: contain
   - elementId: diff
@@ -113,18 +113,7 @@ elements:
       - 0.42
       - 0.42
     rows:
-      - - text: 对象
-        - text: 修改前
-        - text: 修改后
-      - - text: 标题
-        - text: 告诉下一位编辑者，这一页什么最重要
-        - text: 把修改意图留清楚
-      - - text: 导语
-        - text: 把页面的目的和需要保留的内容写在旁边。
-        - text: 让下一次修改有据可循。
-      - - text: 其他
-        - text: 目的、保留两栏，页脚，版式
-        - text: 不变
+        [[{"text":"对象"},{"text":"修改前"},{"text":"修改后"}],[{"text":"标题"},{"text":"1BNA：十二个碱基对距离，以数据保存"},{"text":"1BNA：十二个碱基对的 C1′–C1′ 距离"}],[{"text":"页面故事"},{"text":"上一次修改的记录"},{"text":"记下这次修改为什么做、什么不能动"}],[{"text":"其他"},{"text":"结构图、数据图、数据、引用、版式"},{"text":"不变"}]]
     style:
       cellStyle:
         fontFamily: Microsoft YaHei
@@ -149,7 +138,7 @@ elements:
     bounds:
         [56,484,848,16]
     content:
-      text: 这次修改的故事：“缩短标题和说明。”需要保留：版式和其他所有对象、核心意思。真实截图，公开示例项目。
+      text: "绿框是编辑器在审阅里标出的改动对象。这次修改的故事：“标题改为说清测得的是什么；图、数据和引用不变。”真实截图：本项目 BRHY 页。"
       fontFamily: Microsoft YaHei
       fontSize: 11
       lineHeight: 1.4
@@ -164,8 +153,8 @@ elements:
       - 505
       - 16
       - 16
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
-    sourceName: huandeng.png
+    src: "media/imported/6a20894fe3789d4fb328a90a60fc808e169ce2ca038ec6ce3dcb15bd9413f9ea.png"
+    sourceName: "huandeng-mark.png"
     fit:
       mode: contain
   - elementId: ft-label
@@ -209,7 +198,7 @@ elements:
       - 176
       - 16
     content:
-      text: 中文 · Claude Opus 5.5
+      text: "chinese claude opus5.5"
       fontFamily: Microsoft YaHei
       fontSize: 10
       lineHeight: 1.2
@@ -217,4 +206,4 @@ elements:
       align:
         - right
         - middle
-notes: 这是一次修改从头到尾的样子，在公开示例项目里。这一页的故事写着：缩短标题和说明，保留版式、其他所有对象和核心意思。左边是修改前，右边是修改后。下面的表格列出了到底改了什么：标题和导语。目的、保留两栏、页脚和位置都没动。这次修改先作为一个事务提出、预览，然后通过共享写入器写入，所以它被记录下来，下一页就能回看。科研页也是同样的规矩：改 1BNA 图表的标题，不能碰数据和引用。
+notes: "这是一次真实的修改，就发生在这份介绍的 1BNA 那一页上。把图换成 Matplotlib 画的以后，原来的标题“以数据保存”已经不准确了，所以这一页的故事写下了这次修改：标题改为说清测得的是什么，图、数据和引用不变。左边是修改前，右边是修改后，绿框是编辑器自己在审阅里标出的改动对象。下面的表格列出了到底改了什么：标题和页面故事；结构图、数据图、数据、引用和版式都没动。这次修改先作为一个事务提出、预览，然后通过共享写入器写入，所以它被记录下来，下一页就能回看。"

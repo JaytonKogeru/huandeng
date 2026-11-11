@@ -25,6 +25,7 @@ pages:
   - pages/AUBX.page
   - pages/SY94.page
   - pages/3ECM.page
+  - pages/9JFE.page
   - pages/SMGE.page
 theme:
   fontFamily: Arial

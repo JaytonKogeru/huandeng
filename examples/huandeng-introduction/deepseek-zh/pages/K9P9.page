@@ -7,17 +7,14 @@ elements:
   - elementId: credits-kicker
     elementType: text
     bounds:
-      - 48
-      - 42
-      - 300
-      - 18
+        [48,18,420,14]
     content:
       text: 来源 / 致谢
       fontSize: 9.5
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
-      color: "#7D8A80"
+      color: "#5F6E64"
       letterSpacing: 1.2
       align:
         - left
@@ -26,13 +23,10 @@ elements:
     elementType: text
     role: title
     bounds:
-      - 48
-      - 66
-      - 620
-      - 40
+        [48,44,620,40]
     content:
       text: 站在开放工作上
-      fontSize: 27
+      fontSize: 28
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
@@ -44,13 +38,10 @@ elements:
   - elementId: credits-lead
     elementType: text
     bounds:
-      - 48
-      - 112
-      - 520
-      - 30
+        [48,90,520,30]
     content:
       text: 编辑器、转换和导出，都用了已有的开源实现。
-      fontSize: 14.4
+      fontSize: 14.5
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
@@ -65,21 +56,16 @@ elements:
       - 178
       - 40
       - 40
-    src: media/imported/44e2a2aa5f3887deae386fa73f71234961f93e006873b632ccf38b6b6f1291a1.png
+    src: "media/imported/f02ae8879fae2bc16a239399e119fb8eee93303c2e440855a4f04a13225981c7.png"
     sourceName: open-slide.png
     fit:
       mode: contain
   - elementId: credits-open-slide-text
     elementType: text
     bounds:
-      - 104
-      - 176
-      - 340
-      - 44
+        [104,176,240,44]
     content:
-      text: |-
-        OpenSlide
-        编辑器代码基础 · MIT
+      text: "OpenSlide\n编辑器代码基础，MIT"
       fontSize: 11.4
       fontFamily:
         ea: Microsoft YaHei
@@ -103,10 +89,7 @@ elements:
   - elementId: credits-github-text
     elementType: text
     bounds:
-      - 104
-      - 248
-      - 340
-      - 44
+        [104,248,240,44]
     content:
       text: |-
         OpenPPTD
@@ -134,10 +117,7 @@ elements:
   - elementId: credits-pptxgenjs-text
     elementType: text
     bounds:
-      - 128
-      - 320
-      - 340
-      - 44
+        [128,320,240,44]
     content:
       text: |-
         PptxGenJS
@@ -165,14 +145,9 @@ elements:
   - elementId: credits-huandeng-text
     elementType: text
     bounds:
-      - 104
-      - 392
-      - 340
-      - 44
+        [104,392,240,44]
     content:
-      text: |-
-        HUANDENG
-        本项目 · MIT
+      text: "HUANDENG\n本项目，MIT"
       fontSize: 11.4
       fontFamily:
         ea: Microsoft YaHei
@@ -185,10 +160,7 @@ elements:
   - elementId: credits-not-title
     elementType: text
     bounds:
-      - 520
-      - 166
-      - 392
-      - 24
+        [700,166,212,24]
     content:
       text: 当前仍未完成
       fontSize: 12.2
@@ -203,10 +175,7 @@ elements:
   - elementId: credits-not-list
     elementType: text
     bounds:
-      - 520
-      - 198
-      - 392
-      - 250
+        [700,198,212,250]
     content:
       text: |-
         任意 PPTX 往返
@@ -215,7 +184,7 @@ elements:
         可继承母版
         原生 PowerPoint 动画
         插件市场
-      fontSize: 11.2
+      fontSize: 10.4
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
@@ -250,7 +219,7 @@ elements:
       - 222
       - 14
     content:
-      text: Chinese · DeepSeek V4.1 Flash 1017
+      text: "chinese deepseek v4.1flash1017"
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
@@ -260,3 +229,87 @@ elements:
       align:
         - right
         - top
+  - bounds:
+      - 400
+      - 166
+      - 296
+      - 22
+    content:
+      align:
+        - left
+        - top
+      color: "#5F6E64"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 12.2
+      letterSpacing: 0.8
+      text: 设计参考
+    elementId: credits-ref-title
+    elementType: text
+  - bounds:
+      - 400
+      - 200
+      - 146
+      - 240
+    content:
+      align:
+        - left
+        - top
+      color: "#2B3830"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 8.6
+      lineHeight: 1.85
+      text: |-
+        PowerPoint
+        WPS
+        Kimi / Moonshot
+        PPTist
+        Slidev
+        Presenton
+    elementId: credits-ref-a
+    elementType: text
+  - bounds:
+      - 552
+      - 200
+      - 140
+      - 240
+    content:
+      align:
+        - left
+        - top
+      color: "#2B3830"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 8.6
+      lineHeight: 1.85
+      text: |-
+        PPTAgent
+        PPTMaster
+        open-kimi-ppt-skill
+        OpenSlides Studio
+        OPF
+        VS Code
+    elementId: credits-ref-b
+    elementType: text
+  - bounds:
+      - 400
+      - 340
+      - 296
+      - 58
+    content:
+      align:
+        - left
+        - top
+      color: "#66756A"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 8.2
+      lineHeight: 1.5
+      text: 仅研究与工作流参考；不表示打包其代码、已实现其全部功能或获得背书。
+    elementId: credits-ref-note
+    elementType: text

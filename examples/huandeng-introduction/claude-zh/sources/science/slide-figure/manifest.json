@@ -1,0 +1,25 @@
+{
+  "figure": "paired-c1-distances-slide-zh",
+  "data": "../own/paired-c1-distances-own.csv",
+  "dataSha256": "84f6c1daa9c34184d3a6ed3eecca30b5d7e211fd5c16d55c65d40d872f8ce249",
+  "matplotlib": "3.11.2",
+  "values": {
+    "1": 10.7121,
+    "2": 10.7665,
+    "3": 10.5802,
+    "4": 10.3531,
+    "5": 10.4416,
+    "6": 10.4606,
+    "7": 10.2329,
+    "8": 10.4912,
+    "9": 10.5912,
+    "10": 10.4362,
+    "11": 10.8052,
+    "12": 10.8877
+  },
+  "files": {
+    "paired-c1-distances-slide-zh.png": "b8fcd39a96b025f666b694a5166b8ab84d06946507ca0247e045d0a56cd27fa5",
+    "paired-c1-distances-slide-zh.svg": "983fc891d3f7a517273e77a7e3ff32c56d2761a4276bface18e6a3444eacd7cc",
+    "plot.py": "409cb5e62c692cf06893fc2675b91145a0d54229b9d6336bc1afdf0a6c030b74"
+  }
+}

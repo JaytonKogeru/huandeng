@@ -20,20 +20,4 @@ elements:
       align:
         - left
         - middle
-  - elementId: attribution-watermark
-    elementType: text
-    bounds:
-      - 760
-      - 10
-      - 176
-      - 16
-    content:
-      text: English · Claude Opus 5.5
-      fontFamily: Arial
-      fontSize: 10
-      lineHeight: 1.2
-      color: "#A8C2BA"
-      align:
-        - right
-        - middle
 notes: "Section 3. Now let me follow one real scientific slide: what it shows, the Story behind it, how a change is asked for, and how that change can be checked."

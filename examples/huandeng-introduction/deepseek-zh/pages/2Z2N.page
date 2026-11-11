@@ -7,17 +7,14 @@ elements:
   - elementId: problem-kicker
     elementType: text
     bounds:
-      - 48
-      - 42
-      - 300
-      - 18
+        [48,18,420,14]
     content:
-      text: "第二个问题 / 副本"
+      text: "修改 / 副本"
       fontSize: 9.5
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
-      color: "#7D8A80"
+      color: "#5F6E64"
       letterSpacing: 1.2
       align:
         - left
@@ -26,13 +23,10 @@ elements:
     elementType: text
     role: title
     bounds:
-      - 48
-      - 66
-      - 660
-      - 40
+        [48,44,660,40]
     content:
       text: "改两页，为什么多出三份副本？"
-      fontSize: 27
+      fontSize: 28
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
@@ -44,13 +38,10 @@ elements:
   - elementId: problem-lead
     elementType: text
     bounds:
-      - 48
-      - 118
-      - 320
-      - 94
+        [48,90,320,94]
     content:
       text: "我想改第 4 页和第 12 页。\nAI 为了不覆盖原件，另存一份；\n轻微改动，又另存一份。"
-      fontSize: 15.6
+      fontSize: 14.5
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
@@ -225,7 +216,7 @@ elements:
       - 194
       - 18
     content:
-      text: "副本 1 · 组会"
+      text: "副本 1 / 组会"
       fontSize: 9.6
       fontFamily:
         ea: Microsoft YaHei
@@ -275,7 +266,7 @@ elements:
       - 194
       - 18
     content:
-      text: "副本 2 · 会议"
+      text: "副本 2 / 会议"
       fontSize: 9.6
       fontFamily:
         ea: Microsoft YaHei
@@ -325,7 +316,7 @@ elements:
       - 194
       - 18
     content:
-      text: "副本 3 · 评审"
+      text: "副本 3 / 评审"
       fontSize: 9.6
       fontFamily:
         ea: Microsoft YaHei
@@ -413,7 +404,7 @@ elements:
       - 222
       - 14
     content:
-      text: Chinese · DeepSeek V4.1 Flash 1017
+      text: "chinese deepseek v4.1flash1017"
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial

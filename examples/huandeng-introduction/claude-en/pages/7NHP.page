@@ -104,8 +104,8 @@ elements:
       - 124
       - 264
       - 148
-    src: "media/derived/thumbs/r2-22-AUBX.png"
-    sourceName: "r2-22-AUBX.png"
+    src: "media/derived/thumbs/r5-22-AUBX.png"
+    sourceName: "r5-22-AUBX.png"
     fit:
       mode: contain
   - elementId: stack1-f
@@ -129,8 +129,8 @@ elements:
       - 138
       - 264
       - 148
-    src: "media/derived/thumbs/r2-18-V2SV.png"
-    sourceName: "r2-18-V2SV.png"
+    src: "media/derived/thumbs/r4-18-V2SV.png"
+    sourceName: "r4-18-V2SV.png"
     fit:
       mode: contain
   - elementId: stack2-f
@@ -154,8 +154,8 @@ elements:
       - 152
       - 264
       - 148
-    src: "media/derived/thumbs/r2-12-AVNM.png"
-    sourceName: "r2-12-AVNM.png"
+    src: "media/derived/thumbs/r4-12-AVNM.png"
+    sourceName: "r4-12-AVNM.png"
     fit:
       mode: contain
   - elementId: self-stats
@@ -166,7 +166,7 @@ elements:
       - 292
       - 110
     content:
-      text: "25 slides in 5 Sections\n2 Presentations built from them\nStory and speaker notes on every slide\nOpen the folder in the Editor to see it"
+      text: "26 slides in 5 Sections\n2 Presentations built from them\nStory and speaker notes on every slide\nOpen the folder in the Editor to see it"
       fontFamily: Arial
       fontSize: 14
       lineHeight: 1.5
@@ -181,7 +181,7 @@ elements:
       - 505
       - 16
       - 16
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    src: "media/independent-20261111/brand/huandeng.png"
     sourceName: huandeng.png
     fit:
       mode: contain
@@ -226,7 +226,7 @@ elements:
       - 176
       - 16
     content:
-      text: English · Claude Opus 5.5
+      text: "english claude opus5.5"
       fontFamily: Arial
       fontSize: 10
       lineHeight: 1.2

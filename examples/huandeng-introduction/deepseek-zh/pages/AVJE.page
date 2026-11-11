@@ -2,18 +2,15 @@ pageType: content
 background:
   type: solid
   color: "#E8EEE6"
-notes: "如果页面是修改单位，历史就应该跟着页面。左边是操作审阅：字段级的前后变化；右边是命名版本：把重要的时刻固定下来。恢复只改这一页，不是整份 deck 的回滚。这更接近 Git 的思路，但不是把每一页说成独立仓库。"
+notes: "这一页用本项目的真实历史界面说明：页面有操作记录和命名版本；恢复只改这一页，不是整份 deck 的回滚。左图是 7PV4 的「历史」工作区与命名版本，右图是同一页一次已保存修改的只读预览；两图都是 2026-11-11 从本项目截取。"
 elements:
   - elementId: review-title
     elementType: text
     role: title
     bounds:
-      - 48
-      - 44
-      - 430
-      - 40
+        [48,44,660,40]
     content:
-      text: "这一页，改过什么"
+      text: "改过什么，能看回来"
       fontSize: 28
       fontFamily:
         ea: Microsoft YaHei
@@ -23,16 +20,31 @@ elements:
       align:
         - left
         - top
-  - elementId: review-lead
+  - elementId: review-kicker
     elementType: text
     bounds:
       - 48
-      - 90
-      - 500
-      - 48
+      - 18
+      - 420
+      - 14
     content:
-      text: "每一页都有自己的历史：\n操作记录和命名版本；恢复只影响这一页。"
-      fontSize: 14.2
+      text: 页面 / 历史
+      fontSize: 9.5
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#5F6E64"
+      letterSpacing: 1.2
+      align:
+        - left
+        - top
+  - elementId: review-lead
+    elementType: text
+    bounds:
+        [48,90,864,48]
+    content:
+      text: "每一页都有自己的历史：操作记录和命名版本；恢复只影响这一页。\n两处都在 Editor 里：「历史」标签，和操作记录里的「查看已保存的修改」。"
+      fontSize: 14.5
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
@@ -41,74 +53,57 @@ elements:
       align:
         - left
         - top
-  - elementId: review-left-panel
-    elementType: shape
-    bounds:
-        [48,158,410,300]
-    shapeName: rect
-    fill:
-      type: solid
-      color: "#FFFFFF"
-    border:
-      color: "#CDD6CC"
-      width: 0.8
-      style: solid
-  - elementId: review-left
+  - bounds:
+        [48,150,470,263]
+    elementId: history-shot
     elementType: image
-    bounds:
-        [62,164,382,288]
-    src: media/imported/1f8c227e7a8a73ed668c788e46d631f17b6e6f577e9f66479d5e693fbd71d867.png
-    sourceName: zh-CN-native-operation-review-4x.png
     fit:
       mode: contain
-  - elementId: review-left-label
-    elementType: text
-    bounds:
-        [48,466,410,42]
+    sourceName: avje-history.png
+    src: "media/imported/e2e48393a2f62b6559bf78e4f0d8070ea6aae99258fb773d164a00c766191753.png"
+  - bounds:
+        [540,150,372,234]
+    elementId: review-shot
+    elementType: image
+    fit:
+      mode: contain
+    sourceName: avje-review.png
+    src: "media/imported/c3dbc13b6ef2f97edebda3060340c47bcb3c50b02be9490c95708aa552b2f667.png"
+  - bounds:
+        [48,420,470,42]
     content:
-      text: "真实界面：操作审阅显示字段级变化。\n不是整份文件的回滚。"
-      fontSize: 9
-      fontFamily:
-        ea: Microsoft YaHei
-        latin: Arial
-      color: "#66756A"
       align:
         - left
         - top
-  - elementId: review-right-panel
-    elementType: shape
-    bounds:
-        [472,158,440,300]
-    shapeName: rect
-    fill:
-      type: solid
-      color: "#FFFFFF"
-    border:
-      color: "#CDD6CC"
-      width: 0.8
-      style: solid
-  - elementId: review-right
-    elementType: image
-    bounds:
-        [484,164,416,288]
-    src: media/imported/4d42e5f1558e1b2f448e5b87abd12e17eb56b62c64853eda8b401cc93ad67b4b.png
-    sourceName: zh-CN-native-history-change-4x.png
-    fit:
-      mode: contain
-  - elementId: review-right-label
-    elementType: text
-    bounds:
-        [472,466,440,42]
-    content:
-      text: "真实界面：命名版本与恢复入口。\n这一页可以回到某个时刻。"
-      fontSize: 9
+      color: "#66756A"
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
-      color: "#66756A"
+      fontSize: 8.6
+      lineHeight: 1.45
+      text: |-
+        页面视图 · 历史 · 已记录版本：
+        2026-11-11 独立素材重校（deepseek-flash）。
+    elementId: history-caption
+    elementType: text
+  - bounds:
+        [540,392,372,60]
+    content:
       align:
         - left
         - top
+      color: "#66756A"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 8.6
+      lineHeight: 1.5
+      text: |-
+        操作记录 · 查看已保存的修改：
+        这一笔只改了 7PV4 的对象与素材字段；
+        备注与 Story 元数据也在回执里。
+    elementId: review-caption
+    elementType: text
   - elementId: model-watermark
     elementType: text
     bounds:
@@ -117,7 +112,7 @@ elements:
       - 222
       - 14
     content:
-      text: Chinese · DeepSeek V4.1 Flash 1017
+      text: "chinese deepseek v4.1flash1017"
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial

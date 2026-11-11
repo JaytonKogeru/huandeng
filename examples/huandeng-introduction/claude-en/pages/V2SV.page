@@ -11,7 +11,7 @@ elements:
       - 848
       - 42
     content:
-      text: "Say “C014”, not “slide 4”"
+      text: "Say “SMGE”, not “slide 25”"
       fontFamily: Arial
       fontSize: 30
       lineHeight: 1.2
@@ -28,7 +28,7 @@ elements:
       - 400
       - 20
     content:
-      text: Status bar before the move
+      text: "Status bar on the last slide, before"
       fontFamily: Arial
       fontSize: 13
       lineHeight: 1.3
@@ -40,23 +40,17 @@ elements:
   - elementId: before-shot
     elementType: image
     bounds:
-      - 56
-      - 116
-      - 400
-      - 50
-    src: media/imported/4b4475913c7e4538c9b76f47056e1edca6405a8636d7fd7c591309a373101e19.png
-    sourceName: en-identity-before-4x.png
+        [56,116,400,42]
+    src: "media/independent-20261111/ui/status-before.png"
+    sourceName: "status-before.png"
     fit:
       mode: contain
   - elementId: after-label
     elementType: text
     bounds:
-      - 56
-      - 184
-      - 400
-      - 20
+        [56,176,400,20]
     content:
-      text: After moving the slide two places later
+      text: "After I added the acknowledgments slide before it"
       fontFamily: Arial
       fontSize: 13
       lineHeight: 1.3
@@ -68,23 +62,17 @@ elements:
   - elementId: after-shot
     elementType: image
     bounds:
-      - 56
-      - 208
-      - 400
-      - 50
-    src: media/imported/cfb23a312f298e185eb847eddb1cdf9cc493d63d55082cab0cc70606789af5f5.png
-    sourceName: en-identity-after-4x.png
+        [56,200,400,42]
+    src: "media/independent-20261111/ui/status-after.png"
+    sourceName: "status-after.png"
     fit:
       mode: contain
   - elementId: pos-note
     elementType: text
     bounds:
-      - 56
-      - 270
-      - 400
-      - 44
+        [56,256,400,44]
     content:
-      text: Position changed from 2 to 4. Slide ID C014 did not.
+      text: "Position changed from 25 to 26. Slide ID SMGE did not."
       fontFamily: Arial
       fontSize: 17
       lineHeight: 1.35
@@ -96,10 +84,7 @@ elements:
     elementType: shape
     shapeName: rect
     bounds:
-      - 487
-      - 91
-      - 418
-      - 234
+        [487,91,418,181]
     fill:
       type: solid
       color: "#FFFFFF"
@@ -109,23 +94,17 @@ elements:
   - elementId: browse-shot
     elementType: image
     bounds:
-      - 488
-      - 92
-      - 416
-      - 232
-    src: media/imported/d81ca1d3d956de469ebe26ea28e121e2c63e78349e97ec063068d28cfb26089d.png
-    sourceName: en-browse-reading-4x.png
+        [488,92,416,179]
+    src: "media/independent-20261111/ui/browse-agents.png"
+    sourceName: "browse-agents.png"
     fit:
       mode: contain
   - elementId: browse-caption
     elementType: text
     bounds:
-      - 488
-      - 328
-      - 416
-      - 16
+        [488,276,416,32]
     content:
-      text: "Browse view: every card shows Position and Slide ID. Real capture."
+      text: "Browse view of this deck: each card shows Position and Slide ID. Real capture."
       fontFamily: Arial
       fontSize: 11
       lineHeight: 1.3
@@ -145,7 +124,7 @@ elements:
       - 0.38
       - 0.42
     rows:
-        [[{"text":"Identifier"},{"text":"What it names"},{"text":"Changes when"}],[{"text":"Slide ID"},{"text":"One slide's content, e.g. C014"},{"text":"Never; use it in search, notes and requests to an agent"}],[{"text":"Position"},{"text":"Its place in the current order"},{"text":"Slides are added, removed or moved"}],[{"text":"Occurrence"},{"text":"One appearance of a slide in a Presentation"},{"text":"Not when reordered; only its place moves"}]]
+        [[{"text":"Identifier"},{"text":"What it names"},{"text":"Changes when"}],[{"text":"Slide ID"},{"text":"One slide’s content, e.g. SMGE"},{"text":"Never; use it in search, notes and requests to an agent"}],[{"text":"Position"},{"text":"Its place in the current order"},{"text":"Slides are added, removed or moved"}],[{"text":"Occurrence"},{"text":"One appearance of a slide in a Presentation"},{"text":"Not when reordered; only its place moves"}]]
     style:
       cellStyle:
         fontFamily: Arial
@@ -176,7 +155,7 @@ elements:
       - 505
       - 16
       - 16
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    src: "media/independent-20261111/brand/huandeng.png"
     sourceName: huandeng.png
     fit:
       mode: contain
@@ -221,7 +200,7 @@ elements:
       - 176
       - 16
     content:
-      text: English · Claude Opus 5.5
+      text: "english claude opus5.5"
       fontFamily: Arial
       fontSize: 10
       lineHeight: 1.2
@@ -229,4 +208,4 @@ elements:
       align:
         - right
         - middle
-notes: "When I talk to an agent about my slides, I used to say: fix slide four. But if the order changed since the last version, slide four is a different slide. So HUANDENG separates the two. Position is just where a slide sits now. The Slide ID is a short four-character code, letters and numbers, that belongs to the slide for good. The status bar here shows Position moving from 2 to 4 while the Slide ID stays C014. Now I can say: fix the chart on C014, and the agent knows exactly which page I mean, next week as well as today. The same ID is what page history hangs on."
+notes: "When I talk to an agent about my slides, I used to say: fix slide four. But if the order changed since the last version, slide four is a different slide. So HUANDENG separates the two. Position is just where a slide sits now. The Slide ID is a short four-character code, letters and numbers, that belongs to the slide for good. This happened while I was preparing this talk: I added the acknowledgments slide near the end, and the closing slide moved from Position 25 to 26. Its Slide ID stayed SMGE. Now I can say: change the commands on SMGE, and the agent knows exactly which page I mean, next week as well as today. The same ID is what page history hangs on."

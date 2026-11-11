@@ -14,7 +14,7 @@ elements:
       - 40
     content:
       text: "它可以交出去，也还没做完"
-      fontSize: 27
+      fontSize: 28
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
@@ -23,16 +23,31 @@ elements:
       align:
         - left
         - top
-  - elementId: export-lead
+  - elementId: export-kicker
     elementType: text
     bounds:
       - 48
-      - 92
-      - 520
-      - 48
+      - 18
+      - 420
+      - 14
+    content:
+      text: 交付 / 边界
+      fontSize: 9.5
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#5F6E64"
+      letterSpacing: 1.2
+      align:
+        - left
+        - top
+  - elementId: export-lead
+    elementType: text
+    bounds:
+        [48,90,520,48]
     content:
       text: "PPTX 可继续编辑；PDF 固定版式；PPTD 保留项目、Story 和页面历史。"
-      fontSize: 14.8
+      fontSize: 14.5
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
@@ -63,8 +78,8 @@ elements:
       - 164
       - 412
       - 195
-    src: media/imported/93c7ba236a204f434045f9c9f62d0f3be06736b95537ab6b134ef63d35273448.png
-    sourceName: zh-CN-native-export-4x.png
+    src: "media/imported/b823a761d2c0e9f4b9d995026f11ea659b63304b57b2acccdc10058568cb6537.png"
+    sourceName: "deepseek-zh-project-presentations.png"
     fit:
       mode: contain
   - elementId: export-caption
@@ -75,7 +90,7 @@ elements:
       - 424
       - 18
     content:
-      text: 真实界面：导出格式与范围。
+      text: "真实界面：导出入口在顶部右侧；格式与范围见下表。"
       fontSize: 9.2
       fontFamily:
         ea: Microsoft YaHei
@@ -182,7 +197,7 @@ elements:
       - 222
       - 14
     content:
-      text: Chinese · DeepSeek V4.1 Flash 1017
+      text: "chinese deepseek v4.1flash1017"
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial

@@ -23,16 +23,31 @@ elements:
       align:
         - left
         - top
-  - elementId: ai-lead
+  - elementId: ai-kicker
     elementType: text
     bounds:
       - 48
-      - 92
-      - 448
-      - 70
+      - 18
+      - 420
+      - 14
+    content:
+      text: 协作 / AI
+      fontSize: 9.5
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#AFC0B1"
+      letterSpacing: 1.2
+      align:
+        - left
+        - top
+  - elementId: ai-lead
+    elementType: text
+    bounds:
+        [48,90,448,70]
     content:
       text: "它读取 Story 与 revision，提交事务；\n写入器检查、预览、落盘。"
-      fontSize: 14.4
+      fontSize: 14.5
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
@@ -63,7 +78,7 @@ elements:
       - 195
       - 28
       - 28
-    src: media/imported/0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13.png
+    src: "media/imported/3adcc98e4382ea6009078c069bbff56a731aecc47c9c6aca955109638e8c6bd5.png"
     sourceName: chatgpt.png
     fit:
       mode: contain
@@ -353,7 +368,7 @@ elements:
       - 300
       - 20
     content:
-      text: 版本检查 · 预览 · 回执
+      text: "版本检查、预览、回执"
       fontSize: 9.6
       fontFamily:
         ea: Microsoft YaHei
@@ -370,9 +385,7 @@ elements:
       - 340
       - 36
     content:
-      text: |-
-        PPTD 项目
-        pages · media · Story · 版本
+      text: "PPTD 项目\npages、media、Story、版本"
       fontSize: 10.4
       fontFamily:
         ea: Microsoft YaHei
@@ -424,7 +437,7 @@ elements:
       - 222
       - 14
     content:
-      text: Chinese · DeepSeek V4.1 Flash 1017
+      text: "chinese deepseek v4.1flash1017"
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial

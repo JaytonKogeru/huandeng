@@ -1,0 +1,20 @@
+[
+  {
+    "url": "https://www.ebi.ac.uk/pdbe/static/entry/1bna_deposited_chain_side_image-800x800.png",
+    "httpStatus": 200,
+    "contentType": "image/png",
+    "method": "GET (urllib.request, python 3.14)",
+    "target": "1bna_deposited_chain_side_image-800x800.png",
+    "bytes": 125009,
+    "sha256": "8fcbec088229f97b220259ee873e9fbbd1bce3d8570fcdadc3465aa428321c5f",
+    "retrievedAt": "2026-11-11T13:26:26.082525+00:00"
+  },
+  {
+    "url": "https://www.ebi.ac.uk/pdbe/static/entry/1bna_updated_chain_front_image-800x800.png",
+    "error": "<HTTPError 404: 'Not Found'>"
+  },
+  {
+    "url": "https://www.ebi.ac.uk/pdbe/static/entry/1bna_updated_chain_side_image-800x800.png",
+    "error": "<HTTPError 404: 'Not Found'>"
+  }
+]

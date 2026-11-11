@@ -5,12 +5,9 @@ elements:
   - elementId: p16-eyebrow
     elementType: text
     bounds:
-      - 64
-      - 38
-      - 300
-      - 16
+        [64,18,300,14]
     content:
-      text: 06 · THE WORKSPACE
+      text: "02 / THE EDITOR"
       fontSize: 10
       fontFamily: Consolas
       color: "#B43C26"
@@ -22,13 +19,10 @@ elements:
     elementType: text
     role: title
     bounds:
-      - 64
-      - 58
-      - 380
-      - 90
+        [64,44,380,84]
     content:
       text: One source, many audiences.
-      fontSize: 32
+      fontSize: 30
       fontFamily: Georgia
       color: "#17181A"
       lineHeight: 1.12
@@ -54,38 +48,30 @@ elements:
   - elementId: p16-label
     elementType: text
     bounds:
-      - 476
-      - 88
-      - 420
-      - 16
+        [500,76,360,16]
     content:
-      text: MAIN / PRESENTATION
-      fontSize: 10
+      text: "PROJECT OVERVIEW / THIS DECK"
+      fontSize: 9.5
       fontFamily: Consolas
       color: "#B43C26"
-      letterSpacing: 1.5
+      letterSpacing: 1.4
       align:
         - left
         - top
   - elementId: p16-shot
     elementType: image
     bounds:
-      - 476
-      - 112
-      - 420
-      - 320
-    src: media/imported/72ae1ca6c88e49b22812dfcb60706f776f97abe0dd6ab5c0defa0a21fd4e9218.png
-    sourceName: en-project-sequences-4x.png
+        [500,94,288,296]
+    src: "media/imported/f1a0cc6bc1ecb07945bd2f205f5de80a065d3eadee090739d6b3317f5416ab36.png"
+    sourceName: "deepseek-en-project-current-1920.png"
     fit:
       mode: contain
+    "crop": {"left":0, "top": 0.085, "right": 0.85, "bottom": 0.64}
   - elementId: p16-frame
     elementType: shape
     shapeName: rect
     bounds:
-      - 476
-      - 112
-      - 420
-      - 320
+        [500,94,288,296]
     border:
       color: "#D9D4C8"
       width: 1
@@ -93,12 +79,9 @@ elements:
   - elementId: p16-caption
     elementType: text
     bounds:
-      - 476
-      - 446
-      - 420
-      - 40
+        [500,402,288,50]
     content:
-      text: "Project overview: one Main library, one presentation built from it."
+      text: "Real project overview, 2026-11-11: one Main library and its short Presentation."
       fontSize: 10.5
       fontFamily: Consolas
       color: "#918B7E"
@@ -132,10 +115,37 @@ elements:
         - right
         - top
       color: "#8C8678"
-      fontFamily: Segoe UI
+      fontFamily: "Consolas"
       fontSize: 9.5
       letterSpacing: 0.4
-      text: English · DeepSeek V4.1 Flash 1017
+      text: "english deepseek v4.1flash1017"
     elementId: attribution-watermark
     elementType: text
-notes: One source, many talks. Main Slides is the canonical deck. A Presentation is a selection and order of those pages, with notes for that room. I can give a short version and a long version without maintaining two decks. If a page is fixed, every talk that uses it moves forward. If a talk has to stay exactly as it was, I can pin a version.
+  - elementId: p16-mark
+    elementType: image
+    bounds:
+      - 56
+      - 508
+      - 12
+      - 12
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    fit:
+      mode: contain
+  - elementId: p16-footer
+    elementType: text
+    bounds:
+      - 74
+      - 508
+      - 300
+      - 12
+    content:
+      text: HUANDENG / REUSE
+      fontFamily: Consolas
+      fontSize: 9
+      color: "#918B7E"
+      letterSpacing: 1.1
+      align:
+        - left
+        - top
+notes: "One source, many talks. Main Slides is the canonical deck. A Presentation is a selection and order of those pages, with notes for that room. The Short introduction in this project is a real six-page Presentation built from Main. I can give a short version and a long version without maintaining two decks. If a page is fixed, every talk that uses it moves forward. If a talk has to stay exactly as it was, I can pin a version."

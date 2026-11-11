@@ -7,17 +7,14 @@ elements:
   - elementId: work-kicker
     elementType: text
     bounds:
-      - 48
-      - 42
-      - 420
-      - 18
+        [48,18,420,14]
     content:
-      text: 编辑器 / 一个窗口
+      text: "编辑器 / 工作区"
       fontSize: 9.5
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
-      color: "#7D8A80"
+      color: "#5F6E64"
       letterSpacing: 1.2
       align:
         - left
@@ -26,13 +23,10 @@ elements:
     elementType: text
     role: title
     bounds:
-      - 48
-      - 66
-      - 600
-      - 40
+        [48,44,600,40]
     content:
       text: 一个工作文档
-      fontSize: 27
+      fontSize: 28
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
@@ -48,8 +42,8 @@ elements:
       - 110
       - 740
       - 416
-    src: media/imported/c36ad119b97a82db8ae3dde5b04fd9853151f34ab4ed8b49cec5352594775961.png
-    sourceName: zh-CN-native-edit-overview-2x.png
+    src: "media/imported/72276be8f5ae09dfea1c691fd4affc99d03ed388af646adb66ff781b2c150abe.png"
+    sourceName: "deepseek-zh-workspace-overview-clean.png"
     fit:
       mode: contain
   - elementId: work-caption
@@ -60,14 +54,7 @@ elements:
       - 140
       - 230
     content:
-      text: |-
-        真实界面
-        0.18 公开示例
-
-        左：页面与章节
-        中：画布
-        右：属性 / Story
-        上：浏览 / 大纲 / 章节 / 备注 / 历史
+      text: "真实界面\n本项目 · 2026-11-11\n\n左：页面与章节\n中：画布\n右：属性 / Story\n上：浏览 / 大纲 / 章节 / 备注 / 历史"
       fontSize: 9
       fontFamily:
         ea: Microsoft YaHei
@@ -118,7 +105,7 @@ elements:
       - 222
       - 14
     content:
-      text: Chinese · DeepSeek V4.1 Flash 1017
+      text: "chinese deepseek v4.1flash1017"
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial

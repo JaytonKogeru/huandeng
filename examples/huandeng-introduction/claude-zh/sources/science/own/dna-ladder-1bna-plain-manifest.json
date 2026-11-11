@@ -1,0 +1,88 @@
+{
+  "source": "https://files.rcsb.org/download/1BNA.pdb",
+  "pdbSha256": "df42f1506792f191b957227b061360652adcf6f813eb69d9ec553067ea584670",
+  "atomsUsed": 486,
+  "pairs": [
+    {
+      "position": 1,
+      "chainA": 1,
+      "chainB": 24,
+      "c1_c1_A": 10.7121
+    },
+    {
+      "position": 2,
+      "chainA": 2,
+      "chainB": 23,
+      "c1_c1_A": 10.7665
+    },
+    {
+      "position": 3,
+      "chainA": 3,
+      "chainB": 22,
+      "c1_c1_A": 10.5802
+    },
+    {
+      "position": 4,
+      "chainA": 4,
+      "chainB": 21,
+      "c1_c1_A": 10.3531
+    },
+    {
+      "position": 5,
+      "chainA": 5,
+      "chainB": 20,
+      "c1_c1_A": 10.4416
+    },
+    {
+      "position": 6,
+      "chainA": 6,
+      "chainB": 19,
+      "c1_c1_A": 10.4606
+    },
+    {
+      "position": 7,
+      "chainA": 7,
+      "chainB": 18,
+      "c1_c1_A": 10.2329
+    },
+    {
+      "position": 8,
+      "chainA": 8,
+      "chainB": 17,
+      "c1_c1_A": 10.4912
+    },
+    {
+      "position": 9,
+      "chainA": 9,
+      "chainB": 16,
+      "c1_c1_A": 10.5912
+    },
+    {
+      "position": 10,
+      "chainA": 10,
+      "chainB": 15,
+      "c1_c1_A": 10.4362
+    },
+    {
+      "position": 11,
+      "chainA": 11,
+      "chainB": 14,
+      "c1_c1_A": 10.8052
+    },
+    {
+      "position": 12,
+      "chainA": 12,
+      "chainB": 13,
+      "c1_c1_A": 10.8877
+    }
+  ],
+  "emphasised": {
+    "shortest": 7,
+    "longest": 12
+  },
+  "matplotlib": "3.11.2",
+  "outputs": {
+    "dna-ladder-1bna-plain.png": "941ad797ed2b662a421f8b39c434a2092084aed5df0e00ede0bcf5753242ed76",
+    "dna-ladder-1bna-plain.svg": "943a7cd5c9f99dea3c92f49a3ddee518171ea82ba59ab38fc852d3d189654b9e"
+  }
+}

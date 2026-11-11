@@ -41,18 +41,15 @@ elements:
       - 88
       - 640
       - 360
-    src: media/imported/8af5553e393e50bc2be95658bea2336a9634fc16264b36e5b0f002f41c6fcace.png
-    sourceName: en-edit-1920.png
+    src: "media/independent-20261111/ui/editor-overview-mpl.png"
+    sourceName: "editor-overview-mpl.png"
     fit:
       mode: contain
   - elementId: m1
     elementType: shape
     shapeName: ellipse
     bounds:
-      - 84
-      - 170
-      - 20
-      - 20
+        [100,122,20,20]
     fill:
       type: solid
       color: "#2E6B5E"
@@ -62,10 +59,7 @@ elements:
   - elementId: m1t
     elementType: text
     bounds:
-      - 84
-      - 170
-      - 20
-      - 20
+        [100,122,20,20]
     content:
       text: "1"
       fontFamily: Arial
@@ -80,10 +74,7 @@ elements:
     elementType: shape
     shapeName: ellipse
     bounds:
-      - 294
-      - 112
-      - 20
-      - 20
+        [340,118,20,20]
     fill:
       type: solid
       color: "#2E6B5E"
@@ -93,10 +84,7 @@ elements:
   - elementId: m2t
     elementType: text
     bounds:
-      - 294
-      - 112
-      - 20
-      - 20
+        [340,118,20,20]
     content:
       text: "2"
       fontFamily: Arial
@@ -111,10 +99,7 @@ elements:
     elementType: shape
     shapeName: ellipse
     bounds:
-      - 540
-      - 226
-      - 20
-      - 20
+        [366,416,20,20]
     fill:
       type: solid
       color: "#2E6B5E"
@@ -124,10 +109,7 @@ elements:
   - elementId: m3t
     elementType: text
     bounds:
-      - 540
-      - 226
-      - 20
-      - 20
+        [366,416,20,20]
     content:
       text: "3"
       fontFamily: Arial
@@ -142,7 +124,7 @@ elements:
     elementType: shape
     shapeName: ellipse
     bounds:
-        [668,160,20,20]
+        [630,180,20,20]
     fill:
       type: solid
       color: "#2E6B5E"
@@ -152,7 +134,7 @@ elements:
   - elementId: m4t
     elementType: text
     bounds:
-        [668,160,20,20]
+        [630,180,20,20]
     content:
       text: "4"
       fontFamily: Arial
@@ -167,7 +149,7 @@ elements:
     elementType: shape
     shapeName: ellipse
     bounds:
-        [472,62,20,20]
+        [442,62,20,20]
     fill:
       type: solid
       color: "#2E6B5E"
@@ -177,7 +159,7 @@ elements:
   - elementId: m5t
     elementType: text
     bounds:
-        [472,62,20,20]
+        [442,62,20,20]
     content:
       text: "5"
       fontFamily: Arial
@@ -192,7 +174,7 @@ elements:
     elementType: shape
     shapeName: ellipse
     bounds:
-        [652,62,20,20]
+        [635,62,20,20]
     fill:
       type: solid
       color: "#2E6B5E"
@@ -202,7 +184,7 @@ elements:
   - elementId: m6t
     elementType: text
     bounds:
-        [652,62,20,20]
+        [635,62,20,20]
     content:
       text: "6"
       fontFamily: Arial
@@ -255,9 +237,7 @@ elements:
       - 182
       - 56
     content:
-      text: |-
-        3  Canvas
-        Text, images, shapes, tables, charts, equations
+      text: "3  Canvas\nText, images, shapes, tables, equations"
       fontFamily: Arial
       fontSize: 13
       lineHeight: 1.3
@@ -291,9 +271,7 @@ elements:
       - 182
       - 56
     content:
-      text: |-
-        5  Agent setup · Activity
-        Connect an AI client; see its reports and real saves
+      text: "5  Agent setup and Activity\nConnect an AI client; see its reports and real saves"
       fontFamily: Arial
       fontSize: 13
       lineHeight: 1.3
@@ -309,9 +287,7 @@ elements:
       - 182
       - 56
     content:
-      text: |-
-        6  Export · Present
-        PDF, PPTX or MP4; F5 / Shift+F5
+      text: "6  Export and Present\nPDF, PPTX or MP4; F5 or Shift+F5"
       fontFamily: Arial
       fontSize: 13
       lineHeight: 1.3
@@ -327,7 +303,7 @@ elements:
       - 640
       - 18
     content:
-      text: "Real capture: HUANDENG Editor 0.18, English interface, public example project “HUANDENG showcase”."
+      text: "Real capture: HUANDENG Editor 0.19.0, English interface, this project with the 1BNA slide selected."
       fontFamily: Arial
       fontSize: 11.5
       lineHeight: 1.3
@@ -342,7 +318,7 @@ elements:
       - 505
       - 16
       - 16
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    src: "media/independent-20261111/brand/huandeng.png"
     sourceName: huandeng.png
     fit:
       mode: contain
@@ -382,10 +358,7 @@ elements:
   - elementId: l5
     elementType: line
     bounds:
-      - 481
-      - 82
-      - 2
-      - 12
+        [451,82,2,12]
     viewBox:
       - 2
       - 12
@@ -398,10 +371,7 @@ elements:
   - elementId: l6
     elementType: line
     bounds:
-      - 661
-      - 82
-      - 2
-      - 12
+        [644,82,2,12]
     viewBox:
       - 2
       - 12
@@ -419,7 +389,7 @@ elements:
       - 176
       - 16
     content:
-      text: English · Claude Opus 5.5
+      text: "english claude opus5.5"
       fontFamily: Arial
       fontSize: 10
       lineHeight: 1.2
@@ -427,4 +397,4 @@ elements:
       align:
         - right
         - middle
-notes: "This is the editor itself, running a small public example. 1, the sidebar has four tabs: Project, Pages, Assets, and Files, which shows the project folder the way VS Code shows a code repository. Assets is a real library: every figure in the project, with its original size and where it is used. 2, the views above the canvas: Normal, Browse, Outline, Sections, Notes page and History. 3, the canvas edits native objects, including tables and charts. 4, the Inspector: properties, layout, a Layers panel in the spirit of Photoshop, the Story of the slide, and checks. 5, Agent setup connects the AI client you already use, and Activity shows what it reports and what was actually saved. 6, Export and Present. There is no chat box inside the editor."
+notes: "This is the editor itself, open on this very talk, with the 1BNA slide selected. 1, the sidebar has four tabs: Project, Pages, Assets, and Files, which shows the project folder the way VS Code shows a code repository. Pages lists every slide with its Section, Position and Slide ID. Assets is a real library: every figure in the project, with its original size and where it is used. 2, the views above the canvas: Normal, Browse, Outline, Sections, Notes page and History. 3, the canvas edits native objects: text, images, shapes and tables. The plot you see on the 1BNA slide is a Matplotlib figure placed as an image; the data and the script that draw it live in the project folder. 4, the Inspector: properties, layout, a Layers panel in the spirit of Photoshop, the Story of the slide, and checks. 5, Agent setup connects the AI client you already use, and Activity shows what it reports and what was actually saved. 6, Export and Present. There is no chat box inside the editor."

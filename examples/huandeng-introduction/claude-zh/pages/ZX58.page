@@ -20,20 +20,4 @@ elements:
         - middle
       bold: true
     role: title
-  - elementId: attribution-watermark
-    elementType: text
-    bounds:
-      - 760
-      - 10
-      - 176
-      - 16
-    content:
-      text: 中文 · Claude Opus 5.5
-      fontFamily: Microsoft YaHei
-      fontSize: 10
-      lineHeight: 1.2
-      color: "#A8C2BA"
-      align:
-        - right
-        - middle
 notes: "第一部分，先讲为什么。有四个原因，都来自真实的组会，以及我真的用 AI 做 slides 时遇到的事。"

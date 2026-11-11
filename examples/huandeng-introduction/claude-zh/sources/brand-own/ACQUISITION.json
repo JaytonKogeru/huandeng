@@ -1,0 +1,73 @@
+{
+  "acquiredBy": "Claude Code (claude-zh edition)",
+  "acquiredAtUTC": "2026-11-11/12",
+  "userAgent": "claude-code-huandeng-intro",
+  "raw": [
+    "anthropics-org.png",
+    "claude-apple-touch.png",
+    "claude-favicon.svg",
+    "deepseek-ai-org.png",
+    "gitbrent.png",
+    "huandeng-editor-favicon.svg",
+    "mark-github-24.svg",
+    "open-slide-org.png",
+    "openai-org.png",
+    "pptxgenjs-app-logo.svg",
+    "pptxgenjs-favicon.png",
+    "pptxgenjs-logo.png",
+    "pptxgenjs-logo_square.png",
+    "pptxgenjs-vite-logo.png"
+  ],
+  "marks": [
+    {
+      "file": "huandeng-mark.png",
+      "url": "http://127.0.0.1:63941/assets/favicon-BhytTYDU.svg",
+      "method": "served by the running HUANDENG Editor 0.19 for this project; SVG rasterized at 512 px with rasterize.mjs",
+      "sha256": "6a20894fe3789d4fb328a90a60fc808e169ce2ca038ec6ce3dcb15bd9413f9ea",
+      "matchesSharedPackage": null
+    },
+    {
+      "file": "claude-mark.png",
+      "url": "https://claude.ai/favicon.svg",
+      "method": "official Claude favicon SVG; rasterized at 512 px",
+      "sha256": "7056f035f8574b376cb4512a71e554f8b603e855d24f28bfbd80a7b971b167d9",
+      "matchesSharedPackage": null
+    },
+    {
+      "file": "github-mark.png",
+      "url": "https://unpkg.com/@primer/octicons@19/build/svg/mark-github-24.svg",
+      "method": "GitHub Primer Octicons mark-github (MIT); rasterized at 512 px, fill #1C2321",
+      "sha256": "ffe150e190e851a859e4280c3ef1be77c9ebe997637a5d37c49c778a9242e64d",
+      "matchesSharedPackage": null
+    },
+    {
+      "file": "open-slide-mark.png",
+      "url": "https://github.com/open-slide.png?size=460",
+      "method": "official open-slide GitHub organization avatar, unchanged",
+      "sha256": "84a938550c678d25d3af93c35e4106f94798269f4a8702520e4464bf90323731",
+      "matchesSharedPackage": null
+    },
+    {
+      "file": "openai-mark.png",
+      "url": "https://github.com/openai.png?size=460",
+      "method": "official OpenAI GitHub organization avatar, unchanged (used for Codex and ChatGPT)",
+      "sha256": "a4c36896a019505b19414a21f1c2faa1cbfad20af7df81ad09769040d395a9a5",
+      "matchesSharedPackage": null
+    },
+    {
+      "file": "deepseek-mark.png",
+      "url": "https://github.com/deepseek-ai.png?size=460",
+      "method": "official deepseek-ai GitHub organization avatar, unchanged",
+      "sha256": "e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc",
+      "matchesSharedPackage": "brand\\deepseek.png"
+    },
+    {
+      "file": "pptxgenjs-mark.png",
+      "url": "https://raw.githubusercontent.com/gitbrent/PptxGenJS/gh-pages/img/favicon.png",
+      "method": "PptxGenJS documentation-site favicon, unchanged",
+      "sha256": "d697acf6f3c5bc265806bc8f6c4e6d58b964e0b2962392d0329a420639f45846",
+      "matchesSharedPackage": "brand\\pptxgenjs.png"
+    }
+  ],
+  "note": "Acquired independently for this edition after the author ruled that editions must not share artwork. Third-party marks belong to their owners and identify the projects only."
+}

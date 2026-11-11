@@ -1,0 +1,21 @@
+background:
+  type: solid
+  color: "#17181A"
+elements:
+  - elementId: p2b-title
+    elementType: text
+    role: title
+    bounds:
+      - 64
+      - 220
+      - 800
+      - 84
+    content:
+      text: Why this exists
+      fontSize: 64
+      fontFamily: Georgia
+      color: "#F7F5F0"
+      lineHeight: 1.05
+      align:
+        - left
+        - top

@@ -102,7 +102,7 @@ elements:
       - 260
       - 330
     content:
-      text: <p><strong><span style="color:#2E6B5E">真实测试（0.19）</span></strong></p><p><span style="font-size:8px"> </span></p><p>一个 DeepSeek Harness 原生会话和 ChatGPT 共用一个 3 页的测试项目：</p><p><span style="font-size:8px"> </span></p><p>·  各自修改不同的页面，修改都保留了</p><p>·  一次过期的同页写入被拒绝</p><p>·  之后的风格交接保留了另一方的内容</p><p><span style="font-size:8px"> </span></p><p><span style="font-size:11px;color:#7A8480">来源：docs/NATIVE-INTEGRATION-0.19.md。尚未做 Claude 原生的协作测试。</span></p>
+      text: "<p><strong><span style=\"color:#2E6B5E\">真实测试（0.19）</span></strong></p><p><span style=\"font-size:8px\"> </span></p><p>一个 DeepSeek Harness 原生会话和 ChatGPT 共用一个 3 页的测试项目：</p><p><span style=\"font-size:8px\"> </span></p><p><strong><span style=\"color:#2E6B5E\">不同页面</span></strong>　各自的修改都保留了</p><p><strong><span style=\"color:#2E6B5E\">同一页</span></strong>　一次过期的写入被拒绝</p><p><strong><span style=\"color:#2E6B5E\">交接</span></strong>　之后的风格整理保留了另一方的内容</p><p><span style=\"font-size:8px\"> </span></p><p><span style=\"font-size:11px;color:#7A8480\">来源：docs/NATIVE-INTEGRATION-0.19.md。尚未做 Claude 原生的协作测试。</span></p>"
       fontFamily: Microsoft YaHei
       fontSize: 13.5
       lineHeight: 1.6
@@ -117,8 +117,8 @@ elements:
       - 505
       - 16
       - 16
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
-    sourceName: huandeng.png
+    src: "media/imported/6a20894fe3789d4fb328a90a60fc808e169ce2ca038ec6ce3dcb15bd9413f9ea.png"
+    sourceName: "huandeng-mark.png"
     fit:
       mode: contain
   - elementId: ft-label
@@ -162,7 +162,7 @@ elements:
       - 176
       - 16
     content:
-      text: 中文 · Claude Opus 5.5
+      text: "chinese claude opus5.5"
       fontFamily: Microsoft YaHei
       fontSize: 10
       lineHeight: 1.2

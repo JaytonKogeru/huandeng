@@ -24,10 +24,7 @@ elements:
     elementType: shape
     shapeName: rect
     bounds:
-      - 55
-      - 91
-      - 362
-      - 286
+        [55,91,362,285]
     fill:
       type: solid
       color: "#FFFFFF"
@@ -37,12 +34,9 @@ elements:
   - elementId: check-shot
     elementType: image
     bounds:
-      - 56
-      - 92
-      - 360
-      - 284
-    src: media/imported/1e6586bf8fce075f9426da199ac19b23b0f1665699c017abd73b2590a28fc891.png
-    sourceName: zh-design-check-crop-0-0-2700-2128.png
+        [56,92,360,283]
+    src: "media/imported/9eae73869f3c0f4f43904b81c7854e13905729c0d83c89071d8a890e9e6fb1ff.png"
+    sourceName: "own-design-check.png"
     fit:
       mode: contain
   - elementId: check-caption
@@ -82,8 +76,8 @@ elements:
       - 92
       - 288
       - 136
-    src: media/imported/93c7ba236a204f434045f9c9f62d0f3be06736b95537ab6b134ef63d35273448.png
-    sourceName: zh-CN-native-export-4x.png
+    src: "media/imported/dc7f04ff4dbaf00e231b3bd0671983f858be34cbde351cd9a55c7d64b57414b2.png"
+    sourceName: "own-export-dialog.png"
     fit:
       mode: contain
   - elementId: present-shot
@@ -93,8 +87,8 @@ elements:
       - 92
       - 148
       - 65
-    src: media/imported/10ee990c863d150d06ac8ef7125b31d3f5857d0fcbce91c21960ba49eca87e96.png
-    sourceName: zh-CN-native-present-menu-4x.png
+    src: "media/imported/fb3438d84a05e59785d2b04957562382c0fc442b2c5d20451cc184141324a17d.png"
+    sourceName: "own-present-menu.png"
     fit:
       mode: contain
   - elementId: present-caption
@@ -161,7 +155,7 @@ elements:
       - 460
       - 18
     content:
-      text: 真实截图：HUANDENG Editor 中文界面，公开示例项目。
+      text: "真实截图：HUANDENG Editor 中文界面，本项目。"
       fontFamily: Microsoft YaHei
       fontSize: 11
       lineHeight: 1.4
@@ -176,8 +170,8 @@ elements:
       - 505
       - 16
       - 16
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
-    sourceName: huandeng.png
+    src: "media/imported/6a20894fe3789d4fb328a90a60fc808e169ce2ca038ec6ce3dcb15bd9413f9ea.png"
+    sourceName: "huandeng-mark.png"
     fit:
       mode: contain
   - elementId: ft-label
@@ -221,7 +215,7 @@ elements:
       - 176
       - 16
     content:
-      text: 中文 · Claude Opus 5.5
+      text: "chinese claude opus5.5"
       fontFamily: Microsoft YaHei
       fontSize: 10
       lineHeight: 1.2

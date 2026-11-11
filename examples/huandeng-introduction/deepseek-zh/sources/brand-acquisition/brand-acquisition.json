@@ -1,0 +1,287 @@
+{
+  "purpose": "Independent acquisition of the brand originals still used by the active pages of deepseek-zh, 2026-11-11",
+  "project": "deepseek-zh",
+  "acquiredAt": "2026-11-11T13:57:00.770595+00:00",
+  "retrievals": [
+    {
+      "asset": "huandeng",
+      "method": "copied from the official HUANDENG product working tree (git origin JaytonKogeru/huandeng) at HEAD; the public raw URLs returned 404, so the repository checkout is the source",
+      "repoHead": "b43e3e08cb3f676f78202b4df5e1145255ee043c",
+      "repoPath": "plugins/huandeng/assets/icon.png",
+      "gitTracked": true,
+      "attemptedUrls": [
+        "https://raw.githubusercontent.com/JaytonKogeru/huandeng/00482d384f57ec3f7ce42f9578c5e1cfd6092048/plugins/huandeng/assets/icon.png",
+        "https://raw.githubusercontent.com/JaytonKogeru/huandeng/main/plugins/huandeng/assets/icon.png",
+        "https://raw.githubusercontent.com/JaytonKogeru/huandeng/master/plugins/huandeng/assets/icon.png"
+      ],
+      "retrievedAt": "2026-11-11T13:57:00.207440+00:00",
+      "bytes": 167581,
+      "sha256": "c6cce013fd62e96048a5f10c1168ba05a2a7d6192f334d83386a4eec45732c22",
+      "target": "raw/huandeng-icon.png"
+    },
+    {
+      "url": "https://claude.com/icon.png",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "startedAt": "2026-11-11T13:57:00.208454+00:00",
+      "finishedAt": "2026-11-11T13:57:00.314511+00:00",
+      "bytes": 4787,
+      "sha256": "733f24f4c52acb15eb0fbded1cf40eb42b4ba8e62b882acac70b6234b50919a8",
+      "target": "raw/claude-icon.png",
+      "asset": "claude-code"
+    },
+    {
+      "url": "https://avatars.githubusercontent.com/u/148330874?v=4",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "startedAt": "2026-11-11T13:57:00.315779+00:00",
+      "finishedAt": "2026-11-11T13:57:00.336731+00:00",
+      "bytes": 15456,
+      "sha256": "e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc",
+      "target": "raw/deepseek-avatar.png",
+      "asset": "deepseek"
+    },
+    {
+      "url": "https://gitbrent.github.io/PptxGenJS/img/favicon.png",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "startedAt": "2026-11-11T13:57:00.337674+00:00",
+      "finishedAt": "2026-11-11T13:57:00.361813+00:00",
+      "bytes": 15816,
+      "sha256": "d697acf6f3c5bc265806bc8f6c4e6d58b964e0b2962392d0329a420639f45846",
+      "target": "raw/pptxgenjs-favicon.png",
+      "asset": "pptxgenjs"
+    },
+    {
+      "url": "https://brand.github.com/GitHub_Logos.zip",
+      "httpStatus": 200,
+      "contentType": "application/x-zip-compressed",
+      "startedAt": "2026-11-11T13:57:00.362875+00:00",
+      "finishedAt": "2026-11-11T13:57:00.431247+00:00",
+      "bytes": 499228,
+      "sha256": "e2a67d6cc51d990a52c46c1cf6bcab688db4830982174bca50e0be7a5c2f3194",
+      "asset": "github",
+      "archiveMember": "GitHub Logos/PNG/GitHub_Invertocat_Black.png",
+      "memberBytes": 5437,
+      "memberSha256": "2a2f5cbcc74c7fa83c40127dd8b0e42c23f1157131aebe28492aa1ac27bbdc6d",
+      "memberTarget": "raw/github-invertocat-black.png"
+    },
+    {
+      "url": "https://chatgpt.com/cdn/assets/favicon.6a33781f61.svg",
+      "httpStatus": 200,
+      "contentType": "image/svg+xml",
+      "startedAt": "2026-11-11T13:57:00.437050+00:00",
+      "finishedAt": "2026-11-11T13:57:00.468415+00:00",
+      "bytes": 4381,
+      "sha256": "2021463df9935dda89cef407aa564bced9d83b4f9b6ae8945d649e56676624f0",
+      "target": "raw/chatgpt.svg",
+      "asset": "chatgpt",
+      "matchesRecordedSvgSource": true,
+      "raster": {
+        "method": "resvg-py 0.5.0 rasterisation of the official SVG at the recorded pixel size; no recolouring or crop; user stylesheet 'svg { fill: #000; }' supplies the SVG's :root fill",
+        "tool": "resvg-py 0.5.0",
+        "styleSheet": "svg { fill: #000; }",
+        "width": 720,
+        "height": 720,
+        "mode": "RGBA",
+        "bytes": 22462,
+        "sha256": "3adcc98e4382ea6009078c069bbff56a731aecc47c9c6aca955109638e8c6bd5",
+        "target": "raw/chatgpt-raster-720.png"
+      }
+    },
+    {
+      "url": "https://raw.githubusercontent.com/open-slide/open-slide/3233309b72af27f58f01b7d3b6a13f4011cf06e7/apps/web/app/icon.svg",
+      "httpStatus": 200,
+      "contentType": "image/svg+xml",
+      "startedAt": "2026-11-11T13:57:00.573347+00:00",
+      "finishedAt": "2026-11-11T13:57:00.598370+00:00",
+      "bytes": 2415,
+      "sha256": "761935b363487ac9d3ee164f0fc03d8265f4a2e1935c25325448e7f9d02e3219",
+      "target": "raw/open-slide.svg",
+      "asset": "open-slide",
+      "matchesRecordedSvgSource": true,
+      "raster": {
+        "method": "resvg-py 0.5.0 rasterisation of the official SVG at the recorded pixel size; no recolouring or crop",
+        "tool": "resvg-py 0.5.0",
+        "styleSheet": null,
+        "width": 512,
+        "height": 512,
+        "mode": "RGBA",
+        "bytes": 32673,
+        "sha256": "f02ae8879fae2bc16a239399e119fb8eee93303c2e440855a4f04a13225981c7",
+        "target": "raw/open-slide-raster-512.png"
+      }
+    }
+  ],
+  "comparisons": [
+    {
+      "asset": "huandeng",
+      "acquired": {
+        "bytes": 167581,
+        "sha256": "c6cce013fd62e96048a5f10c1168ba05a2a7d6192f334d83386a4eec45732c22",
+        "size": [
+          512,
+          512
+        ],
+        "mode": "RGB"
+      },
+      "active": {
+        "path": "media/imported/c6cce013fd62e96048a5f10c1168ba05a2a7d6192f334d83386a4eec45732c22.png",
+        "size": [
+          512,
+          512
+        ],
+        "mode": "RGB",
+        "bytes": 167581,
+        "sha256": "c6cce013fd62e96048a5f10c1168ba05a2a7d6192f334d83386a4eec45732c22"
+      },
+      "bytesIdentical": true,
+      "pixelSizeIdentical": true
+    },
+    {
+      "asset": "claude-code",
+      "acquired": {
+        "bytes": 4787,
+        "sha256": "733f24f4c52acb15eb0fbded1cf40eb42b4ba8e62b882acac70b6234b50919a8",
+        "size": [
+          192,
+          192
+        ],
+        "mode": "P"
+      },
+      "active": {
+        "path": "media/imported/733f24f4c52acb15eb0fbded1cf40eb42b4ba8e62b882acac70b6234b50919a8.png",
+        "size": [
+          192,
+          192
+        ],
+        "mode": "P",
+        "bytes": 4787,
+        "sha256": "733f24f4c52acb15eb0fbded1cf40eb42b4ba8e62b882acac70b6234b50919a8"
+      },
+      "bytesIdentical": true,
+      "pixelSizeIdentical": true
+    },
+    {
+      "asset": "deepseek",
+      "acquired": {
+        "bytes": 15456,
+        "sha256": "e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc",
+        "size": [
+          460,
+          460
+        ],
+        "mode": "RGB"
+      },
+      "active": {
+        "path": "media/imported/e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc.png",
+        "size": [
+          460,
+          460
+        ],
+        "mode": "RGB",
+        "bytes": 15456,
+        "sha256": "e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc"
+      },
+      "bytesIdentical": true,
+      "pixelSizeIdentical": true
+    },
+    {
+      "asset": "pptxgenjs",
+      "acquired": {
+        "bytes": 15816,
+        "sha256": "d697acf6f3c5bc265806bc8f6c4e6d58b964e0b2962392d0329a420639f45846",
+        "size": [
+          480,
+          349
+        ],
+        "mode": "RGBA"
+      },
+      "active": {
+        "path": "media/imported/d697acf6f3c5bc265806bc8f6c4e6d58b964e0b2962392d0329a420639f45846.png",
+        "size": [
+          480,
+          349
+        ],
+        "mode": "RGBA",
+        "bytes": 15816,
+        "sha256": "d697acf6f3c5bc265806bc8f6c4e6d58b964e0b2962392d0329a420639f45846"
+      },
+      "bytesIdentical": true,
+      "pixelSizeIdentical": true
+    },
+    {
+      "asset": "github",
+      "acquired": {
+        "bytes": 5437,
+        "sha256": "2a2f5cbcc74c7fa83c40127dd8b0e42c23f1157131aebe28492aa1ac27bbdc6d",
+        "size": [
+          294,
+          288
+        ],
+        "mode": "RGBA"
+      },
+      "active": {
+        "path": "media/imported/2a2f5cbcc74c7fa83c40127dd8b0e42c23f1157131aebe28492aa1ac27bbdc6d.png",
+        "size": [
+          294,
+          288
+        ],
+        "mode": "RGBA",
+        "bytes": 5437,
+        "sha256": "2a2f5cbcc74c7fa83c40127dd8b0e42c23f1157131aebe28492aa1ac27bbdc6d"
+      },
+      "bytesIdentical": true,
+      "pixelSizeIdentical": true
+    },
+    {
+      "asset": "chatgpt",
+      "acquired": {
+        "bytes": 22462,
+        "sha256": "3adcc98e4382ea6009078c069bbff56a731aecc47c9c6aca955109638e8c6bd5",
+        "size": [
+          720,
+          720
+        ],
+        "mode": "RGBA"
+      },
+      "active": {
+        "path": "media/imported/0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13.png",
+        "size": [
+          720,
+          720
+        ],
+        "mode": "RGBA",
+        "bytes": 27900,
+        "sha256": "0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13"
+      },
+      "bytesIdentical": false,
+      "pixelSizeIdentical": true
+    },
+    {
+      "asset": "open-slide",
+      "acquired": {
+        "bytes": 32673,
+        "sha256": "f02ae8879fae2bc16a239399e119fb8eee93303c2e440855a4f04a13225981c7",
+        "size": [
+          512,
+          512
+        ],
+        "mode": "RGBA"
+      },
+      "active": {
+        "path": "media/imported/44e2a2aa5f3887deae386fa73f71234961f93e006873b632ccf38b6b6f1291a1.png",
+        "size": [
+          512,
+          512
+        ],
+        "mode": "RGBA",
+        "bytes": 31437,
+        "sha256": "44e2a2aa5f3887deae386fa73f71234961f93e006873b632ccf38b6b6f1291a1"
+      },
+      "bytesIdentical": false,
+      "pixelSizeIdentical": true
+    }
+  ],
+  "note": "Official originals may be byte-identical to the asset already in the project; no file was re-encoded to manufacture a difference. Historical files stay untouched."
+}

@@ -97,24 +97,20 @@ elements:
       align:
         - left
         - middle
-  - elementId: aa1
-    elementType: line
+  - elementId: aa1-blk
+    elementType: shape
+    shapeName: rightArrow
     bounds:
-      - 352
-      - 128
-      - 22
-      - 2
-    viewBox:
-      - 22
-      - 2
-    points: 0,1 22,1
-    border:
-      width: 1.5
+      - 354
+      - 121
+      - 18
+      - 16
+    fill:
+      type: solid
       color: "#8A5A2E"
-      style: solid
-    arrow:
-      - null
-      - arrow
+    border:
+      width: 0
+      color: "#8A5A2E"
   - elementId: a2
     elementType: shape
     shapeName: rect
@@ -145,24 +141,20 @@ elements:
       align:
         - left
         - middle
-  - elementId: aa2
-    elementType: line
+  - elementId: aa2-blk
+    elementType: shape
+    shapeName: rightArrow
     bounds:
-      - 536
-      - 128
-      - 22
-      - 2
-    viewBox:
-      - 22
-      - 2
-    points: 0,1 22,1
-    border:
-      width: 1.5
+      - 538
+      - 121
+      - 18
+      - 16
+    fill:
+      type: solid
       color: "#8A5A2E"
-      style: solid
-    arrow:
-      - null
-      - arrow
+    border:
+      width: 0
+      color: "#8A5A2E"
   - elementId: a-out
     elementType: text
     bounds:
@@ -179,24 +171,20 @@ elements:
       align:
         - left
         - middle
-  - elementId: aa3
-    elementType: line
+  - elementId: aa3-blk
+    elementType: shape
+    shapeName: rightArrow
     bounds:
-      - 720
-      - 128
-      - 22
-      - 2
-    viewBox:
-      - 22
-      - 2
-    points: 0,1 22,1
-    border:
-      width: 1.5
+      - 722
+      - 121
+      - 18
+      - 16
+    fill:
+      type: solid
       color: "#8A5A2E"
-      style: solid
-    arrow:
-      - null
-      - arrow
+    border:
+      width: 0
+      color: "#8A5A2E"
   - elementId: b-label
     elementType: text
     bounds:
@@ -274,24 +262,20 @@ elements:
       align:
         - left
         - middle
-  - elementId: ba1
-    elementType: line
+  - elementId: ba1-blk
+    elementType: shape
+    shapeName: rightArrow
     bounds:
-      - 352
-      - 248
-      - 22
-      - 2
-    viewBox:
-      - 22
-      - 2
-    points: 0,1 22,1
-    border:
-      width: 1.5
+      - 354
+      - 241
+      - 18
+      - 16
+    fill:
+      type: solid
       color: "#2E6B5E"
-      style: solid
-    arrow:
-      - null
-      - arrow
+    border:
+      width: 0
+      color: "#2E6B5E"
   - elementId: b2
     elementType: shape
     shapeName: rect
@@ -322,24 +306,20 @@ elements:
       align:
         - left
         - middle
-  - elementId: ba2
-    elementType: line
+  - elementId: ba2-blk
+    elementType: shape
+    shapeName: rightArrow
     bounds:
-      - 536
-      - 248
-      - 22
-      - 2
-    viewBox:
-      - 22
-      - 2
-    points: 0,1 22,1
-    border:
-      width: 1.5
+      - 538
+      - 241
+      - 18
+      - 16
+    fill:
+      type: solid
       color: "#2E6B5E"
-      style: solid
-    arrow:
-      - null
-      - arrow
+    border:
+      width: 0
+      color: "#2E6B5E"
   - elementId: b3
     elementType: shape
     shapeName: rect
@@ -370,24 +350,20 @@ elements:
       align:
         - left
         - middle
-  - elementId: ba3
-    elementType: line
+  - elementId: ba3-blk
+    elementType: shape
+    shapeName: rightArrow
     bounds:
-      - 720
-      - 248
-      - 22
-      - 2
-    viewBox:
-      - 22
-      - 2
-    points: 0,1 22,1
-    border:
-      width: 1.5
+      - 722
+      - 241
+      - 18
+      - 16
+    fill:
+      type: solid
       color: "#2E6B5E"
-      style: solid
-    arrow:
-      - null
-      - arrow
+    border:
+      width: 0
+      color: "#2E6B5E"
   - elementId: rule
     elementType: shape
     shapeName: rect
@@ -428,13 +404,13 @@ elements:
     content:
       text: "This version of the talk was built this way: from the owner's spoken account of why HUANDENG exists, recorded on 11 November 2026."
       fontFamily: Arial
-      fontSize: 14
+      fontSize: 15
       lineHeight: 1.4
       color: "#2E6B5E"
       align:
         - left
         - top
-      bold: true
+      bold: false
   - elementId: ft-mark
     elementType: image
     bounds:
@@ -442,7 +418,7 @@ elements:
       - 505
       - 16
       - 16
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    src: "media/independent-20261111/brand/huandeng.png"
     sourceName: huandeng.png
     fit:
       mode: contain
@@ -454,7 +430,7 @@ elements:
       - 520
       - 16
     content:
-      text: HUANDENG  /  Why I built it  ·  concept diagram
+      text: "HUANDENG  /  Why I built it    (concept diagram)"
       fontFamily: Arial
       fontSize: 11
       lineHeight: 1.3
@@ -487,7 +463,7 @@ elements:
       - 176
       - 16
     content:
-      text: English · Claude Opus 5.5
+      text: "english claude opus5.5"
       fontFamily: Arial
       fontSize: 10
       lineHeight: 1.2

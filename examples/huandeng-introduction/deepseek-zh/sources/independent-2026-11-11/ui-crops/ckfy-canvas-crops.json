@@ -1,0 +1,40 @@
+{
+  "note": "Both captures use the same crop box; only the XZJN right column changed between them.",
+  "detectedCanvasColor": "#E8EEE6",
+  "records": [
+    {
+      "source": "media/imported/5370be7d9e615b127a87ba18a8516a879e22a44c568916262b695297b4744509.png",
+      "sourceSha256": "5370be7d9e615b127a87ba18a8516a879e22a44c568916262b695297b4744509",
+      "cropBoxPx": [
+        640,
+        555,
+        3176,
+        1980
+      ],
+      "path": "sources/independent-2026-11-11/ui-crops/ckfy-before-canvas.png",
+      "size": [
+        2536,
+        1425
+      ],
+      "sha256": "9a59ed3ea78ead281b9a0f0c3f7aeb83977d0ef9a9e39c6b3817b85cb1868d9b",
+      "asset": "media/imported/9a59ed3ea78ead281b9a0f0c3f7aeb83977d0ef9a9e39c6b3817b85cb1868d9b.png"
+    },
+    {
+      "source": "media/imported/619a120ba88c681ad46cdca28bfae6f8b7e40497ee91063d03c188dd46333b8f.png",
+      "sourceSha256": "619a120ba88c681ad46cdca28bfae6f8b7e40497ee91063d03c188dd46333b8f",
+      "cropBoxPx": [
+        640,
+        555,
+        3176,
+        1980
+      ],
+      "path": "sources/independent-2026-11-11/ui-crops/ckfy-after-canvas.png",
+      "size": [
+        2536,
+        1425
+      ],
+      "sha256": "ab94e7939db0824c3c8719e5f87f9250d49ccdadf1cc076499b9c237b68c48fb",
+      "asset": "media/imported/ab94e7939db0824c3c8719e5f87f9250d49ccdadf1cc076499b9c237b68c48fb.png"
+    }
+  ]
+}

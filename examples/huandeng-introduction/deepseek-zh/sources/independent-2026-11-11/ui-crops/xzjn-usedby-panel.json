@@ -1,0 +1,21 @@
+{
+  "sourceCapture": "media/imported/31b5b6d1380158c78cd1c06f6f9a85289b91de70db604173467f372cdf59ed45.png",
+  "sourceSha256": "31b5b6d1380158c78cd1c06f6f9a85289b91de70db604173467f372cdf59ed45",
+  "sourceState": "Editor, page Z4XP, browse view, project sidebar, zh-CN 1920x1080 viewport, 3840x2160 output, captured 2026-11-11T13:32:30Z",
+  "cropBoxPx": [
+    0,
+    1118,
+    560,
+    1512
+  ],
+  "derived": {
+    "path": "sources/independent-2026-11-11/ui-crops/xzjn-usedby-panel.png",
+    "size": [
+      560,
+      394
+    ],
+    "sha256": "39bacfd07f1601a66c03a00a5c9b12c19dbbeec482ea71efbe4b2407ab3b48fc",
+    "asset": "media/imported/39bacfd07f1601a66c03a00a5c9b12c19dbbeec482ea71efbe4b2407ab3b48fc.png"
+  },
+  "note": "Region only: the project sidebar's 主幻灯片 / 演讲 / Z4XP 使用位置 block. No pixel changes."
+}

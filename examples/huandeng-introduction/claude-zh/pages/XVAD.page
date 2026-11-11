@@ -20,20 +20,4 @@ elements:
         - middle
       bold: true
     role: title
-  - elementId: attribution-watermark
-    elementType: text
-    bounds:
-      - 760
-      - 10
-      - 176
-      - 16
-    content:
-      text: 中文 · Claude Opus 5.5
-      fontFamily: Microsoft YaHei
-      fontSize: 10
-      lineHeight: 1.2
-      color: "#A8C2BA"
-      align:
-        - right
-        - middle
 notes: 第五部分。最后讲 agent 怎么接进来、几个 agent 怎么一起干活、稿子怎么交付、幻灯站在哪些项目上，以及怎么开始。

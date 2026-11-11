@@ -41,8 +41,8 @@ elements:
       - 92
       - 848
       - 282
-    src: media/imported/f5455f5cada808cb66355a623d9d2e07d5e8645a0e4cdd0ecc97220c7ab96bd5.png
-    sourceName: zh-CN-native-outline-reading-4x.png
+    src: "media/imported/fdff48ae44f7414a628448871b99a03dc4dc0efbbb94d63a79c4949379f81261.png"
+    sourceName: "own-outline-story.png"
     fit:
       mode: contain
   - elementId: outline-caption
@@ -53,7 +53,7 @@ elements:
       - 848
       - 18
     content:
-      text: 大纲视图：每页的章节、位置、标题、故事摘要和页面短码。真实截图，公开示例项目。
+      text: "大纲视图：每页的位置、标题、故事摘要和页面短码；选中的是本介绍的 BRHY 页。真实截图。"
       fontFamily: Microsoft YaHei
       fontSize: 11
       lineHeight: 1.4
@@ -84,8 +84,8 @@ elements:
       - 505
       - 16
       - 16
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
-    sourceName: huandeng.png
+    src: "media/imported/6a20894fe3789d4fb328a90a60fc808e169ce2ca038ec6ce3dcb15bd9413f9ea.png"
+    sourceName: "huandeng-mark.png"
     fit:
       mode: contain
   - elementId: ft-label
@@ -129,7 +129,7 @@ elements:
       - 176
       - 16
     content:
-      text: 中文 · Claude Opus 5.5
+      text: "chinese claude opus5.5"
       fontFamily: Microsoft YaHei
       fontSize: 10
       lineHeight: 1.2

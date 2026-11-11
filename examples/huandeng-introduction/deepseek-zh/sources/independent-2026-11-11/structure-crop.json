@@ -1,0 +1,48 @@
+{
+  "source": "1bna_deposited_chain_front_image-800x800.png",
+  "sourceSha256": "8c7c6a5665ba2a1954be8b701eb731714b05118afe4dea0a435c937c561d4310",
+  "sourceSize": [
+    800,
+    800
+  ],
+  "sourceMode": "RGBA",
+  "sourceUrl": "https://www.ebi.ac.uk/pdbe/static/entry/1bna_deposited_chain_front_image-800x800.png",
+  "alphaBoundsPx": [
+    25,
+    203,
+    800,
+    769
+  ],
+  "moleculeBoundsPx": [
+    25,
+    203,
+    799,
+    576
+  ],
+  "cropBoxPx": [
+    7,
+    185,
+    800,
+    594
+  ],
+  "rotationDegrees": 90,
+  "note": "Transparent background composited on white; whitespace and the PDBe orientation glyph cropped; molecule pixels unchanged apart from a 90 degree rotation for portrait placement. No resampling.",
+  "derived": [
+    {
+      "path": "1bna-pdbe-front-crop.png",
+      "size": [
+        793,
+        409
+      ],
+      "sha256": "933451142d9b1ac10a87b676b9844573309682aec90ab98e3c6387b0e8efdb0a"
+    },
+    {
+      "path": "1bna-pdbe-vertical.png",
+      "size": [
+        409,
+        793
+      ],
+      "sha256": "a61ef1eacf2dd49461a13d2f2dbef9811f894311463b8627ae79634dd4c584b5"
+    }
+  ]
+}

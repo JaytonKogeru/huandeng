@@ -5,12 +5,9 @@ elements:
   - elementId: p12-eyebrow
     elementType: text
     bounds:
-      - 64
-      - 38
-      - 300
-      - 16
+        [64,18,300,14]
     content:
-      text: 02 · THE WORKSPACE
+      text: "02 / THE EDITOR"
       fontSize: 10
       fontFamily: Consolas
       color: "#B43C26"
@@ -22,13 +19,10 @@ elements:
     elementType: text
     role: title
     bounds:
-      - 64
-      - 58
-      - 780
-      - 56
+        [64,44,760,42]
     content:
       text: A page keeps its name when it moves.
-      fontSize: 32
+      fontSize: 30
       fontFamily: Georgia
       color: "#17181A"
       lineHeight: 1.1
@@ -59,7 +53,7 @@ elements:
       - 300
       - 14
     content:
-      text: BEFORE THE MOVE
+      text: "BEFORE / POSITION 4 OF 22"
       fontSize: 10
       fontFamily: Consolas
       color: "#B43C26"
@@ -70,22 +64,17 @@ elements:
   - elementId: p12-img1
     elementType: image
     bounds:
-      - 64
-      - 212
-      - 560
-      - 70
-    src: media/imported/4b4475913c7e4538c9b76f47056e1edca6405a8636d7fd7c591309a373101e19.png
-    sourceName: en-identity-before-4x.png
+        [64,214,560,48]
+    src: "media/imported/bd57be1561c2ec0e539d70d0395637adabf72f62b31ae752328edf436208f95e.png"
+    sourceName: "deepseek-en-tpcj-before-divider-1920.png"
     fit:
       mode: contain
+    "crop": {"left":0.15, "top": 0.94, "right": 0.49, "bottom": 0.003}
   - elementId: p12-frame1
     elementType: shape
     shapeName: rect
     bounds:
-      - 64
-      - 212
-      - 560
-      - 70
+        [64,214,560,48]
     border:
       color: "#D9D4C8"
       width: 1
@@ -93,12 +82,9 @@ elements:
   - elementId: p12-label2
     elementType: text
     bounds:
-      - 64
-      - 306
-      - 300
-      - 14
+        [64,286,300,14]
     content:
-      text: AFTER THE MOVE
+      text: "AFTER / POSITION 5 OF 24"
       fontSize: 10
       fontFamily: Consolas
       color: "#B43C26"
@@ -109,22 +95,17 @@ elements:
   - elementId: p12-img2
     elementType: image
     bounds:
-      - 64
-      - 326
-      - 560
-      - 70
-    src: media/imported/cfb23a312f298e185eb847eddb1cdf9cc493d63d55082cab0cc70606789af5f5.png
-    sourceName: en-identity-after-4x.png
+        [64,308,560,48]
+    src: "media/imported/8117935d41927284bae8ef7641b97641fd8ff682680e1a8bc70a8b3575b05406.png"
+    sourceName: "deepseek-en-tpcj-current-1920.png"
     fit:
       mode: contain
+    "crop": {"left":0.15, "top": 0.94, "right": 0.49, "bottom": 0.003}
   - elementId: p12-frame2
     elementType: shape
     shapeName: rect
     bounds:
-      - 64
-      - 326
-      - 560
-      - 70
+        [64,308,560,48]
     border:
       color: "#D9D4C8"
       width: 1
@@ -137,7 +118,7 @@ elements:
       - 236
       - 180
     content:
-      text: The page moved two places. The ID did not. An agent can be asked for C014, not 'page four'.
+      text: "The page moved one place when the Section divider was inserted. The ID did not. An agent can be asked for TPCJ, not 'page four'."
       fontSize: 13.5
       fontFamily: Segoe UI
       color: "#3A3833"
@@ -148,12 +129,9 @@ elements:
   - elementId: p12-caption
     elementType: text
     bounds:
-      - 64
-      - 414
-      - 560
-      - 40
+        [64,378,560,40]
     content:
-      text: Real editor footer, same page, two positions.
+      text: "Real Editor status bar, same page TPCJ, before and after inserting the first Section divider."
       fontSize: 10.5
       fontFamily: Consolas
       color: "#918B7E"
@@ -187,10 +165,37 @@ elements:
         - right
         - top
       color: "#8C8678"
-      fontFamily: Segoe UI
+      fontFamily: "Consolas"
       fontSize: 9.5
       letterSpacing: 0.4
-      text: English · DeepSeek V4.1 Flash 1017
+      text: "english deepseek v4.1flash1017"
     elementId: attribution-watermark
     elementType: text
-notes: This is the identity problem. If I tell an agent to change page four, and the order has changed since the last version, page four is a different page. So every page has a stable Slide ID — the four-character code — separate from its Position. In this real footer the page moved from position two to position four; the ID stayed C014. That means I can ask for C014, and the history belongs to C014 no matter where it sits.
+  - elementId: p12-mark
+    elementType: image
+    bounds:
+      - 56
+      - 508
+      - 12
+      - 12
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    sourceName: huandeng.png
+    fit:
+      mode: contain
+  - elementId: p12-footer
+    elementType: text
+    bounds:
+      - 74
+      - 508
+      - 300
+      - 12
+    content:
+      text: HUANDENG / PAGE IDENTITY
+      fontFamily: Consolas
+      fontSize: 9
+      color: "#918B7E"
+      letterSpacing: 1.1
+      align:
+        - left
+        - top
+notes: "This is the identity problem. If I tell an agent to change page four, and the order has changed since the last version, page four is a different page. So every page has a stable Slide ID — the four-character code — separate from its Position. In these real status bars the same page, TPCJ, moved from position 4 of 22 to position 5 of 23 when a Section divider was inserted. The ID stayed TPCJ. That means I can ask for TPCJ, and the history belongs to TPCJ no matter where it sits."

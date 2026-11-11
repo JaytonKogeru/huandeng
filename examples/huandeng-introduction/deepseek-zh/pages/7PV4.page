@@ -2,7 +2,7 @@ pageType: content
 background:
   type: solid
   color: "#E9EEE6"
-notes: 素材库不是装饰图片的仓库。这里的结构图、距离曲线、CSV、来源和界面截图都保留原文件、尺寸与出处。素材越像证据，越不能让它在复制、压缩和换页中丢掉来源。
+notes: "素材库不是装饰图片的仓库。这一页的结构图是本轮从 PDBe 取得的 1BNA 沉积结构图，曲线由本轮下载的 RCSB 1BNA.pdb 坐标重算后用 matplotlib 重绘；URL、时间与 SHA-256 在 sources/independent-2026-11-11/acquisition.json。旧的共享 plot 仍留在历史文件里，但不再挂在这张页面上。"
 elements:
   - elementId: material-title
     elementType: text
@@ -23,16 +23,31 @@ elements:
       align:
         - left
         - top
-  - elementId: material-lead
+  - elementId: material-kicker
     elementType: text
     bounds:
       - 48
-      - 92
-      - 520
-      - 44
+      - 18
+      - 420
+      - 14
     content:
-      text: 原图、坐标、CSV、中文曲线和来源一起留在项目里；素材库不是附件区。
-      fontSize: 14
+      text: 素材 / 证据
+      fontSize: 9.5
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#5F6E64"
+      letterSpacing: 1.2
+      align:
+        - left
+        - top
+  - elementId: material-lead
+    elementType: text
+    bounds:
+        [48,90,520,44]
+    content:
+      text: "原图、坐标、CSV 和来源一起留在项目里；素材库不是附件区。"
+      fontSize: 14.5
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
@@ -41,73 +56,11 @@ elements:
       align:
         - left
         - top
-  - elementId: material-chart
-    elementType: image
-    bounds:
-      - 48
-      - 156
-      - 330
-      - 165
-    src: media/imported/d5576a93749be3608a7127b9a45d7d92e62fa9f0258043a13835ac7c1d971e19.png
-    sourceName: paired-c1-distances-zh.png
-    fit:
-      mode: contain
-  - elementId: material-chart-cap
-    elementType: text
-    bounds:
-      - 48
-      - 326
-      - 330
-      - 24
-    content:
-      text: 12 个 C1′–C1′ 距离；同一结构的 12 个位置。
-      fontSize: 8.8
-      fontFamily:
-        ea: Microsoft YaHei
-        latin: Arial
-      color: "#66756A"
-      align:
-        - left
-        - top
-  - elementId: material-dna
-    elementType: image
-    bounds:
-      - 395
-      - 150
-      - 150
-      - 150
-    src: media/imported/ff6d1434a44440fba124ccad7dfa30efa01e8c400094d4453d17d502345c1e2c.png
-    sourceName: dna-duplex-side.png
-    fit:
-      mode: contain
-  - elementId: material-dna-cap
-    elementType: text
-    bounds:
-      - 395
-      - 304
-      - 150
-      - 28
-    content:
-      text: |-
-        PDB 1BNA
-        正交投影
-      fontSize: 8.4
-      fontFamily:
-        ea: Microsoft YaHei
-        latin: Arial
-      color: "#66756A"
-      lineHeight: 1.4
-      align:
-        - left
-        - top
-  - elementId: material-shot-panel
+  - elementId: material-structure-plate
     elementType: shape
-    bounds:
-      - 534
-      - 144
-      - 382
-      - 204
     shapeName: rect
+    bounds:
+        [40,142,232,262]
     fill:
       type: solid
       color: "#FFFFFF"
@@ -115,67 +68,47 @@ elements:
       color: "#CDD6CC"
       width: 0.8
       style: solid
-  - elementId: material-shot
+  - elementId: material-structure
     elementType: image
     bounds:
-      - 540
-      - 150
-      - 370
-      - 193
-    src: media/imported/4746757e07edcb47fb7a31244b81eff453e6dd771bd3411daca09d04eedd6af7.png
-    sourceName: zh-CN-native-asset-resolution-4x.png
+        [48,150,216,246]
+    src: "media/imported/a61ef1eacf2dd49461a13d2f2dbef9811f894311463b8627ae79634dd4c584b5.png"
+    sourceName: "1bna-pdbe-vertical.png"
     fit:
       mode: contain
-  - elementId: material-shot-cap
+  - elementId: material-structure-cap
     elementType: text
     bounds:
-      - 540
-      - 348
-      - 370
-      - 20
+        [48,412,236,22]
     content:
-      text: 真实界面：插入素材时保留原始分辨率。
+      text: "PDBe 1BNA 沉积结构图（2026-11-11）"
       fontSize: 8.6
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
       color: "#66756A"
+      lineHeight: 1.45
       align:
         - left
         - top
-  - elementId: material-note
-    elementType: text
+  - elementId: material-chain-panel
+    elementType: shape
+    shapeName: rect
     bounds:
-      - 540
-      - 380
-      - 370
-      - 70
-    content:
-      text: |-
-        原始文件不覆盖。
-        尺寸、来源和版本跟着素材走。
-        换一页、换一场演讲，证据不重画。
-      fontSize: 10.8
-      fontFamily:
-        ea: Microsoft YaHei
-        latin: Arial
-      color: "#2B3830"
-      lineHeight: 1.55
-      align:
-        - left
-        - top
+        [534,144,382,246]
+    fill:
+      type: solid
+      color: "#FFFFFF"
+    border:
+      color: "#CDD6CC"
+      width: 0.8
+      style: solid
   - elementId: material-path
     elementType: text
     bounds:
-      - 48
-      - 400
-      - 450
-      - 56
+        [48,440,380,48]
     content:
-      text: |-
-        sources/science/
-        1BNA.pdb · paired-c1-distances.csv
-        paired-c1-distances-zh.png · source.json
+      text: "sources/independent-2026-11-11/\n1BNA-retrieved-2026-11-11.pdb、CSV\nacquisition.json（URL、时间、SHA-256）"
       fontSize: 8.4
       fontFamily:
         ea: Microsoft YaHei
@@ -188,12 +121,9 @@ elements:
   - elementId: material-caption
     elementType: text
     bounds:
-      - 48
-      - 470
-      - 450
-      - 30
+        [48,494,420,22]
     content:
-      text: 这些文件随项目一起移动；图不是截图后再压缩的副本。
+      text: "文件随项目移动；本轮的取得记录可核查。"
       fontSize: 9
       fontFamily:
         ea: Microsoft YaHei
@@ -210,7 +140,7 @@ elements:
       - 222
       - 14
     content:
-      text: Chinese · DeepSeek V4.1 Flash 1017
+      text: "chinese deepseek v4.1flash1017"
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
@@ -220,3 +150,26 @@ elements:
       align:
         - right
         - top
+  - bounds:
+        [542,150,366,190]
+    elementId: material-plot
+    elementType: image
+    fit:
+      mode: contain
+    sourceName: "paired-c1-distances-deepseek-zh-2026-11-11.png"
+    src: "media/imported/704bfa992d6df4f7f2f53fd2d83a34bf09fe28ca55c2798fff5871aa3eecb6b4.png"
+  - bounds:
+        [542,344,366,58]
+    content:
+      align:
+        - left
+        - top
+      color: "#66756A"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 8.4
+      lineHeight: 1.45
+      text: "matplotlib 绘制：本轮独立重算并重绘（2130×1005）。纵轴 10.0–11.1 Å，不从 0 开始，只比较同一结构内的相对差异。"
+    elementId: material-plot-cap
+    elementType: text

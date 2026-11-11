@@ -20,20 +20,4 @@ elements:
         - middle
       bold: true
     role: title
-  - elementId: attribution-watermark
-    elementType: text
-    bounds:
-      - 760
-      - 10
-      - 176
-      - 16
-    content:
-      text: 中文 · Claude Opus 5.5
-      fontFamily: Microsoft YaHei
-      fontSize: 10
-      lineHeight: 1.2
-      color: "#A8C2BA"
-      align:
-        - right
-        - middle
 notes: "第四部分。回到 Git 的想法：如果页面是修改单位，每一页就需要一个不会变的名字，以及它自己的历史。"

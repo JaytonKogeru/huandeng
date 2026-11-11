@@ -5,12 +5,9 @@ elements:
   - elementId: p11-eyebrow
     elementType: text
     bounds:
-      - 64
-      - 38
-      - 300
-      - 16
+        [64,18,300,14]
     content:
-      text: 01 · THE WORKSPACE
+      text: "02 / THE EDITOR"
       fontSize: 10
       fontFamily: Consolas
       color: "#B43C26"
@@ -22,13 +19,10 @@ elements:
     elementType: text
     role: title
     bounds:
-      - 64
-      - 58
-      - 430
-      - 90
+        [64,44,430,84]
     content:
       text: "Story tells the agent what to keep."
-      fontSize: 34
+      fontSize: 30
       fontFamily: Georgia
       color: "#17181A"
       lineHeight: 1.12
@@ -38,38 +32,30 @@ elements:
   - elementId: p11-label
     elementType: text
     bounds:
-      - 560
-      - 72
-      - 336
-      - 16
+        [600,72,336,16]
     content:
       text: HUANDENG STORY
-      fontSize: 10
+      fontSize: 9.5
       fontFamily: Consolas
       color: "#B43C26"
-      letterSpacing: 1.6
+      letterSpacing: 1.4
       align:
         - left
         - top
   - elementId: p11-shot
     elementType: image
     bounds:
-      - 560
-      - 96
-      - 336
-      - 319
-    src: media/imported/489dd2e5299200127a17f13ad647931c356f726bc48514949be359d2a5d3df3c.png
-    sourceName: en-focused-story-4x.png
+        [600,96,260,360]
+    src: "media/imported/328dfb258169f761e125a57047428c01dce2078af8a1e5be1382e140db107056.png"
+    sourceName: "deepseek-en-story-inspector-2026-11-12.png"
     fit:
       mode: contain
+    "crop": {"left":0.81, "top": 0.075, "right": 0, "bottom": 0.504}
   - elementId: p11-frame
     elementType: shape
     shapeName: rect
     bounds:
-      - 560
-      - 96
-      - 336
-      - 319
+        [600,96,260,360]
     border:
       color: "#D9D4C8"
       width: 1
@@ -77,12 +63,9 @@ elements:
   - elementId: p11-caption
     elementType: text
     bounds:
-      - 560
-      - 424
-      - 336
-      - 50
+        [600,466,320,32]
     content:
-      text: "Story panel, public example; the table quotes this deck's 1BNA page."
+      text: "Real Story panel for page KWPT in this deck, captured 2026-11-12."
       fontSize: 10.5
       fontFamily: Consolas
       color: "#918B7E"
@@ -117,16 +100,7 @@ elements:
       - 0.27
       - 0.73
     rows:
-      - - text: Purpose
-        - text: Show the twelve measured C1′–C1′ distances beside the structure they were measured in.
-      - - text: Keep
-        - text: |-
-            Values exactly as in paired-c1-distances.csv
-            Labelled non-zero y-axis and Å units
-            PDB 1BNA citation on the slide
-            No replicate, error-bar or trend claim
-      - - text: This change
-        - text: First authoring of the English edition.
+        [[{"text":"Purpose"},{"text":"Carry one real scientific page: 12 C1′–C1′ distances beside the 1BNA structure, with citation and a no-replicates qualification."}],[{"text":"Keep"},{"text":"This edition's plot recomputed from its own 2026-11-12 1BNA download\nRCSB assembly image and deposition citation\nNo independent-replicate or trend claim"}],[{"text":"This change"},{"text":"Independent acquisition, 2026-11-12: own 1BNA download, recomputation and RCSB assembly image."}]]
     style:
       cellStyle:
         fontFamily: Segoe UI
@@ -216,10 +190,10 @@ elements:
         - right
         - top
       color: "#8C8678"
-      fontFamily: Segoe UI
+      fontFamily: "Consolas"
       fontSize: 9.5
       letterSpacing: 0.4
-      text: English · DeepSeek V4.1 Flash 1017
+      text: "english deepseek v4.1flash1017"
     elementId: attribution-watermark
     elementType: text
 notes: Story is stored with the page. A prompt disappears when the chat ends; this doesn't. It records what the page is for, what must not change, and what this edit is meant to do. When another agent — or another person — opens the page, they start from the intent, not from a guess. It's an alignment tool, not a guarantee. The model can still get it wrong; but at least it's wrong against something explicit.

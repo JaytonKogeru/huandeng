@@ -7,17 +7,14 @@ elements:
   - elementId: project-kicker
     elementType: text
     bounds:
-      - 48
-      - 42
-      - 300
-      - 18
+        [48,18,420,14]
     content:
-      text: "项目结构 / 目录"
+      text: "项目 / 打开"
       fontSize: 9.5
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
-      color: "#7D8A80"
+      color: "#5F6E64"
       letterSpacing: 1.2
       align:
         - left
@@ -26,13 +23,10 @@ elements:
     elementType: text
     role: title
     bounds:
-      - 48
-      - 66
-      - 520
-      - 40
+        [48,44,520,40]
     content:
       text: "文件夹就是项目"
-      fontSize: 27
+      fontSize: 28
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
@@ -44,13 +38,10 @@ elements:
   - elementId: project-lead
     elementType: text
     bounds:
-      - 48
-      - 112
-      - 320
-      - 44
+        [48,90,320,44]
     content:
       text: "打开项目文件夹，或其中的 deck.pptd。\n一个目录只有一个入口。"
-      fontSize: 13.4
+      fontSize: 14.5
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
@@ -107,8 +98,8 @@ elements:
       - 162
       - 508
       - 286
-    src: media/imported/c36ad119b97a82db8ae3dde5b04fd9853151f34ab4ed8b49cec5352594775961.png
-    sourceName: zh-CN-native-edit-overview-2x.png
+    src: "media/imported/72276be8f5ae09dfea1c691fd4affc99d03ed388af646adb66ff781b2c150abe.png"
+    sourceName: "deepseek-zh-workspace-overview-clean.png"
     fit:
       mode: contain
   - elementId: project-caption
@@ -116,7 +107,7 @@ elements:
     bounds:
         [400,458,508,20]
     content:
-      text: 真实界面：左侧项目 / 页面 / 素材 / 文件；上方浏览、大纲、章节、备注、历史。
+      text: "真实界面：编辑工作区；左侧页面，中间画布，右侧属性。"
       fontSize: 8.6
       fontFamily:
         ea: Microsoft YaHei
@@ -151,7 +142,7 @@ elements:
       - 222
       - 14
     content:
-      text: Chinese · DeepSeek V4.1 Flash 1017
+      text: "chinese deepseek v4.1flash1017"
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial

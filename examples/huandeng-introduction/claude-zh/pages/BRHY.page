@@ -10,7 +10,7 @@ elements:
       - 848
       - 40
     content:
-      text: "1BNA：十二个碱基对距离，以数据保存"
+      text: "1BNA：十二个碱基对的 C1′–C1′ 距离"
       fontFamily: Microsoft YaHei
       fontSize: 26
       lineHeight: 1.3
@@ -28,7 +28,7 @@ elements:
       - 848
       - 26
     content:
-      text: "一页真实的科研结果：原生图表由 CSV 生成，旁边是测量所用的结构。"
+      text: "一页真实的科研结果：图由 Python（Matplotlib）读取 CSV 绘制，旁边是测量所用的结构。"
       fontFamily: Microsoft YaHei
       fontSize: 16
       lineHeight: 1.4
@@ -40,36 +40,76 @@ elements:
     elementType: image
     bounds:
         [40,108,244,284]
-    src: media/imported/ff6d1434a44440fba124ccad7dfa30efa01e8c400094d4453d17d502345c1e2c.png
-    sourceName: dna-duplex-side.png
+    src: "media/imported/641394dc095dc4ba2aa9dc4e3419406283488f9d1e8fa30e3f925e9dacbb90e0.png"
+    sourceName: "dna-ladder-1bna.png"
     fit:
       mode: contain
+  - elementId: figure
+    elementType: image
+    bounds:
+        [306,116,592,304]
+    src: media/imported/b8fcd39a96b025f666b694a5166b8ab84d06946507ca0247e045d0a56cd27fa5.png
+    sourceName: paired-c1-distances-slide-zh.png
+    fit:
+      mode: contain
+  - elementId: chain-a-line
+    elementType: line
+    bounds:
+      - 72
+      - 401
+      - 18
+      - 1
+    viewBox:
+      - 18
+      - 1
+    points: 0,0 18,0
+    border:
+      width: 2.5
+      color: "#356F68"
+      style: solid
+    arrow: []
   - elementId: chain-a
     elementType: text
     bounds:
-      - 70
+      - 96
       - 392
-      - 90
+      - 56
       - 18
     content:
-      text: — 链 A
+      text: 链 A
       fontFamily: Microsoft YaHei
       fontSize: 13
       lineHeight: 1.3
-      color: "#3D7468"
+      color: "#356F68"
       align:
         - left
         - middle
       bold: true
+  - elementId: chain-b-line
+    elementType: line
+    bounds:
+      - 160
+      - 401
+      - 18
+      - 1
+    viewBox:
+      - 18
+      - 1
+    points: 0,0 18,0
+    border:
+      width: 2.5
+      color: "#C48758"
+      style: solid
+    arrow: []
   - elementId: chain-b
     elementType: text
     bounds:
-      - 160
+      - 184
       - 392
-      - 90
+      - 56
       - 18
     content:
-      text: — 链 B
+      text: 链 B
       fontFamily: Microsoft YaHei
       fontSize: 13
       lineHeight: 1.3
@@ -78,91 +118,6 @@ elements:
         - left
         - middle
       bold: true
-  - elementId: y-title
-    elementType: text
-    bounds:
-      - 306
-      - 116
-      - 300
-      - 20
-    content:
-      text: C1′–C1′ 距离（Å）
-      fontFamily: Microsoft YaHei
-      fontSize: 13
-      lineHeight: 1.3
-      color: "#56615D"
-      align:
-        - left
-        - middle
-      bold: true
-  - elementId: chart
-    elementType: chart
-    bounds:
-      - 296
-      - 140
-      - 608
-      - 250
-    data:
-      cols:
-        - 配对位置
-        - 距离
-      rows:
-        - - "1"
-          - 10.7121
-        - - "2"
-          - 10.7665
-        - - "3"
-          - 10.5802
-        - - "4"
-          - 10.3531
-        - - "5"
-          - 10.4416
-        - - "6"
-          - 10.4606
-        - - "7"
-          - 10.2329
-        - - "8"
-          - 10.4912
-        - - "9"
-          - 10.5912
-        - - "10"
-          - 10.4362
-        - - "11"
-          - 10.8052
-        - - "12"
-          - 10.8877
-    series:
-      - type: line
-        name: C1′–C1′ 距离
-        encode:
-          x: 配对位置
-          y: 距离
-        lineColor: "#2E6B5E"
-        showSymbol: true
-    xAxis:
-      type: category
-    yAxis:
-      type: value
-      min: 10
-      max: 11
-    legend: false
-    colors:
-      - "#2E6B5E"
-    fontFamily: Microsoft YaHei
-    fontSize: 13
-  - elementId: x-title
-    elementType: text
-    bounds:
-        [346,340,558,20]
-    content:
-      text: 配对位置（链 A 残基 1–12 对应链 B 残基 24–13）
-      fontFamily: Microsoft YaHei
-      fontSize: 12
-      lineHeight: 1.3
-      color: "#56615D"
-      align:
-        - center
-        - middle
   - elementId: takeaway
     elementType: text
     bounds:
@@ -171,7 +126,7 @@ elements:
       - 848
       - 26
     content:
-      text: <p><strong><span style="color:#2E6B5E">要改一个数值，改的是数据，不是像素。</span></strong>最短 10.23 Å（第 7 对 T–A），最长 10.89 Å（第 12 对 G–C）。</p>
+      text: "<p><strong><span style=\"color:#2E6B5E\">要改数值，改 CSV 再重跑脚本，不在幻灯里重画。</span></strong>最短 10.23 Å（第 7 对），最长 10.89 Å（第 12 对）。</p>"
       fontFamily: Microsoft YaHei
       fontSize: 15
       lineHeight: 1.4
@@ -202,8 +157,8 @@ elements:
       - 505
       - 16
       - 16
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
-    sourceName: huandeng.png
+    src: "media/imported/6a20894fe3789d4fb328a90a60fc808e169ce2ca038ec6ce3dcb15bd9413f9ea.png"
+    sourceName: "huandeng-mark.png"
     fit:
       mode: contain
   - elementId: ft-label
@@ -244,7 +199,7 @@ elements:
       - 176
       - 16
     content:
-      text: 中文 · Claude Opus 5.5
+      text: "chinese claude opus5.5"
       fontFamily: Microsoft YaHei
       fontSize: 10
       lineHeight: 1.2
@@ -252,4 +207,4 @@ elements:
       align:
         - right
         - middle
-notes: "这就是这份介绍关心的那种页面：一个真实的结果。结构是 PDB 1BNA，Dickerson–Drew DNA 十二聚体，按沉积坐标绘制；链 A 绿色，链 B 赭色。对十二个碱基对，我们测了配对 C1′ 原子之间的距离。这张图不是贴上去的图片，而是一个幻灯图表对象，里面是 CSV 里的十二个数值；纵轴有标签，故意不从零开始，这样几何上的变化才看得出来。要改一个值或一个标签，改的是数据，不是像素。注意它说的是什么：这是同一个晶体结构里的十二个位置，不是重复实验，没有误差棒。最短在第 7 对，中间 AATT 区的一个 T–A；最长在第 12 对，末端的 G–C。方法：链 A 残基 1–12 依次对应链 B 残基 24–13，计算 C1′ 原子间欧氏距离。数据见 sources/science/paired-c1-distances.csv。来源：RCSB PDB 1BNA，https://www.rcsb.org/structure/1BNA；Drew HR 等，PNAS 78 (1981) 2179–2183，https://doi.org/10.1073/pnas.78.4.2179。"
+notes: "这就是这份介绍关心的那种页面：一个真实的结果。结构是 PDB 1BNA，Dickerson–Drew DNA 十二聚体，按沉积坐标绘制；链 A 绿色，链 B 赭色。对十二个碱基对，我们测了配对 C1′ 原子之间的距离。右边的图不是在幻灯里画的，而是用 Python 的 Matplotlib 读取 CSV 里的十二个数值画出来的，和结构图一样，脚本就放在项目里，随时可以重跑。纵轴有标签和单位，故意不从零开始，这样几何上的变化才看得出来；横轴同时标出位置和碱基对。要改一个值或一个标签，改的是 CSV 或脚本，重新出图，再替换这一张图，而不是在幻灯里描线。注意它说的是什么：这是同一个晶体结构里的十二个位置，不是重复实验，没有误差棒。最短在第 7 对，中间 AATT 区的一个 T–A；最长在第 12 对，末端的 G–C。方法：链 A 残基 1–12 依次对应链 B 残基 24–13，计算 C1′ 原子间欧氏距离。数据见 sources/science/paired-c1-distances.csv，绘图脚本见 sources/science/slide-figure/plot.py。来源：RCSB PDB 1BNA，https://www.rcsb.org/structure/1BNA；Drew HR 等，PNAS 78 (1981) 2179–2183，https://doi.org/10.1073/pnas.78.4.2179。"

@@ -1,0 +1,96 @@
+{
+  "project": "deepseek-zh",
+  "purpose": "Independent active artwork for the 2026-11-11 revision of the Chinese HUANDENG introduction",
+  "acquiredAt": "2026-11-11T13:31:54.883582+00:00",
+  "tool": "Python 3.14.0, matplotlib 3.11.2, numpy 2.4.4",
+  "retrievals": [
+    {
+      "url": "https://files.rcsb.org/download/1BNA.pdb",
+      "startedAt": "2026-11-11T13:31:51.947231+00:00",
+      "finishedAt": "2026-11-11T13:31:52.052542+00:00",
+      "httpStatus": 200,
+      "contentType": "text/plain",
+      "method": "GET (urllib.request, python 3.14)",
+      "target": "1BNA-retrieved-2026-11-11.pdb",
+      "bytes": 76464,
+      "sha256": "df42f1506792f191b957227b061360652adcf6f813eb69d9ec553067ea584670"
+    },
+    {
+      "url": "https://www.ebi.ac.uk/pdbe/static/entry/1bna_deposited_chain_front_image-800x800.png",
+      "startedAt": "2026-11-11T13:31:52.053692+00:00",
+      "finishedAt": "2026-11-11T13:31:54.556669+00:00",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "method": "GET (urllib.request, python 3.14)",
+      "target": "1bna_deposited_chain_front_image-800x800.png",
+      "bytes": 134400,
+      "sha256": "8c7c6a5665ba2a1954be8b701eb731714b05118afe4dea0a435c937c561d4310"
+    }
+  ],
+  "derived": [
+    {
+      "path": "paired-c1-distances-recomputed-2026-11-11.csv",
+      "method": "parsed C1' ATOM records from the retrieved 1BNA coordinate file and computed Euclidean A/B distances",
+      "bytes": 292,
+      "sha256": "5acff28b75161393fe038c0fa8f20ccd8fc464594421c7d5183e7182affcbe7a"
+    },
+    {
+      "path": "paired-c1-distances-deepseek-zh-2026-11-11.png",
+      "method": "matplotlib chart drawn from the recomputed distances (script acquire.py in this folder)",
+      "bytes": 102126,
+      "sha256": "704bfa992d6df4f7f2f53fd2d83a34bf09fe28ca55c2798fff5871aa3eecb6b4"
+    }
+  ],
+  "values": [
+    {
+      "position": 1,
+      "distance": 10.71
+    },
+    {
+      "position": 2,
+      "distance": 10.77
+    },
+    {
+      "position": 3,
+      "distance": 10.58
+    },
+    {
+      "position": 4,
+      "distance": 10.35
+    },
+    {
+      "position": 5,
+      "distance": 10.44
+    },
+    {
+      "position": 6,
+      "distance": 10.46
+    },
+    {
+      "position": 7,
+      "distance": 10.23
+    },
+    {
+      "position": 8,
+      "distance": 10.49
+    },
+    {
+      "position": 9,
+      "distance": 10.59
+    },
+    {
+      "position": 10,
+      "distance": 10.44
+    },
+    {
+      "position": 11,
+      "distance": 10.81
+    },
+    {
+      "position": 12,
+      "distance": 10.89
+    }
+  ],
+  "previousSharedPlotSha256": "d5576a93749be3608a7127b9a45d7d92e62fa9f0258043a13835ac7c1d971e19",
+  "note": "The previous shared plot and this project's 2026-11-10 batch remain untouched historical files. This folder is the current acquisition."
+}

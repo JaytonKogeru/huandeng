@@ -2,22 +2,19 @@ pageType: content
 background:
   type: solid
   color: "#E8EEE6"
-notes: "同一份研究要面对不同听众。组会讲下一步，会议讲结论，评审要证据。页面不复制：Main Slides 是同一批页面，Presentation 只改这次的选择、顺序和讲稿。右侧是真实项目概览，底稿和演讲分开展示。"
+notes: "同一份研究要面对不同听众。组会讲下一步，会议讲结论，评审要证据。页面不复制：Main Slides 是同一批页面，Presentation 只改这次的选择、顺序和讲稿。上图是本项目 Editor 的完整窗口（页面 Z4XP、项目面板在左），框内是项目面板里的「Z4XP 的使用位置」；下图是从同一张截图同一区域放大的可读细节，显示它用于 2 场演讲，并列 Main Slides、完整介绍与短版。"
 elements:
   - elementId: source-kicker
     elementType: text
     bounds:
-      - 48
-      - 42
-      - 300
-      - 18
+        [48,18,420,14]
     content:
-      text: "Presentation / 复用"
+      text: "复用 / 演示"
       fontSize: 9.5
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
-      color: "#66756A"
+      color: "#5F6E64"
       letterSpacing: 1.2
       align:
         - left
@@ -26,13 +23,10 @@ elements:
     elementType: text
     role: title
     bounds:
-      - 48
-      - 66
-      - 430
-      - 40
+        [48,44,430,40]
     content:
       text: "一份内容，多次出场"
-      fontSize: 26
+      fontSize: 28
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
@@ -44,13 +38,10 @@ elements:
   - elementId: source-lead
     elementType: text
     bounds:
-      - 48
-      - 118
-      - 420
-      - 66
+        [48,90,420,66]
     content:
-      text: "组会、会议、评审共用同一批页面；Presentation 只决定这次讲什么、按什么顺序、配哪段讲稿。"
-      fontSize: 15.6
+      text: "组会、会议、评审共用同一批页面；\nPresentation 只决定讲什么、按什么顺序、配哪段讲稿。"
+      fontSize: 14.5
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
@@ -67,15 +58,7 @@ elements:
       - 390
       - 170
     content:
-      text: |-
-        组会 · 进展
-        先讲下一步，再补方法。
-  
-        会议 · 结论
-        同一张图，换成比较框架。
-  
-        评审 · 证据
-        把来源、方法和限制补齐。
+      text: "组会 / 进展\n先讲下一步，再补方法。\n\n会议 / 结论\n同一张图，换成比较框架。\n\n评审 / 证据\n把来源、方法和限制补齐。"
       fontSize: 11.6
       fontFamily:
         ea: Microsoft YaHei
@@ -103,61 +86,82 @@ elements:
       align:
         - left
         - top
-  - elementId: source-panel
-    elementType: shape
-    bounds:
-      - 494
-      - 102
-      - 424
-      - 326
-    shapeName: rect
-    fill:
-      type: solid
-      color: "#FFFFFF"
-    border:
-      color: "#CDD6CC"
-      width: 0.8
-      style: solid
-  - elementId: source-shot
+  - bounds:
+        [470,52,330,186]
+    elementId: source-shot
     elementType: image
-    bounds:
-      - 500
-      - 108
-      - 412
-      - 314
-    src: media/imported/afe675bef8594c3328129632115e6befdec36ffc2a7ad347cf1d754662ee6d07.png
-    sourceName: zh-CN-native-project-sequences-4x.png
     fit:
       mode: contain
-  - elementId: source-shot-label
-    elementType: text
-    bounds:
-      - 500
-      - 80
-      - 200
-      - 18
-    content:
-      text: 真实界面 / 项目概览
-      fontSize: 9.2
-      fontFamily:
-        ea: Microsoft YaHei
-        latin: Arial
-      color: "#66756A"
-      letterSpacing: 0.6
-      align:
-        - left
-        - top
+    sourceName: "deepseek-zh-xzjn-editor-2026-11-11.png"
+    src: "media/imported/d10c3052147bb33e50befdf57a56761d21da64229c465f2b1feb7e4beed3a1f3.png"
+  - bounds:
+      - 471
+      - 150
+      - 46
+      - 1
+    border:
+      color: "#9E5B3E"
+      style: solid
+      width: 1.2
+    elementId: source-mark-top
+    elementType: line
+    points: 0,0.5 46,0.5
+    viewBox:
+      - 46
+      - 1
+  - bounds:
+      - 471
+      - 182
+      - 46
+      - 1
+    border:
+      color: "#9E5B3E"
+      style: solid
+      width: 1.2
+    elementId: source-mark-bottom
+    elementType: line
+    points: 0,0.5 46,0.5
+    viewBox:
+      - 46
+      - 1
+  - bounds:
+        [471,150,1,32]
+    border:
+      color: "#9E5B3E"
+      style: solid
+      width: 1.2
+    elementId: source-mark-left
+    elementType: line
+    points: 0.5,0 0.5,33
+    viewBox:
+      - 1
+      - 33
+  - bounds:
+        [516,150,1,32]
+    border:
+      color: "#9E5B3E"
+      style: solid
+      width: 1.2
+    elementId: source-mark-right
+    elementType: line
+    points: 0.5,0 0.5,33
+    viewBox:
+      - 1
+      - 33
+  - bounds:
+        [470,246,330,219]
+    elementId: source-detail
+    elementType: image
+    fit:
+      mode: contain
+    sourceName: usedby-detail.png
+    src: "media/imported/9fbf6eac519e15d24c86c253a94192d3eebbfa0d542259ecc740c035d12f6ac7.png"
   - elementId: source-caption
     elementType: text
     bounds:
-      - 500
-      - 432
-      - 412
-      - 38
+        [470,472,450,40]
     content:
-      text: |-
-        Main Slides 与演讲分开展示。
-        HUANDENG 0.18 · 公开产品示例。
+      text: "上：编辑器整窗，框内是左侧项目面板的「使用位置」；\n下：同一块的单帧放大。2026-11-11 本项目截取。"
       fontSize: 9
       fontFamily:
         ea: Microsoft YaHei
@@ -175,7 +179,7 @@ elements:
       - 222
       - 14
     content:
-      text: Chinese · DeepSeek V4.1 Flash 1017
+      text: "chinese deepseek v4.1flash1017"
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial

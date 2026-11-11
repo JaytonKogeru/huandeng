@@ -1,0 +1,28 @@
+{
+  "capture": "media/imported/d10c3052147bb33e50befdf57a56761d21da64229c465f2b1feb7e4beed3a1f3.png",
+  "captureSha256": "d10c3052147bb33e50befdf57a56761d21da64229c465f2b1feb7e4beed3a1f3",
+  "captureState": "Editor, page Z4XP, edit view, project sidebar, zh-CN, 1920x1080 viewport, 3840x2160 output, captured 2026-11-11T14:05:39Z",
+  "detailCrop": [
+    0,
+    1140,
+    560,
+    1512
+  ],
+  "detailSize": [
+    560,
+    372
+  ],
+  "detailSha256": "9fbf6eac519e15d24c86c253a94192d3eebbfa0d542259ecc740c035d12f6ac7",
+  "detailAsset": "media/imported/9fbf6eac519e15d24c86c253a94192d3eebbfa0d542259ecc740c035d12f6ac7.png",
+  "markerOnFullWindow": {
+    "note": "same rectangle as the detail crop, mapped onto the on-slide full-window image bounds [470,52,330,186]",
+    "scale": 0.0859375,
+    "bounds": [
+      470,
+      149.96875,
+      48.125,
+      31.96875
+    ]
+  },
+  "note": "The detail is exactly the marked rectangle of the full window; no pixel change other than the crop."
+}

@@ -86,10 +86,10 @@
       "designIntent": {
         "purpose": "动机二：agent 改稿留下整份副本；由 Git 得到以页为修改单位的设计。",
         "pageRole": "content",
-        "requestedChange": "按作者 2026-11-11 反馈，以 Claude 英文版最终稿为内容结构重做中文版：产品介绍为主，故事为抓手",
+        "requestedChange": "协调者审稿：细线连接改为有面积的图形箭头；节点、顺序、内容与构图不变。",
         "actor": "claude-code",
         "source": "作者反馈与 sources/story/PRODUCT-BRIEF.md；对应 claude-en 最终稿",
-        "recordedAt": "2026-11-11T03:36:38Z",
+        "recordedAt": "2026-11-11T14:06:14Z",
         "keep": [
           "文件名与修改条目标注为示意"
         ]
@@ -107,10 +107,10 @@
       "designIntent": {
         "purpose": "动机三：作者在截图驱动的修改中遇到的麻烦（数值和位置要从像素反推）；幻灯让 agent 直接读到对象的数值和边界并精确修改，渲染图仍用于审阅。",
         "pageRole": "content",
-        "requestedChange": "修正绝对化表述：截图并非不能度量，问题在于精确修改需从像素反推；保留作者经历与真实页面片段。",
+        "requestedChange": "1BNA 数据图改为 Matplotlib 绘制后，同步右侧页面片段和左侧缩略图：对象是图片，数据与脚本在项目 sources 里。",
         "actor": "claude-code",
         "source": "作者反馈与 sources/story/PRODUCT-BRIEF.md；对应 claude-en 最终稿",
-        "recordedAt": "2026-11-11T04:32:03Z"
+        "recordedAt": "2026-11-11T11:40:27Z"
       }
     },
     "f0e6f4db-8632-4ad4-a50b-cca0f985c07d": {
@@ -142,10 +142,10 @@
       "designIntent": {
         "purpose": "说明幻灯的来源（PPTD 思路、OpenSlide、熟悉的编辑器）和编辑器+插件的关系，并准确致谢。",
         "pageRole": "content",
-        "requestedChange": "按作者 2026-11-11 反馈，以 Claude 英文版最终稿为内容结构重做中文版：产品介绍为主，故事为抓手",
+        "requestedChange": "协调者审稿：细线连接改为有面积的图形箭头；节点、顺序、内容与构图不变。",
         "actor": "claude-code",
         "source": "作者反馈与 sources/story/PRODUCT-BRIEF.md；对应 claude-en 最终稿",
-        "recordedAt": "2026-11-11T03:36:38Z",
+        "recordedAt": "2026-11-11T14:06:14Z",
         "keep": [
           "不声称 Kimi 发明标准或背书；OpenPPTD 仅为公式转换代码"
         ]
@@ -323,15 +323,16 @@
       "designIntent": {
         "purpose": "展示十二个 C1′–C1′ 距离与测量它们的 1BNA 结构。",
         "pageRole": "content",
-        "requestedChange": "把纵轴标题移到刻度数字上方，避免挤在一起；数值、坐标范围和引用不变。",
+        "requestedChange": "标题改为说清测得的是什么（十二个碱基对的 C1′–C1′ 距离）；图、数据和引用不变。",
         "actor": "claude-code",
-        "source": "作者反馈与 sources/story/PRODUCT-BRIEF.md；对应 claude-en 最终稿",
-        "recordedAt": "2026-11-11T03:36:38Z",
+        "source": "作者 2026-11-11 要求：数据图用 Python 等专业工具绘制，避免在幻灯里画图带来的 AI 味",
+        "recordedAt": "2026-11-11T13:29:09Z",
         "keep": [
           "数值与 paired-c1-distances.csv 完全一致",
           "纵轴有标签、不从零开始，单位 Å",
           "页面上保留 PDB 1BNA 引用",
-          "不作重复实验、误差棒或趋势的说法"
+          "不作重复实验、误差棒或趋势的说法",
+          "数据图由 sources/science/slide-figure/plot.py 用 Matplotlib 从 CSV 绘制，不在幻灯里重画"
         ]
       }
     },
@@ -347,10 +348,10 @@
       "designIntent": {
         "purpose": "说明四种客户端如何通过插件连接到共享写入器，以及预览、版本核对和上报/保存的区别。",
         "pageRole": "content",
-        "requestedChange": "按作者 2026-11-11 反馈，以 Claude 英文版最终稿为内容结构重做中文版：产品介绍为主，故事为抓手",
+        "requestedChange": "协调者审稿：细线连接改为有面积的图形箭头；节点、顺序、内容与构图不变。去掉易过期的工具数量。",
         "actor": "claude-code",
         "source": "作者反馈与 sources/story/PRODUCT-BRIEF.md；对应 claude-en 最终稿",
-        "recordedAt": "2026-11-11T03:36:38Z",
+        "recordedAt": "2026-11-11T14:06:14Z",
         "keep": [
           "ChatGPT 的连接方式按实际界面写为 DC-WALT 工作站连接"
         ]
@@ -418,10 +419,14 @@
       "designIntent": {
         "purpose": "用真实前后截图和差异表展示一次按故事执行的修改。",
         "pageRole": "content",
-        "requestedChange": "按作者 2026-11-11 反馈，以 Claude 英文版最终稿为内容结构重做中文版：产品介绍为主，故事为抓手",
+        "requestedChange": "作者 2026-11-11 认可本版后要求自审升级：水印改为 chinese claude opus5.5、分隔页只留标题、去掉中点分隔、补齐致谢、标出前后对照中的改动对象",
         "actor": "claude-code",
         "source": "作者反馈与 sources/story/PRODUCT-BRIEF.md；对应 claude-en 最终稿",
-        "recordedAt": "2026-11-11T03:36:38Z"
+        "recordedAt": "2026-11-11T11:27:33Z",
+        "keep": [
+          "两张截图同尺寸并排",
+          "绿框只框出被改写的标题和导语"
+        ]
       }
     },
     "b0d821f0-59cd-4439-ae6b-11b6cc0ad8de": {
@@ -487,13 +492,36 @@
       "designIntent": {
         "purpose": "致谢上游项目并列出尚未实现的功能。",
         "pageRole": "content",
-        "requestedChange": "按作者 2026-11-11 反馈，以 Claude 英文版最终稿为内容结构重做中文版：产品介绍为主，故事为抓手",
+        "requestedChange": "作者 2026-11-11 认可本版后要求自审升级：水印改为 chinese claude opus5.5、分隔页只留标题、去掉中点分隔、补齐致谢、标出前后对照中的改动对象",
         "actor": "claude-code",
         "source": "作者反馈与 sources/story/PRODUCT-BRIEF.md；对应 claude-en 最终稿",
-        "recordedAt": "2026-11-11T03:36:38Z",
+        "recordedAt": "2026-11-11T11:27:33Z",
         "keep": [
           "保留 OpenSlide、OpenPPTD、PptxGenJS 的标志与链接"
         ]
+      }
+    },
+    "52a7752b-1af2-4eda-a19b-99ede4d3fc01": {
+      "shortCode": "MK7X",
+      "path": "pages/MK7X.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "title": "title"
+      },
+      "label": "S28",
+      "designIntent": {
+        "purpose": "正式致谢：区分代码复用（OpenSlide、OpenPPTD、PptxGenJS）、想法来源（Kimi、open-kimi-ppt-skill）、设计参考与研究过的同类项目。",
+        "pageRole": "content",
+        "keep": [
+          "区分代码、想法来源、设计参考与研究对象，不暗示背书",
+          "OpenSlides Studio（openslides.dev）与 OpenSlide 是不同项目",
+          "与 claude-en 致谢页事实一致"
+        ],
+        "requestedChange": "作者 2026-11-11 认可本版后要求自审升级：水印改为 chinese claude opus5.5、分隔页只留标题、去掉中点分隔、补齐致谢、标出前后对照中的改动对象",
+        "actor": "claude-code",
+        "source": "docs/ACKNOWLEDGMENTS.md、sources/story/FACTS.md；claude-en 页 9JFE",
+        "recordedAt": "2026-11-11T11:27:33Z"
       }
     }
   },
@@ -576,7 +604,7 @@
         "id": "agents",
         "title": "和 agent 一起工作",
         "story": {
-          "purpose": "agent 怎么接入、怎么协作、怎么交付、站在哪些项目上、怎么开始。",
+          "purpose": "agent 怎么接入、怎么协作、怎么交付、站在哪些项目上、致谢谁、怎么开始。",
           "audience": "用 AI 做科研演示的研究者，以及可能使用或参与幻灯开发的人",
           "takeaway": "agent 和你走同一个可审阅的写入器；从你的故事开始。"
         },
@@ -586,6 +614,7 @@
           "8234d122-f35e-45a0-9f1e-df1700227c45",
           "5908c201-19f3-4dbc-a8e1-98356dcb6366",
           "e6f84b12-57f7-4d4d-863c-35bc118032cc",
+          "52a7752b-1af2-4eda-a19b-99ede4d3fc01",
           "03e261c9-fb49-4c9f-89d4-d9da6b45b204"
         ],
         "startPageId": "b0d821f0-59cd-4439-ae6b-11b6cc0ad8de"
@@ -727,6 +756,11 @@
             "pageId": "e6f84b12-57f7-4d4d-863c-35bc118032cc"
           },
           {
+            "id": "full-mk7x",
+            "kind": "page",
+            "pageId": "52a7752b-1af2-4eda-a19b-99ede4d3fc01"
+          },
+          {
             "id": "full-bdtw",
             "kind": "page",
             "pageId": "03e261c9-fb49-4c9f-89d4-d9da6b45b204"
@@ -768,7 +802,7 @@
             "id": "brief-brhy",
             "kind": "page",
             "pageId": "fe807e1f-34d2-4d19-9556-6e32ce00ef5e",
-            "notes": "简短地说：这是一个以数据保存的真实结果。要改一个值或一个标签，agent 改的是图表对象，而不是一张图片。"
+            "notes": "简短地说：这是一个真实的结果，图由脚本从 CSV 画出。要改一个值或一个标签，agent 改数据、重跑脚本、换上新图，而不是在幻灯里描线。"
           },
           {
             "id": "brief-3d9r",

@@ -1,0 +1,200 @@
+{
+  "capturedBy": "Claude Code (claude-zh edition)",
+  "capturedAt": "2026-11-12",
+  "project": "examples/huandeng-introduction/claude-zh/deck.pptd",
+  "editor": "HUANDENG Editor 0.19, zh-CN UI, light theme",
+  "method": "Playwright Chromium, read-only (non-GET requests blocked), 1600x1000 CSS px, deviceScaleFactor 2",
+  "derived": {
+    "edit-overview": {
+      "source": "raw/edit.png",
+      "cssBox": [
+        0,
+        0,
+        1600,
+        1000
+      ],
+      "size": [
+        3200,
+        2000
+      ],
+      "sha256": "33f7fe385dcdb7ecd2b72ac98013efb7ab4fa5e8dc18d6b607f4c67c1cd4b3ee"
+    },
+    "outline-story": {
+      "source": "raw/outline2.png",
+      "cssBox": [
+        300,
+        345,
+        1590,
+        775
+      ],
+      "size": [
+        2580,
+        860
+      ],
+      "sha256": "fdff48ae44f7414a628448871b99a03dc4dc0efbbb94d63a79c4949379f81261"
+    },
+    "browse-cards": {
+      "source": "raw/browse.png",
+      "cssBox": [
+        300,
+        575,
+        1060,
+        860
+      ],
+      "size": [
+        1520,
+        570
+      ],
+      "sha256": "61e9bd496d73f31b1e1ebc95ab7915de1c9b8156bb0f39479bb983ae2de8f622"
+    },
+    "status-main": {
+      "source": "raw/edit.png",
+      "cssBox": [
+        288,
+        968,
+        760,
+        1000
+      ],
+      "size": [
+        944,
+        64
+      ],
+      "sha256": "5751deaa74562e7a4e26f27c57deb2bbaf80cd27df5cbc5961616d570726c6f1"
+    },
+    "status-brief": {
+      "source": "raw/brief-brhy.png",
+      "cssBox": [
+        288,
+        968,
+        760,
+        1000
+      ],
+      "size": [
+        944,
+        64
+      ],
+      "sha256": "db926af9e99be6688b074769eb3daa379c52309692b336c4d8bd5fe37ed1a4a9"
+    },
+    "story-inspector": {
+      "source": "raw/story.png",
+      "cssBox": [
+        1300,
+        108,
+        1600,
+        570
+      ],
+      "size": [
+        600,
+        924
+      ],
+      "sha256": "88c06cc2803980930142aad65956485fbc00ef53785b521b4747fdda5608f127"
+    },
+    "history-brhy": {
+      "source": "raw/history.png",
+      "cssBox": [
+        290,
+        215,
+        1600,
+        1000
+      ],
+      "size": [
+        2620,
+        1570
+      ],
+      "sha256": "86307f9cea4decd88e3c69c1ab78e65817fd0c3bf20954ddacf6c5719f7796d5"
+    },
+    "project-overview": {
+      "source": "raw/project.png",
+      "cssBox": [
+        0,
+        130,
+        288,
+        560
+      ],
+      "size": [
+        576,
+        860
+      ],
+      "sha256": "8bc70c264915bdce4c4c8a180f318be9c5b44e907d32c7f9a2962ac763765d36"
+    },
+    "export-dialog": {
+      "source": "raw/export.png",
+      "cssBox": [
+        512,
+        365,
+        1088,
+        636
+      ],
+      "size": [
+        1152,
+        542
+      ],
+      "sha256": "dc7f04ff4dbaf00e231b3bd0671983f858be34cbde351cd9a55c7d64b57414b2"
+    },
+    "present-menu": {
+      "source": "raw/present.png",
+      "cssBox": [
+        1394,
+        46,
+        1554,
+        116
+      ],
+      "size": [
+        320,
+        140
+      ],
+      "sha256": "fb3438d84a05e59785d2b04957562382c0fc442b2c5d20451cc184141324a17d"
+    },
+    "review-before": {
+      "source": "raw/review-before.png",
+      "pixelBox": [
+        32,
+        84,
+        1588,
+        962
+      ],
+      "size": [
+        1556,
+        878
+      ],
+      "sha256": "5caf141d5d3d63da4ef8a14769e0fb34189bf5e4ccd9c4718c9d869e1bb04391"
+    },
+    "review-after": {
+      "source": "raw/review-after.png",
+      "pixelBox": [
+        32,
+        84,
+        1588,
+        962
+      ],
+      "size": [
+        1556,
+        878
+      ],
+      "sha256": "e7a6aedaa3658fcf58fab22463c09da4c1ab4dcc380ed058e917463e5b93c678"
+    },
+    "review-dialog": {
+      "source": "raw/review-dialog.png",
+      "pixelBox": null,
+      "size": [
+        2200,
+        1640
+      ],
+      "sha256": "e5d383cb635ed645e5e3f6f889273d5d6316bb2c5e14bfefac8532c87fdf5619"
+    },
+    "design-check": {
+      "source": "raw/design-dialog.png",
+      "pixelBox": [
+        0,
+        0,
+        1920,
+        1510
+      ],
+      "size": [
+        1920,
+        1510
+      ],
+      "sha256": "9eae73869f3c0f4f43904b81c7854e13905729c0d83c89071d8a890e9e6fb1ff"
+    }
+  }
+}

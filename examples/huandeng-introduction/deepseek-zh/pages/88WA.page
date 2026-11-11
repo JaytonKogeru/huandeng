@@ -8,7 +8,7 @@ elements:
     elementType: text
     role: title
     bounds:
-        [48,40,560,40]
+        [48,44,560,40]
     content:
       text: "第 4 页会变，这一页不会"
       fontSize: 28
@@ -20,10 +20,28 @@ elements:
       align:
         - left
         - top
+  - elementId: identity-kicker
+    elementType: text
+    bounds:
+      - 48
+      - 18
+      - 420
+      - 14
+    content:
+      text: 页面 / 身份
+      fontSize: 9.5
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      color: "#5F6E64"
+      letterSpacing: 1.2
+      align:
+        - left
+        - top
   - elementId: identity-lead
     elementType: text
     bounds:
-        [48,86,760,30]
+        [48,90,760,30]
     content:
       text: "Position 是它在当前顺序里的位置；Slide ID 是它自己的四字编码。"
       fontSize: 14.5
@@ -56,10 +74,10 @@ elements:
       - 132
       - 864
       - 288
-    src: media/imported/f5455f5cada808cb66355a623d9d2e07d5e8645a0e4cdd0ecc97220c7ab96bd5.png
-    sourceName: zh-CN-native-outline-reading-4x.png
+    src: "media/imported/cdc23c430de00b3696d7fe2255d581035caa9486c42eca4e795202d1e29901d8.png"
+    sourceName: "deepseek-zh-outline-identity.png"
     fit:
-      mode: contain
+      {"mode":"cover"}
   - elementId: identity-caption
     elementType: text
     bounds:
@@ -68,7 +86,7 @@ elements:
       - 864
       - 20
     content:
-      text: "真实界面：大纲同时显示位置和 Slide ID。"
+      text: "真实界面：大纲同时显示位置与页面短码。"
       fontSize: 9.2
       fontFamily:
         ea: Microsoft YaHei
@@ -106,7 +124,7 @@ elements:
       - 222
       - 14
     content:
-      text: Chinese · DeepSeek V4.1 Flash 1017
+      text: "chinese deepseek v4.1flash1017"
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial

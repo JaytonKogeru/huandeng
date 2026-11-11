@@ -77,8 +77,8 @@ elements:
       - 216
       - 256
       - 144
-    src: media/derived/thumbs/r1-05-AVNM.png
-    sourceName: r1-05-AVNM.png
+    src: "media/derived/thumbs/r4-12-AVNM.png"
+    sourceName: "r4-12-AVNM.png"
     fit:
       mode: contain
   - elementId: pixels-label
@@ -136,17 +136,7 @@ elements:
       - 410
       - 216
     content:
-      text: |-
-        - elementId: chart
-          elementType: chart
-          bounds: [300,128,604,280]
-          data:
-            cols: [Pair, Distance]
-            rows:
-              - ["1", 10.7121]
-              - ["2", 10.7665]
-              … 12 rows in all
-          yAxis: {type: value, min: 10, max: 11}
+      text: "- elementId: figure\n  elementType: image\n  bounds: [300,108,604,304]\n  src: media/independent-20261111/\n       figures/c1-distances-1bna.png\n- elementId: extremes\n  elementType: table\n  rows:\n    - [Shortest, \"10.23\", \"7 (T–A)\"]\n    - [Longest, \"10.89\", \"12 (G–C)\"]"
       fontFamily: Consolas
       fontSize: 12.5
       lineHeight: 1.45
@@ -162,7 +152,7 @@ elements:
       - 434
       - 16
     content:
-      text: Excerpt from pages/AVNM.page in this project, shortened and reflowed.
+      text: "Excerpt from pages/AVNM.page in this project, shortened. A script in the project draws the figure from the CSV."
       fontFamily: Arial
       fontSize: 11
       lineHeight: 1.3
@@ -193,7 +183,7 @@ elements:
       - 505
       - 16
       - 16
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    src: "media/independent-20261111/brand/huandeng.png"
     sourceName: huandeng.png
     fit:
       mode: contain
@@ -238,7 +228,7 @@ elements:
       - 176
       - 16
     content:
-      text: English · Claude Opus 5.5
+      text: "english claude opus5.5"
       fontFamily: Arial
       fontSize: 10
       lineHeight: 1.2
@@ -246,4 +236,4 @@ elements:
       align:
         - right
         - middle
-notes: "The third problem showed up when I asked AI to work on Google Slides or PowerPoint decks. To check its own work, the agent often had to render the whole slide to a picture, look at it, and work out from the pixels which value or position to change. Images can be measured and compared, but in that loop every precise fix had to be recovered from the picture first, and it was slow. So I wanted a slide format where the agent also reads the slide as data. On the right is a real excerpt from the 1BNA slide in this very project: the chart is an object with its bounds, its twelve values and its axis range. An agent can inspect and change one value or one label directly, without touching anything else, and the change can be diffed. I still look at renders for composition and readability; they are a review surface, not the editable model."
+notes: "The third problem showed up when I asked AI to work on Google Slides or PowerPoint decks. To check its own work, the agent often had to render the whole slide to a picture, look at it, and work out from the pixels which value or position to change. Images can be measured and compared, but in that loop every precise fix had to be recovered from the picture first, and it was slow. So I wanted a slide format where the agent also reads the slide as data. On the right is a real excerpt from the 1BNA slide in this very project: the figure is an object with its bounds and the file it shows, and the summary table holds its values as text. The figure itself is drawn from the CSV by a script kept in the project. An agent can inspect and change one object, one value or the data behind the figure directly, without touching anything else, and the change can be diffed. I still look at renders for composition and readability; they are a review surface, not the editable model."

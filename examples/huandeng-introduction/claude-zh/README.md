@@ -1,3 +1,42 @@
+# HUANDENG：Claude Code 中文介绍
+
+在 Editor 中打开 [deck.pptd](deck.pptd)，并保留整个项目文件夹。
+
+本稿从作者的组会经历、修改两页却产生整套副本的问题出发，解释项目架构，并用真实科学页的修改、回看与复用把 Editor 教学融入故事。Claude Code（Opus 5.5）通过官方 HUANDENG CLI 和已有共享 writer 完成本轮局部修订，保留已经成立的叙事与视觉设计。
+
+## 当前保存的版本
+
+| 集合 | 页数 | 版本与备注行为 |
+| --- | ---: | --- |
+| Main | 27 | 包含五张实际的标题独占章节页。 |
+| 幻灯介绍（完整版，约 25 分钟） | 27 | 与 Main 同序、同解析后备注，全部跟随当前页面，没有 pin。 |
+| 组会简版（约 8 分钟） | 9 | 全部跟随当前页面，没有 pin；四次页面引用有自己的备注。 |
+
+封面和内容页使用精确水印 `chinese claude opus5.5`。章节页只有标题与纯色背景。正式致谢页 MK7X 已纳入完整介绍。
+
+[实际保存的讲稿](speaker-notes.md) 从当前 Main 与 Editor 正式解析的演讲生成，保留命名版本及单次引用备注的实际行为，不改写作者的正文。BRHY 在短讲中的备注已经同步为 CSV、脚本和 Matplotlib 的事实。
+
+## 素材与真实操作
+
+本轮独立来源见 [ACQUISITION.md](sources/ACQUISITION.md)。科学坐标与计算保留在 `sources/science/own/`，[绘图脚本](sources/science/slide-figure/plot.py)使用 Matplotlib；品牌标记由作者自行取得，详见[品牌采集记录](sources/brand-own/ACQUISITION.json)。
+
+界面素材来自本项目实际运行的中文 HUANDENG Editor 0.19。修改前后与 Review 使用本版实际发生的操作；完整窗口、所在位置和可读细节一起说明如何找到对应功能。末轮把关系图中的连接改为图形箭头，保留原内容与层级。历史资料继续保留，不作为本轮跨作者共用的素材输入。
+
+## 审阅与输出
+
+当前 27 页完整序列和受影响的关键画面已完成本轮内部视觉复查。Office 基线检查以禁用修复的只读方式打开了 Main（27 页）、Full（27 页）、组会简版（9 页）与 brief 别名（9 页）四个文件。最后修正 FK8W 的文字断行并重新导出后，再次只读打开 Main，确认第 22 页不再出现行首孤立顿号；短讲别名与正式短讲文件逐字节一致。最终 Full 与短讲没有重复 Office 打开。所有检查均未改变被读取的文件；内部审阅与输出检查不代表用户已经最终验收。
+
+原生作者已重新导出当前 Main、Full 与组会简版的 PDF/PPTX。常用本地文件为 `Exports/deck.pdf`、`Exports/deck.pptx`、`Exports/brief.pdf` 和 `Exports/brief.pptx`，按演讲名称生成的文件也保留。Git 不跟踪生成的导出。
+
+当前六页选览见[项目集合入口](../README.md)。移动项目时请保留页面、素材、来源、元数据与历史。旧 `product-*` 证据、`MEDIA-INPUTS.json` 及下列记录只说明其原来的版本，不能用旧页数或旧输出结论代替当前状态。
+
+## 历史记录
+
+以下原文保留旧 26 页稿件、当时的水印范围、原生图表及审阅说明。它们属于历史，不再规定本轮只能改水印；当前输出的独立 Office 检查范围以上文为准。
+
+<details>
+<summary>保留的早期原生交付与复核记录</summary>
+
 # HUANDENG · Claude Code · Chinese product introduction
 
 ## Final watermark-only revision
@@ -50,3 +89,5 @@ Existing unprefixed evidence describes older submissions. Its counts/hashes rema
 The handoff calls the preceding canonical Brief seven pages. The retained prior artifact and saved sequence were already nine pages after earlier filename normalization. Final Main26/Brief9 counts and all current reports are verified from the files, not inferred from that sentence.
 
 Existing miniature page previews retain their original snapshot bytes; only the actual affected page bodies were refreshed in this wording-only maintenance.
+
+</details>

@@ -1,0 +1,212 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Independently retrieved official identity marks and their mapping to the active page assets.",
+  "completedAtUtc": "2026-11-11T14:13:07.259134+00:00",
+  "downloadRecord": "download-record.json",
+  "rasterMethod": "sharp 0.35.5; chatgpt.svg resized to 720x720, open-slide.svg at its 512x512 intrinsic size; no recolouring, crop or redraw.",
+  "activeAssets": {
+    "huandeng.png": {
+      "sha256": "6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef",
+      "sourceType": "repository-commit",
+      "match": "byte-identical",
+      "activeFile": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+      "activeBytes": 62348,
+      "uses": [
+        {
+          "page": "444J.page",
+          "elementId": "p16-mark"
+        },
+        {
+          "page": "7GWR.page",
+          "elementId": "p8-editor-mark"
+        },
+        {
+          "page": "7GWR.page",
+          "elementId": "p8-mark"
+        },
+        {
+          "page": "89DU.page",
+          "elementId": "p12-mark"
+        },
+        {
+          "page": "AEUJ.page",
+          "elementId": "ps-mark"
+        },
+        {
+          "page": "BR4V.page",
+          "elementId": "p2-editor-mark"
+        },
+        {
+          "page": "BR4V.page",
+          "elementId": "p2-mark"
+        },
+        {
+          "page": "CBCQ.page",
+          "elementId": "pv-mark"
+        },
+        {
+          "page": "CRUA.page",
+          "elementId": "p13-mark"
+        },
+        {
+          "page": "DM3J.page",
+          "elementId": "p17-mark"
+        },
+        {
+          "page": "DR4V.page",
+          "elementId": "p10-mark"
+        },
+        {
+          "page": "EKZK.page",
+          "elementId": "pa-mark"
+        },
+        {
+          "page": "H29N.page",
+          "elementId": "p11-mark"
+        },
+        {
+          "page": "initial.page",
+          "elementId": "cover-mark"
+        },
+        {
+          "page": "JYJD.page",
+          "elementId": "pc-mark"
+        },
+        {
+          "page": "KWPT.page",
+          "elementId": "p10-mark"
+        },
+        {
+          "page": "MG2S.page",
+          "elementId": "p6-mark"
+        },
+        {
+          "page": "MKPP.page",
+          "elementId": "p14-mark"
+        },
+        {
+          "page": "TCMD.page",
+          "elementId": "p18-mark"
+        },
+        {
+          "page": "TJKM.page",
+          "elementId": "p15-mark"
+        },
+        {
+          "page": "TJKM.page",
+          "elementId": "p15-mark-foot"
+        },
+        {
+          "page": "TPCJ.page",
+          "elementId": "p4-mark"
+        },
+        {
+          "page": "V3DV.page",
+          "elementId": "po-mark"
+        },
+        {
+          "page": "V7VJ.page",
+          "elementId": "p7-mark"
+        },
+        {
+          "page": "XFZM.page",
+          "elementId": "p3-mark"
+        }
+      ]
+    },
+    "claude-code.png": {
+      "sha256": "733f24f4c52acb15eb0fbded1cf40eb42b4ba8e62b882acac70b6234b50919a8",
+      "sourceType": "official-url",
+      "match": "byte-identical",
+      "activeFile": "media/imported/733f24f4c52acb15eb0fbded1cf40eb42b4ba8e62b882acac70b6234b50919a8.png",
+      "activeBytes": 4787,
+      "uses": [
+        {
+          "page": "7GWR.page",
+          "elementId": "p8-plugin-logo-claude"
+        },
+        {
+          "page": "BR4V.page",
+          "elementId": "p2-logo-claude"
+        },
+        {
+          "page": "EKZK.page",
+          "elementId": "pa-logo-claude"
+        }
+      ]
+    },
+    "chatgpt.png": {
+      "sha256": "0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13",
+      "sourceType": "official-svg-raster",
+      "match": "pixel-identical",
+      "sourceFile": "chatgpt.svg",
+      "sourceSha256": "2021463df9935dda89cef407aa564bced9d83b4f9b6ae8945d649e56676624f0",
+      "rasterFile": "chatgpt-720.png",
+      "rasterSha256": "e823ff839718b5bd73fe2a9b34f046c07925785d425cb8bb94db0eb5b8428088",
+      "pixelSha256": "66e3b49343f034e2ff0bfbeb7b6e1178af9704d31a1a35b3b7473271da7be4bb",
+      "activeFile": "media/imported/0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13.png",
+      "activeBytes": 27900,
+      "uses": [
+        {
+          "page": "7GWR.page",
+          "elementId": "p8-plugin-logo-chatgpt"
+        },
+        {
+          "page": "BR4V.page",
+          "elementId": "p2-logo-chatgpt"
+        },
+        {
+          "page": "EKZK.page",
+          "elementId": "pa-logo-chatgpt"
+        }
+      ],
+      "activePixelSha256": "66e3b49343f034e2ff0bfbeb7b6e1178af9704d31a1a35b3b7473271da7be4bb"
+    },
+    "deepseek.png": {
+      "sha256": "e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc",
+      "sourceType": "official-url",
+      "match": "byte-identical",
+      "activeFile": "media/imported/e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc.png",
+      "activeBytes": 15456,
+      "uses": [
+        {
+          "page": "7GWR.page",
+          "elementId": "p8-plugin-logo-deepseek"
+        },
+        {
+          "page": "BR4V.page",
+          "elementId": "p2-logo-deepseek"
+        },
+        {
+          "page": "EKZK.page",
+          "elementId": "pa-logo-deepseek"
+        }
+      ]
+    },
+    "open-slide.png": {
+      "sha256": "44e2a2aa5f3887deae386fa73f71234961f93e006873b632ccf38b6b6f1291a1",
+      "sourceType": "official-svg-raster",
+      "match": "pixel-identical",
+      "sourceFile": "open-slide.svg",
+      "sourceSha256": "761935b363487ac9d3ee164f0fc03d8265f4a2e1935c25325448e7f9d02e3219",
+      "rasterFile": "open-slide-512.png",
+      "rasterSha256": "fc41d5f8dd35763fbc15371ba7592522bff2a4d12eabe3a9b79c4c0ee607fd60",
+      "pixelSha256": "d7c1c041e57fa91bec98cdeb92861900eab96c06d105862318552f29329521c5",
+      "activeFile": "media/imported/44e2a2aa5f3887deae386fa73f71234961f93e006873b632ccf38b6b6f1291a1.png",
+      "activeBytes": 31437,
+      "uses": [
+        {
+          "page": "7GWR.page",
+          "elementId": "p8-box2-logo"
+        }
+      ],
+      "activePixelSha256": "d7c1c041e57fa91bec98cdeb92861900eab96c06d105862318552f29329521c5"
+    }
+  },
+  "unusedOfficialSources": {
+    "codex.png": "2ce1c57d… fetched from the official Visual Studio Marketplace icon URL; no current page element uses it.",
+    "github-repository.png": "2a2f5cbc… extracted from the official GitHub logo archive; no current page element uses it.",
+    "pptxgenjs.png": "d697acf6… fetched from the official PptxGenJS site; no current page element uses it."
+  },
+  "note": "Direct official files are byte-identical to the active page assets. The two SVG-derived marks are pixel-identical but not byte-identical because the PNG encoder differs; the active files were left unchanged rather than re-encoded. The HUANDENG mark is taken from the author's repository commit b43e3e08 because the historical public raw URL returns 404; it is byte-identical."
+}

@@ -1,0 +1,37 @@
+{
+  "identifier": "PDB 1BNA",
+  "record": "https://www.rcsb.org/structure/1BNA",
+  "coordinateSource": "https://files.rcsb.org/download/1BNA.pdb",
+  "structureDOI": "https://doi.org/10.2210/pdb1BNA/pdb",
+  "primaryPublication": "Drew et al. (1981), PNAS 78:2179-2183",
+  "publicationDOI": "https://doi.org/10.1073/pnas.78.4.2179",
+  "coordinateSha256": "df42f1506792f191b957227b061360652adcf6f813eb69d9ec553067ea584670",
+  "downloadedAtUtc": "2026-11-11T13:28:27.328934+00:00",
+  "reportedMethod": "X-ray diffraction",
+  "reportedResolutionAngstrom": 1.9,
+  "chains": [
+    "A",
+    "B"
+  ],
+  "residuesMeasured": [
+    12,
+    12
+  ],
+  "pairedPositions": 12,
+  "pairing": "chain A residues ascending against chain B residues descending",
+  "measurement": "Euclidean distance between C1' atoms in angstrom",
+  "scope": "Twelve positions in one deposited structure; not independent replicates, an experiment, a performance benchmark, or hydrogen-bond distances.",
+  "computedAtUtc": "2026-11-11T13:29:06.202049+00:00",
+  "script": "measure_and_plot.py",
+  "scriptSha256": "fe81bd34d61afa311f9a4ebe2ca8f7821b12ccd89ab74e9666af21e92b501bce",
+  "valuesFile": "measurements.csv",
+  "valuesSha256": "84f6c1daa9c34184d3a6ed3eecca30b5d7e211fd5c16d55c65d40d872f8ce249",
+  "minimum": {
+    "position": 7,
+    "distance_A": 10.2329
+  },
+  "maximum": {
+    "position": 12,
+    "distance_A": 10.8877
+  }
+}

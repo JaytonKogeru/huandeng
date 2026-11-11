@@ -7,17 +7,14 @@ elements:
   - elementId: data-kicker
     elementType: text
     bounds:
-      - 48
-      - 42
-      - 300
-      - 18
+        [48,18,420,14]
     content:
       text: 页面 / 数据
       fontSize: 9.5
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
-      color: "#7D8A80"
+      color: "#5F6E64"
       letterSpacing: 1.2
       align:
         - left
@@ -26,13 +23,10 @@ elements:
     elementType: text
     role: title
     bounds:
-      - 48
-      - 66
-      - 520
-      - 40
+        [48,44,520,40]
     content:
       text: 页面不是一张截图
-      fontSize: 27
+      fontSize: 28
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
@@ -44,13 +38,10 @@ elements:
   - elementId: data-lead
     elementType: text
     bounds:
-      - 48
-      - 112
-      - 520
-      - 44
+        [48,90,780,44]
     content:
       text: 每个文字、图、表和线都是可寻址对象；助手能改一个对象，也能检查边界和 revision。
-      fontSize: 13.8
+      fontSize: 14.5
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
@@ -81,17 +72,7 @@ elements:
       - 398
       - 230
     content:
-      text: |-
-        elementId: sci-plot
-        type: image
-        bounds: [330, 68, 580, 290]
-        src: media/imported/d5576...
-        fit: { mode: "contain" }
-
-        elementId: sci-facts
-        type: table
-        bounds: [330, 398, 580, 86]
-        rows: 3 × 2 · native
+      text: "elementId: problem-card-1\ntype: shape\nbounds: [686, 165, 226, 78]\nfill: #FBFBF7\n\nelementId: problem-label-1\ntype: text\nbounds: [702, 177, 194, 18]\ncontent: 副本 1 / 组会"
       fontSize: 9.4
       fontFamily:
         ea: Microsoft YaHei
@@ -123,10 +104,10 @@ elements:
       - 190
       - 408
       - 226
-    src: "media/imported/1f8c227e7a8a73ed668c788e46d631f17b6e6f577e9f66479d5e693fbd71d867.png"
-    sourceName: "zh-CN-native-operation-review-4x.png"
+    src: "media/imported/7bcf7ed80691b495c5deb9bee8e84239ef7662065c9ea4fec8806de81b46d343.png"
+    sourceName: "deepseek-zh-layers-2z2n.png"
     fit:
-      mode: cover
+      {"mode":"contain"}
   - elementId: data-caption
     elementType: text
     bounds:
@@ -135,7 +116,7 @@ elements:
       - 416
       - 36
     content:
-      text: 真实界面：页面、对象与边界都在同一份可编辑数据里。
+      text: "真实界面：右侧图层面板列出对象与顺序；左侧是同一页的字段示例。"
       fontSize: 8.8
       fontFamily:
         ea: Microsoft YaHei
@@ -186,7 +167,7 @@ elements:
       - 222
       - 14
     content:
-      text: Chinese · DeepSeek V4.1 Flash 1017
+      text: "chinese deepseek v4.1flash1017"
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial

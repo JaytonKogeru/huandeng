@@ -1,0 +1,31 @@
+{
+  "method": "content-addressed placement; no existing file overwritten",
+  "records": [
+    {
+      "asset": "chatgpt",
+      "sourceFile": "sources/brand-acquisition/raw/chatgpt-raster-720.png",
+      "sha256": "3adcc98e4382ea6009078c069bbff56a731aecc47c9c6aca955109638e8c6bd5",
+      "projectAsset": "media/imported/3adcc98e4382ea6009078c069bbff56a731aecc47c9c6aca955109638e8c6bd5.png",
+      "alreadyPresent": false,
+      "placedAt": "2026-11-11T13:57:19.451901+00:00",
+      "pages": [
+        "Z4XP",
+        "2FMW",
+        "5ZZM"
+      ],
+      "origin": "official SVG retrieved 2026-11-11, rasterised with resvg-py 0.5.0 (see brand-acquisition.json)"
+    },
+    {
+      "asset": "open-slide",
+      "sourceFile": "sources/brand-acquisition/raw/open-slide-raster-512.png",
+      "sha256": "f02ae8879fae2bc16a239399e119fb8eee93303c2e440855a4f04a13225981c7",
+      "projectAsset": "media/imported/f02ae8879fae2bc16a239399e119fb8eee93303c2e440855a4f04a13225981c7.png",
+      "alreadyPresent": false,
+      "placedAt": "2026-11-11T13:57:19.453299+00:00",
+      "pages": [
+        "K9P9"
+      ],
+      "origin": "official SVG retrieved 2026-11-11, rasterised with resvg-py 0.5.0 (see brand-acquisition.json)"
+    }
+  ]
+}

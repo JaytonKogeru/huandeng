@@ -5,12 +5,9 @@ elements:
   - elementId: p10-eyebrow
     elementType: text
     bounds:
-      - 64
-      - 32
-      - 300
-      - 14
+        [64,18,300,14]
     content:
-      text: 03 / WORKED EXAMPLE
+      text: "02 / THE EDITOR"
       fontFamily: Consolas
       fontSize: 10
       color: "#B43C26"
@@ -22,10 +19,7 @@ elements:
     elementType: text
     role: title
     bounds:
-      - 64
-      - 52
-      - 760
-      - 42
+        [64,44,760,42]
     content:
       text: A page can carry real evidence.
       fontFamily: Georgia
@@ -43,7 +37,7 @@ elements:
       - 760
       - 20
     content:
-      text: One public structure, one measured plot, one editable page.
+      text: "One public structure, one derived plot, one editable page."
       fontFamily: Segoe UI
       fontSize: 13
       color: "#625E55"
@@ -58,8 +52,8 @@ elements:
       - 126
       - 560
       - 280
-    src: media/imported/a36d62e395822be26d250ca525aa072402aa68bfce609b3464f84762541bff62.png
-    sourceName: paired-c1-distances-en.png
+    src: "media/imported/7b30b159527f8ea568e68e613efe661f81d29e2fdd0662d3e2c3ffee4e954c65.png"
+    sourceName: "paired-c1-distances-2026-11-12.png"
     fit:
       mode: contain
   - elementId: p10-chart-frame
@@ -81,10 +75,22 @@ elements:
       - 126
       - 220
       - 220
-    src: media/imported/ff6d1434a44440fba124ccad7dfa30efa01e8c400094d4453d17d502345c1e2c.png
-    sourceName: dna-duplex-side.png
+    src: "media/imported/b271ca7713d90645462fe533dc1f420775b7f3ebf3acd062681dae7c693d39f9.png"
+    sourceName: "rcsb-1bna-plate.png"
     fit:
       mode: contain
+  - elementId: p10-duplex-frame
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 660
+      - 126
+      - 220
+      - 220
+    border:
+      width: 1
+      color: "#D9D4C8"
+      style: solid
   - elementId: p10-label
     elementType: text
     bounds:
@@ -109,9 +115,7 @@ elements:
       - 220
       - 50
     content:
-      text: |-
-        RCSB PDB 1BNA
-        Drew et al., PNAS 1981
+      text: "RCSB PDB 1BNA\ndownload 2026-11-12\nDrew et al., PNAS 1981"
       fontFamily: Consolas
       fontSize: 9.5
       color: "#918B7E"
@@ -124,7 +128,7 @@ elements:
     bounds:
         [64,408,620,44]
     content:
-      text: "C1′–C1′ distances at twelve paired positions in the DNA dodecamer. The plot is an original measured figure, stored once in the asset library."
+      text: "C1′–C1′ distances at twelve paired positions in the DNA dodecamer. The plot is this edition's figure, recomputed from the deposited coordinates and stored once in the asset library."
       fontFamily: Segoe UI
       fontSize: 14
       color: "#3A3833"
@@ -137,7 +141,7 @@ elements:
     bounds:
         [64,462,640,40]
     content:
-      text: "One structure, not independent replicates. Values from the deposited coordinates."
+      text: "One structure, not independent replicates. Distances recomputed from the deposited coordinates."
       fontFamily: Consolas
       fontSize: 10.5
       color: "#918B7E"
@@ -198,10 +202,10 @@ elements:
         - right
         - top
       color: "#8C8678"
-      fontFamily: Segoe UI
+      fontFamily: "Consolas"
       fontSize: 9.5
       letterSpacing: 0.4
-      text: English · DeepSeek V4.1 Flash 1017
+      text: "english deepseek v4.1flash1017"
     elementId: attribution-watermark
     elementType: text
-notes: "This is the scientific worked example: the Dickerson–Drew DNA dodecamer, PDB 1BNA. The plot measures C1′–C1′ distances at twelve paired positions within one deposited structure. It is not an experiment run by HUANDENG, not independent replicates, and not a set of hydrogen-bond lengths. The chart is an original measured figure kept in the asset library; the structure is drawn from the same coordinates. On the next page, this page's Story says what an edit must preserve."
+notes: "This is the scientific worked example: the Dickerson–Drew DNA dodecamer, PDB 1BNA. The plot derives C1′–C1′ distances at twelve paired positions from this edition's own download of the deposited coordinates (2026-11-12), recomputed with our own script. The structure is the official RCSB assembly image, downloaded the same day. It is not an experiment run by HUANDENG, not independent replicates, and not a set of hydrogen-bond lengths. On the next page, this page's Story says what an edit must preserve."

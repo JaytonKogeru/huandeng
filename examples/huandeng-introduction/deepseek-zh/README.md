@@ -1,3 +1,46 @@
+# HUANDENG：DeepSeek Harness 中文介绍
+
+[可编辑项目](deck.pptd) | [Main PDF](Exports/deck.pdf) | [Main PowerPoint](Exports/deck.pptx) | [12 页简版 PDF](Exports/brief.pdf) | [简版 PowerPoint](Exports/brief.pptx) | [实际保存的讲稿](speaker-notes.md)
+
+本稿从组会要讲什么、修改两页为何留下多份副本出发，用 Story、单页身份与历史、证据保存和下一场演讲的复用解释 HUANDENG。原生 DeepSeek Harness 保留现有视觉系统，完成一致性、独立素材和 Editor 位置引导的局部修订。
+
+## 当前保存的版本
+
+| 集合 | 页数 | 页面与备注行为 |
+| --- | ---: | --- |
+| Main | 22 | 两张实际标题独占章节页，完整致谢保留在 K9P9。 |
+| 完整介绍 | 22 | 与 Main 同序、同页面备注，全部引用当前页面，没有 pin。 |
+| 简版 | 12 | 全部引用当前页面，没有 pin 或单次引用备注覆盖，继承 Main 的实际讲稿。 |
+
+完整版与简版各有独立的演讲级备注。完整版说明从组会需要、Story、一次只改一页、1BNA 证据保存走到下一场演讲；简版说明复用 Main。它们和页面 Notes 是不同层级，[讲稿文档](speaker-notes.md)分别保留实际内容。
+
+封面和内容页使用精确水印 `chinese deepseek v4.1flash1017`。章节页只保留标题，不附水印或页码。
+
+## 独立素材与 Editor 引导
+
+本轮结构图与原始坐标来自作者自己的公开来源获取，距离重新计算，曲线使用 Matplotlib。原始 URL、时间和来源保留在[独立获取记录](sources/independent-2026-11-11/acquisition.json)，获取与派生方法见[acquire.py](sources/independent-2026-11-11/acquire.py)及[derive_crops.py](sources/independent-2026-11-11/derive_crops.py)。
+
+品牌素材由本版作者自行取得，见[品牌采集记录](sources/brand-acquisition/brand-acquisition.json)。原来共同输入的科学图和界面库保留为历史，不是本轮的新素材输入。
+
+XZJN 的复用说明保留本项目完整 Editor 窗口，在原窗指出项目面板中使用位置的区域，再展示同源可读细节。[定位来源记录](sources/xzjn-location-2026-11-11/xzjn-location.json)保留该对应关系。真实界面保留实际运行的 0.19 版本，不把新工具路由称为已升级的桌面。
+
+[本轮原生集成记录](../../../docs/NATIVE-INTEGRATION-0.20.md)说明实际运行组合：已安装的 0.19 DSH 适配器、显式绑定的 0.20 MCP CLI，以及未替换的 0.19 writer，并区分真实模型调用与单纯安装成功。
+
+## 审阅与输出
+
+当前 22 页完整序列、科学证据和 XZJN 的位置引导已完成本轮内部视觉复查。Office 基线检查以禁用修复的只读方式打开 Main（22 页）、按名称导出的简版（12 页）及 brief 别名（12 页）。最后将 UGA7 改为忠实转述，并纠正 5ZZM 的 manifest/metadata 讲稿事实后，重新只读打开 Main，核对第 4 页的转述卡片。最终 Main 第 4/19 页与简版第 3/11 页的 PPTX Notes XML 也已核对；简版别名与正式文件逐字节一致，没有重复 Office 打开简版。所有检查均未改变被读取的文件；内部复核不代表用户最终验收。
+
+本地 `Exports/deck.pdf`、`Exports/deck.pptx` 对应 Main；完整版与 Main 完全相同，未另造一套 Full 输出。简版保留按演讲名称导出的文件和 `Exports/brief.pdf`、`Exports/brief.pptx` 别名。演讲级备注保存在项目与 Markdown 中；这些 PDF/PPTX 不包含该层备注。生成的导出不进入 Git。
+
+当前六页选览见[项目集合入口](../README.md)。移动时保留整个项目目录，包括入口、页面、原图、来源、元数据与历史，不单独移动 `deck.pptd`。
+
+## 历史记录
+
+下面保留此前水印冻结、旧素材与旧输出的说明。它们只描述当时的状态；旧水印、旧页数、旧检查范围和旧内容问题不作为当前版本的规则或验收结论。当前保存的项目与上文列出的来源、正式解析 Notes 和输出范围优先。
+
+<details>
+<summary>保留的早期原生交付与复核记录</summary>
+
 # HUANDENG · DeepSeek Harness · 中文产品介绍
 
 ## Final watermark-only revision
@@ -63,3 +106,5 @@ Main PPTX 含 22 页 Notes、三张原生表格和 20 个媒体部件。科学�
 [原生当前 README 原件](evidence/product-native-README.md) 保留作者原字节，其相对链接以原位置“项目根 README.md”解释；当前可用入口是本文件。上轮讲稿也作为历史材料保留。
 
 ![当前原生 PDF 封面](evidence/product-preview.png)
+
+</details>

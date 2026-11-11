@@ -24,10 +24,7 @@ elements:
     elementType: shape
     shapeName: rect
     bounds:
-      - 55
-      - 91
-      - 362
-      - 298
+        [55,91,362,288]
     fill:
       type: solid
       color: "#FFFFFF"
@@ -37,23 +34,17 @@ elements:
   - elementId: check-shot
     elementType: image
     bounds:
-      - 56
-      - 92
-      - 360
-      - 296
-    src: media/derived/en-design-check-crop-0-0-2592-2128.png
-    sourceName: en-design-check-crop-0-0-2592-2128.png
+        [56,92,360,286]
+    src: "media/independent-20261111/ui/design-check.png"
+    sourceName: "design-check.png"
     fit:
       mode: contain
   - elementId: check-caption
     elementType: text
     bounds:
-      - 56
-      - 396
-      - 360
-      - 60
+        [56,386,360,60]
     content:
-      text: "Design check: read-only observations on type sizes, backgrounds, Section title slides and image resolution. It never edits or approves slides."
+      text: "Design check on this deck: advisory observations on type, backgrounds, Section title slides and image resolution. It never edits or approves slides."
       fontFamily: Arial
       fontSize: 12
       lineHeight: 1.35
@@ -65,10 +56,7 @@ elements:
     elementType: shape
     shapeName: rect
     bounds:
-      - 443
-      - 91
-      - 290
-      - 139
+        [443,91,290,138]
     fill:
       type: solid
       color: "#FFFFFF"
@@ -82,30 +70,24 @@ elements:
       - 92
       - 288
       - 136
-    src: media/imported/ea2c787b8b58f25cb8655c5df4926889bad3ebd4b293d24df5e18a54944be3eb.png
-    sourceName: en-export-4x.png
+    src: "media/independent-20261111/ui/export-dialog.png"
+    sourceName: "export-dialog.png"
     fit:
       mode: contain
   - elementId: present-shot
     elementType: image
     bounds:
-      - 756
-      - 92
-      - 148
-      - 56
-    src: media/imported/48fe43fdc4bd5aa675f58e91a6bfaaf7eeb7df2be43384d4d89bdd61c8167f08.png
-    sourceName: en-present-menu-4x.png
+        [756,92,148,82]
+    src: "media/independent-20261111/ui/present-menu.png"
+    sourceName: "present-menu.png"
     fit:
       mode: contain
   - elementId: present-caption
     elementType: text
     bounds:
-      - 756
-      - 154
-      - 148
-      - 70
+        [756,180,148,48]
     content:
-      text: "Present menu: start from the beginning or from the current slide."
+      text: "Present: from the beginning or the current slide."
       fontFamily: Arial
       fontSize: 12
       lineHeight: 1.35
@@ -165,7 +147,7 @@ elements:
       - 460
       - 16
     content:
-      text: Real captures from HUANDENG Editor 0.18, public example project.
+      text: "Real captures from HUANDENG Editor 0.19.0, this project."
       fontFamily: Arial
       fontSize: 11
       lineHeight: 1.3
@@ -180,7 +162,7 @@ elements:
       - 505
       - 16
       - 16
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    src: "media/independent-20261111/brand/huandeng.png"
     sourceName: huandeng.png
     fit:
       mode: contain
@@ -225,7 +207,7 @@ elements:
       - 176
       - 16
     content:
-      text: English · Claude Opus 5.5
+      text: "english claude opus5.5"
       fontFamily: Arial
       fontSize: 10
       lineHeight: 1.2

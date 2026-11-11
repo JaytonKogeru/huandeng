@@ -1,0 +1,321 @@
+elements:
+  - elementId: title
+    elementType: text
+    role: title
+    bounds:
+      - 56
+      - 30
+      - 848
+      - 42
+    content:
+      text: Acknowledgments
+      fontFamily: Arial
+      fontSize: 30
+      lineHeight: 1.2
+      color: "#1C2321"
+      bold: true
+      align:
+        - left
+        - top
+  - elementId: lead
+    elementType: text
+    bounds:
+        [56,74,848,20]
+    content:
+      text: "What is in the code, where the ideas came from, and what I studied along the way."
+      fontFamily: Arial
+      fontSize: 14
+      lineHeight: 1.3
+      color: "#56615D"
+      align:
+        - left
+        - top
+  - elementId: h-code
+    elementType: text
+    bounds:
+      - 56
+      - 104
+      - 400
+      - 22
+    content:
+      text: In the code
+      fontFamily: Arial
+      fontSize: 15
+      lineHeight: 1.25
+      color: "#56615D"
+      bold: true
+      align:
+        - left
+        - middle
+  - elementId: t-code
+    elementType: table
+    bounds:
+      - 56
+      - 130
+      - 400
+      - 78
+    columnWidths:
+      - 0.34
+      - 0.66
+    rows:
+      - - text: OpenSlide
+        - text: "Editor foundation: canvas, Inspector, show"
+      - - text: OpenPPTD
+        - text: Three equation-conversion modules
+      - - text: PptxGenJS
+        - text: Library that writes the PPTX files
+    style:
+      cellStyle:
+        fontFamily: Arial
+        fontSize: 12.5
+        lineHeight: 1.15
+        color: "#1C2321"
+        align:
+          - left
+          - middle
+        border:
+          - null
+          - null
+          - width: 1
+            color: "#C7CEC9"
+            style: solid
+          - null
+      firstColumnStyle:
+        color: "#2E6B5E"
+        bold: true
+  - elementId: h-origin
+    elementType: text
+    bounds:
+      - 56
+      - 226
+      - 400
+      - 22
+    content:
+      text: Where the idea came from
+      fontFamily: Arial
+      fontSize: 15
+      lineHeight: 1.25
+      color: "#56615D"
+      bold: true
+      align:
+        - left
+        - middle
+  - elementId: t-origin
+    elementType: table
+    bounds:
+      - 56
+      - 252
+      - 400
+      - 52
+    columnWidths:
+      - 0.34
+      - 0.66
+    rows:
+        [[{"text":"Kimi / Moonshot AI"},{"text":"Where I met PPTD and agent revision"}],[{"text":"open-kimi-ppt-skill"},{"text":"Community notes on the PPTD format"}]]
+    style:
+      cellStyle:
+        fontFamily: Arial
+        fontSize: 12.5
+        lineHeight: 1.15
+        color: "#1C2321"
+        align:
+          - left
+          - middle
+        border:
+          - null
+          - null
+          - width: 1
+            color: "#C7CEC9"
+            style: solid
+          - null
+      firstColumnStyle:
+        color: "#2E6B5E"
+        bold: true
+  - elementId: h-design
+    elementType: text
+    bounds:
+      - 488
+      - 104
+      - 416
+      - 22
+    content:
+      text: Design references
+      fontFamily: Arial
+      fontSize: 15
+      lineHeight: 1.25
+      color: "#56615D"
+      bold: true
+      align:
+        - left
+        - middle
+  - elementId: t-design
+    elementType: table
+    bounds:
+      - 488
+      - 130
+      - 416
+      - 130
+    columnWidths:
+      - 0.42
+      - 0.58
+    rows:
+      - - text: PowerPoint
+        - text: Sections, Notes, views, slide show
+      - - text: WPS Slides
+        - text: Section actions in toolbar and menu
+      - - text: VS Code
+        - text: Tabs, sidebar, activity panels
+      - - text: OpenSlides Studio
+        - text: Explicit IDs, unified operations
+      - - text: OPF / OpenPresentation
+        - text: Revision checks, patches, conflicts
+    style:
+      cellStyle:
+        fontFamily: Arial
+        fontSize: 12.5
+        lineHeight: 1.15
+        color: "#1C2321"
+        align:
+          - left
+          - middle
+        border:
+          - null
+          - null
+          - width: 1
+            color: "#C7CEC9"
+            style: solid
+          - null
+      firstColumnStyle:
+        color: "#2E6B5E"
+        bold: true
+  - elementId: h-alt
+    elementType: text
+    bounds:
+      - 488
+      - 278
+      - 416
+      - 22
+    content:
+      text: Alternatives I studied
+      fontFamily: Arial
+      fontSize: 15
+      lineHeight: 1.25
+      color: "#56615D"
+      bold: true
+      align:
+        - left
+        - middle
+  - elementId: t-alt
+    elementType: table
+    bounds:
+      - 488
+      - 304
+      - 416
+      - 130
+    columnWidths:
+      - 0.42
+      - 0.58
+    rows:
+      - - text: PPTist
+        - text: Context menus, shortcuts, thumbnails
+      - - text: Slidev
+        - text: Themes apart from layouts; CLI, MCP
+      - - text: Presenton
+        - text: Templates; human and agent revision
+      - - text: PPTAgent
+        - text: Rendered review, redone on change
+      - - text: PPT Master
+        - text: Native OOXML, SVG, master export
+    style:
+      cellStyle:
+        fontFamily: Arial
+        fontSize: 12.5
+        lineHeight: 1.15
+        color: "#1C2321"
+        align:
+          - left
+          - middle
+        border:
+          - null
+          - null
+          - width: 1
+            color: "#C7CEC9"
+            style: solid
+          - null
+      firstColumnStyle:
+        color: "#2E6B5E"
+        bold: true
+  - elementId: note
+    elementType: text
+    bounds:
+        [56,330,400,110]
+    content:
+      text: "Only the three in the code ship with HUANDENG, under their own licences. The rest shaped design questions; no code was copied and none of them endorses HUANDENG. OpenSlides Studio (openslides.dev) is a separate project from OpenSlide. Full list with links: docs/ACKNOWLEDGMENTS.md."
+      fontFamily: Arial
+      fontSize: 12.5
+      lineHeight: 1.4
+      color: "#56615D"
+      align:
+        - left
+        - top
+  - elementId: ft-mark
+    elementType: image
+    bounds:
+      - 56
+      - 505
+      - 16
+      - 16
+    src: media/independent-20261111/brand/huandeng.png
+    sourceName: huandeng.png
+    fit:
+      mode: contain
+  - elementId: ft-label
+    elementType: text
+    bounds:
+      - 78
+      - 505
+      - 420
+      - 16
+    content:
+      text: HUANDENG  /  Working with agents
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - left
+        - middle
+  - elementId: ft-pos
+    elementType: text
+    bounds:
+      - 824
+      - 505
+      - 80
+      - 16
+    content:
+      text: "0"
+      field: main-position
+      fontFamily: Arial
+      fontSize: 11
+      lineHeight: 1.3
+      color: "#7A8480"
+      align:
+        - right
+        - middle
+  - elementId: attribution-watermark
+    elementType: text
+    bounds:
+      - 760
+      - 10
+      - 176
+      - 16
+    content:
+      text: english claude opus5.5
+      fontFamily: Arial
+      fontSize: 10
+      lineHeight: 1.2
+      color: "#7A8580"
+      align:
+        - right
+        - middle
+notes: "Before the last slide, the people and projects this work stands on. Three of them are in the code. OpenSlide is the foundation: the editor, canvas, Inspector, presentation and export come from it. Three equation-conversion modules come from OpenPPTD, and PptxGenJS writes the PowerPoint files. Everything else is a relationship of ideas, not code. I first met the PPTD idea in the Kimi Slides ecosystem, and the community open-kimi-ppt-skill notes helped with the format. PowerPoint, WPS and VS Code shaped the workspace: sections, notes, views, tabs and panels. OpenSlides Studio and the OpenPresentation format shaped how objects get stable IDs and how changes are checked against a revision. And I studied PPTist, Slidev, Presenton, PPTAgent and PPT Master as alternatives; each solves part of this problem well, and each taught me something specific. None of them endorses HUANDENG. The full list, with links and what was adopted, is in docs/ACKNOWLEDGMENTS.md in the repository."

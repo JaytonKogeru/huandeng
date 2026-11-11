@@ -9,7 +9,7 @@ elements:
       - 64
       - 52
       - 52
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    src: "media/independent-20261111/brand/huandeng.png"
     sourceName: huandeng.png
     fit:
       mode: contain
@@ -69,7 +69,7 @@ elements:
       - 500
       - 20
     content:
-      text: "Introduction  ·  HUANDENG 0.19.0  ·  November 2026"
+      text: "Introduction to HUANDENG 0.19.0, November 2026"
       fontFamily: Arial
       fontSize: 13
       lineHeight: 1.3
@@ -84,8 +84,8 @@ elements:
       - 52
       - 320
       - 384
-    src: media/imported/ff6d1434a44440fba124ccad7dfa30efa01e8c400094d4453d17d502345c1e2c.png
-    sourceName: dna-duplex-side.png
+    src: "media/independent-20261111/science/dna-1bna-side.png"
+    sourceName: "dna-1bna-side.png"
     fit:
       mode: contain
   - elementId: structure-caption
@@ -112,7 +112,7 @@ elements:
       - 176
       - 16
     content:
-      text: English · Claude Opus 5.5
+      text: "english claude opus5.5"
       fontFamily: Arial
       fontSize: 10
       lineHeight: 1.2

@@ -24,10 +24,7 @@ elements:
     elementType: shape
     shapeName: rect
     bounds:
-      - 55
-      - 91
-      - 850
-      - 284
+        [55,91,850,258]
     fill:
       type: solid
       color: "#FFFFFF"
@@ -37,23 +34,17 @@ elements:
   - elementId: outline-shot
     elementType: image
     bounds:
-      - 56
-      - 92
-      - 848
-      - 282
-    src: media/imported/0c992097d40aa22917c249d80642892caad569fa7a60faf4df2089cafdc79c09.png
-    sourceName: en-outline-reading-4x.png
+        [56,92,848,256]
+    src: "media/independent-20261111/ui/outline-section-mpl.png"
+    sourceName: "outline-section-mpl.png"
     fit:
       mode: contain
   - elementId: outline-caption
     elementType: text
     bounds:
-      - 56
-      - 380
-      - 848
-      - 16
+        [56,354,848,16]
     content:
-      text: "Outline view: Section, Position, title, Story summary and Slide ID for each slide. Real capture, public example project."
+      text: "Outline view of this deck: Section, Position, title, Story purpose and Slide ID. The 1BNA slide is selected. Real capture."
       fontFamily: Arial
       fontSize: 11
       lineHeight: 1.3
@@ -167,7 +158,7 @@ elements:
       - 505
       - 16
       - 16
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    src: "media/independent-20261111/brand/huandeng.png"
     sourceName: huandeng.png
     fit:
       mode: contain
@@ -212,7 +203,7 @@ elements:
       - 176
       - 16
     content:
-      text: English · Claude Opus 5.5
+      text: "english claude opus5.5"
       fontFamily: Arial
       fontSize: 10
       lineHeight: 1.2
@@ -220,4 +211,4 @@ elements:
       align:
         - right
         - middle
-notes: "Before polishing any single slide, I read the deck as a story. The Outline view lists every slide with its title, its Story summary and its Slide ID, grouped by Section, so I can see whether the argument holds. Browse shows the same slides as thumbnails, for density and rhythm. Sections divide the talk into parts; each starts at a stable first slide and runs to the next."
+notes: "Before polishing any single slide, I read the deck as a story. This is the Outline view of this talk, at the start of the worked example: every slide with its Position, its title, the purpose from its Story and its Slide ID, grouped by Section, so I can see whether the argument holds. The 1BNA slide is selected. Browse shows the same slides as thumbnails, for density and rhythm. Sections divide the talk into parts; each starts at a stable first slide and runs to the next."

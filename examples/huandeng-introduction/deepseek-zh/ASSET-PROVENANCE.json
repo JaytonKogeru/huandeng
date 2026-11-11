@@ -2,7 +2,7 @@
   "schemaVersion": 2,
   "recordedAt": "2026-11-10T12:52:00.958673+00:00",
   "project": "deepseek-zh",
-  "scope": "Actual current asset inventory. Historical media remains available for checkpoints; unused does not imply deletion permission.",
+  "scope": "Historical inventory. Active evidence after 2026-11-11 is recorded in ASSET-INDEPENDENCE.md; usedByActiveMainPages below predates that refresh. Historical media remains available for checkpoints; unused does not imply deletion permission.",
   "supersedesHistoricalProvenanceSha256": "4e1df944e7cc3abb086b5d243d6aee8442a897ab481c51a64e09a69dae4f6225",
   "assetCounts": {
     "all": 56,

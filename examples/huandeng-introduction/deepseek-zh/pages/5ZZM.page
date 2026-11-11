@@ -2,22 +2,19 @@ pageType: content
 background:
   type: solid
   color: "#F4F3ED"
-notes: 几个助手可以接同一个项目，但不是同时改所有东西。不同页面可以各自保存；同一页会 revision 冲突，即使改的是不同对象；项目 Story、章节和顺序共用 metadata revision，需要协调。活动面板记录声明阶段和已保存回执，不是在线状态、自动章节锁或排班。内容到美术的交接也要先读已保存 operation 和 revision，再 preview、apply、render。
+notes: "几个助手可以接同一个项目，但不是同时改所有东西。不同页面可以各自保存；同一页会 revision 冲突，即使改的是不同对象；Main 页顺序归 manifest；Project Story、Sections 和 Presentation 配置及其引用顺序归 metadata，需要协调。活动面板记录声明阶段和已保存回执，不是在线状态、自动章节锁或排班。内容到美术的交接也要先读已保存 operation 和 revision，再 preview、apply、render。"
 elements:
   - elementId: agents-kicker
     elementType: text
     bounds:
-      - 48
-      - 42
-      - 300
-      - 18
+        [48,18,420,14]
     content:
       text: 协作 / 多助手
       fontSize: 9.5
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
-      color: "#7D8A80"
+      color: "#5F6E64"
       letterSpacing: 1.2
       align:
         - left
@@ -26,13 +23,10 @@ elements:
     elementType: text
     role: title
     bounds:
-      - 48
-      - 66
-      - 620
-      - 40
+        [48,44,620,40]
     content:
       text: 几个助手，一个写入器
-      fontSize: 27
+      fontSize: 28
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
@@ -44,13 +38,10 @@ elements:
   - elementId: agents-lead
     elementType: text
     bounds:
-      - 48
-      - 112
-      - 860
-      - 30
+        [48,90,860,30]
     content:
       text: 不同页面可以并行；同一页和共享元数据要协调。
-      fontSize: 14.4
+      fontSize: 14.5
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
@@ -84,6 +75,7 @@ elements:
           color: "#D5DCD2"
           width: 0.6
           style: solid
+        "align": ["left","middle"]
       firstRowStyle:
         fill: "#DCE4D9"
         bold: true
@@ -142,7 +134,7 @@ elements:
       - 232
       - 24
       - 24
-    src: media/imported/0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13.png
+    src: "media/imported/3adcc98e4382ea6009078c069bbff56a731aecc47c9c6aca955109638e8c6bd5.png"
     sourceName: chatgpt.png
     fit:
       mode: contain
@@ -242,7 +234,7 @@ elements:
       - 222
       - 14
     content:
-      text: Chinese · DeepSeek V4.1 Flash 1017
+      text: "chinese deepseek v4.1flash1017"
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial

@@ -311,15 +311,15 @@
         "pageRole": "cover",
         "language": "zh-CN",
         "purpose": "先讲一个故事，再做幻灯片：以真实 1BNA 结构承托“我为什么做 HUANDENG”。",
-        "evidence": "HUANDENG 实际 mark；PDB 1BNA 结构；本轮用户口述。",
+        "evidence": "HUANDENG 实际标记；RCSB PDB 1BNA 官方结构图；本项目用户故事。",
         "keep": [
           "保留 HUANDENG 实际标记与 1BNA 结构来源。",
           "保留第一人称、故事驱动的入口，不把封面做成功能发布会。"
         ],
         "backgroundException": "封面深墨绿底承托透明结构图，和正文浅色系统分层。",
-        "actor": "deepseek-harness",
+        "actor": "deepseek-flash",
         "source": "当前 AGENTS.md、用户故事、公开 1BNA 示例。",
-        "requestedChange": "把 16 页产品介绍重构为 18 页故事驱动版本；先讲组会现场和两个问题。"
+        "requestedChange": "2026-11-11 独立素材刷新：封面 1BNA 改用 RCSB 官方结构图，并保留统一页眉与指定水印。"
       }
     },
     "442751c7-1ad1-457f-acbb-c1e8611f0ecd": {
@@ -332,15 +332,15 @@
       "designIntent": {
         "pageRole": "content",
         "language": "zh-CN",
-        "purpose": "一页能承载真实证据：结构、曲线、原生表格、数值和来源在同页成立。",
-        "evidence": "PDB 1BNA；12 个 C1′–C1′ 距离；原生表格；Drew et al. 1981；10.23–10.89 Å。",
+        "purpose": "一页能承载真实证据：结构、数值、来源在同一页成立。",
+        "evidence": "PDBe 1BNA 沉积结构图（2026-11-11 取得）；由本轮下载的 1BNA.pdb 重算的 12 个 C1′-C1′ 距离，与原生表格一致。",
         "keep": [
-          "保留原图、曲线、原生表格、坐标轴和来源。",
+          "保留原图、原生表格、坐标轴和来源。",
           "不把 12 个位置写成独立重复实验或产品性能。"
         ],
-        "actor": "deepseek-harness",
-        "source": "sources/science、FACTS.md、真实页面。",
-        "requestedChange": "从故事页改为编辑器的科学证据示例。"
+        "actor": "deepseek-flash",
+        "source": "sources/independent-2026-11-11、RCSB 1BNA、Drew et al. 1981",
+        "requestedChange": "2026-11-11 独立素材复核：结构图换成本轮取得的 PDBe 图像，数值由同一轮坐标重算。"
       }
     },
     "307fe424-d34a-4b76-b801-4e8f63ba8cbb": {
@@ -402,14 +402,14 @@
         "pageRole": "content",
         "language": "zh-CN",
         "purpose": "一份内容，多次出场：Main Slides 共享，Presentation 只改选择、顺序和讲稿。",
-        "evidence": "真实项目概览截图；组会/会议/评审三种讲法。",
+        "evidence": "本项目 2026-11-11T14:05:39Z 的完整 Editor 截取（页面 Z4XP、项目面板）及其同一区域的细节裁切：Z4XP 用于 2 场演讲，Main Slides、完整介绍、短版。",
         "keep": [
-          "保留真实项目概览截图与 Main Slides / Presentation 术语。",
-          "不把页面复制当作复用。"
+          "保留真实使用位置面板，不把页面复制当作复用。",
+          "不声称自动同步、自动排班或在线状态。"
         ],
-        "actor": "deepseek-harness",
-        "source": "HUANDENG 0.18 项目概览截图、FACTS.md。",
-        "requestedChange": "把复用页接在项目结构之后，作为“一个项目”的叙事证据。"
+        "actor": "deepseek-flash",
+        "source": "huandeng_editor_capture d10c3052；sources/xzjn-location-2026-11-11/xzjn-location.json",
+        "requestedChange": "2026-11-11 位置修正：先在完整 Editor 画面中标出项目面板的使用位置，再放置同区域的放大细节。"
       }
     },
     "53547db4-e3af-4397-a930-297080fef9c4": {
@@ -423,14 +423,14 @@
         "pageRole": "content",
         "language": "zh-CN",
         "purpose": "区分 Position 和 Slide ID：位置会变，页面身份不会。",
-        "evidence": "真实 HUANDENG 大纲截图；四字短码和位置同时显示。",
+        "evidence": "本项目编辑器大纲自采集截图；真实页面位置与短码。",
         "keep": [
           "Slide ID 是稳定短码，不能写成 page UUID。",
           "保留真实大纲截图与“历史跟着页面走”的结论。"
         ],
         "actor": "deepseek-harness",
         "source": "HUANDENG 0.18 guide、真实大纲截图、用户口述。",
-        "requestedChange": "把四词表改成单一文本框，避免文本框拼表格，并接入副本问题。"
+        "requestedChange": "2026-11-11 独立素材刷新：使用本项目自采集大纲界面。"
       }
     },
     "a008b83f-9735-4495-8c59-0b2a2260c244": {
@@ -488,7 +488,7 @@
         "pageRole": "content",
         "language": "zh-CN",
         "purpose": "把故事写进文件：项目、章节、页面、讲稿四层目的与保留项。",
-        "evidence": "真实页面 Story 面板截图；四层说明；本页数值与来源保留项。",
+        "evidence": "本项目 Z4XP 页面的真实 Story 文本。",
         "keep": [
           "保留真实 Story 面板截图。",
           "保留 Story 不等于讲稿、不等于审美批准的边界。",
@@ -496,7 +496,7 @@
         ],
         "actor": "deepseek-harness",
         "source": "HUANDENG 0.18 Story 面板、FACTS.md、用户口述。",
-        "requestedChange": "把四词表改成单一文本框，避免文本框拼表格。"
+        "requestedChange": "2026-11-11 图文化：用本项目真实 Story 面板截图做页面主体，四层问题转为左栏；保持 Story 不等于讲稿、不等于审美批准的边界。"
       }
     },
     "d4aae0fc-1405-444f-b5d2-29ea75d5d7ab": {
@@ -558,14 +558,14 @@
         "pageRole": "content",
         "language": "zh-CN",
         "purpose": "改两页，只动这两页：真实修改前后，字段级差异，其他对象不变。",
-        "evidence": "同一页真实修改前/后截图；title 与 lead 两处 content.text 变化。",
+        "evidence": "本项目 XZJN 修改前后的两帧 Editor 画布区域（同视图、同缩放，2026-11-11 13:32 / 13:35 UTC），只改了右栏。",
         "keep": [
-          "保留真实修改前后截图。",
-          "只写 title 与 lead 两个字段的变化，不夸大。"
+          "保留同页、同视图、同缩放的真实前后帧。",
+          "只写右栏一处变化，不夸大。"
         ],
-        "actor": "deepseek-harness",
-        "source": "HUANDENG 0.18 公开产品示例截图、用户口述。",
-        "requestedChange": "把一次修改落成“只动这一页”的证据。"
+        "actor": "deepseek-flash",
+        "source": "huandeng_editor_capture 5370be7d / 619a120b；sources/independent-2026-11-11/ui-crops/ckfy-canvas-crops.json",
+        "requestedChange": "2026-11-11 独立素材复核：用 XZJN 的真实修改前后帧替代原生文字卡片。"
       }
     },
     "21d1d0de-ddc9-49ad-ad20-75e16d889012": {
@@ -579,14 +579,14 @@
         "pageRole": "content",
         "language": "zh-CN",
         "purpose": "说明每一页都有自己的历史：操作审阅与命名版本，恢复只影响这一页。",
-        "evidence": "真实操作审阅与命名版本截图；页面级恢复说明。",
+        "evidence": "本项目 7PV4 的 History 工作区与命名版本（2026-11-11 13:37/13:38 UTC）及同一页一次已保存修改的只读回执。",
         "keep": [
-          "保留真实界面与“不是整份文件回滚”的边界。",
+          "保留真实历史界面与“不是整份文件回滚”的边界。",
           "命名版本是页面里程碑，不等于每个操作都生成 checkpoint。"
         ],
-        "actor": "deepseek-harness",
-        "source": "HUANDENG 0.18 公开产品示例截图、FACTS.md。",
-        "requestedChange": "把历史页从产品功能页改为副本问题的回答。"
+        "actor": "deepseek-flash",
+        "source": "huandeng_editor_capture 2875ddd4 / b9d1f2ac；sources/independent-2026-11-11/ui-crops/avje-crops.json",
+        "requestedChange": "2026-11-11 独立素材复核：两张文字卡片换成本项目真实的 History 与操作回执画面。"
       }
     },
     "3df19be8-3e3c-4870-83e1-94ba44549899": {
@@ -600,7 +600,7 @@
         "pageRole": "content",
         "language": "zh-CN",
         "purpose": "它可以交出去，也还没做完：PPTX/PDF/PPTD 的差异与当前未实现边界。",
-        "evidence": "真实导出对话框；原生表格；open-slide/open-slide 与 PptxGenJS 来源。",
+        "evidence": "本项目项目/演讲自采集截图；真实导出格式表。",
         "keep": [
           "保留真实导出界面、原生表格和未实现列表。",
           "不声称任意 PPTX 往返、完整母版、独立演讲者窗口已实现。",
@@ -608,7 +608,7 @@
         ],
         "actor": "deepseek-harness",
         "source": "HUANDENG 0.18 导出界面、FACTS.md、仓库文档。",
-        "requestedChange": "把交付与边界合到一页，作为故事的可信收尾。"
+        "requestedChange": "2026-11-11 独立素材刷新：使用本项目自采集项目界面与原生格式表。"
       }
     },
     "11059243-4500-4a3e-8f4e-78638715353d": {
@@ -718,7 +718,7 @@
         "pageRole": "content",
         "language": "zh-CN",
         "purpose": "文件夹就是项目：目录、入口、页面/素材/Story/历史；0.19 支持打开文件夹或 deck.pptd。",
-        "evidence": "真实目录树；真实工作区截图；0.19 文件夹入口验证。",
+        "evidence": "本项目编辑器自采集界面；实际项目目录树。",
         "keep": [
           "保留实际目录结构、真实截图和 deck.pptd 入口。",
           "不声称 PPTX 没有页面结构；不声称系统级文件夹双击关联。",
@@ -726,7 +726,7 @@
         ],
         "actor": "deepseek-harness",
         "source": "0.19 validation、FACTS.md、真实项目目录。",
-        "requestedChange": "把项目页从故事说明改为可用的打开与移动说明。"
+        "requestedChange": "2026-11-11 独立素材刷新：使用本项目自采集工作区界面。"
       }
     },
     "aab5e915-8c00-419d-a5b2-4377bd060559": {
@@ -739,15 +739,16 @@
       "designIntent": {
         "pageRole": "content",
         "language": "zh-CN",
-        "purpose": "素材不是插图，是证据：原图、坐标、CSV、曲线和来源一起留在项目里。",
-        "evidence": "真实 1BNA 图、中文曲线、原始文件清单与素材原始分辨率截图。",
+        "purpose": "素材不是插图，是证据：原图、坐标、CSV、曲线和取得记录一起留在项目里。",
+        "evidence": "本项目 2026-11-11 独立取得：PDBe 1BNA 沉积结构图；RCSB 1BNA.pdb 坐标重算的 12 个 C1′-C1′ 距离；sources/independent-2026-11-11 的 acquisition.json、CSV 与 matplotlib 输出。",
         "keep": [
-          "保留真实科学素材、来源文件路径和原始分辨率截图。",
-          "不把素材说成装饰图库；不删除旧原图。"
+          "保留本轮独立取得的图像与自绘曲线，不挂回旧共享 plot。",
+          "保留来源文件路径、取得时间与纵轴截断说明。",
+          "不删除历史文件。"
         ],
-        "actor": "deepseek-harness",
-        "source": "sources/science、MEDIA-INPUTS.json、真实资产分辨率截图。",
-        "requestedChange": "用素材证据链回答“AI 怎样不把图当装饰”。"
+        "actor": "deepseek-flash",
+        "source": "sources/independent-2026-11-11/acquisition.json、structure-crop.json、PDBe / RCSB",
+        "requestedChange": "2026-11-11 独立素材复核：改用本轮取得的 PDBe 结构图与本项目重算重绘的距离图。"
       }
     },
     "62c6d0cc-885f-485c-a81e-baeaff6d1940": {
@@ -781,13 +782,13 @@
       "label": "S43",
       "designIntent": {
         "purpose": "展示真实工作区与同级视图：页面/章节、画布、属性与 Story、素材/文件/历史。",
-        "evidence": "0.18 中文公开示例全窗口截图。",
+        "evidence": "本项目编辑器自采集界面（2026-11-11）；本项目页面与素材。",
         "keep": [
           "保留真实中文 UI 截图；不把截图当作整份文档。",
           "不将页面、素材、文件、历史描述为另一份文档。"
         ],
         "source": "HUANDENG 0.18 公开示例截图。",
-        "requestedChange": "补充真实工作区画面，替代文字堆叠。"
+        "requestedChange": "2026-11-11 独立素材刷新：替换预载共享截图，改用本项目自采集工作区界面。"
       }
     },
     "415b064f-c96d-4e9c-b38a-ff1593101ee0": {
@@ -801,13 +802,13 @@
       "label": "S44",
       "designIntent": {
         "purpose": "说明页面是结构化对象：文字、图、表和线可寻址，截图只是审阅面。",
-        "evidence": "真实操作审阅截图；当前 1BNA 页面的对象参数。",
+        "evidence": "本项目编辑器图层自采集截图；真实对象字段。",
         "keep": [
           "保留真实操作审阅截图。",
           "不声称 PPTX 没有结构；不声称截图能完成审阅。"
         ],
         "source": "0.19 操作指南、真实页面对象。",
-        "requestedChange": "补充结构化页面与 revision 的产品解释。"
+        "requestedChange": "2026-11-11 独立素材刷新：使用本项目自采集图层面板。"
       }
     },
     "39c44252-dda5-483d-867f-4710547c0065": {
@@ -848,7 +849,7 @@
           "不声称 Kimi 发明标准或背书。"
         ],
         "source": "FACTS.md、sources/brand。",
-        "requestedChange": "恢复被移除的致谢和当前边界。"
+        "requestedChange": "2026-11-11 一致性审计：统一标题/引言/小字体系；致谢页补上研究与工作流参考行，并保留“不打包、不背书”边界。"
       }
     },
     "4dd70003-c817-49c2-a367-786594eaab59": {
@@ -862,14 +863,14 @@
       "label": "S47",
       "designIntent": {
         "purpose": "给出可执行的第一步：打开文件夹或 deck.pptd，接助手，改一页，交付并带走整个目录。",
-        "evidence": "0.19 文件夹/入口行为；当前项目相对路径。",
+        "evidence": "本项目路径；RCSB PDB 1BNA 官方结构图。",
         "keep": [
           "保留当前 deck.pptd 路径和整个目录一起移动的提醒。",
           "不承诺系统级文件夹关联。",
           "保留 1BNA 来源。"
         ],
         "source": "0.19 validation、当前项目路径。",
-        "requestedChange": "用可用行动替代口号收尾。"
+        "requestedChange": "2026-11-11 独立素材刷新：结尾 1BNA 改用 RCSB 官方结构图。"
       }
     }
   },
@@ -935,7 +936,7 @@
           "audience": "第一次接触 HUANDENG 的科研报告作者与工具评估者。",
           "takeaway": "先看一个项目怎么工作，再看它为什么能帮人保留判断和证据。"
         },
-        "notes": "完整版，约十五分钟。产品和功能为主，组会故事只作为问题入口。",
+        "notes": "从组会要讲什么出发，用 Story 说明每一页为什么存在、要保留什么。中间以一次只改一页的修改讲页面身份与历史，以 1BNA 结构和重算的距离曲线讲证据如何保存，最后把同一批页面复用到下一场演讲。",
         "items": [
           {
             "id": "f01",

@@ -2,22 +2,19 @@ pageType: content
 background:
   type: solid
   color: "#F4F3ED"
-notes: "具体看一次修改：同一页的标题和说明被改写，其他对象、Story、讲稿和位置都不动。这不是整页重做，也不是另存一个文件。我要的是 Git 式的单位：改哪一页，就只动哪一页。"
+notes: "具体看一次修改：同一页 XZJN 的右栏从原生卡片换成真实截图，并补一行来源；标题、说明、左侧文字、Story、讲稿与 Main 位置都不动。两帧是同页、同视图、同缩放的真实 Editor 画布区域。这不是整页重做，也不是另存一个文件。我要的是改哪一页，就只动哪一页。"
 elements:
   - elementId: change-kicker
     elementType: text
     bounds:
-      - 48
-      - 42
-      - 300
-      - 18
+        [48,18,420,14]
     content:
       text: "修改 / 前后"
       fontSize: 9.5
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
-      color: "#7D8A80"
+      color: "#5F6E64"
       letterSpacing: 1.2
       align:
         - left
@@ -26,13 +23,10 @@ elements:
     elementType: text
     role: title
     bounds:
-      - 48
-      - 66
-      - 660
-      - 40
+        [48,44,660,40]
     content:
       text: "一次修改，只动这一页"
-      fontSize: 27
+      fontSize: 28
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
@@ -44,13 +38,10 @@ elements:
   - elementId: change-lead
     elementType: text
     bounds:
-      - 48
-      - 114
-      - 660
-      - 28
+        [48,90,864,46]
     content:
-      text: "这一页只改了标题和说明；其他对象、Story、讲稿与位置都没有动。"
-      fontSize: 14.8
+      text: "这一次只碰了这一页的右栏：原生卡片换成真实截图，并补一行来源；\n标题、说明、其他对象、Story、讲稿与位置都没有动。"
+      fontSize: 14.5
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
@@ -61,10 +52,7 @@ elements:
   - elementId: change-before-label
     elementType: text
     bounds:
-      - 48
-      - 154
-      - 200
-      - 18
+        [48,148,200,18]
     content:
       text: 修改前
       fontSize: 9.6
@@ -79,10 +67,7 @@ elements:
   - elementId: change-after-label
     elementType: text
     bounds:
-      - 492
-      - 154
-      - 200
-      - 18
+        [492,148,200,18]
     content:
       text: 修改后
       fontSize: 9.6
@@ -94,143 +79,63 @@ elements:
       align:
         - left
         - top
-  - elementId: change-before-panel
-    elementType: shape
-    bounds:
+  - bounds:
       - 48
-      - 180
-      - 414
-      - 239
-    shapeName: rect
-    fill:
-      type: solid
-      color: "#FFFFFF"
-    border:
-      color: "#D4DBD2"
-      width: 0.8
-      style: solid
-  - elementId: change-before
+      - 172
+      - 420
+      - 236
+    elementId: change-before-shot
     elementType: image
-    bounds:
-      - 54
-      - 186
-      - 402
-      - 227
-    src: media/imported/fdcacc35c15b7a7b76d70ef9f713c605c20a7e8ca450703b6343ac8bc722bd3e.png
-    sourceName: zh-CN-native-edit-before-4x.png
     fit:
       mode: contain
-  - elementId: change-after-panel
-    elementType: shape
-    bounds:
+    sourceName: ckfy-before-canvas.png
+    src: "media/imported/9a59ed3ea78ead281b9a0f0c3f7aeb83977d0ef9a9e39c6b3817b85cb1868d9b.png"
+  - bounds:
       - 492
-      - 180
-      - 414
-      - 239
-    shapeName: rect
-    fill:
-      type: solid
-      color: "#FFFFFF"
-    border:
-      color: "#C8D4C7"
-      width: 0.8
-      style: solid
-  - elementId: change-after
+      - 172
+      - 420
+      - 236
+    elementId: change-after-shot
     elementType: image
-    bounds:
-      - 498
-      - 186
-      - 402
-      - 227
-    src: media/imported/1590b6d7b420e2502709c533628c4fc0a0ef2278c8b6798d1f6fa8272f9059fc.png
-    sourceName: zh-CN-native-edit-after-4x.png
     fit:
       mode: contain
-  - elementId: change-before-cap
-    elementType: text
-    bounds:
+    sourceName: ckfy-after-canvas.png
+    src: "media/imported/ab94e7939db0824c3c8719e5f87f9250d49ccdadf1cc076499b9c237b68c48fb.png"
+  - bounds:
       - 48
-      - 424
-      - 402
-      - 36
+      - 416
+      - 864
+      - 22
     content:
-      text: 标题与说明被改写；页面、对象和版式保持原位。
-      fontSize: 9.4
-      fontFamily:
-        ea: Microsoft YaHei
-        latin: Arial
-      color: "#66756A"
-      lineHeight: 1.45
       align:
         - left
         - top
-  - elementId: change-after-cap
-    elementType: text
-    bounds:
-      - 492
-      - 424
-      - 402
-      - 36
-    content:
-      text: 标题更直接；Story 的目的与保留项仍在。
-      fontSize: 9.4
-      fontFamily:
-        ea: Microsoft YaHei
-        latin: Arial
-      color: "#536656"
-      lineHeight: 1.45
-      align:
-        - left
-        - top
-  - elementId: change-rule
-    elementType: line
-    bounds:
-      - 48
-      - 468
-      - 860
-      - 1
-    viewBox:
-      - 860
-      - 1
-    points: 0,0.5 860,0.5
-    border:
-      color: "#D4DBD2"
-      width: 0.7
-      style: solid
-  - elementId: change-diff
-    elementType: text
-    bounds:
-      - 48
-      - 478
-      - 860
-      - 30
-    content:
-      text: 变更字段：content.text · title / lead　｜　其余对象、Story、讲稿与位置未动。
-      fontSize: 9.8
-      fontFamily:
-        ea: Microsoft YaHei
-        latin: Arial
       color: "#2B3830"
-      align:
-        - left
-        - top
-  - elementId: change-source
-    elementType: text
-    bounds:
-      - 48
-      - 512
-      - 860
-      - 16
-    content:
-      text: 真实界面：同一页的修改前 / 修改后，HUANDENG 0.18 公开产品示例。
-      fontSize: 8.2
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
-      color: "#7D8A80"
+      fontSize: 9.6
+      text: 同一页、同视图、同缩放；只有右栏从原生卡片换成真实截图。
+    elementId: change-note
+    elementType: text
+  - bounds:
+      - 48
+      - 442
+      - 864
+      - 34
+    content:
       align:
         - left
         - top
+      color: "#7D8A80"
+      fontFamily:
+        ea: Microsoft YaHei
+        latin: Arial
+      fontSize: 8.4
+      lineHeight: 1.45
+      text: 两帧取自 XZJN 的 Editor 画布区域，时间 2026-11-11 13:32 / 13:35 UTC；同一笔写入只改了这一页。
+    elementId: change-retained
+    elementType: text
   - elementId: model-watermark
     elementType: text
     bounds:
@@ -239,7 +144,7 @@ elements:
       - 222
       - 14
     content:
-      text: Chinese · DeepSeek V4.1 Flash 1017
+      text: "chinese deepseek v4.1flash1017"
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial

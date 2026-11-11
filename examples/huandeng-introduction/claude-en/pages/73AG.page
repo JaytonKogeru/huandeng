@@ -24,10 +24,7 @@ elements:
     elementType: shape
     shapeName: rect
     bounds:
-      - 55
-      - 91
-      - 562
-      - 370
+        [55,91,562,354]
     fill:
       type: solid
       color: "#FFFFFF"
@@ -37,19 +34,16 @@ elements:
   - elementId: history-shot
     elementType: image
     bounds:
-      - 56
-      - 92
-      - 560
-      - 368
-    src: media/imported/545313eff6d8d90331cb33a45becb21a5fe041d03f6e6c6d43207f2e5acb56fb.png
-    sourceName: en-history-change-4x.png
+        [56,92,560,352]
+    src: "media/independent-20261111/ui/history-versions-mpl.png"
+    sourceName: "history-versions-mpl.png"
     fit:
       mode: contain
   - elementId: m1
     elementType: shape
     shapeName: ellipse
     bounds:
-        [156,226,20,20]
+        [138,271,20,20]
     fill:
       type: solid
       color: "#2E6B5E"
@@ -59,7 +53,7 @@ elements:
   - elementId: m1t
     elementType: text
     bounds:
-        [156,226,20,20]
+        [138,271,20,20]
     content:
       text: "1"
       fontFamily: Arial
@@ -74,10 +68,7 @@ elements:
     elementType: shape
     shapeName: ellipse
     bounds:
-      - 174
-      - 133
-      - 20
-      - 20
+        [178,180,20,20]
     fill:
       type: solid
       color: "#2E6B5E"
@@ -87,10 +78,7 @@ elements:
   - elementId: m2t
     elementType: text
     bounds:
-      - 174
-      - 133
-      - 20
-      - 20
+        [178,180,20,20]
     content:
       text: "2"
       fontFamily: Arial
@@ -105,7 +93,7 @@ elements:
     elementType: shape
     shapeName: ellipse
     bounds:
-        [500,412,20,20]
+        [410,419,20,20]
     fill:
       type: solid
       color: "#2E6B5E"
@@ -115,7 +103,7 @@ elements:
   - elementId: m3t
     elementType: text
     bounds:
-        [500,412,20,20]
+        [410,419,20,20]
     content:
       text: "3"
       fontFamily: Arial
@@ -151,7 +139,7 @@ elements:
       - 238
       - 96
     content:
-      text: Named by you, such as “Before copy edit”. Each keeps the slide, its Story and its images, and travels with the project folder.
+      text: "Named milestones, such as “Before Matplotlib figure”. Each keeps the slide, its Story and its images, and travels with the project folder."
       fontFamily: Arial
       fontSize: 14
       lineHeight: 1.35
@@ -228,12 +216,9 @@ elements:
   - elementId: caption
     elementType: text
     bounds:
-      - 56
-      - 466
-      - 560
-      - 30
+        [56,450,560,30]
     content:
-      text: "Right-click a slide in Pages and choose View version history. Real capture of slide N014, public example project."
+      text: "History view for slide AVNM, with versions recorded around each change. Also opens by right-clicking a slide in Pages. Real capture, this project."
       fontFamily: Arial
       fontSize: 11
       lineHeight: 1.3
@@ -248,7 +233,7 @@ elements:
       - 505
       - 16
       - 16
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    src: "media/independent-20261111/brand/huandeng.png"
     sourceName: huandeng.png
     fit:
       mode: contain
@@ -293,7 +278,7 @@ elements:
       - 176
       - 16
     content:
-      text: English · Claude Opus 5.5
+      text: "english claude opus5.5"
       fontFamily: Arial
       fontSize: 10
       lineHeight: 1.2
@@ -301,4 +286,4 @@ elements:
       align:
         - right
         - middle
-notes: "This is the feature I consider most important. History is kept per page, not for the whole deck. Right-click a slide in the Pages panel and choose View version history. Saved versions are the milestones I name myself, like Before copy edit. Operation history lists every saved change to that page, each with its review. And restoring a version changes only that slide; every other slide, and every talk that uses them, stays as it is. This is what replaces the folder of copies from the beginning of the talk."
+notes: "This is the feature I consider most important. History is kept per page, not for the whole deck. Open the History view, or right-click a slide in the Pages panel and choose View version history. Here is the 1BNA slide. Saved versions are named milestones: Before Matplotlib figure and Matplotlib figure were recorded around the change you just saw, and below them the earlier axis-label fix. Versions recorded from the command line are labelled human in this list, even though the agent recorded them. Operation history lists every saved change to that page, each with its review. And restoring a version changes only that slide; every other slide, and every talk that uses them, stays as it is. This is what replaces the folder of copies from the beginning of the talk."

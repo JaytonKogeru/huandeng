@@ -44,8 +44,8 @@ elements:
       - 134
       - 44
       - 44
-    src: media/imported/44e2a2aa5f3887deae386fa73f71234961f93e006873b632ccf38b6b6f1291a1.png
-    sourceName: open-slide.png
+    src: "media/imported/84a938550c678d25d3af93c35e4106f94798269f4a8702520e4464bf90323731.png"
+    sourceName: "open-slide-mark.png"
     fit:
       mode: contain
   - elementId: os-t
@@ -71,8 +71,8 @@ elements:
       - 220
       - 44
       - 44
-    src: media/imported/2a2f5cbcc74c7fa83c40127dd8b0e42c23f1157131aebe28492aa1ac27bbdc6d.png
-    sourceName: github-repository.png
+    src: "media/imported/ffe150e190e851a859e4280c3ef1be77c9ebe997637a5d37c49c778a9242e64d.png"
+    sourceName: "github-mark.png"
     fit:
       mode: contain
   - elementId: op-t
@@ -99,7 +99,7 @@ elements:
       - 44
       - 44
     src: media/imported/d697acf6f3c5bc265806bc8f6c4e6d58b964e0b2962392d0329a420639f45846.png
-    sourceName: pptxgenjs.png
+    sourceName: "pptxgenjs-mark.png"
     fit:
       mode: contain
   - elementId: pg-t
@@ -126,7 +126,7 @@ elements:
       - 400
       - 44
     content:
-      text: 设计思路还来自 PowerPoint 和 WPS（章节、视图、备注），以及 Photoshop（图层）。
+      text: "设计参考、想法来源和研究过的同类项目，见下一页“致谢”。"
       fontFamily: Microsoft YaHei
       fontSize: 12.5
       lineHeight: 1.5
@@ -191,7 +191,7 @@ elements:
       - 400
       - 250
     content:
-      text: <p>·  导入任意 PPTX 文件，以及来回往返</p><p>·  直接编辑 Google Slides</p><p>·  第二块屏幕上的独立演讲者窗口</p><p>·  可继承的幻灯片母版</p><p>·  导出 PPTX 中的原生 PowerPoint 动画</p><p>·  编辑器的插件市场</p>
+      text: "<p>导入任意 PPTX 文件，以及来回往返</p><p>直接编辑 Google Slides</p><p>第二块屏幕上的独立演讲者窗口</p><p>可继承的幻灯片母版</p><p>导出 PPTX 中的原生 PowerPoint 动画</p><p>编辑器的插件市场</p>"
       fontFamily: Microsoft YaHei
       fontSize: 14.5
       lineHeight: 1.85
@@ -222,8 +222,8 @@ elements:
       - 505
       - 16
       - 16
-    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
-    sourceName: huandeng.png
+    src: "media/imported/6a20894fe3789d4fb328a90a60fc808e169ce2ca038ec6ce3dcb15bd9413f9ea.png"
+    sourceName: "huandeng-mark.png"
     fit:
       mode: contain
   - elementId: ft-label
@@ -267,7 +267,7 @@ elements:
       - 176
       - 16
     content:
-      text: 中文 · Claude Opus 5.5
+      text: "chinese claude opus5.5"
       fontFamily: Microsoft YaHei
       fontSize: 10
       lineHeight: 1.2

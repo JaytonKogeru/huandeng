@@ -1,0 +1,86 @@
+[
+ {
+  "position": 1,
+  "chainA": 1,
+  "chainB": 24,
+  "pair": "C–G",
+  "distance_A": 10.7121
+ },
+ {
+  "position": 2,
+  "chainA": 2,
+  "chainB": 23,
+  "pair": "G–C",
+  "distance_A": 10.7665
+ },
+ {
+  "position": 3,
+  "chainA": 3,
+  "chainB": 22,
+  "pair": "C–G",
+  "distance_A": 10.5802
+ },
+ {
+  "position": 4,
+  "chainA": 4,
+  "chainB": 21,
+  "pair": "G–C",
+  "distance_A": 10.3531
+ },
+ {
+  "position": 5,
+  "chainA": 5,
+  "chainB": 20,
+  "pair": "A–T",
+  "distance_A": 10.4416
+ },
+ {
+  "position": 6,
+  "chainA": 6,
+  "chainB": 19,
+  "pair": "A–T",
+  "distance_A": 10.4606
+ },
+ {
+  "position": 7,
+  "chainA": 7,
+  "chainB": 18,
+  "pair": "T–A",
+  "distance_A": 10.2329
+ },
+ {
+  "position": 8,
+  "chainA": 8,
+  "chainB": 17,
+  "pair": "T–A",
+  "distance_A": 10.4912
+ },
+ {
+  "position": 9,
+  "chainA": 9,
+  "chainB": 16,
+  "pair": "C–G",
+  "distance_A": 10.5912
+ },
+ {
+  "position": 10,
+  "chainA": 10,
+  "chainB": 15,
+  "pair": "G–C",
+  "distance_A": 10.4362
+ },
+ {
+  "position": 11,
+  "chainA": 11,
+  "chainB": 14,
+  "pair": "C–G",
+  "distance_A": 10.8052
+ },
+ {
+  "position": 12,
+  "chainA": 12,
+  "chainB": 13,
+  "pair": "G–C",
+  "distance_A": 10.8877
+ }
+]

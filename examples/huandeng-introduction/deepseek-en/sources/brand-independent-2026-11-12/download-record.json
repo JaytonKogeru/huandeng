@@ -1,0 +1,118 @@
+{
+  "note": "Independent fetch of the official identity marks. The historical sources/brand image files were not read or copied; its manifest was used only for the recorded URLs.",
+  "records": [
+    {
+      "file": "codex.png",
+      "url": "https://openai.gallerycdn.vsassets.io/extensions/openai/chatgpt/26.51021.22027/1792788319200/Microsoft.VisualStudio.Services.Icons.Default",
+      "requestedAtUtc": "2026-11-11T14:12:39.582267+00:00",
+      "completedAtUtc": "2026-11-11T14:12:40.647519+00:00",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "contentLengthHeader": "10468",
+      "lastModified": "Fri, 23 Oct 2026 20:45:20 GMT",
+      "etag": "0x8DF31468D7DDF75",
+      "bytes": 10969,
+      "sha256": "2ce1c57dd3b312417106a487815ab1235bddce17e1fa9b32a2f048bd71ee25d3"
+    },
+    {
+      "file": "claude-code.png",
+      "url": "https://claude.com/icon.png",
+      "requestedAtUtc": "2026-11-11T14:12:40.647870+00:00",
+      "completedAtUtc": "2026-11-11T14:12:41.818574+00:00",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "contentLengthHeader": "4787",
+      "lastModified": null,
+      "etag": "\"1b79b78993a0c769fb254a76fbf9c417\"",
+      "bytes": 4787,
+      "sha256": "733f24f4c52acb15eb0fbded1cf40eb42b4ba8e62b882acac70b6234b50919a8"
+    },
+    {
+      "file": "deepseek.png",
+      "url": "https://avatars.githubusercontent.com/u/148330874?v=4",
+      "requestedAtUtc": "2026-11-11T14:12:41.818660+00:00",
+      "completedAtUtc": "2026-11-11T14:12:42.984153+00:00",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "contentLengthHeader": "15456",
+      "lastModified": "Thu, 26 Oct 2023 05:42:48 GMT",
+      "etag": "\"fe05e0bffdd94ab358fc429a1e026cf42ed9389dbcf0d591d50fc9cfb42334bc\"",
+      "bytes": 15456,
+      "sha256": "e51e06079e62216c018ca7feb48bc1ff49c8359e86b88692609c6c694d3c13fc"
+    },
+    {
+      "file": "chatgpt.svg",
+      "url": "https://chatgpt.com/cdn/assets/favicon.6a33781f61.svg",
+      "requestedAtUtc": "2026-11-11T14:12:42.984262+00:00",
+      "completedAtUtc": "2026-11-11T14:12:44.021955+00:00",
+      "httpStatus": 200,
+      "contentType": "image/svg+xml",
+      "contentLengthHeader": null,
+      "lastModified": "Fri, 02 Oct 2026 16:49:37 GMT",
+      "etag": null,
+      "bytes": 4381,
+      "sha256": "2021463df9935dda89cef407aa564bced9d83b4f9b6ae8945d649e56676624f0"
+    },
+    {
+      "file": "open-slide.svg",
+      "url": "https://raw.githubusercontent.com/open-slide/open-slide/3233309b72af27f58f01b7d3b6a13f4011cf06e7/apps/web/app/icon.svg",
+      "requestedAtUtc": "2026-11-11T14:12:44.022034+00:00",
+      "completedAtUtc": "2026-11-11T14:12:45.249894+00:00",
+      "httpStatus": 200,
+      "contentType": "image/svg+xml",
+      "contentLengthHeader": "674",
+      "lastModified": null,
+      "etag": "W/\"179dd6f1e4560a7a3b14e8bf29b28b3bf8e73bc7a7fd1d6608331bd39cee7130\"",
+      "bytes": 2415,
+      "sha256": "761935b363487ac9d3ee164f0fc03d8265f4a2e1935c25325448e7f9d02e3219"
+    },
+    {
+      "file": "pptxgenjs.png",
+      "url": "https://gitbrent.github.io/PptxGenJS/img/favicon.png",
+      "requestedAtUtc": "2026-11-11T14:12:45.249977+00:00",
+      "completedAtUtc": "2026-11-11T14:12:46.414523+00:00",
+      "httpStatus": 200,
+      "contentType": "image/png",
+      "contentLengthHeader": "15816",
+      "lastModified": "Sun, 29 Jun 2025 21:06:54 GMT",
+      "etag": "\"6861aaee-3dc8\"",
+      "bytes": 15816,
+      "sha256": "d697acf6f3c5bc265806bc8f6c4e6d58b964e0b2962392d0329a420639f45846"
+    },
+    {
+      "file": "GitHub_Logos.zip",
+      "url": "https://brand.github.com/GitHub_Logos.zip",
+      "requestedAtUtc": "2026-11-11T14:12:46.414607+00:00",
+      "completedAtUtc": "2026-11-11T14:12:47.981700+00:00",
+      "httpStatus": 200,
+      "contentType": "application/x-zip-compressed",
+      "contentLengthHeader": "499228",
+      "lastModified": "Fri, 06 Nov 2026 22:46:01 GMT",
+      "etag": "\"6aee58a9-79e1c\"",
+      "bytes": 499228,
+      "sha256": "e2a67d6cc51d990a52c46c1cf6bcab688db4830982174bca50e0be7a5c2f3194"
+    },
+    {
+      "file": "github-repository.png",
+      "url": "https://brand.github.com/GitHub_Logos.zip",
+      "archiveMember": "GitHub Logos/PNG/GitHub_Invertocat_Black.png",
+      "completedAtUtc": "2026-11-11T14:12:47.984641+00:00",
+      "bytes": 5437,
+      "sha256": "2a2f5cbcc74c7fa83c40127dd8b0e42c23f1157131aebe28492aa1ac27bbdc6d"
+    },
+    {
+      "file": "huandeng.png",
+      "sourceType": "repository-commit",
+      "repository": "D:\\_Proj\\Huandeng",
+      "remote": "https://github.com/JaytonKogeru/huandeng",
+      "commit": "b43e3e08cb3f676f78202b4df5e1145255ee043c",
+      "path": "packages/desktop/icon.png",
+      "method": "git show <commit>:packages/desktop/icon.png from the author's official repository object",
+      "completedAtUtc": "2026-11-11T14:12:48.233245+00:00",
+      "bytes": 62348,
+      "sha256": "6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef",
+      "note": "The historical GitHub raw URL with commit 00482d... returns 404 anonymously. This is the author's own repository source, not a copy of sources/brand."
+    }
+  ],
+  "errors": []
+}

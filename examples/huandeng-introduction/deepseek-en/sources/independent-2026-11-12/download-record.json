@@ -1,0 +1,33 @@
+{
+  "note": "Independent download for this edition. No old science file was used as input; the new script reads only its own download.",
+  "records": [
+    {
+      "file": "1BNA.pdb",
+      "url": "https://files.rcsb.org/download/1BNA.pdb",
+      "requestedAtUtc": "2026-11-11T13:28:26.250629+00:00",
+      "completedAtUtc": "2026-11-11T13:28:27.328934+00:00",
+      "httpStatus": 200,
+      "contentType": "text/plain",
+      "contentLengthHeader": "16118",
+      "lastModified": "Thu, 25 Sep 2025 18:13:56 GMT",
+      "etag": "\"ba769d488ac920e9ca7b1465c4c18db7-enc\"",
+      "bytes": 76464,
+      "sha256": "df42f1506792f191b957227b061360652adcf6f813eb69d9ec553067ea584670",
+      "method": "Single GET from the recorded public URL; bytes written unchanged."
+    },
+    {
+      "file": "rcsb-1bna-assembly.jpeg",
+      "url": "https://cdn.rcsb.org/images/structures/1bna_assembly-1.jpeg",
+      "requestedAtUtc": "2026-11-11T13:28:27.329079+00:00",
+      "completedAtUtc": "2026-11-11T13:28:29.225474+00:00",
+      "httpStatus": 200,
+      "contentType": "image/jpeg",
+      "contentLengthHeader": "37106",
+      "lastModified": "Sat, 23 Aug 2025 04:38:09 GMT",
+      "etag": "\"90f2-63d00e3b4f5d9\"",
+      "bytes": 37106,
+      "sha256": "4d9fa07ff878f8ab785c00869eb9a9149b6c3c85e5ca57a56855da7d0665da38",
+      "method": "Single GET from the recorded public URL; bytes written unchanged."
+    }
+  ]
+}

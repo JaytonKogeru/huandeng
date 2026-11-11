@@ -194,12 +194,12 @@
       "designIntent": {
         "purpose": "Show the real editor as one working document: pages, canvas, inspector, Story, materials, files and history.",
         "keep": [
-          "Real public screenshot only",
-          "Caption states it is a public example, not this deck"
+          "Real capture of this deck",
+          "Caption says this deck, not a public example"
         ],
         "requestedChange": "Story-driven revision for the English introduction.",
         "actor": "deepseek-harness",
-        "source": "Owner's spoken account, 2026-11-10",
+        "source": "Real capture of this deck, 2026-11-11",
         "recordedAt": "2026-11-10T22:55:22.686Z"
       }
     },
@@ -235,12 +235,12 @@
       "designIntent": {
         "purpose": "Separate Position from Slide ID with the real before/after footer evidence.",
         "keep": [
-          "Same page C014 in both strips",
-          "Real UI crops"
+          "Same page TPCJ at positions 4 and 5",
+          "Real Editor status-bar crops"
         ],
         "requestedChange": "Story-driven revision for the English introduction.",
         "actor": "deepseek-harness",
-        "source": "Owner's spoken account, 2026-11-10",
+        "source": "Real Editor status-bar captures, 2026-11-11",
         "recordedAt": "2026-11-10T22:55:22.686Z"
       }
     },
@@ -273,14 +273,16 @@
       "elementRoles": {},
       "label": "S14",
       "designIntent": {
-        "purpose": "Show the exact saved-change diff before acceptance.",
+        "purpose": "Show the exact saved-change diff before acceptance, with the Activity entry and both review regions located in the Editor.",
         "keep": [
-          "Real saved-changes crop"
+          "Real Activity receipt and Review window for this deck",
+          "Whole-window position of the page and saved fields",
+          "No claim that Review restores or approves"
         ],
-        "requestedChange": "Story-driven revision for the English introduction.",
+        "requestedChange": "Review relationship: add the Activity entry and map both review regions to the whole window.",
         "actor": "deepseek-harness",
-        "source": "Owner's spoken account, 2026-11-10",
-        "recordedAt": "2026-11-10T22:55:22.686Z"
+        "source": "Real Activity and Review captures of this deck, 2026-11-12",
+        "recordedAt": "2026-11-11T14:00:00.000Z"
       }
     },
     "b792b954-ed0c-4510-881d-bb8b297db885": {
@@ -293,14 +295,14 @@
       "designIntent": {
         "purpose": "Make the materials library real: assets stored once, referenced, with source and usage; show a real scientific figure.",
         "keep": [
-          "PDB 1BNA citation",
-          "One structure, not independent replicates",
-          "No performance claim"
+          "This edition's plot and RCSB assembly image",
+          "PDB 1BNA citation and units",
+          "No independent-replicate or trend claim"
         ],
-        "requestedChange": "Story-driven revision for the English introduction.",
+        "requestedChange": "Independent acquisition: use this edition's own 1BNA download, recomputation and RCSB assembly image.",
         "actor": "deepseek-harness",
-        "source": "Owner's spoken account and public 1BNA source",
-        "recordedAt": "2026-11-10T22:55:22.686Z"
+        "source": "RCSB PDB 1BNA download 2026-11-12; own measurement and plot script",
+        "recordedAt": "2026-11-11T13:40:00.000Z"
       }
     },
     "c279a641-b65c-42de-8ed8-d085819d7fb6": {
@@ -336,11 +338,11 @@
         "purpose": "Close the loop: PDF, editable PPTX and MP4 from the saved pages.",
         "keep": [
           "Real Export dialog",
-          "PptxGenJS credit"
+          "Dialog shows the current 24-slide Main deck"
         ],
         "requestedChange": "Story-driven revision for the English introduction.",
         "actor": "deepseek-harness",
-        "source": "Owner's spoken account, 2026-11-10",
+        "source": "Real Export dialog capture, 2026-11-11",
         "recordedAt": "2026-11-10T22:55:22.686Z"
       }
     },
@@ -375,13 +377,14 @@
       "designIntent": {
         "purpose": "Carry one real scientific page: 12 C1′–C1′ distances beside the 1BNA structure, with citation and a no-replicates qualification.",
         "keep": [
-          "Original plot and structure assets, not regenerated data",
-          "PDB 1BNA citation and units",
+          "This edition's plot recomputed from its own 2026-11-12 1BNA download",
+          "RCSB assembly image and deposition citation",
           "No independent-replicate or trend claim"
         ],
-        "requestedChange": "Product-introduction revision, 2026-11-11.",
+        "requestedChange": "Independent acquisition, 2026-11-12: own 1BNA download, recomputation and RCSB assembly image.",
         "actor": "deepseek-harness",
-        "source": "Public RCSB PDB 1BNA and FACTS.md"
+        "source": "RCSB PDB 1BNA download 2026-11-12; own measurement and plot script",
+        "recordedAt": "2026-11-11T13:50:00.000Z"
       }
     },
     "80408aa9-3064-441e-91d6-d7f861e69976": {
@@ -415,6 +418,48 @@
       "components": {},
       "elementRoles": {},
       "label": "S23"
+    },
+    "787c1379-b237-4ac2-bb0d-9bc94cdc515f": {
+      "shortCode": "RK7Q",
+      "path": "pages/RK7Q.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "p2b-title": "title"
+      },
+      "label": "S24",
+      "designIntent": {
+        "purpose": "Open the first act with a title-only pause before the product definition.",
+        "keep": [
+          "Title-only ink section page"
+        ],
+        "requestedChange": "Audit and consistency pass, 2026-11-11.",
+        "actor": "deepseek-harness",
+        "source": "Owner's spoken account, 2026-11-10",
+        "recordedAt": "2026-11-11T12:50:00.000Z",
+        "backgroundException": "Ink section pause page.",
+        "pageRole": "section"
+      }
+    },
+    "0fc1169a-79f5-4a4b-9866-8d587ecf707e": {
+      "shortCode": "V3DV",
+      "path": "pages/V3DV.page",
+      "state": "active",
+      "components": {},
+      "elementRoles": {
+        "po-title": "title"
+      },
+      "label": "S25",
+      "designIntent": {
+        "purpose": "Show the Outline reading view: page titles, Story summaries and stable Slide IDs.",
+        "keep": [
+          "Real Outline capture of this deck"
+        ],
+        "requestedChange": "Audit and consistency pass, 2026-11-11.",
+        "actor": "deepseek-harness",
+        "source": "Real Outline capture of this deck, 2026-11-11",
+        "pageRole": "content"
+      }
     }
   },
   "project": {
@@ -434,6 +479,7 @@
           "takeaway": "The problem is upstream of layout; the page is the unit of change and the unit of review."
         },
         "pageIds": [
+          "787c1379-b237-4ac2-bb0d-9bc94cdc515f",
           "bdbc20e7-5cb6-4877-8eb0-3feebad05d9d",
           "befc82a6-f242-49f7-9b35-7eed8f3b5640",
           "20d9cf1d-6820-42e8-9ddc-6377b4ad855b",
@@ -441,7 +487,7 @@
           "665ad0cb-5048-4005-84bc-bf31bab632d9",
           "32991558-c79c-4033-bce0-f8230c890bc9"
         ],
-        "startPageId": "bdbc20e7-5cb6-4877-8eb0-3feebad05d9d"
+        "startPageId": "787c1379-b237-4ac2-bb0d-9bc94cdc515f"
       },
       {
         "id": "the-editor",
@@ -471,6 +517,48 @@
         "startPageId": "065ed891-d62a-41f1-b25e-ecd07ea2a924"
       }
     ],
-    "presentations": []
+    "presentations": [
+      {
+        "id": "short-introduction",
+        "title": "Short introduction",
+        "story": {
+          "purpose": "A six-slide version for a short lab introduction.",
+          "audience": "Researchers new to HUANDENG.",
+          "takeaway": "The page is the unit of work; evidence and reuse survive."
+        },
+        "items": [
+          {
+            "id": "pres-short-1",
+            "kind": "page",
+            "pageId": "3833f199-98ab-4056-b521-ab542137f524"
+          },
+          {
+            "id": "pres-short-2",
+            "kind": "page",
+            "pageId": "787c1379-b237-4ac2-bb0d-9bc94cdc515f"
+          },
+          {
+            "id": "pres-short-3",
+            "kind": "page",
+            "pageId": "bdbc20e7-5cb6-4877-8eb0-3feebad05d9d"
+          },
+          {
+            "id": "pres-short-4",
+            "kind": "page",
+            "pageId": "dc6dccad-86a9-4629-a4aa-e494e5d6f53b"
+          },
+          {
+            "id": "pres-short-5",
+            "kind": "page",
+            "pageId": "c279a641-b65c-42de-8ed8-d085819d7fb6"
+          },
+          {
+            "id": "pres-short-6",
+            "kind": "page",
+            "pageId": "fa252443-bd97-4339-a179-1242bf2009bb"
+          }
+        ]
+      }
+    ]
   }
 }

@@ -7,17 +7,14 @@ elements:
   - elementId: def-kicker
     elementType: text
     bounds:
-      - 48
-      - 42
-      - 300
-      - 18
+        [48,18,420,14]
     content:
-      text: 产品 / 结构
+      text: "项目 / 结构"
       fontSize: 9.5
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
-      color: "#7D8A80"
+      color: "#5F6E64"
       letterSpacing: 1.2
       align:
         - left
@@ -26,13 +23,10 @@ elements:
     elementType: text
     role: title
     bounds:
-      - 48
-      - 66
-      - 720
-      - 40
+        [48,44,720,40]
     content:
       text: 一个项目，一个写入器
-      fontSize: 27
+      fontSize: 28
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
@@ -44,13 +38,10 @@ elements:
   - elementId: def-lead
     elementType: text
     bounds:
-      - 48
-      - 112
-      - 864
-      - 44
+        [48,90,864,44]
     content:
       text: 项目目录是文档，Editor 是工作台；插件/连接器把助手接到同一个写入器。
-      fontSize: 14.4
+      fontSize: 14.5
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
@@ -181,10 +172,7 @@ elements:
       - 218
       - 76
     content:
-      text: |-
-        画布 · Story
-        素材 · 历史
-        事务与 revision
+      text: "画布与 Story\n素材与历史\n事务与 revision"
       fontSize: 11.4
       fontFamily:
         ea: Microsoft YaHei
@@ -281,7 +269,7 @@ elements:
       - 282
       - 24
       - 24
-    src: media/imported/0f4797ac154b83c815a8bced3f8ae5d4d78c2cbe48d132d23f789d73760e6c13.png
+    src: "media/imported/3adcc98e4382ea6009078c069bbff56a731aecc47c9c6aca955109638e8c6bd5.png"
     sourceName: chatgpt.png
     fit:
       mode: contain
@@ -362,7 +350,7 @@ elements:
       - 28
     content:
       text: →
-      fontSize: 22
+      fontSize: 20
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
@@ -379,7 +367,7 @@ elements:
       - 28
     content:
       text: →
-      fontSize: 22
+      fontSize: 20
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial
@@ -485,7 +473,7 @@ elements:
       - 222
       - 14
     content:
-      text: Chinese · DeepSeek V4.1 Flash 1017
+      text: "chinese deepseek v4.1flash1017"
       fontFamily:
         ea: Microsoft YaHei
         latin: Arial

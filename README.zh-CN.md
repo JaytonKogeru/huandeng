@@ -167,9 +167,9 @@ node plugins/huandeng/scripts/build-deepseek.mjs --output "$PWD/dist/plugin-pack
 
 每条命令会在指定目录下生成 `huandeng/` 包。本次本地候选包位于 `dist/plugin-packages/0.20.0/portable-claude-codex/huandeng` 和 `dist/plugin-packages/0.20.0/deepseek-native/huandeng`，两者都在工程内部。桌面候选包位于 `dist/HUANDENG-v0.20.0-win32-x64`。这些是构建输出，持续维护的源码仍是 `plugins/huandeng`。安装时使用各客户端支持的 Plugin loader 或管理器。
 
-0.20 候选版还增加面向原生客户端的项目原图导入与真实 Editor 截图工具。打包后的 MCP 报告 0.20.0 与 24 个工具；素材获取和截图已对接未改动的兼容 0.19 writer 实测。打包没有替换已有运行环境，也不等于尚未结束的原生作者任务已经完成。具体边界见[候选说明](docs/RELEASE-V020.md)。
+0.20 候选版还增加面向原生客户端的项目原图导入与真实 Editor 截图工具。打包后的 MCP 报告 0.20.0 与 24 个工具；素材获取和截图已对接未改动的兼容 0.19 writer 实测。打包没有替换已有运行环境，具体边界见[候选说明](docs/RELEASE-V020.md)。
 
-DSH 原生 bundle 使用官方宿主管理安装，并为每个项目维护工具路由；原来的 raw MCP patch 是另一个兼容接入方式。Claude Code 与 DSH 的实际宿主检查、安装及模型任务结果见[0.19 原生集成](docs/NATIVE-INTEGRATION-0.19.md)，不能仅凭包内有 manifest 就宣称原生任务已经成功。
+DSH 原生 bundle 使用官方宿主管理安装，并为每个项目维护工具路由；原来的 raw MCP patch 是另一个兼容接入方式。[本轮原生集成记录](docs/NATIVE-INTEGRATION-0.20.md)分别说明 DSH 模型实际调用工具、Claude Code 插件连接成功、中文任务的 MCP 请求被宿主拒绝，以及随后通过官方 CLI 完成原生创作的事实，并记录成品与独立 Office 检查。[0.19 原生集成](docs/NATIVE-INTEGRATION-0.19.md)保留为当时的历史；包内 manifest 或 connected 状态本身不证明模型任务已经成功。
 
 CLI 也能读取已打开的项目，例如：
 

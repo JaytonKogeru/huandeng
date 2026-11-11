@@ -1,0 +1,12 @@
+{
+  "url": "https://cdn.rcsb.org/images/structures/1bna_assembly-1.jpeg",
+  "httpStatus": 200,
+  "contentType": "image/jpeg",
+  "retrievedAt": "2026-11-11T13:41:50.016586+00:00",
+  "bytes": 37106,
+  "sha256": "4d9fa07ff878f8ab785c00869eb9a9149b6c3c85e5ca57a56855da7d0665da38",
+  "existingAsset": "media/imported/4d9fa07ff878f8ab785c00869eb9a9149b6c3c85e5ca57a56855da7d0665da38.jpg",
+  "existingSha256": "4d9fa07ff878f8ab785c00869eb9a9149b6c3c85e5ca57a56855da7d0665da38",
+  "bytesIdentical": true,
+  "note": "Official resource; identical bytes are expected and do not make the retrieval a copy of another author's artwork."
+}

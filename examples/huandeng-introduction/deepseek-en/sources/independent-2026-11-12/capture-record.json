@@ -1,0 +1,43 @@
+{
+  "project": "D:\\_Proj\\Huandeng\\examples\\huandeng-introduction\\deepseek-en",
+  "deckId": "67f35ea4-7737-48b6-926e-cca2e1d0be3d",
+  "page": "KWPT (dc6dccad-86a9-4629-a4aa-e494e5d6f53b), position 11 / 24",
+  "captures": [
+    {
+      "use": "MKPP whole window and B crop",
+      "file": "media/imported/b6e7587fc1bc27b0bcd11e54dc869a1f3f44f4afbf6ea6fd3cf69d6d884c996c.png",
+      "sha256": "b6e7587fc1bc27b0bcd11e54dc869a1f3f44f4afbf6ea6fd3cf69d6d884c996c",
+      "bytes": 697983,
+      "width": 3200,
+      "height": 2000,
+      "state": "Real web Editor, edit view, page KWPT; Review saved changes opened for operation 74b804ab-fdab-4ba4-b7c0-6e0b25a57fb1; before/after control on After; affected slide KWPT.",
+      "method": "huandeng_editor_capture, 1600x1000 viewport, deviceScaleFactor 2, locale en, captured 2026-11-11T13:32:57.464Z.",
+      "source": "real project UI"
+    },
+    {
+      "use": "MKPP entry crop",
+      "file": "media/imported/3dbd7bb96c67e66536b2e78c05b1099037f82f678734de06ed6de1037a765bb5.png",
+      "sha256": "3dbd7bb96c67e66536b2e78c05b1099037f82f678734de06ed6de1037a765bb5",
+      "bytes": 483737,
+      "width": 3200,
+      "height": 2000,
+      "state": "Real web Editor, page KWPT, Activity panel open; the saved writer receipt (00:32:35, Slides saved: 1, Project / Story) and its Review changes button are visible.",
+      "method": "Playwright against the project's own /huandeng editor at 1600x1000, DPR 2; opened Activity with the same data-hd-open-activity control the capture tool uses; no document edit or save was performed; screenshot imported through the writer's /assets/import endpoint.",
+      "source": "real project UI",
+      "pageDerivative": "sources/independent-2026-11-12/activity-entry-crop.png, an exact 704x180 crop (0.18..0.40 x, 0.81..0.90 y), SHA-256 778afcbc35c6d3f3118dc88a6c551201890a11b2d7aa95ea5405161a887c2fb2. MKPP uses this derivative so PowerPoint receives a normal bitmap rather than a 91%-height source rectangle; the full capture remains media/imported/3dbd7bb9...png.",
+      "capturedAtLocal": "2026-11-12 (Australia/Sydney, UTC+11)"
+    },
+    {
+      "use": "H29N Story panel",
+      "file": "media/imported/328dfb258169f761e125a57047428c01dce2078af8a1e5be1382e140db107056.png",
+      "sha256": "328dfb258169f761e125a57047428c01dce2078af8a1e5be1382e140db107056",
+      "bytes": 523281,
+      "width": 3200,
+      "height": 2000,
+      "state": "Real web Editor, page KWPT, Inspector > Story; current purpose, Preserve bullets and This change visible.",
+      "method": "huandeng_editor_capture, 1600x1000 viewport, deviceScaleFactor 2, locale en, captured 2026-11-11T13:33:07.953Z.",
+      "source": "real project UI"
+    }
+  ],
+  "note": "These captures show this project's KWPT page after its figures were replaced. The previous shared review and Story captures (98a67660..., eb1e17d5...) are no longer referenced by any page; they remain in media/imported as history."
+}
