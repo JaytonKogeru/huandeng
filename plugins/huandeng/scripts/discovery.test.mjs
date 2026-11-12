@@ -11,7 +11,8 @@ afterEach(async () =>
   Promise.all(roots.splice(0).map((root) => fs.rm(root, { recursive: true, force: true }))),
 );
 async function fixture() {
-  const root = await fs.mkdtemp(path.join(os.tmpdir(), 'huandeng-discovery-'));
+  // Windows TEMP may use an 8.3 alias; discovery returns canonical filesystem paths.
+  const root = await fs.realpath(await fs.mkdtemp(path.join(os.tmpdir(), 'huandeng-discovery-')));
   roots.push(root);
   const app = path.join(root, 'Editor with spaces', 'resources', 'app');
   const cli = path.join(app, 'node_modules', '@open-slide', 'core', 'huandeng.js');

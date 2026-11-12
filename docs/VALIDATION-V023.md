@@ -162,6 +162,14 @@ Codex and Claude each retained one enabled same-name HUANDENG 0.23.0 entry. Ever
 
 The scheduled publisher changed only the runtime paths inside its Action. The trigger, principal, settings, registration information, working directory and configuration bytes were unchanged. No manual trigger was used; the retained task later ran naturally and returned Windows task result 0. The science fixture above supplies the distinct export-content acceptance. The temporary clean source checkout was retired after its evidence and archives were retained. [I2]
 
+### Hosted Windows path-alias correction
+
+The first hosted runs for [main](https://github.com/JaytonKogeru/huandeng/actions/runs/43177381104) and [the runtime tag](https://github.com/JaytonKogeru/huandeng/actions/runs/43177381477) both passed the complete Ubuntu core job. Both Windows jobs stopped at native contracts: 13 passed and three plugin-discovery assertions failed before packaging or native smoke ran. The Windows runner's temporary directory used an 8.3 path alias; discovery correctly returned the canonical filesystem path, while the fixture expected the alias spelling. [R1]
+
+A real Windows short-path fixture reproduced the same three failures against the old test. Canonicalizing the fixture root made all four discovery tests pass; the complete native contract suite then passed 16/16 and Biome passed. The production discovery code and all strict assertions remain unchanged. The later main workflow verifies this corrected fixture together with the remaining Windows gates. Its observed result is linked from the release record; the original failed runs remain part of the history. [R1]
+
+This test correction does not move the published runtime tag or replace the accepted runtime and plugin archives. All four published assets, including the checksum file, were downloaded back and matched their recorded size and SHA-256. [R2]
+
 ## 8. Evidence index
 
 All paths below are relative to the repository root. Raw probes and runtime credentials are excluded from public commits and release packages.
@@ -184,3 +192,5 @@ All paths below are relative to the repository root. Raw probes and runtime cred
 | I1 | `.verification/implementation-20261112/official-installer-a27b920-mwd7k8nq-c1a219641c/result.json`, `execution.json` and script logs |
 | I2 | `.verification/implementation-20261112/release/official-delivery.json`; `first-b-smoke-close-race-result.json`, `protected-final.json` and `worktree-retirement.json` in the same directory; `.verification/implementation-20261112/root/source-commit-installer-fix.json` and `installer-fix-biome.log` |
 | H1 | `.verification/implementation-20261112/deepseek/live-upgrade.json`; `mcp-final-proof.json`; `native-host-proof.json` and its official trace screenshots |
+| R1 | `.verification/implementation-20261112/release/ci-native-path-failure.json`; `ci-native-alias-before.json` and `ci-native-alias-after.json` with their logs |
+| R2 | `.verification/implementation-20261112/root/published-release.json` and its downloaded release assets |
