@@ -6,13 +6,13 @@ English | [简体中文](README.zh-CN.md)
 
 Open a page, select an object, make a focused change, and keep the work that still matters. HUANDENG brings the canvas, original assets, page intent, speaking notes and named versions into one project folder. Reuse those pages in different talks, with the notes and version choices each audience needs.
 
-![HUANDENG 0.19 Editor: page navigation, editable canvas and the Story inspector](docs/images/editor-en-019.png)
+![HUANDENG 0.22 Editor: vertical project tabs, page navigation, editable canvas and Story](docs/images/editor-en-022.png)
 
 [Try the editable examples](examples/huandeng-introduction/README.md) | [Desktop setup](packages/desktop/README.md) | [Connect an assistant](plugins/huandeng/README.md) | [Contribute](CONTRIBUTING.md)
 
-The current local Editor and plugin candidate is **0.21.0**, with page actions in Browse and Outline, visible agent progress on individual pages, and reference links in native exports. The Windows package and both client-package forms have been built and checked; see the [0.21 candidate notes](docs/RELEASE-V021.md). This local candidate has not been published as a public release. HUANDENG builds on OpenSlide and retains its MIT license and attribution.
+**Version 0.22.0** adds draggable horizontal or vertical project tabs, clearer workspace settings and complete editable Project ZIP export. Download the Windows application and Claude Code/Codex or DeepSeek plugin bundles from [GitHub Releases](https://github.com/JaytonKogeru/huandeng/releases/tag/editor-v0.22.0). See the [release notes](docs/RELEASE-V022.md) for the changes and verification. HUANDENG builds on OpenSlide and retains its MIT license and attribution.
 
-The screenshot above records a real 0.19 working project. The current features described below are newer than that capture; its version label is preserved.
+The screenshot is a real 0.22 desktop window with the editable English introduction open. The project tabs on the left and the Story beside the canvas belong to the same working application.
 
 ## Why HUANDENG
 
@@ -37,7 +37,7 @@ The [example collection](examples/huandeng-introduction/README.md) contains edit
 
 Extract the complete Windows desktop package and run **HUANDENG Editor.exe**. Keep the application folder together. Home can create a new project or open an existing `.pptd`; opening a folder works when it has one unambiguous project entry.
 
-A new project starts with one blank page. Add text or shapes on the canvas, and use **Assets → Import and place** for an image. The [desktop guide](packages/desktop/README.md) covers packaging, shortcuts and project windows. The current Windows candidate is prepared at `dist/HUANDENG-v0.21.0-win32-x64`; the [0.21 candidate notes](docs/RELEASE-V021.md) describe its changes and checks. The [0.19 release notes](docs/RELEASE-V019.md) remain the record of that earlier milestone.
+A new project starts with one blank page. Add text or shapes on the canvas, and use **Assets → Import and place** for an image. Download the [Windows ZIP](https://github.com/JaytonKogeru/huandeng/releases/download/editor-v0.22.0/HUANDENG-Editor-0.22.0-win32-x64.zip), extract it, and keep its application folder together. The [desktop guide](packages/desktop/README.md) covers packaging, shortcuts and project tabs.
 
 ### Run from source
 
@@ -89,6 +89,12 @@ The [authoring contract](docs/INTRODUCTION-STORY-SPEC.md) applies this process t
 | Adapt the material to another audience | Arrange a Presentation from Main pages or Sections. |
 | Deliver the talk | Rehearse the selected collection; confirm Export's format and range. |
 
+### Arrange your workspace
+
+Drag a project tab to change its position. The tab-layout button and **Workspace settings** switch between a horizontal strip and a vertical list on the left; the vertical list can collapse to a narrow rail. Tab order and layout are saved. Use **Alt+Shift+Left/Right** in horizontal mode or **Alt+Shift+Up/Down** in vertical mode to reorder a focused tab from the keyboard.
+
+Workspace settings groups controls into **Workspace**, **Editing** and **Fonts**. Theme and language, panel visibility and Notes dock are easy to reach. Font checks remain on demand; choosing a font preset does not install it.
+
 ### Page actions where you are working
 
 In **Browse** or **Outline**, right-click a page or use its **More actions** button. Keyboard users can focus the page and press **Shift+F10**. Open the page, start presenting from that appearance, read its Story or Notes, inspect History, copy its Slide code, or find its source in Files.
@@ -135,9 +141,9 @@ node plugins/huandeng/scripts/build-package.mjs --target local --output "$PWD/di
 node plugins/huandeng/scripts/build-deepseek.mjs --output "$PWD/dist/plugin-packages/deepseek-build"
 ```
 
-Each command creates a `huandeng/` package inside its output directory. The current local candidate packages are `dist/plugin-packages/0.21.0/portable-claude-codex/huandeng` and `dist/plugin-packages/0.21.0/deepseek-native/huandeng`. Both are inside this engineering project. Generated packages are build outputs; the maintained source is `plugins/huandeng`. Use the client's supported plugin loader or manager to install the appropriate form.
+Each command creates a `huandeng/` package inside its output directory. Prebuilt bundles are on the [0.22 release](https://github.com/JaytonKogeru/huandeng/releases/tag/editor-v0.22.0). The engineering build keeps both forms under `dist/plugin-packages/0.22.0/`; their maintained source is `plugins/huandeng`. Use the client's supported plugin loader or manager to install the appropriate form.
 
-The packaged MCP reports 0.21.0 and retains the 24-tool surface, including project-bound original-image import and real Editor capture. Progress reports can include the assistant family, workflow stage and page scope. Compatible older writers receive the legacy report fields, with unsupported optional fields identified in the response. Current runtime and package checks are recorded in the [candidate notes](docs/RELEASE-V021.md).
+The packaged MCP reports 0.22.0 and retains the 24-tool surface, including project-bound original-image import, real Editor capture and Project ZIP through the existing export tool. Progress reports can include the assistant family, workflow stage and page scope. Compatible older writers receive the legacy report fields, with unsupported optional fields identified in the response. Current runtime and package checks are recorded in the [release notes](docs/RELEASE-V022.md).
 
 The [0.20 native integration record](docs/NATIVE-INTEGRATION-0.20.md) distinguishes actual DeepSeek model tool calls, Claude Code's connected plugin, the host-denied Chinese MCP request, and completed native CLI authoring. It also records the saved examples and independent Office checks. The [0.19 integration record](docs/NATIVE-INTEGRATION-0.19.md) remains dated history; a package manifest or connected label alone does not establish a completed model task.
 
@@ -188,7 +194,9 @@ A stale revision produces a conflict, so the client must read the current state 
 | `AGENTS.md` | The author's editable project instructions. |
 | `Exports/` | Delivery files and export reports. |
 
-**Send the whole project folder when someone will continue editing.** A `.pptd` entry alone leaves referenced pages and assets behind. A PDF or PPTX is a delivery format; the working folder preserves the HUANDENG editing context.
+**To hand off editable work, choose Export, then Editable Project (ZIP).** This exports the entire saved Project, including Main pages, original media, Story, Presentations, authoring guidance and named versions. The recipient extracts the ZIP and opens its original `.pptd` entry. A selected short Presentation does not reduce this archive to its visible pages.
+
+Generated exports, caches, repository internals, local connection configuration and machine operation/Undo logs are excluded. The export report identifies exclusions. Missing required assets or versions stop the export instead of producing an incomplete handoff. Ordinary ZIP currently supports up to 60,000 entries and 3.75 GiB of source files. See [Project folders](docs/PROJECT-FOLDERS.md).
 
 ## Where it helps
 

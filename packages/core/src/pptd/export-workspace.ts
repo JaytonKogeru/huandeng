@@ -56,7 +56,10 @@ export class ExportWorkspace {
         'INVALID_REQUEST',
         '之前的导出临时文件仍被其他程序占用。请关闭占用文件的软件，稍后重试；编辑器会自动重试清理。',
       );
-    if (!snapshot.pages.length || snapshot.diagnostics.some((item) => item.severity === 'error'))
+    if (
+      (format !== 'zip' && !snapshot.pages.length) ||
+      snapshot.diagnostics.some((item) => item.severity === 'error')
+    )
       throw new PptdError('INVALID_DOCUMENT', '请先解决文档诊断，并确保有可导出的页面。');
     const id = randomUUID();
     this.activeId = id;

@@ -27,6 +27,19 @@ function createProjectTabs() {
       activeId = id;
       return projects.get(id) ?? null;
     },
+    move(id, beforeId = null) {
+      if (!projects.has(id) || (beforeId !== null && !projects.has(beforeId)))
+        throw new Error('This Project tab is no longer open.');
+      if (id === beforeId) return false;
+      const previous = [...projects.keys()];
+      const order = previous.filter((key) => key !== id);
+      order.splice(beforeId === null ? order.length : order.indexOf(beforeId), 0, id);
+      if (order.every((key, index) => key === previous[index])) return false;
+      const items = order.map((key) => projects.get(key));
+      projects.clear();
+      for (const item of items) projects.set(item.id, item);
+      return true;
+    },
     remove(id) {
       const ids = [...projects.keys()];
       const position = ids.indexOf(id);
@@ -39,13 +52,40 @@ function createProjectTabs() {
   };
 }
 
-function contentBounds(width, height, presentation, stripHeight = 42) {
-  const top = presentation ? 0 : stripHeight;
+function normalizeProjectTabLayout(value) {
   return {
-    x: 0,
+    orientation: value?.orientation === 'vertical' ? 'vertical' : 'horizontal',
+    collapsed: value?.collapsed === true,
+  };
+}
+
+function updateProjectTabLayout(current, update) {
+  if (
+    !update ||
+    typeof update !== 'object' ||
+    Array.isArray(update) ||
+    Object.keys(update).some((key) => key !== 'orientation' && key !== 'collapsed') ||
+    ('orientation' in update && !['horizontal', 'vertical'].includes(update.orientation)) ||
+    ('collapsed' in update && typeof update.collapsed !== 'boolean')
+  )
+    throw new Error('Invalid Project tab layout.');
+  return { ...normalizeProjectTabLayout(current), ...update };
+}
+
+function contentBounds(width, height, presentation, stripHeight = 42, tabLayout = {}) {
+  const layout = normalizeProjectTabLayout(tabLayout);
+  const availableWidth = Math.max(1, Math.round(Number.isFinite(width) ? width : 1));
+  const availableHeight = Math.max(1, Math.round(Number.isFinite(height) ? height : 1));
+  const top = presentation ? 0 : Math.min(availableHeight - 1, stripHeight);
+  const left =
+    presentation || layout.orientation === 'horizontal'
+      ? 0
+      : Math.min(availableWidth - 1, layout.collapsed ? 52 : 224);
+  return {
+    x: left,
     y: top,
-    width: Math.max(1, Math.round(width)),
-    height: Math.max(1, Math.round(height) - top),
+    width: availableWidth - left,
+    height: availableHeight - top,
   };
 }
 
@@ -159,6 +199,8 @@ function createRendererRecovery({ load, releasePresentation, rejectLeaves, onCha
 
 module.exports = {
   createProjectTabs,
+  normalizeProjectTabLayout,
+  updateProjectTabLayout,
   contentBounds,
   publicProjectTab,
   createFullscreenController,

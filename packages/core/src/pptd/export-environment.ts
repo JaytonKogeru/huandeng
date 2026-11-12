@@ -18,6 +18,7 @@ export function mimeType(file: string) {
         '.woff': 'font/woff',
         '.ttf': 'font/ttf',
         '.pdf': 'application/pdf',
+        '.zip': 'application/zip',
         '.json': 'application/json',
         '.pptx': 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
         '.mp4': 'video/mp4',

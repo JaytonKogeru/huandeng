@@ -160,3 +160,119 @@ svg {
   color: light-dark(#75512a, #dbb17f);
   padding-right: 8px;
 }
+
+button[hidden],
+#tab-drop-indicator[hidden] {
+  display: none;
+}
+.layout-control {
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  border-radius: 5px;
+  margin-bottom: 4px;
+  display: grid;
+  place-items: center;
+}
+#workspace-caption {
+  display: none;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-left: 6px;
+}
+.project-mark {
+  display: none;
+  font-size: 11px;
+  font-weight: 600;
+}
+.project-tab.dragging {
+  opacity: 0.45;
+}
+#tab-drop-indicator {
+  position: fixed;
+  z-index: 5;
+  pointer-events: none;
+  border-radius: 2px;
+  background: var(--shell-focus);
+}
+body[data-orientation="vertical"] {
+  --project-rail-width: 224px;
+}
+body[data-collapsed="true"] {
+  --project-rail-width: 52px;
+}
+body[data-orientation="vertical"]::before {
+  content: "";
+  position: fixed;
+  inset: 42px auto 0 0;
+  width: var(--project-rail-width);
+  border-right: 1px solid var(--shell-border);
+  pointer-events: none;
+}
+body[data-orientation="vertical"] #workspace-caption {
+  display: block;
+}
+body[data-orientation="vertical"] #project-tabs {
+  position: fixed;
+  left: 8px;
+  top: 50px;
+  bottom: 50px;
+  width: calc(var(--project-rail-width) - 16px);
+  flex-direction: column;
+  overflow-x: hidden;
+  overflow-y: auto;
+  gap: 4px;
+  scrollbar-width: thin;
+}
+body[data-orientation="vertical"] .project-tab {
+  width: 100%;
+  min-width: 0;
+  min-height: 40px;
+  max-width: none;
+  flex: 0 0 auto;
+  padding: 6px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  position: relative;
+}
+body[data-orientation="vertical"] .project-tab[aria-selected="true"] {
+  border-color: var(--shell-border);
+}
+body[data-orientation="vertical"] .project-mark {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+  background: var(--shell-hover);
+  border-radius: 4px;
+}
+body[data-orientation="vertical"] .project-state {
+  position: absolute;
+  left: 25px;
+  top: 25px;
+  box-shadow: 0 0 0 2px var(--shell-surface);
+}
+body[data-orientation="vertical"] .project-state[data-state="saved"] {
+  display: none;
+}
+body[data-orientation="vertical"] #workspace-open {
+  position: fixed;
+  left: 8px;
+  bottom: 8px;
+  width: calc(var(--project-rail-width) - 16px);
+  margin: 0;
+}
+body[data-collapsed="true"] .project-title,
+body[data-collapsed="true"] .close {
+  display: none;
+}
+body[data-collapsed="true"] .project-tab {
+  padding: 5px;
+  justify-content: center;
+}
+body[data-collapsed="true"] #workspace-tab-collapse svg {
+  transform: rotate(180deg);
+}

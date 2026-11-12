@@ -92,7 +92,7 @@ export function FontLibrary() {
           ? 'This environment cannot list local fonts. Availability remains unverified.'
           : 'The local font check could not finish. Try checking again.';
   return (
-    <section className="space-y-3 border-t pt-4" data-hd-font-library>
+    <section className="space-y-3" data-hd-font-library>
       <div className="flex items-center justify-between gap-3">
         <h3 className="text-sm font-semibold">{t('Fonts')}</h3>
         <Button variant="outline" size="sm" disabled={checking} onClick={() => void check()}>
@@ -105,10 +105,10 @@ export function FontLibrary() {
       <FontPresetSelect label="Preview font" value={stack} onChange={setStack} />
       <div className="rounded border border-border p-3" data-hd-font-preview>
         <p className="truncate text-xl" style={{ fontFamily: selected.stack }}>
-          Aa Bb Cc · 0123456789
+          Aa Bb Cc 0123456789
         </p>
         <p className="mt-1 text-sm" style={{ fontFamily: selected.stack }}>
-          {t('Scientific slides · 科学演示')}
+          {t('Scientific slides  科学演示')}
         </p>
         <p className="mt-3 text-xs" data-hd-font-status={status}>
           {t(STATUS_LABELS[status])}

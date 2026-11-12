@@ -29,6 +29,8 @@ const { version: editorVersion } = require('./release.json');
 const { migratePreferences } = require('./branding.cjs');
 const {
   createProjectTabs,
+  normalizeProjectTabLayout,
+  updateProjectTabLayout,
   contentBounds,
   publicProjectTab,
   createFullscreenController,
@@ -125,7 +127,11 @@ function context(project = tabs.active) {
   };
 }
 function workspaceState() {
-  return { activeId: tabs.activeId, projects: tabs.list().map(publicProjectTab) };
+  return {
+    activeId: tabs.activeId,
+    projects: tabs.list().map(publicProjectTab),
+    tabLayout: normalizeProjectTabLayout(preferences.projectTabs),
+  };
 }
 function publishWorkspace() {
   send(window?.webContents, 'huandeng:workspace-changed', workspaceState());
@@ -169,6 +175,42 @@ async function changeLocale(locale) {
   updateTitle();
   broadcast('huandeng:locale-changed', locale);
   return locale;
+}
+async function changeTabLayout(update) {
+  const previous = preferences.projectTabs;
+  const next = updateProjectTabLayout(previous, update);
+  preferences.projectTabs = next;
+  try {
+    await savePreferences();
+  } catch (error) {
+    preferences.projectTabs = previous;
+    layoutViews();
+    publishWorkspace();
+    throw error;
+  }
+  layoutViews();
+  buildMenu();
+  publishWorkspace();
+  broadcast('huandeng:tab-layout-changed', next);
+  return next;
+}
+async function moveProject(id, beforeId) {
+  if (closing) throw new Error('The workspace is closing.');
+  const previous = tabs.list();
+  if (!tabs.move(id, beforeId)) return workspaceState();
+  try {
+    await saveTabPreferences(true);
+  } catch (error) {
+    for (const project of previous) tabs.move(project.id, null);
+    preferences.openProjects = previous.map(({ service }) => ({
+      entryPath: service.entryPath,
+      readOnly: service.readOnly,
+    }));
+    publishWorkspace();
+    throw error;
+  }
+  publishWorkspace();
+  return workspaceState();
 }
 async function changeSnapping(enabled) {
   if (typeof enabled !== 'boolean') throw new Error(desktopText('吸附设置必须为开启或关闭。'));
@@ -243,6 +285,8 @@ function layoutViews() {
     width,
     height,
     presentationOwner === tabs.activeId && presentationOwner !== null,
+    42,
+    preferences.projectTabs,
   );
   if (homeView) {
     homeView.setBounds(bounds);
@@ -638,6 +682,26 @@ async function setPresentationMode(project, active) {
   return { fullscreen: window?.isFullScreen() ?? false };
 }
 
+function showProjectTabMenu(id) {
+  const projects = tabs.list();
+  const index = projects.findIndex((project) => project.id === id);
+  if (index < 0) throw new Error('This Project tab is no longer open.');
+  Menu.buildFromTemplate([
+    {
+      label: desktopText('向前移动项目标签'),
+      enabled: index > 0,
+      click: menuAction(() => moveProject(id, projects[index - 1].id)),
+    },
+    {
+      label: desktopText('向后移动项目标签'),
+      enabled: index < projects.length - 1,
+      click: menuAction(() => moveProject(id, projects[index + 2]?.id ?? null)),
+    },
+    { type: 'separator' },
+    { label: desktopText('关闭项目'), click: menuAction(() => closeProject(id), true) },
+  ]).popup({ window });
+}
+
 function buildMenu() {
   const recent = preferences.recentProjects.map((item) => ({
     label: item.title || path.basename(path.dirname(item.entryPath)),
@@ -747,6 +811,30 @@ function buildMenu() {
     {
       label: desktopText('视图'),
       submenu: [
+        {
+          label: desktopText('水平项目标签'),
+          type: 'radio',
+          checked: normalizeProjectTabLayout(preferences.projectTabs).orientation === 'horizontal',
+          click: menuAction(() => changeTabLayout({ orientation: 'horizontal' })),
+        },
+        {
+          label: desktopText('垂直项目标签'),
+          type: 'radio',
+          checked: normalizeProjectTabLayout(preferences.projectTabs).orientation === 'vertical',
+          click: menuAction(() => changeTabLayout({ orientation: 'vertical' })),
+        },
+        {
+          label: desktopText('折叠垂直标签栏'),
+          type: 'checkbox',
+          enabled: normalizeProjectTabLayout(preferences.projectTabs).orientation === 'vertical',
+          checked: normalizeProjectTabLayout(preferences.projectTabs).collapsed,
+          click: menuAction(() =>
+            changeTabLayout({
+              collapsed: !normalizeProjectTabLayout(preferences.projectTabs).collapsed,
+            }),
+          ),
+        },
+        { type: 'separator' },
         {
           label: desktopText('实际大小'),
           accelerator: 'CmdOrCtrl+0',
@@ -860,11 +948,24 @@ function registerIpc() {
   handle('huandeng:new-project', () => navigate(newProject));
   handle('huandeng:get-context', (sender) => context(sender.project));
   handle('huandeng:get-workspace', () => workspaceState());
-  handle('huandeng:activate-project', (sender, id) => {
+  handle('huandeng:activate-project', (sender, id, focus = true) => {
     if (!sender.shell) throw new Error('Project switching belongs to the workspace.');
+    if (typeof focus !== 'boolean') throw new Error('Invalid Project focus value.');
     if (id !== null && !tabs.get(id)) throw new Error('This Project tab is no longer open.');
-    return navigateNow(() => activateProject(id));
+    return navigateNow(() => activateProject(id, focus));
   });
+  handle('huandeng:move-project', (sender, id, beforeId) => {
+    if (!sender.shell) throw new Error('Project order belongs to the workspace.');
+    if (typeof id !== 'string' || (beforeId !== null && typeof beforeId !== 'string'))
+      throw new Error('Invalid Project tab target.');
+    return operate(() => moveProject(id, beforeId));
+  });
+  handle('huandeng:show-project-tab-menu', (sender, id) => {
+    if (!sender.shell) throw new Error('Project actions belong to the workspace.');
+    showProjectTabMenu(id);
+  });
+  handle('huandeng:get-tab-layout', () => normalizeProjectTabLayout(preferences.projectTabs));
+  handle('huandeng:set-tab-layout', (_sender, update) => operate(() => changeTabLayout(update)));
   handle('huandeng:close-project', (sender, id) => {
     const target = sender.shell ? id : requireProject(sender).id;
     if (!tabs.get(target)) return;

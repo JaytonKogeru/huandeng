@@ -282,15 +282,22 @@ program
   );
 program
   .command('export <format>')
-  .description('Export the committed deck as PDF or editable PPTX')
+  .description('Export PDF/PPTX, or start an entire editable Project ZIP job')
   .option('--presentation <id>', 'export one Presentation Slides instead of Main Slides')
   .option('--include-hidden', 'include hidden slides in the exported collection')
   .action(async (format, options) =>
     print(
       await (await client()).request('/export', {
         format,
-        presentationId: options.presentation,
-        includeHidden: options.includeHidden === true,
+        ...(format === 'zip'
+          ? {
+              ...(options.presentation ? { presentationId: options.presentation } : {}),
+              ...(options.includeHidden ? { includeHidden: true } : {}),
+            }
+          : {
+              presentationId: options.presentation,
+              includeHidden: options.includeHidden === true,
+            }),
       }),
     ),
   );
@@ -323,14 +330,14 @@ program
   );
 program
   .command('export-status <jobId>')
-  .description('Read video progress and the completed artifact URL')
+  .description('Read archive or video progress and the completed artifact URL')
   .action(async (id) =>
     print(await (await client()).request(`/exports/${encodeURIComponent(id)}/status`)),
   );
 program
   .command('export-cancel <jobId>')
-  .description('Cancel an active video export')
-  .action(async (jobId) => print(await (await client()).request('/video/cancel', { jobId })));
+  .description('Cancel an active archive or video export')
+  .action(async (jobId) => print(await (await client()).request('/exports/cancel', { jobId })));
 program
   .command('checkpoint <message>')
   .description('Commit only known deck files from a clean Git baseline')

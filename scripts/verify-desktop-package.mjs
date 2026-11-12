@@ -2,8 +2,21 @@ import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { desktopSourceMapBytes } from './prune-desktop-sourcemaps.mjs';
 
 const application = await fs.realpath(path.resolve(process.argv[2]));
+const desktopPackage = JSON.parse(
+  await fs.readFile(path.join(application, 'package.json'), 'utf8'),
+);
+const desktopRelease = JSON.parse(
+  await fs.readFile(path.join(application, 'release.json'), 'utf8'),
+);
+if (
+  typeof desktopRelease.version !== 'string' ||
+  !desktopRelease.version.trim() ||
+  desktopPackage.version !== desktopRelease.version
+)
+  throw new Error('The packaged desktop manifest does not match the release version.');
 let directories = 0;
 let relativeExecutableLinks = 0;
 
@@ -28,6 +41,11 @@ async function inspect(directory) {
     } else if (entry.isDirectory()) {
       directories++;
       await inspect(file);
+    } else if (
+      path.relative(application, file).split(path.sep)[0] === 'node_modules' &&
+      (await desktopSourceMapBytes(file))
+    ) {
+      throw new Error(`Desktop package retains a dependency source map: ${file}`);
     }
   }
 }
@@ -74,5 +92,5 @@ const output = execFileSync(process.execPath, [path.join(core, 'huandeng.js'), '
 if (!output.includes('HUANDENG Editor'))
   throw new Error('The packaged document service did not start.');
 process.stdout.write(
-  `${JSON.stringify({ portable: true, nodeLinker: 'hoisted', coreVersion: corePackage.version, pluginVersion: pluginManifest.version, storySkillSha256, directories, relativeExecutableLinks })}\n`,
+  `${JSON.stringify({ portable: true, nodeLinker: 'hoisted', desktopVersion: desktopPackage.version, coreVersion: corePackage.version, pluginVersion: pluginManifest.version, storySkillSha256, directories, relativeExecutableLinks })}\n`,
 );

@@ -417,10 +417,38 @@ export async function registerPptdRoutes(server: PptdRouteHost, _ctx?: ApiContex
         throw new PptdError('INVALID_REQUEST', 'A JSON object is required.');
       }
       if (route === '/activity') return json(res, 200, await activity.report(body));
-      if (route === '/video/cancel') {
+      if (route === '/video/cancel' || route === '/exports/cancel') {
         if (typeof body.jobId !== 'string')
           throw new PptdError('INVALID_REQUEST', 'jobId is required.');
         return json(res, 200, exports.cancel(body.jobId));
+      }
+      if (route === '/export' && body.format === 'zip') {
+        const forbidden = [
+          'presentationId',
+          'pageId',
+          'occurrenceId',
+          'includeHidden',
+          'resolution',
+          'fps',
+          'staticDurationMs',
+          'endHoldMs',
+          'cueHoldMs',
+        ];
+        if (forbidden.some((key) => body[key] !== undefined && body[key] !== null))
+          throw new PptdError(
+            'INVALID_REQUEST',
+            'Project ZIP always includes the entire Project. Omit slide, Presentation and video options.',
+          );
+        await store.refreshExternal();
+        return json(
+          res,
+          202,
+          await exports.startProjectArchive(
+            store.getSnapshot(),
+            (directory, signal, progress, excludeRoots) =>
+              store.captureProjectArchive(directory, signal, progress, excludeRoots),
+          ),
+        );
       }
       if (route === '/video') {
         if (body.includeHidden !== undefined && typeof body.includeHidden !== 'boolean')

@@ -286,6 +286,10 @@ export class PptdBackend implements PptdTransport {
     return this.request('/export', { format, presentationId, includeHidden });
   }
 
+  startProjectArchive(): Promise<ExportJobStatus> {
+    return this.request('/export', { format: 'zip' });
+  }
+
   exportSnapshot(exportId: string): Promise<DeckSnapshot> {
     return this.request(`/exports/${encodeURIComponent(exportId)}/snapshot`);
   }
@@ -304,8 +308,12 @@ export class PptdBackend implements PptdTransport {
     return this.request(`/exports/${encodeURIComponent(id)}/status`);
   }
 
+  cancelExport(jobId: string): Promise<ExportJobStatus> {
+    return this.request('/exports/cancel', { jobId });
+  }
+
   cancelVideo(jobId: string): Promise<ExportJobStatus> {
-    return this.request('/video/cancel', { jobId });
+    return this.cancelExport(jobId);
   }
 
   render(

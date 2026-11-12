@@ -53,6 +53,8 @@ if (-not $verifiedWorkspace.StartsWith($verificationRoot + '\', [StringCompariso
     throw 'Build workspace escaped the verification directory; cleanup was not performed.'
 }
 Remove-Item -LiteralPath $verifiedWorkspace -Recurse -Force
+& node (Join-Path $PSScriptRoot "prune-desktop-sourcemaps.mjs") $appDirectory
+if ($LASTEXITCODE -ne 0) { throw "Pruning staged dependency source maps failed." }
 & node (Join-Path $PSScriptRoot "verify-desktop-package.mjs") $appDirectory
 if ($LASTEXITCODE -ne 0) { throw "The staged application is not self-contained." }
 $sourceRevision = (& git -C $project rev-parse HEAD).Trim()

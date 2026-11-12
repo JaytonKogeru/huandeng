@@ -3451,6 +3451,8 @@ export function HuandengEditor() {
         navigation={!navigationCollapsed}
         inspector={!filePreviewPath && !inspectorCollapsed && !(notesOpen && notesDock === 'right')}
         notes={notesOpen}
+        notesDock={notesDock}
+        onNotesDock={setNotesDock}
         onNavigation={(value) => setNavigationCollapsed(!value)}
         onInspector={(value) => {
           setInspectorCollapsed(!value);
@@ -3459,7 +3461,10 @@ export function HuandengEditor() {
             if (notesDock === 'right') setNotesOpen(false);
           }
         }}
-        onNotes={setNotesOpen}
+        onNotes={(value) => {
+          setNotesOpen(value);
+          if (value) setFilePreviewPath(null);
+        }}
         onKeyboard={() => {
           setSettingsOpen(false);
           setKeyboardHelpOpen(true);

@@ -4,7 +4,7 @@ A HUANDENG presentation is a working project folder. The .pptd file is its entry
 
 ## Open the project
 
-In Editor 0.19, Home and File offer separate actions for an entry file and a project folder:
+Home and File offer separate actions for an entry file and a project folder:
 
 - **Open PPTD file** selects one explicit .pptd file.
 - **Open project folder** selects a directory. The directory must directly contain exactly one .pptd file.
@@ -41,6 +41,16 @@ Keep the complete folder together when copying or sharing it. Do not extract onl
 The maintained introduction source and release ZIPs exclude machine-local Windows folder decorations: desktop.ini and .huandeng/project.ico. These exact paths are not page media or named-version assets. Existing local icon files and folder attributes are preserved when historical decoration files leave Git tracking. After extraction, use File → Identify project folder if a Windows icon is wanted; ZIP extraction does not itself guarantee the Explorer folder attributes needed for that decoration.
 
 The six introduction projects use their existing author/language directories under examples/huandeng-introduction. Each has one deck.pptd. There is no second dated introduction tree.
+
+## Export an editable Project ZIP
+
+In **Export**, choose **Editable Project (ZIP)**. Its scope is always the entire saved Project, even when the Editor is showing a short Presentation. Extract the archive into a folder and open its original entry filename. No new manifest or proprietary archive reader is required.
+
+The archive preserves ordinary authored files, all pages and original media, project metadata, authoring rules, Sections, Presentations and portable named versions. Existing portable folder-icon files can travel with a user-created Project ZIP; Explorer folder attributes may still need **Identify project folder** after extraction. The maintained example source's decoration policy above is unchanged.
+
+Known generated outputs, dependencies, repository internals, caches, environment credentials and machine client/session configuration are excluded. The report lists the actual exclusions. Machine Undo and operation journals remain on the original computer; named page versions are included. ZIP export validates the saved page and asset revisions and required named versions, and fails on missing required material, unsupported symbolic links, unsafe paths or case-colliding filenames.
+
+The writer captures saved Project files into an isolated staging directory, then releases its queue before compression. Later edits do not change that captured archive. Progress and cancellation use the normal Export dialog. The current ordinary-ZIP limit is 60,000 entries and 3.75 GiB of source files; it reports an error rather than writing an oversized corrupt archive.
 
 ## People and assistants
 

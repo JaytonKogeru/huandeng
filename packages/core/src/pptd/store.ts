@@ -54,6 +54,10 @@ import {
   resolveProjectPath,
 } from './persistence';
 import { mainPositionForPath } from './position-field';
+import {
+  type ArchiveProgress,
+  captureProjectArchive as freezeProjectArchive,
+} from './project-archive';
 import { readProjectGuidance } from './project-guidance';
 import { applyProjectOperation, readProjectModel } from './project-model';
 import {
@@ -659,6 +663,23 @@ export class PptdStore {
   /** Read after all preceding transactions; explicit refreshExternal still scans disk. */
   getCurrentSnapshot(): Promise<DeckSnapshot> {
     return this.enqueue(async () => this.getSnapshot());
+  }
+
+  captureProjectArchive(
+    directory: string,
+    signal: AbortSignal,
+    onProgress?: (progress: ArchiveProgress) => void,
+    excludeRoots: string[] = [],
+  ) {
+    return this.enqueue(async () => {
+      signal.throwIfAborted();
+      if (this.closed) throw new PptdError('READ_ONLY', 'The Project is closing.');
+      await this.refreshExternalNow();
+      return freezeProjectArchive(this.root, this.entry, this.getSnapshot(), directory, signal, {
+        excludeRoots: [this.stateDir, ...excludeRoots],
+        onProgress,
+      });
+    });
   }
 
   getCheckpointSnapshot(event: DocumentEvent): PptdCheckpointSnapshot {

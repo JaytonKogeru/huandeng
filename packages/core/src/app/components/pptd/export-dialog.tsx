@@ -46,9 +46,13 @@ export function ExportDialog({
   onBusyChange: (busy: boolean) => void;
 }) {
   useHuandengLocale();
-  const [format, setFormat] = useState<'pptx' | 'pdf' | 'png' | 'mp4'>('pptx');
+  const [format, setFormat] = useState<'pptx' | 'pdf' | 'png' | 'mp4' | 'zip'>('pptx');
   const [scope, setScope] = useState<'collection' | 'page'>('collection');
   const [includeHidden, setIncludeHidden] = useState(false);
+  const archiveEntry =
+    snapshot.metadata.entry ||
+    snapshot.entry.replace(/\\/g, '/').split('/').at(-1) ||
+    snapshot.entry;
   const hiddenCount = snapshot.pages.filter((item) => item.metadata.hidden).length;
   const [resolution, setResolution] = useState<720 | 1080>(720);
   const [fps, setFps] = useState<24 | 30>(30);
@@ -101,7 +105,7 @@ export function ExportDialog({
   }, [snapshot, options, staticSeconds, endSeconds, cueSeconds]);
 
   useEffect(() => {
-    if (!open) return;
+    if (!open || format !== 'mp4') return;
     let disposed = false;
     void backend
       .videoCapabilities()
@@ -114,7 +118,7 @@ export function ExportDialog({
     return () => {
       disposed = true;
     };
-  }, [open, backend]);
+  }, [open, format, backend]);
 
   useEffect(() => {
     if (!job?.id || !active) return;
@@ -166,7 +170,8 @@ export function ExportDialog({
     setCancelling(false);
     try {
       await beforeExport();
-      if (format === 'mp4') setJob(await backend.startVideo(options));
+      if (format === 'zip') setJob(await backend.startProjectArchive());
+      else if (format === 'mp4') setJob(await backend.startVideo(options));
       else {
         const output =
           format === 'png' && page
@@ -212,17 +217,27 @@ export function ExportDialog({
                 <option value="pdf">{t('文档 · PDF')}</option>
                 <option value="png">{t('当前页图片 · PNG')}</option>
                 <option value="mp4">{t('动画视频 · MP4')}</option>
+                <option value="zip">{t('Editable Project (ZIP)')}</option>
               </select>
             </label>
             <label className="space-y-1.5 text-xs">
               {t('范围')}
               <select
                 aria-label={t('导出范围')}
-                value={format === 'png' ? 'page' : format === 'mp4' ? scope : 'collection'}
+                value={
+                  format === 'zip'
+                    ? 'project'
+                    : format === 'png'
+                      ? 'page'
+                      : format === 'mp4'
+                        ? scope
+                        : 'collection'
+                }
                 disabled={format !== 'mp4'}
                 className="h-9 w-full rounded-md border bg-background px-2 text-sm"
                 onChange={(event) => setScope(event.target.value as typeof scope)}
               >
+                {format === 'zip' && <option value="project">{t('Entire Project')}</option>}
                 <option value="collection">
                   {t('{value0} · {value1}{value2}页', {
                     value0: snapshot.presentationId ? snapshot.title : t('主幻灯片'),
@@ -238,16 +253,33 @@ export function ExportDialog({
               </select>
             </label>
           </div>
-          {hiddenCount > 0 && format !== 'png' && (format !== 'mp4' || scope === 'collection') && (
-            <label className="flex items-center gap-2 text-xs">
-              <input
-                type="checkbox"
-                checked={includeHidden}
-                onChange={(event) => setIncludeHidden(event.target.checked)}
-              />
-              {t('Include hidden slides ({count})', { count: hiddenCount })}
-            </label>
+          {format === 'zip' && (
+            <p
+              className="text-xs leading-relaxed text-muted-foreground"
+              data-hd-project-archive-scope
+            >
+              {t(
+                'Includes all pages, original assets, Story, Presentations and named versions. Extract and open {entry}.',
+                { entry: archiveEntry },
+              )}{' '}
+              {t(
+                'Local connections, caches and earlier exports stay on this computer. The report lists excluded files.',
+              )}
+            </p>
           )}
+          {hiddenCount > 0 &&
+            format !== 'png' &&
+            format !== 'zip' &&
+            (format !== 'mp4' || scope === 'collection') && (
+              <label className="flex items-center gap-2 text-xs">
+                <input
+                  type="checkbox"
+                  checked={includeHidden}
+                  onChange={(event) => setIncludeHidden(event.target.checked)}
+                />
+                {t('Include hidden slides ({count})', { count: hiddenCount })}
+              </label>
+            )}
           {format === 'mp4' ? (
             <>
               <div className="grid grid-cols-2 gap-3">
@@ -348,22 +380,41 @@ export function ExportDialog({
         {(working || job) && (
           <div className="space-y-2 text-xs" aria-live="polite" data-hd-export-progress>
             <div className="flex items-center justify-between">
-              <span>{starting ? t('准备导出…') : job ? t(states[job.state]) : ''}</span>
+              <span>
+                {starting
+                  ? t('准备导出…')
+                  : job?.format === 'zip' && job.state === 'preparing'
+                    ? t('Copying saved Project')
+                    : job?.format === 'zip' && job.state === 'encoding'
+                      ? t('Compressing Project ZIP')
+                      : job
+                        ? t(states[job.state])
+                        : ''}
+              </span>
               {job && (
                 <span className="tabular-nums">
-                  {t('{value0} / {value1} 帧', {
-                    value0: job.completedFrames,
-                    value1: job.totalFrames,
-                  })}
+                  {job.format === 'zip'
+                    ? t('{completed} / {total} files', {
+                        completed: job.files?.completedFiles ?? 0,
+                        total: job.files?.totalFiles ?? 0,
+                      })
+                    : t('{value0} / {value1} 帧', {
+                        value0: job.completedFrames,
+                        value1: job.totalFrames,
+                      })}
                 </span>
               )}
             </div>
             {active && (
               <progress
                 className="h-1.5 w-full accent-primary"
-                max={job.totalFrames || 1}
-                value={job.completedFrames}
-                aria-label={t('视频导出进度')}
+                max={job.format === 'zip' ? job.files?.totalBytes || 1 : job.totalFrames || 1}
+                value={
+                  job.format === 'zip' ? (job.files?.completedBytes ?? 0) : job.completedFrames
+                }
+                aria-label={
+                  job.format === 'zip' ? t('Project archive progress') : t('视频导出进度')
+                }
               />
             )}
             {active && (
@@ -423,7 +474,7 @@ export function ExportDialog({
               disabled={cancelling}
               onClick={() => {
                 setCancelling(true);
-                void backend.cancelVideo(job.id).catch((failure: Error) => {
+                void backend.cancelExport(job.id).catch((failure: Error) => {
                   setError(failure.message);
                   setCancelling(false);
                 });
@@ -437,7 +488,7 @@ export function ExportDialog({
               disabled={
                 starting ||
                 blocked ||
-                !snapshot.pages.length ||
+                (format !== 'zip' && !snapshot.pages.length) ||
                 (format === 'mp4' && (!capability?.available || !!preview.error)) ||
                 (format === 'png' && !page)
               }

@@ -6,13 +6,13 @@
 
 HUANDENG 是一个本地桌面幻灯片编辑器。你在画布里选对象、改文字、放原图；助手通过同一个文档服务读取和修改同一份项目。每一页都有稳定身份，可以留下讲述意图、查看修改记录、保存命名版本，再被不同演讲重复引用。它适合需要不断更新内容的研究汇报、教学、技术说明和产品演示。
 
-![HUANDENG 0.19 中文工作区：页面列表、画布与右侧属性面板](docs/images/editor-zh-019.png)
+![HUANDENG 0.22 中文工作区：垂直项目标签、页面列表、完整画布与 Story](docs/images/editor-zh-022.png)
 
-当前桌面与 Plugin 的**本地候选版本为 0.21.0**。这版加入浏览与大纲中的页面操作、逐页助手进度，以及原生导出中的引用链接。Windows 桌面包与两种客户端包已完成构建及检查，具体变化和验证见 [0.21 候选说明](docs/RELEASE-V021.md)。当前仍是本地候选，尚未公开发布。
+**0.22.0** 加入可拖动排序的横向与左侧垂直标签页、重新整理的工作区设置，以及完整可编辑项目 ZIP 导出。Windows 应用和 Claude Code/Codex、DeepSeek 两种插件包可从 [GitHub Releases](https://github.com/JaytonKogeru/huandeng/releases/tag/editor-v0.22.0) 下载。变化与验证见 [发布说明](docs/RELEASE-V022.md)。
 
-上图记录的是实际使用中的 0.19 工作项目，下文介绍的当前功能包含后续更新；截图保留真实的版本标识。
+上图来自实际的 0.22 桌面窗口，打开的是本仓库可继续编辑的中文介绍项目。左侧是垂直项目标签，画布旁保留当前页面的 Story。
 
-[打开产品介绍示例](examples/huandeng-introduction/README.md) | [桌面启动与打包](packages/desktop/README.md) | [助手接入](plugins/huandeng/README.md) | [0.21 本地候选说明](docs/RELEASE-V021.md)
+[打开产品介绍示例](examples/huandeng-introduction/README.md) | [桌面启动与打包](packages/desktop/README.md) | [助手接入](plugins/huandeng/README.md) | [0.22 发布说明](docs/RELEASE-V022.md)
 
 ## 为什么做幻灯
 
@@ -46,7 +46,7 @@ HUANDENG 是一个本地桌面幻灯片编辑器。你在画布里选对象、�
 
 ### 使用 Windows 桌面包
 
-完整解压桌面产物后运行 **HUANDENG Editor.exe**。安装后的快捷方式也使用 HUANDENG Editor 名称。整个应用目录需要一起保留，不能只复制一个 `.exe`。当前 Windows 候选包位于 `dist/HUANDENG-v0.21.0-win32-x64`；变化与验证见 [0.21 候选说明](docs/RELEASE-V021.md)，构建方法见[桌面说明](packages/desktop/README.md)。
+下载 [Windows ZIP](https://github.com/JaytonKogeru/huandeng/releases/download/editor-v0.22.0/HUANDENG-Editor-0.22.0-win32-x64.zip)，完整解压后运行 **HUANDENG Editor.exe**。整个应用目录需要一起保留，不能只复制一个 `.exe`。变化与验证见 [0.22 发布说明](docs/RELEASE-V022.md)，构建和快捷方式安装方法见[桌面说明](packages/desktop/README.md)。
 
 首次启动在 Home 新建或打开项目；之后可以恢复最近打开的项目标签页。同一项目再次打开会回到已有标签页。新建项目会建立独立文件夹、入口文件、一张空白页和 `AGENTS.md` 创作约定。已有文件夹若包含多个入口，请明确选择其中一个 `.pptd`。[桌面说明](packages/desktop/README.md)
 
@@ -70,6 +70,12 @@ powershell -NoProfile -File scripts/Install-Huandeng.ps1
 ```
 
 详细依赖与打包选项见[桌面说明](packages/desktop/README.md)。PNG / PDF 输出需要 Chromium、Chrome 或 Edge；可通过 `HUANDENG_BROWSER` 指定浏览器。Windows 默认可使用 Edge。
+
+## 按自己的习惯安排工作区
+
+拖动项目标签即可调整顺序。标签栏上的布局按钮，以及「工作区设置」，都可以在顶部横排和左侧竖排之间切换；竖排还可以折叠成窄栏。顺序和显示方式会自动保存。键盘操作可以在标签获得焦点后，用横排的 **Alt+Shift+左/右** 或竖排的 **Alt+Shift+上/下** 调整位置。
+
+工作区设置分成「工作区、编辑、字体」三组。主题、语言、面板显示和备注停靠位置集中在第一组。字体检查按需执行，字体预设不会自动安装字体。
 
 ## 从故事到成品的工作流程
 
@@ -169,9 +175,9 @@ node plugins/huandeng/scripts/build-package.mjs --target local --output "$PWD/di
 node plugins/huandeng/scripts/build-deepseek.mjs --output "$PWD/dist/plugin-packages/deepseek-build"
 ```
 
-每条命令会在指定目录下生成 `huandeng/` 包。本次本地候选包位于 `dist/plugin-packages/0.21.0/portable-claude-codex/huandeng` 和 `dist/plugin-packages/0.21.0/deepseek-native/huandeng`，两者都在工程内部。桌面候选包位于 `dist/HUANDENG-v0.21.0-win32-x64`。这些是构建输出，持续维护的源码仍是 `plugins/huandeng`。安装时使用各客户端支持的 Plugin loader 或管理器。
+每条命令会在指定目录下生成 `huandeng/` 包。预先构建的两种包都在 [0.22 发布页](https://github.com/JaytonKogeru/huandeng/releases/tag/editor-v0.22.0)；工程内部产物位于 `dist/plugin-packages/0.22.0/`，持续维护的源码是 `plugins/huandeng`。安装时使用各客户端支持的 Plugin loader 或管理器。
 
-打包后的 MCP 报告 0.21.0，保留 24 个工具，包括绑定项目的原图导入与真实 Editor 截图。进度报告可以附带助手身份、工作阶段和页面范围；遇到兼容的旧 writer，会使用旧报告字段，并明确返回未支持的可选字段。当前运行环境与包的验证见[候选说明](docs/RELEASE-V021.md)。
+打包后的 MCP 报告 0.22.0，保留 24 个工具，包括绑定项目的原图导入、真实 Editor 截图，以及通过既有导出工具生成项目 ZIP。进度报告可以附带助手身份、工作阶段和页面范围；遇到兼容的旧 writer，会使用旧报告字段，并明确返回未支持的可选字段。当前运行环境与包的验证见[发布说明](docs/RELEASE-V022.md)。
 
 DeepSeek Harness 在「助手连接」里优先选择**原生插件**入口，通过宿主的 Plugin Manager 安装 bundle，再将生成的配置合并到已有 `huandeng` 插件条目。单独标出的旧 MCP patch 供未装原生 bundle 的配置使用，同一个配置只启用一种接入方式。配置生成保留账号和模型设置。[0.20 原生集成记录](docs/NATIVE-INTEGRATION-0.20.md)分别说明 DSH 模型实际调用工具、Claude Code 插件连接成功、中文任务的 MCP 请求被宿主拒绝，以及随后通过官方 CLI 完成原生创作的事实，并记录成品与独立 Office 检查。[0.19 原生集成](docs/NATIVE-INTEGRATION-0.19.md)保留为当时的历史；包内 manifest 或 connected 状态本身不证明模型任务已经成功。
 
@@ -191,6 +197,12 @@ node packages/core/huandeng.js --entry examples/huandeng-introduction/chatgpt-zh
 进度来自助手主动报告。连续 **5 分钟**没有更新时，标为**状态未更新**；连续 **30 分钟**未更新后，页面标记消失。已完成、失败或停止的任务标记保留 **2 分钟**，记录仍留在「动态」。上一次 writer 会话的报告会视为过期。任务声称完成与文档服务的实际保存回执分别展示，便于核对做了什么。
 
 pi、Zcode / GLM、WorkBuddy、Grokbot / Grok、Gemini、Antigravity、Hermes 已保留身份扩展位置，当前不表示这些连接已经安装或可用。
+
+## 把可编辑项目交给别人
+
+在「导出」选择 **「可编辑项目（ZIP）」**，即可打包整个已保存的项目：主幻灯片、原始素材、Story、所有演讲编排、创作规则和命名页面版本。接收者解压后，打开原来的 `.pptd` 入口就能继续编辑。即使当前选中的是短演讲，项目 ZIP 也会保留完整项目。
+
+生成的导出成品、缓存、Git 等仓库内部文件、本机连接配置，以及本机撤销和操作日志不会放入 ZIP；导出报告会列出排除项。缺少必需素材或命名版本时会中止并说明原因。当前普通 ZIP 的上限为 60,000 个条目、3.75 GiB 源文件。详见[项目文件夹](docs/PROJECT-FOLDERS.md)。
 
 ## 格式与当前边界
 

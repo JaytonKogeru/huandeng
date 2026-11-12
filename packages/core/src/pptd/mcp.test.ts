@@ -232,7 +232,9 @@ describe('HUANDENG MCP project and Story context', () => {
     await client.callTool({ name: 'huandeng_export_status', arguments: { jobId: 'job/id' } });
     expect(request).toHaveBeenLastCalledWith('/exports/job%2Fid/status');
     await client.callTool({ name: 'huandeng_export_cancel', arguments: { jobId: 'job/id' } });
-    expect(request).toHaveBeenLastCalledWith('/video/cancel', { jobId: 'job/id' });
+    expect(request).toHaveBeenLastCalledWith('/exports/cancel', { jobId: 'job/id' });
+    await client.callTool({ name: 'huandeng_export', arguments: { format: 'zip' } });
+    expect(request).toHaveBeenLastCalledWith('/export', { format: 'zip' });
     await client.callTool({ name: 'huandeng_export', arguments: { format: 'pptx' } });
     expect(request).toHaveBeenLastCalledWith('/export', { format: 'pptx' });
   });

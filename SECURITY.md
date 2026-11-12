@@ -4,17 +4,15 @@ HUANDENG runs a local document service and connects an Editor, command-line tool
 
 ## Supported versions
 
-HUANDENG is pre-1.0. Security fixes target the current source and latest Editor release; older releases do not have separately maintained security branches. The current documented Editor line is 0.19.x. Its version is distinct from the inherited `@open-slide/core` npm version.
+HUANDENG is pre-1.0. Security fixes target the current source and latest Editor release; older releases do not have separately maintained security branches. The current documented Editor line is 0.22.x. Its version is distinct from the inherited `@open-slide/core` npm version.
 
 Include both the Editor and plugin versions in a report, together with the source commit if you run a development checkout. Use the [release policy](docs/RELEASE-POLICY.md) for the project's versioning conventions.
 
 ## Private reporting status
 
-**The private reporting channel has not yet been verified as part of public-release preparation.** This file does not imply that GitHub private vulnerability reporting is enabled.
+GitHub private vulnerability reporting is enabled for `JaytonKogeru/huandeng`; the repository setting was verified on 2026-11-12. Use [Report a vulnerability](https://github.com/JaytonKogeru/huandeng/security/advisories/new) to send a private report to this repository's maintainers.
 
-Before announcing a public release, maintainers must enable and verify [GitHub private vulnerability reporting](https://docs.github.com/en/code-security/how-tos/report-and-fix-vulnerabilities/configure-vulnerability-reporting/configure-for-a-repository) for `JaytonKogeru/huandeng`, confirm that reports reach the responsible maintainer, and update this status.
-
-If the repository's security page offers **Report a vulnerability**, use that private form. If it is unavailable, open a [question](https://github.com/JaytonKogeru/huandeng/issues/new?template=question.yml) titled “Request a private security contact” containing only that request. Do not include the vulnerability, affected private files or a proof of concept in the public issue. Wait for a verified private channel before sending the details.
+If the private form is unavailable, open a [question](https://github.com/JaytonKogeru/huandeng/issues/new?template=question.yml) titled “Request a private security contact” containing only that request. Do not include the vulnerability, affected private files or a proof of concept in a public issue.
 
 No fallback email address or response-time commitment is published here. The upstream OpenSlide maintainers are not the security contact for HUANDENG.
 

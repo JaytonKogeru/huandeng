@@ -2,12 +2,19 @@ import fs from 'node:fs/promises';
 import type { ServerResponse } from 'node:http';
 import path from 'node:path';
 import type { Browser, Page } from 'playwright';
+import { runtimeRoot } from './client.ts';
 import { buildPptdPdf, buildPptdPptx, createExportReport } from './export.ts';
 import { mimeType, openBrowser } from './export-environment.ts';
 import { imageDimensions } from './export-images.ts';
 import { ExportWorkspace } from './export-workspace.ts';
 import { hasPageTransition } from './page-transition.ts';
 import { visibleSnapshot } from './page-visibility.ts';
+import {
+  type ArchiveProgress,
+  type ProjectArchiveCapture,
+  projectArchiveReport,
+  writeProjectZip,
+} from './project-archive.ts';
 import { type DeckSnapshot, PptdError } from './types.ts';
 import { createVideoEncoder, findVideoEncoder, type VideoCapabilities } from './video-encoder.ts';
 import { createVideoPlan, type VideoExportOptions, videoFrameTime } from './video-plan.ts';
@@ -39,6 +46,53 @@ export class ExportManager {
       .then(() => ({ available: true, formats: ['mp4'], message: 'H.264 视频编码器可用' }))
       .catch((error: Error) => ({ available: false, formats: [], message: error.message }));
     return this.capability;
+  }
+
+  async startProjectArchive(
+    snapshot: DeckSnapshot,
+    capture: (
+      directory: string,
+      signal: AbortSignal,
+      onProgress: (progress: ArchiveProgress) => void,
+      excludeRoots: string[],
+    ) => Promise<ProjectArchiveCapture>,
+  ) {
+    const job = await this.workspace.begin(structuredClone(snapshot), 'zip');
+    const progress = (value: ArchiveProgress) => {
+      job.status.files = value;
+    };
+    job.settled = (async () => {
+      let failure: unknown;
+      try {
+        const frozen = await capture(
+          path.join(job.directory, 'assets', 'project'),
+          job.abort.signal,
+          progress,
+          [runtimeRoot()],
+        );
+        job.snapshot = frozen.snapshot;
+        job.status.state = 'encoding';
+        job.status.files = {
+          completedFiles: 0,
+          totalFiles: frozen.files.length,
+          completedBytes: 0,
+          totalBytes: frozen.totalBytes,
+        };
+        job.outputFile = path.join(job.directory, 'artifact.zip');
+        await writeProjectZip(frozen, job.outputFile, job.abort.signal, progress);
+        await this.workspace.publish(
+          job,
+          `${path.basename(frozen.entry, path.extname(frozen.entry))}-project.zip`,
+          frozen.snapshot.writable,
+          projectArchiveReport(frozen),
+        );
+      } catch (error) {
+        failure = error;
+      } finally {
+        await this.workspace.finish(job, failure);
+      }
+    })();
+    return this.workspace.status(job.id);
   }
 
   async startVideo(

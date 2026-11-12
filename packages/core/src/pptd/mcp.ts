@@ -214,10 +214,10 @@ const tools: Tool[] = [
   {
     name: 'huandeng_export',
     description:
-      'Export a frozen committed deck as static PDF/PPTX, or start a deterministic silent MP4 job. MP4 returns a job id: read export_status until completed. Sources remain unchanged. Video timing uses staticDurationMs, endHoldMs and cueHoldMs, not live presentation clicks.',
+      'Export saved work as PDF/PPTX, start a silent MP4 job, or archive the entire editable Project as ZIP. ZIP and MP4 return a job id: read export_status until completed. ZIP accepts no slide, Presentation or video options and includes original assets and portable named versions. Extract and open the original .pptd. Sources remain unchanged.',
     inputSchema: objectSchema(
       {
-        format: { type: 'string', enum: ['pdf', 'pptx', 'mp4'] },
+        format: { type: 'string', enum: ['pdf', 'pptx', 'mp4', 'zip'] },
         includeHidden: {
           type: 'boolean',
           description:
@@ -265,14 +265,14 @@ const tools: Tool[] = [
   {
     name: 'huandeng_export_status',
     description:
-      'Read video job progress and completed file/report URLs. Completed downloads are retained for up to 15 minutes and the latest eight tasks; published project Exports files remain.',
+      'Read archive or video job progress and completed file/report URLs. Completed downloads are retained for up to 15 minutes and the latest eight tasks; published project Exports files remain.',
     inputSchema: objectSchema({ jobId: { type: 'string' } }, ['jobId']),
     annotations: read,
   },
   {
     name: 'huandeng_export_cancel',
     description:
-      'Cancel an active video job before publication. Read export_status for its final result. Existing published exports and source documents remain unchanged.',
+      'Cancel an active archive or video job before publication. Read export_status for its final result. Existing published exports and source documents remain unchanged.',
     inputSchema: objectSchema({ jobId: { type: 'string' } }, ['jobId']),
     annotations: {
       readOnlyHint: false,
@@ -653,7 +653,7 @@ export function createMcpServer(client: HuandengClient) {
           );
           break;
         case 'huandeng_export_cancel':
-          result = await client.request('/video/cancel', { jobId: args.jobId });
+          result = await client.request('/exports/cancel', { jobId: args.jobId });
           break;
         case 'huandeng_render': {
           const rendered = await client.request<{ url: string; report: unknown }>('/render', args);

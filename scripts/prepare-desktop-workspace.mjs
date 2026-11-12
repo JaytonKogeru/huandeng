@@ -27,6 +27,15 @@ for (const name of ['core', 'desktop']) {
         ),
   });
 }
+const desktopPackagePath = path.join(destination, 'packages', 'desktop', 'package.json');
+const desktopPackage = JSON.parse(await fs.readFile(desktopPackagePath, 'utf8'));
+const desktopRelease = JSON.parse(
+  await fs.readFile(path.join(repository, 'packages', 'desktop', 'release.json'), 'utf8'),
+);
+if (typeof desktopRelease.version !== 'string' || !desktopRelease.version.trim())
+  throw new Error('The desktop release version is missing.');
+desktopPackage.version = desktopRelease.version;
+await fs.writeFile(desktopPackagePath, `${JSON.stringify(desktopPackage, null, 2)}\n`);
 execFileSync(
   process.execPath,
   [

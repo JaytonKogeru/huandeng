@@ -50,6 +50,12 @@ export interface ExportJobStatus {
   id: string;
   format: string;
   state: 'preparing' | 'rendering' | 'encoding' | 'completed' | 'failed' | 'cancelled';
+  files?: {
+    completedFiles: number;
+    totalFiles: number;
+    completedBytes: number;
+    totalBytes: number;
+  };
   completedFrames: number;
   totalFrames: number;
   createdAt: number;

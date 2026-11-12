@@ -1,3 +1,8 @@
+export interface ProjectTabLayout {
+  orientation: 'horizontal' | 'vertical';
+  collapsed: boolean;
+}
+
 export interface WorkspaceLayout {
   notesDock: 'bottom' | 'right';
   notesHeight: number;
@@ -24,6 +29,9 @@ export type DesktopEditCommand = 'cut' | 'copy' | 'paste' | 'selectAll' | 'undo'
 export interface HuandengDesktop {
   platform: string;
   workspaceTabs?: boolean;
+  getTabLayout?(): Promise<ProjectTabLayout>;
+  setTabLayout?(update: Partial<ProjectTabLayout>): Promise<ProjectTabLayout>;
+  onTabLayoutChanged?(callback: (layout: ProjectTabLayout) => void): () => void;
   showHome?(): Promise<void>;
   closeProject?(id?: string): Promise<void>;
   onCloseDocument?(callback: () => void): () => void;

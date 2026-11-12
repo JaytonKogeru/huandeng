@@ -1,4 +1,5 @@
 import { format } from './format';
+import { archiveChinese } from './huandeng-archive-messages';
 import { arrangementChinese, arrangementEnglish } from './huandeng-arrangement-messages';
 import { authoringChinese, authoringEnglish } from './huandeng-authoring-messages';
 import { connectionChinese } from './huandeng-connection-messages';
@@ -8,6 +9,7 @@ import { pageWorkChinese } from './huandeng-page-work-messages';
 import { routeChinese, routeEnglish } from './huandeng-route-messages';
 import { systemChinese } from './huandeng-system-messages';
 import { workflowChinese, workflowEnglish } from './huandeng-workflow-messages';
+import { workspaceChinese } from './huandeng-workspace-messages';
 
 export type UiLocale = 'en' | 'zh-CN';
 export type UiValues = Record<string, string | number>;
@@ -197,6 +199,8 @@ export const englishMessages = {
   ...authoringEnglish,
 };
 export const chineseMessages = {
+  ...archiveChinese,
+  ...workspaceChinese,
   ...pageWorkChinese,
   ...designChinese,
   ...connectionChinese,
