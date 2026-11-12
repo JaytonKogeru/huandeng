@@ -28,6 +28,16 @@ The default-location check intercepts the shortcut-write boundary. The actual CO
 
 Evidence: patch-0231/release/installer-execution.json and .verification/installer-contract-61e563290bb24ce4bf2edf938116393e/result.json, relative to the verification root and repository root respectively.
 
+The old production installer at d61f440 failed against the same real Unicode fixture; the corrected production installer passed. Existing ASCII and Chinese shortcuts written by WScript were read and saved through the Unicode helper, then read back compatibly through WScript. Evidence: patch-0231/release/unicode-production-red-green.json.
+
+The [first 0.23.1 hosted Windows job](https://github.com/JaytonKogeru/huandeng/actions/runs/43180601949/job/131055338093) passed all seven installation checks on ANSI code page 1252, including Chinese, Arabic and emoji paths. Native contracts passed 16/16, desktop tests passed 68/68 and Ubuntu core passed.
+
+## CI script encoding correction
+
+After those successful gates, that first hosted job stopped before Package-Huandeng.ps1 executed: Windows PowerShell 5.1 decoded the runner-generated UTF-8 inline script using code page 1252. The literal Chinese output directory introduced a smart quote in the misdecoded source and produced a missing-string-terminator parse error.
+
+The workflow now constructs the identical Chinese directory using Unicode code points in ASCII script source. It retains Windows PowerShell 5.1 and the real Unicode output directory. A local parser regression reproduced the old error using UTF-8 bytes decoded as code page 1252, parsed the corrected source without errors, and evaluated the unchanged Unicode output path. It did not run the packager. Evidence: patch-0231/root/ci-encoding-red-green.json.
+
 ## Independent review
 
 The helper uses CLSID_ShellLink, IID_IShellLinkW and the complete native interface method order with explicit wide-string marshaling. Persistence uses the framework's IPersistFile interface. Each locally owned COM object is released in finally. Shortcut ownership reads use the stored raw target without Resolve.
