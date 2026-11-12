@@ -8,12 +8,7 @@
   },
   "repository": "https://github.com/JaytonKogeru/huandeng",
   "license": "MIT",
-  "keywords": [
-    "slides",
-    "pptd",
-    "story",
-    "presentations"
-  ],
+  "keywords": ["slides", "pptd", "story", "presentations"],
   "extensions": {
     "com.openai": {
       "interface": {
