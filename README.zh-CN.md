@@ -8,7 +8,7 @@ HUANDENG 是一个本地桌面幻灯片编辑器。你在画布里选对象、�
 
 ![HUANDENG 0.22 中文工作区：垂直项目标签、页面列表、完整画布与 Story](docs/images/editor-zh-022.png)
 
-**0.22.1** 加入可拖动排序的横向与左侧垂直标签页、重新整理的工作区设置，以及完整可编辑项目 ZIP 导出。Windows 应用和 Claude Code/Codex、DeepSeek 两种插件包可从 [GitHub Releases](https://github.com/JaytonKogeru/huandeng/releases/tag/editor-v0.22.1) 下载。变化与验证见 [发布说明](docs/RELEASE-V022.md)。
+**0.22.2** 修复了切换项目时界面主题不一致的问题：现在所有项目、顶部标题栏与 Home 共用全局主题；保留 0.22 的可拖动横向／竖向标签栏与可编辑项目 ZIP 导出。Windows 应用和 Claude Code/Codex、DeepSeek 插件包可从 [GitHub Releases](https://github.com/JaytonKogeru/huandeng/releases/tag/editor-v0.22.2) 下载。参见 [0.22.2 修复说明](docs/RELEASE-V0222.md) 与 [0.22 功能说明](docs/RELEASE-V022.md)。
 
 上图来自实际的 0.22 桌面窗口，打开的是本仓库可继续编辑的中文介绍项目。左侧是垂直项目标签，画布旁保留当前页面的 Story。
 
@@ -46,7 +46,7 @@ HUANDENG 是一个本地桌面幻灯片编辑器。你在画布里选对象、�
 
 ### 使用 Windows 桌面包
 
-下载 [Windows ZIP](https://github.com/JaytonKogeru/huandeng/releases/download/editor-v0.22.1/HUANDENG-Editor-0.22.1-win32-x64.zip)，完整解压后运行 **HUANDENG Editor.exe**。整个应用目录需要一起保留，不能只复制一个 `.exe`。变化与验证见 [0.22 发布说明](docs/RELEASE-V022.md)，构建和快捷方式安装方法见[桌面说明](packages/desktop/README.md)。
+下载 [Windows ZIP](https://github.com/JaytonKogeru/huandeng/releases/download/editor-v0.22.2/HUANDENG-Editor-0.22.2-win32-x64.zip)，完整解压后运行 **HUANDENG Editor.exe**。整个应用目录需要一起保留，不能只复制一个 `.exe`。变化与验证见 [0.22 发布说明](docs/RELEASE-V022.md)，构建和快捷方式安装方法见[桌面说明](packages/desktop/README.md)。
 
 首次启动在 Home 新建或打开项目；之后可以恢复最近打开的项目标签页。同一项目再次打开会回到已有标签页。新建项目会建立独立文件夹、入口文件、一张空白页和 `AGENTS.md` 创作约定。已有文件夹若包含多个入口，请明确选择其中一个 `.pptd`。[桌面说明](packages/desktop/README.md)
 
@@ -75,7 +75,7 @@ powershell -NoProfile -File scripts/Install-Huandeng.ps1
 
 拖动项目标签即可调整顺序。标签栏上的布局按钮，以及「工作区设置」，都可以在顶部横排和左侧竖排之间切换；竖排还可以折叠成窄栏。顺序和显示方式会自动保存。键盘操作可以在标签获得焦点后，用横排的 **Alt+Shift+左/右** 或竖排的 **Alt+Shift+上/下** 调整位置。
 
-工作区设置分成「工作区、编辑、字体」三组。主题、语言、面板显示和备注停靠位置集中在第一组。字体检查按需执行，字体预设不会自动安装字体。
+工作区设置分成「工作区、编辑、字体」三组。**主题、界面语言、标签栏和吸附属于整个 Editor**，换项目时不应变化；面板显示、宽度与备注停靠位置目前单独按项目记忆。字体检查按需执行，字体预设不会自动安装字体。
 
 ## 从故事到成品的工作流程
 

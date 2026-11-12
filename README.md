@@ -10,9 +10,9 @@ Open a page, select an object, make a focused change, and keep the work that sti
 
 [Try the editable examples](examples/huandeng-introduction/README.md) | [Desktop setup](packages/desktop/README.md) | [Connect an assistant](plugins/huandeng/README.md) | [Contribute](CONTRIBUTING.md)
 
-**Version 0.22.1** adds draggable horizontal or vertical project tabs, clearer workspace settings and complete editable Project ZIP export. Download the Windows application and Claude Code/Codex or DeepSeek plugin bundles from [GitHub Releases](https://github.com/JaytonKogeru/huandeng/releases/tag/editor-v0.22.1). See the [release notes](docs/RELEASE-V022.md) for the changes and verification. HUANDENG builds on OpenSlide and retains its MIT license and attribution.
+**Version 0.22.2** keeps interface theme consistent across all open Projects, the native titlebar and Home, while retaining draggable horizontal/vertical tabs and editable Project ZIP export. Download the Windows application and Claude Code/Codex or DeepSeek plugin bundles from [GitHub Releases](https://github.com/JaytonKogeru/huandeng/releases/tag/editor-v0.22.2). See the [0.22.2 release notes](docs/RELEASE-V0222.md) and [0.22 feature notes](docs/RELEASE-V022.md). HUANDENG builds on OpenSlide and retains its MIT license and attribution.
 
-The screenshot is a real 0.22 desktop window with the editable English introduction open. The project tabs on the left and the Story beside the canvas belong to the same working application.
+The screenshot is a real 0.22 desktop window with the editable English introduction open. The project tabs on the left and the Story beside the canvas belong to the same working application. Interface theme, language and tab orientation apply to the entire Editor; panel widths, visibility and Notes dock currently remain per-project.
 
 ## Why HUANDENG
 
@@ -37,7 +37,7 @@ The [example collection](examples/huandeng-introduction/README.md) contains edit
 
 Extract the complete Windows desktop package and run **HUANDENG Editor.exe**. Keep the application folder together. Home can create a new project or open an existing `.pptd`; opening a folder works when it has one unambiguous project entry.
 
-A new project starts with one blank page. Add text or shapes on the canvas, and use **Assets → Import and place** for an image. Download the [Windows ZIP](https://github.com/JaytonKogeru/huandeng/releases/download/editor-v0.22.1/HUANDENG-Editor-0.22.1-win32-x64.zip), extract it, and keep its application folder together. The [desktop guide](packages/desktop/README.md) covers packaging, shortcuts and project tabs.
+A new project starts with one blank page. Add text or shapes on the canvas, and use **Assets → Import and place** for an image. Download the [Windows ZIP](https://github.com/JaytonKogeru/huandeng/releases/download/editor-v0.22.2/HUANDENG-Editor-0.22.2-win32-x64.zip), extract it, and keep its application folder together. The [desktop guide](packages/desktop/README.md) covers packaging, shortcuts and project tabs.
 
 ### Run from source
 
