@@ -78,7 +78,7 @@ The 80-page commit median decreased 38.00%; Agent preview plus apply decreased 3
 
 ### Reduced work and retained checks
 
-Three actual Windows self-save probes each read 85 page files during the writer transaction and exactly one additional page to verify the persisted bytes: **86 total, replacing 165**. Their watcher callbacks took 4.59, 3.52 and 2.89 ms. An unrelated auxiliary file caused zero document reads. Same-size/restored-mtime edits, atomic replacement, an external write within the self-save debounce, and referenced-resource changes still reached authoritative refresh and appeared in the document. [P1]
+Three actual Windows self-save probes each made 85 page-file reads during the writer transaction and exactly one additional read to verify the persisted bytes: **86 total, replacing 165**. Their watcher callbacks took 4.59, 3.52 and 2.89 ms. An unrelated auxiliary file caused zero document reads. Same-size/restored-mtime edits, atomic replacement, an external write within the self-save debounce, and referenced-resource changes still reached authoritative refresh and appeared in the document. [P1]
 
 Windows emits parent-directory events during an atomic page save. The final fix merges a directory echo only when all recorded written children in that same batch match the committed bytes and the persisted directory generation also matches. A directory signature alone is never proof of child content. Directory-only events, roots/overflow, changed siblings, uncertain mappings and generation mismatches retain full validation; there is no time-based ignore window. [P1]
 

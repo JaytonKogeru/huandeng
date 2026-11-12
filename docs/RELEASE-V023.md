@@ -71,7 +71,7 @@ The same THUG Windows machine and synthetic fixture definitions were used before
 | Browser-observed durable delete, n=10 | 391.25 / 447.40 | 294.65 / 320.90 |
 | Conditional 4 MiB resource response | 9.61 / 11.51 | 2.71 / 18.89 |
 
-A self-write sequence now reads 86 pages in total instead of 165: the initial complete 85-page read remains, followed by the one changed page. External same-size/restored-mtime writes, atomic replacements and concurrent changes still trigger the required refresh. A two-page delta was 36,176 bytes versus 1,211,420 bytes for the full snapshot, a 97.01% reduction. Twenty conditional resource requests plus one probe caused no additional source read after the first read.
+A self-write sequence now makes 86 page-file reads in total instead of 165: 85 reads during the transaction for the 80-page Project, followed by one read to verify the changed page. External same-size/restored-mtime writes, atomic replacements and concurrent changes still trigger the required refresh. A two-page delta was 36,176 bytes versus 1,211,420 bytes for the full snapshot, a 97.01% reduction. Twenty conditional resource requests plus one probe caused no additional source read after the first read.
 
 The conditional-response p95 worsened, and fresh Store opening, history reopening and full snapshot cloning did not improve uniformly. These results support the specific reductions above, not a universal speedup. OS caches were not cleared and the fixtures were recently written; these are not OS-cold startup measurements.
 
