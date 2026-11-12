@@ -156,11 +156,57 @@ Slide ID: YS6V / Main position: 25
 
 幻灯不是从零开始的。编辑器基于 OpenSlide，MIT 许可。公式转换复用了 OpenPPTD 仓库的代码；这里的 GitHub 标志指的是那个仓库，不是 OpenPPTD 的标志。PowerPoint 导出用的是 PptxGenJS。右边是幻灯还没做到的事，都列在项目 README 里：导入任意 PPTX 并往返、直接编辑 Google Slides、第二屏的独立演讲者窗口、可继承母版、导出文件中的原生 PowerPoint 动画，以及插件市场。如果你需要其中某一项，那正是最需要贡献的地方。
 
+引用网址（名称链接到仓库或官网）：
+HUANDENG: https://github.com/JaytonKogeru/huandeng
+OpenSlide: https://github.com/open-slide/open-slide
+OpenPPTD: https://github.com/Shingwha/open-pptd
+PptxGenJS: https://github.com/gitbrent/PptxGenJS
+PowerPoint: https://www.microsoft.com/microsoft-365/powerpoint
+WPS: https://www.wps.com/
+Kimi / Moonshot AI: https://www.kimi.com/
+open-kimi-ppt-skill: https://github.com/Amonginin/open-kimi-ppt-skill
+PPTist: https://github.com/pipipi-pikachu/PPTist
+VS Code: https://github.com/microsoft/vscode
+Slidev: https://github.com/slidevjs/slidev
+Presenton: https://github.com/presenton/presenton
+PPTAgent: https://github.com/icip-cas/PPTAgent
+PPTMaster: https://github.com/hugohe3/ppt-master
+OpenSlides Studio: https://gitlab.com/open-slides/openslides
+OPF: https://github.com/OpenPresentation/opf
+Apache ECharts: https://github.com/apache/echarts
+KaTeX: https://github.com/KaTeX/KaTeX
+Font Awesome: https://github.com/FortAwesome/Font-Awesome
+OpenSlides Studio website: https://openslides.dev/
+OPF website: https://www.openpresentation.org/
+
 ### 26. 致谢
 
 Slide ID: MK7X / Main position: 26
 
 最后谢谢这些项目。真正在代码里的只有三个：OpenSlide 是编辑器的基础，OpenPPTD 提供了公式转换，PptxGenJS 负责写出 PPTX。想法上，我是在 Kimi 的生态里接触到 PPTD 的，open-kimi-ppt-skill 这个社区项目整理过它的格式。设计上参考了 PowerPoint 和 WPS 的章节与备注、VS Code 的侧栏和面板、OpenSlides Studio 的显式 ID，以及 OPF 的版本前提和冲突处理。右下是我研究过的同类项目：PPTist、Slidev、Presenton、PPTAgent 和 PPT Master。它们都不代表为幻灯背书；完整清单在仓库的 ACKNOWLEDGMENTS 文档里。
+
+引用网址（名称链接到仓库或官网）：
+HUANDENG: https://github.com/JaytonKogeru/huandeng
+OpenSlide: https://github.com/open-slide/open-slide
+OpenPPTD: https://github.com/Shingwha/open-pptd
+PptxGenJS: https://github.com/gitbrent/PptxGenJS
+PowerPoint: https://www.microsoft.com/microsoft-365/powerpoint
+WPS: https://www.wps.com/
+Kimi / Moonshot AI: https://www.kimi.com/
+open-kimi-ppt-skill: https://github.com/Amonginin/open-kimi-ppt-skill
+PPTist: https://github.com/pipipi-pikachu/PPTist
+VS Code: https://github.com/microsoft/vscode
+Slidev: https://github.com/slidevjs/slidev
+Presenton: https://github.com/presenton/presenton
+PPTAgent: https://github.com/icip-cas/PPTAgent
+PPTMaster: https://github.com/hugohe3/ppt-master
+OpenSlides Studio: https://gitlab.com/open-slides/openslides
+OPF: https://github.com/OpenPresentation/opf
+Apache ECharts: https://github.com/apache/echarts
+KaTeX: https://github.com/KaTeX/KaTeX
+Font Awesome: https://github.com/FortAwesome/Font-Awesome
+OpenSlides Studio website: https://openslides.dev/
+OPF website: https://www.openpresentation.org/
 
 ### 27. 从你的故事开始
 

@@ -138,6 +138,29 @@ Slide ID: JYJD / Main position: 22
 
 HUANDENG is built on open work, but the relationships differ. OpenSlide is the editor code foundation under MIT. OpenPPTD contributes only the MathML-to-OMML formula conversion modules, not the whole document model. PptxGenJS generates the PPTX export; Apache ECharts, KaTeX and Font Awesome are dependencies for charts, formulas and icons. PowerPoint and WPS are the file-and-canvas model this project reacts to. Kimi/Moonshot and open-kimi-ppt-skill are where I first met the PPTD approach; this is not a claim that Kimi invented a standard. PPTist, Slidev, Presenton, PPTAgent, PPTMaster, OpenSlides Studio (openslides.dev), OPF and VS Code are workflow inspiration and researched alternatives. HUANDENG is not affiliated with or endorsed by Kimi or the named projects. The not-yet list keeps the talk from implying completeness.
 
+Reference URLs (names link to source repositories or official sites):
+HUANDENG: https://github.com/JaytonKogeru/huandeng
+OpenSlide: https://github.com/open-slide/open-slide
+OpenPPTD: https://github.com/Shingwha/open-pptd
+PptxGenJS: https://github.com/gitbrent/PptxGenJS
+PowerPoint: https://www.microsoft.com/microsoft-365/powerpoint
+WPS: https://www.wps.com/
+Kimi / Moonshot AI: https://www.kimi.com/
+open-kimi-ppt-skill: https://github.com/Amonginin/open-kimi-ppt-skill
+PPTist: https://github.com/pipipi-pikachu/PPTist
+VS Code: https://github.com/microsoft/vscode
+Slidev: https://github.com/slidevjs/slidev
+Presenton: https://github.com/presenton/presenton
+PPTAgent: https://github.com/icip-cas/PPTAgent
+PPTMaster: https://github.com/hugohe3/ppt-master
+OpenSlides Studio: https://gitlab.com/open-slides/openslides
+OPF: https://github.com/OpenPresentation/opf
+Apache ECharts: https://github.com/apache/echarts
+KaTeX: https://github.com/KaTeX/KaTeX
+Font Awesome: https://github.com/FortAwesome/Font-Awesome
+OpenSlides Studio website: https://openslides.dev/
+OPF website: https://www.openpresentation.org/
+
 ### 23. Start with your story.
 
 Slide ID: AEUJ / Main position: 23

@@ -1,8 +1,8 @@
 import { Activity, CircleCheck, CircleX, Clock3, RefreshCw, X } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { uiText as t, useHuandengLocale } from '@/lib/huandeng-locale';
 import type { PptdBackend } from '@/lib/pptd-backend';
-import type { ActivityEvent, ActivitySnapshot } from '../../../pptd/activity';
+import { type ProjectActivityState, useProjectActivity } from '@/lib/use-project-activity';
 import { Button } from '../ui/button';
 import { activityLabel, changeSummary, receiptIds } from './operation-review-model';
 
@@ -13,6 +13,9 @@ export function PptdActivityPanel({
   pageLabels,
   onSelectPage,
   onReview,
+  activity,
+  pageId,
+  onClearPage,
 }: {
   backend: PptdBackend;
   deckId: string;
@@ -20,85 +23,28 @@ export function PptdActivityPanel({
   pageLabels: Record<string, string>;
   onSelectPage: (pageId: string) => void;
   onReview: (operationId: string) => void;
+  activity?: ProjectActivityState;
+  pageId?: string | null;
+  onClearPage?: () => void;
 }) {
   useHuandengLocale();
-  const [snapshot, setSnapshot] = useState<ActivitySnapshot | null>(null);
-  const [connected, setConnected] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [refresh, setRefresh] = useState(0);
+  const localActivity = useProjectActivity(backend, deckId, !activity);
+  const { snapshot, connected, error, refresh } = activity ?? localActivity;
   const [filter, setFilter] = useState<'all' | 'client' | 'writer'>('all');
-  // biome-ignore lint/correctness/useExhaustiveDependencies: Refresh explicitly reconnects the bounded Activity stream.
-  useEffect(() => {
-    const abort = new AbortController();
-    setSnapshot(null);
-    setConnected(false);
-    setError(null);
-    const read = () => {
-      void backend
-        .activity(abort.signal)
-        .then((value) => {
-          if (abort.signal.aborted || value.deckId !== deckId) return;
-          setSnapshot((previous) =>
-            !previous
-              ? value
-              : {
-                  ...value,
-                  sequence: Math.max(previous.sequence, value.sequence),
-                  events: [
-                    ...new Map(
-                      [...value.events, ...previous.events].map((event) => [event.sequence, event]),
-                    ).values(),
-                  ]
-                    .sort((a, b) => b.sequence - a.sequence)
-                    .slice(0, value.retainedLimit),
-                },
-          );
-          setError(value.storageError ?? null);
-        })
-        .catch((cause) => {
-          if (!abort.signal.aborted)
-            setError(cause instanceof Error ? cause.message : String(cause));
-        });
-    };
-    read();
-    const stop = backend.subscribeActivity(
-      (event: ActivityEvent) => {
-        if (abort.signal.aborted || event.deckId !== deckId) return;
-        setSnapshot((previous) =>
-          previous
-            ? {
-                ...previous,
-                epoch: event.epoch,
-                sequence: Math.max(previous.sequence, event.sequence),
-                events: [
-                  event,
-                  ...previous.events.filter((item) => item.sequence !== event.sequence),
-                ]
-                  .sort((a, b) => b.sequence - a.sequence)
-                  .slice(0, previous.retainedLimit),
-              }
-            : {
-                deckId,
-                epoch: event.epoch,
-                sequence: event.sequence,
-                events: [event],
-                retainedLimit: 300,
-              },
-        );
-      },
-      (value) => {
-        if (abort.signal.aborted) return;
-        setConnected(value);
-        if (value) read();
-      },
-    );
-    return () => {
-      abort.abort();
-      stop();
-    };
-  }, [backend, deckId, refresh]);
+  const pageTasks = new Set(
+    snapshot?.events
+      .filter((event) => pageId && event.pageIds?.includes(pageId))
+      .map((event) => JSON.stringify([event.sessionId, event.taskId])),
+  );
   const events =
-    snapshot?.events.filter((event) => filter === 'all' || event.source === filter) ?? [];
+    snapshot?.events.filter(
+      (event) =>
+        (filter === 'all' || event.source === filter) &&
+        (!pageId ||
+          event.pageIds?.includes(pageId) ||
+          (event.source === 'client' &&
+            pageTasks.has(JSON.stringify([event.sessionId, event.taskId])))),
+    ) ?? [];
   return (
     <section
       data-testid="project-activity"
@@ -134,7 +80,7 @@ export function PptdActivityPanel({
           size="icon"
           className="ml-auto size-6"
           title={t('Refresh')}
-          onClick={() => setRefresh((value) => value + 1)}
+          onClick={refresh}
         >
           <RefreshCw size={13} />
         </Button>
@@ -148,6 +94,17 @@ export function PptdActivityPanel({
           <X size={14} />
         </Button>
       </header>
+      {pageId && (
+        <div
+          className="flex items-center gap-2 border-b px-3 py-1 text-xs"
+          data-hd-activity-page-filter
+        >
+          <span>{t('Activity for {page}', { page: pageLabels[pageId] ?? pageId })}</span>
+          <button type="button" className="underline underline-offset-2" onClick={onClearPage}>
+            {t('Show all pages')}
+          </button>
+        </div>
+      )}
       {error && (
         <p role="alert" className="px-3 py-2 text-xs text-red-600">
           {error}

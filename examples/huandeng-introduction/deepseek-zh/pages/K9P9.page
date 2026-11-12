@@ -2,7 +2,7 @@ pageType: content
 background:
   type: solid
   color: "#F4F3ED"
-notes: 这一页把来源和边界一起说清楚。OpenSlide 是编辑器代码基础，MIT；OpenPPTD 只贡献公式转换模块，不是整个文档模型；PptxGenJS 生成 PPTX。GitHub 标记表示 OpenPPTD 仓库，不是它的 logo。HUANDENG 与 Kimi 没有隶属或背书关系。右侧列出当前仍未完成的能力。
+notes: "这一页把来源和边界一起说清楚。OpenSlide 是编辑器代码基础，MIT；OpenPPTD 只贡献公式转换模块，不是整个文档模型；PptxGenJS 生成 PPTX。GitHub 标记表示 OpenPPTD 仓库，不是它的 logo。HUANDENG 与 Kimi 没有隶属或背书关系。右侧列出当前仍未完成的能力。\n\n引用网址（名称链接到仓库或官网）：\nHUANDENG: https://github.com/JaytonKogeru/huandeng\nOpenSlide: https://github.com/open-slide/open-slide\nOpenPPTD: https://github.com/Shingwha/open-pptd\nPptxGenJS: https://github.com/gitbrent/PptxGenJS\nPowerPoint: https://www.microsoft.com/microsoft-365/powerpoint\nWPS: https://www.wps.com/\nKimi / Moonshot AI: https://www.kimi.com/\nopen-kimi-ppt-skill: https://github.com/Amonginin/open-kimi-ppt-skill\nPPTist: https://github.com/pipipi-pikachu/PPTist\nVS Code: https://github.com/microsoft/vscode\nSlidev: https://github.com/slidevjs/slidev\nPresenton: https://github.com/presenton/presenton\nPPTAgent: https://github.com/icip-cas/PPTAgent\nPPTMaster: https://github.com/hugohe3/ppt-master\nOpenSlides Studio: https://gitlab.com/open-slides/openslides\nOPF: https://github.com/OpenPresentation/opf\nApache ECharts: https://github.com/apache/echarts\nKaTeX: https://github.com/KaTeX/KaTeX\nFont Awesome: https://github.com/FortAwesome/Font-Awesome\nOpenSlides Studio website: https://openslides.dev/\nOPF website: https://www.openpresentation.org/\n"
 elements:
   - elementId: credits-kicker
     elementType: text
@@ -65,7 +65,7 @@ elements:
     bounds:
         [104,176,240,44]
     content:
-      text: "OpenSlide\n编辑器代码基础，MIT"
+      text: "<a href=\"https://github.com/open-slide/open-slide\" style=\"color:#2B3830\"><u>OpenSlide</u></a><br>编辑器代码基础，MIT"
       fontSize: 11.4
       fontFamily:
         ea: Microsoft YaHei
@@ -91,9 +91,7 @@ elements:
     bounds:
         [104,248,240,44]
     content:
-      text: |-
-        OpenPPTD
-        MathML → OMML 转换（仅此模块）
+      text: "<a href=\"https://github.com/Shingwha/open-pptd\" style=\"color:#2B3830\"><u>OpenPPTD</u></a><br>MathML → OMML 转换（仅此模块）"
       fontSize: 11.4
       fontFamily:
         ea: Microsoft YaHei
@@ -119,9 +117,7 @@ elements:
     bounds:
         [128,320,240,44]
     content:
-      text: |-
-        PptxGenJS
-        PPTX 生成
+      text: "<a href=\"https://github.com/gitbrent/PptxGenJS\" style=\"color:#2B3830\"><u>PptxGenJS</u></a><br>PPTX 生成"
       fontSize: 11.4
       fontFamily:
         ea: Microsoft YaHei
@@ -147,7 +143,7 @@ elements:
     bounds:
         [104,392,240,44]
     content:
-      text: "HUANDENG\n本项目，MIT"
+      text: "<a href=\"https://github.com/JaytonKogeru/huandeng\" style=\"color:#2B3830\"><u>HUANDENG</u></a><br>本项目，MIT"
       fontSize: 11.4
       fontFamily:
         ea: Microsoft YaHei
@@ -262,13 +258,7 @@ elements:
         latin: Arial
       fontSize: 8.6
       lineHeight: 1.85
-      text: |-
-        PowerPoint
-        WPS
-        Kimi / Moonshot
-        PPTist
-        Slidev
-        Presenton
+      text: "<a href=\"https://www.microsoft.com/microsoft-365/powerpoint\" style=\"color:#2B3830\"><u>PowerPoint</u></a><br><a href=\"https://www.wps.com/\" style=\"color:#2B3830\"><u>WPS</u></a><br><a href=\"https://www.kimi.com/\" style=\"color:#2B3830\"><u>Kimi / Moonshot</u></a><br><a href=\"https://github.com/pipipi-pikachu/PPTist\" style=\"color:#2B3830\"><u>PPTist</u></a><br><a href=\"https://github.com/slidevjs/slidev\" style=\"color:#2B3830\"><u>Slidev</u></a><br><a href=\"https://github.com/presenton/presenton\" style=\"color:#2B3830\"><u>Presenton</u></a>"
     elementId: credits-ref-a
     elementType: text
   - bounds:
@@ -286,13 +276,7 @@ elements:
         latin: Arial
       fontSize: 8.6
       lineHeight: 1.85
-      text: |-
-        PPTAgent
-        PPTMaster
-        open-kimi-ppt-skill
-        OpenSlides Studio
-        OPF
-        VS Code
+      text: "<a href=\"https://github.com/icip-cas/PPTAgent\" style=\"color:#2B3830\"><u>PPTAgent</u></a><br><a href=\"https://github.com/hugohe3/ppt-master\" style=\"color:#2B3830\"><u>PPTMaster</u></a><br><a href=\"https://github.com/Amonginin/open-kimi-ppt-skill\" style=\"color:#2B3830\"><u>open-kimi-ppt-skill</u></a><br><a href=\"https://gitlab.com/open-slides/openslides\" style=\"color:#2B3830\"><u>OpenSlides Studio</u></a><br><a href=\"https://github.com/OpenPresentation/opf\" style=\"color:#2B3830\"><u>OPF</u></a><br><a href=\"https://github.com/microsoft/vscode\" style=\"color:#2B3830\"><u>VS Code</u></a>"
     elementId: credits-ref-b
     elementType: text
   - bounds:

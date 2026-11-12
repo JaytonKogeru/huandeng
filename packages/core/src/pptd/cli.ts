@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import fs from 'node:fs/promises';
 import { Command } from 'commander';
+import { reportActivity } from './activity-client.ts';
 import { agentGuide } from './agent-guide.ts';
 import { connectClient } from './client.ts';
 import { launchHuandeng } from './launch.ts';
@@ -140,7 +141,7 @@ program
     const connection = await client();
     print(
       file
-        ? await connection.request('/activity', JSON.parse(await fs.readFile(file, 'utf8')))
+        ? await reportActivity(connection, JSON.parse(await fs.readFile(file, 'utf8')))
         : await connection.request('/activity'),
     );
   });

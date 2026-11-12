@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-11",
+  "date": "2026-11-12",
   "author": "ChatGPT 6 Astra / root",
   "scope": "Images in the current Main and resolved short Presentation; retained historical media is outside this list. English/Chinese reuse within this same author is allowed and recorded.",
   "images": [
@@ -651,6 +651,364 @@
       "origin": "public RCSB acquisition and Python derivation",
       "captureVersion": null,
       "sourceRecord": "independent-20261111/ACQUISITION.json"
+    },
+    {
+      "src": "media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "9DAA",
+          "elementId": "identity-huandeng"
+        },
+        {
+          "collection": "Short Presentation",
+          "slideId": "9DAA",
+          "elementId": "identity-huandeng"
+        }
+      ],
+      "sha256": "6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef",
+      "originalName": "huandeng.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "own project canonical icon",
+      "captureVersion": null,
+      "sourceRecord": "identity-20261112/acquisition.json",
+      "sourceUrl": "packages/desktop/icon.png",
+      "sourcePage": "https://github.com/JaytonKogeru/huandeng",
+      "acquiredAt": "2026-11-11T23:21:00.707038+00:00",
+      "transform": "none; original bytes",
+      "context": "Independently obtained by ChatGPT 6 Astra / root for this edition and the same-author Chinese edition. No Claude or DeepSeek artwork was used."
+    },
+    {
+      "src": "media/imported/84a938550c678d25d3af93c35e4106f94798269f4a8702520e4464bf90323731.png",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "5HW8",
+          "elementId": "identity-foundation-openslide"
+        },
+        {
+          "collection": "Short Presentation",
+          "slideId": "5HW8",
+          "elementId": "identity-foundation-openslide"
+        }
+      ],
+      "sha256": "84a938550c678d25d3af93c35e4106f94798269f4a8702520e4464bf90323731",
+      "originalName": "openslide.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "official organization avatar",
+      "captureVersion": null,
+      "sourceRecord": "identity-20261112/acquisition.json",
+      "sourceUrl": "https://github.com/open-slide.png?size=460",
+      "sourcePage": "https://github.com/open-slide",
+      "acquiredAt": "2026-11-11T23:21:01.081924+00:00",
+      "transform": "none; original bytes",
+      "context": "Independently obtained by ChatGPT 6 Astra / root for this edition and the same-author Chinese edition. No Claude or DeepSeek artwork was used."
+    },
+    {
+      "src": "media/imported/2a2f5cbcc74c7fa83c40127dd8b0e42c23f1157131aebe28492aa1ac27bbdc6d.png",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "5HW8",
+          "elementId": "identity-foundation-github-repository-png"
+        },
+        {
+          "collection": "Main",
+          "slideId": "AAD6",
+          "elementId": "identity-idea-1-github-repository-png"
+        },
+        {
+          "collection": "Main",
+          "slideId": "AAD6",
+          "elementId": "identity-idea-4-github-repository-png"
+        },
+        {
+          "collection": "Short Presentation",
+          "slideId": "5HW8",
+          "elementId": "identity-foundation-github-repository-png"
+        },
+        {
+          "collection": "Short Presentation",
+          "slideId": "AAD6",
+          "elementId": "identity-idea-1-github-repository-png"
+        },
+        {
+          "collection": "Short Presentation",
+          "slideId": "AAD6",
+          "elementId": "identity-idea-4-github-repository-png"
+        }
+      ],
+      "sha256": "2a2f5cbcc74c7fa83c40127dd8b0e42c23f1157131aebe28492aa1ac27bbdc6d",
+      "originalName": "github-repository-png.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "repository hosting marker; not an OpenPPTD or other project logo",
+      "captureVersion": null,
+      "sourceRecord": "identity-20261112/acquisition.json",
+      "sourceUrl": "https://brand.github.com/GitHub_Logos.zip",
+      "sourcePage": "https://brand.github.com/foundations/logo",
+      "acquiredAt": "2026-11-11T23:21:00.715334+00:00",
+      "transform": "none; original bytes",
+      "context": "Independently obtained by ChatGPT 6 Astra / root for this edition and the same-author Chinese edition. No Claude or DeepSeek artwork was used. The GitHub mark identifies a repository host, not a logo of the referenced project."
+    },
+    {
+      "src": "media/imported/d697acf6f3c5bc265806bc8f6c4e6d58b964e0b2962392d0329a420639f45846.png",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "5HW8",
+          "elementId": "identity-foundation-pptxgenjs"
+        },
+        {
+          "collection": "Short Presentation",
+          "slideId": "5HW8",
+          "elementId": "identity-foundation-pptxgenjs"
+        }
+      ],
+      "sha256": "d697acf6f3c5bc265806bc8f6c4e6d58b964e0b2962392d0329a420639f45846",
+      "originalName": "pptxgenjs.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "official documentation favicon",
+      "captureVersion": null,
+      "sourceRecord": "identity-20261112/acquisition.json",
+      "sourceUrl": "https://raw.githubusercontent.com/gitbrent/PptxGenJS/gh-pages/img/favicon.png",
+      "sourcePage": "https://github.com/gitbrent/PptxGenJS",
+      "acquiredAt": "2026-11-11T23:21:01.728483+00:00",
+      "transform": "none; original bytes",
+      "context": "Independently obtained by ChatGPT 6 Astra / root for this edition and the same-author Chinese edition. No Claude or DeepSeek artwork was used."
+    },
+    {
+      "src": "media/imported/9bdf04481c14b24f419bad93903daff9884ad5a4b957a77241ddc0294ce5b423.svg",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "AAD6",
+          "elementId": "identity-idea-0-powerpoint"
+        },
+        {
+          "collection": "Short Presentation",
+          "slideId": "AAD6",
+          "elementId": "identity-idea-0-powerpoint"
+        }
+      ],
+      "sha256": "9bdf04481c14b24f419bad93903daff9884ad5a4b957a77241ddc0294ce5b423",
+      "originalName": "powerpoint.svg",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "official FY26 application icon from Microsoft's product-page asset CDN",
+      "captureVersion": null,
+      "sourceRecord": "identity-20261112/acquisition.json",
+      "sourceUrl": "https://cdn-dynmedia-1.microsoft.com/is/content/microsoftcorp/PowerPoint-Icon-FY26",
+      "sourcePage": "https://www.microsoft.com/en-au/microsoft-365/powerpoint/",
+      "acquiredAt": "2026-11-11T23:24:21.704806+00:00",
+      "transform": "none; original bytes",
+      "context": "Independently obtained by ChatGPT 6 Astra / root for this edition and the same-author Chinese edition. No Claude or DeepSeek artwork was used."
+    },
+    {
+      "src": "media/imported/5b46f662784210c710581ca04e16c903e13afe9dc5ef35d1261d3ae67d60eea3.png",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "AAD6",
+          "elementId": "identity-idea-0-wps"
+        },
+        {
+          "collection": "Short Presentation",
+          "slideId": "AAD6",
+          "elementId": "identity-idea-0-wps"
+        }
+      ],
+      "sha256": "5b46f662784210c710581ca04e16c903e13afe9dc5ef35d1261d3ae67d60eea3",
+      "originalName": "wps.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "official website icon",
+      "captureVersion": null,
+      "sourceRecord": "identity-20261112/acquisition.json",
+      "sourceUrl": "https://www.wps.com/apple-touch-icon.png",
+      "sourcePage": "https://www.wps.com/",
+      "acquiredAt": "2026-11-11T23:21:22.246036+00:00",
+      "transform": "none; original bytes",
+      "context": "Independently obtained by ChatGPT 6 Astra / root for this edition and the same-author Chinese edition. No Claude or DeepSeek artwork was used."
+    },
+    {
+      "src": "media/imported/6c14f9c3062e953b3ed57ae3e19db931c1c1bba38d4d8d55550544f31d55e469.png",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "AAD6",
+          "elementId": "identity-idea-1-kimi"
+        },
+        {
+          "collection": "Short Presentation",
+          "slideId": "AAD6",
+          "elementId": "identity-idea-1-kimi"
+        }
+      ],
+      "sha256": "6c14f9c3062e953b3ed57ae3e19db931c1c1bba38d4d8d55550544f31d55e469",
+      "originalName": "kimi.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "official application icon",
+      "captureVersion": null,
+      "sourceRecord": "identity-20261112/acquisition.json",
+      "sourceUrl": "https://www.kimi.com/pwa-192.png",
+      "sourcePage": "https://www.kimi.com/",
+      "acquiredAt": "2026-11-11T23:21:22.296955+00:00",
+      "transform": "none; original bytes",
+      "context": "Independently obtained by ChatGPT 6 Astra / root for this edition and the same-author Chinese edition. No Claude or DeepSeek artwork was used."
+    },
+    {
+      "src": "media/imported/1e42cdadab8976efcb0ce10281c89d650be0cf6a2e0968895ea1ac44f1a4dae8.png",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "AAD6",
+          "elementId": "identity-idea-2-pptist"
+        },
+        {
+          "collection": "Short Presentation",
+          "slideId": "AAD6",
+          "elementId": "identity-idea-2-pptist"
+        }
+      ],
+      "sha256": "1e42cdadab8976efcb0ce10281c89d650be0cf6a2e0968895ea1ac44f1a4dae8",
+      "originalName": "pptist.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "official repository logo",
+      "captureVersion": null,
+      "sourceRecord": "identity-20261112/acquisition.json",
+      "sourceUrl": "https://raw.githubusercontent.com/pipipi-pikachu/PPTist/master/public/logo.png",
+      "sourcePage": "https://github.com/pipipi-pikachu/PPTist",
+      "acquiredAt": "2026-11-11T23:21:22.651825+00:00",
+      "transform": "none; original bytes",
+      "context": "Independently obtained by ChatGPT 6 Astra / root for this edition and the same-author Chinese edition. No Claude or DeepSeek artwork was used."
+    },
+    {
+      "src": "media/imported/6baf5c58f993ac6a564ac851b90e154816f4245d2e36cb5e6da99393350b6161.png",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "AAD6",
+          "elementId": "identity-idea-2-vscode"
+        },
+        {
+          "collection": "Short Presentation",
+          "slideId": "AAD6",
+          "elementId": "identity-idea-2-vscode"
+        }
+      ],
+      "sha256": "6baf5c58f993ac6a564ac851b90e154816f4245d2e36cb5e6da99393350b6161",
+      "originalName": "vscode.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "official website icon",
+      "captureVersion": null,
+      "sourceRecord": "identity-20261112/acquisition.json",
+      "sourceUrl": "https://code.visualstudio.com/assets/apple-touch-icon.png",
+      "sourcePage": "https://code.visualstudio.com/",
+      "acquiredAt": "2026-11-11T23:21:23.185358+00:00",
+      "transform": "none; original bytes",
+      "context": "Independently obtained by ChatGPT 6 Astra / root for this edition and the same-author Chinese edition. No Claude or DeepSeek artwork was used."
+    },
+    {
+      "src": "media/imported/9c8d7094fb141dae910439dfd8e15f6f1aa226726327f5497c33459043b1098e.svg",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "AAD6",
+          "elementId": "identity-idea-3-slidev"
+        },
+        {
+          "collection": "Short Presentation",
+          "slideId": "AAD6",
+          "elementId": "identity-idea-3-slidev"
+        }
+      ],
+      "sha256": "9c8d7094fb141dae910439dfd8e15f6f1aa226726327f5497c33459043b1098e",
+      "originalName": "slidev.svg",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "official project logo",
+      "captureVersion": null,
+      "sourceRecord": "identity-20261112/acquisition.json",
+      "sourceUrl": "https://sli.dev/logo.svg",
+      "sourcePage": "https://sli.dev/",
+      "acquiredAt": "2026-11-11T23:21:23.519948+00:00",
+      "transform": "none; original bytes",
+      "context": "Independently obtained by ChatGPT 6 Astra / root for this edition and the same-author Chinese edition. No Claude or DeepSeek artwork was used."
+    },
+    {
+      "src": "media/imported/e40d10800e25e1fae433f465606d6d6ff7cf5d72789f8cf6933f5e25808b0df4.png",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "AAD6",
+          "elementId": "identity-idea-3-presenton"
+        },
+        {
+          "collection": "Short Presentation",
+          "slideId": "AAD6",
+          "elementId": "identity-idea-3-presenton"
+        }
+      ],
+      "sha256": "e40d10800e25e1fae433f465606d6d6ff7cf5d72789f8cf6933f5e25808b0df4",
+      "originalName": "presenton.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "official website icon",
+      "captureVersion": null,
+      "sourceRecord": "identity-20261112/acquisition.json",
+      "sourceUrl": "https://presenton.ai/icon2.png?icon2.01llxonx9d_gq.png",
+      "sourcePage": "https://presenton.ai/",
+      "acquiredAt": "2026-11-11T23:21:23.871800+00:00",
+      "transform": "none; original bytes",
+      "context": "Independently obtained by ChatGPT 6 Astra / root for this edition and the same-author Chinese edition. No Claude or DeepSeek artwork was used."
+    },
+    {
+      "src": "media/imported/b44ba9ece39b8c594d1553a45bb354111340218e6f84e8a23e091fff08b1ac65.png",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "AAD6",
+          "elementId": "identity-idea-5-openslides-studio"
+        },
+        {
+          "collection": "Short Presentation",
+          "slideId": "AAD6",
+          "elementId": "identity-idea-5-openslides-studio"
+        }
+      ],
+      "sha256": "b44ba9ece39b8c594d1553a45bb354111340218e6f84e8a23e091fff08b1ac65",
+      "originalName": "openslides-studio.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "official website icon",
+      "captureVersion": null,
+      "sourceRecord": "identity-20261112/acquisition.json",
+      "sourceUrl": "https://openslides.dev/icon-192.png",
+      "sourcePage": "https://openslides.dev/",
+      "acquiredAt": "2026-11-11T23:21:24.368427+00:00",
+      "transform": "none; original bytes",
+      "context": "Independently obtained by ChatGPT 6 Astra / root for this edition and the same-author Chinese edition. No Claude or DeepSeek artwork was used."
+    },
+    {
+      "src": "media/imported/c3e6a86a8f544d9b62ceab62ba9e911a4c4313bc6a84c30e933c48bd128d8a84.png",
+      "uses": [
+        {
+          "collection": "Main",
+          "slideId": "AAD6",
+          "elementId": "identity-idea-5-opf"
+        },
+        {
+          "collection": "Short Presentation",
+          "slideId": "AAD6",
+          "elementId": "identity-idea-5-opf"
+        }
+      ],
+      "sha256": "c3e6a86a8f544d9b62ceab62ba9e911a4c4313bc6a84c30e933c48bd128d8a84",
+      "originalName": "opf.png",
+      "acquiredBy": "ChatGPT 6 Astra / root",
+      "origin": "official website icon",
+      "captureVersion": null,
+      "sourceRecord": "identity-20261112/acquisition.json",
+      "sourceUrl": "https://www.openpresentation.org/apple-icon",
+      "sourcePage": "https://www.openpresentation.org/",
+      "acquiredAt": "2026-11-11T23:21:27.045191+00:00",
+      "transform": "none; original bytes",
+      "context": "Independently obtained by ChatGPT 6 Astra / root for this edition and the same-author Chinese edition. No Claude or DeepSeek artwork was used."
     }
   ]
 }

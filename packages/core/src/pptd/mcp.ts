@@ -8,7 +8,9 @@ import {
   type Tool,
 } from '@modelcontextprotocol/sdk/types.js';
 import huandengPluginManifest from '../../../../plugins/huandeng/plugin.json';
+import { reportActivity } from './activity-client';
 import { agentGuide, agentGuides } from './agent-guide';
+import { activityPhases, agentFamilies } from './agent-identity';
 import { acquireEditorCapture, acquireImage } from './asset-acquisition';
 import type { HuandengClient } from './client.ts';
 import {
@@ -65,6 +67,18 @@ const tools: Tool[] = [
         taskId: { type: 'string', maxLength: 160 },
         sessionId: { type: 'string', maxLength: 160 },
         actor: { type: 'string', maxLength: 100 },
+        agentFamily: {
+          type: 'string',
+          enum: agentFamilies.map((family) => family.id),
+          description:
+            'Declared client family, not a verified model identity. Unsupported writer fields are returned in compatibility.omittedFields.',
+        },
+        phase: {
+          type: 'string',
+          enum: [...activityPhases],
+          description:
+            'Observable workflow stage. Spec includes Frame; a report is not a model heartbeat.',
+        },
         status: {
           type: 'string',
           enum: ['planned', 'running', 'waiting', 'completed', 'failed', 'cancelled'],
@@ -498,7 +512,7 @@ export function createMcpServer(client: HuandengClient) {
           result = await client.request('/activity');
           break;
         case 'huandeng_activity_report':
-          result = await client.request('/activity', args);
+          result = await reportActivity(client, args);
           break;
         case 'huandeng_context': {
           const snapshot = await client.session();

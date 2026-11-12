@@ -64,135 +64,9 @@ elements:
       - 884
       - 333
     columnWidths:
-      - 0.41
-      - 0.59
+        [0.08,0.34,0.58]
     rows:
-      - - text: Reference
-          fontSize: 14
-          fontFamily: Segoe UI
-          color: "#25282C"
-          bold: true
-          fill: "#E8ECEF"
-          border:
-            width: 0.5
-            color: "#D3D9DD"
-        - text: What it helped us think through
-          fontSize: 14
-          fontFamily: Segoe UI
-          color: "#25282C"
-          bold: true
-          fill: "#E8ECEF"
-          border:
-            width: 0.5
-            color: "#D3D9DD"
-      - - text: PowerPoint / WPS
-          fontSize: 14
-          fontFamily: Segoe UI
-          color: "#25282C"
-          bold: true
-          fill: "#FFFFFF"
-          border:
-            width: 0.5
-            color: "#D3D9DD"
-        - text: Sections, notes, presenting and contextual actions
-          fontSize: 14
-          fontFamily: Segoe UI
-          color: "#25282C"
-          bold: false
-          fill: "#FFFFFF"
-          border:
-            width: 0.5
-            color: "#D3D9DD"
-      - - text: Kimi / Moonshot / open-kimi-ppt-skill
-          fontSize: 14
-          fontFamily: Segoe UI
-          color: "#25282C"
-          bold: true
-          fill: "#FFFFFF"
-          border:
-            width: 0.5
-            color: "#D3D9DD"
-        - text: Agent workflows and community PPTD conventions
-          fontSize: 14
-          fontFamily: Segoe UI
-          color: "#25282C"
-          bold: false
-          fill: "#FFFFFF"
-          border:
-            width: 0.5
-            color: "#D3D9DD"
-      - - text: PPTist / VS Code
-          fontSize: 14
-          fontFamily: Segoe UI
-          color: "#25282C"
-          bold: true
-          fill: "#FFFFFF"
-          border:
-            width: 0.5
-            color: "#D3D9DD"
-        - text: Canvas interaction, shortcuts and workspaces
-          fontSize: 14
-          fontFamily: Segoe UI
-          color: "#25282C"
-          bold: false
-          fill: "#FFFFFF"
-          border:
-            width: 0.5
-            color: "#D3D9DD"
-      - - text: Slidev / Presenton
-          fontSize: 14
-          fontFamily: Segoe UI
-          color: "#25282C"
-          bold: true
-          fill: "#FFFFFF"
-          border:
-            width: 0.5
-            color: "#D3D9DD"
-        - text: Local sources, themes and design references
-          fontSize: 14
-          fontFamily: Segoe UI
-          color: "#25282C"
-          bold: false
-          fill: "#FFFFFF"
-          border:
-            width: 0.5
-            color: "#D3D9DD"
-      - - text: PPTAgent / PPTMaster
-          fontSize: 14
-          fontFamily: Segoe UI
-          color: "#25282C"
-          bold: true
-          fill: "#FFFFFF"
-          border:
-            width: 0.5
-            color: "#D3D9DD"
-        - text: Generation, visual review and native PPTX
-          fontSize: 14
-          fontFamily: Segoe UI
-          color: "#25282C"
-          bold: false
-          fill: "#FFFFFF"
-          border:
-            width: 0.5
-            color: "#D3D9DD"
-      - - text: OpenSlides Studio / OPF
-          fontSize: 14
-          fontFamily: Segoe UI
-          color: "#25282C"
-          bold: true
-          fill: "#FFFFFF"
-          border:
-            width: 0.5
-            color: "#D3D9DD"
-        - text: Explicit identity, revisions and patch contracts
-          fontSize: 14
-          fontFamily: Segoe UI
-          color: "#25282C"
-          bold: false
-          fill: "#FFFFFF"
-          border:
-            width: 0.5
-            color: "#D3D9DD"
+        [[{"text":"","fontSize":14,"fontFamily":"Segoe UI","color":"#25282C","bold":true,"fill":"#E8ECEF","border":{"width":0.5,"color":"#D3D9DD"}},{"text":"Reference","fontSize":14,"fontFamily":"Segoe UI","color":"#25282C","bold":true,"fill":"#E8ECEF","border":{"width":0.5,"color":"#D3D9DD"}},{"text":"What it helped us think through","fontSize":14,"fontFamily":"Segoe UI","color":"#25282C","bold":true,"fill":"#E8ECEF","border":{"width":0.5,"color":"#D3D9DD"}}],[{"text":"","fontSize":14,"fontFamily":"Segoe UI","color":"#25282C","bold":true,"fill":"#FFFFFF","border":{"width":0.5,"color":"#D3D9DD"}},{"text":"<a href=\"https://www.microsoft.com/microsoft-365/powerpoint\" style=\"color:#25282C\"><u>PowerPoint</u></a> / <a href=\"https://www.wps.com/\" style=\"color:#25282C\"><u>WPS</u></a>","fontSize":14,"fontFamily":"Segoe UI","color":"#25282C","bold":true,"fill":"#FFFFFF","border":{"width":0.5,"color":"#D3D9DD"}},{"text":"Sections, notes, presenting and contextual actions","fontSize":14,"fontFamily":"Segoe UI","color":"#25282C","bold":false,"fill":"#FFFFFF","border":{"width":0.5,"color":"#D3D9DD"}}],[{"text":"","fontSize":14,"fontFamily":"Segoe UI","color":"#25282C","bold":true,"fill":"#FFFFFF","border":{"width":0.5,"color":"#D3D9DD"}},{"text":"<a href=\"https://www.kimi.com/\" style=\"color:#25282C\"><u>Kimi / Moonshot</u></a> / <a href=\"https://github.com/Amonginin/open-kimi-ppt-skill\" style=\"color:#25282C\"><u>open-kimi-ppt-skill</u></a>","fontSize":14,"fontFamily":"Segoe UI","color":"#25282C","bold":true,"fill":"#FFFFFF","border":{"width":0.5,"color":"#D3D9DD"}},{"text":"Agent workflows and community PPTD conventions","fontSize":14,"fontFamily":"Segoe UI","color":"#25282C","bold":false,"fill":"#FFFFFF","border":{"width":0.5,"color":"#D3D9DD"}}],[{"text":"","fontSize":14,"fontFamily":"Segoe UI","color":"#25282C","bold":true,"fill":"#FFFFFF","border":{"width":0.5,"color":"#D3D9DD"}},{"text":"<a href=\"https://github.com/pipipi-pikachu/PPTist\" style=\"color:#25282C\"><u>PPTist</u></a> / <a href=\"https://github.com/microsoft/vscode\" style=\"color:#25282C\"><u>VS Code</u></a>","fontSize":14,"fontFamily":"Segoe UI","color":"#25282C","bold":true,"fill":"#FFFFFF","border":{"width":0.5,"color":"#D3D9DD"}},{"text":"Canvas interaction, shortcuts and workspaces","fontSize":14,"fontFamily":"Segoe UI","color":"#25282C","bold":false,"fill":"#FFFFFF","border":{"width":0.5,"color":"#D3D9DD"}}],[{"text":"","fontSize":14,"fontFamily":"Segoe UI","color":"#25282C","bold":true,"fill":"#FFFFFF","border":{"width":0.5,"color":"#D3D9DD"}},{"text":"<a href=\"https://github.com/slidevjs/slidev\" style=\"color:#25282C\"><u>Slidev</u></a> / <a href=\"https://github.com/presenton/presenton\" style=\"color:#25282C\"><u>Presenton</u></a>","fontSize":14,"fontFamily":"Segoe UI","color":"#25282C","bold":true,"fill":"#FFFFFF","border":{"width":0.5,"color":"#D3D9DD"}},{"text":"Local sources, themes and design references","fontSize":14,"fontFamily":"Segoe UI","color":"#25282C","bold":false,"fill":"#FFFFFF","border":{"width":0.5,"color":"#D3D9DD"}}],[{"text":"","fontSize":14,"fontFamily":"Segoe UI","color":"#25282C","bold":true,"fill":"#FFFFFF","border":{"width":0.5,"color":"#D3D9DD"}},{"text":"<a href=\"https://github.com/icip-cas/PPTAgent\" style=\"color:#25282C\"><u>PPTAgent</u></a> / <a href=\"https://github.com/hugohe3/ppt-master\" style=\"color:#25282C\"><u>PPTMaster</u></a>","fontSize":14,"fontFamily":"Segoe UI","color":"#25282C","bold":true,"fill":"#FFFFFF","border":{"width":0.5,"color":"#D3D9DD"}},{"text":"Generation, visual review and native PPTX","fontSize":14,"fontFamily":"Segoe UI","color":"#25282C","bold":false,"fill":"#FFFFFF","border":{"width":0.5,"color":"#D3D9DD"}}],[{"text":"","fontSize":14,"fontFamily":"Segoe UI","color":"#25282C","bold":true,"fill":"#FFFFFF","border":{"width":0.5,"color":"#D3D9DD"}},{"text":"<a href=\"https://gitlab.com/open-slides/openslides\" style=\"color:#25282C\"><u>OpenSlides Studio</u></a> / <a href=\"https://github.com/OpenPresentation/opf\" style=\"color:#25282C\"><u>OPF</u></a>","fontSize":14,"fontFamily":"Segoe UI","color":"#25282C","bold":true,"fill":"#FFFFFF","border":{"width":0.5,"color":"#D3D9DD"}},{"text":"Explicit identity, revisions and patch contracts","fontSize":14,"fontFamily":"Segoe UI","color":"#25282C","bold":false,"fill":"#FFFFFF","border":{"width":0.5,"color":"#D3D9DD"}}]]
   - elementId: v-further
     elementType: text
     bounds:
@@ -201,9 +75,7 @@ elements:
       - 884
       - 44
     content:
-      text: |-
-        And a wider study of editors, animation and interfaces.
-        All 33 historical references and their roles are in ACKNOWLEDGMENTS.md.
+      text: "Names link to repositories or official sites. Full sources and relationships: docs/ACKNOWLEDGMENTS.md"
       fontFamily: Segoe UI
       fontSize: 14
       color: "#25282C"
@@ -212,4 +84,92 @@ elements:
       align:
         - left
         - top
-notes: "These formal acknowledgments restore the fifteen sources explicitly named in the original introduction. Code reuse, runtime dependencies, product inspiration and researched alternatives are different relationships. The complete thirty-three-source historical record is in docs/ACKNOWLEDGMENTS.md and the project sources. OpenSlides Studio is openslides.dev, distinct from the OpenSlide editor upstream."
+  - elementId: identity-idea-0-powerpoint
+    elementType: image
+    src: media/imported/9bdf04481c14b24f419bad93903daff9884ad5a4b957a77241ddc0294ce5b423.svg
+    bounds:
+        [48.36,173.25,22,22]
+    sourceName: PowerPoint
+    fit:
+      mode: contain
+  - elementId: identity-idea-0-wps
+    elementType: image
+    src: media/imported/5b46f662784210c710581ca04e16c903e13afe9dc5ef35d1261d3ae67d60eea3.png
+    bounds:
+        [76.36,173.25,22,22]
+    sourceName: WPS
+    fit:
+      mode: contain
+  - elementId: identity-idea-1-kimi
+    elementType: image
+    src: media/imported/6c14f9c3062e953b3ed57ae3e19db931c1c1bba38d4d8d55550544f31d55e469.png
+    bounds:
+        [48.36,219.66,22,22]
+    sourceName: Kimi
+    fit:
+      mode: contain
+  - elementId: identity-idea-1-github-repository-png
+    elementType: image
+    src: media/imported/2a2f5cbcc74c7fa83c40127dd8b0e42c23f1157131aebe28492aa1ac27bbdc6d.png
+    bounds:
+        [76.36,219.66,22,22]
+    sourceName: GitHub repository marker
+    fit:
+      mode: contain
+  - elementId: identity-idea-2-pptist
+    elementType: image
+    src: media/imported/1e42cdadab8976efcb0ce10281c89d650be0cf6a2e0968895ea1ac44f1a4dae8.png
+    bounds:
+        [48.36,266.06,22,22]
+    sourceName: PPTist
+    fit:
+      mode: contain
+  - elementId: identity-idea-2-vscode
+    elementType: image
+    src: media/imported/6baf5c58f993ac6a564ac851b90e154816f4245d2e36cb5e6da99393350b6161.png
+    bounds:
+        [76.36,266.06,22,22]
+    sourceName: VS Code
+    fit:
+      mode: contain
+  - elementId: identity-idea-3-slidev
+    elementType: image
+    src: media/imported/9c8d7094fb141dae910439dfd8e15f6f1aa226726327f5497c33459043b1098e.svg
+    bounds:
+        [48.36,312.47,22,22]
+    sourceName: Slidev
+    fit:
+      mode: contain
+  - elementId: identity-idea-3-presenton
+    elementType: image
+    src: media/imported/e40d10800e25e1fae433f465606d6d6ff7cf5d72789f8cf6933f5e25808b0df4.png
+    bounds:
+        [76.36,312.47,22,22]
+    sourceName: Presenton
+    fit:
+      mode: contain
+  - elementId: identity-idea-4-github-repository-png
+    elementType: image
+    src: media/imported/2a2f5cbcc74c7fa83c40127dd8b0e42c23f1157131aebe28492aa1ac27bbdc6d.png
+    bounds:
+        [62.36,358.87,22,22]
+    sourceName: GitHub repository marker
+    fit:
+      mode: contain
+  - elementId: identity-idea-5-openslides-studio
+    elementType: image
+    src: media/imported/b44ba9ece39b8c594d1553a45bb354111340218e6f84e8a23e091fff08b1ac65.png
+    bounds:
+        [48.36,405.29,22,22]
+    sourceName: OpenSlides Studio
+    fit:
+      mode: contain
+  - elementId: identity-idea-5-opf
+    elementType: image
+    src: media/imported/c3e6a86a8f544d9b62ceab62ba9e911a4c4313bc6a84c30e933c48bd128d8a84.png
+    bounds:
+        [76.36,405.29,22,22]
+    sourceName: OPF
+    fit:
+      mode: contain
+notes: "These formal acknowledgments restore the fifteen sources explicitly named in the original introduction. Code reuse, runtime dependencies, product inspiration and researched alternatives are different relationships. The complete thirty-three-source historical record is in docs/ACKNOWLEDGMENTS.md and the project sources. OpenSlides Studio is openslides.dev, distinct from the OpenSlide editor upstream.\n\nReference URLs (names link to source repositories or official sites):\nHUANDENG: https://github.com/JaytonKogeru/huandeng\nOpenSlide: https://github.com/open-slide/open-slide\nOpenPPTD: https://github.com/Shingwha/open-pptd\nPptxGenJS: https://github.com/gitbrent/PptxGenJS\nPowerPoint: https://www.microsoft.com/microsoft-365/powerpoint\nWPS: https://www.wps.com/\nKimi / Moonshot AI: https://www.kimi.com/\nopen-kimi-ppt-skill: https://github.com/Amonginin/open-kimi-ppt-skill\nPPTist: https://github.com/pipipi-pikachu/PPTist\nVS Code: https://github.com/microsoft/vscode\nSlidev: https://github.com/slidevjs/slidev\nPresenton: https://github.com/presenton/presenton\nPPTAgent: https://github.com/icip-cas/PPTAgent\nPPTMaster: https://github.com/hugohe3/ppt-master\nOpenSlides Studio: https://gitlab.com/open-slides/openslides\nOPF: https://github.com/OpenPresentation/opf\nApache ECharts: https://github.com/apache/echarts\nKaTeX: https://github.com/KaTeX/KaTeX\nFont Awesome: https://github.com/FortAwesome/Font-Awesome\nOpenSlides Studio website: https://openslides.dev/\nOPF website: https://www.openpresentation.org/\n"

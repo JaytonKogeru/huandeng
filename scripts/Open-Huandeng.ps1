@@ -6,7 +6,11 @@ param(
 )
 $ErrorActionPreference = "Stop"
 $project = Split-Path -Parent $PSScriptRoot
-$packagedApp = Join-Path $project "dist\HUANDENG-win32-x64\HUANDENG Editor.exe"
+$release = Get-Content -LiteralPath (Join-Path $project "packages\desktop\release.json") -Raw -Encoding UTF8 | ConvertFrom-Json
+$packagedApp = Join-Path $project ("dist\HUANDENG-v" + $release.version + "-win32-x64\HUANDENG Editor.exe")
+if (-not (Test-Path -LiteralPath $packagedApp)) {
+    $packagedApp = Join-Path $project "dist\HUANDENG-win32-x64\HUANDENG Editor.exe"
+}
 $appArguments = @()
 if (Test-Path -LiteralPath $packagedApp) {
     $executable = $packagedApp

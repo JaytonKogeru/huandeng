@@ -63,12 +63,7 @@ elements:
     columnWidths:
         [0.4,0.6]
     rows:
-      - - text: OpenSlide
-        - text: 编辑器基础：画布、属性面板、放映
-      - - text: OpenPPTD
-        - text: 三个公式转换模块
-      - - text: PptxGenJS
-        - text: 生成 PPTX 文件的库
+        [[{"text":"<a href=\"https://github.com/open-slide/open-slide\" style=\"color:#2E6B5E\"><u>OpenSlide</u></a>"},{"text":"编辑器基础：画布、属性面板、放映"}],[{"text":"<a href=\"https://github.com/Shingwha/open-pptd\" style=\"color:#2E6B5E\"><u>OpenPPTD</u></a>"},{"text":"三个公式转换模块"}],[{"text":"<a href=\"https://github.com/gitbrent/PptxGenJS\" style=\"color:#2E6B5E\"><u>PptxGenJS</u></a>"},{"text":"生成 PPTX 文件的库"}]]
     style:
       cellStyle:
         fontFamily: Microsoft YaHei
@@ -115,10 +110,7 @@ elements:
     columnWidths:
         [0.4,0.6]
     rows:
-      - - text: Kimi / 月之暗面
-        - text: 我在这里接触到 PPTD 和 agent 修订
-      - - text: open-kimi-ppt-skill
-        - text: 社区整理的 PPTD 格式说明
+        [[{"text":"<a href=\"https://www.kimi.com/\" style=\"color:#2E6B5E\"><u>Kimi / 月之暗面</u></a>"},{"text":"我在这里接触到 PPTD 和 agent 修订"}],[{"text":"<a href=\"https://github.com/Amonginin/open-kimi-ppt-skill\" style=\"color:#2E6B5E\"><u>open-kimi-ppt-skill</u></a>"},{"text":"社区整理的 PPTD 格式说明"}]]
     style:
       cellStyle:
         fontFamily: Microsoft YaHei
@@ -179,16 +171,7 @@ elements:
       - 0.42
       - 0.58
     rows:
-      - - text: PowerPoint
-        - text: 章节、备注、视图、放映
-      - - text: WPS 演示
-        - text: 工具栏和菜单里的章节操作
-      - - text: VS Code
-        - text: 标签页、侧栏、活动面板
-      - - text: OpenSlides Studio
-        - text: 显式 ID、统一操作
-      - - text: OPF / OpenPresentation
-        - text: 版本前提、补丁、冲突
+        [[{"text":"<a href=\"https://www.microsoft.com/microsoft-365/powerpoint\" style=\"color:#2E6B5E\"><u>PowerPoint</u></a>"},{"text":"章节、备注、视图、放映"}],[{"text":"<a href=\"https://www.wps.com/\" style=\"color:#2E6B5E\"><u>WPS 演示</u></a>"},{"text":"工具栏和菜单里的章节操作"}],[{"text":"<a href=\"https://github.com/microsoft/vscode\" style=\"color:#2E6B5E\"><u>VS Code</u></a>"},{"text":"标签页、侧栏、活动面板"}],[{"text":"<a href=\"https://gitlab.com/open-slides/openslides\" style=\"color:#2E6B5E\"><u>OpenSlides Studio</u></a>"},{"text":"显式 ID、统一操作"}],[{"text":"<a href=\"https://github.com/OpenPresentation/opf\" style=\"color:#2E6B5E\"><u>OPF / OpenPresentation</u></a>"},{"text":"版本前提、补丁、冲突"}]]
     style:
       cellStyle:
         fontFamily: Microsoft YaHei
@@ -236,16 +219,7 @@ elements:
       - 0.42
       - 0.58
     rows:
-      - - text: PPTist
-        - text: 右键菜单、快捷键、缩略图
-      - - text: Slidev
-        - text: 主题与布局分离；CLI、MCP
-      - - text: Presenton
-        - text: 模板；人和 agent 一起修订
-      - - text: PPTAgent
-        - text: 渲染后审阅，源变了就重审
-      - - text: PPT Master
-        - text: 原生 OOXML、SVG、母版导出
+        [[{"text":"<a href=\"https://github.com/pipipi-pikachu/PPTist\" style=\"color:#2E6B5E\"><u>PPTist</u></a>"},{"text":"右键菜单、快捷键、缩略图"}],[{"text":"<a href=\"https://github.com/slidevjs/slidev\" style=\"color:#2E6B5E\"><u>Slidev</u></a>"},{"text":"主题与布局分离；CLI、MCP"}],[{"text":"<a href=\"https://github.com/presenton/presenton\" style=\"color:#2E6B5E\"><u>Presenton</u></a>"},{"text":"模板；人和 agent 一起修订"}],[{"text":"<a href=\"https://github.com/icip-cas/PPTAgent\" style=\"color:#2E6B5E\"><u>PPTAgent</u></a>"},{"text":"渲染后审阅，源变了就重审"}],[{"text":"<a href=\"https://github.com/hugohe3/ppt-master\" style=\"color:#2E6B5E\"><u>PPT Master</u></a>"},{"text":"原生 OOXML、SVG、母版导出"}]]
     style:
       cellStyle:
         fontFamily: Microsoft YaHei
@@ -325,4 +299,4 @@ elements:
       align:
         - right
         - middle
-notes: 最后谢谢这些项目。真正在代码里的只有三个：OpenSlide 是编辑器的基础，OpenPPTD 提供了公式转换，PptxGenJS 负责写出 PPTX。想法上，我是在 Kimi 的生态里接触到 PPTD 的，open-kimi-ppt-skill 这个社区项目整理过它的格式。设计上参考了 PowerPoint 和 WPS 的章节与备注、VS Code 的侧栏和面板、OpenSlides Studio 的显式 ID，以及 OPF 的版本前提和冲突处理。右下是我研究过的同类项目：PPTist、Slidev、Presenton、PPTAgent 和 PPT Master。它们都不代表为幻灯背书；完整清单在仓库的 ACKNOWLEDGMENTS 文档里。
+notes: "最后谢谢这些项目。真正在代码里的只有三个：OpenSlide 是编辑器的基础，OpenPPTD 提供了公式转换，PptxGenJS 负责写出 PPTX。想法上，我是在 Kimi 的生态里接触到 PPTD 的，open-kimi-ppt-skill 这个社区项目整理过它的格式。设计上参考了 PowerPoint 和 WPS 的章节与备注、VS Code 的侧栏和面板、OpenSlides Studio 的显式 ID，以及 OPF 的版本前提和冲突处理。右下是我研究过的同类项目：PPTist、Slidev、Presenton、PPTAgent 和 PPT Master。它们都不代表为幻灯背书；完整清单在仓库的 ACKNOWLEDGMENTS 文档里。\n\n引用网址（名称链接到仓库或官网）：\nHUANDENG: https://github.com/JaytonKogeru/huandeng\nOpenSlide: https://github.com/open-slide/open-slide\nOpenPPTD: https://github.com/Shingwha/open-pptd\nPptxGenJS: https://github.com/gitbrent/PptxGenJS\nPowerPoint: https://www.microsoft.com/microsoft-365/powerpoint\nWPS: https://www.wps.com/\nKimi / Moonshot AI: https://www.kimi.com/\nopen-kimi-ppt-skill: https://github.com/Amonginin/open-kimi-ppt-skill\nPPTist: https://github.com/pipipi-pikachu/PPTist\nVS Code: https://github.com/microsoft/vscode\nSlidev: https://github.com/slidevjs/slidev\nPresenton: https://github.com/presenton/presenton\nPPTAgent: https://github.com/icip-cas/PPTAgent\nPPTMaster: https://github.com/hugohe3/ppt-master\nOpenSlides Studio: https://gitlab.com/open-slides/openslides\nOPF: https://github.com/OpenPresentation/opf\nApache ECharts: https://github.com/apache/echarts\nKaTeX: https://github.com/KaTeX/KaTeX\nFont Awesome: https://github.com/FortAwesome/Font-Awesome\nOpenSlides Studio website: https://openslides.dev/\nOPF website: https://www.openpresentation.org/\n"

@@ -41,6 +41,16 @@ describe('Assistant connection instructions', () => {
     },
   );
 
+  it('guides native DeepSeek configuration separately from the compatibility patch', () => {
+    expect(agentConnectionSteps['deepseek-native'].join(' ')).toContain('Plugin Manager');
+    expect(agentConnectionSteps['deepseek-native'].join(' ')).toContain(
+      'existing huandeng plugin entry',
+    );
+    expect(agentConnectionSteps['deepseek-native'].join(' ')).not.toContain('dsh --patch');
+    expect(agentConnectionSteps.deepseek.join(' ')).toContain('Do not enable both routes');
+    expect(agentConnectionSteps.deepseek.join(' ')).toContain('dsh --patch');
+  });
+
   it('identifies the exact project and asks for a read-only first task in both languages', () => {
     for (const locale of ['en', 'zh-CN'] as const) {
       const prompt = agentFirstTask(

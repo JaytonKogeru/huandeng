@@ -1,4 +1,10 @@
 import fs from 'node:fs/promises';
+import {
+  type ActivityPhase,
+  type AgentFamily,
+  isActivityPhase,
+  isAgentFamily,
+} from './agent-identity';
 import { atomicWrite, hashPayload } from './persistence';
 import { type DocumentEvent, PptdError } from './types';
 
@@ -19,6 +25,8 @@ export interface ActivityReport {
   taskId: string;
   sessionId: string;
   actor: string;
+  agentFamily?: AgentFamily;
+  phase?: ActivityPhase;
   status: ActivityStatus;
   summary: string;
   pageIds?: string[];
@@ -40,6 +48,7 @@ export interface ActivitySnapshot {
   sequence: number;
   events: ActivityEvent[];
   retainedLimit: number;
+  reportCapabilities?: { agentFamily: boolean; phase: boolean };
   storageError?: string;
 }
 
@@ -65,6 +74,8 @@ function validStoredEvent(
     event.sequence <= lastSequence &&
     ['client', 'writer'].includes(event.source) &&
     activityStatuses.includes(event.status) &&
+    (event.agentFamily === undefined || isAgentFamily(event.agentFamily)) &&
+    (event.phase === undefined || isActivityPhase(event.phase)) &&
     ['requestId', 'taskId', 'sessionId', 'actor', 'summary', 'epoch'].every((key) => {
       const text = event[key as keyof ActivityEvent];
       return typeof text === 'string' && text.length > 0 && text.length <= 1000;
@@ -133,6 +144,8 @@ export function validateActivityReport(value: unknown, deckId: string): Activity
     'taskId',
     'sessionId',
     'actor',
+    'agentFamily',
+    'phase',
     'status',
     'summary',
     'pageIds',
@@ -142,6 +155,10 @@ export function validateActivityReport(value: unknown, deckId: string): Activity
     throw new PptdError('INVALID_REQUEST', 'Unknown activity report field.');
   if (!activityStatuses.includes(input.status as ActivityStatus))
     throw new PptdError('INVALID_REQUEST', 'Invalid activity status.');
+  if (input.agentFamily !== undefined && !isAgentFamily(input.agentFamily))
+    throw new PptdError('INVALID_REQUEST', 'Invalid agent family.');
+  if (input.phase !== undefined && !isActivityPhase(input.phase))
+    throw new PptdError('INVALID_REQUEST', 'Invalid activity phase.');
   if (input.pageIds !== undefined && (!Array.isArray(input.pageIds) || input.pageIds.length > 40))
     throw new PptdError('INVALID_REQUEST', 'pageIds must contain at most 40 stable Slide IDs.');
   if (
@@ -155,6 +172,8 @@ export function validateActivityReport(value: unknown, deckId: string): Activity
     taskId: boundedText(input.taskId, 'taskId', 160),
     sessionId: boundedText(input.sessionId, 'sessionId', 160),
     actor: boundedText(input.actor, 'actor', 100),
+    ...(input.agentFamily === undefined ? {} : { agentFamily: input.agentFamily as AgentFamily }),
+    ...(input.phase === undefined ? {} : { phase: input.phase as ActivityPhase }),
     status: input.status as ActivityStatus,
     summary: boundedText(input.summary, 'summary', 600),
     ...(input.operationIds === undefined
@@ -244,6 +263,7 @@ export class ProjectActivity {
       sequence: this.state.sequence,
       events: [...this.state.events].reverse(),
       retainedLimit: this.limit,
+      reportCapabilities: { agentFamily: true, phase: true },
       ...(this.storageError ? { storageError: this.storageError } : {}),
     });
   }

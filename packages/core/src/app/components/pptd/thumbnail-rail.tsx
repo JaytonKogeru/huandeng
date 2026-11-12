@@ -16,7 +16,15 @@ import {
   RotateCcw,
   Trash2,
 } from 'lucide-react';
-import { type DragEvent, memo, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import {
+  type DragEvent,
+  memo,
+  type ReactNode,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react';
 import { uiText as t, useHuandengLocale } from '@/lib/huandeng-locale';
 import { pptdAssetPreviewUrl } from '@/lib/pptd-backend';
 import { cycleItemId, focusEditorCanvas } from '@/lib/pptd-keyboard';
@@ -155,6 +163,7 @@ export function PptdThumbnailRail({
   onVisibility,
   onEditSection,
   onManageSections,
+  renderPageActivity,
 }: {
   pages: PageSnapshot[];
   view?: 'thumbnails' | 'outline';
@@ -178,6 +187,7 @@ export function PptdThumbnailRail({
   onVisibility?: (pageId: string, hidden: boolean) => void;
   onEditSection?: (sectionId: string) => void;
   onManageSections?: () => void;
+  renderPageActivity?: (page: PageSnapshot) => ReactNode;
 }) {
   useHuandengLocale();
   const [query, setQuery] = useState('');
@@ -753,6 +763,9 @@ export function PptdThumbnailRail({
                   </ContextMenuItem>
                 </ContextMenuContent>
               </ContextMenu>
+              {renderPageActivity && (
+                <div className="hd-thumbnail-agent-status">{renderPageActivity(page)}</div>
+              )}
             </div>
           );
         })}

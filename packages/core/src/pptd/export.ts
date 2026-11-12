@@ -508,6 +508,38 @@ function addElementReport(
   });
 }
 
+function installHyperlink(
+  files: Record<string, Uint8Array>,
+  slideNumber: number,
+  url: string,
+): string {
+  const path = `ppt/slides/_rels/slide${slideNumber}.xml.rels`;
+  const rels = strFromU8(files[path]);
+  const type = 'http://schemas.openxmlformats.org/officeDocument/2006/relationships/hyperlink';
+  const target = escapeXml(url);
+  for (const [relationship] of rels.matchAll(/<Relationship\b[^>]*\/>/g)) {
+    if (
+      relationship.includes(`Type="${type}"`) &&
+      relationship.includes('TargetMode="External"') &&
+      relationship.includes(`Target="${target}"`)
+    ) {
+      const id = relationship.match(/\bId="([^"]+)"/)?.[1];
+      if (id) return id;
+    }
+  }
+  const assigned = new Set([...rels.matchAll(/\bId="([^"]+)"/g)].map((match) => match[1]));
+  let index = 1;
+  while (assigned.has(`rId${index}`)) index++;
+  const id = `rId${index}`;
+  files[path] = strToU8(
+    rels.replace(
+      '</Relationships>',
+      `<Relationship Id="${id}" Type="${type}" Target="${target}" TargetMode="External"/></Relationships>`,
+    ),
+  );
+  return id;
+}
+
 function finishPptxXml(
   files: Record<string, Uint8Array>,
   size: PageSize,
@@ -525,6 +557,7 @@ function finishPptxXml(
     ),
   );
   decorations.forEach((entries, index) => {
+    const resolveLink = (url: string) => installHyperlink(files, index + 1, url);
     const path = `ppt/slides/slide${index + 1}.xml`;
     const xml = strFromU8(files[path]).replace(
       /<p:(sp|pic)>([\s\S]*?)<\/p:\1>/g,
@@ -535,7 +568,7 @@ function finishPptxXml(
         if (decoration.table) {
           const id = Number(block.match(/<p:cNvPr id="(\d+)"/)?.[1]);
           if (!id) throw new Error('The native object ID was not assigned.');
-          return decoration.table.xml(id);
+          return decoration.table.xml(id, resolveLink);
         }
         if (decoration.chart) {
           const id = Number(block.match(/<p:cNvPr id="(\d+)"/)?.[1]);
@@ -567,7 +600,7 @@ function finishPptxXml(
           );
         }
         if (decoration.text) {
-          result = decorateNativeTextXml(result, decoration.text, true);
+          result = decorateNativeTextXml(result, decoration.text, true, resolveLink);
         }
         return result;
       },

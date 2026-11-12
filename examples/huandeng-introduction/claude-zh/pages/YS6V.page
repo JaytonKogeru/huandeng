@@ -56,7 +56,7 @@ elements:
       - 340
       - 64
     content:
-      text: <p><strong><span style="color:#1C2321">OpenSlide</span></strong></p><p>编辑器基础，MIT 许可</p><p><span style="font-size:11.5px;color:#7A8480">github.com/open-slide/open-slide</span></p>
+      text: "<p><strong><span style=\"color:#1C2321\"><a href=\"https://github.com/open-slide/open-slide\" style=\"color:#3E4845\"><u>OpenSlide</u></a></span></strong></p><p>编辑器基础，MIT 许可</p><p><span style=\"font-size:11.5px;color:#7A8480\">github.com/open-slide/open-slide</span></p>"
       fontFamily: Microsoft YaHei
       fontSize: 14
       lineHeight: 1.45
@@ -83,7 +83,7 @@ elements:
       - 340
       - 64
     content:
-      text: <p><strong><span style="color:#1C2321">OpenPPTD</span></strong></p><p>复用其公式转换代码</p><p><span style="font-size:11.5px;color:#7A8480">github.com/Shingwha/open-pptd</span></p>
+      text: "<p><strong><span style=\"color:#1C2321\"><a href=\"https://github.com/Shingwha/open-pptd\" style=\"color:#3E4845\"><u>OpenPPTD</u></a></span></strong></p><p>复用其公式转换代码</p><p><span style=\"font-size:11.5px;color:#7A8480\">github.com/Shingwha/open-pptd</span></p>"
       fontFamily: Microsoft YaHei
       fontSize: 14
       lineHeight: 1.45
@@ -110,7 +110,7 @@ elements:
       - 340
       - 64
     content:
-      text: <p><strong><span style="color:#1C2321">PptxGenJS</span></strong></p><p>PowerPoint 导出库</p><p><span style="font-size:11.5px;color:#7A8480">github.com/gitbrent/PptxGenJS</span></p>
+      text: "<p><strong><span style=\"color:#1C2321\"><a href=\"https://github.com/gitbrent/PptxGenJS\" style=\"color:#3E4845\"><u>PptxGenJS</u></a></span></strong></p><p><a href=\"https://www.microsoft.com/microsoft-365/powerpoint\" style=\"color:#3E4845\"><u>PowerPoint</u></a> 导出库</p><p><span style=\"font-size:11.5px;color:#7A8480\">github.com/gitbrent/<a href=\"https://github.com/gitbrent/PptxGenJS\" style=\"color:#3E4845\"><u>PptxGenJS</u></a></span></p>"
       fontFamily: Microsoft YaHei
       fontSize: 14
       lineHeight: 1.45
@@ -275,4 +275,4 @@ elements:
       align:
         - right
         - middle
-notes: 幻灯不是从零开始的。编辑器基于 OpenSlide，MIT 许可。公式转换复用了 OpenPPTD 仓库的代码；这里的 GitHub 标志指的是那个仓库，不是 OpenPPTD 的标志。PowerPoint 导出用的是 PptxGenJS。右边是幻灯还没做到的事，都列在项目 README 里：导入任意 PPTX 并往返、直接编辑 Google Slides、第二屏的独立演讲者窗口、可继承母版、导出文件中的原生 PowerPoint 动画，以及插件市场。如果你需要其中某一项，那正是最需要贡献的地方。
+notes: "幻灯不是从零开始的。编辑器基于 OpenSlide，MIT 许可。公式转换复用了 OpenPPTD 仓库的代码；这里的 GitHub 标志指的是那个仓库，不是 OpenPPTD 的标志。PowerPoint 导出用的是 PptxGenJS。右边是幻灯还没做到的事，都列在项目 README 里：导入任意 PPTX 并往返、直接编辑 Google Slides、第二屏的独立演讲者窗口、可继承母版、导出文件中的原生 PowerPoint 动画，以及插件市场。如果你需要其中某一项，那正是最需要贡献的地方。\n\n引用网址（名称链接到仓库或官网）：\nHUANDENG: https://github.com/JaytonKogeru/huandeng\nOpenSlide: https://github.com/open-slide/open-slide\nOpenPPTD: https://github.com/Shingwha/open-pptd\nPptxGenJS: https://github.com/gitbrent/PptxGenJS\nPowerPoint: https://www.microsoft.com/microsoft-365/powerpoint\nWPS: https://www.wps.com/\nKimi / Moonshot AI: https://www.kimi.com/\nopen-kimi-ppt-skill: https://github.com/Amonginin/open-kimi-ppt-skill\nPPTist: https://github.com/pipipi-pikachu/PPTist\nVS Code: https://github.com/microsoft/vscode\nSlidev: https://github.com/slidevjs/slidev\nPresenton: https://github.com/presenton/presenton\nPPTAgent: https://github.com/icip-cas/PPTAgent\nPPTMaster: https://github.com/hugohe3/ppt-master\nOpenSlides Studio: https://gitlab.com/open-slides/openslides\nOPF: https://github.com/OpenPresentation/opf\nApache ECharts: https://github.com/apache/echarts\nKaTeX: https://github.com/KaTeX/KaTeX\nFont Awesome: https://github.com/FortAwesome/Font-Awesome\nOpenSlides Studio website: https://openslides.dev/\nOPF website: https://www.openpresentation.org/\n"

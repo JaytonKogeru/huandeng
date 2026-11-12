@@ -168,7 +168,7 @@ describe('Assistant setup interactions', () => {
       expect(await page.locator('[data-hd-agent-project]').innerText()).toContain('Authored one');
       expect(await page.locator('[data-hd-agent-advanced]').getAttribute('open')).toBeNull();
       expect(await page.locator('textarea').isVisible()).toBe(false);
-      for (const client of ['codex', 'claude', 'deepseek', 'chatgpt']) {
+      for (const client of ['codex', 'claude', 'deepseek-native', 'deepseek', 'chatgpt']) {
         await page.getByRole('combobox').selectOption(client);
         await page.locator('[data-hd-copy-agent-config]').click();
         await page.waitForFunction(

@@ -9,11 +9,13 @@ import {
   sceneRect,
 } from './export-images';
 import { formulaRunXml, mathCompatibilityXml } from './export-math';
+import { safeHyperlink } from './hyperlink';
 import { splitMathFragments } from './math-fragments';
 import type { PptdElement } from './types';
 
 type ColorResolver = (value: unknown, alpha?: number) => Rgba;
-type FontStyle = RunStyle & { eastAsianFont: string; mathXml?: string };
+type FontStyle = RunStyle & { eastAsianFont: string; mathXml?: string; hyperlink?: string };
+export type TextHyperlinkResolver = (url: string) => string;
 
 export interface NativeText {
   node: TextNode;
@@ -23,6 +25,7 @@ export interface NativeText {
   fonts: string[];
   mathRuns: (string | null)[];
   mathLineSpacing: (number | null)[];
+  hyperlinks: (string | null)[];
 }
 
 function fontNames(value: unknown): { latin: string; ea: string } {
@@ -117,6 +120,34 @@ function cssProperties(attributes: string): Record<string, string> {
       .trim();
   }
   return properties;
+}
+
+function anchorAttributes(attributes: string): {
+  url: string | null;
+  properties: Record<string, string>;
+} {
+  let url: string | null = null;
+  let style = '';
+  const seen = new Set<string>();
+  const remaining = attributes.replace(
+    /\s+([a-z][a-z\d-]*)\s*=\s*(?:"([^"]*)"|'([^']*)')/gi,
+    (attribute, rawName: string, quoted: string | undefined, single: string | undefined) => {
+      const name = rawName.toLowerCase();
+      if (seen.has(name) || !['href', 'style'].includes(name)) {
+        throw new ExportFeatureError(
+          'UNSUPPORTED_TEXT_ATTRIBUTES',
+          'Links accept one href and an optional inline style.',
+        );
+      }
+      seen.add(name);
+      if (name === 'href') url = safeHyperlink(decodeEntities(quoted ?? single ?? ''));
+      else style = attribute;
+      return '';
+    },
+  );
+  if (remaining.trim())
+    throw new ExportFeatureError('UNSUPPORTED_TEXT_ATTRIBUTES', 'Invalid link attributes.');
+  return { url, properties: cssProperties(style) };
 }
 
 function cssPixels(value: string, name: string): number {
@@ -232,6 +263,11 @@ export function mapPptdText(
         if (fragment) appendRun(fragment, style);
         continue;
       }
+      if (style.hyperlink)
+        throw new ExportFeatureError(
+          'UNSUPPORTED_LINKED_EQUATION',
+          'A hyperlink around an equation requires rendered export.',
+        );
       if (formula.display && current) finish();
       const mathXml = formulaRunXml(
         richText ? decodeEntities(formula.source) : formula.source,
@@ -268,7 +304,9 @@ export function mapPptdText(
         );
       const [, closing, rawTag, attributes] = match;
       const tag = rawTag.toLowerCase();
-      if (!['p', 'span', 'strong', 'b', 'em', 'i', 'u', 's', 'sup', 'sub', 'br'].includes(tag)) {
+      if (
+        !['p', 'span', 'strong', 'b', 'em', 'i', 'u', 's', 'sup', 'sub', 'br', 'a'].includes(tag)
+      ) {
         throw new ExportFeatureError(
           'UNSUPPORTED_RICH_TEXT',
           `Rich text tag <${tag}> needs browser rendering.`,
@@ -282,8 +320,17 @@ export function mapPptdText(
         if (tag === 'p') finish();
         continue;
       }
-      const properties = cssProperties(attributes);
+      const link = tag === 'a' ? anchorAttributes(attributes) : null;
+      const properties = link?.properties ?? cssProperties(attributes);
       const style = { ...stack[stack.length - 1].style };
+      if (link) {
+        if (stack.some((entry) => entry.tag === 'a'))
+          throw new ExportFeatureError('INVALID_RICH_TEXT', 'Links cannot be nested.');
+        delete style.hyperlink;
+        if (link.url) style.hyperlink = link.url;
+        style.color = color('#2563eb', opacity);
+        style.underline = true;
+      }
       if (tag === 'br') {
         current ??= newParagraph();
         const line: TextLine = { runs: [], sizePx: style.sizePx };
@@ -313,12 +360,19 @@ export function mapPptdText(
         } else if (tag === 'p' && property === 'margin-left' && current) {
           current.marginLeftPx = cssPixels(value, property) * 2;
         } else if (tag === 'p' && property === 'margin-top' && cssPixels(value, property) === 0) {
-        } else if (tag === 'span' && property === 'color') style.color = color(value, opacity);
-        else if (tag === 'span' && property === 'font-size') {
+        } else if ((tag === 'span' || tag === 'a') && property === 'color')
+          style.color = color(value, opacity);
+        else if ((tag === 'span' || tag === 'a') && property === 'font-size') {
           style.sizePx = cssPixels(value, property) * 2;
           if (style.sizePx <= 0)
             throw new ExportFeatureError('INVALID_FONT_SIZE', 'Inline font size must be positive.');
-        } else if (tag === 'span' && property === 'font-family') {
+        } else if (
+          (tag === 'span' || tag === 'a') &&
+          property === 'font-weight' &&
+          ['normal', 'bold', '400', '700'].includes(value)
+        ) {
+          style.bold = value === 'bold' || value === '700';
+        } else if ((tag === 'span' || tag === 'a') && property === 'font-family') {
           const family = fontNames(value);
           style.font = family.latin;
           style.eastAsianFont = family.ea;
@@ -360,6 +414,11 @@ export function mapPptdText(
       ),
     ),
     fonts: [...fonts],
+    hyperlinks: paragraphs.flatMap((paragraph) =>
+      paragraph.lines.flatMap((line) =>
+        line.runs.map((run) => (run.style as FontStyle).hyperlink ?? null),
+      ),
+    ),
     mathRuns: paragraphs.flatMap((paragraph) =>
       paragraph.lines.flatMap((line) =>
         line.runs.map((run) => (run.style as FontStyle).mathXml ?? null),
@@ -380,17 +439,30 @@ export function mapPptdText(
   };
 }
 
-export function decorateNativeTextXml(xml: string, text: NativeText, wrapShape = false): string {
+export function decorateNativeTextXml(
+  xml: string,
+  text: NativeText,
+  wrapShape = false,
+  resolveLink?: TextHyperlinkResolver,
+): string {
   const base = xml.replace(
     /<a:bodyPr\b[^>]*>/,
     `<a:bodyPr wrap="${text.wrap}" lIns="0" tIns="0" rIns="0" bIns="0" rtlCol="0" anchor="${text.anchor}">`,
   );
   let run = 0;
   const fallback = base.replace(/<a:r>[\s\S]*?<\/a:r>/g, (xmlRun) => {
-    const eastAsian = text.eastAsianFonts[run++];
-    return eastAsian
+    const eastAsian = text.eastAsianFonts[run];
+    const url = text.hyperlinks[run++];
+    let result = eastAsian
       ? xmlRun.replace(/<a:ea typeface="[^"]*"\/>/, `<a:ea typeface="${escapeXml(eastAsian)}"/>`)
       : xmlRun;
+    // MS-ODRAWXML hlinkClr: Office must use the authored text fill, not the theme link color.
+    if (url && resolveLink)
+      result = result.replace(
+        '</a:rPr>',
+        `<a:hlinkClick r:id="${escapeXml(resolveLink(url))}"><a:extLst><a:ext uri="{A12FA001-AC4F-418D-AE19-62706E023703}"><ahyp:hlinkClr xmlns:ahyp="http://schemas.microsoft.com/office/drawing/2018/hyperlinkcolor" val="tx"/></a:ext></a:extLst></a:hlinkClick></a:rPr>`,
+      );
+    return result;
   });
   run = 0;
   let native = fallback.replace(

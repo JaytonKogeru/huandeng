@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { desktopHost } from '@/lib/huandeng-desktop';
 import { useHuandengLocale } from '@/lib/huandeng-locale';
 import type { PptdBackend } from '@/lib/pptd-backend';
+import { agentFamilies } from '../../../pptd/agent-identity';
 import { Button } from '../ui/button';
 import {
   Dialog,
@@ -208,12 +209,39 @@ export function AgentConnectionDialog({
             className="min-w-0 flex-1 rounded-md border bg-background px-3 py-2"
             aria-label={t('Agent 客户端')}
           >
-            <option value="deepseek">DeepSeek Harness</option>
+            <option value="deepseek-native">DeepSeek Harness</option>
             <option value="codex">Codex</option>
             <option value="claude">Claude Code</option>
-            <option value="chatgpt">ChatGPT · DC-WALT</option>
+            <option value="chatgpt">ChatGPT (DC-WALT)</option>
+            <option value="deepseek">{t('DeepSeek Harness (legacy patch)')}</option>
           </select>
         </label>
+        <details className="rounded-md border px-3 py-2" data-hd-reserved-agent-clients>
+          <summary className="cursor-pointer text-xs text-muted-foreground">
+            {t('Additional clients')}
+          </summary>
+          <ul className="mt-2 grid grid-cols-2 gap-x-4 gap-y-2 text-xs">
+            {agentFamilies
+              .filter((family) => family.availability === 'reserved')
+              .map((family) => (
+                <li key={family.id} className="flex flex-wrap justify-between gap-1">
+                  <span>{family.label}</span>
+                  <span className="text-muted-foreground">{t('Reserved integration')}</span>
+                </li>
+              ))}
+          </ul>
+          <p className="mt-2 text-xs text-muted-foreground">
+            {t('Reserved identities are not installed connections.')}
+          </p>
+        </details>
+        <div className="space-y-1 text-xs text-muted-foreground" data-hd-agent-presence-help>
+          <p>{t('Page indicators show recent task reports. They do not lock the slide.')}</p>
+          <p>
+            {t(
+              'Reports expire after five minutes without an update. Saved changes remain in Activity.',
+            )}
+          </p>
+        </div>
         {loading && (
           <div className="flex items-center gap-2 text-sm" role="status">
             <Loader2 className="size-4 animate-spin" />

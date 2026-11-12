@@ -132,6 +132,29 @@ Slide ID: K9P9 / Main position: 21
 
 这一页把来源和边界一起说清楚。OpenSlide 是编辑器代码基础，MIT；OpenPPTD 只贡献公式转换模块，不是整个文档模型；PptxGenJS 生成 PPTX。GitHub 标记表示 OpenPPTD 仓库，不是它的 logo。HUANDENG 与 Kimi 没有隶属或背书关系。右侧列出当前仍未完成的能力。
 
+引用网址（名称链接到仓库或官网）：
+HUANDENG: https://github.com/JaytonKogeru/huandeng
+OpenSlide: https://github.com/open-slide/open-slide
+OpenPPTD: https://github.com/Shingwha/open-pptd
+PptxGenJS: https://github.com/gitbrent/PptxGenJS
+PowerPoint: https://www.microsoft.com/microsoft-365/powerpoint
+WPS: https://www.wps.com/
+Kimi / Moonshot AI: https://www.kimi.com/
+open-kimi-ppt-skill: https://github.com/Amonginin/open-kimi-ppt-skill
+PPTist: https://github.com/pipipi-pikachu/PPTist
+VS Code: https://github.com/microsoft/vscode
+Slidev: https://github.com/slidevjs/slidev
+Presenton: https://github.com/presenton/presenton
+PPTAgent: https://github.com/icip-cas/PPTAgent
+PPTMaster: https://github.com/hugohe3/ppt-master
+OpenSlides Studio: https://gitlab.com/open-slides/openslides
+OPF: https://github.com/OpenPresentation/opf
+Apache ECharts: https://github.com/apache/echarts
+KaTeX: https://github.com/KaTeX/KaTeX
+Font Awesome: https://github.com/FortAwesome/Font-Awesome
+OpenSlides Studio website: https://openslides.dev/
+OPF website: https://www.openpresentation.org/
+
 ### 22. 从这份项目开始
 
 Slide ID: QHUX / Main position: 22

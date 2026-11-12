@@ -1,6 +1,6 @@
 import type { UiTranslator } from '../../../locale/huandeng';
 
-export type AgentClient = 'deepseek' | 'codex' | 'claude' | 'chatgpt';
+export type AgentClient = 'deepseek-native' | 'deepseek' | 'codex' | 'claude' | 'chatgpt';
 export type AgentSetup = {
   client: string;
   entryPath: string;
@@ -19,7 +19,13 @@ export const agentConnectionSteps: Record<AgentClient, readonly string[]> = {
     'Start a new Claude Code session and check that the HUANDENG MCP server is available.',
     'Send the first task below to confirm this Project and read its Story briefing.',
   ],
+  'deepseek-native': [
+    'Install the HUANDENG native bundle in DeepSeek Harness’s Plugin Manager, or keep the existing installation.',
+    'Merge this configuration into the existing huandeng plugin entry for this Project. Keep your model and account settings.',
+    'Check that the native plugin exposes this Project’s HUANDENG tools, then send the first task below.',
+  ],
   deepseek: [
+    'Use this compatibility patch only when the profile has no HUANDENG native bundle. Do not enable both routes.',
     'Save the configuration as a separate JSON patch. Keep your model and account settings.',
     'Start DeepSeek Harness with dsh --patch and the saved file, then check that HUANDENG tools are available.',
     'Send the first task below to confirm this Project and read its Story briefing.',

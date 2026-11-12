@@ -3,7 +3,12 @@ import type { Rgba } from '../app/lib/pptx/css';
 import { buildPptxFiles, colorXml, escapeXml } from '../app/lib/pptx/ooxml';
 import { ExportFeatureError, elementBounds, exportNumber, exportRecord } from './export-images';
 import { mathCompatibilityXml } from './export-math';
-import { decorateNativeTextXml, mapPptdText, type NativeText } from './export-text';
+import {
+  decorateNativeTextXml,
+  mapPptdText,
+  type NativeText,
+  type TextHyperlinkResolver,
+} from './export-text';
 import { type TableSlot, tableLayout } from './table-grid';
 import {
   resolveTableCellStyle,
@@ -20,13 +25,15 @@ export interface TableMeasurements {
   rowHeights: number[];
 }
 
+type CellXml = (resolveLink?: TextHyperlinkResolver) => string;
+
 export interface NativeTable {
-  xml(id: number): string;
+  xml(id: number, resolveLink?: TextHyperlinkResolver): string;
   fonts: string[];
   hasMath: boolean;
 }
 
-function textBody(text: NativeText, fallback = false): string {
+function textBody(text: NativeText, fallback = false, resolveLink?: TextHyperlinkResolver): string {
   const files = buildPptxFiles({
     slides: [{ background: null, notes: null, nodes: [text.node] }],
     images: [],
@@ -37,6 +44,8 @@ function textBody(text: NativeText, fallback = false): string {
   const decorated = decorateNativeTextXml(
     `<a:txBody>${body}</a:txBody>`,
     fallback ? { ...text, mathRuns: [] } : text,
+    false,
+    resolveLink,
   );
   return decorated;
 }
@@ -109,11 +118,11 @@ export function buildNativeTable(
     );
   const fonts = new Set<string>();
   let hasMath = false;
-  const nativeRows: string[] = [];
-  const fallbackRows: string[] = [];
+  const nativeRows: CellXml[] = [];
+  const fallbackRows: CellXml[] = [];
   for (const [row, slots] of layout.grid.entries()) {
-    const cells: string[] = [];
-    const fallbacks: string[] = [];
+    const cells: CellXml[] = [];
+    const fallbacks: CellXml[] = [];
     for (const [column, slot] of slots.entries()) {
       const owner = slot.owner ? layout.grid[slot.owner.row][slot.owner.column] : slot;
       let style: ReturnType<typeof resolveTableCellStyle>;
@@ -150,8 +159,8 @@ export function buildNativeTable(
         )
         .join('');
       const properties = `<a:tcPr marL="${TABLE_CELL_PADDING_X * EMU}" marR="${TABLE_CELL_PADDING_X * EMU}" marT="${TABLE_CELL_PADDING_Y * EMU}" marB="${TABLE_CELL_PADDING_Y * EMU}" anchor="${anchor}">${borders}${fill}</a:tcPr>`;
-      let body = '<a:txBody><a:bodyPr/><a:lstStyle/><a:p><a:endParaRPr/></a:p></a:txBody>';
-      let fallbackBody = body;
+      const emptyBody = '<a:txBody><a:bodyPr/><a:lstStyle/><a:p><a:endParaRPr/></a:p></a:txBody>';
+      let cellText: NativeText | undefined;
       if (!slot.covered) {
         const text = mapPptdText(
           {
@@ -175,16 +184,27 @@ export function buildNativeTable(
         );
         for (const font of text.fonts) fonts.add(font);
         hasMath ||= text.mathRuns.some(Boolean);
-        body = textBody(text);
-        fallbackBody = textBody(text, true);
+        cellText = text;
       }
       const attributes = mergeAttributes(slot, layout.grid);
-      cells.push(`<a:tc${attributes}>${body}${properties}</a:tc>`);
-      fallbacks.push(`<a:tc${attributes}>${fallbackBody}${properties}</a:tc>`);
+      cells.push(
+        (resolveLink) =>
+          `<a:tc${attributes}>${cellText ? textBody(cellText, false, resolveLink) : emptyBody}${properties}</a:tc>`,
+      );
+      fallbacks.push(
+        (resolveLink) =>
+          `<a:tc${attributes}>${cellText ? textBody(cellText, true, resolveLink) : emptyBody}${properties}</a:tc>`,
+      );
     }
     const rowAttributes = `h="${Math.round(rowHeights[row] * EMU)}"`;
-    nativeRows.push(`<a:tr ${rowAttributes}>${cells.join('')}</a:tr>`);
-    fallbackRows.push(`<a:tr ${rowAttributes}>${fallbacks.join('')}</a:tr>`);
+    nativeRows.push(
+      (resolveLink) =>
+        `<a:tr ${rowAttributes}>${cells.map((cell) => cell(resolveLink)).join('')}</a:tr>`,
+    );
+    fallbackRows.push(
+      (resolveLink) =>
+        `<a:tr ${rowAttributes}>${fallbacks.map((cell) => cell(resolveLink)).join('')}</a:tr>`,
+    );
   }
   const columns = layout.columnRatios
     .map((ratio) => `<a:gridCol w="${Math.round(ratio * width * EMU)}"/>`)
@@ -192,10 +212,18 @@ export function buildNativeTable(
   const graphic = (id: number, rows: string[]) =>
     `<p:graphicFrame><p:nvGraphicFramePr><p:cNvPr id="${id}" name="${escapeXml(element.elementId.slice(0, 200))}"/><p:cNvGraphicFramePr/><p:nvPr/></p:nvGraphicFramePr><p:xfrm><a:off x="${Math.round(x * EMU)}" y="${Math.round(y * EMU)}"/><a:ext cx="${Math.round(width * EMU)}" cy="${Math.round(rowHeights.reduce((sum, value) => sum + value, 0) * EMU)}"/></p:xfrm><a:graphic><a:graphicData uri="http://schemas.openxmlformats.org/drawingml/2006/table"><a:tbl><a:tblPr firstRow="0" bandRow="0"/><a:tblGrid>${columns}</a:tblGrid>${rows.join('')}</a:tbl></a:graphicData></a:graphic></p:graphicFrame>`;
   return {
-    xml: (id) =>
-      hasMath
-        ? mathCompatibilityXml(graphic(id, nativeRows), graphic(id, fallbackRows))
-        : graphic(id, nativeRows),
+    xml: (id, resolveLink) => {
+      const rows = nativeRows.map((row) => row(resolveLink));
+      return hasMath
+        ? mathCompatibilityXml(
+            graphic(id, rows),
+            graphic(
+              id,
+              fallbackRows.map((row) => row(resolveLink)),
+            ),
+          )
+        : graphic(id, rows);
+    },
     fonts: [...fonts],
     hasMath,
   };

@@ -8,11 +8,11 @@ HUANDENG 是一个本地桌面幻灯片编辑器。你在画布里选对象、�
 
 ![HUANDENG 0.19 中文工作区：页面列表、画布与右侧属性面板](docs/images/editor-zh-019.png)
 
-当前桌面与 Plugin 的**本地候选版本为 0.20.0**。Windows 候选包与两种客户端包已完成构建及检查，具体变化和验证见 [0.20 候选说明](docs/RELEASE-V020.md)。这不是已经公开发布的版本。
+当前桌面与 Plugin 的**本地候选版本为 0.21.0**。这版加入浏览与大纲中的页面操作、逐页助手进度，以及原生导出中的引用链接。Windows 桌面包与两种客户端包已完成构建及检查，具体变化和验证见 [0.21 候选说明](docs/RELEASE-V021.md)。当前仍是本地候选，尚未公开发布。
 
-上图是实际使用中的 0.19 工作项目；下文的**项目规则**视图是 0.20 候选版新增界面。既有截图保留真实的版本标识。
+上图记录的是实际使用中的 0.19 工作项目，下文介绍的当前功能包含后续更新；截图保留真实的版本标识。
 
-[打开产品介绍示例](examples/huandeng-introduction/README.md) | [桌面启动与打包](packages/desktop/README.md) | [助手接入](plugins/huandeng/README.md) | [0.20 本地候选说明](docs/RELEASE-V020.md)
+[打开产品介绍示例](examples/huandeng-introduction/README.md) | [桌面启动与打包](packages/desktop/README.md) | [助手接入](plugins/huandeng/README.md) | [0.21 本地候选说明](docs/RELEASE-V021.md)
 
 ## 为什么做幻灯
 
@@ -46,7 +46,7 @@ HUANDENG 是一个本地桌面幻灯片编辑器。你在画布里选对象、�
 
 ### 使用 Windows 桌面包
 
-完整解压桌面产物后运行 **HUANDENG Editor.exe**。安装后的快捷方式也使用 HUANDENG Editor 名称。整个应用目录需要一起保留，不能只复制一个 `.exe`。当前版本的变化见[发布记录](docs/RELEASE-V019.md)，桌面构建方法见[桌面说明](packages/desktop/README.md)。
+完整解压桌面产物后运行 **HUANDENG Editor.exe**。安装后的快捷方式也使用 HUANDENG Editor 名称。整个应用目录需要一起保留，不能只复制一个 `.exe`。当前 Windows 候选包位于 `dist/HUANDENG-v0.21.0-win32-x64`；变化与验证见 [0.21 候选说明](docs/RELEASE-V021.md)，构建方法见[桌面说明](packages/desktop/README.md)。
 
 首次启动在 Home 新建或打开项目；之后可以恢复最近打开的项目标签页。同一项目再次打开会回到已有标签页。新建项目会建立独立文件夹、入口文件、一张空白页和 `AGENTS.md` 创作约定。已有文件夹若包含多个入口，请明确选择其中一个 `.pptd`。[桌面说明](packages/desktop/README.md)
 
@@ -101,7 +101,7 @@ powershell -NoProfile -File scripts/Install-Huandeng.ps1
 
 Story 记录项目、章节、演讲和单页的目的与约束；Notes 记录实际要讲的话。助手读取这些信息时，也会看到邻页、素材和这页被哪些演讲使用。作者无需在每次对话里重新解释全部背景。Story 是可继续工作的上下文，最终画面仍需要实际检查。[Story 约定](docs/STORY.md)
 
-0.20 候选版的「项目」页增加**项目规则**：直接显示项目根目录 `AGENTS.md` 的原文和来源，可以打开完整文件预览，也可以在编辑文件后刷新读取。它使用同一份作者约定，不另建一份规则，也不把 AI 摘要当作原文。
+在「项目」页打开**项目规则**，可以直接查看项目根目录 `AGENTS.md` 的原文和来源，可以打开完整文件预览，也可以在编辑文件后刷新读取。它使用同一份作者约定，不另建一份规则，也不把 AI 摘要当作原文。
 
 ### 保留原材料，也保留改动依据
 
@@ -110,6 +110,10 @@ Story 记录项目、章节、演讲和单页的目的与约束；Notes 记录�
 ### 用不同视图处理不同尺度的工作
 
 普通视图处理对象；浏览和大纲检查页面顺序；章节视图处理内容结构；备注页集中写讲稿；历史视图预览与恢复页面版本。左侧导航、右侧属性、图层、Story 和检查面板围绕当前工作对象组织，面板可以收起、调整宽度或停靠。界面语言可以切换中文、英文，页面正文和备注保持作者原文。[工作区说明](docs/WORKSPACE-UX.md)
+
+在**浏览**或**大纲**里，右键一页或点击它旁边的**更多操作**，即可打开页面、从这一处开始放映、查看 Story、备注或历史、复制页面短码，以及在文件中定位来源。键盘用户可以聚焦页面后按 **Shift+F10**。
+
+Main 页面还可以在「组织页面」里插入前后空白页、复制、上下移动，并单独选择隐藏、显示或从 Main 移除。演讲中的菜单提供返回 Main 来源与编排当前演讲的入口，固定版本继续保持只读。操作针对打开菜单的那一页，也会遵守未保存修改的保护。
 
 ### 保存结果可以核对
 
@@ -165,11 +169,11 @@ node plugins/huandeng/scripts/build-package.mjs --target local --output "$PWD/di
 node plugins/huandeng/scripts/build-deepseek.mjs --output "$PWD/dist/plugin-packages/deepseek-build"
 ```
 
-每条命令会在指定目录下生成 `huandeng/` 包。本次本地候选包位于 `dist/plugin-packages/0.20.0/portable-claude-codex/huandeng` 和 `dist/plugin-packages/0.20.0/deepseek-native/huandeng`，两者都在工程内部。桌面候选包位于 `dist/HUANDENG-v0.20.0-win32-x64`。这些是构建输出，持续维护的源码仍是 `plugins/huandeng`。安装时使用各客户端支持的 Plugin loader 或管理器。
+每条命令会在指定目录下生成 `huandeng/` 包。本次本地候选包位于 `dist/plugin-packages/0.21.0/portable-claude-codex/huandeng` 和 `dist/plugin-packages/0.21.0/deepseek-native/huandeng`，两者都在工程内部。桌面候选包位于 `dist/HUANDENG-v0.21.0-win32-x64`。这些是构建输出，持续维护的源码仍是 `plugins/huandeng`。安装时使用各客户端支持的 Plugin loader 或管理器。
 
-0.20 候选版还增加面向原生客户端的项目原图导入与真实 Editor 截图工具。打包后的 MCP 报告 0.20.0 与 24 个工具；素材获取和截图已对接未改动的兼容 0.19 writer 实测。打包没有替换已有运行环境，具体边界见[候选说明](docs/RELEASE-V020.md)。
+打包后的 MCP 报告 0.21.0，保留 24 个工具，包括绑定项目的原图导入与真实 Editor 截图。进度报告可以附带助手身份、工作阶段和页面范围；遇到兼容的旧 writer，会使用旧报告字段，并明确返回未支持的可选字段。当前运行环境与包的验证见[候选说明](docs/RELEASE-V021.md)。
 
-DSH 原生 bundle 使用官方宿主管理安装，并为每个项目维护工具路由；原来的 raw MCP patch 是另一个兼容接入方式。[本轮原生集成记录](docs/NATIVE-INTEGRATION-0.20.md)分别说明 DSH 模型实际调用工具、Claude Code 插件连接成功、中文任务的 MCP 请求被宿主拒绝，以及随后通过官方 CLI 完成原生创作的事实，并记录成品与独立 Office 检查。[0.19 原生集成](docs/NATIVE-INTEGRATION-0.19.md)保留为当时的历史；包内 manifest 或 connected 状态本身不证明模型任务已经成功。
+DeepSeek Harness 在「助手连接」里优先选择**原生插件**入口，通过宿主的 Plugin Manager 安装 bundle，再将生成的配置合并到已有 `huandeng` 插件条目。单独标出的旧 MCP patch 供未装原生 bundle 的配置使用，同一个配置只启用一种接入方式。配置生成保留账号和模型设置。[0.20 原生集成记录](docs/NATIVE-INTEGRATION-0.20.md)分别说明 DSH 模型实际调用工具、Claude Code 插件连接成功、中文任务的 MCP 请求被宿主拒绝，以及随后通过官方 CLI 完成原生创作的事实，并记录成品与独立 Office 检查。[0.19 原生集成](docs/NATIVE-INTEGRATION-0.19.md)保留为当时的历史；包内 manifest 或 connected 状态本身不证明模型任务已经成功。
 
 CLI 也能读取已打开的项目，例如：
 
@@ -180,9 +184,19 @@ node packages/core/huandeng.js --entry examples/huandeng-introduction/chatgpt-zh
 
 修改事务使用实际读取的页面 ID 和版本，通过 preview / apply 提交；不要把示例 ID 或旧版本直接写进新任务。两个运行时指南 `huandeng://guide/story` 和 `huandeng://guide/operations` 说明完整协议。
 
+### 查看每页的助手进度
+
+页面标记显示 **ChatGPT / Codex**、**Claude / Claude Code** 或 **DeepSeek Harness** 最近报告的工作阶段与时间。点击标记可以打开「动态」，查看任务和已核对的保存记录。同一页可以显示多个任务，这些标记不会锁住页面。
+
+进度来自助手主动报告。连续 **5 分钟**没有更新时，标为**状态未更新**；连续 **30 分钟**未更新后，页面标记消失。已完成、失败或停止的任务标记保留 **2 分钟**，记录仍留在「动态」。上一次 writer 会话的报告会视为过期。任务声称完成与文档服务的实际保存回执分别展示，便于核对做了什么。
+
+pi、Zcode / GLM、WorkBuddy、Grokbot / Grok、Gemini、Antigravity、Hermes 已保留身份扩展位置，当前不表示这些连接已经安装或可用。
+
 ## 格式与当前边界
 
 编辑器支持文字、图片、形状、线条、图标、组合、原生表格、图表和 LaTeX 公式。PPTX 对支持的对象写入可编辑结构；不支持的对象回退会列入导出报告。检查报告与实际导出画面后再交付。[科研对象](docs/SCIENTIFIC-OBJECTS.md) | [PowerPoint 差异说明](docs/POWERPOINT-COMPARISON.md)
+
+富文本和表格单元格中的安全链接可以保留到 PDF，以及 PPTX 的原生可编辑文字中。编辑时点击这些文字仍留在文档里；导出后可以沿链接打开引用来源。
 
 - PNG、PDF、PPTX 输出静态版式；Editor 内的点击步骤不会自动变成 PowerPoint 动画。
 - MP4 是单独的无声定时输出，需要带 libx264 的 FFmpeg；它有明确的动画素材限制。

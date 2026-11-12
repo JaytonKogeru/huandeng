@@ -24,13 +24,13 @@ Code reuse, runtime dependencies and design references have different meanings. 
 | [PPTAgent](https://github.com/icip-cas/PPTAgent) | Rendered visual review and the need to revisit a review when its source changes. 真实渲染、视觉审阅及源版本变化后重新审阅。 | [Open-source research](AUDIT-V015-OPEN-SOURCE.md) |
 | [PPT Master](https://github.com/hugohe3/ppt-master) | Native OOXML, SVG mapping and coverage of master/animation export. 原生 OOXML、SVG 映射及母版、动画导出覆盖研究。 | [Open-source research](AUDIT-V015-OPEN-SOURCE.md) |
 | [open-kimi-ppt-skill](https://github.com/Amonginin/open-kimi-ppt-skill) | Community PPTD format reference used when studying document compatibility. 社区 PPTD 格式与文档兼容参考。 | [Specification](SPEC.md) |
-| [OpenSlides Studio](https://openslides.dev/) | Explicit IDs, unified operations and editable boundaries informed object identity and component scope. 显式 ID、统一操作与可编辑边界，为对象身份和组件范围提供参考。 | [Specification](SPEC.md) |
+| [OpenSlides Studio](https://openslides.dev/) ([source](https://gitlab.com/open-slides/openslides)) | Explicit IDs, unified operations and editable boundaries informed object identity and component scope. 显式 ID、统一操作与可编辑边界，为对象身份和组件范围提供参考。 | [Specification](SPEC.md) |
 | [OPF / OpenPresentation](https://www.openpresentation.org/) ([source](https://github.com/OpenPresentation/opf)) | Revision preconditions, patches, inverse changes and conflicts informed typed commands, compare-and-swap and Undo. 版本前提、补丁、反向修改和冲突，为命令、版本检查与撤销设计提供参考。 | [Specification](SPEC.md) |
 | [VS Code](https://github.com/microsoft/vscode) | Document tabs, sidebar navigation and activity panels that preserve working state. 中央文档标签、侧栏导航、独立活动面板与切换时的状态保留。 | [Workspace design](WORKSPACE-UX.md) |
 
-**OpenSlide and OpenSlides Studio are separate projects.** The former is HUANDENG's code foundation; the latter is a reference for operation and identity design. OpenSlides Studio is linked to its own site, openslides.dev. The similarly named meeting-management project at GitLab is not this reference.
+**OpenSlide and OpenSlides Studio are separate projects.** The former is HUANDENG's code foundation; the latter is a reference for operation and identity design. OpenSlides Studio's official site, openslides.dev, links to the `open-slides/openslides` source repository on GitLab. That repository links back to the same site. It is distinct from the unrelated meeting-management product with a similar name.
 
-**OpenSlide 与 OpenSlides Studio 是不同项目。** 前者是代码基础，后者是操作与身份设计参考。这里的 OpenSlides Studio 指 openslides.dev，不是 GitLab 上同名的会议管理工具。
+**OpenSlide 与 OpenSlides Studio 是不同项目。** 前者是代码基础，后者是操作与身份设计参考。OpenSlides Studio 官网 openslides.dev 与 GitLab 上的 `open-slides/openslides` 源码仓库相互链接；它与同名会议管理产品不同。
 
 The original [OpenSlide license](../LICENSE) and [third-party notices](../packages/desktop/NOTICE.md) remain authoritative for attribution and redistribution. OpenPPTD's specific reused files are documented in their own notice. The [checked product facts](../examples/huandeng-introduction/story/FACTS.md) distinguish PPTD inspiration, existing PPTX parts and the implemented HUANDENG project format.
 

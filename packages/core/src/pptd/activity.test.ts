@@ -24,6 +24,49 @@ const report = (requestId: string) => ({
 });
 
 describe('Project-scoped activity', () => {
+  it('advertises and persists declared family and workflow phase without changing legacy reports', async () => {
+    const activity = await fixture();
+    expect(activity.snapshot().reportCapabilities).toEqual({ agentFamily: true, phase: true });
+    const legacy = await activity.report(report('legacy-stage'));
+    expect(legacy.agentFamily).toBeUndefined();
+    expect(legacy.phase).toBeUndefined();
+    const input = {
+      ...report('new-stage'),
+      agentFamily: 'deepseek',
+      phase: 'validate',
+      pageIds: ['page-a'],
+    };
+    const event = await activity.report(input);
+    expect(event).toMatchObject({
+      agentFamily: 'deepseek',
+      phase: 'validate',
+      pageIds: ['page-a'],
+    });
+    expect(await activity.report(input)).toEqual(event);
+    await expect(activity.report({ ...input, phase: 'release' })).rejects.toMatchObject({
+      code: 'REQUEST_ID_REUSE',
+    });
+    await activity.close();
+    const reopened = await ProjectActivity.open(activity.file, activity.deckId, 'epoch-b');
+    expect(reopened.snapshot().storageError).toBeUndefined();
+    expect(reopened.snapshot().events[0]).toMatchObject({
+      agentFamily: 'deepseek',
+      phase: 'validate',
+      epoch: 'epoch-a',
+    });
+    await reopened.close();
+  });
+
+  it('rejects malformed family and phase before adding an event', async () => {
+    const activity = await fixture();
+    for (const agentFamily of ['', null, 4, 'unknown-model'])
+      expect(() => activity.report({ ...report('bad-family'), agentFamily })).toThrow('family');
+    for (const phase of ['', null, 4, 'frame', 'thinking'])
+      expect(() => activity.report({ ...report('bad-phase'), phase })).toThrow('phase');
+    expect(activity.snapshot().events).toEqual([]);
+    await activity.close();
+  });
+
   it('persists bounded explicit operation claims while preserving legacy reports', async () => {
     const activity = await fixture();
     await activity.report(report('legacy'));

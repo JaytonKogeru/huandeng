@@ -1,6 +1,6 @@
 # Saved speaker notes — Claude Code English product introduction
 
-Generated from the saved Main and resolved Presentation Notes on 11 November 2026 (self-review and independent-acquisition revision).
+Generated from the saved Main and resolved Presentation Notes on 12 November 2026 (0.21 source-link update).
 
 Main: 26. pres-full: 26 pages, 0 occurrence Notes; pres-lab: 9 pages, 4 occurrence Notes.
 
@@ -104,9 +104,55 @@ Before delivering, run Design check. It reads the whole collection and reports o
 
 HUANDENG did not start from nothing. The editor is built on OpenSlide, under the MIT licence. Equation conversion reuses code from the OpenPPTD repository; the GitHub mark here identifies that repository, it is not an OpenPPTD logo. PowerPoint export uses PptxGenJS. On the right are things HUANDENG does not do yet, as listed in the project README: importing arbitrary PPTX files and round-tripping them, editing Google Slides directly, a separate presenter window on a second screen, inheritable slide masters, native PowerPoint animation in exported files, and a plugin marketplace. If you need one of these, that is where a contribution would help most.
 
+Reference URLs (names link to source repositories or official sites):
+HUANDENG: https://github.com/JaytonKogeru/huandeng
+OpenSlide: https://github.com/open-slide/open-slide
+OpenPPTD: https://github.com/Shingwha/open-pptd
+PptxGenJS: https://github.com/gitbrent/PptxGenJS
+PowerPoint: https://www.microsoft.com/microsoft-365/powerpoint
+WPS: https://www.wps.com/
+Kimi / Moonshot AI: https://www.kimi.com/
+open-kimi-ppt-skill: https://github.com/Amonginin/open-kimi-ppt-skill
+PPTist: https://github.com/pipipi-pikachu/PPTist
+VS Code: https://github.com/microsoft/vscode
+Slidev: https://github.com/slidevjs/slidev
+Presenton: https://github.com/presenton/presenton
+PPTAgent: https://github.com/icip-cas/PPTAgent
+PPTMaster: https://github.com/hugohe3/ppt-master
+OpenSlides Studio: https://gitlab.com/open-slides/openslides
+OPF: https://github.com/OpenPresentation/opf
+Apache ECharts: https://github.com/apache/echarts
+KaTeX: https://github.com/KaTeX/KaTeX
+Font Awesome: https://github.com/FortAwesome/Font-Awesome
+OpenSlides Studio website: https://openslides.dev/
+OPF website: https://www.openpresentation.org/
+
 ## Main 25. Acknowledgments — 9JFE
 
 Before the last slide, the people and projects this work stands on. Three of them are in the code. OpenSlide is the foundation: the editor, canvas, Inspector, presentation and export come from it. Three equation-conversion modules come from OpenPPTD, and PptxGenJS writes the PowerPoint files. Everything else is a relationship of ideas, not code. I first met the PPTD idea in the Kimi Slides ecosystem, and the community open-kimi-ppt-skill notes helped with the format. PowerPoint, WPS and VS Code shaped the workspace: sections, notes, views, tabs and panels. OpenSlides Studio and the OpenPresentation format shaped how objects get stable IDs and how changes are checked against a revision. And I studied PPTist, Slidev, Presenton, PPTAgent and PPT Master as alternatives; each solves part of this problem well, and each taught me something specific. None of them endorses HUANDENG. The full list, with links and what was adopted, is in docs/ACKNOWLEDGMENTS.md in the repository.
+
+Reference URLs (names link to source repositories or official sites):
+HUANDENG: https://github.com/JaytonKogeru/huandeng
+OpenSlide: https://github.com/open-slide/open-slide
+OpenPPTD: https://github.com/Shingwha/open-pptd
+PptxGenJS: https://github.com/gitbrent/PptxGenJS
+PowerPoint: https://www.microsoft.com/microsoft-365/powerpoint
+WPS: https://www.wps.com/
+Kimi / Moonshot AI: https://www.kimi.com/
+open-kimi-ppt-skill: https://github.com/Amonginin/open-kimi-ppt-skill
+PPTist: https://github.com/pipipi-pikachu/PPTist
+VS Code: https://github.com/microsoft/vscode
+Slidev: https://github.com/slidevjs/slidev
+Presenton: https://github.com/presenton/presenton
+PPTAgent: https://github.com/icip-cas/PPTAgent
+PPTMaster: https://github.com/hugohe3/ppt-master
+OpenSlides Studio: https://gitlab.com/open-slides/openslides
+OPF: https://github.com/OpenPresentation/opf
+Apache ECharts: https://github.com/apache/echarts
+KaTeX: https://github.com/KaTeX/KaTeX
+Font Awesome: https://github.com/FortAwesome/Font-Awesome
+OpenSlides Studio website: https://openslides.dev/
+OPF website: https://www.openpresentation.org/
 
 ## Main 26. Start with your story — SMGE
 
@@ -214,9 +260,55 @@ Before delivering, run Design check. It reads the whole collection and reports o
 
 HUANDENG did not start from nothing. The editor is built on OpenSlide, under the MIT licence. Equation conversion reuses code from the OpenPPTD repository; the GitHub mark here identifies that repository, it is not an OpenPPTD logo. PowerPoint export uses PptxGenJS. On the right are things HUANDENG does not do yet, as listed in the project README: importing arbitrary PPTX files and round-tripping them, editing Google Slides directly, a separate presenter window on a second screen, inheritable slide masters, native PowerPoint animation in exported files, and a plugin marketplace. If you need one of these, that is where a contribution would help most.
 
+Reference URLs (names link to source repositories or official sites):
+HUANDENG: https://github.com/JaytonKogeru/huandeng
+OpenSlide: https://github.com/open-slide/open-slide
+OpenPPTD: https://github.com/Shingwha/open-pptd
+PptxGenJS: https://github.com/gitbrent/PptxGenJS
+PowerPoint: https://www.microsoft.com/microsoft-365/powerpoint
+WPS: https://www.wps.com/
+Kimi / Moonshot AI: https://www.kimi.com/
+open-kimi-ppt-skill: https://github.com/Amonginin/open-kimi-ppt-skill
+PPTist: https://github.com/pipipi-pikachu/PPTist
+VS Code: https://github.com/microsoft/vscode
+Slidev: https://github.com/slidevjs/slidev
+Presenton: https://github.com/presenton/presenton
+PPTAgent: https://github.com/icip-cas/PPTAgent
+PPTMaster: https://github.com/hugohe3/ppt-master
+OpenSlides Studio: https://gitlab.com/open-slides/openslides
+OPF: https://github.com/OpenPresentation/opf
+Apache ECharts: https://github.com/apache/echarts
+KaTeX: https://github.com/KaTeX/KaTeX
+Font Awesome: https://github.com/FortAwesome/Font-Awesome
+OpenSlides Studio website: https://openslides.dev/
+OPF website: https://www.openpresentation.org/
+
 ### 25. Main 25 · 9JFE · Main Notes
 
 Before the last slide, the people and projects this work stands on. Three of them are in the code. OpenSlide is the foundation: the editor, canvas, Inspector, presentation and export come from it. Three equation-conversion modules come from OpenPPTD, and PptxGenJS writes the PowerPoint files. Everything else is a relationship of ideas, not code. I first met the PPTD idea in the Kimi Slides ecosystem, and the community open-kimi-ppt-skill notes helped with the format. PowerPoint, WPS and VS Code shaped the workspace: sections, notes, views, tabs and panels. OpenSlides Studio and the OpenPresentation format shaped how objects get stable IDs and how changes are checked against a revision. And I studied PPTist, Slidev, Presenton, PPTAgent and PPT Master as alternatives; each solves part of this problem well, and each taught me something specific. None of them endorses HUANDENG. The full list, with links and what was adopted, is in docs/ACKNOWLEDGMENTS.md in the repository.
+
+Reference URLs (names link to source repositories or official sites):
+HUANDENG: https://github.com/JaytonKogeru/huandeng
+OpenSlide: https://github.com/open-slide/open-slide
+OpenPPTD: https://github.com/Shingwha/open-pptd
+PptxGenJS: https://github.com/gitbrent/PptxGenJS
+PowerPoint: https://www.microsoft.com/microsoft-365/powerpoint
+WPS: https://www.wps.com/
+Kimi / Moonshot AI: https://www.kimi.com/
+open-kimi-ppt-skill: https://github.com/Amonginin/open-kimi-ppt-skill
+PPTist: https://github.com/pipipi-pikachu/PPTist
+VS Code: https://github.com/microsoft/vscode
+Slidev: https://github.com/slidevjs/slidev
+Presenton: https://github.com/presenton/presenton
+PPTAgent: https://github.com/icip-cas/PPTAgent
+PPTMaster: https://github.com/hugohe3/ppt-master
+OpenSlides Studio: https://gitlab.com/open-slides/openslides
+OPF: https://github.com/OpenPresentation/opf
+Apache ECharts: https://github.com/apache/echarts
+KaTeX: https://github.com/KaTeX/KaTeX
+Font Awesome: https://github.com/FortAwesome/Font-Awesome
+OpenSlides Studio website: https://openslides.dev/
+OPF website: https://www.openpresentation.org/
 
 ### 26. Main 26 · SMGE · Main Notes
 

@@ -10,9 +10,9 @@ Open a page, select an object, make a focused change, and keep the work that sti
 
 [Try the editable examples](examples/huandeng-introduction/README.md) | [Desktop setup](packages/desktop/README.md) | [Connect an assistant](plugins/huandeng/README.md) | [Contribute](CONTRIBUTING.md)
 
-The current local Editor and plugin candidate is **0.20.0**. The Windows package and both client-package forms have been built and checked; see the [0.20 candidate notes](docs/RELEASE-V020.md). This is a local candidate, not a published public release. HUANDENG builds on OpenSlide and retains its MIT license and attribution.
+The current local Editor and plugin candidate is **0.21.0**, with page actions in Browse and Outline, visible agent progress on individual pages, and reference links in native exports. The Windows package and both client-package forms have been built and checked; see the [0.21 candidate notes](docs/RELEASE-V021.md). This local candidate has not been published as a public release. HUANDENG builds on OpenSlide and retains its MIT license and attribution.
 
-The screenshot above is a real 0.19 working project. The new **Project rules** view described below belongs to the 0.20 candidate; the existing screenshot keeps its actual version.
+The screenshot above records a real 0.19 working project. The current features described below are newer than that capture; its version label is preserved.
 
 ## Why HUANDENG
 
@@ -37,7 +37,7 @@ The [example collection](examples/huandeng-introduction/README.md) contains edit
 
 Extract the complete Windows desktop package and run **HUANDENG Editor.exe**. Keep the application folder together. Home can create a new project or open an existing `.pptd`; opening a folder works when it has one unambiguous project entry.
 
-A new project starts with one blank page. Add text or shapes on the canvas, and use **Assets → Import and place** for an image. The [desktop guide](packages/desktop/README.md) covers packaging, shortcuts and project windows. The current Windows candidate is prepared at `dist/HUANDENG-v0.20.0-win32-x64`; the [0.20 candidate notes](docs/RELEASE-V020.md) describe its changes and checks. The [0.19 release notes](docs/RELEASE-V019.md) remain the record of that earlier milestone.
+A new project starts with one blank page. Add text or shapes on the canvas, and use **Assets → Import and place** for an image. The [desktop guide](packages/desktop/README.md) covers packaging, shortcuts and project windows. The current Windows candidate is prepared at `dist/HUANDENG-v0.21.0-win32-x64`; the [0.21 candidate notes](docs/RELEASE-V021.md) describe its changes and checks. The [0.19 release notes](docs/RELEASE-V019.md) remain the record of that earlier milestone.
 
 ### Run from source
 
@@ -89,6 +89,12 @@ The [authoring contract](docs/INTRODUCTION-STORY-SPEC.md) applies this process t
 | Adapt the material to another audience | Arrange a Presentation from Main pages or Sections. |
 | Deliver the talk | Rehearse the selected collection; confirm Export's format and range. |
 
+### Page actions where you are working
+
+In **Browse** or **Outline**, right-click a page or use its **More actions** button. Keyboard users can focus the page and press **Shift+F10**. Open the page, start presenting from that appearance, read its Story or Notes, inspect History, copy its Slide code, or find its source in Files.
+
+For Main Slides, **Organize Slide** inserts a blank before or after the page, duplicates it, or changes its order. Hide/show and **Remove from Main** are separate actions. In a Presentation, the menu takes you to the Main Slide or the Presentation arrangement; pinned versions retain their read-only artwork. Actions use the page you opened the menu on and respect unsaved edits.
+
 ### One page library, several talks
 
 **Main Slides** is the project's page library. Each page has a permanent identity and a short Slide ID. Its position can change without changing that identity.
@@ -103,7 +109,7 @@ Save page edits with **Save slides**; save structural changes in the project arr
 
 Story records why the project, a Section, a Presentation or a page exists. Page Story also preserves editing constraints. Notes hold what the speaker will say. An assistant can read this context together with neighboring pages and asset information before proposing a change.
 
-In the 0.20 candidate, open **Project rules** in **Project** to read the canonical root `AGENTS.md` text and its source. Open the full file in the workspace preview or refresh the rules after editing it. The view preserves the author's instructions instead of creating a second rule set or substituting an AI summary.
+Open **Project rules** in **Project** to read the canonical root `AGENTS.md` text and its source. Open the full file in the workspace preview or refresh the rules after editing it. The view preserves the author's instructions instead of creating a second rule set or substituting an AI summary.
 
 Assets preserve original file bytes and expose their uses in the project. Display crops are editable image properties. Named page versions archive the page and its referenced local assets, so a recorded result can travel with the project folder.
 
@@ -112,6 +118,8 @@ Automatic saves, recorded operations, named page versions and Git commits serve 
 ## Work with an assistant
 
 Open **Agent setup** in the Editor, choose your client, follow its configuration steps, and verify the target project before requesting an edit.
+
+For DeepSeek Harness, start with the **native plugin** route and install the bundle through its Plugin Manager. The generated configuration targets the existing `huandeng` plugin entry. The separately labelled legacy MCP patch is for profiles without that native bundle; use one route per profile. Configuration generation preserves account and model settings.
 
 | Client | Integration maintained in this repository |
 | --- | --- |
@@ -127,11 +135,11 @@ node plugins/huandeng/scripts/build-package.mjs --target local --output "$PWD/di
 node plugins/huandeng/scripts/build-deepseek.mjs --output "$PWD/dist/plugin-packages/deepseek-build"
 ```
 
-Each command creates a `huandeng/` package inside its output directory. The current local candidate packages are `dist/plugin-packages/0.20.0/portable-claude-codex/huandeng` and `dist/plugin-packages/0.20.0/deepseek-native/huandeng`. Both are inside this engineering project. Generated packages are build outputs; the maintained source is `plugins/huandeng`. Use the client's supported plugin loader or manager to install the appropriate form.
+Each command creates a `huandeng/` package inside its output directory. The current local candidate packages are `dist/plugin-packages/0.21.0/portable-claude-codex/huandeng` and `dist/plugin-packages/0.21.0/deepseek-native/huandeng`. Both are inside this engineering project. Generated packages are build outputs; the maintained source is `plugins/huandeng`. Use the client's supported plugin loader or manager to install the appropriate form.
 
-The 0.20 candidate also adds project-bound original-image import and real Editor capture tools for native clients. The packaged MCP reports 0.20.0 and 24 tools; its acquisition and capture checks ran against an unchanged compatible 0.19 writer. Packaging did not replace an existing runtime. Details and limits are in the [candidate notes](docs/RELEASE-V020.md).
+The packaged MCP reports 0.21.0 and retains the 24-tool surface, including project-bound original-image import and real Editor capture. Progress reports can include the assistant family, workflow stage and page scope. Compatible older writers receive the legacy report fields, with unsupported optional fields identified in the response. Current runtime and package checks are recorded in the [candidate notes](docs/RELEASE-V021.md).
 
-The [current native integration record](docs/NATIVE-INTEGRATION-0.20.md) distinguishes actual DeepSeek model tool calls, Claude Code's connected plugin, the host-denied Chinese MCP request, and completed native CLI authoring. It also records the saved examples and independent Office checks. The [0.19 integration record](docs/NATIVE-INTEGRATION-0.19.md) remains dated history; a package manifest or connected label alone does not establish a completed model task.
+The [0.20 native integration record](docs/NATIVE-INTEGRATION-0.20.md) distinguishes actual DeepSeek model tool calls, Claude Code's connected plugin, the host-denied Chinese MCP request, and completed native CLI authoring. It also records the saved examples and independent Office checks. The [0.19 integration record](docs/NATIVE-INTEGRATION-0.19.md) remains dated history; a package manifest or connected label alone does not establish a completed model task.
 
 The shared [huandeng-story skill](plugins/huandeng/skills/huandeng-story/SKILL.md) reads the author's source material and existing pages, develops the argument and visual treatment, previews the proposed changes, then inspects the saved result and real rendering.
 
@@ -143,6 +151,14 @@ node packages/core/huandeng.js --entry examples/huandeng-introduction/chatgpt-en
 ```
 
 Edits use current page identities and revisions, followed by preview, apply and saved-result review. Do not copy stale IDs or revisions into a new task. Runtime guides `huandeng://guide/story` and `huandeng://guide/operations` describe the workflow.
+
+### See reported work on a page
+
+Page badges identify recent work reported by **ChatGPT / Codex**, **Claude / Claude Code** or **DeepSeek Harness**, with its current stage and report time. Click a badge to open Activity and inspect the task and any verified saved changes. Multiple tasks can be shown on the same page; the badge does not lock it.
+
+Progress comes from the assistant's reports. After **five minutes** without an update, a task is marked **Not recently updated**; its page badge disappears after **thirty minutes** without an update. Completed, failed or stopped task badges remain for **two minutes**, with the record retained in Activity. Reports from a previous writer session are stale. A reported task outcome and a matching writer save receipt remain separate evidence.
+
+Identity slots for pi, Zcode / GLM, WorkBuddy, Grokbot / Grok, Gemini, Antigravity and Hermes are reserved for future integrations. They do not indicate an installed connection.
 
 ## Architecture
 
@@ -184,6 +200,8 @@ A stale revision produces a conflict, so the client must read the current state 
 ## Formats and current limits
 
 HUANDENG supports text, images, shapes, lines, icons, groups, native tables and charts, and LaTeX equations. Supported objects export as editable PPTX structures; the export report identifies fallbacks and warnings. See [scientific objects](docs/SCIENTIFIC-OBJECTS.md) and [PowerPoint compatibility](docs/POWERPOINT-COMPARISON.md).
+
+Safe links in rich text and table cells retain real destinations in PDF and editable PPTX text. Clicking those labels while editing keeps you in the document; use the exported file to follow its references.
 
 PNG, PDF and PPTX export the static base layout. Editor click steps do not become PowerPoint animations. MP4 is a separate silent timed export that requires FFmpeg with libx264 and has its own supported-material limits.
 

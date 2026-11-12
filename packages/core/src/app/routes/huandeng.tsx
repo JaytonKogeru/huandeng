@@ -48,6 +48,7 @@ import { NotesPageView } from '@/components/pptd/notes-page-view';
 import { NotesPanel } from '@/components/pptd/notes-panel';
 import { OperationReviewDialog } from '@/components/pptd/operation-review-dialog';
 import { currentReviewTarget } from '@/components/pptd/operation-review-model';
+import { PageAgentStatus } from '@/components/pptd/page-agent-status';
 import { PageHistoryWorkspace } from '@/components/pptd/page-history-workspace';
 import { PageScopeBar } from '@/components/pptd/page-scope-bar';
 import { PanelResizeHandle } from '@/components/pptd/panel-resize-handle';
@@ -60,7 +61,7 @@ import { RecipePanel } from '@/components/pptd/recipe-panel';
 import type { PptdTheme } from '@/components/pptd/renderer';
 import { ScienceInsertMenu } from '@/components/pptd/science-insert-menu';
 import type { ChartDataDraft } from '@/components/pptd/science-inspector';
-import { SectionBrowser } from '@/components/pptd/section-browser';
+import { SectionBrowser, type SlideAction } from '@/components/pptd/section-browser';
 import { ShapeInsertMenu } from '@/components/pptd/shape-insert-menu';
 import { TechnicalQaPanel } from '@/components/pptd/technical-qa-panel';
 import { PptdThumbnailRail } from '@/components/pptd/thumbnail-rail';
@@ -113,6 +114,7 @@ import {
   textPropertyPatch,
 } from '@/lib/pptd-object-actions';
 import { useSnappingPreference, useWorkspaceLayout } from '@/lib/pptd-preferences';
+import { presentationStartPage } from '@/lib/pptd-presentation-target';
 import { sectionAtBoundary } from '@/lib/pptd-section-actions';
 import { createStarterTitle } from '@/lib/pptd-starter-title';
 import {
@@ -126,7 +128,9 @@ import {
   workspaceViewSwitchBlocked,
 } from '@/lib/pptd-workspace-views';
 import { useDocumentTitle } from '@/lib/use-document-title';
+import { usePageAgentActivity } from '@/lib/use-page-agent-activity';
 import { usePptdDocument } from '@/lib/use-pptd-document';
+import { useProjectActivity } from '@/lib/use-project-activity';
 import { type PageAnimation, validatePageAnimation } from '../../pptd/animation-model';
 import type { AssetLibraryItem, AssetLibraryOptions } from '../../pptd/asset-library';
 import {
@@ -156,6 +160,7 @@ export function HuandengEditor() {
   const snapping = useSnappingPreference();
   const [agentConnectionOpen, setAgentConnectionOpen] = useState(false);
   const [activityOpen, setActivityOpen] = useState(false);
+  const [activityPageId, setActivityPageId] = useState<string | null>(null);
   const [designQualityOpen, setDesignQualityOpen] = useState(false);
   const [sectionEditorRequest, setSectionEditorRequest] = useState<{
     key: number;
@@ -319,6 +324,13 @@ export function HuandengEditor() {
   const [exportReport, setExportReport] = useState<string | null>(null);
   const [uiError, setUiError] = useState<string | null>(null);
   const snapshot = state.snapshot;
+  const projectActivity = useProjectActivity(backend, snapshot?.deckId);
+  const activePageIds = useMemo(() => snapshot?.pages.map((item) => item.pageId) ?? [], [snapshot]);
+  const pageActivity = usePageAgentActivity(projectActivity.snapshot, activePageIds);
+  const openPageActivity = (pageId: string) => {
+    setActivityPageId(pageId);
+    setActivityOpen(true);
+  };
   // biome-ignore lint/correctness/useExhaustiveDependencies: A different Project must not retain a file path from the previous Project.
   useEffect(() => {
     setFilePreviewPath(null);
@@ -1263,6 +1275,122 @@ export function HuandengEditor() {
     [viewPages, pageIndex, selectPage, selectedPresentationId, presenting],
   );
 
+  const launchPresentation = useCallback(
+    (fromCurrent: boolean, target?: PageSnapshot) => {
+      if (historyMutation.current || textComposing || presentationBlocked) {
+        setUiError(
+          'Save or discard panel drafts and finish text composition before switching views.',
+        );
+        return;
+      }
+      void run(async () => {
+        await client.flushAll();
+        const resolved = selectedPresentationId
+          ? await backend.presentation(selectedPresentationId)
+          : null;
+        const currentPages = resolved?.pages ?? client.getState().snapshot?.pages ?? [];
+        const destination = presentationStartPage(
+          currentPages,
+          fromCurrent ? (target ?? selectedView ?? page) : undefined,
+        );
+        if (!destination)
+          throw new Error('The selected appearance is unavailable. Choose a visible slide again.');
+        if (resolved) setPresentationView(resolved);
+        const key = `${destination.pageId}:${destination.occurrenceId ?? ''}:${destination.versionId ?? ''}`;
+        if (presenting && key === presentationPageKey)
+          presentationControls.current?.seekBoundary(false);
+        presentationEntries.current.clear();
+        pendingPresentationPage.current = key === presentationPageKey ? null : key;
+        setPresentationSession((session) => session + 1);
+        selectPage(destination.pageId, destination.occurrenceId);
+        setPresenterNotesOpen(false);
+        setPresenting(true);
+      });
+    },
+    [
+      backend,
+      client,
+      page,
+      presentationBlocked,
+      presentationPageKey,
+      presenting,
+      run,
+      selectedPresentationId,
+      selectedView,
+      selectPage,
+      textComposing,
+    ],
+  );
+
+  const pageAction = (target: PageSnapshot, action: SlideAction) => {
+    if (historyMutation.current || busy || auxiliaryDirty || textComposing || previewActive) {
+      setUiError(
+        'Save or discard panel drafts and finish text composition before switching views.',
+      );
+      return;
+    }
+    if (action === 'present') {
+      launchPresentation(true, target);
+      return;
+    }
+    if (action === 'history') {
+      openHistory(target.pageId, target.occurrenceId);
+      return;
+    }
+    if (action === 'go-main') {
+      selectMainPage(target.pageId);
+      return;
+    }
+    if (action === 'arrange') {
+      showProjectEditor();
+      return;
+    }
+    if (action === 'show-file') {
+      selectPage(target.pageId, target.occurrenceId);
+      setLeftTab('files');
+      const main = snapshot?.pages.find((item) => item.pageId === target.pageId);
+      if (main) openFilePreview(main.path);
+      return;
+    }
+    if (action === 'open' || action === 'notes' || action === 'story') {
+      const view = action === 'notes' ? 'notes' : 'edit';
+      if (workspaceView !== view && !switchWorkspaceView(view)) return;
+      selectPage(target.pageId, target.occurrenceId, action === 'open' ? 'canvas' : undefined);
+      if (action === 'story') {
+        setInspectorTab('story');
+        setInspectorCollapsed(false);
+        if (notesDock === 'right') setNotesOpen(false);
+      }
+      return;
+    }
+    if (!snapshot?.writable || target.versionId || selectedPresentationId) return;
+    if (action === 'duplicate') {
+      void apply([{ op: 'page.duplicate', pageId: target.pageId }]);
+      return;
+    }
+    if (action === 'remove') {
+      void apply([{ op: 'page.remove', pageId: target.pageId }]);
+      return;
+    }
+    if (action === 'toggle-hidden') {
+      void apply([
+        {
+          op: 'metadata.patch',
+          pageId: target.pageId,
+          set: { hidden: target.metadata.hidden !== true },
+        },
+      ]);
+      return;
+    }
+    const index = snapshot.pages.findIndex((item) => item.pageId === target.pageId);
+    if (index < 0) return;
+    const before = action === 'insert-before';
+    insertAtBoundary({
+      afterPageId: before ? (snapshot.pages[index - 1]?.pageId ?? null) : target.pageId,
+      beforePageId: before ? target.pageId : (snapshot.pages[index + 1]?.pageId ?? null),
+    });
+  };
+
   const executeKeyboardCommand = useCallback(
     (command: EditorKeyboardCommand, target: EventTarget | null) => {
       if (historyMutation.current && command.type !== 'help' && command.type !== 'focus-region')
@@ -1315,30 +1443,7 @@ export function HuandengEditor() {
         return;
       }
       if (command.type === 'present') {
-        if (!page) return;
-        if (presentationBlocked) {
-          setUiError('请先保存项目草稿并解决演讲引用问题。');
-          return;
-        }
-        void run(async () => {
-          await client.flushAll();
-          const destination = command.fromCurrent
-            ? (playbackPages.find(
-                (item) => allViewPages.indexOf(item) >= allViewPages.indexOf(selectedView ?? page),
-              ) ?? playbackPages[0])
-            : playbackPages[0];
-          if (!destination)
-            throw new Error('There are no visible slides to present. Show a slide first.');
-          const key = `${destination.pageId}:${destination.occurrenceId ?? ''}:${destination.versionId ?? ''}`;
-          if (presenting && key === presentationPageKey)
-            presentationControls.current?.seekBoundary(false);
-          presentationEntries.current.clear();
-          pendingPresentationPage.current = key === presentationPageKey ? null : key;
-          setPresentationSession((session) => session + 1);
-          selectPage(destination.pageId, destination.occurrenceId);
-          setPresenterNotesOpen(false);
-          setPresenting(true);
-        });
+        launchPresentation(command.fromCurrent);
         return;
       }
       if (command.type === 'page-step') {
@@ -1554,13 +1659,13 @@ export function HuandengEditor() {
       exporting,
       groupSelection,
       layer,
+      launchPresentation,
       notesDock,
       theme,
       importingImages,
       page,
       pageReadonly,
       patchElement,
-      presentationBlocked,
       presentationPageKey,
       presenting,
       readonly,
@@ -1575,9 +1680,6 @@ export function HuandengEditor() {
       stepPage,
       timelineDirty,
       viewPages,
-      allViewPages,
-      playbackPages,
-      selectedView,
       editingWorkspace,
       workspaceView,
     ],
@@ -1926,7 +2028,10 @@ export function HuandengEditor() {
             size="sm"
             aria-label={t('Agent Activity')}
             aria-pressed={activityOpen}
-            onClick={() => setActivityOpen((value) => !value)}
+            onClick={() => {
+              setActivityPageId(null);
+              setActivityOpen((value) => !value);
+            }}
             data-hd-open-activity
           >
             <TerminalSquare />
@@ -2412,6 +2517,14 @@ export function HuandengEditor() {
                     )
               }
               onSelect={selectPage}
+              renderPageActivity={(item) => (
+                <PageAgentStatus
+                  items={pageActivity.byPage[item.pageId] ?? []}
+                  compact
+                  pinned={!!item.versionId}
+                  onOpen={() => openPageActivity(item.pageId)}
+                />
+              )}
               onAdd={() =>
                 void apply([
                   {
@@ -2735,6 +2848,15 @@ export function HuandengEditor() {
                 onOrganize={showProjectEditor}
               />
             )}
+            {page && (
+              <div className="hd-selected-page-agents" data-hd-selected-page-agents>
+                <PageAgentStatus
+                  items={pageActivity.byPage[page.pageId] ?? []}
+                  pinned={!!page.versionId}
+                  onOpen={() => openPageActivity(page.pageId)}
+                />
+              </div>
+            )}
             {conflict && (
               <div
                 className="shrink-0 border-b border-amber-300/50 bg-amber-50 px-4 py-3 text-amber-900"
@@ -2822,7 +2944,16 @@ export function HuandengEditor() {
                   currentPageId={selectedPageId}
                   currentOccurrenceId={selectedView?.occurrenceId}
                   presentation={!!selectedPresentationId}
-                  disabled={readonly || busy || auxiliaryDirty}
+                  disabled={busy || auxiliaryDirty || textComposing || previewActive}
+                  readOnly={!snapshot.writable}
+                  onAction={pageAction}
+                  renderPageActivity={(item) => (
+                    <PageAgentStatus
+                      items={pageActivity.byPage[item.pageId] ?? []}
+                      pinned={!!item.versionId}
+                      onOpen={() => openPageActivity(item.pageId)}
+                    />
+                  )}
                   onSelect={selectPage}
                   onEdit={(id, occurrenceId) => {
                     if (switchWorkspaceView('edit')) selectPage(id, occurrenceId, 'canvas');
@@ -3117,6 +3248,9 @@ export function HuandengEditor() {
             <PptdActivityPanel
               backend={backend}
               deckId={snapshot.metadata.deckId}
+              activity={projectActivity}
+              pageId={activityPageId}
+              onClearPage={() => setActivityPageId(null)}
               pageLabels={Object.fromEntries(
                 snapshot.pages
                   .filter((item) => item.state === 'active')

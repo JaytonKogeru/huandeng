@@ -4,7 +4,7 @@ const path = require('node:path');
 const { promisify } = require('node:util');
 
 const execute = promisify(execFile);
-const clients = new Set(['codex', 'claude', 'deepseek', 'chatgpt']);
+const clients = new Set(['codex', 'claude', 'deepseek-native', 'deepseek', 'chatgpt']);
 
 async function agentConfiguration({ client, entryPath, applicationDirectory, executable }) {
   if (!clients.has(client)) throw new Error('Unsupported Agent client.');

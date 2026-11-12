@@ -14,6 +14,7 @@ import {
 import { uiText as t, useHuandengLocale } from '@/lib/huandeng-locale';
 import { pptdAssetPreviewUrl, pptdAssetUrl } from '@/lib/pptd-backend';
 import { compileTimeline } from '../../../pptd/animation-model';
+import { safeHyperlink } from '../../../pptd/hyperlink';
 import { splitMathFragments } from '../../../pptd/math-fragments';
 import { resolvePositionField } from '../../../pptd/position-field';
 import { presetShapePath, SHAPE_PRESETS } from '../../../pptd/shape-presets';
@@ -242,12 +243,11 @@ export function sanitizeRichTextHtml(source: string): string {
             .filter(Boolean);
           if (declarations.length) child.setAttribute('style', declarations.join(';'));
           else child.removeAttribute('style');
+        } else if (tag === 'a' && attribute.name === 'href') {
+          const href = safeHyperlink(attribute.value);
+          if (href) child.setAttribute('href', href);
+          else child.removeAttribute('href');
         } else if (
-          !(
-            tag === 'a' &&
-            attribute.name === 'href' &&
-            /^(https?:|mailto:)/i.test(attribute.value)
-          ) &&
           !(
             MATH_TAGS.has(tag) &&
             MATH_ATTRIBUTES.has(attribute.name.toLowerCase()) &&

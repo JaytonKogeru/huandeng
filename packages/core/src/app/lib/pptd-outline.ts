@@ -14,21 +14,21 @@ function plainText(value: unknown): string {
 
 export function outlineSlideSummary(page: PageSnapshot): string {
   const purpose = plainText(page.metadata.designIntent?.purpose);
-  if (purpose) return purpose.slice(0, 320);
-  const title = projectSlideTitle(page);
+  const title = plainText(projectSlideTitle(page));
+  if (purpose && purpose !== title) return purpose.slice(0, 320);
   return page.data.elements
     .filter(
       (element) =>
         element.elementType === 'text' &&
         !element.content?.field &&
-        !/footer|page.?number|position|title|heading/i.test(
+        !/footer|watermark|page.?number|position|title|heading/i.test(
           String(element.role ?? element.name ?? element.elementId),
         ),
     )
     .map((element) => plainText(element.content?.text))
     .filter((text) => text && text !== title && !/^\d+$/.test(text))
     .slice(0, 3)
-    .join(' · ')
+    .join(' ')
     .slice(0, 320);
 }
 

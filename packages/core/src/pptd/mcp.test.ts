@@ -79,6 +79,80 @@ describe('HUANDENG MCP project and Story context', () => {
     expect(request).toHaveBeenLastCalledWith('/activity', args);
   });
 
+  it('advertises bounded agent identity and phases on the existing activity tool', async () => {
+    const { client, request } = await connection();
+    const { tools } = await client.listTools();
+    const properties = tools.find((tool) => tool.name === 'huandeng_activity_report')?.inputSchema
+      .properties;
+    expect(properties?.phase).toMatchObject({
+      enum: ['audit', 'spec', 'implement', 'validate', 'release'],
+    });
+    expect(properties?.agentFamily).toMatchObject({
+      enum: expect.arrayContaining(['chatgpt', 'claude', 'deepseek', 'hermes', 'other']),
+    });
+    expect(tools).toHaveLength(24);
+    const args = {
+      deckId: 'selected-project',
+      requestId: 'phase',
+      taskId: 'review',
+      sessionId: 'chat-a',
+      actor: 'ChatGPT',
+      status: 'running',
+      summary: 'Reviewing the selected page.',
+      agentFamily: 'chatgpt',
+      phase: 'validate',
+    };
+    request.mockResolvedValueOnce({ deckId: 'selected-project' });
+    request.mockResolvedValueOnce({
+      ...args,
+      agentFamily: undefined,
+      phase: undefined,
+      source: 'client',
+    });
+    const result = await client.callTool({ name: 'huandeng_activity_report', arguments: args });
+    expect(request).toHaveBeenLastCalledWith('/activity', {
+      deckId: args.deckId,
+      requestId: args.requestId,
+      taskId: args.taskId,
+      sessionId: args.sessionId,
+      actor: args.actor,
+      status: args.status,
+      summary: args.summary,
+    });
+    expect(result).toMatchObject({
+      content: [{ type: 'text', text: expect.stringContaining('omittedFields') }],
+    });
+  });
+
+  it('passes declared phases to a capable writer and rejects malformed phases before transport', async () => {
+    const { client, request } = await connection();
+    const args = {
+      deckId: 'selected-project',
+      requestId: 'phase',
+      taskId: 'review',
+      sessionId: 'chat-a',
+      actor: 'Claude',
+      status: 'running',
+      summary: 'Reviewing the selected page.',
+      agentFamily: 'claude',
+      phase: 'spec',
+    };
+    request.mockResolvedValueOnce({
+      deckId: 'selected-project',
+      reportCapabilities: { agentFamily: true, phase: true },
+    });
+    request.mockResolvedValueOnce(args);
+    await client.callTool({ name: 'huandeng_activity_report', arguments: args });
+    expect(request).toHaveBeenLastCalledWith('/activity', args);
+    request.mockClear();
+    const invalid = await client.callTool({
+      name: 'huandeng_activity_report',
+      arguments: { ...args, phase: 'thinking' },
+    });
+    expect(invalid).toMatchObject({ isError: true });
+    expect(request).not.toHaveBeenCalled();
+  });
+
   it('advertises the three context tools as read-only alongside the compatible writer tools', async () => {
     const { client } = await connection();
     const { tools } = await client.listTools();

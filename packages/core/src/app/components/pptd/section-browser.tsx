@@ -1,5 +1,5 @@
 import { ArrowDown, ArrowUp, ChevronDown, ChevronRight } from 'lucide-react';
-import { useMemo, useState } from 'react';
+import { type ReactNode, useMemo, useState } from 'react';
 import { useHuandengLocale } from '@/lib/huandeng-locale';
 import { outlineSlideSummary } from '@/lib/pptd-outline';
 import type { SlideInsertionBoundary, ThumbnailSection } from '@/lib/pptd-thumbnail-sections';
@@ -14,7 +14,10 @@ import type { PageSize, PageSnapshot } from '../../../pptd/types';
 import { Button } from '../ui/button';
 import { Input } from '../ui/input';
 import type { PptdTheme } from './renderer';
+import { type SlideAction, SlideActionsMenu } from './slide-actions-menu';
 import { WorkspaceSlidePreview } from './workspace-views';
+
+export type { SlideAction } from './slide-actions-menu';
 
 export function SectionBrowser({
   display,
@@ -26,6 +29,9 @@ export function SectionBrowser({
   currentOccurrenceId,
   presentation,
   disabled,
+  readOnly = false,
+  onAction,
+  renderPageActivity,
   onSelect,
   onEdit,
   onMove,
@@ -41,6 +47,9 @@ export function SectionBrowser({
   currentOccurrenceId?: string;
   presentation: boolean;
   disabled: boolean;
+  readOnly?: boolean;
+  onAction?: (page: PageSnapshot, action: SlideAction) => void;
+  renderPageActivity?: (page: PageSnapshot) => ReactNode;
   onSelect: (pageId: string, occurrenceId?: string) => void;
   onEdit: (pageId: string, occurrenceId?: string) => void;
   onMove: (pageId: string, boundary: SlideInsertionBoundary) => void;
@@ -65,7 +74,7 @@ export function SectionBrowser({
   const activeCollapsed = new Set(
     groups.filter((group) => collapsed.has(group.key)).map((group) => group.key),
   );
-  const canMove = !disabled && !presentation && !query.trim() && !activeCollapsed.size;
+  const canMove = !disabled && !readOnly && !presentation && !query.trim() && !activeCollapsed.size;
   const moveBoundary = (key: string, direction: -1 | 1) =>
     canMove ? moveBoundaries.get(key)?.[direction < 0 ? 'up' : 'down'] : null;
   const move = (page: PageSnapshot, key: string, direction: -1 | 1) => {
@@ -104,7 +113,7 @@ export function SectionBrowser({
           </label>
         )}
         {!presentation && (
-          <Button size="xs" variant="outline" onClick={onManageSections}>
+          <Button size="xs" variant="outline" disabled={disabled} onClick={onManageSections}>
             {t('Manage Sections')}
           </Button>
         )}
@@ -115,10 +124,12 @@ export function SectionBrowser({
               'Presentation order · Pinned versions are read-only. Organize occurrences in Project.',
             )
           : disabled
-            ? t('Read-only Slides')
-            : query.trim() || activeCollapsed.size
-              ? t('Clear search and expand all groups to move Slides.')
-              : t('Double-click or press Enter to edit. Move with Alt+Up / Alt+Down.')}
+            ? t('Slide actions are temporarily unavailable.')
+            : readOnly
+              ? t('Read-only Slides')
+              : query.trim() || activeCollapsed.size
+                ? t('Clear search and expand all groups to move Slides.')
+                : t('Double-click or press Enter to edit. Move with Alt+Up / Alt+Down.')}
       </p>
       <div ref={setViewport} className="hd-browser-scroll" data-hd-browser-scroll>
         {!groups.length && (
@@ -168,103 +179,132 @@ export function SectionBrowser({
                   data-hd-browser-layout={display}
                 >
                   {group.entries.map(({ page, index, key, title }) => {
+                    const activity = renderPageActivity?.(page);
+                    const summary = display === 'outline' ? outlineSlideSummary(page) : '';
                     const selected = workspacePageSelected(
                       page,
                       currentPageId,
                       currentOccurrenceId,
                     );
                     return (
-                      <article
+                      <SlideActionsMenu
                         key={key}
-                        className="hd-browser-card"
-                        data-hd-browser-card={key}
-                        data-selected={selected || undefined}
+                        page={page}
+                        presentation={presentation}
+                        disabled={disabled}
+                        readOnly={readOnly}
+                        canMoveUp={!!moveBoundary(key, -1)}
+                        canMoveDown={!!moveBoundary(key, 1)}
+                        onAction={onAction}
+                        onEdit={onEdit}
+                        onHistory={onHistory}
+                        onMove={(direction) => move(page, key, direction)}
                       >
-                        <button
-                          type="button"
-                          className="hd-browser-slide"
-                          data-hd-browser-select={key}
-                          aria-pressed={selected}
-                          title={title}
-                          onClick={() => onSelect(page.pageId, page.occurrenceId)}
-                          onDoubleClick={() => onEdit(page.pageId, page.occurrenceId)}
-                          onKeyDown={(event) => {
-                            if (event.nativeEvent.isComposing) return;
-                            if (event.key === 'Enter') {
-                              event.preventDefault();
-                              event.stopPropagation();
-                              onEdit(page.pageId, page.occurrenceId);
-                            } else if (
-                              event.altKey &&
-                              (event.key === 'ArrowUp' || event.key === 'ArrowDown')
-                            ) {
-                              event.preventDefault();
-                              event.stopPropagation();
-                              move(page, key, event.key === 'ArrowUp' ? -1 : 1);
-                            }
-                          }}
-                        >
-                          <WorkspaceSlidePreview
-                            page={page}
-                            size={size}
-                            theme={theme}
-                            viewport={viewport}
-                          />
-                          <span className="hd-browser-description">
-                            <span className="hd-browser-position">
-                              {t('Position {position}', { position: index + 1 })}
-                            </span>
-                            <span className="hd-browser-title">{title}</span>
-                            {display === 'outline' && (
-                              <span className="hd-browser-summary" data-hd-browser-outline={key}>
-                                {outlineSlideSummary(page) || t('No page summary yet.')}
-                              </span>
-                            )}
-                            <span className="hd-browser-id" title={page.pageId}>
-                              {t('Slide ID')} {page.shortCode ?? page.pageId}
-                            </span>
-                            {presentation && (
-                              <span className="hd-browser-id">
-                                {t('Main Position {position}', {
-                                  position: page.mainPosition ?? '—',
-                                })}
-                              </span>
-                            )}
-                            {page.versionId && (
-                              <span className="hd-browser-id" title={page.versionId}>
-                                {t('Pinned version · read-only')}
-                              </span>
-                            )}
-                          </span>
-                        </button>
-                        <div className="hd-browser-moves">
-                          {onHistory && (
-                            <Button
-                              variant="ghost"
-                              size="xs"
-                              data-hd-browser-history={key}
-                              onClick={() => onHistory(page.pageId, page.occurrenceId)}
+                        {(more) => (
+                          <article
+                            className="hd-browser-card"
+                            data-hd-browser-card={key}
+                            data-selected={selected || undefined}
+                          >
+                            <button
+                              type="button"
+                              className="hd-browser-slide"
+                              data-hd-browser-select={key}
+                              aria-pressed={selected}
+                              aria-disabled={disabled || undefined}
+                              title={title}
+                              onClick={() => !disabled && onSelect(page.pageId, page.occurrenceId)}
+                              onDoubleClick={() =>
+                                !disabled && onEdit(page.pageId, page.occurrenceId)
+                              }
+                              onKeyDown={(event) => {
+                                if (event.nativeEvent.isComposing || disabled) return;
+                                if (event.key === 'Enter') {
+                                  event.preventDefault();
+                                  event.stopPropagation();
+                                  onEdit(page.pageId, page.occurrenceId);
+                                } else if (
+                                  event.altKey &&
+                                  (event.key === 'ArrowUp' || event.key === 'ArrowDown')
+                                ) {
+                                  event.preventDefault();
+                                  event.stopPropagation();
+                                  move(page, key, event.key === 'ArrowUp' ? -1 : 1);
+                                }
+                              }}
                             >
-                              {t('查看历史版本')}
-                            </Button>
-                          )}
-                          {!presentation &&
-                            ([-1, 1] as const).map((direction) => (
-                              <Button
-                                key={direction}
-                                variant="ghost"
-                                size="icon-xs"
-                                aria-label={t(direction < 0 ? 'Move Slide up' : 'Move Slide down')}
-                                title={t(direction < 0 ? 'Move Slide up' : 'Move Slide down')}
-                                data-hd-browser-move={direction < 0 ? 'up' : 'down'}
-                                disabled={!moveBoundary(key, direction)}
-                                onClick={() => move(page, key, direction)}
-                              >
-                                {direction < 0 ? <ArrowUp /> : <ArrowDown />}
-                              </Button>
-                            ))}
-                        </div>
-                      </article>
+                              <WorkspaceSlidePreview
+                                page={page}
+                                size={size}
+                                theme={theme}
+                                viewport={viewport}
+                              />
+                              <span className="hd-browser-description">
+                                <span className="hd-browser-position">
+                                  {t('Position {position}', { position: index + 1 })}
+                                </span>
+                                <span className="hd-browser-title">{title}</span>
+                                {display === 'outline' && (
+                                  <span
+                                    hidden={!summary}
+                                    className="hd-browser-summary"
+                                    data-hd-browser-outline={key}
+                                  >
+                                    {summary}
+                                  </span>
+                                )}
+                                <span className="hd-browser-id" title={page.pageId}>
+                                  {t('Slide ID')} {page.shortCode ?? page.pageId}
+                                </span>
+                                {presentation && (
+                                  <span className="hd-browser-id">
+                                    {t('Main Position {position}', {
+                                      position: page.mainPosition ?? '—',
+                                    })}
+                                  </span>
+                                )}
+                                {page.versionId && (
+                                  <span className="hd-browser-id" title={page.versionId}>
+                                    {t('Pinned version · read-only')}
+                                  </span>
+                                )}
+                              </span>
+                            </button>
+                            {activity && <div className="hd-browser-activity">{activity}</div>}
+                            <div className="hd-browser-moves">
+                              {onHistory && (
+                                <Button
+                                  variant="ghost"
+                                  size="xs"
+                                  data-hd-browser-history={key}
+                                  disabled={disabled}
+                                  onClick={() => onHistory(page.pageId, page.occurrenceId)}
+                                >
+                                  {t('查看历史版本')}
+                                </Button>
+                              )}
+                              {!presentation &&
+                                ([-1, 1] as const).map((direction) => (
+                                  <Button
+                                    key={direction}
+                                    variant="ghost"
+                                    size="icon-xs"
+                                    aria-label={t(
+                                      direction < 0 ? 'Move Slide up' : 'Move Slide down',
+                                    )}
+                                    title={t(direction < 0 ? 'Move Slide up' : 'Move Slide down')}
+                                    data-hd-browser-move={direction < 0 ? 'up' : 'down'}
+                                    disabled={!moveBoundary(key, direction)}
+                                    onClick={() => move(page, key, direction)}
+                                  >
+                                    {direction < 0 ? <ArrowUp /> : <ArrowDown />}
+                                  </Button>
+                                ))}
+                              {more}
+                            </div>
+                          </article>
+                        )}
+                      </SlideActionsMenu>
                     );
                   })}
                 </div>

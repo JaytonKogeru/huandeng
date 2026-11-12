@@ -89,7 +89,7 @@ elements:
       - 340
       - 18
     content:
-      text: github.com/open-slide/open-slide
+      text: "<a href=\"https://github.com/open-slide/open-slide\" style=\"color:#6E7874\"><u>github.com/open-slide/open-slide</u></a>"
       fontFamily: Arial
       fontSize: 12
       lineHeight: 1.3
@@ -149,7 +149,7 @@ elements:
       - 340
       - 18
     content:
-      text: github.com/Shingwha/open-pptd
+      text: "<a href=\"https://github.com/Shingwha/open-pptd\" style=\"color:#6E7874\"><u>github.com/Shingwha/open-pptd</u></a>"
       fontFamily: Arial
       fontSize: 12
       lineHeight: 1.3
@@ -209,7 +209,7 @@ elements:
       - 340
       - 18
     content:
-      text: github.com/gitbrent/PptxGenJS
+      text: "<a href=\"https://github.com/gitbrent/PptxGenJS\" style=\"color:#6E7874\"><u>github.com/gitbrent/PptxGenJS</u></a>"
       fontFamily: Arial
       fontSize: 12
       lineHeight: 1.3
@@ -289,12 +289,7 @@ elements:
     columnWidths:
       - 1
     rows:
-      - - text: Importing arbitrary PPTX files, and round trips
-      - - text: Editing Google Slides directly
-      - - text: A separate presenter window on a second screen
-      - - text: Inheritable slide masters
-      - - text: Native PowerPoint animation in exported PPTX
-      - - text: A plugin marketplace for the Editor
+        [[{"text":"Importing arbitrary PPTX files, and round trips"}],[{"text":"Editing Google Slides directly"}],[{"text":"A separate presenter window on a second screen"}],[{"text":"Inheritable slide masters"}],[{"text":"Native <a href=\"https://www.microsoft.com/microsoft-365/powerpoint\" style=\"color:#2E6B5E\"><u>PowerPoint</u></a> animation in exported PPTX"}],[{"text":"A plugin marketplace for the Editor"}]]
     style:
       cellStyle:
         fontFamily: Arial
@@ -387,4 +382,4 @@ elements:
       align:
         - right
         - middle
-notes: "HUANDENG did not start from nothing. The editor is built on OpenSlide, under the MIT licence. Equation conversion reuses code from the OpenPPTD repository; the GitHub mark here identifies that repository, it is not an OpenPPTD logo. PowerPoint export uses PptxGenJS. On the right are things HUANDENG does not do yet, as listed in the project README: importing arbitrary PPTX files and round-tripping them, editing Google Slides directly, a separate presenter window on a second screen, inheritable slide masters, native PowerPoint animation in exported files, and a plugin marketplace. If you need one of these, that is where a contribution would help most."
+notes: "HUANDENG did not start from nothing. The editor is built on OpenSlide, under the MIT licence. Equation conversion reuses code from the OpenPPTD repository; the GitHub mark here identifies that repository, it is not an OpenPPTD logo. PowerPoint export uses PptxGenJS. On the right are things HUANDENG does not do yet, as listed in the project README: importing arbitrary PPTX files and round-tripping them, editing Google Slides directly, a separate presenter window on a second screen, inheritable slide masters, native PowerPoint animation in exported files, and a plugin marketplace. If you need one of these, that is where a contribution would help most.\n\nReference URLs (names link to source repositories or official sites):\nHUANDENG: https://github.com/JaytonKogeru/huandeng\nOpenSlide: https://github.com/open-slide/open-slide\nOpenPPTD: https://github.com/Shingwha/open-pptd\nPptxGenJS: https://github.com/gitbrent/PptxGenJS\nPowerPoint: https://www.microsoft.com/microsoft-365/powerpoint\nWPS: https://www.wps.com/\nKimi / Moonshot AI: https://www.kimi.com/\nopen-kimi-ppt-skill: https://github.com/Amonginin/open-kimi-ppt-skill\nPPTist: https://github.com/pipipi-pikachu/PPTist\nVS Code: https://github.com/microsoft/vscode\nSlidev: https://github.com/slidevjs/slidev\nPresenton: https://github.com/presenton/presenton\nPPTAgent: https://github.com/icip-cas/PPTAgent\nPPTMaster: https://github.com/hugohe3/ppt-master\nOpenSlides Studio: https://gitlab.com/open-slides/openslides\nOPF: https://github.com/OpenPresentation/opf\nApache ECharts: https://github.com/apache/echarts\nKaTeX: https://github.com/KaTeX/KaTeX\nFont Awesome: https://github.com/FortAwesome/Font-Awesome\nOpenSlides Studio website: https://openslides.dev/\nOPF website: https://www.openpresentation.org/\n"

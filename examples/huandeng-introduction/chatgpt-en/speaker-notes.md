@@ -10,6 +10,8 @@ Slide ID: 9DAA / Main position: 1
 
 HUANDENG begins with the founder’s lab-meeting experience: use agents while retaining the speaker’s reasoning, original evidence and the next editing decision. The whole project folder is the continuing work; deck.pptd is its entry point.
 
+HUANDENG source: https://github.com/JaytonKogeru/huandeng
+
 ### 2. At lab meetings, people could tell
 
 Slide ID: XU8A / Main position: 2
@@ -160,11 +162,61 @@ Slide ID: 5HW8 / Main position: 26
 
 These formal acknowledgments restore the fifteen sources explicitly named in the original introduction. Code reuse, runtime dependencies, product inspiration and researched alternatives are different relationships. The complete thirty-three-source historical record is in docs/ACKNOWLEDGMENTS.md and the project sources. OpenSlides Studio is openslides.dev, distinct from the OpenSlide editor upstream.
 
+Reference URLs (names link to source repositories or official sites):
+HUANDENG: https://github.com/JaytonKogeru/huandeng
+OpenSlide: https://github.com/open-slide/open-slide
+OpenPPTD: https://github.com/Shingwha/open-pptd
+PptxGenJS: https://github.com/gitbrent/PptxGenJS
+PowerPoint: https://www.microsoft.com/microsoft-365/powerpoint
+WPS: https://www.wps.com/
+Kimi / Moonshot AI: https://www.kimi.com/
+open-kimi-ppt-skill: https://github.com/Amonginin/open-kimi-ppt-skill
+PPTist: https://github.com/pipipi-pikachu/PPTist
+VS Code: https://github.com/microsoft/vscode
+Slidev: https://github.com/slidevjs/slidev
+Presenton: https://github.com/presenton/presenton
+PPTAgent: https://github.com/icip-cas/PPTAgent
+PPTMaster: https://github.com/hugohe3/ppt-master
+OpenSlides Studio: https://gitlab.com/open-slides/openslides
+OPF: https://github.com/OpenPresentation/opf
+Apache ECharts: https://github.com/apache/echarts
+KaTeX: https://github.com/KaTeX/KaTeX
+Font Awesome: https://github.com/FortAwesome/Font-Awesome
+OpenSlides Studio website: https://openslides.dev/
+OPF website: https://www.openpresentation.org/
+
+The OpenPPTD row uses the GitHub repository marker, not a project-specific logo.
+React: https://github.com/react/react
+Electron: https://github.com/electron/electron
+
 ### 27. Ideas worth acknowledging
 
 Slide ID: AAD6 / Main position: 27
 
 These formal acknowledgments restore the fifteen sources explicitly named in the original introduction. Code reuse, runtime dependencies, product inspiration and researched alternatives are different relationships. The complete thirty-three-source historical record is in docs/ACKNOWLEDGMENTS.md and the project sources. OpenSlides Studio is openslides.dev, distinct from the OpenSlide editor upstream.
+
+Reference URLs (names link to source repositories or official sites):
+HUANDENG: https://github.com/JaytonKogeru/huandeng
+OpenSlide: https://github.com/open-slide/open-slide
+OpenPPTD: https://github.com/Shingwha/open-pptd
+PptxGenJS: https://github.com/gitbrent/PptxGenJS
+PowerPoint: https://www.microsoft.com/microsoft-365/powerpoint
+WPS: https://www.wps.com/
+Kimi / Moonshot AI: https://www.kimi.com/
+open-kimi-ppt-skill: https://github.com/Amonginin/open-kimi-ppt-skill
+PPTist: https://github.com/pipipi-pikachu/PPTist
+VS Code: https://github.com/microsoft/vscode
+Slidev: https://github.com/slidevjs/slidev
+Presenton: https://github.com/presenton/presenton
+PPTAgent: https://github.com/icip-cas/PPTAgent
+PPTMaster: https://github.com/hugohe3/ppt-master
+OpenSlides Studio: https://gitlab.com/open-slides/openslides
+OPF: https://github.com/OpenPresentation/opf
+Apache ECharts: https://github.com/apache/echarts
+KaTeX: https://github.com/KaTeX/KaTeX
+Font Awesome: https://github.com/FortAwesome/Font-Awesome
+OpenSlides Studio website: https://openslides.dev/
+OPF website: https://www.openpresentation.org/
 
 ### 28. Start with your story
 
@@ -179,6 +231,8 @@ HUANDENG begins with the founder’s lab-meeting experience: use agents while re
 Slide ID: 9DAA / Main position: 1
 
 HUANDENG begins with the founder’s lab-meeting experience: use agents while retaining the speaker’s reasoning, original evidence and the next editing decision. The whole project folder is the continuing work; deck.pptd is its entry point.
+
+HUANDENG source: https://github.com/JaytonKogeru/huandeng
 
 ### 2. At lab meetings, people could tell
 
@@ -276,15 +330,64 @@ Slide ID: 5HW8 / Main position: 26
 
 These formal acknowledgments restore the fifteen sources explicitly named in the original introduction. Code reuse, runtime dependencies, product inspiration and researched alternatives are different relationships. The complete thirty-three-source historical record is in docs/ACKNOWLEDGMENTS.md and the project sources. OpenSlides Studio is openslides.dev, distinct from the OpenSlide editor upstream.
 
+Reference URLs (names link to source repositories or official sites):
+HUANDENG: https://github.com/JaytonKogeru/huandeng
+OpenSlide: https://github.com/open-slide/open-slide
+OpenPPTD: https://github.com/Shingwha/open-pptd
+PptxGenJS: https://github.com/gitbrent/PptxGenJS
+PowerPoint: https://www.microsoft.com/microsoft-365/powerpoint
+WPS: https://www.wps.com/
+Kimi / Moonshot AI: https://www.kimi.com/
+open-kimi-ppt-skill: https://github.com/Amonginin/open-kimi-ppt-skill
+PPTist: https://github.com/pipipi-pikachu/PPTist
+VS Code: https://github.com/microsoft/vscode
+Slidev: https://github.com/slidevjs/slidev
+Presenton: https://github.com/presenton/presenton
+PPTAgent: https://github.com/icip-cas/PPTAgent
+PPTMaster: https://github.com/hugohe3/ppt-master
+OpenSlides Studio: https://gitlab.com/open-slides/openslides
+OPF: https://github.com/OpenPresentation/opf
+Apache ECharts: https://github.com/apache/echarts
+KaTeX: https://github.com/KaTeX/KaTeX
+Font Awesome: https://github.com/FortAwesome/Font-Awesome
+OpenSlides Studio website: https://openslides.dev/
+OPF website: https://www.openpresentation.org/
+
+The OpenPPTD row uses the GitHub repository marker, not a project-specific logo.
+React: https://github.com/react/react
+Electron: https://github.com/electron/electron
+
 ### 18. Ideas worth acknowledging
 
 Slide ID: AAD6 / Main position: 27
 
 These formal acknowledgments restore the fifteen sources explicitly named in the original introduction. Code reuse, runtime dependencies, product inspiration and researched alternatives are different relationships. The complete thirty-three-source historical record is in docs/ACKNOWLEDGMENTS.md and the project sources. OpenSlides Studio is openslides.dev, distinct from the OpenSlide editor upstream.
 
+Reference URLs (names link to source repositories or official sites):
+HUANDENG: https://github.com/JaytonKogeru/huandeng
+OpenSlide: https://github.com/open-slide/open-slide
+OpenPPTD: https://github.com/Shingwha/open-pptd
+PptxGenJS: https://github.com/gitbrent/PptxGenJS
+PowerPoint: https://www.microsoft.com/microsoft-365/powerpoint
+WPS: https://www.wps.com/
+Kimi / Moonshot AI: https://www.kimi.com/
+open-kimi-ppt-skill: https://github.com/Amonginin/open-kimi-ppt-skill
+PPTist: https://github.com/pipipi-pikachu/PPTist
+VS Code: https://github.com/microsoft/vscode
+Slidev: https://github.com/slidevjs/slidev
+Presenton: https://github.com/presenton/presenton
+PPTAgent: https://github.com/icip-cas/PPTAgent
+PPTMaster: https://github.com/hugohe3/ppt-master
+OpenSlides Studio: https://gitlab.com/open-slides/openslides
+OPF: https://github.com/OpenPresentation/opf
+Apache ECharts: https://github.com/apache/echarts
+KaTeX: https://github.com/KaTeX/KaTeX
+Font Awesome: https://github.com/FortAwesome/Font-Awesome
+OpenSlides Studio website: https://openslides.dev/
+OPF website: https://www.openpresentation.org/
+
 ### 19. Start with your story
 
 Slide ID: ECVR / Main position: 28
 
 HUANDENG begins with the founder’s lab-meeting experience: use agents while retaining the speaker’s reasoning, original evidence and the next editing decision. The whole project folder is the continuing work; deck.pptd is its entry point.
-

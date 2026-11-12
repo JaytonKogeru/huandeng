@@ -64,81 +64,9 @@ elements:
       - 884
       - 221
     columnWidths:
-      - 0.32
-      - 0.68
+        [0.075,0.345,0.58]
     rows:
-      - - text: Foundation
-          fontSize: 18
-          fontFamily: Segoe UI
-          color: "#25282C"
-          bold: true
-          fill: "#E8ECEF"
-          border:
-            width: 0.5
-            color: "#D3D9DD"
-        - text: Concrete contribution
-          fontSize: 18
-          fontFamily: Segoe UI
-          color: "#25282C"
-          bold: true
-          fill: "#E8ECEF"
-          border:
-            width: 0.5
-            color: "#D3D9DD"
-      - - text: OpenSlide
-          fontSize: 18
-          fontFamily: Segoe UI
-          color: "#25282C"
-          bold: true
-          fill: "#FFFFFF"
-          border:
-            width: 0.5
-            color: "#D3D9DD"
-        - text: React editor codebase
-          fontSize: 18
-          fontFamily: Segoe UI
-          color: "#25282C"
-          bold: false
-          fill: "#FFFFFF"
-          border:
-            width: 0.5
-            color: "#D3D9DD"
-      - - text: OpenPPTD
-          fontSize: 18
-          fontFamily: Segoe UI
-          color: "#25282C"
-          bold: true
-          fill: "#FFFFFF"
-          border:
-            width: 0.5
-            color: "#D3D9DD"
-        - text: Reused formula-conversion modules
-          fontSize: 18
-          fontFamily: Segoe UI
-          color: "#25282C"
-          bold: false
-          fill: "#FFFFFF"
-          border:
-            width: 0.5
-            color: "#D3D9DD"
-      - - text: PptxGenJS
-          fontSize: 18
-          fontFamily: Segoe UI
-          color: "#25282C"
-          bold: true
-          fill: "#FFFFFF"
-          border:
-            width: 0.5
-            color: "#D3D9DD"
-        - text: PPTX generation
-          fontSize: 18
-          fontFamily: Segoe UI
-          color: "#25282C"
-          bold: false
-          fill: "#FFFFFF"
-          border:
-            width: 0.5
-            color: "#D3D9DD"
+        [[{"text":"","fontSize":18,"fontFamily":"Segoe UI","color":"#25282C","bold":true,"fill":"#E8ECEF","border":{"width":0.5,"color":"#D3D9DD"}},{"text":"Foundation / repository","fontSize":18,"fontFamily":"Segoe UI","color":"#25282C","bold":true,"fill":"#E8ECEF","border":{"width":0.5,"color":"#D3D9DD"}},{"text":"Concrete contribution","fontSize":18,"fontFamily":"Segoe UI","color":"#25282C","bold":true,"fill":"#E8ECEF","border":{"width":0.5,"color":"#D3D9DD"}}],[{"text":"","fontSize":18,"fontFamily":"Segoe UI","color":"#25282C","bold":true,"fill":"#FFFFFF","border":{"width":0.5,"color":"#D3D9DD"}},{"text":"<p><a href=\"https://github.com/open-slide/open-slide\" style=\"color:#25282C\"><u>OpenSlide</u></a></p><p><span style=\"font-size:10px;font-weight:normal;color:#59636B\">github.com/open-slide/open-slide</span></p>","fontSize":16,"fontFamily":"Segoe UI","color":"#25282C","bold":true,"fill":"#FFFFFF","border":{"width":0.5,"color":"#D3D9DD"}},{"text":"React editor codebase","fontSize":18,"fontFamily":"Segoe UI","color":"#25282C","bold":false,"fill":"#FFFFFF","border":{"width":0.5,"color":"#D3D9DD"}}],[{"text":"","fontSize":18,"fontFamily":"Segoe UI","color":"#25282C","bold":true,"fill":"#FFFFFF","border":{"width":0.5,"color":"#D3D9DD"}},{"text":"<p><a href=\"https://github.com/Shingwha/open-pptd\" style=\"color:#25282C\"><u>OpenPPTD</u></a></p><p><span style=\"font-size:10px;font-weight:normal;color:#59636B\">github.com/Shingwha/open-pptd</span></p>","fontSize":16,"fontFamily":"Segoe UI","color":"#25282C","bold":true,"fill":"#FFFFFF","border":{"width":0.5,"color":"#D3D9DD"}},{"text":"Reused formula-conversion modules","fontSize":18,"fontFamily":"Segoe UI","color":"#25282C","bold":false,"fill":"#FFFFFF","border":{"width":0.5,"color":"#D3D9DD"}}],[{"text":"","fontSize":18,"fontFamily":"Segoe UI","color":"#25282C","bold":true,"fill":"#FFFFFF","border":{"width":0.5,"color":"#D3D9DD"}},{"text":"<p><a href=\"https://github.com/gitbrent/PptxGenJS\" style=\"color:#25282C\"><u>PptxGenJS</u></a></p><p><span style=\"font-size:10px;font-weight:normal;color:#59636B\">github.com/gitbrent/PptxGenJS</span></p>","fontSize":16,"fontFamily":"Segoe UI","color":"#25282C","bold":true,"fill":"#FFFFFF","border":{"width":0.5,"color":"#D3D9DD"}},{"text":"PPTX generation","fontSize":18,"fontFamily":"Segoe UI","color":"#25282C","bold":false,"fill":"#FFFFFF","border":{"width":0.5,"color":"#D3D9DD"}}]]
   - elementId: v-runtime-title
     elementType: text
     bounds:
@@ -164,9 +92,7 @@ elements:
       - 884
       - 61
     content:
-      text: |-
-        React and Electron provide the interface and desktop application.
-        Apache ECharts, KaTeX and Font Awesome support charts, equations and icons.
+      text: "<a href=\"https://github.com/react/react\" style=\"color:#25282C\"><u>React</u></a> and <a href=\"https://github.com/electron/electron\" style=\"color:#25282C\"><u>Electron</u></a> provide the interface and desktop application.<br><a href=\"https://github.com/apache/echarts\" style=\"color:#25282C\"><u>Apache ECharts</u></a>, <a href=\"https://github.com/KaTeX/KaTeX\" style=\"color:#25282C\"><u>KaTeX</u></a> and <a href=\"https://github.com/FortAwesome/Font-Awesome\" style=\"color:#25282C\"><u>Font Awesome</u></a> support charts, equations and icons."
       fontFamily: Segoe UI
       fontSize: 16
       color: "#25282C"
@@ -192,4 +118,28 @@ elements:
       align:
         - left
         - top
-notes: "These formal acknowledgments restore the fifteen sources explicitly named in the original introduction. Code reuse, runtime dependencies, product inspiration and researched alternatives are different relationships. The complete thirty-three-source historical record is in docs/ACKNOWLEDGMENTS.md and the project sources. OpenSlides Studio is openslides.dev, distinct from the OpenSlide editor upstream."
+  - elementId: identity-foundation-openslide
+    elementType: image
+    src: media/imported/84a938550c678d25d3af93c35e4106f94798269f4a8702520e4464bf90323731.png
+    bounds:
+        [55.150000000000006,166.74,32,32]
+    sourceName: OpenSlide
+    fit:
+      mode: contain
+  - elementId: identity-foundation-github-repository-png
+    elementType: image
+    src: media/imported/2a2f5cbcc74c7fa83c40127dd8b0e42c23f1157131aebe28492aa1ac27bbdc6d.png
+    bounds:
+        [55.150000000000006,226.55,32,31.346938775510203]
+    sourceName: GitHub repository marker
+    fit:
+      mode: contain
+  - elementId: identity-foundation-pptxgenjs
+    elementType: image
+    src: media/imported/d697acf6f3c5bc265806bc8f6c4e6d58b964e0b2962392d0329a420639f45846.png
+    bounds:
+        [51.150000000000006,287.19,40,29.083333333333332]
+    sourceName: PptxGenJS
+    fit:
+      mode: contain
+notes: "These formal acknowledgments restore the fifteen sources explicitly named in the original introduction. Code reuse, runtime dependencies, product inspiration and researched alternatives are different relationships. The complete thirty-three-source historical record is in docs/ACKNOWLEDGMENTS.md and the project sources. OpenSlides Studio is openslides.dev, distinct from the OpenSlide editor upstream.\n\nReference URLs (names link to source repositories or official sites):\nHUANDENG: https://github.com/JaytonKogeru/huandeng\nOpenSlide: https://github.com/open-slide/open-slide\nOpenPPTD: https://github.com/Shingwha/open-pptd\nPptxGenJS: https://github.com/gitbrent/PptxGenJS\nPowerPoint: https://www.microsoft.com/microsoft-365/powerpoint\nWPS: https://www.wps.com/\nKimi / Moonshot AI: https://www.kimi.com/\nopen-kimi-ppt-skill: https://github.com/Amonginin/open-kimi-ppt-skill\nPPTist: https://github.com/pipipi-pikachu/PPTist\nVS Code: https://github.com/microsoft/vscode\nSlidev: https://github.com/slidevjs/slidev\nPresenton: https://github.com/presenton/presenton\nPPTAgent: https://github.com/icip-cas/PPTAgent\nPPTMaster: https://github.com/hugohe3/ppt-master\nOpenSlides Studio: https://gitlab.com/open-slides/openslides\nOPF: https://github.com/OpenPresentation/opf\nApache ECharts: https://github.com/apache/echarts\nKaTeX: https://github.com/KaTeX/KaTeX\nFont Awesome: https://github.com/FortAwesome/Font-Awesome\nOpenSlides Studio website: https://openslides.dev/\nOPF website: https://www.openpresentation.org/\n\nThe OpenPPTD row uses the GitHub repository marker, not a project-specific logo.\nReact: https://github.com/react/react\nElectron: https://github.com/electron/electron"

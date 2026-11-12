@@ -58,12 +58,7 @@ elements:
       - 0.34
       - 0.66
     rows:
-      - - text: OpenSlide
-        - text: "Editor foundation: canvas, Inspector, show"
-      - - text: OpenPPTD
-        - text: Three equation-conversion modules
-      - - text: PptxGenJS
-        - text: Library that writes the PPTX files
+        [[{"text":"<a href=\"https://github.com/open-slide/open-slide\" style=\"color:#2E6B5E\"><u>OpenSlide</u></a>"},{"text":"Editor foundation: canvas, Inspector, show"}],[{"text":"<a href=\"https://github.com/Shingwha/open-pptd\" style=\"color:#2E6B5E\"><u>OpenPPTD</u></a>"},{"text":"Three equation-conversion modules"}],[{"text":"<a href=\"https://github.com/gitbrent/PptxGenJS\" style=\"color:#2E6B5E\"><u>PptxGenJS</u></a>"},{"text":"Library that writes the PPTX files"}]]
     style:
       cellStyle:
         fontFamily: Arial
@@ -111,7 +106,7 @@ elements:
       - 0.34
       - 0.66
     rows:
-        [[{"text":"Kimi / Moonshot AI"},{"text":"Where I met PPTD and agent revision"}],[{"text":"open-kimi-ppt-skill"},{"text":"Community notes on the PPTD format"}]]
+        [[{"text":"<a href=\"https://www.kimi.com/\" style=\"color:#2E6B5E\"><u>Kimi / Moonshot AI</u></a>"},{"text":"Where I met PPTD and agent revision"}],[{"text":"<a href=\"https://github.com/Amonginin/open-kimi-ppt-skill\" style=\"color:#2E6B5E\"><u>open-kimi-ppt-skill</u></a>"},{"text":"Community notes on the PPTD format"}]]
     style:
       cellStyle:
         fontFamily: Arial
@@ -159,16 +154,7 @@ elements:
       - 0.42
       - 0.58
     rows:
-      - - text: PowerPoint
-        - text: Sections, Notes, views, slide show
-      - - text: WPS Slides
-        - text: Section actions in toolbar and menu
-      - - text: VS Code
-        - text: Tabs, sidebar, activity panels
-      - - text: OpenSlides Studio
-        - text: Explicit IDs, unified operations
-      - - text: OPF / OpenPresentation
-        - text: Revision checks, patches, conflicts
+        [[{"text":"<a href=\"https://www.microsoft.com/microsoft-365/powerpoint\" style=\"color:#2E6B5E\"><u>PowerPoint</u></a>"},{"text":"Sections, Notes, views, slide show"}],[{"text":"<a href=\"https://www.wps.com/\" style=\"color:#2E6B5E\"><u>WPS</u></a> Slides"},{"text":"Section actions in toolbar and menu"}],[{"text":"<a href=\"https://github.com/microsoft/vscode\" style=\"color:#2E6B5E\"><u>VS Code</u></a>"},{"text":"Tabs, sidebar, activity panels"}],[{"text":"<a href=\"https://gitlab.com/open-slides/openslides\" style=\"color:#2E6B5E\"><u>OpenSlides Studio</u></a>"},{"text":"Explicit IDs, unified operations"}],[{"text":"<a href=\"https://github.com/OpenPresentation/opf\" style=\"color:#2E6B5E\"><u>OPF / OpenPresentation</u></a>"},{"text":"Revision checks, patches, conflicts"}]]
     style:
       cellStyle:
         fontFamily: Arial
@@ -216,16 +202,7 @@ elements:
       - 0.42
       - 0.58
     rows:
-      - - text: PPTist
-        - text: Context menus, shortcuts, thumbnails
-      - - text: Slidev
-        - text: Themes apart from layouts; CLI, MCP
-      - - text: Presenton
-        - text: Templates; human and agent revision
-      - - text: PPTAgent
-        - text: Rendered review, redone on change
-      - - text: PPT Master
-        - text: Native OOXML, SVG, master export
+        [[{"text":"<a href=\"https://github.com/pipipi-pikachu/PPTist\" style=\"color:#2E6B5E\"><u>PPTist</u></a>"},{"text":"Context menus, shortcuts, thumbnails"}],[{"text":"<a href=\"https://github.com/slidevjs/slidev\" style=\"color:#2E6B5E\"><u>Slidev</u></a>"},{"text":"Themes apart from layouts; CLI, MCP"}],[{"text":"<a href=\"https://github.com/presenton/presenton\" style=\"color:#2E6B5E\"><u>Presenton</u></a>"},{"text":"Templates; human and agent revision"}],[{"text":"<a href=\"https://github.com/icip-cas/PPTAgent\" style=\"color:#2E6B5E\"><u>PPTAgent</u></a>"},{"text":"Rendered review, redone on change"}],[{"text":"<a href=\"https://github.com/hugohe3/ppt-master\" style=\"color:#2E6B5E\"><u>PPT Master</u></a>"},{"text":"Native OOXML, SVG, master export"}]]
     style:
       cellStyle:
         fontFamily: Arial
@@ -318,4 +295,4 @@ elements:
       align:
         - right
         - middle
-notes: "Before the last slide, the people and projects this work stands on. Three of them are in the code. OpenSlide is the foundation: the editor, canvas, Inspector, presentation and export come from it. Three equation-conversion modules come from OpenPPTD, and PptxGenJS writes the PowerPoint files. Everything else is a relationship of ideas, not code. I first met the PPTD idea in the Kimi Slides ecosystem, and the community open-kimi-ppt-skill notes helped with the format. PowerPoint, WPS and VS Code shaped the workspace: sections, notes, views, tabs and panels. OpenSlides Studio and the OpenPresentation format shaped how objects get stable IDs and how changes are checked against a revision. And I studied PPTist, Slidev, Presenton, PPTAgent and PPT Master as alternatives; each solves part of this problem well, and each taught me something specific. None of them endorses HUANDENG. The full list, with links and what was adopted, is in docs/ACKNOWLEDGMENTS.md in the repository."
+notes: "Before the last slide, the people and projects this work stands on. Three of them are in the code. OpenSlide is the foundation: the editor, canvas, Inspector, presentation and export come from it. Three equation-conversion modules come from OpenPPTD, and PptxGenJS writes the PowerPoint files. Everything else is a relationship of ideas, not code. I first met the PPTD idea in the Kimi Slides ecosystem, and the community open-kimi-ppt-skill notes helped with the format. PowerPoint, WPS and VS Code shaped the workspace: sections, notes, views, tabs and panels. OpenSlides Studio and the OpenPresentation format shaped how objects get stable IDs and how changes are checked against a revision. And I studied PPTist, Slidev, Presenton, PPTAgent and PPT Master as alternatives; each solves part of this problem well, and each taught me something specific. None of them endorses HUANDENG. The full list, with links and what was adopted, is in docs/ACKNOWLEDGMENTS.md in the repository.\n\nReference URLs (names link to source repositories or official sites):\nHUANDENG: https://github.com/JaytonKogeru/huandeng\nOpenSlide: https://github.com/open-slide/open-slide\nOpenPPTD: https://github.com/Shingwha/open-pptd\nPptxGenJS: https://github.com/gitbrent/PptxGenJS\nPowerPoint: https://www.microsoft.com/microsoft-365/powerpoint\nWPS: https://www.wps.com/\nKimi / Moonshot AI: https://www.kimi.com/\nopen-kimi-ppt-skill: https://github.com/Amonginin/open-kimi-ppt-skill\nPPTist: https://github.com/pipipi-pikachu/PPTist\nVS Code: https://github.com/microsoft/vscode\nSlidev: https://github.com/slidevjs/slidev\nPresenton: https://github.com/presenton/presenton\nPPTAgent: https://github.com/icip-cas/PPTAgent\nPPTMaster: https://github.com/hugohe3/ppt-master\nOpenSlides Studio: https://gitlab.com/open-slides/openslides\nOPF: https://github.com/OpenPresentation/opf\nApache ECharts: https://github.com/apache/echarts\nKaTeX: https://github.com/KaTeX/KaTeX\nFont Awesome: https://github.com/FortAwesome/Font-Awesome\nOpenSlides Studio website: https://openslides.dev/\nOPF website: https://www.openpresentation.org/\n"

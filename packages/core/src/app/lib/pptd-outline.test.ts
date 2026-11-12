@@ -44,6 +44,55 @@ describe('Pages outline', () => {
     expect(outlineSlideSummary(slide)).toBe('First observation');
   });
 
+  it('omits explicitly marked watermarks while preserving ordinary body text', () => {
+    const slide = page('Attribution');
+    slide.data.elements = [
+      {
+        elementId: 'identity',
+        elementType: 'text',
+        role: 'watermark',
+        content: { text: 'english chatgpt 6 astra' },
+      },
+      {
+        elementId: 'credit',
+        elementType: 'text',
+        name: 'Watermark',
+        content: { text: 'chinese chatgpt 6 astra + subagent' },
+      },
+      {
+        elementId: 'edition-watermark',
+        elementType: 'text',
+        content: { text: 'Edition label' },
+      },
+      {
+        elementId: 'body',
+        elementType: 'text',
+        content: { text: 'Explain watermark placement.' },
+      },
+      {
+        elementId: 'detail',
+        elementType: 'text',
+        content: { text: 'Keep the original evidence.' },
+      },
+    ];
+    expect(outlineSlideSummary(slide)).toBe(
+      'Explain watermark placement. Keep the original evidence.',
+    );
+  });
+
+  it('does not repeat a title as its summary and preserves the authored Story', () => {
+    const slide = page('An authored title');
+    slide.metadata.designIntent = { purpose: 'An <strong>authored</strong> title' };
+    const original = structuredClone(slide);
+    expect(outlineSlideSummary(slide)).toBe('');
+    expect(slide).toEqual(original);
+    slide.data.elements = [
+      { elementId: 'body', elementType: 'text', content: { text: 'Supporting evidence' } },
+    ];
+    expect(outlineSlideSummary(slide)).toBe('Supporting evidence');
+    expect(slide.metadata.designIntent.purpose).toBe('An <strong>authored</strong> title');
+  });
+
   it('finds a purpose inside a folded Section and retains its cover without changing folding', () => {
     const slides = [page('cover'), page('detail'), page('other')];
     slides[1].metadata.designIntent = { purpose: 'Explain the unusual transition.' };

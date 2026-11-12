@@ -10,6 +10,8 @@ Slide ID: TTHC / Main position: 1
 
 幻灯从真实的组会经历开始：让agent帮忙，同时保留自己讲什么、用什么证据以及下一次改哪里这些判断。继续工作需要整个项目文件夹；deck.pptd是入口。
 
+HUANDENG source: https://github.com/JaytonKogeru/huandeng
+
 ### 2. 为什么还要做幻灯
 
 Slide ID: YAQR / Main position: 2
@@ -178,11 +180,61 @@ Slide ID: W7WP / Main position: 29
 
 正式致谢恢复原作品明确列出的十五项来源。代码复用、运行依赖、交互借鉴与调研参考是不同关系，不能混称。完整三十三项历史参考与对应说明在docs/ACKNOWLEDGMENTS.md；链接亦保留在项目sources中。OpenSlides Studio是openslides.dev，与OpenSlide编辑器上游不同。
 
+引用网址（名称链接到仓库或官网）：
+HUANDENG: https://github.com/JaytonKogeru/huandeng
+OpenSlide: https://github.com/open-slide/open-slide
+OpenPPTD: https://github.com/Shingwha/open-pptd
+PptxGenJS: https://github.com/gitbrent/PptxGenJS
+PowerPoint: https://www.microsoft.com/microsoft-365/powerpoint
+WPS: https://www.wps.com/
+Kimi / Moonshot AI: https://www.kimi.com/
+open-kimi-ppt-skill: https://github.com/Amonginin/open-kimi-ppt-skill
+PPTist: https://github.com/pipipi-pikachu/PPTist
+VS Code: https://github.com/microsoft/vscode
+Slidev: https://github.com/slidevjs/slidev
+Presenton: https://github.com/presenton/presenton
+PPTAgent: https://github.com/icip-cas/PPTAgent
+PPTMaster: https://github.com/hugohe3/ppt-master
+OpenSlides Studio: https://gitlab.com/open-slides/openslides
+OPF: https://github.com/OpenPresentation/opf
+Apache ECharts: https://github.com/apache/echarts
+KaTeX: https://github.com/KaTeX/KaTeX
+Font Awesome: https://github.com/FortAwesome/Font-Awesome
+OpenSlides Studio website: https://openslides.dev/
+OPF website: https://www.openpresentation.org/
+
+OpenPPTD 行使用 GitHub 仓库标记，并非其专属 logo。
+React: https://github.com/react/react
+Electron: https://github.com/electron/electron
+
 ### 30. 工具与设计参考
 
 Slide ID: E9RN / Main position: 30
 
 正式致谢恢复原作品明确列出的十五项来源。代码复用、运行依赖、交互借鉴与调研参考是不同关系，不能混称。完整三十三项历史参考与对应说明在docs/ACKNOWLEDGMENTS.md；链接亦保留在项目sources中。OpenSlides Studio是openslides.dev，与OpenSlide编辑器上游不同。
+
+引用网址（名称链接到仓库或官网）：
+HUANDENG: https://github.com/JaytonKogeru/huandeng
+OpenSlide: https://github.com/open-slide/open-slide
+OpenPPTD: https://github.com/Shingwha/open-pptd
+PptxGenJS: https://github.com/gitbrent/PptxGenJS
+PowerPoint: https://www.microsoft.com/microsoft-365/powerpoint
+WPS: https://www.wps.com/
+Kimi / Moonshot AI: https://www.kimi.com/
+open-kimi-ppt-skill: https://github.com/Amonginin/open-kimi-ppt-skill
+PPTist: https://github.com/pipipi-pikachu/PPTist
+VS Code: https://github.com/microsoft/vscode
+Slidev: https://github.com/slidevjs/slidev
+Presenton: https://github.com/presenton/presenton
+PPTAgent: https://github.com/icip-cas/PPTAgent
+PPTMaster: https://github.com/hugohe3/ppt-master
+OpenSlides Studio: https://gitlab.com/open-slides/openslides
+OPF: https://github.com/OpenPresentation/opf
+Apache ECharts: https://github.com/apache/echarts
+KaTeX: https://github.com/KaTeX/KaTeX
+Font Awesome: https://github.com/FortAwesome/Font-Awesome
+OpenSlides Studio website: https://openslides.dev/
+OPF website: https://www.openpresentation.org/
 
 ### 31. 下一次，从自己的故事开始
 
@@ -197,6 +249,8 @@ Slide ID: E2RU / Main position: 31
 Slide ID: TTHC / Main position: 1
 
 幻灯从真实的组会经历开始：让agent帮忙，同时保留自己讲什么、用什么证据以及下一次改哪里这些判断。继续工作需要整个项目文件夹；deck.pptd是入口。
+
+HUANDENG source: https://github.com/JaytonKogeru/huandeng
 
 ### 2. 为什么还要做幻灯
 
@@ -306,15 +360,64 @@ Slide ID: W7WP / Main position: 29
 
 正式致谢恢复原作品明确列出的十五项来源。代码复用、运行依赖、交互借鉴与调研参考是不同关系，不能混称。完整三十三项历史参考与对应说明在docs/ACKNOWLEDGMENTS.md；链接亦保留在项目sources中。OpenSlides Studio是openslides.dev，与OpenSlide编辑器上游不同。
 
+引用网址（名称链接到仓库或官网）：
+HUANDENG: https://github.com/JaytonKogeru/huandeng
+OpenSlide: https://github.com/open-slide/open-slide
+OpenPPTD: https://github.com/Shingwha/open-pptd
+PptxGenJS: https://github.com/gitbrent/PptxGenJS
+PowerPoint: https://www.microsoft.com/microsoft-365/powerpoint
+WPS: https://www.wps.com/
+Kimi / Moonshot AI: https://www.kimi.com/
+open-kimi-ppt-skill: https://github.com/Amonginin/open-kimi-ppt-skill
+PPTist: https://github.com/pipipi-pikachu/PPTist
+VS Code: https://github.com/microsoft/vscode
+Slidev: https://github.com/slidevjs/slidev
+Presenton: https://github.com/presenton/presenton
+PPTAgent: https://github.com/icip-cas/PPTAgent
+PPTMaster: https://github.com/hugohe3/ppt-master
+OpenSlides Studio: https://gitlab.com/open-slides/openslides
+OPF: https://github.com/OpenPresentation/opf
+Apache ECharts: https://github.com/apache/echarts
+KaTeX: https://github.com/KaTeX/KaTeX
+Font Awesome: https://github.com/FortAwesome/Font-Awesome
+OpenSlides Studio website: https://openslides.dev/
+OPF website: https://www.openpresentation.org/
+
+OpenPPTD 行使用 GitHub 仓库标记，并非其专属 logo。
+React: https://github.com/react/react
+Electron: https://github.com/electron/electron
+
 ### 20. 工具与设计参考
 
 Slide ID: E9RN / Main position: 30
 
 正式致谢恢复原作品明确列出的十五项来源。代码复用、运行依赖、交互借鉴与调研参考是不同关系，不能混称。完整三十三项历史参考与对应说明在docs/ACKNOWLEDGMENTS.md；链接亦保留在项目sources中。OpenSlides Studio是openslides.dev，与OpenSlide编辑器上游不同。
 
+引用网址（名称链接到仓库或官网）：
+HUANDENG: https://github.com/JaytonKogeru/huandeng
+OpenSlide: https://github.com/open-slide/open-slide
+OpenPPTD: https://github.com/Shingwha/open-pptd
+PptxGenJS: https://github.com/gitbrent/PptxGenJS
+PowerPoint: https://www.microsoft.com/microsoft-365/powerpoint
+WPS: https://www.wps.com/
+Kimi / Moonshot AI: https://www.kimi.com/
+open-kimi-ppt-skill: https://github.com/Amonginin/open-kimi-ppt-skill
+PPTist: https://github.com/pipipi-pikachu/PPTist
+VS Code: https://github.com/microsoft/vscode
+Slidev: https://github.com/slidevjs/slidev
+Presenton: https://github.com/presenton/presenton
+PPTAgent: https://github.com/icip-cas/PPTAgent
+PPTMaster: https://github.com/hugohe3/ppt-master
+OpenSlides Studio: https://gitlab.com/open-slides/openslides
+OPF: https://github.com/OpenPresentation/opf
+Apache ECharts: https://github.com/apache/echarts
+KaTeX: https://github.com/KaTeX/KaTeX
+Font Awesome: https://github.com/FortAwesome/Font-Awesome
+OpenSlides Studio website: https://openslides.dev/
+OPF website: https://www.openpresentation.org/
+
 ### 21. 下一次，从自己的故事开始
 
 Slide ID: E2RU / Main position: 31
 
 幻灯从真实的组会经历开始：让agent帮忙，同时保留自己讲什么、用什么证据以及下一次改哪里这些判断。继续工作需要整个项目文件夹；deck.pptd是入口。
-

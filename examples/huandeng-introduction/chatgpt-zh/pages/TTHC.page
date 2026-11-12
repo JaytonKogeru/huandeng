@@ -17,7 +17,7 @@ elements:
   - elementId: title
     elementType: text
     bounds:
-        [38,29,884,58]
+        [38,29,800,58]
     role: title
     content:
       {"text":"从我的组会开始","fontFamily":"Segoe UI","fontSize":32,"color":"#FFFFFF","bold":true,"lineHeight":1.16,"align":["left","top"]}
@@ -84,4 +84,38 @@ elements:
     sourceName: workspace.png
     fit:
       mode: contain
-notes: "幻灯从真实的组会经历开始：让agent帮忙，同时保留自己讲什么、用什么证据以及下一次改哪里这些判断。继续工作需要整个项目文件夹；deck.pptd是入口。"
+  - elementId: identity-huandeng-paper
+    elementType: shape
+    shapeName: rect
+    bounds:
+      - 864
+      - 29
+      - 58
+      - 58
+    fill: {"type":"solid","color":"#FFFFFF"}
+  - elementId: identity-huandeng
+    elementType: image
+    src: media/imported/6b49274a35445235b8ab17f805b83cf3c7f8924630a5ce5ef8455e59aba5faef.png
+    bounds:
+      - 864
+      - 29
+      - 58
+      - 58
+    sourceName: HUANDENG official project mark
+    fit:
+      mode: contain
+  - elementId: identity-source
+    elementType: text
+    bounds:
+      - 490
+      - 520
+      - 432
+      - 12
+    content:
+      text: <a href="https://github.com/JaytonKogeru/huandeng" style="color:#D9DFE2"><u>github.com/JaytonKogeru/huandeng</u></a>
+      fontFamily: Segoe UI
+      fontSize: 8
+      align:
+        - right
+        - top
+notes: "幻灯从真实的组会经历开始：让agent帮忙，同时保留自己讲什么、用什么证据以及下一次改哪里这些判断。继续工作需要整个项目文件夹；deck.pptd是入口。\n\nHUANDENG source: https://github.com/JaytonKogeru/huandeng"
