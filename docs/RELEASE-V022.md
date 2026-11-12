@@ -1,8 +1,8 @@
-# HUANDENG Editor 0.22.0
+# HUANDENG Editor 0.22.1
 
-Released 2026-11-12. Editor and plugin version: **0.22.0**. The inherited core npm version remains separate. This release implements the [0.22 specification](SPEC-V022.md) and preserves the accepted introduction examples.
+Released 2026-11-12. Editor and plugin version: **0.22.1**. The inherited core npm version remains separate. This release implements the [0.22 specification](SPEC-V022.md) and preserves the accepted introduction examples.
 
-[Downloads](https://github.com/JaytonKogeru/huandeng/releases/tag/editor-v0.22.0) | [English guide](../README.md) | [中文说明](../README.zh-CN.md)
+[Downloads](https://github.com/JaytonKogeru/huandeng/releases/tag/editor-v0.22.1) | [English guide](../README.md) | [中文说明](../README.zh-CN.md)
 
 ## Arrange open projects
 
@@ -42,6 +42,8 @@ The installed directory is about 9.1% smaller. Download ZIP sizes are listed on 
 Matched isolated writer measurements using the same full English example found low idle CPU after loading: about 0.13% of one logical core in both versions over 12 seconds. Single startup samples were 2.94 seconds and 4.00 seconds respectively; they do not establish a speedup or a regression. An earlier uncontrolled three-service CPU observation was not reproduced, so this release does not claim to fix it.
 
 Opening Export no longer probes the video encoder until MP4 is selected.
+
+The 0.22.1 patch also keeps the bilingual font preview as fixed sample text, correcting the translation-coverage failure found after the 0.22.0 source tag.
 
 ## Validation
 

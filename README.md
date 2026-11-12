@@ -10,7 +10,7 @@ Open a page, select an object, make a focused change, and keep the work that sti
 
 [Try the editable examples](examples/huandeng-introduction/README.md) | [Desktop setup](packages/desktop/README.md) | [Connect an assistant](plugins/huandeng/README.md) | [Contribute](CONTRIBUTING.md)
 
-**Version 0.22.0** adds draggable horizontal or vertical project tabs, clearer workspace settings and complete editable Project ZIP export. Download the Windows application and Claude Code/Codex or DeepSeek plugin bundles from [GitHub Releases](https://github.com/JaytonKogeru/huandeng/releases/tag/editor-v0.22.0). See the [release notes](docs/RELEASE-V022.md) for the changes and verification. HUANDENG builds on OpenSlide and retains its MIT license and attribution.
+**Version 0.22.1** adds draggable horizontal or vertical project tabs, clearer workspace settings and complete editable Project ZIP export. Download the Windows application and Claude Code/Codex or DeepSeek plugin bundles from [GitHub Releases](https://github.com/JaytonKogeru/huandeng/releases/tag/editor-v0.22.1). See the [release notes](docs/RELEASE-V022.md) for the changes and verification. HUANDENG builds on OpenSlide and retains its MIT license and attribution.
 
 The screenshot is a real 0.22 desktop window with the editable English introduction open. The project tabs on the left and the Story beside the canvas belong to the same working application.
 
@@ -37,7 +37,7 @@ The [example collection](examples/huandeng-introduction/README.md) contains edit
 
 Extract the complete Windows desktop package and run **HUANDENG Editor.exe**. Keep the application folder together. Home can create a new project or open an existing `.pptd`; opening a folder works when it has one unambiguous project entry.
 
-A new project starts with one blank page. Add text or shapes on the canvas, and use **Assets → Import and place** for an image. Download the [Windows ZIP](https://github.com/JaytonKogeru/huandeng/releases/download/editor-v0.22.0/HUANDENG-Editor-0.22.0-win32-x64.zip), extract it, and keep its application folder together. The [desktop guide](packages/desktop/README.md) covers packaging, shortcuts and project tabs.
+A new project starts with one blank page. Add text or shapes on the canvas, and use **Assets → Import and place** for an image. Download the [Windows ZIP](https://github.com/JaytonKogeru/huandeng/releases/download/editor-v0.22.1/HUANDENG-Editor-0.22.1-win32-x64.zip), extract it, and keep its application folder together. The [desktop guide](packages/desktop/README.md) covers packaging, shortcuts and project tabs.
 
 ### Run from source
 
@@ -141,9 +141,9 @@ node plugins/huandeng/scripts/build-package.mjs --target local --output "$PWD/di
 node plugins/huandeng/scripts/build-deepseek.mjs --output "$PWD/dist/plugin-packages/deepseek-build"
 ```
 
-Each command creates a `huandeng/` package inside its output directory. Prebuilt bundles are on the [0.22 release](https://github.com/JaytonKogeru/huandeng/releases/tag/editor-v0.22.0). The engineering build keeps both forms under `dist/plugin-packages/0.22.0/`; their maintained source is `plugins/huandeng`. Use the client's supported plugin loader or manager to install the appropriate form.
+Each command creates a `huandeng/` package inside its output directory. Prebuilt bundles are on the [0.22 release](https://github.com/JaytonKogeru/huandeng/releases/tag/editor-v0.22.1). The engineering build keeps both forms under `dist/plugin-packages/0.22.1/`; their maintained source is `plugins/huandeng`. Use the client's supported plugin loader or manager to install the appropriate form.
 
-The packaged MCP reports 0.22.0 and retains the 24-tool surface, including project-bound original-image import, real Editor capture and Project ZIP through the existing export tool. Progress reports can include the assistant family, workflow stage and page scope. Compatible older writers receive the legacy report fields, with unsupported optional fields identified in the response. Current runtime and package checks are recorded in the [release notes](docs/RELEASE-V022.md).
+The packaged MCP reports 0.22.1 and retains the 24-tool surface, including project-bound original-image import, real Editor capture and Project ZIP through the existing export tool. Progress reports can include the assistant family, workflow stage and page scope. Compatible older writers receive the legacy report fields, with unsupported optional fields identified in the response. Current runtime and package checks are recorded in the [release notes](docs/RELEASE-V022.md).
 
 The [0.20 native integration record](docs/NATIVE-INTEGRATION-0.20.md) distinguishes actual DeepSeek model tool calls, Claude Code's connected plugin, the host-denied Chinese MCP request, and completed native CLI authoring. It also records the saved examples and independent Office checks. The [0.19 integration record](docs/NATIVE-INTEGRATION-0.19.md) remains dated history; a package manifest or connected label alone does not establish a completed model task.
 

@@ -8,7 +8,7 @@ HUANDENG 是一个本地桌面幻灯片编辑器。你在画布里选对象、�
 
 ![HUANDENG 0.22 中文工作区：垂直项目标签、页面列表、完整画布与 Story](docs/images/editor-zh-022.png)
 
-**0.22.0** 加入可拖动排序的横向与左侧垂直标签页、重新整理的工作区设置，以及完整可编辑项目 ZIP 导出。Windows 应用和 Claude Code/Codex、DeepSeek 两种插件包可从 [GitHub Releases](https://github.com/JaytonKogeru/huandeng/releases/tag/editor-v0.22.0) 下载。变化与验证见 [发布说明](docs/RELEASE-V022.md)。
+**0.22.1** 加入可拖动排序的横向与左侧垂直标签页、重新整理的工作区设置，以及完整可编辑项目 ZIP 导出。Windows 应用和 Claude Code/Codex、DeepSeek 两种插件包可从 [GitHub Releases](https://github.com/JaytonKogeru/huandeng/releases/tag/editor-v0.22.1) 下载。变化与验证见 [发布说明](docs/RELEASE-V022.md)。
 
 上图来自实际的 0.22 桌面窗口，打开的是本仓库可继续编辑的中文介绍项目。左侧是垂直项目标签，画布旁保留当前页面的 Story。
 
@@ -46,7 +46,7 @@ HUANDENG 是一个本地桌面幻灯片编辑器。你在画布里选对象、�
 
 ### 使用 Windows 桌面包
 
-下载 [Windows ZIP](https://github.com/JaytonKogeru/huandeng/releases/download/editor-v0.22.0/HUANDENG-Editor-0.22.0-win32-x64.zip)，完整解压后运行 **HUANDENG Editor.exe**。整个应用目录需要一起保留，不能只复制一个 `.exe`。变化与验证见 [0.22 发布说明](docs/RELEASE-V022.md)，构建和快捷方式安装方法见[桌面说明](packages/desktop/README.md)。
+下载 [Windows ZIP](https://github.com/JaytonKogeru/huandeng/releases/download/editor-v0.22.1/HUANDENG-Editor-0.22.1-win32-x64.zip)，完整解压后运行 **HUANDENG Editor.exe**。整个应用目录需要一起保留，不能只复制一个 `.exe`。变化与验证见 [0.22 发布说明](docs/RELEASE-V022.md)，构建和快捷方式安装方法见[桌面说明](packages/desktop/README.md)。
 
 首次启动在 Home 新建或打开项目；之后可以恢复最近打开的项目标签页。同一项目再次打开会回到已有标签页。新建项目会建立独立文件夹、入口文件、一张空白页和 `AGENTS.md` 创作约定。已有文件夹若包含多个入口，请明确选择其中一个 `.pptd`。[桌面说明](packages/desktop/README.md)
 
@@ -175,9 +175,9 @@ node plugins/huandeng/scripts/build-package.mjs --target local --output "$PWD/di
 node plugins/huandeng/scripts/build-deepseek.mjs --output "$PWD/dist/plugin-packages/deepseek-build"
 ```
 
-每条命令会在指定目录下生成 `huandeng/` 包。预先构建的两种包都在 [0.22 发布页](https://github.com/JaytonKogeru/huandeng/releases/tag/editor-v0.22.0)；工程内部产物位于 `dist/plugin-packages/0.22.0/`，持续维护的源码是 `plugins/huandeng`。安装时使用各客户端支持的 Plugin loader 或管理器。
+每条命令会在指定目录下生成 `huandeng/` 包。预先构建的两种包都在 [0.22 发布页](https://github.com/JaytonKogeru/huandeng/releases/tag/editor-v0.22.1)；工程内部产物位于 `dist/plugin-packages/0.22.1/`，持续维护的源码是 `plugins/huandeng`。安装时使用各客户端支持的 Plugin loader 或管理器。
 
-打包后的 MCP 报告 0.22.0，保留 24 个工具，包括绑定项目的原图导入、真实 Editor 截图，以及通过既有导出工具生成项目 ZIP。进度报告可以附带助手身份、工作阶段和页面范围；遇到兼容的旧 writer，会使用旧报告字段，并明确返回未支持的可选字段。当前运行环境与包的验证见[发布说明](docs/RELEASE-V022.md)。
+打包后的 MCP 报告 0.22.1，保留 24 个工具，包括绑定项目的原图导入、真实 Editor 截图，以及通过既有导出工具生成项目 ZIP。进度报告可以附带助手身份、工作阶段和页面范围；遇到兼容的旧 writer，会使用旧报告字段，并明确返回未支持的可选字段。当前运行环境与包的验证见[发布说明](docs/RELEASE-V022.md)。
 
 DeepSeek Harness 在「助手连接」里优先选择**原生插件**入口，通过宿主的 Plugin Manager 安装 bundle，再将生成的配置合并到已有 `huandeng` 插件条目。单独标出的旧 MCP patch 供未装原生 bundle 的配置使用，同一个配置只启用一种接入方式。配置生成保留账号和模型设置。[0.20 原生集成记录](docs/NATIVE-INTEGRATION-0.20.md)分别说明 DSH 模型实际调用工具、Claude Code 插件连接成功、中文任务的 MCP 请求被宿主拒绝，以及随后通过官方 CLI 完成原生创作的事实，并记录成品与独立 Office 检查。[0.19 原生集成](docs/NATIVE-INTEGRATION-0.19.md)保留为当时的历史；包内 manifest 或 connected 状态本身不证明模型任务已经成功。
 

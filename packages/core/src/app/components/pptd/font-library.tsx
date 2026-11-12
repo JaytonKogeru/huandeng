@@ -108,7 +108,7 @@ export function FontLibrary() {
           Aa Bb Cc 0123456789
         </p>
         <p className="mt-1 text-sm" style={{ fontFamily: selected.stack }}>
-          {t('Scientific slides  科学演示')}
+          Scientific slides 科学演示
         </p>
         <p className="mt-3 text-xs" data-hd-font-status={status}>
           {t(STATUS_LABELS[status])}
