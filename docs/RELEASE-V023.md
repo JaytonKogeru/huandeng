@@ -1,5 +1,7 @@
 # HUANDENG Editor 0.23.0
 
+Installer correction: subsequent hosted Windows validation exposed a shortcut defect for paths outside the system ANSI code page. [0.23.1](RELEASE-V0231.md) supplies the Unicode correction and its cross-code-page installation, repair and uninstall checks. This 0.23.0 record, tag and archive identities retain their original acceptance history.
+
 Release date: 2026-11-12. Builds on [0.22.2](RELEASE-V0222.md).
 
 The implementation, final clean-package acceptance, actual installation and native client checks are complete. [Release downloads and remote checks](https://github.com/JaytonKogeru/huandeng/releases/tag/editor-v0.23.0) provide the publication record. The accepted runtime source is `a27b92083ecedaeaca3c5258102b3fbaeea9de93`, tagged `editor-v0.23.0`, following the implementation commit `92dbeef3976e868d8e8e2eebaac77766706745cc`. Later delivery documentation does not change the executable's source identity.

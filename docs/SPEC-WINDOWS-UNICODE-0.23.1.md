@@ -2,6 +2,8 @@
 
 Date: 2026-11-12.
 
+All acceptance requirements below are complete at clean source `82023a5d68dd7bdd3c52e6e0faf89c2c889f16f0`, annotated `editor-v0.23.1`. Source and Official tag CI both passed. Actual installation, matching native clients and preservation passed, and all four published assets were downloaded back with matching sizes and SHA-256. The linked validation and delivery records retain the exact observations and unsuccessful attempts.
+
 ## Audited failure
 
 The [Windows CI at d61f440](https://github.com/JaytonKogeru/huandeng/actions/runs/43178726765/job/131049189708) passed all 16 native contracts and 68 desktop tests, then failed while assigning the installer's `WScript.Shell` shortcut target for a real Chinese directory. The exception was an invalid argument at `Install-Huandeng.ps1`.
