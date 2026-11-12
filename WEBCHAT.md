@@ -1,8 +1,24 @@
 # HUANDENG Editor
 
-## Final Editor walkthroughs and public source preparation
+## Current Editor 0.23 delivery
 
-Read docs/PRODUCT-INTRODUCTION-SPEC.md, PRODUCT-INTRODUCTION-VALIDATION.md, OPEN-SOURCE-READINESS.md and HANDOFF-FINAL-EXAMPLES.md for the current revision. The user froze both Claude Code and DeepSeek Harness designs and authorized language/model watermarks only. Their 95 Main pages were independently compared against the pre-watermark state: exactly one added text object per page, with original objects, Notes, metadata, order, scientific values and Presentations unchanged. Preserve that boundary.
+Read [RELEASE-V023](docs/RELEASE-V023.md), [VALIDATION-V023](docs/VALIDATION-V023.md), [PROPOSAL-REVIEW](docs/PROPOSAL-REVIEW.md) and [WINDOWS-INSTALL](docs/WINDOWS-INSTALL.md) for this milestone. The independent audit and accepted specification remain in `docs/AUDIT-NEXT-PHASE-2026-11-12.md` and `docs/SPEC-NEXT-PHASE-2026-11-12.md`; their original baseline and design language do not supersede completed implementation evidence.
+
+Runtime source is `a27b92083ecedaeaca3c5258102b3fbaeea9de93`, annotated `editor-v0.23.0`, following implementation commit `92dbeef3976e868d8e8e2eebaac77766706745cc`. The follow-up fixes default Windows shortcut path collection. Product/plugin version is 0.23.0, protocol is 2 and Electron is 45.3.1; core npm remains 2.3.1. Plugin distributions retain the implementation commit's provenance; their complete source tree is identical at the runtime commit. Runtime packaging uses an independently built clean checkout of the runtime commit. A later delivery commit records acceptance and a validation-only modal-close harness correction; it does not change the binary's source.
+
+The final Windows source gate passed 1,527 unit tests with zero failures and one existing Windows skip. The final clean Official EXE passed Windows smoke and native upgrade workflows at 9/9 each; installation contracts and complete-package install/repair/uninstall each passed 6/6. Actual normal-shortcut launch restored the user's four Project tabs without changing their entry hashes. Native clients were upgraded under their existing identities; the separate DeepSeek Host test made two read-only MCP calls against a synthetic Project. Real browser safety/performance and actual PowerPoint acceptance have their own evidence. Exact artifacts and remote outcomes are in the current release/validation records and [delivery record](docs/HANDOFF-V023.md).
+
+Protocol 2 authenticates each private local client, isolates active resources and uses narrow capture/export authority. Keep ordinary authorized preview/apply working. Optional human proposal approval is bound to actual UI review, immutable preview identity and the original visual-resource baseline; restoring a discarded conflict draft restores work for review and does not itself overwrite the current Project.
+
+Performance work retains the complete authoritative scan and durable write contract. Do not replace exact persisted-byte and directory-generation checks with time-based watcher suppression, or remove CAS, read dependencies, locks, recovery and Undo to improve a benchmark. Preserve unsupported-case fallbacks, immutable snapshots, bounded caches and explicit delta base versions.
+
+The six frozen examples, pre-existing research edits and protected fixture were excluded from this release. Keep their original bytes and untracked files. Audit and experiments used synthetic Projects. Existing Story, Main/live/pinned Presentation semantics, source assets, history and all preservation instructions below remain authoritative.
+
+Only a tested significant milestone is pushed to origin. Do not push upstream, run npm publication, rewrite history, change account/model settings or create parallel maintained project copies. Temporary clean builds remain inside the ignored verification area; native plugins upgrade through their existing same-name supported installation paths.
+
+## Historical final Editor walkthroughs and public source preparation
+
+Read docs/PRODUCT-INTRODUCTION-SPEC.md, PRODUCT-INTRODUCTION-VALIDATION.md, OPEN-SOURCE-READINESS.md and HANDOFF-FINAL-EXAMPLES.md for the accepted walkthrough revision preceding 0.23. The user froze both Claude Code and DeepSeek Harness designs and authorized language/model watermarks only. Their 95 Main pages were independently compared against the pre-watermark state: exactly one added text object per page, with original objects, Notes, metadata, order, scientific values and Presentations unchanged. Preserve that boundary.
 
 ChatGPT English is a 24-page practical Editor walkthrough authored directly by the primary session. ChatGPT Chinese is an independent 24-page tutorial authored by three parallel section agents with orchestration and personal page-by-page review by the primary session. Do not reimpose bilingual alignment or the earlier DNA example. Both short Presentations contain 12 actual occurrences, current tutorial pins and occurrence Notes. Each page has the accurate language/model watermark.
 

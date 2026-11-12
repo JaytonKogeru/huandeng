@@ -2,7 +2,7 @@
 
 Date: 2026-11-12.
 
-**The final source checks, security probes, performance regression, packaged Windows smoke test and native workflow acceptance passed.** This record covers the implementation worktree and the explicitly identified development candidates. A clean tagged release archive, its installation and publication are separate provenance fields below; a successful candidate test is not a claim that those actions have occurred.
+**The final source checks, security probes, performance regression, packaged Windows smoke test and native workflow acceptance passed.** This record covers the implementation checks, the identified earlier candidates, the final clean Official package and the actual installed delivery. The final clean tagged Official archive, real installation and client checks are recorded separately below. Remote publication and hosted CI are verified against their GitHub records rather than inferred from a local test.
 
 The work followed [the independent audit](AUDIT-NEXT-PHASE-2026-11-12.md) and [the accepted upgrade specification](SPEC-NEXT-PHASE-2026-11-12.md). The retained implementation uses PPTD, stable page identities, Main Slides, live/pinned Presentations and the shared durable writer.
 
@@ -24,6 +24,9 @@ Evidence references such as **[S1]** resolve to the repository-relative paths in
 | Final same-fixture backend run | Passed, 69.91 s. | [P1] |
 | Packaged Windows smoke, candidate 2 | 9/9 passed. | [D1] |
 | Native upgrade workflow, candidate 2 | 9/9 passed, 54.52 s; no recorded UI errors. | [D2] |
+| Clean Official Windows science smoke | 9/9 passed against final source `a27b920`; Electron 45.3.1 / runtime Node 24.22.2. | [D3] |
+| Clean Official native upgrade workflows | 9/9 passed against final source `a27b920`; errors array empty. | [D4] |
+| Complete Official-copy install, repair and uninstall | 6/6 checks passed; each actual bundled script exited 0. | [I1] |
 
 Focused suites overlap the complete unit run; their counts must not be added to the 1,528 total. The single skip is the existing POSIX execute-bit hook test, `does not treat a non-executable hook file as an enabled hook`. Its source explicitly uses `it.skipIf(process.platform === 'win32')`; it is not a failed or silently omitted Windows acceptance gate. [S1]
 
@@ -107,6 +110,14 @@ Candidate 2 identifies product version **0.23.0**, Electron **45.3.1** and bundl
 
 The separate final native upgrade workflow passed all nine checks: Home theme broadcast; cancellation and actual entry display; practice creation; blank creation and window-layout sharing across two Projects; real overlapping external-write conflict; recoverable discarded draft; actual-slide proposal review and fresh preview for an independent subset; restart persistence; and native private-document navigation refusal. The conflict check preserved unrelated remote fields. Restoring a discarded draft restored the local work for review; it did not silently save over the newer document. [D2]
 
+The final Official package was independently built from `a27b92083ecedaeaca3c5258102b3fbaeea9de93` with the matching annotated `editor-v0.23.0` tag. Its marker records `sourceDirty=false`, channel `release` and build time `2026-11-12T07:09:54.311Z`. That exact EXE separately passed the nine Windows science smoke checks and all nine native upgrade workflow checks; the combined checked process exited 0 after 106.99 s. The recorded runtime was Electron 45.3.1 with Node 24.22.2; the build-host Node recorded in the marker is 22.21.0. [D3, D4]
+
+The first real default installation revealed a PowerShell single-item-array conversion that joined the Start Menu and Desktop paths. The follow-up runtime-source commit fixes that one installation line and adds a regression through the actual script with only filesystem/shortcut writes mocked. The old code failed the new check; the fixed installation contract passed 6/6, and both real default shortcuts were then read back correctly. Product rendering and writer code were unchanged. [I2]
+
+A separate first B-source smoke run hit a Playwright race when the expected Cancel action closed its own modal before the click promise settled. The validation-only correction waits for the close event and accepts that precise closed-target exception only after the modal has closed. It additionally requires the original Editor and canvas to remain available and the cancelled Project directory to remain absent. The corrected harness passed against the same unmodified Official EXE. This test-only change belongs to the delivery commit; it does not change the runtime's source identity. The initial failed result remains retained. [D3, I2]
+
+A complete copy of the Official package then ran its actual install, repair and uninstall scripts against a unique isolated HKCU registration subtree and shortcut directory. All 6,398 manifest files, totaling 498,932,304 bytes, matched before the test; the content manifest itself is the 6,399th file. Repair corrected a deliberately damaged shortcut. Removal deleted 6,397 unchanged owned files, including the real EXE, and retained the modified `INSTALL.md` and extra synthetic user file byte-for-byte. The other default ProgId, UserChoice and OpenWith entry were preserved. The original Official package was fully rehashed afterwards and remained unchanged. Six checks passed; the observed execution exited 0 after 223.65 s. The earlier C1-copy result remains a distinct historical record. [I1]
+
 These automated New Project checks supplied a test-owned directory to the folder-selection boundary. They do not claim that every Windows shell dialog variation was manually exercised.
 
 ## 5. Actual PowerPoint compatibility
@@ -124,7 +135,7 @@ PowerPoint exported a 128,003-byte PNG, and the resulting pixels were inspected.
 - Pending proposals are optional. Ordinary authorized Agent work can still use preview/apply. Human acceptance uses the UI capability and a bound approval receipt; an Agent-provided actor label is not approval. A subset is re-previewed, and a truncated visual review cannot be accepted as if hidden pages had been inspected.
 - Reviewed proposals bind the before/after visual resource baseline. Actual page, manifest, metadata and asset bytes are checked before journal creation in the same writer queue. An external resource replacement before watcher delivery or after preparation rejects the stale review without changing page bytes or creating a pending journal.
 - Main Slides remain the source collection. Live/pinned Presentations, Story, notes, original assets, named versions and Undo/Redo remain product contracts. The six frozen example editions and pre-existing research changes were outside the upgrade's edit scope.
-- Safety, performance and release probes used synthetic Projects. The validation did not use real research Projects as writable test targets or alter the user's installed Editor and default file association.
+- Safety, performance and release probes used synthetic Projects. Real research Projects were not writable test targets. The separate actual upgrade changed the owned installation registrations, restored the user's existing Project tabs and preserved existing Windows application choices as recorded below.
 
 These boundaries are supported by the full and focused suites plus the native and security evidence; they do not assert a universal absence of defects in every untested workload. [S1–S4, P1, D1, D2]
 
@@ -132,15 +143,24 @@ These boundaries are supported by the full and focused suites plus the native an
 
 | Item | Recorded status |
 | --- | --- |
-| Validated product candidate | 0.23.0 development candidate 2; smoke and native UI acceptance passed. |
-| Candidate source marker | `e456d6f676007c24d348d924b2500ba7950daeab`, identifying the base revision recorded by the implementation-worktree builds. It is not proof that the upgrade was already committed at that revision. |
-| Final clean source commit and release tag | **Pending the final clean tagged source supplied by the release owner.** |
-| Official archive, content manifest and SHA-256 | **Pending the final release artifact.** Candidate measurements are not substituted for that artifact. |
-| Installation/repair/uninstall of the official package | **Not yet evidenced for the final release artifact.** |
-| Publication and installed version | **Not claimed by this validation record.** |
-| Signing and npm publication | Candidate metadata is unsigned; no signing credential, supplier purchase or npm publication forms part of these results. |
+| Delivered Official runtime | 0.23.0 from `a27b92083ecedaeaca3c5258102b3fbaeea9de93`; its Windows science smoke and native upgrade workflow each passed 9/9. |
+| Earlier candidate source marker | `e456d6f676007c24d348d924b2500ba7950daeab`, identifying the base revision recorded by the implementation-worktree builds. It is not proof that the upgrade was already committed at that revision. |
+| Final clean source commit and release tag | `a27b92083ecedaeaca3c5258102b3fbaeea9de93`, annotated `editor-v0.23.0`; Official marker records `sourceDirty=false` and channel `release`. Plugins retain source `92dbeef3976e868d8e8e2eebaac77766706745cc`; the complete plugin tree is identical at both commits. |
+| Official archive, content manifest and SHA-256 | Three complete archives were checked entry-by-entry against their clean sources. Exact archive bytes and SHA-256 are recorded in [RELEASE-V023](RELEASE-V023.md). Content-manifest SHA-256: `3ca15512f1287a4e83915c8b0eeff835665dcc321d495fb64571b97eb797b57a`. |
+| Installation/repair/uninstall of the official package | Actual bundled scripts passed the complete-Official-copy acceptance described above; each process exited 0. Current-user delivery is recorded separately below. |
+| Actual installed version | Normal Desktop shortcut launch verified 0.23.0 and restored the four existing Project tabs; Codex/Claude same-name inventories and DeepSeek live bundle are 0.23.0. |
+| Remote publication | [Versioned release](https://github.com/JaytonKogeru/huandeng/releases/tag/editor-v0.23.0) and [hosted CI records](https://github.com/JaytonKogeru/huandeng/actions/workflows/ci.yml); their observed remote results are recorded separately from these local checks. |
+| Signing and npm publication | Official metadata and Windows signature readback are unsigned; no signing credential, supplier purchase or npm publication forms part of these results. |
 
-This table records the state of the delivery evidence, not an implementation plan. The source and candidate results above remain completed results. Formal artifact provenance is filled only from the actual clean package and its observed installation/publication outcome.
+The final marker, executable product/version information, complete package and all three archives were read back. Runtime and plugin provenance remain explicit: the installer follow-up changes the runtime commit, while the identical plugin tree retains its earlier source identity. [I2]
+
+### Current-user and native client delivery
+
+The actual default installer created separate Start Menu and Desktop shortcuts, registered the new PPTD command and updated the Agent runtime pointer. The old 0.22 window closed normally without force; the existing Desktop shortcut launched the final 0.23 executable. Four existing tabs were visibly restored. The open-Project list, tab state and all 11 recorded entry hashes were unchanged. The four original tracked edits also matched their original audit-baseline bytes and hashes. [I2]
+
+Codex and Claude each retained one enabled same-name HUANDENG 0.23.0 entry. Every file in each 25-file installed cache matched the distribution. Both installed-cache doctors verified protocol 2, 24 tools and the exact synthetic Project; these checks do not claim a new model-authoring task in those clients. DeepSeek Harness loaded the existing bundle identity at live 0.23.0; its default standard launcher and a separate actual Host conversation both returned the expected synthetic context and selection. The Host task was restricted to those two read-only calls. Account, model, permission and existing-conversation state were preserved. [I2, H1]
+
+The scheduled publisher changed only the runtime paths inside its Action. The trigger, principal, settings, registration information, working directory and configuration bytes were unchanged. No manual trigger was used; the retained task later ran naturally and returned Windows task result 0. The science fixture above supplies the distinct export-content acceptance. The temporary clean source checkout was retired after its evidence and archives were retained. [I2]
 
 ## 8. Evidence index
 
@@ -159,3 +179,8 @@ All paths below are relative to the repository root. Raw probes and runtime cred
 | D1 | `.verification/windows-release-a49f0525-ba24-4589-8ba4-8c8a58f218c7/result.json` |
 | D2 | `.verification/upgrade-workflows-107831c8-a9f7-4357-9686-c8e0562feb43/report.json` and the screenshots in that directory |
 | O1 | `.verification/windows-release-016f3c2c-de50-46f4-b91c-9b883b665676/science-office-result.json` and `science-office.png` |
+| D3 | `.verification/implementation-20261112/release/official-windows/result.json`, science exports and PNG evidence |
+| D4 | `.verification/implementation-20261112/release/official-upgrade/report.json` and eight PNGs |
+| I1 | `.verification/implementation-20261112/official-installer-a27b920-mwd7k8nq-c1a219641c/result.json`, `execution.json` and script logs |
+| I2 | `.verification/implementation-20261112/release/official-delivery.json`; `first-b-smoke-close-race-result.json`, `protected-final.json` and `worktree-retirement.json` in the same directory; `.verification/implementation-20261112/root/source-commit-installer-fix.json` and `installer-fix-biome.log` |
+| H1 | `.verification/implementation-20261112/deepseek/live-upgrade.json`; `mcp-final-proof.json`; `native-host-proof.json` and its official trace screenshots |

@@ -337,7 +337,20 @@ try {
   );
   await modal.locator('#project-name').fill('Cancelled project');
   await modal.locator('#browse').click();
-  await modal.locator('#cancel').click();
+  const cancelled = modal.waitForEvent('close');
+  await modal
+    .locator('#cancel')
+    .click()
+    .catch((error) => {
+      if (
+        !modal.isClosed() ||
+        !String(error).includes('Target page, context or browser has been closed')
+      )
+        throw error;
+    });
+  await cancelled;
+  assert.equal(page.isClosed(), false, 'Cancelling New Project must retain the editor.');
+  await page.locator('[data-hd-editor-canvas]').waitFor({ state: 'visible' });
   assert.equal(
     await fs.access(path.join(evidence, 'Cancelled project')).then(
       () => true,
