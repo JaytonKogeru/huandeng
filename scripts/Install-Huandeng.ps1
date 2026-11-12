@@ -62,7 +62,7 @@ public static class HuandengAssociationNotification {
     }
 }
 $shortcutShell = New-Object -ComObject WScript.Shell
-$locations = if ($ShortcutDirectory) { @([System.IO.Path]::GetFullPath($ShortcutDirectory)) } else { @([Environment]::GetFolderPath("Programs")) }
+$locations = @(if ($ShortcutDirectory) { [System.IO.Path]::GetFullPath($ShortcutDirectory) } else { [Environment]::GetFolderPath("Programs") })
 if (-not $ShortcutDirectory -and -not $NoDesktopShortcut) { $locations += [Environment]::GetFolderPath("DesktopDirectory") }
 foreach ($location in $locations) {
     New-Item -ItemType Directory -Path $location -Force | Out-Null

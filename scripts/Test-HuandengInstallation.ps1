@@ -19,9 +19,42 @@ function New-TestApplication($name) {
     [System.IO.File]::WriteAllText((Join-Path $directory "huandeng-content.json"), (@{schemaVersion=1;productVersion="0.23.0";files=$files} | ConvertTo-Json -Depth 8))
     return Join-Path $directory "HUANDENG Editor.exe"
 }
+function Test-DefaultShortcutLocations([string]$application) {
+    $directories = [Collections.Generic.List[string]]::new()
+    $fakeShell = [pscustomobject]@{ Shortcuts = [Collections.Generic.List[object]]::new() }
+    $fakeShell | Add-Member -MemberType ScriptMethod -Name CreateShortcut -Value {
+        param([string]$file)
+        $shortcut = [pscustomobject]@{ Path=$file; TargetPath=""; WorkingDirectory=""; Description=""; IconLocation=""; Saved=$false }
+        $shortcut | Add-Member -MemberType ScriptMethod -Name Save -Value { $this.Saved = $true }
+        $this.Shortcuts.Add($shortcut)
+        return $shortcut
+    }
+    function New-Item([string]$ItemType, [string]$Path, [switch]$Force) {
+        Assert-True ($ItemType -eq "Directory") "The default shortcut check must not write registrations."
+        $directories.Add($Path)
+    }
+    function New-Object([string]$ComObject) {
+        Assert-True ($ComObject -eq "WScript.Shell") "Unexpected side effect in shortcut check."
+        return $fakeShell
+    }
+    & "$PSScriptRoot\Install-Huandeng.ps1" -ApplicationPath $application -NoFileAssociation | Out-Null
+    Assert-True ($directories.Count -eq 2 -and $fakeShell.Shortcuts.Count -eq 2) "Default installation must create two separate shortcut targets."
+    $expected = @([Environment]::GetFolderPath("Programs"), [Environment]::GetFolderPath("DesktopDirectory"))
+    foreach ($index in @(0, 1)) {
+        Assert-True ($directories[$index] -eq $expected[$index]) "Default shortcut directory is incorrect."
+        Assert-True ($fakeShell.Shortcuts[$index].Path -eq (Join-Path $expected[$index] "HUANDENG Editor.lnk")) "Default shortcut path is incorrect."
+        Assert-True ($fakeShell.Shortcuts[$index].TargetPath -eq $application -and $fakeShell.Shortcuts[$index].Saved) "Default shortcut was not saved for the selected application."
+    }
+    $directories.Clear()
+    $fakeShell.Shortcuts.Clear()
+    & "$PSScriptRoot\Install-Huandeng.ps1" -ApplicationPath $application -NoFileAssociation -NoDesktopShortcut | Out-Null
+    Assert-True ($directories.Count -eq 1 -and $directories[0] -eq $expected[0] -and $fakeShell.Shortcuts.Count -eq 1) "NoDesktopShortcut must retain only the Start Menu shortcut."
+}
 try {
     $first = New-TestApplication ("first " + [char]0x9A8C + [char]0x6536)
     $second = New-TestApplication ("second " + [char]0x5B89 + [char]0x88C5)
+    Test-DefaultShortcutLocations $first
+    $checks += "Default shortcuts use separate Start Menu/Desktop paths and honor NoDesktopShortcut."
     $choicePath = "$registration\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.pptd\UserChoice"
     New-Item -Path $choicePath -Force | Out-Null
     New-ItemProperty -Path $choicePath -Name ProgId -Value "Other.Application" -Force | Out-Null
