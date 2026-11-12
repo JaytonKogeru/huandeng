@@ -1,6 +1,10 @@
 # HUANDENG Editor
 
-## Current Editor 0.23 delivery
+## Editor 0.23.1 Windows installer correction
+
+The Unicode shortcut correction is in validation. Read [RELEASE-V0231](docs/RELEASE-V0231.md), [VALIDATION-V0231](docs/VALIDATION-V0231.md), [SPEC-WINDOWS-UNICODE-0.23.1](docs/SPEC-WINDOWS-UNICODE-0.23.1.md) and the [delivery record](docs/HANDOFF-V0231.md) for its exact status. Product and matching native-plugin metadata use 0.23.1; protocol 2, Electron 45.3.1 and the 0.23 implementation remain the baseline. Keep the published 0.23.0 tag and assets unchanged. New verification evidence belongs in `.verification/implementation-20261112/patch-0231/`.
+
+## Editor 0.23 upgrade baseline and original delivery
 
 Read [RELEASE-V023](docs/RELEASE-V023.md), [VALIDATION-V023](docs/VALIDATION-V023.md), [PROPOSAL-REVIEW](docs/PROPOSAL-REVIEW.md) and [WINDOWS-INSTALL](docs/WINDOWS-INSTALL.md) for this milestone. The independent audit and accepted specification remain in `docs/AUDIT-NEXT-PHASE-2026-11-12.md` and `docs/SPEC-NEXT-PHASE-2026-11-12.md`; their original baseline and design language do not supersede completed implementation evidence.
 

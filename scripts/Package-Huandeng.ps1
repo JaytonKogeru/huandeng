@@ -78,7 +78,7 @@ if (Test-Path -LiteralPath $crashReporter) {
 }
 & node (Join-Path $PSScriptRoot "brand-desktop.mjs") $stage
 if ($LASTEXITCODE -ne 0) { throw "Setting Windows product identity failed." }
-foreach ($name in @("Install-Huandeng.ps1", "Uninstall-Huandeng.ps1", "Install-Huandeng.cmd", "Uninstall-Huandeng.cmd")) {
+foreach ($name in @("Install-Huandeng.ps1", "Uninstall-Huandeng.ps1", "Windows-Shortcut.ps1", "Install-Huandeng.cmd", "Uninstall-Huandeng.cmd")) {
     Copy-Item -LiteralPath (Join-Path $PSScriptRoot $name) -Destination (Join-Path $stage $name)
 }
 Copy-Item -LiteralPath (Join-Path $project "docs\WINDOWS-INSTALL.md") -Destination (Join-Path $stage "INSTALL.md")

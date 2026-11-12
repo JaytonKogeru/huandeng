@@ -61,7 +61,8 @@ public static class HuandengAssociationNotification {
         [HuandengAssociationNotification]::SHChangeNotify(0x08000000, 0, [IntPtr]::Zero, [IntPtr]::Zero)
     }
 }
-$shortcutShell = New-Object -ComObject WScript.Shell
+. "$PSScriptRoot\Windows-Shortcut.ps1"
+$shortcutShell = New-Object -TypeName Huandeng.WindowsShortcutShell
 $locations = @(if ($ShortcutDirectory) { [System.IO.Path]::GetFullPath($ShortcutDirectory) } else { [Environment]::GetFolderPath("Programs") })
 if (-not $ShortcutDirectory -and -not $NoDesktopShortcut) { $locations += [Environment]::GetFolderPath("DesktopDirectory") }
 foreach ($location in $locations) {
@@ -71,7 +72,7 @@ foreach ($location in $locations) {
     $shortcut.TargetPath = $application
     $shortcut.WorkingDirectory = $applicationDirectory
     $shortcut.Description = "HUANDENG Editor"
-    if (Test-Path -LiteralPath $icon) { $shortcut.IconLocation = $icon }
+    if (Test-Path -LiteralPath $icon) { $shortcut.IconPath = $icon; $shortcut.IconIndex = 0 }
     $shortcut.Save()
     Write-Output $shortcutPath
 }

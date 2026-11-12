@@ -63,7 +63,8 @@ if (($ownsRegistration -or -not $registeredCommand) -and [string]::Equals($insta
     Remove-ItemProperty -Path "$RegistrationRoot\RegisteredApplications" -Name "HUANDENG Editor" -ErrorAction SilentlyContinue
     Remove-Item -Path $statePath -Recurse -Force
 }
-$shortcutShell = New-Object -ComObject WScript.Shell
+. "$PSScriptRoot\Windows-Shortcut.ps1"
+$shortcutShell = New-Object -TypeName Huandeng.WindowsShortcutShell
 $locations = if ($ShortcutDirectory) { @([System.IO.Path]::GetFullPath($ShortcutDirectory)) } else { @([Environment]::GetFolderPath("Programs"), [Environment]::GetFolderPath("DesktopDirectory")) }
 foreach ($location in $locations) {
     $shortcutPath = Join-Path $location "HUANDENG Editor.lnk"
