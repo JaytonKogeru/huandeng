@@ -1,4 +1,4 @@
-import { createHash, randomBytes, randomUUID } from 'node:crypto';
+import { createHash, randomUUID } from 'node:crypto';
 import fs from 'node:fs/promises';
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import type { AddressInfo } from 'node:net';
@@ -10,6 +10,7 @@ import { AssetPreviewManager } from '../../pptd/asset-preview.ts';
 import { discoveryPath, runtimeRoot, type SessionDiscovery } from '../../pptd/client.ts';
 import type { DesignAuditOptions } from '../../pptd/design-audit.ts';
 import { readSlideDesignAudit } from '../../pptd/design-audit-assets.ts';
+import { readProjectAsset } from '../../pptd/export-environment.ts';
 import {
   checkpoint,
   recordCheckpoint,
@@ -22,7 +23,10 @@ import { readProjectFileImage, readProjectFilePreview } from '../../pptd/project
 import { readStoryBriefing } from '../../pptd/project-insights.ts';
 import { readProjectModel, resolvePresentation } from '../../pptd/project-model.ts';
 import { readProjectTree } from '../../pptd/project-tree.ts';
+import { ProposalInbox } from '../../pptd/proposal-inbox.ts';
 import { ExportManager } from '../../pptd/runtime-export.ts';
+import { type ResourceRequest, SessionAuthority } from '../../pptd/session-authority.ts';
+import type { SnapshotCursor } from '../../pptd/snapshot-delta.ts';
 import { openPptdStore } from '../../pptd/store.ts';
 import { recordStory, type StoryRecordRequest } from '../../pptd/story.ts';
 import {
@@ -85,7 +89,17 @@ export async function registerPptdRoutes(server: PptdRouteHost, _ctx?: ApiContex
   );
   if (initial.writable && initial.identityPersisted)
     recordCheckpointMetadataInitialization(root, initial);
-  const token = randomBytes(32).toString('hex');
+  const authority = new SessionAuthority(initial.epoch);
+  const proposals = new ProposalInbox(
+    store,
+    path.join(
+      runtimeRoot(),
+      'proposals',
+      createHash('sha256')
+        .update(process.platform === 'win32' ? root.toLowerCase() : root)
+        .digest('hex'),
+    ),
+  );
   const clients = new Set<ServerResponse>();
   const activityClients = new Set<ServerResponse>();
   const unsubscribeActivity = activity.subscribe((event) => {
@@ -95,7 +109,7 @@ export async function registerPptdRoutes(server: PptdRouteHost, _ctx?: ApiContex
       else client.write(data);
     }
   });
-  const exports = new ExportManager(root);
+  const exports = new ExportManager(root, authority);
   const assetPreviews = new AssetPreviewManager(root);
   let selection: {
     pageId: string | null;
@@ -110,6 +124,7 @@ export async function registerPptdRoutes(server: PptdRouteHost, _ctx?: ApiContex
     elementIds: [],
   };
   let refreshTimer: ReturnType<typeof setTimeout> | undefined;
+  const refreshPaths = new Set<string>();
   let closed = false;
   const commit = async (request: TransactionRequest, previewHash?: string) => {
     try {
@@ -157,10 +172,17 @@ export async function registerPptdRoutes(server: PptdRouteHost, _ctx?: ApiContex
       /^\..+\.huandeng-[0-9a-f-]+\.tmp$/i.test(path.basename(file))
     )
       return;
+    refreshPaths.add(file);
+    if (refreshPaths.size > 1024) {
+      refreshPaths.clear();
+      refreshPaths.add(root);
+    }
     if (refreshTimer) clearTimeout(refreshTimer);
     refreshTimer = setTimeout(() => {
+      const paths = [...refreshPaths];
+      refreshPaths.clear();
       if (!closed)
-        void store.refreshExternalState().catch((error: unknown) => {
+        void store.refreshWatchedPaths(paths).catch((error: unknown) => {
           server.config.logger.error(`Huandeng refresh: ${String(error)}`);
         });
     }, 180);
@@ -181,8 +203,13 @@ export async function registerPptdRoutes(server: PptdRouteHost, _ctx?: ApiContex
       url: addressUrl(),
       pid: process.pid,
       epoch: snapshot.epoch,
+      protocol: 2,
+      agentToken: authority.agentToken,
+      launcherToken: authority.launcherToken,
     };
-    await fs.writeFile(file, JSON.stringify(record), { mode: 0o600 });
+    const temporary = `${file}.${process.pid}.tmp`;
+    await fs.writeFile(temporary, JSON.stringify(record), { mode: 0o600 });
+    await fs.rename(temporary, file);
   });
   let closing: Promise<void> | undefined;
   const close = () =>
@@ -212,9 +239,17 @@ export async function registerPptdRoutes(server: PptdRouteHost, _ctx?: ApiContex
 
   server.middlewares.use(async (req, res, next) => {
     const url = new URL(req.url ?? '/', 'http://127.0.0.1');
+    res.setHeader('referrer-policy', 'no-referrer');
+    res.setHeader('x-frame-options', 'DENY');
+    res.setHeader('content-security-policy', "frame-ancestors 'none'");
     if (!url.pathname.startsWith('/__pptd/')) return next();
     res.setHeader('cache-control', 'no-store');
     res.setHeader('x-content-type-options', 'nosniff');
+    res.setHeader('cross-origin-resource-policy', 'same-origin');
+    res.setHeader(
+      'content-security-policy',
+      "sandbox; default-src 'none'; script-src 'none'; style-src 'unsafe-inline'; img-src data:; font-src data:; base-uri 'none'; form-action 'none'; frame-ancestors 'none'",
+    );
     try {
       const host = new URL(`http://${req.headers.host}`);
       const remote = req.socket.remoteAddress ?? '';
@@ -224,20 +259,106 @@ export async function registerPptdRoutes(server: PptdRouteHost, _ctx?: ApiContex
       ) {
         return json(res, 403, { code: 'LOCAL_ONLY', message: 'Use a loopback Huandeng session.' });
       }
-      if (req.headers.origin && new URL(req.headers.origin).host !== host.host) {
+      if (req.headers.origin && req.headers.origin !== host.origin) {
         return json(res, 403, {
           code: 'ORIGIN_MISMATCH',
           message: 'Cross-origin access is denied.',
         });
       }
       const method = req.method ?? 'GET';
-      if (method !== 'GET' && (method !== 'POST' || req.headers['x-huandeng-token'] !== token)) {
+      const route = url.pathname.slice('/__pptd'.length);
+      if (method === 'GET' && route === '/health')
+        return json(res, 200, { ready: true, desktopProtocol: 2 });
+      if (method === 'POST' && (route === '/auth/ui' || route === '/auth/launch')) {
+        if (!authority.isLauncher(req.headers['x-huandeng-launcher']))
+          return json(res, 403, {
+            code: 'LAUNCHER_REQUIRED',
+            message: 'Open the Project from HUANDENG.',
+          });
+        return json(
+          res,
+          200,
+          route === '/auth/ui' ? authority.createUiCapability() : authority.createLaunchTicket(),
+        );
+      }
+      if (method === 'POST' && route === '/auth/exchange') {
+        const body = (await readBody(req, 4096)) as { ticket?: unknown };
+        const capability = authority.exchangeLaunch(body?.ticket);
+        return capability
+          ? json(res, 200, capability)
+          : json(res, 403, {
+              code: 'LAUNCH_EXPIRED',
+              message: 'Open the Project from HUANDENG again.',
+            });
+      }
+      const capability = authority.authenticate(req.headers['x-huandeng-token']);
+      const resource = authority.authorizeResource(route, url.searchParams, method);
+      if (
+        (!capability && !resource) ||
+        (capability && !authority.permits(capability, route, method))
+      ) {
         return json(res, 403, {
           code: 'SESSION_TOKEN_REQUIRED',
-          message: 'Refresh the active session.',
+          message: 'Open this Project from HUANDENG or reconnect the local client.',
         });
       }
-      const route = url.pathname.slice('/__pptd'.length);
+      if (method !== 'GET' && method !== 'POST')
+        return json(res, 405, { code: 'METHOD_NOT_ALLOWED', message: 'Use GET or POST.' });
+      const token = capability?.token ?? '';
+      if (method === 'POST' && route === '/auth/capture' && capability)
+        return json(res, 200, authority.createCaptureCapability());
+      if (method === 'POST' && route === '/auth/capture/revoke' && capability?.role === 'capture') {
+        authority.revoke(capability.token);
+        return json(res, 200, { revoked: true });
+      }
+      if (method === 'POST' && route === '/auth/resources' && capability) {
+        const body = (await readBody(req, 8 * 1024 * 1024)) as { resources?: ResourceRequest[] };
+        if (!Array.isArray(body?.resources) || body.resources.length > 1000)
+          throw new PptdError('INVALID_REQUEST', 'Request at most 1000 resource tickets.');
+        const revisions = new Map<string, string>();
+        const tickets = [];
+        for (const item of body.resources) {
+          if (!item || typeof item.route !== 'string')
+            throw new PptdError('INVALID_REQUEST', 'Invalid resource request.');
+          const request: ResourceRequest = {
+            route: item.route,
+            ...(typeof item.path === 'string' ? { path: item.path } : {}),
+            ...(typeof item.revision === 'string' ? { revision: item.revision } : {}),
+            ...(typeof item.size === 'string' ? { size: item.size } : {}),
+          };
+          if (
+            (request.route === '/asset' || request.route === '/asset-preview') &&
+            !/^sha256:[a-f\d]{64}$/.test(request.revision ?? '')
+          ) {
+            const source = request.path ?? '';
+            let revision = revisions.get(source);
+            if (!revision) {
+              try {
+                revision =
+                  'sha256:' +
+                  createHash('sha256')
+                    .update(await readProjectAsset(root, source))
+                    .digest('hex');
+              } catch (error) {
+                if (['ENOENT', 'ENOTDIR'].includes((error as NodeJS.ErrnoException).code ?? ''))
+                  continue;
+                throw error;
+              }
+              revisions.set(source, revision);
+            }
+            request.revision = revision;
+          }
+          try {
+            tickets.push(authority.issueResource(request, capability));
+          } catch (error) {
+            throw new PptdError(
+              'INVALID_REQUEST',
+              error instanceof Error ? error.message : 'Invalid resource.',
+            );
+          }
+        }
+        return json(res, 200, tickets);
+      }
       if (method === 'GET' && (route === '/session' || route === '/current')) {
         const snapshot =
           route === '/current' ? await store.getCurrentSnapshot() : await store.refreshExternal();
@@ -245,9 +366,34 @@ export async function registerPptdRoutes(server: PptdRouteHost, _ctx?: ApiContex
           ...snapshot,
           entry: path.join(root, snapshot.entry),
           sessionToken: token,
-          desktopProtocol: 1,
+          desktopProtocol: 2,
         });
       }
+      if (method === 'GET' && route === '/changes') {
+        const update = await store.getSnapshotUpdate({
+          epoch: url.searchParams.get('epoch') ?? '',
+          sequence: Number(url.searchParams.get('sequence')),
+          manifestRevision: url.searchParams.get('manifestRevision') ?? '',
+          metadataRevision:
+            url.searchParams.get('metadataRevision') === 'null'
+              ? null
+              : (url.searchParams.get('metadataRevision') ?? null),
+        } as SnapshotCursor);
+        return json(res, 200, {
+          ...update,
+          snapshot: { ...update.snapshot, entry: path.join(root, update.snapshot.entry) },
+          sessionToken: token,
+          desktopProtocol: 2,
+        });
+      }
+      if (method === 'GET' && route === '/proposals') return json(res, 200, await proposals.list());
+      const proposalDetail = /^\/proposals\/([^/]+)$/.exec(route);
+      if (method === 'GET' && proposalDetail)
+        return json(
+          res,
+          200,
+          await proposals.detail(decodeURIComponent(proposalDetail[1]), capability?.role === 'ui'),
+        );
       if (method === 'GET' && route === '/project') {
         return json(res, 200, await readProjectTree(root, store.getSnapshot()));
       }
@@ -376,7 +522,19 @@ export async function registerPptdRoutes(server: PptdRouteHost, _ctx?: ApiContex
           ),
         );
       }
-      if (method === 'GET' && route === '/history') return json(res, 200, await store.history());
+      if (method === 'GET' && route === '/history')
+        return json(
+          res,
+          200,
+          await store.history({
+            ...(url.searchParams.has('offset')
+              ? { offset: Number(url.searchParams.get('offset')) }
+              : {}),
+            ...(url.searchParams.has('limit')
+              ? { limit: Number(url.searchParams.get('limit')) }
+              : {}),
+          }),
+        );
       if (method === 'GET' && route === '/activity') return json(res, 200, activity.snapshot());
       if (method === 'GET' && route === '/activity/events') {
         res.writeHead(200, { 'content-type': 'text/event-stream', connection: 'keep-alive' });
@@ -415,6 +573,32 @@ export async function registerPptdRoutes(server: PptdRouteHost, _ctx?: ApiContex
       )) as Record<string, unknown>;
       if (!body || typeof body !== 'object' || Array.isArray(body)) {
         throw new PptdError('INVALID_REQUEST', 'A JSON object is required.');
+      }
+      if (route === '/proposals')
+        return json(
+          res,
+          201,
+          await proposals.submit(body as Parameters<ProposalInbox['submit']>[0]),
+        );
+      const proposalAction = /^\/proposals\/([^/]+)\/(decision|subset)$/.exec(route);
+      if (proposalAction) {
+        if (capability?.role !== 'ui')
+          return json(res, 403, {
+            code: 'UI_APPROVAL_REQUIRED',
+            message: 'Review this proposal in the Editor.',
+          });
+        const id = decodeURIComponent(proposalAction[1]);
+        return json(
+          res,
+          200,
+          proposalAction[2] === 'decision'
+            ? await proposals.decide(
+                id,
+                body as unknown as Parameters<ProposalInbox['decide']>[1],
+                true,
+              )
+            : await proposals.subset(id, body as Parameters<ProposalInbox['subset']>[1], true),
+        );
       }
       if (route === '/activity') return json(res, 200, await activity.report(body));
       if (route === '/video/cancel' || route === '/exports/cancel') {
@@ -514,7 +698,7 @@ export async function registerPptdRoutes(server: PptdRouteHost, _ctx?: ApiContex
           ...snapshot,
           entry: path.join(root, snapshot.entry),
           sessionToken: token,
-          desktopProtocol: 1,
+          desktopProtocol: 2,
         });
       }
       if (route === '/assets/import') {

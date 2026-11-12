@@ -6,7 +6,7 @@ Windows 桌面宿主，复用 HUANDENG 的 React 画布和 PPTD 文档服务。�
 
 双击项目根目录 `Start-Huandeng.cmd`，或安装后的 **HUANDENG Editor** 快捷方式。首次启动显示开始页；之后可以继续最近打开的项目。开始页和“文件”菜单均提供打开、新建及最近项目。
 
-“打开项目”选择已有项目中的 `.pptd` 清单。“新建项目”中的名称用于建立独立文件夹，例如选择 `D:\Documents\Research.pptd` 会创建 `D:\Documents\Research\deck.pptd`，其中包含一页空白 `.page`、`media` 目录和可编辑的 `AGENTS.md` 创作约定。项目不会自动套用布局。整个文件夹才是完整项目。需要交接时，在导出中选择「可编辑项目（ZIP）」；对方解压后打开原入口文件。也可以直接复制整个项目文件夹。
+“打开项目”选择已有项目中的 `.pptd` 清单。“新建项目”分别填写项目名称和父文件夹，并预览最终的 `folder/deck.pptd`。可以从一页空白开始，或创建独立的三页可编辑练习。取消不会创建项目，已有目录不会被覆盖。项目包含 `.page`、`media` 和可编辑的 `AGENTS.md` 创作约定；整个文件夹才是完整项目。需要交接时，在导出中选择「可编辑项目（ZIP）」；对方解压后打开原入口文件。也可以直接复制整个项目文件夹。
 
 Windows 新项目使用目录内 `.huandeng/project.ico` 与 `desktop.ini` 显示 HUANDENG 文件夹图标。图标路径为相对路径，不依赖原安装位置；装饰失败不会影响项目创建。其他平台仍使用普通文件夹。已有目录的图标、`desktop.ini` 和创作约定不会被自动替换。
 
@@ -20,7 +20,7 @@ Windows 新项目使用目录内 `.huandeng/project.ico` 与 `desktop.ini` 显�
 
 键盘在标签上用左右或上下键切换焦点，Home/End 到首末标签；Alt+Shift 加对应方向键调整位置。Ctrl+Tab 按当前标签顺序循环。
 
-工作区设置分为工作区、编辑、字体三组。标签布局是应用偏好，所有打开项目同步；面板尺寸、显示与备注停靠继续沿用现有布局保存规则。
+工作区设置分为窗口布局、编辑、字体检查三组。主题、语言、标签布局和吸附是应用偏好；面板尺寸、显隐与 Notes 停靠在同一窗口的所有项目间同步。升级时从当前活动项目的旧布局迁移初值并保留旧记录。每个项目仍保留自己的缩放、选页和当前视图。首页也可以切换主题。
 
 ## 开发与打包
 
@@ -30,18 +30,18 @@ corepack pnpm --filter @open-slide/core build
 corepack pnpm --filter @huandeng/desktop start
 ```
 
-桌面包固定 Electron `38.7.2`。首次安装依赖时，如果 pnpm 未运行 Electron 的下载脚本，可以使用已安装的同版本运行时；无需修改旧编辑器。
+桌面包固定 Electron `45.3.1`，与本地协议 2 的 CLI 和插件一起升级。首次安装依赖时，如果 pnpm 未运行 Electron 的下载脚本，按该依赖自带的安装脚本取得锁定版本；打包会拒绝版本不匹配的运行时。
 
 ```powershell
 .\scripts\Package-Huandeng.ps1 -ElectronRuntimePath "C:\path\to\electron\dist"
 .\scripts\Install-Huandeng.ps1
 ```
 
-产物为 `dist\HUANDENG-win32-x64\HUANDENG Editor.exe`，同目录包含 Electron 运行时和应用的生产依赖。整个文件夹可移动，不能只复制 `.exe`。安装脚本只创建当前用户的开始菜单及桌面快捷方式。
+产物为 `dist\HUANDENG-win32-x64\HUANDENG Editor.exe`，同目录包含 Electron 运行时和应用的生产依赖。整个文件夹可移动，不能只复制 `.exe`。随包的 `Install-Huandeng.cmd` 安装或修复当前用户快捷方式与 Open with 注册；`Uninstall-Huandeng.cmd` 移除该安装拥有的项目。已有 Windows 默认应用和用户工程保留，详见 [Windows 安装说明](../../docs/WINDOWS-INSTALL.md)。
 
 打包时会建立临时工作区，复用仓库锁定的依赖版本，以 pnpm 的 `hoisted` 布局生成实际依赖目录。临时工作区删除后、应用目录移动后，各检查一次依赖链接与文档服务启动，避免 Windows Junction 指向已移动的构建目录。
 
-已有构建需要更新时，先关闭该应用，再向打包脚本传入 `-Replace`。脚本只允许替换带有 HUANDENG 构建标记的目录。
+已有构建需要更新时，先关闭该应用，再向打包脚本传入 `-Replace`。脚本会核对构建标记与完整内容清单；存在新增、缺失或修改文件时拒绝覆盖。正式发行另使用 `-Official`，要求干净 checkout 和匹配的 `editor-v*` 标签，并记录来源、工具链、锁文件与文件摘要。
 
 ## 宿主接口
 

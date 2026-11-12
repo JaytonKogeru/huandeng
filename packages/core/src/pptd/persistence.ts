@@ -41,6 +41,13 @@ interface Journal {
   record: HistoryRecord;
 }
 
+interface CachedHistory {
+  signature: string;
+  bytes: number;
+  record: HistoryRecord;
+  summary: HistorySummary;
+}
+
 function validateRecord(value: unknown): HistoryRecord {
   if (
     !isRecord(value) ||
@@ -349,6 +356,8 @@ export async function acquireWriterLock(
 }
 
 export class Persistence {
+  private readonly historyCache = new Map<string, CachedHistory>();
+  private historyCacheBytes = 0;
   constructor(
     readonly root: string,
     readonly stateDir: string,
@@ -415,17 +424,54 @@ export class Persistence {
   }
 
   async historyRecord(operationId: string): Promise<HistoryRecord> {
-    const source = await readOptional(this.historyPath(operationId));
-    if (source === null)
-      throw new PptdError('TARGET_NOT_FOUND', `Unknown operation ${operationId}.`);
     try {
-      return validateRecord(JSON.parse(source));
-    } catch {
+      return structuredClone((await this.cachedHistory(this.historyPath(operationId))).record);
+    } catch (error) {
+      if ((error as NodeJS.ErrnoException).code === 'ENOENT')
+        throw new PptdError('TARGET_NOT_FOUND', `Unknown operation ${operationId}.`);
       throw new PptdError('RECOVERY_REQUIRED', `Corrupt history record ${operationId}.`);
     }
   }
 
-  async history(): Promise<HistoryRecord[]> {
+  private async cachedHistory(file: string): Promise<CachedHistory> {
+    const signature = async () => {
+      const stats = await fs.stat(file, { bigint: true });
+      if (!stats.isFile()) throw new Error('History is not a regular file.');
+      return [stats.dev, stats.ino, stats.size, stats.mtimeNs, stats.ctimeNs].join('/');
+    };
+    const before = await signature();
+    const cached = this.historyCache.get(file);
+    if (cached?.signature === before) {
+      this.historyCache.delete(file);
+      this.historyCache.set(file, cached);
+      return cached;
+    }
+    const source = await readUtf8(file);
+    const record = validateRecord(JSON.parse(source));
+    if ((await signature()) !== before) throw new Error('History changed while being read.');
+    const {
+      files: _files,
+      request: _request,
+      requestHash: _hash,
+      result: _result,
+      ...summary
+    } = record;
+    const entry = { signature: before, bytes: Buffer.byteLength(source), record, summary };
+    const replaced = this.historyCache.get(file);
+    if (replaced) this.historyCacheBytes -= replaced.bytes;
+    this.historyCache.delete(file);
+    this.historyCache.set(file, entry);
+    this.historyCacheBytes += entry.bytes;
+    while (this.historyCache.size > 1024 || this.historyCacheBytes > 32 * 1024 * 1024) {
+      const first = this.historyCache.entries().next().value;
+      if (!first) break;
+      this.historyCache.delete(first[0]);
+      this.historyCacheBytes -= first[1].bytes;
+    }
+    return entry;
+  }
+
+  private async historyEntries(): Promise<CachedHistory[]> {
     let files: string[];
     try {
       files = await fs.readdir(path.join(this.stateDir, 'history'));
@@ -434,7 +480,13 @@ export class Persistence {
       throw error;
     }
     const candidates = files.filter((file) => file.endsWith('.json'));
-    const records = new Array<HistoryRecord>(candidates.length);
+    const validPaths = new Set(candidates.map((file) => path.join(this.stateDir, 'history', file)));
+    for (const [file, entry] of this.historyCache)
+      if (!validPaths.has(file)) {
+        this.historyCache.delete(file);
+        this.historyCacheBytes -= entry.bytes;
+      }
+    const records = new Array<CachedHistory>(candidates.length);
     let cursor = 0;
     await Promise.all(
       Array.from({ length: Math.min(8, candidates.length) }, async () => {
@@ -442,9 +494,7 @@ export class Persistence {
           const index = cursor++;
           const file = candidates[index];
           try {
-            records[index] = validateRecord(
-              JSON.parse(await readUtf8(path.join(this.stateDir, 'history', file))),
-            );
+            records[index] = await this.cachedHistory(path.join(this.stateDir, 'history', file));
           } catch {
             throw new PptdError(
               'RECOVERY_REQUIRED',
@@ -454,7 +504,33 @@ export class Persistence {
         }
       }),
     );
-    return records.sort((a, b) => a.timestamp.localeCompare(b.timestamp));
+    return records.sort(
+      (a, b) =>
+        a.summary.timestamp.localeCompare(b.summary.timestamp) ||
+        a.summary.operationId.localeCompare(b.summary.operationId),
+    );
+  }
+
+  async history(): Promise<HistoryRecord[]> {
+    return structuredClone((await this.historyEntries()).map((entry) => entry.record));
+  }
+
+  async historySummaries(
+    options: { offset?: number; limit?: number } = {},
+  ): Promise<HistorySummary[]> {
+    const { offset = 0, limit } = options;
+    if (
+      !Number.isSafeInteger(offset) ||
+      offset < 0 ||
+      (limit !== undefined && (!Number.isSafeInteger(limit) || limit < 1 || limit > 1000))
+    )
+      throw new PptdError('INVALID_REQUEST', 'History offset and limit must be bounded integers.');
+    const entries = (await this.historyEntries()).filter((entry) => !entry.record.result.noOp);
+    return structuredClone(
+      entries
+        .slice(offset, limit === undefined ? undefined : offset + limit)
+        .map((entry) => entry.summary),
+    );
   }
 
   private async finish(journal: Journal): Promise<void> {
@@ -549,7 +625,7 @@ export class Persistence {
     }
   }
 
-  async commit(record: HistoryRecord): Promise<void> {
+  async commit(record: HistoryRecord, beforeJournal?: () => Promise<void>): Promise<void> {
     validateRecord(record);
     if ((await readOptional(this.journalPath)) !== null)
       throw new PptdError(
@@ -564,6 +640,7 @@ export class Persistence {
           currentRevision: current === null ? null : hashBytes(current),
         });
     }
+    if (beforeJournal) await beforeJournal();
     const journal: Journal = { version: 1, root: this.root, record };
     try {
       await atomicWrite(this.journalPath, `${JSON.stringify(journal)}\n`);

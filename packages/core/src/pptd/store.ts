@@ -58,7 +58,7 @@ import {
   type ArchiveProgress,
   captureProjectArchive as freezeProjectArchive,
 } from './project-archive';
-import { readProjectGuidance } from './project-guidance';
+import { PROJECT_GUIDANCE_FILE, readProjectGuidance } from './project-guidance';
 import { applyProjectOperation, readProjectModel } from './project-model';
 import {
   assertProposalHash,
@@ -67,6 +67,7 @@ import {
 } from './proposal';
 import { applyRecipe, markRecipeElementOverride, removeRecipeSlot } from './recipes';
 import { sectionWithInsertedCover, sectionWithInsertedTitle } from './section-actions';
+import type { SnapshotCursor, SnapshotUpdate } from './snapshot-delta';
 import { knownTimeline, removeTimelineTargets } from './timeline-operations';
 import {
   type AuthorReviewContext,
@@ -103,6 +104,14 @@ export interface OpenPptdOptions {
   onTiming?: (sample: PptdTiming) => void;
 }
 
+export interface ReviewBaselineGuard {
+  epoch: string;
+  manifestRevision: Revision;
+  metadataRevision: Revision | null;
+  pages: Record<string, { pageRevision: Revision; renderRevision: Revision }>;
+  assets: Record<string, Revision | null>;
+}
+
 export interface PptdTiming {
   phase: string;
   durationMs: number;
@@ -129,6 +138,7 @@ interface PageDocument {
   data: PptdPage;
 }
 type AssetHashCache = Map<string, { signature: string; hash: Revision }>;
+type AssetChecks = Map<string, { revision: Revision | null; error?: string }>;
 interface Documents {
   projectGuidance: ProjectAuthoringGuidance;
   manifestSource: string;
@@ -136,6 +146,7 @@ interface Documents {
   metadata: ProjectMetadata;
   pages: Map<string, PageDocument>;
   pageAssets: Map<string, Record<string, Revision | null>>;
+  assetChecks?: AssetChecks;
   diagnostics: Diagnostic[];
 }
 
@@ -151,6 +162,17 @@ interface PreparedTransaction {
 }
 
 const manifestCache = new WeakMap<Documents, { source: string; value: PptdManifest }>();
+const pageHashes = new WeakMap<PageDocument, Revision>();
+const validatedPages = new WeakSet<PageDocument>();
+
+function pageHash(page: PageDocument): Revision {
+  let revision = pageHashes.get(page);
+  if (!revision) {
+    revision = hashBytes(page.source);
+    pageHashes.set(page, revision);
+  }
+  return revision;
+}
 
 function documentManifest(documents: Documents): PptdManifest {
   const cached = manifestCache.get(documents);
@@ -221,7 +243,7 @@ function renderRevision(documents: Documents, pageId: string): Revision | null {
   const page = documents.pages.get(pageId);
   if (!page) return null;
   return hashPayload({
-    pageRevision: hashBytes(page.source),
+    pageRevision: pageHash(page),
     manifestRevision: hashBytes(documents.manifestSource),
     assets: documents.pageAssets.get(pageId) ?? {},
     themeOverride: documents.metadata.slides[pageId]?.themeOverride ?? null,
@@ -257,6 +279,7 @@ async function refreshAssetFingerprints(
   documents: Documents,
   cache: AssetHashCache,
   onTiming?: OpenPptdOptions['onTiming'],
+  checked?: AssetChecks,
 ): Promise<void> {
   const started = performance.now();
   const manifest = documentManifest(documents);
@@ -274,6 +297,8 @@ async function refreshAssetFingerprints(
   }
   const resolved = new Map<string, { revision: Revision | null; error?: string }>(
     await mapConcurrent([...references], async (reference) => {
+      const previous = checked?.get(reference);
+      if (previous) return [reference, previous] as const;
       try {
         return [reference, { revision: await fingerprintAsset(root, reference, cache) }] as const;
       } catch (error) {
@@ -281,6 +306,7 @@ async function refreshAssetFingerprints(
       }
     }),
   );
+  documents.assetChecks = resolved;
   documents.pageAssets = new Map();
   documents.diagnostics = documents.diagnostics.filter((item) => item.code !== 'ASSET_UNAVAILABLE');
   for (const [pageId, assets] of pageReferences) {
@@ -309,7 +335,7 @@ async function refreshAssetFingerprints(
 function revisions(documents: Documents): NewRevisions {
   return {
     pages: Object.fromEntries(
-      [...documents.pages].map(([pageId, page]) => [pageId, hashBytes(page.source)]),
+      [...documents.pages].map(([pageId, page]) => [pageId, pageHash(page)]),
     ),
     manifest: hashBytes(documents.manifestSource),
     metadata: documents.metadataSource === null ? null : hashBytes(documents.metadataSource),
@@ -382,6 +408,11 @@ export class PptdStore {
   private listeners = new Set<(event: DocumentEvent) => void>();
   private documents: Documents;
   private snapshot: DeckSnapshot;
+  private readonly recentSnapshots = new Map<number, DeckSnapshot>();
+  private readonly persistedDirectoryEchoes = new Map<
+    string,
+    { operationId: string; signature: string; paths: string[] }
+  >();
   private readonly pageVersions: PageVersionArchive;
   private readonly checkpoints: PageCheckpointArchive;
 
@@ -398,6 +429,7 @@ export class PptdStore {
   ) {
     this.documents = documents;
     this.snapshot = this.makeSnapshot(documents);
+    this.rememberSnapshot();
     this.pageVersions = new PageVersionArchive(stateDir, readOnly);
     this.checkpoints = new PageCheckpointArchive(root, readOnly);
   }
@@ -592,7 +624,7 @@ export class PptdStore {
     const page = documents.pages.get(pageId);
     if (!page) throw new PptdError('TARGET_NOT_FOUND', `Page ${pageId} is missing.`);
     const identity = documents.metadata.slides[pageId];
-    const pageRevision = hashBytes(page.source);
+    const pageRevision = pageHash(page);
     const currentRenderRevision = renderRevision(documents, pageId) ?? pageRevision;
     const mainPosition = mainPositionForPath(documentManifest(documents).pages, identity.path);
     const sameMetadata = previous && isDeepStrictEqual(previous.metadata, identity);
@@ -663,6 +695,41 @@ export class PptdStore {
   /** Read after all preceding transactions; explicit refreshExternal still scans disk. */
   getCurrentSnapshot(): Promise<DeckSnapshot> {
     return this.enqueue(async () => this.getSnapshot());
+  }
+
+  private rememberSnapshot(): void {
+    this.recentSnapshots.set(this.snapshot.sequence, this.snapshot);
+    while (this.recentSnapshots.size > 8)
+      this.recentSnapshots.delete(this.recentSnapshots.keys().next().value as number);
+  }
+
+  getSnapshotUpdate(cursor: SnapshotCursor): Promise<SnapshotUpdate> {
+    return this.enqueue<SnapshotUpdate>(async () => {
+      const base = this.recentSnapshots.get(cursor.sequence);
+      const current = this.snapshot;
+      if (
+        !base ||
+        cursor.epoch !== current.epoch ||
+        base.manifestRevision !== cursor.manifestRevision ||
+        base.metadataRevision !== cursor.metadataRevision
+      )
+        return { mode: 'full', snapshot: this.getSnapshot() };
+      const oldPages = new Map(base.pages.map((page) => [page.pageId, page]));
+      const pageIds = new Set(current.pages.map((page) => page.pageId));
+      const { pages, ...snapshot } = current;
+      return structuredClone({
+        mode: 'delta',
+        baseSequence: base.sequence,
+        baseManifestRevision: base.manifestRevision,
+        baseMetadataRevision: base.metadataRevision,
+        snapshot,
+        changedPages: pages.filter((page) => oldPages.get(page.pageId) !== page),
+        removedPageIds: base.pages
+          .filter((page) => !pageIds.has(page.pageId))
+          .map((page) => page.pageId),
+        pageOrder: pages.map((page) => page.pageId),
+      });
+    });
   }
 
   captureProjectArchive(
@@ -887,19 +954,22 @@ export class PptdStore {
     }
     const manifestChanged = before.manifest !== after.manifest;
     const metadataChanged = before.metadata !== after.metadata;
-    const changed = Object.keys(changedPages).length > 0 || manifestChanged || metadataChanged;
-    this.documents = documents;
-    if (changed) this.sequence++;
-    if (
-      changed ||
+    const contentChanged =
+      Object.keys(changedPages).length > 0 || manifestChanged || metadataChanged;
+    const changed =
+      contentChanged ||
       !isDeepStrictEqual(this.snapshot.projectGuidance, documents.projectGuidance) ||
       !isDeepStrictEqual(this.snapshot.diagnostics, documents.diagnostics) ||
-      this.snapshot.writable !== (!this.readOnly && !this.closed)
-    )
+      this.snapshot.writable !== (!this.readOnly && !this.closed);
+    this.documents = documents;
+    if (changed) this.sequence++;
+    if (changed) {
       this.snapshot = this.makeSnapshot(documents);
+      this.rememberSnapshot();
+    }
     if (changed)
       this.emit({
-        type,
+        type: contentChanged ? type : 'diagnostic',
         epoch: this.epoch,
         sequence: this.sequence,
         operationId,
@@ -923,7 +993,60 @@ export class PptdStore {
     return this.enqueue(async () => this.refreshExternalNow());
   }
 
+  refreshWatchedPaths(paths: string[]): Promise<void> {
+    return this.enqueue(async () => {
+      if (this.closed) return;
+      const key = (value: string) => {
+        const normalized = value.replaceAll('\\', '/').replace(/^\.\//, '');
+        return process.platform === 'win32' ? normalized.toLowerCase() : normalized;
+      };
+      const sources = new Map<string, string | null>([
+        [key(this.entry), this.documents.manifestSource],
+        [key(METADATA_PATH), this.documents.metadataSource],
+        ...[...this.documents.pages.values()].map((page) => [key(page.path), page.source] as const),
+      ]);
+      const resources = new Set([
+        key(PROJECT_GUIDANCE_FILE),
+        ...[...this.documents.pageAssets.values()].flatMap((assets) =>
+          Object.keys(assets).map(key),
+        ),
+      ]);
+      const matchedSources = new Set<string>();
+      const parents = new Set<string>();
+      for (const file of new Set(paths)) {
+        const relative = path.relative(this.root, file);
+        if (relative.startsWith('..') || path.isAbsolute(relative)) continue;
+        const changed = key(relative);
+        if (!changed || resources.has(changed)) return this.refreshExternalNow();
+        if (sources.has(changed)) {
+          try {
+            const actual = await readOptional(await resolveProjectPath(this.root, relative));
+            if (actual === sources.get(changed)) {
+              matchedSources.add(changed);
+              continue;
+            }
+          } catch {}
+          return this.refreshExternalNow();
+        }
+        if ([...sources.keys(), ...resources].some((tracked) => tracked.startsWith(`${changed}/`)))
+          parents.add(changed);
+      }
+      for (const parent of parents) {
+        const echo = this.persistedDirectoryEchoes.get(parent);
+        // A directory signature alone cannot attest to its children. Only merge an
+        // exact persisted directory generation with all its byte-verified child events.
+        if (
+          !echo ||
+          echo.paths.some((child) => !matchedSources.has(child)) ||
+          (await this.directorySignature(parent)) !== echo.signature
+        )
+          return this.refreshExternalNow();
+      }
+    });
+  }
+
   private async refreshExternalNow(): Promise<void> {
+    this.persistedDirectoryEchoes.clear();
     try {
       if ((await readOptional(path.join(this.stateDir, 'pending.json'))) !== null) {
         if (this.snapshot.diagnostics.some((item) => item.code === 'RECOVERY_REQUIRED')) return;
@@ -972,6 +1095,7 @@ export class PptdStore {
       diagnostics: [diagnostic],
       writable,
     };
+    this.rememberSnapshot();
     this.emit({
       type: 'diagnostic',
       epoch: this.epoch,
@@ -1037,13 +1161,8 @@ export class PptdStore {
     });
   }
 
-  async history(): Promise<HistorySummary[]> {
-    return (await this.persistence.history())
-      .filter((record) => !record.result.noOp)
-      .map(
-        ({ files: _files, request: _request, requestHash: _hash, result: _result, ...summary }) =>
-          summary,
-      );
+  async history(options: { offset?: number; limit?: number } = {}): Promise<HistorySummary[]> {
+    return this.persistence.historySummaries(options);
   }
 
   operationReview(operationId: string, requestedPageId?: string): Promise<OperationReview> {
@@ -1352,64 +1471,131 @@ export class PptdStore {
     });
   }
 
-  preview(request: TransactionRequest): Promise<TransactionPreview> {
+  commitReviewed(
+    request: TransactionRequest,
+    previewHash: string,
+    guard: ReviewBaselineGuard,
+  ): Promise<TransactionResult> {
+    const capturedGuard = structuredClone(guard);
     return this.enqueue(async () => {
-      if (this.closed) throw new PptdError('READ_ONLY', 'This project is closed.');
-      validateTransactionRequest(request);
-      const receipt = await this.persistence.receipt(request.requestId, hashPayload(request));
-      if (receipt)
-        throw new PptdError('INVALID_REQUEST', 'This transaction has already been applied.', {
-          operationId: receipt.operationId,
-        });
-      if ((await readOptional(path.join(this.stateDir, 'pending.json'))) !== null)
-        throw new PptdError(
-          'PENDING_RECOVERY',
-          'Recover the pending transaction before previewing.',
-        );
-      const base = await PptdStore.loadDocuments(
-        this.root,
-        this.entry,
-        this.assetCache,
-        this.documents,
-        this.onTiming,
-      );
-      if (request.deckId !== base.metadata.deckId)
-        throw new PptdError('TARGET_NOT_FOUND', 'The request belongs to another deck.');
-      const plan = await this.prepareTransaction(base, request);
-      const pageIds = new Set(plan.changedPages);
-      for (const pageId of new Set([
-        ...Object.keys(base.metadata.slides),
-        ...Object.keys(plan.documents.metadata.slides),
-      ])) {
-        if (
-          !isDeepStrictEqual(base.metadata.slides[pageId], plan.documents.metadata.slides[pageId])
-        )
-          pageIds.add(pageId);
-      }
-      return createTransactionPreview({
-        request,
-        before: this.makeSnapshot(base),
-        after: this.makeSnapshot(plan.documents),
-        baseline: {
-          ...plan.before,
-          pages: Object.fromEntries(
-            [...pageIds].flatMap((id) =>
-              plan.before.pages[id] ? [[id, plan.before.pages[id]]] : [],
-            ),
-          ),
-        },
-        files: plan.files,
-        pageStates: [...pageIds].flatMap((pageId) => {
-          const before = base.pages.has(pageId) ? this.pageSnapshot(base, pageId) : undefined;
-          const after = plan.documents.pages.has(pageId)
-            ? this.pageSnapshot(plan.documents, pageId)
-            : undefined;
-          return before || after ? [{ pageId, before, after }] : [];
-        }),
-        createdPageIds: plan.createdPages.map((page) => page.pageId),
-        skippedOverrides: plan.skippedOverrides,
-      });
+      assertProposalHash(request, previewHash);
+      return this.commitNow(request, capturedGuard);
     });
+  }
+
+  preview(request: TransactionRequest): Promise<TransactionPreview> {
+    return this.enqueue(async () => (await this.previewNow(request)).preview);
+  }
+
+  previewForReview(request: TransactionRequest): Promise<{
+    preview: TransactionPreview;
+    before: DeckSnapshot;
+    after: DeckSnapshot;
+    guard: ReviewBaselineGuard;
+  }> {
+    return this.enqueue(async () => {
+      const reviewed = await this.previewNow(request, true);
+      const { before, after } = reviewed;
+      const previous = new Map(before.pages.map((page) => [page.pageId, page]));
+      const next = new Map(after.pages.map((page) => [page.pageId, page]));
+      const affected = new Set(
+        [...previous.keys(), ...next.keys()].filter((id) => {
+          const left = previous.get(id);
+          const right = next.get(id);
+          return (
+            before.manifestRevision !== after.manifestRevision ||
+            !left ||
+            !right ||
+            left.pageRevision !== right.pageRevision ||
+            left.renderRevision !== right.renderRevision ||
+            !isDeepStrictEqual(left.metadata, right.metadata)
+          );
+        }),
+      );
+      const guard: ReviewBaselineGuard = {
+        epoch: before.epoch,
+        manifestRevision: before.manifestRevision,
+        metadataRevision: before.metadataRevision,
+        pages: Object.fromEntries(
+          before.pages
+            .filter((page) => affected.has(page.pageId))
+            .map((page) => [
+              page.pageId,
+              { pageRevision: page.pageRevision, renderRevision: page.renderRevision },
+            ]),
+        ),
+        assets: Object.fromEntries(
+          [...before.pages, ...after.pages]
+            .filter((page) => affected.has(page.pageId))
+            .flatMap((page) => Object.entries(page.assetRevisions ?? {})),
+        ),
+      };
+      return structuredClone({ ...reviewed, guard });
+    });
+  }
+
+  private async previewNow(request: TransactionRequest, includeVisualImpacts = false) {
+    if (this.closed) throw new PptdError('READ_ONLY', 'This project is closed.');
+    validateTransactionRequest(request);
+    const receipt = await this.persistence.receipt(request.requestId, hashPayload(request));
+    if (receipt)
+      throw new PptdError('INVALID_REQUEST', 'This transaction has already been applied.', {
+        operationId: receipt.operationId,
+      });
+    if ((await readOptional(path.join(this.stateDir, 'pending.json'))) !== null)
+      throw new PptdError('PENDING_RECOVERY', 'Recover the pending transaction before previewing.');
+    const base = await PptdStore.loadDocuments(
+      this.root,
+      this.entry,
+      this.assetCache,
+      this.documents,
+      this.onTiming,
+    );
+    if (request.deckId !== base.metadata.deckId)
+      throw new PptdError('TARGET_NOT_FOUND', 'The request belongs to another deck.');
+    const plan = await this.prepareTransaction(base, request);
+    const pageIds = new Set(plan.changedPages);
+    for (const pageId of new Set([
+      ...Object.keys(base.metadata.slides),
+      ...Object.keys(plan.documents.metadata.slides),
+    ])) {
+      if (!isDeepStrictEqual(base.metadata.slides[pageId], plan.documents.metadata.slides[pageId]))
+        pageIds.add(pageId);
+    }
+    const before = this.makeSnapshot(base);
+    const after = this.makeSnapshot(plan.documents);
+    if (includeVisualImpacts) {
+      const previous = new Map(before.pages.map((page) => [page.pageId, page]));
+      for (const page of after.pages)
+        if (previous.get(page.pageId)?.renderRevision !== page.renderRevision)
+          pageIds.add(page.pageId);
+      if (before.manifestRevision !== after.manifestRevision)
+        for (const page of [...before.pages, ...after.pages]) pageIds.add(page.pageId);
+    }
+    const preview = createTransactionPreview({
+      request,
+      before,
+      after,
+      baseline: {
+        ...plan.before,
+        pages: Object.fromEntries(
+          [...pageIds].flatMap((id) =>
+            plan.before.pages[id] ? [[id, plan.before.pages[id]]] : [],
+          ),
+        ),
+      },
+      files: plan.files,
+      pageStates: [...pageIds].flatMap((pageId) => {
+        const before = base.pages.has(pageId) ? this.pageSnapshot(base, pageId) : undefined;
+        const after = plan.documents.pages.has(pageId)
+          ? this.pageSnapshot(plan.documents, pageId)
+          : undefined;
+        return before || after ? [{ pageId, before, after }] : [];
+      }),
+      createdPageIds: plan.createdPages.map((page) => page.pageId),
+      skippedOverrides: plan.skippedOverrides,
+    });
+    return { preview, before, after };
   }
 
   async close(): Promise<void> {
@@ -1426,7 +1612,10 @@ export class PptdStore {
     });
   }
 
-  private async commitNow(request: TransactionRequest): Promise<TransactionResult> {
+  private async commitNow(
+    request: TransactionRequest,
+    reviewGuard?: ReviewBaselineGuard,
+  ): Promise<TransactionResult> {
     if (this.readOnly || this.closed)
       throw new PptdError('READ_ONLY', 'This project is not open for writing.');
     validateTransactionRequest(request);
@@ -1449,6 +1638,7 @@ export class PptdStore {
       throw new PptdError('TARGET_NOT_FOUND', 'The request belongs to another deck.');
     await this.captureExternalVersions(base);
     const plan = await this.prepareTransaction(base, request);
+    if (reviewGuard) this.assertReviewGuard(base, reviewGuard);
     const noOp = plan.files.length === 0;
     const operationId = randomUUID();
     const result: TransactionResult = {
@@ -1502,12 +1692,106 @@ export class PptdStore {
       pagePositionsRevision: hashPayload(pagePositions),
     };
     const persistenceStarted = performance.now();
-    await this.persistence.commit(record);
+    await this.persistence.commit(
+      record,
+      reviewGuard ? () => this.assertReviewedBytes(base, reviewGuard) : undefined,
+    );
     reportTiming(this.onTiming, 'commit.persist', persistenceStarted, {
       pages: plan.changedPages.length,
     });
+    await this.rememberWriteDirectories(plan.files, operationId);
     this.replaceDocuments(plan.documents, 'committed', operationId, request.originClientId);
     return structuredClone(result);
+  }
+
+  private async directorySignature(relative: string): Promise<string | null> {
+    try {
+      const directory = await resolveProjectPath(this.root, relative);
+      const stat = await fs.stat(directory, { bigint: true });
+      return stat.isDirectory() ? [stat.dev, stat.ino, stat.mtimeNs, stat.ctimeNs].join('/') : null;
+    } catch {
+      return null;
+    }
+  }
+
+  private async rememberWriteDirectories(files: FileChange[], operationId: string): Promise<void> {
+    const directories = new Map<string, string[]>();
+    for (const file of files) {
+      const relative = file.path.replaceAll('\\', '/');
+      const normalized = process.platform === 'win32' ? relative.toLowerCase() : relative;
+      const parent = path.posix.dirname(normalized);
+      if (parent === '.' || file.after === null) continue;
+      const children = directories.get(parent) ?? [];
+      children.push(normalized);
+      directories.set(parent, children);
+    }
+    await mapConcurrent([...directories], async ([parent, paths]) => {
+      const signature = await this.directorySignature(parent);
+      this.persistedDirectoryEchoes.delete(parent);
+      if (signature) this.persistedDirectoryEchoes.set(parent, { operationId, signature, paths });
+    });
+    while (this.persistedDirectoryEchoes.size > 256)
+      this.persistedDirectoryEchoes.delete(
+        this.persistedDirectoryEchoes.keys().next().value as string,
+      );
+  }
+
+  private assertReviewGuard(base: Documents, guard: ReviewBaselineGuard): void {
+    const conflict = (resource: string) => {
+      throw new PptdError(
+        'REVISION_CONFLICT',
+        'The reviewed content changed. Review a new proposal before accepting.',
+        { resource },
+      );
+    };
+    if (guard.epoch !== this.epoch) conflict('writer epoch');
+    if (guard.manifestRevision !== hashBytes(base.manifestSource)) conflict(this.entry);
+    if (
+      guard.metadataRevision !==
+      (base.metadataSource === null ? null : hashBytes(base.metadataSource))
+    )
+      conflict(METADATA_PATH);
+    for (const [id, expected] of Object.entries(guard.pages)) {
+      const page = base.pages.get(id);
+      if (
+        !page ||
+        pageHash(page) !== expected.pageRevision ||
+        renderRevision(base, id) !== expected.renderRevision
+      )
+        conflict(id);
+    }
+  }
+
+  private async assertReviewedBytes(base: Documents, guard: ReviewBaselineGuard): Promise<void> {
+    const expected = new Map<string, Revision | null>([
+      [this.entry, guard.manifestRevision],
+      [METADATA_PATH, guard.metadataRevision],
+      ...Object.entries(guard.assets),
+    ]);
+    for (const [id, revision] of Object.entries(guard.pages)) {
+      const page = base.pages.get(id);
+      if (!page)
+        throw new PptdError('REVISION_CONFLICT', 'A reviewed page is no longer available.', {
+          pageId: id,
+        });
+      expected.set(page.path, revision.pageRevision);
+    }
+    await mapConcurrent([...expected], async ([relative, revision]) => {
+      const actual = await resolveProjectPath(this.root, relative)
+        .then((file) => fs.readFile(file))
+        .then(hashBytes)
+        .catch(() => null);
+      if (actual !== revision)
+        throw new PptdError(
+          'REVISION_CONFLICT',
+          'A reviewed resource changed before save. Review a new proposal before accepting.',
+          {
+            path: relative,
+            expectedRevision: revision,
+            currentRevision: actual,
+          },
+        );
+    });
   }
 
   private async prepareTransaction(
@@ -1516,7 +1800,13 @@ export class PptdStore {
   ): Promise<PreparedTransaction> {
     const started = performance.now();
     const before = revisions(base);
-    const docs = structuredClone(base);
+    const docs: Documents = {
+      ...base,
+      metadata: structuredClone(base.metadata),
+      pages: new Map(base.pages),
+      pageAssets: new Map(base.pageAssets),
+      diagnostics: [...base.diagnostics],
+    };
     const changedElements = new Map<string, ElementRef>();
     const touchedPages = new Set<string>();
     const relinkedPages = new Set<string>();
@@ -2112,33 +2402,36 @@ export class PptdStore {
       }
     }
     for (const [pageId, page] of docs.pages) {
-      validatePage(page.data);
-      if (
-        touchedPages.has(pageId) &&
-        isRecord(page.data.timeline) &&
-        [1, 2].includes(page.data.timeline.schemaVersion as number)
-      )
-        validatePageAnimation(page.data.timeline, page.data);
-      if (
-        touchedPages.has(pageId) &&
-        isRecord(page.data.transition) &&
-        page.data.transition.schemaVersion === 1
-      )
-        validatePageTransition(page.data.transition);
-      try {
-        expandGroupIds(
-          page.data.elements,
-          page.data.elements
-            .filter((item) => item.elementType === 'group')
-            .map((item) => item.elementId),
-        );
-        for (const element of page.data.elements)
-          owningGroupId(page.data.elements, element.elementId);
-      } catch (error) {
-        throw new PptdError(
-          'INVALID_DOCUMENT',
-          error instanceof Error ? error.message : String(error),
-        );
+      if (!validatedPages.has(page)) {
+        validatePage(page.data);
+        if (
+          touchedPages.has(pageId) &&
+          isRecord(page.data.timeline) &&
+          [1, 2].includes(page.data.timeline.schemaVersion as number)
+        )
+          validatePageAnimation(page.data.timeline, page.data);
+        if (
+          touchedPages.has(pageId) &&
+          isRecord(page.data.transition) &&
+          page.data.transition.schemaVersion === 1
+        )
+          validatePageTransition(page.data.transition);
+        try {
+          expandGroupIds(
+            page.data.elements,
+            page.data.elements
+              .filter((item) => item.elementType === 'group')
+              .map((item) => item.elementId),
+          );
+          for (const element of page.data.elements)
+            owningGroupId(page.data.elements, element.elementId);
+        } catch (error) {
+          throw new PptdError(
+            'INVALID_DOCUMENT',
+            error instanceof Error ? error.message : String(error),
+          );
+        }
+        validatedPages.add(page);
       }
       for (const binding of Object.values(docs.metadata.slides[pageId]?.components ?? {})) {
         if (!isRecord(binding.slots) || !isRecord(binding.overrides))
@@ -2178,7 +2471,13 @@ export class PptdStore {
     docs.diagnostics = docs.diagnostics.filter(
       (item) => item.code !== 'PAGE_MISSING' || !item.pageId || !docs.pages.has(item.pageId),
     );
-    await refreshAssetFingerprints(this.root, docs, this.assetCache, this.onTiming);
+    await refreshAssetFingerprints(
+      this.root,
+      docs,
+      this.assetCache,
+      this.onTiming,
+      base.assetChecks,
+    );
     const files: FileChange[] = [];
     for (const [pageId, page] of docs.pages) {
       const original = base.pages.get(pageId);

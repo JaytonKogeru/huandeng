@@ -3,7 +3,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
-const { createProject } = require('./project.cjs');
+const { createProject, projectLocation } = require('./project.cjs');
 const { markProjectFolder } = require('./project-folder.cjs');
 let temporary: string;
 
@@ -21,6 +21,36 @@ afterEach(async () => {
 });
 
 describe('new project directory', () => {
+  it('previews a named folder and rejects traversal and Windows reserved names', () => {
+    expect(projectLocation(temporary, '研究 project')).toEqual({
+      name: '研究 project',
+      root: path.join(temporary, '研究 project'),
+      entry: path.join(temporary, '研究 project', 'deck.pptd'),
+    });
+    for (const name of ['../other', 'a/b', 'a\\b', '.', 'CON', 'NUL.txt', 'trailing.', 'bad?', ''])
+      expect(() => projectLocation(temporary, name)).toThrow();
+  });
+
+  it('creates an independent practice project with original assets and editable pages', async () => {
+    const entry = await createProject(path.join(temporary, 'Practice.pptd'), {
+      template: 'guide',
+      locale: 'en',
+      folderMarker: { platform: 'linux' },
+    });
+    const manifest = JSON.parse(await fs.readFile(entry, 'utf8'));
+    expect(manifest.pages).toHaveLength(3);
+    const root = path.dirname(entry);
+    const first = JSON.parse(await fs.readFile(path.join(root, manifest.pages[0]), 'utf8'));
+    expect(
+      first.elements.find((element: { elementId: string }) => element.elementId === 'task').content
+        .text,
+    ).toContain('Replace this sentence');
+    expect(await fs.readFile(path.join(root, 'media/practice.svg'), 'utf8')).toContain('<svg');
+    await expect(
+      createProject(path.join(temporary, 'Practice.pptd'), { template: 'guide' }),
+    ).rejects.toThrow();
+    expect(JSON.parse(await fs.readFile(entry, 'utf8'))).toEqual(manifest);
+  });
   it('creates a complete editable folder, with manifest and local authoring guidance', async () => {
     const entry = await createProject(path.join(temporary, '研究 & design.pptd'), {
       folderMarker: { platform: 'linux' },

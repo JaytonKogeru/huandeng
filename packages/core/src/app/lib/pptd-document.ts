@@ -20,6 +20,20 @@ export type PageDraft = {
   conflict?: string;
 };
 
+export type DraftConflictDetails = {
+  local: PageSnapshot;
+  remote?: PageSnapshot;
+  conflicts: {
+    elementId?: string;
+    field: string;
+    reason: 'changed' | 'missing' | 'components';
+    base: unknown;
+    local: unknown;
+    remote: unknown;
+  }[];
+  canRebase: boolean;
+};
+
 export type PptdClientState = {
   snapshot: PptdSession | null;
   drafts: Record<string, PageDraft>;
@@ -239,6 +253,7 @@ export class PptdDocumentClient {
   private retiredEpochs = new Set<string>();
   private refreshing: Promise<void> | null = null;
   private projections = new WeakMap<PageDraft, PageSnapshot>();
+  private discardedDrafts = new Map<string, PageDraft>();
   private state: PptdClientState = {
     snapshot: null,
     drafts: {},
@@ -355,7 +370,7 @@ export class PptdDocumentClient {
       const ticket = ++this.refreshTicket;
       try {
         const snapshot = await (kind === 'committed' && this.backend.getCommittedSnapshot
-          ? this.backend.getCommittedSnapshot()
+          ? this.backend.getCommittedSnapshot(this.state.snapshot ?? undefined)
           : this.backend.getSnapshot());
         if (ticket !== this.refreshTicket || this.state.saving) continue;
         if (kind === 'committed' && snapshot.epoch !== this.state.snapshot?.epoch) {
@@ -598,8 +613,129 @@ export class PptdDocumentClient {
       return;
     this.clearTimer(pageId);
     const drafts = { ...this.state.drafts };
+    if (drafts[pageId]) {
+      this.discardedDrafts.delete(pageId);
+      this.discardedDrafts.set(pageId, structuredClone(drafts[pageId]));
+      while (this.discardedDrafts.size > 10)
+        this.discardedDrafts.delete(this.discardedDrafts.keys().next().value as string);
+    }
     delete drafts[pageId];
     this.publish({ drafts, error: null });
+  }
+
+  hasDiscardedDraft(pageId: string): boolean {
+    return this.discardedDrafts.has(pageId);
+  }
+
+  restoreDiscardedDraft(pageId: string): void {
+    const draft = this.discardedDrafts.get(pageId);
+    if (!draft || this.state.drafts[pageId] || this.state.saving || this.pending) return;
+    this.discardedDrafts.delete(pageId);
+    const drafts = { ...this.state.drafts, [pageId]: draft };
+    if (this.state.snapshot) this.acceptSnapshot(this.state.snapshot, { drafts });
+    else this.publish({ drafts });
+  }
+
+  conflictDetails(pageId: string): DraftConflictDetails | null {
+    const draft = this.state.drafts[pageId];
+    if (!draft) return null;
+    const remote = this.state.snapshot?.pages.find((page) => page.pageId === pageId);
+    const conflicts: DraftConflictDetails['conflicts'] = [];
+    for (const [elementId, fields] of Object.entries(draft.fields)) {
+      const before = draft.base.data.elements.find((element) => element.elementId === elementId);
+      const after = remote?.data.elements.find((element) => element.elementId === elementId);
+      for (const [field, local] of Object.entries(fields)) {
+        const base = fieldValue(before, field);
+        const latest = fieldValue(after, field);
+        if (!after || (!equal(base, latest) && !equal(local, latest)))
+          conflicts.push({
+            elementId,
+            field,
+            reason: after ? 'changed' : 'missing',
+            base,
+            local,
+            remote: latest,
+          });
+      }
+    }
+    if (
+      draft.notes !== undefined &&
+      !equal(draft.base.data.notes, remote?.data.notes) &&
+      !equal(draft.notes, remote?.data.notes)
+    )
+      conflicts.push({
+        field: 'notes',
+        reason: remote ? 'changed' : 'missing',
+        base: draft.base.data.notes,
+        local: draft.notes,
+        remote: remote?.data.notes,
+      });
+    if (
+      this.state.snapshot?.metadataRevision !== draft.metadataRevision &&
+      (touchesComponent(draft) || (remote && touchesComponent({ ...draft, base: remote })))
+    )
+      conflicts.push({
+        field: 'components',
+        reason: 'components',
+        base: draft.base.metadata.components,
+        local: draft.base.metadata.components,
+        remote: remote?.metadata.components,
+      });
+    return {
+      local: projectDraft(draft),
+      remote,
+      conflicts,
+      canRebase: !!remote && !conflicts.some((conflict) => conflict.reason !== 'changed'),
+    };
+  }
+
+  async rebaseDraftLatest(
+    pageId: string,
+    options: {
+      expectedPageRevision: string;
+      expectedMetadataRevision: string | null;
+      keepConflictingFields?: boolean;
+    },
+  ): Promise<TransactionResult | null> {
+    this.clearTimer(pageId);
+    if (this.state.saving || this.pending)
+      throw new PptdClientError('SAVE_IN_PROGRESS', '先确认正在进行的保存，草稿已保留。');
+    if (this.state.recoveryRequired) throw recoveryNeeded();
+    this.interruptRefresh();
+    const latest = await this.backend.getSnapshot();
+    if (this.state.saving || this.pending)
+      throw new PptdClientError('SAVE_IN_PROGRESS', '先确认正在进行的保存，草稿已保留。');
+    this.acceptSnapshot(latest);
+    const snapshot = this.state.snapshot;
+    const draft = this.state.drafts[pageId];
+    const details = this.conflictDetails(pageId);
+    const remote = details?.remote;
+    if (!draft) return null;
+    if (
+      !details ||
+      !snapshot ||
+      !remote ||
+      remote.pageRevision !== options.expectedPageRevision ||
+      snapshot.metadataRevision !== options.expectedMetadataRevision
+    )
+      throw new PptdClientError('REVISION_CONFLICT', '版本再次变化，请重新查看差异。');
+    if (!details.canRebase)
+      throw new PptdClientError('REVISION_CONFLICT', '对象或组件已变化，草稿已保留，请分别处理。');
+    if (details.conflicts.length && !options.keepConflictingFields)
+      throw new PptdClientError('REVISION_CONFLICT', '相同字段存在不同修改，请先明确选择。');
+    this.publish({
+      drafts: {
+        ...this.state.drafts,
+        [pageId]: {
+          ...draft,
+          base: remote,
+          metadataRevision: snapshot.metadataRevision,
+          conflict: undefined,
+        },
+      },
+      error: null,
+    });
+    return this.flushPage(pageId);
   }
 
   async flushPage(pageId: string): Promise<TransactionResult | null> {
@@ -753,7 +889,8 @@ export class PptdDocumentClient {
           : await this.backend.commit(pending.request));
       pending.result = result;
       const snapshot = this.newestSnapshot(
-        await (this.backend.getCommittedSnapshot?.() ?? this.backend.getSnapshot()),
+        await (this.backend.getCommittedSnapshot?.(this.state.snapshot ?? undefined) ??
+          this.backend.getSnapshot()),
       );
       const drafts = { ...this.state.drafts };
       if (pending.pageId && pending.sent) {

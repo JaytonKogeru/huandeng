@@ -36,7 +36,7 @@ When present in the advertised tool list, `huandeng_asset_import` imports an ori
 
 `huandeng_editor_capture` captures the actual complete web Editor in an isolated browser, using existing page/object IDs and enumerated view, sidebar, Inspector, language and viewport choices. It blocks writes and global human-selection broadcasts, then imports the PNG through that same writer. It accepts no JavaScript, arbitrary URL, file destination or click script. Native Electron dialogs such as Agent setup are outside this capture interface. Management views retain their real Inspector visibility. Each author chooses the source and state; no prepared image collection is supplied.
 
-These tools can connect to an existing compatible 0.19 writer with a new MCP CLI. A failed network or browser action remains an explicit capability failure; it does not authorize changes to permissions or a different workstation.
+Editor and plugin 0.23 use local protocol 2. Upgrade the matching Editor, CLI and plugin together, then reconnect the intended Project. Old discovery records are rejected explicitly; there is no fallback to an anonymous session. A failed network or browser action remains an explicit capability failure; it does not authorize changes to permissions or a different workstation.
 
 ### Codex
 
@@ -109,6 +109,14 @@ huandeng --entry /path/deck.pptd apply /path/proposal.json --preview-hash sha256
 huandeng --entry /path/deck.pptd review RETURNED_OPERATION_ID --page PAGE_UUID
 huandeng --entry /path/deck.pptd render PAGE_UUID
 ```
+
+### Optional review in the Editor
+
+For a user-requested review before saving, use `huandeng --entry /path/deck.pptd propose /path/transaction.json --title "Review title"`. This saves a pending proposal and leaves project documents unchanged. `proposals` lists records; `proposals PROPOSAL_ID` reads one without receiving approval authority.
+
+The user opens Activity → Review proposals to compare actual before/after slides, Notes, fields and live/pinned uses. Accepting runs the same shared writer with the reviewed page and asset baseline. Rejecting leaves the document unchanged. Independent page patches or Notes may be selected as whole page groups, producing a new preview that must be reviewed separately. Structural changes stay together. Split proposals whose affected pages exceed the complete review limit.
+
+A changed Project, writer session or referenced resource requires a fresh proposal with a new requestId. The Editor binds its one-use acceptance record to the selected proposal and writer; an Agent cannot manufacture that record by supplying an actor or approvedBy string. Ordinary authorized preview/apply remains available. See [review and conflict guidance](https://github.com/JaytonKogeru/huandeng/blob/editor-v0.23.0/docs/PROPOSAL-REVIEW.md).
 
 ## Tool surface
 

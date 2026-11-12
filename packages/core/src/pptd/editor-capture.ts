@@ -1,6 +1,8 @@
 import type { Browser, Page } from 'playwright';
+import { connectClient } from './client';
 import { captureViewports, editorCaptureOptions } from './editor-capture-options';
 import { openBrowser } from './export-environment';
+import type { SessionCapability } from './session-authority';
 import { type DeckSnapshot, PptdError } from './types';
 
 async function identityControl(
@@ -39,17 +41,30 @@ export async function captureEditor(
   const url = new URL('/huandeng', origin);
   url.searchParams.set('page', options.pageId);
   let browser: Browser | undefined;
+  let capability: SessionCapability | undefined;
   const timeout = setTimeout(() => {
     void browser?.close();
   }, 45000);
   timeout.unref();
   try {
+    const client = await connectClient({ entry: snapshot.entry, url: serverUrl });
+    capability = await client.request<SessionCapability>('/auth/capture', {});
+    if (capability.role !== 'capture' || capability.epoch !== snapshot.epoch)
+      throw new PptdError(
+        'REVISION_CONFLICT',
+        'Reconnect to the current Project before capturing.',
+      );
     browser = await openBrowser();
     const context = await browser.newContext({
       viewport: captureViewports[options.viewport],
       deviceScaleFactor: 2,
       serviceWorkers: 'block',
     });
+    await context.addInitScript((value) => {
+      (
+        window as Window & { __HUANDENG_EXPORT_AUTH__?: SessionCapability }
+      ).__HUANDENG_EXPORT_AUTH__ = value;
+    }, capability);
     await context.addInitScript((locale) => {
       localStorage.setItem('huandeng:ui-locale', locale);
     }, options.locale);
@@ -58,7 +73,11 @@ export async function captureEditor(
     await context.route('**/*', async (route) => {
       const request = route.request();
       const target = new URL(request.url());
-      if (target.origin === origin && ['GET', 'HEAD'].includes(request.method())) {
+      if (
+        target.origin === origin &&
+        (['GET', 'HEAD'].includes(request.method()) ||
+          (request.method() === 'POST' && target.pathname === '/__pptd/auth/resources'))
+      ) {
         await route.continue();
       } else {
         if (target.origin === origin && target.pathname === '/__pptd/selection')
@@ -195,5 +214,12 @@ export async function captureEditor(
   } finally {
     clearTimeout(timeout);
     await browser?.close();
+    if (capability)
+      await fetch(`${origin}/__pptd/auth/capture/revoke`, {
+        method: 'POST',
+        headers: { 'x-huandeng-token': capability.token },
+        redirect: 'error',
+        signal: AbortSignal.timeout(2000),
+      }).catch(() => {});
   }
 }

@@ -129,6 +129,41 @@ afterEach(async () => {
 
 // Real Git process startup on Windows exceeds the default five-second test budget.
 describe('scoped Git checkpoints', { timeout: 30_000 }, () => {
+  it('never executes a repository fsmonitor helper while opening or checkpointing', async () => {
+    const { root, snapshot } = await fixture();
+    const helper = path.join(root, '.git', 'fsmonitor-probe.sh');
+    const marker = path.join(root, '.git', 'fsmonitor-marker');
+    await fs.writeFile(helper, '#!/bin/sh\nprintf called > .git/fsmonitor-marker\nprintf "\\0"\n', {
+      mode: 0o755,
+    });
+    await git(root, ['config', 'core.fsmonitor', helper.split(path.sep).join('/')]);
+    await git(root, ['status', '--porcelain=v1']);
+    expect(await fs.readFile(marker, 'utf8')).toBe('called');
+    await fs.rm(marker);
+    await registerCheckpointRoot(root);
+    await savedPage(root, snapshot, 'Safe checkpoint');
+    expect(await checkpoint(root, snapshot, 'Safe checkpoint')).toMatchObject({
+      status: 'committed',
+    });
+    await expect(fs.access(marker)).rejects.toMatchObject({ code: 'ENOENT' });
+  });
+
+  it('defers configured filter commands before status can invoke them', async () => {
+    const { root, snapshot } = await fixture();
+    await write(root, '.gitattributes', '*.page filter=fixture\n');
+    await git(root, ['add', '--', '.gitattributes']);
+    await git(root, ['commit', '--quiet', '-m', 'Filter attributes']);
+    const marker = path.join(root, '.git', 'filter-marker');
+    await git(root, ['config', 'filter.fixture.clean', 'printf called > .git/filter-marker; cat']);
+    await savedPage(root, snapshot, 'Changed before opening');
+    await registerCheckpointRoot(root);
+    const result = await checkpoint(root, snapshot, 'Must use normal Git workflow');
+    expect(result).toMatchObject({ status: 'deferred', code: 'UNCLEAN_BASELINE' });
+    if (result.status !== 'deferred') throw new Error('Expected deferred checkpoint');
+    expect(result.reason).toContain('dirty');
+    await expect(fs.access(marker)).rejects.toMatchObject({ code: 'ENOENT' });
+  });
+
   it('commits only accumulated successful saves and updates the HEAD baseline after each commit', async () => {
     const { root, snapshot } = await fixture();
     const initial = (await git(root, ['rev-parse', 'HEAD'])).trim();

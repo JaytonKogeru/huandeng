@@ -134,7 +134,33 @@ export const workflowChinese = {
   Section: '章节',
   'Slide ID': '页面短码',
   Position: '位置',
-  '连接 Agent': '助手连接',
+  '连接 Agent': '助手接入',
+  'Font check': '字体检查',
+  'Window layout': '窗口布局',
+  'Review conflicting changes': '审阅冲突修改',
+  'Saving is paused. Compare your draft with the latest saved slide before choosing what to keep.':
+    '保存已暂停。对照本地草稿与最新保存的页面，再选择保留哪些修改。',
+  'Your draft': '本地草稿',
+  'Latest saved version': '最新保存版本',
+  'This slide was removed from the project.': '此页面已从项目中移除。',
+  'Your changes affect independent fields and can be merged with the saved version.':
+    '你的修改涉及独立字段，可以与已保存版本合并。',
+  'Fields requiring a choice': '需要选择的字段',
+  Field: '字段',
+  'An object was removed or its shared layout changed. Copy your draft before rebuilding these changes on the latest slide.':
+    '对象已被移除或其共享布局已改变。请先复制草稿，再在最新页面上重新编辑。',
+  'Keep my values for the overlapping fields shown above. Preserve other saved changes.':
+    '上方重叠字段使用我的值，同时保留其他已保存修改。',
+  'Using the saved version keeps a recoverable copy of this draft for this session.':
+    '采用已保存版本后，本次会话仍保留可恢复的草稿副本。',
+  'Copy draft': '复制草稿',
+  'Use saved version': '采用已保存版本',
+  'Keep my changes': '保留我的修改',
+  'Review differences': '看差异',
+  'A copy of your previous draft is available in this session.': '本次会话保留着上一份草稿副本。',
+  'Recover draft': '恢复草稿',
+  'Panel visibility, sizes and Notes dock apply to every project in this window.':
+    '面板显示、宽度与备注停靠位置应用于此窗口中的所有项目。',
   技术检查: '检查',
   文件: '文件',
   页面: '页面',

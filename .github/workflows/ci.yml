@@ -1,11 +1,15 @@
-name: HUANDENG Core CI
+name: HUANDENG CI
 
 on:
   push:
     branches: [main]
+    tags: ['editor-v*']
   pull_request:
     branches: [main]
   workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   core:
@@ -18,7 +22,71 @@ jobs:
           node-version: 22
           cache: pnpm
       - run: pnpm install --frozen-lockfile
+      - run: pnpm check:release
       - run: pnpm check
       - run: pnpm --filter @open-slide/core typecheck
       - run: pnpm exec vitest run --project unit
       - run: pnpm --filter @open-slide/core build
+      - run: pnpm test:native
+
+  windows-package:
+    runs-on: windows-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: node packages/desktop/node_modules/electron/install.js
+      - run: pnpm check:release
+      - run: pnpm --filter @open-slide/core build
+      - run: pnpm test:native
+      - run: pnpm exec vitest run --project unit packages/desktop
+      - name: Validate current-user install, repair and removal
+        shell: powershell
+        run: ./scripts/Test-HuandengInstallation.ps1
+      - name: Package from the current source identity
+        shell: powershell
+        run: |
+          $official = "${{ startsWith(github.ref, 'refs/tags/editor-v') }}" -eq "true"
+          ./scripts/Package-Huandeng.ps1 -OutputDirectory "$PWD/dist/Windows 验收/HUANDENG Editor" -Official:$official
+      - name: Verify the relocated Windows package
+        shell: pwsh
+        run: node scripts/verify-windows-release.mjs "$PWD/dist/Windows 验收/HUANDENG Editor/HUANDENG Editor.exe"
+      - name: Verify native review and workspace workflows
+        shell: pwsh
+        run: node scripts/verify-upgrade-workflows.mjs "$PWD/dist/Windows 验收/HUANDENG Editor/HUANDENG Editor.exe"
+      - name: Archive package and checksums
+        shell: pwsh
+        run: |
+          $version = (Get-Content packages/desktop/release.json -Raw | ConvertFrom-Json).version
+          $archive = "$PWD/dist/HUANDENG-Editor-$version-win32-x64.zip"
+          Compress-Archive -LiteralPath "$PWD/dist/Windows 验收/HUANDENG Editor" -DestinationPath $archive -CompressionLevel Optimal
+          $digest = (Get-FileHash -LiteralPath $archive -Algorithm SHA256).Hash.ToLowerInvariant()
+          [System.IO.File]::WriteAllText("$PWD/dist/SHA256SUMS.txt", "$digest  $([System.IO.Path]::GetFileName($archive))" + [Environment]::NewLine)
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: windows-release-evidence
+          include-hidden-files: true
+          path: |
+            .verification/windows-release-*/result.json
+            .verification/windows-release-*/*.png
+            .verification/windows-release-*/science.pdf
+            .verification/windows-release-*/science.pptx
+            .verification/upgrade-workflows-*/report.json
+            .verification/upgrade-workflows-*/*.png
+            .verification/installer-contract-*/result.json
+            dist/Windows 验收/HUANDENG Editor/huandeng-build.json
+          if-no-files-found: warn
+      - uses: actions/upload-artifact@v4
+        with:
+          name: huandeng-windows-package
+          path: |
+            dist/HUANDENG-Editor-*-win32-x64.zip
+            dist/SHA256SUMS.txt

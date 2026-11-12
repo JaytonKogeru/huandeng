@@ -32,6 +32,7 @@ const subscribe = (channel, callback) => {
 
 contextBridge.exposeInMainWorld('huandengDesktop', {
   platform: process.platform,
+  session: () => ipcRenderer.invoke('huandeng:session'),
   workspaceTabs: true,
   getWorkspace: () => ipcRenderer.invoke('huandeng:get-workspace'),
   showApplicationMenu: () => ipcRenderer.invoke('huandeng:show-application-menu'),
@@ -51,6 +52,7 @@ contextBridge.exposeInMainWorld('huandengDesktop', {
   onFullscreenChanged: (callback) => subscribe('huandeng:fullscreen-changed', callback),
   getWorkspaceLayout: (clientId) => ipcRenderer.invoke('huandeng:get-workspace-layout', clientId),
   setWorkspaceLayout: (value) => ipcRenderer.invoke('huandeng:set-workspace-layout', value),
+  onWorkspaceLayoutChanged: (callback) => subscribe('huandeng:workspace-layout-changed', callback),
   getLocale: () => ipcRenderer.invoke('huandeng:get-locale'),
   setLocale: (locale) => ipcRenderer.invoke('huandeng:set-locale', locale),
   onLocaleChanged: (callback) => subscribe('huandeng:locale-changed', callback),

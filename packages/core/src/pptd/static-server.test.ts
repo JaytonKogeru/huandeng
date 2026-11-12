@@ -3,6 +3,7 @@ import fs from 'node:fs/promises';
 import { get } from 'node:http';
 import path from 'node:path';
 import { afterEach, describe, expect, it, vi } from 'vitest';
+import { readSessionDiscovery } from './client';
 import { hashBytes } from './persistence';
 import { projectTestDirectory } from './project-directory.test-utils';
 import { createPptdStaticServer } from './static-server';
@@ -11,6 +12,19 @@ import type { DeckSnapshot, DocumentEvent, TransactionRequest } from './types';
 
 const temporary: string[] = [];
 const servers: Awaited<ReturnType<typeof createPptdStaticServer>>[] = [];
+const tokens = new Map<string, string>();
+const nativeFetch = globalThis.fetch;
+const fetch: typeof globalThis.fetch = async (input, options) => {
+  const url = new URL(String(input));
+  const headers = new Headers(options?.headers);
+  if (
+    (!options?.method || options.method === 'GET') &&
+    !headers.has('x-huandeng-token') &&
+    tokens.has(url.origin)
+  )
+    headers.set('x-huandeng-token', tokens.get(url.origin) ?? '');
+  return nativeFetch(input, { ...options, headers });
+};
 const originalPage =
   'elements:\n  - elementId: title\n    elementType: text\n    bounds: [20, 20, 300, 40]\n    content: { text: Original }\n  - elementId: figure\n    elementType: image\n    src: media/figure.svg\nnotes: Original notes\n';
 
@@ -50,6 +64,8 @@ async function fixture() {
   vi.stubEnv('HUANDENG_RUNTIME_DIR', path.join(directory, 'runtime'));
   const server = await createPptdStaticServer({ clientRoot, port: 0 });
   servers.push(server);
+  const discovery = await readSessionDiscovery({ entry: entryPath, url: server.url });
+  tokens.set(server.url, discovery.agentToken);
   const session = (await (await fetch(`${server.url}/__pptd/session`)).json()) as DeckSnapshot & {
     sessionToken: string;
   };
@@ -77,6 +93,192 @@ function eventReader(reader: ReadableStreamDefaultReader<Uint8Array>) {
 }
 
 describe('HUANDENG production document server', () => {
+  it('requires authenticated private reads and issues UI credentials only to the local launcher', async () => {
+    const { server, entryPath, session } = await fixture();
+    const uiDocument = await nativeFetch(`${server.url}/huandeng`);
+    expect(uiDocument.headers.get('referrer-policy')).toBe('no-referrer');
+    expect(uiDocument.headers.get('x-frame-options')).toBe('DENY');
+    expect(uiDocument.headers.get('content-security-policy')).toContain("frame-ancestors 'none'");
+    for (const route of ['/session', '/current', '/project', '/activity', '/history', '/selection'])
+      expect((await nativeFetch(`${server.url}/__pptd${route}`)).status).toBe(403);
+    expect(await (await nativeFetch(`${server.url}/__pptd/health`)).json()).toEqual({
+      ready: true,
+      desktopProtocol: 2,
+    });
+    expect(
+      (
+        await nativeFetch(`${server.url}/__pptd/auth/ui`, {
+          method: 'POST',
+          headers: { 'x-huandeng-launcher': session.sessionToken },
+        })
+      ).status,
+    ).toBe(403);
+    const record = await readSessionDiscovery({ entry: entryPath });
+    const launch = await (
+      await nativeFetch(`${server.url}/__pptd/auth/launch`, {
+        method: 'POST',
+        headers: { 'x-huandeng-launcher': record.launcherToken },
+      })
+    ).json();
+    const exchange = () =>
+      nativeFetch(`${server.url}/__pptd/auth/exchange`, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ ticket: launch.ticket }),
+      });
+    const replies = await Promise.all([exchange(), exchange()]);
+    expect(replies.map((reply) => reply.status).sort()).toEqual([200, 403]);
+    const uiResponse = replies.find((reply) => reply.status === 200);
+    if (!uiResponse) throw new Error('The one-time launch was not accepted.');
+    const ui = await uiResponse.json();
+    expect(ui.role).toBe('ui');
+    const current = await nativeFetch(`${server.url}/__pptd/current`, {
+      headers: { 'x-huandeng-token': ui.token },
+    });
+    expect(current.status).toBe(200);
+    expect((await current.json()).sessionToken).toBe(ui.token);
+  });
+
+  it('serves SVG images with document execution isolation and narrowly scoped read tickets', async () => {
+    const { server, session } = await fixture();
+    const revision = hashBytes(Buffer.from('<svg>before</svg>'));
+    const resources = await nativeFetch(`${server.url}/__pptd/auth/resources`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', 'x-huandeng-token': session.sessionToken },
+      body: JSON.stringify({
+        resources: [{ route: '/asset', path: 'media/figure.svg', revision }],
+      }),
+    });
+    const [ticket] = await resources.json();
+    const url = `${server.url}/__pptd/asset?path=media%2Ffigure.svg&ticket=${ticket.ticket}`;
+    const image = await nativeFetch(url);
+    expect(image.status).toBe(200);
+    expect(image.headers.get('content-type')).toContain('image/svg+xml');
+    expect(image.headers.get('content-security-policy')).toContain("script-src 'none'");
+    expect(image.headers.get('content-security-policy')).toContain('sandbox');
+    expect((await nativeFetch(url.replace('figure.svg', 'other.svg'))).status).toBe(403);
+    expect((await nativeFetch(`${server.url}/__pptd/session?ticket=${ticket.ticket}`)).status).toBe(
+      403,
+    );
+    expect((await nativeFetch(url, { method: 'POST' })).status).toBe(403);
+  });
+
+  it('allows authorized capture reads while denying all document mutations and revoking its resources', async () => {
+    const { server, session } = await fixture();
+    const capture = await (
+      await nativeFetch(`${server.url}/__pptd/auth/capture`, {
+        method: 'POST',
+        headers: { 'x-huandeng-token': session.sessionToken },
+      })
+    ).json();
+    expect(capture.role).toBe('capture');
+    const headers = { 'content-type': 'application/json', 'x-huandeng-token': capture.token };
+    expect((await nativeFetch(`${server.url}/__pptd/current`, { headers })).status).toBe(200);
+    for (const route of [
+      '/transactions',
+      '/recover',
+      '/selection',
+      '/auth/capture',
+      '/proposals/p/decision',
+    ])
+      expect(
+        (await nativeFetch(`${server.url}/__pptd${route}`, { method: 'POST', headers, body: '{}' }))
+          .status,
+      ).toBe(403);
+    const minted = await nativeFetch(`${server.url}/__pptd/auth/resources`, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({ resources: [{ route: '/asset', path: 'media/figure.svg' }] }),
+    });
+    const [ticket] = await minted.json();
+    const url = `${server.url}/__pptd/asset?path=media%2Ffigure.svg&ticket=${ticket.ticket}`;
+    expect((await nativeFetch(url)).status).toBe(200);
+    expect(
+      (await nativeFetch(`${server.url}/__pptd/auth/capture/revoke`, { method: 'POST', headers }))
+        .status,
+    ).toBe(200);
+    expect((await nativeFetch(url)).status).toBe(403);
+    expect((await nativeFetch(`${server.url}/__pptd/current`, { headers })).status).toBe(403);
+  });
+
+  it('keeps missing images diagnosable while authorizing available resources', async () => {
+    const { server, session } = await fixture();
+    const response = await nativeFetch(`${server.url}/__pptd/auth/resources`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', 'x-huandeng-token': session.sessionToken },
+      body: JSON.stringify({
+        resources: [
+          { route: '/asset', path: 'media/missing.svg' },
+          { route: '/asset', path: 'media/figure.svg' },
+        ],
+      }),
+    });
+    expect(response.status).toBe(200);
+    expect(await response.json()).toMatchObject([
+      { route: '/asset', path: 'media/figure.svg', revision: expect.stringMatching(/^sha256:/) },
+    ]);
+  });
+
+  it('requires an actual UI capability for human approval and consumes the review nonce once', async () => {
+    const { server, entryPath, session } = await fixture();
+    const page = session.pages[0];
+    const agentHeaders = {
+      'content-type': 'application/json',
+      'x-huandeng-token': session.sessionToken,
+    };
+    const post = (route: string, body: unknown, headers = agentHeaders) =>
+      nativeFetch(server.url + '/__pptd' + route, {
+        method: 'POST',
+        headers,
+        body: JSON.stringify(body),
+      });
+    const transaction: TransactionRequest = {
+      requestId: randomUUID(),
+      deckId: session.deckId,
+      actor: 'http-proposal-test',
+      expected: { pages: { [page.pageId]: page.pageRevision } },
+      operations: [{ op: 'page.notes.set', pageId: page.pageId, text: 'Approved in Editor' }],
+    };
+    const preview = await (await post('/proposals/preview', { transaction })).json();
+    const proposal = await (
+      await post('/proposals', { transaction, previewHash: preview.previewHash })
+    ).json();
+    const endpoint = '/proposals/' + proposal.id;
+    const agentDetail = await (
+      await nativeFetch(server.url + '/__pptd' + endpoint, { headers: agentHeaders })
+    ).json();
+    expect(agentDetail.approvalNonce).toBeUndefined();
+    const discovery = await readSessionDiscovery({ entry: entryPath });
+    const ui = await (
+      await nativeFetch(server.url + '/__pptd/auth/ui', {
+        method: 'POST',
+        headers: { 'x-huandeng-launcher': discovery.launcherToken },
+      })
+    ).json();
+    const uiHeaders = { 'content-type': 'application/json', 'x-huandeng-token': ui.token };
+    const detail = await (
+      await nativeFetch(server.url + '/__pptd' + endpoint, { headers: uiHeaders })
+    ).json();
+    const decision = {
+      decision: 'accept',
+      previewHash: detail.previewHash,
+      epoch: detail.epoch,
+      approvalNonce: detail.approvalNonce,
+    };
+    expect((await post(endpoint + '/decision', decision)).status).toBe(403);
+    const accepted = await post(endpoint + '/decision', decision, uiHeaders);
+    expect(accepted.status).toBe(200);
+    expect(await accepted.json()).toMatchObject({
+      status: 'accepted',
+      approval: { source: 'editor-ui' },
+    });
+    expect((await post(endpoint + '/decision', decision, uiHeaders)).status).toBe(400);
+    const snapshot = await (
+      await nativeFetch(server.url + '/__pptd/current', { headers: agentHeaders })
+    ).json();
+    expect(snapshot.pages[0].data.notes).toBe('Approved in Editor');
+  });
+
   it('serves exact read-only operation review and rejects IDs from another Project', async () => {
     const { server, session } = await fixture();
     const pageId = session.pages[0].pageId;

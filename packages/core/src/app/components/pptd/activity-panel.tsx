@@ -16,6 +16,7 @@ export function PptdActivityPanel({
   activity,
   pageId,
   onClearPage,
+  onProposals,
 }: {
   backend: PptdBackend;
   deckId: string;
@@ -26,6 +27,7 @@ export function PptdActivityPanel({
   activity?: ProjectActivityState;
   pageId?: string | null;
   onClearPage?: () => void;
+  onProposals?: () => void;
 }) {
   useHuandengLocale();
   const localActivity = useProjectActivity(backend, deckId, !activity);
@@ -75,6 +77,11 @@ export function PptdActivityPanel({
             </button>
           ))}
         </fieldset>
+        {onProposals && (
+          <Button size="xs" variant="outline" onClick={onProposals} data-hd-review-proposals>
+            {t('Review proposals')}
+          </Button>
+        )}
         <Button
           variant="ghost"
           size="icon"

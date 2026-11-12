@@ -6,10 +6,53 @@ import { describe, expect, it } from 'vitest';
 import type { WorkspaceLayout } from '../core/src/app/lib/huandeng-desktop';
 
 const require = createRequire(import.meta.url);
-const { normalizeWorkspaceLayout, createWorkspaceLayoutWriter } = require('./workspace.cjs');
+const {
+  normalizeWorkspaceLayout,
+  createWorkspaceLayoutWriter,
+  windowWorkspaceLayout,
+} = require('./workspace.cjs');
 const { readPreferences, writePreferences } = require('./project.cjs');
 
 describe('desktop workspace preferences', () => {
+  it('migrates the active project layout once and preserves the legacy values', () => {
+    const preferences = { projectLayouts: { a: { notesWidth: 390 }, b: { notesWidth: 260 } } };
+    const migrated = windowWorkspaceLayout(preferences, 'a');
+    expect(migrated.notesWidth).toBe(390);
+    expect(windowWorkspaceLayout({ ...preferences, windowLayout: migrated }, 'b')).toEqual(
+      migrated,
+    );
+    expect(preferences.projectLayouts.b.notesWidth).toBe(260);
+  });
+
+  it('merges only the fields edited by a delayed project renderer', async () => {
+    let layout = normalizeWorkspaceLayout({});
+    const base = { ...layout };
+    const writer = () =>
+      createWorkspaceLayoutWriter({
+        read: () => layout,
+        write: async (next: WorkspaceLayout) => {
+          layout = next;
+          return next;
+        },
+      });
+    const a = writer();
+    const b = writer();
+    a.open('a');
+    b.open('b');
+    await a.save({
+      clientId: 'a',
+      revision: 1,
+      baseLayout: base,
+      layout: { ...base, notesDock: 'right' },
+    });
+    await b.save({
+      clientId: 'b',
+      revision: 1,
+      baseLayout: base,
+      layout: { ...base, navigationWidth: 350 },
+    });
+    expect(layout).toMatchObject({ notesDock: 'right', navigationWidth: 350 });
+  });
   it('retains a valid right dock and dimensions independently of documents', () => {
     expect(
       normalizeWorkspaceLayout({

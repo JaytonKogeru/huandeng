@@ -15,6 +15,7 @@ import {
   projectArchiveReport,
   writeProjectZip,
 } from './project-archive.ts';
+import type { SessionAuthority } from './session-authority.ts';
 import { type DeckSnapshot, PptdError } from './types.ts';
 import { createVideoEncoder, findVideoEncoder, type VideoCapabilities } from './video-encoder.ts';
 import { createVideoPlan, type VideoExportOptions, videoFrameTime } from './video-plan.ts';
@@ -25,8 +26,26 @@ export class ExportManager {
   private workspace: ExportWorkspace;
   private capability?: Promise<VideoCapabilities>;
 
-  constructor(root: string) {
+  constructor(
+    root: string,
+    private authority?: SessionAuthority,
+  ) {
     this.workspace = new ExportWorkspace(root);
+  }
+
+  private async authorizePage(page: Page, exportId: string): Promise<() => void> {
+    if (!this.authority) return () => {};
+    const authority = this.authority;
+    const capability = authority.createExportCapability(exportId);
+    try {
+      await page.addInitScript((value) => {
+        window.__HUANDENG_EXPORT_AUTH__ = value;
+      }, capability);
+      return () => authority.revoke(capability.token);
+    } catch (error) {
+      authority.revoke(capability.token);
+      throw error;
+    }
   }
 
   respond(id: string, kind: string, params: URLSearchParams, res: ServerResponse) {
@@ -108,6 +127,7 @@ export class ExportManager {
     job.status.totalFrames = plan.totalFrames;
     job.settled = (async () => {
       let browser: Browser | undefined;
+      let releaseAuthorization = () => {};
       let encoder: ReturnType<typeof createVideoEncoder> | undefined;
       let failure: unknown;
       const abort = () => {
@@ -124,6 +144,7 @@ export class ExportManager {
           viewport: { width: plan.width, height: plan.height },
           deviceScaleFactor: 1,
         });
+        releaseAuthorization = await this.authorizePage(page, job.id);
         await page.goto(
           `${options.serverUrl}/huandeng/export/${job.id}?mode=frames&width=${plan.width}&height=${plan.height}`,
           { waitUntil: 'domcontentloaded' },
@@ -212,6 +233,7 @@ export class ExportManager {
       } catch (error) {
         failure = error;
       } finally {
+        releaseAuthorization();
         job.abort.signal.removeEventListener('abort', abort);
         await encoder?.close();
         await browser?.close().catch(() => {});
@@ -270,6 +292,7 @@ export class ExportManager {
     let failure: unknown;
     let browser: Browser | undefined;
     let browserPage: Page | undefined;
+    let releaseAuthorization = () => {};
     const ensurePage = async () => {
       if (browserPage) return browserPage;
       browser = await openBrowser();
@@ -278,6 +301,7 @@ export class ExportManager {
         viewport: { width: Math.ceil(frozen.size[0] + 40), height: Math.ceil(frozen.size[1] + 40) },
         deviceScaleFactor: 2,
       });
+      releaseAuthorization = await this.authorizePage(browserPage, id);
       await browserPage.goto(`${options.serverUrl}/huandeng/export/${id}`, {
         waitUntil: 'networkidle',
       });
@@ -586,6 +610,7 @@ export class ExportManager {
       failure = error;
       throw error;
     } finally {
+      releaseAuthorization();
       job.abort.signal.removeEventListener('abort', abort);
       await browser?.close().catch(() => {});
       try {

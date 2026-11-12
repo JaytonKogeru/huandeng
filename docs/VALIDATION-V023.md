@@ -1,0 +1,161 @@
+# HUANDENG Editor 0.23.0 — validation record
+
+Date: 2026-11-12.
+
+**The final source checks, security probes, performance regression, packaged Windows smoke test and native workflow acceptance passed.** This record covers the implementation worktree and the explicitly identified development candidates. A clean tagged release archive, its installation and publication are separate provenance fields below; a successful candidate test is not a claim that those actions have occurred.
+
+The work followed [the independent audit](AUDIT-NEXT-PHASE-2026-11-12.md) and [the accepted upgrade specification](SPEC-NEXT-PHASE-2026-11-12.md). The retained implementation uses PPTD, stable page identities, Main Slides, live/pinned Presentations and the shared durable writer.
+
+Evidence references such as **[S1]** resolve to the repository-relative paths in the final section. The ignored `.verification/` evidence is retained locally; those paths are not public download links. This document contains no capability values, executable attack probes, private absolute directories or research content.
+
+## 1. Final source and focused gates
+
+| Gate | Observed final result | Evidence |
+| --- | --- | --- |
+| Complete unit run | **1,528 total; 1,527 passed; 0 failed; 1 expected skip**, 143.31 s. All 387 reported suites passed. | [S1] |
+| Repository Biome check | Exit 0, 3.12 s; final root formatting also exited 0. | [S1] |
+| Core TypeScript check | Final checked execution exited 0; no diagnostics. | [S2] |
+| Authentication and service contracts | 49/49 passed, no skipped tests. | [S2] |
+| Final Git/static-service boundary regression | 24/24 passed, including Windows current-directory executable substitution. | [S2] |
+| Plugin discovery contracts | 4/4 passed. | [S2] |
+| Writer, recovery, lock, proposal, checkpoint, browser-document and resource regression | 148/148 passed, no skipped tests, 9.96 s. | [P1] |
+| Real browser security proof | Static and Vite service modes passed; no recorded browser errors. | [S3] |
+| Final real-browser performance/consistency run | Passed, 42.59 s. | [P1] |
+| Final same-fixture backend run | Passed, 69.91 s. | [P1] |
+| Packaged Windows smoke, candidate 2 | 9/9 passed. | [D1] |
+| Native upgrade workflow, candidate 2 | 9/9 passed, 54.52 s; no recorded UI errors. | [D2] |
+
+Focused suites overlap the complete unit run; their counts must not be added to the 1,528 total. The single skip is the existing POSIX execute-bit hook test, `does not treat a non-executable hook file as an enabled hook`. Its source explicitly uses `it.skipIf(process.platform === 'win32')`; it is not a failed or silently omitted Windows acceptance gate. [S1]
+
+The final complete run supersedes earlier concurrent-run failures. The real PNG rasterization test now has a specific 15 s allowance for browser/encoder startup; no suite-wide timeout was relaxed. A bounded retry handles unavailable Windows lock ports in the test fixture. Neither adjustment bypasses a product assertion. [S1, P1]
+
+## 2. Security acceptance
+
+### Local capabilities and client lifecycle
+
+Anonymous requests to each of `/session`, `/current`, `/project`, `/history`, `/selection`, `/events`, `/activity/events` and `/proposals` were denied in both static and Vite modes. The browser proof exercised actual request headers and destinations rather than assuming how navigation, iframe, object, image and fetch requests would be classified. [S3]
+
+A fresh browser obtained its UI capability through a one-use launch exchange. The launch fragment was removed from the address, refresh retained the legitimate session, a closed session was not inherited by a fresh tab, a new launch succeeded, and a service restart rejected the old capability while accepting the newly issued one. Legitimate UI private requests recorded zero failures. The contract suites also covered wrong or expired credentials, resource scope, method/revision constraints and discovery-record rejection. [S2, S3]
+
+Protocol 2 discovery rejects remote, stale, mismatched and old-protocol records. Explicit bad installation paths do not silently fall back, a uniquely selected Project is pinned, and ambiguous multiple Projects require selection. The relocated packaged CLI and MCP clients authenticated to the intended synthetic Project. [S2, D1]
+
+### SVG isolation and scientific rendering
+
+The proof covered eight combinations of service mode, file/embedded SVG source and original/preview route. In each combination, top-level navigation, iframe and object probes produced **no script execution and no project write**. A resource response may legitimately return HTTP 200 while its document remains sandboxed; the pass criterion was isolation and absence of effects, not a blanket claim that every resource request returns 403. [S3]
+
+The compatibility fixture included clip paths, masks, filters, styles and an embedded WOFF2 font. Both original and preview images decoded and were pixel-identical to the data-image reference in both service modes. This positive control accompanied the malicious-resource negative cases. [S3]
+
+The final native workflow also attempted to navigate the trusted Editor window to a private API/resource document. The shell refused the navigation and retained the trusted Editor. The negative case was placed last in the automation because a deliberately cancelled navigation otherwise left a Playwright navigation barrier; the final 9/9 run passed without a product-source change for that harness issue. [D2]
+
+### Git, publisher and capture boundaries
+
+Git invocation resolves a verified absolute executable and disables project-controlled fsmonitor execution. The final regression includes a real Windows same-name executable in the working directory; it did not replace the intended Git executable. Normal checkpoint behavior, dirty-worktree handling and deferral to required hooks/signing remained covered. The fix does not rewrite the user's global Git configuration or bypass their normal commit requirements. [S2]
+
+The hidden publisher produced a one-slide PPTX of 263,986 bytes, copied it byte-for-byte to the share target, and stopped. A separate capture produced a 329,720-byte PNG while two attempted selection-write POSTs were denied and the source remained unchanged. These checks exercised the intended narrow export/capture capabilities rather than giving the hidden renderer ordinary writer authority. [S4]
+
+## 3. Performance acceptance
+
+The before/after runs used the same local machine, original fixture generator and operation sequences: 8/80 pages, 64 objects per page, 401 SVG files including a standalone 4 MiB resource, and 200 valid writer-generated history records. Timing runs disabled counters; filesystem/hash/clone counters were collected in separate probes. Browser, backend and export workloads were serialized for the final measured windows. [P0, P1]
+
+Values below are **p50 / p95 in milliseconds**. The p95 is the observed nearest-rank sample, not a production tail-latency guarantee.
+
+| Operation | Samples | Baseline | Final source |
+| --- | ---: | ---: | ---: |
+| 8-page commit | 20 | 109.26 / 284.33 | 91.93 / 102.25 |
+| 80-page commit | 20 | 358.08 / 440.02 | **222.00 / 236.65** |
+| 80-page authoritative no-change refresh | 10 | 169.38 / 257.15 | 138.22 / 166.58 |
+| Agent preview + apply, 80 pages | 10 | 652.73 / 729.01 | **399.75 / 423.66** |
+| 200 history summaries | 10 | 143.62 / 197.49 | **31.19 / 143.67** |
+| 4 MiB conditional original request | 20 | 9.61 / 11.51 | 2.71 / 18.89 |
+| Delete key to DOM removal | 10 | 87.35 / 93.00 | **75.65 / 89.70** |
+| Delete key to two animation frames | 10 | 158.80 / 271.00 | 153.00 / 174.40 |
+| Delete key to observed persisted bytes | 10 | 391.25 / 447.40 | **294.65 / 320.90** |
+
+The 80-page commit median decreased 38.00%; Agent preview plus apply decreased 38.76%; history-summary median decreased 78.28%. Input feedback and durable-save observations are reported separately. [P1]
+
+### Reduced work and retained checks
+
+Three actual Windows self-save probes each read 85 page files during the writer transaction and exactly one additional page to verify the persisted bytes: **86 total, replacing 165**. Their watcher callbacks took 4.59, 3.52 and 2.89 ms. An unrelated auxiliary file caused zero document reads. Same-size/restored-mtime edits, atomic replacement, an external write within the self-save debounce, and referenced-resource changes still reached authoritative refresh and appeared in the document. [P1]
+
+Windows emits parent-directory events during an atomic page save. The final fix merges a directory echo only when all recorded written children in that same batch match the committed bytes and the persisted directory generation also matches. A directory signature alone is never proof of child content. Directory-only events, roots/overflow, changed siblings, uncertain mappings and generation mismatches retain full validation; there is no time-based ignore window. [P1]
+
+The 80-page commit retained its complete authoritative page scan. Its counter probe changed stat calls from 652 to 329, realpath calls from 814 to 491 and createHash calls from 1,145 to 504. Nine structuredClone calls remained, but clone time fell from approximately 39.28 to 1.92 ms. Preparation fell from 171.94 to 40.59 ms; authoritative load remained 143.05 to 143.40 ms and durable persistence 24.29 to 24.65 ms. The benefit came primarily from removing duplicate preparation. [P1]
+
+After initial connection the real browser used 20 `/changes` responses and zero full `/current` responses. Median change payload was 23,274.5 bytes, with response.json p50/p95 of 0.85/3.70 ms. Two initial `/session` responses still carried a full snapshot. A two-page delta across interleaved commits reconstructed the exact authoritative document and used 36,176 bytes versus 1,211,420 bytes for the full snapshot, a 97.01% reduction. Transport-only capability/protocol fields were excluded from document equality. [P1]
+
+Twenty timed conditional requests and one counter probe left the 4 MiB resource's sourceReads at 1, with 21 version-cache hits. Warm history-summary queries avoided record rereads/hashes while still enumerating and validating file signatures. Bounded caches and pagination did not remove corrupt-history detection, undo information or source-resource ownership. [P1]
+
+### Limits and non-improvements
+
+The final conditional-resource p95 was 18.89 ms, above the baseline 11.51 ms; one final sample reached 38.40 ms. Fresh 8-page Store median increased from 141.05 to 166.12 ms; reopening with 201 history records increased from 1,219.27 to 1,502.50 ms; full 80-page snapshot cloning changed from 32.29 to 33.48 ms. These results remain in the evidence and are not represented as gains. [P1]
+
+The OS cache was not cleared. Fresh-Store measurements used the same Node process and recently written fixtures, so they are neither process-cold nor OS-cold. Existing applications and free-memory differences limit cross-run attribution. Memory samples include retained benchmark data and GC variation; they establish workload footprint, not absence of a long-running leak. Two animation frames are a renderer observation, not a display/compositor measurement. [P0, P1]
+
+## 4. Packaged Windows and native workflows
+
+Candidate 2 identifies product version **0.23.0**, Electron **45.3.1** and bundled Node **24.22.2**. Its package was relocated to a path containing spaces and Chinese characters, with independent synthetic Projects and runtime state. All nine smoke checks passed. [D1]
+
+| User task | Accepted behavior |
+| --- | --- |
+| Open a relocated Project | Native package opened the self-contained Project; protocol 2 clients authenticated and anonymous session reads were denied. |
+| Edit and save | Native keyboard editing reached durable bytes; Undo and Redo succeeded. |
+| Use an Agent | Packaged CLI preview/apply retained idempotency; Agent setup resolved the relocated package and selected Project; bundled MCP stdio read that exact Project. |
+| Render science content | Formula, native chart, PNG and file/data SVG with clips, masks, filters and embedded font rendered. |
+| Export | PDF and PPTX succeeded; structural checks retained editable Office math and the chart workbook. |
+| Create a Project | Cancelling created no partial directory; the optional practice Project contained three editable slides and original media. |
+| Close and reopen | A normal close/reopen retained saved page content, notes and original assets. |
+
+The separate final native upgrade workflow passed all nine checks: Home theme broadcast; cancellation and actual entry display; practice creation; blank creation and window-layout sharing across two Projects; real overlapping external-write conflict; recoverable discarded draft; actual-slide proposal review and fresh preview for an independent subset; restart persistence; and native private-document navigation refusal. The conflict check preserved unrelated remote fields. Restoring a discarded draft restored the local work for review; it did not silently save over the newer document. [D2]
+
+These automated New Project checks supplied a test-owned directory to the folder-selection boundary. They do not claim that every Windows shell dialog variation was manually exercised.
+
+## 5. Actual PowerPoint compatibility
+
+The recorded synthetic science PPTX was opened by **Microsoft PowerPoint 16.0**, read-only, with `OpenAndRepair=false`. It contained one slide and one native chart. The observed shapes included the title, equation, native chart, file SVG, embedded SVG, PNG and a native shape. Source bytes were unchanged; the run began and ended with zero open presentations. [O1]
+
+PowerPoint exported a 128,003-byte PNG, and the resulting pixels were inspected. The record retains both the source and PNG hashes. This is actual Office acceptance of the identified scientific export fixture, separately from package smoke and XML inspection; it is not an implied Office result from the hosted Windows CI runner. [O1]
+
+## 6. Preserved safety and product contracts
+
+- Fresh authoritative loading, page/global CAS, read dependencies, the writer lock, durable journaling, interrupted-save recovery and idempotent receipts remain in the ordinary write path. Optimistic UI feedback is not a durable-save receipt.
+- Preview does not mutate the document. Nested groups, shared-style inputs, old snapshots, history.before/after and failed preparation remained isolated in regression tests.
+- Delta application verifies the epoch and exact base version, carries explicit removals and the target page order, and applies one consistent target state. Stale/evicted cursors and epoch changes fall back to a full snapshot.
+- Conflict rebase uses the explicitly reviewed latest page/metadata revisions and a normal CAS transaction. Overlapping fields need an explicit choice; missing objects or shared-component conflicts cannot be forced. A second conflict keeps the draft.
+- Pending proposals are optional. Ordinary authorized Agent work can still use preview/apply. Human acceptance uses the UI capability and a bound approval receipt; an Agent-provided actor label is not approval. A subset is re-previewed, and a truncated visual review cannot be accepted as if hidden pages had been inspected.
+- Reviewed proposals bind the before/after visual resource baseline. Actual page, manifest, metadata and asset bytes are checked before journal creation in the same writer queue. An external resource replacement before watcher delivery or after preparation rejects the stale review without changing page bytes or creating a pending journal.
+- Main Slides remain the source collection. Live/pinned Presentations, Story, notes, original assets, named versions and Undo/Redo remain product contracts. The six frozen example editions and pre-existing research changes were outside the upgrade's edit scope.
+- Safety, performance and release probes used synthetic Projects. The validation did not use real research Projects as writable test targets or alter the user's installed Editor and default file association.
+
+These boundaries are supported by the full and focused suites plus the native and security evidence; they do not assert a universal absence of defects in every untested workload. [S1–S4, P1, D1, D2]
+
+## 7. Release provenance at this record
+
+| Item | Recorded status |
+| --- | --- |
+| Validated product candidate | 0.23.0 development candidate 2; smoke and native UI acceptance passed. |
+| Candidate source marker | `e456d6f676007c24d348d924b2500ba7950daeab`, identifying the base revision recorded by the implementation-worktree builds. It is not proof that the upgrade was already committed at that revision. |
+| Final clean source commit and release tag | **Pending the final clean tagged source supplied by the release owner.** |
+| Official archive, content manifest and SHA-256 | **Pending the final release artifact.** Candidate measurements are not substituted for that artifact. |
+| Installation/repair/uninstall of the official package | **Not yet evidenced for the final release artifact.** |
+| Publication and installed version | **Not claimed by this validation record.** |
+| Signing and npm publication | Candidate metadata is unsigned; no signing credential, supplier purchase or npm publication forms part of these results. |
+
+This table records the state of the delivery evidence, not an implementation plan. The source and candidate results above remain completed results. Formal artifact provenance is filled only from the actual clean package and its observed installation/publication outcome.
+
+## 8. Evidence index
+
+All paths below are relative to the repository root. Raw probes and runtime credentials are excluded from public commits and release packages.
+
+| Reference | Retained evidence |
+| --- | --- |
+| S1 | `.verification/implementation-20261112/root/final-source-checks.json`; `.verification/implementation-20261112/root/final-unit.json`; Windows skip definition in `packages/core/src/pptd/git.test.ts` |
+| S2 | `.verification/implementation-20261112/security/auth-vitest.json`; `final-boundary-vitest.json`; `plugin-discovery.log`; `core-tsc.log`; `git-boundary-biome.log` in the same directory |
+| S3 | `.verification/implementation-20261112/security/browser-proof.json` |
+| S4 | `.verification/implementation-20261112/security/publisher-capture-proof.json` |
+| P0 | `.verification/independent-audit-20261112/performance/summary.json` and its referenced original raw samples |
+| P1 | `.verification/implementation-20261112/performance/PERFORMANCE_VALIDATION.md`; `summary.json`; `backend-comparison.json`; `browser-comparison.json`; `phase-comparison.json`; `initial-regression.json`; `initial-regression-summary.json` in the same directory |
+| P1 backend raw run | `.verification/implementation-20261112/performance/runs/2026-11-12T06-29-48.131Z/backend.json` |
+| P1 browser raw run | `.verification/implementation-20261112/performance/browser-2026-11-12T06-28-41.599Z/browser.json` and `normal-view.png` |
+| D1 | `.verification/windows-release-a49f0525-ba24-4589-8ba4-8c8a58f218c7/result.json` |
+| D2 | `.verification/upgrade-workflows-107831c8-a9f7-4357-9686-c8e0562feb43/report.json` and the screenshots in that directory |
+| O1 | `.verification/windows-release-016f3c2c-de50-46f4-b91c-9b883b665676/science-office-result.json` and `science-office.png` |

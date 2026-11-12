@@ -6,6 +6,7 @@ import { connectionChinese } from './huandeng-connection-messages';
 import { designChinese } from './huandeng-design-messages';
 import { editorChinese, editorEnglish } from './huandeng-messages';
 import { pageWorkChinese } from './huandeng-page-work-messages';
+import { proposalChinese } from './huandeng-proposal-messages';
 import { routeChinese, routeEnglish } from './huandeng-route-messages';
 import { systemChinese } from './huandeng-system-messages';
 import { workflowChinese, workflowEnglish } from './huandeng-workflow-messages';
@@ -205,6 +206,7 @@ export const chineseMessages = {
   ...designChinese,
   ...connectionChinese,
   ...reviewChinese,
+  ...proposalChinese,
   ...systemChinese,
   ...editorChinese,
   ...routeChinese,

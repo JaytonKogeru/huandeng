@@ -35,7 +35,7 @@ The repository includes six editable English and Chinese introductions created w
 ## Get started
 
 1. **Get the application.** Download the current Windows build from [GitHub Releases](https://github.com/JaytonKogeru/huandeng/releases/latest). Extract the complete folder and run `HUANDENG Editor.exe`.
-2. **Open a project.** Choose a `.pptd` entry or a project folder on Home. For a ready-made example, open `examples/huandeng-introduction/chatgpt-en/deck.pptd` from a cloned or downloaded repository.
+2. **Open or create a project.** On Home, open a `.pptd` entry or project folder, or choose New Project and select a blank project or three editable practice slides. Name the project and choose its parent folder; the dialog shows the final entry before creating it. The repository also contains `examples/huandeng-introduction/chatgpt-en/deck.pptd`.
 3. **Make a useful change.** Select a page, read its Story, edit an object and save. Check its History, then arrange the pages you need into a Presentation.
 
 To run from source, use Node.js 22.12+ and Corepack:

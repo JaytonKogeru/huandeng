@@ -1,5 +1,7 @@
 const english = {
   '助手连接…': 'Agent setup…',
+  '助手接入…': 'Agent setup…',
+  '请使用有效的项目文件夹名称。': 'Use a valid project folder name.',
   文件: 'File',
   '新建项目…': 'New project…',
   '打开项目…': 'Open project…',
@@ -46,6 +48,10 @@ const english = {
   缩小界面: 'Zoom out',
   全屏: 'Fullscreen',
   界面语言: 'Interface language',
+  界面外观: 'Interface theme',
+  跟随系统: 'Follow system',
+  浅色: 'Light',
+  深色: 'Dark',
   帮助: 'Help',
   '关于 HUANDENG Editor': 'About HUANDENG Editor',
   '独立页面，持续演进。\n\nHUANDENG Story 记录意图。\nHUANDENG Plugin 连接外部 Agent。':

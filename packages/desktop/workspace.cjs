@@ -26,6 +26,23 @@ function normalizeWorkspaceLayout(value) {
   return next;
 }
 
+function mergeWorkspaceLayout(current, base, next) {
+  const result = normalizeWorkspaceLayout(current);
+  const previous = normalizeWorkspaceLayout(base);
+  const update = normalizeWorkspaceLayout(next);
+  for (const key of Object.keys(result))
+    if (previous[key] !== update[key]) result[key] = update[key];
+  return result;
+}
+
+function windowWorkspaceLayout(preferences, entryKey) {
+  return normalizeWorkspaceLayout(
+    preferences.windowLayout ??
+      preferences.projectLayouts?.[entryKey] ??
+      preferences.workspaceLayout,
+  );
+}
+
 function createWorkspaceLayoutWriter({ read, write }) {
   let clientId = null;
   let revision = -1;
@@ -54,11 +71,19 @@ function createWorkspaceLayoutWriter({ read, write }) {
         throw new Error('Invalid workspace layout update.');
       if (update.clientId !== clientId || update.revision <= revision)
         return normalizeWorkspaceLayout(read());
-      const result = await write(normalizeWorkspaceLayout(update.layout));
+      const next = update.baseLayout
+        ? mergeWorkspaceLayout(read(), update.baseLayout, update.layout)
+        : normalizeWorkspaceLayout(update.layout);
+      const result = await write(next);
       if (clientId === update.clientId) revision = update.revision;
       return result;
     },
   };
 }
 
-module.exports = { normalizeWorkspaceLayout, createWorkspaceLayoutWriter };
+module.exports = {
+  normalizeWorkspaceLayout,
+  mergeWorkspaceLayout,
+  windowWorkspaceLayout,
+  createWorkspaceLayoutWriter,
+};

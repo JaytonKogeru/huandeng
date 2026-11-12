@@ -181,13 +181,16 @@ export async function discoverSessions(environment = process.env, settings = {})
         return;
       const entry = await fs.realpath(record.entry);
       const url = loopbackOrigin(record.url);
+      if (record.protocol !== 2 || typeof record.agentToken !== 'string' || !record.agentToken)
+        return;
       const response = await (settings.fetch ?? fetch)(`${url}/__pptd/session`, {
+        headers: { 'x-huandeng-token': record.agentToken },
         signal: AbortSignal.timeout(1200),
         redirect: 'error',
       });
       if (!response.ok) return;
       const snapshot = await response.json();
-      if (snapshot.desktopProtocol !== 1 || typeof snapshot.entry !== 'string') return;
+      if (snapshot.desktopProtocol !== 2 || typeof snapshot.entry !== 'string') return;
       const actual = await fs.realpath(snapshot.entry);
       if (!samePath(entry, actual, settings.platform ?? process.platform)) return;
       if (record.epoch && snapshot.epoch && record.epoch !== snapshot.epoch) return;

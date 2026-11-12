@@ -1,4 +1,5 @@
 import type { PageSnapshot } from '../../pptd/types';
+import { resourceUrl } from './pptd-session';
 
 export function assetVersionUrl(
   url: string,
@@ -12,7 +13,10 @@ export function assetVersionUrl(
   const hashIndex = url.indexOf('#');
   const base = hashIndex === -1 ? url : url.slice(0, hashIndex);
   const fragment = hashIndex === -1 ? '' : url.slice(hashIndex);
-  return `${base}${base.includes('?') ? '&' : '?'}${content ? 'revision' : 'hint'}=${encodeURIComponent(token)}${fragment}`;
+  return resourceUrl(
+    `${base}${base.includes('?') ? '&' : '?'}${content ? 'revision' : 'hint'}=${encodeURIComponent(token)}${fragment}`,
+    content ? revision : undefined,
+  );
 }
 
 export function revisionedAssetUrl(

@@ -597,7 +597,10 @@ export function createMcpServer(client: HuandengClient) {
             : acquireEditorCapture)(client, args);
           const imageUrl = new URL('/__pptd/asset', client.url);
           imageUrl.searchParams.set('path', asset.path);
-          const response = await fetch(imageUrl);
+          const response = await fetch(imageUrl, {
+            headers: await client.authorizationHeaders(),
+            redirect: 'error',
+          });
           if (!response.ok) throw new Error('Could not read the acquired image.');
           const mimeType = response.headers.get('content-type')?.split(';')[0] ?? 'image/png';
           if (mimeType === 'image/svg+xml')

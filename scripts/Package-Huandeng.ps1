@@ -1,7 +1,8 @@
 param(
     [string]$ElectronRuntimePath = "",
     [string]$OutputDirectory = "",
-    [switch]$Replace
+    [switch]$Replace,
+    [switch]$Official
 )
 $ErrorActionPreference = "Stop"
 $project = Split-Path -Parent $PSScriptRoot
@@ -15,7 +16,7 @@ if ([System.IO.Path]::GetExtension($ElectronRuntimePath) -eq ".exe") {
 }
 $runtime = (Resolve-Path -LiteralPath $ElectronRuntimePath).Path
 if (-not (Test-Path -LiteralPath (Join-Path $runtime "electron.exe"))) {
-    throw "ElectronRuntimePath must contain an Electron 38.7.2 Windows distribution."
+    throw "ElectronRuntimePath must contain the pinned Electron Windows distribution."
 }
 if (-not (Test-Path -LiteralPath (Join-Path $project "packages\core\dist\huandeng\bin.js"))) {
     throw "Build the document service first: corepack pnpm --filter @open-slide/core build"
@@ -29,6 +30,16 @@ if (Test-Path -LiteralPath $OutputDirectory) {
         $_.Path -and $_.Path.StartsWith($OutputDirectory + "\", [StringComparison]::OrdinalIgnoreCase)
     }
     if ($running) { throw "Close HUANDENG Editor before replacing its desktop build." }
+}
+$desktopManifest = Get-Content -LiteralPath (Join-Path $project "packages\desktop\package.json") -Raw -Encoding UTF8 | ConvertFrom-Json
+$runtimeVersion = (Get-Content -LiteralPath (Join-Path $runtime "version") -Raw -Encoding UTF8).Trim()
+if ($runtimeVersion -ne $desktopManifest.devDependencies.electron) { throw "The selected Electron runtime does not match the pinned package version." }
+if ($Official) {
+    $releaseVersion = (Get-Content -LiteralPath (Join-Path $project "packages\desktop\release.json") -Raw -Encoding UTF8 | ConvertFrom-Json).version
+    $sourceChanges = & git -c core.fsmonitor=false -C $project status --porcelain
+    if ($LASTEXITCODE -ne 0 -or $sourceChanges) { throw "Official packages require a clean checkout." }
+    $sourceTags = @(& git -c core.fsmonitor=false -C $project tag --points-at HEAD)
+    if ($LASTEXITCODE -ne 0 -or $sourceTags -notcontains ("editor-v" + $releaseVersion)) { throw "Official packages require the matching editor-v tag at HEAD." }
 }
 $buildId = [Guid]::NewGuid().ToString("N")
 $stage = Join-Path $project (".verification\desktop-package-" + $buildId)
@@ -47,6 +58,7 @@ try {
 } finally {
     Pop-Location
 }
+Copy-Item -LiteralPath (Join-Path $buildWorkspace "desktop-runtime.json") -Destination (Join-Path $stage "huandeng-runtime.json")
 $verifiedWorkspace = (Resolve-Path -LiteralPath $buildWorkspace).Path
 $verificationRoot = [System.IO.Path]::GetFullPath((Join-Path $project '.verification'))
 if (-not $verifiedWorkspace.StartsWith($verificationRoot + '\', [StringComparison]::OrdinalIgnoreCase)) {
@@ -57,7 +69,6 @@ Remove-Item -LiteralPath $verifiedWorkspace -Recurse -Force
 if ($LASTEXITCODE -ne 0) { throw "Pruning staged dependency source maps failed." }
 & node (Join-Path $PSScriptRoot "verify-desktop-package.mjs") $appDirectory
 if ($LASTEXITCODE -ne 0) { throw "The staged application is not self-contained." }
-$sourceRevision = (& git -C $project rev-parse HEAD).Trim()
 $defaultApp = Join-Path $stage "resources\default_app.asar"
 if (Test-Path -LiteralPath $defaultApp) { Remove-Item -LiteralPath $defaultApp }
 Rename-Item -LiteralPath (Join-Path $stage "electron.exe") -NewName "HUANDENG Editor.exe"
@@ -65,19 +76,22 @@ $crashReporter = Join-Path $stage "electron_wer.dll"
 if (Test-Path -LiteralPath $crashReporter) {
     Rename-Item -LiteralPath $crashReporter -NewName "HUANDENG Editor_wer.dll"
 }
-$marker = @{
-    product = "HUANDENG Editor"
-    productVersion = (Get-Content -LiteralPath (Join-Path $project "packages\desktop\release.json") -Raw | ConvertFrom-Json).version
-    desktopProtocol = 1
-    electronVersion = "38.7.2"
-    nodeLinker = "hoisted"
-    sourceRevision = $sourceRevision
-    sourceDirty = [bool](& git -C $project status --porcelain)
-    builtAt = [DateTime]::UtcNow.ToString("o")
+& node (Join-Path $PSScriptRoot "brand-desktop.mjs") $stage
+if ($LASTEXITCODE -ne 0) { throw "Setting Windows product identity failed." }
+foreach ($name in @("Install-Huandeng.ps1", "Uninstall-Huandeng.ps1", "Install-Huandeng.cmd", "Uninstall-Huandeng.cmd")) {
+    Copy-Item -LiteralPath (Join-Path $PSScriptRoot $name) -Destination (Join-Path $stage $name)
 }
-[System.IO.File]::WriteAllText((Join-Path $stage "huandeng-build.json"), ($marker | ConvertTo-Json), [System.Text.UTF8Encoding]::new($false))
+Copy-Item -LiteralPath (Join-Path $project "docs\WINDOWS-INSTALL.md") -Destination (Join-Path $stage "INSTALL.md")
+$identityArguments = @((Join-Path $PSScriptRoot "write-desktop-build.mjs"), $stage)
+if ($Official) { $identityArguments += "--official" }
+& node @identityArguments
+if ($LASTEXITCODE -ne 0) { throw "Writing the package identity and content manifest failed." }
 New-Item -ItemType Directory -Path (Split-Path -Parent $OutputDirectory) -Force | Out-Null
-if (Test-Path -LiteralPath $OutputDirectory) { Remove-Item -LiteralPath $OutputDirectory -Recurse -Force }
+if (Test-Path -LiteralPath $OutputDirectory) {
+    & node (Join-Path $PSScriptRoot "verify-replaceable-build.mjs") $OutputDirectory
+    if ($LASTEXITCODE -ne 0) { throw "Existing build contains missing, changed or unowned files. Choose a new output directory." }
+    Remove-Item -LiteralPath $OutputDirectory -Recurse -Force
+}
 $verifiedStage = (Resolve-Path -LiteralPath $stage).Path
 if (-not $verifiedStage.StartsWith($verificationRoot + '\', [StringComparison]::OrdinalIgnoreCase)) {
     throw 'Package staging escaped the verification directory; move was not performed.'

@@ -1,13 +1,10 @@
-import { execFile } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { promisify } from 'node:util';
+import { GitSafetyError, safeGit } from './git-safety';
 import { METADATA_PATH, normalizeRelativePath } from './identity';
 import type { PptdCheckpointSnapshot } from './store';
 import type { DeckSnapshot, DocumentEvent, Revision } from './types';
-
-const run = promisify(execFile);
 
 interface RecordedFile {
   path: string;
@@ -49,11 +46,7 @@ function rootKey(root: string): string {
 }
 
 async function git(root: string, args: string[], input?: Uint8Array): Promise<string> {
-  // check-ignore already takes file paths and rejects Git's literal pathspec flag.
-  const literal = args[0] === 'check-ignore' ? [] : ['--literal-pathspecs'];
-  const pending = run('git', [...literal, '-C', root, ...args], { maxBuffer: 8 * 1024 * 1024 });
-  if (input) pending.child.stdin?.end(input);
-  return (await pending).stdout;
+  return safeGit(root, args, input);
 }
 
 async function optionalGit(root: string, args: string[]): Promise<string | null> {
@@ -133,10 +126,12 @@ export async function registerCheckpointRoot(root: string): Promise<void> {
       baseline.reason =
         'HEAD changed while the clean baseline was being recorded. Reopen the deck.';
     }
-  } catch {
+  } catch (error) {
     baseline.clean = false;
     baseline.reason =
-      'A verified Git repository with an existing HEAD is required for checkpoints.';
+      error instanceof GitSafetyError
+        ? error.message
+        : 'A verified Git repository with an existing HEAD is required for checkpoints.';
   }
 }
 

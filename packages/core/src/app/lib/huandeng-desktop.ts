@@ -18,6 +18,7 @@ export interface WorkspaceLayoutUpdate {
   clientId: string;
   revision: number;
   layout: WorkspaceLayout;
+  baseLayout?: WorkspaceLayout;
 }
 
 export interface DesktopLeaveData {
@@ -28,6 +29,7 @@ export type DesktopEditCommand = 'cut' | 'copy' | 'paste' | 'selectAll' | 'undo'
 
 export interface HuandengDesktop {
   platform: string;
+  session?(): Promise<{ token: string; epoch: string; expiresAt: number }>;
   workspaceTabs?: boolean;
   getTabLayout?(): Promise<ProjectTabLayout>;
   setTabLayout?(update: Partial<ProjectTabLayout>): Promise<ProjectTabLayout>;
@@ -48,6 +50,7 @@ export interface HuandengDesktop {
   onFullscreenChanged?(callback: (fullscreen: boolean) => void): () => void;
   getWorkspaceLayout?(clientId?: string): Promise<WorkspaceLayout>;
   setWorkspaceLayout?(value: WorkspaceLayoutUpdate): Promise<WorkspaceLayout>;
+  onWorkspaceLayoutChanged?(callback: (layout: WorkspaceLayout) => void): () => void;
   getLocale?(): Promise<'en' | 'zh-CN'>;
   setLocale?(locale: 'en' | 'zh-CN'): Promise<'en' | 'zh-CN'>;
   onLocaleChanged?(callback: (locale: 'en' | 'zh-CN') => void): () => void;

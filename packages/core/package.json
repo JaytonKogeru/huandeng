@@ -72,9 +72,6 @@
   "bugs": {
     "url": "https://github.com/open-slide/open-slide/issues"
   },
-  "publishConfig": {
-    "access": "public"
-  },
   "dependencies": {
     "@babel/parser": "^7.29.2",
     "@babel/types": "^7.29.0",
@@ -124,5 +121,6 @@
     "@types/react-dom": "^19.2.5",
     "tsdown": "^0.22.14",
     "typescript": "^7.0.2"
-  }
+  },
+  "private": true
 }

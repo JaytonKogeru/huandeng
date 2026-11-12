@@ -24,6 +24,7 @@
     "icon.ico",
     "README.md",
     "NOTICE.md",
+    "third-party",
     "LICENSE",
     "branding.cjs",
     "release.json",
@@ -38,12 +39,18 @@
     "workspace-shell.css",
     "workspace-shell.js",
     "publisher.cjs",
-    "publish-hidden.vbs"
+    "publish-hidden.vbs",
+    "new-project.cjs",
+    "new-project-preload.cjs",
+    "new-project.html",
+    "new-project.css",
+    "new-project.js",
+    "starter-project.cjs"
   ],
   "dependencies": {
     "@open-slide/core": "workspace:*"
   },
   "devDependencies": {
-    "electron": "38.7.2"
+    "electron": "45.3.1"
   }
 }

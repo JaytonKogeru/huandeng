@@ -1,7 +1,9 @@
 const desktop = window.huandengDesktop;
+const themeSelect = document.getElementById('ui-theme');
 const systemThemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
 const applyDesktopTheme = (value) => {
   if (value !== 'system' && value !== 'light' && value !== 'dark') return;
+  themeSelect.value = value;
   document.documentElement.style.colorScheme = value === 'system' ? 'light dark' : value;
   document.documentElement.dataset.themeMode =
     value === 'system' ? (systemThemeQuery.matches ? 'dark' : 'light') : value;
@@ -55,6 +57,10 @@ const english = {
   '项目会出现在这里，方便下次继续。': 'Your projects will appear here for easy access.',
   文件保存在你选择的位置: 'Files stay in the location you choose',
   界面语言: 'Interface language',
+  界面外观: 'Interface theme',
+  跟随系统: 'Follow system',
+  浅色: 'Light',
+  深色: 'Dark',
   '正在打开项目…': 'Opening project…',
   '正在新建项目…': 'Creating project…',
   今天: 'Today',
@@ -93,6 +99,20 @@ localeSelect.addEventListener('change', () => {
     });
 });
 desktop.onLocaleChanged?.(applyLocale);
+themeSelect.addEventListener('change', () => {
+  themeSelect.disabled = true;
+  void desktop
+    .setTheme(themeSelect.value)
+    .then(applyDesktopTheme)
+    .catch(async (error) => {
+      applyDesktopTheme(await desktop.getTheme());
+      statusElement.textContent = errorMessage(error);
+      statusElement.dataset.state = 'error';
+    })
+    .finally(() => {
+      themeSelect.disabled = false;
+    });
+});
 
 function errorMessage(error) {
   const message = error instanceof Error ? error.message : String(error);

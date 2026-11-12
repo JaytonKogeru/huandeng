@@ -1,4 +1,8 @@
-const { normalizeWorkspaceLayout, createWorkspaceLayoutWriter } = require('./workspace.cjs');
+const {
+  normalizeWorkspaceLayout,
+  windowWorkspaceLayout,
+  createWorkspaceLayoutWriter,
+} = require('./workspace.cjs');
 const {
   text: desktopText,
   getCurrentLocale,
@@ -19,8 +23,9 @@ const { randomUUID } = require('node:crypto');
 const fs = require('node:fs/promises');
 const path = require('node:path');
 const { fileURLToPath } = require('node:url');
-const { createProject, pathKey, readPreferences, writePreferences } = require('./project.cjs');
-const { startService, stopService } = require('./service.cjs');
+const { pathKey, readPreferences, writePreferences } = require('./project.cjs');
+const { chooseNewProject } = require('./new-project.cjs');
+const { startService, stopService, readUiSession } = require('./service.cjs');
 const { resolveProjectEntry } = require('./project-entry.cjs');
 const { markProjectFolder } = require('./project-folder.cjs');
 const { createProjectRestore, createNavigationController } = require('./project-restore.cjs');
@@ -190,6 +195,7 @@ async function changeTheme(theme) {
     throw error;
   }
   nativeTheme.themeSource = theme;
+  buildMenu();
   broadcast('huandeng:theme-changed', theme);
   return theme;
 }
@@ -244,17 +250,18 @@ async function changeSnapping(enabled) {
 }
 function layoutWriter(entryKey) {
   return createWorkspaceLayoutWriter({
-    read: () => preferences.projectLayouts?.[entryKey] ?? preferences.workspaceLayout,
+    read: () => windowWorkspaceLayout(preferences, entryKey),
     write: async (value) => {
-      const previous = preferences.projectLayouts;
+      const previous = preferences.windowLayout;
       const next = normalizeWorkspaceLayout(value);
-      preferences.projectLayouts = { ...previous, [entryKey]: next };
+      preferences.windowLayout = next;
       try {
         await savePreferences();
       } catch (error) {
-        preferences.projectLayouts = previous;
+        preferences.windowLayout = previous;
         throw error;
       }
+      broadcast('huandeng:workspace-layout-changed', next);
       return next;
     },
   });
@@ -318,11 +325,16 @@ function activateProject(id, focus = true) {
   if (presentationOwner !== null && id !== presentationOwner)
     throw new Error('End the presentation before switching Projects.');
   const project = tabs.activate(id);
+  if (project && !preferences.windowLayout) {
+    preferences.windowLayout = windowWorkspaceLayout(preferences, project.entryKey);
+  }
   activeService = project?.service ?? null;
   layoutViews();
   updateTitle();
   buildMenu();
   publishWorkspace();
+  if (preferences.windowLayout)
+    broadcast('huandeng:workspace-layout-changed', preferences.windowLayout);
   if (focus) activeContents()?.focus();
   void saveTabPreferences().catch((error) => log(`Preferences: ${String(error)}\n`));
   return context(project);
@@ -381,7 +393,13 @@ function webPreferences() {
 }
 function allowedUrl(project, url) {
   try {
-    if (project) return new URL(url).origin === project.service.url;
+    if (project) {
+      const target = new URL(url);
+      return (
+        target.origin === project.service.url &&
+        ['/huandeng', '/huandeng/'].includes(target.pathname)
+      );
+    }
     return url.startsWith('file:') && [welcomeFile, shellFile].includes(fileURLToPath(url));
   } catch {
     return false;
@@ -393,15 +411,18 @@ function configureContents(contents, project = null) {
     updateTitle();
   });
   contents.setWindowOpenHandler(({ url }) => {
-    if (project && allowedUrl(project, url)) contents.downloadURL(url);
+    if (project && new URL(url).origin === project.service.url) contents.downloadURL(url);
     else if (/^https?:/.test(url)) void shell.openExternal(url);
     return { action: 'deny' };
   });
-  contents.on('will-navigate', (event, url) => {
+  const guardNavigation = (event, url) => {
     if (allowedUrl(project, url)) return;
     event.preventDefault();
-    if (/^https?:/.test(url)) void shell.openExternal(url);
-  });
+    if (/^https?:/.test(url) && (!project || new URL(url).origin !== project.service.url))
+      void shell.openExternal(url);
+  };
+  contents.on('will-navigate', guardNavigation);
+  contents.on('will-redirect', guardNavigation);
   contents.on('enter-html-full-screen', () => {
     if (project?.id !== tabs.activeId) return;
     if (presentationOwner === null) {
@@ -568,14 +589,16 @@ async function identifyProjectFolder(project = tabs.active) {
 }
 
 async function newProject() {
-  const selection = await dialog.showSaveDialog(window, {
-    title: desktopText('新建 HUANDENG 项目文件夹 · 内含 deck.pptd'),
-    defaultPath: path.join(app.getPath('documents'), 'Untitled.pptd'),
-    filters: [{ name: desktopText('项目名称（创建独立文件夹）'), extensions: ['pptd'] }],
-    buttonLabel: desktopText('创建项目'),
+  const entry = await chooseNewProject({
+    BrowserWindow,
+    dialog,
+    ipcMain,
+    parent: window,
+    directory: app.getPath('documents'),
+    locale: getCurrentLocale(),
+    theme: currentInterfaceTheme(),
   });
-  if (selection.canceled || !selection.filePath) return null;
-  return loadProject(await createProject(selection.filePath));
+  return entry ? loadProject(entry) : null;
 }
 async function closeProject(id) {
   const activation = navigation.activation();
@@ -767,7 +790,7 @@ function buildMenu() {
           click: () => void navigateNow(showHome).catch(showError),
         },
         {
-          label: desktopText('助手连接…'),
+          label: desktopText('助手接入…'),
           enabled: Boolean(activeService),
           click: () => activeContents()?.send('huandeng:agent-connection'),
         },
@@ -877,6 +900,19 @@ function buildMenu() {
         { role: 'togglefullscreen', label: desktopText('全屏') },
         { type: 'separator' },
         {
+          label: desktopText('界面外观'),
+          submenu: [
+            ['system', '跟随系统'],
+            ['light', '浅色'],
+            ['dark', '深色'],
+          ].map(([value, label]) => ({
+            label: desktopText(label),
+            type: 'radio',
+            checked: currentInterfaceTheme() === value,
+            click: menuAction(() => changeTheme(value)),
+          })),
+        },
+        {
           label: desktopText('界面语言'),
           submenu: [
             {
@@ -964,6 +1000,7 @@ function registerIpc() {
   });
   handle('huandeng:new-project', () => navigate(newProject));
   handle('huandeng:get-context', (sender) => context(sender.project));
+  handle('huandeng:session', (sender) => readUiSession(requireProject(sender).service));
   handle('huandeng:get-workspace', () => workspaceState());
   handle('huandeng:activate-project', (sender, id, focus = true) => {
     if (!sender.shell) throw new Error('Project switching belongs to the workspace.');

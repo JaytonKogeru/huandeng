@@ -2,6 +2,22 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { desktopHost, type WorkspaceLayout, type WorkspaceLayoutUpdate } from './huandeng-desktop';
 
 const snappingKey = 'huandeng:snapping';
+const layoutKeys = [
+  'notesDock',
+  'notesHeight',
+  'notesWidth',
+  'navigationWidth',
+  'inspectorWidth',
+  'notesOpen',
+  'navigationCollapsed',
+  'inspectorCollapsed',
+] as const;
+
+function mergeLayout(remote: WorkspaceLayout, base: WorkspaceLayout, local: WorkspaceLayout) {
+  return Object.fromEntries(
+    layoutKeys.map((key) => [key, local[key] !== base[key] ? local[key] : remote[key]]),
+  ) as unknown as WorkspaceLayout;
+}
 let workspaceLayoutReader: (() => WorkspaceLayoutUpdate | undefined) | undefined;
 
 export function workspaceLayoutForLeave(): WorkspaceLayoutUpdate | undefined {
@@ -93,6 +109,7 @@ export function useWorkspaceLayout(
   const latest = useRef({ ready, serialized, revision });
   latest.current = { ready, serialized, revision };
   const lastSaved = useRef('');
+  const observedLayout = useRef<WorkspaceLayout | null>(null);
   const writes = useRef(Promise.resolve());
   useEffect(() => {
     const read = () =>
@@ -101,6 +118,7 @@ export function useWorkspaceLayout(
             clientId,
             revision: latest.current.revision,
             layout: JSON.parse(latest.current.serialized) as WorkspaceLayout,
+            ...(observedLayout.current ? { baseLayout: observedLayout.current } : {}),
           }
         : undefined;
     workspaceLayoutReader = read;
@@ -122,7 +140,22 @@ export function useWorkspaceLayout(
   }, [clientId]);
   useEffect(() => {
     let active = true;
+    let broadcastObserved = false;
     const host = desktopHost();
+    const adopt = (value: WorkspaceLayout) => {
+      if (!active) return;
+      const local = JSON.parse(latest.current.serialized) as WorkspaceLayout;
+      const next = observedLayout.current
+        ? mergeLayout(value, observedLayout.current, local)
+        : value;
+      observedLayout.current = value;
+      lastSaved.current = JSON.stringify(value);
+      restoreRef.current(next);
+    };
+    const unsubscribe = host?.onWorkspaceLayoutChanged?.((value) => {
+      broadcastObserved = true;
+      adopt(value);
+    });
     const read = host?.getWorkspaceLayout
       ? host.getWorkspaceLayout(clientId)
       : Promise.resolve().then(() => {
@@ -132,7 +165,7 @@ export function useWorkspaceLayout(
     void read.then(
       (value) => {
         if (!active) return;
-        if (value && typeof value === 'object') restoreRef.current(value);
+        if (!broadcastObserved && value && typeof value === 'object') adopt(value);
         setReady(true);
       },
       (failure) => {
@@ -143,6 +176,7 @@ export function useWorkspaceLayout(
     );
     return () => {
       active = false;
+      unsubscribe?.();
     };
   }, [clientId]);
   useEffect(() => {
@@ -153,10 +187,18 @@ export function useWorkspaceLayout(
         .then(async () => {
           const value = JSON.parse(serialized) as WorkspaceLayout;
           const host = desktopHost();
-          if (host?.setWorkspaceLayout)
-            await host.setWorkspaceLayout({ clientId, revision, layout: value });
-          else localStorage.setItem('huandeng:workspace-layout', serialized);
-          lastSaved.current = serialized;
+          if (latest.current.serialized !== serialized) return;
+          if (host?.setWorkspaceLayout) {
+            const saved = await host.setWorkspaceLayout({
+              clientId,
+              revision,
+              layout: value,
+              ...(observedLayout.current ? { baseLayout: observedLayout.current } : {}),
+            });
+            observedLayout.current = saved;
+            lastSaved.current = JSON.stringify(saved);
+          } else localStorage.setItem('huandeng:workspace-layout', serialized);
+          if (!host?.setWorkspaceLayout) lastSaved.current = serialized;
           setError(null);
         })
         .catch((failure) => setError(failure instanceof Error ? failure.message : String(failure)));

@@ -79,7 +79,7 @@ export function WorkspaceSettings({
           <TabsList aria-label={t('Workspace setting groups')} className="w-full shrink-0">
             <TabsTrigger value="workspace">{t('Workspace')}</TabsTrigger>
             <TabsTrigger value="editing">{t('Editing')}</TabsTrigger>
-            <TabsTrigger value="fonts">{t('Fonts')}</TabsTrigger>
+            <TabsTrigger value="fonts">{t('Font check')}</TabsTrigger>
           </TabsList>
           <TabsContent
             value="workspace"
@@ -202,11 +202,9 @@ export function WorkspaceSettings({
               </section>
             )}
             <section className="space-y-3 border-t pt-4">
-              <h3 className="text-sm font-semibold">{t('Current project layout')}</h3>
+              <h3 className="text-sm font-semibold">{t('Window layout')}</h3>
               <p className="text-xs text-muted-foreground">
-                {t(
-                  'Panel visibility, sizes and Notes dock are remembered separately for this project.',
-                )}
+                {t('Panel visibility, sizes and Notes dock apply to every project in this window.')}
               </p>
               {[
                 { label: 'Project navigation', checked: navigation, change: onNavigation },

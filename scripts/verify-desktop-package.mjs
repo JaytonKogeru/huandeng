@@ -51,6 +51,21 @@ async function inspect(directory) {
 }
 
 await inspect(application);
+const noticeIndex = JSON.parse(
+  await fs.readFile(path.join(application, 'third-party', 'index.json'), 'utf8'),
+);
+for (const name of [
+  'echarts',
+  'react',
+  '@fortawesome/free-solid-svg-icons',
+  '@fortawesome/free-regular-svg-icons',
+  '@fortawesome/free-brands-svg-icons',
+]) {
+  const library = noticeIndex.packages.find((item) => item.name === name);
+  if (!library?.notices.length) throw new Error(`Missing bundled editor license: ${name}`);
+  for (const file of library.notices)
+    await fs.access(path.join(application, 'third-party', library.directory, file));
+}
 const core = path.join(application, 'node_modules', '@open-slide', 'core');
 const corePackage = JSON.parse(await fs.readFile(path.join(core, 'package.json'), 'utf8'));
 await fs.access(path.join(core, 'dist', 'editor', 'huandeng.html'));

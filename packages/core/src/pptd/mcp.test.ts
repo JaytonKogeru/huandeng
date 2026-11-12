@@ -12,7 +12,7 @@ afterEach(async () => {
 });
 
 async function connection() {
-  const writer = new HuandengClient('http://127.0.0.1:4850');
+  const writer = new HuandengClient('http://127.0.0.1:4850', 'test-agent-token');
   const request = vi.spyOn(writer, 'request').mockResolvedValue({ ok: true });
   const server = createMcpServer(writer);
   const client = new Client({ name: 'huandeng-test', version: '1.0.0' });

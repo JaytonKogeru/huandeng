@@ -28,14 +28,28 @@ async function readSession(url, entryPath) {
   const parsed = new URL(url);
   if (
     parsed.protocol !== 'http:' ||
-    !['127.0.0.1', 'localhost', '[::1]'].includes(parsed.hostname)
+    !['127.0.0.1', 'localhost', '[::1]'].includes(parsed.hostname) ||
+    parsed.username ||
+    parsed.password ||
+    parsed.search ||
+    parsed.hash ||
+    parsed.pathname !== '/'
   ) {
     throw new Error(desktopText('文档服务必须运行在本机。'));
   }
-  const response = await fetch(`${url}/__pptd/session`, { signal: AbortSignal.timeout(2000) });
+  const record = JSON.parse(await fs.readFile(discoveryPath(entryPath), 'utf8'));
+  if (record.protocol !== 2 || record.url !== url || typeof record.agentToken !== 'string')
+    throw new Error('Reopen this Project in the current HUANDENG Editor.');
+  const response = await fetch(`${url}/__pptd/session`, {
+    headers: { 'x-huandeng-token': record.agentToken },
+    signal: AbortSignal.timeout(2000),
+    redirect: 'error',
+  });
   if (!response.ok)
     throw new Error(desktopText('文档服务返回 {status}。', { status: response.status }));
   const snapshot = await response.json();
+  if (record.epoch !== snapshot.epoch)
+    throw new Error('The local writer session changed. Reopen the Project.');
   if (pathKey(await fs.realpath(snapshot.entry)) !== pathKey(entryPath)) {
     throw new Error(desktopText('这个文档服务属于另一个项目。'));
   }
@@ -47,11 +61,39 @@ async function existingService(entryPath, readOnly) {
   let snapshot;
   try {
     record = JSON.parse(await fs.readFile(discoveryPath(entryPath), 'utf8'));
+  } catch {
+    return null;
+  }
+  if (record.protocol !== 2) {
+    try {
+      const url = new URL(record.url);
+      if (
+        url.protocol !== 'http:' ||
+        !['127.0.0.1', 'localhost', '[::1]'].includes(url.hostname) ||
+        url.username ||
+        url.password ||
+        url.search ||
+        url.hash ||
+        url.pathname !== '/'
+      )
+        return null;
+      await fetch(url.origin + '/__pptd/health', {
+        signal: AbortSignal.timeout(1000),
+        redirect: 'error',
+      });
+    } catch {
+      return null;
+    }
+    throw new Error(
+      desktopText('这个项目仍由旧版文档服务打开。请关闭旧版编辑器或终端服务，然后重新打开项目。'),
+    );
+  }
+  try {
     snapshot = await readSession(record.url, entryPath);
   } catch {
     return null;
   }
-  if (snapshot.desktopProtocol !== 1) {
+  if (snapshot.desktopProtocol !== 2) {
     throw new Error(
       desktopText('这个项目仍由旧版文档服务打开。请关闭旧版编辑器或终端服务，然后重新打开项目。'),
     );
@@ -145,7 +187,7 @@ async function startService(entry, options = {}) {
         );
       try {
         const snapshot = await readSession(url, entryPath);
-        if (snapshot.desktopProtocol !== 1) throw new Error(desktopText('文档服务需要重新构建。'));
+        if (snapshot.desktopProtocol !== 2) throw new Error(desktopText('文档服务需要重新构建。'));
         service.title = snapshot.title;
         return service;
       } catch (error) {
@@ -174,4 +216,25 @@ async function stopService(service) {
   }
 }
 
-module.exports = { startService, stopService, discoveryPath, runtimeRoot };
+async function readUiSession(service) {
+  const record = JSON.parse(await fs.readFile(discoveryPath(service.entryPath), 'utf8'));
+  if (
+    record.protocol !== 2 ||
+    record.url !== service.url ||
+    typeof record.launcherToken !== 'string'
+  )
+    throw new Error('The local writer session changed. Reopen the Project.');
+  const response = await fetch(`${service.url}/__pptd/auth/ui`, {
+    method: 'POST',
+    headers: { 'x-huandeng-launcher': record.launcherToken },
+    signal: AbortSignal.timeout(2000),
+    redirect: 'error',
+  });
+  if (!response.ok) throw new Error('The local editor could not establish its UI session.');
+  const capability = await response.json();
+  if (capability.epoch !== record.epoch)
+    throw new Error('The local writer restarted. Reopen the Project.');
+  return capability;
+}
+
+module.exports = { startService, stopService, discoveryPath, runtimeRoot, readUiSession };

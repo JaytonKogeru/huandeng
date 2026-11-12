@@ -10,6 +10,12 @@ import type {
 import { PptdBackend, PptdClientError, type PptdSession, type PptdTransport } from './pptd-backend';
 import { PptdDocumentClient } from './pptd-document';
 
+vi.mock('./pptd-session', async (importOriginal) => ({
+  ...(await importOriginal<typeof import('./pptd-session')>()),
+  sessionHeaders: async () => ({ 'x-huandeng-token': 'token' }),
+  prepareResources: async () => {},
+}));
+
 const revision = (value: number): Revision => `sha256:${String(value).padStart(64, '0')}`;
 
 function session(text = '原稿', version = 1): PptdSession {
@@ -161,6 +167,156 @@ afterEach(() => {
 });
 
 describe('PPTD browser editing contract', () => {
+  it('rebases independent draft fields onto the explicitly reviewed latest page and saves through CAS', async () => {
+    const { client, setRemote, commit } = await setup();
+    client.patchElement('page-1', 'title', { 'content.text': 'Local draft' }, false);
+    const latest = session('原稿', 2);
+    latest.pages[0].data.elements[0].content = { text: '原稿', fontSize: 44 };
+    setRemote(latest);
+    await client.refresh();
+    expect(client.conflictDetails('page-1')).toMatchObject({ canRebase: true, conflicts: [] });
+    commit.mockImplementation(async (request) => {
+      expect(request.expected.pages).toEqual({ 'page-1': revision(2) });
+      expect(request.operations).toEqual([
+        {
+          op: 'element.patch',
+          pageId: 'page-1',
+          elementId: 'title',
+          set: { 'content.text': 'Local draft' },
+        },
+      ]);
+      const saved = session('Local draft', 3);
+      saved.pages[0].data.elements[0].content = { text: 'Local draft', fontSize: 44 };
+      setRemote(saved);
+      return receipt(request.requestId, 3);
+    });
+    await client.rebaseDraftLatest('page-1', {
+      expectedPageRevision: revision(2),
+      expectedMetadataRevision: revision(200),
+    });
+    expect(client.getState().drafts['page-1']).toBeUndefined();
+    expect(client.page('page-1')?.data.elements[0].content).toEqual({
+      text: 'Local draft',
+      fontSize: 44,
+    });
+  });
+
+  it('requires explicit local choice for overlapping fields and rejects a newer unreviewed version', async () => {
+    const { client, setRemote, commit } = await setup();
+    client.patchElement('page-1', 'title', { 'content.text': 'Local draft' }, false);
+    setRemote(session('Other author', 2));
+    await client.refresh();
+    expect(client.conflictDetails('page-1')).toMatchObject({
+      canRebase: true,
+      conflicts: [{ field: 'content.text', reason: 'changed' }],
+    });
+    const reviewed = { expectedPageRevision: revision(2), expectedMetadataRevision: revision(200) };
+    await expect(client.rebaseDraftLatest('page-1', reviewed)).rejects.toMatchObject({
+      code: 'REVISION_CONFLICT',
+    });
+    expect(commit).not.toHaveBeenCalled();
+    setRemote(session('Third author', 3));
+    await expect(
+      client.rebaseDraftLatest('page-1', { ...reviewed, keepConflictingFields: true }),
+    ).rejects.toMatchObject({ code: 'REVISION_CONFLICT' });
+    expect(commit).not.toHaveBeenCalled();
+    commit.mockImplementation(async (request) => {
+      expect(request.expected.pages).toEqual({ 'page-1': revision(3) });
+      setRemote(session('Local draft', 4));
+      return receipt(request.requestId, 4);
+    });
+    await client.rebaseDraftLatest('page-1', {
+      ...reviewed,
+      expectedPageRevision: revision(3),
+      keepConflictingFields: true,
+    });
+    expect(client.page('page-1')?.data.elements[0].content?.text).toBe('Local draft');
+  });
+
+  it('keeps drafts on deleted objects and changed component bindings even after an explicit local choice', async () => {
+    const { client, setRemote, commit } = await setup();
+    client.patchElement('page-1', 'title', { 'content.text': 'Local draft' }, false);
+    const missing = session('Other author', 2);
+    missing.pages[0].data.elements = [];
+    setRemote(missing);
+    await client.refresh();
+    expect(client.conflictDetails('page-1')).toMatchObject({
+      canRebase: false,
+      conflicts: [{ reason: 'missing' }],
+    });
+    await expect(
+      client.rebaseDraftLatest('page-1', {
+        expectedPageRevision: revision(2),
+        expectedMetadataRevision: revision(200),
+        keepConflictingFields: true,
+      }),
+    ).rejects.toMatchObject({ code: 'REVISION_CONFLICT' });
+    const bound = session('Other author', 3);
+    bound.metadataRevision = revision(201);
+    bound.pages[0].metadata.components = {
+      layout: {
+        recipe: 'synthetic',
+        recipeVersion: 1,
+        params: {},
+        slots: { title: 'title' },
+        overrides: {},
+      },
+    };
+    setRemote(bound);
+    await client.refresh();
+    expect(
+      client
+        .conflictDetails('page-1')
+        ?.conflicts.some((conflict) => conflict.reason === 'components'),
+    ).toBe(true);
+    await expect(
+      client.rebaseDraftLatest('page-1', {
+        expectedPageRevision: revision(3),
+        expectedMetadataRevision: revision(201),
+        keepConflictingFields: true,
+      }),
+    ).rejects.toMatchObject({ code: 'REVISION_CONFLICT' });
+    expect(commit).not.toHaveBeenCalled();
+    expect(client.page('page-1')?.data.elements[0].content?.text).toBe('Local draft');
+  });
+
+  it('keeps a deep recovery copy when adopting the disk version and restores it without overwriting new drafts', async () => {
+    const { client, setRemote, commit } = await setup();
+    client.patchElement('page-1', 'title', { 'content.text': 'Local draft' }, false);
+    const oldDraft = client.getState().drafts['page-1'];
+    setRemote(session('Other author', 2));
+    await client.refresh();
+    client.discardDraft('page-1');
+    oldDraft.fields.title['content.text'] = 'Mutated discarded reference';
+    expect(client.hasDiscardedDraft('page-1')).toBe(true);
+    expect(client.page('page-1')?.data.elements[0].content?.text).toBe('Other author');
+    client.restoreDiscardedDraft('page-1');
+    expect(client.page('page-1')?.data.elements[0].content?.text).toBe('Local draft');
+    expect(client.getState().drafts['page-1'].conflict).toBeTruthy();
+    await expect(client.flushPage('page-1')).rejects.toMatchObject({ code: 'REVISION_CONFLICT' });
+    expect(commit).not.toHaveBeenCalled();
+  });
+
+  it('retains a rebased draft when a second CAS conflict happens during save', async () => {
+    const { client, setRemote, commit } = await setup();
+    client.patchElement('page-1', 'title', { 'content.text': 'Local draft' }, false);
+    const latest = session('原稿', 2);
+    setRemote(latest);
+    await client.refresh();
+    commit.mockImplementation(async () => {
+      setRemote(session('Concurrent', 3));
+      throw new PptdClientError('REVISION_CONFLICT', 'Changed during save', 409);
+    });
+    await expect(
+      client.rebaseDraftLatest('page-1', {
+        expectedPageRevision: revision(2),
+        expectedMetadataRevision: revision(200),
+      }),
+    ).rejects.toMatchObject({ code: 'REVISION_CONFLICT' });
+    expect(client.page('page-1')?.data.elements[0].content?.text).toBe('Local draft');
+    expect(client.getState().drafts['page-1'].conflict).toBeTruthy();
+  });
+
   it('marks local review artwork projected through a failed save until deliberate discard', async () => {
     const initial = session();
     initial.pages[0].authorReview = {
@@ -1381,7 +1537,7 @@ describe('PPTD browser editing contract', () => {
     expect(client.getState().undoStack).toEqual(['redo-operation']);
   });
 
-  it('authenticates recovery and refreshes the session token for the receipt request', async () => {
+  it('authenticates recovery and its receipt through the trusted session capability', async () => {
     const recovered = { ...session('已恢复', 2), sessionToken: 'recovered-token' };
     const fetcher = vi
       .fn()
@@ -1401,7 +1557,7 @@ describe('PPTD browser editing contract', () => {
         headers: { 'content-type': 'application/json', 'x-huandeng-token': 'token' },
       }),
     ]);
-    expect(fetcher.mock.calls[2][1].headers['x-huandeng-token']).toBe('recovered-token');
+    expect(fetcher.mock.calls[2][1].headers['x-huandeng-token']).toBe('token');
   });
 
   it('retries an uncertain undo once and uses its new operation id for redo', async () => {

@@ -35,7 +35,7 @@ HUANDENG 就从这些问题开始。**故事由作者决定；工具和 AI 负�
 ## 开始使用
 
 1. **下载编辑器。** 从 [GitHub Releases](https://github.com/JaytonKogeru/huandeng/releases/latest) 获取最新版 Windows 应用，完整解压文件夹，然后运行 `HUANDENG Editor.exe`。
-2. **打开一份项目。** 在首页选择 `.pptd` 入口或项目文件夹；也可以从仓库打开 `examples/huandeng-introduction/chatgpt-zh/deck.pptd` 练习。
+2. **打开或新建项目。** 在首页选择 `.pptd` 入口或项目文件夹，或者新建空白项目、三页可编辑练习。填写名称和父文件夹后，界面会显示最终项目入口；也可以从仓库打开 `examples/huandeng-introduction/chatgpt-zh/deck.pptd`。
 3. **先改一处。** 选中页面，读一下 Story，修改画布对象并保存。随后去历史里查看这次修改，再用需要的页面组织一场 Presentation。
 
 也可以使用 Node.js 22.12+ 与 Corepack 从源码启动：
@@ -57,6 +57,8 @@ PPTD 项目本质上是**一个文件夹**，而不只是单个文件。入口 `
 桌面应用由 Electron 承载，React 提供可视化编辑界面。每个项目都有本地文档服务，Editor、CLI 和已连接的 AI 客户端通过同一套 Writer 修改文件；版本检查可以阻止过时的修改悄悄覆盖新内容。
 
 目前支持 **Claude Code、Codex、DeepSeek Harness** 的插件接入；ChatGPT 可以通过已授权的工作站连接调用同一工具。具体安装、权限及配置见 [Plugin 指南](plugins/huandeng/README.md)。连接成功不等于作品合格，仍需检查真实结果。
+
+需要先看方案时，让助手提交待审方案，在 Activity 中比较实际页面后接受。保存冲突也可并排比较、合并独立字段，并恢复暂存草稿。参见[审阅方案与保存冲突](docs/PROPOSAL-REVIEW.md)。
 
 [架构与文档模型](docs/SPEC.md) | [项目目录格式](docs/PROJECT-FOLDERS.md) | [AI 创作流程](plugins/huandeng/skills/huandeng-story/SKILL.md)
 

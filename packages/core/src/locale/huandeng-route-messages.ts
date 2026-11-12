@@ -1,7 +1,6 @@
 export const routeEnglish = {
   '将此配置保存为独立的 JSON patch，通过 dsh --patch 加载。保留现有模型与账户设置。':
     'Save this configuration as a separate JSON patch and load it with dsh --patch. Keep your existing model and account settings.',
-  '连接 Agent': 'Connect an Agent',
   '让 Agent 使用当前项目的 Story、素材与页面，先预览修改，再通过同一文档服务应用。':
     'Give your Agent the project’s Story, assets and slides. Preview changes, then apply them through the same document service.',
   客户端: 'Client',

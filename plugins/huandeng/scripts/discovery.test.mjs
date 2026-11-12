@@ -28,20 +28,21 @@ async function fixture() {
 async function session(f, name, entry = f.entry, url = 'http://127.0.0.1:12345') {
   await fs.writeFile(
     path.join(f.state, 'sessions', `${name}.json`),
-    JSON.stringify({ entry, url, epoch: 'test' }),
+    JSON.stringify({ entry, url, epoch: 'test', protocol: 2, agentToken: 'local-agent-token' }),
   );
 }
 function fetchFor(entry, extras = {}) {
   return async (url, options) => {
     assert.match(url, /^http:\/\/127\.0\.0\.1:/);
     assert.equal(options.redirect, 'error');
+    assert.equal(options.headers['x-huandeng-token'], 'local-agent-token');
     return {
       ok: true,
       json: async () => ({
         entry,
         title: 'Synthetic',
         writable: true,
-        desktopProtocol: 1,
+        desktopProtocol: 2,
         epoch: 'test',
         sessionToken: 'must-never-escape',
         ...extras,

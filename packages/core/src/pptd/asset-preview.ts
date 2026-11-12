@@ -6,7 +6,7 @@ import path from 'node:path';
 import { runtimeRoot } from './client';
 import { mimeType, readProjectAsset } from './export-environment';
 import { imageDimensions, imageFormat } from './export-images';
-import { hashBytes } from './persistence';
+import { hashBytes, resolveProjectPath } from './persistence';
 import { PptdError, type Revision } from './types';
 
 interface PreviewFile {
@@ -66,6 +66,7 @@ function sameEtag(value: string | undefined, etag: string): boolean {
 export class AssetPreviewManager {
   private readonly abort = new AbortController();
   private readonly cache = new Map<string, PreviewFile>();
+  private readonly sourceVersions = new Map<string, { signature: string; revision: Revision }>();
   private readonly pending = new Map<string, PendingPreview>();
   private readonly children = new Set<ChildProcess>();
   private readonly responses = new Set<ServerResponse>();
@@ -87,6 +88,7 @@ export class AssetPreviewManager {
     sourceReads: 0,
     derived: 0,
     hits: 0,
+    sourceVersionHits: 0,
     peakActive: 0,
     peakQueued: 0,
     cancelled: 0,
@@ -118,6 +120,7 @@ export class AssetPreviewManager {
       queued: this.queue.length,
       pending: this.pending.size,
       entries: this.cache.size,
+      sourceVersionEntries: this.sourceVersions.size,
       bytes: this.cacheBytes,
       maxEntries: this.maxEntries,
       maxBytes: this.maxBytes,
@@ -464,7 +467,7 @@ export class AssetPreviewManager {
     this.cacheBytes += entry.bytes;
   }
 
-  private async preview(source: string, bytes: Buffer, revision: Revision, size: number) {
+  private cachedPreview(revision: Revision, size: number): PreviewFile | undefined {
     const key = `${revision}:${size}:png-v1`;
     const cached = this.cache.get(key);
     if (cached && !cached.discarded) {
@@ -474,6 +477,23 @@ export class AssetPreviewManager {
       this.metrics.hits++;
       return cached;
     }
+  }
+
+  private async sourceSignature(source: string): Promise<string | undefined> {
+    if (/^[a-z][a-z0-9+.-]*:/i.test(source) || source.startsWith('//') || source.includes('\0'))
+      return;
+    const normalized = source.replaceAll('\\', '/').replace(/^\.\//, '').replace(/^\//, '');
+    if (!/^(?:media|assets)\//.test(normalized)) return;
+    const file = await resolveProjectPath(this.root, normalized);
+    const stat = await fs.stat(file, { bigint: true });
+    if (!stat.isFile()) return;
+    return [file, stat.dev, stat.ino, stat.size, stat.mtimeNs, stat.ctimeNs].join('/');
+  }
+
+  private async preview(source: string, bytes: Buffer, revision: Revision, size: number) {
+    const cached = this.cachedPreview(revision, size);
+    if (cached) return cached;
+    const key = `${revision}:${size}:png-v1`;
     const pending = this.pending.get(key);
     if (pending) {
       pending.users++;
@@ -536,25 +556,61 @@ export class AssetPreviewManager {
         let previewMs = 0;
         try {
           this.abort.signal.throwIfAborted();
-          this.metrics.sourceReads++;
           const readStarted = performance.now();
-          const bytes = await readProjectAsset(this.root, source)
-            .catch((error: unknown) => {
-              if ((error as NodeJS.ErrnoException).code === 'ENOENT')
-                throw new PptdError('TARGET_NOT_FOUND', 'This asset file is missing.');
-              throw error;
-            })
-            .finally(() => {
-              readMs = performance.now() - readStarted;
-              this.metrics.readMs += readMs;
-            });
-          const revision = hashBytes(bytes);
+          let bytes: Buffer | undefined;
+          let revision: Revision;
+          try {
+            const signature = await this.sourceSignature(source);
+            const cached = this.sourceVersions.get(source);
+            if (signature && cached?.signature === signature) {
+              revision = cached.revision;
+              if (expected && expected !== revision)
+                throw new PptdError(
+                  'REVISION_CONFLICT',
+                  'The asset changed; refresh its content version.',
+                );
+              if (preview) entry = this.cachedPreview(revision, size);
+              this.sourceVersions.delete(source);
+              this.sourceVersions.set(source, cached);
+              this.metrics.sourceVersionHits++;
+            }
+            if (
+              !entry &&
+              !(
+                cached &&
+                cached.signature === signature &&
+                signature &&
+                !preview &&
+                sameEtag(req.headers['if-none-match'], `"${cached.revision}"`)
+              )
+            ) {
+              this.metrics.sourceReads++;
+              bytes = await readProjectAsset(this.root, source);
+              revision = hashBytes(bytes);
+              if (signature) {
+                if ((await this.sourceSignature(source)) !== signature)
+                  throw new PptdError('REVISION_CONFLICT', 'The asset changed while being read.');
+                this.sourceVersions.delete(source);
+                this.sourceVersions.set(source, { signature, revision });
+                while (this.sourceVersions.size > this.maxEntries)
+                  this.sourceVersions.delete(this.sourceVersions.keys().next().value as string);
+              }
+            } else if (cached) revision = cached.revision;
+            else throw new Error('Asset source version is unavailable.');
+          } catch (error) {
+            if ((error as NodeJS.ErrnoException).code === 'ENOENT')
+              throw new PptdError('TARGET_NOT_FOUND', 'This asset file is missing.');
+            throw error;
+          } finally {
+            readMs = performance.now() - readStarted;
+            this.metrics.readMs += readMs;
+          }
           if (expected && expected !== revision)
             throw new PptdError(
               'REVISION_CONFLICT',
               'The asset changed; refresh its content version.',
             );
-          if (preview && !res.destroyed) {
+          if (preview && bytes && !entry && !res.destroyed) {
             const previewStarted = performance.now();
             try {
               entry = await this.preview(source, bytes, revision, size);
@@ -587,7 +643,9 @@ export class AssetPreviewManager {
             res.end();
             return;
           }
-          res.setHeader('content-length', entry?.bytes ?? bytes.length);
+          const length = entry?.bytes ?? bytes?.length;
+          if (length === undefined) throw new Error('Asset bytes are unavailable.');
+          res.setHeader('content-length', length);
           await new Promise<void>((resolve, reject) => {
             const stream = entry ? createReadStream(entry.file) : undefined;
             const finish = () => {
@@ -655,6 +713,7 @@ export class AssetPreviewManager {
         }
       }
       this.cache.clear();
+      this.sourceVersions.clear();
       this.cacheBytes = 0;
       this.cleanupPending.clear();
       this.directory = undefined;

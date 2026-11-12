@@ -103,6 +103,32 @@ program
     print(await (await client()).preview(request));
   });
 program
+  .command('propose <transaction>')
+  .description('Submit an optional proposal for review in Editor Activity; does not save slides')
+  .option('--title <title>', 'short title shown in the proposal inbox')
+  .action(async (file, options) => {
+    const transaction: TransactionRequest = JSON.parse(await fs.readFile(file, 'utf8'));
+    const connection = await client();
+    const preview = await connection.preview(transaction);
+    const proposal = await connection.request('/proposals', {
+      transaction,
+      previewHash: preview.previewHash,
+      title: options.title,
+    });
+    print({
+      proposal,
+      next: 'In the Editor, open Activity, then Review proposals. The project is unchanged until accepted.',
+    });
+  });
+program
+  .command('proposals [id]')
+  .description('Read optional proposals without granting UI approval authority')
+  .action(async (id) =>
+    print(
+      await (await client()).request(id ? `/proposals/${encodeURIComponent(id)}` : '/proposals'),
+    ),
+  );
+program
   .command('guide [topic]')
   .description('Read the story or operations Agent guide without opening a project')
   .action((topic = 'story') => {

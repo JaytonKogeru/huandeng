@@ -3,6 +3,8 @@ import type { AssetLibraryOptions, AssetLibraryResult } from '../../pptd/asset-l
 import type { DesignAuditOptions, DesignAuditReport } from '../../pptd/design-audit';
 import type { ProjectFilePreview } from '../../pptd/project-file-preview';
 import type { StoryBriefing, StoryBriefingOptions } from '../../pptd/project-insights';
+import type { ProposalDecision, ProposalDetail, ProposalSummary } from '../../pptd/proposal-inbox';
+import { applySnapshotUpdate, type SnapshotUpdate } from '../../pptd/snapshot-delta';
 import type {
   CreatePageCheckpointRequest,
   DeckSnapshot,
@@ -16,6 +18,12 @@ import type {
 } from '../../pptd/types';
 import type { VideoCapabilities } from '../../pptd/video-encoder';
 import type { ExportJobStatus, ExportResult, VideoExportOptions } from '../../pptd/video-plan';
+import {
+  prepareResources,
+  resourceUrl,
+  sessionHeaders,
+  subscribeAuthenticated,
+} from './pptd-session';
 
 export type PptdSession = DeckSnapshot & { sessionToken: string };
 
@@ -49,7 +57,7 @@ export class PptdClientError extends Error {
 
 export interface PptdTransport {
   getSnapshot(): Promise<PptdSession>;
-  getCommittedSnapshot?(): Promise<PptdSession>;
+  getCommittedSnapshot?(base?: PptdSession): Promise<PptdSession>;
   recoverPending(): Promise<PptdSession>;
   commit(request: TransactionRequest): Promise<TransactionResult>;
   revert(
@@ -75,22 +83,42 @@ function queryPath(endpoint: string, options: object): string {
 }
 
 export function pptdAssetUrl(path: string, exportId?: string): string {
-  if (!exportId && /^https?:\/\//i.test(path)) return path;
+  if (/^data:/i.test(path) || (!exportId && /^(?:https?:|blob:)/i.test(path))) return path;
   const prefix = exportId ? `${API}/exports/${encodeURIComponent(exportId)}` : API;
-  return `${prefix}/asset?path=${encodeURIComponent(path)}`;
+  return resourceUrl(`${prefix}/asset?path=${encodeURIComponent(path)}`);
 }
 
 export function pptdAssetPreviewUrl(path: string, size: 320 | 640 = 320): string {
   if (/^(?:https?:|data:|blob:)/i.test(path)) return path;
-  return `${API}/asset-preview?path=${encodeURIComponent(path)}&size=${size}`;
+  return resourceUrl(`${API}/asset-preview?path=${encodeURIComponent(path)}&size=${size}`);
 }
 
 export function pptdProjectFileImageUrl(path: string, revision: string): string {
-  return `${API}${queryPath('/project-file-preview/image', { path, revision })}`;
+  return resourceUrl(
+    `${API}${queryPath('/project-file-preview/image', { path, revision })}`,
+    revision,
+  );
 }
 
 export class PptdBackend implements PptdTransport {
-  private token = '';
+  proposals(): Promise<ProposalSummary[]> {
+    return this.request('/proposals');
+  }
+
+  proposal(id: string): Promise<ProposalDetail> {
+    return this.request('/proposals/' + encodeURIComponent(id));
+  }
+
+  decideProposal(id: string, decision: ProposalDecision): Promise<ProposalDetail> {
+    return this.request('/proposals/' + encodeURIComponent(id) + '/decision', decision);
+  }
+
+  selectProposalPages(
+    id: string,
+    body: { pageIds: string[]; previewHash: string },
+  ): Promise<ProposalSummary> {
+    return this.request('/proposals/' + encodeURIComponent(id) + '/subset', body);
+  }
 
   operationReview(
     operationId: string,
@@ -116,17 +144,14 @@ export class PptdBackend implements PptdTransport {
     listener: (event: ActivityEvent) => void,
     onConnection: (connected: boolean) => void,
   ): () => void {
-    const stream = new EventSource(`${API}/activity/events`);
-    stream.addEventListener('connected', () => onConnection(true));
-    stream.addEventListener('activity', (event) => {
-      try {
-        listener(JSON.parse((event as MessageEvent).data) as ActivityEvent);
-      } catch {
-        onConnection(false);
-      }
-    });
-    stream.onerror = () => onConnection(false);
-    return () => stream.close();
+    return subscribeAuthenticated(
+      API,
+      '/activity/events',
+      (event, data) => {
+        if (event === 'activity') listener(JSON.parse(data) as ActivityEvent);
+      },
+      onConnection,
+    );
   }
 
   private async request<T>(path: string, body?: unknown, signal?: AbortSignal): Promise<T> {
@@ -134,12 +159,10 @@ export class PptdBackend implements PptdTransport {
     try {
       response = await fetch(`${API}${path}`, {
         method: body === undefined ? 'GET' : 'POST',
-        headers:
-          body === undefined
-            ? undefined
-            : { 'content-type': 'application/json', 'x-huandeng-token': this.token },
+        headers: { 'content-type': 'application/json', ...(await sessionHeaders(API)) },
         body: body === undefined ? undefined : JSON.stringify(body),
         cache: 'no-store',
+        redirect: 'error',
         signal,
       });
     } catch (error) {
@@ -165,6 +188,8 @@ export class PptdBackend implements PptdTransport {
         failure.details ?? {},
       );
     }
+    const exportId = /^\/exports\/([^/]+)\/snapshot$/.exec(path)?.[1];
+    await prepareResources(API, payload, exportId);
     return payload as T;
   }
 
@@ -172,7 +197,23 @@ export class PptdBackend implements PptdTransport {
     return this.acceptSession(await this.request<PptdSession>('/session'));
   }
 
-  async getCommittedSnapshot(): Promise<PptdSession> {
+  async getCommittedSnapshot(base?: PptdSession): Promise<PptdSession> {
+    if (base) {
+      const update = await this.request<SnapshotUpdate & { sessionToken: string }>(
+        queryPath('/changes', {
+          epoch: base.epoch,
+          sequence: base.sequence,
+          manifestRevision: base.manifestRevision,
+          metadataRevision: base.metadataRevision ?? 'null',
+        }),
+      );
+      try {
+        return this.acceptSession({
+          ...applySnapshotUpdate(base, update),
+          sessionToken: update.sessionToken,
+        });
+      } catch {}
+    }
     return this.acceptSession(await this.request<PptdSession>('/current'));
   }
 
@@ -188,7 +229,6 @@ export class PptdBackend implements PptdTransport {
         503,
       );
     }
-    this.token = session.sessionToken;
     return session;
   }
 
@@ -328,19 +368,14 @@ export class PptdBackend implements PptdTransport {
     listener: (event: DocumentEvent) => void,
     onConnection: (connected: boolean) => void,
   ): () => void {
-    const stream = new EventSource(`${API}/events`);
-    const receive = (event: MessageEvent<string>) => {
-      try {
-        listener(JSON.parse(event.data) as DocumentEvent);
-      } catch {
-        onConnection(false);
-      }
-    };
-    stream.onopen = () => onConnection(true);
-    stream.onerror = () => onConnection(false);
-    stream.onmessage = receive;
-    stream.addEventListener('document', receive as EventListener);
-    stream.addEventListener('change', receive as EventListener);
-    return () => stream.close();
+    return subscribeAuthenticated(
+      API,
+      '/events',
+      (event, data) => {
+        if (['message', 'document', 'change'].includes(event))
+          listener(JSON.parse(data) as DocumentEvent);
+      },
+      onConnection,
+    );
   }
 }

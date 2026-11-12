@@ -23,14 +23,18 @@
     "cli": "pnpm --filter @open-slide/cli",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "turbo run build --filter=@open-slide/core --filter=@open-slide/cli && changeset publish",
+    "release": "node scripts/guard-product-publish.mjs",
     "huandeng": "node packages/core/huandeng.js",
-    "desktop": "pnpm --filter @huandeng/desktop start"
+    "desktop": "pnpm --filter @huandeng/desktop start",
+    "check:release": "node scripts/guard-product-publish.mjs --check",
+    "test:native": "node scripts/test-native-contracts.mjs",
+    "version:product": "node scripts/set-product-version.mjs"
   },
   "devDependencies": {
     "@biomejs/biome": "2.5.7",
     "@changesets/changelog-github": "^0.7.0",
     "@changesets/cli": "^3.0.2",
+    "resedit": "3.1.0",
     "turbo": "^2.11.7",
     "vitest": "^5.0.0"
   }

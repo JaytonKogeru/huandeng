@@ -36,6 +36,7 @@ import { PptdActivityPanel } from '@/components/pptd/activity-panel';
 import { AgentConnectionDialog } from '@/components/pptd/agent-connection-dialog';
 import { AssetLibrary } from '@/components/pptd/asset-library';
 import { AuthoringWorkspace } from '@/components/pptd/authoring-workspace';
+import { ConflictReviewDialog } from '@/components/pptd/conflict-review-dialog';
 import { CreateSectionDialog } from '@/components/pptd/create-section-dialog';
 import { type DesignIntentDraft, DesignIntentPanel } from '@/components/pptd/design-intent-panel';
 import { DesignQualityDialog } from '@/components/pptd/design-quality-dialog';
@@ -57,6 +58,7 @@ import { ProjectOverview } from '@/components/pptd/project-overview';
 import { ProjectPanel } from '@/components/pptd/project-panel';
 import { ProjectRules } from '@/components/pptd/project-rules';
 import { PptdProjectTree } from '@/components/pptd/project-tree';
+import { ProposalInboxDialog } from '@/components/pptd/proposal-inbox-dialog';
 import { RecipePanel } from '@/components/pptd/recipe-panel';
 import type { PptdTheme } from '@/components/pptd/renderer';
 import { ScienceInsertMenu } from '@/components/pptd/science-insert-menu';
@@ -160,6 +162,7 @@ export function HuandengEditor() {
   const snapping = useSnappingPreference();
   const [agentConnectionOpen, setAgentConnectionOpen] = useState(false);
   const [activityOpen, setActivityOpen] = useState(false);
+  const [proposalsOpen, setProposalsOpen] = useState(false);
   const [activityPageId, setActivityPageId] = useState<string | null>(null);
   const [designQualityOpen, setDesignQualityOpen] = useState(false);
   const [sectionEditorRequest, setSectionEditorRequest] = useState<{
@@ -193,6 +196,7 @@ export function HuandengEditor() {
     {},
   );
   const [pendingDraftsOpen, setPendingDraftsOpen] = useState(false);
+  const [conflictReviewPageId, setConflictReviewPageId] = useState<string | null>(null);
   const [draftResetKey, setDraftResetKey] = useState(0);
   const [importingImages, setImportingImages] = useState(false);
   const storyDirty = Object.values(storyDrafts).some((draft) => draft.dirty);
@@ -470,6 +474,9 @@ export function HuandengEditor() {
     [filePreviewPath, closeFilePreview],
   );
   const conflict = selectedPageId ? state.drafts[selectedPageId]?.conflict : undefined;
+  const conflictDetails = conflictReviewPageId
+    ? client.conflictDetails(conflictReviewPageId)
+    : null;
   const pageReadonly = !snapshot?.writable || !!selectedView?.versionId;
   const readonly = pageReadonly || previewActive || timelineDirty;
   if (
@@ -2866,6 +2873,13 @@ export function HuandengEditor() {
                   {t('{message} 自动保存已暂停。', { message: t(conflict) })}
                 </p>
                 <div className="flex gap-2">
+                  <Button
+                    size="xs"
+                    variant="outline"
+                    onClick={() => setConflictReviewPageId(selectedPageId)}
+                  >
+                    {t('Review differences')}
+                  </Button>
                   <Button size="xs" variant="outline" onClick={copyDraft}>
                     <Copy />
                     {t('复制本地草稿')}
@@ -2875,13 +2889,32 @@ export function HuandengEditor() {
                     variant="outline"
                     disabled={state.saving || state.canRetry || state.recoveryRequired}
                     onClick={() => {
-                      if (selectedPageId) client.discardDraft(selectedPageId);
-                      setUiError(null);
+                      setConflictReviewPageId(selectedPageId);
                     }}
                   >
-                    {t('放弃草稿，采用磁盘版本')}
+                    {t('Use saved version')}
                   </Button>
                 </div>
+              </div>
+            )}
+            {selectedPageId && !conflict && client.hasDiscardedDraft(selectedPageId) && (
+              <div
+                className="flex shrink-0 items-center gap-3 border-b bg-muted/50 px-4 py-2 text-xs"
+                data-hd-recover-draft
+              >
+                <span>{t('A copy of your previous draft is available in this session.')}</span>
+                <Button
+                  size="xs"
+                  variant="outline"
+                  disabled={state.saving || state.canRetry || state.recoveryRequired}
+                  onClick={() =>
+                    void run(async () => {
+                      await client.restoreDiscardedDraft(selectedPageId);
+                    })
+                  }
+                >
+                  {t('Recover draft')}
+                </Button>
               </div>
             )}
             {insertionTool && (
@@ -3263,6 +3296,7 @@ export function HuandengEditor() {
                 if (currentReviewTarget(snapshot, id)) selectMainPage(id);
               }}
               onReview={(operationId) => setOperationReview({ operationId, backend })}
+              onProposals={() => setProposalsOpen(true)}
               onClose={() => setActivityOpen(false)}
             />
           )}
@@ -3658,6 +3692,53 @@ export function HuandengEditor() {
         />
       )}
 
+      {conflictReviewPageId && conflictDetails && (
+        <ConflictReviewDialog
+          key={`${conflictReviewPageId}:${conflictDetails.remote?.pageRevision}:${snapshot.metadataRevision}`}
+          snapshot={snapshot}
+          details={conflictDetails}
+          blocked={state.saving || state.canRetry || state.recoveryRequired || !snapshot.writable}
+          onClose={() => setConflictReviewPageId(null)}
+          onCopy={async () => {
+            await navigator.clipboard.writeText(
+              JSON.stringify(conflictDetails.local.data, null, 2),
+            );
+          }}
+          onDiscard={() => {
+            client.discardDraft(conflictReviewPageId);
+            setConflictReviewPageId(null);
+            setUiError(null);
+          }}
+          onKeep={async (keepConflictingFields) => {
+            if (!conflictDetails.remote) return;
+            await client.rebaseDraftLatest(conflictReviewPageId, {
+              expectedPageRevision: conflictDetails.remote.pageRevision,
+              expectedMetadataRevision: snapshot.metadataRevision,
+              keepConflictingFields,
+            });
+            setConflictReviewPageId(null);
+          }}
+        />
+      )}
+      {proposalsOpen && (
+        <ProposalInboxDialog
+          backend={backend}
+          sequence={snapshot.sequence}
+          blocked={
+            projectHasDrafts ||
+            state.saving ||
+            state.canRetry ||
+            state.recoveryRequired ||
+            !snapshot.writable
+          }
+          onClose={() => setProposalsOpen(false)}
+          onSaved={async (operationId) => {
+            await client.refresh();
+            setProposalsOpen(false);
+            setOperationReview({ operationId, backend });
+          }}
+        />
+      )}
       <ExportDialog
         open={exportOpen}
         onOpenChange={setExportOpen}

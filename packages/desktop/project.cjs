@@ -10,6 +10,24 @@ const { initializeProject } = require(
 );
 const { markProjectFolder } = require('./project-folder.cjs');
 
+function projectLocation(parent, name) {
+  if (typeof parent !== 'string' || !path.isAbsolute(parent))
+    throw new Error('Choose a parent folder.');
+  if (
+    typeof name !== 'string' ||
+    !name.trim() ||
+    name.length > 100 ||
+    /[<>:"/\\|?*]/.test(name) ||
+    Array.from(name).some((character) => character.charCodeAt(0) < 32) ||
+    /[. ]$/.test(name) ||
+    /^(con|prn|aux|nul|com[1-9]|lpt[1-9])(?:\.|$)/i.test(name)
+  )
+    throw new Error(desktopText('请使用有效的项目文件夹名称。'));
+  const title = name.trim();
+  const root = path.join(parent, title);
+  return { name: title, root, entry: path.join(root, 'deck.pptd') };
+}
+
 async function readPreferences(file) {
   try {
     const value = JSON.parse(await fs.readFile(file, 'utf8'));
@@ -37,6 +55,8 @@ async function createProject(selectedPath, options = {}) {
   const root = path.join(path.dirname(selectedPath), title);
   try {
     await initializeProject(root, { title });
+    if (options.template === 'guide')
+      await require('./starter-project.cjs').writeStarterProject(root, title, options.locale);
   } catch (error) {
     if (error.code === 'EEXIST') {
       throw new Error(desktopText('项目文件夹已经存在，请换一个名称：\n{path}', { path: root }));
@@ -48,4 +68,4 @@ async function createProject(selectedPath, options = {}) {
   return entryPath;
 }
 
-module.exports = { readPreferences, writePreferences, pathKey, createProject };
+module.exports = { readPreferences, writePreferences, pathKey, createProject, projectLocation };

@@ -126,6 +126,55 @@ async function heldReads(root: string, names: string[]) {
 }
 
 describe('versioned and bounded asset previews', () => {
+  it('answers stable original conditionals without rereading bytes and rejects a changed version with restored mtime', async () => {
+    const { root, bytes, manager, url } = await setup();
+    const original = url('media/source.png', undefined, 320, false);
+    const first = await fetch(original);
+    const etag = first.headers.get('etag') as string;
+    await first.arrayBuffer();
+    const reads = manager.usage().sourceReads;
+    for (let i = 0; i < 3; i++)
+      expect((await fetch(original, { headers: { 'if-none-match': etag } })).status).toBe(304);
+    expect(manager.usage().sourceReads).toBe(reads);
+    const file = path.join(root, 'media/source.png');
+    const before = await fs.stat(file);
+    const replacement = png(1024, 512, 1);
+    expect(replacement.length).toBe(bytes.length);
+    await fs.writeFile(file, replacement);
+    await fs.utimes(file, before.atime, before.mtime);
+    const stale = await fetch(url('media/source.png', hashBytes(bytes), 320, false), {
+      headers: { 'if-none-match': etag },
+    });
+    expect(stale.status).toBe(409);
+    await stale.arrayBuffer();
+    const changed = await fetch(original, { headers: { 'if-none-match': etag } });
+    expect(changed.status).toBe(200);
+    expect(changed.headers.get('etag')).not.toBe(etag);
+    expect(hashBytes(Buffer.from(await changed.arrayBuffer()))).toBe(hashBytes(replacement));
+  });
+
+  it('reuses validated preview files without original reads and invalidates on atomic replacement', async () => {
+    const { root, manager, url } = await setup({ encoder: false, maxEntries: 2 });
+    const first = await fetch(url());
+    const etag = first.headers.get('etag') as string;
+    await first.arrayBuffer();
+    const reads = manager.usage().sourceReads;
+    const second = await fetch(url());
+    expect(second.status).toBe(200);
+    await second.arrayBuffer();
+    expect((await fetch(url(), { headers: { 'if-none-match': etag } })).status).toBe(304);
+    expect(manager.usage().sourceReads).toBe(reads);
+    const temporary = path.join(root, 'media/replacement.png');
+    await fs.writeFile(temporary, png(1024, 512, 2));
+    await fs.rename(temporary, path.join(root, 'media/source.png'));
+    const changed = await fetch(url(), { headers: { 'if-none-match': etag } });
+    expect(changed.status).toBe(200);
+    expect(changed.headers.get('etag')).not.toBe(etag);
+    await changed.arrayBuffer();
+    expect(manager.usage().sourceReads).toBe(reads + 1);
+    expect(manager.usage().sourceVersionEntries).toBeLessThanOrEqual(2);
+  });
+
   it('prioritizes originals but dispatches a waiting preview after at most three originals', async () => {
     const { root, manager, url } = await setup();
     const gate = await heldReads(root, [
@@ -426,6 +475,7 @@ describe('versioned and bounded asset previews', () => {
         height: 512,
       });
     },
+    15000,
   );
 
   it('limits source reads before allocating original buffers and rejects excess queued requests', async () => {

@@ -3,6 +3,8 @@ import fs from 'node:fs/promises';
 import { createRequire } from 'node:module';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { desktopRuntimeDependencies } from './desktop-runtime-dependencies.mjs';
+import { copyDesktopNotices } from './desktop-third-party-notices.mjs';
 
 const repository = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const destination = path.resolve(process.argv[2]);
@@ -27,6 +29,10 @@ for (const name of ['core', 'desktop']) {
         ),
   });
 }
+await copyDesktopNotices(
+  path.join(repository, 'packages', 'core'),
+  path.join(destination, 'packages', 'desktop', 'third-party'),
+);
 const desktopPackagePath = path.join(destination, 'packages', 'desktop', 'package.json');
 const desktopPackage = JSON.parse(await fs.readFile(desktopPackagePath, 'utf8'));
 const desktopRelease = JSON.parse(
@@ -46,6 +52,35 @@ execFileSync(
     path.join(destination, 'packages', 'desktop', 'plugins'),
   ],
   { cwd: repository, windowsHide: true },
+);
+const runtime = await desktopRuntimeDependencies(path.join(repository, 'packages', 'core'));
+const corePackagePath = path.join(destination, 'packages', 'core', 'package.json');
+const corePackage = JSON.parse(await fs.readFile(corePackagePath, 'utf8'));
+corePackage.dependencies = runtime.dependencies;
+corePackage.huandengDesktopRuntime = true;
+corePackage.files = corePackage.files.filter(
+  (file) =>
+    ![
+      'src/app',
+      'src/locale',
+      'src/agent/prompt.ts',
+      'src/agent/provider.ts',
+      'src/agent/types.ts',
+      'src/editing/placeholder-id.ts',
+    ].includes(file),
+);
+await fs.writeFile(corePackagePath, `${JSON.stringify(corePackage, null, 2)}\n`);
+const coreImporter = lockfile.importers['packages/core'];
+coreImporter.dependencies = Object.fromEntries(
+  Object.keys(runtime.dependencies).map((name) => {
+    if (!coreImporter.dependencies?.[name])
+      throw new Error(`Missing locked runtime dependency: ${name}`);
+    return [name, coreImporter.dependencies[name]];
+  }),
+);
+await fs.writeFile(
+  path.join(destination, 'desktop-runtime.json'),
+  `${JSON.stringify(runtime, null, 2)}\n`,
 );
 lockfile.settings = { ...lockfile.settings, injectWorkspacePackages: true };
 await fs.writeFile(path.join(destination, 'pnpm-lock.yaml'), stringify(lockfile));

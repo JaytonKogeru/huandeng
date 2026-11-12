@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'" />
+    <title>New project</title>
+    <link rel="stylesheet" href="new-project.css" />
+  </head>
+  <body>
+    <form id="project-form">
+      <header><h1 data-text="New project">New project</h1><p data-text="Keep your slides, source images and history together in one folder.">Keep your slides, source images and history together in one folder.</p></header>
+      <label for="project-name" data-text="Project name">Project name</label>
+      <input id="project-name" name="name" type="text" autocomplete="off" maxlength="100" required value="Untitled" />
+      <label for="parent-folder" data-text="Parent folder">Parent folder</label>
+      <div class="folder-row"><input id="parent-folder" type="text" readonly /><button type="button" id="browse" data-text="Choose…">Choose…</button></div>
+      <fieldset><legend data-text="Start with">Start with</legend>
+        <label class="choice"><input type="radio" name="template" value="blank" checked /><span data-text="Blank project">Blank project</span></label>
+        <label class="choice"><input type="radio" name="template" value="guide" /><span data-text="Three editable practice slides">Three editable practice slides</span></label>
+      </fieldset>
+      <section class="preview" aria-live="polite"><strong data-text="Project entry">Project entry</strong><output id="destination"></output></section>
+      <p id="error" role="alert"></p>
+      <footer><button type="button" id="cancel" data-text="Cancel">Cancel</button><button type="submit" id="create" class="primary" data-text="Create project">Create project</button></footer>
+    </form>
+    <script src="new-project.js"></script>
+  </body>
+</html>
