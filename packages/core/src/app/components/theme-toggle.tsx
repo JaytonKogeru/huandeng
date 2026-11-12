@@ -1,6 +1,6 @@
 import { Monitor, Moon, Sun } from 'lucide-react';
-import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
+import { toast } from 'sonner';
 import { IconTooltip, MenuTooltipTrigger } from '@/components/icon-tooltip';
 import { buttonVariants } from '@/components/ui/button';
 import {
@@ -9,13 +9,18 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { uiText } from '@/lib/huandeng-locale';
+import { useInterfaceTheme } from '@/lib/huandeng-theme';
 import { useLocale } from '@/lib/use-locale';
 import { cn } from '@/lib/utils';
 
 export function ThemeToggle() {
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme } = useInterfaceTheme();
   const [mounted, setMounted] = useState(false);
   const t = useLocale();
+  const chooseTheme = (next: 'system' | 'light' | 'dark') => {
+    void setTheme(next).catch(() => toast.error(uiText('界面主题未能保存。')));
+  };
 
   useEffect(() => {
     setMounted(true);
@@ -39,21 +44,21 @@ export function ThemeToggle() {
       </IconTooltip>
       <DropdownMenuContent align="end" className="min-w-[140px]">
         <DropdownMenuItem
-          onClick={() => setTheme('light')}
+          onClick={() => chooseTheme('light')}
           data-active={mounted && theme === 'light'}
         >
           <Sun />
           {t.themeToggle.light}
         </DropdownMenuItem>
         <DropdownMenuItem
-          onClick={() => setTheme('dark')}
+          onClick={() => chooseTheme('dark')}
           data-active={mounted && theme === 'dark'}
         >
           <Moon />
           {t.themeToggle.dark}
         </DropdownMenuItem>
         <DropdownMenuItem
-          onClick={() => setTheme('system')}
+          onClick={() => chooseTheme('system')}
           data-active={mounted && theme === 'system'}
         >
           <Monitor />

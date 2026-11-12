@@ -2,6 +2,13 @@ export const workspaceChinese = {
   Workspace: '工作区',
   'Choose a setting group. Changes apply immediately.': '选择设置分组，修改即时生效。',
   'Workspace setting groups': '工作区设置分组',
+  'Application preferences': '整个编辑器',
+  'Theme and language apply to every open project.': '主题和界面语言对所有打开的项目生效。',
+  'Interface theme could not be saved.': '界面主题未能保存。',
+  'Current project layout': '当前项目的面板布局',
+  'Panel visibility, sizes and Notes dock are remembered separately for this project.':
+    '面板显示状态、宽度及备注位置仅针对当前项目单独记忆。',
+  'Snapping applies to all open projects.': '吸附设置对所有打开的项目生效。',
   'Project tabs': '项目标签页',
   'Across the top': '顶部横排',
   'Down the left': '左侧竖排',

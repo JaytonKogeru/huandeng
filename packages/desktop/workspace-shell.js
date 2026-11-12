@@ -1,4 +1,25 @@
 const desktop = window.huandengDesktop;
+const systemThemeQuery = window.matchMedia('(prefers-color-scheme: dark)');
+const applyDesktopTheme = (value) => {
+  if (value !== 'system' && value !== 'light' && value !== 'dark') return;
+  document.documentElement.style.colorScheme = value === 'system' ? 'light dark' : value;
+  document.documentElement.dataset.themeMode =
+    value === 'system' ? (systemThemeQuery.matches ? 'dark' : 'light') : value;
+};
+systemThemeQuery.addEventListener('change', () => {
+  if (document.documentElement.style.colorScheme === 'light dark') applyDesktopTheme('system');
+});
+let themeBroadcast = false;
+desktop.onThemeChanged?.((value) => {
+  themeBroadcast = true;
+  applyDesktopTheme(value);
+});
+void desktop
+  .getTheme?.()
+  .then((value) => {
+    if (!themeBroadcast) applyDesktopTheme(value);
+  })
+  .catch(() => {});
 const tabs = document.getElementById('project-tabs');
 const menu = document.getElementById('workspace-menu');
 const home = document.getElementById('workspace-home');

@@ -176,6 +176,23 @@ async function changeLocale(locale) {
   broadcast('huandeng:locale-changed', locale);
   return locale;
 }
+function currentInterfaceTheme() {
+  return ['system', 'light', 'dark'].includes(preferences.uiTheme) ? preferences.uiTheme : 'system';
+}
+async function changeTheme(theme) {
+  if (!['system', 'light', 'dark'].includes(theme)) throw new Error('Invalid interface theme.');
+  const previous = preferences.uiTheme;
+  preferences.uiTheme = theme;
+  try {
+    await savePreferences();
+  } catch (error) {
+    preferences.uiTheme = previous;
+    throw error;
+  }
+  nativeTheme.themeSource = theme;
+  broadcast('huandeng:theme-changed', theme);
+  return theme;
+}
 async function changeTabLayout(update) {
   const previous = preferences.projectTabs;
   const next = updateProjectTabLayout(previous, update);
@@ -1003,6 +1020,8 @@ function registerIpc() {
   );
   handle('huandeng:get-locale', () => getCurrentLocale());
   handle('huandeng:set-locale', (_sender, locale) => operate(() => changeLocale(locale)));
+  handle('huandeng:get-theme', () => currentInterfaceTheme());
+  handle('huandeng:set-theme', (_sender, theme) => operate(() => changeTheme(theme)));
   handle('huandeng:get-snapping', () => preferences.snapping !== false);
   handle('huandeng:set-snapping', (_sender, enabled) => operate(() => changeSnapping(enabled)));
   handle('huandeng:edit-native', (sender, command) => editNative(command, sender.contents));
@@ -1219,6 +1238,7 @@ else {
         );
       await fs.mkdir(app.getPath('userData'), { recursive: true });
       preferences = await readPreferences(preferencesFile);
+      nativeTheme.themeSource = currentInterfaceTheme();
       const lastProject = preferences.lastProject;
       const lastReadOnly = preferences.lastReadOnly;
       const restore = Array.isArray(preferences.openProjects)

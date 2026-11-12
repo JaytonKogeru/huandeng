@@ -1,7 +1,7 @@
 import { Keyboard, PanelLeft, PanelTop, RotateCcw, X } from 'lucide-react';
-import { useTheme } from 'next-themes';
 import { useState } from 'react';
 import { useHuandengLocale } from '@/lib/huandeng-locale';
+import { useInterfaceTheme } from '@/lib/huandeng-theme';
 import { useWorkspaceTabLayout } from '@/lib/use-workspace-tab-layout';
 import { Button } from '../ui/button';
 import {
@@ -49,7 +49,9 @@ export function WorkspaceSettings({
   snapping: { enabled: boolean; disabled: boolean; onChange: (value: boolean) => void };
 }) {
   const { locale, t, setLocale } = useHuandengLocale();
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme } = useInterfaceTheme();
+  const [themeSaving, setThemeSaving] = useState(false);
+  const [themeError, setThemeError] = useState(false);
   const tabs = useWorkspaceTabLayout(open);
   const [languageSaving, setLanguageSaving] = useState(false);
   const [languageError, setLanguageError] = useState(false);
@@ -85,13 +87,28 @@ export function WorkspaceSettings({
             className="min-h-0 space-y-5 overflow-y-auto pr-1"
           >
             <section className="grid gap-3 sm:grid-cols-2">
+              <div className="space-y-1 sm:col-span-2">
+                <h3 className="text-sm font-semibold">{t('Application preferences')}</h3>
+                <p className="text-xs text-muted-foreground">
+                  {t('Theme and language apply to every open project.')}
+                </p>
+              </div>
               <label className="space-y-1.5 text-sm">
                 <span className="block font-medium">{t('Interface theme')}</span>
                 <select
                   className={selectClass}
                   aria-label={t('Interface theme')}
                   value={theme ?? 'system'}
-                  onChange={(event) => setTheme(event.target.value)}
+                  disabled={themeSaving}
+                  onChange={(event) => {
+                    const next = event.target.value;
+                    if (next !== 'system' && next !== 'light' && next !== 'dark') return;
+                    setThemeSaving(true);
+                    setThemeError(false);
+                    void setTheme(next)
+                      .catch(() => setThemeError(true))
+                      .finally(() => setThemeSaving(false));
+                  }}
                 >
                   <option value="system">{t('Follow system')}</option>
                   <option value="light">{t('Light theme')}</option>
@@ -119,6 +136,11 @@ export function WorkspaceSettings({
                   <option value="zh-CN">简体中文</option>
                 </select>
               </label>
+              {themeError && (
+                <p className="text-xs text-destructive sm:col-span-2" role="alert">
+                  {t('Interface theme could not be saved.')}
+                </p>
+              )}
               {languageError && (
                 <p className="text-xs text-destructive sm:col-span-2" role="alert">
                   {t('界面语言未能保存。')}
@@ -180,7 +202,12 @@ export function WorkspaceSettings({
               </section>
             )}
             <section className="space-y-3 border-t pt-4">
-              <h3 className="text-sm font-semibold">{t('Panels')}</h3>
+              <h3 className="text-sm font-semibold">{t('Current project layout')}</h3>
+              <p className="text-xs text-muted-foreground">
+                {t(
+                  'Panel visibility, sizes and Notes dock are remembered separately for this project.',
+                )}
+              </p>
               {[
                 { label: 'Project navigation', checked: navigation, change: onNavigation },
                 { label: 'Inspector', checked: inspector, change: onInspector },
@@ -231,6 +258,9 @@ export function WorkspaceSettings({
             <section className="space-y-3">
               <h3 className="text-sm font-semibold">{t('Editing')}</h3>
               <SnappingToggle {...snapping} />
+              <p className="text-xs text-muted-foreground">
+                {t('Snapping applies to all open projects.')}
+              </p>
               <p className="text-xs leading-relaxed text-muted-foreground">
                 {t('Hold Alt to temporarily bypass snapping.')}
               </p>

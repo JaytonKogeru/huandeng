@@ -1,9 +1,10 @@
 import { Check, Languages, Loader2, Monitor, Moon, RotateCw, Search, Sun } from 'lucide-react';
-import { useTheme } from 'next-themes';
 import { type ReactNode, useEffect, useMemo, useState } from 'react';
+import { toast } from 'sonner';
 import { IconTooltip } from '@/components/icon-tooltip';
 import { buttonVariants } from '@/components/ui/button';
 import { TooltipTrigger } from '@/components/ui/tooltip';
+import { useInterfaceTheme } from '@/lib/huandeng-theme';
 import { IS_APPLE } from '@/lib/keys';
 import { LOCALE_OPTIONS, setLocale } from '@/lib/locale-store';
 import { format, useLocale } from '@/lib/use-locale';
@@ -80,7 +81,13 @@ export function CommandMenu({
     if (item.disabled) return;
     // Close first: exports, fullscreen and panels all expect an unobstructed page.
     onOpenChange(false);
-    void item.run();
+    try {
+      void Promise.resolve(item.run()).catch((error) =>
+        toast.error(error instanceof Error ? error.message : String(error)),
+      );
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : String(error));
+    }
   };
 
   return (
@@ -164,7 +171,7 @@ function Hint({ keys, label }: { keys: string; label: string }) {
 
 function useSharedCommandGroups(): CommandGroupSpec[] {
   const t = useLocale();
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme } = useInterfaceTheme();
   const { canRestart, restarting, restartServer } = useRestartServer();
 
   return useMemo(() => {

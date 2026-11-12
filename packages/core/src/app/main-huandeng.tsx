@@ -11,6 +11,7 @@ import {
   uiText,
   useHuandengLocale,
 } from './lib/huandeng-locale';
+import { DesktopThemeSync, initializeInterfaceTheme } from './lib/huandeng-theme';
 import { setLocale } from './lib/locale-store';
 import { HuandengEditor } from './routes/huandeng';
 import './styles.css';
@@ -34,6 +35,7 @@ function LoadingPage() {
 }
 
 async function startEditor() {
+  await initializeInterfaceTheme();
   await initializeUiLocale();
   const syncSharedLocale = () => setLocale(getUiLocale());
   syncSharedLocale();
@@ -42,6 +44,7 @@ async function startEditor() {
   editorRoot.render(
     <StrictMode>
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <DesktopThemeSync />
         <BrowserRouter>
           <TooltipProvider delay={200}>
             <Suspense fallback={<LoadingPage />}>

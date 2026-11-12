@@ -51,6 +51,9 @@ export interface HuandengDesktop {
   getLocale?(): Promise<'en' | 'zh-CN'>;
   setLocale?(locale: 'en' | 'zh-CN'): Promise<'en' | 'zh-CN'>;
   onLocaleChanged?(callback: (locale: 'en' | 'zh-CN') => void): () => void;
+  getTheme?(): Promise<'system' | 'light' | 'dark'>;
+  setTheme?(theme: 'system' | 'light' | 'dark'): Promise<'system' | 'light' | 'dark'>;
+  onThemeChanged?(callback: (theme: 'system' | 'light' | 'dark') => void): () => void;
   getSnapping?(): Promise<boolean>;
   setSnapping?(enabled: boolean): Promise<boolean>;
   onSnappingChanged?(callback: (enabled: boolean) => void): () => void;

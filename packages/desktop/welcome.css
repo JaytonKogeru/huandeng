@@ -1,20 +1,21 @@
 :root {
-  color-scheme: light;
+  color-scheme: light dark;
   font-family:
     "Segoe UI", -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei UI",
     "Microsoft YaHei", sans-serif;
   color: var(--foreground);
   background: var(--background);
   font-synthesis: none;
-  --foreground: #252a2f;
-  --background: #ffffff;
-  --sidebar: #f6f7f8;
-  --muted: #687078;
-  --border: #e1e4e7;
-  --hover: #eef0f2;
-  --brand: #254d3c;
-  --brand-hover: #2d5c47;
-  --focus: #3d7860;
+  --foreground: light-dark(#252a2f, #e8eaed);
+  --background: light-dark(#ffffff, #1e2226);
+  --sidebar: light-dark(#f6f7f8, #17191c);
+  --muted: light-dark(#687078, #a3abb4);
+  --border: light-dark(#e1e4e7, #42474e);
+  --hover: light-dark(#eef0f2, #30343a);
+  --brand: light-dark(#254d3c, #9ccdb4);
+  --brand-button: light-dark(#254d3c, #2e664f);
+  --brand-hover: light-dark(#2d5c47, #397a60);
+  --focus: light-dark(#3d7860, #91bda6);
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
 }
 * {
@@ -84,8 +85,8 @@ button {
     transform 140ms var(--ease-out);
 }
 .actions button.primary {
-  border-color: var(--brand);
-  background: var(--brand);
+  border-color: var(--brand-button);
+  background: var(--brand-button);
   color: #ffffff;
 }
 .actions svg {
@@ -430,23 +431,11 @@ body[data-locale-ready="false"] .workspace {
   outline-offset: 2px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    color-scheme: dark;
-    --foreground: #e8eaed;
-    --background: #26292d;
-    --sidebar: #1d2024;
-    --muted: #a3aab3;
-    --border: #42474e;
-    --hover: #30343a;
-    --focus: #91bda6;
-  }
-  .brand img {
-    filter: invert(1);
-  }
-  .status[data-state="error"] {
-    color: #ed9b88;
-  }
+:root[data-theme-mode="dark"] .brand img {
+  filter: invert(1);
+}
+:root[data-theme-mode="dark"] .status[data-state="error"] {
+  color: #ed9b88;
 }
 
 .project-drop {
