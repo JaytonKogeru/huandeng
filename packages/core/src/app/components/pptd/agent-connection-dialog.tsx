@@ -16,15 +16,18 @@ import {
 import { Textarea } from '../ui/textarea';
 import {
   type AgentClient,
+  type AgentRoute,
   type AgentSetup,
   agentConnectionSteps,
   agentFirstTask,
   agentProjectName,
+  agentSetupClient,
 } from './agent-connection-steps';
 import { AgentReportEvidence } from './agent-report-evidence';
 
 export function AgentSetupInstructions({
   client,
+  route,
   setup,
   projectTitle,
   deckId,
@@ -32,6 +35,7 @@ export function AgentSetupInstructions({
   onCopy,
 }: {
   client: AgentClient;
+  route?: AgentRoute;
   setup: AgentSetup;
   projectTitle?: string;
   deckId?: string;
@@ -40,6 +44,8 @@ export function AgentSetupInstructions({
 }) {
   const { t } = useHuandengLocale();
   const firstTask = agentFirstTask(t, setup.entryPath, deckId);
+  const steps = agentConnectionSteps[agentSetupClient(client, route)];
+  const installedDeepSeekBundle = client === 'deepseek' && route === 'plugin';
   return (
     <>
       <section className="space-y-2 rounded-md border bg-muted/30 p-3" data-hd-agent-project>
@@ -57,20 +63,26 @@ export function AgentSetupInstructions({
       <section className="space-y-3" data-hd-agent-next-steps>
         <h3 className="text-sm font-medium">{t('Next steps')}</h3>
         <ol className="list-decimal space-y-2 pl-5 text-sm leading-relaxed">
-          {agentConnectionSteps[client].map((step) => (
+          {steps.map((step) => (
             <li key={step}>{t(step)}</li>
           ))}
         </ol>
         <div className="flex flex-wrap items-center gap-2">
+          {installedDeepSeekBundle ? (
+            <span className="text-xs text-muted-foreground" data-hd-dsh-native-ready>
+              {t('Native plugin installed · no configuration copy needed')}
+            </span>
+          ) : (
+            <Button
+              onClick={() => onCopy(setup.configuration, 'configuration')}
+              data-hd-copy-agent-config
+            >
+              {copied === 'configuration' ? <Check /> : <Copy />}
+              {t('复制配置')}
+            </Button>
+          )}
           <Button
-            onClick={() => onCopy(setup.configuration, 'configuration')}
-            data-hd-copy-agent-config
-          >
-            {copied === 'configuration' ? <Check /> : <Copy />}
-            {t('复制配置')}
-          </Button>
-          <Button
-            variant="outline"
+            variant={installedDeepSeekBundle ? 'default' : 'outline'}
             onClick={() => onCopy(firstTask, 'task')}
             data-hd-copy-agent-task
           >
@@ -209,11 +221,10 @@ export function AgentConnectionDialog({
             className="min-w-0 flex-1 rounded-md border bg-background px-3 py-2"
             aria-label={t('Agent 客户端')}
           >
-            <option value="deepseek-native">DeepSeek Harness</option>
+            <option value="deepseek">DeepSeek Harness</option>
             <option value="codex">Codex</option>
             <option value="claude">Claude Code</option>
             <option value="chatgpt">ChatGPT (DC-WALT)</option>
-            <option value="deepseek">{t('DeepSeek Harness (legacy patch)')}</option>
           </select>
         </label>
         <details className="rounded-md border px-3 py-2" data-hd-reserved-agent-clients>
@@ -264,6 +275,7 @@ export function AgentConnectionDialog({
           <AgentSetupInstructions
             key={requestKey}
             client={client}
+            route={currentSetup.route}
             setup={currentSetup}
             projectTitle={projectTitle}
             deckId={deckId}

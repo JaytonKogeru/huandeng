@@ -1,14 +1,19 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "huandeng",
-  "version": "0.23.1",
+  "version": "0.23.2",
   "description": "Create and refine Story-driven scientific slides in the open HUANDENG project, with reviewable proposals and one shared editor writer.",
   "author": {
     "name": "HUANDENG"
   },
   "repository": "https://github.com/JaytonKogeru/huandeng",
   "license": "MIT",
-  "keywords": ["slides", "pptd", "story", "presentations"],
+  "keywords": [
+    "slides",
+    "pptd",
+    "story",
+    "presentations"
+  ],
   "extensions": {
     "com.openai": {
       "interface": {

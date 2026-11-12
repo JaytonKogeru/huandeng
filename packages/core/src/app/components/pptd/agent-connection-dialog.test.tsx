@@ -8,6 +8,7 @@ import {
   agentConnectionSteps,
   agentFirstTask,
   agentProjectName,
+  agentSetupClient,
 } from './agent-connection-steps';
 
 describe('Assistant connection instructions', () => {
@@ -41,14 +42,18 @@ describe('Assistant connection instructions', () => {
     },
   );
 
-  it('guides native DeepSeek configuration separately from the compatibility patch', () => {
-    expect(agentConnectionSteps['deepseek-native'].join(' ')).toContain('Plugin Manager');
-    expect(agentConnectionSteps['deepseek-native'].join(' ')).toContain(
-      'existing huandeng plugin entry',
-    );
-    expect(agentConnectionSteps['deepseek-native'].join(' ')).not.toContain('dsh --patch');
-    expect(agentConnectionSteps.deepseek.join(' ')).toContain('Do not enable both routes');
-    expect(agentConnectionSteps.deepseek.join(' ')).toContain('dsh --patch');
+  it('describes one DeepSeek Harness client with a route that matches the machine', () => {
+    const plugin = agentConnectionSteps['deepseek-native'].join(' ');
+    const direct = agentConnectionSteps.deepseek.join(' ');
+    expect(plugin).toContain('discovers open Projects automatically');
+    expect(plugin).toContain('Do not add another MCP server');
+    expect(plugin).not.toContain('dsh --patch');
+    expect(direct).toContain('Install the bundle');
+    expect(direct).toContain('dsh --patch');
+    expect(direct).not.toContain('compatibility patch');
+    expect(agentSetupClient('deepseek', 'plugin')).toBe('deepseek-native');
+    expect(agentSetupClient('deepseek', 'direct')).toBe('deepseek');
+    expect(agentSetupClient('codex', undefined)).toBe('codex');
   });
 
   it('identifies the exact project and asks for a read-only first task in both languages', () => {

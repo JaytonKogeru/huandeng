@@ -1,12 +1,23 @@
 import type { UiTranslator } from '../../../locale/huandeng';
 
 export type AgentClient = 'deepseek-native' | 'deepseek' | 'codex' | 'claude' | 'chatgpt';
+// How DeepSeek Harness receives this Project: through an installed HUANDENG plugin bundle, or
+// through a connection file. The editor shows one DeepSeek Harness row and the desktop host
+// reports which route matches the machine.
+export type AgentRoute = 'plugin' | 'direct';
 export type AgentSetup = {
   client: string;
   entryPath: string;
   pluginPath: string;
   configuration: string;
+  route?: AgentRoute;
 };
+
+export function agentSetupClient(client: AgentClient, route?: AgentRoute): AgentClient {
+  if (route === 'plugin') return 'deepseek-native';
+  if (route === 'direct') return 'deepseek';
+  return client;
+}
 
 export const agentConnectionSteps: Record<AgentClient, readonly string[]> = {
   codex: [
@@ -20,15 +31,14 @@ export const agentConnectionSteps: Record<AgentClient, readonly string[]> = {
     'Send the first task below to confirm this Project and read its Story briefing.',
   ],
   'deepseek-native': [
-    'Install the HUANDENG native bundle in DeepSeek Harness’s Plugin Manager, or keep the existing installation.',
-    'Merge this configuration into the existing huandeng plugin entry for this Project. Keep your model and account settings.',
-    'Check that the native plugin exposes this Project’s HUANDENG tools, then send the first task below.',
+    'HUANDENG is installed in the DeepSeek Harness Desktop profile. It discovers open Projects automatically.',
+    'Open a DeepSeek Harness chat and send the read-only first task below to confirm the exact Project connection.',
+    'Do not add another MCP server or skill provider. The advanced configuration is only for deliberately pinning a Project.',
   ],
   deepseek: [
-    'Use this compatibility patch only when the profile has no HUANDENG native bundle. Do not enable both routes.',
-    'Save the configuration as a separate JSON patch. Keep your model and account settings.',
-    'Start DeepSeek Harness with dsh --patch and the saved file, then check that HUANDENG tools are available.',
-    'Send the first task below to confirm this Project and read its Story briefing.',
+    'HUANDENG is not installed in the DeepSeek Harness Desktop profile. Install the bundle from its Plugins page for automatic Project discovery.',
+    'For a setup without the native bundle, the connection file below is an advanced alternative for dsh --patch.',
+    'After setup, send the read-only first task below to verify the selected Project.',
   ],
   chatgpt: [
     'In ChatGPT, select your existing DC-WALT workstation that can access this Project.',

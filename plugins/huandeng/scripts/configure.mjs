@@ -104,7 +104,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.ar
     const values = options({ client: { type: 'string' }, 'auto-project': { type: 'boolean' } });
     if (values.help)
       process.stdout.write(
-        'Usage: node configure.mjs --client codex|claude|deepseek-native|deepseek|chatgpt|mcp [--entry <absolute.pptd>] [--cli <huandeng.js>] [--install-dir <Editor directory>] [--url <loopback-origin>] [--runtime-dir <absolute>] [--auto-project]\nPrints a mergeable configuration fragment. Does not write client settings or connect to a model.\nFor DSH, install the native bundle first and use deepseek-native for its existing row. deepseek is the compatibility --patch route; do not combine both in one profile.\n',
+        'Usage: node configure.mjs --client codex|claude|deepseek-native|deepseek|chatgpt|mcp [--entry <absolute.pptd>] [--cli <huandeng.js>] [--install-dir <Editor directory>] [--url <loopback-origin>] [--runtime-dir <absolute>] [--auto-project]\nPrints a mergeable configuration fragment. Does not write client settings or connect to a model.\nFor DeepSeek Harness, deepseek-native reuses the row of an installed HUANDENG bundle; deepseek writes a standalone connection file for dsh --patch when a profile has no bundle. Keep one route per profile.\n',
       );
     else {
       if (

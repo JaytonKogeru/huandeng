@@ -10,6 +10,7 @@ interface HarnessWindow {
   reviewed: string[];
   failSetup: boolean;
   holdClient: string | null;
+  deepSeekRoute: 'plugin' | 'direct';
   releaseSetup?: () => void;
   project: string;
   dialogClosed: boolean;
@@ -30,13 +31,15 @@ window.reports = [];
 window.reviewed = [];
 window.failSetup = false;
 window.holdClient = null;
+window.deepSeekRoute = 'direct';
 window.project = 'one';
 Object.defineProperty(navigator, 'clipboard', {value: {writeText: async text => {window.copies.push(text);}}});
 window.huandengDesktop = {getAgentConfiguration: async client => {
   const project = window.project;
   if (window.failSetup) throw new Error('Synthetic setup failure');
   if (window.holdClient === client) await new Promise(resolve => {window.releaseSetup = resolve;});
-  return {client, entryPath: 'D:/' + project + '/deck.pptd', pluginPath: 'D:/plugin',
+  return {client, route: client === 'deepseek' ? window.deepSeekRoute : undefined,
+    entryPath: 'D:/' + project + '/deck.pptd', pluginPath: 'D:/plugin',
     configuration: 'exact\\n' + client + '/' + project};
 }};
 const backend = {activity: async () => ({deckId: window.project, events: window.reports}), subscribeActivity: () => () => {}};
@@ -168,7 +171,7 @@ describe('Assistant setup interactions', () => {
       expect(await page.locator('[data-hd-agent-project]').innerText()).toContain('Authored one');
       expect(await page.locator('[data-hd-agent-advanced]').getAttribute('open')).toBeNull();
       expect(await page.locator('textarea').isVisible()).toBe(false);
-      for (const client of ['codex', 'claude', 'deepseek-native', 'deepseek', 'chatgpt']) {
+      for (const client of ['deepseek', 'codex', 'claude', 'chatgpt']) {
         await page.getByRole('combobox').selectOption(client);
         await page.locator('[data-hd-copy-agent-config]').click();
         await page.waitForFunction(
@@ -195,6 +198,41 @@ describe('Assistant setup interactions', () => {
       expect(await page.evaluate(() => (window as unknown as HarnessWindow).dialogClosed)).toBe(
         true,
       );
+    } finally {
+      await page.close();
+    }
+  }, 30_000);
+
+  it('uses one DeepSeek option and needs no configuration copy for an installed native bundle', async () => {
+    const page = await browser.newPage();
+    page.setDefaultTimeout(5_000);
+    try {
+      await page.goto(baseUrl);
+      await page.locator('[data-hd-agent-setup-ready]').waitFor({ timeout: 20_000 });
+      expect(await page.locator('option[value="deepseek"]').count()).toBe(1);
+      expect(await page.locator('option[value="deepseek-native"]').count()).toBe(0);
+      await page.evaluate(() => {
+        (window as unknown as HarnessWindow).deepSeekRoute = 'plugin';
+      });
+      await page.getByRole('combobox').selectOption('deepseek');
+      await page.locator('[data-hd-dsh-native-ready]').waitFor();
+      expect(await page.locator('[data-hd-copy-agent-config]').count()).toBe(0);
+      expect(await page.locator('[data-hd-agent-next-steps]').innerText()).toContain(
+        'discovers open Projects automatically',
+      );
+      await page.locator('[data-hd-copy-agent-task]').click();
+      await page.waitForFunction(() =>
+        (window as unknown as HarnessWindow).copies.at(-1)?.includes('Expected Project ID: one'),
+      );
+      await page.getByText('Advanced · configuration details').click();
+      expect(await page.locator('textarea').inputValue()).toBe('exact\ndeepseek/one');
+      await page.getByRole('combobox').selectOption('codex');
+      await page.evaluate(() => {
+        (window as unknown as HarnessWindow).deepSeekRoute = 'direct';
+      });
+      await page.getByRole('combobox').selectOption('deepseek');
+      await page.locator('[data-hd-copy-agent-config]').waitFor();
+      expect(await page.locator('[data-hd-dsh-native-ready]').count()).toBe(0);
     } finally {
       await page.close();
     }

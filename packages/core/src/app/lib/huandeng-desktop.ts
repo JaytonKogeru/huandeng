@@ -61,12 +61,13 @@ export interface HuandengDesktop {
   setSnapping?(enabled: boolean): Promise<boolean>;
   onSnappingChanged?(callback: (enabled: boolean) => void): () => void;
   getAgentConfiguration?(
-    client: 'deepseek-native' | 'deepseek' | 'codex' | 'claude' | 'chatgpt',
+    client: 'deepseek' | 'deepseek-native' | 'codex' | 'claude' | 'chatgpt',
   ): Promise<{
     client: string;
     entryPath: string;
     pluginPath: string;
     configuration: string;
+    route?: 'plugin' | 'direct';
   }>;
   onAgentConnection?(callback: () => void): () => void;
   openProject(): Promise<{ entryPath: string } | null>;

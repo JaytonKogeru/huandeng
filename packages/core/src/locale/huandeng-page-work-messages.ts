@@ -1,13 +1,17 @@
 export const pageWorkChinese = {
-  'DeepSeek Harness (legacy patch)': 'DeepSeek Harness（兼容补丁）',
-  'Install the HUANDENG native bundle in DeepSeek Harness’s Plugin Manager, or keep the existing installation.':
-    '在 DeepSeek Harness 的插件管理器中安装 HUANDENG 原生包，或沿用已有安装。',
-  'Merge this configuration into the existing huandeng plugin entry for this Project. Keep your model and account settings.':
-    '把此配置合并到已有 huandeng 插件条目中，绑定当前项目，并保留模型和账户设置。',
-  'Check that the native plugin exposes this Project’s HUANDENG tools, then send the first task below.':
-    '确认原生插件提供了当前项目的 HUANDENG 工具，再发送下方的首个任务。',
-  'Use this compatibility patch only when the profile has no HUANDENG native bundle. Do not enable both routes.':
-    '仅在此配置环境没有 HUANDENG 原生包时使用兼容补丁；不要同时启用两条接入路径。',
+  'HUANDENG is installed in the DeepSeek Harness Desktop profile. It discovers open Projects automatically.':
+    '检测到 DeepSeek Harness 桌面端已安装 HUANDENG，可自动发现已打开的项目。',
+  'Open a DeepSeek Harness chat and send the read-only first task below to confirm the exact Project connection.':
+    '打开 DeepSeek Harness 对话，发送下方的只读首个任务，核对连接的是正确项目。',
+  'Do not add another MCP server or skill provider. The advanced configuration is only for deliberately pinning a Project.':
+    '不要重复添加 MCP 服务或 Skill；只有需要固定绑定特定项目时才使用高级配置。',
+  'HUANDENG is not installed in the DeepSeek Harness Desktop profile. Install the bundle from its Plugins page for automatic Project discovery.':
+    '当前 DeepSeek Harness 桌面端没有安装 HUANDENG；请在插件管理页安装插件包，启用自动发现项目。',
+  'For a setup without the native bundle, the connection file below is an advanced alternative for dsh --patch.':
+    '若不安装原生插件，也可以通过下方接入文件和 dsh --patch 高级方式连接。',
+  'After setup, send the read-only first task below to verify the selected Project.':
+    '完成连接后，发送下方只读任务核对目标项目。',
+  'Native plugin installed · no configuration copy needed': '已安装原生插件 · 无需复制连接配置',
 
   'Open slide': '打开页面',
   'View pinned slide': '查看固定版本',

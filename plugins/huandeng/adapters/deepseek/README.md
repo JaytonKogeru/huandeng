@@ -2,6 +2,8 @@
 
 This native DSH bundle installs the same authoring skill and MCP launcher as the Claude Code and Codex plugins. It manages one tool namespace per Project and uses the existing shared writer.
 
+In HUANDENG Editor 0.23.2+, **Assistant Setup → DeepSeek Harness** is a single entry. For the Desktop profile, an installed native plugin is detected and open Projects are discovered automatically by DSH. There is no need to paste another MCP server or Skill provider, and no need to pin the current Editor tab. Send the read-only first task from the Editor to confirm the exact Project ID in your DSH conversation. A manually pinned project override is available under Advanced, while a standalone connection file is only for environments without the native bundle. Neither file is applied by merely copying it.
+
 Source lives in plugins/huandeng/adapters/deepseek in the HUANDENG repository. A built bundle is a distribution, not another source checkout. Its package name and Cordis row remain huandeng. On Windows a local installation directory may intentionally be named dsh-huandeng to avoid colliding with the Huandeng source directory.
 
 ## Install or update
