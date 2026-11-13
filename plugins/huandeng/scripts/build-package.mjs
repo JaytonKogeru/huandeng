@@ -17,6 +17,7 @@ export const commonFiles = [
   'skills/huandeng-story/references/connected-review.md',
   'skills/huandeng-story/references/production-design.md',
   'skills/huandeng-story/references/asset-evidence.md',
+  'skills/huandeng-story/references/editorial-standard.md',
   'scripts/runtime.mjs',
   'scripts/discovery.mjs',
   'scripts/discover.mjs',

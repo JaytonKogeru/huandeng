@@ -1,5 +1,7 @@
 # Deliberate presentation design
 
+The canonical anti-pattern and positive standard is the generated [Editorial Standard](editorial-standard.md), sourced only from `packages/core/src/pptd/editorial-standard.json`. This reference explains implementation techniques rather than defining a competing global policy.
+
 Read this when creating a deck, substantially redesigning it, or making a product introduction. Read the Project AGENTS.md and actual references first.
 
 ## Audit → Spec → Implement → Validate → Release

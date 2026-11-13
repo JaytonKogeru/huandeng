@@ -44,6 +44,9 @@ export const workflowEnglish = {
 } as const;
 
 export const workflowChinese = {
+  'Editorial rules': '编辑设计规范',
+  'pattern observations': '项反模式观察',
+  'Visual review is always required.': '仍须审阅真实页面。',
   'Shared writer': '共享写入器',
   演示: '放映',
   'Slide workspace views': '幻灯片工作区视图',

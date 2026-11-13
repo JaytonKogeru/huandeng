@@ -177,6 +177,10 @@ Editor v0.14 connects Layout preview → shared-writer save → Activity receipt
 
 Clients can include up to 20 exact `operationIds` in a progress report. These are explicit claims resolved against this Project's journal, not timestamp associations. See `skills/huandeng-story/references/connected-review.md` for the complete workflow and the separate levels of setup, protocol, save, structure, rendering, export and human approval.
 
+## Canonical Editorial Standard and quality gate (0.24)
+
+Global positive/negative design rules live in one registry: `packages/core/src/pptd/editorial-standard.json`. Run `pnpm sync:editorial`, or `pnpm check:editorial` to detect drift. The build produces both the Skill's `references/editorial-standard.md` and the MCP `huandeng://guide/editorial` content from that exact registry; neither file is an independent policy source. The running writer's `huandeng_design_audit` now reports gentle, rule-ID-linked anti-pattern signals, including repeated three-card layouts and footer disclaimer furniture. Use `huandeng_authoring_gate` for prototype/release validation against saved render revisions and explicit per-page visual observations; it never claims to prove visual inspection or author acceptance. Do not treat advisory signal counts as an AI-feel score. Project root `AGENTS.md` adds its own approved style and exceptions only.
+
 ## Deliberate design workflow (plugin 0.18.2)
 
 Start a new empty Project with `huandeng init /absolute/new-directory --title 'Project title'`, then open its returned entry in HUANDENG. Existing targets are refused. Desktop and CLI initialization share the same folder layout and AGENTS.md source.

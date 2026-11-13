@@ -3,7 +3,9 @@ import fs from 'node:fs/promises';
 import { Command } from 'commander';
 import { reportActivity } from './activity-client.ts';
 import { agentGuide } from './agent-guide.ts';
+import { type AuthoringGateInput, assessAuthoringGate } from './authoring-gate.ts';
 import { connectClient } from './client.ts';
+import type { DesignAuditReport } from './design-audit.ts';
 import { launchHuandeng } from './launch.ts';
 import { startMcp } from './mcp.ts';
 import { resolveProjectEntry } from './project-entry.cjs';
@@ -216,20 +218,34 @@ program
   )
   .option('--max-title <size>', 'title upper bound at 960-wide scale')
   .option('--max-body <size>', 'body upper bound at 960-wide scale')
-  .action(async (options) =>
-    print(
-      await (await client()).request(
-        queryPath('/design-audit', {
-          language: options.language,
-          presentationId: options.presentation,
-          requireSectionDividers: options.requireSectionDividers,
-          expectedBackground: options.background,
-          maxTitleSize: options.maxTitle === undefined ? undefined : Number(options.maxTitle),
-          maxBodySize: options.maxBody === undefined ? undefined : Number(options.maxBody),
-        }),
-      ),
-    ),
-  );
+  .option('--gate <stage>', 'prototype or release: run canonical editorial gate')
+  .option('--review-evidence <file>', 'JSON with revision-bound reviews and documented exceptions')
+  .action(async (options) => {
+    const report = await (await client()).request<DesignAuditReport>(
+      queryPath('/design-audit', {
+        language: options.language,
+        presentationId: options.presentation,
+        requireSectionDividers: options.requireSectionDividers,
+        expectedBackground: options.background,
+        maxTitleSize: options.maxTitle === undefined ? undefined : Number(options.maxTitle),
+        maxBodySize: options.maxBody === undefined ? undefined : Number(options.maxBody),
+      }),
+    );
+    if (!options.gate) {
+      print(report);
+      return;
+    }
+    if (!['prototype', 'release'].includes(options.gate))
+      throw new Error('--gate accepts prototype or release.');
+    const evidence = options.reviewEvidence
+      ? (JSON.parse(
+          await fs.readFile(options.reviewEvidence, 'utf8'),
+        ) as Partial<AuthoringGateInput>)
+      : {};
+    const gate = assessAuthoringGate(report, { ...evidence, stage: options.gate });
+    print({ gate, report });
+    if (gate.status !== 'ready-for-author') process.exitCode = 2;
+  });
 program
   .command('assets')
   .description('List project assets and current Main-page usages; honor hasMore and truncated')

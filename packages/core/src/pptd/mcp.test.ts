@@ -3,7 +3,9 @@ import { InMemoryTransport } from '@modelcontextprotocol/sdk/inMemory.js';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import huandengPluginManifest from '../../../../plugins/huandeng/plugin.json';
 import { HuandengClient } from './client';
+import { auditSlideDesign } from './design-audit';
 import { createMcpServer } from './mcp';
+import { insightFixture } from './project-insights.test-utils';
 
 const close: (() => Promise<void>)[] = [];
 afterEach(async () => {
@@ -62,6 +64,20 @@ describe('HUANDENG MCP project and Story context', () => {
       '/design-audit?language=zh-CN&requireSectionDividers=true&expectedBackground=%23FFFFFF',
     );
   });
+  it('runs a real revision-bound Editorial Gate over the writer design-audit result', async () => {
+    const { client, request } = await connection();
+    const report = auditSlideDesign(insightFixture());
+    request.mockResolvedValueOnce(report);
+    const result = await client.callTool({
+      name: 'huandeng_authoring_gate',
+      arguments: { stage: 'release' },
+    });
+    expect(request).toHaveBeenLastCalledWith('/design-audit');
+    expect(result).toMatchObject({
+      content: [{ type: 'text', text: expect.stringContaining('needs-review') }],
+    });
+  });
+
   it('exposes explicit task activity without turning it into a slide mutation', async () => {
     const { client, request } = await connection();
     await client.callTool({ name: 'huandeng_activity_read', arguments: {} });
@@ -90,7 +106,7 @@ describe('HUANDENG MCP project and Story context', () => {
     expect(properties?.agentFamily).toMatchObject({
       enum: expect.arrayContaining(['chatgpt', 'claude', 'deepseek', 'hermes', 'other']),
     });
-    expect(tools).toHaveLength(24);
+    expect(tools).toHaveLength(25);
     const args = {
       deckId: 'selected-project',
       requestId: 'phase',
@@ -156,12 +172,13 @@ describe('HUANDENG MCP project and Story context', () => {
   it('advertises the three context tools as read-only alongside the compatible writer tools', async () => {
     const { client } = await connection();
     const { tools } = await client.listTools();
-    expect(tools).toHaveLength(24);
+    expect(tools).toHaveLength(25);
     for (const name of [
       'huandeng_story_briefing',
       'huandeng_presentation_read',
       'huandeng_assets_list',
       'huandeng_design_audit',
+      'huandeng_authoring_gate',
       'huandeng_export_status',
       'huandeng_preview',
     ]) {
@@ -179,9 +196,12 @@ describe('HUANDENG MCP project and Story context', () => {
     const { client, request } = await connection();
     const { resources } = await client.listResources();
     expect(resources.map((resource) => resource.uri)).toEqual([
+      'huandeng://guide/editorial',
       'huandeng://guide/story',
       'huandeng://guide/operations',
     ]);
+    const editorial = await client.readResource({ uri: 'huandeng://guide/editorial' });
+    expect(editorial.contents[0]).toMatchObject({ text: expect.stringContaining('CARDS-08') });
     const guide = await client.readResource({ uri: 'huandeng://guide/story' });
     expect(guide.contents[0]).toMatchObject({
       mimeType: 'text/markdown',

@@ -1,3 +1,5 @@
+import { auditEditorialPatterns } from './editorial-audit';
+import editorialGuide from './editorial-guide.generated.json';
 import { type DeckSnapshot, type PageSnapshot, type PptdElement, PptdError } from './types';
 
 export interface DesignAuditOptions {
@@ -16,6 +18,7 @@ export interface ImageMeasurement {
 
 export interface DesignAuditFinding {
   code: string;
+  ruleId?: string;
   severity: 'info' | 'warning';
   message: string;
   pageId: string;
@@ -55,6 +58,7 @@ export interface DesignAuditPage {
 
 export interface DesignAuditReport {
   schemaVersion: 1;
+  editorialStandard: { version: string; sourceSha256: string; automatedSignals: number };
   deckId: string;
   presentationId: string | null;
   revisions: { manifest: string; metadata: string | null; guidance: string | null };
@@ -326,11 +330,29 @@ export function auditSlideDesign(
     }
     return [{ id: section.id, title: section.title, pageId, titleOnly: page.titleOnly }];
   });
+  const byId = new Map(allPages.map((page) => [page.pageId, page]));
+  const editorialIssues = auditEditorialPatterns(allPages.slice(0, 500), snapshot.size);
+  for (const finding of editorialIssues) {
+    const page = byId.get(finding.pageId);
+    if (!page) continue;
+    append(page, {
+      ruleId: finding.ruleId,
+      code: finding.code,
+      severity: finding.severity,
+      message: finding.message,
+      ...(finding.elementId ? { elementId: finding.elementId } : {}),
+    });
+  }
   const backgrounds = new Map<string, number>();
   for (const page of pages)
     backgrounds.set(page.background, (backgrounds.get(page.background) ?? 0) + 1);
   return {
     schemaVersion: 1,
+    editorialStandard: {
+      version: editorialGuide.version,
+      sourceSha256: editorialGuide.sourceSha256,
+      automatedSignals: editorialIssues.length,
+    },
     deckId: snapshot.deckId,
     presentationId: snapshot.presentationId ?? null,
     revisions: {

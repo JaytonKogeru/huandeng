@@ -1,0 +1,204 @@
+{
+  "schemaVersion": 1,
+  "version": "2026-11-13-v1",
+  "canonical": "packages/core/src/pptd/editorial-standard.json",
+  "principle": "Quality comes from content-specific reasoning and rendered evidence, not an AI-feel score or a universal ban on colors, arrows, cards and minimal slides.",
+  "stages": [
+    {
+      "id": "audit",
+      "requires": [
+        "Read current user brief, Project AGENTS.md and approved references",
+        "Inventory real assets, evidence and preservation constraints"
+      ]
+    },
+    {
+      "id": "spec",
+      "requires": [
+        "Map audience questions to content and evidence",
+        "Plan Page purposes and 2–3 different representative compositions"
+      ]
+    },
+    {
+      "id": "prototype",
+      "requires": [
+        "Render and inspect representative evidence, process and comparison pages",
+        "Revise until their layout principle is justified"
+      ]
+    },
+    {
+      "id": "implement",
+      "requires": [
+        "Create remaining editable pages with the shared writer",
+        "Collect real assets and maintain provenance"
+      ]
+    },
+    {
+      "id": "validate",
+      "requires": [
+        "Run huandeng_design_audit and CLI quality gate",
+        "Review the contact sheet and each page at display size; correct and rerun"
+      ]
+    },
+    {
+      "id": "release",
+      "requires": [
+        "Check source and versions, no missing images, notes and citations",
+        "Report quality gate result and separately declare whether visual review was actually performed"
+      ]
+    }
+  ],
+  "rules": [
+    {
+      "id": "EVIDENCE-01",
+      "level": "hard",
+      "title": "真实素材与科研证据",
+      "avoid": "不得编造实验数据、伪造论文图或用概念图冒充研究结果。",
+      "prefer": "优先使用有出处的科学原图、官方资料、真实截图和可复现绘图；清楚区分事实、推演和悬念。",
+      "domain": "evidence"
+    },
+    {
+      "id": "UI-REAL-02",
+      "level": "hard",
+      "title": "真实软件界面",
+      "avoid": "不得以生成/模拟的 UI 代替真实产品截图。",
+      "prefer": "记录真实界面、版本、语言和裁切，并在全界面中定位放大区域。",
+      "domain": "evidence"
+    },
+    {
+      "id": "AUTHOR-03",
+      "level": "hard",
+      "title": "尊重作者约束",
+      "avoid": "不得为套用模板而删掉用户指定保留的图、内容、标注或致谢。",
+      "prefer": "保留原稿证据与参数，审计用户要求，明确改变和保留范围。",
+      "domain": "content"
+    },
+    {
+      "id": "TABLE-04",
+      "level": "hard",
+      "title": "结构化表格",
+      "avoid": "不要用多个独立文本框和矩形伪造真正的行列数据表。",
+      "prefer": "行列关系用原生 Table；段落和普通列表用可编辑的统一富文本对象。",
+      "domain": "structure"
+    },
+    {
+      "id": "VOICE-05",
+      "level": "advisory",
+      "title": "防御性文案",
+      "avoid": "不要在副标题、边角备注或图注中塞与页面问题无关的免责声明或自证话术。",
+      "prefer": "保留真正影响结论的限定；把流程免责声明、AI 自评和交付审计放在报告里。",
+      "domain": "copy"
+    },
+    {
+      "id": "ARROW-06",
+      "level": "advisory",
+      "title": "符号箭头与线段",
+      "avoid": "不要用 A→B→C 字符链和无定义的细线箭头冒充流程、因果或关系图。",
+      "prefer": "使用有明确对象、方向和意义的图形连接；对数据或结构关系按事实绘制。",
+      "domain": "visual"
+    },
+    {
+      "id": "DOT-07",
+      "level": "advisory",
+      "title": "中点符号滥用",
+      "avoid": "不要在普通标题、页脚和分组中反复使用 Research · Design · Impact 一类分隔。",
+      "prefer": "通过自然语言、字体层级、间距、真实分组或列表表达语义。",
+      "domain": "copy"
+    },
+    {
+      "id": "CARDS-08",
+      "level": "advisory",
+      "title": "机械三卡片",
+      "avoid": "不要把相邻页面都做成三个等宽圆角卡片。",
+      "prefer": "让构图由比较、流程、证据、演示等不同信息关系决定；必要的多面板科学图例外。",
+      "domain": "layout"
+    },
+    {
+      "id": "ORNAMENT-09",
+      "level": "advisory",
+      "title": "装饰线与无意义组件",
+      "avoid": "不要给每个标题加短横线，也不要到处添加竖线、彩条、发光描边和标签芯片。",
+      "prefer": "线、框、箭头、标记必须有分组、定位、比较或科学语义，否则移除。",
+      "domain": "visual"
+    },
+    {
+      "id": "GENERIC-10",
+      "level": "advisory",
+      "title": "空泛发布会词句",
+      "avoid": "避免赋能、重塑未来、无限可能、Unlocking the Future 等无证据的科技口号。",
+      "prefer": "标题直接写观众的问题、具体主张、真实发现或可执行操作。",
+      "domain": "copy"
+    },
+    {
+      "id": "CHROMA-11",
+      "level": "visual",
+      "title": "ChatGPT 模板配色",
+      "avoid": "不要默认使用青绿+蓝紫渐变+橙黄强调或固定的科技仪表盘风格。",
+      "prefer": "从真实素材、学科表达、用户已有页面推导色彩体系；不同页面有统一节奏而非一模一样。",
+      "domain": "visual"
+    },
+    {
+      "id": "TEXT-12",
+      "level": "advisory",
+      "title": "文字压倒证据",
+      "avoid": "不要只把图片缩成小配图，让大标题和大段文字占据全部页面。",
+      "prefer": "可视化信息应承担讲解的主体，正文负责观察方法、比较关系和结论。",
+      "domain": "layout"
+    },
+    {
+      "id": "FRAG-13",
+      "level": "advisory",
+      "title": "碎片化文本对象",
+      "avoid": "不要把普通段落拆成多个分散的标签、文本框、连线和伪按钮。",
+      "prefer": "一段语义连续的话放同一个可编辑富文本框；只有真实信息关系才拆分。",
+      "domain": "structure"
+    },
+    {
+      "id": "COMPARE-14",
+      "level": "visual",
+      "title": "有控制变量的比较",
+      "avoid": "不要把两个不同尺寸、位置、参照系的图片简单并排当作比较。",
+      "prefer": "使用同等尺度与标记框，明确变更区域和保留区域；必要时做视觉指引。",
+      "domain": "visual"
+    },
+    {
+      "id": "REFERENCE-15",
+      "level": "visual",
+      "title": "参考页优先",
+      "avoid": "不要在未看用户批准的页面与真实素材前随意建立模板。",
+      "prefer": "选2–3张已批准参考页提取尺度、配色、标题层级、图形语言和图像策略。",
+      "domain": "process"
+    },
+    {
+      "id": "PLOT-16",
+      "level": "hard",
+      "title": "专业科研绘图",
+      "avoid": "不得用幻灯片形状拼装假测量曲线、误差线或统计轴。",
+      "prefer": "用专业工具从真实数据生成可追溯、标单位与来源的绘图；原生数据图表经过数据核对可例外。",
+      "domain": "evidence"
+    },
+    {
+      "id": "RENDER-17",
+      "level": "visual",
+      "title": "真实渲染审查",
+      "avoid": "不要仅因 PPTD 结构合法或 Design Audit 零警告就宣称设计完成。",
+      "prefer": "先检验2–3张代表页，再用contact sheet加全尺寸逐页审阅、修正、复验。",
+      "domain": "process"
+    },
+    {
+      "id": "STORY-18",
+      "level": "visual",
+      "title": "内容用途与教学",
+      "avoid": "不要把用户的故事变成空洞发布会，也不要把产品介绍变成生硬功能列表。",
+      "prefer": "保留故事因果主线，把操作教学嵌入真实使用场景并检查观众能否照做。",
+      "domain": "content"
+    },
+    {
+      "id": "ASSET-19",
+      "level": "visual",
+      "title": "主动素材获取",
+      "avoid": "不要等文字写完才随便配图库照片，或把截图当装饰。",
+      "prefer": "先列素材清单，主动获取真实照片、官方画面、科学结构、真实UI、图表、截图并记录来源与授权。",
+      "domain": "evidence"
+    }
+  ]
+}

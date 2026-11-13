@@ -16,6 +16,18 @@ const findingMessages: Record<string, string> = {
     'The image has too few source pixels at 1920-wide output. Recapture it or reduce its displayed size.',
   DESIGN_BACKGROUND_MISMATCH: 'The background differs from the requested deck color.',
   DESIGN_SECTION_DIVIDER_MISSING: 'This Section does not start with a title-only slide.',
+  EDITORIAL_DISCLAIMER_FURNITURE:
+    'A defensive disclaimer is in page furniture. Keep it only when needed for interpretation.',
+  EDITORIAL_MIDDOT_CHAIN: 'Repeated middle-dot separators. Prefer a real semantic hierarchy.',
+  EDITORIAL_TEXT_ARROW_CHAIN: 'A text arrow chain may need a meaningful diagram.',
+  EDITORIAL_GENERIC_SLOGAN:
+    'Generic technology slogan. Replace with a specific question, result or action.',
+  EDITORIAL_FRAGMENTED_PROSE:
+    'Too many short text objects. Review whether this is prose or real figure labels.',
+  EDITORIAL_TEXT_WITHOUT_EVIDENCE:
+    'Text-heavy explanation without a figure, plot, table or screenshot.',
+  EDITORIAL_REPEATED_EQUAL_CARDS:
+    'Three or more consecutive pages repeat an equivalent three-card layout.',
 };
 
 export function DesignQualityDialog({
@@ -153,6 +165,11 @@ export function DesignQualityDialog({
                 findings: report.findingCount,
                 backgrounds: report.backgrounds.length,
               })}
+            </p>
+            <p className="text-xs leading-relaxed text-muted-foreground" data-hd-editorial-standard>
+              {t('Editorial rules')} {report.editorialStandard.version} ·{' '}
+              {report.editorialStandard.automatedSignals} {t('pattern observations')}.{' '}
+              {t('Visual review is always required.')}
             </p>
             <p className="text-xs leading-relaxed text-muted-foreground">
               {t('Use these observations to choose what to refine, then review the actual slides.')}

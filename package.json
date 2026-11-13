@@ -26,7 +26,9 @@
     "release": "node scripts/guard-product-publish.mjs",
     "huandeng": "node packages/core/huandeng.js",
     "desktop": "pnpm --filter @huandeng/desktop start",
-    "check:release": "node scripts/guard-product-publish.mjs --check",
+    "check:release": "node scripts/guard-product-publish.mjs --check && node scripts/sync-editorial-standard.mjs --check",
+    "check:editorial": "node scripts/sync-editorial-standard.mjs --check",
+    "sync:editorial": "node scripts/sync-editorial-standard.mjs",
     "test:native": "node scripts/test-native-contracts.mjs",
     "version:product": "node scripts/set-product-version.mjs"
   },

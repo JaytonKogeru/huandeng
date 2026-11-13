@@ -1,5 +1,7 @@
 # Scientific slides: reference first, evidence first
 
+Consult the generated [Editorial Standard](editorial-standard.md) for the single rule registry and machine-readable rule IDs. This file supplies scientific-specific execution guidance and must not drift into a second independent set of restrictions.
+
 Use this workflow when making or substantially changing a scientific slide. Preserve the author's actual style and purpose. The aim is a clear presentation of evidence, with decisions that can be explained from the content.
 
 The user's explicit visual instructions and approved Project style take precedence over generic layout or template preferences. Apply the same standard to product presentations.
