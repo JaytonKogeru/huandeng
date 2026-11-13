@@ -2,6 +2,8 @@ import { describe, expect, it } from 'vitest';
 import { assessAuthoringGate } from './authoring-gate';
 import { auditSlideDesign } from './design-audit';
 import { auditEditorialPatterns } from './editorial-audit';
+import generatedEditorialGuide from './editorial-guide.generated.json';
+import editorialStandard from './editorial-standard.json';
 import { insightFixture } from './project-insights.test-utils';
 import type { PageSnapshot } from './types';
 
@@ -44,12 +46,25 @@ function threeCardPages(): PageSnapshot[] {
 }
 
 describe('canonical editorial pattern checks', () => {
+  it('requires an opened visual Editor for all Slides authoring stages', () => {
+    expect(editorialStandard.rules.find((rule) => rule.id === 'EDITOR-20')).toMatchObject({
+      level: 'hard',
+      domain: 'process',
+    });
+    expect(generatedEditorialGuide.version).toBe(editorialStandard.version);
+    expect(generatedEditorialGuide.text).toContain('EDITOR-20');
+    for (const stage of ['audit', 'implement', 'validate']) {
+      const requirements =
+        editorialStandard.stages.find((item) => item.id === stage)?.requires ?? [];
+      expect(requirements.some((item) => item.includes('Editor'))).toBe(true);
+    }
+  });
   it('detects repeated three-card template across real page identities without changing a deck', () => {
     const deck = insightFixture();
     deck.pages = threeCardPages();
     const before = JSON.stringify(deck);
     const report = auditSlideDesign(deck);
-    expect(report.editorialStandard.version).toBe('2026-11-13-v1');
+    expect(report.editorialStandard.version).toBe('2026-11-13-v2');
     expect(report.editorialStandard.automatedSignals).toBe(3);
     expect(report.findings.filter((f) => f.code === 'EDITORIAL_REPEATED_EQUAL_CARDS')).toHaveLength(
       3,

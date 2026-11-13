@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "version": "2026-11-13-v1",
+  "version": "2026-11-13-v2",
   "canonical": "packages/core/src/pptd/editorial-standard.json",
   "principle": "Quality comes from content-specific reasoning and rendered evidence, not an AI-feel score or a universal ban on colors, arrows, cards and minimal slides.",
   "stages": [
@@ -8,6 +8,7 @@
       "id": "audit",
       "requires": [
         "Read current user brief, Project AGENTS.md and approved references",
+        "Open the exact target PPTD Project in the installed HUANDENG desktop Editor before any slide modification; verify the visible project name and active page",
         "Inventory real assets, evidence and preservation constraints"
       ]
     },
@@ -21,13 +22,14 @@
     {
       "id": "prototype",
       "requires": [
-        "Render and inspect representative evidence, process and comparison pages",
+        "Render and inspect representative evidence, process and comparison pages in the same open HUANDENG Editor workspace",
         "Revise until their layout principle is justified"
       ]
     },
     {
       "id": "implement",
       "requires": [
+        "Keep the installed HUANDENG Editor open on the target Project throughout authoring; use its shared writer so edits and the active Page remain visible to the user as they arrive",
         "Create remaining editable pages with the shared writer",
         "Collect real assets and maintain provenance"
       ]
@@ -35,6 +37,7 @@
     {
       "id": "validate",
       "requires": [
+        "Confirm the correct Project stays open in the HUANDENG Editor and inspect actual live page updates, not just background file writes",
         "Run huandeng_design_audit and CLI quality gate",
         "Review the contact sheet and each page at display size; correct and rerun"
       ]
@@ -199,6 +202,14 @@
       "avoid": "不要等文字写完才随便配图库照片，或把截图当装饰。",
       "prefer": "先列素材清单，主动获取真实照片、官方画面、科学结构、真实UI、图表、截图并记录来源与授权。",
       "domain": "evidence"
+    },
+    {
+      "id": "EDITOR-20",
+      "level": "hard",
+      "title": "在可视化 Editor 中实时创作",
+      "avoid": "禁止在未打开目标 PPTD 的 HUANDENG Editor 时仅通过后台脚本或文件改动完成幻灯片制作，也不得把只在文件系统落盘等同于用户能看到编辑进展。",
+      "prefer": "开始前在实际安装的 HUANDENG Desktop Editor 中打开准确的目标 Project，切换到该项目并核对标题与 Page；整个制作期间保持 Editor 打开，使用同一个共享 writer 进行编辑，确认用户可以从编辑界面和 Agent Activity 看到当前页面与变更。不能连接或不能保持可视时先报告阻碍，不要静默改稿；已有用户页面与未保存内容应优先保护。",
+      "domain": "process"
     }
   ]
 }
