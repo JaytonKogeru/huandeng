@@ -248,14 +248,10 @@ try {
   await shape.click();
   // The CI runner owns an isolated Windows desktop/clipboard. Never touch an
   // author's real clipboard when running the same smoke on an operator workstation.
-  if (
-    process.env.GITHUB_ACTIONS === 'true' &&
-    process.env.HUANDENG_CI_CLIPBOARD_SMOKE === '1'
-  ) {
+  if (process.env.HUANDENG_CI_CLIPBOARD_SMOKE === '1') {
     await page.keyboard.press('Control+c');
     const copied = await until(
-      () =>
-        page.evaluate(async () => window.huandengDesktop.readRichClipboard()),
+      () => page.evaluate(async () => window.huandengDesktop.readRichClipboard()),
       (payload) => !!payload?.json && !!payload?.pngBase64,
       'The native Editor did not write an image and HUANDENG editable payload.',
       30_000,
@@ -285,7 +281,9 @@ try {
     }, copied.pngBase64);
     assert.ok(pixels.width > 30 && pixels.height > 30, 'The image crop was invalid.');
     assert.ok(pixels.opaque > 100, 'The clipboard image was transparent/blank.');
-    checks.push('Actual packaged UI Ctrl+C wrote nonblank PNG plus editable HUANDENG metadata through the native Windows clipboard.');
+    checks.push(
+      'Actual packaged UI Ctrl+C wrote nonblank PNG plus editable HUANDENG metadata through the native Windows clipboard.',
+    );
   }
   await page.keyboard.press('Delete');
   const hasShape = async () =>
