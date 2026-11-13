@@ -246,6 +246,47 @@ try {
   );
   const shape = page.locator('[data-hd-editor-canvas] [data-hd-element-id="smoke-shape"]');
   await shape.click();
+  // The CI runner owns an isolated Windows desktop/clipboard. Never touch an
+  // author's real clipboard when running the same smoke on an operator workstation.
+  if (
+    process.env.GITHUB_ACTIONS === 'true' &&
+    process.env.HUANDENG_CI_CLIPBOARD_SMOKE === '1'
+  ) {
+    await page.keyboard.press('Control+c');
+    const copied = await until(
+      () =>
+        page.evaluate(async () => window.huandengDesktop.readRichClipboard()),
+      (payload) => !!payload?.json && !!payload?.pngBase64,
+      'The native Editor did not write an image and HUANDENG editable payload.',
+      30_000,
+    );
+    const editable = JSON.parse(copied.json);
+    assert.equal(editable.kind, 'huandeng-elements');
+    assert.equal(editable.deckId, snapshot.deckId);
+    assert.ok(editable.elements.some((element) => element.elementId === 'smoke-shape'));
+    const copiedPng = Buffer.from(copied.pngBase64, 'base64');
+    assert.ok(copiedPng.length > 100, 'The copied image was empty.');
+    assert.equal(copiedPng.subarray(0, 8).toString('hex'), '89504e470d0a1a0a');
+    const pixels = await page.evaluate(async (png) => {
+      const binary = atob(png);
+      const bytes = Uint8Array.from(binary, (c) => c.charCodeAt(0));
+      const bitmap = await createImageBitmap(new Blob([bytes], { type: 'image/png' }));
+      const canvas = document.createElement('canvas');
+      canvas.width = bitmap.width;
+      canvas.height = bitmap.height;
+      const context = canvas.getContext('2d');
+      context.drawImage(bitmap, 0, 0);
+      let opaque = 0;
+      const sample = context.getImageData(0, 0, canvas.width, canvas.height).data;
+      for (let index = 3; index < sample.length; index += 4) {
+        if (sample[index] >= 200) opaque += 1;
+      }
+      return { width: bitmap.width, height: bitmap.height, opaque };
+    }, copied.pngBase64);
+    assert.ok(pixels.width > 30 && pixels.height > 30, 'The image crop was invalid.');
+    assert.ok(pixels.opaque > 100, 'The clipboard image was transparent/blank.');
+    checks.push('Actual packaged UI Ctrl+C wrote nonblank PNG plus editable HUANDENG metadata through the native Windows clipboard.');
+  }
   await page.keyboard.press('Delete');
   const hasShape = async () =>
     (await activeCli('inspect', pageId)).data.elements.some(

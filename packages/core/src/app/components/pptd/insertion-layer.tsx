@@ -1,5 +1,6 @@
 import { type PointerEvent as ReactPointerEvent, useEffect, useRef, useState } from 'react';
 import { type CanvasPoint, createPlacedElement, type InsertionTool } from '@/lib/pptd-insertion';
+import { lineSvgPath } from '@/lib/pptd-line-curve';
 import { presetShapePath } from '../../../pptd/shape-presets';
 import type { PageSize, PptdElement } from '../../../pptd/types';
 
@@ -99,13 +100,8 @@ export function InsertionLayer({
           viewBox={`0 0 ${bounds[2]} ${bounds[3]}`}
           data-hd-insertion-preview
         >
-          {tool.kind === 'line' ? (
-            <polyline
-              points={String(preview?.points)}
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-            />
+          {tool.kind === 'line' && preview ? (
+            <path d={lineSvgPath(preview)} fill="none" stroke="currentColor" strokeWidth="2" />
           ) : tool.kind === 'shape' && tool.shapeName === 'ellipse' ? (
             <ellipse
               cx={bounds[2] / 2}

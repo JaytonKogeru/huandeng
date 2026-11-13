@@ -59,6 +59,8 @@ jobs:
           ./scripts/Package-Huandeng.ps1 -OutputDirectory $outputDirectory -Official:$official
       - name: Verify the relocated Windows package
         shell: pwsh
+        env:
+          HUANDENG_CI_CLIPBOARD_SMOKE: "1"
         run: node scripts/verify-windows-release.mjs "$PWD/dist/Windows 验收/HUANDENG Editor/HUANDENG Editor.exe"
       - name: Verify native review and workspace workflows
         shell: pwsh

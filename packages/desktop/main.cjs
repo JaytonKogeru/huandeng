@@ -13,6 +13,8 @@ const {
   app,
   BrowserWindow,
   WebContentsView,
+  clipboard,
+  ClipboardItem,
   dialog,
   ipcMain,
   Menu,
@@ -30,6 +32,7 @@ const { resolveProjectEntry } = require('./project-entry.cjs');
 const { markProjectFolder } = require('./project-folder.cjs');
 const { createProjectRestore, createNavigationController } = require('./project-restore.cjs');
 const { agentConfiguration } = require('./agent-setup.cjs');
+const { writeRichClipboard, readRichClipboard } = require('./clipboard-rich.cjs');
 const { version: editorVersion } = require('./release.json');
 const { migratePreferences } = require('./branding.cjs');
 const {
@@ -1062,6 +1065,14 @@ function registerIpc() {
   handle('huandeng:get-snapping', () => preferences.snapping !== false);
   handle('huandeng:set-snapping', (_sender, enabled) => operate(() => changeSnapping(enabled)));
   handle('huandeng:edit-native', (sender, command) => editNative(command, sender.contents));
+  handle('huandeng:clipboard-rich-write', (sender, value) => {
+    requireProject(sender);
+    return writeRichClipboard(clipboard, ClipboardItem, value);
+  });
+  handle('huandeng:clipboard-rich-read', (sender) => {
+    requireProject(sender);
+    return readRichClipboard(clipboard);
+  });
   handle('huandeng:show-home', () => navigateNow(showHome));
   handle('huandeng:reveal-path', (sender, relativePath) =>
     revealPath(relativePath, requireProject(sender)),

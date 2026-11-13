@@ -83,6 +83,21 @@ describe('canvas tool placement', () => {
     expect(horizontal.bounds).toEqual([100, 200, 200, 1]);
     expect(horizontal.points).toBe('0,0.5 200,0.5');
   });
+  it('places an editable quadratic curve with three points and preserved endpoints', () => {
+    const curve = createPlacedElement(
+      { kind: 'line', curve: 'smooth', arrow: true },
+      { x: 200, y: 220 },
+      { x: 460, y: 220 },
+      [960, 540],
+      { dragged: true, elementId: 'bend' },
+    );
+    expect(curve.elementType).toBe('line');
+    expect(curve.curve).toBe('smooth');
+    expect((curve.points as string).split(' ')).toHaveLength(3);
+    expect(curve.arrow).toEqual([null, 'arrow']);
+    expect(curve.bounds?.[3]).toBeGreaterThan(1);
+  });
+
   it('fits default objects in a smaller page and clamps an outside gesture', () => {
     const clicked = createPlacedElement(
       { kind: 'shape', shapeName: 'rect' },

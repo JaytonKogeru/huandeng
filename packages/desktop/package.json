@@ -31,6 +31,7 @@
     "locale.cjs",
     "plugins",
     "agent-setup.cjs",
+    "clipboard-rich.cjs",
     "workspace.cjs",
     "project-tabs.cjs",
     "project-restore.cjs",

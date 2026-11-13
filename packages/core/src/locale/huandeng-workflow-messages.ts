@@ -1,5 +1,19 @@
 export const workflowEnglish = {
   '未选中对象。': 'No object selected.',
+  '复制对象 JSON': 'Copy object JSON',
+  添加曲线: 'Add curve',
+  曲线: 'Curve',
+  直线: 'Straight',
+  线条形态: 'Line shape',
+  '弯曲程度 (%)': 'Bend (%)',
+  '绘制可调节弯曲度的 Bézier 曲线': 'Draw an adjustable Bézier curve',
+  '请先选中需要复制的对象。': 'Select the objects you want to copy.',
+  '所选对象已不可用，请重新选择。': 'Selected objects are no longer available. Select again.',
+  '剪贴板里没有可粘贴的图片或 HUANDENG 对象。':
+    'Clipboard has no usable image or HUANDENG objects.',
+  '跨项目复制对象需要图片格式。请使用 Ctrl+C 重新复制后粘贴。':
+    'To copy into another Project, use Ctrl+C for an image.',
+  '目标页面已不可用。': 'Destination slide is no longer available.',
   '对象效果 → 点击步骤 → 逐步预演；换页效果单独设置。静态导出不包含交互动画。':
     'Object effects → click steps → preview. Set page transitions separately. Static exports do not include interactive animation.',
   '先按 Enter 应用输入，或按 Esc 还原；草稿处理后即可切换视图和放映。':

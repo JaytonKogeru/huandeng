@@ -109,6 +109,25 @@ describe('editor keyboard ownership', () => {
     expect(resolveEditorKeyboardCommand(key('ArrowLeft', { ctrlKey: true }), 'canvas')).toBeNull();
   });
 
+  it('copies object JSON with Ctrl+Alt+C without hijacking native inputs or DevTools', () => {
+    expect(
+      resolveEditorKeyboardCommand(key('c', { ctrlKey: true, altKey: true }), 'canvas'),
+    ).toEqual({ type: 'copy-json' });
+    expect(
+      resolveEditorKeyboardCommand(key('c', { metaKey: true, altKey: true }), 'layers'),
+    ).toEqual({ type: 'copy-json' });
+    for (const scope of ['input', 'control', 'dialog', 'timeline', 'thumbnails'] as const)
+      expect(
+        resolveEditorKeyboardCommand(key('c', { ctrlKey: true, altKey: true }), scope),
+      ).toBeNull();
+    expect(
+      resolveEditorKeyboardCommand(key('c', { ctrlKey: true, shiftKey: true }), 'canvas'),
+    ).toBeNull();
+    expect(
+      resolveEditorKeyboardCommand(key('c', { ctrlKey: true, altKey: true }), 'canvas', true),
+    ).toBeNull();
+  });
+
   it('routes layer delete/copy to objects and thumbnail delete to pages', () => {
     expect(resolveEditorKeyboardCommand(key('Delete'), 'layers')).toEqual({
       type: 'remove-elements',

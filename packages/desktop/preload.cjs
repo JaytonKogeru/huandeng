@@ -85,6 +85,8 @@ contextBridge.exposeInMainWorld('huandengDesktop', {
   onStatus: (callback) => subscribe('huandeng:status', callback),
   onEditCommand: (callback) => subscribe('huandeng:edit-command', callback),
   editNative: (command) => ipcRenderer.invoke('huandeng:edit-native', command),
+  writeRichClipboard: (value) => ipcRenderer.invoke('huandeng:clipboard-rich-write', value),
+  readRichClipboard: () => ipcRenderer.invoke('huandeng:clipboard-rich-read'),
   onBeforeLeave: (callback) => {
     leaveHandlers.add(callback);
     return () => leaveHandlers.delete(callback);

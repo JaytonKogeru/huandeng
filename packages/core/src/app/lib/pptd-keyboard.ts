@@ -14,7 +14,18 @@ export type EditorKeyboardScope =
 
 export type EditorKeyboardCommand =
   | ObjectEditCommand
-  | { type: 'help' | 'save' | 'cancel' | 'undo' | 'redo' | 'copy' | 'cut' | 'select-all' }
+  | {
+      type:
+        | 'help'
+        | 'save'
+        | 'cancel'
+        | 'undo'
+        | 'redo'
+        | 'copy'
+        | 'copy-json'
+        | 'cut'
+        | 'select-all';
+    }
   | { type: 'remove-elements' | 'remove-page' | 'duplicate' | 'add-page' }
   | { type: 'group'; ungroup: boolean }
   | { type: 'tool'; key: 'v' | 't' | 'r' | 'l' }
@@ -64,12 +75,19 @@ export function resolveEditorKeyboardCommand(
     (presenting && event.repeat) ||
     event.isComposing ||
     event.keyCode === 229 ||
-    event.altKey ||
     scope === 'dialog'
   )
     return null;
   const control = event.ctrlKey || event.metaKey;
   const key = event.key.toLowerCase();
+  if (event.altKey)
+    return control &&
+      !event.shiftKey &&
+      key === 'c' &&
+      ['canvas', 'layers', 'workspace'].includes(scope) &&
+      !presenting
+      ? { type: 'copy-json' }
+      : null;
   if (!control && key === 'f6') return { type: 'focus-region', direction: event.shiftKey ? -1 : 1 };
   if (!control && key === 'f1') return { type: 'help' };
   if (control && key === 's') return { type: 'save' };
@@ -100,6 +118,8 @@ export function resolveEditorKeyboardCommand(
   if (control && key === 'm') return { type: 'add-page' };
   if (scope === 'control') return null;
   if (control && key === 'd') return { type: 'duplicate' };
+  // Chromium reserves Ctrl+Shift+C for its element inspector.
+  if (control && event.shiftKey && key === 'c') return null;
   if (scope === 'thumbnails')
     return !control && (key === 'delete' || key === 'backspace') ? { type: 'remove-page' } : null;
   if (control && key === 'a') return { type: 'select-all' };
@@ -250,7 +270,8 @@ export const EDITOR_KEYBOARD_HELP = [
       ['Enter', '编辑选中的文字'],
       ['Esc', '结束文字输入、取消工具或清除选区；清除后 Tab 可离开画布'],
       ['Ctrl+A', '选择全部顶层对象'],
-      ['Ctrl+C / X / V', '复制 / 剪切 / 粘贴对象；跨项目图片使用导入'],
+      ['Ctrl+C / X / V', '复制图片和可编辑对象 / 剪切 / 粘贴；跨项目自动使用图片'],
+      ['Ctrl+Alt+C', '复制所选对象的结构化 JSON 参数'],
       ['Ctrl+D', '复制所选对象；页面列表中复制页面'],
       ['Delete / Backspace', '删除选中的对象或主库页面'],
       ['Ctrl+G / Ctrl+Shift+G', '组合 / 取消组合'],
@@ -259,7 +280,7 @@ export const EDITOR_KEYBOARD_HELP = [
       ['Ctrl+Shift+> / <', 'Increase / decrease selected text size'],
       ['Ctrl+] / [', 'Bring forward / send backward one layer'],
       ['Ctrl+Shift+] / [', 'Bring to front / send to back'],
-      ['V / T / R / L', '选择 / 文字 / 矩形 / 线条工具'],
+      ['V / T / R / L', '选择 / 文字 / 矩形 / 直线工具；曲线用工具栏按钮'],
       ['Ctrl+Wheel', 'Zoom the canvas at the pointer'],
       ['Shift+Wheel', 'Scroll the canvas horizontally'],
     ],

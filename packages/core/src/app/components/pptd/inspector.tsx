@@ -19,6 +19,7 @@ import type { Alignment } from '@/lib/inspector/geometry';
 import { elementLabel as layerTitle } from '@/lib/pptd-element-label';
 import { rootSelectedElements } from '@/lib/pptd-geometry';
 import { cycleItemId, type EditorKeyboardCommand } from '@/lib/pptd-keyboard';
+import { lineBendPercent, lineCurvePatch } from '@/lib/pptd-line-curve';
 import type { LayerDirection } from '@/lib/pptd-object-actions';
 import { cn } from '@/lib/utils';
 import { groupChildren } from '../../../pptd/grouping';
@@ -633,6 +634,41 @@ export function PptdInspector({
                     <option value="dot">{t('点线')}</option>
                   </select>
                 </label>
+                {element.elementType === 'line' && (
+                  <>
+                    <label className="flex items-center justify-between gap-2 text-xs text-muted-foreground">
+                      {t('线条形态')}
+                      <select
+                        aria-label={t('线条形态')}
+                        className="h-7 rounded border bg-background px-2 text-foreground"
+                        disabled={disabled}
+                        value={element.curve === 'smooth' ? 'smooth' : 'sharp'}
+                        onChange={(event) =>
+                          patch(
+                            lineCurvePatch(
+                              element,
+                              event.target.value as 'sharp' | 'smooth',
+                              lineBendPercent(element),
+                            ),
+                          )
+                        }
+                      >
+                        <option value="sharp">{t('直线')}</option>
+                        <option value="smooth">{t('曲线')}</option>
+                      </select>
+                    </label>
+                    {element.curve === 'smooth' && (
+                      <div>
+                        {number(
+                          t('弯曲程度 (%)'),
+                          lineBendPercent(element),
+                          (value) => lineCurvePatch(element, 'smooth', value),
+                          { min: -100, max: 100 },
+                        )}
+                      </div>
+                    )}
+                  </>
+                )}
                 {element.elementType === 'line' &&
                   (['起点箭头', '终点箭头'] as const).map((label, index) => (
                     <label

@@ -428,7 +428,10 @@ function lineXml(element: PptdElement, color: ColorResolver): string {
   if (
     width <= 0 ||
     height <= 0 ||
-    points.length !== 2 ||
+    !(
+      points.length === 2 ||
+      (element.curve === 'smooth' && (points.length === 3 || points.length === 4))
+    ) ||
     points.some(
       (point) =>
         point.length !== 2 ||
@@ -441,7 +444,7 @@ function lineXml(element: PptdElement, color: ColorResolver): string {
   ) {
     throw new ExportFeatureError(
       'UNSUPPORTED_LINE_PATH',
-      'Only valid two-endpoint lines are native in v0.1.',
+      'Only valid straight, quadratic and cubic line paths can be exported natively.',
     );
   }
   if (element.shadow)
@@ -461,7 +464,13 @@ function lineXml(element: PptdElement, color: ColorResolver): string {
   const h = Math.max(1, Math.round(bounds[3] * EMU_PER_POINT));
   const point = ([x, y]: number[]) =>
     `<a:pt x="${Math.round((x / width) * w)}" y="${Math.round((y / height) * h)}"/>`;
-  const path = `<a:custGeom><a:avLst/><a:gdLst/><a:ahLst/><a:cxnLst/><a:rect l="0" t="0" r="r" b="b"/><a:pathLst><a:path w="${w}" h="${h}" fill="none"><a:moveTo>${point(points[0])}</a:moveTo><a:lnTo>${point(points[1])}</a:lnTo></a:path></a:pathLst></a:custGeom>`;
+  const segment =
+    points.length === 2
+      ? `<a:lnTo>${point(points[1])}</a:lnTo>`
+      : points.length === 3
+        ? `<a:quadBezTo>${point(points[1])}${point(points[2])}</a:quadBezTo>`
+        : `<a:cubicBezTo>${point(points[1])}${point(points[2])}${point(points[3])}</a:cubicBezTo>`;
+  const path = `<a:custGeom><a:avLst/><a:gdLst/><a:ahLst/><a:cxnLst/><a:rect l="0" t="0" r="r" b="b"/><a:pathLst><a:path w="${w}" h="${h}" fill="none"><a:moveTo>${point(points[0])}</a:moveTo>${segment}</a:path></a:pathLst></a:custGeom>`;
   const stroke = border
     ? `<a:ln w="${Math.round(border.width * 6350)}" cap="${element.curve === 'sharp' ? 'flat' : 'rnd'}"><a:solidFill>${colorXml(border.color)}</a:solidFill>${border.dash === 'solid' ? '' : `<a:prstDash val="${border.dash}"/>`}<a:headEnd type="${arrowType(arrow[0])}"/><a:tailEnd type="${arrowType(arrow[1])}"/></a:ln>`
     : '<a:ln><a:noFill/></a:ln>';

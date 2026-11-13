@@ -29,6 +29,28 @@ const cases: {
     element: { bounds: [100, 100, 0, 120], points: '0.5,1 0.5,0' },
     geometry: '<a:moveTo><a:pt x="1" y="1524000"/></a:moveTo><a:lnTo><a:pt x="1" y="0"/></a:lnTo>',
   },
+  {
+    name: 'editable quadratic Bézier',
+    element: {
+      bounds: [100, 100, 200, 100],
+      viewBox: [200, 100],
+      points: '0,100 100,0 200,100',
+      curve: 'smooth',
+    },
+    geometry:
+      '<a:moveTo><a:pt x="0" y="1270000"/></a:moveTo><a:quadBezTo><a:pt x="1270000" y="0"/><a:pt x="2540000" y="1270000"/></a:quadBezTo>',
+  },
+  {
+    name: 'editable cubic Bézier',
+    element: {
+      bounds: [100, 100, 200, 100],
+      viewBox: [200, 100],
+      points: '0,100 50,0 150,0 200,100',
+      curve: 'smooth',
+    },
+    geometry:
+      '<a:moveTo><a:pt x="0" y="1270000"/></a:moveTo><a:cubicBezTo><a:pt x="635000" y="0"/><a:pt x="1905000" y="0"/><a:pt x="2540000" y="1270000"/></a:cubicBezTo>',
+  },
 ];
 
 describe('native PPTX zero-dimension lines', () => {

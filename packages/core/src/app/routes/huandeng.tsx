@@ -23,6 +23,7 @@ import {
   RefreshCw,
   Save,
   Settings2,
+  Spline,
   TerminalSquare,
   Type,
   Undo2,
@@ -115,8 +116,14 @@ import {
   textFormatPatches,
   textPropertyPatch,
 } from '@/lib/pptd-object-actions';
+import { selectionAfterPageRemoval } from '@/lib/pptd-page-removal';
 import { useSnappingPreference, useWorkspaceLayout } from '@/lib/pptd-preferences';
 import { presentationStartPage } from '@/lib/pptd-presentation-target';
+import {
+  readRichSelection,
+  renderSelectionPng,
+  writeRichSelection,
+} from '@/lib/pptd-rich-clipboard';
 import { sectionAtBoundary } from '@/lib/pptd-section-actions';
 import { createStarterTitle } from '@/lib/pptd-starter-title';
 import {
@@ -504,6 +511,7 @@ export function HuandengEditor() {
   const historyPage = snapshot?.pages.find((item) => item.pageId === selectedPageId);
   const currentPageIdRef = useRef(selectedPageId);
   currentPageIdRef.current = selectedPageId;
+  const pendingCopyRef = useRef<Promise<void> | null>(null);
 
   useDocumentTitle(snapshot ? `${snapshot.title} · HUANDENG Editor` : 'HUANDENG Editor');
 
@@ -847,10 +855,32 @@ export function HuandengEditor() {
   const apply = useCallback(
     (operations: PptdOperation[]) =>
       run(async () => {
+        const removal =
+          operations.length === 1 && operations[0].op === 'page.remove'
+            ? operations[0].pageId
+            : null;
+        const before = client.getState().snapshot;
+        const nextSelection =
+          removal && before
+            ? selectionAfterPageRemoval(before.pages, removal, selectedPageId)
+            : undefined;
         const result = await client.apply(operations);
         if (result.createdPages[0]) selectMainPage(result.createdPages[0].pageId);
+        else if (nextSelection !== undefined) {
+          if (nextSelection) selectMainPage(nextSelection);
+          else
+            setSearchParams(
+              (current) => {
+                const next = new URLSearchParams(current);
+                next.delete('page');
+                next.delete('occurrence');
+                return next;
+              },
+              { replace: true },
+            );
+        }
       }),
-    [client, run, selectMainPage],
+    [client, run, selectMainPage, selectedPageId, setSearchParams],
   );
 
   const insertAtBoundary = useCallback(
@@ -911,28 +941,33 @@ export function HuandengEditor() {
   }, [client, page, run, selectedIds]);
 
   const copyElements = useCallback(
-    (cut = false) => {
-      if (!page || !snapshot || !selectedIds.length) return;
-      void run(async () => {
-        if (cut) await client.flushAll();
+    (mode: 'rich' | 'json' | 'cut' = 'rich') => {
+      if (!page || !snapshot || !selectedIds.length) {
+        setUiError('请先选中需要复制的对象。');
+        return;
+      }
+      const previous = pendingCopyRef.current;
+      const task = (async () => {
+        // Serialize successive copies and make an immediate Ctrl+V await the latest write.
+        if (previous) await previous.catch(() => {});
+        if (mode === 'cut') await client.flushAll();
         const source = page.versionId ? page : client.page(page.pageId);
-        if (!source) return;
+        if (!source) throw new Error('所选对象已不可用，请重新选择。');
         const ids = new Set(expandGroupIds(source.data.elements, selectedIds));
         const animation = knownTimeline(source.data);
-        await navigator.clipboard.writeText(
-          JSON.stringify({
-            kind: 'huandeng-elements',
-            deckId: snapshot.deckId,
-            elements: source.data.elements.filter((element) => ids.has(element.elementId)),
-            selectedIds,
-            ...(animation
-              ? {
-                  timeline: selectedTimelineTargets(animation, ids),
-                }
-              : {}),
-          }),
-        );
-        if (!cut) return;
+        const json = JSON.stringify({
+          kind: 'huandeng-elements',
+          deckId: snapshot.deckId,
+          elements: source.data.elements.filter((element) => ids.has(element.elementId)),
+          selectedIds,
+          ...(animation ? { timeline: selectedTimelineTargets(animation, ids) } : {}),
+        });
+        const png =
+          mode === 'json'
+            ? undefined
+            : await renderSelectionPng(source.pageId, source.data.elements, ids, snapshot.size);
+        await writeRichSelection(json, png);
+        if (mode !== 'cut') return;
         await client.apply(
           selectionRemovalIds(source.data.elements, selectedIds).map((elementId) => ({
             op: 'element.remove',
@@ -945,6 +980,10 @@ export function HuandengEditor() {
           setSelectedIds([]);
           requestAnimationFrame(() => focusEditorCanvas());
         }
+      })();
+      pendingCopyRef.current = task;
+      void run(() => task).finally(() => {
+        if (pendingCopyRef.current === task) pendingCopyRef.current = null;
       });
     },
     [client, page, run, selectedIds, snapshot],
@@ -1067,64 +1106,77 @@ export function HuandengEditor() {
         !['canvas', 'layers', 'workspace'].includes(editorKeyboardScope(event.target))
       )
         return;
-      const files = Array.from(event.clipboardData?.files ?? []).filter((file) =>
+      const pastedFiles = Array.from(event.clipboardData?.files ?? []).filter((file) =>
         file.type.startsWith('image/'),
       );
-      if (files.length) {
-        event.preventDefault();
-        importImages(files);
-        return;
-      }
-      let copied: {
-        kind?: string;
-        deckId?: string;
-        elements?: PptdElement[];
-        selectedIds?: string[];
-        timeline?: PageAnimation;
-      };
-      try {
-        copied = JSON.parse(event.clipboardData?.getData('text/plain') ?? '');
-      } catch {
-        return;
-      }
-      if (
-        copied.kind !== 'huandeng-elements' ||
-        !Array.isArray(copied.elements) ||
-        !Array.isArray(copied.selectedIds)
-      )
-        return;
+      const plainText = event.clipboardData?.getData('text/plain') ?? '';
       event.preventDefault();
-      const copiedElements = copied.elements;
-      const copiedSelection = copied.selectedIds;
       void run(async () => {
-        if (copied.deckId !== snapshot.deckId)
-          throw new Error('请在同一项目中复制对象。跨项目图片可用“从设备导入”复制素材。');
-        if (copied.timeline) validatePageAnimation(copied.timeline, { elements: copiedElements });
-        await client.flushAll();
-        const destination = client.page(page.pageId);
-        if (!destination) throw new Error('目标页面已不可用。');
-        const duplicated = duplicateElements(
-          copiedElements,
-          copiedSelection,
-          () => `node-${crypto.randomUUID()}`,
-        );
-        const animation = copiedTimelineTracks(
-          copied.timeline ?? null,
-          knownTimeline(destination.data),
-          duplicated.idMap,
-          () => crypto.randomUUID(),
-          20,
-        );
-        const operations: PptdOperation[] = duplicated.copies.map((element) => ({
-          op: 'element.add',
-          pageId: page.pageId,
-          element,
-        }));
-        if (animation !== knownTimeline(destination.data))
-          operations.push({ op: 'page.timeline.set', pageId: page.pageId, timeline: animation });
-        await client.apply(operations, { pages: { [page.pageId]: destination.pageRevision } });
-        setSelectedIds(duplicated.selectedIds);
-        requestAnimationFrame(() => focusEditorCanvas(duplicated.selectedIds[0]));
+        // A rapid Ctrl+C / Ctrl+V on the same Editor must never read the previous clipboard.
+        if (pendingCopyRef.current) await pendingCopyRef.current.catch(() => {});
+        const rich = await readRichSelection();
+        const raw = rich.json ?? plainText;
+        let copied: {
+          kind?: string;
+          deckId?: string;
+          elements?: PptdElement[];
+          selectedIds?: string[];
+          timeline?: PageAnimation;
+        } | null = null;
+        try {
+          copied = JSON.parse(raw);
+        } catch {
+          // A normal external image has no HUANDENG metadata.
+        }
+        if (
+          copied?.kind === 'huandeng-elements' &&
+          copied.deckId === snapshot.deckId &&
+          Array.isArray(copied.elements) &&
+          Array.isArray(copied.selectedIds)
+        ) {
+          if (copied.timeline)
+            validatePageAnimation(copied.timeline, { elements: copied.elements });
+          await client.flushAll();
+          if (currentPageIdRef.current !== page.pageId) return;
+          const destination = client.page(page.pageId);
+          if (!destination) throw new Error('目标页面已不可用。');
+          const duplicated = duplicateElements(
+            copied.elements,
+            copied.selectedIds,
+            () => `node-${crypto.randomUUID()}`,
+          );
+          const animation = copiedTimelineTracks(
+            copied.timeline ?? null,
+            knownTimeline(destination.data),
+            duplicated.idMap,
+            () => crypto.randomUUID(),
+            20,
+          );
+          const operations: PptdOperation[] = duplicated.copies.map((element) => ({
+            op: 'element.add',
+            pageId: page.pageId,
+            element,
+          }));
+          if (animation !== knownTimeline(destination.data))
+            operations.push({ op: 'page.timeline.set', pageId: page.pageId, timeline: animation });
+          await client.apply(operations, { pages: { [page.pageId]: destination.pageRevision } });
+          setSelectedIds(duplicated.selectedIds);
+          requestAnimationFrame(() => focusEditorCanvas(duplicated.selectedIds[0]));
+          return;
+        }
+        // In another Project (or from RustDesk) only standard PNG can travel safely:
+        // relative media paths inside HUANDENG JSON must never be reused there.
+        const image = rich.image
+          ? new File([rich.image], 'Clipboard.png', { type: 'image/png' })
+          : null;
+        const images = image ? [image] : pastedFiles;
+        if (images.length) {
+          if (currentPageIdRef.current === page.pageId) importImages(images);
+          return;
+        }
+        if (copied?.kind === 'huandeng-elements')
+          throw new Error('跨项目复制对象需要图片格式。请使用 Ctrl+C 重新复制后粘贴。');
+        throw new Error('剪贴板里没有可粘贴的图片或 HUANDENG 对象。');
       });
     };
     window.addEventListener('paste', paste);
@@ -1495,8 +1547,8 @@ export function HuandengEditor() {
         );
         return;
       }
-      if (command.type === 'copy') {
-        copyElements();
+      if (command.type === 'copy' || command.type === 'copy-json') {
+        copyElements(command.type === 'copy-json' ? 'json' : 'rich');
         return;
       }
       if (command.type === 'select-all') {
@@ -1584,7 +1636,7 @@ export function HuandengEditor() {
           ? target.closest<HTMLElement>('[data-hd-thumbnail]')?.dataset.hdThumbnail
           : undefined;
       if (command.type === 'cut') {
-        copyElements(true);
+        copyElements('cut');
       } else if (command.type === 'add-page') {
         if (selectedPresentationId) setLeftTab('project');
         else void apply([{ op: 'page.add', afterPageId: selectedPageId }]);
@@ -2764,14 +2816,36 @@ export function HuandengEditor() {
                   size="sm"
                   aria-label={t('添加线条')}
                   title={t('线条 L · 拖拽绘制，Shift 约束方向')}
-                  aria-pressed={insertionTool?.kind === 'line'}
+                  aria-pressed={insertionTool?.kind === 'line' && insertionTool.curve !== 'smooth'}
                   disabled={readonly || busy || !page}
                   onClick={() =>
-                    chooseTool(insertionTool?.kind === 'line' ? null : { kind: 'line' })
+                    chooseTool(
+                      insertionTool?.kind === 'line' && insertionTool.curve !== 'smooth'
+                        ? null
+                        : { kind: 'line' },
+                    )
                   }
                 >
                   <Minus />
                   {t('线条')}
+                </Button>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  aria-label={t('添加曲线')}
+                  title={t('绘制可调节弯曲度的 Bézier 曲线')}
+                  aria-pressed={insertionTool?.kind === 'line' && insertionTool.curve === 'smooth'}
+                  disabled={readonly || busy || !page}
+                  onClick={() =>
+                    chooseTool(
+                      insertionTool?.kind === 'line' && insertionTool.curve === 'smooth'
+                        ? null
+                        : { kind: 'line', curve: 'smooth' },
+                    )
+                  }
+                >
+                  <Spline />
+                  {t('曲线')}
                 </Button>
                 <ScienceInsertMenu
                   size={snapshot.size}

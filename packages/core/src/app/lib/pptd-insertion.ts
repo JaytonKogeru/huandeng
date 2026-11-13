@@ -1,10 +1,11 @@
 import type { Bounds, PageSize, PptdElement } from '../../pptd/types';
 import { uiText as t } from './huandeng-locale';
+import { lineCurvePatch } from './pptd-line-curve';
 
 export type InsertionTool =
   | { kind: 'text' }
   | { kind: 'shape'; shapeName: string }
-  | { kind: 'line'; arrow?: boolean };
+  | { kind: 'line'; arrow?: boolean; curve?: 'smooth' };
 
 export type CanvasPoint = { x: number; y: number };
 
@@ -84,6 +85,8 @@ export function createPlacedElement(
       : `0,0.5 ${round(width)},0.5`;
     element.border = { width: 2, color: '#394d43' };
     if (tool.arrow) element.arrow = [null, 'arrow'];
+    if (tool.curve === 'smooth')
+      Object.assign(element, lineCurvePatch(element, 'smooth', 30, size));
   }
   return element;
 }

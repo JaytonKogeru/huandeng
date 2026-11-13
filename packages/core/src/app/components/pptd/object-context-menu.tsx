@@ -169,6 +169,14 @@ export function ObjectContextMenuContent({
           {shortcut('Ctrl+C')}
         </ContextMenuItem>
         <ContextMenuItem
+          disabled={!onCommand || !selected.length}
+          onClick={() => run({ type: 'copy-json' })}
+        >
+          <Copy />
+          {t('复制对象 JSON')}
+          {shortcut('Ctrl+Alt+C')}
+        </ContextMenuItem>
+        <ContextMenuItem
           disabled={!editable || !selected.length}
           onClick={() => run({ type: 'cut' })}
         >

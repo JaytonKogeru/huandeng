@@ -86,6 +86,12 @@ export interface HuandengDesktop {
   onBeforeLeave(callback: () => Promise<void> | Promise<DesktopLeaveData>): () => void;
   onEditCommand?(callback: (command: DesktopEditCommand) => void): () => void;
   editNative?(command: DesktopEditCommand): Promise<void>;
+  writeRichClipboard?(value: {
+    mode: 'rich' | 'json';
+    json: string;
+    pngBase64?: string;
+  }): Promise<void>;
+  readRichClipboard?(): Promise<{ json: string | null; pngBase64: string | null }>;
 }
 
 declare global {
